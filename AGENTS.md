@@ -31,20 +31,30 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 
 ## Agent Roles
 
+### Architect
+
+- Creates or updates one `specs/<feature-id>/` folder for each repository-changing user request before implementation begins.
+- Owns `spec.md`, `plan.md`, and `tasks.md` creation and updates for the assigned feature memory.
+- Ensures feature memory names goal, scope, acceptance criteria, negative scenario, and verification evidence.
+- Splits independent goals into separate feature folders instead of bundling unrelated changes into one process record.
+- Hands complete feature memory to the Orchestrator for coordination and enforcement.
+
 ### Orchestrator
 
 - Reads repository memory before starting.
-- Creates or updates feature memory before product-code changes.
-- Ensures feature memory names goal, scope, acceptance criteria, negative scenario, and verification evidence.
-- Slices work into one branch and one PR per task.
-- Keeps docs, specs, and PR state aligned.
+- Coordinates assigned agents and enforces the repository workflow.
+- Confirms each repository-changing user request has its own Architect-owned `specs/<feature-id>/` folder before implementation starts.
+- Slices work into one branch and one PR per task, then delegates repository file changes to assigned agents.
+- Keeps docs, specs, and PR state aligned through coordination and verification.
+- Must not directly edit repository files, including code, docs, specs, workflow files, or scripts.
 - Does not declare completion until the PR is merge-ready.
 
 ### Implementation Agent
 
+- Starts from assigned feature memory and does not begin implementation if `spec.md`, `plan.md`, or `tasks.md` is missing.
 - Works only from an assigned isolated worktree.
 - Stays within one branch and one PR per task slice.
-- Updates `specs/<feature-id>/tasks.md` in the same PR.
+- Keeps `specs/<feature-id>/tasks.md` current in the same PR.
 - Records dead ends, decisions, and known issues in the active feature memory.
 - Updates durable docs when behavior, architecture, workflows, or deploy rules change.
 - Never merges directly to the default branch.
@@ -52,6 +62,7 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 ### Review Agent
 
 - Reviews pull request diffs for bugs, regressions, missing tests, and contract violations.
+- Checks that repository-changing work has complete feature memory and follows Architect, Orchestrator, Implementation Agent, and Review Agent role boundaries.
 - Does not implement unrelated features during review.
 - Emits review output in the configured backend format.
 
@@ -59,14 +70,15 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 
 - One worker equals one worktree.
 - One implementation loop equals one branch and one PR.
-- Product-code PRs require complete feature memory: `spec.md`, `plan.md`, and `tasks.md`.
+- Every repository-changing user request must be represented by its own `specs/<feature-id>/` folder before implementation.
+- Repository-changing PRs require complete feature memory: `spec.md`, `plan.md`, and `tasks.md`.
 - Acceptance criteria must be verified with evidence, not only an AI-written summary.
 - `docs_project/`, `.specify/`, `specs/`, and `docs/specify/` are durable memory, not disposable session notes.
 - Do not edit secrets or production resources directly.
 
 ## Delivery Workflow
 
-- Product changes land through pull requests; do not push directly to `main`.
+- Repository-changing work lands through pull requests; do not push directly to `main`.
 - Required checks for this repository are defined in `.unicorn-hub/config.json` (`requiredChecks`) and applied to branch protection via `scripts/apply-branch-protection.mjs`.
 - Run local preflight before pushing.
 - Follow the Docker-only contract for runtime-affecting work (`make build`, `make up`, `make down`) once runtime scaffolding is present.
