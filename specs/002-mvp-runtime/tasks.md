@@ -33,6 +33,8 @@
 - [x] T023 Run full Docker validation: `make down`, `make build`, `make up`, browser smoke test, `make down`.
 - [x] T024 Record final verification evidence in this file.
 - [x] T025 Address internal review findings for exam config behavior, fallback validation policy, non-B guard robustness, e2e CI coverage, and whitespace diff handling.
+- [x] T026 Address latest AI Review findings for random exam pool selection and repeatable mistake retry.
+- [x] T027 Re-run preflight and Docker validation after latest review-fix changes.
 
 ## Process Memory
 
@@ -45,6 +47,8 @@
 - Offline reload initially failed because the static service worker did not precache hashed Vite assets. Added `scripts/generate-service-worker.mjs` to generate a post-build asset manifest.
 - Post-PR internal review found blocking P2 issues: exam mode did not implement skip/timer completion, content policy claimed per-question approvals while fallback questions intentionally remain `needs_review`, and non-B source guard only checked lowercase source ids. These were fixed before marking the PR merge-ready.
 - Targeted re-review found one remaining gap: the non-B source guard caught A4/moto but not plain `category A`, `categoria A`, `clase A`, or `tipo A`. The guard now rejects those source metadata patterns as well.
+- Latest AI Review on commit `48814ac431` found two active P2 gaps: exam attempts reused the same deterministic first 40 questions despite the configured random pool rule, and mistake review could not record repeated attempts on the same mounted question card. Both were fixed in this follow-up.
+- First `pnpm run preflight` after the latest code changes failed as intended because product/test files changed before `specs/002-mvp-runtime/tasks.md` was updated. This process-memory update unblocks the feature-memory guard.
 
 ### Decisions
 
@@ -57,6 +61,8 @@
 - Add `docker-validation` to required checks and CI because runtime scaffolding now exists.
 - Include Playwright e2e in `preflight` and CI to prevent browser-flow regressions from bypassing the richer learning/exam/offline tests.
 - Start with native service worker and a local search index to keep dependencies modest.
+- Select exam questions randomly only when `questionOrderRule` is `random_questions_from_available_validated_pool`; keep a deterministic image-first fallback for any future non-random order rule.
+- Allow repeated answer clicks only in mistake review, preserving locked single-answer behavior in learning and exam modes while enabling focused retry loops.
 
 ### Known Issues
 
@@ -83,3 +89,11 @@
   - `pnpm run preflight` passed after adding e2e to preflight.
   - Full Docker validation passed after review fixes: `make down && make build && make up`, HTTP smoke against `http://localhost:5173/`, `sw.js` check, and `make down`.
   - `git diff --check origin/main...HEAD` passed after marking immutable source originals and assets as binary in `.gitattributes`.
+- Latest AI Review fix verification:
+  - `pnpm run validate:content` passed: 460 category B fallback questions and 276 local image references.
+  - `pnpm run test` passed: 15/15 Node tests, including a regression for random exam selection.
+  - `pnpm run build` passed and generated service worker with 280 cached assets; Vite chunk-size warning remains non-blocking.
+  - `pnpm run test:e2e` passed: 8/8 Playwright tests across desktop Chromium and mobile viewport, including repeatable mistake retry.
+  - `pnpm run preflight` initially failed because feature-memory guard detected product/test changes before this tasks file was updated.
+  - `pnpm run preflight` passed after this feature-memory update.
+  - Full Docker validation passed: `make down && make build && make up`, HTTP smoke against `http://localhost:5173/`, `sw.js` check, and `make down`.

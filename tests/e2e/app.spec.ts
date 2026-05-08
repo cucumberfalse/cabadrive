@@ -1,4 +1,12 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+import { readFileSync } from "node:fs";
+
+const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
+const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
+
+async function storedAnswerCount(page: Page) {
+  return page.evaluate(() => JSON.parse(localStorage.getItem("cabadrive.progress.v1") || "{\"answers\":[]}").answers.length);
+}
 
 test("learning flow renders category B image and records a mistake", async ({ page }) => {
   await page.goto("/");
@@ -7,10 +15,15 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(page.getByTestId("question-card").locator("img")).toBeVisible();
   await page.getByRole("button", { name: /Перевод/ }).click();
   await page.getByRole("button", { name: /Сложный/ }).click();
-  await page.locator(".answer").nth(0).click();
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
   await expect(page.locator(".result")).toBeVisible();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
   await page.getByRole("button", { name: /Ошибки/ }).click();
   await expect(page.getByRole("heading", { name: "Ошибки" })).toBeVisible();
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect.poll(() => storedAnswerCount(page)).toBe(2);
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect.poll(() => storedAnswerCount(page)).toBe(3);
 });
 
 test("exam mode hides translation until an answer and stores score", async ({ page }) => {

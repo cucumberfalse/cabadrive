@@ -9,14 +9,29 @@ export function isPassing(score: number, passingScore: number) {
   return score >= passingScore;
 }
 
-export function deterministicExamSet(questions: Question[], count: number) {
-  const sorted = [...questions].sort((a, b) => {
+function sortedExamSet(questions: Question[], count: number) {
+  return [...questions].sort((a, b) => {
     if (Number(b.flags.hasImage) !== Number(a.flags.hasImage)) {
       return Number(b.flags.hasImage) - Number(a.flags.hasImage);
     }
     return a.id.localeCompare(b.id);
-  });
-  return sorted.slice(0, Math.min(count, sorted.length));
+  }).slice(0, Math.min(count, questions.length));
+}
+
+function randomExamSet(questions: Question[], count: number, random: () => number) {
+  const shuffled = [...questions];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+export function selectExamSet(questions: Question[], count: number, questionOrderRule: string, random = Math.random) {
+  if (questionOrderRule === "random_questions_from_available_validated_pool") {
+    return randomExamSet(questions, count, random);
+  }
+  return sortedExamSet(questions, count);
 }
 
 export function mistakesFromHistory(history: ProgressAnswer[]) {

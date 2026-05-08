@@ -1,7 +1,7 @@
 import { BookOpen, CheckCircle2, ClipboardList, Eye, Flag, Image as ImageIcon, RotateCcw, Search, Timer, XCircle } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { data, assetUrl, explanationByQuestion, sourceById, translationByQuestion, type ProgressAnswer, type Question } from "./data/content";
-import { deterministicExamSet, isPassing, mistakesFromHistory, scorePercent } from "./domain";
+import { isPassing, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
@@ -60,7 +60,8 @@ function QuestionCard({
   onAnswered,
   difficult,
   onToggleDifficult,
-  revealAfterAnswer = true
+  revealAfterAnswer = true,
+  allowRepeatedAnswers = false
 }: {
   question: Question;
   mode: "learning" | "exam" | "mistakes";
@@ -68,6 +69,7 @@ function QuestionCard({
   difficult: boolean;
   onToggleDifficult: () => void;
   revealAfterAnswer?: boolean;
+  allowRepeatedAnswers?: boolean;
 }) {
   const [selected, setSelected] = useState<string | undefined>();
   const [showTranslation, setShowTranslation] = useState(mode !== "exam");
@@ -79,7 +81,7 @@ function QuestionCard({
   const correct = selected === question.correctAnswerId;
 
   function selectAnswer(answerId: string) {
-    if (answered) return;
+    if (answered && !allowRepeatedAnswers) return;
     setSelected(answerId);
     onAnswered({
       questionId: question.id,
@@ -215,7 +217,10 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
 }
 
 function ExamView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
-  const examQuestions = useMemo(() => deterministicExamSet(data.questions, data.examFormat.questionCount), []);
+  const examQuestions = useMemo(
+    () => selectExamSet(data.questions, data.examFormat.questionCount, data.examFormat.questionOrderRule),
+    []
+  );
   const [position, setPosition] = useState(0);
   const [answers, setAnswers] = useState<ProgressAnswer[]>([]);
   const [finished, setFinished] = useState(false);
@@ -322,7 +327,14 @@ function MistakesView({ progress, setProgress }: { progress: StoredProgress; set
           <p key={mistake.questionId}><strong>{mistake.wrong}x</strong> {mistake.questionId}</p>
         )) : <p>Ошибок пока нет. Ответьте на пару вопросов в обучении.</p>}
       </aside>
-      <QuestionCard question={question} mode="mistakes" onAnswered={record} difficult={progress.difficultQuestionIds.includes(question.id)} onToggleDifficult={() => undefined} />
+      <QuestionCard
+        question={question}
+        mode="mistakes"
+        onAnswered={record}
+        difficult={progress.difficultQuestionIds.includes(question.id)}
+        onToggleDifficult={() => undefined}
+        allowRepeatedAnswers
+      />
     </section>
   );
 }
