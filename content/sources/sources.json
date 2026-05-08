@@ -56,6 +56,12 @@
     "hashAlgorithm": "sha256",
     "hash": "2b0564366bc016a37ccdecf1c7b25d82b6cb4ab41ff2091a3d4fefa8e1087230",
     "unofficial": true,
+    "practiceQuestionScope": {
+      "scopeKind": "category_b_practice_source",
+      "eligibleCategories": ["B"],
+      "excludedCategorySpecificSources": ["A", "A4", "motorcycle"],
+      "topicMentionsPolicy": "cross_category_road_user_mentions_allowed"
+    },
     "licenseLocalPath": "content/sources/originals/bandinopla-simulador-test-de-conducir/LICENSE",
     "readmeLocalPath": "content/sources/originals/bandinopla-simulador-test-de-conducir/README.md"
   }

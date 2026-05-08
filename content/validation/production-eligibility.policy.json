@@ -11,5 +11,9 @@
   "contentAvailabilityModes": ["official_full_bank", "official_sample_set", "unofficial_b_fallback"],
   "allowUnofficialFallbackPractice": true,
   "requireUnofficialFallbackLabel": true,
-  "requireQuestionImagesWhenReferenced": true
+  "requireQuestionImagesWhenReferenced": true,
+  "allowedPracticeQuestionScopeKinds": ["category_b_practice_source"],
+  "allowedPracticeQuestionCategories": ["B"],
+  "allowedPracticeQuestionTopicMentionsPolicies": ["cross_category_road_user_mentions_allowed"],
+  "requiredExcludedCategorySpecificSources": ["A", "A4", "motorcycle"]
 }
