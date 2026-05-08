@@ -23,13 +23,15 @@ function git(commandArgs, options = {}) {
 
 function changedFiles() {
   if (inspectWorktree) {
-    return git([
+    const worktreeFiles = git([
       "ls-files",
       "--modified",
       "--others",
       "--deleted",
       "--exclude-standard"
     ]).split("\n").filter(Boolean);
+    const stagedFiles = git(["diff", "--name-only", "--cached"]).split("\n").filter(Boolean);
+    return [...new Set([...worktreeFiles, ...stagedFiles])];
   }
   return git(["diff", "--name-only", baseRef, headRef]).split("\n").filter(Boolean);
 }

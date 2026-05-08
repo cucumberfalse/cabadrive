@@ -15,7 +15,7 @@
 - [x] T008 Fix `baseline-checks` bootstrap failure by making `setup-node` pnpm cache conditional on `pnpm-lock.yaml`.
 - [x] T009 Fix first-PR `AI Review` bootstrap deadlock by gating trusted script execution and emitting explicit compatibility notice when scripts are missing on default branch.
 - [x] T010 Add regression tests for `scripts/ai-review-helpers.mjs` covering P0-P3 parsing, SHA markers, and trusted login handling.
-- [x] T014 Address PR review findings for guard robustness: include deleted tracked files in `--worktree` feature-memory detection and accept uppercase hex in `AI_REVIEW_SHA` markers.
+- [x] T014 Address PR review findings for guard robustness: include deleted and staged tracked files in `--worktree` feature-memory detection, accept uppercase hex in `AI_REVIEW_SHA` markers, and clean Markdown trailing whitespace.
 
 ## Verification
 
@@ -48,9 +48,10 @@
 - `pnpm run test` passed:
   - `tests/ai-review-helpers.test.mjs` with 9/9 successful cases
 - Review-thread robustness fixes applied:
-  - `scripts/check-feature-memory.mjs` `--worktree` mode now includes `git ls-files --deleted`, so tracked-file deletions in product paths cannot bypass the feature-memory gate.
+  - `scripts/check-feature-memory.mjs` `--worktree` mode now includes `git ls-files --deleted` and `git diff --name-only --cached`, so tracked-file deletions and staged-only product path changes cannot bypass the feature-memory gate.
   - `scripts/ai-review-helpers.mjs` `extractMarkerSha` now accepts `[A-Fa-f0-9]` and returns lowercase SHA.
   - `tests/ai-review-helpers.test.mjs` adds uppercase marker coverage (`AI_REVIEW_SHA: ABCDEF1`).
+  - `AGENTS.md` no longer relies on trailing-space hard line breaks, so `git diff --check origin/main...HEAD` reports no whitespace errors.
 - Workflow hardening changes applied:
   - `.github/workflows/ci.yml` now enables `setup-node` pnpm cache only when `pnpm-lock.yaml` exists.
   - `.github/workflows/ai-review.yml` now emits a bootstrap compatibility notice and exits green when trusted gate scripts are absent on default branch.

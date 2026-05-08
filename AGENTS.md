@@ -6,8 +6,8 @@
 
 Cabadrive is a local-first web trainer that helps experienced Russian-speaking drivers prepare for the CABA theory exam using official Spanish source material plus clearly labeled unofficial learning support.
 
-**Primary stack:** static local-first web app (React + TypeScript + Vite planned), Docker-only local runtime contract  
-**Deploy target:** local Docker-served build first, optional static hosting second  
+**Primary stack:** static local-first web app (React + TypeScript + Vite planned), Docker-only local runtime contract<br>
+**Deploy target:** local Docker-served build first, optional static hosting second<br>
 **Owner model:** single-repository, spec-driven PR workflow
 
 ## Read Order
