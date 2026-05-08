@@ -21,6 +21,11 @@ Analyst workflow is in use. Legacy feature folders created before Analyst
 adoption may omit `feature-request.md` only when the reason is recorded in
 `tasks.md`.
 
+Current executable feature-memory guard checks still enforce the existing
+`spec.md`, `plan.md`, and `tasks.md` contract. Until guard-script support is
+added in a separate feature, `feature-request.md` presence is a mandatory
+manual author/review process check for non-legacy repository-changing work.
+
 Use the installed `.specify/templates/` files so each feature records goal,
 scope, acceptance evidence, negative scenarios, process memory, review
 requirements, and verification requirements.

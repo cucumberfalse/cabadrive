@@ -4,7 +4,7 @@
 
 Update Cabadrive's durable process guidance so a new Analyst role owns request intake before Architect planning. The implementation should add the `feature-request.md` artifact contract, define the Analyst-to-Orchestrator handoff, preserve strict role boundaries, and update templates/docs so future agents can follow the workflow.
 
-This is a documentation/template process change only. It must not modify product code, runtime behavior, CI workflows, branch-protection automation, or production resources.
+This is a documentation/template process change only. It must not modify product code, runtime behavior, CI workflows, branch-protection automation, executable feature-memory guards, or production resources.
 
 ## Technical Context
 
@@ -37,10 +37,18 @@ The Implementation Agent must verify this list with repository search before edi
 
 The Implementation Agent may adjust the file list if search shows another durable process document repeats the affected workflow. Any addition must be recorded in `tasks.md` with the reason. Do not edit source product files, runtime files, workflow YAML, scripts, package metadata, lockfiles, generated output, secrets, or production resources.
 
+For the PR #7 review finding about `.github/pull_request_template.md:7`, the
+Implementation Agent must keep executable enforcement out of scope. Resolve the
+finding by clarifying durable guidance so `feature-request.md` is a
+manual/review process requirement for non-legacy repository-changing work, not a
+claim that `pnpm run preflight`, CI, or `scripts/check-feature-memory.mjs`
+currently enforces the artifact. Record a follow-up task/ticket for executable
+feature-memory guard enforcement.
+
 ## Scope Boundaries
 
 - in scope: role descriptions, intake workflow, feature-memory artifact contract, templates, handoff rules, feedback disposition rules, review-output expectations, process-memory updates.
-- out of scope: app UI, data/content implementation, Docker runtime, CI automation, branch protection, executable bots, GitHub Actions workflows, product tests, deployment changes.
+- out of scope: app UI, data/content implementation, Docker runtime, CI automation, branch protection, executable bots, GitHub Actions workflows, feature-memory guard script changes, product tests, deployment changes.
 
 ## Constitution Check
 
@@ -67,6 +75,26 @@ The Implementation Agent may adjust the file list if search shows another durabl
 8. Record any Implementation Agent feedback in `tasks.md` under "Implementation Agent Feedback"; Orchestrator should route each item to Architect for disposition before completion.
 9. Keep all edits ASCII-only.
 
+### Review Finding Disposition: PR #7 P2
+
+Disposition: keep executable enforcement out of scope for this feature. The
+original Analyst intake explicitly limited the first implementation to durable
+instructions, templates, and PR guidance, and excluded automation, CI workflows,
+runtime code, and tests. Expanding `scripts/check-feature-memory.mjs` now would
+cross that boundary.
+
+Required implementation response:
+
+- Update `.github/pull_request_template.md` and any affected durable workflow
+  text so the `feature-request.md` item is framed as an author/review
+  confirmation, not as a local/CI preflight guarantee.
+- Add a process-memory follow-up ticket in this feature's `tasks.md` for a
+  future feature to update `scripts/check-feature-memory.mjs` so non-legacy
+  product-code PRs must include `feature-request.md`, `spec.md`, `plan.md`, and
+  `tasks.md`, plus tests/verification for legacy/no-intake exceptions.
+- Do not edit `scripts/check-feature-memory.mjs`, workflow YAML, package
+  metadata, or product/runtime files in this PR.
+
 ## Verification
 
 | Acceptance criterion | Planned evidence |
@@ -81,6 +109,7 @@ The Implementation Agent may adjust the file list if search shows another durabl
 | AC-008 | `rg -n "Review Agent.*does not change code|inline review thread|GitHub inline" AGENTS.md docs_project .github` shows review boundary and inline finding rule. |
 | AC-009 | `test -f .specify/templates/feature-request-template.md && sed -n '1,220p' .specify/templates/feature-request-template.md` shows reproducible template sections. |
 | AC-010 | `git diff --name-only` contains only process docs/templates and `specs/003-analyst-role-intake/` files. |
+| AC-011 | Search/diff evidence shows process guidance does not claim `feature-request.md` is enforced by preflight or `scripts/check-feature-memory.mjs`, and `tasks.md` records the follow-up guard-enforcement ticket. |
 
 Negative scenario evidence:
 
@@ -95,7 +124,7 @@ Negative scenario evidence:
 - Mitigation: Search broadly before editing and record any adjusted file list in `tasks.md`.
 
 - Risk: Adding `feature-request.md` could conflict with current feature-memory gate assumptions.
-- Mitigation: Do not edit guard scripts in this feature. Keep `spec.md`, `plan.md`, and `tasks.md` as required PR artifacts and document `feature-request.md` as the Analyst intake artifact.
+- Mitigation: Do not edit guard scripts in this feature. Keep `spec.md`, `plan.md`, and `tasks.md` as the currently executable feature-memory guard artifacts, document `feature-request.md` as a mandatory manual/review Analyst intake artifact for non-legacy work, and record follow-up automation work.
 
 - Risk: The requested inline-review rule could be read as forbidding successful no-finding summary comments.
 - Mitigation: Phrase the rule specifically for code review findings; leave backend-specific pass behavior unchanged unless explicitly in scope.

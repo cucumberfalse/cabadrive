@@ -37,6 +37,25 @@
 - [x] T027 Run `pnpm run preflight` if available, or record why it could not run.
 - [x] T028 Update this task checklist and process memory with final verification evidence.
 
+## PR #7 Review Finding Follow-up
+
+- [x] T029 Update `.github/pull_request_template.md` so the `feature-request.md`
+  done-gate item is clearly an author/review confirmation and does not imply
+  `pnpm run preflight`, CI, or `scripts/check-feature-memory.mjs` currently
+  enforces the artifact.
+- [x] T030 Update any affected durable workflow guidance, especially
+  `docs_project/project/devops/ai-pr-workflow.md` and `specs/README.md` if
+  needed, to distinguish manual/review process enforcement from the current
+  executable feature-memory guard.
+- [x] T031 Record the follow-up ticket below for future executable guard
+  enforcement, including required script behavior, legacy/no-intake exception
+  behavior, and verification expectations.
+- [x] T032 Verify the review-finding response with text search showing no
+  process guidance claims `feature-request.md` is enforced by preflight or
+  `scripts/check-feature-memory.mjs`.
+- [x] T033 Rerun `git diff --check` and `pnpm run preflight`, then append the
+  exact evidence to Process Memory.
+
 ## Process Memory
 
 ### Dead Ends
@@ -51,6 +70,11 @@
 - Add `feature-request.md` as an Analyst intake artifact while preserving `spec.md`, `plan.md`, and `tasks.md` as required repository-changing PR feature memory.
 - Apply the requested inline-thread rule specifically to code review findings so no-finding backend summaries are not accidentally banned.
 - The expected implementation file list matched repository search. No extra durable process files beyond the planned list were needed.
+- PR #7 review finding disposition: do not expand this feature into executable
+  feature-memory guard enforcement. The original intake and active scope exclude
+  automation/script changes. Resolve the finding by clarifying that
+  `feature-request.md` is currently enforced by author/review process guidance,
+  and track executable guard support as follow-up work.
 
 ### Known Issues
 
@@ -58,6 +82,10 @@
 - The repository currently has duplicate `002-*` numeric prefixes, so the implementation must document a deterministic next-number rule.
 - The current feature-memory guard may not know about `feature-request.md`; changing guard scripts is out of scope for this feature.
 - Review residual risk: `feature-request.md` is documented but not automatically enforced by guard scripts; this is already known and out of scope.
+- Until the follow-up below is implemented, a product-code PR can pass
+  `scripts/check-feature-memory.mjs` with `spec.md`, `plan.md`, and `tasks.md`
+  while omitting `feature-request.md`. Review Agent and human merge-owner checks
+  must catch that process violation.
 
 ### Verification Evidence
 
@@ -90,6 +118,14 @@
 - Review Agent reported `No findings` after inspecting `git status`, tracked diff, untracked `.specify/templates/feature-request-template.md`, and all `specs/003-analyst-role-intake/` files.
 - Orchestrator reran `git diff --check` and it passed.
 - Orchestrator reran `pnpm run preflight` and it passed: feature-memory gate, repo baseline, content validation, unit tests 18/18, build, and Playwright 8/8. Vite emitted the existing chunk-size warning.
+- PR #7 disposition implementation: `.github/pull_request_template.md` now frames `feature-request.md` as a manual author/review check and explicitly says it is not currently enforced by `pnpm run preflight`, CI, or `scripts/check-feature-memory.mjs`.
+- PR #7 durable guidance update: `docs_project/project/devops/ai-pr-workflow.md` and `specs/README.md` now distinguish current executable guard coverage for `spec.md`, `plan.md`, and `tasks.md` from mandatory manual/review process enforcement for `feature-request.md`.
+- PR #7 follow-up ticket: the "PR #7 P2 Review Finding" Architect disposition below records a future feature to add executable guard enforcement for `feature-request.md`, including legacy/no-intake exception behavior and verification expectations.
+- PR #7 T032 positive text search: `rg -n "feature-request\.md.*(preflight|CI|scripts/check-feature-memory\.mjs|check-feature-memory).*currently enforces|(preflight|CI|scripts/check-feature-memory\.mjs|check-feature-memory).*currently enforces.*feature-request\.md|feature-request\.md.*not currently.*(preflight|CI|scripts/check-feature-memory\.mjs|check-feature-memory)|manual author/review|Current executable feature-memory" .github/pull_request_template.md docs_project/project/devops/ai-pr-workflow.md specs/README.md specs/003-analyst-role-intake/tasks.md specs/003-analyst-role-intake/plan.md specs/003-analyst-role-intake/spec.md` found the explicit manual/review and not-currently-enforced wording in the PR template, workflow doc, and feature-memory README.
+- PR #7 T032 negative text search: `rg -n "feature-request\.md.*(is|are)? ?(currently )?(enforced|verified|validated).*?(preflight|CI|scripts/check-feature-memory\.mjs|check-feature-memory)|(preflight|CI|scripts/check-feature-memory\.mjs|check-feature-memory).*?(enforces|verifies|validates).*?feature-request\.md" .github/pull_request_template.md docs_project/project/devops/ai-pr-workflow.md specs/README.md AGENTS.md .specify/memory/constitution.md .specify/templates specs/003-analyst-role-intake || true` found no positive claim that preflight, CI, or `scripts/check-feature-memory.mjs` enforces `feature-request.md`; matches were the PR template's "not currently enforced" line and the plan/tasks verification language.
+- PR #7 diff check: `git diff --check` passed with no output.
+- PR #7 ASCII added-line check: `git diff --no-ext-diff --unified=0 | LC_ALL=C rg -n '^\+.*[^[:ascii:]]' || true` returned no matches.
+- PR #7 preflight: `pnpm run preflight` passed. It ran the feature-memory gate, repo baseline, content validation, unit tests 18/18, build, and Playwright 8/8. Vite emitted the existing chunk-size warning.
 
 ## Implementation Agent Feedback
 
@@ -98,3 +134,40 @@ None.
 ## Architect Dispositions
 
 No Architect disposition required because no Implementation Agent feedback was recorded.
+
+### PR #7 P2 Review Finding: Require Feature-Request In Feature-Memory Gate
+
+Disposition: keep executable enforcement out of scope for
+`003-analyst-role-intake`; update guidance to avoid implying automated
+`feature-request.md` enforcement, and record follow-up guard work.
+
+Rationale: `feature-request.md` is required by the new process for non-legacy
+repository-changing work, but this feature's intake and plan explicitly limited
+implementation to durable docs/templates/PR guidance and excluded automation,
+CI workflow, runtime, and script changes. Changing `scripts/check-feature-memory.mjs`
+would broaden the feature after implementation and should be its own feature
+with tests.
+
+Implementation instructions:
+
+- Do not edit `scripts/check-feature-memory.mjs`, workflow YAML, package
+  metadata, product code, runtime files, or app tests for this PR.
+- Adjust `.github/pull_request_template.md` so the `feature-request.md` item is
+  phrased as a manual author/review confirmation rather than a preflight/CI
+  guarantee.
+- Adjust `docs_project/project/devops/ai-pr-workflow.md`, `specs/README.md`, or
+  other durable process wording only where needed to make the same distinction.
+- Keep the normative process requirement: non-legacy repository-changing work
+  should include `feature-request.md`; legacy/no-intake exceptions need a reason
+  in `tasks.md`.
+- Add or retain verification evidence showing this distinction and rerun
+  `git diff --check` plus `pnpm run preflight`.
+
+Follow-up ticket: create a future repository-changing feature to add executable
+guard enforcement for Analyst intake. The future implementation should update
+`scripts/check-feature-memory.mjs` so product-code PRs pass only when one touched
+`specs/<feature-id>/` folder contains `feature-request.md`, `spec.md`,
+`plan.md`, and `tasks.md`, unless `tasks.md` records a legacy/no-intake reason.
+It should include targeted tests or fixture-based script verification for:
+complete four-file feature memory, missing `feature-request.md`, legacy/no-intake
+reason accepted, no product path changes, and worktree inspection mode.

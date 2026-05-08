@@ -4,7 +4,7 @@
 
 ## SENAR Done Gate
 
-- [ ] Analyst intake artifact `feature-request.md` is present, or legacy/no-intake reason is recorded in `tasks.md`.
+- [ ] Manual author/review check: Analyst intake artifact `feature-request.md` is present, or legacy/no-intake reason is recorded in `tasks.md`. This item is not currently enforced by `pnpm run preflight`, CI, or `scripts/check-feature-memory.mjs`.
 - [ ] Feature memory names the goal and scope.
 - [ ] Every acceptance criterion has evidence in the PR, plan, or linked checks.
 - [ ] At least one negative scenario is covered or explicitly waived.

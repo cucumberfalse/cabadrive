@@ -19,6 +19,12 @@ The active required-check list is `.unicorn-hub/config.json` (`requiredChecks`);
 
 PRs are merge-ready only when every required check is green, blocking findings are resolved, docs/specs are updated, feature-memory feedback has disposition, and no conflicts remain.
 
+Current executable feature-memory checks, including local preflight and the CI
+guard script, still validate the existing `spec.md`, `plan.md`, and `tasks.md`
+contract. The `feature-request.md` requirement is currently enforced by
+author/review process checks until a separate guard-script feature adds
+executable coverage.
+
 The `AI Review` workflow validates the configured native review backend from the `AI_REVIEW_AGENT` repository variable. On same-repository pull request events with `AI_REVIEW_GITHUB_TOKEN` configured, it posts the selected backend trigger comment first, then polls for acceptable review evidence on the current PR head. Fork, read-only-token, or missing-review-token runs skip the automatic trigger and wait for existing or human-triggered review evidence. Manual `workflow_dispatch` runs keep the `trigger_mode` input so maintainers can choose `skip` when they only want to validate existing review evidence.
 
 If `AI_REVIEW_GITHUB_TOKEN` is configured as a repository Actions secret, the workflow uses it for review-gate API calls; otherwise it falls back to the built-in `github.token`.
@@ -27,7 +33,7 @@ The required gate executes scripts from the default branch so review validation 
 
 Before merge, the author should also confirm the SENAR done gate:
 
-- Analyst intake is present as `feature-request.md`, or a legacy/no-intake reason is recorded
+- manual author/review check: Analyst intake is present as `feature-request.md`, or a legacy/no-intake reason is recorded; this is not currently a preflight/CI guarantee
 - every acceptance criterion has evidence in the PR, plan, or linked checks
 - the negative scenario is covered or explicitly waived
 - process memory records dead ends, decisions, known issues, verification evidence, and Implementation Agent feedback

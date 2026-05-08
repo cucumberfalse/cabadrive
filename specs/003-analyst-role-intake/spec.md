@@ -24,6 +24,9 @@ Out of scope:
 - Runtime scaffold, Docker behavior, app UI, app tests, content pipeline, or data model changes.
 - CI workflow, branch-protection, GitHub Actions, or automation script changes.
 - Automated Analyst tooling or executable enforcement.
+- Expanding `scripts/check-feature-memory.mjs` to require `feature-request.md`; this
+  must be handled by a separate follow-up feature if executable enforcement is
+  desired.
 - Production resource or secret changes.
 - Opening, merging, or pushing PRs as part of this Architect feature-memory creation.
 
@@ -57,6 +60,7 @@ As a Review Agent, I want role boundaries and inline finding expectations docume
 8. Given Review Agent guidance, when code review findings are produced, then findings are required to be GitHub inline review threads and the Review Agent is forbidden from changing code.
 9. Given repository templates, when a future feature is created, then templates or instructions make the `feature-request.md` artifact reproducible with sections for request, assumptions, project context, research, workflow, boundaries, risks, and acceptance expectations.
 10. Given this process feature implementation, when the final diff is inspected, then no product code, runtime files, CI workflows, automation scripts, secrets, or production resources are modified.
+11. Given current local/CI preflight behavior, when process guidance references `feature-request.md`, then it distinguishes manual/review enforcement from executable `scripts/check-feature-memory.mjs` enforcement and records follow-up work for adding executable guard coverage.
 
 ## Negative Scenarios
 
@@ -80,6 +84,10 @@ As a Review Agent, I want role boundaries and inline finding expectations docume
 - FR-010: Review Agent guidance must state that Review Agent does not change code and code review findings must be GitHub inline review threads.
 - FR-011: Templates or template guidance must be updated so future Analyst artifacts are consistent.
 - FR-012: Implementation must avoid product code, runtime, CI workflow, automation script, secret, and production resource changes.
+- FR-013: Implementation must not imply that `pnpm run preflight`,
+  `scripts/check-feature-memory.mjs`, or CI currently verifies
+  `feature-request.md`; any executable guard enforcement must be recorded as
+  follow-up work outside this feature.
 
 ## Success Criteria
 
@@ -97,6 +105,11 @@ As a Review Agent, I want role boundaries and inline finding expectations docume
 - "Production" in the Orchestrator responsibility means the full PR-to-merge readiness path, not direct deployment or direct production changes.
 - A no-finding review summary can remain allowed where the review backend supports it; the explicit inline-thread requirement applies to code review findings.
 - The Implementation Agent may adjust the exact implementation file list after searching the repository, but must stay within process documentation/template scope.
+- `feature-request.md` is mandatory by process for non-legacy repository-changing
+  work after Analyst adoption, but this feature enforces that requirement through
+  author/review guidance only. The existing feature-memory script remains a
+  narrower guard for `spec.md`, `plan.md`, and `tasks.md` until a follow-up
+  automation feature changes it.
 
 ## Rationale
 
