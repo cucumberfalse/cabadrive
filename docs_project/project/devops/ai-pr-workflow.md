@@ -1,8 +1,10 @@
 # AI PR Workflow
 
+Changes to `main` must land through pull requests, never direct pushes.
+
 The active required-check list is `.unicorn-hub/config.json` (`requiredChecks`); installed defaults reflect the active profile. Stack-specific profiles that preserve existing target CI ship only `guard` and `AI Review` and expect the team to add the repository's real CI job names before applying branch protection.
 
-PRs are merge-ready only when all checks are green, blocking findings are resolved, docs/specs are updated, and no conflicts remain.
+PRs are merge-ready only when every required check is green, blocking findings are resolved, docs/specs are updated, and no conflicts remain.
 
 Before merge, the author should also confirm the SENAR done gate:
 

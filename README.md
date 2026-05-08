@@ -28,6 +28,6 @@ pnpm run worktree:new -- --slug 001-docs-bootstrap
 pnpm run pr:publish
 ```
 
-## Required PR Checks
+## Main Branch Protection
 
-The active list is `.unicorn-hub/config.json` (`requiredChecks`). The defaults installed by bootstrap reflect the chosen profile; stack-specific profiles that preserve existing target CI ship only Unicorn-controlled contexts (`guard`, `AI Review`) and expect the team to add the repository's real CI job names before applying branch protection.
+Changes to `main` must land through pull requests, never direct pushes. PRs can merge only after every required check in `.unicorn-hub/config.json` (`requiredChecks`) is green; apply the rule with `scripts/apply-branch-protection.mjs` when GitHub branch protection is available.
