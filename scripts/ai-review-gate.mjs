@@ -47,10 +47,34 @@ async function request(path, options = {}) {
     }
   });
   if (!response.ok) {
-    throw new Error(`${response.status} ${response.statusText}: ${await response.text()}`);
+    const error = new Error(`${response.status} ${response.statusText}: ${await response.text()}`);
+    error.status = response.status;
+    throw error;
   }
   if (response.status === 204) return null;
   return response.json();
+}
+
+async function graphqlRequest(query, variables = {}) {
+  const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+      accept: "application/vnd.github+json",
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({ query, variables })
+  });
+  if (!response.ok) {
+    const error = new Error(`${response.status} ${response.statusText}: ${await response.text()}`);
+    error.status = response.status;
+    throw error;
+  }
+  const payload = await response.json();
+  if (payload.errors?.length) {
+    throw new Error(`GraphQL error: ${payload.errors.map((error) => error.message).join("; ")}`);
+  }
+  return payload.data;
 }
 
 async function listPaginated(path) {
@@ -61,6 +85,44 @@ async function listPaginated(path) {
     items.push(...batch);
     if (batch.length < 100) return items;
   }
+}
+
+async function fetchResolvedCodexReviewCommentIds() {
+  const ids = new Set();
+  let cursor = null;
+  do {
+    const data = await graphqlRequest(`
+      query($owner: String!, $repo: String!, $number: Int!, $cursor: String) {
+        repository(owner: $owner, name: $repo) {
+          pullRequest(number: $number) {
+            reviewThreads(first: 100, after: $cursor) {
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
+              nodes {
+                isResolved
+                comments(first: 100) {
+                  nodes {
+                    databaseId
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `, { owner, repo, number: Number(prNumber), cursor });
+    const threads = data.repository.pullRequest.reviewThreads;
+    for (const thread of threads.nodes) {
+      if (!thread.isResolved) continue;
+      for (const comment of thread.comments.nodes) {
+        if (comment.databaseId) ids.add(comment.databaseId);
+      }
+    }
+    cursor = threads.pageInfo.hasNextPage ? threads.pageInfo.endCursor : null;
+  } while (cursor);
+  return ids;
 }
 
 async function createComment(body) {
@@ -78,11 +140,21 @@ async function maybePostTriggerComment() {
     claude: "@claude review once",
     gemini: "/gemini review"
   };
-  await createComment([
-    triggers[selectedAgent],
-    "",
-    "_Administrative trigger posted by the AI Review workflow. Prefer a trusted human-authored trigger if the native backend ignores bot comments._"
-  ].join("\n"));
+  try {
+    await createComment([
+      triggers[selectedAgent],
+      "",
+      "_Administrative trigger posted by the AI Review workflow. Prefer a trusted human-authored trigger if the native backend ignores bot comments._"
+    ].join("\n"));
+    console.log(`Posted AI Review trigger comment for ${selectedAgent}.`);
+  } catch (error) {
+    if (error.status === 403) {
+      console.warn(`Could not post AI Review trigger comment: ${error.message}`);
+      console.warn("GitHub denied issue-comment write access for this workflow token; waiting for existing or human-triggered review evidence instead.");
+      return;
+    }
+    throw error;
+  }
 }
 
 async function fetchHeadCommittedAt() {
@@ -98,7 +170,11 @@ async function fetchEvidence() {
 
   const reviews = await listPaginated(`/repos/${owner}/${repo}/pulls/${prNumber}/reviews`);
   if (selectedAgent === "codex") {
-    const reviewComments = await listPaginated(`/repos/${owner}/${repo}/pulls/${prNumber}/comments`);
+    const [allReviewComments, resolvedCommentIds] = await Promise.all([
+      listPaginated(`/repos/${owner}/${repo}/pulls/${prNumber}/comments`),
+      fetchResolvedCodexReviewCommentIds()
+    ]);
+    const reviewComments = allReviewComments.filter((comment) => !resolvedCommentIds.has(comment.id));
     const latestCodexResult = latestCodexNativeReviewResult(reviews, reviewComments, headSha, config);
     if (latestCodexResult === "pass") return true;
     if (latestCodexResult === "fail") return false;

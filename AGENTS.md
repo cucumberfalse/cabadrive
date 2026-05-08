@@ -66,12 +66,12 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 
 ## Delivery Workflow
 
-- Product changes land through pull requests.
+- Product changes land through pull requests; do not push directly to `main`.
 - Required checks for this repository are defined in `.unicorn-hub/config.json` (`requiredChecks`) and applied to branch protection via `scripts/apply-branch-protection.mjs`.
 - Run local preflight before pushing.
 - Follow the Docker-only contract for runtime-affecting work (`make build`, `make up`, `make down`) once runtime scaffolding is present.
 - A human remains the final merge authority.
-- Merge only after required checks are green, blocking findings are resolved, and the PR has no conflicts.
+- Merge only after every required check is green, blocking findings are resolved, and the PR has no conflicts.
 
 ## Review Contract
 

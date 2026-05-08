@@ -15,7 +15,8 @@
   "requiredChecks": [
     "baseline-checks",
     "guard",
-    "AI Review"
+    "AI Review",
+    "osv-scan"
   ],
   "defaultBaseBranch": "main",
   "defaultImplementationAgent": "codex",

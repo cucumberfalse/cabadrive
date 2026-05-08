@@ -9,7 +9,7 @@ on:
         description: Pull request number to validate
         required: true
       trigger_mode:
-        description: Review trigger mode; use skip unless a backend explicitly supports automation
+        description: Manual dispatch review trigger mode; pull_request runs post the selected backend trigger before waiting
         required: false
         default: skip
 
@@ -66,7 +66,7 @@ jobs:
         id: pr
         run: node scripts/resolve-pr-context.mjs
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN || github.token }}
           AI_REVIEW_PR_NUMBER: ${{ inputs.pr_number }}
 
       - name: Resolve selected review policy
@@ -77,6 +77,9 @@ jobs:
           SELECTED_AGENT: ${{ vars.AI_REVIEW_AGENT }}
           REQUESTED_TRIGGER_MODE: ${{ inputs.trigger_mode }}
           EVENT_NAME: ${{ github.event_name }}
+          PR_HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || '' }}
+          REPOSITORY: ${{ github.repository }}
+          HAS_AI_REVIEW_GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN != '' }}
         run: |
           set -euo pipefail
           selected="${SELECTED_AGENT:-codex}"
@@ -90,6 +93,8 @@ jobs:
           esac
           if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
             trigger_mode="${REQUESTED_TRIGGER_MODE:-skip}"
+          elif [ "${PR_HEAD_REPOSITORY}" = "${REPOSITORY}" ] && [ "${HAS_AI_REVIEW_GITHUB_TOKEN}" = "true" ]; then
+            trigger_mode="comment"
           else
             trigger_mode="skip"
           fi
@@ -107,7 +112,7 @@ jobs:
         if: steps.gate_scripts.outputs.available == 'true'
         run: node scripts/ai-review-gate.mjs
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN || github.token }}
           AI_REVIEW_AGENT: ${{ steps.policy.outputs.selected_agent }}
           AI_REVIEW_PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
           AI_REVIEW_HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
