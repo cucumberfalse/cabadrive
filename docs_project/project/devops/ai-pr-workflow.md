@@ -10,6 +10,8 @@ The `AI Review` workflow validates the configured native review backend from the
 
 If `AI_REVIEW_GITHUB_TOKEN` is configured as a repository Actions secret, the workflow uses it for review-gate API calls; otherwise it falls back to the built-in `github.token`.
 
+Same-repository pull request runs use gate scripts from the pull request head SHA, so changes to the review gate can be validated before merge. Fork and manual validation runs use the default branch gate scripts.
+
 Before merge, the author should also confirm the SENAR done gate:
 
 - every acceptance criterion has evidence in the PR, plan, or linked checks
