@@ -1,5 +1,10 @@
 # Spec: <FEATURE_NAME>
 
+## Analyst Intake
+
+- Source request: `feature-request.md`
+- Intake assumptions or open questions carried into this spec: `[list or "none"]`
+
 ## Goal
 
 `[One-sentence outcome this change must produce.]`
@@ -39,3 +44,9 @@ As a `[user]`, I want `[capability]`, so that `[value]`.
 ## Assumptions
 
 - `[Assumption]`
+
+## Review And Verification Requirements
+
+- Implementation requirements: `[Constraints the Implementation Agent must follow.]`
+- Review requirements: `[What Review Agent must verify, including workflow compliance when relevant.]`
+- Test/verification requirements: `[Commands, checks, screenshots, or evidence expected before completion.]`

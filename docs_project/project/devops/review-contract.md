@@ -4,9 +4,15 @@ Reviewers check the pull request against the active feature spec, not only
 against the implementation diff. Acceptance criteria, negative scenarios, and
 known issues are the source of truth for expected behavior.
 
+Review Agent must not change code, docs, tests, specs, templates, workflow
+files, or scripts while acting as reviewer. It reports code review findings as
+GitHub inline review threads so each finding is anchored to the changed line.
+Backend-specific no-finding summary behavior remains allowed where documented
+below.
+
 ## Codex
 
-Native GitHub PR review. Blocking findings use `P0`, `P1`, or `P2`. Advisory findings use `P3`.
+Native GitHub PR review. Blocking findings use `P0`, `P1`, or `P2`. Advisory findings use `P3`. Code review findings must be GitHub inline review threads.
 
 When Codex has no inline findings, a top-level `Codex Review:` summary comment from the trusted Codex bot also satisfies the gate, provided it either names the current head SHA in its body or was posted at or after the head commit timestamp (so stale summaries from prior heads cannot pass).
 

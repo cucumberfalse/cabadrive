@@ -4,7 +4,7 @@
 
 ### I. Spec-First Development
 
-Every product-code PR must include a complete feature-memory folder under `specs/<feature-id>/` with `spec.md`, `plan.md`, and `tasks.md`.
+Every repository-changing request must have feature memory under `specs/<feature-id>/` before implementation. Analyst intake creates `feature-request.md`; Architect planning creates `spec.md`, `plan.md`, and `tasks.md` before implementation agents edit repository files.
 
 ### II. Testable Boundaries
 
@@ -36,19 +36,21 @@ New abstractions require a current reason documented in `plan.md`.
 
 ### IX. Process Memory
 
-Feature tasks must record dead ends, decisions, and known issues before merge so future agents inherit the working context.
+Feature tasks must record dead ends, decisions, known issues, verification evidence, and Implementation Agent feedback before merge so future agents inherit the working context. Orchestrator must route each feedback item to Architect for a task/ticket or an explicit not-needed decision.
 
 ## Workflow
 
-1. Create or update project docs.
-2. Create feature memory.
-3. Name scope, acceptance criteria, and negative scenarios.
-4. Implement in an isolated worktree.
-5. Record verification evidence and process memory.
-6. Run local preflight.
-7. Open a PR.
-8. Resolve CI and review.
-9. Merge only when gates are green.
+1. Analyst creates the next numbered feature folder and writes `feature-request.md`.
+2. Orchestrator invokes Architect after Analyst handoff.
+3. Architect writes `spec.md`, `plan.md`, and `tasks.md`, including implementation, review, and test/verification requirements.
+4. Orchestrator assigns implementation in an isolated worktree and does not directly edit repository files.
+5. Implementation Agent follows the active feature memory and records verification evidence, process memory, and any divergence or improvement feedback.
+6. Orchestrator routes Implementation Agent feedback to Architect for disposition.
+7. Run local preflight.
+8. Open a PR.
+9. Review Agent checks the diff and feature-memory compliance without changing code; code review findings are GitHub inline review threads.
+10. Resolve CI and review.
+11. Merge only when gates are green.
 
 ## Governance
 
