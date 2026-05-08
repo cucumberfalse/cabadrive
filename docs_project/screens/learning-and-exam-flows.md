@@ -13,11 +13,13 @@
 
 - Clarifies: official Spanish text is unchanged.
 - Clarifies: translations and explanations are unofficial learning aids.
+- Clarifies: current category B questions are an unofficial fallback practice set, not an official GCBA question bank.
 - Shows quick entry actions for the five main modes.
 
 ## Learn Questions Flow
 
 1. Load question card (Spanish official text + answer options).
+1. Show the local question image when the source question includes one.
 2. Optional toggle for Russian translation.
 3. Optional toggle for explanation.
 4. Submit answer.
@@ -48,3 +50,5 @@
 ## Status Labels
 
 If full official bank is unavailable, UI must clearly show `official_sample_set` labeling and avoid claims implying complete official coverage.
+
+Current MVP uses the stricter `unofficial_b_fallback` label because the available category B practice questions come from a non-official community simulator while official GCBA category B question bank availability remains unresolved.

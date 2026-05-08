@@ -1,0 +1,62 @@
+[
+  {
+    "id": "gcba-material-estudio-examen-teorico-2026-05-08",
+    "title": "Material de estudio para examen teórico de licencia de conducir",
+    "officialUrl": "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+    "localPath": "content/sources/originals/material-estudio-examen-teorico.html",
+    "sourceType": "html",
+    "jurisdiction": "CABA",
+    "checkedAt": "2026-05-08",
+    "status": "current",
+    "licenseNote": "Official GCBA public web page; public distribution of bundled snapshots remains pending legal/external review.",
+    "retrievalNote": "Snapshot saved from official GCBA page on 2026-05-08.",
+    "hashAlgorithm": "sha256",
+    "hash": "75da67ecc78b26984b6249edbf4c66c4ada449ffbe50f4ecbc5db28585d1d312"
+  },
+  {
+    "id": "gcba-curso-educacion-vial-otorgamiento-2026-05-08",
+    "title": "Curso de educación vial para otorgamiento de licencia",
+    "officialUrl": "https://buenosaires.gob.ar/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia",
+    "localPath": "content/sources/originals/curso-educacion-vial-otorgamiento.html",
+    "sourceType": "html",
+    "jurisdiction": "CABA",
+    "checkedAt": "2026-05-08",
+    "status": "current",
+    "licenseNote": "Official GCBA public web page; public distribution of bundled snapshots remains pending legal/external review.",
+    "retrievalNote": "Snapshot saved from official GCBA page on 2026-05-08.",
+    "hashAlgorithm": "sha256",
+    "hash": "4f3fc3839781b2f7eaca952197d653c7e485b3315676fda994c72c7bc1c1c672"
+  },
+  {
+    "id": "gcba-manual-procedimientos-abril-2025",
+    "title": "Manual de Procedimientos Abril 2025",
+    "officialUrl": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-DIS-SECGVC-DGHC-562-25-ANX.pdf",
+    "localPath": "content/sources/originals/manual-procedimientos-abril-2025.pdf",
+    "sourceType": "pdf",
+    "jurisdiction": "CABA",
+    "publicationDate": "2025-04",
+    "checkedAt": "2026-05-08",
+    "status": "current",
+    "licenseNote": "Official GCBA Boletin Oficial attachment; public distribution of bundled snapshots remains pending legal/external review.",
+    "retrievalNote": "Downloaded from official GCBA Boletin Oficial document URL on 2026-05-08.",
+    "hashAlgorithm": "sha256",
+    "hash": "d30b02338072607f6ea6fb8e590c5a76589a104fe13c83a37bb4addc00ad0f41"
+  },
+  {
+    "id": "bandinopla-testdeconducir-caba-b-source1-2026-05-08",
+    "title": "bandinopla/simulador-test-de-conducir category B practice source1",
+    "officialUrl": "https://github.com/bandinopla/simulador-test-de-conducir",
+    "localPath": "content/sources/originals/bandinopla-simulador-test-de-conducir/source1.ts",
+    "sourceType": "dataset",
+    "jurisdiction": "CABA",
+    "checkedAt": "2026-05-08",
+    "status": "current",
+    "licenseNote": "Apache-2.0 project source. The upstream README marks the simulator as non-official; these questions are fallback practice data, not official GCBA question text.",
+    "retrievalNote": "Cloned from GitHub commit 90d17d47864b807415ba505b682710a8f4c441f5 on 2026-05-08. Only category B/CABA source1 data is used for the first fallback dataset.",
+    "hashAlgorithm": "sha256",
+    "hash": "2b0564366bc016a37ccdecf1c7b25d82b6cb4ab41ff2091a3d4fefa8e1087230",
+    "unofficial": true,
+    "licenseLocalPath": "content/sources/originals/bandinopla-simulador-test-de-conducir/LICENSE",
+    "readmeLocalPath": "content/sources/originals/bandinopla-simulador-test-de-conducir/README.md"
+  }
+]

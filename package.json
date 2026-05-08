@@ -10,11 +10,36 @@
   "scripts": {
     "check:feature-memory": "node scripts/check-feature-memory.mjs",
     "check:repo": "node scripts/check-repo-baseline.mjs",
+    "validate:content": "node scripts/validate-content.mjs",
+    "prepare:assets": "node scripts/sync-public-assets.mjs",
+    "generate:sw": "node scripts/generate-service-worker.mjs",
+    "build": "pnpm run validate:content && pnpm run prepare:assets && vite build && pnpm run generate:sw",
+    "dev": "pnpm run prepare:assets && vite --host 0.0.0.0",
+    "preview": "pnpm run prepare:assets && vite preview --host 0.0.0.0 --port 4173",
     "test": "node --test tests/*.test.mjs",
-    "preflight": "node scripts/check-feature-memory.mjs --worktree && pnpm run check:repo",
+    "test:e2e": "pnpm run build && playwright test",
+    "preflight": "node scripts/check-feature-memory.mjs --worktree && pnpm run check:repo && pnpm run validate:content && pnpm run test && pnpm run build",
     "agent:set": "node scripts/set-implementation-agent.mjs",
     "worktree:new": "node scripts/new-worktree.mjs",
     "pr:publish": "node scripts/publish-branch.mjs",
     "review:switch": "node scripts/switch-review-agent.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "lucide-react": "^0.555.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "vite": "^6.4.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

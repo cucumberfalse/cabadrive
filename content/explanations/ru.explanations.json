@@ -1,0 +1,37 @@
+[
+  {
+    "questionId": "b-fallback-001",
+    "textRu": "В вопросах про siniestro vial сначала ищи обязанность остановиться и остаться на месте. Варианты про продолжение поездки обычно противоречат логике оформления ДТП.",
+    "explanationType": "procedure",
+    "relatedSourceIds": ["gcba-material-estudio-examen-teorico-2026-05-08", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+  },
+  {
+    "questionId": "b-fallback-002",
+    "textRu": "Ключевые слова: obligatorio, chaleco reflectivo, dentro del habitáculo. Ловушка в том, что важно не только иметь жилет, но и иметь доступ к нему из салона.",
+    "explanationType": "exam_trick",
+    "relatedSourceIds": ["gcba-material-estudio-examen-teorico-2026-05-08", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+  },
+  {
+    "questionId": "b-fallback-003",
+    "textRu": "Для нерегулируемого перекрестка базовое правило в формулировке вопроса: преимущество у транспорта справа. Следи за словами sin semáforos и encrucijada.",
+    "explanationType": "rule",
+    "relatedSourceIds": ["gcba-material-estudio-examen-teorico-2026-05-08", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+  },
+  {
+    "questionId": "b-fallback-005",
+    "textRu": "Balizas не создают права стоять вторым рядом. Вопрос специально предлагает бытовую привычку как будто это правило.",
+    "explanationType": "exam_trick",
+    "relatedSourceIds": ["gcba-material-estudio-examen-teorico-2026-05-08", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+  },
+  {
+    "questionId": "b-fallback-006",
+    "textRu": "Señales reglamentarias в испанских билетах обычно означают обязательные распоряжения: запреты, ограничения, предписания. Не путай с предупреждающими знаками.",
+    "explanationType": "vocabulary",
+    "relatedSourceIds": ["gcba-material-estudio-examen-teorico-2026-05-08", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "jurisdiction": "CABA",
+  "sourceId": "gcba-manual-procedimientos-abril-2025",
+  "officialUrl": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-DIS-SECGVC-DGHC-562-25-ANX.pdf",
+  "localPath": "content/sources/originals/manual-procedimientos-abril-2025.pdf",
+  "sourceHash": "d30b02338072607f6ea6fb8e590c5a76589a104fe13c83a37bb4addc00ad0f41",
+  "checkedAt": "2026-05-08",
+  "questionCount": 40,
+  "timeLimitMinutes": 45,
+  "passingScore": 85,
+  "scoringRule": "percent_correct_rounded_down",
+  "canSkipQuestion": true,
+  "questionOrderRule": "random_questions_from_available_validated_pool",
+  "completionRule": "complete_all_questions_or_time_limit",
+  "status": "defined",
+  "notes": "The 2025 GCBA procedure manual states theoretical exams have 40 random questions, require 85% correct answers, and allow 45 minutes. The current MVP has fewer sample questions, so practice uses the available official sample set while preserving the official format metadata."
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "exception-local-private-mvp-2026-05-08",
+    "createdAt": "2026-05-08T19:53:17Z",
+    "expiresAt": "2026-06-07T19:53:17Z",
+    "releaseType": "local_private_mvp",
+    "scope": "source",
+    "sourceIds": ["gcba-manual-procedimientos-abril-2025", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "approvalIds": ["approval-solo-gcba-exam-format-2026-05-08"],
+    "evidenceBundlePath": "content/validation/evidence/mvp-solo-self-audit.md",
+    "reason": "Allow local/private MVP while official B question bank and external validator review remain pending.",
+    "followUpReviewTask": "Find official CABA category B question bank or complete external validation of replacement official source before public release.",
+    "allowedClaims": ["unofficial category B practice set", "local private MVP", "official GCBA exam format metadata"],
+    "blockedClaims": ["official full question bank", "official GCBA B question bank", "externally validated"],
+    "status": "active"
+  }
+]

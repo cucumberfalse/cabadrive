@@ -1,0 +1,52 @@
+[
+  {
+    "id": "term-siniestro-vial",
+    "termEs": "siniestro vial",
+    "translationRu": "дорожное происшествие, ДТП",
+    "category": "accident",
+    "explanationRu": "Экзаменационный термин для аварии или дорожного инцидента.",
+    "examples": [{ "questionId": "b-fallback-001", "textEs": "En caso de participar en un siniestro vial..." }],
+    "criticality": "high",
+    "sourceQuestionIds": ["b-fallback-001"]
+  },
+  {
+    "id": "term-chaleco-reflectivo",
+    "termEs": "chaleco reflectivo",
+    "translationRu": "светоотражающий жилет",
+    "category": "equipment",
+    "explanationRu": "Обязательное аварийное средство, связанное с вынужденным выходом на проезжую часть.",
+    "examples": [{ "questionId": "b-fallback-002", "textEs": "¿es obligatorio llevar un chaleco de material reflectivo?" }],
+    "criticality": "high",
+    "sourceQuestionIds": ["b-fallback-002"]
+  },
+  {
+    "id": "term-encrucijada",
+    "termEs": "encrucijada",
+    "translationRu": "перекресток",
+    "category": "priority",
+    "explanationRu": "Частое слово в вопросах о приоритете проезда.",
+    "examples": [{ "questionId": "b-fallback-003", "textEs": "en una encrucijada sin semáforos" }],
+    "criticality": "high",
+    "sourceQuestionIds": ["b-fallback-003"]
+  },
+  {
+    "id": "term-balizas",
+    "termEs": "balizas",
+    "translationRu": "аварийная сигнализация",
+    "category": "vehicle-condition",
+    "explanationRu": "В билетах часто проверяется, что аварийка не отменяет запреты остановки и стоянки.",
+    "examples": [{ "questionId": "b-fallback-005", "textEs": "Encender las balizas..." }],
+    "criticality": "medium",
+    "sourceQuestionIds": ["b-fallback-005"]
+  },
+  {
+    "id": "term-senales-reglamentarias",
+    "termEs": "señales reglamentarias",
+    "translationRu": "предписывающие или нормативные знаки",
+    "category": "signs",
+    "explanationRu": "Знаки, которые устанавливают обязательное правило поведения в месте установки.",
+    "examples": [{ "questionId": "b-fallback-006", "textEs": "¿Qué indican las señales reglamentarias?" }],
+    "criticality": "high",
+    "sourceQuestionIds": ["b-fallback-006"]
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "guide-b-fallback-status",
+    "title": "Статус вопросов категории B",
+    "topic": "source-trust",
+    "cabaRuleSummaryRu": "Формат экзамена CABA подтвержден официальными источниками GCBA, но полная официальная база вопросов категории B в этом срезе не найдена.",
+    "rfContrastRu": "Не переносите ожидание 'официальных билетов как в РФ' на этот MVP: текущие вопросы B являются неофициальной практикой и нужны для тренировки формулировок.",
+    "sourceIds": ["gcba-manual-procedimientos-abril-2025", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "relatedQuestionIds": ["b-fallback-001", "b-fallback-002"],
+    "confidence": "verified",
+    "disclaimer": "Комментарий Cabadrive. Это учебное сопоставление, а не официальный текст GCBA."
+  },
+  {
+    "id": "guide-right-side-priority",
+    "title": "Приоритет справа",
+    "topic": "priority",
+    "cabaRuleSummaryRu": "В вопросах о нерегулируемых перекрестках часто встречается правило приоритета транспорта, который появляется справа.",
+    "rfContrastRu": "Идея знакома водителю из РФ, но испанские слова encrucijada и sin semáforos легко пропустить в длинном вопросе.",
+    "sourceIds": ["gcba-material-estudio-examen-teorico-2026-05-08", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "relatedQuestionIds": ["b-fallback-003"],
+    "confidence": "needs_review",
+    "disclaimer": "Комментарий Cabadrive. Это учебное сопоставление, а не официальный текст GCBA."
+  },
+  {
+    "id": "guide-emergency-stop",
+    "title": "ДТП и первая реакция",
+    "topic": "accident",
+    "cabaRuleSummaryRu": "В вопросах о siniestro vial безопасный первый шаг обычно связан с остановкой, сохранением места происшествия и дальнейшим оформлением.",
+    "rfContrastRu": "Практический опыт помогает, но на экзамене важно выбрать юридически корректную последовательность, а не бытовой shortcut.",
+    "sourceIds": ["gcba-material-estudio-examen-teorico-2026-05-08", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "relatedQuestionIds": ["b-fallback-001"],
+    "confidence": "needs_review",
+    "disclaimer": "Комментарий Cabadrive. Это учебное сопоставление, а не официальный текст GCBA."
+  }
+]
