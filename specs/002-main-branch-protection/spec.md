@@ -31,6 +31,7 @@ As a repository maintainer, I want `main` protected by a PR-only workflow, so th
 3. Given the `AI Review` workflow runs on a same-repository pull request event, when it validates the selected native review backend, then it posts the selected backend trigger comment before polling for review evidence.
 4. Given the `AI Review` workflow token cannot write issue comments, when the trigger comment cannot be posted, then the gate logs the permission limitation and waits for existing or human-triggered review evidence instead of crashing with a stack trace.
 5. Given `AI_REVIEW_GITHUB_TOKEN` is configured as a repository Actions secret, when `AI Review` runs, then review-gate API calls use that token instead of the built-in `github.token`.
+6. Given a blocking Codex review thread has been resolved, when `AI Review` evaluates review evidence, then the resolved comment is not treated as an active blocker.
 
 ## Negative Scenarios
 
@@ -44,6 +45,7 @@ As a repository maintainer, I want `main` protected by a PR-only workflow, so th
 - FR-004: Same-repository pull request `AI Review` runs must request the selected native review backend before waiting for acceptable review evidence.
 - FR-005: Trigger comment permission denial must be handled as an explicit degraded mode, not as an uncaught script exception.
 - FR-006: The `AI Review` workflow must support an `AI_REVIEW_GITHUB_TOKEN` repository secret override for review-gate API calls.
+- FR-007: Resolved Codex review threads must not count as active blocking review evidence.
 
 ## Success Criteria
 

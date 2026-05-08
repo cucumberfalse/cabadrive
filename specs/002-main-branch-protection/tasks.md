@@ -14,6 +14,7 @@
 - [x] T009 Document automated AI Review trigger behavior.
 - [x] T011 Handle trigger comment permission denial without an uncaught exception.
 - [x] T012 Add `AI_REVIEW_GITHUB_TOKEN` secret override for review-gate API calls.
+- [x] T013 Ignore resolved Codex review threads when classifying active review evidence.
 
 ## Verification
 
@@ -34,6 +35,7 @@
 - Kept manual `workflow_dispatch` trigger mode explicit, but made same-repository pull request events post the selected native review trigger comment before the gate starts polling.
 - Restricted automatic pull request trigger comments to same-repository PRs and treated 403 token write denial as a degraded mode that waits for existing or human-triggered review evidence.
 - Added `AI_REVIEW_GITHUB_TOKEN` as the repository secret override because the built-in GitHub Actions integration token can still be denied when posting native review trigger comments.
+- Resolved Codex review threads are filtered through GitHub GraphQL before classifying active REST review comments, because the REST pull-request comments endpoint does not expose thread resolved state.
 
 ### Known Issues
 
@@ -45,5 +47,5 @@
 - `pnpm run preflight` passed:
   - feature-memory gate success for `specs/002-main-branch-protection/`
   - repository baseline check success
-- `pnpm run test` passed with 11/11 tests, including same-repository pull request AI Review trigger-mode coverage, trigger-comment permission-denial handling, and `AI_REVIEW_GITHUB_TOKEN` fallback coverage.
+- `pnpm run test` passed with 12/12 tests, including same-repository pull request AI Review trigger-mode coverage, trigger-comment permission-denial handling, `AI_REVIEW_GITHUB_TOKEN` fallback coverage, and resolved Codex thread filtering.
 - `git diff --check` passed with no whitespace errors.
