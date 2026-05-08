@@ -7,6 +7,7 @@ const gate = readFileSync(new URL("../scripts/ai-review-gate.mjs", import.meta.u
 
 test("same-repository pull request AI Review runs trigger the selected backend before polling", () => {
   assert.match(workflow, /EVENT_NAME:\s*\$\{\{\s*github\.event_name\s*\}\}/);
+  assert.match(workflow, /GITHUB_TOKEN:\s*\$\{\{\s*secrets\.AI_REVIEW_GITHUB_TOKEN\s*\|\|\s*github\.token\s*\}\}/);
   assert.match(workflow, /PR_HEAD_REPOSITORY:\s*\$\{\{\s*github\.event\.pull_request\.head\.repo\.full_name\s*\|\|\s*''\s*\}\}/);
   assert.match(
     workflow,
