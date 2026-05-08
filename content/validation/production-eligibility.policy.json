@@ -1,0 +1,15 @@
+{
+  "allowedSourceStatuses": ["current"],
+  "allowedJurisdictions": ["CABA", "Argentina national"],
+  "requireSourceHash": true,
+  "requireOfficialQuestionApprovalId": true,
+  "requireTranslationDisclaimer": true,
+  "requireExplanationDisclaimer": true,
+  "requireExamFormatDefinedForExactSimulation": true,
+  "allowSoloSelfAuditWithActiveReleaseException": true,
+  "requireFallbackPracticeReleaseException": true,
+  "contentAvailabilityModes": ["official_full_bank", "official_sample_set", "unofficial_b_fallback"],
+  "allowUnofficialFallbackPractice": true,
+  "requireUnofficialFallbackLabel": true,
+  "requireQuestionImagesWhenReferenced": true
+}

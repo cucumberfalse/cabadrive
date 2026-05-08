@@ -1,0 +1,9 @@
+services:
+  cabadrive:
+    build:
+      context: .
+    image: cabadrive:local
+    container_name: cabadrive
+    ports:
+      - "5173:8080"
+    restart: unless-stopped

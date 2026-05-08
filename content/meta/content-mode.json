@@ -1,0 +1,18 @@
+{
+  "mode": "unofficial_b_fallback",
+  "label": "unofficial category B practice set, not an official question bank",
+  "jurisdiction": "CABA",
+  "checkedAt": "2026-05-08",
+  "notes": [
+    "A complete public official CABA B-class question bank has not been confirmed.",
+    "The committed practice questions are category B fallback data from an Apache-2.0 community simulator and are not official GCBA question text.",
+    "Official GCBA sources are used for exam format, jurisdiction context, and study-material attribution.",
+    "Russian translations, explanations, and guide comments are unofficial learning support."
+  ],
+  "blockedClaims": [
+    "official full question bank",
+    "complete CABA B-class bank",
+    "official GCBA B question bank",
+    "externally validated release"
+  ]
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "questionId": "b-fallback-001",
+    "questionTextRu": "Что рекомендуется сделать первым делом, если вы стали участником ДТП?",
+    "answerTranslations": {
+      "b-fallback-001-a1": "Немедленно остановиться и оставаться на месте происшествия.",
+      "b-fallback-001-a2": "Доехать до ближайшего полицейского участка.",
+      "b-fallback-001-a3": "Позвонить 911 и продолжить поездку."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-002",
+    "questionTextRu": "Согласно Закону N 2148, обязательно ли иметь светоотражающий жилет?",
+    "answerTranslations": {
+      "b-fallback-002-a1": "Не обязательно, но рекомендуется иметь его на случай механической неисправности.",
+      "b-fallback-002-a2": "Да, обязательно, и его можно перевозить в любой части автомобиля.",
+      "b-fallback-002-a3": "Да, обязательно; он должен быть в салоне, чтобы использовать его при вынужденном выходе на проезжую часть."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-003",
+    "questionTextRu": "По общему правилу, кто имеет преимущество проезда на нерегулируемом перекрестке?",
+    "answerTranslations": {
+      "b-fallback-003-a1": "Пассажирский транспорт.",
+      "b-fallback-003-a2": "Транспортное средство меньшего размера.",
+      "b-fallback-003-a3": "Транспортное средство, которое приближается справа."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-004",
+    "questionTextRu": "Транспортное средство в полосе для медленного движения не может покинуть ее, чтобы обогнать более медленный транспорт.",
+    "answerTranslations": {
+      "b-fallback-004-a1": "Верно.",
+      "b-fallback-004-a2": "Неверно."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-005",
+    "questionTextRu": "Включенная аварийная сигнализация позволяет остановиться вторым рядом на 2-5 минут.",
+    "answerTranslations": {
+      "b-fallback-005-a1": "Верно.",
+      "b-fallback-005-a2": "Неверно."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-006",
+    "questionTextRu": "Что обозначают предписывающие или нормативные дорожные знаки?",
+    "answerTranslations": {
+      "b-fallback-006-a1": "Предупреждают о приближении к необычной или опасной дорожной ситуации.",
+      "b-fallback-006-a2": "Помогают ориентироваться и указывают сервисы, места и направления.",
+      "b-fallback-006-a3": "Передают конкретные обязательные к исполнению распоряжения в месте установки."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-007",
+    "questionTextRu": "Даже если зеркала заднего вида правильно настроены, при наблюдении через них могут оставаться слепые зоны.",
+    "answerTranslations": {
+      "b-fallback-007-a1": "Верно.",
+      "b-fallback-007-a2": "Неверно."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-008",
+    "questionTextRu": "При дорожном инциденте может ли уголовная ответственность водителя перейти к владельцу автомобиля?",
+    "answerTranslations": {
+      "b-fallback-008-a1": "Нет, потому что уголовная ответственность не передается.",
+      "b-fallback-008-a2": "Да. Более того, она может перейти и к страховой компании.",
+      "b-fallback-008-a3": "Это решит судья с учетом тяжести инцидента и последствий."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-009",
+    "questionTextRu": "Можно ли управлять автомобилем с разрешительной карточкой на управление, оформленной на другое лицо?",
+    "answerTranslations": {
+      "b-fallback-009-a1": "Да, если она действительна.",
+      "b-fallback-009-a2": "Только если это прямой родственник или есть трудовые отношения.",
+      "b-fallback-009-a3": "Ни в каком случае."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-010",
+    "questionTextRu": "Пиво влияет на управление автомобилем: снижает реакцию водителя и увеличивает время ответа на стимул.",
+    "answerTranslations": {
+      "b-fallback-010-a1": "Верно.",
+      "b-fallback-010-a2": "Неверно."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-08",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  }
+]

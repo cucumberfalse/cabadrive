@@ -60,3 +60,38 @@ jobs:
 
       - name: Run build if present
         run: pnpm run --if-present build
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run browser smoke tests if present
+        run: pnpm run --if-present test:e2e
+
+  docker-validation:
+    name: docker-validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Build Docker image
+        run: make build
+
+      - name: Start Docker app
+        run: make up
+
+      - name: Smoke test local app
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent --show-error http://localhost:5173/ >/tmp/cabadrive-home.html; then
+              break
+            fi
+            sleep 1
+          done
+          grep -q "Cabadrive" /tmp/cabadrive-home.html
+          curl --fail --silent --show-error http://localhost:5173/sw.js >/dev/null
+
+      - name: Stop Docker app
+        if: always()
+        run: make down

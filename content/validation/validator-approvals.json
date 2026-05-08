@@ -1,0 +1,19 @@
+[
+  {
+    "id": "approval-solo-gcba-exam-format-2026-05-08",
+    "approvedBy": "Cabadrive solo self-audit",
+    "approvedAt": "2026-05-08T19:53:17Z",
+    "scope": "source",
+    "sourceIds": ["gcba-manual-procedimientos-abril-2025"],
+    "contentDiffHash": "pending-external-review",
+    "sourceHashes": {
+      "gcba-manual-procedimientos-abril-2025": "d30b02338072607f6ea6fb8e590c5a76589a104fe13c83a37bb4addc00ad0f41"
+    },
+    "evidenceBundlePath": "content/validation/evidence/mvp-solo-self-audit.md",
+    "reviewMode": "solo_self_audit",
+    "soloSelfAudit": true,
+    "releaseReadiness": "needs_external_review",
+    "status": "approved",
+    "note": "Solo self-audit confirms source hash and exam-format extraction for local/private MVP only. External review remains required."
+  }
+]

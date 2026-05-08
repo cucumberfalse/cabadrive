@@ -27,5 +27,5 @@ Current planning assumption: local/private MVP and research-preview usage first.
 ## Acquisition Notes
 
 - Start with direct community channels where Russian-speaking drivers in Buenos Aires gather.
-- Provide clear capability labels (`official_full_bank` vs `official_sample_set`) to set correct expectations.
+- Provide clear capability labels (`official_full_bank`, `official_sample_set`, or current `unofficial_b_fallback`) to set correct expectations.
 - Use transparent source attribution and disclaimers as trust-building assets.
