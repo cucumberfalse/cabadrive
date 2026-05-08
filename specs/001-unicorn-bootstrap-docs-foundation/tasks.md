@@ -12,11 +12,13 @@
 - [x] T005 Build durable `docs_project/` content from `docs/specify/` materials.
 - [x] T006 Add initial feature inventory and UX interaction map docs.
 - [x] T007 Adapt `.unicorn-hub/config.json` defaults for Cabadrive context.
+- [x] T008 Fix `baseline-checks` bootstrap failure by making `setup-node` pnpm cache conditional on `pnpm-lock.yaml`.
+- [x] T009 Fix first-PR `AI Review` bootstrap deadlock by gating trusted script execution and emitting explicit compatibility notice when scripts are missing on default branch.
 
 ## Verification
 
-- [x] T008 Run local preflight and confirm all checks pass.
-- [x] T009 Update this task list with final verification evidence.
+- [x] T010 Run local preflight and confirm all checks pass.
+- [x] T011 Update this task list with final verification evidence.
 
 ## Process Memory
 
@@ -38,3 +40,6 @@
 - `pnpm run preflight` passed with:
   - feature-memory gate success for `specs/001-unicorn-bootstrap-docs-foundation/`
   - repository baseline check success
+- Workflow hardening changes applied:
+  - `.github/workflows/ci.yml` now enables `setup-node` pnpm cache only when `pnpm-lock.yaml` exists.
+  - `.github/workflows/ai-review.yml` now emits a bootstrap compatibility notice and exits green when trusted gate scripts are absent on default branch.

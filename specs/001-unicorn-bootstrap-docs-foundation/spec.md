@@ -36,6 +36,8 @@ As an implementation agent, I want durable docs and workflow guardrails in place
 2. Given installed templates, when placeholders are reviewed, then project-facing docs reflect Cabadrive context rather than unresolved scaffolding text.
 3. Given the CREATE-DOCS protocol requirement, when docs are prepared, then `docs_project/` contains project idea, market, technical docs, feature inventory, and interaction maps.
 4. Given bootstrapped workflow guards, when local verification runs, then `pnpm run preflight` passes.
+5. Given a bootstrap repository without `pnpm-lock.yaml`, when CI `baseline-checks` runs, then `actions/setup-node` does not fail on pnpm cache preconditions.
+6. Given the first bootstrap PR where trusted scripts are not yet on `main`, when `AI Review` runs, then the job exits green with an explicit bootstrap compatibility notice instead of failing with `MODULE_NOT_FOUND`.
 
 ## Negative Scenarios
 
@@ -48,6 +50,8 @@ As an implementation agent, I want durable docs and workflow guardrails in place
 - FR-002: The selected profile must be documented and reflected in `.unicorn-hub/config.json`.
 - FR-003: Durable docs in `docs_project/` must be populated from Cabadrive planning context before first product feature spec.
 - FR-004: The PR must include complete feature memory (`spec.md`, `plan.md`, `tasks.md`) for this bootstrap change.
+- FR-005: `.github/workflows/ci.yml` must avoid enabling pnpm cache in `setup-node` when `pnpm-lock.yaml` is absent.
+- FR-006: `.github/workflows/ai-review.yml` must handle the first-bootstrap case where trusted gate scripts are missing on the default branch without making required `AI Review` permanently red.
 
 ## Success Criteria
 
