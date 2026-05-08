@@ -6,6 +6,8 @@ The active required-check list is `.unicorn-hub/config.json` (`requiredChecks`);
 
 PRs are merge-ready only when every required check is green, blocking findings are resolved, docs/specs are updated, and no conflicts remain.
 
+The `AI Review` workflow validates the configured native review backend from the `AI_REVIEW_AGENT` repository variable. On pull request events, it posts the selected backend trigger comment first, then polls for acceptable review evidence on the current PR head. Manual `workflow_dispatch` runs keep the `trigger_mode` input so maintainers can choose `skip` when they only want to validate existing review evidence.
+
 Before merge, the author should also confirm the SENAR done gate:
 
 - every acceptance criterion has evidence in the PR, plan, or linked checks

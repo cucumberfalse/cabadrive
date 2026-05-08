@@ -10,6 +10,7 @@ In scope:
 
 - Branch-protection required check source of truth in `.unicorn-hub/config.json`
 - Repository workflow documentation for `main`
+- Existing `AI Review` required-check behavior for pull request events
 - Feature-memory evidence for this policy change
 
 Out of scope:
@@ -27,6 +28,7 @@ As a repository maintainer, I want `main` protected by a PR-only workflow, so th
 
 1. Given the active GitHub PR workflows, when branch protection is applied, then `baseline-checks`, `guard`, `AI Review`, and `osv-scan` are required before merge.
 2. Given a contributor reads the repository process docs, when they prepare a change for `main`, then they see that direct pushes are not allowed and PR checks must be green.
+3. Given the `AI Review` workflow runs on a pull request event, when it validates the selected native review backend, then it posts the selected backend trigger comment before polling for review evidence.
 
 ## Negative Scenarios
 
@@ -37,6 +39,7 @@ As a repository maintainer, I want `main` protected by a PR-only workflow, so th
 - FR-001: `requiredChecks` must include every active check that runs on pull requests.
 - FR-002: Delivery docs must state that `main` is PR-only.
 - FR-003: Delivery docs must state that all required PR checks must pass before merge.
+- FR-004: Pull request `AI Review` runs must request the selected native review backend before waiting for acceptable review evidence.
 
 ## Success Criteria
 

@@ -6,14 +6,14 @@ Update the repository branch-protection source of truth so `main` is PR-only and
 
 ## Technical Context
 
-- runtime: GitHub branch protection applied through `scripts/apply-branch-protection.mjs`
+- runtime: GitHub branch protection applied through `scripts/apply-branch-protection.mjs`; AI review evidence validated through `.github/workflows/ai-review.yml`
 - dependencies: GitHub CLI with repository admin access
 - product paths: `docs_project/`
 - data changes: `.unicorn-hub/config.json` `requiredChecks`
 
 ## Scope Boundaries
 
-- in scope: required check configuration and process documentation for `main`
+- in scope: required check configuration, existing AI Review trigger behavior, and process documentation for `main`
 - out of scope: changing repository visibility or GitHub billing plan
 
 ## Constitution Check
@@ -34,6 +34,7 @@ No new abstraction is added; the existing config list is extended with the missi
 | --- | --- |
 | AC-001 | `.unicorn-hub/config.json` includes all active PR check contexts: `baseline-checks`, `guard`, `AI Review`, and `osv-scan`. |
 | AC-002 | `AGENTS.md`, `README.md`, and `docs_project/project/devops/ai-pr-workflow.md` state that `main` changes must land through PRs. |
+| AC-003 | `tests/ai-review-workflow.test.mjs` verifies pull request `AI Review` runs set `trigger_mode=comment` before polling. |
 
 Negative scenario evidence:
 

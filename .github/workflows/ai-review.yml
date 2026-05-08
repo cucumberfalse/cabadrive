@@ -9,7 +9,7 @@ on:
         description: Pull request number to validate
         required: true
       trigger_mode:
-        description: Review trigger mode; use skip unless a backend explicitly supports automation
+        description: Manual dispatch review trigger mode; pull_request runs post the selected backend trigger before waiting
         required: false
         default: skip
 
@@ -91,7 +91,7 @@ jobs:
           if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
             trigger_mode="${REQUESTED_TRIGGER_MODE:-skip}"
           else
-            trigger_mode="skip"
+            trigger_mode="comment"
           fi
           case "$trigger_mode" in
             skip|comment) ;;
