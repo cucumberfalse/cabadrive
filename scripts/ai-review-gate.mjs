@@ -47,7 +47,9 @@ async function request(path, options = {}) {
     }
   });
   if (!response.ok) {
-    throw new Error(`${response.status} ${response.statusText}: ${await response.text()}`);
+    const error = new Error(`${response.status} ${response.statusText}: ${await response.text()}`);
+    error.status = response.status;
+    throw error;
   }
   if (response.status === 204) return null;
   return response.json();
@@ -78,11 +80,19 @@ async function maybePostTriggerComment() {
     claude: "@claude review once",
     gemini: "/gemini review"
   };
-  await createComment([
-    triggers[selectedAgent],
-    "",
-    "_Administrative trigger posted by the AI Review workflow. Prefer a trusted human-authored trigger if the native backend ignores bot comments._"
-  ].join("\n"));
+  try {
+    await createComment([
+      triggers[selectedAgent],
+      "",
+      "_Administrative trigger posted by the AI Review workflow. Prefer a trusted human-authored trigger if the native backend ignores bot comments._"
+    ].join("\n"));
+    console.log(`Posted AI Review trigger comment for ${selectedAgent}.`);
+  } catch (error) {
+    console.warn(`Could not post AI Review trigger comment: ${error.message}`);
+    if (error.status === 403) {
+      console.warn("GitHub denied issue-comment write access for this workflow token; waiting for existing or human-triggered review evidence instead.");
+    }
+  }
 }
 
 async function fetchHeadCommittedAt() {

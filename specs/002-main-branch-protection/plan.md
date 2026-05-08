@@ -34,7 +34,8 @@ No new abstraction is added; the existing config list is extended with the missi
 | --- | --- |
 | AC-001 | `.unicorn-hub/config.json` includes all active PR check contexts: `baseline-checks`, `guard`, `AI Review`, and `osv-scan`. |
 | AC-002 | `AGENTS.md`, `README.md`, and `docs_project/project/devops/ai-pr-workflow.md` state that `main` changes must land through PRs. |
-| AC-003 | `tests/ai-review-workflow.test.mjs` verifies pull request `AI Review` runs set `trigger_mode=comment` before polling. |
+| AC-003 | `tests/ai-review-workflow.test.mjs` verifies same-repository pull request `AI Review` runs set `trigger_mode=comment` before polling. |
+| AC-004 | `tests/ai-review-workflow.test.mjs` verifies trigger comment permission denial is handled with an explicit degraded-mode warning. |
 
 Negative scenario evidence:
 
