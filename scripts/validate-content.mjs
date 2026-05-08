@@ -88,6 +88,12 @@ if (!exam) {
   }
 }
 
+const activeExceptionSourceIds = new Set();
+for (const exception of exceptions) {
+  if (exception.status !== "active") continue;
+  for (const sourceId of exception.sourceIds || []) activeExceptionSourceIds.add(sourceId);
+}
+
 const questionIds = new Set();
 let imageCount = 0;
 for (const question of questions) {
@@ -95,11 +101,28 @@ for (const question of questions) {
   if (questionIds.has(question.id)) errors.push(`Duplicate question id: ${question.id}`);
   questionIds.add(question.id);
   if (question.category !== "B") errors.push(`${question.id}: only category B questions are allowed.`);
-  if (question.sourceId.includes("a4") || question.sourceId.includes("moto")) errors.push(`${question.id}: non-B source id is forbidden.`);
   const source = sourceById.get(question.sourceId);
+  const sourceText = [
+    question.sourceId,
+    source?.id,
+    source?.title,
+    source?.retrievalNote,
+    source?.licenseNote
+  ].join(" ").toLowerCase();
+  if (/\ba4\b|categor[ií]a\s*a4|moto|motocic|motoveh/.test(sourceText)) {
+    errors.push(`${question.id}: non-B practice source metadata is forbidden.`);
+  }
   if (!source) errors.push(`${question.id}: source not found: ${question.sourceId}`);
-  if (!source?.unofficial) errors.push(`${question.id}: fallback questions must use an explicitly unofficial source.`);
-  if (question.contentStatus !== "unofficial_fallback") errors.push(`${question.id}: contentStatus must be unofficial_fallback.`);
+  if (question.contentStatus === "unofficial_fallback") {
+    if (!policy.allowUnofficialFallbackPractice) errors.push(`${question.id}: unofficial fallback practice is disabled by policy.`);
+    if (!source?.unofficial) errors.push(`${question.id}: fallback questions must use an explicitly unofficial source.`);
+    if (question.status !== "needs_review") errors.push(`${question.id}: fallback question status must stay needs_review.`);
+    if (policy.requireFallbackPracticeReleaseException && !activeExceptionSourceIds.has(question.sourceId)) {
+      errors.push(`${question.id}: fallback source must be covered by an active release exception.`);
+    }
+  } else if (policy.requireOfficialQuestionApprovalId && !question.validation?.approvalId) {
+    errors.push(`${question.id}: official production question requires validation.approvalId.`);
+  }
   if (question.jurisdiction !== "CABA") errors.push(`${question.id}: jurisdiction must be CABA.`);
   requireString(question.officialTextEs, `${question.id}.officialTextEs`);
   requireArray(question.answers, `${question.id}.answers`);

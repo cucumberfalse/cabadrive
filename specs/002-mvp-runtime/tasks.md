@@ -32,6 +32,7 @@
 - [x] T022 Run `pnpm run preflight`.
 - [x] T023 Run full Docker validation: `make down`, `make build`, `make up`, browser smoke test, `make down`.
 - [x] T024 Record final verification evidence in this file.
+- [x] T025 Address internal review findings for exam config behavior, fallback validation policy, non-B guard robustness, e2e CI coverage, and whitespace diff handling.
 
 ## Process Memory
 
@@ -42,6 +43,7 @@
 - First Playwright run failed because Chromium was not installed locally. Installed Chromium with `pnpm exec playwright install chromium`.
 - E2E initially exposed a click bug where a local `answer` callback was shadowed by an answer object in `.map()`. Renamed the callback to `selectAnswer`.
 - Offline reload initially failed because the static service worker did not precache hashed Vite assets. Added `scripts/generate-service-worker.mjs` to generate a post-build asset manifest.
+- Post-PR internal review found blocking P2 issues: exam mode did not implement skip/timer completion, content policy claimed per-question approvals while fallback questions intentionally remain `needs_review`, and non-B source guard only checked lowercase source ids. These were fixed before marking the PR merge-ready.
 
 ### Decisions
 
@@ -52,6 +54,7 @@
 - Preserve all referenced category B question images locally in the repository because many questions depend on images.
 - Use Vite 6 rather than Vite 7 so local development checks support the current Node 20.x baseline while Docker uses Node 22.
 - Add `docker-validation` to required checks and CI because runtime scaffolding now exists.
+- Include Playwright e2e in `preflight` and CI to prevent browser-flow regressions from bypassing the richer learning/exam/offline tests.
 - Start with native service worker and a local search index to keep dependencies modest.
 
 ### Known Issues
@@ -59,6 +62,7 @@
 - External official content validation is still pending. This branch may include solo self-audit records and a local/private release exception, but that is not equivalent to independent release approval.
 - Full official B-class question bank availability remains unresolved; the app must not claim complete or official question coverage.
 - Public release still requires legal/external review of official GCBA snapshots and replacement or validation of the non-official fallback question source.
+- Vite continues to emit a non-blocking chunk-size warning because the MVP bundles the fallback question dataset into the app JS.
 
 ### Verification Evidence
 
@@ -70,3 +74,11 @@
 - `pnpm run preflight` passed: feature-memory gate, repository baseline, content validation, Node tests, and production build.
 - Full Docker validation passed after adding `.dockerignore`: `make down && make build && make up`, HTTP smoke against `http://localhost:5173/`, `sw.js` check, and `make down`.
 - `git diff --check` passed with no whitespace errors.
+- Review-fix verification:
+  - `pnpm run validate:content` passed after policy changes requiring active release exception coverage for fallback question sources.
+  - `pnpm run test` passed: 14/14.
+  - `pnpm run build` passed and generated service worker with 280 cached assets.
+  - `pnpm run test:e2e` passed: 8/8, including exam skip behavior and offline reload.
+  - `pnpm run preflight` passed after adding e2e to preflight.
+  - Full Docker validation passed after review fixes: `make down && make build && make up`, HTTP smoke against `http://localhost:5173/`, `sw.js` check, and `make down`.
+  - `git diff --check origin/main...HEAD` passed after marking immutable source originals and assets as binary in `.gitattributes`.

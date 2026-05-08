@@ -16,11 +16,15 @@ test("learning flow renders category B image and records a mistake", async ({ pa
 test("exam mode hides translation until an answer and stores score", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Экзамен/ }).click();
-  await expect(page.getByText(/45 мин/)).toBeVisible();
+  await expect(page.getByText(/45:00|44:59/)).toBeVisible();
   await expect(page.getByText(/Формат defined/)).toBeVisible();
   await expect(page.getByText(/Неофициальный перевод/)).toHaveCount(0);
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
   for (let i = 0; i < 40; i += 1) {
-    await page.locator(".answer").first().click();
+    if (await page.locator(".answer").first().isVisible()) {
+      await page.locator(".answer").first().click();
+    }
   }
   await expect(page.getByText(/Пробный экзамен|Нужно повторить/)).toBeVisible();
 });

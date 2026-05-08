@@ -1,5 +1,5 @@
 import { BookOpen, CheckCircle2, ClipboardList, Eye, Flag, Image as ImageIcon, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { data, assetUrl, explanationByQuestion, sourceById, translationByQuestion, type ProgressAnswer, type Question } from "./data/content";
 import { deterministicExamSet, isPassing, mistakesFromHistory, scorePercent } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
@@ -21,6 +21,12 @@ function topicLabel(topic: string) {
     general: "Общее"
   };
   return labels[topic] || topic;
+}
+
+function formatDuration(totalSeconds: number) {
+  const minutes = Math.floor(Math.max(totalSeconds, 0) / 60);
+  const seconds = Math.max(totalSeconds, 0) % 60;
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
 function StatusStrip({ progress }: { progress: StoredProgress }) {
@@ -213,9 +219,24 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
   const [position, setPosition] = useState(0);
   const [answers, setAnswers] = useState<ProgressAnswer[]>([]);
   const [finished, setFinished] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(data.examFormat.timeLimitMinutes * 60);
+  const [resultScore, setResultScore] = useState<number | null>(null);
   const current = examQuestions[position];
-  const correct = answers.filter((answer) => answer.isCorrect).length;
-  const score = scorePercent(correct, examQuestions.length);
+
+  useEffect(() => {
+    if (finished) return undefined;
+    const timer = window.setInterval(() => {
+      setTimeRemaining((value) => {
+        if (value <= 1) {
+          window.clearInterval(timer);
+          finish(answers);
+          return 0;
+        }
+        return value - 1;
+      });
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [answers, finished]);
 
   function record(answer: ProgressAnswer) {
     const nextAnswers = [...answers, answer];
@@ -224,7 +245,19 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
     else setPosition((value) => value + 1);
   }
 
+  function skipCurrent() {
+    if (!current || !data.examFormat.canSkipQuestion) return;
+    record({
+      questionId: current.id,
+      selectedAnswerId: "",
+      isCorrect: false,
+      answeredAt: new Date().toISOString(),
+      mode: "exam"
+    });
+  }
+
   function finish(finalAnswers = answers) {
+    if (finished) return;
     const finalScore = scorePercent(finalAnswers.filter((answer) => answer.isCorrect).length, examQuestions.length);
     const attempt = {
       id: `exam-${Date.now()}`,
@@ -236,14 +269,16 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
     const next = { ...progress, answers: [...progress.answers, ...finalAnswers], examAttempts: [...progress.examAttempts, attempt] };
     setProgress(next);
     saveProgress(next);
+    setResultScore(finalScore);
     setFinished(true);
   }
 
   if (finished) {
+    const finalScore = resultScore ?? scorePercent(answers.filter((answer) => answer.isCorrect).length, examQuestions.length);
     return (
       <section className="workspace result-panel">
-        <h2>{score >= data.examFormat.passingScore ? "Пробный экзамен сдан" : "Нужно повторить"}</h2>
-        <p className="score">{score}%</p>
+        <h2>{finalScore >= data.examFormat.passingScore ? "Пробный экзамен сдан" : "Нужно повторить"}</h2>
+        <p className="score">{finalScore}%</p>
         <p>Формат: {data.examFormat.questionCount} вопросов, {data.examFormat.timeLimitMinutes} минут, проходной балл {data.examFormat.passingScore}%.</p>
         <p className="muted">Источник формата экзамена GCBA подтвержден, но сами вопросы сейчас помечены как неофициальная B-практика.</p>
       </section>
@@ -253,10 +288,17 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
   return (
     <section className="workspace">
       <div className="exam-bar">
-        <span><Timer size={18} /> {data.examFormat.timeLimitMinutes} мин</span>
+        <span><Timer size={18} /> {formatDuration(timeRemaining)}</span>
         <span>{position + 1} / {examQuestions.length}</span>
         <span>{data.examFormat.status === "defined" ? "Формат defined" : "approximate practice"}</span>
       </div>
+      {data.examFormat.canSkipQuestion && (
+        <div className="toolbar">
+          <button type="button" className="tool-button" onClick={skipCurrent}>
+            Пропустить
+          </button>
+        </div>
+      )}
       <QuestionCard key={current.id} question={current} mode="exam" revealAfterAnswer={false} onAnswered={record} difficult={false} onToggleDifficult={() => undefined} />
     </section>
   );
