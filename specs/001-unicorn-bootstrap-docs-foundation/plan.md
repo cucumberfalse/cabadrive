@@ -39,6 +39,7 @@ No new code abstraction was introduced. Changes are process bootstrap and docume
 | AC-004 | `pnpm run preflight` passes. |
 | AC-005 | `.github/workflows/ci.yml` conditionally enables pnpm cache only when `pnpm-lock.yaml` exists. |
 | AC-006 | `.github/workflows/ai-review.yml` skips trusted-script execution with a bootstrap notice when required gate scripts are absent on default branch. |
+| AC-007 | `tests/ai-review-helpers.test.mjs` validates key helper behaviors and runs through `pnpm test`. |
 
 Negative scenario evidence:
 

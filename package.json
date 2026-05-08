@@ -10,6 +10,7 @@
   "scripts": {
     "check:feature-memory": "node scripts/check-feature-memory.mjs",
     "check:repo": "node scripts/check-repo-baseline.mjs",
+    "test": "node --test tests/*.test.mjs",
     "preflight": "node scripts/check-feature-memory.mjs --worktree && pnpm run check:repo",
     "agent:set": "node scripts/set-implementation-agent.mjs",
     "worktree:new": "node scripts/new-worktree.mjs",

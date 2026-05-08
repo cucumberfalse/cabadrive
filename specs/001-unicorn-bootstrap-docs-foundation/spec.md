@@ -38,6 +38,7 @@ As an implementation agent, I want durable docs and workflow guardrails in place
 4. Given bootstrapped workflow guards, when local verification runs, then `pnpm run preflight` passes.
 5. Given a bootstrap repository without `pnpm-lock.yaml`, when CI `baseline-checks` runs, then `actions/setup-node` does not fail on pnpm cache preconditions.
 6. Given the first bootstrap PR where trusted scripts are not yet on `main`, when `AI Review` runs, then the job exits green with an explicit bootstrap compatibility notice instead of failing with `MODULE_NOT_FOUND`.
+7. Given the AI review helper module, when parsing priority markers, SHA markers, and trusted login rules, then automated tests validate expected behavior.
 
 ## Negative Scenarios
 
@@ -52,6 +53,7 @@ As an implementation agent, I want durable docs and workflow guardrails in place
 - FR-004: The PR must include complete feature memory (`spec.md`, `plan.md`, `tasks.md`) for this bootstrap change.
 - FR-005: `.github/workflows/ci.yml` must avoid enabling pnpm cache in `setup-node` when `pnpm-lock.yaml` is absent.
 - FR-006: `.github/workflows/ai-review.yml` must handle the first-bootstrap case where trusted gate scripts are missing on the default branch without making required `AI Review` permanently red.
+- FR-007: The repository should include a lightweight local test suite for `scripts/ai-review-helpers.mjs` covering severity parsing, SHA marker extraction, and trusted reviewer login logic.
 
 ## Success Criteria
 

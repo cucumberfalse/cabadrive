@@ -14,11 +14,13 @@
 - [x] T007 Adapt `.unicorn-hub/config.json` defaults for Cabadrive context.
 - [x] T008 Fix `baseline-checks` bootstrap failure by making `setup-node` pnpm cache conditional on `pnpm-lock.yaml`.
 - [x] T009 Fix first-PR `AI Review` bootstrap deadlock by gating trusted script execution and emitting explicit compatibility notice when scripts are missing on default branch.
+- [x] T010 Add regression tests for `scripts/ai-review-helpers.mjs` covering P0-P3 parsing, SHA markers, and trusted login handling.
 
 ## Verification
 
-- [x] T010 Run local preflight and confirm all checks pass.
-- [x] T011 Update this task list with final verification evidence.
+- [x] T011 Run local preflight and confirm all checks pass.
+- [x] T012 Run helper test suite and confirm pass.
+- [x] T013 Update this task list with final verification evidence.
 
 ## Process Memory
 
@@ -40,6 +42,11 @@
 - `pnpm run preflight` passed with:
   - feature-memory gate success for `specs/001-unicorn-bootstrap-docs-foundation/`
   - repository baseline check success
+- `pnpm run test` passed:
+  - `tests/ai-review-helpers.test.mjs` with 9/9 successful cases
 - Workflow hardening changes applied:
   - `.github/workflows/ci.yml` now enables `setup-node` pnpm cache only when `pnpm-lock.yaml` exists.
   - `.github/workflows/ai-review.yml` now emits a bootstrap compatibility notice and exits green when trusted gate scripts are absent on default branch.
+- Regression protection added:
+  - `package.json` includes `test` script (`node --test tests/*.test.mjs`).
+  - `tests/ai-review-helpers.test.mjs` covers priority parsing, SHA marker extraction, trusted association/login, and Codex summary acceptance checks.
