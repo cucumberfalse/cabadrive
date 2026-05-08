@@ -1,0 +1,30 @@
+{
+  "docsDir": "docs_project",
+  "specsDir": "specs",
+  "productPaths": [
+    "src/",
+    "content/",
+    "tests/",
+    "scripts/",
+    "docs_project/",
+    "docs/specify/",
+    "Makefile",
+    "Dockerfile",
+    "docker-compose.yml"
+  ],
+  "requiredChecks": [
+    "baseline-checks",
+    "guard",
+    "AI Review"
+  ],
+  "defaultBaseBranch": "main",
+  "defaultImplementationAgent": "codex",
+  "defaultReviewAgent": "codex",
+  "trustedReviewLogins": [],
+  "trustedReviewLoginsByAgent": {},
+  "profile": "generic",
+  "commands": {
+    "preflight": "pnpm run preflight"
+  },
+  "excludeTemplates": []
+}
