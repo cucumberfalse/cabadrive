@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
@@ -102,16 +103,7 @@ for (const question of questions) {
   questionIds.add(question.id);
   if (question.category !== "B") errors.push(`${question.id}: only category B questions are allowed.`);
   const source = sourceById.get(question.sourceId);
-  const sourceText = [
-    question.sourceId,
-    source?.id,
-    source?.title,
-    source?.retrievalNote,
-    source?.licenseNote
-  ].join(" ").toLowerCase();
-  if (/\ba[1-4]\b|categor(?:y|[ií]a)\s+a[1-4]?\b|clase\s+a[1-4]?\b|tipo\s+a[1-4]?\b|moto|motocic|motoveh/.test(sourceText)) {
-    errors.push(`${question.id}: non-B practice source metadata is forbidden.`);
-  }
+  errors.push(...validatePracticeQuestionSourceScope({ question, source, policy }));
   if (!source) errors.push(`${question.id}: source not found: ${question.sourceId}`);
   if (question.contentStatus === "unofficial_fallback") {
     if (!policy.allowUnofficialFallbackPractice) errors.push(`${question.id}: unofficial fallback practice is disabled by policy.`);

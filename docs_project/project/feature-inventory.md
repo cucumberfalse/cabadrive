@@ -20,6 +20,7 @@
 - Reason: no complete public official CABA category B question bank has been confirmed.
 - Source used for practice questions: `bandinopla/simulador-test-de-conducir`, category B/CABA, Apache-2.0, explicitly non-official upstream.
 - Important boundary: A/A4, motorcycle, and other non-B question sources are not used for practice questions.
+- Source guard behavior: this is a source-level eligibility rule, not a text-level topic filter. Valid category B practice material may mention motorcycles, motovehicles, ciclomotors, parking areas, lanes, signs, or other shared-road topics when the source `practiceQuestionScope` explicitly allows category B.
 - Question images are part of the learning surface and are stored locally in the repository for offline use.
 
 ## Post-MVP Candidates
