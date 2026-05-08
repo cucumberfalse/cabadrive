@@ -4,6 +4,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
+import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
@@ -39,6 +40,7 @@ const policy = readJson("content/validation/production-eligibility.policy.json")
 const sources = readJson("content/sources/sources.json") || [];
 const questions = readJson("content/questions/caba-b.unofficial-fallback.questions.json") || [];
 const translations = readJson("content/translations/ru.translations.json") || [];
+const translationAlignmentEvidence = readJson("content/validation/ru-translation-alignment.evidence.json");
 const explanations = readJson("content/explanations/ru.explanations.json") || [];
 const vocabulary = readJson("content/vocabulary/ru.vocabulary.json") || [];
 const guide = readJson("content/guide/ru.condensed-guide.json") || [];
@@ -133,6 +135,7 @@ for (const translation of translations) {
   if (!questionIds.has(translation.questionId)) errors.push(`Translation references missing question ${translation.questionId}`);
   if (!translation.disclaimer?.includes("Неофициальный")) errors.push(`${translation.questionId}: translation disclaimer must mark unofficial status.`);
 }
+errors.push(...validateTranslationAlignment({ questions, translations, evidence: translationAlignmentEvidence, locale: "ru" }));
 
 for (const explanation of explanations) {
   if (!questionIds.has(explanation.questionId)) errors.push(`Explanation references missing question ${explanation.questionId}`);

@@ -74,7 +74,10 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 ## UI Rules
 
 - Official Spanish text stays primary.
-- Translation and explanations are explicitly marked as unofficial.
+- Russian translations and explanations are unofficial learning aids; product-level onboarding, content-mode/status surfaces, and source/status footers carry that clarity instead of repeating long disclaimer paragraphs inside every question card.
+- Learning and mistake review start with Russian translation hidden.
+- The Spanish question text area reveals or hides the question translation and answer-choice translations with the same shared state; the revealed question translation appears directly under the Spanish question text before images and answer choices.
+- Active exam attempts hide translation and explanation support.
 - Support mobile-first interaction and exam-focused speed.
 - Keep weak-topic review prominent in study loops.
 - Render question images as part of the question, using only local offline assets.

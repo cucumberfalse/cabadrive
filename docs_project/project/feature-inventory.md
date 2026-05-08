@@ -5,7 +5,7 @@
 - Official source registry with source ownership, jurisdiction, verification date, and hashes.
 - Content validation pipeline for source records, exam config, fallback question data, local images, and unofficial support layers.
 - Category B practice question presentation in Spanish with source traceability and non-official fallback labeling.
-- Clearly labeled unofficial Russian translation and explanation layers.
+- Unofficial Russian translation and explanation layers, clarified at product/status level and revealed intentionally inside question practice instead of shown by default.
 - Learning mode with answer feedback and linked weak-topic hints.
 - Exam mode driven by `content/config/caba-exam-format.json` with approximate/exact status labeling.
 - Mistake tracking and repeated-error review loop.
