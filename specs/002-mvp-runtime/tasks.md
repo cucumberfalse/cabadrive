@@ -44,6 +44,7 @@
 - E2E initially exposed a click bug where a local `answer` callback was shadowed by an answer object in `.map()`. Renamed the callback to `selectAnswer`.
 - Offline reload initially failed because the static service worker did not precache hashed Vite assets. Added `scripts/generate-service-worker.mjs` to generate a post-build asset manifest.
 - Post-PR internal review found blocking P2 issues: exam mode did not implement skip/timer completion, content policy claimed per-question approvals while fallback questions intentionally remain `needs_review`, and non-B source guard only checked lowercase source ids. These were fixed before marking the PR merge-ready.
+- Targeted re-review found one remaining gap: the non-B source guard caught A4/moto but not plain `category A`, `categoria A`, `clase A`, or `tipo A`. The guard now rejects those source metadata patterns as well.
 
 ### Decisions
 

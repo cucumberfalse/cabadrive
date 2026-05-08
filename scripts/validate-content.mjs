@@ -109,7 +109,7 @@ for (const question of questions) {
     source?.retrievalNote,
     source?.licenseNote
   ].join(" ").toLowerCase();
-  if (/\ba4\b|categor[ií]a\s*a4|moto|motocic|motoveh/.test(sourceText)) {
+  if (/\ba[1-4]\b|categor(?:y|[ií]a)\s+a[1-4]?\b|clase\s+a[1-4]?\b|tipo\s+a[1-4]?\b|moto|motocic|motoveh/.test(sourceText)) {
     errors.push(`${question.id}: non-B practice source metadata is forbidden.`);
   }
   if (!source) errors.push(`${question.id}: source not found: ${question.sourceId}`);
