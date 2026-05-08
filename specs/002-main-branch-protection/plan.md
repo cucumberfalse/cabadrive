@@ -38,7 +38,6 @@ No new abstraction is added; the existing config list is extended with the missi
 | AC-004 | `tests/ai-review-workflow.test.mjs` verifies trigger comment permission denial is handled with an explicit degraded-mode warning. |
 | AC-005 | `tests/ai-review-workflow.test.mjs` verifies the workflow uses `secrets.AI_REVIEW_GITHUB_TOKEN` before falling back to `github.token`. |
 | AC-006 | `tests/ai-review-workflow.test.mjs` verifies resolved Codex review threads are filtered out before review evidence classification. |
-| AC-007 | `tests/ai-review-workflow.test.mjs` verifies same-repository pull request runs checkout gate scripts from the pull request head SHA. |
 
 Negative scenario evidence:
 

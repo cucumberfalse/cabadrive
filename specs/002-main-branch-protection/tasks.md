@@ -15,7 +15,6 @@
 - [x] T011 Handle trigger comment permission denial without an uncaught exception.
 - [x] T012 Add `AI_REVIEW_GITHUB_TOKEN` secret override for review-gate API calls.
 - [x] T013 Ignore resolved Codex review threads when classifying active review evidence.
-- [x] T014 Use same-repository pull request head gate scripts for `AI Review` validation.
 - [x] T015 Require `AI_REVIEW_GITHUB_TOKEN` before automatic review trigger comments.
 
 ## Verification
@@ -29,6 +28,7 @@
 ### Dead Ends
 
 - Direct GitHub branch protection and repository ruleset API calls returned HTTP 403 because this private repository does not currently have branch protection available on its GitHub plan.
+- Checking out same-repository pull request head gate scripts for the required `AI Review` job was rejected by Codex review as a P1 security issue because PR-controlled scripts would run with `GITHUB_TOKEN`/`AI_REVIEW_GITHUB_TOKEN`.
 
 ### Decisions
 
@@ -38,7 +38,7 @@
 - Restricted automatic pull request trigger comments to same-repository PRs and treated 403 token write denial as a degraded mode that waits for existing or human-triggered review evidence.
 - Added `AI_REVIEW_GITHUB_TOKEN` as the repository secret override because the built-in GitHub Actions integration token can still be denied when posting native review trigger comments.
 - Resolved Codex review threads are filtered through GitHub GraphQL before classifying active REST review comments, because the REST pull-request comments endpoint does not expose thread resolved state.
-- Same-repository pull request `AI Review` runs checkout gate scripts from the pull request head SHA so fixes to the gate can satisfy the required check before the PR merges; fork and manual validation runs keep using default-branch gate scripts.
+- The required `AI Review` gate continues to execute default-branch scripts so review validation is not controlled by pull request code.
 - Automatic pull request review trigger comments require `AI_REVIEW_GITHUB_TOKEN` so command comments are authored by a trusted account instead of `github-actions[bot]`, which this repository's AI command policy rejects.
 
 ### Known Issues
@@ -51,5 +51,5 @@
 - `pnpm run preflight` passed:
   - feature-memory gate success for `specs/002-main-branch-protection/`
   - repository baseline check success
-- `pnpm run test` passed with 12/12 tests, including same-repository pull request AI Review trigger-mode coverage, same-repository head checkout coverage, trigger-comment permission-denial handling, `AI_REVIEW_GITHUB_TOKEN` fallback coverage, and resolved Codex thread filtering.
+- `pnpm run test` passed with 12/12 tests, including same-repository pull request AI Review trigger-mode coverage, trusted default-branch checkout coverage, trigger-comment permission-denial handling, `AI_REVIEW_GITHUB_TOKEN` fallback coverage, and resolved Codex thread filtering.
 - `git diff --check` passed with no whitespace errors.
