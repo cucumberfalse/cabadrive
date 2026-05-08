@@ -19,4 +19,5 @@ test("AI Review gate handles trigger comment permission denial without a stack t
   assert.match(gate, /Could not post AI Review trigger comment/);
   assert.match(gate, /error\.status === 403/);
   assert.match(gate, /waiting for existing or human-triggered review evidence/);
+  assert.match(gate, /throw error/);
 });

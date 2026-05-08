@@ -88,10 +88,12 @@ async function maybePostTriggerComment() {
     ].join("\n"));
     console.log(`Posted AI Review trigger comment for ${selectedAgent}.`);
   } catch (error) {
-    console.warn(`Could not post AI Review trigger comment: ${error.message}`);
     if (error.status === 403) {
+      console.warn(`Could not post AI Review trigger comment: ${error.message}`);
       console.warn("GitHub denied issue-comment write access for this workflow token; waiting for existing or human-triggered review evidence instead.");
+      return;
     }
+    throw error;
   }
 }
 

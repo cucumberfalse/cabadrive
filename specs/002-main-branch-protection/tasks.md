@@ -32,7 +32,7 @@
 - Reused the existing `scripts/apply-branch-protection.mjs` branch-protection path instead of adding a second policy mechanism.
 - Added `osv-scan` because it is an active pull request check and was missing from `requiredChecks`.
 - Kept manual `workflow_dispatch` trigger mode explicit, but made same-repository pull request events post the selected native review trigger comment before the gate starts polling.
-- Restricted automatic pull request trigger comments to same-repository PRs and treated token write denial as a degraded mode that waits for existing or human-triggered review evidence.
+- Restricted automatic pull request trigger comments to same-repository PRs and treated 403 token write denial as a degraded mode that waits for existing or human-triggered review evidence.
 - Added `AI_REVIEW_GITHUB_TOKEN` as the repository secret override because the built-in GitHub Actions integration token can still be denied when posting native review trigger comments.
 
 ### Known Issues
