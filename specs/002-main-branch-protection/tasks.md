@@ -16,6 +16,7 @@
 - [x] T012 Add `AI_REVIEW_GITHUB_TOKEN` secret override for review-gate API calls.
 - [x] T013 Ignore resolved Codex review threads when classifying active review evidence.
 - [x] T014 Use same-repository pull request head gate scripts for `AI Review` validation.
+- [x] T015 Require `AI_REVIEW_GITHUB_TOKEN` before automatic review trigger comments.
 
 ## Verification
 
@@ -38,6 +39,7 @@
 - Added `AI_REVIEW_GITHUB_TOKEN` as the repository secret override because the built-in GitHub Actions integration token can still be denied when posting native review trigger comments.
 - Resolved Codex review threads are filtered through GitHub GraphQL before classifying active REST review comments, because the REST pull-request comments endpoint does not expose thread resolved state.
 - Same-repository pull request `AI Review` runs checkout gate scripts from the pull request head SHA so fixes to the gate can satisfy the required check before the PR merges; fork and manual validation runs keep using default-branch gate scripts.
+- Automatic pull request review trigger comments require `AI_REVIEW_GITHUB_TOKEN` so command comments are authored by a trusted account instead of `github-actions[bot]`, which this repository's AI command policy rejects.
 
 ### Known Issues
 

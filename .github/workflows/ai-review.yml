@@ -79,6 +79,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           PR_HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || '' }}
           REPOSITORY: ${{ github.repository }}
+          HAS_AI_REVIEW_GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN != '' }}
         run: |
           set -euo pipefail
           selected="${SELECTED_AGENT:-codex}"
@@ -92,7 +93,7 @@ jobs:
           esac
           if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
             trigger_mode="${REQUESTED_TRIGGER_MODE:-skip}"
-          elif [ "${PR_HEAD_REPOSITORY}" = "${REPOSITORY}" ]; then
+          elif [ "${PR_HEAD_REPOSITORY}" = "${REPOSITORY}" ] && [ "${HAS_AI_REVIEW_GITHUB_TOKEN}" = "true" ]; then
             trigger_mode="comment"
           else
             trigger_mode="skip"
