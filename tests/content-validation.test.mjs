@@ -19,3 +19,12 @@ test("category B fallback questions keep local image references", () => {
     assert.ok(existsSync(question.image.localPath), question.image.localPath);
   }
 });
+
+test("existing Russian explanations are expanded exam-focused learning notes", () => {
+  const explanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
+  assert.equal(explanations.length, 5);
+  for (const explanation of explanations) {
+    assert.ok(explanation.textRu.length >= 240, `${explanation.questionId} explanation is too terse`);
+    assert.match(explanation.textRu, /вариант|правильн|экзамен|испанск|водител|дорог|движен/i, explanation.questionId);
+  }
+});

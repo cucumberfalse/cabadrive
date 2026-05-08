@@ -199,6 +199,20 @@ small,
   background: #f7fbf8;
 }
 
+.question-toggle {
+  cursor: pointer;
+  outline: 0;
+}
+
+.question-toggle:hover,
+.question-toggle:focus-visible {
+  background: #eef8f1;
+}
+
+.question-toggle:focus-visible {
+  box-shadow: 0 0 0 3px rgba(23, 107, 87, 0.22);
+}
+
 .support-block {
   border-color: #3f6db5;
   background: #f3f7ff;

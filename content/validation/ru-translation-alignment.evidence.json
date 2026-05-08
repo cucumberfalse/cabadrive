@@ -1,0 +1,149 @@
+{
+  "locale": "ru",
+  "version": 1,
+  "generatedAt": "2026-05-08",
+  "evidenceType": "translation_alignment_fingerprints",
+  "description": "Deterministic offline evidence that each reviewed Russian translation entry matches the current Spanish question tuple and answer ids.",
+  "entries": [
+    {
+      "questionId": "b-fallback-001",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "c4d9354dc4f03d37f8d63a05b7ead12b957b90d4b2f4a0029ffda423fb8b88ad",
+      "translationTextSha256": "f2140207d4074fb412c0d0da183e003d898dc442259b03f229b480b789bff261",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-002",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "6a47b28aa3c15605be82c7db3c98187e4eb92df817f8e1f088ee6c57b23ac16d",
+      "translationTextSha256": "14bab4b404f7f1680d8d6c795a9b723c6049cf874fbf364a7f7c0ebf6c58bdc7",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-003",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "7a3c832ce41d05695d5d5b9c09beaf42381d50b4df4d5ca9a9957842d0263f87",
+      "translationTextSha256": "d9568a72cf9c4737b38ed8df315d7bb567e99e8cbc198ec97d5d0d11e5765fb5",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-004",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "50f0389f0698c5781cc9bbe05d67c6b9d4444047d275eee85c06414a4ac5b66b",
+      "translationTextSha256": "d23bbfe8f168a97d5693581eac695e8cb2e84394f4429b388828c7b3f096b79e",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-005",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "51a3c0e71755ea725fec7161aa3efe0ed509755966885ab817ec1f859c524f90",
+      "translationTextSha256": "4c6af37a817a29c5d5151ead57ae3586b740cbcb5d4a975937987bba4fca432d",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-006",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "2be0b6ab84b3eeab071a0cc29ca2b98f31347841297d4b9b891995f795179e22",
+      "translationTextSha256": "a4d53e1fe903c943ecdaa141946f19c8ba7e361b8a2adab90a2cc6d92b941a6a",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-007",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "033d74bf8c9acc455dbff96bfee1af8a59a1e907976312a783314394c1f1183d",
+      "translationTextSha256": "c89254654e025001d8a1c0243c8e4d669c5d76d6cffbcebf9a49eb0529b54cfd",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-008",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "4ba4a7bb9cd96ab30d0d2a5baefb80c9027e2241cedfbfaa4f108dc13cb07efa",
+      "translationTextSha256": "302219e69876ca1f34dc81e0f996c458f41a0042278b2e75afcd6667add82143",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-009",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "9beb663661c0f8306324477050665c68a9a6def75746f70e942f942e8f878364",
+      "translationTextSha256": "d948509ee7defcff4101dbde5de8a53988b9b511b66711f63f5fed889e928d91",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-010",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-08",
+      "sourceTextSha256": "935702322e3c5caafe4ce2ce993eec998ab553774dcf71f5c05e101df316bab7",
+      "translationTextSha256": "60f233ac49fe5f308294652f6b48d0c82f5c314b9252f3415fdcaf7f9f45ca2d",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    }
+  ]
+}

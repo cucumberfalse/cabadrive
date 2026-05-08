@@ -12,19 +12,21 @@
 ## Home / Onboarding
 
 - Clarifies: official Spanish text is unchanged.
-- Clarifies: translations and explanations are unofficial learning aids.
+- Clarifies: translations and explanations are unofficial learning aids without requiring repeated disclaimer paragraphs on every question card.
 - Clarifies: current category B questions are an unofficial fallback practice set, not an official GCBA question bank.
 - Shows quick entry actions for the five main modes.
 
 ## Learn Questions Flow
 
 1. Load question card (Spanish official text + answer options).
-1. Show the local question image when the source question includes one.
-2. Optional toggle for Russian translation.
-3. Optional toggle for explanation.
-4. Submit answer.
-5. Show correctness, key terms, and related weak-topic links.
-6. Optional mark as difficult.
+2. Keep Russian question and answer translations hidden on initial render.
+3. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
+4. Show answer-choice translations only while the same translation reveal state is active.
+5. Show the local question image when the source question includes one.
+6. Optional toggle for explanation.
+7. Submit answer.
+8. Show correctness, key terms, and related weak-topic links.
+9. Optional mark as difficult.
 
 ## Exam Simulation Flow
 
@@ -37,8 +39,9 @@
 ## Mistake Review Flow
 
 1. Filter previously incorrect items.
-2. Re-attempt focused set.
-3. Track repeated-error reduction.
+2. Re-attempt focused set with translation hidden by default.
+3. Reveal or hide translation from the Spanish question text area, matching learning mode.
+4. Track repeated-error reduction.
 
 ## Vocabulary Flow
 

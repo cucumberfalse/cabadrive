@@ -1,5 +1,5 @@
-import { BookOpen, CheckCircle2, ClipboardList, Eye, Flag, Image as ImageIcon, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { BookOpen, CheckCircle2, ClipboardList, Flag, Image as ImageIcon, RotateCcw, Search, Timer, XCircle } from "lucide-react";
+import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import { data, assetUrl, explanationByQuestion, sourceById, translationByQuestion, type ProgressAnswer, type Question } from "./data/content";
 import { isPassing, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
@@ -72,13 +72,21 @@ function QuestionCard({
   allowRepeatedAnswers?: boolean;
 }) {
   const [selected, setSelected] = useState<string | undefined>();
-  const [showTranslation, setShowTranslation] = useState(mode !== "exam");
+  const [showTranslation, setShowTranslation] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
   const translation = translationByQuestion.get(question.id);
   const explanation = explanationByQuestion.get(question.id);
   const source = sourceById.get(question.sourceId);
   const answered = Boolean(selected);
   const correct = selected === question.correctAnswerId;
+  const canToggleSupport = mode !== "exam";
+  const translationId = `translation-${question.id}`;
+
+  useEffect(() => {
+    setSelected(undefined);
+    setShowTranslation(false);
+    setShowExplanation(false);
+  }, [mode, question.id]);
 
   function selectAnswer(answerId: string) {
     if (answered && !allowRepeatedAnswers) return;
@@ -92,6 +100,32 @@ function QuestionCard({
     });
   }
 
+  function toggleTranslation() {
+    if (!canToggleSupport) return;
+    setShowTranslation((value) => !value);
+  }
+
+  function handleQuestionKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    toggleTranslation();
+  }
+
+  const officialBlock = (
+    <div
+      className={canToggleSupport ? "official-block question-toggle" : "official-block"}
+      role={canToggleSupport ? "button" : undefined}
+      tabIndex={canToggleSupport ? 0 : undefined}
+      aria-expanded={canToggleSupport ? showTranslation : undefined}
+      aria-controls={canToggleSupport ? translationId : undefined}
+      onClick={canToggleSupport ? toggleTranslation : undefined}
+      onKeyDown={canToggleSupport ? handleQuestionKeyDown : undefined}
+    >
+      <span className="block-label">Испанский текст из practice source</span>
+      <h2>{question.officialTextEs}</h2>
+    </div>
+  );
+
   return (
     <article className="question-card" data-testid="question-card">
       <div className="question-meta">
@@ -101,10 +135,13 @@ function QuestionCard({
         {question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
       </div>
 
-      <div className="official-block">
-        <span className="block-label">Испанский текст из practice source</span>
-        <h2>{question.officialTextEs}</h2>
-      </div>
+      {officialBlock}
+
+      {showTranslation && (
+        <aside className="support-block translation" id={translationId}>
+          <p>{translation?.questionTextRu || "Русский перевод для этого вопроса еще не подготовлен. Ориентируйтесь на испанский текст."}</p>
+        </aside>
+      )}
 
       {question.image && (
         <figure className="question-image">
@@ -115,24 +152,15 @@ function QuestionCard({
         </figure>
       )}
 
-      <div className="actions-row">
-        <button type="button" className="tool-button" onClick={() => setShowTranslation((value) => !value)} disabled={mode === "exam" && !answered}>
-          <Eye size={18} aria-hidden="true" /> Перевод
-        </button>
-        <button type="button" className="tool-button" onClick={() => setShowExplanation((value) => !value)} disabled={mode === "exam" && !answered}>
-          <BookOpen size={18} aria-hidden="true" /> Пояснение
-        </button>
-        <button type="button" className={difficult ? "tool-button active" : "tool-button"} onClick={onToggleDifficult}>
-          <Flag size={18} aria-hidden="true" /> Сложный
-        </button>
-      </div>
-
-      {showTranslation && (
-        <aside className="support-block">
-          <span className="block-label">Неофициальный перевод</span>
-          <p>{translation?.questionTextRu || "Русский перевод для этого вопроса еще не подготовлен. Ориентируйтесь на испанский текст."}</p>
-          {translation && <small>{translation.disclaimer}</small>}
-        </aside>
+      {canToggleSupport && (
+        <div className="actions-row">
+          <button type="button" className="tool-button" onClick={() => setShowExplanation((value) => !value)}>
+            <BookOpen size={18} aria-hidden="true" /> Пояснение
+          </button>
+          <button type="button" className={difficult ? "tool-button active" : "tool-button"} onClick={onToggleDifficult}>
+            <Flag size={18} aria-hidden="true" /> Сложный
+          </button>
+        </div>
       )}
 
       <div className="answers" role="list">
@@ -166,7 +194,6 @@ function QuestionCard({
         <aside className="support-block explanation">
           <span className="block-label">Учебное пояснение</span>
           <p>{explanation?.textRu || "Пояснение пока не подготовлено для этого вопроса."}</p>
-          <small>{explanation?.disclaimer || "Это учебное пояснение проекта. Оно не заменяет официальный источник."}</small>
         </aside>
       )}
 
