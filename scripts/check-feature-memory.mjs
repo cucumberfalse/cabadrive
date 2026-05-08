@@ -23,7 +23,13 @@ function git(commandArgs, options = {}) {
 
 function changedFiles() {
   if (inspectWorktree) {
-    return git(["ls-files", "--modified", "--others", "--exclude-standard"]).split("\n").filter(Boolean);
+    return git([
+      "ls-files",
+      "--modified",
+      "--others",
+      "--deleted",
+      "--exclude-standard"
+    ]).split("\n").filter(Boolean);
   }
   return git(["diff", "--name-only", baseRef, headRef]).split("\n").filter(Boolean);
 }

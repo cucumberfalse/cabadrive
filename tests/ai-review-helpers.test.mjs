@@ -21,6 +21,7 @@ test("extractClaudeOutcome parses accepted values case-insensitively", () => {
 
 test("extractMarkerSha accepts 7..40 hex chars and rejects invalid lines", () => {
   assert.equal(extractMarkerSha("AI_REVIEW_SHA: abcdef1"), "abcdef1");
+  assert.equal(extractMarkerSha("AI_REVIEW_SHA: ABCDEF1"), "abcdef1");
   assert.equal(
     extractMarkerSha("AI_REVIEW_SHA: abcdef1234567890abcdef1234567890abcdef12"),
     "abcdef1234567890abcdef1234567890abcdef12"

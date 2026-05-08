@@ -10,8 +10,8 @@ export function extractClaudeOutcome(body) {
 }
 
 export function extractMarkerSha(body) {
-  const match = String(body || "").match(/^AI_REVIEW_SHA:\s*([a-f0-9]{7,40})\s*$/im);
-  return match?.[1] || null;
+  const match = String(body || "").match(/^AI_REVIEW_SHA:\s*([A-Fa-f0-9]{7,40})\s*$/im);
+  return match?.[1]?.toLowerCase() || null;
 }
 
 export function normalizeLogin(login) {
