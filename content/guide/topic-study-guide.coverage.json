@@ -179,9 +179,9 @@
       "titleRu": "Повороты, направление движения и задний ход",
       "categoryId": "maneuvers",
       "splitCriteria": "Giro, sentido de circulación, curva, marcha atrás, въезд/выезд из гаража и предварительное обозначение маневра.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
       "topicId": "overtaking-and-passing",
@@ -509,8 +509,8 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
       "questionId": "b-fallback-015",
@@ -1175,7 +1175,11 @@
         "turns-direction-and-reversing"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-turns-direction-reversing",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "turns-direction-and-reversing": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-085",
@@ -1364,8 +1368,8 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
       "questionId": "b-fallback-105",
@@ -1460,9 +1464,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "planned",
+        "turns-direction-and-reversing": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -1544,9 +1548,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "planned",
+        "turns-direction-and-reversing": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -1586,9 +1590,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "planned",
+        "turns-direction-and-reversing": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -1936,7 +1940,11 @@
         "turns-direction-and-reversing"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-turns-direction-reversing",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "turns-direction-and-reversing": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-165",
@@ -2074,9 +2082,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "planned",
+        "turns-direction-and-reversing": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -2115,8 +2123,8 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
       "questionId": "b-fallback-182",
@@ -2171,7 +2179,11 @@
         "turns-direction-and-reversing"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-turns-direction-reversing",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "turns-direction-and-reversing": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-188",
@@ -2683,7 +2695,11 @@
         "turns-direction-and-reversing"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-turns-direction-reversing",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "turns-direction-and-reversing": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-245",
@@ -2877,9 +2893,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "planned",
+        "turns-direction-and-reversing": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -2953,9 +2969,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "planned",
+        "turns-direction-and-reversing": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -3085,9 +3101,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "planned",
+        "turns-direction-and-reversing": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -3240,8 +3256,8 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
       "questionId": "b-fallback-305",
@@ -4317,8 +4333,8 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
       "questionId": "b-fallback-415",
