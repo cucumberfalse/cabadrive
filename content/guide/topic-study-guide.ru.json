@@ -20594,6 +20594,325 @@
       ]
     },
     {
+      "id": "crash-liability-and-legal-duties",
+      "slug": "crash-liability-and-legal-duties",
+      "status": "draft",
+      "titleRu": "Ответственность и юридические обязанности после ДТП",
+      "summaryRu": "Короткий блок про civil, penal, seguro и testigo после siniestro vial: что нельзя 'перевести' на другого, когда появляется reclamo/demanda, почему нужно явиться как свидетель и почему seguro обязателен не только на interurbanas.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах здесь главное разделять четыре слоя: responsabilidad penal, responsabilidad civil, obligación de seguro и deber de testigo. Они похожи по словам, но отвечают на разные вопросы.",
+        "Responsabilidad penal в билете `b-fallback-023` держите узко как ticket-specific формулу: уголовная ответственность водителя не 'передается' dueño del vehículo или compañía de seguros. D11 не нашел прямой текущий официальный источник для широкого принципа 'penal responsibility is non-transferable', поэтому этот пункт не расширяется в общий legal claim.",
+        "Responsabilidad civil в билете `b-fallback-351` связана не с 'плохим характером' и не с antecedentes, а с daño real: должно быть реальное повреждение/вред конкретному лицу, связанное с incidente. Для учебной логики: гражданская demanda нужна, чтобы reclamar reparación/indemnización por daños.",
+        "Testigo - это не добровольный комментарий 'если хочется'. Если человека вызывают как testigo в procedimiento judicial, guía de siniestros описывает это как carga pública: надо явиться и сказать компетентному органу то, что знаешь и помнишь, правдиво.",
+        "Seguro obligatorio не ограничивается rutas interurbanas. Билет `b-fallback-432` ловит слово ÚNICAMENTE: comprobante/certificado de seguro de responsabilidad civil нужно иметь при движении как часть обязательных документов, а не только за городом.",
+        "Fuga после siniestro с herido/a - отдельная тяжелая ловушка. Формулировка билета аккуратная: человек puede ser juzgada por abandono de persona. Это не значит 'автоматически осужден', но означает, что оставление раненого после ДТП может перейти из административной/страховой зоны в penal boundary."
+      ],
+      "practicalReasoningRu": [
+        "Разделение civil и penal делает последствия понятнее: civil process ищет reparación del daño, а penal process проверяет возможное delito и responsabilidad criminal.",
+        "Обязанность свидетеля и обмен данными после siniestro нужны, чтобы факт можно было восстановить: кто участвовал, кто видел, какой ущерб возник и куда обращаться за resarcimiento.",
+        "Страховка обязательна везде при движении, потому что риск причинить daños a terceros не появляется только на interurbanas; он есть и в городе."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-incidente-transito-legal",
+          "termEs": "incidente de tránsito",
+          "translationRu": "дорожный инцидент / ДТП в формулировке билета",
+          "sourceQuestionIds": [
+            "b-fallback-023"
+          ]
+        },
+        {
+          "id": "term-responsabilidad-penal",
+          "termEs": "Responsabilidad Penal",
+          "translationRu": "уголовная ответственность",
+          "sourceQuestionIds": [
+            "b-fallback-023"
+          ]
+        },
+        {
+          "id": "term-responsabilidad-penal-intransferible",
+          "termEs": "responsabilidad penal es intransferible",
+          "translationRu": "уголовная ответственность не передается другому лицу; ticket-specific формула",
+          "sourceQuestionIds": [
+            "b-fallback-023"
+          ]
+        },
+        {
+          "id": "term-dueno-vehiculo",
+          "termEs": "dueño",
+          "translationRu": "владелец",
+          "sourceQuestionIds": [
+            "b-fallback-023"
+          ]
+        },
+        {
+          "id": "term-compania-seguros-legal",
+          "termEs": "Compañía de Seguros",
+          "translationRu": "страховая компания",
+          "sourceQuestionIds": [
+            "b-fallback-023"
+          ]
+        },
+        {
+          "id": "term-responsabilidad-civil",
+          "termEs": "Responsabilidad Civil",
+          "translationRu": "гражданская ответственность",
+          "sourceQuestionIds": [
+            "b-fallback-351"
+          ]
+        },
+        {
+          "id": "term-factor-determinante",
+          "termEs": "factor determinante",
+          "translationRu": "определяющий фактор",
+          "sourceQuestionIds": [
+            "b-fallback-351"
+          ]
+        },
+        {
+          "id": "term-demanda",
+          "termEs": "demanda",
+          "translationRu": "иск / гражданское требование через суд",
+          "sourceQuestionIds": [
+            "b-fallback-351"
+          ]
+        },
+        {
+          "id": "term-dano-real",
+          "termEs": "daño real",
+          "translationRu": "реальный вред / ущерб",
+          "sourceQuestionIds": [
+            "b-fallback-351"
+          ]
+        },
+        {
+          "id": "term-conducta-danosa",
+          "termEs": "conducta dañosa",
+          "translationRu": "поведение, причинившее вред",
+          "sourceQuestionIds": [
+            "b-fallback-351"
+          ]
+        },
+        {
+          "id": "term-procedimiento-judicial",
+          "termEs": "procedimiento judicial",
+          "translationRu": "судебная процедура / процесс",
+          "sourceQuestionIds": [
+            "b-fallback-406"
+          ]
+        },
+        {
+          "id": "term-testigo-legal",
+          "termEs": "testigo",
+          "translationRu": "свидетель",
+          "sourceQuestionIds": [
+            "b-fallback-406"
+          ]
+        },
+        {
+          "id": "term-fiscalia",
+          "termEs": "Fiscalía",
+          "translationRu": "прокуратура / fiscalía",
+          "sourceQuestionIds": [
+            "b-fallback-406"
+          ]
+        },
+        {
+          "id": "term-certificado-seguro-responsabilidad-civil",
+          "termEs": "certificado del seguro de responsabilidad civil",
+          "translationRu": "сертификат/подтверждение страхования гражданской ответственности",
+          "sourceQuestionIds": [
+            "b-fallback-432"
+          ]
+        },
+        {
+          "id": "term-vias-interurbanas",
+          "termEs": "vías interurbanas",
+          "translationRu": "междугородние дороги; ловушка с ÚNICAMENTE",
+          "sourceQuestionIds": [
+            "b-fallback-432"
+          ]
+        },
+        {
+          "id": "term-siniestro-vial-legal",
+          "termEs": "siniestro vial",
+          "translationRu": "ДТП / дорожное происшествие",
+          "sourceQuestionIds": [
+            "b-fallback-406",
+            "b-fallback-434"
+          ]
+        },
+        {
+          "id": "term-da-a-la-fuga",
+          "termEs": "se da a la fuga",
+          "translationRu": "скрывается / уезжает с места происшествия",
+          "sourceQuestionIds": [
+            "b-fallback-434"
+          ]
+        },
+        {
+          "id": "term-abandono-persona",
+          "termEs": "abandono de persona",
+          "translationRu": "оставление человека в опасности / abandono de persona",
+          "sourceQuestionIds": [
+            "b-fallback-434"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-023",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-023-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по формуле этого fallback-билета: responsabilidad penal водителя не передается dueño del vehículo или страховщику. Это оставлено как ticket-specific экзаменационная формулировка, без обобщения через Código Penal Art. 106."
+            },
+            {
+              "answerId": "b-fallback-023-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: dueño и compañía de seguros могут фигурировать в гражданских/страховых последствиях, но билет спрашивает именно penal responsibility и ловит идею transferirse."
+            },
+            {
+              "answerId": "b-fallback-023-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: juez может оценивать факты, gravedad и consecuencias, но вариант делает transferibilidad вопросом усмотрения судьи, а правильная формула билета - no, es intransferible."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-351",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-351-a1",
+              "verdict": "incorrect",
+              "explanationRu": "La intención de la conducta dañosa звучит юридически, но для этого билета не является factor determinante. Civil demand здесь начинается от существования daño real и связи с incidente."
+            },
+            {
+              "answerId": "b-fallback-351-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: нужен daño real, затрагивающий particular и вызванный incidente. Это совпадает с общей civil logic: требование направлено на reparación/indemnización por daños, а не на оценку личности водителя."
+            },
+            {
+              "answerId": "b-fallback-351-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Antecedentes могут иметь значение в других контекстах, но не являются стартовым основанием civil demand в этой формулировке. Без daño real нечего reparar."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-406",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-406-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: вопрос сформулирован с отрицанием 'no es obligatorio'. Архивная GCBA guía прямо объясняет, что ser testigo es una carga pública и нужно являться, когда convocado."
+            },
+            {
+              "answerId": "b-fallback-406-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Falso, потому что вызванный testigo обязан presentarse a declarar ante juez/fiscal и передать lo que sepa y recuerde правдиво."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-432",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-432-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно из-за ÚNICAMENTE. Ley 24.449 требует llevar comprobante de seguro en vigencia para circular; это не ограничено solo vías interurbanas."
+            },
+            {
+              "answerId": "b-fallback-432-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Falso. Seguro obligatorio и его comprobante/certificado нужны как общий requisito para circular, поэтому 'только на междугородних дорогах' - ловушка."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-434",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-434-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: формулировка осторожная - puede ser juzgada. GCBA guía прямо связывает fuga с оставленным herido/a и delito de abandono de persona; Código Penal Art. 106 дает общий предел для abandono/dejar en desamparo."
+            },
+            {
+              "answerId": "b-fallback-434-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: если человек se da a la fuga и оставляет кого-то herido, это может иметь penal consequence как abandono de persona, а не только страховую или административную проблему."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-civil-vs-penal",
+          "textRu": "Civil = daño/reparación/indemnización/demanda. Penal = delito/responsabilidad criminal/pena. Не смешивайте daño real для civil demand с personal criminal responsibility.",
+          "sourceQuestionIds": [
+            "b-fallback-023",
+            "b-fallback-351",
+            "b-fallback-434"
+          ]
+        },
+        {
+          "id": "trap-unicamente-interurbanas",
+          "textRu": "ÚNICAMENTE почти всегда опасное слово: seguro obligatorio/comprobante is not only for vías interurbanas.",
+          "sourceQuestionIds": [
+            "b-fallback-432"
+          ]
+        },
+        {
+          "id": "trap-no-es-obligatorio-testigo",
+          "textRu": "Вопрос `no es obligatorio presentarse` требует перевернуть отрицание: правильный ответ Falso, потому что summoned witness must appear.",
+          "sourceQuestionIds": [
+            "b-fallback-406"
+          ]
+        },
+        {
+          "id": "trap-puede-ser-juzgada",
+          "textRu": "`Puede ser juzgada` означает legal possibility/boundary, not automatic conviction. Для билета достаточно связать fuga + herido/a with abandono de persona.",
+          "sourceQuestionIds": [
+            "b-fallback-434"
+          ]
+        },
+        {
+          "id": "trap-penal-transfer-ticket-specific",
+          "textRu": "No uses Código Penal Art. 106 to prove broad non-transferability of penal responsibility. `b-fallback-023` stays ticket-specific unless a future source slice archives direct support.",
+          "sourceQuestionIds": [
+            "b-fallback-023"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-civil-damage-demand-basis",
+          "textRu": "Civil liability/demand framing for this topic is based on real damage tied to the incident and the right to seek repair/indemnification for that damage.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "crash-liability-civil-damage-demand-basis"
+        },
+        {
+          "id": "claim-witness-duty-fiscalia",
+          "textRu": "A person summoned as a witness in a road-incident judicial proceeding must appear and truthfully state what they know and remember before the competent authority.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "crash-liability-witness-duty-fiscalia"
+        },
+        {
+          "id": "claim-insurance-certificate-general-duty",
+          "textRu": "The mandatory civil-liability insurance certificate/proof is a general circulation requirement, not an obligation only for interurban roads.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "crash-liability-insurance-certificate-general-duty"
+        },
+        {
+          "id": "claim-fleeing-injured-abandonment-boundary",
+          "textRu": "A person who flees a road incident and leaves someone injured may be judged for abandono de persona; this claim stays within the GCBA guide wording and Código Penal Article 106 abandonment boundary.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "crash-liability-fleeing-injured-abandonment-boundary"
+        }
+      ]
+    },
+    {
       "id": "pedestrian-crossings-and-priority",
       "slug": "pedestrian-crossings-and-priority",
       "status": "draft",
