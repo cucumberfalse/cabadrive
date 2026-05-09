@@ -2930,6 +2930,150 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "Supports the b-fallback-313 transitory-sign definition only. Does not promote broader roadwork or signage taxonomy here."
+    },
+    {
+      "id": "emergency-response-incident-definition-preventability",
+      "topicId": "emergency-response-and-crash-scene",
+      "claimId": "claim-incident-definition-preventability",
+      "claimSummaryRu": "Incidente de tránsito/incidente vial is damage to person or thing during circulation, and GCBA exam material frames these events as preventable rather than inevitable accidents.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "gcba-manual-vehiculo-4-ruedas-2023"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones, Incidente de tránsito o incidente vial",
+        "Manual 4 ruedas, Introducción, ¿Accidente o incidente de tránsito?"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/valid_current_material",
+      "notes": "Supports b-fallback-047 and the compact accident-vs-incident framing. Does not generalize Observatorio statistics."
+    },
+    {
+      "id": "emergency-response-pas-and-scene-protection",
+      "topicId": "emergency-response-and-crash-scene",
+      "claimId": "claim-pas-and-scene-protection",
+      "claimSummaryRu": "Initial crash-scene response follows Proteger - Alertar - Socorrer, with scene protection, emergency alerting, and careful aid to injured people.",
+      "officialDocumentIds": [
+        "gcba-guia-practica-siniestros-viales",
+        "gcba-manual-vehiculo-4-ruedas-2023",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Guía siniestros 2. ¿Cómo actuar frente a un siniestro vial?",
+        "Manual 4 ruedas Obligaciones en caso de incidentes viales",
+        "Ley 2148 5.5.1 Obligaciones en caso de incidentes viales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "valid_current_material/in_force",
+      "notes": "PAS cites only the correct source sentence Proteger-Alertar-Socorrer / Proteger, Alertar y Socorrer. It does not rely on the PDF heading typo the misspelled heading."
+    },
+    {
+      "id": "emergency-response-scene-signaling-balizas",
+      "topicId": "emergency-response-and-crash-scene",
+      "claimId": "claim-scene-signaling-balizas",
+      "claimSummaryRu": "After a siniestro/immobilization, signal the zone with vehicle balizas and portable warning devices from the side where vehicles approach, with distance tied to road speed/context.",
+      "officialDocumentIds": [
+        "gcba-guia-practica-siniestros-viales",
+        "gcba-manual-vehiculo-4-ruedas-2023",
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Guía siniestros, Proteger and Señalización de la zona",
+        "Manual 4 ruedas, 1° Proteger",
+        "Ley 2148 5.5.3 Comportamiento general en caso de averías o imprevistos",
+        "Ley 24.449 Artículo 59 Obstáculos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "valid_current_material/in_force/current",
+      "notes": "Supports b-fallback-108 and b-fallback-388 scene-signaling prose. Exact image context remains tied to the ticket."
+    },
+    {
+      "id": "emergency-response-emergency-numbers-107-911",
+      "topicId": "emergency-response-and-crash-scene",
+      "claimId": "claim-emergency-numbers",
+      "claimSummaryRu": "GCBA materials list 107 - SAME and 911 - Policía and the siniestros guide instructs calling 107 for injured people and then 911.",
+      "officialDocumentIds": [
+        "gcba-material-estudio-examen-teorico",
+        "gcba-guia-practica-siniestros-viales",
+        "gcba-manual-vehiculo-4-ruedas-2023"
+      ],
+      "relevantSections": [
+        "Material de estudio, Teléfonos útiles",
+        "Guía siniestros, 2° Alertar",
+        "Manual 4 ruedas, 2° Alertar"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "valid_current_material",
+      "notes": "Supports b-fallback-447. Does not teach unrelated useful phone numbers as part of the ticket answer."
+    },
+    {
+      "id": "emergency-response-insurance-notice-72-hours",
+      "topicId": "emergency-response-and-crash-scene",
+      "claimId": "claim-insurance-notice-72-hours",
+      "claimSummaryRu": "GCBA siniestros guide says to inform the insurer within 72h, and Ley 17.418 Article 46 says the insured/tomador communicates the siniestro to the insurer within three days of knowing it.",
+      "officialDocumentIds": [
+        "gcba-guia-practica-siniestros-viales",
+        "ley-17418-seguros"
+      ],
+      "relevantSections": [
+        "Guía siniestros, Datos a recabar en el lugar del siniestro",
+        "Ley 17.418 Artículo 46"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "valid_current_material/current",
+      "notes": "Supports b-fallback-235 only within insurer-notice context; does not broaden into other deadlines."
+    },
+    {
+      "id": "emergency-response-vision-zero-speed-human-factor",
+      "topicId": "emergency-response-and-crash-scene",
+      "claimId": "claim-vision-zero-speed-human-factor",
+      "claimSummaryRu": "The current GCBA manual supports Vision Cero, human-error preventability, speed/severity, fatal-speed framing, minimum-speed risk, and efficient constant precautionary speed.",
+      "officialDocumentIds": [
+        "gcba-manual-vehiculo-4-ruedas-2023",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Manual 4 ruedas, Introducción and Plan de seguridad vial",
+        "Manual 4 ruedas, Velocidad and Velocidad precautoria",
+        "Manual 4 ruedas, Conducción eficiente",
+        "Ley 24.449 Artículos 50-52"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "valid_current_material/current",
+      "notes": "Supports b-fallback-083, 095, 196, 200, 266, and 443. b-fallback-096 exact cost tuple remains ticket-specific; b-fallback-445 age-range statistics are not generalized."
+    },
+    {
+      "id": "emergency-response-passive-safety-headrest",
+      "topicId": "emergency-response-and-crash-scene",
+      "claimId": "claim-passive-safety-headrest",
+      "claimSummaryRu": "The GCBA manual and Ley 2148 support passive-safety/headrest framing: passive safety minimizes consequences after a crash, and a correctly placed headrest reduces whiplash/cervical injury risk.",
+      "officialDocumentIds": [
+        "gcba-manual-vehiculo-4-ruedas-2023",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Manual 4 ruedas, Elementos de seguridad pasiva, Apoyacabeza",
+        "Ley 2148 6.1.4 Cabezal de seguridad"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "valid_current_material/in_force",
+      "notes": "Supports b-fallback-282 and b-fallback-323. Exact image identification stays ticket-specific."
+    },
+    {
+      "id": "emergency-response-estrellas-amarillas-fatal-victim",
+      "topicId": "emergency-response-and-crash-scene",
+      "claimId": "claim-estrellas-amarillas-fatal-victim",
+      "claimSummaryRu": "Current GCBA Estrellas Amarillas material says the map/signs permanently reference places where a traffic victim died and serve memory/prevention purposes.",
+      "officialDocumentIds": [
+        "gcba-mapa-estrellas-amarillas"
+      ],
+      "relevantSections": [
+        "Mapa de Estrellas Amarillas en la Ciudad"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "valid_current_material",
+      "notes": "Supports b-fallback-205. No broader traffic-sign catalogue claim is made."
     }
   ]
 }
