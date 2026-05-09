@@ -143,7 +143,9 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
       errors.push(`${label}.hash must match local Markdown sha256 metadata.`);
     }
 
-    const sourceFormat = String(entry.sourceFormat || "").toLowerCase();
+    const sourceFormat = String(entry.sourceFormat || "")
+      .trim()
+      .toLowerCase();
     if (LOSSY_SOURCE_FORMATS.has(sourceFormat)) {
       validateLocalPath(errors, entry.rawOriginalPath, `${label}.rawOriginalPath`, sectionPath, fileMetadata);
     } else if (isNonEmptyString(entry.rawOriginalPath)) {

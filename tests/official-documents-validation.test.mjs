@@ -276,6 +276,17 @@ test("requires raw original evidence for PDF and other lossy formats", () => {
   });
   assert(missingRawErrors.includes("ley-24449.rawOriginalPath must be a non-empty string."));
 
+  const spacedFormatErrors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          sourceFormat: "pdf "
+        })
+      ]
+    })
+  });
+  assert(spacedFormatErrors.includes("ley-24449.rawOriginalPath must be a non-empty string."));
+
   const presentRawErrors = validate({
     manifestData: manifest({
       entries: [

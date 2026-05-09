@@ -193,6 +193,8 @@
 - Slice B review hardening final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service worker generation reported 280 cached assets.
 - Slice B review hardening final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 64 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 - Slice B review hardening final verification: `git diff --check` passed with no output.
+- Slice B PR #12 AI Review found a P2 blocker: `sourceFormat` was lowercased but not trimmed before lossy-format checks, so `sourceFormat: "pdf "` could avoid required `rawOriginalPath`. Fix: trim before lowercasing and add regression coverage proving spaced PDF format still requires raw evidence.
+- Slice B PR #12 P2 fix verification: `node --test tests/official-documents-validation.test.mjs` passed 19 tests; `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run test` passed 64 Node tests; `pnpm run build` passed with the existing non-blocking Vite chunk-size warning and 280 cached service-worker assets; `pnpm run preflight` passed with 64 Node tests and 8 Playwright tests; `git diff --check` passed with no output.
 
 ### Implementation Agent Feedback
 
