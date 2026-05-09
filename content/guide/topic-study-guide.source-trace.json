@@ -1946,6 +1946,97 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current",
       "notes": "Used only for the b-fallback-190 railway warning sign; no broader rail-crossing priority topic is promoted here."
+    },
+    {
+      "id": "pedestrian-crossings-priority-senda-priority",
+      "topicId": "pedestrian-crossings-and-priority",
+      "claimId": "claim-pedestrian-crossing-priority",
+      "claimSummaryRu": "CABA requires drivers to yield to pedestrians and wheelchair users crossing by senda peatonal or designated zones, while Anexo L H.5 identifies the crosswalk as the authorized crossing zone where pedestrians have priority over vehicles unless a semaforo or authority indicates otherwise.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.7.1 Regla general",
+        "Ley 2148 6.12.3 Previsiones para peatones",
+        "Ley 24.449 Artículo 41 Prioridades",
+        "Anexo L H.5 Senda peatonal"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports only the general crosswalk/senda priority framing. Image-specific right-of-way decisions remain explained against each fallback ticket."
+    },
+    {
+      "id": "pedestrian-crossings-semaforo-peatonal",
+      "topicId": "pedestrian-crossings-and-priority",
+      "claimId": "claim-pedestrian-traffic-light-behavior",
+      "claimSummaryRu": "CABA and Anexo L support pedestrian crossing behavior at semaforos: pedestrians cross with a pedestrian green/white enabling signal, must not start on orange blinking in CABA text, and may cross with the vehicle green for their same direction when no pedestrian signal exists.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.11 Peatones en intersecciones semaforizadas",
+        "Anexo L punto 32 Significado de las luces",
+        "Anexo L punto 35 Semáforos especiales, Para peatones"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports b-fallback-090 semaforo peatonal behavior without expanding into broader signal timing rules."
+    },
+    {
+      "id": "pedestrian-crossings-green-light-blocking",
+      "topicId": "pedestrian-crossings-and-priority",
+      "claimId": "claim-green-light-does-not-allow-blocking-crossing",
+      "claimSummaryRu": "A vehicle green light generally enables movement, but CABA prohibits entering an intersection or pedestrian crossing when traffic can stop the vehicle and obstruct transverse circulation.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.10 Vehículos en intersecciones semaforizadas",
+        "Ley 2148 6.7.3 Intersecciones",
+        "Ley 24.449 Artículo 44 Vías semaforizadas",
+        "Anexo L punto 32 Significado de las luces"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports the b-fallback-100 and b-fallback-174 green-light caution framing. The ticket phrase about allowing already-started vehicles or pedestrians to finish is kept narrow to the fallback answer wording."
+    },
+    {
+      "id": "pedestrian-crossings-pedestrian-signs",
+      "topicId": "pedestrian-crossings-and-priority",
+      "claimId": "claim-pedestrian-warning-and-regulatory-signs",
+      "claimSummaryRu": "Anexo L distinguishes P.5 Cruce de peatones as a warning/proximity sign and R.24 as a regulatory pedestrian-side circulation sign.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Anexo L P.5 Cruce de peatones",
+        "Anexo L R.24 Peatones por la izquierda"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports the warning-sign classification for b-fallback-106 and b-fallback-153, and only the regulatory pedestrian-side-sign framing for b-fallback-399. The exact b-fallback-399 `por la derecha` fallback answer remains ticket-specific because the local archived Anexo L entry exposed R.24 `por la izquierda` wording. The b-fallback-274 pedestrian information sign remains ticket-specific."
+    },
+    {
+      "id": "pedestrian-crossings-no-stopping-on-markings",
+      "topicId": "pedestrian-crossings-and-priority",
+      "claimId": "claim-no-stopping-on-crosswalk-stop-lines",
+      "claimSummaryRu": "CABA and Anexo L prohibit parking or stopping on pedestrian-crossing demarcation or stop lines, and Anexo L H.5 states vehicles must not park or stop on a crosswalk even due to traffic circumstances.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 7.1.8 Prohibiciones especiales",
+        "Anexo L H.5 Senda peatonal"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports only the generalized no-stopping/no-parking-on-crosswalk-or-stop-line trap. The b-fallback-019 sidewalk/driveway image and b-fallback-308 disability-sticker/parada image conclusions remain ticket-specific."
     }
   ]
 }

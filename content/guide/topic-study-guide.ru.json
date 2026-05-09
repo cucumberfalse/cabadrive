@@ -13182,6 +13182,574 @@
       ]
     },
     {
+      "id": "pedestrian-crossings-and-priority",
+      "slug": "pedestrian-crossings-and-priority",
+      "status": "draft",
+      "titleRu": "Пешеходы на переходах и приоритет",
+      "summaryRu": "Экзаменационный блок про peatón, cruce de peatones, semáforo peatonal и ситуации, где водитель должен ждать, даже если ему кажется, что можно проехать.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Главная идея простая: если peatón уже идет по переходу или собирается начать переход в зоне, где ему нужно уступить, водитель не спорит скоростью, bocina или правом проезда.",
+        "Cruce de peatones и senda peatonal - зона конфликта между машиной и человеком без защиты кузовом. Поэтому правильные ответы часто звучат медленнее, чем хочется водителю: frenar, esperar, detener el vehículo, ceder el paso.",
+        "Luz verde для автомобиля не отменяет осторожность. Нельзя начинать движение, если за перекрестком нет места и автомобиль заблокирует circulación transversal; сначала также нужно дать закончить переход тому vehículo o peatón, кто уже начал cruce.",
+        "Для semáforo peatonal запомните сигнал intermitente/anaranjado titilante: пешеход уже не должен начинать cruce, а тот, кто начал, должен terminarlo con mucha precaución. Водитель в таком вопросе ожидает обе части сразу.",
+        "Знак cruce de peatones (peligro máximo) и знак peatones por la izquierda решают разные задачи. Треугольник предупреждает о близком пешеходном переходе; круглый знак с пешеходом и стрелкой обязывает пешеходов идти по указанной стороне.",
+        "Изображения с автомобилем у тротуара, parada или облеей инвалидности читайте узко. Наклейка или свободный проход не дают права estacionar/detenerse там, где сектор опасен для пассажиров, пешеходов или прямо связан с переходом.",
+        "Статистический билет с Observatorio Vial и картинками A/B/C не надо превращать в текущее правило дорожного движения. В этом fallback-билете правильная картинка - B, то есть moto/motovehículo после peatones."
+      ],
+      "practicalReasoningRu": [
+        "У пешехода меньше скорость, обзор и защита, поэтому водитель отвечает за предсказуемую паузу: остановка и контакт глазами дают человеку понять, что машина действительно его пропускает.",
+        "Правило не въезжать в cruce, если за ним нет места, защищает перекресток от блокировки. Иначе зеленый свет для одного направления превращается в препятствие для другого.",
+        "Свет, знаки и разметка работают как общий язык. Водитель не должен заменять их сигналом bocina: сигнал может предупредить об опасности, но не создает приоритет."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-peaton",
+          "termEs": "peatón",
+          "translationRu": "пешеход",
+          "sourceQuestionIds": [
+            "b-fallback-090",
+            "b-fallback-174",
+            "b-fallback-385",
+            "b-fallback-421"
+          ]
+        },
+        {
+          "id": "term-cruce-peatones",
+          "termEs": "cruce de peatones",
+          "translationRu": "пешеходный переход",
+          "sourceQuestionIds": [
+            "b-fallback-106",
+            "b-fallback-153"
+          ]
+        },
+        {
+          "id": "term-peligro-maximo-peatones",
+          "termEs": "peligro máximo",
+          "translationRu": "максимальная опасность; в билетах так описан знак перехода",
+          "sourceQuestionIds": [
+            "b-fallback-106"
+          ]
+        },
+        {
+          "id": "term-maximo-peligro-peatones",
+          "termEs": "máximo peligro",
+          "translationRu": "максимальная опасность; та же связка слов в обратном порядке",
+          "sourceQuestionIds": [
+            "b-fallback-153"
+          ]
+        },
+        {
+          "id": "term-luz-intermitente",
+          "termEs": "luz se encuentra intermitente",
+          "translationRu": "сигнал мигает",
+          "sourceQuestionIds": [
+            "b-fallback-090"
+          ]
+        },
+        {
+          "id": "term-no-comience-cruzar-calzada",
+          "termEs": "no comience a cruzar la calzada",
+          "translationRu": "не начинал переходить проезжую часть",
+          "sourceQuestionIds": [
+            "b-fallback-090"
+          ]
+        },
+        {
+          "id": "term-finalice-precaucion",
+          "termEs": "finalice con mucha precaución",
+          "translationRu": "завершил переход с большой осторожностью",
+          "sourceQuestionIds": [
+            "b-fallback-090"
+          ]
+        },
+        {
+          "id": "term-luz-roja-verde",
+          "termEs": "cambia de luz roja a verde",
+          "translationRu": "меняется с красного на зеленый",
+          "sourceQuestionIds": [
+            "b-fallback-100"
+          ]
+        },
+        {
+          "id": "term-obstruir-circulacion-transversal",
+          "termEs": "sin obstruir la circulación transversal",
+          "translationRu": "не блокируя поперечное движение",
+          "sourceQuestionIds": [
+            "b-fallback-100"
+          ]
+        },
+        {
+          "id": "term-detener-vehiculo",
+          "termEs": "detener el vehículo",
+          "translationRu": "остановить автомобиль",
+          "sourceQuestionIds": [
+            "b-fallback-174"
+          ]
+        },
+        {
+          "id": "term-contacto-visual",
+          "termEs": "contacto visual",
+          "translationRu": "зрительный контакт",
+          "sourceQuestionIds": [
+            "b-fallback-174",
+            "b-fallback-279"
+          ]
+        },
+        {
+          "id": "term-tocar-bocina",
+          "termEs": "bocina",
+          "translationRu": "сигналить клаксоном",
+          "sourceQuestionIds": [
+            "b-fallback-174",
+            "b-fallback-234"
+          ]
+        },
+        {
+          "id": "term-cederle-paso",
+          "termEs": "cederle el paso",
+          "translationRu": "уступить ему/ей дорогу",
+          "sourceQuestionIds": [
+            "b-fallback-279"
+          ]
+        },
+        {
+          "id": "term-prioridad-paso",
+          "termEs": "prioridad de paso",
+          "translationRu": "приоритет проезда",
+          "sourceQuestionIds": [
+            "b-fallback-385"
+          ]
+        },
+        {
+          "id": "term-oblea-discapacidad",
+          "termEs": "oblea universal de discapacidad",
+          "translationRu": "универсальная наклейка инвалидности",
+          "sourceQuestionIds": [
+            "b-fallback-308"
+          ]
+        },
+        {
+          "id": "term-colectivo-detenido",
+          "termEs": "colectivo detenido",
+          "translationRu": "остановившийся автобус",
+          "sourceQuestionIds": [
+            "b-fallback-316"
+          ]
+        },
+        {
+          "id": "term-senal-reglamentaria",
+          "termEs": "señal reglamentaria",
+          "translationRu": "предписывающий/регламентирующий знак",
+          "sourceQuestionIds": [
+            "b-fallback-399"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-019",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-019-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант начинается правильно - в картинке есть infracción, - но добавляет неверное исключение про propietario de la vivienda. То, что владелец машины и дома один и тот же, не превращает тротуар/выезд в свободное место для стоянки."
+            },
+            {
+              "answerId": "b-fallback-019-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Espacio suficiente para el paso del peatón не спасает ситуацию. Если автомобиль занял зону тротуара/доступа так, что нарушает пешеходную циркуляцию или правила стоянки, нельзя оправдать это оставшимся проходом."
+            },
+            {
+              "answerId": "b-fallback-019-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: обе предложенные причины неверны. По картинке машина стоит в запрещенной/опасной для пешеходного прохода зоне, а ни собственник дома, ни оставшийся проход не являются хорошим оправданием."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b148.jpg"
+        },
+        {
+          "questionId": "b-fallback-090",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-090-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза верная, но неполная: при мигающем пешеходном сигнале новый peatón не должен начинать cruce."
+            },
+            {
+              "answerId": "b-fallback-090-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Эта часть тоже верная, но сама по себе неполная: тот, кто уже начал переход, должен завершить его con mucha precaución."
+            },
+            {
+              "answerId": "b-fallback-090-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно выбрать ambas: водитель ожидает оба поведения сразу - новые пешеходы не начинают переход, а уже начавшие заканчивают его осторожно."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b24.jpg"
+        },
+        {
+          "questionId": "b-fallback-100",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-100-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это нужная предосторожность, но в билете она не единственная: зеленый свет не разрешает въехать и остаться блокировать circulación transversal."
+            },
+            {
+              "answerId": "b-fallback-100-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Это тоже верная предосторожность, но ответ неполный: перед стартом нужно также проверить, что есть место за перекрестком."
+            },
+            {
+              "answerId": "b-fallback-100-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas. При смене roja a verde можно возобновлять движение только если не заблокируешь перекресток и дашь завершить cruce тому vehículo o peatón, кто уже начал."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-106",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-106-a1",
+              "verdict": "correct",
+              "explanationRu": "Это знак Cruce de peatones (peligro máximo): треугольник предупреждает водителя о близком пешеходном переходе."
+            },
+            {
+              "answerId": "b-fallback-106-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Peatones a la izquierda - не этот знак. Здесь нет указания, что пешеход должен идти слева; это предупреждение водителю о переходе."
+            },
+            {
+              "answerId": "b-fallback-106-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de circular / zona exclusiva peatonal звучит как запрет или зона, но показан предупреждающий cruce de peatones, а не запрет движения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b238.jpg"
+        },
+        {
+          "questionId": "b-fallback-153",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-153-a1",
+              "verdict": "correct",
+              "explanationRu": "Señal A - треугольник с человеком на zebrado, то есть Cruce de Peatones (máximo peligro)."
+            },
+            {
+              "answerId": "b-fallback-153-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Señal B - круглый reglamentario-style знак с пешеходом и стрелкой; он не является предупреждением cruce de peatones (máximo peligro)."
+            },
+            {
+              "answerId": "b-fallback-153-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Señal C выглядит как предупреждение, но в этом билете правильная картинка cruce de peatones - именно A."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b239.jpg"
+        },
+        {
+          "questionId": "b-fallback-174",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-174-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: нужно detener el vehículo, дать peatón закончить переход и перед движением сделать contacto visual с теми, кто еще может начать cruzar. Короткая блокировка bocacalle хуже, чем движение на пешехода."
+            },
+            {
+              "answerId": "b-fallback-174-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Luz verde не отменяет приоритет пешехода. Bocina не заменяет остановку и может только напугать человека на переходе."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b18.jpg"
+        },
+        {
+          "questionId": "b-fallback-234",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-234-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Esquivar и tocar bocina - опасная логика: водитель переносит риск на peatona вместо того, чтобы убрать конфликт."
+            },
+            {
+              "answerId": "b-fallback-234-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: frenar y esperar a que termine de cruzar. Даже если автомобиль на момент остановки мешает потоку, приоритет - не создать опасность для пешехода."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b19.jpg"
+        },
+        {
+          "questionId": "b-fallback-247",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-247-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: luces не только освещают. Они показывают другим vehicles и peatones намерения водителя - например, giro, detención, emergencia или движение atrás."
+            },
+            {
+              "answerId": "b-fallback-247-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: если считать luces только освещением, теряется их функция comunicación в дорожной ситуации."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-256",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-256-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción A показывает автомобиль. В этом fallback-билете после peatones правильная категория víctimas fatales - не autos."
+            },
+            {
+              "answerId": "b-fallback-256-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: Opción B, moto/motovehículo. Это ticket-specific ответ на статистический вопрос Observatorio Vial, а не новое общее правило из этого topic."
+            },
+            {
+              "answerId": "b-fallback-256-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Opción C показывает велосипедиста. В данном билете correct answer привязан к картинке B."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b2.jpg"
+        },
+        {
+          "questionId": "b-fallback-272",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-272-a1",
+              "verdict": "incorrect",
+              "explanationRu": "На картинке как раз есть peatones cruzando; утверждение por allí no circulan peatones не совпадает с ситуацией."
+            },
+            {
+              "answerId": "b-fallback-272-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: автомобиль не должен avanzar, пока pedestrians продолжают cruzar de un lado al otro de la arteria."
+            },
+            {
+              "answerId": "b-fallback-272-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Espacio suficiente para avanzar не дает права ехать между пешеходами на переходе. Запас места не отменяет ожидание."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b17.jpg"
+        },
+        {
+          "questionId": "b-fallback-274",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-274-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero по самому билету: показанная табличка относится к informativas que orientan al peatón. Это ticket-specific классификация изображения."
+            },
+            {
+              "answerId": "b-fallback-274-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно для этой картинки: билет ожидает, что вы узнаете информационный указатель для pedestrian orientation, а не запрет или warning sign."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b37.jpg"
+        },
+        {
+          "questionId": "b-fallback-279",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-279-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: сделать contacto visual и, если peatona начинает cruzar, cederle el paso. Водитель заранее показывает, что он ее видит и готов уступить."
+            },
+            {
+              "answerId": "b-fallback-279-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Prioridad por circular desde la derecha не применяется против пешехода, который собирается переходить в зоне перехода. Это ловушка из автомобильных приоритетов."
+            },
+            {
+              "answerId": "b-fallback-279-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas incorrectas не подходит, потому что вариант A как раз описывает безопасную реакцию водителя."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b21.jpg"
+        },
+        {
+          "questionId": "b-fallback-308",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-308-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Oblea universal de discapacidad не дает абсолютное libre estacionamiento. В этой картинке место опасно/запрещено для всех, поэтому наклейка не отменяет запрет."
+            },
+            {
+              "answerId": "b-fallback-308-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: sí, está en infracción. Билет подчеркивает, что todo vehículo tiene prohibido estacionar en este sector porque creates risk для pasajeros y peatones."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b150.jpg"
+        },
+        {
+          "questionId": "b-fallback-316",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-316-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: colectivo detenido закрывает обзор. Нужно ожидать, что peatones могут cruzar por delante o por detrás del colectivo."
+            },
+            {
+              "answerId": "b-fallback-316-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Пассажиры обычно не bajen por la parte izquierda del colectivo; главная опасность при обгоне остановившегося автобуса - скрытые пешеходы перед или за ним."
+            },
+            {
+              "answerId": "b-fallback-316-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ninguno неверно: даже при legal speed обзор перекрыт, поэтому опасность нужно preverse заранее."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-385",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-385-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: приоритет в этой ситуации у peatón. Водитель должен остановиться/ждать, а не пытаться проскочить перед человеком на переходе."
+            },
+            {
+              "answerId": "b-fallback-385-a2",
+              "verdict": "incorrect",
+              "explanationRu": "El conductor не получает priority of passage только потому, что едет по дороге. В зоне crossing пешеход имеет приоритет."
+            },
+            {
+              "answerId": "b-fallback-385-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Es indistinto опасно: билет требует выбрать конкретного участника с приоритетом, а не договариваться на ходу."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b23.jpg"
+        },
+        {
+          "questionId": "b-fallback-399",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-399-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Inicio de calle de convivencia - другое понятие. На картинке не знак начала shared street."
+            },
+            {
+              "answerId": "b-fallback-399-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Los peatones no deben circular por esa zona переворачивает смысл: знак не запрещает pedestrians, а задает сторону их движения."
+            },
+            {
+              "answerId": "b-fallback-399-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: это señal reglamentaria, по которой peatones deben circular obligatoriamente por la derecha/по указанной стороне."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b256.jpg"
+        },
+        {
+          "questionId": "b-fallback-421",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-421-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант признает, что надо не создавать siniestro vial, но ошибочно отрицает приоритет pedestrian в такой intersection."
+            },
+            {
+              "answerId": "b-fallback-421-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: sí, siempre. Даже при señal de giro libre водитель обязан учитывать пешехода и уступить ему при пересечении траекторий."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b20.jpg"
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-pedestrian-crossing-priority",
+          "textRu": "Водитель обязан ceder el paso пешеходам и людям в silla de ruedas, которые пересекают calzada по senda peatonal или в предназначенной для этого зоне; H.5 описывает senda peatonal как разрешенную зону перехода с приоритетом пешеходов перед vehicles, кроме случаев semáforo/autoridad.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-crossings-priority-senda-priority"
+        },
+        {
+          "id": "claim-pedestrian-traffic-light-behavior",
+          "textRu": "При semáforo peatonal пешеход может начинать переход на habilitating green/white signal; с anaranjada titilante он не должен начинать crossing, а при vehicle-only green may cross in the same direction.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-crossings-semaforo-peatonal"
+        },
+        {
+          "id": "claim-green-light-does-not-allow-blocking-crossing",
+          "textRu": "Зеленый сигнал для автомобиля не разрешает въезжать в intersection или cruce peatonal, если поток остановит машину и она obstructs circulación transversal; перед движением нужно учитывать тех, кто уже начал crossing.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-crossings-green-light-blocking"
+        },
+        {
+          "id": "claim-pedestrian-warning-and-regulatory-signs",
+          "textRu": "Anexo L поддерживает различение P.5 Cruce de peatones как warning/proximity sign and R.24 as a regulatory pedestrian-side instruction; exact side wording in `b-fallback-399` remains ticket-specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-crossings-pedestrian-signs"
+        },
+        {
+          "id": "claim-no-stopping-on-crosswalk-stop-lines",
+          "textRu": "CABA and Anexo L prohibit estacionar/detenerse on horizontal demarcation of sendas peatonales or líneas de pare; H.5 also says vehicles must not park or stop on the crosswalk even due to traffic circumstances.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-crossings-no-stopping-on-markings"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-green-light-not-absolute",
+          "textRu": "Luz verde habilita avanzar, но не дает права ехать на пешехода или блокировать cruce/intersection. В билетах `ambas` часто означает: и не блокируй, и дай закончить тем, кто уже начал.",
+          "sourceQuestionIds": [
+            "b-fallback-100",
+            "b-fallback-174",
+            "b-fallback-421"
+          ]
+        },
+        {
+          "id": "trap-bocina-is-not-priority",
+          "textRu": "Tocar bocina не создает приоритет. Если вариант предлагает сигналить вместо frenar/esperar/ceder, почти всегда это ловушка.",
+          "sourceQuestionIds": [
+            "b-fallback-174",
+            "b-fallback-234"
+          ]
+        },
+        {
+          "id": "trap-pedestrian-sign-shapes",
+          "textRu": "Треугольник с pedestrian crossing - warning cruce de peatones; круг с пешеходом и стрелкой - reglamentaria instruction about where pedestrians must circulate.",
+          "sourceQuestionIds": [
+            "b-fallback-106",
+            "b-fallback-153",
+            "b-fallback-399"
+          ]
+        },
+        {
+          "id": "trap-image-specific-answers",
+          "textRu": "В билетах с картинками `Opción A/B/C`, oblea discapacidad или orientan al peatón не расширяйте ответ до общего закона. Отвечайте по image and exact fallback wording.",
+          "sourceQuestionIds": [
+            "b-fallback-256",
+            "b-fallback-274",
+            "b-fallback-308"
+          ]
+        },
+        {
+          "id": "trap-visible-space-is-not-permission",
+          "textRu": "Если автомобиль стоит на sidewalk/crossing-related sector, оставшийся проход или наклейка не являются автоматическим permission. Проверяйте, нет ли запрета estacionar/detenerse.",
+          "sourceQuestionIds": [
+            "b-fallback-019",
+            "b-fallback-308"
+          ]
+        }
+      ]
+    },
+    {
       "id": "turns-direction-and-reversing",
       "slug": "turns-direction-and-reversing",
       "status": "draft",
