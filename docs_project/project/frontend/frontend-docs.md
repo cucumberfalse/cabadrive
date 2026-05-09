@@ -13,6 +13,7 @@ Implemented MVP stack:
 - Vite
 - localStorage-backed progress adapter for MVP progress/statistics
 - local in-memory search index over bundled content
+- bundled topic study guide data rendered as local learning materials
 - native service worker generated after production build
 - Node test runner + Playwright for testing
 
@@ -81,3 +82,5 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 - Support mobile-first interaction and exam-focused speed.
 - Keep weak-topic review prominent in study loops.
 - Render question images as part of the question, using only local offline assets.
+- `Материалы` renders the topic study guide from bundled JSON, labels it as draft/incomplete and unofficial while those statuses remain, and joins ticket references back to canonical questions for Spanish text, answers, correct answer, explanations, source status, and local images.
+- `CABA/RF` remains a separate compact contrast guide.

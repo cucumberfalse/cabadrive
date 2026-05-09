@@ -1,8 +1,10 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 
 const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
+const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
+const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
 
 async function storedAnswerCount(page: Page) {
   return page.evaluate(() => JSON.parse(localStorage.getItem("cabadrive.progress.v1") || "{\"answers\":[]}").answers.length);
@@ -86,8 +88,116 @@ test("vocabulary and guide are available", async ({ page }) => {
   await page.getByRole("button", { name: /Словарь/ }).click();
   await page.getByPlaceholder(/Buscar/).fill("balizas");
   await expect(page.getByText("balizas")).toBeVisible();
+  await page.getByRole("button", { name: /Материалы/ }).click();
+  await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
   await page.getByRole("button", { name: /CABA\/RF/ }).click();
   await expect(page.getByText("Статус вопросов категории B")).toBeVisible();
+});
+
+test("materials view renders topic guide status, list, details, canonical ticket data, and local images", async ({ page }) => {
+  const firstTopic = topicGuide.topics[0];
+  const firstTicket = firstTopic.tickets[0];
+  const canonicalQuestion = canonicalQuestionById.get(firstTicket.questionId) as {
+    officialTextEs: string;
+    answers: { id: string; officialTextEs: string }[];
+    correctAnswerId: string;
+    image: { localPath: string };
+  };
+  const correctAnswer = canonicalQuestion.answers.find((answer) => answer.id === canonicalQuestion.correctAnswerId)!;
+  const correctExplanation = firstTicket.answerExplanations.find((item: { answerId: string }) => item.answerId === correctAnswer.id)!;
+  const incorrectExplanation = firstTicket.answerExplanations.find((item: { answerId: string }) => item.answerId !== correctAnswer.id)!;
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Материалы/ }).click();
+
+  await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  await expect(page.getByText("Черновик: материал неполный").first()).toBeVisible();
+  await expect(page.getByText("Неофициальная учебная поддержка")).toBeVisible();
+  await expect(page.getByText("Текущие билеты: неофициальная B-практика, не полная официальная база GCBA")).toBeVisible();
+  await expect(page.getByRole("button", { name: new RegExp(firstTopic.titleRu) })).toBeVisible();
+  await expect(page.getByRole("heading", { name: firstTopic.titleRu })).toBeVisible();
+  await expect(page.getByText(firstTopic.summaryRu)).toBeVisible();
+  await expect(page.getByText(firstTopic.learningMaterialRu[0])).toBeVisible();
+  await expect(page.getByText(firstTopic.practicalReasoningRu[0])).toBeVisible();
+  const firstTerm = page.locator(".materials-term").filter({ hasText: firstTopic.spanishTerms[0].translationRu });
+  await expect(firstTerm.getByText(firstTopic.spanishTerms[0].termEs, { exact: true })).toBeVisible();
+  await expect(firstTerm.getByText(firstTopic.spanishTerms[0].translationRu)).toBeVisible();
+  await expect(page.getByText(firstTopic.trapNotes[0].textRu)).toBeVisible();
+
+  const ticketBlock = page.getByTestId(`materials-ticket-${firstTicket.questionId}`);
+  await expect(ticketBlock).toBeVisible();
+  await expect(ticketBlock.getByText(canonicalQuestion.officialTextEs)).toBeVisible();
+  const ticketAnswers = ticketBlock.locator(".materials-answers");
+  for (const answer of canonicalQuestion.answers) {
+    await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
+  }
+  await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
+  await expect(ticketBlock.locator(".material-answer p").filter({ hasText: correctExplanation.explanationRu }).first()).toBeVisible();
+  await expect(ticketBlock.locator(".material-answer p").filter({ hasText: incorrectExplanation.explanationRu }).first()).toBeVisible();
+  await expect(ticketBlock.locator("img")).toHaveAttribute("src", new RegExp(canonicalQuestion.image.localPath));
+});
+
+test("materials view renders a dual-topic ticket as a full block in both assigned topics", async ({ page }) => {
+  const firstTopic = topicGuide.topics.find((topic: { slug: string }) => topic.slug === "parking-clearances-and-corners");
+  const secondTopic = topicGuide.topics.find((topic: { slug: string }) => topic.slug === "right-of-way-special-situations");
+  const dualQuestionId = "b-fallback-031";
+  if (!firstTopic || !secondTopic) {
+    throw new Error("Expected both dual-topic guide topics to exist.");
+  }
+  const firstTopicTicket = firstTopic.tickets.find((ticket: { questionId: string }) => ticket.questionId === dualQuestionId);
+  const secondTopicTicket = secondTopic.tickets.find((ticket: { questionId: string }) => ticket.questionId === dualQuestionId);
+  if (!firstTopicTicket || !secondTopicTicket) {
+    throw new Error(`Expected ${dualQuestionId} to be present in both selected guide topics.`);
+  }
+  const canonicalQuestion = canonicalQuestionById.get(dualQuestionId) as {
+    officialTextEs: string;
+    answers: { id: string; officialTextEs: string }[];
+    correctAnswerId: string;
+  };
+
+  async function expectFullDualTopicTicket(ticketBlock: Locator, guideTicket: {
+    answerExplanations: { explanationRu: string }[];
+  }) {
+    await expect(ticketBlock).toBeVisible();
+    await expect(ticketBlock.getByText(canonicalQuestion.officialTextEs)).toBeVisible();
+    const ticketAnswers = ticketBlock.locator(".materials-answers");
+    for (const answer of canonicalQuestion.answers) {
+      await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
+    }
+    await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
+    for (const explanation of guideTicket.answerExplanations) {
+      await expect(ticketBlock.locator(".material-answer p").filter({ hasText: explanation.explanationRu }).first()).toBeVisible();
+    }
+  }
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Материалы/ }).click();
+
+  await expect(page.getByRole("heading", { name: firstTopic.titleRu })).toBeVisible();
+  let ticketBlock = page.getByTestId(`materials-ticket-${dualQuestionId}`);
+  await expectFullDualTopicTicket(ticketBlock, firstTopicTicket);
+
+  await page.getByRole("button", { name: new RegExp(secondTopic.titleRu) }).click();
+  await expect(page.getByRole("heading", { name: secondTopic.titleRu })).toBeVisible();
+  ticketBlock = page.getByTestId(`materials-ticket-${dualQuestionId}`);
+  await expectFullDualTopicTicket(ticketBlock, secondTopicTicket);
+});
+
+test("materials view stays local-first without external requests or PDF viewer", async ({ page }) => {
+  const externalRequests: string[] = [];
+  const pdfRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
+    if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+  });
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Материалы/ }).click();
+  await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+  expect(externalRequests).toEqual([]);
+  expect(pdfRequests).toEqual([]);
 });
 
 test("offline reload works after first load", async ({ page, context }) => {

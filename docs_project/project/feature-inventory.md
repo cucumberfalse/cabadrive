@@ -11,6 +11,7 @@
 - Exam mode driven by `content/config/caba-exam-format.json` with approximate/exact status labeling.
 - Mistake tracking and repeated-error review loop.
 - Exam-oriented vocabulary module with topic grouping and search.
+- Topic materials module that renders the draft `006` topic study guide with topic list/detail, Russian learning material, Spanish terms, trap notes, canonical ticket blocks, and local images.
 - Guide module focused on CABA-vs-RF differences that matter for exam outcomes.
 - Offline-capable local-first behavior after build.
 - Docker-only local runtime with `make build`, `make up`, and `make down`.
