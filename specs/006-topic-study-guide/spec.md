@@ -111,6 +111,39 @@ Section-wide rules:
 - If a fallback ticket's expected answer appears inconsistent with current official sources, the guide must not silently teach a doubtful claim. The item must be omitted from generalized prose, rewritten as ticket-specific wording, or recorded as an issue for Architect disposition.
 - Official-source enrichment must be compact and must directly help answer assigned tickets.
 
+## Remaining Crash And Emergency Source Requirements
+
+After merged content PR #55, the remaining source-heavy planned topics are:
+
+- `emergency-response-and-crash-scene`
+- `crash-liability-and-legal-duties`
+
+These topics share incident-response, insurance, witness, and legal-process sources. They must use one combined prerequisite source-archive PR before either topic content PR begins. Splitting the archive into two PRs would make both content agents rediscover the same GCBA siniestros guide and would increase the chance of inconsistent currentness decisions.
+
+The combined source-archive PR must add or validate archive entries for these source IDs unless implementation proves a current archived entry already satisfies the same claim:
+
+- `gcba-guia-practica-siniestros-viales`: current official GCBA practical guide for road incidents, archived from the official Buenos Aires material/source URL, with PDF/raw evidence and Markdown conversion. This source supports immediate stop, scene signaling, emergency/police call, data collection, insurance notice within 72 hours, witness-duty wording, administrative insurance claim framing, and the guide's fleeing-with-injured-person note.
+- `gcba-material-estudio-examen-teorico`: current official GCBA study-material entry page, archived from the official Buenos Aires page that names required theoretical-exam materials, links the four-wheel manual, links the practical siniestros guide, and lists useful numbers including `107` and `911`.
+- `gcba-manual-vehiculo-4-ruedas-2023`: current official GCBA four-wheel theoretical manual, archived from the current study-material page link or another official GCBA URL verified at archive time. If implementation uses a smaller official chapter PDF instead, it must record why that chapter is the current official source for the cited claims; otherwise it must archive the full current manual. Manual-only claims include PAS order, Vision Cero wording, human-factor/statistics/cost framing, speed/severity framing, and passive-safety/headrest context.
+- `gcba-mapa-estrellas-amarillas`: current official GCBA page or official material explaining that Estrellas Amarillas mark places where traffic deaths occurred and their memory/prevention/justice/education meaning.
+- `gcba-observatorio-siniestros-viales-current`: current official GCBA Observatorio/open-data page or resource bundle needed for any generalized "latest statistics" claim. If the latest source no longer supports the fallback ticket's `15 a 34` age-range answer, the content PR must keep `b-fallback-445` ticket-specific as stale or fallback wording and must not source-trace it as a current Observatorio claim.
+- `ley-11179-codigo-penal`: current updated national Código Penal source from Argentina.gob.ar, at least supporting Article 106 abandonment-of-persons text for the `b-fallback-434` boundary. It must not be used to overstate the fallback ticket beyond what the current law and GCBA guide support.
+- `ley-26994-codigo-civil-comercial`: current updated Código Civil y Comercial source from Argentina.gob.ar, used only if the legal-duty topic generalizes civil-liability/damage requirements beyond the narrow fallback `b-fallback-351` answer.
+- `ley-17418-seguros`: current updated Ley de Seguros source from Argentina.gob.ar if the topic generalizes the three-day/72-hour insurance notice as a current legal/insurance-rule claim. The GCBA siniestros guide may also support exam-oriented wording, but the statutory claim should cite Ley 17.418 when generalized.
+
+Existing archive entries may be reused without modification where they directly support the claim:
+
+- `ley-2148-caba-codigo-transito-transporte`: incident/incident-vial definition, traffic-safety authority/statistics framing, emergency/incident road-behavior rules, and CABA insurance/document context already present in the archive.
+- `ley-24449-transito-seguridad-vial`: national crash duties, mandatory insurance, insurance certificate, and accident/insurance reporting provisions already present in the archive.
+- `decreto-779-1995-anexo-l-senalizacion-vial-uniforme`: use only for already-archived sign/marking material directly relevant to assigned images or signals.
+
+The source-archive PR must not write topic guide prose, ticket blocks, source-trace entries, product code, tests outside the archive/validator scope required by the archive, or runtime content. It may update this feature memory with evidence and source decisions.
+
+Topic content PRs after the archive must use the following source boundaries:
+
+- `emergency-response-and-crash-scene` content may generalize immediate response, scene protection/signaling, emergency call information, 72-hour insurance notice, incident definition, Vision Cero, passive-safety/headrest context, and speed/severity only when backed by the archive/source trace. `b-fallback-445` must remain ticket-specific unless the current Observatorio source supports the age-range claim as current; `b-fallback-205` may generalize only from the current Estrellas Amarillas source; exact PAS acronym/order must cite the current manual or stay ticket-specific.
+- `crash-liability-and-legal-duties` content must stay narrow and legal-source-safe. `b-fallback-023` penal responsibility non-transferability remains ticket-specific unless a direct current official source is archived for that precise principle. `b-fallback-351` may source-trace generalized civil-damage wording only through the current Código Civil y Comercial and/or the GCBA guide; otherwise it remains ticket-specific. `b-fallback-406` may cite the GCBA siniestros guide witness-duty wording. `b-fallback-432` may cite existing Ley 24.449 and the documents/insurance sources already archived. `b-fallback-434` must cite the GCBA siniestros guide and current Código Penal Article 106 if generalized.
+
 ## User Stories
 
 ### User Story 1

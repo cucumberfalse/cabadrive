@@ -180,6 +180,37 @@ Official research should be scoped by topic slice. A content-writing slice must 
 
 Do not make every content agent rediscover and reconvert common official documents. Create reusable official-document archive entries early for common sources, then let topic slices cite them.
 
+For the remaining crash/emergency work after PR #55, use one combined source-archive PR before content resumes. The two remaining topics share the GCBA siniestros guide, insurance/witness/legal-process material, and emergency/statistics context; a combined archive keeps source IDs, conversion limitations, and currentness evidence consistent while still leaving content writing split into two later PRs.
+
+The combined prerequisite archive PR must be source-only except for feature-memory evidence updates. It should add or validate these current-source entries:
+
+- `gcba-guia-practica-siniestros-viales`
+- `gcba-material-estudio-examen-teorico`
+- `gcba-manual-vehiculo-4-ruedas-2023`, or a documented current official chapter-level equivalent if the current GCBA material page proves that smaller document is authoritative for the cited claims
+- `gcba-mapa-estrellas-amarillas`
+- `gcba-observatorio-siniestros-viales-current`
+- `ley-11179-codigo-penal`
+- `ley-26994-codigo-civil-comercial`, only if generalized civil-liability/damage prose will be source-traced
+- `ley-17418-seguros`, only if the three-day/72-hour insurance notice is generalized as a current legal/insurance-rule claim
+
+The source PR may reuse existing `ley-2148-caba-codigo-transito-transporte`, `ley-24449-transito-seguridad-vial`, and `decreto-779-1995-anexo-l-senalizacion-vial-uniforme` without editing them when the existing sections directly support the claim.
+
+Source decisions for remaining claims:
+
+- `b-fallback-047` incident definition: use existing `ley-2148-caba-codigo-transito-transporte`.
+- `b-fallback-108` and `b-fallback-388` scene signaling: use existing Ley 24.449/Ley 2148 where direct, plus `gcba-guia-practica-siniestros-viales` for practical placement/distance guidance.
+- `b-fallback-183` emergency indication and `b-fallback-216` emergency lane/symbol behavior: use existing Ley 2148/Ley 24.449/Anexo L where direct; keep image/symbol-specific details ticket-specific if no direct official catalogue source is archived.
+- `b-fallback-235` 72-hour insurance notice: source-trace to `gcba-guia-practica-siniestros-viales` and `ley-17418-seguros` if generalized; otherwise keep as ticket-specific exam wording.
+- `b-fallback-307` PAS order: cite the current GCBA manual if it contains the exact `Proteger - Alertar - Socorrer` sequence; otherwise teach the practical sequence from the GCBA guide and keep the PAS acronym/order ticket-specific.
+- `b-fallback-200` Vision Cero, `b-fallback-083` human factor, `b-fallback-096` consequences/costs, and `b-fallback-196` fatal-speed framing: cite the current GCBA manual only after it is archived; keep any outdated/statistical wording ticket-specific when current material diverges.
+- `b-fallback-205` fatal-victim sign: source-trace only through `gcba-mapa-estrellas-amarillas` or another current official GCBA Estrellas Amarillas source.
+- `b-fallback-445` latest Observatorio age range: source-trace only if the current Observatorio page/resource bundle supports the exact age range at archive/content time; otherwise explain it as fallback/stale ticket wording and do not generalize "latest statistics."
+- `b-fallback-023` penal responsibility non-transferability: keep ticket-specific unless a direct current official source is archived for that precise principle.
+- `b-fallback-351` civil-demand/damage threshold: source-trace generalized civil-damage prose through `ley-26994-codigo-civil-comercial` and/or the GCBA guide; otherwise keep ticket-specific.
+- `b-fallback-406` witness duty before Fiscalía: source-trace through `gcba-guia-practica-siniestros-viales`.
+- `b-fallback-432` insurance certificate not interurban-only: source-trace through existing `ley-24449-transito-seguridad-vial`, with already-archived document/insurance sources where useful.
+- `b-fallback-434` fleeing after injured crash/abandonment: source-trace through `gcba-guia-practica-siniestros-viales` plus `ley-11179-codigo-penal` Article 106 if generalized.
+
 ### Official Documents Path
 
 Use `content/official-documents/` unless implementation finds a concrete repository reason to choose another path. This path separates governed verbatim official text from existing source originals and from unofficial Russian learning content.
@@ -254,6 +285,15 @@ If a ticket's expected answer conflicts with current official sources, implement
 - Archive or cite only the official documents required by that slice.
 - Validate assigned slice structure and update coverage/source-trace evidence.
 - Record dead ends, decisions, known issues, and any source conflicts in `tasks.md`.
+
+Remaining content order after PR #55:
+
+1. Run the combined crash/emergency source-archive prerequisite PR described above.
+2. Implement `emergency-response-and-crash-scene` in its own content PR, promoting only that topic's effective placements for `b-fallback-047`, `056`, `078`, `083`, `095`, `096`, `108`, `146`, `183`, `196`, `200`, `205`, `216`, `235`, `266`, `282`, `307`, `323`, `388`, `443`, `445`, and `447`.
+3. Implement `crash-liability-and-legal-duties` in its own content PR, promoting only that topic's effective placements for `b-fallback-023`, `351`, `406`, `432`, and `434`.
+4. Preserve all neighboring placement phases. In particular, already-ready `documents-licenses-and-insurance` and `vehicle-lights-and-signaling` placements must stay ready; planned crash/emergency or legal-duty placements must not be accidentally promoted by neighboring-topic edits.
+
+The two content PRs must record targeted coverage diffs, source-trace decisions, and any stale-statistic/legal conflicts in `tasks.md`. They must not reassign taxonomy or broaden ticket-specific source boundaries without a separate Architect disposition.
 
 ### Slice F: UI Integration
 
