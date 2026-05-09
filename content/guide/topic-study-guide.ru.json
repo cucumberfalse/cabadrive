@@ -5976,6 +5976,772 @@
           "sourceTraceId": "safety-principles-cyclist-spaces-two-wheel-context"
         }
       ]
+    },
+    {
+      "id": "stopping-vs-parking-maneuvers",
+      "slug": "stopping-vs-parking-maneuvers",
+      "status": "draft",
+      "titleRu": "Остановка, стоянка и маневры парковки",
+      "summaryRu": "Экзаменационный блок про diferencia entre detención y estacionamiento, double fila, balizas, въезд в garaje, banquina, emergency vehicles, PARE и знаки, которые маскируются под parking-тему.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В испанских билетах держите три разных слова отдельно: detenerse - кратко остановиться, estacionar - оставить транспорт дольше/как стоянку, maniobra de estacionamiento - сам маневр парковки.",
+        "В CABA detención в обычной ситуации - краткая остановка до двух минут, водитель не покидает автомобиль, машина ставится как можно ближе к acera и обязательно предупреждает balizas. Если водитель ушел или время больше, ситуация уже читается как estacionamiento.",
+        "Balizas не являются “магической кнопкой разрешения”. Они предупреждают о detenido, egreso a garage, próxima maniobra de detención/estacionamiento, emergencia или другой необычной ситуации. Но они не разрешают double fila для высадки пассажиров, не отменяют знак No estacionar ni detenerse и не дают права стоять на ciclovía, senda peatonal, esquina, puente, túnel или vía rápida.",
+        "Double fila - главная ловушка темы. Общая формула билетов: нельзя останавливаться во второй ряд, кроме detención previa a la maniobra de estacionamiento. Ascenso y descenso de pasajeros, “2 a 5 minutos”, водитель внутри и включенные balizas не делают double fila законной.",
+        "No estacionar и No estacionar ni detenerse - разные запреты. No estacionar запрещает стоянку, но по общей логике допускает краткую detención для ascenso/descenso, если нет другого запрета. No estacionar ni detenerse запрещает и стоянку, и остановку; единственная вынужденная остановка - por motivos de la circulación.",
+        "При ingreso a garaje/playa de estacionamiento/estación de servicio используйте luces intermitentes de emergencia или balizas, а не обычный поворотник. Для едущего сзади это сигнал: машина может резко замедлиться, остановиться у acera или начать необычный маневр.",
+        "На autopistas, vías rápidas и banquina остановка не превращается в “безопасную” только потому, что видимость плохая. Если движение невозможно из-за niebla или аварии, цель - уйти как можно дальше от calzada и banquina, предупредить других и не оставаться в траектории потока.",
+        "После siniestro vial первый шаг - detenerse inmediatamente, не уезжать в comisaría и не продолжать поездку после звонка. При emergency vehicle нужно дать место, освободить carril de emergencias и при необходимости остановиться. При agente de tránsito или personal de obra в зоне работ выполняйте их указание detenerse, даже если обычный сигнал кажется разрешающим.",
+        "Часть билетов выглядит как parking, но на самом деле проверяет распознавание знаков: PARE требует полной остановки; Corredor aéreo предупреждает о низких самолетах; Plaza, Teatro и Estacionamiento vehicular - информационные ориентиры, а не запреты парковки."
+      ],
+      "practicalReasoningRu": [
+        "Различие detención/estacionamiento нужно, чтобы поток понимал намерение водителя: кратко высадить пассажира, начать парковку, въехать в гараж или реально оставить машину.",
+        "Balizas делают маневр предсказуемым, но если ими “покупать” право стоять где угодно, остальные водители начнут угадывать, объезжать и резко перестраиваться.",
+        "Запреты на double fila, banquina, esquinas, sendas, puentes и vías rápidas защищают видимость, траекторию объезда и пространство для emergency vehicles."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-detenerse-inmediatamente",
+          "termEs": "Detenerse inmediatamente",
+          "translationRu": "немедленно остановиться",
+          "sourceQuestionIds": [
+            "b-fallback-003"
+          ]
+        },
+        {
+          "id": "term-siniestro-vial",
+          "termEs": "siniestro vial",
+          "translationRu": "дорожный инцидент/ДТП",
+          "sourceQuestionIds": [
+            "b-fallback-003"
+          ]
+        },
+        {
+          "id": "term-doble-fila",
+          "termEs": "doble fila",
+          "translationRu": "остановка/стояние вторым рядом",
+          "sourceQuestionIds": [
+            "b-fallback-015",
+            "b-fallback-039"
+          ]
+        },
+        {
+          "id": "term-balizas",
+          "termEs": "balizas",
+          "translationRu": "аварийная световая сигнализация",
+          "sourceQuestionIds": [
+            "b-fallback-015",
+            "b-fallback-039",
+            "b-fallback-232"
+          ]
+        },
+        {
+          "id": "term-ascenso-descenso-pasajeros",
+          "termEs": "ascenso o descenso de pasajeros",
+          "translationRu": "посадка или высадка пассажиров",
+          "sourceQuestionIds": [
+            "b-fallback-045",
+            "b-fallback-051"
+          ]
+        },
+        {
+          "id": "term-detencion-previa-maniobra-estacionamiento",
+          "termEs": "detención previa a la maniobra de estacionamiento",
+          "translationRu": "краткая остановка перед маневром парковки",
+          "sourceQuestionIds": [
+            "b-fallback-039",
+            "b-fallback-051",
+            "b-fallback-097"
+          ]
+        },
+        {
+          "id": "term-prohibido-estacionar",
+          "termEs": "Prohibido estacionar",
+          "translationRu": "стоянка запрещена",
+          "sourceQuestionIds": [
+            "b-fallback-011",
+            "b-fallback-045"
+          ]
+        },
+      {
+        "id": "term-no-estacionar-ni-detenerse",
+        "termEs": "prohibido estacionar y detenerse",
+        "translationRu": "стоять и останавливаться",
+        "sourceQuestionIds": [
+          "b-fallback-211"
+        ]
+      },
+        {
+          "id": "term-carril-emergencias",
+          "termEs": "carril de emergencias",
+          "translationRu": "полоса/коридор для экстренных служб",
+          "sourceQuestionIds": [
+            "b-fallback-017",
+            "b-fallback-133"
+          ]
+        },
+        {
+          "id": "term-luces-intermitentes",
+        "termEs": "luces intermitentes",
+        "translationRu": "мигающие аварийные огни",
+        "sourceQuestionIds": [
+          "b-fallback-077",
+          "b-fallback-232"
+        ]
+      },
+        {
+          "id": "term-garaje",
+          "termEs": "garaje",
+          "translationRu": "гараж/въезд во двор или парковку",
+          "sourceQuestionIds": [
+            "b-fallback-232",
+            "b-fallback-378",
+            "b-fallback-442"
+          ]
+        },
+        {
+          "id": "term-garage",
+          "termEs": "garage",
+          "translationRu": "гараж; вариант написания в билете",
+          "sourceQuestionIds": [
+            "b-fallback-192"
+          ]
+        },
+        {
+          "id": "term-banquina",
+          "termEs": "banquina",
+          "translationRu": "обочина",
+          "sourceQuestionIds": [
+            "b-fallback-194"
+          ]
+        },
+        {
+          "id": "term-agente-transito",
+          "termEs": "agente de tránsito",
+          "translationRu": "инспектор/регулировщик дорожного движения",
+          "sourceQuestionIds": [
+            "b-fallback-246"
+          ]
+        },
+        {
+          "id": "term-personal-obra",
+          "termEs": "personal de obra",
+          "translationRu": "работник дорожных работ, регулирующий проезд на участке",
+          "sourceQuestionIds": [
+            "b-fallback-347"
+          ]
+        },
+      {
+        "id": "term-pare",
+        "termEs": "señal reglamentaria",
+        "translationRu": "предписывающий знак; в билете изображен PARE",
+        "sourceQuestionIds": [
+          "b-fallback-127"
+        ]
+        },
+        {
+          "id": "term-estacionamiento-vehicular",
+          "termEs": "estacionamiento vehicular",
+          "translationRu": "автомобильная парковка поблизости",
+          "sourceQuestionIds": [
+            "b-fallback-455"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-003",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-003-a1",
+              "verdict": "correct",
+              "explanationRu": "Первый шаг после siniestro vial - остановиться сразу и остаться на месте: так можно не увеличить риск, помочь, обменяться данными и дать власти зафиксировать обстоятельства."
+            },
+            {
+              "answerId": "b-fallback-003-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ехать в ближайшую comisaría до остановки на месте нельзя: вы покидаете место происшествия и теряете возможность выполнить первичные обязанности участника siniestro."
+            },
+            {
+              "answerId": "b-fallback-003-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Позвонить 911 может быть нужно, но continuar el viaje неверно: билет спрашивает первый шаг, а он - detenerse inmediatamente."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-011",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-011-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Знак на картинке не запрещает estacionar: это предупреждение о низко летящих самолетах рядом с aeródromo/aeropuerto."
+            },
+            {
+              "answerId": "b-fallback-011-a2",
+              "verdict": "correct",
+              "explanationRu": "Это señal preventiva P.28 Corredor aéreo: vuelos a baja altura de aviones sobre la vía из-за близости аэродрома или аэропорта."
+            },
+            {
+              "answerId": "b-fallback-011-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibido estacionar y detenerse выглядел бы как знак запрета с перечеркнутой E; здесь изображение про авиационную опасность, не про остановку."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b223.jpg"
+        },
+        {
+          "questionId": "b-fallback-015",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-015-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Balizas не дают общего разрешения стоять в doble fila 2-5 минут. В CABA detención обычно короткая и не должна становиться стоянкой или препятствием."
+            },
+            {
+              "answerId": "b-fallback-015-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза ложная: включенные аварийные огни только предупреждают других, но не легализуют doble fila на несколько минут."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-017",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-017-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ускоряться рядом с emergency vehicle опасно: вы можете закрыть carril de emergencias и помешать приоритетному проезду."
+            },
+            {
+              "answerId": "b-fallback-017-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Постоянная bocina не освобождает путь и может создать шумовую путаницу. Нужное действие - освободить место."
+            },
+            {
+              "answerId": "b-fallback-017-a3",
+              "verdict": "correct",
+              "explanationRu": "При сигнале emergency vehicle нужно немедленно дать место, despejar el carril de emergencias и при необходимости detenerse."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b93.jpg"
+        },
+        {
+          "questionId": "b-fallback-039",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-039-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Balizas и короткое время не делают doble fila разрешенной для высадки пассажира. Это ровно ловушка билета."
+            },
+            {
+              "answerId": "b-fallback-039-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ascenso y descenso de pasajeros сам по себе не разрешает double fila. Исключение уже - только detención previa a la maniobra de estacionamiento."
+            },
+            {
+              "answerId": "b-fallback-039-a3",
+              "verdict": "correct",
+              "explanationRu": "Действие не разрешено: double fila допускается только как краткая остановка перед маневром парковки, а не как обычная посадка или высадка."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b162.jpg"
+        },
+        {
+          "questionId": "b-fallback-045",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-045-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Этот знак - No estacionar. Он запрещает стоянку, но по общей логике R.8 не запрещает краткую detención для посадки/высадки."
+            },
+            {
+              "answerId": "b-fallback-045-a2",
+              "verdict": "correct",
+              "explanationRu": "Да: frente a señal de No estacionar запрещено estacionar, но detenerse para ascenso o descenso de pasajeros как общее правило возможно, если нет другого запрета."
+            },
+            {
+              "answerId": "b-fallback-045-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Вопрос спрашивает norma general. Horario может быть на дополнительной табличке, но здесь главный смысл знака - запрет стоянки, не остановки."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b154.jpg"
+        },
+        {
+          "questionId": "b-fallback-051",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-051-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Detención para ascenso o descenso de pasajeros не является исключением для показанной double fila в этом билете."
+            },
+            {
+              "answerId": "b-fallback-051-a2",
+              "verdict": "correct",
+              "explanationRu": "Исключение - detención previa a la maniobra de estacionamiento: коротко остановиться во второй ряд можно только как часть немедленного маневра парковки."
+            },
+            {
+              "answerId": "b-fallback-051-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Не обе: посадка/высадка не разрешает double fila, поэтому вариант A+B слишком широкий."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b161.jpg"
+        },
+        {
+          "questionId": "b-fallback-077",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-077-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Медленное движение в плохую погоду само по себе не главный смысл этих luces intermitentes. Они не заменяют выбор безопасной скорости."
+            },
+            {
+              "answerId": "b-fallback-077-a2",
+              "verdict": "correct",
+              "explanationRu": "Balizas предупреждают, что vehículo detenido или приближается к detención, estacionamiento, emergency или другой рискованной/необычной маневрe."
+            },
+            {
+              "answerId": "b-fallback-077-a3",
+              "verdict": "incorrect",
+              "explanationRu": "A+B неверно, потому что вариант A делает balizas общим сигналом медленной езды в непогоду, а билет проверяет именно остановку/маневр/экстренную ситуацию."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b176.jpg"
+        },
+        {
+          "questionId": "b-fallback-087",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-087-a1",
+              "verdict": "incorrect",
+              "explanationRu": "На показанном месте нельзя делать вывод “detenerse sí, estacionar no”. В секторе действует запрет detención/estacionamiento, а не только стоянки."
+            },
+            {
+              "answerId": "b-fallback-087-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза ложная: в этом пространстве остановка не разрешена, поэтому нельзя считать его местом “только для краткой остановки”."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b159.jpg"
+        },
+        {
+          "questionId": "b-fallback-097",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-097-a1",
+              "verdict": "incorrect",
+              "explanationRu": "2-5 минут - не критерий законности. Если это не непосредственная maniobra de estacionamiento, double fila остается нарушением."
+            },
+            {
+              "answerId": "b-fallback-097-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Даже водитель внутри и balizas не дают общего разрешения оставаться в таком положении около двух минут."
+            },
+            {
+              "answerId": "b-fallback-097-a3",
+              "verdict": "correct",
+              "explanationRu": "Не будет нарушения только если это detención previa a la maniobra de estacionamiento: краткая остановка прямо перед парковкой."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b160.jpg"
+        },
+        {
+          "questionId": "b-fallback-105",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-105-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Транзитные агенты не зависят “únicamente” от присутствия полиции для остановки автомобиля в рамках контроля. Слово únicamente делает утверждение ложным."
+            },
+            {
+              "answerId": "b-fallback-105-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно выбрать Falso: autoridad/agentes de tránsito могут останавливать транспорт для контроля по своим полномочиям, не только при наличии policial."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-127",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-127-a1",
+              "verdict": "correct",
+              "explanationRu": "Это señal PARE: водитель не может продолжить marcha sin detenerse полностью перед перекрестком/линией и потом ехать только если безопасно."
+            },
+            {
+              "answerId": "b-fallback-127-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Reductor de velocidad предупреждает о физическом замедлителе; PARE требует полной остановки."
+            },
+            {
+              "answerId": "b-fallback-127-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Comienzo de sentido opuesto - другой знак о направлении движения, не обязательная остановка."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b255.jpg"
+        },
+        {
+          "questionId": "b-fallback-133",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-133-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ускорение рядом с аварийной ситуацией мешает освобождению пути и увеличивает риск."
+            },
+            {
+              "answerId": "b-fallback-133-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Многократная bocina не является правильным способом уступить emergency vehicle; нужно физически освободить путь."
+            },
+            {
+              "answerId": "b-fallback-133-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно dar lugar, despejar el carril de emergencias и при необходимости detenerse, чтобы emergency vehicle прошел без задержки."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b89.jpg"
+        },
+        {
+          "questionId": "b-fallback-156",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-156-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Знак на изображении не про prohibición de detenerse. Он информационный и сообщает об объекте рядом."
+            },
+            {
+              "answerId": "b-fallback-156-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de estacionar была бы знаком с E и красным перечеркиванием; здесь не такой смысл."
+            },
+            {
+              "answerId": "b-fallback-156-a3",
+              "verdict": "correct",
+              "explanationRu": "Это информационный знак о plaza en las inmediaciones, поэтому правильный ответ - существование площади поблизости."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b271.jpg"
+        },
+        {
+          "questionId": "b-fallback-188",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-188-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Желтая демаркация на проезжей части не делает сектор местом detención и estacionamiento."
+            },
+            {
+              "answerId": "b-fallback-188-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Она не приглашает ехать медленно по центру сектора; вопрос проверяет запрет движения по разметке."
+            },
+            {
+              "answerId": "b-fallback-188-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: sobre esta demarcación amarilla no se debe circular. Это зона, которую надо объезжать, а не использовать как полосу."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b76.jpg"
+        },
+        {
+          "questionId": "b-fallback-192",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-192-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Balizas не означают просто “еду медленно”. Для этого водитель должен выбирать скорость и не путать остальных."
+            },
+            {
+              "answerId": "b-fallback-192-a2",
+              "verdict": "correct",
+              "explanationRu": "Intermitentes могут предупреждать, что водитель скоро ingresará a un garage или se detendrá; именно поэтому нужно держать дистанцию."
+            },
+            {
+              "answerId": "b-fallback-192-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Giro en próxima intersección обычно показывают luz de giro, а не balizas."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b169.jpg"
+        },
+        {
+          "questionId": "b-fallback-194",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-194-a1",
+              "verdict": "incorrect",
+              "explanationRu": "При плотном тумане banquina на ruta не должна становиться обычным местом остановки: там вас могут не увидеть."
+            },
+            {
+              "answerId": "b-fallback-194-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Дальний свет в тумане ухудшает видимость и не делает остановку на banquina безопасной."
+            },
+            {
+              "answerId": "b-fallback-194-a3",
+              "verdict": "correct",
+              "explanationRu": "Если ехать невозможно, нужно уйти как можно дальше от calzada и banquina. Идея - не оставаться в зоне, где вас может задеть поток."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b191.jpg"
+        },
+        {
+          "questionId": "b-fallback-211",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-211-a1",
+              "verdict": "incorrect",
+              "explanationRu": "В таком месте запрет не зависит только от того, мешаете ли вы потоку: нормативно запрещены и estacionar, и detenerse."
+            },
+            {
+              "answerId": "b-fallback-211-a2",
+              "verdict": "correct",
+              "explanationRu": "Да, detener el vehículo здесь нельзя: билет проверяет сектор с запретом estacionar y detenerse por normativa."
+            },
+            {
+              "answerId": "b-fallback-211-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: запрет может следовать из нормы или разметки/места, а не только из отдельного видимого знака."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b168.jpg"
+        },
+        {
+          "questionId": "b-fallback-232",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-232-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Въезд в garaje/estacionamiento в CABA обозначается balizas, а не обычным поворотником в сторону въезда."
+            },
+            {
+              "answerId": "b-fallback-232-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Поворотник в противоположную сторону особенно вводит в заблуждение: он сообщает не тот маневр."
+            },
+            {
+              "answerId": "b-fallback-232-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно использовать luces intermitentes/balizas: это предупреждает о снижении скорости и egreso de la vía pública hacia garaje o estacionamiento."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-246",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-246-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Зеленый свет не отменяет указание agente de tránsito. В оперативной ситуации надо ждать его команды."
+            },
+            {
+              "answerId": "b-fallback-246-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно остановиться и ждать indicación del agente de tránsito: его регулирование имеет приоритет для движения в этой ситуации."
+            },
+            {
+              "answerId": "b-fallback-246-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Самостоятельно оценить “если нет машин” недостаточно, когда движение регулирует агент."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b67.jpg"
+        },
+        {
+          "questionId": "b-fallback-260",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-260-a1",
+              "verdict": "correct",
+              "explanationRu": "На изображении информационный знак: он сообщает existencia de un teatro en las inmediaciones, а не дорожный запрет."
+            },
+            {
+              "answerId": "b-fallback-260-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de estacionar выглядела бы как запрещающий знак; здесь билет спрашивает информационный объект."
+            },
+            {
+              "answerId": "b-fallback-260-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de detenerse тоже была бы отдельным запрещающим знаком; театр на знаке не означает запрет остановки."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b269.jpg"
+        },
+        {
+          "questionId": "b-fallback-301",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-301-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ускоряться мимо животного рискованно: оно может резко выйти на calzada."
+            },
+            {
+              "answerId": "b-fallback-301-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Bocina может напугать животное и сделать ситуацию менее предсказуемой; сохранять скорость нельзя."
+            },
+            {
+              "answerId": "b-fallback-301-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильная реакция - reducir la velocidad и, если нужно, detenerse: так вы сохраняете контроль и не провоцируете животное."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b193.jpg"
+        },
+        {
+          "questionId": "b-fallback-347",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-347-a1",
+              "verdict": "correct",
+              "explanationRu": "Да: personal de obra, регулирующий paso de vehículos на участке работ, надо выполнять. Это временное регулирование потока в зоне риска."
+            },
+            {
+              "answerId": "b-fallback-347-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Не только “если кажется рискованно”: в зоне работ такой персонал уполномочен регулировать проезд на своем участке."
+            },
+            {
+              "answerId": "b-fallback-347-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно, потому что регулировать проход транспорта в зоне работ может не только agente de tránsito; билет прямо про personal de obra."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b69.jpg"
+        },
+        {
+          "questionId": "b-fallback-378",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-378-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: для ingreso a un garaje правильная предварительная señalización - luces intermitentes/balizas, как показано на изображении."
+            },
+            {
+              "answerId": "b-fallback-378-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: если машина собирается въехать в гараж и использует balizas, она предупреждает маневр правильными огнями."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b171.jpg"
+        },
+        {
+          "questionId": "b-fallback-413",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-413-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Balizas не отменяют запрет. В секторе, где запрещены detención и estacionamiento, аварийка не превращает остановку в разрешенную."
+            },
+            {
+              "answerId": "b-fallback-413-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Здесь запрещена не только стоянка: detención тоже запрещена."
+            },
+            {
+              "answerId": "b-fallback-413-a3",
+              "verdict": "correct",
+              "explanationRu": "Остановка неправильная, потому что в этом секторе запрещены и detenerse, и estacionar."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b151.jpg"
+        },
+        {
+          "questionId": "b-fallback-442",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-442-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: для ingreso a garaje справа нужны balizas, а не показанная неправильная световая индикация."
+            },
+            {
+              "answerId": "b-fallback-442-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза ложная: водитель не anticipa maniobra con las luces correctas, если вместо balizas использует другой сигнал."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b172.jpg"
+        },
+        {
+          "questionId": "b-fallback-455",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-455-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Информационный знак parking nearby не означает, что detenerse разрешено прямо на этой vía. Он только указывает объект поблизости."
+            },
+            {
+              "answerId": "b-fallback-455-a2",
+              "verdict": "correct",
+              "explanationRu": "Это знак ESTACIONAMIENTO: existencia de un estacionamiento vehicular en las inmediaciones."
+            },
+            {
+              "answerId": "b-fallback-455-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Знак указывает место парковки поблизости, но не дает общего разрешения estacionar прямо на этой дороге."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b272.jpg"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-balizas-do-not-permit-everything",
+          "textRu": "Balizas предупреждают, но не разрешают: если ответ говорит “можно, потому что аварийка включена”, почти всегда ищите скрытый запрет."
+        },
+        {
+          "id": "trap-double-row-exception",
+          "textRu": "Double fila разрешается в этих билетах только как detención previa a la maniobra de estacionamiento; пассажиры и 2-5 минут не подходят."
+        },
+        {
+          "id": "trap-no-estacionar-vs-no-detenerse",
+          "textRu": "No estacionar не то же самое, что No estacionar ni detenerse. Первый знак про стоянку, второй - про абсолютный запрет остановки и стоянки."
+        },
+        {
+          "id": "trap-information-signs",
+          "textRu": "Не каждое изображение с parking-словами является запретом: aeropuerto, plaza, teatro и estacionamiento vehicular в этих билетах - ориентиры/информация."
+        },
+        {
+          "id": "trap-authority-over-signal",
+          "textRu": "Когда агент или authorized work personnel показывает остановиться, не спорьте с зеленым сигналом или общей логикой приоритета: выполняется оперативное указание."
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-caba-detencion-estacionamiento-definitions",
+          "textRu": "В CABA detención - краткая остановка без ухода водителя, а превышение срока/уход водителя превращает ситуацию в estacionamiento; общая запись 7.1.7 использует порог до двух минут.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "stopping-parking-caba-definitions-and-two-minute-rule"
+        },
+        {
+          "id": "claim-caba-parking-and-detention-prohibitions",
+          "textRu": "CABA запрещает остановку/стоянку на aceras, vías rápidas, double fila кроме остановки перед парковкой, углах, sendas/líneas de pare, túneles, puentes, ciclovías и других специальных местах.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "stopping-parking-caba-prohibited-places"
+        },
+        {
+          "id": "claim-balizas-garage-emergency-maneuver-use",
+          "textRu": "Luces intermitentes/balizas используются для detenido, egreso hacia garaje/playa/estación de servicio, próxima maniobra de detención/estacionamiento, emergency или imprevisto, но не отменяют запреты остановки.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "stopping-parking-balizas-garage-emergency-use"
+        },
+        {
+          "id": "claim-emergency-authority-and-incident-stop",
+          "textRu": "После incident/siniestro нужно остановиться сразу; emergency vehicles получают немедленный paso; agent/authorized work personnel indications can require stopping even when ordinary flow signs would otherwise guide movement.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "stopping-parking-emergency-authority-incident-stop"
+        },
+        {
+          "id": "claim-signs-no-estacionar-pare-information",
+          "textRu": "Anexo L distinguishes No estacionar, No estacionar ni detenerse, PARE, Corredor aéreo and information signs such as Aeropuerto, Estacionamiento and Plaza; these meanings control several image tickets in this topic.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "stopping-parking-sign-meanings"
+        }
+      ]
     }
   ]
 }

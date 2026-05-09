@@ -215,9 +215,9 @@
       "titleRu": "Остановка, стоянка и маневр парковки",
       "categoryId": "parking",
       "splitCriteria": "Различие detenerse/estacionar, doble fila, ascenso/descenso, balizas, marcha atrás и маневры въезда в garaje.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8"
     },
     {
       "topicId": "parking-clearances-and-corners",
@@ -405,8 +405,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-004",
@@ -477,9 +477,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -515,7 +515,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-016",
@@ -530,8 +534,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-018",
@@ -731,7 +735,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-040",
@@ -782,7 +790,11 @@
         "right-of-way-basic-intersections"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-046",
@@ -841,7 +853,11 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-052",
@@ -1073,9 +1089,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -1163,8 +1179,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-088",
@@ -1257,7 +1273,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-098",
@@ -1320,8 +1340,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-106",
@@ -1521,9 +1541,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -1587,8 +1607,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-134",
@@ -1793,9 +1813,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -2092,7 +2112,11 @@
         "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "center-lines-and-crossing-rules": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-189",
@@ -2128,8 +2152,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-193",
@@ -2144,8 +2168,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-195",
@@ -2288,9 +2312,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -2467,7 +2491,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-233",
@@ -2594,8 +2622,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-247",
@@ -2718,9 +2746,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -3095,8 +3123,8 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E8"
     },
     {
       "questionId": "b-fallback-302",
@@ -3519,9 +3547,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -3806,7 +3834,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-379",
@@ -4138,7 +4170,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-414",
@@ -4405,7 +4441,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-443",
@@ -4521,7 +4561,11 @@
         "information-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E8",
+      "placementPhases": {
+        "information-signs": "planned",
+        "stopping-vs-parking-maneuvers": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-456",
