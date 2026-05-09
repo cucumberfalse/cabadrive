@@ -4,6 +4,45 @@
   "status": "draft",
   "entries": [
     {
+      "id": "fatigue-distraction-psychophysical-state-fatigue-attention",
+      "topicId": "fatigue-distraction-and-attention",
+      "claimId": "claim-psychophysical-state-fatigue-attention",
+      "claimSummaryRu": "CABA requires adequate psychophysical state, vehicle control, freedom of movement, visual field and permanent attention; somnolence, fatigue and altered attention/perception/judgment reduce driving aptitude.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.1 Condiciones para conducir",
+        "Ley 2148 5.4.1 Regla general",
+        "Ley 24.449 Artículo 39 Condiciones para conducir",
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso a)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports high-level fatigue/somnolence/attention framing for assigned tickets. Exact 8-hour sleep, 2-hour stop interval, ventilated interior, >25 C, adverse-weather rest frequency, beginner-fatigue reason and stress wording remain fallback-ticket-specific unless a future official source archive supports them."
+    },
+    {
+      "id": "fatigue-distraction-auriculares-manual-communication",
+      "topicId": "fatigue-distraction-and-attention",
+      "claimId": "claim-auriculares-manual-communication-distraction",
+      "claimSummaryRu": "Ley 2148 and Ley 24.449 prohibit drivers from using headphones and continuous manual communication systems; phone/headset manipulation is taught as an attention, hearing, hands and reaction risk.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.1 Condiciones para conducir",
+        "Ley 2148 5.2.4 Prohibiciones, inciso e)",
+        "Ley 2148 5.3.1 Regla general",
+        "Ley 24.449 Artículo 39 Condiciones para conducir",
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso x)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports high-level auriculares/cellphone/manual-use framing for b-fallback-069, 175, 217, 229, 354, 374, 405 and 441. Passenger phone boundary in b-fallback-217 follows the conductor-focused wording. Image-specific action labels remain ticket-specific."
+    },
+    {
       "id": "speed-limits-caba-general-speed-grid",
       "topicId": "speed-limits",
       "claimId": "claim-caba-general-speed-grid",

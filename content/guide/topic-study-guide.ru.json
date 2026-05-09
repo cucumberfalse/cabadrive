@@ -6358,6 +6358,828 @@
       ]
     },
     {
+      "id": "fatigue-distraction-and-attention",
+      "titleRu": "Усталость, стресс и отвлечения",
+      "status": "draft",
+      "summaryRu": "Блок про fatiga, somnolencia, estrés, atención, teléfono celular, auriculares, пассажирские отвлечения, долгую поездку и несколько смешанных билетов, где правильный ответ сохраняет внимание и контроль.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про fatigue/distraction сначала спрашивайте: водитель сохраняет atención permanente и control del vehículo или делает что-то, что уводит слух, руки, взгляд или мышление от дороги?",
+        "Официальная рамка CABA проста: conductor должен быть в таком estado psicofísico, чтобы контролировать автомобиль и выполнять maniobras, сохранять campo visual, свободу движений и atención permanente. Ley 2148 прямо относит somnolencia, fatiga и изменения atención/percepción/juicio к снижению aptitud para conducir.",
+        "Auriculares и sistemas de comunicación de operación manual continua - красный флаг. Поэтому телефон опасен не только на скорости: если автомобиль стоит на vía de circulación, внимание все равно должно оставаться на semáforos, pedestrians, cyclists и movement around you.",
+        "Для passengers граница другая: билет про telefonía celular указывает, что запрет касается conductor, а не всех ocupantes. Но passenger discussion может отвлечь водителя и создать estado de estrés, поэтому exam wording различает legal prohibition и practical distraction.",
+        "Fatiga в ticket wording проявляется как menor capacidad de reacción, aumento del tiempo de respuesta, visión borrosa, más/different parpadeos, poorer decisions и loss of alerta. Stress в этих билетах тоже не “держит бодрость”, а делает driving less safe или more temeraria.",
+        "Числа и бытовые рекомендации держите как формулы конкретных fallback-билетов: dormir aproximadamente 8 horas, parar cada 2 horas aproximadamente, mantener ventilado el interior, descansar más frecuente in adverse weather. Это не расширяется здесь в общий медицинский curriculum без отдельного source archive.",
+        "Несколько assigned tickets смешанные: objetos sueltos, túnel, cargar combustible, cyclist clothing и emergency call. Они включены потому, что проверяют attention/risk framing, но exact tunnel sequence, kinetic-energy wording, fuel-station image, dark clothing and weather/rest details остаются ticket-specific."
+      ],
+      "claims": [
+        {
+          "id": "claim-psychophysical-state-fatigue-attention",
+          "textRu": "CABA требует от водителя достаточного estado psicofísico, control del vehículo, freedom of movement, campo visual и atención permanente; somnolencia, fatiga и изменения atención/percepción/juicio считаются снижением aptitud para conducir.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "fatigue-distraction-psychophysical-state-fatigue-attention"
+        },
+        {
+          "id": "claim-auriculares-manual-communication-distraction",
+          "textRu": "Архивные Ley 2148 и Ley 24.449 поддерживают запрет для conductores на auriculares и manual continuous communication systems; поэтому phone/headset answer patterns разбираются через loss of attention, hearing, hands and reaction.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "fatigue-distraction-auriculares-manual-communication"
+        }
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-estres-alterar-capacidades",
+          "termEs": "estrés",
+          "translationRu": "стресс",
+          "sourceQuestionIds": [
+            "b-fallback-033",
+            "b-fallback-209",
+            "b-fallback-364"
+          ]
+        },
+        {
+          "id": "term-capacidades-conducir-segura",
+          "termEs": "capacidades para conducir de manera segura",
+          "translationRu": "способности безопасно управлять",
+          "sourceQuestionIds": [
+            "b-fallback-033"
+          ]
+        },
+        {
+          "id": "term-indumentaria",
+          "termEs": "indumentaria",
+          "translationRu": "одежда/экипировка",
+          "sourceQuestionIds": [
+            "b-fallback-059"
+          ]
+        },
+        {
+          "id": "term-ropa-clara-visible",
+          "termEs": "ropa clara es más visible",
+          "translationRu": "светлая одежда заметнее",
+          "sourceQuestionIds": [
+            "b-fallback-059"
+          ]
+        },
+        {
+          "id": "term-auriculares",
+          "termEs": "auriculares",
+          "translationRu": "наушники",
+          "sourceQuestionIds": [
+            "b-fallback-069",
+            "b-fallback-354"
+          ]
+        },
+        {
+          "id": "term-factor-distraccion",
+          "termEs": "factor de distracción",
+          "translationRu": "фактор отвлечения",
+          "sourceQuestionIds": [
+            "b-fallback-069",
+            "b-fallback-374"
+          ]
+        },
+        {
+          "id": "term-fatiga",
+          "termEs": "fatiga",
+          "translationRu": "усталость/утомление",
+          "sourceQuestionIds": [
+            "b-fallback-073",
+            "b-fallback-204",
+            "b-fallback-344",
+            "b-fallback-437"
+          ]
+        },
+        {
+          "id": "term-interior-vehiculo-ventilado",
+          "termEs": "interior del vehículo",
+          "translationRu": "салон автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-073"
+          ]
+        },
+        {
+          "id": "term-dormir-noche-anterior",
+          "termEs": "dormir la noche anterior",
+          "translationRu": "поспать предыдущей ночью",
+          "sourceQuestionIds": [
+            "b-fallback-086"
+          ]
+        },
+        {
+          "id": "term-aproximadamente-8-horas",
+          "termEs": "Aproximadamente 8 horas",
+          "translationRu": "примерно 8 часов",
+          "sourceQuestionIds": [
+            "b-fallback-086"
+          ]
+        },
+        {
+          "id": "term-telefono-celular-fatigue",
+          "termEs": "teléfono celular",
+          "translationRu": "мобильный телефон",
+          "sourceQuestionIds": [
+            "b-fallback-175",
+            "b-fallback-405"
+          ]
+        },
+        {
+          "id": "term-via-circulacion-fatigue",
+          "termEs": "vía de circulación",
+          "translationRu": "проезжая часть/полоса движения",
+          "sourceQuestionIds": [
+            "b-fallback-175"
+          ]
+        },
+        {
+          "id": "term-vision-borrosa-parpadeos",
+          "termEs": "visión borrosa",
+          "translationRu": "размытое зрение",
+          "sourceQuestionIds": [
+            "b-fallback-204"
+          ]
+        },
+        {
+          "id": "term-parpadeos",
+          "termEs": "parpadeos",
+          "translationRu": "моргания",
+          "sourceQuestionIds": [
+            "b-fallback-204"
+          ]
+        },
+        {
+          "id": "term-capacidad-atencion-contexto",
+          "termEs": "capacidad de atención al contexto",
+          "translationRu": "способность удерживать внимание на дорожном контексте",
+          "sourceQuestionIds": [
+            "b-fallback-209"
+          ]
+        },
+        {
+          "id": "term-telefonia-celular-fatigue",
+          "termEs": "telefonía celular",
+          "translationRu": "мобильная связь/использование телефона",
+          "sourceQuestionIds": [
+            "b-fallback-217"
+          ]
+        },
+        {
+          "id": "term-factores-distraccion-acciones",
+          "termEs": "factores de distracción",
+          "translationRu": "факторы отвлечения",
+          "sourceQuestionIds": [
+            "b-fallback-229"
+          ]
+        },
+        {
+          "id": "term-objetos-sueltos-fatigue",
+          "termEs": "objetos sueltos",
+          "translationRu": "незакрепленные предметы",
+          "sourceQuestionIds": [
+            "b-fallback-231"
+          ]
+        },
+        {
+          "id": "term-energia-cinetica-fatigue",
+          "termEs": "energía cinética",
+          "translationRu": "кинетическая энергия",
+          "sourceQuestionIds": [
+            "b-fallback-231"
+          ]
+        },
+        {
+          "id": "term-pocas-horas",
+          "termEs": "pocas horas",
+          "translationRu": "мало часов сна",
+          "sourceQuestionIds": [
+            "b-fallback-245"
+          ]
+        },
+        {
+          "id": "term-capacidad-reaccion-fatigue",
+          "termEs": "capacidad de reacción",
+          "translationRu": "способность реагировать",
+          "sourceQuestionIds": [
+            "b-fallback-245",
+            "b-fallback-404",
+            "b-fallback-441"
+          ]
+        },
+        {
+          "id": "term-vehiculo-inmovilizado-tunel-fatigue",
+          "termEs": "vehículo queda inmovilizado en un túnel",
+          "translationRu": "автомобиль обездвижен в тоннеле",
+          "sourceQuestionIds": [
+            "b-fallback-276"
+          ]
+        },
+        {
+          "id": "term-cargando-combustible-fatigue",
+          "termEs": "cargando combustible",
+          "translationRu": "заправляет топливо",
+          "sourceQuestionIds": [
+            "b-fallback-293"
+          ]
+        },
+        {
+          "id": "term-condicion-climatica",
+          "termEs": "condición climática",
+          "translationRu": "погодное условие",
+          "sourceQuestionIds": [
+            "b-fallback-344"
+          ]
+        },
+        {
+          "id": "term-descansar-mas-frecuencia",
+          "termEs": "descansar con más frecuencia",
+          "translationRu": "отдыхать чаще",
+          "sourceQuestionIds": [
+            "b-fallback-344"
+          ]
+        },
+        {
+          "id": "term-ropa-oscura-suelta",
+          "termEs": "ropa oscura y suelta",
+          "translationRu": "темная и свободная одежда",
+          "sourceQuestionIds": [
+            "b-fallback-354"
+          ]
+        },
+        {
+          "id": "term-mas-temeraria",
+          "termEs": "Más temeraria",
+          "translationRu": "более рискованное/безрассудное",
+          "sourceQuestionIds": [
+            "b-fallback-364"
+          ]
+        },
+        {
+          "id": "term-menos-segura",
+          "termEs": "Menos segura",
+          "translationRu": "менее безопасная",
+          "sourceQuestionIds": [
+            "b-fallback-364"
+          ]
+        },
+        {
+          "id": "term-llamada-urgencia-fatigue",
+          "termEs": "llamada de urgencia",
+          "translationRu": "срочный звонок",
+          "sourceQuestionIds": [
+            "b-fallback-405"
+          ]
+        },
+        {
+          "id": "term-lugar-permitido",
+          "termEs": "lugar donde esté permitido",
+          "translationRu": "место, где остановка разрешена",
+          "sourceQuestionIds": [
+            "b-fallback-405"
+          ]
+        },
+        {
+          "id": "term-cada-2-horas",
+          "termEs": "Cada 2 horas aproximadamente",
+          "translationRu": "примерно каждые 2 часа",
+          "sourceQuestionIds": [
+            "b-fallback-435"
+          ]
+        },
+        {
+          "id": "term-conductor-principiante-fatigado",
+          "termEs": "conductor principiante",
+          "translationRu": "начинающий водитель",
+          "sourceQuestionIds": [
+            "b-fallback-437"
+          ]
+        },
+        {
+          "id": "term-capacidad-atencional",
+          "termEs": "capacidad atencional",
+          "translationRu": "внимательная способность/ресурс внимания",
+          "sourceQuestionIds": [
+            "b-fallback-441"
+          ]
+        },
+        {
+          "id": "term-sentido-audicion",
+          "termEs": "sentido de la audición",
+          "translationRu": "слух",
+          "sourceQuestionIds": [
+            "b-fallback-441"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-033",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-033-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: фраза содержит ловушку no necesariamente. Для экзамена estrés как раз может менять способности безопасно управлять, потому что внимание и juicio ухудшаются."
+            },
+            {
+              "answerId": "b-fallback-033-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Falso. Стресс может alterar las capacidades para conducir de manera segura, поэтому нельзя считать его нейтральным состоянием."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-059",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b7.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-059-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: ciclista в ropa clara заметнее, значит риск siniestro vial ниже. Это ticket-specific visibility clue по картинке, а не отдельный официальный каталог одежды."
+            },
+            {
+              "answerId": "b-fallback-059-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Opción B неверна: ropa oscura не становится безопаснее из-за того, что supposedly no distrae. Главный критерий билета - visible vs less visible."
+            },
+            {
+              "answerId": "b-fallback-059-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas same risk неверно, потому что картинка/варианты противопоставляют светлую и темную одежду именно по видимости."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-069",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b6.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-069-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Нет: conducir correctamente не совместимо с auriculares в логике билета. На велосипеде нужно слышать и замечать, что происходит alrededor."
+            },
+            {
+              "answerId": "b-fallback-069-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: auriculares - factor de distracción, который мешает conectarse con lo que sucede alrededor. Это ровно тема attention/distraction."
+            },
+            {
+              "answerId": "b-fallback-069-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Наличие medidas de seguridad не отменяет отвлечение. Улучшение качества поездки не важнее слуха, внимания и реакции."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-073",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-073-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Музыка a alto volumen может дополнительно отвлекать и утомлять, поэтому это не способ retrasar la aparición de la fatiga."
+            },
+            {
+              "answerId": "b-fallback-073-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Температура superior a 25 °C в этом fallback-билете - неправильная бытовая формула: жаркий салон не помогает бороться с fatiga."
+            },
+            {
+              "answerId": "b-fallback-073-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: mantener bien ventilado el interior del vehículo. Это ticket-specific recommendation; broader official claim здесь только про необходимость сохранять aptitud/attention."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-086",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-086-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по wording билета: перед долгой поездкой рекомендуется dormir la noche anterior aproximadamente 8 horas."
+            },
+            {
+              "answerId": "b-fallback-086-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Al menos 4 horas слишком мало для ожидаемого ответа. Билет не спрашивает минимальное выживание, а безопасную подготовку к largo tiempo driving."
+            },
+            {
+              "answerId": "b-fallback-086-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: paradas de descanso важны, но они не делают количество сна irrelevant. Билет прямо связывает сон previous night with driving safety."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-175",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b57.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-175-a1",
+              "verdict": "incorrect",
+              "explanationRu": "No other vehicles nearby не снимает риск. Автомобиль остается на vía de circulación, и дорожный контекст может измениться в любой момент."
+            },
+            {
+              "answerId": "b-fallback-175-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: даже detenido, водитель находится на пути движения; teléfono celular уводит atención от context, semáforo, pedestrians, cyclists and traffic around him."
+            },
+            {
+              "answerId": "b-fallback-175-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Vehicle not moving - не достаточная причина. Если машина стоит в circulation lane, водитель все еще отвечает за риск и должен смотреть на context."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-204",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-204-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sensación de euforia не является ожидаемым symptom of fatigue в этом билете. Это отвлекающий вариант из другой impairment logic."
+            },
+            {
+              "answerId": "b-fallback-204-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: visión borrosa и aumento del número y duración de parpadeos - признаки, что внимание и зрительное восприятие ухудшаются."
+            },
+            {
+              "answerId": "b-fallback-204-a3",
+              "verdict": "incorrect",
+              "explanationRu": "No realizar movements/cambios de postura звучит как неподвижность, но билет ожидает visual/eye symptoms. Не выбирайте вариант только потому, что он тоже описывает тело."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-209",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-209-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: discussion с passenger или с человеком вне автомобиля не “keeps alert”. Tensión/estrés может entorpecer attention, а не лечить somnolencia."
+            },
+            {
+              "answerId": "b-fallback-209-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: спор создает estado de estrés и может ухудшить capacidad de atención al contexto. Для экзамена passenger distraction тоже опасен."
+            },
+            {
+              "answerId": "b-fallback-209-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Legal conditions for driving не отменяют психологическое отвлечение. Можно быть legally allowed и всё равно хуже следить за дорожным контекстом."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-217",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b61.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-217-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Asiento delantero сам по себе не делает действие запрещенным в этом билете. В круге passenger, а не conductor."
+            },
+            {
+              "answerId": "b-fallback-217-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: prohibición del uso de telefonía celular reaches only conductor del vehículo. Это legal-boundary билет, а не запрет для всех occupants."
+            },
+            {
+              "answerId": "b-fallback-217-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Todos los ocupantes слишком широко. Official and ticket wording focus on conductores, so passenger phone use is not the same prohibited action."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-229",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b65.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-229-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: opciones A, B y C are all factores de distracción in this image-choice ticket. Когда вопрос просит set of distractions, не отбрасывайте одну картинку без причины."
+            },
+            {
+              "answerId": "b-fallback-229-a2",
+              "verdict": "incorrect",
+              "explanationRu": "A y C неполно: вариант B тоже считается distraction по fallback-билету, поэтому answer set должен включать all three."
+            },
+            {
+              "answerId": "b-fallback-229-a3",
+              "verdict": "incorrect",
+              "explanationRu": "B y C тоже неполно: вариант A не исключается. Здесь ловушка в partial combinations, а не в одном единственном wrong action."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-231",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-231-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: objetos sueltos like lentes, celular, llaves могут травмировать при incident/manoobra brusca из-за energía cinética. Это физика салона, а не только порядок."
+            },
+            {
+              "answerId": "b-fallback-231-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: loose objects do not stay harmless during sudden braking or impact. Даже мелкий предмет может стать projectile."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-245",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-245-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это верно, но неполно: dormir pocas horas reduces capacidad de reacción and estado de alerta, but the ticket also includes bad decision-making risk."
+            },
+            {
+              "answerId": "b-fallback-245-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Тоже верно, но неполно. Malas decisiones and life risk are only one part of the expected combined answer."
+            },
+            {
+              "answerId": "b-fallback-245-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas. Little sleep reduces reaction/alertness and predisposes to poor decisions, so both A and B describe the fatigue risk."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-276",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-276-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Просто closed vehicle and leaving the tunnel skips warning and assistance. Inmovilizado vehicle remains an obstacle that others must see."
+            },
+            {
+              "answerId": "b-fallback-276-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Apagar todas las luces неверно: visibility matters even if the tunnel is illuminated. Calling by mobile alone does not replace balizas/intermitentes."
+            },
+            {
+              "answerId": "b-fallback-276-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по ticket sequence: apagar motor, colocar balizas portátiles, keep luces de posición e intermitentes, and call assistance. This keeps the stopped vehicle visible and reduces risk."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-293",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b198.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-293-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Teléfono celular is not the only fuel-station issue. The image asks about cargando combustible with luces y motor encendido."
+            },
+            {
+              "answerId": "b-fallback-293-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: no debe cargarse combustible con luces y motor encendido. In this topic, note the distraction trap: do not focus only on cellphone."
+            },
+            {
+              "answerId": "b-fallback-293-a3",
+              "verdict": "incorrect",
+              "explanationRu": "La Ley no se expresa неверно for this fallback ticket. The expected answer cites Ley 2148 prohibition for lights + running engine during fueling."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-344",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b182.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-344-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Bad weather/condition climática does not make fatigue less likely by magically increasing attention. It usually demands more mental effort."
+            },
+            {
+              "answerId": "b-fallback-344-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: in this weather condition during a long drive, it is necessary to descansar con más frecuencia para evitar la fatiga."
+            },
+            {
+              "answerId": "b-fallback-344-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Velocidad prudente is important, but it does not make weather irrelevant to fatigue. The prompt asks about long time plus climatic condition."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-354",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-354-a1",
+              "verdict": "incorrect",
+              "explanationRu": "A is true but incomplete for this multiple-choice wording: auriculares y dispositivos electrónicos affect concentration, but another listed risk is also correct."
+            },
+            {
+              "answerId": "b-fallback-354-a2",
+              "verdict": "incorrect",
+              "explanationRu": "B is also true but incomplete: ropa oscura y suelta can hurt visibility/control, yet the ticket asks qué se debe evitar and includes both risks."
+            },
+            {
+              "answerId": "b-fallback-354-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas. Avoid both distraction devices and risky clothing; the exam trap is choosing only one valid risk."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-364",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-364-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Más temeraria is true but incomplete. Stress can push riskier conduct, but the ticket also says driving becomes less safe."
+            },
+            {
+              "answerId": "b-fallback-364-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Menos segura is also true but incomplete. The expected answer combines unsafe and reckless aspects."
+            },
+            {
+              "answerId": "b-fallback-364-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas. Bajo estrés, conducción can become más temeraria and menos segura, so both A and B fit."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-374",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b62.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-374-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: the shown conduct is risky because it is considered a factor de distracción. The key is attention loss, not speed."
+            },
+            {
+              "answerId": "b-fallback-374-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Únicamente si se circula a altas velocidades is too narrow. Distraction can be risky in ordinary urban driving too."
+            },
+            {
+              "answerId": "b-fallback-374-a3",
+              "verdict": "incorrect",
+              "explanationRu": "No: the action does not help maintain attention. This option reverses the risk into a supposed benefit."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-404",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-404-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: tired driving reduces capacidad de reacción and increases time needed to respond to a stimulus. That is the core fatigue formula."
+            },
+            {
+              "answerId": "b-fallback-404-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Driving tired does not become dangerous because one necessarily circula más rápido. The danger is slower response and poorer control."
+            },
+            {
+              "answerId": "b-fallback-404-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Trip duration may be associated with fatigue, but “el viaje dura más” is not why tired driving is dangerous. The direct mechanism is reaction/response."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-405",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-405-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: for llamada de urgencia, stop in a lugar donde esté permitido and use balizas. The call leaves active traffic instead of becoming a moving distraction."
+            },
+            {
+              "answerId": "b-fallback-405-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Driving slowly in the right lane with balizas while using the phone still keeps the distraction inside moving traffic."
+            },
+            {
+              "answerId": "b-fallback-405-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Urgency does not remove place/safety requirements. The safe exam answer still requires a permitted stopping place."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-435",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-435-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: on a long trip, stop cada 2 horas aproximadamente. Treat this as ticket-specific exam wording."
+            },
+            {
+              "answerId": "b-fallback-435-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Cada 4 horas is too long for the expected fatigue-prevention answer. The ticket asks a practical rest interval."
+            },
+            {
+              "answerId": "b-fallback-435-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Cada 1 hora is more frequent, but it is not the expected wording. The answer in this ticket is approximately every 2 hours."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-437",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-437-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: conductor principiante can feel fatigued more easily due to falta de experiencia en la conducción. New drivers spend more attention on each task."
+            },
+            {
+              "answerId": "b-fallback-437-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Todos iguales ante la Ley is a legal equality idea, not a fatigue explanation. The question asks about experience and tiredness."
+            },
+            {
+              "answerId": "b-fallback-437-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Fatiga crónica is too narrow. The ticket says principiante can fatigue more easily even without chronic medical fatigue."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-441",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b60.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-441-a1",
+              "verdict": "incorrect",
+              "explanationRu": "A is true but incomplete: the action decreases capacidad atencional, limits hearing, reduces reaction and increases response time."
+            },
+            {
+              "answerId": "b-fallback-441-a2",
+              "verdict": "incorrect",
+              "explanationRu": "B is also true but incomplete: manipulating the device can take hands away from driving and reduce maneuvering capacity."
+            },
+            {
+              "answerId": "b-fallback-441-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas. The shown action is risky both cognitively/auditorily and manually, so the combined answer is expected."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-no-necesariamente-falso",
+          "textRu": "`No necesariamente` in `b-fallback-033` flips the statement. Stress can affect safe driving, so the correct answer is Falso.",
+          "sourceQuestionIds": [
+            "b-fallback-033"
+          ]
+        },
+        {
+          "id": "trap-ambas-two-risks",
+          "textRu": "`Ambas respuestas` appears when two partial risks are both true: little sleep effects, cyclist risks, stress effects, and phone/manual-use effects.",
+          "sourceQuestionIds": [
+            "b-fallback-245",
+            "b-fallback-354",
+            "b-fallback-364",
+            "b-fallback-441"
+          ]
+        },
+        {
+          "id": "trap-driver-vs-passenger-phone",
+          "textRu": "Separate legal prohibition from general distraction: conductor phone use is risky/prohibited, but `b-fallback-217` asks about a passenger, so not all occupants are covered by the same prohibition.",
+          "sourceQuestionIds": [
+            "b-fallback-175",
+            "b-fallback-217",
+            "b-fallback-405"
+          ]
+        },
+        {
+          "id": "trap-ticket-specific-health-numbers",
+          "textRu": "Do not turn ticket-specific numbers into a broad medical curriculum: 8 hours of sleep, every 2 hours rest, >25 C, weather-frequency and clothing visibility are used here only as fallback-ticket answers.",
+          "sourceQuestionIds": [
+            "b-fallback-059",
+            "b-fallback-073",
+            "b-fallback-086",
+            "b-fallback-344",
+            "b-fallback-435"
+          ]
+        },
+        {
+          "id": "trap-partial-combinations-images",
+          "textRu": "For image or combination tickets, partial sets are often traps: `b-fallback-229` wants A+B+C; `b-fallback-293` is not only cellphone; `b-fallback-276` needs the full tunnel warning sequence.",
+          "sourceQuestionIds": [
+            "b-fallback-229",
+            "b-fallback-276",
+            "b-fallback-293"
+          ]
+        }
+      ]
+    },
+    {
       "id": "road-types-highways-and-routes",
       "slug": "road-types-highways-and-routes",
       "status": "draft",
