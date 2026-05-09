@@ -463,7 +463,7 @@
       "rawOriginalPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "hashAlgorithm": "sha256",
       "conversionMethod": "PDF text extraction with pdf-parse 1.1.1 from the official GCBA four-wheel manual linked by the current study-material page; extracted text written as Markdown with title and paragraph/line breaks preserved as plain text.",
-      "conversionNotes": "Raw 68 MB PDF evidence is retained. Text extraction preserves visible text and rough order, including category sections and annex text, but does not preserve exact page design, images, icons, tables, typography, or pagination. The non-static buenosaires.gob.ar PDF URL linked from the current page redirected to a gcaba_historico 404 during retrieval, so the official static.buenosaires.gob.ar PDF URL was used. Final exact-text validation remains pending.",
+      "conversionNotes": "Raw 68 MB PDF evidence is retained. Text extraction preserves visible text and rough order, including category sections and annex text, but does not preserve exact page design, images, icons, tables, typography, or pagination. The raw PDF page 52 visibly contains the heading typo `3° Socorrerr`; Markdown preserves that source typo. PAS-order support must cite the preceding correct source sentence `Proteger-Alertar-Socorrer`, not the typo heading. The non-static buenosaires.gob.ar PDF URL linked from the current page redirected to a gcaba_historico 404 during retrieval, so the official static.buenosaires.gob.ar PDF URL was used. Final exact-text validation remains pending.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "valid_current_material",
