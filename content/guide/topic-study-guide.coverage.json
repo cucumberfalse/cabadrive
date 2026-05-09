@@ -134,9 +134,9 @@
       "titleRu": "Погода, видимость и сцепление",
       "categoryId": "safety",
       "splitCriteria": "Дождь, туман, ветер, aquaplaning, мокрая дорога, ухудшенная видимость и адаптация управления.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "topicId": "right-of-way-basic-intersections",
@@ -709,7 +709,11 @@
         "adverse-weather-and-visibility"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-adverse-weather-visibility",
+      "placementPhases": {
+        "vehicle-condition-maintenance-loads": "planned",
+        "adverse-weather-and-visibility": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-036",
@@ -1426,8 +1430,8 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "questionId": "b-fallback-111",
@@ -2264,8 +2268,8 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "questionId": "b-fallback-196",
@@ -2353,8 +2357,8 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "questionId": "b-fallback-207",
@@ -2767,8 +2771,8 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "questionId": "b-fallback-252",
@@ -2943,7 +2947,11 @@
         "adverse-weather-and-visibility"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-adverse-weather-visibility",
+      "placementPhases": {
+        "vehicle-condition-maintenance-loads": "planned",
+        "adverse-weather-and-visibility": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-270",
@@ -3001,8 +3009,8 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "questionId": "b-fallback-276",
@@ -3068,9 +3076,9 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "planned",
+        "adverse-weather-and-visibility": "content_ready",
         "vehicle-lights-and-signaling": "content_ready"
       }
     },
@@ -3156,9 +3164,9 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "planned",
+        "adverse-weather-and-visibility": "content_ready",
         "vehicle-lights-and-signaling": "content_ready"
       }
     },
@@ -3398,9 +3406,9 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "planned",
+        "adverse-weather-and-visibility": "content_ready",
         "vehicle-lights-and-signaling": "content_ready"
       }
     },
@@ -3527,10 +3535,10 @@
         "adverse-weather-and-visibility"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-safe-distance-braking",
+      "ownerSlice": "C+E-safe-distance-braking+E-adverse-weather-visibility",
       "placementPhases": {
         "safe-distance-and-braking": "content_ready",
-        "adverse-weather-and-visibility": "planned"
+        "adverse-weather-and-visibility": "content_ready"
       }
     },
     {
@@ -3575,8 +3583,8 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "questionId": "b-fallback-336",
@@ -3825,9 +3833,9 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "planned",
+        "adverse-weather-and-visibility": "content_ready",
         "vehicle-lights-and-signaling": "content_ready"
       }
     },
@@ -3972,15 +3980,19 @@
         "adverse-weather-and-visibility"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-adverse-weather-visibility",
+      "placementPhases": {
+        "vehicle-condition-maintenance-loads": "planned",
+        "adverse-weather-and-visibility": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-376",
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "questionId": "b-fallback-377",
@@ -4123,9 +4135,9 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "planned",
+        "adverse-weather-and-visibility": "content_ready",
         "vehicle-lights-and-signaling": "content_ready"
       }
     },
@@ -4499,9 +4511,9 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "planned",
+        "adverse-weather-and-visibility": "content_ready",
         "vehicle-lights-and-signaling": "content_ready"
       }
     },
@@ -4698,8 +4710,8 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-adverse-weather-visibility"
     },
     {
       "questionId": "b-fallback-449",

@@ -1631,6 +1631,89 @@
       "notes": "Supports the narrow b-fallback-424 trap that cyclists are not exempt from applicable traffic norms merely because they do not use high-speed vehicles."
     },
     {
+      "id": "adverse-weather-precautionary-speed-and-control",
+      "topicId": "adverse-weather-and-visibility",
+      "claimId": "claim-weather-precautionary-speed-and-control",
+      "claimSummaryRu": "Velocidad precautoria требует адаптировать скорость к visibility, состоянию дороги, погоде, traffic, состоянию водителя/автомобиля/груза и сохранять полный контроль.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.2.1 Adecuación de la velocidad a las circunstancias. Velocidad precautoria",
+        "Ley 24.449 Artículo 50 Velocidad precautoria"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Поддерживает только общую safe-adaptation логику для rain, fog, visibility и control. Точные fallback-формулы для aquaplaning, tyre pressure и fuel-consumption images остаются ticket-specific."
+    },
+    {
+      "id": "adverse-weather-vehicle-safety-and-traction",
+      "topicId": "adverse-weather-and-visibility",
+      "claimId": "claim-weather-vehicle-safety-and-traction",
+      "claimSummaryRu": "Ley 2148 поддерживает minimum vehicle systems, важные при погодном риске: brakes, steering, suspension/adherence/stability, pneumatic tyres, lighting и windshield cleaning/demisting.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.1.2 Condiciones mínimas de seguridad",
+        "Ley 2148 4.1.3 Requisitos para automotores"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Поддерживает только общий контекст vehicle control и traction. Не является источником точных ответов про manual/cold tyre pressure."
+    },
+    {
+      "id": "adverse-weather-lights-low-visibility-and-fog",
+      "topicId": "adverse-weather-and-visibility",
+      "claimId": "claim-weather-lights-low-visibility-and-fog",
+      "claimSummaryRu": "Low/position/plate lights используются, когда natural light или visibility/traffic conditions этого требуют; fog lights используются по назначению, а balizas/intermitentes имеют отдельную warning-функцию.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.3.1 Generalidades",
+        "Ley 24.449 Artículo 47 Uso de las luces"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Переиспользует source boundary из vehicle-lights для adverse visibility. Точные fog image answers для b-fallback-283, 317, 390 и 428 остаются fallback-ticket-specific."
+    },
+    {
+      "id": "adverse-weather-warning-signs-slippery-and-wind",
+      "topicId": "adverse-weather-and-visibility",
+      "claimId": "claim-weather-warning-signs-slippery-and-wind",
+      "claimSummaryRu": "Anexo L P.12 поддерживает slippery-road warning из-за water/oil/dust, а P.30 поддерживает Vientos fuertes laterales.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Decreto 779 Anexo L Capítulo IV Señales preventivas, P.12 Calzada resbaladiza",
+        "Decreto 779 Anexo L Capítulo IV Señales preventivas, P.30 Vientos fuertes laterales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Поддерживает wind sign и общий slippery-surface warning context. Aquaplaning image/definition details остаются ticket-specific fallback material."
+    },
+    {
+      "id": "adverse-weather-additional-fog-lights",
+      "topicId": "adverse-weather-and-visibility",
+      "claimId": "claim-weather-additional-fog-lights",
+      "claimSummaryRu": "Архивные CABA и national laws ограничивают additional lights и допускают до двух fog lights; CABA также допускает до двух elevated brake lights.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.1.7 Luces adicionales",
+        "Ley 24.449 Artículo 32 Luces adicionales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Поддерживает b-fallback-360 additional-light answer на уровне general legal boundary; broader lighting accessory claims не добавляются."
+    },
+    {
       "id": "turns-giro-warning-position-30m",
       "topicId": "turns-direction-and-reversing",
       "claimId": "claim-giro-warning-position-30m",
