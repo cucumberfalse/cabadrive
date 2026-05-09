@@ -242,7 +242,7 @@
       "titleRu": "Школьные зоны, углы и пешеходная разметка",
       "categoryId": "vulnerable-users",
       "splitCriteria": "Zona escolar, senda peatonal, ochava, cruce verde, intervenciones horizontales и специальные скоростные/остановочные ловушки у переходов.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
       "ownerSlice": "C"
     },
@@ -451,7 +451,11 @@
         "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-009",
@@ -730,15 +734,19 @@
         "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-038",
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
       "questionId": "b-fallback-039",
@@ -882,9 +890,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
@@ -1158,9 +1166,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
@@ -1229,9 +1237,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
@@ -1677,7 +1685,11 @@
         "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-137",
@@ -1903,9 +1915,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -1982,7 +1994,11 @@
         "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-168",
@@ -2034,9 +2050,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
@@ -2491,9 +2507,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
@@ -2602,8 +2618,8 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
       "questionId": "b-fallback-234",
@@ -2742,8 +2758,8 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
       "questionId": "b-fallback-249",
@@ -2779,8 +2795,8 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
       "questionId": "b-fallback-253",
@@ -3186,7 +3202,11 @@
         "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-295",
@@ -3419,9 +3439,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
@@ -3606,7 +3626,11 @@
         "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-338",
@@ -3854,7 +3878,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "lane-and-channelization-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-363",
@@ -3916,9 +3944,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
@@ -3963,7 +3991,11 @@
         "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-374",
@@ -4043,9 +4075,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -4255,8 +4287,8 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
       "questionId": "b-fallback-403",
@@ -4311,9 +4343,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
@@ -4802,7 +4834,11 @@
         "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-pedestrian-school-zones-markings",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-459",
@@ -4811,9 +4847,9 @@
         "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "E-pedestrian-road-markings",
+      "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "planned",
+        "pedestrian-school-zones-and-markings": "content_ready",
         "pedestrian-and-school-road-markings": "content_ready"
       }
     },
