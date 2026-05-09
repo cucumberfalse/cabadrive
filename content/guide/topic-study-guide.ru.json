@@ -6719,25 +6719,25 @@
         },
         {
           "id": "claim-caba-parking-and-detention-prohibitions",
-          "textRu": "CABA запрещает остановку/стоянку на aceras, vías rápidas, double fila кроме остановки перед парковкой, углах, sendas/líneas de pare, túneles, puentes, ciclovías и других специальных местах.",
+          "textRu": "CABA запрещает остановку/стоянку на aceras, vías rápidas, doble fila кроме остановки перед парковкой, углах, sendas/líneas de pare, túneles, puentes, ciclovías и других специальных местах.",
           "requiresOfficialSource": true,
           "sourceTraceId": "stopping-parking-caba-prohibited-places"
         },
         {
           "id": "claim-balizas-garage-emergency-maneuver-use",
-          "textRu": "Luces intermitentes/balizas используются для detenido, egreso hacia garaje/playa/estación de servicio, próxima maniobra de detención/estacionamiento, emergency или imprevisto, но не отменяют запреты остановки.",
+          "textRu": "Luces intermitentes/balizas используются для detenido, egreso hacia garaje/playa/estación de servicio, próxima maniobra de detención/estacionamiento, emergencia или imprevisto, но не отменяют запреты остановки.",
           "requiresOfficialSource": true,
           "sourceTraceId": "stopping-parking-balizas-garage-emergency-use"
         },
         {
           "id": "claim-emergency-authority-and-incident-stop",
-          "textRu": "После incident/siniestro нужно остановиться сразу; emergency vehicles получают немедленный paso; agent/authorized work personnel indications can require stopping even when ordinary flow signs would otherwise guide movement.",
+          "textRu": "После incident/siniestro нужно остановиться сразу; vehículos de emergencia получают немедленный paso; указания agente de control или personal autorizado de obra могут требовать остановки, даже если обычные señales de circulación иначе направляли бы движение.",
           "requiresOfficialSource": true,
           "sourceTraceId": "stopping-parking-emergency-authority-incident-stop"
         },
         {
           "id": "claim-signs-no-estacionar-pare-information",
-          "textRu": "Anexo L distinguishes No estacionar, No estacionar ni detenerse, PARE, Corredor aéreo and information signs such as Aeropuerto, Estacionamiento and Plaza; these meanings control several image tickets in this topic.",
+          "textRu": "Anexo L различает No estacionar, No estacionar ni detenerse, PARE, Corredor aéreo и информационные знаки вроде Aeropuerto, Estacionamiento и Plaza; эти значения определяют ответы в нескольких билетах с изображениями в этой теме.",
           "requiresOfficialSource": true,
           "sourceTraceId": "stopping-parking-sign-meanings"
         }
