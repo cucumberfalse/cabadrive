@@ -411,6 +411,189 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force",
       "notes": "Used for b-fallback-093, b-fallback-134, b-fallback-139 and b-fallback-407 explanations without broadening the slice into a full emergency or passing topic."
+    },
+    {
+      "id": "documents-licenses-required-circulation-documents",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-required-circulation-documents",
+      "claimSummaryRu": "Required circulation documents and vehicle identification include valid license, cédula, insurance, VTV, and regulatory plates.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.2 Obligación de exhibir documentos",
+        "Ley 24.449 Artículo 40 Requisitos para circular"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Used for general document checklist and plate-placement claims; current cédula azul authorization is traced separately because DNRPA/ANSV changed that practice."
+    },
+    {
+      "id": "documents-licenses-current-cedula-authorization",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-current-cedula-authorization",
+      "claimSummaryRu": "Current cédula guidance: cédula azul is no longer an exigible circulation document; cédula digital/Mi Argentina authorization is the current third-party mechanism.",
+      "officialDocumentIds": [
+        "ansv-cedula-azul-no-exigible",
+        "disposicion-29-2024-cedulas-identificacion",
+        "disposicion-343-2024-autorizacion-cedula-digital",
+        "argentina-vehiculos-automotor-cedulas",
+        "dnrpa-registros-propiedad-automotor"
+      ],
+      "relevantSections": [
+        "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+        "Disposición 29/2024: ARTÍCULO 1° and ARTÍCULO 2°",
+        "Disposición 343/2024: ARTÍCULO 2° / Artículo 5°",
+        "Cédulas",
+        "Cédula Digital"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "currently_valid",
+      "notes": "Used to keep generalized prose current and to mark b-fallback-024, b-fallback-309, and b-fallback-456 as legacy/stale cédula wording where needed."
+    },
+    {
+      "id": "documents-licenses-current-vtv-first-review",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-current-vtv-first-review",
+      "claimSummaryRu": "Current CABA first VTV rule for private cars/motorcycles: fourth year or 64,000 km, with Ley 6631 legal wording of 60,000 km plus 4,000 km tolerance.",
+      "officialDocumentIds": [
+        "gcba-vtv-tramite-current",
+        "ley-6631-caba-vtv-modificatoria-ley-2265"
+      ],
+      "relevantSections": [
+        "Nuevas medidas en el trámite de la VTV: Primera Verificación",
+        "Artículo 15.- Primera verificación"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "currently_valid",
+      "notes": "Used for current VTV prose and to explain b-fallback-135 as a stale old-ticket conflict rather than current law."
+    },
+    {
+      "id": "documents-licenses-vtv-schedule-and-reverification",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-vtv-schedule-and-reverification",
+      "claimSummaryRu": "CABA VTV schedule is by final license-plate digit and failed/conditional results allow 60 business days for free re-verification.",
+      "officialDocumentIds": [
+        "gcba-vtv-tramite-current",
+        "ley-6631-caba-vtv-modificatoria-ley-2265"
+      ],
+      "relevantSections": [
+        "Para aplicar la exención de pago a la hora de realizar la VTV",
+        "Resultados de la VTV: Resultados habituales",
+        "Artículo 20.- Plazos y vigencia de los certificados"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "currently_valid",
+      "notes": "Supports VTV final-digit month explanations for b-fallback-114, b-fallback-214, b-fallback-259 and the 60 días hábiles explanation for b-fallback-072."
+    },
+    {
+      "id": "documents-licenses-license-validity-renewal",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-license-renewal-validity",
+      "claimSummaryRu": "CABA license expiration has no general grace period except non-business-day transfer; renewal as renewal requires no more than one year since expiration.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "3.2.6 Plazos de validez",
+        "3.2.9 Requisitos para la renovación"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-218 and b-fallback-395."
+    },
+    {
+      "id": "documents-licenses-retention-and-alcohol-control",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-retention-alcohol-control",
+      "claimSummaryRu": "CABA authority may retain licenses only in listed cases; alcohol-positive control prevents continued driving and orders vehicle removal.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "1.1.6 Garantía de libertad de tránsito",
+        "5.4.7 Procedimiento para casos de control de alcoholemia positivo",
+        "5.6.1 Retención Preventiva",
+        "Ley 24.449 Artículo 37 Exhibición de documentos",
+        "Ley 24.449 Artículo 72 Retención preventiva"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports retención explanations for b-fallback-092, b-fallback-157, b-fallback-322 and the document-personal trap."
+    },
+    {
+      "id": "documents-licenses-insurance-and-crash-duties",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-insurance-and-crash-duties",
+      "claimSummaryRu": "Mandatory insurance covers third parties transported or not, and crash participants must stop, assist/collaborate, and provide license/insurance/vehicle data.",
+      "officialDocumentIds": [
+        "ley-24449-transito-seguridad-vial",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 24.449 Artículo 65 Obligaciones",
+        "Ley 24.449 Artículo 68 Seguro obligatorio",
+        "Ley 2148 5.5.1 Obligaciones en caso de incidentes viales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-173, b-fallback-253, and b-fallback-432; emergency-call details in b-fallback-062 remain ticket-specific wording."
+    },
+    {
+      "id": "documents-licenses-scoring-system",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-scoring-system",
+      "claimSummaryRu": "CABA SEPC/Scoring assigns 20 initial points and deducts points for confirmed infractions.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "11.1.1 Creación",
+        "11.1.2 Asignación inicial de puntaje",
+        "11.1.3 Descuento de puntos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-243 and b-fallback-367."
+    },
+    {
+      "id": "documents-licenses-risk-control-and-remolque",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-risk-control-driver-duty",
+      "claimSummaryRu": "Driver control duties include keeping physical control/attention, seat-belt use, precautionary speed, prudent following distance, and authorized towing/removal rules.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.1 Condiciones para conducir",
+        "Ley 2148 6.1.3 Cinturón de seguridad. Obligación de uso",
+        "Ley 2148 6.2.1 Adecuación de la velocidad a las circunstancias. Velocidad precautoria",
+        "Ley 2148 5.5.3 Comportamiento general en caso de averías o imprevistos",
+        "Ley 2148 6.1.9 Autopistas y otras vías rápidas",
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso g"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports risk-control ticket explanations for b-fallback-137, b-fallback-208, b-fallback-290, b-fallback-300, and b-fallback-451 without broadening the topic into vehicle-safety prose."
+    },
+    {
+      "id": "documents-licenses-duplicate-chapa-registro",
+      "topicId": "documents-licenses-and-insurance",
+      "claimId": "claim-duplicate-chapa-registro",
+      "claimSummaryRu": "Duplicate/replacement chapa patente is processed before the Registro where the vehicle is registered, with provisional paper plates until definitive duplicates are delivered.",
+      "officialDocumentIds": [
+        "argentina-duplicado-chapa-patente-automotor"
+      ],
+      "relevantSections": [
+        "Obtener un duplicado de la chapa patente del automotor",
+        "¿Cómo hago?"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "currently_valid",
+      "notes": "Supports b-fallback-226 and plate-document trap notes."
     }
   ]
 }

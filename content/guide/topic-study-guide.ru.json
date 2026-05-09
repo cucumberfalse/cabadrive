@@ -4150,6 +4150,971 @@
           "sourceTraceId": "traffic-lights-emergency-and-overtake-signals"
         }
       ]
+    },
+    {
+      "id": "documents-licenses-and-insurance",
+      "slug": "documents-licenses-and-insurance",
+      "status": "draft",
+      "titleRu": "Документы, лицензия, VTV, страховка и номера",
+      "summaryRu": "Экзаменационный блок про документы для движения, cédula, licencia, VTV, seguro, chapa patente, scoring и административные последствия нарушений.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про документы сначала отделяйте три слоя: что нужно иметь при движении, что делает орган контроля при нарушении, и что является устаревшей формулировкой старого билета.",
+        "Для обычного движения важны licencia de conducir vigente, cédula de identificación del automotor, comprobante de seguro obligatorio, VTV vigente и chapas/placas de dominio на штатном месте без изменений. Номерной знак должен читаться и быть установлен reglamentariamente: нельзя расширять, переносить, закрывать или использовать как “почти временный” знак.",
+        "Cédula azul - главный источник ловушек. Текущие источники DNRPA/ANSV говорят, что cédula azul больше не является exigible как обязательный документ для движения, cédula verde не истекает, пока нет смены владельца, а разрешение третьему лицу сейчас оформляется через Mi Argentina с показом Cédula de Identificación Digital. Старые билеты могут спрашивать по прежней логике: в таких местах учите ответ билета как legacy/stale-question trap, а не как новое общее правило.",
+        "VTV в CABA сейчас для частных авто и мото начинается с четвертого года antigüedad cumplido или при 64.000 km, что наступит раньше. Ley 6631 формулирует юридическую деталь как 60.000 km плюс tolerancia de 4.000 km. Месяц VTV берется по último número de la patente/dominio: 1 - noviembre, 2 - febrero, 3 - marzo, 4 - abril, 5 - mayo, 6 - junio, 7 - julio, 8 - agosto, 9 - septiembre, 0 - octubre. Enero и diciembre в расписании vencimientos не используются.",
+        "Если VTV получила результат Condicional или Rechazado, в CABA есть 60 días hábiles на re-verificación sin cargo в той же planta. Corridos и hábiles - не одно и то же: в билетах правильный вариант именно días hábiles.",
+        "Лицензия действует до срока vencimiento без общей “льготной” езды после него. Исключение в CABA: если дата vencimiento выпала на día inhábil, она переносится на следующий día hábil. Для renovación как продления, а не нового otorgamiento, не должно пройти больше одного года после vencimiento.",
+        "Autoridad de Control не “забирает права просто потому, что документ личный”. Retención de licencia возможна только в случаях, прямо перечисленных нормой: например, licencia vencida, alcoholemia positiva, движение по Metrobus/carril exclusivo без разрешения, ноль puntos SEPC и другие специальные случаи. При alcoholemia positiva также запрещают продолжать движение и ordenan la remoción del vehículo.",
+        "Seguro obligatorio покрывает daños a terceros transportados o no. Поэтому неверны варианты, которые ограничивают страховку только пассажирами, только автомобилями или только межгородом.",
+        "После siniestro vial нужно остановиться, помочь пострадавшим, не создавать больший риск, дать данные personales, del vehículo, de la licencia y del seguro, сотрудничать с autoridad. Вызов 107 в билете проверяет практическую информацию: lugar, características del incidente, cantidad y estado de las víctimas.",
+        "Scoring/SEPC - это система баллов: при выдаче первой лицензии CABA назначает 20 puntos, а затем баллы уменьшаются за infracciones. Ноль пунктов может вести к удержанию лицензии и inhabilitación по процедуре.",
+        "Оставшиеся билеты здесь используют документную тему как точку контроля риска: calzado sujeto al pie, distancia de seguridad, velocidad precautoria, cinturón и remolque. Общая идея одна: водитель отвечает перед контролем за состояние управления, пассажиров и предсказуемость машины."
+      ],
+      "practicalReasoningRu": [
+        "Документы нужны не для бюрократии ради бюрократии: они показывают, что водитель habilitado, машина идентифицируема, застрахована, технически проверена, а ответственность можно быстро установить после siniestro.",
+        "VTV, страховка, cédula и chapa patente делают автомобиль “проверяемым” для других участников и государства. Если номер не читается или VTV просрочена, поток теряет управляемость: нельзя надежно идентифицировать машину, проверить безопасность или оформить последствия аварии.",
+        "Правила retención и scoring ограничивают произвол контроля: документ удерживают не потому, что инспектор так решил, а потому что норма перечисляет конкретные опасные или административно значимые случаи."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-cedula-autorizado-conducir",
+          "termEs": "cédula para autorizado a conducir",
+          "translationRu": "cédula для лица, уполномоченного управлять; старая cédula azul-логика",
+          "sourceQuestionIds": [
+            "b-fallback-024"
+          ]
+        },
+        {
+          "id": "term-cedulas-autorizados-conducir",
+          "termEs": "cédulas para autorizados a conducir",
+          "translationRu": "cédulas для уполномоченных водителей; старая множественная формулировка",
+          "sourceQuestionIds": [
+            "b-fallback-309"
+          ]
+        },
+        {
+          "id": "term-placas-dominio",
+          "termEs": "placas de dominio",
+          "translationRu": "государственные номерные знаки автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-027"
+          ]
+        },
+        {
+          "id": "term-placa-dominio",
+          "termEs": "placa de dominio",
+          "translationRu": "номерной знак, chapa patente",
+          "sourceQuestionIds": [
+            "b-fallback-433"
+          ]
+        },
+        {
+          "id": "term-verificacion-tecnica-vehicular",
+          "termEs": "Verificación Técnica Vehicular",
+          "translationRu": "технический осмотр VTV",
+          "sourceQuestionIds": [
+            "b-fallback-114",
+            "b-fallback-214",
+            "b-fallback-259"
+          ]
+        },
+        {
+          "id": "term-reverificacion-vtv",
+          "termEs": "reverificación de la VTV",
+          "translationRu": "повторная проверка VTV после неудачного результата",
+          "sourceQuestionIds": [
+            "b-fallback-072"
+          ]
+        },
+        {
+          "id": "term-licencia-conducir",
+          "termEs": "licencia de conducir",
+          "translationRu": "водительское удостоверение",
+          "sourceQuestionIds": [
+            "b-fallback-092",
+            "b-fallback-157",
+            "b-fallback-395"
+          ]
+        },
+        {
+          "id": "term-licencia-vencida",
+          "termEs": "licencia vencida",
+          "translationRu": "истекшая водительская лицензия",
+          "sourceQuestionIds": [
+            "b-fallback-218"
+          ]
+        },
+        {
+          "id": "term-compania-seguros",
+          "termEs": "Compañía de Seguros",
+          "translationRu": "страховая компания",
+          "sourceQuestionIds": [
+            "b-fallback-023"
+          ]
+        },
+        {
+          "id": "term-seguro-obligatorio",
+          "termEs": "seguro obligatorio",
+          "translationRu": "обязательное страхование",
+          "sourceQuestionIds": [
+            "b-fallback-253"
+          ]
+        },
+        {
+          "id": "term-responsabilidad-civil",
+          "termEs": "responsabilidad civil",
+          "translationRu": "гражданская ответственность",
+          "sourceQuestionIds": [
+            "b-fallback-432"
+          ]
+        },
+        {
+          "id": "term-danos-terceros",
+          "termEs": "daños causados a terceros",
+          "translationRu": "ущерб третьим лицам",
+          "sourceQuestionIds": [
+            "b-fallback-173"
+          ]
+        },
+        {
+          "id": "term-siniestro-vial",
+          "termEs": "siniestro vial",
+          "translationRu": "ДТП, дорожный инцидент",
+          "sourceQuestionIds": [
+            "b-fallback-062"
+          ]
+        },
+        {
+          "id": "term-siniestro",
+          "termEs": "siniestro",
+          "translationRu": "инцидент, ДТП",
+          "sourceQuestionIds": [
+            "b-fallback-253"
+          ]
+        },
+        {
+          "id": "term-responsabilidad-penal",
+          "termEs": "Responsabilidad Penal",
+          "translationRu": "уголовная ответственность",
+          "sourceQuestionIds": [
+            "b-fallback-023"
+          ]
+        },
+        {
+          "id": "term-responsable-civil",
+          "termEs": "responsable civil",
+          "translationRu": "граждански ответственный",
+          "sourceQuestionIds": [
+            "b-fallback-199"
+          ]
+        },
+        {
+          "id": "term-velocidad-precautoria-docs",
+          "termEs": "velocidad precautoria",
+          "translationRu": "скорость, безопасная по обстоятельствам",
+          "sourceQuestionIds": [
+            "b-fallback-208"
+          ]
+        },
+        {
+          "id": "term-distancia-seguridad",
+          "termEs": "distancia de seguridad",
+          "translationRu": "безопасная дистанция",
+          "sourceQuestionIds": [
+            "b-fallback-451"
+          ]
+        },
+        {
+          "id": "term-control-alcoholemia",
+          "termEs": "control de alcoholemia",
+          "translationRu": "проверка на алкоголь",
+          "sourceQuestionIds": [
+            "b-fallback-322"
+          ]
+        },
+        {
+          "id": "term-cinturon-seguridad",
+          "termEs": "cinturón de seguridad",
+          "translationRu": "ремень безопасности",
+          "sourceQuestionIds": [
+            "b-fallback-300"
+          ]
+        },
+        {
+          "id": "term-scoring",
+          "termEs": "Scoring",
+          "translationRu": "балльная система SEPC",
+          "sourceQuestionIds": [
+            "b-fallback-243",
+            "b-fallback-367"
+          ]
+        },
+        {
+          "id": "term-remolcar",
+          "termEs": "remolcar",
+          "translationRu": "буксировать",
+          "sourceQuestionIds": [
+            "b-fallback-290"
+          ]
+        },
+        {
+          "id": "term-calzado",
+          "termEs": "calzado",
+          "translationRu": "обувь",
+          "sourceQuestionIds": [
+            "b-fallback-137"
+          ]
+        },
+        {
+          "id": "term-titular",
+          "termEs": "titular",
+          "translationRu": "владелец/зарегистрированный держатель",
+          "sourceQuestionIds": [
+            "b-fallback-456"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-023",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-023-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильная логика билета: ответственность penal личная и не переводится на dueño del vehículo или страховщика."
+            },
+            {
+              "answerId": "b-fallback-023-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Страховка и владелец могут быть важны для гражданских/страховых последствий, но уголовную ответственность водителя на них не “передают”."
+            },
+            {
+              "answerId": "b-fallback-023-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Суд оценивает факт и последствия, но вариант неверен, потому что делает transferibilidad вопросом усмотрения судьи."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-024",
+          "sourceConflictNoteRu": "Legacy/stale cédula azul wording: current official sources make cédula azul non-exigible and use Mi Argentina authorization for third parties.",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-024-a1",
+              "verdict": "incorrect",
+              "explanationRu": "В старой логике билета недостаточно, что чужая cédula para autorizado esté vigente: документ должен относиться к самому водителю. По текущим источникам cédula azul уже не является exigible, а разрешение третьему лицу идет через Mi Argentina."
+            },
+            {
+              "answerId": "b-fallback-024-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Родство или работа сами по себе не заменяют корректную авторизацию. Это legacy-вопрос по cédula azul, не современное общее правило."
+            },
+            {
+              "answerId": "b-fallback-024-a3",
+              "verdict": "correct",
+              "explanationRu": "Для ответа билета: с cédula para autorizado a conducir на имя другого лица управлять нельзя. Учите это как старую формулировку билета; текущая практика DNRPA/ANSV строится вокруг cédula no exigible и digital authorization."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-027",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-027-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Даже “для видимости” нельзя самовольно менять размер или положение placas de dominio: знак должен быть штатным и reglamentario."
+            },
+            {
+              "answerId": "b-fallback-027-a2",
+              "verdict": "correct",
+              "explanationRu": "Номерные знаки должны быть на предусмотренном месте и в установленной форме, чтобы vehículo можно было надежно идентифицировать."
+            },
+            {
+              "answerId": "b-fallback-027-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Правило касается не только задней placas: обе placas de dominio должны оставаться установленными и читаемыми."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-062",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-062-a1",
+              "verdict": "correct",
+              "explanationRu": "Для 107 полезнее всего сразу дать место, характер incidentе, количество и состояние пострадавших: так помощь понимает куда ехать и какие ресурсы нужны."
+            },
+            {
+              "answerId": "b-fallback-062-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Dominio автомобилей может понадобиться позже, но для экстренной помощи он менее важен, чем características incidente и состояние víctimas."
+            },
+            {
+              "answerId": "b-fallback-062-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Одного места мало: без масштаба и состояния пострадавших диспетчер хуже оценивает срочность и тип помощи."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-072",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-072-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Официальная страница VTV CABA предусматривает бесплатную re-verificación в установленный срок, поэтому “нет срока и платить заново сразу” неверно."
+            },
+            {
+              "answerId": "b-fallback-072-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ловушка в слове corridos: билет и текущая страница говорят о 60 días hábiles, а не календарных днях подряд."
+            },
+            {
+              "answerId": "b-fallback-072-a3",
+              "verdict": "correct",
+              "explanationRu": "Condicional или Rechazado дают 60 días hábiles для re-verificar sin cargo в той же planta."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-092",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b27.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-092-a1",
+              "verdict": "correct",
+              "explanationRu": "Carril exclusivo/Metrobus без разрешения входит в случаи, где CABA допускает retención de licencia; поэтому autoridad может удержать документ."
+            },
+            {
+              "answerId": "b-fallback-092-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Нарушение состоит уже в circulando por este carril без права, а не только в фактическом вреде colectivos."
+            },
+            {
+              "answerId": "b-fallback-092-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Лицензия личная, но нормы прямо перечисляют случаи retención; это не ограничивается acta de infracción."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-114",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b49.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-114-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Месяц VTV определяется последней цифрой dominio, а не первой видимой цифрой."
+            },
+            {
+              "answerId": "b-fallback-114-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Буква D не задает месяц VTV: нужен último número de la patente."
+            },
+            {
+              "answerId": "b-fallback-114-a3",
+              "verdict": "correct",
+              "explanationRu": "На изображении последняя цифра dominio - 3; по расписанию CABA это marzo."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-135",
+          "sourceConflictNoteRu": "Stale VTV timing conflict: ticket answer follows old 36-month/60.000-km wording; current CABA sources use fourth year or 64.000 km.",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-135-a1",
+              "verdict": "correct",
+              "explanationRu": "Это правильный ответ старого fallback-билета по прежней формулировке Ley 2265: 3 años или 60.000 km. Как текущую норму это не обобщаем: действующие источники D4 говорят о четвертом году или 64.000 km."
+            },
+            {
+              "answerId": "b-fallback-135-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Даже по старой формулировке ticket не требовал VTV immediately al retirarlo de la agencia."
+            },
+            {
+              "answerId": "b-fallback-135-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Старая логика билета не была “сразу после первого года”; текущая официальная логика также позже - с четвертого года или 64.000 km."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-137",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b194.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-137-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неважно только “resbalen/no resbalen”: обувь должна надежно держаться на ноге и не мешать педалям."
+            },
+            {
+              "answerId": "b-fallback-137-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Риск есть не только в viajes largos: потеря контроля педали опасна и в короткой городской поездке."
+            },
+            {
+              "answerId": "b-fallback-137-a3",
+              "verdict": "correct",
+              "explanationRu": "Calzado sujeto al pie дает устойчивое управление педалями, поэтому это безопасный экзаменационный ответ."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-157",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-157-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Документ личный, но это не абсолютный запрет: закон допускает retener la licencia в перечисленных случаях."
+            },
+            {
+              "answerId": "b-fallback-157-a2",
+              "verdict": "correct",
+              "explanationRu": "Ключ - sólo en los casos que la normativa vigente así lo indique: не любая falta, а конкретно предусмотренные случаи."
+            },
+            {
+              "answerId": "b-fallback-157-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Retención не ограничивается incidentes con terceros; например, возможны alcoholemia positiva, licencia vencida, carril exclusivo и другие случаи."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-173",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-173-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Seguro obligatorio не ограничивается только terceros transportados: он также покрывает terceros no transportados."
+            },
+            {
+              "answerId": "b-fallback-173-a2",
+              "verdict": "correct",
+              "explanationRu": "Минимальная логика обязательной страховки - eventuales daños causados a terceros, transportados o no."
+            },
+            {
+              "answerId": "b-fallback-173-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант про daños a vehículos únicamente сужает покрытие до имущества и пропускает людей/третьих лиц."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-184",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-184-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ответ слишком узкий: ответственность в tránsito касается не только тех, кто ведет любое vehículo."
+            },
+            {
+              "answerId": "b-fallback-184-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Licencia важна для водителя, но vía pública включает и других usuarios; обязанность не создавать peligro шире."
+            },
+            {
+              "answerId": "b-fallback-184-a3",
+              "verdict": "correct",
+              "explanationRu": "Идея верна: каждый пользователь должен не создавать peligro и не entorpecer la circulación."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-199",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-199-a1",
+              "verdict": "correct",
+              "explanationRu": "В логике билета за menor de edad с лицензией граждански отвечает тот, кто подписал autorización para obtener la licencia."
+            },
+            {
+              "answerId": "b-fallback-199-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Сопровождающий не является тем юридическим лицом, которое дало разрешение на получение licencia."
+            },
+            {
+              "answerId": "b-fallback-199-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Разрешение пользоваться конкретным vehículo не совпадает с authorization para obtener la licencia у несовершеннолетнего."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-208",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-208-a1",
+              "verdict": "correct",
+              "explanationRu": "Velocidad precautoria - это скорость под обстоятельства, в пределах лимитов, при которой водитель сохраняет total dominio del vehículo и не создает riesgo."
+            },
+            {
+              "answerId": "b-fallback-208-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Минимальная скорость - отдельное правило; precautoria говорит не о нижнем пределе, а о безопасной адаптации к условиям."
+            },
+            {
+              "answerId": "b-fallback-208-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Фиксированные 30/45 km/h не определяют общий термин; обстоятельства могут требовать иной безопасной скорости в пределах нормы."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-214",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b51.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-214-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Enero не входит в обычные vencimientos VTV CABA и не соответствует последней цифре на изображении."
+            },
+            {
+              "answerId": "b-fallback-214-a2",
+              "verdict": "correct",
+              "explanationRu": "Последняя цифра dominio на изображении - 7; в расписании CABA это julio."
+            },
+            {
+              "answerId": "b-fallback-214-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Diciembre в расписании vencimientos VTV не используется."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-218",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-218-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Нет общего разрешения ездить 30 días corridos после vencimiento лицензии."
+            },
+            {
+              "answerId": "b-fallback-218-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Формулировка про 00 horas del cumpleaños не является правилом CABA для езды с vencida."
+            },
+            {
+              "answerId": "b-fallback-218-a3",
+              "verdict": "correct",
+              "explanationRu": "С licencia vencida ездить нельзя; исключение - если vencimiento пришелся на día inhábil, тогда он переносится на следующий día hábil."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-226",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-226-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Chapa patente не делают “в любом коммерческом месте”: это официальный регистрационный trámite."
+            },
+            {
+              "answerId": "b-fallback-226-a2",
+              "verdict": "correct",
+              "explanationRu": "Reposición/duplicado de chapa patente оформляется в Registro Nacional de la Propiedad del Automotor, где radicado el vehículo."
+            },
+            {
+              "answerId": "b-fallback-226-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Так как вариант A неверен, “ambas” тоже неверно."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-243",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-243-a1",
+              "verdict": "incorrect",
+              "explanationRu": "10 puntos встречаются в системе как восстановление после cero puntos, но начальное назначение при первой лицензии в CABA - 20."
+            },
+            {
+              "answerId": "b-fallback-243-a2",
+              "verdict": "correct",
+              "explanationRu": "SEPC назначает 20 puntos водителю, который получает licencia de conducir por primera vez."
+            },
+            {
+              "answerId": "b-fallback-243-a3",
+              "verdict": "incorrect",
+              "explanationRu": "5 puntos - не начальный puntaje; это отвлекающий вариант."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-253",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-253-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это действительно обязанность после siniestro, но неполная: нужно также предоставить данные и страховую информацию."
+            },
+            {
+              "answerId": "b-fallback-253-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Это тоже обязанность, но неполная без detenerse, auxiliar и colaborar para evitar mayores daños."
+            },
+            {
+              "answerId": "b-fallback-253-a3",
+              "verdict": "correct",
+              "explanationRu": "Обе группы обязанностей верны: остановиться/помочь/сотрудничать и сообщить datos personales, vehículo, licencia y seguro."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-259",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b50.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-259-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Enero не используется как месяц vencimiento VTV CABA и не соответствует последней цифре на изображении."
+            },
+            {
+              "answerId": "b-fallback-259-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Febrero соответствует final 2, но на изображении final 3."
+            },
+            {
+              "answerId": "b-fallback-259-a3",
+              "verdict": "correct",
+              "explanationRu": "Последняя цифра dominio - 3; по расписанию CABA это marzo."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-290",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b196.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-290-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Даже если автомобиль descompuesto создает риск, частный автомобиль не становится autorizado para remolcar на такой vía."
+            },
+            {
+              "answerId": "b-fallback-290-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Лицензия с remolque не делает обычный автомобиль службой auxilio/remolque для чужого неисправного авто."
+            },
+            {
+              "answerId": "b-fallback-290-a3",
+              "verdict": "correct",
+              "explanationRu": "Remolque de un vehículo averiado должен выполнять транспорт, специально предназначенный для этого; на autopista remolcado должен уйти на первой возможной salida."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-300",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-300-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Tomador del seguro отвечает за страховой договор, но не за то, пристегнут ли пассажир в момент контроля."
+            },
+            {
+              "answerId": "b-fallback-300-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Даже если пассажир совершеннолетний, перед autoridad de control за управление автомобилем и соблюдение обязательных условий отвечает conductor."
+            },
+            {
+              "answerId": "b-fallback-300-a3",
+              "verdict": "correct",
+              "explanationRu": "В билете правильный ответ - conductor: он отвечает за движение автомобиля и обязательное использование cinturón de seguridad."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-309",
+          "sourceConflictNoteRu": "Legacy cédula azul quantity wording; current source-traced prose uses non-exigible cédula azul and Mi Argentina authorization.",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-309-a1",
+              "verdict": "incorrect",
+              "explanationRu": "В старой ticket-логике количество cédulas para autorizados не ограничивалось одной."
+            },
+            {
+              "answerId": "b-fallback-309-a2",
+              "verdict": "correct",
+              "explanationRu": "Для ответа старого билета: titular мог запросить нужное количество. Но как текущую норму это не обобщаем: cédula azul больше не exigible, а digital authorization делается через Mi Argentina."
+            },
+            {
+              "answerId": "b-fallback-309-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Лимит hasta cinco не соответствует правильному ответу старого билета и не является текущей общей логикой DNRPA."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-322",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b52.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-322-a1",
+              "verdict": "correct",
+              "explanationRu": "При положительной alcoholemia в CABA autoridad запрещает продолжать driving, применяет санкции/contravención по делу, удерживает licencia и remite/remueve vehículo."
+            },
+            {
+              "answerId": "b-fallback-322-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Нельзя ждать, пока bajе la graduación alcohólica: положительный контроль уже требует impedir продолжение движения."
+            },
+            {
+              "answerId": "b-fallback-322-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Передача авто третьему лицу не заменяет procedimiento de control: retención/remoción и санкция остаются."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-367",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-367-a1",
+              "verdict": "correct",
+              "explanationRu": "SEPC/Scoring назначает puntaje a cada conductor и вычитает puntos за infracciones comprobadas."
+            },
+            {
+              "answerId": "b-fallback-367-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Курсы могут появляться как следствие восстановления/переобучения, но Scoring не означает ежегодный обязательный курс для всех."
+            },
+            {
+              "answerId": "b-fallback-367-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант A как раз описывает систему, поэтому “ambas incorrectas” неверно."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-395",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-395-a1",
+              "verdict": "incorrect",
+              "explanationRu": "30 días corridos - ловушка: это не предел для renovación как продления в CABA."
+            },
+            {
+              "answerId": "b-fallback-395-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Водить с vencida нельзя, но renovar как продление можно, если не прошел установленный срок; это разные вопросы."
+            },
+            {
+              "answerId": "b-fallback-395-a3",
+              "verdict": "correct",
+              "explanationRu": "Для renovación por vencimiento не должно пройти больше одного года; после этого trámite считается новым otorgamiento."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-432",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-432-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза ÚNICAMENTE cuando se conduce por vías interurbanas неверна: comprobante del seguro obligatorio нужен для движения не только на interurbanas."
+            },
+            {
+              "answerId": "b-fallback-432-a2",
+              "verdict": "correct",
+              "explanationRu": "Falso: обязательный страховой документ является частью документации для circulation, а не только межгород."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-433",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b47.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-433-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Даже documentación provisoria не разрешает ехать с номером, который не выполняет функцию штатной placa reglamentaria."
+            },
+            {
+              "answerId": "b-fallback-433-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Проблема не в том, что provisoria “надо увеличить”; самовольные изменения номера как раз недопустимы."
+            },
+            {
+              "answerId": "b-fallback-433-a3",
+              "verdict": "correct",
+              "explanationRu": "Placa de dominio должна быть установлена на месте и в форме reglamentaria; на изображении это условие не выполнено."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-451",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-451-a1",
+              "verdict": "correct",
+              "explanationRu": "Distancia de seguridad - это промежуток до автомобиля впереди, который дает margen de reacción и помогает не столкнуться при frenada repentina."
+            },
+            {
+              "answerId": "b-fallback-451-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Боковой интервал для sobrepaso важен, но это не определение distancia de seguridad в билете."
+            },
+            {
+              "answerId": "b-fallback-451-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Это скорее distancia/tiempo de reacción до нажатия тормоза, а не дистанция до впереди идущего vehículo."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-456",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b46.jpg",
+          "sourceConflictNoteRu": "Legacy cédula image prompt; current source-traced prose teaches Mi Argentina authorization rather than family-name authorization.",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-456-a1",
+              "verdict": "incorrect",
+              "explanationRu": "В старой логике изображения cédula не делает документ “никто не может”: вопрос спрашивает, кто autorizado."
+            },
+            {
+              "answerId": "b-fallback-456-a2",
+              "verdict": "correct",
+              "explanationRu": "По ответу старого билета с этой документацией autorizado только titular. Текущая официальная логика: cédula azul non-exigible, а terceros получают digital authorization через Mi Argentina."
+            },
+            {
+              "answerId": "b-fallback-456-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Одинаковая фамилия или parentesco не дает автоматического права conducir без корректной авторизации."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-cedula-azul-current-vs-old",
+          "textRu": "Cédula azul в старых билетах может звучать как обязательный отдельный документ. Текущая подсказка: cédula azul no es exigible; если билет старый, отвечайте на формулировку билета и помечайте ее как legacy.",
+          "sourceQuestionIds": [
+            "b-fallback-024",
+            "b-fallback-309",
+            "b-fallback-456"
+          ]
+        },
+        {
+          "id": "trap-vtv-old-ley-2265",
+          "textRu": "Билет про Ley 2265 и 3 años/60.000 km устарел относительно текущих источников CABA: сейчас учите cuarto año/64.000 km, а старый ответ держите только для самого fallback-вопроса.",
+          "sourceQuestionIds": [
+            "b-fallback-135"
+          ]
+        },
+        {
+          "id": "trap-vtv-last-digit",
+          "textRu": "Для VTV месяц дает último número del dominio, не буква и не первая цифра. Enero и diciembre в обычном расписании не выбирайте.",
+          "sourceQuestionIds": [
+            "b-fallback-114",
+            "b-fallback-214",
+            "b-fallback-259"
+          ]
+        },
+        {
+          "id": "trap-dias-habiles-corridos",
+          "textRu": "Días hábiles и días corridos - частая ловушка. Для бесплатной re-verificación VTV нужен срок 60 días hábiles.",
+          "sourceQuestionIds": [
+            "b-fallback-072"
+          ]
+        },
+        {
+          "id": "trap-personal-document-retention",
+          "textRu": "“Documento personal” не означает, что licencia никогда не удерживают. Ищите формулу sólo en los casos que la normativa indique.",
+          "sourceQuestionIds": [
+            "b-fallback-092",
+            "b-fallback-157",
+            "b-fallback-322"
+          ]
+        },
+        {
+          "id": "trap-insurance-uniquely-interurban",
+          "textRu": "ÚNICAMENTE часто делает утверждение ложным. Seguro obligatorio нужен не только на vías interurbanas.",
+          "sourceQuestionIds": [
+            "b-fallback-432"
+          ]
+        },
+        {
+          "id": "trap-ambas-respuestas",
+          "textRu": "Ambas respuestas верно только когда обе части действительно обязательны: в siniestro да, а в reposición de chapa нет, потому что “любой коммерческий изготовитель” неверен.",
+          "sourceQuestionIds": [
+            "b-fallback-226",
+            "b-fallback-253"
+          ]
+        },
+        {
+          "id": "trap-risk-control-not-paperwork",
+          "textRu": "В этой теме часть билетов выглядит не как документы, но проверяет ответственность водителя перед контролем: cinturón, calzado, distancia, velocidad precautoria и remolque.",
+          "sourceQuestionIds": [
+            "b-fallback-137",
+            "b-fallback-208",
+            "b-fallback-290",
+            "b-fallback-300",
+            "b-fallback-451"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-required-circulation-documents",
+          "textRu": "Для движения нужны vigente licencia, cédula de identificación, seguro obligatorio, VTV и штатные chapas/placas de dominio.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-required-circulation-documents"
+        },
+        {
+          "id": "claim-current-cedula-authorization",
+          "textRu": "Cédula azul больше не является обязательным exigible circulation document; текущая авторизация третьего лица делается через Mi Argentina/Cédula de Identificación Digital.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-current-cedula-authorization"
+        },
+        {
+          "id": "claim-current-vtv-first-review",
+          "textRu": "В CABA первая VTV для частного авто/мото сейчас с четвертого года или 64.000 km; Ley 6631 дает 60.000 km плюс 4.000 km tolerancia.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-current-vtv-first-review"
+        },
+        {
+          "id": "claim-vtv-schedule-and-reverification",
+          "textRu": "Месяц VTV зависит от последней цифры dominio; re-verificación после Condicional/Rechazado бесплатна в течение 60 días hábiles.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-vtv-schedule-and-reverification"
+        },
+        {
+          "id": "claim-license-renewal-validity",
+          "textRu": "Vencimiento лицензии не имеет общей прórroga, кроме día inhábil; renovación как продление возможна, если прошло не больше одного года.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-license-validity-renewal"
+        },
+        {
+          "id": "claim-retention-alcohol-control",
+          "textRu": "Retención de licencia и remoción/impedimento de continuar возможны только в нормативно перечисленных случаях, включая alcoholemia positiva, carril exclusivo и licencia vencida.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-retention-and-alcohol-control"
+        },
+        {
+          "id": "claim-insurance-and-crash-duties",
+          "textRu": "Seguro obligatorio покрывает terceros transportados o no; после siniestro нужно остановиться, помогать, дать данные licencia/seguro/vehículo и сотрудничать.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-insurance-and-crash-duties"
+        },
+        {
+          "id": "claim-scoring-system",
+          "textRu": "SEPC/Scoring назначает 20 puntos при первой лицензии и вычитает puntos за infracciones.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-scoring-system"
+        },
+        {
+          "id": "claim-risk-control-driver-duty",
+          "textRu": "Водитель должен сохранять контроль, внимание и условия безопасности; cinturón, velocidad precautoria, distancia prudente и корректный remolque относятся к этому контролю риска.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-risk-control-and-remolque"
+        },
+        {
+          "id": "claim-duplicate-chapa-registro",
+          "textRu": "Duplicado/reposición de chapa patente оформляется в Registro where the vehicle is radicado, с provisional paper plates до выдачи дубликата.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "documents-licenses-duplicate-chapa-registro"
+        }
+      ]
     }
   ]
 }
