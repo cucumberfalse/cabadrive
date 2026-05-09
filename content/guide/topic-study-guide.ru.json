@@ -4244,6 +4244,637 @@
       ]
     },
     {
+      "id": "alcohol-drugs-and-impairment",
+      "slug": "alcohol-drugs-and-impairment",
+      "status": "draft",
+      "titleRu": "Алкоголь, препараты и состояние водителя",
+      "summaryRu": "Блок про alcoholemia, отказ от проверки, состояние principiante, estupefacientes, medicamentos, resaca, cansancio и ticket-specific эффекты, которые ухудшают пригодность к управлению.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах важна простая идея: водитель должен быть в таком estado psicofísico, чтобы контролировать автомобиль, видеть, воспринимать обстановку, держать внимание и принимать решения.",
+        "CABA Ley 2148 запрещает управлять после употребления или внесения в организм sustancias que disminuyan la aptitud para conducir. Закон прямо связывает ухудшение пригодности с somnolencia, fatiga, coordinación motora, atención, percepción sensorial и juicio crítico; поэтому алкоголь, estupefacientes и некоторые medicamentos в билетах читаются как риск для управления, а не как бытовая деталь.",
+        "Для fallback-билетов по CABA держите таблицу Ley 2148: обычный водитель автомобиля - максимум 0,5 gramos de alcohol por litro de sangre; motovehículos - 0,2; vehículos de transporte de pasajeros, de menores, de carga и Conductores Principiantes - 0,0. При этом текущая архивная Ley 24.449 содержит более строгую национальную формулу cero alcohol; этот slice не превращает старые fallback-ответы про 0,5 в общее национальное правило.",
+        "Conductor Principiante в CABA сохраняет это состояние 2 años. Знак `P` виден только первые 6 месяцев, но билет `b-fallback-117` спрашивает именно срок запрета на más de 0,0: правильная связка - 2 años.",
+        "Контроль не добровольная просьба. Todo conductor обязан проходить pruebas de alcoholemia/toxicológicas, которые делает Autoridad de Control. Negativa constituye falta; для предотвращения дальнейшего движения CABA презюмирует alcoholemia positiva или conducción bajo la acción de estupefacientes, запрещает продолжать движение и ordena la remoción del vehículo.",
+        "Про resaca, 17 horas despierto, cerveza/reacción, curva de alcohol que sube 1 hora, alteraciones en la visión и sedantes используйте только логику конкретных билетов. В текущих архивных законах есть общая рамка ухудшенной пригодности, но нет отдельного медицинского учебника с этими числовыми/физиологическими формулами.",
+        "В вопросах про drogas legales ловушка в слове `nunca`: легальный статус вещества не гарантирует безопасность управления. Правильная экзаменационная логика - смотреть, снижает ли оно aptitud para conducir."
+      ],
+      "practicalReasoningRu": [
+        "Алкоголь, усталость и вещества опасны не потому, что водитель “плохо выглядит”, а потому что ломают цепочку управления: заметить риск, оценить его, решить и физически выполнить маневр.",
+        "Нулевые лимиты для principiante и для транспорта пассажиров, детей или груза делают правило проще: чем выше ответственность или меньше опыт, тем меньше допустимый запас на ошибку.",
+        "Отказ от теста нельзя делать выгоднее положительного теста. Поэтому билетная логика CABA при negativa такая же практичная: не продолжать движение и убрать автомобиль из риска."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-cerveza",
+          "termEs": "cerveza",
+          "translationRu": "пиво",
+          "sourceQuestionIds": [
+            "b-fallback-025"
+          ]
+        },
+        {
+          "id": "term-capacidad-reaccion",
+          "termEs": "capacidad de reacción",
+          "translationRu": "способность реагировать",
+          "sourceQuestionIds": [
+            "b-fallback-025"
+          ]
+        },
+        {
+          "id": "term-drogas-ilegales",
+          "termEs": "drogas ilegales",
+          "translationRu": "нелегальные наркотики/вещества",
+          "sourceQuestionIds": [
+            "b-fallback-067",
+            "b-fallback-152"
+          ]
+        },
+        {
+          "id": "term-drogas-legales",
+          "termEs": "drogas legales",
+          "translationRu": "легальные препараты/вещества; в билете ловушка со словом nunca",
+          "sourceQuestionIds": [
+            "b-fallback-067"
+          ]
+        },
+        {
+          "id": "term-consumo-excesivo-alcohol",
+          "termEs": "consumo excesivo de alcohol",
+          "translationRu": "чрезмерное употребление алкоголя",
+          "sourceQuestionIds": [
+            "b-fallback-075"
+          ]
+        },
+        {
+          "id": "term-resaca",
+          "termEs": "resaca",
+          "translationRu": "похмелье",
+          "sourceQuestionIds": [
+            "b-fallback-310",
+            "b-fallback-431"
+          ]
+        },
+        {
+          "id": "term-cero-gramos-alcohol",
+          "termEs": "0,0 gramos de alcohol por litro de sangre",
+          "translationRu": "0,0 г алкоголя на литр крови",
+          "sourceQuestionIds": [
+            "b-fallback-117",
+            "b-fallback-203",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "term-cero-cinco-alcohol",
+          "termEs": "0,5 gramos de alcohol por litro de sangre",
+          "translationRu": "0,5 г алкоголя на литр крови",
+          "sourceQuestionIds": [
+            "b-fallback-203",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "term-prueba-alcoholemia",
+          "termEs": "prueba de alcoholemia",
+          "translationRu": "проверка на алкоголь",
+          "sourceQuestionIds": [
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "term-presume-alcoholemia-positiva",
+          "termEs": "presume el estado de alcoholemia positiva",
+          "translationRu": "презюмируется положительная alcoholemia",
+          "sourceQuestionIds": [
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "term-remocion-vehiculo",
+          "termEs": "remoción del vehículo",
+          "translationRu": "удаление/эвакуация автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "term-bebidas-alcoholicas",
+          "termEs": "Bebidas alcohólicas",
+          "translationRu": "алкогольные напитки",
+          "sourceQuestionIds": [
+            "b-fallback-122"
+          ]
+        },
+        {
+          "id": "term-comidas-abundantes",
+          "termEs": "Comidas abundantes",
+          "translationRu": "обильная еда",
+          "sourceQuestionIds": [
+            "b-fallback-122"
+          ]
+        },
+        {
+          "id": "term-sustancias",
+          "termEs": "sustancias",
+          "translationRu": "вещества",
+          "sourceQuestionIds": [
+            "b-fallback-152",
+            "b-fallback-224"
+          ]
+        },
+        {
+          "id": "term-efectos-sedantes",
+          "termEs": "efectos sedantes",
+          "translationRu": "седативный эффект",
+          "sourceQuestionIds": [
+            "b-fallback-224"
+          ]
+        },
+        {
+          "id": "term-alteraciones-vision",
+          "termEs": "alteraciones en la visión",
+          "translationRu": "нарушения зрения",
+          "sourceQuestionIds": [
+            "b-fallback-257"
+          ]
+        },
+        {
+          "id": "term-diecisiete-horas-despierto",
+          "termEs": "17 horas despierto",
+          "translationRu": "17 часов бодрствования",
+          "sourceQuestionIds": [
+            "b-fallback-286"
+          ]
+        },
+        {
+          "id": "term-tiempo-reaccion-alcohol",
+          "termEs": "tiempo de reacción",
+          "translationRu": "время реакции",
+          "sourceQuestionIds": [
+            "b-fallback-286",
+            "b-fallback-310"
+          ]
+        },
+        {
+          "id": "term-coordinacion-atencion-reaccion",
+          "termEs": "coordinación, la atención y el tiempo de reacción",
+          "translationRu": "координация, внимание и время реакции",
+          "sourceQuestionIds": [
+            "b-fallback-310"
+          ]
+        },
+        {
+          "id": "term-tipo-medicamento",
+          "termEs": "Depende del tipo de medicamento",
+          "translationRu": "зависит от типа лекарства",
+          "sourceQuestionIds": [
+            "b-fallback-321"
+          ]
+        },
+        {
+          "id": "term-estupefacientes",
+          "termEs": "estupefacientes",
+          "translationRu": "наркотические/одурманивающие вещества",
+          "sourceQuestionIds": [
+            "b-fallback-355"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-025",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-025-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: по формулировке билета cerveza снижает capacidad de reacción и увеличивает время ответа на estímulo."
+            },
+            {
+              "answerId": "b-fallback-025-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: билет прямо связывает употребление cerveza с более медленной реакцией водителя."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-044",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b53.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-044-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo si participó en un siniestro слишком узко. Ley 2148 обязывает проходить контроль и при обычных operativos/circunstancias, не только после ДТП."
+            },
+            {
+              "answerId": "b-fallback-044-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: falta возникает не только при реально выполненной positive test. Negativa a realizar la prueba сама constituye falta."
+            },
+            {
+              "answerId": "b-fallback-044-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: отказ берется как presunción de alcoholemia positiva, чтобы водитель не мог продолжить движение без проверки."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-067",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-067-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно из-за слова nunca. Легальное вещество или лекарство тоже может ухудшать aptitud para conducir."
+            },
+            {
+              "answerId": "b-fallback-067-a2",
+              "verdict": "correct",
+              "explanationRu": "Falso: illegal drugs запрещены в этой логике, но фраза про que las drogas legales nunca afectan negativamente тоже неверна."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-075",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-075-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза A верна как часть объяснения, но в этом билете она неполная: нужно также учитывать ticket-specific эффект resaca."
+            },
+            {
+              "answerId": "b-fallback-075-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза B тоже отражает риск, но одна она не охватывает весь ожидаемый ответ; билет просит объединить A и B."
+            },
+            {
+              "answerId": "b-fallback-075-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: обе причины из A и B работают вместе по билету - эффекты алкоголя не заканчиваются сразу после ingesta, а resaca тоже опасна для conducción."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-117",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b54.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-117-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак P указывает Conductor Principiante. В CABA состояние principiante длится 2 años, и весь этот период действует лимит 0,0."
+            },
+            {
+              "answerId": "b-fallback-117-a2",
+              "verdict": "incorrect",
+              "explanationRu": "1 año слишком коротко: Ley 2148 устанавливает condición de conductor principiante на 2 años."
+            },
+            {
+              "answerId": "b-fallback-117-a3",
+              "verdict": "incorrect",
+              "explanationRu": "6 meses - это срок видимого distintivo P, но не срок alcohol cero для principiante. Билет спрашивает запрет на más de 0,0."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-122",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-122-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Bebidas alcohólicas могут inducir cansancio, но это неполный вариант: билет также включает comidas abundantes."
+            },
+            {
+              "answerId": "b-fallback-122-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Comidas abundantes тоже могут inducir cansancio, но отдельно этот ответ не охватывает алкогольную часть."
+            },
+            {
+              "answerId": "b-fallback-122-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: обе группы из A и B могут вести к cansancio, а cansancio ухудшает внимание и пригодность к управлению."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-152",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-152-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: afectan la capacidad para conducir las drogas ilegales y algunas legales, включая alcohol и некоторые medicamentos."
+            },
+            {
+              "answerId": "b-fallback-152-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo las drogas ilegales слишком узко. Легальные вещества тоже могут снижать aptitud, если имеют такой эффект."
+            },
+            {
+              "answerId": "b-fallback-152-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Todo tipo de drogas слишком широко: билет ожидает algunas legales, а не утверждение, что каждое легальное средство всегда ухудшает управление."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-203",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b56.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-203-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно для показанного обычного автомобиля в fallback-билете: по CABA Ley 2148 общий лимит для conductores de automóviles - 0,5 gramos por litro de sangre."
+            },
+            {
+              "answerId": "b-fallback-203-a2",
+              "verdict": "incorrect",
+              "explanationRu": "0,0 относится к principiante, transporte de pasajeros, menores или carga в CABA. На изображении нет признака P/профессионального или грузового/пассажирского случая."
+            },
+            {
+              "answerId": "b-fallback-203-a3",
+              "verdict": "incorrect",
+              "explanationRu": "0,2 - лимит CABA для motovehículos, а не для показанного автомобиля."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-215",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-215-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Билет не ожидает disminuye inmediata. По ticket-specific формуле концентрация еще продолжает subiendo durante 1 hora."
+            },
+            {
+              "answerId": "b-fallback-215-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: после прекращения ingesta концентрация alcohol continúa subiendo durante 1 hora и только потом desciende paulatinamente."
+            },
+            {
+              "answerId": "b-fallback-215-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Se mantiene en el mismo valor неверно: ожидаемая формула не “стоит”, а продолжает расти около часа."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-224",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-224-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Todos los medicamentos de venta libre слишком широко. Не каждое средство без рецепта автоматически ухудшает conducción."
+            },
+            {
+              "answerId": "b-fallback-224-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ticket-specific ключ - medicamentos con efectos sedantes, потому что sedación может снижать внимание и реакцию."
+            },
+            {
+              "answerId": "b-fallback-224-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas неверно, потому что A слишком абсолютна. Правильна только группа с efectos sedantes."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-257",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-257-a1",
+              "verdict": "correct",
+              "explanationRu": "Sí: по билету alcohol может producir alteraciones en la visión; это часть общей пригодности водителя к восприятию дороги."
+            },
+            {
+              "answerId": "b-fallback-257-a2",
+              "verdict": "incorrect",
+              "explanationRu": "No, solamente motora слишком узко: билет проверяет, что алкоголь влияет не только на motor capacity, но и на vision."
+            },
+            {
+              "answerId": "b-fallback-257-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo con más de 1 gramo добавляет неверный порог. Билет не ограничивает visual effects таким числом."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-270",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-270-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза про presunción de alcoholemia positiva верна, но в этом вопросе она неполная: при отказе также ordena la remoción del vehículo."
+            },
+            {
+              "answerId": "b-fallback-270-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Remoción del vehículo тоже верна как последствие, но одна она не включает presunción, из-за которой agent puede prohibir continuar conduciendo."
+            },
+            {
+              "answerId": "b-fallback-270-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas. При negativa CABA presume alcoholemia positiva, запрещает продолжать conducir и ordena la remoción del vehículo."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-286",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-286-a1",
+              "verdict": "correct",
+              "explanationRu": "Sí по билету: 17 horas despierto сравниваются с реакцией человека выше разрешенного alcohol limit, потому что обе ситуации aumentan el tiempo de reacción."
+            },
+            {
+              "answerId": "b-fallback-286-a2",
+              "verdict": "incorrect",
+              "explanationRu": "No, sólo alcoholemia positiva неверно: ticket-specific premise says prolonged wakefulness can also increase reaction time."
+            },
+            {
+              "answerId": "b-fallback-286-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Descanso sí importa: билет прямо связывает falta de descanso с slower reaction, поэтому “no tiene nada que ver” неверно."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-310",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-310-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo con alto grado de concentración слишком узко. Билет спрашивает про resaca как состояние, а не только крепость напитка."
+            },
+            {
+              "answerId": "b-fallback-310-a2",
+              "verdict": "incorrect",
+              "explanationRu": "No altera las percepciones неверно: по билету resaca sí puede afectar conducción."
+            },
+            {
+              "answerId": "b-fallback-310-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: resaca puede afectar la coordinación, la atención y el tiempo de reacción."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-321",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-321-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Siempre слишком абсолютно: не каждый medicamento автоматически снижает capacidad de conducir."
+            },
+            {
+              "answerId": "b-fallback-321-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Nunca тоже абсолютно неверно: некоторые лекарства могут снижать внимание, реакцию или состояние водителя."
+            },
+            {
+              "answerId": "b-fallback-321-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: depende del tipo de medicamento и его эффекта на aptitud para conducir."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-355",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-355-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: bajo los efectos de estupefacientes водитель ставит в grave riesgo себя и окружающих, а не только свою жизнь."
+            },
+            {
+              "answerId": "b-fallback-355-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo propia vida слишком узко: риск распространяется на passengers, pedestrians и других road users."
+            },
+            {
+              "answerId": "b-fallback-355-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Desinhibido no significa menos riesgos. Наоборот, impaired judgment может вести к более опасным решениям."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-431",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-431-a1",
+              "verdict": "correct",
+              "explanationRu": "Sí: по билету conducir con resaca peligroso porque todavía hay effects en el organismo."
+            },
+            {
+              "answerId": "b-fallback-431-a2",
+              "verdict": "incorrect",
+              "explanationRu": "No, sólo primeras horas неверно: ticket-specific trap в том, что последствия не ограничиваются только первыми часами ingesta."
+            },
+            {
+              "answerId": "b-fallback-431-a3",
+              "verdict": "incorrect",
+              "explanationRu": "No intervienen en la conducción неверно: билет прямо считает resaca состоянием, которое влияет на управление."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-446",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b55.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-446-a1",
+              "verdict": "incorrect",
+              "explanationRu": "0,5 - общий CABA-limit для обычного автомобиля, но на изображении есть distintivo P, то есть Conductor Principiante."
+            },
+            {
+              "answerId": "b-fallback-446-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: для Conductor Principiante Ley 2148 устанавливает 0,0 gramos de alcohol por litro de sangre durante todo el período principiante."
+            },
+            {
+              "answerId": "b-fallback-446-a3",
+              "verdict": "incorrect",
+              "explanationRu": "0,2 относится к motovehículos. Здесь билет показывает автомобиль с P, поэтому нужен 0,0."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-legal-does-not-mean-safe",
+          "textRu": "Слово legal не равно safe. В `drogas legales nunca afectan` ловушка именно в `nunca`; некоторые legal substances/medicamentos могут снижать aptitud.",
+          "sourceQuestionIds": [
+            "b-fallback-067",
+            "b-fallback-152",
+            "b-fallback-224",
+            "b-fallback-321"
+          ]
+        },
+        {
+          "id": "trap-ambas-when-two-risks-true",
+          "textRu": "Если обе части A и B описывают риск, одиночный вариант часто неполный. Это важно для resaca, cansancio и negativa/remoción.",
+          "sourceQuestionIds": [
+            "b-fallback-075",
+            "b-fallback-122",
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "trap-p-sign-six-months-vs-two-years",
+          "textRu": "Distintivo P виден первые 6 месяцев, но condición de conductor principiante длится 2 años; alcohol cero действует весь período principiante.",
+          "sourceQuestionIds": [
+            "b-fallback-117",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "trap-caba-thresholds-by-vehicle",
+          "textRu": "0,5 / 0,2 / 0,0 выбираются по категории в CABA fallback-билете: ordinary car, motovehículo или principiante/professional/passenger/cargo context.",
+          "sourceQuestionIds": [
+            "b-fallback-203",
+            "b-fallback-446",
+            "b-fallback-117"
+          ]
+        },
+        {
+          "id": "trap-refusal-is-not-neutral",
+          "textRu": "Negarse a la prueba не нейтрально: это falta, presunción и причина запретить continuar conduciendo с remoción del vehículo.",
+          "sourceQuestionIds": [
+            "b-fallback-044",
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "trap-ticket-specific-science",
+          "textRu": "Формулы `sube durante 1 hora`, `17 horas despierto`, visual effects и resaca оставлены ticket-specific. Не расширяйте их за пределы билетов без отдельного архивного источника.",
+          "sourceQuestionIds": [
+            "b-fallback-215",
+            "b-fallback-257",
+            "b-fallback-286",
+            "b-fallback-310",
+            "b-fallback-431"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-alcohol-psychophysical-aptitude",
+          "textRu": "Ley 2148 requires the driver to maintain psychophysical conditions that allow vehicle control and prohibits driving after substances that reduce aptitude; it defines reduced aptitude through somnolence, fatigue, coordination, attention, sensory perception and judgment effects.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "alcohol-impairment-psychophysical-aptitude"
+        },
+        {
+          "id": "claim-caba-alcohol-thresholds-and-beginner-period",
+          "textRu": "Ley 2148 sets CABA alcohol thresholds used by the assigned fallback tickets: 0.5 g/L for ordinary drivers, 0.2 g/L for motovehicles, and 0.0 g/L for passenger/minor/cargo transport and beginner drivers; beginner-driver status lasts two years.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "alcohol-impairment-caba-thresholds-and-beginner-period"
+        },
+        {
+          "id": "claim-testing-refusal-and-removal",
+          "textRu": "Ley 2148 and Ley 24.449 require drivers to submit to alcohol/drug tests; refusal is an offense/presumed violation and CABA control procedure prevents continued driving and orders vehicle removal when alcohol is over the limit or the driver refuses.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "alcohol-impairment-testing-refusal-and-removal"
+        }
+      ]
+    },
+    {
       "id": "adverse-weather-and-visibility",
       "slug": "adverse-weather-and-visibility",
       "status": "draft",

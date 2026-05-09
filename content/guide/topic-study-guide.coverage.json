@@ -296,9 +296,9 @@
       "titleRu": "Алкоголь, препараты и состояние водителя",
       "categoryId": "driver-state",
       "splitCriteria": "Alcohol, alcoholemia, resaca, drogas, medicamentos, estupefacientes и психофизическая пригодность.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "topicId": "fatigue-distraction-and-attention",
@@ -615,8 +615,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-026",
@@ -809,7 +809,11 @@
         "authorities-controls-and-sanctions"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-alcohol-drugs-and-impairment",
+      "placementPhases": {
+        "alcohol-drugs-and-impairment": "content_ready",
+        "authorities-controls-and-sanctions": "planned"
+      }
     },
     {
       "questionId": "b-fallback-045",
@@ -1027,8 +1031,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-068",
@@ -1106,8 +1110,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-076",
@@ -1512,7 +1516,11 @@
         "authorities-controls-and-sanctions"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-alcohol-drugs-and-impairment",
+      "placementPhases": {
+        "alcohol-drugs-and-impairment": "content_ready",
+        "authorities-controls-and-sanctions": "planned"
+      }
     },
     {
       "questionId": "b-fallback-118",
@@ -1561,8 +1569,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-123",
@@ -1861,8 +1869,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-153",
@@ -2380,7 +2388,11 @@
         "authorities-controls-and-sanctions"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-alcohol-drugs-and-impairment",
+      "placementPhases": {
+        "alcohol-drugs-and-impairment": "content_ready",
+        "authorities-controls-and-sanctions": "planned"
+      }
     },
     {
       "questionId": "b-fallback-204",
@@ -2488,8 +2500,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-216",
@@ -2576,8 +2588,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-225",
@@ -2881,8 +2893,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-258",
@@ -3020,7 +3032,11 @@
         "authorities-controls-and-sanctions"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-alcohol-drugs-and-impairment",
+      "placementPhases": {
+        "alcohol-drugs-and-impairment": "content_ready",
+        "authorities-controls-and-sanctions": "planned"
+      }
     },
     {
       "questionId": "b-fallback-271",
@@ -3163,8 +3179,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-287",
@@ -3396,8 +3412,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-311",
@@ -3522,8 +3538,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-322",
@@ -3854,8 +3870,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-356",
@@ -4636,8 +4652,8 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
       "questionId": "b-fallback-432",
@@ -4793,7 +4809,11 @@
         "authorities-controls-and-sanctions"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-alcohol-drugs-and-impairment",
+      "placementPhases": {
+        "alcohol-drugs-and-impairment": "content_ready",
+        "authorities-controls-and-sanctions": "planned"
+      }
     },
     {
       "questionId": "b-fallback-447",

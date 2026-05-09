@@ -2654,6 +2654,66 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "Supports temporary narrowing / orange-device reasoning for b-fallback-291 without generalizing the exact line-imaginaria image answer beyond the ticket."
+    },
+    {
+      "id": "alcohol-impairment-psychophysical-aptitude",
+      "topicId": "alcohol-drugs-and-impairment",
+      "claimId": "claim-alcohol-psychophysical-aptitude",
+      "claimSummaryRu": "CABA requires drivers to maintain psychophysical conditions for vehicle control and prohibits driving after substances that reduce aptitude; reduced aptitude includes fatigue, attention, perception, coordination and judgment effects.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.1 Condiciones para conducir",
+        "Ley 2148 5.4.1 Regla general",
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso a)",
+        "Ley 24.449 Artículo 73 Control preventivo"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports only the general impairment/aptitude framing. Beer reaction, resaca, one-hour alcohol curve, vision effects, sedating-medication wording and 17-hours-awake comparison remain ticket-specific unless separately archived official support is added."
+    },
+    {
+      "id": "alcohol-impairment-caba-thresholds-and-beginner-period",
+      "topicId": "alcohol-drugs-and-impairment",
+      "claimId": "claim-caba-alcohol-thresholds-and-beginner-period",
+      "claimSummaryRu": "Ley 2148 CABA thresholds for assigned fallback tickets: 0.5 g/L ordinary drivers, 0.2 g/L motovehicles, 0.0 g/L passenger/minor/cargo transport and beginner drivers; beginner-driver condition lasts two years.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 3.2.7 Conductores principiantes",
+        "Ley 2148 5.4.4 Niveles de alcohol en sangre para conductores",
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso a)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Ley 2148 supports the CABA thresholds expected by b-fallback-117, 203 and 446. The current archived Ley 24.449 has stricter national cero-alcohol wording, so this slice does not generalize the old fallback 0.5 answer outside CABA/fallback-ticket context."
+    },
+    {
+      "id": "alcohol-impairment-testing-refusal-and-removal",
+      "topicId": "alcohol-drugs-and-impairment",
+      "claimId": "claim-testing-refusal-and-removal",
+      "claimSummaryRu": "Drivers must submit to alcohol/toxicological controls; refusal constitutes a fault/presumed positive state, and CABA procedure prohibits continued driving and orders vehicle removal for over-limit alcohol or refusal.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.4.2 Obligación de los conductores",
+        "Ley 2148 5.4.3 Obligación de la autoridad de control",
+        "Ley 2148 5.4.6 Pruebas de control de alcoholemia",
+        "Ley 2148 5.4.7 Procedimiento para casos de control de alcoholemia positivo",
+        "Ley 2148 5.4.8 Presencia de otras sustancias que disminuyen la aptitud para conducir",
+        "Ley 2148 5.4.9 Detección in fraganti",
+        "Ley 24.449 Artículo 72 Retención preventiva",
+        "Ley 24.449 Artículo 73 Control preventivo"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-044 and b-fallback-270 refusal/control consequences. Authorities-controls-and-sanctions overlap remains planned for its own slice."
     }
   ]
 }
