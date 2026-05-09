@@ -12045,6 +12045,524 @@
       ]
     },
     {
+      "id": "authorities-controls-and-sanctions",
+      "slug": "authorities-controls-and-sanctions",
+      "status": "draft",
+      "titleRu": "Регулировщики, контроль и санкции",
+      "summaryRu": "Блок про autoridad/agente, указания на месте, проверки alcoholemia, retención de licencia, remoción del vehículo, conductor principiante и Scoring.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. На экзамене слова autoridad, agente, control, retener и scoring означают не теорию “про документы”, а практическую власть остановить, проверить, запретить продолжать движение и применить последствия.",
+        "В CABA указания autoridad de control стоят выше обычных сигналов. Поэтому в билете про paso ferroviario не спорьте с оперативным указанием personal ferroviario из самого вопроса, а в билете с agente de tránsito смотрите на жест на изображении: если он показывает остановку, правильный ответ - detenga el vehículo.",
+        "Проверка alcohol/toxicológica не является просьбой. Todo conductor обязан пройти prueba de alcoholemia или toxicológica; negativa constituye falta, презюмируется alcoholemia positiva или действие estupefacientes, агент может запретить продолжать движение и ordenar la remoción del vehículo.",
+        "Retener la licencia можно не за любую falta подряд, а только cuando la normativa vigente así lo indique. В назначенных билетах такие случаи включают alcoholemia positiva/negativa, circulación por carril exclusivo Metrobus без права и другие перечисленные законом ситуации.",
+        "Conductor Principiante в CABA имеет condición de principiante 2 años. Буква P видна первые 6 месяцев, но alcohol cero действует весь период principiante; поэтому в билетах с P выбирайте 0,0, а не 0,5.",
+        "Для картинок с лимитом алкоголя держите границу изображения: обычный автомобиль в fallback-билете - 0,5 gramos por litro de sangre по CABA Ley 2148; автомобиль с P - 0,0. Не превращайте это в общий национальный вывод и не переносите лимит motovehículo 0,2 на автомобиль.",
+        "SEPC/Scoring - система баллов. При первой лицензии CABA назначает 20 puntos, затем puntos se descuentan por infracciones comprobadas; ежегодный курс для всех не является определением scoring."
+      ],
+      "practicalReasoningRu": [
+        "Указания на месте нужны, потому что реальная ситуация может временно отличаться от обычной схемы знаков и светофоров: авария, переезд, работы, контроль или перекрытие требуют единой команды.",
+        "Отказ от теста нельзя делать выгоднее проверки. Поэтому экзаменационная логика проста: отказ = риск продолжения движения, запрет ехать дальше и remoción.",
+        "Retención и Scoring делают санкции проверяемыми: водитель видит, что последствия наступают не “по настроению агента”, а в перечисленных законом случаях и через систему puntaje."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-autoridad-transito",
+          "termEs": "autoridad de tránsito",
+          "translationRu": "транспортная/дорожная власть, орган контроля движения",
+          "sourceQuestionIds": [
+            "b-fallback-092"
+          ]
+        },
+        {
+          "id": "term-agente-transito",
+          "termEs": "agente de tránsito",
+          "translationRu": "инспектор/регулировщик движения",
+          "sourceQuestionIds": [
+            "b-fallback-157",
+            "b-fallback-338"
+          ]
+        },
+        {
+          "id": "term-agente-control",
+          "termEs": "agente de control",
+          "translationRu": "агент контроля",
+          "sourceQuestionIds": [
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "term-personal-ferroviario",
+          "termEs": "personal ferroviario",
+          "translationRu": "железнодорожный персонал",
+          "sourceQuestionIds": [
+            "b-fallback-050"
+          ]
+        },
+        {
+          "id": "term-regular-paso-vehiculos",
+          "termEs": "regular el paso de vehículos",
+          "translationRu": "регулировать проезд транспортных средств",
+          "sourceQuestionIds": [
+            "b-fallback-050"
+          ]
+        },
+        {
+          "id": "term-retener-licencia",
+          "termEs": "retener la licencia de conducir",
+          "translationRu": "удержать водительское удостоверение",
+          "sourceQuestionIds": [
+            "b-fallback-092",
+            "b-fallback-157",
+            "b-fallback-322"
+          ]
+        },
+        {
+          "id": "term-normativa-vigente-indique",
+          "termEs": "normativa vigente así lo indique",
+          "translationRu": "действующая норма прямо так указывает",
+          "sourceQuestionIds": [
+            "b-fallback-157"
+          ]
+        },
+      {
+        "id": "term-prueba-alcoholemia-authorities",
+        "termEs": "prueba de alcoholemia",
+        "translationRu": "проверка на алкоголь",
+        "sourceQuestionIds": [
+          "b-fallback-270"
+        ]
+      },
+      {
+        "id": "term-control-alcoholemia-authorities",
+        "termEs": "control de alcoholemia",
+        "translationRu": "контроль/проверка на алкоголь",
+        "sourceQuestionIds": [
+          "b-fallback-322"
+        ]
+      },
+        {
+          "id": "term-presuncion-alcoholemia-positiva",
+          "termEs": "presunción de alcoholemia positiva",
+          "translationRu": "презумпция положительной alcoholemia",
+          "sourceQuestionIds": [
+            "b-fallback-044"
+          ]
+        },
+        {
+          "id": "term-remocion-vehiculo-authorities",
+          "termEs": "remoción del vehículo",
+          "translationRu": "удаление/эвакуация автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "term-conductor-principiante-authorities",
+          "termEs": "conductor",
+          "translationRu": "водитель; в билетах с P ищите conductor principiante по изображению",
+          "sourceQuestionIds": [
+            "b-fallback-117",
+            "b-fallback-203",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "term-cero-gramos-authorities",
+          "termEs": "0,0 gramos de alcohol por litro de sangre",
+          "translationRu": "0,0 г алкоголя на литр крови",
+          "sourceQuestionIds": [
+            "b-fallback-117",
+            "b-fallback-203",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "term-cero-cinco-authorities",
+          "termEs": "0,5 gramos de alcohol por litro de sangre",
+          "translationRu": "0,5 г алкоголя на литр крови",
+          "sourceQuestionIds": [
+            "b-fallback-203",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "term-cero-dos-authorities",
+          "termEs": "0,2 gramos de alcohol por litro de sangre",
+          "translationRu": "0,2 г алкоголя на литр крови",
+          "sourceQuestionIds": [
+            "b-fallback-203",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "term-sistema-scoring",
+          "termEs": "Sistema de Evaluación Permanente de Conductores (Scoring)",
+          "translationRu": "постоянная система оценки водителей, scoring/баллы",
+          "sourceQuestionIds": [
+            "b-fallback-243",
+            "b-fallback-367"
+          ]
+        },
+        {
+          "id": "term-20-puntos",
+          "termEs": "20 puntos",
+          "translationRu": "20 баллов",
+          "sourceQuestionIds": [
+            "b-fallback-243"
+          ]
+        },
+        {
+          "id": "term-infracciones-cometidas",
+          "termEs": "infracciones cometidas",
+          "translationRu": "совершенные нарушения",
+          "sourceQuestionIds": [
+            "b-fallback-367"
+          ]
+        },
+        {
+          "id": "term-detenga-vehiculo",
+          "termEs": "detenga el vehículo",
+          "translationRu": "остановите транспортное средство",
+          "sourceQuestionIds": [
+            "b-fallback-338"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-044",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b53.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-044-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo si participó en un siniestro demasiado estrecho. El control puede ser operativo o circunstancial; negarse al test ya importa como falta."
+            },
+            {
+              "answerId": "b-fallback-044-a2",
+              "verdict": "incorrect",
+              "explanationRu": "No hace falta una prueba positiva efectivamente realizada para que haya consecuencia. La negativa a la prueba constituye falta."
+            },
+            {
+              "answerId": "b-fallback-044-a3",
+              "verdict": "correct",
+              "explanationRu": "Correcto: la negativa se toma como presunción de alcoholemia positiva para impedir que el conductor siga manejando sin control."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-050",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b70.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-050-a1",
+              "verdict": "correct",
+              "explanationRu": "Correcto para este ticket: el personal ferroviario indicado en la pregunta está autorizado a regular el paso de vehículos, por eso se avanza si da esa orden."
+            },
+            {
+              "answerId": "b-fallback-050-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Este вариант niega la autoridad del personal ferroviario. La trampa es quedarse sólo con la barrera y no leer la indicación operativa."
+            },
+            {
+              "answerId": "b-fallback-050-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Agente de tránsito no es la única figura en este ticket: la pregunta habla expresamente de personal ferroviario regulando el paso."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-092",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b27.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-092-a1",
+              "verdict": "correct",
+              "explanationRu": "Correcto: circular sin autorización por el carril exclusivo correspondiente al Metrobús es un caso en que CABA permite retener la licencia."
+            },
+            {
+              "answerId": "b-fallback-092-a2",
+              "verdict": "incorrect",
+              "explanationRu": "No depende de probar que se perjudicó a colectivos. La infracción es usar ese carril exclusivo sin estar autorizado."
+            },
+            {
+              "answerId": "b-fallback-092-a3",
+              "verdict": "incorrect",
+              "explanationRu": "La licencia es documento personal, pero la normativa enumera casos de retención; no se limita a labrar acta."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-117",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b54.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-117-a1",
+              "verdict": "correct",
+              "explanationRu": "Correcto: el símbolo P marca Conductor Principiante. En CABA la condición dura 2 años y durante todo ese período rige 0,0."
+            },
+            {
+              "answerId": "b-fallback-117-a2",
+              "verdict": "incorrect",
+              "explanationRu": "1 año es una trampa de plazo: no coincide con la condición de principiante de CABA, que es de 2 años."
+            },
+            {
+              "answerId": "b-fallback-117-a3",
+              "verdict": "incorrect",
+              "explanationRu": "6 meses es el plazo para llevar visible el distintivo P, no el plazo de alcohol cero preguntado por el ticket."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-157",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-157-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Documento personal no significa intocable. La licencia puede retenerse si la normativa vigente prevé ese caso."
+            },
+            {
+              "answerId": "b-fallback-157-a2",
+              "verdict": "correct",
+              "explanationRu": "Correcto: la clave es sólo en los casos que la normativa vigente así lo indique. No cualquier falta habilita retención automática."
+            },
+            {
+              "answerId": "b-fallback-157-a3",
+              "verdict": "incorrect",
+              "explanationRu": "La retención no se limita a incidentes con terceros; también puede aparecer en controles de alcohol, carril exclusivo, licencia vencida y otros supuestos previstos."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-203",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b56.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-203-a1",
+              "verdict": "correct",
+              "explanationRu": "Correcto para la imagen del fallback-ticket: se ve un automóvil particular sin P ni categoría profesional; bajo la tabla CABA/Ley 2148 el límite mostrado es 0,5."
+            },
+            {
+              "answerId": "b-fallback-203-a2",
+              "verdict": "incorrect",
+              "explanationRu": "0,0 corresponde a principiante, transporte de pasajeros, menores o carga. La imagen de este ticket no muestra esos datos."
+            },
+            {
+              "answerId": "b-fallback-203-a3",
+              "verdict": "incorrect",
+              "explanationRu": "0,2 es el límite CABA para motovehículos; no se aplica al automóvil particular mostrado."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-243",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-243-a1",
+              "verdict": "incorrect",
+              "explanationRu": "10 puntos aparece en otras consecuencias del sistema, pero no es el puntaje inicial al obtener licencia por primera vez."
+            },
+            {
+              "answerId": "b-fallback-243-a2",
+              "verdict": "correct",
+              "explanationRu": "Correcto: el SEPC/Scoring asigna veinte puntos al conductor que obtiene por primera vez licencia de conducir en CABA."
+            },
+            {
+              "answerId": "b-fallback-243-a3",
+              "verdict": "incorrect",
+              "explanationRu": "5 puntos no es el puntaje inicial; es un distractor numérico."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-270",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-270-a1",
+              "verdict": "incorrect",
+              "explanationRu": "La presunción de alcoholemia positiva es cierta, pero en este ticket queda incompleta porque también debe ordenarse la remoción del vehículo."
+            },
+            {
+              "answerId": "b-fallback-270-a2",
+              "verdict": "incorrect",
+              "explanationRu": "La remoción también es consecuencia correcta, pero sola no explica la presunción que permite prohibir continuar conduciendo."
+            },
+            {
+              "answerId": "b-fallback-270-a3",
+              "verdict": "correct",
+              "explanationRu": "Correcto: ambas. Ante negativa, se presume alcoholemia positiva, el agente puede prohibir continuar conduciendo y debe ordenar la remoción."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-322",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b52.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-322-a1",
+              "verdict": "correct",
+              "explanationRu": "Correcto: con alcoholemia positiva en CABA corresponde sancionar, retener la licencia cuando aplica el supuesto normativo y remitir/remover el vehículo."
+            },
+            {
+              "answerId": "b-fallback-322-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Esperar a que baje la graduación deja circular un riesgo ya comprobado. El procedimiento no es esperar una contraprueba en la vía."
+            },
+            {
+              "answerId": "b-fallback-322-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Llamar a un tercero no reemplaza la intervención de la autoridad: el control positivo activa sanción, retención y remisión/remoción."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-338",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b68.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-338-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Circule con precaución sería una orden de continuar con cuidado. En la imagen del ticket el agente está deteniendo el paso del conductor."
+            },
+            {
+              "answerId": "b-fallback-338-a2",
+              "verdict": "correct",
+              "explanationRu": "Correcto por la imagen: el agente de tránsito indica detenga el vehículo. Esta mapping exacta se mantiene ticket-specific."
+            },
+            {
+              "answerId": "b-fallback-338-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Continúe avanzando contradice la señal visual del agente en esta foto; no es una autorización para pasar."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-367",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-367-a1",
+              "verdict": "correct",
+              "explanationRu": "Correcto: Scoring asigna puntaje a cada conductor y luego resta puntos por infracciones comprobadas."
+            },
+            {
+              "answerId": "b-fallback-367-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Un curso puede aparecer como consecuencia de quedarse sin puntos, pero Scoring no se define como curso vial anual obligatorio para todos."
+            },
+            {
+              "answerId": "b-fallback-367-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas incorrectas falla porque la opción A sí describe la lógica central del SEPC."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-446",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b55.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-446-a1",
+              "verdict": "incorrect",
+              "explanationRu": "0,5 es el límite CABA del automóvil común en la tabla del ticket, pero la imagen muestra el símbolo P de principiante."
+            },
+            {
+              "answerId": "b-fallback-446-a2",
+              "verdict": "correct",
+              "explanationRu": "Correcto: con símbolo P el conductor es principiante; durante ese período en CABA no puede conducir con más de 0,0 gramos por litro de sangre."
+            },
+            {
+              "answerId": "b-fallback-446-a3",
+              "verdict": "incorrect",
+              "explanationRu": "0,2 corresponde a motovehículos. El dato visual relevante aquí es P/principiante, no moto."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-authority-beats-normal-signal",
+          "textRu": "Если есть operative indication от autoridad/agente/personal в самом билете, не отвечайте только по обычному знаку, барьеру или светофору.",
+          "sourceQuestionIds": [
+            "b-fallback-050",
+            "b-fallback-338"
+          ]
+        },
+        {
+          "id": "trap-personal-document-not-absolute",
+          "textRu": "“Licencia es un documento personal” звучит убедительно, но неверно как абсолют: retención возможна в предусмотренных нормативой случаях.",
+          "sourceQuestionIds": [
+            "b-fallback-092",
+            "b-fallback-157",
+            "b-fallback-322"
+          ]
+        },
+        {
+          "id": "trap-refusal-is-not-neutral",
+          "textRu": "Negarse a la prueba не нейтрально и не выгоднее теста: для экзамена это falta, presunción positiva, запрет продолжать и remoción.",
+          "sourceQuestionIds": [
+            "b-fallback-044",
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "trap-p-six-months-vs-two-years",
+          "textRu": "6 meses относится к видимому distintivo P; 2 años - к condición de principiante и alcohol cero.",
+          "sourceQuestionIds": [
+            "b-fallback-117",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "trap-alcohol-threshold-image-boundary",
+          "textRu": "В билетах с alcoholemia сначала определите vehículo/символ на изображении: обычный автомобиль, motovehículo или P/principiante дают разные ответы.",
+          "sourceQuestionIds": [
+            "b-fallback-203",
+            "b-fallback-446"
+          ]
+        },
+        {
+          "id": "trap-scoring-course-distractor",
+          "textRu": "Scoring - это puntaje и descuentos por infracciones, а не ежегодный обязательный курс для всех conductores.",
+          "sourceQuestionIds": [
+            "b-fallback-243",
+            "b-fallback-367"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-authority-priority-and-controls",
+          "textRu": "В CABA пользователи дороги должны выполнять señales u órdenes de la autoridad de control и indicaciones de agentes de control del tránsito; такие указания имеют приоритет перед обычными сигналами в порядке 2.3.4.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "authorities-controls-authority-priority-and-controls"
+        },
+        {
+          "id": "claim-alcohol-control-refusal-and-procedure",
+          "textRu": "Todo conductor обязан проходить controles de alcoholemia/toxicológicos; negativa constituye falta, presume alcoholemia positiva или действие estupefacientes, и при positivo/negativa agente debe prohibir continuar conduciendo y ordenar la remoción del vehículo.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "authorities-controls-alcohol-control-refusal-and-procedure"
+        },
+        {
+          "id": "claim-license-retention-listed-cases",
+          "textRu": "Retención de licencia в CABA действует только в перечисленных нормативой случаях; среди назначенных билетов это включает alcoholemia/sustancias, carril exclusivo Metrobús sin autorización и другие supuestos del artículo 5.6.1.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "authorities-controls-license-retention-listed-cases"
+        },
+        {
+          "id": "claim-beginner-and-alcohol-thresholds",
+          "textRu": "Conductor principiante в CABA сохраняет эту condición 2 años; alcohol thresholds Ley 2148 для assigned fallback context: automóvil común 0,5, motovehículo 0,2, principiante/passenger/minors/cargo 0,0.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "authorities-controls-beginner-and-alcohol-thresholds"
+        },
+        {
+          "id": "claim-scoring-initial-points-and-discounts",
+          "textRu": "SEPC/Scoring assigns puntaje to each CABA-licensed conductor, gives 20 puntos initially, and subtracts points for comprobadas infractions rather than requiring an annual course from every driver.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "authorities-controls-scoring-initial-points-and-discounts"
+        }
+      ]
+    },
+    {
       "id": "safety-principles-and-risk",
       "slug": "safety-principles-and-risk",
       "status": "draft",
