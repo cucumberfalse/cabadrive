@@ -1078,6 +1078,62 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "Supports b-fallback-336 and the official lane/exit framing for b-fallback-358. The non-towed serious-failure recommendation in b-fallback-358 remains ticket-specific fallback wording, not a generalized official-source claim."
+    },
+    {
+      "id": "public-transport-metrobus-system-purpose",
+      "topicId": "public-transport-and-exclusive-lanes",
+      "claimId": "claim-metrobus-public-transport-purpose",
+      "claimSummaryRu": "Ley 2148 defines Metrobus as a mass, fast, differentiated public passenger transport system integrated into the city transport system, with objectives including priority for mass passenger transport and discouraging private automobile use.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Definiciones: Metrobus",
+        "15.1.1 Integración del sistema",
+        "15.1.2 Objetivos del sistema"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports only compact Metrobus/public-transport purpose prose needed to explain why exclusive lanes are not ordinary overtake lanes."
+    },
+    {
+      "id": "public-transport-exclusive-lane-reserved-use",
+      "topicId": "public-transport-and-exclusive-lanes",
+      "claimId": "claim-exclusive-lane-reserved-use",
+      "claimSummaryRu": "Anexo L and Ley 2148 support exclusive lanes as marked/signaled lanes reserved for determined vehicles and require users to respect exclusive/preferential lanes and operating schedules; unauthorized circulation in the Metrobus exclusive lane is a retention case.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Anexo L R.18 Circulación exclusiva",
+        "Anexo L H.2 Línea de carril",
+        "Ley 2148 5.6.1 Retención preventiva, punto 11",
+        "Ley 2148 6.1.6 Comportamiento durante la circulación"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports exclusive-lane and unauthorized Metrobus-lane guidance. The emergency-vehicle wording in b-fallback-107 remains ticket-specific and is not generalized as an official exception in this slice."
+    },
+    {
+      "id": "public-transport-stops-terminals-school-detention",
+      "topicId": "public-transport-and-exclusive-lanes",
+      "claimId": "claim-stops-terminals-and-school-detention",
+      "claimSummaryRu": "Anexo L supports terminal and public-transport stop/detention signs, while Ley 2148 defines terminal/sector de parada and supports school ascenso/descenso context through Sube y Baja and authorized school dársenas/nearby locations.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Anexo L Terminal de ómnibus",
+        "Anexo L Zona detención transporte público de pasajeros",
+        "Ley 2148 Definiciones: Parada, Sector de parada, Sube y Baja, Terminal",
+        "Ley 2148 2.4.3 Demarcación del sector de parada",
+        "Ley 2148 7.1.23 Ascenso y descenso de escolares o de personas con discapacidad"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports terminal/parada distinction and narrow school ascenso/descenso explanation. It does not generalize b-fallback-230 into all public-transport stop markings."
     }
   ]
 }
