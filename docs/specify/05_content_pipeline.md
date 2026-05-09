@@ -90,6 +90,14 @@ Pipeline должен преобразовать официальные мате
 - вручную сверить весь официальный текст;
 - не публиковать без validator approval.
 
+Для изображений, которые используются в fallback practice questions, но не являются official source text, дополнительно хранится learning-support metadata:
+
+- локальный путь и SHA-256 изображения;
+- единый структурированный JSON с visible-scene facts, объектами, участниками движения, знаками/разметкой, аннотациями, отношениями и uncertainty notes;
+- отдельный per-question usage record с answer-critical visual details и ссылками на варианты ответа;
+- deterministic evidence fingerprints для image metadata, question usage и explanation alignment;
+- явная uncertainty вместо неподтвержденной детализации, если изображение не прошло ручной визуальный review.
+
 ## Normalization
 
 Нормализация допустима только для структуры данных, но не для официального текста.
@@ -128,6 +136,7 @@ Pipeline должен преобразовать официальные мате
 - tricky wording и отрицания должны быть сохранены;
 - перевод не должен подсказывать ответ сильнее, чем оригинальный вопрос;
 - каждый перевод должен иметь disclaimer.
+- для текущего question-card слоя перевод должен иметь deterministic alignment evidence; `validate-content` отклоняет отсутствующие, лишние, пустые или устаревшие переводы и варианты ответов.
 
 ## Annotation Strategy
 
@@ -141,6 +150,8 @@ Pipeline должен преобразовать официальные мате
 - ссылку на словарь.
 
 Аннотации не должны выглядеть как официальный текст.
+
+Question-card explanations должны иметь structured correct-answer rationale и wrong-answer rationales для каждого неверного варианта. Для image-backed questions explanations ссылаются на answer-critical details из image metadata; structured visual claims валидируются детерминированно против metadata, чтобы регрессии вроде перепутанной руки/объекта не проходили preflight.
 
 ## Vocabulary Extraction
 
@@ -181,3 +192,6 @@ CI должен выполнять:
 - проверку совпадения `contentDiffHash` и `sourceHashes` с `content/validation/validator-approvals.json`.
 - проверку `content/config/caba-exam-format.json` перед включением exact exam mode;
 - применение единого `content/validation/production-eligibility.policy.json`.
+- strict coverage для current Russian question/answer translations;
+- strict coverage для current Russian explanations, answer rationales и image-aware explanation evidence;
+- strict coverage для question-image metadata, question usage mappings, answer-critical details и stale image/question fingerprints.

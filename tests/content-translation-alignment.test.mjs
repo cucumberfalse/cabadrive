@@ -91,6 +91,16 @@ test("missing translation alignment evidence fails validation", () => {
   assert(errors.includes("q1: missing approved translation alignment evidence."));
 });
 
+test("missing current question translation fails full-coverage validation", () => {
+  const errors = validateTranslationAlignment({
+    questions: [baseQuestion],
+    translations: [],
+    evidence: { locale: "ru", version: 1, entries: [] },
+    locale: "ru"
+  });
+  assert(errors.includes("q1: missing translation entry."));
+});
+
 test("stale source and translation fingerprints fail validation", () => {
   const sourceChanged = { ...baseQuestion, officialTextEs: "Texto cambiado" };
   assert(validate({ question: sourceChanged, evidence: evidenceFor() }).includes("q1: translation alignment source fingerprint mismatch."));

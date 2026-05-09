@@ -4,6 +4,8 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
+import { validateExplanationAlignment } from "./content-explanation-alignment.mjs";
+import { validateQuestionImageMetadata } from "./content-image-metadata.mjs";
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
 import { validateOfficialDocumentsManifest } from "./official-documents-validation.mjs";
@@ -44,6 +46,9 @@ const questions = readJson("content/questions/caba-b.unofficial-fallback.questio
 const translations = readJson("content/translations/ru.translations.json") || [];
 const translationAlignmentEvidence = readJson("content/validation/ru-translation-alignment.evidence.json");
 const explanations = readJson("content/explanations/ru.explanations.json") || [];
+const questionImageMetadata = readJson("content/image-metadata/question-images.manifest.json");
+const questionImageMetadataEvidence = readJson("content/validation/question-image-metadata.evidence.json");
+const explanationAlignmentEvidence = readJson("content/validation/ru-explanation-alignment.evidence.json");
 const vocabulary = readJson("content/vocabulary/ru.vocabulary.json") || [];
 const guide = readJson("content/guide/ru.condensed-guide.json") || [];
 const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
@@ -142,6 +147,7 @@ for (const translation of translations) {
   if (!translation.disclaimer?.includes("Неофициальный")) errors.push(`${translation.questionId}: translation disclaimer must mark unofficial status.`);
 }
 errors.push(...validateTranslationAlignment({ questions, translations, evidence: translationAlignmentEvidence, locale: "ru" }));
+errors.push(...validateQuestionImageMetadata({ questions, manifest: questionImageMetadata, evidence: questionImageMetadataEvidence }));
 
 for (const explanation of explanations) {
   if (!questionIds.has(explanation.questionId)) errors.push(`Explanation references missing question ${explanation.questionId}`);
@@ -150,6 +156,15 @@ for (const explanation of explanations) {
     if (!sourceById.has(sourceId)) errors.push(`${explanation.questionId}: explanation source missing ${sourceId}`);
   }
 }
+errors.push(
+  ...validateExplanationAlignment({
+    questions,
+    explanations,
+    imageMetadataManifest: questionImageMetadata,
+    evidence: explanationAlignmentEvidence,
+    locale: "ru"
+  })
+);
 
 for (const term of vocabulary) {
   requireString(term.id, "vocabulary.id");

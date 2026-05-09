@@ -20,11 +20,15 @@ test("category B fallback questions keep local image references", () => {
   }
 });
 
-test("existing Russian explanations are expanded exam-focused learning notes", () => {
+test("Russian explanations cover every current question with structured rationales", () => {
   const explanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
-  assert.equal(explanations.length, 5);
+  const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
+  assert.equal(explanations.length, questions.length);
   for (const explanation of explanations) {
-    assert.ok(explanation.textRu.length >= 240, `${explanation.questionId} explanation is too terse`);
-    assert.match(explanation.textRu, /вариант|правильн|экзамен|испанск|водител|дорог|движен/i, explanation.questionId);
+    assert.ok(explanation.textRu.length >= 120, `${explanation.questionId} explanation is too terse`);
+    assert.equal(typeof explanation.correctAnswerId, "string", explanation.questionId);
+    assert.equal(typeof explanation.correctAnswerExplanationRu, "string", explanation.questionId);
+    assert.equal(typeof explanation.wrongAnswerExplanations, "object", explanation.questionId);
+    assert.match(explanation.textRu, /вариант|правильн|верно|неверн|изображен|билет/i, explanation.questionId);
   }
 });

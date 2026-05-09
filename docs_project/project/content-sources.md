@@ -17,6 +17,8 @@ content/official-documents/
 
 This area is for verbatim official source documents and materials that support Cabadrive source traceability. It is not a place for Russian explanations, summaries, translations, or topic-guide prose.
 
+Question-image semantic metadata is also outside the official archive. Current practice-image metadata lives under `content/image-metadata/` with review evidence under `content/validation/`; it describes local fallback practice images for learning-support validation and must not be treated as official GCBA source text.
+
 `content/official-documents/manifest.json` is the machine-readable manifest for the archive. The manifest remains draft while exact-text and whole-archive currentness validation are future release gates, but Slice D seeds a small reusable official-source bundle for later topic-guide work:
 
 - `ley-24449-transito-seguridad-vial`: Ley Nacional de Tránsito 24.449 updated text from Argentina.gob.ar, with official InfoLeg retained as supporting/alternative evidence.

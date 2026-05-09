@@ -33,7 +33,12 @@ export function sourceTupleForQuestion(question) {
       officialTextEs: answer.officialTextEs
     })),
     correctAnswerId: question.correctAnswerId,
-    imageSha256: question.image?.sha256 || null
+    image: question.image
+      ? {
+          localPath: question.image.localPath || null,
+          sha256: question.image.sha256
+        }
+      : null
   };
 }
 
@@ -72,7 +77,7 @@ export function buildTranslationAlignmentEvidenceEntry({ question, translation, 
   };
 }
 
-export function validateTranslationAlignment({ questions, translations, evidence, locale = "ru" }) {
+export function validateTranslationAlignment({ questions, translations, evidence, locale = "ru", strictCoverage = true }) {
   const errors = [];
   const questionById = new Map((questions || []).map((question) => [question.id, question]));
   const translationQuestionIds = new Set();
@@ -156,6 +161,12 @@ export function validateTranslationAlignment({ questions, translations, evidence
     }
     if (entry.translationTextSha256 !== fingerprints.translationTextSha256) {
       errors.push(`${translation.questionId}: translation alignment translation fingerprint mismatch.`);
+    }
+  }
+
+  if (strictCoverage) {
+    for (const question of questions || []) {
+      if (!translationByQuestionId.has(question.id)) errors.push(`${question.id}: missing translation entry.`);
     }
   }
 

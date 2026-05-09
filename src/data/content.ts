@@ -101,8 +101,13 @@ export type Translation = {
 export type Explanation = {
   questionId: string;
   textRu: string;
+  correctAnswerId: string;
+  correctAnswerExplanationRu: string;
+  wrongAnswerExplanations: Record<string, string>;
   explanationType: string;
+  claimScope?: "direct_ticket" | "direct_image" | "ticket_specific_fallback" | "current_official_source";
   relatedSourceIds: string[];
+  imageDetailReferences?: string[];
   disclaimer: string;
 };
 
