@@ -152,9 +152,9 @@
       "titleRu": "Приоритет при светофорах и переездах",
       "categoryId": "priority",
       "splitCriteria": "Semáforo, luces intermitentes, paso a nivel, barreras, rieles и ситуации, где сигнализация меняет обычный приоритет.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-right-of-way-signals-rail-crossings"
     },
     {
       "topicId": "traffic-lights-and-rail-crossings",
@@ -462,7 +462,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -973,7 +973,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -1098,7 +1098,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -1186,7 +1186,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -1501,7 +1501,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -1622,7 +1622,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -2627,7 +2627,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -3589,7 +3589,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -3756,7 +3756,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -3883,7 +3883,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -3904,7 +3904,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -4114,7 +4114,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "planned",
+        "right-of-way-signals-and-rail-crossings": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },

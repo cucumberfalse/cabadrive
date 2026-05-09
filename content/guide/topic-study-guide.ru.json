@@ -6197,6 +6197,481 @@
       ]
     },
     {
+      "id": "right-of-way-signals-and-rail-crossings",
+      "slug": "right-of-way-signals-and-rail-crossings",
+      "status": "draft",
+      "titleRu": "Приоритет при сигналах и переездах",
+      "summaryRu": "Практический блок про prioridad de paso, semáforos, señalización intermitente, señales transitorias, cruces sin semáforo и paso a nivel ferroviario.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про приоритет сначала найдите, что управляет ситуацией: semáforo, señalización intermitente, señalización transitoria, señal vertical, paso a nivel или обычная encrucijada sin semáforos.",
+        "Если есть сигнал выше по иерархии, он меняет обычное правило. Señalización transitoria, которая modifica el régimen normal de uso de la vía, стоит выше semáforos; сами semáforos выключают обычные правила encrucijada sin semáforos.",
+        "Когда светофора нет, CABA строит приоритет так: сначала jerarquía de arterias, то есть avenida, calle, pasaje; при равной jerarquía обычно пропускают того, кто появляется por el lado derecho. Но есть исключения, например vehículo que sale del paso a nivel ferroviario.",
+        "Señalización intermitente проверяет не “у кого приоритет”, а требуемое действие. Luz roja intermitente требует detener la marcha и продолжить только без риска; luz amarilla/intermitente означает cruzar con máxima precaución.",
+        "Paso a nivel и близкие к нему ситуации не решаются как обычная esquina. Поезд и выезд из зоны рельсов создают особый риск, поэтому водитель должен оставить переезд свободным и учитывать специальные señales ferroviarias.",
+        "Поворот налево в билетах зависит от слова semaforizada. На intersección no semaforizada такой giro может быть разрешен при правильной траектории; на semaforizada de doble sentido без señal luminosa de giro действует запрет.",
+        "Для velocidad precautoria на перекрестках sin semáforos запомните пару из билетов: calle - 30 km/h, avenida - 40 km/h. 20 km/h относится к paso a nivel, поэтому это ловушка в вопросе про avenida."
+      ],
+      "practicalReasoningRu": [
+        "Правила приоритета нужны, чтобы водитель не угадывал намерения других. Сначала выбирается главный источник управления, затем применяется простое правило: сигнал, иерархия дороги, правая сторона или специальное исключение.",
+        "Железнодорожный переезд выделен отдельно, потому что у поезда длинный тормозной путь и у водителя автомобиля почти нет пространства для исправления ошибки.",
+        "Мигающий сигнал заставляет замедлиться или остановиться до конфликта, поэтому правильные ответы звучат как detenerse, certeza de que no existe riesgo или máxima precaución, а не “проехать быстрее”."
+      ],
+      "spanishTerms": [
+        {
+          "id": "row-term-encrucijada-sin-semaforos",
+          "termEs": "encrucijada sin semáforos",
+          "translationRu": "перекресток без светофоров",
+          "sourceQuestionIds": [
+            "b-fallback-009"
+          ]
+        },
+        {
+          "id": "row-term-lado-derecho",
+          "termEs": "lado derecho",
+          "translationRu": "правая сторона",
+          "sourceQuestionIds": [
+            "b-fallback-009"
+          ]
+        },
+        {
+          "id": "row-term-senalizacion-intermitente",
+          "termEs": "señalización intermitente",
+          "translationRu": "мигающая сигнализация",
+          "sourceQuestionIds": [
+            "b-fallback-063",
+            "b-fallback-394"
+          ]
+        },
+        {
+          "id": "row-term-detener-la-marcha",
+          "termEs": "detener la marcha",
+          "translationRu": "остановить движение",
+          "sourceQuestionIds": [
+            "b-fallback-063",
+            "b-fallback-394"
+          ]
+        },
+        {
+          "id": "row-term-maxima-precaucion",
+          "termEs": "máxima precaución",
+          "translationRu": "максимальная осторожность",
+          "sourceQuestionIds": [
+            "b-fallback-394"
+          ]
+        },
+        {
+          "id": "row-term-bocacalle-sin-semaforo",
+          "termEs": "bocacalle sin semáforo",
+          "translationRu": "перекресток/угол без светофора",
+          "sourceQuestionIds": [
+            "b-fallback-076"
+          ]
+        },
+        {
+          "id": "row-term-senalizacion-transitoria",
+          "termEs": "señalización transitoria",
+          "translationRu": "временная сигнализация",
+          "sourceQuestionIds": [
+            "b-fallback-119"
+          ]
+        },
+        {
+          "id": "row-term-prioridad-normativa",
+          "termEs": "prioridad normativa",
+          "translationRu": "нормативный порядок приоритета",
+          "sourceQuestionIds": [
+            "b-fallback-119"
+          ]
+        },
+        {
+          "id": "row-term-encrucijadas-sin-semaforos",
+          "termEs": "encrucijadas sin semáforos",
+          "translationRu": "перекрестки без светофоров",
+          "sourceQuestionIds": [
+            "b-fallback-131"
+          ]
+        },
+        {
+          "id": "row-term-avenida-calle-pasaje",
+          "termEs": "Avenida - 2° Calle - 3° Pasaje",
+          "translationRu": "порядок: авенида, улица, пасаж",
+          "sourceQuestionIds": [
+            "b-fallback-131"
+          ]
+        },
+        {
+          "id": "row-term-puente-levadizo",
+          "termEs": "puente levadizo, rotatorio o flotante",
+          "translationRu": "подъемный, поворотный или плавучий мост",
+          "sourceQuestionIds": [
+            "b-fallback-238"
+          ]
+        },
+        {
+          "id": "row-term-interseccion-no-semaforizada",
+          "termEs": "intersección no semaforizada",
+          "translationRu": "несветофорный перекресток",
+          "sourceQuestionIds": [
+            "b-fallback-340"
+          ]
+        },
+        {
+          "id": "row-term-paso-nivel-ferroviario",
+          "termEs": "paso a nivel ferroviario",
+          "translationRu": "железнодорожный переезд в одном уровне",
+          "sourceQuestionIds": [
+            "b-fallback-357"
+          ]
+        },
+        {
+          "id": "row-term-velocidad-precautoria",
+          "termEs": "velocidad precautoria",
+          "translationRu": "предупредительная скорость",
+          "sourceQuestionIds": [
+            "b-fallback-370"
+          ]
+        },
+        {
+          "id": "row-term-cuarenta-kmh",
+          "termEs": "40 kilómetros por hora",
+          "translationRu": "40 км/ч",
+          "sourceQuestionIds": [
+            "b-fallback-370"
+          ]
+        },
+        {
+          "id": "row-term-interseccion-sin-semaforo",
+          "termEs": "intersección sin semáforo",
+          "translationRu": "перекресток без светофора",
+          "sourceQuestionIds": [
+            "b-fallback-372"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-009",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-009-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Transporte de pasajero не получает общий приоритет просто по типу службы; вопрос спрашивает норму общего характера для encrucijada sin semáforos."
+            },
+            {
+              "answerId": "b-fallback-009-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Размер автомобиля не является правилом prioridad de paso, поэтому vehículo de menor tamaño не решает конфликт."
+            },
+            {
+              "answerId": "b-fallback-009-a3",
+              "verdict": "correct",
+              "explanationRu": "При равной ситуации без semáforo и без специального знака общий ориентир - vehículo que se presenta por el lado derecho."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-063",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-063-a1",
+              "verdict": "correct",
+              "explanationRu": "В показанной intermitente roja логика приоритета заменяется требованием detener la marcha и продолжить только при certeza de que no existe riesgo."
+            },
+            {
+              "answerId": "b-fallback-063-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза al tener prioridad - ловушка: красный мигающий сигнал не дает преимущества и не разрешает atravesarla rápidamente."
+            },
+            {
+              "answerId": "b-fallback-063-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Extremar precauciones без остановки подходит к желтой мигающей логике, но для красной intermitente билет требует detenerse."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b74.jpg"
+        },
+        {
+          "questionId": "b-fallback-076",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-076-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: на изображении именно этого билета показаны señales, которые меняют обычную prioridad de paso в bocacalle sin semáforo; значит, водитель не применяет автоматом правую сторону."
+            },
+            {
+              "answerId": "b-fallback-076-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso игнорирует, что señalización específica puede quitar prioridad. Здесь вопрос не про обычный перекресток без знаков, а про показанные señales."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b103.jpg"
+        },
+        {
+          "questionId": "b-fallback-085",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-085-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A не получает приоритет только потому, что виден первым на схеме; в cruce de dos calles sin semáforo нужно проверить, кто расположен справа."
+            },
+            {
+              "answerId": "b-fallback-085-a2",
+              "verdict": "correct",
+              "explanationRu": "Vehículo B имеет prioridad de paso по правилу правой стороны для равнозначного перекрестка без semáforo и без более сильной señalización."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b97.jpg"
+        },
+        {
+          "questionId": "b-fallback-119",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-119-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: señalización transitoria, если modifica el régimen normal de uso de la vía, стоит выше semáforos в prioridad normativa."
+            },
+            {
+              "answerId": "b-fallback-119-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso переворачивает иерархию: водитель должен выполнить временное регулирование, когда оно меняет обычный режим дороги."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-131",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-131-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант ставит pasaje выше avenida, то есть полностью переворачивает порядок jerarquía de arterias."
+            },
+            {
+              "answerId": "b-fallback-131-a2",
+              "verdict": "correct",
+              "explanationRu": "По Ley 2148 для encrucijadas sin semáforos de distinta jerarquía порядок приоритета: avenida, luego calle, luego pasaje."
+            },
+            {
+              "answerId": "b-fallback-131-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Правая сторона применяется между arterias de igual jerarquía; если одна vía - avenida, jerarquía важнее автоматического “справа”."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-238",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-238-a1",
+              "verdict": "correct",
+              "explanationRu": "Показанная señal предупреждает об aproximación a un puente levadizo, rotatorio o flotante: возможна остановка/закрытие прохода из-за подвижного моста."
+            },
+            {
+              "answerId": "b-fallback-238-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Puente de menor ancho - другой warning sign про сужение на мосту; здесь символ и ответ говорят о puente móvil."
+            },
+            {
+              "answerId": "b-fallback-238-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Proximidad de un paso a nivel относится к железнодорожному переезду, а не к puente levadizo/rotatorio/flotante."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b227.jpg"
+        },
+        {
+          "questionId": "b-fallback-340",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-340-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Этот ответ путает условия: semáforo que habilita нужен для semaforizada, но билет прямо говорит и показывает intersección no semaforizada."
+            },
+            {
+              "answerId": "b-fallback-340-a2",
+              "verdict": "correct",
+              "explanationRu": "Sí: на intersección no semaforizada giro permitido при безопасной траектории, поэтому отсутствие светофорной стрелки здесь не запрещает маневр."
+            },
+            {
+              "answerId": "b-fallback-340-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Doble sentido de circulación сам по себе не запрещает такой giro; важны отсутствие semáforo и соблюдение правил маневра."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b127.jpg"
+        },
+        {
+          "questionId": "b-fallback-357",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-357-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант называет derecha, но в этой схеме правильное основание другое: vehículo A está saliendo del paso a nivel ferroviario."
+            },
+            {
+              "answerId": "b-fallback-357-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Количество автомобилей B не создает prioridad de paso; правило приоритета не считается большинством машин."
+            },
+            {
+              "answerId": "b-fallback-357-a3",
+              "verdict": "correct",
+              "explanationRu": "Vehículo A имеет приоритет как транспорт, выходящий из paso a nivel ferroviario, что является специальным исключением из обычного правила."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b96.jpg"
+        },
+        {
+          "questionId": "b-fallback-370",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-370-a1",
+              "verdict": "incorrect",
+              "explanationRu": "20 km/h - ловушка из темы paso a nivel; билет спрашивает avenida al llegar a bocacalle sin semáforos."
+            },
+            {
+              "answerId": "b-fallback-370-a2",
+              "verdict": "correct",
+              "explanationRu": "Для avenida в encrucijada/bocacalle sin semáforos Ley 2148 задает velocidad precautoria, nunca superior a 40 km/h."
+            },
+            {
+              "answerId": "b-fallback-370-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h относится к calle sin semáforo, а не к avenida из вопроса."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b143.jpg"
+        },
+        {
+          "questionId": "b-fallback-372",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-372-a1",
+              "verdict": "correct",
+              "explanationRu": "Vehículo A tiene prioridad porque circula por una avenida: при distinta jerarquía avenida выше calle."
+            },
+            {
+              "answerId": "b-fallback-372-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Derecha помогает при igual jerarquía; здесь avenida меняет порядок, поэтому B не получает приоритет только за правую сторону."
+            },
+            {
+              "answerId": "b-fallback-372-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Не es indistinto: отсутствие semáforo не отменяет jerarquía avenida-calle-pasaje."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b100.jpg"
+        },
+        {
+          "questionId": "b-fallback-394",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-394-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Obligación de detener la marcha соответствует luz roja intermitente; в этом билете изображение и правильный ответ ведут к логике amarilla/intermitente: cruzar con precaución."
+            },
+            {
+              "answerId": "b-fallback-394-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Мигающая señalización не дает приоритета и не разрешает atravesarla rápidamente; она предупреждает о риске."
+            },
+            {
+              "answerId": "b-fallback-394-a3",
+              "verdict": "correct",
+              "explanationRu": "При amarilla/intermitente de advertencia нужно efectuar el cruce con máxima precaución, а не останавливаться как на красный."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b73.jpg"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "row-trap-hierarchy-before-color",
+          "textRu": "Не начинайте с цвета semáforo, если вопрос говорит señalización transitoria или другую более сильную señal: сначала prioridad normativa.",
+          "sourceQuestionIds": [
+            "b-fallback-119"
+          ]
+        },
+        {
+          "id": "row-trap-derecha-after-jerarquia",
+          "textRu": "Derecha не всегда первая: между avenida, calle и pasaje сначала работает jerarquía de arterias, а уже потом правило правой стороны.",
+          "sourceQuestionIds": [
+            "b-fallback-009",
+            "b-fallback-131",
+            "b-fallback-372"
+          ]
+        },
+        {
+          "id": "row-trap-red-yellow-intermitente",
+          "textRu": "Intermitente roja и amarilla дают разные действия: roja = detenerse до отсутствия риска, amarilla = cruzar con máxima precaución.",
+          "sourceQuestionIds": [
+            "b-fallback-063",
+            "b-fallback-394"
+          ]
+        },
+        {
+          "id": "row-trap-paso-nivel-exception",
+          "textRu": "Paso a nivel ferroviario может быть исключением из обычной prioridad: транспорт, который выходит из переезда, не оценивайте как обычную машину на боковой улице.",
+          "sourceQuestionIds": [
+            "b-fallback-357"
+          ]
+        },
+        {
+          "id": "row-trap-no-semaforo-giro",
+          "textRu": "No semaforizada в вопросе про giro a la izquierda часто разрешает то, что было бы запрещено на semaforizada sin señal luminosa de giro.",
+          "sourceQuestionIds": [
+            "b-fallback-340"
+          ]
+        },
+        {
+          "id": "row-trap-speed-numbers",
+          "textRu": "Не переносите 20 km/h из paso a nivel в вопрос про avenida sin semáforos: для avenida ловушка отсекается числом 40 km/h.",
+          "sourceQuestionIds": [
+            "b-fallback-370"
+          ]
+        },
+        {
+          "id": "row-trap-sign-name-not-general-priority",
+          "textRu": "Puente levadizo и paso a nivel похожи как warning-sign answers, но это разные símbolos; отвечайте по конкретной картинке билета.",
+          "sourceQuestionIds": [
+            "b-fallback-238"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-row-signal-priority-hierarchy",
+          "textRu": "В CABA порядок приоритета идет от órdenes de autoridad и señalización circunstancial/transitoria к semáforos, затем к vertical signs/markings и общим нормам.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-signal-priority-hierarchy"
+        },
+        {
+          "id": "claim-row-unsignalized-priority",
+          "textRu": "В encrucijadas sin semáforos CABA сначала учитывает jerarquía avenida-calle-pasaje, затем при равной jerarquía правило правой стороны и специальные исключения, включая выход из paso a nivel.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-unsignalized-priority"
+        },
+        {
+          "id": "claim-row-flashing-and-rail-signals",
+          "textRu": "Luz intermitente amarilla требует пересекать с осторожностью, luz intermitente roja требует остановиться до отсутствия риска, а señal ferroviaria roja/barrera меняют обычный режим движения.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-flashing-and-rail-signals"
+        },
+        {
+          "id": "claim-row-left-turn-and-precautionary-speed",
+          "textRu": "На intersección no semaforizada может быть разрешен giro a la izquierda при выполнении условий маневра; для velocidad precautoria sin semáforos в CABA используются 30 km/h для calle и 40 km/h для avenida.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-left-turn-and-precautionary-speed"
+        },
+        {
+          "id": "claim-row-bridge-warning-sign",
+          "textRu": "Anexo L поддерживает значение P.17 Puente móvil как aproximación a un puente levadizo, rotatorio o flotante.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-bridge-warning-sign"
+        }
+      ]
+    },
+    {
       "id": "documents-licenses-and-insurance",
       "slug": "documents-licenses-and-insurance",
       "status": "draft",

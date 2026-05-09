@@ -452,6 +452,97 @@
       "notes": "Used for b-fallback-093, b-fallback-134, b-fallback-139 and b-fallback-407 explanations without broadening the slice into a full emergency or passing topic."
     },
     {
+      "id": "right-of-way-signal-priority-hierarchy",
+      "topicId": "right-of-way-signals-and-rail-crossings",
+      "claimId": "claim-row-signal-priority-hierarchy",
+      "claimSummaryRu": "CABA priority hierarchy puts authority orders and circumstantial/transitory signaling before traffic lights, then vertical signs/markings and general legal norms.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 2.3.4 Prioridades",
+        "Ley 2148 2.3.9 Responsabilidad por la señalización",
+        "Ley 24.449 Artículo 36 Prioridad normativa",
+        "Anexo L punto 2 Competencia"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Used for b-fallback-119 and the compact priority-hierarchy framing; no broader traffic-control doctrine is added."
+    },
+    {
+      "id": "right-of-way-unsignalized-priority",
+      "topicId": "right-of-way-signals-and-rail-crossings",
+      "claimId": "claim-row-unsignalized-priority",
+      "claimSummaryRu": "At unsignalized intersections, CABA applies avenue-street-passage hierarchy, then right-side priority for equal hierarchy, with exceptions including vehicles leaving a level crossing.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.7.2 Otras prioridades de paso",
+        "Ley 2148 6.7.3 Intersecciones",
+        "Ley 24.449 Artículo 41 Prioridades"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports assigned right-of-way explanations for b-fallback-009, 076, 085, 131, 357 and 372; image-specific sign interpretation for b-fallback-076 remains ticket-specific."
+    },
+    {
+      "id": "right-of-way-flashing-and-rail-signals",
+      "topicId": "right-of-way-signals-and-rail-crossings",
+      "claimId": "claim-row-flashing-and-rail-signals",
+      "claimSummaryRu": "Flashing yellow means cross with caution, flashing red means stop until no risk exists, and railway red signals/barriers prevent ordinary road entry.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.10 Vehículos en intersecciones semaforizadas",
+        "Ley 2148 Capítulo 6.4 Pasos a nivel",
+        "Ley 24.449 Artículo 44 Vías semaforizadas",
+        "Anexo L punto 32 Significado de las luces",
+        "Anexo L punto 36.c Semáforos especiales para cruce ferrovial con barreras",
+        "Anexo L R.30 Barreras ferroviales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Used for b-fallback-063, b-fallback-394 and rail-crossing priority traps without changing the neighboring traffic-lights topic."
+    },
+    {
+      "id": "right-of-way-left-turn-and-precautionary-speed",
+      "topicId": "right-of-way-signals-and-rail-crossings",
+      "claimId": "claim-row-left-turn-and-precautionary-speed",
+      "claimSummaryRu": "CABA permits left turns at unsignalized intersections under maneuver rules and sets precautionary upper limits of 30 km/h for streets and 40 km/h for avenues at unsignalized crossings.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.14 Giros",
+        "Ley 2148 6.2.3 Límites máximos especiales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-340 and b-fallback-370; the 20 km/h distractor is treated only as a paso-a-nivel trap."
+    },
+    {
+      "id": "right-of-way-bridge-warning-sign",
+      "topicId": "right-of-way-signals-and-rail-crossings",
+      "claimId": "claim-row-bridge-warning-sign",
+      "claimSummaryRu": "Anexo L identifies P.17 Puente móvil as approach to a drawbridge, rotating bridge or floating bridge that may interrupt the road.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Anexo L P.17 Puente móvil"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Used only for b-fallback-238 sign recognition; broader warning-sign taxonomy remains in other slices."
+    },
+    {
       "id": "documents-licenses-required-circulation-documents",
       "topicId": "documents-licenses-and-insurance",
       "claimId": "claim-required-circulation-documents",
