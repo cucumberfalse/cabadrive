@@ -131,6 +131,83 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current/in_force",
       "notes": "Reuses existing archived laws for road-type-linked speed and low-beam claims. Route-sign recognition remains ticket-specific without annex/manual claims."
+    },
+    {
+      "id": "regulatory-signs-system-and-categories",
+      "topicId": "regulatory-signs",
+      "claimId": "claim-sign-system-categories",
+      "claimSummaryRu": "Anexo L defines a uniform traffic-sign system that communicates orders, warnings, indications and orientations; regulatory/prescriptive signs transmit mandatory specific orders.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo I punto 1 Concepto",
+        "Capítulo II punto 7 Significado",
+        "Capítulo III punto 8 Características básicas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports compact topic prose distinguishing reglamentarias from preventivas and informativas."
+    },
+    {
+      "id": "regulatory-signs-prescriptive-examples",
+      "topicId": "regulatory-signs",
+      "claimId": "claim-regulatory-examples",
+      "claimSummaryRu": "Anexo L sign entries support the assigned ticket meanings for PARE, velocidad mínima, giro obligatorio, carril exclusivo, tránsito pesado a la derecha and contramano.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "R.2 Contramano",
+        "R.16 Límite de velocidad mínima",
+        "R.18 Circulación exclusiva",
+        "R.20 Giro obligatorio",
+        "R.23 Tránsito pesado a la derecha",
+        "R.27 Pare"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Used only for sign meanings present in the assigned E3 tickets."
+    },
+    {
+      "id": "regulatory-signs-warning-information-transitory",
+      "topicId": "regulatory-signs",
+      "claimId": "claim-warning-information-transitory-examples",
+      "claimSummaryRu": "Anexo L distinguishes warning/preventive signs, informative signs and transitory signs, including examples used as classification traps in the assigned tickets.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo IV punto 13 Señales preventivas",
+        "P.2 Paneles de prevención",
+        "P.5 Cruce de peatones",
+        "P.26 Ciclistas o jinetes",
+        "P.28 Corredor aéreo",
+        "Capítulo V punto 19 Señales informativas",
+        "Información turística y de servicios: Aeropuerto, Plaza",
+        "Capítulo VIII punto 37 Señalamiento transitorio"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports trap notes for tickets whose correct answer is warning, informative or transitory rather than regulatory."
+    },
+    {
+      "id": "regulatory-signs-normative-prohibitions",
+      "topicId": "regulatory-signs",
+      "claimId": "claim-normative-prohibitions-danger-places",
+      "claimSummaryRu": "Current law/code provisions support ticket-specific statements that some dangerous-place answers are prohibited by normativa rather than by needing a separate visible sign.",
+      "officialDocumentIds": [
+        "ley-24449-transito-seguridad-vial",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso j",
+        "Ley 2148 6.1.12 Adelantamientos y sobrepasos",
+        "Ley 2148 7.1.8 Prohibiciones especiales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Used for b-fallback-207, b-fallback-211, b-fallback-331 and b-fallback-411 explanations without expanding the topic into a full overtaking or parking lesson."
     }
   ]
 }

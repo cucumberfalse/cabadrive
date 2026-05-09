@@ -1592,6 +1592,824 @@
           "sourceTraceId": "road-types-speed-and-lights-context"
         }
       ]
+    },
+    {
+      "id": "regulatory-signs",
+      "slug": "regulatory-signs",
+      "status": "draft",
+      "titleRu": "Запрещающие и предписывающие знаки",
+      "summaryRu": "Экзаменационный блок про señales reglamentarias, похожие предупреждающие/информационные знаки и ловушки с обязательностью, запретом и классификацией.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах слово reglamentaria означает не просто «дорожный знак», а знак, который передает обязательное правило: запрет, ограничение, приказ остановиться, направление движения, минимум скорости или выделенную полосу.",
+        "Сначала определяйте функцию знака. Reglamentarias/prescriptivas дают orden obligatoria; preventivas предупреждают об опасности или необычном участке; informativas ориентируют и сообщают место или сервис; transitorias относятся к временным работам, объездам и ограничениям.",
+        "Красный обод, перечеркнутый символ, PARE, contramano, giro obligatorio, velocidad mínima, carril exclusivo и tránsito pesado a la derecha - это типичные экзаменационные сигналы обязательности. В ответах ищите не красивый перевод, а действие: нельзя ехать, нужно остановиться, нужно ехать в указанном направлении или нельзя ехать медленнее указанного минимума.",
+        "Не все билеты в этой теме на самом деле имеют правильный ответ «reglamentaria». Часть из них попала сюда как ловушки классификации: jinetes, aeropuerto, plaza, teatro, paneles de prevención, informativa и transitoria проверяют, умеете ли вы отличать запрет от предупреждения или информации.",
+        "Если вопрос говорит prohibido por normativa, отдельный знак на картинке может быть не нужен. Для тоннеля, опасного места или участка с запретом остановки отвечайте по правилу билета: «нет, запрещено», даже если вариант предлагает «если не мешает» или «если нет знака».",
+        "Скоростные знаки читайте особенно внимательно: velocidad mínima - нижний предел, а velocidad máxima - верхний. Число само по себе не говорит, какой это предел; смотрите тип знака и формулировку вопроса."
+      ],
+      "practicalReasoningRu": [
+        "Смысл системы знаков - дать водителю короткий и единый язык дороги. Когда знак является обязательным, поток становится предсказуемым: каждый водитель знает, где остановиться, куда нельзя въезжать, какой ряд кому предназначен и какое направление разрешено.",
+        "Классификация нужна не ради теории. На экзамене она помогает не перепутать предупреждение «будь готов» с приказом «обязан выполнить» и не выбрать запрет там, где знак только сообщает о месте поблизости."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-senales-reglamentarias",
+          "termEs": "señales reglamentarias",
+          "translationRu": "предписывающие/регламентирующие знаки",
+          "sourceQuestionIds": [
+            "b-fallback-021"
+          ]
+        },
+        {
+          "id": "term-cumplimiento-obligatorio",
+          "termEs": "cumplimiento obligatorio",
+          "translationRu": "обязательное выполнение",
+          "sourceQuestionIds": [
+            "b-fallback-021"
+          ]
+        },
+        {
+          "id": "term-velocidad-minima",
+          "termEs": "velocidad inferior",
+          "translationRu": "скорость ниже указанной",
+          "sourceQuestionIds": [
+            "b-fallback-029"
+          ]
+        },
+        {
+          "id": "term-velocidad-maxima",
+          "termEs": "velocidad máxima",
+          "translationRu": "максимальная скорость",
+          "sourceQuestionIds": [
+            "b-fallback-029"
+          ]
+        },
+        {
+          "id": "term-giro-obligatorio",
+          "termEs": "giro obligatorio",
+          "translationRu": "обязательный поворот",
+          "sourceQuestionIds": [
+            "b-fallback-115"
+          ]
+        },
+        {
+          "id": "term-direccion-permitida",
+          "termEs": "Dirección permitida",
+          "translationRu": "разрешенное направление",
+          "sourceQuestionIds": [
+            "b-fallback-177",
+            "b-fallback-265"
+          ]
+        },
+        {
+          "id": "term-carril-uso-exclusivo",
+          "termEs": "carril de uso exclusivo",
+          "translationRu": "полоса исключительного пользования",
+          "sourceQuestionIds": [
+            "b-fallback-163"
+          ]
+        },
+        {
+          "id": "term-transito-pesado-derecha",
+          "termEs": "Tránsito pesado a la derecha",
+          "translationRu": "тяжелый транспорт направо/по правой полосе",
+          "sourceQuestionIds": [
+            "b-fallback-384"
+          ]
+        },
+        {
+          "id": "term-contramano",
+          "termEs": "Contramano",
+          "translationRu": "встречное направление, въезд запрещен",
+          "sourceQuestionIds": [
+            "b-fallback-379"
+          ]
+        },
+        {
+          "id": "term-prohibido-estacionar-detenerse",
+          "termEs": "prohibido estacionar y detenerse",
+          "translationRu": "запрещены стоянка и остановка",
+          "sourceQuestionIds": [
+            "b-fallback-211"
+          ]
+        },
+        {
+          "id": "term-cruce-jinetes",
+          "termEs": "Cruce de jinetes",
+          "translationRu": "пересечение/появление всадников",
+          "sourceQuestionIds": [
+            "b-fallback-004"
+          ]
+        },
+        {
+          "id": "term-vuelos-baja-altura",
+          "termEs": "Vuelos a baja altura",
+          "translationRu": "низко летящие самолеты",
+          "sourceQuestionIds": [
+            "b-fallback-011"
+          ]
+        },
+        {
+          "id": "term-cruce-peatones",
+          "termEs": "Cruce de peatones",
+          "translationRu": "пешеходный переход",
+          "sourceQuestionIds": [
+            "b-fallback-106"
+          ]
+        },
+        {
+          "id": "term-panel-prevencion",
+          "termEs": "Panel de Prevención",
+          "translationRu": "предупреждающая панель",
+          "sourceQuestionIds": [
+            "b-fallback-379"
+          ]
+        },
+        {
+          "id": "term-paneles-prevencion",
+          "termEs": "Paneles de prevención",
+          "translationRu": "предупреждающие панели",
+          "sourceQuestionIds": [
+            "b-fallback-397"
+          ]
+        },
+        {
+          "id": "term-informativa",
+          "termEs": "Informativa",
+          "translationRu": "информационный знак",
+          "sourceQuestionIds": [
+            "b-fallback-383"
+          ]
+        },
+        {
+          "id": "term-transitoria",
+          "termEs": "Transitoria",
+          "translationRu": "временный знак",
+          "sourceQuestionIds": [
+            "b-fallback-429"
+          ]
+        },
+        {
+          "id": "term-sobrepasar",
+          "termEs": "sobrepasar",
+          "translationRu": "обгонять/опережать с выездом",
+          "sourceQuestionIds": [
+            "b-fallback-207",
+            "b-fallback-331",
+            "b-fallback-411"
+          ]
+        },
+        {
+          "id": "term-peatones-derecha",
+          "termEs": "peatones deben circular obligatoriamente por la derecha",
+          "translationRu": "пешеходы обязаны двигаться справа",
+          "sourceQuestionIds": [
+            "b-fallback-399"
+          ]
+        },
+        {
+          "id": "term-plaza",
+          "termEs": "plaza",
+          "translationRu": "площадь/сквер поблизости",
+          "sourceQuestionIds": [
+            "b-fallback-156"
+          ]
+        },
+        {
+          "id": "term-teatro",
+          "termEs": "teatro",
+          "translationRu": "театр поблизости",
+          "sourceQuestionIds": [
+            "b-fallback-260"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-004",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b225.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-004-a1",
+              "verdict": "correct",
+              "explanationRu": "На изображении показан jinete: это предупреждение о возможном cruce de jinetes, то есть о людях верхом на дороге."
+            },
+            {
+              "answerId": "b-fallback-004-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de circular con animales была бы запрещающим знаком с другим смыслом; здесь билет проверяет предупреждение, а не запрет."
+            },
+            {
+              "answerId": "b-fallback-004-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Animales sueltos - это другой предупреждающий знак про животных без всадника, поэтому вариант не совпадает с изображением."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-011",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b223.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-011-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант добавляет prohibido estacionar, но знак про самолет предупреждает не о стоянке, а о низко летящих aviones."
+            },
+            {
+              "answerId": "b-fallback-011-a2",
+              "verdict": "correct",
+              "explanationRu": "Знак предупреждает о vuelos a baja altura sobre la vía из-за близости aeródromo или aeropuerto."
+            },
+            {
+              "answerId": "b-fallback-011-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibido estacionar y detenerse - это запрет остановки/стоянки; изображение самолета такого запрета не означает."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-021",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-021-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это описание señales preventivas: они предупреждают о неожиданной или опасной ситуации, но не являются reglamentarias."
+            },
+            {
+              "answerId": "b-fallback-021-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Это описание señales informativas: они ориентируют и указывают услуги или места, а не задают приказ."
+            },
+            {
+              "answerId": "b-fallback-021-a3",
+              "verdict": "correct",
+              "explanationRu": "Señales reglamentarias передают конкретные обязательные órdenes, которые нужно выполнить в месте действия знака."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-029",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b258.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-029-a1",
+              "verdict": "correct",
+              "explanationRu": "Синий знак ограничения с числом 35 в этом билете означает velocidad mínima: ниже 35 km/h ехать нельзя."
+            },
+            {
+              "answerId": "b-fallback-029-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Это ловушка máximo/mínimo. Вариант говорит про верхний предел, но знак задает нижний предел скорости."
+            },
+            {
+              "answerId": "b-fallback-029-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Velocidad precautoria выбирается по условиям движения; здесь знак задает конкретный обязательный минимум."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-080",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b83.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-080-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Señal A в наборе не относится к reglamentaria; билет просит выбрать именно знак с обязательным или ограничительным смыслом."
+            },
+            {
+              "answerId": "b-fallback-080-a2",
+              "verdict": "correct",
+              "explanationRu": "Señal B является reglamentaria: она передает предписание, запрет или ограничение, обязательное для адресата."
+            },
+            {
+              "answerId": "b-fallback-080-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Señal C не является reglamentaria в этом наборе; не выбирайте по внешней похожести, проверяйте функцию знака."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-106",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b238.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-106-a1",
+              "verdict": "correct",
+              "explanationRu": "Показан cruce de peatones в форме peligro máximo: это предупреждение о пешеходном переходе."
+            },
+            {
+              "answerId": "b-fallback-106-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Peatones a la izquierda - другое предписание о движении пешеходов, а не знак перехода на изображении."
+            },
+            {
+              "answerId": "b-fallback-106-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Zona exclusiva peatonal была бы запретом/исключительной зоной; здесь знак предупреждает о переходе."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-115",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b249.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-115-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción de doblar означает разрешение, но этот знак требует обязательный giro, а не просто дает выбор."
+            },
+            {
+              "answerId": "b-fallback-115-a2",
+              "verdict": "correct",
+              "explanationRu": "Flecha de giro obligatorio hacia la derecha означает, что водитель должен повернуть направо."
+            },
+            {
+              "answerId": "b-fallback-115-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Curva peligrosa - предупреждающий знак о дороге впереди; здесь вопрос про предписанный маневр."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-127",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b255.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-127-a1",
+              "verdict": "correct",
+              "explanationRu": "Знак PARE означает, что vehículo no puede continuar su marcha sin detenerse: нужна полная остановка перед продолжением."
+            },
+            {
+              "answerId": "b-fallback-127-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Reductor de velocidad предупреждает о физическом замедлителе, но показанный знак требует остановки."
+            },
+            {
+              "answerId": "b-fallback-127-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Comienzo de sentido opuesto de circulación - другой знак; PARE не сообщает о начале встречного направления."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-156",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b271.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-156-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Знак с plaza не запрещает detenerse; вариант придумывает запрет, которого в изображении нет."
+            },
+            {
+              "answerId": "b-fallback-156-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de estacionar тоже не подходит: изображение информирует о месте, а не запрещает стоянку."
+            },
+            {
+              "answerId": "b-fallback-156-a3",
+              "verdict": "correct",
+              "explanationRu": "Пиктограмма сообщает о existencia de una plaza en las inmediaciones; это ориентир/сервисная информация."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-163",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b253.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-163-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Preferencial означало бы преимущественный, но не полностью исключительный режим; знак требует более строгий ответ."
+            },
+            {
+              "answerId": "b-fallback-163-a2",
+              "verdict": "correct",
+              "explanationRu": "Carril de uso exclusivo para ciclistas означает, что этот carril предназначен только для велосипедистов."
+            },
+            {
+              "answerId": "b-fallback-163-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Знак не запрещает ciclistas; наоборот, он резервирует для них полосу."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-177",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b265.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-177-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Permitido girar hacia la izquierda звучит как разрешенный поворот, но изображение относится к направлению движения."
+            },
+            {
+              "answerId": "b-fallback-177-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Dirección obligatoria была бы приказом следовать только так; в билете правильный смысл мягче - разрешенное направление."
+            },
+            {
+              "answerId": "b-fallback-177-a3",
+              "verdict": "correct",
+              "explanationRu": "Dirección permitida hacia la izquierda означает, что движение налево разрешено в указанном направлении."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-207",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-207-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Даже если отдельного знака нет, в túnel с обоими направлениями билет проверяет запрет по normativa."
+            },
+            {
+              "answerId": "b-fallback-207-a2",
+              "verdict": "correct",
+              "explanationRu": "В таком тоннеле sobrepasar нельзя: это опасный участок с ограниченной видимостью и встречным движением."
+            },
+            {
+              "answerId": "b-fallback-207-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Suficiente visibilidad не отменяет запрет билета; нельзя превращать опасный участок в обычный обгон."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-211",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b168.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-211-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Не достаточно «не мешать движению»: в показанном месте detener и estacionar запрещены нормативно."
+            },
+            {
+              "answerId": "b-fallback-211-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильный ответ: здесь запрещены и estacionar, и detenerse; это не ситуация для добровольной остановки."
+            },
+            {
+              "answerId": "b-fallback-211-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Запрет не зависит только от наличия отдельной señal expresa; место само попадает под нормативный запрет."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-225",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b84.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-225-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Señal A не является reglamentaria в этом наборе; она не передает обязательное предписание."
+            },
+            {
+              "answerId": "b-fallback-225-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Señal B относится к другой категории; не выбирайте ее только из-за формы или цвета."
+            },
+            {
+              "answerId": "b-fallback-225-a3",
+              "verdict": "correct",
+              "explanationRu": "Señal C является reglamentaria: она задает обязательное правило, запрет или ограничение."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-260",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b269.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-260-a1",
+              "verdict": "correct",
+              "explanationRu": "Пиктограмма teatro сообщает о существовании театра поблизости; это информационный знак."
+            },
+            {
+              "answerId": "b-fallback-260-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de estacionar не следует из изображения театра: знак не запрещает стоянку."
+            },
+            {
+              "answerId": "b-fallback-260-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de detenerse тоже не подходит: знак не вводит запрет остановки."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-265",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b261.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-265-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Dirección obligatoria en ambos sentidos означала бы обязанность выбрать один из указанных ходов; в билете знак дает разрешенные направления."
+            },
+            {
+              "answerId": "b-fallback-265-a2",
+              "verdict": "correct",
+              "explanationRu": "Dirección permitida en ambos sentidos - правильный смысл: можно продолжать в любом из двух указанных направлений."
+            },
+            {
+              "answerId": "b-fallback-265-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Giros permitidos слишком узко: знак говорит о направлениях движения, а не только о маневре поворота."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-331",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b121.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-331-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Формула salvo que haya señal не подходит: на таком участке запрет следует из normativa, а не только из отдельного знака."
+            },
+            {
+              "answerId": "b-fallback-331-a2",
+              "verdict": "correct",
+              "explanationRu": "Sobrepasar здесь нельзя: билет проверяет нормативный запрет для опасного места."
+            },
+            {
+              "answerId": "b-fallback-331-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Даже если кажется, что другим не помешаешь, условие безопасности не отменяет запрет на этом участке."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-379",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b244.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-379-a1",
+              "verdict": "correct",
+              "explanationRu": "Изображение соответствует panel de prevención para objeto rígido: он предупреждает и направляет вокруг жесткого препятствия."
+            },
+            {
+              "answerId": "b-fallback-379-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Calzada reducida - предупреждение о сужении дороги, но не тот панельный знак, который показан."
+            },
+            {
+              "answerId": "b-fallback-379-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Contramano - красный запрещающий знак о встречном направлении; здесь показан предупреждающий panel."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-381",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b141.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-381-a1",
+              "verdict": "correct",
+              "explanationRu": "Ограничение на знаке действует независимо от дня и horario: если знак установлен, водитель соблюдает 20 km/h всегда в зоне его действия."
+            },
+            {
+              "answerId": "b-fallback-381-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант ошибочно сужает действие только до школьного horario; билет спрашивает именно эту ловушку."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-383",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b86.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-383-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Preventiva предупреждала бы о риске или изменении дороги; показанный знак относится к информации."
+            },
+            {
+              "answerId": "b-fallback-383-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Reglamentaria передает обязательный приказ или запрет; изображение этого не делает."
+            },
+            {
+              "answerId": "b-fallback-383-a3",
+              "verdict": "correct",
+              "explanationRu": "Это informativa: знак сообщает полезные сведения/ориентир, а не вводит запрет или предупреждение об опасности."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-384",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b252.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-384-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sobrepasos por la derecha - это не значение знака; изображение касается движения тяжелого транспорта."
+            },
+            {
+              "answerId": "b-fallback-384-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Circulación exclusiva para camión означала бы отдельную исключительную полосу, но здесь смысл другой."
+            },
+            {
+              "answerId": "b-fallback-384-a3",
+              "verdict": "correct",
+              "explanationRu": "Tránsito pesado a la derecha требует, чтобы тяжелый транспорт двигался по правой стороне/полосе."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-397",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b243.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-397-a1",
+              "verdict": "correct",
+              "explanationRu": "Показаны paneles de prevención: они предупреждают/обозначают препятствие или опасное направление."
+            },
+            {
+              "answerId": "b-fallback-397-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de circular была бы запрещающим знаком; панели сами по себе не означают полный запрет движения."
+            },
+            {
+              "answerId": "b-fallback-397-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Reducción de velocidad может быть разумной реакцией, но название и значение знака в билете - paneles de prevención."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-399",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b256.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-399-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Inicio de calle de convivencia - другой знак и другой режим улицы; здесь вопрос про движение peatones."
+            },
+            {
+              "answerId": "b-fallback-399-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Знак не запрещает пешеходам движение; он предписывает сторону движения."
+            },
+            {
+              "answerId": "b-fallback-399-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильный смысл: peatones должны circular obligatoriamente por la derecha."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-411",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b118.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-411-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Наличие или отсутствие отдельного знака не главное: место относится к нормативно запрещенным для sobrepaso."
+            },
+            {
+              "answerId": "b-fallback-411-a2",
+              "verdict": "correct",
+              "explanationRu": "Sobrepasar здесь запрещено нормативно; поэтому правильный ответ - No."
+            },
+            {
+              "answerId": "b-fallback-411-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Условие «если не мешает» не отменяет прямой запрет для такого места."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-416",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b248.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-416-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Bancos в варианте - ложная ассоциация: знак не про запрет парковки у банка."
+            },
+            {
+              "answerId": "b-fallback-416-a2",
+              "verdict": "correct",
+              "explanationRu": "Это contramano/no entry по смыслу: улица имеет sentido de circulación opuesto, поэтому въезжать нельзя."
+            },
+            {
+              "answerId": "b-fallback-416-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Знак не означает общий запрет для vehículos sin permiso; он запрещает въезд из-за встречного направления."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-429",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b72.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-429-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Reglamentaria передавала бы постоянное обязательное правило; изображение относится к временной дорожной обстановке."
+            },
+            {
+              "answerId": "b-fallback-429-a2",
+              "verdict": "correct",
+              "explanationRu": "Это transitoria: такие знаки применяются для временных работ, объездов или ограничений и требуют внимания к временной схеме."
+            },
+            {
+              "answerId": "b-fallback-429-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Informativa ориентирует или сообщает сервис/место; здесь знак из временной группы, не обычная информация."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-reglamentaria-vs-preventiva",
+          "textRu": "Reglamentaria = приказ или запрет. Preventiva = предупреждение. Если ответ говорит «предупреждает о близости/опасности», это обычно не reglamentaria.",
+          "sourceQuestionIds": [
+            "b-fallback-004",
+            "b-fallback-011",
+            "b-fallback-106",
+            "b-fallback-379",
+            "b-fallback-397"
+          ]
+        },
+        {
+          "id": "trap-service-icons-not-prohibitions",
+          "textRu": "Plaza, teatro, aeropuerto как сервис/место не превращаются в запрет парковки или остановки. Не добавляйте prohibido, если знак только информирует.",
+          "sourceQuestionIds": [
+            "b-fallback-011",
+            "b-fallback-156",
+            "b-fallback-260",
+            "b-fallback-383"
+          ]
+        },
+        {
+          "id": "trap-minimum-vs-maximum",
+          "textRu": "Число на знаке может быть mínimo, а не máximo. В билете b-fallback-029 правильный ответ запрещает ехать медленнее 35 km/h.",
+          "sourceQuestionIds": [
+            "b-fallback-029"
+          ]
+        },
+        {
+          "id": "trap-obligatorio-vs-permitida",
+          "textRu": "Obligatorio и permitida не одно и то же: giro obligatorio требует маневр, dirección permitida только показывает разрешенное направление.",
+          "sourceQuestionIds": [
+            "b-fallback-115",
+            "b-fallback-177",
+            "b-fallback-265"
+          ]
+        },
+        {
+          "id": "trap-normativa-without-extra-sign",
+          "textRu": "Фразы por normativa и está prohibido не надо ослаблять вариантами «если не мешает» или «если нет знака». Билет ожидает запрет.",
+          "sourceQuestionIds": [
+            "b-fallback-207",
+            "b-fallback-211",
+            "b-fallback-331",
+            "b-fallback-411"
+          ]
+        },
+        {
+          "id": "trap-category-question",
+          "textRu": "В вопросах «qué tipo de señal» отвечайте категорией, а не действием. Временный знак - transitoria, информационный - informativa.",
+          "sourceQuestionIds": [
+            "b-fallback-080",
+            "b-fallback-225",
+            "b-fallback-383",
+            "b-fallback-429"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-sign-system-categories",
+          "textRu": "Система señalización vial передает водителю órdenes, advertencias, indicaciones и orientaciones; señales reglamentarias/prescriptivas отличаются тем, что задают обязательное выполнение.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "regulatory-signs-system-and-categories"
+        },
+        {
+          "id": "claim-regulatory-examples",
+          "textRu": "PARE требует полной остановки; velocidad mínima запрещает ехать ниже указанного числа; giro obligatorio требует следовать стрелке; carril exclusivo и tránsito pesado a la derecha задают обязательное использование полосы; contramano запрещает въезд.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "regulatory-signs-prescriptive-examples"
+        },
+        {
+          "id": "claim-warning-information-transitory-examples",
+          "textRu": "Предупреждающие знаки сообщают о риске, информационные - об ориентире или сервисе, а transitorias применяются для временных работ, объездов и ограничений.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "regulatory-signs-warning-information-transitory"
+        },
+        {
+          "id": "claim-normative-prohibitions-danger-places",
+          "textRu": "Для опасных мест и тоннелей билет может проверять запрет по нормативе, а не только по отдельному вертикальному знаку.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "regulatory-signs-normative-prohibitions"
+        }
+      ]
     }
   ]
 }

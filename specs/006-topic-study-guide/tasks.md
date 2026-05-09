@@ -127,6 +127,7 @@
 ## Future Slice H: Taxonomy Refinement Backlog
 
 - [ ] T092 Reevaluate `b-fallback-296` and `b-fallback-343` as a future taxonomy-cleanup candidate after Slice E1; any reassignment must preserve the maximum-two-topic rule, update coverage evidence, and land outside the `speed-limits` content PR.
+- [ ] T093 Reevaluate `regulatory-signs` title/scope and the assigned warning/informative/transitory/normative-overtake traps after Slice E3; any title refinement or reassignment must preserve the maximum-two-topic rule, update coverage evidence, and land outside the `regulatory-signs` content PR.
 
 ## Process Memory
 
@@ -333,6 +334,20 @@
 - Slice D3 build evidence: `pnpm run build` passed after dependency installation; Vite emitted the existing non-blocking chunk-size warning and service-worker generation reported 280 cached assets.
 - Slice D3 diff hygiene evidence: `git diff --check` passed with no output after the archive and process-memory updates.
 - Slice D3 preflight evidence: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice E3 worktree orientation: created isolated worktree `/Users/chap/devel/cabadrive/.claude/worktrees/006-regulatory-signs-topic-content` on branch `codex/006-regulatory-signs-topic-content` from `origin/main` at `2eccbc5524e7e1d57f56aaa893bab09133cfecea`, which includes merged PR #19 / Decreto 779 Anexo L signage archive.
+- Slice E3 required memory read: `AGENTS.md`, `.specify/memory/constitution.md`, durable `docs_project/` read-order documents, `docs/specify/README.md`, active feature memory `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, `content/official-documents/AGENTS.md`, `scripts/content-topic-guide.mjs`, `tests/content-topic-guide.test.mjs`, and current topic guide content/coverage/source-trace JSON shapes before implementation edits.
+- Slice E3 implemented only topic `regulatory-signs` with concise Russian learning material, practical reasoning, Spanish terms drawn from assigned ticket/answer wording, trap notes, image local-path references for image-backed assigned tickets, and full answer explanations for all canonical answers on the 26 assigned tickets: `b-fallback-004`, `011`, `021`, `029`, `080`, `106`, `115`, `127`, `156`, `163`, `177`, `207`, `211`, `225`, `260`, `265`, `331`, `379`, `381`, `383`, `384`, `397`, `399`, `411`, `416`, and `429`.
+- Slice E3 promoted only the effective `regulatory-signs` placements for those 26 tickets to `content_ready`. Dual rows preserve existing non-regulatory placement phases; `b-fallback-029` keeps `speed-limits: content_ready` and now adds `regulatory-signs: content_ready`, while other dual placements remain `planned`.
+- Slice E3 source-trace decision: cited existing archived official document IDs `decreto-779-1995-anexo-l-senalizacion-vial-uniforme`, `ley-24449-transito-seguridad-vial`, and `ley-2148-caba-codigo-transito-transporte`. Anexo L supports the sign-system/category and sign-meaning claims; Ley 24.449 / Ley 2148 support only compact ticket-specific normative-prohibition context for tunnel/danger-place stopping and overtake answers.
+- Slice E3 content decision: several assigned tickets are warning, informative, transitory, or normative-prohibition traps rather than pure reglamentaria examples. The topic text explicitly treats these as classification traps instead of generalizing them as regulatory signs.
+- Slice E3 targeted validator evidence before full suite: `validateTopicGuide` returned `OK`; a targeted comparison against `origin/main` showed exactly 26 placement phase changes, all `regulatory-signs -> content_ready`, with `unexpected: []`, `missing: []`, and `regulatoryReady: 26`.
+- Slice E3 targeted test evidence: `node --test tests/content-topic-guide.test.mjs` passed 21 tests after fixing three Spanish-term provenance misses caught by the first targeted run.
+- Slice E3 content-validation evidence: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice E3 test evidence: `pnpm run test` passed 72 Node tests.
+- Slice E3 build note: the first `pnpm run build` failed because the isolated worktree had no `node_modules` and `vite` was not installed. `pnpm install` completed with the lockfile already up to date and no tracked dependency-file changes, then build/preflight verification continued.
+- Slice E3 build evidence: `pnpm run build` passed after dependency installation; Vite emitted the existing non-blocking chunk-size warning and service-worker generation reported 280 cached assets.
+- Slice E3 diff hygiene evidence: `git diff --check` passed with no output.
+- Slice E3 preflight evidence: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 
 ### Implementation Agent Feedback
 
@@ -343,6 +358,7 @@
 - Slice D2: none requiring Architect disposition.
 - Slice E1: `b-fallback-296` and `b-fallback-343` appear to be route-sign recognition tickets, not speed-limit tickets. They were retained in `speed-limits` because this PR must follow the current taxonomy, but Architect should consider whether their speed placement should be removed or moved in a future taxonomy refinement while preserving the maximum-two-topic rule.
 - Slice D3: none requiring Architect disposition.
+- Slice E3: `regulatory-signs` currently contains multiple correct answers that are explicitly warning/informative/transitory signs, plus `b-fallback-207`, `b-fallback-331`, and `b-fallback-411` which are overtake-by-normative-context tickets without sign images. This slice handled them as classification/normativa traps because the assignment is fixed, but Architect should consider a future taxonomy/title refinement such as `sign-classification-and-regulatory-signs` or reassignment of non-sign normative overtake tickets while preserving the maximum-two-topic rule.
 
 ### Architect Dispositions
 
@@ -352,3 +368,4 @@
 - Slice D annex feedback accepted as a future constraint, not a Slice D blocker. Disposition: topic slices using Decreto 779 annex-specific claims, especially signage or technical vehicle material, must satisfy T052 by archiving the relevant annex bodies as separate manifest entries before adding T051 source traces; T068, T069, and T070 then validate those annex entries and claims with the rest of the archive.
 - Slice D GCBA manual feedback accepted as a future task, not a Slice D blocker. Disposition: topic slices using claims found only in the optional GCBA four-wheel manual must first add a dedicated PDF conversion/evidence slice under T052, including raw evidence and conversion limitations, before those claims can pass T051 and the final T068/T069/T070 gates.
 - Slice E1 taxonomy feedback accepted as future cleanup consideration T092, not a Slice E1 blocker. Disposition: `b-fallback-296` and `b-fallback-343` may be better route-sign recognition placements, but this PR correctly follows the current Slice C taxonomy, keeps the `speed-limits` placements content-ready, and must not reassign them here. A later taxonomy refinement may remove or move those placements only with updated coverage evidence and the maximum-two-topic rule preserved.
+- Slice E3 taxonomy feedback accepted as future cleanup consideration T093, not a Slice E3 blocker. Disposition: the `regulatory-signs` content PR correctly follows the current Slice C taxonomy and handles assigned warning, informative, transitory, and normative-overtake tickets as ticket-specific classification/normativa traps. Do not reassign tickets in this PR. A later taxonomy refinement may rename the topic, split/reassign non-regulatory sign classifications, or move non-sign overtake-normative tickets only with updated coverage evidence and the maximum-two-topic rule preserved.
