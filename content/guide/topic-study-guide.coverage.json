@@ -332,9 +332,9 @@
       "titleRu": "Зеркала, слепые зоны и обзор",
       "categoryId": "vehicle",
       "splitCriteria": "Espejos, punto ciego, campo visual, visibilidad directa/indirecta и настройка обзора перед началом движения.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E16"
     },
     {
       "topicId": "documents-licenses-and-insurance",
@@ -578,8 +578,8 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E16"
     },
     {
       "questionId": "b-fallback-023",
@@ -901,8 +901,8 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E16"
     },
     {
       "questionId": "b-fallback-056",
@@ -925,8 +925,8 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E16"
     },
     {
       "questionId": "b-fallback-059",
@@ -978,8 +978,8 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E16"
     },
     {
       "questionId": "b-fallback-065",
@@ -3777,8 +3777,8 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E16"
     },
     {
       "questionId": "b-fallback-366",

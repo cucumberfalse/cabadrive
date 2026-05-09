@@ -1189,6 +1189,58 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "Reuses existing archived exclusive-lane support for the narrow b-fallback-132 taxi/moto boundary; no neighboring public-transport placement is promoted."
+    },
+    {
+      "id": "mirrors-retrovisor-system-required-effective",
+      "topicId": "mirrors-blind-spots-and-visibility",
+      "claimId": "claim-retrovisor-system-required-effective",
+      "claimSummaryRu": "CABA and national law require a broad, permanent and effective rear-view/mirror system as minimum vehicle equipment; the guide does not generalize this into eliminating blind spots.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.1.2 Condiciones mínimas de seguridad, inciso f",
+        "Ley 24.449 Artículo 30 Requisitos para automotores, inciso d"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports only the official minimum-equipment mirror claim. Blind-spot existence and definition remain tied to fallback ticket wording."
+    },
+    {
+      "id": "mirrors-precaution-safe-check-before-moving",
+      "topicId": "mirrors-blind-spots-and-visibility",
+      "claimId": "claim-precaution-safe-check-before-moving",
+      "claimSummaryRu": "General precaution and safe-condition duties support explaining pre-start mirror checking as a practical safety measure, while the exact before-moving answer remains fallback-ticket wording.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.1 Deber de precaución",
+        "Ley 24.449 Artículo 39 Condiciones para conducir"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Does not claim an archived official manual procedure for exact mirror adjustment timing; b-fallback-064 answer is explained narrowly as ticket-specific safe conduct."
+    },
+    {
+      "id": "mirrors-visibility-condition-and-ticket-boundaries",
+      "topicId": "mirrors-blind-spots-and-visibility",
+      "claimId": "claim-visibility-condition-and-ticket-boundaries",
+      "claimSummaryRu": "Visibility is an official condition for safe control and precautionary driving, but exact blind-spot definition, mirror-image answer and cyclist-passenger wording are kept ticket-specific.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.2.1 Adecuación de la velocidad a las circunstancias. Velocidad precautoria",
+        "Ley 24.449 Artículo 39 Condiciones para conducir",
+        "Ley 24.449 Artículo 42 Adelantamiento, inciso b"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Used to support only the general visibility/safe-control boundary. b-fallback-055 image answer, b-fallback-058 bicycle-passenger trap and b-fallback-365 punto ciego definition are not broadened into standalone official claims."
     }
   ]
 }
