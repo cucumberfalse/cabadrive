@@ -89,9 +89,9 @@
       "titleRu": "Осевые линии и правила пересечения разметки",
       "categoryId": "signs",
       "splitCriteria": "Линии по центру проезжей части, continua/discontinua и вопрос, можно ли traspasar или circular sobre ellas.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E12"
     },
     {
       "topicId": "lane-and-channelization-markings",
@@ -1410,8 +1410,8 @@
       "topicIds": [
         "center-lines-and-crossing-rules"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E12"
     },
     {
       "questionId": "b-fallback-112",
@@ -1960,7 +1960,11 @@
         "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E12",
+      "placementPhases": {
+        "center-lines-and-crossing-rules": "content_ready",
+        "overtaking-and-passing": "planned"
+      }
     },
     {
       "questionId": "b-fallback-171",
@@ -1995,7 +1999,11 @@
         "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E12",
+      "placementPhases": {
+        "center-lines-and-crossing-rules": "content_ready",
+        "pedestrian-crossings-and-priority": "planned"
+      }
     },
     {
       "questionId": "b-fallback-175",
@@ -2128,9 +2136,9 @@
         "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "C+E8+E12",
       "placementPhases": {
-        "center-lines-and-crossing-rules": "planned",
+        "center-lines-and-crossing-rules": "content_ready",
         "stopping-vs-parking-maneuvers": "content_ready"
       }
     },
@@ -2422,8 +2430,8 @@
       "topicIds": [
         "center-lines-and-crossing-rules"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E12"
     },
     {
       "questionId": "b-fallback-223",
@@ -3324,7 +3332,11 @@
         "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E12",
+      "placementPhases": {
+        "center-lines-and-crossing-rules": "content_ready",
+        "parking-prohibitions-and-signed-zones": "planned"
+      }
     },
     {
       "questionId": "b-fallback-321",
@@ -4221,8 +4233,8 @@
       "topicIds": [
         "center-lines-and-crossing-rules"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E12"
     },
     {
       "questionId": "b-fallback-416",
@@ -4612,8 +4624,8 @@
       "topicIds": [
         "center-lines-and-crossing-rules"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E12"
     },
     {
       "questionId": "b-fallback-458",
