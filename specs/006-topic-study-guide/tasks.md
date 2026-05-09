@@ -33,13 +33,13 @@
 
 ## Future Slice B: Official Documents Governance Foundation
 
-- [ ] T023 Create the governed official-documents area, preferred path `content/official-documents/`.
-- [ ] T024 Add section-local `AGENTS.md` or equivalent instructions requiring exact-text preservation, metadata, hashes, currentness, and validation rules for every current and future official document/material.
-- [ ] T025 Add `content/official-documents/manifest.json` with schema fields for title, official source type, source URL, retrieval date, local Markdown path, hashes, raw evidence path, conversion notes, currentness status, amendment/repeal evidence, exact-text validation status, and checked-at dates.
-- [ ] T026 Add a no-file-I/O official-documents manifest validation helper.
-- [ ] T027 Add unit tests for missing metadata, invalid local paths, missing hashes, missing conversion notes, missing currentness fields, and stale/not-current source use.
-- [ ] T028 Update durable `docs_project/` documentation for the official-documents area, manifest, exact-text validation, currentness validation, and future-document rules.
-- [ ] T029 Record validation evidence and process memory.
+- [x] T023 Create the governed official-documents area, preferred path `content/official-documents/`.
+- [x] T024 Add section-local `AGENTS.md` or equivalent instructions requiring exact-text preservation, metadata, hashes, currentness, and validation rules for every current and future official document/material.
+- [x] T025 Add `content/official-documents/manifest.json` with schema fields for title, official source type, source URL, retrieval date, local Markdown path, hashes, raw evidence path, conversion notes, currentness status, amendment/repeal evidence, exact-text validation status, and checked-at dates.
+- [x] T026 Add a no-file-I/O official-documents manifest validation helper.
+- [x] T027 Add unit tests for missing metadata, invalid local paths, missing hashes, missing conversion notes, missing currentness fields, and stale/not-current source use.
+- [x] T028 Update durable `docs_project/` documentation for the official-documents area, manifest, exact-text validation, currentness validation, and future-document rules.
+- [x] T029 Record validation evidence and process memory.
 
 ## Future Slice C: Taxonomy Discovery And Coverage Baseline
 
@@ -136,6 +136,11 @@
 - Slice A added only one structured placeholder topic and one ticket placement for schema validation. Taxonomy discovery, complete coverage, official archive work, full guide prose, and UI exposure remain deferred to later slices.
 - Slice A review hardening requires guide, coverage, and source-trace `guideId`/`status` fields to agree. Any `published` status in one manifest activates strict complete-coverage validation, and mismatched statuses now fail instead of silently downgrading the guide to draft behavior.
 - Slice A review hardening requires every source-trace entry to include at least one non-empty `officialDocumentIds` value. Draft compatibility is preserved because draft manifests may have zero source-trace entries when no official-source-backed claims exist, but any present entry must point at a future official-document manifest ID.
+- Slice B created the governed official-documents section at the preferred path `content/official-documents/` with `AGENTS.md`, `manifest.json`, and tracked placeholder directories `documents/`, `originals/`, and `validation/`.
+- Slice B keeps the initial official-documents manifest in `status: "draft"` with an empty `entries` array. This preserves draft-safe validation without downloading, converting, or seeding broad official source documents in the governance foundation slice.
+- Slice B uses top-level manifest entry fields for `hashAlgorithm`, `hash`, `conversionMethod`, and `conversionNotes` to stay close to the existing source-registry style while adding the stricter official-document governance fields.
+- Slice B implemented `scripts/official-documents-validation.mjs` with no file I/O in core validation. The helper accepts manifest data plus injectable file metadata or an existence callback, then `scripts/validate-content.mjs` supplies a real local existence callback for normal content validation.
+- Slice B treats source-trace entries as current guide claims by default. A source-trace entry may opt out only with `claimUse: "historical_context"` or `currentClaim: false`; otherwise cited manifest entries must exist and have a current/currently-valid status with `currentness.validationStatus: "passed"`.
 
 ### Known Issues
 
@@ -145,6 +150,7 @@
 - A ticket answer may conflict with current official sources. Such conflicts require process-memory recording and Architect disposition before publication.
 - Full guide completion will require many topic content slices; no single future agent should own all prose and all 460 answer explanations.
 - The topic-guide placeholder is intentionally draft-only and should not be treated as learner-ready guide content.
+- Slice B did not run network research, download official documents, convert official documents, or add manifest entries. Slice D and later topic content slices remain responsible for official source acquisition and conversion.
 
 ### Verification Evidence
 
@@ -168,10 +174,22 @@
 - Slice A final verification: `git diff --check` passed with no output.
 - Slice A review hardening targeted evidence: `node --test tests/content-topic-guide.test.mjs` passed 14 tests after adding checks for non-empty `officialDocumentIds`, blank official document IDs, guide/source-trace `guideId` mismatch, and status disagreement that could hide strict mode.
 - Slice A review hardening final verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run test` passed 45 Node tests; `pnpm run build` passed with the existing non-blocking Vite chunk-size warning and 280 cached service-worker assets; `pnpm run preflight` passed with 45 Node tests and 8 Playwright tests; `git diff --check` passed with no output.
+- Slice B worktree orientation: `pwd && git status --short --branch` reported `/Users/chap/devel/cabadrive/.claude/worktrees/006-official-docs-governance` and `## codex/006-official-docs-governance` before implementation edits.
+- Slice B required memory read: `AGENTS.md`, `.specify/memory/constitution.md`, `docs_project/README.md`, `docs_project/project-idea.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, `docs_project/screens/learning-and-exam-flows.md`, `docs/specify/README.md`, and active feature memory `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`.
+- Slice B targeted validator evidence: `node --test tests/official-documents-validation.test.mjs` passed 15 tests covering the empty draft manifest, valid injected file metadata, missing metadata, invalid local paths, path traversal, invalid hashes, missing conversion notes, missing currentness fields, missing exact-text validation status, PDF/raw evidence requirements, duplicate IDs, missing source-trace document IDs, stale/not-current source use, pending currentness validation for current claims, and historical-context source trace.
+- Slice B content-validation smoke evidence: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references after official-documents manifest integration.
+- Slice B environment note: initial `pnpm run build` failed because this isolated worktree had no `node_modules` and `vite` was not installed. `pnpm install` completed with the existing lockfile up to date and no repository file changes, then verification continued.
+- Slice B final verification: `node --test tests/official-documents-validation.test.mjs` passed 15 tests.
+- Slice B final verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice B final verification: `pnpm run test` passed 60 Node tests.
+- Slice B final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service worker generation reported 280 cached assets.
+- Slice B final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 60 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice B final verification: `git diff --check` passed with no output.
 
 ### Implementation Agent Feedback
 
 - Slice A: none requiring Architect disposition.
+- Slice B: none requiring Architect disposition.
 
 ### Architect Dispositions
 

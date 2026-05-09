@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
+import { validateOfficialDocumentsManifest } from "./official-documents-validation.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
@@ -48,6 +49,7 @@ const guide = readJson("content/guide/ru.condensed-guide.json") || [];
 const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
 const topicGuideCoverage = readJson("content/guide/topic-study-guide.coverage.json");
 const topicGuideSourceTrace = readJson("content/guide/topic-study-guide.source-trace.json");
+const officialDocumentsManifest = readJson("content/official-documents/manifest.json");
 const exam = readJson("content/config/caba-exam-format.json");
 const approvals = readJson("content/validation/validator-approvals.json") || [];
 const exceptions = readJson("content/validation/release-exceptions.json") || [];
@@ -173,6 +175,15 @@ errors.push(
     guide: topicGuide,
     coverage: topicGuideCoverage,
     sourceTrace: topicGuideSourceTrace
+  })
+);
+errors.push(
+  ...validateOfficialDocumentsManifest({
+    manifest: officialDocumentsManifest,
+    sourceTrace: topicGuideSourceTrace,
+    fileMetadata: (relativePath) => ({
+      exists: existsSync(path(relativePath))
+    })
   })
 );
 

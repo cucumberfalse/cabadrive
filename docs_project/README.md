@@ -14,8 +14,9 @@ This folder stores durable Cabadrive context for agents and humans.
 3. `project/frontend/frontend-docs.md`
 4. `project/backend/backend-docs.md`
 5. `project/feature-inventory.md`
-6. `project/devops/`
-7. `screens/`
-8. `adr/`
+6. `project/content-sources.md`
+7. `project/devops/`
+8. `screens/`
+9. `adr/`
 
 Feature implementation details live in `../specs/<feature-id>/`.
