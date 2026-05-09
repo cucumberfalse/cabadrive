@@ -233,9 +233,9 @@
       "titleRu": "Пешеходы на переходах и приоритет",
       "categoryId": "vulnerable-users",
       "splitCriteria": "Поведение водителя у пешеходов: ceder paso, esperar, contacto visual, semáforo peatonal и завершение перехода.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "topicId": "pedestrian-school-zones-and-markings",
@@ -554,8 +554,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-020",
@@ -1240,8 +1240,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-091",
@@ -1340,8 +1340,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-101",
@@ -1390,9 +1390,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "pedestrian-crossings-and-priority": "planned",
+        "pedestrian-crossings-and-priority": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -1840,9 +1840,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "pedestrian-crossings-and-priority": "planned",
+        "pedestrian-crossings-and-priority": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -2055,10 +2055,10 @@
         "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E12",
+      "ownerSlice": "C+E12+E-pedestrian-crossings-and-priority",
       "placementPhases": {
         "center-lines-and-crossing-rules": "content_ready",
-        "pedestrian-crossings-and-priority": "planned"
+        "pedestrian-crossings-and-priority": "content_ready"
       }
     },
     {
@@ -2610,8 +2610,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-235",
@@ -2734,8 +2734,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-248",
@@ -2816,8 +2816,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-257",
@@ -2975,8 +2975,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-273",
@@ -2998,9 +2998,9 @@
         "information-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E9",
+      "ownerSlice": "C+E9+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "pedestrian-crossings-and-priority": "planned",
+        "pedestrian-crossings-and-priority": "content_ready",
         "information-signs": "content_ready"
       }
     },
@@ -3042,8 +3042,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-280",
@@ -3312,8 +3312,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-309",
@@ -3396,8 +3396,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-317",
@@ -4083,8 +4083,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-386",
@@ -4227,9 +4227,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "pedestrian-crossings-and-priority": "planned",
+        "pedestrian-crossings-and-priority": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -4443,8 +4443,8 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
       "questionId": "b-fallback-422",
