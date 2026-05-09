@@ -71,9 +71,9 @@
       "titleRu": "Запрещающие и предписывающие знаки",
       "categoryId": "signs",
       "splitCriteria": "Знаки, которые задают обязательное, запрещенное или ограниченное действие, включая velocidad, pare, ceda и contramano.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E3"
     },
     {
       "topicId": "information-signs",
@@ -413,8 +413,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-005",
@@ -473,7 +473,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-012",
@@ -554,8 +558,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-022",
@@ -628,9 +632,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "regulatory-signs": "planned"
+        "regulatory-signs": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1+E3"
     },
     {
       "questionId": "b-fallback-030",
@@ -1064,8 +1068,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-081",
@@ -1282,7 +1286,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "pedestrian-crossings-and-priority": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-107",
@@ -1356,7 +1364,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "turns-direction-and-reversing": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-116",
@@ -1457,7 +1469,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-128",
@@ -1705,7 +1721,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-157",
@@ -1762,8 +1782,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-164",
@@ -1890,7 +1910,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "turns-direction-and-reversing": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-178",
@@ -2139,7 +2163,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-208",
@@ -2172,7 +2200,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-212",
@@ -2287,8 +2319,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-226",
@@ -2590,7 +2622,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-261",
@@ -2633,7 +2669,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "turns-direction-and-reversing": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-266",
@@ -3208,7 +3248,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-332",
@@ -3621,8 +3665,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-380",
@@ -3639,7 +3683,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "pedestrian-school-zones-and-markings": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-382",
@@ -3654,8 +3702,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-384",
@@ -3664,7 +3712,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-385",
@@ -3772,8 +3824,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-398",
@@ -3795,7 +3847,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "pedestrian-crossings-and-priority": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-400",
@@ -3897,7 +3953,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-412",
@@ -3939,7 +3999,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E3",
+      "placementPhases": {
+        "parking-prohibitions-and-signed-zones": "planned",
+        "regulatory-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-417",
@@ -4050,8 +4114,8 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E3"
     },
     {
       "questionId": "b-fallback-430",
