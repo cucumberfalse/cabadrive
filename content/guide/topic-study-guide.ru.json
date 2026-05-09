@@ -17975,7 +17975,7 @@
       "claims": [
         {
           "id": "claim-overtaking-main-rules",
-          "textRu": "Adelantamiento/sobrepaso выполняются слева, при достаточной видимости и свободном пространстве; нельзя начинать рядом с encrucijada, curva, puente, paso a nivel или lugar peligroso, а завершение требует безопасного возврата вправо.",
+          "textRu": "Adelantamiento/sobrepaso обычно выполняются слева, при достаточной видимости и свободном пространстве; Ley 2148 допускает limited right-side exceptions, если vehicle ahead intends to turn/stop left или left queue is stopped/slower. Нельзя начинать рядом с encrucijada, curva, puente, paso a nivel или lugar peligroso, а завершение требует безопасного возврата вправо.",
           "requiresOfficialSource": true,
           "sourceTraceId": "overtaking-main-rules"
         },

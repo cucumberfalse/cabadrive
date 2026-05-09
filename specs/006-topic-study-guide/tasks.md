@@ -838,6 +838,7 @@
 - Slice E overtaking-and-passing diff hygiene evidence: `git diff --check` passed with no output after full preflight.
 - Slice E overtaking-and-passing review-fix evidence: native Codex review flagged the first source-backed left-side-passing sentence as overbroad because Ley 2148 6.1.12 also allows limited right-side exceptions. The learning material and source-trace note were narrowed to mention those exceptions while keeping assigned ticket explanations focused on their prompts; no coverage assignments, official documents, or neighboring topics changed.
 - Slice E overtaking-and-passing review-fix verification: direct `validateTopicGuide` returned `OK`; `node --test tests/content-topic-guide.test.mjs` passed 21 tests; `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run preflight` passed with 72 Node tests, production build, nested e2e build, and 8 Playwright tests; `git diff --check` passed with no output.
+- Slice E overtaking-and-passing second review-fix evidence: follow-up native Codex review found the structured `claim-overtaking-main-rules` text still stated left-side overtaking unconditionally. The claim text was narrowed to include the same Ley 2148 limited right-side exceptions as the learning material/source trace, with no assignment, ticket, source-document, or neighboring-topic changes.
 
 ### Implementation Agent Feedback
 
