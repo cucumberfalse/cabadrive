@@ -392,34 +392,33 @@
     },
     {
       "id": "gcba-guia-practica-siniestros-viales",
-      "title": "¿Qué hacer ante la ocurrencia de un siniestro vial? Guía práctica.",
+      "title": "Guía práctica de actuación ante siniestros viales",
       "officialSourceType": "gcba_road_safety_guide_pdf",
-      "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2023-02/Gu%C3%ADa%20pr%C3%A1ctica%20siniestros%20viales.pdf",
+      "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
       "retrievalDate": "2026-05-09",
-      "retrievalTimestamp": "2026-05-09T18:30:00-03:00",
+      "retrievalTimestamp": "2026-05-09T18:56:37-03:00",
       "sourceFormat": "pdf",
       "localPath": "content/official-documents/documents/gcba-guia-practica-siniestros-viales.md",
       "rawOriginalPath": "content/official-documents/originals/gcba-guia-practica-siniestros-viales.pdf",
       "hashAlgorithm": "sha256",
       "conversionMethod": "PDF text extraction with pdf-parse 1.1.1 from the official GCBA PDF; extracted text written as Markdown with title and paragraph/line breaks preserved as plain text.",
-      "conversionNotes": "Raw PDF evidence is retained. The extraction preserves visible textual wording and rough order, including page/index text, but PDF layout, columns, page artwork, icons, typography, and exact pagination are not represented as Markdown. The non-static buenosaires.gob.ar PDF URL linked from the current study-material page redirected to a gcaba_historico 404 during this retrieval; the same official PDF was retrieved from static.buenosaires.gob.ar and the study-material page still links the non-static URL. Final exact-text validation remains pending.",
+      "conversionNotes": "Raw PDF evidence is retained. The extraction preserves visible textual wording and rough order, including page/index text, but PDF layout, columns, page artwork, icons, typography, and exact pagination are not represented as Markdown. Line-end whitespace from PDF text extraction was trimmed in the Markdown conversion for repository diff hygiene; the raw PDF bytes are preserved separately. This entry was updated from the older 2023 PDF after the archived current GCBA Estrellas Amarillas page was found to link the newer 2026 static PDF. Final exact-text validation remains pending.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "valid_current_material",
         "validationStatus": "passed",
-        "statusEvidence": "The current official GCBA study-material page links to the siniestros guide under “Cómo proceder ante un siniestro vial”; the static.buenosaires.gob.ar PDF endpoint returned HTTP 200 with PDF content on retrieval.",
-        "amendmentRepealEvidence": "No repeal/supersession marker was present on the current GCBA study-material page for this practical road-incident guide. The page presents it as current procedure material for road incidents.",
+        "statusEvidence": "The current official GCBA Estrellas Amarillas page links the guide as “GUÍA PRÁCTICA DE ACTUACIÓN ANTE SINIESTROS VIALES” and points to the 2026 static PDF. The static.buenosaires.gob.ar PDF endpoint returned HTTP 200 with PDF content, content-length 1057789, and Last-Modified Thu, 05 Mar 2026 17:56:38 GMT on retrieval.",
+        "amendmentRepealEvidence": "The older 2023 PDF is superseded for current D11 use by the newer 2026 PDF linked from the current GCBA Estrellas Amarillas page. No repeal/supersession marker was present on that current page for the 2026 practical road-incident guide; the page presents the guide as current road-safety material.",
         "evidenceUrls": [
-          "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
-          "https://buenosaires.gob.ar/sites/default/files/2023-02/Gu%C3%ADa%20pr%C3%A1ctica%20siniestros%20viales.pdf",
-          "https://static.buenosaires.gob.ar/sites/default/files/2023-02/Gu%C3%ADa%20pr%C3%A1ctica%20siniestros%20viales.pdf"
+          "https://buenosaires.gob.ar/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+          "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf"
         ]
       },
       "exactTextValidation": {
         "status": "pending",
         "notes": "D11 performed source retrieval, PDF text extraction, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
       },
-      "hash": "9085e997587011b75a30b712717da454a933a6d43fb70620c0f1c7dd943b49a3"
+      "hash": "66a381c64374d6473feb3a0e50c765f1211a2340e467ffb5707e4c116a7b04dc"
     },
     {
       "id": "gcba-material-estudio-examen-teorico",

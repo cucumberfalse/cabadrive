@@ -1,463 +1,502 @@
-# ¿Qué hacer ante la ocurrencia de un siniestro vial? Guía práctica.
+# Guía práctica de actuación ante siniestros viales
 
-Secretaría de Transporte/
-¿Qué hacer ante
-la ocurrencia de
-un siniestro vial?
-Guía práctica.
 
-II
-Índice
-Introducción
-¿Qué hacer ante un siniestro vial?
 
-Señalización de la zona para que no se produzcan
- más incidentes.
- Llamado al servicio de emergencias y a la policía.
- Datos a recabar en el lugar del hecho.
-El reclamo administrativo ante la compañía de seguros.
-¿Qué hacer ante un siniestro vial?
- Información general.
- Tipos de procesos legales.
-                •  El proceso civil: la mediación y la demanda.
-                •  El proceso penal: la denuncia, la acción penal
-         y la querella.
- Asesoramiento jurídico y atención psicológica
-                •  Organismos públicos nacionales y de la
-         Ciudad Autónoma de Buenos Aires.
-                •  Organizaciones No Gubernamentales.
-00
-pág. V
-01
-pág. VII
-     01 - a
-     pág. VIII
-     01 - b
-     pág. IX
-     01 - c
-     pág. XI
-02
-pág. XIV
+GUÍA PRÁCTICA DE ACTUACIÓN
+ANTE SINIESTROS VIALES
 
-03
-pág. XVI
-     03 - a
-     pág. XVII
-     03 - b
-     pág. XVII
+AUTORIDADES
+JEFATURA DE GOBIERNO
+Jorge Macri
+MINISTERIO DE JUSTICIA
+Gabino Tapia
+MINISTERIO DE INFRAESTRUCTURA
+Pablo Bereciartua
+SECRETARÍA DE JUSTICIA
+Francisco Javier Quintana
+SECRETARÍA DE TRANSPORTE
+Héctor Guillermo Krantzer
+SUBSECRETARÍA DE ASUNTOS JUDICIALES
+Adrián Patricio Grassi
+SUBSECRETARÍA PLANIFICACIÓN DE LA MOVILIDAD Y LA SEGURIDAD VIAL
+Antonio David Cortés
+DIRECCIÓN GENERAL DE ASISTENCIA A LA VÍCTIMA
+Felicitas de Lasa
+DIRECCIÓN GENERAL DE SEGURIDAD VIAL
+Roberto Domecq
 
-     03 - c
-            pág. XXII
+1. INTRODUCCIÓN
 
-III
-Autoridades
-Jefe de Gobierno
-Horacio Rodríguez Larreta
-Secretaria de Transporte y Obras Públicas
-María Manuela López Menéndez
-Subsecretaria Planificación de la Movilidad
-Lucila Capelli
-Directora General de Diseño e Implementación
-Clara Sanguinetti
-Gerente Operativo de Educación y Convivencia Vial
+Los siniestros viales son una de las principales causas de muerte, lesiones graves e incapacidades en nuestro
+país. Son hechos violentos e inesperados que afectan la vida de muchas personas cada día. Cuando ocurren, tanto las
+personas  afectadas  como  sus  familiares  suelen  quedar  en  total  desamparo  ya  que  no  cuentan  con  la  información
+necesaria  para  afrontar  tal  situación  y  no  encuentran  el  apoyo  jurídico  y  psicológico  necesario,  lo  que  los  ubica  en  una
+situación  de  extrema  vulnerabilidad  y  en  necesidad  de  una  respuesta  inmediata  y  adecuada  por  parte  de  los  actores  y
+autoridades que intervienen. Por ello, resulta fundamental que las víctimas, sus familiares y los testigos dispongan de la
+información necesaria para actuar de manera segura y eficiente ante un incidente de tránsito, así como de las herramientas
+adecuadas para afrontar las consecuencias jurídicas y administrativas subsiguientes.
+Esta  Guía  es  una  herramienta  que  tiene  como  propósito  ofrecer  un  enfoque  integral  de  asistencia  a  las  víctimas,
+proporcionando información sobre las acciones que deben llevarse a cabo para evitar la generación o intensificación de
+daños,  como  así  también,  las  vías  para  hacer  el  reclamo  pertinente  y  a  su  vez  asesorar  a  los  testigos  para  que  puedan
+brindar asistencia frente a los siniestros viales. También ofrece apoyo a las víctimas sobrevivientes, ayudándoles a afrontar
+los momentos posteriores al hecho vial.
+Durante el año 2023, en la Ciudad Autónoma de Buenos Aires se registraron 91 muertes por homicidios dolosos, mientras
+que en el mismo período, los siniestros viales cobraron la vida de 104 personas. Estos datos reflejan que la cantidad de
+víctimas  fatales  en  siniestros  viales  supera  a  la  de  homicidios  dolosos,  lo  que  evidencia  el  impacto  significativo  de  la
+seguridad vial en la sociedad.
+A pesar de esta realidad, la atención pública y los debates en materia de seguridad suelen centrarse en la problemática de
+los  homicidios  dolosos,  dejando  en  segundo  plano  la  prevención  de  siniestros  viales  y  la  protección  de  los  usuarios
+vulnerables  de  la  vía.  Este  contraste  pone  de  manifiesto  la  necesidad  de  fortalecer  las  políticas  de  seguridad  vial  y
+concientización ciudadana para reducir la siniestralidad y mitigar sus consecuencias.
+INTRODUCCIÓN
 
-Pablo La Spina
+2. ¿CÓMO ACTUAR FRENTE
+A UN SINIESTRO VIAL?
 
-Introducción
+¿CÓMO ACTUAR FRENTE A UN SINIESTRO VIAL?
+Cuando  ocurre  un  siniestro  vial  es  natural  que  haya  mucha  confusión,  ya  sea  que  se  trate  de  las  personas
+involucradas directamente o de testigos de tal situación. Sin embargo, incluso en ese momento, aún es posible
+prevenir  y  minimizar  los  daños  a  las  personas.    Para  ello,  se  establecen  protocolos  de  actuación  que  se
+resumen  en  tres  puntos  iniciales:  Proteger  el  lugar  del  siniestro,  Avisar  a  los  servicios  de  emergencias  y
+Socorrer a las víctimas. (PAS).
+S
+O
+C
+O
+R
+R
+E
+R
+P
+R
+O
+T
+E
+G
+E
+R
+A
+V
+I
+S
+A
+R
+Protocolos
+de Actuación
+(PAS)
+•Utilizar prendas reflectantes y
+señalizar el lugar con luces o
+triángulos.
+•No permanecer en calzada
+•Llamar al número de emergencias y
+avisar del hecho, dando la
+localización más exacta del lugar.
+•Número de heridos y circunstancias
+especiales
+•No mover a los heridos, ni quitar el casco al motociclista.
+•Tranquilizar a los heridos y ofrecer primeros auxilios, si sabe hacerlos.
 
-VIntroducción
-00
-Esta guía tiene como objetivo brindar información básica
-sobre cómo actuar ante la ocurrencia de un siniestro vial.
-En  primer  lugar,  ofrece  lineamientos  para  las  acciones
-inmediatas  que  deben  seguir  las  personas  involucradas
-directas y testigos presenciales del hecho, es decir, cualquier
-persona  que  participe  o  vea  un  siniestro  vial  con  o  sin
-víctimas en la vía pública.
-En  segundo  lugar,  la  Guía  brinda  información  acerca  de
-un posible  reclamo  administrativo  ante  la  compañía  de
-seguros.
-Por  último,  describe  los  procesos  legales  que  pueden
-tener lugar una vez ocurrido el siniestro. Esta sección está
-específicamente dirigida a víctimas o familiares de víctimas.
+¿CÓMO ACTUAR FRENTE A UN SINIESTRO VIAL?
+Mantener la calma
+respirando
+profundamente.
+Si conducía un vehículo,
+señalizar la zona para evitar
+otro incidente. Es importante
+destacar que la distancia segura
+de colocación de las balizas está
+directamente vinculada a la
+velocidad máxima de la vía de
+circulación.
+Detenerse
+inmediatamente en un
+lugar seguro,
+permaneciendo siempre en
+el lugar del hecho.
+1° PROTEGER:
+Un  siniestro  vial  puede  producir  daños  materiales  y/o  daños  personales.  En  todos  los  casos,  luego  de  un
+siniestro vial, los primeros respondientes deben cumplir los siguientes pasos:
 
-¿Qué hacer ante
-un siniestro vial?
+¿CÓMO ACTUAR FRENTE A UN SINIESTRO VIAL?
+Señalización de la zona en caso de que el auto quede inmovilizado:
+En  una  arteria  de  sentido  único  o  en  el  carril  derecho  de  una  vía  con  doble  sentido,  las  balizas  portátiles  se  deberán
+colocar del lado de donde provienen los vehículos. Cerca del eje central de una vía de doble sentido, se deberá colocar
+una baliza para cada lado de la circulación.
+En  ciudad,  lo  recomendable  es  ubicar  las  balizas  portátiles  a  una  distancia  aproximada  de  20  metros  en  calles  y  40
+metros en avenidas respecto del vehículo.
+En un túnel, se deberá mantener encendidas las luces de posición junto con las balizas, apagar el motor y abandonar el
+vehículo con mucha precaución, usando el chaleco reflectante. Luego se deberán colocar las balizas portátiles y llamar al
+número de asistencia mecánica.
+En autopistas, lo ideal es detenerse en una dársena de emergencia. Si no es posible, la conducta dependerá del carril
+donde quede el vehículo. Se recomienda salir del vehículo con chaleco reflectante, colocar balizas y resguardarse detrás
+de una defensa, si la hay. Si el vehículo queda en carriles centrales o izquierdo y hay una barrera cercana, alejarse con
+precaución  y  ubicarse  detrás  de  ella.  Si  no  es  seguro  salir,  permanecer  dentro  con  cinturón  abrochado,  balizas
+encendidas y llamar inmediatamente a emergencias.
+1
+2
+3
+4
 
-VII¿Qué hacer ante un siniestro vial?
-01
-Un  siniestro  vial  puede  producir  daños  materiales  y/o
-daños personales
-En  todos  los  casos,  luego  de  un  siniestro  vial,  los  primeros
-respondientes deben cumplir los siguientes pasos:
-Detenete inmediatamente y permanecé en el lugar del hecho.
-Mantené la calma respirando profundamente.
-Si conducías un vehículo, señalizá la zona para evitar otro incidente.
-En caso de haber personas heridas, avisá a la autoridad competente
-llamando al 911. Intentá tranquilizar a la víctima y comunicate con
-algún familiar.
-Intercambiá  datos  sobre  el  seguro  obligatorio  y  la  licencia  de
-conducir con otros/as conductores/as involucrados.
-Registrá nombres y teléfonos de las personas testigos.
-Llamá a tu compañía aseguradora para informar sobre el siniestro
-(dentro de las 72 hs).
+¿CÓMO ACTUAR FRENTE A UN SINIESTRO VIAL?
+En  el  caso  de  incidentes  en  Autopistas  y  Rutas  se  deberá  llamar  al  número  de  Emergencia  Vial  de  la  empresa
+correspondiente,   para   que   envíen   asistencia   ya   que   son   las   únicas   autorizadas   para   remover   los   vehículos
+involucrados:
 
-VIII
-01 - a
-Señalización  de  la  zona  para  que  no  se  produzcan
-nuevos incidentes.
-En caso de que el auto esté inmovilizado, encendé las balizas vehiculares
-de  emergencia  y,  se  sugiere,  poner  ambas  balizas  por  detrás  del
-vehículo. La más alejada a una distancia que se calcula un metro por
-cada kilometro de máxima permitida en la vía. Ej.: en avenida colocar
-las  mas  alejada  a  60  metros  (mts.)  del  vehículo  ya  que  la  máxima
-permitida es de 60 km/h., con una distancia máxima de 90 mts.
-En el caso de las rutas, se sugiere poner una baliza por delante y otra
-por detrás del vehículo a 90 mts. aproximadamente de distancia.
-En caso de que el siniestro ocurra en vías rápidas no intentes remover
-el  vehículo.  Encendé  las  balizas,  descendé  del  vehículo  usando  un
-chaleco reflectante, colocá las balizas portátiles y ponete a resguardo
-detrás de una defensa si las hubiere.
-Si  el  vehículo  queda  detenido  en  los  carriles  centrales  o  izquierdos,
-te  recomendamos  no  descender  del  vehículo  ya  que  esto  podría
-aumentar el riesgo de ser atropellado/a. En este caso, te recomendamos
-permanecer  dentro  del  mismo,  con  las  balizas  de  emergencias
-encendidas, el cinturón de seguridad abrochado y llamá al número de
-emergencia de la Autopista.
+Al operador se le debe brindar toda la información sobre el lugar del incidente tomando como referencia los números de
+los postes de alumbrado, los mojones kilométricos o las salidas más próximas.
+ Autopista, Autovía y
+Rutas Nacionales
+(AUSOL-AUBASA
+CORREDORES VIALES)
+Tel: 140
+ Autopistas GCBA (AUSA)
+Tel: *287
 
-IX
-AUSA *287 / AUSOL 140
-Recordá que siempre tenés que llevar dentro del vehículo balizas
-reglamentarias  y  un  chaleco  reflectante  para  colocarte  antes  de
-descender y si es posible, también llevá una linterna para iluminar
-de noche.
-01 - b
-Llamado al servicio de emergencias y a la policía.
-Cuando  llames  al  número  de  emergencias  (911)  debes  indicar
-con claridad:
-- El lugar del hecho
- (calle e intersecciones o alguna referencia clave)
-- Las características del siniestro
- (choque frontal, vuelco, incendio, etc.)
-- La cantidad y estado de las víctimas
-Es importante no colgar el teléfono hasta que el operador lo indique.
-Mientras  esperás  al  servicio  de  emergencias,  evaluá  si  se  puede
-brindar ayuda a las personas lesionados. Para hacerlo, es importante
-considerar lo siguiente:
-•                Si  la  persona  lesionada  se  encuentra  consciente  hacele
-preguntas  cerradas  como  nombre,  edad,  etc.  En  caso  de  no
-conocerlo, preguntale si desea llamar a un familiar o conocido/a.
-•                Tranquilizar  a  la  persona  e  invitarla  a  no  realizar  ningún
+¿CÓMO ACTUAR FRENTE A UN SINIESTRO VIAL?
+2° ALERTAR:
+En el caso de que haya personas heridas, llamar inmediatamente al servicio de Emergencias Médicas 107
+Se debe indicar con claridad:
+•Lugar del hecho (calle, avenida, intersecciones o alguna referencia clave).
+•Características del incidente (choque frontal, vuelco, incendio, etc.).
+•Cantidad y el estado de las víctimas.
+*Es importante no cortar la llamada hasta que lo indiquen.
+Luego al 911
+(centraliza las llamadas dirigidas a Policía Federal, Bomberos y
+emergencias médicas y luego son derivadas al SAME).
 
-X
-movimiento. Comunicale que ya se avisó al servicio de emergencia
-y al familiar o conocido/a que solicitó.
-•                No  la  muevas  para  evitar  que  se  perjudique  a  causa  de
-lesiones ocultas.
-•        Interrogala sobre la presencia de dolor, pérdida de sensibilidad
-o dificultad de movimiento de algún miembro para poder actuar en
-consecuencia.
-•        Si observás que tiene un objeto clavado, nunca lo retires;
-caso contrario podría producirse una hemorragia.
-•        Si tiene casco, no lo retires.
-•          Si  la  persona  lesionada  se  encuentra  inconsciente  y  estás
-habilitado/a para realizar técnicas de reanimación, es momento de
-hacerlo.
-En caso de haber personas heridas, debes dar intervención a la
-Policía llamando al 911 para que acuda al lugar del incidente.
-La Policía que acuda al lugar se encargará de preservar la escena del
-hecho, brindando los medios para que los servicios de emergencia
-atiendan a las personas heridas y resguardando los vehículos y otras
-pruebas del incidente para una adecuada resolución del caso.
+2
+¿CÓMO ACTUAR FRENTE A UN SINIESTRO VIAL?
+3° SOCORRER:
+Mientras se espera al servicio de emergencias, evaluar si se puede brindar ayuda a las personas lesionadas.
+Para hacerlo, es importante considerar lo siguiente:
+Tranquilizar  a  la  persona  e  invitarla  a  no  realizar  ningún  movimiento.  También,  comunicarle  que  ya  se
+informó al servicio de emergencia y al familiar o conocido que solicitó.
+Si la persona lesionada se encuentra consciente, hacerle preguntas cerradas como nombre, edad, etc.
+En caso de no conocerlo, preguntarle si desea llamar a un familiar o conocido/a.
+1
+Es  fundamental  no  mover  ni  trasladar  a  las  personas,  sin  importar  su  estado,  a  menos  que  exista  una
+autorización   del   personal   médico.   Solamente   actuar   si   el   entorno   representa   un   riesgo   grave   e
+inmediato, como la posibilidad de un incendio, una explosión o el peligro de ser atropellados.
+3
+Preguntarle  sobre  la  presencia  de  dolor,  pérdida  de  sensibilidad  o  dificultad  de  movimiento  de  algún
+miembro para poder actuar en consecuencia.
+4
+Si se observa que tiene un objeto clavado, nunca retirarlo; caso contrario podría producirse una hemorragia.
+5
+Si tiene casco, no retirarlo, a lo sumo solo desabrocharlo.
+6
+Si la persona lesionada se encuentra inconsciente y se está habilitado para realizar técnicas de reanimación,
+es momento de hacerlo hasta la llegada de los servicios de emergencia.
+7
 
-XI
-01 - c
-Datos a recolectar en el lugar del hecho.
-•        De los vehículos involucrados:
-Dominio o patente, marca, modelo, color, nombre de la compañía
-de seguros, número de póliza y nombre del titular del vehículo (se
-obtienen de la cédula verde o azul y de la tarjeta del seguro).
-•        Del conductor/a:
-Nombre, DNI, domicilio, teléfono y licencia de conducir.
-•        De las personas testigos:
-Nombre, DNI, dirección y teléfono. Contar con datos de testigos
-del hecho puede ser especialmente importante en caso de un
-posterior proceso judicial.
-•        De las personas lesionadas:
-Nombre, DNI, dirección y teléfono.
-•        Del siniestro:
-Fecha, hora, lugar del incidente (calle, avenida, autopista, intersección
-de calles, sentido de circulación, numeración catastral aproximada),
-estado de la calzada; estado del tiempo.
-•        Fotos:
-En lo posible, tomar fotos del lugar del siniestro (panorámicas), de
-los daños a los vehículos involucrados y marcas de frenado.
-Que  las  imágenes  registren  el  daño,  la  placa  de  dominio  y  todos
-los datos que consideres relevantes.
+3. DATOS A RECABAR EN EL
+LUGAR DEL SINIESTRO
 
-XII
-En  los  casos  que  no  fuera  posible  recabar  información  en  el
-momento, la misma puede ser obtenida en la Comisaría, Fiscalía o
-Juzgado interviniente.
-En caso de que el otro vehículo se haya dado a la fuga es conveniente
-conseguir testigos del hecho que puedan brindar alguna información
-sobre el otro vehículo para hacer el reclamo correspondiente.
-La  persona  que  se  da  a  la  fuga  en  un  siniestro  vial  comete  una
-contravención  y  si  deja  a  alguien  herido/a,  podría  llegar  a  ser
-juzgada por el delito de abandono de persona.
-Si  chocaste  contra  un  vehículo  estacionado  y  no  sabés  quién  es
-su dueño/a se debe dejar bien sujeto en el auto estacionado, los
-datos de tu licencia de conducir, del seguro de tu auto y un teléfono
-de contacto.
-Es importante que cualquier persona que sea convocada en carácter
-de testigo en un procedimiento judicial, declare todo lo que sepa y
-recuerde ante un juez o fiscal para que se esclarezca una causa.
-La persona testigo deberá transmitir a la autoridad competente
-el conocimiento de un hecho que fue motivo de un ilícito, siempre
-diciendo  la  verdad  porque  el  falso  testimonio  es  un  delito.
-También es bueno recordar que ser testigo es una carga pública,
-por lo tanto, es obligatorio presentarse como tal todas las veces
-que sea convocado.
+DATOS A RECABAR EN EL LUGAR DEL SINIESTRO
+Una vez cumplido el protocolo de actuación anterior Proteger, Alertar y Socorrer (PAS),
+es momento de recolectar los datos en el lugar del hecho.
+Solicitar datos a las
+personas presentes.
+Dentro de las 72h. informar
+a la compañia
+aseguradora.
+Intercambiar documentos
+(cédula, seguro y licencia de
+conducir) con las otras personas
+involucradas.
 
-El reclamo
-administrativo
-ante la compañía
-de seguros
+DATOS A RECABAR EN EL LUGAR DEL SINIESTRO
+SOLICITAR LOS DATOS DE:
+Los vehículos involucrados: dominio o patente, marca, modelo, color, nombre de la compañía de seguros, número
+de póliza y nombre del titular del vehículo (se obtienen de la cédula de identificación del vehículo).
+La persona que conduce: nombre, DNI, domicilio, teléfono y licencia de conducir.
+La  persona  asegurada:  (en  caso  de  que  no  sea  quien  conducía  el  auto  al  momento  del  incidente):  nombre,  DNI,
+domicilio y teléfono.
+Las  personas  testigos:  nombre,  DNI,  dirección  y  teléfono.  Contar  con  datos  de  testigos  del  hecho  puede  ser
+importante en caso de un posterior proceso judicial, confirmándose la importancia de su participación.
+Las personas lesionadas: nombre, DNI, dirección y teléfono.
+Lugar del siniestro: fecha, hora, lugar del incidente (calle, avenida, autopista, etc. intersección de calles, sentido de
+circulación, numeración catastral aproximada, estado de la calzada; estado del tiempo; etc.
+Fotos en el lugar: tomar imágenes y videos panorámicos del lugar del siniestro, detalles de los daños
+a los vehículos involucrados y marcas de frenado. De gran utilidad registrar si alguna cámara particular
+domiciliaria o comercial pudo haber grabado el hecho.
 
-XIV
-02
-El reclamo administrativo
-Es  el  reclamo  que  se  realiza  por  daños  materiales,  lesiones  ante  la
-compañía de Seguros del responsable del incidente.
-La Compañía del responsable del incidente realizará la valoración de
-los  daños,  ya  sea  mediante  inspección  ocular  en  sus  talleres  o  bien
-cotejando presupuestos que se deben presentar junto con el reclamo.
-La aseguradora realizará un ofrecimiento y la persona damnificada
-podrá  aceptarlo  o  no.  No  es  obligatorio  aceptar  el  ofrecimiento,
-ya  que  existen  otros  medios  para  realizar  el  reclamo,  como  ser,  la
-mediación o la demanda civil.
-¿Dónde se efectúa el reclamo administrativo?
-Este  reclamo  se  presenta  ante  la  compañía  de  Seguros  del  o  de  los
-responsables del siniestro.
-¿Quién puede hacer el reclamo administrativo?
-El   reclamo   puede   presentarlo   la   persona   damnificada   o   su
-apoderado/a, o gestionarlo a través de un abogado/a de su confianza.
-¿En qué momento se puede hacer el reclamo?
-Existe un plazo de 3 años desde el momento del siniestro para presentar
-el reclamo ante la compañía de seguros del tercero involucrado, y un
-plazo  de  1  año  para  efectuarlo  ante  la  propia  compañía  de  seguros.
- El reclamo administrativo ante la compañía de seguros
+DATOS A RECABAR EN EL LUGAR DEL SINIESTRO
+En los casos que no fuera posible recabar información en
+el momento, la misma puede ser obtenida en la Comisaría,
+Fiscalía o Juzgado interviniente. Dentro del mapa hay una
+caja donde ingresar la ubicación del hecho. Al escribirla y
+clickearla, se ubicará la dirección en el mapa y dentro de un
+área de jurisdicción de una comisaría.
+https://buenosaires.gob.ar/seguridad/buscador-de-comisarias
+En  la  Ciudad  de  Buenos  Aires,  no  todos  los  delitos  son
+tramitados   por   los   mismos   tribunales.   Si   una   persona
+resulta herida pero no pierde la vida, interviene la justicia de
+la  Ciudad  de  Buenos  Aires.  De  igual  modo,  si  ocurre  un
+fallecimiento,   se   considera   un   homicidio   y   la   justicia
+nacional toma el caso.
+LOCALIZÁ LA COMISARÍA,
+FISCALÍA O JUZGADO MAS CERCANO
+DENUNCIAS AL
+MINISTERIO PÚBLICO FISCAL
+LÍNEA 107 → EN CASOS DE RIESGO DE VIDA O
+EMERGENCIAS
+¿DÓNDE DENUNCIAR?
+•Ministerio Público Fiscal Ciudad Ingresá a
+denuncias.fiscalias.gob.ar
+DENUNCIAS POR TELÉFONO
+•Llamá al 0800 33 (FISCAL) 347225, disponible
+los 365 días del año, las 24 horas del día.
+•Llamá al 147 para denuncias de irregularidades
+en la vía pública.
 
-XV
-En casos de lesiones, es recomendable acompañar al reclamo las
-constancias médicas y órdenes de tratamientos y los datos de la
-causa penal, si fue iniciada.
-De  acuerdo  con  la  Ley  24449  art.  68  los  gastos  de  sanatorio
-o  velatorio  de  terceros,  serán  abonados  de  inmediato  por  el
-asegurador,  sin  perjuicio  de  los  derechos  que  se  puedan  hacer
-valer luego.
+DATOS A RECABAR EN EL LUGAR DEL SINIESTRO
+En caso de que el otro vehículo se haya dado a la fuga es conveniente conseguir testigos del hecho que
+puedan brindar alguna información sobre el otro vehículo para hacer el reclamo correspondiente.
+La persona que se da a la fuga en un siniestro vial y deja a alguien herido/a, puede ser juzgada por el delito
+de abandono de persona.
+Si se produjo un choque contra un vehículo estacionado y no se sabe quién es su dueño se
+debe dejar bien sujeto en el auto estacionado, los datos de la licencia de conducir,
+del seguro del auto y un teléfono de contacto.
+Es  importante  que  cualquier  persona  que  sea  convocada  en  carácter  de  testigo  en  un
+procedimiento judicial, declare todo lo que sepa y recuerde ante un juez o fiscal para que se
+esclarezca una causa.
+La persona testigo deberá transmitir a la autoridad competente el conocimiento de un
+hecho que fue motivo de un ilícito, siempre diciendo la verdad ya que el falso testimonio es
+un delito.
+También es bueno recordar que ser testigo es una carga pública, por lo tanto, es obligatorio presentarse
+como tal todas las veces que sea convocado.
 
-XVI
-¿Cuáles son los
-pasos posteriores
-al siniestro?
+4. ¿CUÁLES SON LOS PASOS
+POSTERIORES AL SINIESTRO VIAL
+PARA RECLAMAR UN RESARCIMIENTO?
 
-XVII
-03 - a
-Orientación Jurídica
-Las víctimas de un siniestro de tránsito como sus familiares, tienen
-derecho a acceder a la justicia a fin de solicitar la reparación del
-daño sufrido o de iniciar las causas necesarias para investigar los
-hechos ocurridos, así como también, conocer al o a los responsables
-del mismo.
-Cuando  ocurre  un  siniestro  de  tránsito  se  pueden  desencadenar
-diferentes  procesos  legales  de  acuerdo  a  las  consecuencias  del
-incidente y a la voluntad de las personas involucradas.
-03 - b
-Tipos de procesos legales.
-EL PROCESO CIVIL
-Este  proceso  busca  una  indemnización  económica  por  los  daños  y
-perjuicios  sufridos  como  consecuencia  de  un  incidente  de  tránsito.
-Este  proceso  tiene  una  etapa  obligatoria  de  mediación  entre  las
-partes.  En  el  caso  que  durante  la  fase  de  mediación  no  se  acuerde
-una  reparación  económica  del  daño  causado  se  debe  interponer  la
-demanda judicial correspondiente para continuar con el proceso legal.
-¿Cuáles son los pasos posteriores al siniestro?
+¿CUÁLES SON LOS PASOS POSTERIORES AL
+SINIESTRO VIAL PARA RECLAMAR UN RESARCIMIENTO?
+En   caso   de   haber   sufrido   un   siniestro   podes   realizar   un   reclamo   administrativo   ante   la
+aseguradora  del  responsable  del  incidente,  para  solicitar  un  resarcimiento  por  los  daños
+ocasionados.
+Los daños frente a los cuales podés solicitar un resarcimiento son: daños materiales (reparación
+del vehículo), daños físicos (lesiones), daño psicológico, entre otros.
+La compañía de seguros evaluará los daños a través de inspecciones en sus talleres o comparando
+presupuestos que deben ser adjuntados al reclamo. Tras esta evaluación, la aseguradora realizará
+una  oferta,  que  la  persona  afectada  podrá  aceptar  o  rechazar.    En  caso  de  no  aceptar  esta  oferta,      existen
+alternativas como la mediación o la demanda civil para continuar reclamando la indemnización que corresponda.
+A.El reclamo administrativo ante la compañía de seguros
+¿Dónde     se     presenta     el
+reclamo administrativo?
+El   reclamo   se   debe   presentar
+ante la compañía de seguros del
+responsable del siniestro.
+¿Quién   puede   presentar   el
+reclamo administrativo?
+El  reclamo  puede  ser  realizado
+por    la    persona    afectada,    un
+apoderado   o   un   abogado   de
+confianza.
+¿Hasta    cuándo    se    puede
+presentar el reclamo?
+-3  años  desde  el  momento  del
+siniestro  para  reclamar  ante  la
+aseguradora del tercero.
+-1   año   para   hacerlo   ante   la
+propia compañía de seguros.
 
-XVIII
+¿CUÁLES SON LOS PASOS POSTERIORES AL
+SINIESTRO VIAL PARA RECLAMAR UN RESARCIMIENTO?
+¿Qué información es importante recolectar a fin de realizar el reclamo?
+Fundamental guardar todas las constancias médicas, órdenes de tratamiento y documentación relacionada con gastos
+derivados de los daños sufridos.
+Según el artículo 68 de la Ley 24.449
+Los  gastos  de  sanatorio  o  velatorio  de  terceros  serán  cubiertos  de
+inmediato por el asegurador, sin perjuicio de los derechos que se puedan
+hacer valer posteriormente.
+•  De  las  personas  testigos:  Nombre,  DNI,  dirección  y  teléfono.  Contar  con  datos  de  testigos  del  hecho  puede  ser
+especialmente importante en caso de un posterior proceso judicial.
+• De las personas lesionadas: Nombre, DNI, dirección y teléfono.
+• Del siniestro: Fecha, hora, lugar del incidente, estado de la calzada y estado del tiempo.
+• De los vehículos involucrados: Dominio o patente, marca, modelo, color, nombre de la
+compañía de seguros, número de póliza y nombre del titular del vehículo (se obtienen de la
+cédula verde o azul).
+• Del conductor/a: Nombre, DNI, domicilio, teléfono y licencia de conducir.
+
+¿CUÁLES SON LOS PASOS POSTERIORES AL
+SINIESTRO VIAL PARA RECLAMAR UN RESARCIMIENTO?
+B. Instancia judicial: Acciones legales
+Si fuiste víctima de un siniestro de tránsito, tenés el derecho fundamental de
+acceder a la justicia con el objetivo de solicitar la reparación del daño sufrido
+y  de  iniciar  las  acciones  pertinentes  para  investigar  los  hechos  ocurridos  e
+identificar a los responsables del incidente. Además, en caso de fallecimiento,
+este derecho puede ser ejercido por los familiares de la víctima.
+La ocurrencia de un siniestro de tránsito puede dar lugar a diversos procesos
+legales, es importante aclarar que no son excluyentes entre sí y que, además,
+persiguen fines distintos. Estos procesos dependen de las consecuencias del
+incidente y de la voluntad de las personas involucradas.
+
+5. TIPOS DE PROCESOS LEGALES
+
+TIPOS DE PROCESOS LEGALES
+!!      Es  importante  señalar  que,  aunque  la  mediación  es  obligatoria,  no  se  requiere  que  las  partes  acepten  la
+propuesta de la otra parte. En caso de no llegar a un acuerdo, se dejará constancia escrita de la inconformidad
+o falta de conciliación. Si la fase de conciliación no resulta en un acuerdo sobre la reparación económica, se procederá
+a interponer la demanda ante los juzgados civiles para continuar con el proceso legal.
+!!
 Etapa de mediación
-De acuerdo a nuestro Derecho Positivo, para iniciar acciones legales
-en  materia  civil  se  debe  realizar  un  proceso  previo  obligatorio:  la
-mediación, la misma es una forma extrajudicial para solucionar conflictos.
-Durante la audiencia de mediación, las partes entablan negociaciones
-delante de un/a mediador/a, es decir, un profesional que se dedica
-a facilitar que las partes encuentren una solución beneficiosa para
-sí mismos, sin tener que llegar al juicio.
-Debe  tenerse  en  cuenta  que  si  bien  la  etapa  de  la  mediación  es
-obligatoria,  no  es  obligatorio  aceptar  la  propuesta  de  la  otra  parte.
-En ese caso, se deja constancia en un acta la inconformidad o falta
-de conciliación.
-En  el  caso  que  durante  la  fase  de  conciliación  no  se  acuerde  una
-reparación  económica  del  daño  causado,  se  debe  interponer  la
-demanda ante los juzgados civiles para continuar con el proceso.
-La demanda civil
-La  demanda  civil  es  un  reclamo  ante  la  Justicia  para  recibir  una
-indemnización  económica  por  daños  y  perjuicios  causados  por
-el hecho.
-Normalmente, el reclamo por un incidente de tránsito comprende los
-rubros de: daño emergente (por ejemplo, los daños efectivamente
-sufridos en el vehículo), lucro cesante (la pérdida de la posibilidad
-de  generar recursos económicos al no poder trabajar) y daño moral
-(lesión emocional por el sufrimiento causado por el incidente).
-¿Dónde se efectúa la demanda?
-La  demanda  se  presenta  ante  la  oficina  de  sorteos  de  la  Cámara
-Nacional  de  Apelaciones  en  lo  Civil,  quien  sorteará  el  Juzgado  de
-Primera Instancia en lo Civil que llevará adelante el trámite del juicio.
+De  acuerdo  con  la  normativa  vigente,  la  mediación  es  un  procedimiento  extrajudicial
+obligatorio para la resolución de conflictos.  Durante  la  audiencia  de  mediación,  las
+partes negocian en presencia de un/a mediador/a, un profesional encargado de facilitar el
+diálogo y ayudar a las partes a encontrar una solución mutuamente beneficiosa sin recurrir
+a un juicio.
+Si  durante  esta  fase  de  mediación  no  se  logra  un  acuerdo  sobre  la  reparación
+económica del daño causado, quedará habilitada la instancia para interponer demanda
+ante los tribunales civiles para continuar con el proceso.
+I. PROCESO CIVIL
+Este  proceso  tiene  como  objetivo  la  obtención  de  una  indemnización  económica  por  los  daños  y  perjuicios
+sufridos a raíz de un incidente de tránsito.  Antes de iniciar acciones legales en materia civil, es necesario llevar a cabo
+una etapa obligatoria de mediación entre las partes involucradas.
 
-XIX
-¿Quién puede iniciar la demanda?
-La  demanda  deberá  interponerla  la  víctima  o  los  familiares  de  la
-víctima, y todo aquel que haya sido perjudicado por el incidente de
-tránsito, a través de abogados matriculados.
-¿En qué momento se puede realizar la demanda?
-Existe  hasta  tres
-1
-  años  de  ocurrido  el  siniestro,  para  presentar  la
-demanda.
-EL PROCESO PENAL
-Este proceso se pone en marcha cuando hay indicios de que se ha
-producido un delito (ofensa recogida en el Código Penal), como por
-ejemplo: una víctima lesionada o fallecida en ocasión de un siniestro
-vial. El proceso penal buscará determinar si hubo un responsable del
-hecho y qué pena le corresponde.
-El proceso penal se inicia a partir de la intervención policial ya que
-la Policía es la encargada de informar el hecho a la Justicia.
-Para  dar  intervención  a  la  Policía,  si  no  fue  solicitada  su  presencia
-en  el  lugar  del  incidente,  debe  formularse  una  denuncia.  Luego  el
-proceso penal continúa en una fiscalía del Ministerio Público Fiscal de
-la Ciudad Autónoma de Buenos Aires
-1
- .
-La denuncia
-La  denuncia  es  el  acto  por  el  que  se  comunica  a  la  autoridad
-competente  que  existe  un  hecho  que  el  denunciante  considera
-infracción a las leyes.
-¿Dónde se efectúa?
-La denuncia puede efectuarse en la Comisaría que corresponde al lugar
-donde ocurrió el siniestro como también en las Unidades de  Orientación
-y  Denuncia  del  Ministerio  Público  Fiscal  de  la  Ciudad  Autónoma  de
+TIPOS DE PROCESOS LEGALES
+Presentación de demanda
+La demanda civil es un reclamo presentado ante la justicia con el fin de exigir una indemnización económica por los daños
+y  perjuicios  ocasionados  por  el  hecho  específico  sufrido.  En  general,  el  reclamo  derivado  de  un  incidente  de  tránsito
+abarca los siguientes conceptos:
+¿Dónde se presenta la demanda?
+•La demanda se efectúa ante la oficina de sorteos de la Cámara Nacional de Apelaciones en lo Civil, quien sorteará el
+Juzgado de Primera Instancia en lo Civil que llevará adelante el trámite del juicio.
+¿Quién puede hacer la demanda?
+•La demanda deberá ser interpuesta por la víctima, sus familiares o cualquier persona que haya sido perjudicada por el
+incidente de tránsito, mediante la representación de abogados debidamente matriculados.
+¿Hasta qué momento se puede presentar la demanda por daños y perjuicios?
+•Se podrá interponer la demanda hasta tres (3) años después de ocurrido el hecho dañoso.
+1. Daño emergente: se refiere a los daños efectivamente sufridos en el vehículo y/o las personas
+2. Lucro cesante: corresponde a la pérdida de ingresos debido a la incapacidad para trabajar
+3. Daño moral: implica el sufrimiento emocional ocasionado por el incidente
 
-XX
-Buenos Aires (consultar sedes en: https://mpfciudad.gob.ar/). Luego,
-esta  información  sería  enviada  al  Juzgado  o  Fiscalía  de  la  Ciudad
-que se encuentre de turno en ese momento.  Al efectuar la denuncia
-se  puede  solicitar  el  certificado  de  denuncia  y  consultar  cuál  es  el
-juzgado que intervendrá en el caso.
-¿Quién puede iniciar la denuncia?
-La denuncia debe realizarla la víctima o, en casos de víctimas fatales
-o  de  víctimas  que  no  estén  en  condiciones  de  efectuarla,  puede
-realizarla algún familiar, acreditando el vínculo. En el caso de menores
-de edad, debe realizarla su padre, madre, tutor o representante legal.
-¿En qué momento se puede hacer la denuncia?
-Se puede realizar hasta dos años desde ocurrido el siniestro.
+TIPOS DE PROCESOS LEGALES
 La acción penal
-La  acción  penal  es  una  petición  que  se  hace  a  la  Justicia  para
-que investigue si existió una responsabilidad criminal. En caso de
-tratarse de víctimas fatales la Justicia lo investigará sin que nadie
-haga esta petición.
-No obstante, en casos de siniestros con lesiones leves, las víctimas
-pueden solicitar (instar) a la Justicia para que investigue y determine
-quién fue el responsable del hecho.
-Existe  un  plazo  de  dos  años  para  decidir  si  desea  o  no  que  la
-Justicia investigue si hubo un responsable del hecho por lo que no
-es necesario apresurarse a tomar esta decisión. Es aconsejable que
-antes de hacerlo se busque asesoramiento legal con profesionales
-de su confianza.
-La querella
-La  querella  es  la  forma  por  la  cual  un  particular,  en  este  caso  una
+investigar  de  oficio,  sin  necesidad  de  que  alguien  lo  solicite.  Sin
+embargo,  en  situaciones  que  involucren  lesiones  leves,  las  víctimas
+pueden solicitar a la Justicia investigar y determinar quién fue el
+La acción penal es una solicitud a la Justicia para
+que investigue si hubo responsabilidad criminal.
+En el caso de víctimas fatales, la Justicia procederá a
+responsable  del  incidente,  a  esta  acción  se  la  llama  “instar  la
+acción penal”.
+II.  PROCESO PENAL
+El proceso penal inicia cuando existan indicios de que se ha cometido un delito tipificado, es decir, descriptos en
+el  Código  Penal.  Por  ejemplo,  esto  puede  ocurrir  cuando  una  persona  haya  sufrido  lesiones  o  haya  fallecido  como
+resultado de un siniestro vial. Es importante aclarar que no se obtiene de este proceso un resultado pecuniario a favor de
+la víctima, en cambio, los fines que persigue el proceso penal son proteger a la víctima, determinar la responsabilidad del
+hecho y la pena que corresponde al autor.
 
-XXI
-víctima  o  un  familiar  directo  en  caso  que  se  trate  de  un  fallecido,
-pueden formar parte del proceso penal.
-¿Dónde se solicita constituirse como querellante?
-En el fuero de la Ciudad Autónoma de Buenos Aires, quien pretenda
-constituirse   como   querellante,   debe   presentarse   por   escrito,
-personalmente o con mandatario especial, con el patrocinio de un
-abogado ante el/la fiscal.
-¿Quién puede participar como querellante?
-Las víctimas y/o familiares de víctimas representados por un abogado.
-¿En qué momento se puede solicitar ser querellante?
-La petición de ser querellante puede efectuarse hasta que termine el
-proceso de Instrucción ante el representante del Ministerio Público
-Fiscal
-2
-.
-1
+TIPOS DE PROCESOS LEGALES
+Consultá las sedes en:
+https://mpfciudad.gob.ar/
+¿Qué implica ser querellante? ¿Cómo debo proceder si tengo este interés?
+La querella es el mecanismo mediante el cual un particular, ya sea la víctima o, en caso de
+fallecimiento  de  la  misma,  un  familiar  directo,  puede  participar  activamente  en  el
+proceso penal, siempre con el patrocinio de un abogado debidamente matriculado.
+Quien  desee  constituirse  como  querellante  deberá  hacerlo  ante  la  Fiscalía  de  la  Ciudad
+Autónoma de Buenos Aires o de la Nación que esté interviniendo en el caso.
+La petición puede efectuarse hasta que termine la etapa de Instrucción del proceso en
+curso,  es  decir,  antes  de  que  se  dicte  el  auto  de  procesamiento  o  se  cierre  la
+investigación. En ese momento se determinará si hay suficientes elementos para llevar a
+juicio a los imputados y cierra la fase de investigación.
+La denuncia puede presentarse en la comisaría correspondiente al lugar donde ocurrió el siniestro, así como en las Unidades de
+Orientación y Denuncia del Ministerio Público Fiscal de la Ciudad Autónoma de Buenos Aires.
+Posteriormente,  las  actuaciones  serán  enviadas  al  juzgado  o  fiscalía  de  turno  en  ese  momento.  Al  realizar  la  denuncia, se
+sugiere solicitar un certificado de denuncia y consultar cuál será el juzgado/fiscalía que intervendrá en el caso.
+La denuncia debe ser presentada por la víctima y, en caso de fallecimiento o de que la víctima no se encuentre en condiciones
+de hacerla, la puede presentar un familiar, siempre que acredite su vínculo. En el caso de que la víctima sea una niña, niño
+o adolescente, la denuncia deberá ser efectuada por su representante legal.
+¿Hasta  qué  momento  se  puede
+realizar la denuncia penal?
+El   momento   para   presentar   una
+denuncia puede variar según el tipo
+de  delito.  Sin  embargo,  para  evitar
+la  pérdida  de  pruebas  y  garantizar
+que los posibles testigos conserven
+un  recuerdo  claro  de  lo  sucedido,
+se    recomienda    REALIZAR    LA
+DENUNCIA LO ANTES POSIBLE.
+A. ¿Dónde se puede realizar la denuncia? ¿Quién la puede presentar?
 
-En virtud del 3er convenio de transferencia de delitos entre el Gobierno Nacional y el de la
-Ciudad Autónoma de Buenos Aires, a partir del 1 de marzo de 2018 fueron transferidos entre
-otros, las lesiones en tránsito (art. 94 bis del Código Penal) Este último delito será operativo
-entre septiembre y octubre de 2018.
-2
- Artículo 83 del Código Procesal Penal de la Nación.
+TIPOS DE PROCESOS LEGALES
+Tras  un  siniestro  de  tránsito,  es  fundamental  que  las  víctimas  reciban  el  asesoramiento  adecuado  para  gestionar  sus
+reclamos de indemnización y reparaciones. En caso de la ocurrencia de un hecho en su horario laboral deberá comunicarse
+con  su  ART  (Aseguradoras  de  Riesgos  del  Trabajo)  o  SRT  (Superintendencia  de  Riesgos  del  Trabajo)  según
+corresponda. Se recomienda elegir un apoyo legal de manera reflexiva, evitando aceptar ofertas apresuradas o de abogados
+sin referencias.
+También  es  importante  recordar  que  los  siniestros  viales  no  solo  impactan  a  la  víctima  directa,  sino  también  a  su
+familia  y  entorno.  La  atención  psicológica  puede  incluir  a  los  familiares  en  el  proceso  de  recuperación,
+proporcionando  herramientas  para  manejar  el  estrés,  el  miedo  y  la  incertidumbre  que  también  enfrentan.  Esto
+fortalece el apoyo familiar, esencial para la recuperación integral de la víctima.
+Además,  es  esencial  brindar contención  psicológica  de  forma  inmediata  para
+ayudar a las víctimas a procesar la experiencia traumática. La atención psicológica
+es crucial, ya que estos eventos pueden provocar secuelas emocionales, como
+trastorno    por    estrés    postraumático,    ansiedad,    depresión    y    fobias
+relacionadas con la conducción y el tránsito.
+La  intervención  temprana  en  salud  mental  puede  prevenir  el  desarrollo  de  estos
+trastornos, reduciendo la probabilidad de que los síntomas se cronifiquen y afecten
+la vida diaria de la víctima.
+B. Asesoramiento interdisciplinario
 
-XXII
-03 - c
-Asesoramiento jurídico y atención psicológica
-Tal  como  lo  expresa  la  Guía  Iberoamericana  de  atención  integral
-a  víctimas  de  siniestros  de  tránsito,  es  necesario  asegurarse  de
-contar con el mejor asesoramiento posible acerca de cómo enfocar
-el  reclamo  de  las  indemnizaciones  y  reparaciones  a  los  que  las
-víctimas tienen derecho. En este sentido, es aconsejable seleccionar
-con calma el asesoramiento legal y no aceptar ofertas apresuradas
-o de abogados/as de los que no se tienen referencias previas.
-Para recibir asesoramiento jurídico acerca de cómo proceder y/o
-atención psicológica gratuita se puede recurrir a algunos de los
-siguientes organismos y organizaciones:
-Organismos  Públicos  Nacionales  y  de  la  Ciudad  Autónoma  de
-Buenos Aires
-• Oficina de Asistencia a la Victima y Testigo (OFAVYT).
-Ministerio  Público  Fiscal  de  la  Ciudad  Autónoma  de  Buenos  Aires
-(brinda asistencia y asesoramiento a personas que han sido objeto de
-situaciones de violencia física o emocional, ejercida por individuoso
-por instituciones a fin de alcanzar su restablecimiento psíquico, físico
-y social). Tel: 4014-1984 / Beruti Nº 3345, 3° piso, CABA
-https://guiajudicial.jusbaires.gob.ar/organismo/25/oficina-de-
-asistencia-a-la-victima-y-testigo-ofavyt-sede-este
-• Centro de Formación Profesional.
-Palacio de Justicia de la Nación. (Brinda asesoramiento y patrocinio
-a las víctimas).
-Talcahuano 550, 8º Piso.
-http://www.jus.gob.ar/atencion-al-ciudadano/guia-de-derivaciones/
-asesoramiento,-defensa-y-representacion-legal-en-juicio-
-(patrocinio- letrado).aspx
+6. ORGANISMOS PÚBLICOS NACIONALES
+Y DE LA CIUDAD AUTÓNOMA DE BUENOS
+AIRES
 
-XXIII
-•  Oficina  de  asistencia  a  víctimas  y  familiares  de  víctimas  de
-siniestros viales.
-Agencia Nacional de Seguridad Vial, Ministerio de Transporte de la
-Nación. Tel: 149 opción 2 (post siniestro)
-Organizaciones No Gubernamentales
-• A.C.C.A
-Asociación Civil Carla Arduini para Evitar Hechos de Tránsito
-Contacto: Dra. Norma Beatriz Bonelli
-Correo: asociacioncivilcarlaarduini@gmail.com
-Tel: 1160565111/ 1166076699// 3971-5437
-• A.C.T.I.V.V.A.S.
-Asociación  Civil  Trabajar  contra  la  Inseguridad  Vial  y  la  Violencia
-con Acciones Sustentables.
-Contacto: Ema Cibotti-Lischinsky Tel: 1558125022
-http:// www.activvas.org  activvas.blogspot.com
-• Asociación Conduciendo a Conciencia
-Contacto: Alba Saenz
-Correo: conduciendoaconciencia@gmail.com
-www.conduciendoaconciencia.org.ar
-• Asociación Madres del Dolor
-Contacto: Viviam Perrone
-Correo: asociacionmadresdeldolor@yahoo.com.ar
-Tel: 3968-4082 // 353 575 69
-Facebook: Asociación Madres del Dolor
-• Red Nacional de Familiares de Víctimas de Tránsito
-Contacto: Teresa Mellano y Patricia Pistarini
-Correo: transitoporlavida@yahoo.com.ar
-Tel: 4301-3542 / 4300-5060
+ORGANISMOS PÚBLICOS NACIONALES Y
+DE LA CIUDAD AUTÓNOMA DE BUENOS AIRES
+Para obtener asesoramiento jurídico sobre los pasos a seguir y/o atención psicológica gratuita, se pueden consultar
+las siguientes organismos públicos de la Ciudad de Buenos Aires y Nacionales:
+Patrocinio Jurídico Penal Gratuito
+Dirección General de Asistencia a la Víctima del
+Ministerio de Justicia GCABA
+Oficina  de  asistencia  a  víctimas  y
+familiares de víctimas de siniestros viales
+Agencia   Nacional   de   Seguridad   Vial   de   la
+Secretaría de Transporte de la Nación.
+Asesoramiento legal y patrocinio jurídico penal a
+personas  de  bajos  recursos  que  residan  en  la
+Ciudad  Autónoma  de  Buenos  Aires.  Si  se  tratare
+de   personas   que   hayan   sido   víctimas   de   delitos
+contra la vida, la libertad o la integridad sexual, o si se
+tuviere  por  resultado  la  muerte  del  ofendido,  el  perfil
+económico no será tenido en cuenta para el acceso al
+servicio.
+e-Mail: patrocinio.victimas@buenosaires.gob.ar
+WhatsApp: 1140945901
+12
+La LÍNEA 149 que gestiona la Agencia Nacional de
+Seguridad  Vial  (ANSV),  brinda  asistencia  a  víctimas
+de siniestros viales y a sus familiares. A través de este
+canal    se    puede    acceder    a    diversos    tipos    de
+asesoramiento,    como    psicológico,    jurídico,    post
+hospitalario  y  social,  las  24  horas,  todos  los  días  del
+año.
+En todos los casos, este tipo de asistencia comienza
+a  funcionar  post  siniestro  vial.  Es  decir,  en  el
+momento del siniestro es necesario llamar al 911 para
+que asista a la emergencia.
+Teléfono: 149 opción 2 (post siniestro)
+
+7. ORGANIZACIONES NO
+GUBERNAMENTALES
+
+ORGANIZACIONES NO GUBERNAMENTALES
+Para  obtener  asesoramiento  jurídico  sobre  los  pasos  a  seguir  y/o  atención  psicológica  gratuita,  se  pueden  consultar  las
+siguientes organizaciones de la sociedad civil de la Ciudad de Buenos Aires y Nacionales:
+3. Red Nacional de Familiares de Víctimas de Tránsito
+•Contacto: Teresa Mellano
+•E-mail: transitoporlavida@yahoo.com.ar
+•Tel: 43013542 // 4300-5060
+2. A.C.T.I.V.V.A.S.
+•Contacto: Ema Cibotti-Lischinsky
+•Tel: 1558125022
+•Web: http:// www.activvas.org
+•Instagram: @activvas
+1. Asociación Madres del Dolor
+•Contacto: Viviam Perrone
+•E-mail: asociacionmadresdeldolor@yahoo.com.ar
+•Tel: 3968 4082 // 353 575 69 // 0800-22- AYUDA (29832)
+•Instagram: @madresdeldolor
