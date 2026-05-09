@@ -15,7 +15,7 @@
       "summaryRu": "Экзаменационный блок про отступы у входов, углы/ochava, cordón, garaje, marcha atrás и несколько смешанных билетов, которые попали сюда по текущей taxonomy.",
       "learningMaterialRu": [
         "Этот блок - неофициальная подсказка Cabadrive. Здесь важно не запомнить одно число на все случаи, а связать место с конкретным запретом: вход учреждения, paso ferroviario, esquina, cordón, garaje или ciclovía.",
-        "У entradas de hospitales, sanatorios, clínicas, centros de salud, escuelas, templos, bancos и похожих мест стоянка ограничивается отступом 10 metros de cada lado de la entrada. Поэтому ответы с 5 metros для больницы неверны, а 10 metros - правильная экзаменационная связка.",
+        "У entradas de hospitales, sanatorios, clínicas и centros de salud стоянка ограничивается отступом 10 metros de cada lado de la entrada. Для школ это правило действует en horas de clase, для храмов - во время oficios/ceremonias, для банков - durante el horario de atención al público; поэтому ответы с 5 metros для больницы неверны, а 10 metros - правильная экзаменационная связка.",
         "У paso ferroviario ловушка обратная: 20 metros звучит как знакомая дистанция, но в CABA общий запрет estacionar действует a menos de 50 metros a cada lado de los pasos ferroviarios a nivel. Поэтому билет с 20 metros - falso.",
         "Esquina/ochava читается как зона видимости, а не как свободное место у края квартала. В CABA запрещено estacionar y detenerse между vértice ideal и prolongación de la ochava, а также на senda peatonal или línea de pare.",
         "Правильная параллельная парковка - примерно 20 cm del cordón. Машина слишком близко к бордюру или на разметке/пространстве для ciclovía не становится правильной только потому, что cordón не окрашен.",
@@ -385,7 +385,7 @@
       "claims": [
         {
           "id": "claim-caba-parking-clearance-distances-and-corners",
-          "textRu": "В CABA стоянка запрещена у pasos ferroviarios a nivel ближе 50 m с каждой стороны, у ряда важных entradas ближе 10 m с каждой стороны, в esquinas/ochava, на sendas peatonales/líneas de pare и в sectores de ingreso/egreso; обычная параллельная парковка выполняется примерно в 20 cm от cordón.",
+          "textRu": "В CABA стоянка запрещена у pasos ferroviarios a nivel ближе 50 m с каждой стороны, у больничных/медицинских entradas ближе 10 m с каждой стороны, а у школ, храмов и банков этот 10 m отступ зависит от часов занятий, служб/церемоний или horario de atención al público; также нельзя стоять в esquinas/ochava, на sendas peatonales/líneas de pare и в sectores de ingreso/egreso; обычная параллельная парковка выполняется примерно в 20 cm от cordón.",
           "requiresOfficialSource": true,
           "sourceTraceId": "parking-clearances-distances-corners-and-cordon"
         },

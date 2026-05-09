@@ -846,7 +846,7 @@
       "id": "parking-clearances-distances-corners-and-cordon",
       "topicId": "parking-clearances-and-corners",
       "claimId": "claim-caba-parking-clearance-distances-and-corners",
-      "claimSummaryRu": "CABA parking-clearance rules relevant to institutional entrances, rail crossings, corners/ochava, pedestrian crossings/stop lines, vehicle entrances and ordinary 20 cm parallel parking from the curb.",
+      "claimSummaryRu": "CABA parking-clearance rules relevant to health-center entrances, time-qualified school/temple/bank entrances, rail crossings, corners/ochava, pedestrian crossings/stop lines, vehicle entrances and ordinary 20 cm parallel parking from the curb.",
       "officialDocumentIds": [
         "ley-2148-caba-codigo-transito-transporte"
       ],
@@ -857,7 +857,7 @@
       ],
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force",
-      "notes": "Supports b-fallback-028, 121, 249 and 412. The 20 m and 5 m distractors remain explained as ticket traps, not as current clearance rules."
+      "notes": "Supports b-fallback-028, 121, 249 and 412. The hospital/health-center 10 m ticket logic is unconditional for those health entrances; school, temple and bank entrance examples are time-qualified by Ley 2148 7.1.9(l). The 20 m and 5 m distractors remain explained as ticket traps, not as current clearance rules."
     },
     {
       "id": "parking-clearances-reverse-and-garage-incorporation",
