@@ -6864,14 +6864,14 @@
             "b-fallback-045"
           ]
         },
-      {
-        "id": "term-no-estacionar-ni-detenerse",
-        "termEs": "prohibido estacionar y detenerse",
-        "translationRu": "запрещено стоять и останавливаться",
-        "sourceQuestionIds": [
-          "b-fallback-211"
-        ]
-      },
+        {
+          "id": "term-no-estacionar-ni-detenerse",
+          "termEs": "prohibido estacionar y detenerse",
+          "translationRu": "запрещено стоять и останавливаться",
+          "sourceQuestionIds": [
+            "b-fallback-211"
+          ]
+        },
         {
           "id": "term-carril-emergencias",
           "termEs": "carril de emergencias",
@@ -6883,13 +6883,13 @@
         },
         {
           "id": "term-luces-intermitentes",
-        "termEs": "luces intermitentes",
-        "translationRu": "мигающие аварийные огни",
-        "sourceQuestionIds": [
-          "b-fallback-077",
-          "b-fallback-232"
-        ]
-      },
+          "termEs": "luces intermitentes",
+          "translationRu": "мигающие аварийные огни",
+          "sourceQuestionIds": [
+            "b-fallback-077",
+            "b-fallback-232"
+          ]
+        },
         {
           "id": "term-garaje",
           "termEs": "garaje",
@@ -6932,13 +6932,13 @@
             "b-fallback-347"
           ]
         },
-      {
-        "id": "term-pare",
-        "termEs": "señal reglamentaria",
-        "translationRu": "предписывающий знак; в билете изображен PARE",
-        "sourceQuestionIds": [
-          "b-fallback-127"
-        ]
+        {
+          "id": "term-pare",
+          "termEs": "señal reglamentaria",
+          "translationRu": "предписывающий знак; в билете изображен PARE",
+          "sourceQuestionIds": [
+            "b-fallback-127"
+          ]
         },
         {
           "id": "term-estacionamiento-vehicular",
@@ -8784,6 +8784,305 @@
           "textRu": "Carril для colectivos не расширяется автоматически на taxi con pasajeros или moto. Если вариант не назван как autorizado, не добавляйте его самостоятельно.",
           "sourceQuestionIds": [
             "b-fallback-132"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mirrors-blind-spots-and-visibility",
+      "slug": "mirrors-blind-spots-and-visibility",
+      "status": "draft",
+      "titleRu": "Зеркала, слепые зоны и обзор",
+      "summaryRu": "Блок про espejos retrovisores, punto ciego, настройку зеркал до начала движения и ловушку с visibilidad в велосипедном билете.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Экзаменационная идея простая: зеркало помогает, но не отменяет слепую зону; водитель отвечает за обзор до маневра и до начала движения.",
+        "В CABA и национальной норме у транспортного средства должен быть sistema retrovisor amplio, permanente y efectivo. Это официальный минимум оборудования, но он не означает, что водитель видит абсолютно все: ticket `b-fallback-022` прямо проверяет, что puntos ciegos возможны даже при bien orientados mirrors.",
+        "Punto ciego в fallback-билете - это область вокруг автомобиля, куда водитель не имеет доступа ни напрямую, ни через espejos retrovisores. Поэтому ответ `sólo al área que no es cubierta por los espejos` слишком узкий: слепая зона может быть не только проблемой зеркала, но и проблемой прямого обзора.",
+        "Настройку зеркал проверяйте before moving: `antes de iniciar la marcha`. Во время движения нельзя устраивать prueba real, а снаружи автомобиля водитель не видит реальную посадку, поле зрения и положение головы.",
+        "В билете с изображением `b202.jpg` правильна Imagen A: в зеркале видна часть автомобиля как ориентир и широкая зона сзади/сбоку. Imagen B слишком сильно показывает бок автомобиля, поэтому полезное поле обзора становится уже. Это привязано к картинке билета, а не к отдельному официальному каталогу настройки зеркал.",
+        "Билет `b-fallback-058` включен сюда только из-за ловушки `si no compromete la visibilidad`. Он не превращает тему в общий раздел про велосипеды: правильный ответ там определяется наличием `asiento adicional detrás del conductor`, а не одной видимостью."
+      ],
+      "practicalReasoningRu": [
+        "Зеркала делают движение предсказуемее, потому что водитель заранее видит транспорт сзади и сбоку. Но зеркало показывает только часть пространства, поэтому перед маневром нужна проверка обстановки, а не вера в одну картинку в зеркале.",
+        "Настройка до начала движения безопаснее: автомобиль стоит, водитель сидит в рабочем положении, и можно спокойно выставить обзор без отвлечения от потока.",
+        "Слепая зона опасна именно потому, что другой участник может быть рядом, но не попадать ни в прямой взгляд, ни в отражение. Экзамен ловит ответ `sólo espejos`, потому что он упрощает проблему слишком сильно."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-espejos-retrovisores",
+          "termEs": "espejos retrovisores",
+          "translationRu": "зеркала заднего вида",
+          "sourceQuestionIds": [
+            "b-fallback-022",
+            "b-fallback-064",
+            "b-fallback-365"
+          ]
+        },
+        {
+          "id": "term-bien-orientados",
+          "termEs": "bien orientados",
+          "translationRu": "правильно направлены/настроены",
+          "sourceQuestionIds": [
+            "b-fallback-022"
+          ]
+        },
+        {
+          "id": "term-puntos-ciegos",
+          "termEs": "puntos ciegos",
+          "translationRu": "слепые зоны",
+          "sourceQuestionIds": [
+            "b-fallback-022"
+          ]
+        },
+        {
+          "id": "term-espejo-retrovisor",
+          "termEs": "espejo retrovisor",
+          "translationRu": "зеркало заднего вида",
+          "sourceQuestionIds": [
+            "b-fallback-055"
+          ]
+        },
+        {
+          "id": "term-imagen-a",
+          "termEs": "Imagen A",
+          "translationRu": "изображение A / вариант A на картинке",
+          "sourceQuestionIds": [
+            "b-fallback-055"
+          ]
+        },
+        {
+          "id": "term-ciclista",
+          "termEs": "ciclista",
+          "translationRu": "велосипедист",
+          "sourceQuestionIds": [
+            "b-fallback-058"
+          ]
+        },
+        {
+          "id": "term-pasajero",
+          "termEs": "pasajero",
+          "translationRu": "пассажир",
+          "sourceQuestionIds": [
+            "b-fallback-058"
+          ]
+        },
+        {
+          "id": "term-no-compromete-visibilidad",
+          "termEs": "no compromete la visibilidad",
+          "translationRu": "не ухудшает видимость; ловушка в варианте ответа",
+          "sourceQuestionIds": [
+            "b-fallback-058"
+          ]
+        },
+        {
+          "id": "term-asiento-adicional-detras",
+          "termEs": "asiento adicional detrás del conductor",
+          "translationRu": "дополнительное сиденье позади водителя",
+          "sourceQuestionIds": [
+            "b-fallback-058"
+          ]
+        },
+        {
+          "id": "term-iniciar-marcha",
+          "termEs": "iniciar la marcha",
+          "translationRu": "начать движение",
+          "sourceQuestionIds": [
+            "b-fallback-064"
+          ]
+        },
+        {
+          "id": "term-vehiculo-inmovilizado",
+          "termEs": "vehículo inmovilizado",
+          "translationRu": "неподвижный автомобиль",
+          "sourceQuestionIds": [
+            "b-fallback-064"
+          ]
+        },
+        {
+          "id": "term-punto-ciego",
+          "termEs": "Punto Ciego",
+          "translationRu": "слепая зона",
+          "sourceQuestionIds": [
+            "b-fallback-365"
+          ]
+        },
+        {
+          "id": "term-area-vision-entorno",
+          "termEs": "área de visión del entorno",
+          "translationRu": "область обзора окружающего пространства",
+          "sourceQuestionIds": [
+            "b-fallback-365"
+          ]
+        },
+        {
+          "id": "term-manera-directa",
+          "termEs": "manera directa",
+          "translationRu": "прямым способом / напрямую",
+          "sourceQuestionIds": [
+            "b-fallback-365"
+          ]
+        },
+        {
+          "id": "term-no-la-reflejan",
+          "termEs": "no la reflejan",
+          "translationRu": "не отражают ее",
+          "sourceQuestionIds": [
+            "b-fallback-365"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-022",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-022-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: даже bien orientados espejos retrovisores не убирают все puntos ciegos. Зеркала расширяют обзор, но не дают полного доступа ко всему пространству вокруг автомобиля."
+            },
+            {
+              "answerId": "b-fallback-022-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно, потому что билет прямо проверяет обратное: правильная ориентация зеркал снижает риск, но слепые зоны всё равно возможны."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-055",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-055-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Imagen A показывает корректную для этого билета настройку espejo retrovisor - видна небольшая часть автомобиля как ориентир и остается полезный обзор сзади/сбоку."
+            },
+            {
+              "answerId": "b-fallback-055-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Imagen B неверна: зеркало слишком много показывает бок автомобиля, из-за чего уменьшается полезная зона обзора дороги и пространства рядом."
+            },
+            {
+              "answerId": "b-fallback-055-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas respuestas неверно: билет ожидает выбор одной правильной картинки. B не становится правильной только потому, что в ней тоже видно часть машины."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b202.jpg"
+        },
+        {
+          "questionId": "b-fallback-058",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-058-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза no compromete la visibilidad звучит безопасно, но в этом билете ее недостаточно. Ответ должен учитывать, где именно размещен pasajero."
+            },
+            {
+              "answerId": "b-fallback-058-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: pasajero разрешен, если он расположен en un asiento adicional detrás del conductor. Здесь visibility - ловушка, а не полный критерий."
+            },
+            {
+              "answerId": "b-fallback-058-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas incorrectas неверно, потому что вариант про asiento adicional detrás del conductor является правильным ответом этого билета."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-064",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-064-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: orientación de los espejos retrovisores проверяют antes de iniciar la marcha, пока автомобиль стоит и водитель сидит в реальном рабочем положении."
+            },
+            {
+              "answerId": "b-fallback-064-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Durante la conducción неверно: настройка зеркал во время движения отвлекает и превращает проверку обзора в рискованный эксперимент."
+            },
+            {
+              "answerId": "b-fallback-064-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Con el vehículo inmovilizado y el conductor fuera del mismo неверно: снаружи нельзя проверить обзор из положения водителя."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-365",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-365-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Punto Ciego - это área de visión del entorno, куда водитель не имеет доступа de manera directa или потому что espejos retrovisores no la reflejan."
+            },
+            {
+              "answerId": "b-fallback-365-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo al área no cubierta por los espejos слишком узко. Билет включает и отсутствие прямого обзора, и отсутствие отражения в зеркалах."
+            },
+            {
+              "answerId": "b-fallback-365-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Punto imaginario en el horizonte de una ruta не имеет отношения к слепой зоне автомобиля. Это отвлекающий вариант про слово punto."
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-retrovisor-system-required-effective",
+          "textRu": "CABA и национальная норма требуют у транспортных средств sistema retrovisor amplio, permanente y efectivo; это официальный минимум оборудования, но не обещание полного отсутствия слепых зон.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "mirrors-retrovisor-system-required-effective"
+        },
+        {
+          "id": "claim-precaution-safe-check-before-moving",
+          "textRu": "Общие нормы требуют безопасных условий автомобиля, предсказуемых маневров и отсутствия риска для других; проверка зеркал до начала движения в этом билете объясняется как практическая мера осторожности, а не отдельная процитированная процедура.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "mirrors-precaution-safe-check-before-moving"
+        },
+        {
+          "id": "claim-visibility-condition-and-ticket-boundaries",
+          "textRu": "Видимость является официально значимым условием безопасного контроля автомобиля, но точное определение punto ciego, картинка настройки зеркала и велосипедный пассажир остаются привязанными к fallback-билетам.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "mirrors-visibility-condition-and-ticket-boundaries"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-good-mirrors-not-no-blind-spots",
+          "textRu": "Bien orientados не означает sin puntos ciegos. Если билет спрашивает, возможны ли слепые зоны при хорошей настройке, ответ - verdadero.",
+          "sourceQuestionIds": [
+            "b-fallback-022"
+          ]
+        },
+        {
+          "id": "trap-punto-ciego-not-only-mirror",
+          "textRu": "Punto ciego шире, чем «зеркало не показывает». В правильном определении есть и direct vision, и отражение в espejos retrovisores.",
+          "sourceQuestionIds": [
+            "b-fallback-365"
+          ]
+        },
+        {
+          "id": "trap-image-a-vs-b",
+          "textRu": "В картинке про зеркало не выбирайте `ambas`: Imagen A правильна, Imagen B слишком забирает обзор боком автомобиля.",
+          "sourceQuestionIds": [
+            "b-fallback-055"
+          ]
+        },
+        {
+          "id": "trap-before-moving-not-during-driving",
+          "textRu": "Настройка зеркал делается antes de iniciar la marcha. Вариант durante la conducción звучит как реальная проверка, но на экзамене это отвлечение и риск.",
+          "sourceQuestionIds": [
+            "b-fallback-064"
+          ]
+        },
+        {
+          "id": "trap-visibility-alone-not-cyclist-passenger-answer",
+          "textRu": "В велосипедном билете `no compromete la visibilidad` - не полный критерий. Правильный fallback-ответ привязан к asiento adicional detrás del conductor.",
+          "sourceQuestionIds": [
+            "b-fallback-058"
           ]
         }
       ]
