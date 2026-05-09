@@ -80,9 +80,9 @@
       "titleRu": "Информационные знаки, сервисы и маршруты",
       "categoryId": "signs",
       "splitCriteria": "Информационные, сервисные и маршрутные знаки: ruta, aeropuerto, terminal, socorro, estacionamiento и начало автомагистрали.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E9"
     },
     {
       "topicId": "center-lines-and-crossing-rules",
@@ -984,7 +984,11 @@
         "information-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E9",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "information-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-067",
@@ -2886,7 +2890,11 @@
         "information-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E9",
+      "placementPhases": {
+        "pedestrian-crossings-and-priority": "planned",
+        "information-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-275",
@@ -2991,8 +2999,8 @@
       "topicIds": [
         "information-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E9"
     },
     {
       "questionId": "b-fallback-288",
@@ -3558,8 +3566,8 @@
       "topicIds": [
         "information-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E9"
     },
     {
       "questionId": "b-fallback-349",
@@ -4561,9 +4569,9 @@
         "information-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "C+E8+E9",
       "placementPhases": {
-        "information-signs": "planned",
+        "information-signs": "content_ready",
         "stopping-vs-parking-maneuvers": "content_ready"
       }
     },
