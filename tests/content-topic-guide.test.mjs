@@ -100,8 +100,24 @@ function coverage(overrides = {}) {
       capturedAt: "2026-05-09",
       ...topicGuideQuestionBaseline(questions)
     },
-    topics: [{ topicId: "signals", status: "draft" }],
-    assignments: [{ questionId: "q1", topicIds: ["signals"], status: "draft" }],
+    topics: [
+      {
+        topicId: "signals",
+        phase: "content_ready",
+        status: "draft",
+        titleRu: "Жесты"
+      },
+      {
+        topicId: "stop-signs",
+        phase: "planned",
+        status: "draft",
+        titleRu: "Знаки остановки и приоритета"
+      }
+    ],
+    assignments: [
+      { questionId: "q1", topicIds: ["signals"], phase: "content_ready", ownerSlice: "test" },
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned", ownerSlice: "test" }
+    ],
     ...overrides
   };
 }
@@ -147,14 +163,43 @@ test("current topic guide placeholder and manifests pass draft validation", () =
   );
 });
 
-test("draft mode allows partial coverage while published mode requires every question", () => {
+test("planned full coverage passes without requiring rendered content for planned assignments", () => {
   assert.deepEqual(validate(), []);
+});
 
+test("content-ready assignments require rendered guide content", () => {
+  const coverageManifest = coverage({
+    assignments: [
+      { questionId: "q1", topicIds: ["signals"], phase: "content_ready" },
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "content_ready" }
+    ]
+  });
+  const errors = validate({ coverageManifest });
+
+  assert(errors.includes("q2: rendered assignment references missing guide topic stop-signs."));
+  assert(errors.includes("q2: content-ready or published coverage assignment is missing from guide content."));
+});
+
+test("published mode rejects planned-only assignments", () => {
   const publishedGuide = guide({ status: "published" });
   const publishedCoverage = coverage({ status: "published" });
-  const errors = validate({ guideContent: publishedGuide, coverageManifest: publishedCoverage });
+  const errors = validate({
+    guideContent: publishedGuide,
+    coverageManifest: publishedCoverage,
+    trace: sourceTrace({ status: "published" })
+  });
 
-  assert(errors.includes("q2: published guide must assign every current question."));
+  assert(errors.includes("q2: published guide must promote planned assignments before release."));
+});
+
+test("rejects missing current question IDs even in draft planned coverage", () => {
+  const coverageManifest = coverage({
+    topics: [{ topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" }],
+    assignments: [{ questionId: "q1", topicIds: ["signals"], phase: "content_ready" }]
+  });
+
+  const errors = validate({ coverageManifest });
+  assert(errors.includes("q2: topic guide must assign every current question."));
 });
 
 test("rejects duplicate topic IDs", () => {
@@ -162,8 +207,8 @@ test("rejects duplicate topic IDs", () => {
   guideContent.topics.push(clone(guideContent.topics[0]));
   const coverageManifest = coverage({
     topics: [
-      { topicId: "signals", status: "draft" },
-      { topicId: "signals", status: "draft" }
+      { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" },
+      { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты снова" }
     ]
   });
 
@@ -172,11 +217,22 @@ test("rejects duplicate topic IDs", () => {
   assert(errors.includes("signals: duplicate coverage topic id."));
 });
 
+test("rejects invalid coverage topic phase", () => {
+  const coverageManifest = coverage();
+  coverageManifest.topics[1].phase = "planend";
+
+  const errors = validate({ coverageManifest });
+  assert(errors.includes("stop-signs: coverage topic phase must be planned, content_ready, or published."));
+});
+
 test("rejects invalid question IDs in guide tickets and coverage", () => {
   const guideContent = guide();
   guideContent.topics[0].tickets[0].questionId = "missing-question";
   const coverageManifest = coverage({
-    assignments: [{ questionId: "missing-question", topicIds: ["signals"], status: "draft" }]
+    assignments: [
+      { questionId: "missing-question", topicIds: ["signals"], phase: "content_ready" },
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" }
+    ]
   });
 
   const errors = validate({ guideContent, coverageManifest });
@@ -224,12 +280,21 @@ test("rejects vocabulary terms not found in assigned ticket wording", () => {
 
 test("rejects coverage/content assignment mismatch", () => {
   const coverageManifest = coverage({
-    assignments: [{ questionId: "q1", topicIds: ["missing-topic"], status: "draft" }]
+    topics: [
+      { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" },
+      { topicId: "missing-topic", phase: "content_ready", status: "draft", titleRu: "Несуществующая тема" },
+      { topicId: "stop-signs", phase: "planned", status: "draft", titleRu: "Знаки остановки и приоритета" }
+    ],
+    assignments: [
+      { questionId: "q1", topicIds: ["missing-topic"], phase: "content_ready" },
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" }
+    ]
   });
 
   const errors = validate({ coverageManifest });
-  assert(errors.includes("q1: assignment references missing topic missing-topic."));
-  assert(errors.includes("q1: guide content and coverage assignments do not match."));
+  assert(errors.includes("missing-topic: rendered coverage topic references missing guide topic."));
+  assert(errors.includes("q1: rendered assignment references missing guide topic missing-topic."));
+  assert(errors.includes("q1: guide content and rendered coverage assignments do not match."));
 });
 
 test("rejects stale coverage baseline", () => {
@@ -250,18 +315,19 @@ test("rejects stale coverage baseline", () => {
 test("rejects more than two topic assignments", () => {
   const guideContent = guide();
   for (const topicId of ["rules", "extra"]) {
-    const topic = clone(guideContent.topics[0]);
-    topic.id = topicId;
-    topic.titleRu = topicId;
-    guideContent.topics.push(topic);
+    guideContent.topics.push({ ...clone(guideContent.topics[0]), id: topicId, titleRu: topicId });
   }
   const coverageManifest = coverage({
     topics: [
-      { topicId: "signals", status: "draft" },
-      { topicId: "rules", status: "draft" },
-      { topicId: "extra", status: "draft" }
+      { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" },
+      { topicId: "rules", phase: "content_ready", status: "draft", titleRu: "Правила" },
+      { topicId: "extra", phase: "content_ready", status: "draft", titleRu: "Еще правила" },
+      { topicId: "stop-signs", phase: "planned", status: "draft", titleRu: "Знаки остановки и приоритета" }
     ],
-    assignments: [{ questionId: "q1", topicIds: ["signals", "rules", "extra"], status: "draft" }]
+    assignments: [
+      { questionId: "q1", topicIds: ["signals", "rules", "extra"], phase: "content_ready" },
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" }
+    ]
   });
 
   const errors = validate({ guideContent, coverageManifest });
@@ -347,9 +413,9 @@ test("rejects manifest status disagreement that could hide strict validation", (
 
   const guideCoverageErrors = validate({ guideContent, coverageManifest, trace });
   assert(guideCoverageErrors.includes("topic guide and coverage statuses must match."));
-  assert(guideCoverageErrors.includes("q2: published guide must assign every current question."));
+  assert(guideCoverageErrors.includes("q2: published guide must promote planned assignments before release."));
 
   const sourceTraceErrors = validate({ trace: sourceTrace({ status: "published" }) });
   assert(sourceTraceErrors.includes("topic guide source trace status must match topic guide and coverage status."));
-  assert(sourceTraceErrors.includes("q2: published guide must assign every current question."));
+  assert(sourceTraceErrors.includes("q2: published guide must promote planned assignments before release."));
 });

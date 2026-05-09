@@ -1,6 +1,9 @@
 import { createHash } from "node:crypto";
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const ASSIGNMENT_PHASES = new Set(["planned", "content_ready", "published"]);
+const RENDERED_ASSIGNMENT_PHASES = new Set(["content_ready", "published"]);
+
 function isPlainObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
@@ -28,6 +31,16 @@ function canonicalJson(value) {
 
 function sha256Canonical(value) {
   return createHash("sha256").update(canonicalJson(value)).digest("hex");
+}
+
+function coverageAssignmentPhase(assignment) {
+  if (isNonEmptyString(assignment?.phase)) return assignment.phase;
+  if (["planned", "content_ready", "published"].includes(assignment?.status)) return assignment.status;
+  return "content_ready";
+}
+
+function isRenderedAssignmentPhase(phase) {
+  return RENDERED_ASSIGNMENT_PHASES.has(phase);
 }
 
 function normalizeText(value) {
@@ -327,13 +340,20 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
     }
     if (coverageTopicIds.has(topicId)) errors.push(`${topicId}: duplicate coverage topic id.`);
     coverageTopicIds.add(topicId);
-    if (!topicIds.has(topicId)) errors.push(`${topicId}: coverage references missing guide topic.`);
+    if (!isNonEmptyString(topic.titleRu)) errors.push(`${topicId}: coverage topic titleRu must be a non-empty string.`);
+    if (!ASSIGNMENT_PHASES.has(topic.phase)) {
+      errors.push(`${topicId}: coverage topic phase must be planned, content_ready, or published.`);
+    }
+    if (isRenderedAssignmentPhase(topic.phase) && !topicIds.has(topicId)) {
+      errors.push(`${topicId}: rendered coverage topic references missing guide topic.`);
+    }
   }
   for (const topicId of topicIds) {
     if (!coverageTopicIds.has(topicId)) errors.push(`${topicId}: guide topic missing from coverage topics.`);
   }
 
   const coverageAssignments = new Map();
+  const renderedCoverageAssignments = new Map();
   for (const assignment of asArray(coverage.assignments)) {
     const questionId = assignment?.questionId;
     const label = isNonEmptyString(questionId) ? questionId : "topic guide coverage assignment";
@@ -356,10 +376,18 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
       errors.push(`${questionId}: assignment topicIds must not contain duplicates.`);
     }
     if (assignedTopicIds.length > 2) errors.push(`${questionId}: assignment must not reference more than two topics.`);
+    const phase = coverageAssignmentPhase(assignment);
+    if (!ASSIGNMENT_PHASES.has(phase)) {
+      errors.push(`${questionId}: assignment phase must be planned, content_ready, or published.`);
+    }
     for (const topicId of assignedTopicIds) {
-      if (!topicIds.has(topicId)) errors.push(`${questionId}: assignment references missing topic ${topicId}.`);
+      if (!coverageTopicIds.has(topicId)) errors.push(`${questionId}: assignment references missing coverage topic ${topicId}.`);
+      if (isRenderedAssignmentPhase(phase) && !topicIds.has(topicId)) {
+        errors.push(`${questionId}: rendered assignment references missing guide topic ${topicId}.`);
+      }
     }
     coverageAssignments.set(questionId, assignedTopicIds);
+    if (isRenderedAssignmentPhase(phase)) renderedCoverageAssignments.set(questionId, assignedTopicIds);
   }
 
   for (const [questionId, topicList] of contentAssignments.entries()) {
@@ -368,27 +396,32 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
       errors.push(`${questionId}: guide content repeats the same topic assignment.`);
     }
     if (contentTopicIds.length > 2) errors.push(`${questionId}: guide content must not assign a ticket to more than two topics.`);
-    const coverageTopicIdsForQuestion = coverageAssignments.get(questionId);
+    const coverageTopicIdsForQuestion = renderedCoverageAssignments.get(questionId);
     if (!coverageTopicIdsForQuestion) {
-      errors.push(`${questionId}: guide content ticket is missing from coverage assignments.`);
+      errors.push(`${questionId}: guide content ticket is missing from content-ready or published coverage assignments.`);
       continue;
     }
     if (coverageTopicIdsForQuestion.join(",") !== contentTopicIds.join(",")) {
-      errors.push(`${questionId}: guide content and coverage assignments do not match.`);
+      errors.push(`${questionId}: guide content and rendered coverage assignments do not match.`);
     }
   }
-  for (const [questionId, topicList] of coverageAssignments.entries()) {
+  for (const [questionId, topicList] of renderedCoverageAssignments.entries()) {
     const contentTopicIds = uniqueSorted(contentAssignments.get(questionId) || []);
     if (contentTopicIds.join(",") !== topicList.join(",")) {
-      errors.push(`${questionId}: coverage assignment is missing from guide content.`);
+      errors.push(`${questionId}: content-ready or published coverage assignment is missing from guide content.`);
     }
   }
 
   const isPublished = [guide.status, coverage.status, sourceTrace?.status].includes("published");
+  for (const questionId of questionById.keys()) {
+    if (!coverageAssignments.has(questionId)) {
+      errors.push(`${questionId}: topic guide must assign every current question.`);
+    }
+  }
   if (isPublished) {
-    for (const questionId of questionById.keys()) {
-      if (!coverageAssignments.has(questionId)) {
-        errors.push(`${questionId}: published guide must assign every current question.`);
+    for (const assignment of asArray(coverage.assignments)) {
+      if (coverageAssignmentPhase(assignment) === "planned" && isNonEmptyString(assignment?.questionId)) {
+        errors.push(`${assignment.questionId}: published guide must promote planned assignments before release.`);
       }
     }
   }

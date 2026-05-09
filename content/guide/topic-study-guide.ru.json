@@ -8,11 +8,11 @@
   "disclaimer": "Неофициальный учебный материал Cabadrive. Он помогает разбирать билеты и не является официальным текстом GCBA.",
   "topics": [
     {
-      "id": "driver-hand-signals-draft",
-      "slug": "driver-hand-signals-draft",
+      "id": "driver-hand-signals",
+      "slug": "driver-hand-signals",
       "status": "draft",
-      "titleRu": "Жесты водителя",
-      "summaryRu": "Черновой структурный блок для проверки схемы тематического гида.",
+      "titleRu": "Жесты водителя и ручные сигналы",
+      "summaryRu": "Черновой структурный блок для проверки схемы тематического гида на примере жестов водителя.",
       "learningMaterialRu": [
         "В этом черновом блоке фиксируется структура будущей темы: короткое объяснение, слова из билетов, сами билеты и заметки о ловушках. Полный учебный текст будет добавлен в отдельном контентном срезе."
       ],
@@ -24,13 +24,17 @@
           "id": "term-sena",
           "termEs": "seña",
           "translationRu": "жест, сигнал",
-          "sourceQuestionIds": ["b-fallback-001"]
+          "sourceQuestionIds": [
+            "b-fallback-001"
+          ]
         },
         {
           "id": "term-giro-derecha",
           "termEs": "Giro a la derecha",
           "translationRu": "поворот направо",
-          "sourceQuestionIds": ["b-fallback-001"]
+          "sourceQuestionIds": [
+            "b-fallback-001"
+          ]
         }
       ],
       "tickets": [
@@ -59,7 +63,9 @@
         {
           "id": "trap-sena-is-not-senales",
           "textRu": "Не путайте seña как жест водителя с señales как дорожные знаки.",
-          "sourceQuestionIds": ["b-fallback-001"]
+          "sourceQuestionIds": [
+            "b-fallback-001"
+          ]
         }
       ],
       "claims": []
