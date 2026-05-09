@@ -724,8 +724,8 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-037",
@@ -794,9 +794,9 @@
       "phase": "planned",
       "placementPhases": {
         "parking-clearances-and-corners": "content_ready",
-        "right-of-way-basic-intersections": "planned"
+        "right-of-way-basic-intersections": "content_ready"
       },
-      "ownerSlice": "E10"
+      "ownerSlice": "E10+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-044",
@@ -814,9 +814,9 @@
         "right-of-way-basic-intersections"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "C+E8+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "stopping-vs-parking-maneuvers": "content_ready"
       }
     },
@@ -901,8 +901,8 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-054",
@@ -1012,9 +1012,9 @@
         "information-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E9",
+      "ownerSlice": "C+E9+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "information-signs": "content_ready"
       }
     },
@@ -1033,9 +1033,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -1494,8 +1494,8 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-117",
@@ -1513,7 +1513,11 @@
         "overtaking-and-passing"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-right-of-way-basic-intersections",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "content_ready",
+        "overtaking-and-passing": "planned"
+      }
     },
     {
       "questionId": "b-fallback-119",
@@ -1809,11 +1813,11 @@
         "lane-choice-and-lane-changes"
       ],
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "lane-choice-and-lane-changes": "content_ready"
       },
       "phase": "planned",
-      "ownerSlice": "C+E13"
+      "ownerSlice": "C+E13+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-149",
@@ -1830,7 +1834,11 @@
         "overtaking-and-passing"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-right-of-way-basic-intersections",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "content_ready",
+        "overtaking-and-passing": "planned"
+      }
     },
     {
       "questionId": "b-fallback-151",
@@ -1963,9 +1971,9 @@
         "turns-direction-and-reversing"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-turns-direction-reversing",
+      "ownerSlice": "C+E-turns-direction-reversing+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "turns-direction-and-reversing": "content_ready"
       }
     },
@@ -1976,11 +1984,11 @@
         "lane-choice-and-lane-changes"
       ],
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "lane-choice-and-lane-changes": "content_ready"
       },
       "phase": "planned",
-      "ownerSlice": "C+E13"
+      "ownerSlice": "C+E13+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-166",
@@ -2044,7 +2052,11 @@
         "overtaking-and-passing"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-right-of-way-basic-intersections",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "content_ready",
+        "overtaking-and-passing": "planned"
+      }
     },
     {
       "questionId": "b-fallback-172",
@@ -2142,9 +2154,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -2732,9 +2744,9 @@
         "turns-direction-and-reversing"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-turns-direction-reversing",
+      "ownerSlice": "C+E-turns-direction-reversing+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "turns-direction-and-reversing": "content_ready"
       }
     },
@@ -2896,9 +2908,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -2920,8 +2932,8 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-265",
@@ -3086,8 +3098,8 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-282",
@@ -3370,9 +3382,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -3383,9 +3395,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -4242,9 +4254,9 @@
       "phase": "planned",
       "placementPhases": {
         "parking-clearances-and-corners": "content_ready",
-        "right-of-way-basic-intersections": "planned"
+        "right-of-way-basic-intersections": "content_ready"
       },
-      "ownerSlice": "E10"
+      "ownerSlice": "E10+E-right-of-way-basic-intersections"
     },
     {
       "questionId": "b-fallback-397",
@@ -4379,9 +4391,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -4635,9 +4647,9 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "E4",
+      "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "planned",
+        "right-of-way-basic-intersections": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -4880,9 +4892,9 @@
       "phase": "planned",
       "placementPhases": {
         "parking-clearances-and-corners": "content_ready",
-        "right-of-way-basic-intersections": "planned"
+        "right-of-way-basic-intersections": "content_ready"
       },
-      "ownerSlice": "E10"
+      "ownerSlice": "E10+E-right-of-way-basic-intersections"
     }
   ]
 }
