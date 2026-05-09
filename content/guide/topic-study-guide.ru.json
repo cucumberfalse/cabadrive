@@ -6066,7 +6066,7 @@
       {
         "id": "term-no-estacionar-ni-detenerse",
         "termEs": "prohibido estacionar y detenerse",
-        "translationRu": "стоять и останавливаться",
+        "translationRu": "запрещено стоять и останавливаться",
         "sourceQuestionIds": [
           "b-fallback-211"
         ]
