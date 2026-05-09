@@ -17401,6 +17401,648 @@
           ]
         }
       ]
+    },
+    {
+      "id": "overtaking-and-passing",
+      "slug": "overtaking-and-passing",
+      "status": "draft",
+      "titleRu": "Обгон и опережение",
+      "summaryRu": "Блок про adelantamiento/sobrepaso: когда можно выходить в левую полосу, где маневр запрещен, как возвращаться вправо и как читать билеты со знаками, разметкой, тоннелями, мостами, кривыми и велосипедистами.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах adelantamiento и sobrepaso почти всегда проверяют не желание ехать быстрее, а безопасный выход из своей траектории и возвращение в поток.",
+        "Базовая логика source-backed такая: maneuver обычно делают слева от vehicle to rebasar, только при нормальной видимости, свободном пространстве слева и без риска для встречного/попутного движения. Ley 2148 допускает right-side exception, когда vehicle ahead clearly intends to turn/stop left или в embotellamiento left queue не движется/медленнее; assigned tickets в этом блоке проверяют основное left-side правило и запреты, а не эти исключения. Перед маневром проверяют mirrors, puntos ciegos, vehicle behind и включают соответствующий indicador de giro.",
+        "Запретные места запоминайте списком: trazo continuo, encrucijada, curva, puente, paso a nivel, túnel/other dangerous places и temporary narrowing/obra. Если билет говорит “salvo que no venga nadie” или “si hay visibilidad”, это обычно ловушка: знак/разметка/тип места сильнее вашей оценки.",
+        "Carril de sobrepaso на autopista нужен для maniobras de sobrepaso, а не для постоянной езды. Законная идея полос: держаться своего carril, выходить в левый carril для маневра и retomar el carril derecho gradual, con luz de giro derecha, без помех тому, кого прошли.",
+        "Bocina не является обычным “сигналом обгона”. В CABA она нужна только для ситуации потенциальной опасности, когда другой сигнал невозможен или не сработал; для sobrepaso правила говорят о destellos de luces frontales и indicador de giro.",
+        "С cyclist ticket будьте аккуратны: `b-fallback-130` ожидает ответ “al menos, un metro y medio”. В текущем архиве нет прямой source-backed опоры для обобщения этого exact number, поэтому в guide это оставлено как ticket-specific answer, а не как новая общая правовая формула.",
+        "Image/order tickets (`b-fallback-150`, `b-fallback-171`, `b-fallback-400` and sign/marking images) решаются по конкретной картинке и wording. Не переносите exact vehicle letter или exact lane letter на другую схему."
+      ],
+      "practicalReasoningRu": [
+        "Обгон опасен потому, что на короткое время один водитель занимает пространство, которое может понадобиться встречному потоку, соседней полосе или машине впереди. Поэтому правило требует заранее видеть свободное место и не начинать маневр рядом с blind/complex places.",
+        "Запрет на continuous line, tunnel, bridge, curve или encrucijada делает поведение предсказуемым: другие водители не ждут, что кто-то внезапно выйдет на встречную/соседнюю траекторию там, где обзор или escape space ограничены.",
+        "Возврат вправо после sobrepaso освобождает left/overtaking lane для следующего маневра и уменьшает pressure сзади. Но возврат должен быть gradual: нельзя “подрезать” или заставлять другого менять скорость."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-carril-transito-lento-overtaking",
+          "termEs": "carril destinado al tránsito lento",
+          "translationRu": "полоса для медленного движения",
+          "sourceQuestionIds": [
+            "b-fallback-012"
+          ]
+        },
+        {
+          "id": "term-puntos-ciegos-overtaking",
+          "termEs": "puntos ciegos",
+          "translationRu": "слепые зоны",
+          "sourceQuestionIds": [
+            "b-fallback-057"
+          ]
+        },
+        {
+          "id": "term-bocina-overtaking",
+          "termEs": "bocina",
+          "translationRu": "звуковой сигнал/клаксон",
+          "sourceQuestionIds": [
+            "b-fallback-099"
+          ]
+        },
+        {
+          "id": "term-situacion-potencialmente-peligro",
+          "termEs": "situación potencialmente de peligro",
+          "translationRu": "потенциально опасная ситуация",
+          "sourceQuestionIds": [
+            "b-fallback-099"
+          ]
+        },
+        {
+          "id": "term-sobrepaso-overtaking",
+          "termEs": "sobrepaso",
+          "translationRu": "обгон/опережение с выходом из текущей траектории",
+          "sourceQuestionIds": [
+            "b-fallback-118",
+            "b-fallback-150",
+            "b-fallback-171",
+            "b-fallback-219",
+            "b-fallback-333"
+          ]
+        },
+        {
+          "id": "term-sobrepasar-overtaking",
+          "termEs": "sobrepasar",
+          "translationRu": "обгонять/опережать",
+          "sourceQuestionIds": [
+            "b-fallback-012",
+            "b-fallback-170",
+            "b-fallback-207",
+            "b-fallback-331",
+            "b-fallback-411"
+          ]
+        },
+        {
+          "id": "term-trazo-continuo-overtaking",
+          "termEs": "trazo continuo",
+          "translationRu": "сплошная линия/непрерывная разметка",
+          "sourceQuestionIds": [
+            "b-fallback-118"
+          ]
+        },
+        {
+          "id": "term-curvas-encrucijadas-puentes",
+          "termEs": "curvas, encrucijadas, pasos a nivel o puentes",
+          "translationRu": "кривые, перекрестки, железнодорожные переезды или мосты",
+          "sourceQuestionIds": [
+            "b-fallback-118"
+          ]
+        },
+        {
+          "id": "term-adelantarlo-ciclista",
+          "termEs": "adelantarlo",
+          "translationRu": "обогнать его",
+          "sourceQuestionIds": [
+            "b-fallback-130"
+          ]
+        },
+        {
+          "id": "term-metro-y-medio",
+          "termEs": "un metro y medio",
+          "translationRu": "полтора метра",
+          "sourceQuestionIds": [
+            "b-fallback-130"
+          ]
+        },
+        {
+          "id": "term-encolumnados",
+          "termEs": "encolumnados",
+          "translationRu": "едущие колонной/в очереди",
+          "sourceQuestionIds": [
+            "b-fallback-171"
+          ]
+        },
+        {
+          "id": "term-carril-derecho-overtaking",
+          "termEs": "carril derecho",
+          "translationRu": "правая полоса",
+          "sourceQuestionIds": [
+            "b-fallback-179"
+          ]
+        },
+        {
+          "id": "term-carril-de-sobrepaso-overtaking",
+          "termEs": "carril de sobrepaso",
+          "translationRu": "полоса для обгона/опережения",
+          "sourceQuestionIds": [
+            "b-fallback-219",
+            "b-fallback-400"
+          ]
+        },
+        {
+          "id": "term-senal-horizontal-overtaking",
+          "termEs": "señal horizontal",
+          "translationRu": "горизонтальная сигнализация/разметка",
+          "sourceQuestionIds": [
+            "b-fallback-227"
+          ]
+        },
+        {
+          "id": "term-senales-transitorias-naranjas-overtaking",
+          "termEs": "señales transitorias naranjas",
+          "translationRu": "оранжевые временные дорожные устройства/сигналы",
+          "sourceQuestionIds": [
+            "b-fallback-291"
+          ]
+        },
+        {
+          "id": "term-prohibicion-cambiar-carril-overtaking",
+          "termEs": "Prohibición de Cambiar de Carril",
+          "translationRu": "запрет менять полосу",
+          "sourceQuestionIds": [
+            "b-fallback-359"
+          ]
+        },
+        {
+          "id": "term-transito-pesado-derecha",
+          "termEs": "Tránsito pesado a la derecha",
+          "translationRu": "тяжелый транспорт держится справа",
+          "sourceQuestionIds": [
+            "b-fallback-384"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-012",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-012-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: фраза no puede abandonarlo слишком абсолютна. Даже carril destinado al tránsito lento можно покинуть для разрешенного sobrepaso, если это безопасно и не запрещено разметкой или знаками."
+            },
+            {
+              "answerId": "b-fallback-012-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: утверждение falso. Билет проверяет, что медленная полоса не запирает водителя навсегда; для sobrepasar a otro vehículo más lento можно сменить полосу при соблюдении условий маневра."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-057",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-057-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ответ A сам по себе верный как прием против puntos ciegos, но вопрос спрашивает cómo se pueden reducir в целом. Он не включает второй прием перед маневром."
+            },
+            {
+              "answerId": "b-fallback-057-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ответ B тоже полезен перед maniobra: снизить скорость, включить luz de giro и проверить зеркала с небольшим движением корпуса. Но он не покрывает настройку зеркал до начала движения."
+            },
+            {
+              "answerId": "b-fallback-057-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas. Для safe passing важны и заранее настроенные espejos retrovisores, и дополнительная проверка puntos ciegos/visión periférica перед маневром."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-099",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-099-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: bocina допускается только для предупреждения situación potencialmente de peligro, когда другой способ предупреждения невозможен или не сработал."
+            },
+            {
+              "answerId": "b-fallback-099-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo para advertir de un sobrepaso неверно: сам по себе overtake не дает обычного права сигналить. Для sobrepaso закон отдельно говорит о destellos/luz de giro, а bocina ограничена опасностью."
+            },
+            {
+              "answerId": "b-fallback-099-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas incorrectas неверно, потому что вариант A как раз совпадает с правилом о потенциально опасной ситуации."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-118",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-118-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Trazo continuo действительно запрещает пересечение/маневр sobrepaso, но это только часть ответа. Билет спрашивает norma general и включает еще опасные места."
+            },
+            {
+              "answerId": "b-fallback-118-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Curvas, encrucijadas, pasos a nivel и puentes тоже являются запретными/опасными местами для начала sobrepaso, но вариант не включает continuous lane marking."
+            },
+            {
+              "answerId": "b-fallback-118-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas. Запрет действует и при delimitación de carriles de trazo continuo, и рядом с curva/encrucijada/paso a nivel/puente, где видимость и предсказуемость хуже."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-130",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-130-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по этому билету: при adelantar al ciclista ожидается al menos, un metro y medio lateral. В текущем архиве это число не обобщается как source-backed rule; используйте его как ticket-specific ответ."
+            },
+            {
+              "answerId": "b-fallback-130-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Medio metro слишком мало для этого билета: велосипедист может отклониться из-за покрытия, ветра или препятствия, а автомобиль создает боковой риск."
+            },
+            {
+              "answerId": "b-fallback-130-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Lo suficiente para no tocarlo звучит безопасно, но на экзамене слишком расплывчато. Билет требует конкретный минимум: un metro y medio."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b10.jpg"
+        },
+        {
+          "questionId": "b-fallback-150",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-150-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A не имеет priority в показанном порядке: он дальше от camión/начала маневра, поэтому его попытка создала бы конфликт с тем, кто уже ближе к препятствию."
+            },
+            {
+              "answerId": "b-fallback-150-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo B тоже не первый в очереди на sobrepaso al camión. В этой image question точный порядок машин читается по картинке и не обобщается за ее пределы."
+            },
+            {
+              "answerId": "b-fallback-150-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: vehículo C. Он расположен ближе всего к camión, который нужно sobrepasar, поэтому именно он должен выполнить маневр первым в этой ситуации."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b119.jpg"
+        },
+        {
+          "questionId": "b-fallback-170",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-170-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sí salvo que se acerque un vehículo contrario игнорирует demarcación horizontal. Если линия запрещает пересечение, отсутствие встречной машины не делает маневр разрешенным."
+            },
+            {
+              "answerId": "b-fallback-170-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: vehículo B no puede sobrepasar al A, потому что это запрещено horizontal marking на изображении."
+            },
+            {
+              "answerId": "b-fallback-170-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Luces и большая дистанция до встречного транспорта не отменяют запрет разметки. Сигнализация помогает безопасному разрешенному маневру, но не легализует запрещенный."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b111.jpg"
+        },
+        {
+          "questionId": "b-fallback-171",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-171-a1",
+              "verdict": "incorrect",
+              "explanationRu": "El que lo intente primero неверно: priority не получают за агрессивную попытку начать первым. Это создает непредсказуемую очередь."
+            },
+            {
+              "answerId": "b-fallback-171-a2",
+              "verdict": "incorrect",
+              "explanationRu": "El último de la fila неверно: последний должен ждать, иначе он начнет пересекать траектории всех машин впереди."
+            },
+            {
+              "answerId": "b-fallback-171-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: при движении encolumnados первым sobrepasa тот, кто circula más próximo al vehículo que se desea sobrepasar. Так очередь на маневр идет спереди назад."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-179",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-179-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Permanecer en el carril ocupado независимо от fluidez del tránsito неверно: после adelantamiento нужно освободить полосу, если правый carril свободен."
+            },
+            {
+              "answerId": "b-fallback-179-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: нужно incorporarse al carril derecho, если он свободен, gradual и sin obstaculizar la fluidez de tránsito."
+            },
+            {
+              "answerId": "b-fallback-179-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Возврат вправо не должен вынуждать другой автомобиль modificar su velocidad. Правильный маневр не создает помех тому, кого вы уже прошли или кто едет справа."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-207",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-207-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Cuando no haya señal que lo prohíba неверно: в túnel с обоими sentidos de circulación запрет следует из normativa/опасного места, а не только из наличия отдельного знака."
+            },
+            {
+              "answerId": "b-fallback-207-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: no, sobrepasar там запрещено. В тоннеле с встречным движением мало пространства для ошибки, видимость и escape route хуже."
+            },
+            {
+              "answerId": "b-fallback-207-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Suficiente visibilidad не отменяет запрет для такого места. Экзамен проверяет не субъективное ощущение, а правило."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-219",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-219-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Circular por él cuando a la derecha hay otro carril disponible превращает carril de sobrepaso в обычную полосу. Это не его назначение."
+            },
+            {
+              "answerId": "b-fallback-219-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Даже если едете на mayor velocidad permitida, left/overtaking lane не становится постоянной полосой, когда справа есть доступная полоса."
+            },
+            {
+              "answerId": "b-fallback-219-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: carril de sobrepaso sirve para realizar maniobras de sobrepaso. После маневра логика правил ведет к возврату вправо, когда это возможно."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-227",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-227-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по изображению билета: señal horizontal ordena la circulación de carriles и в этом ticket-specific случае показывает, что можно sobrepasar a otro vehículo."
+            },
+            {
+              "answerId": "b-fallback-227-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo cuando la vía tiene dos carriles por sentido добавляет условие, которого нет в правильном ответе к этой картинке."
+            },
+            {
+              "answerId": "b-fallback-227-a3",
+              "verdict": "incorrect",
+              "explanationRu": "No/prohibición de sobrepaso неверно для данной horizontal signal. Не всякая линия на дороге означает запрет обгона; надо читать конкретную разметку."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b120.jpg"
+        },
+        {
+          "questionId": "b-fallback-261",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-261-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Circular por la banquina неверно: обочина не становится нормальной полосой только потому, что вас хотят sobrepasar."
+            },
+            {
+              "answerId": "b-fallback-261-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: держаться справа на calzada и mantener, а при необходимости reducir la velocidad. Так вы не мешаете безопасному завершению маневра."
+            },
+            {
+              "answerId": "b-fallback-261-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas неверно, потому что вариант A с banquina опасен и не является правильной обязанностью."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-291",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-291-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Refuerzan líneas discontinuas звучит похоже на обычную разметку, но на картинке señales transitorias naranjas создают временную границу."
+            },
+            {
+              "answerId": "b-fallback-291-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Nada/ilegal неверно: временные оранжевые устройства как раз применяются для canalización в зоне работ или опасности."
+            },
+            {
+              "answerId": "b-fallback-291-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: они означают prohibición de sobrepasar la línea imaginaria que las une. То есть нельзя пересекать временно заданную линию движения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b71.jpg"
+        },
+        {
+          "questionId": "b-fallback-331",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-331-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Salvo que haya una señal неверно: в показанном месте запрет идет по normativa/опасному участку, а не только по отдельному запрещающему знаку."
+            },
+            {
+              "answerId": "b-fallback-331-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: sobrepasar здесь запрещено por normativa. Изображение относится к месту, где маневр не делают даже при кажущейся свободе."
+            },
+            {
+              "answerId": "b-fallback-331-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo si no se perjudica la circulación звучит как общее условие безопасности, но оно не отменяет прямой запрет для этого места."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b121.jpg"
+        },
+        {
+          "questionId": "b-fallback-333",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-333-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: в показанном tramo de la vía sobrepaso нельзя выполнять. Билет проверяет узнавание участка, где маневр запрещен."
+            },
+            {
+              "answerId": "b-fallback-333-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: изображение как раз указывает на запрет/опасный участок для sobrepaso, поэтому разрешать маневр нельзя."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b117.jpg"
+        },
+        {
+          "questionId": "b-fallback-359",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-359-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de Girar a la Derecha - другой знак. Здесь изображение связано с полосой, а не с поворотом направо."
+            },
+            {
+              "answerId": "b-fallback-359-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Prohibición de Cambiar de Carril. В такой зоне нужно mantener el mismo carril."
+            },
+            {
+              "answerId": "b-fallback-359-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de Adelantar похожа по теме, но это другой знак и другой запрет. Не смешивайте no adelantar с no cambiar de carril."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b259.jpg"
+        },
+        {
+          "questionId": "b-fallback-384",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-384-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sobrepasos por la derecha неверно: знак не разрешает/не описывает обгон справа."
+            },
+            {
+              "answerId": "b-fallback-384-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Circulación exclusiva (camión) означала бы исключительное назначение, но в билете ожидается не это."
+            },
+            {
+              "answerId": "b-fallback-384-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Tránsito pesado a la derecha. Тяжелый транспорт должен держаться правой стороны/полосы; не путайте это с правым overtake."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b252.jpg"
+        },
+        {
+          "questionId": "b-fallback-400",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-400-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Cualquiera de ellos неверно: carril de sobrepaso - не любая полоса на схеме."
+            },
+            {
+              "answerId": "b-fallback-400-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке: carril señalado como A - это carril de sobrepaso. Точная буква зависит от данной image question."
+            },
+            {
+              "answerId": "b-fallback-400-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Carril F не является carril de sobrepaso на этой схеме; обычно ловушка в том, что водитель смотрит на крайний правый/другой обозначенный carril."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b115.jpg"
+        },
+        {
+          "questionId": "b-fallback-411",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-411-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Salvo que haya una señal que indique lo contrario неверно: в этом lugar запрет задан нормативно/типом места, а не только отдельным знаком."
+            },
+            {
+              "answerId": "b-fallback-411-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: no, está prohibido por normativa. На изображении место относится к тем, где sobrepasar нельзя."
+            },
+            {
+              "answerId": "b-fallback-411-a3",
+              "verdict": "incorrect",
+              "explanationRu": "No perjudicar la circulación - необходимая идея для многих маневров, но она не отменяет запрет overtake в этом месте."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b118.jpg"
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-overtaking-main-rules",
+          "textRu": "Adelantamiento/sobrepaso обычно выполняются слева, при достаточной видимости и свободном пространстве; Ley 2148 допускает limited right-side exceptions, если vehicle ahead intends to turn/stop left или left queue is stopped/slower. Нельзя начинать рядом с encrucijada, curva, puente, paso a nivel или lugar peligroso, а завершение требует безопасного возврата вправо.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "overtaking-main-rules"
+        },
+        {
+          "id": "claim-overtaking-lanes-markings-signs",
+          "textRu": "Carril de sobrepaso/left lane используется для overtake, continuous lines and R.6/R.10/markings restrict crossing, no adelantar, or lane changes according to the specific sign/marking.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "overtaking-lanes-markings-signs"
+        },
+        {
+          "id": "claim-overtaking-horn-and-warning",
+          "textRu": "Bocina is not a generic overtake tool: CABA limits it to potentially dangerous situations; overtake warning relies on lights/turn indicators except where national rural wording permits horn.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "overtaking-horn-and-warning"
+        },
+        {
+          "id": "claim-overtaking-temporary-narrowing",
+          "textRu": "При temporary narrowing/obra same-direction sobrepaso is prohibited and the following vehicle should line up behind the one ahead.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "overtaking-temporary-narrowing"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-signal-or-visibility-not-enough",
+          "textRu": "“Если нет знака”, “если видно” или “если никому не мешает” не спасают там, где запрет идет от trazo continuo, tunnel, bridge, curve, encrucijada или другого dangerous place.",
+          "sourceQuestionIds": [
+            "b-fallback-118",
+            "b-fallback-170",
+            "b-fallback-207",
+            "b-fallback-331",
+            "b-fallback-411"
+          ]
+        },
+        {
+          "id": "trap-bocina-vs-lights",
+          "textRu": "Bocina в городе не равна “предупредить об обгоне”. Для sobrepaso ищите destellos/indicador de giro; bocina выбирайте только при potential danger.",
+          "sourceQuestionIds": [
+            "b-fallback-099"
+          ]
+        },
+        {
+          "id": "trap-ticket-specific-images",
+          "textRu": "В билетах с картинками не обобщайте буквы: vehículo C, carril A или конкретный знак правильны только для данной схемы.",
+          "sourceQuestionIds": [
+            "b-fallback-150",
+            "b-fallback-333",
+            "b-fallback-359",
+            "b-fallback-384",
+            "b-fallback-400"
+          ]
+        },
+        {
+          "id": "trap-cyclist-distance-ticket-specific",
+          "textRu": "Un metro y medio в `b-fallback-130` учите как exact answer этого билета. Не превращайте его в новый generalized source-backed claim без отдельного архивного источника.",
+          "sourceQuestionIds": [
+            "b-fallback-130"
+          ]
+        },
+        {
+          "id": "trap-no-adelantar-vs-no-cambiar-carril",
+          "textRu": "No adelantar и Prohibición de Cambiar de Carril похожи по эффекту, но это разные знаки/ответы. В `b-fallback-359` правильный ответ именно cambiar de carril, а не adelantar.",
+          "sourceQuestionIds": [
+            "b-fallback-359"
+          ]
+        }
+      ]
     }
   ]
 }

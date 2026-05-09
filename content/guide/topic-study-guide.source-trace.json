@@ -2464,6 +2464,80 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "Used only to keep b-fallback-043, 118, 148, 150, 164, 165, 171 and 244 explanations within their mixed-ticket boundaries; overtaking-and-passing placements for 118/150/171 remain planned."
+    },
+    {
+      "id": "overtaking-main-rules",
+      "topicId": "overtaking-and-passing",
+      "claimId": "claim-overtaking-main-rules",
+      "claimSummaryRu": "Ley 2148 and Ley 24.449 support the general left-side overtaking rule with Ley 2148 right-side exceptions, visibility/free-space checks, no maneuver near intersections/curves/bridges/level crossings/dangerous places, and safe right-lane return.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.12 Adelantamientos y sobrepasos",
+        "Ley 24.449 Artículo 42 Adelantamiento"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports generalized safe-passing/prohibited-place prose and tickets b-fallback-118, 171, 179, 207, 261, 331, 333, and 411. Ley 2148 right-side exceptions are mentioned only to qualify the source-backed left-side rule; assigned ticket explanations do not generalize beyond their prompts. Exact image/vehicle-letter mappings stay ticket-specific."
+    },
+    {
+      "id": "overtaking-lanes-markings-signs",
+      "topicId": "overtaking-and-passing",
+      "claimId": "claim-overtaking-lanes-markings-signs",
+      "claimSummaryRu": "Ley 2148 and Anexo L support left/overtaking-lane use, staying in lane except for sobrepaso, R.6 no adelantar, R.10 no lane change, and continuous/discontinuous line meanings.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.6 Comportamiento durante la circulación",
+        "Ley 2148 6.1.8 Arterias multicarriles",
+        "Ley 2148 6.1.9 Autopistas y otras vías rápidas",
+        "Anexo L R.6 NO ADELANTAR",
+        "Anexo L R.10 PROHIBICIÓN DE CAMBIAR DE CARRIL",
+        "Anexo L H.1/H.2 marcas longitudinales and continuous/discontinuous line meanings"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports lane/sign/marking prose for b-fallback-012, 170, 219, 227, 359, 384, and 400 while preserving exact image answers as ticket-specific."
+    },
+    {
+      "id": "overtaking-horn-and-warning",
+      "topicId": "overtaking-and-passing",
+      "claimId": "claim-overtaking-horn-and-warning",
+      "claimSummaryRu": "Ley 2148 limits horn use to potentially dangerous situations when other signals are impossible or insufficient, while overtake intent is warned with light flashes and turn indicators; Ley 24.449 permits horn wording in rural overtake context.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.12 inciso c.4",
+        "Ley 2148 6.6.3 Advertencias acústicas",
+        "Ley 24.449 Artículo 42 inciso c",
+        "Ley 24.449 Artículo 48 inciso v"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-099 and keeps the learning material from treating bocina as a generic urban passing signal."
+    },
+    {
+      "id": "overtaking-temporary-narrowing",
+      "topicId": "overtaking-and-passing",
+      "claimId": "claim-overtaking-temporary-narrowing",
+      "claimSummaryRu": "Ley 2148 prohibits same-direction passing in temporary narrowing/work-zone sections and requires the following vehicle to continue behind the vehicle ahead.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.16 Circulación en tramos de arterias con estrechamientos temporarios",
+        "Anexo L Dispositivos transitorios including conos/delineadores"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports temporary narrowing / orange-device reasoning for b-fallback-291 without generalizing the exact line-imaginaria image answer beyond the ticket."
     }
   ]
 }
