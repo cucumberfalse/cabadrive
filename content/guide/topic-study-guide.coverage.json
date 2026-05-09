@@ -7,7 +7,7 @@
     "expectedQuestionCount": 460,
     "questionIdsSha256": "b46707461f4ba5bd0f3eac6b0aa126764014e12ad42144df12c777200f2810ad",
     "capturedAt": "2026-05-09",
-    "notes": "Slice C planned taxonomy coverage baseline. Planned assignments cover every current ticket and do not imply rendered guide content; content_ready/published assignments remain subject to guide ticket/explanation validation."
+    "notes": "Slice C refined planned taxonomy coverage baseline. Planned assignments cover every current ticket and do not imply rendered guide content; content_ready/published assignments remain subject to guide ticket/explanation validation."
   },
   "taxonomy": {
     "status": "planned",
@@ -19,11 +19,12 @@
     ],
     "splitCriteria": [
       "Split broad source topics into compact exam concepts that can become short guide pages.",
-      "Keep sign questions separate by recognition task: warning, regulatory, information, and road markings.",
-      "Use dual placement only for questions where a second topic is needed for later physical repetition, such as speed-sign, parking-signal, bicycle-pedestrian, crash-document, or authority-priority overlaps.",
+      "Keep sign questions separate by recognition task: warning, regulatory, information, center-line markings, lane/channelization markings, and pedestrian/school markings.",
+      "Split prior oversized right-of-way, pedestrian, parking, maneuver, and road-marking buckets so no planned topic is materially above about 35 placements.",
+      "Use dual placement only for questions where a second topic is needed for later physical repetition, such as speed-sign, parking-signal, bicycle-pedestrian, crash-document, authority-priority, and weather/vehicle-condition overlaps.",
       "Never assign more than two guide topics to one ticket."
     ],
-    "topicCount": 28,
+    "topicCount": 38,
     "assignmentCount": 639,
     "dualAssignmentCount": 179
   },
@@ -74,10 +75,28 @@
       "ownerSlice": "C"
     },
     {
-      "topicId": "road-markings-and-lanes",
-      "titleRu": "Разметка, линии и полосы движения",
+      "topicId": "center-lines-and-crossing-rules",
+      "titleRu": "Осевые линии и правила пересечения разметки",
       "categoryId": "signs",
-      "splitCriteria": "Горизонтальная разметка, линии, isletas, intervenciones peatonales, carriles и запрет пересекать разметку.",
+      "splitCriteria": "Линии по центру проезжей части, continua/discontinua и вопрос, можно ли traspasar или circular sobre ellas.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "lane-and-channelization-markings",
+      "titleRu": "Полосы, островки и направляющая разметка",
+      "categoryId": "signs",
+      "splitCriteria": "Carriles, isletas, marcas canalizadoras, carril exclusivo/aceleración/sobrepaso и разметка, организующая поток.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "pedestrian-and-school-road-markings",
+      "titleRu": "Пешеходная и школьная разметка",
+      "categoryId": "signs",
+      "splitCriteria": "Senda peatonal, cruce verde, intervenciones peatonales, zona escolar и разметка, которая требует снизить скорость или остановиться ради пешеходов.",
       "phase": "planned",
       "status": "draft",
       "ownerSlice": "C"
@@ -110,10 +129,19 @@
       "ownerSlice": "C"
     },
     {
-      "topicId": "right-of-way-intersections",
-      "titleRu": "Перекрестки и приоритет проезда",
+      "topicId": "right-of-way-basic-intersections",
+      "titleRu": "Базовый приоритет на перекрестках",
       "categoryId": "priority",
-      "splitCriteria": "Приоритет справа, encrucijada, bocacalle, rotonda, incorporación, pendientes и ситуации уступания.",
+      "splitCriteria": "Encrucijada/bocacalle без специальных обстоятельств: правило правой стороны, avenida/calle/pasaje и обычный порядок проезда.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "right-of-way-signals-and-rail-crossings",
+      "titleRu": "Приоритет при светофорах и переездах",
+      "categoryId": "priority",
+      "splitCriteria": "Semáforo, luces intermitentes, paso a nivel, barreras, rieles и ситуации, где сигнализация меняет обычный приоритет.",
       "phase": "planned",
       "status": "draft",
       "ownerSlice": "C"
@@ -122,34 +150,97 @@
       "topicId": "traffic-lights-and-rail-crossings",
       "titleRu": "Светофоры, переезды и сигналы регулирования",
       "categoryId": "priority",
-      "splitCriteria": "Semáforo, luces intermitentes, paso a nivel, barreras, rieles и сигналы персонала на переездах.",
+      "splitCriteria": "Semáforo, luces intermitentes, paso a nivel, barreras, rieles и сигналы персонала на переездах как отдельный набор сигналов, даже когда билет не спрашивает порядок приоритета.",
       "phase": "planned",
       "status": "draft",
       "ownerSlice": "C"
     },
     {
-      "topicId": "turns-overtaking-and-lane-changes",
-      "titleRu": "Повороты, обгон и перестроения",
+      "topicId": "right-of-way-special-situations",
+      "titleRu": "Особые ситуации уступания и приоритета",
+      "categoryId": "priority",
+      "splitCriteria": "Rotonda, pendiente, obstrucción, incorporación al tránsito, emergencia, bocina, ambulancia и указания уполномоченного персонала.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "turns-direction-and-reversing",
+      "titleRu": "Повороты, направление движения и задний ход",
       "categoryId": "maneuvers",
-      "splitCriteria": "Giro, sobrepaso, adelantamiento, cambio de carril, marcha atrás и выбор полосы для маневра.",
+      "splitCriteria": "Giro, sentido de circulación, curva, marcha atrás, въезд/выезд из гаража и предварительное обозначение маневра.",
       "phase": "planned",
       "status": "draft",
       "ownerSlice": "C"
     },
     {
-      "topicId": "parking-and-stopping",
-      "titleRu": "Остановка, стоянка и гаражи",
+      "topicId": "overtaking-and-passing",
+      "titleRu": "Обгон и опережение",
+      "categoryId": "maneuvers",
+      "splitCriteria": "Sobrepaso/adelantamiento, запреты обгона, дистанция при объезде велосипедиста и возврат после маневра.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "lane-choice-and-lane-changes",
+      "titleRu": "Выбор полосы и перестроение",
+      "categoryId": "maneuvers",
+      "splitCriteria": "Cambio de carril, carril derecho/izquierdo, carril de sobrepaso/aceleración/exclusivo и приоритет при перестроении.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "parking-prohibitions-and-signed-zones",
+      "titleRu": "Запреты стоянки и знаки парковки",
       "categoryId": "parking",
-      "splitCriteria": "Estacionar, detenerse, doble fila, ascenso/descenso, garaje, aceras, ochava и расстояния у въездов.",
+      "splitCriteria": "Где estacionar запрещено или разрешено по знаку, цвету cartelería, acera и типу улицы/avenida.",
       "phase": "planned",
       "status": "draft",
       "ownerSlice": "C"
     },
     {
-      "topicId": "pedestrians-and-school-zones",
-      "titleRu": "Пешеходы, переходы и школьные зоны",
+      "topicId": "stopping-vs-parking-maneuvers",
+      "titleRu": "Остановка, стоянка и маневр парковки",
+      "categoryId": "parking",
+      "splitCriteria": "Различие detenerse/estacionar, doble fila, ascenso/descenso, balizas, marcha atrás и маневры въезда в garaje.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "parking-clearances-and-corners",
+      "titleRu": "Расстояния при парковке, углы и въезды",
+      "categoryId": "parking",
+      "splitCriteria": "Нужные отступы у entradas/instituciones/esquinas, ochava, cordón, ориентация колес и видимость при стоянке.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "pedestrian-crossings-and-priority",
+      "titleRu": "Пешеходы на переходах и приоритет",
       "categoryId": "vulnerable-users",
-      "splitCriteria": "Пешеходы, senda peatonal, esquinas, школьные переходы, видимость у ochava и взаимодействие с водителем.",
+      "splitCriteria": "Поведение водителя у пешеходов: ceder paso, esperar, contacto visual, semáforo peatonal и завершение перехода.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "pedestrian-school-zones-and-markings",
+      "titleRu": "Школьные зоны, углы и пешеходная разметка",
+      "categoryId": "vulnerable-users",
+      "splitCriteria": "Zona escolar, senda peatonal, ochava, cruce verde, intervenciones horizontales и специальные скоростные/остановочные ловушки у переходов.",
+      "phase": "planned",
+      "status": "draft",
+      "ownerSlice": "C"
+    },
+    {
+      "topicId": "vulnerable-users-and-shared-spaces",
+      "titleRu": "Уязвимые участники и совместное пространство",
+      "categoryId": "vulnerable-users",
+      "splitCriteria": "Иерархия peatón/ciclista, bicisenda/ciclovía, calle prioridad peatón и вопросы, где пешеходная тема пересекается с велосипедами или устойчивой мобильностью.",
       "phase": "planned",
       "status": "draft",
       "ownerSlice": "C"
@@ -302,7 +393,7 @@
     {
       "questionId": "b-fallback-003",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -343,7 +434,7 @@
       "questionId": "b-fallback-008",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -351,7 +442,7 @@
     {
       "questionId": "b-fallback-009",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -360,7 +451,7 @@
     {
       "questionId": "b-fallback-010",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-prohibitions-and-signed-zones"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -368,7 +459,7 @@
     {
       "questionId": "b-fallback-011",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -377,8 +468,8 @@
     {
       "questionId": "b-fallback-012",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "overtaking-and-passing",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -394,7 +485,7 @@
     {
       "questionId": "b-fallback-014",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -402,7 +493,7 @@
     {
       "questionId": "b-fallback-015",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
@@ -419,7 +510,7 @@
     {
       "questionId": "b-fallback-017",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -435,7 +526,7 @@
     {
       "questionId": "b-fallback-019",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -509,7 +600,7 @@
     {
       "questionId": "b-fallback-028",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-clearances-and-corners"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -534,8 +625,8 @@
     {
       "questionId": "b-fallback-031",
       "topicIds": [
-        "parking-and-stopping",
-        "right-of-way-intersections"
+        "parking-clearances-and-corners",
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -577,7 +668,7 @@
     {
       "questionId": "b-fallback-036",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -586,7 +677,7 @@
       "questionId": "b-fallback-037",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -594,7 +685,7 @@
     {
       "questionId": "b-fallback-038",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -602,7 +693,7 @@
     {
       "questionId": "b-fallback-039",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
@@ -635,8 +726,8 @@
     {
       "questionId": "b-fallback-043",
       "topicIds": [
-        "parking-and-stopping",
-        "right-of-way-intersections"
+        "parking-clearances-and-corners",
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -653,8 +744,8 @@
     {
       "questionId": "b-fallback-045",
       "topicIds": [
-        "parking-and-stopping",
-        "right-of-way-intersections"
+        "stopping-vs-parking-maneuvers",
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -704,8 +795,8 @@
     {
       "questionId": "b-fallback-051",
       "topicIds": [
-        "parking-and-stopping",
-        "right-of-way-intersections"
+        "stopping-vs-parking-maneuvers",
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -713,8 +804,8 @@
     {
       "questionId": "b-fallback-052",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -722,7 +813,7 @@
     {
       "questionId": "b-fallback-053",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -754,7 +845,7 @@
     {
       "questionId": "b-fallback-057",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "overtaking-and-passing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -786,7 +877,7 @@
     {
       "questionId": "b-fallback-061",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -802,7 +893,7 @@
     {
       "questionId": "b-fallback-063",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -827,7 +918,7 @@
     {
       "questionId": "b-fallback-066",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-basic-intersections",
         "information-signs"
       ],
       "phase": "planned",
@@ -844,7 +935,7 @@
     {
       "questionId": "b-fallback-068",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-basic-intersections",
         "warning-signs"
       ],
       "phase": "planned",
@@ -862,7 +953,7 @@
     {
       "questionId": "b-fallback-070",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "warning-signs"
       ],
       "phase": "planned",
@@ -895,7 +986,7 @@
     {
       "questionId": "b-fallback-074",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-prohibitions-and-signed-zones"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -911,7 +1002,7 @@
     {
       "questionId": "b-fallback-076",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -920,7 +1011,7 @@
     {
       "questionId": "b-fallback-077",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "warning-signs"
       ],
       "phase": "planned",
@@ -937,7 +1028,7 @@
     {
       "questionId": "b-fallback-079",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-prohibitions-and-signed-zones"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -961,8 +1052,8 @@
     {
       "questionId": "b-fallback-082",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -978,8 +1069,8 @@
     {
       "questionId": "b-fallback-084",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-special-situations",
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -987,7 +1078,7 @@
     {
       "questionId": "b-fallback-085",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -1004,7 +1095,7 @@
     {
       "questionId": "b-fallback-087",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1012,7 +1103,7 @@
     {
       "questionId": "b-fallback-088",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1020,8 +1111,8 @@
     {
       "questionId": "b-fallback-089",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1029,7 +1120,7 @@
     {
       "questionId": "b-fallback-090",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1054,7 +1145,7 @@
     {
       "questionId": "b-fallback-093",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -1064,7 +1155,7 @@
       "questionId": "b-fallback-094",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1088,7 +1179,7 @@
     {
       "questionId": "b-fallback-097",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
@@ -1097,7 +1188,7 @@
     {
       "questionId": "b-fallback-098",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1105,7 +1196,7 @@
     {
       "questionId": "b-fallback-099",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "overtaking-and-passing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1113,7 +1204,7 @@
     {
       "questionId": "b-fallback-100",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1145,7 +1236,7 @@
     {
       "questionId": "b-fallback-104",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1153,7 +1244,7 @@
     {
       "questionId": "b-fallback-105",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1161,7 +1252,7 @@
     {
       "questionId": "b-fallback-106",
       "topicIds": [
-        "pedestrians-and-school-zones",
+        "pedestrian-crossings-and-priority",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -1203,7 +1294,7 @@
     {
       "questionId": "b-fallback-111",
       "topicIds": [
-        "road-markings-and-lanes"
+        "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1235,7 +1326,7 @@
     {
       "questionId": "b-fallback-115",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "turns-direction-and-reversing",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -1244,7 +1335,7 @@
     {
       "questionId": "b-fallback-116",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1261,8 +1352,8 @@
     {
       "questionId": "b-fallback-118",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-basic-intersections",
+        "overtaking-and-passing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1270,7 +1361,7 @@
     {
       "questionId": "b-fallback-119",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -1287,7 +1378,7 @@
     {
       "questionId": "b-fallback-121",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-clearances-and-corners"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1311,7 +1402,7 @@
     {
       "questionId": "b-fallback-124",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "turns-direction-and-reversing",
         "warning-signs"
       ],
       "phase": "planned",
@@ -1336,7 +1427,7 @@
     {
       "questionId": "b-fallback-127",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -1345,7 +1436,7 @@
     {
       "questionId": "b-fallback-128",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "turns-direction-and-reversing",
         "warning-signs"
       ],
       "phase": "planned",
@@ -1354,7 +1445,7 @@
     {
       "questionId": "b-fallback-129",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "warning-signs"
       ],
       "phase": "planned",
@@ -1363,7 +1454,7 @@
     {
       "questionId": "b-fallback-130",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "overtaking-and-passing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1371,7 +1462,7 @@
     {
       "questionId": "b-fallback-131",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -1388,7 +1479,7 @@
     {
       "questionId": "b-fallback-133",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1413,7 +1504,7 @@
       "questionId": "b-fallback-136",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1437,7 +1528,7 @@
     {
       "questionId": "b-fallback-139",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -1447,7 +1538,7 @@
       "questionId": "b-fallback-140",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1464,7 +1555,7 @@
       "questionId": "b-fallback-142",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1513,8 +1604,8 @@
     {
       "questionId": "b-fallback-148",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-basic-intersections",
+        "lane-choice-and-lane-changes"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1530,8 +1621,8 @@
     {
       "questionId": "b-fallback-150",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-basic-intersections",
+        "overtaking-and-passing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1555,7 +1646,7 @@
     {
       "questionId": "b-fallback-153",
       "topicIds": [
-        "pedestrians-and-school-zones",
+        "pedestrian-crossings-and-priority",
         "warning-signs"
       ],
       "phase": "planned",
@@ -1580,7 +1671,7 @@
     {
       "questionId": "b-fallback-156",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -1606,7 +1697,7 @@
     {
       "questionId": "b-fallback-159",
       "topicIds": [
-        "pedestrians-and-school-zones",
+        "pedestrian-school-zones-and-markings",
         "warning-signs"
       ],
       "phase": "planned",
@@ -1647,8 +1738,8 @@
     {
       "questionId": "b-fallback-164",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-basic-intersections",
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1656,8 +1747,8 @@
     {
       "questionId": "b-fallback-165",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-basic-intersections",
+        "lane-choice-and-lane-changes"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1674,7 +1765,7 @@
       "questionId": "b-fallback-167",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1683,7 +1774,7 @@
       "questionId": "b-fallback-168",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1699,8 +1790,8 @@
     {
       "questionId": "b-fallback-170",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "overtaking-and-passing",
+        "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1708,8 +1799,8 @@
     {
       "questionId": "b-fallback-171",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-basic-intersections",
+        "overtaking-and-passing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1717,8 +1808,8 @@
     {
       "questionId": "b-fallback-172",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1734,8 +1825,8 @@
     {
       "questionId": "b-fallback-174",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-crossings-and-priority",
+        "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1753,7 +1844,7 @@
       "questionId": "b-fallback-176",
       "topicIds": [
         "speed-limits",
-        "road-markings-and-lanes"
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1761,7 +1852,7 @@
     {
       "questionId": "b-fallback-177",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "turns-direction-and-reversing",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -1770,7 +1861,7 @@
     {
       "questionId": "b-fallback-178",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1778,8 +1869,8 @@
     {
       "questionId": "b-fallback-179",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "overtaking-and-passing",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1787,7 +1878,7 @@
     {
       "questionId": "b-fallback-180",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-basic-intersections",
         "warning-signs"
       ],
       "phase": "planned",
@@ -1796,7 +1887,7 @@
     {
       "questionId": "b-fallback-181",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1838,7 +1929,7 @@
       "questionId": "b-fallback-186",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1846,8 +1937,8 @@
     {
       "questionId": "b-fallback-187",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-special-situations",
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1855,8 +1946,8 @@
     {
       "questionId": "b-fallback-188",
       "topicIds": [
-        "parking-and-stopping",
-        "road-markings-and-lanes"
+        "stopping-vs-parking-maneuvers",
+        "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1880,7 +1971,7 @@
     {
       "questionId": "b-fallback-191",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -1889,7 +1980,7 @@
     {
       "questionId": "b-fallback-192",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -1905,7 +1996,7 @@
     {
       "questionId": "b-fallback-194",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2010,7 +2101,7 @@
     {
       "questionId": "b-fallback-207",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "overtaking-and-passing",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -2043,7 +2134,7 @@
     {
       "questionId": "b-fallback-211",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -2060,7 +2151,7 @@
     {
       "questionId": "b-fallback-213",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2109,8 +2200,8 @@
     {
       "questionId": "b-fallback-219",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "overtaking-and-passing",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2126,8 +2217,8 @@
     {
       "questionId": "b-fallback-221",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2135,7 +2226,7 @@
     {
       "questionId": "b-fallback-222",
       "topicIds": [
-        "road-markings-and-lanes"
+        "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2143,8 +2234,8 @@
     {
       "questionId": "b-fallback-223",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "lane-choice-and-lane-changes",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2176,8 +2267,8 @@
     {
       "questionId": "b-fallback-227",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "overtaking-and-passing",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2218,7 +2309,7 @@
     {
       "questionId": "b-fallback-232",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
@@ -2227,7 +2318,7 @@
     {
       "questionId": "b-fallback-233",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2235,7 +2326,7 @@
     {
       "questionId": "b-fallback-234",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2268,7 +2359,7 @@
     {
       "questionId": "b-fallback-238",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -2318,8 +2409,8 @@
     {
       "questionId": "b-fallback-244",
       "topicIds": [
-        "right-of-way-intersections",
-        "turns-overtaking-and-lane-changes"
+        "right-of-way-basic-intersections",
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2335,7 +2426,7 @@
     {
       "questionId": "b-fallback-246",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2343,7 +2434,7 @@
     {
       "questionId": "b-fallback-247",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2351,7 +2442,7 @@
     {
       "questionId": "b-fallback-248",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2359,7 +2450,7 @@
     {
       "questionId": "b-fallback-249",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-clearances-and-corners"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2384,7 +2475,7 @@
     {
       "questionId": "b-fallback-252",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2417,7 +2508,7 @@
     {
       "questionId": "b-fallback-256",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2449,7 +2540,7 @@
     {
       "questionId": "b-fallback-260",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -2458,7 +2549,7 @@
     {
       "questionId": "b-fallback-261",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "overtaking-and-passing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2466,7 +2557,7 @@
     {
       "questionId": "b-fallback-262",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-basic-intersections",
         "warning-signs"
       ],
       "phase": "planned",
@@ -2484,7 +2575,7 @@
     {
       "questionId": "b-fallback-264",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2492,7 +2583,7 @@
     {
       "questionId": "b-fallback-265",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "turns-direction-and-reversing",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -2518,7 +2609,7 @@
     {
       "questionId": "b-fallback-268",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2544,7 +2635,7 @@
     {
       "questionId": "b-fallback-271",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-clearances-and-corners"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2552,7 +2643,7 @@
     {
       "questionId": "b-fallback-272",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2560,7 +2651,7 @@
     {
       "questionId": "b-fallback-273",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "turns-direction-and-reversing",
         "warning-signs"
       ],
       "phase": "planned",
@@ -2569,7 +2660,7 @@
     {
       "questionId": "b-fallback-274",
       "topicIds": [
-        "pedestrians-and-school-zones",
+        "pedestrian-crossings-and-priority",
         "information-signs"
       ],
       "phase": "planned",
@@ -2611,7 +2702,7 @@
     {
       "questionId": "b-fallback-279",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2627,7 +2718,7 @@
     {
       "questionId": "b-fallback-281",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2684,7 +2775,7 @@
     {
       "questionId": "b-fallback-288",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "turns-direction-and-reversing",
         "warning-signs"
       ],
       "phase": "planned",
@@ -2710,8 +2801,8 @@
     {
       "questionId": "b-fallback-291",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "overtaking-and-passing",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2738,7 +2829,7 @@
       "questionId": "b-fallback-294",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2772,7 +2863,7 @@
       "questionId": "b-fallback-298",
       "topicIds": [
         "public-transport-and-exclusive-lanes",
-        "road-markings-and-lanes"
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2796,7 +2887,7 @@
     {
       "questionId": "b-fallback-301",
       "topicIds": [
-        "parking-and-stopping"
+        "stopping-vs-parking-maneuvers"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2804,8 +2895,8 @@
     {
       "questionId": "b-fallback-302",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "lane-choice-and-lane-changes",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2813,7 +2904,7 @@
     {
       "questionId": "b-fallback-303",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2821,7 +2912,7 @@
     {
       "questionId": "b-fallback-304",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2853,7 +2944,7 @@
     {
       "questionId": "b-fallback-308",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2877,7 +2968,7 @@
     {
       "questionId": "b-fallback-311",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-basic-intersections",
         "warning-signs"
       ],
       "phase": "planned",
@@ -2886,7 +2977,7 @@
     {
       "questionId": "b-fallback-312",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-basic-intersections",
         "warning-signs"
       ],
       "phase": "planned",
@@ -2921,7 +3012,7 @@
     {
       "questionId": "b-fallback-316",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2938,8 +3029,8 @@
     {
       "questionId": "b-fallback-318",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2947,7 +3038,7 @@
     {
       "questionId": "b-fallback-319",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2955,8 +3046,8 @@
     {
       "questionId": "b-fallback-320",
       "topicIds": [
-        "parking-and-stopping",
-        "road-markings-and-lanes"
+        "parking-prohibitions-and-signed-zones",
+        "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2989,7 +3080,7 @@
     {
       "questionId": "b-fallback-324",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-prohibitions-and-signed-zones"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -2997,8 +3088,8 @@
     {
       "questionId": "b-fallback-325",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "lane-choice-and-lane-changes",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3047,7 +3138,7 @@
     {
       "questionId": "b-fallback-331",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "overtaking-and-passing",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -3064,7 +3155,7 @@
     {
       "questionId": "b-fallback-333",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "overtaking-and-passing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3088,8 +3179,8 @@
     {
       "questionId": "b-fallback-336",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "lane-choice-and-lane-changes",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3098,7 +3189,7 @@
       "questionId": "b-fallback-337",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3122,7 +3213,7 @@
     {
       "questionId": "b-fallback-340",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -3131,8 +3222,8 @@
     {
       "questionId": "b-fallback-341",
       "topicIds": [
-        "parking-and-stopping",
-        "right-of-way-intersections"
+        "parking-clearances-and-corners",
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3140,7 +3231,7 @@
     {
       "questionId": "b-fallback-342",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-clearances-and-corners"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3165,7 +3256,7 @@
     {
       "questionId": "b-fallback-345",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "warning-signs"
       ],
       "phase": "planned",
@@ -3182,7 +3273,7 @@
     {
       "questionId": "b-fallback-347",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "warning-signs"
       ],
       "phase": "planned",
@@ -3256,8 +3347,8 @@
     {
       "questionId": "b-fallback-356",
       "topicIds": [
-        "parking-and-stopping",
-        "road-markings-and-lanes"
+        "parking-prohibitions-and-signed-zones",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3265,7 +3356,7 @@
     {
       "questionId": "b-fallback-357",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -3274,8 +3365,8 @@
     {
       "questionId": "b-fallback-358",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "lane-choice-and-lane-changes",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3283,8 +3374,8 @@
     {
       "questionId": "b-fallback-359",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "overtaking-and-passing",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3301,7 +3392,7 @@
     {
       "questionId": "b-fallback-361",
       "topicIds": [
-        "road-markings-and-lanes"
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3309,8 +3400,8 @@
     {
       "questionId": "b-fallback-362",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3367,8 +3458,8 @@
     {
       "questionId": "b-fallback-369",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3376,7 +3467,7 @@
     {
       "questionId": "b-fallback-370",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -3393,7 +3484,7 @@
     {
       "questionId": "b-fallback-372",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -3403,7 +3494,7 @@
       "questionId": "b-fallback-373",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3445,7 +3536,7 @@
     {
       "questionId": "b-fallback-378",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
@@ -3470,7 +3561,7 @@
     {
       "questionId": "b-fallback-381",
       "topicIds": [
-        "pedestrians-and-school-zones",
+        "pedestrian-school-zones-and-markings",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -3495,7 +3586,7 @@
     {
       "questionId": "b-fallback-384",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "overtaking-and-passing",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -3504,7 +3595,7 @@
     {
       "questionId": "b-fallback-385",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3537,7 +3628,7 @@
     {
       "questionId": "b-fallback-389",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "warning-signs"
       ],
       "phase": "planned",
@@ -3579,7 +3670,7 @@
     {
       "questionId": "b-fallback-394",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -3596,8 +3687,8 @@
     {
       "questionId": "b-fallback-396",
       "topicIds": [
-        "parking-and-stopping",
-        "right-of-way-intersections"
+        "parking-clearances-and-corners",
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3622,7 +3713,7 @@
     {
       "questionId": "b-fallback-399",
       "topicIds": [
-        "pedestrians-and-school-zones",
+        "pedestrian-crossings-and-priority",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -3631,8 +3722,8 @@
     {
       "questionId": "b-fallback-400",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
-        "road-markings-and-lanes"
+        "overtaking-and-passing",
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3648,7 +3739,7 @@
     {
       "questionId": "b-fallback-402",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3656,7 +3747,7 @@
     {
       "questionId": "b-fallback-403",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
@@ -3698,8 +3789,8 @@
     {
       "questionId": "b-fallback-408",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3715,7 +3806,7 @@
     {
       "questionId": "b-fallback-410",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-basic-intersections",
         "warning-signs"
       ],
       "phase": "planned",
@@ -3724,7 +3815,7 @@
     {
       "questionId": "b-fallback-411",
       "topicIds": [
-        "turns-overtaking-and-lane-changes",
+        "overtaking-and-passing",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -3733,7 +3824,7 @@
     {
       "questionId": "b-fallback-412",
       "topicIds": [
-        "parking-and-stopping"
+        "parking-clearances-and-corners"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3741,7 +3832,7 @@
     {
       "questionId": "b-fallback-413",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
@@ -3750,7 +3841,7 @@
     {
       "questionId": "b-fallback-414",
       "topicIds": [
-        "turns-overtaking-and-lane-changes"
+        "turns-direction-and-reversing"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3758,7 +3849,7 @@
     {
       "questionId": "b-fallback-415",
       "topicIds": [
-        "road-markings-and-lanes"
+        "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3766,7 +3857,7 @@
     {
       "questionId": "b-fallback-416",
       "topicIds": [
-        "parking-and-stopping",
+        "parking-prohibitions-and-signed-zones",
         "regulatory-signs"
       ],
       "phase": "planned",
@@ -3808,7 +3899,7 @@
     {
       "questionId": "b-fallback-421",
       "topicIds": [
-        "pedestrians-and-school-zones"
+        "pedestrian-crossings-and-priority"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3841,7 +3932,7 @@
       "questionId": "b-fallback-425",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3850,7 +3941,7 @@
       "questionId": "b-fallback-426",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3883,7 +3974,7 @@
     {
       "questionId": "b-fallback-430",
       "topicIds": [
-        "right-of-way-intersections"
+        "right-of-way-special-situations"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3932,7 +4023,7 @@
     {
       "questionId": "b-fallback-436",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-basic-intersections",
         "warning-signs"
       ],
       "phase": "planned",
@@ -3950,7 +4041,7 @@
       "questionId": "b-fallback-438",
       "topicIds": [
         "public-transport-and-exclusive-lanes",
-        "road-markings-and-lanes"
+        "lane-and-channelization-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -3967,7 +4058,7 @@
     {
       "questionId": "b-fallback-440",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "warning-signs"
       ],
       "phase": "planned",
@@ -3984,7 +4075,7 @@
     {
       "questionId": "b-fallback-442",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
@@ -4001,7 +4092,7 @@
     {
       "questionId": "b-fallback-444",
       "topicIds": [
-        "right-of-way-intersections",
+        "right-of-way-special-situations",
         "warning-signs"
       ],
       "phase": "planned",
@@ -4092,7 +4183,7 @@
     {
       "questionId": "b-fallback-455",
       "topicIds": [
-        "parking-and-stopping",
+        "stopping-vs-parking-maneuvers",
         "information-signs"
       ],
       "phase": "planned",
@@ -4109,7 +4200,7 @@
     {
       "questionId": "b-fallback-457",
       "topicIds": [
-        "road-markings-and-lanes"
+        "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -4118,7 +4209,7 @@
       "questionId": "b-fallback-458",
       "topicIds": [
         "bicycles-and-micromobility",
-        "pedestrians-and-school-zones"
+        "pedestrian-school-zones-and-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -4126,8 +4217,8 @@
     {
       "questionId": "b-fallback-459",
       "topicIds": [
-        "pedestrians-and-school-zones",
-        "road-markings-and-lanes"
+        "pedestrian-school-zones-and-markings",
+        "pedestrian-and-school-road-markings"
       ],
       "phase": "planned",
       "ownerSlice": "C"
@@ -4135,8 +4226,8 @@
     {
       "questionId": "b-fallback-460",
       "topicIds": [
-        "parking-and-stopping",
-        "right-of-way-intersections"
+        "parking-clearances-and-corners",
+        "right-of-way-basic-intersections"
       ],
       "phase": "planned",
       "ownerSlice": "C"
