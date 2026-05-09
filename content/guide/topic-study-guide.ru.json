@@ -69,6 +69,731 @@
         }
       ],
       "claims": []
+    },
+    {
+      "id": "speed-limits",
+      "slug": "speed-limits",
+      "status": "draft",
+      "titleRu": "Лимиты скорости по типам дорог и зонам",
+      "summaryRu": "Короткий экзаменационный блок про максимальную, минимальную и предупредительную скорость в CABA и на маршрутах.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про скорость сначала определяйте тип места: calle, avenida, via rapida, ruta, semiautopista, paso a nivel или zona urbana. Число в ответе почти всегда привязано именно к типу дороги или к специальному участку.",
+        "Для обычной городской логики CABA держите базовую сетку: calle обычно 40 km/h, avenida обычно 60 km/h, pasaje или calle de convivencia 20 km/h. Но знак или конкретная артерия могут менять число, поэтому в билетах с изображением смотрите не только слово calle/avenida, но и дорожную ситуацию.",
+        "Для быстрых дорог и маршрутов полезно отделять национальную логику от CABA. На ruta вне городской зоны для автомобиля в билетах встречается 110 km/h, на semiautopista - 120 km/h, а ruta, проходящая через zona urbana, дает 60 km/h, если нет иной señalización.",
+        "Velocidad precautoria - это не отдельный общий максимум. Это требование ехать так, чтобы сохранять контроль с учетом видимости, погоды, состояния дороги, трафика и риска. Поэтому при плохой погоде или у paso a nivel правильная идея - снизить скорость под условия, а не просто держаться максимально разрешенного числа.",
+        "Минимальная скорость - отдельная ловушка. В CABA она считается как половина максимума для типа arteria, а в национальной логике для caminos и semiautopistas в билетах появляется 40 km/h. Знак с числом может обозначать минимум, а не максимум.",
+        "Несколько билетов попали сюда потому, что текущая таксономия связывает их с быстрыми дорогами или словами sobrepaso/velocidad. В них не нужно выводить новый лимит: отвечайте ровно на вопрос билета - про luces bajas, carril de desaceleración, sobrepaso или тип ruta."
+      ],
+      "practicalReasoningRu": [
+        "Скоростные лимиты делают поток предсказуемым: водитель заранее понимает, где ждать медленное движение, где можно ехать быстрее, а где нужно готовиться к пешеходам, переездам, съездам или плохой видимости.",
+        "На экзамене это помогает не угадывать число, а классифицировать ситуацию. Сначала тип дороги и особый участок, потом максимум или минимум, и только потом выбор ответа."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-velocidad-maxima",
+          "termEs": "velocidad máxima",
+          "translationRu": "максимальная скорость",
+          "sourceQuestionIds": [
+            "b-fallback-026",
+            "b-fallback-032",
+            "b-fallback-236"
+          ]
+        },
+        {
+          "id": "term-velocidad-minima",
+          "termEs": "velocidad mínima",
+          "translationRu": "минимальная скорость",
+          "sourceQuestionIds": [
+            "b-fallback-254",
+            "b-fallback-449"
+          ]
+        },
+        {
+          "id": "term-velocidad-precautoria",
+          "termEs": "velocidad precautoria",
+          "translationRu": "предупредительная, безопасная по условиям скорость",
+          "sourceQuestionIds": [
+            "b-fallback-029",
+            "b-fallback-158"
+          ]
+        },
+        {
+          "id": "term-ruta",
+          "termEs": "ruta",
+          "translationRu": "маршрут, трасса",
+          "sourceQuestionIds": [
+            "b-fallback-026",
+            "b-fallback-314",
+            "b-fallback-439"
+          ]
+        },
+        {
+          "id": "term-zona-urbana",
+          "termEs": "zona urbana",
+          "translationRu": "городская зона",
+          "sourceQuestionIds": [
+            "b-fallback-026"
+          ]
+        },
+        {
+          "id": "term-semiautopistas",
+          "termEs": "semiautopistas",
+          "translationRu": "полуавтомагистрали",
+          "sourceQuestionIds": [
+            "b-fallback-144",
+            "b-fallback-254"
+          ]
+        },
+        {
+          "id": "term-paso-nivel",
+          "termEs": "paso nivel",
+          "translationRu": "железнодорожный переезд",
+          "sourceQuestionIds": [
+            "b-fallback-158"
+          ]
+        },
+        {
+          "id": "term-sobrepaso",
+          "termEs": "sobrepaso",
+          "translationRu": "обгон, опережение с выездом из полосы",
+          "sourceQuestionIds": [
+            "b-fallback-176",
+            "b-fallback-439"
+          ]
+        },
+        {
+          "id": "term-carril-desaceleracion",
+          "termEs": "carril de desaceleración",
+          "translationRu": "полоса замедления перед съездом",
+          "sourceQuestionIds": [
+            "b-fallback-315"
+          ]
+        },
+        {
+          "id": "term-luces-bajas",
+          "termEs": "luces bajas",
+          "translationRu": "ближний свет",
+          "sourceQuestionIds": [
+            "b-fallback-250"
+          ]
+        },
+        {
+          "id": "term-autopistas",
+          "termEs": "autopistas",
+          "translationRu": "автомагистрали",
+          "sourceQuestionIds": [
+            "b-fallback-250"
+          ]
+        },
+        {
+          "id": "term-av-gral-paz",
+          "termEs": "Gral. Paz",
+          "translationRu": "проспект General Paz",
+          "sourceQuestionIds": [
+            "b-fallback-049",
+            "b-fallback-250"
+          ]
+        },
+        {
+          "id": "term-av-intendente-cantilo",
+          "termEs": "Av. Intendente Cantilo",
+          "translationRu": "проспект Intendente Cantilo",
+          "sourceQuestionIds": [
+            "b-fallback-398"
+          ]
+        },
+        {
+          "id": "term-ruta-nacional",
+          "termEs": "Ruta Nacional",
+          "translationRu": "национальный маршрут",
+          "sourceQuestionIds": [
+            "b-fallback-296"
+          ]
+        },
+        {
+          "id": "term-ruta-provincial",
+          "termEs": "Ruta Provincial",
+          "translationRu": "провинциальный маршрут",
+          "sourceQuestionIds": [
+            "b-fallback-343"
+          ]
+        },
+        {
+          "id": "term-salvo-senalizacion",
+          "termEs": "salvo señalización",
+          "translationRu": "если знак не указывает другое",
+          "sourceQuestionIds": [
+            "b-fallback-398"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-026",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-026-a1",
+              "verdict": "correct",
+              "explanationRu": "Для ruta, которая проходит через zona urbana, в билете нужен городской специальный предел 60 km/h."
+            },
+            {
+              "answerId": "b-fallback-026-a2",
+              "verdict": "incorrect",
+              "explanationRu": "80 km/h здесь слишком много: вопрос не про обычную загородную трассу, а про прохождение городской зоны."
+            },
+            {
+              "answerId": "b-fallback-026-a3",
+              "verdict": "incorrect",
+              "explanationRu": "90 km/h не соответствует указанному в билете случаю ruta dentro de zona urbana."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-029",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-029-a1",
+              "verdict": "correct",
+              "explanationRu": "В этом билете знак с числом 35 означает минимальную скорость: ниже 35 km/h двигаться нельзя."
+            },
+            {
+              "answerId": "b-fallback-029-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Это ловушка максимум/минимум. Ответ говорит про максимальную скорость, но знак в билете проверяет минимум."
+            },
+            {
+              "answerId": "b-fallback-029-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Velocidad precautoria - скорость по условиям, а не значение, которое здесь задает знак."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-032",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-032-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h - общий предел для многих avenidas, но изображение в этом билете требует более низкий предел."
+            },
+            {
+              "answerId": "b-fallback-032-a2",
+              "verdict": "incorrect",
+              "explanationRu": "50 km/h не является правильным числом для показанного tramo de avenida."
+            },
+            {
+              "answerId": "b-fallback-032-a3",
+              "verdict": "correct",
+              "explanationRu": "Для показанного участка avenida правильный ответ билета - 40 km/h; ориентируйтесь на конкретный tramo, а не только на слово avenida."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-049",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-049-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h не подходит: билет спрашивает конкретный tramo de Av. Gral. Paz с особым пределом."
+            },
+            {
+              "answerId": "b-fallback-049-a2",
+              "verdict": "correct",
+              "explanationRu": "Для указанных calzadas centrales de Av. Gral. Paz между Autopista Ingeniero Pascual Palazzo и Av. 27 de Febrero билет проверяет 80 km/h."
+            },
+            {
+              "answerId": "b-fallback-049-a3",
+              "verdict": "incorrect",
+              "explanationRu": "100 km/h относится к другим быстрым arterias, но не к этому указанному tramo de Av. Gral. Paz."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-125",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-125-a1",
+              "verdict": "correct",
+              "explanationRu": "Для показанного tramo de Av. Costanera Rafael Obligado правильный предел в этом билете - 60 km/h."
+            },
+            {
+              "answerId": "b-fallback-125-a2",
+              "verdict": "incorrect",
+              "explanationRu": "70 km/h встречается как исключение для некоторых avenidas, но не для именно этого показанного участка."
+            },
+            {
+              "answerId": "b-fallback-125-a3",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h больше похоже на обычную calle или специальный участок, а не на этот tramo de avenida."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-144",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-144-a1",
+              "verdict": "incorrect",
+              "explanationRu": "130 km/h - число для autopista в национальной логике, а билет спрашивает semiautopista."
+            },
+            {
+              "answerId": "b-fallback-144-a2",
+              "verdict": "correct",
+              "explanationRu": "Для автомобиля particular на semiautopista правильный максимум в билете - 120 km/h."
+            },
+            {
+              "answerId": "b-fallback-144-a3",
+              "verdict": "incorrect",
+              "explanationRu": "110 km/h относится к ruta/camino rural для автомобиля, но не к semiautopista в этом вопросе."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-158",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-158-a1",
+              "verdict": "correct",
+              "explanationRu": "У paso a nivel билет проверяет верхний предел velocidad precautoria: 20 km/h."
+            },
+            {
+              "answerId": "b-fallback-158-a2",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h слишком быстро для переезда в этой формулировке."
+            },
+            {
+              "answerId": "b-fallback-158-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h часто встречается у перекрестков без светофора, но не как верхний предел у paso nivel в этом билете."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-176",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-176-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Без cambio de carril это не тот смысл sobrepaso, который проверяет билет."
+            },
+            {
+              "answerId": "b-fallback-176-a2",
+              "verdict": "correct",
+              "explanationRu": "Sobrepaso в этом билете означает проехать впереди другого движущегося автомобиля, меняя полосу."
+            },
+            {
+              "answerId": "b-fallback-176-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Exceder el límite de velocidad máxima - это превышение скорости, а не определение sobrepaso."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-189",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-189-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Правило не говорит автоматически ехать ровно в половину максимума; нужна оценка конкретных условий."
+            },
+            {
+              "answerId": "b-fallback-189-a2",
+              "verdict": "correct",
+              "explanationRu": "При плохой погоде или сложной дороге водитель должен adaptar la velocidad к климату и состоянию пути."
+            },
+            {
+              "answerId": "b-fallback-189-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Одного соблюдения максимума недостаточно, если видимость, calzada или clima требуют ехать медленнее."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-236",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-236-a1",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h - типичное число для calle, но билет показывает avenida."
+            },
+            {
+              "answerId": "b-fallback-236-a2",
+              "verdict": "incorrect",
+              "explanationRu": "70 km/h - исключение для отдельных avenidas, но не общий ответ для этой avenida."
+            },
+            {
+              "answerId": "b-fallback-236-a3",
+              "verdict": "correct",
+              "explanationRu": "Для обычной avenida в CABA билет проверяет максимальную скорость 60 km/h."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-250",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-250-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Todas las autopistas верно, но вариант неполный: билет также включает быстрые arterias, перечисленные в другом варианте."
+            },
+            {
+              "answerId": "b-fallback-250-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Av. Gral. Paz, Lugones и Cantilo тоже верны, но вариант неполный без autopistas."
+            },
+            {
+              "answerId": "b-fallback-250-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильный ответ объединяет оба набора: ближний свет нужен на autopistas и на указанных быстрых arterias."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-254",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-254-a1",
+              "verdict": "correct",
+              "explanationRu": "Для semiautopistas в национальной логике билет проверяет минимальную скорость 40 km/h."
+            },
+            {
+              "answerId": "b-fallback-254-a2",
+              "verdict": "incorrect",
+              "explanationRu": "50 km/h не соответствует минимальному пределу, который спрашивает этот билет."
+            },
+            {
+              "answerId": "b-fallback-254-a3",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h слишком высоко для минимальной скорости semiautopista в этой формулировке."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-267",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-267-a1",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h - обычная calle, но изображение указывает на участок с более низким пределом."
+            },
+            {
+              "answerId": "b-fallback-267-a2",
+              "verdict": "correct",
+              "explanationRu": "Для показанного tramo de calle правильный максимум в билете - 20 km/h."
+            },
+            {
+              "answerId": "b-fallback-267-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h не является правильным числом для этого изображенного участка."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-289",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-289-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h может быть ответом для другого участка Costanera, но не для изображения в этом билете."
+            },
+            {
+              "answerId": "b-fallback-289-a2",
+              "verdict": "correct",
+              "explanationRu": "Для показанного участка Av. Costanera Rafael Obligado билет проверяет 70 km/h."
+            },
+            {
+              "answerId": "b-fallback-289-a3",
+              "verdict": "incorrect",
+              "explanationRu": "50 km/h не соответствует выбранному tramo de avenida."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-296",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-296-a1",
+              "verdict": "correct",
+              "explanationRu": "В этом speed-adjacent размещении вопрос фактически про распознавание маршрута: знак означает Ruta Nacional N°3."
+            },
+            {
+              "answerId": "b-fallback-296-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ruta Provincial N°3 - другой тип маршрутного знака, а не изображенный в билете."
+            },
+            {
+              "answerId": "b-fallback-296-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ruta Panamericana N°3 не соответствует показанному знаку."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-314",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-314-a1",
+              "verdict": "correct",
+              "explanationRu": "Для автомобиля particular на показанной zona de la ruta правильный максимум в билете - 110 km/h."
+            },
+            {
+              "answerId": "b-fallback-314-a2",
+              "verdict": "incorrect",
+              "explanationRu": "130 km/h относится к autopista, а не к этому участку ruta."
+            },
+            {
+              "answerId": "b-fallback-314-a3",
+              "verdict": "incorrect",
+              "explanationRu": "80 km/h не является максимумом для автомобиля particular в этой ситуации."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-315",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-315-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Снижать скорость прямо перед выездом поздно: это может мешать потоку на autopista или semiautopista."
+            },
+            {
+              "answerId": "b-fallback-315-a2",
+              "verdict": "correct",
+              "explanationRu": "Скорость снижают после входа в carril de desaceleración: там снижение ожидаемо для других водителей."
+            },
+            {
+              "answerId": "b-fallback-315-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ждать въезда на новую дорогу нельзя: к этому моменту скорость для съезда уже должна быть снижена."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-343",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-343-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ruta Nacional N°5 - не тот тип маршрутного знака, который показан в билете."
+            },
+            {
+              "answerId": "b-fallback-343-a2",
+              "verdict": "correct",
+              "explanationRu": "Вопрос здесь фактически про маршрутный знак: правильное распознавание - Ruta Provincial N°5."
+            },
+            {
+              "answerId": "b-fallback-343-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ruta Panamericana N°5 не соответствует изображению."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-377",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-377-a1",
+              "verdict": "correct",
+              "explanationRu": "Показанный tramo de calle имеет максимум 20 km/h; не применяйте автоматически общий предел calle."
+            },
+            {
+              "answerId": "b-fallback-377-a2",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h - общий ориентир для calle, но в этом изображенном месте действует меньший предел."
+            },
+            {
+              "answerId": "b-fallback-377-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h не является правильным числом для данного tramo."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-391",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-391-a1",
+              "verdict": "correct",
+              "explanationRu": "В показанной ситуации правильный limite de velocidad máxima - 60 km/h."
+            },
+            {
+              "answerId": "b-fallback-391-a2",
+              "verdict": "incorrect",
+              "explanationRu": "80 km/h слишком высоко для ситуации, которую показывает билет."
+            },
+            {
+              "answerId": "b-fallback-391-a3",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h не соответствует правильному пределу для этого изображения."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-398",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-398-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h - общий предел для avenidas, но Av. Intendente Cantilo относится к быстрым arterias."
+            },
+            {
+              "answerId": "b-fallback-398-a2",
+              "verdict": "incorrect",
+              "explanationRu": "110 km/h относится к ruta в национальной логике, а не к Av. Intendente Cantilo в этом билете."
+            },
+            {
+              "answerId": "b-fallback-398-a3",
+              "verdict": "correct",
+              "explanationRu": "Если нет знака с другим пределом, для Av. Intendente Cantilo правильный ответ билета - 100 km/h."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-420",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-420-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h - типичное число для avenida, но вопрос спрашивает calle."
+            },
+            {
+              "answerId": "b-fallback-420-a2",
+              "verdict": "correct",
+              "explanationRu": "Для обычной calle в CABA билет проверяет максимум 40 km/h."
+            },
+            {
+              "answerId": "b-fallback-420-a3",
+              "verdict": "incorrect",
+              "explanationRu": "70 km/h относится к отдельным avenidas-исключениям, а не к calle."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-439",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-439-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Нельзя превышать разрешенный максимум только потому, что выполняется sobrepaso."
+            },
+            {
+              "answerId": "b-fallback-439-a2",
+              "verdict": "correct",
+              "explanationRu": "Утверждение falso: маневр sobrepaso не дает права превысить скорость, установленную для ruta."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-449",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-449-a1",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h было бы половиной от 60, но здесь билет спрашивает calle с другим максимумом."
+            },
+            {
+              "answerId": "b-fallback-449-a2",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h - максимум для обычной calle, а не минимальная скорость."
+            },
+            {
+              "answerId": "b-fallback-449-a3",
+              "verdict": "correct",
+              "explanationRu": "Минимум для calle считается как половина максимума 40 km/h, поэтому правильный ответ - 20 km/h."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-452",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-452-a1",
+              "verdict": "correct",
+              "explanationRu": "Утверждение verdadero: для показанной arteria в билете пара лимитов 30 km/h минимальная и 60 km/h максимальная."
+            },
+            {
+              "answerId": "b-fallback-452-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно, потому что указанная пара 30/60 km/h соответствует ситуации из билета."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-max-min-precautoria",
+          "textRu": "Слова máxima, mínima и precautoria не взаимозаменяемы. Число на знаке или в варианте ответа может быть минимумом, а не максимумом.",
+          "sourceQuestionIds": [
+            "b-fallback-029",
+            "b-fallback-254",
+            "b-fallback-449"
+          ]
+        },
+        {
+          "id": "trap-road-type-first",
+          "textRu": "Не выбирайте число по памяти до того, как определили тип дороги: calle, avenida, ruta, semiautopista и via rapida дают разные ответы.",
+          "sourceQuestionIds": [
+            "b-fallback-026",
+            "b-fallback-144",
+            "b-fallback-236",
+            "b-fallback-420"
+          ]
+        },
+        {
+          "id": "trap-image-specific",
+          "textRu": "В билетах с изображением конкретный tramo может быть исключением. Поэтому два похожих вопроса про Costanera или calle могут иметь разные числа.",
+          "sourceQuestionIds": [
+            "b-fallback-032",
+            "b-fallback-125",
+            "b-fallback-267",
+            "b-fallback-289",
+            "b-fallback-377"
+          ]
+        },
+        {
+          "id": "trap-no-speed-excess-for-passing",
+          "textRu": "Sobrepaso не разрешает превышать максимум. Если вариант говорит, что можно превысить лимит при обгоне, это ловушка.",
+          "sourceQuestionIds": [
+            "b-fallback-176",
+            "b-fallback-439"
+          ]
+        },
+        {
+          "id": "trap-loose-speed-placement",
+          "textRu": "Маршрутные знаки и luces bajas включены в этот блок только из-за текущей таксономии: отвечайте на конкретный смысл билета, а не ищите там скрытый лимит скорости.",
+          "sourceQuestionIds": [
+            "b-fallback-250",
+            "b-fallback-296",
+            "b-fallback-343"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-caba-general-speed-grid",
+          "textRu": "В CABA для обычных автомобилей общая сетка из билетов: calle 40 km/h, avenida 60 km/h, pasaje/calle de convivencia 20 km/h, с отдельными исключениями для быстрых arterias и специальных участков.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "speed-limits-caba-general-speed-grid"
+        },
+        {
+          "id": "claim-national-routes-and-semiautopistas",
+          "textRu": "Национальная логика билетов отличает ruta, semiautopista и ruta atravesando zona urbana: для автомобиля встречаются 110 km/h, 120 km/h и 60 km/h соответственно.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "speed-limits-national-routes-and-semiautopistas"
+        },
+        {
+          "id": "claim-precautionary-speed",
+          "textRu": "Velocidad precautoria требует выбирать скорость по условиям видимости, дороги, погоды, трафика, состояния водителя и автомобиля, даже когда общий максимум выше.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "speed-limits-precautionary-speed"
+        },
+        {
+          "id": "claim-low-beams-fast-roads",
+          "textRu": "В CABA ближний свет обязателен круглосуточно на all autopistas, Av. Gral. Paz, Av. Leopoldo Lugones и Av. Intendente Cantilo.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "speed-limits-low-beams-fast-roads"
+        }
+      ]
     }
   ]
 }

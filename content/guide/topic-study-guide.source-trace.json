@@ -2,5 +2,71 @@
   "version": 1,
   "guideId": "topic-study-guide",
   "status": "draft",
-  "entries": []
+  "entries": [
+    {
+      "id": "speed-limits-caba-general-speed-grid",
+      "topicId": "speed-limits",
+      "claimId": "claim-caba-general-speed-grid",
+      "claimSummaryRu": "Общие лимиты скорости CABA для calles, avenidas, pasajes/calles de convivencia, быстрых arterias и специальных участков.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "6.2.2 Límites máximos de velocidad",
+        "6.2.3 Límites máximos especiales",
+        "6.2.7 Límites mínimos de velocidad"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Used only for compact CABA speed-grid claims needed by assigned tickets; ticket-specific image exceptions remain explained at ticket level."
+    },
+    {
+      "id": "speed-limits-national-routes-and-semiautopistas",
+      "topicId": "speed-limits",
+      "claimId": "claim-national-routes-and-semiautopistas",
+      "claimSummaryRu": "Национальные лимиты для rutas, semiautopistas и rutas through urban zones used by the assigned speed-limit tickets.",
+      "officialDocumentIds": [
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Artículo 51 Velocidad máxima",
+        "Artículo 52 Límites especiales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "No Decreto 779 annex-specific sign claim is made in this topic."
+    },
+    {
+      "id": "speed-limits-precautionary-speed",
+      "topicId": "speed-limits",
+      "claimId": "claim-precautionary-speed",
+      "claimSummaryRu": "Velocidad precautoria depends on driver, vehicle, visibility, road, weather and traffic conditions, not only the posted maximum.",
+      "officialDocumentIds": [
+        "ley-24449-transito-seguridad-vial",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 24.449 Artículo 50 Velocidad precautoria",
+        "Ley 2148 6.2.1 Adecuación de la velocidad a las circunstancias"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports the weather and paso-a-nivel learning material without generalizing beyond assigned ticket needs."
+    },
+    {
+      "id": "speed-limits-low-beams-fast-roads",
+      "topicId": "speed-limits",
+      "claimId": "claim-low-beams-fast-roads",
+      "claimSummaryRu": "CABA requires low beams twenty-four hours on all autopistas, Av. Gral. Paz, Av. Leopoldo Lugones and Av. Intendente Cantilo.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "6.3.1 Generalidades, luces bajas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Included because b-fallback-250 is assigned to speed-limits through the current road-context taxonomy."
+    }
+  ]
 }

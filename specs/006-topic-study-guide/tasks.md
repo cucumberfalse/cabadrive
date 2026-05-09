@@ -72,17 +72,17 @@
 
 ## Future Slice E: Topic Content Slices
 
-- [ ] T050 Implement one topic, or at most two small related topics, per PR, only after Slice D2 per-placement readiness validation exists.
-- [ ] T051 Add concise Russian material for the assigned topic only.
-- [ ] T052 Add practical reasoning only when it helps answer assigned tickets.
-- [ ] T053 Add useful Spanish words and constructions sourced from assigned ticket question/answer wording.
-- [ ] T054 Add ticket blocks for the assigned topic with correct answer explanation and wrong-answer explanations for every incorrect answer option.
-- [ ] T055 Include local question images in rendered guide ticket blocks when the canonical question has an image.
-- [ ] T056 Add compact trap notes for negations, exceptions, similar answers, and mistranslation risks in the assigned topic.
-- [ ] T057 Add source-trace entries for official-source-backed claims in the assigned topic.
-- [ ] T058 Archive or cite only the official documents/materials needed by the assigned topic slice.
-- [ ] T059 Validate the assigned slice and update coverage/source-trace evidence.
-- [ ] T060 Record source conflicts, dead ends, decisions, known issues, and Implementation Agent feedback.
+- [x] T050 Implement one topic, or at most two small related topics, per PR, only after Slice D2 per-placement readiness validation exists. Slice E1 covers only `speed-limits`.
+- [x] T051 Add concise Russian material for the assigned topic only.
+- [x] T052 Add practical reasoning only when it helps answer assigned tickets.
+- [x] T053 Add useful Spanish words and constructions sourced from assigned ticket question/answer wording.
+- [x] T054 Add ticket blocks for the assigned topic with correct answer explanation and wrong-answer explanations for every incorrect answer option.
+- [x] T055 Include local question images in rendered guide ticket blocks when the canonical question has an image.
+- [x] T056 Add compact trap notes for negations, exceptions, similar answers, and mistranslation risks in the assigned topic.
+- [x] T057 Add source-trace entries for official-source-backed claims in the assigned topic.
+- [x] T058 Archive or cite only the official documents/materials needed by the assigned topic slice.
+- [x] T059 Validate the assigned slice and update coverage/source-trace evidence.
+- [x] T060 Record source conflicts, dead ends, decisions, known issues, and Implementation Agent feedback.
 
 ## Future Slice F: UI Integration
 
@@ -123,6 +123,10 @@
 - [ ] T089 Confirm required checks are green after push/PR.
 - [ ] T090 Confirm the PR has no unresolved merge conflicts.
 - [ ] T091 Leave only final human approval or merge mechanics remaining.
+
+## Future Slice H: Taxonomy Refinement Backlog
+
+- [ ] T092 Reevaluate `b-fallback-296` and `b-fallback-343` as a future taxonomy-cleanup candidate after Slice E1; any reassignment must preserve the maximum-two-topic rule, update coverage evidence, and land outside the `speed-limits` content PR.
 
 ## Process Memory
 
@@ -169,6 +173,9 @@
 - Slice D stored clean HTML evidence for each seeded HTML source under `content/official-documents/originals/` even though raw originals are not required for HTML by the validator. The Ley 24.449 cleaned HTML evidence was regenerated from the archived Markdown after verifying the Argentina.gob.ar updated page; it is not a byte-preserving network capture and exact-text validation remains pending.
 - Slice D follow-up clarified that the HTML files under `content/official-documents/originals/` are cleaned HTML evidence, not byte-preserving raw network captures. The files were normalized to remove line-end trailing whitespace so `git diff --check origin/main...HEAD` can protect the PR without a scoped whitespace exception.
 - Slice D skipped the optional GCBA four-wheel manual PDF because the current official PDF is 68.3 MB and would require a careful PDF/OCR/table/image extraction and exact-text evidence path outside this small legal-source seed. Future topic slices may archive it if they need manual-specific claims.
+- Slice E1 implements only the `speed-limits` topic. It adds the topic content to `content/guide/topic-study-guide.ru.json`, promotes the 25 assigned `speed-limits` placements to effective `content_ready`, and keeps every non-speed dual placement planned through `placementPhases`.
+- Slice E1 uses existing seeded official documents only: `ley-24449-transito-seguridad-vial` and `ley-2148-caba-codigo-transito-transporte`. It does not cite Decreto 779 annex-specific sign claims, does not alter official documents, and does not archive new official source files.
+- Slice E1 keeps sign-like or road-context-only tickets inside `speed-limits` because the current taxonomy assigns them there, but explanations are ticket-specific and avoid turning route signs, low-beam lights, or deceleration-lane behavior into generalized speed-limit rules.
 
 ### Known Issues
 
@@ -186,9 +193,21 @@
 - Slice D conversion flattened HTML styling and link targets into visible text. Future exact-text validation should compare wording, numbering, headings, and structure against the original HTML evidence and record any unavoidable formatting/link-target limitations.
 - Decreto 779/1995 annex bodies, including the signal-system annex likely needed by sign topics, are not yet archived as separate official-document entries.
 - The optional GCBA four-wheel manual PDF is not yet archived or converted; topic slices must add a dedicated PDF conversion/evidence slice before citing manual-only claims.
+- Slice E1 found that `b-fallback-296` and `b-fallback-343` are route-sign recognition tickets rather than speed-limit tickets. They remain included in `speed-limits` for this PR because taxonomy currently assigns them there, but they need Architect disposition for a future taxonomy cleanup.
+- Slice E1 includes loosely speed-adjacent tickets `b-fallback-176`, `b-fallback-250`, and `b-fallback-315` as assigned. Their explanations stay focused on the ticket wording and do not add unsupported generalized speed claims.
 
 ### Verification Evidence
 
+- Slice E1 worktree orientation: `pwd && git status --short --branch` reported `/Users/chap/devel/cabadrive/.claude/worktrees/006-speed-limits-topic-content` and `## codex/006-speed-limits-topic-content...origin/main` before implementation edits.
+- Slice E1 required memory read: `AGENTS.md`, `.specify/memory/constitution.md`, `docs_project/README.md`, `docs_project/project-idea.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, `docs_project/screens/learning-and-exam-flows.md`, `docs/specify/README.md`, active feature memory `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, `content/official-documents/AGENTS.md`, `scripts/content-topic-guide.mjs`, `tests/content-topic-guide.test.mjs`, and the current guide/coverage/source-trace JSON files.
+- Slice E1 local coverage check verified all 25 assigned ticket IDs resolve to effective `speed-limits: content_ready`: `b-fallback-026`, `029`, `032`, `049`, `125`, `144`, `158`, `176`, `189`, `236`, `250`, `254`, `267`, `289`, `296`, `314`, `315`, `343`, `377`, `391`, `398`, `420`, `439`, `449`, and `452`.
+- Slice E1 targeted validator evidence: initial `node --test tests/content-topic-guide.test.mjs` failed because vocabulary term `Av. Gral. Paz` did not appear exactly in every listed source ticket. The term was narrowed to `Gral. Paz`, then `node --test tests/content-topic-guide.test.mjs` passed 21 tests.
+- Slice E1 content-validation evidence: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice E1 test evidence: `pnpm run test` passed 72 Node tests.
+- Slice E1 environment note: initial `pnpm run build` failed because this isolated worktree had no `node_modules` and `vite` was not installed. `pnpm install` completed with the lockfile already up to date and no tracked dependency-file changes, then build/preflight continued.
+- Slice E1 build evidence: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service-worker generation reported 280 cached assets.
+- Slice E1 diff hygiene evidence: `git diff --check` passed with no output.
+- Slice E1 final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 - Local branch/worktree orientation: `git status --short --branch` reported `## codex/006-topic-study-guide-intake` with untracked `specs/006-topic-study-guide/`.
 - Required memory read: `AGENTS.md`, `.specify/memory/constitution.md`, `docs_project/README.md`, `docs_project/project-idea.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, `docs_project/screens/learning-and-exam-flows.md`, `docs/specify/README.md`, and `specs/006-topic-study-guide/feature-request.md`.
 - Current content shape inspected: question file, existing condensed guide, vocabulary, explanations, source registry, production eligibility policy, `scripts/validate-content.mjs`, `src/data/content.ts`, and current `GuideView`.
@@ -293,6 +312,7 @@
 - Slice C: none requiring Architect disposition.
 - Slice D: topic slices that need Decreto 779 annex-specific claims, especially signage/technical vehicle material, should archive those annexes as separate manifest entries rather than citing only the main Decreto 779 page. The optional GCBA four-wheel manual PDF also needs a separate PDF conversion/evidence slice if topic content will cite manual-only claims.
 - Slice D2: none requiring Architect disposition.
+- Slice E1: `b-fallback-296` and `b-fallback-343` appear to be route-sign recognition tickets, not speed-limit tickets. They were retained in `speed-limits` because this PR must follow the current taxonomy, but Architect should consider whether their speed placement should be removed or moved in a future taxonomy refinement while preserving the maximum-two-topic rule.
 
 ### Architect Dispositions
 
@@ -301,3 +321,4 @@
 - Slice C planning/validator conflict before taxonomy implementation was accepted. Disposition: distinguish planned taxonomy assignments from content-ready/published rendered placements in the coverage manifest and validator. Slice C must validate all 460 current ticket IDs as planned coverage with one or two categories, and must adjust Slice A validator behavior if needed so planned assignments do not require guide ticket blocks or answer explanations. Final published validation remains strict: all planned assignments must be promoted to content-ready/published placements, coverage and guide content must agree globally, repeated tickets must physically render in each published topic, and every rendered ticket block must include answer explanations.
 - Slice D annex feedback accepted as a future constraint, not a Slice D blocker. Disposition: topic slices using Decreto 779 annex-specific claims, especially signage or technical vehicle material, must satisfy T052 by archiving the relevant annex bodies as separate manifest entries before adding T051 source traces; T068, T069, and T070 then validate those annex entries and claims with the rest of the archive.
 - Slice D GCBA manual feedback accepted as a future task, not a Slice D blocker. Disposition: topic slices using claims found only in the optional GCBA four-wheel manual must first add a dedicated PDF conversion/evidence slice under T052, including raw evidence and conversion limitations, before those claims can pass T051 and the final T068/T069/T070 gates.
+- Slice E1 taxonomy feedback accepted as future cleanup consideration T092, not a Slice E1 blocker. Disposition: `b-fallback-296` and `b-fallback-343` may be better route-sign recognition placements, but this PR correctly follows the current Slice C taxonomy, keeps the `speed-limits` placements content-ready, and must not reassign them here. A later taxonomy refinement may remove or move those placements only with updated coverage evidence and the maximum-two-topic rule preserved.
