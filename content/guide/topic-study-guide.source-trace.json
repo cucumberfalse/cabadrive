@@ -288,6 +288,129 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current/in_force",
       "notes": "Used for b-fallback-389 and b-fallback-440 incorporation-priority explanations; it does not turn warning-sign recognition into a full right-of-way topic."
+    },
+    {
+      "id": "traffic-lights-signal-priority-hierarchy",
+      "topicId": "traffic-lights-and-rail-crossings",
+      "claimId": "claim-signal-priority-hierarchy",
+      "claimSummaryRu": "Operational authority/control orders and transitory signaling may prevail over traffic lights; traffic lights replace ordinary unsignalized-intersection priority rules.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 2.3.4 Prioridades",
+        "Ley 2148 2.3.9 Responsabilidad por la señalización",
+        "Ley 24.449 Artículo 36 Prioridad normativa",
+        "Anexo L Capítulo I punto 1 Concepto",
+        "Anexo L punto 30 Concepto"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports the compact hierarchy and transitory-signal-over-semaphore explanations for assigned tickets without adding broader traffic-control doctrine."
+    },
+    {
+      "id": "traffic-lights-actions-and-left-turns",
+      "topicId": "traffic-lights-and-rail-crossings",
+      "claimId": "claim-traffic-light-actions-and-left-turns",
+      "claimSummaryRu": "Traffic light colors and flashing lights define vehicle actions; left turns on signalized two-way intersections require a specific light signal.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.10 Vehículos en intersecciones semaforizadas",
+        "Ley 2148 6.1.14 Giros",
+        "Ley 24.449 Artículo 44 Vías semaforizadas",
+        "Anexo L punto 32 Significado de las luces",
+        "Anexo L punto 34 Flechas direccionales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Used for red/yellow flashing signal traps and left-turn tickets b-fallback-191, b-fallback-340 and b-fallback-403."
+    },
+    {
+      "id": "traffic-lights-rail-crossing-rules",
+      "topicId": "traffic-lights-and-rail-crossings",
+      "claimId": "claim-rail-crossing-rules",
+      "claimSummaryRu": "Drivers must cross level crossings only after checking there is no train and no risk; barriers, red railway signals and rail proximity impose stopping/clearance duties.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.10 Vehículos en intersecciones semaforizadas",
+        "Ley 2148 6.2.3 Límites máximos especiales",
+        "Ley 2148 Capítulo 6.4 Pasos a nivel",
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso k",
+        "Ley 24.449 Artículo 52 Límites especiales",
+        "Anexo L R.30 Barreras ferroviales",
+        "Anexo L punto 36.c Semáforos especiales para cruce ferrovial con barreras"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports assigned rail-crossing ticket explanations and the compact 5 m / 20 km/h / stop-before-barrier logic."
+    },
+    {
+      "id": "traffic-lights-unsignalized-intersections",
+      "topicId": "traffic-lights-and-rail-crossings",
+      "claimId": "claim-unsignalized-intersections",
+      "claimSummaryRu": "At unsignalized CABA intersections, artery hierarchy and right-side priority apply with specific exceptions, including vehicles leaving a level crossing; speed limits differ for streets and avenues.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.7.2 Otras prioridades de paso",
+        "Ley 2148 6.7.3 Intersecciones",
+        "Ley 2148 6.2.3 Límites máximos especiales",
+        "Ley 24.449 Artículo 41 Prioridades",
+        "Ley 24.449 Artículo 52 Límites especiales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Used only for assigned no-traffic-light right-of-way and precautionary-speed tickets."
+    },
+    {
+      "id": "traffic-lights-rail-and-warning-sign-meanings",
+      "topicId": "traffic-lights-and-rail-crossings",
+      "claimId": "claim-rail-and-warning-sign-meanings",
+      "claimSummaryRu": "Anexo L sign entries support the assigned sign meanings for railway crossing, more than two tracks, railway barriers, curve prevention panels and movable bridges.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Anexo L P.1 Cruce ferrovial a nivel",
+        "Anexo L P.2 Paneles de prevención",
+        "Anexo L P.3 Cruz de San Andrés",
+        "Anexo L P.17 Puente móvil",
+        "Anexo L P.24-1 Encrucijada con paso a nivel en giro",
+        "Anexo L R.30 Barreras ferroviales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports only the sign-recognition tickets physically assigned to this topic; broader sign taxonomy remains in other slices."
+    },
+    {
+      "id": "traffic-lights-emergency-and-overtake-signals",
+      "topicId": "traffic-lights-and-rail-crossings",
+      "claimId": "claim-emergency-and-overtake-signals",
+      "claimSummaryRu": "Emergency-service-like vehicles must warn with lights/horn/cloth or equivalent means; other drivers must yield, and overtaking requires checking signals, oncoming traffic and other overtaking maneuvers.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.3.1 Generalidades",
+        "Ley 2148 6.5.2 Otros vehículos en servicio de emergencia",
+        "Ley 2148 6.5.3 Comportamiento de otros conductores respecto de los vehículos de emergencia",
+        "Ley 2148 6.1.12 Adelantamientos y sobrepasos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Used for b-fallback-093, b-fallback-134, b-fallback-139 and b-fallback-407 explanations without broadening the slice into a full emergency or passing topic."
     }
   ]
 }

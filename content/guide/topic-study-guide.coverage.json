@@ -161,9 +161,9 @@
       "titleRu": "Светофоры, переезды и сигналы регулирования",
       "categoryId": "priority",
       "splitCriteria": "Semáforo, luces intermitentes, paso a nivel, barreras, rieles и сигналы персонала на переездах как отдельный набор сигналов, даже когда билет не спрашивает порядок приоритета.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E5"
     },
     {
       "topicId": "right-of-way-special-situations",
@@ -456,7 +456,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-010",
@@ -518,8 +522,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-017",
@@ -820,7 +824,11 @@
         "authorities-controls-and-sanctions"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "traffic-lights-and-rail-crossings": "content_ready",
+        "authorities-controls-and-sanctions": "planned"
+      }
     },
     {
       "questionId": "b-fallback-051",
@@ -927,7 +935,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-064",
@@ -1044,7 +1056,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-077",
@@ -1124,7 +1140,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-086",
@@ -1191,7 +1211,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-094",
@@ -1415,7 +1439,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-120",
@@ -1446,8 +1474,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-124",
@@ -1532,7 +1560,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-132",
@@ -1555,8 +1587,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-135",
@@ -1598,7 +1630,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-140",
@@ -1668,8 +1704,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-148",
@@ -2016,8 +2052,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-186",
@@ -2069,7 +2105,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-192",
@@ -2156,8 +2196,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-203",
@@ -2469,7 +2509,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-239",
@@ -3261,8 +3305,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-327",
@@ -3383,7 +3427,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-341",
@@ -3538,7 +3586,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-358",
@@ -3649,7 +3701,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-371",
@@ -3666,7 +3722,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-373",
@@ -3803,8 +3863,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-388",
@@ -3868,7 +3928,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-signals-and-rail-crossings": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-395",
@@ -3953,7 +4017,11 @@
         "traffic-lights-and-rail-crossings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E5",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "traffic-lights-and-rail-crossings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-404",
@@ -3985,8 +4053,8 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E5"
     },
     {
       "questionId": "b-fallback-408",
