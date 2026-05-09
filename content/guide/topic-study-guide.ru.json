@@ -408,12 +408,16 @@
       "slug": "driver-hand-signals",
       "status": "draft",
       "titleRu": "Жесты водителя и ручные сигналы",
-      "summaryRu": "Черновой структурный блок для проверки схемы тематического гида на примере жестов водителя.",
+      "summaryRu": "Короткий блок про ручные жесты водителя, аварийные предупреждения и ловушку seña/señal.",
       "learningMaterialRu": [
-        "В этом черновом блоке фиксируется структура будущей темы: короткое объяснение, слова из билетов, сами билеты и заметки о ловушках. Полный учебный текст будет добавлен в отдельном контентном срезе."
+        "Seña в этих билетах - это жест или ручной сигнал водителя, а не señal vial как дорожный знак. Если вопрос показывает руку, сначала распознайте сам жест: giro a la derecha, giro a la izquierda или detenerse.",
+        "Архивные официальные источники поддерживают общий принцип: непредсказуемую maniobra нужно предупреждать заранее и во время выполнения соответствующими luces, а при необходимости усиливать предупреждение señales manuales. При egreso hacia garaje/playa/estación de servicio CABA отдельно говорит о balizas и, если нужно, ручных сигналах.",
+        "Для аварийной ситуации отличайте ручной жест от balizas. Balizas/intermitentes нужны, чтобы показать detención, imprevisto, emergencia или próxima maniobra riesgosa; жест может сопровождать предупреждение, но не заменяет обязанность действовать безопасно.",
+        "Формы жестов на картинках в этом fallback-наборе объясняются строго как ответы конкретных билетов. В текущем архиве нет отдельного официального каталога этих изображений, поэтому не превращаем рисунки в более широкий неподтвержденный справочник."
       ],
       "practicalReasoningRu": [
-        "Жесты помогают другим участникам движения понять намерение водителя, когда это нужно для безопасного маневра."
+        "Ручной сигнал полезен как дополнительное предупреждение: другие участники быстрее понимают, что водитель собирается повернуть, остановиться или обозначить нестандартную ситуацию.",
+        "На экзамене это снижает угадывание по картинке: слово seña ведет к жесту, а слова balizas, emergencia, desperfecto mecánico и cinturón de seguridad ведут к безопасному аварийному поведению."
       ],
       "spanishTerms": [
         {
@@ -421,7 +425,18 @@
           "termEs": "seña",
           "translationRu": "жест, сигнал",
           "sourceQuestionIds": [
-            "b-fallback-001"
+            "b-fallback-001",
+            "b-fallback-350",
+            "b-fallback-380"
+          ]
+        },
+        {
+          "id": "term-senas",
+          "termEs": "señas",
+          "translationRu": "жесты, ручные сигналы",
+          "sourceQuestionIds": [
+            "b-fallback-002",
+            "b-fallback-263"
           ]
         },
         {
@@ -430,6 +445,50 @@
           "translationRu": "поворот направо",
           "sourceQuestionIds": [
             "b-fallback-001"
+          ]
+        },
+        {
+          "id": "term-giro-izquierda",
+          "termEs": "Giro a la izquierda",
+          "translationRu": "поворот налево",
+          "sourceQuestionIds": [
+            "b-fallback-350",
+            "b-fallback-380"
+          ]
+        },
+        {
+          "id": "term-detenerse",
+          "termEs": "Detenerse",
+          "translationRu": "остановиться",
+          "sourceQuestionIds": [
+            "b-fallback-001",
+            "b-fallback-350",
+            "b-fallback-380"
+          ]
+        },
+        {
+          "id": "term-balizas",
+          "termEs": "balizas",
+          "translationRu": "аварийная сигнализация, аварийные знаки/огни",
+          "sourceQuestionIds": [
+            "b-fallback-002",
+            "b-fallback-263"
+          ]
+        },
+        {
+          "id": "term-desperfecto-mecanico",
+          "termEs": "desperfecto mecánico",
+          "translationRu": "механическая неисправность",
+          "sourceQuestionIds": [
+            "b-fallback-263"
+          ]
+        },
+        {
+          "id": "term-cinturon-seguridad",
+          "termEs": "cinturón de seguridad",
+          "translationRu": "ремень безопасности",
+          "sourceQuestionIds": [
+            "b-fallback-263"
           ]
         }
       ],
@@ -453,6 +512,86 @@
               "explanationRu": "Этот вариант означает остановку, но на изображении проверяется другой сигнал."
             }
           ]
+        },
+        {
+          "questionId": "b-fallback-002",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-002-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: в этом билете такие señas допустимы как сопровождение balizas и/или в emergency context. То есть жест не главный сигнал вместо аварийки, а дополнительное предупреждение."
+            },
+            {
+              "answerId": "b-fallback-002-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Nunca слишком категорично. Законная логика допускает предупреждать нестандартные маневры и при необходимости усиливать предупреждение señales manuales."
+            },
+            {
+              "answerId": "b-fallback-002-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo cuando se utilicen en calles неверно: билет связывает жесты с balizas/emergencia, а не с ограничением только на calles."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-263",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-263-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант с balizas portátiles и выходом за defensa может звучать безопасно, но в этом билете правильный шаблон другой: не выходить в поток на отмеченных carriles, а остаться пристегнутым, включить balizas и вызвать помощь."
+            },
+            {
+              "answerId": "b-fallback-263-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Descender para hacer señas al resto de los vehículos опасно и не является ожидаемым ответом. Ручные сигналы не должны превращать водителя в человека на проезжей части рядом с быстрым потоком."
+            },
+            {
+              "answerId": "b-fallback-263-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: permanecer dentro del vehículo con el cinturón de seguridad abrochado, encender las balizas и llamar al número de emergencia de la Autopista. Для этого билета главный смысл - предупредить светом и вызвать помощь, не выходя подавать жесты."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-350",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-350-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Giro a la izquierda - это другой жест из соседнего билета, но не ответ к этому изображению."
+            },
+            {
+              "answerId": "b-fallback-350-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Adelantamiento por la izquierda - ловушка: слово izquierda есть в варианте, но вопрос спрашивает не об обгоне, а о seña на картинке."
+            },
+            {
+              "answerId": "b-fallback-350-a3",
+              "verdict": "correct",
+              "explanationRu": "Показанная seña в этом билете соответствует detenerse. Запоминайте связку с картинкой, а не только направление руки."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-380",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-380-a1",
+              "verdict": "correct",
+              "explanationRu": "Показанная seña в этом билете соответствует giro a la izquierda."
+            },
+            {
+              "answerId": "b-fallback-380-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Adelantamiento por la izquierda - похожая формулировка с izquierda, но изображение проверяет поворот, а не обгон."
+            },
+            {
+              "answerId": "b-fallback-380-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Detenerse - это другой сигнал из соседнего билета. Здесь правильная интерпретация картинки - поворот налево."
+            }
+          ]
         }
       ],
       "trapNotes": [
@@ -460,11 +599,43 @@
           "id": "trap-sena-is-not-senales",
           "textRu": "Не путайте seña как жест водителя с señales как дорожные знаки.",
           "sourceQuestionIds": [
-            "b-fallback-001"
+            "b-fallback-001",
+            "b-fallback-002",
+            "b-fallback-350",
+            "b-fallback-380"
+          ]
+        },
+        {
+          "id": "trap-izquierda-is-not-always-overtake",
+          "textRu": "Izquierda в варианте ответа может быть ловушкой: giro a la izquierda и adelantamiento por la izquierda - разные действия.",
+          "sourceQuestionIds": [
+            "b-fallback-350",
+            "b-fallback-380"
+          ]
+        },
+        {
+          "id": "trap-hand-signal-does-not-replace-balizas",
+          "textRu": "Если билет говорит balizas, emergencia, desperfecto mecánico или vehículo inmovilizado, не выбирайте вариант, где водитель выходит подавать жесты вместо безопасного предупреждения и вызова помощи.",
+          "sourceQuestionIds": [
+            "b-fallback-002",
+            "b-fallback-263"
           ]
         }
       ],
-      "claims": []
+      "claims": [
+        {
+          "id": "claim-manual-signals-reinforce-maneuver-warning",
+          "textRu": "В CABA и национальной логике водитель заранее предупреждает непредсказуемые маневры соответствующими luces; manual signals используются как усиление предупреждения, когда это нужно.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "driver-hand-signals-manual-warning"
+        },
+        {
+          "id": "claim-balizas-emergency-and-obstacles",
+          "textRu": "Balizas/intermitentes применяются для detenido, egreso, próxima detención/estacionamiento, maniobra riesgosa или obstacle/imprevisto; они предупреждают других, но не делают опасное поведение безопасным само по себе.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "driver-hand-signals-balizas-emergency"
+        }
+      ]
     },
     {
       "id": "speed-limits",

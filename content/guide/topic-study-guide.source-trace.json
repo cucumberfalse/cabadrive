@@ -69,6 +69,45 @@
       "notes": "Included because b-fallback-250 is assigned to speed-limits through the current road-context taxonomy."
     },
     {
+      "id": "driver-hand-signals-manual-warning",
+      "topicId": "driver-hand-signals",
+      "claimId": "claim-manual-signals-reinforce-maneuver-warning",
+      "claimSummaryRu": "Drivers must warn non-predictable or directional maneuvers in advance using the corresponding lights and may/should reinforce with manual signals when needed.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.7 Obligaciones de los conductores que se incorporen o egresen de la circulación",
+        "Ley 2148 6.6.1 Advertencias durante la conducción",
+        "Ley 24.449 Artículo 40 Requisitos para circular",
+        "Ley 24.449 Artículo 43 Giros y rotondas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports only the general warning/manual-signal rule. The exact fallback image-to-answer mapping for giro derecha, detenerse, and giro izquierda remains ticket-specific because the current archive does not contain a separate official illustrated hand-signal catalogue."
+    },
+    {
+      "id": "driver-hand-signals-balizas-emergency",
+      "topicId": "driver-hand-signals",
+      "claimId": "claim-balizas-emergency-and-obstacles",
+      "claimSummaryRu": "Emergency/intermittent lights and balizas warn stopped vehicles, egresos, risky or unusual maneuvers, obstructions and force-majeure incidents; they do not replace safe conduct.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.5.3 Comportamiento general en caso de averías o imprevistos",
+        "Ley 2148 6.3.1 Generalidades, luces intermitentes de emergencia o balizas",
+        "Ley 2148 7.1.7 Detención de vehículos",
+        "Ley 24.449 Artículo 47 Uso de las luces",
+        "Ley 24.449 Artículo 59 Obstáculos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-002 emergency/balizas context and b-fallback-263 warning/safety framing without generalizing the unsupported fallback choice to every autopista incident scenario."
+    },
+    {
       "id": "road-types-caba-road-definitions-and-fast-roads",
       "topicId": "road-types-highways-and-routes",
       "claimId": "claim-caba-road-definitions-and-fast-roads",
