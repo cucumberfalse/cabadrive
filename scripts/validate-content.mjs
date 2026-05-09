@@ -181,9 +181,13 @@ errors.push(
   ...validateOfficialDocumentsManifest({
     manifest: officialDocumentsManifest,
     sourceTrace: topicGuideSourceTrace,
-    fileMetadata: (relativePath) => ({
-      exists: existsSync(path(relativePath))
-    })
+    fileMetadata: (relativePath) => {
+      const exists = existsSync(path(relativePath));
+      return {
+        exists,
+        ...(exists ? { sha256: sha256(relativePath) } : {})
+      };
+    }
   })
 );
 

@@ -47,7 +47,7 @@ function entry(overrides = {}) {
 
 function files(extra = {}) {
   return {
-    "content/official-documents/documents/ley-24449.md": { exists: true },
+    "content/official-documents/documents/ley-24449.md": { exists: true, sha256 },
     ...extra
   };
 }
@@ -137,6 +137,37 @@ test("rejects missing or invalid sha256 metadata", () => {
   assert(errors.includes("ley-24449.hash must be a 64-character lowercase sha256 hex digest."));
 });
 
+test("rejects stale manifest hash when local sha256 metadata is available", () => {
+  const errors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          hash: "b".repeat(64)
+        })
+      ]
+    })
+  });
+
+  assert(errors.includes("ley-24449.hash must match local Markdown sha256 metadata."));
+});
+
+test("does not require hash comparison when local sha256 metadata is unavailable", () => {
+  const errors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          hash: "b".repeat(64)
+        })
+      ]
+    }),
+    fileMetadata: {
+      "content/official-documents/documents/ley-24449.md": { exists: true }
+    }
+  });
+
+  assert.deepEqual(errors, []);
+});
+
 test("rejects missing conversion method and notes", () => {
   const errors = validate({
     manifestData: manifest({
@@ -179,6 +210,28 @@ test("rejects missing currentness fields", () => {
   assert(errors.includes("ley-24449.currentness.evidenceUrls must be a non-empty array."));
 });
 
+test("rejects invalid currentness status enum values", () => {
+  const errors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          currentness: {
+            checkedAt: "2026-05-09",
+            status: "curent",
+            validationStatus: "done",
+            statusEvidence: "Typo exercise.",
+            amendmentRepealEvidence: "Typo exercise.",
+            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"]
+          }
+        })
+      ]
+    })
+  });
+
+  assert.match(errors.join("\n"), /ley-24449\.currentness\.status must be one of .*current.*not_current.*unknown/);
+  assert(errors.includes("ley-24449.currentness.validationStatus must be one of pending, passed, failed."));
+});
+
 test("rejects missing exact-text validation status", () => {
   const errors = validate({
     manifestData: manifest({
@@ -193,6 +246,22 @@ test("rejects missing exact-text validation status", () => {
   });
 
   assert(errors.includes("ley-24449.exactTextValidation.status must be a non-empty string."));
+});
+
+test("rejects invalid exact-text validation status enum values", () => {
+  const errors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          exactTextValidation: {
+            status: "done"
+          }
+        })
+      ]
+    })
+  });
+
+  assert(errors.includes("ley-24449.exactTextValidation.status must be one of pending, passed, failed."));
 });
 
 test("requires raw original evidence for PDF and other lossy formats", () => {

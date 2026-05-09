@@ -3,6 +3,16 @@ const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const HTTP_URL_PATTERN = /^https?:\/\/\S+$/;
 const LOSSY_SOURCE_FORMATS = new Set(["pdf", "scan", "image", "doc", "docx", "odt"]);
 const CURRENT_USABLE_STATUSES = new Set(["current", "in_force", "currently_valid", "valid_current_material"]);
+const CURRENTNESS_STATUSES = new Set([
+  ...CURRENT_USABLE_STATUSES,
+  "historical",
+  "stale",
+  "superseded",
+  "repealed",
+  "not_current",
+  "unknown"
+]);
+const VALIDATION_STATUSES = new Set(["pending", "passed", "failed"]);
 
 function isPlainObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -50,6 +60,12 @@ function fileExists(fileMetadata, localPath) {
   if (record === false || record === null) return false;
   if (isPlainObject(record) && "exists" in record) return record.exists === true;
   return Boolean(record);
+}
+
+function fileSha256(fileMetadata, localPath) {
+  const record = fileRecordFor(fileMetadata, localPath);
+  if (isPlainObject(record) && isNonEmptyString(record.sha256)) return record.sha256;
+  return undefined;
 }
 
 function validateRequiredString(errors, value, label) {
@@ -122,6 +138,10 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
 
     if (entry.hashAlgorithm !== "sha256") errors.push(`${label}.hashAlgorithm must be sha256.`);
     if (!SHA256_PATTERN.test(entry.hash || "")) errors.push(`${label}.hash must be a 64-character lowercase sha256 hex digest.`);
+    const localSha256 = fileSha256(fileMetadata, entry.localPath);
+    if (isNonEmptyString(localSha256) && SHA256_PATTERN.test(entry.hash || "") && entry.hash !== localSha256) {
+      errors.push(`${label}.hash must match local Markdown sha256 metadata.`);
+    }
 
     const sourceFormat = String(entry.sourceFormat || "").toLowerCase();
     if (LOSSY_SOURCE_FORMATS.has(sourceFormat)) {
@@ -136,6 +156,15 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
       validateDate(errors, entry.currentness.checkedAt, `${label}.currentness.checkedAt`);
       validateRequiredString(errors, entry.currentness.status, `${label}.currentness.status`);
       validateRequiredString(errors, entry.currentness.validationStatus, `${label}.currentness.validationStatus`);
+      if (isNonEmptyString(entry.currentness.status) && !CURRENTNESS_STATUSES.has(entry.currentness.status)) {
+        errors.push(`${label}.currentness.status must be one of ${[...CURRENTNESS_STATUSES].join(", ")}.`);
+      }
+      if (
+        isNonEmptyString(entry.currentness.validationStatus) &&
+        !VALIDATION_STATUSES.has(entry.currentness.validationStatus)
+      ) {
+        errors.push(`${label}.currentness.validationStatus must be one of pending, passed, failed.`);
+      }
       validateRequiredString(errors, entry.currentness.statusEvidence, `${label}.currentness.statusEvidence`);
       validateRequiredString(errors, entry.currentness.amendmentRepealEvidence, `${label}.currentness.amendmentRepealEvidence`);
       if (!Array.isArray(entry.currentness.evidenceUrls) || entry.currentness.evidenceUrls.length === 0) {
@@ -154,6 +183,12 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
       errors.push(`${label}.exactTextValidation must be an object.`);
     } else {
       validateRequiredString(errors, entry.exactTextValidation.status, `${label}.exactTextValidation.status`);
+      if (
+        isNonEmptyString(entry.exactTextValidation.status) &&
+        !VALIDATION_STATUSES.has(entry.exactTextValidation.status)
+      ) {
+        errors.push(`${label}.exactTextValidation.status must be one of pending, passed, failed.`);
+      }
       if (
         ["passed", "failed"].includes(entry.exactTextValidation.status) &&
         !DATE_PATTERN.test(entry.exactTextValidation.checkedAt || "")

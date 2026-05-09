@@ -141,6 +141,8 @@
 - Slice B uses top-level manifest entry fields for `hashAlgorithm`, `hash`, `conversionMethod`, and `conversionNotes` to stay close to the existing source-registry style while adding the stricter official-document governance fields.
 - Slice B implemented `scripts/official-documents-validation.mjs` with no file I/O in core validation. The helper accepts manifest data plus injectable file metadata or an existence callback, then `scripts/validate-content.mjs` supplies a real local existence callback for normal content validation.
 - Slice B treats source-trace entries as current guide claims by default. A source-trace entry may opt out only with `claimUse: "historical_context"` or `currentClaim: false`; otherwise cited manifest entries must exist and have a current/currently-valid status with `currentness.validationStatus: "passed"`.
+- Slice B review hardening compares manifest `hash` values against injected local Markdown SHA-256 metadata when available. Normal `scripts/validate-content.mjs` now supplies real SHA-256 metadata for existing local official-document paths, so stale archived Markdown hashes fail content validation once manifest entries exist.
+- Slice B review hardening constrains `currentness.status`, `currentness.validationStatus`, and `exactTextValidation.status` to explicit enum sets so typos do not pass as non-empty strings.
 
 ### Known Issues
 
@@ -185,6 +187,12 @@
 - Slice B final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service worker generation reported 280 cached assets.
 - Slice B final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 60 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 - Slice B final verification: `git diff --check` passed with no output.
+- Slice B review hardening targeted evidence: `node --test tests/official-documents-validation.test.mjs` passed 19 tests after adding injected local SHA-256 comparison coverage, missing local SHA-256 compatibility, and explicit currentness/exact-text status enum typo coverage.
+- Slice B review hardening content-validation evidence: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references after `scripts/validate-content.mjs` began supplying real SHA-256 metadata for existing official-document local paths.
+- Slice B review hardening final verification: `pnpm run test` passed 64 Node tests.
+- Slice B review hardening final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service worker generation reported 280 cached assets.
+- Slice B review hardening final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 64 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice B review hardening final verification: `git diff --check` passed with no output.
 
 ### Implementation Agent Feedback
 

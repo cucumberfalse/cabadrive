@@ -28,7 +28,7 @@ Each future manifest entry must record:
 - local Markdown path under `content/official-documents/documents/`;
 - source format;
 - conversion method and conversion notes;
-- `sha256` hash metadata for the archived Markdown;
+- `sha256` hash metadata for the archived Markdown, matching the local Markdown file hash when local metadata is available;
 - raw/original evidence path under `content/official-documents/originals/` when the source is PDF, scanned, image-based, office-document, or otherwise lossy;
 - currentness/effective-status evidence, including checked-at date, status, validation status, amendment/repeal/supersession evidence, and official evidence URLs;
 - exact-text validation status.
@@ -45,11 +45,15 @@ Every official document entry must carry currentness/effective-status evidence. 
 
 Stale, repealed, superseded, not-current, or historical documents may remain archived only as historical context. They must not support current guide claims unless a future Architect disposition explicitly allows and scopes that use.
 
+Allowed `currentness.status` values are `current`, `in_force`, `currently_valid`, `valid_current_material`, `historical`, `stale`, `superseded`, `repealed`, `not_current`, and `unknown`.
+
+Allowed `currentness.validationStatus` and `exactTextValidation.status` values are `pending`, `passed`, and `failed`.
+
 ## Validation
 
 `scripts/official-documents-validation.mjs` owns no-file-I/O manifest validation. It validates supplied manifest data against an injectable file metadata/existence map or callback, so unit tests can run without real archive files.
 
-`scripts/validate-content.mjs` integrates the official-documents manifest validator with real local file existence checks. An empty draft manifest passes validation. Entries, when present, must have required metadata, local paths inside the archive section, SHA-256-shaped hash metadata, conversion notes, currentness fields, exact-text validation status, and raw/original evidence for lossy formats.
+`scripts/validate-content.mjs` integrates the official-documents manifest validator with real local file existence and SHA-256 checks. An empty draft manifest passes validation. Entries, when present, must have required metadata, local paths inside the archive section, SHA-256 hash metadata that matches the local archived Markdown file, conversion notes, currentness fields, exact-text validation status, and raw/original evidence for lossy formats.
 
 The final topic-study-guide release still requires later dedicated whole-archive exact-text and currentness validation slices. This foundation establishes the local governance and draft-safe validation boundary only.
 
