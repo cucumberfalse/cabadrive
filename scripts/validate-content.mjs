@@ -4,6 +4,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
+import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -44,6 +45,9 @@ const translationAlignmentEvidence = readJson("content/validation/ru-translation
 const explanations = readJson("content/explanations/ru.explanations.json") || [];
 const vocabulary = readJson("content/vocabulary/ru.vocabulary.json") || [];
 const guide = readJson("content/guide/ru.condensed-guide.json") || [];
+const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
+const topicGuideCoverage = readJson("content/guide/topic-study-guide.coverage.json");
+const topicGuideSourceTrace = readJson("content/guide/topic-study-guide.source-trace.json");
 const exam = readJson("content/config/caba-exam-format.json");
 const approvals = readJson("content/validation/validator-approvals.json") || [];
 const exceptions = readJson("content/validation/release-exceptions.json") || [];
@@ -162,6 +166,15 @@ for (const item of guide) {
     if (!questionIds.has(questionId)) errors.push(`${item.id}: guide question missing ${questionId}`);
   }
 }
+
+errors.push(
+  ...validateTopicGuide({
+    questions,
+    guide: topicGuide,
+    coverage: topicGuideCoverage,
+    sourceTrace: topicGuideSourceTrace
+  })
+);
 
 const exceptionByApproval = new Map();
 for (const exception of exceptions) {

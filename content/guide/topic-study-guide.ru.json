@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "id": "topic-study-guide",
+  "locale": "ru",
+  "status": "draft",
+  "contentStatus": "unofficial_learning_aid",
+  "titleRu": "Тематический учебный гид по билетам CABA",
+  "disclaimer": "Неофициальный учебный материал Cabadrive. Он помогает разбирать билеты и не является официальным текстом GCBA.",
+  "topics": [
+    {
+      "id": "driver-hand-signals-draft",
+      "slug": "driver-hand-signals-draft",
+      "status": "draft",
+      "titleRu": "Жесты водителя",
+      "summaryRu": "Черновой структурный блок для проверки схемы тематического гида.",
+      "learningMaterialRu": [
+        "В этом черновом блоке фиксируется структура будущей темы: короткое объяснение, слова из билетов, сами билеты и заметки о ловушках. Полный учебный текст будет добавлен в отдельном контентном срезе."
+      ],
+      "practicalReasoningRu": [
+        "Жесты помогают другим участникам движения понять намерение водителя, когда это нужно для безопасного маневра."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-sena",
+          "termEs": "seña",
+          "translationRu": "жест, сигнал",
+          "sourceQuestionIds": ["b-fallback-001"]
+        },
+        {
+          "id": "term-giro-derecha",
+          "termEs": "Giro a la derecha",
+          "translationRu": "поворот направо",
+          "sourceQuestionIds": ["b-fallback-001"]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-001",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-001-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант говорит об обгоне справа, а билет спрашивает о показанном жесте."
+            },
+            {
+              "answerId": "b-fallback-001-a2",
+              "verdict": "correct",
+              "explanationRu": "Показанный жест соответствует ответу о повороте направо."
+            },
+            {
+              "answerId": "b-fallback-001-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант означает остановку, но на изображении проверяется другой сигнал."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-sena-is-not-senales",
+          "textRu": "Не путайте seña как жест водителя с señales как дорожные знаки.",
+          "sourceQuestionIds": ["b-fallback-001"]
+        }
+      ],
+      "claims": []
+    }
+  ]
+}

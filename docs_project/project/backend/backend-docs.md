@@ -17,6 +17,7 @@ There are no runtime network APIs in MVP. Data-processing scripts for ingest/val
 Current tooling:
 
 - `scripts/validate-content.mjs` validates content mode, source hashes, exam config, category B fallback constraints, local question images, disclaimers, guide/vocabulary references, approvals, release exceptions, structured practice-source scope, and deterministic Russian translation alignment evidence.
+- `scripts/content-topic-guide.mjs` owns no-file-I/O validation for draft/published topic-study-guide data under `content/guide/topic-study-guide.*.json`, including coverage baseline freshness, topic structure, ticket answer explanations, vocabulary provenance, and draft-safe versus published strict coverage behavior.
 - `scripts/content-translation-alignment.mjs` computes stable offline fingerprints for Spanish source tuples and Russian translation tuples, then validates approved local evidence under `content/validation/` so stale or unaudited translation edits fail preflight without any network, LLM, or runtime service.
 - `scripts/content-source-scope.mjs` owns the practice-source eligibility boundary. Practice questions must reference a source whose `practiceQuestionScope` explicitly allows the question category and uses an allowed scope kind. A/A4/motorcycle-specific source banks are rejected by structured scope, while motorcycle or motovehicle mentions inside valid category B material are allowed as shared-road topics.
 - `scripts/sync-public-assets.mjs` copies committed content assets into Vite public assets before dev/build.

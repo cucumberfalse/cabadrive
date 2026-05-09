@@ -23,13 +23,13 @@
 
 ## Future Slice A: Guide Schema And Validator Foundation
 
-- [ ] T016 Create a structured topic-guide content placeholder, tentatively `content/guide/topic-study-guide.ru.json`.
-- [ ] T017 Create a guide coverage manifest, tentatively `content/guide/topic-study-guide.coverage.json`.
-- [ ] T018 Create a guide source-trace manifest, tentatively `content/guide/topic-study-guide.source-trace.json`.
-- [ ] T019 Add a no-file-I/O topic-guide validation helper.
-- [ ] T020 Add unit tests for missing/duplicate topic IDs, invalid question IDs, missing required sections, missing answer explanations, and draft/published status behavior.
-- [ ] T021 Integrate draft-safe guide validation into `scripts/validate-content.mjs`.
-- [ ] T022 Record baseline command evidence and update process memory in this file.
+- [x] T016 Create a structured topic-guide content placeholder, tentatively `content/guide/topic-study-guide.ru.json`.
+- [x] T017 Create a guide coverage manifest, tentatively `content/guide/topic-study-guide.coverage.json`.
+- [x] T018 Create a guide source-trace manifest, tentatively `content/guide/topic-study-guide.source-trace.json`.
+- [x] T019 Add a no-file-I/O topic-guide validation helper.
+- [x] T020 Add unit tests for missing/duplicate topic IDs, invalid question IDs, missing required sections, missing answer explanations, and draft/published status behavior.
+- [x] T021 Integrate draft-safe guide validation into `scripts/validate-content.mjs`.
+- [x] T022 Record baseline command evidence and update process memory in this file.
 
 ## Future Slice B: Official Documents Governance Foundation
 
@@ -131,6 +131,11 @@
 - Treat exact-text validation and currentness/effective-status validation as final dedicated whole-archive tasks for every official-documents manifest entry, separate from topic content writing; source-traced current guide claims then have a separate final gate requiring only current, in-force, or otherwise currently valid entries for the relevant source type.
 - Allow draft guide state for intermediate PRs so small topic slices can merge without falsely publishing an incomplete 460-ticket guide.
 - Require final published-guide validation to prove all current 460 IDs are covered, every ID has one or two categories, and repeated tickets physically render in every assigned category.
+- Slice A implemented the draft/published pattern through `status: "draft" | "published"` on both `content/guide/topic-study-guide.ru.json` and `content/guide/topic-study-guide.coverage.json`. Draft validation enforces baseline freshness, structure, assignment consistency, answer explanations, vocabulary provenance, and source-trace references for marked claims, but does not require all 460 tickets yet. Published validation requires every current question ID to be assigned.
+- Slice A keeps source trace as `content/guide/topic-study-guide.source-trace.json` with an empty draft `entries` array because the placeholder topic does not introduce official-source-backed claims. Official-documents governance remains deferred to Slice B.
+- Slice A added only one structured placeholder topic and one ticket placement for schema validation. Taxonomy discovery, complete coverage, official archive work, full guide prose, and UI exposure remain deferred to later slices.
+- Slice A review hardening requires guide, coverage, and source-trace `guideId`/`status` fields to agree. Any `published` status in one manifest activates strict complete-coverage validation, and mismatched statuses now fail instead of silently downgrading the guide to draft behavior.
+- Slice A review hardening requires every source-trace entry to include at least one non-empty `officialDocumentIds` value. Draft compatibility is preserved because draft manifests may have zero source-trace entries when no official-source-backed claims exist, but any present entry must point at a future official-document manifest ID.
 
 ### Known Issues
 
@@ -139,6 +144,7 @@
 - Exact Markdown preservation of PDFs, tables, annexes, images, or legal formatting may have conversion limits. Future archive tasks must record limitations and keep raw evidence.
 - A ticket answer may conflict with current official sources. Such conflicts require process-memory recording and Architect disposition before publication.
 - Full guide completion will require many topic content slices; no single future agent should own all prose and all 460 answer explanations.
+- The topic-guide placeholder is intentionally draft-only and should not be treated as learner-ready guide content.
 
 ### Verification Evidence
 
@@ -150,10 +156,22 @@
 - Planning preflight evidence: `pnpm run preflight` passed after Architect artifact creation; feature-memory gate found no configured product paths changed, repository baseline passed, content validation passed for 460 category B fallback questions and 276 local image references, 31 unit tests passed, production build passed, service worker generation reported 280 cached assets, and 8 Playwright e2e tests passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted existing `NO_COLOR`/`FORCE_COLOR` warnings.
 - Markdown hygiene evidence: `rg -n "[ \\t]+$" specs/006-topic-study-guide/spec.md specs/006-topic-study-guide/plan.md specs/006-topic-study-guide/tasks.md || true` returned no matches.
 - Review-finding evidence: targeted search found no remaining prior exact final-validation wording that limited archive exact-text/currentness gates to documents used by current guide claims; targeted search confirmed new official-documents manifest-entry and source-traced current-claim wording in `spec.md`, `plan.md`, and `tasks.md`; trailing whitespace search returned no matches; `git diff --check -- specs/006-topic-study-guide/spec.md specs/006-topic-study-guide/plan.md specs/006-topic-study-guide/tasks.md` passed.
+- Slice A worktree orientation: `pwd && git status --short --branch` reported `/Users/chap/devel/cabadrive/.claude/worktrees/006-topic-guide-schema-validator` and `## codex/006-topic-guide-schema-validator` before implementation edits.
+- Slice A baseline evidence: `node --input-type=module` loaded `content/questions/caba-b.unofficial-fallback.questions.json` and printed count `460`, question ID SHA-256 `b46707461f4ba5bd0f3eac6b0aa126764014e12ad42144df12c777200f2810ad`, first IDs `b-fallback-001, b-fallback-002, b-fallback-003`, and last IDs `b-fallback-458, b-fallback-459, b-fallback-460`.
+- Slice A targeted validator evidence: `node --test tests/content-topic-guide.test.mjs` passed 11 tests covering current placeholder validity, draft partial coverage, published strict coverage, duplicate topics, invalid question IDs, missing required sections, missing answer explanations, vocabulary provenance, coverage/content mismatch, stale baseline, over-assignment, and source-trace claim references.
+- Slice A content-validation smoke evidence: `pnpm run validate:content` passed with `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Slice A environment note: initial `pnpm run build` failed because this isolated worktree had no `node_modules` and `vite` was not installed. `pnpm install` completed with the existing lockfile up to date and no repository file changes, then verification continued.
+- Slice A final verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice A final verification: `pnpm run test` passed 42 Node tests.
+- Slice A final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service worker generation reported 280 cached assets.
+- Slice A final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 42 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice A final verification: `git diff --check` passed with no output.
+- Slice A review hardening targeted evidence: `node --test tests/content-topic-guide.test.mjs` passed 14 tests after adding checks for non-empty `officialDocumentIds`, blank official document IDs, guide/source-trace `guideId` mismatch, and status disagreement that could hide strict mode.
+- Slice A review hardening final verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run test` passed 45 Node tests; `pnpm run build` passed with the existing non-blocking Vite chunk-size warning and 280 cached service-worker assets; `pnpm run preflight` passed with 45 Node tests and 8 Playwright tests; `git diff --check` passed with no output.
 
 ### Implementation Agent Feedback
 
-- None yet. Future Implementation Agents must record feedback here before handoff.
+- Slice A: none requiring Architect disposition.
 
 ### Architect Dispositions
 
