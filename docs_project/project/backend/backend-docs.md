@@ -18,10 +18,15 @@ Current tooling:
 
 - `scripts/validate-content.mjs` validates content mode, source hashes, exam config, category B fallback constraints, local question images, disclaimers, guide/vocabulary references, approvals, release exceptions, structured practice-source scope, and deterministic Russian translation alignment evidence.
 - `scripts/content-topic-guide.mjs` owns no-file-I/O validation for draft/published topic-study-guide data under `content/guide/topic-study-guide.*.json`, including coverage baseline freshness, topic structure, ticket answer explanations, vocabulary provenance, and draft-safe versus published strict coverage behavior.
+- `scripts/official-documents-validation.mjs` owns no-file-I/O validation for the governed official-documents manifest under `content/official-documents/manifest.json`, including required source metadata, local archive paths, SHA-256 hash shape and injected local hash comparison, conversion notes, currentness/effective-status enum fields, exact-text validation enum status, raw evidence for lossy formats, and source-trace checks that current guide claims do not cite missing or not-current documents.
 - `scripts/content-translation-alignment.mjs` computes stable offline fingerprints for Spanish source tuples and Russian translation tuples, then validates approved local evidence under `content/validation/` so stale or unaudited translation edits fail preflight without any network, LLM, or runtime service.
 - `scripts/content-source-scope.mjs` owns the practice-source eligibility boundary. Practice questions must reference a source whose `practiceQuestionScope` explicitly allows the question category and uses an allowed scope kind. A/A4/motorcycle-specific source banks are rejected by structured scope, while motorcycle or motovehicle mentions inside valid category B material are allowed as shared-road topics.
 - `scripts/sync-public-assets.mjs` copies committed content assets into Vite public assets before dev/build.
 - `scripts/generate-service-worker.mjs` writes a production service worker with the built asset list for offline reload.
+
+## Official Documents Archive
+
+Official source documents that support topic-guide claims are governed under `content/official-documents/`. See `docs_project/project/content-sources.md` for archive purpose, manifest fields, exact-text preservation rules, currentness/effective-status evidence, raw evidence requirements, and future-document rules.
 
 ## Deployment
 

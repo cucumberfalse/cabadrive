@@ -3,6 +3,7 @@
 ## MVP Features
 
 - Official source registry with source ownership, jurisdiction, verification date, and hashes.
+- Governed official-documents archive foundation at `content/official-documents/` for verbatim official source materials, manifest metadata, exact-text/currentness validation expectations, and future source-document rules.
 - Content validation pipeline for source records, exam config, fallback question data, local images, and unofficial support layers.
 - Category B practice question presentation in Spanish with source traceability and non-official fallback labeling.
 - Unofficial Russian translation and explanation layers, clarified at product/status level and revealed intentionally inside question practice instead of shown by default.

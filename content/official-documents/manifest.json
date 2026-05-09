@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "status": "draft",
+  "schema": "official-documents-manifest.v1",
+  "sectionPath": "content/official-documents",
+  "description": "Governed manifest for official source documents archived verbatim for Cabadrive source traceability. Slice B intentionally seeds no documents.",
+  "entries": []
+}
