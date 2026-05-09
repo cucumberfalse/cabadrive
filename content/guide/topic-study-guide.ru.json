@@ -3315,6 +3315,658 @@
       ]
     },
     {
+      "id": "adverse-weather-and-visibility",
+      "slug": "adverse-weather-and-visibility",
+      "status": "draft",
+      "titleRu": "Погода, видимость и сцепление",
+      "summaryRu": "Экзаменационный блок про lluvia, niebla, viento fuerte, aquaplaning, торможение на мокрой дороге, сцепление, давление в шинах и безопасную адаптацию к плохой видимости.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В weather-вопросах сначала определите, что ухудшилось: visibilidad, adherencia, frenos, estabilidad, carga/сопротивление воздуха или способность водителя сохранять total dominio del vehículo.",
+        "Общая официальная логика скорости проста: даже если лимит выше, скорость должна соответствовать visibility, состоянию дороги, clima, состоянию автомобиля, состоянию водителя и плотности движения. Поэтому при lluvia, мокрой дороге, fog или strong side wind безопасный ответ обычно связан со снижением скорости, увеличением дистанции и более плавным маневром.",
+        "Вопросы про мокрую дорогу держатся на сцеплении. Lluvia и charcos уменьшают adherencia; wet brakes могут perder eficacia, а aquaplaning означает, что шина идет по слою воды вместо нормального контакта с pavimento. Не выбирайте варианты, где вода якобы улучшает сцепление или distance всегда остается одинаковой.",
+        "В fog/low visibility билеты отделяют обычный свет для движения от emergency warning. Для движения выбирайте bajas и rompeniebla, когда билет спрашивает противотуманные огни; не выбирайте altas или balizas как обычный способ ехать через туман.",
+        "Strong lateral wind - это устойчивость и планирование. Знак с наклоненным деревом означает Vientos fuertes laterales; при обгоне грузовика в сильный ветер не нужна слишком большая разница скорости, потому что автомобиль может дернуться на выходе из воздушного потока грузовика.",
+        "Давление в шинах здесь остается ticket-specific: один ответ говорит использовать manual del usuario, другой - проверять pressure на neumáticos fríos. В этом slice не добавляется широкая официальная формула давления.",
+        "Вопрос про расход топлива и груз на крыше тоже image-specific: показанный багаж увеличивает resistencia del viento и поэтому расход. Это практическая подсказка для билета, а не новый официальный курс eco-driving."
+      ],
+      "practicalReasoningRu": [
+        "Плохая погода забирает запас сразу с нескольких сторон: меньше сцепления, хуже видимость, длиннее торможение и ниже устойчивость. Безопасная адаптация - снизить скорость до того, как проблема уже перешла в скольжение.",
+        "У lights и balizas разные задачи. Фары и rompeniebla помогают видеть и быть видимым при плохой visibility; balizas показывают остановку, emergency или unusual maneuver, поэтому как обычный режим движения в тумане они сбивают других.",
+        "Aquaplaning опасен тем, что steering и braking хуже передаются на дорогу. Меньшая скорость дает протектору больше времени вытеснить воду."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-conduccion-preventiva-weather",
+          "termEs": "conducción preventiva",
+          "translationRu": "предупредительное/превентивное вождение",
+          "sourceQuestionIds": [
+            "b-fallback-035"
+          ]
+        },
+        {
+          "id": "term-conductas-cautelosas",
+          "termEs": "conductas cautelosas",
+          "translationRu": "осторожное поведение за рулем",
+          "sourceQuestionIds": [
+            "b-fallback-035"
+          ]
+        },
+        {
+          "id": "term-vientos-fuertes-laterales",
+          "termEs": "Vientos fuertes laterales",
+          "translationRu": "сильный боковой ветер",
+          "sourceQuestionIds": [
+            "b-fallback-110"
+          ]
+        },
+        {
+          "id": "term-resistencia-viento",
+          "termEs": "resistencia del viento",
+          "translationRu": "сопротивление ветра",
+          "sourceQuestionIds": [
+            "b-fallback-195"
+          ]
+        },
+        {
+          "id": "term-consumo-combustible-weather",
+          "termEs": "consumo de combustible",
+          "translationRu": "расход топлива",
+          "sourceQuestionIds": [
+            "b-fallback-195"
+          ]
+        },
+        {
+          "id": "term-calzada-mojada-charcos",
+          "termEs": "calzada está mojada y hay charcos",
+          "translationRu": "проезжая часть мокрая и есть лужи",
+          "sourceQuestionIds": [
+            "b-fallback-206"
+          ]
+        },
+        {
+          "id": "term-frenos-weather",
+          "termEs": "frenos",
+          "translationRu": "тормоза",
+          "sourceQuestionIds": [
+            "b-fallback-206"
+          ]
+        },
+        {
+          "id": "term-aquaplaning-weather",
+          "termEs": "aquaplaning",
+          "translationRu": "аквапланирование",
+          "sourceQuestionIds": [
+            "b-fallback-251",
+            "b-fallback-335",
+            "b-fallback-448"
+          ]
+        },
+        {
+          "id": "term-presion-neumaticos",
+          "termEs": "presión de los neumáticos",
+          "translationRu": "давление в шинах",
+          "sourceQuestionIds": [
+            "b-fallback-269"
+          ]
+        },
+        {
+          "id": "term-manual-usuario",
+          "termEs": "manual del usuario",
+          "translationRu": "руководство пользователя автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-269"
+          ]
+        },
+        {
+          "id": "term-condiciones-climaticas-weather",
+          "termEs": "condiciones climáticas",
+          "translationRu": "погодные условия",
+          "sourceQuestionIds": [
+            "b-fallback-275",
+            "b-fallback-428"
+          ]
+        },
+        {
+          "id": "term-luces-bajas-weather",
+          "termEs": "luces bajas",
+          "translationRu": "ближний свет",
+          "sourceQuestionIds": [
+            "b-fallback-283",
+            "b-fallback-390"
+          ]
+        },
+        {
+          "id": "term-rompeniebla-weather",
+          "termEs": "rompeniebla",
+          "translationRu": "противотуманная фара/свет",
+          "sourceQuestionIds": [
+            "b-fallback-283",
+            "b-fallback-360"
+          ]
+        },
+        {
+          "id": "term-balizas-weather",
+          "termEs": "balizas",
+          "translationRu": "аварийные огни / аварийные сигналы",
+          "sourceQuestionIds": [
+            "b-fallback-283",
+            "b-fallback-292",
+            "b-fallback-428"
+          ]
+        },
+        {
+          "id": "term-vias-afectadas-niebla-weather",
+          "termEs": "vías afectadas por niebla",
+          "translationRu": "дороги, затронутые туманом",
+          "sourceQuestionIds": [
+            "b-fallback-317"
+          ]
+        },
+        {
+          "id": "term-lluvia-adherencia-menor-weather",
+          "termEs": "lluvia la adherencia es menor",
+          "translationRu": "при дожде сцепление меньше",
+          "sourceQuestionIds": [
+            "b-fallback-330"
+          ]
+        },
+        {
+          "id": "term-agua-en-camino",
+          "termEs": "agua en el camino",
+          "translationRu": "вода на дороге",
+          "sourceQuestionIds": [
+            "b-fallback-335"
+          ]
+        },
+        {
+          "id": "term-frio-neumaticos",
+          "termEs": "Fríos",
+          "translationRu": "холодные; о шинах при проверке давления",
+          "sourceQuestionIds": [
+            "b-fallback-375"
+          ]
+        },
+        {
+          "id": "term-viento-fuerte",
+          "termEs": "viento fuerte",
+          "translationRu": "сильный ветер",
+          "sourceQuestionIds": [
+            "b-fallback-376"
+          ]
+        },
+        {
+          "id": "term-disminuida-visibilidad",
+          "termEs": "disminuida la visibilidad",
+          "translationRu": "снижена видимость",
+          "sourceQuestionIds": [
+            "b-fallback-390"
+          ]
+        },
+        {
+          "id": "term-capa-agua-pavimento",
+          "termEs": "capa de agua acumulada en el pavimento",
+          "translationRu": "слой воды, накопившийся на покрытии",
+          "sourceQuestionIds": [
+            "b-fallback-448"
+          ]
+        },
+        {
+          "id": "term-dibujos-neumaticos",
+          "termEs": "dibujos de los neumáticos",
+          "translationRu": "рисунок протектора шин",
+          "sourceQuestionIds": [
+            "b-fallback-448"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-035",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-035-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это важная vehicle-condition проверка, но не определение conducción preventiva. Вопрос спрашивает стиль мышления водителя, а не только проверку oil/fuel/tire."
+            },
+            {
+              "answerId": "b-fallback-035-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: conducción preventiva означает conductas cautelosas, ответственность за свои действия и anticipar la conducta de los demás. В плохую погоду это превращается в заранее сниженный риск."
+            },
+            {
+              "answerId": "b-fallback-035-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Курсы каждые шесть месяцев не являются определением. Билет проверяет повседневное preventive-driving поведение за рулем."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-110",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-110-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Proximidad de bosques неверно: дерево на знаке наклонено не как объект местности, а как индикатор ветра."
+            },
+            {
+              "answerId": "b-fallback-110-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Zonas de palmeras - визуальная ловушка. Важны линии ветра и наклоненная крона, а не тип дерева."
+            },
+            {
+              "answerId": "b-fallback-110-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак предупреждает Vientos fuertes laterales. Он готовит водителя к боковым порывам и необходимости удерживать стабильность."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b224.jpg"
+        },
+        {
+          "questionId": "b-fallback-195",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-195-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Aumenta porque el vehículo se vuelve más ligero неверно: картинка не про снижение массы, а про roof load и сопротивление воздуха."
+            },
+            {
+              "answerId": "b-fallback-195-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке: груз на крыше incrementa la resistencia del viento, поэтому aumenta el consumo de combustible."
+            },
+            {
+              "answerId": "b-fallback-195-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Indistinto неверно: расположение груза на изображении влияет на сопротивление воздуха. Это image-specific conclusion, а не общий источник про все варианты груза."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b200.jpg"
+        },
+        {
+          "questionId": "b-fallback-206",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-206-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Мокрые neumáticos не “очищают” ситуацию так, чтобы brakes работали лучше. Wet road обычно уменьшает запас сцепления."
+            },
+            {
+              "answerId": "b-fallback-206-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: если calzada está mojada y hay charcos, frenos могут намокнуть и perder eficacia. Нужен больший запас скорости и дистанции."
+            },
+            {
+              "answerId": "b-fallback-206-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Тормоза не отменяют slippery-road physics. Если они мокрые или сцепление хуже, эффективность торможения как раз может снизиться."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-251",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-251-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: на изображении показан aquaplaning - автомобиль едет по воде/через воду так, что контакт шины с дорогой может потеряться."
+            },
+            {
+              "answerId": "b-fallback-251-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Off tracking - не этот эффект. Билет про water layer and loss of tyre grip, а не про траекторию колес при повороте длинного состава."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b180.jpg"
+        },
+        {
+          "questionId": "b-fallback-269",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-269-a1",
+              "verdict": "incorrect",
+              "explanationRu": "28 lbs может быть правильным для какого-то автомобиля, но билет не дает конкретную модель. Универсальное число здесь ловушка."
+            },
+            {
+              "answerId": "b-fallback-269-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: presión de los neumáticos берется из manual del usuario de ese automóvil. Это vehicle-specific answer."
+            },
+            {
+              "answerId": "b-fallback-269-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 lbs такая же неверная универсализация, как 28 lbs. Правильная pressure depends on that car manual."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-275",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-275-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Pavimento y clima важны, но ответ неполный: безопасность зависит не только от road/weather."
+            },
+            {
+              "answerId": "b-fallback-275-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: надо учитывать automóvil, infraestructura vial, condiciones climáticas и conductor. Это вся chain of risk для safe adaptation."
+            },
+            {
+              "answerId": "b-fallback-275-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ninguna de las anteriores неверно, потому что полный вариант B прямо перечисляет ключевые условия."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-283",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-283-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luces altas durante todo el recorrido - плохой выбор для niebla: дальний свет не является ожидаемой реакцией на такую видимость."
+            },
+            {
+              "answerId": "b-fallback-283-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: при этих condiciones climáticas на ruta нужны luces bajas и rompeniebla en el caso de tenerlas."
+            },
+            {
+              "answerId": "b-fallback-283-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Balizas добавлять не надо для обычного движения в тумане. Они предупреждают emergency/stopped/unusual maneuver, а не штатную fog circulation."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b189.jpg"
+        },
+        {
+          "questionId": "b-fallback-292",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-292-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luces altas y giro не обозначают вынужденную остановку на banquina. Giro сообщает маневр, а altas могут мешать."
+            },
+            {
+              "answerId": "b-fallback-292-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: если пришлось detener en la banquina, нужны luces reglamentarias y balizas, чтобы обозначить stopped vehicle."
+            },
+            {
+              "answerId": "b-fallback-292-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Luces antinieblas не заменяют balizas и не сообщают другим, что автомобиль вынужденно остановлен на banquina."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b177.jpg"
+        },
+        {
+          "questionId": "b-fallback-317",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-317-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Únicamente de noche y por una vía sin asfaltar слишком узко. Эти luces связаны с niebla, а не только с nighttime dirt road."
+            },
+            {
+              "answerId": "b-fallback-317-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo por vías sin banquina не является назначением этих lights. Banquina здесь отвлекающий критерий."
+            },
+            {
+              "answerId": "b-fallback-317-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: такие luces должны использоваться en vías afectadas por niebla, en cualquier horario."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b190.jpg"
+        },
+        {
+          "questionId": "b-fallback-330",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-330-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза про mayor proporción de agua al reducir velocidad переворачивает смысл. При дожде снижать скорость нужно из-за меньшей adherencia."
+            },
+            {
+              "answerId": "b-fallback-330-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: con lluvia la adherencia es menor, поэтому разумно aumentar la distancia de seguridad и reducir la velocidad."
+            },
+            {
+              "answerId": "b-fallback-330-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Siempre la misma неверно: safety distance adapts to rain, speed, road surface and available control."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b183.jpg"
+        },
+        {
+          "questionId": "b-fallback-335",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-335-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Desgastar las llantas не главный risk asked here. Вопрос про water on road and speed reduction."
+            },
+            {
+              "answerId": "b-fallback-335-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sobrecalentar las llantas не связано с водой на дороге как ожидаемый ответ."
+            },
+            {
+              "answerId": "b-fallback-335-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: когда hay agua en el camino, lowering speed helps avoid aquaplaning."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-360",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-360-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Ley 2148 допускает для automóvil particular agregado de dos faros rompeniebla и hasta dos faros elevados con luces de freno."
+            },
+            {
+              "answerId": "b-fallback-360-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Se puede agregar las luces que se deseen неверно: лишний свет может ослеплять и путать, поэтому additional lights ограничены."
+            },
+            {
+              "answerId": "b-fallback-360-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibido cualquier tipo de luz adicional слишком строго. В билете есть конкретные permitted exceptions."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-375",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-375-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: давление проверяют на neumáticos fríos. Это точная ticket formula for pressure check."
+            },
+            {
+              "answerId": "b-fallback-375-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Calientes неверно для этого билета: нагрев меняет pressure reading, поэтому ожидаемый ответ - fríos."
+            },
+            {
+              "answerId": "b-fallback-375-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Es indistinto неверно. Билет прямо проверяет temperature condition, а не только material caucho."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-376",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-376-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: при viento fuerte обгон грузовика стоит выполнять без слишком большой разницы скорости, чтобы автомобиль оставался устойчивым около боковых порывов и воздушного потока грузовика."
+            },
+            {
+              "answerId": "b-fallback-376-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: сильный ветер как раз требует более плавного, контролируемого обгона, а не агрессивной разницы скорости."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-390",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-390-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: luces bajas надо encender siempre que está disminuida la visibilidad. Это weather/visibility formula of the ticket."
+            },
+            {
+              "answerId": "b-fallback-390-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo por la noche неверно. Сниженная visibility днем тоже требует lights."
+            },
+            {
+              "answerId": "b-fallback-390-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo en rutas слишком узко. Вопрос задает condición climática, а не только road type."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b181.jpg"
+        },
+        {
+          "questionId": "b-fallback-428",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-428-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: balizas не используют как обычный свет движения при таких condiciones climáticas."
+            },
+            {
+              "answerId": "b-fallback-428-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза false. При тумане/плохой видимости нужны appropriate lights and speed; balizas reserve for stopped/emergency/unusual situations."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b192.jpg"
+        },
+        {
+          "questionId": "b-fallback-448",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-448-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Обильный дождь сам по себе еще не aquaplaning. Эффект связан с потерей контакта шины с pavimento из-за слоя воды."
+            },
+            {
+              "answerId": "b-fallback-448-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: aquaplaning is pérdida de adherencia del neumático al piso caused by capa de agua acumulada en el pavimento that exceeds what tire tread can expel."
+            },
+            {
+              "answerId": "b-fallback-448-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Calzada resbaladiza luego de llovizna is too general. Aquaplaning is the specific water-layer/loss-of-adherence effect."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-weather-answer-full-chain",
+          "textRu": "Weather questions often punish partial answers. If one option includes vehicle, road/infrastructure, climate and driver together, do not choose only pavement/climate.",
+          "sourceQuestionIds": [
+            "b-fallback-275"
+          ]
+        },
+        {
+          "id": "trap-wet-road-not-cleaning",
+          "textRu": "Wet road never becomes safer because tyres or brakes are “cleaned” by water. In these tickets, lluvia/charcos mean lower adherence or brake effectiveness.",
+          "sourceQuestionIds": [
+            "b-fallback-206",
+            "b-fallback-330"
+          ]
+        },
+        {
+          "id": "trap-aquaplaning-specific-water-layer",
+          "textRu": "Aquaplaning is not just “a lot of rain” or generic slippery pavement. Look for loss of tyre adherence because water exceeds what the tread can expel.",
+          "sourceQuestionIds": [
+            "b-fallback-251",
+            "b-fallback-335",
+            "b-fallback-448"
+          ]
+        },
+        {
+          "id": "trap-fog-lights-not-balizas-altas",
+          "textRu": "In fog, altas and balizas are the traps. For circulation, the expected pattern is bajas plus rompeniebla when the ticket asks for them.",
+          "sourceQuestionIds": [
+            "b-fallback-283",
+            "b-fallback-317",
+            "b-fallback-390",
+            "b-fallback-428"
+          ]
+        },
+        {
+          "id": "trap-wind-sign-tree-not-forest",
+          "textRu": "The bent tree sign is not forest or palm-zone information. It warns Vientos fuertes laterales.",
+          "sourceQuestionIds": [
+            "b-fallback-110"
+          ]
+        },
+        {
+          "id": "trap-tyre-pressure-no-universal-number",
+          "textRu": "For tyre pressure, do not pick universal 28 lbs or 30 lbs. One ticket points to the vehicle manual; another asks for tyres fríos.",
+          "sourceQuestionIds": [
+            "b-fallback-269",
+            "b-fallback-375"
+          ]
+        },
+        {
+          "id": "trap-roof-load-image-specific",
+          "textRu": "The fuel-consumption image answer is about roof load increasing resistencia del viento. Do not broaden it into a general official fuel-consumption formula.",
+          "sourceQuestionIds": [
+            "b-fallback-195"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-weather-precautionary-speed-and-control",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают velocidad precautoria: скорость должна адаптироваться к visibility, состоянию дороги, weather, traffic, состоянию водителя/автомобиля/груза и при этом сохранять полный контроль.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "adverse-weather-precautionary-speed-and-control"
+        },
+        {
+          "id": "claim-weather-vehicle-safety-and-traction",
+          "textRu": "Ley 2148 поддерживает системы автомобиля, важные при плохой погоде: эффективные frenos, dirección, suspensión для adherencia/estabilidad, neumáticos, lights и очистку/обдув windshield.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "adverse-weather-vehicle-safety-and-traction"
+        },
+        {
+          "id": "claim-weather-lights-low-visibility-and-fog",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают использование low/position/plate lights, когда natural light или visibility/traffic conditions этого требуют; fog lights используются по собственному назначению, а emergency lights/balizas имеют отдельную warning-функцию.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "adverse-weather-lights-low-visibility-and-fog"
+        },
+        {
+          "id": "claim-weather-warning-signs-slippery-and-wind",
+          "textRu": "Decreto 779 Anexo L поддерживает значения warning signs для slippery roadway из-за water/oil/dust и для strong lateral winds.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "adverse-weather-warning-signs-slippery-and-wind"
+        },
+        {
+          "id": "claim-weather-additional-fog-lights",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают ограничение additional lights; weather-related элемент здесь - разрешенная пара fog lights, а точные pressure/manual/cold tyre answers остаются ticket-specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "adverse-weather-additional-fog-lights"
+        }
+      ]
+    },
+    {
       "id": "road-types-highways-and-routes",
       "slug": "road-types-highways-and-routes",
       "status": "draft",
