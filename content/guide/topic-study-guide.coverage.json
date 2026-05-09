@@ -398,7 +398,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E11",
+      "placementPhases": {
+        "driver-hand-signals": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-003",
@@ -2792,7 +2796,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E11",
+      "placementPhases": {
+        "driver-hand-signals": "content_ready",
+        "vehicle-lights-and-signaling": "planned"
+      }
     },
     {
       "questionId": "b-fallback-264",
@@ -3594,8 +3602,8 @@
       "topicIds": [
         "driver-hand-signals"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E11"
     },
     {
       "questionId": "b-fallback-351",
@@ -3873,8 +3881,8 @@
       "topicIds": [
         "driver-hand-signals"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E11"
     },
     {
       "questionId": "b-fallback-381",
