@@ -287,9 +287,9 @@
       "titleRu": "Ответственность и юридические обязанности после ДТП",
       "categoryId": "incident-response",
       "splitCriteria": "Responsabilidad civil/penal, demanda, testigo, fiscalía, abandono de persona и юридические последствия ДТП.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E19"
     },
     {
       "topicId": "alcohol-drugs-and-impairment",
@@ -596,9 +596,9 @@
         "documents-licenses-and-insurance"
       ],
       "phase": "planned",
-      "ownerSlice": "E6",
+      "ownerSlice": "E19",
       "placementPhases": {
-        "crash-liability-and-legal-duties": "planned",
+        "crash-liability-and-legal-duties": "content_ready",
         "documents-licenses-and-insurance": "content_ready"
       }
     },
@@ -3853,8 +3853,8 @@
       "topicIds": [
         "crash-liability-and-legal-duties"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E19"
     },
     {
       "questionId": "b-fallback-352",
@@ -4428,8 +4428,8 @@
       "topicIds": [
         "crash-liability-and-legal-duties"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E19"
     },
     {
       "questionId": "b-fallback-407",
@@ -4686,9 +4686,9 @@
         "documents-licenses-and-insurance"
       ],
       "phase": "planned",
-      "ownerSlice": "E6",
+      "ownerSlice": "E19",
       "placementPhases": {
-        "crash-liability-and-legal-duties": "planned",
+        "crash-liability-and-legal-duties": "content_ready",
         "documents-licenses-and-insurance": "content_ready"
       }
     },
@@ -4705,8 +4705,8 @@
       "topicIds": [
         "crash-liability-and-legal-duties"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E19"
     },
     {
       "questionId": "b-fallback-435",
