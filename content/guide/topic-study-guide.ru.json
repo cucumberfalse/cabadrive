@@ -2410,6 +2410,860 @@
           "sourceTraceId": "regulatory-signs-normative-prohibitions"
         }
       ]
+    },
+    {
+      "id": "warning-signs",
+      "slug": "warning-signs",
+      "status": "draft",
+      "titleRu": "Предупреждающие знаки и опасные участки",
+      "summaryRu": "Экзаменационный блок про señales preventivas, опасные участки, форму/цвет знаков, временные работы и несколько ситуаций, где предупреждение связано с приоритетом или регулировкой движения.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах señal preventiva или prevención означает предупреждение: знак заранее сообщает об опасности, изменении дороги или необычном участке, чтобы водитель снизил скорость и подготовился, а не ждал последней секунды.",
+        "Для предупреждающих знаков сначала распознавайте форму и цвет, затем символ. В этой группе часто встречаются curvas, camino sinuoso, pendiente, estrechamiento, calzada dividida, inicio de doble circulación, rotonda, encrucijada, cruce de peatones, zona escolar и obras.",
+        "Фраза máximo peligro в билетах не означает отдельный маневр. Она усиливает предупреждение: рядом может быть пешеходный переход, сильный спуск или другой участок, где ошибка быстро становится опасной.",
+        "Часть билетов здесь проверяет не название знака, а поведение рядом с опасностью: уступить при obstrucción de vía, не начинать cruce при занятом перекрестке, obey personal de obra, снизить скорость, правильно понять pérdida de prioridad de avance или порядок autoridad - señalización - normas generales.",
+        "Если билет спрашивает “qué indica esta señal”, отвечайте на точный смысл картинки. Похожие варианты вроде camino sinuoso/curva cerrada, estrechamiento/calzada dividida, doble mano/sentido único часто выглядят правдоподобно, но обозначают разные дорожные ситуации.",
+        "В вопросах с figuras A/B/C не пытайтесь переводить каждый символ по памяти: ищите категорию по форме и цвету, а затем совпадение с запрошенным смыслом - prevención, obras, rotonda или cruce de peatones."
+      ],
+      "practicalReasoningRu": [
+        "Предупреждающие знаки дают водителю время. Если заранее увидеть сужение, поворот, школу, пешеходов, работы или изменение приоритета, поток остается спокойнее: меньше резких торможений, перестроений и конфликтов.",
+        "Иерархия указаний нужна для ситуаций, где общий знак или правило недостаточны. На дороге конкретная indicación de la autoridad или регулировщика работ решает текущий конфликт быстрее, чем абстрактное правило."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-senal-preventiva-warning",
+          "termEs": "señal preventiva",
+          "translationRu": "предупреждающий знак",
+          "sourceQuestionIds": [
+            "b-fallback-060"
+          ]
+        },
+        {
+          "id": "term-maximo-peligro-warning",
+          "termEs": "máximo peligro",
+          "translationRu": "максимальная опасность, усиленное предупреждение",
+          "sourceQuestionIds": [
+            "b-fallback-060",
+            "b-fallback-153"
+          ]
+        },
+        {
+          "id": "term-pendiente-descendente",
+          "termEs": "pendiente descendente",
+          "translationRu": "крутой спуск",
+          "sourceQuestionIds": [
+            "b-fallback-060"
+          ]
+        },
+        {
+          "id": "term-camino-sinuoso-warning",
+          "termEs": "Camino sinuoso",
+          "translationRu": "извилистая дорога",
+          "sourceQuestionIds": [
+            "b-fallback-065",
+            "b-fallback-295"
+          ]
+        },
+        {
+          "id": "term-encrucijada-warning",
+          "termEs": "Encrucijada",
+          "translationRu": "пересечение, развилка",
+          "sourceQuestionIds": [
+            "b-fallback-068",
+            "b-fallback-180",
+            "b-fallback-262"
+          ]
+        },
+        {
+          "id": "term-obstruccion-via",
+          "termEs": "obstrucción de vía",
+          "translationRu": "препятствие на проезжей части",
+          "sourceQuestionIds": [
+            "b-fallback-070"
+          ]
+        },
+        {
+          "id": "term-luces-intermitentes-warning",
+          "termEs": "luces intermitentes",
+          "translationRu": "мигающие аварийные огни",
+          "sourceQuestionIds": [
+            "b-fallback-077"
+          ]
+        },
+        {
+          "id": "term-camino-sin-salida",
+          "termEs": "camino sin salida",
+          "translationRu": "дорога без выхода, тупик",
+          "sourceQuestionIds": [
+            "b-fallback-091"
+          ]
+        },
+        {
+          "id": "term-curva-cerrada-warning",
+          "termEs": "curva cerrada",
+          "translationRu": "резкий поворот",
+          "sourceQuestionIds": [
+            "b-fallback-124"
+          ]
+        },
+        {
+          "id": "term-cruce-peatones-warning",
+          "termEs": "Cruce de Peatones",
+          "translationRu": "пешеходный переход",
+          "sourceQuestionIds": [
+            "b-fallback-153"
+          ]
+        },
+        {
+          "id": "term-estrechamiento-warning",
+          "termEs": "Estrechamiento",
+          "translationRu": "сужение дороги",
+          "sourceQuestionIds": [
+            "b-fallback-154",
+            "b-fallback-262"
+          ]
+        },
+        {
+          "id": "term-zona-escolar-warning",
+          "termEs": "Zona escolar",
+          "translationRu": "школьная зона",
+          "sourceQuestionIds": [
+            "b-fallback-159"
+          ]
+        },
+        {
+          "id": "term-prevencion-warning",
+          "termEs": "Prevención",
+          "translationRu": "предупреждение",
+          "sourceQuestionIds": [
+            "b-fallback-169"
+          ]
+        },
+        {
+          "id": "term-incorporacion-transito-lateral",
+          "termEs": "Incorporación de tránsito lateral",
+          "translationRu": "вливание бокового потока",
+          "sourceQuestionIds": [
+            "b-fallback-180"
+          ]
+        },
+        {
+          "id": "term-calzada-dividida-warning",
+          "termEs": "Calzada dividida",
+          "translationRu": "разделенная проезжая часть",
+          "sourceQuestionIds": [
+            "b-fallback-154",
+            "b-fallback-273"
+          ]
+        },
+        {
+          "id": "term-prioridad-normativa-warning",
+          "termEs": "prioridad normativa",
+          "translationRu": "нормативный приоритет",
+          "sourceQuestionIds": [
+            "b-fallback-311"
+          ]
+        },
+        {
+          "id": "term-reducir-velocidad-warning",
+          "termEs": "Reducir la velocidad",
+          "translationRu": "снизить скорость",
+          "sourceQuestionIds": [
+            "b-fallback-410"
+          ]
+        },
+        {
+          "id": "term-prioridad-avance-warning",
+          "termEs": "prioridad de avance",
+          "translationRu": "приоритет проезда вперед",
+          "sourceQuestionIds": [
+            "b-fallback-436"
+          ]
+        },
+        {
+          "id": "term-autoridad-competente-warning",
+          "termEs": "autoridad competente",
+          "translationRu": "компетентный орган/регулировщик",
+          "sourceQuestionIds": [
+            "b-fallback-444"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-060",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-060-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: билет сам описывает показанный знак как señal preventiva de máximo peligro о сильном спуске, то есть pendiente descendente."
+            },
+            {
+              "answerId": "b-fallback-060-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: вариант Falso отрицал бы текст билета, но изображение и формулировка как раз соответствуют предупреждению о крутом спуске."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b246.jpg"
+        },
+        {
+          "questionId": "b-fallback-065",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-065-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: camino resbaladizo - скользкая дорога, обычно с другим символом; здесь проверяется последовательность поворотов."
+            },
+            {
+              "answerId": "b-fallback-065-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак предупреждает о camino sinuoso, то есть об извилистой дороге с несколькими поворотами."
+            },
+            {
+              "answerId": "b-fallback-065-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: camino cuesta arriba означает подъем; в билете нет знака подъема, а есть извилистый участок."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b226.jpg"
+        },
+        {
+          "questionId": "b-fallback-068",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-068-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: inicio de doble mano говорит о начале двустороннего движения, а не о развилке или пересечении."
+            },
+            {
+              "answerId": "b-fallback-068-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: estrechamiento в una sola mano - сужение с одной стороны; на картинке смысл другой."
+            },
+            {
+              "answerId": "b-fallback-068-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак указывает encrucijada/bifurcación, то есть опасное место, где направление или поток разветвляется."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b228.jpg"
+        },
+        {
+          "questionId": "b-fallback-070",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-070-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: при obstrucción de vía водитель, на чьей стороне препятствие, уступает встречному транспортному средству."
+            },
+            {
+              "answerId": "b-fallback-070-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: препятствие находится в полосе обозначенного автомобиля, поэтому приоритет над встречным потоком у него не возникает."
+            },
+            {
+              "answerId": "b-fallback-070-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: билет ожидает конкретное правило поведения - уступить встречному транспорту, а не отсутствие установленного приоритета."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b105.jpg"
+        },
+        {
+          "questionId": "b-fallback-077",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-077-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: плохая погода и низкая скорость могут требовать осторожности, но вопрос спрашивает назначение этих luces intermitentes."
+            },
+            {
+              "answerId": "b-fallback-077-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: аварийная световая сигнализация предупреждает, что автомобиль detenido, собирается остановиться, estacionar или находится в emergencia."
+            },
+            {
+              "answerId": "b-fallback-077-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: вариант A слишком широкий для показанных огней, поэтому нельзя выбирать Ambas."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b176.jpg"
+        },
+        {
+          "questionId": "b-fallback-091",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-091-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: изображение соответствует señal de camino sin salida, то есть дороге без сквозного проезда."
+            },
+            {
+              "answerId": "b-fallback-091-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: Falso отрицал бы правильное распознавание знака тупика."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b260.jpg"
+        },
+        {
+          "questionId": "b-fallback-124",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-124-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: здесь нет сочетания curva con pendiente ascendente; это не знак подъема в повороте."
+            },
+            {
+              "answerId": "b-fallback-124-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: señal de prevención предупреждает о próxima curva cerrada, то есть о резком повороте впереди."
+            },
+            {
+              "answerId": "b-fallback-124-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: camino sinuoso - несколько последовательных поворотов; билет показывает одну закрытую кривую."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b241.jpg"
+        },
+        {
+          "questionId": "b-fallback-128",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-128-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак предупреждает о desvío por cambio de sentido de circulación, то есть об изменении направления движения через объезд."
+            },
+            {
+              "answerId": "b-fallback-128-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: calzada dividida относится к разделению проезжей части, а не к объезду из-за смены направления."
+            },
+            {
+              "answerId": "b-fallback-128-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: cruce peligroso - опасное пересечение; здесь смысл в desviación/cambio de sentido."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b262.jpg"
+        },
+        {
+          "questionId": "b-fallback-129",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-129-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: Figura A не соответствует нужной форме и цвету предупреждающего знака для rotonda или pendiente pronunciada."
+            },
+            {
+              "answerId": "b-fallback-129-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: Figura B является другой категорией/формой, поэтому не подходит под запрошенную señal indicativa."
+            },
+            {
+              "answerId": "b-fallback-129-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: Figura C имеет форму и цвет предупреждающего знака для rotonda o pendiente pronunciada."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b87.jpg"
+        },
+        {
+          "questionId": "b-fallback-153",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-153-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: señal A соответствует “Cruce de Peatones (máximo peligro)” и предупреждает заранее усилить внимание к пешеходам и снизить скорость перед переходом."
+            },
+            {
+              "answerId": "b-fallback-153-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: señal B не является указанным предупреждением máximo peligro о пешеходном переходе."
+            },
+            {
+              "answerId": "b-fallback-153-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: señal C относится к другой информации/категории и не отвечает на вопрос про Cruce de Peatones."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b239.jpg"
+        },
+        {
+          "questionId": "b-fallback-154",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-154-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: estrechamiento en una mano означает сужение только с одной стороны, а в билете показано сужение с двух сторон."
+            },
+            {
+              "answerId": "b-fallback-154-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: calzada dividida предупреждает о разделенной проезжей части, это другой знак."
+            },
+            {
+              "answerId": "b-fallback-154-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак указывает estrechamiento en las dos manos, то есть сужение дороги с обеих сторон."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b237.jpg"
+        },
+        {
+          "questionId": "b-fallback-159",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-159-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: niños jugando звучит похоже, но билетный знак обозначает именно zona escolar."
+            },
+            {
+              "answerId": "b-fallback-159-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: изображение предупреждает о zona escolar, где ожидаются дети и нужно заранее снизить риск."
+            },
+            {
+              "answerId": "b-fallback-159-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: calle peatonal - пешеходная улица; это не знак школьной зоны."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b235.jpg"
+        },
+        {
+          "questionId": "b-fallback-169",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-169-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: señal A по форме/цвету не является той, которая в этом билете comunica Prevención."
+            },
+            {
+              "answerId": "b-fallback-169-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: señal B передает категорию Prevención, то есть предупреждение об опасности или особом участке."
+            },
+            {
+              "answerId": "b-fallback-169-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: señal C относится к другой функции знаков, поэтому не отвечает на вопрос о prevención."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b82.jpg"
+        },
+        {
+          "questionId": "b-fallback-180",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-180-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: encrucijada - общее пересечение/разветвление, но показанный знак конкретнее."
+            },
+            {
+              "answerId": "b-fallback-180-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: cruce de caminos означает пересечение дорог; картинка предупреждает о боковом вливании потока."
+            },
+            {
+              "answerId": "b-fallback-180-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак означает incorporación de tránsito lateral, то есть присоединение транспорта сбоку."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b231.jpg"
+        },
+        {
+          "questionId": "b-fallback-220",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-220-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: Figura A не соответствует форме и цвету предупреждения о зоне obras."
+            },
+            {
+              "answerId": "b-fallback-220-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: Figura B соответствует señal indicativa de estar próximo a una zona afectada por obras."
+            },
+            {
+              "answerId": "b-fallback-220-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: Figura C показывает другой тип/смысл знака и не является нужным предупреждением о работах."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b88.jpg"
+        },
+        {
+          "questionId": "b-fallback-262",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-262-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: inicio de doble mano - начало двустороннего движения, а не bifurcación."
+            },
+            {
+              "answerId": "b-fallback-262-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак предупреждает об encrucijada (bifurcación), где движение или дорога разделяются."
+            },
+            {
+              "answerId": "b-fallback-262-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: estrechamiento en una sola mano - сужение с одной стороны; это не показанный знак."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b229.jpg"
+        },
+        {
+          "questionId": "b-fallback-273",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-273-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: estrechamiento en las dos manos - сужение с двух сторон, а здесь речь не о сужении."
+            },
+            {
+              "answerId": "b-fallback-273-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак указывает calzada dividida, то есть начало участка с разделенной проезжей частью."
+            },
+            {
+              "answerId": "b-fallback-273-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: inicio doble mano означает начало двустороннего движения; это другой предупреждающий знак."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b236.jpg"
+        },
+        {
+          "questionId": "b-fallback-288",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-288-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: no avanzar - запрещающий смысл, а показанный знак говорит о начале sentido único."
+            },
+            {
+              "answerId": "b-fallback-288-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: comienzo de doble mano - начало двустороннего движения; здесь наоборот появляется único sentido."
+            },
+            {
+              "answerId": "b-fallback-288-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак означает comienzo de sentido único, то есть начало одностороннего направления движения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b251.jpg"
+        },
+        {
+          "questionId": "b-fallback-295",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-295-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: изображение предупреждает об inicio de doble circulación, то есть о начале встречного/двустороннего движения."
+            },
+            {
+              "answerId": "b-fallback-295-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: calzada dividida - разделенная проезжая часть, а не начало двусторонней циркуляции."
+            },
+            {
+              "answerId": "b-fallback-295-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: camino sinuoso означает извилистую дорогу; это не смысл показанного знака."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b232.jpg"
+        },
+        {
+          "questionId": "b-fallback-306",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-306-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: color не предназначен только для привлечения внимания водителя категории particular."
+            },
+            {
+              "answerId": "b-fallback-306-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: цвет важен и для обычного водителя, а не только для профессионального."
+            },
+            {
+              "answerId": "b-fallback-306-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: цвет вместе с формой помогает понять информацию о trayecto de la vía и функцию знака."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-311",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-311-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: opción A не имеет высшую prioridad normativa в показанном наборе сигналов."
+            },
+            {
+              "answerId": "b-fallback-311-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: opción B уступает по нормативной иерархии правильной señal/opción C."
+            },
+            {
+              "answerId": "b-fallback-311-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: opción C имеет prioridad normativa por sobre las demás в ситуации билета."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b66.jpg"
+        },
+        {
+          "questionId": "b-fallback-312",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-312-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: зеленый свет не разрешает начинать cruce, если перекресток занят транспортом, который еще не завершил маневр."
+            },
+            {
+              "answerId": "b-fallback-312-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: водитель должен no iniciar el cruce hasta que el otro vehículo haya completado el suyo, чтобы не блокировать конфликтную зону."
+            },
+            {
+              "answerId": "b-fallback-312-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: быстрый проезд перед другим автомобилем создает риск и не соответствует безопасному порядку пересечения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b75.jpg"
+        },
+        {
+          "questionId": "b-fallback-345",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-345-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак указывает rotonda и предупреждает о круговом движении впереди."
+            },
+            {
+              "answerId": "b-fallback-345-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: формулировка peligro extremo de rotonda добавляет лишний смысл; билет спрашивает обычное распознавание rotonda."
+            },
+            {
+              "answerId": "b-fallback-345-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: preferencia de avance - знак приоритета, а не предупреждение о круговом движении."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b233.jpg"
+        },
+        {
+          "questionId": "b-fallback-347",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-347-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: personal de obra на рабочем участке может regular el paso de vehículos, поэтому его указание detenerse нужно выполнить."
+            },
+            {
+              "answerId": "b-fallback-347-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: обязанность не зависит только от того, percibe ли водитель ситуацию как riesgosa; работник регулирует движение на участке работ."
+            },
+            {
+              "answerId": "b-fallback-347-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: законная регулировка в зоне работ не ограничивается только agentes de tránsito в этой ситуации билета."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b69.jpg"
+        },
+        {
+          "questionId": "b-fallback-389",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-389-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: при incorporación al tránsito водитель, который въезжает на arteria, уступает тем, кто уже circulando по ней."
+            },
+            {
+              "answerId": "b-fallback-389-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: правило “справа” не дает приоритет при выезде/включении в поток на arteria."
+            },
+            {
+              "answerId": "b-fallback-389-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: señalizar maniobra обязательно, но сам по себе сигнал поворота не создает prioridad de paso."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b109.jpg"
+        },
+        {
+          "questionId": "b-fallback-410",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-410-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: предупреждающий знак требует reducir la velocidad del vehículo, потому что впереди опасный или особый участок."
+            },
+            {
+              "answerId": "b-fallback-410-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: предупреждение не означает ускоряться; incrementa la velocidad увеличивает риск."
+            },
+            {
+              "answerId": "b-fallback-410-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: знак не предписывает последовательный поворот налево и направо, а предупреждает снизить скорость."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b146.jpg"
+        },
+        {
+          "questionId": "b-fallback-436",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-436-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: показанная señal не дает водителю prioridad de avance."
+            },
+            {
+              "answerId": "b-fallback-436-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: frente a esta señal se pierde la prioridad de avance, то есть нужно уступить встречному/приоритетному движению."
+            },
+            {
+              "answerId": "b-fallback-436-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: билет прямо связывает знак с prioridad de avance, поэтому нельзя считать его не относящимся к приоритету."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b247.jpg"
+        },
+        {
+          "questionId": "b-fallback-440",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-440-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: в этом билете важна оговорка, что другие автомобили están detenidos, поэтому ожидается уступка въезжающему."
+            },
+            {
+              "answerId": "b-fallback-440-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: когда tránsito detenido, автомобили на arteria deben cederle el paso водителю, который хочет incorporarse."
+            },
+            {
+              "answerId": "b-fallback-440-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: билет не сводится только к intersecciones no semaforizadas; здесь проверяется конкретная ситуация включения в поток."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b110.jpg"
+        },
+        {
+          "questionId": "b-fallback-444",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-444-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: normas legales de carácter general не стоят выше конкретных indicaciones de la autoridad competente в оперативной дорожной ситуации."
+            },
+            {
+              "answerId": "b-fallback-444-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: порядок такой: indicaciones de la autoridad competente, затем señalización, затем normas legales de carácter general."
+            },
+            {
+              "answerId": "b-fallback-444-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: señalización важна, но она уступает указаниям компетентного регулировщика/authority."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-similar-warning-symbols",
+          "textRu": "Не склеивайте похожие названия: curva cerrada - один резкий поворот, camino sinuoso - серия поворотов, encrucijada/bifurcación - развилка или пересечение.",
+          "sourceQuestionIds": [
+            "b-fallback-065",
+            "b-fallback-068",
+            "b-fallback-124",
+            "b-fallback-262"
+          ]
+        },
+        {
+          "id": "trap-road-shape-changes",
+          "textRu": "Estrechamiento, calzada dividida, inicio de doble circulación и comienzo de sentido único похожи тем, что говорят о конфигурации дороги, но ответ меняется по направлению стрелок и форме проезжей части.",
+          "sourceQuestionIds": [
+            "b-fallback-154",
+            "b-fallback-273",
+            "b-fallback-288",
+            "b-fallback-295"
+          ]
+        },
+        {
+          "id": "trap-warning-does-not-give-priority",
+          "textRu": "Предупреждение само по себе не дает приоритет. При препятствии, включении в поток или потере prioridad de avance отвечайте по конкретной ситуации, а не по ощущению, что “я уже еду”.",
+          "sourceQuestionIds": [
+            "b-fallback-070",
+            "b-fallback-389",
+            "b-fallback-436",
+            "b-fallback-440"
+          ]
+        },
+        {
+          "id": "trap-authority-over-signs",
+          "textRu": "В иерархии билетов indicaciones de la autoridad competente стоят выше señalización, а сигнал работника в зоне obras обязателен в рамках этого участка.",
+          "sourceQuestionIds": [
+            "b-fallback-347",
+            "b-fallback-444"
+          ]
+        },
+        {
+          "id": "trap-figure-questions",
+          "textRu": "В вопросах с Figura A/B/C правильный ответ зависит от формы и цвета, поэтому не выбирайте знакомое слово, пока не проверили категорию знака.",
+          "sourceQuestionIds": [
+            "b-fallback-129",
+            "b-fallback-153",
+            "b-fallback-169",
+            "b-fallback-220"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-warning-sign-system-categories",
+          "textRu": "Anexo L описывает единую систему дорожной сигнализации, где предупреждающие знаки заранее сообщают об опасности или особом участке, а форма и цвет помогают понять категорию знака.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "warning-signs-system-and-categories"
+        },
+        {
+          "id": "claim-warning-sign-examples",
+          "textRu": "Значения предупреждающих знаков из этого блока, включая curvas, camino sinuoso, pendiente, estrechamiento, calzada dividida, rotonda, incorporación lateral, doble circulación, escolares и cruce de peatones, поддержаны Anexo L.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "warning-signs-preventive-examples"
+        },
+        {
+          "id": "claim-warning-authority-priority",
+          "textRu": "Для экзаменационной иерархии оперативные указания компетентной власти имеют приоритет над сигнализацией, а сигнализация - над общими нормами.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "warning-signs-authority-signs-norms-hierarchy"
+        },
+        {
+          "id": "claim-warning-incorporation-priority",
+          "textRu": "В билетах про incorporación al tránsito важно состояние потока: если автомобили на arteria circulando, въезжающий не получает приоритет; если tránsito detenido/interrumpido, ему должны уступить при включении.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "warning-signs-incorporation-priority"
+        }
+      ]
     }
   ]
 }
