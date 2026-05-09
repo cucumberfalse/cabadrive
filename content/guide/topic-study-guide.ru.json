@@ -2122,6 +2122,491 @@
       ]
     },
     {
+      "id": "safe-distance-and-braking",
+      "slug": "safe-distance-and-braking",
+      "status": "draft",
+      "titleRu": "Дистанция, торможение и реакция",
+      "summaryRu": "Блок про distancia mínima de seguridad, мокрую calzada, tiempo de reacción, campo visual, стекла, велосипедистов и узкую fuel-consumption ловушку.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Главная экзаменационная связка: дистанция, скорость, сцепление, обзор и реакция работают вместе; чем хуже условия, тем больше запас нужен водителю.",
+        "Для CABA в Ley 2148 прямо указана distancia prudencial mínima: не меньше двух секунд с учетом velocidad de marcha, calzada и clima. Поэтому в билете `b-fallback-005` правильна не длина в метрах, а diferencia de dos segundos.",
+        "На мокрой calzada тормозной путь больше, потому что сцепление хуже. Архивированные нормы поддерживают общую обязанность держать полный контроль с учетом visibilidad, estado de la calzada и clima; точное увеличение правила 2 segundos до 4 segundos в `b-fallback-255` оставлено как ticket-specific formula.",
+        "Niebla опасна не одним фактором. В fallback-билете она меняет campo visual, percepción del entorno, capacidad lumínica del vehículo и adherencia de las cubiertas; ответы, где туман влияет только на свет или только на обзор, слишком узкие.",
+        "Tiempo de reacción - это промежуток от обнаружения риска до решения/начала действия. В билете `b-fallback-401` среднее значение `aproximadamente 1 segundo` используется как билетная формула; не превращайте ее в универсальный закон для любого водителя и любой ситуации.",
+        "Чем выше скорость, тем уже полезный campo visual. Это не отдельная правовая формула, а практическая причина оставлять запас: на большой скорости водитель позже замечает боковые события и имеет меньше времени на frenado.",
+        "Билет про cristales проверяет не сложный приборный контроль, а конкретную формулу Ley 2148: при tonalidad стекол ocupantes del vehículo должны различаться a corta distancia.",
+        "Велосипедисты не освобождаются от normas de tránsito из-за меньшей скорости. В CABA для motovehículos и ciclorrodados действуют общие права и обязанности водителей, а нормы общего характера применяются к ciclorodados, если по природе они подходят.",
+        "Fuel-consumption вопрос держите узко: по fallback-билету exceso de consumo связан и с velocidad, и с resistencia aerodinámica. Здесь нет попытки строить официальный курс eco-driving."
+      ],
+      "practicalReasoningRu": [
+        "Дистанция в секундах удобнее метров, потому что автоматически растет с фактической скоростью: за две секунды быстрый автомобиль проходит больше пути, чем медленный.",
+        "Мокрая дорога и туман одновременно ухудшают видимость, сцепление и время на решение. Поэтому безопасная реакция - снизить скорость и увеличить дистанцию, а не держать привычный сухой-road gap.",
+        "Экзамен часто дает неполные ответы: только свет, только 2 metros, только velocidad или только resistencia aerodinámica. Правильный вариант обычно сохраняет всю цепочку риска, а не один элемент."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-distancia-minima-seguridad",
+          "termEs": "distancia mínima de seguridad",
+          "translationRu": "минимальная безопасная дистанция",
+          "sourceQuestionIds": [
+            "b-fallback-005"
+          ]
+        },
+        {
+          "id": "term-dos-segundos-safe-distance",
+          "termEs": "dos segundos",
+          "translationRu": "две секунды",
+          "sourceQuestionIds": [
+            "b-fallback-005"
+          ]
+        },
+        {
+          "id": "term-distancia-frenado",
+          "termEs": "distancia de frenado",
+          "translationRu": "тормозной путь / дистанция торможения",
+          "sourceQuestionIds": [
+            "b-fallback-006"
+          ]
+        },
+        {
+          "id": "term-calzada-seca",
+          "termEs": "calzada se encuentra seca",
+          "translationRu": "проезжая часть сухая",
+          "sourceQuestionIds": [
+            "b-fallback-006"
+          ]
+        },
+        {
+          "id": "term-velocidad-campo-visual",
+          "termEs": "velocidad y el campo visual",
+          "translationRu": "скорость и поле зрения",
+          "sourceQuestionIds": [
+            "b-fallback-041"
+          ]
+        },
+        {
+          "id": "term-niebla-factor-riesgo",
+          "termEs": "niebla, como factor de riesgo",
+          "translationRu": "туман как фактор риска",
+          "sourceQuestionIds": [
+            "b-fallback-240"
+          ]
+        },
+        {
+          "id": "term-percepcion-entorno",
+          "termEs": "percepción del entorno",
+          "translationRu": "восприятие окружающей обстановки",
+          "sourceQuestionIds": [
+            "b-fallback-240"
+          ]
+        },
+        {
+          "id": "term-adherencia-cubiertas",
+          "termEs": "adherencia de las cubiertas",
+          "translationRu": "сцепление шин",
+          "sourceQuestionIds": [
+            "b-fallback-240"
+          ]
+        },
+        {
+          "id": "term-condicion-climatica",
+          "termEs": "condición climática",
+          "translationRu": "погодное условие",
+          "sourceQuestionIds": [
+            "b-fallback-255",
+            "b-fallback-330"
+          ]
+        },
+        {
+          "id": "term-4-segundos",
+          "termEs": "4 segundos",
+          "translationRu": "4 секунды",
+          "sourceQuestionIds": [
+            "b-fallback-255"
+          ]
+        },
+        {
+          "id": "term-tiempo-reaccion",
+          "termEs": "tiempo de reacción",
+          "translationRu": "время реакции",
+          "sourceQuestionIds": [
+            "b-fallback-278"
+          ]
+        },
+        {
+          "id": "term-situacion-riesgo",
+          "termEs": "situación de riesgo",
+          "translationRu": "опасная ситуация",
+          "sourceQuestionIds": [
+            "b-fallback-278"
+          ]
+        },
+        {
+          "id": "term-percibe-peligro-freno",
+          "termEs": "percibe un peligro hasta que acciona el freno",
+          "translationRu": "от восприятия опасности до нажатия на тормоз",
+          "sourceQuestionIds": [
+            "b-fallback-401"
+          ]
+        },
+        {
+          "id": "term-lluvia-adherencia-menor",
+          "termEs": "lluvia la adherencia es menor",
+          "translationRu": "при дожде сцепление меньше",
+          "sourceQuestionIds": [
+            "b-fallback-330"
+          ]
+        },
+        {
+          "id": "term-cristales-tono-color",
+          "termEs": "cristales de un automóvil",
+          "translationRu": "стекла автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-417"
+          ]
+        },
+        {
+          "id": "term-ocupantes-corta-distancia",
+          "termEs": "ocupantes del vehículo a corta distancia",
+          "translationRu": "пассажиры/люди в автомобиле различимы с близкого расстояния",
+          "sourceQuestionIds": [
+            "b-fallback-417"
+          ]
+        },
+        {
+          "id": "term-ciclistas-normas-transito",
+          "termEs": "ciclistas no están obligados a respetar todas las normas de tránsito",
+          "translationRu": "велосипедисты якобы не обязаны соблюдать все правила; ловушка",
+          "sourceQuestionIds": [
+            "b-fallback-424"
+          ]
+        },
+        {
+          "id": "term-consumo-combustible",
+          "termEs": "consumo de combustible",
+          "translationRu": "расход топлива",
+          "sourceQuestionIds": [
+            "b-fallback-450"
+          ]
+        },
+        {
+          "id": "term-resistencia-aerodinamica",
+          "termEs": "resistencia aerodinámica",
+          "translationRu": "аэродинамическое сопротивление",
+          "sourceQuestionIds": [
+            "b-fallback-450"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-005",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-005-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: для этого билета и CABA-формулы безопасная дистанция выражается как diferencia de dos segundos, а не как фиксированное число метров."
+            },
+            {
+              "answerId": "b-fallback-005-a2",
+              "verdict": "incorrect",
+              "explanationRu": "2 metros звучит конкретно, но это слишком механическая и неверная мера: на разной скорости за одно и то же время автомобиль проходит разный путь."
+            },
+            {
+              "answerId": "b-fallback-005-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: в CABA есть минимальная временная формула dos segundos. Дело не только в запрете ехать вплотную inmediatamente detrás."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b144.jpg"
+        },
+        {
+          "questionId": "b-fallback-006",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-006-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Igual que seca неверно: мокрая или скользкая calzada уменьшает запас сцепления, поэтому остановиться так же быстро обычно нельзя."
+            },
+            {
+              "answerId": "b-fallback-006-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Menor неверно: при худшем сцеплении тормозной путь не становится короче. Это перевернутая ловушка."
+            },
+            {
+              "answerId": "b-fallback-006-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: на такой calzada distancia de frenado будет mayor que cuando la calzada se encuentra seca."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b185.jpg"
+        },
+        {
+          "questionId": "b-fallback-041",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-041-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: a mayor velocidad, menor campo visual. Чем быстрее едете, тем меньше времени и внимания остается на боковые события."
+            },
+            {
+              "answerId": "b-fallback-041-a2",
+              "verdict": "incorrect",
+              "explanationRu": "A menor velocidad, menor campo visual переворачивает логику билета. Снижение скорости обычно дает больше времени на обзор и реакцию."
+            },
+            {
+              "answerId": "b-fallback-041-a3",
+              "verdict": "incorrect",
+              "explanationRu": "A mayor velocidad, mayor campo visual неверно: билет проверяет сужение полезного поля зрения при росте скорости."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-240",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-240-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: niebla затрагивает всю цепочку риска - campo visual, percepción del entorno, capacidad lumínica del vehículo и adherencia de las cubiertas."
+            },
+            {
+              "answerId": "b-fallback-240-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ответ неполный: он оставляет только обзор и свет, но теряет percepción del entorno и adherencia de las cubiertas."
+            },
+            {
+              "answerId": "b-fallback-240-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo afecta la capacidad lumínica слишком узко. Туман также влияет на восприятие, поле зрения и сцепление."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-255",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-255-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: при показанной condición climática правило 2 segundos увеличивают до 4 segundos. Это билетная формула, а не обобщенный закон из архивной нормы."
+            },
+            {
+              "answerId": "b-fallback-255-a2",
+              "verdict": "incorrect",
+              "explanationRu": "3 segundos - слишком маленькое увеличение для ожидаемого ответа. Билет просит конкретную формулу 4 segundos."
+            },
+            {
+              "answerId": "b-fallback-255-a3",
+              "verdict": "incorrect",
+              "explanationRu": "5 segundos может звучать осторожно, но в этом билете ожидается именно 4 segundos, а не максимально большой вариант."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b184.jpg"
+        },
+        {
+          "questionId": "b-fallback-278",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-278-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это длительность самой maniobra, а не tiempo de reacción. Реакция заканчивается решением, до выполнения всего маневра."
+            },
+            {
+              "answerId": "b-fallback-278-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Запуск автомобиля и начало движения не относятся к реакции на peligro. Здесь нет ситуации риска."
+            },
+            {
+              "answerId": "b-fallback-278-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: tiempo de reacción - время от того, как водитель advierte una situación de riesgo, до принятия решения."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-330",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-330-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза про mayor proporción de agua al reducir velocidad не является правильной логикой. При дожде риск связан с меньшей adherencia и большим тормозным путем."
+            },
+            {
+              "answerId": "b-fallback-330-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: con lluvia la adherencia es menor, поэтому разумно aumentar la distancia de seguridad и reducir la velocidad."
+            },
+            {
+              "answerId": "b-fallback-330-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Siempre la misma неверно: дистанция должна учитывать clima, calzada и скорость. В дождь запас нужен больше."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b183.jpg"
+        },
+        {
+          "questionId": "b-fallback-401",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-401-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: средний tiempo de reacción от percibe un peligro до acciona el freno - aproximadamente 1 segundo."
+            },
+            {
+              "answerId": "b-fallback-401-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Entre 2 y 3 segundos не является ожидаемой средней формулой этого билета. Не путайте реакцию с полной остановкой."
+            },
+            {
+              "answerId": "b-fallback-401-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Es inmediato неверно: между восприятием опасности и нажатием на тормоз проходит ненулевое время."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-417",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-417-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Portable colorimetric test звучит технически, но билет спрашивает формулу Ley 2148 para control en la vía pública: различимость ocupantes a corta distancia."
+            },
+            {
+              "answerId": "b-fallback-417-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: по Ley 2148 при контроле grado de tonalidad должны distinguirse los ocupantes del vehículo a corta distancia."
+            },
+            {
+              "answerId": "b-fallback-417-a3",
+              "verdict": "incorrect",
+              "explanationRu": "15 metros и facciones del conductor - лишняя, неверная конкретизация. В законе и билете критерий другой: ocupantes a corta distancia."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-424",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-424-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: меньшая скорость велосипеда не освобождает ciclistas от normas de tránsito, которые применимы к ciclorrodados."
+            },
+            {
+              "answerId": "b-fallback-424-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: утверждение falso. Велосипедисты тоже участники движения и должны соблюдать применимые правила, даже если их транспорт не развивает высокую скорость."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-450",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-450-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Resistencia aerodinámica влияет на consumo, но вариант неполный: билет спрашивает cuál interviene, и скорость тоже участвует."
+            },
+            {
+              "answerId": "b-fallback-450-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Velocidad влияет на consumo, но это тоже неполный ответ. Нужно выбрать вариант, который объединяет A и B."
+            },
+            {
+              "answerId": "b-fallback-450-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: обе причины - resistencia aerodinámica и velocidad - intervienen en el exceso de consumo de combustible."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-seconds-not-meters",
+          "textRu": "Distancia mínima de seguridad в этих билетах измеряется временем: dos segundos. Не выбирайте 2 metros только потому, что число выглядит конкретным.",
+          "sourceQuestionIds": [
+            "b-fallback-005"
+          ]
+        },
+        {
+          "id": "trap-wet-road-not-same-distance",
+          "textRu": "Мокрая calzada не равна seca. Если есть lluvia или menor adherencia, правильная логика - больше дистанция и ниже скорость.",
+          "sourceQuestionIds": [
+            "b-fallback-006",
+            "b-fallback-330"
+          ]
+        },
+        {
+          "id": "trap-four-seconds-ticket-specific",
+          "textRu": "`4 segundos` - ожидаемая fallback-формула для показанной condición climática. Не переносите ее как официальный универсальный минимум без отдельного источника.",
+          "sourceQuestionIds": [
+            "b-fallback-255"
+          ]
+        },
+        {
+          "id": "trap-niebla-all-factors",
+          "textRu": "В niebla не выбирайте частичный ответ. Правильный вариант собирает обзор, percepción, свет и adherencia.",
+          "sourceQuestionIds": [
+            "b-fallback-240"
+          ]
+        },
+        {
+          "id": "trap-reaction-not-braking-distance",
+          "textRu": "Tiempo de reacción - не полный frenado и не длительность маневра. Это момент от опасности до решения/начала действия.",
+          "sourceQuestionIds": [
+            "b-fallback-278",
+            "b-fallback-401"
+          ]
+        },
+        {
+          "id": "trap-tinted-glass-close-distance",
+          "textRu": "В вопросе про cristales не ищите 15 метров или прибор. Ключевая формула Ley 2148 - ocupantes visibles a corta distancia.",
+          "sourceQuestionIds": [
+            "b-fallback-417"
+          ]
+        },
+        {
+          "id": "trap-cyclist-speed-does-not-exempt-rules",
+          "textRu": "Фраза `no generan altas velocidades` - ловушка. Меньшая скорость велосипеда не отменяет obligación de respetar normas de tránsito.",
+          "sourceQuestionIds": [
+            "b-fallback-424"
+          ]
+        },
+        {
+          "id": "trap-fuel-answer-is-both",
+          "textRu": "В fuel-consumption вопросе не выбирайте один фактор. По билету correct answer - `Ambas respuestas, A y B`.",
+          "sourceQuestionIds": [
+            "b-fallback-450"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-safe-distance-two-seconds-and-prudent-distance",
+          "textRu": "Ley 2148 states that the minimum prudent following distance in CABA must account for speed, road and weather conditions and be at least a two-second time gap; Ley 24.449 also prohibits following closer than a prudent distance for the speed of travel.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safe-distance-two-seconds-and-prudent-distance"
+        },
+        {
+          "id": "claim-speed-weather-braking-and-control",
+          "textRu": "Ley 2148 and Ley 24.449 support adapting speed to visibility, road surface, weather, traffic and vehicle control, while Ley 2148 vehicle requirements support effective brakes and suspension/adherence as safety conditions.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safe-distance-speed-weather-braking-and-control"
+        },
+        {
+          "id": "claim-tinted-glass-occupants-visible",
+          "textRu": "Ley 2148 requires vehicle safety glass and, for tint-degree roadside control, occupants must be distinguishable at short distance.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safe-distance-tinted-glass-occupants-visible"
+        },
+        {
+          "id": "claim-cyclists-general-traffic-rules",
+          "textRu": "Ley 2148 treats motovehicle/ciclorrodado drivers as having the same rights and obligations as other vehicle drivers except where the nature of the vehicle does not apply, and general traffic rules apply to ciclorodados and mobility devices where suitable.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safe-distance-cyclists-general-traffic-rules"
+        }
+      ]
+    },
+    {
       "id": "road-types-highways-and-routes",
       "slug": "road-types-highways-and-routes",
       "status": "draft",

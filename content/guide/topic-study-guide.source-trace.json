@@ -1470,6 +1470,74 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force",
       "notes": "Supports sustainable-mobility framing without turning this slice into the full bicycles-and-micromobility topic."
+    },
+    {
+      "id": "safe-distance-two-seconds-and-prudent-distance",
+      "topicId": "safe-distance-and-braking",
+      "claimId": "claim-safe-distance-two-seconds-and-prudent-distance",
+      "claimSummaryRu": "CABA requires at least a two-second prudent following distance with speed, road and weather considered; national law also prohibits following closer than prudent for travel speed.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.13 Distancia a guardar entre vehículos",
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso g)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports the two-second CABA claim for b-fallback-005. The wet-weather four-second increment remains ticket-specific and is not generalized as an official-source-backed rule."
+    },
+    {
+      "id": "safe-distance-speed-weather-braking-and-control",
+      "topicId": "safe-distance-and-braking",
+      "claimId": "claim-speed-weather-braking-and-control",
+      "claimSummaryRu": "Drivers must adapt speed/control to visibility, road, weather and traffic conditions; vehicles must have effective braking and suspension that supports adherence/stability.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.1.2 Condiciones mínimas de seguridad",
+        "Ley 2148 5.2.1 Condiciones para conducir",
+        "Ley 2148 6.2.1 Adecuación de la velocidad a las circunstancias. Velocidad precautoria",
+        "Ley 24.449 Artículo 39 Condiciones para conducir",
+        "Ley 24.449 Artículo 50 Velocidad precautoria"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports general safe-control/weather/visibility/braking framing for b-fallback-006, b-fallback-240 and b-fallback-330. Exact fallback formulas about visual-field narrowing, average reaction time and fog factor list remain ticket-specific."
+    },
+    {
+      "id": "safe-distance-tinted-glass-occupants-visible",
+      "topicId": "safe-distance-and-braking",
+      "claimId": "claim-tinted-glass-occupants-visible",
+      "claimSummaryRu": "Ley 2148 requires transparent safety glass and, for tint-degree control, occupants must be distinguishable at short distance.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.1.3 Requisitos para automotores, inciso h)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports only the b-fallback-417 legal trap; no portable colorimetric device or 15-meter face-recognition claim is made."
+    },
+    {
+      "id": "safe-distance-cyclists-general-traffic-rules",
+      "topicId": "safe-distance-and-braking",
+      "claimId": "claim-cyclists-general-traffic-rules",
+      "claimSummaryRu": "Ley 2148 applies general rights/obligations and traffic norms to motovehicles, ciclorodados and mobility devices where appropriate.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.3.1 Regla general",
+        "Ley 2148 6.10.1 Aplicación de normas generales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the narrow b-fallback-424 trap that cyclists are not exempt from applicable traffic norms merely because they do not use high-speed vehicles."
     }
   ]
 }
