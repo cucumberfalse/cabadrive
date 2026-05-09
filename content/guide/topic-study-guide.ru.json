@@ -8961,6 +8961,719 @@
       ]
     },
     {
+      "id": "right-of-way-special-situations",
+      "slug": "right-of-way-special-situations",
+      "status": "draft",
+      "titleRu": "Особые ситуации уступания и приоритета",
+      "summaryRu": "Экзаменационный блок про rotondas, obstrucción/estrechamiento, pendiente, emergencia, incorporación al tránsito, bocina, giro и порядок autoridad-señalización-normas.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В особых ситуациях приоритет не решается одной привычкой “кто справа”: сначала ищите rotonda, pendiente, obstrucción de vía, emergencia, incorporación al tránsito или указание autoridad/señalización.",
+        "В rotonda главное правило простое: кто уже circula por la calzada circular, имеет приоритет перед тем, кто intenta ingresar. Но тот, кто движется по кругу, должен уступить тому, кто egresa, если нет иной señalización.",
+        "Obstrucción или estrechamiento требует не спорить за узкое место, а оставить безопасный проезд. В билетной картинке, где препятствие на вашей стороне, правильная логика - ceder el paso al vehículo que circula en sentido contrario.",
+        "На pendiente estrecha с двойным направлением в CABA приоритет у автомобиля, который circula en sentido ascendente. На экзамене это часто превращается в вопрос “vehículo que asciende” против “vehículo que desciende”.",
+        "Emergencia читается по сигналам и задаче: vehículos de emergencia или vehículo en servicio de emergencia нужно пропустить сразу. Для обычного автомобиля с repeated bocina в `b-fallback-093` не расширяйте вывод слишком широко: билет трактует показанную bocina как emergency signal, а не как общее право шуметь или проезжать на rojo.",
+        "Incorporación al tránsito из estacionamiento, garaje, playa de estacionamiento или estación de servicio не дает автоматического приоритета. Уступают такому автомобилю только когда tránsito se encuentra interrumpido; если поток circulando, въезжающий водитель ждет.",
+        "Giro и поворот налево остаются особой ловушкой внутри этой темы. Luz de giro del lado correspondiente и 30 metros antes нужны для предупреждения, но bocina или ambos giros не заменяют нормальный указатель; на intersección semaforizada de doble sentido поворот налево без разрешающей señal luminosa de giro запрещен.",
+        "Нормативная иерархия нужна для конфликтов между правилами: primero indicaciones de la autoridad competente, затем señalización/semáforos по уровню, и только потом normas legales de carácter general. Поэтому ответ с “общий закон выше регулировщика” в билетах неверен."
+      ],
+      "practicalReasoningRu": [
+        "Особые правила снимают неоднозначность там, где обычное правило “справа” было бы опасным: круговое движение, сужение, уклон, выезд из гаража или экстренный проезд.",
+        "Приоритет на rotonda защищает непрерывность потока: если каждый въезжающий будет требовать преимущество, круг быстро заблокируется.",
+        "На подъеме автомобиль тяжелее снова трогается и может откатиться; поэтому при узкой pendiente поток делают предсказуемым через приоритет ascendente.",
+        "У emergency vehicles время и свободный коридор важнее обычной очередности, но соседние билеты с exact image choreography остаются именно ответами на показанную картинку."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-ceder-el-paso-special",
+          "termEs": "ceder el paso",
+          "translationRu": "уступить дорогу",
+          "sourceQuestionIds": [
+            "b-fallback-031",
+            "b-fallback-070"
+          ]
+        },
+        {
+          "id": "term-incorporarse-al-transito-special",
+          "termEs": "incorporarse al tránsito",
+          "translationRu": "включиться в движение",
+          "sourceQuestionIds": [
+            "b-fallback-031",
+            "b-fallback-389",
+            "b-fallback-440"
+          ]
+        },
+        {
+          "id": "term-transito-interrumpido-special",
+          "termEs": "tránsito se encuentra interrumpido",
+          "translationRu": "движение прервано/заблокировано",
+          "sourceQuestionIds": [
+            "b-fallback-031"
+          ]
+        },
+        {
+          "id": "term-garaje-special",
+          "termEs": "garaje",
+          "translationRu": "гараж, въезд/выезд",
+          "sourceQuestionIds": [
+            "b-fallback-031"
+          ]
+        },
+        {
+          "id": "term-prohibicion-detenerse-special",
+          "termEs": "prohibición de detenerse",
+          "translationRu": "запрет остановки",
+          "sourceQuestionIds": [
+            "b-fallback-051"
+          ]
+        },
+        {
+          "id": "term-obstruccion-via-special",
+          "termEs": "obstrucción de vía",
+          "translationRu": "препятствие/блокировка на проезжей части",
+          "sourceQuestionIds": [
+            "b-fallback-070"
+          ]
+        },
+        {
+          "id": "term-sentido-contrario-special",
+          "termEs": "sentido contrario",
+          "translationRu": "встречное направление",
+          "sourceQuestionIds": [
+            "b-fallback-070"
+          ]
+        },
+        {
+          "id": "term-luz-giro-special",
+          "termEs": "luz de giro",
+          "translationRu": "указатель поворота",
+          "sourceQuestionIds": [
+            "b-fallback-084",
+            "b-fallback-187"
+          ]
+        },
+        {
+          "id": "term-bocina-special",
+          "termEs": "bocina",
+          "translationRu": "звуковой сигнал",
+          "sourceQuestionIds": [
+            "b-fallback-084",
+            "b-fallback-093",
+            "b-fallback-139"
+          ]
+        },
+        {
+          "id": "term-calzada-circular-special",
+          "termEs": "calzada circular",
+          "translationRu": "круговая проезжая часть",
+          "sourceQuestionIds": [
+            "b-fallback-088"
+          ]
+        },
+        {
+          "id": "term-rotonda-special",
+          "termEs": "rotonda",
+          "translationRu": "круговое движение",
+          "sourceQuestionIds": [
+            "b-fallback-129",
+            "b-fallback-178",
+            "b-fallback-345"
+          ]
+        },
+        {
+          "id": "term-pendiente-pronunciada-special",
+          "termEs": "pendiente pronunciada",
+          "translationRu": "крутой уклон",
+          "sourceQuestionIds": [
+            "b-fallback-129",
+            "b-fallback-213"
+          ]
+        },
+        {
+          "id": "term-sin-semaforos-special",
+          "termEs": "sin semáforos",
+          "translationRu": "без светофоров",
+          "sourceQuestionIds": [
+            "b-fallback-139"
+          ]
+        },
+        {
+          "id": "term-sobrepasarlo-derecha-special",
+          "termEs": "Sobrepasarlo por la derecha",
+          "translationRu": "объехать/обогнать его справа",
+          "sourceQuestionIds": [
+            "b-fallback-139"
+          ]
+        },
+        {
+          "id": "term-vehiculo-asciende-special",
+          "termEs": "vehículo que asciende",
+          "translationRu": "автомобиль, который поднимается",
+          "sourceQuestionIds": [
+            "b-fallback-213"
+          ]
+        },
+        {
+          "id": "term-ambulancia-special",
+          "termEs": "ambulancia",
+          "translationRu": "скорая помощь",
+          "sourceQuestionIds": [
+            "b-fallback-268",
+            "b-fallback-319"
+          ]
+        },
+        {
+          "id": "term-apartarse-special",
+          "termEs": "aparten los vehículos",
+          "translationRu": "автомобили должны отъехать/освободить место",
+          "sourceQuestionIds": [
+            "b-fallback-268",
+            "b-fallback-319"
+          ]
+        },
+        {
+          "id": "term-demarcacion-horizontal-special",
+          "termEs": "demarcación horizontal",
+          "translationRu": "горизонтальная разметка",
+          "sourceQuestionIds": [
+            "b-fallback-341"
+          ]
+        },
+        {
+          "id": "term-prohibido-estacionar-detenerse-special",
+          "termEs": "prohibido estacionar o detenerse",
+          "translationRu": "запрещено парковаться или останавливаться",
+          "sourceQuestionIds": [
+            "b-fallback-341"
+          ]
+        },
+        {
+          "id": "term-vehiculo-senalizado-special",
+          "termEs": "vehículo señalizado",
+          "translationRu": "обозначенный/помеченный автомобиль",
+          "sourceQuestionIds": [
+            "b-fallback-389",
+            "b-fallback-440"
+          ]
+        },
+        {
+          "id": "term-arteria-special",
+          "termEs": "arteria",
+          "translationRu": "улица/дорога как транспортная артерия",
+          "sourceQuestionIds": [
+            "b-fallback-389",
+            "b-fallback-440"
+          ]
+        },
+        {
+          "id": "term-orden-prioridad-normativo-special",
+          "termEs": "orden de prioridad normativo",
+          "translationRu": "нормативный порядок приоритета",
+          "sourceQuestionIds": [
+            "b-fallback-444"
+          ]
+        },
+        {
+          "id": "term-autoridad-competente-special",
+          "termEs": "autoridad competente",
+          "translationRu": "компетентный орган/регулировщик",
+          "sourceQuestionIds": [
+            "b-fallback-444"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-031",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-031-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Siempre неверно: выезд из estacionamiento или garaje сам по себе не дает приоритет над потоком."
+            },
+            {
+              "answerId": "b-fallback-031-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: уступают только когда tránsito se encuentra interrumpido. Тогда выпуск машины из места стоянки или garaje помогает восстановить движение."
+            },
+            {
+              "answerId": "b-fallback-031-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Nunca тоже неверно: при прерванном движении законная логика как раз предусматривает ceder el paso такому автомобилю."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-051",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-051-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ascenso o descenso de pasajeros не является исключением для показанной формы detención: билет не разрешает останавливать поток ради посадки/высадки."
+            },
+            {
+              "answerId": "b-fallback-051-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: detención previa a la maniobra de estacionamiento - короткая остановка как часть немедленной парковки, а не самостоятельная остановка."
+            },
+            {
+              "answerId": "b-fallback-051-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas слишком широко: вариант A не подходит, поэтому A+B не может быть правильным."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b161.jpg"
+        },
+        {
+          "questionId": "b-fallback-070",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-070-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно для показанной картинки: obstrucción de vía находится на стороне señalizado, поэтому он должен ceder el paso al vehículo que circula en sentido contrario."
+            },
+            {
+              "answerId": "b-fallback-070-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Tiene prioridad de paso неверно: препятствие вынуждает обозначенный автомобиль занимать конфликтную часть дороги, а не дает ему преимущество."
+            },
+            {
+              "answerId": "b-fallback-070-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Билет ожидает конкретное действие при obstrucción, а не ответ “правило не установлено”."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b105.jpg"
+        },
+        {
+          "questionId": "b-fallback-084",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-084-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Tocando bocina неверно: bocina предупреждает об опасности, но не сообщает сторону giro."
+            },
+            {
+              "answerId": "b-fallback-084-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: giro обозначается luz de giro del lado correspondiente, заранее, al menos 30 metros antes."
+            },
+            {
+              "answerId": "b-fallback-084-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambos giros - это не обычный сигнал поворота. Оба указателя вместе читаются как balizas/emergencia или необычный маневр, а не как выбор стороны."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-088",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-088-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A неверно: на изображении A еще не имеет приоритета перед тем, кто уже находится на calzada circular."
+            },
+            {
+              "answerId": "b-fallback-088-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: в rotonda приоритет у автомобиля, который уже circula dentro de la calzada circular; в этой картинке это vehículo B."
+            },
+            {
+              "answerId": "b-fallback-088-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Es indistinto неверно: rotonda как раз имеет специальное правило prioridad de paso."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b107.jpg"
+        },
+        {
+          "questionId": "b-fallback-093",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-093-a1",
+              "verdict": "correct",
+              "explanationRu": "В этом fallback ticket repeated bocina читается как señal de emergencia; рядом с таким автомобилем нужно cederle el paso."
+            },
+            {
+              "answerId": "b-fallback-093-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Desperfecto mecánico требует осторожности и помощи по ситуации, но билет спрашивает про emergency signal и ожидает уступить дорогу."
+            },
+            {
+              "answerId": "b-fallback-093-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Отвечать собственной bocina и предупреждать о проезде на rojo нельзя: это добавляет риск и не является правильным действием."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b94.jpg"
+        },
+        {
+          "questionId": "b-fallback-129",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-129-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Figura A не соответствует нужной señal indicativa по форме/символу в этом билете."
+            },
+            {
+              "answerId": "b-fallback-129-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Figura B тоже не показывает указанную в вопросе rotonda o pendiente pronunciada."
+            },
+            {
+              "answerId": "b-fallback-129-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: в этой группе изображений правильная figura для предупреждения rotonda o pendiente pronunciada - C."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b87.jpg"
+        },
+        {
+          "questionId": "b-fallback-139",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-139-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: если впереди автомобиль detenido для giro hacia la izquierda, можно безопасно sobrepasarlo por la derecha, включив luz de giro и проверив espejos retrovisores."
+            },
+            {
+              "answerId": "b-fallback-139-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sobrepaso por la izquierda опасно конфликтует с автомобилем, который уже ждет возможности повернуть налево."
+            },
+            {
+              "answerId": "b-fallback-139-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Bocina не заставляет другого водителя двигаться и не заменяет безопасный разрешенный маневр."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-178",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-178-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Правило “por la derecha” не решает rotonda: здесь действует специальное правило кругового движения."
+            },
+            {
+              "answerId": "b-fallback-178-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Въезжающий в rotonda не имеет приоритета; он должен дождаться безопасного входа."
+            },
+            {
+              "answerId": "b-fallback-178-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: приоритет у vehículo que se encuentra dentro de la calzada circular, то есть уже движется по кругу."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-187",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-187-a1",
+              "verdict": "incorrect",
+              "explanationRu": "20 metros недостаточно по этому билету: ожидаемая дистанция предупреждения о giro больше."
+            },
+            {
+              "answerId": "b-fallback-187-a2",
+              "verdict": "incorrect",
+              "explanationRu": "10 metros - еще короче и не дает другим участникам достаточно времени понять маневр."
+            },
+            {
+              "answerId": "b-fallback-187-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: luz de giro нужно включить por lo menos 30 metros antes de realizar la maniobra."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-191",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-191-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: на intersección semaforizada pero sin giro поворот налево не разрешен, даже если общий semáforo está en verde."
+            },
+            {
+              "answerId": "b-fallback-191-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Verde разрешает движение прямо по фазе, но не отменяет отсутствие разрешающего semáforo de giro."
+            },
+            {
+              "answerId": "b-fallback-191-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Doble sentido важен, но полный ключ ответа - semaforizada sin giro; поэтому формулировка C неполная/не та причина."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b128.jpg"
+        },
+        {
+          "questionId": "b-fallback-213",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-213-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo que desciende неверно: в pendiente estrecha с невозможностью одновременного проезда общий ответ CABA - уступить тому, кто sube."
+            },
+            {
+              "answerId": "b-fallback-213-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: приоритет у vehículo que asciende, потому что речь о arteria de doble circulación, pendiente pronunciada и недостаточной ширине."
+            },
+            {
+              "answerId": "b-fallback-213-a3",
+              "verdict": "incorrect",
+              "explanationRu": "No hay prioridad неверно: для такой pendiente есть специальное правило, чтобы не спорить в узком месте."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-268",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-268-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ambos hacia su derecha не создает правильный коридор на этой картинке: auto 1 должен освободить место в другую сторону."
+            },
+            {
+              "answerId": "b-fallback-268-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Только auto 2 недостаточно: ambulancia нужна полоса/коридор между автомобилями, поэтому оба участвуют в освобождении пути."
+            },
+            {
+              "answerId": "b-fallback-268-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно именно для этой image choreography: auto 1 se aparta hacia su izquierda, auto 2 hacia su derecha, и между ними освобождается paso a la ambulancia."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b91.jpg"
+        },
+        {
+          "questionId": "b-fallback-319",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-319-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Только auto 2 не освобождает достаточный corridor для ambulancia в показанной трехмашинной ситуации."
+            },
+            {
+              "answerId": "b-fallback-319-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Todos hacia su derecha неверно для картинки: левый автомобиль должен открыть коридор с другой стороны."
+            },
+            {
+              "answerId": "b-fallback-319-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно по изображению: auto 1 hacia su izquierda, mientras que 2 y 3 hacia su derecha, чтобы ambulancia получила свободный проход."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b92.jpg"
+        },
+        {
+          "questionId": "b-fallback-341",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-341-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант мягче: no estacionar, но разрешает detención para ascenso/descenso. На изображении красный cordón означает более строгий запрет."
+            },
+            {
+              "answerId": "b-fallback-341-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Espacio reservado para emergencia - правдоподобная ловушка из-за темы emergency, но показанная demarcación horizontal не об этом."
+            },
+            {
+              "answerId": "b-fallback-341-a3",
+              "verdict": "correct",
+              "explanationRu": "Верно: красная demarcación del cordón означает prohibido estacionar o detenerse paralelo al cordón."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b79.jpg"
+        },
+        {
+          "questionId": "b-fallback-345",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-345-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: знак показывает rotonda, то есть приближение к круговому движению."
+            },
+            {
+              "answerId": "b-fallback-345-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Peligro extremo de rotonda добавляет лишний смысл; билет спрашивает обычное распознавание знака rotonda."
+            },
+            {
+              "answerId": "b-fallback-345-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Preferencia de avance - другой знак/смысл приоритета, не предупреждение о rotonda."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b233.jpg"
+        },
+        {
+          "questionId": "b-fallback-389",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-389-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: если vehículos de la arteria están circulando, vehículo señalizado, который quiere incorporarse al tránsito, не имеет приоритета."
+            },
+            {
+              "answerId": "b-fallback-389-a2",
+              "verdict": "incorrect",
+              "explanationRu": "“Se encuentra a la derecha” не работает как обычное правило перекрестка при incorporación al tránsito."
+            },
+            {
+              "answerId": "b-fallback-389-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Señalizó su maniobra обязательно для безопасности, но сигнал не создает prioridad de paso перед теми, кто уже едет."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b109.jpg"
+        },
+        {
+          "questionId": "b-fallback-403",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-403-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это верное условие, но неполное: semáforo de giro en verde разрешает маневр, однако билет предлагает еще один допустимый случай."
+            },
+            {
+              "answerId": "b-fallback-403-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Это тоже верное условие, но неполное: cruce sin semáforos и отсутствие встречного транспорта - не единственный разрешенный вариант."
+            },
+            {
+              "answerId": "b-fallback-403-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно “Ambas”: можно girar a la izquierda либо при semáforo de giro en verde, либо без светофора, если не приближается встречный транспорт."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-430",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-430-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A неверно для показанной pendiente estrecha: он не является тем автомобилем, которому билет дает специальный приоритет."
+            },
+            {
+              "answerId": "b-fallback-430-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: в этой картинке приоритет у vehículo B, потому что он соответствует логике vehículo que asciende на узкой pendiente."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b108.jpg"
+        },
+        {
+          "questionId": "b-fallback-440",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-440-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Independientemente de si están detenidos o circulando неверно: билет как раз делает различие между flujo circulando и tránsito detenido/interrumpido."
+            },
+            {
+              "answerId": "b-fallback-440-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: если tránsito detenido, водители на arteria deben cederle el paso автомобилю, который quiere incorporarse."
+            },
+            {
+              "answerId": "b-fallback-440-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ley sí contempla esta prioridad especial; это не только тема intersecciones no semaforizadas."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b110.jpg"
+        },
+        {
+          "questionId": "b-fallback-444",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-444-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: normas legales de carácter general не стоят выше конкретных indicaciones de la autoridad competente в оперативной дорожной ситуации."
+            },
+            {
+              "answerId": "b-fallback-444-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: порядок mayor a menor jerarquía - indicaciones de la autoridad competente, señalización, normas legales de carácter general."
+            },
+            {
+              "answerId": "b-fallback-444-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Señalización важна, но она ниже указаний autoridad competente и выше общих норм."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "textRu": "Не переносите обычное правило “derecha” на rotonda, incorporación al tránsito или pendiente: эти ситуации имеют специальные ответы."
+        },
+        {
+          "textRu": "В билетах про emergency corridor `b-fallback-268` и `b-fallback-319` отвечайте по картинке; общий закон требует facilitar el avance, но не диктует одну универсальную схему для всех изображений."
+        },
+        {
+          "textRu": "Bocina сама по себе не заменяет luz de giro и не дает преимущества. Исключение `b-fallback-093` держите как ticket-specific emergency signal."
+        },
+        {
+          "textRu": "Фразы detenido/interrumpido и circulando меняют ответ в incorporación tickets: при остановленном потоке уступают, при движущемся - нет."
+        },
+        {
+          "textRu": "В вопросах с A/B/C или vehículo A/B не угадывайте по букве: сначала определите, кто уже в rotonda, кто asciende или куда нужно apartarse для ambulancia."
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-special-priority-hierarchy",
+          "textRu": "В CABA оперативные indicaciones de la autoridad competente имеют более высокий приоритет, чем señalización и общие normas legales de carácter general.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-special-priority-hierarchy"
+        },
+        {
+          "id": "claim-rotonda-priority-and-sign",
+          "textRu": "В rotonda приоритет у тех, кто уже circula por la calzada circular, перед теми, кто intenta ingresar; знак rotonda предупреждает о такой круговой организации движения.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-special-rotonda-priority-and-sign"
+        },
+        {
+          "id": "claim-obstruction-slope-priority",
+          "textRu": "При estrechamiento/obstrucción и pendiente estrecha приоритет определяется специальными правилами: в CABA для pendiente de doble sentido с недостаточной шириной приоритет у sentido ascendente.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-special-obstruction-slope-priority"
+        },
+        {
+          "id": "claim-emergency-vehicles-and-signaling",
+          "textRu": "Vehículos de emergencia или en servicio de emergencia с соответствующими сигналами нужно пропускать немедленно; обычный водитель может сигнализировать extrema necesidad, но должен делать это осторожно.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-special-emergency-vehicles-and-signaling"
+        },
+        {
+          "id": "claim-incorporation-garage-parking",
+          "textRu": "Водители уступают автомобилю, который хочет incorporarse desde estacionamiento, garaje, playa de estacionamiento или estación de servicio, только если tránsito se encuentra interrumpido.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-special-incorporation-garage-parking"
+        },
+        {
+          "id": "claim-giro-left-turn-and-horn-boundary",
+          "textRu": "Giro предупреждают luz de giro заранее, а bocina не заменяет указатель; в CABA left turn на intersección semaforizada de doble sentido запрещен без señal luminosa específica que lo permita.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-special-giro-left-turn-and-horn-boundary"
+        },
+        {
+          "id": "claim-red-cordon-demarcation",
+          "textRu": "Cordón rojo como demarcación horizontal означает prohibición de estacionar o detenerse al costado de la acera.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-special-red-cordon-demarcation"
+        }
+      ]
+    },
+    {
       "id": "documents-licenses-and-insurance",
       "slug": "documents-licenses-and-insurance",
       "status": "draft",

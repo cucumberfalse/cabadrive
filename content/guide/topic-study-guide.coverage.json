@@ -170,9 +170,9 @@
       "titleRu": "Особые ситуации уступания и приоритета",
       "categoryId": "priority",
       "splitCriteria": "Rotonda, pendiente, obstrucción, incorporación al tránsito, emergencia, bocina, ambulancia и указания уполномоченного персонала.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-right-of-way-special-situations"
     },
     {
       "topicId": "turns-direction-and-reversing",
@@ -673,7 +673,7 @@
       "phase": "planned",
       "placementPhases": {
         "parking-clearances-and-corners": "content_ready",
-        "right-of-way-special-situations": "planned"
+        "right-of-way-special-situations": "content_ready"
       },
       "ownerSlice": "E10"
     },
@@ -879,7 +879,7 @@
       "phase": "planned",
       "ownerSlice": "C+E8",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "stopping-vs-parking-maneuvers": "content_ready"
       }
     },
@@ -1057,7 +1057,7 @@
       "phase": "planned",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -1189,7 +1189,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-turns-direction-reversing",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "turns-direction-and-reversing": "content_ready"
       }
     },
@@ -1228,7 +1228,10 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C",
+      "placementPhases": {
+        "right-of-way-special-situations": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-089",
@@ -1281,7 +1284,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -1621,7 +1624,7 @@
       "phase": "planned",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -1716,7 +1719,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -2118,7 +2121,10 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C",
+      "placementPhases": {
+        "right-of-way-special-situations": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-179",
@@ -2209,7 +2215,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-turns-direction-reversing",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "turns-direction-and-reversing": "content_ready"
       }
     },
@@ -2251,7 +2257,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -2440,7 +2446,10 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C",
+      "placementPhases": {
+        "right-of-way-special-situations": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-214",
@@ -2954,7 +2963,10 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C",
+      "placementPhases": {
+        "right-of-way-special-situations": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-269",
@@ -3451,7 +3463,10 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C",
+      "placementPhases": {
+        "right-of-way-special-situations": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-320",
@@ -3670,7 +3685,7 @@
       "phase": "planned",
       "placementPhases": {
         "parking-clearances-and-corners": "content_ready",
-        "right-of-way-special-situations": "planned"
+        "right-of-way-special-situations": "content_ready"
       },
       "ownerSlice": "E10"
     },
@@ -3712,7 +3727,7 @@
       "phase": "planned",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -4156,7 +4171,7 @@
       "phase": "planned",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -4299,7 +4314,7 @@
       "phase": "planned",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "traffic-lights-and-rail-crossings": "content_ready"
       }
     },
@@ -4563,7 +4578,10 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C",
+      "placementPhases": {
+        "right-of-way-special-situations": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-431",
@@ -4666,7 +4684,7 @@
       "phase": "planned",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "warning-signs": "content_ready"
       }
     },
@@ -4708,7 +4726,7 @@
       "phase": "planned",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "planned",
+        "right-of-way-special-situations": "content_ready",
         "warning-signs": "content_ready"
       }
     },
