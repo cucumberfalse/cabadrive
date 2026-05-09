@@ -709,6 +709,102 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current",
       "notes": "Supports the cyclist-space explanation for b-fallback-020. The visibility claim for b-fallback-277 is not expanded beyond ticket wording because no archived official source for that road-safety statistic was added in this slice."
+    },
+    {
+      "id": "stopping-parking-caba-definitions-and-two-minute-rule",
+      "topicId": "stopping-vs-parking-maneuvers",
+      "claimId": "claim-caba-detencion-estacionamiento-definitions",
+      "claimSummaryRu": "CABA distinguishes detención from estacionamiento, including the ordinary two-minute detención threshold and driver-presence condition used by the assigned stopping/parking tickets.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Definiciones Generales: Detención",
+        "Definiciones Generales: Estacionamiento",
+        "7.1.7 Detención de vehículos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Used for concise learner-facing distinction between detenerse and estacionar; does not broaden exceptions beyond assigned tickets."
+    },
+    {
+      "id": "stopping-parking-caba-prohibited-places",
+      "topicId": "stopping-vs-parking-maneuvers",
+      "claimId": "claim-caba-parking-and-detention-prohibitions",
+      "claimSummaryRu": "CABA parking/detention restrictions relevant to double row, sidewalks, fast roads, bus/taxi stops, corners, pedestrian crossings, stop lines, tunnels, bridges and ciclovías.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "7.1.1 Aplicación",
+        "7.1.3 Vías rápidas",
+        "7.1.7 Detención de vehículos",
+        "7.1.8 Prohibiciones especiales",
+        "7.1.9 Prohibiciones generales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports parking/detention trap notes and image-ticket explanations for double fila and places where both stopping and parking are prohibited."
+    },
+    {
+      "id": "stopping-parking-balizas-garage-emergency-use",
+      "topicId": "stopping-vs-parking-maneuvers",
+      "claimId": "claim-balizas-garage-emergency-maneuver-use",
+      "claimSummaryRu": "Balizas/intermittent lights signal stopped vehicles, garage/private-place exits, upcoming stopping/parking or risky maneuvers, breakdowns and emergency/imprevisto situations, but they do not override stopping prohibitions.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.7 Obligaciones de los conductores que se incorporen o egresen de la circulación",
+        "Ley 2148 6.3.1 Generalidades, luces intermitentes de emergencia o balizas",
+        "Ley 2148 5.5.3 Comportamiento general en caso de averías o imprevistos",
+        "Ley 24.449 Artículo 47 Uso de las luces"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-077, 192, 232, 378, 413 and 442 without claiming balizas authorize otherwise prohibited double-row or no-stopping situations."
+    },
+    {
+      "id": "stopping-parking-emergency-authority-incident-stop",
+      "topicId": "stopping-vs-parking-maneuvers",
+      "claimId": "claim-emergency-authority-and-incident-stop",
+      "claimSummaryRu": "Participants in an incident must stop immediately; drivers must allow emergency vehicles to pass; traffic agents and road-work personnel indications can require drivers to stop in controlled situations.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.5.1 Obligaciones en caso de incidentes viales",
+        "Ley 2148 6.5.3 Comportamiento de otros conductores respecto de los vehículos de emergencia",
+        "Ley 2148 6.7.1 Regla general",
+        "Ley 2148 6.1.16 Circulación en tramos de arterias con estrechamientos temporarios",
+        "Ley 24.449 Artículo 65 Obligaciones"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Used for incident, emergency vehicle, traffic-agent and work-zone stopping tickets; personal de obra wording is scoped to road-work controlled passage in the assigned ticket."
+    },
+    {
+      "id": "stopping-parking-sign-meanings",
+      "topicId": "stopping-vs-parking-maneuvers",
+      "claimId": "claim-signs-no-estacionar-pare-information",
+      "claimSummaryRu": "Anexo L meanings for No estacionar, No estacionar ni detenerse, PARE, Corredor aéreo, Estacionamiento, Aeropuerto and Plaza used by assigned image-ticket explanations.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "R.8 NO ESTACIONAR",
+        "R.9 NO ESTACIONAR NI DETENERSE",
+        "R.27 PARE",
+        "P.28 CORREDOR AÉREO",
+        "AEROPUERTO",
+        "ESTACIONAMIENTO",
+        "PLAZA"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "The theater image answer remains ticket-specific fallback wording because the archived Anexo L entry did not expose a TEATRO section in text search."
     }
   ]
 }
