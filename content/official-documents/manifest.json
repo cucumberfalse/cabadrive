@@ -144,6 +144,251 @@
         "status": "pending",
         "notes": "This slice performed preliminary currentness verification only. Dedicated whole-archive exact-text validation remains required before final release."
       }
+    },
+    {
+      "id": "ley-6631-caba-vtv-modificatoria-ley-2265",
+      "title": "LEY 6631 2023",
+      "officialSourceType": "caba_law_original_text",
+      "sourceUrl": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/657298",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/ley-6631-caba-vtv-modificatoria-ley-2265.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-6631-caba-vtv-modificatoria-ley-2265.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official Buenos Aires NormativaBA / Boletín Oficial HTML page to Markdown; links and HTML styling flattened to visible text.",
+      "conversionNotes": "Official title, synthesis, publication/sanction/promulgation metadata, article numbering, substituted Ley 2265 article text, transitory clauses, promulgation text, and relationship metadata are preserved as text. HTML layout, tables, link targets, and site chrome are not represented exactly. This entry archives Ley 6631 as the current amending law because the candidate Ley 2265 HTML body still exposes older 36-month/60,000-km wording while the current GCBA VTV service page links Ley 6631 and states the post-04/05/2023 regime.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "in_force",
+        "validationStatus": "passed",
+        "statusEvidence": "Official NormativaBA / Boletín Oficial page for Ley 6631 was retrieved successfully; it records publication on 21/04/2023, sanction on 30/03/2023, promulgation on 19/04/2023, and MODIFICA relationship to Ley 2265. The current GCBA VTV trámite page lists Ley N° 6631 (Ley VTVO) under Normativa and states that the current change entered into force on 04/05/2023.",
+        "amendmentRepealEvidence": "No repeal/supersession blocker was observed for the archived Ley 6631 page during D4. Ley 6631 modifies Ley 2265 and is used together with the current official GCBA VTV service page for current VTV guidance.",
+        "evidenceUrls": [
+          "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/657298",
+          "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+          "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/95763"
+        ]
+      },
+      "hash": "83c00db5d5bcb2a2395a1f747245bbefc67bbe9085c4d8ea0ecf5c85b794ac8c",
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
+    },
+    {
+      "id": "gcba-vtv-tramite-current",
+      "title": "Verificación Técnica Vehicular Obligatoria",
+      "officialSourceType": "caba_service_current_material",
+      "sourceUrl": "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/gcba-vtv-tramite-current.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-vtv-tramite-current.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official GCBA trámite HTML article to Markdown, including accordion/body content exposed in the source HTML; links and styling flattened to visible text.",
+      "conversionNotes": "Official trámite title, requirements, schedule text, costs, new-measures section, first-verification text, renewal/vigency text, result categories, VTV-after-expiration text, downloads/normativa labels, and office information are preserved as text. The source page has interactive accordions and cards; Markdown cannot preserve collapsed UI state, styling, icons, or turnero buttons exactly. The page still includes cédula azul wording in VTV requirements even though DNRPA/ANSV current sources say cédula azul is no longer an exigible circulation document.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "Official GCBA trámite page was retrieved successfully on 2026-05-09 and states the current VTV process, including post-04/05/2023 new measures, first review from the fourth year or 64,000 km, schedule by final license-plate digit, and Ley N° 6631 under Normativa.",
+        "amendmentRepealEvidence": "The page itself states the post-04/05/2023 normative change and links Ley N° 6631 (Ley VTVO). This current page conflicts with older Ley 2265 candidate wording of 36 months/60,000 km and should control E6 current VTV claims together with Ley 6631.",
+        "evidenceUrls": [
+          "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+          "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/657298"
+        ]
+      },
+      "hash": "f32c5d8f9bc603d2f90822e2f07b13237db33ae3b5f1f44261d6a6b43281d644",
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
+    },
+    {
+      "id": "argentina-vehiculos-automotor-cedulas",
+      "title": "Vehículos",
+      "officialSourceType": "national_service_topic_current_material",
+      "sourceUrl": "https://www.argentina.gob.ar/tema/automotor",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/argentina-vehiculos-automotor-cedulas.md",
+      "rawOriginalPath": "content/official-documents/originals/argentina-vehiculos-automotor-cedulas.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official Argentina.gob.ar automotor topic page to Markdown; links and styling flattened to visible text.",
+      "conversionNotes": "Official topic title, section headings, cédula wording, DNRPA context, trámite link labels, insurance wording, and visible page text are preserved. Site navigation/share labels may remain where they are visible in the page body. Dynamic link targets, icons, and layout are not represented exactly.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "Official Argentina.gob.ar automotor topic page was retrieved successfully and currently states DNRPA context, digital cédula validity in Mi Argentina, and that DNRPA currently grants the cédula única while nobody is obliged to renew previously issued cédulas.",
+        "amendmentRepealEvidence": "This is current service/topic material, not a consolidated legal norm. It is cross-checked against Disposición 29/2024, Disposición 343/2024, and the ANSV official note for cédula azul/non-expiry claims.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/tema/automotor",
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto"
+        ]
+      },
+      "hash": "fe0d905e52423b93c0b18ae7542dccd15356393b8cd0b43ac0a5b10d55d81f06",
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
+    },
+    {
+      "id": "dnrpa-registros-propiedad-automotor",
+      "title": "Registros de la Propiedad Automotor",
+      "officialSourceType": "dnrpa_current_material",
+      "sourceUrl": "https://www.argentina.gob.ar/propiedadautomotor",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/dnrpa-registros-propiedad-automotor.md",
+      "rawOriginalPath": "content/official-documents/originals/dnrpa-registros-propiedad-automotor.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official Argentina.gob.ar DNRPA page to Markdown; links and styling flattened to visible text.",
+      "conversionNotes": "Official title, DNRPA page text, service blocks, RAC/cédula digital labels, trámites frecuentes, consultas, and contact details are preserved as visible text. The page is a portal/landing page, so it supports service-currentness context but should not be used alone for legal cédula claims.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "Official Argentina.gob.ar DNRPA page was retrieved successfully and currently shows the RAC (Registro de Autorizados a Conducir) system as operative, plus cédula digital services.",
+        "amendmentRepealEvidence": "Portal-currentness was cross-checked with Disposición 343/2024, which puts the Mi Argentina third-party cédula-visualization authorization procedure into force.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/propiedadautomotor",
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto"
+        ]
+      },
+      "hash": "c327b9a440fd9fe2e1366de48fbbd0fac99d866211c66122a9dadebab34f68d0",
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
+    },
+    {
+      "id": "ansv-cedula-azul-no-exigible",
+      "title": "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+      "officialSourceType": "national_road_safety_official_note",
+      "sourceUrl": "https://www.argentina.gob.ar/noticias/la-cedula-azul-ya-no-es-documento-exigible-para-la-circulacion-de-vehiculos-en-el-pais",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/ansv-cedula-azul-no-exigible.md",
+      "rawOriginalPath": "content/official-documents/originals/ansv-cedula-azul-no-exigible.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official Argentina.gob.ar/ANSV news HTML page to Markdown; links and styling flattened to visible text.",
+      "conversionNotes": "Official article title, publication date, paragraphs, quoted normative references, and the visible list of required circulation documents/safety elements are preserved. Related-news links remain because they were visible in the article page extraction; image/background presentation and site styling are not represented.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "Official ANSV/Argentina.gob.ar note was retrieved successfully and states that cédula azul is no longer an exigible identification document for circulation, while cédula verde has no expiration and may be shown physically or digitally.",
+        "amendmentRepealEvidence": "The note cites Disposición 29/2024; current legal mechanics were cross-checked against Disposición 29/2024 and Disposición 343/2024. No official contrary current ANSV/DNRPA source was found during D4.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/noticias/la-cedula-azul-ya-no-es-documento-exigible-para-la-circulacion-de-vehiculos-en-el-pais",
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto"
+        ]
+      },
+      "hash": "b9eae6672d1d0d72726e6feefb26822e11b5c0082d163c18d70f5138eb4698a2",
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
+    },
+    {
+      "id": "disposicion-29-2024-cedulas-identificacion",
+      "title": "Disposición 29 / 2024",
+      "officialSourceType": "dnrpa_disposition_original_text",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/disposicion-29-2024-cedulas-identificacion.md",
+      "rawOriginalPath": "content/official-documents/originals/disposicion-29-2024-cedulas-identificacion.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official Argentina.gob.ar normativa HTML page to Markdown; links and styling flattened to visible text.",
+      "conversionNotes": "Official title, ministry/body metadata, publication metadata, considerandos, article numbering, quoted Digesto text, and signature/publication footer are preserved as text. Argentina.gob.ar normativa page chrome and relation/navigation links are not represented exactly. This is original legal text; Disposición 343/2024 is separately archived because it later activates and substitutes the third-party digital cédula visualization procedure.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "in_force",
+        "validationStatus": "passed",
+        "statusEvidence": "Official Argentina.gob.ar normative page was retrieved successfully and records Disposición 29/2024 original text. It establishes non-expiry of cédulas while there is no ownership change, derogatation of the cédula de identificación para autorizado a conducir section, and continued validity of already issued authorized-driver cédulas until revocation.",
+        "amendmentRepealEvidence": "Argentina.gob.ar relation page shows this norm is complemented/modified by Disposición 343/2024, archived separately in this slice, which puts the article 5 digital authorization procedure into force and substitutes that text. The Disposición 29/2024 cédula non-expiry and cédula azul derogation basis remains current for E6 conflict tracking.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/normas-modifican",
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto"
+        ]
+      },
+      "hash": "f553835d8c2eda215b23eb808f2e8e73094104e0743223a66d69212744ff696e",
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
+    },
+    {
+      "id": "disposicion-343-2024-autorizacion-cedula-digital",
+      "title": "Disposición 343 / 2024",
+      "officialSourceType": "dnrpa_disposition_original_text",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/disposicion-343-2024-autorizacion-cedula-digital.md",
+      "rawOriginalPath": "content/official-documents/originals/disposicion-343-2024-autorizacion-cedula-digital.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official Argentina.gob.ar normativa HTML page to Markdown; links and styling flattened to visible text.",
+      "conversionNotes": "Official title, ministry/body metadata, publication metadata, considerandos, article numbering, substituted article 5 text, signature, and publication footer are preserved as text. Page chrome and relation/navigation links are not represented exactly. This entry complements Disposición 29/2024 for the current Mi Argentina third-party digital cédula authorization mechanism.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "in_force",
+        "validationStatus": "passed",
+        "statusEvidence": "Official Argentina.gob.ar normative page was retrieved successfully. It establishes entry into force of the article 5 digital authorization procedure and substitutes the text so the titular registral can habilitar a conducir through Mi Argentina.",
+        "amendmentRepealEvidence": "Argentina.gob.ar relation data for Disposición 343/2024 shows a later Disposición 408/2024 relation. D4 checked this as a complement/modification relationship and did not find a blocker to the archived Mi Argentina authorization claim; final whole-archive currentness validation remains reserved for Slice G.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/normas-modifican",
+          "https://www.argentina.gob.ar/propiedadautomotor"
+        ]
+      },
+      "hash": "30958217e6a9836864c0a7a7c39ee59b22a78e4941c8f289af67a6074dcd2349",
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
+    },
+    {
+      "id": "argentina-duplicado-chapa-patente-automotor",
+      "title": "Obtener un duplicado de la chapa patente del automotor",
+      "officialSourceType": "national_service_current_material",
+      "sourceUrl": "https://www.argentina.gob.ar/servicio/obtener-un-duplicado-de-la-chapa-patente-del-automotor",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/argentina-duplicado-chapa-patente-automotor.md",
+      "rawOriginalPath": "content/official-documents/originals/argentina-duplicado-chapa-patente-automotor.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official Argentina.gob.ar trámite HTML page to Markdown; links and styling flattened to visible text.",
+      "conversionNotes": "Official trámite title, summary, target audience, required documents, semipresencial/presencial steps, provisional plate wording, delivery-time wording, costs section, vigency wording, and visible labels are preserved. Social/share labels and page chrome may remain where visible. Dynamic buttons, styling, and external link targets are not represented exactly.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "Official Argentina.gob.ar trámite page was retrieved successfully and currently states that duplicate chapa patente is processed at the Registro where the vehicle is registered, includes provisional paper plates in red letters/numbers, and indicates duplicate metal plates delivery time of 15 days.",
+        "amendmentRepealEvidence": "This is current service material, not a consolidated legal norm. It was linked from the official Argentina.gob.ar automotor topic page and retrieved live during D4; no blocker or contrary current official service page was found during the slice.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/servicio/obtener-un-duplicado-de-la-chapa-patente-del-automotor",
+          "https://www.argentina.gob.ar/tema/automotor"
+        ]
+      },
+      "hash": "8d81576224b066874e047225cb078b810c3ddc22e56f874a92448f4bbe4cce1b",
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
     }
   ]
 }
