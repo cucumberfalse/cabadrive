@@ -67,6 +67,70 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force",
       "notes": "Included because b-fallback-250 is assigned to speed-limits through the current road-context taxonomy."
+    },
+    {
+      "id": "road-types-caba-road-definitions-and-fast-roads",
+      "topicId": "road-types-highways-and-routes",
+      "claimId": "claim-caba-road-definitions-and-fast-roads",
+      "claimSummaryRu": "CABA road-context definitions for via publica, calle/avenida/autopista/semiautopista and listed vias rapidas used by Cantilo, Lugones and General Paz tickets.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Definiciones: Arteria, Banquina, Semiautopista, Via publica, Via Rapida",
+        "6.2.2 Limites maximos de velocidad"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Used for compact road-context prose and CABA fast-road examples already present in assigned tickets."
+    },
+    {
+      "id": "road-types-banquina-definition",
+      "topicId": "road-types-highways-and-routes",
+      "claimId": "claim-banquina-definition",
+      "claimSummaryRu": "Banquina is adjacent and parallel to the carriageway on routes/highways/semihighways/caminos and exists for traffic safety, not as an ordinary travel lane.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Definiciones: Banquina"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-197 explanation without adding unrelated shoulder-use scenarios."
+    },
+    {
+      "id": "road-types-national-highway-and-semihighway-context",
+      "topicId": "road-types-highways-and-routes",
+      "claimId": "claim-national-highway-and-semihighway-context",
+      "claimSummaryRu": "Ley 24.449 semihighway/highway context, including semiautopista definition and exit/deceleration-lane rule for highways with semihighway applicability.",
+      "officialDocumentIds": [
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Artículo 5 Definiciones: Semiautopista",
+        "Artículo 46 Autopistas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports autopista/semiautopista route context and b-fallback-315. Does not cite Decreto 779 annex signage claims."
+    },
+    {
+      "id": "road-types-speed-and-lights-context",
+      "topicId": "road-types-highways-and-routes",
+      "claimId": "claim-road-speed-and-lights-context",
+      "claimSummaryRu": "Road type affects speed-limit and low-beam answers in assigned tickets: urban streets/avenues/routes/semihighways have different speed rules, and CABA requires low beams on fast roads named in the tickets.",
+      "officialDocumentIds": [
+        "ley-24449-transito-seguridad-vial",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 24.449 Artículos 51-52",
+        "Ley 2148 6.2.2, 6.2.3, 6.2.7 and 6.3.1"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Reuses existing archived laws for road-type-linked speed and low-beam claims. Route-sign recognition remains ticket-specific without annex/manual claims."
     }
   ]
 }
