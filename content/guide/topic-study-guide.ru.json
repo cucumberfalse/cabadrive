@@ -19896,6 +19896,704 @@
       ]
     },
     {
+      "id": "emergency-response-and-crash-scene",
+      "slug": "emergency-response-and-crash-scene",
+      "status": "draft",
+      "titleRu": "Аварии, экстренные действия и место ДТП",
+      "summaryRu": "Экзаменационный блок про incidente/siniestro vial: что считать дорожным инцидентом, как защитить место, кому звонить, что сообщать страховщику, и какие билеты проверяют безопасность после удара.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах здесь важно не спорить со словом siniestro/incidente: экзамен хочет видеть ситуацию как предотвратимое дорожное событие с обязанностью защитить людей и место, а не как случайность без ответственности.",
+        "Первый порядок действий после siniestro vial: Proteger - Alertar - Socorrer. Сначала защитить место и не создать новый удар, затем вызвать помощь и сообщить точное место/характер происшествия/число пострадавших, и только потом помогать пострадавшим в пределах своих навыков.",
+        "Если автомобиль остался inmovilizado, зона должна быть señalizada: включить balizas, использовать prendas reflectantes/triángulos или balizas portátiles, ставить их со стороны, откуда приближаются автомобили, и учитывать скорость дороги. Это объясняет билеты про avenida и calle de sentido único.",
+        "При пострадавших источник GCBA отдельно выделяет 107 для Emergencias Médicas/SAME и затем 911; общая страница материалов GCBA также показывает полезные номера 107 - SAME и 911 - Policía. В билете с парой номеров выбирайте 107 y 911.",
+        "После первичных действий нужно собрать данные: vehículos, conductor, asegurado, testigos, lesionados, lugar и fotos. Для страховки билет спрашивает 72 horas; это поддержано и практической guía siniestros, и Ley 17.418 как tres días desde que se conoce el siniestro.",
+        "Билеты про Vision Cero, velocidad, factor humano и seguridad pasiva не требуют заучивать длинную статистику. Экзаменационная идея такая: ошибки людей ожидаемы, скорость резко увеличивает тяжесть последствий, а система и элементы безопасности должны уменьшать смерть и lesiones graves.",
+        "Estrellas Amarillas - отдельный знак памяти: текущая страница GCBA объясняет, что карта/знаки постоянно отмечают место смерти víctima de tránsito. Поэтому билет про señal que advierte víctima fatal отвечает Verdadero.",
+        "Некоторые формулировки остаются ticket-specific: Observatorio Vial с rango 15 a 34 в `b-fallback-445`, картинка VTV/RVA в `b-fallback-078`, exact emergency-lane symbol в `b-fallback-216`, и private-vehicle signal combo balizas + bocina + pañuelo в `b-fallback-183`. Не превращайте их в новое общее правило без прямого текущего источника."
+      ],
+      "practicalReasoningRu": [
+        "PAS начинается с защиты места, потому что неподсвеченный или плохо обозначенный автомобиль на проезжей части может быстро создать второй siniestro.",
+        "Сигнализация места работает только если следующий водитель видит опасность заранее: balizas на машине и переносные balizas/triángulos должны быть там, откуда приходит поток.",
+        "Скорость важна не только для нарушения. Чем выше скорость и хуже поле зрения, тем меньше времени на реакцию и тем больше энергия удара.",
+        "Пассивная безопасность не предотвращает сам siniestro, но уменьшает последствия, когда удар уже произошел."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-incidente-transito",
+          "termEs": "incidente de tránsito",
+          "translationRu": "дорожный инцидент",
+          "sourceQuestionIds": [
+            "b-fallback-047",
+            "b-fallback-146"
+          ]
+        },
+        {
+          "id": "term-incidente-vial",
+          "termEs": "incidente vial",
+          "translationRu": "дорожный инцидент / road incident",
+          "sourceQuestionIds": [
+            "b-fallback-047"
+          ]
+        },
+        {
+          "id": "term-siniestro-vial",
+          "termEs": "siniestro vial",
+          "translationRu": "ДТП / дорожное происшествие",
+          "sourceQuestionIds": [
+            "b-fallback-095",
+            "b-fallback-108",
+            "b-fallback-205",
+            "b-fallback-235"
+          ]
+        },
+        {
+          "id": "term-senalizar-zona",
+          "termEs": "señalizar la zona",
+          "translationRu": "обозначить/сигнализировать место",
+          "sourceQuestionIds": [
+            "b-fallback-108",
+            "b-fallback-388"
+          ]
+        },
+        {
+          "id": "term-balizas-emergency",
+          "termEs": "balizas",
+          "translationRu": "аварийные огни или переносные аварийные знаки/огни по контексту",
+          "sourceQuestionIds": [
+            "b-fallback-183",
+            "b-fallback-388"
+          ]
+        },
+        {
+          "id": "term-bocina-emergency",
+          "termEs": "bocina",
+          "translationRu": "звуковой сигнал",
+          "sourceQuestionIds": [
+            "b-fallback-183"
+          ]
+        },
+        {
+          "id": "term-panuelo-emergency",
+          "termEs": "pañuelo",
+          "translationRu": "платок/ткань как аварийный сигнал в билете",
+          "sourceQuestionIds": [
+            "b-fallback-183"
+          ]
+        },
+        {
+          "id": "term-victima-fatal",
+          "termEs": "víctima fatal",
+          "translationRu": "погибший/смертельная жертва",
+          "sourceQuestionIds": [
+            "b-fallback-205"
+          ]
+        },
+        {
+          "id": "term-carril-liberado",
+          "termEs": "carril que debe ser liberado",
+          "translationRu": "полоса, которую надо освободить",
+          "sourceQuestionIds": [
+            "b-fallback-216"
+          ]
+        },
+        {
+          "id": "term-compania-aseguradora",
+          "termEs": "compañía aseguradora",
+          "translationRu": "страховая компания",
+          "sourceQuestionIds": [
+            "b-fallback-235"
+          ]
+        },
+        {
+          "id": "term-72-horas",
+          "termEs": "72 horas",
+          "translationRu": "72 часа",
+          "sourceQuestionIds": [
+            "b-fallback-235"
+          ]
+        },
+        {
+          "id": "term-velocidad-precautoria",
+          "termEs": "precautoria",
+          "translationRu": "безопасная/осторожная скорость по обстоятельствам",
+          "sourceQuestionIds": [
+            "b-fallback-095"
+          ]
+        },
+        {
+          "id": "term-limite-minimo",
+          "termEs": "límite mínimo de velocidad",
+          "translationRu": "минимальный предел скорости",
+          "sourceQuestionIds": [
+            "b-fallback-266"
+          ]
+        },
+        {
+          "id": "term-seguridad-pasiva",
+          "termEs": "seguridad pasiva",
+          "translationRu": "пассивная безопасность",
+          "sourceQuestionIds": [
+            "b-fallback-282"
+          ]
+        },
+        {
+          "id": "term-lesiones-cervicales",
+          "termEs": "lesiones en la zona cervical",
+          "translationRu": "травмы шейного отдела",
+          "sourceQuestionIds": [
+            "b-fallback-323"
+          ]
+        },
+        {
+          "id": "term-proteger-alertar-socorrer",
+          "termEs": "Proteger - Alertar - Socorrer",
+          "translationRu": "Защитить - Сообщить - Помочь",
+          "sourceQuestionIds": [
+            "b-fallback-307"
+          ]
+        },
+        {
+          "id": "term-vision-cero",
+          "termEs": "Programa Visión Cero",
+          "translationRu": "программа Vision Zero",
+          "sourceQuestionIds": [
+            "b-fallback-200"
+          ]
+        },
+        {
+          "id": "term-observatorio-vial",
+          "termEs": "Observatorio Vial",
+          "translationRu": "дорожная обсерватория/статистический орган",
+          "sourceQuestionIds": [
+            "b-fallback-445"
+          ]
+        },
+        {
+          "id": "term-107-911",
+          "termEs": "107 y 911",
+          "translationRu": "107 и 911",
+          "sourceQuestionIds": [
+            "b-fallback-447"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-047",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-047-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: incidente de tránsito/incidente vial в билете - это дорожное событие с daños a persona o cosa при circulación en la vía pública. Слово puede ser evitado направляет к идее preventable incident, а не к фатальной случайности."
+            },
+            {
+              "answerId": "b-fallback-047-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Impredecible e inevitable - это как раз ловушка слова accidente. Для этого блока GCBA учит не считать такие события неизбежными."
+            },
+            {
+              "answerId": "b-fallback-047-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант слишком широкий и смещает смысл к daños a terceros. В определении важны daños a persona o cosa и связь с circulación en la vía pública."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-056",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-056-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: ночью хуже видимость и больше риск не заметить опасность вовремя. В этом topic это читается как фактор риска для incidente."
+            },
+            {
+              "answerId": "b-fallback-056-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: билет ожидает, что conducción nocturna повышает риск, а не оставляет его таким же."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-078",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b48.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-078-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción A на картинке - RVA/autopartes grabadas. Это связано с идентификацией/защитой от угона, но билет спрашивает directly vinculada a la prevención y reducción de siniestros viales."
+            },
+            {
+              "answerId": "b-fallback-078-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: Opción B, VTV. Проверка технического состояния автомобиля напрямую связывается с профилактикой siniestros viales."
+            },
+            {
+              "answerId": "b-fallback-078-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas неверно: билет различает две картинки и выбирает именно VTV, а не обе опции вместе."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-083",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-083-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: билет спрашивает главный фактор большинства siniestros viales, и ожидаемый ответ - factor humano. Это совпадает с учебной логикой GCBA: большинство таких событий связано с человеческими ошибками и поведением."
+            },
+            {
+              "answerId": "b-fallback-083-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Vehicular может влиять на риск, но в этом вопросе не является фактором, которому приписывают большинство siniestros."
+            },
+            {
+              "answerId": "b-fallback-083-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambiental тоже может ухудшать условия, но билет проверяет именно человеческий фактор как основной."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-095",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-095-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: mayor velocidad de la precautoria повышает вероятность, что последствия eventual siniestro sean más graves. В источнике GCBA это объясняется энергией удара и уязвимостью человеческого тела."
+            },
+            {
+              "answerId": "b-fallback-095-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: билет прямо связывает превышение безопасной по обстоятельствам скорости с более тяжелым siniestro."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-096",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-096-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: кроме víctimas fatales или lesionados graves, siniestro может повлечь daños materiales, costos sanitarios y administrativos. Точную тройку здесь держим как формулировку fallback-билета."
+            },
+            {
+              "answerId": "b-fallback-096-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Не хватает costos administrativos, поэтому вариант уже, чем правильный ответ."
+            },
+            {
+              "answerId": "b-fallback-096-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo daños materiales слишком узко: билет требует помнить и другие последствия."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-108",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-108-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: после siniestro vial на avenida рекомендуется señalizar la zona, чтобы следующие водители заранее увидели опасность и не возникли новые incidentes."
+            },
+            {
+              "answerId": "b-fallback-108-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: не обозначить место значит оставить риск второго происшествия, особенно на avenida."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-146",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-146-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это ближе к impericia: lack of adequate response из-за недостатка практики. Вопрос спрашивает negligencia."
+            },
+            {
+              "answerId": "b-fallback-146-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Actuar peligrosamente por lack of prudence ближе к imprudencia. Negligencia в билете связана с несоответствием требованиям закона/обязанности."
+            },
+            {
+              "answerId": "b-fallback-146-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: negligencia - actuar no conforme a las exigencias de la Ley, то есть не выполнить обязанность или действовать с descuido в правовом смысле."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-183",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-183-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Desperfecto слишком узко. В этом fallback-билете combo balizas + bocina repetida + pañuelo указывает не просто поломку, а emergency with a seriously ill person."
+            },
+            {
+              "answerId": "b-fallback-183-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: автомобиль находится en emergencia, transportando a una persona en grave estado de salud. Деталь pañuelo остается ticket-specific сигналом из этого вопроса."
+            },
+            {
+              "answerId": "b-fallback-183-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas неверно: билет хочет выбрать emergency/health emergency, а не одновременно desperfecto."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-196",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-196-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Безопасность современных автомобилей не отменяет роль скорости. GCBA прямо связывает exceso de velocidad с incidentes fatales и graves."
+            },
+            {
+              "answerId": "b-fallback-196-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Solamente en vías de doble sentido - ложное ограничение. Билет говорит cualquiera sea la vía de circulación."
+            },
+            {
+              "answerId": "b-fallback-196-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: los excesos de velocidad are responsible for most fatal incidents regardless of the road type, по формулировке билета и manual GCBA."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-200",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-200-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vision Cero не означает запрет частных автомобилей. Это этический принцип о недопустимости смертей и permanent injuries в дорожной системе."
+            },
+            {
+              "answerId": "b-fallback-200-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Vision Cero устанавливает, что никто не должен погибать или получать lesiones permanentes в siniestros de tránsito."
+            },
+            {
+              "answerId": "b-fallback-200-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Цель не в ускорении движения. В Vision Cero фокус на сохранении жизни и снижении тяжелых последствий."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-205",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b266.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-205-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: это Estrella Amarilla. Текущий материал GCBA объясняет, что такие звезды постоянно указывают место fallecimiento de una víctima de tránsito."
+            },
+            {
+              "answerId": "b-fallback-205-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: изображение именно предупреждает/напоминает, что в этом месте произошло fatal traffic victim event."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-216",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b90.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-216-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero по билету: показанный símbolo относится к carril que debe ser liberado cuando se aproxima un vehículo en emergencia. Точную картинку держим как ticket-specific recognition."
+            },
+            {
+              "answerId": "b-fallback-216-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: билет проверяет именно освобождение полосы при приближении emergency vehicle."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-235",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-235-a1",
+              "verdict": "incorrect",
+              "explanationRu": "24 horas слишком коротко для этого билета. Он спрашивает срок aviso a la compañía aseguradora после siniestro."
+            },
+            {
+              "answerId": "b-fallback-235-a2",
+              "verdict": "incorrect",
+              "explanationRu": "48 horas тоже не тот срок. В билете и источниках для notice to insurer используется 72 horas / tres días."
+            },
+            {
+              "answerId": "b-fallback-235-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: 72 horas. GCBA guide говорит informar a la compañía aseguradora dentro de las 72h, а Ley 17.418 формулирует aviso al asegurador dentro de los tres días desde que se conoce el siniestro."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-266",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-266-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: ехать ниже límite mínimo de velocidad тоже может вызвать incidente, потому что мешает нормальной fluidez и предсказуемости потока."
+            },
+            {
+              "answerId": "b-fallback-266-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: опасность может создавать не только exceso de velocidad, но и слишком медленное движение ниже установленного минимума."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-282",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b208.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-282-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: элемент безопасности пассивного типа работает уже при siniestro и уменьшает daño a ocupantes. По картинке это относится к occupant-protection logic, not prevention before the crash."
+            },
+            {
+              "answerId": "b-fallback-282-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: пассивная безопасность именно снижает последствия после удара, поэтому формулировка билета верная."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-307",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-307-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Alertar first пропускает первый шаг защиты места. Если не proteger, можно создать новый риск для пострадавших и других водителей."
+            },
+            {
+              "answerId": "b-fallback-307-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Proteger - Alertar - Socorrer. Цитируем только корректную строку manual/guía с этой последовательностью, а не PDF-heading с опечаткой."
+            },
+            {
+              "answerId": "b-fallback-307-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Socorrer first опасно: до помощи пострадавшим нужно защитить место и вызвать профессиональную помощь."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-323",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b216.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-323-a1",
+              "verdict": "incorrect",
+              "explanationRu": "No es sólo confort. Apoyacabeza/headrest является элементом защиты и при правильной регулировке снижает эффект látigo."
+            },
+            {
+              "answerId": "b-fallback-323-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: correctly positioned headrest helps avoid lesiones en la zona cervical by reducing excessive movement between head and torso."
+            },
+            {
+              "answerId": "b-fallback-323-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Lesiones en el tórax больше связаны с другими элементами защиты. Этот элемент проверяет cervical/neck injury prevention."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-388",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b43.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-388-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luces bajas delante y detrás не соответствуют логике warning for immobilized vehicle. Нужны balizas, а переносные balizas ставятся со стороны incoming traffic."
+            },
+            {
+              "answerId": "b-fallback-388-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Luces altas не являются правильным аварийным обозначением места siniestro и могут мешать другим водителям."
+            },
+            {
+              "answerId": "b-fallback-388-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: encender las balizas и, если возможно, colocar balizas portátiles del lado de donde provienen los vehículos a distancia adecuada."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-443",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-443-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: constant and lawful/precautionary speed reduces abrupt acceleration/braking, helps lower siniestro risk, and can optimize fuel consumption."
+            },
+            {
+              "answerId": "b-fallback-443-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: билет связывает velocidad constante dentro de los límites both with safety and fuel economy."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-445",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-445-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Menores de 15 años не является ожидаемым rango in this fallback ticket. Current D11 archive did not prove a current Observatorio source for the exact claim, so treat this as ticket-specific."
+            },
+            {
+              "answerId": "b-fallback-445-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: Jóvenes y adultos de 15 a 34 años. Это не обобщаем как актуальную статистику GCBA, потому что D11 did not archive direct current Observatorio support for the exact age range."
+            },
+            {
+              "answerId": "b-fallback-445-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Adultos mayores de 35 años - не тот диапазон, который ожидает билет. Не используйте этот вопрос как свежий статистический справочник."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-447",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-447-a1",
+              "verdict": "incorrect",
+              "explanationRu": "911 подходит для Policía/emergency routing, но 109 не является правильной парой в этом билете."
+            },
+            {
+              "answerId": "b-fallback-447-a2",
+              "verdict": "incorrect",
+              "explanationRu": "103 может быть useful emergency number generally, but this ticket asks the road-user pair for incident help and expects 107 y 911."
+            },
+            {
+              "answerId": "b-fallback-447-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: 107 y 911. GCBA material page lists 107 - SAME and 911 - Policía; siniestros guide also instructs calling 107 for injured people and then 911."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-accidente-vs-incidente",
+          "textRu": "Accidente/impredecible/inevitable - ловушка. В этом блоке выбирайте incidente/siniestro as preventable and tied to responsibilities.",
+          "sourceQuestionIds": [
+            "b-fallback-047"
+          ]
+        },
+        {
+          "id": "trap-pas-order",
+          "textRu": "PAS нельзя переставлять: first Proteger, then Alertar, then Socorrer. Не цитируйте typo heading the misspelled heading; опирайтесь на корректную строку Proteger-Alertar-Socorrer.",
+          "sourceQuestionIds": [
+            "b-fallback-307"
+          ]
+        },
+        {
+          "id": "trap-balizas-word",
+          "textRu": "Balizas в билетах может означать lights on the vehicle или portable warning devices. Смотрите контекст: encender = огни, colocar = переносные warning devices.",
+          "sourceQuestionIds": [
+            "b-fallback-108",
+            "b-fallback-388"
+          ]
+        },
+        {
+          "id": "trap-insurance-time",
+          "textRu": "24/48/72 hours: for insurer notice in this topic choose 72 horas. Three days in Ley 17.418 is the legal wording behind the same exam idea.",
+          "sourceQuestionIds": [
+            "b-fallback-235"
+          ]
+        },
+        {
+          "id": "trap-statistics-currentness",
+          "textRu": "Observatorio Vial statistics in `b-fallback-445` are ticket-specific. Do not repeat them as current GCBA statistics unless a later source archive proves the exact age range.",
+          "sourceQuestionIds": [
+            "b-fallback-445"
+          ]
+        },
+        {
+          "id": "trap-signal-images",
+          "textRu": "Image tickets are narrow: VTV/RVA, Estrella Amarilla, emergency-lane symbol, passive-safety element, headrest, and one-way street balizas each ask about that image, not a broad new catalogue.",
+          "sourceQuestionIds": [
+            "b-fallback-078",
+            "b-fallback-205",
+            "b-fallback-216",
+            "b-fallback-282",
+            "b-fallback-323",
+            "b-fallback-388"
+          ]
+        },
+        {
+          "id": "trap-speed-two-directions",
+          "textRu": "Do not restrict speed severity to one road type. The ticket says fatal incidents cualquiera sea la vía de circulación.",
+          "sourceQuestionIds": [
+            "b-fallback-196"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-incident-definition-preventability",
+          "textRu": "Incidente de tránsito/incidente vial is a road event with damage to persons or things during circulation, and GCBA materials teach avoiding accidente wording because many such events are preventable and tied to human errors.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "emergency-response-incident-definition-preventability"
+        },
+        {
+          "id": "claim-pas-and-scene-protection",
+          "textRu": "The recommended initial response is Proteger - Alertar - Socorrer: protect and signal the place, alert emergency services with clear location/details/victims, and then help injured people without moving them except for immediate grave risk.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "emergency-response-pas-and-scene-protection"
+        },
+        {
+          "id": "claim-scene-signaling-balizas",
+          "textRu": "For an immobilized vehicle after a siniestro, use balizas/reflective warning and place portable warning devices on the side from which vehicles approach, with distance linked to road speed/context.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "emergency-response-scene-signaling-balizas"
+        },
+        {
+          "id": "claim-emergency-numbers",
+          "textRu": "For road incidents with injured people, the study materials support 107 for SAME/medical emergencies and 911 for police/emergency routing.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "emergency-response-emergency-numbers-107-911"
+        },
+        {
+          "id": "claim-insurance-notice-72-hours",
+          "textRu": "After a siniestro, the insurer notice is 72 hours / three days where generalized for this exam topic.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "emergency-response-insurance-notice-72-hours"
+        },
+        {
+          "id": "claim-vision-zero-speed-human-factor",
+          "textRu": "Vision Cero, human-error framing, speed/severity, minimum speed, and constant precautionary speed are taught as safety-system concepts that reduce deaths, serious injuries, incident likelihood, and fuel consumption.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "emergency-response-vision-zero-speed-human-factor"
+        },
+        {
+          "id": "claim-passive-safety-headrest",
+          "textRu": "Passive safety reduces consequences after a siniestro; the correctly positioned headrest reduces whiplash/cervical injury risk and complements the seat belt.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "emergency-response-passive-safety-headrest"
+        },
+        {
+          "id": "claim-estrellas-amarillas-fatal-victim",
+          "textRu": "Estrellas Amarillas permanently mark places where traffic victims died and serve as public memory/prevention signs.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "emergency-response-estrellas-amarillas-fatal-victim"
+        }
+      ]
+    },
+    {
       "id": "pedestrian-crossings-and-priority",
       "slug": "pedestrian-crossings-and-priority",
       "status": "draft",

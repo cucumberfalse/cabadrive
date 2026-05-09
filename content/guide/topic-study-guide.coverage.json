@@ -278,9 +278,9 @@
       "titleRu": "Аварии, экстренные действия и место ДТП",
       "categoryId": "incident-response",
       "splitCriteria": "Первичные действия при siniestro/incidente, 107/911, сигнализация места, emergency vehicles и помощь пострадавшим.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E18"
     },
     {
       "topicId": "crash-liability-and-legal-duties",
@@ -841,8 +841,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-048",
@@ -933,8 +933,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-057",
@@ -1144,8 +1144,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-079",
@@ -1189,8 +1189,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-084",
@@ -1318,16 +1318,16 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-096",
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-097",
@@ -1436,7 +1436,7 @@
       "phase": "planned",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "emergency-response-and-crash-scene": "planned",
+        "emergency-response-and-crash-scene": "content_ready",
         "vehicle-lights-and-signaling": "content_ready"
       }
     },
@@ -1811,8 +1811,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-147",
@@ -2210,7 +2210,7 @@
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "vehicle-lights-and-signaling": "content_ready",
-        "emergency-response-and-crash-scene": "planned"
+        "emergency-response-and-crash-scene": "content_ready"
       }
     },
     {
@@ -2334,8 +2334,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-197",
@@ -2366,8 +2366,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-201",
@@ -2411,8 +2411,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-206",
@@ -2512,8 +2512,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-217",
@@ -2699,8 +2699,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-236",
@@ -2997,8 +2997,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-267",
@@ -3158,8 +3158,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-283",
@@ -3408,8 +3408,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-308",
@@ -3579,8 +3579,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-324",
@@ -4239,7 +4239,7 @@
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "vehicle-lights-and-signaling": "content_ready",
-        "emergency-response-and-crash-scene": "planned"
+        "emergency-response-and-crash-scene": "content_ready"
       }
     },
     {
@@ -4802,8 +4802,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-444",
@@ -4823,8 +4823,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-446",
@@ -4844,8 +4844,8 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E18"
     },
     {
       "questionId": "b-fallback-448",
