@@ -224,9 +224,9 @@
       "titleRu": "Расстояния при парковке, углы и въезды",
       "categoryId": "parking",
       "splitCriteria": "Нужные отступы у entradas/instituciones/esquinas, ochava, cordón, ориентация колес и видимость при стоянке.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E10"
     },
     {
       "topicId": "pedestrian-crossings-and-priority",
@@ -632,8 +632,8 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-029",
@@ -663,7 +663,11 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "parking-clearances-and-corners": "content_ready",
+        "right-of-way-special-situations": "planned"
+      },
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-032",
@@ -772,7 +776,11 @@
         "right-of-way-basic-intersections"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "parking-clearances-and-corners": "content_ready",
+        "right-of-way-basic-intersections": "planned"
+      },
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-044",
@@ -1490,8 +1498,8 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-122",
@@ -2650,8 +2658,8 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-250",
@@ -2859,8 +2867,8 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-272",
@@ -3496,15 +3504,19 @@
         "right-of-way-special-situations"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "parking-clearances-and-corners": "content_ready",
+        "right-of-way-special-situations": "planned"
+      },
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-342",
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-343",
@@ -4013,7 +4025,11 @@
         "right-of-way-basic-intersections"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "parking-clearances-and-corners": "content_ready",
+        "right-of-way-basic-intersections": "planned"
+      },
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-397",
@@ -4168,8 +4184,8 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E10"
     },
     {
       "questionId": "b-fallback-413",
@@ -4616,7 +4632,11 @@
         "right-of-way-basic-intersections"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "parking-clearances-and-corners": "content_ready",
+        "right-of-way-basic-intersections": "planned"
+      },
+      "ownerSlice": "E10"
     }
   ]
 }

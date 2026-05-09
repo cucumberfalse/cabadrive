@@ -841,6 +841,59 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current",
       "notes": "Supports b-fallback-066, b-fallback-287 and b-fallback-455. This slice did not generalize theater/cultural-venue signs because that gap is already tracked for future refinement."
+    },
+    {
+      "id": "parking-clearances-distances-corners-and-cordon",
+      "topicId": "parking-clearances-and-corners",
+      "claimId": "claim-caba-parking-clearance-distances-and-corners",
+      "claimSummaryRu": "CABA parking-clearance rules relevant to institutional entrances, rail crossings, corners/ochava, pedestrian crossings/stop lines, vehicle entrances and ordinary 20 cm parallel parking from the curb.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 7.1.8 Prohibiciones especiales",
+        "Ley 2148 7.1.9 Prohibiciones generales",
+        "Ley 2148 7.1.13 Formas de estacionamiento"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-028, 121, 249 and 412. The 20 m and 5 m distractors remain explained as ticket traps, not as current clearance rules."
+    },
+    {
+      "id": "parking-clearances-reverse-and-garage-incorporation",
+      "topicId": "parking-clearances-and-corners",
+      "claimId": "claim-caba-reverse-and-garage-incorporation",
+      "claimSummaryRu": "CABA allows reverse movement only as a necessary low-speed maneuver in specific cases and requires yielding to vehicles entering from parking/garage only when traffic is interrupted.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.7 Obligaciones de los conductores que se incorporen o egresen de la circulación",
+        "Ley 2148 6.1.18 Circulación marcha atrás",
+        "Ley 2148 6.1.19 Precauciones al circular marcha atrás",
+        "Ley 2148 6.7.2 Otras prioridades de paso"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-031, 043 and 271 without broadening this topic into the future right-of-way pages."
+    },
+    {
+      "id": "parking-clearances-cordons-and-ciclovias",
+      "topicId": "parking-clearances-and-corners",
+      "claimId": "claim-cordons-and-ciclovias",
+      "claimSummaryRu": "CABA and Anexo L support red/yellow curb meanings and the prohibition on stopping/parking on or next to ciclovía spaces relevant to assigned curb/cyclist tickets.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 7.1.2 Normas generales",
+        "Ley 2148 7.1.8 Prohibiciones especiales",
+        "Anexo L H.15 CORDONES PINTADOS"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-341 and 396. The red-cordon explanation is generalized; the specific image framing remains tied to the canonical fallback tickets."
     }
   ]
 }
