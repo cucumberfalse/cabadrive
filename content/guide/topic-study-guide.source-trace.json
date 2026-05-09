@@ -1629,6 +1629,104 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force",
       "notes": "Supports the narrow b-fallback-424 trap that cyclists are not exempt from applicable traffic norms merely because they do not use high-speed vehicles."
+    },
+    {
+      "id": "turns-giro-warning-position-30m",
+      "topicId": "turns-direction-and-reversing",
+      "claimId": "claim-giro-warning-position-30m",
+      "claimSummaryRu": "Для поворота нужно заранее предупредить световым указателем, с 30 м занять сторону/полосу ближе к повороту и снизить скорость до маневра.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.14 Giros",
+        "Ley 2148 6.6.1 Obligación",
+        "Ley 24.449 Artículo 43 Giros y rotondas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports only maneuver-warning, 30 m positioning, and reduced/moderate speed for turns. It does not generalize image-specific light interpretations."
+    },
+    {
+      "id": "turns-lights-direction-balizas-retroceso",
+      "topicId": "turns-direction-and-reversing",
+      "claimId": "claim-lights-direction-balizas-retroceso",
+      "claimSummaryRu": "Luces de giro, retroceso, and balizas/intermitentes must be used for their own purposes; balizas/emergency lights warn stopped, risky, unusual, or emergency contexts.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.3.1 Generalidades, incisos d) and f)",
+        "Ley 2148 6.6.1 Obligación",
+        "Ley 24.449 Artículo 47 Uso de las luces, incisos e), f), and g)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports the separate-giro versus both-giros/balizas distinction. The rear-lamp same-direction reading in b-fallback-014 and white-reverse-light reading in b-fallback-304 remain ticket-image-specific."
+    },
+    {
+      "id": "turns-marcha-atras-limits",
+      "topicId": "turns-direction-and-reversing",
+      "claimId": "claim-marcha-atras-limits",
+      "claimSummaryRu": "Marcha atrás is generally prohibited except narrow cases and must be minimal/precautionary.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.18 Circulación marcha atrás",
+        "Ley 2148 6.1.19 Precauciones al circular marcha atrás",
+        "Ley 24.449 Artículo 48 Prohibiciones, inciso h)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Used to explain why b-fallback-244 rejects reversing as a missed-turn fix. The U-turn/vuelta en U rejection in that ticket remains a ticket-specific image/context conclusion, not an official-source-backed CABA retome claim."
+    },
+    {
+      "id": "turns-direction-and-curve-signs",
+      "topicId": "turns-direction-and-reversing",
+      "claimId": "claim-direction-and-curve-signs",
+      "claimSummaryRu": "Anexo L supports the topic sign distinctions for mandatory turn, circulation direction, permitted directions, closed curve, divided roadway, double-way/single-direction starts, desvío, and directional arrows.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "R.20 Giro obligatorio a la derecha o a la izquierda",
+        "R.21/22 Sentido de circulación/Paso obligado",
+        "R.26 Comienzo de doble mano",
+        "P.4 Curva cerrada",
+        "P.20 Principio y fin de calzada dividida",
+        "P.31 Flecha direccional",
+        "1.19 Desvío por cambio de sentido de circulación",
+        "1.21 Permitido girar a la izquierda/derecha",
+        "1.22 Direcciones permitidas",
+        "34. Flechas direccionales",
+        "H.9 Flechas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports only sign-category/name/meaning distinctions available in the archived text. Existing regulatory-signs and warning-signs placements remain unchanged."
+    },
+    {
+      "id": "turns-speed-load-curve-control",
+      "topicId": "turns-direction-and-reversing",
+      "claimId": "claim-speed-load-curve-control",
+      "claimSummaryRu": "Driver control and speed must account for vehicle/load/road/visibility conditions, and turns require gradual speed reduction; exact luggage placement and route curve advice stay fallback-ticket-specific.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.2.1 Adecuación de la velocidad a las circunstancias. Velocidad precautoria",
+        "Ley 2148 6.1.14 Giros, inciso d)",
+        "Ley 24.449 Artículo 43 Giros y rotondas, inciso c)",
+        "Ley 24.449 Artículo 50 Velocidad precautoria"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "The archived law supports control/speed/load conditions generally. The exact b-fallback-104 luggage placement and b-fallback-414 curve formula are not generalized as official catalogue rules."
     }
   ]
 }

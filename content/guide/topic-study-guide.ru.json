@@ -11242,6 +11242,613 @@
           ]
         }
       ]
+    },
+    {
+      "id": "turns-direction-and-reversing",
+      "slug": "turns-direction-and-reversing",
+      "status": "draft",
+      "titleRu": "Повороты, направление движения и задний ход",
+      "summaryRu": "Блок про giro, sentido de circulación, luces de giro, dirección permitida/obligatoria, curvas и marcha atrás в экзаменационных ловушках.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Держите в голове одну схему: направление задается знаком или светом, маневр заранее показывается, а задний ход используется только как исключение.",
+        "Для giro важны три действия: заранее предупредить luz de giro, занять сторону/полосу ближе к повороту примерно за 30 metros и снижать скорость до маневра. Bocina не заменяет указатель поворота, а оба giros/balizas не являются обычным способом показать правый или левый поворот.",
+        "Если знак говорит giro obligatorio или dirección obligatoria, водитель должен следовать стрелке. Если формулировка dirección permitida или permitido girar, это разрешенное направление, а не приказ. На картинках билетов это особенно важно: похожие стрелки отличаются категорией знака и смыслом.",
+        "Marcha atrás запрещена как способ исправить пропущенный поворот. Ее используют только в узких исключениях и с максимальной осторожностью; в билете `b-fallback-244` сдавать назад нельзя по общему правилу, а U-turn отклоняется узко по фото и контексту этого билета.",
+        "Luces тоже читаются по назначению. Отдельные luces de giro preanuncian maniobras; оба указателя вместе работают как balizas для detención/emergencia/maniobra riesgosa. В `b-fallback-014` красно-янтарные luces traseras показывают заднюю часть автомобиля и тот же sentido; отдельно в `b-fallback-304` белая luz de retroceso подсказывает sentido contrario respecto del vehículo rojo.",
+        "Кривые и загрузка здесь не становятся отдельным техническим курсом. Официальная норма требует сохранять контроль с учетом дороги, видимости, состояния автомобиля и carga; конкретная формула про багаж в fondo del baúl и совет desacelerar перед curve остаются билетными правилами, полезными для ответа."
+      ],
+      "practicalReasoningRu": [
+        "Поворот заранее показывают не ради формальности: другие водители и пешеходы должны понять вашу траекторию до того, как вы начнете менять направление.",
+        "Знаки направления делают поток предсказуемым. Ошибка между obligatorio и permitido меняет смысл ответа: обязанность следовать стрелке и возможность выбрать указанное направление - разные вещи.",
+        "Задний ход опасен тем, что водитель хуже контролирует пространство позади и может пересечь траекторию тех, кто уже едет правильно. Поэтому экзамен не принимает marcha atrás как удобный способ вернуться к пропущенному повороту.",
+        "Скорость лучше убрать до кривой, а не внутри нее: так автомобиль сохраняет сцепление и траекторию, особенно если груз влияет на устойчивость."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-sentido-de-circulacion",
+          "termEs": "sentido de circulación",
+          "translationRu": "направление движения",
+          "sourceQuestionIds": [
+            "b-fallback-014",
+            "b-fallback-128"
+          ]
+        },
+        {
+          "id": "term-luz-de-giro",
+          "termEs": "luz de giro",
+          "translationRu": "указатель поворота",
+          "sourceQuestionIds": [
+            "b-fallback-084",
+            "b-fallback-187"
+          ]
+        },
+        {
+          "id": "term-30-metros-antes",
+          "termEs": "30 metros antes",
+          "translationRu": "за 30 метров до маневра",
+          "sourceQuestionIds": [
+            "b-fallback-187"
+          ]
+        },
+        {
+          "id": "term-al-menos-30-metros-antes",
+          "termEs": "al menos 30 metros antes",
+          "translationRu": "минимум за 30 метров заранее",
+          "sourceQuestionIds": [
+            "b-fallback-084"
+          ]
+        },
+        {
+          "id": "term-ambos-giros",
+          "termEs": "ambos giros",
+          "translationRu": "оба указателя поворота / аварийная сигнализация в варианте-ловушке",
+          "sourceQuestionIds": [
+            "b-fallback-084"
+          ]
+        },
+        {
+          "id": "term-estabilidad-direccional",
+          "termEs": "estabilidad direccional",
+          "translationRu": "курсовая устойчивость",
+          "sourceQuestionIds": [
+            "b-fallback-104"
+          ]
+        },
+        {
+          "id": "term-comportamiento-en-las-curvas",
+          "termEs": "comportamiento en las curvas",
+          "translationRu": "поведение автомобиля в поворотах",
+          "sourceQuestionIds": [
+            "b-fallback-104"
+          ]
+        },
+        {
+          "id": "term-giro-obligatorio-derecha",
+          "termEs": "giro obligatorio hacia la derecha",
+          "translationRu": "обязательный поворот направо",
+          "sourceQuestionIds": [
+            "b-fallback-115"
+          ]
+        },
+        {
+          "id": "term-curva-cerrada",
+          "termEs": "curva cerrada",
+          "translationRu": "резкая/закрытая кривая",
+          "sourceQuestionIds": [
+            "b-fallback-124"
+          ]
+        },
+        {
+          "id": "term-desvio-cambio-sentido",
+          "termEs": "Desvío por cambio de sentido de circulación",
+          "translationRu": "объезд из-за изменения направления движения",
+          "sourceQuestionIds": [
+            "b-fallback-128"
+          ]
+        },
+        {
+          "id": "term-obligacion-girar-derecha",
+          "termEs": "OBLIGACIÓN de girar a la derecha",
+          "translationRu": "обязанность повернуть направо",
+          "sourceQuestionIds": [
+            "b-fallback-164"
+          ]
+        },
+        {
+          "id": "term-direccion-permitida-izquierda",
+          "termEs": "Dirección permitida hacia la izquierda",
+          "translationRu": "разрешенное направление налево",
+          "sourceQuestionIds": [
+            "b-fallback-177"
+          ]
+        },
+        {
+          "id": "term-preanunciar-maniobras",
+          "termEs": "preanunciar maniobras",
+          "translationRu": "заранее обозначать маневры",
+          "sourceQuestionIds": [
+            "b-fallback-181"
+          ]
+        },
+        {
+          "id": "term-situaciones-de-emergencias",
+          "termEs": "situaciones de emergencias",
+          "translationRu": "аварийные/экстренные ситуации",
+          "sourceQuestionIds": [
+            "b-fallback-181"
+          ]
+        },
+        {
+          "id": "term-marcha-atras",
+          "termEs": "marcha atrás",
+          "translationRu": "движение задним ходом",
+          "sourceQuestionIds": [
+            "b-fallback-244"
+          ]
+        },
+        {
+          "id": "term-vuelta-en-u",
+          "termEs": "vuelta en U",
+          "translationRu": "разворот U-turn",
+          "sourceQuestionIds": [
+            "b-fallback-244"
+          ]
+        },
+        {
+          "id": "term-direccion-permitida-ambos-sentidos",
+          "termEs": "Dirección permitida en ambos sentidos",
+          "translationRu": "разрешенное направление в обе стороны",
+          "sourceQuestionIds": [
+            "b-fallback-265"
+          ]
+        },
+        {
+          "id": "term-calzada-dividida",
+          "termEs": "Calzada dividida",
+          "translationRu": "разделенная проезжая часть",
+          "sourceQuestionIds": [
+            "b-fallback-273"
+          ]
+        },
+        {
+          "id": "term-comienzo-sentido-unico",
+          "termEs": "Comienzo de sentido único",
+          "translationRu": "начало одностороннего направления",
+          "sourceQuestionIds": [
+            "b-fallback-288"
+          ]
+        },
+        {
+          "id": "term-maniobra-de-retroceso",
+          "termEs": "maniobra de retroceso",
+          "translationRu": "маневр заднего хода",
+          "sourceQuestionIds": [
+            "b-fallback-304"
+          ]
+        },
+        {
+          "id": "term-desacelerar-antes-curva",
+          "termEs": "Desacelerar antes de ingresar a la curva",
+          "translationRu": "снизить скорость перед входом в кривую",
+          "sourceQuestionIds": [
+            "b-fallback-414"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-014",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b175.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-014-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по изображению: видны задние фонари автомобиля впереди, поэтому он circulando en mi mismo sentido. Это билетная интерпретация картинки, а не отдельное общее правило о всех световых приборах."
+            },
+            {
+              "answerId": "b-fallback-014-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sentido contrario неверно: если бы автомобиль ехал навстречу, вы видели бы переднюю часть/фары, а на картинке показана задняя часть машины в той же полосе движения."
+            },
+            {
+              "answerId": "b-fallback-014-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Descompuesto неверно: вопрос спрашивает не о поломке, а о sentido de circulación по видимым luces. Красные задние огни не означают, что машина сломана."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-084",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-084-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Tocando bocina неверно: поворот обозначают световым указателем, а не звуковым сигналом. Bocina не сообщает сторону giro."
+            },
+            {
+              "answerId": "b-fallback-084-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: для giro в intersección используется luz de giro del lado correspondiente, заранее, al menos 30 metros antes."
+            },
+            {
+              "answerId": "b-fallback-084-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambos giros - это не обычный сигнал правого или левого поворота. Оба указателя вместе читаются как balizas/emergencia или необычная остановка/маневр, а не как выбор стороны giro."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-104",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-104-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: тяжелый equipaje кладут в fondo del baúl, cerca del centro del auto. Так центр тяжести остается ниже и ближе к середине, что помогает estabilidad direccional и поведению в curvas."
+            },
+            {
+              "answerId": "b-fallback-104-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Techo del vehículo неверно: тяжелый груз наверху поднимает центр тяжести и ухудшает устойчивость, особенно при поворотах и боковых воздействиях."
+            },
+            {
+              "answerId": "b-fallback-104-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Asientos traseros неверно: груз в салоне хуже закреплен и расположен не так безопасно, как низко и глубоко в багажнике. Билет ожидает именно fondo del baúl."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-115",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b249.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-115-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción de doblar звучит как разрешение, но красная окантовка и знак R.20 в этом билете указывают giro obligatorio, то есть выбора нет."
+            },
+            {
+              "answerId": "b-fallback-115-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: señal de giro obligatorio hacia la derecha требует следовать стрелке и повернуть направо."
+            },
+            {
+              "answerId": "b-fallback-115-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Curva peligrosa - это предупреждение о форме дороги впереди. Здесь знак не предупреждает о кривой, а предписывает маневр."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-124",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b241.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-124-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Curva con pendiente ascendente неверно: на изображении нет отдельного признака подъема; билет проверяет форму опасной кривой."
+            },
+            {
+              "answerId": "b-fallback-124-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: предупреждающий знак показывает curva cerrada, то есть близкую опасную кривую в направлении стрелки."
+            },
+            {
+              "answerId": "b-fallback-124-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Camino sinuoso - это серия поворотов. Здесь показана одна закрытая curva, а не извилистая дорога."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-128",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b262.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-128-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: схема с ATENCIÓN и маршрутом вокруг запрета показывает desvío por cambio de sentido de circulación, то есть куда ехать, если дальше нельзя продолжить прежним ходом."
+            },
+            {
+              "answerId": "b-fallback-128-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Calzada dividida неверно: там знак показывает физическое разделение проезжей части, а не маршрут объезда по соседним улицам."
+            },
+            {
+              "answerId": "b-fallback-128-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce peligroso неверно: вопрос не про опасное пересечение, а про указанный recorrido/desvío из-за ограничения направления."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-164",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b250.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-164-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: изображение соответствует señal de giro obligatorio a la derecha. Перед intersección водитель обязан повернуть направо."
+            },
+            {
+              "answerId": "b-fallback-164-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: это не предупреждение и не разрешенная опция, а предписание следовать стрелке вправо."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-177",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b265.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-177-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Permitido girar hacia la izquierda слишком узко: знак говорит о dirección permitida, то есть о разрешенном направлении движения, а не только о действии doblar/girar."
+            },
+            {
+              "answerId": "b-fallback-177-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Dirección obligatoria неверно: обязательная dirección была бы предписанием. В этом билете правильный смысл - разрешенное направление."
+            },
+            {
+              "answerId": "b-fallback-177-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Dirección permitida hacia la izquierda означает, что движение налево разрешено указанной стрелкой."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-181",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b170.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-181-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза верна сама по себе: отдельные luces de giro sirven para preanunciar maniobras. Но как ответ на билет она неполная, потому что не учитывает использование обеих luces вместе."
+            },
+            {
+              "answerId": "b-fallback-181-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза тоже верна: обе luces a la vez sirven para anunciar emergencias или detención. Но ответ неполный, потому что билет спрашивает весь смысл этого tipo de luces."
+            },
+            {
+              "answerId": "b-fallback-181-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas son correctas. Отдельно указатели показывают маневр, вместе работают как balizas/emergencia или предупреждение о detenerse."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-187",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-187-a1",
+              "verdict": "incorrect",
+              "explanationRu": "20 metros недостаточно для этого билета и для общей нормы, где giro готовят заранее за treinta metros."
+            },
+            {
+              "answerId": "b-fallback-187-a2",
+              "verdict": "incorrect",
+              "explanationRu": "10 metros неверно: это слишком позднее предупреждение, другие участники не успевают надежно понять маневр."
+            },
+            {
+              "answerId": "b-fallback-187-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: luz de giro correspondiente нужно включить por lo menos 30 metros antes de realizar la maniobra."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-244",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b129.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-244-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Marcha atrás из-за пропущенного поворота неверна: задний ход не используют как обычный способ вернуться к giro, даже если tramo corto."
+            },
+            {
+              "answerId": "b-fallback-244-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Vuelta en U неверна в этом билете: фото и контекст не дают безопасного разрешенного сценария для разворота как исправления пропущенного giro."
+            },
+            {
+              "answerId": "b-fallback-244-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: обе альтернативы A и B incorrectas. Водитель должен продолжить безопасное движение и выбрать разрешенный маршрут, а не сдавать назад или выполнять U-turn по этой ситуации."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-265",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b261.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-265-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Dirección obligatoria en ambos sentidos неверно: билетная картинка означает разрешенные направления, а не обязанность выбрать один из них."
+            },
+            {
+              "answerId": "b-fallback-265-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Dirección permitida en ambos sentidos - можно следовать в любом из двух направлений, показанных стрелками."
+            },
+            {
+              "answerId": "b-fallback-265-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Giros permitidos слишком общее и неточное: знак относится к направлениям движения, а не только к поворотам."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-273",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b236.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-273-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Estrechamiento en las dos manos неверно: сужение показывает уменьшение ширины, а не физический разделитель между встречными потоками."
+            },
+            {
+              "answerId": "b-fallback-273-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Calzada dividida означает начало участка, где направления физически разделяются препятствием/isleta."
+            },
+            {
+              "answerId": "b-fallback-273-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Inicio doble mano - другой знак: он предупреждает о появлении двустороннего движения, а здесь показано разделение calzada."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-288",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b251.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-288-a1",
+              "verdict": "incorrect",
+              "explanationRu": "No avanzar неверно: это был бы запрет движения вперед. Здесь стрелка указывает начало разрешенного направления."
+            },
+            {
+              "answerId": "b-fallback-288-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Comienzo de doble mano неверно: двойная mano обозначается встречными стрелками, а не одной стрелкой вверх."
+            },
+            {
+              "answerId": "b-fallback-288-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Comienzo de sentido único - с этого места движение идет в одном указанном направлении."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-304",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b178.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-304-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Diferenciarla de las luces de freno, posición y giro звучит технически правдоподобно, но это не ответ билета: картинка спрашивает смысл для направления движения."
+            },
+            {
+              "answerId": "b-fallback-304-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Mejor visión al retroceder ночью - возможная практическая функция luz de retroceso, но в этом fallback-билете правильная интерпретация привязана к sentido de circulación относительно красного автомобиля."
+            },
+            {
+              "answerId": "b-fallback-304-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке: белая luz de retroceso означает, что показанный автомобиль движется или собирается двигаться en sentido contrario al vehículo rojo detrás de él."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-414",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b145.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-414-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Aumentar la velocidad перед curva неверно: входить в кривую быстрее опаснее, потому что уменьшается запас сцепления и времени на корректировку."
+            },
+            {
+              "answerId": "b-fallback-414-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: нужно desacelerar antes de ingresar a la curva. Это ticket-specific формула безопасного входа в кривую: скорость убирают до поворота, а не уже внутри него."
+            },
+            {
+              "answerId": "b-fallback-414-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Mantener la misma velocidad y acelerar en la curva неверно: ускорение внутри кривой повышает риск потерять траекторию, особенно на route с ограниченным обзором."
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-giro-warning-position-30m",
+          "textRu": "Для поворота водитель заранее предупреждает световым указателем, за 30 м занимает сторону/полосу ближе к giro и снижает скорость до маневра.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "turns-giro-warning-position-30m"
+        },
+        {
+          "id": "claim-lights-direction-balizas-retroceso",
+          "textRu": "Luces de giro, balizas/intermitentes de emergencia и luces de retroceso имеют разные назначения: отдельный указатель показывает маневр, оба указателя вместе предупреждают о detención/emergencia/maniobra riesgosa, а luz de retroceso используется для своего назначения.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "turns-lights-direction-balizas-retroceso"
+        },
+        {
+          "id": "claim-marcha-atras-limits",
+          "textRu": "Marcha atrás запрещена как обычное движение и допускается только в узких исключениях с минимальным необходимым recorrido.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "turns-marcha-atras-limits"
+        },
+        {
+          "id": "claim-direction-and-curve-signs",
+          "textRu": "Anexo L поддерживает различение giro obligatorio, sentido/direcciones permitidas, curva cerrada, calzada dividida, comienzo de doble mano/sentido único and desvío/cambio de sentido entries used by this topic.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "turns-direction-and-curve-signs"
+        },
+        {
+          "id": "claim-speed-load-curve-control",
+          "textRu": "Общая официальная логика требует сохранять контроль с учетом road/visibility/vehicle/carga conditions and reducing speed before giro; exact luggage placement and route-curve answer formulas stay ticket-specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "turns-speed-load-curve-control"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-giro-luz-not-bocina",
+          "textRu": "Для giro ищите luz de giro del lado correspondiente и 30 metros antes. Bocina и ambos giros - типичные неверные замены.",
+          "sourceQuestionIds": [
+            "b-fallback-084",
+            "b-fallback-187"
+          ]
+        },
+        {
+          "id": "trap-obligatorio-vs-permitido",
+          "textRu": "Obligatorio = нужно следовать стрелке; permitido = можно ехать указанным направлением. Эти слова разделяют `b-fallback-115`/`164` и `b-fallback-177`/`265`.",
+          "sourceQuestionIds": [
+            "b-fallback-115",
+            "b-fallback-164",
+            "b-fallback-177",
+            "b-fallback-265"
+          ]
+        },
+        {
+          "id": "trap-desvio-calzada-dividida-doble-mano",
+          "textRu": "Не смешивайте desvío, calzada dividida и doble mano: объезд рисует маршрут, разделенная calzada показывает физический разделитель, а doble mano - встречные направления.",
+          "sourceQuestionIds": [
+            "b-fallback-128",
+            "b-fallback-273",
+            "b-fallback-288"
+          ]
+        },
+        {
+          "id": "trap-marcha-atras-not-missed-turn",
+          "textRu": "Пропущенный поворот не чинят marcha atrás. В билете с красным кругом правильный ответ - обе попытки исправиться неверны.",
+          "sourceQuestionIds": [
+            "b-fallback-244"
+          ]
+        },
+        {
+          "id": "trap-white-lights-ticket-specific",
+          "textRu": "Не смешивайте две картинки: в `b-fallback-014` видны luces traseras и тот же sentido, а белая luz de retroceso относится только к `b-fallback-304` и sentido respecto del vehículo rojo.",
+          "sourceQuestionIds": [
+            "b-fallback-014",
+            "b-fallback-304"
+          ]
+        },
+        {
+          "id": "trap-curve-slow-before",
+          "textRu": "Для curve правильная экзаменационная привычка - desacelerar antes de ingresar. Ускорение перед или внутри кривой - ловушка.",
+          "sourceQuestionIds": [
+            "b-fallback-104",
+            "b-fallback-414"
+          ]
+        }
+      ]
     }
   ]
 }
