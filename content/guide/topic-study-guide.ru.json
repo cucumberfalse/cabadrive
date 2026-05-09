@@ -12124,22 +12124,22 @@
             "b-fallback-157"
           ]
         },
-      {
-        "id": "term-prueba-alcoholemia-authorities",
-        "termEs": "prueba de alcoholemia",
-        "translationRu": "проверка на алкоголь",
-        "sourceQuestionIds": [
-          "b-fallback-270"
-        ]
-      },
-      {
-        "id": "term-control-alcoholemia-authorities",
-        "termEs": "control de alcoholemia",
-        "translationRu": "контроль/проверка на алкоголь",
-        "sourceQuestionIds": [
-          "b-fallback-322"
-        ]
-      },
+        {
+          "id": "term-prueba-alcoholemia-authorities",
+          "termEs": "prueba de alcoholemia",
+          "translationRu": "проверка на алкоголь",
+          "sourceQuestionIds": [
+            "b-fallback-270"
+          ]
+        },
+        {
+          "id": "term-control-alcoholemia-authorities",
+          "termEs": "control de alcoholemia",
+          "translationRu": "контроль/проверка на алкоголь",
+          "sourceQuestionIds": [
+            "b-fallback-322"
+          ]
+        },
         {
           "id": "term-presuncion-alcoholemia-positiva",
           "termEs": "presunción de alcoholemia positiva",
@@ -12236,17 +12236,17 @@
             {
               "answerId": "b-fallback-044-a1",
               "verdict": "incorrect",
-              "explanationRu": "Sólo si participó en un siniestro demasiado estrecho. El control puede ser operativo o circunstancial; negarse al test ya importa como falta."
+              "explanationRu": "Слишком узко: отказ от test считается falta не только после siniestro vial. Контроль может быть обычным operativo или проверкой на месте."
             },
             {
               "answerId": "b-fallback-044-a2",
               "verdict": "incorrect",
-              "explanationRu": "No hace falta una prueba positiva efectivamente realizada para que haya consecuencia. La negativa a la prueba constituye falta."
+              "explanationRu": "Неверно: последствие возникает не только при реально выполненной positive test. Negativa a realizar la prueba сама constituye falta."
             },
             {
               "answerId": "b-fallback-044-a3",
               "verdict": "correct",
-              "explanationRu": "Correcto: la negativa se toma como presunción de alcoholemia positiva para impedir que el conductor siga manejando sin control."
+              "explanationRu": "Правильно: отказ берут как presunción de alcoholemia positiva, чтобы водитель не мог продолжить движение без проверки."
             }
           ]
         },
@@ -12257,17 +12257,17 @@
             {
               "answerId": "b-fallback-050-a1",
               "verdict": "correct",
-              "explanationRu": "Correcto para este ticket: el personal ferroviario indicado en la pregunta está autorizado a regular el paso de vehículos, por eso se avanza si da esa orden."
+              "explanationRu": "Правильно для этого билета: personal ferroviario, о котором прямо сказано в вопросе, autorizado a regular el paso de vehículos, поэтому по его указанию можно avanzar."
             },
             {
               "answerId": "b-fallback-050-a2",
               "verdict": "incorrect",
-              "explanationRu": "Este вариант niega la autoridad del personal ferroviario. La trampa es quedarse sólo con la barrera y no leer la indicación operativa."
+              "explanationRu": "Неверно: вариант отрицает полномочие personal ferroviario. Ловушка в том, чтобы смотреть только на barrera и не прочитать оперативное указание."
             },
             {
               "answerId": "b-fallback-050-a3",
               "verdict": "incorrect",
-              "explanationRu": "Agente de tránsito no es la única figura en este ticket: la pregunta habla expresamente de personal ferroviario regulando el paso."
+              "explanationRu": "Неверно: agente de tránsito здесь не единственная возможная фигура. Вопрос специально говорит о personal ferroviario, который регулирует paso."
             }
           ]
         },
@@ -12278,17 +12278,17 @@
             {
               "answerId": "b-fallback-092-a1",
               "verdict": "correct",
-              "explanationRu": "Correcto: circular sin autorización por el carril exclusivo correspondiente al Metrobús es un caso en que CABA permite retener la licencia."
+              "explanationRu": "Правильно: движение без разрешения по carril exclusivo correspondiente al Metrobús входит в случаи, где CABA допускает retener la licencia."
             },
             {
               "answerId": "b-fallback-092-a2",
               "verdict": "incorrect",
-              "explanationRu": "No depende de probar que se perjudicó a colectivos. La infracción es usar ese carril exclusivo sin estar autorizado."
+              "explanationRu": "Неверно: не нужно отдельно доказывать вред для colectivos. Нарушение уже в том, что водитель circula por este carril без права."
             },
             {
               "answerId": "b-fallback-092-a3",
               "verdict": "incorrect",
-              "explanationRu": "La licencia es documento personal, pero la normativa enumera casos de retención; no se limita a labrar acta."
+              "explanationRu": "Неверно: licencia действительно documento personal, но normativa перечисляет случаи retención; autoridad не ограничена только acta de infracción."
             }
           ]
         },
@@ -12299,17 +12299,17 @@
             {
               "answerId": "b-fallback-117-a1",
               "verdict": "correct",
-              "explanationRu": "Correcto: el símbolo P marca Conductor Principiante. En CABA la condición dura 2 años y durante todo ese período rige 0,0."
+              "explanationRu": "Правильно: символ P означает Conductor Principiante. В CABA эта condición длится 2 años, и весь этот период действует лимит 0,0."
             },
             {
               "answerId": "b-fallback-117-a2",
               "verdict": "incorrect",
-              "explanationRu": "1 año es una trampa de plazo: no coincide con la condición de principiante de CABA, que es de 2 años."
+              "explanationRu": "1 año слишком коротко: это не срок condición de principiante в CABA."
             },
             {
               "answerId": "b-fallback-117-a3",
               "verdict": "incorrect",
-              "explanationRu": "6 meses es el plazo para llevar visible el distintivo P, no el plazo de alcohol cero preguntado por el ticket."
+              "explanationRu": "6 meses относится к сроку, когда нужно возить видимый distintivo P, но билет спрашивает не знак, а запрет на más de 0,0."
             }
           ]
         },
@@ -12319,17 +12319,17 @@
             {
               "answerId": "b-fallback-157-a1",
               "verdict": "incorrect",
-              "explanationRu": "Documento personal no significa intocable. La licencia puede retenerse si la normativa vigente prevé ese caso."
+              "explanationRu": "Неверно: documento personal не означает, что licencia нельзя удерживать никогда. Retención возможна в случаях, прямо предусмотренных normativa vigente."
             },
             {
               "answerId": "b-fallback-157-a2",
               "verdict": "correct",
-              "explanationRu": "Correcto: la clave es sólo en los casos que la normativa vigente así lo indique. No cualquier falta habilita retención automática."
+              "explanationRu": "Правильно: ключевые слова - sólo en los casos que la normativa vigente así lo indique. Не любая falta автоматически ведет к retención."
             },
             {
               "answerId": "b-fallback-157-a3",
               "verdict": "incorrect",
-              "explanationRu": "La retención no se limita a incidentes con terceros; también puede aparecer en controles de alcohol, carril exclusivo, licencia vencida y otros supuestos previstos."
+              "explanationRu": "Неверно: retención не ограничивается incidentes con terceros; она возможна и в других предусмотренных случаях, например alcoholemia, carril exclusivo или licencia vencida."
             }
           ]
         },
@@ -12340,17 +12340,17 @@
             {
               "answerId": "b-fallback-203-a1",
               "verdict": "correct",
-              "explanationRu": "Correcto para la imagen del fallback-ticket: se ve un automóvil particular sin P ni categoría profesional; bajo la tabla CABA/Ley 2148 el límite mostrado es 0,5."
+              "explanationRu": "Правильно для изображения в fallback-билете: показан автомобиль particular без P и без признаков транспорта пассажиров/груза, поэтому в CABA-таблице Ley 2148 выбирается 0,5."
             },
             {
               "answerId": "b-fallback-203-a2",
               "verdict": "incorrect",
-              "explanationRu": "0,0 corresponde a principiante, transporte de pasajeros, menores o carga. La imagen de este ticket no muestra esos datos."
+              "explanationRu": "0,0 относится к principiante, transporte de pasajeros, menores или carga. На этой картинке таких признаков нет."
             },
             {
               "answerId": "b-fallback-203-a3",
               "verdict": "incorrect",
-              "explanationRu": "0,2 es el límite CABA para motovehículos; no se aplica al automóvil particular mostrado."
+              "explanationRu": "0,2 - это лимит CABA для motovehículos, а не для показанного automóvil particular."
             }
           ]
         },
@@ -12360,17 +12360,17 @@
             {
               "answerId": "b-fallback-243-a1",
               "verdict": "incorrect",
-              "explanationRu": "10 puntos aparece en otras consecuencias del sistema, pero no es el puntaje inicial al obtener licencia por primera vez."
+              "explanationRu": "10 puntos могут встретиться в других последствиях системы, но это не puntaje inicial при первой лицензии."
             },
             {
               "answerId": "b-fallback-243-a2",
               "verdict": "correct",
-              "explanationRu": "Correcto: el SEPC/Scoring asigna veinte puntos al conductor que obtiene por primera vez licencia de conducir en CABA."
+              "explanationRu": "Правильно: SEPC/Scoring назначает 20 puntos водителю, который получает licencia de conducir por primera vez."
             },
             {
               "answerId": "b-fallback-243-a3",
               "verdict": "incorrect",
-              "explanationRu": "5 puntos no es el puntaje inicial; es un distractor numérico."
+              "explanationRu": "5 puntos не является начальным puntaje; это числовой отвлекающий вариант."
             }
           ]
         },
@@ -12380,17 +12380,17 @@
             {
               "answerId": "b-fallback-270-a1",
               "verdict": "incorrect",
-              "explanationRu": "La presunción de alcoholemia positiva es cierta, pero en este ticket queda incompleta porque también debe ordenarse la remoción del vehículo."
+              "explanationRu": "Presunción de alcoholemia positiva верна, но для этого вопроса неполна: при negativa также нужно ordenar la remoción del vehículo."
             },
             {
               "answerId": "b-fallback-270-a2",
               "verdict": "incorrect",
-              "explanationRu": "La remoción también es consecuencia correcta, pero sola no explica la presunción que permite prohibir continuar conduciendo."
+              "explanationRu": "Remoción del vehículo тоже верное последствие, но сама по себе не объясняет presunción, из-за которой agente может prohibir continuar conduciendo."
             },
             {
               "answerId": "b-fallback-270-a3",
               "verdict": "correct",
-              "explanationRu": "Correcto: ambas. Ante negativa, se presume alcoholemia positiva, el agente puede prohibir continuar conduciendo y debe ordenar la remoción."
+              "explanationRu": "Правильно: обе части. При negativa презюмируется alcoholemia positiva, agente может запретить продолжать conducir и должен ordenar la remoción."
             }
           ]
         },
@@ -12401,17 +12401,17 @@
             {
               "answerId": "b-fallback-322-a1",
               "verdict": "correct",
-              "explanationRu": "Correcto: con alcoholemia positiva en CABA corresponde sancionar, retener la licencia cuando aplica el supuesto normativo y remitir/remover el vehículo."
+              "explanationRu": "Правильно: при alcoholemia positiva в CABA autoridad должна санкционировать falta, retener la licencia в предусмотренном случае и remitir/remover vehículo."
             },
             {
               "answerId": "b-fallback-322-a2",
               "verdict": "incorrect",
-              "explanationRu": "Esperar a que baje la graduación deja circular un riesgo ya comprobado. El procedimiento no es esperar una contraprueba en la vía."
+              "explanationRu": "Неверно: ждать, пока baje la graduación alcohólica, нельзя. Положительный control уже требует impedir la continuación de la conducción."
             },
             {
               "answerId": "b-fallback-322-a3",
               "verdict": "incorrect",
-              "explanationRu": "Llamar a un tercero no reemplaza la intervención de la autoridad: el control positivo activa sanción, retención y remisión/remoción."
+              "explanationRu": "Неверно: звонок третьему лицу не заменяет procedimiento de control; санкция, retención и remisión/remoción остаются."
             }
           ]
         },
@@ -12422,17 +12422,17 @@
             {
               "answerId": "b-fallback-338-a1",
               "verdict": "incorrect",
-              "explanationRu": "Circule con precaución sería una orden de continuar con cuidado. En la imagen del ticket el agente está deteniendo el paso del conductor."
+              "explanationRu": "Неверно: circule con precaución означало бы продолжать движение осторожно. На фото agente de tránsito показывает остановку."
             },
             {
               "answerId": "b-fallback-338-a2",
               "verdict": "correct",
-              "explanationRu": "Correcto por la imagen: el agente de tránsito indica detenga el vehículo. Esta mapping exacta se mantiene ticket-specific."
+              "explanationRu": "Правильно по изображению: жест agente de tránsito означает detenga el vehículo. Эта точная связка остается ticket-specific."
             },
             {
               "answerId": "b-fallback-338-a3",
               "verdict": "incorrect",
-              "explanationRu": "Continúe avanzando contradice la señal visual del agente en esta foto; no es una autorización para pasar."
+              "explanationRu": "Неверно: continúe avanzando противоречит жесту на фото; это не разрешение проехать."
             }
           ]
         },
@@ -12442,17 +12442,17 @@
             {
               "answerId": "b-fallback-367-a1",
               "verdict": "correct",
-              "explanationRu": "Correcto: Scoring asigna puntaje a cada conductor y luego resta puntos por infracciones comprobadas."
+              "explanationRu": "Правильно: Scoring назначает puntaje каждому водителю и затем вычитает puntos за infracciones comprobadas."
             },
             {
               "answerId": "b-fallback-367-a2",
               "verdict": "incorrect",
-              "explanationRu": "Un curso puede aparecer como consecuencia de quedarse sin puntos, pero Scoring no se define como curso vial anual obligatorio para todos."
+              "explanationRu": "Неверно: курс может появиться как последствие потери баллов, но Scoring не означает ежегодный obligatorio curso vial для всех."
             },
             {
               "answerId": "b-fallback-367-a3",
               "verdict": "incorrect",
-              "explanationRu": "Ambas incorrectas falla porque la opción A sí describe la lógica central del SEPC."
+              "explanationRu": "Неверно: “ambas incorrectas” не подходит, потому что вариант A как раз описывает центральную логику SEPC."
             }
           ]
         },
@@ -12463,17 +12463,17 @@
             {
               "answerId": "b-fallback-446-a1",
               "verdict": "incorrect",
-              "explanationRu": "0,5 es el límite CABA del automóvil común en la tabla del ticket, pero la imagen muestra el símbolo P de principiante."
+              "explanationRu": "0,5 - лимит CABA для обычного автомобиля в этой таблице, но на изображении есть símbolo P, то есть водитель principiante."
             },
             {
               "answerId": "b-fallback-446-a2",
               "verdict": "correct",
-              "explanationRu": "Correcto: con símbolo P el conductor es principiante; durante ese período en CABA no puede conducir con más de 0,0 gramos por litro de sangre."
+              "explanationRu": "Правильно: с símbolo P водитель является principiante; в CABA в этот период нельзя conducir con más de 0,0 gramos por litro de sangre."
             },
             {
               "answerId": "b-fallback-446-a3",
               "verdict": "incorrect",
-              "explanationRu": "0,2 corresponde a motovehículos. El dato visual relevante aquí es P/principiante, no moto."
+              "explanationRu": "0,2 относится к motovehículos. Здесь визуальный ключ - P/principiante, а не moto."
             }
           ]
         }
