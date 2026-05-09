@@ -1,0 +1,161 @@
+# Tasks: Topic-Based Preparation Guide
+
+## Architect Planning Setup
+
+- [x] T001 Confirm active feature folder is `specs/006-topic-study-guide/`.
+- [x] T002 Read `.specify/memory/constitution.md`.
+- [x] T003 Read `docs_project/README.md`.
+- [x] T004 Read `docs_project/project-idea.md`.
+- [x] T005 Read `docs_project/project/frontend/frontend-docs.md`.
+- [x] T006 Read `docs_project/project/backend/backend-docs.md`.
+- [x] T007 Read `docs_project/project/feature-inventory.md`.
+- [x] T008 Read `docs_project/screens/learning-and-exam-flows.md`.
+- [x] T009 Read `docs/specify/README.md`.
+- [x] T010 Read `specs/006-topic-study-guide/feature-request.md`.
+- [x] T011 Inspect existing feature-memory style from prior specs.
+- [x] T012 Inspect current question, guide, vocabulary, explanation, source, validation, and guide-rendering shapes without editing product files.
+
+## Architect Artifacts
+
+- [x] T013 Create `spec.md` with goal, scope, non-goals, acceptance criteria, negative scenarios, official-document requirements, source trace requirements, and verification requirements.
+- [x] T014 Create `plan.md` with staged implementation strategy, future paths, validation design, implementation slices, and risk mitigations.
+- [x] T015 Create this `tasks.md` with planning completion, future implementation backlog, process memory, known issues, and Implementation Agent feedback handling.
+
+## Future Slice A: Guide Schema And Validator Foundation
+
+- [ ] T016 Create a structured topic-guide content placeholder, tentatively `content/guide/topic-study-guide.ru.json`.
+- [ ] T017 Create a guide coverage manifest, tentatively `content/guide/topic-study-guide.coverage.json`.
+- [ ] T018 Create a guide source-trace manifest, tentatively `content/guide/topic-study-guide.source-trace.json`.
+- [ ] T019 Add a no-file-I/O topic-guide validation helper.
+- [ ] T020 Add unit tests for missing/duplicate topic IDs, invalid question IDs, missing required sections, missing answer explanations, and draft/published status behavior.
+- [ ] T021 Integrate draft-safe guide validation into `scripts/validate-content.mjs`.
+- [ ] T022 Record baseline command evidence and update process memory in this file.
+
+## Future Slice B: Official Documents Governance Foundation
+
+- [ ] T023 Create the governed official-documents area, preferred path `content/official-documents/`.
+- [ ] T024 Add section-local `AGENTS.md` or equivalent instructions requiring exact-text preservation, metadata, hashes, currentness, and validation rules for every current and future official document/material.
+- [ ] T025 Add `content/official-documents/manifest.json` with schema fields for title, official source type, source URL, retrieval date, local Markdown path, hashes, raw evidence path, conversion notes, currentness status, amendment/repeal evidence, exact-text validation status, and checked-at dates.
+- [ ] T026 Add a no-file-I/O official-documents manifest validation helper.
+- [ ] T027 Add unit tests for missing metadata, invalid local paths, missing hashes, missing conversion notes, missing currentness fields, and stale/not-current source use.
+- [ ] T028 Update durable `docs_project/` documentation for the official-documents area, manifest, exact-text validation, currentness validation, and future-document rules.
+- [ ] T029 Record validation evidence and process memory.
+
+## Future Slice C: Taxonomy Discovery And Coverage Baseline
+
+- [ ] T030 Analyze all current 460 ticket IDs from `content/questions/caba-b.unofficial-fallback.questions.json`.
+- [ ] T031 Propose compact guide categories from ticket wording, answer patterns, images, and practical exam concepts rather than copying broad existing question `topics`.
+- [ ] T032 Set category split criteria and record why categories are neither too broad nor too tiny.
+- [ ] T033 Assign every current ticket ID to at least one and at most two guide categories.
+- [ ] T034 Create/update coverage baseline with expected count 460 and a stable ID-set fingerprint.
+- [ ] T035 Add validation evidence that every current ticket ID is assigned and no ticket has more than two assignments.
+- [ ] T036 Record any ambiguous or conflicting placements for Architect disposition.
+
+## Future Slice D: Shared Official Source Archive Seed
+
+- [ ] T037 Identify official sources reused across many topic slices, starting from the intake candidates but rechecking currentness at implementation time.
+- [ ] T038 Download required official source materials in full from official URLs.
+- [ ] T039 Convert official source text to Markdown without paraphrase, translation, simplification, or editorial rewriting.
+- [ ] T040 Store raw/original evidence when source format is PDF or otherwise lossy.
+- [ ] T041 Add manifest entries with title, source URL, retrieval date/timestamp, local paths, hashes, conversion notes, currentness status, amendment/repeal evidence, and checked-at date.
+- [ ] T042 Validate the manifest entries touched by the slice.
+- [ ] T043 Record conversion limitations and source-currentness evidence in process memory.
+
+## Future Slice E: Topic Content Slices
+
+- [ ] T044 Implement one topic, or at most two small related topics, per PR.
+- [ ] T045 Add concise Russian material for the assigned topic only.
+- [ ] T046 Add practical reasoning only when it helps answer assigned tickets.
+- [ ] T047 Add useful Spanish words and constructions sourced from assigned ticket question/answer wording.
+- [ ] T048 Add ticket blocks for the assigned topic with correct answer explanation and wrong-answer explanations for every incorrect answer option.
+- [ ] T049 Include local question images in rendered guide ticket blocks when the canonical question has an image.
+- [ ] T050 Add compact trap notes for negations, exceptions, similar answers, and mistranslation risks in the assigned topic.
+- [ ] T051 Add source-trace entries for official-source-backed claims in the assigned topic.
+- [ ] T052 Archive or cite only the official documents/materials needed by the assigned topic slice.
+- [ ] T053 Validate the assigned slice and update coverage/source-trace evidence.
+- [ ] T054 Record source conflicts, dead ends, decisions, known issues, and Implementation Agent feedback.
+
+## Future Slice F: UI Integration
+
+- [ ] T055 Add a separate topic guide section or navigation entry without removing current learning/exam/vocabulary flows.
+- [ ] T056 Render topic list and topic detail pages from structured guide content.
+- [ ] T057 Render canonical Spanish question text, answer options, correct answer, local image, and Russian explanations for each guide ticket block.
+- [ ] T058 Render Spanish words, concise Russian material, and trap notes in the required topic sequence.
+- [ ] T059 Preserve unofficial-learning-aid clarity for Russian guide material and fallback question status.
+- [ ] T060 Ensure no raw PDF viewer or runtime network fetch is required.
+- [ ] T061 Add Playwright coverage for guide reachability, required topic sequence, local images, and topic-ticket rendering.
+
+## Future Slice G: Final Strict Release Gate
+
+- [ ] T062 Enable strict published-guide validation.
+- [ ] T063 Prove all current 460 ticket IDs are covered by the guide coverage map.
+- [ ] T064 Prove every ticket appears in at least one and no more than two categories.
+- [ ] T065 Prove every ticket assigned to two categories physically renders as a full ticket block in both category sections.
+- [ ] T066 Prove every topic page has concise Russian material, Spanish words from ticket wording, ticket explanations, and trap notes.
+- [ ] T067 Prove every guide claim requiring official verification maps to source-trace entries and archived official documents/materials.
+- [ ] T068 Run final exact-text archive validation comparing every official-documents manifest entry against official primary sources, including entries not currently cited by published guide claims and all archived source types.
+- [ ] T069 Run final currentness/effective-status archive validation proving every official-documents manifest entry has checked status evidence and source-type-appropriate metadata at validation time, including entries not currently cited by published guide claims.
+- [ ] T070 Prove every source-traced current guide claim cites only official document/material entries that are current, in force, or otherwise currently valid for the relevant source type at validation time, including laws, rules, formal requirements, manuals/study materials, licensing requirements/pages, road-safety/procedure materials, traffic-sign materials, and any other cited official source type.
+- [ ] T071 Update durable docs for final paths, guide behavior, official-documents governance, and validation evidence.
+- [ ] T072 Run `pnpm run validate:content`.
+- [ ] T073 Run `pnpm run test`.
+- [ ] T074 Run `pnpm run build`.
+- [ ] T075 Run `pnpm run test:e2e`.
+- [ ] T076 Run `pnpm run preflight`.
+- [ ] T077 Run `git diff --check`.
+- [ ] T078 Record final verification evidence for every acceptance criterion.
+
+## PR Readiness
+
+- [ ] T079 Confirm each future implementation PR has a single assigned slice, branch, and isolated worktree.
+- [ ] T080 Confirm each future implementation PR updates this process memory where relevant.
+- [ ] T081 Confirm every Implementation Agent feedback item has Architect disposition before completion.
+- [ ] T082 Confirm no blocking review findings remain.
+- [ ] T083 Confirm required checks are green after push/PR.
+- [ ] T084 Confirm the PR has no unresolved merge conflicts.
+- [ ] T085 Leave only final human approval or merge mechanics remaining.
+
+## Process Memory
+
+### Dead Ends
+
+- None during Architect planning.
+
+### Decisions
+
+- This planning PR creates only `spec.md`, `plan.md`, and `tasks.md`; it does not download official documents, create `content/official-documents/`, write guide content, update product code, or edit durable docs.
+- Use the current local fallback question file as the guide coverage baseline. Architect orientation confirmed 460 questions in `content/questions/caba-b.unofficial-fallback.questions.json`.
+- Keep the topic guide separate from the existing condensed guide so implementation can progress without breaking the current CABA/RF guide surface.
+- Prefer structured JSON for guide content, coverage, and source trace because current app content and validation already use JSON.
+- Require a governed official-documents section, preferably `content/official-documents/`, with local `AGENTS.md`, manifest, Markdown documents, raw originals where needed, and validation evidence.
+- Treat exact-text validation and currentness/effective-status validation as final dedicated whole-archive tasks for every official-documents manifest entry, separate from topic content writing; source-traced current guide claims then have a separate final gate requiring only current, in-force, or otherwise currently valid entries for the relevant source type.
+- Allow draft guide state for intermediate PRs so small topic slices can merge without falsely publishing an incomplete 460-ticket guide.
+- Require final published-guide validation to prove all current 460 IDs are covered, every ID has one or two categories, and repeated tickets physically render in every assigned category.
+
+### Known Issues
+
+- The current question set remains `unofficial_b_fallback`; this feature must not imply an official or complete GCBA category B question bank.
+- Official source candidates listed in `feature-request.md` are intake-time candidates, not final currentness proof. Future implementation must recheck official URLs and legal/source status at the time of source use.
+- Exact Markdown preservation of PDFs, tables, annexes, images, or legal formatting may have conversion limits. Future archive tasks must record limitations and keep raw evidence.
+- A ticket answer may conflict with current official sources. Such conflicts require process-memory recording and Architect disposition before publication.
+- Full guide completion will require many topic content slices; no single future agent should own all prose and all 460 answer explanations.
+
+### Verification Evidence
+
+- Local branch/worktree orientation: `git status --short --branch` reported `## codex/006-topic-study-guide-intake` with untracked `specs/006-topic-study-guide/`.
+- Required memory read: `AGENTS.md`, `.specify/memory/constitution.md`, `docs_project/README.md`, `docs_project/project-idea.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, `docs_project/screens/learning-and-exam-flows.md`, `docs/specify/README.md`, and `specs/006-topic-study-guide/feature-request.md`.
+- Current content shape inspected: question file, existing condensed guide, vocabulary, explanations, source registry, production eligibility policy, `scripts/validate-content.mjs`, `src/data/content.ts`, and current `GuideView`.
+- Ticket baseline evidence: a read-only Node command loaded `content/questions/caba-b.unofficial-fallback.questions.json` and printed `count: 460`.
+- Planning scope evidence: files intentionally changed by Architect are limited to `specs/006-topic-study-guide/spec.md`, `specs/006-topic-study-guide/plan.md`, and `specs/006-topic-study-guide/tasks.md`.
+- Planning preflight evidence: `pnpm run preflight` passed after Architect artifact creation; feature-memory gate found no configured product paths changed, repository baseline passed, content validation passed for 460 category B fallback questions and 276 local image references, 31 unit tests passed, production build passed, service worker generation reported 280 cached assets, and 8 Playwright e2e tests passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Markdown hygiene evidence: `rg -n "[ \\t]+$" specs/006-topic-study-guide/spec.md specs/006-topic-study-guide/plan.md specs/006-topic-study-guide/tasks.md || true` returned no matches.
+- Review-finding evidence: targeted search found no remaining prior exact final-validation wording that limited archive exact-text/currentness gates to documents used by current guide claims; targeted search confirmed new official-documents manifest-entry and source-traced current-claim wording in `spec.md`, `plan.md`, and `tasks.md`; trailing whitespace search returned no matches; `git diff --check -- specs/006-topic-study-guide/spec.md specs/006-topic-study-guide/plan.md specs/006-topic-study-guide/tasks.md` passed.
+
+### Implementation Agent Feedback
+
+- None yet. Future Implementation Agents must record feedback here before handoff.
+
+### Architect Dispositions
+
+- Native Codex review finding `P2 Include manuals in final currentness validation` on PR #10 was accepted in a prior Architect pass. Disposition: broaden final exact-text/currentness validation requirements across `spec.md`, `plan.md`, and this backlog so they apply to every official document/material source type used by source-traced current guide claims, including manuals/study materials, licensing requirements/pages, road-safety/procedure materials, traffic-sign materials, laws, rules, formal requirements, and any other cited official source type. The later whole-archive finding below supersedes the final-gate scope.
+- Native Codex review finding `P2 Validate the whole official-document archive` on PR #10 was accepted. Disposition: update `spec.md`, `plan.md`, and this backlog so final official-documents archive validation covers every manifest entry, including entries not currently cited by published guide claims, while separately requiring source-traced current guide claims to cite only entries that are current, in force, or otherwise currently valid for the relevant source type.
