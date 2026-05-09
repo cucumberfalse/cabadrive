@@ -1018,6 +1018,66 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current",
       "notes": "Supports only generalized channelization/speed-reduction framing. The exact b-fallback-320 answer phrase about reducing turning radius remains ticket-specific because the archived source search did not expose that formula as a general official claim."
+    },
+    {
+      "id": "lane-choice-lane-change-warning-and-position",
+      "topicId": "lane-choice-and-lane-changes",
+      "claimId": "claim-lane-change-warning-and-lane-position",
+      "claimSummaryRu": "CABA and national law support staying centered in the same lane on multilane roads, advance signaling for lane changes, and warning non-predictable maneuvers without creating risk or affecting traffic flow.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.1 Deber de precaución",
+        "Ley 2148 6.1.8 Arterias multicarriles",
+        "Ley 2148 6.1.9 Autopistas y otras vías rápidas",
+        "Ley 2148 6.6.1 Obligación",
+        "Ley 24.449 Artículo 40 Requisitos para circular",
+        "Ley 24.449 Artículo 45 Vía multicarriles"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports the general maneuver, signaling and lane-positioning material. The specific fallback-ticket priority answer for the vehicle already in the target lane remains ticket-specific rather than broadened into a separately quoted official priority rule."
+    },
+    {
+      "id": "lane-choice-exclusive-lanes-and-markings",
+      "topicId": "lane-choice-and-lane-changes",
+      "claimId": "claim-exclusive-lanes-and-markings",
+      "claimSummaryRu": "Anexo L and traffic-law text support exclusive lanes as marked/signaled lanes reserved for determined vehicle types, and ordinary circulation must respect exclusive lanes and their operating rules.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Anexo L H.2 Línea de carril",
+        "Anexo L R.18 Circulación exclusiva",
+        "Ley 2148 2.3.2 Obligación de los usuarios",
+        "Ley 2148 6.1.6 Comportamiento durante la circulación",
+        "Ley 24.449 Artículo 40 Requisitos para circular"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports b-fallback-302 and compact exclusive-lane guidance for b-fallback-223. The exact schedule shown in the fallback image is treated as ticket-specific visual context."
+    },
+    {
+      "id": "lane-choice-acceleration-deceleration-and-exit",
+      "topicId": "lane-choice-and-lane-changes",
+      "claimId": "claim-acceleration-deceleration-and-autopista-exit",
+      "claimSummaryRu": "CABA and national law support acceleration-lane incorporation without obstructing traffic, deceleration/right-lane positioning for exiting, and first-exit abandonment for vehicles with accident/mechanical trouble or remolque context.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.7 Obligaciones de los conductores que se incorporen o egresen de la circulación",
+        "Ley 2148 6.1.9 Autopistas y otras vías rápidas",
+        "Ley 24.449 Artículo 46 Autopistas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-336 and b-fallback-358 without adding a broader mechanical-breakdown lesson beyond lane choice and exiting the autopista."
     }
   ]
 }
