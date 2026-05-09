@@ -98,9 +98,9 @@
       "titleRu": "Полосы, островки и направляющая разметка",
       "categoryId": "signs",
       "splitCriteria": "Carriles, isletas, marcas canalizadoras, carril exclusivo/aceleración/sobrepaso и разметка, организующая поток.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-lane-channelization-markings"
     },
     {
       "topicId": "pedestrian-and-school-road-markings",
@@ -498,7 +498,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-lane-channelization-markings",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "lane-and-channelization-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-013",
@@ -2110,9 +2114,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1+E-lane-channelization-markings"
     },
     {
       "questionId": "b-fallback-177",
@@ -2145,7 +2149,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-lane-channelization-markings",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "lane-and-channelization-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-180",
@@ -2511,7 +2519,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-lane-channelization-markings",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "lane-and-channelization-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-220",
@@ -2550,10 +2562,10 @@
       ],
       "placementPhases": {
         "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       },
       "phase": "planned",
-      "ownerSlice": "C+E13"
+      "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
       "questionId": "b-fallback-224",
@@ -2586,7 +2598,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-lane-channelization-markings",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "lane-and-channelization-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-228",
@@ -3195,7 +3211,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-lane-channelization-markings",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "lane-and-channelization-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-292",
@@ -3271,7 +3291,7 @@
       "ownerSlice": "C+E14",
       "placementPhases": {
         "public-transport-and-exclusive-lanes": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       }
     },
     {
@@ -3306,10 +3326,10 @@
       ],
       "placementPhases": {
         "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       },
       "phase": "planned",
-      "ownerSlice": "C+E13"
+      "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
       "questionId": "b-fallback-303",
@@ -3538,10 +3558,10 @@
       ],
       "placementPhases": {
         "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       },
       "phase": "planned",
-      "ownerSlice": "C+E13"
+      "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
       "questionId": "b-fallback-326",
@@ -3641,10 +3661,10 @@
       ],
       "placementPhases": {
         "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       },
       "phase": "planned",
-      "ownerSlice": "C+E13"
+      "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
       "questionId": "b-fallback-337",
@@ -3839,7 +3859,7 @@
       "ownerSlice": "C+E17",
       "placementPhases": {
         "parking-prohibitions-and-signed-zones": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       }
     },
     {
@@ -3863,10 +3883,10 @@
       ],
       "placementPhases": {
         "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       },
       "phase": "planned",
-      "ownerSlice": "C+E13"
+      "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
       "questionId": "b-fallback-359",
@@ -3875,7 +3895,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-lane-channelization-markings",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "lane-and-channelization-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-360",
@@ -3895,8 +3919,8 @@
       "topicIds": [
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-lane-channelization-markings"
     },
     {
       "questionId": "b-fallback-362",
@@ -3907,7 +3931,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "lane-and-channelization-markings": "planned",
+        "lane-and-channelization-markings": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },
@@ -4299,7 +4323,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-lane-channelization-markings",
+      "placementPhases": {
+        "overtaking-and-passing": "planned",
+        "lane-and-channelization-markings": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-401",
@@ -4671,7 +4699,7 @@
       "ownerSlice": "C+E14",
       "placementPhases": {
         "public-transport-and-exclusive-lanes": "content_ready",
-        "lane-and-channelization-markings": "planned"
+        "lane-and-channelization-markings": "content_ready"
       }
     },
     {

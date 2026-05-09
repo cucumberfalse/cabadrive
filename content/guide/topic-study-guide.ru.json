@@ -13415,6 +13415,635 @@
       ]
     },
     {
+      "id": "lane-and-channelization-markings",
+      "slug": "lane-and-channelization-markings",
+      "status": "draft",
+      "titleRu": "Полосы, островки и направляющая разметка",
+      "summaryRu": "Блок про carriles, carriles exclusivos, carril de sobrepaso/aceleración/desaceleración, isletas, marcas canalizadoras, временные orange devices и запреты менять полосу.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Здесь разметка не просто делит асфальт: она показывает, где поток должен идти по carril, где carril reservado/exclusivo, где можно или нельзя сменить полосу, а где поверхность вообще не является полосой.",
+        "Carril в билетах - продольная demarcated band на calzada. На multicarril и autopista водитель должен держаться своего carril y por su centro; left/overtaking lane не превращается в постоянную полосу для cruising, если справа есть доступная полоса.",
+        "Sobrepaso в Ley 2148 - это обгон/опережение с cambio de carril. Поэтому билеты про carril de sobrepaso, return al carril derecho и ayuda para volver вправо проверяют не скорость сама по себе, а организацию полос и безопасный возврат в поток.",
+        "Carriles exclusivos читаются по разметке, знаку и horario. Если знак или señal horizontal резервирует полосу для colectivo/Metrobús, частный автомобиль не может использовать ее как запасную полосу для sobrepaso; билет `b-fallback-223` отдельно спрашивает про turning outside the restriction window.",
+        "Isleta и marcas canalizadoras - это заштрихованные или выделенные зоны, которые направляют поток и показывают no-circulation area. Их нельзя traspasar или circular sobre ellas, даже если физически машина могла бы проехать.",
+        "R.10 Prohibición de Cambiar de Carril и соответствующая horizontal marking означают: в зоне нужно mantener el mismo carril. Это не то же самое, что no girar a la derecha или prohibition de adelantar.",
+        "Orange/transitory devices в билетах воспринимайте как временную canalización: они ведут поток через obra/desvío/опасную зону. В `b-fallback-291` точный ответ про línea imaginaria kept ticket-specific, но общий смысл тот же - через временную линию не переезжают."
+      ],
+      "practicalReasoningRu": [
+        "Разметка полос делает поток читаемым: каждый водитель заранее понимает, кто остается в своей полосе, кто выходит на sobrepaso, а кто готовится к salida или incorporación.",
+        "Островки и channelization zones убирают конфликтные траектории. Если разрешить ехать по ним, машины начнут выбирать разные линии движения в одном месте, и остальные не смогут предсказать маневр.",
+        "Exclusive lanes работают только когда обычные автомобили не используют их временно. Даже короткий sobrepaso ломает предсказуемость для colectivo/Metrobús и для водителей рядом."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-carril-transito-lento",
+          "termEs": "carril destinado al tránsito lento",
+          "translationRu": "полоса для медленного движения",
+          "sourceQuestionIds": [
+            "b-fallback-012"
+          ]
+        },
+        {
+          "id": "term-sobrepaso-channelization",
+          "termEs": "sobrepaso",
+          "translationRu": "обгон/опережение в CABA-контексте, часто с cambio de carril",
+          "sourceQuestionIds": [
+            "b-fallback-176",
+            "b-fallback-219",
+            "b-fallback-227",
+            "b-fallback-438"
+          ]
+        },
+        {
+          "id": "term-cambiando-de-carril",
+          "termEs": "cambiando de carril",
+          "translationRu": "меняя полосу",
+          "sourceQuestionIds": [
+            "b-fallback-176"
+          ]
+        },
+        {
+          "id": "term-carril-derecho-channelization",
+          "termEs": "carril derecho",
+          "translationRu": "правая полоса",
+          "sourceQuestionIds": [
+            "b-fallback-179",
+            "b-fallback-358"
+          ]
+        },
+        {
+          "id": "term-carril-de-sobrepaso",
+          "termEs": "carril de sobrepaso",
+          "translationRu": "полоса для sobrepaso",
+          "sourceQuestionIds": [
+            "b-fallback-219",
+            "b-fallback-400"
+          ]
+        },
+        {
+          "id": "term-carriles-exclusivos-channelization",
+          "termEs": "carriles exclusivos",
+          "translationRu": "выделенные/эксклюзивные полосы",
+          "sourceQuestionIds": [
+            "b-fallback-223",
+            "b-fallback-302"
+          ]
+        },
+        {
+          "id": "term-horario-restriccion",
+          "termEs": "horario de restricción",
+          "translationRu": "время действия ограничения",
+          "sourceQuestionIds": [
+            "b-fallback-223"
+          ]
+        },
+        {
+          "id": "term-senal-horizontal-channelization",
+          "termEs": "señal horizontal",
+          "translationRu": "горизонтальная сигнализация/разметка",
+          "sourceQuestionIds": [
+            "b-fallback-227",
+            "b-fallback-298"
+          ]
+        },
+        {
+          "id": "term-senales-transitorias-naranjas",
+          "termEs": "señales transitorias naranjas",
+          "translationRu": "оранжевые временные сигналы",
+          "sourceQuestionIds": [
+            "b-fallback-291"
+          ]
+        },
+        {
+          "id": "term-linea-imaginaria",
+          "termEs": "línea imaginaria",
+          "translationRu": "воображаемая линия",
+          "sourceQuestionIds": [
+            "b-fallback-291"
+          ]
+        },
+        {
+          "id": "term-bandas-longitudinales-demarcadas",
+          "termEs": "Bandas longitudinales demarcadas en la calzada",
+          "translationRu": "продольные полосы, размеченные на проезжей части",
+          "sourceQuestionIds": [
+            "b-fallback-302"
+          ]
+        },
+        {
+          "id": "term-carril-de-aceleracion",
+          "termEs": "carril de aceleración",
+          "translationRu": "полоса разгона/въезда на autopista",
+          "sourceQuestionIds": [
+            "b-fallback-336"
+          ]
+        },
+        {
+          "id": "term-isleta-channelization",
+          "termEs": "isleta",
+          "translationRu": "островок/канализирующая зона",
+          "sourceQuestionIds": [
+            "b-fallback-356"
+          ]
+        },
+        {
+          "id": "term-marcas-canalizadoras",
+          "termEs": "marcas canalizadoras de tránsito",
+          "translationRu": "канализирующая разметка движения",
+          "sourceQuestionIds": [
+            "b-fallback-356"
+          ]
+        },
+        {
+          "id": "term-prohibicion-cambiar-carril",
+          "termEs": "Prohibición de Cambiar de Carril",
+          "translationRu": "запрет менять полосу",
+          "sourceQuestionIds": [
+            "b-fallback-359"
+          ]
+        },
+        {
+          "id": "term-demarcacion-amarilla-channelization",
+          "termEs": "demarcación amarilla",
+          "translationRu": "желтая разметка",
+          "sourceQuestionIds": [
+            "b-fallback-361"
+          ]
+        },
+        {
+          "id": "term-demarcacion-horizontal-channelization",
+          "termEs": "demarcación horizontal",
+          "translationRu": "горизонтальная разметка",
+          "sourceQuestionIds": [
+            "b-fallback-362"
+          ]
+        },
+        {
+          "id": "term-carril-exclusivo-metrobus",
+          "termEs": "carril exclusivo del Metrobús",
+          "translationRu": "выделенная полоса Metrobús",
+          "sourceQuestionIds": [
+            "b-fallback-438"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-012",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-012-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: фраза no puede abandonarlo слишком абсолютна. Полоса для tránsito lento не означает пожизненно оставаться в ней, если нужен разрешенный sobrepaso и маневр можно сделать безопасно."
+            },
+            {
+              "answerId": "b-fallback-012-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: утверждение falso. В рамках билета водитель из carril destinado al tránsito lento может покинуть его для sobrepasar a otro vehículo que transita más lento, если разметка/сигналы и безопасность маневра это позволяют."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-176",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-176-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sin necesidad de cambiar de carril описывает другой термин в локальной паре понятий. Для pregunta про sobrepaso Ley 2148 ключевой элемент - cambio de carril."
+            },
+            {
+              "answerId": "b-fallback-176-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: sobrepaso - это sobrepasar la línea de otro vehículo en circulación cambiando de carril. Поэтому ticket относится и к полосам, и к будущей теме overtaking."
+            },
+            {
+              "answerId": "b-fallback-176-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Exceder el límite de velocidad máxima - это нарушение скорости, а не значение слова sobrepaso."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-179",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-179-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Permanecer en el carril ocupado независимо от потока неверно: после маневра логика полос требует вернуться вправо, если правый carril свободен."
+            },
+            {
+              "answerId": "b-fallback-179-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: после adelantamiento надо incorporarse al carril derecho, si éste se encuentra libre, de forma gradual y sin obstaculizar la fluidez de tránsito."
+            },
+            {
+              "answerId": "b-fallback-179-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Возврат вправо не должен заставлять другой автомобиль менять скорость. Маневр должен быть gradual и без помех."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-219",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-219-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Circular por él cuando a la derecha existe otro carril disponible превращает carril de sobrepaso в обычную полосу движения. Это не назначение такой полосы."
+            },
+            {
+              "answerId": "b-fallback-219-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Даже скорость máxima permitida не дает права постоянно занимать carril de sobrepaso, если он нужен для maneuver, а справа есть доступная полоса."
+            },
+            {
+              "answerId": "b-fallback-219-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: carril de sobrepaso sirve para realizar maniobras de sobrepaso. После маневра логика билетов ведет к возврату в правую полосу, когда это возможно."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-223",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-223-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Señalizar con anticipación недостаточно: если для giro надо invadir carriles exclusivos, нужно учитывать режим этой выделенной полосы."
+            },
+            {
+              "answerId": "b-fallback-223-a2",
+              "verdict": "incorrect",
+              "explanationRu": "No слишком абсолютен для этой image question. Билет добавляет horario de restricción: вне этого времени правильная оценка может быть иной."
+            },
+            {
+              "answerId": "b-fallback-223-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: girar можно sólo si lo realiza fuera del horario de restricción de los carriles exclusivos. Внутри restricted hours вторжение в carril exclusivo запрещает маневр."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b30.jpg"
+        },
+        {
+          "questionId": "b-fallback-227",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-227-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: показанная señal horizontal ordena la circulación de carriles и в этом ticket-specific контексте indica que se puede sobrepasar a otro vehículo."
+            },
+            {
+              "answerId": "b-fallback-227-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo cuando la vía tiene dos carriles por sentido добавляет условие, которого нет в правильном смысле показанной горизонтальной señal."
+            },
+            {
+              "answerId": "b-fallback-227-a3",
+              "verdict": "incorrect",
+              "explanationRu": "No/prohibición de sobrepaso неверно для этой картинки: билет проверяет разрешающую/организующую lane marking, а не запрет."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b120.jpg"
+        },
+        {
+          "questionId": "b-fallback-291",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-291-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Refuerzan líneas discontinuas звучит похоже на разметку полос, но на image речь о temporary orange devices, которые задают отдельную временную границу."
+            },
+            {
+              "answerId": "b-fallback-291-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Nada/ilegal неверно: señales transitorias naranjas как раз используются для временной canalización и предупреждения в зоне работ/опасности."
+            },
+            {
+              "answerId": "b-fallback-291-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: они указывают prohibición de sobrepasar la línea imaginaria que las une. То есть нельзя пересекать временно созданную линию движения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b71.jpg"
+        },
+        {
+          "questionId": "b-fallback-298",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-298-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: horizontal marking на calzada указывает carril exclusivo de colectivo de pasajeros, то есть полосу, зарезервированную для указанного транспорта."
+            },
+            {
+              "answerId": "b-fallback-298-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce exclusivo de vehículos de emergencia неверно: изображенная разметка не про emergency crossing, а про exclusive passenger-bus lane."
+            },
+            {
+              "answerId": "b-fallback-298-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ceda el paso - другой тип сигнала. Здесь знак/разметка на pavement обозначает reserved lane, а не priority-yield command."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b29.jpg"
+        },
+        {
+          "questionId": "b-fallback-302",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-302-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vías con un único sentido de circulación описывает направление движения, но не exclusive lane. У carril exclusivo ключ не sentido único, а reserved use."
+            },
+            {
+              "answerId": "b-fallback-302-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: carriles exclusivos - это bandas longitudinales demarcadas en la calzada, destinadas a la circulación de determinados vehículos."
+            },
+            {
+              "answerId": "b-fallback-302-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambulancias/bomberos/policiales - слишком узкая и одновременно неточная формула. Carril exclusivo определяется конкретно указанными vehicles, а не всегда emergency vehicles."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-325",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-325-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Aumentar la velocidad блокирует возврат автомобиля A в правую полосу и создает новый конфликт вместо решения peligro ahead."
+            },
+            {
+              "answerId": "b-fallback-325-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: B должен reducir la velocidad para facilitarle el retorno al carril. Это lane-cooperation logic: не ускоряться в закрывающуюся gap."
+            },
+            {
+              "answerId": "b-fallback-325-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Bocina/luces не помогают безопасно завершить возврат в carril derecho. Билет ожидает снижение скорости, а не конфликтный сигнал."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b116.jpg"
+        },
+        {
+          "questionId": "b-fallback-336",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-336-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: carril de aceleración - это carril de incorporación a una autopista, где водитель набирает скорость и входит в поток без entorpecerlo."
+            },
+            {
+              "answerId": "b-fallback-336-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Carril derecho de una autopista может использоваться для движения/приближения к salida, но это не определение carril de aceleración."
+            },
+            {
+              "answerId": "b-fallback-336-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Carril izquierdo связан с sobrepaso/adelantamiento, а не с incorporación через acceleration lane."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-356",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-356-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Rotondas - это circular intersection/roundabout, а не значение isleta в horizontal signaling question."
+            },
+            {
+              "answerId": "b-fallback-356-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Espacios reservados para estacionamiento exclusivo de motovehículos - парковочный контекст. Isleta в этом билете не parking area."
+            },
+            {
+              "answerId": "b-fallback-356-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: isletas - это marcas canalizadoras de tránsito. По ним нельзя traspasar или circular sobre ellas."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-358",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-358-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Carril de desaceleración не является полосой для продолжительного движения slow vehicles. Он нужен для egresar/salida, а не чтобы ехать по autopista с falla grave."
+            },
+            {
+              "answerId": "b-fallback-358-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-ticket: circular por el carril derecho y en la próxima salida abandonar la autopista para llamar al auxilio. Обобщение про vehículos remolcados уже ограничено в соседнем topic; здесь ответ остается ticket-specific."
+            },
+            {
+              "answerId": "b-fallback-358-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Continuar a baja velocidad manteniéndose en cualquier carril плохо: это мешает flow и оставляет неисправный автомобиль на autopista дольше, чем нужно."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-359",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-359-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de Girar a la Derecha - другой знак. Здесь символ связан с line/carril и запретом менять lane."
+            },
+            {
+              "answerId": "b-fallback-359-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: это Prohibición de Cambiar de Carril. В зоне такого знака водитель должен mantener el mismo carril."
+            },
+            {
+              "answerId": "b-fallback-359-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de Adelantar похожа по смыслу ограничения маневра, но это не exact sign in the image. Билет спрашивает именно lane-change prohibition."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b259.jpg"
+        },
+        {
+          "questionId": "b-fallback-361",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-361-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Únicamente para dividir carriles слишком узко: показанная demarcación amarilla не просто делит lanes, а запрещает ее пересечение/движение по ней."
+            },
+            {
+              "answerId": "b-fallback-361-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: для ambos sentidos de circulación demarcación amarilla indica que no debe ser traspasada ni se puede circular sobre ella."
+            },
+            {
+              "answerId": "b-fallback-361-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo pueden circular vehículos particulares неверно: желтая marking не резервирует полосу для private vehicles."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b77.jpg"
+        },
+        {
+          "questionId": "b-fallback-362",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-362-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: такая demarcación horizontal/cordón amarillo означает sólo prohibido estacionar, но detenciones могут выполняться."
+            },
+            {
+              "answerId": "b-fallback-362-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Reserved parking for passenger-transport vehicles - другой режим. Желтая marking в этом билете не создает exclusive parking place."
+            },
+            {
+              "answerId": "b-fallback-362-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibido estacionar o detenerse corresponded бы red/no stopping logic. Здесь запрет касается estacionar, а detención допускается."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b81.jpg"
+        },
+        {
+          "questionId": "b-fallback-400",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-400-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Cualquiera de ellos неверно: carril de sobrepaso не может быть любым lane по выбору водителя."
+            },
+            {
+              "answerId": "b-fallback-400-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по image ticket: carril de sobrepaso - только carril señalado como A, то есть lane, предназначенный для maneuver, а не для постоянного движения в любом месте."
+            },
+            {
+              "answerId": "b-fallback-400-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Carril F на изображении не является called carril de sobrepaso. Это distractor на чтение lane labels."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b115.jpg"
+        },
+        {
+          "questionId": "b-fallback-438",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-438-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: нельзя использовать carril exclusivo del Metrobús для sobrepaso, потому что запрещено circular de manera permanente o transitoria por dicho carril без authorization."
+            },
+            {
+              "answerId": "b-fallback-438-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Discontinuous line on the outer side не делает Metrobús lane доступной для обычного sobrepaso. Exclusive-use rule важнее этой ловушки."
+            },
+            {
+              "answerId": "b-fallback-438-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Маневр не является exception сам по себе. Короткое использование carril exclusivo все равно считается prohibited transitory circulation."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-lane-marking-vs-overtake-topic",
+          "textRu": "Sobrepaso здесь изучается только через lane/marking angle. Не переносите из этих билетов broad overtaking rules в соседний topic, пока он planned.",
+          "sourceQuestionIds": [
+            "b-fallback-012",
+            "b-fallback-176",
+            "b-fallback-179",
+            "b-fallback-219",
+            "b-fallback-400"
+          ]
+        },
+        {
+          "id": "trap-exclusive-lane-not-shortcut",
+          "textRu": "Carril exclusivo не становится разрешенным для короткого sobrepaso. `Transitoria` в `b-fallback-438` - ключевая ловушка.",
+          "sourceQuestionIds": [
+            "b-fallback-298",
+            "b-fallback-302",
+            "b-fallback-438"
+          ]
+        },
+        {
+          "id": "trap-time-window-exclusive-lane",
+          "textRu": "В `b-fallback-223` правильный answer зависит от horario de restricción. Absolute `sí` и absolute `no` оба выглядят подозрительно.",
+          "sourceQuestionIds": [
+            "b-fallback-223"
+          ]
+        },
+        {
+          "id": "trap-isleta-not-parking-or-roundabout",
+          "textRu": "Isleta в horizontal signaling ticket - marcas canalizadoras, а не rotonda и не parking reservado.",
+          "sourceQuestionIds": [
+            "b-fallback-356"
+          ]
+        },
+        {
+          "id": "trap-orange-temporary-line",
+          "textRu": "Orange temporary devices create a temporary boundary/guide. В `b-fallback-291` надо выбрать línea imaginaria, а не illegal/no meaning.",
+          "sourceQuestionIds": [
+            "b-fallback-291"
+          ]
+        },
+        {
+          "id": "trap-no-change-lane-vs-no-overtake",
+          "textRu": "Prohibición de Cambiar de Carril не то же самое, что Prohibición de Adelantar или no girar. Смотрите на symbol и wording.",
+          "sourceQuestionIds": [
+            "b-fallback-359"
+          ]
+        },
+        {
+          "id": "trap-yellow-cordon-vs-red-cordon",
+          "textRu": "Yellow marking/cordón в `b-fallback-362` запрещает estacionar, но не всякую detención; red/no stopping logic был бы другим ответом.",
+          "sourceQuestionIds": [
+            "b-fallback-362"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-lane-horizontal-markings",
+          "textRu": "H.2 lineas de carril направляют потоки одного направления; exclusive/preferential lane markings reserve or prioritize lanes for specified vehicles, and marked carriles have legal effect when demarcated.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "lane-channelization-lane-horizontal-markings"
+        },
+        {
+          "id": "claim-caba-lane-use-and-autopistas",
+          "textRu": "CABA lane-use rules require staying centered in a lane, warning lane changes, using left lanes mainly for sobrepaso/adelantamiento, returning right when appropriate, and using acceleration/deceleration/right lanes for autopista incorporation or exit.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "lane-channelization-caba-lane-use-and-autopistas"
+        },
+        {
+          "id": "claim-exclusive-lanes-and-metrobus",
+          "textRu": "Carriles exclusivos, including Metrobus lanes, are reserved for authorized/specified vehicles; the guide treats exact emergency exceptions and schedule-image details only at ticket level.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "lane-channelization-exclusive-lanes-and-metrobus"
+        },
+        {
+          "id": "claim-isletas-channelizing-marks",
+          "textRu": "H.8 isletas/marcas canalizadoras no deben trasponerse ni circularse sobre ellas; they guide traffic laterally around obstacles or ingress/egress areas.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "lane-channelization-isletas-channelizing-marks"
+        },
+        {
+          "id": "claim-r10-temporary-channelization-and-yellow-cordon",
+          "textRu": "R.10 requires maintaining the same lane in a no-lane-change zone; temporary orange devices channelize traffic in work/danger zones; H.15 yellow cordon prohibits parking while allowing limited detentions.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "lane-channelization-r10-temporary-and-cordon"
+        }
+      ]
+    },
+    {
       "id": "lane-choice-and-lane-changes",
       "slug": "lane-choice-and-lane-changes",
       "status": "draft",

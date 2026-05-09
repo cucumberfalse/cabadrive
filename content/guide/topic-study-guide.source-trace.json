@@ -1111,6 +1111,107 @@
       "notes": "Supports only generalized channelization/speed-reduction framing. The exact b-fallback-320 answer phrase about reducing turning radius remains ticket-specific because the archived source search did not expose that formula as a general official claim."
     },
     {
+      "id": "lane-channelization-lane-horizontal-markings",
+      "topicId": "lane-and-channelization-markings",
+      "claimId": "claim-lane-horizontal-markings",
+      "claimSummaryRu": "Anexo L H.2 supports lane markings for same-direction traffic, exclusive lane markings, preferential lane markings, and the rule that carriles have effect when demarcated.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo VI Señalamiento horizontal",
+        "H.2 Línea de carril",
+        "R.18 Circulación exclusiva"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports lane/channelization topic prose and b-fallback-298/302. Exact image readings remain tied to canonical fallback tickets."
+    },
+    {
+      "id": "lane-channelization-caba-lane-use-and-autopistas",
+      "topicId": "lane-and-channelization-markings",
+      "claimId": "claim-caba-lane-use-and-autopistas",
+      "claimSummaryRu": "Ley 2148 supports staying in/centered in one lane, advance lane-change warning, left-lane use for sobrepaso/adelantamiento, right-lane return, acceleration lane incorporation, and autopista exit via deceleration/right lane.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones: Carril, Sobrepaso",
+        "Ley 2148 6.1.6 Comportamiento durante la circulación",
+        "Ley 2148 6.1.7 Obligaciones de los conductores que se incorporen o egresen de la circulación",
+        "Ley 2148 6.1.8 Arterias multicarriles",
+        "Ley 2148 6.1.9 Autopistas y otras vías rápidas",
+        "Ley 2148 6.1.12 Adelantamientos y sobrepasos",
+        "Ley 24.449 Artículo 42 Adelantamiento",
+        "Ley 24.449 Artículo 45 Vía multicarriles"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-012, 176, 179, 219, 325, 336, 358 and 400 only from the lane-use/channelization angle. Overtaking-and-passing placements stay planned and exact broad overtaking instruction remains for that future slice."
+    },
+    {
+      "id": "lane-channelization-exclusive-lanes-and-metrobus",
+      "topicId": "lane-and-channelization-markings",
+      "claimId": "claim-exclusive-lanes-and-metrobus",
+      "claimSummaryRu": "Existing archived sources support exclusive lanes for specified/authorized vehicles and CABA Metrobus lane use restrictions.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Anexo L H.2 Línea de carril",
+        "Anexo L R.18 Circulación exclusiva",
+        "Ley 2148 6.1.6 Comportamiento durante la circulación",
+        "Ley 2148 15.1.5 Traza",
+        "Ley 2148 Régimen de faltas: carril exclusivo de Metrobus",
+        "Ley 24.449 Artículo 22 Sistema uniforme de señalamiento"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports b-fallback-223, 298, 302 and 438. Exact schedule-window answer in b-fallback-223 and any emergency exception wording remain ticket-specific or delegated to neighboring topics."
+    },
+    {
+      "id": "lane-channelization-isletas-channelizing-marks",
+      "topicId": "lane-and-channelization-markings",
+      "claimId": "claim-isletas-channelizing-marks",
+      "claimSummaryRu": "Anexo L H.8 defines channelizing marks/islets as no-cross/no-drive-over areas that warn of obstacles and laterally channel traffic.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "H.8 Marcas canalizadoras del tránsito (e isletas)",
+        "H.14 Separador de tránsito",
+        "H.17 Delineadores"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports b-fallback-356 and b-fallback-361 channelization/isleta framing. Exact lane-label image answers remain fallback-ticket specific."
+    },
+    {
+      "id": "lane-channelization-r10-temporary-and-cordon",
+      "topicId": "lane-and-channelization-markings",
+      "claimId": "claim-r10-temporary-channelization-and-yellow-cordon",
+      "claimSummaryRu": "Anexo L R.10 supports no-lane-change signs/markings; the transitory-signal section supports orange temporary channelization devices; H.15 supports yellow cordon parking-only prohibition.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "R.10 Prohibición de cambiar de carril",
+        "Capítulo VIII Señalamiento transitorio",
+        "41. Vallas",
+        "42. Conos",
+        "43. Tambores",
+        "45. Marcas horizontales",
+        "47. Barandas canalizadoras de tránsito",
+        "H.15 Cordones pintados"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports b-fallback-291, 359 and 362. The exact b-fallback-291 imaginary-line answer is kept as ticket-specific image wording rather than broadened into a universal orange-device formula."
+    },
+    {
       "id": "lane-choice-lane-change-warning-and-position",
       "topicId": "lane-choice-and-lane-changes",
       "claimId": "claim-lane-change-warning-and-lane-position",
