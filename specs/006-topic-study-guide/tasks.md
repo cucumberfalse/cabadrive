@@ -156,6 +156,7 @@
 - Slice D archived `decreto-779-1995-reglamentario-ley-24449` from the official Argentina.gob.ar `Texto actualizado de la norma` page. Separate Decreto 779 annex bodies were not archived in this small seed because the official page states annexes are consulted separately due to length; topic slices that cite annex-specific text must archive the relevant annex entries.
 - Slice D archived `ley-2148-caba-codigo-transito-transporte` from the official Argentina.gob.ar provincial updated-text page because the user-listed GCBA historical page was reachable but only contained a short/partial Ley 2148 page.
 - Slice D stored clean HTML evidence for each seeded HTML source under `content/official-documents/originals/` even though raw originals are not required for HTML by the validator. The Ley 24.449 InfoLeg HTML was decoded from Windows-1252 to UTF-8 for repository cleanliness.
+- Slice D follow-up clarified that the HTML files under `content/official-documents/originals/` are cleaned HTML evidence, not byte-preserving raw network captures. The files were normalized to remove line-end trailing whitespace so `git diff --check origin/main...HEAD` can protect the PR without a scoped whitespace exception.
 - Slice D skipped the optional GCBA four-wheel manual PDF because the current official PDF is 68.3 MB and would require a careful PDF/OCR/table/image extraction and exact-text evidence path outside this small legal-source seed. Future topic slices may archive it if they need manual-specific claims.
 
 ### Known Issues
@@ -249,6 +250,10 @@
 - Slice D final verification: initial `pnpm run build` failed before `pnpm install` because the isolated worktree had no `node_modules` and `vite` was not installed. `pnpm install` completed with the lockfile already up to date and no tracked dependency-file changes, then build/preflight continued.
 - Slice D final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 69 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 - Slice D final verification: `git diff --check` passed with no output.
+- Slice D narrow follow-up verification: `git diff --check origin/main...HEAD` initially failed on trailing whitespace in the three new cleaned HTML evidence files under `content/official-documents/originals/`. After normalizing line-end whitespace in those files, `git diff --check origin/main...HEAD` passed.
+- Slice D narrow follow-up verification: `node --test tests/official-documents-validation.test.mjs` passed 20 tests.
+- Slice D narrow follow-up verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice D narrow follow-up verification: `pnpm run preflight` passed; repository baseline, content validation, 69 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 
 ### Implementation Agent Feedback
 
