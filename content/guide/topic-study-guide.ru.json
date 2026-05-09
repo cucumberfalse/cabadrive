@@ -8961,6 +8961,781 @@
       ]
     },
     {
+      "id": "right-of-way-basic-intersections",
+      "slug": "right-of-way-basic-intersections",
+      "status": "draft",
+      "titleRu": "Базовый приоритет на перекрестках",
+      "summaryRu": "Блок про prioridad de paso на обычных cruces/encrucijadas, порядок autoridad-señales-normas, правило avenida/calle/derecha, запрет блокировать перекресток и билеты-ловушки со знаками, перестроением, задним ходом и плохой видимостью.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про cruce или intersección сначала ищите, есть ли autoridad, semáforo, señal vertical или demarcación. Только если специального сигнала нет, переходите к общей логике prioridad de paso.",
+        "Нормативная иерархия в CABA простая для экзамена: órdenes de autoridad стоят выше временной/обстоятельственной señalización, затем идут semáforos, vertical signs и demarcación horizontal, а уже потом общие нормы. Поэтому на картинке с агентом, PARE и semáforo правильный ответ - autoridad.",
+        "В encrucijadas sin semáforo CABA сначала сравнивает jerarquía de arterias: avenida важнее calle, calle важнее pasaje. Если дороги одинаковой jerarquía, обычно уступают тому, кто cruza desde su derecha; но исключения и señales могут поменять ответ.",
+        "Не въезжайте в intersección или cruce peatonal, если поток впереди может остановить вас внутри и bloquear la circulación transversal. Даже зеленый свет или общий приоритет не дают права закрыть перекресток.",
+        "PARE означает полную остановку перед encrucijada; CEDA EL PASO означает потерю обычной prioridad без обязательной остановки, если можно безопасно пропустить; PREFERENCIA DE AVANCE на встречной узкой зоне может означать, что именно вы pierde la prioridad de avance.",
+        "Предупреждающие знаки типа encrucijada, bifurcación или incorporación de tránsito lateral не дают приоритет сами по себе. Они предупреждают: снизить скорость, посмотреть порядок потоков и применить правило ситуации.",
+        "Часть билетов здесь смешанная. Cambio de carril решается не правой стороной, а тем, кто уже circula por el carril que se pretende ocupar; sobrepaso около encrucijadas/curvas/puentes/pasos a nivel запрещается как опасная маневра; marcha atrás не используется для исправления пропущенного giro.",
+        "Если картинка показывает туман, ciclovía, знак No estacionar или знак giro obligatorio, это соседние темы, но здесь они полезны как ловушки: не переносите правило prioridad de paso туда, где вопрос спрашивает безопасность, стоянку, направление или маневр."
+      ],
+      "practicalReasoningRu": [
+        "Приоритет делает перекресток предсказуемым: все водители должны понять один и тот же порядок, а не угадывать намерения друг друга.",
+        "Иерархия avenida/calle/pasaje нужна потому, что потоки на более крупных arterias обычно плотнее; правило derecha работает как простой резерв, когда дороги равны.",
+        "Запрет блокировать intersección защищает поперечный поток и пешеходов: лучше подождать перед линией, чем застрять посередине и создать конфликт.",
+        "Знаки PARE, CEDA и PREFERENCIA DE AVANCE заранее снимают спор о том, кто едет первым, особенно там, где геометрия перекрестка или узкого места может ввести в заблуждение."
+      ],
+      "spanishTerms": [
+        {
+          "id": "row-basic-term-prioridad-de-paso",
+          "termEs": "prioridad de paso",
+          "translationRu": "приоритет проезда",
+          "sourceQuestionIds": [
+            "b-fallback-053",
+            "b-fallback-116",
+            "b-fallback-264"
+          ]
+        },
+        {
+          "id": "row-basic-term-cruce-dos-calles",
+          "termEs": "cruce de estas dos calles",
+          "translationRu": "пересечение этих двух улиц",
+          "sourceQuestionIds": [
+            "b-fallback-053",
+            "b-fallback-264"
+          ]
+        },
+        {
+          "id": "row-basic-term-calle-a-b",
+          "termEs": "calle A",
+          "translationRu": "улица A на картинке",
+          "sourceQuestionIds": [
+            "b-fallback-053"
+          ]
+        },
+        {
+          "id": "row-basic-term-colectivo",
+          "termEs": "colectivo",
+          "translationRu": "автобус",
+          "sourceQuestionIds": [
+            "b-fallback-116"
+          ]
+        },
+        {
+          "id": "row-basic-term-arteria",
+          "termEs": "arteria",
+          "translationRu": "дорога/транспортная артерия",
+          "sourceQuestionIds": [
+            "b-fallback-148"
+          ]
+        },
+        {
+          "id": "row-basic-term-cambio-carril-basic",
+          "termEs": "cambio de carril",
+          "translationRu": "смена полосы",
+          "sourceQuestionIds": [
+            "b-fallback-148"
+          ]
+        },
+        {
+          "id": "row-basic-term-cambiar-carril-basic",
+          "termEs": "cambiar de carril",
+          "translationRu": "перестраиваться / сменить полосу",
+          "sourceQuestionIds": [
+            "b-fallback-165"
+          ]
+        },
+        {
+          "id": "row-basic-term-carril-pretende-ocupar-basic",
+          "termEs": "carril que se pretende ocupar",
+          "translationRu": "полоса, которую собираются занять",
+          "sourceQuestionIds": [
+            "b-fallback-148"
+          ]
+        },
+        {
+          "id": "row-basic-term-sobrepaso-basic",
+          "termEs": "sobrepaso",
+          "translationRu": "обгон/опережение в формулировках билета",
+          "sourceQuestionIds": [
+            "b-fallback-118",
+            "b-fallback-150",
+            "b-fallback-171"
+          ]
+        },
+        {
+          "id": "row-basic-term-encrucijadas-basic",
+          "termEs": "encrucijadas",
+          "translationRu": "перекрестки/пересечения",
+          "sourceQuestionIds": [
+            "b-fallback-118"
+          ]
+        },
+        {
+          "id": "row-basic-term-pasos-a-nivel-basic",
+          "termEs": "pasos a nivel",
+          "translationRu": "железнодорожные переезды в одном уровне",
+          "sourceQuestionIds": [
+            "b-fallback-118"
+          ]
+        },
+        {
+          "id": "row-basic-term-prioridad-normativa-basic",
+          "termEs": "prioridad normativa",
+          "translationRu": "нормативный приоритет между сигналами/правилами",
+          "sourceQuestionIds": [
+            "b-fallback-311"
+          ]
+        },
+        {
+          "id": "row-basic-term-no-iniciar-cruce",
+          "termEs": "No iniciar el cruce",
+          "translationRu": "не начинать пересечение",
+          "sourceQuestionIds": [
+            "b-fallback-312"
+          ]
+        },
+        {
+          "id": "row-basic-term-completado-suyo",
+          "termEs": "completado el suyo",
+          "translationRu": "завершил свой проезд",
+          "sourceQuestionIds": [
+            "b-fallback-312"
+          ]
+        },
+        {
+          "id": "row-basic-term-incorporacion-lateral-basic",
+          "termEs": "Incorporación de tránsito lateral",
+          "translationRu": "вливание бокового потока",
+          "sourceQuestionIds": [
+            "b-fallback-180"
+          ]
+        },
+        {
+          "id": "row-basic-term-encrucijada-bifurcacion-basic",
+          "termEs": "Encrucijada (bifurcación)",
+          "translationRu": "перекресток/разветвление",
+          "sourceQuestionIds": [
+            "b-fallback-068",
+            "b-fallback-262"
+          ]
+        },
+        {
+          "id": "row-basic-term-prioridad-avance-basic",
+          "termEs": "prioridad de avance",
+          "translationRu": "приоритет продвижения в узком месте",
+          "sourceQuestionIds": [
+            "b-fallback-436"
+          ]
+        },
+        {
+          "id": "row-basic-term-marcha-atras-basic",
+          "termEs": "marcha atrás",
+          "translationRu": "движение задним ходом",
+          "sourceQuestionIds": [
+            "b-fallback-043",
+            "b-fallback-244"
+          ]
+        },
+        {
+          "id": "row-basic-term-girar-derecha-basic",
+          "termEs": "girar a la derecha",
+          "translationRu": "повернуть направо",
+          "sourceQuestionIds": [
+            "b-fallback-164",
+            "b-fallback-244"
+          ]
+        },
+        {
+          "id": "row-basic-term-ascenso-descenso-basic",
+          "termEs": "ascenso o descenso de pasajeros",
+          "translationRu": "посадка или высадка пассажиров",
+          "sourceQuestionIds": [
+            "b-fallback-045"
+          ]
+        },
+        {
+          "id": "row-basic-term-reducir-velocidad-basic",
+          "termEs": "Reducir la velocidad del vehículo",
+          "translationRu": "снизить скорость автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-410"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-036",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-036-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Только derecha недостаточно: перед пересечением водитель должен проверить оба направления, потому что конфликт может прийти не только справа."
+            },
+            {
+              "answerId": "b-fallback-036-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Только izquierda тоже недостаточно. Билет спрашивает безопасную проверку перед cruzar la intersección, а не отдельное направление с приоритетом."
+            },
+            {
+              "answerId": "b-fallback-036-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: перед въездом на cruce нужно mirar hacia ambos lados и убедиться, что траектория свободна."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b15.jpg"
+        },
+        {
+          "questionId": "b-fallback-043",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-043-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: marcha atrás запрещена как обычное движение, но допускается для estacionar, entrar o salir de un garaje, когда нет другой возможности, или для обхода препятствия."
+            },
+            {
+              "answerId": "b-fallback-043-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sí, en cualquier ocasión слишком широко. Даже короткий tramo не превращает задний ход в обычный разрешенный способ движения."
+            },
+            {
+              "answerId": "b-fallback-043-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Mitad de la cuadra - не критерий разрешения. Важны необходимость маневра, минимальная дистанция и отсутствие риска."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-045",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-045-a1",
+              "verdict": "incorrect",
+              "explanationRu": "На картинке No estacionar, а не No estacionar ni detenerse. Поэтому формула “запрещено estacionar y detenerse” слишком строгая для этого знака."
+            },
+            {
+              "answerId": "b-fallback-045-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: как norma general знак запрещает estacionar, но краткая detención для ascenso o descenso de pasajeros не запрещена самим этим знаком."
+            },
+            {
+              "answerId": "b-fallback-045-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Вопрос не показывает horario restriction. Ответ “зависит от часа” отвлекает от основного значения знака."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b154.jpg"
+        },
+        {
+          "questionId": "b-fallback-053",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-053-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по изображению: calle A имеет приоритет в этом cruce de dos calles. Это ticket-specific mapping картинки; не переносите букву A на другие схемы."
+            },
+            {
+              "answerId": "b-fallback-053-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Calle B в этой картинке не является правильным потоком с prioridad de paso; выбор B был бы ошибкой чтения порядка улиц на фото."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b98.jpg"
+        },
+        {
+          "questionId": "b-fallback-066",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-066-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Una encrucijada peligrosa - это предупреждение об опасном пересечении, а не показанный сервисный информационный знак."
+            },
+            {
+              "answerId": "b-fallback-066-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак сообщает existencia de un puesto sanitario o de socorro; он не устанавливает порядок проезда на перекрестке."
+            },
+            {
+              "answerId": "b-fallback-066-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Templo religioso - другой информационный ориентир. В этом билете символ связан с medical/socorro."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b267.jpg"
+        },
+        {
+          "questionId": "b-fallback-068",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-068-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Inicio de doble mano показывал бы начало двустороннего движения, а не Y-shaped encrucijada."
+            },
+            {
+              "answerId": "b-fallback-068-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Estrechamiento en una sola mano - сужение дороги, а не bifurcación/разветвление."
+            },
+            {
+              "answerId": "b-fallback-068-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак предупреждает Encrucijada (bifurcación). Он помогает заранее повысить внимание и снизить скорость, но сам не дает приоритет."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b228.jpg"
+        },
+        {
+          "questionId": "b-fallback-116",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-116-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Automóvil не получает приоритет просто потому, что находится ближе к нам на фото. Нужно читать jerarquía/траекторию ситуации."
+            },
+            {
+              "answerId": "b-fallback-116-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по изображению: prioridad de paso corresponde al colectivo. Для этого билета важно не спутать обычную легковую машину с транспортом на приоритетной arteria."
+            },
+            {
+              "answerId": "b-fallback-116-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Es indistinto неверно: билет требует выбрать конкретного участника, которому corresponde la prioridad de paso."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b104.jpg"
+        },
+        {
+          "questionId": "b-fallback-118",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-118-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Trazo continuo действительно запрещает sobrepaso, но это не единственный запрет из вопроса."
+            },
+            {
+              "answerId": "b-fallback-118-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Curvas, encrucijadas, pasos a nivel o puentes тоже опасные места для sobrepaso, но вариант неполный, потому что не включает continuous line."
+            },
+            {
+              "answerId": "b-fallback-118-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: обе группы запретов верны. Не обгоняют ни через trazo continuo, ни в опасных местах вроде encrucijadas, curvas, pasos a nivel или puentes."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-148",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-148-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: при cambio de carril приоритет у автомобиля, который уже circula por el carril que se pretende ocupar. Меняющий полосу ждет безопасный интервал."
+            },
+            {
+              "answerId": "b-fallback-148-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Сам маневр не дает приоритета. Señalizar намерение нужно, но оно не заставляет целевую полосу уступить."
+            },
+            {
+              "answerId": "b-fallback-148-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Carril más lento - лишний критерий. Вопрос спрашивает, кто уже занимает полосу, а не какая полоса медленнее."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b114.jpg"
+        },
+        {
+          "questionId": "b-fallback-150",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-150-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A находится дальше от camión, поэтому не является первым в порядке sobrepaso encolumnado."
+            },
+            {
+              "answerId": "b-fallback-150-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo B ближе, чем A, но на картинке впереди него есть vehículo C, который circula más próximo al camión."
+            },
+            {
+              "answerId": "b-fallback-150-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: prioridad para realizar el sobrepaso имеет vehículo C, потому что он самый próximo al vehículo que se desea sobrepasar."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b119.jpg"
+        },
+        {
+          "questionId": "b-fallback-164",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-164-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: знак перед intersección показывает obligación de girar a la derecha. Это предписание направления, а не просто предупреждение."
+            },
+            {
+              "answerId": "b-fallback-164-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: красный круг со стрелкой означает obligación, поэтому водитель должен seguir la dirección indicada."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b250.jpg"
+        },
+        {
+          "questionId": "b-fallback-165",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-165-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A хочет cambiar de carril, значит выполняет маневр и не может навязать себе приоритет."
+            },
+            {
+              "answerId": "b-fallback-165-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: vehículo B уже движется в полосе, которую A pretende ocupar, поэтому A должен уступить."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b113.jpg"
+        },
+        {
+          "questionId": "b-fallback-171",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-171-a1",
+              "verdict": "incorrect",
+              "explanationRu": "El que lo intente primero - опасная логика: приоритет не возникает от того, кто первым начал маневр."
+            },
+            {
+              "answerId": "b-fallback-171-a2",
+              "verdict": "incorrect",
+              "explanationRu": "El último de la fila не получает автоматического преимущества; он дальше всего от vehicle que se desea sobrepasar."
+            },
+            {
+              "answerId": "b-fallback-171-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: когда vehicles circulan encolumnados, первым на sobrepaso идет тот, кто circula más próximo al vehículo que se desea sobrepasar."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-180",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-180-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Encrucijada - более общее пересечение; показанная форма предупреждает именно о боковом включении потока."
+            },
+            {
+              "answerId": "b-fallback-180-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce de caminos означал бы пересечение дорог, а не incorporación lateral в том же направлении."
+            },
+            {
+              "answerId": "b-fallback-180-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак означает Incorporación de tránsito lateral. Он предупреждает о потоке сбоку, но сам по себе не меняет приоритет без другой señal."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b231.jpg"
+        },
+        {
+          "questionId": "b-fallback-244",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-244-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Marcha atrás нельзя использовать как удобный способ вернуться к пропущенному giro, даже если участок кажется коротким."
+            },
+            {
+              "answerId": "b-fallback-244-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Vuelta en U также не является правильным исправлением в показанной ситуации; фото и контекст не дают безопасного разрешенного сценария."
+            },
+            {
+              "answerId": "b-fallback-244-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: обе альтернативы incorrectas. Водитель продолжает безопасно и выбирает разрешенный маршрут, не блокируя поток задним ходом или U-turn."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b129.jpg"
+        },
+        {
+          "questionId": "b-fallback-262",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-262-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Inicio de doble mano - другой знак и другая опасность; здесь нет указания на начало двустороннего движения."
+            },
+            {
+              "answerId": "b-fallback-262-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак означает Encrucijada (bifurcación), то есть предупреждает о разветвлении/пересечении."
+            },
+            {
+              "answerId": "b-fallback-262-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Estrechamiento en una sola mano было бы сужением, а показанный знак описывает конфигурацию пересечения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b229.jpg"
+        },
+        {
+          "questionId": "b-fallback-264",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-264-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A в этой картинке не имеет prioridad de paso; не выбирайте его только из-за того, что он ближе к правому краю кадра."
+            },
+            {
+              "answerId": "b-fallback-264-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по изображению: prioridad corresponde al vehículo B. Это конкретная image-order mapping для данного cruce."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b99.jpg"
+        },
+        {
+          "questionId": "b-fallback-281",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-281-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A circula por la derecha, но в CABA перед правилом derecha здесь работает jerarquía: avenida важнее обычной calle."
+            },
+            {
+              "answerId": "b-fallback-281-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: vehículo B circula por una avenida, поэтому имеет prioridad frente al vehículo A несмотря на ловушку “derecha”."
+            },
+            {
+              "answerId": "b-fallback-281-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Es indistinto неверно: вопрос показывает конкретный конфликт, где avenida решает порядок проезда."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b106.jpg"
+        },
+        {
+          "questionId": "b-fallback-311",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-311-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción A - semáforo. Он важен, но в нормативной иерархии уступает указанию autoridad."
+            },
+            {
+              "answerId": "b-fallback-311-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Opción B - PARE. Вертикальный знак ниже autoridad и ниже сигналов более высокой категории в этом сравнении."
+            },
+            {
+              "answerId": "b-fallback-311-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: opción C - agente/autoridad de control, поэтому имеет prioridad normativa por sobre las demás."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b66.jpg"
+        },
+        {
+          "questionId": "b-fallback-312",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-312-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luz verde не разрешает въезжать, если другой vehicle еще cruza и конфликтная зона занята."
+            },
+            {
+              "answerId": "b-fallback-312-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: нужно no iniciar el cruce hasta que el otro vehículo haya completado el suyo, чтобы не bloquear la intersección."
+            },
+            {
+              "answerId": "b-fallback-312-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Avanzar rápidamente - не безопасное решение: скорость перед другим автомобилем увеличивает риск и может заблокировать пересечение."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b75.jpg"
+        },
+        {
+          "questionId": "b-fallback-396",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-396-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Garaje del propietario не создает исключение, если автомобиль занимает пространство ciclovía или опасно мешает ciclistas."
+            },
+            {
+              "answerId": "b-fallback-396-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Días no hábiles не отменяют запрет, связанный с ciclovía и безопасным движением велосипедистов."
+            },
+            {
+              "answerId": "b-fallback-396-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: estacionar así запрещено, потому что ставит en riesgo a los ciclistas и занимает их коридор движения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b149.jpg"
+        },
+        {
+          "questionId": "b-fallback-410",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-410-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: предупреждающий знак о скользкой/опасной calzada требует reducir la velocidad del vehículo."
+            },
+            {
+              "answerId": "b-fallback-410-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Incrementar la velocidad противоположно смыслу предупреждения и увеличивает риск потери контроля."
+            },
+            {
+              "answerId": "b-fallback-410-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Знак не предписывает последовательный giro izquierda/derecha; это не знак маршрута, а предупреждение снизить скорость."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b146.jpg"
+        },
+        {
+          "questionId": "b-fallback-436",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-436-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Se tiene la prioridad de avance неверно: показанный R.29 означает потерю предпочтения для водителя, который видит знак спереди."
+            },
+            {
+              "answerId": "b-fallback-436-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: frente a esta señal se pierde la prioridad de avance; нужно уступить встречному потоку в узком месте."
+            },
+            {
+              "answerId": "b-fallback-436-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Esta señal sí es indicativa de prioridad de avance: вопрос именно об этом значении."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b247.jpg"
+        },
+        {
+          "questionId": "b-fallback-460",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-460-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luces rompeniebla pueden ayudar, но no es suficiente: при banco de niebla нужны скорость, дистанция, контроль и правильные luces."
+            },
+            {
+              "answerId": "b-fallback-460-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: conducir con ambas manos en el volante, reducir la velocidad, aumentar la distancia entre vehículos y utilizar las luces correspondientes."
+            },
+            {
+              "answerId": "b-fallback-460-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Detenerse en la banquina как общий совет опасен: при плохой видимости стоящий на обочине автомобиль может стать препятствием."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b188.jpg"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "row-basic-trap-derecha-after-avenida",
+          "textRu": "Derecha не всегда побеждает: если одна дорога avenida, а другая calle, сначала смотрите jerarquía de arterias.",
+          "sourceQuestionIds": [
+            "b-fallback-281"
+          ]
+        },
+        {
+          "id": "row-basic-trap-image-letters",
+          "textRu": "Буквы A/B/C на картинках не имеют универсального смысла. В `053`, `264`, `281`, `311`, `312` и `436` ответ зависит от конкретной схемы.",
+          "sourceQuestionIds": [
+            "b-fallback-053",
+            "b-fallback-264",
+            "b-fallback-281",
+            "b-fallback-311",
+            "b-fallback-312",
+            "b-fallback-436"
+          ]
+        },
+        {
+          "id": "row-basic-trap-warning-not-priority",
+          "textRu": "Желтый предупреждающий знак encrucijada/incorporación/slippery road не дает автоматического приоритета: он говорит подготовиться и снизить риск.",
+          "sourceQuestionIds": [
+            "b-fallback-068",
+            "b-fallback-180",
+            "b-fallback-262",
+            "b-fallback-410"
+          ]
+        },
+        {
+          "id": "row-basic-trap-green-does-not-unblock",
+          "textRu": "Luz verde не отменяет запрет блокировать перекресток: если cruce занят, правильный ответ - ждать.",
+          "sourceQuestionIds": [
+            "b-fallback-312"
+          ]
+        },
+        {
+          "id": "row-basic-trap-stop-yield-preference",
+          "textRu": "PARE, CEDA EL PASO и PREFERENCIA DE AVANCE похожи темой, но требуют разных действий: stop total, уступить без обязательной остановки или потерять avance в узком месте.",
+          "sourceQuestionIds": [
+            "b-fallback-311",
+            "b-fallback-436"
+          ]
+        },
+        {
+          "id": "row-basic-trap-neighbor-topics",
+          "textRu": "Если билет спрашивает sobrepaso, cambio de carril, marcha atrás, estacionar, ciclovía или niebla, не отвечайте правилом перекрестка: это mixed-ticket ловушки.",
+          "sourceQuestionIds": [
+            "b-fallback-043",
+            "b-fallback-118",
+            "b-fallback-148",
+            "b-fallback-165",
+            "b-fallback-244",
+            "b-fallback-396",
+            "b-fallback-460"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-row-basic-signal-hierarchy",
+          "textRu": "В CABA сигналы и приказы читаются по иерархии: autoridad, circunstancial/transitoria, semáforo, señales verticales/demarcación и затем общие нормы.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-basic-signal-hierarchy"
+        },
+        {
+          "id": "claim-row-basic-unsignalized-priority",
+          "textRu": "На encrucijadas sin semáforo CABA сначала применяет jerarquía avenida-calle-pasaje, затем правило derecha при равной jerarquía, с установленными исключениями.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-basic-unsignalized-priority"
+        },
+        {
+          "id": "claim-row-basic-do-not-block",
+          "textRu": "Даже имея prioridad de paso, водитель не должен въезжать в intersección или cruce peatonal, если поток может остановить его и obstruir la circulación transversal.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-basic-do-not-block"
+        },
+        {
+          "id": "claim-row-basic-priority-signs",
+          "textRu": "Anexo L поддерживает экзаменационные значения PARE, CEDA EL PASO, PREFERENCIA DE AVANCE, Incorporación de tránsito lateral, Encrucijada и Calzada resbaladiza.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-basic-priority-and-warning-signs"
+        },
+        {
+          "id": "claim-row-basic-mixed-maneuver-boundaries",
+          "textRu": "CABA/national rules support the mixed-ticket boundaries for sobrepaso near dangerous places, giro/marcha atrás limits, and ticket-specific lane-change priority.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "right-of-way-basic-mixed-maneuver-boundaries"
+        }
+      ]
+    },
+    {
       "id": "right-of-way-special-situations",
       "slug": "right-of-way-special-situations",
       "status": "draft",

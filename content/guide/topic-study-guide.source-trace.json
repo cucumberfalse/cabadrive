@@ -2269,6 +2269,100 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current",
       "notes": "Supports only b-fallback-341 demarcation explanation in this topic; parking-clearances retains its own broader cordon source trace."
+    },
+    {
+      "id": "right-of-way-basic-signal-hierarchy",
+      "topicId": "right-of-way-basic-intersections",
+      "claimId": "claim-row-basic-signal-hierarchy",
+      "claimSummaryRu": "CABA signal/command hierarchy puts authority orders first, then circumstantial/transitory signaling, traffic lights, vertical signs/markings, and general legal norms.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 2.3.3 Obediencia a la señalización",
+        "Ley 2148 2.3.4 Prioridades",
+        "Anexo L R.27 PARE"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-311 and compact priority-hierarchy prose; exact image option C remains ticket-specific."
+    },
+    {
+      "id": "right-of-way-basic-unsignalized-priority",
+      "topicId": "right-of-way-basic-intersections",
+      "claimId": "claim-row-basic-unsignalized-priority",
+      "claimSummaryRu": "At unsignalized CABA intersections, avenue/street/passage hierarchy precedes right-side priority for equal hierarchy, with listed exceptions.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.7.2 Otras prioridades de paso",
+        "Ley 24.449 Artículo 41 Prioridades"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-053, 116, 264 and 281 generalized priority reasoning; exact vehicle-letter mapping remains image-specific."
+    },
+    {
+      "id": "right-of-way-basic-do-not-block",
+      "topicId": "right-of-way-basic-intersections",
+      "claimId": "claim-row-basic-do-not-block",
+      "claimSummaryRu": "Vehicles must not enter an intersection or pedestrian crossing, even with priority, if traffic could stop them and obstruct cross traffic.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.7.3 Intersecciones",
+        "Ley 24.449 Artículo 48 inciso f"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-312 and the do-not-block-intersection trap note."
+    },
+    {
+      "id": "right-of-way-basic-priority-and-warning-signs",
+      "topicId": "right-of-way-basic-intersections",
+      "claimId": "claim-row-basic-priority-signs",
+      "claimSummaryRu": "Anexo L sign entries support PARE, CEDA EL PASO, PREFERENCIA DE AVANCE, Incorporación de tránsito lateral, Encrucijada and Calzada resbaladiza meanings used in assigned tickets.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Anexo L R.27 PARE",
+        "Anexo L R.28 CEDA EL PASO",
+        "Anexo L R.29 PREFERENCIA DE AVANCE",
+        "Anexo L P.12 CALZADA RESBALADIZA",
+        "Anexo L P.22 INCORPORACION DE TRÁNSITO LATERAL",
+        "Anexo L P.24 ENCRUCIJADA",
+        "Ley 2148 2.3.3 Obediencia a la señalización"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports the sign-focused generalized prose. Information-sign ticket b-fallback-066 and No estacionar b-fallback-045 are explained narrowly from their answer wording and neighboring topics."
+    },
+    {
+      "id": "right-of-way-basic-mixed-maneuver-boundaries",
+      "topicId": "right-of-way-basic-intersections",
+      "claimId": "claim-row-basic-mixed-maneuver-boundaries",
+      "claimSummaryRu": "Current archived rules support the assigned mixed-ticket boundaries for overpassing near continuous lines/dangerous places, turns, reverse movement and lane-change priority.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.12 Adelantamientos y sobrepasos",
+        "Ley 2148 6.1.14 Giros",
+        "Ley 2148 6.1.18 Circulación marcha atrás",
+        "Ley 2148 6.1.19 Precauciones al circular marcha atrás",
+        "Ley 24.449 Artículos 42 y 43"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Used only to keep b-fallback-043, 118, 148, 150, 164, 165, 171 and 244 explanations within their mixed-ticket boundaries; overtaking-and-passing placements for 118/150/171 remain planned."
     }
   ]
 }
