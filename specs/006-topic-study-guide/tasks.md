@@ -127,6 +127,7 @@
 ## Future Slice H: Taxonomy Refinement Backlog
 
 - [ ] T092 Reevaluate `b-fallback-296` and `b-fallback-343` as a future taxonomy-cleanup candidate after Slice E1; any reassignment must preserve the maximum-two-topic rule, update coverage evidence, and land outside the `speed-limits` content PR.
+- [ ] T093 Reevaluate `regulatory-signs` title/scope and the assigned warning/informative/transitory/normative-overtake traps after Slice E3; any title refinement or reassignment must preserve the maximum-two-topic rule, update coverage evidence, and land outside the `regulatory-signs` content PR.
 
 ## Process Memory
 
@@ -367,3 +368,4 @@
 - Slice D annex feedback accepted as a future constraint, not a Slice D blocker. Disposition: topic slices using Decreto 779 annex-specific claims, especially signage or technical vehicle material, must satisfy T052 by archiving the relevant annex bodies as separate manifest entries before adding T051 source traces; T068, T069, and T070 then validate those annex entries and claims with the rest of the archive.
 - Slice D GCBA manual feedback accepted as a future task, not a Slice D blocker. Disposition: topic slices using claims found only in the optional GCBA four-wheel manual must first add a dedicated PDF conversion/evidence slice under T052, including raw evidence and conversion limitations, before those claims can pass T051 and the final T068/T069/T070 gates.
 - Slice E1 taxonomy feedback accepted as future cleanup consideration T092, not a Slice E1 blocker. Disposition: `b-fallback-296` and `b-fallback-343` may be better route-sign recognition placements, but this PR correctly follows the current Slice C taxonomy, keeps the `speed-limits` placements content-ready, and must not reassign them here. A later taxonomy refinement may remove or move those placements only with updated coverage evidence and the maximum-two-topic rule preserved.
+- Slice E3 taxonomy feedback accepted as future cleanup consideration T093, not a Slice E3 blocker. Disposition: the `regulatory-signs` content PR correctly follows the current Slice C taxonomy and handles assigned warning, informative, transitory, and normative-overtake tickets as ticket-specific classification/normativa traps. Do not reassign tickets in this PR. A later taxonomy refinement may rename the topic, split/reassign non-regulatory sign classifications, or move non-sign overtake-normative tickets only with updated coverage evidence and the maximum-two-topic rule preserved.
