@@ -1667,24 +1667,22 @@
       "notes": "Supports the separate-giro versus both-giros/balizas distinction. White-light conclusions in b-fallback-014 and b-fallback-304 remain ticket-image-specific."
     },
     {
-      "id": "turns-marcha-atras-and-u-turn-limits",
+      "id": "turns-marcha-atras-limits",
       "topicId": "turns-direction-and-reversing",
-      "claimId": "claim-marcha-atras-and-u-turn-limits",
-      "claimSummaryRu": "Marcha atrás is generally prohibited except narrow cases and must be minimal/precautionary; CABA restricts U-turn/retome in relevant double-way contexts.",
+      "claimId": "claim-marcha-atras-limits",
+      "claimSummaryRu": "Marcha atrás is generally prohibited except narrow cases and must be minimal/precautionary.",
       "officialDocumentIds": [
         "ley-2148-caba-codigo-transito-transporte",
         "ley-24449-transito-seguridad-vial"
       ],
       "relevantSections": [
-        "Ley 2148 6.1.8 Arterias multicarriles, inciso c)",
-        "Ley 2148 6.1.10 Vehículos en intersecciones semaforizadas, inciso h)",
         "Ley 2148 6.1.18 Circulación marcha atrás",
         "Ley 2148 6.1.19 Precauciones al circular marcha atrás",
         "Ley 24.449 Artículo 48 Prohibiciones, inciso h)"
       ],
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
-      "notes": "Used to explain why b-fallback-244 rejects reversing or U-turn as a missed-turn fix; exact scene handling remains ticket-specific."
+      "notes": "Used to explain why b-fallback-244 rejects reversing as a missed-turn fix. The U-turn/vuelta en U rejection in that ticket remains a ticket-specific image/context conclusion, not an official-source-backed CABA retome claim."
     },
     {
       "id": "turns-direction-and-curve-signs",
