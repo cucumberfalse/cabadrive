@@ -1695,6 +1695,837 @@
       ]
     },
     {
+      "id": "vehicle-condition-maintenance-loads",
+      "slug": "vehicle-condition-maintenance-loads",
+      "status": "draft",
+      "titleRu": "Состояние автомобиля, обслуживание и груз",
+      "summaryRu": "Экзаменационный блок про техническое состояние, шины, масло, топливо, стекла, груз, буксировку, предметы в салоне и несколько смешанных билетов на границе с авариями, вниманием и административными вопросами.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про vehicle-condition сначала отделяйте три вещи: исправность автомобиля, безопасное размещение груза/предметов и поведение при остановке, поломке или заправке.",
+        "Официальная логика минимальных систем проста: frenos, direccion, suspension, neumáticos, luces, cristales и retrovisores должны помогать водителю сохранять control del vehículo и видеть дорогу. Поэтому плохие амортизаторы, закрытая видимость, плохие стекла или неправильная carga становятся риском безопасности, а не мелкой формальностью.",
+        "Carga/equipaje не должны мешать visibility, управлению, аэродинамике, luces или выходить за разрешенные пределы. Внутри habitáculo objetos sueltos тоже опасны: при резком маневре или siniestro они продолжают лететь по инерции.",
+        "Про aceite и varilla отвечайте буквально по картинке: varilla metálica проверяет nivel del aceite, а двигатель смазывается aceite. Не превращайте эти билеты с картинками в широкий курс механики.",
+        "Про neumáticos в этих билетах нет универсального числа. Presión de los neumáticos берется из manual del usuario конкретного автомобиля, а проверка давления делается на neumáticos fríos.",
+        "При заправке ловушка в том, что телефон не единственный риск. Ley 2148 прямо запрещает cargar combustible con luces encendidas y motor en marcha; похожий билет спрашивает ту же пару motor + luces.",
+        "Если автомобиль inmovilizado или averiado мешает движению, цель - быстро и заметно снизить риск: balizas/intermitentes, balizas portátiles, звонок в помощь и освобождение проезда. Remolque/acarreo обычным автомобилем не выбирайте: в CABA буксировка аварийного или неисправного автомобиля отнесена к специально предназначенным для этого машинам.",
+        "Несколько assigned tickets остаются строго ticket-specific: fine payment/DGAI, пассажир с phone, police preserving crash scene, transitory work signs, oil/lubrication image choices и maintenance benefits. Они включены здесь, потому что помогают закрыть vehicle/maintenance cluster, но не расширяются в новые общие правила за пределами архивной поддержки."
+      ],
+      "practicalReasoningRu": [
+        "Автомобиль - часть системы безопасности. Если подвеска, шины, стекла, свет или груз мешают контролю, водитель теряет время и пространство для реакции.",
+        "Закрепленный груз и пустой от loose objects салон уменьшают вторичные травмы: при торможении предметы не становятся projectile.",
+        "Заправка, тоннель и буксировка опасны не сами по себе, а потому что ошибка быстро создает пожарный риск, препятствие или плохо видимое препятствие для других."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-conduccion-preventiva-vehicle-condition",
+          "termEs": "conducción preventiva",
+          "translationRu": "предупредительное/превентивное вождение",
+          "sourceQuestionIds": [
+            "b-fallback-035"
+          ]
+        },
+        {
+          "id": "term-combustible-aceite-inflado",
+          "termEs": "combustible, aceite e inflado de neumáticos",
+          "translationRu": "топливо, масло и давление/накачка шин",
+          "sourceQuestionIds": [
+            "b-fallback-035"
+          ]
+        },
+        {
+          "id": "term-transportar-cualquier-elemento",
+          "termEs": "transportar cualquier elemento",
+          "translationRu": "перевозить любой предмет/груз",
+          "sourceQuestionIds": [
+            "b-fallback-040"
+          ]
+        },
+        {
+          "id": "term-condiciones-aerodinamicas",
+          "termEs": "condiciones aerodinámicas",
+          "translationRu": "аэродинамические условия автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-040"
+          ]
+        },
+        {
+          "id": "term-sistema-amortiguacion-delantero",
+          "termEs": "sistema de amortiguación delantero",
+          "translationRu": "передняя амортизация/подвеска",
+          "sourceQuestionIds": [
+            "b-fallback-101"
+          ]
+        },
+        {
+          "id": "term-control-del-vehiculo-condition",
+          "termEs": "control del vehículo",
+          "translationRu": "контроль над автомобилем",
+          "sourceQuestionIds": [
+            "b-fallback-101"
+          ]
+        },
+        {
+          "id": "term-varilla-metalica",
+          "termEs": "varilla metálica",
+          "translationRu": "металлический щуп",
+          "sourceQuestionIds": [
+            "b-fallback-103"
+          ]
+        },
+        {
+          "id": "term-nivel-del-aceite",
+          "termEs": "nivel del aceite",
+          "translationRu": "уровень масла",
+          "sourceQuestionIds": [
+            "b-fallback-103"
+          ]
+        },
+        {
+          "id": "term-motor-lubrica",
+          "termEs": "motor",
+          "translationRu": "двигатель",
+          "sourceQuestionIds": [
+            "b-fallback-126"
+          ]
+        },
+        {
+          "id": "term-habitaculo",
+          "termEs": "habitáculo",
+          "translationRu": "салон/пространство для водителя и пассажиров",
+          "sourceQuestionIds": [
+            "b-fallback-198"
+          ]
+        },
+        {
+          "id": "term-baul",
+          "termEs": "Baúl",
+          "translationRu": "багажник",
+          "sourceQuestionIds": [
+            "b-fallback-198"
+          ]
+        },
+        {
+          "id": "term-autoridad-control",
+          "termEs": "Autoridad de Control",
+          "translationRu": "контролирующий орган/инспекторская власть",
+          "sourceQuestionIds": [
+            "b-fallback-201"
+          ]
+        },
+        {
+          "id": "term-direccion-general-infracciones",
+          "termEs": "Dirección General de Administración de Infracciones",
+          "translationRu": "управление администрирования нарушений",
+          "sourceQuestionIds": [
+            "b-fallback-201"
+          ]
+        },
+        {
+          "id": "term-telefono-celular-condition",
+          "termEs": "teléfono celular",
+          "translationRu": "мобильный телефон",
+          "sourceQuestionIds": [
+            "b-fallback-175",
+            "b-fallback-405"
+          ]
+        },
+        {
+          "id": "term-telefonia-celular-passenger",
+          "termEs": "telefonía celular",
+          "translationRu": "мобильная связь/использование мобильного телефона",
+          "sourceQuestionIds": [
+            "b-fallback-217"
+          ]
+        },
+        {
+          "id": "term-via-circulacion",
+          "termEs": "vía de circulación",
+          "translationRu": "проезжая часть/путь движения",
+          "sourceQuestionIds": [
+            "b-fallback-175"
+          ]
+        },
+        {
+          "id": "term-objetos-sueltos",
+          "termEs": "objetos sueltos",
+          "translationRu": "незакрепленные предметы",
+          "sourceQuestionIds": [
+            "b-fallback-231"
+          ]
+        },
+        {
+          "id": "term-energia-cinetica",
+          "termEs": "energía cinética",
+          "translationRu": "кинетическая энергия",
+          "sourceQuestionIds": [
+            "b-fallback-231"
+          ]
+        },
+        {
+          "id": "term-presion-neumaticos-condition",
+          "termEs": "presión de los neumáticos",
+          "translationRu": "давление в шинах",
+          "sourceQuestionIds": [
+            "b-fallback-269"
+          ]
+        },
+        {
+          "id": "term-manual-usuario-condition",
+          "termEs": "manual del usuario",
+          "translationRu": "руководство пользователя автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-269"
+          ]
+        },
+        {
+          "id": "term-vehiculo-inmovilizado-tunel",
+          "termEs": "vehículo queda inmovilizado en un túnel",
+          "translationRu": "автомобиль обездвижен в тоннеле",
+          "sourceQuestionIds": [
+            "b-fallback-276"
+          ]
+        },
+        {
+          "id": "term-balizas-portatiles-condition",
+          "termEs": "balizas portátiles",
+          "translationRu": "переносные аварийные знаки/огни",
+          "sourceQuestionIds": [
+            "b-fallback-276"
+          ]
+        },
+        {
+          "id": "term-cargando-combustible",
+          "termEs": "cargando combustible",
+          "translationRu": "заправляет топливо",
+          "sourceQuestionIds": [
+            "b-fallback-293"
+          ]
+        },
+        {
+          "id": "term-luces-motor-encendido",
+          "termEs": "luces y motor encendido",
+          "translationRu": "включенные огни и двигатель",
+          "sourceQuestionIds": [
+            "b-fallback-293"
+          ]
+        },
+        {
+          "id": "term-senales-transitorias",
+          "termEs": "señales transitorias",
+          "translationRu": "временные знаки",
+          "sourceQuestionIds": [
+            "b-fallback-313"
+          ]
+        },
+        {
+          "id": "term-trabajos-construccion-mantenimiento",
+          "termEs": "trabajos de construcción y mantenimiento",
+          "translationRu": "строительные и ремонтные работы",
+          "sourceQuestionIds": [
+            "b-fallback-313"
+          ]
+        },
+        {
+          "id": "term-siniestro-vial",
+          "termEs": "siniestro vial",
+          "translationRu": "ДТП/дорожный инцидент",
+          "sourceQuestionIds": [
+            "b-fallback-328"
+          ]
+        },
+        {
+          "id": "term-preservar-escena",
+          "termEs": "preservar la escena del hecho",
+          "translationRu": "сохранить место происшествия",
+          "sourceQuestionIds": [
+            "b-fallback-328"
+          ]
+        },
+        {
+          "id": "term-cristales-vehiculo",
+          "termEs": "cristales de un vehículo",
+          "translationRu": "стекла автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-329"
+          ]
+        },
+        {
+          "id": "term-visibilidad-vehicle-condition",
+          "termEs": "visibilidad",
+          "translationRu": "видимость",
+          "sourceQuestionIds": [
+            "b-fallback-040",
+            "b-fallback-329"
+          ]
+        },
+        {
+          "id": "term-acarreo",
+          "termEs": "acarreo",
+          "translationRu": "эвакуация/буксировка другого автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-353"
+          ]
+        },
+        {
+          "id": "term-remolcar",
+          "termEs": "remolcar",
+          "translationRu": "буксировать",
+          "sourceQuestionIds": [
+            "b-fallback-353"
+          ]
+        },
+        {
+          "id": "term-frios-neumaticos-condition",
+          "termEs": "Fríos",
+          "translationRu": "холодные, о шинах при проверке давления",
+          "sourceQuestionIds": [
+            "b-fallback-375"
+          ]
+        },
+        {
+          "id": "term-surtidor",
+          "termEs": "surtidor",
+          "translationRu": "топливная колонка",
+          "sourceQuestionIds": [
+            "b-fallback-386"
+          ]
+        },
+        {
+          "id": "term-motor-luces-encendidas",
+          "termEs": "motor y las luces encendidas",
+          "translationRu": "двигатель и включенные огни",
+          "sourceQuestionIds": [
+            "b-fallback-386"
+          ]
+        },
+        {
+          "id": "term-llamada-urgencia",
+          "termEs": "llamada de urgencia",
+          "translationRu": "срочный звонок",
+          "sourceQuestionIds": [
+            "b-fallback-405"
+          ]
+        },
+        {
+          "id": "term-mantenimiento-vehicular",
+          "termEs": "mantenimiento vehicular",
+          "translationRu": "обслуживание автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-409"
+          ]
+        },
+        {
+          "id": "term-factor-riesgo-vehicular",
+          "termEs": "factor de riesgo vehicular",
+          "translationRu": "автомобильный фактор риска",
+          "sourceQuestionIds": [
+            "b-fallback-409"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-035",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-035-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Проверка funcionamiento del vehículo, combustible, aceite и inflado de neumáticos важна для этого блока, но это не определение conducción preventiva. Вопрос спрашивает про осторожный стиль мышления водителя."
+            },
+            {
+              "answerId": "b-fallback-035-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: conducción preventiva - это conductas cautelosas, ответственность за свои действия и anticipar la conducta de los demás. Техническая проверка автомобиля только часть общей безопасности, а не вся дефиниция."
+            },
+            {
+              "answerId": "b-fallback-035-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Cursos viales cada seis meses не являются определением preventive driving. В билете нет требования выбирать периодические курсы."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-040",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-040-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: груз или любой элемент должен быть расположен так, чтобы не закрывать visibility, не портить опасно condiciones aerodinámicas, не ocultar luces и не sobresalir за разрешенные пределы."
+            },
+            {
+              "answerId": "b-fallback-040-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: формула билета совпадает с общей логикой безопасного размещения груза. Опасный или закрывающий обзор груз нельзя считать допустимым."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-101",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-101-a1",
+              "verdict": "incorrect",
+              "explanationRu": "No неверно: передняя амортизация влияет на contact, stability и реакцию dirección; нельзя игнорировать ее только потому, что defect находится спереди."
+            },
+            {
+              "answerId": "b-fallback-101-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: неисправный sistema de amortiguación delantero может afectar al correcto control del vehículo, особенно при frenado, dirección и adherencia на неровном покрытии."
+            },
+            {
+              "answerId": "b-fallback-101-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Исправная задняя подвеска не компенсирует неисправную переднюю подвеску. Для контроля нужны исправные системы по всему автомобилю."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-103",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b199.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-103-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Varilla metálica не измеряет temperatura del aceite. Для билета это масляный щуп, а не термометр."
+            },
+            {
+              "answerId": "b-fallback-103-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: показанный щуп sirve para comprobar el nivel del aceite. Это билет по картинке про обслуживание."
+            },
+            {
+              "answerId": "b-fallback-103-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Щуп не проверяет presión del aceite и тем более не проверяет presión del líquido de frenos. Он относится к nivel del aceite."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-126",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b201.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-126-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción A на картинке - agua. Вопрос спрашивает, чем se lubrica un motor; вода не является смазкой двигателя."
+            },
+            {
+              "answerId": "b-fallback-126-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Opción B показывает surtidor/combustible. Топливо питает двигатель, но не смазывает его."
+            },
+            {
+              "answerId": "b-fallback-126-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Opción C показывает aceite. В этом билете по картинке двигатель смазывается oil/aceite."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-175",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b57.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-175-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Отсутствие других машин рядом недостаточно. Водитель все еще находится на vía de circulación и должен держать внимание на дорожном контексте."
+            },
+            {
+              "answerId": "b-fallback-175-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: даже стоящий автомобиль остается на пути движения; teléfono celular отвлекает внимание от semáforos, pedestrians и surrounding movement."
+            },
+            {
+              "answerId": "b-fallback-175-a3",
+              "verdict": "incorrect",
+              "explanationRu": "То, что vehicle no está en movimiento, не устраняет риск, если он стоит на проезжей части. Риск в том, что внимание уходит от контекста."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-198",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-198-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: habitáculo - это пространство, которое занимают conductor и pasajeros, то есть салон автомобиля."
+            },
+            {
+              "answerId": "b-fallback-198-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Baúl - это luggage compartment, а не habitáculo. Билет проверяет именно это различие слов."
+            },
+            {
+              "answerId": "b-fallback-198-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Todo el vehículo en general слишком широко. Habitáculo - только салон, где находятся водитель и пассажиры."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-201",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-201-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Платеж immediately to Autoridad de Control - ловушка. Билет ожидает administrative office path, а не оплату на месте инспектору."
+            },
+            {
+              "answerId": "b-fallback-201-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: оплату делают ante la Dirección General de Administración de Infracciones que corresponda."
+            },
+            {
+              "answerId": "b-fallback-201-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas неверно, потому что option A не принимается. Не объединяйте правильный путь через DGAI с оплатой на месте."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-217",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b61.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-217-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Место на asiento delantero не является запретом, который проверяет билет. Человек в круге - pasajero, а не conductor."
+            },
+            {
+              "answerId": "b-fallback-217-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: запрет telefonía celular касается только conductor del vehículo. Использование телефона пассажиром не является тем же нарушением."
+            },
+            {
+              "answerId": "b-fallback-217-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Todos los ocupantes слишком широко для этого билета. Ожидаемая граница - запрет только для conductor."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-231",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-231-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: objetos sueltos вроде очков, телефона или ключей могут стать снарядами при incident или maniobra brusca, потому что сохраняют energía cinética."
+            },
+            {
+              "answerId": "b-fallback-231-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso игнорирует физику loose objects. Даже маленькие предметы могут травмировать, когда автомобиль резко останавливается или меняет направление."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-269",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-269-a1",
+              "verdict": "incorrect",
+              "explanationRu": "28 lbs может подходить какому-то автомобилю, но билет не указывает конкретную модель. Универсальные числа давления здесь ловушка."
+            },
+            {
+              "answerId": "b-fallback-269-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: используется manual del usuario de ese automóvil. Давление в шинах зависит от конкретного автомобиля."
+            },
+            {
+              "answerId": "b-fallback-269-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 lbs - такое же неподтвержденное универсальное число. Правильное давление зависит от manual del usuario."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-276",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-276-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Просто закрыть автомобиль и выйти из túnel недостаточно: вариант пропускает предупреждение и вызов помощи. В тоннеле важны видимость и риск препятствия."
+            },
+            {
+              "answerId": "b-fallback-276-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Apagar todas las luces неверно: автомобиль должен оставаться видимым. Один звонок с телефона не заменяет luces de posición/intermitentes и balizas/dispositivos de advertencia."
+            },
+            {
+              "answerId": "b-fallback-276-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: apagar el motor, colocar balizas portátiles, оставить включенными luces de posición e intermitentes и llamar al número de asistencia. Так уменьшается пожарный риск и сохраняется visibility."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-293",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b198.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-293-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Teléfono celular не единственный запрет при заправке. На картинке автомобиль cargando combustible с luces и motor encendido; это главный риск билета."
+            },
+            {
+              "answerId": "b-fallback-293-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: по формуле Ley 2148 в билете no debe cargarse combustible con luces y motor encendido."
+            },
+            {
+              "answerId": "b-fallback-293-a3",
+              "verdict": "incorrect",
+              "explanationRu": "La Ley no se expresa неверно для этого билета. Ley 2148 содержит конкретный запрет для заправки."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-313",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-313-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: señales transitorias обозначают trabajos de construcción y mantenimiento на дороге или рядом с ней, чтобы водитель успел среагировать до рабочей зоны."
+            },
+            {
+              "answerId": "b-fallback-313-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso противоречит определению Anexo L: временные знаки указывают work zones и temporary risks/restrictions."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-328",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-328-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero по билету: когда есть personas heridas, policía сохраняет escena del hecho, дает emergency services возможность помочь пострадавшим и охраняет vehicles/evidence."
+            },
+            {
+              "answerId": "b-fallback-328-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно, потому что утверждение описывает ожидаемую роль полиции в этом билете про escena del hecho."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-329",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-329-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Только visibility из салона наружу недостаточна. Билет спрашивает обо всех cristales и ожидает видимость в обе стороны."
+            },
+            {
+              "answerId": "b-fallback-329-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: cristales должны обеспечивать visibility изнутри наружу и снаружи внутрь, что совпадает с логикой CABA про vidrios de seguridad и контроль видимости."
+            },
+            {
+              "answerId": "b-fallback-329-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Parabrisas критически важен, но в этом билете это не единственное стекло, связанное с visibility."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-353",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b195.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-353-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Мощность и надежное крепление недостаточны. Ожидаемое правило связано с типом/назначением vehículo, а не только с capacidad mecánica."
+            },
+            {
+              "answerId": "b-fallback-353-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Gancho/enganche не делает любой автомобиль подходящим для remolcar otro vehículo en esta vía. Это та же ловушка в более технической формулировке."
+            },
+            {
+              "answerId": "b-fallback-353-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: только vehículos destinados a ese fin могут выполнять acarreo/remolque в этом билете."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-375",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-375-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: presión проверяют на neumáticos fríos."
+            },
+            {
+              "answerId": "b-fallback-375-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Calientes неверно, потому что нагрев меняет показание presión. Билет требует neumáticos fríos."
+            },
+            {
+              "answerId": "b-fallback-375-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Es indistinto неверно. Ответ связан не с материалом caucho, а с температурным состоянием шин при проверке."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-386",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b197.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-386-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Находиться cerca del surtidor - не запрещенное действие, которое здесь спрашивают. Контекст картинки с заправкой указывает на motor y luces encendidas."
+            },
+            {
+              "answerId": "b-fallback-386-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: во время заправки dejar el motor y las luces encendidas запрещено в логике билета и Ley 2148."
+            },
+            {
+              "answerId": "b-fallback-386-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Only motor encendido неполно. Ожидаемый вариант включает и motor, и luces."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-405",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-405-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: для llamada de urgencia нужно остановиться там, где это permitido, и включить balizas. Так телефонная задача выводится из активного потока движения."
+            },
+            {
+              "answerId": "b-fallback-405-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ехать медленно по carril derecho, используя balizas и teléfono celular, все равно оставляет движущийся риск внутри tránsito."
+            },
+            {
+              "answerId": "b-fallback-405-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Срочность не означает, что lugar больше не важен. Безопасный ответ требует остановиться в permitted place / lugar permitido."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-409",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-409-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это верно, но неполно. Mantenimiento может уменьшить desperfectos del motor и consumo de combustible, но билет спрашивает потому, что A и B применимы вместе."
+            },
+            {
+              "answerId": "b-fallback-409-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Это тоже верно, но неполно. Reducir el factor de riesgo vehicular - только одна часть ответа."
+            },
+            {
+              "answerId": "b-fallback-409-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas. Correcto mantenimiento помогает избежать desperfectos del motor, снизить consumo de combustible и уменьшить factor de riesgo vehicular."
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-vehicle-condition-minimum-safety-systems",
+          "textRu": "Архивные источники CABA и Nación поддерживают компактную рамку safety systems для этого блока: frenos, steering/dirección, suspension, tyres/neumáticos, lighting/luces, transparent glass/cristales и другие системы автомобиля должны поддерживать control, stability и visibility.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-condition-minimum-safety-systems"
+        },
+        {
+          "id": "claim-load-visibility-aerodynamics-lights-limits",
+          "textRu": "Carga или любой перевозимый элемент не должны мешать visibility, опасно влиять на aerodynamics, закрывать lights/indicators, выходить за allowed limits или ухудшать vision/control водителя.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-condition-load-visibility-aerodynamics-lights-limits"
+        },
+        {
+          "id": "claim-fuel-engine-lights-prohibition",
+          "textRu": "Ley 2148 поддерживает ответ assigned fuel-station tickets: нельзя cargar combustible с включенными luces и работающим motor.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-condition-fuel-engine-lights-prohibition"
+        },
+        {
+          "id": "claim-breakdown-tunnel-warning-and-towing",
+          "textRu": "При avería, caída de carga или inmovilización, которые мешают движению, архивные правила поддерживают warning через lights/balizas и быстрое восстановление свободного проезда; CABA также оставляет remolque аварийного/неисправного автомобиля за vehicle destined to that purpose.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-condition-breakdown-tunnel-warning-and-towing"
+        },
+        {
+          "id": "claim-transitory-signs-work-zones",
+          "textRu": "Señales transitorias предупреждают о construction and maintenance works на дороге или рядом с ней, а также о temporary risk/restriction in the zone.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-condition-transitory-signs-work-zones"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-maintenance-not-preventive-definition",
+          "textRu": "Проверки автомобиля важны, но conducción preventiva шире: cautela, responsibility и anticipating others. Не выбирайте только oil/fuel/tire check как определение.",
+          "sourceQuestionIds": [
+            "b-fallback-035"
+          ]
+        },
+        {
+          "id": "trap-no-universal-tyre-pressure",
+          "textRu": "Не запоминайте 28 lbs или 30 lbs как универсальный ответ. Один билет указывает на manual del usuario, другой спрашивает Fríos.",
+          "sourceQuestionIds": [
+            "b-fallback-269",
+            "b-fallback-375"
+          ]
+        },
+        {
+          "id": "trap-fuel-not-only-phone",
+          "textRu": "У surtidor ловушка в фразе “телефон - единственный запрет”. Для этих билетов выбирайте motor + luces encendidas.",
+          "sourceQuestionIds": [
+            "b-fallback-293",
+            "b-fallback-386"
+          ]
+        },
+        {
+          "id": "trap-passenger-phone-boundary",
+          "textRu": "Phone-билеты делятся по роли: водитель на vía de circulación создает риск/нарушение, а телефон у пассажира не является тем же запретом.",
+          "sourceQuestionIds": [
+            "b-fallback-175",
+            "b-fallback-217",
+            "b-fallback-405"
+          ]
+        },
+        {
+          "id": "trap-ticket-specific-mixed-items",
+          "textRu": "DGAI payment, police preserving the crash scene, oil/lubrication images и maintenance-benefit wording здесь являются точными ответами билетов. Держите их узко, пока будущий source slice не расширит поддержку.",
+          "sourceQuestionIds": [
+            "b-fallback-103",
+            "b-fallback-126",
+            "b-fallback-201",
+            "b-fallback-328",
+            "b-fallback-409"
+          ]
+        },
+        {
+          "id": "trap-load-and-loose-objects",
+          "textRu": "Carga снаружи/в багажной зоне и objetos sueltos внутри салона - оба про риск: одно может закрыть или изменить поведение автомобиля, другое может полететь по салону при siniestro или резком маневре.",
+          "sourceQuestionIds": [
+            "b-fallback-040",
+            "b-fallback-231"
+          ]
+        },
+        {
+          "id": "trap-towing-not-any-strong-car",
+          "textRu": "Для acarreo/remolcar недостаточно мощности, троса или крюка. Ожидаемый ответ - vehículo destinado a ese fin.",
+          "sourceQuestionIds": [
+            "b-fallback-353"
+          ]
+        }
+      ]
+    },
+    {
       "id": "pedestrian-and-school-road-markings",
       "slug": "pedestrian-and-school-road-markings",
       "status": "draft",
