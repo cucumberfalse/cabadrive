@@ -3266,6 +3266,240 @@
       ]
     },
     {
+      "id": "information-signs",
+      "slug": "information-signs",
+      "status": "draft",
+      "titleRu": "Информационные знаки, сервисы и ориентиры",
+      "summaryRu": "Экзаменационный блок про señales informativas: сервисные и ориентирующие знаки, которые сообщают место или услугу, а не вводят запрет.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах señal informativa обычно не приказывает и не запрещает, а помогает понять, что находится рядом: servicio, estacionamiento, puesto sanitario, gomería или другой ориентир.",
+        "Самая важная проверка - не добавить к информационному знаку лишний запрет. Если изображение сообщает estacionamiento vehicular, это не значит, что можно estacionar прямо в этой vía; если показывает teatro или puesto sanitario, это не запрет остановки, а указатель объекта.",
+        "Сервисные картинки различаются по символу: cruz roja - puesto sanitario o socorro, neumático - gomería, llave - servicio mecánico, bomba de combustible - estación de servicio, letra E - estacionamiento.",
+        "В билете про peatón правильный ответ опирается на саму формулировку: la señal corresponde a las informativas que orientan al peatón. Не переносите это на все пешеходные темы: cruce de peatones и senda peatonal в других билетах могут относиться к предупреждающим знакам или разметке.",
+        "В вопросах с Figura A/B/C сначала определяйте категорию по виду: синяя сервисная/информационная табличка - informativa, PARE - reglamentaria, желтый ромб с ребенком - preventiva."
+      ],
+      "practicalReasoningRu": [
+        "Информационный знак снижает неопределенность без резкого маневра: водитель заранее понимает, где найти помощь, ремонт, парковку или направление, и не ищет это в последний момент.",
+        "Отделение информации от запрета делает ответы предсказуемыми. Если знак только сообщает объект, водитель все равно обязан соблюдать отдельные правила остановки, стоянки, приоритета и скорости."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-senal-vertical-informacion",
+          "termEs": "señal vertical de información",
+          "translationRu": "вертикальный информационный знак",
+          "sourceQuestionIds": [
+            "b-fallback-066"
+          ]
+        },
+        {
+          "id": "term-puesto-sanitario-socorro",
+          "termEs": "puesto sanitario o de socorro",
+          "translationRu": "медицинский пункт или пункт помощи",
+          "sourceQuestionIds": [
+            "b-fallback-066"
+          ]
+        },
+        {
+          "id": "term-informativas-orientan-peaton",
+          "termEs": "informativas que orientan al peatón",
+          "translationRu": "информационные знаки, ориентирующие пешехода",
+          "sourceQuestionIds": [
+            "b-fallback-274"
+          ]
+        },
+        {
+          "id": "term-punto-referencia",
+          "termEs": "punto de referencia",
+          "translationRu": "ориентир",
+          "sourceQuestionIds": [
+            "b-fallback-287"
+          ]
+        },
+        {
+          "id": "term-gomeria",
+          "termEs": "Gomería",
+          "translationRu": "шиномонтаж/сервис шин",
+          "sourceQuestionIds": [
+            "b-fallback-287"
+          ]
+        },
+        {
+          "id": "term-servicio-mecanico-information",
+          "termEs": "Servicio mecánico",
+          "translationRu": "механический сервис/ремонт",
+          "sourceQuestionIds": [
+            "b-fallback-287"
+          ]
+        },
+        {
+          "id": "term-estacion-servicio-information",
+          "termEs": "Estación de servicio",
+          "translationRu": "заправочная станция",
+          "sourceQuestionIds": [
+            "b-fallback-287"
+          ]
+        },
+        {
+          "id": "term-senal-informativa",
+          "termEs": "Informativa",
+          "translationRu": "информационный знак",
+          "sourceQuestionIds": [
+            "b-fallback-348"
+          ]
+        },
+        {
+          "id": "term-estacionamiento-vehicular-information",
+          "termEs": "estacionamiento vehicular",
+          "translationRu": "автомобильная парковка поблизости",
+          "sourceQuestionIds": [
+            "b-fallback-455"
+          ]
+        },
+        {
+          "id": "term-inmediaciones-information",
+          "termEs": "inmediaciones",
+          "translationRu": "поблизости, в окрестности",
+          "sourceQuestionIds": [
+            "b-fallback-455"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-066",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-066-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Una encrucijada peligrosa была бы предупреждением об опасном пересечении, а не сервисным информационным знаком."
+            },
+            {
+              "answerId": "b-fallback-066-a2",
+              "verdict": "correct",
+              "explanationRu": "Крест на сервисном информационном знаке указывает existencia de un puesto sanitario o de socorro."
+            },
+            {
+              "answerId": "b-fallback-066-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Templo religioso - другой ориентир. В этом билете символ связан с медицинской помощью/пунктом socorro."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b267.jpg"
+        },
+        {
+          "questionId": "b-fallback-274",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-274-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: билет прямо описывает изображение как informativas que orientan al peatón, то есть информационный указатель для пешехода."
+            },
+            {
+              "answerId": "b-fallback-274-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso не подходит: в этом билете знак не является запретом или предупреждением, а классифицируется как информационный ориентир для пешехода."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b37.jpg"
+        },
+        {
+          "questionId": "b-fallback-287",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-287-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Servicio mecánico обозначается сервисом ремонта/механиком; в билете правильный ориентир связан именно с шиной."
+            },
+            {
+              "answerId": "b-fallback-287-a2",
+              "verdict": "correct",
+              "explanationRu": "Фигура neumático соответствует Gomería: место, где помогают с шинами."
+            },
+            {
+              "answerId": "b-fallback-287-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Estación de servicio - это заправка, обычно по символу топливной колонки, а не знак с neumático."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b268.jpg"
+        },
+        {
+          "questionId": "b-fallback-348",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-348-a1",
+              "verdict": "correct",
+              "explanationRu": "La señal A - синяя информационная табличка. Она относится к informativas."
+            },
+            {
+              "answerId": "b-fallback-348-a2",
+              "verdict": "incorrect",
+              "explanationRu": "La señal B - PARE, это reglamentaria/de prioridad: она требует полной остановки, а не просто информирует."
+            },
+            {
+              "answerId": "b-fallback-348-a3",
+              "verdict": "incorrect",
+              "explanationRu": "La señal C - предупреждающий знак с желтым фоном; это preventiva, а не informativa."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b85.jpg"
+        },
+        {
+          "questionId": "b-fallback-455",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-455-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Информационный знак parking nearby не означает, что detenerse разрешено прямо на этой vía. Он только указывает объект поблизости."
+            },
+            {
+              "answerId": "b-fallback-455-a2",
+              "verdict": "correct",
+              "explanationRu": "Это знак ESTACIONAMIENTO: existencia de un estacionamiento vehicular en las inmediaciones."
+            },
+            {
+              "answerId": "b-fallback-455-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Знак указывает место парковки поблизости, но не дает общего разрешения estacionar прямо на этой дороге."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b272.jpg"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-information-not-prohibition",
+          "textRu": "Informativa не равна permitida/prohibida. Если вариант ответа добавляет “можно остановиться” или “запрещено стоять”, проверьте, есть ли на самом знаке запрет."
+        },
+        {
+          "id": "trap-service-icons",
+          "textRu": "Сервисные символы похожи только тем, что они на синем информационном фоне. Cruz roja, neumático, bomba de combustible, llave и letra E ведут к разным ответам."
+        },
+        {
+          "id": "trap-pedestrian-classification",
+          "textRu": "Пешеходная тема не всегда одна категория: orientan al peatón в этом билете - informativa, но cruce de peatones и senda peatonal в других билетах могут быть warning sign или road marking."
+        },
+        {
+          "id": "trap-abc-category",
+          "textRu": "В вопросе “cuál de estas señales es Informativa” выбирайте категорию картинки, а не знакомое слово: PARE и школьный знак выглядят важнее, но относятся к другим группам."
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-information-signs-purpose",
+          "textRu": "Señales informativas предназначены для идентификации, ориентации и указания сервисов, мест или другой полезной информации; сами по себе они не передают приказ и не предупреждают о риске, если не содержат другой знак.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "information-signs-purpose-and-category"
+        },
+        {
+          "id": "claim-information-service-examples",
+          "textRu": "Anexo L поддерживает значения PUESTO SANITARIO, GOMERÍA и ESTACIONAMIENTO как информационных знаков сервиса/ориентира, а также отличает их от SERVICIO MECÁNICO и ESTACIÓN DE SERVICIO.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "information-signs-service-examples"
+        }
+      ]
+    },
+    {
       "id": "traffic-lights-and-rail-crossings",
       "slug": "traffic-lights-and-rail-crossings",
       "status": "draft",

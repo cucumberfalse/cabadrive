@@ -805,6 +805,42 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current",
       "notes": "The theater image answer remains ticket-specific fallback wording because the archived Anexo L entry did not expose a TEATRO section in text search."
+    },
+    {
+      "id": "information-signs-purpose-and-category",
+      "topicId": "information-signs",
+      "claimId": "claim-information-signs-purpose",
+      "claimSummaryRu": "Anexo L defines informative signs as signs that identify, orient and reference services, places or other useful information without themselves transmitting orders or warning of road risks unless they contain regulatory or warning signs.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo II punto 7 Señalamiento vertical",
+        "Capítulo V punto 19 Señales informativas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports only the general information-sign category prose for E9. The b-fallback-274 pedestrian-oriented sign classification remains ticket-specific because local text search did not expose an exact Anexo L pedestrian information-sign entry."
+    },
+    {
+      "id": "information-signs-service-examples",
+      "topicId": "information-signs",
+      "claimId": "claim-information-service-examples",
+      "claimSummaryRu": "Anexo L service/tourism information entries support the assigned meanings for puesto sanitario, gomería and estacionamiento, and distinguish gomería from servicio mecánico and estación de servicio.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo V punto 24 Información turística y de servicios",
+        "PUESTO SANITARIO",
+        "SERVICIO MECÁNICO",
+        "ESTACIÓN DE SERVICIO",
+        "GOMERÍA",
+        "ESTACIONAMIENTO"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports b-fallback-066, b-fallback-287 and b-fallback-455. This slice did not generalize theater/cultural-venue signs because that gap is already tracked for future refinement."
     }
   ]
 }
