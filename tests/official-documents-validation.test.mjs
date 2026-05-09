@@ -100,7 +100,41 @@ test("rejects local paths outside official-documents", () => {
     }
   });
 
-  assert(errors.includes("ley-24449.localPath must stay inside content/official-documents."));
+  assert(errors.includes("ley-24449.localPath must stay inside content/official-documents/documents."));
+});
+
+test("rejects official Markdown local paths outside documents directory", () => {
+  const validationPathErrors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          localPath: "content/official-documents/validation/fake.md"
+        })
+      ]
+    }),
+    fileMetadata: {
+      "content/official-documents/validation/fake.md": { exists: true }
+    }
+  });
+
+  assert(
+    validationPathErrors.includes("ley-24449.localPath must stay inside content/official-documents/documents.")
+  );
+
+  const agentsPathErrors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          localPath: "content/official-documents/AGENTS.md"
+        })
+      ]
+    }),
+    fileMetadata: {
+      "content/official-documents/AGENTS.md": { exists: true }
+    }
+  });
+
+  assert(agentsPathErrors.includes("ley-24449.localPath must stay inside content/official-documents/documents."));
 });
 
 test("rejects path traversal and non-Markdown archive paths", () => {
@@ -117,7 +151,7 @@ test("rejects path traversal and non-Markdown archive paths", () => {
     }
   });
 
-  assert(errors.includes("ley-24449.localPath must stay inside content/official-documents."));
+  assert(errors.includes("ley-24449.localPath must stay inside content/official-documents/documents."));
   assert(errors.includes("ley-24449.localPath must point to a Markdown file."));
 });
 
@@ -286,6 +320,40 @@ test("requires raw original evidence for PDF and other lossy formats", () => {
     })
   });
   assert(spacedFormatErrors.includes("ley-24449.rawOriginalPath must be a non-empty string."));
+
+  const documentsRawErrors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          sourceFormat: "pdf",
+          rawOriginalPath: "content/official-documents/documents/source.pdf"
+        })
+      ]
+    }),
+    fileMetadata: files({
+      "content/official-documents/documents/source.pdf": { exists: true }
+    })
+  });
+  assert(
+    documentsRawErrors.includes("ley-24449.rawOriginalPath must stay inside content/official-documents/originals.")
+  );
+
+  const validationRawErrors = validate({
+    manifestData: manifest({
+      entries: [
+        entry({
+          sourceFormat: "pdf",
+          rawOriginalPath: "content/official-documents/validation/source.pdf"
+        })
+      ]
+    }),
+    fileMetadata: files({
+      "content/official-documents/validation/source.pdf": { exists: true }
+    })
+  });
+  assert(
+    validationRawErrors.includes("ley-24449.rawOriginalPath must stay inside content/official-documents/originals.")
+  );
 
   const presentRawErrors = validate({
     manifestData: manifest({

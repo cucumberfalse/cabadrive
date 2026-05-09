@@ -134,7 +134,9 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
     validateRequiredString(errors, entry.sourceFormat, `${label}.sourceFormat`);
     validateRequiredString(errors, entry.conversionMethod, `${label}.conversionMethod`);
     validateRequiredString(errors, entry.conversionNotes, `${label}.conversionNotes`);
-    validateLocalPath(errors, entry.localPath, `${label}.localPath`, sectionPath, fileMetadata, { markdown: true });
+    validateLocalPath(errors, entry.localPath, `${label}.localPath`, `${sectionPath}/documents`, fileMetadata, {
+      markdown: true
+    });
 
     if (entry.hashAlgorithm !== "sha256") errors.push(`${label}.hashAlgorithm must be sha256.`);
     if (!SHA256_PATTERN.test(entry.hash || "")) errors.push(`${label}.hash must be a 64-character lowercase sha256 hex digest.`);
@@ -147,9 +149,9 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
       .trim()
       .toLowerCase();
     if (LOSSY_SOURCE_FORMATS.has(sourceFormat)) {
-      validateLocalPath(errors, entry.rawOriginalPath, `${label}.rawOriginalPath`, sectionPath, fileMetadata);
+      validateLocalPath(errors, entry.rawOriginalPath, `${label}.rawOriginalPath`, `${sectionPath}/originals`, fileMetadata);
     } else if (isNonEmptyString(entry.rawOriginalPath)) {
-      validateLocalPath(errors, entry.rawOriginalPath, `${label}.rawOriginalPath`, sectionPath, fileMetadata);
+      validateLocalPath(errors, entry.rawOriginalPath, `${label}.rawOriginalPath`, `${sectionPath}/originals`, fileMetadata);
     }
 
     if (!isPlainObject(entry.currentness)) {
