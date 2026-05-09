@@ -62,6 +62,9 @@ Out of scope for this planning feature:
 - The preferred future path is `content/guide/topic-study-guide.ru.json` for structured topic content.
 - A separate machine-readable coverage artifact should track ticket placement, preferred future path `content/guide/topic-study-guide.coverage.json`.
 - A separate machine-readable source-trace artifact should track official-source-backed claims, preferred future path `content/guide/topic-study-guide.source-trace.json`.
+- The coverage artifact must distinguish planned taxonomy assignments from content-ready or published rendered placements. Planned assignments prove the intended guide taxonomy and full ticket coverage baseline; they do not by themselves require matching guide ticket blocks or answer explanations.
+- A content-ready or published placement is the only placement phase that requires a matching guide topic ticket block, answer explanations, vocabulary/prose/trap-note readiness, and render readiness.
+- Final published validation must fail if any planned assignment remains unpromoted, if any rendered guide ticket block is missing from the published coverage placements, or if any published coverage placement is missing its rendered guide content.
 - The guide must reuse canonical ticket text, answer options, correct answer IDs, images, and source status from `content/questions/caba-b.unofficial-fallback.questions.json` instead of duplicating Spanish ticket source text.
 - A ticket placement is physical for rendering when the guide topic data contains the ticket ID inside each topic's ticket list and the renderer emits the full ticket block in each listed topic.
 - Ticket explanations may be duplicated per topic when the emphasis differs, but each rendered ticket block must explain every answer option in that topic context.

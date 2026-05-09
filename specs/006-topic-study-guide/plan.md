@@ -114,6 +114,23 @@ Acceptable patterns:
 
 Implementation must choose one simple pattern and record it in `tasks.md`.
 
+### Planned Coverage Versus Rendered Placements
+
+Draft validation must distinguish a planned taxonomy baseline from content-ready rendered placements. Slice C may assign all current 460 ticket IDs to one or two guide categories as planned taxonomy coverage without adding 460 guide ticket blocks, Russian prose, or answer explanations.
+
+The coverage manifest should carry a per-assignment phase or status, with the simplest acceptable split being:
+
+- planned or taxonomy baseline: used to prove category discovery, baseline freshness, all-ID coverage, and one-or-two category limits;
+- content-ready or published placement: used to prove the guide topic contains the ticket block, answer explanations, vocabulary/prose/trap-note readiness, and render readiness.
+
+Validation should therefore have separate modes:
+
+- planned coverage validation checks the current question baseline, ID fingerprint, topic IDs, assignment completeness, and maximum two assignments per ticket, and must not require corresponding guide content blocks or answer explanations;
+- rendered placement validation checks only content-ready/published placements against guide topic ticket lists and explanation requirements, and fails orphan rendered blocks or content-ready assignments without content;
+- published validation requires all planned assignments to be promoted to content-ready/published placements and requires coverage manifest, guide content, and rendered evidence to agree globally.
+
+If Slice A's validator currently treats every coverage assignment as content-ready, Slice C must adjust it before adding the full planned baseline. That adjustment belongs in Slice C because it is necessary to keep the taxonomy PR coverage-only while preserving the final strict release gate.
+
 ### Structured JSON Before Markdown Rendering
 
 Use structured JSON for the first implementation because the app already imports JSON content and validation is easiest against structured fields. Markdown may be used later for long prose if a future spec justifies it, but this feature needs reliable per-ticket answer explanations, coverage IDs, source trace IDs, and renderable ticket placement.
@@ -130,10 +147,10 @@ The coverage artifact should record:
 - expected question count, currently 460;
 - baseline ID set hash or equivalent stable fingerprint;
 - topic IDs;
-- placement list mapping each question ID to one or two topic IDs;
+- placement list mapping each question ID to one or two topic IDs, with each assignment marked as planned/taxonomy or content-ready/published;
 - per-slice ownership/status fields if needed.
 
-Validation must compare the coverage artifact and guide topic content. They must not diverge.
+Validation must compare the coverage artifact and guide topic content only for rendered/content-ready/published placements. Planned taxonomy assignments may intentionally exist before corresponding guide topic content, but final published validation must prove no planned-only assignment remains.
 
 ### Topic Size
 
@@ -194,8 +211,9 @@ If a ticket's expected answer conflicts with current official sources, implement
 
 - Analyze all 460 ticket IDs.
 - Propose compact topic IDs/titles and split rules.
-- Create or update coverage baseline with every current question ID assigned to one or two topics.
-- Record evidence proving the baseline count is 460 and all IDs are represented.
+- Create or update the planned taxonomy coverage baseline with every current question ID assigned to one or two topics.
+- Add or adjust validation so planned taxonomy assignments are checked for completeness separately from content-ready/rendered placements.
+- Record evidence proving the baseline count is 460, all IDs are represented, and planned assignments do not require guide ticket blocks or answer explanations yet.
 - Do not write full topic prose or all ticket explanations.
 
 ### Slice D: Shared Official Source Archive Seed
@@ -242,10 +260,11 @@ Add a small helper such as `scripts/content-topic-guide.mjs` with no file I/O in
 Required checks:
 
 - question baseline count and IDs match the coverage manifest;
-- every current question ID appears in at least one topic;
-- no current question ID appears in more than two topics;
+- every current question ID appears in at least one planned or published topic assignment;
+- no current question ID appears in more than two planned or published topic assignments;
 - every guide ticket placement references an existing question;
-- coverage manifest and guide topic ticket lists agree;
+- coverage manifest and guide topic ticket lists agree for content-ready/published placements;
+- planned-only assignments are allowed during draft taxonomy coverage validation and forbidden by final published validation;
 - topic IDs are unique and stable;
 - every topic has required sections;
 - every ticket block has correct-answer explanation and wrong-answer explanations for every non-correct answer ID;
