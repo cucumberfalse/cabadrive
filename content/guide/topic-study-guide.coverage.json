@@ -188,9 +188,9 @@
       "titleRu": "Обгон и опережение",
       "categoryId": "maneuvers",
       "splitCriteria": "Sobrepaso/adelantamiento, запреты обгона, дистанция при объезде велосипедиста и возврат после маневра.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
       "topicId": "lane-choice-and-lane-changes",
@@ -498,9 +498,9 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-lane-channelization-markings",
+      "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "lane-and-channelization-markings": "content_ready"
       }
     },
@@ -937,8 +937,8 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
       "questionId": "b-fallback-058",
@@ -1347,8 +1347,8 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
       "questionId": "b-fallback-100",
@@ -1517,10 +1517,10 @@
         "overtaking-and-passing"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-right-of-way-basic-intersections",
+      "ownerSlice": "C+E-right-of-way-basic-intersections+E-overtaking-and-passing",
       "placementPhases": {
         "right-of-way-basic-intersections": "content_ready",
-        "overtaking-and-passing": "planned"
+        "overtaking-and-passing": "content_ready"
       }
     },
     {
@@ -1641,8 +1641,8 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
       "questionId": "b-fallback-131",
@@ -1838,10 +1838,10 @@
         "overtaking-and-passing"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-right-of-way-basic-intersections",
+      "ownerSlice": "C+E-right-of-way-basic-intersections+E-overtaking-and-passing",
       "placementPhases": {
         "right-of-way-basic-intersections": "content_ready",
-        "overtaking-and-passing": "planned"
+        "overtaking-and-passing": "content_ready"
       }
     },
     {
@@ -2043,10 +2043,10 @@
         "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E12",
+      "ownerSlice": "C+E12+E-overtaking-and-passing",
       "placementPhases": {
         "center-lines-and-crossing-rules": "content_ready",
-        "overtaking-and-passing": "planned"
+        "overtaking-and-passing": "content_ready"
       }
     },
     {
@@ -2056,10 +2056,10 @@
         "overtaking-and-passing"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-right-of-way-basic-intersections",
+      "ownerSlice": "C+E-right-of-way-basic-intersections+E-overtaking-and-passing",
       "placementPhases": {
         "right-of-way-basic-intersections": "content_ready",
-        "overtaking-and-passing": "planned"
+        "overtaking-and-passing": "content_ready"
       }
     },
     {
@@ -2149,9 +2149,9 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-lane-channelization-markings",
+      "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "lane-and-channelization-markings": "content_ready"
       }
     },
@@ -2409,9 +2409,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -2519,9 +2519,9 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-lane-channelization-markings",
+      "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "lane-and-channelization-markings": "content_ready"
       }
     },
@@ -2598,9 +2598,9 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-lane-channelization-markings",
+      "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "lane-and-channelization-markings": "content_ready"
       }
     },
@@ -2914,8 +2914,8 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
       "questionId": "b-fallback-262",
@@ -3211,9 +3211,9 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-lane-channelization-markings",
+      "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "lane-and-channelization-markings": "content_ready"
       }
     },
@@ -3615,9 +3615,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -3634,8 +3634,8 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
       "questionId": "b-fallback-334",
@@ -3895,9 +3895,9 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-lane-channelization-markings",
+      "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "lane-and-channelization-markings": "content_ready"
       }
     },
@@ -4155,9 +4155,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
@@ -4323,9 +4323,9 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-lane-channelization-markings",
+      "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "lane-and-channelization-markings": "content_ready"
       }
     },
@@ -4432,9 +4432,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "planned",
+        "overtaking-and-passing": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },
