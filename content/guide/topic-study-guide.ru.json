@@ -794,6 +794,804 @@
           "sourceTraceId": "speed-limits-low-beams-fast-roads"
         }
       ]
+    },
+    {
+      "id": "road-types-highways-and-routes",
+      "slug": "road-types-highways-and-routes",
+      "status": "draft",
+      "titleRu": "Типы дорог, трассы, автомагистрали и маршруты",
+      "summaryRu": "Короткий блок про то, как в билетах распознавать calle, avenida, ruta, autopista, semiautopista, banquina и специальные быстрые участки.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах по дорожному контексту сначала назовите место: calle, avenida, ruta, autopista, semiautopista, via rapida, banquina, tunel или конкретная артерия CABA. От этого зависит и правильное действие, и число скорости, и режим света.",
+        "Calle и avenida в городе отличаются не только шириной, но и экзаменационной логикой: обычная calle дает более спокойный городской режим, avenida чаще связывается с 60 km/h, а отдельные tramos могут иметь свою скорость по знаку или по специальному правилу. Поэтому в вопросах с изображением не отвечайте только по слову avenida: смотрите, какой именно tramo показан.",
+        "Ruta, autopista и semiautopista в билетах ведут себя как быстрые дороги. На них важны carriles, banquina, carril de desaceleracion, luces bajas и запрет превышать максимум даже при sobrepaso. Если нужно съехать с autopista или semiautopista, снижайте скорость после входа в carril de desaceleracion, чтобы не тормозить основной поток.",
+        "Banquina - не дополнительная полоса движения. Она находится рядом с calzada и нужна для безопасности или аварийной ситуации; билет с автомобилем на banquina требует ответить, что он circula incorrectamente.",
+        "Маршрутные знаки в этом срезе объясняются только на уровне конкретных билетов: Ruta Nacional N°3, Ruta Provincial N°5 и знак ruta provincial в вопросе. Без отдельного архивного среза по приложениям/аннексам Decreto 779 не делаем общего учебного утверждения о системе всех дорожных знаков.",
+        "Туннели, узкие мосты, камнепады и начало/конец autopista часто проверяются как распознавание дорожного контекста по изображению. В таких билетах выбирайте конкретный смысл картинки, а не самый знакомый дорожный термин."
+      ],
+      "practicalReasoningRu": [
+        "Тип дороги заранее сообщает водителю ожидаемую скорость, число конфликтов, наличие съездов, пешеходов, обочины и встречного движения. Поэтому экзамен часто спрашивает не только правило, но и способность распознать среду движения.",
+        "Разделение быстрых дорог на основной поток, banquina и carriles de desaceleracion делает поведение предсказуемым: кто едет прямо, не получает внезапное торможение перед съездом, а аварийная зона не превращается в полосу движения."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-calle",
+          "termEs": "calle",
+          "translationRu": "улица",
+          "sourceQuestionIds": [
+            "b-fallback-267",
+            "b-fallback-377",
+            "b-fallback-382",
+            "b-fallback-420",
+            "b-fallback-449"
+          ]
+        },
+        {
+          "id": "term-avenida",
+          "termEs": "avenida",
+          "translationRu": "проспект, авенида",
+          "sourceQuestionIds": [
+            "b-fallback-032",
+            "b-fallback-236",
+            "b-fallback-289"
+          ]
+        },
+        {
+          "id": "term-ruta",
+          "termEs": "ruta",
+          "translationRu": "маршрут, трасса",
+          "sourceQuestionIds": [
+            "b-fallback-026",
+            "b-fallback-034",
+            "b-fallback-239",
+            "b-fallback-314",
+            "b-fallback-346",
+            "b-fallback-439"
+          ]
+        },
+        {
+          "id": "term-autopista",
+          "termEs": "autopista",
+          "translationRu": "автомагистраль",
+          "sourceQuestionIds": [
+            "b-fallback-049",
+            "b-fallback-250",
+            "b-fallback-315",
+            "b-fallback-327",
+            "b-fallback-423"
+          ]
+        },
+        {
+          "id": "term-semiautopista",
+          "termEs": "semiautopista",
+          "translationRu": "полуавтомагистраль",
+          "sourceQuestionIds": [
+            "b-fallback-144",
+            "b-fallback-254",
+            "b-fallback-315"
+          ]
+        },
+        {
+          "id": "term-banquina",
+          "termEs": "banquina",
+          "translationRu": "обочина рядом с проезжей частью",
+          "sourceQuestionIds": [
+            "b-fallback-197"
+          ]
+        },
+        {
+          "id": "term-calzada",
+          "termEs": "calzada",
+          "translationRu": "проезжая часть",
+          "sourceQuestionIds": [
+            "b-fallback-239",
+            "b-fallback-346"
+          ]
+        },
+        {
+          "id": "term-carril-desaceleracion-road",
+          "termEs": "carril de desaceleración",
+          "translationRu": "полоса замедления перед съездом",
+          "sourceQuestionIds": [
+            "b-fallback-315"
+          ]
+        },
+        {
+          "id": "term-luces-bajas-road",
+          "termEs": "luces bajas",
+          "translationRu": "ближний свет",
+          "sourceQuestionIds": [
+            "b-fallback-250"
+          ]
+        },
+        {
+          "id": "term-sobrepaso-road",
+          "termEs": "sobrepaso",
+          "translationRu": "обгон, опережение",
+          "sourceQuestionIds": [
+            "b-fallback-439"
+          ]
+        },
+        {
+          "id": "term-tunel",
+          "termEs": "Túnel",
+          "translationRu": "туннель",
+          "sourceQuestionIds": [
+            "b-fallback-018"
+          ]
+        },
+        {
+          "id": "term-puente-angosto",
+          "termEs": "Puente angosto",
+          "translationRu": "узкий мост",
+          "sourceQuestionIds": [
+            "b-fallback-018"
+          ]
+        },
+        {
+          "id": "term-ruta-nacional-road",
+          "termEs": "Ruta Nacional",
+          "translationRu": "национальный маршрут",
+          "sourceQuestionIds": [
+            "b-fallback-296"
+          ]
+        },
+        {
+          "id": "term-ruta-provincial-road",
+          "termEs": "Ruta Provincial",
+          "translationRu": "провинциальный маршрут",
+          "sourceQuestionIds": [
+            "b-fallback-343"
+          ]
+        },
+        {
+          "id": "term-comienzo-autopista",
+          "termEs": "Comienzo de autopista",
+          "translationRu": "начало автомагистрали",
+          "sourceQuestionIds": [
+            "b-fallback-423"
+          ]
+        },
+        {
+          "id": "term-fin-autopista",
+          "termEs": "Fin de autopista",
+          "translationRu": "конец автомагистрали",
+          "sourceQuestionIds": [
+            "b-fallback-327"
+          ]
+        },
+        {
+          "id": "term-gral-paz-road",
+          "termEs": "Gral. Paz",
+          "translationRu": "проспект General Paz",
+          "sourceQuestionIds": [
+            "b-fallback-049",
+            "b-fallback-250"
+          ]
+        },
+        {
+          "id": "term-intendente-cantilo-road",
+          "termEs": "Intendente Cantilo",
+          "translationRu": "Intendente Cantilo",
+          "sourceQuestionIds": [
+            "b-fallback-250",
+            "b-fallback-398"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-018",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b230.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-018-a1",
+              "verdict": "correct",
+              "explanationRu": "На изображении в билете проверяется знак tunel; этот вариант прямо называет нужный дорожный объект."
+            },
+            {
+              "answerId": "b-fallback-018-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Puente angosto - узкий мост. Это другой дорожный контекст, а не показанный туннель."
+            },
+            {
+              "answerId": "b-fallback-018-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Altura minima относится к ограничению по высоте; билет спрашивает распознавание объекта tunel."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-026",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-026-a1",
+              "verdict": "correct",
+              "explanationRu": "Ruta, проходящая через zona urbana, в билете получает специальный предел 60 km/h; здесь важен не только тип ruta, но и городская зона."
+            },
+            {
+              "answerId": "b-fallback-026-a2",
+              "verdict": "incorrect",
+              "explanationRu": "80 km/h не подходит для ruta dentro de zona urbana в этой общей норме."
+            },
+            {
+              "answerId": "b-fallback-026-a3",
+              "verdict": "incorrect",
+              "explanationRu": "90 km/h слишком много для указанного городского прохождения ruta."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-032",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b133.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-032-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h часто связано с avenida, но на изображении указан конкретный tramo с другим пределом."
+            },
+            {
+              "answerId": "b-fallback-032-a2",
+              "verdict": "incorrect",
+              "explanationRu": "50 km/h не соответствует варианту, который билет считает правильным для показанного участка avenida."
+            },
+            {
+              "answerId": "b-fallback-032-a3",
+              "verdict": "correct",
+              "explanationRu": "Для этого tramo de la avenida правильный ответ - 40 km/h; дорожный контекст задает исключение из обычной памяти про avenida."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-034",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b273.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-034-a1",
+              "verdict": "incorrect",
+              "explanationRu": "В билете provincial route соответствует не senal A; это отвлекающий вариант среди трех похожих маршрутных знаков."
+            },
+            {
+              "answerId": "b-fallback-034-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Senal B тоже не обозначает ruta provincial в данном изображении."
+            },
+            {
+              "answerId": "b-fallback-034-a3",
+              "verdict": "correct",
+              "explanationRu": "По изображению правильная ruta provincial - senal C. Здесь нужно распознать конкретный маршрутный знак, не выводя общее правило о всей системе знаков."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-049",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-049-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h было бы слишком низким ответом для указанного tramo центральных полос Av. Gral. Paz."
+            },
+            {
+              "answerId": "b-fallback-049-a2",
+              "verdict": "correct",
+              "explanationRu": "Для carriles centrales de Av. Gral. Paz на указанном tramo билет требует 80 km/h; это конкретная via rapida CABA."
+            },
+            {
+              "answerId": "b-fallback-049-a3",
+              "verdict": "incorrect",
+              "explanationRu": "100 km/h не соответствует указанным центральным полосам Gral. Paz в формулировке билета."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-144",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-144-a1",
+              "verdict": "incorrect",
+              "explanationRu": "130 km/h относится к другой быстрой дорожной логике, но не к semiautopistas в этом билете."
+            },
+            {
+              "answerId": "b-fallback-144-a2",
+              "verdict": "correct",
+              "explanationRu": "Для automoviles particulares en semiautopistas билет по Ley Nacional 24.449 требует 120 km/h."
+            },
+            {
+              "answerId": "b-fallback-144-a3",
+              "verdict": "incorrect",
+              "explanationRu": "110 km/h ближе к ruta, но вопрос именно про semiautopista."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-197",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b124.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-197-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Даже если на такой дороге важны luces, вопрос показывает проблему не со светом, а с местом движения."
+            },
+            {
+              "answerId": "b-fallback-197-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Distancia prudencial не исправляет ошибку: автомобиль находится не в нормальной полосе движения."
+            },
+            {
+              "answerId": "b-fallback-197-a3",
+              "verdict": "correct",
+              "explanationRu": "Vehiculo circula por la banquina, а banquina не является обычной полосой для движения; поэтому circula incorrectamente."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-236",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b132.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-236-a1",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h обычно связано с calle, но билет спрашивает avenida."
+            },
+            {
+              "answerId": "b-fallback-236-a2",
+              "verdict": "incorrect",
+              "explanationRu": "70 km/h не является общим ответом для автомобиля на этой avenida."
+            },
+            {
+              "answerId": "b-fallback-236-a3",
+              "verdict": "correct",
+              "explanationRu": "Для automovil particular en esta avenida по общему правилу билета правильный максимум - 60 km/h."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-239",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b234.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-239-a1",
+              "verdict": "correct",
+              "explanationRu": "Знак предупреждает, что с возвышения рядом с ruta могут desprenderse rocas или части, которые катятся на calzada."
+            },
+            {
+              "answerId": "b-fallback-239-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Zona selvatica - другой образ и не связан с падающими камнями на дорогу."
+            },
+            {
+              "answerId": "b-fallback-239-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Irregularidades de calzada означает неровную дорогу; здесь опасность именно desprendimiento de rocas."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-250",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-250-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Todas las autopistas - верное утверждение, но вопрос просит полный набор, поэтому одного этого варианта недостаточно."
+            },
+            {
+              "answerId": "b-fallback-250-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Av. Gral. Paz, Lugones e Intendente Cantilo тоже входят в правило, но вариант неполный без autopistas."
+            },
+            {
+              "answerId": "b-fallback-250-a3",
+              "verdict": "correct",
+              "explanationRu": "Обе группы правильны: luces bajas encendidas las 24 horas требуются и на autopistas, и на перечисленных быстрых arterias CABA."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-254",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-254-a1",
+              "verdict": "correct",
+              "explanationRu": "Для semiautopistas в общем национальном правиле билета минимальная скорость - 40 km/h."
+            },
+            {
+              "answerId": "b-fallback-254-a2",
+              "verdict": "incorrect",
+              "explanationRu": "50 km/h не является минимальной скоростью, которую проверяет этот вопрос про semiautopistas."
+            },
+            {
+              "answerId": "b-fallback-254-a3",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h слишком высоко для минимального порога semiautopista в этом билете."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-267",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b138.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-267-a1",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h - обычная память про calle, но изображенный tramo de calle является специальным случаем."
+            },
+            {
+              "answerId": "b-fallback-267-a2",
+              "verdict": "correct",
+              "explanationRu": "Для этого tramo de calle правильный максимум - 20 km/h; в вопросах с изображением конкретный контекст важнее общего числа."
+            },
+            {
+              "answerId": "b-fallback-267-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h не соответствует показанному участку улицы."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-289",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b134.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-289-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h было бы обычной логикой avenida, но Avenida Costanera Rafael Obligado в этом изображении проверяет другой предел."
+            },
+            {
+              "answerId": "b-fallback-289-a2",
+              "verdict": "correct",
+              "explanationRu": "Для показанной Avenida Costanera Rafael Obligado билет считает правильным 70 km/h."
+            },
+            {
+              "answerId": "b-fallback-289-a3",
+              "verdict": "incorrect",
+              "explanationRu": "50 km/h не соответствует указанной avenida на изображении."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-296",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b275.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-296-a1",
+              "verdict": "correct",
+              "explanationRu": "В этом билете изображенный маршрутный знак означает Ruta Nacional N°3. Объяснение остается ticket-specific без общей ссылки на аннексы знаков."
+            },
+            {
+              "answerId": "b-fallback-296-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ruta Provincial N°3 - похожий маршрутный вариант, но изображение в билете указывает national, не provincial."
+            },
+            {
+              "answerId": "b-fallback-296-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ruta Panamericana N°3 не соответствует показанному знаку."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-314",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b137.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-314-a1",
+              "verdict": "correct",
+              "explanationRu": "В этой zona de la ruta для automovil particular правильный максимум - 110 km/h."
+            },
+            {
+              "answerId": "b-fallback-314-a2",
+              "verdict": "incorrect",
+              "explanationRu": "130 km/h слишком много для показанной zona de la ruta; это не ответ билета."
+            },
+            {
+              "answerId": "b-fallback-314-a3",
+              "verdict": "incorrect",
+              "explanationRu": "80 km/h слишком низко для этого вопроса про ruta."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-315",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-315-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Poco antes de abandonar la misma звучит логично, но это может означать торможение еще в основном потоке autopista/semiautopista."
+            },
+            {
+              "answerId": "b-fallback-315-a2",
+              "verdict": "correct",
+              "explanationRu": "Снижать скорость нужно после входа в carril de desaceleracion: так водитель уже отделен от основного быстрого потока."
+            },
+            {
+              "answerId": "b-fallback-315-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Когда уже ingresа a la nueva via, снижение начато слишком поздно для безопасного съезда."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-327",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b264.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-327-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Fin de semiautopista - похожая идея окончания быстрой дороги, но знак в билете не этот."
+            },
+            {
+              "answerId": "b-fallback-327-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Fin de ruta не совпадает с изображением."
+            },
+            {
+              "answerId": "b-fallback-327-a3",
+              "verdict": "correct",
+              "explanationRu": "Знак означает fin de autopista: конец режима автомагистрали."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-343",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b274.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-343-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ruta Nacional N°5 - похожий маршрутный ответ, но изображение в билете указывает provincial."
+            },
+            {
+              "answerId": "b-fallback-343-a2",
+              "verdict": "correct",
+              "explanationRu": "В этом билете изображенный знак означает Ruta Provincial N°5. Это ticket-specific recognition без общего аннексного утверждения."
+            },
+            {
+              "answerId": "b-fallback-343-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ruta Panamericana N°5 не соответствует показанному знаку."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-346",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-346-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Freno de mano может резко сорвать контроль; при выезде с calzada на ruta это не безопасный первый шаг."
+            },
+            {
+              "answerId": "b-fallback-346-a2",
+              "verdict": "correct",
+              "explanationRu": "Нужно desacelerar, no frenar: плавно снизить скорость и сохранить контроль, прежде чем возвращаться на calzada."
+            },
+            {
+              "answerId": "b-fallback-346-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Сильное нажатие на тормоз может ухудшить устойчивость автомобиля вне calzada."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-377",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b139.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-377-a1",
+              "verdict": "correct",
+              "explanationRu": "Для этого tramo de calle правильный максимум - 20 km/h; изображение показывает специальный дорожный контекст."
+            },
+            {
+              "answerId": "b-fallback-377-a2",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h - обычное число для calle, но не для показанного участка."
+            },
+            {
+              "answerId": "b-fallback-377-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h не соответствует изображенному tramo de calle."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-382",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-382-a1",
+              "verdict": "correct",
+              "explanationRu": "Для ночного движения по calle de la Ciudad de Buenos Aires билет требует luces bajas."
+            },
+            {
+              "answerId": "b-fallback-382-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Luces altas могут ослеплять и не являются правильным базовым ответом для городской calle ночью."
+            },
+            {
+              "answerId": "b-fallback-382-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Luces de posicion solamente недостаточны для движения ночью."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-398",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-398-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h не подходит для Av. Intendente Cantilo в этой формулировке salvo senalizacion."
+            },
+            {
+              "answerId": "b-fallback-398-a2",
+              "verdict": "incorrect",
+              "explanationRu": "110 km/h слишком много для указанной артерии CABA в билете."
+            },
+            {
+              "answerId": "b-fallback-398-a3",
+              "verdict": "correct",
+              "explanationRu": "Для Av. Intendente Cantilo, salvo senalizacion que indique otra velocidad, правильный ответ билета - 100 km/h."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-420",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b130.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-420-a1",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h больше похоже на avenida, но билет спрашивает esta calle."
+            },
+            {
+              "answerId": "b-fallback-420-a2",
+              "verdict": "correct",
+              "explanationRu": "По общему правилу для esta calle правильный максимум - 40 km/h."
+            },
+            {
+              "answerId": "b-fallback-420-a3",
+              "verdict": "incorrect",
+              "explanationRu": "70 km/h слишком много для calle в этом вопросе."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-423",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b263.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-423-a1",
+              "verdict": "correct",
+              "explanationRu": "Изображенный знак обозначает comienzo de autopista: начинается режим автомагистрали."
+            },
+            {
+              "answerId": "b-fallback-423-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Comienzo de ruta - другой дорожный контекст, не показанный этим знаком."
+            },
+            {
+              "answerId": "b-fallback-423-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Comienzo de semiautopista не соответствует изображению."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-439",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-439-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: движение на ruta с максимальной разрешенной скоростью не дает права превышать ее при sobrepaso."
+            },
+            {
+              "answerId": "b-fallback-439-a2",
+              "verdict": "correct",
+              "explanationRu": "Falso правильно: sobrepaso не отменяет velocidad maxima permitida."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-449",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b131.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-449-a1",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h не является минимальной скоростью для esta calle по общему правилу билета."
+            },
+            {
+              "answerId": "b-fallback-449-a2",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h - максимум для обычной calle, а вопрос спрашивает velocidad minima."
+            },
+            {
+              "answerId": "b-fallback-449-a3",
+              "verdict": "correct",
+              "explanationRu": "Минимум для calle в этой логике - половина максимума 40 km/h, то есть 20 km/h."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-road-context-before-number",
+          "textRu": "Сначала определяйте дорожный контекст: calle, avenida, ruta, autopista или semiautopista. Одно и то же число может быть правильным в одном месте и неверным в другом.",
+          "sourceQuestionIds": [
+            "b-fallback-026",
+            "b-fallback-144",
+            "b-fallback-236",
+            "b-fallback-420"
+          ]
+        },
+        {
+          "id": "trap-image-specific-tramos",
+          "textRu": "В билетах с изображением tramo может быть исключением: Costanera, Cantilo, Gral. Paz или специальная calle проверяются отдельно от общего правила.",
+          "sourceQuestionIds": [
+            "b-fallback-032",
+            "b-fallback-049",
+            "b-fallback-267",
+            "b-fallback-289",
+            "b-fallback-377",
+            "b-fallback-398"
+          ]
+        },
+        {
+          "id": "trap-banquina-not-lane",
+          "textRu": "Banquina не равна carril. Если автомобиль едет по banquina без аварийного контекста, правильная логика - circula incorrectamente.",
+          "sourceQuestionIds": [
+            "b-fallback-197"
+          ]
+        },
+        {
+          "id": "trap-route-sign-ticket-specific",
+          "textRu": "Ruta Nacional/Ruta Provincial в билетах 296 и 343 - распознавание конкретной картинки. Не расширяйте это в общее правило о всей системе знаков без отдельного архивного источника.",
+          "sourceQuestionIds": [
+            "b-fallback-296",
+            "b-fallback-343"
+          ]
+        },
+        {
+          "id": "trap-comienzo-fin",
+          "textRu": "Comienzo и fin меняют смысл знака. Не выбирайте autopista/semiautopista/ruta по одному символу: проверьте, начало это или конец.",
+          "sourceQuestionIds": [
+            "b-fallback-327",
+            "b-fallback-423"
+          ]
+        },
+        {
+          "id": "trap-ambas-respuestas",
+          "textRu": "Cuando aparece Ambas respuestas, проверьте, правда ли обе части. В билете про luces bajas верны и autopistas, и перечисленные vias rapidas.",
+          "sourceQuestionIds": [
+            "b-fallback-250"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-caba-road-definitions-and-fast-roads",
+          "textRu": "В CABA via publica включает calle, avenida, autopista и semiautopista; Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Gral. Paz и несколько autopistas относятся к vias rapidas.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "road-types-caba-road-definitions-and-fast-roads"
+        },
+        {
+          "id": "claim-banquina-definition",
+          "textRu": "Banquina - зона рядом и параллельно calzada на rutas, autopistas, semiautopistas или caminos, предусмотренная для большей безопасности движения, а не обычная полоса движения.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "road-types-banquina-definition"
+        },
+        {
+          "id": "claim-national-highway-and-semihighway-context",
+          "textRu": "Ley 24.449 определяет semiautopista как camino similar a la autopista, но с cruces a nivel, и задает специальные правила для autopistas/semiautopistas, включая съезд через carril de desaceleracion и применение части правил autopista к semiautopistas.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "road-types-national-highway-and-semihighway-context"
+        },
+        {
+          "id": "claim-road-speed-and-lights-context",
+          "textRu": "Дорожный тип влияет на экзаменационные ответы по скорости и свету: calles/avenidas/rutas/semiautopistas имеют разные лимиты, а CABA отдельно требует luces bajas круглосуточно на autopistas и перечисленных быстрых артериях.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "road-types-speed-and-lights-context"
+        }
+      ]
     }
   ]
 }

@@ -359,9 +359,9 @@
       "titleRu": "Типы дорог, трассы, автомагистрали и маршруты",
       "categoryId": "road-context",
       "splitCriteria": "Calle, avenida, ruta, autopista, semiautopista, banquina, túnel, General Paz, Cantilo и другие дорожные контексты.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E2"
     },
     {
       "topicId": "safety-principles-and-risk",
@@ -530,8 +530,8 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E2"
     },
     {
       "questionId": "b-fallback-019",
@@ -599,9 +599,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-027",
@@ -658,9 +658,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-033",
@@ -675,8 +675,8 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E2"
     },
     {
       "questionId": "b-fallback-035",
@@ -805,9 +805,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-050",
@@ -1603,9 +1603,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-145",
@@ -2056,8 +2056,8 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E2"
     },
     {
       "questionId": "b-fallback-198",
@@ -2382,9 +2382,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-237",
@@ -2408,8 +2408,8 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E2"
     },
     {
       "questionId": "b-fallback-240",
@@ -2502,9 +2502,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-251",
@@ -2539,9 +2539,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-255",
@@ -2652,9 +2652,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-268",
@@ -2840,9 +2840,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-290",
@@ -2905,9 +2905,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-297",
@@ -3058,9 +3058,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-315",
@@ -3070,10 +3070,10 @@
       ],
       "phase": "planned",
       "placementPhases": {
-        "road-types-highways-and-routes": "planned",
+        "road-types-highways-and-routes": "content_ready",
         "speed-limits": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-316",
@@ -3173,8 +3173,8 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E2"
     },
     {
       "questionId": "b-fallback-328",
@@ -3311,9 +3311,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-344",
@@ -3337,8 +3337,8 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E2"
     },
     {
       "questionId": "b-fallback-347",
@@ -3603,9 +3603,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-378",
@@ -3646,8 +3646,8 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E2"
     },
     {
       "questionId": "b-fallback-383",
@@ -3784,9 +3784,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-399",
@@ -3974,9 +3974,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-421",
@@ -3999,8 +3999,8 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E2"
     },
     {
       "questionId": "b-fallback-424",
@@ -4137,9 +4137,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-440",
@@ -4226,9 +4226,9 @@
       "phase": "planned",
       "placementPhases": {
         "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "planned"
+        "road-types-highways-and-routes": "content_ready"
       },
-      "ownerSlice": "E1"
+      "ownerSlice": "E1/E2"
     },
     {
       "questionId": "b-fallback-450",
