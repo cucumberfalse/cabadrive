@@ -305,9 +305,9 @@
       "titleRu": "Усталость, стресс и отвлечения",
       "categoryId": "driver-state",
       "splitCriteria": "Fatiga, estrés, sueño, teléfono/celular, auriculares, distracción и снижение реакции.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "topicId": "occupant-protection",
@@ -699,8 +699,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-034",
@@ -957,8 +957,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-060",
@@ -1054,9 +1054,9 @@
         "bicycles-and-micromobility"
       ],
       "phase": "planned",
-      "ownerSlice": "C",
+      "ownerSlice": "C+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "planned",
+        "fatigue-distraction-and-attention": "content_ready",
         "bicycles-and-micromobility": "content_ready"
       }
     },
@@ -1094,8 +1094,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-074",
@@ -1223,8 +1223,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-087",
@@ -2115,9 +2115,9 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "planned",
+        "fatigue-distraction-and-attention": "content_ready",
         "vehicle-condition-maintenance-loads": "content_ready"
       }
     },
@@ -2403,8 +2403,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-205",
@@ -2448,8 +2448,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-210",
@@ -2522,9 +2522,9 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "planned",
+        "fatigue-distraction-and-attention": "content_ready",
         "vehicle-condition-maintenance-loads": "content_ready"
       }
     },
@@ -2641,8 +2641,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-230",
@@ -2659,9 +2659,9 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "planned",
+        "fatigue-distraction-and-attention": "content_ready",
         "vehicle-condition-maintenance-loads": "content_ready"
       }
     },
@@ -2799,8 +2799,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-246",
@@ -3107,9 +3107,9 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "planned",
+        "fatigue-distraction-and-attention": "content_ready",
         "vehicle-condition-maintenance-loads": "content_ready"
       }
     },
@@ -3273,9 +3273,9 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "planned",
+        "fatigue-distraction-and-attention": "content_ready",
         "vehicle-condition-maintenance-loads": "content_ready"
       }
     },
@@ -3787,8 +3787,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-345",
@@ -3879,9 +3879,9 @@
         "bicycles-and-micromobility"
       ],
       "phase": "planned",
-      "ownerSlice": "C",
+      "ownerSlice": "C+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "planned",
+        "fatigue-distraction-and-attention": "content_ready",
         "bicycles-and-micromobility": "content_ready"
       }
     },
@@ -3992,8 +3992,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-365",
@@ -4097,8 +4097,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-375",
@@ -4407,8 +4407,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-405",
@@ -4417,9 +4417,9 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "planned",
+        "fatigue-distraction-and-attention": "content_ready",
         "vehicle-condition-maintenance-loads": "content_ready"
       }
     },
@@ -4713,8 +4713,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-436",
@@ -4734,8 +4734,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-438",
@@ -4781,8 +4781,8 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
       "questionId": "b-fallback-442",
