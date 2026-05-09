@@ -143,7 +143,7 @@
       "titleRu": "Базовый приоритет на перекрестках",
       "categoryId": "priority",
       "splitCriteria": "Encrucijada/bocacalle без специальных обстоятельств: правило правой стороны, avenida/calle/pasaje и обычный порядок проезда.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
       "ownerSlice": "C"
     },
