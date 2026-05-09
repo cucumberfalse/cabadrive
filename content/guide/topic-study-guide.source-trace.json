@@ -1381,6 +1381,95 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force",
       "notes": "Supports the narrow b-fallback-089 and b-fallback-221 ochava reference explanations while preserving this PR scope and not reassigning them into another topic."
+    },
+    {
+      "id": "vulnerable-shared-public-way-duty-and-actors",
+      "topicId": "vulnerable-users-and-shared-spaces",
+      "claimId": "claim-vulnerable-users-and-public-way-duty",
+      "claimSummaryRu": "Ley 2148 supports the shared duty of every usuario de la vía pública not to obstruct circulation or cause danger, and education/prevention campaigns emphasizing actores vulnerables; it does not establish the exact b-fallback-061 ranking as a general legal hierarchy.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.1.1 Usuarios de la vía pública",
+        "Ley 2148 3.4.1 Objetivos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Used for the general shared-duty and vulnerable-user framing. The exact Peatón-Ciclista-Moto-Colectivo-Taxi/Automóvil-Camión sequence remains ticket-specific fallback wording."
+    },
+    {
+      "id": "vulnerable-shared-cycling-space-definitions",
+      "topicId": "vulnerable-users-and-shared-spaces",
+      "claimId": "claim-cycling-space-definitions",
+      "claimSummaryRu": "Ley 2148 defines bicisenda, ciclocarril, ciclovía, bicicleta, ciclorrodado and assisted ciclorrodado; Anexo L supports broad cycling-space sign/marking context for the assigned image tickets without proving every exact fallback image label.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones Generales: Bicicleta, Bicisenda, Ciclocarril, Ciclorrodado, Ciclorrodado con pedaleo asistido eléctricamente, Ciclovía",
+        "Anexo L R.18 Circulación exclusiva",
+        "Anexo L P.26 Ciclistas o jinetes",
+        "Anexo L H.6 Senda para ciclistas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports definitions and broad cycling-space framing. The exact b-fallback-140 descender sign answer remains image-specific because the archived Anexo L search did not expose that exact sign catalogue entry."
+    },
+    {
+      "id": "vulnerable-shared-ciclorrodado-circulation-priority",
+      "topicId": "vulnerable-users-and-shared-spaces",
+      "claimId": "claim-ciclorrodado-circulation-and-priority",
+      "claimSummaryRu": "Ley 2148 supports ciclorrodado circulation on permitted arteries, use of ciclocarriles/ciclovías where present, non-central calzada positioning where no bicycle infrastructure exists, and cyclist priority when automotores turn into another street across their path.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.10.5 Arterias libradas a la circulación de ciclorrodados",
+        "Ley 2148 6.10.6 Requisitos para conductores de ciclorrodados",
+        "Ley 2148 6.10.8 Circulación de ciclorrodados",
+        "Ley 2148 6.10.9 Prioridad de paso"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-142 and b-fallback-186 framing. The guide avoids broadening the cyclist-priority explanation into an unsupported always-priority rule."
+    },
+    {
+      "id": "vulnerable-shared-electric-assist-speed",
+      "topicId": "vulnerable-users-and-shared-spaces",
+      "claimId": "claim-electric-assist-speed-boundary",
+      "claimSummaryRu": "Ley 2148 supports assisted ciclorrodado classification and the 25 km/h general maximum; the progressive power-cut wording in b-fallback-094 is kept as fallback-ticket wording rather than generalized from the archived source.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones Generales: Ciclorrodado con pedaleo asistido eléctricamente",
+        "Ley 2148 4.2.4 Requisitos para ciclorrodados",
+        "Ley 2148 6.2.3(j) Límites máximos especiales",
+        "Ley 2148 6.10.6 Requisitos para conductores de ciclorrodados"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the 25 km/h answer in b-fallback-425 and the source-bounded portion of b-fallback-094."
+    },
+    {
+      "id": "vulnerable-shared-sustainable-bike-network-purpose",
+      "topicId": "vulnerable-users-and-shared-spaces",
+      "claimId": "claim-sustainable-mobility-bike-network-purpose",
+      "claimSummaryRu": "Ley 2148 supports the sustainable public-bicycle framing, safer bicycle-lane network purpose, and mobility/integrity/safety principles used as concise context for b-fallback-098 and shared-space tickets.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 14.1.2 Objetivo",
+        "Ley 2148 14.1.3 Criterios generales",
+        "Ley 2148 14.4.2 Sistema de red de carriles",
+        "Ley 2148 14.4.3 Características de la infraestructura"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports sustainable-mobility framing without turning this slice into the full bicycles-and-micromobility topic."
     }
   ]
 }

@@ -9548,6 +9548,443 @@
       ]
     },
     {
+      "id": "vulnerable-users-and-shared-spaces",
+      "slug": "vulnerable-users-and-shared-spaces",
+      "status": "draft",
+      "titleRu": "Уязвимые участники и совместное пространство",
+      "summaryRu": "Блок про peatón/ciclista, movilidad sustentable, bicisenda/ciclovía, общую обязанность не мешать движению и приоритет велосипедиста при повороте автомобиля.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Он не заменяет официальные правила: испанский текст билета остается главным, а русское объяснение помогает быстро распознать логику вопроса.",
+        "Уязвимые участники - это прежде всего те, у кого меньше физической защиты и больше риск при конфликте с автомобилем. В `b-fallback-061` точный порядок Peatón - Ciclista - Moto - Colectivo - Taxi/Automóvil - Camión рассматривается как wording конкретного fallback-билета; архивированный источник поддерживает акцент на actores vulnerables, но не используется как официальный каталог такой иерархии.",
+        "Movilidad Sustentable в билетах не означает просто “быстрее”. Правильная формула связывает rapidez, seguridad, orden, peatones/ciclistas и calidad ambiental. Если вариант ответа ставит vehículo particular в центр, он обычно идет против этой рамки.",
+        "Bicisenda, ciclovía и ciclocarril - не одно и то же. Bicisenda находится на aceras или espacios verdes; ciclovía - sector de la calzada с separación для circulación exclusiva; ciclocarril - sector señalizado en la calzada с preferencia для ciclorodados и dispositivos de movilidad personal.",
+        "Ciclorrodados mayores de 12 años в билетной логике используют bicisendas/ciclovías там, где они есть; при отсутствии ciclovía/ciclocarril не занимают центр calzada и не едут по autopistas/vías rápidas. Поэтому в `b-fallback-142` правильна формула “Ambas respuestas”.",
+        "Ciclorrodado con pedaleo asistido eléctricamente проверяется в двух местах: как транспорт для велосипедной инфраструктуры и как ограничение 25 km/h. Формула из `b-fallback-094` про potencia que disminuye progresivamente остается ticket-specific; обобщаем только то, что поддержано архивированной Ley 2148: сам тип ciclorrodado asistido и общий предел 25 km/h.",
+        "На повороте автомобиля через траекторию велосипедиста ключевое слово не “siempre”, а giro. В `b-fallback-186` ciclista имеет prioridad потому, что automotor gira a derecha para ingresar a otra arteria; это не превращается в правило “велосипед всегда прав”.",
+        "Общая обязанность usuario de la vía pública касается всех: водителей, велосипедистов и пешеходов. Если вариант говорит, что peatones не обязаны или что обязанность возникает только при conducción de vehículo, это ловушка."
+      ],
+      "practicalReasoningRu": [
+        "Совместное пространство работает только если более тяжелый и быстрый участник заранее учитывает менее защищенного. Поэтому поворот через велосипедную траекторию и выезд на велопространство требуют особенно осторожной логики.",
+        "Велополосы и велодорожки делают движение понятнее: велосипедист не смешивается с самым быстрым потоком, а водитель заранее понимает, где ожидать ciclistas.",
+        "Экзамен часто проверяет не энциклопедию велосипедов, а границы формулировки: “vulnerable”, “sustentable”, “prioridad de paso”, “bicisenda” и “ciclovía” надо читать буквально."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-usuarios-de-la-via-vulnerable",
+          "termEs": "usuarios de la vía",
+          "translationRu": "участники дорожного движения / пользователи дороги",
+          "sourceQuestionIds": [
+            "b-fallback-061"
+          ]
+        },
+        {
+          "id": "term-mas-a-menos-vulnerable",
+          "termEs": "más a menos vulnerable",
+          "translationRu": "от более уязвимого к менее уязвимому",
+          "sourceQuestionIds": [
+            "b-fallback-061"
+          ]
+        },
+        {
+          "id": "term-movilidad-sustentable-shared",
+          "termEs": "Movilidad Sustentable",
+          "translationRu": "устойчивая мобильность",
+          "sourceQuestionIds": [
+            "b-fallback-098"
+          ]
+        },
+        {
+          "id": "term-peatones-y-ciclistas",
+          "termEs": "peatones y ciclistas",
+          "translationRu": "пешеходы и велосипедисты",
+          "sourceQuestionIds": [
+            "b-fallback-098"
+          ]
+        },
+        {
+          "id": "term-ciclorodado-pedaleo-asistido",
+          "termEs": "ciclorodado con pedaleo asistido eléctricamente",
+          "translationRu": "велосипед/циклородадо с электрической поддержкой педалирования",
+          "sourceQuestionIds": [
+            "b-fallback-094"
+          ]
+        },
+        {
+          "id": "term-velocidad-maxima-permitida-electric-bike",
+          "termEs": "velocidad máxima permitida",
+          "translationRu": "максимально разрешенная скорость",
+          "sourceQuestionIds": [
+            "b-fallback-425"
+          ]
+        },
+        {
+          "id": "term-25-kmh-electric-bike",
+          "termEs": "25 km/h",
+          "translationRu": "25 км/ч",
+          "sourceQuestionIds": [
+            "b-fallback-094",
+            "b-fallback-425"
+          ]
+        },
+        {
+          "id": "term-bicisendas-y-ciclovias",
+          "termEs": "bicisendas y ciclovías",
+          "translationRu": "велосипедные дорожки/пространства: bicisendas и ciclovías",
+          "sourceQuestionIds": [
+            "b-fallback-142"
+          ]
+        },
+        {
+          "id": "term-ciclovia-shared-spaces",
+          "termEs": "ciclovía",
+          "translationRu": "велополоса/велодорожка на проезжей части с отделением",
+          "sourceQuestionIds": [
+            "b-fallback-168"
+          ]
+        },
+        {
+          "id": "term-bicisenda-shared-spaces",
+          "termEs": "bicisenda",
+          "translationRu": "велопространство на тротуаре или в зеленой зоне",
+          "sourceQuestionIds": [
+            "b-fallback-426"
+          ]
+        },
+        {
+          "id": "term-descender-de-la-bicicleta",
+          "termEs": "descender de la bicicleta",
+          "translationRu": "слезть с велосипеда",
+          "sourceQuestionIds": [
+            "b-fallback-140"
+          ]
+        },
+        {
+          "id": "term-prioridad-de-paso-ciclista",
+          "termEs": "prioridad de paso",
+          "translationRu": "приоритет проезда",
+          "sourceQuestionIds": [
+            "b-fallback-186"
+          ]
+        },
+        {
+          "id": "term-giro-a-la-derecha-ciclista",
+          "termEs": "giro a la derecha",
+          "translationRu": "поворот направо",
+          "sourceQuestionIds": [
+            "b-fallback-186"
+          ]
+        },
+        {
+          "id": "term-no-entorpecer-injustificadamente",
+          "termEs": "no entorpecer injustificadamente la circulación",
+          "translationRu": "не затруднять движение без причины",
+          "sourceQuestionIds": [
+            "b-fallback-303"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-061",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-061-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно для этого билета: порядок начинается с Camión и Colectivo, то есть с более тяжелых и защищенных транспортных средств, а Peatón оказывается почти в конце. Это противоположно логике vulnerable users."
+            },
+            {
+              "answerId": "b-fallback-061-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: Peatón - Ciclista - Moto - Colectivo - Taxi/Automóvil - Camión. Используйте этот порядок как ticket-specific ranking, а не как отдельную официальную таблицу закона."
+            },
+            {
+              "answerId": "b-fallback-061-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Почти похоже, но Moto и Colectivo поменяны местами. В ожидаемом ответе мотоциклист уязвимее colectivo, потому что у него меньше физической защиты."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-094",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-094-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: такой vehículo не запрещен сам по себе. Билет спрашивает не общий запрет, а может ли ciclorodado con pedaleo asistido eléctricamente использовать показанный carril при условии ограничения assistance/speed."
+            },
+            {
+              "answerId": "b-fallback-094-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: fallback-ответ разрешает движение, если asistencia eléctrica уменьшается и прекращается при 25 km/h. Архивированная Ley 2148 прямо поддерживает общий предел 25 km/h для таких ciclorrodados; техническая формула про progressive cutoff оставлена как wording этого билета."
+            },
+            {
+              "answerId": "b-fallback-094-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: ответ говорит “только где нет ciclovías”, но велосипедная инфраструктура как раз предназначена для таких легких участников при соблюдении условий. Это не причина запретить движение по показанному carril."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b16.jpg"
+        },
+        {
+          "questionId": "b-fallback-098",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-098-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: priorizar el vehículo particular идет против идеи movilidad sustentable. В этой теме фокус на более безопасном, упорядоченном и экологичном перемещении, особенно с учетом peatones y ciclistas."
+            },
+            {
+              "answerId": "b-fallback-098-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Скорость сама по себе недостаточна. Вариант игнорирует seguridad, orden, выбор типа мобильности и экологический эффект, поэтому он слишком узкий."
+            },
+            {
+              "answerId": "b-fallback-098-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: rápida, segura y ordenada плюс акцент на peatones/ciclistas и mejor calidad ambiental. Это ровно экзаменационная формула movilidad sustentable в этом билете."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-140",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-140-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: изображение в этом fallback-билете не означает “с этого места разрешено ехать только на велосипеде”. Такой ответ перепутывает обязательство для ciclista с началом разрешенного велосипедного коридора."
+            },
+            {
+              "answerId": "b-fallback-140-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке билета: señal indica al ciclista que es obligatorio descender de la bicicleta. Это ticket-specific image recognition; не расширяйте его до общего списка всех велосипедных знаков."
+            },
+            {
+              "answerId": "b-fallback-140-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: comienza una ciclovía - другая идея. Здесь правильный ответ про необходимость слезть с велосипеда, а не про начало ciclovía."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b254.jpg"
+        },
+        {
+          "questionId": "b-fallback-142",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-142-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Фраза про bicisendas y ciclovías сама по себе верная, но как ответ на этот multiple-choice вопрос неполная. Билет ожидает объединить ее с правилом для arterias без ciclovía."
+            },
+            {
+              "answerId": "b-fallback-142-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Эта часть тоже верна по смыслу fallback-билета, но отдельно неполна: она не покрывает tramos donde hay bicisendas/ciclovías. Поэтому выбирать только B нельзя."
+            },
+            {
+              "answerId": "b-fallback-142-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas. Для mayores de 12 años билет объединяет движение по bicisendas/ciclovías там, где они есть, и движение по правой/нецентральной части calzada там, где их нет, исключая autopistas и другие vías rápidas."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-168",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-168-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Opción A показывает ciclovía в логике этого билета. Смотрите на велосипедное пространство на calzada/отделенное от общего потока, а не просто на наличие велосипеда где-либо на картинке."
+            },
+            {
+              "answerId": "b-fallback-168-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Opción B не является ожидаемой ciclovía для этого билета. Если изображение не показывает нужный тип выделенного велосипедного пространства, вариант не подходит."
+            },
+            {
+              "answerId": "b-fallback-168-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Opción C тоже не соответствует ciclovía в этом image-choice вопросе. Здесь надо выбрать одну картинку, а не любые элементы, связанные с велосипедами."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b42.jpg"
+        },
+        {
+          "questionId": "b-fallback-186",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-186-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: правило mano derecha не спасает автомобиль, который gira a la derecha через траекторию ciclista. При повороте automotor pierde la prioridad frente al ciclorrodado."
+            },
+            {
+              "answerId": "b-fallback-186-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ciclista имеет prioridad, потому что automóvil выполняет giro a la derecha para ingresar a otra arteria. Это официальный приоритетный случай для ciclorrodados, а не просто уважительная уступка."
+            },
+            {
+              "answerId": "b-fallback-186-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Формулировка “siempre tiene prioridad” слишком широкая. В этом билете приоритет возникает из-за конкретного маневра автомобиля - поворота через путь велосипедиста."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b95.jpg"
+        },
+        {
+          "questionId": "b-fallback-303",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-303-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: обязанность no entorpecer injustificadamente la circulación y no causar peligro действует независимо от tipo de movilidad elegido. Usuario de la vía pública - шире, чем водитель автомобиля."
+            },
+            {
+              "answerId": "b-fallback-303-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: peatones тоже являются usuarios de la vía pública. Они не выпадают из базовой обязанности не создавать опасность, ущерб или лишние помехи."
+            },
+            {
+              "answerId": "b-fallback-303-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: обязанность не ограничена ситуацией, когда мы conducimos un vehículo. Билет специально проверяет, что она общая для разных способов передвижения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b2.jpg"
+        },
+        {
+          "questionId": "b-fallback-425",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-425-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: предел для bicicleta con asistencia eléctrica не равен автоматически общей скорости vías/ciclovía. Билет спрашивает специальный maximum for assisted bicycle."
+            },
+            {
+              "answerId": "b-fallback-425-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: 25 km/h. Это совпадает с архивированной Ley 2148, где для ciclorrodados con pedaleo asistido eléctricamente указан límite máximo general de 25 km/h."
+            },
+            {
+              "answerId": "b-fallback-425-a3",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h слишком много для этого вопроса. Ловушка в том, что число близкое, но правильный лимит именно 25 km/h."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-426",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-426-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción A не является ожидаемой bicisenda для этого билета. Не выбирайте картинку только потому, что она связана с велосипедной темой."
+            },
+            {
+              "answerId": "b-fallback-426-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Opción B показывает bicisenda в логике билета. Ключ - отличить bicisenda от ciclovía: bicisenda связана с aceras/espacios verdes, а ciclovía - с calzada и separación."
+            },
+            {
+              "answerId": "b-fallback-426-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Opción C неверна: в этом image-choice вопросе она не соответствует bicisenda. Сравнивайте именно тип велосипедного пространства, а не общий городской контекст."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b41.jpg"
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-vulnerable-users-and-public-way-duty",
+          "textRu": "Ley 2148 supports a shared-road duty for every usuario de la vía pública and an education/prevention focus on actores vulnerables, while the exact b-fallback-061 vulnerability ranking remains ticket-specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vulnerable-shared-public-way-duty-and-actors"
+        },
+        {
+          "id": "claim-cycling-space-definitions",
+          "textRu": "Ley 2148 defines bicicleta, bicisenda, ciclocarril, ciclovía, ciclorrodado and ciclorrodado con pedaleo asistido; Anexo L supports the cycling-space sign/marking framing used only as broad context for assigned image tickets.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vulnerable-shared-cycling-space-definitions"
+        },
+        {
+          "id": "claim-ciclorrodado-circulation-and-priority",
+          "textRu": "Ley 2148 supports the narrow circulation and priority rules used here: ciclorrodados use cycling infrastructure where present, avoid forbidden fast roads, and have priority over automotores that turn into another street across their path.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vulnerable-shared-ciclorrodado-circulation-priority"
+        },
+        {
+          "id": "claim-electric-assist-speed-boundary",
+          "textRu": "Ley 2148 supports the 25 km/h general maximum for ciclorrodados con pedaleo asistido eléctricamente; the ticket phrase about progressive power interruption is treated as fallback-ticket wording.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vulnerable-shared-electric-assist-speed"
+        },
+        {
+          "id": "claim-sustainable-mobility-bike-network-purpose",
+          "textRu": "Ley 2148 supports the sustainable-mobility framing through public bicycle transport goals, mobility/integrity/safety guarantees, and a safe bicycle-lane network; this remains concise exam support, not a full bicycle topic.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vulnerable-shared-sustainable-bike-network-purpose"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-ranking-ticket-specific-not-law-table",
+          "textRu": "В `b-fallback-061` запоминайте порядок как answer key билета. Не утверждайте, что это официальная юридическая шкала уязвимости, если источник прямо ее не дает.",
+          "sourceQuestionIds": [
+            "b-fallback-061"
+          ]
+        },
+        {
+          "id": "trap-sustentable-not-private-car-speed-only",
+          "textRu": "Movilidad Sustentable - не “vehicle particular first” и не “быстро любой ценой”. Ищите безопасность, порядок, peatones/ciclistas и качество среды.",
+          "sourceQuestionIds": [
+            "b-fallback-098"
+          ]
+        },
+        {
+          "id": "trap-bicisenda-ciclovia-ciclocarril",
+          "textRu": "Bicisenda и ciclovía похожи по теме, но не по месту. В image-choice билетах сначала решите, где находится пространство: acera/espacio verde или calzada.",
+          "sourceQuestionIds": [
+            "b-fallback-168",
+            "b-fallback-426"
+          ]
+        },
+        {
+          "id": "trap-ambas-respuestas-cyclists",
+          "textRu": "В `b-fallback-142` варианты A и B по отдельности выглядят правильными, но билет ожидает “Ambas respuestas”. Не теряйте вторую половину правила.",
+          "sourceQuestionIds": [
+            "b-fallback-142"
+          ]
+        },
+        {
+          "id": "trap-cyclist-priority-not-always",
+          "textRu": "В `b-fallback-186` правильный ответ не потому, что cyclist always wins. Причина уже в вопросе: automóvil realiza un giro a la derecha.",
+          "sourceQuestionIds": [
+            "b-fallback-186"
+          ]
+        },
+        {
+          "id": "trap-electric-bike-25-not-30",
+          "textRu": "Для assisted bike число 25 km/h встречается дважды. 30 km/h и “speed of the road” - отвлекающие варианты.",
+          "sourceQuestionIds": [
+            "b-fallback-094",
+            "b-fallback-425"
+          ]
+        },
+        {
+          "id": "trap-all-users-not-only-drivers",
+          "textRu": "`Usuarios de la vía pública` включает не только conductores de vehículos. Поэтому пешеходы и другие способы мобильности тоже внутри общей обязанности не мешать и не создавать опасность.",
+          "sourceQuestionIds": [
+            "b-fallback-303"
+          ]
+        },
+        {
+          "id": "trap-descender-sign-is-image-specific",
+          "textRu": "Знак из `b-fallback-140` объяснен по изображению билета: descender de la bicicleta. Не превращайте этот билет в полный каталог велосипедных знаков.",
+          "sourceQuestionIds": [
+            "b-fallback-140"
+          ]
+        }
+      ]
+    },
+    {
       "id": "mirrors-blind-spots-and-visibility",
       "slug": "mirrors-blind-spots-and-visibility",
       "status": "draft",

@@ -251,9 +251,9 @@
       "titleRu": "Уязвимые участники и совместное пространство",
       "categoryId": "vulnerable-users",
       "splitCriteria": "Иерархия peatón/ciclista, bicisenda/ciclovía, calle prioridad peatón и вопросы, где пешеходная тема пересекается с велосипедами или устойчивой мобильностью.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vulnerable-shared-spaces"
     },
     {
       "topicId": "bicycles-and-micromobility",
@@ -953,8 +953,8 @@
       "topicIds": [
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vulnerable-shared-spaces"
     },
     {
       "questionId": "b-fallback-062",
@@ -1276,7 +1276,11 @@
         "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vulnerable-shared-spaces",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "vulnerable-users-and-shared-spaces": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-095",
@@ -1312,8 +1316,8 @@
       "topicIds": [
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vulnerable-shared-spaces"
     },
     {
       "questionId": "b-fallback-099",
@@ -1699,7 +1703,11 @@
         "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vulnerable-shared-spaces",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "vulnerable-users-and-shared-spaces": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-141",
@@ -1716,7 +1724,11 @@
         "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vulnerable-shared-spaces",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "vulnerable-users-and-shared-spaces": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-143",
@@ -1963,7 +1975,11 @@
         "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vulnerable-shared-spaces",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "vulnerable-users-and-shared-spaces": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-169",
@@ -2142,7 +2158,11 @@
         "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vulnerable-shared-spaces",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "vulnerable-users-and-shared-spaces": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-187",
@@ -3212,8 +3232,8 @@
       "topicIds": [
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vulnerable-shared-spaces"
     },
     {
       "questionId": "b-fallback-304",
@@ -4393,7 +4413,11 @@
         "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vulnerable-shared-spaces",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "vulnerable-users-and-shared-spaces": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-426",
@@ -4402,7 +4426,11 @@
         "vulnerable-users-and-shared-spaces"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vulnerable-shared-spaces",
+      "placementPhases": {
+        "bicycles-and-micromobility": "planned",
+        "vulnerable-users-and-shared-spaces": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-427",
