@@ -7929,7 +7929,7 @@
         "В билетах про cambio de carril правильный ответ обычно у того, кто уже circula por el carril que se pretende ocupar. Световой указатель не дает права резко занять полосу: он только предупреждает о намерении.",
         "На arterias multicarriles и autopistas надо стараться оставаться в своем carril y por su centro. Левый крайний carril на autopista связан с максимальной допустимой скоростью и adelantamiento; возвращение вправо после опасности или маневра должно быть облегчено, а не заблокировано.",
         "Carriles exclusivos - это продольные demarcated bands на calzada для определенных транспортных средств. Если билет показывает поворот через carril exclusivo, смотрите horario de restricción: вне restricted hours answer может измениться, но в рабочее время такой carril нельзя просто invadir.",
-        "Carril de aceleración - полоса, через которую incorporarse a una autopista. Для egresar с autopista используется carril de desaceleración, а если его нет или при неисправности нужно заранее уйти вправо и abandonar la autopista en la próxima salida.",
+        "Carril de aceleración - полоса, через которую incorporarse a una autopista. Для egresar с autopista используется carril de desaceleración, а если его нет - заблаговременное приближение через carril derecho. В `b-fallback-358` формулировка про serious failure остается ticket-specific: правильный fallback-ответ - уйти вправо и abandonar la autopista en la próxima salida.",
         "Билеты `b-fallback-148` и `b-fallback-165` остаются dual-topic: здесь они про перестроение, а соседний right-of-way topic еще planned. Билеты с carriles exclusivos и markings тоже promoted только в этом topic; marking-side placement остается planned."
       ],
       "practicalReasoningRu": [
@@ -8227,7 +8227,7 @@
         },
         {
           "id": "claim-acceleration-deceleration-and-autopista-exit",
-          "textRu": "Carril de aceleración используется для incorporación; для egresar с autopista применяется carril de desaceleración или, если его нет, правый carril с заблаговременным перестроением, а неисправные/буксируемые автомобили должны уходить через первую возможную salida.",
+          "textRu": "Carril de aceleración используется для incorporación; для egresar с autopista применяется carril de desaceleración или, если его нет, правый carril с заблаговременным перестроением; для vehículos remolcados источник отдельно требует abandonar la vía en la primera salida.",
           "requiresOfficialSource": true,
           "sourceTraceId": "lane-choice-acceleration-deceleration-and-exit"
         }

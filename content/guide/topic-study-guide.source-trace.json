@@ -1065,7 +1065,7 @@
       "id": "lane-choice-acceleration-deceleration-and-exit",
       "topicId": "lane-choice-and-lane-changes",
       "claimId": "claim-acceleration-deceleration-and-autopista-exit",
-      "claimSummaryRu": "CABA and national law support acceleration-lane incorporation without obstructing traffic, deceleration/right-lane positioning for exiting, and first-exit abandonment for vehicles with accident/mechanical trouble or remolque context.",
+      "claimSummaryRu": "CABA and national law support acceleration-lane incorporation without obstructing traffic, deceleration/right-lane positioning for exiting, and first-exit abandonment for remolcado vehicles.",
       "officialDocumentIds": [
         "ley-2148-caba-codigo-transito-transporte",
         "ley-24449-transito-seguridad-vial"
@@ -1077,7 +1077,7 @@
       ],
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
-      "notes": "Supports b-fallback-336 and b-fallback-358 without adding a broader mechanical-breakdown lesson beyond lane choice and exiting the autopista."
+      "notes": "Supports b-fallback-336 and the official lane/exit framing for b-fallback-358. The non-towed serious-failure recommendation in b-fallback-358 remains ticket-specific fallback wording, not a generalized official-source claim."
     }
   ]
 }
