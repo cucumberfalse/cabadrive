@@ -125,9 +125,9 @@
       "titleRu": "Дистанция, торможение и реакция",
       "categoryId": "speed",
       "splitCriteria": "Дистанция безопасности, тормозной путь, время реакции и связь скорости с полем зрения.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "topicId": "adverse-weather-and-visibility",
@@ -425,16 +425,16 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-006",
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-007",
@@ -762,8 +762,8 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-042",
@@ -2644,8 +2644,8 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-241",
@@ -2780,8 +2780,8 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-256",
@@ -3002,8 +3002,8 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-279",
@@ -3491,7 +3491,11 @@
         "adverse-weather-and-visibility"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-safe-distance-braking",
+      "placementPhases": {
+        "safe-distance-and-braking": "content_ready",
+        "adverse-weather-and-visibility": "planned"
+      }
     },
     {
       "questionId": "b-fallback-331",
@@ -4183,8 +4187,8 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-402",
@@ -4342,8 +4346,8 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-418",
@@ -4403,8 +4407,8 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-425",
@@ -4663,8 +4667,8 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-safe-distance-braking"
     },
     {
       "questionId": "b-fallback-451",
