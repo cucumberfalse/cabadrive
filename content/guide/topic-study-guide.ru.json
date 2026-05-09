@@ -987,6 +987,714 @@
       ]
     },
     {
+      "id": "vehicle-lights-and-signaling",
+      "slug": "vehicle-lights-and-signaling",
+      "status": "draft",
+      "titleRu": "Свет, поворотники и аварийная сигнализация",
+      "summaryRu": "Экзаменационный блок про luces bajas/altas, rompeniebla, balizas, luz de giro и световое предупреждение маневра, остановки или аварийной ситуации.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про свет сначала определяйте задачу: ехать при плохой видимости, предупредить маневр, обозначить остановку, показать emergency или распознать знак/картинку.",
+        "Общая официальная логика проста: фары делают автомобиль видимым и освещают путь, а balizas/intermitentes предупреждают о detenido, egreso, próxima detención/estacionamiento, maniobra riesgosa или imprevisto. Поэтому balizas не являются разрешением на double fila или остановку в запрещенном месте.",
+        "Для ingreso a garaje/estacionamiento в CABA правильный сигнал - luces intermitentes de emergencia/balizas. Luz de giro hacia el lado или hacia el lado opuesto в таком билете не подходит: экзамен проверяет именно аварийные огни как предупреждение необычного замедления и въезда.",
+        "При niebla или visibilidad disminuida не выбирайте luces altas: они ухудшают восприятие в тумане и не являются ожидаемым ответом. В этих билетах нужны luces bajas, а rompeniebla/rompenieblas добавляются только когда речь идет об их собственном назначении и они есть у автомобиля.",
+        "Balizas во время движения под дождем/туманом - ловушка. Они нужны не для обычного движения в плохую погоду, а для предупреждения остановки, аварии, рискованного маневра или нестандартной ситуации.",
+        "Аварийные билеты читаются буквально. Если автомобиль inmovilizado на autopista/carriles marcados, ожидаемый ответ - permanecer dentro del vehículo con cinturón, encender balizas и llamar al número de emergencia de la Autopista; не выходить подавать жесты в поток.",
+        "Некоторые детали остаются строго ticket-specific: exact glare от неправильной altura de las luces bajas, private-vehicle emergency combo balizas + bocina + pañuelo, и картинки с correct/incorrect lights. Не расширяйте их в общий справочник без отдельного источника."
+      ],
+      "practicalReasoningRu": [
+        "Световые сигналы нужны для предсказуемости: другие участники должны понять не только где автомобиль, но и что он собирается делать дальше.",
+        "Balizas выделяют нестандартную ситуацию. Если использовать их как универсальное оправдание остановки или езды в плохую погоду, сигнал теряет смысл и создает новые конфликты.",
+        "В тумане важна видимость контура и отсутствие ослепления. Поэтому экзаменационная логика отделяет bajas/rompeniebla от altas и от аварийки."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-luces-bajas",
+          "termEs": "luces bajas",
+          "translationRu": "ближний свет",
+          "sourceQuestionIds": [
+            "b-fallback-166",
+            "b-fallback-283",
+            "b-fallback-390"
+          ]
+        },
+        {
+          "id": "term-luces-altas",
+          "termEs": "luces altas",
+          "translationRu": "дальний свет",
+          "sourceQuestionIds": [
+            "b-fallback-283",
+            "b-fallback-292",
+            "b-fallback-388"
+          ]
+        },
+        {
+          "id": "term-balizas-lights",
+          "termEs": "balizas",
+          "translationRu": "аварийные огни; иногда также переносные аварийные знаки/огни",
+          "sourceQuestionIds": [
+            "b-fallback-002",
+            "b-fallback-015",
+            "b-fallback-039",
+            "b-fallback-097",
+            "b-fallback-232",
+            "b-fallback-263",
+            "b-fallback-388",
+            "b-fallback-413",
+            "b-fallback-428"
+          ]
+        },
+        {
+          "id": "term-luces-intermitentes-balizas",
+          "termEs": "luces intermitentes (balizas)",
+          "translationRu": "мигающие аварийные огни",
+          "sourceQuestionIds": [
+            "b-fallback-232"
+          ]
+        },
+        {
+          "id": "term-luz-giro-lights",
+          "termEs": "luz de giro",
+          "translationRu": "указатель поворота",
+          "sourceQuestionIds": [
+            "b-fallback-232"
+          ]
+        },
+        {
+          "id": "term-rompeniebla",
+          "termEs": "rompeniebla",
+          "translationRu": "противотуманный свет/фара",
+          "sourceQuestionIds": [
+            "b-fallback-283",
+            "b-fallback-360"
+          ]
+        },
+        {
+          "id": "term-vias-afectadas-niebla",
+          "termEs": "vías afectadas por niebla",
+          "translationRu": "дороги, затронутые туманом",
+          "sourceQuestionIds": [
+            "b-fallback-317"
+          ]
+        },
+        {
+          "id": "term-visibilidad-disminuida",
+          "termEs": "disminuida la visibilidad",
+          "translationRu": "снижена видимость",
+          "sourceQuestionIds": [
+            "b-fallback-390"
+          ]
+        },
+        {
+          "id": "term-banco-niebla-lights",
+          "termEs": "niebla",
+          "translationRu": "туман",
+          "sourceQuestionIds": [
+            "b-fallback-283",
+            "b-fallback-317"
+          ]
+        },
+        {
+          "id": "term-doble-fila-lights",
+          "termEs": "doble fila",
+          "translationRu": "остановка/стояние вторым рядом",
+          "sourceQuestionIds": [
+            "b-fallback-015",
+            "b-fallback-039"
+          ]
+        },
+        {
+          "id": "term-detencion-estacionamiento-lights",
+          "termEs": "detención previa a la maniobra de estacionamiento",
+          "translationRu": "краткая остановка перед маневром парковки",
+          "sourceQuestionIds": [
+            "b-fallback-039",
+            "b-fallback-097"
+          ]
+        },
+        {
+          "id": "term-garaje-lights",
+          "termEs": "garaje",
+          "translationRu": "гараж/въезд",
+          "sourceQuestionIds": [
+            "b-fallback-232",
+            "b-fallback-378",
+            "b-fallback-442"
+          ]
+        },
+        {
+          "id": "term-altura-luces-bajas",
+          "termEs": "altura de las luces bajas",
+          "translationRu": "высота/регулировка ближнего света",
+          "sourceQuestionIds": [
+            "b-fallback-166"
+          ]
+        },
+        {
+          "id": "term-encandilamiento",
+          "termEs": "encandilamiento",
+          "translationRu": "ослепление светом",
+          "sourceQuestionIds": [
+            "b-fallback-166"
+          ]
+        },
+        {
+          "id": "term-bocina-panuelio",
+          "termEs": "bocina",
+          "translationRu": "звуковой сигнал",
+          "sourceQuestionIds": [
+            "b-fallback-183"
+          ]
+        },
+        {
+          "id": "term-panuelo",
+          "termEs": "pañuelo",
+          "translationRu": "платок/ткань для аварийного сигнала",
+          "sourceQuestionIds": [
+            "b-fallback-183"
+          ]
+        },
+        {
+          "id": "term-numero-emergencia-autopista",
+          "termEs": "número de emergencia de la Autopista",
+          "translationRu": "номер экстренной службы автомагистрали",
+          "sourceQuestionIds": [
+            "b-fallback-263"
+          ]
+        },
+        {
+          "id": "term-balizas-portatiles",
+          "termEs": "balizas portátiles",
+          "translationRu": "переносные аварийные знаки/огни",
+          "sourceQuestionIds": [
+            "b-fallback-263",
+            "b-fallback-388"
+          ]
+        },
+        {
+          "id": "term-luces-reglamentarias",
+          "termEs": "luces reglamentarias",
+          "translationRu": "предписанные/штатные огни",
+          "sourceQuestionIds": [
+            "b-fallback-292"
+          ]
+        },
+        {
+          "id": "term-luces-correctas",
+          "termEs": "luces correctas",
+          "translationRu": "правильные огни",
+          "sourceQuestionIds": [
+            "b-fallback-349",
+            "b-fallback-378",
+            "b-fallback-442"
+          ]
+        },
+        {
+          "id": "term-cruce-ferroviario-lights",
+          "termEs": "aproximación de trenes",
+          "translationRu": "приближение поездов",
+          "sourceQuestionIds": [
+            "b-fallback-190"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-002",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-002-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: в этом билете такие señas допустимы как acompañamiento al uso de balizas и/или en caso de emergencia. Ручной сигнал усиливает предупреждение, но не заменяет аварийные огни и безопасное поведение."
+            },
+            {
+              "answerId": "b-fallback-002-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Nunca слишком категорично. В аварийном контексте билет прямо допускает этот тип предупреждающих señas вместе с balizas."
+            },
+            {
+              "answerId": "b-fallback-002-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo cuando se utilicen en calles сужает правило до типа улицы. Вопрос спрашивает не про calles, а про balizas/emergencia."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b173.jpg"
+        },
+        {
+          "questionId": "b-fallback-015",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-015-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: encender las balizas не дает разрешения detenerse en doble fila на 2-5 минут."
+            },
+            {
+              "answerId": "b-fallback-015-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза ложная. Balizas предупреждают, что автомобиль detenido или выполняет рискованный/необычный маневр, но не легализуют double fila как временную стоянку."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-039",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-039-a1",
+              "verdict": "incorrect",
+              "explanationRu": "На изображении balizas и короткое время для высадки пассажира не делают double fila разрешенной. Это типичная ловушка: аварийка не отменяет запрет."
+            },
+            {
+              "answerId": "b-fallback-039-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ascenso y descenso de pasajeros сам по себе не разрешает двойной ряд. Билет дает более узкое исключение."
+            },
+            {
+              "answerId": "b-fallback-039-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: действие запрещено, потому что double fila допускается только как detención previa a la maniobra de estacionamiento, а не для обычной посадки/высадки."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b162.jpg"
+        },
+        {
+          "questionId": "b-fallback-097",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-097-a1",
+              "verdict": "incorrect",
+              "explanationRu": "2-5 минут не спасают ситуацию на картинке. Если это не непосредственная maniobra de estacionamiento, оставаться так нельзя."
+            },
+            {
+              "answerId": "b-fallback-097-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Водитель внутри автомобиля и включенные balizas не превращают double fila в разрешенную остановку около двух минут."
+            },
+            {
+              "answerId": "b-fallback-097-a3",
+              "verdict": "correct",
+              "explanationRu": "Не будет нарушения только если это detención previa a la maniobra de estacionamiento: машина кратко остановилась именно перед парковкой."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b160.jpg"
+        },
+        {
+          "questionId": "b-fallback-108",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-108-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: после siniestro vial на avenida надо señalizar la zona, чтобы другие водители заранее увидели опасность и не возникли новые incidentes."
+            },
+            {
+              "answerId": "b-fallback-108-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: оставлять место siniestro без предупреждения опасно, потому что следующие участники движения могут поздно заметить препятствие."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-166",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-166-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: неправильная altura de las luces bajas в таких условиях может producir encandilamiento; вариант связывает эффект с cambios bruscos en la intensidad de la luz."
+            },
+            {
+              "answerId": "b-fallback-166-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo por el uso de la luz alta неверно. Билет прямо проверяет, что неправильно отрегулированный ближний свет тоже может ослеплять."
+            },
+            {
+              "answerId": "b-fallback-166-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Rutas con poca iluminación - не единственная причина. Здесь вопрос о регулировке высоты luces bajas и эффекте encandilamiento."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b186.jpg"
+        },
+        {
+          "questionId": "b-fallback-183",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-183-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Desperfecto мог бы объяснять balizas, но combo balizas encendidas + bocina repetida + pañuelo в этом билете означает не простую поломку."
+            },
+            {
+              "answerId": "b-fallback-183-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: частный автомобиль показывает emergency, transportando a una persona en grave estado de salud. Это ticket-specific комбинация аварийки, звукового сигнала и платка."
+            },
+            {
+              "answerId": "b-fallback-183-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas неверно: билет требует выбрать именно emergency médica, а не одновременно “поломка” и emergency."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-190",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-190-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак предупреждает cruce ferroviario, поэтому надо disminuir la velocidad и prestar atención a la posible aproximación de trenes."
+            },
+            {
+              "answerId": "b-fallback-190-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Continuar con la misma velocidad опасно и против смысла предупреждающего знака: снижаться надо заранее, не только когда поезд уже виден."
+            },
+            {
+              "answerId": "b-fallback-190-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Colocar balizas не является нужной реакцией на этот знак. Здесь не нужно обозначать свой автомобиль; нужно самому снизить скорость и следить за поездом."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b147.jpg"
+        },
+        {
+          "questionId": "b-fallback-232",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-232-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luz de giro hacia el lado del ingreso не тот сигнал для въезда в garaje/estacionamiento в этом билете."
+            },
+            {
+              "answerId": "b-fallback-232-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Luz de giro hacia el lado opuesto еще сильнее вводит в заблуждение: она сообщает не тот маневр."
+            },
+            {
+              "answerId": "b-fallback-232-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ingreso hacia un garaje o estacionamiento обозначается luces intermitentes (balizas), потому что водитель замедляется и уходит из потока нестандартным образом."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-263",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-263-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Balizas portátiles и уход detrás de una defensa звучат разумно в других сценариях, но этот билет про carriles marcados de esta vía требует не выходить из автомобиля."
+            },
+            {
+              "answerId": "b-fallback-263-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Descender para hacer señas опасно: водитель оказывается рядом с быстрым потоком и заменяет световое предупреждение ручными сигналами."
+            },
+            {
+              "answerId": "b-fallback-263-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: permanecer dentro del vehículo con el cinturón abrochado, encender las balizas и llamar al número de emergencia de la Autopista."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b44.jpg"
+        },
+        {
+          "questionId": "b-fallback-283",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-283-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luces altas durante todo el recorrido - плохой выбор для niebla: дальний свет не является ожидаемой экзаменационной реакцией при такой видимости."
+            },
+            {
+              "answerId": "b-fallback-283-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: при этих условиях надо использовать luces bajas и rompeniebla en el caso de tenerlas. Это точная формула билета."
+            },
+            {
+              "answerId": "b-fallback-283-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Добавлять balizas к движению в тумане не нужно. Balizas не предназначены для обычного движения при плохой погоде."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b189.jpg"
+        },
+        {
+          "questionId": "b-fallback-292",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-292-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luces altas y giro не обозначают вынужденную остановку на banquina: дальний свет может мешать, а giro сообщает другой маневр."
+            },
+            {
+              "answerId": "b-fallback-292-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: если пришлось detener en la banquina, нужны luces reglamentarias y balizas, чтобы автомобиль был виден как остановившийся."
+            },
+            {
+              "answerId": "b-fallback-292-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Luces antinieblas сами по себе не сигнализируют остановку на banquina и не заменяют balizas."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b177.jpg"
+        },
+        {
+          "questionId": "b-fallback-317",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-317-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Únicamente de noche y por una vía sin asfaltar слишком узко. Вопрос показывает luces rompeniebla и спрашивает их назначение не только ночью."
+            },
+            {
+              "answerId": "b-fallback-317-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo por vías sin banquina не связано с назначением этих огней. Наличие banquina не главный критерий."
+            },
+            {
+              "answerId": "b-fallback-317-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: estas luces должны использоваться en vías afectadas por niebla, en cualquier horario. Это точная weather-формула билета."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b190.jpg"
+        },
+        {
+          "questionId": "b-fallback-349",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-349-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: на изображении circled vehicle в ночной/низкой видимости не выглядит как автомобиль, который circula utilizando las luces correctas."
+            },
+            {
+              "answerId": "b-fallback-349-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза ложная: по конкретной картинке автомобиль с красным кругом не демонстрирует правильное использование света для движения в таких условиях."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b174.jpg"
+        },
+        {
+          "questionId": "b-fallback-360",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-360-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: для automóvil particular билет допускает agregado de dos faros rompeniebla y de hasta dos faros elevados con luces de freno."
+            },
+            {
+              "answerId": "b-fallback-360-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Agregar las luces que se deseen неверно: дополнительные огни ограничены, потому что лишний свет может ослеплять и путать других."
+            },
+            {
+              "answerId": "b-fallback-360-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Запретить cualquier tipo de luz adicional слишком строго. Билет прямо содержит разрешенные исключения: rompeniebla и elevated brake lights."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-378",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-378-a1",
+              "verdict": "correct",
+              "explanationRu": "Верно: на изображении автомобиль собирается ingresar a un garaje и заранее использует правильные огни - balizas/intermitentes."
+            },
+            {
+              "answerId": "b-fallback-378-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: для ingreso a garaje именно balizas являются правильным предупреждением, а картинка показывает этот сигнал."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b171.jpg"
+        },
+        {
+          "questionId": "b-fallback-388",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-388-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luces bajas плюс balizas portátiles delante y detrás не совпадает с ожидаемым ответом для этого tipo de calle: главное - balizas и размещение со стороны приближающегося потока."
+            },
+            {
+              "answerId": "b-fallback-388-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Luces altas здесь не нужны и могут мешать. Кроме того, вариант говорит только detrás, а билет требует учитывать сторону, откуда идут vehículos."
+            },
+            {
+              "answerId": "b-fallback-388-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: encender las balizas и, по возможности, colocar balizas portátiles del lado de donde provienen los vehículos a una distancia adecuada."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b43.jpg"
+        },
+        {
+          "questionId": "b-fallback-390",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-390-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: luces bajas se deben encender siempre que está disminuida la visibilidad. Это точная формула билета."
+            },
+            {
+              "answerId": "b-fallback-390-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo por la noche неверно. Плохая видимость днем тоже требует ближний свет."
+            },
+            {
+              "answerId": "b-fallback-390-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo en rutas слишком узко. Вопрос спрашивает про condición climática и visibilidad disminuida, а не только про тип дороги."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b181.jpg"
+        },
+        {
+          "questionId": "b-fallback-413",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-413-a1",
+              "verdict": "incorrect",
+              "explanationRu": "На изображении включенные balizas не делают detención correctа: знак/сектор запрещает саму остановку."
+            },
+            {
+              "answerId": "b-fallback-413-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo está prohibido el estacionamiento неверно: в этом секторе запрещены и detención, и estacionamiento."
+            },
+            {
+              "answerId": "b-fallback-413-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: detención incorrectа, потому что tanto la detención como el estacionamiento en este sector se encuentra prohibido."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b151.jpg"
+        },
+        {
+          "questionId": "b-fallback-428",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-428-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: при движении под такими condiciones climáticas balizas использовать не надо, если нет остановки, emergency или рискованного маневра."
+            },
+            {
+              "answerId": "b-fallback-428-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза ложная. В тумане/плохой видимости двигайтесь с нужным светом и скоростью; balizas не являются штатным режимом движения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b192.jpg"
+        },
+        {
+          "questionId": "b-fallback-442",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-442-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: по картинке водитель собирается ingresar a un garaje a la derecha, но использует не те luces correctas для такого маневра."
+            },
+            {
+              "answerId": "b-fallback-442-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза ложная: для ingreso a garaje нужны balizas/intermitentes, а не показанный сигнал, который больше похож на обычный giro."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b172.jpg"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-balizas-not-permission",
+          "textRu": "Balizas предупреждают, но не разрешают double fila, остановку в запрещенном секторе или 2-5 минут ожидания.",
+          "sourceQuestionIds": [
+            "b-fallback-015",
+            "b-fallback-039",
+            "b-fallback-097",
+            "b-fallback-413"
+          ]
+        },
+        {
+          "id": "trap-garaje-balizas-not-giro",
+          "textRu": "Для ingreso a garaje/estacionamiento ищите balizas/intermitentes. Luz de giro hacia el lado или opposite side - ловушка.",
+          "sourceQuestionIds": [
+            "b-fallback-232",
+            "b-fallback-378",
+            "b-fallback-442"
+          ]
+        },
+        {
+          "id": "trap-fog-no-high-beams-no-balizas",
+          "textRu": "В niebla выбирайте bajas/rompeniebla по формулировке билета, а не altas и не balizas while driving.",
+          "sourceQuestionIds": [
+            "b-fallback-283",
+            "b-fallback-317",
+            "b-fallback-390",
+            "b-fallback-428"
+          ]
+        },
+        {
+          "id": "trap-emergency-ticket-specific",
+          "textRu": "Emergency-билеты буквальны: pañuelo+bocina+balizas означает emergency médica, а autopista immobilization - остаться внутри, пристегнуться, включить balizas и звонить в Autopista emergency.",
+          "sourceQuestionIds": [
+            "b-fallback-183",
+            "b-fallback-263"
+          ]
+        },
+        {
+          "id": "trap-image-specific-light-judgment",
+          "textRu": "Картинки с luces correctas отвечайте по изображению, не по общему слову luz: circled vehicle, garaje и запрещенный сектор проверяют разные детали.",
+          "sourceQuestionIds": [
+            "b-fallback-349",
+            "b-fallback-378",
+            "b-fallback-413",
+            "b-fallback-442"
+          ]
+        },
+        {
+          "id": "trap-rail-warning-not-balizas",
+          "textRu": "Знак cruce ferroviario требует снизить скорость и ждать возможный tren; colocación de balizas в варианте ответа отвлекает от реакции на предупреждающий знак.",
+          "sourceQuestionIds": [
+            "b-fallback-190"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-vehicle-light-system-and-additional-lights",
+          "textRu": "Архивные законы CABA и Nación задают обязательные системы освещения автомобиля, включая giro/intermitentes de emergencia, а CABA допускает только ограниченные дополнительные огни для частного автомобиля: два faros rompeniebla и до двух elevated brake lights.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-lights-system-and-additional-lights"
+        },
+        {
+          "id": "claim-balizas-use-and-garage-egress",
+          "textRu": "Balizas/intermitentes предупреждают о stopped vehicle, egreso с public road, próxima detención/estacionamiento или рискованном/необычном маневре; CABA отдельно использует их для egreso hacia garajes/playas/estaciones.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-lights-balizas-and-garage-egress"
+        },
+        {
+          "id": "claim-adverse-visibility-light-use",
+          "textRu": "Когда естественного света недостаточно или условия видимости/движения этого требуют, используются luces bajas, de posición и de placa; rompeniebla lights ограничены собственным назначением.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-lights-adverse-visibility-use"
+        },
+        {
+          "id": "claim-breakdown-warning-balizas",
+          "textRu": "При avería/imprevisto, который obstructs the road, архивные правила CABA поддерживают предупреждение других через intermitentes/balizas и, когда применимо, размещение portable balizas со стороны приближающихся vehicles.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-lights-breakdown-warning-balizas"
+        },
+        {
+          "id": "claim-rail-crossing-warning-sign",
+          "textRu": "Архивный Anexo L для P.1 cruce ferrovial поддерживает реакцию “снизить скорость и внимательно ждать возможный поезд”, а не выбор balizas как ответа.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "vehicle-lights-rail-crossing-warning-sign"
+        }
+      ]
+    },
+    {
       "id": "pedestrian-and-school-road-markings",
       "slug": "pedestrian-and-school-road-markings",
       "status": "draft",
