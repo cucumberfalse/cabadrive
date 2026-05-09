@@ -8232,6 +8232,281 @@
           "sourceTraceId": "lane-choice-acceleration-deceleration-and-exit"
         }
       ]
+    },
+    {
+      "id": "public-transport-and-exclusive-lanes",
+      "slug": "public-transport-and-exclusive-lanes",
+      "status": "draft",
+      "titleRu": "Общественный транспорт и выделенные полосы",
+      "summaryRu": "Блок про Metrobus, carril exclusivo, colectivos autorizados, terminal de ómnibus и разметку/знаки мест остановки транспорта.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про transporte público главное различать три вещи: информационный знак места, выделенную полосу движения и зону/разметку для остановки или посадки.",
+        "Terminal de ómnibus на синем информационном знаке означает существование terminal de ómnibus поблизости. Это не запрет estacionar и не запрет detenerse: если вариант ответа добавляет prohibición, он меняет смысл знака.",
+        "Carril exclusivo или señal horizontal на calzada резервирует полосу для указанного типа транспорта. Для обычного автомобиля это не запасная полоса для sobrepaso: даже кратковременное движение по carril exclusivo del Metrobús без autorización в CABA рассматривается как нарушение.",
+        "Metrobus в CABA описан как система массового, быстрого и дифференцированного общественного транспорта. Поэтому экзаменационная логика такая: выделенная полоса нужна не для удобства частного автомобиля, а чтобы transporte público двигался предсказуемо и не застревал в общем потоке.",
+        "В билете `b-fallback-107` правильный fallback-ответ включает colectivos autorizados и vehículos destinados al servicio de emergencia en cumplimiento de sus funciones. Архивированные источники прямо поддерживают идею authorized/exclusive lane; emergency-часть здесь оставлена как wording конкретного билета и не расширяется в общее правило.",
+        "Разметка для escolares в `b-fallback-230` тоже читается узко: это не estacionamiento para micros escolares и не generic public-transport stop, а место/полоса detention для ascenso y descenso de escolares по изображению билета. Школьный контекст не надо переносить на все paradas de transporte público."
+      ],
+      "practicalReasoningRu": [
+        "Выделенная полоса работает только если обычные водители не используют ее для коротких маневров. Иначе общественный транспорт теряет свой отдельный поток, а места посадки становятся непредсказуемыми.",
+        "Информационные знаки terminal/parada помогают заранее понять, где будет концентрация автобусов и пассажиров; запретные знаки и road markings отвечают уже за конкретное действие водителя.",
+        "Школьные зоны посадки и высадки нужны, чтобы дети не выходили в случайном месте потока. Поэтому ответы про parking или generic transport stop в школьном билете выглядят похожими, но не попадают в назначение разметки."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-terminal-omnibus",
+          "termEs": "terminal de ómnibus",
+          "translationRu": "автобусный терминал",
+          "sourceQuestionIds": [
+            "b-fallback-042"
+          ]
+        },
+        {
+          "id": "term-carril-senalizado",
+          "termEs": "carril señalizado",
+          "translationRu": "обозначенная полоса",
+          "sourceQuestionIds": [
+            "b-fallback-107"
+          ]
+        },
+        {
+          "id": "term-colectivos-autorizados",
+          "termEs": "Colectivos autorizados",
+          "translationRu": "авторизованные автобусы/colectivos",
+          "sourceQuestionIds": [
+            "b-fallback-107"
+          ]
+        },
+        {
+          "id": "term-servicio-emergencia-funciones",
+          "termEs": "servicio de emergencia en cumplimiento de sus funciones",
+          "translationRu": "служба экстренной помощи при выполнении функций",
+          "sourceQuestionIds": [
+            "b-fallback-107"
+          ]
+        },
+        {
+          "id": "term-demarcacion-horizontal",
+          "termEs": "demarcación horizontal",
+          "translationRu": "горизонтальная дорожная разметка",
+          "sourceQuestionIds": [
+            "b-fallback-230"
+          ]
+        },
+        {
+          "id": "term-carril-detencion",
+          "termEs": "Carril de detención",
+          "translationRu": "полоса/место остановки",
+          "sourceQuestionIds": [
+            "b-fallback-230"
+          ]
+        },
+        {
+          "id": "term-ascenso-descenso-escolares",
+          "termEs": "ascenso y descenso de escolares",
+          "translationRu": "посадка и высадка школьников",
+          "sourceQuestionIds": [
+            "b-fallback-230"
+          ]
+        },
+        {
+          "id": "term-senal-horizontal",
+          "termEs": "señal horizontal",
+          "translationRu": "горизонтальный знак/разметка на проезжей части",
+          "sourceQuestionIds": [
+            "b-fallback-298"
+          ]
+        },
+        {
+          "id": "term-carril-exclusivo-colectivo",
+          "termEs": "Carril exclusivo de colectivo de pasajeros",
+          "translationRu": "выделенная полоса для пассажирского автобуса/colectivo",
+          "sourceQuestionIds": [
+            "b-fallback-298"
+          ]
+        },
+        {
+          "id": "term-carril-exclusivo-metrobus",
+          "termEs": "carril exclusivo del Metrobús",
+          "translationRu": "выделенная полоса Metrobus",
+          "sourceQuestionIds": [
+            "b-fallback-438"
+          ]
+        },
+        {
+          "id": "term-sobrepaso",
+          "termEs": "sobrepaso",
+          "translationRu": "опережение/обгон в формулировке билета",
+          "sourceQuestionIds": [
+            "b-fallback-438"
+          ]
+        },
+        {
+          "id": "term-permanente-transitoria",
+          "termEs": "permanente o transitoria",
+          "translationRu": "постоянно или временно",
+          "sourceQuestionIds": [
+            "b-fallback-438"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-042",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-042-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de estacionar добавляет запрет, которого этот информационный знак не передает. Он не про parking restriction у входа."
+            },
+            {
+              "answerId": "b-fallback-042-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак сообщает existencia de terminal de ómnibus en las inmediaciones, то есть поблизости есть автобусный терминал."
+            },
+            {
+              "answerId": "b-fallback-042-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibición de detenerse тоже неверно: билет показывает информационный знак terminal, а не знак запрета остановки."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b270.jpg"
+        },
+        {
+          "questionId": "b-fallback-107",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-107-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Todos los transportes de pasajeros слишком широко. Carril exclusivo предназначен для тех, кто указан/авторизован, а не автоматически для любого passenger transport."
+            },
+            {
+              "answerId": "b-fallback-107-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo colectivos entre las 07 h y las 21 h добавляет schedule, которого нет в правильной формулировке этого билета, и не учитывает emergency-service wording."
+            },
+            {
+              "answerId": "b-fallback-107-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: полоса предназначена для colectivos autorizados, а также для vehículos destinados al servicio de emergencia en cumplimiento de sus funciones. Emergency-часть не расширяем за пределы этого билета без отдельного источника."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b25.jpg"
+        },
+        {
+          "questionId": "b-fallback-230",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-230-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Estacionamiento para micros escolares неверно: билет спрашивает demarcación para detención/ascenso y descenso, а не место стоянки."
+            },
+            {
+              "answerId": "b-fallback-230-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: по изображению это carril de detención para el ascenso y descenso de escolares. Держите школьный контекст узко, не превращая его в общий parking или generic parada."
+            },
+            {
+              "answerId": "b-fallback-230-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Zona de ascenso y descenso de pasajeros de transporte público похожа по словам, но этот билет указывает на escolares, поэтому generic public transport answer не подходит."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b32.jpg"
+        },
+        {
+          "questionId": "b-fallback-298",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-298-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: demarcación sobre la calzada указывает carril exclusivo de colectivo de pasajeros, то есть выделенную полосу для passenger collective transport."
+            },
+            {
+              "answerId": "b-fallback-298-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce exclusivo de vehículos de emergencia - другая идея. Здесь нет crossing for emergency vehicles; билет показывает bus/colectivo exclusive lane marking."
+            },
+            {
+              "answerId": "b-fallback-298-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ceda el paso - отдельная уступающая señal/marking. Она не равна carril exclusivo para colectivo."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b29.jpg"
+        },
+        {
+          "questionId": "b-fallback-438",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-438-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: для обычного водителя carril exclusivo del Metrobús нельзя использовать ни permanentemente, ни transitoriamente для sobrepaso."
+            },
+            {
+              "answerId": "b-fallback-438-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Línea longitudinal discontinua не делает Metrobus lane доступной для обгона. Вопрос проверяет именно запрет использования exclusive lane для этой маневра."
+            },
+            {
+              "answerId": "b-fallback-438-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo para realizar alguna maniobra звучит как краткое исключение, но билет прямо отвергает transitory circulation по exclusive Metrobús lane."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-information-vs-prohibition-terminal",
+          "textRu": "Terminal de ómnibus на информационном знаке не означает prohibición de estacionar/detenerse. Не добавляйте запрет там, где знак только сообщает место.",
+          "sourceQuestionIds": [
+            "b-fallback-042"
+          ]
+        },
+        {
+          "id": "trap-authorized-not-all-transport",
+          "textRu": "Carril exclusivo не равен “весь транспорт пассажиров”. Ищите autorizado, colectivo/Metrobús и конкретный vehicle type, показанный знаком или разметкой.",
+          "sourceQuestionIds": [
+            "b-fallback-107",
+            "b-fallback-298"
+          ]
+        },
+        {
+          "id": "trap-metrobus-no-transitory-overtake",
+          "textRu": "Transitoria в `b-fallback-438` - ловушка: короткий sobrepaso все равно считается использованием carril exclusivo del Metrobús.",
+          "sourceQuestionIds": [
+            "b-fallback-438"
+          ]
+        },
+        {
+          "id": "trap-school-detention-not-parking",
+          "textRu": "Ascenso y descenso de escolares - не estacionamiento. В школьном билете выбирайте detención/boarding context, а не parking и не generic public transport stop.",
+          "sourceQuestionIds": [
+            "b-fallback-230"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-metrobus-public-transport-purpose",
+          "textRu": "Metrobus в CABA является частью integrated public-transport system и предназначен для приоритета массового пассажирского транспорта, а не для частных автомобилей.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "public-transport-metrobus-system-purpose"
+        },
+        {
+          "id": "claim-exclusive-lane-reserved-use",
+          "textRu": "Carril exclusivo обозначается вертикальной/горизонтальной сигнализацией и резервирует одну или несколько полос для определенного типа vehicles; движение по carril exclusivo del Metrobús без authorization запрещено.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "public-transport-exclusive-lane-reserved-use"
+        },
+        {
+          "id": "claim-stops-terminals-and-school-detention",
+          "textRu": "Terminal/parada signs and stop-sector markings identify places for public passenger transport; school ascenso/descenso markings in this slice are kept as a narrow ticket-specific school context, not as a general parking rule.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "public-transport-stops-terminals-school-detention"
+        }
+      ]
     }
   ]
 }

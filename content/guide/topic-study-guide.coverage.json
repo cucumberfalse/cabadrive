@@ -269,9 +269,9 @@
       "titleRu": "Общественный транспорт и выделенные полосы",
       "categoryId": "urban-mobility",
       "splitCriteria": "Metrobús, carril exclusivo, colectivos autorizados, transporte público и ограничения движения по выделенным полосам.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E14"
     },
     {
       "topicId": "emergency-response-and-crash-scene",
@@ -770,8 +770,8 @@
       "topicIds": [
         "public-transport-and-exclusive-lanes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E14"
     },
     {
       "questionId": "b-fallback-043",
@@ -1377,8 +1377,8 @@
       "topicIds": [
         "public-transport-and-exclusive-lanes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E14"
     },
     {
       "questionId": "b-fallback-108",
@@ -2508,8 +2508,8 @@
       "topicIds": [
         "public-transport-and-exclusive-lanes"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E14"
     },
     {
       "questionId": "b-fallback-231",
@@ -3144,7 +3144,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E14",
+      "placementPhases": {
+        "public-transport-and-exclusive-lanes": "content_ready",
+        "lane-and-channelization-markings": "planned"
+      }
     },
     {
       "questionId": "b-fallback-299",
@@ -4470,7 +4474,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E14",
+      "placementPhases": {
+        "public-transport-and-exclusive-lanes": "content_ready",
+        "lane-and-channelization-markings": "planned"
+      }
     },
     {
       "questionId": "b-fallback-439",
