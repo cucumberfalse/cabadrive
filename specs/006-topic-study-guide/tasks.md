@@ -131,11 +131,23 @@
 - [ ] T094 Reevaluate `warning-signs` title/scope and the assigned priority, authority, emergency-light, and incorporation behavior traps after Slice E4; any title refinement or reassignment must preserve the maximum-two-topic rule, preserve/update content-ready placement evidence, and land outside the `warning-signs` content PR.
 - [ ] T095 Reevaluate `traffic-lights-and-rail-crossings` scope after Slice E5 because the assigned topic includes emergency-signal, overtake, bridge, panel, and unsignalized-intersection tickets in addition to semaphores and rail crossings; any refinement must preserve existing content-ready placement evidence or deliberately update it with coverage evidence and the maximum-two-topic rule.
 
+## Future Slice D4: Documents-Licenses Official Source Archive
+
+- [ ] T096 Archive the official CABA VTV source before Slice E6 `documents-licenses-and-insurance` content resumes, using Ley 2265 / official CABA VTV material that supports first VTV for 0km after 36 months or 60,000 km, schedule by final domain digit, and free reverificacion within 60 business days.
+- [ ] T097 Archive the current DNRPA / Argentina.gob.ar vehicle documents and cedulas source before Slice E6 content resumes, including cedulas, current cedula azul non-exigible status, who current documents authorize, and any current-source conflict with old ticket wording.
+- [ ] T098 Archive the current DNRPA / Argentina.gob.ar duplicate license plate / chapa patente source before Slice E6 content resumes, including reposicion in the Registro where the vehicle is registered and provisional plate details if cited.
+- [ ] T099 Use the candidate URLs checked by Orchestrator on 2026-05-09 only as starting points; the Implementation Agent must recheck official currentness at archive time and record final source URLs, retrieval metadata, hashes, raw evidence where needed, conversion limitations, and currentness evidence in the official-documents manifest/process memory.
+- [ ] T100 Validate all D4 manifest entries touched by the slice with official-documents validation and local hash evidence.
+- [ ] T101 Record any ticket/source conflict found during D4, especially current cedula azul non-exigible status versus old ticket wording, for Architect disposition before generalized guide prose is written.
+- [ ] T102 Do not write `documents-licenses-and-insurance` guide prose, ticket explanations, source-trace entries, product code, content JSON outside the official archive, tests, scripts, or durable `docs_project/` files in this prerequisite archive slice unless the assigned implementation scope explicitly includes them.
+- [ ] T103 Complete Slice D4 before any Slice E6 content PR cites VTV, DNRPA vehicle-document, cedula azul, or duplicate-chapa claims.
+
 ## Process Memory
 
 ### Dead Ends
 
 - None during Architect planning.
+- Slice E6 `documents-licenses-and-insurance` attempted content implementation stopped cleanly with no edits because the archived official documents did not support required VTV/DNRPA claims. The blocker is accepted as a source prerequisite rather than a content-authoring failure.
 
 ### Decisions
 
@@ -180,6 +192,7 @@
 - Slice E1 uses existing seeded official documents only: `ley-24449-transito-seguridad-vial` and `ley-2148-caba-codigo-transito-transporte`. It does not cite Decreto 779 annex-specific sign claims, does not alter official documents, and does not archive new official source files.
 - Slice E1 keeps sign-like or road-context-only tickets inside `speed-limits` because the current taxonomy assigns them there, but explanations are ticket-specific and avoid turning route signs, low-beam lights, or deceleration-lane behavior into generalized speed-limit rules.
 - Slice E4 review fix added a narrow `warning-signs` source trace and topic claim for incorporation-priority tickets `b-fallback-389` and `b-fallback-440`, backed by Ley 2148 sections 6.1.7 and 6.7.2(c), plus Ley 24.449 Article 41 g.3 for the right-side-priority exception. No coverage or official archive files were changed.
+- Slice E6 `documents-licenses-and-insurance` content must wait until Slice D4 archives current official-source support for CABA VTV, DNRPA vehicle documents/cedulas, current cedula azul non-exigible status, and duplicate chapa patente procedure. E6 content must not cite or teach unsupported VTV/DNRPA claims from memory, candidate URLs, or stale ticket wording.
 
 ### Known Issues
 
@@ -199,6 +212,7 @@
 - The optional GCBA four-wheel manual PDF is not yet archived or converted; topic slices must add a dedicated PDF conversion/evidence slice before citing manual-only claims.
 - Slice E1 found that `b-fallback-296` and `b-fallback-343` are route-sign recognition tickets rather than speed-limit tickets. They remain included in `speed-limits` for this PR because taxonomy currently assigns them there, but they need Architect disposition for a future taxonomy cleanup.
 - Slice E1 includes loosely speed-adjacent tickets `b-fallback-176`, `b-fallback-250`, and `b-fallback-315` as assigned. Their explanations stay focused on the ticket wording and do not add unsupported generalized speed claims.
+- Slice E6 is blocked until official archive support exists for CABA VTV timing/scheduling/reverificacion, current DNRPA cedula/cedula azul/document authorization status, and duplicate chapa patente procedure. If current official sources conflict with old ticket wording, the conflict must be recorded and disposed before guide prose generalizes the claim.
 
 ### Verification Evidence
 
@@ -384,6 +398,7 @@
 - Slice E5 build evidence: `pnpm run build` passed after dependency installation; Vite emitted the existing non-blocking chunk-size warning and service-worker generation reported 280 cached assets.
 - Slice E5 preflight evidence: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 - Slice E5 diff hygiene evidence: `git diff --check` passed with no output.
+- Architect D4 prerequisite disposition validation: `git diff --check -- specs/006-topic-study-guide/tasks.md` passed with no output after updating only feature memory.
 
 ### Implementation Agent Feedback
 
@@ -397,6 +412,7 @@
 - Slice E3: `regulatory-signs` currently contains multiple correct answers that are explicitly warning/informative/transitory signs, plus `b-fallback-207`, `b-fallback-331`, and `b-fallback-411` which are overtake-by-normative-context tickets without sign images. This slice handled them as classification/normativa traps because the assignment is fixed, but Architect should consider a future taxonomy/title refinement such as `sign-classification-and-regulatory-signs` or reassignment of non-sign normative overtake tickets while preserving the maximum-two-topic rule.
 - Slice E4: `warning-signs` currently includes several priority, authority, emergency-light, and incorporation tickets whose second topic remains planned. This slice kept them because the current taxonomy assigns them to warning signs, but Architect should consider whether a future taxonomy refinement should split pure warning-sign recognition from danger/authority/priority behavior while preserving the maximum-two-topic rule and existing content-ready placements.
 - Slice E5: `traffic-lights-and-rail-crossings` currently includes several unsignalized-intersection priority/speed tickets, emergency-signal tickets, overtake checks, and bridge/panel sign-recognition tickets alongside semáforo and rail-crossing tickets. This slice kept them because the current taxonomy assigns them to the topic, but Architect should consider a future title/scope refinement or reassignment only with updated coverage evidence, existing content-ready placement evidence preserved or deliberately updated, and the maximum-two-topic rule preserved.
+- Slice E6: attempted `documents-licenses-and-insurance` content implementation made no edits and stopped because existing archived official documents do not support required VTV/DNRPA claims. Missing official-source support includes Ley 2265 / official CABA VTV timing and reverificacion, current DNRPA / Argentina.gob.ar cedula and cedula azul status, and DNRPA / Argentina.gob.ar duplicate chapa patente procedure.
 
 ### Architect Dispositions
 
@@ -409,3 +425,4 @@
 - Slice E3 taxonomy feedback accepted as future cleanup consideration T093, not a Slice E3 blocker. Disposition: the `regulatory-signs` content PR correctly follows the current Slice C taxonomy and handles assigned warning, informative, transitory, and normative-overtake tickets as ticket-specific classification/normativa traps. Do not reassign tickets in this PR. A later taxonomy refinement may rename the topic, split/reassign non-regulatory sign classifications, or move non-sign overtake-normative tickets only with updated coverage evidence and the maximum-two-topic rule preserved.
 - Slice E4 taxonomy feedback accepted as future cleanup consideration T094, not a Slice E4 blocker. Disposition: the `warning-signs` content PR correctly follows the current Slice C taxonomy and handles assigned priority, authority, emergency-light, and incorporation tickets with ticket-specific explanations/traps instead of broadening the topic into a general priority, authority, or maneuver lesson. Do not reassign tickets in this PR. A later taxonomy refinement may split pure warning-sign recognition from danger/authority/priority behavior or adjust the topic title only with updated coverage evidence, existing content-ready placement evidence preserved or deliberately updated, and the maximum-two-topic rule preserved.
 - Slice E5 taxonomy feedback accepted as future cleanup consideration T095, not a Slice E5 blocker. Disposition: the `traffic-lights-and-rail-crossings` content PR correctly follows the current Slice C taxonomy and handles assigned unsignalized-intersection priority/speed, emergency-signal, overtake, bridge, and panel-recognition tickets as fixed-taxonomy signal/priority traps alongside semáforo and rail-crossing material. Do not reassign tickets in this PR. A later taxonomy refinement may rename the topic, split it, or reassign tickets only with the maximum-two-topic rule preserved and existing content-ready placement evidence preserved or deliberately updated with coverage evidence.
+- Slice E6 source blocker accepted. Disposition: create prerequisite Slice D4 / Documents-Licenses Official Source Archive with T096-T103. The attempted E6 content PR should remain stopped with no content edits until D4 archives current official sources or records official current-source conflicts for Architect disposition. Future E6 content must not cite unsupported VTV/DNRPA claims, must not rely on candidate URLs as citations before archive validation, and must omit or ticket-scope any claim whose current official-source support remains unresolved.
