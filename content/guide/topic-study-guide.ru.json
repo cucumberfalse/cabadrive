@@ -4160,7 +4160,7 @@
       "learningMaterialRu": [
         "Этот блок - неофициальная подсказка Cabadrive. В билетах про документы сначала отделяйте три слоя: что нужно иметь при движении, что делает орган контроля при нарушении, и что является устаревшей формулировкой старого билета.",
         "Для обычного движения важны licencia de conducir vigente, cédula de identificación del automotor, comprobante de seguro obligatorio, VTV vigente и chapas/placas de dominio на штатном месте без изменений. Номерной знак должен читаться и быть установлен reglamentariamente: нельзя расширять, переносить, закрывать или использовать как “почти временный” знак.",
-        "Cédula azul - главный источник ловушек. Текущие источники DNRPA/ANSV говорят, что cédula azul больше не является exigible как обязательный документ для движения, cédula verde не истекает, пока нет смены владельца, а разрешение третьему лицу сейчас оформляется через Mi Argentina с показом Cédula de Identificación Digital. Старые билеты могут спрашивать по прежней логике: в таких местах учите ответ билета как legacy/stale-question trap, а не как новое общее правило.",
+        "Cédula azul - главный источник ловушек. Текущие источники DNRPA/ANSV говорят, что cédula azul больше не является exigible как обязательный документ для движения, cédula verde не истекает, пока нет смены владельца, а пользование машиной третьим лицом может опираться на физическую передачу/наличие Cédula de Identificación и/или на цифровую авторизацию через Mi Argentina с показом Cédula de Identificación Digital. Старые билеты могут спрашивать по прежней логике: в таких местах учите ответ билета как legacy/stale-question trap, а не как новое общее правило.",
         "VTV в CABA сейчас для частных авто и мото начинается с четвертого года antigüedad cumplido или при 64.000 km, что наступит раньше. Ley 6631 формулирует юридическую деталь как 60.000 km плюс tolerancia de 4.000 km. Месяц VTV берется по último número de la patente/dominio: 1 - noviembre, 2 - febrero, 3 - marzo, 4 - abril, 5 - mayo, 6 - junio, 7 - julio, 8 - agosto, 9 - septiembre, 0 - octubre. Enero и diciembre в расписании vencimientos не используются.",
         "Если VTV получила результат Condicional или Rechazado, в CABA есть 60 días hábiles на re-verificación sin cargo в той же planta. Corridos и hábiles - не одно и то же: в билетах правильный вариант именно días hábiles.",
         "Лицензия действует до срока vencimiento без общей “льготной” езды после него. Исключение в CABA: если дата vencimiento выпала на día inhábil, она переносится на следующий día hábil. Для renovación как продления, а не нового otorgamiento, не должно пройти больше одного года после vencimiento.",
@@ -4397,12 +4397,12 @@
         },
         {
           "questionId": "b-fallback-024",
-          "sourceConflictNoteRu": "Legacy/stale cédula azul wording: current official sources make cédula azul non-exigible and use Mi Argentina authorization for third parties.",
+          "sourceConflictNoteRu": "Legacy/stale cédula azul wording: current official sources make cédula azul non-exigible and support third-party use through physical possession/delivery of Cédula de Identificación and/or Mi Argentina digital authorization.",
           "answerExplanations": [
             {
               "answerId": "b-fallback-024-a1",
               "verdict": "incorrect",
-              "explanationRu": "В старой логике билета недостаточно, что чужая cédula para autorizado esté vigente: документ должен относиться к самому водителю. По текущим источникам cédula azul уже не является exigible, а разрешение третьему лицу идет через Mi Argentina."
+              "explanationRu": "В старой логике билета недостаточно, что чужая cédula para autorizado esté vigente: документ должен относиться к самому водителю. По текущим источникам cédula azul уже не является exigible, а пользование третьим лицом может подтверждаться физической Cédula de Identificación и/или цифровой авторизацией через Mi Argentina."
             },
             {
               "answerId": "b-fallback-024-a2",
@@ -4412,7 +4412,7 @@
             {
               "answerId": "b-fallback-024-a3",
               "verdict": "correct",
-              "explanationRu": "Для ответа билета: с cédula para autorizado a conducir на имя другого лица управлять нельзя. Учите это как старую формулировку билета; текущая практика DNRPA/ANSV строится вокруг cédula no exigible и digital authorization."
+              "explanationRu": "Для ответа билета: с cédula para autorizado a conducir на имя другого лица управлять нельзя. Учите это как старую формулировку билета; текущая практика DNRPA/ANSV строится вокруг cédula azul no exigible, физической Cédula de Identificación и цифровой авторизации."
             }
           ]
         },
@@ -4825,7 +4825,7 @@
         },
         {
           "questionId": "b-fallback-309",
-          "sourceConflictNoteRu": "Legacy cédula azul quantity wording; current source-traced prose uses non-exigible cédula azul and Mi Argentina authorization.",
+          "sourceConflictNoteRu": "Legacy cédula azul quantity wording; current source-traced prose uses non-exigible cédula azul plus physical Cédula de Identificación possession/delivery and/or Mi Argentina digital authorization.",
           "answerExplanations": [
             {
               "answerId": "b-fallback-309-a1",
@@ -4835,7 +4835,7 @@
             {
               "answerId": "b-fallback-309-a2",
               "verdict": "correct",
-              "explanationRu": "Для ответа старого билета: titular мог запросить нужное количество. Но как текущую норму это не обобщаем: cédula azul больше не exigible, а digital authorization делается через Mi Argentina."
+              "explanationRu": "Для ответа старого билета: titular мог запросить нужное количество. Но как текущую норму это не обобщаем: cédula azul больше не exigible, а авторизация/пользование третьим лицом может подтверждаться физической Cédula de Identificación и/или digital authorization через Mi Argentina."
             },
             {
               "answerId": "b-fallback-309-a3",
@@ -4964,7 +4964,7 @@
         {
           "questionId": "b-fallback-456",
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b46.jpg",
-          "sourceConflictNoteRu": "Legacy cédula image prompt; current source-traced prose teaches Mi Argentina authorization rather than family-name authorization.",
+          "sourceConflictNoteRu": "Legacy cédula image prompt; current source-traced prose teaches physical Cédula de Identificación possession/delivery and/or Mi Argentina authorization rather than family-name authorization.",
           "answerExplanations": [
             {
               "answerId": "b-fallback-456-a1",
@@ -4974,7 +4974,7 @@
             {
               "answerId": "b-fallback-456-a2",
               "verdict": "correct",
-              "explanationRu": "По ответу старого билета с этой документацией autorizado только titular. Текущая официальная логика: cédula azul non-exigible, а terceros получают digital authorization через Mi Argentina."
+              "explanationRu": "По ответу старого билета с этой документацией autorizado только titular. Текущая официальная логика: cédula azul non-exigible, а terceros могут опираться на физическую Cédula de Identificación и/или digital authorization через Mi Argentina."
             },
             {
               "answerId": "b-fallback-456-a3",
@@ -4987,7 +4987,7 @@
       "trapNotes": [
         {
           "id": "trap-cedula-azul-current-vs-old",
-          "textRu": "Cédula azul в старых билетах может звучать как обязательный отдельный документ. Текущая подсказка: cédula azul no es exigible; если билет старый, отвечайте на формулировку билета и помечайте ее как legacy.",
+          "textRu": "Cédula azul в старых билетах может звучать как обязательный отдельный документ. Текущая подсказка: cédula azul no es exigible, а третье лицо может пользоваться авто при физической Cédula de Identificación и/или digital authorization через Mi Argentina; если билет старый, отвечайте на формулировку билета и помечайте ее как legacy.",
           "sourceQuestionIds": [
             "b-fallback-024",
             "b-fallback-309",
@@ -5062,7 +5062,7 @@
         },
         {
           "id": "claim-current-cedula-authorization",
-          "textRu": "Cédula azul больше не является обязательным exigible circulation document; текущая авторизация третьего лица делается через Mi Argentina/Cédula de Identificación Digital.",
+          "textRu": "Cédula azul больше не является обязательным exigible circulation document; пользование третьим лицом может подтверждаться физической передачей/наличием Cédula de Identificación и/или Mi Argentina/Cédula de Identificación Digital.",
           "requiresOfficialSource": true,
           "sourceTraceId": "documents-licenses-current-cedula-authorization"
         },

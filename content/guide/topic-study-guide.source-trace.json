@@ -433,8 +433,9 @@
       "id": "documents-licenses-current-cedula-authorization",
       "topicId": "documents-licenses-and-insurance",
       "claimId": "claim-current-cedula-authorization",
-      "claimSummaryRu": "Current cédula guidance: cédula azul is no longer an exigible circulation document; cédula digital/Mi Argentina authorization is the current third-party mechanism.",
+      "claimSummaryRu": "Current cédula guidance: cédula azul is no longer an exigible circulation document; third-party use can be supported by physical delivery/possession of Cédula de Identificación and/or Mi Argentina/Cédula Digital authorization.",
       "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
         "ansv-cedula-azul-no-exigible",
         "disposicion-29-2024-cedulas-identificacion",
         "disposicion-343-2024-autorizacion-cedula-digital",
@@ -443,7 +444,9 @@
       ],
       "relevantSections": [
         "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+        "Ley 2148 5.2.2 Obligación de exhibir documentos / 5.2.3 Cédula de identificación del automotor",
         "Disposición 29/2024: ARTÍCULO 1° and ARTÍCULO 2°",
+        "Disposición 29/2024: physical delivery of Cédula de Identificación as authorization exteriorization",
         "Disposición 343/2024: ARTÍCULO 2° / Artículo 5°",
         "Cédulas",
         "Cédula Digital"
