@@ -1727,6 +1727,55 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "The archived law supports control/speed/load conditions generally. The exact b-fallback-104 luggage placement and b-fallback-414 curve formula are not generalized as official catalogue rules."
+    },
+    {
+      "id": "occupant-seat-belts-sri-airbag-headrest",
+      "topicId": "occupant-protection",
+      "claimId": "claim-seat-belts-sri-airbag-headrest",
+      "claimSummaryRu": "Ley 2148 requires belts for conductor and occupants, SRI for under-12/under-1.50m passengers, says air bags do not replace belts, and defines adjustable headrest height.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.3 Cinturón de seguridad. Obligación de uso",
+        "Ley 2148 6.1.4 Cabezal de seguridad. Uso correcto"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the general belt/SRI/airbag/headrest claims for assigned tickets. Exact pregnancy-belt image choice, lower-band hip-bone image choice, SRI orientation/group image choice, SRI misuse image, and exact injury phrasing remain ticket-specific fallback conclusions."
+    },
+    {
+      "id": "occupant-reflective-vest-emergency",
+      "topicId": "occupant-protection",
+      "claimId": "claim-reflective-vest-emergency",
+      "claimSummaryRu": "Ley 2148 requires carrying a reflective vest accessible in the habitáculo and supports warning/emergency behavior during breakdowns and immobilization on autopistas/vías rápidas.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.2 Requisitos para circular, inciso h)",
+        "Ley 2148 5.5.3 Comportamiento general en caso de averías o imprevistos",
+        "Ley 2148 6.1.9 Autopistas y otras vías rápidas, puntos 8, 11 y 12"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the narrow reflective-vest/accessibility and breakdown/autopista warning framing. The exact b-fallback-151 photo sector and combined answer remain ticket-specific."
+    },
+    {
+      "id": "occupant-minors-front-and-loose-animals",
+      "topicId": "occupant-protection",
+      "claimId": "claim-minors-front-and-loose-animals",
+      "claimSummaryRu": "Ley 2148 prohibits transporting under-12 children in front seats and transporting loose animals.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.4 Prohibiciones, incisos c) and d)",
+        "Ley 2148 6.1.3 Cinturón de seguridad. Obligación de uso, inciso b)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the general minors/front-seat and loose-animal boundary. The exact pet arnés/sistema de retención/asientos traseros detail is kept ticket-specific because the current archive only directly prohibits loose animals."
     }
   ]
 }

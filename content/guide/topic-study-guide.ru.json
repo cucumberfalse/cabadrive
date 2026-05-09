@@ -11244,6 +11244,584 @@
       ]
     },
     {
+      "id": "occupant-protection",
+      "slug": "occupant-protection",
+      "status": "draft",
+      "titleRu": "Ремни, детские кресла и подголовники",
+      "summaryRu": "Экзаменационный блок про cinturón de seguridad, Sistema de Retención Infantil, airbag, apoyacabeza, chaleco reflectivo и безопасную перевозку пассажиров/животных.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Для экзамена держите простую логику: защита работает только когда каждый ocupante закреплен своим средством, а аварийные предметы доступны до выхода на calzada.",
+        "Cinturón de seguridad обязателен для conductor и demás ocupantes. Близко к финишу, короткая поездка или задний ряд не отменяют ремень: в билетах correct answer почти всегда строится вокруг todos los ocupantes.",
+        "Sistema de Retención Infantil нужен пассажиру menor de 12 años y con altura inferior a 1,50 m. Если пассажир старше 12 лет и имеет altura igual o superior a 1,50 m, билет переводит его в обычную логику: любой asiento, но cinturón debidamente sujeto.",
+        "SRI проверяйте по двум вещам: где он стоит и пристегнут ли ребенок. По текущим билетам детское устройство должно быть на asientos traseros; центральное заднее место допустимо, если cinturón de seguridad de 3 puntos позволяет правильно его закрепить.",
+        "Airbag - complemento, а не замена cinturón. Официальная Ley 2148 прямо говорит, что bolsas de aire не заменяют ремень; поэтому варианты про prescindir, sustituir или incompatibilidad с ремнем - ловушки.",
+        "Apoyacabeza регулируют по голове: если он регулируемый, верхняя часть должна быть на высоте верхней части головы. В билете с фото это делает утверждение verdadero.",
+        "Chaleco de material reflectivo должен быть accesible в habitáculo. При avería/desperfecto и особенно на autopistas/vías rápidas он нужен до выхода на calzada; в ticket photo про Autopista правильная логика объединяет balizas/luces, emergency call и уход за защиту.",
+        "В билетах с embarazo, banda inferior, huesos de la cadera, orientación a contra marcha, arnés для mascotas и exact image choices используйте формулировку билета и картинку. Текущий архив поддерживает общие обязательства, но не превращает все эти иллюстрации в отдельный официальный каталог."
+      ],
+      "practicalReasoningRu": [
+        "Ремень удерживает тело в зоне работы сиденья, подголовника и airbag. Без него airbag может встретить человека не там и не тогда, где рассчитана защита.",
+        "SRI существует потому, что штатный ремень рассчитан на взрослую геометрию. Детское устройство поднимает и фиксирует ребенка так, чтобы ремень и корпус работали вместе.",
+        "Животные и незакрепленные пассажиры опасны не только для себя: при торможении они становятся непредсказуемым препятствием и могут мешать conductor управлять автомобилем."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-cinturon-seguridad-occupant",
+          "termEs": "cinturón de seguridad",
+          "translationRu": "ремень безопасности",
+          "sourceQuestionIds": [
+            "b-fallback-013",
+            "b-fallback-030",
+            "b-fallback-046",
+            "b-fallback-193"
+          ]
+        },
+        {
+          "id": "term-todos-ocupantes",
+          "termEs": "todos los ocupantes",
+          "translationRu": "все находящиеся в автомобиле",
+          "sourceQuestionIds": [
+            "b-fallback-046"
+          ]
+        },
+        {
+          "id": "term-sistema-retencion-infantil",
+          "termEs": "Sistema de Retención Infantil",
+          "translationRu": "детское удерживающее устройство, SRI",
+          "sourceQuestionIds": [
+            "b-fallback-013",
+            "b-fallback-210"
+          ]
+        },
+        {
+          "id": "term-tres-puntos",
+          "termEs": "3 puntos",
+          "translationRu": "трехточечный ремень",
+          "sourceQuestionIds": [
+            "b-fallback-013"
+          ]
+        },
+        {
+          "id": "term-asientos-traseros-occupant",
+          "termEs": "asientos traseros",
+          "translationRu": "задние сиденья",
+          "sourceQuestionIds": [
+            "b-fallback-212",
+            "b-fallback-453"
+          ]
+        },
+        {
+          "id": "term-airbag",
+          "termEs": "airbag",
+          "translationRu": "подушка безопасности",
+          "sourceQuestionIds": [
+            "b-fallback-120"
+          ]
+        },
+        {
+          "id": "term-complementa-cinturon",
+          "termEs": "Complementa el uso del cinturón de seguridad",
+          "translationRu": "дополняет использование ремня безопасности",
+          "sourceQuestionIds": [
+            "b-fallback-081"
+          ]
+        },
+        {
+          "id": "term-embarazo",
+          "termEs": "embarazo",
+          "translationRu": "беременность",
+          "sourceQuestionIds": [
+            "b-fallback-102"
+          ]
+        },
+        {
+          "id": "term-banda-inferior",
+          "termEs": "banda inferior",
+          "translationRu": "нижняя лямка ремня",
+          "sourceQuestionIds": [
+            "b-fallback-149"
+          ]
+        },
+        {
+          "id": "term-huesos-cadera",
+          "termEs": "huesos de la cadera",
+          "translationRu": "тазовые кости",
+          "sourceQuestionIds": [
+            "b-fallback-422"
+          ]
+        },
+        {
+          "id": "term-a-contra-marcha",
+          "termEs": "a contra marcha",
+          "translationRu": "против хода движения",
+          "sourceQuestionIds": [
+            "b-fallback-210",
+            "b-fallback-297"
+          ]
+        },
+        {
+          "id": "term-chaleco-material-reflectivo",
+          "termEs": "chaleco de material reflectivo",
+          "translationRu": "светоотражающий жилет",
+          "sourceQuestionIds": [
+            "b-fallback-007"
+          ]
+        },
+        {
+          "id": "term-habitaculo",
+          "termEs": "habitáculo",
+          "translationRu": "салон автомобиля",
+          "sourceQuestionIds": [
+            "b-fallback-007"
+          ]
+        },
+        {
+          "id": "term-desperfecto-mecanico",
+          "termEs": "desperfecto mecánico",
+          "translationRu": "механическая неисправность",
+          "sourceQuestionIds": [
+            "b-fallback-007",
+            "b-fallback-151"
+          ]
+        },
+        {
+          "id": "term-balizas-portatiles",
+          "termEs": "balizas portátiles",
+          "translationRu": "переносные аварийные знаки/бализы",
+          "sourceQuestionIds": [
+            "b-fallback-151"
+          ]
+        },
+        {
+          "id": "term-numero-emergencia-autopista",
+          "termEs": "número de emergencia de la Autopista",
+          "translationRu": "номер экстренной службы автомагистрали",
+          "sourceQuestionIds": [
+            "b-fallback-151"
+          ]
+        },
+        {
+          "id": "term-mascotas",
+          "termEs": "mascotas",
+          "translationRu": "домашние животные",
+          "sourceQuestionIds": [
+            "b-fallback-212"
+          ]
+        },
+        {
+          "id": "term-arnes",
+          "termEs": "arnés",
+          "translationRu": "шлейка/ремень для фиксации",
+          "sourceQuestionIds": [
+            "b-fallback-212"
+          ]
+        },
+        {
+          "id": "term-apoyacabeza",
+          "termEs": "apoyacabeza",
+          "translationRu": "подголовник",
+          "sourceQuestionIds": [
+            "b-fallback-454"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-007",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-007-a1",
+              "verdict": "incorrect",
+              "explanationRu": "No es obligatorio неверно для этого билета. Ley 2148 требует portar chaleco de material reflectivo; рекомендация иметь его не заменяет обязательство."
+            },
+            {
+              "answerId": "b-fallback-007-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Obligatorio верно, но cualquier parte del vehículo неверно. Жилет должен быть accesible dentro del habitáculo, чтобы надеть его до выхода на calzada."
+            },
+            {
+              "answerId": "b-fallback-007-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: chaleco de material reflectivo обязателен как элемент, который должен быть в habitáculo и доступен при необходимости спуститься на calzada из-за causa de fuerza mayor."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-013",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-013-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ребенку 11 лет нужен Sistema de Retención Infantil, а центральное заднее место подходит, если cinturón de seguridad de 3 puntos позволяет правильно закрепить SRI."
+            },
+            {
+              "answerId": "b-fallback-013-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo en asientos laterales неверно: билет специально показывает asiento central с трехточечным ремнем, который позволяет корректно ajustar el SRI."
+            },
+            {
+              "answerId": "b-fallback-013-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Más de 10 años не отменяет SRI. Порог в Ley 2148 связан с menor de 12 años и altura inferior a 1,50 m, поэтому 11-летний ребенок еще попадает в детскую защиту."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b210.jpg"
+        },
+        {
+          "questionId": "b-fallback-030",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-030-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: mayores de 12 años con altura igual o superior a 1,50 m могут ехать на любой plaza, но siempre con cinturón de seguridad debidamente sujeto."
+            },
+            {
+              "answerId": "b-fallback-030-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo en plazas traseras слишком строго для этой возрастно-ростовой группы. Ограничение из билета уже не требует только задних мест."
+            },
+            {
+              "answerId": "b-fallback-030-a3",
+              "verdict": "incorrect",
+              "explanationRu": "SRI corresponde a пассажирам menores de 12 años y con altura inferior a 1,50 m. Здесь билет задает противоположные условия."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-046",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-046-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo asientos delanteros неверно: Ley 2148 требует ремни для conductor y demás ocupantes, а не только для переднего ряда."
+            },
+            {
+              "answerId": "b-fallback-046-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Estar por llegar a destino не является исключением. Даже несколько километров после parada остаются обычным движением."
+            },
+            {
+              "answerId": "b-fallback-046-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: todos los ocupantes должны снова пристегнуться, потому что обязательность cinturón не зависит от оставшегося расстояния."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-081",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-081-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Prescindir del cinturón неверно. Airbag/элемент пассивной безопасности не отменяет ремень."
+            },
+            {
+              "answerId": "b-fallback-081-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: этот elemento de seguridad complementa el uso del cinturón de seguridad. Он рассчитан работать вместе с ремнем."
+            },
+            {
+              "answerId": "b-fallback-081-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Incompatible неверно: ремень и airbag не конфликтуют, а образуют совместную систему защиты."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b209.jpg"
+        },
+        {
+          "questionId": "b-fallback-102",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-102-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Imagen A неверна по ticket image: ремень расположен не так, как требуется в варианте с правильным uso durante el embarazo."
+            },
+            {
+              "answerId": "b-fallback-102-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке билета: Imagen B показывает корректный вариант использования cinturón during embarazo. Это image-specific вывод; текущий архив не используется как официальный каталог поз для беременности."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b218.jpg"
+        },
+        {
+          "questionId": "b-fallback-120",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-120-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sustituir al cinturón неверно. Ley 2148 прямо говорит, что air bags не заменяют cinturón de seguridad и не освобождают от обязанности его использовать."
+            },
+            {
+              "answerId": "b-fallback-120-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Menos de 80 km/h - ложная точная гарантия. Билет не дает скорости, при которой airbag сам по себе исключает lesiones."
+            },
+            {
+              "answerId": "b-fallback-120-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: без ремня airbag puede provocar lesiones graves. Официальная опора здесь общая: airbag не заменяет ремень; точная фраза про lesiones graves остается формулировкой fallback-билета."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-149",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-149-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке: Opción A показывает корректную posición de la banda inferior del cinturón de seguridad de tres puntas."
+            },
+            {
+              "answerId": "b-fallback-149-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Opción B неверна: в этой ticket image нижняя лямка проходит не в безопасном месте для banda inferior."
+            },
+            {
+              "answerId": "b-fallback-149-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas opciones неверно: билет требует выбрать только правильную геометрию нижней лямки, а не считать обе картинки допустимыми."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b220.jpg"
+        },
+        {
+          "questionId": "b-fallback-151",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-151-a1",
+              "verdict": "incorrect",
+              "explanationRu": "A сама по себе верна, но неполна: luces intermitentes, balizas portátiles и emergency call закрывают только часть действий."
+            },
+            {
+              "answerId": "b-fallback-151-a2",
+              "verdict": "incorrect",
+              "explanationRu": "B тоже верна, но неполна: chaleco reflectante и resguardo detrás de una defensa важны, однако нужно также предупредить поток и вызвать помощь."
+            },
+            {
+              "answerId": "b-fallback-151-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas. В ситуации siniestro/desperfecto на показанном sector de Autopista нужно предупредить других, поставить balizas/luces, связаться с emergency service и выйти в chaleco к безопасному месту."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b45.jpg"
+        },
+        {
+          "questionId": "b-fallback-193",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-193-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo al conductor неверно: обязанность cinturón распространяется не только на водителя."
+            },
+            {
+              "answerId": "b-fallback-193-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sólo asientos delanteros неверно: задние пассажиры тоже входят в todas las personas transportadas / demás ocupantes."
+            },
+            {
+              "answerId": "b-fallback-193-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: на фото не все едут корректно, потому что cinturón de seguridad обязателен для всех людей в автомобиле."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b217.jpg"
+        },
+        {
+          "questionId": "b-fallback-210",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-210-a1",
+              "verdict": "incorrect",
+              "explanationRu": "SRI и asiento trasero сами по себе недостаточны. На картинке девочка не использует cinturón de seguridad del SRI."
+            },
+            {
+              "answerId": "b-fallback-210-a2",
+              "verdict": "incorrect",
+              "explanationRu": "A contra marcha здесь не причина ошибки. Этот точный orientation/group вопрос относится к другому билету; в данной картинке главная проблема - отсутствие ремня SRI."
+            },
+            {
+              "answerId": "b-fallback-210-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: niña no utiliza el cinturón de seguridad del SRI. Детское устройство без фиксации ребенка не выполняет свою функцию."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b213.jpg"
+        },
+        {
+          "questionId": "b-fallback-212",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-212-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Cinturón у людей не делает поездку безопасной, если mascota в салоне не закреплена и может мешать или травмироваться."
+            },
+            {
+              "answerId": "b-fallback-212-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Запрета перевозить mascotas в частном автомобиле как такового этот билет не утверждает. Проблема не в самом животном, а в перевозке без retención."
+            },
+            {
+              "answerId": "b-fallback-212-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: mascotas должны ехать на asientos traseros sujetas con arnés o sistema de retención correspondiente. Архивная Ley 2148 прямо поддерживает запрет transportar animales sueltos; exact arnés/rear-seat wording остается ticket-specific."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b221.jpg"
+        },
+        {
+          "questionId": "b-fallback-297",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-297-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Bien ajustado y asiento trasero не решает проблему ориентации на этой картинке. Билет спрашивает именно colocación del dispositivo для 7-летнего ребенка."
+            },
+            {
+              "answerId": "b-fallback-297-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: orientación a contra marcha относится к grupos 0, 0+ y 1 según fabricante, а ребенок 7 años уже не соответствует этой логике."
+            },
+            {
+              "answerId": "b-fallback-297-a3",
+              "verdict": "incorrect",
+              "explanationRu": "A contra marcha действительно уменьшает efecto latigazo для маленьких групп, но это не делает ее правильной для 7-летнего ребенка в этом билете."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b212.jpg"
+        },
+        {
+          "questionId": "b-fallback-422",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-422-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке и ответам билета: нижняя часть ремня pasa por el abdomen, а должна проходить por los huesos de la cadera."
+            },
+            {
+              "answerId": "b-fallback-422-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Por los muslos неверно: билет противопоставляет abdomen именно huesos de la cadera, а не бедра."
+            },
+            {
+              "answerId": "b-fallback-422-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Sí неверно: прохождение через abdomen делает cinturón colocado incorrectamente, даже если другая часть ремня идет через clavícula."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b219.jpg"
+        },
+        {
+          "questionId": "b-fallback-453",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-453-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Salvo en rutas nacionales неверно: проблема не зависит от типа дороги в этом билете. SRI расположен не там, где должен."
+            },
+            {
+              "answerId": "b-fallback-453-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Debidamente ajustado недостаточно, если dispositivo de retención infantil colocado в неправильной plaza."
+            },
+            {
+              "answerId": "b-fallback-453-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: estos dispositivos deben ir colocados en los asientos traseros. На фото SRI установлен спереди, поэтому colocación incorrecta."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b211.jpg"
+        },
+        {
+          "questionId": "b-fallback-454",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-454-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: по фото apoyacabeza расположен корректно относительно conductor; Ley 2148 требует для регулируемого cabezal, чтобы верхняя часть была на высоте верхней части головы."
+            },
+            {
+              "answerId": "b-fallback-454-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: изображение соответствует правилу высоты apoyacabeza, поэтому утверждение билета правильное."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b214.jpg"
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-seat-belts-sri-airbag-headrest",
+          "textRu": "Ley 2148 requires seat belts for conductor and occupants, SRI for passengers under 12 and under 1.50 m, says air bags do not replace seat belts, and defines the correct adjustable headrest height.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "occupant-seat-belts-sri-airbag-headrest"
+        },
+        {
+          "id": "claim-reflective-vest-emergency",
+          "textRu": "Ley 2148 requires a reflective vest accessible in the vehicle habitáculo and supports warning/emergency behavior for breakdowns or immobilization on autopistas/vías rápidas.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "occupant-reflective-vest-emergency"
+        },
+        {
+          "id": "claim-minors-front-and-loose-animals",
+          "textRu": "Ley 2148 prohibits transporting children under 12 in front seats and transporting loose animals; exact pet-retention wording in the fallback image ticket remains ticket-specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "occupant-minors-front-and-loose-animals"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-airbag-not-replacement",
+          "textRu": "Airbag/complementa всегда рядом с cinturón. Варианты prescindir, sustituir или incompatible - ловушки.",
+          "sourceQuestionIds": [
+            "b-fallback-081",
+            "b-fallback-120"
+          ]
+        },
+        {
+          "id": "trap-todos-occupants",
+          "textRu": "Todos los ocupantes означает всех пассажиров, включая задний ряд и последние километры после parada.",
+          "sourceQuestionIds": [
+            "b-fallback-046",
+            "b-fallback-193"
+          ]
+        },
+        {
+          "id": "trap-sri-age-height-seat",
+          "textRu": "Для SRI смотрите возраст/рост, заднее место и реальную фиксацию ремнем. Asiento trasero без ремня SRI или переднее размещение - неверно.",
+          "sourceQuestionIds": [
+            "b-fallback-013",
+            "b-fallback-210",
+            "b-fallback-453"
+          ]
+        },
+        {
+          "id": "trap-image-specific-belt-fit",
+          "textRu": "Беременность, banda inferior и huesos de la cadera решаются по картинке и вариантам ответа; не превращайте каждую иллюстрацию в отдельное общее правило без источника.",
+          "sourceQuestionIds": [
+            "b-fallback-102",
+            "b-fallback-149",
+            "b-fallback-422"
+          ]
+        },
+        {
+          "id": "trap-chaleco-accessible",
+          "textRu": "Chaleco не должен лежать где угодно: ключевые слова habitáculo и accesible. На Autopista также не забывайте balizas/emergency call и уйти за defensa.",
+          "sourceQuestionIds": [
+            "b-fallback-007",
+            "b-fallback-151"
+          ]
+        },
+        {
+          "id": "trap-pets-not-banned-but-secured",
+          "textRu": "Mascotas не запрещены автоматически; запрещена опасная перевозка sueltas. Exact arnés/asiento trasero answer belongs to this fallback ticket.",
+          "sourceQuestionIds": [
+            "b-fallback-212"
+          ]
+        }
+      ]
+    },
+    {
       "id": "turns-direction-and-reversing",
       "slug": "turns-direction-and-reversing",
       "status": "draft",
