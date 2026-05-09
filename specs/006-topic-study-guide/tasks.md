@@ -363,6 +363,7 @@
 - Slice E4 build evidence: `pnpm run build` passed after dependency installation; Vite emitted the existing non-blocking chunk-size warning and service-worker generation reported 280 cached assets.
 - Slice E4 diff hygiene evidence: `git diff --check` passed with no output.
 - Slice E4 preflight evidence: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- PR #21 review-fix evidence: corrected `b-fallback-153` / `Cruce de Peatones (máximo peligro)` Russian correct-answer explanation so it instructs drivers to increase pedestrian attention and reduce speed before the crossing, resolving the P2 reversed-safety wording without changing coverage, source trace, official documents, tests, or unrelated guide text. Validation passed: `node --test tests/content-topic-guide.test.mjs`, `pnpm run validate:content`, and `git diff --check`.
 
 ### Implementation Agent Feedback
 
