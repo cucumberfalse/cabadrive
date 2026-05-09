@@ -124,6 +124,10 @@
 - [ ] T090 Confirm the PR has no unresolved merge conflicts.
 - [ ] T091 Leave only final human approval or merge mechanics remaining.
 
+## Future Slice H: Taxonomy Refinement Backlog
+
+- [ ] T092 Reevaluate `b-fallback-296` and `b-fallback-343` as a future taxonomy-cleanup candidate after Slice E1; any reassignment must preserve the maximum-two-topic rule, update coverage evidence, and land outside the `speed-limits` content PR.
+
 ## Process Memory
 
 ### Dead Ends
@@ -317,3 +321,4 @@
 - Slice C planning/validator conflict before taxonomy implementation was accepted. Disposition: distinguish planned taxonomy assignments from content-ready/published rendered placements in the coverage manifest and validator. Slice C must validate all 460 current ticket IDs as planned coverage with one or two categories, and must adjust Slice A validator behavior if needed so planned assignments do not require guide ticket blocks or answer explanations. Final published validation remains strict: all planned assignments must be promoted to content-ready/published placements, coverage and guide content must agree globally, repeated tickets must physically render in each published topic, and every rendered ticket block must include answer explanations.
 - Slice D annex feedback accepted as a future constraint, not a Slice D blocker. Disposition: topic slices using Decreto 779 annex-specific claims, especially signage or technical vehicle material, must satisfy T052 by archiving the relevant annex bodies as separate manifest entries before adding T051 source traces; T068, T069, and T070 then validate those annex entries and claims with the rest of the archive.
 - Slice D GCBA manual feedback accepted as a future task, not a Slice D blocker. Disposition: topic slices using claims found only in the optional GCBA four-wheel manual must first add a dedicated PDF conversion/evidence slice under T052, including raw evidence and conversion limitations, before those claims can pass T051 and the final T068/T069/T070 gates.
+- Slice E1 taxonomy feedback accepted as future cleanup consideration T092, not a Slice E1 blocker. Disposition: `b-fallback-296` and `b-fallback-343` may be better route-sign recognition placements, but this PR correctly follows the current Slice C taxonomy, keeps the `speed-limits` placements content-ready, and must not reassign them here. A later taxonomy refinement may remove or move those placements only with updated coverage evidence and the maximum-two-topic rule preserved.
