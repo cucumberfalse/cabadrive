@@ -116,9 +116,9 @@
       "titleRu": "Лимиты скорости по типам дорог и зонам",
       "categoryId": "speed",
       "splitCriteria": "Числовые максимальные/минимальные скорости и velocidad precautoria по calle, avenida, ruta, autopista и школьным зонам.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E1"
     },
     {
       "topicId": "safe-distance-and-braking",
@@ -597,7 +597,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-027",
@@ -622,7 +626,11 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "regulatory-signs": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-030",
@@ -648,7 +656,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-033",
@@ -791,7 +803,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-050",
@@ -1423,8 +1439,8 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-126",
@@ -1585,7 +1601,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-145",
@@ -1701,8 +1721,8 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-159",
@@ -1857,7 +1877,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "lane-and-channelization-markings": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-177",
@@ -1967,8 +1991,8 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-190",
@@ -2356,7 +2380,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-237",
@@ -2472,7 +2500,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-251",
@@ -2505,7 +2537,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-255",
@@ -2614,7 +2650,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-268",
@@ -2798,7 +2838,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-290",
@@ -2859,7 +2903,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-297",
@@ -3008,7 +3056,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-315",
@@ -3017,7 +3069,11 @@
         "speed-limits"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "road-types-highways-and-routes": "planned",
+        "speed-limits": "content_ready"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-316",
@@ -3253,7 +3309,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-344",
@@ -3541,7 +3601,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-378",
@@ -3658,8 +3722,8 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-392",
@@ -3718,7 +3782,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-399",
@@ -3904,7 +3972,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-421",
@@ -4063,7 +4135,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-440",
@@ -4148,7 +4224,11 @@
         "road-types-highways-and-routes"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "placementPhases": {
+        "speed-limits": "content_ready",
+        "road-types-highways-and-routes": "planned"
+      },
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-450",
@@ -4171,8 +4251,8 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E1"
     },
     {
       "questionId": "b-fallback-453",
