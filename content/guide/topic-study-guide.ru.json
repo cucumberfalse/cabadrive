@@ -8,6 +8,402 @@
   "disclaimer": "Неофициальный учебный материал Cabadrive. Он помогает разбирать билеты и не является официальным текстом GCBA.",
   "topics": [
     {
+      "id": "parking-clearances-and-corners",
+      "slug": "parking-clearances-and-corners",
+      "status": "draft",
+      "titleRu": "Расстояния при парковке, углы и въезды",
+      "summaryRu": "Экзаменационный блок про отступы у входов, углы/ochava, cordón, garaje, marcha atrás и несколько смешанных билетов, которые попали сюда по текущей taxonomy.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Здесь важно не запомнить одно число на все случаи, а связать место с конкретным запретом: вход учреждения, paso ferroviario, esquina, cordón, garaje или ciclovía.",
+        "У entradas de hospitales, sanatorios, clínicas и centros de salud стоянка ограничивается отступом 10 metros de cada lado de la entrada. Для школ это правило действует en horas de clase, для храмов - во время oficios/ceremonias, для банков - durante el horario de atención al público; поэтому ответы с 5 metros для больницы неверны, а 10 metros - правильная экзаменационная связка.",
+        "У paso ferroviario ловушка обратная: 20 metros звучит как знакомая дистанция, но в CABA общий запрет estacionar действует a menos de 50 metros a cada lado de los pasos ferroviarios a nivel. Поэтому билет с 20 metros - falso.",
+        "Esquina/ochava читается как зона видимости, а не как свободное место у края квартала. В CABA запрещено estacionar y detenerse между vértice ideal и prolongación de la ochava, а также на senda peatonal или línea de pare.",
+        "Правильная параллельная парковка - примерно 20 cm del cordón. Машина слишком близко к бордюру или на разметке/пространстве для ciclovía не становится правильной только потому, что cordón не окрашен.",
+        "Marcha atrás в CABA запрещена как обычное движение. Она допускается только как необходимое дополнение к estacionamiento, detención, ingreso/egreso или похожей ситуации, когда вперед ехать нельзя; recorrido должен быть mínimo e indispensable.",
+        "Въезд из garaje или с места estacionado не дает автоматического приоритета. Уступать такому автомобилю нужно только когда tránsito se encuentra interrumpido; иначе водитель, который выезжает, должен встроиться без опасности и помех.",
+        "Два билета здесь taxonomy-mixed: distancia de reacción и banco de niebla. Они оставлены в этой теме как ticket-specific prompts: не превращайте их в правило парковки, просто отвечайте по формулировке конкретного билета."
+      ],
+      "practicalReasoningRu": [
+        "Отступы у входов и углов освобождают обзор, место для маневра и доступ emergency/service vehicles; без них водители и пешеходы появляются друг для друга слишком поздно.",
+        "Правило 20 cm от cordón делает парковку предсказуемой: автомобиль не торчит в поток, но и не заезжает на бордюр, разметку или пространство уязвимых участников.",
+        "Ограничение marcha atrás нужно потому, что обзор сзади хуже. Законная логика - коротко закончить маневр, а не ехать задним ходом как обычным способом движения."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-distancia-clearances",
+          "termEs": "distancia",
+          "translationRu": "дистанция, расстояние",
+          "sourceQuestionIds": [
+            "b-fallback-028",
+            "b-fallback-342"
+          ]
+        },
+        {
+          "id": "term-10-metros-entrada",
+          "termEs": "10 metros de cada lado de la entrada",
+          "translationRu": "10 метров с каждой стороны входа",
+          "sourceQuestionIds": [
+            "b-fallback-028"
+          ]
+        },
+        {
+          "id": "term-5-metros-entrada",
+          "termEs": "5 metros",
+          "translationRu": "5 метров с каждой стороны входа; ловушка в билете про hospital",
+          "sourceQuestionIds": [
+            "b-fallback-412"
+          ]
+        },
+        {
+          "id": "term-20-metros",
+          "termEs": "20 metros",
+          "translationRu": "20 метров; в этих билетах это неверная fixed-distance ловушка",
+          "sourceQuestionIds": [
+            "b-fallback-121",
+            "b-fallback-271"
+          ]
+        },
+        {
+          "id": "term-20-cm-cordon",
+          "termEs": "20 cm",
+          "translationRu": "20 сантиметров",
+          "sourceQuestionIds": [
+            "b-fallback-249"
+          ]
+        },
+        {
+          "id": "term-cordon-clearances",
+          "termEs": "cordón",
+          "translationRu": "бордюр",
+          "sourceQuestionIds": [
+            "b-fallback-249",
+            "b-fallback-341",
+            "b-fallback-396"
+          ]
+        },
+        {
+          "id": "term-marcha-atras-clearances",
+          "termEs": "marcha atrás",
+          "translationRu": "движение задним ходом",
+          "sourceQuestionIds": [
+            "b-fallback-043",
+            "b-fallback-271"
+          ]
+        },
+        {
+          "id": "term-minimo-indispensable",
+          "termEs": "mínimo e indispensable",
+          "translationRu": "минимально необходимый",
+          "sourceQuestionIds": [
+            "b-fallback-271"
+          ]
+        },
+        {
+          "id": "term-transito-interrumpido",
+          "termEs": "tránsito se encuentra interrumpido",
+          "translationRu": "движение прервано/заблокировано",
+          "sourceQuestionIds": [
+            "b-fallback-031"
+          ]
+        },
+        {
+          "id": "term-garaje-clearances",
+          "termEs": "garaje",
+          "translationRu": "гараж/въезд",
+          "sourceQuestionIds": [
+            "b-fallback-031",
+            "b-fallback-043",
+            "b-fallback-396"
+          ]
+        },
+        {
+          "id": "term-distancia-reaccion",
+          "termEs": "distancia de reacción",
+          "translationRu": "дистанция реакции",
+          "sourceQuestionIds": [
+            "b-fallback-342"
+          ]
+        },
+        {
+          "id": "term-banco-niebla",
+          "termEs": "banco de niebla",
+          "translationRu": "полоса/участок тумана",
+          "sourceQuestionIds": [
+            "b-fallback-460"
+          ]
+        },
+        {
+          "id": "term-aumentar-distancia-vehiculos",
+          "termEs": "aumentar la distancia entre vehículos",
+          "translationRu": "увеличить дистанцию между автомобилями",
+          "sourceQuestionIds": [
+            "b-fallback-460"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-028",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-028-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Todo el frente del edificio слишком широко для общей формулы билета. Для такого входа проверяется конкретный отступ от entrada."
+            },
+            {
+              "answerId": "b-fallback-028-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: у входа в hospital/centro de salud нужно оставить 10 metros de cada lado de la entrada, чтобы не закрыть доступ и маневр."
+            },
+            {
+              "answerId": "b-fallback-028-a3",
+              "verdict": "incorrect",
+              "explanationRu": "5 метров недостаточно для этой категории входов. Это ловушка, которая повторяется в похожем билете с больницей."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b152.jpg"
+        },
+        {
+          "questionId": "b-fallback-031",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-031-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Siempre неверно: машина, выезжающая из estacionamiento или garaje, не получает постоянный приоритет перед потоком."
+            },
+            {
+              "answerId": "b-fallback-031-a2",
+              "verdict": "correct",
+              "explanationRu": "Верно: уступают только когда tránsito se encuentra interrumpido. Тогда выпуск машины из места стоянки или garaje помогает восстановить движение."
+            },
+            {
+              "answerId": "b-fallback-031-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Nunca тоже неверно: при прерванном движении законная логика как раз допускает уступить такому автомобилю."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-043",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-043-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: marcha atrás запрещена как обычное движение, но допускается для estacionar, entrar o salir de un garaje, если нет другой возможности, или для обхода препятствия."
+            },
+            {
+              "answerId": "b-fallback-043-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Sí, en cualquier ocasión слишком широко. Короткая дистанция сама по себе не делает движение задним ходом разрешенным."
+            },
+            {
+              "answerId": "b-fallback-043-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Mitad de la cuadra - неверный критерий. Разрешение зависит от необходимости маневра, а не от половины квартала."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-121",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-121-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: возле paso ferroviario число 20 metros в билете является ловушкой."
+            },
+            {
+              "answerId": "b-fallback-121-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза false: для pasos ferroviarios a nivel CABA использует запрет estacionar a menos de 50 metros a cada lado, а не 20."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b155.jpg"
+        },
+        {
+          "questionId": "b-fallback-249",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-249-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Отсутствие желтого cordón не доказывает, что машина bien estacionada: вопрос проверяет положение относительно бордюра."
+            },
+            {
+              "answerId": "b-fallback-249-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Красный cordón связан с запретом остановки/стоянки, но здесь ошибка не в цвете бордюра, а в слишком близкой парковке."
+            },
+            {
+              "answerId": "b-fallback-249-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: при обычной параллельной парковке автомобиль должен стоять примерно a 20 cm del cordón, а не вплотную к нему."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b165.jpg"
+        },
+        {
+          "questionId": "b-fallback-271",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-271-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Mitad de una cuadra - не правило для marcha atrás. Билет проверяет не фиксированную часть квартала, а необходимость маневра."
+            },
+            {
+              "answerId": "b-fallback-271-a2",
+              "verdict": "incorrect",
+              "explanationRu": "20 metros тоже неверная fixed-distance ловушка: задним ходом нельзя ехать просто до заданного максимума."
+            },
+            {
+              "answerId": "b-fallback-271-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: при maniobra de estacionamiento marcha atrás должна быть recorrido mínimo e indispensable и выполняться с максимальной осторожностью."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-341",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-341-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант описывает более мягкий запрет: no estacionar, но допускает detención para ascenso/descenso. Красный cordón означает строже."
+            },
+            {
+              "answerId": "b-fallback-341-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Espacio reservado para emergencia обычно обозначается специальной reserva/señalización. На изображении проверяется значение красной demarcación del cordón."
+            },
+            {
+              "answerId": "b-fallback-341-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: cordón rojo indica prohibición de estacionar o detenerse al costado de la acera; нельзя ни стоять, ни останавливаться параллельно cordón."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b79.jpg"
+        },
+        {
+          "questionId": "b-fallback-342",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-342-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Это ближе к distancia de detención/frenado: сколько автомобиль пройдет до полной остановки, а не до решения водителя."
+            },
+            {
+              "answerId": "b-fallback-342-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант описывает дистанцию для маневра между автомобилями, но не реакцию водителя на опасность."
+            },
+            {
+              "answerId": "b-fallback-342-a3",
+              "verdict": "correct",
+              "explanationRu": "Correcto по формулировке билета: distancia de reacción - путь, который автомобиль проходит от момента, когда водитель percibe un peligro, до принятия решения."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-396",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-396-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Гараж владельца не создает исключение, если автомобиль занимает пространство ciclovía или опасно перекрывает путь велосипедистам."
+            },
+            {
+              "answerId": "b-fallback-396-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Дни no hábiles не отменяют запрет, связанный с ciclovía и безопасностью ciclistas."
+            },
+            {
+              "answerId": "b-fallback-396-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: такая парковка запрещена, потому что ставит под риск ciclistas и занимает пространство, предназначенное для их движения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b149.jpg"
+        },
+        {
+          "questionId": "b-fallback-412",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-412-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: для entrada de hospital/centro de salud 5 metros de cada lado de la entrada - недостаточный отступ."
+            },
+            {
+              "answerId": "b-fallback-412-a2",
+              "verdict": "correct",
+              "explanationRu": "Фраза false: в такой зоне нужно оставлять 10 metros de cada lado de la entrada, поэтому вариант с 5 metros не подходит."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b153.jpg"
+        },
+        {
+          "questionId": "b-fallback-460",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-460-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Luces rompeniebla могут помочь видеть/быть видимым, но не son suficientes: в тумане также нужны снижение скорости, дистанция и контроль."
+            },
+            {
+              "answerId": "b-fallback-460-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильная рекомендация из билета: обе руки на volante, reducir la velocidad, aumentar la distancia entre vehículos и использовать luces correspondientes."
+            },
+            {
+              "answerId": "b-fallback-460-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Detenerse en la banquina не является общей рекомендацией при banco de niebla: можно создать дополнительный риск, особенно если видимость плохая."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b188.jpg"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-one-distance-is-not-all-distances",
+          "textRu": "Не переносите одно число на все места: entrada de hospital - 10 m с каждой стороны, paso ferroviario - не 20 m, а другая зона запрета."
+        },
+        {
+          "id": "trap-5-vs-10-institutions",
+          "textRu": "В больничных/институциональных входах варианты 5 metros и 10 metros похожи. Для этих билетов выбирайте 10 metros."
+        },
+        {
+          "id": "trap-cordon-color-and-distance",
+          "textRu": "Cordón проверяет две разные вещи: цвет может означать запрет, а расстояние 20 cm - правильную форму параллельной парковки."
+        },
+        {
+          "id": "trap-marcha-atras-fixed-distance",
+          "textRu": "Marcha atrás не разрешается до “20 metros” или “mitad de cuadra”. Правильный ответ ищет mínimo e indispensable для конкретного маневра."
+        },
+        {
+          "id": "trap-mixed-distance-questions",
+          "textRu": "Distancia de reacción и banco de niebla попали в этот topic по taxonomy, но отвечаются не как parking-clearance: читайте конкретный текст билета."
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-caba-parking-clearance-distances-and-corners",
+          "textRu": "В CABA стоянка запрещена у pasos ferroviarios a nivel ближе 50 m с каждой стороны, у больничных/медицинских entradas ближе 10 m с каждой стороны, а у школ, храмов и банков этот 10 m отступ зависит от часов занятий, служб/церемоний или horario de atención al público; также нельзя стоять в esquinas/ochava, на sendas peatonales/líneas de pare и в sectores de ingreso/egreso; обычная параллельная парковка выполняется примерно в 20 cm от cordón.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "parking-clearances-distances-corners-and-cordon"
+        },
+        {
+          "id": "claim-caba-reverse-and-garage-incorporation",
+          "textRu": "В CABA marcha atrás разрешена только как необходимый короткий маневр в специальных случаях, а автомобили, которые хотят incorporarse desde estacionamiento или garaje, получают уступку только когда tránsito está interrumpido.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "parking-clearances-reverse-and-garage-incorporation"
+        },
+        {
+          "id": "claim-cordons-and-ciclovias",
+          "textRu": "Cordón rojo означает запрет estacionar o detenerse al costado de la acera, а estacionar sobre ciclovías или junto al carril afectado a ciclovía запрещено и опасно для ciclistas.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "parking-clearances-cordons-and-ciclovias"
+        }
+      ]
+    },
+    {
       "id": "driver-hand-signals",
       "slug": "driver-hand-signals",
       "status": "draft",
