@@ -208,6 +208,68 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current/in_force",
       "notes": "Used for b-fallback-207, b-fallback-211, b-fallback-331 and b-fallback-411 explanations without expanding the topic into a full overtaking or parking lesson."
+    },
+    {
+      "id": "warning-signs-system-and-categories",
+      "topicId": "warning-signs",
+      "claimId": "claim-warning-sign-system-categories",
+      "claimSummaryRu": "Anexo L defines the uniform road-sign system and supports the role of warning/preventive signs, including the importance of shape and color for sign categories.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo I punto 1 Concepto",
+        "Capítulo II punto 7 Significado",
+        "Capítulo III punto 8 Características básicas",
+        "Capítulo IV punto 13 Señales preventivas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Used for compact warning-sign prose and the ticket b-fallback-306 color/form explanation."
+    },
+    {
+      "id": "warning-signs-preventive-examples",
+      "topicId": "warning-signs",
+      "claimId": "claim-warning-sign-examples",
+      "claimSummaryRu": "Anexo L sign entries support the assigned ticket meanings for preventive/warning signs such as curves, winding road, slopes, narrowing, divided road, roundabout, lateral traffic incorporation, double circulation, schoolchildren, pedestrians and roadworks proximity.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "P.4 Curva cerrada",
+        "P.5 Cruce de peatones",
+        "P.7 Curvas",
+        "P.8 Camino sinuoso",
+        "P.9 Pendiente",
+        "P.10 Estrechamiento",
+        "P.20 Principio y fin de calzada dividida",
+        "P.21 Rotonda",
+        "P.22 Incorporación de tránsito lateral",
+        "P.23 Inicio de doble circulación",
+        "P.24 Encrucijada",
+        "P.25 Escolares o niños",
+        "Capítulo VIII Señalamiento transitorio / zona de obras"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports only meanings present in assigned E4 tickets; route/information/regulatory topics remain outside this slice."
+    },
+    {
+      "id": "warning-signs-authority-signs-norms-hierarchy",
+      "topicId": "warning-signs",
+      "claimId": "claim-warning-authority-priority",
+      "claimSummaryRu": "Traffic authority indications prevail over road signs, and signs prevail over general legal norms for the operational hierarchy tested by assigned tickets.",
+      "officialDocumentIds": [
+        "ley-24449-transito-seguridad-vial",
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 24.449 Artículo 36 Prioridad normativa",
+        "Ley 2148 2.1.2 Orden de prioridad normativo"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Used for b-fallback-311, b-fallback-347 and b-fallback-444 explanations without broadening this slice into a full authority/signaling topic."
     }
   ]
 }

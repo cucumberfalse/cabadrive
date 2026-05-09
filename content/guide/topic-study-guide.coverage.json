@@ -62,9 +62,9 @@
       "titleRu": "Предупреждающие знаки и опасные участки",
       "categoryId": "signs",
       "splitCriteria": "Распознавание предупреждающих знаков, опасных участков, панелей и дорожных условий по изображению или формулировке.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E4"
     },
     {
       "topicId": "regulatory-signs",
@@ -901,8 +901,8 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E4"
     },
     {
       "questionId": "b-fallback-061",
@@ -942,8 +942,8 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E4"
     },
     {
       "questionId": "b-fallback-066",
@@ -969,7 +969,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-069",
@@ -987,7 +991,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-071",
@@ -1045,7 +1053,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-078",
@@ -1160,8 +1172,8 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E4"
     },
     {
       "questionId": "b-fallback-092",
@@ -1444,7 +1456,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "turns-direction-and-reversing": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-125",
@@ -1482,7 +1498,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "turns-direction-and-reversing": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-129",
@@ -1491,7 +1511,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-130",
@@ -1696,15 +1720,19 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "pedestrian-crossings-and-priority": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-154",
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E4"
     },
     {
       "questionId": "b-fallback-155",
@@ -1751,7 +1779,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "pedestrian-school-zones-and-markings": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-160",
@@ -1834,8 +1866,8 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E4"
     },
     {
       "questionId": "b-fallback-170",
@@ -1940,7 +1972,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-181",
@@ -2277,8 +2313,8 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E4"
     },
     {
       "questionId": "b-fallback-221",
@@ -2643,7 +2679,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-263",
@@ -2745,7 +2785,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "turns-direction-and-reversing": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-274",
@@ -2869,7 +2913,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "turns-direction-and-reversing": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-289",
@@ -2933,8 +2981,8 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E4"
     },
     {
       "questionId": "b-fallback-296",
@@ -3028,8 +3076,8 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E4"
     },
     {
       "questionId": "b-fallback-307",
@@ -3070,7 +3118,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-312",
@@ -3079,7 +3131,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-313",
@@ -3374,7 +3430,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-346",
@@ -3391,7 +3451,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "stopping-vs-parking-maneuvers": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-348",
@@ -3758,7 +3822,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-390",
@@ -3944,7 +4012,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-411",
@@ -4173,7 +4245,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-basic-intersections": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-437",
@@ -4212,7 +4288,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-441",
@@ -4246,7 +4326,11 @@
         "warning-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E4",
+      "placementPhases": {
+        "right-of-way-special-situations": "planned",
+        "warning-signs": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-445",
