@@ -7543,6 +7543,380 @@
           "sourceTraceId": "stopping-parking-sign-meanings"
         }
       ]
+    },
+    {
+      "id": "center-lines-and-crossing-rules",
+      "slug": "center-lines-and-crossing-rules",
+      "status": "draft",
+      "titleRu": "Осевые линии и правила пересечения разметки",
+      "summaryRu": "Короткий блок про demarcación horizontal: когда линию можно пересекать, когда нельзя traspasar/circular sobre ella, и как не спутать осевую линию с пешеходной или успокаивающей разметкой.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про разметку сначала определяйте, что перед вами: линия разделения встречных потоков, двойная/сплошная линия, прерывистая линия, заштрихованная canalizadora/isleta или отдельная городская разметка для снижения скорости.",
+        "Demarcación horizontal имеет тот же учебный вес, что и vertical signs: это не украшение на асфальте, а señalización. Если вопрос говорит señal vertical o demarcación horizontal, правильная логика - обе могут выражать indicación и находятся в одном нормативном уровне.",
+        "Línea continua - запрет. Ее нельзя traspasar и нельзя circular sobre ella, независимо от того, белая она или желтая. Doble línea continua только усиливает эту идею и разделяет направления движения.",
+        "Línea discontinua - разрешение пересечь, но только когда маневр безопасен и не противоречит другой señalización. В билете с двумя параллельными линиями смотрите на линию más próxima: со стороны discontinua можно traspasar, со стороны continua - нельзя.",
+        "Желтая центральная разметка чаще всего подсказывает sentidos opuestos или zona de obstrucción. Если вариант предлагает ехать по желтой зоне или использовать ее как место остановки/стоянки, это обычно ловушка.",
+        "Заштрихованные или канализирующие маркировки не являются полосой. Они направляют поток в сторону от препятствия или зоны, по которой нельзя ехать; в ticket-specific вопросах такая желтая поверхность может также объяснять снижение скорости и радиуса поворота.",
+        "Смешанные билеты в этой теме не надо превращать в общий урок про перекрестки или парковку. В `b-fallback-174` ключ - peatón и senda/semáforo, а в `b-fallback-320` - успокаивающая/канализирующая разметка; они остаются здесь только потому, что current taxonomy связывает их с demarcación horizontal."
+      ],
+      "practicalReasoningRu": [
+        "Линии работают как быстрый язык дороги: водитель видит запрет или разрешение на маневр раньше, чем успевает читать знак.",
+        "Разделение встречных потоков снижает риск лобового конфликта: сплошная линия говорит не начинать маневр, даже если кажется, что места достаточно.",
+        "Канализация и островки делают траекторию машин предсказуемой, поэтому водитель не должен воспринимать заштрихованную зону как свободное пространство."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-demarcacion-amarilla",
+          "termEs": "demarcación amarilla",
+          "translationRu": "желтая разметка",
+          "sourceQuestionIds": [
+            "b-fallback-111",
+            "b-fallback-188"
+          ]
+        },
+        {
+          "id": "term-demarcacion-horizontal",
+          "termEs": "demarcación horizontal",
+          "translationRu": "горизонтальная дорожная разметка",
+          "sourceQuestionIds": [
+            "b-fallback-170",
+            "b-fallback-320",
+            "b-fallback-415"
+          ]
+        },
+        {
+          "id": "term-calzada",
+          "termEs": "calzada",
+          "translationRu": "проезжая часть",
+          "sourceQuestionIds": [
+            "b-fallback-111",
+            "b-fallback-188",
+            "b-fallback-222",
+            "b-fallback-457"
+          ]
+        },
+        {
+          "id": "term-traspasar",
+          "termEs": "traspasar",
+          "translationRu": "пересекать, переезжать через линию",
+          "sourceQuestionIds": [
+            "b-fallback-111",
+            "b-fallback-222",
+            "b-fallback-457"
+          ]
+        },
+        {
+          "id": "term-sentidos-opuestos",
+          "termEs": "sentidos opuestos",
+          "translationRu": "противоположные направления движения",
+          "sourceQuestionIds": [
+            "b-fallback-111"
+          ]
+        },
+        {
+          "id": "term-linea-continua",
+          "termEs": "continua",
+          "translationRu": "сплошная линия",
+          "sourceQuestionIds": [
+            "b-fallback-222"
+          ]
+        },
+        {
+          "id": "term-linea-discontinua",
+          "termEs": "discontinua",
+          "translationRu": "прерывистая линия",
+          "sourceQuestionIds": [
+            "b-fallback-222"
+          ]
+        },
+        {
+          "id": "term-circular-sobre-ella",
+          "termEs": "circular sobre ella",
+          "translationRu": "ехать по ней/поверх нее",
+          "sourceQuestionIds": [
+            "b-fallback-188"
+          ]
+        },
+        {
+          "id": "term-lineas-centrales",
+          "termEs": "líneas centrales",
+          "translationRu": "центральные/осевые линии",
+          "sourceQuestionIds": [
+            "b-fallback-457"
+          ]
+        },
+        {
+          "id": "term-senal-vertical",
+          "termEs": "señal vertical",
+          "translationRu": "вертикальный дорожный знак",
+          "sourceQuestionIds": [
+            "b-fallback-415"
+          ]
+        },
+        {
+          "id": "term-orden-jerarquico",
+          "termEs": "orden jerárquico",
+          "translationRu": "нормативная иерархия/порядок приоритета",
+          "sourceQuestionIds": [
+            "b-fallback-415"
+          ]
+        },
+        {
+          "id": "term-peaton",
+          "termEs": "peatón",
+          "translationRu": "пешеход",
+          "sourceQuestionIds": [
+            "b-fallback-174"
+          ]
+        },
+        {
+          "id": "term-luz-verde",
+          "termEs": "luz verde",
+          "translationRu": "зеленый сигнал светофора",
+          "sourceQuestionIds": [
+            "b-fallback-174"
+          ]
+        },
+        {
+          "id": "term-radio-de-giro",
+          "termEs": "radio de giro",
+          "translationRu": "радиус поворота",
+          "sourceQuestionIds": [
+            "b-fallback-320"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-111",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-111-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Indica que se puede traspasar противоречит смыслу показанной желтой осевой разметки: билет проверяет запрет пересечения."
+            },
+            {
+              "answerId": "b-fallback-111-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: такая demarcación amarilla divide sentidos opuestos de circulación и указывает, что está prohibido traspasarla."
+            },
+            {
+              "answerId": "b-fallback-111-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Желтая разметка не превращает центральную зону в место, по которому можно circular sobre ella."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b123.jpg"
+        },
+        {
+          "questionId": "b-fallback-170",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-170-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Наличие или отсутствие встречного автомобиля не отменяет запрет, если horizontal marking сама запрещает sobrepasar."
+            },
+            {
+              "answerId": "b-fallback-170-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: vehículo B не может sobrepasar, потому что demarcación horizontal запрещает пересекать линию для обгона."
+            },
+            {
+              "answerId": "b-fallback-170-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Señales de luces и большая дистанция до встречного транспорта не дают права игнорировать запрет разметки."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b111.jpg"
+        },
+        {
+          "questionId": "b-fallback-174",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-174-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: даже при желании ехать en línea recta водитель должен остановиться и дать peatón закончить переход. Контакт глазами с пешеходами помогает убедиться, что они не начнут переход в опасный момент."
+            },
+            {
+              "answerId": "b-fallback-174-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Luz verde не разрешает ехать на пешехода и bocina не заменяет уступание. Этот билет не про осевую линию, а про приоритет пешехода в зоне перехода."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b18.jpg"
+        },
+        {
+          "questionId": "b-fallback-188",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-188-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Желтая demarcación en la calzada не делает сектор местом detención или estacionamiento; этот вариант смешивает разметку с зоной остановки/стоянки."
+            },
+            {
+              "answerId": "b-fallback-188-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Вариант про circular lentamente por su sector central неверен: билет спрашивает не о замедлении, а о запрете ехать по этой зоне."
+            },
+            {
+              "answerId": "b-fallback-188-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: no se debe circular sobre ella. В этой теме это читается как запрет использовать желтую зону как полосу."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b76.jpg"
+        },
+        {
+          "questionId": "b-fallback-222",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-222-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: смотрим на línea más próxima. Если ближайшая линия continua - ее нельзя traspasar; если ближайшая discontinua - пересечение разрешено при безопасном маневре."
+            },
+            {
+              "answerId": "b-fallback-222-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант переворачивает смысл: discontinua как раз указывает возможность пересечения, а continua - запрет."
+            },
+            {
+              "answerId": "b-fallback-222-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Полный запрет для обеих сторон был бы логикой doble línea continua. Здесь билет проверяет правило ближайшей линии."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b122.jpg"
+        },
+        {
+          "questionId": "b-fallback-320",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-320-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Изображенная demarcación horizontal не расширяет место estacionamiento para motos. Это ловушка из темы парковки, но ответ здесь про организацию движения."
+            },
+            {
+              "answerId": "b-fallback-320-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-ticket: такая желтая разметка нужна, чтобы reducir la velocidad y radio de giro de los vehículos. Обобщать это как универсальное правило осевых линий не нужно."
+            },
+            {
+              "answerId": "b-fallback-320-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Она не создает специальную парковку для emergency vehicles; в билете проверяется traffic-calming/channelization effect."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b36.jpg"
+        },
+        {
+          "questionId": "b-fallback-415",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-415-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: indicación может выражаться vertical sign или demarcación horizontal. В CABA señales verticales y demarcación horizontal находятся на одном уровне перед общими legal rules."
+            },
+            {
+              "answerId": "b-fallback-415-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: horizontal marking не ниже по смыслу только потому, что она нанесена на calzada."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-457",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-457-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: на изображении líneas centrales показывают ситуацию, где se pueden traspasar. Это типичный contrast с continuous-line tickets."
+            },
+            {
+              "answerId": "b-fallback-457-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Запрет traspasar относится к continua/doble continua или стороне continuous line; здесь правильный ответ про возможность пересечения."
+            },
+            {
+              "answerId": "b-fallback-457-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Zona de máximo peligro - это не смысл показанных central lines в этом билете."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b78.jpg"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-continuous-vs-discontinuous",
+          "textRu": "Самая частая ловушка: continua и discontinua поменяны местами. Continua = нельзя, discontinua = можно при безопасном маневре.",
+          "sourceQuestionIds": [
+            "b-fallback-222",
+            "b-fallback-457"
+          ]
+        },
+        {
+          "id": "trap-yellow-zone-is-not-a-lane",
+          "textRu": "Желтая зона на calzada не становится полосой движения или парковкой только потому, что по ней физически можно проехать.",
+          "sourceQuestionIds": [
+            "b-fallback-111",
+            "b-fallback-188",
+            "b-fallback-320"
+          ]
+        },
+        {
+          "id": "trap-overtake-conditions-do-not-override-markings",
+          "textRu": "Если demarcación horizontal запрещает sobrepasar, варианты про luces, distancia до встречного авто или cuidado не спасают ответ.",
+          "sourceQuestionIds": [
+            "b-fallback-170"
+          ]
+        },
+        {
+          "id": "trap-green-light-does-not-cancel-pedestrian-priority",
+          "textRu": "В taxonomy-mixed `b-fallback-174` green light не отменяет pedestrian-priority logic; bocina не является способом решить конфликт с пешеходом.",
+          "sourceQuestionIds": [
+            "b-fallback-174"
+          ]
+        },
+        {
+          "id": "trap-horizontal-and-vertical-same-level",
+          "textRu": "Не думайте, что только vertical signs важны. В билете `b-fallback-415` demarcación horizontal имеет тот же meaning/order level для указания.",
+          "sourceQuestionIds": [
+            "b-fallback-415"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-horizontal-markings-are-traffic-signals",
+          "textRu": "Demarcación horizontal - часть señalamiento vial: она может regular, transmitir órdenes, advertir, canalizar circulación или обозначать zonas prohibidas.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "center-lines-horizontal-markings-system"
+        },
+        {
+          "id": "claim-continuous-discontinuous-line-meaning",
+          "textRu": "Continuous line означает запрет traspasar/circular sobre ella; discontinuous line допускает пересечение; пара continuous/discontinuous читается по стороне ближайшей линии.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "center-lines-continuous-discontinuous-meaning"
+        },
+        {
+          "id": "claim-vertical-horizontal-signaling-hierarchy",
+          "textRu": "В CABA señales verticales и demarcación horizontal находятся в одном уровне priority order перед general legal rules, поэтому горизонтальная разметка не является второстепенной подсказкой.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "center-lines-caba-signaling-hierarchy"
+        },
+        {
+          "id": "claim-pedestrian-priority-at-crossing",
+          "textRu": "Пешеходы, которые пересекают calzada por senda peatonal или в предназначенной зоне, имеют priority logic: водитель должен уступить, если иначе подвергнет их опасности.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "center-lines-pedestrian-priority-ticket-scope"
+        },
+        {
+          "id": "claim-channelization-and-reduction-markings",
+          "textRu": "Заштрихованные/channelization markings направляют поток в сторону от препятствий или зон, по которым нельзя ехать; auxiliary reduction markings can induce drivers to reduce speed.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "center-lines-channelization-and-reduction-markings"
+        }
+      ]
     }
   ]
 }

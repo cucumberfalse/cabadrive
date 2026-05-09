@@ -933,6 +933,91 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "Supports b-fallback-341 and 396. The red-cordon explanation is generalized; the specific image framing remains tied to the canonical fallback tickets."
+    },
+    {
+      "id": "center-lines-horizontal-markings-system",
+      "topicId": "center-lines-and-crossing-rules",
+      "claimId": "claim-horizontal-markings-are-traffic-signals",
+      "claimSummaryRu": "Anexo L defines horizontal markings as traffic signals on the roadway that regulate, transmit orders, warn, channel circulation, and indicate prohibited zones.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo VI Señalamiento horizontal",
+        "26. Concepto"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Used for the general demarcación horizontal learning material and b-fallback-415 framing."
+    },
+    {
+      "id": "center-lines-continuous-discontinuous-meaning",
+      "topicId": "center-lines-and-crossing-rules",
+      "claimId": "claim-continuous-discontinuous-line-meaning",
+      "claimSummaryRu": "Anexo L states that continuous lines must not be crossed or driven over, discontinuous lines may be crossed, and parallel continuous/discontinuous lines are read according to the driver's side.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo VI punto 26.c Trazos continuos y discontinuos",
+        "H.1 Línea de separación de sentido de circulación"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports b-fallback-111, b-fallback-170, b-fallback-188, b-fallback-222 and b-fallback-457 without adding any new overtake rule beyond the marking restriction."
+    },
+    {
+      "id": "center-lines-caba-signaling-hierarchy",
+      "topicId": "center-lines-and-crossing-rules",
+      "claimId": "claim-vertical-horizontal-signaling-hierarchy",
+      "claimSummaryRu": "CABA places señales verticales and demarcación horizontal in the same priority tier ahead of general legal rules, and Ley 24.449 requires circulation respecting traffic signs and legal rules in priority order.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 2.3.3 Obediencia a la señalización",
+        "Ley 2148 2.3.4 Prioridades",
+        "Ley 24.449 Artículo 36 Prioridad normativa"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports the same-meaning/order explanation for b-fallback-415."
+    },
+    {
+      "id": "center-lines-pedestrian-priority-ticket-scope",
+      "topicId": "center-lines-and-crossing-rules",
+      "claimId": "claim-pedestrian-priority-at-crossing",
+      "claimSummaryRu": "CABA and national law require yielding to pedestrians crossing by pedestrian crossing or designated zones when failing to stop would endanger them; traffic-light rules do not make horn use a substitute for yielding.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.10 Vehículos en intersecciones semaforizadas",
+        "Ley 2148 6.7.1 Regla general",
+        "Ley 24.449 Artículo 41 Prioridades"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Added only because b-fallback-174 is fixed in this topic by current taxonomy; the explanation remains ticket-specific and does not broaden this center-line topic into a full pedestrian-priority lesson."
+    },
+    {
+      "id": "center-lines-channelization-and-reduction-markings",
+      "topicId": "center-lines-and-crossing-rules",
+      "claimId": "claim-channelization-and-reduction-markings",
+      "claimSummaryRu": "Anexo L supports channelizing markings/islets as no-cross/no-drive-over areas that guide traffic around obstacles, and auxiliary reduction markings as markings that induce speed reduction.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "H.7 Líneas auxiliares para reducción de velocidad",
+        "H.8 Marcas canalizadoras del tránsito (e isletas)",
+        "H.14 Separador de tránsito"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports only generalized channelization/speed-reduction framing. The exact b-fallback-320 answer phrase about reducing turning radius remains ticket-specific because the archived source search did not expose that formula as a general official claim."
     }
   ]
 }
