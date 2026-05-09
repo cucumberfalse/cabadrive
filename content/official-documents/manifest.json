@@ -389,6 +389,217 @@
         "status": "pending",
         "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
       }
+    },
+    {
+      "id": "gcba-guia-practica-siniestros-viales",
+      "title": "Guía práctica de actuación ante siniestros viales",
+      "officialSourceType": "gcba_road_safety_guide_pdf",
+      "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T18:56:37-03:00",
+      "sourceFormat": "pdf",
+      "localPath": "content/official-documents/documents/gcba-guia-practica-siniestros-viales.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-guia-practica-siniestros-viales.pdf",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "PDF text extraction with pdf-parse 1.1.1 from the official GCBA PDF; extracted text written as Markdown with title and paragraph/line breaks preserved as plain text.",
+      "conversionNotes": "Raw PDF evidence is retained. The extraction preserves visible textual wording and rough order, including page/index text, but PDF layout, columns, page artwork, icons, typography, and exact pagination are not represented as Markdown. Line-end whitespace from PDF text extraction was trimmed in the Markdown conversion for repository diff hygiene; the raw PDF bytes are preserved separately. This entry was updated from the older 2023 PDF after the archived current GCBA Estrellas Amarillas page was found to link the newer 2026 static PDF. Final exact-text validation remains pending.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "The current official GCBA Estrellas Amarillas page links the guide as “GUÍA PRÁCTICA DE ACTUACIÓN ANTE SINIESTROS VIALES” and points to the 2026 static PDF. The static.buenosaires.gob.ar PDF endpoint returned HTTP 200 with PDF content, content-length 1057789, and Last-Modified Thu, 05 Mar 2026 17:56:38 GMT on retrieval.",
+        "amendmentRepealEvidence": "The older 2023 PDF is superseded for current D11 use by the newer 2026 PDF linked from the current GCBA Estrellas Amarillas page. No repeal/supersession marker was present on that current page for the 2026 practical road-incident guide; the page presents the guide as current road-safety material.",
+        "evidenceUrls": [
+          "https://buenosaires.gob.ar/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+          "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "D11 performed source retrieval, PDF text extraction, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      },
+      "hash": "66a381c64374d6473feb3a0e50c765f1211a2340e467ffb5707e4c116a7b04dc"
+    },
+    {
+      "id": "gcba-material-estudio-examen-teorico",
+      "title": "Material de estudio para examen teórico",
+      "officialSourceType": "gcba_study_material_page",
+      "sourceUrl": "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T18:30:00-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/gcba-material-estudio-examen-teorico.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-material-estudio-examen-teorico.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered visible-text conversion from the official GCBA HTML page to Markdown using html-to-text; links are preserved as visible href annotations.",
+      "conversionNotes": "Full visible body text was converted so the archived Markdown retains the material page, mandatory-reading links, siniestros guide link, exam framing, and GCBA footer useful numbers such as 107 SAME and 911 Policía. HTML layout, CSS, JavaScript, icons, forms, and exact visual grouping are not represented.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "The official GCBA page returned HTTP 200 and its canonical metadata identifies the current material-de-estudio page. It states the theoretical exam framing and mandatory materials for autos/four-wheel vehicles and links the current four-wheel manual and siniestros guide.",
+        "amendmentRepealEvidence": "No stale/repealed marker was observed on the retrieved GCBA study-material page. It is the current official material page linked by the requested URL and canonicalized to the gcaba_historico page.",
+        "evidenceUrls": [
+          "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+          "https://buenosaires.gob.ar/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para-examen-teorico"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "D11 performed source retrieval, visible-text conversion, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      },
+      "hash": "0ecf371f6bd16e5bcfaa727e3649a8c1f0b13010790fc23a6f2e0deecfcf7bf7"
+    },
+    {
+      "id": "gcba-manual-vehiculo-4-ruedas-2023",
+      "title": "Manual de conducción vehicular - Categoría B / Automóviles",
+      "officialSourceType": "gcba_theoretical_exam_manual_pdf",
+      "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T18:30:00-03:00",
+      "sourceFormat": "pdf",
+      "localPath": "content/official-documents/documents/gcba-manual-vehiculo-4-ruedas-2023.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "PDF text extraction with pdf-parse 1.1.1 from the official GCBA four-wheel manual linked by the current study-material page; extracted text written as Markdown with title and paragraph/line breaks preserved as plain text.",
+      "conversionNotes": "Raw 68 MB PDF evidence is retained. Text extraction preserves visible text and rough order, including category sections and annex text, but does not preserve exact page design, images, icons, tables, typography, or pagination. The raw PDF page 52 visibly contains the heading typo `3° Socorrerr`; Markdown preserves that source typo. PAS-order support must cite the preceding correct source sentence `Proteger-Alertar-Socorrer`, not the typo heading. The non-static buenosaires.gob.ar PDF URL linked from the current page redirected to a gcaba_historico 404 during retrieval, so the official static.buenosaires.gob.ar PDF URL was used. Final exact-text validation remains pending.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "The current official GCBA study-material page states that four-wheel exam applicants must study the manual de conducción de vehículos urbanos de cuatro ruedas and links MANUAL_Vehiculo_4Ruedas_2023 SA.pdf. The official static PDF endpoint returned HTTP 200 with content-length 71667934.",
+        "amendmentRepealEvidence": "No stale/repealed marker was observed on the retrieved GCBA study-material page. The page currently presents this 2023 manual as required reading for four-wheel theoretical-exam preparation.",
+        "evidenceUrls": [
+          "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+          "https://buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+          "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "D11 performed source retrieval, PDF text extraction, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      },
+      "hash": "3a9be877d138c3253b5759428a345d7eb2a500fd248f710902dab3432c7c7bfa"
+    },
+    {
+      "id": "gcba-mapa-estrellas-amarillas",
+      "title": "Mapa de Estrellas Amarillas en la Ciudad",
+      "officialSourceType": "gcba_road_safety_page",
+      "sourceUrl": "https://buenosaires.gob.ar/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T18:30:00-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/gcba-mapa-estrellas-amarillas.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-mapa-estrellas-amarillas.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered visible-text conversion from the official GCBA HTML page to Markdown using html-to-text; links are flattened to visible text.",
+      "conversionNotes": "Official page title, description, campaign text, and map/placement text are preserved as visible Markdown text. HTML layout, interactive map behavior, scripts, styling, images, and exact visual grouping are not represented.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "valid_current_material",
+        "validationStatus": "passed",
+        "statusEvidence": "The official GCBA page returned HTTP 200 and its visible text states that the map permanently references the place of death of a traffic victim and explains the Estrellas Amarillas campaign values.",
+        "amendmentRepealEvidence": "No stale/repealed marker was observed on the retrieved GCBA page. It remains presented as the current GCBA Estrellas Amarillas map/campaign page.",
+        "evidenceUrls": [
+          "https://buenosaires.gob.ar/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+          "https://buenosaires.gob.ar/gcaba_historico/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "D11 performed source retrieval, visible-text conversion, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      },
+      "hash": "755ba7e88e03d6b3dedad0d4aa5312974cb7080b88b7845352441104dc47b0d3"
+    },
+    {
+      "id": "ley-11179-codigo-penal",
+      "title": "CODIGO PENAL DE LA NACION ARGENTINA",
+      "officialSourceType": "national_law_updated_text",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T18:30:00-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/ley-11179-codigo-penal.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-11179-codigo-penal.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from official InfoLeg texact HTML to Markdown with Windows-1252 decoding; Argentina.gob.ar /actualizacion was verified through browser-accessible official page but returned HTTP 404 to local curl during D11.",
+      "conversionNotes": "Official wording, article numbering, headings, thematic index, and amendment notes are preserved as text. HTML layout, anchors, link targets, table structure, and site chrome are not represented exactly. The rawOriginalPath stores official InfoLeg texact HTML because local curl could not retrieve the Argentina.gob.ar /actualizacion page despite browser access; evidence URLs include both official sources. Final exact-text validation remains pending.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "current",
+        "validationStatus": "passed",
+        "statusEvidence": "The official Argentina.gob.ar page is accessible in browser view as TEXTO ACTUALIZADO - LEY 11179 - CODIGO PENAL and states Texto actualizado de la norma. The official InfoLeg texact source was also retrieved successfully and contains the current updated Código Penal text including Article 106.",
+        "amendmentRepealEvidence": "The Argentina.gob.ar updated page and InfoLeg texact source contain amendment/update notes. No repeal/supersession blocker was observed during D11 for Article 106 abandonment-of-persons support.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+          "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/16546/texact.htm"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "D11 performed source retrieval/conversion from official InfoLeg text, browser currentness check for Argentina.gob.ar, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      },
+      "hash": "dee33c6044ba01492bbc3c93eb8545310eac0520754a92779f63630838b77e80"
+    },
+    {
+      "id": "ley-26994-codigo-civil-comercial",
+      "title": "CODIGO CIVIL Y COMERCIAL DE LA NACION",
+      "officialSourceType": "national_law_updated_text",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-26994-235975/actualizacion",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T18:30:00-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/ley-26994-codigo-civil-comercial.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-26994-codigo-civil-comercial.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from official InfoLeg texact HTML to Markdown with Windows-1252 decoding; Argentina.gob.ar /actualizacion was verified through browser-accessible official page but returned HTTP 404 to local curl during D11.",
+      "conversionNotes": "Official wording, article numbering, headings, thematic index, and amendment notes are preserved as text. The original HTML has large tables/indices and long article text; Markdown flattens table layout, anchors, links, and site chrome. The rawOriginalPath stores official InfoLeg texact HTML because local curl could not retrieve the Argentina.gob.ar /actualizacion page despite browser access; evidence URLs include both official sources. Final exact-text validation remains pending.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "current",
+        "validationStatus": "passed",
+        "statusEvidence": "The official Argentina.gob.ar page is accessible in browser view as TEXTO ACTUALIZADO - LEY 26994 - CODIGO CIVIL Y COMERCIAL DE LA NACION. The official InfoLeg texact source was also retrieved successfully and contains the current updated Código Civil y Comercial text including responsibility and damage-repair articles.",
+        "amendmentRepealEvidence": "The Argentina.gob.ar updated page and InfoLeg texact source contain amendment/update notes. No repeal/supersession blocker was observed during D11 for general civil-liability/damage repair support.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/normativa/nacional/ley-26994-235975/actualizacion",
+          "https://servicios.infoleg.gob.ar/infolegInternet/anexos/235000-239999/235975/texact.htm"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "D11 performed source retrieval/conversion from official InfoLeg text, browser currentness check for Argentina.gob.ar, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      },
+      "hash": "627d2619f73cc611c1c9efeb6b3e2cb03218642d4f67ddb91423fe30698ff9fa"
+    },
+    {
+      "id": "ley-17418-seguros",
+      "title": "LEY Nº 17.418 - LEY DE SEGUROS",
+      "officialSourceType": "national_law_updated_text",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T18:30:00-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/ley-17418-seguros.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-17418-seguros.html",
+      "hashAlgorithm": "sha256",
+      "conversionMethod": "Rendered-text conversion from the official Argentina.gob.ar updated normativa HTML page to Markdown using html-to-text; links and HTML styling flattened to visible text.",
+      "conversionNotes": "Official wording, article numbering, headings, and amendment notes are preserved as text. HTML styling, anchors, link targets, and site chrome are not represented exactly. Final exact-text validation remains pending.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "current",
+        "validationStatus": "passed",
+        "statusEvidence": "The official Argentina.gob.ar /actualizacion page returned HTTP 200 to local curl and is browser-accessible as TEXTO ACTUALIZADO - LEY 17418 - SEGUROS. The visible text contains Ley de Seguros and Article 46 denuncia del siniestro wording.",
+        "amendmentRepealEvidence": "The Argentina.gob.ar updated page contains antecedent/update notes and no repeal/supersession blocker was observed during D11 for Article 46 three-day insurance notice support.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/39520/texact.htm"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "D11 performed source retrieval, visible-text conversion, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      },
+      "hash": "2f18cba3d4250feb20e2acfc59dba0b97bc37a75722ace6f83fbf8df68ab54d7"
     }
   ]
 }
