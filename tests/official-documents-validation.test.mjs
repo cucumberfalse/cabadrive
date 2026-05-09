@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
 import { test } from "node:test";
 import { validateOfficialDocumentsManifest } from "../scripts/official-documents-validation.mjs";
 
@@ -60,9 +61,23 @@ function validate({ manifestData = manifest(), fileMetadata = files(), sourceTra
   });
 }
 
-test("current empty draft manifest passes validation", () => {
+function repositoryFileMetadata(relativePath) {
+  const exists = existsSync(relativePath);
+  return {
+    exists,
+    ...(exists ? { sha256: createHash("sha256").update(readFileSync(relativePath)).digest("hex") } : {})
+  };
+}
+
+test("current committed manifest passes validation with repository files and hashes", () => {
   const currentManifest = JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8"));
-  assert.deepEqual(validateOfficialDocumentsManifest({ manifest: currentManifest, fileMetadata: {} }), []);
+  assert.deepEqual(
+    validateOfficialDocumentsManifest({
+      manifest: currentManifest,
+      fileMetadata: repositoryFileMetadata
+    }),
+    []
+  );
 });
 
 test("valid manifest entry passes with injected local file metadata", () => {
