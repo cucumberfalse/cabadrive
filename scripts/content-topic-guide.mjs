@@ -341,6 +341,9 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
     if (coverageTopicIds.has(topicId)) errors.push(`${topicId}: duplicate coverage topic id.`);
     coverageTopicIds.add(topicId);
     if (!isNonEmptyString(topic.titleRu)) errors.push(`${topicId}: coverage topic titleRu must be a non-empty string.`);
+    if (!ASSIGNMENT_PHASES.has(topic.phase)) {
+      errors.push(`${topicId}: coverage topic phase must be planned, content_ready, or published.`);
+    }
     if (isRenderedAssignmentPhase(topic.phase) && !topicIds.has(topicId)) {
       errors.push(`${topicId}: rendered coverage topic references missing guide topic.`);
     }

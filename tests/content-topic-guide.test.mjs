@@ -217,6 +217,14 @@ test("rejects duplicate topic IDs", () => {
   assert(errors.includes("signals: duplicate coverage topic id."));
 });
 
+test("rejects invalid coverage topic phase", () => {
+  const coverageManifest = coverage();
+  coverageManifest.topics[1].phase = "planend";
+
+  const errors = validate({ coverageManifest });
+  assert(errors.includes("stop-signs: coverage topic phase must be planned, content_ready, or published."));
+});
+
 test("rejects invalid question IDs in guide tickets and coverage", () => {
   const guideContent = guide();
   guideContent.topics[0].tickets[0].questionId = "missing-question";

@@ -150,6 +150,7 @@
 - Slice C records planned dual placement only where the same ticket should physically repeat later for a second study angle, such as speed-sign, parking-signal, bicycle-pedestrian, crash-document, authority-priority, and weather/vehicle-condition overlaps. The baseline has 179 dual-assigned tickets and no ticket with more than two assignments.
 - Slice C review refinement accepted the taxonomy-quality finding that `right-of-way-intersections`, `pedestrians-and-school-zones`, `parking-and-stopping`, `turns-overtaking-and-lane-changes`, and `road-markings-and-lanes` were too large for compact future guide blocks. The refined baseline replaces those 5 oversized topics with 15 narrower planned topics: basic/signal/special right-of-way; pedestrian crossings/school markings/shared vulnerable spaces; parking prohibitions/stopping-vs-parking/clearances; turns/overtaking/lane choice; center-line/lane-channelization/pedestrian-school road markings.
 - Slice C review refinement keeps all topics at or below 30 placements. No planned topic remains materially above the about-35 placement guidance, so no exception is needed.
+- Slice C narrow validator follow-up requires `coverage.topics[].phase` to be one of `planned`, `content_ready`, or `published`, matching the assignment phase enum. This closes the gap where a misspelled topic phase could be silently treated as non-rendered.
 
 ### Known Issues
 
@@ -224,6 +225,9 @@
 - Slice C review-refinement final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service worker generation reported 280 cached assets.
 - Slice C review-refinement final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 68 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 - Slice C review-refinement final verification: `git diff --check` passed with no output.
+- Slice C topic-phase validator follow-up verification: `node --test tests/content-topic-guide.test.mjs` passed 18 tests after adding regression coverage for an invalid `coverage.topics[].phase` value.
+- Slice C topic-phase validator follow-up verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice C topic-phase validator follow-up verification: `git diff --check` passed with no output.
 
 ### Implementation Agent Feedback
 
