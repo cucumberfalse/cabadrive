@@ -1474,6 +1474,110 @@
       "notes": "Supports the narrow b-fallback-089 and b-fallback-221 ochava reference explanations while preserving this PR scope and not reassigning them into another topic."
     },
     {
+      "id": "pedestrian-school-senda-priority-and-stop-boundary",
+      "topicId": "pedestrian-school-zones-and-markings",
+      "claimId": "claim-pedestrian-crossing-priority-and-stop-boundary",
+      "claimSummaryRu": "Ley 2148 and Anexo L support senda peatonal/imaginaria crossing locations, pedestrian priority at authorized crossings/areas, and stop-line/senda stopping boundaries.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones: Senda peatonal",
+        "Ley 2148 6.7.1 Regla general",
+        "Ley 2148 6.12.3 Previsiones para peatones",
+        "Ley 24.449 Artículo 38 Peatones y discapacitados",
+        "Ley 24.449 Artículo 41 Prioridades",
+        "Anexo L H.4 Línea de detención",
+        "Anexo L H.5 Senda peatonal"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports pedestrian crossing and priority framing for b-fallback-038, b-fallback-082, b-fallback-318, and b-fallback-459. Exact fallback images remain tied to their ticket wording."
+    },
+    {
+      "id": "pedestrian-school-zone-warning-and-speed-boundary",
+      "topicId": "pedestrian-school-zones-and-markings",
+      "claimId": "claim-school-zone-warning-and-speed-boundary",
+      "claimSummaryRu": "Anexo L supports escolares/niños warning signs; Ley 2148 supports special precautionary speed near schools during ingress/egress and default/posted speed-boundary context.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.2.1 Adecuación de la velocidad a las circunstancias",
+        "Ley 2148 6.2.2 Límites máximos de velocidad",
+        "Ley 2148 6.2.3(d) Límites máximos especiales",
+        "Anexo L P.25 Escolares (a) o Niños (b)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports the school warning and CABA school-ingress/egress speed formula in b-fallback-159 and b-fallback-233. The 30 km/h Av. Gral Roca image and 20 km/h posted-sign timing answer stay ticket-specific."
+    },
+    {
+      "id": "pedestrian-school-cycling-spaces-and-child-cycling",
+      "topicId": "pedestrian-school-zones-and-markings",
+      "claimId": "claim-cycling-spaces-and-child-cycling-boundary",
+      "claimSummaryRu": "Ley 2148 supports bicisenda/ciclovía definitions, ciclorrodado circulation requirements, and under-12 bicycle circulation options; Anexo L supports bicycle crossing/sign context without proving the exact green fallback images.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones: Bicisenda, Ciclovía, Ciclorrodado",
+        "Ley 2148 6.10.6 Requisitos para conductores de ciclorrodados",
+        "Ley 2148 6.10.8 Circulación de ciclorrodados",
+        "Ley 2148 6.10.9 Prioridad de paso",
+        "Anexo L P.26 Ciclistas (a) o Jinetes (b)",
+        "Anexo L H.6 Senda para ciclistas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-037, b-fallback-136, b-fallback-337, b-fallback-373, and b-fallback-458. Green crossing meanings in b-fallback-008 and b-fallback-294 are kept as fallback-ticket visual wording."
+    },
+    {
+      "id": "pedestrian-school-interventions-and-priority-areas",
+      "topicId": "pedestrian-school-zones-and-markings",
+      "claimId": "claim-pedestrian-interventions-and-priority-areas",
+      "claimSummaryRu": "Ley 2148 supports pedestrian interventions as roadway areas preferably for pedestrian circulation and prohibits ordinary vehicle circulation on sidewalks/pedestrian-only areas; exact Calle Prioridad Peatón imagery remains ticket-specific.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones: Calle de convivencia",
+        "Ley 2148 Definiciones: Intervenciones peatonales",
+        "Ley 2148 2.1.12 Intervenciones peatonales",
+        "Ley 2148 2.1.13 Tipos de Intervención Peatonal",
+        "Ley 2148 6.1.1 Deber de precaución",
+        "Ley 2148 6.1.7 Obligaciones de los conductores que se incorporen o egresen de la circulación"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the compact pedestrian-area/intervention framing for b-fallback-167, b-fallback-369, and b-fallback-408 without generalizing the exact priority-street image label as an official catalogue entry."
+    },
+    {
+      "id": "pedestrian-school-ochava-yellow-cordon-school-detention",
+      "topicId": "pedestrian-school-zones-and-markings",
+      "claimId": "claim-ochava-yellow-cordon-and-school-detention-boundaries",
+      "claimSummaryRu": "Ley 2148 and Anexo L support corner/ochava stopping-parking boundaries, no stopping/parking on pedestrian crossings or stop lines, yellow-cordon parking-only prohibition, and school boarding/detention context.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 7.1.1 Aplicación",
+        "Ley 2148 7.1.8 Prohibiciones especiales",
+        "Ley 2148 7.1.23 Ascenso y descenso de escolares o de personas con discapacidad",
+        "Anexo L H.4 Línea de detención",
+        "Anexo L H.5 Senda peatonal",
+        "Anexo L H.15 Cordones pintados"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-089, b-fallback-221, b-fallback-362, and narrow school stopping context. Slope-parking image answers in b-fallback-248 and b-fallback-402 remain ticket-specific."
+    },
+    {
       "id": "vulnerable-shared-public-way-duty-and-actors",
       "topicId": "vulnerable-users-and-shared-spaces",
       "claimId": "claim-vulnerable-users-and-public-way-duty",

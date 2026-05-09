@@ -2105,6 +2105,935 @@
       ]
     },
     {
+      "id": "pedestrian-school-zones-and-markings",
+      "slug": "pedestrian-school-zones-and-markings",
+      "status": "draft",
+      "titleRu": "Пешеходы, школы и разметка зон",
+      "summaryRu": "Блок про школьные зоны, prioridad peatón, sendas peatonales, green bicycle crossings, school-speed traps, ciclovía/bicisenda wording, ochava, yellow cordon, и парковку на уклоне в ticket-specific картинках.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Он собирает билеты, где картинка или wording смешивают pedestrian, school, bicycle-space и marking clues; отвечайте по конкретному objeto на картинке и по словам в вариантах.",
+        "Senda peatonal - сектор calzada для перехода пешеходов. Если demarcación de la senda peatonal нет, билет `b-fallback-082` ведет к esquina: por la prolongación longitudinal de la vereda sobre la calle.",
+        "Для водителя pedestrian priority читается практически: если маневр пересекает vereda, senda или pedestrian area, нельзя ускоряться, guiñar или “заканчивать как получится”. Нужно priorizar la circulación del peatón и не создавать риск.",
+        "Zona escolar и escolares в билетах проверяют две разные вещи: распознать знак/разметку школы и не перепутать временную скорость/постоянный знак. Если на знаке стоит 20 km/h, билет `b-fallback-381` говорит, что этот posted limit действует независимо от school hours; если вопрос прямо про Ley 2148 ingreso/egreso, билет `b-fallback-233` выбирает минимальную для типа arteria.",
+        "Green crossing и green horizontal marking в этих билетах держим ticket-specific: правильный смысл - cruce/punto de ciclovía o bicisenda, а не school crossing, poor lighting, railway crossing или exclusive pedestrian crossing. Не расширяйте это в общий официальный каталог green markings без отдельного source refinement.",
+        "Bicisenda, ciclovía и ciclocarril часто путают. В этих билетах bicisenda связана с vereda/aceras/espacios verdes, ciclovía - с calzada и exclusive circulation, а на calle sin demarcación ciclista держится не в центре, а cerca del borde derecho / evitando la zona central.",
+        "Calle Prioridad Peatón, Intervención Peatonal и Calle con Bicisenda выглядят как соседние urban design элементы, но ответы разные. Для `b-fallback-167` правильная картинка - Calle Prioridad Peatón; для `b-fallback-408` yellow intervention называется Intervención Peatonal.",
+        "Parking-adjacent tickets внутри этого topic оставлены узко: ochava нужна для обзора на esquina, yellow cordon разрешает detención but not estacionamiento, а картинки с уклоном проверяют направление ruedas и передачу, не общий school-zone rule."
+      ],
+      "practicalReasoningRu": [
+        "Пешеходные и школьные зоны делают конфликт предсказуемым: водитель заранее понимает, где ждать пешего движения, детей, велосипедный crossing или место остановки перед senda.",
+        "У school и pedestrian markings часто похожая визуальная логика, поэтому экзамен проверяет не “красивую картинку”, а точное назначение: school warning, pedestrian crossing, bicycle crossing, intervention или parking boundary.",
+        "Правило про ochava и запрет стоять на sendas/stop lines защищает обзор: пешеход, велосипедист и водитель должны увидеть друг друга до маневра, а не уже в конфликтной точке."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-cruce-verde",
+          "termEs": "cruce verde",
+          "translationRu": "зеленое пересечение/переезд на перекрестке",
+          "sourceQuestionIds": [
+            "b-fallback-008"
+          ]
+        },
+        {
+          "id": "term-ciclovia-o-bicisenda",
+          "termEs": "ciclovía o bicisenda",
+          "translationRu": "велополоса/велодорожка в формулировке билета",
+          "sourceQuestionIds": [
+            "b-fallback-008",
+            "b-fallback-294"
+          ]
+        },
+        {
+          "id": "term-establecimiento-escolar-cercano",
+          "termEs": "establecimiento escolar cercano",
+          "translationRu": "близкое учебное заведение",
+          "sourceQuestionIds": [
+            "b-fallback-008"
+          ]
+        },
+        {
+          "id": "term-bicisendas-y-ciclovias",
+          "termEs": "bicisendas y ciclovías",
+          "translationRu": "bicisendas и ciclovías как сравниваемая пара",
+          "sourceQuestionIds": [
+            "b-fallback-037"
+          ]
+        },
+        {
+          "id": "term-sobre-la-vereda",
+          "termEs": "sobre la vereda",
+          "translationRu": "на тротуаре/vereda",
+          "sourceQuestionIds": [
+            "b-fallback-037"
+          ]
+        },
+        {
+          "id": "term-sobre-la-calzada",
+          "termEs": "sobre la calzada",
+          "translationRu": "на проезжей части/calzada",
+          "sourceQuestionIds": [
+            "b-fallback-037"
+          ]
+        },
+        {
+          "id": "term-priorizar-circulacion-peaton",
+          "termEs": "Priorizar la circulación del peatón",
+          "translationRu": "дать приоритет движению пешехода",
+          "sourceQuestionIds": [
+            "b-fallback-038"
+          ]
+        },
+        {
+          "id": "term-guinada",
+          "termEs": "guiñada",
+          "translationRu": "мигание/световой сигнал как неверная попытка обозначить преимущество",
+          "sourceQuestionIds": [
+            "b-fallback-038"
+          ]
+        },
+        {
+          "id": "term-demarcacion-horizontal-school",
+          "termEs": "demarcación horizontal",
+          "translationRu": "горизонтальная разметка",
+          "sourceQuestionIds": [
+            "b-fallback-052",
+            "b-fallback-294",
+            "b-fallback-362"
+          ]
+        },
+        {
+          "id": "term-zona-escolar-school",
+          "termEs": "zona escolar",
+          "translationRu": "школьная зона",
+          "sourceQuestionIds": [
+            "b-fallback-052",
+            "b-fallback-159"
+          ]
+        },
+        {
+          "id": "term-senda-peatonal-school",
+          "termEs": "senda peatonal",
+          "translationRu": "пешеходный переход / pedestrian crossing marking",
+          "sourceQuestionIds": [
+            "b-fallback-052",
+            "b-fallback-082",
+            "b-fallback-172",
+            "b-fallback-318",
+            "b-fallback-459"
+          ]
+        },
+        {
+          "id": "term-prolongacion-vereda-school",
+          "termEs": "prolongación longitudinal de la vereda",
+          "translationRu": "продольное продолжение тротуара через проезжую часть",
+          "sourceQuestionIds": [
+            "b-fallback-082"
+          ]
+        },
+        {
+          "id": "term-linea-imaginaria-ochava-school",
+          "termEs": "línea imaginaria de la ochava",
+          "translationRu": "воображаемая линия ochava у угла",
+          "sourceQuestionIds": [
+            "b-fallback-089"
+          ]
+        },
+        {
+          "id": "term-linea-imaginaria-prolongacion-ochava",
+          "termEs": "línea imaginaria de prolongación de ochava",
+          "translationRu": "воображаемая линия продолжения ochava",
+          "sourceQuestionIds": [
+            "b-fallback-221"
+          ]
+        },
+        {
+          "id": "term-borde-derecho-calzada",
+          "termEs": "borde derecho de la calzada",
+          "translationRu": "правый край проезжей части",
+          "sourceQuestionIds": [
+            "b-fallback-136",
+            "b-fallback-373"
+          ]
+        },
+        {
+          "id": "term-ninos-jugando",
+          "termEs": "Niños jugando",
+          "translationRu": "дети играют; неверный вариант рядом с zona escolar",
+          "sourceQuestionIds": [
+            "b-fallback-159"
+          ]
+        },
+        {
+          "id": "term-calle-peatonal",
+          "termEs": "Calle peatonal",
+          "translationRu": "пешеходная улица",
+          "sourceQuestionIds": [
+            "b-fallback-159"
+          ]
+        },
+        {
+          "id": "term-calle-prioridad-peaton",
+          "termEs": "Calle Prioridad Peatón",
+          "translationRu": "улица с приоритетом пешехода",
+          "sourceQuestionIds": [
+            "b-fallback-167"
+          ]
+        },
+        {
+          "id": "term-calle-intervencion-peatonal",
+          "termEs": "Calle con Intervención Peatonal",
+          "translationRu": "улица с пешеходной интервенцией",
+          "sourceQuestionIds": [
+            "b-fallback-167"
+          ]
+        },
+        {
+          "id": "term-personas-trabajando-school",
+          "termEs": "Personas trabajando",
+          "translationRu": "люди работают / дорожные работы",
+          "sourceQuestionIds": [
+            "b-fallback-172"
+          ]
+        },
+        {
+          "id": "term-establecimientos-escolares",
+          "termEs": "establecimientos escolares",
+          "translationRu": "учебные заведения",
+          "sourceQuestionIds": [
+            "b-fallback-233"
+          ]
+        },
+        {
+          "id": "term-horarios-ingreso-egreso",
+          "termEs": "horarios de ingreso y egreso",
+          "translationRu": "часы входа и выхода",
+          "sourceQuestionIds": [
+            "b-fallback-233"
+          ]
+        },
+        {
+          "id": "term-minima-establecida",
+          "termEs": "mínima establecida",
+          "translationRu": "установленная минимальная скорость для типа arteria",
+          "sourceQuestionIds": [
+            "b-fallback-233"
+          ]
+        },
+        {
+          "id": "term-ruedas-cordon-vereda",
+          "termEs": "ruedas hacia el cordón de la vereda",
+          "translationRu": "колеса к бордюру/vereda",
+          "sourceQuestionIds": [
+            "b-fallback-248"
+          ]
+        },
+        {
+          "id": "term-ruedas-centro-calzada",
+          "termEs": "ruedas hacia el centro de la calzada",
+          "translationRu": "колеса к центру проезжей части",
+          "sourceQuestionIds": [
+            "b-fallback-402"
+          ]
+        },
+        {
+          "id": "term-av-gral-roca",
+          "termEs": "Av. Gral Roca",
+          "translationRu": "проспект Gral Roca из билета",
+          "sourceQuestionIds": [
+            "b-fallback-252"
+          ]
+        },
+        {
+          "id": "term-30-kmh-school",
+          "termEs": "30 km/h",
+          "translationRu": "30 км/ч в конкретном школьном билете с картинкой",
+          "sourceQuestionIds": [
+            "b-fallback-252"
+          ]
+        },
+        {
+          "id": "term-ciclorodados-dispositivos",
+          "termEs": "ciclorodados (bicicletas) y dispositivos de movilidad personal",
+          "translationRu": "велосредства и средства персональной мобильности",
+          "sourceQuestionIds": [
+            "b-fallback-337"
+          ]
+        },
+        {
+          "id": "term-prohibido-estacionar",
+          "termEs": "prohibido estacionar",
+          "translationRu": "запрещено парковаться",
+          "sourceQuestionIds": [
+            "b-fallback-362"
+          ]
+        },
+        {
+          "id": "term-pudiendo-detenciones",
+          "termEs": "pudiendo efectuarse detenciones",
+          "translationRu": "остановки могут выполняться",
+          "sourceQuestionIds": [
+            "b-fallback-362"
+          ]
+        },
+        {
+          "id": "term-incrementar-seguridad-peatones",
+          "termEs": "Incrementar la seguridad de los peatones",
+          "translationRu": "повысить безопасность пешеходов",
+          "sourceQuestionIds": [
+            "b-fallback-369"
+          ]
+        },
+        {
+          "id": "term-menor-12",
+          "termEs": "menor de 12 años",
+          "translationRu": "ребенок младше 12 лет",
+          "sourceQuestionIds": [
+            "b-fallback-458"
+          ]
+        },
+        {
+          "id": "term-adulto-mayor-18",
+          "termEs": "acompañado de un adulto mayor de 18 años",
+          "translationRu": "в сопровождении взрослого старше 18 лет",
+          "sourceQuestionIds": [
+            "b-fallback-458"
+          ]
+        },
+        {
+          "id": "term-por-la-vereda",
+          "termEs": "Por la vereda",
+          "translationRu": "по тротуару/vereda",
+          "sourceQuestionIds": [
+            "b-fallback-458"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-008",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-008-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: cruce verde предупреждает о punto de cruce de ciclovía o bicisenda. В этом slice зеленую marking-картинку держим ticket-specific, без расширения в общий официальный каталог."
+            },
+            {
+              "answerId": "b-fallback-008-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Establecimiento escolar cercano - школьная тема, но не этот green crossing. School-zone clues в билетах обычно говорят zona escolar/escolares, а здесь ключ - ciclovía/bicisenda."
+            },
+            {
+              "answerId": "b-fallback-008-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce peligroso por poca iluminación добавляет причину опасности, которой нет в green marking. Цвет и intersection wording ведут к велосипедному crossing, не к lighting problem."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b39.jpg"
+        },
+        {
+          "questionId": "b-fallback-037",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-037-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Uso exclusivo/preferencial перепутан с тем, что спрашивает билет: principal diferencia здесь location, а не уровень exclusividad."
+            },
+            {
+              "answerId": "b-fallback-037-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант меняет места наоборот: bicisenda не sobre la calzada, а в билете правильная пара связывает bicisenda с vereda."
+            },
+            {
+              "answerId": "b-fallback-037-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: bicisenda se encuentra sobre la vereda y ciclovía sobre la calzada. Это базовая ловушка wording: vereda vs calzada."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-038",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-038-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: водитель должен priorizar la circulación del peatón. Если маневр пересекает pedestrian space, водитель не забирает преимущество светом или скоростью."
+            },
+            {
+              "answerId": "b-fallback-038-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Guiñada не дает права проехать первым. Световой сигнал может предупредить, но не отменяет pedestrian priority in the shown situation."
+            },
+            {
+              "answerId": "b-fallback-038-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Completar la maniobra como sea posible опасно: билет проверяет не уменьшение времени на vereda, а обязательство уступить pedestrian movement."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b22.jpg"
+        },
+        {
+          "questionId": "b-fallback-052",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-052-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce peligroso por poca iluminación - не смысл этой demarcación horizontal. Вопрос просит распознать school pedestrian marking, а не lighting condition."
+            },
+            {
+              "answerId": "b-fallback-052-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Centros de salud похожи как protected pedestrian context, но изображение и правильная связка билета указывают zona escolar."
+            },
+            {
+              "answerId": "b-fallback-052-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: senda peatonal próxima a zona escolar. Ключевые слова - demarcación horizontal, senda peatonal и zona escolar."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b31.jpg"
+        },
+        {
+          "questionId": "b-fallback-082",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-082-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Es indistinto неверно: mirar a ambos lados важно, но не делает любой point разрешенным crossing place."
+            },
+            {
+              "answerId": "b-fallback-082-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Paradas de transporte не заменяют senda peatonal. Остановка транспорта не является default crossing reference."
+            },
+            {
+              "answerId": "b-fallback-082-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: когда нет demarcación de la senda peatonal, pedestrian crossing идет por la esquina, por la prolongación longitudinal de la vereda sobre la calle."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-089",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-089-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: near esquina автомобиль ставят detrás de la prolongación de la línea imaginaria de la ochava, чтобы corner visibility была свободной."
+            },
+            {
+              "answerId": "b-fallback-089-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Оставить свободной только senda peatonal недостаточно. У esquina есть отдельная visibility boundary через ochava."
+            },
+            {
+              "answerId": "b-fallback-089-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Dentro de la intersección - противоположность безопасной логике: intersection должна оставаться свободной для обзора и движения."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b163.jpg"
+        },
+        {
+          "questionId": "b-fallback-136",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-136-a1",
+              "verdict": "incorrect",
+              "explanationRu": "No pueden hacerlo слишком жестко. Если нет infrastructure или в показанной ситуации надо ехать по улице, билет не требует только ciclovía/bicisenda."
+            },
+            {
+              "answerId": "b-fallback-136-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: cerca del borde derecho de la calzada. Это exam wording для cycling on street, когда не выбирается left edge или total prohibition."
+            },
+            {
+              "answerId": "b-fallback-136-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Borde izquierdo неверен для обычной street situation. В билете правильная сторона - derecha, ближе к правому краю calzada."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b11.jpg"
+        },
+        {
+          "questionId": "b-fallback-159",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-159-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Niños jugando похоже по child icon, но билет просит конкретный shown sign meaning; correct label here is zona escolar."
+            },
+            {
+              "answerId": "b-fallback-159-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: señal indica Zona escolar. Anexo L поддерживает отдельную school/children warning category, но exact fallback image answer остается по билету."
+            },
+            {
+              "answerId": "b-fallback-159-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Calle peatonal - другая идея: pedestrian street, not school-zone warning. Не выбирайте peatonal только потому, что на знаке/вариантах есть people context."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b235.jpg"
+        },
+        {
+          "questionId": "b-fallback-167",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-167-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке билета: Calle Prioridad Peatón. Это ticket-specific visual classification, не generic claim обо всех pedestrian interventions."
+            },
+            {
+              "answerId": "b-fallback-167-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Calle con Intervención Peatonal похожа, но в этом билете correct label не intervention; не переносите yellow-intervention logic из другого билета."
+            },
+            {
+              "answerId": "b-fallback-167-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Calle con Bicisenda относится к bicycle space. На картинке правильный акцент - Prioridad Peatón, not bicisenda."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b33.jpg"
+        },
+        {
+          "questionId": "b-fallback-172",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-172-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Senda peatonal - pedestrian crossing, но эта картинка в fallback-билете не про crossing."
+            },
+            {
+              "answerId": "b-fallback-172-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Personas trabajando. Это visual trap рядом с pedestrian options; Anexo L различает working sign и pedestrian/school warnings."
+            },
+            {
+              "answerId": "b-fallback-172-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce peatonal de máximo peligro звучит pedestrian-related, но не соответствует shown working sign."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b222.jpg"
+        },
+        {
+          "questionId": "b-fallback-221",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-221-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Línea peatonal важна для crossing, но вопрос про detenerse/estacionar около esquina. Там reference line - ochava."
+            },
+            {
+              "answerId": "b-fallback-221-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: la línea imaginaria de prolongación de ochava. Она сохраняет обзор и free corner area."
+            },
+            {
+              "answerId": "b-fallback-221-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Línea de edificación transversal не является проверяемой reference line для parking/stop near esquina."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-233",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-233-a1",
+              "verdict": "incorrect",
+              "explanationRu": "20 km/h para todas las arterias - это national-looking trap, но вопрос прямо говорит Según Ley 2148. В CABA формулировка билета выбирает minimum for artery type."
+            },
+            {
+              "answerId": "b-fallback-233-a2",
+              "verdict": "incorrect",
+              "explanationRu": "30 km/h calles / 45 km/h avenidas не совпадает с fallback answer и не является этой school-ingreso/egreso formula."
+            },
+            {
+              "answerId": "b-fallback-233-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по Ley 2148 wording в билете: frente a establecimientos escolares during horarios de ingreso y egreso скорость precautionary равна mínima establecida para el tipo de arteria correspondiente."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-248",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-248-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно для показанной downhill/curb-side situation: ruedas hacia el cordón de la vereda и marcha atrás/parking in automatic. Так автомобиль упирается в curb, а не выкатывается в поток."
+            },
+            {
+              "answerId": "b-fallback-248-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ruedas hacia el centro de la calzada и primera соответствуют противоположному направлению уклона, не этой картинке."
+            },
+            {
+              "answerId": "b-fallback-248-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ruedas paralelas и sin cambio оставляют автомобиль менее защищенным от самопроизвольного движения; билет требует active wheel/gear precaution."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b167.jpg"
+        },
+        {
+          "questionId": "b-fallback-252",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-252-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по конкретному image/sign ticket: на этом tramo de Av. Gral Roca near school maximum is 30 km/h. Это ticket-specific posted limit, не замена общей формулы Ley 2148 из `b-fallback-233`."
+            },
+            {
+              "answerId": "b-fallback-252-a2",
+              "verdict": "incorrect",
+              "explanationRu": "40 km/h похоже на обычную calle limit in CABA, но вопрос показывает school-adjacent tramo with a lower ticket answer."
+            },
+            {
+              "answerId": "b-fallback-252-a3",
+              "verdict": "incorrect",
+              "explanationRu": "60 km/h похоже на avenida default, но school-zone sign in this ticket lowers the answer to 30 km/h."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b140.jpg"
+        },
+        {
+          "questionId": "b-fallback-294",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-294-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: green demarcación horizontal means that in esa intersección hay una ciclovía o bicisenda."
+            },
+            {
+              "answerId": "b-fallback-294-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce ferroviario - другой sign/marking family. Green marking here does not warn about railway crossing."
+            },
+            {
+              "answerId": "b-fallback-294-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Cruce exclusivo de peatones неверно: green marking in this fallback ticket is bicycle-space crossing, not pedestrian-only crossing."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b40.jpg"
+        },
+        {
+          "questionId": "b-fallback-318",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-318-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Disminuir un poco y mirar is too weak and belongs to merge/yield logic. The shown horizontal sign asks for stopping before pedestrian crossing."
+            },
+            {
+              "answerId": "b-fallback-318-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: reducir la velocidad y detener el vehículo antes de la senda peatonal. The line/marking tells you where to stop."
+            },
+            {
+              "answerId": "b-fallback-318-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Avanzar ignores the horizontal sign. In this ticket the driver must stop before the senda, not continue."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b102.jpg"
+        },
+        {
+          "questionId": "b-fallback-337",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-337-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Carácter preferente describes ciclocarril-like wording, not the exclusive/separated ciclovía definition asked by this ticket."
+            },
+            {
+              "answerId": "b-fallback-337-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ciclovía is sector de la calzada with separación física o demarcación horizontal for circulación exclusiva de ciclorodados and personal-mobility devices."
+            },
+            {
+              "answerId": "b-fallback-337-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Aceras y espacios verdes describe bicisenda-like location, not ciclovía. Again the trap is calzada vs acera/vereda."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-362",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-362-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: shown yellow cordon/marking means sólo prohibido estacionar; detenciones may be made. This aligns with Anexo L H.15 yellow-cordon meaning."
+            },
+            {
+              "answerId": "b-fallback-362-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Reserved parking for passenger-transport vehicles is a different designation. Yellow cordon is a parking restriction, not exclusive parking reservation."
+            },
+            {
+              "answerId": "b-fallback-362-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Prohibido estacionar o detenerse al costado de la vereda corresponds to red cordon, not the yellow demarcation in this ticket."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b81.jpg"
+        },
+        {
+          "questionId": "b-fallback-369",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-369-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: intervenciones horizontales señaladas sirven para incrementar la seguridad de los peatones. Do not read them as car-flow tools."
+            },
+            {
+              "answerId": "b-fallback-369-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Promover la movilidad vehicular shifts the goal to vehicles; this intervention is pedestrian-focused."
+            },
+            {
+              "answerId": "b-fallback-369-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Rapidez en la movilidad is the trap. The answer is safety of pedestrians, not speed of movement."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b34.jpg"
+        },
+        {
+          "questionId": "b-fallback-373",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-373-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: calle sin demarcación and no ciclovías/bicisendas -> ciclistas circulate cerca del borde derecho de la calzada."
+            },
+            {
+              "answerId": "b-fallback-373-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Borde izquierdo is wrong for this ordinary street wording. The fallback answer uses right edge."
+            },
+            {
+              "answerId": "b-fallback-373-a3",
+              "verdict": "incorrect",
+              "explanationRu": "No pueden circular is too absolute. Lack of ciclovía/bicisenda does not automatically prohibit bicycle circulation in the ticket."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-381",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-381-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: posted 20 km/h sign in this tramo must be respected independently of day and school operating hours. The question contrasts sign validity with school-hour wording."
+            },
+            {
+              "answerId": "b-fallback-381-a2",
+              "verdict": "incorrect",
+              "explanationRu": "This confuses the special Ley 2148 ingreso/egreso formula with a posted traffic sign. A sign-limited tramo does not disappear outside school hours unless the sign itself says so."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b141.jpg"
+        },
+        {
+          "questionId": "b-fallback-402",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-402-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ruedas hacia el cordón and marcha atrás are for the opposite slope picture, like `b-fallback-248`, not this one."
+            },
+            {
+              "answerId": "b-fallback-402-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно for the shown uphill/curb-side situation: ruedas hacia el centro de la calzada and primera/parking in automatic."
+            },
+            {
+              "answerId": "b-fallback-402-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Parallel wheels and no gear/neutral do not secure the vehicle against rolling; the ticket expects a slope-specific wheel and gear setup."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b166.jpg"
+        },
+        {
+          "questionId": "b-fallback-408",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-408-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: yellow intervention in the image is Intervención Peatonal. Ключ - Peatonal, not vehicle or generic calzada."
+            },
+            {
+              "answerId": "b-fallback-408-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Intervención Vehicular points to cars; the shown yellow area is pedestrian-focused."
+            },
+            {
+              "answerId": "b-fallback-408-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Intervención de la Calzada is too generic. The ticket asks the specific denomination: Peatonal."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b35.jpg"
+        },
+        {
+          "questionId": "b-fallback-458",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-458-a1",
+              "verdict": "incorrect",
+              "explanationRu": "This is true but incomplete in the ticket structure: a minor under 12 may also use vereda at the lowest possible speed, so only A is not enough."
+            },
+            {
+              "answerId": "b-fallback-458-a2",
+              "verdict": "incorrect",
+              "explanationRu": "This is also true but incomplete: the ticket includes the street option with adult accompaniment, so only B is not enough."
+            },
+            {
+              "answerId": "b-fallback-458-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Ambas respuestas, A y B. Under 12 can ride on the street with an adult over 18 and can also ride por la vereda at the lowest possible speed, respecting pedestrians."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-459",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-459-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Disminuir un poco y mirar incoming traffic is not enough for this horizontal signal. The driver must prepare to stop before the crossing."
+            },
+            {
+              "answerId": "b-fallback-459-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: reducir la velocidad y detener el vehículo antes de la senda peatonal."
+            },
+            {
+              "answerId": "b-fallback-459-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Avanzar ignores pedestrian-crossing control. The signal requires stopping behavior, not continuation."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b101.jpg"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-green-is-bike-not-school-or-pedestrian",
+          "textRu": "Green crossing/green marking in `b-fallback-008` and `b-fallback-294` points to ciclovía/bicisenda, not school, railway, lighting, or pedestrian-only crossing.",
+          "sourceQuestionIds": [
+            "b-fallback-008",
+            "b-fallback-294"
+          ]
+        },
+        {
+          "id": "trap-vereda-vs-calzada-bike-space",
+          "textRu": "Bicisenda/ciclovía traps are mostly location traps: vereda/acera for bicisenda, calzada and separation/demarcación for ciclovía.",
+          "sourceQuestionIds": [
+            "b-fallback-037",
+            "b-fallback-337"
+          ]
+        },
+        {
+          "id": "trap-pedestrian-priority-not-guinada",
+          "textRu": "In pedestrian situations, guiñada or finishing the maneuver fast does not create priority. Choose priorizar la circulación del peatón.",
+          "sourceQuestionIds": [
+            "b-fallback-038"
+          ]
+        },
+        {
+          "id": "trap-school-hours-vs-posted-limit",
+          "textRu": "Do not merge `b-fallback-233` and `b-fallback-381`: one asks Ley 2148 school ingress/egress formula; the other asks whether a posted 20 km/h sign remains valid.",
+          "sourceQuestionIds": [
+            "b-fallback-233",
+            "b-fallback-381"
+          ]
+        },
+        {
+          "id": "trap-zona-escolar-not-ninos-playing",
+          "textRu": "Zona escolar is not the same answer as Niños jugando or Calle peatonal. Use the exact sign label in the options.",
+          "sourceQuestionIds": [
+            "b-fallback-159"
+          ]
+        },
+        {
+          "id": "trap-calle-prioridad-not-intervention",
+          "textRu": "`Calle Prioridad Peatón`, `Calle con Intervención Peatonal`, and `Calle con Bicisenda` are close-looking labels. For `b-fallback-167`, choose Prioridad Peatón.",
+          "sourceQuestionIds": [
+            "b-fallback-167"
+          ]
+        },
+        {
+          "id": "trap-ochava-not-only-senda",
+          "textRu": "Near esquina, freeing only the senda peatonal is not enough. The reference line is the imaginary prolongation of ochava.",
+          "sourceQuestionIds": [
+            "b-fallback-089",
+            "b-fallback-221"
+          ]
+        },
+        {
+          "id": "trap-yellow-cordon-not-red-cordon",
+          "textRu": "Yellow cordon means parking prohibited but detentions may occur; red would prohibit both stopping and parking.",
+          "sourceQuestionIds": [
+            "b-fallback-362"
+          ]
+        },
+        {
+          "id": "trap-slope-images-are-opposites",
+          "textRu": "`b-fallback-248` and `b-fallback-402` are mirror traps: wheel direction and gear depend on the slope shown in the image.",
+          "sourceQuestionIds": [
+            "b-fallback-248",
+            "b-fallback-402"
+          ]
+        },
+        {
+          "id": "trap-under-12-bicycle-both",
+          "textRu": "For menor de 12 años on bicycle, the ticket asks for combined truth: street with adult over 18 and vereda at the lowest speed.",
+          "sourceQuestionIds": [
+            "b-fallback-458"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-pedestrian-crossing-priority-and-stop-boundary",
+          "textRu": "Senda peatonal and the imaginary vereda continuation define where pedestrians cross, and drivers must yield to pedestrians crossing there or in areas destined for them; stop-line/senda markings explain stopping before the crossing.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-school-senda-priority-and-stop-boundary"
+        },
+        {
+          "id": "claim-school-zone-warning-and-speed-boundary",
+          "textRu": "Anexo L supports school/children warning signs, while Ley 2148 supports the school-ingress/egress precautionary-speed formula; posted speed signs in individual tickets are kept distinct from that time-window formula.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-school-zone-warning-and-speed-boundary"
+        },
+        {
+          "id": "claim-cycling-spaces-and-child-cycling-boundary",
+          "textRu": "Ley 2148 supports the bicisenda/ciclovía definitions, ciclorrodado circulation away from the central zone when no cycling infrastructure exists, and the under-12 bicycle options used by the assigned tickets; exact green-crossing images remain ticket-specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-school-cycling-spaces-and-child-cycling"
+        },
+        {
+          "id": "claim-pedestrian-interventions-and-priority-areas",
+          "textRu": "Ley 2148 supports pedestrian interventions as roadway areas preferably destined to pedestrian circulation and the general duty not to drive on sidewalks or pedestrian-only areas, while Calle Prioridad Peatón image labels remain fallback-ticket specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-school-interventions-and-priority-areas"
+        },
+        {
+          "id": "claim-ochava-yellow-cordon-and-school-detention-boundaries",
+          "textRu": "Ley 2148 and Anexo L support the ochava/corner parking boundary, no stopping/parking on sendas or stop lines, yellow-cordon parking-only prohibition, and narrow school ascenso/descenso context.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "pedestrian-school-ochava-yellow-cordon-school-detention"
+        }
+      ]
+    },
+    {
       "id": "speed-limits",
       "slug": "speed-limits",
       "status": "draft",
