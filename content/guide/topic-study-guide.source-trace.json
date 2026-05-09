@@ -1776,6 +1776,93 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force",
       "notes": "Supports the general minors/front-seat and loose-animal boundary. The exact pet arnés/sistema de retención/asientos traseros detail is kept ticket-specific because the current archive only directly prohibits loose animals."
+    },
+    {
+      "id": "vehicle-lights-system-and-additional-lights",
+      "topicId": "vehicle-lights-and-signaling",
+      "claimId": "claim-vehicle-light-system-and-additional-lights",
+      "claimSummaryRu": "Обязательные системы освещения автомобиля и ограниченные дополнительные огни частного автомобиля, нужные для assigned lights tickets.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.1.5 Sistema de iluminación",
+        "Ley 2148 4.1.7 Luces adicionales",
+        "Ley 24.449 Artículos 31-32"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports only general lighting-system and permitted additional-light framing. Exact low-beam height glare in b-fallback-166 remains ticket-specific."
+    },
+    {
+      "id": "vehicle-lights-balizas-and-garage-egress",
+      "topicId": "vehicle-lights-and-signaling",
+      "claimId": "claim-balizas-use-and-garage-egress",
+      "claimSummaryRu": "Balizas/intermitentes предупреждают stopped vehicles, egresos, próximas detenciones/estacionamientos и рискованные или необычные маневры, включая въезд в garaje/parking с public road.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.7 Obligaciones de los conductores que se incorporen o egresen de la circulación",
+        "Ley 2148 6.3.1 Generalidades, luces intermitentes de emergencia o balizas",
+        "Ley 2148 7.1.7 Detención de vehículos",
+        "Ley 24.449 Artículo 47 Uso de las luces"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports the narrow balizas/garage/detention claim. Double-row and image-specific garage examples remain explained as ticket-specific answer traps."
+    },
+    {
+      "id": "vehicle-lights-adverse-visibility-use",
+      "topicId": "vehicle-lights-and-signaling",
+      "claimId": "claim-adverse-visibility-light-use",
+      "claimSummaryRu": "Luces bajas требуются, когда natural light или visibility/traffic conditions этого требуют, а fog lights должны использоваться только по собственному назначению.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.3.1 Generalidades",
+        "Ley 24.449 Artículo 47 Uso de las luces"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports compact adverse-visibility light framing. Exact fog-ticket formulations for b-fallback-283, 317, 390 and 428 remain tied to the fallback answers."
+    },
+    {
+      "id": "vehicle-lights-breakdown-warning-balizas",
+      "topicId": "vehicle-lights-and-signaling",
+      "claimId": "claim-breakdown-warning-balizas",
+      "claimSummaryRu": "Правила CABA для breakdown/imprevisto поддерживают предупреждение других через vehicle intermitentes/balizas и размещение portable baliza со стороны приближающихся vehicles, когда это применимо.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.5.3 Comportamiento general en caso de averías o imprevistos",
+        "Ley 24.449 Artículo 40 Requisitos para circular",
+        "Ley 24.449 Artículo 59 Obstáculos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Does not generalize b-fallback-263 beyond its exact autopista instruction to stay inside, keep belt fastened, turn on balizas and call Autopista emergency."
+    },
+    {
+      "id": "vehicle-lights-rail-crossing-warning-sign",
+      "topicId": "vehicle-lights-and-signaling",
+      "claimId": "claim-rail-crossing-warning-sign",
+      "claimSummaryRu": "Anexo L P.1 cruce ferrovial warning sign означает снизить скорость и следить за возможным приближением поезда.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Capítulo IV Señales preventivas, P.1 Cruce ferrovial"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Used only for the b-fallback-190 railway warning sign; no broader rail-crossing priority topic is promoted here."
     }
   ]
 }

@@ -53,9 +53,9 @@
       "titleRu": "Свет, поворотники и аварийная сигнализация",
       "categoryId": "vehicle-control",
       "splitCriteria": "Световые приборы, balizas, luz de giro и предупреждение других участников о маневре или остановке.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling"
     },
     {
       "topicId": "warning-signs",
@@ -398,10 +398,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E11",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "driver-hand-signals": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
@@ -519,10 +519,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
@@ -743,10 +743,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
@@ -1309,10 +1309,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
@@ -1407,7 +1407,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "emergency-response-and-crash-scene": "planned",
+        "vehicle-lights-and-signaling": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-109",
@@ -1964,8 +1968,8 @@
       "topicIds": [
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-vehicle-lights-and-signaling"
     },
     {
       "questionId": "b-fallback-167",
@@ -2141,7 +2145,11 @@
         "emergency-response-and-crash-scene"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "vehicle-lights-and-signaling": "content_ready",
+        "emergency-response-and-crash-scene": "planned"
+      }
     },
     {
       "questionId": "b-fallback-184",
@@ -2211,8 +2219,8 @@
       "topicIds": [
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-vehicle-lights-and-signaling"
     },
     {
       "questionId": "b-fallback-191",
@@ -2579,10 +2587,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
@@ -2872,10 +2880,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E11",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "driver-hand-signals": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
@@ -3060,7 +3068,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "adverse-weather-and-visibility": "planned",
+        "vehicle-lights-and-signaling": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-284",
@@ -3144,7 +3156,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "adverse-weather-and-visibility": "planned",
+        "vehicle-lights-and-signaling": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-293",
@@ -3382,7 +3398,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "adverse-weather-and-visibility": "planned",
+        "vehicle-lights-and-signaling": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-318",
@@ -3698,8 +3718,8 @@
       "topicIds": [
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-vehicle-lights-and-signaling"
     },
     {
       "questionId": "b-fallback-350",
@@ -3805,7 +3825,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "adverse-weather-and-visibility": "planned",
+        "vehicle-lights-and-signaling": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-361",
@@ -3978,10 +4002,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
@@ -4073,7 +4097,11 @@
         "emergency-response-and-crash-scene"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "vehicle-lights-and-signaling": "content_ready",
+        "emergency-response-and-crash-scene": "planned"
+      }
     },
     {
       "questionId": "b-fallback-389",
@@ -4095,7 +4123,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "adverse-weather-and-visibility": "planned",
+        "vehicle-lights-and-signaling": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-391",
@@ -4322,10 +4354,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
@@ -4467,7 +4499,11 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-lights-and-signaling",
+      "placementPhases": {
+        "adverse-weather-and-visibility": "planned",
+        "vehicle-lights-and-signaling": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-429",
@@ -4605,10 +4641,10 @@
         "vehicle-lights-and-signaling"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E8",
+      "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
         "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "planned"
+        "vehicle-lights-and-signaling": "content_ready"
       }
     },
     {
