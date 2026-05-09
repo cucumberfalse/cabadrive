@@ -8507,6 +8507,286 @@
           "sourceTraceId": "public-transport-stops-terminals-school-detention"
         }
       ]
+    },
+    {
+      "id": "sustainable-mobility-and-vulnerable-users",
+      "slug": "sustainable-mobility-and-vulnerable-users",
+      "status": "draft",
+      "titleRu": "Устойчивая мобильность и уязвимые участники",
+      "summaryRu": "Блок про movilidad sustentable, выбор менее конфликтного транспорта, Metrobus/carril exclusivo и билетные сравнения риска по изображениям.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах важно отличать общий принцип ciudad sustentable от конкретного вывода по картинке: иногда правильный ответ выбирается не по тексту закона, а по тому, какая Opción A/B/C на изображении показывает меньше автомобилей, меньше конфликтов или специальный транспортный коридор.",
+        "Ley 2148 описывает Sistema de Transporte Público en Bicicleta как здоровый и экологичный способ перемещения, альтернативный и дополнительный к общественному транспорту. В экзаменационной логике велосипед на картинке обычно читается как экологичный, экономичный и быстрый городской вариант, но конкретная буква ответа всегда зависит от изображения в билете.",
+        "Metrobus и carriles exclusivos существуют не как удобный объезд для частных автомобилей, а как приоритет для массового пассажирского транспорта. Поэтому в билете с carril для colectivos правильный ход мысли такой: taxis con pasajeros и motos не становятся разрешенными автоматически, если они не показаны/не названы как autorizados.",
+        "Фраза probabilidad de siniestralidad в этих билетах связывается с количеством и плотностью транспортных конфликтов. Меньше vehículos обычно означает меньше потенциальных конфликтов, а изображение с плотным потоком частных машин выбирается как более рискованное, если билет просит mayor probabilidad.",
+        "Не превращайте визуальное сравнение в универсальную статистику. Для `b-fallback-285`, `b-fallback-368` и `b-fallback-427` объяснение привязано к конкретным Opción A/B/C на картинке; официальный источник поддерживает общий курс на устойчивую мобильность и снижение использования automóvil particular, но не доказывает каждую фотографию как самостоятельное правило."
+      ],
+      "practicalReasoningRu": [
+        "Устойчивая городская мобильность снижает количество конфликтов: один автобус или велосипедная сеть перемещают людей с меньшей нагрузкой на уличное пространство, чем множество частных автомобилей.",
+        "Выделенный коридор работает только если его не занимают посторонние: иначе общественный транспорт теряет предсказуемость, а автомобили, мотоциклы и такси создают новые точки конфликта.",
+        "На экзамене такие вопросы проверяют не технику управления, а способность увидеть системную идею: меньше лишних машин, больше приоритета массовому/экологичному транспорту и больше внимания к уязвимым участникам."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-colectivos-sustainable",
+          "termEs": "colectivos",
+          "translationRu": "городские автобусы/colectivos",
+          "sourceQuestionIds": [
+            "b-fallback-132"
+          ]
+        },
+        {
+          "id": "term-carril-sustainable",
+          "termEs": "carril",
+          "translationRu": "полоса движения",
+          "sourceQuestionIds": [
+            "b-fallback-132"
+          ]
+        },
+        {
+          "id": "term-taxis-con-pasajeros",
+          "termEs": "Taxis con pasajeros",
+          "translationRu": "такси с пассажирами",
+          "sourceQuestionIds": [
+            "b-fallback-132"
+          ]
+        },
+        {
+          "id": "term-motos-sustainable",
+          "termEs": "Motos",
+          "translationRu": "мотоциклы",
+          "sourceQuestionIds": [
+            "b-fallback-132"
+          ]
+        },
+        {
+          "id": "term-mayor-probabilidad-siniestralidad",
+          "termEs": "mayor probabilidad de siniestralidad",
+          "translationRu": "большая вероятность ДТП/аварийности",
+          "sourceQuestionIds": [
+            "b-fallback-285",
+            "b-fallback-427"
+          ]
+        },
+        {
+          "id": "term-medio-transporte",
+          "termEs": "medio de transporte",
+          "translationRu": "вид транспорта",
+          "sourceQuestionIds": [
+            "b-fallback-368"
+          ]
+        },
+        {
+          "id": "term-ecologico-saludable-economico-rapido",
+          "termEs": "ecológico, saludable, económico y rápido",
+          "translationRu": "экологичный, полезный для здоровья, экономичный и быстрый",
+          "sourceQuestionIds": [
+            "b-fallback-368"
+          ]
+        },
+        {
+          "id": "term-premisa-correcta",
+          "termEs": "premisa correcta",
+          "translationRu": "правильная предпосылка/утверждение",
+          "sourceQuestionIds": [
+            "b-fallback-371"
+          ]
+        },
+        {
+          "id": "term-menor-cantidad-vehiculos",
+          "termEs": "A menor cantidad de vehículos",
+          "translationRu": "чем меньше транспортных средств",
+          "sourceQuestionIds": [
+            "b-fallback-371"
+          ]
+        },
+        {
+          "id": "term-menor-probabilidad-siniestralidad",
+          "termEs": "menor probabilidad de siniestralidad",
+          "translationRu": "меньшая вероятность ДТП/аварийности",
+          "sourceQuestionIds": [
+            "b-fallback-371"
+          ]
+        },
+        {
+          "id": "term-opcion-a-b-c",
+          "termEs": "Opción A",
+          "translationRu": "вариант A на картинке",
+          "sourceQuestionIds": [
+            "b-fallback-285",
+            "b-fallback-368",
+            "b-fallback-427"
+          ]
+        },
+        {
+          "id": "term-es-indistinto",
+          "termEs": "Es indistinto",
+          "translationRu": "безразлично, разницы нет",
+          "sourceQuestionIds": [
+            "b-fallback-427"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-132",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-132-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Taxis con pasajeros - неверно для этого билета. На изображении carril reservado для colectivos/Metrobus; такси не получает право ехать по нему только потому, что в нем есть пассажир."
+            },
+            {
+              "answerId": "b-fallback-132-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Motos тоже не подходят. Вопрос спрашивает, кто еще может circular por este carril; мотоциклы не показаны как transporte autorizado для этой полосы."
+            },
+            {
+              "answerId": "b-fallback-132-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: обе предложенные категории неверны. На изображении этого билета полоса остается для colectivos/транспорта, которому она предназначена, а не для taxis или motos."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b26.jpg"
+        },
+        {
+          "questionId": "b-fallback-285",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-285-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción A на этой картинке показывает людей с велосипедами/более мягкий городской сценарий. В рамках сравнения билета это не ситуация с mayor probabilidad de siniestralidad."
+            },
+            {
+              "answerId": "b-fallback-285-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Opción B показывает плотный поток автомобилей и больше потенциальных конфликтов. Именно эту картинку билет связывает с большей probabilidad de siniestralidad."
+            },
+            {
+              "answerId": "b-fallback-285-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambas respuestas неверно: билет просит выбрать ситуацию с большей вероятностью ДТП, и из двух изображений выделяется именно B, а не обе сразу."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b3.jpg"
+        },
+        {
+          "questionId": "b-fallback-368",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-368-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Opción A показывает велосипед. В этом билете именно велосипед соответствует набору beneficios: ecológico, saludable, económico y rápido."
+            },
+            {
+              "answerId": "b-fallback-368-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Opción B показывает taxi/automóvil. Он может быть полезным транспортом, но не соответствует всей связке билета: экологичный, полезный для здоровья, экономичный и быстрый."
+            },
+            {
+              "answerId": "b-fallback-368-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Opción C показывает colectivo. Общественный транспорт важен для устойчивой мобильности, но в этом визуальном вопросе полный набор beneficios привязан к велосипеду в Opción A."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b5.jpg"
+        },
+        {
+          "questionId": "b-fallback-371",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-371-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: утверждение переворачивает смысл. Меньше vehicles не означает большую вероятность siniestralidad; меньше конфликтующих участников обычно снижает риск."
+            },
+            {
+              "answerId": "b-fallback-371-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: mayor cantidad de vehículos не уменьшает риск само по себе. Больше машин означает больше взаимодействий, очередей, перестроений и конфликтных точек."
+            },
+            {
+              "answerId": "b-fallback-371-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: a menor cantidad de vehículos, menor probabilidad de siniestralidad. Это экзаменационная формула про связь количества транспортных средств и потенциальных конфликтов."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-427",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-427-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Opción A показывает плотное движение множества автомобилей на широкой avenida. В сравнении этого билета именно она несет mayor probabilidad de siniestralidad."
+            },
+            {
+              "answerId": "b-fallback-427-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Opción B показывает организованный коридор типа Metrobus с приоритетом общественного транспорта и меньшим доминированием частных автомобилей в центральном пространстве. В рамках картинки это не более рискованный вариант."
+            },
+            {
+              "answerId": "b-fallback-427-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Es indistinto неверно: билет ожидает сравнение изображений. Разница есть, потому что A визуально показывает больше автомобилей и конфликтов, чем B."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b4.jpg"
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-public-bicycle-sustainable-purpose",
+          "textRu": "Ley 2148 связывает Sistema de Transporte Público en Bicicleta с transporte saludable, respetuoso con el medio ambiente, альтернативой/дополнением к transporte público и снижением congestion de tránsito.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "sustainable-mobility-public-bicycle-purpose"
+        },
+        {
+          "id": "claim-metrobus-private-car-discouragement",
+          "textRu": "Metrobus в CABA поддерживает приоритет массового пассажирского транспорта, protección del medio ambiente и desincentivar el uso del automóvil particular; это поддерживает рамку темы, но не превращает визуальные билеты в официальные статистические утверждения.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "sustainable-mobility-metrobus-private-car-discouragement"
+        },
+        {
+          "id": "claim-exclusive-lane-ticket-boundary",
+          "textRu": "Carril exclusivo/Metrobus guidance is limited to reserved or authorized use; ticket `b-fallback-132` keeps its taxi/moto answer as a narrow image-specific conclusion.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "sustainable-mobility-exclusive-lane-reserved-use"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-image-option-not-general-statistic",
+          "textRu": "В билетах с Opción A/B/C не отвечайте по общему ощущению. Сначала определите, что именно показывает каждая картинка, потом выберите букву, которую просит вопрос.",
+          "sourceQuestionIds": [
+            "b-fallback-285",
+            "b-fallback-368",
+            "b-fallback-427"
+          ]
+        },
+        {
+          "id": "trap-siniestralidad-direction",
+          "textRu": "Mayor и menor легко перепутать. `Mayor probabilidad de siniestralidad` ищет более рискованную ситуацию; `menor cantidad de vehículos, menor probabilidad` - правильная формула в отдельном текстовом билете.",
+          "sourceQuestionIds": [
+            "b-fallback-285",
+            "b-fallback-371",
+            "b-fallback-427"
+          ]
+        },
+        {
+          "id": "trap-sustainable-not-all-public-transport",
+          "textRu": "Общественный транспорт и велосипед оба поддерживают устойчивую мобильность, но билет `b-fallback-368` спрашивает полный набор ecológico/saludable/económico/rápido, поэтому выбирается велосипед на Opción A, а не colectivo.",
+          "sourceQuestionIds": [
+            "b-fallback-368"
+          ]
+        },
+        {
+          "id": "trap-carril-exclusivo-no-taxi-moto",
+          "textRu": "Carril для colectivos не расширяется автоматически на taxi con pasajeros или moto. Если вариант не назван как autorizado, не добавляйте его самостоятельно.",
+          "sourceQuestionIds": [
+            "b-fallback-132"
+          ]
+        }
+      ]
     }
   ]
 }
