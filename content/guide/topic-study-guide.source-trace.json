@@ -2802,6 +2802,95 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force",
       "notes": "Supports b-fallback-243 and b-fallback-367."
+    },
+    {
+      "id": "vehicle-condition-minimum-safety-systems",
+      "topicId": "vehicle-condition-maintenance-loads",
+      "claimId": "claim-vehicle-condition-minimum-safety-systems",
+      "claimSummaryRu": "Minimum vehicle safety systems support control, stability and visibility: brakes, steering, suspension, tyres, lighting, transparent glass and related equipment.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.1.2 Condiciones mínimas de seguridad",
+        "Ley 2148 4.1.3 Requisitos para automotores, incisos c) and h)",
+        "Ley 24449 Artículo 29 Condiciones de seguridad",
+        "Ley 24449 Artículo 40 Requisitos para circular, inciso i)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports general safety-system framing for suspension/control, tyres, glass visibility and vehicle condition. Exact oil dipstick/lubrication image choices and maintenance-benefit wording remain ticket-specific."
+    },
+    {
+      "id": "vehicle-condition-load-visibility-aerodynamics-lights-limits",
+      "topicId": "vehicle-condition-maintenance-loads",
+      "claimId": "claim-load-visibility-aerodynamics-lights-limits",
+      "claimSummaryRu": "Loads and transported elements must not impair visibility/control, dangerously affect aerodynamics, hide lights/indicators or exceed allowed limits.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.4 Prohibiciones, inciso b)",
+        "Ley 2148 6.1.2 Requisitos para circular, inciso g)",
+        "Ley 24449 Artículo 48 Prohibiciones, inciso q)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-040 load framing and the general load/control idea. Loose-object kinetic-energy wording in b-fallback-231 remains ticket-specific learning support."
+    },
+    {
+      "id": "vehicle-condition-fuel-engine-lights-prohibition",
+      "topicId": "vehicle-condition-maintenance-loads",
+      "claimId": "claim-fuel-engine-lights-prohibition",
+      "claimSummaryRu": "Ley 2148 prohibits loading fuel with vehicle lights on and the engine running.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.4 Prohibiciones, inciso h)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-293 and b-fallback-386 only. Does not broaden fuel-station behavior beyond the assigned motor + lights answer."
+    },
+    {
+      "id": "vehicle-condition-breakdown-tunnel-warning-and-towing",
+      "topicId": "vehicle-condition-maintenance-loads",
+      "claimId": "claim-breakdown-tunnel-warning-and-towing",
+      "claimSummaryRu": "Breakdowns, fallen load and other obstructions require warning and restoring free circulation; CABA allows towing of an accident/damaged vehicle only by a vehicle destined for that purpose.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.4 Prohibiciones, inciso i)",
+        "Ley 2148 5.5.3 Comportamiento general en caso de averías o imprevistos",
+        "Ley 2148 6.3.1 Generalidades, luces intermitentes de emergencia o balizas",
+        "Ley 24449 Artículo 59 Obstáculos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports warning/balizas/assistance framing and the assigned authorized-towing answer. The exact tunnel option sequence in b-fallback-276 remains a ticket-specific formula."
+    },
+    {
+      "id": "vehicle-condition-transitory-signs-work-zones",
+      "topicId": "vehicle-condition-maintenance-loads",
+      "claimId": "claim-transitory-signs-work-zones",
+      "claimSummaryRu": "Transitory signs signal construction and maintenance work on or near the road and warn about temporary restriction/risk.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 2.3.1 Definición",
+        "Ley 2148 2.3.10 Señalización de las obras",
+        "Decreto 779/1995 Anexo L Capítulo VIII Señalamiento transitorio, 37 Concepto"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports the b-fallback-313 transitory-sign definition only. Does not promote broader roadwork or signage taxonomy here."
     }
   ]
 }

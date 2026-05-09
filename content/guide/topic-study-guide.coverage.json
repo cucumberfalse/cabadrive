@@ -323,9 +323,9 @@
       "titleRu": "Состояние автомобиля, шины, грузы и обслуживание",
       "categoryId": "vehicle",
       "splitCriteria": "Mantenimiento, neumáticos, aceite, motor, frenos, carga/equipaje, cristales, remolque и техническое состояние.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E-vehicle-condition-maintenance-loads"
     },
     {
       "topicId": "mirrors-blind-spots-and-visibility",
@@ -717,9 +717,9 @@
         "adverse-weather-and-visibility"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-adverse-weather-visibility",
+      "ownerSlice": "C+E-adverse-weather-visibility+E-vehicle-condition-maintenance-loads",
       "placementPhases": {
-        "vehicle-condition-maintenance-loads": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready",
         "adverse-weather-and-visibility": "content_ready"
       }
     },
@@ -770,8 +770,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-041",
@@ -1371,8 +1371,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-102",
@@ -1387,8 +1387,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-104",
@@ -1606,8 +1606,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-127",
@@ -2115,7 +2115,11 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "placementPhases": {
+        "fatigue-distraction-and-attention": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-176",
@@ -2346,8 +2350,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-199",
@@ -2370,8 +2374,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-202",
@@ -2518,7 +2522,11 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "placementPhases": {
+        "fatigue-distraction-and-attention": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-218",
@@ -2651,7 +2659,11 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "placementPhases": {
+        "fatigue-distraction-and-attention": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-232",
@@ -3019,9 +3031,9 @@
         "adverse-weather-and-visibility"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-adverse-weather-visibility",
+      "ownerSlice": "C+E-adverse-weather-visibility+E-vehicle-condition-maintenance-loads",
       "placementPhases": {
-        "vehicle-condition-maintenance-loads": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready",
         "adverse-weather-and-visibility": "content_ready"
       }
     },
@@ -3095,7 +3107,11 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "placementPhases": {
+        "fatigue-distraction-and-attention": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-277",
@@ -3257,7 +3273,11 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "placementPhases": {
+        "fatigue-distraction-and-attention": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-294",
@@ -3446,8 +3466,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-314",
@@ -3604,16 +3624,16 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-329",
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-330",
@@ -3849,8 +3869,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-354",
@@ -4087,9 +4107,9 @@
         "adverse-weather-and-visibility"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E-adverse-weather-visibility",
+      "ownerSlice": "C+E-adverse-weather-visibility+E-vehicle-condition-maintenance-loads",
       "placementPhases": {
-        "vehicle-condition-maintenance-loads": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready",
         "adverse-weather-and-visibility": "content_ready"
       }
     },
@@ -4198,8 +4218,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-387",
@@ -4397,7 +4417,11 @@
         "vehicle-condition-maintenance-loads"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads",
+      "placementPhases": {
+        "fatigue-distraction-and-attention": "planned",
+        "vehicle-condition-maintenance-loads": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-406",
@@ -4433,8 +4457,8 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
       "questionId": "b-fallback-410",
