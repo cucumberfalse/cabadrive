@@ -43,13 +43,13 @@
 
 ## Future Slice C: Taxonomy Discovery And Coverage Baseline
 
-- [ ] T030 Analyze all current 460 ticket IDs from `content/questions/caba-b.unofficial-fallback.questions.json`.
-- [ ] T031 Propose compact guide categories from ticket wording, answer patterns, images, and practical exam concepts rather than copying broad existing question `topics`.
-- [ ] T032 Set category split criteria and record why categories are neither too broad nor too tiny.
-- [ ] T033 Assign every current ticket ID to at least one and at most two guide categories as planned taxonomy coverage, not content-ready rendered placements.
-- [ ] T034 Create/update coverage baseline with expected count 460 and a stable ID-set fingerprint.
-- [ ] T035 Add or adjust validator behavior and evidence so planned taxonomy assignments are validated for baseline completeness independently from content-ready/rendered guide placements; planned assignments must prove every current ticket ID is assigned, no ticket has more than two assignments, and planned-only assignments remain draft-safe without guide content blocks or answer explanations.
-- [ ] T036 Record any ambiguous or conflicting placements for Architect disposition.
+- [x] T030 Analyze all current 460 ticket IDs from `content/questions/caba-b.unofficial-fallback.questions.json`.
+- [x] T031 Propose compact guide categories from ticket wording, answer patterns, images, and practical exam concepts rather than copying broad existing question `topics`.
+- [x] T032 Set category split criteria and record why categories are neither too broad nor too tiny.
+- [x] T033 Assign every current ticket ID to at least one and at most two guide categories as planned taxonomy coverage, not content-ready rendered placements.
+- [x] T034 Create/update coverage baseline with expected count 460 and a stable ID-set fingerprint.
+- [x] T035 Add or adjust validator behavior and evidence so planned taxonomy assignments are validated for baseline completeness independently from content-ready/rendered guide placements; planned assignments must prove every current ticket ID is assigned, no ticket has more than two assignments, and planned-only assignments remain draft-safe without guide content blocks or answer explanations.
+- [x] T036 Record any ambiguous or conflicting placements for Architect disposition.
 
 ## Future Slice D: Shared Official Source Archive Seed
 
@@ -144,6 +144,10 @@
 - Slice B review hardening compares manifest `hash` values against injected local Markdown SHA-256 metadata when available. Normal `scripts/validate-content.mjs` now supplies real SHA-256 metadata for existing local official-document paths, so stale archived Markdown hashes fail content validation once manifest entries exist.
 - Slice B review hardening constrains `currentness.status`, `currentness.validationStatus`, and `exactTextValidation.status` to explicit enum sets so typos do not pass as non-empty strings.
 - Slice C may produce the complete 460-ticket taxonomy baseline as planned coverage only. Planned assignments prove intended category coverage and one-or-two topic limits, but they are not content-ready placements and must not force all guide ticket blocks or answer explanations in the taxonomy PR. Content-ready/published placements remain the phase that must match rendered guide content and explanations.
+- Slice C implemented coverage assignment phases with `phase: "planned" | "content_ready" | "published"`. Planned assignments count toward global taxonomy coverage and the maximum-two-topic rule, while only `content_ready` and `published` assignments are compared against rendered guide topic tickets and answer explanations.
+- Slice C keeps the overall guide and coverage manifests in `status: "draft"`. The existing Slice A hand-signal placeholder was renamed from `driver-hand-signals-draft` to the stable taxonomy topic ID `driver-hand-signals`; only `b-fallback-001` remains `content_ready` because it already has a rendered placeholder ticket/explanation block. The remaining 459 current tickets are `phase: "planned"`.
+- Slice C derived 28 compact guide topics from ticket wording, answer patterns, image-driven sign/road-context prompts, and existing broad question `topics` only as secondary hints. Split criteria are recorded in `content/guide/topic-study-guide.coverage.json` under `taxonomy.splitCriteria` and per-topic `splitCriteria`: signs are split into warning/regulatory/information/road-marking tasks; speed, priority, parking, pedestrian, bicycle, document, vehicle-condition, driver-state, incident-response, and road-context topics are separated when they imply different future guide prose or official-source checks.
+- Slice C records planned dual placement only where the same ticket should physically repeat later for a second study angle, such as speed-sign, parking-signal, bicycle-pedestrian, crash-document, authority-priority, and weather/vehicle-condition overlaps. The baseline has 179 dual-assigned tickets and no ticket with more than two assignments.
 
 ### Known Issues
 
@@ -154,6 +158,8 @@
 - Full guide completion will require many topic content slices; no single future agent should own all prose and all 460 answer explanations.
 - The topic-guide placeholder is intentionally draft-only and should not be treated as learner-ready guide content.
 - Slice B did not run network research, download official documents, convert official documents, or add manifest entries. Slice D and later topic content slices remain responsible for official source acquisition and conversion.
+- Slice C did not run network research, download official documents, seed official sources, author full guide prose, author all answer explanations, integrate UI, or enable final strict published release gates.
+- Slice C taxonomy placements are a planned baseline for future content slices. Later topic authors may refine individual placements only with updated coverage evidence and the same maximum-two-topic rule.
 
 ### Verification Evidence
 
@@ -198,11 +204,23 @@
 - Slice B PR #12 P2 fix verification: `node --test tests/official-documents-validation.test.mjs` passed 19 tests; `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run test` passed 64 Node tests; `pnpm run build` passed with the existing non-blocking Vite chunk-size warning and 280 cached service-worker assets; `pnpm run preflight` passed with 64 Node tests and 8 Playwright tests; `git diff --check` passed with no output.
 - Slice B PR #12 second AI Review found two P2 blockers: official Markdown `localPath` accepted files anywhere under `content/official-documents/` instead of only `documents/`, and lossy `rawOriginalPath` accepted files outside `originals/`. Fix: validate archived Markdown paths against `content/official-documents/documents/`, validate raw/original evidence against `content/official-documents/originals/`, and add regression coverage for `AGENTS.md`, `validation/fake.md`, `documents/source.pdf`, and `validation/source.pdf` bypass attempts.
 - Slice B PR #12 second P2 fix verification: `node --test tests/official-documents-validation.test.mjs` passed 20 tests; `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run test` passed 65 Node tests; `pnpm run build` passed with the existing non-blocking Vite chunk-size warning and 280 cached service-worker assets; `pnpm run preflight` passed with 65 Node tests and 8 Playwright tests; `git diff --check` passed with no output.
+- Slice C worktree orientation: `pwd && git status --short --branch` reported `/Users/chap/devel/cabadrive/.claude/worktrees/006-taxonomy-coverage-baseline` and `## codex/006-taxonomy-coverage-baseline...origin/main` before implementation edits.
+- Slice C targeted taxonomy evidence: local Node analysis loaded all current questions and produced expected count `460`, ID fingerprint `b46707461f4ba5bd0f3eac6b0aa126764014e12ad42144df12c777200f2810ad`, topic count `28`, assignment rows `460`, total topic placements `639`, dual-assigned tickets `179`, missing assignments `0`, over-assigned tickets `0`, and max topics per question `2`.
+- Slice C targeted validator evidence: `node --test tests/content-topic-guide.test.mjs` passed 17 tests covering current manifest validity, planned full coverage without rendered content, content-ready assignment requiring rendered content, published mode rejecting planned-only assignments, missing current IDs, duplicate topics, invalid question IDs, required topic sections, answer explanations, vocabulary provenance, rendered coverage/content mismatch, stale baseline, over-assignment, source trace requirements, blank official document IDs, guideId mismatch, and status disagreement.
+- Slice C content-validation smoke evidence: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references after the planned taxonomy baseline was added.
+- Slice C environment note: initial `pnpm run build` failed because this isolated worktree had no `node_modules` and `vite` was not installed. `pnpm install` completed with the existing lockfile up to date and no repository file changes, then verification continued.
+- Slice C final verification: `node --test tests/content-topic-guide.test.mjs` passed 17 tests.
+- Slice C final verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice C final verification: `pnpm run test` passed 68 Node tests.
+- Slice C final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service worker generation reported 280 cached assets.
+- Slice C final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 68 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice C final verification: `git diff --check` passed with no output.
 
 ### Implementation Agent Feedback
 
 - Slice A: none requiring Architect disposition.
 - Slice B: none requiring Architect disposition.
+- Slice C: none requiring Architect disposition.
 
 ### Architect Dispositions
 
