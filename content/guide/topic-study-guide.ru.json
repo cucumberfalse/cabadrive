@@ -5115,6 +5115,867 @@
           "sourceTraceId": "documents-licenses-duplicate-chapa-registro"
         }
       ]
+    },
+    {
+      "id": "safety-principles-and-risk",
+      "slug": "safety-principles-and-risk",
+      "status": "draft",
+      "titleRu": "Базовые принципы безопасности и риска",
+      "summaryRu": "Экзаменационный блок про fluidez y seguridad, conducción preventiva, факторы риска, элементы безопасности автомобиля, VTV и ответственность пользователя дороги.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах темы слово seguridad почти всегда означает не “формальность”, а управление риском: не мешать потоку, не создавать опасность, держать внимание и поддерживать машину в безопасном состоянии.",
+        "Два базовых принципа системы tránsito в билете - fluidez y seguridad. Fluidez не означает ехать быстрее всех: это предсказуемый поток без ненужных помех. Seguridad означает, что скорость, маневр, состояние водителя и состояние автомобиля не должны создавать опасность другим.",
+        "Conducción preventiva строится на простой мысли: ошибиться может любой. Поэтому водитель смотрит вперед, держит control del vehículo, оставляет запас, ожидает чужую ошибку и не делает действий, которые отвлекают от contexto.",
+        "Риск складывается из трех групп, которые билет называет humano, vehicular y ambiental. Humano - внимание, телефон, курение, mate, усталость. Vehicular - шины, свет, подголовники, ремни, matafuego, VTV. Ambiental - погода, дорога, видимость и дорожная среда. Не выбирайте вариант, где из этой связки исчезает один важный фактор.",
+        "Элементы seguridad activa/passiva работают до и после ошибки. Шины, фары, тормоза и VTV помогают не попасть в опасность; ремень, cabezal/apoyacabezas и правильное расположение пассажиров уменьшают последствия удара.",
+        "Знаки и разметка в этой теме нужны как контроль риска. Cruce exclusivo para ciclistas, senda para ciclistas, señales preventivas, ciclovía и banquina проверяют, видите ли вы назначение пространства, а не просто узнаете отдельное слово.",
+        "Административные вопросы здесь тоже про безопасность: principiante длится два года, детям младше 12 нельзя ехать на переднем сиденье, а emblema internacional para personas con discapacidad не отменяет все случаи remoción/retención.",
+        "Если билет ссылается на OMS или дает старую статистическую формулу, учите это как wording конкретного fallback-билета. В этом topic мы не превращаем такие формулировки в отдельные текущие official-source claims без архивированного источника."
+      ],
+      "practicalReasoningRu": [
+        "Безопасность дорожной системы держится не на одном “идеальном” водителе, а на запасе против чужих ошибок. Поэтому профилактическое вождение просит заранее снижать риск, а не реагировать в последний момент.",
+        "Техническое состояние машины влияет на всех: плохая шина, неправильный свет или недоступный огнетушитель превращают обычную ситуацию в аварийную быстрее, чем водитель успевает компенсировать опытом.",
+        "Отвлечение опасно даже когда руки свободны. Мозг перестает полноценно читать зеркала, скорость сближения, пешеходов, велосипедистов и сигналы других участников."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-fluidez-seguridad",
+          "termEs": "Fluidez y seguridad",
+          "translationRu": "плавность/пропускная способность движения и безопасность",
+          "sourceQuestionIds": [
+            "b-fallback-048"
+          ]
+        },
+        {
+          "id": "term-conduccion-preventiva",
+          "termEs": "conducción preventiva",
+          "translationRu": "предупредительное, профилактическое вождение",
+          "sourceQuestionIds": [
+            "b-fallback-112"
+          ]
+        },
+        {
+          "id": "term-factor-humano",
+          "termEs": "Humano",
+          "translationRu": "человеческий фактор",
+          "sourceQuestionIds": [
+            "b-fallback-141"
+          ]
+        },
+        {
+          "id": "term-factor-vehicular",
+          "termEs": "Vehicular",
+          "translationRu": "фактор автомобиля/транспортного средства",
+          "sourceQuestionIds": [
+            "b-fallback-141"
+          ]
+        },
+        {
+          "id": "term-factor-ambiental",
+          "termEs": "Ambiental",
+          "translationRu": "фактор среды: погода, дорога, видимость",
+          "sourceQuestionIds": [
+            "b-fallback-141"
+          ]
+        },
+        {
+          "id": "term-verificacion-tecnica-vehicular-risk",
+          "termEs": "Verificación Técnica Vehicular",
+          "translationRu": "техническая проверка автомобиля, VTV",
+          "sourceQuestionIds": [
+            "b-fallback-143"
+          ]
+        },
+        {
+          "id": "term-condicion-principiante",
+          "termEs": "condición de principiante",
+          "translationRu": "статус начинающего водителя",
+          "sourceQuestionIds": [
+            "b-fallback-145"
+          ]
+        },
+        {
+          "id": "term-conduccion-eficiente",
+          "termEs": "conducción eficiente",
+          "translationRu": "эффективное и экономичное безопасное вождение",
+          "sourceQuestionIds": [
+            "b-fallback-155"
+          ]
+        },
+        {
+          "id": "term-senales-preventivas-risk",
+          "termEs": "señales preventivas",
+          "translationRu": "предупреждающие знаки",
+          "sourceQuestionIds": [
+            "b-fallback-161"
+          ]
+        },
+        {
+          "id": "term-fallas-mecanicas",
+          "termEs": "fallas mecánicas",
+          "translationRu": "механические неисправности",
+          "sourceQuestionIds": [
+            "b-fallback-182"
+          ]
+        },
+        {
+          "id": "term-desacelerar-sujetar-volante",
+          "termEs": "Desacelerar lentamente y sujetar el volante",
+          "translationRu": "плавно замедлиться и удерживать руль",
+          "sourceQuestionIds": [
+            "b-fallback-241"
+          ]
+        },
+        {
+          "id": "term-luz-alta-risk",
+          "termEs": "luz alta",
+          "translationRu": "дальний свет",
+          "sourceQuestionIds": [
+            "b-fallback-242"
+          ]
+        },
+        {
+          "id": "term-vehiculo-dos-ruedas",
+          "termEs": "vehículo de dos ruedas",
+          "translationRu": "двухколесное транспортное средство",
+          "sourceQuestionIds": [
+            "b-fallback-277"
+          ]
+        },
+        {
+          "id": "term-menos-visible",
+          "termEs": "menos visible",
+          "translationRu": "менее заметный",
+          "sourceQuestionIds": [
+            "b-fallback-277"
+          ]
+        },
+        {
+          "id": "term-profundidad-dibujo",
+          "termEs": "profundidad del dibujo",
+          "translationRu": "глубина рисунка протектора",
+          "sourceQuestionIds": [
+            "b-fallback-299"
+          ]
+        },
+        {
+          "id": "term-no-entorpecer-circulacion",
+          "termEs": "no entorpecer la circulación",
+          "translationRu": "не затруднять движение",
+          "sourceQuestionIds": [
+            "b-fallback-332"
+          ]
+        },
+        {
+          "id": "term-factor-riesgo",
+          "termEs": "factor de riesgo",
+          "translationRu": "фактор риска",
+          "sourceQuestionIds": [
+            "b-fallback-334"
+          ]
+        },
+        {
+          "id": "term-atencion-contexto",
+          "termEs": "atención al contexto",
+          "translationRu": "внимание к дорожной обстановке",
+          "sourceQuestionIds": [
+            "b-fallback-334"
+          ]
+        },
+        {
+          "id": "term-franja-paralela-calzada",
+          "termEs": "franja paralela a la calzada",
+          "translationRu": "полоса, параллельная проезжей части; banquina/обочина",
+          "sourceQuestionIds": [
+            "b-fallback-363"
+          ]
+        },
+        {
+          "id": "term-comunicacion-telefonica",
+          "termEs": "comunicación telefónica",
+          "translationRu": "телефонная связь во время управления",
+          "sourceQuestionIds": [
+            "b-fallback-392"
+          ]
+        },
+        {
+          "id": "term-manos-libres-risk",
+          "termEs": "manos libres",
+          "translationRu": "hands-free, громкая связь",
+          "sourceQuestionIds": [
+            "b-fallback-392"
+          ]
+        },
+        {
+          "id": "term-elementos-seguridad-obligatorios",
+          "termEs": "elementos de seguridad obligatorios",
+          "translationRu": "обязательные элементы безопасности",
+          "sourceQuestionIds": [
+            "b-fallback-393"
+          ]
+        },
+        {
+          "id": "term-cruce-exclusivo-ciclistas",
+          "termEs": "cruce exclusivo para ciclistas",
+          "translationRu": "эксклюзивное пересечение/переезд для велосипедистов",
+          "sourceQuestionIds": [
+            "b-fallback-020"
+          ]
+        },
+        {
+          "id": "term-asiento-delantero-acompanante",
+          "termEs": "asiento delantero de acompañante",
+          "translationRu": "переднее пассажирское сиденье",
+          "sourceQuestionIds": [
+            "b-fallback-113"
+          ]
+        },
+        {
+          "id": "term-emblema-discapacidad",
+          "termEs": "emblema internacional para personas con discapacidad",
+          "translationRu": "международный знак для людей с инвалидностью",
+          "sourceQuestionIds": [
+            "b-fallback-109"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-020",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b38.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-020-a1",
+              "verdict": "incorrect",
+              "explanationRu": "На фото не показан cruce exclusivo para ciclistas: разметка не дает отдельного велосипедного перехода/секции только для bicicletas. Поэтому Verdadero здесь ловушка по картинке."
+            },
+            {
+              "answerId": "b-fallback-020-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно Falso: изображение не соответствует эксклюзивному велосипедному пересечению. В таких вопросах сначала сверяйте форму разметки, а не слово ciclistas в формулировке."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-048",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-048-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Velocidad y confort звучит удобно для водителя, но система tránsito строится не вокруг комфорта или максимальной скорости."
+            },
+            {
+              "answerId": "b-fallback-048-a2",
+              "verdict": "correct",
+              "explanationRu": "Fluidez y seguridad - правильная пара: движение должно оставаться предсказуемым и безопасным, без лишнего блокирования потока."
+            },
+            {
+              "answerId": "b-fallback-048-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Comodidad y Agilidad похожи на личные преимущества, но не являются базовыми принципами системы движения в билете."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-054",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b215.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-054-a1",
+              "verdict": "correct",
+              "explanationRu": "На фото cabezal/apoyacabezas. Он обязателен на местах, где установлен, и нужен вместе с ремнем, чтобы уменьшать тяжелые травмы шеи при ударе."
+            },
+            {
+              "answerId": "b-fallback-054-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Задние места не исключение: подголовник там тоже защищает пассажира и не является декоративной деталью."
+            },
+            {
+              "answerId": "b-fallback-054-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Подголовник относится к безопасности автомобиля; утверждение, что он не часть active/passive safety, неверно для смысла билета."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-071",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b206.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-071-a1",
+              "verdict": "incorrect",
+              "explanationRu": "В багажнике matafuego лежит свободно и далеко от водителя, поэтому утверждение “correctamente ubicado” не подходит."
+            },
+            {
+              "answerId": "b-fallback-071-a2",
+              "verdict": "correct",
+              "explanationRu": "Falso: элемент безопасности должен быть закреплен и доступен, а не кататься в багажнике, где его трудно быстро взять при emergencia."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-109",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-109-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: emblema internacional para personas con discapacidad не дает абсолютного иммунитета. Если есть предусмотренный нормой случай remoción/retención, автомобиль всё равно может быть remitido."
+            },
+            {
+              "answerId": "b-fallback-109-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso ошибочно делает знак инвалидности полной защитой от эвакуации. Льгота не отменяет ситуации, когда машина мешает, нарушает или должна быть убрана по правилам."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-112",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-112-a1",
+              "verdict": "correct",
+              "explanationRu": "Conducción preventiva действительно исходит из того, что ошибиться может любой участник, даже знающий normativas. Поэтому водитель заранее держит запас внимания и пространства."
+            },
+            {
+              "answerId": "b-fallback-112-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: профилактическое вождение не предполагает идеальных участников движения, а наоборот учитывает возможные ошибки."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-113",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-113-a1",
+              "verdict": "incorrect",
+              "explanationRu": "10 años - слишком мало для CABA-вопроса про asiento delantero de acompañante; детей младше 12 лет нельзя перевозить спереди."
+            },
+            {
+              "answerId": "b-fallback-113-a2",
+              "verdict": "incorrect",
+              "explanationRu": "11 años тоже меньше установленного порога, поэтому этот вариант близкий, но неверный."
+            },
+            {
+              "answerId": "b-fallback-113-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильный порог в билете - 12 años: до этого возраста ребенок должен ехать не на переднем пассажирском сиденье."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-141",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-141-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehicular y Ambiental неполно: билет проверяет, что человеческий фактор тоже входит в риск на vía pública."
+            },
+            {
+              "answerId": "b-fallback-141-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Humano y Vehicular неполно: дорожная среда, погода, состояние пути и видимость тоже могут влиять на риск."
+            },
+            {
+              "answerId": "b-fallback-141-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильная тройка билета - Humano, Vehicular y Ambiental: риск складывается из поведения людей, состояния машин и условий дороги/среды."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-143",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-143-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Снижение contaminación и влияние на medio ambiente - верная часть цели VTV, но не единственная, поэтому вариант A неполный."
+            },
+            {
+              "answerId": "b-fallback-143-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Проверка normas de seguridad del vehículo тоже верна, но одна безопасность без экологической части не покрывает весь ответ."
+            },
+            {
+              "answerId": "b-fallback-143-a3",
+              "verdict": "correct",
+              "explanationRu": "Ambas correctas: VTV проверяет и safety-related systems, и emission/contamination aspects, поэтому нужно выбирать A + B."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-145",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-145-a1",
+              "verdict": "incorrect",
+              "explanationRu": "2 года верно, но ограничение “sólo menores de 21 años” неверно: condición de principiante не зависит от того, младше ли водитель 21."
+            },
+            {
+              "answerId": "b-fallback-145-a2",
+              "verdict": "incorrect",
+              "explanationRu": "6 месяцев - это период с distintivo “P” и дополнительными ограничениями, но не вся condición de principiante."
+            },
+            {
+              "answerId": "b-fallback-145-a3",
+              "verdict": "correct",
+              "explanationRu": "Condición de principiante длится 2 años для того, кто получает лицензию впервые, независимо от возраста."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-155",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-155-a1",
+              "verdict": "correct",
+              "explanationRu": "Conducción eficiente в билете - это стиль, который снижает riesgos de seguridad vial и уменьшает consumo de combustible."
+            },
+            {
+              "answerId": "b-fallback-155-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Llegar en el menor tiempo posible - это логика спешки, а не эффективности: она часто повышает риск."
+            },
+            {
+              "answerId": "b-fallback-155-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Mantener siempre la misma velocidad не равно efficient driving: безопасная скорость должна меняться по условиям движения."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-160",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-160-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно, потому что билет утверждает, будто главный фактор риска - ambiental. В экзаменационной логике большинство colisiones не объясняется только погодой или дорогой."
+            },
+            {
+              "answerId": "b-fallback-160-a2",
+              "verdict": "correct",
+              "explanationRu": "Falso: environmental factor важен, но не главный сам по себе; нужно помнить связку humano, vehicular y ambiental, особенно человеческие решения."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-161",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-161-a1",
+              "verdict": "correct",
+              "explanationRu": "Señales preventivas предупреждают о proximidad de una circunstancia или variación de la normalidad de la vía, которая может быть sorpresiva или peligrosa."
+            },
+            {
+              "answerId": "b-fallback-161-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант описывает informative signs: они ориентируют и указывают servicios/lugares, а не предупреждают о риске."
+            },
+            {
+              "answerId": "b-fallback-161-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Этот вариант описывает regulatory/prescriptive signs: они дают обязательные órdenes, а не только предупреждают."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-182",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-182-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: билет связывает mechanical failures с negligent maintenance. Для экзамена это часть контроля риска владельцем/водителем."
+            },
+            {
+              "answerId": "b-fallback-182-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно, потому что отсутствие проверки estado del automóvil действительно может привести к fallas mecánicas."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-237",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b64.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-237-a1",
+              "verdict": "correct",
+              "explanationRu": "На фото водитель пьет mate/напиток за рулем: одна рука и внимание уходят от управления, поэтому acción riesgosa."
+            },
+            {
+              "answerId": "b-fallback-237-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: даже если это не телефон, действие отвлекает и ухудшает dominio del vehículo."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-241",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b204.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-241-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Frenar inmediatamente при проколе/потере давления может сорвать траекторию и усилить потерю контроля."
+            },
+            {
+              "answerId": "b-fallback-241-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Desacelerar rápidamente y frenar слишком резкое действие для такой ситуации: автомобиль может стать менее устойчивым."
+            },
+            {
+              "answerId": "b-fallback-241-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильная реакция - desacelerar lentamente y sujetar el volante: удержать направление, плавно сбросить скорость и не делать резких движений."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-242",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-242-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: luz alta не используют как обычный городской режим. В городе она слепит и мешает другим участникам."
+            },
+            {
+              "answerId": "b-fallback-242-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: билет проверяет именно запрет/неуместность circular con luz alta encendida en zonas urbanas."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-258",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b63.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-258-a1",
+              "verdict": "correct",
+              "explanationRu": "На фото водитель курит за рулем: это отвлекает руку и внимание, поэтому действие считается riesgosa para la conducción."
+            },
+            {
+              "answerId": "b-fallback-258-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: риск не исчезает от того, что машина движется медленно или водитель опытный; отвлечение остается."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-277",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-277-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Más velocidad que automóviles не является общей причиной повышенного риска двухколесного транспорта в этом билете."
+            },
+            {
+              "answerId": "b-fallback-277-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Более высокая посадка водителя не делает двухколесное ТС главным образом рискованнее; проблема не в высоте посадки."
+            },
+            {
+              "answerId": "b-fallback-277-a3",
+              "verdict": "correct",
+              "explanationRu": "По размеру vehículo de dos ruedas менее заметен для других, поэтому его легче не увидеть в зеркале, боковой зоне или на перекрестке."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-299",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b203.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-299-a1",
+              "verdict": "correct",
+              "explanationRu": "Для ответа билета порог обновления шины - когда profundidad del dibujo меньше 1,6 mm. Меньший рисунок хуже отводит воду и снижает сцепление."
+            },
+            {
+              "answerId": "b-fallback-299-a2",
+              "verdict": "incorrect",
+              "explanationRu": "2 mm звучит безопаснее, но это не значение, которое ожидает этот билет."
+            },
+            {
+              "answerId": "b-fallback-299-a3",
+              "verdict": "incorrect",
+              "explanationRu": "3 mm еще более строгий запас, но экзаменационный ответ здесь не он."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-305",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b207.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-305-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero: matafuego расположен в салоне у переднего сиденья, то есть заметно доступнее водителю, чем свободно лежащий огнетушитель в багажнике."
+            },
+            {
+              "answerId": "b-fallback-305-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso неверно: изображение как раз показывает корректное размещение элемента безопасности для быстрого доступа."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-332",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-332-a1",
+              "verdict": "correct",
+              "explanationRu": "Базовая premisa пользователя vía pública - не мешать circulation и не создавать peligro, perjuicios, molestias innecesarias или daños."
+            },
+            {
+              "answerId": "b-fallback-332-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Опыт вождения больше года может быть полезен, но это не общая обязанность каждого пользователя дороги."
+            },
+            {
+              "answerId": "b-fallback-332-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Постоянные курсы каждые шесть месяцев не являются базовой premisa для каждого usuario de la vía pública в этом билете."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-334",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b59.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-334-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Даже без телефона в руке hands-free/voice use может отвлекать внимание. Вариант неверно сводит риск только к занятым рукам."
+            },
+            {
+              "answerId": "b-fallback-334-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Риск не появляется только at high speeds: потеря внимания опасна и на низкой скорости, особенно в городе."
+            },
+            {
+              "answerId": "b-fallback-334-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: действие мешает atención al contexto. Экзамен проверяет внимание, а не только физическое удержание руля."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-339",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b1.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-339-a1",
+              "verdict": "correct",
+              "explanationRu": "Verdadero по формулировке билета: проблема siniestralidad vial представлена как масштабная global health problem. Запомните как ticket wording, без расширения в отдельную статистику."
+            },
+            {
+              "answerId": "b-fallback-339-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Falso не подходит, потому что билет прямо ожидает согласие с формулировкой про categoría “pandemia” и décima causa de muerte."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-363",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b125.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-363-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Verdadero неверно: franja paralela a la calzada/banquina не становится обычной полосой даже при congestión."
+            },
+            {
+              "answerId": "b-fallback-363-a2",
+              "verdict": "correct",
+              "explanationRu": "Falso: по такой полосе нельзя ехать просто из-за пробки; banquina/крайняя полоса безопасности не предназначена для объезда затора."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-392",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b58.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-392-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Un solo auricular всё равно влияет на audición и внимание; билет не считает этот вариант безопасным."
+            },
+            {
+              "answerId": "b-fallback-392-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Manos libres освобождает руки, но не возвращает полностью внимание al contexto, поэтому тоже риск."
+            },
+            {
+              "answerId": "b-fallback-392-a3",
+              "verdict": "correct",
+              "explanationRu": "Оба sistemas de comunicación telefónica riesgosos: экзамен проверяет не только занятые руки, но и когнитивное отвлечение."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-393",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b205.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-393-a1",
+              "verdict": "incorrect",
+              "explanationRu": "A, B y D включает botiquín/аптечку вместо нужного комплекта на картинке. Для обычного авто билет ожидает не этот набор."
+            },
+            {
+              "answerId": "b-fallback-393-a2",
+              "verdict": "correct",
+              "explanationRu": "B, C y D - правильный комплект по изображению: balizas, chaleco reflectante и matafuego. Это те элементы, которые билет относит к обязательным."
+            },
+            {
+              "answerId": "b-fallback-393-a3",
+              "verdict": "incorrect",
+              "explanationRu": "A, D y E пропускает balizas/chaleco и добавляет лишний предмет E; поэтому набор не совпадает с ожидаемым."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-418",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b112.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-418-a1",
+              "verdict": "incorrect",
+              "explanationRu": "A не подходит: автомобиль A выезжает на встречную сторону через двойную сплошную для обгона, поэтому он в infracción."
+            },
+            {
+              "answerId": "b-fallback-418-a2",
+              "verdict": "incorrect",
+              "explanationRu": "A снова делает пару неверной. C сам по себе не нарушает, но с A ответ не может быть правильным."
+            },
+            {
+              "answerId": "b-fallback-418-a3",
+              "verdict": "correct",
+              "explanationRu": "B и C не показаны в нарушении: B движется в своей полосе, C едет навстречу в своей полосе, а infracción на картинке делает A."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-419",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-419-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ley Nacional 24.449 важна, но для CABA вопрос не ограничивается только национальной нормой."
+            },
+            {
+              "answerId": "b-fallback-419-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Ley de la Ciudad 2.148 применяется в CABA, но она не отменяет национальную рамку, поэтому только B неполно."
+            },
+            {
+              "answerId": "b-fallback-419-a3",
+              "verdict": "correct",
+              "explanationRu": "Ambas: при движении по Ciudad de Buenos Aires учитываются и Ley Nacional 24.449, и Ley CABA 2.148."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-fluidez-not-speed",
+          "textRu": "Fluidez не равна “ехать быстрее”. В паре fluidez y seguridad выбирайте предсказуемый поток плюс безопасность, а не confort, agilidad или максимальную скорость.",
+          "sourceQuestionIds": [
+            "b-fallback-048",
+            "b-fallback-155"
+          ]
+        },
+        {
+          "id": "trap-risk-three-factors",
+          "textRu": "Если вариант про риск убирает humano, vehicular или ambiental, он обычно неполный. Но утверждение, что ambiental - главный фактор большинства коллизий, в этом билете ложное.",
+          "sourceQuestionIds": [
+            "b-fallback-141",
+            "b-fallback-160"
+          ]
+        },
+        {
+          "id": "trap-attention-not-only-hands",
+          "textRu": "Телефон, mate, курение и auricular/manos libres проверяют внимание, а не только занятые руки. “Hands free” не делает действие безопасным.",
+          "sourceQuestionIds": [
+            "b-fallback-237",
+            "b-fallback-258",
+            "b-fallback-334",
+            "b-fallback-392"
+          ]
+        },
+        {
+          "id": "trap-safety-element-location",
+          "textRu": "Для matafuego важен не только факт наличия, но и доступность/размещение: багажник со свободно лежащим огнетушителем и салон у сиденья дают разные ответы.",
+          "sourceQuestionIds": [
+            "b-fallback-071",
+            "b-fallback-305",
+            "b-fallback-393"
+          ]
+        },
+        {
+          "id": "trap-ticket-specific-numbers",
+          "textRu": "Числа 12 años, 2 años и 1,6 mm не взаимозаменяемы: первое про переднее сиденье, второе про principiante, третье про протектор в конкретном fallback-билете.",
+          "sourceQuestionIds": [
+            "b-fallback-113",
+            "b-fallback-145",
+            "b-fallback-299"
+          ]
+        },
+        {
+          "id": "trap-exclusive-space",
+          "textRu": "Cruce exclusivo, ciclovía, banquina и franja paralela a la calzada спрашивают назначение пространства. Не превращайте край дороги или любую разметку автоматически в разрешенную полосу движения.",
+          "sourceQuestionIds": [
+            "b-fallback-020",
+            "b-fallback-363"
+          ]
+        },
+        {
+          "id": "trap-ambas-respuestas",
+          "textRu": "Ambas respuestas верно только когда обе части действительно поддержаны вопросом: VTV = seguridad + medio ambiente, CABA circulation = Ley 24.449 + Ley 2148.",
+          "sourceQuestionIds": [
+            "b-fallback-143",
+            "b-fallback-419"
+          ]
+        },
+        {
+          "id": "trap-oms-wording",
+          "textRu": "OMS/“pandemia” в этом наборе учите как формулировку самого билета. Не добавляйте к ней свежую статистику без отдельного архивированного official source.",
+          "sourceQuestionIds": [
+            "b-fallback-339"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-basic-road-user-duty-and-system-principles",
+          "textRu": "Правила CABA и национальные нормы описывают движение как безопасное и адекватное использование общественной дороги: сохраняйте fluidez, не entorpecer circulación и не создавайте peligro или лишний вред.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safety-principles-basic-road-user-duty"
+        },
+        {
+          "id": "claim-preventive-driving-and-attention-duty",
+          "textRu": "Водитель должен проверить безопасное состояние автомобиля и собственную aptitud, сохранять efectivo control, постоянное внимание и prevención, а также избегать отвлечений и состояний, снижающих пригодность к управлению.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safety-principles-preventive-driving-attention"
+        },
+        {
+          "id": "claim-vehicle-safety-elements-and-vtv",
+          "textRu": "Обязанности по безопасности автомобиля включают минимальные системы безопасности, ремни и apoyacabezas, проверку VTV по seguridad и emisiones, законное состояние шин, luces, matafuego, balizas и доступный chaleco reflectante.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safety-principles-vehicle-safety-elements-vtv"
+        },
+        {
+          "id": "claim-passengers-beginner-removal-and-jurisdiction",
+          "textRu": "Нормы CABA подтверждают порог 12 лет для переднего сиденья, двухлетний статус beginner driver, возможное removal/retención автомобиля в перечисленных случаях и движение в CABA по местным и национальным правилам tránsito.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safety-principles-passengers-beginner-removal-jurisdiction"
+        },
+        {
+          "id": "claim-cyclists-exclusive-spaces-and-two-wheel-risk-context",
+          "textRu": "CABA и Anexo L подтверждают ciclovías/sendas exclusivas для велосипедистов и обязанность учитывать их prioridad при пересечении; риск видимости для двухколесного транспорта здесь остается формулировкой конкретных билетов.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "safety-principles-cyclist-spaces-two-wheel-context"
+        }
+      ]
     }
   ]
 }

@@ -368,9 +368,9 @@
       "titleRu": "Базовые принципы безопасности и риска",
       "categoryId": "safety",
       "splitCriteria": "Conducción preventiva, fluidez/seguridad, factor humano, probabilidad de siniestralidad и общие риск-паттерны.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E7"
     },
     {
       "topicId": "sustainable-mobility-and-vulnerable-users",
@@ -554,8 +554,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-021",
@@ -805,8 +805,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-049",
@@ -865,8 +865,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-055",
@@ -1018,8 +1018,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-072",
@@ -1358,8 +1358,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-110",
@@ -1382,16 +1382,16 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-113",
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-114",
@@ -1658,8 +1658,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-142",
@@ -1675,8 +1675,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-144",
@@ -1696,8 +1696,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-146",
@@ -1783,8 +1783,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-156",
@@ -1838,16 +1838,16 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-161",
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-162",
@@ -2039,8 +2039,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-183",
@@ -2511,8 +2511,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-238",
@@ -2548,16 +2548,16 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-242",
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-243",
@@ -2700,8 +2700,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-259",
@@ -2882,8 +2882,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-278",
@@ -3079,8 +3079,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-300",
@@ -3128,8 +3128,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-306",
@@ -3379,8 +3379,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-333",
@@ -3395,8 +3395,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-335",
@@ -3437,8 +3437,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-340",
@@ -3661,8 +3661,8 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-364",
@@ -3934,16 +3934,16 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-393",
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-394",
@@ -4182,16 +4182,16 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-419",
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E7"
     },
     {
       "questionId": "b-fallback-420",

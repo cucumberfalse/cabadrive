@@ -597,6 +597,118 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "currently_valid",
       "notes": "Supports b-fallback-226 and plate-document trap notes."
+    },
+    {
+      "id": "safety-principles-basic-road-user-duty",
+      "topicId": "safety-principles-and-risk",
+      "claimId": "claim-basic-road-user-duty-and-system-principles",
+      "claimSummaryRu": "Basic road-system principles include safe use of public roads, preserving fluidez, not obstructing circulation, and avoiding danger, harm or unnecessary disturbance.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 1.1.1 Objeto del Código",
+        "Ley 2148 2.1.2 Planificación urbana",
+        "Ley 2148 5.1.1 Usuarios de la vía pública",
+        "Ley 24449 Artículo 39 Condiciones para conducir"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the compact fluidez/seguridad and no-entorpecer generalizations for b-fallback-048 and b-fallback-332."
+    },
+    {
+      "id": "safety-principles-preventive-driving-attention",
+      "topicId": "safety-principles-and-risk",
+      "claimId": "claim-preventive-driving-and-attention-duty",
+      "claimSummaryRu": "Drivers must verify safe conditions, keep effective control, permanent attention and prevention, and avoid conduct or impairments that reduce aptitude to drive.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.2.1 Condiciones para conducir",
+        "Ley 2148 5.2.4 Prohibiciones",
+        "Ley 2148 5.4.1 Regla general",
+        "Ley 24449 Artículo 39 Condiciones para conducir",
+        "Ley 24449 Artículo 48 Prohibiciones"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports preventive-driving, attention, phone/headset and risky-action explanations; OMS/statistical wording remains ticket-specific and is not generalized."
+    },
+    {
+      "id": "safety-principles-vehicle-safety-elements-vtv",
+      "topicId": "safety-principles-and-risk",
+      "claimId": "claim-vehicle-safety-elements-and-vtv",
+      "claimSummaryRu": "Archived official sources support minimum vehicle safety systems, seat belts/head restraints, VTV safety/emissions checks, required circulation safety items, legal tire condition, and lighting rules.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "gcba-vtv-tramite-current",
+        "ley-6631-caba-vtv-modificatoria-ley-2265"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.1.2 Condiciones mínimas de seguridad",
+        "Ley 2148 4.1.3 Requisitos para automotores",
+        "Ley 2148 4.1.5 Sistema de iluminación en automotores",
+        "Ley 2148 4.1.9 Verificación técnica obligatoria",
+        "Ley 2148 6.1.2 Requisitos para circular",
+        "Ley 2148 6.1.3 Cinturón de seguridad. Obligación de uso",
+        "Ley 2148 6.1.4 Cabezal de seguridad. Uso correcto",
+        "Ley 24449 Artículo 30 Requisitos para automotores",
+        "Ley 24449 Artículo 40 Requisitos para circular",
+        "Ley 24449 Artículo 47 Uso de las luces",
+        "Ley 24449 Artículo 48 Prohibiciones",
+        "Verificación Técnica Vehicular Obligatoria",
+        "Nuevas medidas en el trámite de la VTV: Primera Verificación",
+        "Artículo 20.- Plazos y vigencia de los certificados"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "currently_valid",
+      "notes": "Supports b-fallback-054, 071, 143, 182, 241, 242, 299, 305 and 393 at the general safety-system level. The 1.6 mm tire threshold in b-fallback-299 is kept as fallback-ticket-specific wording because the current archived documents support legal tire-depth condition but not the numeric threshold."
+    },
+    {
+      "id": "safety-principles-passengers-beginner-removal-jurisdiction",
+      "topicId": "safety-principles-and-risk",
+      "claimId": "claim-passengers-beginner-removal-and-jurisdiction",
+      "claimSummaryRu": "CABA archived law supports child front-seat prohibition under 12, two-year beginner-driver condition, vehicle towing/removal/retention in listed cases, and local plus national traffic-law application in CABA.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 1.1.2 Ámbito de aplicación",
+        "Ley 2148 1.1.7 Convenios internacionales",
+        "Ley 2148 2.1.5 Servicio de Grúas",
+        "Ley 2148 3.2.7 Conductores principiantes",
+        "Ley 2148 5.2.4 Prohibiciones",
+        "Ley 2148 5.6.1 Retención Preventiva",
+        "Ley 24449 Artículo 40 Requisitos para circular"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-109, 113, 145 and 419 without adding new disability-parking privileges beyond the assigned ticket wording."
+    },
+    {
+      "id": "safety-principles-cyclist-spaces-two-wheel-context",
+      "topicId": "safety-principles-and-risk",
+      "claimId": "claim-cyclists-exclusive-spaces-and-two-wheel-risk-context",
+      "claimSummaryRu": "Archived CABA/Anexo L material supports cyclist-exclusive lanes/sendas and automotor priority duties when crossing them; two-wheel visibility-risk wording is kept to the fallback ticket.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 2.3.1 Definición",
+        "Ley 2148 6.10.8 Circulación de ciclorrodados",
+        "Ley 2148 6.10.9 Prioridad de paso",
+        "Anexo L R.18 Circulación exclusiva",
+        "Anexo L H.6 Senda para ciclistas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports the cyclist-space explanation for b-fallback-020. The visibility claim for b-fallback-277 is not expanded beyond ticket wording because no archived official source for that road-safety statistic was added in this slice."
     }
   ]
 }
