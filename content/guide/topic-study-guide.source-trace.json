@@ -2714,6 +2714,94 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "Supports b-fallback-044 and b-fallback-270 refusal/control consequences. Authorities-controls-and-sanctions overlap remains planned for its own slice."
+    },
+    {
+      "id": "authorities-controls-authority-priority-and-controls",
+      "topicId": "authorities-controls-and-sanctions",
+      "claimId": "claim-authority-priority-and-controls",
+      "claimSummaryRu": "CABA road users must obey control authority and traffic-agent indications; authority orders have the top priority in the normative order.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "1.1.3 Autoridad de Aplicación y de control",
+        "2.3.3 Obediencia a la señalización",
+        "2.3.4 Prioridades",
+        "6.12.3 Previsiones para peatones, inciso d)"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the general authority/control hierarchy only. The exact b-fallback-338 photo gesture and b-fallback-050 railway-personnel advance answer remain ticket-specific."
+    },
+    {
+      "id": "authorities-controls-alcohol-control-refusal-and-procedure",
+      "topicId": "authorities-controls-and-sanctions",
+      "claimId": "claim-alcohol-control-refusal-and-procedure",
+      "claimSummaryRu": "CABA requires drivers to submit to alcohol/toxicological testing; refusal is a fault, presumes positive alcohol/drug condition, and positive/refusal procedure prohibits continued driving and orders vehicle removal.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "5.4.2 Obligación de los conductores",
+        "5.4.3 Obligación de la autoridad de control",
+        "5.4.6 Pruebas de control de alcoholemia",
+        "5.4.7 Procedimiento para casos de control de alcoholemia positivo",
+        "5.4.8 Presencia de otras sustancias que disminuyen la aptitud para conducir"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Used for b-fallback-044, b-fallback-270, and b-fallback-322 refusal/positive-control consequences."
+    },
+    {
+      "id": "authorities-controls-license-retention-listed-cases",
+      "topicId": "authorities-controls-and-sanctions",
+      "claimId": "claim-license-retention-listed-cases",
+      "claimSummaryRu": "CABA allows license retention only in listed cases, including alcohol/substance limits and unauthorized Metrobus exclusive-lane circulation.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "5.2.2 Obligación de exhibir documentos",
+        "5.6.1 Retención preventiva, inciso b), puntos 7 y 11",
+        "5.6.2 Boleta de citación del inculpado"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-092, b-fallback-157, and the retention part of b-fallback-322; does not generalize every traffic fault as a retention case."
+    },
+    {
+      "id": "authorities-controls-beginner-and-alcohol-thresholds",
+      "topicId": "authorities-controls-and-sanctions",
+      "claimId": "claim-beginner-and-alcohol-thresholds",
+      "claimSummaryRu": "CABA beginner-driver condition lasts two years and CABA Ley 2148 sets assigned fallback alcohol thresholds for ordinary automobiles, motovehicles, and zero-alcohol groups including beginners.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "3.2.7 Conductores principiantes",
+        "5.4.4 Niveles de alcohol en sangre para conductores"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "The exact image classification for b-fallback-203 ordinary car and b-fallback-446 P/principiante remains tied to the fallback question image."
+    },
+    {
+      "id": "authorities-controls-scoring-initial-points-and-discounts",
+      "topicId": "authorities-controls-and-sanctions",
+      "claimId": "claim-scoring-initial-points-and-discounts",
+      "claimSummaryRu": "SEPC/Scoring assigns points, starts with 20 points, and subtracts points for proven infractions; it is not an annual-course requirement.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "11.1.1 Creación",
+        "11.1.2 Asignación inicial de puntaje",
+        "11.1.3 Descuento de puntos",
+        "11.1.4 Escala para descuento de puntos"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-243 and b-fallback-367."
     }
   ]
 }

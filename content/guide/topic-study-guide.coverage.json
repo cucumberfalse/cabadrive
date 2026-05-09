@@ -350,9 +350,9 @@
       "titleRu": "Регулировщики, контроль и санкции",
       "categoryId": "administration",
       "splitCriteria": "Autoridad/agentes, personal ferroviario/de obra, controles, retención de licencia, sanciones и иерархия указаний.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E-authorities-controls-and-sanctions"
     },
     {
       "topicId": "road-types-highways-and-routes",
@@ -812,7 +812,7 @@
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
         "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -875,7 +875,7 @@
       "ownerSlice": "E5",
       "placementPhases": {
         "traffic-lights-and-rail-crossings": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -1284,7 +1284,7 @@
       "ownerSlice": "E6",
       "placementPhases": {
         "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -1519,7 +1519,7 @@
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
         "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -1924,7 +1924,7 @@
       "ownerSlice": "E6",
       "placementPhases": {
         "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -2391,7 +2391,7 @@
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
         "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -2766,7 +2766,7 @@
       "ownerSlice": "E6",
       "placementPhases": {
         "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -3035,7 +3035,7 @@
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
         "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -3551,7 +3551,7 @@
       "ownerSlice": "E6",
       "placementPhases": {
         "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -3704,7 +3704,7 @@
       "topicIds": [
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "content_ready",
       "ownerSlice": "C"
     },
     {
@@ -4001,7 +4001,7 @@
       "ownerSlice": "E6",
       "placementPhases": {
         "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
@@ -4812,7 +4812,7 @@
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
         "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "planned"
+        "authorities-controls-and-sanctions": "content_ready"
       }
     },
     {
