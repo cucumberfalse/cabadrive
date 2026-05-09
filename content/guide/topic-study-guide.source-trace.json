@@ -1298,6 +1298,89 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current",
       "notes": "Supports b-fallback-356 and b-fallback-416 boundaries. For b-fallback-320, the archived source supports channelization/speed-reduction framing; the exact turning-radius wording remains fallback-ticket specific, consistent with prior E12 treatment."
+    },
+    {
+      "id": "pedestrian-road-markings-senda-and-imaginary-continuation",
+      "topicId": "pedestrian-and-school-road-markings",
+      "claimId": "claim-senda-crosswalk-and-imaginary-continuation",
+      "claimSummaryRu": "Ley 2148 and Anexo L define senda peatonal as the crossing sector on the roadway and support the imaginary sidewalk/acera continuation rule when no crossing is marked.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones: Senda peatonal",
+        "Ley 2148 6.12.3 Previsiones para peatones",
+        "Anexo L H.5 Senda peatonal"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports b-fallback-082 and the general senda peatonal framing. Bolsones vehiculares are mentioned only as the official exception to the default imaginary-crossing rule."
+    },
+    {
+      "id": "pedestrian-road-markings-stop-line-before-senda",
+      "topicId": "pedestrian-and-school-road-markings",
+      "claimId": "claim-stop-line-before-crosswalk",
+      "claimSummaryRu": "Anexo L places the detention line before and parallel to the pedestrian crossing, and H.5 states vehicles must not stop or park on the crossing.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Anexo L H.4 Línea de detención",
+        "Anexo L H.5 Senda peatonal"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports the narrow stop-before-senda explanation for b-fallback-318 and b-fallback-459 without generalizing the exact fallback images beyond the ticket."
+    },
+    {
+      "id": "pedestrian-road-markings-intervenciones-peatonales",
+      "topicId": "pedestrian-and-school-road-markings",
+      "claimId": "claim-pedestrian-interventions",
+      "claimSummaryRu": "Ley 2148 defines pedestrian interventions as roadway areas preferably destined for pedestrian circulation and lists possible components including horizontal, vertical, or luminous signaling.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones: Intervenciones peatonales",
+        "Ley 2148 2.1.12 Intervenciones peatonales",
+        "Ley 2148 2.1.13 Tipos de Intervención Peatonal"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the pedestrian-focused explanation for b-fallback-369 and b-fallback-408. The exact yellow intervention image classification remains tied to the fallback ticket wording."
+    },
+    {
+      "id": "pedestrian-road-markings-school-and-working-signs",
+      "topicId": "pedestrian-and-school-road-markings",
+      "claimId": "claim-school-and-working-sign-traps",
+      "claimSummaryRu": "Anexo L includes P.25 Escolares/Niños and T.6 Hombres trabajando as distinct signs, supporting the warning/trap distinction used for school-zone and working-sign ticket explanations.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Anexo L P.25 Escolares (a) o Niños (b)",
+        "Anexo L T.6 Hombres trabajando",
+        "Anexo L P.5 Cruce de peatones"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports the distinction for b-fallback-052 and b-fallback-172. It does not claim the exact school horizontal marking image is an official catalogue figure."
+    },
+    {
+      "id": "pedestrian-road-markings-ochava-and-senda-parking-boundary",
+      "topicId": "pedestrian-and-school-road-markings",
+      "claimId": "claim-ochava-crosswalk-stopline-no-parking",
+      "claimSummaryRu": "Ley 2148 prohibits stopping or parking at corners between the ideal vertex and the imaginary prolongation of the ochava, and on pedestrian crossing markings or stop lines.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 7.1.8 Prohibiciones especiales"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports the narrow b-fallback-089 and b-fallback-221 ochava reference explanations while preserving this PR scope and not reassigning them into another topic."
     }
   ]
 }
