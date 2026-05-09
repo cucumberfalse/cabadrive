@@ -1,6 +1,18 @@
-# Ley 24449 del 23/12/94
+# Ley 24449
+
+HONORABLE CONGRESO DE LA NACION ARGENTINA
 
 LEY DE TRANSITO
+
+REGIMEN LEGAL
+
+Sanción: 23-12-1994
+
+Publicada en el Boletín Oficial: 10-02-1995
+
+Texto actualizado de la norma
+
+Normativa
 
 Ley Nº 24.449
 

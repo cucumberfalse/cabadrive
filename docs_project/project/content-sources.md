@@ -19,7 +19,7 @@ This area is for verbatim official source documents and materials that support C
 
 `content/official-documents/manifest.json` is the machine-readable manifest for the archive. The manifest remains draft while exact-text and whole-archive currentness validation are future release gates, but Slice D seeds a small reusable official-source bundle for later topic-guide work:
 
-- `ley-24449-transito-seguridad-vial`: Ley Nacional de Tránsito 24.449 updated text from official InfoLeg.
+- `ley-24449-transito-seguridad-vial`: Ley Nacional de Tránsito 24.449 updated text from Argentina.gob.ar, with official InfoLeg retained as supporting/alternative evidence.
 - `decreto-779-1995-reglamentario-ley-24449`: Decreto 779/1995 updated main regulatory text from Argentina.gob.ar.
 - `ley-2148-caba-codigo-transito-transporte`: Ley 2148 / Código de Tránsito y Transporte de la CABA updated provincial text from Argentina.gob.ar.
 

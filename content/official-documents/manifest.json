@@ -7,28 +7,28 @@
   "entries": [
     {
       "id": "ley-24449-transito-seguridad-vial",
-      "title": "Ley 24449 del 23/12/94",
+      "title": "Ley 24449",
       "officialSourceType": "national_law_updated_text",
-      "sourceUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/818/texact.htm",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/actualizacion",
       "retrievalDate": "2026-05-09",
-      "retrievalTimestamp": "2026-05-09T01:48:58-03:00",
+      "retrievalTimestamp": "2026-05-09T02:15:00-03:00",
       "sourceFormat": "html",
       "localPath": "content/official-documents/documents/ley-24449-transito-seguridad-vial.md",
       "rawOriginalPath": "content/official-documents/originals/ley-24449-transito-seguridad-vial.html",
       "hashAlgorithm": "sha256",
-      "hash": "306d0473125c01e0956c69335d451962b847c4c131c5d188c026a7c7ffc74ad4",
-      "conversionMethod": "Scripted extraction from official HTML body to Markdown paragraphs; Windows-1252 source decoded to UTF-8; inline emphasis and links flattened to visible text.",
-      "conversionNotes": "Official wording, paragraph order, article numbering, headings, and amendment notes are preserved as text. HTML styling, link targets, header images, and site chrome are not represented in Markdown. Final exact-text validation remains pending.",
+      "hash": "deda922c463db247eecc3c4292e76381f9ee86978041e8ba552f65ee7c525ad3",
+      "conversionMethod": "Cleaned rendered-text conversion from the official Argentina.gob.ar updated normativa page to Markdown paragraphs; inline emphasis and links flattened to visible text.",
+      "conversionNotes": "Official wording, paragraph order, article numbering, headings, and amendment notes are preserved as text. HTML styling, link targets, header images, and site chrome are not represented in Markdown. rawOriginalPath stores cleaned HTML evidence generated from the archived Markdown text after verifying the official Argentina.gob.ar updated page; it is not a byte-preserving network capture. Final exact-text validation remains pending.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "current",
         "validationStatus": "passed",
-        "statusEvidence": "Official InfoLeg texact page was retrieved successfully and contains updated amendment notes, including 2025 amendment/currentness notes in the visible text.",
-        "amendmentRepealEvidence": "The Argentina.gob.ar /texto URL from intake was checked and presented itself as Texto original de la norma, while its /actualizacion path returned 404. The official InfoLeg texact page was therefore used for the updated text seed.",
+        "statusEvidence": "Official Argentina.gob.ar /actualizacion page was verified successfully and labels the page TEXTO ACTUALIZADO - LEY 24449 - LEY DE TRANSITO with Texto actualizado de la norma in the visible text.",
+        "amendmentRepealEvidence": "The Argentina.gob.ar updated page contains amendment notes, including 2025 amendment/currentness notes in the visible text. The official InfoLeg texact page remains supporting/alternative official evidence for the same updated text, not a fallback for an unavailable Argentina.gob.ar page.",
         "evidenceUrls": [
-          "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/818/texact.htm",
+          "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/actualizacion",
           "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto",
-          "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/actualizacion"
+          "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/818/texact.htm"
         ]
       },
       "exactTextValidation": {
