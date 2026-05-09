@@ -11254,7 +11254,7 @@
         "Для giro важны три действия: заранее предупредить luz de giro, занять сторону/полосу ближе к повороту примерно за 30 metros и снижать скорость до маневра. Bocina не заменяет указатель поворота, а оба giros/balizas не являются обычным способом показать правый или левый поворот.",
         "Если знак говорит giro obligatorio или dirección obligatoria, водитель должен следовать стрелке. Если формулировка dirección permitida или permitido girar, это разрешенное направление, а не приказ. На картинках билетов это особенно важно: похожие стрелки отличаются категорией знака и смыслом.",
         "Marcha atrás запрещена как способ исправить пропущенный поворот. Ее используют только в узких исключениях и с максимальной осторожностью; в билете `b-fallback-244` сдавать назад нельзя по общему правилу, а U-turn отклоняется узко по фото и контексту этого билета.",
-        "Luces тоже читаются по назначению. Отдельные luces de giro preanuncian maniobras; оба указателя вместе работают как balizas для detención/emergencia/maniobra riesgosa. Белые luces de retroceso на картинках `b-fallback-014` и `b-fallback-304` объясняются узко по изображению билета: они помогают понять, в каком sentido движется или собирается двигаться показанный автомобиль.",
+        "Luces тоже читаются по назначению. Отдельные luces de giro preanuncian maniobras; оба указателя вместе работают как balizas для detención/emergencia/maniobra riesgosa. В `b-fallback-014` красно-янтарные luces traseras показывают заднюю часть автомобиля и тот же sentido; отдельно в `b-fallback-304` белая luz de retroceso подсказывает sentido contrario respecto del vehículo rojo.",
         "Кривые и загрузка здесь не становятся отдельным техническим курсом. Официальная норма требует сохранять контроль с учетом дороги, видимости, состояния автомобиля и carga; конкретная формула про багаж в fondo del baúl и совет desacelerar перед curve остаются билетными правилами, полезными для ответа."
       ],
       "practicalReasoningRu": [
@@ -11834,7 +11834,7 @@
         },
         {
           "id": "trap-white-lights-ticket-specific",
-          "textRu": "Белые luces в `b-fallback-304` не выбираются из общего технического рассуждения про видимость: билет спрашивает sentido respecto del vehículo rojo.",
+          "textRu": "Не смешивайте две картинки: в `b-fallback-014` видны luces traseras и тот же sentido, а белая luz de retroceso относится только к `b-fallback-304` и sentido respecto del vehículo rojo.",
           "sourceQuestionIds": [
             "b-fallback-014",
             "b-fallback-304"

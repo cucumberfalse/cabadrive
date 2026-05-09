@@ -1664,7 +1664,7 @@
       ],
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
-      "notes": "Supports the separate-giro versus both-giros/balizas distinction. White-light conclusions in b-fallback-014 and b-fallback-304 remain ticket-image-specific."
+      "notes": "Supports the separate-giro versus both-giros/balizas distinction. The rear-lamp same-direction reading in b-fallback-014 and white-reverse-light reading in b-fallback-304 remain ticket-image-specific."
     },
     {
       "id": "turns-marcha-atras-limits",
