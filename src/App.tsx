@@ -1,11 +1,21 @@
-import { BookOpen, CheckCircle2, ClipboardList, Flag, Image as ImageIcon, RotateCcw, Search, Timer, XCircle } from "lucide-react";
+import { BookMarked, BookOpen, CheckCircle2, ClipboardList, Flag, Image as ImageIcon, RotateCcw, Search, Timer, XCircle } from "lucide-react";
 import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
-import { data, assetUrl, explanationByQuestion, sourceById, translationByQuestion, type ProgressAnswer, type Question } from "./data/content";
+import {
+  data,
+  assetUrl,
+  explanationByQuestion,
+  questionById,
+  sourceById,
+  translationByQuestion,
+  type ProgressAnswer,
+  type Question,
+  type TopicGuideTicket
+} from "./data/content";
 import { isPassing, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials";
 
 function topicLabel(topic: string) {
   const labels: Record<string, string> = {
@@ -27,6 +37,27 @@ function formatDuration(totalSeconds: number) {
   const minutes = Math.floor(Math.max(totalSeconds, 0) / 60);
   const seconds = Math.max(totalSeconds, 0) % 60;
   return `${minutes}:${String(seconds).padStart(2, "0")}`;
+}
+
+function guideStatusLabel(status: string) {
+  if (status === "draft") return "Черновик: материал неполный";
+  if (status === "published") return "Опубликованный учебный материал";
+  return "Статус материала требует проверки";
+}
+
+function guideContentStatusLabel(contentStatus: string) {
+  if (contentStatus === "unofficial_learning_aid") return "Неофициальная учебная поддержка";
+  return "Учебный статус требует проверки";
+}
+
+function practiceContentStatusLabel() {
+  return "Текущие билеты: неофициальная B-практика, не полная официальная база GCBA";
+}
+
+function sourceStatusLabel(status: string | undefined) {
+  if (status === "current") return "источник проверен как текущий";
+  if (status === "stale") return "источник требует обновления";
+  return "статус источника требует проверки";
 }
 
 function StatusStrip({ progress }: { progress: StoredProgress }) {
@@ -405,6 +436,192 @@ function GuideView() {
   );
 }
 
+function explanationByAnswer(ticket: TopicGuideTicket) {
+  return new Map(ticket.answerExplanations.map((item) => [item.answerId, item]));
+}
+
+function safeLocalImagePath(question: Question | undefined, ticket: TopicGuideTicket) {
+  if (question?.image?.localPath) return question.image.localPath;
+  if (ticket.imageLocalPath?.startsWith("content/assets/")) return ticket.imageLocalPath;
+  return undefined;
+}
+
+function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
+  const question = questionById.get(ticket.questionId);
+  const explanations = explanationByAnswer(ticket);
+  const localImagePath = safeLocalImagePath(question, ticket);
+  const source = question ? sourceById.get(question.sourceId) : undefined;
+  const correctAnswer = question?.answers.find((answer) => answer.id === question.correctAnswerId);
+
+  if (!question) {
+    return (
+      <article className="materials-ticket missing" data-testid={`materials-ticket-${ticket.questionId}`}>
+        <h3>Билет {ticket.questionId}</h3>
+        <p>Канонический вопрос не найден. Материал не упал, но этот блок требует проверки данных.</p>
+      </article>
+    );
+  }
+
+  return (
+    <article className="materials-ticket" data-testid={`materials-ticket-${ticket.questionId}`}>
+      <div className="question-meta">
+        <span>Билет {question.id}</span>
+        <span>Категория {question.category}</span>
+        <span>{question.jurisdiction}</span>
+        <span>Статус: неофициальная B-практика</span>
+      </div>
+      <div className="official-block">
+        <span className="block-label">Испанский текст из canonical question</span>
+        <h3>{question.officialTextEs}</h3>
+      </div>
+      {localImagePath && (
+        <figure className="question-image materials-image">
+          <img src={assetUrl(localImagePath)} alt={question.image?.altEs || `Изображение билета ${question.id}`} />
+          <figcaption>
+            <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса
+          </figcaption>
+        </figure>
+      )}
+      {ticket.sourceConflictNoteRu && (
+        <aside className="support-block explanation">
+          <span className="block-label">Заметка о старой формулировке</span>
+          <p>{ticket.sourceConflictNoteRu}</p>
+        </aside>
+      )}
+      <div className="materials-answers" role="list" aria-label={`Ответы к билету ${question.id}`}>
+        {question.answers.map((answer) => {
+          const answerExplanation = explanations.get(answer.id);
+          const isCorrectAnswer = answer.id === question.correctAnswerId;
+          return (
+            <div className={isCorrectAnswer ? "material-answer correct" : "material-answer"} role="listitem" key={answer.id}>
+              <div>
+                <strong>{answer.officialTextEs}</strong>
+                {isCorrectAnswer && <span className="answer-badge">Правильный ответ</span>}
+              </div>
+              <p>{answerExplanation?.explanationRu || "Пояснение для этого варианта пока не связано с материалом."}</p>
+            </div>
+          );
+        })}
+      </div>
+      <footer className="source-line">
+        Источник: {source?.title || question.sourceId}; {sourceStatusLabel(source?.status)}. Правильный ответ: {correctAnswer?.officialTextEs || question.correctAnswerId}.
+      </footer>
+    </article>
+  );
+}
+
+function TopicGuideView() {
+  const topics = data.topicStudyGuide.topics;
+  const [selectedTopicId, setSelectedTopicId] = useState(topics[0]?.id);
+  const selectedTopic = topics.find((topic) => topic.id === selectedTopicId) || topics[0];
+
+  if (!selectedTopic) {
+    return (
+      <section className="workspace">
+        <h2>Материалы</h2>
+        <p>Учебные темы пока не найдены в локальном topic guide.</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="materials-view" aria-labelledby="materials-title">
+      <div className="materials-header">
+        <div>
+          <p className="eyebrow">Материалы</p>
+          <h2 id="materials-title">{data.topicStudyGuide.titleRu}</h2>
+          <p>{data.topicStudyGuide.disclaimer}</p>
+        </div>
+        <div className="materials-status" aria-label="Статус учебных материалов">
+          <span>{guideStatusLabel(data.topicStudyGuide.status)}</span>
+          <span>{guideContentStatusLabel(data.topicStudyGuide.contentStatus)}</span>
+          <span>{practiceContentStatusLabel()}</span>
+        </div>
+      </div>
+
+      <div className="materials-layout">
+        <aside className="materials-topic-list" aria-label="Темы материалов">
+          <h3>Темы</h3>
+          {topics.map((topic, index) => (
+            <button
+              type="button"
+              key={topic.id}
+              className={topic.id === selectedTopic.id ? "active" : ""}
+              onClick={() => setSelectedTopicId(topic.id)}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              {topic.titleRu}
+            </button>
+          ))}
+        </aside>
+
+        <article className="materials-detail">
+          <div className="materials-topic-heading">
+            <div>
+              <span className="block-label">Выбранная тема</span>
+              <h2>{selectedTopic.titleRu}</h2>
+              <p>{selectedTopic.summaryRu}</p>
+            </div>
+            <span>{guideStatusLabel(selectedTopic.status)}</span>
+          </div>
+
+          <section className="materials-section" aria-labelledby="learning-material-title">
+            <h3 id="learning-material-title">Короткий материал</h3>
+            {selectedTopic.learningMaterialRu.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </section>
+
+          {selectedTopic.practicalReasoningRu?.length ? (
+            <section className="materials-section" aria-labelledby="practical-reasoning-title">
+              <h3 id="practical-reasoning-title">Практическая логика</h3>
+              {selectedTopic.practicalReasoningRu.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </section>
+          ) : null}
+
+          <section className="materials-section" aria-labelledby="terms-title">
+            <h3 id="terms-title">Испанские термины</h3>
+            <div className="materials-term-grid">
+              {selectedTopic.spanishTerms.map((term) => (
+                <div className="materials-term" key={term.id}>
+                  <strong>{term.termEs}</strong>
+                  <p>{term.translationRu}</p>
+                  <small>Связанные билеты: {term.sourceQuestionIds.join(", ")}</small>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="materials-section" aria-labelledby="tickets-title">
+            <h3 id="tickets-title">Билеты темы</h3>
+            <div className="materials-ticket-list">
+              {selectedTopic.tickets.map((ticket) => (
+                <TopicGuideTicketBlock ticket={ticket} key={ticket.questionId} />
+              ))}
+            </div>
+          </section>
+
+          {selectedTopic.trapNotes?.length ? (
+            <section className="materials-section" aria-labelledby="trap-notes-title">
+              <h3 id="trap-notes-title">Ловушки темы</h3>
+              <div className="trap-list">
+                {selectedTopic.trapNotes.map((note, index) => (
+                  <div className="trap-note" key={note.id || `${selectedTopic.id}-trap-${index}`}>
+                    <p>{note.textRu}</p>
+                    {note.sourceQuestionIds?.length ? <small>Связанные билеты: {note.sourceQuestionIds.join(", ")}</small> : null}
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+        </article>
+      </div>
+    </section>
+  );
+}
+
 export function App() {
   const [view, setView] = useState<View>("learn");
   const [progress, setProgress] = useState(loadProgress);
@@ -433,6 +650,7 @@ export function App() {
         <button className={view === "exam" ? "active" : ""} onClick={() => setView("exam")}><ClipboardList size={18} /> Экзамен</button>
         <button className={view === "mistakes" ? "active" : ""} onClick={() => setView("mistakes")}><XCircle size={18} /> Ошибки</button>
         <button className={view === "vocabulary" ? "active" : ""} onClick={() => setView("vocabulary")}><Search size={18} /> Словарь</button>
+        <button className={view === "materials" ? "active" : ""} onClick={() => setView("materials")}><BookMarked size={18} /> Материалы</button>
         <button className={view === "guide" ? "active" : ""} onClick={() => setView("guide")}><Flag size={18} /> CABA/RF</button>
       </nav>
 
@@ -440,6 +658,7 @@ export function App() {
       {view === "exam" && <ExamView progress={progress} setProgress={setProgress} />}
       {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
       {view === "vocabulary" && <VocabularyView />}
+      {view === "materials" && <TopicGuideView />}
       {view === "guide" && <GuideView />}
     </main>
   );
