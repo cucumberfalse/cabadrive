@@ -12,6 +12,21 @@
 - [ ] Implementation Agent feedback is either absent or has Architect disposition recorded.
 - [ ] Any remaining known issue is accepted by the human merge owner.
 
+## Workflow Scope
+
+- [ ] This PR is one task slice: one isolated worktree, one branch, and one PR.
+- [ ] Changes are limited to the assigned feature memory and scoped files; unrelated work is deferred.
+- [ ] Role boundaries were preserved: Orchestrator did not directly edit repo files, and agents did not switch roles mid-task.
+- [ ] Required review fixes, source prerequisites, metadata fixes, and final-guard fixes are split into separate PRs when separation lowers risk or clarifies gates.
+
+## Merge Readiness
+
+- [ ] Required checks are green on the current head, not red, missing, queued, or running.
+- [ ] Blocking review findings are resolved or outdated.
+- [ ] The PR has no unresolved merge conflicts.
+- [ ] Completion evidence uses GitHub state and local read-only guards, not only AI-written summaries.
+- [ ] If auto-merge or Orchestrator merge is requested, the user has already authorized it and all merge-ready preconditions above are met.
+
 ## Validation
 
 - [ ] `pnpm run preflight`

@@ -12,23 +12,44 @@ Claude Code is the default implementation agent unless repository policy says ot
 6. `docs_project/project/backend/backend-docs.md`
 7. `docs_project/project/feature-inventory.md`
 8. `docs_project/screens/learning-and-exam-flows.md`
-9. active `specs/<feature-id>/spec.md`
-10. active `specs/<feature-id>/plan.md`
-11. active `specs/<feature-id>/tasks.md`
-12. relevant implementation files
+9. active `docs/specify/README.md` when source planning context is relevant
+10. active `specs/<feature-id>/feature-request.md`
+11. active `specs/<feature-id>/spec.md`
+12. active `specs/<feature-id>/plan.md`
+13. active `specs/<feature-id>/tasks.md`
+14. relevant implementation files
 
 ## Operating Rules
 
 - All product changes go through pull requests.
 - Product changes start from an active `specs/<feature-id>/` folder.
 - Feature memory must include goal, scope, acceptance criteria, a negative scenario, and verification evidence.
-- One implementation loop equals one worktree, one branch, and one PR.
+- One task slice equals one isolated worktree, one branch, and one PR.
+- Large or risky work should be split into atomic PR slices when separation lowers risk or clarifies gates, including source prerequisites, Architect dispositions, content implementation, metadata fixes, final strict gates, and review fixes.
 - Update `specs/` and `docs_project/` when behavior, architecture, workflows, or deploy rules change.
 - Record dead ends, decisions, and known issues before calling work complete.
 - Before every push, run `pnpm run preflight` (and Docker contract checks for runtime-affecting changes).
-- Never merge while required checks are queued, running, red, or missing.
+- Never merge while required checks are queued, running, red, or missing; while blocking review findings or conflicts remain; while process memory is stale; while acceptance evidence is missing; or while Implementation Agent feedback lacks Architect disposition.
 - Keep commit subjects short, conventional, and focused.
 - Do not add abstractions for single-use logic without a current need documented in `plan.md`.
+
+## Role Boundaries
+
+- Analyst writes only `feature-request.md`, then hands off. Analyst does not write plans, code, reviews, commits, pushes, or PRs.
+- Architect writes `spec.md`, `plan.md`, and `tasks.md`, including dispositions. Architect does not write implementation, review, commits, pushes, PRs, or merges.
+- Orchestrator coordinates through production readiness, invokes the right subagent, and must not directly edit repository files. Orchestrator may perform GitHub-level coordination such as check reruns, review routing, merge-readiness checks, and authorized merge actions when those actions do not edit files.
+- Implementation Agent works only from the assigned feature memory, worktree, branch, and PR slice. Implementation Agent may stage, commit, push, and open a ready PR for that slice, but does not merge.
+- Review Agent reviews diffs, feature-memory compliance, and role/process boundaries. Review Agent does not edit files, implement fixes, rerun checks, or merge while acting as reviewer.
+- Agents must not switch roles mid-task. If different work is needed, Orchestrator reroutes it to the correct role.
+
+## Orchestrator Autonomy
+
+- Proceed when repository memory, PR state, check state, and reviewer feedback provide enough context without a product or architecture decision.
+- Retry or rerun stuck, failed, or inconclusive checks when the cause is a clear workflow state.
+- Reroute code, docs, content, spec, test, or review-fix work to the role that owns it.
+- For a stuck or non-reporting subagent, inspect the worktree, branch, dirty diff, local commits, PR, and GitHub state before replacing or rerouting, and preserve existing work unless the human explicitly permits discarding it.
+- Ask the human when requirements conflict, state is ambiguous enough to risk data loss or scope expansion, credentials are missing, or the decision belongs to the human merge owner.
+- Declare completion only from GitHub state plus local read-only guard evidence, not from AI-written summaries alone.
 
 ## First Setup
 
