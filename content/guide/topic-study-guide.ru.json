@@ -7917,6 +7917,321 @@
           "sourceTraceId": "center-lines-channelization-and-reduction-markings"
         }
       ]
+    },
+    {
+      "id": "lane-choice-and-lane-changes",
+      "slug": "lane-choice-and-lane-changes",
+      "status": "draft",
+      "titleRu": "Выбор полосы и перестроение",
+      "summaryRu": "Блок про cambio de carril, carril derecho/izquierdo, carriles exclusivos, carril de aceleración/deceleración и безопасный возврат в полосу.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Главная идея: полоса уже занята потоком, поэтому водитель, который хочет перейти в нее, должен заранее предупредить и не создавать опасность или помеху.",
+        "В билетах про cambio de carril правильный ответ обычно у того, кто уже circula por el carril que se pretende ocupar. Световой указатель не дает права резко занять полосу: он только предупреждает о намерении.",
+        "На arterias multicarriles и autopistas надо стараться оставаться в своем carril y por su centro. Левый крайний carril на autopista связан с максимальной допустимой скоростью и adelantamiento; возвращение вправо после опасности или маневра должно быть облегчено, а не заблокировано.",
+        "Carriles exclusivos - это продольные demarcated bands на calzada для определенных транспортных средств. Если билет показывает поворот через carril exclusivo, смотрите horario de restricción: вне restricted hours answer может измениться, но в рабочее время такой carril нельзя просто invadir.",
+        "Carril de aceleración - полоса, через которую incorporarse a una autopista. Для egresar с autopista используется carril de desaceleración, а если его нет - заблаговременное приближение через carril derecho. В `b-fallback-358` формулировка про serious failure остается ticket-specific: правильный fallback-ответ - уйти вправо и abandonar la autopista en la próxima salida.",
+        "Билеты `b-fallback-148` и `b-fallback-165` остаются dual-topic: здесь они про перестроение, а соседний right-of-way topic еще planned. Билеты с carriles exclusivos и markings тоже promoted только в этом topic; marking-side placement остается planned."
+      ],
+      "practicalReasoningRu": [
+        "Перестроение безопасно только когда оно предсказуемо: остальные водители должны увидеть намерение и иметь место, но водитель в целевой полосе не обязан внезапно исчезать.",
+        "Стабильное движение по центру полосы уменьшает боковые конфликты. Поэтому экзамен наказывает варианты, где водитель ускоряется, сигналит или занимает любой carril независимо от ситуации.",
+        "Отдельные полосы для ускорения, замедления и exclusive use делают поток читаемым: одни машины входят, другие выходят, а public/authorized transport не смешивается с обычным потоком там, где это запрещено."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-cambio-carril",
+          "termEs": "cambio de carril",
+          "translationRu": "перестроение, смена полосы",
+          "sourceQuestionIds": [
+            "b-fallback-148"
+          ]
+        },
+        {
+          "id": "term-carril-pretende-ocupar",
+          "termEs": "carril que se pretende ocupar",
+          "translationRu": "полоса, которую собираются занять",
+          "sourceQuestionIds": [
+            "b-fallback-148"
+          ]
+        },
+        {
+          "id": "term-senalice-maniobra",
+          "termEs": "señalice la maniobra",
+          "translationRu": "обозначит маневр",
+          "sourceQuestionIds": [
+            "b-fallback-223"
+          ]
+        },
+        {
+          "id": "term-carriles-exclusivos",
+          "termEs": "carriles exclusivos",
+          "translationRu": "выделенные/эксклюзивные полосы",
+          "sourceQuestionIds": [
+            "b-fallback-223",
+            "b-fallback-302"
+          ]
+        },
+        {
+          "id": "term-horario-restriccion",
+          "termEs": "horario de restricción",
+          "translationRu": "время действия ограничения",
+          "sourceQuestionIds": [
+            "b-fallback-223"
+          ]
+        },
+        {
+          "id": "term-bandas-longitudinales-demarcadas",
+          "termEs": "Bandas longitudinales demarcadas en la calzada",
+          "translationRu": "продольные полосы, размеченные на проезжей части",
+          "sourceQuestionIds": [
+            "b-fallback-302"
+          ]
+        },
+        {
+          "id": "term-carril-derecho",
+          "termEs": "carril derecho",
+          "translationRu": "правая полоса",
+          "sourceQuestionIds": [
+            "b-fallback-325",
+            "b-fallback-336",
+            "b-fallback-358"
+          ]
+        },
+        {
+          "id": "term-carril-aceleracion",
+          "termEs": "carril de aceleración",
+          "translationRu": "полоса разгона / полоса въезда",
+          "sourceQuestionIds": [
+            "b-fallback-336"
+          ]
+        },
+        {
+          "id": "term-incorporacion-autopista",
+          "termEs": "carril de incorporación a una autopista",
+          "translationRu": "полоса для въезда на автомагистраль",
+          "sourceQuestionIds": [
+            "b-fallback-336"
+          ]
+        },
+        {
+          "id": "term-carril-desaceleracion",
+          "termEs": "carril de desaceleración",
+          "translationRu": "полоса замедления / съезда",
+          "sourceQuestionIds": [
+            "b-fallback-358"
+          ]
+        },
+        {
+          "id": "term-proxima-salida",
+          "termEs": "próxima salida",
+          "translationRu": "ближайший съезд",
+          "sourceQuestionIds": [
+            "b-fallback-358"
+          ]
+        },
+        {
+          "id": "term-reducir-velocidad",
+          "termEs": "Reducir la velocidad",
+          "translationRu": "снизить скорость",
+          "sourceQuestionIds": [
+            "b-fallback-325"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-148",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-148-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: при cambio de carril приоритет у автомобиля, который уже circula por el carril que se pretende ocupar. Меняющий полосу должен найти безопасный gap."
+            },
+            {
+              "answerId": "b-fallback-148-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Сам факт намерения перестроиться не дает приоритета. Señalizar предупреждает, но не заставляет занятый carril уступить место."
+            },
+            {
+              "answerId": "b-fallback-148-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Carril más lento - лишний критерий. Вопрос спрашивает не скорость полосы, а кто уже находится в полосе, которую хотят занять."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b114.jpg"
+        },
+        {
+          "questionId": "b-fallback-165",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-165-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Vehículo A хочет cambiar de carril, значит именно он выполняет маневр и должен уступить потоку в целевой полосе."
+            },
+            {
+              "answerId": "b-fallback-165-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: vehículo B уже находится справа в полосе, которую A собирается занять, поэтому A не должен навязывать перестроение."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b113.jpg"
+        },
+        {
+          "questionId": "b-fallback-223",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-223-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Señalizar la maniobra con anticipación необходимо, но этого недостаточно, если для поворота пришлось бы invadir carriles exclusivos во время ограничения."
+            },
+            {
+              "answerId": "b-fallback-223-a2",
+              "verdict": "incorrect",
+              "explanationRu": "No absoluto неверно для формулировки билета: ответ зависит от horario de restricción de los carriles exclusivos, а не от постоянного запрета на любой поворот."
+            },
+            {
+              "answerId": "b-fallback-223-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: можно только fuera del horario de restricción de los carriles exclusivos; в restricted hours такой маневр нарушил бы exclusive lane."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b30.jpg"
+        },
+        {
+          "questionId": "b-fallback-302",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-302-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Un único sentido de circulación описывает направление дороги, но не смысл carril exclusivo."
+            },
+            {
+              "answerId": "b-fallback-302-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: carriles exclusivos - это bandas longitudinales demarcadas en la calzada, destinadas a determinados vehículos."
+            },
+            {
+              "answerId": "b-fallback-302-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Ambulancias, bomberos и policía могут иметь emergency rules, но carril exclusivo не означает место для них в cumplimiento o no de sus funciones."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-325",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-325-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Aumentar la velocidad ухудшает конфликт: B закрывает A путь возвращения и создает риск вместо предсказуемого движения."
+            },
+            {
+              "answerId": "b-fallback-325-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: B должен reducir la velocidad para facilitarle el retorno al carril, потому что A возвращается вправо из-за опасности впереди."
+            },
+            {
+              "answerId": "b-fallback-325-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Bocina и guiño de luces не решают опасность и не дают B права блокировать безопасный retorno al carril."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b116.jpg"
+        },
+        {
+          "questionId": "b-fallback-336",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-336-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: carril de aceleración - это carril de incorporación a una autopista, где водитель набирает скорость и входит в поток без помех."
+            },
+            {
+              "answerId": "b-fallback-336-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Carril derecho de una autopista - обычная правая полоса движения, а не обязательно полоса разгона для въезда."
+            },
+            {
+              "answerId": "b-fallback-336-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Carril izquierdo de una autopista связан с adelantamiento/maximum speed context, но не с incorporación."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-358",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-358-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Carril de desaceleración не предназначен для медленного продолжения движения по autopista; он нужен для egresar/salida."
+            },
+            {
+              "answerId": "b-fallback-358-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: если falla grave еще позволяет ехать, надо уйти в carril derecho и в próxima salida abandonar la autopista, чтобы не оставаться риском в потоке."
+            },
+            {
+              "answerId": "b-fallback-358-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Continuar a baja velocidad en cualquier carril неверно: медленная неисправная машина должна как можно безопаснее уйти вправо и съехать."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-signal-is-not-priority",
+          "textRu": "Señalizar не равно получить priority. Если вы меняете carril, машина в целевой полосе не становится второстепенной.",
+          "sourceQuestionIds": [
+            "b-fallback-148",
+            "b-fallback-165",
+            "b-fallback-223"
+          ]
+        },
+        {
+          "id": "trap-exclusive-lane-time-window",
+          "textRu": "В carriles exclusivos смотрите horario de restricción. Вариант `no` может быть слишком абсолютным, если билет добавляет `fuera del horario`.",
+          "sourceQuestionIds": [
+            "b-fallback-223"
+          ]
+        },
+        {
+          "id": "trap-acceleration-vs-deceleration",
+          "textRu": "Aceleración = incorporación на autopista; desaceleración = выход/salida. Не путайте эти полосы с обычным carril derecho.",
+          "sourceQuestionIds": [
+            "b-fallback-336",
+            "b-fallback-358"
+          ]
+        },
+        {
+          "id": "trap-help-return-do-not-block",
+          "textRu": "Если другой автомобиль возвращается вправо из-за peligro, экзаменационная логика - facilitar el retorno, а не ускоряться или сигналить.",
+          "sourceQuestionIds": [
+            "b-fallback-325"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-lane-change-warning-and-lane-position",
+          "textRu": "На многополосных arterias/autopistas водитель должен стараться оставаться в своем carril, ехать по центру полосы и заранее предупреждать cambio de carril luz de giro.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "lane-choice-lane-change-warning-and-position"
+        },
+        {
+          "id": "claim-exclusive-lanes-and-markings",
+          "textRu": "Carril exclusivo обозначается demarcación/señalización и резервирует одну или несколько полос для determinados vehículos; обычные водители должны соблюдать такие полосы и их режим работы.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "lane-choice-exclusive-lanes-and-markings"
+        },
+        {
+          "id": "claim-acceleration-deceleration-and-autopista-exit",
+          "textRu": "Carril de aceleración используется для incorporación; для egresar с autopista применяется carril de desaceleración или, если его нет, правый carril с заблаговременным перестроением; для vehículos remolcados источник отдельно требует abandonar la vía en la primera salida.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "lane-choice-acceleration-deceleration-and-exit"
+        }
+      ]
     }
   ]
 }
