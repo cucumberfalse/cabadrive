@@ -63,12 +63,12 @@
 
 ## Future Slice D2: Per-Placement Readiness Schema Prerequisite
 
-- [ ] T044 Extend coverage assignments so readiness may be tracked per topic placement, not only per assignment row; a compatible design may add optional `topicPhases` or `placementPhases` keyed by `topicId` while preserving row-level `phase` as fallback for existing data.
-- [ ] T045 Update topic-guide validation so all `topicIds` continue to count for planned global coverage and maximum-two-topic checks, regardless of per-placement readiness.
-- [ ] T046 Update rendered-content validation so guide topic ticket blocks and answer explanations are required only for placements whose effective per-topic phase is `content_ready` or `published`.
-- [ ] T047 Update published validation so it fails when any placement remains effectively `planned`, including placements represented only through row-level fallback.
-- [ ] T048 Add regression tests covering a dual-assigned speed-limit ticket where the `speed-limits` placement is content-ready but the `road-types-highways-and-routes` placement remains planned.
-- [ ] T049 Record schema compatibility, migration/fallback behavior, validator evidence, and any placement-phase edge cases in this process memory before Slice E content PRs proceed.
+- [x] T044 Extend coverage assignments so readiness may be tracked per topic placement, not only per assignment row; a compatible design may add optional `topicPhases` or `placementPhases` keyed by `topicId` while preserving row-level `phase` as fallback for existing data.
+- [x] T045 Update topic-guide validation so all `topicIds` continue to count for planned global coverage and maximum-two-topic checks, regardless of per-placement readiness.
+- [x] T046 Update rendered-content validation so guide topic ticket blocks and answer explanations are required only for placements whose effective per-topic phase is `content_ready` or `published`.
+- [x] T047 Update published validation so it fails when any placement remains effectively `planned`, including placements represented only through row-level fallback.
+- [x] T048 Add regression tests covering a dual-assigned speed-limit ticket where the `speed-limits` placement is content-ready but the `road-types-highways-and-routes` placement remains planned.
+- [x] T049 Record schema compatibility, migration/fallback behavior, validator evidence, and any placement-phase edge cases in this process memory before Slice E content PRs proceed.
 
 ## Future Slice E: Topic Content Slices
 
@@ -273,6 +273,18 @@
 - Slice D PR #15 Ley 24.449 currentness follow-up verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
 - Slice D PR #15 Ley 24.449 currentness follow-up verification: `git diff --check origin/main...HEAD` passed with no output.
 - Slice D PR #15 Ley 24.449 currentness follow-up verification: `pnpm run preflight` passed; repository baseline, content validation, 69 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice D2 worktree orientation: `pwd && git status --short --branch` reported `/Users/chap/devel/cabadrive/.claude/worktrees/006-topic-placement-phase-schema` and `## codex/006-topic-placement-phase-schema...origin/main [ahead 1]` before implementation edits.
+- Slice D2 required memory read: `AGENTS.md`, active feature memory `spec.md`, `plan.md`, and `tasks.md`, plus `scripts/content-topic-guide.mjs`, `tests/content-topic-guide.test.mjs`, `content/guide/topic-study-guide.coverage.json`, and `content/guide/topic-study-guide.ru.json`.
+- Slice D2 implemented assignment-level `placementPhases` as the per-placement readiness schema. When absent, the existing row-level `phase` or legacy `status` fallback still determines every placement in the assignment row, preserving current coverage data compatibility. When present, `placementPhases` keys must exactly match the row `topicIds`, and every value must be `planned`, `content_ready`, or `published`.
+- Slice D2 validator behavior: every `topicIds` value still counts for baseline coverage and the maximum-two-topic assignment limit, while rendered guide/content comparison now uses only placements whose effective phase is `content_ready` or `published`. Published validation now fails if any effective placement phase remains `planned`, including planned placements inside otherwise published/content-ready dual-topic rows.
+- Slice D2 coverage manifest note: `content/guide/topic-study-guide.coverage.json` documents the `placementPhases` override model in `assignmentPhaseModel` and keeps the current baseline on row-level phases because no current dual-topic content placement is ready yet.
+- Slice D2 targeted validator evidence: `node --test tests/content-topic-guide.test.mjs` passed 21 tests covering the current manifest, row-level fallback behavior, dual-assignment per-placement rendering, invalid `placementPhases` values and keys, and published rejection of planned placements.
+- Slice D2 content-validation evidence: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice D2 test evidence: `pnpm run test` passed 72 Node tests.
+- Slice D2 diff hygiene evidence: `git diff --check` passed with no output.
+- Slice D2 preflight note: an initial `pnpm run preflight` before this process-memory update failed at `scripts/check-feature-memory.mjs --worktree` because product paths had changed without touching `specs/006-topic-study-guide/tasks.md`; this process-memory update resolves that expected workflow gate before final preflight.
+- Slice D2 environment note: this isolated worktree had no `node_modules`, so `pnpm install` was run after the first preflight gate failure. The lockfile was already up to date and no tracked dependency files changed.
+- Slice D2 final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 
 ### Implementation Agent Feedback
 
@@ -280,6 +292,7 @@
 - Slice B: none requiring Architect disposition.
 - Slice C: none requiring Architect disposition.
 - Slice D: topic slices that need Decreto 779 annex-specific claims, especially signage/technical vehicle material, should archive those annexes as separate manifest entries rather than citing only the main Decreto 779 page. The optional GCBA four-wheel manual PDF also needs a separate PDF conversion/evidence slice if topic content will cite manual-only claims.
+- Slice D2: none requiring Architect disposition.
 
 ### Architect Dispositions
 
