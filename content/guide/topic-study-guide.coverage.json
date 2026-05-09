@@ -377,9 +377,9 @@
       "titleRu": "Устойчивая мобильность и уязвимые участники",
       "categoryId": "urban-mobility",
       "splitCriteria": "Movilidad sustentable, экологичные способы перемещения, иерархия уязвимости и общие принципы городской мобильности.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E15"
     }
   ],
   "assignments": [
@@ -1615,8 +1615,8 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E15"
     },
     {
       "questionId": "b-fallback-133",
@@ -3019,8 +3019,8 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E15"
     },
     {
       "questionId": "b-fallback-286",
@@ -3806,8 +3806,8 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E15"
     },
     {
       "questionId": "b-fallback-369",
@@ -3836,8 +3836,8 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E15"
     },
     {
       "questionId": "b-fallback-372",
@@ -4373,8 +4373,8 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E15"
     },
     {
       "questionId": "b-fallback-428",

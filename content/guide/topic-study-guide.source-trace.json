@@ -1134,6 +1134,61 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current/in_force",
       "notes": "Supports terminal/parada distinction and narrow school ascenso/descenso explanation. It does not generalize b-fallback-230 into all public-transport stop markings."
+    },
+    {
+      "id": "sustainable-mobility-public-bicycle-purpose",
+      "topicId": "sustainable-mobility-and-vulnerable-users",
+      "claimId": "claim-public-bicycle-sustainable-purpose",
+      "claimSummaryRu": "Ley 2148 frames the public bicycle system as healthy, environmentally respectful, alternative/complementary transport that reduces traffic congestion and discourages private automobile use.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "14.1.2 Objetivo",
+        "14.1.3 Criterios generales",
+        "14.2.1 Características del sistema",
+        "14.4.2 Sistema de red de carriles",
+        "14.7.1 Incorporación de Sistemas de Movilidad Sustentable Complementarios"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports compact sustainable-mobility framing and the bicycle-benefits context for b-fallback-368. The exact image option remains ticket-specific."
+    },
+    {
+      "id": "sustainable-mobility-metrobus-private-car-discouragement",
+      "topicId": "sustainable-mobility-and-vulnerable-users",
+      "claimId": "claim-metrobus-private-car-discouragement",
+      "claimSummaryRu": "Ley 2148 defines Metrobus as integrated mass public passenger transport with objectives including environmental protection, transport priority, reduced travel time and discouraging private automobile use.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Definiciones: Metrobus",
+        "15.1.1 Integración del sistema",
+        "15.1.2 Objetivos del sistema"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports only generalized Metrobus/public-transport purpose prose. Image comparisons in b-fallback-285 and b-fallback-427 remain tied to the ticket photos."
+    },
+    {
+      "id": "sustainable-mobility-exclusive-lane-reserved-use",
+      "topicId": "sustainable-mobility-and-vulnerable-users",
+      "claimId": "claim-exclusive-lane-ticket-boundary",
+      "claimSummaryRu": "Ley 2148 and Anexo L support exclusive lanes as reserved/authorized circulation spaces; unauthorized circulation in Metrobus exclusive lanes is sanctionable/retention context in CABA.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 5.6.1 Retención preventiva, punto 11",
+        "Ley 2148 6.1.6 Comportamiento durante la circulación",
+        "Anexo L R.18 Circulación exclusiva",
+        "Anexo L H.2 Línea de carril"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Reuses existing archived exclusive-lane support for the narrow b-fallback-132 taxi/moto boundary; no neighboring public-transport placement is promoted."
     }
   ]
 }
