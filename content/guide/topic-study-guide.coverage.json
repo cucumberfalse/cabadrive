@@ -260,9 +260,9 @@
       "titleRu": "Велосипеды, велополосы и микромобильность",
       "categoryId": "vulnerable-users",
       "splitCriteria": "Bicicleta, ciclovía, bicisenda, ciclorodado, asistencia eléctrica, пассажиры и груз на велосипеде.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "E-bicycles-micromobility"
     },
     {
       "topicId": "public-transport-and-exclusive-lanes",
@@ -453,7 +453,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },
@@ -740,7 +740,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },
@@ -1050,7 +1050,11 @@
         "bicycles-and-micromobility"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C",
+      "placementPhases": {
+        "fatigue-distraction-and-attention": "planned",
+        "bicycles-and-micromobility": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-070",
@@ -1301,7 +1305,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "vulnerable-users-and-shared-spaces": "content_ready"
       }
     },
@@ -1698,7 +1702,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },
@@ -1715,8 +1719,8 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-bicycles-micromobility"
     },
     {
       "questionId": "b-fallback-139",
@@ -1740,7 +1744,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "vulnerable-users-and-shared-spaces": "content_ready"
       }
     },
@@ -1761,7 +1765,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "vulnerable-users-and-shared-spaces": "content_ready"
       }
     },
@@ -1957,8 +1961,8 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-bicycles-micromobility"
     },
     {
       "questionId": "b-fallback-163",
@@ -2011,7 +2015,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },
@@ -2024,7 +2028,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "vulnerable-users-and-shared-spaces": "content_ready"
       }
     },
@@ -2222,7 +2226,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "vulnerable-users-and-shared-spaces": "content_ready"
       }
     },
@@ -2609,8 +2613,8 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-bicycles-micromobility"
     },
     {
       "questionId": "b-fallback-229",
@@ -3106,8 +3110,8 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-bicycles-micromobility"
     },
     {
       "questionId": "b-fallback-281",
@@ -3143,8 +3147,8 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-bicycles-micromobility"
     },
     {
       "questionId": "b-fallback-285",
@@ -3248,7 +3252,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },
@@ -3675,7 +3679,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },
@@ -3821,8 +3825,8 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-bicycles-micromobility"
     },
     {
       "questionId": "b-fallback-353",
@@ -3839,7 +3843,11 @@
         "bicycles-and-micromobility"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C",
+      "placementPhases": {
+        "fatigue-distraction-and-attention": "planned",
+        "bicycles-and-micromobility": "content_ready"
+      }
     },
     {
       "questionId": "b-fallback-355",
@@ -3964,8 +3972,8 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-bicycles-micromobility"
     },
     {
       "questionId": "b-fallback-367",
@@ -4044,7 +4052,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },
@@ -4566,7 +4574,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "vulnerable-users-and-shared-spaces": "content_ready"
       }
     },
@@ -4579,7 +4587,7 @@
       "phase": "planned",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "vulnerable-users-and-shared-spaces": "content_ready"
       }
     },
@@ -4894,7 +4902,7 @@
       "phase": "planned",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "planned",
+        "bicycles-and-micromobility": "content_ready",
         "pedestrian-school-zones-and-markings": "content_ready"
       }
     },

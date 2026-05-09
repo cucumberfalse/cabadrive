@@ -15351,6 +15351,872 @@
       ]
     },
     {
+      "id": "bicycles-and-micromobility",
+      "slug": "bicycles-and-micromobility",
+      "status": "draft",
+      "titleRu": "Велосипеды, ciclorodados и микромобильность",
+      "summaryRu": "Блок про bicisenda/ciclovía, ciclorrodados, DMP, движение велосипедистов, приоритет около велоинфраструктуры, парковку, груз, возраст и скорость assisted bike.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. Испанский текст билета остается главным; русские объяснения помогают быстро отличить bicicleta, ciclorodado, DMP и похожие картинки.",
+        "Bicicleta в Ley 2148 - это вид ciclorrodado. В билетах ciclorodado/ciclorrodado может означать обычную bicicleta или вариант con pedaleo asistido eléctricamente; если вопрос добавляет asistencia eléctrica, сразу ищите лимит 25 km/h и условия помощи мотора.",
+        "Bicisenda и ciclovía различаются местом. Bicisenda связана с vereda/acera или espacios verdes; ciclovía находится на calzada и отделена физически или demarcación horizontal. Ciclocarril в официальном источнике - тоже calzada, но с preferencia, а не с exclusive separation; в этом slice он нужен как фон к правилу движения, а не как отдельный ticket answer.",
+        "Если ciclista mayor de 12 años едет там, где есть bicisenda/ciclovía/ciclocarril, билетная логика отправляет его туда. Если такой инфраструктуры нет, он едет ближе к правому краю или избегает центральной зоны calzada. На autopistas, vías rápidas и перечисленных крупных arterias ciclorrodados запрещены.",
+        "DMP/dispositivos de movilidad personal в Ley 2148 во многом идут по правилам ciclorrodados: для них также важны разрешенные arterias, инфраструктура, casco/parking logic и общий лимит 25 km/h. Но в этом topic DMP упоминаются только там, где это помогает отличить определения ciclovía/bicisenda/ciclocarril.",
+        "Приоритет велосипедиста не абсолютный. В `b-fallback-186` правильный ответ возникает потому, что automotor gira a derecha para ingresar a otra arteria и пересекает путь ciclista; вариант “siempre tiene prioridad” слишком широкий.",
+        "Для безопасности велосипедиста билет проверяет концентрацию, видимость одежды и устойчивость. Auriculares/dispositivos electrónicos, ropa oscura y suelta и плохо закрепленная carga опасны потому, что уменьшают контроль, обзор и предсказуемость движения.",
+        "Парковка и маркировка имеют отдельные ловушки: cordón anaranjado - estacionamiento exclusivo de ciclorodados y motovehículos; estacionamiento de bicicleta в shown parking lot из `b-fallback-228` держим как ticket wording, поддерживая его только общей official рамкой про red/espacios de estacionamiento для ciclorodados."
+      ],
+      "practicalReasoningRu": [
+        "Велосипедная инфраструктура снижает число конфликтов: водитель заранее видит, где ждать ciclistas/DMP, а ciclista не вынужден смешиваться с самым быстрым потоком.",
+        "Правый край и запрет autopistas для велосипеда - про разницу скоростей и защиту участника без кузова. Там, где скорость потока высокая, маленькая ошибка становится слишком тяжелой.",
+        "Оранжевые/зеленые/красные цветовые подсказки в билетах не взаимозаменяемы: зеленое часто про bicycle crossing, оранжевый cordón про parking ciclorodados/motovehículos, красный cruce в assigned ticket - Metrobus, not bicycles."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-cruce-verde-intersecciones",
+          "termEs": "cruce verde",
+          "translationRu": "зеленое пересечение/зеленая разметка перехода велоинфраструктуры",
+          "sourceQuestionIds": [
+            "b-fallback-008"
+          ]
+        },
+        {
+          "id": "term-ciclovia-o-bicisenda",
+          "termEs": "ciclovía o bicisenda",
+          "translationRu": "велополоса/велодорожка или bicisenda",
+          "sourceQuestionIds": [
+            "b-fallback-008",
+            "b-fallback-294"
+          ]
+        },
+        {
+          "id": "term-bicisendas",
+          "termEs": "bicisendas",
+          "translationRu": "велопространства на тротуаре/в зеленой зоне",
+          "sourceQuestionIds": [
+            "b-fallback-037",
+            "b-fallback-142",
+            "b-fallback-373"
+          ]
+        },
+        {
+          "id": "term-ciclovias",
+          "termEs": "ciclovías",
+          "translationRu": "велополосы/велодорожки на calzada",
+          "sourceQuestionIds": [
+            "b-fallback-037",
+            "b-fallback-142",
+            "b-fallback-373"
+          ]
+        },
+        {
+          "id": "term-vereda",
+          "termEs": "vereda",
+          "translationRu": "тротуар",
+          "sourceQuestionIds": [
+            "b-fallback-037",
+            "b-fallback-458"
+          ]
+        },
+        {
+          "id": "term-calzada",
+          "termEs": "calzada",
+          "translationRu": "проезжая часть",
+          "sourceQuestionIds": [
+            "b-fallback-037",
+            "b-fallback-136",
+            "b-fallback-337",
+            "b-fallback-373"
+          ]
+        },
+        {
+          "id": "term-circular-en-bicicleta",
+          "termEs": "circular en bicicleta",
+          "translationRu": "ехать/передвигаться на велосипеде",
+          "sourceQuestionIds": [
+            "b-fallback-069",
+            "b-fallback-284"
+          ]
+        },
+        {
+          "id": "term-auriculares-factor-distraccion",
+          "termEs": "auriculares",
+          "translationRu": "наушники",
+          "sourceQuestionIds": [
+            "b-fallback-069",
+            "b-fallback-354"
+          ]
+        },
+        {
+          "id": "term-ciclorodado-pedaleo-asistido",
+          "termEs": "ciclorodado con pedaleo asistido eléctricamente",
+          "translationRu": "велосипед/циклородадо с электрической поддержкой педалирования",
+          "sourceQuestionIds": [
+            "b-fallback-094"
+          ]
+        },
+        {
+          "id": "term-25-kmh-bicycles",
+          "termEs": "25 km/h",
+          "translationRu": "25 км/ч",
+          "sourceQuestionIds": [
+            "b-fallback-094",
+            "b-fallback-425"
+          ]
+        },
+        {
+          "id": "term-cerca-borde-derecho",
+          "termEs": "cerca del borde derecho de la calzada",
+          "translationRu": "близко к правому краю проезжей части",
+          "sourceQuestionIds": [
+            "b-fallback-136",
+            "b-fallback-373"
+          ]
+        },
+        {
+          "id": "term-cruce-de-metrobús",
+          "termEs": "Cruce de Metrobús",
+          "translationRu": "пересечение Metrobus",
+          "sourceQuestionIds": [
+            "b-fallback-138"
+          ]
+        },
+        {
+          "id": "term-cruce-de-bicicletas",
+          "termEs": "Cruce de bicicletas",
+          "translationRu": "велосипедное пересечение",
+          "sourceQuestionIds": [
+            "b-fallback-138"
+          ]
+        },
+        {
+          "id": "term-descender-bicicleta",
+          "termEs": "descender de la bicicleta",
+          "translationRu": "слезть с велосипеда",
+          "sourceQuestionIds": [
+            "b-fallback-140"
+          ]
+        },
+        {
+          "id": "term-ambas-respuestas",
+          "termEs": "Ambas respuestas",
+          "translationRu": "оба ответа верны",
+          "sourceQuestionIds": [
+            "b-fallback-142",
+            "b-fallback-458"
+          ]
+        },
+        {
+          "id": "term-motocicletas-ciclomotores",
+          "termEs": "motocicletas y ciclomotores",
+          "translationRu": "мотоциклы и мопеды/циклмоторы",
+          "sourceQuestionIds": [
+            "b-fallback-162"
+          ]
+        },
+        {
+          "id": "term-calle-prioridad-peaton",
+          "termEs": "Calle Prioridad Peatón",
+          "translationRu": "улица с приоритетом пешехода",
+          "sourceQuestionIds": [
+            "b-fallback-167"
+          ]
+        },
+        {
+          "id": "term-calle-con-bicisenda",
+          "termEs": "Calle con Bicisenda",
+          "translationRu": "улица с bicisenda",
+          "sourceQuestionIds": [
+            "b-fallback-167"
+          ]
+        },
+        {
+          "id": "term-prioridad-de-paso",
+          "termEs": "prioridad de paso",
+          "translationRu": "приоритет проезда",
+          "sourceQuestionIds": [
+            "b-fallback-186"
+          ]
+        },
+        {
+          "id": "term-giro-a-derecha",
+          "termEs": "giro a la derecha",
+          "translationRu": "поворот направо",
+          "sourceQuestionIds": [
+            "b-fallback-186"
+          ]
+        },
+        {
+          "id": "term-estacionar-bicicleta",
+          "termEs": "estacionar una bicicleta",
+          "translationRu": "припарковать велосипед",
+          "sourceQuestionIds": [
+            "b-fallback-228"
+          ]
+        },
+        {
+          "id": "term-estacionamiento-exclusivo-ciclorodados",
+          "termEs": "estacionamiento exclusivo de ciclorodados",
+          "translationRu": "эксклюзивная парковка для ciclorodados",
+          "sourceQuestionIds": [
+            "b-fallback-280"
+          ]
+        },
+        {
+          "id": "term-dispositivos-movilidad-personal",
+          "termEs": "dispositivos de movilidad personal",
+          "translationRu": "устройства персональной мобильности / DMP",
+          "sourceQuestionIds": [
+            "b-fallback-337"
+          ]
+        },
+        {
+          "id": "term-vehiculos-motorizados",
+          "termEs": "vehículos motorizados",
+          "translationRu": "моторизованные транспортные средства",
+          "sourceQuestionIds": [
+            "b-fallback-352"
+          ]
+        },
+        {
+          "id": "term-ropa-oscura-suelta",
+          "termEs": "ropa oscura y suelta",
+          "translationRu": "темная и свободная одежда",
+          "sourceQuestionIds": [
+            "b-fallback-354"
+          ]
+        },
+        {
+          "id": "term-carga-bicicleta",
+          "termEs": "carga en una bicicleta",
+          "translationRu": "груз на велосипеде",
+          "sourceQuestionIds": [
+            "b-fallback-366"
+          ]
+        },
+        {
+          "id": "term-firmemente-asegurada",
+          "termEs": "firmemente asegurada",
+          "translationRu": "надежно закреплена",
+          "sourceQuestionIds": [
+            "b-fallback-366"
+          ]
+        },
+        {
+          "id": "term-menor-12",
+          "termEs": "menor de 12 años",
+          "translationRu": "ребенок младше 12 лет",
+          "sourceQuestionIds": [
+            "b-fallback-458"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-008",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-008-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: зеленое пересечение предупреждает водителя о punto de cruce de ciclovía o bicisenda. Для экзамена это bicycle-crossing cue, а не школа и не плохое освещение."
+            },
+            {
+              "answerId": "b-fallback-008-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: establecimiento escolar cercano обычно проверяется другими school-zone знаками/разметкой. Здесь ключевое слово и цветовая подсказка связаны с ciclovía/bicisenda."
+            },
+            {
+              "answerId": "b-fallback-008-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: cruce peligroso por poca iluminación не объясняет зеленую demarcación. В этом билете зеленый crossing не про lighting, а про велоинфраструктуру."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b39.jpg"
+        },
+        {
+          "questionId": "b-fallback-037",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-037-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: вариант путает критерий exclusive/preferential с главным отличием, которое спрашивает билет. В assigned wording различие проверяется по месту расположения."
+            },
+            {
+              "answerId": "b-fallback-037-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно ровно наоборот: bicisenda не на calzada, а ciclovía не на vereda. Это классическая перестановка терминов."
+            },
+            {
+              "answerId": "b-fallback-037-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: bicisenda se encuentra sobre la vereda, а ciclovía sobre la calzada. Ley 2148 поддерживает эту границу через определения bicisenda/ciclovía."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-069",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-069-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: изображение с auriculares не считается conducción correcta. На велосипеде тоже нужна atención permanente к тому, что происходит вокруг."
+            },
+            {
+              "answerId": "b-fallback-069-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: auriculares - factor de distracción, они ухудшают связь с окружением. Это согласуется с общей official логикой запрета/опасности отвлекающих устройств для водителей."
+            },
+            {
+              "answerId": "b-fallback-069-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: даже если есть другие medidas de seguridad, auriculares не улучшают безопасность поездки. Билет проверяет именно концентрацию, а не комфорт."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b6.jpg"
+        },
+        {
+          "questionId": "b-fallback-094",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-094-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: ciclorodado con pedaleo asistido eléctricamente не запрещен сам по себе. Запретный ответ слишком широкий."
+            },
+            {
+              "answerId": "b-fallback-094-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback-билету: можно, если asistencia eléctrica уменьшается и прекращается при 25 km/h. Ley 2148 поддерживает общий лимит 25 km/h; exact progressive cutoff оставлен как wording билета."
+            },
+            {
+              "answerId": "b-fallback-094-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: велосипедная инфраструктура как раз предназначена для ciclorodados/DMP при соблюдении условий. Формула “только где нет ciclovías” противоречит логике вопроса."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b16.jpg"
+        },
+        {
+          "questionId": "b-fallback-136",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-136-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: ciclistas не ограничены только ciclovías/bicisendas. Если инфраструктуры нет, Ley 2148 и ticket wording допускают движение по calzada с правильным позиционированием."
+            },
+            {
+              "answerId": "b-fallback-136-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: cerca del borde derecho de la calzada. Для улицы без нужной велоинфраструктуры это практическая экзаменационная формула “не в центр потока”."
+            },
+            {
+              "answerId": "b-fallback-136-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: borde izquierdo не является обычным положением велосипедиста в этой ситуации. Вариант меняет сторону и делает движение менее предсказуемым для потока."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b11.jpg"
+        },
+        {
+          "questionId": "b-fallback-138",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-138-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по изображению билета: красная demarcación corresponde a Cruce de Metrobús. Это image-specific mapping, не велосипедная зеленая demarcación."
+            },
+            {
+              "answerId": "b-fallback-138-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: cruce exclusivo de vehículos de emergencia не соответствует показанной разметке в этом fallback-билете."
+            },
+            {
+              "answerId": "b-fallback-138-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: cruce de bicicletas - отвлекающий вариант для bike topic. В assigned image велосипедный crossing не тот; зеленые bicycle markings проверяются в других билетах."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b28.jpg"
+        },
+        {
+          "questionId": "b-fallback-140",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-140-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: знак не говорит, что дальше можно ехать только на велосипеде. Такой ответ путает obligation для ciclista с началом разрешенного bike corridor."
+            },
+            {
+              "answerId": "b-fallback-140-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по exact image mapping fallback-билета: señal indica al ciclista que es obligatorio descender de la bicicleta. Это не обобщается до полного official каталога знаков."
+            },
+            {
+              "answerId": "b-fallback-140-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: comienza una ciclovía - другая идея. Здесь правильный смысл не “начало велодорожки”, а “слезть с велосипеда”."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b254.jpg"
+        },
+        {
+          "questionId": "b-fallback-142",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-142-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неполно: движение по bicisendas/ciclovías там, где они есть, верно по смыслу, но билет спрашивает полный набор разрешенных мест."
+            },
+            {
+              "answerId": "b-fallback-142-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Тоже неполно: правило про sector derecho de la calzada без ciclovías важно, но оно не покрывает tramos donde hay bicisendas y ciclovías."
+            },
+            {
+              "answerId": "b-fallback-142-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas. Для mayores de 12 años билет объединяет движение по bike infrastructure там, где она есть, и по правому/нецентральному сектору calzada там, где ее нет, кроме autopistas y otras vías rápidas."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-162",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-162-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: знак не запрещает motocicletas y ciclomotores использовать carril. Вариант переворачивает смысл exclusivity."
+            },
+            {
+              "answerId": "b-fallback-162-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по изображению билета: carril es de uso exclusivo para motocicletas y ciclomotores. Это не велосипедный exclusive lane."
+            },
+            {
+              "answerId": "b-fallback-162-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: “uso exclusivo para bicicletas” - ловушка bike topic. На картинке/вариантах правильная категория относится к motovehículos, не bicycles."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b257.jpg"
+        },
+        {
+          "questionId": "b-fallback-167",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-167-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно по картинке билета: Calle Prioridad Peatón. Это соседняя urban design тема, но не Calle con Bicisenda."
+            },
+            {
+              "answerId": "b-fallback-167-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: Calle con Intervención Peatonal - другой визуальный тип. Не выбирайте его только потому, что пространство выглядит calmer/slower."
+            },
+            {
+              "answerId": "b-fallback-167-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: Calle con Bicisenda - отвлекающий вариант. В этой картинке не нужно угадывать bike infrastructure, правильный label про prioridad peatón."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b33.jpg"
+        },
+        {
+          "questionId": "b-fallback-168",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-168-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Opción A показывает ciclovía в логике этого image-choice билета. Exact A/B/C mapping оставлен ticket-specific; broad source поддерживает только понятие ciclovía."
+            },
+            {
+              "answerId": "b-fallback-168-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Opción B неверна для этого билета: не та картинка ciclovía. В image-choice вопросах нельзя выбирать любой городской bike-related fragment."
+            },
+            {
+              "answerId": "b-fallback-168-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Opción C тоже не является ожидаемой ciclovía. Сначала отличайте calzada-separated bike space от других похожих сцен."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b42.jpg"
+        },
+        {
+          "questionId": "b-fallback-186",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-186-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: mano derecha не сохраняет приоритет автомобиля, когда он gira a la derecha через траекторию ciclista. Маневр поворота меняет ситуацию."
+            },
+            {
+              "answerId": "b-fallback-186-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ciclista имеет prioridad porque el automóvil pierde la prioridad al querer girar. Ley 2148 поддерживает приоритет ciclorrodados перед automotores, которые поворачивают в другую arteria."
+            },
+            {
+              "answerId": "b-fallback-186-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: “siempre tiene prioridad” слишком широко. В этом билете приоритет не абсолютный, а связан с конкретным giro del automóvil."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b95.jpg"
+        },
+        {
+          "questionId": "b-fallback-228",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-228-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: parking lot на изображении не считается exclusivo para autos y motos. Вопрос проверяет, что bicicleta не исключается из parking context."
+            },
+            {
+              "answerId": "b-fallback-228-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно для fallback-билета: вариант “sólo en algunos” делает правило слишком ограниченным. Exact obligation wording держим как ticket-specific."
+            },
+            {
+              "answerId": "b-fallback-228-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по билету: sí, los estacionamientos están obligados a destinar un espacio para bicicletas. Official source broadly supports bike/DMP parking network and designated spaces; exact parking-lot obligation remains ticket-specific unless future archive refines it."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b9.jpg"
+        },
+        {
+          "questionId": "b-fallback-280",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-280-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: orange cordón indica área reservada de estacionamiento exclusivo de ciclorodados y motovehículos. Ley 2148 прямо поддерживает cordones anaranjados для такого estacionamiento."
+            },
+            {
+              "answerId": "b-fallback-280-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: ascenso y descenso de pasajeros - другой parking/stop use case. Оранжевый cordón в этом вопросе не про пассажиров."
+            },
+            {
+              "answerId": "b-fallback-280-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: carga y descarga имеет собственную azul/azul y blanca demarcación. Не переносите cargo-zone логику на orange curb."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b80.jpg"
+        },
+        {
+          "questionId": "b-fallback-284",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-284-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: carril derecho не делает autopista/vía rápida разрешенной для велосипеда. Запрет на такую vía сильнее обычной позиции справа."
+            },
+            {
+              "answerId": "b-fallback-284-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: no, está prohibido. Ley 2148 запрещает ciclorrodados на autopistas и некоторых vías rápidas/arterias перечисленного типа."
+            },
+            {
+              "answerId": "b-fallback-284-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: соблюдение velocidad mínima не решает проблему. Для ciclorrodados сама circulation по такой vía запрещена, а не просто ограничена скоростью."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b8.jpg"
+        },
+        {
+          "questionId": "b-fallback-294",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-294-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: green horizontal marking indicates that in that intersection hay una ciclovía o bicisenda. Это тот же bicycle-crossing cue, что и green crossing logic."
+            },
+            {
+              "answerId": "b-fallback-294-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: cruce ferroviario имеет другой набор señales/markings. Зеленая demarcación в этом билете не про rail crossing."
+            },
+            {
+              "answerId": "b-fallback-294-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: cruce exclusivo de peatones - не этот знак. Велосипедная green marking отличается от pedestrian-only crossing."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b40.jpg"
+        },
+        {
+          "questionId": "b-fallback-337",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-337-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: sector señalizado con carácter preferente describe ciclocarril, not ciclovía. Вариант ловит разницу preferente vs exclusiva/separada."
+            },
+            {
+              "answerId": "b-fallback-337-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ciclovía - sector de la calzada with separation física o demarcación horizontal for circulación exclusiva de ciclorodados y DMP. Это совпадает с Ley 2148 definition."
+            },
+            {
+              "answerId": "b-fallback-337-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: sector en aceras y espacios verdes - это bicisenda, не ciclovía. Опять ключ в location: calzada vs acera/green space."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-352",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-352-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: вариант утверждает, что больше no motorizada mobility, like bicicleta, повышает siniestralidad. Это против exam framing sustainable/safe mobility."
+            },
+            {
+              "answerId": "b-fallback-352-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: уменьшение vehículos particulares не должно увеличивать risk в этой логике. Вариант переворачивает направление причинности."
+            },
+            {
+              "answerId": "b-fallback-352-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: a mayor cantidad de vehículos motorizados, mayor probabilidad de siniestralidad. Для темы это reason behind promoting safer non-motorized options, not a broad statistical claim beyond the ticket."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-354",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-354-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Сама идея верная, но как answer to this multiple-choice question неполная. Билет спрашивает qué se debe evitar and has another correct risk too."
+            },
+            {
+              "answerId": "b-fallback-354-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Тоже неполно: ropa oscura y suelta ухудшает visibility/control, но билет ожидает объединить это с auriculares/dispositivos electrónicos."
+            },
+            {
+              "answerId": "b-fallback-354-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas. На велосипеде нужно избегать и отвлекающих устройств, и одежды, которая ухудшает видимость или может мешать управлению."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-366",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-366-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: visibility alone недостаточно. Ley 2148 требует, чтобы carga была firmemente asegurada, не влияла на stability и не затрудняла conducción."
+            },
+            {
+              "answerId": "b-fallback-366-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: llevar carga en una bicicleta не запрещено полностью. Запрещается опасная/нестабильная carga, а не всякая carga."
+            },
+            {
+              "answerId": "b-fallback-366-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: cargo may be carried if firmemente asegurada, allows maneuvering and does not compromise stability. Это ровно safety logic for bicycles/ciclorodados."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-373",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-373-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: cerca del borde derecho de la calzada. Когда нет ciclovía/bicisenda, велосипедист не должен занимать central zone without need."
+            },
+            {
+              "answerId": "b-fallback-373-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: borde izquierdo - не обычная позиция в такой calle. Это ухудшает предсказуемость для других водителей."
+            },
+            {
+              "answerId": "b-fallback-373-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: ciclistas не ограничены только ciclovías/bicisendas. Билет прямо допускает circulation по calzada в правильном sector."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-425",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-425-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: assisted bike имеет специальный общий maximum, а не автоматически speed of the road/ciclovía. Вариант слишком широкий."
+            },
+            {
+              "answerId": "b-fallback-425-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: 25 km/h. Ley 2148 устанавливает límite máximo general para ciclorodados con pedaleo asistido eléctricamente: 25 km/h."
+            },
+            {
+              "answerId": "b-fallback-425-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Неверно: 30 km/h - близкое, но неправильное число. В этом topic запоминайте 25 km/h for assisted bike and DMP general maximum."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-426",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-426-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Opción A не является expected bicisenda in this fallback image question. Exact image labels remain ticket-specific; broad rule is only acera/espacio verde vs calzada."
+            },
+            {
+              "answerId": "b-fallback-426-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: Opción B shows bicisenda in the ticket. Use the location clue: bicisenda belongs on aceras/espacios verdes, not the separated calzada ciclovía."
+            },
+            {
+              "answerId": "b-fallback-426-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Opción C неверна для этого image-choice question. Не выбирайте картинку по общему city-design vibe; ищите именно bicisenda."
+            }
+          ],
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b41.jpg"
+        },
+        {
+          "questionId": "b-fallback-458",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-458-a1",
+              "verdict": "incorrect",
+              "explanationRu": "По смыслу это разрешенная часть, но answer is incomplete. Билет спрашивает options for menor de 12 años, and another option is also accepted."
+            },
+            {
+              "answerId": "b-fallback-458-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Тоже неполно: por la vereda a la menor velocidad posible is accepted in ticket logic, but not the whole answer."
+            },
+            {
+              "answerId": "b-fallback-458-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: ambas respuestas. Ley 2148 supports that menores de 12 may circulate on calzada accompanied by cyclist at least 18, and may circulate outside calzada/through bicisendas at minimum speed respecting pedestrian priority."
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-bike-definitions-and-spaces",
+          "textRu": "Ley 2148 defines bicicleta, bicisenda, ciclocarril, ciclorrodado, ciclorrodado con pedaleo asistido, ciclovía and DMP; Anexo L supports broad cyclist crossing/sign/marking context without proving every exact fallback image label.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "bicycles-micromobility-definitions-and-spaces"
+        },
+        {
+          "id": "claim-bike-circulation-age-and-priority",
+          "textRu": "Ley 2148 supports the circulation rules used here: allowed/forbidden arterias, age rules for under-12 and assisted ciclorrodados, use of ciclovías/ciclocarriles where present, non-central calzada positioning where absent, and priority over turning automotores.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "bicycles-micromobility-circulation-age-priority"
+        },
+        {
+          "id": "claim-dmp-and-assisted-speed",
+          "textRu": "Ley 2148 supports the 25 km/h general maximum for ciclorrodados con pedaleo asistido eléctricamente and DMP; progressive power-cut wording remains ticket-specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "bicycles-micromobility-assisted-dmp-speed"
+        },
+        {
+          "id": "claim-bike-safety-load-and-distraction",
+          "textRu": "Ley 2148 and Ley 24.449 support the safety framing for cargo stability, visibility/control, and avoiding auriculares or continuous manual communication systems; exact clothing wording remains fallback-ticket wording.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "bicycles-micromobility-safety-load-distraction"
+        },
+        {
+          "id": "claim-bike-parking-and-curb-color",
+          "textRu": "Ley 2148 supports orange curbs for ciclorodado/motovehicle parking, sidewalk/free designed parking spaces for ciclorodados and DMP, and a city parking network; the exact b-fallback-228 parking-lot obligation remains ticket-specific.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "bicycles-micromobility-parking-curb-color"
+        },
+        {
+          "id": "claim-bike-sustainable-risk-framing",
+          "textRu": "Ley 2148 supports the public-bicycle/safe bicycle-lane-network and education framing used to explain sustainable mobility and motorized-traffic risk traps without turning b-fallback-352 into a broad statistical claim.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "bicycles-micromobility-sustainable-risk-framing"
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-bicisenda-ciclovia-location",
+          "textRu": "Bicisenda vs ciclovía: do not swap vereda and calzada. `b-fallback-037`, `337`, `168`, and `426` all punish that swap.",
+          "sourceQuestionIds": [
+            "b-fallback-037",
+            "b-fallback-168",
+            "b-fallback-337",
+            "b-fallback-426"
+          ]
+        },
+        {
+          "id": "trap-green-red-orange-markings",
+          "textRu": "Color cues differ: green crossing/demarcación means ciclovía/bicisenda crossing; red shown in `b-fallback-138` is Metrobus; orange cordón in `b-fallback-280` is ciclorodados/motovehículos parking.",
+          "sourceQuestionIds": [
+            "b-fallback-008",
+            "b-fallback-138",
+            "b-fallback-280",
+            "b-fallback-294"
+          ]
+        },
+        {
+          "id": "trap-ambas-respuestas-bike",
+          "textRu": "`Ambas respuestas` appears where two partial rules are both true: cyclists over 12 in `b-fallback-142`, safety avoidances in `b-fallback-354`, and under-12 circulation in `b-fallback-458`.",
+          "sourceQuestionIds": [
+            "b-fallback-142",
+            "b-fallback-354",
+            "b-fallback-458"
+          ]
+        },
+        {
+          "id": "trap-assisted-bike-25-not-road-speed",
+          "textRu": "For assisted bike, choose 25 km/h. Do not replace it with 30 km/h or with the general speed of the vía where the ciclovía is located.",
+          "sourceQuestionIds": [
+            "b-fallback-094",
+            "b-fallback-425"
+          ]
+        },
+        {
+          "id": "trap-priority-not-always",
+          "textRu": "Cyclist priority is not “always”. In `b-fallback-186` the reason is that the car turns right into another street across the cyclist path.",
+          "sourceQuestionIds": [
+            "b-fallback-186"
+          ]
+        },
+        {
+          "id": "trap-descender-sign-ticket-specific",
+          "textRu": "The sign in `b-fallback-140` is exact image recognition: obligatorio descender de la bicicleta. Do not turn it into a complete official bicycle-sign catalogue.",
+          "sourceQuestionIds": [
+            "b-fallback-140"
+          ]
+        },
+        {
+          "id": "trap-bike-word-in-wrong-answer",
+          "textRu": "Some assigned tickets include bicycle wording only as a wrong answer: `b-fallback-138`, `162`, and `167` are not solved by picking the option that mentions bicicletas/bicisenda.",
+          "sourceQuestionIds": [
+            "b-fallback-138",
+            "b-fallback-162",
+            "b-fallback-167"
+          ]
+        },
+        {
+          "id": "trap-carga-not-visibility-only",
+          "textRu": "For bicycle cargo, visibility alone is not enough: the expected answer requires firm attachment, maneuverability and stability.",
+          "sourceQuestionIds": [
+            "b-fallback-366"
+          ]
+        }
+      ]
+    },
+    {
       "id": "mirrors-blind-spots-and-visibility",
       "slug": "mirrors-blind-spots-and-visibility",
       "status": "draft",
