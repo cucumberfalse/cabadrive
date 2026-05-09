@@ -270,6 +270,24 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current/in_force",
       "notes": "Used for b-fallback-311, b-fallback-347 and b-fallback-444 explanations without broadening this slice into a full authority/signaling topic."
+    },
+    {
+      "id": "warning-signs-incorporation-priority",
+      "topicId": "warning-signs",
+      "claimId": "claim-warning-incorporation-priority",
+      "claimSummaryRu": "CABA priority rules support the incorporation-ticket distinction: a vehicle incorporating into an arteria must not interfere with circulating traffic, while vehicles already stopped/interrupted on that arteria must yield to the incorporating vehicle.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.7 Obligaciones de los conductores que se incorporen o egresen de la circulación",
+        "Ley 2148 6.7.2 Otras prioridades de paso, inciso c)",
+        "Ley 24.449 Artículo 41 Prioridades, inciso g.3"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Used for b-fallback-389 and b-fallback-440 incorporation-priority explanations; it does not turn warning-sign recognition into a full right-of-way topic."
     }
   ]
 }

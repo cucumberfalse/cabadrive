@@ -3256,6 +3256,12 @@
           "textRu": "Для экзаменационной иерархии оперативные указания компетентной власти имеют приоритет над сигнализацией, а сигнализация - над общими нормами.",
           "requiresOfficialSource": true,
           "sourceTraceId": "warning-signs-authority-signs-norms-hierarchy"
+        },
+        {
+          "id": "claim-warning-incorporation-priority",
+          "textRu": "В билетах про incorporación al tránsito важно состояние потока: если автомобили на arteria circulando, въезжающий не получает приоритет; если tránsito detenido/interrumpido, ему должны уступить при включении.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "warning-signs-incorporation-priority"
         }
       ]
     }
