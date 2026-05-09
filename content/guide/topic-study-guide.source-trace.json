@@ -2469,7 +2469,7 @@
       "id": "overtaking-main-rules",
       "topicId": "overtaking-and-passing",
       "claimId": "claim-overtaking-main-rules",
-      "claimSummaryRu": "Ley 2148 and Ley 24.449 support left-side overtaking, visibility/free-space checks, no maneuver near intersections/curves/bridges/level crossings/dangerous places, and safe right-lane return.",
+      "claimSummaryRu": "Ley 2148 and Ley 24.449 support the general left-side overtaking rule with Ley 2148 right-side exceptions, visibility/free-space checks, no maneuver near intersections/curves/bridges/level crossings/dangerous places, and safe right-lane return.",
       "officialDocumentIds": [
         "ley-2148-caba-codigo-transito-transporte",
         "ley-24449-transito-seguridad-vial"
@@ -2480,7 +2480,7 @@
       ],
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
-      "notes": "Supports generalized safe-passing/prohibited-place prose and tickets b-fallback-118, 171, 179, 207, 261, 331, 333, and 411. Exact image/vehicle-letter mappings stay ticket-specific."
+      "notes": "Supports generalized safe-passing/prohibited-place prose and tickets b-fallback-118, 171, 179, 207, 261, 331, 333, and 411. Ley 2148 right-side exceptions are mentioned only to qualify the source-backed left-side rule; assigned ticket explanations do not generalize beyond their prompts. Exact image/vehicle-letter mappings stay ticket-specific."
     },
     {
       "id": "overtaking-lanes-markings-signs",
