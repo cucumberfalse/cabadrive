@@ -206,9 +206,9 @@
       "titleRu": "Запреты стоянки и знаки парковки",
       "categoryId": "parking",
       "splitCriteria": "Где estacionar запрещено или разрешено по знаку, цвету cartelería, acera и типу улицы/avenida.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E17"
     },
     {
       "topicId": "stopping-vs-parking-maneuvers",
@@ -471,8 +471,8 @@
       "topicIds": [
         "parking-prohibitions-and-signed-zones"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E17"
     },
     {
       "questionId": "b-fallback-011",
@@ -1074,8 +1074,8 @@
       "topicIds": [
         "parking-prohibitions-and-signed-zones"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E17"
     },
     {
       "questionId": "b-fallback-075",
@@ -1124,8 +1124,8 @@
       "topicIds": [
         "parking-prohibitions-and-signed-zones"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E17"
     },
     {
       "questionId": "b-fallback-080",
@@ -3352,10 +3352,10 @@
         "center-lines-and-crossing-rules"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E12",
+      "ownerSlice": "C+E12+E17",
       "placementPhases": {
-        "center-lines-and-crossing-rules": "content_ready",
-        "parking-prohibitions-and-signed-zones": "planned"
+        "parking-prohibitions-and-signed-zones": "content_ready",
+        "center-lines-and-crossing-rules": "content_ready"
       }
     },
     {
@@ -3392,8 +3392,8 @@
       "topicIds": [
         "parking-prohibitions-and-signed-zones"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "C+E17"
     },
     {
       "questionId": "b-fallback-325",
@@ -3693,7 +3693,11 @@
         "lane-and-channelization-markings"
       ],
       "phase": "planned",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E17",
+      "placementPhases": {
+        "parking-prohibitions-and-signed-zones": "content_ready",
+        "lane-and-channelization-markings": "planned"
+      }
     },
     {
       "questionId": "b-fallback-357",
@@ -4275,9 +4279,9 @@
         "regulatory-signs"
       ],
       "phase": "planned",
-      "ownerSlice": "C+E3",
+      "ownerSlice": "C+E3+E17",
       "placementPhases": {
-        "parking-prohibitions-and-signed-zones": "planned",
+        "parking-prohibitions-and-signed-zones": "content_ready",
         "regulatory-signs": "content_ready"
       }
     },

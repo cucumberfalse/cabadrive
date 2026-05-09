@@ -1241,6 +1241,63 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "in_force/current",
       "notes": "Used to support only the general visibility/safe-control boundary. b-fallback-055 image answer, b-fallback-058 bicycle-passenger trap and b-fallback-365 punto ciego definition are not broadened into standalone official claims."
+    },
+    {
+      "id": "parking-prohibitions-caba-general-system-boundary",
+      "topicId": "parking-prohibitions-and-signed-zones",
+      "claimId": "claim-caba-current-parking-general-system-boundary",
+      "claimSummaryRu": "Ley 2148 supports the current parking/detention system, general avenue/street/vía rápida rules and special-regime signage boundary; fallback left-acera/both-aceras ticket formulas are kept ticket-specific where current archived wording does not support broad generalization.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Definiciones Generales: Detención",
+        "Definiciones Generales: Estacionamiento",
+        "7.1.1 Aplicación",
+        "7.1.2 Normas generales",
+        "7.1.3 Vías rápidas",
+        "7.1.11 Señalización",
+        "7.1.12 Señalización Obligatoria",
+        "7.1.14 Modos de normas particulares"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Used for source-bounded learner framing only. The canonical answers for b-fallback-010, b-fallback-074 and b-fallback-079 are explained as fallback-ticket/image recognition because the archived current Ley 2148 7.1.2 wording differs from the older acera izquierda/ambas aceras formulas in those tickets."
+    },
+    {
+      "id": "parking-prohibitions-signs-and-curbs",
+      "topicId": "parking-prohibitions-and-signed-zones",
+      "claimId": "claim-parking-signs-and-colored-curbs",
+      "claimSummaryRu": "Anexo L supports No estacionar, No estacionar ni detenerse, Estacionamiento exclusivo blue signage and painted-curb meanings used to distinguish parking permission/prohibition traps.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "R.8 No estacionar",
+        "R.9 No estacionar ni detenerse",
+        "R.17 Estacionamiento exclusivo",
+        "H.15 Cordones pintados"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports the sign/color distinction for b-fallback-324 and nearby trap notes without broadening Permitido Estacionar beyond the assigned ticket wording."
+    },
+    {
+      "id": "parking-prohibitions-channelization-and-contramano-boundary",
+      "topicId": "parking-prohibitions-and-signed-zones",
+      "claimId": "claim-channelization-islets-and-contramano-boundary",
+      "claimSummaryRu": "Anexo L supports isletas/marcas canalizadoras as no-cross/no-drive-over channelizing markings and R.2 Contramano as opposite-direction no-entry; these mixed tickets are not generalized as parking rules.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "R.2 Contramano",
+        "H.8 Marcas canalizadoras del tránsito (e isletas)",
+        "H.7 Líneas auxiliares para reducción de velocidad"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports b-fallback-356 and b-fallback-416 boundaries. For b-fallback-320, the archived source supports channelization/speed-reduction framing; the exact turning-radius wording remains fallback-ticket specific, consistent with prior E12 treatment."
     }
   ]
 }

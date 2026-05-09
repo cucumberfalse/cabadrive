@@ -404,6 +404,355 @@
       ]
     },
     {
+      "id": "parking-prohibitions-and-signed-zones",
+      "slug": "parking-prohibitions-and-signed-zones",
+      "status": "draft",
+      "titleRu": "Запреты стоянки и знаки парковки",
+      "summaryRu": "Экзаменационный блок про prohibido estacionar, Permitido Estacionar, acera izquierda/ambas aceras, yellow markings, isletas и знак no entry, который маскируется парковочным distractor.",
+      "learningMaterialRu": [
+        "Этот блок - неофициальная подсказка Cabadrive. В этих билетах слово estacionar почти всегда связано с местом и сигналом: avenida или calle, acera derecha/izquierda, ambas aceras, cartelería, color del cordón или горизонтальная разметка.",
+        "Три image-ticket про Ley 2148 требуют читать не только слово avenida/calle, но и показанный тип улицы. В fallback-билетах b-fallback-010, b-fallback-074 и b-fallback-079 правильный ответ выбирается как готовая связка из изображения: для одной avenidas-ситуации acera izquierda en días hábiles de 7 a 21, для calles - acera izquierda todos los días 24 horas, для другой avenida - ambas aceras en días hábiles de 7 a 21.",
+        "Текущий архив Ley 2148 подтверждает общую систему правил estacionamiento/detención, но не надо превращать каждую старую fallback-формулу из этих трех билетов в универсальное current-rule statement. Для экзаменационной тренировки здесь важна ticket-specific recognition: avenidas, calles, acera izquierda, ambas aceras и временная формула в вариантах ответа.",
+        "Знак или cartelería может менять смысл быстрее, чем длинное рассуждение. No estacionar запрещает estacionamiento; No estacionar ni detenerse строже и запрещает даже обычную detención. Permitido Estacionar в билете связан с azul, а rojo обычно считывается как запретный warning-color, не как разрешение парковки.",
+        "Желтая demarcación horizontal и isleta - не дополнительная парковочная площадь. В b-fallback-320 желтая зона нужна для traffic calming/channelization; в b-fallback-356 isleta - marcas canalizadoras de tránsito, по которым нельзя circular или traspasar.",
+        "Contramano/no entry в b-fallback-416 тоже не парковочная тема, хотя один distractor говорит про bancos. Красный круг с белой горизонтальной полосой означает sentido de circulación opuesto: въезжать нельзя, а не искать правило estacionamiento у банка."
+      ],
+      "practicalReasoningRu": [
+        "Парковочные правила разгружают край calzada: водители заранее понимают, где поток должен оставаться свободным, где нужна видимость, а где остановка или стоянка создаст конфликт.",
+        "Разделение no estacionar и no estacionar ni detenerse важно практически: иногда короткая высадка еще допустима, а иногда даже краткая остановка создает опасность или блокирует пространство.",
+        "Разметка isletas и желтые channelization zones делает траекторию движения понятной. Если принять ее за parking space, водитель заезжает туда, где поток как раз должен быть направлен и замедлен."
+      ],
+      "spanishTerms": [
+        {
+          "id": "term-avenidas-parking-prohibitions",
+          "termEs": "avenidas",
+          "translationRu": "проспекты/авениды",
+          "sourceQuestionIds": [
+            "b-fallback-010",
+            "b-fallback-079"
+          ]
+        },
+        {
+          "id": "term-calles-parking-prohibitions",
+          "termEs": "calles",
+          "translationRu": "улицы",
+          "sourceQuestionIds": [
+            "b-fallback-074"
+          ]
+        },
+        {
+          "id": "term-prohibido-estacionar-vehiculos",
+          "termEs": "prohibido estacionar vehículos",
+          "translationRu": "запрещено парковать автомобили",
+          "sourceQuestionIds": [
+            "b-fallback-010",
+            "b-fallback-074",
+            "b-fallback-079"
+          ]
+        },
+        {
+          "id": "term-acera-izquierda",
+          "termEs": "acera izquierda",
+          "translationRu": "левая сторона тротуара/бордюра",
+          "sourceQuestionIds": [
+            "b-fallback-010",
+            "b-fallback-074",
+            "b-fallback-079"
+          ]
+        },
+        {
+          "id": "term-ambas-aceras",
+          "termEs": "ambas aceras",
+          "translationRu": "обе стороны улицы",
+          "sourceQuestionIds": [
+            "b-fallback-079"
+          ]
+        },
+        {
+          "id": "term-dias-habiles-7-21",
+          "termEs": "días hábiles entre las 7 y las 21 horas",
+          "translationRu": "рабочие дни с 7 до 21",
+          "sourceQuestionIds": [
+            "b-fallback-010",
+            "b-fallback-079"
+          ]
+        },
+        {
+          "id": "term-todos-los-dias-24-horas",
+          "termEs": "todos los días durante las 24 horas",
+          "translationRu": "каждый день круглосуточно",
+          "sourceQuestionIds": [
+            "b-fallback-074"
+          ]
+        },
+        {
+          "id": "term-permitido-estacionar",
+          "termEs": "Permitido Estacionar",
+          "translationRu": "парковка разрешена",
+          "sourceQuestionIds": [
+            "b-fallback-324"
+          ]
+        },
+        {
+          "id": "term-azul-parking-sign",
+          "termEs": "Azul",
+          "translationRu": "синий",
+          "sourceQuestionIds": [
+            "b-fallback-324"
+          ]
+        },
+        {
+          "id": "term-demarcacion-horizontal-amarillo",
+          "termEs": "demarcación horizontal de color amarillo",
+          "translationRu": "горизонтальная разметка желтого цвета",
+          "sourceQuestionIds": [
+            "b-fallback-320"
+          ]
+        },
+        {
+          "id": "term-isleta",
+          "termEs": "isleta",
+          "translationRu": "островок/канализирующая разметка",
+          "sourceQuestionIds": [
+            "b-fallback-356"
+          ]
+        },
+        {
+          "id": "term-marcas-canalizadoras-transito",
+          "termEs": "marcas canalizadoras de tránsito",
+          "translationRu": "канализирующие дорожное движение линии/зоны",
+          "sourceQuestionIds": [
+            "b-fallback-356"
+          ]
+        },
+        {
+          "id": "term-sentido-circulacion-opuesto",
+          "termEs": "sentido de circulación opuesto",
+          "translationRu": "противоположное направление движения",
+          "sourceQuestionIds": [
+            "b-fallback-416"
+          ]
+        },
+        {
+          "id": "term-no-se-puede-ingresar",
+          "termEs": "no se puede ingresar",
+          "translationRu": "въезжать нельзя",
+          "sourceQuestionIds": [
+            "b-fallback-416"
+          ]
+        }
+      ],
+      "tickets": [
+        {
+          "questionId": "b-fallback-010",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b157.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-010-a1",
+              "verdict": "incorrect",
+              "explanationRu": "24 horas слишком широко для этой fallback-ситуации: билет ожидает запрет junto a la acera izquierda именно en días hábiles entre las 7 y las 21 horas."
+            },
+            {
+              "answerId": "b-fallback-010-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по canonical fallback answer: для показанной avenida-ситуации запрещено estacionar junto a la acera izquierda los días hábiles entre las 7 y las 21 horas."
+            },
+            {
+              "answerId": "b-fallback-010-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Acera derecha - ловушка стороны. В этом ticket-image правильная связка идет с acera izquierda, а не с правой стороной."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-074",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b158.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-074-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Acera derecha не совпадает с canonical answer. Билет проверяет запрет junto a la acera izquierda."
+            },
+            {
+              "answerId": "b-fallback-074-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Формула días hábiles 7-21 похожа на avenue-trap из соседних билетов, но здесь вопрос про calles и ожидает otra franja."
+            },
+            {
+              "answerId": "b-fallback-074-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback ticket: для показанного типа calles запрещено estacionar junto a la acera izquierda todos los días durante las 24 horas."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-079",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b156.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-079-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: эта avenida-ситуация в билете идет с prohibición junto a ambas aceras los días hábiles entre las 7 y las 21 horas."
+            },
+            {
+              "answerId": "b-fallback-079-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Только acera derecha слишком узко. Вариант теряет ambas aceras, поэтому не совпадает с показанной avenue-rule recognition."
+            },
+            {
+              "answerId": "b-fallback-079-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Только acera izquierda тоже слишком узко. В этом билете правильный запрет относится к ambas aceras."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-320",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b36.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-320-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Ampliar estacionamiento para motos - parking distractor. Желтая зона на изображении не создает разрешенное место стоянки."
+            },
+            {
+              "answerId": "b-fallback-320-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно по fallback ticket: такая желтая demarcación horizontal работает как traffic-calming/channelization cue, чтобы reducir la velocidad y radio de giro de los vehículos."
+            },
+            {
+              "answerId": "b-fallback-320-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Это не парковка для vehículos de emergencia. Вариант снова пытается прочитать marking как parking extension, хотя смысл билета - организация движения."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-324",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-324-a1",
+              "verdict": "correct",
+              "explanationRu": "Правильно: в билете cartelería de Permitido Estacionar связана с Azul. Синий parking sign читается как разрешение/назначение, а не запрет."
+            },
+            {
+              "answerId": "b-fallback-324-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Blanco сам по себе не является правильным цветом для cartelería de Permitido Estacionar в этом вопросе."
+            },
+            {
+              "answerId": "b-fallback-324-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Rojo в parking-sign context обычно ведет к запрету или ограничению; в этом ticket correct color для Permitido Estacionar - azul."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-356",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-356-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Rotondas - это круговые пересечения/объекты дороги, а вопрос спрашивает isleta именно en materia de señalamiento horizontal."
+            },
+            {
+              "answerId": "b-fallback-356-a2",
+              "verdict": "incorrect",
+              "explanationRu": "Isleta не означает espacio reservado para estacionamiento exclusivo de motovehículos. Это parking distractor, который надо отбросить."
+            },
+            {
+              "answerId": "b-fallback-356-a3",
+              "verdict": "correct",
+              "explanationRu": "Правильно: isletas - marcas canalizadoras de tránsito; по ним нельзя traspasar или circular."
+            }
+          ]
+        },
+        {
+          "questionId": "b-fallback-416",
+          "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b248.jpg",
+          "answerExplanations": [
+            {
+              "answerId": "b-fallback-416-a1",
+              "verdict": "incorrect",
+              "explanationRu": "Entidad bancaria - distractor из parking topic. Этот знак не сообщает запрет estacionamiento frente al banco."
+            },
+            {
+              "answerId": "b-fallback-416-a2",
+              "verdict": "correct",
+              "explanationRu": "Правильно: знак означает sentido de circulación opuesto; перед такой vía no se puede ingresar."
+            },
+            {
+              "answerId": "b-fallback-416-a3",
+              "verdict": "incorrect",
+              "explanationRu": "Это не запрет для vehículos sin permiso de ingreso. Запрет связан именно с contramano/no entry, то есть встречным направлением."
+            }
+          ]
+        }
+      ],
+      "trapNotes": [
+        {
+          "id": "trap-avenida-calle-acera-side",
+          "textRu": "Не отвечайте по одному слову avenida или calle. В этих fallback tickets меняются сторона и охват: acera izquierda, acera derecha или ambas aceras.",
+          "sourceQuestionIds": [
+            "b-fallback-010",
+            "b-fallback-074",
+            "b-fallback-079"
+          ]
+        },
+        {
+          "id": "trap-days-hours-vs-24h",
+          "textRu": "días hábiles entre las 7 y las 21 horas и todos los días durante las 24 horas выглядят похожими fixed phrases, но в билетах они привязаны к разным street/avenue images.",
+          "sourceQuestionIds": [
+            "b-fallback-010",
+            "b-fallback-074",
+            "b-fallback-079"
+          ]
+        },
+        {
+          "id": "trap-permitido-estacionar-color",
+          "textRu": "Permitido Estacionar спрашивает цвет разрешающей cartelería: выбирайте Azul, не Rojo.",
+          "sourceQuestionIds": [
+            "b-fallback-324"
+          ]
+        },
+        {
+          "id": "trap-yellow-marking-not-parking",
+          "textRu": "Demarcación horizontal amarilla и isleta - не место для motos или emergency vehicles. Это разметка для channelization/traffic calming.",
+          "sourceQuestionIds": [
+            "b-fallback-320",
+            "b-fallback-356"
+          ]
+        },
+        {
+          "id": "trap-bank-front-distractor",
+          "textRu": "В b-fallback-416 вариант про banco использует parking wording, но знак R.2/contramano отвечает про sentido opuesto и запрет въезда.",
+          "sourceQuestionIds": [
+            "b-fallback-416"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "claim-caba-current-parking-general-system-boundary",
+          "textRu": "Ley 2148 задает общую current-system рамку estacionamiento/detención: правила применяются к calzada, различают detención и estacionamiento, задают общие нормы для avenidas/calles, vías rápidas и signage for special regimes; старые fallback-связки с acera izquierda/ambas aceras в b-fallback-010, b-fallback-074 и b-fallback-079 объясняются ticket-specific, а не как новая универсальная current-rule claim.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "parking-prohibitions-caba-general-system-boundary"
+        },
+        {
+          "id": "claim-parking-signs-and-colored-curbs",
+          "textRu": "Anexo L различает No estacionar, No estacionar ni detenerse, Estacionamiento exclusivo и cordones pintados: R.8 запрещает estacionamiento, R.9 запрещает и estacionar, и detenerse, R.17 uses blue parking signage for exclusive parking, red cordón запрещает остановку/стоянку, yellow cordón запрещает только estacionar.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "parking-prohibitions-signs-and-curbs"
+        },
+        {
+          "id": "claim-channelization-islets-and-contramano-boundary",
+          "textRu": "Anexo L поддерживает узкую границу для mixed tickets: isletas/marcas canalizadoras no se pueden trasponer или circular sobre ellas, а R.2 Contramano означает sentido de circulación opuesto и no se puede ingresar; эти элементы не превращаются в parking permission или bank-front parking rule.",
+          "requiresOfficialSource": true,
+          "sourceTraceId": "parking-prohibitions-channelization-and-contramano-boundary"
+        }
+      ]
+    },
+    {
       "id": "driver-hand-signals",
       "slug": "driver-hand-signals",
       "status": "draft",
