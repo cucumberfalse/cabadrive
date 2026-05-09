@@ -10,6 +10,38 @@ GitHub inline review threads so each finding is anchored to the changed line.
 Backend-specific no-finding summary behavior remains allowed where documented
 below.
 
+## Role And Process Review
+
+Reviewers check role boundaries in addition to code behavior:
+
+- Orchestrator must not directly edit repository files. File changes must come
+  from the role-appropriate subagent.
+- Agents must not switch roles mid-task. Work outside the current role must be
+  rerouted by Orchestrator.
+- One task slice must map to one isolated worktree, one branch, and one PR.
+- Implementation PRs must stay inside the assigned feature memory and must not
+  mix unrelated changes.
+- Blocking Implementation Agent feedback must be either resolved in scope or
+  have Architect disposition before completion.
+
+Reviewers should block merge when the PR text, docs, specs, or implementation
+permit unsafe completion. Blocking conditions include red, missing, queued, or
+running required checks; unresolved `P0`, `P1`, or `P2` review findings;
+unresolved conflicts; stale process memory; missing acceptance evidence; missing
+negative-scenario coverage; or unresolved Implementation Agent feedback without
+Architect disposition.
+
+Review findings that require code, docs, tests, content, specs, metadata, or
+process-memory edits are routed by Orchestrator to the proper role. Source
+currentness or archive-evidence findings block merge until fixed by the
+appropriate role or explicitly disposed by Architect when the spec allows it.
+After a fix, Orchestrator verifies whether each blocking thread is resolved,
+outdated, or still blocking before merge.
+
+No-finding summaries satisfy the review gate only for the current PR head and do
+not replace required checks, merge-conflict checks, feature-memory evidence,
+local guard evidence, or manual review of the SENAR done gate.
+
 ## Codex
 
 Native GitHub PR review. Blocking findings use `P0`, `P1`, or `P2`. Advisory findings use `P3`. Code review findings must be GitHub inline review threads.
