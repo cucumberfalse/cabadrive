@@ -49,6 +49,7 @@
 - Require Implementation Agent feedback to be routed to Architect disposition before completion.
 - `CLAUDE.md` exists and was updated in scope to align with `AGENTS.md`.
 - No Implementation Agent feedback was recorded, so no additional Architect disposition was required.
+- PR #61 P2 review fix: separated Implementation Agent check rerun/review-gate coordination from merge authority in `AGENTS.md`; Implementation Agents never merge PRs, even when Orchestrator assigns follow-up work.
 
 ### Known Issues
 
@@ -77,6 +78,10 @@
 - Second `pnpm run preflight` passed: content validation passed, 72 node tests passed, production build and service worker generation passed, and 8 Playwright tests passed.
 - `git diff --name-only` showed only `.github/pull_request_template.md`, `AGENTS.md`, `CLAUDE.md`, `docs_project/project/devops/ai-pr-workflow.md`, and `docs_project/project/devops/review-contract.md`; `git status --short` also showed the in-scope untracked feature folder `specs/007-agent-workflow-autonomy/`.
 - Manual diff review covered `AGENTS.md`, `CLAUDE.md`, `docs_project/project/devops/ai-pr-workflow.md`, `docs_project/project/devops/review-contract.md`, `.github/pull_request_template.md`, and this feature memory for consistency and scope.
+- PR #61 P2 verification: `AGENTS.md` now states Implementation Agents never merge PRs or directly merge to the default branch, while allowable Orchestrator-assigned GitHub-level actions are limited to rerunning required checks or review-gate coordination.
+- PR #61 P2 focused search: `rg -n "Implementation Agent|Never merges|does not merge|merge PRs|review-gate|rerun required checks|authorized merge" AGENTS.md CLAUDE.md docs_project/project/devops/ai-pr-workflow.md specs/007-agent-workflow-autonomy/tasks.md` found the corrected `AGENTS.md` lines and consistent non-merge language in `CLAUDE.md` and AI PR workflow docs.
+- PR #61 P2 ambiguity search: `rg -n "Does not rerun required checks, merge PRs|unless Orchestrator.*merge|Implementation Agent.*merge" AGENTS.md CLAUDE.md docs_project/project/devops/ai-pr-workflow.md specs/007-agent-workflow-autonomy/tasks.md` found no remaining Implementation Agent merge exception language.
+- PR #61 P2 checks: `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, `pnpm run check:repo`, and `pnpm run preflight` passed. Preflight included content validation, 72 node tests, production build/service worker generation, and 8 Playwright tests.
 
 ## Implementation Agent Feedback
 

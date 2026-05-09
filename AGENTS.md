@@ -85,8 +85,8 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 - Follows the active spec and tasks strictly; if it needs to diverge or identifies an improvement outside scope, records feedback in markdown process memory for Architect disposition instead of implementing it directly.
 - Updates durable docs when behavior, architecture, workflows, or deploy rules change.
 - May stage, commit, push, and open a ready PR when those actions are part of the assigned implementation slice.
-- Does not rerun required checks, merge PRs, or perform review-gate coordination unless Orchestrator explicitly assigns that GitHub-level action and it does not require switching roles.
-- Never merges directly to the default branch.
+- Never merges PRs or directly merges to the default branch, even when Orchestrator assigns follow-up work.
+- Does not rerun required checks or perform review-gate coordination unless Orchestrator explicitly assigns that GitHub-level action and it does not require switching roles.
 - Must not switch into Analyst, Architect, Review Agent, or Orchestrator work during the same task. If additional work is needed, records feedback or asks Orchestrator to reroute it.
 
 ### Review Agent
