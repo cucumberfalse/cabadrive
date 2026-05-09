@@ -131,6 +131,20 @@ Validation should therefore have separate modes:
 
 If Slice A's validator currently treats every coverage assignment as content-ready, Slice C must adjust it before adding the full planned baseline. That adjustment belongs in Slice C because it is necessary to keep the taxonomy PR coverage-only while preserving the final strict release gate.
 
+### Per-Placement Readiness For Dual Assignments
+
+Slice C's row-level `phase` model is not enough for one-topic-at-a-time content PRs when a coverage assignment row contains multiple `topicIds`. A dual-assigned speed-limit ticket may need the `speed-limits` placement promoted to `content_ready` while the `road-types-highways-and-routes` placement remains `planned`; row-level promotion would incorrectly require content in both topics, while row-level planned status would reject the new speed-limits guide block.
+
+Before Slice E topic content begins, add a prerequisite schema slice that lets readiness be computed per topic placement. A compatible design should preserve row-level `phase` as fallback for existing data and add optional per-topic readiness such as `topicPhases` or `placementPhases` keyed by `topicId`.
+
+Validation must then use two separate placement sets:
+
+- planned global coverage counts every `topicIds` placement, regardless of per-topic readiness;
+- rendered guide/content validation compares only placements whose effective per-topic phase is `content_ready` or `published`;
+- published validation fails if any placement remains effectively `planned`.
+
+This prerequisite is not a blocker to prior merged Slice C/D work; it is a schema refinement required before the first Slice E topic content PR that promotes dual-assigned placements independently.
+
 ### Structured JSON Before Markdown Rendering
 
 Use structured JSON for the first implementation because the app already imports JSON content and validation is easiest against structured fields. Markdown may be used later for long prose if a future spec justifies it, but this feature needs reliable per-ticket answer explanations, coverage IDs, source trace IDs, and renderable ticket placement.
@@ -224,6 +238,15 @@ If a ticket's expected answer conflicts with current official sources, implement
 - Add validation tests for the manifest entries touched.
 - Keep final exact-text/currentness validation as separate later slices.
 
+### Slice D2: Per-Placement Readiness Schema Prerequisite
+
+- Extend coverage assignment schema so readiness can be tracked per topic placement while keeping row-level `phase` as fallback for existing coverage data.
+- Update validation so all `topicIds` still count for planned global coverage and maximum-two-topic checks.
+- Update rendered-content validation so guide ticket blocks and answer explanations are required only for placements with effective `content_ready` or `published` readiness.
+- Update published validation so any effectively planned placement fails release validation.
+- Add regression coverage for a dual-assigned speed-limit ticket where `speed-limits` is content-ready and `road-types-highways-and-routes` remains planned.
+- Complete this slice before Slice E topic content PRs promote dual-assigned ticket placements.
+
 ### Slice E: Topic Content Slices
 
 - One PR per topic, or at most two small related topics.
@@ -263,7 +286,8 @@ Required checks:
 - every current question ID appears in at least one planned or published topic assignment;
 - no current question ID appears in more than two planned or published topic assignments;
 - every guide ticket placement references an existing question;
-- coverage manifest and guide topic ticket lists agree for content-ready/published placements;
+- per-topic placement readiness resolves from explicit per-topic readiness when present, then row-level `phase` fallback;
+- coverage manifest and guide topic ticket lists agree for effective content-ready/published placements only;
 - planned-only assignments are allowed during draft taxonomy coverage validation and forbidden by final published validation;
 - topic IDs are unique and stable;
 - every topic has required sections;

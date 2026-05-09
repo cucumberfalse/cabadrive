@@ -7,7 +7,17 @@
     "expectedQuestionCount": 460,
     "questionIdsSha256": "b46707461f4ba5bd0f3eac6b0aa126764014e12ad42144df12c777200f2810ad",
     "capturedAt": "2026-05-09",
-    "notes": "Slice C refined planned taxonomy coverage baseline. Planned assignments cover every current ticket and do not imply rendered guide content; content_ready/published assignments remain subject to guide ticket/explanation validation."
+    "notes": "Slice C refined planned taxonomy coverage baseline. Planned assignments cover every current ticket and do not imply rendered guide content; content_ready/published assignments remain subject to guide ticket/explanation validation. Slice D2 adds optional assignment placementPhases keyed by topicId for dual-topic rows; when present, keys must exactly match topicIds, and each placement phase overrides the row phase for that topic."
+  },
+  "assignmentPhaseModel": {
+    "phaseValues": [
+      "planned",
+      "content_ready",
+      "published"
+    ],
+    "rowPhaseFallback": "assignments[].phase remains the fallback readiness for every topicIds placement in the row when placementPhases is absent.",
+    "placementPhaseOverride": "assignments[].placementPhases may be used on dual-topic rows to promote one topic placement while another remains planned; keys must exactly match assignments[].topicIds and values must be planned, content_ready, or published.",
+    "validationUse": "All topicIds count toward planned coverage and the maximum-two-topic limit. Rendered guide/content comparison uses only placements whose effective phase is content_ready or published. Published validation fails while any placement remains planned."
   },
   "taxonomy": {
     "status": "planned",

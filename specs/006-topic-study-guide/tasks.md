@@ -61,59 +61,68 @@
 - [x] T042 Validate the manifest entries touched by the slice.
 - [x] T043 Record conversion limitations and source-currentness evidence in process memory.
 
+## Future Slice D2: Per-Placement Readiness Schema Prerequisite
+
+- [x] T044 Extend coverage assignments so readiness may be tracked per topic placement, not only per assignment row; a compatible design may add optional `topicPhases` or `placementPhases` keyed by `topicId` while preserving row-level `phase` as fallback for existing data.
+- [x] T045 Update topic-guide validation so all `topicIds` continue to count for planned global coverage and maximum-two-topic checks, regardless of per-placement readiness.
+- [x] T046 Update rendered-content validation so guide topic ticket blocks and answer explanations are required only for placements whose effective per-topic phase is `content_ready` or `published`.
+- [x] T047 Update published validation so it fails when any placement remains effectively `planned`, including placements represented only through row-level fallback.
+- [x] T048 Add regression tests covering a dual-assigned speed-limit ticket where the `speed-limits` placement is content-ready but the `road-types-highways-and-routes` placement remains planned.
+- [x] T049 Record schema compatibility, migration/fallback behavior, validator evidence, and any placement-phase edge cases in this process memory before Slice E content PRs proceed.
+
 ## Future Slice E: Topic Content Slices
 
-- [ ] T044 Implement one topic, or at most two small related topics, per PR.
-- [ ] T045 Add concise Russian material for the assigned topic only.
-- [ ] T046 Add practical reasoning only when it helps answer assigned tickets.
-- [ ] T047 Add useful Spanish words and constructions sourced from assigned ticket question/answer wording.
-- [ ] T048 Add ticket blocks for the assigned topic with correct answer explanation and wrong-answer explanations for every incorrect answer option.
-- [ ] T049 Include local question images in rendered guide ticket blocks when the canonical question has an image.
-- [ ] T050 Add compact trap notes for negations, exceptions, similar answers, and mistranslation risks in the assigned topic.
-- [ ] T051 Add source-trace entries for official-source-backed claims in the assigned topic.
-- [ ] T052 Archive or cite only the official documents/materials needed by the assigned topic slice.
-- [ ] T053 Validate the assigned slice and update coverage/source-trace evidence.
-- [ ] T054 Record source conflicts, dead ends, decisions, known issues, and Implementation Agent feedback.
+- [ ] T050 Implement one topic, or at most two small related topics, per PR, only after Slice D2 per-placement readiness validation exists.
+- [ ] T051 Add concise Russian material for the assigned topic only.
+- [ ] T052 Add practical reasoning only when it helps answer assigned tickets.
+- [ ] T053 Add useful Spanish words and constructions sourced from assigned ticket question/answer wording.
+- [ ] T054 Add ticket blocks for the assigned topic with correct answer explanation and wrong-answer explanations for every incorrect answer option.
+- [ ] T055 Include local question images in rendered guide ticket blocks when the canonical question has an image.
+- [ ] T056 Add compact trap notes for negations, exceptions, similar answers, and mistranslation risks in the assigned topic.
+- [ ] T057 Add source-trace entries for official-source-backed claims in the assigned topic.
+- [ ] T058 Archive or cite only the official documents/materials needed by the assigned topic slice.
+- [ ] T059 Validate the assigned slice and update coverage/source-trace evidence.
+- [ ] T060 Record source conflicts, dead ends, decisions, known issues, and Implementation Agent feedback.
 
 ## Future Slice F: UI Integration
 
-- [ ] T055 Add a separate topic guide section or navigation entry without removing current learning/exam/vocabulary flows.
-- [ ] T056 Render topic list and topic detail pages from structured guide content.
-- [ ] T057 Render canonical Spanish question text, answer options, correct answer, local image, and Russian explanations for each guide ticket block.
-- [ ] T058 Render Spanish words, concise Russian material, and trap notes in the required topic sequence.
-- [ ] T059 Preserve unofficial-learning-aid clarity for Russian guide material and fallback question status.
-- [ ] T060 Ensure no raw PDF viewer or runtime network fetch is required.
-- [ ] T061 Add Playwright coverage for guide reachability, required topic sequence, local images, and topic-ticket rendering.
+- [ ] T061 Add a separate topic guide section or navigation entry without removing current learning/exam/vocabulary flows.
+- [ ] T062 Render topic list and topic detail pages from structured guide content.
+- [ ] T063 Render canonical Spanish question text, answer options, correct answer, local image, and Russian explanations for each guide ticket block.
+- [ ] T064 Render Spanish words, concise Russian material, and trap notes in the required topic sequence.
+- [ ] T065 Preserve unofficial-learning-aid clarity for Russian guide material and fallback question status.
+- [ ] T066 Ensure no raw PDF viewer or runtime network fetch is required.
+- [ ] T067 Add Playwright coverage for guide reachability, required topic sequence, local images, and topic-ticket rendering.
 
 ## Future Slice G: Final Strict Release Gate
 
-- [ ] T062 Enable strict published-guide validation.
-- [ ] T063 Prove all current 460 ticket IDs are covered by the guide coverage map.
-- [ ] T064 Prove every ticket appears in at least one and no more than two categories.
-- [ ] T065 Prove every ticket assigned to two categories physically renders as a full ticket block in both category sections.
-- [ ] T066 Prove every topic page has concise Russian material, Spanish words from ticket wording, ticket explanations, and trap notes.
-- [ ] T067 Prove every guide claim requiring official verification maps to source-trace entries and archived official documents/materials.
-- [ ] T068 Run final exact-text archive validation comparing every official-documents manifest entry against official primary sources, including entries not currently cited by published guide claims and all archived source types.
-- [ ] T069 Run final currentness/effective-status archive validation proving every official-documents manifest entry has checked status evidence and source-type-appropriate metadata at validation time, including entries not currently cited by published guide claims.
-- [ ] T070 Prove every source-traced current guide claim cites only official document/material entries that are current, in force, or otherwise currently valid for the relevant source type at validation time, including laws, rules, formal requirements, manuals/study materials, licensing requirements/pages, road-safety/procedure materials, traffic-sign materials, and any other cited official source type.
-- [ ] T071 Update durable docs for final paths, guide behavior, official-documents governance, and validation evidence.
-- [ ] T072 Run `pnpm run validate:content`.
-- [ ] T073 Run `pnpm run test`.
-- [ ] T074 Run `pnpm run build`.
-- [ ] T075 Run `pnpm run test:e2e`.
-- [ ] T076 Run `pnpm run preflight`.
-- [ ] T077 Run `git diff --check`.
-- [ ] T078 Record final verification evidence for every acceptance criterion.
+- [ ] T068 Enable strict published-guide validation.
+- [ ] T069 Prove all current 460 ticket IDs are covered by the guide coverage map.
+- [ ] T070 Prove every ticket appears in at least one and no more than two categories.
+- [ ] T071 Prove every ticket assigned to two categories physically renders as a full ticket block in both category sections.
+- [ ] T072 Prove every topic page has concise Russian material, Spanish words from ticket wording, ticket explanations, and trap notes.
+- [ ] T073 Prove every guide claim requiring official verification maps to source-trace entries and archived official documents/materials.
+- [ ] T074 Run final exact-text archive validation comparing every official-documents manifest entry against official primary sources, including entries not currently cited by published guide claims and all archived source types.
+- [ ] T075 Run final currentness/effective-status archive validation proving every official-documents manifest entry has checked status evidence and source-type-appropriate metadata at validation time, including entries not currently cited by published guide claims.
+- [ ] T076 Prove every source-traced current guide claim cites only official document/material entries that are current, in force, or otherwise currently valid for the relevant source type at validation time, including laws, rules, formal requirements, manuals/study materials, licensing requirements/pages, road-safety/procedure materials, traffic-sign materials, and any other cited official source type.
+- [ ] T077 Update durable docs for final paths, guide behavior, official-documents governance, and validation evidence.
+- [ ] T078 Run `pnpm run validate:content`.
+- [ ] T079 Run `pnpm run test`.
+- [ ] T080 Run `pnpm run build`.
+- [ ] T081 Run `pnpm run test:e2e`.
+- [ ] T082 Run `pnpm run preflight`.
+- [ ] T083 Run `git diff --check`.
+- [ ] T084 Record final verification evidence for every acceptance criterion.
 
 ## PR Readiness
 
-- [ ] T079 Confirm each future implementation PR has a single assigned slice, branch, and isolated worktree.
-- [ ] T080 Confirm each future implementation PR updates this process memory where relevant.
-- [ ] T081 Confirm every Implementation Agent feedback item has Architect disposition before completion.
-- [ ] T082 Confirm no blocking review findings remain.
-- [ ] T083 Confirm required checks are green after push/PR.
-- [ ] T084 Confirm the PR has no unresolved merge conflicts.
-- [ ] T085 Leave only final human approval or merge mechanics remaining.
+- [ ] T085 Confirm each future implementation PR has a single assigned slice, branch, and isolated worktree.
+- [ ] T086 Confirm each future implementation PR updates this process memory where relevant.
+- [ ] T087 Confirm every Implementation Agent feedback item has Architect disposition before completion.
+- [ ] T088 Confirm no blocking review findings remain.
+- [ ] T089 Confirm required checks are green after push/PR.
+- [ ] T090 Confirm the PR has no unresolved merge conflicts.
+- [ ] T091 Leave only final human approval or merge mechanics remaining.
 
 ## Process Memory
 
@@ -145,6 +154,8 @@
 - Slice B review hardening constrains `currentness.status`, `currentness.validationStatus`, and `exactTextValidation.status` to explicit enum sets so typos do not pass as non-empty strings.
 - Slice C may produce the complete 460-ticket taxonomy baseline as planned coverage only. Planned assignments prove intended category coverage and one-or-two topic limits, but they are not content-ready placements and must not force all guide ticket blocks or answer explanations in the taxonomy PR. Content-ready/published placements remain the phase that must match rendered guide content and explanations.
 - Slice C implemented coverage assignment phases with `phase: "planned" | "content_ready" | "published"`. Planned assignments count toward global taxonomy coverage and the maximum-two-topic rule, while only `content_ready` and `published` assignments are compared against rendered guide topic tickets and answer explanations.
+- Architect disposition: row-level assignment phase is insufficient for dual-assigned questions because one `{questionId, topicIds}` row may need different readiness per topic placement. Before Slice E content PRs promote individual topic content, add a prerequisite schema slice that supports per-placement readiness, preferably optional `topicPhases` or `placementPhases` keyed by `topicId` with row-level `phase` retained as fallback for existing coverage data.
+- Decision: validators must count every `topicIds` placement toward planned global coverage and the maximum-two-topic rule, but compare rendered guide content only against placements whose effective per-topic phase is `content_ready` or `published`. Published validation must fail while any placement remains effectively `planned`. This enables one-topic-at-a-time content PRs for dual-assigned tickets such as `speed-limits` plus `road-types-highways-and-routes`.
 - Slice C keeps the overall guide and coverage manifests in `status: "draft"`. The existing Slice A hand-signal placeholder was renamed from `driver-hand-signals-draft` to the stable taxonomy topic ID `driver-hand-signals`; only `b-fallback-001` remains `content_ready` because it already has a rendered placeholder ticket/explanation block. The remaining 459 current tickets are `phase: "planned"`.
 - Slice C derived 28 compact guide topics from ticket wording, answer patterns, image-driven sign/road-context prompts, and existing broad question `topics` only as secondary hints. Split criteria are recorded in `content/guide/topic-study-guide.coverage.json` under `taxonomy.splitCriteria` and per-topic `splitCriteria`: signs are split into warning/regulatory/information/road-marking tasks; speed, priority, parking, pedestrian, bicycle, document, vehicle-condition, driver-state, incident-response, and road-context topics are separated when they imply different future guide prose or official-source checks.
 - Slice C records planned dual placement only where the same ticket should physically repeat later for a second study angle, such as speed-sign, parking-signal, bicycle-pedestrian, crash-document, authority-priority, and weather/vehicle-condition overlaps. The baseline has 179 dual-assigned tickets and no ticket with more than two assignments.
@@ -167,6 +178,7 @@
 - A ticket answer may conflict with current official sources. Such conflicts require process-memory recording and Architect disposition before publication.
 - Full guide completion will require many topic content slices; no single future agent should own all prose and all 460 answer explanations.
 - The topic-guide placeholder is intentionally draft-only and should not be treated as learner-ready guide content.
+- Per-assignment row-level readiness from Slice C cannot safely support dual-assigned content promotion on its own. Until Slice D2 lands, Slice E topic content PRs for dual-assigned tickets must not promote one topic placement to `content_ready` when another topic placement in the same assignment row remains planned.
 - Slice B did not run network research, download official documents, convert official documents, or add manifest entries. Slice D and later topic content slices remain responsible for official source acquisition and conversion.
 - Slice C did not run network research, download official documents, seed official sources, author full guide prose, author all answer explanations, integrate UI, or enable final strict published release gates.
 - Slice C taxonomy placements are a planned baseline for future content slices. Later topic authors may refine individual placements only with updated coverage evidence and the same maximum-two-topic rule.
@@ -238,6 +250,7 @@
 - Slice C review-refinement final verification: `git diff --check` passed with no output.
 - Slice C topic-phase validator follow-up verification: `node --test tests/content-topic-guide.test.mjs` passed 18 tests after adding regression coverage for an invalid `coverage.topics[].phase` value.
 - Slice C topic-phase validator follow-up verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Architect per-placement readiness disposition verification: `git diff --check -- specs/006-topic-study-guide/tasks.md specs/006-topic-study-guide/plan.md specs/006-topic-study-guide/spec.md` passed with no output after updating only feature memory.
 - Slice C topic-phase validator follow-up verification: `git diff --check` passed with no output.
 - Slice D worktree orientation: `pwd && git status --short --branch` reported `/Users/chap/devel/cabadrive/.claude/worktrees/006-official-source-archive-seed` and `## codex/006-official-source-archive-seed...origin/main` before implementation edits.
 - Slice D required memory read: `AGENTS.md`, `.specify/memory/constitution.md`, `docs_project/README.md`, `docs_project/project-idea.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, `docs_project/screens/learning-and-exam-flows.md`, `docs/specify/README.md`, active feature memory `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, `content/official-documents/AGENTS.md`, `docs_project/project/content-sources.md`, `scripts/official-documents-validation.mjs`, and `tests/official-documents-validation.test.mjs`.
@@ -260,6 +273,18 @@
 - Slice D PR #15 Ley 24.449 currentness follow-up verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
 - Slice D PR #15 Ley 24.449 currentness follow-up verification: `git diff --check origin/main...HEAD` passed with no output.
 - Slice D PR #15 Ley 24.449 currentness follow-up verification: `pnpm run preflight` passed; repository baseline, content validation, 69 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice D2 worktree orientation: `pwd && git status --short --branch` reported `/Users/chap/devel/cabadrive/.claude/worktrees/006-topic-placement-phase-schema` and `## codex/006-topic-placement-phase-schema...origin/main [ahead 1]` before implementation edits.
+- Slice D2 required memory read: `AGENTS.md`, active feature memory `spec.md`, `plan.md`, and `tasks.md`, plus `scripts/content-topic-guide.mjs`, `tests/content-topic-guide.test.mjs`, `content/guide/topic-study-guide.coverage.json`, and `content/guide/topic-study-guide.ru.json`.
+- Slice D2 implemented assignment-level `placementPhases` as the per-placement readiness schema. When absent, the existing row-level `phase` or legacy `status` fallback still determines every placement in the assignment row, preserving current coverage data compatibility. When present, `placementPhases` keys must exactly match the row `topicIds`, and every value must be `planned`, `content_ready`, or `published`.
+- Slice D2 validator behavior: every `topicIds` value still counts for baseline coverage and the maximum-two-topic assignment limit, while rendered guide/content comparison now uses only placements whose effective phase is `content_ready` or `published`. Published validation now fails if any effective placement phase remains `planned`, including planned placements inside otherwise published/content-ready dual-topic rows.
+- Slice D2 coverage manifest note: `content/guide/topic-study-guide.coverage.json` documents the `placementPhases` override model in `assignmentPhaseModel` and keeps the current baseline on row-level phases because no current dual-topic content placement is ready yet.
+- Slice D2 targeted validator evidence: `node --test tests/content-topic-guide.test.mjs` passed 21 tests covering the current manifest, row-level fallback behavior, dual-assignment per-placement rendering, invalid `placementPhases` values and keys, and published rejection of planned placements.
+- Slice D2 content-validation evidence: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice D2 test evidence: `pnpm run test` passed 72 Node tests.
+- Slice D2 diff hygiene evidence: `git diff --check` passed with no output.
+- Slice D2 preflight note: an initial `pnpm run preflight` before this process-memory update failed at `scripts/check-feature-memory.mjs --worktree` because product paths had changed without touching `specs/006-topic-study-guide/tasks.md`; this process-memory update resolves that expected workflow gate before final preflight.
+- Slice D2 environment note: this isolated worktree had no `node_modules`, so `pnpm install` was run after the first preflight gate failure. The lockfile was already up to date and no tracked dependency files changed.
+- Slice D2 final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 
 ### Implementation Agent Feedback
 
@@ -267,6 +292,7 @@
 - Slice B: none requiring Architect disposition.
 - Slice C: none requiring Architect disposition.
 - Slice D: topic slices that need Decreto 779 annex-specific claims, especially signage/technical vehicle material, should archive those annexes as separate manifest entries rather than citing only the main Decreto 779 page. The optional GCBA four-wheel manual PDF also needs a separate PDF conversion/evidence slice if topic content will cite manual-only claims.
+- Slice D2: none requiring Architect disposition.
 
 ### Architect Dispositions
 

@@ -39,6 +39,40 @@ function coverageAssignmentPhase(assignment) {
   return "content_ready";
 }
 
+function coveragePlacementPhases(assignment, assignedTopicIds, errors, label) {
+  const fallbackPhase = coverageAssignmentPhase(assignment);
+  const placementPhases = assignment?.placementPhases;
+  if (placementPhases === undefined) {
+    return new Map(assignedTopicIds.map((topicId) => [topicId, fallbackPhase]));
+  }
+
+  const phases = new Map();
+  if (!isPlainObject(placementPhases)) {
+    errors.push(`${label}: assignment placementPhases must be an object keyed by topicId.`);
+    return new Map(assignedTopicIds.map((topicId) => [topicId, fallbackPhase]));
+  }
+
+  const assignedTopicIdSet = new Set(assignedTopicIds);
+  const placementPhaseTopicIds = Object.keys(placementPhases);
+  for (const topicId of placementPhaseTopicIds) {
+    if (!ASSIGNMENT_PHASES.has(placementPhases[topicId])) {
+      errors.push(`${label}/${topicId}: assignment placement phase must be planned, content_ready, or published.`);
+    }
+    if (!assignedTopicIdSet.has(topicId)) {
+      errors.push(`${label}: assignment placementPhases references topic ${topicId} not present in topicIds.`);
+      continue;
+    }
+    phases.set(topicId, placementPhases[topicId]);
+  }
+  for (const topicId of assignedTopicIds) {
+    if (!Object.hasOwn(placementPhases, topicId)) {
+      errors.push(`${label}: assignment placementPhases missing topic ${topicId}.`);
+      phases.set(topicId, fallbackPhase);
+    }
+  }
+  return phases;
+}
+
 function isRenderedAssignmentPhase(phase) {
   return RENDERED_ASSIGNMENT_PHASES.has(phase);
 }
@@ -376,18 +410,22 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
       errors.push(`${questionId}: assignment topicIds must not contain duplicates.`);
     }
     if (assignedTopicIds.length > 2) errors.push(`${questionId}: assignment must not reference more than two topics.`);
-    const phase = coverageAssignmentPhase(assignment);
-    if (!ASSIGNMENT_PHASES.has(phase)) {
+    const fallbackPhase = coverageAssignmentPhase(assignment);
+    if (!ASSIGNMENT_PHASES.has(fallbackPhase)) {
       errors.push(`${questionId}: assignment phase must be planned, content_ready, or published.`);
     }
+    const placementPhases = coveragePlacementPhases(assignment, assignedTopicIds, errors, questionId);
     for (const topicId of assignedTopicIds) {
       if (!coverageTopicIds.has(topicId)) errors.push(`${questionId}: assignment references missing coverage topic ${topicId}.`);
-      if (isRenderedAssignmentPhase(phase) && !topicIds.has(topicId)) {
+      if (isRenderedAssignmentPhase(placementPhases.get(topicId)) && !topicIds.has(topicId)) {
         errors.push(`${questionId}: rendered assignment references missing guide topic ${topicId}.`);
       }
     }
     coverageAssignments.set(questionId, assignedTopicIds);
-    if (isRenderedAssignmentPhase(phase)) renderedCoverageAssignments.set(questionId, assignedTopicIds);
+    renderedCoverageAssignments.set(
+      questionId,
+      assignedTopicIds.filter((topicId) => isRenderedAssignmentPhase(placementPhases.get(topicId)))
+    );
   }
 
   for (const [questionId, topicList] of contentAssignments.entries()) {
@@ -420,7 +458,10 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
   }
   if (isPublished) {
     for (const assignment of asArray(coverage.assignments)) {
-      if (coverageAssignmentPhase(assignment) === "planned" && isNonEmptyString(assignment?.questionId)) {
+      if (!isNonEmptyString(assignment?.questionId) || !Array.isArray(assignment?.topicIds)) continue;
+      const assignedTopicIds = uniqueSorted(assignment.topicIds);
+      const placementPhases = coveragePlacementPhases(assignment, assignedTopicIds, errors, assignment.questionId);
+      if ([...placementPhases.values()].some((phase) => phase === "planned")) {
         errors.push(`${assignment.questionId}: published guide must promote planned assignments before release.`);
       }
     }

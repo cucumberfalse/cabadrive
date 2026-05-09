@@ -146,6 +146,24 @@ function validate({
   });
 }
 
+function q2Ticket() {
+  return {
+    questionId: "q2",
+    answerExplanations: [
+      {
+        answerId: "q2-a1",
+        verdict: "correct",
+        explanationRu: "Pare требует полной остановки."
+      },
+      {
+        answerId: "q2-a2",
+        verdict: "incorrect",
+        explanationRu: "Продолжать без проверки нельзя."
+      }
+    ]
+  };
+}
+
 test("current topic guide placeholder and manifests pass draft validation", () => {
   const currentQuestions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
   const currentGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
@@ -180,9 +198,111 @@ test("content-ready assignments require rendered guide content", () => {
   assert(errors.includes("q2: content-ready or published coverage assignment is missing from guide content."));
 });
 
+test("placementPhases allow one rendered topic in a dual-assigned row", () => {
+  const guideContent = guide();
+  guideContent.topics[0].tickets.push(q2Ticket());
+  const coverageManifest = coverage({
+    assignments: [
+      { questionId: "q1", topicIds: ["signals"], phase: "content_ready" },
+      {
+        questionId: "q2",
+        topicIds: ["signals", "stop-signs"],
+        phase: "planned",
+        placementPhases: {
+          signals: "content_ready",
+          "stop-signs": "planned"
+        }
+      }
+    ]
+  });
+
+  assert.deepEqual(validate({ guideContent, coverageManifest }), []);
+});
+
+test("rejects invalid placementPhases values and keys", () => {
+  const invalidValueCoverage = coverage({
+    assignments: [
+      { questionId: "q1", topicIds: ["signals"], phase: "content_ready" },
+      {
+        questionId: "q2",
+        topicIds: ["signals", "stop-signs"],
+        phase: "planned",
+        placementPhases: {
+          signals: "contentready",
+          "stop-signs": "planned"
+        }
+      }
+    ]
+  });
+  assert(
+    validate({ coverageManifest: invalidValueCoverage }).includes(
+      "q2/signals: assignment placement phase must be planned, content_ready, or published."
+    )
+  );
+
+  const extraKeyCoverage = coverage({
+    assignments: [
+      { questionId: "q1", topicIds: ["signals"], phase: "content_ready" },
+      {
+        questionId: "q2",
+        topicIds: ["signals", "stop-signs"],
+        phase: "planned",
+        placementPhases: {
+          signals: "content_ready",
+          "stop-signs": "planned",
+          extra: "planned"
+        }
+      }
+    ]
+  });
+  assert(validate({ coverageManifest: extraKeyCoverage }).includes("q2: assignment placementPhases references topic extra not present in topicIds."));
+
+  const missingKeyCoverage = coverage({
+    assignments: [
+      { questionId: "q1", topicIds: ["signals"], phase: "content_ready" },
+      {
+        questionId: "q2",
+        topicIds: ["signals", "stop-signs"],
+        phase: "planned",
+        placementPhases: {
+          signals: "content_ready"
+        }
+      }
+    ]
+  });
+  assert(validate({ coverageManifest: missingKeyCoverage }).includes("q2: assignment placementPhases missing topic stop-signs."));
+});
+
 test("published mode rejects planned-only assignments", () => {
   const publishedGuide = guide({ status: "published" });
   const publishedCoverage = coverage({ status: "published" });
+  const errors = validate({
+    guideContent: publishedGuide,
+    coverageManifest: publishedCoverage,
+    trace: sourceTrace({ status: "published" })
+  });
+
+  assert(errors.includes("q2: published guide must promote planned assignments before release."));
+});
+
+test("published mode rejects planned placements inside a dual-assigned row", () => {
+  const publishedGuide = guide({ status: "published" });
+  publishedGuide.topics[0].tickets.push(q2Ticket());
+  const publishedCoverage = coverage({
+    status: "published",
+    assignments: [
+      { questionId: "q1", topicIds: ["signals"], phase: "published" },
+      {
+        questionId: "q2",
+        topicIds: ["signals", "stop-signs"],
+        phase: "published",
+        placementPhases: {
+          signals: "published",
+          "stop-signs": "planned"
+        }
+      }
+    ]
+  });
   const errors = validate({
     guideContent: publishedGuide,
     coverageManifest: publishedCoverage,
