@@ -5947,31 +5947,31 @@
       "claims": [
         {
           "id": "claim-basic-road-user-duty-and-system-principles",
-          "textRu": "CABA and national traffic rules frame road use around safe, adequate public-road use, fluidez, no entorpecer circulación, and avoiding peligro or unnecessary harm.",
+          "textRu": "Правила CABA и национальные нормы описывают движение как безопасное и адекватное использование общественной дороги: сохраняйте fluidez, не entorpecer circulación и не создавайте peligro или лишний вред.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safety-principles-basic-road-user-duty"
         },
         {
           "id": "claim-preventive-driving-and-attention-duty",
-          "textRu": "Drivers must verify safe vehicle/driver conditions, maintain effective control, permanent attention and prevention, and avoid distractions or impairments that reduce aptitude.",
+          "textRu": "Водитель должен проверить безопасное состояние автомобиля и собственную aptitud, сохранять efectivo control, постоянное внимание и prevención, а также избегать отвлечений и состояний, снижающих пригодность к управлению.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safety-principles-preventive-driving-attention"
         },
         {
           "id": "claim-vehicle-safety-elements-and-vtv",
-          "textRu": "Vehicle safety obligations cover minimum safety systems, seat belts/head restraints, VTV safety/emissions checks, legal tire condition, lights, matafuego, balizas and accessible reflective vest.",
+          "textRu": "Обязанности по безопасности автомобиля включают минимальные системы безопасности, ремни и apoyacabezas, проверку VTV по seguridad и emisiones, законное состояние шин, luces, matafuego, balizas и доступный chaleco reflectante.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safety-principles-vehicle-safety-elements-vtv"
         },
         {
           "id": "claim-passengers-beginner-removal-and-jurisdiction",
-          "textRu": "CABA rules support the 12-year front-seat threshold, two-year beginner-driver condition, possible vehicle removal/retention in listed cases, and CABA circulation under both local and national traffic norms.",
+          "textRu": "Нормы CABA подтверждают порог 12 лет для переднего сиденья, двухлетний статус beginner driver, возможное removal/retención автомобиля в перечисленных случаях и движение в CABA по местным и национальным правилам tránsito.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safety-principles-passengers-beginner-removal-jurisdiction"
         },
         {
           "id": "claim-cyclists-exclusive-spaces-and-two-wheel-risk-context",
-          "textRu": "CABA and Anexo L support exclusive cyclist lanes/sendas and priority duties when crossing them; two-wheel visibility risk remains ticket-specific wording in this topic.",
+          "textRu": "CABA и Anexo L подтверждают ciclovías/sendas exclusivas для велосипедистов и обязанность учитывать их prioridad при пересечении; риск видимости для двухколесного транспорта здесь остается формулировкой конкретных билетов.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safety-principles-cyclist-spaces-two-wheel-context"
         }
