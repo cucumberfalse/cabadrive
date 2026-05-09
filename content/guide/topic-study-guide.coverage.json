@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "guideId": "topic-study-guide",
+  "status": "draft",
+  "baseline": {
+    "questionFile": "content/questions/caba-b.unofficial-fallback.questions.json",
+    "expectedQuestionCount": 460,
+    "questionIdsSha256": "b46707461f4ba5bd0f3eac6b0aa126764014e12ad42144df12c777200f2810ad",
+    "capturedAt": "2026-05-09",
+    "notes": "Draft Slice A baseline. Draft mode validates freshness and assigned-slice consistency without requiring all current tickets to be assigned yet."
+  },
+  "topics": [
+    {
+      "topicId": "driver-hand-signals-draft",
+      "status": "draft",
+      "ownerSlice": "A"
+    }
+  ],
+  "assignments": [
+    {
+      "questionId": "b-fallback-001",
+      "topicIds": ["driver-hand-signals-draft"],
+      "status": "draft",
+      "ownerSlice": "A"
+    }
+  ]
+}
