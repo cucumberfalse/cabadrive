@@ -67,6 +67,55 @@
       }
     },
     {
+      "id": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "title": "DECRETO 779-95 ANEXO L - SISTEMA DE SEÑALIZACION VIAL UNIFORME",
+      "officialSourceType": "national_decree_annex_updated_text",
+      "sourceUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T03:17:00-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.md",
+      "rawOriginalPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.html",
+      "hashAlgorithm": "sha256",
+      "hash": "213a662a29d47120b445d0d97a4e17120aef68a1c9de00523aa652d98f4c7a64",
+      "conversionMethod": "Scripted extraction from the official InfoLeg updated Anexo L HTML body to Markdown; source bytes were decoded from Windows-1252 to UTF-8, paragraph and line-break structure was preserved as Markdown text, links were flattened to visible text, and source image references were converted to Markdown image references pointing to local originals.",
+      "conversionNotes": "Official wording, annex label, chapter headings, numbering, signal codes, signal names, captions, and the final IF identifier are preserved as text as far as the HTML source exposes them. The source is a Microsoft Word-style HTML page with embedded line wraps and 15 referenced JPG figures; Markdown cannot preserve the original page layout, alignment, colors, sign graphics, or Word/HTML styling. The referenced JPG files were stored under originals/ for later visual validation. The official Argentina.gob.ar Decreto 196/2025 PDF annex endpoint was checked as supporting source evidence but is not stored in this entry because the archived body source is the current InfoLeg HTML. Final exact-text validation remains pending.",
+      "supportingOriginalPaths": [
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-05.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-06.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-07.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-08.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-09.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-10.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-11.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-12.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-13.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-14.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-15.jpg"
+      ],
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "current",
+        "validationStatus": "passed",
+        "statusEvidence": "Official InfoLeg updated Anexo L page was retrieved successfully and states: Anexo sustituido por art. 24 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL. The existing archived main Decreto 779 updated page also lists Anexo L as substituted by Decreto N° 196/2025.",
+        "amendmentRepealEvidence": "Official Argentina.gob.ar Decreto 196/2025 text was checked and its considerandos state the need to modify Anexo L - Sistema de Señalización Vial Uniforme; its articles substitute Anexo L via article 24. The Argentina.gob.ar PDF archive endpoint for 30389_dec196-3_pdf was checked as supporting official evidence for the substituted annex body.",
+        "evidenceUrls": [
+          "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+          "https://www.argentina.gob.ar/normativa/30389_dec196-3_pdf/archivo",
+          "https://www.argentina.gob.ar/normativa/nacional/decreto-196-2025-410682/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This Slice D3 archive performed retrieval, conversion, local hash verification, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+      }
+    },
+    {
       "id": "ley-2148-caba-codigo-transito-transporte",
       "title": "Ley 2148 - Código de Transito y Transporte de la CABA",
       "officialSourceType": "caba_law_updated_text",
