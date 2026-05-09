@@ -17,7 +17,13 @@ content/official-documents/
 
 This area is for verbatim official source documents and materials that support Cabadrive source traceability. It is not a place for Russian explanations, summaries, translations, or topic-guide prose.
 
-`content/official-documents/manifest.json` is the machine-readable manifest for the archive. The initial Slice B manifest is draft and intentionally has an empty `entries` array; no broad official sources have been downloaded or converted in this foundation slice.
+`content/official-documents/manifest.json` is the machine-readable manifest for the archive. The manifest remains draft while exact-text and whole-archive currentness validation are future release gates, but Slice D seeds a small reusable official-source bundle for later topic-guide work:
+
+- `ley-24449-transito-seguridad-vial`: Ley Nacional de Tránsito 24.449 updated text from official InfoLeg.
+- `decreto-779-1995-reglamentario-ley-24449`: Decreto 779/1995 updated main regulatory text from Argentina.gob.ar.
+- `ley-2148-caba-codigo-transito-transporte`: Ley 2148 / Código de Tránsito y Transporte de la CABA updated provincial text from Argentina.gob.ar.
+
+Each seeded entry has Markdown under `content/official-documents/documents/`, clean HTML evidence under `content/official-documents/originals/`, SHA-256 metadata for the Markdown, and preliminary currentness/effective-status evidence checked on 2026-05-09.
 
 Each future manifest entry must record:
 
@@ -55,7 +61,7 @@ Allowed `currentness.validationStatus` and `exactTextValidation.status` values a
 
 `scripts/validate-content.mjs` integrates the official-documents manifest validator with real local file existence and SHA-256 checks. An empty draft manifest passes validation. Entries, when present, must have required metadata, local paths inside the archive section, SHA-256 hash metadata that matches the local archived Markdown file, conversion notes, currentness fields, exact-text validation status, and raw/original evidence for lossy formats.
 
-The final topic-study-guide release still requires later dedicated whole-archive exact-text and currentness validation slices. This foundation establishes the local governance and draft-safe validation boundary only.
+The final topic-study-guide release still requires later dedicated whole-archive exact-text and currentness validation slices. The seeded Slice D entries intentionally keep `exactTextValidation.status` as `pending` until that dedicated validation is performed.
 
 ## Related Guide Files
 

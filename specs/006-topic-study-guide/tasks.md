@@ -53,13 +53,13 @@
 
 ## Future Slice D: Shared Official Source Archive Seed
 
-- [ ] T037 Identify official sources reused across many topic slices, starting from the intake candidates but rechecking currentness at implementation time.
-- [ ] T038 Download required official source materials in full from official URLs.
-- [ ] T039 Convert official source text to Markdown without paraphrase, translation, simplification, or editorial rewriting.
-- [ ] T040 Store raw/original evidence when source format is PDF or otherwise lossy.
-- [ ] T041 Add manifest entries with title, source URL, retrieval date/timestamp, local paths, hashes, conversion notes, currentness status, amendment/repeal evidence, and checked-at date.
-- [ ] T042 Validate the manifest entries touched by the slice.
-- [ ] T043 Record conversion limitations and source-currentness evidence in process memory.
+- [x] T037 Identify official sources reused across many topic slices, starting from the intake candidates but rechecking currentness at implementation time.
+- [x] T038 Download required official source materials in full from official URLs.
+- [x] T039 Convert official source text to Markdown without paraphrase, translation, simplification, or editorial rewriting.
+- [x] T040 Store raw/original evidence when source format is PDF or otherwise lossy.
+- [x] T041 Add manifest entries with title, source URL, retrieval date/timestamp, local paths, hashes, conversion notes, currentness status, amendment/repeal evidence, and checked-at date.
+- [x] T042 Validate the manifest entries touched by the slice.
+- [x] T043 Record conversion limitations and source-currentness evidence in process memory.
 
 ## Future Slice E: Topic Content Slices
 
@@ -151,6 +151,12 @@
 - Slice C review refinement accepted the taxonomy-quality finding that `right-of-way-intersections`, `pedestrians-and-school-zones`, `parking-and-stopping`, `turns-overtaking-and-lane-changes`, and `road-markings-and-lanes` were too large for compact future guide blocks. The refined baseline replaces those 5 oversized topics with 15 narrower planned topics: basic/signal/special right-of-way; pedestrian crossings/school markings/shared vulnerable spaces; parking prohibitions/stopping-vs-parking/clearances; turns/overtaking/lane choice; center-line/lane-channelization/pedestrian-school road markings.
 - Slice C review refinement keeps all topics at or below 30 placements. No planned topic remains materially above the about-35 placement guidance, so no exception is needed.
 - Slice C narrow validator follow-up requires `coverage.topics[].phase` to be one of `planned`, `content_ready`, or `published`, matching the assignment phase enum. This closes the gap where a misspelled topic phase could be silently treated as non-rendered.
+- Slice D seeded three reusable official-document archive entries and kept the manifest `status: "draft"` because final exact-text validation and whole-archive release validation remain Slice G work.
+- Slice D archived `ley-24449-transito-seguridad-vial` from the official InfoLeg updated-text URL because the intake Argentina.gob.ar `/texto` page was reachable but labeled itself as original text, and its `/actualizacion` URL returned 404 on 2026-05-09.
+- Slice D archived `decreto-779-1995-reglamentario-ley-24449` from the official Argentina.gob.ar `Texto actualizado de la norma` page. Separate Decreto 779 annex bodies were not archived in this small seed because the official page states annexes are consulted separately due to length; topic slices that cite annex-specific text must archive the relevant annex entries.
+- Slice D archived `ley-2148-caba-codigo-transito-transporte` from the official Argentina.gob.ar provincial updated-text page because the user-listed GCBA historical page was reachable but only contained a short/partial Ley 2148 page.
+- Slice D stored clean HTML evidence for each seeded HTML source under `content/official-documents/originals/` even though raw originals are not required for HTML by the validator. The Ley 24.449 InfoLeg HTML was decoded from Windows-1252 to UTF-8 for repository cleanliness.
+- Slice D skipped the optional GCBA four-wheel manual PDF because the current official PDF is 68.3 MB and would require a careful PDF/OCR/table/image extraction and exact-text evidence path outside this small legal-source seed. Future topic slices may archive it if they need manual-specific claims.
 
 ### Known Issues
 
@@ -163,6 +169,9 @@
 - Slice B did not run network research, download official documents, convert official documents, or add manifest entries. Slice D and later topic content slices remain responsible for official source acquisition and conversion.
 - Slice C did not run network research, download official documents, seed official sources, author full guide prose, author all answer explanations, integrate UI, or enable final strict published release gates.
 - Slice C taxonomy placements are a planned baseline for future content slices. Later topic authors may refine individual placements only with updated coverage evidence and the same maximum-two-topic rule.
+- Slice D exact-text validation remains pending for all seeded entries. The Markdown preserves official text, paragraph order, headings/article numbering, and amendment notes as plain text, but final exact-text comparison against primary sources is explicitly deferred to the dedicated whole-archive validation slice.
+- Slice D conversion flattened HTML styling and link targets into visible text. Future exact-text validation should compare wording, numbering, headings, and structure against the original HTML evidence and record any unavoidable formatting/link-target limitations.
+- Decreto 779/1995 annex bodies, including the signal-system annex likely needed by sign topics, are not yet archived as separate official-document entries.
 
 ### Verification Evidence
 
@@ -228,12 +237,25 @@
 - Slice C topic-phase validator follow-up verification: `node --test tests/content-topic-guide.test.mjs` passed 18 tests after adding regression coverage for an invalid `coverage.topics[].phase` value.
 - Slice C topic-phase validator follow-up verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
 - Slice C topic-phase validator follow-up verification: `git diff --check` passed with no output.
+- Slice D worktree orientation: `pwd && git status --short --branch` reported `/Users/chap/devel/cabadrive/.claude/worktrees/006-official-source-archive-seed` and `## codex/006-official-source-archive-seed...origin/main` before implementation edits.
+- Slice D required memory read: `AGENTS.md`, `.specify/memory/constitution.md`, `docs_project/README.md`, `docs_project/project-idea.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, `docs_project/screens/learning-and-exam-flows.md`, `docs/specify/README.md`, active feature memory `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, `content/official-documents/AGENTS.md`, `docs_project/project/content-sources.md`, `scripts/official-documents-validation.mjs`, and `tests/official-documents-validation.test.mjs`.
+- Slice D official source URLs checked on 2026-05-09: `https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto`, `https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/actualizacion`, `https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/818/texact.htm`, `https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion`, `https://www.argentina.gob.ar/normativa/nacional/decreto-196-2025-410682/texto`, `https://buenosaires.gob.ar/gcaba_historico/normativa-general/ley-2148`, `https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion`, and `https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para`.
+- Slice D initial manifest validation smoke evidence: `pnpm run validate:content` passed with the three seeded manifest entries and local SHA-256 comparison, reporting 460 category B fallback questions and 276 local image references.
+- Slice D hash evidence: a local Node SHA-256 check compared every manifest `hash` to its `localPath` Markdown file and printed `OK` for `ley-24449-transito-seguridad-vial` (`306d0473125c01e0956c69335d451962b847c4c131c5d188c026a7c7ffc74ad4`), `decreto-779-1995-reglamentario-ley-24449` (`40f20546bc74faa100569cf40e9f1a2828cca815d520badef21745dbd85177e4`), and `ley-2148-caba-codigo-transito-transporte` (`d8fab0170d78f0b226cf2e1627bc647a12f9b32b350010e99c1dc6bdfd9e478f`).
+- Slice D targeted validator evidence: `node --test tests/official-documents-validation.test.mjs` passed 20 tests after updating the committed-manifest test to validate repository files and hashes.
+- Slice D final verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice D final verification: `pnpm run test` passed 69 Node tests.
+- Slice D final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service-worker generation reported 280 cached assets.
+- Slice D final verification: initial `pnpm run build` failed before `pnpm install` because the isolated worktree had no `node_modules` and `vite` was not installed. `pnpm install` completed with the lockfile already up to date and no tracked dependency-file changes, then build/preflight continued.
+- Slice D final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 69 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice D final verification: `git diff --check` passed with no output.
 
 ### Implementation Agent Feedback
 
 - Slice A: none requiring Architect disposition.
 - Slice B: none requiring Architect disposition.
 - Slice C: none requiring Architect disposition.
+- Slice D: topic slices that need Decreto 779 annex-specific claims, especially signage/technical vehicle material, should archive those annexes as separate manifest entries rather than citing only the main Decreto 779 page. The optional GCBA four-wheel manual PDF also needs a separate PDF conversion/evidence slice if topic content will cite manual-only claims.
 
 ### Architect Dispositions
 

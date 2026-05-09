@@ -3,6 +3,98 @@
   "status": "draft",
   "schema": "official-documents-manifest.v1",
   "sectionPath": "content/official-documents",
-  "description": "Governed manifest for official source documents archived verbatim for Cabadrive source traceability. Slice B intentionally seeds no documents.",
-  "entries": []
+  "description": "Governed manifest for official source documents archived verbatim for Cabadrive source traceability. Slice D seeds common legal sources for future topic-guide slices; final exact-text/currentness validation remains a later whole-archive gate.",
+  "entries": [
+    {
+      "id": "ley-24449-transito-seguridad-vial",
+      "title": "Ley 24449 del 23/12/94",
+      "officialSourceType": "national_law_updated_text",
+      "sourceUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/818/texact.htm",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T01:48:58-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/ley-24449-transito-seguridad-vial.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-24449-transito-seguridad-vial.html",
+      "hashAlgorithm": "sha256",
+      "hash": "306d0473125c01e0956c69335d451962b847c4c131c5d188c026a7c7ffc74ad4",
+      "conversionMethod": "Scripted extraction from official HTML body to Markdown paragraphs; Windows-1252 source decoded to UTF-8; inline emphasis and links flattened to visible text.",
+      "conversionNotes": "Official wording, paragraph order, article numbering, headings, and amendment notes are preserved as text. HTML styling, link targets, header images, and site chrome are not represented in Markdown. Final exact-text validation remains pending.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "current",
+        "validationStatus": "passed",
+        "statusEvidence": "Official InfoLeg texact page was retrieved successfully and contains updated amendment notes, including 2025 amendment/currentness notes in the visible text.",
+        "amendmentRepealEvidence": "The Argentina.gob.ar /texto URL from intake was checked and presented itself as Texto original de la norma, while its /actualizacion path returned 404. The official InfoLeg texact page was therefore used for the updated text seed.",
+        "evidenceUrls": [
+          "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/818/texact.htm",
+          "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/actualizacion"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This slice performed source retrieval, conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation is reserved for Slice G."
+      }
+    },
+    {
+      "id": "decreto-779-1995-reglamentario-ley-24449",
+      "title": "Decreto Reglamentario 779 / 1995",
+      "officialSourceType": "national_decree_updated_text",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T01:47:27-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/decreto-779-1995-reglamentario-ley-24449.md",
+      "rawOriginalPath": "content/official-documents/originals/decreto-779-1995-reglamentario-ley-24449.html",
+      "hashAlgorithm": "sha256",
+      "hash": "40f20546bc74faa100569cf40e9f1a2828cca815d520badef21745dbd85177e4",
+      "conversionMethod": "Scripted extraction from official Argentina.gob.ar normativa article HTML to Markdown paragraphs; inline emphasis and links flattened to visible text.",
+      "conversionNotes": "The main updated decree page was archived in full as served at the source URL. The page states that annexes are consulted separately because of their length; separate annex bodies are not archived in this Slice D seed. Final exact-text validation remains pending.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "current",
+        "validationStatus": "passed",
+        "statusEvidence": "Official Argentina.gob.ar normativa page was retrieved successfully and labels the content as Texto actualizado de la norma.",
+        "amendmentRepealEvidence": "The archived text includes current annex amendment notes, including Decreto N° 196/2025 amendment references for several annexes.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion",
+          "https://www.argentina.gob.ar/normativa/nacional/decreto-196-2025-410682/texto"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This slice did not perform final exact-text comparison. Annex-specific archive and validation remain future work before topics cite annex text."
+      }
+    },
+    {
+      "id": "ley-2148-caba-codigo-transito-transporte",
+      "title": "Ley 2148 - Código de Transito y Transporte de la CABA",
+      "officialSourceType": "caba_law_updated_text",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+      "retrievalDate": "2026-05-09",
+      "retrievalTimestamp": "2026-05-09T01:48:48-03:00",
+      "sourceFormat": "html",
+      "localPath": "content/official-documents/documents/ley-2148-caba-codigo-transito-transporte.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-2148-caba-codigo-transito-transporte.html",
+      "hashAlgorithm": "sha256",
+      "hash": "d8fab0170d78f0b226cf2e1627bc647a12f9b32b350010e99c1dc6bdfd9e478f",
+      "conversionMethod": "Scripted extraction from official Argentina.gob.ar provincial normativa article HTML to Markdown paragraphs; inline emphasis and links flattened to visible text.",
+      "conversionNotes": "Official wording, paragraph order, article numbering, annex text, and general observations are preserved as text. The user-listed GCBA historical page was checked but contained only a short/partial Ley 2148 page, so the full Argentina.gob.ar provincial updated text was archived. Final exact-text validation remains pending.",
+      "currentness": {
+        "checkedAt": "2026-05-09",
+        "status": "in_force",
+        "validationStatus": "passed",
+        "statusEvidence": "Official Argentina.gob.ar provincial normativa page was retrieved successfully and its visible text states Vigente, de alcance general.",
+        "amendmentRepealEvidence": "The archived text includes general observations for the consolidated text and records that the Texto Consolidado is approved by Ley N° 6.347.",
+        "evidenceUrls": [
+          "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+          "https://buenosaires.gob.ar/gcaba_historico/normativa-general/ley-2148"
+        ]
+      },
+      "exactTextValidation": {
+        "status": "pending",
+        "notes": "This slice performed preliminary currentness verification only. Dedicated whole-archive exact-text validation remains required before final release."
+      }
+    }
+  ]
 }
