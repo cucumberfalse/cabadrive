@@ -317,6 +317,22 @@
 - Slice E2 build evidence: `pnpm run build` passed after dependency installation; Vite emitted the existing non-blocking chunk-size warning and service-worker generation reported 280 cached assets.
 - Slice E2 diff hygiene evidence: `git diff --check` passed with no output.
 - Slice E2 preflight evidence: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
+- Slice D3 worktree orientation: created isolated worktree `/Users/chap/devel/cabadrive/.claude/worktrees/006-decreto-779-signage-annex-archive` on branch `codex/006-decreto-779-signage-annex-archive` from `origin/main` at `b1f78ae`, which includes merged PR #18.
+- Slice D3 required memory read: `AGENTS.md`, active feature memory `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, `content/official-documents/AGENTS.md`, `content/official-documents/manifest.json`, `scripts/official-documents-validation.mjs`, and `tests/official-documents-validation.test.mjs` before implementation edits.
+- Slice D3 official source URLs checked on 2026-05-09: `https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm`, `https://www.argentina.gob.ar/normativa/30389_dec196-3_pdf/archivo`, `https://www.argentina.gob.ar/normativa/nacional/decreto-196-2025-410682/texto`, and `https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion`.
+- Slice D3 archive decision: added one annex-specific manifest entry, `decreto-779-1995-anexo-l-senalizacion-vial-uniforme`, for the current substituted Anexo L / Sistema de Señalizacion Vial Uniforme body. The main Decreto 779 page was not re-archived because `decreto-779-1995-reglamentario-ley-24449` already exists and records the Anexo L substitution note.
+- Slice D3 conversion decision: converted the official InfoLeg updated Anexo L HTML body from Windows-1252 to UTF-8 Markdown without translation, paraphrase, simplification, or editorial rewriting. The Markdown preserves the annex label, chapter headings, numbering, signal codes, signal names, captions, and final IF identifier as text, and converts the 15 source image references to Markdown image references pointing to locally archived originals.
+- Slice D3 raw evidence decision: stored the decoded official HTML at `content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.html` and all 15 referenced InfoLeg JPG files under `content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/`. The official Argentina.gob.ar Decreto 196/2025 Anexo L PDF endpoint was checked as supporting source evidence, but the PDF artifact is not stored in this entry because the archived body source is the current InfoLeg HTML.
+- Slice D3 conversion limitations: the source is Microsoft Word-style HTML with embedded line wraps and image-only figures; Markdown cannot preserve original page layout, alignment, colors, sign graphics, or Word/HTML styling. Exact-text validation remains pending for the final strict release gate.
+- Slice D3 hash evidence: a local SHA-256 check produced `213a662a29d47120b445d0d97a4e17120aef68a1c9de00523aa652d98f4c7a64` for `content/official-documents/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.md`, and the manifest entry records the same hash.
+- Slice D3 manifest hash evidence: a local Node SHA-256 check compared every manifest `hash` to its `localPath` Markdown file and printed `OK` for all four entries, including `decreto-779-1995-anexo-l-senalizacion-vial-uniforme` (`213a662a29d47120b445d0d97a4e17120aef68a1c9de00523aa652d98f4c7a64`).
+- Slice D3 targeted validator evidence: `node --test tests/official-documents-validation.test.mjs` passed 20 tests with the new Anexo L manifest entry and local files.
+- Slice D3 content-validation evidence: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references.
+- Slice D3 test evidence: `pnpm run test` passed 72 Node tests.
+- Slice D3 build note: the first `pnpm run build` failed because the isolated worktree had no `node_modules` and `vite` was not installed. `pnpm install` completed with the lockfile already up to date and no tracked dependency-file changes, then build verification continued.
+- Slice D3 build evidence: `pnpm run build` passed after dependency installation; Vite emitted the existing non-blocking chunk-size warning and service-worker generation reported 280 cached assets.
+- Slice D3 diff hygiene evidence: `git diff --check` passed with no output after the archive and process-memory updates.
+- Slice D3 preflight evidence: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 72 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Vite emitted the existing non-blocking chunk-size warning and Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 
 ### Implementation Agent Feedback
 
@@ -326,6 +342,7 @@
 - Slice D: topic slices that need Decreto 779 annex-specific claims, especially signage/technical vehicle material, should archive those annexes as separate manifest entries rather than citing only the main Decreto 779 page. The optional GCBA four-wheel manual PDF also needs a separate PDF conversion/evidence slice if topic content will cite manual-only claims.
 - Slice D2: none requiring Architect disposition.
 - Slice E1: `b-fallback-296` and `b-fallback-343` appear to be route-sign recognition tickets, not speed-limit tickets. They were retained in `speed-limits` because this PR must follow the current taxonomy, but Architect should consider whether their speed placement should be removed or moved in a future taxonomy refinement while preserving the maximum-two-topic rule.
+- Slice D3: none requiring Architect disposition.
 
 ### Architect Dispositions
 
