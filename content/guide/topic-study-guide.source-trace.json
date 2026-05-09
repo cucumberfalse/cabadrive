@@ -1768,6 +1768,122 @@
       "notes": "Supports sustainable-mobility framing without turning this slice into the full bicycles-and-micromobility topic."
     },
     {
+      "id": "bicycles-micromobility-definitions-and-spaces",
+      "topicId": "bicycles-and-micromobility",
+      "claimId": "claim-bike-definitions-and-spaces",
+      "claimSummaryRu": "Ley 2148 defines the bicycle/micromobility terms used in this topic and Anexo L supports broad cyclist sign/marking context; exact image option mappings remain fallback-ticket-specific.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones Generales: Bicicleta, Bicisenda, Ciclocarril, Ciclorrodado, Ciclorrodado con pedaleo asistido eléctricamente, Ciclovía",
+        "Ley 2148 6.10.2 Definiciones aplicables",
+        "Ley 2148 14.4.2 Sistema de red de carriles",
+        "Anexo L P.26 Ciclistas o jinetes",
+        "Anexo L H.6 Senda para ciclistas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force/current",
+      "notes": "Supports definitions and broad cycling-space framing for b-fallback-008, 037, 168, 294, 337, and 426. Exact A/B/C image labels and b-fallback-140 descender sign remain ticket-specific."
+    },
+    {
+      "id": "bicycles-micromobility-circulation-age-priority",
+      "topicId": "bicycles-and-micromobility",
+      "claimId": "claim-bike-circulation-age-and-priority",
+      "claimSummaryRu": "Ley 2148 supports ciclorrodado circulation on permitted arteries, prohibited fast roads/arteries, under-12 circulation conditions, use of cycling infrastructure, non-central calzada positioning where absent, and priority over turning automotores.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.10.5 Arterias libradas a la circulación de ciclorrodados",
+        "Ley 2148 6.10.6 Requisitos para conductores de ciclorrodados",
+        "Ley 2148 6.10.8 Circulación de ciclorrodados",
+        "Ley 2148 6.10.9 Prioridad de paso",
+        "Ley 2148 6.10.10 Circulación de dispositivos de movilidad personal"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-136, 142, 186, 284, 373, and 458. The guide keeps cyclist priority narrow to turning-automotor and group-entry cases."
+    },
+    {
+      "id": "bicycles-micromobility-assisted-dmp-speed",
+      "topicId": "bicycles-and-micromobility",
+      "claimId": "claim-dmp-and-assisted-speed",
+      "claimSummaryRu": "Ley 2148 supports the 25 km/h general maximum for ciclorrodados with electric pedal assist and DMP, plus assisted-ciclorrodado equipment boundaries; b-fallback-094 progressive power cutoff is not generalized beyond ticket wording.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 Definiciones Generales: Ciclorrodado con pedaleo asistido eléctricamente",
+        "Ley 2148 4.2.4 Requisitos para ciclorodados",
+        "Ley 2148 4.2.5 Requisitos para dispositivos de movilidad personal",
+        "Ley 2148 6.2.3(j)-(k) Límites máximos especiales",
+        "Ley 2148 6.10.10 Circulación de dispositivos de movilidad personal"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-094, b-fallback-425, and DMP context in b-fallback-337."
+    },
+    {
+      "id": "bicycles-micromobility-safety-load-distraction",
+      "topicId": "bicycles-and-micromobility",
+      "claimId": "claim-bike-safety-load-and-distraction",
+      "claimSummaryRu": "Ley 2148 and Ley 24.449 support cargo securement/stability, driver attention and no-auriculares framing used for bicycle safety tickets; exact ropa oscura y suelta wording remains fallback-ticket-specific.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 4.2.3 Transporte de carga en motovehículos y ciclorodados",
+        "Ley 2148 5.2.1 Condiciones para conducir",
+        "Ley 2148 5.2.4(e) Prohibiciones",
+        "Ley 2148 5.3.1 Regla general",
+        "Ley 2148 5.3.2(h) Obligaciones",
+        "Ley 24.449 Artículo 40 bis Requisitos para circular con bicicletas",
+        "Ley 24.449 Artículo 48(x) Prohibiciones"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-069, b-fallback-354, and b-fallback-366. Clothing details are taught as the fallback answer wording, not a separately sourced official clothing catalogue."
+    },
+    {
+      "id": "bicycles-micromobility-parking-curb-color",
+      "topicId": "bicycles-and-micromobility",
+      "claimId": "claim-bike-parking-and-curb-color",
+      "claimSummaryRu": "Ley 2148 supports orange curbs for exclusive ciclorodado/motovehicle parking, sidewalk/free designed parking spaces for ciclorodados/DMP, and a city bike/DMP parking network; exact b-fallback-228 parking-lot obligation remains ticket-specific.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 2.4.4.1 Colores en cordones",
+        "Ley 2148 7.1.22 Estacionamiento de ciclorodado y dispositivos de movilidad personal",
+        "Ley 2148 7.5 Red de Estacionamiento de Ciclorodados y Dispositivos de Movilidad Personal",
+        "Ley 2148 14.2.3 Estaciones de distribución y estacionamiento"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-280 and broad parking framing for b-fallback-228; the exact “estacionamientos están obligados” statement was not generalized beyond the fallback ticket."
+    },
+    {
+      "id": "bicycles-micromobility-sustainable-risk-framing",
+      "topicId": "bicycles-and-micromobility",
+      "claimId": "claim-bike-sustainable-risk-framing",
+      "claimSummaryRu": "Ley 2148 supports public-bicycle goals, safe bicycle-lane network, visibility at intersections, and user education/cooperation framing used to explain sustainable-mobility and risk traps.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 14.1.2 Objetivo",
+        "Ley 2148 14.4.2 Sistema de red de carriles",
+        "Ley 2148 14.4.3 Características de la infraestructura",
+        "Ley 2148 14.5.1 Obligación"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports concise sustainable mobility framing for b-fallback-352 without claiming a standalone official probability statistic from the ticket wording."
+    },
+    {
       "id": "safe-distance-two-seconds-and-prudent-distance",
       "topicId": "safe-distance-and-braking",
       "claimId": "claim-safe-distance-two-seconds-and-prudent-distance",
