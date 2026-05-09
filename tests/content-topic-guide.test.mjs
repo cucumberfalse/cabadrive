@@ -283,7 +283,7 @@ test("requires source trace entries for claims marked as official-source-backed"
   const missingTraceErrors = validate({ guideContent });
   assert(missingTraceErrors.includes("signals/claim-1: missing source trace entry trace-1."));
 
-  const trace = sourceTrace({
+  const emptyDocumentTrace = sourceTrace({
     entries: [
       {
         id: "trace-1",
@@ -295,6 +295,61 @@ test("requires source trace entries for claims marked as official-source-backed"
       }
     ]
   });
+  const emptyDocumentErrors = validate({ guideContent, trace: emptyDocumentTrace });
+  assert(emptyDocumentErrors.includes("trace-1: source trace officialDocumentIds must be a non-empty array."));
+
+  const trace = sourceTrace({
+    entries: [
+      {
+        id: "trace-1",
+        topicId: "signals",
+        claimId: "claim-1",
+        claimSummaryRu: "Проверяемое утверждение.",
+        officialDocumentIds: ["official-doc-1"],
+        checkedAt: "2026-05-09"
+      }
+    ]
+  });
   assert.deepEqual(validate({ guideContent, trace }), []);
 });
 
+test("rejects source trace entries with blank official document IDs", () => {
+  const trace = sourceTrace({
+    entries: [
+      {
+        id: "trace-blank-doc",
+        topicId: "signals",
+        claimId: "claim-1",
+        claimSummaryRu: "Проверяемое утверждение.",
+        officialDocumentIds: ["official-doc-1", " "],
+        checkedAt: "2026-05-09"
+      }
+    ]
+  });
+
+  const errors = validate({ trace });
+  assert(errors.includes("trace-blank-doc: source trace officialDocumentIds must contain only non-empty strings."));
+});
+
+test("rejects guideId mismatches across topic guide manifests", () => {
+  const coverageManifest = coverage({ guideId: "other-guide" });
+  const trace = sourceTrace({ guideId: "other-trace" });
+
+  const errors = validate({ coverageManifest, trace });
+  assert(errors.includes("topic guide coverage guideId must match topic guide id."));
+  assert(errors.includes("topic guide source trace guideId must match topic guide guideId."));
+});
+
+test("rejects manifest status disagreement that could hide strict validation", () => {
+  const guideContent = guide({ status: "published" });
+  const coverageManifest = coverage({ status: "draft" });
+  const trace = sourceTrace({ status: "draft" });
+
+  const guideCoverageErrors = validate({ guideContent, coverageManifest, trace });
+  assert(guideCoverageErrors.includes("topic guide and coverage statuses must match."));
+  assert(guideCoverageErrors.includes("q2: published guide must assign every current question."));
+
+  const sourceTraceErrors = validate({ trace: sourceTrace({ status: "published" }) });
+  assert(sourceTraceErrors.includes("topic guide source trace status must match topic guide and coverage status."));
+  assert(sourceTraceErrors.includes("q2: published guide must assign every current question."));
+});

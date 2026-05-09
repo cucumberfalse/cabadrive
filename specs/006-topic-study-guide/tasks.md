@@ -134,6 +134,8 @@
 - Slice A implemented the draft/published pattern through `status: "draft" | "published"` on both `content/guide/topic-study-guide.ru.json` and `content/guide/topic-study-guide.coverage.json`. Draft validation enforces baseline freshness, structure, assignment consistency, answer explanations, vocabulary provenance, and source-trace references for marked claims, but does not require all 460 tickets yet. Published validation requires every current question ID to be assigned.
 - Slice A keeps source trace as `content/guide/topic-study-guide.source-trace.json` with an empty draft `entries` array because the placeholder topic does not introduce official-source-backed claims. Official-documents governance remains deferred to Slice B.
 - Slice A added only one structured placeholder topic and one ticket placement for schema validation. Taxonomy discovery, complete coverage, official archive work, full guide prose, and UI exposure remain deferred to later slices.
+- Slice A review hardening requires guide, coverage, and source-trace `guideId`/`status` fields to agree. Any `published` status in one manifest activates strict complete-coverage validation, and mismatched statuses now fail instead of silently downgrading the guide to draft behavior.
+- Slice A review hardening requires every source-trace entry to include at least one non-empty `officialDocumentIds` value. Draft compatibility is preserved because draft manifests may have zero source-trace entries when no official-source-backed claims exist, but any present entry must point at a future official-document manifest ID.
 
 ### Known Issues
 
@@ -164,6 +166,8 @@
 - Slice A final verification: `pnpm run build` passed; Vite emitted the existing non-blocking chunk-size warning and service worker generation reported 280 cached assets.
 - Slice A final verification: `pnpm run preflight` passed; feature-memory gate, repository baseline, content validation, 42 Node tests, production build, nested e2e build, and 8 Playwright tests all passed. Playwright web server emitted the existing `NO_COLOR`/`FORCE_COLOR` warnings.
 - Slice A final verification: `git diff --check` passed with no output.
+- Slice A review hardening targeted evidence: `node --test tests/content-topic-guide.test.mjs` passed 14 tests after adding checks for non-empty `officialDocumentIds`, blank official document IDs, guide/source-trace `guideId` mismatch, and status disagreement that could hide strict mode.
+- Slice A review hardening final verification: `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run test` passed 45 Node tests; `pnpm run build` passed with the existing non-blocking Vite chunk-size warning and 280 cached service-worker assets; `pnpm run preflight` passed with 45 Node tests and 8 Playwright tests; `git diff --check` passed with no output.
 
 ### Implementation Agent Feedback
 

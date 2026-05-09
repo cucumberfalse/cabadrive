@@ -1,8 +1,6 @@
 import { createHash } from "node:crypto";
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
-const SHA256_PATTERN = /^[a-f0-9]{64}$/;
-
 function isPlainObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
@@ -55,13 +53,23 @@ export function topicGuideQuestionBaseline(questions) {
   };
 }
 
-function validateSourceTrace({ sourceTrace, topicIds, requiredClaimRefs }) {
+function validateSourceTrace({ sourceTrace, topicIds, requiredClaimRefs, expectedGuideId, expectedStatus }) {
   const errors = [];
   if (!isPlainObject(sourceTrace)) {
     errors.push("topic guide source trace must be an object.");
     return { errors, entryById: new Map() };
   }
   if (sourceTrace.version !== 1) errors.push("topic guide source trace version must be 1.");
+  if (!isNonEmptyString(sourceTrace.guideId)) {
+    errors.push("topic guide source trace guideId must be a non-empty string.");
+  } else if (isNonEmptyString(expectedGuideId) && sourceTrace.guideId !== expectedGuideId) {
+    errors.push("topic guide source trace guideId must match topic guide guideId.");
+  }
+  if (!["draft", "published"].includes(sourceTrace.status)) {
+    errors.push("topic guide source trace status must be draft or published.");
+  } else if (["draft", "published"].includes(expectedStatus) && sourceTrace.status !== expectedStatus) {
+    errors.push("topic guide source trace status must match topic guide and coverage status.");
+  }
   if (!Array.isArray(sourceTrace.entries)) errors.push("topic guide source trace entries must be an array.");
 
   const entryById = new Map();
@@ -80,8 +88,9 @@ function validateSourceTrace({ sourceTrace, topicIds, requiredClaimRefs }) {
     }
     if (!isNonEmptyString(entry.claimId)) errors.push(`${label}: source trace claimId must be a non-empty string.`);
     if (!isNonEmptyString(entry.claimSummaryRu)) errors.push(`${label}: source trace claimSummaryRu must be a non-empty string.`);
-    if (!Array.isArray(entry.officialDocumentIds)) errors.push(`${label}: source trace officialDocumentIds must be an array.`);
-    if (entry.officialDocumentIds?.some((id) => !isNonEmptyString(id))) {
+    if (!Array.isArray(entry.officialDocumentIds) || entry.officialDocumentIds.length === 0) {
+      errors.push(`${label}: source trace officialDocumentIds must be a non-empty array.`);
+    } else if (entry.officialDocumentIds.some((id) => !isNonEmptyString(id))) {
       errors.push(`${label}: source trace officialDocumentIds must contain only non-empty strings.`);
     }
     if (!DATE_PATTERN.test(entry.checkedAt || "")) errors.push(`${label}: source trace checkedAt must be YYYY-MM-DD.`);
@@ -120,6 +129,7 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
     return errors;
   }
   if (guide.version !== 1) errors.push("topic guide content version must be 1.");
+  if (!isNonEmptyString(guide.id)) errors.push("topic guide id must be a non-empty string.");
   if (guide.locale !== "ru") errors.push("topic guide locale must be ru.");
   if (!["draft", "published"].includes(guide.status)) errors.push("topic guide status must be draft or published.");
   if (guide.contentStatus !== "unofficial_learning_aid") {
@@ -135,7 +145,19 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
     return errors;
   }
   if (coverage.version !== 1) errors.push("topic guide coverage version must be 1.");
+  if (!isNonEmptyString(coverage.guideId)) {
+    errors.push("topic guide coverage guideId must be a non-empty string.");
+  } else if (isNonEmptyString(guide.id) && coverage.guideId !== guide.id) {
+    errors.push("topic guide coverage guideId must match topic guide id.");
+  }
   if (!["draft", "published"].includes(coverage.status)) errors.push("topic guide coverage status must be draft or published.");
+  if (
+    ["draft", "published"].includes(guide.status) &&
+    ["draft", "published"].includes(coverage.status) &&
+    guide.status !== coverage.status
+  ) {
+    errors.push("topic guide and coverage statuses must match.");
+  }
 
   const baseline = topicGuideQuestionBaseline(questionList);
   if (!isPlainObject(coverage.baseline)) {
@@ -362,7 +384,7 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
     }
   }
 
-  const isPublished = guide.status === "published" || coverage.status === "published";
+  const isPublished = [guide.status, coverage.status, sourceTrace?.status].includes("published");
   if (isPublished) {
     for (const questionId of questionById.keys()) {
       if (!coverageAssignments.has(questionId)) {
@@ -371,7 +393,15 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
     }
   }
 
-  errors.push(...validateSourceTrace({ sourceTrace, topicIds, requiredClaimRefs }).errors);
+  const expectedStatus = guide.status === coverage.status ? guide.status : undefined;
+  errors.push(
+    ...validateSourceTrace({
+      sourceTrace,
+      topicIds,
+      requiredClaimRefs,
+      expectedGuideId: guide.id,
+      expectedStatus
+    }).errors
+  );
   return errors;
 }
-
