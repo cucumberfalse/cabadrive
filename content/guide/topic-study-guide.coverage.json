@@ -314,9 +314,9 @@
       "titleRu": "Ремни, детские кресла и подголовники",
       "categoryId": "safety",
       "splitCriteria": "Cinturón, SRI, embarazo, airbag, apoyacabeza, casco/chaleco и защита пассажиров.",
-      "phase": "planned",
+      "phase": "content_ready",
       "status": "draft",
-      "ownerSlice": "C"
+      "ownerSlice": "C+E-occupant-protection"
     },
     {
       "topicId": "vehicle-condition-maintenance-loads",
@@ -441,8 +441,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-008",
@@ -501,8 +501,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-014",
@@ -657,8 +657,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-031",
@@ -813,8 +813,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-047",
@@ -1144,8 +1144,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-082",
@@ -1352,8 +1352,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-103",
@@ -1514,8 +1514,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-121",
@@ -1797,8 +1797,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-150",
@@ -1814,8 +1814,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-152",
@@ -2240,8 +2240,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-194",
@@ -2382,8 +2382,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-211",
@@ -2403,8 +2403,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-213",
@@ -3190,8 +3190,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-298",
@@ -4407,8 +4407,8 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-423",
@@ -4707,16 +4707,16 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-454",
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "planned",
-      "ownerSlice": "C"
+      "phase": "content_ready",
+      "ownerSlice": "E-occupant-protection"
     },
     {
       "questionId": "b-fallback-455",
