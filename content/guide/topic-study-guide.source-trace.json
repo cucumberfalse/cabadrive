@@ -2141,6 +2141,134 @@
       "checkedAt": "2026-05-09",
       "currentnessStatusUsed": "current",
       "notes": "Supports only the generalized no-stopping/no-parking-on-crosswalk-or-stop-line trap. The b-fallback-019 sidewalk/driveway image and b-fallback-308 disability-sticker/parada image conclusions remain ticket-specific."
+    },
+    {
+      "id": "right-of-way-special-priority-hierarchy",
+      "topicId": "right-of-way-special-situations",
+      "claimId": "claim-special-priority-hierarchy",
+      "claimSummaryRu": "CABA priority hierarchy for authority/control indications, signaling and general legal norms used by the assigned normative-order ticket.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte"
+      ],
+      "relevantSections": [
+        "Ley 2148 2.3.4 Prioridades"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "in_force",
+      "notes": "Supports b-fallback-444 only; broader signal hierarchy is handled in neighboring signal topics."
+    },
+    {
+      "id": "right-of-way-special-rotonda-priority-and-sign",
+      "topicId": "right-of-way-special-situations",
+      "claimId": "claim-rotonda-priority-and-sign",
+      "claimSummaryRu": "Roundabout traffic circulates continuously; vehicles already on the circular roadway have priority over entering vehicles, and Anexo L P.21 supports the roundabout warning sign meaning.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.15 Rotondas",
+        "Ley 24.449 Artículo 43 Giros y rotondas",
+        "Anexo L P.21 Rotonda"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports assigned rotonda behavior and sign-recognition tickets; exact image A/B/C choices remain ticket-specific."
+    },
+    {
+      "id": "right-of-way-special-obstruction-slope-priority",
+      "topicId": "right-of-way-special-situations",
+      "claimId": "claim-obstruction-slope-priority",
+      "claimSummaryRu": "CABA has special priority rules for temporary narrowings and steep two-way slopes; national law also records a narrow-slope rule, while Anexo L supports slope and narrowing warning signs.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial",
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.16 Circulación en tramos de arterias con estrechamientos temporarios",
+        "Ley 2148 6.1.17 Tramos de gran pendiente de arterias de doble sentido de circulación",
+        "Ley 24.449 Artículo 41 Prioridades",
+        "Anexo L P.9 Pendiente",
+        "Anexo L P.10 Estrechamiento"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports the compact slope/estrechamiento logic. The exact obstruction-side image answer in b-fallback-070 and vehicle A/B image answer in b-fallback-430 remain ticket-specific."
+    },
+    {
+      "id": "right-of-way-special-emergency-vehicles-and-signaling",
+      "topicId": "right-of-way-special-situations",
+      "claimId": "claim-emergency-vehicles-and-signaling",
+      "claimSummaryRu": "Emergency vehicles and emergency-service-like vehicles have priority in emergency/service contexts and other drivers must facilitate their immediate passage; horn use is limited to danger or emergency-like warning.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.5.1 Generalidades",
+        "Ley 2148 6.5.2 Otros vehículos en servicio de emergencia",
+        "Ley 2148 6.5.3 Comportamiento de otros conductores respecto de los vehículos de emergencia",
+        "Ley 2148 6.6.3 Advertencias acústicas",
+        "Ley 2148 6.7.1 Regla general",
+        "Ley 24.449 Artículo 61 Vehículos de emergencias"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports only the generalized yielding/emergency-signaling rule. The exact b-fallback-268/b-fallback-319 corridor movements and b-fallback-093 repeated-horn fallback answer stay ticket-specific."
+    },
+    {
+      "id": "right-of-way-special-incorporation-garage-parking",
+      "topicId": "right-of-way-special-situations",
+      "claimId": "claim-incorporation-garage-parking",
+      "claimSummaryRu": "Drivers yield to vehicles entering from parked/stopped position, garage, parking lot or service station only when traffic is interrupted.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.7.2(c) Otras prioridades de paso",
+        "Ley 24.449 Artículo 41 Prioridades, exception g.3"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports b-fallback-031, b-fallback-389 and b-fallback-440 without changing neighboring parking or warning-sign content-ready placements."
+    },
+    {
+      "id": "right-of-way-special-giro-left-turn-and-horn-boundary",
+      "topicId": "right-of-way-special-situations",
+      "claimId": "claim-giro-left-turn-and-horn-boundary",
+      "claimSummaryRu": "Turns must be signaled with the proper turn indicator in advance; horn is not a turn signal, and CABA restricts left turns at signalized two-way intersections without a specific turn light.",
+      "officialDocumentIds": [
+        "ley-2148-caba-codigo-transito-transporte",
+        "ley-24449-transito-seguridad-vial"
+      ],
+      "relevantSections": [
+        "Ley 2148 6.1.10 Vehículos en intersecciones semaforizadas",
+        "Ley 2148 6.1.14 Giros",
+        "Ley 2148 6.6.3 Advertencias acústicas",
+        "Ley 24.449 Artículo 43 Giros y rotondas",
+        "Ley 24.449 Artículo 44 Vías semaforizadas"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current/in_force",
+      "notes": "Supports only the assigned turn-signal and left-turn reminders; turns-direction and traffic-light neighbor placements remain content-ready as-is."
+    },
+    {
+      "id": "right-of-way-special-red-cordon-demarcation",
+      "topicId": "right-of-way-special-situations",
+      "claimId": "claim-red-cordon-demarcation",
+      "claimSummaryRu": "Anexo L H.15 supports red curb meaning as no parking or stopping alongside the sidewalk.",
+      "officialDocumentIds": [
+        "decreto-779-1995-anexo-l-senalizacion-vial-uniforme"
+      ],
+      "relevantSections": [
+        "Anexo L H.15 Cordones pintados"
+      ],
+      "checkedAt": "2026-05-09",
+      "currentnessStatusUsed": "current",
+      "notes": "Supports only b-fallback-341 demarcation explanation in this topic; parking-clearances retains its own broader cordon source trace."
     }
   ]
 }
