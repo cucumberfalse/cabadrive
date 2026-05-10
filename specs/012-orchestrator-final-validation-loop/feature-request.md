@@ -134,6 +134,8 @@ This creates a gap between "PRs/checks/review are ready" and "the whole process 
 
 ## Final Analyst Validation Notes
 
+### Prior Validation
+
 - Implementation head validated: `cf314599f6d495c33667d4405fc72306efa51ba2`.
 - Analyst return count for this work cycle: `0`.
 - Customer intent check: pass. The final result matches the customer's requested outcome in spirit and letter: latest-main isolated startup is documented for new work and task slices; final Architect validation is required before final Analyst validation; Architect validation covers tasks, architectural guidance, open task state, process memory, cycle PR set, and customer intent in spirit; Analyst validation covers the desired outcome in spirit and letter; Analyst gaps are routed through Architect accept/task/ticket/dispose disposition before follow-up development; Architect and Analyst return limits are `10` and `5`; and limit-exceeded escalation creates a new feature request through the specified paths.
@@ -141,3 +143,16 @@ This creates a gap between "PRs/checks/review are ready" and "the whole process 
 - Architect disposition routing: not needed because no Analyst customer-intent gaps were found.
 - Analyst limit escalation: none.
 - Analyst boundary reminder: this final validation updated only Analyst-owned notes in `feature-request.md`; no Architect artifacts, implementation docs/templates, code, reviews, commits, pushes, PRs, merge state, or `tasks.md` were edited.
+- Staleness note: this validation is superseded because later T034/T035 follow-up changed durable workflow docs/templates after `cf314599f6d495c33667d4405fc72306efa51ba2`.
+
+### Current Validation
+
+- Effective content head validated: `e0afe395dab29a7b0f1a6fba7a99dd87b9365082`.
+- Analyst return count for this work cycle: `0`.
+- Customer intent check: pass. The final result matches the customer's requested outcome in spirit and letter: durable workflow guidance requires latest-`origin/main` isolated startup for new work and new task slices while preserving parallel work; requires final Architect validation before final Analyst validation, completion, or authorized merge mechanics; requires Architect validation across the cycle PR set, Architect-assigned tasks and dispositions, architectural guidance, open task state, current process memory, and customer intent in spirit; requires Analyst validation against the original request, assumptions, and acceptance expectations in spirit and letter; routes Analyst gaps through Architect accept/task/ticket/dispose disposition before follow-up development; documents Architect and Analyst return limits of `10` and `5`; escalates limit breaches to new feature-request flows as requested; preserves existing merge-readiness gates; and keeps role boundaries intact so Orchestrator coordinates without file edits, Architect plans/disposes without implementation, Analyst writes only Analyst-owned notes, Review Agent reviews without patching, and Implementation Agent does not merge.
+- Current-head/evidence-only check: pass for customer intent. The T034/T035 follow-up adds the requested protection against stale final-validation evidence by defining the effective content head, allowing only narrow final-validation evidence-only commits, requiring Orchestrator's read-only current-PR-head guard before completion or authorized merge mechanics, and making any later non-evidence change stale until routed through role-appropriate follow-up or final validation.
+- Gaps: none.
+- Architect disposition routing: not needed because no Analyst customer-intent gaps were found.
+- Analyst limit escalation: none.
+- Staleness note: any commit after `e0afe395dab29a7b0f1a6fba7a99dd87b9365082` that changes non-evidence content makes this Analyst validation stale and must be routed back through the role-appropriate workflow before completion or authorized merge mechanics.
+- Analyst boundary reminder: this final validation updated only Analyst-owned notes in `feature-request.md`; no Architect artifacts, implementation docs/templates, code, tests, reviews, commits, pushes, PR metadata, merge state, or `tasks.md` were edited.
