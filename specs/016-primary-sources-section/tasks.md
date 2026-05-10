@@ -373,6 +373,7 @@
 - PR #77 P2 contiguous-coverage follow-up tightened coverage validation so complete-coverage modes require each coverage document's sorted source spans to cover the archived Markdown from line 1 through the current final line without gaps or overlaps when archive text is available.
 - PR #77 P2 colon-heading follow-up extended article-boundary detection to accept valid colon-suffixed article headings such as Ley 24.449 `ARTICULO 21 bis: Estructura` and `ARTICULO 46 bis: Ciclovías...` while still rejecting lowercase narrative cross-references.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced again from `987e712` to `bdfc00d`, this worktree stashed the uncommitted colon-heading fixes, fetched the updated base, rebased Slice C onto `bdfc00d`, resolved validator/test/task conflicts by keeping exact `expectedChunkIds` validation from PR #74 plus contiguous coverage validation from PR #77, then reapplied the colon-heading stash cleanly.
+- Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to merge commit `d16ce87b5a108701e22dd563e41ebd72a642df18`, this worktree rebased Slice C onto the fresh base and resolved the only conflict in this process-memory file by keeping #68 intake/docs notes, #74 schema-validator notes, and #77 generated inventory notes.
 
 ### Implementation Agent Feedback
 
@@ -512,3 +513,9 @@
   - `git diff --check` passed after rebasing onto base `bdfc00d` with no output.
   - Orchestrator verification after updating onto base `bdfc00d`: `pnpm run validate:content` passed, `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed, and `pnpm run test` passed with 96 Node tests, 96 pass, 0 fail.
   - Orchestrator reran `pnpm run build` after the base `bdfc00d` update and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed after rebasing onto base `d16ce87`. Output summary: 19 documents, 5,262 chunks, with per-document counts matching Slice C Implementation Notes.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed after rebasing onto base `d16ce87`: 24 tests, 24 pass, 0 fail.
+  - `pnpm run validate:content` passed after rebasing onto base `d16ce87`. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed after rebasing onto base `d16ce87`. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed after rebasing onto base `d16ce87`: 110 Node tests, 110 pass, 0 fail.
+  - `pnpm run build` passed after rebasing onto base `d16ce87`: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
