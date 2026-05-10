@@ -879,7 +879,7 @@ function readLatestValidationCompletedAt(memory, role) {
   let match;
   while ((match = marker.exec(memory)) !== null) {
     const parsed = parseIsoDate(match[1]);
-    if (!parsed) return null;
+    if (!parsed) continue;
     latest = parsed;
   }
   return latest;

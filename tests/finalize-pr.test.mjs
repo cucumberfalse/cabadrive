@@ -864,6 +864,7 @@ test("process evidence orders final validation by explicit role-owned timestamps
 
 ## Decisions
 - Decision recorded.
+- Documentation placeholder: Final Architect validation completed at: <ISO 8601 timestamp>
 
 ## Dead Ends
 - None.
@@ -883,6 +884,9 @@ test("process evidence orders final validation by explicit role-owned timestamps
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
+
+## Analyst Documentation
+- Placeholder example: Final Analyst validation completed at: <ISO 8601 timestamp>
 `);
   writeFileSync(join(featureRoot, "spec.md"), `# Specification
 
@@ -905,6 +909,23 @@ test("process evidence orders final validation by explicit role-owned timestamps
 - Final Architect validation completed at: 2026-05-10T13:00:02Z
 `);
   assert.equal(readProcessEvidence(root, featurePath, "abc123def456").finalValidationOrder, false);
+
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+- Final Analyst validation completed at: <ISO 8601 timestamp>
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+- Final Architect validation completed at: <ISO 8601 timestamp>
+`);
+  const placeholderOnly = readProcessEvidence(root, featurePath, "abc123def456");
+  assert.equal(placeholderOnly.finalArchitectValidation, true);
+  assert.equal(placeholderOnly.finalAnalystValidation, true);
+  assert.equal(placeholderOnly.finalValidationOrder, false);
 
   writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
 

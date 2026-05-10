@@ -41,6 +41,8 @@
 - Seventh implementation update evidence: after `origin/main` advanced to `a66320a50c7d04721b929880d4f01dc6feb28a24`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped review fix and adding the mainline learning-polish process-memory closure content.
 - Eighth implementation update evidence: after `origin/main` advanced again to `90a11d943880606586d4bc02aa7774a8d7a73f3d`, current review-fix Implementation Agent ran `git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with no conflicts, preserving this scoped review fix and adding the mainline feature-009 process-memory closure content.
 - Ninth implementation update evidence: after `origin/main` advanced to `55d196a8762fc156520f045a48c0cb25ee83d569`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped auto-merge-pending gate fix and adding the mainline Docker smoke isolation closure content.
+- Tenth implementation update evidence: after `origin/main` advanced to `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped placeholder-timestamp fix and adding the mainline institution entrance timing contrast content.
+- Eleventh implementation update evidence: current P1 placeholder-timestamp handoff Implementation Agent ran `git fetch origin --prune` on 2026-05-10. `origin/main` remained `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, and `git rev-list --left-right --count HEAD...origin/main` returned `21 0`, so no additional merge was required.
 
 ## Decisions
 
@@ -68,6 +70,7 @@
 - Current P2 review-fix implementation decision: PR conversation comments fetched through GraphQL now request comment connection `pageInfo`. If `comments(last: 100)` is truncated, the helper fails closed with a `review-pagination` blocking finding so older current-head Claude block outcomes cannot be silently dropped.
 - Current P2 disposition-parsing implementation decision: Implementation Agent feedback disposition markers count only when their disposition text contains final wording such as `not needed`, `accepted`, `resolved`, `disposed`, `addressed`, `superseded`, or `no unresolved`, and contains no open-state wording such as `pending`, `unresolved`, `open`, `needs review`, or `requires disposition`.
 - Current P2 auto-merge-pending gate implementation decision: `--auto-merge-pending` may return `enable-auto-merge` for pending configured checks only when GitHub reports a protected-blocking merge state. At this time the helper treats `BLOCKED` as the only such state; clean/otherwise mergeable states such as `CLEAN`, `HAS_HOOKS`, and `UNSTABLE` keep pending configured checks as blockers.
+- Current P1 placeholder-timestamp review-fix implementation decision: final-validation timestamp parsing now ignores invalid marker matches such as documentation placeholders while continuing to require at least one valid ISO timestamp per role for `finalValidationOrder`; placeholder-only markers keep final-validation order false.
 
 ## Dead Ends
 
@@ -76,6 +79,7 @@
 - Previous Implementation Agent produced the main patch but did not provide a complete final report or fully refresh process-memory evidence after the second main update; Orchestrator preserved the patch and rerouted this follow-up Implementation Agent to finish helper quality, tasks evidence, and verification without discarding sibling work.
 - Orchestrator read-only review found that requiring `tasks.md` to contain `currentHead.slice(0, 12)` made finalization self-blocking: a committed process-memory update cannot reliably contain the SHA of the commit that contains it. The first fix kept current-head guard evidence as a generic textual marker; the current review fix supersedes that by requiring an effective-content-head marker plus guard comparison evidence and local-git post-effective-head path verification.
 - Current review-fix focused test initially failed because the post-effective-head guard rejected newly required `Cycle PR Set` and `Final Validation Evidence` process-memory sections as non-evidence changes. Resolved by allowing only well-formed process-evidence additions in those sections while preserving blockers for arbitrary peer-section edits.
+- Current P1 placeholder-timestamp regression test first failed as expected: a real Architect/Analyst timestamp followed by a literal `<ISO 8601 timestamp>` placeholder made `finalValidationOrder` false. Resolved by skipping invalid marker matches instead of returning `null` for the whole role scan.
 
 ## Known Issues
 
@@ -194,10 +198,19 @@
 - `pnpm run check:repo`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`; "Repository baseline check passed."
 - `node scripts/check-feature-memory.mjs --worktree`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `pnpm run preflight`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`; feature-memory gate, repo baseline, content validation, 158 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BfSagyH6.js` but completed successfully.
+- `node --test tests/finalize-pr.test.mjs`: failed before the placeholder-timestamp parser fix as expected; 37 tests passed and the new regression in "process evidence orders final validation by explicit role-owned timestamps" failed because placeholder markers nulled `finalValidationOrder`.
+- `node --check scripts/finalize-pr.mjs`: passed after the placeholder-timestamp parser fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after the placeholder-timestamp parser fix; 38 tests passed, including valid role timestamps followed by later `<ISO 8601 timestamp>` placeholders and placeholder-only markers failing `finalValidationOrder`.
+- `git fetch origin --prune && git merge --autostash --no-edit origin/main`: passed during the placeholder-timestamp review fix; merged latest `origin/main` `6f34c64a9ee2020c59aa25298c6396575c0e22f5` with no conflicts and reapplied the scoped working tree.
+- `git fetch origin --prune`: passed during the final placeholder-timestamp handoff; `origin/main` remained `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, so no additional merge was required.
+- `git diff --check`: passed after the placeholder-timestamp parser fix; no whitespace errors reported.
+- `pnpm run check:repo`: passed after the placeholder-timestamp parser fix; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after the placeholder-timestamp parser fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `pnpm run preflight`: passed after the placeholder-timestamp parser fix; feature-memory gate, repo baseline, content validation, node tests, build, service-worker generation, and Playwright e2e tests passed.
 
 ## Cycle PR Set
 
-- Purpose: address PR #80 AI review P2 auto-merge-pending protected-state gate; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `a4561a33bc74c239749eba74bb606ebd4ebeedea`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
+- Purpose: address PR #80 AI review P1 placeholder validation timestamp gate; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `cb282d4b0fc85089a6aef5953908765e6aff7c17`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
 
 ## Final Validation Evidence
 
