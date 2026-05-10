@@ -31,9 +31,19 @@ const validationCompletedAtMarkers = {
 const effectiveContentHeadMarker = /Effective\s+content\s+head:\s*([0-9a-f]{40})/ig;
 const guardTextMarker = /current-PR-head|current PR head|head guard/i;
 const shaReferenceMarker = /\b[0-9a-f]{12,40}\b/ig;
+const returnCountMarkers = {
+  architect: /Architect\s+return\s+count(?:\s+for\s+this\s+work\s+cycle)?:\s*(\d+)\b/ig,
+  analyst: /Analyst\s+return\s+count(?:\s+for\s+this\s+work\s+cycle)?:\s*(\d+)\b/ig
+};
+const returnCountLimits = {
+  architect: 10,
+  analyst: 5
+};
 const allowedEvidenceFilenames = new Set(["feature-request.md", "spec.md", "plan.md", "tasks.md"]);
 const finalValidationSectionMarker = /^##\s+Final\s+(Architect|Analyst)\s+Validation\s+Notes\s*$/i;
 const verificationEvidenceSectionMarker = /^(#{2,3})\s+Verification\s+Evidence\s*#*\s*$/i;
+const cyclePrSetSectionMarker = /^(#{2,3})\s+Cycle\s+PR\s+Set\s*#*\s*$/i;
+const finalValidationEvidenceSectionMarker = /^(#{2,3})\s+Final\s+Validation\s+Evidence\s*#*\s*$/i;
 const markdownHeadingMarker = /^(#{1,6})\s+(.+?)\s*#*\s*$/;
 
 export function evaluateFinalizationGates(input = {}) {
@@ -280,6 +290,9 @@ export function collectPaginationFindings(truncated = {}) {
   if (truncated.reviews) {
     findings.push({ source: "review-pagination", message: "Native PR reviews are paginated; refusing to finalize without complete review data." });
   }
+  if (truncated.issueComments) {
+    findings.push({ source: "review-pagination", message: "PR conversation comments are paginated; refusing to finalize without complete review outcome data." });
+  }
   return findings;
 }
 
@@ -354,10 +367,15 @@ function parseProcessEvidence(files = {}, currentHead = "") {
   const architectCompletedAt = readLatestValidationCompletedAt(architectMemory, "architect");
   const analystCompletedAt = readLatestValidationCompletedAt(analystMemory, "analyst");
   const verificationSection = readMarkdownSection(tasks, "Verification Evidence") || "";
+  const cyclePrSetSection = readMarkdownSection(tasks, "Cycle PR Set") || "";
+  const finalValidationEvidenceSection = readMarkdownSection(tasks, "Final Validation Evidence") || "";
   const feedbackSection = readMarkdownSection(tasks, "Implementation Agent Feedback") || "";
   const knownIssueSection = readMarkdownSection(tasks, "Known Issues") || "";
   const effectiveContentHead = readLatestEffectiveContentHead(allMemory);
   const guardEvidenceText = readCurrentHeadGuardEvidenceText(tasks);
+  const returnCounts = readValidationReturnCounts(allMemory);
+  const limitEscalationState = readLimitEscalationState(finalValidationEvidenceSection);
+  const hasReturnCountsWithinLimits = hasValidationReturnCountsWithinLimits(returnCounts);
 
   return {
     finalArchitectValidation: hasArchitectPass,
@@ -371,7 +389,10 @@ function parseProcessEvidence(files = {}, currentHead = "") {
     currentProcessMemory: hasMarkdownSection(tasks, "Decisions") &&
       hasMarkdownSection(tasks, "Dead Ends") &&
       hasMarkdownSection(tasks, "Known Issues") &&
-      hasMarkdownSection(tasks, "Verification Evidence"),
+      hasMarkdownSection(tasks, "Verification Evidence") &&
+      hasCyclePrSetEvidence(cyclePrSetSection) &&
+      Boolean(limitEscalationState) &&
+      (hasReturnCountsWithinLimits || limitEscalationState === "escalated"),
     feedbackDisposition: hasImplementationFeedbackDisposition(feedbackSection),
     effectiveContentHead,
     currentHeadMatchesEffectiveContentHead: Boolean(currentHead && effectiveContentHead) &&
@@ -383,6 +404,61 @@ function parseProcessEvidence(files = {}, currentHead = "") {
     acceptedKnownIssueDecisionPending: /accepted known issue|owner decision|human decision/i.test(knownIssueSection) &&
       !/none|not applicable|no known/i.test(knownIssueSection)
   };
+}
+
+function hasCyclePrSetEvidence(section = "") {
+  const text = stripPlaceholderLines(section).join("\n");
+  if (!text.trim()) return false;
+  return /\b(?:PR|pull request)\b/i.test(text) &&
+    /\bbranch\b/i.test(text) &&
+    /\b(?:head\s+SHA|head|[0-9a-f]{7,40})\b/i.test(text) &&
+    /\bstatus\b/i.test(text) &&
+    /\b(?:final[-\s]validation|validation\s+inclusion|included\s+in\s+final)\b/i.test(text);
+}
+
+function stripPlaceholderLines(section = "") {
+  return String(section)
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && !/^\s*[-*]?\s*\[.+\]\s*$/.test(line));
+}
+
+function readValidationReturnCounts(memory = "") {
+  return {
+    architect: readLatestReturnCount(memory, "architect"),
+    analyst: readLatestReturnCount(memory, "analyst")
+  };
+}
+
+function readLatestReturnCount(memory = "", role = "") {
+  const marker = returnCountMarkers[role];
+  marker.lastIndex = 0;
+  let latest = null;
+  let match;
+  while ((match = marker.exec(memory)) !== null) {
+    latest = Number(match[1]);
+  }
+  return Number.isInteger(latest) ? latest : null;
+}
+
+function hasValidationReturnCountsWithinLimits(counts = {}) {
+  return Object.entries(returnCountLimits).every(([role, limit]) =>
+    Number.isInteger(counts[role]) &&
+    counts[role] >= 0 &&
+    counts[role] <= limit
+  );
+}
+
+function readLimitEscalationState(section = "") {
+  for (const line of stripPlaceholderLines(section)) {
+    const match = line.match(/\bLimit\s+escalation:\s*(.+)$/i);
+    if (!match) continue;
+    const value = match[1].trim();
+    if (!value || /\b(?:pending|blocker|unknown|tbd)\b/i.test(value)) return null;
+    if (/^(?:none|no|not applicable|n\/a)\b/i.test(value)) return "none";
+    if (/\b(?:new feature request|feature-request|breach|exceed|escalat)/i.test(value)) return "escalated";
+  }
+  return null;
 }
 
 function readMarkdownSection(markdown = "", headingText = "", allowedLevels = new Set([2, 3])) {
@@ -591,11 +667,14 @@ export function evaluatePostEffectiveHeadDiff(diffText = "", currentFiles = {}, 
 
 function isAllowedPostEffectiveHeadAddition(filePath, lineNumber, content, fileContent, featurePath, effectiveContentHead) {
   if (!isFinalValidationEvidencePath(filePath, featurePath)) return false;
+  const basename = filePath.split("/").pop();
   if (content.trim() === "") return true;
   if (isEffectiveContentHeadEvidenceLine(content)) return true;
+  if (basename === "tasks.md" && (cyclePrSetSectionMarker.test(content.trim()) || finalValidationEvidenceSectionMarker.test(content.trim()))) {
+    return true;
+  }
 
   const section = sectionAtLine(fileContent, lineNumber);
-  const basename = filePath.split("/").pop();
   if (section?.type === "final-validation") {
     if (section.role === "analyst" && basename !== "feature-request.md") return false;
     if (section.role === "architect" && basename === "feature-request.md") return false;
@@ -603,6 +682,12 @@ function isAllowedPostEffectiveHeadAddition(filePath, lineNumber, content, fileC
   }
   if (section?.type === "verification" && basename === "tasks.md") {
     return isVerificationEvidenceLine(content, effectiveContentHead);
+  }
+  if (section?.type === "cycle-pr-set" && basename === "tasks.md") {
+    return isCyclePrSetEvidenceLine(content);
+  }
+  if (section?.type === "final-validation-evidence" && basename === "tasks.md") {
+    return isFinalValidationProcessEvidenceLine(content, effectiveContentHead);
   }
 
   return false;
@@ -621,6 +706,16 @@ function sectionAtLine(fileContent = "", lineNumber = 0) {
     const verificationMatch = line.match(verificationEvidenceSectionMarker);
     if (verificationMatch) {
       current = { type: "verification", level: verificationMatch[1].length };
+      continue;
+    }
+    const cyclePrSetMatch = line.match(cyclePrSetSectionMarker);
+    if (cyclePrSetMatch) {
+      current = { type: "cycle-pr-set", level: cyclePrSetMatch[1].length };
+      continue;
+    }
+    const finalValidationEvidenceMatch = line.match(finalValidationEvidenceSectionMarker);
+    if (finalValidationEvidenceMatch) {
+      current = { type: "final-validation-evidence", level: finalValidationEvidenceMatch[1].length };
       continue;
     }
     const heading = readMarkdownHeading(line);
@@ -657,6 +752,27 @@ function isVerificationEvidenceLine(line = "", effectiveContentHead = "") {
     return guardEvidenceReferencesEffectiveHead(text, effectiveContentHead);
   }
   return true;
+}
+
+function isCyclePrSetEvidenceLine(line = "") {
+  const text = line.trim();
+  if (!/^\s*[-*]\s+/.test(line)) return false;
+  return /\b(?:PR|pull request)\b/i.test(text) &&
+    /\bbranch\b/i.test(text) &&
+    /\b(?:head\s+SHA|head|[0-9a-f]{7,40})\b/i.test(text) &&
+    /\bstatus\b/i.test(text) &&
+    /\b(?:final[-\s]validation|validation\s+inclusion|included\s+in\s+final)\b/i.test(text);
+}
+
+function isFinalValidationProcessEvidenceLine(line = "", effectiveContentHead = "") {
+  const text = line.trim();
+  if (!/^\s*[-*]\s+/.test(line)) return false;
+  if (guardTextMarker.test(text) && effectiveContentHead) {
+    return guardEvidenceReferencesEffectiveHead(text, effectiveContentHead);
+  }
+  return /\b(?:Architect validation|Architect return count|Analyst validation|Analyst return count|Effective content head|Final-validation evidence-only commit|Current-PR-head read-only guard|Analyst feedback Architect disposition|Limit escalation)\s*:/i.test(text) &&
+    !/\[(?:.+)\]/.test(text) &&
+    !/\b(?:pending|blocker|unknown|tbd)\b/i.test(text);
 }
 
 function normalizeRepoPath(path = "") {
@@ -814,6 +930,7 @@ async function fetchPullRequestState(root, repo, prNumber) {
             }
           }
           comments(last: 100) {
+            pageInfo { hasPreviousPage }
             nodes {
               body
               createdAt
@@ -841,6 +958,7 @@ async function fetchPullRequestState(root, repo, prNumber) {
     pull.reviewThreads.nodes.some((thread) => thread.comments.pageInfo.hasNextPage);
   const hasTruncatedChecks = pull.statusCheckRollup?.contexts?.pageInfo?.hasNextPage;
   const hasTruncatedReviews = pull.reviews.pageInfo.hasPreviousPage;
+  const hasTruncatedIssueComments = pull.comments.pageInfo.hasPreviousPage;
   return {
     pr: {
       number: pull.number,
@@ -862,7 +980,8 @@ async function fetchPullRequestState(root, repo, prNumber) {
     truncated: {
       checks: Boolean(hasTruncatedChecks),
       reviewThreads: Boolean(hasTruncatedThreads),
-      reviews: Boolean(hasTruncatedReviews)
+      reviews: Boolean(hasTruncatedReviews),
+      issueComments: Boolean(hasTruncatedIssueComments)
     }
   };
 }

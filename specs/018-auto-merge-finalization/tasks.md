@@ -38,6 +38,7 @@
 - Fourth implementation update evidence: after `origin/main` advanced to `6562410`, latest-main refresh Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly from PR head `ebe6c09` with no conflicts, preserving existing feature commits and adding the mainline `specs/013-learning-content-ui-polish/` content.
 - Fifth implementation update evidence: after `origin/main` advanced to `78e0176e361eeea583dd797296bfa994b3f1f695`, review-fix Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly from PR head `328c7c3`, preserving existing PR work and adding the mainline learning-support content/sharding updates.
 - Sixth implementation update evidence: after `origin/main` advanced to `870c7f9514404b36cf75954c3c39814770495342`, current review-fix Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with no conflicts, preserving this scoped review fix and adding the mainline UI UX learning overlays content.
+- Seventh implementation update evidence: after `origin/main` advanced to `a66320a50c7d04721b929880d4f01dc6feb28a24`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped review fix and adding the mainline learning-polish process-memory closure content.
 
 ## Decisions
 
@@ -60,6 +61,9 @@
 - Current review-fix implementation decision: native GitHub reviews fetched through GraphQL now request review connection `pageInfo`. If `reviews(last: 100)` is truncated, the helper fails closed with a blocking review-pagination finding instead of risking a missed older current-head `CHANGES_REQUESTED`.
 - Current P1 review-fix implementation decision: mutating finalization now reads process evidence from `state.pr.headSha` with `git show <head>:<feature-memory-file>` through `readProcessEvidenceFromHead()`. Local working-tree evidence can still be parsed by the local helper for tests/inspection, but the CLI merge and protected auto-merge path no longer trusts dirty, local-only, or different-checkout process memory.
 - Current P2 review-fix implementation decision: finalizer process-memory and post-effective-head verification evidence parsing now accepts both legacy `## Verification Evidence` and repository-template `### Verification Evidence` headings. Evidence scope remains bounded by the next heading at the same or higher level so peer template sections are not treated as verification evidence.
+- Current P1 review-fix implementation decision: `currentProcessMemory` now requires concrete process evidence beyond generic sections: a non-placeholder `Cycle PR Set` entry with PR/branch/head/status/final-validation inclusion, Architect and Analyst return-count markers within limits unless escalation is recorded, and explicit `Limit escalation: none` or new-feature-request escalation state in `Final Validation Evidence`.
+- Current P1 process-evidence implementation decision: post-effective-head verification treats well-formed `Cycle PR Set` and `Final Validation Evidence` additions in `tasks.md` as allowed process evidence, while arbitrary peer-section edits and malformed process-evidence lines still block finalization.
+- Current P2 review-fix implementation decision: PR conversation comments fetched through GraphQL now request comment connection `pageInfo`. If `comments(last: 100)` is truncated, the helper fails closed with a `review-pagination` blocking finding so older current-head Claude block outcomes cannot be silently dropped.
 
 ## Dead Ends
 
@@ -67,6 +71,7 @@
 - Updating from `origin/main` after #66 produced an autostash conflict in `docs_project/project/devops/review-contract.md`; resolved by combining upstream process-enforcement blockers with this feature's finalization wording.
 - Previous Implementation Agent produced the main patch but did not provide a complete final report or fully refresh process-memory evidence after the second main update; Orchestrator preserved the patch and rerouted this follow-up Implementation Agent to finish helper quality, tasks evidence, and verification without discarding sibling work.
 - Orchestrator read-only review found that requiring `tasks.md` to contain `currentHead.slice(0, 12)` made finalization self-blocking: a committed process-memory update cannot reliably contain the SHA of the commit that contains it. The first fix kept current-head guard evidence as a generic textual marker; the current review fix supersedes that by requiring an effective-content-head marker plus guard comparison evidence and local-git post-effective-head path verification.
+- Current review-fix focused test initially failed because the post-effective-head guard rejected newly required `Cycle PR Set` and `Final Validation Evidence` process-memory sections as non-evidence changes. Resolved by allowing only well-formed process-evidence additions in those sections while preserving blockers for arbitrary peer-section edits.
 
 ## Known Issues
 
@@ -155,6 +160,31 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed after template verification heading compatibility fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `git diff --check`: passed after template verification heading compatibility fix; no whitespace errors reported.
 - `pnpm run preflight`: passed after template verification heading compatibility fix; feature-memory gate, repo baseline, content validation, 146 node tests, build, service-worker generation with 280 cached assets, and 30 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-DrCZBMfu.js` but completed successfully.
+- `node --test tests/finalize-pr.test.mjs`: initially failed during current P1/P2 review-fix work because the new process markers were blocked by post-effective-head evidence filtering; after tightening allowed process-evidence additions, passed with 35 tests.
+- `git fetch origin --prune`: passed; confirmed latest `origin/main` at `a66320a50c7d04721b929880d4f01dc6feb28a24`.
+- `git merge --autostash --no-edit origin/main`: passed; merged `origin/main` `a66320a50c7d04721b929880d4f01dc6feb28a24` into `codex/018-auto-merge-finalization` with no conflicts and reapplied the scoped working tree.
+- `node --check scripts/finalize-pr.mjs`: passed after latest-main merge and current P1/P2 review-fix updates.
+- `node --test tests/finalize-pr.test.mjs`: passed after latest-main merge and current P1/P2 review-fix updates; 35 tests passed, including missing cycle PR set, missing validation return counts, missing limit escalation state, valid full process evidence, and truncated PR conversation comments failing closed.
+- `pnpm run check:repo`: passed after latest-main merge; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after latest-main merge; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `git diff --check`: passed after latest-main merge; no whitespace errors reported.
+- `pnpm run preflight`: passed after latest-main merge and current P1/P2 review-fix updates; feature-memory gate, repo baseline, content validation, 151 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BfSagyH6.js` but completed successfully.
+
+## Cycle PR Set
+
+- Purpose: address PR #80 AI review blockers for full process evidence and paginated PR conversation comments; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `bb23eb2d8f6f053fe2736dc506a122194b40a8f5`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
+
+## Final Validation Evidence
+
+- Architect validation: not yet invoked.
+- Architect return count: 0.
+- Analyst validation: not yet invoked.
+- Analyst return count: 0.
+- Effective content head: not yet validated.
+- Final-validation evidence-only commit: none for this Implementation Agent task slice.
+- Current-PR-head read-only guard: pending finalization.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
 
 ## Final Architect Validation Notes
 

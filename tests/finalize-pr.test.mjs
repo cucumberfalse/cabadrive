@@ -93,7 +93,8 @@ function writeMinimalFeatureMemory(root, featurePath, tasksExtra = "") {
 ${tasksExtra}`);
 }
 
-function writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead) {
+function writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, options = {}) {
+  const { includeRoleReturnCounts = true, taskOverrides = {} } = options;
   const featureRoot = join(root, featurePath);
   mkdirSync(featureRoot, { recursive: true });
   writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
@@ -101,16 +102,29 @@ function writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHe
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
+${includeRoleReturnCounts ? "- Analyst return count for this work cycle: 0.\n" : ""}
 `);
   writeFileSync(join(featureRoot, "spec.md"), `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
+${includeRoleReturnCounts ? "- Architect return count for this work cycle: 0.\n" : ""}
 `);
   writeFileSync(join(featureRoot, "plan.md"), `# Plan
 `);
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(join(featureRoot, "tasks.md"), buildCompleteTasks(effectiveContentHead, taskOverrides));
+}
+
+function buildCompleteTasks(effectiveContentHead, overrides = {}) {
+  const {
+    includeCyclePrSet = true,
+    includeArchitectReturnCount = true,
+    includeAnalystReturnCount = true,
+    includeLimitEscalation = true
+  } = overrides;
+
+  return `# Tasks
 
 ## Task List
 - [x] Existing task.
@@ -131,7 +145,12 @@ function writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHe
 ## Verification Evidence
 - Existing evidence.
 - current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
-`);
+
+${includeCyclePrSet ? `## Cycle PR Set
+- Purpose: finalize PR automation; branch: codex/999-finalize-test; PR: #999; head SHA: ${effectiveContentHead}; status: ready for final validation; final-validation inclusion: included.
+` : ""}
+## Final Validation Evidence
+${includeArchitectReturnCount ? "- Architect return count: 0\n" : ""}${includeAnalystReturnCount ? "- Analyst return count: 0\n" : ""}${includeLimitEscalation ? "- Limit escalation: none\n" : ""}`;
 }
 
 test("finalization gate passes only with current head, green required checks, and process evidence", () => {
@@ -785,6 +804,22 @@ test("truncated native review data fails closed before finalization", () => {
   ));
 });
 
+test("truncated PR conversation comments fail closed before finalization", () => {
+  const findings = collectPaginationFindings({ issueComments: true });
+  assert.equal(findings.length, 1);
+  assert.equal(findings[0].source, "review-pagination");
+
+  const result = evaluateFinalizationGates(successfulInput({
+    blockingFindings: findings
+  }));
+
+  assert.equal(result.action, "block");
+  assert.ok(result.blockers.some((blocker) =>
+    blocker.code === "blocking-review-finding" &&
+    blocker.message.includes("PR conversation comments are paginated")
+  ));
+});
+
 test("skipped or neutral required checks are not treated as green", () => {
   assert.equal(normalizeCheckState({ status: "COMPLETED", conclusion: "SUCCESS" }), "success");
   assert.equal(normalizeCheckState({ status: "IN_PROGRESS", conclusion: null }), "pending");
@@ -868,9 +903,11 @@ test("process evidence rejects generic current-head guard marker without effecti
   mkdirSync(featureRoot, { recursive: true });
   writeFileSync(join(featureRoot, "feature-request.md"), `Analyst validation pass: passed
 Final Analyst validation completed at: 2026-05-10T13:00:01Z
+Analyst return count: 0
 `);
   writeFileSync(join(featureRoot, "spec.md"), `Architect validation pass: passed
 Final Architect validation completed at: 2026-05-10T13:00:00Z
+Architect return count: 0
 `);
   writeFileSync(join(featureRoot, "plan.md"), "");
 
@@ -960,6 +997,94 @@ Final Architect validation completed at: 2026-05-10T13:00:00Z
   assert.equal(evidence.postEffectiveHeadEvidenceOnly, true);
 });
 
+test("process evidence blocks when cycle PR set evidence is missing", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    taskOverrides: { includeCyclePrSet: false }
+  });
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  assert.equal(evidence.currentProcessMemory, false);
+
+  const result = evaluateFinalizationGates(successfulInput({
+    processEvidence: {
+      ...successfulInput().processEvidence,
+      ...evidence
+    }
+  }));
+  assert.ok(result.blockers.some((blocker) => blocker.code === "stale-process-memory"));
+});
+
+test("process evidence blocks when validation return counts are missing", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    includeRoleReturnCounts: false,
+    taskOverrides: {
+      includeArchitectReturnCount: false,
+      includeAnalystReturnCount: false
+    }
+  });
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  assert.equal(evidence.currentProcessMemory, false);
+
+  const result = evaluateFinalizationGates(successfulInput({
+    processEvidence: {
+      ...successfulInput().processEvidence,
+      ...evidence
+    }
+  }));
+  assert.ok(result.blockers.some((blocker) => blocker.code === "stale-process-memory"));
+});
+
+test("process evidence blocks when limit escalation state is missing", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    taskOverrides: { includeLimitEscalation: false }
+  });
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  assert.equal(evidence.currentProcessMemory, false);
+
+  const result = evaluateFinalizationGates(successfulInput({
+    processEvidence: {
+      ...successfulInput().processEvidence,
+      ...evidence
+    }
+  }));
+  assert.ok(result.blockers.some((blocker) => blocker.code === "stale-process-memory"));
+});
+
+test("process evidence with full workflow markers can satisfy merge gates", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead);
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  const result = evaluateFinalizationGates(successfulInput({
+    suppliedHeadSha: effectiveContentHead,
+    pr: {
+      number: 12,
+      headSha: effectiveContentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: evidence
+  }));
+
+  assert.equal(evidence.currentProcessMemory, true);
+  assert.equal(result.ready, true);
+  assert.equal(result.action, "merge");
+});
+
 test("process evidence accepts template process-memory heading levels", () => {
   const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
   const featurePath = "specs/999-finalize-test";
@@ -991,7 +1116,12 @@ Final Architect validation completed at: 2026-05-10T13:00:00Z
 - current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
 
 ### Cycle PR Set
-- Existing cycle evidence.
+- Purpose: finalize PR automation; branch: codex/999-finalize-test; PR: #999; head SHA: ${effectiveContentHead}; status: ready for final validation; final-validation inclusion: included.
+
+### Final Validation Evidence
+- Architect return count: 0
+- Analyst return count: 0
+- Limit escalation: none
 
 ## Implementation Agent Feedback
 - None yet.
