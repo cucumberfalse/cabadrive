@@ -5,6 +5,7 @@ const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-f
 const translations = JSON.parse(readFileSync("content/translations/ru.translations.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
+const primarySourceVehicleDocuments = JSON.parse(readFileSync("content/primary-sources/documents/argentina-vehiculos-automotor-cedulas.ru.json", "utf8")).document;
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
 const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
@@ -157,11 +158,112 @@ test("vocabulary and guide are available", async ({ page }) => {
   await expect(page.getByText("balizas")).toBeVisible();
   await page.getByRole("button", { name: /Материалы/ }).click();
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  await page.getByRole("button", { name: /Источники/ }).click();
+  await expect(page.getByRole("heading", { name: "Официальные источники" })).toBeVisible();
   await page.getByRole("button", { name: /Процесс/ }).click();
   await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
   await page.getByRole("button", { name: /CABA\/RF/ }).click();
   await expect(page.getByText("Статус вопросов категории B")).toBeVisible();
   await expect(page.getByText("Входы в больницы и centros de salud")).toBeVisible();
+  await page.getByRole("button", { name: /Учить/ }).click();
+  await expect(page.getByTestId("question-card")).toBeVisible();
+});
+
+test("primary sources reader opens in simple Russian and switches to full Russian and original Spanish", async ({ page }) => {
+  const firstChunk = primarySourceVehicleDocuments.chunks[0];
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Источники/ }).click();
+
+  await expect(page.getByRole("heading", { name: "Официальные источники" })).toBeVisible();
+  await expect(page.getByText("19 документов manifest")).toBeVisible();
+  await expect(page.getByText(primarySourceVehicleDocuments.shortTitleRu).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: primarySourceVehicleDocuments.shortTitleRu })).toBeVisible();
+  await expect(page.getByText("Русский слой не готов").first()).toBeVisible();
+
+  const reader = page.getByTestId("primary-source-reader");
+  await expect(reader).toContainText(firstChunk.simpleRu);
+  await expect(reader).not.toContainText(firstChunk.fullTranslationRu);
+  await expect(page.getByRole("tab", { name: "Просто" })).toHaveAttribute("aria-selected", "true");
+
+  await page.getByRole("tab", { name: "Полный перевод" }).click();
+  await expect(reader).toContainText(firstChunk.fullTranslationRu);
+  await expect(page.getByRole("tab", { name: "Полный перевод" })).toHaveAttribute("aria-selected", "true");
+
+  await page.getByRole("tab", { name: "Оригинал ES" }).click();
+  await expect(reader).toContainText(firstChunk.originalSpanish.trim());
+  await expect(page.getByRole("tab", { name: "Оригинал ES" })).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByRole("tab", { name: /simplified|simplificado|español simple|simple es/i })).toHaveCount(0);
+});
+
+test("primary sources search, filters, and chunk navigation stay local and chunked", async ({ page }) => {
+  const cedulaChunk = primarySourceVehicleDocuments.chunks.find((chunk: { officialLabel: string }) => chunk.officialLabel === "Cédulas");
+  if (!cedulaChunk) throw new Error("Expected Cédulas chunk in vehicle-document primary source shard.");
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Источники/ }).click();
+  await page.getByPlaceholder(/Искать по источникам/).fill("cedula");
+  await page.getByLabel("Категория").selectOption("vehicle-documents");
+  await page.getByLabel("Юрисдикция").selectOption("national");
+
+  await expect(page.getByRole("button", { name: new RegExp(primarySourceVehicleDocuments.shortTitleRu) })).toBeVisible();
+  await page.locator(".source-chunk-list button").filter({ hasText: "Cédulas" }).first().click();
+  await expect(page.getByTestId("primary-source-reader")).toContainText(cedulaChunk.simpleRu);
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+  await expect(page.locator(".source-text")).toHaveCount(1);
+});
+
+test("primary sources reader has responsive layout and keyboard reachable controls", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Источники/ }).click();
+  await expect(page.getByRole("heading", { name: "Официальные источники" })).toBeVisible();
+  await expect
+    .poll(async () =>
+      page.locator(".source-reader-layout").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length)
+    )
+    .toBeGreaterThan(1);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.getByRole("link", { name: "К списку" })).toBeVisible();
+
+  const searchInput = page.getByPlaceholder(/Искать по источникам/);
+  await searchInput.focus();
+  await expect(searchInput).toBeFocused();
+  await searchInput.fill("cedula");
+
+  const categorySelect = page.getByLabel("Категория");
+  await categorySelect.focus();
+  await expect(categorySelect).toBeFocused();
+  await categorySelect.selectOption("vehicle-documents");
+
+  const chunkSelect = page.getByLabel("Выбор фрагмента");
+  await chunkSelect.focus();
+  await expect(chunkSelect).toBeFocused();
+
+  const fullTranslationTab = page.getByRole("tab", { name: "Полный перевод" });
+  await fullTranslationTab.focus();
+  await expect(fullTranslationTab).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(fullTranslationTab).toHaveAttribute("aria-selected", "true");
+});
+
+test("primary sources reader performs no external requests or PDF viewer loads", async ({ page }) => {
+  const externalRequests: string[] = [];
+  const pdfRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
+    if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+  });
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Источники/ }).click();
+  await expect(page.getByRole("heading", { name: "Официальные источники" })).toBeVisible();
+  await page.getByRole("tab", { name: "Оригинал ES" }).click();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+  expect(externalRequests).toEqual([]);
+  expect(pdfRequests).toEqual([]);
 });
 
 test("process guide renders B1 Otorgamiento scope, official sources, volatile warnings, and glossary", async ({ page }) => {

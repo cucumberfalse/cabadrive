@@ -10,7 +10,7 @@
 6. Topic Materials
 7. CABA License Process Guide
 8. CABA vs RF Guide
-9. Official Sources / `Источники` (planned; not implemented yet)
+9. Official Sources / `Источники`
 
 ## Home / Onboarding
 
@@ -18,7 +18,7 @@
 - Clarifies: translations and explanations are unofficial learning aids without requiring repeated disclaimer paragraphs on every question card.
 - Clarifies: current category B questions are an unofficial fallback practice set, not an official GCBA question bank.
 - Shows quick entry actions for the primary modes.
-- When the planned `Источники` section is implemented, home/navigation may expose it as a distinct official-source reference area without implying that the current practice questions are an official full bank.
+- Navigation exposes `Источники` as a distinct official-source reference area without implying that the current practice questions are an official full bank.
 
 ## Learn Questions Flow
 
@@ -74,20 +74,20 @@
 8. Show local question images through bundled offline assets only.
 9. Keep draft/incomplete, unofficial learning aid, and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
 
-## Official Sources / `Источники` Flow (Planned)
+## Official Sources / `Источники` Flow
 
-The `Источники` reader is planned by feature `019-primary-sources-section` and is not implemented in the current product yet.
+The `Источники` reader is implemented by feature `019-primary-sources-section` as a local source-reference section. It covers every current official manifest entry at the document/status level, while Russian learner text remains partial until the remaining translation batches and strict final gates are complete.
 
 1. Open `Источники` as a distinct source-reference section, separate from topic-study `Материалы`.
-2. Browse or search official source documents from `content/official-documents/manifest.json`.
-3. Open a source detail that defaults to simple Russian learner text.
-4. Switch the selected document or chunk to full Russian translation or original Spanish official text.
+2. Browse, search, and filter official source documents from `content/official-documents/manifest.json` plus the generated `content/primary-sources/` coverage inventory.
+3. Open a source detail that defaults to simple Russian learner text when an approved Russian shard exists, or shows a clear not-yet-translated state for untranslated chunks.
+4. Switch the selected document or chunk to full Russian translation when available, or original Spanish official text for every locally archived chunk.
 5. Show compact metadata and status: source title, jurisdiction/type, retrieval date, currentness status, exact-text validation status, and archive reference.
 6. Keep Russian translation and simple rewrite clearly labeled as unofficial learning support.
 7. Do not provide simplified Spanish.
 8. Use local bundled content only; no runtime network fetch, live AI, backend endpoint, or raw PDF viewer.
 
-Russian full translations and simple rewrites for this planned reader must live outside `content/official-documents/`, preferably under a future governed `content/primary-sources/` area. The official archive remains verbatim Spanish-only source material.
+Russian full translations and simple rewrites for this reader live outside `content/official-documents/`, under the governed `content/primary-sources/` area. The official archive remains verbatim Spanish-only source material.
 
 ## CABA Vs RF Guide Flow
 

@@ -108,47 +108,47 @@
 
 ## Slice I: Source Reader UI Shell
 
-- [ ] T075 Import learner-source corpus through the existing data boundary.
-- [ ] T076 Add typed UI-facing models for source documents, chunks, QA/status metadata, and categories.
-- [ ] T077 Add a distinct app view for primary sources.
-- [ ] T078 Add navigation label `Источники` or an explicitly justified visible equivalent.
-- [ ] T079 Preserve existing `Учить`, `Экзамен`, `Ошибки`, `Словарь`, `Материалы`, and `CABA/RF` flows.
-- [ ] T080 Keep active exam attempt behavior unchanged.
-- [ ] T081 Render source list rows with title, short label, category, jurisdiction/source type, and compact status.
-- [ ] T082 Render selected document detail with metadata and trust boundary labels.
-- [ ] T083 Render the first/opened document in simple Russian by default.
-- [ ] T084 Render source chunk headings/labels and selected chunk text.
-- [ ] T085 Render local fallback/missing-content states without crashing.
-- [ ] T086 Ensure no runtime network fetch, backend endpoint, live AI, remote asset, analytics, or PDF viewer is introduced.
+- [x] T075 Import learner-source corpus through the existing data boundary.
+- [x] T076 Add typed UI-facing models for source documents, chunks, QA/status metadata, and categories.
+- [x] T077 Add a distinct app view for primary sources.
+- [x] T078 Add navigation label `Источники` or an explicitly justified visible equivalent.
+- [x] T079 Preserve existing `Учить`, `Экзамен`, `Ошибки`, `Словарь`, `Материалы`, and `CABA/RF` flows.
+- [x] T080 Keep active exam attempt behavior unchanged.
+- [x] T081 Render source list rows with title, short label, category, jurisdiction/source type, and compact status.
+- [x] T082 Render selected document detail with metadata and trust boundary labels.
+- [x] T083 Render the first/opened document in simple Russian by default.
+- [x] T084 Render source chunk headings/labels and selected chunk text.
+- [x] T085 Render local fallback/missing-content states without crashing.
+- [x] T086 Ensure no runtime network fetch, backend endpoint, live AI, remote asset, analytics, or PDF viewer is introduced.
 
 ## Slice J: Search, Filters, Chunk Navigation, And View Controls
 
-- [ ] T087 Build local search over title/metadata, simple Russian, full Russian, and original Spanish.
-- [ ] T088 Add useful search hint text in learner language.
-- [ ] T089 Add filters for practical category.
-- [ ] T090 Add filters for jurisdiction/source type.
-- [ ] T091 Add no-results state for search/filter combinations.
-- [ ] T092 Add document table of contents or chunk navigation.
-- [ ] T093 Add view controls for `Просто`, `Полный перевод`, and `Оригинал ES`.
-- [ ] T094 Confirm `Просто` remains the default when opening a new source or resetting filters.
+- [x] T087 Build local search over title/metadata, simple Russian, full Russian, and original Spanish.
+- [x] T088 Add useful search hint text in learner language.
+- [x] T089 Add filters for practical category.
+- [x] T090 Add filters for jurisdiction/source type.
+- [x] T091 Add no-results state for search/filter combinations.
+- [x] T092 Add document table of contents or chunk navigation.
+- [x] T093 Add view controls for `Просто`, `Полный перевод`, and `Оригинал ES`.
+- [x] T094 Confirm `Просто` remains the default when opening a new source or resetting filters.
 - [ ] T095 Confirm full Russian translation can be viewed for every document and chunk.
-- [ ] T096 Confirm original Spanish can be viewed for every document and chunk.
-- [ ] T097 Confirm no simplified Spanish control, data field, route, or rendered text exists.
-- [ ] T098 Avoid rendering very long documents as one unchunked page.
-- [ ] T099 Preserve selected document/chunk/search context when switching view modes.
+- [x] T096 Confirm original Spanish can be viewed for every document and chunk.
+- [x] T097 Confirm no simplified Spanish control, data field, route, or rendered text exists.
+- [x] T098 Avoid rendering very long documents as one unchunked page.
+- [x] T099 Preserve selected document/chunk/search context when switching view modes.
 
 ## Slice K: Responsive, Accessibility, And Visual Polish
 
-- [ ] T100 Implement compact/mobile list-to-detail behavior with a clear back/list affordance.
-- [ ] T101 Implement expanded/desktop side-by-side list-detail behavior.
-- [ ] T102 Ensure long source titles and Russian/Spanish paragraphs wrap without overflow.
-- [ ] T103 Ensure controls have stable dimensions and do not shift layout unexpectedly.
-- [ ] T104 Ensure all source controls are keyboard reachable.
-- [ ] T105 Ensure focus states are visible and focus order is predictable.
-- [ ] T106 Ensure status is conveyed by text and not only color.
-- [ ] T107 Ensure touch targets and spacing are comfortable for repeated mobile use.
-- [ ] T108 Avoid nested cards, decorative hero layouts, raw JSON labels, and landing-page copy.
-- [ ] T109 Use existing UI patterns and icons where available.
+- [x] T100 Implement compact/mobile list-to-detail behavior with a clear back/list affordance.
+- [x] T101 Implement expanded/desktop side-by-side list-detail behavior.
+- [x] T102 Ensure long source titles and Russian/Spanish paragraphs wrap without overflow.
+- [x] T103 Ensure controls have stable dimensions and do not shift layout unexpectedly.
+- [x] T104 Ensure all source controls are keyboard reachable.
+- [x] T105 Ensure focus states are visible and focus order is predictable.
+- [x] T106 Ensure status is conveyed by text and not only color.
+- [x] T107 Ensure touch targets and spacing are comfortable for repeated mobile use.
+- [x] T108 Avoid nested cards, decorative hero layouts, raw JSON labels, and landing-page copy.
+- [x] T109 Use existing UI patterns and icons where available.
 
 ## Tests And Verification
 
@@ -160,25 +160,25 @@
 - [x] T115 Add validator tests for Russian learner content under `content/official-documents/`.
 - [x] T116 Add validator tests for forbidden simplified Spanish.
 - [x] T117 Add validator tests for stale source fingerprints or missing archive mappings.
-- [ ] T118 Add e2e coverage that `Источники` opens the source section.
-- [ ] T119 Add e2e coverage that existing primary flows remain reachable.
-- [ ] T120 Add e2e coverage that a source detail defaults to simple Russian.
-- [ ] T121 Add e2e coverage for switching to full Russian translation.
-- [ ] T122 Add e2e coverage for switching to original Spanish.
-- [ ] T123 Add e2e coverage that simplified Spanish is not available.
-- [ ] T124 Add e2e coverage for source search.
-- [ ] T125 Add e2e coverage for category and jurisdiction/source-type filtering.
-- [ ] T126 Add e2e coverage for a long document's chunk/table-of-contents navigation.
-- [ ] T127 Add responsive e2e coverage for compact and expanded widths.
-- [ ] T128 Add keyboard/focus e2e coverage for search, filters, source selection, chunk navigation, and view controls.
-- [ ] T129 Add request-monitoring/code-review evidence that no runtime network/PDF/backend/live-AI dependency exists.
-- [ ] T130 Run final-head `pnpm run validate:content`.
-- [ ] T131 Run final-head `pnpm run test`.
-- [ ] T132 Run `pnpm run build`.
-- [ ] T133 Run `pnpm run test:e2e`.
-- [ ] T134 Run `pnpm run preflight`.
-- [ ] T135 Run final-head `git diff --check`.
-- [ ] T136 Record final-head command output summaries and exact unrelated blockers in Process Memory.
+- [x] T118 Add e2e coverage that `Источники` opens the source section.
+- [x] T119 Add e2e coverage that existing primary flows remain reachable.
+- [x] T120 Add e2e coverage that a source detail defaults to simple Russian.
+- [x] T121 Add e2e coverage for switching to full Russian translation.
+- [x] T122 Add e2e coverage for switching to original Spanish.
+- [x] T123 Add e2e coverage that simplified Spanish is not available.
+- [x] T124 Add e2e coverage for source search.
+- [x] T125 Add e2e coverage for category and jurisdiction/source-type filtering.
+- [x] T126 Add e2e coverage for a long document's chunk/table-of-contents navigation.
+- [x] T127 Add responsive e2e coverage for compact and expanded widths.
+- [x] T128 Add keyboard/focus e2e coverage for search, filters, source selection, chunk navigation, and view controls.
+- [x] T129 Add request-monitoring/code-review evidence that no runtime network/PDF/backend/live-AI dependency exists.
+- [x] T130 Run final-head `pnpm run validate:content`.
+- [x] T131 Run final-head `pnpm run test`.
+- [x] T132 Run `pnpm run build`.
+- [x] T133 Run `pnpm run test:e2e`.
+- [x] T134 Run `pnpm run preflight`.
+- [x] T135 Run final-head `git diff --check`.
+- [x] T136 Record final-head command output summaries and exact unrelated blockers in Process Memory.
 
 ## Final Whole-Corpus Release Gate
 
@@ -445,6 +445,22 @@
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to `18bc16f61a71d864d708d0ae50ac73f5b4818566`, this worktree rebased Slice C onto the fresh base and resolved validator/task conflicts by keeping #74's strict search-projection validation while retaining #77 coverage-only inventory validation and generated inventory fixes.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to merge commit `957f4e21e42c93a28cfc3162e7ed06ed7abf1479`, this worktree rebased Slice C onto the fresh base with no conflicts and preserved #77's 5,223-chunk generated inventory and generator tests.
 
+### UI Reader Slice Implementation Notes
+
+- UI reader slice ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-ui-reader` on branch `codex/019-primary-sources-ui-reader`, based on `origin/codex/019-primary-sources-content-batch-vehicle-docs` at `14bf08c`.
+- Preserved the modified UI/e2e files that Orchestrator had moved into this worktree and continued from them instead of reverting.
+- `src/data/content.ts` now imports the official manifest, primary-source coverage, learner corpus root, QA root, search root, discovered document/QA/search shards, and local official-document Markdown through the existing bundled data boundary.
+- Added typed UI-facing primary-source reader models for manifest entries, coverage documents/chunks, learner documents/chunks, QA records, search entries, translation readiness, and the combined reader corpus.
+- The combined reader corpus represents every manifest entry and every coverage document honestly: approved/partial/draft/not-translated status is derived from translated chunk counts, QA status, shard status, and draft-marker checks. Untranslated documents still have archive-derived original Spanish chunks and explicit not-ready Russian states.
+- `src/App.tsx` adds the `Источники` navigation item and a distinct source reader view without changing active exam translation/explanation behavior.
+- The source reader defaults to `Просто`, selects an approved translated vehicle-document batch when available, offers `Полный перевод` and `Оригинал ES`, and does not add a simplified-Spanish mode.
+- Search/filter/detail behavior is local-only. Search covers title/metadata, simple Russian, full Russian, and original Spanish, with diacritic-insensitive matching so learner input such as `cedula` can find `Cédula`.
+- Long documents are navigated through the generated chunk inventory with a select control plus a capped quick-list rather than rendering every chunk as a monolithic page.
+- The UI shows compact currentness, exact-text, archive path, source URL, chunking strategy, and Russian coverage counts, including exact-text pending state while final source readiness remains unresolved.
+- Durable docs were updated from planned to implemented for the UI reader slice while preserving the final whole-corpus translation/exact-text blockers.
+- T095 remains open for the final whole-corpus release because many documents/chunks do not yet have approved full Russian translations. This UI slice exposes the full-translation mode for translated chunks and a truthful not-yet-prepared state for untranslated chunks.
+- No `content/official-documents/**`, content translation shards, coverage generator, or learner-source content shards were edited in this UI slice.
+
 ### Implementation Agent Feedback
 
 - None yet.
@@ -701,3 +717,15 @@
   - `npm run build` passed: content validation passed, assets synced, Vite production build completed, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - No blockers remain from this sync loop.
+- UI reader slice verification on 2026-05-10:
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `npm test` passed: 153 Node tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite production build completed, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning; the built JS bundle was about 11.55 MB / 2.20 MB gzip because this UI slice bundles the local source-reader corpus/archive projection.
+  - First `npm run test:e2e` run failed in the new keyboard/focus test because Playwright `getByLabel("Фрагмент")` matched the `Фрагменты` region as well as the select. The UI was updated with explicit `aria-label="Выбор фрагмента"` and the test selector was tightened.
+  - Second `npm run test:e2e` passed: 30 Playwright tests, 30 pass, 0 fail across desktop and mobile projects.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+  - `npm run check:repo` passed. Output: `Repository baseline check passed.`
+  - `npm run preflight` passed end-to-end: feature-memory gate, repo baseline, content validation, 153 Node tests, production build, and 30 Playwright tests all passed.
+  - `git diff --check` passed with no output.
+  - Known residual risk: bundle size is larger after importing the local source-reader corpus/archive projection. This does not introduce external requests or PDF viewing, but future slices may want local code-splitting or static asset partitioning if startup size becomes a blocker.

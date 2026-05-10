@@ -9,6 +9,9 @@ import {
   translationByQuestion,
   type ProgressAnswer,
   type ProcessGuideSection,
+  type PrimarySourceReaderChunk,
+  type PrimarySourceReaderDocument,
+  type PrimarySourceTranslationStatus,
   type Question,
   type TopicGuideTicket
 } from "./data/content";
@@ -17,8 +20,9 @@ import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHis
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources";
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
+type PrimarySourceTextMode = "simple" | "full" | "spanish";
 type LearningTicketTimerState = {
   remainingSeconds: number;
   status: LearningTicketTimerStatus;
@@ -78,6 +82,92 @@ function processCalloutLabel(section: ProcessGuideSection) {
   if (section.calloutType === "optional_preparation") return "Опциональная подготовка";
   if (section.calloutType === "adjacent_path") return "Соседний путь";
   return "Предупреждение";
+}
+
+function primarySourceCategoryLabel(category: string) {
+  const labels: Record<string, string> = {
+    "traffic-law": "Законы движения",
+    "traffic-code": "Кодекс движения",
+    signage: "Знаки и разметка",
+    "vehicle-documents": "Документы ТС",
+    "vehicle-inspection": "VTV и техосмотр",
+    "study-materials": "Материалы экзамена",
+    incidents: "ДТП и безопасность",
+    "legal-duties": "Юридические обязанности",
+    administrative: "Административное"
+  };
+  return labels[category] || category;
+}
+
+function primarySourceJurisdictionLabel(jurisdiction: string) {
+  if (jurisdiction === "caba") return "CABA";
+  if (jurisdiction === "national") return "Национальный";
+  return "Другая юрисдикция";
+}
+
+function primarySourceTypeLabel(sourceType: string) {
+  return sourceType
+    .replaceAll("_", " ")
+    .replace("updated text", "texto actualizado")
+    .replace("current material", "current material");
+}
+
+function primarySourceTranslationStatusLabel(status: PrimarySourceTranslationStatus) {
+  if (status === "approved") return "Русский слой готов";
+  if (status === "partial") return "Русский слой частичный";
+  if (status === "draft") return "Русский слой черновой";
+  return "Русский слой не готов";
+}
+
+function primarySourceCurrentnessLabel(document: PrimarySourceReaderDocument) {
+  if (document.currentnessValidationStatus === "passed") return `Актуальность: ${document.currentnessStatus}`;
+  if (document.currentnessValidationStatus === "failed") return "Актуальность: проверка не прошла";
+  return "Актуальность: проверка ожидает";
+}
+
+function primarySourceExactTextLabel(document: PrimarySourceReaderDocument) {
+  if (document.exactTextValidationStatus === "passed") return "Точный текст: проверен";
+  if (document.exactTextValidationStatus === "failed") return "Точный текст: проверка не прошла";
+  return "Точный текст: ожидает проверки";
+}
+
+function primarySourceModeLabel(mode: PrimarySourceTextMode) {
+  if (mode === "full") return "Полный перевод";
+  if (mode === "spanish") return "Оригинал ES";
+  return "Просто";
+}
+
+function primarySourceChunkText(chunk: PrimarySourceReaderChunk, mode: PrimarySourceTextMode) {
+  if (mode === "full") {
+    return chunk.fullTranslationRu || "Полный русский перевод для этого фрагмента еще не подготовлен.";
+  }
+  if (mode === "spanish") {
+    return chunk.originalSpanish || "Оригинальный испанский фрагмент не найден в локальном архиве.";
+  }
+  return chunk.simpleRu || "Простой русский текст для этого фрагмента еще не подготовлен.";
+}
+
+function normalizePrimarySourceSearch(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLocaleLowerCase("ru-RU");
+}
+
+function primarySourceChunkSearchText(chunk: PrimarySourceReaderChunk) {
+  return normalizePrimarySourceSearch([
+    chunk.officialLabel || "",
+    chunk.chunkId,
+    ...chunk.headingPath,
+    chunk.simpleRu || "",
+    chunk.fullTranslationRu || "",
+    chunk.originalSpanish || ""
+  ]
+    .join(" "));
+}
+
+function primarySourceChunkLabel(chunk: PrimarySourceReaderChunk) {
+  return chunk.officialLabel || chunk.headingPath.at(-1) || `Фрагмент ${chunk.order}`;
 }
 
 function learningTimerStatusText(timer: LearningTicketTimerState) {
@@ -938,6 +1028,278 @@ function ProcessGuideView() {
   );
 }
 
+function PrimarySourcesView() {
+  const corpus = data.primarySources;
+  const defaultDocument = corpus.documents.find((document) => document.translationStatus === "approved") || corpus.documents[0];
+  const [query, setQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+  const [jurisdictionFilter, setJurisdictionFilter] = useState("all");
+  const [selectedDocumentId, setSelectedDocumentId] = useState(defaultDocument?.officialDocumentId);
+  const [selectedChunkId, setSelectedChunkId] = useState(defaultDocument?.chunks[0]?.chunkId);
+  const [textMode, setTextMode] = useState<PrimarySourceTextMode>("simple");
+  const normalizedQuery = normalizePrimarySourceSearch(query.trim());
+  const categories = useMemo(() => [...new Set(corpus.documents.map((document) => document.category))].sort(), [corpus.documents]);
+  const jurisdictions = useMemo(() => [...new Set(corpus.documents.map((document) => document.jurisdiction))].sort(), [corpus.documents]);
+
+  function documentMatchesQuery(document: PrimarySourceReaderDocument) {
+    if (!normalizedQuery) return true;
+    return document.searchText.includes(normalizedQuery);
+  }
+
+  function chunkMatchesQuery(chunk: PrimarySourceReaderChunk) {
+    if (!normalizedQuery) return true;
+    return primarySourceChunkSearchText(chunk).includes(normalizedQuery);
+  }
+
+  const filteredDocuments = useMemo(
+    () =>
+      corpus.documents.filter((document) => {
+        const matchesCategory = categoryFilter === "all" || document.category === categoryFilter;
+        const matchesJurisdiction = jurisdictionFilter === "all" || document.jurisdiction === jurisdictionFilter;
+        return matchesCategory && matchesJurisdiction && documentMatchesQuery(document);
+      }),
+    [categoryFilter, corpus.documents, jurisdictionFilter, normalizedQuery]
+  );
+  const selectedDocument =
+    corpus.documents.find((document) => document.officialDocumentId === selectedDocumentId) || filteredDocuments[0] || defaultDocument;
+  const selectedChunk =
+    selectedDocument?.chunks.find((chunk) => chunk.chunkId === selectedChunkId) || selectedDocument?.chunks[0];
+  const matchingChunks = selectedDocument?.chunks.filter(chunkMatchesQuery) || [];
+  const quickChunkLimit = 80;
+  const quickChunks = normalizedQuery ? matchingChunks : selectedDocument?.chunks.slice(0, quickChunkLimit) || [];
+
+  useEffect(() => {
+    if (!filteredDocuments.length) return;
+    if (selectedDocumentId && filteredDocuments.some((document) => document.officialDocumentId === selectedDocumentId)) return;
+    const nextDocument = filteredDocuments[0];
+    setSelectedDocumentId(nextDocument.officialDocumentId);
+    setSelectedChunkId(nextDocument.chunks[0]?.chunkId);
+    setTextMode("simple");
+  }, [filteredDocuments, selectedDocumentId]);
+
+  function selectDocument(document: PrimarySourceReaderDocument) {
+    setSelectedDocumentId(document.officialDocumentId);
+    setSelectedChunkId(document.chunks[0]?.chunkId);
+    setTextMode("simple");
+  }
+
+  function resetFilters() {
+    setQuery("");
+    setCategoryFilter("all");
+    setJurisdictionFilter("all");
+    if (defaultDocument) {
+      setSelectedDocumentId(defaultDocument.officialDocumentId);
+      setSelectedChunkId(defaultDocument.chunks[0]?.chunkId);
+    }
+    setTextMode("simple");
+  }
+
+  if (!selectedDocument || !selectedChunk) {
+    return (
+      <section className="workspace">
+        <h2>Источники</h2>
+        <p>Локальный корпус официальных источников пока не найден.</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="sources-view" aria-labelledby="sources-title">
+      <header className="materials-header sources-header">
+        <div>
+          <p className="eyebrow">Источники</p>
+          <h2 id="sources-title">Официальные источники</h2>
+          <p>{corpus.disclaimerRu}</p>
+        </div>
+        <div className="materials-status" aria-label="Статус корпуса источников">
+          <span>{corpus.manifestDocumentCount} документов manifest</span>
+          <span>{corpus.coverageDocumentCount} документов coverage</span>
+          <span>{corpus.approvedDocumentCount} готовых русских пачек</span>
+          <span>{corpus.translatedChunkCount} / {corpus.totalChunkCount} фрагментов с русским слоем</span>
+        </div>
+      </header>
+
+      <div className="source-reader-layout">
+        <aside className="source-list-pane" id="primary-source-list" aria-label="Список официальных источников">
+          <div className="source-controls">
+            <label className="search-box">
+              <Search size={18} aria-hidden="true" />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Искать по источникам, статьям, русскому и испанскому"
+              />
+            </label>
+            <div className="source-filter-row">
+              <label className="source-filter">
+                <span>Категория</span>
+                <select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}>
+                  <option value="all">Все категории</option>
+                  {categories.map((category) => (
+                    <option value={category} key={category}>
+                      {primarySourceCategoryLabel(category)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="source-filter">
+                <span>Юрисдикция</span>
+                <select value={jurisdictionFilter} onChange={(event) => setJurisdictionFilter(event.target.value)}>
+                  <option value="all">Все источники</option>
+                  {jurisdictions.map((jurisdiction) => (
+                    <option value={jurisdiction} key={jurisdiction}>
+                      {primarySourceJurisdictionLabel(jurisdiction)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </div>
+
+          {filteredDocuments.length ? (
+            <div className="source-result-list">
+              {filteredDocuments.map((document) => {
+                const matchCount = normalizedQuery ? document.chunks.filter((chunk) => primarySourceChunkSearchText(chunk).includes(normalizedQuery)).length : document.totalChunkCount;
+                return (
+                  <button
+                    type="button"
+                    className={document.officialDocumentId === selectedDocument.officialDocumentId ? "source-row active" : "source-row"}
+                    key={document.officialDocumentId}
+                    onClick={() => selectDocument(document)}
+                  >
+                    <span className="source-row-title">{document.shortTitleRu}</span>
+                    <span className="source-row-subtitle">{document.title}</span>
+                    <span className="source-row-meta">
+                      <span>{primarySourceCategoryLabel(document.category)}</span>
+                      <span>{primarySourceJurisdictionLabel(document.jurisdiction)}</span>
+                      <span>{primarySourceTranslationStatusLabel(document.translationStatus)}</span>
+                    </span>
+                    <small>{matchCount} фрагментов</small>
+                  </button>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="source-empty-state">
+              <p>По локальному корпусу ничего не найдено.</p>
+              <button type="button" className="tool-button" onClick={resetFilters}>
+                Сбросить фильтры
+              </button>
+            </div>
+          )}
+        </aside>
+
+        <article className="source-detail-pane" aria-labelledby="source-detail-title">
+          <div className="source-detail-heading">
+            <div>
+              <span className="block-label">Выбранный источник</span>
+              <h2 id="source-detail-title">{selectedDocument.shortTitleRu}</h2>
+              <p>{selectedDocument.title}</p>
+              <a className="source-back-link" href="#primary-source-list">
+                К списку
+              </a>
+            </div>
+            <div className="source-view-controls" role="tablist" aria-label="Режим текста источника">
+              {(["simple", "full", "spanish"] as PrimarySourceTextMode[]).map((mode) => (
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={textMode === mode}
+                  className={textMode === mode ? "active" : ""}
+                  onClick={() => setTextMode(mode)}
+                  key={mode}
+                >
+                  {primarySourceModeLabel(mode)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="source-status-grid" aria-label="Статус выбранного источника">
+            <span>{primarySourceCategoryLabel(selectedDocument.category)}</span>
+            <span>{primarySourceJurisdictionLabel(selectedDocument.jurisdiction)}</span>
+            <span>{primarySourceTypeLabel(selectedDocument.officialSourceType)}</span>
+            <span>{primarySourceTranslationStatusLabel(selectedDocument.translationStatus)}</span>
+            <span>{primarySourceCurrentnessLabel(selectedDocument)}</span>
+            <span>{primarySourceExactTextLabel(selectedDocument)}</span>
+            <span>Получено {selectedDocument.retrievalDate}</span>
+            <span>{selectedDocument.translatedChunkCount} / {selectedDocument.totalChunkCount} RU-фрагментов</span>
+          </div>
+
+          <aside className="support-block source-trust">
+            <span className="block-label">Граница доверия</span>
+            <p>Испанский архивный текст является официальным слоем. Русский перевод и простой русский текст - неофициальная учебная поддержка Cabadrive.</p>
+            {selectedDocument.translationStatus !== "approved" && (
+              <p>Этот источник показан в корпусе, но русский слой еще не готов полностью: статус не скрывается до завершения переводческих batches.</p>
+            )}
+          </aside>
+
+          <div className="source-links">
+            <a href={selectedDocument.sourceUrl} target="_blank" rel="noreferrer">
+              <ExternalLink size={16} aria-hidden="true" /> Официальная страница
+            </a>
+            <span>{selectedDocument.archiveLocalPath}</span>
+          </div>
+
+          <section className="source-chunk-navigation" aria-labelledby="source-chunks-title">
+            <div className="source-chunk-navigation-heading">
+              <h3 id="source-chunks-title">Фрагменты</h3>
+              <span>{selectedDocument.chunkingStrategy}</span>
+            </div>
+            <p className="muted">{selectedDocument.chunkingNote}</p>
+            <label className="source-filter source-chunk-select">
+              <span>Фрагмент</span>
+              <select
+                aria-label="Выбор фрагмента"
+                value={selectedChunk.chunkId}
+                onChange={(event) => setSelectedChunkId(event.target.value)}
+              >
+                {selectedDocument.chunks.map((chunk) => (
+                  <option value={chunk.chunkId} key={chunk.chunkId}>
+                    {chunk.order}. {primarySourceChunkLabel(chunk)}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <div className="source-chunk-list" aria-label="Навигация по фрагментам">
+              {quickChunks.map((chunk) => (
+                <button
+                  type="button"
+                  className={chunk.chunkId === selectedChunk.chunkId ? "active" : ""}
+                  key={chunk.chunkId}
+                  onClick={() => setSelectedChunkId(chunk.chunkId)}
+                >
+                  <span>{String(chunk.order).padStart(3, "0")}</span>
+                  <span>{primarySourceChunkLabel(chunk)}</span>
+                  {!chunk.hasLearnerText && <small>RU не готов</small>}
+                </button>
+              ))}
+            </div>
+            {!normalizedQuery && selectedDocument.chunks.length > quickChunkLimit && (
+              <p className="muted">Быстрый список: первые {quickChunkLimit} из {selectedDocument.chunks.length}.</p>
+            )}
+          </section>
+
+          <section className="source-reader" aria-labelledby="source-reader-title" data-testid="primary-source-reader">
+            <div className="source-reader-heading">
+              <div>
+                <span className="block-label">{primarySourceModeLabel(textMode)}</span>
+                <h3 id="source-reader-title">{primarySourceChunkLabel(selectedChunk)}</h3>
+                <p>{selectedChunk.headingPath.join(" / ")}</p>
+              </div>
+              <div className="source-row-meta">
+                <span>Фрагмент {selectedChunk.order}</span>
+                <span>{selectedChunk.hasLearnerText ? "RU есть" : "RU не готов"}</span>
+              </div>
+            </div>
+            <pre className={textMode === "spanish" ? "source-text spanish" : "source-text"}>{primarySourceChunkText(selectedChunk, textMode)}</pre>
+          </section>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 export function App() {
   const [view, setView] = useState<View>("learn");
   const [progress, setProgress] = useState(loadProgress);
@@ -967,6 +1329,7 @@ export function App() {
         <button className={view === "mistakes" ? "active" : ""} onClick={() => setView("mistakes")}><XCircle size={18} /> Ошибки</button>
         <button className={view === "vocabulary" ? "active" : ""} onClick={() => setView("vocabulary")}><Search size={18} /> Словарь</button>
         <button className={view === "materials" ? "active" : ""} onClick={() => setView("materials")}><BookMarked size={18} /> Материалы</button>
+        <button className={view === "sources" ? "active" : ""} onClick={() => setView("sources")}><FileText size={18} /> Источники</button>
         <button className={view === "process" ? "active" : ""} onClick={() => setView("process")}><MapPinned size={18} /> Процесс</button>
         <button className={view === "guide" ? "active" : ""} onClick={() => setView("guide")}><Flag size={18} /> CABA/RF</button>
       </nav>
@@ -976,6 +1339,7 @@ export function App() {
       {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}
+      {view === "sources" && <PrimarySourcesView />}
       {view === "process" && <ProcessGuideView />}
       {view === "guide" && <GuideView />}
     </main>
