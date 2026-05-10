@@ -336,17 +336,30 @@ small,
 
 .question-image-frame {
   position: relative;
-  width: min(100%, 620px);
+  width: min(100%, 620px, var(--question-image-max-width-by-height, 620px));
+  overflow: hidden;
+  border: 1px solid #ccd3ce;
+  border-radius: 8px;
+  background: #ffffff;
 }
 
 .question-image img {
   display: block;
   width: 100%;
+  height: auto;
   max-height: 360px;
   object-fit: contain;
   border: 1px solid #ccd3ce;
   border-radius: 8px;
   background: #ffffff;
+}
+
+.question-image-frame img {
+  max-height: none;
+  object-fit: fill;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .image-explanation-overlay {

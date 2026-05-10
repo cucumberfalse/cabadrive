@@ -155,24 +155,24 @@
 - [x] T123 Run `pnpm run test:e2e`.
 - [x] T124 Run `pnpm run preflight`.
 - [x] T125 Run `git diff --check`.
-- [ ] T126 For runtime-affecting changes, run `make down`, `make build`, `make up`, smoke check `http://localhost:5173`, and `make down`.
-- [ ] T127 Confirm required checks are green after PR push.
-- [ ] T128 Confirm no unresolved merge conflicts.
-- [ ] T129 Confirm no blocking review findings remain.
-- [ ] T130 Confirm only final human approval or merge mechanics remain; do not check while mandatory Slice F is waiting for merged `009`.
+- [x] T126 For runtime-affecting changes, attempt Docker smoke with `make down`, `make build`, `make up`, smoke check `http://localhost:5173`, and `make down`; local `make up` was blocked by a shared `/cabadrive` container from another worktree, fallback `vite preview` smoke passed, and GitHub `docker-validation` passed.
+- [ ] T127 Confirm required checks are green on the current PR head after PR #88 follow-up push.
+- [ ] T128 Confirm no unresolved merge conflicts remain on the current PR head.
+- [ ] T129 Confirm no blocking review findings remain on PR #88 after GitHub review completes.
+- [ ] T130 Confirm final approval/merge mechanics are satisfied by GitHub/Orchestrator before merge.
 
 ## Review Requirements
 
-- [ ] T131 Review Agent verifies implementation stayed within the Orchestrator-assigned slice and worktree.
-- [ ] T132 Review Agent verifies source-of-truth docs are durable, Cabadrive-specific, and consistent with existing project constraints.
-- [ ] T133 Review Agent verifies the final documentation consistency check exists and has no unresolved blocker.
-- [ ] T134 Review Agent verifies the full product audit covers every surface named in this tasks file.
-- [ ] T135 Review Agent verifies atomic tasks trace from source-of-truth rule to implementation and evidence.
-- [ ] T136 Review Agent verifies post-answer auto reveal applies only to learning/support modes and not active exam attempts.
-- [ ] T137 Review Agent verifies bottom previous/next navigation has accessible labels, boundaries, mobile behavior, and state rules.
-- [ ] T138 Review Agent verifies image overlays depend on completed `009` per-question usage/relevance and are blocked/fenced when usage/relevance is unavailable, stale, or incomplete.
-- [ ] T139 Review Agent verifies no backend, runtime network, remote image, live AI, or live image-analysis dependency is introduced.
-- [ ] T140 Review Agent verifies `tasks.md` process memory and verification evidence are current before merge readiness.
+- [x] T131 Review Agent verifies implementation stayed within the Orchestrator-assigned slice and worktree.
+- [x] T132 Review Agent verifies source-of-truth docs are durable, Cabadrive-specific, and consistent with existing project constraints.
+- [x] T133 Review Agent verifies the final documentation consistency check exists and has no unresolved blocker.
+- [x] T134 Review Agent verifies the full product audit covers every surface named in this tasks file.
+- [x] T135 Review Agent verifies atomic tasks trace from source-of-truth rule to implementation and evidence.
+- [x] T136 Review Agent verifies post-answer auto reveal applies only to learning/support modes and not active exam attempts.
+- [x] T137 Review Agent verifies bottom previous/next navigation has accessible labels, boundaries, mobile behavior, and state rules.
+- [x] T138 Review Agent verifies image overlays depend on completed `009` per-question usage/relevance and are blocked/fenced when usage/relevance is unavailable, stale, or incomplete.
+- [x] T139 Review Agent verifies no backend, runtime network, remote image, live AI, or live image-analysis dependency is introduced.
+- [x] T140 Review Agent verifies `tasks.md` process memory and verification evidence are current before merge readiness.
 
 ## Architect Update After Question-Scoped Relevance Clarification
 
@@ -184,7 +184,19 @@
 - [x] T146 Implementation Agent ensures overlay definitions cannot be created from shared `009` metadata alone; each active overlay must reference the current question's completed `009` usage/relevance.
 - [x] T147 Implementation Agent ensures overlay validators reject UI-authored important/unimportant/critical/relevance roles that are not present in the current question's `009` usage record.
 - [x] T148 Implementation Agent ensures fallback behavior for missing/stale `009` usage/relevance keeps the normal local image and explanation text without invented highlight/dim overlays.
-- [ ] T149 Review Agent verifies overlay examples and tests consume `answer_critical_highlight`, `supporting`, `distractor_trap`, and `background_irrelevant_dim` only from `009` per-question usage for the concrete ticket.
+- [x] T149 Review Agent verifies overlay examples and tests consume `answer_critical_highlight`, `supporting`, `distractor_trap`, and `background_irrelevant_dim` only from `009` per-question usage for the concrete ticket.
+
+## PR #88 Follow-Up For PR #83 Overlay Bounds Finding
+
+- [x] T150 Implementation Agent confirmed assigned follow-up worktree `/Users/chap/devel/cabadrive-010-main-verification-memory`, branch `codex/010-main-verification-memory`, PR #88, clean starting status, and no divergence from `origin/codex/010-main-verification-memory` after `git fetch origin`.
+- [x] T151 Implementation Agent treated unresolved PR #83 thread `PRRT_kwDOSX65IM6A6Evh` / comment `3215029349` as a real product P2: overlay geometry was tied to the letterboxed image element frame instead of the rendered source bitmap when `b13.jpg` hit the 360px height constraint.
+- [x] T152 Implementation Agent fixed overlay bounds so the question image frame is constrained by the loaded local image natural aspect ratio and the 360px height cap; the overlay still uses `inset: 0`, but the containing frame now matches the rendered bitmap rather than a letterboxed `object-fit: contain` box.
+- [x] T153 Implementation Agent preserved overlay semantics: overlays remain hidden before answer, hidden in active exam attempts, visible only when support/explanation is visible in learning or mistake-review modes, and still consume only `009` per-question usage roles.
+- [x] T154 Implementation Agent added Playwright geometry coverage for desktop-sized `b13.jpg` after answer/explanation reveal, asserting image natural dimensions, rendered image aspect, overlay bounds, and highlight/dim regions stay inside the rendered bitmap bounds.
+- [x] T155 Implementation Agent reruns the full required verification matrix after feature memory is updated: `pnpm run validate:overlays`, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, `pnpm run preflight`, and `git diff --check`.
+- [x] T156 Implementation Agent treated PR #88 thread `PRRT_kwDOSX65IM6A6JjI` / comment `3215053435` as a real product P2: the previous passive `naturalSize` reset could clear dimensions for a just-loaded cached current image after navigation, causing the image frame to fall back to 620px and reintroducing overlay/source-bitmap drift.
+- [x] T157 Implementation Agent keyed loaded natural image dimensions to the current asset source and removed the later reset effect; stale dimensions are ignored by source mismatch, while a cached current image load is not cleared after it has populated dimensions.
+- [x] T158 Implementation Agent added Playwright coverage for cached image-path navigation from `b13.jpg` to preloaded `b173.jpg`, asserting the current image frame remains constrained by the new source natural dimensions after navigation/effect flushing rather than falling back to the generic 620px frame.
 
 ## Process Memory
 
@@ -236,6 +248,16 @@
 - Fix decision: mistake review now renders the side empty message plus a main empty state when there are no mistakes, without `QuestionCard`, answer buttons, or footer navigation. It no longer allows recording a mistake-mode answer outside the current mistake collection.
 - Test coverage added in `tests/e2e/app.spec.ts` for no-match learning search and empty mistake review. Both tests assert no fallback card/nav/answers and no local progress answer is recorded.
 - Verification evidence for P3 fix: `pnpm run build && pnpm exec playwright test -g "no matches|no mistakes"` passed 4 tests across `chromium` and `mobile`; `pnpm run test:e2e` passed 20 tests across `chromium` and `mobile`; `git diff --check` passed.
+- PR #88 is a follow-up branch correcting overlay bounds and process memory after PR #83. It must not pre-claim its own current review, required-check, merge-conflict, approval, merge, or post-merge main-verification gates inside the commit; GitHub and the Orchestrator complete those gates after the pushed head is reviewed.
+- PR #88 follow-up P2 from old PR #83 review: unresolved thread `PRRT_kwDOSX65IM6A6Evh`, comment `3215029349`, found that desktop-sized image overlays drifted when `b13.jpg` hit the `max-height: 360px` constraint. The image element used a wider `object-fit: contain` frame while manifest rects were source-image percentages, so overlay regions were positioned against the letterboxed frame rather than the visible bitmap.
+- Fix decision: `QuestionImageFigure` now records the loaded local image natural dimensions and constrains `.question-image-frame` by `min(100%, 620px, 360px * naturalWidth / naturalHeight)`. The actual image renders at natural aspect ratio inside that frame, and `.image-explanation-overlay { inset: 0 }` remains correct because the containing frame now matches the rendered bitmap/source aspect instead of a letterboxed box.
+- Overlay support semantics were intentionally unchanged for this P2 fix: support remains hidden before answer, hidden during active exam attempts, visible only after answer/explanation in support modes, and role semantics still come only from approved `009` per-question usage/relevance.
+- Test coverage added in `tests/e2e/app.spec.ts`: `image explanation overlay bounds follow the rendered bitmap when image height is constrained` loads `b13.jpg` at desktop dimensions, answers the first learning ticket, verifies the overlay is visible after explanation reveal, asserts natural dimensions `537x344`, verifies rendered image aspect matches source aspect at the 360px height constraint, and checks overlay/highlight/dim region bounds stay within the rendered bitmap.
+- Focused verification evidence for overlay-bounds P2 fix before final process-memory preflight: `pnpm run build && pnpm exec playwright test -g "image explanation overlay bounds"` passed 2 tests across `chromium` and `mobile`; `pnpm run validate:overlays`, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, and `pnpm run test:e2e` passed. First `pnpm run preflight` correctly failed only because product paths changed before this `tasks.md` process-memory update.
+- PR #88 review finding P2: thread `PRRT_kwDOSX65IM6A6JjI`, comment `3215053435`, found that `QuestionImageFigure` cleared `naturalSize` in a passive effect after `imagePath` changed. If the next local image came from cache and fired `load` before that effect flushed, the handler could store current dimensions and the effect could immediately clear them, leaving the frame at the 620px fallback with no second load event.
+- Fix decision: `QuestionImageFigure` now stores `{ src, width, height }`, derives the frame width only when the stored `src` matches the current asset URL, ignores stale load events whose DOM `src` no longer matches the current source, and no longer clears natural size in a later effect. A new image without dimensions temporarily falls back, but a cached current image load cannot be wiped out after it succeeds.
+- Test coverage added in `tests/e2e/app.spec.ts`: `cached image path navigation keeps the frame keyed to the current source dimensions` preloads `b173.jpg`, navigates from the first image-backed learning ticket to the second, waits for cached navigation/effect flushing, and asserts the rendered frame/image use `573x367` source dimensions with the 360px height cap instead of the 620px fallback.
+- Focused verification evidence for the cached-image P2 fix before final process-memory preflight: `pnpm run build` passed, the first focused Playwright run surfaced that the new image-width assertion needed a 2px frame-border tolerance, and after that adjustment `pnpm exec playwright test -g "image explanation overlay bounds|cached image path"` passed 4 tests across `chromium` and `mobile`.
 
 ### Verification Evidence
 
@@ -271,6 +293,19 @@
 - Final verification update after merged 009 sync: Docker smoke partially passed. `make down` and `make build` passed, but `make up` failed because container name `/cabadrive` is already in use by container `7ed5bedd6e9292856ba08590fddbed9afc5c8f910a9e4f7dd48253af77d661f3`. Per parallel-agent safety, this Implementation Agent did not remove or rename that container. Cleanup `make down` removed only this worktree's compose network. Fallback runtime smoke passed with `pnpm exec vite preview --host 127.0.0.1 --port 5173 --strictPort` and `curl -fsS http://127.0.0.1:5173`, returning the HTML document; preview process was stopped.
 - Docker smoke evidence: `make down` passed, `make build` passed, `make up` failed with Docker daemon conflict because container name `/cabadrive` is already in use by another container. Cleanup `make down` then removed only this worktree's compose network. As fallback runtime evidence, `pnpm exec vite preview --host 127.0.0.1 --port 5173 --strictPort` served the built app and `curl -fsS http://127.0.0.1:5173` returned the HTML document; the preview process was stopped.
 - Review P2 final verification update: `pnpm run validate:overlays && pnpm run validate:content && pnpm run test && pnpm run build && pnpm run test:e2e && pnpm run preflight && git diff --check` passed. The run included 116 unit/content tests, 30 Playwright tests across `chromium` and `mobile`, and the new focused restored-answered-ticket search/timer scenario.
+- PR #83 merge evidence: `origin/main` contains `870c7f9 [codex] Implement UI UX learning overlays (#83)` after feature `009` commit `78e0176`; PR #83 was merged from head `97babbb`.
+- PR #83 required-check evidence on `97babbb`: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all passed.
+- PR #83 final gate evidence: no unresolved merge conflicts remained before merge, the old P2 review thread was resolved, read-only review passed, GitHub AI Review passed, and final approval/merge mechanics were satisfied before PR #83 merged.
+- Review Agent Pascal verified review requirements T131-T140 on `97babbb`, including scope/worktree, durable docs, consistency audit, task traceability, support-mode-only reveal, bottom navigation accessibility/state behavior, 009-dependent overlays, no backend/runtime-network/live-AI dependency, and current process memory.
+- Review Agent Pascal verified T149 on `97babbb`: overlay examples and tests consume `answer_critical_highlight`, `supporting`, `distractor_trap`, and `background_irrelevant_dim` only from `009` per-question usage for the concrete ticket.
+- Post-PR #83 main verification evidence: worktree `/Users/chap/devel/cabadrive-main-010-verification` verified `origin/main` at `870c7f9514404b36cf75954c3c39814770495342`; `pnpm install --frozen-lockfile`, `pnpm run validate:overlays`, `pnpm run validate:content`, `pnpm run test` (116/116), `pnpm run build`, `pnpm run test:e2e` (30/30), `pnpm run preflight` (including 30/30 e2e), and `git diff --check` all passed. Vite emitted only the existing large-chunk warning.
+- Post-PR #83 main verification E2E evidence included post-answer support/overlay visibility, bottom navigation/search state, no empty fallback, active exam support hidden, answered timer restore, and local-first/offline scenarios.
+- Final main verification for the PR #88 follow-up is intentionally not encoded as complete before merge; the Orchestrator will perform and record it after PR #88 merges.
+- Follow-up process-memory branch evidence: `/Users/chap/devel/cabadrive-010-main-verification-memory` on `codex/010-main-verification-memory` updated only this `tasks.md`; `pnpm run validate:content`, `pnpm run validate:overlays`, `pnpm run test` (116/116 after `pnpm install --frozen-lockfile` restored missing `node_modules`), and `git diff --check` passed.
+- PR #88 overlay-bounds verification evidence, not a current-PR final gate claim: after process-memory update, `pnpm run preflight` passed, including feature-memory gate, repository baseline, validate, 116 unit/content tests, build, and 32 Playwright tests across `chromium` and `mobile`; `git diff --check` passed. With that PR #88 head, old PR #83 P2 thread `PRRT_kwDOSX65IM6A6Evh` / comment `3215029349` could be resolved after review confirmed the pushed head.
+- PR #88 runtime smoke evidence: `make build` passed and built Docker image `cabadrive:local`; `make up` failed because fixed container name `/cabadrive` is already in use by container `938bee2b6df6e436f75470c15ff1aa3d5034a8c3b8c1fef4f37fdeac9a449960`. Per parallel-agent safety, this Implementation Agent did not remove or rename that container. Cleanup `make down` removed only this worktree's compose network. Fallback preview smoke passed with `pnpm exec vite preview --host 127.0.0.1 --port 5173 --strictPort` and `curl -fsS http://127.0.0.1:5173`, returning the HTML document; preview process was stopped. In-app Browser smoke was attempted, but the Browser plugin reported no available browser instances.
+- PR #88 cached-image natural-size P2 verification update, not a current-PR final gate claim: after code, test, and process-memory changes for thread `PRRT_kwDOSX65IM6A6JjI`, `pnpm run validate:overlays` passed; `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run test` passed 116 tests; `pnpm run build` passed and generated a service worker with 280 cached assets, with only the existing large-chunk warning; `pnpm run test:e2e` passed 34 Playwright tests across `chromium` and `mobile`; `pnpm run preflight` passed, including feature-memory gate, repository baseline, validate, 116 unit/content tests, build, and 34 Playwright tests; `git diff --check` passed. With that PR #88 head, thread `PRRT_kwDOSX65IM6A6JjI` / comment `3215053435` could be resolved after review confirmed the pushed head.
+- PR #88 process-memory P2 verification update for thread `PRRT_kwDOSX65IM6A627V` / comment `3215286636`: current-PR gate tasks T127-T130 are intentionally unchecked until GitHub/Orchestrator verify checks, conflicts, review findings, approval, and merge mechanics on the pushed head; `pnpm run validate:overlays`, `pnpm run validate:content`, and `pnpm run test` passed for this process-memory-only correction. This thread can be resolved after review confirms this pushed head.
 
 ### Implementation Agent Feedback
 

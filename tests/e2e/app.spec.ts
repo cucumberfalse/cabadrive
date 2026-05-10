@@ -108,6 +108,116 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect.poll(() => storedAnswerCount(page)).toBe(3);
 });
 
+test("image explanation overlay bounds follow the rendered bitmap when image height is constrained", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+
+  const card = page.getByTestId("question-card");
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect(card.getByTestId("image-explanation-overlay")).toBeVisible();
+
+  const geometry = await card.evaluate((element) => {
+    const image = element.querySelector(".question-image-frame img");
+    const overlay = element.querySelector("[data-testid='image-explanation-overlay']");
+    const highlight = element.querySelector("[data-overlay-role='answer_critical_highlight']");
+    const dimRegions = [...element.querySelectorAll("[data-overlay-role='background_irrelevant_dim']")];
+    if (!(image instanceof HTMLImageElement) || !(overlay instanceof HTMLElement) || !(highlight instanceof HTMLElement)) {
+      throw new Error("Expected image overlay geometry elements to exist.");
+    }
+
+    const rect = (target: Element) => {
+      const box = target.getBoundingClientRect();
+      return {
+        left: box.left,
+        top: box.top,
+        right: box.right,
+        bottom: box.bottom,
+        width: box.width,
+        height: box.height
+      };
+    };
+
+    const imageRect = rect(image);
+    const overlayRect = rect(overlay);
+    const highlightRect = rect(highlight);
+    const dimRects = dimRegions.map(rect);
+    const imageAspect = image.naturalWidth / image.naturalHeight;
+    const imageBoxAspect = imageRect.width / imageRect.height;
+
+    return {
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+      imageAspect,
+      imageBoxAspect,
+      imageRect,
+      overlayRect,
+      highlightRect,
+      dimRects
+    };
+  });
+
+  expect(geometry.naturalWidth).toBe(537);
+  expect(geometry.naturalHeight).toBe(344);
+  expect(geometry.imageRect.height).toBeGreaterThan(350);
+  expect(geometry.imageRect.height).toBeLessThanOrEqual(361);
+  expect(Math.abs(geometry.imageBoxAspect - geometry.imageAspect)).toBeLessThan(0.01);
+  expect(Math.abs(geometry.overlayRect.left - geometry.imageRect.left)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.overlayRect.top - geometry.imageRect.top)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.overlayRect.width - geometry.imageRect.width)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.overlayRect.height - geometry.imageRect.height)).toBeLessThanOrEqual(1);
+
+  for (const region of [geometry.highlightRect, ...geometry.dimRects]) {
+    expect(region.left).toBeGreaterThanOrEqual(geometry.imageRect.left - 1);
+    expect(region.top).toBeGreaterThanOrEqual(geometry.imageRect.top - 1);
+    expect(region.right).toBeLessThanOrEqual(geometry.imageRect.right + 1);
+    expect(region.bottom).toBeLessThanOrEqual(geometry.imageRect.bottom + 1);
+  }
+});
+
+test("cached image path navigation keeps the frame keyed to the current source dimensions", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+
+  const nextImagePath = (questions[1] as { image: { localPath: string } }).image.localPath;
+  await page.evaluate(async (src) => {
+    const image = new Image();
+    image.src = src;
+    await image.decode();
+  }, `/${nextImagePath}`);
+
+  await page.getByTestId("question-card").locator(".question-flow-nav").getByRole("button", { name: "Следующий" }).click();
+  await expect(page.getByText(questions[1].officialTextEs)).toBeVisible();
+  await expect(page.locator(".question-image-frame img")).toHaveAttribute("src", `/${nextImagePath}`);
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+
+  const geometry = await page.getByTestId("question-card").evaluate((element) => {
+    const frame = element.querySelector(".question-image-frame");
+    const image = element.querySelector(".question-image-frame img");
+    if (!(frame instanceof HTMLElement) || !(image instanceof HTMLImageElement)) {
+      throw new Error("Expected cached current image frame to exist.");
+    }
+
+    const frameRect = frame.getBoundingClientRect();
+    const imageRect = image.getBoundingClientRect();
+    return {
+      frameWidth: frameRect.width,
+      imageWidth: imageRect.width,
+      imageHeight: imageRect.height,
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight
+    };
+  });
+
+  const expectedWidth = (360 * geometry.naturalWidth) / geometry.naturalHeight;
+  expect(geometry.naturalWidth).toBe(573);
+  expect(geometry.naturalHeight).toBe(367);
+  expect(Math.abs(geometry.frameWidth - expectedWidth)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.imageWidth - expectedWidth)).toBeLessThanOrEqual(3);
+  expect(geometry.imageHeight).toBeGreaterThan(350);
+  expect(geometry.imageHeight).toBeLessThanOrEqual(361);
+  expect(geometry.frameWidth).toBeLessThan(590);
+});
+
 test("learning timer pauses, resumes, and does not count down invisible tickets", async ({ page }) => {
   await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
   await page.goto("/");
