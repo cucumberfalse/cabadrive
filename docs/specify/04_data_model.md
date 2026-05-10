@@ -87,13 +87,126 @@ type Translation = {
 type Explanation = {
   questionId: string;
   textRu: string;
-  explanationType: "rule" | "vocabulary" | "exam_trick" | "rf_difference" | "procedure";
+  correctAnswerId: string;
+  correctAnswerExplanationRu: string;
+  wrongAnswerExplanations: Record<string, string>;
+  explanationType: "rule" | "vocabulary" | "exam_trick" | "rf_difference" | "procedure" | string;
+  claimScope?: "direct_ticket" | "direct_image" | "ticket_specific_fallback" | "current_official_source";
   relatedSourceIds: string[];
+  imageDetailReferences?: string[];
   disclaimer: string;
   reviewedBy?: string;
   reviewedAt?: string;
 };
 ```
+
+## QuestionImageMetadata
+
+```ts
+type QuestionImageMetadataManifest = {
+  version: 1;
+  questionSourcePath: string;
+  baseline: {
+    questionCount: number;
+    imageReferenceCount: number;
+    uniqueImageCount: number;
+    questionSetFingerprint: string;
+    imageReferenceFingerprint: string;
+    createdAt: string;
+    reviewedAt?: string;
+  };
+  images: ImageMetadataEntry[];
+  questionUsages: QuestionImageUsage[];
+};
+
+type ImageMetadataEntry = {
+  imageId: string;
+  localPath: string;
+  originalUrl?: string;
+  sha256: string;
+  sourceIds: string[];
+  kind: "street_photo" | "traffic_sign" | "road_marking" | "diagram" | "vehicle_photo" | "document_or_infographic" | "other";
+  descriptionLanguage: "en";
+  visualSummary: string;
+  generationPromptSummary: string;
+  scene: Record<string, unknown>;
+  roadLayout?: Record<string, unknown>;
+  objects: Array<Record<string, unknown>>;
+  roadUsers?: Array<Record<string, unknown>>;
+  signsSignalsMarkings?: Array<Record<string, unknown>>;
+  regions?: Array<Record<string, unknown>>;
+  visualDetails?: Array<Record<string, unknown>>;
+  annotations?: Array<Record<string, unknown>>;
+  visibleText?: Array<Record<string, unknown>>;
+  spatialRelationships?: Array<Record<string, unknown>>;
+  uncertainties: Array<Record<string, unknown>>;
+  review: {
+    status: "approved";
+    reviewer: string;
+    reviewedAt: string;
+    evidenceEntryId?: string;
+  };
+};
+
+type QuestionImageUsage = {
+  questionId: string;
+  imageId: string;
+  localPath: string;
+  imageSha256: string;
+  questionFingerprint: string;
+  correctAnswerId: string;
+  answerCriticalDetails: Array<{
+    detailId: string;
+    objectIds: string[];
+    regionIds?: string[];
+    description: string;
+    supportsAnswerIds?: string[];
+    rejectsAnswerIds?: string[];
+    criticality: "required" | "trap" | "supporting";
+    confidence: "high" | "medium" | "low";
+  }>;
+  relevanceMap: Array<{
+    relevanceId: string;
+    detailIds?: string[];
+    objectIds?: string[];
+    regionIds?: string[];
+    role: "answer_critical_highlight" | "supporting" | "distractor_trap" | "background_irrelevant_dim";
+    rationaleRuOrEn?: string;
+    rationaleRu?: string;
+    supportsAnswerIds?: string[];
+    rejectsAnswerIds?: string[];
+    displayIntent?: "highlight" | "keep_visible" | "callout_optional" | "dim";
+    confidence?: "high" | "medium" | "low";
+  }>;
+  imageRole: "answer_critical" | "contextual_with_critical_detail";
+  review: {
+    status: "approved";
+    reviewer: string;
+    reviewedAt: string;
+    evidenceEntryId?: string;
+  };
+};
+```
+
+Question-image metadata is an unofficial learning-support validation layer. It is hash-pinned to local practice images and question fingerprints. Final approved entries must come from actual image inspection and describe concrete scene/object/sign/road/road-user cues with stable object/detail/region IDs. Shared image metadata is question-neutral: it must not encode global importance, irrelevance, criticality, highlight, dim, or distractor semantics. Those roles live only in per-question usage records. Low-confidence baseline or source-image-frame records are draft scaffolding only and fail the full content quality gate.
+
+Question-image metadata, Russian translations, and Russian explanations are authored in non-overlapping ticket-range shards:
+
+```ts
+type ContentShard<T> = {
+  version: 1;
+  contentKind: "question-image-metadata" | "ru-translations" | "ru-explanations";
+  sourceQuestionPath: "content/questions/caba-b.unofficial-fallback.questions.json";
+  range: {
+    id: "001-092" | "093-184" | "185-276" | "277-368" | "369-460";
+    start: number;
+    end: number;
+  };
+  qualityStatus: "needs_full_content_review" | "in_progress" | "complete";
+};
+```
+
+Shard directories are `content/image-metadata/question-images/*.json`, `content/translations/ru/*.json`, and `content/explanations/ru/*.json`. The monolithic JSON files next to those directories are generated compatibility indexes and are not the source of truth.
 
 ## VocabularyTerm
 
@@ -287,15 +400,29 @@ content/
     originals/
   questions/
     caba.questions.json
+  image-metadata/
+    question-images/
+      001-092.json
+      ...
+    question-images.manifest.json
   translations/
+    ru/
+      001-092.json
+      ...
     ru.translations.json
   explanations/
+    ru/
+      001-092.json
+      ...
     ru.explanations.json
   vocabulary/
     ru.vocabulary.json
   guide/
     ru.condensed-guide.md
   validation/
+    question-image-metadata.evidence.json
+    ru-explanation-alignment.evidence.json
+    ru-translation-alignment.evidence.json
     validator-approvals.json
     release-exceptions.json
     production-eligibility.policy.json

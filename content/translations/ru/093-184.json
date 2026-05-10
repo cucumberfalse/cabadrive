@@ -1,0 +1,1297 @@
+{
+  "version": 1,
+  "contentKind": "ru-translations",
+  "sourceQuestionPath": "content/questions/caba-b.unofficial-fallback.questions.json",
+  "range": {
+    "id": "093-184",
+    "start": 93,
+    "end": 184
+  },
+  "qualityStatus": "complete",
+  "workerInstructions": "This range shard is the source of truth for its ticket range. Content workers may edit only their assigned shard files.",
+  "rangeReviewEvidence": {
+    "reviewer": "Codex content agent 093-184",
+    "reviewedAt": "2026-05-10",
+    "assignedRange": "093-184",
+    "questionIdsCovered": [
+      "b-fallback-093",
+      "b-fallback-094",
+      "b-fallback-095",
+      "b-fallback-096",
+      "b-fallback-097",
+      "b-fallback-098",
+      "b-fallback-099",
+      "b-fallback-100",
+      "b-fallback-101",
+      "b-fallback-102",
+      "b-fallback-103",
+      "b-fallback-104",
+      "b-fallback-105",
+      "b-fallback-106",
+      "b-fallback-107",
+      "b-fallback-108",
+      "b-fallback-109",
+      "b-fallback-110",
+      "b-fallback-111",
+      "b-fallback-112",
+      "b-fallback-113",
+      "b-fallback-114",
+      "b-fallback-115",
+      "b-fallback-116",
+      "b-fallback-117",
+      "b-fallback-118",
+      "b-fallback-119",
+      "b-fallback-120",
+      "b-fallback-121",
+      "b-fallback-122",
+      "b-fallback-123",
+      "b-fallback-124",
+      "b-fallback-125",
+      "b-fallback-126",
+      "b-fallback-127",
+      "b-fallback-128",
+      "b-fallback-129",
+      "b-fallback-130",
+      "b-fallback-131",
+      "b-fallback-132",
+      "b-fallback-133",
+      "b-fallback-134",
+      "b-fallback-135",
+      "b-fallback-136",
+      "b-fallback-137",
+      "b-fallback-138",
+      "b-fallback-139",
+      "b-fallback-140",
+      "b-fallback-141",
+      "b-fallback-142",
+      "b-fallback-143",
+      "b-fallback-144",
+      "b-fallback-145",
+      "b-fallback-146",
+      "b-fallback-147",
+      "b-fallback-148",
+      "b-fallback-149",
+      "b-fallback-150",
+      "b-fallback-151",
+      "b-fallback-152",
+      "b-fallback-153",
+      "b-fallback-154",
+      "b-fallback-155",
+      "b-fallback-156",
+      "b-fallback-157",
+      "b-fallback-158",
+      "b-fallback-159",
+      "b-fallback-160",
+      "b-fallback-161",
+      "b-fallback-162",
+      "b-fallback-163",
+      "b-fallback-164",
+      "b-fallback-165",
+      "b-fallback-166",
+      "b-fallback-167",
+      "b-fallback-168",
+      "b-fallback-169",
+      "b-fallback-170",
+      "b-fallback-171",
+      "b-fallback-172",
+      "b-fallback-173",
+      "b-fallback-174",
+      "b-fallback-175",
+      "b-fallback-176",
+      "b-fallback-177",
+      "b-fallback-178",
+      "b-fallback-179",
+      "b-fallback-180",
+      "b-fallback-181",
+      "b-fallback-182",
+      "b-fallback-183",
+      "b-fallback-184"
+    ],
+    "validationStatus": "range content reviewed; generated indexes and shared evidence intentionally left to integration because current instruction restricts edits to scope files"
+  },
+  "locale": "ru",
+  "entries": [
+    {
+      "questionId": "b-fallback-093",
+      "questionTextRu": "Вы оказались рядом с ситуацией, где водитель многократно подает звуковой сигнал. Что нужно сделать, если вы едете поблизости?",
+      "answerTranslations": {
+        "b-fallback-093-a1": "Уступить ему дорогу, потому что он показывает, что находится в экстренной ситуации.",
+        "b-fallback-093-a2": "Помочь ему, потому что он показывает, что у транспортного средства механическая неисправность.",
+        "b-fallback-093-a3": "Предупредить других водителей повторными звуковыми сигналами, что это транспортное средство проедет на красный свет."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-094",
+      "questionTextRu": "Может ли этот велосипед с электрической поддержкой педалирования двигаться по этой полосе?",
+      "answerTranslations": {
+        "b-fallback-094-a1": "Нет, потому что движение таких транспортных средств по дорогам общего пользования запрещено.",
+        "b-fallback-094-a2": "Да, только если его мощность постепенно уменьшается и отключается при достижении максимальной скорости 25 км/ч.",
+        "b-fallback-094-a3": "Нет, они могут двигаться только по улицам, где нет велодорожек."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-095",
+      "questionTextRu": "Движение со скоростью выше безопасной по обстоятельствам увеличивает вероятность того, что дорожное происшествие будет более тяжелым.",
+      "answerTranslations": {
+        "b-fallback-095-a1": "Верно.",
+        "b-fallback-095-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-096",
+      "questionTextRu": "Какие еще последствия, кроме погибших или тяжело раненых, может вызвать дорожное происшествие?",
+      "answerTranslations": {
+        "b-fallback-096-a1": "Материальный ущерб, расходы на медицинскую помощь и административные расходы.",
+        "b-fallback-096-a2": "Материальный ущерб и расходы на медицинскую помощь.",
+        "b-fallback-096-a3": "Только материальный ущерб."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-097",
+      "questionTextRu": "В показанной ситуации обозначенное транспортное средство не находится в нарушении, если...",
+      "answerTranslations": {
+        "b-fallback-097-a1": "Остается в таком положении от 2 до 5 минут.",
+        "b-fallback-097-a2": "Остается так около 2 минут, водитель не покидает транспортное средство и дополнительно обозначает остановку аварийной сигнализацией.",
+        "b-fallback-097-a3": "Это остановка непосредственно перед маневром парковки."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-098",
+      "questionTextRu": "Что называется устойчивой мобильностью?",
+      "answerTranslations": {
+        "b-fallback-098-a1": "Способ передвижения более эффективным образом с приоритетом личного автомобиля.",
+        "b-fallback-098-a2": "Способ передвижения более быстрым образом независимо от выбранного вида мобильности.",
+        "b-fallback-098-a3": "Способ передвижения быстро, безопасно и упорядоченно, с акцентом на пешеходах и велосипедистах и вкладом в лучшее состояние окружающей среды."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-099",
+      "questionTextRu": "В каких случаях разрешено пользоваться звуковым сигналом?",
+      "answerTranslations": {
+        "b-fallback-099-a1": "Только чтобы предупредить о потенциально опасной ситуации.",
+        "b-fallback-099-a2": "Только чтобы предупредить об обгоне.",
+        "b-fallback-099-a3": "Оба ответа, «А» и «Б», неправильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-100",
+      "questionTextRu": "Когда светофор меняет красный сигнал на зеленый, движение можно возобновить. Какие меры предосторожности при этом нужно принять?",
+      "answerTranslations": {
+        "b-fallback-100-a1": "Не начинать пересечение, если за перекрестком нет места для автомобиля без перекрытия поперечного движения.",
+        "b-fallback-100-a2": "Перед началом движения дать завершить пересечение другому транспортному средству или пешеходу, которые уже начали переход или проезд.",
+        "b-fallback-100-a3": "Оба ответа, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-101",
+      "questionTextRu": "Если передние амортизаторы вашего транспортного средства в плохом состоянии, может ли эта неисправность повлиять на управление?",
+      "answerTranslations": {
+        "b-fallback-101-a1": "Нет, потому что повреждена передняя подвеска, и она не повлияет на управление.",
+        "b-fallback-101-a2": "Да, это может повлиять на правильный контроль транспортного средства.",
+        "b-fallback-101-a3": "Нет, потому что если задняя подвеска исправна, она обеспечит надлежащее сцепление колес с проезжей частью."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-102",
+      "questionTextRu": "На каком из этих изображений показано правильное использование ремня безопасности во время беременности?",
+      "answerTranslations": {
+        "b-fallback-102-a1": "Изображение «А».",
+        "b-fallback-102-a2": "Изображение «Б»."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-103",
+      "questionTextRu": "Для чего служит этот металлический щуп?",
+      "answerTranslations": {
+        "b-fallback-103-a1": "Чтобы проверить температуру масла.",
+        "b-fallback-103-a2": "Чтобы проверить уровень масла.",
+        "b-fallback-103-a3": "Чтобы проверить давление масла и тормозной жидкости."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-104",
+      "questionTextRu": "В какой части транспортного средства лучше размещать багаж?",
+      "answerTranslations": {
+        "b-fallback-104-a1": "Самые тяжелые вещи в глубине багажника, ближе к центру автомобиля. Это помогает курсовой устойчивости и поведению в поворотах.",
+        "b-fallback-104-a2": "Самые тяжелые вещи на крыше транспортного средства, закрепив веревками. Это помогает центру тяжести.",
+        "b-fallback-104-a3": "Самые тяжелые вещи на задних сиденьях, если там нет пассажиров. Это помогает курсовой устойчивости."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-105",
+      "questionTextRu": "Инспекторы дорожного движения могут задержать транспортное средство только в присутствии полиции.",
+      "answerTranslations": {
+        "b-fallback-105-a1": "Верно.",
+        "b-fallback-105-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-106",
+      "questionTextRu": "Определите, что означает показанный далее вертикальный знак:",
+      "answerTranslations": {
+        "b-fallback-106-a1": "Пешеходный переход, максимальная опасность.",
+        "b-fallback-106-a2": "Пешеходы слева.",
+        "b-fallback-106-a3": "Движение запрещено. Исключительно пешеходная зона."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-107",
+      "questionTextRu": "Какие транспортные средства могут двигаться по полосе, обозначенной на изображении?",
+      "answerTranslations": {
+        "b-fallback-107-a1": "Все пассажирские перевозчики.",
+        "b-fallback-107-a2": "Только автобусы с 07:00 до 21:00.",
+        "b-fallback-107-a3": "Разрешенные автобусы и транспортные средства экстренных служб при выполнении своих функций."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-108",
+      "questionTextRu": "Если вы участвуете в дорожном происшествии на проспекте, рекомендуется обозначить зону, чтобы не возникли новые дорожные инциденты.",
+      "answerTranslations": {
+        "b-fallback-108-a1": "Верно.",
+        "b-fallback-108-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-109",
+      "questionTextRu": "Транспортное средство с международным знаком для людей с инвалидностью в некоторых случаях может быть эвакуировано.",
+      "answerTranslations": {
+        "b-fallback-109-a1": "Верно.",
+        "b-fallback-109-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-110",
+      "questionTextRu": "Определите, что означает показанный далее знак:",
+      "answerTranslations": {
+        "b-fallback-110-a1": "Близость леса.",
+        "b-fallback-110-a2": "Зона пальм.",
+        "b-fallback-110-a3": "Сильный боковой ветер."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-111",
+      "questionTextRu": "Что означает эта желтая разметка на проезжей части?",
+      "answerTranslations": {
+        "b-fallback-111-a1": "Она показывает, что ее можно пересекать.",
+        "b-fallback-111-a2": "Она разделяет встречные направления движения и показывает, что пересекать ее запрещено.",
+        "b-fallback-111-a3": "Это зона, по которой можно ехать."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-112",
+      "questionTextRu": "Предупредительное, или заблаговременное, вождение исходит из того, что все мы можем ошибаться, даже зная нормы и государственные разъяснения.",
+      "answerTranslations": {
+        "b-fallback-112-a1": "Верно.",
+        "b-fallback-112-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-113",
+      "questionTextRu": "Согласно Закону № 2148, с какого минимального возраста ребенку разрешено ехать на переднем пассажирском сиденье автомобиля?",
+      "answerTranslations": {
+        "b-fallback-113-a1": "С 10 лет.",
+        "b-fallback-113-a2": "С 11 лет.",
+        "b-fallback-113-a3": "С 12 лет."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-114",
+      "questionTextRu": "Какая цифра на следующем регистрационном знаке указывает месяц прохождения обязательного технического осмотра?",
+      "answerTranslations": {
+        "b-fallback-114-a1": "Цифра 1.",
+        "b-fallback-114-a2": "Буква «Д».",
+        "b-fallback-114-a3": "Цифра 3."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-115",
+      "questionTextRu": "Что означает этот знак?",
+      "answerTranslations": {
+        "b-fallback-115-a1": "Есть возможность повернуть направо.",
+        "b-fallback-115-a2": "Поворот направо обязателен.",
+        "b-fallback-115-a3": "Приближается опасный поворот с уклоном вправо."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-116",
+      "questionTextRu": "В следующей ситуации кому принадлежит преимущество проезда?",
+      "answerTranslations": {
+        "b-fallback-116-a1": "Легковому автомобилю.",
+        "b-fallback-116-a2": "Автобусу.",
+        "b-fallback-116-a3": "Безразлично."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-117",
+      "questionTextRu": "Согласно следующему символу, сколько времени водителю этого транспортного средства запрещено управлять с содержанием алкоголя выше 0,0 грамма на литр крови?",
+      "answerTranslations": {
+        "b-fallback-117-a1": "2 года.",
+        "b-fallback-117-a2": "1 год.",
+        "b-fallback-117-a3": "6 месяцев."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-118",
+      "questionTextRu": "По общему правилу где запрещен обгон транспортного средства?",
+      "answerTranslations": {
+        "b-fallback-118-a1": "Там, где граница полос нанесена сплошной линией.",
+        "b-fallback-118-a2": "На поворотах, перекрестках, железнодорожных переездах или мостах.",
+        "b-fallback-118-a3": "Оба ответа, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-119",
+      "questionTextRu": "Временная дорожная сигнализация имеет нормативный приоритет над светофорами, если она изменяет обычный режим пользования дорогой.",
+      "answerTranslations": {
+        "b-fallback-119-a1": "Верно.",
+        "b-fallback-119-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-120",
+      "questionTextRu": "Во время дорожного происшествия, если водитель не пристегнут ремнем безопасности, подушка безопасности...",
+      "answerTranslations": {
+        "b-fallback-120-a1": "Спасет ему жизнь, потому что может заменить ремень безопасности.",
+        "b-fallback-120-a2": "Предотвратит травмы, если происшествие произойдет на скорости менее 80 км/ч.",
+        "b-fallback-120-a3": "Может вызвать тяжелые травмы."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-121",
+      "questionTextRu": "В этих зонах разрешено парковаться начиная с 20 метров в каждую сторону.",
+      "answerTranslations": {
+        "b-fallback-121-a1": "Верно.",
+        "b-fallback-121-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-122",
+      "questionTextRu": "Усталость может быть вызвана употреблением:",
+      "answerTranslations": {
+        "b-fallback-122-a1": "Алкогольных напитков.",
+        "b-fallback-122-a2": "Обильной пищи.",
+        "b-fallback-122-a3": "Оба ответа, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-123",
+      "questionTextRu": "Определите, что означает показанный далее знак:",
+      "answerTranslations": {
+        "b-fallback-123-a1": "Железнодорожный переезд.",
+        "b-fallback-123-a2": "Железнодорожная станция.",
+        "b-fallback-123-a3": "Исключительное движение железнодорожного транспорта."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-124",
+      "questionTextRu": "Увидев этот предупреждающий знак, вы знаете, что:",
+      "answerTranslations": {
+        "b-fallback-124-a1": "Предупреждается приближение поворота с подъемом.",
+        "b-fallback-124-a2": "Приближается крутой поворот.",
+        "b-fallback-124-a3": "Приближается извилистая дорога."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-125",
+      "questionTextRu": "Какова максимальная разрешенная скорость для частных легковых автомобилей на этом участке проспекта Костанера Рафаэль Облигадо?",
+      "answerTranslations": {
+        "b-fallback-125-a1": "60 км/ч.",
+        "b-fallback-125-a2": "70 км/ч.",
+        "b-fallback-125-a3": "40 км/ч."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-126",
+      "questionTextRu": "Чем смазывается двигатель?",
+      "answerTranslations": {
+        "b-fallback-126-a1": "Вариант «А».",
+        "b-fallback-126-a2": "Вариант «Б».",
+        "b-fallback-126-a3": "Вариант «В»."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-127",
+      "questionTextRu": "Что означает этот предписывающий знак?",
+      "answerTranslations": {
+        "b-fallback-127-a1": "Транспортное средство не может продолжать движение без остановки.",
+        "b-fallback-127-a2": "Наличие искусственной неровности для снижения скорости.",
+        "b-fallback-127-a3": "Начало встречного направления движения."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-128",
+      "questionTextRu": "Определите, что означает показанный далее знак:",
+      "answerTranslations": {
+        "b-fallback-128-a1": "Объезд из-за изменения направления движения.",
+        "b-fallback-128-a2": "Разделенная проезжая часть.",
+        "b-fallback-128-a3": "Опасный перекресток."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-129",
+      "questionTextRu": "Какая из следующих картинок по форме и цвету соответствует указательному знаку кольцевого движения или крутого уклона?",
+      "answerTranslations": {
+        "b-fallback-129-a1": "Фигура «А».",
+        "b-fallback-129-a2": "Фигура «Б».",
+        "b-fallback-129-a3": "Фигура «В»."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-130",
+      "questionTextRu": "Какой боковой интервал нужно оставить относительно этого велосипедиста, если вы хотите его обогнать?",
+      "answerTranslations": {
+        "b-fallback-130-a1": "Не менее полутора метров.",
+        "b-fallback-130-a2": "Не менее половины метра.",
+        "b-fallback-130-a3": "Достаточный, чтобы его не задеть."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-131",
+      "questionTextRu": "Согласно Закону № 2148, каков порядок преимущества проезда на перекрестках без светофоров по типу улицы?",
+      "answerTranslations": {
+        "b-fallback-131-a1": "1-е место: переулок; 2-е место: улица; 3-е место: проспект.",
+        "b-fallback-131-a2": "1-е место: проспект; 2-е место: улица; 3-е место: переулок.",
+        "b-fallback-131-a3": "Безразлично, потому что транспортное средство, движущееся справа, всегда имеет преимущество."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-132",
+      "questionTextRu": "Кроме автобусов, кто еще может двигаться по этой полосе?",
+      "answerTranslations": {
+        "b-fallback-132-a1": "Такси с пассажирами.",
+        "b-fallback-132-a2": "Мотоциклы.",
+        "b-fallback-132-a3": "Оба ответа, «А» и «Б», неправильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-133",
+      "questionTextRu": "Что должны делать водители, движущиеся рядом с такой экстренной ситуацией?",
+      "answerTranslations": {
+        "b-fallback-133-a1": "Увеличить скорость, чтобы не быть препятствием для этого транспортного средства.",
+        "b-fallback-133-a2": "Предупредить других водителей о наличии этого транспортного средства, многократно подавая звуковой сигнал.",
+        "b-fallback-133-a3": "Освободить место этому транспортному средству, расчистить полосу для экстренных служб и при необходимости остановиться."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-134",
+      "questionTextRu": "Согласно Закону № 2148, может ли транспортное средство, не предназначенное для экстренной службы, при крайней необходимости выполнять похожую функцию?",
+      "answerTranslations": {
+        "b-fallback-134-a1": "Да, предупредив об этом включением аварийной сигнализации, прерывистым звуковым сигналом и размахиванием тканью.",
+        "b-fallback-134-a2": "Да. Водитель такого транспортного средства должен высунуть руку в окно и многократно махать ею, чтобы показать остальным участникам дороги свою ситуацию.",
+        "b-fallback-134-a3": "Нет, экстренные функции могут выполнять только транспортные средства, специально разрешенные для этой цели."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-135",
+      "questionTextRu": "Согласно Закону № 2265, когда автомобиль с нулевым пробегом, зарегистрированный в городе Буэнос-Айресе, должен пройти первый обязательный технический осмотр?",
+      "answerTranslations": {
+        "b-fallback-135-a1": "После 3 лет с даты выпуска, в соответствующий месяц, либо после превышения 60 000 км.",
+        "b-fallback-135-a2": "Сразу при получении автомобиля в салоне.",
+        "b-fallback-135-a3": "В соответствующий месяц сразу после истечения одного года."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-136",
+      "questionTextRu": "Где должны двигаться велосипедисты на этой улице?",
+      "answerTranslations": {
+        "b-fallback-136-a1": "Им нельзя здесь двигаться. Они должны ездить только по велодорожкам или велополосам, а дети младше 12 лет — по тротуару.",
+        "b-fallback-136-a2": "У правого края проезжей части.",
+        "b-fallback-136-a3": "У левого края проезжей части."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-137",
+      "questionTextRu": "Безопасно ли управлять автомобилем в обуви такого типа?",
+      "answerTranslations": {
+        "b-fallback-137-a1": "Безразлично, если она не скользит.",
+        "b-fallback-137-a2": "Управление может пострадать только в долгих поездках.",
+        "b-fallback-137-a3": "Нет, безопасность управления обеспечивает только обувь, закрепленная на ноге."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-138",
+      "questionTextRu": "Что означает красная горизонтальная разметка, нанесенная на проезжей части?",
+      "answerTranslations": {
+        "b-fallback-138-a1": "Пересечение линии Метробуса.",
+        "b-fallback-138-a2": "Исключительное пересечение для экстренных транспортных средств.",
+        "b-fallback-138-a3": "Велосипедный переезд."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-139",
+      "questionTextRu": "Если на перекрестке без светофора транспортное средство впереди остановилось, ожидая возможности повернуть налево, что делать, если вы хотите продолжить прямо?",
+      "answerTranslations": {
+        "b-fallback-139-a1": "Объехать его справа безопасным образом, включив указатель поворота и проверив зеркала заднего вида.",
+        "b-fallback-139-a2": "Объехать слева, включив указатель поворота и проверив зеркала заднего вида.",
+        "b-fallback-139-a3": "Подать ему звуковой сигнал, чтобы он продолжил движение."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-140",
+      "questionTextRu": "Что означает этот предписывающий знак?",
+      "answerTranslations": {
+        "b-fallback-140-a1": "С места установки знака разрешено двигаться только на велосипеде.",
+        "b-fallback-140-a2": "С места установки знака велосипедист обязан слезть с велосипеда.",
+        "b-fallback-140-a3": "Начинается велодорожка."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-141",
+      "questionTextRu": "Всемирная организация здравоохранения указывает, что риск на дороге возникает как результат разных факторов. Каких именно?",
+      "answerTranslations": {
+        "b-fallback-141-a1": "Фактор транспортного средства и окружающей среды.",
+        "b-fallback-141-a2": "Человеческий фактор и фактор транспортного средства.",
+        "b-fallback-141-a3": "Человеческий фактор, фактор транспортного средства и фактор окружающей среды."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-142",
+      "questionTextRu": "Где разрешено двигаться велосипедистам старше 12 лет?",
+      "answerTranslations": {
+        "b-fallback-142-a1": "По велополосам и велодорожкам на тех участках улиц, где они есть.",
+        "b-fallback-142-a2": "На дорогах без велодорожек — по правой части проезжей части, кроме автомагистралей и других быстрых дорог, где движение велосипедов запрещено.",
+        "b-fallback-142-a3": "Оба ответа, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-143",
+      "questionTextRu": "Какова цель обязательного технического осмотра?",
+      "answerTranslations": {
+        "b-fallback-143-a1": "Снизить загрязнение и улучшить качество окружающей среды.",
+        "b-fallback-143-a2": "Гарантировать соблюдение норм безопасности транспортных средств.",
+        "b-fallback-143-a3": "Оба ответа, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-144",
+      "questionTextRu": "Согласно Национальному закону № 24.449, какова максимальная разрешенная скорость для частных легковых автомобилей на полускоростных дорогах?",
+      "answerTranslations": {
+        "b-fallback-144-a1": "130 км/ч.",
+        "b-fallback-144-a2": "120 км/ч.",
+        "b-fallback-144-a3": "110 км/ч."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-145",
+      "questionTextRu": "Сколько всего длится статус начинающего водителя?",
+      "answerTranslations": {
+        "b-fallback-145-a1": "2 года, только если водителю меньше 21 года.",
+        "b-fallback-145-a2": "6 месяцев, только для того, кто получает права впервые.",
+        "b-fallback-145-a3": "2 года независимо от возраста."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-146",
+      "questionTextRu": "Что означает в дорожном происшествии, что водитель считается ответственным по небрежности?",
+      "answerTranslations": {
+        "b-fallback-146-a1": "Он не отреагировал должным образом на дорожное обстоятельство из-за недостатка практики управления.",
+        "b-fallback-146-a2": "Он совершил действие с транспортным средством, которое правила осторожности предписывают не делать, то есть действовал опасно.",
+        "b-fallback-146-a3": "Он действовал не в соответствии с требованиями закона."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-147",
+      "questionTextRu": "На перекрестке без светофоров транспортное средство, движущееся по двустороннему проспекту, может повернуть налево на улицу с односторонним движением.",
+      "answerTranslations": {
+        "b-fallback-147-a1": "Верно.",
+        "b-fallback-147-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-148",
+      "questionTextRu": "Кто имеет преимущество на таком типе дороги при намерении перестроиться?",
+      "answerTranslations": {
+        "b-fallback-148-a1": "Транспортное средство, которое движется по полосе, которую хотят занять.",
+        "b-fallback-148-a2": "Транспортное средство, которое выполняет перестроение.",
+        "b-fallback-148-a3": "Транспортное средство на более медленной полосе."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-149",
+      "questionTextRu": "Каково правильное положение нижней лямки трехточечного ремня безопасности?",
+      "answerTranslations": {
+        "b-fallback-149-a1": "Вариант «А».",
+        "b-fallback-149-a2": "Вариант «Б».",
+        "b-fallback-149-a3": "Оба варианта, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-150",
+      "questionTextRu": "В этой ситуации кто имеет преимущество для обгона грузовика?",
+      "answerTranslations": {
+        "b-fallback-150-a1": "Транспортное средство «А».",
+        "b-fallback-150-a2": "Транспортное средство «Б».",
+        "b-fallback-150-a3": "Транспортное средство «В»."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-151",
+      "questionTextRu": "Что рекомендуется сделать при дорожном происшествии или механической неисправности, когда транспортное средство осталось неподвижным в обозначенном секторе?",
+      "answerTranslations": {
+        "b-fallback-151-a1": "Включить аварийную сигнализацию, выставить переносные аварийные знаки и позвонить на номер экстренной службы автомагистрали.",
+        "b-fallback-151-a2": "Выйти из транспортного средства в светоотражающем жилете и укрыться за защитным ограждением, если оно есть.",
+        "b-fallback-151-a3": "Оба ответа, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-152",
+      "questionTextRu": "Употребление каких веществ может влиять на способность управлять транспортным средством?",
+      "answerTranslations": {
+        "b-fallback-152-a1": "Незаконных веществ и некоторых законных, например алкоголя и отдельных лекарств.",
+        "b-fallback-152-a2": "Только незаконных веществ.",
+        "b-fallback-152-a3": "Любых веществ, законных и незаконных."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-153",
+      "questionTextRu": "Какой из этих знаков означает пешеходный переход с максимальной опасностью?",
+      "answerTranslations": {
+        "b-fallback-153-a1": "Знак «А».",
+        "b-fallback-153-a2": "Знак «Б».",
+        "b-fallback-153-a3": "Знак «В»."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-154",
+      "questionTextRu": "Определите, что означает показанный далее знак:",
+      "answerTranslations": {
+        "b-fallback-154-a1": "Сужение дороги с одной стороны.",
+        "b-fallback-154-a2": "Разделенная проезжая часть.",
+        "b-fallback-154-a3": "Сужение дороги с обеих сторон."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-155",
+      "questionTextRu": "Что называется эффективным вождением?",
+      "answerTranslations": {
+        "b-fallback-155-a1": "Вождение, которое снижает риски дорожной безопасности и обеспечивает меньший расход топлива.",
+        "b-fallback-155-a2": "Вождение, которое позволяет добраться до места назначения за минимальное время.",
+        "b-fallback-155-a3": "Вождение, при котором на всем пути сохраняется одна и та же скорость."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-156",
+      "questionTextRu": "Что означает этот знак?",
+      "answerTranslations": {
+        "b-fallback-156-a1": "Запрет остановки возле площади.",
+        "b-fallback-156-a2": "Запрет парковки возле площади.",
+        "b-fallback-156-a3": "Наличие площади поблизости."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-157",
+      "questionTextRu": "Если нарушение установлено, может ли инспектор дорожного движения удержать водительское удостоверение?",
+      "answerTranslations": {
+        "b-fallback-157-a1": "Нет, потому что это личный документ.",
+        "b-fallback-157-a2": "Только в случаях, предусмотренных действующими нормами.",
+        "b-fallback-157-a3": "Только при происшествиях с участием третьих лиц."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-158",
+      "questionTextRu": "Согласно Закону № 2148, каков верхний предел безопасной скорости на железнодорожном переезде?",
+      "answerTranslations": {
+        "b-fallback-158-a1": "20 километров в час.",
+        "b-fallback-158-a2": "40 километров в час.",
+        "b-fallback-158-a3": "30 километров в час."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-159",
+      "questionTextRu": "Определите, что означает показанный далее знак:",
+      "answerTranslations": {
+        "b-fallback-159-a1": "Дети играют.",
+        "b-fallback-159-a2": "Школьная зона.",
+        "b-fallback-159-a3": "Пешеходная улица."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-160",
+      "questionTextRu": "Фактор окружающей среды является главным фактором риска, потому что большинство столкновений происходит из-за погодных условий или состояния дороги.",
+      "answerTranslations": {
+        "b-fallback-160-a1": "Верно.",
+        "b-fallback-160-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-161",
+      "questionTextRu": "Какие знаки являются предупреждающими?",
+      "answerTranslations": {
+        "b-fallback-161-a1": "Те, которые предупреждают о приближении обстоятельства или отклонения от обычного состояния дороги, неожиданного или опасного для движения.",
+        "b-fallback-161-a2": "Те, которые не передают приказов и не предупреждают о неровностях или рисках на дороге; они информируют, ориентируют и указывают на услуги, места и другие объекты.",
+        "b-fallback-161-a3": "Те, которые передают конкретные обязательные предписания для места, где они установлены."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-162",
+      "questionTextRu": "Что означает этот предписывающий знак?",
+      "answerTranslations": {
+        "b-fallback-162-a1": "Полоса, над которой установлен знак, не может использоваться мотоциклами и мопедами.",
+        "b-fallback-162-a2": "Полоса, над которой установлен знак, предназначена исключительно для мотоциклов и мопедов.",
+        "b-fallback-162-a3": "Полоса, над которой установлен знак, предназначена исключительно для велосипедов."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-163",
+      "questionTextRu": "Этот вертикальный предписывающий знак означает...",
+      "answerTranslations": {
+        "b-fallback-163-a1": "Это предпочтительная полоса для велосипедистов.",
+        "b-fallback-163-a2": "Это полоса исключительно для велосипедистов.",
+        "b-fallback-163-a3": "Велосипедистам нельзя двигаться по этой полосе."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-164",
+      "questionTextRu": "Показанный знак устанавливается перед перекрестком с обязанностью повернуть направо.",
+      "answerTranslations": {
+        "b-fallback-164-a1": "Верно.",
+        "b-fallback-164-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-165",
+      "questionTextRu": "Транспортное средство «А» намерено перестроиться вправо. Какое из двух транспортных средств имеет преимущество?",
+      "answerTranslations": {
+        "b-fallback-165-a1": "Транспортное средство «А».",
+        "b-fallback-165-a2": "Транспортное средство «Б»."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-166",
+      "questionTextRu": "В таких условиях может ли неправильная регулировка высоты ближнего света вызвать ослепление?",
+      "answerTranslations": {
+        "b-fallback-166-a1": "Да, потому что этот эффект возникает из-за резких изменений интенсивности света.",
+        "b-fallback-166-a2": "Нет, потому что этот эффект возникает только при использовании дальнего света.",
+        "b-fallback-166-a3": "Нет, потому что этот эффект возникает на дорогах с плохим освещением."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-167",
+      "questionTextRu": "Следующее изображение соответствует:",
+      "answerTranslations": {
+        "b-fallback-167-a1": "Улице с приоритетом пешеходов.",
+        "b-fallback-167-a2": "Улице с пешеходным вмешательством.",
+        "b-fallback-167-a3": "Улице с велополосой."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-168",
+      "questionTextRu": "На каком из следующих изображений показана велодорожка?",
+      "answerTranslations": {
+        "b-fallback-168-a1": "Вариант «А».",
+        "b-fallback-168-a2": "Вариант «Б».",
+        "b-fallback-168-a3": "Вариант «В»."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-169",
+      "questionTextRu": "Какой из этих знаков сообщает предупреждение?",
+      "answerTranslations": {
+        "b-fallback-169-a1": "Знак «А».",
+        "b-fallback-169-a2": "Знак «Б».",
+        "b-fallback-169-a3": "Знак «В»."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-170",
+      "questionTextRu": "В следующей ситуации может ли транспортное средство «Б» обогнать транспортное средство «А»?",
+      "answerTranslations": {
+        "b-fallback-170-a1": "Да, кроме случая, когда приближается встречное транспортное средство.",
+        "b-fallback-170-a2": "Нет, потому что это запрещено горизонтальной разметкой.",
+        "b-fallback-170-a3": "Да, подав соответствующие световые сигналы, если встречное транспортное средство далеко."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-171",
+      "questionTextRu": "Когда несколько транспортных средств движутся колонной, какое из них имеет преимущество для обгона?",
+      "answerTranslations": {
+        "b-fallback-171-a1": "То, которое попытается первым.",
+        "b-fallback-171-a2": "Последнее в колонне.",
+        "b-fallback-171-a3": "То, которое движется ближе всего к транспортному средству, которое хотят обогнать."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-172",
+      "questionTextRu": "Определите, что означает показанный далее знак:",
+      "answerTranslations": {
+        "b-fallback-172-a1": "Пешеходный переход.",
+        "b-fallback-172-a2": "Люди работают.",
+        "b-fallback-172-a3": "Пешеходный переход с максимальной опасностью."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-173",
+      "questionTextRu": "Каждое транспортное средство должно быть застраховано. Какие минимальные убытки должна покрывать страховка?",
+      "answerTranslations": {
+        "b-fallback-173-a1": "Возможный ущерб только третьим лицам, перевозимым в транспортном средстве.",
+        "b-fallback-173-a2": "Возможный ущерб третьим лицам, как перевозимым, так и не перевозимым.",
+        "b-fallback-173-a3": "Только ущерб транспортным средствам."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-174",
+      "questionTextRu": "Как нужно действовать, если при подъезде к этому перекрестку вы хотите продолжить движение прямо?",
+      "answerTranslations": {
+        "b-fallback-174-a1": "Остановить транспортное средство, чтобы пешеход закончил переход, и перед началом движения установить зрительный контакт с пешеходами, которые еще не начали переход, даже понимая, что на мгновение перекрою перекресток.",
+        "b-fallback-174-a2": "Продолжить движение, потому что зеленый сигнал светофора разрешает мне ехать, но подать звуковой сигнал, чтобы пешеходы не отвлекались. Важно не перекрывать перекресток."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-175",
+      "questionTextRu": "В этой ситуации рискованно ли водителю пользоваться мобильным телефоном?",
+      "answerTranslations": {
+        "b-fallback-175-a1": "Нет, потому что рядом с ним нет других транспортных средств.",
+        "b-fallback-175-a2": "Да, потому что, даже находясь на месте, он стоит на полосе движения, а его внимание не направлено на дорожную обстановку.",
+        "b-fallback-175-a3": "Нет, потому что транспортное средство не движется."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-176",
+      "questionTextRu": "Согласно Закону № 2148, что означает термин обгон?",
+      "answerTranslations": {
+        "b-fallback-176-a1": "Проехать дальше линии другого движущегося транспортного средства без необходимости перестраиваться.",
+        "b-fallback-176-a2": "Проехать дальше линии другого движущегося транспортного средства с перестроением.",
+        "b-fallback-176-a3": "Превысить установленный предел максимальной скорости."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-177",
+      "questionTextRu": "Что означает этот знак?",
+      "answerTranslations": {
+        "b-fallback-177-a1": "Поворот налево разрешен.",
+        "b-fallback-177-a2": "Обязательное направление налево.",
+        "b-fallback-177-a3": "Разрешенное направление налево."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-178",
+      "questionTextRu": "Кто имеет преимущество проезда на круговом движении?",
+      "answerTranslations": {
+        "b-fallback-178-a1": "Транспортное средство, которое движется справа.",
+        "b-fallback-178-a2": "Транспортное средство, которое собирается въехать на круг.",
+        "b-fallback-178-a3": "Транспортное средство, которое уже находится на круговой проезжей части."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-179",
+      "questionTextRu": "После завершения обгона обязательно...",
+      "answerTranslations": {
+        "b-fallback-179-a1": "Оставаться на занятой полосе независимо от плотности движения.",
+        "b-fallback-179-a2": "Постепенно вернуться на правую полосу, если она свободна, не мешая потоку движения.",
+        "b-fallback-179-a3": "Вернуться на правую полосу, даже если из-за этого другое транспортное средство должно изменить скорость."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-180",
+      "questionTextRu": "Определите, что означает показанный далее знак:",
+      "answerTranslations": {
+        "b-fallback-180-a1": "Перекресток.",
+        "b-fallback-180-a2": "Пересечение дорог.",
+        "b-fallback-180-a3": "Вливание бокового движения."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-181",
+      "questionTextRu": "Что означает использование такого типа огней?",
+      "answerTranslations": {
+        "b-fallback-181-a1": "Если они используются по отдельности, они заранее предупреждают о маневрах.",
+        "b-fallback-181-a2": "Если они используются одновременно, они сообщают об экстренных ситуациях или о том, что транспортное средство собирается остановиться.",
+        "b-fallback-181-a3": "Оба ответа, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-182",
+      "questionTextRu": "Обычно механические неисправности связаны с небрежным поведением владельцев транспортных средств, которые не проверяют состояние своего автомобиля.",
+      "answerTranslations": {
+        "b-fallback-182-a1": "Верно.",
+        "b-fallback-182-a2": "Неверно."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-183",
+      "questionTextRu": "Если водитель транспортного средства едет с включенной аварийной сигнализацией, многократно подает звуковой сигнал, а пассажир высовывает руку и машет платком, что он показывает?",
+      "answerTranslations": {
+        "b-fallback-183-a1": "Что у транспортного средства неисправность.",
+        "b-fallback-183-a2": "Что он находится в экстренной ситуации и перевозит человека в тяжелом состоянии.",
+        "b-fallback-183-a3": "Оба ответа, «А» и «Б», правильные."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    },
+    {
+      "questionId": "b-fallback-184",
+      "questionTextRu": "«Каждый участник дороги отвечает за часть дорожного движения». Верно ли это утверждение?",
+      "answerTranslations": {
+        "b-fallback-184-a1": "Нет, потому что ответственность несут только те, кто управляет любым видом транспортного средства.",
+        "b-fallback-184-a2": "Нет, ответственность принимают на себя те, кто получает водительское удостоверение.",
+        "b-fallback-184-a3": "Да, потому что каждый обязан не создавать опасность и не затруднять движение."
+      },
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 093-184",
+      "reviewedAt": "2026-05-10",
+      "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+    }
+  ]
+}
