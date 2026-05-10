@@ -7,16 +7,6 @@ const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const QA_STATUSES = new Set(["draft", "reviewed", "approved"]);
 const STRICT_MODES = new Set(["strict", "final", "release"]);
-const FORBIDDEN_SPANISH_SIMPLIFICATION_KEYS = new Set([
-  "simplifiedSpanish",
-  "simpleSpanish",
-  "simplifiedEs",
-  "simpleEs",
-  "spanishSimple",
-  "spanishSimplification",
-  "simplificacionEs",
-  "esSimple"
-]);
 const FORBIDDEN_SPANISH_SIMPLIFICATION_PATHS = [
   "simplified-spanish",
   "simple-spanish",
@@ -50,6 +40,34 @@ function asArray(value) {
 
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim() !== "";
+}
+
+function normalizeIdentifier(value) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function isForbiddenSpanishSimplificationKey(value) {
+  const normalized = normalizeIdentifier(value);
+  if (!normalized) return false;
+  const hasSpanishMarker = normalized.includes("spanish") || normalized.includes("es");
+  const hasSimplificationMarker =
+    normalized.includes("simplified") ||
+    normalized.includes("simple") ||
+    normalized.includes("simplification") ||
+    normalized.includes("simplificacion");
+  return hasSpanishMarker && hasSimplificationMarker;
+}
+
+function isForbiddenSpanishSimplificationPath(value) {
+  const normalized = normalizePath(value).toLowerCase();
+  return (
+    FORBIDDEN_SPANISH_SIMPLIFICATION_PATHS.some((fragment) => normalized.includes(fragment)) ||
+    isForbiddenSpanishSimplificationKey(normalized)
+  );
 }
 
 function normalizePath(value) {
@@ -105,6 +123,53 @@ function sourceSpanText(text, sourceSpan) {
   return lines.slice(startLine - 1, endLine).join("\n");
 }
 
+function sourceLines(text) {
+  const lines = text.split(/\r?\n/);
+  if (lines.length > 1 && lines.at(-1) === "") lines.pop();
+  return lines;
+}
+
+function isValidSourceSpan(value) {
+  return (
+    isPlainObject(value) &&
+    Number.isInteger(value.startLine) &&
+    Number.isInteger(value.endLine) &&
+    value.startLine >= 1 &&
+    value.endLine >= value.startLine
+  );
+}
+
+function validateContiguousSourceSpanCoverage(errors, { documentId, chunks, archiveText }) {
+  const archiveLineCount = sourceLines(archiveText).length;
+  const spans = [];
+  for (const chunk of asArray(chunks)) {
+    if (!isValidSourceSpan(chunk?.sourceSpan)) return;
+    spans.push({
+      chunkId: labelFor(chunk.chunkId, `${documentId}.coverageChunk`),
+      startLine: chunk.sourceSpan.startLine,
+      endLine: chunk.sourceSpan.endLine
+    });
+  }
+  if (spans.length === 0) return;
+
+  spans.sort((a, b) => a.startLine - b.startLine || a.endLine - b.endLine || a.chunkId.localeCompare(b.chunkId));
+  let expectedStartLine = 1;
+  for (const span of spans) {
+    if (span.startLine !== expectedStartLine) {
+      errors.push(
+        `${documentId}: sourceSpan coverage must be contiguous; expected line ${expectedStartLine} but ${span.chunkId} starts at line ${span.startLine}.`
+      );
+      return;
+    }
+    expectedStartLine = span.endLine + 1;
+  }
+  if (expectedStartLine !== archiveLineCount + 1) {
+    errors.push(
+      `${documentId}: sourceSpan coverage must include all archive lines; covered through line ${expectedStartLine - 1} of ${archiveLineCount}.`
+    );
+  }
+}
+
 function validateNoForbiddenSpanishSimplification(errors, value, path = "primary sources") {
   if (Array.isArray(value)) {
     value.forEach((item, index) => validateNoForbiddenSpanishSimplification(errors, item, `${path}[${index}]`));
@@ -112,14 +177,10 @@ function validateNoForbiddenSpanishSimplification(errors, value, path = "primary
   }
   if (!isPlainObject(value)) return;
   for (const [key, nested] of Object.entries(value)) {
-    if (FORBIDDEN_SPANISH_SIMPLIFICATION_KEYS.has(key)) {
+    if (isForbiddenSpanishSimplificationKey(key)) {
       errors.push(`${path}.${key} is forbidden; simplified Spanish is out of scope.`);
     }
-    if (
-      isNonEmptyString(nested) &&
-      key.toLowerCase().includes("path") &&
-      FORBIDDEN_SPANISH_SIMPLIFICATION_PATHS.some((fragment) => normalizePath(nested).toLowerCase().includes(fragment))
-    ) {
+    if (isNonEmptyString(nested) && key.toLowerCase().includes("path") && isForbiddenSpanishSimplificationPath(nested)) {
       errors.push(`${path}.${key} points to forbidden simplified Spanish content.`);
     }
     validateNoForbiddenSpanishSimplification(errors, nested, `${path}.${key}`);
@@ -398,6 +459,9 @@ export function validatePrimarySources({
         errors.push(`${documentId}: generated coverage chunk ${generatedChunkId} is missing from expectedChunkIds.`);
       }
     }
+    if (strictMode && archiveText !== undefined && Array.isArray(document.chunks)) {
+      validateContiguousSourceSpanCoverage(errors, { documentId, chunks: document.chunks, archiveText });
+    }
   }
 
   for (const manifestId of manifestIds) {
@@ -482,7 +546,7 @@ export function validatePrimarySources({
       errors.push(`${entryId}.textFields must be an array of non-empty strings.`);
     } else {
       for (const field of entry.textFields) {
-        if (FORBIDDEN_SPANISH_SIMPLIFICATION_KEYS.has(field)) {
+        if (isForbiddenSpanishSimplificationKey(field)) {
           errors.push(`${entryId}.textFields must not reference ${field}; simplified Spanish is out of scope.`);
         }
       }

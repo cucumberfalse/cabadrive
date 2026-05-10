@@ -313,6 +313,10 @@
 - Addressed Codex AI Review P1 finding on PR #74 head `987e712`.
 - Tightened coverage inventory validation so every generated coverage chunk ID must also be listed in the same document's `expectedChunkIds`. This makes coverage chunk IDs exact in both directions and prevents a generated chunk from bypassing learner translation, simplification, and QA validation.
 - Added a focused regression test proving draft validation rejects a generated coverage chunk omitted from `expectedChunkIds`.
+- Addressed unresolved Codex AI Review findings `PRRT_kwDOSX65IM6A5vO2` and `PRRT_kwDOSX65IM6A51IX`.
+- Simplified-Spanish rejection now detects prefixed and variant keys/search fields such as `simplifiedSpanishText` and `learnerSimplifiedSpanishText`, not only exact key names.
+- Strict/final validation now checks generated coverage chunk `sourceSpan`s against the available archive Markdown and requires contiguous full-document line coverage.
+- Added focused regression tests for simplified-Spanish variant keys/search projections, incomplete archive span coverage, and non-contiguous archive span coverage.
 
 ### Implementation Agent Feedback
 
@@ -369,6 +373,14 @@
   - `node --test tests/primary-sources-validation.test.mjs` passed: 18 tests, 18 pass, 0 fail.
   - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 104 Node tests, 104 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+- Slice B PR #74 unresolved review findings follow-up on 2026-05-10:
+  - Addressed `PRRT_kwDOSX65IM6A5vO2`: simplified-Spanish validation now rejects variant/prefixed learner-data and search-projection keys such as `simplifiedSpanishText` and `learnerSimplifiedSpanishText`.
+  - Addressed `PRRT_kwDOSX65IM6A51IX`: strict/final validation now requires generated coverage chunk source spans to cover the available archived source Markdown contiguously from first line through final source line.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 21 tests, 21 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 107 Node tests, 107 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
 - Conflict resolution pass on 2026-05-10:

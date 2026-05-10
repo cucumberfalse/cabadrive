@@ -6,7 +6,7 @@ import { validatePrimarySources } from "../scripts/primary-sources-validation.mj
 
 const doc1Text = "# Doc One\nArticulo 1\nTexto oficial uno.";
 const doc2Text = "# Doc Two\nArticulo 1\nTexto oficial dos.";
-const doc1SpanText = "# Doc One\nArticulo 1";
+const doc1SpanText = doc1Text;
 const doc2SpanText = "# Doc Two\nArticulo 1";
 const doc1Hash = sha256(doc1Text);
 const doc2Hash = sha256(doc2Text);
@@ -105,7 +105,7 @@ function coverage() {
             officialDocumentId: "doc-1",
             order: 1,
             headingPath: ["Doc One"],
-            sourceSpan: { startLine: 1, endLine: 2 },
+            sourceSpan: { startLine: 1, endLine: 3 },
             sourceTextSha256: doc1SpanHash,
             sourceFingerprint: `sha256:${doc1SpanHash}`
           }
@@ -244,6 +244,42 @@ test("strict mode rejects learner corpus documents without learner chunks", () =
   assert(errors.includes("doc-1.chunks must include at least one learner chunk in strict mode."));
 });
 
+test("strict mode rejects sourceSpans that do not cover the full archive", () => {
+  const partialSpanText = "# Doc One\nArticulo 1";
+  const partialSpanHash = sha256(partialSpanText);
+  const badCorpus = corpus();
+  badCorpus.documents[0].chunks[0].originalSpanish = partialSpanText;
+  badCorpus.documents[0].chunks[0].sourceFingerprint = `sha256:${partialSpanHash}`;
+  const badCoverage = coverage();
+  badCoverage.documents[0].chunks[0].sourceSpan = { startLine: 1, endLine: 2 };
+  badCoverage.documents[0].chunks[0].sourceTextSha256 = partialSpanHash;
+  badCoverage.documents[0].chunks[0].sourceFingerprint = `sha256:${partialSpanHash}`;
+
+  const errors = validate({ corpus: badCorpus, coverage: badCoverage });
+
+  assert(errors.includes("doc-1: sourceSpan coverage must include all archive lines; covered through line 2 of 3."));
+});
+
+test("strict mode rejects non-contiguous sourceSpans", () => {
+  const shiftedSpanText = "Articulo 1\nTexto oficial uno.";
+  const shiftedSpanHash = sha256(shiftedSpanText);
+  const badCorpus = corpus();
+  badCorpus.documents[0].chunks[0].originalSpanish = shiftedSpanText;
+  badCorpus.documents[0].chunks[0].sourceFingerprint = `sha256:${shiftedSpanHash}`;
+  const badCoverage = coverage();
+  badCoverage.documents[0].chunks[0].sourceSpan = { startLine: 2, endLine: 3 };
+  badCoverage.documents[0].chunks[0].sourceTextSha256 = shiftedSpanHash;
+  badCoverage.documents[0].chunks[0].sourceFingerprint = `sha256:${shiftedSpanHash}`;
+
+  const errors = validate({ corpus: badCorpus, coverage: badCoverage });
+
+  assert(
+    errors.includes(
+      "doc-1: sourceSpan coverage must be contiguous; expected line 1 but doc-1--001 starts at line 2."
+    )
+  );
+});
+
 test("strict mode rejects missing full Russian translation", () => {
   const badCorpus = corpus();
   badCorpus.documents[0].chunks[0].fullTranslationRu = "";
@@ -338,6 +374,26 @@ test("rejects forbidden simplified Spanish fields", () => {
   );
   assert(
     errors.includes("doc-1--001.textFields must not reference simplifiedSpanish; simplified Spanish is out of scope.")
+  );
+});
+
+test("rejects simplified Spanish variant keys in learner data and search projections", () => {
+  const badCorpus = corpus();
+  badCorpus.documents[0].chunks[0].simplifiedSpanishText = "Texto facil en espanol.";
+  const badSearchIndex = searchIndex();
+  badSearchIndex.entries[0].textFields.push("learnerSimplifiedSpanishText");
+
+  const errors = validate({ corpus: badCorpus, searchIndex: badSearchIndex, mode: "draft" });
+
+  assert(
+    errors.includes(
+      "primary sources corpus.documents[0].chunks[0].simplifiedSpanishText is forbidden; simplified Spanish is out of scope."
+    )
+  );
+  assert(
+    errors.includes(
+      "doc-1--001.textFields must not reference learnerSimplifiedSpanishText; simplified Spanish is out of scope."
+    )
   );
 });
 
