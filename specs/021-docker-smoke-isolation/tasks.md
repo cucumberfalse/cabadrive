@@ -35,7 +35,7 @@
 - [x] T022 Remove the fixed `container_name: cabadrive` from `docker-compose.yml`, or replace it only with a project-scoped alternative justified in process memory.
 - [x] T023 Make the host port configurable with default `5173`, preferably `${CABADRIVE_HOST_PORT:-5173}:8080`.
 - [x] T024 Preserve the service name `cabadrive` and container port `8080` unless a concrete runtime reason is recorded.
-- [x] T025 Leave `image: cabadrive:local` unchanged unless implementation finds and records a concrete image-tag conflict.
+- [x] T025 Remove mandatory `image: cabadrive:local` tagging so isolated smoke uses Compose project-scoped build images.
 - [x] T026 Validate rendered compose config and record evidence that no fixed `container_name: cabadrive` remains.
 
 ## Required Slice C: Makefile And Smoke Guidance
@@ -98,6 +98,7 @@
 - [ ] T067 Review Agent verifies isolated `make down` did not stop a sibling/first stack.
 - [ ] T068 Review Agent verifies no learner-facing product/content changes were included.
 - [ ] T069 Review Agent verifies no unresolved Implementation Agent feedback remains before merge readiness.
+- [ ] T070 Review Agent verifies Docker compose does not require a fixed shared `cabadrive:local` image tag and isolated smoke uses project-scoped image identity.
 
 ## Process Memory
 
@@ -106,7 +107,7 @@
 - Use Docker Compose project scoping as the container isolation boundary by removing fixed `container_name`.
 - Use `CABADRIVE_HOST_PORT` for the configurable host port and preserve default `5173`.
 - Use standard `COMPOSE_PROJECT_NAME` for explicit worktree/agent isolation rather than inventing a wrapper variable.
-- Keep `image: cabadrive:local` unless implementation records a concrete conflict caused by the shared image tag.
+- Review fix decision: remove the fixed `image: cabadrive:local` tag because review found that parallel worktrees can retag the same local image and smoke a sibling branch. With no explicit image tag, Compose auto-tags local builds using the compose project and service name.
 - Do not add a new smoke target unless it materially simplifies reuse of the same configured port.
 - This feature does not close historical feature `009` T098 directly; it supplies an infrastructure fix and evidence path for later role-owned disposition.
 
@@ -118,11 +119,13 @@
 - Architect inspected current `Makefile`: plain `docker compose build/up/down/logs` and fixed echo `Cabadrive is available at http://localhost:5173`.
 - Architect inspected current `docs_project/project/devops/docker-runtime.md`: default Docker-only runtime documented at `http://localhost:5173` with smoke against that URL.
 - Architect inspected current `.github/workflows/ci.yml`: `docker-validation` uses default `make build`, `make up`, curls `/` and `/sw.js` at `http://localhost:5173`, then `make down`.
+- Review fix context: AI Review P2 thread `PRRT_kwDOSX65IM6A7Nop` reported that the first isolation change still shared `image: cabadrive:local`, allowing parallel worktrees to retag the same image and smoke a sibling branch.
 
 ### Dead Ends
 
 - None during Architect planning.
 - Implementation Agent first `pnpm run test` attempt failed because this isolated worktree did not have `node_modules`; `tests/domain.test.mjs` could not import `typescript`. `pnpm install --frozen-lockfile` completed from the lockfile, then `pnpm run test` passed.
+- Review-fix `pnpm run test` first failed only because a new docs assertion expected an unwrapped Markdown sentence; the docs wrapped the sentence across lines. The assertion was changed to allow whitespace across the line break, then the full test suite passed.
 
 ### Known Issues
 
@@ -139,7 +142,7 @@
 - Compose config default: `docker compose config` rendered project `cabadrive-021-docker-smoke-isolation`, service `cabadrive`, no `container_name`, container target `8080`, and published host port `"5173"`.
 - Compose config isolated: `COMPOSE_PROJECT_NAME=cabadrive-021-isolation CABADRIVE_HOST_PORT=5175 docker compose config` rendered project `cabadrive-021-isolation`, no `container_name`, target `8080`, and published host port `"5175"`.
 - Default pre-smoke cleanup: `make down` ran `docker compose down` in the current worktree project and exited 0.
-- Default `make build` exited 0 and built `cabadrive:local`; default `make up` and default curls were skipped because `lsof -nP -iTCP:5173 -sTCP:LISTEN` showed Docker listening on `*:5173` for the protected sibling container. No default stack was started by this worktree, so no final default `make down` cleanup was needed beyond the pre-smoke cleanup.
+- Earlier pre-review default `make build` exited 0 and built `cabadrive:local`; default `make up` and default curls were skipped because `lsof -nP -iTCP:5173 -sTCP:LISTEN` showed Docker listening on `*:5173` for the protected sibling container. No default stack was started by this worktree, so no final default `make down` cleanup was needed beyond the pre-smoke cleanup.
 - Isolated smoke command `COMPOSE_PROJECT_NAME=cabadrive-021-isolation CABADRIVE_HOST_PORT=5175 make down build up` exited 0, created `cabadrive-021-isolation-cabadrive-1`, and printed `Cabadrive is available at http://localhost:5175`.
 - Isolated HTTP smoke passed: `curl --fail --silent --show-error http://localhost:5175/` returned the HTML document head, and `curl --fail --silent --show-error http://localhost:5175/sw.js` returned the generated service worker beginning with `const CACHE_NAME = "cabadrive-static-..."`.
 - During isolated smoke, `docker ps` showed both `cabadrive-021-isolation-cabadrive-1` on `5175` and the protected sibling `cabadrive` on `5173`.
@@ -156,6 +159,20 @@
 - Scoped diff verification before commit showed changes limited to `.github/workflows/ci.yml`, `Makefile`, `docker-compose.yml`, `docs_project/project/devops/docker-runtime.md`, `docs_project/project/feature-inventory.md`, `docs_project/project/frontend/frontend-docs.md`, `tests/docker-runtime.test.mjs`, and `specs/021-docker-smoke-isolation/` feature memory.
 - Merge-conflict guard `git diff --name-only --diff-filter=U` returned no paths.
 - No learner-facing product behavior, content data, translations, explanations, image metadata, overlays, service-worker semantics, or unrelated feature memory were changed.
+- Review-fix edits removed the explicit `image: cabadrive:local` tag, updated docs/tests/spec memory to treat Compose's project-scoped build image as part of the isolation contract, and did not require CI changes because the default `make build`/`make up` flow still builds and runs within one compose project.
+- Review-fix compose config default: `docker compose config` rendered project `cabadrive-021-docker-smoke-isolation`, service `cabadrive`, build context only, no `container_name`, no `image`, target `8080`, and published host port `"5173"`.
+- Review-fix compose config isolated: `COMPOSE_PROJECT_NAME=cabadrive-021-review-fix CABADRIVE_HOST_PORT=5176 docker compose config` rendered project `cabadrive-021-review-fix`, build context only, no `container_name`, no `image`, target `8080`, and published host port `"5176"`.
+- Review-fix read-only Docker status before smoke: `docker ps ... | rg 'cabadrive' || true` showed no running Cabadrive containers, and `lsof -nP -iTCP:5176 -sTCP:LISTEN || true` showed port `5176` free. `docker images ... | rg 'cabadrive|021' || true` showed an existing old `cabadrive:local` image, which the review-fix smoke did not retag.
+- Review-fix isolated smoke command `COMPOSE_PROJECT_NAME=cabadrive-021-review-fix CABADRIVE_HOST_PORT=5176 make down build up` exited 0, built image `docker.io/library/cabadrive-021-review-fix-cabadrive`, created `cabadrive-021-review-fix-cabadrive-1`, and printed `Cabadrive is available at http://localhost:5176`.
+- Review-fix isolated HTTP smoke passed: `curl --fail --silent --show-error http://localhost:5176/` returned the HTML document head with `<title>Cabadrive</title>`, and `curl --fail --silent --show-error http://localhost:5176/sw.js` returned the generated service worker beginning with `const CACHE_NAME = "cabadrive-static-..."`.
+- Review-fix image evidence during smoke: `docker images --format ... | rg 'cabadrive|021-review-fix'` showed `cabadrive-021-review-fix-cabadrive:latest` with the new image ID and the pre-existing `cabadrive:local` image unchanged as a separate image.
+- Review-fix cleanup command `COMPOSE_PROJECT_NAME=cabadrive-021-review-fix CABADRIVE_HOST_PORT=5176 make down` stopped/removed only `cabadrive-021-review-fix-cabadrive-1` and `cabadrive-021-review-fix_default`.
+- Review-fix fixed-image search: `rg -n "image:\\s*cabadrive:local|CABADRIVE_IMAGE|cabadrive:local|fixed shared|project-scoped image|auto-tags" docker-compose.yml Makefile .github docs_project tests specs/021-docker-smoke-isolation` found no `image: cabadrive:local` in `docker-compose.yml`, `Makefile`, `.github`, or durable docs/tests; remaining `cabadrive:local` hits are historical context or assertions that reject the fixed tag.
+- Review-fix `pnpm run validate:content` passed: difficulty labels validated for 460 questions and 38 topics; content validation passed for 460 category B fallback questions and 276 local image references.
+- Review-fix `pnpm run test` passed: 120 tests, including the Docker runtime tests for project-scoped containers, configurable host port, no shared local image tag, Makefile URL output, and docs guidance.
+- Review-fix `git diff --check` passed, and `git diff --name-only --diff-filter=U` returned no paths.
+- Review-fix `pnpm run check:repo` passed with `Repository baseline check passed.`
+- Review-fix feature-memory worktree gate passed: `node scripts/check-feature-memory.mjs --worktree` reported `Feature-memory gate passed via specs/021-docker-smoke-isolation/{spec,plan,tasks}.md`.
 
 ### Implementation Agent Feedback
 

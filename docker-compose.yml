@@ -2,7 +2,6 @@ services:
   cabadrive:
     build:
       context: .
-    image: cabadrive:local
     ports:
       - "${CABADRIVE_HOST_PORT:-5173}:8080"
     restart: unless-stopped

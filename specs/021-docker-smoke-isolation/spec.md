@@ -37,7 +37,7 @@ ports:
 - Update `Makefile` output and any smoke guidance so the displayed URL matches the configured host port.
 - Preserve default `make build`, `make up`, `make down`, and `make logs` behavior for ordinary single-worktree use.
 - Add or update durable Docker runtime docs so agents know the default path and the parallel-agent override path.
-- Update CI only if needed to keep `docker-validation` aligned with the configurable port contract.
+- Update CI only if needed to keep `docker-validation` aligned with the configurable port and image-isolation contract.
 - Add focused validation or tests if the repository has a practical place for them; otherwise require command evidence for compose config and Docker smoke.
 - Keep active feature `021` process memory current during implementation.
 
@@ -83,8 +83,10 @@ As a reviewer, I want concrete evidence for default and isolated Docker smoke pa
 - FR-011: Durable docs must describe:
   - default normal use;
   - isolated parallel-agent use with `COMPOSE_PROJECT_NAME` and `CABADRIVE_HOST_PORT`;
+  - isolated build image behavior;
   - the rule that agents must not stop/remove sibling containers to clear conflicts.
 - FR-012: Feature `021` `tasks.md` must record implementation decisions, dead ends, known issues, verification evidence, and Implementation Agent feedback.
+- FR-013: Docker compose must not require all worktrees to build or run through a fixed shared `cabadrive:local` image tag; image identity must be either project-scoped by Compose or explicitly configurable for isolated smoke.
 
 ## Acceptance Criteria
 
@@ -94,8 +96,9 @@ As a reviewer, I want concrete evidence for default and isolated Docker smoke pa
 4. Given a sibling Cabadrive stack is running before the isolated smoke, it remains running after the isolated worktree's `make down`.
 5. Given `CABADRIVE_HOST_PORT=<alternate>` is used, the emitted or documented smoke URL uses that alternate port.
 6. Given no override is supplied, all docs and Makefile output still point ordinary users to `http://localhost:5173`.
-7. Given CI runs `docker-validation`, the Docker image builds, app starts, smoke checks pass, and cleanup runs with default settings.
-8. Given local verification runs, `git diff --check`, feature-memory validation, repository baseline/preflight as appropriate, compose config validation, default Docker smoke, and isolated alternate-port Docker smoke pass or exact unrelated blockers are recorded.
+7. Given isolated compose config is rendered, it does not contain a mandatory fixed `cabadrive:local` image tag.
+8. Given CI runs `docker-validation`, the Docker image builds, app starts, smoke checks pass, and cleanup runs with default settings.
+9. Given local verification runs, `git diff --check`, feature-memory validation, repository baseline/preflight as appropriate, compose config validation, default Docker smoke, and isolated alternate-port Docker smoke pass or exact unrelated blockers are recorded.
 
 ## Negative Scenarios
 
@@ -103,6 +106,7 @@ As a reviewer, I want concrete evidence for default and isolated Docker smoke pa
 - A fix that only changes the container name while leaving host port `5173` unconfigurable is not acceptable.
 - A fix that only changes the host port while leaving a global container name collision is not acceptable.
 - A default `make up` path that no longer serves `http://localhost:5173` is not acceptable.
+- A build flow that always retags the shared `cabadrive:local` image during isolated smoke is not acceptable.
 - A validation flow that requires `docker rm`, `docker stop`, `docker compose down` against another worktree's project, or any mutation of sibling containers is not acceptable.
 - A hardcoded alternate port in CI or docs that drifts from `CABADRIVE_HOST_PORT` is not acceptable.
 - A new runtime dependency on host Node.js or pnpm for end users is not acceptable.
@@ -158,5 +162,5 @@ Review Agent must verify:
 
 - Use Docker Compose project scoping as the isolation boundary. Removing `container_name` lets Compose name containers from project, service, and index, avoiding a global `/cabadrive` collision.
 - Use `CABADRIVE_HOST_PORT` for the user-facing host port because the name is project-specific and clear in shell examples. Keep `COMPOSE_PROJECT_NAME` as the standard Compose mechanism for project isolation rather than wrapping it with a second custom variable.
-- Keep the image tag `cabadrive:local` unless implementation finds concrete evidence that the shared tag causes validation conflicts. A shared local image tag can be acceptable because the runtime collision is at container name and host port; changing image tagging is deferred unless proven necessary.
+- Do not declare a fixed `cabadrive:local` image tag. Let Compose auto-tag the build from the project and service name so isolated smoke does not retag a sibling worktree's image.
 - Do not add a new abstraction or Docker wrapper script unless Makefile/env substitution cannot keep the contract simple.

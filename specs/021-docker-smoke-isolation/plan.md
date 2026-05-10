@@ -2,7 +2,7 @@
 
 ## Summary
 
-Implement one narrow runtime-contract PR. Remove the fixed compose container name, make the host port configurable with default `5173`, update Makefile/docs guidance so the smoke URL follows the configured port, and prove both default and isolated parallel-agent Docker flows.
+Implement one narrow runtime-contract PR. Remove the fixed compose container name and shared local image tag, make the host port configurable with default `5173`, update Makefile/docs guidance so the smoke URL follows the configured port, and prove both default and isolated parallel-agent Docker flows.
 
 This Architect pass creates only feature memory. Product code, tests, runtime files, docs outside this feature folder, commits, pushes, PRs, and review are assigned to later roles.
 
@@ -36,7 +36,7 @@ Update `docker-compose.yml` so:
 
 - `container_name: cabadrive` is removed.
 - service name remains `cabadrive`.
-- image can remain `cabadrive:local` unless implementation proves it causes a concrete conflict.
+- omit a fixed `image:` tag so Compose auto-tags the build with the compose project and service name.
 - host port uses an environment default:
 
 ```yaml
@@ -44,7 +44,7 @@ ports:
   - "${CABADRIVE_HOST_PORT:-5173}:8080"
 ```
 
-Rationale: Compose default naming already scopes containers by project. `COMPOSE_PROJECT_NAME` can be supplied by agents for explicit isolation without inventing a repository-specific wrapper.
+Rationale: Compose default naming already scopes containers by project. `COMPOSE_PROJECT_NAME` can be supplied by agents for explicit isolation without inventing a repository-specific wrapper. Compose also auto-tags build images by project and service when no explicit `image:` tag is declared, avoiding `cabadrive:local` retag races between parallel worktrees.
 
 ### Slice 2: Makefile And Smoke Guidance
 
@@ -79,6 +79,7 @@ curl --fail http://localhost:5174/
 COMPOSE_PROJECT_NAME=cabadrive-021-isolation CABADRIVE_HOST_PORT=5174 make down
 ```
 
+- agents get a project-scoped build image from Compose and do not need to set a custom image tag for isolated smoke;
 - agents must not stop or remove containers from other compose projects to clear conflicts.
 
 CI can remain on default `5173` if unchanged default behavior keeps `docker-validation` green. If implementation updates CI for consistency, it should set or reuse `CABADRIVE_HOST_PORT` in one place and avoid hardcoded drift.
@@ -169,8 +170,8 @@ Review Agent should review as a runtime-contract fix:
   - Mitigation: document `COMPOSE_PROJECT_NAME=<unique>` for isolated agent runs.
 - Risk: `make down` stops a sibling stack.
   - Mitigation: avoid hardcoded container operations; require before/after sibling-preservation evidence.
-- Risk: shared image tag confuses debugging.
-  - Mitigation: keep tag only if smoke evidence is clean; record any observed issue as Implementation Agent feedback.
+- Risk: shared image tag lets one worktree retag another worktree's smoke image.
+  - Mitigation: omit the explicit tag and rely on Compose's project-scoped build image name.
 
 ## Rollback
 

@@ -21,7 +21,8 @@
 - Offline-capable local-first behavior after build.
 - Docker-only local runtime with `make build`, `make up`, and `make down`;
   ordinary use serves `http://localhost:5173`, while parallel worktree smoke
-  runs can isolate with `COMPOSE_PROJECT_NAME` and `CABADRIVE_HOST_PORT`.
+  runs isolate container, port, and build-image identity with
+  `COMPOSE_PROJECT_NAME` and `CABADRIVE_HOST_PORT`.
 
 ## Current Content Mode
 
