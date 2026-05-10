@@ -51,6 +51,7 @@
 - Bugfix implementation decision: GitHub check-run `COMPLETED` with conclusion `ACTION_REQUIRED` is terminal non-success, so `normalizeCheckState()` must classify it as `failed`; it is not eligible for `--auto-merge-pending`.
 - Review-fix implementation decision: final validation order is now proven by explicit role-owned ISO completion markers, `Final Architect validation completed at: <ISO 8601 timestamp>` in Architect-owned memory and `Final Analyst validation completed at: <ISO 8601 timestamp>` in `feature-request.md`, instead of by concatenated file order. Missing, invalid, equal, or reversed markers keep `finalValidationOrder` false.
 - Review-fix implementation decision: mutating finalization and protected auto-merge now require an explicit `--expected-head` or `--head-sha` matching the current PR head, so the helper cannot merge a newer unvalidated head. Dry-run inspection may still omit the expected head.
+- Review-fix implementation decision: `collectBlockingFindings()` now treats native GitHub `CHANGES_REQUESTED` as blocking only when it is the latest relevant current-head review state for that normalized reviewer login. Later same-reviewer approvals or comments on the same head supersede earlier change requests, while latest change requests from the same or another reviewer still block. Trusted Codex/Gemini blocking severity checks in unresolved threads and review bodies remain independent blockers.
 
 ## Dead Ends
 
@@ -107,6 +108,11 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed after latest-main refresh; no configured product paths changed, so the feature-memory gate passed.
 - `git diff --check`: passed after latest-main refresh; no whitespace errors reported.
 - `pnpm run preflight`: passed after latest-main refresh; feature-memory gate, repo baseline, content validation, 100 node tests, build, service-worker generation with 280 cached assets, and 22 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-C-9FbvsS.js` but completed successfully.
+- `node --test tests/finalize-pr.test.mjs`: passed after native review-state review-fix; 15 tests passed, including older same-reviewer change request superseded by approval, latest same-reviewer change request blocking, and different reviewer latest change request blocking.
+- `pnpm run check:repo`: passed after native review-state review-fix; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after native review-state review-fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `git diff --check`: passed after native review-state review-fix; no whitespace errors reported.
+- `pnpm run preflight`: passed after native review-state review-fix; feature-memory gate, repo baseline, content validation, 103 node tests, build, service-worker generation with 280 cached assets, and 22 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-C-9FbvsS.js` but completed successfully.
 
 ## Final Architect Validation Notes
 

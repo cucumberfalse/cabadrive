@@ -188,6 +188,78 @@ test("blocking review finding collection detects current-head blocker signals", 
   assert.equal(findings.length, 3);
 });
 
+test("older same-reviewer changes-requested review is superseded by approval on the same head", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    reviews: [{
+      state: "CHANGES_REQUESTED",
+      body: "",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "reviewer" },
+      commit: { oid: headSha }
+    }, {
+      state: "APPROVED",
+      body: "",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "reviewer" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.some((finding) => finding.source === "native-review"), false);
+});
+
+test("latest same-reviewer changes-requested review still blocks on the current head", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    reviews: [{
+      state: "APPROVED",
+      body: "",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "reviewer" },
+      commit: { oid: headSha }
+    }, {
+      state: "CHANGES_REQUESTED",
+      body: "",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "reviewer" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
+});
+
+test("different reviewer latest changes-requested review still blocks current-head finalization", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    reviews: [{
+      state: "CHANGES_REQUESTED",
+      body: "",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "reviewer-a" },
+      commit: { oid: headSha }
+    }, {
+      state: "APPROVED",
+      body: "",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "reviewer-a" },
+      commit: { oid: headSha }
+    }, {
+      state: "CHANGES_REQUESTED",
+      body: "",
+      submittedAt: "2026-05-10T13:02:00Z",
+      author: { login: "reviewer-b" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
+});
+
 test("skipped or neutral required checks are not treated as green", () => {
   assert.equal(normalizeCheckState({ status: "COMPLETED", conclusion: "SUCCESS" }), "success");
   assert.equal(normalizeCheckState({ status: "IN_PROGRESS", conclusion: null }), "pending");

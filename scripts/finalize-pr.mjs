@@ -203,18 +203,28 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
     }
   }
 
-  for (const review of reviews) {
+  const latestNativeReviewByReviewer = new Map();
+  for (const [index, review] of reviews.entries()) {
     const commitSha = review.commit?.oid || review.commit_id;
     if (commitSha && headSha && commitSha !== headSha) continue;
     const login = normalizeLogin(review.author?.login || review.user?.login);
-    if (review.state === "CHANGES_REQUESTED") {
-      findings.push({ source: "native-review", message: "A current-head changes-requested review remains." });
+    const reviewerKey = login || `unknown-reviewer-${index}`;
+    const submittedAtTime = Date.parse(review.submittedAt || review.submitted_at || review.createdAt || review.created_at || "");
+    const order = Number.isNaN(submittedAtTime) ? index : submittedAtTime;
+    const latest = latestNativeReviewByReviewer.get(reviewerKey);
+    if (!latest || order >= latest.order) {
+      latestNativeReviewByReviewer.set(reviewerKey, { review, order });
     }
     if (isTrustedReviewLogin(login, "codex", config) && containsBlockingSeverity(review.body, "codex")) {
       findings.push({ source: "codex-review", message: "A current-head Codex P0-P2 review finding remains." });
     }
     if (isTrustedReviewLogin(login, "gemini", config) && containsBlockingSeverity(review.body, "gemini")) {
       findings.push({ source: "gemini-review", message: "A current-head Gemini critical/high finding remains." });
+    }
+  }
+  for (const { review } of latestNativeReviewByReviewer.values()) {
+    if (review.state === "CHANGES_REQUESTED") {
+      findings.push({ source: "native-review", message: "A latest current-head changes-requested review remains." });
     }
   }
 
