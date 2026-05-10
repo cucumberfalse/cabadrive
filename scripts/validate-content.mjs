@@ -4,6 +4,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
+import { validateCabaExamProcessGuide } from "./content-caba-exam-process.mjs";
 import { validateDifficultyContent } from "./content-difficulty.mjs";
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
@@ -47,6 +48,7 @@ const translationAlignmentEvidence = readJson("content/validation/ru-translation
 const explanations = readJson("content/explanations/ru.explanations.json") || [];
 const vocabulary = readJson("content/vocabulary/ru.vocabulary.json") || [];
 const guide = readJson("content/guide/ru.condensed-guide.json") || [];
+const cabaExamProcessGuide = readJson("content/guide/caba-exam-process.ru.json");
 const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
 const topicGuideCoverage = readJson("content/guide/topic-study-guide.coverage.json");
 const topicGuideSourceTrace = readJson("content/guide/topic-study-guide.source-trace.json");
@@ -170,6 +172,12 @@ for (const item of guide) {
   }
 }
 
+errors.push(
+  ...validateCabaExamProcessGuide({
+    guide: cabaExamProcessGuide,
+    fileExists: (relativePath) => existsSync(path(relativePath))
+  })
+);
 errors.push(
   ...validateTopicGuide({
     questions,

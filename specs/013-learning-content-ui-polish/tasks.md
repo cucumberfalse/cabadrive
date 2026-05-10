@@ -186,6 +186,10 @@
 - Latest-main update after #66 on 2026-05-10: fetched `origin`, confirmed `origin/main` at `b26a37d7d2cb985d70ff8dc79a12b397cc52e271` (`[codex] Harden Orchestrator-first workflow enforcement (#66)`), and merged `origin/main` into `codex/013-learning-content-ui-polish` with `git merge --no-ff origin/main` rather than squash.
 - Latest-main conflict resolution after #66 on 2026-05-10: resolved conflicts in `docs_project/screens/learning-and-exam-flows.md` and `tests/e2e/app.spec.ts`. Resolution preserved #66/#18 learning-ticket timer flow and e2e checks while keeping #69 visible `Учить` ticket ID behavior and related e2e evidence.
 - Latest-main scope boundary after #66 on 2026-05-10: `specs/014-orchestrator-first-enforcement/*` files entered the worktree only from the `origin/main` merge parent; this update did not manually edit those files.
+- Review follow-up after #72 on 2026-05-10: fetched `origin`, confirmed latest `origin/main` at `578c618d02a45adffa9f2b18a9373495cf19ed8a` (`Add Russian CABA exam process guide (#72)`), and merged `origin/main` into `codex/013-learning-content-ui-polish` with `git merge --no-ff origin/main` rather than squash.
+- Review follow-up conflict resolution after #72 on 2026-05-10: Git reported content conflicts in `docs_project/project/feature-inventory.md` and `docs_project/project/frontend/frontend-docs.md`; `docs_project/screens/learning-and-exam-flows.md`, `src/App.tsx`, `src/styles.css`, and `tests/e2e/app.spec.ts` auto-merged and were checked for conflict markers. The resolution preserved #69 materials translations/missing-translation fallback, visible `Учить` ticket IDs, difficulty surfaces, compact CABA/RF wording, and removal of repeated materials per-ticket fallback-status chips while keeping #72 `Процесс` navigation, process-guide rendering, official-source link behavior, volatile warnings, glossary, docs, and e2e coverage.
+- Review follow-up scope boundary after #72 on 2026-05-10: no files under `specs/014-orchestrator-first-enforcement/*` were manually edited; any 012/014 memory present in the merge result comes from `origin/main`, not from this PR-owned diff.
+- Review follow-up P3 metadata fix on 2026-05-10: updated `content/guide/topic-study-guide.ru.json` parking topic `difficultyMeta.rationaleRu` from `13 терминов` to `15 терминов` to match the current `spanishTerms` count. `difficultyMeta.sourceFingerprint` was not refreshed because the deterministic topic fingerprint excludes `rationaleRu`, and `pnpm run validate:content` confirmed current topic fingerprints are valid.
 
 ### Dead Ends
 
@@ -237,6 +241,15 @@
 - Latest-main update after #66 2026-05-10: `pnpm run build` passed; Vite built production assets and generated a service worker with 280 cached assets. Vite emitted the existing large chunk warning for `index-CvO3trji.js`.
 - Latest-main update after #66 2026-05-10: `pnpm run test:e2e` passed 18 Playwright tests across `chromium` and `mobile`, including #66/#18 learning timer behavior and #69 visible `Учить` ticket ID behavior in the same learning-card flow.
 - Latest-main update after #66 2026-05-10: `pnpm run preflight` passed: feature-memory worktree gate, repository baseline check, content validation, 84 Node tests, build, and 18 e2e tests.
+- Review follow-up after #72 2026-05-10: `pnpm run validate:content` passed after the P3 rationale fix: difficulty labels validated for 460 questions and 38 topics; content validation passed for 460 category B fallback questions and 276 local image references.
+- Review follow-up after #72 2026-05-10: `node --test tests/content-topic-guide.test.mjs` passed 22 tests after the current-main merge and P3 rationale fix.
+- Review follow-up after #72 2026-05-10: `node --test tests/content-validation.test.mjs` passed 4 tests after the current-main merge and P3 rationale fix.
+- Review follow-up after #72 2026-05-10: `git diff --check` passed after the current-main merge and P3 rationale fix.
+- Review follow-up after #72 2026-05-10: `node scripts/check-feature-memory.mjs origin/main HEAD` passed via `specs/013-learning-content-ui-polish/{spec,plan,tasks}.md`.
+- Review follow-up after #72 2026-05-10: `pnpm run test` passed 88 Node tests after the current-main merge.
+- Review follow-up after #72 2026-05-10: `pnpm run build` passed; Vite built production assets and generated a service worker with 280 cached assets. Vite emitted the existing large chunk warning for `index-C-9FbvsS.js`.
+- Review follow-up after #72 2026-05-10: `pnpm run test:e2e` passed 22 Playwright tests across `chromium` and `mobile`, including #72 process-guide coverage and #69 materials/learning behavior.
+- Review follow-up after #72 2026-05-10: `pnpm run preflight` passed: feature-memory worktree gate, repository baseline check, content validation, 88 Node tests, build, and 22 e2e tests.
 
 ### Implementation Agent Feedback
 
