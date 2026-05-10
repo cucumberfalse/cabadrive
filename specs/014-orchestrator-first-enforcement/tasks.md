@@ -66,10 +66,10 @@
 
 ### Known Issues
 
-- PR #66 still has an external GitHub Actions `AI Review` billing/spending-limit blocker. This is not code-fixable in feature 014 scope, and no workflow, branch-protection, or billing-related changes were made.
+- Historical/resolved: PR #66 previously had an external GitHub Actions `AI Review` billing/spending-limit blocker, but this is no longer current. Final Architect validation return follow-up confirmed `gh pr checks 66 --repo cucumberfalse/cabadrive` reports `AI Review` as passing at PR head `eaaa2038021ed007a00905267c81d6688be739ba`.
 - Documentation/template enforcement still depends on agents and reviewers reading and applying the protocol; executable guard automation remains out of scope.
 - Sibling `012` may contain in-flight wording that has not landed on this branch. Implementation must inspect it read-only if available and record any coordination issue instead of editing sibling work.
-- Current worktree also contains untracked `specs/013-learning-content-ui-polish/`; this feature must preserve it and avoid changing 013 memory.
+- Historical/resolved: earlier process memory recorded untracked `specs/013-learning-content-ui-polish/` in a prior worktree state. Current final-validation follow-up status is clean, with no untracked `specs/013-*` entries.
 - No `011`/sibling `012` conflict was found that required Architect disposition; this feature references those process features as preserved baselines instead of duplicating their full final-validation mechanics.
 - Review finding P2 disposition: the earlier `node scripts/check-feature-memory.mjs --worktree` evidence was not sufficient for merge readiness because it passed via preserved untracked `specs/013-learning-content-ui-polish/` while `docs_project/` is a configured product path. Follow-up evidence now uses a clean temporary clone containing the current modified tracked files and only assigned `specs/014-orchestrator-first-enforcement/` memory, proving the feature-memory gate passes via 014 without staging or mutating 013.
 
@@ -119,6 +119,9 @@
 - Architect feature-memory check: `node scripts/check-feature-memory.mjs --worktree` passed with `No configured product paths changed; feature-memory gate passes.`
 - Architect whitespace check: `rg -n "[ \t]+$" specs/014-orchestrator-first-enforcement/spec.md specs/014-orchestrator-first-enforcement/plan.md specs/014-orchestrator-first-enforcement/tasks.md` found no trailing whitespace.
 - Architect final status: `git status --short --branch` reported only untracked `specs/013-learning-content-ui-polish/` and `specs/014-orchestrator-first-enforcement/` in the assigned worktree; `git -C /Users/chap/devel/cabadrive status --short --branch -- specs/014-orchestrator-first-enforcement` reported no 014 changes in the original workspace.
+- Final Architect validation return follow-up setup: `git rev-parse HEAD` returned `eaaa2038021ed007a00905267c81d6688be739ba`; `git rev-parse origin/main` returned `a26a12493123fcc0774a513e44fbf23663658ec0`; `git status --short --branch` reported `## codex/014-orchestrator-first-enforcement...origin/codex/014-orchestrator-first-enforcement` with no dirty or untracked paths.
+- Final Architect validation return follow-up PR checks: `gh pr checks 66 --repo cucumberfalse/cabadrive` exited 0 and reported `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` as `pass`.
+- Final Architect validation return follow-up untracked-status check: `git ls-files --others --exclude-standard specs` returned no entries, so the prior untracked `specs/013-learning-content-ui-polish/` note is historical and resolved for the current worktree state.
 
 ### Implementation Agent Feedback
 
@@ -126,4 +129,4 @@
 
 ## Architect Dispositions
 
-- None; no Implementation Agent feedback has been reported.
+- Final validation return 1: disposed the BLOCK caused by stale `tasks.md` process memory. The prior PR #66 AI Review billing/spending-limit note and the prior untracked `specs/013-*` note are retained only as historical/resolved context; current evidence shows PR checks passing and the local worktree clean. No follow-up implementation or publish step is required for this Architect-owned disposition.
