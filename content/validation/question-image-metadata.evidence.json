@@ -3697,9 +3697,9 @@
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b34.jpg",
       "imageSha256": "26cb8565e3196367db420a785083544a9e4236856a9b62233b660b0377a9d1ec",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "b7cea1acb4059483312c8f64aa5abb8bca3adba47dc71af72c3eb8760b77a44f",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "f636c072cb9e0a4935e3579313a36553a6c4222887f15e008d3ed603584ba86d",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3707,16 +3707,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b34.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b143",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b143.jpg",
       "imageSha256": "689a23c904be2bb5c3a7d897b98033f2fa071e6a5aba597979a0e0bd4708aaef",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "7a419582f43acb5398a5b675469df4da9ff11bd6edee012a42721579294c0fdf",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "bc1e5bec03d0ccda92440b189613daaac47fa19d11db3a1a5fb133ddb1f7395b",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3724,16 +3724,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b143.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b100",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b100.jpg",
       "imageSha256": "3eb9c60216289749b3953b5768b157e32698c68c87e67fab13dab83753ace387",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "9a72384051c48abc21319b8ed4162730ac0f3634c6b25d48b593af86f9a64649",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "a6001d2a715a128f1b60a3979ff83901bf45b37db62ceef9ded0330dd282f953",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3741,16 +3741,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b100.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b62",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b62.jpg",
       "imageSha256": "3aabdfa7cbe50d2af4034098d9e7799b89444042b99400a022116a48fe630db7",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "2cea7d5d33bf7685b0296b412ceec481c73707847b2a26984937d5d81a8cc75d",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "9965e27a73a4bf06efe3e982283bd36b5f185399f2f842a10ef22d104a1dfc7b",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3758,16 +3758,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b62.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b139",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b139.jpg",
       "imageSha256": "7dc7ff0aff52d9d09fea3e03437329077f5ca04b6f9d542559f24abdec9b9b59",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "7687b8bf281ed19e64016ea97d40795b60e065201f1a1cf0310d9900f609de00",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "25050b79219646590dab8b0cae45c8befc2af7775474ce791661d81846e191f7",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3775,16 +3775,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b139.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b171",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b171.jpg",
       "imageSha256": "27d5eaa741c3cd1082f868cfaa49913d71fc8361d1ae383bfbc6191c7dfaeef8",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "8e3f350e4db217b138bae7a9436806e57b5917a0a5a73e505cc81727575b8126",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "e19818b09f24a6a955e9011203cdb81e79a0a84442eb88839c62b94c9120e161",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3792,16 +3792,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b171.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b244",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b244.jpg",
       "imageSha256": "28c99e51d64a571c86b9b3c945c7e024089963b22f4c542bb01a64e074bdd49f",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "fe597a59306dca7640fd34d30188328a1c3dca29c6ecd9623e012ba4e4da23a6",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "714f5b69e3e6491f1e22f8ccef86053bd09b573c6052bafb92f2d38f1bdbd853",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3809,16 +3809,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b244.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b12",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b12.jpg",
       "imageSha256": "47baec6debdf00d2f66d9efbf1c2800671db2e87a96f51b87c7f690e71c2db3c",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "a40a969cc7f34195767b80d8e6d289f63dec728277ed1efe203c3d5030ca18fe",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "0e212e01f93e3ca675271ffca76cd3401df834b7b56dfcaf779e5e3be263c80b",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3826,16 +3826,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b12.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b141",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b141.jpg",
       "imageSha256": "d1f65b0eeb880fb85cd153985cff121361fd72b8b831f3db54021a23a0e5b8be",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "a67d0a9476e7135f826fb8f1964362ec8f883e0f43c4dd5422edf9cb78291134",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "80430f3456e346470f82fb99cb1e28075ab7a8d4353ec3df57b16421a2f82efd",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3843,16 +3843,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b141.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b86",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b86.jpg",
       "imageSha256": "5c91282ce06b3d4acb3f1c6217d414164c7bdf7c41b6b31fbd8a0900e6ae064f",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "210dfb01c07f16fa799161640cc24f6f787c0a42612d49fa0793dcd0d85a12db",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "63ae4856294f66db8853da78ea10e3ab2b84db0da9a8f4e1432643dba04548ee",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3860,16 +3860,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b86.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b252",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b252.jpg",
       "imageSha256": "c561f4d5ecb011a54c70465857b45369b5f43aef803488f26aa9bbca6d2418c1",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "8a6c4d3c1492c941f535346442a73021a46f31cc8382ac9c245441f984b409cb",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "893f22334a6b7bf85b612841b3eef3132d7c73a14767e7e1a971eaf53b043a63",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3877,16 +3877,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b252.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b23",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b23.jpg",
       "imageSha256": "2215885204866256db03ae5999b17045aaccecd9c96a3f19c5f1a25ea6536957",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "eccb78ce7793b34a9e3c84e5e4ac0cce0f63459ac522877439365c8a765fe546",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "7343fe7b328ba5b3d432aa21078bdcc366b4db8bac56134413909dd97670a498",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3894,16 +3894,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b23.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b197",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b197.jpg",
       "imageSha256": "5d7bf9a62ff1eb429889eed8bcf106a8c321523f377c46658a13c0c1bd27cceb",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "4511b745a7eb4432b1c05de7554a47ace8270398534ab877190afe87fdb98a81",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "55f950714c3f4ffd7fe89c86574992d6dba816b5478b977844694ba14262d54c",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3911,16 +3911,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b197.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b142",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b142.jpg",
       "imageSha256": "fce5f7f66b4ed605fa80a15e091f3c4a4f91363710f58a5ba2af0aff50e7a8c2",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "f8770a75e39641bdd6ee1d02f83c0c437a9bcbee8289b7629cae484e1f4649f9",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "13213fb33c26d0201f5d1c12bd3c21bd0a9d57ef40d25443361e112243e8f904",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3928,16 +3928,16 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b142.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b43",
       "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b43.jpg",
       "imageSha256": "b910e5bc79560ddec317206da6117639ca33cd46ff7f471696a99583bce8ddba",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
-      "metadataSha256": "8b87fcd973a21a2c544d5f24bb56986c1990cd6f1d194d54a8907f03bd198702",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
+      "metadataSha256": "5e3c1faac4f7e66317e52055a8565901928a447deac6a8d011c6e0e70dd0f5bb",
       "checks": {
         "pathAndHashCurrent": true,
         "visualCoverageReviewed": true,
@@ -3945,7 +3945,7 @@
         "uncertaintyRecorded": true,
         "noInventedCriticalFacts": true
       },
-      "notes": "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
+      "notes": "Actual local image inspection for content/assets/questions/source-bandinopla-testdeconducir-b/b43.jpg; stable objects/details/regions and recreation-oriented summary added for range 369-388."
     },
     {
       "imageId": "question-image-b109",
@@ -8172,241 +8172,241 @@
       "questionId": "b-fallback-369",
       "imageId": "question-image-b34",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "f2b7a0c15b18d1d4488f713be634ed59037581ea6627c7e873cff0e1f8b2bb30",
-      "usageSha256": "2794465468ca35d22f046ddcfc26adb7a5cba6e78a03be594cd8f7933495a6b6",
+      "usageSha256": "ee953ea582237af91e0fd2ae637f7fd5a814f0be28d292584c6c9859354c211f",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-370",
       "imageId": "question-image-b143",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "2c7b496a37a5e58b97f654040b744d4a5a086da803aa575fd449e2888e119af3",
-      "usageSha256": "b55f21781bf5d4b32b786f2a0bb72127bcb344943d5de87c15c76983167feb83",
+      "usageSha256": "7869b0ea92d26f10b45bde2ca1568d204a2d889f94abf7e2ac1d241775e9424d",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-372",
       "imageId": "question-image-b100",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "91fca24bd65e8c76d74e51c8b48ba40596309eddc645181ff1739dae3bb2ee5a",
-      "usageSha256": "cced1aac824d1af3b2592d5527a583e16a1d9d11a018d65a8c54b94a0e69eb4a",
+      "usageSha256": "984157260f59a0d4907b9acd299b607187949f7ed9a211452893e9ec77c1a2bf",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-374",
       "imageId": "question-image-b62",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "344751111bcd866bb2468c9bdf76fc06966931dd35ef51ccececd843bc4cfa57",
-      "usageSha256": "8cd5420bd6a2d78a31626637b4b1e43816e5b2487a6f9e758feac57fee0f7182",
+      "usageSha256": "6b5bbb44a3692540a530fd12ba7ee867268a21efc456872a8721f3aad8df27ec",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-377",
       "imageId": "question-image-b139",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "a7a431ffa505d10bd8e8e72a452b9d0ad753422a328595061bdb777074916926",
-      "usageSha256": "949711ad80cb7bbce5e8197ed297de6824a6a827b7b20fb9617753d13119e60d",
+      "usageSha256": "a4827918a6e0e6eb574a3b319c7603799ed920a262c6eec608622c52f7498ee1",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-378",
       "imageId": "question-image-b171",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "ffc211fb9f664710bd79b2b72dc2967b4b4ac866e1c69f11942a7ab779bfc4db",
-      "usageSha256": "3bcccae252d8555f407d7b7246547bdc046be80cd767a2b6242f6b68693f2730",
+      "usageSha256": "14b7dad5aff196e293f14c7ab9b87f914db3266401f6816287d750483bb4d0ab",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-379",
       "imageId": "question-image-b244",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "a54e968b373b7c94e3f5ceaa53424e173d00ed8dcc530b617546e01dabd831b2",
-      "usageSha256": "6577b4b05a31c161799718860dcc4715a6c5673d73e80d5732d3162b86e4a58f",
+      "usageSha256": "ccdee581942282909e5b153430b90e273d8605dd40414cca9f39c01b2957e1cd",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-380",
       "imageId": "question-image-b12",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "3966c3b10e8d0e98bd57cf06d35578e62d14f4d778359e89b87b9feab386f446",
-      "usageSha256": "2544d5c3dd85c45ac5cd628e1c942c0e731090fd739d1edb68356d15c9829ff8",
+      "usageSha256": "52c977c0785f2589780cb4033ed4fdf372b5c2437ae708a6a0202f5c16c41fd6",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-381",
       "imageId": "question-image-b141",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "36a8bac261c11fb88394a29be36a221eee244f3527fffdf399e4fc0673d54649",
-      "usageSha256": "1db329e533a736845a6a16c17da8eb1864b5a956efb7c6675e61630f4f0f239a",
+      "usageSha256": "8c3b02b71c72db04116ef8c001143145cc7804e10402fb3da8b4b94d6e68a171",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-383",
       "imageId": "question-image-b86",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "31c85d9300e607f2580612771e5ecedc6472825d19d60523a334e721ae9b9ebc",
-      "usageSha256": "19bd54b1d688c527ad25bbcb90846176862a3ec6f4a0b30b149d421db9bcca99",
+      "usageSha256": "1788083a97b9e9f886d0f4dab47282d95efe9459a95c5bea969babb0ccb3eebf",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-384",
       "imageId": "question-image-b252",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "3dbc8760cafe61aa7041a078e657473f8b872d6bb624e480f4695e56615b0a91",
-      "usageSha256": "ce591b0ab582310307ddb25ae95a31ba93dc7113104c63addc5e3bdd737e15ea",
+      "usageSha256": "469be470919850721864f14319914830471b72ee6d110fb942595d6c0379c5c5",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-385",
       "imageId": "question-image-b23",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "f20cd779fa1d596cdb9cdf2305fdd1759870f19f31a4aadd64326aa7f300a344",
-      "usageSha256": "956fd294e3757b1aafab2897c41e744caa2ac5d9ce52428071b6f31fa6e7ab90",
+      "usageSha256": "ff8ccc51dc6b556fc32c65d55ca6e1a367d776a22aa379122399ad84df7ea8d2",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-386",
       "imageId": "question-image-b197",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "7b16b5d6b61d78fcc798239058273ad2ff1fe752c7b30a781dc823b9a22ba141",
-      "usageSha256": "af2f4a75cb686a1b8a7a0ab6b8152d9db12c36ad0af0d7333cc6b0897703f62d",
+      "usageSha256": "1f5a4431eaa5bfae50f7405485afec85815f2e91e960a5831f98588c62c8b361",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-387",
       "imageId": "question-image-b142",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "86c6d1e969cbc80bf165bdf492ac1a3d5f33dd09bce6c405f5e1afeaed813c9a",
-      "usageSha256": "6d59582bbc9c80456e9ee6d8b05693f67e6fc04fb0c43c807e39cde951c73ae3",
+      "usageSha256": "9f0c357b64d1092370d723f6b9b670b8fe56fdb931d21c72e13b124698982e2c",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-388",
       "imageId": "question-image-b43",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "questionFingerprint": "2a1e7d41c62084b08ba7c4119c83414b244026487c0ee4da4f806e94eb5c49f7",
-      "usageSha256": "627e4997d409f661832408d695cab77bbeec0d764a1a2acede81bdf763b35731",
+      "usageSha256": "a1051650d97be8bcd8be59e3ecc9c4c7b3d81af9d4126fff0ad0ffb9491a5489",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
         "criticalDetailsMapped": true,
         "answerLinksCurrent": true
       },
-      "notes": "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
+      "notes": "Content-agent reviewed per-question relevance mapping with answer-critical/highlight, supporting, trap and background-dim roles."
     },
     {
       "questionId": "b-fallback-389",
