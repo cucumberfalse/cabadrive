@@ -499,6 +499,136 @@ test("post-effective-head final-validation and guard evidence additions pass", (
   assert.deepEqual(result.postEffectiveHeadInvalidPaths, []);
 });
 
+test("post-effective-head template verification evidence additions pass", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
+  const featurePath = "specs/999-finalize-test";
+  const featureRoot = join(root, featurePath);
+  initGitRepo(root);
+  writeMinimalFeatureMemory(root, featurePath);
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Task List
+- [x] Existing task.
+
+## Process Memory
+
+### Decisions
+- Existing decision.
+
+### Dead Ends
+- None.
+
+### Known Issues
+- None.
+
+### Verification Evidence
+- Existing evidence.
+
+### Cycle PR Set
+- Existing cycle evidence.
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "effective content"]);
+  const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Task List
+- [x] Existing task.
+
+## Process Memory
+
+### Decisions
+- Existing decision.
+- Effective content head: ${effectiveContentHead}
+
+### Dead Ends
+- None.
+
+### Known Issues
+- None.
+
+### Verification Evidence
+- Existing evidence.
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
+
+### Cycle PR Set
+- Existing cycle evidence.
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "template verification evidence"]);
+  const currentHead = git(root, ["rev-parse", "HEAD"]);
+
+  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+
+  assert.equal(result.postEffectiveHeadEvidenceOnly, true);
+  assert.deepEqual(result.postEffectiveHeadInvalidPaths, []);
+});
+
+test("post-effective-head template peer sections are not verification evidence", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
+  const featurePath = "specs/999-finalize-test";
+  const featureRoot = join(root, featurePath);
+  initGitRepo(root);
+  writeMinimalFeatureMemory(root, featurePath);
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Task List
+- [x] Existing task.
+
+## Process Memory
+
+### Decisions
+- Existing decision.
+
+### Dead Ends
+- None.
+
+### Known Issues
+- None.
+
+### Verification Evidence
+- Existing evidence.
+
+### Cycle PR Set
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "effective content"]);
+  const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Task List
+- [x] Existing task.
+
+## Process Memory
+
+### Decisions
+- Existing decision.
+- Effective content head: ${effectiveContentHead}
+
+### Dead Ends
+- None.
+
+### Known Issues
+- None.
+
+### Verification Evidence
+- Existing evidence.
+
+### Cycle PR Set
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "template peer section edit"]);
+  const currentHead = git(root, ["rev-parse", "HEAD"]);
+
+  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+
+  assert.equal(result.postEffectiveHeadEvidenceOnly, false);
+  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/tasks.md:`)));
+});
+
 test("blocking review finding collection detects current-head blocker signals", () => {
   const headSha = "abc1234";
   const findings = collectBlockingFindings({
@@ -828,6 +958,49 @@ Final Architect validation completed at: 2026-05-10T13:00:00Z
   assert.equal(evidence.currentHeadGuardEvidence, true);
   assert.equal(evidence.currentHeadMatchesEffectiveContentHead, true);
   assert.equal(evidence.postEffectiveHeadEvidenceOnly, true);
+});
+
+test("process evidence accepts template process-memory heading levels", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const featureRoot = join(root, featurePath);
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  mkdirSync(featureRoot, { recursive: true });
+  writeFileSync(join(featureRoot, "feature-request.md"), `Analyst validation pass: passed
+Final Analyst validation completed at: 2026-05-10T13:00:01Z
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `Architect validation pass: passed
+Final Architect validation completed at: 2026-05-10T13:00:00Z
+`);
+  writeFileSync(join(featureRoot, "plan.md"), "");
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Process Memory
+
+### Decisions
+- Effective content head: ${effectiveContentHead}
+
+### Dead Ends
+- None.
+
+### Known Issues
+- None.
+
+### Verification Evidence
+- Required checks passed.
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
+
+### Cycle PR Set
+- Existing cycle evidence.
+
+## Implementation Agent Feedback
+- None yet.
+`);
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  assert.equal(evidence.acceptanceEvidence, true);
+  assert.equal(evidence.currentProcessMemory, true);
+  assert.equal(evidence.currentHeadGuardEvidence, true);
 });
 
 test("post-effective-head path helper allows only role process evidence files", () => {

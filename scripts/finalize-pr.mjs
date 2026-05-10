@@ -33,8 +33,8 @@ const guardTextMarker = /current-PR-head|current PR head|head guard/i;
 const shaReferenceMarker = /\b[0-9a-f]{12,40}\b/ig;
 const allowedEvidenceFilenames = new Set(["feature-request.md", "spec.md", "plan.md", "tasks.md"]);
 const finalValidationSectionMarker = /^##\s+Final\s+(Architect|Analyst)\s+Validation\s+Notes\s*$/i;
-const verificationEvidenceSectionMarker = /^##\s+Verification\s+Evidence\s*$/i;
-const sectionMarker = /^##\s+/;
+const verificationEvidenceSectionMarker = /^(#{2,3})\s+Verification\s+Evidence\s*#*\s*$/i;
+const markdownHeadingMarker = /^(#{1,6})\s+(.+?)\s*#*\s*$/;
 
 export function evaluateFinalizationGates(input = {}) {
   const blockers = [];
@@ -353,9 +353,9 @@ function parseProcessEvidence(files = {}, currentHead = "") {
   const hasAnalystPass = /Analyst validation pass:\s*(pass|passed|yes|true)/i.test(analystMemory);
   const architectCompletedAt = readLatestValidationCompletedAt(architectMemory, "architect");
   const analystCompletedAt = readLatestValidationCompletedAt(analystMemory, "analyst");
-  const verificationSection = tasks.match(/## Verification Evidence([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
-  const feedbackSection = tasks.match(/## Implementation Agent Feedback([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
-  const knownIssueSection = tasks.match(/## Known Issues([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
+  const verificationSection = readMarkdownSection(tasks, "Verification Evidence") || "";
+  const feedbackSection = readMarkdownSection(tasks, "Implementation Agent Feedback") || "";
+  const knownIssueSection = readMarkdownSection(tasks, "Known Issues") || "";
   const effectiveContentHead = readLatestEffectiveContentHead(allMemory);
   const guardEvidenceText = readCurrentHeadGuardEvidenceText(tasks);
 
@@ -368,10 +368,10 @@ function parseProcessEvidence(files = {}, currentHead = "") {
       Boolean(analystCompletedAt) &&
       architectCompletedAt.getTime() < analystCompletedAt.getTime(),
     acceptanceEvidence: verificationSection.trim().length > 0 && !/Pending implementation/i.test(verificationSection),
-    currentProcessMemory: /## Decisions/i.test(tasks) &&
-      /## Dead Ends/i.test(tasks) &&
-      /## Known Issues/i.test(tasks) &&
-      /## Verification Evidence/i.test(tasks),
+    currentProcessMemory: hasMarkdownSection(tasks, "Decisions") &&
+      hasMarkdownSection(tasks, "Dead Ends") &&
+      hasMarkdownSection(tasks, "Known Issues") &&
+      hasMarkdownSection(tasks, "Verification Evidence"),
     feedbackDisposition: hasImplementationFeedbackDisposition(feedbackSection),
     effectiveContentHead,
     currentHeadMatchesEffectiveContentHead: Boolean(currentHead && effectiveContentHead) &&
@@ -383,6 +383,45 @@ function parseProcessEvidence(files = {}, currentHead = "") {
     acceptedKnownIssueDecisionPending: /accepted known issue|owner decision|human decision/i.test(knownIssueSection) &&
       !/none|not applicable|no known/i.test(knownIssueSection)
   };
+}
+
+function readMarkdownSection(markdown = "", headingText = "", allowedLevels = new Set([2, 3])) {
+  const lines = String(markdown).split(/\r?\n/);
+  let startIndex = -1;
+  let startLevel = 0;
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const heading = readMarkdownHeading(lines[index]);
+    if (!heading) continue;
+
+    if (startIndex >= 0 && heading.level <= startLevel) {
+      return lines.slice(startIndex + 1, index).join("\n");
+    }
+
+    if (startIndex < 0 && allowedLevels.has(heading.level) && isHeadingText(heading.text, headingText)) {
+      startIndex = index;
+      startLevel = heading.level;
+    }
+  }
+
+  return startIndex >= 0 ? lines.slice(startIndex + 1).join("\n") : null;
+}
+
+function hasMarkdownSection(markdown = "", headingText = "", allowedLevels = new Set([2, 3])) {
+  return readMarkdownSection(markdown, headingText, allowedLevels) !== null;
+}
+
+function readMarkdownHeading(line = "") {
+  const match = String(line).trim().match(markdownHeadingMarker);
+  if (!match) return null;
+  return {
+    level: match[1].length,
+    text: match[2].trim()
+  };
+}
+
+function isHeadingText(actual = "", expected = "") {
+  return actual.trim().toLowerCase() === expected.trim().toLowerCase();
 }
 
 export function hasImplementationFeedbackDisposition(feedbackSection = "") {
@@ -576,14 +615,16 @@ function sectionAtLine(fileContent = "", lineNumber = 0) {
     const line = lines[index].trim();
     const finalMatch = line.match(finalValidationSectionMarker);
     if (finalMatch) {
-      current = { type: "final-validation", role: finalMatch[1].toLowerCase() };
+      current = { type: "final-validation", role: finalMatch[1].toLowerCase(), level: 2 };
       continue;
     }
-    if (verificationEvidenceSectionMarker.test(line)) {
-      current = { type: "verification" };
+    const verificationMatch = line.match(verificationEvidenceSectionMarker);
+    if (verificationMatch) {
+      current = { type: "verification", level: verificationMatch[1].length };
       continue;
     }
-    if (sectionMarker.test(line)) {
+    const heading = readMarkdownHeading(line);
+    if (heading && current && heading.level <= current.level) {
       current = null;
     }
   }

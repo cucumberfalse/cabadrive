@@ -59,6 +59,7 @@
 - Current review-fix implementation decision: `verifyPostEffectiveHeadChanges()` now inspects the actual `git diff --unified=0` from effective content head to current head. Post-effective-head changes are evidence-only only when they are additions in final role validation notes, `tasks.md` verification evidence, or exact `Effective content head` evidence; removals, task-list edits, decisions, scope, architecture, and disposition edits inside otherwise allowed memory files block finalization.
 - Current review-fix implementation decision: native GitHub reviews fetched through GraphQL now request review connection `pageInfo`. If `reviews(last: 100)` is truncated, the helper fails closed with a blocking review-pagination finding instead of risking a missed older current-head `CHANGES_REQUESTED`.
 - Current P1 review-fix implementation decision: mutating finalization now reads process evidence from `state.pr.headSha` with `git show <head>:<feature-memory-file>` through `readProcessEvidenceFromHead()`. Local working-tree evidence can still be parsed by the local helper for tests/inspection, but the CLI merge and protected auto-merge path no longer trusts dirty, local-only, or different-checkout process memory.
+- Current P2 review-fix implementation decision: finalizer process-memory and post-effective-head verification evidence parsing now accepts both legacy `## Verification Evidence` and repository-template `### Verification Evidence` headings. Evidence scope remains bounded by the next heading at the same or higher level so peer template sections are not treated as verification evidence.
 
 ## Dead Ends
 
@@ -148,6 +149,12 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed after latest-main merge; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `git diff --check`: passed after latest-main merge; no whitespace errors reported.
 - `pnpm run preflight`: passed after latest-main merge and unreadable-source regression; feature-memory gate, repo baseline, content validation, 143 node tests, build, service-worker generation with 280 cached assets, and 30 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-DrCZBMfu.js` but completed successfully.
+- `node --check scripts/finalize-pr.mjs`: passed after template verification heading compatibility fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after template verification heading compatibility fix; 30 tests passed, including `### Verification Evidence` process-memory acceptance, post-effective-head guard/evidence additions under template verification passing, and peer `###` template sections still blocking as non-evidence.
+- `pnpm run check:repo`: passed after template verification heading compatibility fix; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after template verification heading compatibility fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `git diff --check`: passed after template verification heading compatibility fix; no whitespace errors reported.
+- `pnpm run preflight`: passed after template verification heading compatibility fix; feature-memory gate, repo baseline, content validation, 146 node tests, build, service-worker generation with 280 cached assets, and 30 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-DrCZBMfu.js` but completed successfully.
 
 ## Final Architect Validation Notes
 
