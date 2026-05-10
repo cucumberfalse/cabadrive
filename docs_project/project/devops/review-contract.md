@@ -17,6 +17,10 @@ Reviewers check role boundaries in addition to code behavior:
 - Repository-changing work must enter through Orchestrator by default, and
   Orchestrator must invoke Analyst first when no current `feature-request.md`
   exists.
+- New repository-changing work and each new task slice must have latest
+  `origin/main` startup/base evidence and a fresh isolated worktree/branch,
+  except when Orchestrator explicitly assigns the Analyst-created latest-main
+  handoff branch as the single implementation PR slice.
 - Orchestrator must not directly edit repository files. File changes must come
   from the role-appropriate subagent.
 - Analyst requirement clarification must be relayed through Orchestrator.
@@ -29,17 +33,38 @@ Reviewers check role boundaries in addition to code behavior:
 - Orchestrator assignment should warn subagents that parallel agents may be
   active and require preservation of existing dirty diffs, branches, commits,
   PRs, and process memory.
+- When a feature has multiple contributing slices, reviewers should verify that
+  the cycle PR set records each PR slice's purpose, branch, PR metadata, head
+  SHA, status, and inclusion in final validation.
 - Implementation PRs must stay inside the assigned feature memory and must not
   mix unrelated changes.
 - Blocking Implementation Agent feedback must be either resolved in scope or
   have Architect disposition before completion.
+- Final Architect validation must occur before final Analyst validation,
+  completion, or authorized merge mechanics. Reviewers should check that
+  Architect validation covers all PR slices, Architect-assigned tasks and
+  dispositions, architectural guidance, open task state, process memory, and
+  customer intent in spirit.
+- Final Analyst validation must occur after Architect passes and must check the
+  customer's desired outcome in spirit and letter. Analyst gap notes must be
+  Analyst-owned, return counts must stay within the limit of 5, and Analyst
+  feedback must receive Architect accept/task/ticket/dispose disposition before
+  follow-up development.
+- Architect gap returns must stay within the limit of 10 per work cycle. If the
+  limit is exceeded, reviewers should expect a recorded Architect breach and
+  Orchestrator request for Analyst to create a new feature request; if the
+  Analyst limit is exceeded, reviewers should expect a new feature request in a
+  separate latest-main branch/worktree.
 
 Reviewers should block merge when the PR text, docs, specs, or implementation
 permit unsafe completion. Blocking conditions include red, missing, queued, or
 running required checks; unresolved `P0`, `P1`, or `P2` review findings;
 unresolved conflicts; stale process memory; missing acceptance evidence; missing
 negative-scenario coverage; or unresolved Implementation Agent feedback without
-Architect disposition.
+Architect disposition. Missing final-validation evidence, incomplete cycle PR
+set coverage, Analyst feedback without Architect disposition, or exhausted
+return limits without new-feature-request escalation are also blocking process
+findings.
 
 Review findings that require code, docs, tests, content, specs, metadata, or
 process-memory edits are routed by Orchestrator to the proper role. Source
@@ -51,8 +76,10 @@ outdated, or still blocking before merge.
 No-finding summaries satisfy the review gate only for the current PR head and do
 not replace required checks, merge-conflict checks, feature-memory evidence,
 local guard evidence, Orchestrator-first routing evidence, Analyst
-clarification-relay evidence, parallel-work isolation evidence, or manual
-review of the SENAR done gate. Explicit user authorization for Orchestrator
+clarification-relay evidence, latest-main startup evidence, parallel-work
+isolation evidence, cycle PR-set evidence, final Architect validation, final
+Analyst validation, return-limit state, or manual review of the SENAR done gate.
+Explicit user authorization for Orchestrator
 merge removes only the need to ask again; it does not remove any merge-readiness
 gate. A human remains the default final merge owner when no such authorization
 exists.

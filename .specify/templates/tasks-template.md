@@ -4,7 +4,7 @@
 
 - [ ] T001 Confirm active feature folder, assigned isolated worktree, branch, and PR slice.
 - [ ] T002 Read `feature-request.md`, `spec.md`, and `plan.md` before editing.
-- [ ] T003 Record baseline checks before editing, including `git status --short --branch`.
+- [ ] T003 Record baseline checks before editing, including `git status --short --branch` and latest-main base evidence when assigned.
 - [ ] T004 Confirm Orchestrator provided any parallel-work warning and preserve existing dirty diffs, branches, commits, PRs, and process memory.
 
 ## Implementation
@@ -18,6 +18,10 @@
 - [ ] T008 Record verification evidence and update docs/tasks status.
 - [ ] T009 Confirm changed files are limited to assigned scope.
 - [ ] T010 Confirm every Implementation Agent feedback item has Architect disposition before completion.
+- [ ] T011 Update cycle PR set with this slice's purpose, branch, PR metadata, head SHA, status, and final-validation inclusion.
+- [ ] T012 Record final Architect validation evidence, return count, and gap dispositions when Orchestrator invokes it.
+- [ ] T013 Record final Analyst validation evidence, Analyst return count, and Architect disposition for any Analyst feedback when Orchestrator invokes it.
+- [ ] T014 Confirm merge-readiness gates remain satisfied after final validation: required checks, blocking review status, conflicts, acceptance evidence, process memory, feedback disposition, final guards, and human merge-owner rules.
 
 ## Process Memory
 
@@ -37,6 +41,19 @@
 
 - `[Command/check and result]`
 - `[Manual scope review and acceptance-criteria evidence]`
+
+### Cycle PR Set
+
+- `[Purpose, branch, PR metadata or number, head SHA, status, and whether included in final validation.]`
+
+### Final Validation Evidence
+
+- Architect validation: `[not yet invoked, pass details, or gap details]`
+- Architect return count: `[0-10]`
+- Analyst validation: `[not yet invoked, pass details, or Analyst-owned validation-note reference]`
+- Analyst return count: `[0-5]`
+- Analyst feedback Architect disposition: `[none, accepted task/ticket, explicit dispose, or pending blocker]`
+- Limit escalation: `[none, Architect breach -> Orchestrator asks Analyst for new feature request, or Analyst creates new feature request in separate latest-main branch/worktree]`
 
 ## Implementation Agent Feedback
 
