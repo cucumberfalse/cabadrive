@@ -249,11 +249,52 @@ test("strict mode rejects missing simple Russian rewrite", () => {
   assert(errors.includes("doc-1--001.simpleRu must be a non-empty string in strict mode."));
 });
 
+test("strict mode rejects Russian placeholder learner text", () => {
+  const badCorpus = corpus();
+  badCorpus.documents[0].chunks[0].fullTranslationRu = "Черновой подготовительный перевод будет заменен позже.";
+  badCorpus.documents[0].chunks[0].simpleRu = "Это заглушка для будущего простого текста.";
+
+  const errors = validate({ corpus: badCorpus });
+
+  assert(errors.includes("doc-1--001.fullTranslationRu must not be placeholder or draft text in strict mode."));
+  assert(errors.includes("doc-1--001.simpleRu must not be placeholder or draft text in strict mode."));
+});
+
+test("strict mode rejects English placeholder learner text", () => {
+  const badCorpus = corpus();
+  badCorpus.documents[0].chunks[0].fullTranslationRu = "TODO translate this source chunk.";
+  badCorpus.documents[0].chunks[0].simpleRu = "draft placeholder for the simple rewrite.";
+
+  const errors = validate({ corpus: badCorpus });
+
+  assert(errors.includes("doc-1--001.fullTranslationRu must not be placeholder or draft text in strict mode."));
+  assert(errors.includes("doc-1--001.simpleRu must not be placeholder or draft text in strict mode."));
+});
+
 test("strict mode rejects non-approved translation and simplification QA", () => {
   const errors = validate({ qa: qa({ status: "reviewed" }) });
 
   assert(errors.includes("doc-1--001.translationQa.status must be approved in strict mode."));
   assert(errors.includes("doc-1--001.simplificationQa.status must be approved in strict mode."));
+});
+
+test("strict mode rejects approved QA without checkedAt", () => {
+  const badQa = qa();
+  delete badQa.documents[0].chunks[0].translationQa.checkedAt;
+  delete badQa.documents[0].chunks[0].simplificationQa.checkedAt;
+
+  const errors = validate({ qa: badQa });
+
+  assert(
+    errors.includes(
+      "doc-1--001.translationQa.checkedAt must be YYYY-MM-DD when QA is reviewed, approved, or running strict mode."
+    )
+  );
+  assert(
+    errors.includes(
+      "doc-1--001.simplificationQa.checkedAt must be YYYY-MM-DD when QA is reviewed, approved, or running strict mode."
+    )
+  );
 });
 
 test("rejects learner Russian content paths under official-documents", () => {

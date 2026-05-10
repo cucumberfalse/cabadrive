@@ -35,7 +35,8 @@ const RUSSIAN_TEXT_PATH_KEYS = new Set([
   "learnerContentPath",
   "learnerRussianPath"
 ]);
-const PLACEHOLDER_PATTERN = /\b(?:todo|tbd|placeholder|draft placeholder|lorem ipsum|черновой подготовительный|заглушк)/iu;
+const PLACEHOLDER_PATTERN =
+  /(?:^|[^\p{L}\p{N}_])(?:todo|tbd|placeholder|draft(?:\s|-)+placeholder|lorem\s+ipsum|чернов\p{L}*\s+подготовительн\p{L}*|заглушк\p{L}*)(?=$|[^\p{L}\p{N}_])/iu;
 
 const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -150,7 +151,10 @@ function validateQaRecord(errors, record, label, { strictMode }) {
     errors.push(`${label}.status must be draft, reviewed, or approved.`);
   }
   requireString(errors, record.methodNotes, `${label}.methodNotes`);
-  if (isNonEmptyString(record.checkedAt) && !DATE_PATTERN.test(record.checkedAt)) {
+  const requiresCheckedAt = strictMode || ["reviewed", "approved"].includes(record.status);
+  if (requiresCheckedAt && !DATE_PATTERN.test(record.checkedAt || "")) {
+    errors.push(`${label}.checkedAt must be YYYY-MM-DD when QA is reviewed, approved, or running strict mode.`);
+  } else if (isNonEmptyString(record.checkedAt) && !DATE_PATTERN.test(record.checkedAt)) {
     errors.push(`${label}.checkedAt must be YYYY-MM-DD.`);
   }
   if (strictMode && record.status !== "approved") {

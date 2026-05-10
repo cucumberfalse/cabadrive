@@ -306,6 +306,10 @@
 - Strict/final mode now requires each coverage document to have at least one `expectedChunkIds` entry and at least one generated coverage chunk.
 - Strict/final mode now requires each learner corpus document to have at least one learner chunk.
 - Added focused tests proving strict mode rejects empty coverage chunk inventory, empty `expectedChunkIds`, and empty learner chunks.
+- Addressed two additional Codex AI Review P2 findings on PR #74 head `641fdfa`.
+- Replaced ASCII `\b` placeholder matching with Unicode-aware placeholder detection so strict/final mode catches Russian draft placeholders such as `Черновой подготовительный...` and `заглушка`, plus English placeholder forms such as `TODO` and `draft placeholder`.
+- Tightened strict/final QA validation so reviewed/approved QA records require `checkedAt`; strict mode now rejects approved release-ready QA records without a checked-at date.
+- Added focused tests for Russian placeholder detection, English placeholder detection, and approved QA records missing `checkedAt`.
 
 ### Implementation Agent Feedback
 
@@ -343,3 +347,9 @@
   - `pnpm run test` passed: 86 Node tests, 86 pass, 0 fail.
   - `git diff --check` passed with no output.
   - Orchestrator reran `pnpm run build` after the review fix and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- Slice B PR #74 head `641fdfa` P2 review follow-up verification on 2026-05-10:
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 17 tests, 17 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 89 Node tests, 89 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - Orchestrator reran `pnpm run build` after the P2 fixes and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
