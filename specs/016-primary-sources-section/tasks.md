@@ -84,7 +84,7 @@
 - [x] D0-003 Validate primary-source content after combining inline root data and referenced shards.
 - [x] D0-004 Add tests for shard loading, missing shard references, and strict QA/search projection failures after combining.
 - [x] D0-005 Document the sharding contract in `content/primary-sources/AGENTS.md` so D-H batches can edit one document's learner text, QA, and search projection independently.
-- [ ] T060 Create or update the shared terminology/glossary approach for consistent Russian legal/traffic terms.
+- [x] T060 Create or update the shared terminology/glossary approach for consistent Russian legal/traffic terms.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
 - [ ] T063 For each batch, preserve numbers, dates, legal obligations, exceptions, penalties, source names, and article references in both Russian layers.
@@ -243,6 +243,12 @@
 - Bundle size/performance must be measured once full Russian and Spanish chunk data are imported.
 
 ### Slice D0 Implementation Notes
+
+- Slice T060 terminology ran in assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-terminology` on branch `codex/016-primary-sources-terminology`.
+- Added `content/primary-sources/terminology.ru.md` as durable glossary and translation guidance for primary-source Russian full translations and simple Russian rewrites.
+- The guide covers recurring legal, traffic, vehicle, insurance, administrative, citation, date, number, penalty, exception, and Cabadrive disclaimer wording rules used by future D-H translation batches.
+- Updated `content/primary-sources/AGENTS.md` so implementation agents must consult the terminology guide before translating or simplifying primary-source chunks.
+- No document chunks, QA shard content, search projection entries, or `content/official-documents/**` files were edited in T060.
 
 - Slice D0 ran in assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-content-shards` on branch `codex/016-primary-sources-content-shards`.
 - Implemented stable root-file shard directory references for the learner corpus, QA metadata, and search projection:

@@ -49,6 +49,7 @@ Each shard path or shard directory must stay under `content/primary-sources/`, m
 
 ## Content Quality Rules
 
+- Use `content/primary-sources/terminology.ru.md` before translating or simplifying primary-source chunks.
 - Full Russian translation must preserve legal meaning, conditions, exceptions, numbers, dates, article references, and institutional names.
 - Simple Russian must use short, schoolchild-friendly wording while preserving obligations, exceptions, penalties, and scope limits.
 - Simple Russian may clarify vocabulary, but must not add legal advice unsupported by the official Spanish source.
