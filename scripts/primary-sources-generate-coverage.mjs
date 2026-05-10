@@ -165,7 +165,7 @@ function paragraphGroupStarts(lines, maxLines = 36) {
 
 function boundaryKind(line, strategy, index, lines) {
   if (isMarkdownHeading(line)) return "markdown-heading";
-  if (strategy === "pdf-page-groups" && isPageNumberLine(line, index, lines)) return "page";
+  if (strategy === "pdf-page-groups") return isPageNumberLine(line, index, lines) ? "page" : undefined;
   if (isHierarchyLine(line)) return "hierarchy";
   if (isArticleLine(line)) return "article";
   if (strategy === "dotted-code-sections" && isDottedSectionLine(line)) return "numbered-section";
@@ -231,8 +231,7 @@ function headingPathFor(state, boundary, title) {
   return [...new Set(path)].filter(Boolean);
 }
 
-function generateDocumentCoverage(entry) {
-  const text = readText(entry.localPath);
+export function generateDocumentCoverageFromText(entry, text) {
   const lines = text.split(/\r?\n/);
   const title = labelFromLine(lines.find(isMarkdownHeading) || entry.title);
   const decision = classifyDocument(entry.id, lines);
@@ -276,6 +275,10 @@ function generateDocumentCoverage(entry) {
     expectedChunkIds: chunks.map((chunk) => chunk.chunkId),
     chunks
   };
+}
+
+function generateDocumentCoverage(entry) {
+  return generateDocumentCoverageFromText(entry, readText(entry.localPath));
 }
 
 function generateCoverage() {

@@ -327,7 +327,7 @@
 - Implementation started only after re-reading repository memory, official archive governance, learner primary-source governance, feature memory, current manifest, and the Slice B primary-source validator.
 - Parallel-agent warning was part of the Slice C assignment. This slice preserved unrelated work and did not edit `content/official-documents/`.
 - Added `scripts/primary-sources-generate-coverage.mjs` to derive `content/primary-sources/primary-sources.coverage.json` from the official manifest and current archived Markdown.
-- Generated coverage now includes all 19 implementation-time manifest entries and 5,262 generated chunks.
+- Generated coverage now includes all 19 implementation-time manifest entries and 5,216 generated chunks.
 - Each generated coverage chunk has deterministic non-draft `chunkId`, `officialDocumentId`, positive `order`, `headingPath`, `sourceSpan`, `sourceTextSha256`, and `sourceFingerprint` in `sha256:<sourceTextSha256>` format.
 - Each coverage document has `expectedChunkIds` exactly matching its generated `chunks`, archive path, current archive SHA-256, and a `chunkingDecision` with strategy and rationale.
 - Retargeted the existing single draft learner placeholder from `ley-24449-transito-seguridad-vial--draft-001` to generated chunk `ley-24449-transito-seguridad-vial--ley-24449-001` so draft validation remains aligned with generated coverage. The Russian text and QA remain explicitly draft placeholders; no translation batch was performed.
@@ -338,7 +338,7 @@
   - `dotted-code-sections`: 665 chunks for CABA Ley 2148.
   - `annex-numbered-sections`: 59 chunks for Decreto 779 Anexo L.
   - `markdown-heading-sections`: 98 chunks across VTV, automotor/cédula, DNRPA, ANSV news, and chapa patente service pages.
-  - `pdf-page-groups`: 244 chunks for the GCBA four-wheel manual.
+  - `pdf-page-groups`: 198 chunks for the GCBA four-wheel manual.
   - `bounded-paragraph-groups`: 21 chunks for weakly structured GCBA siniestros, material de estudio, and Estrellas Amarillas pages.
 - Per-document chunk counts:
   - `ley-24449-transito-seguridad-vial`: 131.
@@ -355,7 +355,7 @@
   - `argentina-duplicado-chapa-patente-automotor`: 13.
   - `gcba-guia-practica-siniestros-viales`: 14.
   - `gcba-material-estudio-examen-teorico`: 4.
-  - `gcba-manual-vehiculo-4-ruedas-2023`: 244.
+  - `gcba-manual-vehiculo-4-ruedas-2023`: 198.
   - `gcba-mapa-estrellas-amarillas`: 3.
   - `ley-11179-codigo-penal`: 509.
   - `ley-26994-codigo-civil-comercial`: 3,259.
@@ -372,6 +372,7 @@
 - PR #77 P2 review follow-up tightened article-boundary detection so lowercase narrative references such as Ley 24.449 line 1234 `artículo 68, el cual...` no longer become generated article chunks. Official article heading forms such as `ARTICULO 1º — ...`, `ARTICULO 10. — ...`, `ARTICULO 40 bis) ...`, `ARTÍCULO 1°.- ...`, `Artículo 1°.- ...`, and `Art. 2. ...` remain accepted.
 - PR #77 P2 contiguous-coverage follow-up tightened coverage validation so complete-coverage modes require each coverage document's sorted source spans to cover the archived Markdown from line 1 through the current final line without gaps or overlaps when archive text is available.
 - PR #77 P2 colon-heading follow-up extended article-boundary detection to accept valid colon-suffixed article headings such as Ley 24.449 `ARTICULO 21 bis: Estructura` and `ARTICULO 46 bis: Ciclovías...` while still rejecting lowercase narrative cross-references.
+- PR #77 P2 PDF page-group follow-up changed `pdf-page-groups` boundary detection so hierarchy lines such as `CAPÍTULO` and `ANEXO` stay inside the current page chunk instead of becoming standalone boundary chunks. The GCBA manual now has 198 page-group chunks and no page-number-only or hierarchy-only generated chunks.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced again from `987e712` to `bdfc00d`, this worktree stashed the uncommitted colon-heading fixes, fetched the updated base, rebased Slice C onto `bdfc00d`, resolved validator/test/task conflicts by keeping exact `expectedChunkIds` validation from PR #74 plus contiguous coverage validation from PR #77, then reapplied the colon-heading stash cleanly.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to merge commit `d16ce87b5a108701e22dd563e41ebd72a642df18`, this worktree rebased Slice C onto the fresh base and resolved the only conflict in this process-memory file by keeping #68 intake/docs notes, #74 schema-validator notes, and #77 generated inventory notes.
 
@@ -519,3 +520,9 @@
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed after rebasing onto base `d16ce87`. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed after rebasing onto base `d16ce87`: 110 Node tests, 110 pass, 0 fail.
   - `pnpm run build` passed after rebasing onto base `d16ce87`: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed after the PR #77 PDF page-group fix. Output summary: 19 documents, 5,216 chunks; `gcba-manual-vehiculo-4-ruedas-2023` has 198 `pdf-page-groups` chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed after the PR #77 PDF page-group fix: 25 tests, 25 pass, 0 fail.
+  - `pnpm run validate:content` passed after the PR #77 PDF page-group fix. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed after the PR #77 PDF page-group fix. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed after the PR #77 PDF page-group fix: 111 Node tests, 111 pass, 0 fail.
+  - `pnpm run build` passed after the PR #77 PDF page-group fix: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { isArticleLine } from "../scripts/primary-sources-generate-coverage.mjs";
+import { generateDocumentCoverageFromText, isArticleLine } from "../scripts/primary-sources-generate-coverage.mjs";
 
 test("article boundary detection accepts official article heading formats", () => {
   assert.equal(isArticleLine("ARTICULO 1º — AMBITO DE LA APLICACION."), true);
@@ -22,4 +22,27 @@ test("article boundary detection ignores lowercase narrative cross-references", 
     false
   );
   assert.equal(isArticleLine("art. 33 de la Ley N° 26.363 B.O. 30/4/2008."), false);
+});
+
+test("pdf page groups keep hierarchy headings inside the current page chunk", () => {
+  const coverage = generateDocumentCoverageFromText(
+    {
+      id: "gcba-manual-vehiculo-4-ruedas-2023",
+      title: "Manual",
+      localPath: "content/official-documents/documents/gcba-manual-vehiculo-4-ruedas-2023.md"
+    },
+    ["# Manual", "", "1", "CAPÍTULO UNO", "Contenido uno", "", "2", "ANEXO I", "Contenido dos"].join("\n")
+  );
+
+  const pageOne = coverage.chunks.find((chunk) => chunk.officialLabel === "1");
+  const pageTwo = coverage.chunks.find((chunk) => chunk.officialLabel === "2");
+
+  assert.deepEqual(pageOne.sourceSpan, { startLine: 3, endLine: 6 });
+  assert.deepEqual(pageTwo.sourceSpan, { startLine: 7, endLine: 9 });
+  assert(pageOne.headingPath.includes("Página 1: CAPÍTULO UNO"));
+  assert(pageTwo.headingPath.includes("Página 2: ANEXO I"));
+  assert.equal(
+    coverage.chunks.some((chunk) => chunk.officialLabel === "CAPÍTULO UNO" || chunk.officialLabel === "ANEXO I"),
+    false
+  );
 });
