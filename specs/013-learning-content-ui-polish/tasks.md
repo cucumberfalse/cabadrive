@@ -228,6 +228,15 @@
 - Latest-main update 2026-05-10: `pnpm run test:e2e` passed 14 Playwright tests across `chromium` and `mobile`.
 - Latest-main update 2026-05-10: `pnpm run preflight` passed: feature-memory gate, repository baseline check, content validation, Node tests, build, and e2e. Note: the feature-memory gate reported `specs/012-orchestrator-final-validation-loop/{spec,plan,tasks}.md` because that mainline feature memory is now present on `origin/main`; the 013 feature memory remains complete and current.
 - Latest-main update 2026-05-10 Docker blocker: `docker ps` failed with `Cannot connect to the Docker daemon at unix:///Users/chap/.docker/run/docker.sock. Is the docker daemon running?`; per instruction, no `make build`, `make up`, or `make down` was attempted.
+- Latest-main update after #66 2026-05-10: `git diff --check` passed after merge commit `d5e149fbfce0aa4941369f60c288e9a9d6a30efe`.
+- Latest-main update after #66 2026-05-10: `node scripts/check-feature-memory.mjs origin/main HEAD` passed via `specs/013-learning-content-ui-polish/{spec,plan,tasks}.md`.
+- Latest-main update after #66 2026-05-10: `pnpm run validate:content` passed: difficulty labels validated for 460 questions and 38 topics; content validation passed for 460 category B fallback questions and 276 local image references.
+- Latest-main update after #66 2026-05-10: `node --test tests/content-topic-guide.test.mjs` passed 22 tests.
+- Latest-main update after #66 2026-05-10: `node --test tests/content-validation.test.mjs` passed 4 tests.
+- Latest-main update after #66 2026-05-10: `pnpm run test` passed 84 Node tests.
+- Latest-main update after #66 2026-05-10: `pnpm run build` passed; Vite built production assets and generated a service worker with 280 cached assets. Vite emitted the existing large chunk warning for `index-CvO3trji.js`.
+- Latest-main update after #66 2026-05-10: `pnpm run test:e2e` passed 18 Playwright tests across `chromium` and `mobile`, including #66/#18 learning timer behavior and #69 visible `Учить` ticket ID behavior in the same learning-card flow.
+- Latest-main update after #66 2026-05-10: `pnpm run preflight` passed: feature-memory worktree gate, repository baseline check, content validation, 84 Node tests, build, and 18 e2e tests.
 
 ### Implementation Agent Feedback
 
