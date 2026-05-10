@@ -129,18 +129,18 @@
 
 ## Future Slice L: Final Coverage And Review Pass
 
-- [ ] T089 Prove all 38 topic IDs were reviewed.
-- [ ] T090 Prove root `titleRu` and `disclaimer` were reviewed.
-- [ ] T091 Prove all in-scope rendered fields were reviewed or explicitly left unchanged for source-sensitive reasons.
-- [ ] T092 Prove 460 unique question IDs remain represented.
-- [ ] T093 Prove 639 rendered ticket placements remain represented.
-- [ ] T094 Prove 1,831 answer explanations remain present and every `answerId` / `verdict` is preserved.
-- [ ] T095 Prove 225 trap notes remain present unless a later Architect task explicitly scopes otherwise.
-- [ ] T096 Prove 4 source-conflict notes remain present unless a later Architect task explicitly scopes otherwise.
-- [ ] T097 Prove no translation shard, explanation shard, image metadata, validation evidence, validator, test, product-code, package, durable-doc, coverage-manifest, source-trace-manifest, or official-document files were touched without later Architect scope.
-- [ ] T098 Prove no new source claims were introduced without source trace or Architect disposition.
-- [ ] T099 Run final validation commands and record evidence.
-- [ ] T100 Record final known issues and Implementation Agent feedback for Architect disposition.
+- [x] T089 Prove all 38 topic IDs were reviewed.
+- [x] T090 Prove root `titleRu` and `disclaimer` were reviewed.
+- [x] T091 Prove all in-scope rendered fields were reviewed or explicitly left unchanged for source-sensitive reasons.
+- [x] T092 Prove 460 unique question IDs remain represented.
+- [x] T093 Prove 639 rendered ticket placements remain represented.
+- [x] T094 Prove 1,831 answer explanations remain present and every `answerId` / `verdict` is preserved.
+- [x] T095 Prove 225 trap notes remain present unless a later Architect task explicitly scopes otherwise.
+- [x] T096 Prove 4 source-conflict notes remain present unless a later Architect task explicitly scopes otherwise.
+- [x] T097 Prove no translation shard, explanation shard, image metadata, validation evidence, validator, test, product-code, package, durable-doc, coverage-manifest, source-trace-manifest, or official-document files were touched without later Architect scope.
+- [x] T098 Prove no new source claims were introduced without source trace or Architect disposition.
+- [x] T099 Run final validation commands and record evidence.
+- [x] T100 Record final known issues and Implementation Agent feedback for Architect disposition.
 
 ## Per-Slice Process Memory Template
 
@@ -965,13 +965,57 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - Changed-path guard: pass after this evidence update; `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, and the forbidden/non-scope path diff produced no output.
 - Known issues: none introduced. Slice L remains pending by design.
 - Implementation Agent feedback: none requiring Architect disposition. Slice K found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs outside this feature memory, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
+- Slice L worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-final` on `codex/015-study-guide-language-review-final`, stacked on fixed `origin/codex/015-study-guide-language-review-crash-legal` head `823d4254d66a07d173ab1e8765331812542657b2`.
+- Parent refresh evidence: Orchestrator reported PR #92 follow-up head `823d425`; local Slice L cleanup was stashed, the branch fast-forwarded from obsolete `856456695507f676e9b6efb2165ae774a82a5cef` to `823d4254d66a07d173ab1e8765331812542657b2`, then the stash reapplied cleanly. The fixed head already removed rendered `inmovilized vehicle` and `solo vías interurbanas` leftovers.
+- Topics reviewed: final ledger check covered all 38 topic IDs and confirmed every row in the Topic Coverage Ledger is marked reviewed. Root `titleRu` and `disclaimer` were reviewed in Slice B and rechecked in Slice L; the disclaimer still says the material does not replace official GCBA texts and does not make the base a complete official set.
+- Field counts reviewed:
+  - root title/disclaimer: 2
+  - titles: 38
+  - summaries: 38
+  - learning paragraphs: 269
+  - practical reasoning paragraphs: 109
+  - term translations: 731
+  - source-conflict notes: 4
+  - answer explanations: 1,831
+  - trap notes: 225
+- Field counts changed:
+  - answer explanations: 2 (`alcohol-drugs-and-impairment` `b-fallback-044-a2`; `lane-and-channelization-markings` `b-fallback-179-a3`)
+  - `difficultyMeta.sourceFingerprint`: 2 (`alcohol-drugs-and-impairment`; `lane-and-channelization-markings`)
+  - claims: 0
+- Ticket placements before/after: global 639 / 639 versus fixed Slice K base `823d425`.
+- Unique question IDs before/after: global 460 / 460 versus fixed Slice K base `823d425`.
+- Answer explanations before/after: global 1,831 / 1,831 versus fixed Slice K base `823d425`; answer tuple hash `dc3b204ec7f7853159cd0e7624bab66272b48643a310d25d7ddb2ed8f946737a` matched for `(topicId, questionId, answerId, verdict)`, proving every `answerId` and `verdict` was preserved.
+- Source-conflict notes before/after: global 4 / 4 versus fixed Slice K base `823d425`.
+- Trap notes before/after: global 225 / 225 versus fixed Slice K base `823d425`.
+- Duplicated question IDs touched: `b-fallback-044` and `b-fallback-179`. Both remain intentionally topic-specific in their existing topics; Slice L changed only learner wording inside one answer explanation for each ID and did not align or move duplicate placements.
+- Duplicate handling decision: final inventory found 179 duplicated question IDs, each appearing in exactly two topic placements, matching the prior feature evidence. No placement, answer ID, verdict, image path, or topic assignment changed in Slice L.
+- Source-sensitive sentences left unchanged: all 170 `claims[].textRu` entries were preserved exactly versus fixed Slice K base `823d425`; all 170 `sourceTraceId` values were present in `content/guide/topic-study-guide.source-trace.json`. Non-rendered English-heavy `claims[].textRu` metadata remains out of rendered learner scope by Architect decision.
+- Rendered text fixes made in Slice L:
+  - `alcohol-drugs-and-impairment` `b-fallback-044-a2`: replaced learner-facing English `positive test` with Russian `фактически положительном тесте` while preserving the existing refusal/source boundary.
+  - `lane-and-channelization-markings` `b-fallback-179-a3`: replaced unanchored `gradual` with `постепенным (gradual)` while preserving the Spanish exam cue.
+- Difficulty metadata refresh evidence: all topics kept `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only the two affected `difficultyMeta.sourceFingerprint` values changed, and both matched `difficultyTopicFingerprint(topic)`:
+  - `alcohol-drugs-and-impairment`: `70cc98fda873b8791c824b44e5906c052940a0e3e5260310f990ad7e81b97118` -> `acfb6edfff32e6f3b33a8f9f5241904e00d8ab8dcec8d69beb7d4fa76733a214`
+  - `lane-and-channelization-markings`: `8d5614d9dc5b4c4461a8d920e5580168051b9a42185a55b310f30f2a2bf0c1da` -> `e0a0af9fc95c16a15f22316bc095a8729c4decb6c424f9ac3d493ac1a4584f0f`
+- Rendered-field scan evidence: final Node scan covered 3,247 rendered fields and found 0 hits for the curated process/English leftovers, including `ticket-specific`, `source-backed`, `canonical answer`, `taxonomy-mixed`, `image-specific`, `correct answer`, `no entry`, `route`, `ahead`, `official source`, `parking lot`, `emergency-lane`, `private-vehicle`, `positive test`, `operative indication`, `wording`, `inmovilized vehicle`, `solo vías interurbanas`, and `vehicle destined to that purpose`; it also found 0 unanchored `gradual` occurrences after preserving valid Spanish phrase `de forma gradual`.
+- Term/translation duplicate guard: pass; 0 `spanishTerms[].translationRu` values duplicate `termEs` verbatim.
+- PR #63 / forbidden-path guard: Slice L write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch `content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`, coverage/source-trace manifests, validators/tests/docs/package files, product UI, scripts, package files, docs outside this feature memory, official-document files, or other worktrees.
+- Validation evidence:
+  - JSON parse, topic ledger, structural counts, answer tuple preservation, claim/source-trace preservation, duplicate-topic inventory, fingerprint verification, duplicate-term guard, rendered-field scan, root title/disclaimer boundary check, and known out-of-scope check: pass; base head was `823d4254d66a07d173ab1e8765331812542657b2`.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass.
+  - Changed-path guard: pass; changed paths stayed limited to `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`.
+  - Package/lockfile guard: pass; no `package.json`, `pnpm-lock.yaml`, or `pnpm-workspace.yaml` changes.
+- Known issues: `fatigue-distraction-and-attention` still has no `slug`; this is the existing Architect-recorded metadata oddity and remains out of scope. Non-rendered `claims[].textRu` metadata still contains English-heavy source/workflow wording; it is preserved exactly and remains out of rendered learner scope unless Architect creates a metadata cleanup task.
+- Implementation Agent feedback: final rendered learner-facing coverage is complete with no requested scope expansion. Suggested Architect disposition after this feature: consider a separate metadata cleanup for non-rendered `claims[].textRu` wording and a separate metadata task for the missing `fatigue-distraction-and-attention` `slug`; neither should block this rendered language review.
 
 ## Known Issues
 
 - `fatigue-distraction-and-attention` has no `slug`; known metadata oddity, out of scope unless separately planned.
-- The current guide contains learner-facing process/meta words such as `fallback`, `ticket-specific`, `source-backed`, and `canonical answer`. Rewrites should replace these with plain Russian learner-facing wording where they appear in rendered fields.
+- Non-rendered `claims[].textRu` metadata still contains English-heavy source/workflow wording. It is not rendered in the current `Материалы` UI and was preserved by this rendered-language review; Architect should scope a separate metadata cleanup if needed.
 - Several feature 006 source-boundary decisions intentionally keep details ticket-specific or stale-ticket-specific. Language changes must preserve those boundaries.
 
 ## Implementation Agent Feedback
 
 - Slice B feedback is recorded in Process Memory; no scope expansion or Architect disposition is requested from this slice.
+- Slice L feedback: final rendered learner-facing coverage is complete. A future Architect-owned metadata task may clean non-rendered `claims[].textRu`, and a separate metadata task may decide whether to add the missing `fatigue-distraction-and-attention` `slug`.
