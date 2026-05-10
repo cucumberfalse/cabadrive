@@ -885,6 +885,16 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `git diff --check`: pass after this evidence update.
   - Changed-path guard: pass after this evidence update; `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, and the forbidden/non-scope path diff produced no output.
+- PR #90 advisory clarity follow-up addressed: in `bicycles-and-micromobility`, added Russian learner anchors for DMP `casco (шлем)` and parking source wording `red de estacionamiento (сеть парковок)` / `espacios de estacionamiento (места парковки)`. Meaning stayed limited to the existing DMP equipment/parking/source-currentness wording; no answer IDs, verdicts, placements, source claims, slug/status, difficulty, or non-fingerprint difficulty metadata changed.
+- PR #90 advisory fingerprint refresh evidence: only `bicycles-and-micromobility` `difficultyMeta.sourceFingerprint` changed, from `8543bc798474bff3d62725fbc8b539f4318e04e511d3729df3ae5c27135fef1c` to `5aeabb8bcc2321ca9ea580ba17656af1f3632f285cbf243961acba074f87deec`, matching `difficultyTopicFingerprint(topic)` after the two learner-facing anchor edits.
+- PR #90 advisory validation evidence:
+  - JSON parse, structural count, and affected-topic preservation guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 170 claims, 38 `difficulty`, and 38 `difficultyMeta`. Compared with the prior Slice J head, the guide diff was limited to `bicycles-and-micromobility` `learningMaterialRu[4]`, `learningMaterialRu[7]`, and that topic's `difficultyMeta.sourceFingerprint`.
+  - Affected topic fingerprint guard: pass; `bicycles-and-micromobility` computed fingerprint and stored fingerprint both equal `5aeabb8bcc2321ca9ea580ba17656af1f3632f285cbf243961acba074f87deec`.
+  - Targeted Slice J rendered-field clarity scan: pass; scanned 227 rendered fields with 0 hits for bare `casco`, ambiguous `red/espacios de estacionamiento`, curated English/process leftovers, or exact duplicated `spanishTerms[].translationRu` values.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check`: pass after this evidence update.
+  - Changed-path guard: pass after this evidence update; `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, and the forbidden/non-scope path diff produced no output.
 - Known issues: none introduced. Slice K and Slice L remain pending by design.
 - Implementation Agent feedback: none requiring Architect disposition. Slice J found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs outside this feature memory, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
 

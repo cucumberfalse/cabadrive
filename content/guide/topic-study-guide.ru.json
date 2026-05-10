@@ -19162,7 +19162,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "8543bc798474bff3d62725fbc8b539f4318e04e511d3729df3ae5c27135fef1c",
+        "sourceFingerprint": "5aeabb8bcc2321ca9ea580ba17656af1f3632f285cbf243961acba074f87deec",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -19186,10 +19186,10 @@
         "Bicicleta в Ley 2148 - это вид ciclorrodado. В билетах ciclorrodado может быть обычной bicicleta или вариантом con pedaleo asistido eléctricamente. Если вопрос добавляет asistencia eléctrica, сразу ищите 25 km/h и условия помощи мотора.",
         "Bicisenda и ciclovía различаются местом. Bicisenda связана с vereda/acera или espacios verdes. Ciclovía находится на calzada и отделена физически или demarcación horizontal. Ciclocarril тоже на calzada, но там preferencia, а не separación exclusiva; здесь он нужен как фон к правилу движения, а не как отдельный ответ билета.",
         "Если ciclista mayor de 12 años едет там, где есть bicisenda/ciclovía/ciclocarril, экзаменационная логика отправляет его туда. Если такой инфраструктуры нет, он едет ближе к правому краю или избегает центра calzada. На autopistas, vías rápidas и перечисленных крупных arterias ciclorrodados запрещены.",
-        "DMP/dispositivos de movilidad personal в Ley 2148 во многом идут рядом с правилами ciclorrodados: важны разрешенные arterias, инфраструктура, casco, парковка и общий лимит 25 km/h. В этом блоке DMP оставлены там, где помогают отличить ciclovía, bicisenda и ciclocarril.",
+        "DMP/dispositivos de movilidad personal в Ley 2148 во многом идут рядом с правилами ciclorrodados: важны разрешенные arterias, инфраструктура, casco (шлем), парковка и общий лимит 25 km/h. В этом блоке DMP оставлены там, где помогают отличить ciclovía, bicisenda и ciclocarril.",
         "Приоритет велосипедиста не абсолютный. В `b-fallback-186` правильный ответ возникает потому, что automotor gira a derecha para ingresar a otra arteria и пересекает путь ciclista. Вариант “siempre tiene prioridad” слишком широкий.",
         "Для безопасности велосипедиста билет проверяет внимание, видимость одежды и устойчивость. Auriculares/dispositivos electrónicos, ropa oscura y suelta и плохо закрепленная carga опасны: они ухудшают контроль, обзор и предсказуемость.",
-        "Парковка и цветовая разметка дают отдельные ловушки. Cordón anaranjado - это estacionamiento exclusivo de ciclorodados y motovehículos. Estacionamiento de bicicleta на парковке из `b-fallback-228` держим как формулировку старого билета; официальный источник поддерживает только общую рамку про red/espacios de estacionamiento для ciclorodados."
+        "Парковка и цветовая разметка дают отдельные ловушки. Cordón anaranjado - это estacionamiento exclusivo de ciclorodados y motovehículos. Estacionamiento de bicicleta на парковке из `b-fallback-228` держим как формулировку старого билета; официальный источник поддерживает только общую рамку про red de estacionamiento (сеть парковок) и espacios de estacionamiento (места парковки) для ciclorodados."
       ],
       "practicalReasoningRu": [
         "Велосипедная инфраструктура снижает число конфликтов: водитель заранее видит, где ждать ciclistas/DMP, а ciclista не смешивается с самым быстрым потоком.",
