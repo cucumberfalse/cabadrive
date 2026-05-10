@@ -311,3 +311,11 @@
   - `pnpm run test` passed: 88 Node tests, 88 pass, 0 fail.
   - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
   - `git diff --check` passed with no output.
+- Main refresh pass on 2026-05-10 for image metadata support:
+  - Fetched and merged `origin/main` at `78e0176e361eeea583dd797296bfa994b3f1f695` into `codex/016-primary-sources-section-intake` while preserving PR #68 docs/spec/process additions and open final-head verification tasks T130, T131, T135, and T136.
+  - Resolved `docs_project/project/content-sources.md` by keeping current main ticket learning-support/image-metadata lifecycle guidance and PR #68's 19-entry official archive/currentness/exact-text primary-source documentation.
+  - Resolved `docs_project/project/feature-inventory.md` by keeping current main image metadata coverage notes and PR #68's planned `Источники` reader inventory entry plus official-primary-source boundary note.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 112 Node tests, 112 pass, 0 fail.
+  - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
+  - `git diff --check` passed with no output.

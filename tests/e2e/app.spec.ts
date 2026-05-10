@@ -276,6 +276,10 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
     answers: { id: string; officialTextEs: string }[];
     correctAnswerId: string;
   };
+  const translation = translationByQuestionId.get(dualQuestionId) as {
+    questionTextRu: string;
+    answerTranslations: Record<string, string>;
+  };
 
   async function expectFullDualTopicTicket(ticketBlock: Locator, guideTicket: {
     answerExplanations: { explanationRu: string }[];
@@ -286,8 +290,9 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
     const ticketAnswers = ticketBlock.locator(".materials-answers");
     for (const answer of canonicalQuestion.answers) {
       await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
+      await expect(ticketAnswers.getByText(translation.answerTranslations[answer.id], { exact: true })).toBeVisible();
     }
-    await expect(ticketBlock.getByText("Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.")).toBeVisible();
+    await expect(ticketBlock.getByText(translation.questionTextRu)).toBeVisible();
     await expect(ticketBlock.getByText("Статус: неофициальная B-практика")).toHaveCount(0);
     await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
     for (const explanation of guideTicket.answerExplanations) {
