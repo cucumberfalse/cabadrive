@@ -49,11 +49,11 @@
 
 ## Future Slice C: Parking And Maneuver Topics
 
-- [ ] T036 Review and rewrite `parking-clearances-and-corners`.
-- [ ] T037 Review and rewrite `parking-prohibitions-and-signed-zones`.
-- [ ] T038 Review and rewrite `stopping-vs-parking-maneuvers`.
-- [ ] T039 Preserve stale or ticket-specific parking-rule formulas from feature 006 source-boundary decisions.
-- [ ] T040 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T036 Review and rewrite `parking-clearances-and-corners`.
+- [x] T037 Review and rewrite `parking-prohibitions-and-signed-zones`.
+- [x] T038 Review and rewrite `stopping-vs-parking-maneuvers`.
+- [x] T039 Preserve stale or ticket-specific parking-rule formulas from feature 006 source-boundary decisions.
+- [x] T040 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice D: Vehicle, Lights, And Occupant Topics
 
@@ -179,8 +179,8 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 
 | Topic ID | Planned Slice | Review Status |
 | --- | --- | --- |
-| `parking-clearances-and-corners` | C | Pending |
-| `parking-prohibitions-and-signed-zones` | C | Pending |
+| `parking-clearances-and-corners` | C | Reviewed in Slice C |
+| `parking-prohibitions-and-signed-zones` | C | Reviewed in Slice C |
 | `driver-hand-signals` | D | Pending |
 | `vehicle-lights-and-signaling` | D | Pending |
 | `vehicle-condition-maintenance-loads` | D | Pending |
@@ -202,7 +202,7 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `documents-licenses-and-insurance` | B | Reviewed in Slice B |
 | `authorities-controls-and-sanctions` | K | Pending |
 | `safety-principles-and-risk` | F | Pending |
-| `stopping-vs-parking-maneuvers` | C | Pending |
+| `stopping-vs-parking-maneuvers` | C | Reviewed in Slice C |
 | `center-lines-and-crossing-rules` | I | Pending |
 | `lane-and-channelization-markings` | I | Pending |
 | `lane-choice-and-lane-changes` | I | Pending |
