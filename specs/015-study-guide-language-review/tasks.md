@@ -57,13 +57,13 @@
 
 ## Future Slice D: Vehicle, Lights, And Occupant Topics
 
-- [ ] T041 Review and rewrite `driver-hand-signals`.
-- [ ] T042 Review and rewrite `vehicle-lights-and-signaling`.
-- [ ] T043 Review and rewrite `vehicle-condition-maintenance-loads`.
-- [ ] T044 Review and rewrite `mirrors-blind-spots-and-visibility`.
-- [ ] T045 Review and rewrite `occupant-protection`.
-- [ ] T046 Preserve ticket-specific image and illustrated-signal boundaries from feature 006.
-- [ ] T047 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T041 Review and rewrite `driver-hand-signals`.
+- [x] T042 Review and rewrite `vehicle-lights-and-signaling`.
+- [x] T043 Review and rewrite `vehicle-condition-maintenance-loads`.
+- [x] T044 Review and rewrite `mirrors-blind-spots-and-visibility`.
+- [x] T045 Review and rewrite `occupant-protection`.
+- [x] T046 Preserve ticket-specific image and illustrated-signal boundaries from feature 006.
+- [x] T047 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice E: Pedestrian And School-Zone Topics
 
@@ -181,9 +181,9 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | --- | --- | --- |
 | `parking-clearances-and-corners` | C | Reviewed in Slice C |
 | `parking-prohibitions-and-signed-zones` | C | Reviewed in Slice C |
-| `driver-hand-signals` | D | Pending |
-| `vehicle-lights-and-signaling` | D | Pending |
-| `vehicle-condition-maintenance-loads` | D | Pending |
+| `driver-hand-signals` | D | Reviewed in Slice D |
+| `vehicle-lights-and-signaling` | D | Reviewed in Slice D |
+| `vehicle-condition-maintenance-loads` | D | Reviewed in Slice D |
 | `pedestrian-and-school-road-markings` | E | Pending |
 | `pedestrian-school-zones-and-markings` | E | Pending |
 | `speed-limits` | F | Pending |
@@ -210,8 +210,8 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `sustainable-mobility-and-vulnerable-users` | J | Pending |
 | `vulnerable-users-and-shared-spaces` | J | Pending |
 | `bicycles-and-micromobility` | J | Pending |
-| `mirrors-blind-spots-and-visibility` | D | Pending |
-| `occupant-protection` | D | Pending |
+| `mirrors-blind-spots-and-visibility` | D | Reviewed in Slice D |
+| `occupant-protection` | D | Reviewed in Slice D |
 | `emergency-response-and-crash-scene` | K | Pending |
 | `crash-liability-and-legal-duties` | K | Pending |
 | `pedestrian-crossings-and-priority` | E | Pending |
@@ -380,6 +380,64 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - Package/lockfile guard after dependency setup: pass; `git diff --name-only -- package.json pnpm-lock.yaml pnpm-workspace.yaml` produced no output.
 - Known issues: none introduced. The old `acera izquierda` / `ambas aceras` formulas remain explicitly old-ticket/image-recognition context and were not generalized as current CABA law. `b-fallback-342`, `b-fallback-460`, `b-fallback-320`, `b-fallback-356`, and `b-fallback-416` remain mixed/ticket-specific in meaning, with no placement change.
 - Implementation Agent feedback: none requiring Architect disposition. Slice C found no reason to edit claims metadata, coverage/source-trace manifests, product code, tests, docs, translations/explanations, generated indexes, package files, or difficulty-labeling files.
+- Slice D worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-vehicle` on `codex/015-study-guide-language-review-vehicle`, stacked on `origin/codex/015-study-guide-language-review-parking` / PR #75.
+- Topics reviewed: `driver-hand-signals`, `vehicle-lights-and-signaling`, `vehicle-condition-maintenance-loads`, `mirrors-blind-spots-and-visibility`, and `occupant-protection`.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice D did not touch root fields.
+  - titles: 5
+  - summaries: 5
+  - learning paragraphs: 33
+  - practical reasoning paragraphs: 14
+  - term translations: 101
+  - source-conflict notes: 0 in Slice D topics
+  - answer explanations: 191
+  - trap notes: 27
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 1
+  - summaries: 5
+  - learning paragraphs: 28
+  - practical reasoning paragraphs: 12
+  - term translations: 23
+  - source-conflict notes: 0
+  - answer explanations: 50
+  - trap notes: 14
+  - `difficultyMeta.sourceFingerprint`: 5
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice D topics 68 / 68.
+- Unique question IDs before/after: global 460 / 460; Slice D topics 66 / 66.
+- Answer explanations before/after: global 1,831 / 1,831; Slice D topics 191 / 191.
+- Source-conflict notes before/after: global 4 / 4; Slice D topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-002`, `b-fallback-015`, `b-fallback-035`, `b-fallback-039`, `b-fallback-097`, `b-fallback-108`, `b-fallback-175`, `b-fallback-183`, `b-fallback-217`, `b-fallback-231`, `b-fallback-232`, `b-fallback-263`, `b-fallback-269`, `b-fallback-276`, `b-fallback-283`, `b-fallback-292`, `b-fallback-293`, `b-fallback-317`, `b-fallback-360`, `b-fallback-375`, `b-fallback-378`, `b-fallback-388`, `b-fallback-390`, `b-fallback-405`, `b-fallback-413`, `b-fallback-428`, and `b-fallback-442`.
+- Duplicate handling decision: reviewed duplicated placements only inside the five assigned Slice D topics. Matching placements outside Slice D were deliberately left for their future slices. Where duplicates appear inside Slice D, wording stays intentionally topic-specific: for example, `b-fallback-002` keeps a hand-signal framing in `driver-hand-signals` and a light/balizas framing in `vehicle-lights-and-signaling`; `b-fallback-263` keeps both gesture and emergency-light boundaries; parking duplicates such as `b-fallback-015`, `b-fallback-039`, `b-fallback-097`, `b-fallback-232`, `b-fallback-378`, `b-fallback-413`, and `b-fallback-442` were not generalized beyond light/vehicle-topic wording.
+- Source-sensitive sentences left unchanged: all 18 `claims[].textRu` entries in Slice D topics were preserved as non-rendered source-trace metadata. Numeric, image-specific, and procedural anchors were preserved, including SRI age/height `menor de 12 años` / `1,50 m`, `3 puntos`, `mayores de 12 años`, `altura igual o superior a 1,50 m`, `2-5 minutos`, `28 lbs` / `30 lbs` as traps, `Fríos`, `grupos 0, 0+ y 1`, `huesos de la cadera`, `número de emergencia de la Autopista`, `permanecer dentro del vehículo`, `luces bajas`, `rompeniebla`, `balizas portátiles`, `manual del usuario`, and the picture-bound answers for hand signals, mirror setup, oil/lubrication, pregnancy belt placement, lower belt strap, SRI placement, and headrest height.
+- CABA/RF notes added or clarified: Slice D added short practical CABA/RF framing where it helps an RF-trained driver avoid assumption errors: hand-signal logic is close to familiar basic driving practice but CABA tickets expect Spanish anchors; lights/balizas use the familiar visibility/warning idea but CABA exam does not treat balizas as permission to stop or drive in poor weather; vehicle condition clarified the familiar RF baseline for control/visibility while warning that a "tow with a rope" habit does not answer CABA `remolque/acarreo`; mirrors clarified that good mirrors still do not remove blind spots; occupant protection kept basics like all occupants belted and child restraint thresholds explicit.
+- Before/after samples:
+  - `driver-hand-signals`: before "Формы жестов на картинках в этом fallback-наборе..."; after "Рисунки жестов в этих старых билетах учите как ответы к конкретным картинкам."
+  - `vehicle-lights-and-signaling`: before "показать emergency" and "ticket-specific: exact glare ... private-vehicle emergency combo"; after "показать emergencia" and "узкими ответами конкретных билетов: ослепление ... комбинация balizas + bocina + pañuelo".
+  - `vehicle-condition-maintenance-loads`: before "vehicle-condition" / "loose objects" / "projectile"; after "состояние автомобиля" / "незакрепленные предметы" / "вещи не летят по салону".
+  - `mirrors-blind-spots-and-visibility`: before "before moving" / "direct vision"; after "до начала движения" / "прямой обзор".
+  - `occupant-protection`: before "correct answer" / "image-specific" / "emergency call"; after "правильный ответ" / "вывод только по этой иллюстрации" / "звонок в помощь".
+- PR #63 / #75 guard: Slice D write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch PR #63 / feature 009 forbidden paths (`content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`, related validators/tests/docs/package files). It also did not touch product UI, tests, scripts, package files, coverage/source-trace manifests, or docs outside this feature memory.
+- Difficulty metadata refresh evidence: all five Slice D topics kept their `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only `difficultyMeta.sourceFingerprint` changed, and each new value matched `difficultyTopicFingerprint(topic)` after the learner-facing text rewrite:
+  - `driver-hand-signals`: `97fde5f15d549bf2eabd3c090bba3c97ff89ada1dfc38dc0ac3a3a30e8dcd8c2` -> `3727f1c94bfa396c90d3be0b6b99f5a88ba0714f334664b8d17f7a8462501cb2`
+  - `vehicle-lights-and-signaling`: `f058e16e434ad09516e54dd8b39941c4f841178e68200eb219e72c905e582084` -> `ab6d169a24d197b16721ef7fefda552b37cef13ad9214ef70aca09cb4a484568`
+  - `vehicle-condition-maintenance-loads`: `dbcbcce6ca8f348e6a366aa179ce9117891f2c95bcb173da6f9b6500e3b62cce` -> `58b5ab85d6230babfd26befb4b53e24e1833037eaac01ca120f813593806980c`
+  - `mirrors-blind-spots-and-visibility`: `f966577d48ab0a24d4a8ee67fc0efb29986e36387f62d87451a3e857c15768d0` -> `b858e35ba04591cefe3c27123cd63af0823bd3a8cecdab1e65dc9824829e68f1`
+  - `occupant-protection`: `8d18c1d842f29107f894e09831f0d078389cc1d52b683257ab12006bc8476a5d` -> `0c96c0b4a7b3766c37d5ff945948d7083405cf327e0c282276c212083d4efd8e`
+- Validation evidence before final diff/path guards:
+  - JSON parse and structural count guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 38 `difficulty`, and 38 `difficultyMeta`.
+  - Targeted learner-facing process/English scan over Slice D rendered fields: pass; no matches for `fallback`, `ticket-specific`, `canonical`, `source-backed`, `fixed-distance`, `claim`, `prompt`, `taxonomy`, `image-specific`, `ticket image`, `correct answer`, `Emergency`, `emergency`, `loose objects`, `projectile`, `preventive driving`, `work zones`, `temporary risks`, `source slice`, `assigned tickets`, `exact`, `private-vehicle`, `combo`, `glare`, `while driving`, `immobilization`, `direct vision`, `mirrors`, `before moving`, `phone`, `police`, `evidence`, `vehicles`, `oil`, `fuel`, `tire check`, `rear-seat wording`, or `vehicle/maintenance`.
+  - Duplicate-term guard for Slice D `spanishTerms[].translationRu`: pass; 0 values duplicate `termEs` verbatim.
+  - Difficulty guard: pass; for all five Slice D topics, fingerprint changed, computed fingerprint matched, non-fingerprint metadata was preserved, difficulty was preserved, and claims were preserved.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass, no output.
+  - Changed-path guard versus PR #63 forbidden paths and non-scope paths: pass; `git diff --name-only -- content/translations content/explanations content/image-metadata content/validation scripts tests src package.json pnpm-lock.yaml pnpm-workspace.yaml docs_project content/guide/topic-study-guide.coverage.json content/guide/topic-study-guide.source-trace.json content/official-documents` produced no output.
+  - `git diff --name-only`: pass; only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`.
+  - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-vehicle...origin/codex/015-study-guide-language-review-parking` with exactly the two expected modified files before commit.
+- Known issues: none introduced. Slice D intentionally kept picture-bound and old-ticket wording narrow, especially for illustrated hand signals, mirror images, oil/lubrication images, pregnancy/SRI/belt/headrest images, `balizas` in old parking/light duplicates, and the old `mascotas` answer. Future slices still need to remove learner-facing process words in their own topics.
+- Implementation Agent feedback: none requiring Architect disposition. Slice D found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, or validation artifacts.
 
 ## Known Issues
 

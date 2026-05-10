@@ -838,7 +838,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "97fde5f15d549bf2eabd3c090bba3c97ff89ada1dfc38dc0ac3a3a30e8dcd8c2",
+        "sourceFingerprint": "3727f1c94bfa396c90d3be0b6b99f5a88ba0714f334664b8d17f7a8462501cb2",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -855,17 +855,17 @@
           ]
         }
       },
-      "titleRu": "Жесты водителя и ручные сигналы",
-      "summaryRu": "Короткий блок про ручные жесты водителя, аварийные предупреждения и ловушку seña/señal.",
+      "titleRu": "Жесты водителя",
+      "summaryRu": "Ручные сигналы, аварийка и ловушка seña/señal: где в билете жест водителя, а где дорожный знак.",
       "learningMaterialRu": [
-        "Seña в этих билетах - это жест или ручной сигнал водителя, а не señal vial как дорожный знак. Если вопрос показывает руку, сначала распознайте сам жест: giro a la derecha, giro a la izquierda или detenerse.",
-        "Архивные официальные источники поддерживают общий принцип: непредсказуемую maniobra нужно предупреждать заранее и во время выполнения соответствующими luces, а при необходимости усиливать предупреждение señales manuales. При egreso hacia garaje/playa/estación de servicio CABA отдельно говорит о balizas и, если нужно, ручных сигналах.",
-        "Для аварийной ситуации отличайте ручной жест от balizas. Balizas/intermitentes нужны, чтобы показать detención, imprevisto, emergencia или próxima maniobra riesgosa; жест может сопровождать предупреждение, но не заменяет обязанность действовать безопасно.",
-        "Формы жестов на картинках в этом fallback-наборе объясняются строго как ответы конкретных билетов. В текущем архиве нет отдельного официального каталога этих изображений, поэтому не превращаем рисунки в более широкий неподтвержденный справочник."
+        "Seña в этих билетах - жест рукой, а не señal vial, то есть дорожный знак. Если на картинке рука водителя, сначала назовите жест: giro a la derecha, giro a la izquierda или detenerse.",
+        "Логика CABA близка к привычной водительской базе: непредсказуемый маневр надо заранее показать. Основной сигнал дают luces, а señales manuales могут усилить предупреждение, особенно при въезде в garaje, playa или estación de servicio.",
+        "В аварийной ситуации не путайте жест рукой и balizas. Аварийка нужна, чтобы показать detención, imprevisto, emergencia или próxima maniobra riesgosa; жест может помочь, но не заменяет безопасное поведение.",
+        "Рисунки жестов в этих старых билетах учите как ответы к конкретным картинкам. В текущем архиве нет отдельного официального каталога таких изображений, поэтому не делаем из них широкий справочник."
       ],
       "practicalReasoningRu": [
-        "Ручной сигнал полезен как дополнительное предупреждение: другие участники быстрее понимают, что водитель собирается повернуть, остановиться или обозначить нестандартную ситуацию.",
-        "На экзамене это снижает угадывание по картинке: слово seña ведет к жесту, а слова balizas, emergencia, desperfecto mecánico и cinturón de seguridad ведут к безопасному аварийному поведению."
+        "Ручной сигнал - дополнительный способ сказать другим: я поворачиваю, останавливаюсь или предупреждаю о нестандартной ситуации.",
+        "На экзамене это помогает не угадывать по картинке. Seña ведет к жесту, а balizas, emergencia, desperfecto mecánico и cinturón de seguridad ведут к аварийному поведению."
       ],
       "spanishTerms": [
         {
@@ -967,12 +967,12 @@
             {
               "answerId": "b-fallback-002-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: в этом билете такие señas допустимы как сопровождение balizas и/или в emergency context. То есть жест не главный сигнал вместо аварийки, а дополнительное предупреждение."
+              "explanationRu": "Правильно: в этом билете такие señas допустимы вместе с balizas и/или при emergencia. Жест усиливает предупреждение, но не заменяет аварийку и безопасные действия."
             },
             {
               "answerId": "b-fallback-002-a2",
               "verdict": "incorrect",
-              "explanationRu": "Nunca слишком категорично. Законная логика допускает предупреждать нестандартные маневры и при необходимости усиливать предупреждение señales manuales."
+              "explanationRu": "Nunca слишком категорично. В аварийном контексте билет допускает señales manuales как дополнительное предупреждение."
             },
             {
               "answerId": "b-fallback-002-a3",
@@ -987,17 +987,17 @@
             {
               "answerId": "b-fallback-263-a1",
               "verdict": "incorrect",
-              "explanationRu": "Вариант с balizas portátiles и выходом за defensa может звучать безопасно, но в этом билете правильный шаблон другой: не выходить в поток на отмеченных carriles, а остаться пристегнутым, включить balizas и вызвать помощь."
+              "explanationRu": "Balizas portátiles и выход за defensa могут звучать безопасно, но в этом билете правильный шаблон другой: не выходить в поток на carriles marcados, а остаться пристегнутым, включить balizas и вызвать помощь."
             },
             {
               "answerId": "b-fallback-263-a2",
               "verdict": "incorrect",
-              "explanationRu": "Descender para hacer señas al resto de los vehículos опасно и не является ожидаемым ответом. Ручные сигналы не должны превращать водителя в человека на проезжей части рядом с быстрым потоком."
+              "explanationRu": "Descender para hacer señas al resto de los vehículos опасно. Ручные сигналы не должны превращать водителя в человека на проезжей части рядом с быстрым потоком."
             },
             {
               "answerId": "b-fallback-263-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: permanecer dentro del vehículo con el cinturón de seguridad abrochado, encender las balizas и llamar al número de emergencia de la Autopista. Для этого билета главный смысл - предупредить светом и вызвать помощь, не выходя подавать жесты."
+              "explanationRu": "Правильно: permanecer dentro del vehículo con el cinturón de seguridad abrochado, encender las balizas и llamar al número de emergencia de la Autopista. Смысл билета - предупредить светом и вызвать помощь, не выходя подавать жесты."
             }
           ]
         },
@@ -1063,7 +1063,7 @@
         },
         {
           "id": "trap-hand-signal-does-not-replace-balizas",
-          "textRu": "Если билет говорит balizas, emergencia, desperfecto mecánico или vehículo inmovilizado, не выбирайте вариант, где водитель выходит подавать жесты вместо безопасного предупреждения и вызова помощи.",
+          "textRu": "Если билет говорит balizas, emergencia, desperfecto mecánico или vehículo inmovilizado, не выбирайте вариант, где водитель выходит подавать жесты вместо аварийки и вызова помощи.",
           "sourceQuestionIds": [
             "b-fallback-002",
             "b-fallback-263"
@@ -1105,7 +1105,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "f058e16e434ad09516e54dd8b39941c4f841178e68200eb219e72c905e582084",
+        "sourceFingerprint": "ab6d169a24d197b16721ef7fefda552b37cef13ad9214ef70aca09cb4a484568",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -1123,20 +1123,20 @@
         }
       },
       "titleRu": "Свет, поворотники и аварийная сигнализация",
-      "summaryRu": "Экзаменационный блок про luces bajas/altas, rompeniebla, balizas, luz de giro и световое предупреждение маневра, остановки или аварийной ситуации.",
+      "summaryRu": "Световые билеты: luces bajas/altas, rompeniebla, balizas, luz de giro и предупреждение маневра, остановки или аварийной ситуации.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах про свет сначала определяйте задачу: ехать при плохой видимости, предупредить маневр, обозначить остановку, показать emergency или распознать знак/картинку.",
-        "Общая официальная логика проста: фары делают автомобиль видимым и освещают путь, а balizas/intermitentes предупреждают о detenido, egreso, próxima detención/estacionamiento, maniobra riesgosa или imprevisto. Поэтому balizas не являются разрешением на double fila или остановку в запрещенном месте.",
-        "Для ingreso a garaje/estacionamiento в CABA правильный сигнал - luces intermitentes de emergencia/balizas. Luz de giro hacia el lado или hacia el lado opuesto в таком билете не подходит: экзамен проверяет именно аварийные огни как предупреждение необычного замедления и въезда.",
-        "При niebla или visibilidad disminuida не выбирайте luces altas: они ухудшают восприятие в тумане и не являются ожидаемым ответом. В этих билетах нужны luces bajas, а rompeniebla/rompenieblas добавляются только когда речь идет об их собственном назначении и они есть у автомобиля.",
-        "Balizas во время движения под дождем/туманом - ловушка. Они нужны не для обычного движения в плохую погоду, а для предупреждения остановки, аварии, рискованного маневра или нестандартной ситуации.",
-        "Аварийные билеты читаются буквально. Если автомобиль inmovilizado на autopista/carriles marcados, ожидаемый ответ - permanecer dentro del vehículo con cinturón, encender balizas и llamar al número de emergencia de la Autopista; не выходить подавать жесты в поток.",
-        "Некоторые детали остаются строго ticket-specific: exact glare от неправильной altura de las luces bajas, private-vehicle emergency combo balizas + bocina + pañuelo, и картинки с correct/incorrect lights. Не расширяйте их в общий справочник без отдельного источника."
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про свет сначала спросите себя: надо ехать при плохой видимости, предупредить маневр, обозначить остановку, показать emergencia или распознать знак/картинку?",
+        "Базовая логика знакома и российскому водителю: фары помогают видеть и быть видимым, а balizas/intermitentes предупреждают о detenido, egreso, próxima detención/estacionamiento, maniobra riesgosa или imprevisto. Поэтому аварийка не дает права на double fila или остановку там, где это запрещено.",
+        "Для ingreso a garaje/estacionamiento в CABA правильный сигнал в билете - luces intermitentes de emergencia/balizas. Luz de giro hacia el lado или hacia el lado opuesto не подходит: экзамен ждет аварийные огни как предупреждение о необычном замедлении и въезде.",
+        "При niebla или visibilidad disminuida не выбирайте luces altas: дальний свет в тумане мешает видеть. В этих билетах нужны luces bajas, а rompeniebla/rompenieblas добавляются только когда вопрос прямо про их назначение и они есть у автомобиля.",
+        "Balizas во время обычного движения под дождем или в тумане - ловушка. Они нужны для остановки, аварии, рискованного маневра или другой нестандартной ситуации, а не как режим езды в плохую погоду.",
+        "Аварийные билеты читайте буквально. Если автомобиль inmovilizado на autopista/carriles marcados, ожидаемый ответ - permanecer dentro del vehículo con cinturón, encender balizas и llamar al número de emergencia de la Autopista; не выходить подавать жесты в поток.",
+        "Некоторые детали остаются узкими ответами конкретных билетов: ослепление от неправильной altura de las luces bajas, комбинация balizas + bocina + pañuelo для частного автомобиля и картинки с luces correctas/incorrectas. Не расширяйте их в общий справочник без отдельного источника."
       ],
       "practicalReasoningRu": [
-        "Световые сигналы нужны для предсказуемости: другие участники должны понять не только где автомобиль, но и что он собирается делать дальше.",
-        "Balizas выделяют нестандартную ситуацию. Если использовать их как универсальное оправдание остановки или езды в плохую погоду, сигнал теряет смысл и создает новые конфликты.",
-        "В тумане важна видимость контура и отсутствие ослепления. Поэтому экзаменационная логика отделяет bajas/rompeniebla от altas и от аварийки."
+        "Световые сигналы делают движение предсказуемым: другим нужно понять не только где автомобиль, но и что он собирается делать дальше.",
+        "Balizas выделяют нестандартную ситуацию. Если включать их как оправдание остановки или как обычный режим езды в плохую погоду, сигнал теряет смысл.",
+        "В тумане важен контур автомобиля и отсутствие ослепления. Поэтому экзамен отделяет bajas/rompeniebla от altas и от аварийки."
       ],
       "spanishTerms": [
         {
@@ -1228,7 +1228,7 @@
         {
           "id": "term-doble-fila-lights",
           "termEs": "doble fila",
-          "translationRu": "остановка/стояние вторым рядом",
+          "translationRu": "остановка или стояние во втором ряду",
           "sourceQuestionIds": [
             "b-fallback-015",
             "b-fallback-039"
@@ -1246,7 +1246,7 @@
         {
           "id": "term-garaje-lights",
           "termEs": "garaje",
-          "translationRu": "гараж/въезд",
+          "translationRu": "гараж или въезд на парковку",
           "sourceQuestionIds": [
             "b-fallback-232",
             "b-fallback-378",
@@ -1256,7 +1256,7 @@
         {
           "id": "term-altura-luces-bajas",
           "termEs": "altura de las luces bajas",
-          "translationRu": "высота/регулировка ближнего света",
+          "translationRu": "высота или регулировка ближнего света",
           "sourceQuestionIds": [
             "b-fallback-166"
           ]
@@ -1296,7 +1296,7 @@
         {
           "id": "term-balizas-portatiles",
           "termEs": "balizas portátiles",
-          "translationRu": "переносные аварийные знаки/огни",
+          "translationRu": "переносные аварийные знаки или огни",
           "sourceQuestionIds": [
             "b-fallback-263",
             "b-fallback-388"
@@ -1414,12 +1414,12 @@
             {
               "answerId": "b-fallback-108-a1",
               "verdict": "correct",
-              "explanationRu": "Верно: после siniestro vial на avenida надо señalizar la zona, чтобы другие водители заранее увидели опасность и не возникли новые incidentes."
+              "explanationRu": "Верно: после siniestro vial на avenida надо señalizar la zona, чтобы другие водители заранее увидели опасность и не попали в новый incidente."
             },
             {
               "answerId": "b-fallback-108-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso неверно: оставлять место siniestro без предупреждения опасно, потому что следующие участники движения могут поздно заметить препятствие."
+              "explanationRu": "Falso неверно: оставлять место siniestro без предупреждения опасно, потому что следующие участники движения могут заметить препятствие слишком поздно."
             }
           ]
         },
@@ -1429,7 +1429,7 @@
             {
               "answerId": "b-fallback-166-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по билету: неправильная altura de las luces bajas в таких условиях может producir encandilamiento; вариант связывает эффект с cambios bruscos en la intensidad de la luz."
+              "explanationRu": "Правильно по билету: неправильная altura de las luces bajas может producir encandilamiento. Вариант связывает ослепление с cambios bruscos en la intensidad de la luz."
             },
             {
               "answerId": "b-fallback-166-a2",
@@ -1450,17 +1450,17 @@
             {
               "answerId": "b-fallback-183-a1",
               "verdict": "incorrect",
-              "explanationRu": "Desperfecto мог бы объяснять balizas, но combo balizas encendidas + bocina repetida + pañuelo в этом билете означает не простую поломку."
+              "explanationRu": "Desperfecto мог бы объяснить balizas, но сочетание balizas encendidas + bocina repetida + pañuelo в этом билете означает не простую поломку."
             },
             {
               "answerId": "b-fallback-183-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: частный автомобиль показывает emergency, transportando a una persona en grave estado de salud. Это ticket-specific комбинация аварийки, звукового сигнала и платка."
+              "explanationRu": "Правильно: частный автомобиль показывает emergencia, transportando a una persona en grave estado de salud. Это узкая комбинация билета: аварийка, звуковой сигнал и платок."
             },
             {
               "answerId": "b-fallback-183-a3",
               "verdict": "incorrect",
-              "explanationRu": "Ambas неверно: билет требует выбрать именно emergency médica, а не одновременно “поломка” и emergency."
+              "explanationRu": "Ambas неверно: билет требует выбрать именно emergencia médica, а не одновременно поломку и медицинскую аварийную ситуацию."
             }
           ]
         },
@@ -1475,7 +1475,7 @@
             {
               "answerId": "b-fallback-190-a2",
               "verdict": "incorrect",
-              "explanationRu": "Continuar con la misma velocidad опасно и против смысла предупреждающего знака: снижаться надо заранее, не только когда поезд уже виден."
+              "explanationRu": "Continuar con la misma velocidad опасно и против смысла предупреждающего знака: снижаться надо заранее, а не только когда поезд уже виден."
             },
             {
               "answerId": "b-fallback-190-a3",
@@ -1516,7 +1516,7 @@
             {
               "answerId": "b-fallback-263-a2",
               "verdict": "incorrect",
-              "explanationRu": "Descender para hacer señas опасно: водитель оказывается рядом с быстрым потоком и заменяет световое предупреждение ручными сигналами."
+              "explanationRu": "Descender para hacer señas опасно: водитель оказывается рядом с быстрым потоком и пытается заменить световое предупреждение ручными сигналами."
             },
             {
               "answerId": "b-fallback-263-a3",
@@ -1558,7 +1558,7 @@
             {
               "answerId": "b-fallback-292-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: если пришлось detener en la banquina, нужны luces reglamentarias y balizas, чтобы автомобиль был виден как остановившийся."
+              "explanationRu": "Правильно: если пришлось detener en la banquina, нужны luces reglamentarias y balizas, чтобы автомобиль был виден именно как остановившийся."
             },
             {
               "answerId": "b-fallback-292-a3",
@@ -1584,7 +1584,7 @@
             {
               "answerId": "b-fallback-317-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: estas luces должны использоваться en vías afectadas por niebla, en cualquier horario. Это точная weather-формула билета."
+              "explanationRu": "Правильно: estas luces должны использоваться en vías afectadas por niebla, en cualquier horario. Это точная формула билета про туман."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b190.jpg"
@@ -1595,7 +1595,7 @@
             {
               "answerId": "b-fallback-349-a1",
               "verdict": "incorrect",
-              "explanationRu": "Verdadero неверно: на изображении circled vehicle в ночной/низкой видимости не выглядит как автомобиль, который circula utilizando las luces correctas."
+              "explanationRu": "Verdadero неверно: на изображении автомобиль в красном круге ночью или при низкой видимости не выглядит как машина, которая circula utilizando las luces correctas."
             },
             {
               "answerId": "b-fallback-349-a2",
@@ -1621,7 +1621,7 @@
             {
               "answerId": "b-fallback-360-a3",
               "verdict": "incorrect",
-              "explanationRu": "Запретить cualquier tipo de luz adicional слишком строго. Билет прямо содержит разрешенные исключения: rompeniebla и elevated brake lights."
+              "explanationRu": "Запретить cualquier tipo de luz adicional слишком строго. Билет прямо содержит разрешенные исключения: rompeniebla и luces de freno elevadas."
             }
           ]
         },
@@ -1647,7 +1647,7 @@
             {
               "answerId": "b-fallback-388-a1",
               "verdict": "incorrect",
-              "explanationRu": "Luces bajas плюс balizas portátiles delante y detrás не совпадает с ожидаемым ответом для этого tipo de calle: главное - balizas и размещение со стороны приближающегося потока."
+              "explanationRu": "Luces bajas плюс balizas portátiles delante y detrás не совпадает с ожидаемым ответом для этой улицы: главное - balizas и размещение со стороны приближающегося потока."
             },
             {
               "answerId": "b-fallback-388-a2",
@@ -1689,7 +1689,7 @@
             {
               "answerId": "b-fallback-413-a1",
               "verdict": "incorrect",
-              "explanationRu": "На изображении включенные balizas не делают detención correctа: знак/сектор запрещает саму остановку."
+              "explanationRu": "На изображении включенные balizas не делают detención correcta: знак/сектор запрещает саму остановку."
             },
             {
               "answerId": "b-fallback-413-a2",
@@ -1699,7 +1699,7 @@
             {
               "answerId": "b-fallback-413-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: detención incorrectа, потому что tanto la detención como el estacionamiento en este sector se encuentra prohibido."
+              "explanationRu": "Правильно: detención incorrecta, потому что tanto la detención como el estacionamiento en este sector se encuentra prohibido."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b151.jpg"
@@ -1710,7 +1710,7 @@
             {
               "answerId": "b-fallback-428-a1",
               "verdict": "incorrect",
-              "explanationRu": "Verdadero неверно: при движении под такими condiciones climáticas balizas использовать не надо, если нет остановки, emergency или рискованного маневра."
+              "explanationRu": "Verdadero неверно: при движении под такими condiciones climáticas balizas использовать не надо, если нет остановки, emergencia или рискованного маневра."
             },
             {
               "answerId": "b-fallback-428-a2",
@@ -1750,7 +1750,7 @@
         },
         {
           "id": "trap-garaje-balizas-not-giro",
-          "textRu": "Для ingreso a garaje/estacionamiento ищите balizas/intermitentes. Luz de giro hacia el lado или opposite side - ловушка.",
+          "textRu": "Для ingreso a garaje/estacionamiento ищите balizas/intermitentes. Luz de giro hacia el lado или hacia el lado opuesto - ловушка.",
           "sourceQuestionIds": [
             "b-fallback-232",
             "b-fallback-378",
@@ -1759,7 +1759,7 @@
         },
         {
           "id": "trap-fog-no-high-beams-no-balizas",
-          "textRu": "В niebla выбирайте bajas/rompeniebla по формулировке билета, а не altas и не balizas while driving.",
+          "textRu": "В niebla выбирайте bajas/rompeniebla по формулировке билета, а не altas и не balizas во время обычного движения.",
           "sourceQuestionIds": [
             "b-fallback-283",
             "b-fallback-317",
@@ -1769,7 +1769,7 @@
         },
         {
           "id": "trap-emergency-ticket-specific",
-          "textRu": "Emergency-билеты буквальны: pañuelo+bocina+balizas означает emergency médica, а autopista immobilization - остаться внутри, пристегнуться, включить balizas и звонить в Autopista emergency.",
+          "textRu": "Аварийные билеты буквальны: pañuelo + bocina + balizas означает emergencia médica, а автомобиль inmovilizado на autopista - остаться внутри, пристегнуться, включить balizas и звонить в службу помощи Autopista.",
           "sourceQuestionIds": [
             "b-fallback-183",
             "b-fallback-263"
@@ -1777,7 +1777,7 @@
         },
         {
           "id": "trap-image-specific-light-judgment",
-          "textRu": "Картинки с luces correctas отвечайте по изображению, не по общему слову luz: circled vehicle, garaje и запрещенный сектор проверяют разные детали.",
+          "textRu": "Картинки с luces correctas отвечайте по изображению, не по одному слову luz: автомобиль в круге, garaje и запрещенный сектор проверяют разные детали.",
           "sourceQuestionIds": [
             "b-fallback-349",
             "b-fallback-378",
@@ -1846,7 +1846,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "dbcbcce6ca8f348e6a366aa179ce9117891f2c95bcb173da6f9b6500e3b62cce",
+        "sourceFingerprint": "efac5f9a145c7601e58c26037069cf07eec2cb51ac8b42c2fbc319d36eb73142",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -1864,27 +1864,27 @@
         }
       },
       "titleRu": "Состояние автомобиля, обслуживание и груз",
-      "summaryRu": "Экзаменационный блок про техническое состояние, шины, масло, топливо, стекла, груз, буксировку, предметы в салоне и несколько смешанных билетов на границе с авариями, вниманием и административными вопросами.",
+      "summaryRu": "Техническое состояние, шины, масло, топливо, стекла, груз, буксировка и предметы в салоне: все, что влияет на контроль и видимость.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах про vehicle-condition сначала отделяйте три вещи: исправность автомобиля, безопасное размещение груза/предметов и поведение при остановке, поломке или заправке.",
-        "Официальная логика минимальных систем проста: frenos, direccion, suspension, neumáticos, luces, cristales и retrovisores должны помогать водителю сохранять control del vehículo и видеть дорогу. Поэтому плохие амортизаторы, закрытая видимость, плохие стекла или неправильная carga становятся риском безопасности, а не мелкой формальностью.",
-        "Carga/equipaje не должны мешать visibility, управлению, аэродинамике, luces или выходить за разрешенные пределы. Внутри habitáculo objetos sueltos тоже опасны: при резком маневре или siniestro они продолжают лететь по инерции.",
-        "Про aceite и varilla отвечайте буквально по картинке: varilla metálica проверяет nivel del aceite, а двигатель смазывается aceite. Не превращайте эти билеты с картинками в широкий курс механики.",
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про состояние автомобиля сначала разделите три темы: исправность машины, безопасное размещение груза/предметов и действия при остановке, поломке или заправке.",
+        "База знакома и по РФ: frenos, dirección, suspensión, neumáticos, luces, cristales и retrovisores должны помогать держать control del vehículo и видеть дорогу. Плохие амортизаторы, закрытый обзор, грязные/неподходящие стекла или неправильная carga - это риск, а не мелкая формальность.",
+        "Carga/equipaje не должны мешать visibility, управлению, аэродинамике, luces или выходить за разрешенные пределы. Внутри habitáculo objetos sueltos тоже опасны: при резком маневре или siniestro они летят по инерции.",
+        "Про aceite и varilla отвечайте буквально по картинке: varilla metálica проверяет nivel del aceite, а двигатель смазывается aceite. Это не курс механики, а распознавание простого экзаменационного образа.",
         "Про neumáticos в этих билетах нет универсального числа. Presión de los neumáticos берется из manual del usuario конкретного автомобиля, а проверка давления делается на neumáticos fríos.",
-        "При заправке ловушка в том, что телефон не единственный риск. Ley 2148 прямо запрещает cargar combustible con luces encendidas y motor en marcha; похожий билет спрашивает ту же пару motor + luces.",
-        "Если автомобиль inmovilizado или averiado мешает движению, цель - быстро и заметно снизить риск: balizas/intermitentes, balizas portátiles, звонок в помощь и освобождение проезда. Remolque/acarreo обычным автомобилем не выбирайте: в CABA буксировка аварийного или неисправного автомобиля отнесена к специально предназначенным для этого машинам.",
-        "Несколько assigned tickets остаются строго ticket-specific: fine payment/DGAI, пассажир с phone, police preserving crash scene, transitory work signs, oil/lubrication image choices и maintenance benefits. Они включены здесь, потому что помогают закрыть vehicle/maintenance cluster, но не расширяются в новые общие правила за пределами архивной поддержки."
+        "На заправке ловушка в том, что телефон не единственный риск. Ley 2148 прямо запрещает cargar combustible con luces encendidas y motor en marcha; похожий билет спрашивает ту же пару motor + luces.",
+        "Если автомобиль inmovilizado или averiado мешает движению, цель - быстро и заметно снизить риск: balizas/intermitentes, balizas portátiles, звонок в помощь и освобождение проезда. Российская привычка “дотянуть на тросе” здесь не помогает: в CABA для remolque/acarreo ожидается vehículo destinado a ese fin.",
+        "Несколько билетов здесь остаются узкими: оплата штрафа через DGAI, пассажир с телефоном, полиция на месте ДТП, временные знаки работ, картинки про масло/смазку и польза mantenimiento. Они закрывают тему техсостояния и обслуживания, но не становятся новыми общими правилами без отдельного источника."
       ],
       "practicalReasoningRu": [
-        "Автомобиль - часть системы безопасности. Если подвеска, шины, стекла, свет или груз мешают контролю, водитель теряет время и пространство для реакции.",
-        "Закрепленный груз и пустой от loose objects салон уменьшают вторичные травмы: при торможении предметы не становятся projectile.",
-        "Заправка, тоннель и буксировка опасны не сами по себе, а потому что ошибка быстро создает пожарный риск, препятствие или плохо видимое препятствие для других."
+        "Автомобиль - часть системы безопасности. Если подвеска, шины, стекла, свет или груз мешают контролю, водитель теряет время и место для реакции.",
+        "Закрепленный груз и салон без незакрепленных предметов уменьшают вторичные травмы: при торможении вещи не летят по салону.",
+        "Заправка, тоннель и буксировка опасны потому, что ошибка быстро создает пожарный риск, препятствие или плохо видимую помеху для других."
       ],
       "spanishTerms": [
         {
           "id": "term-conduccion-preventiva-vehicle-condition",
           "termEs": "conducción preventiva",
-          "translationRu": "предупредительное/превентивное вождение",
+          "translationRu": "осторожный стиль вождения с расчетом наперед",
           "sourceQuestionIds": [
             "b-fallback-035"
           ]
@@ -1892,7 +1892,7 @@
         {
           "id": "term-combustible-aceite-inflado",
           "termEs": "combustible, aceite e inflado de neumáticos",
-          "translationRu": "топливо, масло и давление/накачка шин",
+          "translationRu": "топливо, масло и давление в шинах",
           "sourceQuestionIds": [
             "b-fallback-035"
           ]
@@ -1900,7 +1900,7 @@
         {
           "id": "term-transportar-cualquier-elemento",
           "termEs": "transportar cualquier elemento",
-          "translationRu": "перевозить любой предмет/груз",
+          "translationRu": "перевозить любой предмет или груз",
           "sourceQuestionIds": [
             "b-fallback-040"
           ]
@@ -1908,7 +1908,7 @@
         {
           "id": "term-condiciones-aerodinamicas",
           "termEs": "condiciones aerodinámicas",
-          "translationRu": "аэродинамические условия автомобиля",
+          "translationRu": "аэродинамика автомобиля",
           "sourceQuestionIds": [
             "b-fallback-040"
           ]
@@ -1972,7 +1972,7 @@
         {
           "id": "term-autoridad-control",
           "termEs": "Autoridad de Control",
-          "translationRu": "контролирующий орган/инспекторская власть",
+          "translationRu": "контролирующий орган или инспектор",
           "sourceQuestionIds": [
             "b-fallback-201"
           ]
@@ -1980,7 +1980,7 @@
         {
           "id": "term-direccion-general-infracciones",
           "termEs": "Dirección General de Administración de Infracciones",
-          "translationRu": "управление администрирования нарушений",
+          "translationRu": "управление, которое администрирует штрафы",
           "sourceQuestionIds": [
             "b-fallback-201"
           ]
@@ -2021,7 +2021,7 @@
         {
           "id": "term-energia-cinetica",
           "termEs": "energía cinética",
-          "translationRu": "кинетическая энергия",
+          "translationRu": "энергия движения",
           "sourceQuestionIds": [
             "b-fallback-231"
           ]
@@ -2069,7 +2069,7 @@
         {
           "id": "term-luces-motor-encendido",
           "termEs": "luces y motor encendido",
-          "translationRu": "включенные огни и двигатель",
+          "translationRu": "включенные огни и работающий двигатель",
           "sourceQuestionIds": [
             "b-fallback-293"
           ]
@@ -2077,7 +2077,7 @@
         {
           "id": "term-senales-transitorias",
           "termEs": "señales transitorias",
-          "translationRu": "временные знаки",
+          "translationRu": "временные дорожные знаки",
           "sourceQuestionIds": [
             "b-fallback-313"
           ]
@@ -2126,7 +2126,7 @@
         {
           "id": "term-acarreo",
           "termEs": "acarreo",
-          "translationRu": "эвакуация/буксировка другого автомобиля",
+          "translationRu": "эвакуация или буксировка другого автомобиля",
           "sourceQuestionIds": [
             "b-fallback-353"
           ]
@@ -2158,7 +2158,7 @@
         {
           "id": "term-motor-luces-encendidas",
           "termEs": "motor y las luces encendidas",
-          "translationRu": "двигатель и включенные огни",
+          "translationRu": "работающий двигатель и включенные огни",
           "sourceQuestionIds": [
             "b-fallback-386"
           ]
@@ -2182,7 +2182,7 @@
         {
           "id": "term-factor-riesgo-vehicular",
           "termEs": "factor de riesgo vehicular",
-          "translationRu": "автомобильный фактор риска",
+          "translationRu": "риск, связанный с состоянием автомобиля",
           "sourceQuestionIds": [
             "b-fallback-409"
           ]
@@ -2195,17 +2195,17 @@
             {
               "answerId": "b-fallback-035-a1",
               "verdict": "incorrect",
-              "explanationRu": "Проверка funcionamiento del vehículo, combustible, aceite и inflado de neumáticos важна для этого блока, но это не определение conducción preventiva. Вопрос спрашивает про осторожный стиль мышления водителя."
+              "explanationRu": "Проверка funcionamiento del vehículo, combustible, aceite и inflado de neumáticos важна, но это не определение conducción preventiva. Вопрос спрашивает про осторожное мышление водителя."
             },
             {
               "answerId": "b-fallback-035-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: conducción preventiva - это conductas cautelosas, ответственность за свои действия и anticipar la conducta de los demás. Техническая проверка автомобиля только часть общей безопасности, а не вся дефиниция."
+              "explanationRu": "Правильно: conducción preventiva - это conductas cautelosas, ответственность за свои действия и anticipar la conducta de los demás. Проверка машины - только часть общей безопасности."
             },
             {
               "answerId": "b-fallback-035-a3",
               "verdict": "incorrect",
-              "explanationRu": "Cursos viales cada seis meses не являются определением preventive driving. В билете нет требования выбирать периодические курсы."
+              "explanationRu": "Cursos viales cada seis meses не являются определением conducción preventiva. В билете нет требования выбирать периодические курсы."
             }
           ]
         },
@@ -2215,7 +2215,7 @@
             {
               "answerId": "b-fallback-040-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: груз или любой элемент должен быть расположен так, чтобы не закрывать visibility, не портить опасно condiciones aerodinámicas, не ocultar luces и не sobresalir за разрешенные пределы."
+              "explanationRu": "Verdadero: груз или любой предмет должен лежать так, чтобы не закрывать visibility, не ухудшать опасно condiciones aerodinámicas, не ocultar luces и не sobresalir за разрешенные пределы."
             },
             {
               "answerId": "b-fallback-040-a2",
@@ -2230,12 +2230,12 @@
             {
               "answerId": "b-fallback-101-a1",
               "verdict": "incorrect",
-              "explanationRu": "No неверно: передняя амортизация влияет на contact, stability и реакцию dirección; нельзя игнорировать ее только потому, что defect находится спереди."
+              "explanationRu": "No неверно: передняя амортизация влияет на contact, stability и реакцию dirección; defect спереди нельзя игнорировать."
             },
             {
               "answerId": "b-fallback-101-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: неисправный sistema de amortiguación delantero может afectar al correcto control del vehículo, особенно при frenado, dirección и adherencia на неровном покрытии."
+              "explanationRu": "Правильно: неисправный sistema de amortiguación delantero может afectar al correcto control del vehículo, особенно при frenado, dirección и adherencia на неровной дороге."
             },
             {
               "answerId": "b-fallback-101-a3",
@@ -2282,7 +2282,7 @@
             {
               "answerId": "b-fallback-126-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: Opción C показывает aceite. В этом билете по картинке двигатель смазывается oil/aceite."
+              "explanationRu": "Правильно: Opción C показывает aceite. В этом билете по картинке двигатель смазывается маслом."
             }
           ]
         },
@@ -2298,7 +2298,7 @@
             {
               "answerId": "b-fallback-175-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: даже стоящий автомобиль остается на пути движения; teléfono celular отвлекает внимание от semáforos, pedestrians и surrounding movement."
+              "explanationRu": "Правильно: даже стоящий автомобиль остается на vía de circulación; teléfono celular отвлекает внимание от semáforos, peatones и движения вокруг."
             },
             {
               "answerId": "b-fallback-175-a3",
@@ -2318,7 +2318,7 @@
             {
               "answerId": "b-fallback-198-a2",
               "verdict": "incorrect",
-              "explanationRu": "Baúl - это luggage compartment, а не habitáculo. Билет проверяет именно это различие слов."
+              "explanationRu": "Baúl - это багажник, а не habitáculo. Билет проверяет именно это различие слов."
             },
             {
               "answerId": "b-fallback-198-a3",
@@ -2333,7 +2333,7 @@
             {
               "answerId": "b-fallback-201-a1",
               "verdict": "incorrect",
-              "explanationRu": "Платеж immediately to Autoridad de Control - ловушка. Билет ожидает administrative office path, а не оплату на месте инспектору."
+              "explanationRu": "Платеж сразу Autoridad de Control - ловушка. Билет ожидает путь через административный орган, а не оплату на месте инспектору."
             },
             {
               "answerId": "b-fallback-201-a2",
@@ -2374,12 +2374,12 @@
             {
               "answerId": "b-fallback-231-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: objetos sueltos вроде очков, телефона или ключей могут стать снарядами при incident или maniobra brusca, потому что сохраняют energía cinética."
+              "explanationRu": "Verdadero: objetos sueltos вроде очков, телефона или ключей могут стать снарядами при incidente или maniobra brusca, потому что сохраняют energía cinética."
             },
             {
               "answerId": "b-fallback-231-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso игнорирует физику loose objects. Даже маленькие предметы могут травмировать, когда автомобиль резко останавливается или меняет направление."
+              "explanationRu": "Falso игнорирует физику незакрепленных предметов. Даже мелкая вещь может травмировать, когда автомобиль резко останавливается или меняет направление."
             }
           ]
         },
@@ -2455,7 +2455,7 @@
             {
               "answerId": "b-fallback-313-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso противоречит определению Anexo L: временные знаки указывают work zones и temporary risks/restrictions."
+              "explanationRu": "Falso противоречит определению Anexo L: временные знаки указывают рабочие зоны, временные риски и ограничения."
             }
           ]
         },
@@ -2465,7 +2465,7 @@
             {
               "answerId": "b-fallback-328-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero по билету: когда есть personas heridas, policía сохраняет escena del hecho, дает emergency services возможность помочь пострадавшим и охраняет vehicles/evidence."
+              "explanationRu": "Verdadero по билету: когда есть personas heridas, policía сохраняет escena del hecho, дает службам помощи возможность помочь пострадавшим и охраняет автомобили и доказательства."
             },
             {
               "answerId": "b-fallback-328-a2",
@@ -2485,7 +2485,7 @@
             {
               "answerId": "b-fallback-329-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: cristales должны обеспечивать visibility изнутри наружу и снаружи внутрь, что совпадает с логикой CABA про vidrios de seguridad и контроль видимости."
+              "explanationRu": "Правильно: cristales должны обеспечивать visibility изнутри наружу и снаружи внутрь. Это совпадает с логикой CABA про vidrios de seguridad и контроль видимости."
             },
             {
               "answerId": "b-fallback-329-a3",
@@ -2501,7 +2501,7 @@
             {
               "answerId": "b-fallback-353-a1",
               "verdict": "incorrect",
-              "explanationRu": "Мощность и надежное крепление недостаточны. Ожидаемое правило связано с типом/назначением vehículo, а не только с capacidad mecánica."
+              "explanationRu": "Мощность и надежное крепление недостаточны. Ожидаемое правило связано с назначением vehículo, а не только с capacidad mecánica."
             },
             {
               "answerId": "b-fallback-353-a2",
@@ -2552,7 +2552,7 @@
             {
               "answerId": "b-fallback-386-a3",
               "verdict": "incorrect",
-              "explanationRu": "Only motor encendido неполно. Ожидаемый вариант включает и motor, и luces."
+              "explanationRu": "Только motor encendido неполно. Ожидаемый вариант включает и motor, и luces."
             }
           ]
         },
@@ -2572,7 +2572,7 @@
             {
               "answerId": "b-fallback-405-a3",
               "verdict": "incorrect",
-              "explanationRu": "Срочность не означает, что lugar больше не важен. Безопасный ответ требует остановиться в permitted place / lugar permitido."
+              "explanationRu": "Срочность не означает, что место больше не важно. Безопасный ответ требует остановиться в lugar permitido."
             }
           ]
         },
@@ -2632,7 +2632,7 @@
       "trapNotes": [
         {
           "id": "trap-maintenance-not-preventive-definition",
-          "textRu": "Проверки автомобиля важны, но conducción preventiva шире: cautela, responsibility и anticipating others. Не выбирайте только oil/fuel/tire check как определение.",
+          "textRu": "Проверки автомобиля важны, но conducción preventiva шире: cautela, responsabilidad и anticipar la conducta de los demás. Не выбирайте только проверку масла, топлива и шин как определение.",
           "sourceQuestionIds": [
             "b-fallback-035"
           ]
@@ -2655,7 +2655,7 @@
         },
         {
           "id": "trap-passenger-phone-boundary",
-          "textRu": "Phone-билеты делятся по роли: водитель на vía de circulación создает риск/нарушение, а телефон у пассажира не является тем же запретом.",
+          "textRu": "Билеты про teléfono celular делятся по роли: водитель на vía de circulación создает риск/нарушение, а телефон у пассажира не является тем же запретом.",
           "sourceQuestionIds": [
             "b-fallback-175",
             "b-fallback-217",
@@ -2664,7 +2664,7 @@
         },
         {
           "id": "trap-ticket-specific-mixed-items",
-          "textRu": "DGAI payment, police preserving the crash scene, oil/lubrication images и maintenance-benefit wording здесь являются точными ответами билетов. Держите их узко, пока будущий source slice не расширит поддержку.",
+          "textRu": "Оплата через DGAI, полиция на месте ДТП, картинки про масло/смазку и формулировка про пользу mantenimiento здесь являются точными ответами билетов. Держите их узко, пока отдельная работа с источниками не расширит поддержку.",
           "sourceQuestionIds": [
             "b-fallback-103",
             "b-fallback-126",
@@ -2675,7 +2675,7 @@
         },
         {
           "id": "trap-load-and-loose-objects",
-          "textRu": "Carga снаружи/в багажной зоне и objetos sueltos внутри салона - оба про риск: одно может закрыть или изменить поведение автомобиля, другое может полететь по салону при siniestro или резком маневре.",
+          "textRu": "Carga снаружи/в багажной зоне и objetos sueltos внутри салона - оба про риск: одно может закрыть обзор или изменить поведение автомобиля, другое может полететь по салону при siniestro или резком маневре.",
           "sourceQuestionIds": [
             "b-fallback-040",
             "b-fallback-231"
@@ -20059,7 +20059,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "8d18c1d842f29107f894e09831f0d078389cc1d52b683257ab12006bc8476a5d",
+        "sourceFingerprint": "b858e35ba04591cefe3c27123cd63af0823bd3a8cecdab1e65dc9824829e68f1",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -20077,19 +20077,19 @@
         }
       },
       "titleRu": "Зеркала, слепые зоны и обзор",
-      "summaryRu": "Блок про espejos retrovisores, punto ciego, настройку зеркал до начала движения и ловушку с visibilidad в велосипедном билете.",
+      "summaryRu": "Зеркала, слепые зоны, настройка до начала движения и одна велосипедная ловушка со словом visibilidad.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. Экзаменационная идея простая: зеркало помогает, но не отменяет слепую зону; водитель отвечает за обзор до маневра и до начала движения.",
-        "В CABA и национальной норме у транспортного средства должен быть sistema retrovisor amplio, permanente y efectivo. Это официальный минимум оборудования, но он не означает, что водитель видит абсолютно все: ticket `b-fallback-022` прямо проверяет, что puntos ciegos возможны даже при bien orientados mirrors.",
-        "Punto ciego в fallback-билете - это область вокруг автомобиля, куда водитель не имеет доступа ни напрямую, ни через espejos retrovisores. Поэтому ответ `sólo al área que no es cubierta por los espejos` слишком узкий: слепая зона может быть не только проблемой зеркала, но и проблемой прямого обзора.",
-        "Настройку зеркал проверяйте before moving: `antes de iniciar la marcha`. Во время движения нельзя устраивать prueba real, а снаружи автомобиля водитель не видит реальную посадку, поле зрения и положение головы.",
-        "В билете с изображением `b202.jpg` правильна Imagen A: в зеркале видна часть автомобиля как ориентир и широкая зона сзади/сбоку. Imagen B слишком сильно показывает бок автомобиля, поэтому полезное поле обзора становится уже. Это привязано к картинке билета, а не к отдельному официальному каталогу настройки зеркал.",
-        "Билет `b-fallback-058` включен сюда только из-за ловушки `si no compromete la visibilidad`. Он не превращает тему в общий раздел про велосипеды: правильный ответ там определяется наличием `asiento adicional detrás del conductor`, а не одной видимостью."
+        "Этот блок - неофициальная подсказка Cabadrive. Идея простая: зеркало помогает, но не отменяет слепую зону; водитель отвечает за обзор до маневра и до начала движения.",
+        "В CABA и национальной норме у транспортного средства должен быть sistema retrovisor amplio, permanente y efectivo. Но даже хороший комплект зеркал не дает полный обзор: один билет прямо проверяет, что puntos ciegos возможны и при bien orientados espejos.",
+        "Punto ciego - это область вокруг автомобиля, куда водитель не видит ни напрямую, ни через espejos retrovisores. Поэтому ответ sólo al área que no es cubierta por los espejos слишком узкий: слепая зона бывает не только из-за зеркала, но и из-за отсутствия прямого обзора.",
+        "Зеркала настраивайте до начала движения: antes de iniciar la marcha. Во время движения это отвлекает, а снаружи автомобиля водитель не видит реальную посадку, поле зрения и положение головы.",
+        "В билете с изображением b202.jpg правильна Imagen A: в зеркале видна часть автомобиля как ориентир и широкая зона сзади/сбоку. Imagen B слишком много показывает бок автомобиля, поэтому полезный обзор становится уже. Это вывод по картинке билета, а не отдельный официальный каталог настройки зеркал.",
+        "Велосипедный билет включен сюда только из-за ловушки si no compromete la visibilidad. Он не превращает тему в общий раздел про велосипеды: правильный ответ там определяется наличием asiento adicional detrás del conductor, а не одной видимостью."
       ],
       "practicalReasoningRu": [
-        "Зеркала делают движение предсказуемее, потому что водитель заранее видит транспорт сзади и сбоку. Но зеркало показывает только часть пространства, поэтому перед маневром нужна проверка обстановки, а не вера в одну картинку в зеркале.",
+        "Зеркала делают движение предсказуемее: водитель заранее видит транспорт сзади и сбоку. Но зеркало показывает только часть пространства, поэтому перед маневром нужна проверка обстановки, а не вера в одну картинку в зеркале.",
         "Настройка до начала движения безопаснее: автомобиль стоит, водитель сидит в рабочем положении, и можно спокойно выставить обзор без отвлечения от потока.",
-        "Слепая зона опасна именно потому, что другой участник может быть рядом, но не попадать ни в прямой взгляд, ни в отражение. Экзамен ловит ответ `sólo espejos`, потому что он упрощает проблему слишком сильно."
+        "Слепая зона опасна тем, что другой участник может быть рядом, но не попадать ни в прямой взгляд, ни в отражение. Экзамен ловит ответ sólo espejos, потому что он слишком упрощает проблему."
       ],
       "spanishTerms": [
         {
@@ -20129,7 +20129,7 @@
         {
           "id": "term-imagen-a",
           "termEs": "Imagen A",
-          "translationRu": "изображение A / вариант A на картинке",
+          "translationRu": "картинка A, правильный вариант на изображении",
           "sourceQuestionIds": [
             "b-fallback-055"
           ]
@@ -20153,7 +20153,7 @@
         {
           "id": "term-no-compromete-visibilidad",
           "termEs": "no compromete la visibilidad",
-          "translationRu": "не ухудшает видимость; ловушка в варианте ответа",
+          "translationRu": "не ухудшает видимость; в этом билете неполный критерий",
           "sourceQuestionIds": [
             "b-fallback-058"
           ]
@@ -20201,7 +20201,7 @@
         {
           "id": "term-manera-directa",
           "termEs": "manera directa",
-          "translationRu": "прямым способом / напрямую",
+          "translationRu": "напрямую, без зеркал",
           "sourceQuestionIds": [
             "b-fallback-365"
           ]
@@ -20209,7 +20209,7 @@
         {
           "id": "term-no-la-reflejan",
           "termEs": "no la reflejan",
-          "translationRu": "не отражают ее",
+          "translationRu": "зеркала ее не показывают",
           "sourceQuestionIds": [
             "b-fallback-365"
           ]
@@ -20263,7 +20263,7 @@
             {
               "answerId": "b-fallback-058-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-билету: pasajero разрешен, если он расположен en un asiento adicional detrás del conductor. Здесь visibility - ловушка, а не полный критерий."
+              "explanationRu": "Правильно по этому старому билету: pasajero разрешен, если он расположен en un asiento adicional detrás del conductor. Здесь visibility - ловушка, а не полный критерий."
             },
             {
               "answerId": "b-fallback-058-a3",
@@ -20343,7 +20343,7 @@
         },
         {
           "id": "trap-punto-ciego-not-only-mirror",
-          "textRu": "Punto ciego шире, чем «зеркало не показывает». В правильном определении есть и direct vision, и отражение в espejos retrovisores.",
+          "textRu": "Punto ciego шире, чем “зеркало не показывает”. В правильном определении есть и прямой обзор, и отражение в espejos retrovisores.",
           "sourceQuestionIds": [
             "b-fallback-365"
           ]
@@ -20364,7 +20364,7 @@
         },
         {
           "id": "trap-visibility-alone-not-cyclist-passenger-answer",
-          "textRu": "В велосипедном билете `no compromete la visibilidad` - не полный критерий. Правильный fallback-ответ привязан к asiento adicional detrás del conductor.",
+          "textRu": "В велосипедном билете no compromete la visibilidad - не полный критерий. Правильный ответ этого старого билета привязан к asiento adicional detrás del conductor.",
           "sourceQuestionIds": [
             "b-fallback-058"
           ]
@@ -20391,7 +20391,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "bae3fa6e21ff8dce6d085ad36672b9fb196969c8411fd224852b162cd7f8d182",
+        "sourceFingerprint": "0c96c0b4a7b3766c37d5ff945948d7083405cf327e0c282276c212083d4efd8e",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -20409,20 +20409,20 @@
         }
       },
       "titleRu": "Ремни, детские кресла и подголовники",
-      "summaryRu": "Экзаменационный блок про cinturón de seguridad, Sistema de Retención Infantil, airbag, apoyacabeza, chaleco reflectivo и безопасную перевозку пассажиров/животных.",
+      "summaryRu": "Ремни, SRI, airbag, apoyacabeza, chaleco reflectivo и безопасная перевозка пассажиров и животных.",
       "learningMaterialRu": [
         "Этот блок - неофициальная подсказка Cabadrive. Для экзамена держите простую логику: защита работает только когда каждый ocupante закреплен своим средством, а аварийные предметы доступны до выхода на calzada.",
-        "Cinturón de seguridad обязателен для conductor и demás ocupantes. Близко к финишу, короткая поездка или задний ряд не отменяют ремень: в билетах correct answer почти всегда строится вокруг todos los ocupantes.",
+        "Cinturón de seguridad обязателен для conductor и demás ocupantes. Короткая поездка, “почти приехали” или задний ряд не отменяют ремень: в билетах правильный ответ часто строится вокруг todos los ocupantes.",
         "Sistema de Retención Infantil нужен пассажиру menor de 12 años y con altura inferior a 1,50 m. Если пассажир старше 12 лет и имеет altura igual o superior a 1,50 m, билет переводит его в обычную логику: любой asiento, но cinturón debidamente sujeto.",
         "SRI проверяйте по двум вещам: где он стоит и пристегнут ли ребенок. По текущим билетам детское устройство должно быть на asientos traseros; центральное заднее место допустимо, если cinturón de seguridad de 3 puntos позволяет правильно его закрепить.",
-        "Airbag - complemento, а не замена cinturón. Официальная Ley 2148 прямо говорит, что bolsas de aire не заменяют ремень; поэтому варианты про prescindir, sustituir или incompatibilidad с ремнем - ловушки.",
+        "Airbag - complemento, а не замена cinturón. Ley 2148 прямо говорит, что bolsas de aire не заменяют ремень; поэтому варианты про prescindir, sustituir или incompatibilidad с ремнем - ловушки.",
         "Apoyacabeza регулируют по голове: если он регулируемый, верхняя часть должна быть на высоте верхней части головы. В билете с фото это делает утверждение verdadero.",
-        "Chaleco de material reflectivo должен быть accesible в habitáculo. При avería/desperfecto и особенно на autopistas/vías rápidas он нужен до выхода на calzada; в ticket photo про Autopista правильная логика объединяет balizas/luces, emergency call и уход за защиту.",
-        "В билетах с embarazo, banda inferior, huesos de la cadera, orientación a contra marcha, arnés для mascotas и exact image choices используйте формулировку билета и картинку. Текущий архив поддерживает общие обязательства, но не превращает все эти иллюстрации в отдельный официальный каталог."
+        "Chaleco de material reflectivo должен быть accesible в habitáculo. При avería/desperfecto, особенно на autopistas/vías rápidas, он нужен до выхода на calzada; билет про Autopista объединяет balizas/luces, звонок в помощь и уход за защиту.",
+        "В билетах с embarazo, banda inferior, huesos de la cadera, orientación a contra marcha, arnés для mascotas и картинками отвечайте по формулировке и изображению. Текущий архив поддерживает общие обязанности, но не превращает все эти иллюстрации в отдельный официальный каталог."
       ],
       "practicalReasoningRu": [
-        "Ремень удерживает тело в зоне работы сиденья, подголовника и airbag. Без него airbag может встретить человека не там и не тогда, где рассчитана защита.",
-        "SRI существует потому, что штатный ремень рассчитан на взрослую геометрию. Детское устройство поднимает и фиксирует ребенка так, чтобы ремень и корпус работали вместе.",
+        "Ремень удерживает тело там, где должны работать сиденье, подголовник и airbag. Без ремня airbag может ударить человека не так, как рассчитана защита.",
+        "SRI нужен потому, что штатный ремень рассчитан на взрослую геометрию. Детское устройство поднимает и фиксирует ребенка так, чтобы ремень и корпус работали вместе.",
         "Животные и незакрепленные пассажиры опасны не только для себя: при торможении они становятся непредсказуемым препятствием и могут мешать conductor управлять автомобилем."
       ],
       "spanishTerms": [
@@ -20482,7 +20482,7 @@
         {
           "id": "term-complementa-cinturon",
           "termEs": "Complementa el uso del cinturón de seguridad",
-          "translationRu": "дополняет использование ремня безопасности",
+          "translationRu": "дополняет ремень безопасности, а не заменяет его",
           "sourceQuestionIds": [
             "b-fallback-081"
           ]
@@ -20548,7 +20548,7 @@
         {
           "id": "term-balizas-portatiles",
           "termEs": "balizas portátiles",
-          "translationRu": "переносные аварийные знаки/бализы",
+          "translationRu": "переносные аварийные знаки или огни",
           "sourceQuestionIds": [
             "b-fallback-151"
           ]
@@ -20572,7 +20572,7 @@
         {
           "id": "term-arnes",
           "termEs": "arnés",
-          "translationRu": "шлейка/ремень для фиксации",
+          "translationRu": "шлейка или ремень для фиксации",
           "sourceQuestionIds": [
             "b-fallback-212"
           ]
@@ -20603,7 +20603,7 @@
             {
               "answerId": "b-fallback-007-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: chaleco de material reflectivo обязателен как элемент, который должен быть в habitáculo и доступен при необходимости спуститься на calzada из-за causa de fuerza mayor."
+              "explanationRu": "Правильно: chaleco de material reflectivo обязателен и должен быть в habitáculo, доступный перед выходом на calzada из-за causa de fuerza mayor."
             }
           ]
         },
@@ -20695,12 +20695,12 @@
             {
               "answerId": "b-fallback-102-a1",
               "verdict": "incorrect",
-              "explanationRu": "Imagen A неверна по ticket image: ремень расположен не так, как требуется в варианте с правильным uso durante el embarazo."
+              "explanationRu": "Imagen A неверна по картинке билета: ремень расположен не так, как требуется в варианте с правильным uso durante el embarazo."
             },
             {
               "answerId": "b-fallback-102-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по картинке билета: Imagen B показывает корректный вариант использования cinturón during embarazo. Это image-specific вывод; текущий архив не используется как официальный каталог поз для беременности."
+              "explanationRu": "Правильно по картинке билета: Imagen B показывает корректное использование cinturón durante embarazo. Это вывод только по этой иллюстрации; текущий архив не является официальным каталогом поз для беременности."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b218.jpg"
@@ -20721,7 +20721,7 @@
             {
               "answerId": "b-fallback-120-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: без ремня airbag puede provocar lesiones graves. Официальная опора здесь общая: airbag не заменяет ремень; точная фраза про lesiones graves остается формулировкой fallback-билета."
+              "explanationRu": "Правильно: без ремня airbag puede provocar lesiones graves. Официальная опора здесь общая: airbag не заменяет ремень; точная фраза про lesiones graves остается формулировкой старого билета."
             }
           ]
         },
@@ -20736,7 +20736,7 @@
             {
               "answerId": "b-fallback-149-a2",
               "verdict": "incorrect",
-              "explanationRu": "Opción B неверна: в этой ticket image нижняя лямка проходит не в безопасном месте для banda inferior."
+              "explanationRu": "Opción B неверна: в этой картинке нижняя лямка проходит не в безопасном месте для banda inferior."
             },
             {
               "answerId": "b-fallback-149-a3",
@@ -20752,7 +20752,7 @@
             {
               "answerId": "b-fallback-151-a1",
               "verdict": "incorrect",
-              "explanationRu": "A сама по себе верна, но неполна: luces intermitentes, balizas portátiles и emergency call закрывают только часть действий."
+              "explanationRu": "A сама по себе верна, но неполна: luces intermitentes, balizas portátiles и звонок в помощь закрывают только часть действий."
             },
             {
               "answerId": "b-fallback-151-a2",
@@ -20762,7 +20762,7 @@
             {
               "answerId": "b-fallback-151-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: ambas respuestas. В ситуации siniestro/desperfecto на показанном sector de Autopista нужно предупредить других, поставить balizas/luces, связаться с emergency service и выйти в chaleco к безопасному месту."
+              "explanationRu": "Правильно: ambas respuestas. В ситуации siniestro/desperfecto на показанном sector de Autopista нужно предупредить других, поставить balizas/luces, связаться со службой помощи и выйти в chaleco к безопасному месту."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b45.jpg"
@@ -20799,7 +20799,7 @@
             {
               "answerId": "b-fallback-210-a2",
               "verdict": "incorrect",
-              "explanationRu": "A contra marcha здесь не причина ошибки. Этот точный orientation/group вопрос относится к другому билету; в данной картинке главная проблема - отсутствие ремня SRI."
+              "explanationRu": "A contra marcha здесь не причина ошибки. Этот точный вопрос про ориентацию и группу относится к другому билету; в данной картинке главная проблема - отсутствие ремня SRI."
             },
             {
               "answerId": "b-fallback-210-a3",
@@ -20825,7 +20825,7 @@
             {
               "answerId": "b-fallback-212-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-билету: mascotas должны ехать на asientos traseros sujetas con arnés o sistema de retención correspondiente. Архивная Ley 2148 прямо поддерживает запрет transportar animales sueltos; exact arnés/rear-seat wording остается ticket-specific."
+              "explanationRu": "Правильно по старому билету: mascotas должны ехать на asientos traseros sujetas con arnés o sistema de retención correspondiente. Архивная Ley 2148 прямо поддерживает запрет transportar animales sueltos; точная связка arnés/asiento trasero остается ответом именно этого билета."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b221.jpg"
@@ -20841,7 +20841,7 @@
             {
               "answerId": "b-fallback-297-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-билету: orientación a contra marcha относится к grupos 0, 0+ y 1 según fabricante, а ребенок 7 años уже не соответствует этой логике."
+              "explanationRu": "Правильно по старому билету: orientación a contra marcha относится к grupos 0, 0+ y 1 según fabricante, а ребенок 7 años уже не соответствует этой логике."
             },
             {
               "answerId": "b-fallback-297-a3",
@@ -20933,7 +20933,7 @@
       "trapNotes": [
         {
           "id": "trap-airbag-not-replacement",
-          "textRu": "Airbag/complementa всегда рядом с cinturón. Варианты prescindir, sustituir или incompatible - ловушки.",
+          "textRu": "Airbag/complementa всегда идет рядом с cinturón. Варианты prescindir, sustituir или incompatible - ловушки.",
           "sourceQuestionIds": [
             "b-fallback-081",
             "b-fallback-120"
@@ -20967,7 +20967,7 @@
         },
         {
           "id": "trap-chaleco-accessible",
-          "textRu": "Chaleco не должен лежать где угодно: ключевые слова habitáculo и accesible. На Autopista также не забывайте balizas/emergency call и уйти за defensa.",
+          "textRu": "Chaleco не должен лежать где угодно: ключевые слова habitáculo и accesible. На Autopista также не забывайте balizas, звонок в помощь и уход за defensa.",
           "sourceQuestionIds": [
             "b-fallback-007",
             "b-fallback-151"
@@ -20975,7 +20975,7 @@
         },
         {
           "id": "trap-pets-not-banned-but-secured",
-          "textRu": "Mascotas не запрещены автоматически; запрещена опасная перевозка sueltas. Exact arnés/asiento trasero answer belongs to this fallback ticket.",
+          "textRu": "Mascotas не запрещены автоматически; запрещена опасная перевозка sueltas. Точная связка arnés/asiento trasero относится к этому старому билету.",
           "sourceQuestionIds": [
             "b-fallback-212"
           ]
