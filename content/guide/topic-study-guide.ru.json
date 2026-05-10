@@ -21004,7 +21004,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "90a8e9cff91ac0eedcafa70dffa773e5c144355317ce1b66bd562d505a8bd2a4",
+        "sourceFingerprint": "850628eab48abcd9d6b47c1ad4e44ab0a142658645af595266c0d37c8c2978b4",
         "basis": {
           "questionLevelCounts": {
             "green": 3,
@@ -21537,7 +21537,7 @@
             {
               "answerId": "b-fallback-388-a1",
               "verdict": "incorrect",
-              "explanationRu": "Luces bajas delante y detrás не подходят для обозначения inmovilized vehicle. Нужны balizas, а переносные balizas ставятся со стороны приближающегося потока."
+              "explanationRu": "Luces bajas delante y detrás не подходят для обозначения обездвиженного автомобиля (vehículo inmovilizado). Нужны balizas, а переносные balizas ставятся со стороны приближающегося потока."
             },
             {
               "answerId": "b-fallback-388-a2",
@@ -21735,7 +21735,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "3a85fb7862ae1da8eca61e40b5ee016de339373cbd78900c55dc3102fc28eb65",
+        "sourceFingerprint": "6ad83e9d3063f666a16cd81e86b81a3d28188a798dddb5d8b5d8c42618d4bce1",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -21976,7 +21976,7 @@
             {
               "answerId": "b-fallback-432-a1",
               "verdict": "incorrect",
-              "explanationRu": "Verdadero неверно из-за ÚNICAMENTE. Ley 24.449 требует llevar comprobante de seguro en vigencia para circular; это не только solo vías interurbanas."
+              "explanationRu": "Verdadero неверно из-за ÚNICAMENTE. Ley 24.449 требует llevar comprobante de seguro en vigencia para circular; это не требование только для vías interurbanas (междугородних дорог)."
             },
             {
               "answerId": "b-fallback-432-a2",
