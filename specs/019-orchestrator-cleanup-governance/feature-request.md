@@ -138,9 +138,9 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: STALE/PENDING after the PR #69 base update. The assigned branch base/merge-base is `origin/main` `65624107d856653e503e3f03fd1d51da83992984` from PR #69, and `019` remains valid because that base's main spec maximum prefix before this feature is still `018`. Prior final Architect/Analyst validation evidence from earlier heads, including the PR #72/`7d9a09a` cycle, is stale and must be rerun before completion.
-- Analyst return count: historical count remains 0; no fresh final Analyst validation has passed after the PR #69 base update.
+- Status: STALE/PENDING after clean rebase onto `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695` from PR #63. PR #63 adds product/content learning support and feature memory `specs/009`; current main's maximum feature-memory prefix remains `018`, so `019` remains valid. Prior final Architect/Analyst validation evidence from earlier heads, including the PR #72/`7d9a09a` cycle and PR #69/P2 latest-base evidence, is stale and must be rerun before completion.
+- Analyst return count: historical count remains 0; no fresh final Analyst validation has passed after the PR #63 rebase.
 - Customer intent check: pending fresh final Analyst validation. The previous PASS is historical only.
 - Gaps: pending fresh validation.
 - Analyst routing gaps or new questions: none recorded for this P2 fix.
-- Architect disposition routing: pending fresh final validation after the P2 latest-base wording fix.
+- Architect disposition routing: pending fresh final validation after the PR #63 rebase; the PR #69/P2 fix remains historical evidence and AI Review thread `PRRT_kwDOSX65IM6A517A` is addressed by the current P2 fix.
