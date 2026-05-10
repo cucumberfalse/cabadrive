@@ -80,7 +80,7 @@ specs/022-feature-009-memory-consistency/tasks.md
 ## Required Slice E: PR And Review
 
 - [x] T041 Open one small process-memory-only PR.
-- [x] T042 Confirm required checks are green on the PR head.
+- [ ] T042 Confirm required checks are green on the PR head.
 - [x] T043 Review Agent verifies stale contradiction removal, evidence quality, scope control, and role-boundary compliance.
 - [x] T044 Resolve or route any Review Agent findings through Orchestrator.
 - [x] T045 Record PR/check/review evidence without preclaiming stale-head gates.
@@ -145,6 +145,7 @@ specs/022-feature-009-memory-consistency/tasks.md
 - Pre-staging `git diff --name-only` returned only `specs/009-image-metadata-learning-support/tasks.md`; the feature 022 memory folder was still untracked from the Analyst/Architect handoff. Final staged-file review must include only feature 009 process memory plus complete feature 022 process memory (`feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`) and no product/content/validator/test/runtime/durable-doc files.
 - Staged-file review with `git diff --cached --name-only` returned exactly `specs/009-image-metadata-learning-support/tasks.md`, `specs/022-feature-009-memory-consistency/feature-request.md`, `specs/022-feature-009-memory-consistency/plan.md`, `specs/022-feature-009-memory-consistency/spec.md`, and `specs/022-feature-009-memory-consistency/tasks.md`.
 - PR evidence: opened ready PR #112, `[codex] Close feature 009 memory consistency gap`, at `https://github.com/cucumberfalse/cabadrive/pull/112` from `codex/022-feature-009-memory-consistency` to `main`. Initial PR head was `fe59ec9d3ab529b4d8ba0e42efb3a8da3cf89f9e`; initial `gh pr view` showed `isDraft: false`, `state: OPEN`, and required checks pending/in progress. T042 remains unchecked here to avoid preclaiming green checks on a head that may change after this evidence commit.
+- Review-thread fix evidence: PR #112 review thread `PRRT_kwDOSX65IM6A8KKa` correctly identified that T042 had been marked complete after the finalizer evidence commit, even though a new process-memory head requires fresh check confirmation. T042 is reopened on this head and must stay unchecked until the current pushed PR head has green required checks.
 - Finalizer review evidence for PR head `1a2faf9d1e4a2e3d65e93cf691269177330a18e5`: Review Agent reported no blocking findings. Scope review confirmed PR #112 changes only allowed process-memory files, no product/content/validator/runtime/test/generated-index/durable-doc files are in the diff, feature 022 memory is complete, and GitHub review threads are absent.
 - Finalizer task-state evidence: Review Agent confirmed feature 009 T121 no longer says T098 remains open, T098 remains checked, T121 remains checked and truthful, and stale contradiction search plus target unchecked-task audit returned no output.
 - Finalizer check evidence for PR head `1a2faf9d1e4a2e3d65e93cf691269177330a18e5`: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` were green. The known `pnpm run validate:content:quality` failure remains unrelated current-main strict primary-source gating under `content/primary-sources` and is not caused by PR #112.
