@@ -10,6 +10,7 @@ import {
   type ProgressAnswer,
   type ProcessGuideSection,
   type PrimarySourceReaderChunk,
+  type PrimarySourceReaderCorpus,
   type PrimarySourceReaderDocument,
   type PrimarySourceTranslationStatus,
   type Question,
@@ -1028,8 +1029,54 @@ function ProcessGuideView() {
   );
 }
 
+type PrimarySourcesLoadState =
+  | { status: "loading" }
+  | { status: "ready"; corpus: PrimarySourceReaderCorpus }
+  | { status: "error"; message: string };
+
 function PrimarySourcesView() {
-  const corpus = data.primarySources;
+  const [loadState, setLoadState] = useState<PrimarySourcesLoadState>({ status: "loading" });
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoadState({ status: "loading" });
+    import("./data/primarySources")
+      .then(({ primarySourceReaderCorpus }) => {
+        if (isMounted) setLoadState({ status: "ready", corpus: primarySourceReaderCorpus });
+      })
+      .catch((error: unknown) => {
+        if (!isMounted) return;
+        const message = error instanceof Error ? error.message : "Неизвестная ошибка загрузки корпуса.";
+        setLoadState({ status: "error", message });
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  if (loadState.status === "loading") {
+    return (
+      <section className="workspace" aria-labelledby="sources-title" aria-busy="true">
+        <h2 id="sources-title">Официальные источники</h2>
+        <p>Загружаем локальный корпус источников.</p>
+      </section>
+    );
+  }
+
+  if (loadState.status === "error") {
+    return (
+      <section className="workspace" aria-labelledby="sources-title">
+        <h2 id="sources-title">Официальные источники</h2>
+        <p>Локальный корпус официальных источников не загрузился: {loadState.message}</p>
+      </section>
+    );
+  }
+
+  return <PrimarySourcesReader corpus={loadState.corpus} />;
+}
+
+function PrimarySourcesReader({ corpus }: { corpus: PrimarySourceReaderCorpus }) {
   const defaultDocument = corpus.documents.find((document) => document.translationStatus === "approved") || corpus.documents[0];
   const [query, setQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");

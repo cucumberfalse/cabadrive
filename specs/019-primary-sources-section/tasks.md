@@ -449,9 +449,9 @@
 
 - UI reader slice ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-ui-reader` on branch `codex/019-primary-sources-ui-reader`, based on `origin/codex/019-primary-sources-content-batch-vehicle-docs` at `14bf08c`.
 - Preserved the modified UI/e2e files that Orchestrator had moved into this worktree and continued from them instead of reverting.
-- `src/data/content.ts` now imports the official manifest, primary-source coverage metadata, learner corpus root, QA root, search root, and discovered document/QA/search shards through the existing bundled data boundary. PR #102 review follow-up removed the eager raw official-document Markdown import from the initial app bundle.
+- The first UI reader pass imported the official manifest, primary-source coverage metadata, learner corpus root, QA root, search root, and discovered document/QA/search shards through `src/data/content.ts`. PR #102 follow-ups moved these primary-source imports out of startup data.
 - Added typed UI-facing primary-source reader models for manifest entries, coverage documents/chunks, learner documents/chunks, QA records, search entries, translation readiness, and the combined reader corpus.
-- The combined reader corpus represents every manifest entry and every coverage document honestly in aggregate counts, but the readable document/chunk list includes only chunks with approved Russian learner content. Untranslated or draft chunks are not exposed as readable rows with fallback text.
+- The combined reader corpus represents every manifest entry and every coverage document honestly in aggregate counts, with `totalChunkCount` reflecting full coverage chunk inventory and `translatedChunkCount` reflecting approved readable Russian chunks. The readable document/chunk list includes only chunks with approved Russian learner content. Untranslated or draft chunks are not exposed as readable rows with fallback text.
 - `src/App.tsx` adds the `Источники` navigation item and a distinct source reader view without changing active exam translation/explanation behavior.
 - The source reader defaults to `Просто`, selects an approved translated learner batch when available, offers `Полный перевод` and `Оригинал ES` only for approved learner chunks, and does not add a simplified-Spanish mode.
 - Search/filter/detail behavior is local-only. Search covers title/metadata, simple Russian, full Russian, and original Spanish, with diacritic-insensitive matching so learner input such as `cedula` can find `Cédula`.
@@ -738,6 +738,18 @@
   - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `npm test` passed: 153 Node tests, 153 pass, 0 fail.
   - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Main built JS was `8,756.75 kB` / `1,416.40 kB gzip`; Vite retained the existing large-chunk warning, but the previous raw archive import size was reduced from the earlier `~11.55 MB` JS bundle.
+  - `npm run test:e2e` passed: 30 Playwright tests, 30 pass, 0 fail across desktop and mobile projects.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #102 second UI P2 follow-up on 2026-05-10:
+  - Addressed the remaining startup-load concern by moving primary-source corpus construction and eager `content/primary-sources/documents/*.json`, `qa/*.json`, and `search/*.json` glob imports from `src/data/content.ts` into lazy-loaded `src/data/primarySources.ts`.
+  - `PrimarySourcesView` now dynamic-imports the local bundled source-reader corpus only when the `Источники` view is opened, with local loading and error states. Initial `data` no longer contains `primarySources`.
+  - `totalChunkCount` now uses each document's full `coverageChunks.length`; aggregate source-reader totals now show full coverage chunks versus approved translated chunks instead of readable filtered chunks versus itself.
+  - Offline behavior remains local-first: the source corpus is still bundled and service-worker cached, but Vite now emits a separate `primarySources-*.js` chunk for the corpus module.
+  - `src/data/content.ts` no longer contains primary-source JSON imports, primary-source eager glob imports, `buildPrimarySourceReaderCorpus`, or startup `primarySourceReaderCorpus` construction.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm test` passed: 153 Node tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, emitted `dist/assets/primarySources-j-oHDt6a.js` as a separate lazy chunk, and service worker generation completed with 281 cached assets. Vite retained the large-chunk warning for both app and primary-source chunks.
   - `npm run test:e2e` passed: 30 Playwright tests, 30 pass, 0 fail across desktop and mobile projects.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
