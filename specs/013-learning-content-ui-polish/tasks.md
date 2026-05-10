@@ -183,6 +183,9 @@
 - Latest-main update on 2026-05-10: fetched `origin`, confirmed `origin/main` at `a26a12493123fcc0774a513e44fbf23663658ec0` (`[codex] Add learner difficulty labels (#71)`), and merged `origin/main` into `codex/013-learning-content-ui-polish` with `git merge --no-ff origin/main` rather than squash.
 - Latest-main conflict resolution on 2026-05-10: resolved conflicts in `src/App.tsx`, `tests/e2e/app.spec.ts`, `docs_project/project/feature-inventory.md`, `docs_project/project/frontend/frontend-docs.md`, and `docs_project/screens/learning-and-exam-flows.md`. Resolution preserved feature 013 materials translations, missing-translation fallback, ticket IDs in `Учить`, compact CABA/RF wording, and removal of repeated materials per-ticket `Статус: неофициальная B-практика`; it also kept feature #71 learner difficulty indicators in learning, mistakes, materials topic headings, and materials ticket blocks.
 - Latest-main scope boundary on 2026-05-10: no `specs/014-orchestrator-first-enforcement/*` files were edited while resolving the merge.
+- Latest-main update after #66 on 2026-05-10: fetched `origin`, confirmed `origin/main` at `b26a37d7d2cb985d70ff8dc79a12b397cc52e271` (`[codex] Harden Orchestrator-first workflow enforcement (#66)`), and merged `origin/main` into `codex/013-learning-content-ui-polish` with `git merge --no-ff origin/main` rather than squash.
+- Latest-main conflict resolution after #66 on 2026-05-10: resolved conflicts in `docs_project/screens/learning-and-exam-flows.md` and `tests/e2e/app.spec.ts`. Resolution preserved #66/#18 learning-ticket timer flow and e2e checks while keeping #69 visible `Учить` ticket ID behavior and related e2e evidence.
+- Latest-main scope boundary after #66 on 2026-05-10: `specs/014-orchestrator-first-enforcement/*` files entered the worktree only from the `origin/main` merge parent; this update did not manually edit those files.
 
 ### Dead Ends
 

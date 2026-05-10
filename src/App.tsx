@@ -12,11 +12,21 @@ import {
   type TopicGuideTicket
 } from "./data/content";
 import { DifficultyIndicator } from "./difficulty";
-import { isPassing, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
+import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
 type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials";
+type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
+type LearningTicketTimerState = {
+  remainingSeconds: number;
+  status: LearningTicketTimerStatus;
+  answeredAfterExpiry: boolean;
+};
+
+type LearningTicketTimerView = LearningTicketTimerState & {
+  onTogglePause: () => void;
+};
 
 function topicLabel(topic: string) {
   const labels: Record<string, string> = {
@@ -32,12 +42,6 @@ function topicLabel(topic: string) {
     general: "Общее"
   };
   return labels[topic] || topic;
-}
-
-function formatDuration(totalSeconds: number) {
-  const minutes = Math.floor(Math.max(totalSeconds, 0) / 60);
-  const seconds = Math.max(totalSeconds, 0) % 60;
-  return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
 function guideStatusLabel(status: string) {
@@ -59,6 +63,22 @@ function sourceStatusLabel(status: string | undefined) {
   if (status === "current") return "источник проверен как текущий";
   if (status === "stale") return "источник требует обновления";
   return "статус источника требует проверки";
+}
+
+function learningTimerStatusText(timer: LearningTicketTimerState) {
+  if (timer.answeredAfterExpiry) return "Ответ после лимита";
+  if (timer.status === "expired") return "Время вышло - билет пока не решен";
+  if (timer.status === "paused") return "Пауза";
+  if (timer.status === "answered") return "В темпе";
+  return "Мягкий лимит";
+}
+
+function initialLearningTimerState(targetSeconds: number): LearningTicketTimerState {
+  return {
+    remainingSeconds: targetSeconds,
+    status: "running",
+    answeredAfterExpiry: false
+  };
 }
 
 function StatusStrip({ progress }: { progress: StoredProgress }) {
@@ -93,7 +113,8 @@ function QuestionCard({
   difficult,
   onToggleDifficult,
   revealAfterAnswer = true,
-  allowRepeatedAnswers = false
+  allowRepeatedAnswers = false,
+  learningTimer
 }: {
   question: Question;
   mode: "learning" | "exam" | "mistakes";
@@ -102,6 +123,7 @@ function QuestionCard({
   onToggleDifficult: () => void;
   revealAfterAnswer?: boolean;
   allowRepeatedAnswers?: boolean;
+  learningTimer?: LearningTicketTimerView;
 }) {
   const [selected, setSelected] = useState<string | undefined>();
   const [showTranslation, setShowTranslation] = useState(false);
@@ -168,6 +190,31 @@ function QuestionCard({
         {mode !== "exam" && <DifficultyIndicator level={question.difficulty} label="Сложность билета" />}
         {question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
       </div>
+
+      {learningTimer && (
+        <div
+          className={`learning-timer ${learningTimer.status} ${learningTimer.answeredAfterExpiry ? "after-limit" : ""}`}
+          data-testid="learning-ticket-timer"
+          aria-label={`Темп билета: осталось ${formatDuration(learningTimer.remainingSeconds)}; ${learningTimerStatusText(learningTimer)}`}
+        >
+          <div className="learning-timer-main">
+            <Timer size={18} aria-hidden="true" />
+            <span className="learning-timer-label">Темп билета</span>
+            <strong data-testid="learning-ticket-timer-time">{formatDuration(learningTimer.remainingSeconds)}</strong>
+            <span className="learning-timer-state">{learningTimerStatusText(learningTimer)}</span>
+          </div>
+          {(learningTimer.status === "running" || learningTimer.status === "paused") && (
+            <button
+              type="button"
+              className="tool-button timer-toggle"
+              onClick={learningTimer.onTogglePause}
+              aria-label={learningTimer.status === "running" ? "Поставить таймер билета на паузу" : "Продолжить таймер билета"}
+            >
+              {learningTimer.status === "running" ? "Пауза" : "Продолжить"}
+            </button>
+          )}
+        </div>
+      )}
 
       {officialBlock}
 
@@ -241,11 +288,27 @@ function QuestionCard({
 function LearnView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
+  const [timerStates, setTimerStates] = useState<Record<string, LearningTicketTimerState>>({});
   const results = useMemo(() => searchQuestions(query), [query]);
   const question = results[index % Math.max(results.length, 1)] || data.questions[0];
   const difficult = progress.difficultQuestionIds.includes(question.id);
+  const timerTargetSeconds = learningTicketTargetSeconds(data.examFormat);
+  const currentTimerState = timerTargetSeconds ? timerStates[question.id] ?? initialLearningTimerState(timerTargetSeconds) : undefined;
 
   function record(answer: ProgressAnswer) {
+    if (timerTargetSeconds) {
+      setTimerStates((current) => {
+        const state = current[question.id] ?? initialLearningTimerState(timerTargetSeconds);
+        return {
+          ...current,
+          [question.id]: {
+            ...state,
+            status: "answered",
+            answeredAfterExpiry: state.answeredAfterExpiry || state.status === "expired" || state.remainingSeconds <= 0
+          }
+        };
+      });
+    }
     const next = { ...progress, answers: [...progress.answers, answer] };
     setProgress(next);
     saveProgress(next);
@@ -261,18 +324,86 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
     saveProgress(next);
   }
 
+  function updateQuery(nextQuery: string) {
+    setQuery(nextQuery);
+    setIndex(0);
+    setTimerStates({});
+  }
+
+  function toggleCurrentTimer() {
+    if (!timerTargetSeconds) return;
+    setTimerStates((current) => {
+      const state = current[question.id] ?? initialLearningTimerState(timerTargetSeconds);
+      if (state.status !== "running" && state.status !== "paused") return current;
+      return {
+        ...current,
+        [question.id]: {
+          ...state,
+          status: state.status === "running" ? "paused" : "running"
+        }
+      };
+    });
+  }
+
+  useEffect(() => {
+    if (!timerTargetSeconds) return;
+    setTimerStates((current) => {
+      if (current[question.id]) return current;
+      return {
+        ...current,
+        [question.id]: initialLearningTimerState(timerTargetSeconds)
+      };
+    });
+  }, [question.id, timerTargetSeconds]);
+
+  useEffect(() => {
+    if (!timerTargetSeconds || currentTimerState?.status !== "running") return undefined;
+    const timer = window.setInterval(() => {
+      setTimerStates((current) => {
+        const state = current[question.id];
+        if (!state || state.status !== "running") return current;
+        if (state.remainingSeconds <= 1) {
+          return {
+            ...current,
+            [question.id]: {
+              ...state,
+              remainingSeconds: 0,
+              status: "expired"
+            }
+          };
+        }
+        return {
+          ...current,
+          [question.id]: {
+            ...state,
+            remainingSeconds: state.remainingSeconds - 1
+          }
+        };
+      });
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [question.id, timerTargetSeconds, currentTimerState?.status]);
+
   return (
     <section className="workspace">
       <div className="toolbar">
         <label className="search-box">
           <Search size={18} aria-hidden="true" />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Поиск по испанскому, русскому, теме" />
+          <input value={query} onChange={(event) => updateQuery(event.target.value)} placeholder="Поиск по испанскому, русскому, теме" />
         </label>
         <button type="button" className="tool-button" onClick={() => setIndex((value) => value + 1)}>
           Следующий
         </button>
       </div>
-      <QuestionCard key={question.id} question={question} mode="learning" onAnswered={record} difficult={difficult} onToggleDifficult={toggleDifficult} />
+      <QuestionCard
+        key={question.id}
+        question={question}
+        mode="learning"
+        onAnswered={record}
+        difficult={difficult}
+        onToggleDifficult={toggleDifficult}
+        learningTimer={currentTimerState ? { ...currentTimerState, onTogglePause: toggleCurrentTimer } : undefined}
+      />
     </section>
   );
 }

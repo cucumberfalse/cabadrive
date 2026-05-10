@@ -237,6 +237,53 @@ small,
   color: #8b4255;
 }
 
+.learning-timer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 10px;
+  border: 1px solid #cbd8d1;
+  border-radius: 8px;
+  background: #f7fbf8;
+}
+
+.learning-timer-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.learning-timer-label,
+.learning-timer-state {
+  color: #30443d;
+}
+
+.learning-timer strong {
+  min-width: 4ch;
+  font-variant-numeric: tabular-nums;
+}
+
+.learning-timer.paused {
+  border-color: #d7c579;
+  background: #fffbea;
+}
+
+.learning-timer.expired,
+.learning-timer.after-limit {
+  border-color: #d79a7d;
+  background: #fff6ef;
+}
+
+.timer-toggle {
+  min-height: 36px;
+  padding: 0 12px;
+}
+
 .official-block,
 .support-block {
   margin: 16px 0;
@@ -641,6 +688,12 @@ small,
 
   .question-card {
     padding: 14px;
+  }
+
+  .learning-timer,
+  .learning-timer-main,
+  .timer-toggle {
+    width: 100%;
   }
 
   .materials-topic-list {
