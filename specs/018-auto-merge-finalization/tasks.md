@@ -35,6 +35,7 @@
 - Implementation update evidence: on 2026-05-10, Implementation Agent ran `git fetch origin && git merge --no-edit origin/main` in `/Users/chap/devel/cabadrive-018-auto-merge-finalization`; the branch fast-forwarded from `a26a124` to `995905b`, preserving `specs/018-auto-merge-finalization/` and adding sibling `specs/018-learning-ticket-timer/`.
 - Second implementation update evidence: after `origin/main` advanced again to `b26a37d`, Implementation Agent ran `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch fast-forwarded from `995905b` to `b26a37d`; an autostash conflict in `docs_project/project/devops/review-contract.md` was resolved by preserving new #66 Orchestrator-first enforcement blockers and this feature's finalization/merge wording. The temporary autostash was dropped after its tracked changes were restored into the worktree.
 - Third implementation update evidence: after `origin/main` advanced to `578c618`, follow-up Implementation Agent ran `git fetch origin && git stash push --include-untracked -m codex-preserve-018-auto-merge-finalization-followup && git merge --ff-only origin/main && git stash pop` on 2026-05-10. The branch fast-forwarded from `b26a37d` to `578c618`; the scoped implementation patch was restored unstaged with no conflicts, preserving sibling feature work and the new `specs/012-caba-exam-process/` mainline content.
+- Fourth implementation update evidence: after `origin/main` advanced to `6562410`, latest-main refresh Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly from PR head `ebe6c09` with no conflicts, preserving existing feature commits and adding the mainline `specs/013-learning-content-ui-polish/` content.
 
 ## Decisions
 
@@ -101,6 +102,11 @@
 - Text-search evidence after docs/template updates: `rg -n "authorized merge mechanics|human remains the default|human merge owner|user has already authorized|auto-merge or Orchestrator merge" AGENTS.md docs_project/project/devops/ai-pr-workflow.md docs_project/project/devops/review-contract.md .github/pull_request_template.md` returned no active terminal human-merge-owner wording; the only remaining "only final human approval or merge mechanics" phrase is in `ai-pr-workflow.md` root-cause explanation.
 - Gate-preservation evidence: `AGENTS.md` and `ai-pr-workflow.md` now name `.unicorn-hub/config.json` as the required-check source, require current-head green checks, resolved/outdated blocking findings, resolved required review conversations, no conflicts, current process memory, acceptance evidence, Implementation Agent feedback disposition, final Architect validation before final Analyst validation, and current-head guard evidence.
 - Helper source-review evidence: `scripts/finalize-pr.mjs` exposes no direct-push, force, admin-bypass, or protected-branch bypass path; merge behavior is limited to `gh pr merge --squash --match-head-commit <current-head>`, with optional `--auto` only behind `--auto-merge-pending`.
+- `node --test tests/finalize-pr.test.mjs`: passed after latest-main refresh to `6562410`; 12 tests passed.
+- `pnpm run check:repo`: passed after latest-main refresh; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after latest-main refresh; no configured product paths changed, so the feature-memory gate passed.
+- `git diff --check`: passed after latest-main refresh; no whitespace errors reported.
+- `pnpm run preflight`: passed after latest-main refresh; feature-memory gate, repo baseline, content validation, 100 node tests, build, service-worker generation with 280 cached assets, and 22 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-C-9FbvsS.js` but completed successfully.
 
 ## Final Architect Validation Notes
 
