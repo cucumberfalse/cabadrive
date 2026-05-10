@@ -10,9 +10,10 @@
 - Active-model stop condition: `[If the request first reached a non-Orchestrator active model, record that it stopped instead of implementing and routed to Orchestrator.]`
 - Read-only transition context: `[If the interaction began read-only, record when it became repository-changing. Otherwise state "Not applicable."]`
 - Assigned intake worktree/branch: `[Latest-main isolated worktree and branch used for Analyst intake.]`
-- Latest-main base evidence: `[origin/main fetch/verification method, base ref or SHA, and date/time if available.]`
+- Latest-main base evidence: `[origin/main fetch/verification method, base ref or SHA, date/time if available, or documented fallback/blocker if verification was unavailable.]`
 - Parallel-work note: `[Known or assumed parallel Orchestrators/agents, plus preservation constraints.]`
 - Accidental-start recovery context: `[If any direct edits, staging, commits, pushes, PR mutations, or other repository changes started before routing, record stop/report/preserve/disposition status. Otherwise state "None."]`
+- Cleanup context: `[Known cleanup assumptions, candidate agent artifacts, excluded active worktrees, or "not applicable".]`
 
 ## User Request
 
@@ -22,6 +23,7 @@
 
 - `[Question Analyst sent to Orchestrator, answer Orchestrator returned from the user, or explicit assumption if no answer was available.]`
 - `If no clarification was requested, state why the intake was clear enough for Architect planning.`
+- `If cleanup may be needed, record that candidate names, paths, or timestamps are only discovery hints and not deletion proof.`
 
 ## Project Context Reviewed
 
@@ -40,10 +42,12 @@ If external research was not used, record why it was unnecessary or unsafe for t
 ## Proposed Outcome Or Workflow
 
 1. `[Expected product, process, or documentation outcome.]`
+2. `[If applicable, expected cleanup handoff, validation, evidence, and preservation behavior.]`
 
 ## Role Boundaries Or Affected Actors
 
 - `[Actor or role]: [Responsibility and boundary.]`
+- `Cleanup Agent: [When applicable, cleanup-only responsibility, forbidden actions, positive-proof validation, refusal rules, and evidence handoff.]`
 
 ## Artifact And Handoff Expectations
 
@@ -55,14 +59,17 @@ If external research was not used, record why it was unnecessary or unsafe for t
 - Implementation starts only after complete feature memory exists and Orchestrator assigns an isolated worktree, branch, and PR slice.
 - Handoff context for Orchestrator: `[intake branch/worktree, feature folder, and any known parallel-work constraints.]`
 - The Analyst-created latest-main handoff context may continue through Architect planning and may become the single implementation PR slice only if Orchestrator explicitly assigns it that way; additional task slices require separate latest-main isolated worktrees/branches/PRs.
+- Cleanup assumptions and excluded active work, if relevant, must be included in the handoff context.
 
 ## Open Questions And Risks
 
 - `[Open question, ambiguity, risk, or split/collision note.]`
+- `[Cleanup ownership, approved roots, active-work preservation, or ambiguous candidate risk.]`
 
 ## Acceptance Expectations
 
 - `[Expectation for Architect to convert into acceptance criteria.]`
+- `[Expected latest-main startup evidence and cleanup evidence/refusal expectations, when relevant.]`
 
 ## Final Analyst Validation Notes
 

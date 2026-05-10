@@ -117,6 +117,14 @@ tests, runtime files, CI, branch protection, review dispositions, or other
 non-evidence content makes prior validation stale and must be routed back
 through role-appropriate follow-up or final validation.
 
+Feature memory should also record the startup base for repository-changing work:
+latest verified `main`, normally `origin/main` after fetch, or a documented
+fallback/blocker when verification is unavailable. When cleanup is in scope,
+feature memory must record approved cleanup roots, active/current exclusions,
+candidate inventory, validation, action/refusal reason, and post-cleanup
+confirmation for each candidate. Name patterns, timestamps, and memory are only
+candidate discovery hints; positive proof is required before deletion.
+
 ## Numbering
 
 The Analyst chooses the feature folder number by scanning existing directories
@@ -129,9 +137,12 @@ a clearer slug, or ask the Orchestrator to coordinate before writing. When
 parallel Orchestrators or agents may be active, Orchestrator must account for
 observed sibling worktrees, branches, and unmerged feature folders before
 assigning work, and must warn subagents to preserve existing dirty diffs,
-branches, commits, PRs, and process memory. If one request contains independent
-goals, split them into separate folders or record a split decision before
-handoff.
+branches, commits, PRs, process memory, active worktrees, and ambiguous local
+paths. Cleanup of completed agent-created environments is coordinated through
+Cleanup Agent and must preserve current, active, dirty, untracked, unpushed,
+open-PR, locked, running-process, ambiguous, user-owned, out-of-root, or
+process-memory-referenced targets. If one request contains independent goals,
+split them into separate folders or record a split decision before handoff.
 
 Do not edit, delete, move, stage, or otherwise mutate sibling feature folders or
 process memory while working on an assigned feature unless Orchestrator

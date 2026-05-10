@@ -11,7 +11,7 @@
 - [ ] Complete implementation feature memory is present: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except documented legacy/no-intake exceptions.
 - [ ] Analyst clarification, if needed, was relayed through Orchestrator; otherwise intake records why no clarification was needed.
 - [ ] Accidental direct-edit recovery, if any, is recorded with stop/report/preserve/restart disposition and no unauthorized destructive cleanup.
-- [ ] Latest `origin/main` startup/base evidence is recorded for the work item and for this task slice, or the PR explicitly uses the Analyst-created latest-main handoff branch as the single implementation PR slice.
+- [ ] Latest verified `main` startup/base evidence is recorded for the work item and for this task slice, normally `origin/main` after fetch, or the PR explicitly uses the Analyst-created latest-main handoff branch as the single implementation PR slice.
 - [ ] Cycle PR set is current and records each contributing PR slice by purpose, branch, PR metadata, head SHA, status, and final-validation inclusion.
 - [ ] Feature memory names the goal and scope.
 - [ ] Every acceptance criterion has evidence in the PR, plan, or linked checks.
@@ -28,6 +28,8 @@
 - [ ] Additional task slices, if any, started from latest `origin/main` in separate isolated worktrees/branches/PRs; in-flight work was preserved rather than overwritten.
 - [ ] Changes are limited to the assigned feature memory and scoped files; unrelated work is deferred.
 - [ ] Role boundaries were preserved: Orchestrator did not directly edit repo files, and agents did not switch roles mid-task.
+- [ ] Cleanup, if applicable, was coordinated through Cleanup Agent or explicitly equivalent cleanup role; Orchestrator did not directly delete local repository environments.
+- [ ] Cleanup evidence, if applicable, records approved roots, candidate inventory, validation, action/refusal reason, post-cleanup confirmation, and preservation of current/active/dirty/untracked/unpushed/open-PR/ambiguous/user-owned/out-of-root/locked/running-process targets.
 - [ ] Required review fixes, source prerequisites, metadata fixes, and final-guard fixes are split into separate PRs when separation lowers risk or clarifies gates.
 
 ## Merge Readiness

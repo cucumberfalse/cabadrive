@@ -40,6 +40,9 @@ Reviewers check role boundaries in addition to code behavior:
   disposition, with no hidden continuation, silent role switching, destructive
   cleanup, or unauthorized revert of user/sibling work.
 - One task slice must map to one isolated worktree, one branch, and one PR.
+- New repository-changing work should show latest verified `main` startup
+  evidence, normally `origin/main` after fetch, or a documented fallback/blocker
+  when fetch/base verification was unavailable.
 - Orchestrator assignment should warn subagents that parallel agents may be
   active and require preservation of existing dirty diffs, branches, commits,
   PRs, and process memory.
@@ -49,6 +52,9 @@ Reviewers check role boundaries in addition to code behavior:
 - When a feature has multiple contributing slices, reviewers should verify that
   the cycle PR set records each PR slice's purpose, branch, PR metadata, head
   SHA, status, and inclusion in final validation.
+- Completion-time cleanup must be coordinated by Orchestrator and executed only
+  by Cleanup Agent or an explicitly equivalent assigned cleanup role.
+- Orchestrator must not directly delete local repository environments.
 - Implementation PRs must stay inside the assigned feature memory and must not
   mix unrelated changes.
 - Implementation must not start without complete feature memory:
@@ -105,6 +111,16 @@ current-PR-head guard evidence after a post-validation evidence commit, or any
 non-evidence post-validation change that still relies on prior Architect or
 Analyst validation.
 
+For cleanup-related changes or cleanup evidence, reviewers must block merge when
+the rules or evidence permit deletion based only on name, timestamp, or memory;
+when cleanup can touch current, active, dirty, untracked, unpushed, open-PR,
+locked, running-process, ambiguous, user-owned, out-of-root, non-Cabadrive, or
+process-memory-referenced targets; when PR lookup failure is treated as safe;
+when registered worktrees can be removed with raw recursive deletion; when
+cleanup evidence omits inventory, validation, action/refusal reason, or
+post-cleanup confirmation; or when a non-cleanup role performs destructive
+local-environment cleanup.
+
 Review findings that require code, docs, tests, content, specs, metadata, or
 process-memory edits are routed by Orchestrator to the proper role. Source
 currentness or archive-evidence findings block merge until fixed by the
@@ -118,8 +134,8 @@ local guard evidence, Orchestrator-first routing evidence, Analyst
 clarification-relay evidence, latest-main startup evidence, parallel-work
 isolation evidence, cycle PR-set evidence, final Architect validation, final
 Analyst validation, effective content head evidence, current-PR-head guard
-evidence, return-limit state, or manual review of the SENAR done gate.
-Explicit user authorization for Orchestrator
+evidence, return-limit state, cleanup evidence/refusal records when relevant,
+or manual review of the SENAR done gate. Explicit user authorization for Orchestrator
 merge removes only the need to ask again; it does not remove any merge-readiness
 gate. A human remains the default final merge owner when no such authorization
 exists.

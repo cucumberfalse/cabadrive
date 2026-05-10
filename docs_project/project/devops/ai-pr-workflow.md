@@ -74,6 +74,25 @@ whether it is included in final validation. Replacement-agent or rerouted-slice
 work preserves and documents the prior slice state instead of hiding it from
 final validation.
 
+## Fresh Latest-Main Startup
+
+Every new repository-changing Orchestrator run defaults to a fresh isolated
+environment based on latest verified `main`. The normal startup path is:
+
+1. fetch `origin main`;
+2. record the verified `origin/main` base SHA in feature memory or handoff
+   evidence;
+3. create or assign a new isolated worktree, branch, and PR slice from that
+   base;
+4. warn assigned subagents that parallel work may exist and that existing dirty
+   diffs, branches, commits, PRs, process memory, active worktrees, and
+   ambiguous local paths must be preserved.
+
+If fetch fails, `origin/main` cannot be verified, or the only available
+environment is stale, dirty, or ambiguous, Orchestrator must stop for a
+documented blocker exception or record an explicit fallback with evidence. It
+must not silently reuse a stale worktree or unknown base as if it were current.
+
 ## Role Boundaries And Permissions
 
 Agents stay inside the role assigned for the current task. They must not switch
@@ -109,6 +128,9 @@ new or existing subagent with the correct role.
   merge readiness, track the work cycle and cycle PR set, invoke final
   validation, and perform authorized merge actions, but must not directly edit
   repository files.
+- Orchestrator coordinates completion-time cleanup through Cleanup Agent when
+  completed agent-created environments should be removed. Orchestrator must not
+  directly delete local repository environments.
 - Orchestrator relays Analyst clarification questions, but after Analyst
   handoff does not initiate new normal-flow requirement clarification with the
   user. Later roles use recorded assumptions, record Implementation Agent
@@ -123,6 +145,10 @@ new or existing subagent with the correct role.
 - Review Agent reviews the PR and reports findings, preferably as GitHub inline
   review threads. It does not edit files, implement fixes, rerun checks, or
   merge while acting as reviewer.
+- Cleanup Agent performs only assigned local-disk cleanup of completed
+  agent-created Cabadrive environments. It does not edit repository files,
+  stage, commit, push, open PRs, review, merge, change branch protection, touch
+  secrets, touch production resources, or remove user-owned directories.
 
 ## Autonomous Orchestration
 
@@ -160,6 +186,47 @@ existing dirty diffs, branches, commits, PRs, and process memory. Numeric
 feature-prefix or branch ambiguity from parallel work is routed through
 Orchestrator coordination instead of being solved by overwriting another
 worker's files.
+
+## Completion-Time Cleanup
+
+Cleanup is destructive local-disk work, so it is coordinated by Orchestrator and
+executed only by an assigned Cleanup Agent or explicitly equivalent cleanup
+role. Cleanup starts with a dry-run inventory and approved cleanup roots. Name
+patterns, modification times, and memory are discovery hints only; they are not
+proof that deletion is safe.
+
+Cleanup Agent may remove a candidate only when evidence proves all of the
+following:
+
+- the path is inside an approved Cabadrive agent-environment root;
+- the path belongs to the Cabadrive repository remote or has Architect-approved
+  Cabadrive agent metadata;
+- worktree registration or equivalent metadata ties it to an agent-created work
+  environment;
+- the target is not the current Orchestrator, Analyst, Architect,
+  Implementation Agent, Review Agent, Cleanup Agent, or user worktree;
+- the target is inactive, not locked, and has no running process using it;
+- `git status --short` is empty, including no untracked work;
+- upstream, merge, or closure evidence proves there are no unpushed commits to
+  preserve;
+- GitHub lookup shows no open or unresolved PR for the branch/head SHA;
+- active process memory does not reference the target;
+- final agent report, merged/closed PR evidence, or explicit Orchestrator state
+  proves the work is complete.
+
+Cleanup Agent must preserve and record refusal evidence for current, active,
+dirty, untracked, unpushed, no-upstream, open-PR, PR-lookup-failed, locked,
+running-process, ambiguous, user-owned, out-of-root, non-Cabadrive, or
+process-memory-referenced targets. Registered worktrees are removed with
+`git worktree remove <path>`; raw recursive deletion is forbidden for registered
+worktrees and is allowed only for non-worktree generated artifacts when the
+assignment and evidence explicitly authorize it.
+
+Cleanup evidence must include candidate inventory, approved roots, excluded
+active/current paths, branch, HEAD SHA, remote URL, worktree registration state,
+git status, upstream/unpushed result, PR state, lock/process result,
+process-memory check, completion signal, action or refusal reason, exact
+deletion command for removed targets, and post-cleanup confirmation.
 
 ## PR Slicing
 
@@ -281,14 +348,17 @@ Before merge, the author should also confirm the SENAR done gate:
   parallel-work preservation guidance
 - sibling worktrees, branches, dirty diffs, commits, PR state, and process
   memory were preserved unless Orchestrator explicitly coordinated a change
-- latest `origin/main` startup/base context is recorded for the work item and
+- latest verified `main` startup/base context is recorded for the work item and
   each new task slice, except when the Analyst-created latest-main handoff
-  branch is explicitly used as the single PR slice
+  branch is explicitly used as the single PR slice; any fallback/blocker is
+  documented
 - the cycle PR set records each contributing PR slice by purpose, branch, PR
   metadata, head SHA, status, and final-validation inclusion
 - every acceptance criterion has evidence in the PR, plan, or linked checks
 - the negative scenario is covered or explicitly waived
 - process memory records dead ends, decisions, known issues, verification evidence, and Implementation Agent feedback
+- cleanup evidence is present for any assigned cleanup scope, or cleanup is
+  explicitly recorded as not applicable or refused for safety
 - Implementation Agent feedback is either absent or has Architect disposition
 - final Architect validation passed before final Analyst validation, and any
   Architect returns stayed within the limit of 10 or escalated to a new feature
