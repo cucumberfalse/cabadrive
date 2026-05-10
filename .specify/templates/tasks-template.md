@@ -2,19 +2,22 @@
 
 ## Setup
 
-- [ ] T001 Confirm active feature folder and branch.
+- [ ] T001 Confirm active feature folder, assigned isolated worktree, branch, and PR slice.
 - [ ] T002 Read `feature-request.md`, `spec.md`, and `plan.md` before editing.
-- [ ] T003 Run baseline checks before editing.
+- [ ] T003 Record baseline checks before editing, including `git status --short --branch`.
+- [ ] T004 Confirm Orchestrator provided any parallel-work warning and preserve existing dirty diffs, branches, commits, PRs, and process memory.
 
 ## Implementation
 
-- [ ] T004 `[Task]`
+- [ ] T005 `[Task]`
+- [ ] T006 Record any scope tension, proposed executable enforcement, or missing architecture decision as Implementation Agent feedback instead of implementing it directly.
 
 ## Verification
 
-- [ ] T005 Run local preflight.
-- [ ] T006 Record verification evidence and update docs/tasks status.
-- [ ] T007 Confirm every Implementation Agent feedback item has Architect disposition before completion.
+- [ ] T007 Run local preflight.
+- [ ] T008 Record verification evidence and update docs/tasks status.
+- [ ] T009 Confirm changed files are limited to assigned scope.
+- [ ] T010 Confirm every Implementation Agent feedback item has Architect disposition before completion.
 
 ## Process Memory
 
@@ -33,6 +36,7 @@
 ### Verification Evidence
 
 - `[Command/check and result]`
+- `[Manual scope review and acceptance-criteria evidence]`
 
 ## Implementation Agent Feedback
 
@@ -40,4 +44,4 @@
 
 ## Architect Dispositions
 
-- `[For each feedback item, record task/ticket created or explicit not-needed decision.]`
+- `[For each feedback item, record task/ticket created or explicit not-needed decision. Use "None" when there is no Implementation Agent feedback.]`

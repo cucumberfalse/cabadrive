@@ -15,6 +15,13 @@ request, clarification Q&A, assumptions, project context, external research
 when used, open questions, risks, and acceptance expectations before Architect
 planning starts.
 
+Repository-changing requests default to Orchestrator entry. Orchestrator invokes
+Analyst first when no current `feature-request.md` exists, relays any Analyst
+clarification questions to the user, returns answers to Analyst, and takes the
+Analyst-created intake branch/worktree context forward after Analyst handoff.
+Analyst is the only normal-flow role that may initiate user requirement
+clarification.
+
 `spec.md`, `plan.md`, and `tasks.md` are the Architect-owned implementation
 feature memory. Repository-changing PRs must include all four artifacts once the
 Analyst workflow is in use. Legacy feature folders created before Analyst
@@ -38,6 +45,10 @@ to three digits. Duplicate existing prefixes do not change the rule; for
 example, if several `002-*` folders exist, the next prefix is `003`.
 
 If the target folder name collides, keep the same next numeric prefix and choose
-a clearer slug, or ask the Orchestrator to coordinate before writing. If one
-request contains independent goals, split them into separate folders or record a
-split decision before handoff.
+a clearer slug, or ask the Orchestrator to coordinate before writing. When
+parallel Orchestrators or agents may be active, Orchestrator must account for
+observed sibling worktrees, branches, and unmerged feature folders before
+assigning work, and must warn subagents to preserve existing dirty diffs,
+branches, commits, PRs, and process memory. If one request contains independent
+goals, split them into separate folders or record a split decision before
+handoff.

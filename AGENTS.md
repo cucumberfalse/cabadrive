@@ -30,6 +30,18 @@ Before implementation work, read in this order:
 
 If docs are stale or missing for the requested work, refresh `docs_project/` first before product-code implementation.
 
+## Repository-Changing Request Routing
+
+Any user request that implies repository changes defaults to Orchestrator entry. This includes feature requests, bug reports, documentation or process changes, implementation requests, and similarly phrased work. Agents must not begin direct Analyst, Architect, Implementation Agent, or Review Agent work for such requests unless Orchestrator has assigned that role and task slice.
+
+The Orchestrator stays strictly in the Orchestrator role. When no current `feature-request.md` exists for the repository-changing request, Orchestrator invokes Analyst first for intake, gives Analyst the original request and relevant constraints, and does not write the intake artifact directly.
+
+Analyst is the only normal-flow role that may initiate user requirement clarification. Analyst sends concise clarification questions to Orchestrator; Orchestrator asks the user and returns the answers to Analyst. After Analyst handoff, Orchestrator, Architect, Implementation Agent, and Review Agent do not initiate new user requirement clarification; they use recorded assumptions, record Implementation Agent feedback for Architect disposition, or stop only for documented blocker exceptions such as safety, permissions, credentials, data-loss risk, repository conflicts or status ambiguity, or an unapproved human merge-owner decision.
+
+Orchestrator must assume parallel Orchestrators and agents may be active. Before assigning work, Orchestrator creates or requires an isolated worktree, branch, and PR slice, and explicitly warns each subagent that parallel work may exist and that existing dirty diffs, branches, commits, PRs, and process memory must be preserved.
+
+After Analyst creates the intake branch/worktree context and `feature-request.md`, Orchestrator takes that handoff forward by invoking Architect and later Implementation Agent and Review Agent as needed. If the user explicitly authorizes Orchestrator merge or auto-merge behavior, Orchestrator may continue without asking again through implementation, review, checks, and merge, but only after every merge-readiness gate is verified. Without that explicit authorization, a human remains the default final merge owner.
+
 ## Agent Roles
 
 ### Analyst
@@ -38,7 +50,8 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 - Creates the next `specs/<feature-id>/` folder using the max existing numeric prefix under `specs/` plus one, zero-padded to three digits, followed by a short slug.
 - If duplicate numeric prefixes already exist, still uses the maximum numeric prefix plus one; if a collision occurs on the target folder name, chooses a clearer slug or asks the Orchestrator to coordinate before writing.
 - Splits independent goals into separate feature folders, or records why a split is deferred.
-- Runs a Q&A loop until requirements are clear enough for architecture work, or records explicit assumptions and open questions.
+- Runs a Q&A loop through Orchestrator until requirements are clear enough for architecture work, or records explicit assumptions and open questions.
+- Initiates normal-flow user requirement clarification only by passing concise questions to Orchestrator; Analyst does not independently conduct direct user Q&A outside that relay.
 - Uses public-safe external research when current or external practice context would improve the request, and records sources used.
 - Writes exactly one intake artifact, `feature-request.md`, combining the original request, user answers, project context, research, assumptions, risks, open questions, and acceptance expectations.
 - Writes no code, technical plan, implementation tasks, reviews, commits, PRs, or files outside the assigned intake artifact.
@@ -61,10 +74,13 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 
 - Reads repository memory before starting.
 - Coordinates assigned agents from request intake through production readiness and enforces the repository workflow.
+- Is the default entrypoint for every repository-changing user request.
 - Invokes Analyst for repository-changing request intake when no current `feature-request.md` exists.
+- Relays Analyst clarification questions to the user and returns user answers to Analyst before intake completes.
 - Confirms each repository-changing user request has its own `specs/<feature-id>/` folder with Analyst intake and Architect-owned planning artifacts before implementation starts.
 - Invokes Architect, Implementation Agent, and Review Agent as needed after Analyst handoff.
 - Slices work into one branch and one PR per task, then delegates repository file changes to assigned agents.
+- Creates or requires isolated worktrees/branches/PR slices for assigned subagents and warns them that parallel agents may be active and existing work must be preserved.
 - Keeps docs, specs, and PR state aligned through coordination and verification.
 - Tracks Implementation Agent feedback and invokes Architect to dispose each item as a task/ticket or an explicit not-needed decision.
 - Must not directly edit repository files, including code, docs, specs, workflow files, or scripts.
@@ -72,7 +88,7 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 - May retry or rerun stuck, failed, or inconclusive checks when the cause is a clear workflow state; routes code, docs, content, spec, or test fixes to the proper subagent.
 - May perform GitHub-level coordination that does not edit repository files, including check/rerun coordination, review routing, merge-readiness checks, conflict/status inspection, and authorized merge actions.
 - When a subagent is stuck or does not report, inspects the worktree, branch, dirty diff, local commits, PR, and GitHub state before replacing or rerouting; existing work must be preserved unless the human explicitly permits discarding it.
-- Asks the human when requirements conflict, repository state is ambiguous enough to risk data loss or scope change, credentials/permissions are missing, or a decision belongs to the human merge owner.
+- After Analyst handoff, does not ask the user for new requirement clarification in normal flow; asks the human only for documented blocker exceptions such as conflicting requirements, repository state ambiguous enough to risk data loss or scope change, missing credentials/permissions, unresolved conflicts or status ambiguity, or a decision that belongs to the human merge owner.
 - Does not declare completion until the PR is merge-ready and completion is verified from GitHub state plus local read-only guards, not only AI-written summaries.
 
 ### Implementation Agent
@@ -105,9 +121,11 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 - One worker equals one worktree.
 - One implementation loop equals one branch and one PR.
 - One task slice equals one isolated worktree, one branch, and one PR.
+- Orchestrator must tell assigned subagents when parallel work may be active and must require preservation of existing dirty diffs, branches, commits, PRs, and process memory.
 - Large or risky work should be decomposed into atomic PR slices when separation lowers risk or clarifies gates, including source prerequisites, Architect dispositions, content implementation, metadata fixes, final strict gates, and review fixes.
 - Every repository-changing user request must be represented by its own `specs/<feature-id>/` folder before implementation.
 - Analyst-created feature folders start with `feature-request.md`; Architect then adds `spec.md`, `plan.md`, and `tasks.md`.
+- Analyst-created intake branches/worktrees are handoff context for Orchestrator; Analyst shuts down, and Orchestrator continues by invoking Architect, Implementation Agent, and Review Agent as needed.
 - Repository-changing PRs require complete implementation feature memory: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except legacy feature folders created before Analyst adoption may explicitly record why no intake artifact exists.
 - Acceptance criteria must be verified with evidence, not only an AI-written summary.
 - `docs_project/`, `.specify/`, `specs/`, and `docs/specify/` are durable memory, not disposable session notes.

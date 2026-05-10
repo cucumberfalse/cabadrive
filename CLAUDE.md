@@ -22,9 +22,11 @@ Claude Code is the default implementation agent unless repository policy says ot
 ## Operating Rules
 
 - All product changes go through pull requests.
-- Product changes start from an active `specs/<feature-id>/` folder.
+- Any request that implies repository changes starts with Orchestrator entry, not direct implementation-agent work.
+- Repository-changing work starts from an active `specs/<feature-id>/` folder.
 - Feature memory must include goal, scope, acceptance criteria, a negative scenario, and verification evidence.
 - One task slice equals one isolated worktree, one branch, and one PR.
+- When Orchestrator assigns a task, follow the assigned worktree, branch, PR slice, and explicit parallel-work warning; preserve existing dirty diffs, branches, commits, PRs, and process memory from other agents.
 - Large or risky work should be split into atomic PR slices when separation lowers risk or clarifies gates, including source prerequisites, Architect dispositions, content implementation, metadata fixes, final strict gates, and review fixes.
 - Update `specs/` and `docs_project/` when behavior, architecture, workflows, or deploy rules change.
 - Record dead ends, decisions, and known issues before calling work complete.
@@ -35,12 +37,15 @@ Claude Code is the default implementation agent unless repository policy says ot
 
 ## Role Boundaries
 
+- Orchestrator is the default entrypoint for repository-changing requests and invokes Analyst first when no current `feature-request.md` exists. Orchestrator must remain in the Orchestrator role and must not directly edit repository files.
 - Analyst writes only `feature-request.md`, then hands off. Analyst does not write plans, code, reviews, commits, pushes, or PRs.
+- Analyst is the only normal-flow role that may initiate user requirement clarification, and those questions flow through Orchestrator: Analyst gives questions to Orchestrator, Orchestrator asks the user, and Orchestrator returns answers to Analyst.
 - Architect writes `spec.md`, `plan.md`, and `tasks.md`, including dispositions. Architect does not write implementation, review, commits, pushes, PRs, or merges.
 - Orchestrator coordinates through production readiness, invokes the right subagent, and must not directly edit repository files. Orchestrator may perform GitHub-level coordination such as check reruns, review routing, merge-readiness checks, and authorized merge actions when those actions do not edit files.
 - Implementation Agent works only from the assigned feature memory, worktree, branch, and PR slice. Implementation Agent may stage, commit, push, and open a ready PR for that slice, but does not merge.
 - Review Agent reviews diffs, feature-memory compliance, and role/process boundaries. Review Agent does not edit files, implement fixes, rerun checks, or merge while acting as reviewer.
 - Agents must not switch roles mid-task. If different work is needed, Orchestrator reroutes it to the correct role.
+- After Analyst handoff, Orchestrator, Architect, Implementation Agent, and Review Agent must not initiate new normal-flow requirement clarification with the user. Use recorded assumptions, record Implementation Agent feedback for Architect disposition, or stop only for blocker exceptions such as safety, permissions, credentials, data-loss risk, repository conflicts or status ambiguity, or an unapproved human merge-owner decision.
 
 ## Orchestrator Autonomy
 
@@ -48,7 +53,9 @@ Claude Code is the default implementation agent unless repository policy says ot
 - Retry or rerun stuck, failed, or inconclusive checks when the cause is a clear workflow state.
 - Reroute code, docs, content, spec, test, or review-fix work to the role that owns it.
 - For a stuck or non-reporting subagent, inspect the worktree, branch, dirty diff, local commits, PR, and GitHub state before replacing or rerouting, and preserve existing work unless the human explicitly permits discarding it.
-- Ask the human when requirements conflict, state is ambiguous enough to risk data loss or scope expansion, credentials are missing, or the decision belongs to the human merge owner.
+- After Analyst handoff, continue without asking new requirement questions when current memory provides enough context; ask the human only when requirements conflict, state is ambiguous enough to risk data loss or scope expansion, credentials are missing, conflicts/status ambiguity block progress, or the decision belongs to the human merge owner.
+- When the user explicitly authorizes Orchestrator merge or auto-merge behavior, Orchestrator may merge without asking again only after verifying green required checks, no blocking review findings, no conflicts, current process memory, acceptance evidence, resolved or disposed Implementation Agent feedback, and final local/read-only guards.
+- A human remains the default final merge owner when no explicit merge authorization exists.
 - Declare completion only from GitHub state plus local read-only guard evidence, not from AI-written summaries alone.
 
 ## First Setup

@@ -4,13 +4,20 @@
 
 `[State whether this was created by Analyst intake, migrated from a legacy request, or prepared as a seed artifact.]`
 
+## Orchestrator Routing Context
+
+- Orchestrator entry: `[Who routed this repository-changing request to Analyst, and when.]`
+- Assigned intake worktree/branch: `[Isolated worktree and branch used for Analyst intake.]`
+- Parallel-work note: `[Known or assumed parallel Orchestrators/agents, plus preservation constraints.]`
+
 ## User Request
 
 `[Original user request, preserving relevant wording and constraints.]`
 
 ## Clarified Answers And Assumptions
 
-- `[Question asked, answer received, or explicit assumption if no answer was available.]`
+- `[Question Analyst sent to Orchestrator, answer Orchestrator returned from the user, or explicit assumption if no answer was available.]`
+- `If no clarification was requested, state why the intake was clear enough for Architect planning.`
 
 ## Project Context Reviewed
 
@@ -37,8 +44,10 @@ If external research was not used, record why it was unnecessary or unsafe for t
 ## Artifact And Handoff Expectations
 
 - Analyst writes only this `feature-request.md` intake artifact.
+- Requirement clarification, when needed, is initiated only by Analyst and relayed through Orchestrator.
 - Analyst hands off to Orchestrator and shuts down after intake is ready.
 - Architect starts from this artifact and writes `spec.md`, `plan.md`, and `tasks.md`.
+- Handoff context for Orchestrator: `[intake branch/worktree, feature folder, and any known parallel-work constraints.]`
 
 ## Open Questions And Risks
 
