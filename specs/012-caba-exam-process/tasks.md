@@ -121,16 +121,16 @@
 
 ## Review Agent Checklist
 
-- [ ] T096 Review Agent confirms the implementation stays within the conservative `012` slice.
-- [ ] T097 Review Agent confirms official sources outrank community context in copy and metadata.
-- [ ] T098 Review Agent confirms major process claims have official links and checked dates.
-- [ ] T099 Review Agent confirms volatile fees/sedes/turns/forms are dated/labeled or omitted.
-- [ ] T100 Review Agent confirms no legal, immigration, medical, or individualized procedural advice is introduced.
-- [ ] T101 Review Agent confirms foreigner/prior-license/beginner notes are conditional and source-backed.
-- [ ] T102 Review Agent confirms no runtime network fetch, remote image, raw PDF viewer, backend, scraping, or monitor was introduced.
-- [ ] T103 Review Agent confirms images, if included, are local, attributed, license-safe, and free of private/personal data.
-- [ ] T104 Review Agent confirms tests and verification evidence are recorded.
-- [ ] T105 Review Agent confirms durable docs were updated where behavior or source policy changed.
+- [x] T096 Review Agent confirms the implementation stays within the conservative `012` slice.
+- [x] T097 Review Agent confirms official sources outrank community context in copy and metadata.
+- [x] T098 Review Agent confirms major process claims have official links and checked dates.
+- [x] T099 Review Agent confirms volatile fees/sedes/turns/forms are dated/labeled or omitted.
+- [x] T100 Review Agent confirms no legal, immigration, medical, or individualized procedural advice is introduced.
+- [x] T101 Review Agent confirms foreigner/prior-license/beginner notes are conditional and source-backed.
+- [x] T102 Review Agent confirms no runtime network fetch, remote image, raw PDF viewer, backend, scraping, or monitor was introduced.
+- [x] T103 Review Agent confirms images, if included, are local, attributed, license-safe, and free of private/personal data.
+- [x] T104 Review Agent confirms tests and verification evidence are recorded.
+- [x] T105 Review Agent confirms durable docs were updated where behavior or source policy changed.
 
 ## PR Readiness
 
@@ -138,9 +138,9 @@
 - [x] T107 Confirm `tasks.md` process memory is current before review.
 - [x] T108 Confirm any Implementation Agent feedback items are recorded for Architect disposition.
 - [x] T109 Confirm no out-of-scope product/content/source changes are included.
-- [ ] T110 Confirm no blocking review findings remain.
+- [x] T110 Confirm no blocking review findings remain.
 - [ ] T111 Confirm required checks are green after push/PR.
-- [ ] T112 Confirm the PR has no unresolved merge conflicts.
+- [x] T112 Confirm the PR has no unresolved merge conflicts.
 - [ ] T113 Leave only final human approval or merge mechanics remaining.
 
 ## Process Memory
@@ -216,6 +216,9 @@
 
 ### Verification Evidence
 
+- 2026-05-10 process-memory follow-up for PR #72: Codex Review for head `4fa9cc1177f7f12d46e6155b012fdeeeb435d68b` reported no findings. The prior CENAT P1 review thread is resolved/outdated after the `.gob.ar` CENAT payment endpoint correction, so no blocking review findings remain.
+- 2026-05-10 process-memory follow-up for PR #72: `gh pr view 72 --json mergeable,mergeStateStatus,headRefOid,statusCheckRollup,reviewDecision,url` reported head `4fa9cc1177f7f12d46e6155b012fdeeeb435d68b`, `mergeable: MERGEABLE`, and `mergeStateStatus: UNSTABLE`. This confirms no unresolved merge conflicts; T111 and T113 remain open because required checks are not green.
+- 2026-05-10 process-memory follow-up for PR #72: GitHub Actions required checks `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` still fail before job execution with the annotation `The job was not started because recent account payments have failed or your spending limit needs to be increased...`. This is an external GitHub billing/spending-limit blocker, not a code failure; local validation evidence remains green below.
 - `pnpm run validate:content` passed on 2026-05-10: `Content validation passed: 460 category B fallback questions, 276 local image references.`
 - `pnpm run test` passed on 2026-05-10: 75 node tests passed, including new CABA exam process guide validation tests.
 - `pnpm run build` passed on 2026-05-10: Vite production build completed and service worker generated with 280 cached assets. Vite emitted the existing large chunk warning for the bundled app.
