@@ -74,13 +74,15 @@
 - Architect decision: Broad automatic cleanup tooling is out of scope for this feature. If implementation finds a narrow tool is necessary, it must be recorded as feedback and receive Architect disposition before being implemented.
 - Implementation decision: No cleanup automation or deletion tooling was added. The durable rules define the role, validation, refusal, and evidence contract; actual one-time deletion remains for a separately assigned Cleanup Agent per the current Implementation Agent assignment.
 - Architect disposition, 2026-05-10: chose path A for PR #65 coordination. PR #65 has since merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`; this branch was rebased onto that latest verified `main`, overlapping governance/template files were reconciled with cleanup/latest-main governance, and local effective content head after rebase is `5031c8178035a4a1ca03dbf7f1f7b76a09909baf`. PR #65 is now an upstream prerequisite already merged, not an active merge-order risk for this feature cycle.
+- PR #67 review-fix decision, 2026-05-10: unresolved P2 on `.specify/templates/plan-template.md` is addressed narrowly by editing only the assigned template and feature memory files. The template now aligns with feature/spec/tasks templates for latest verified main startup, fetch fallback/blocker handling, cleanup applicability/evidence/refusal, Cleanup Agent expectations, and final current-head guards.
 
 ### Known Issues
 
 - Some old local artifacts may not contain enough metadata to prove they were agent-created and completed. Those paths must be preserved unless the user authorizes a separate manual cleanup.
 - Cleanup PR-state validation depends on GitHub lookup. If credentials or network access are unavailable, affected candidates are ambiguous and must be preserved.
 - Existing helper-created and sibling worktree naming conventions may differ. The implementation must document approved cleanup roots and cannot rely on one naming pattern.
-- Resolved sequencing note: PR #65 was the merge-order dependency for overlapping durable workflow/template files, then merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. This branch has been rebased and revalidated on that base; the remaining operational step is to push local head `5031c8178035a4a1ca03dbf7f1f7b76a09909baf` so GitHub PR #67 reflects the validated content.
+- Resolved sequencing note: PR #65 was the merge-order dependency for overlapping durable workflow/template files, then merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. This branch has been rebased and revalidated on that base, and the current working tree now includes the P2 plan-template review fix plus rerun final validations; the remaining operational step is to commit/push the current working tree and run a current-PR-head guard so GitHub PR #67 reflects the validated content.
+- P2 review thread state, 2026-05-10: the `.specify/templates/plan-template.md` consistency finding is addressed locally. It remains pending commit/push plus GitHub re-review or explicit thread resolution before PR #67 can be declared merge-ready.
 
 ### Verification Evidence
 
@@ -125,11 +127,21 @@
 - Architect follow-up rebase evidence, 2026-05-10: branch `codex/014-orchestrator-cleanup-governance` was rebased onto latest verified `origin/main` `9534ab054b6b22ccd56e5c204ab8469c027faef9`; the rebase reconciled overlapping governance/template files from PR #65 with cleanup/latest-main governance, and local effective content head is `5031c8178035a4a1ca03dbf7f1f7b76a09909baf`.
 - Architect follow-up local post-rebase verification passed, 2026-05-10: `git diff --check`; `node scripts/check-feature-memory.mjs --worktree`; `pnpm run check:repo`; acceptance `rg` text search; and `pnpm run preflight` with 72 Node tests and 14 Playwright e2e tests.
 - Prior Architect validation gap resolved by this process-memory update: stale PR #65 wording is corrected, the current cycle PR set is recorded below, and Architect return count is 1.
-- Final Analyst validation passed on 2026-05-10 in `feature-request.md`: Analyst return count is 0, customer intent check passed, gaps are none, and no Architect routing is needed. The current uncommitted `feature-request.md` and `tasks.md` changes are final-validation evidence-only relative to effective content head `5031c8178035a4a1ca03dbf7f1f7b76a09909baf`; Orchestrator must run a read-only current-PR-head guard after commit/push.
+- Final Analyst validation passed on 2026-05-10 in `feature-request.md`: Analyst return count is 0, customer intent check passed, gaps are none, and no Architect routing is needed.
+- PR #67 P2 review finding, 2026-05-10: `.specify/templates/plan-template.md` still used old latest-main startup wording and lacked cleanup applicability/evidence fields, leaving AC-008 cross-template consistency unsatisfied.
+- PR #67 P2 implementation fix, 2026-05-10: updated `.specify/templates/plan-template.md` to use latest verified main with fetch fallback/blocker language, cleanup applicability/evidence/refusal fields, Cleanup Agent review/verification expectations, and effective-content/current-head final validation guards; updated this feature's `plan.md` and `tasks.md` process memory to record the finding, fix, and stale-validation routing.
+- PR #67 P2 validation, 2026-05-10: `git diff --check` passed with no output.
+- PR #67 P2 validation, 2026-05-10: `node scripts/check-feature-memory.mjs --worktree` passed with `No configured product paths changed; feature-memory gate passes.`
+- PR #67 P2 scope check, 2026-05-10: `git diff --name-only` listed only `.specify/templates/plan-template.md`, `specs/012-orchestrator-cleanup-governance/plan.md`, and `specs/012-orchestrator-cleanup-governance/tasks.md`.
+- PR #67 P2 full validation, 2026-05-10: `pnpm run preflight` passed after the plan-template fix.
+- Final Architect validation after P2 review fix, 2026-05-10: PASS. No architecture gap remains, and plan-template consistency is fixed.
+- Final Analyst validation after P2 review fix, 2026-05-10: PASS recorded in `feature-request.md`; Analyst return count is 0, gaps are none, and no Architect routing is needed.
+- Effective content head note, 2026-05-10: the new non-evidence template fix effective content head is the commit that will be created from the current working tree. Orchestrator must run the current-head guard after commit/push against the new PR #67 head.
+- P2 review thread status, 2026-05-10: addressed locally, pending commit/push and GitHub re-review or explicit thread resolution.
 
 ### Cycle PR Set
 
-- PR #67 (`https://github.com/cucumberfalse/cabadrive/pull/67`): branch `codex/014-orchestrator-cleanup-governance`; purpose is orchestrator cleanup governance plus one-time cleanup evidence; local effective content head `5031c8178035a4a1ca03dbf7f1f7b76a09909baf`; status local rebased/needs push, Architect validation passed, and Analyst validation passed with return count 0. PR #65 is the upstream prerequisite already merged at `9534ab054b6b22ccd56e5c204ab8469c027faef9`, not part of this feature cycle except as the resolved sequencing dependency. After the evidence-only commit/push, Orchestrator must run a read-only current-PR-head guard before declaring the PR object current.
+- PR #67 (`https://github.com/cucumberfalse/cabadrive/pull/67`): branch `codex/014-orchestrator-cleanup-governance`; purpose is orchestrator cleanup governance plus one-time cleanup evidence; base includes merged PR #65 at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. The current working tree includes the P2 plan-template review fix and rerun Architect/Analyst final validations; status is pending commit/push and a new PR-head currentness guard. Effective content head for the P2 non-evidence template fix will be the commit created from this working tree.
 
 ### Cleanup Evidence
 
@@ -228,4 +240,7 @@
 - PR #65 overlap: path A is resolved. PR #65 merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`; this branch rebased onto that latest verified `main`, reconciled the overlapping governance/template files, and revalidated locally at effective content head `5031c8178035a4a1ca03dbf7f1f7b76a09909baf`.
 - Prior Architect validation GAP: resolved by this process-memory-only update. Architect return count: 1.
 - Final Analyst validation: passed on 2026-05-10 in `feature-request.md`. Analyst return count: 0. Analyst feedback Architect disposition: none needed.
+- Final Architect validation after P2 review fix: PASS on 2026-05-10. No architecture gap remains; `.specify/templates/plan-template.md` consistency is fixed.
+- Final Analyst validation after P2 review fix: PASS on 2026-05-10 in `feature-request.md`. Analyst return count: 0, no gaps, and no Architect routing needed.
+- P2 review finding: addressed locally by the current working tree; pending commit/push plus GitHub re-review or explicit thread resolution.
 - One-time cleanup deletion: disposed as Cleanup Agent work after durable rules exist. Cleanup Agent evidence is now recorded above, including first-pass cleanup, mismatch reconciliation, preserved paths, and post-cleanup confirmation. No repository/docs/template change is needed for this feedback item.

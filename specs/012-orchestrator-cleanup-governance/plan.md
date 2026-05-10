@@ -168,3 +168,9 @@ If a command cannot run because of local environment, missing credentials, or un
 
 - Risk: Broad automation could create data-loss risk.
 - Mitigation: Keep automatic deletion tooling out of scope unless separately planned and reviewed; use evidence-driven manual cleanup for this ticket.
+
+## Process Memory
+
+- PR #67 review finding, 2026-05-10: unresolved P2 found `.specify/templates/plan-template.md` still used old startup wording and lacked cleanup applicability/evidence fields, so AC-008 cross-template consistency was not satisfied.
+- Implementation fix, 2026-05-10: update only `.specify/templates/plan-template.md`, this `plan.md`, and `tasks.md` to align the plan template with the already-updated feature/spec/tasks templates on latest verified main with fetch fallback/blocker language, cleanup applicability/evidence/refusal fields, Cleanup Agent review/verification expectations, and current-head/final-validation guards.
+- Final validation state, 2026-05-10: this is a non-evidence template/content change after prior Architect and Analyst validation, so those validations are stale and must rerun after review-fix verification.

@@ -138,8 +138,8 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: PASS on 2026-05-10.
+- Status: PASS after review fix on 2026-05-10.
 - Analyst return count: 0; no Analyst return to Architect is needed.
-- Customer intent check: PASS in spirit and letter. The final result teaches Orchestrator to coordinate completion-time cleanup through a first-class Cleanup Agent with strict validation, refusal, and evidence rules; records one-time cleanup of validated completed agent-created environments while preserving active, ambiguous, current, dirty, open-PR, and recurring paths including `cabadrive-009-content-277-368`; and makes fresh isolated startup from latest verified `main` the default for new Orchestrator work.
+- Customer intent check: PASS in spirit and letter. The final result teaches Orchestrator to coordinate completion-time cleanup through a first-class Cleanup Agent with strict validation, refusal, and evidence rules; records one-time cleanup of validated completed agent-created environments while preserving active, ambiguous, current, dirty, open-PR, and recurring paths including `cabadrive-009-content-277-368`; and makes fresh isolated startup from latest verified `main` the default for new Orchestrator work. The plan-template consistency fix supports future planning fidelity and does not change the user-facing scope.
 - Gaps: none.
 - Architect disposition routing: none needed; no new requirements, risks, or implementation feedback are raised by final Analyst validation.
