@@ -108,7 +108,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Anexo B: ESPECIFICACIONES TÉCNICAS Y PROCESOS DE ENSAYOS; Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL.)\n",
         "fullTranslationRu": "Приложение B: технические спецификации и процессы испытаний; Декрет N 196/2025, Официальный бюллетень 18/3/2025. Действует со дня, следующего за публикацией в Официальном бюллетене.)",
-        "simpleRu": "Приложение B про технические требования и испытания. Его актуальная редакция связана с Декретом 196/2025 и действует со следующего дня после публикации в Официальном бюллетене.",
+        "simpleRu": "Приложение B про технические требования и испытания. В тексте указано: оно связано с Декретом 196/2025, опубликованным в Официальном бюллетене 18/3/2025, и действует со следующего дня после этой публикации.",
         "sourceTextSha256": "af8f4f8a3cb103c6f9588c9621d268f717fbbf02bc5726881174f718406e89d1",
         "sourceFingerprint": "sha256:af8f4f8a3cb103c6f9588c9621d268f717fbbf02bc5726881174f718406e89d1",
         "sourceSpan": {
@@ -128,7 +128,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Anexo C: AUTOPARTES Y/O ELEMENTOS DE SEGURIDAD; (Anexo sustituido por art. 23 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL.)\n",
         "fullTranslationRu": "Приложение C: автозапчасти и/или элементы безопасности; (приложение заменено статьей 23 Декрета N 196/2025, Официальный бюллетень 18/3/2025. Действует со дня, следующего за публикацией в Официальном бюллетене.)",
-        "simpleRu": "Приложение C касается автозапчастей и элементов безопасности. Текст отмечает, что это приложение заменено Декретом 196/2025 и действует после публикации.",
+        "simpleRu": "Приложение C касается автозапчастей и элементов безопасности. В тексте указано: приложение заменено статьей 23 Декрета 196/2025, опубликованного в Официальном бюллетене 18/3/2025, и действует со следующего дня после этой публикации.",
         "sourceTextSha256": "fd2b2e9c1ca8e80890ffcda11555c40565e279f826c164ae96db9c1f22fd7f96",
         "sourceFingerprint": "sha256:fd2b2e9c1ca8e80890ffcda11555c40565e279f826c164ae96db9c1f22fd7f96",
         "sourceSpan": {
@@ -228,7 +228,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Anexo L: Sistema de señalización vial uniforme; (Anexo sustituido por art. 24 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL.)\n",
         "fullTranslationRu": "Приложение L: единая система дорожной сигнализации; (приложение заменено статьей 24 Декрета N 196/2025, Официальный бюллетень 18/3/2025. Действует со дня, следующего за публикацией в Официальном бюллетене.)",
-        "simpleRu": "Приложение L про единую систему дорожных знаков, сигналов и разметки. В тексте указано, что приложение заменено Декретом 196/2025.",
+        "simpleRu": "Приложение L про единую систему дорожных знаков, сигналов и разметки. В тексте указано: приложение заменено статьей 24 Декрета 196/2025, опубликованного в Официальном бюллетене 18/3/2025, и действует со следующего дня после этой публикации.",
         "sourceTextSha256": "acccd19ebc4d783cc12ab7303fb7b6bb392d60150ec6d6f3d2e94262b0353475",
         "sourceFingerprint": "sha256:acccd19ebc4d783cc12ab7303fb7b6bb392d60150ec6d6f3d2e94262b0353475",
         "sourceSpan": {
@@ -248,7 +248,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Anexo LL: Normas para la circulación de maquinaria agrícola; (Anexo sustituido por art. 34 del Decreto N° 32/2018 B.O. 11/1/2018)\n",
         "fullTranslationRu": "Приложение LL: нормы движения сельскохозяйственной техники; (приложение заменено статьей 34 Декрета N 32/2018, Официальный бюллетень 11/1/2018)",
-        "simpleRu": "Приложение LL содержит правила для движения сельскохозяйственной техники. Указано, что оно заменено Декретом 32/2018.",
+        "simpleRu": "Приложение LL содержит правила для движения сельскохозяйственной техники. В тексте указано: приложение заменено статьей 34 Декрета 32/2018, опубликованного в Официальном бюллетене 11/1/2018.",
         "sourceTextSha256": "19be4b0ceaffede83345e7dc5d66f8d21d8fef8f3478b3ce01eee7c6ed815a4e",
         "sourceFingerprint": "sha256:19be4b0ceaffede83345e7dc5d66f8d21d8fef8f3478b3ce01eee7c6ed815a4e",
         "sourceSpan": {
@@ -348,7 +348,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Anexo P: PROCEDIMIENTO PARA OTORGAR LA LICENCIA DE CONFIGURACIÓN DE MODELO (LCM) Y LA LICENCA DE CONFIGURACION AMBIENTAL (LCA); (Anexo sustituido por art. 25 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL.)\n",
         "fullTranslationRu": "Приложение P: процедура выдачи Лицензии конфигурации модели (LCM) и Лицензии экологической конфигурации (LCA); (приложение заменено статьей 25 Декрета N 196/2025, Официальный бюллетень 18/3/2025. Действует со дня, следующего за публикацией в Официальном бюллетене.)",
-        "simpleRu": "Приложение P объясняет процедуру выдачи LCM и LCA: документов о конфигурации модели и экологической конфигурации. Текст отмечает замену Декретом 196/2025.",
+        "simpleRu": "Приложение P объясняет процедуру выдачи LCM и LCA: документов о конфигурации модели и экологической конфигурации. В тексте указано: приложение заменено статьей 25 Декрета 196/2025, опубликованного в Официальном бюллетене 18/3/2025, и действует со следующего дня после этой публикации.",
         "sourceTextSha256": "d3bb861e2728da69ef09e9409b4989cd3baa006f9cb46e77e3dedcd62ec2ac39",
         "sourceFingerprint": "sha256:d3bb861e2728da69ef09e9409b4989cd3baa006f9cb46e77e3dedcd62ec2ac39",
         "sourceSpan": {
@@ -368,7 +368,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Anexo R: Pesos y dimensiones; (Anexo sustituido por art. 1° del Decreto N° 574/2014 B.O. 24/4/2014)\n",
         "fullTranslationRu": "Приложение R: веса и размеры; (приложение заменено статьей 1 Декрета N 574/2014, Официальный бюллетень 24/4/2014)",
-        "simpleRu": "Приложение R касается разрешенных весов и размеров транспортных средств. Оно было заменено Декретом 574/2014.",
+        "simpleRu": "Приложение R касается разрешенных весов и размеров транспортных средств. В тексте указано: приложение заменено статьей 1 Декрета 574/2014, опубликованного в Официальном бюллетене 24/4/2014.",
         "sourceTextSha256": "e9964e74488ace2a51d7162b30725c45b4ea9ea62fd1fd9020272ac5a63a7fcd",
         "sourceFingerprint": "sha256:e9964e74488ace2a51d7162b30725c45b4ea9ea62fd1fd9020272ac5a63a7fcd",
         "sourceSpan": {
@@ -408,7 +408,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Anexo T: Sistema Nacional de Seguridad Vial; (Anexo sustituido por art. 21 del Decreto Nº 1716/2008 B.O. 23/10/2008. Vigencia: a partir de su publicación en el Boletín Oficial.)\n",
         "fullTranslationRu": "Приложение T: Национальная система безопасности дорожного движения; (приложение заменено статьей 21 Декрета N 1716/2008, Официальный бюллетень 23/10/2008. Действует с момента публикации в Официальном бюллетене.)",
-        "simpleRu": "Приложение T описывает Национальную систему безопасности дорожного движения. В тексте указано, что приложение заменено Декретом 1716/2008.",
+        "simpleRu": "Приложение T описывает Национальную систему безопасности дорожного движения. В тексте указано: приложение заменено статьей 21 Декрета 1716/2008, опубликованного в Официальном бюллетене 23/10/2008, и действует с даты этой публикации.",
         "sourceTextSha256": "c4786a4ef52018c6f414da66bc1d41b1dd0011fcf119734ef39d66cb02bb9833",
         "sourceFingerprint": "sha256:c4786a4ef52018c6f414da66bc1d41b1dd0011fcf119734ef39d66cb02bb9833",
         "sourceSpan": {
@@ -448,7 +448,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Anexo 2: REGIMEN DE CONTRAVENCIONES Y SANCIONES POR FALTAS COMETIDAS A LA LEY DE TRANSITO Nº 24.449. (Anexo sustituido por art. 1º del Decreto Nº 242/2022 B.O. 6/5/2022. Vigencia: a partir de los SESENTA (60) días desde su publicación en el BOLETÍN OFICIAL.)\n\nExceptúanse de la aplicación del presente régimen y sus normas complementarias a las pruebas experimentales con el fin de evaluar nuevas tecnologías de vehículos destinados al autotransporte de pasajeros y carga, por un período de implementación de hasta TRES (3) años y de acuerdo a lo previsto en materia de seguridad, medio ambiente y preservación de los caminos y obras de arte, que autorice previamente el MINISTERIO DE TRANSPORTE. (Párrafo incorporado por art. 10 del Decreto N° 26/2019 B.O. 8/1/2019. Vigencia: a partir de los TREINTA (30) días de su publicación en el Boletín Oficial)\n\n(Nota Infoleg: A causa de la extensión de los presentes anexos, los mismos pueden ser consultados en forma separada accediendo al link correspondiente.)\n",
         "fullTranslationRu": "Приложение 2: режим правонарушений и санкций за нарушения Закона о дорожном движении N 24.449. (Приложение заменено статьей 1 Декрета N 242/2022, Официальный бюллетень 6/5/2022. Действует через ШЕСТЬДЕСЯТ (60) дней после публикации в Официальном бюллетене.)\n\nИз применения настоящего режима и его дополнительных норм исключаются экспериментальные испытания, предназначенные для оценки новых технологий транспортных средств для автомобильной перевозки пассажиров и грузов, на период внедрения до ТРЕХ (3) лет и в соответствии с требованиями безопасности, окружающей среды и сохранности дорог, мостов и дорожных сооружений, если такие испытания предварительно разрешит Министерство транспорта. (Абзац включен статьей 10 Декрета N 26/2019, Официальный бюллетень 8/1/2019. Действует через ТРИДЦАТЬ (30) дней после публикации в Официальном бюллетене.)\n\n(Примечание Infoleg: из-за объема этих приложений их можно просмотреть отдельно, перейдя по соответствующей ссылке.)",
-        "simpleRu": "Приложение 2 устанавливает нарушения и санкции по Закону 24.449. Но режим не применяется к заранее разрешенным экспериментальным испытаниям новых технологий для пассажирского и грузового автотранспорта: такой тест может длиться до 3 лет и должен учитывать безопасность, экологию и сохранность дорог и сооружений. Infoleg предупреждает, что приложения длинные и открываются отдельно.",
+        "simpleRu": "Приложение 2 устанавливает нарушения и санкции по Закону 24.449. В тексте указано: приложение заменено статьей 1 Декрета 242/2022, опубликованного в Официальном бюллетене 6/5/2022, и действует через 60 дней после этой публикации. Но режим не применяется к заранее разрешенным экспериментальным испытаниям новых технологий для пассажирского и грузового автотранспорта: такой тест может длиться до 3 лет и должен учитывать безопасность, экологию и сохранность дорог и сооружений. Этот абзац добавлен статьей 10 Декрета 26/2019, опубликованного в Официальном бюллетене 8/1/2019, и действует через 30 дней после публикации. Infoleg предупреждает, что приложения длинные и открываются отдельно.",
         "sourceTextSha256": "4be68e44594f021eca2d852614c5c92a75a8b1af582b552f1ab305e0c78b3351",
         "sourceFingerprint": "sha256:4be68e44594f021eca2d852614c5c92a75a8b1af582b552f1ab305e0c78b3351",
         "sourceSpan": {

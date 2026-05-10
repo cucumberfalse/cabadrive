@@ -781,6 +781,17 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #104 stack decision on 2026-05-10:
+  - This content slice is intentionally stacked on PR #103 by Orchestrator to preserve schema/content prerequisites and keep the PR diff to one document batch; final merge gate remains human-controlled after the stack is green.
+- PR #104 review-finding follow-up on 2026-05-10:
+  - Updated Decreto 779/1995 learner `simpleRu` summaries for amendment/effective-date notes so school-friendly Russian still preserves decree/article numbers, Official Bulletin dates, and effective-date rules for Annex B, C, L, LL, P, R, T, and Annex 2.
+  - Search shard only references text fields and does not mirror learner text, so no search-file update was needed.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
 - Slice D5 Decreto 779/1995 core traffic-law content batch verification on 2026-05-10:
   - Custom D5 batch lint passed for 28 chunks: Russian fields are nonempty, no draft/placeholder markers in Russian fields, QA status is `approved`, all QA records have `checkedAt: "2026-05-10"`, search entries reference `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish`, no simplified Spanish fields were found, and `originalSpanish`, `sourceTextSha256`, and `sourceFingerprint` match current archived Markdown line spans.
   - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `decreto-779-1995-reglamentario-ley-24449` has 28 `legal-articles` chunks.
