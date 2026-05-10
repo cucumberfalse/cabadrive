@@ -91,7 +91,7 @@
 - Implementation Agent found no GitHub or process-memory artifact naming a separate `Russell` actor in this worktree. The closure uses the concrete Orchestrator audit comment `4415464185`, Review Agent comments/reviews, GitHub checks, resolved review-thread state, and local audit commands as the evidence source.
 - First `pnpm run test` attempt failed because this isolated worktree had no `node_modules` and `tests/domain.test.mjs` could not import `typescript` (`ERR_MODULE_NOT_FOUND`). This was resolved by running `pnpm install --frozen-lockfile`, which reused packages from the local pnpm store and installed dependencies without changing tracked files.
 - Finalization attempt `0b9b690b67b26bff1a86c2db8ed221d78ec0bf8c` incorrectly closed T050-T052 using evidence from prior head `91b32cb91a8b9dc423428b6c10a0caaccefbbbce`; AI Review opened unresolved P2 thread `PRRT_kwDOSX65IM6A6Gd6` / comment `3215037987` (`https://github.com/cucumberfalse/cabadrive/pull/87#discussion_r3215037987`) explaining that final PR gates must not be closed against a stale head.
-- AI Review opened unresolved P2 thread `PRRT_kwDOSX65IM6A6Jvb` / comment `3215054162` (`https://github.com/cucumberfalse/cabadrive/pull/87#discussion_r3215054162`) because the closure audit omitted feature 009 T121 even though T121 was still unchecked. This fix extends the target audit to T121 and closes it with PR #63 gate evidence.
+- AI Review opened unresolved P2 thread `PRRT_kwDOSX65IM6A6Jvb` / comment `3215054418` (`https://github.com/cucumberfalse/cabadrive/pull/87#discussion_r3215054418`) because the closure audit omitted feature 009 T121 even though T121 was still unchecked. This fix extends the target audit to T121 and closes it with PR #63 gate evidence.
 
 ### Known Issues
 
