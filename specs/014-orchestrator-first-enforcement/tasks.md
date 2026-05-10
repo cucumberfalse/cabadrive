@@ -52,6 +52,7 @@
 
 ### Decisions
 
+- Merge-conflict resolution decision: updated branch `codex/014-orchestrator-first-enforcement` in isolated worktree `/Users/chap/devel/cabadrive-014-orchestrator-first-enforcement` by merging latest `origin/main` (`9534ab054b6b22ccd56e5c204ab8469c027faef9`) without squash, preserving feature 014 active-model stop/recovery/review enforcement while retaining main's feature 012 latest-main/final-validation-loop guidance.
 - Implementation decision: Updated `.specify/templates/checklist-template.md` in addition to the task-named templates because the feature scope allows `.specify/templates/*` and checklist reuse benefits from the same Orchestrator-first/recovery gate.
 - Implementation decision: No executable enforcement, CI workflow, branch-protection, package, lockfile, product, content, runtime, or sibling-feature changes were made; enforcement remains durable docs/templates plus review/process evidence as scoped.
 - Architect decision: This feature is process/workflow hardening only and must not include learner-facing app, runtime, CI, branch-protection, executable guard, secret, or production-resource changes.
@@ -63,6 +64,7 @@
 
 ### Known Issues
 
+- PR #66 still has an external GitHub Actions `AI Review` billing/spending-limit blocker. This is not code-fixable in feature 014 scope, and no workflow, branch-protection, or billing-related changes were made.
 - Documentation/template enforcement still depends on agents and reviewers reading and applying the protocol; executable guard automation remains out of scope.
 - Sibling `012` may contain in-flight wording that has not landed on this branch. Implementation must inspect it read-only if available and record any coordination issue instead of editing sibling work.
 - Current worktree also contains untracked `specs/013-learning-content-ui-polish/`; this feature must preserve it and avoid changing 013 memory.
@@ -71,6 +73,10 @@
 
 ### Verification Evidence
 
+- Conflict resolution setup: created and used isolated worktree `/Users/chap/devel/cabadrive-014-orchestrator-first-enforcement` on `codex/014-orchestrator-first-enforcement`, fetched `origin`, and merged latest `origin/main` (`9534ab054b6b22ccd56e5c204ab8469c027faef9`) into PR #66 branch without squash.
+- Conflict resolution scope: resolved overlaps in `.github/pull_request_template.md`, `.specify/templates/feature-request-template.md`, `.specify/templates/spec-template.md`, `.specify/templates/tasks-template.md`, `AGENTS.md`, `CLAUDE.md`, `docs_project/project/devops/ai-pr-workflow.md`, `docs_project/project/devops/review-contract.md`, and `specs/README.md` by combining 014 Orchestrator-first stop/recovery enforcement with main's 012 latest-main/final-validation rules.
+- Conflict marker check: `rg -n "^<<<<<<<|^=======|^>>>>>>>" .github/pull_request_template.md .specify/templates/feature-request-template.md .specify/templates/spec-template.md .specify/templates/tasks-template.md AGENTS.md CLAUDE.md docs_project/project/devops/ai-pr-workflow.md docs_project/project/devops/review-contract.md specs/README.md` returned no matches after resolution.
+- Whitespace check during conflict resolution: `git diff --check` exited 0 before final verification rerun.
 - Implementation Agent setup: `git switch -c codex/014-orchestrator-first-enforcement origin/main` succeeded in `/Users/chap/devel/cabadrive-013-learning-content-ui-polish`; `git status --short --branch` reported `## codex/014-orchestrator-first-enforcement...origin/main` with untracked `specs/013-learning-content-ui-polish/` and `specs/014-orchestrator-first-enforcement/`.
 - Implementation Agent feature-memory check: read `specs/014-orchestrator-first-enforcement/{feature-request.md,spec.md,plan.md,tasks.md}` before durable edits.
 - Implementation Agent required-docs read: read `.specify/memory/constitution.md`, `AGENTS.md`, `CLAUDE.md`, `docs_project/README.md`, `docs_project/project-idea.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, `docs_project/screens/learning-and-exam-flows.md`, `docs/specify/README.md`, scoped devops docs, templates, PR template, and `specs/README.md`.
