@@ -1,5 +1,5 @@
 import { BookMarked, BookOpen, CheckCircle2, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useEffect, useMemo, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
 import {
   data,
   assetUrl,
@@ -129,10 +129,32 @@ function QuestionImageFigure({
   showOverlay: boolean;
   showFallback: boolean;
 }) {
+  const imagePath = question.image!.localPath;
+  const imageSrc = assetUrl(imagePath);
+  const [naturalSize, setNaturalSize] = useState<{ src: string; width: number; height: number }>();
+  const currentNaturalSize = naturalSize?.src === imageSrc ? naturalSize : undefined;
+  const imageFrameStyle = currentNaturalSize
+    ? ({
+        "--question-image-max-width-by-height": `${(360 * currentNaturalSize.width) / currentNaturalSize.height}px`
+      } as CSSProperties)
+    : undefined;
+
   return (
     <figure className={showOverlay ? "question-image has-explanation-overlay" : "question-image"}>
-      <div className="question-image-frame">
-        <img src={assetUrl(question.image!.localPath)} alt={question.image!.altEs} />
+      <div className="question-image-frame" style={imageFrameStyle}>
+        <img
+          src={imageSrc}
+          alt={question.image!.altEs}
+          onLoad={(event) => {
+            const { naturalWidth, naturalHeight } = event.currentTarget;
+            if (naturalWidth <= 0 || naturalHeight <= 0) return;
+            if (event.currentTarget.getAttribute("src") !== imageSrc) return;
+            setNaturalSize((current) => {
+              if (current?.src === imageSrc && current.width === naturalWidth && current.height === naturalHeight) return current;
+              return { src: imageSrc, width: naturalWidth, height: naturalHeight };
+            });
+          }}
+        />
         {showOverlay && overlay && (
           <div className="image-explanation-overlay" data-testid="image-explanation-overlay" aria-hidden="true">
             {overlay.regions.map((region) => (
