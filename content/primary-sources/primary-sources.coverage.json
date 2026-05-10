@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "schema": "primary-sources-coverage.v1",
+  "status": "draft",
+  "manifestSnapshot": {
+    "capturedAt": "2026-05-10",
+    "manifestPath": "content/official-documents/manifest.json",
+    "officialDocumentCount": 19,
+    "officialDocumentIds": [
+      "ley-24449-transito-seguridad-vial",
+      "decreto-779-1995-reglamentario-ley-24449",
+      "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "ley-2148-caba-codigo-transito-transporte",
+      "ley-6631-caba-vtv-modificatoria-ley-2265",
+      "gcba-vtv-tramite-current",
+      "argentina-vehiculos-automotor-cedulas",
+      "dnrpa-registros-propiedad-automotor",
+      "ansv-cedula-azul-no-exigible",
+      "disposicion-29-2024-cedulas-identificacion",
+      "disposicion-343-2024-autorizacion-cedula-digital",
+      "argentina-duplicado-chapa-patente-automotor",
+      "gcba-guia-practica-siniestros-viales",
+      "gcba-material-estudio-examen-teorico",
+      "gcba-manual-vehiculo-4-ruedas-2023",
+      "gcba-mapa-estrellas-amarillas",
+      "ley-11179-codigo-penal",
+      "ley-26994-codigo-civil-comercial",
+      "ley-17418-seguros"
+    ]
+  },
+  "documents": [
+    {
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "archiveLocalPath": "content/official-documents/documents/ley-24449-transito-seguridad-vial.md",
+      "archiveSha256": "deda922c463db247eecc3c4292e76381f9ee86978041e8ba552f65ee7c525ad3",
+      "coverageStatus": "draft_partial",
+      "expectedChunkIds": ["ley-24449-transito-seguridad-vial--draft-001"],
+      "chunks": [
+        {
+          "chunkId": "ley-24449-transito-seguridad-vial--draft-001",
+          "officialDocumentId": "ley-24449-transito-seguridad-vial",
+          "order": 1,
+          "headingPath": ["Ley 24449"],
+          "sourceSpan": {
+            "startLine": 1,
+            "endLine": 5
+          },
+          "sourceTextSha256": "b8957a98c87f7cfb174d01df3164416f1e95c621966c8daec6c47bb4248a9c97",
+          "sourceFingerprint": "sha256:b8957a98c87f7cfb174d01df3164416f1e95c621966c8daec6c47bb4248a9c97"
+        }
+      ]
+    }
+  ]
+}

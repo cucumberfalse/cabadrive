@@ -48,22 +48,22 @@
 
 ## Slice B: Learner Source Schema And Validators
 
-- [ ] T035 Create a governed learner-source content area outside `content/official-documents/`, preferred `content/primary-sources/`.
-- [ ] T036 Add local instructions for learner-source content governance, translation QA, simplification QA, and archive boundary rules.
-- [ ] T037 Define document, chunk, QA, coverage, and search-index schemas/types.
-- [ ] T038 Add validator support for manifest-entry coverage.
-- [ ] T039 Add validator support for generated chunk coverage.
-- [ ] T040 Add validator support for source fingerprint/span alignment against archive Markdown.
-- [ ] T041 Add validator support for required full Russian translation per chunk.
-- [ ] T042 Add validator support for required simple Russian rewrite per chunk.
-- [ ] T043 Add validator support for translation QA status.
-- [ ] T044 Add validator support for simplification QA status.
-- [ ] T045 Add validator support that forbids learner Russian content under `content/official-documents/`.
-- [ ] T046 Add validator support that rejects simplified Spanish fields/content paths.
-- [ ] T047 Add validator support that rejects orphan learner documents/chunks not tied to manifest/chunk inventory.
-- [ ] T048 Add strict final mode that fails partial coverage or non-approved QA.
-- [ ] T049 Integrate source-section validation with `pnpm run validate:content` before final release.
-- [ ] T050 Add unit tests for validator pass/fail cases.
+- [x] T035 Create a governed learner-source content area outside `content/official-documents/`, preferred `content/primary-sources/`.
+- [x] T036 Add local instructions for learner-source content governance, translation QA, simplification QA, and archive boundary rules.
+- [x] T037 Define document, chunk, QA, coverage, and search-index schemas/types.
+- [x] T038 Add validator support for manifest-entry coverage.
+- [x] T039 Add validator support for generated chunk coverage.
+- [x] T040 Add validator support for source fingerprint/span alignment against archive Markdown.
+- [x] T041 Add validator support for required full Russian translation per chunk.
+- [x] T042 Add validator support for required simple Russian rewrite per chunk.
+- [x] T043 Add validator support for translation QA status.
+- [x] T044 Add validator support for simplification QA status.
+- [x] T045 Add validator support that forbids learner Russian content under `content/official-documents/`.
+- [x] T046 Add validator support that rejects simplified Spanish fields/content paths.
+- [x] T047 Add validator support that rejects orphan learner documents/chunks not tied to manifest/chunk inventory.
+- [x] T048 Add strict final mode that fails partial coverage or non-approved QA.
+- [x] T049 Integrate source-section validation with `pnpm run validate:content` before final release.
+- [x] T050 Add unit tests for validator pass/fail cases.
 
 ## Slice C: Corpus Inventory And Chunking
 
@@ -141,14 +141,14 @@
 
 ## Tests And Verification
 
-- [ ] T110 Add validator tests for missing manifest document coverage.
-- [ ] T111 Add validator tests for missing chunk coverage.
-- [ ] T112 Add validator tests for missing full Russian translation.
-- [ ] T113 Add validator tests for missing simple Russian rewrite.
-- [ ] T114 Add validator tests for non-approved translation/simplification QA in strict mode.
-- [ ] T115 Add validator tests for Russian learner content under `content/official-documents/`.
-- [ ] T116 Add validator tests for forbidden simplified Spanish.
-- [ ] T117 Add validator tests for stale source fingerprints or missing archive mappings.
+- [x] T110 Add validator tests for missing manifest document coverage.
+- [x] T111 Add validator tests for missing chunk coverage.
+- [x] T112 Add validator tests for missing full Russian translation.
+- [x] T113 Add validator tests for missing simple Russian rewrite.
+- [x] T114 Add validator tests for non-approved translation/simplification QA in strict mode.
+- [x] T115 Add validator tests for Russian learner content under `content/official-documents/`.
+- [x] T116 Add validator tests for forbidden simplified Spanish.
+- [x] T117 Add validator tests for stale source fingerprints or missing archive mappings.
 - [ ] T118 Add e2e coverage that `Источники` opens the source section.
 - [ ] T119 Add e2e coverage that existing primary flows remain reachable.
 - [ ] T120 Add e2e coverage that a source detail defaults to simple Russian.
@@ -163,7 +163,7 @@
 - [ ] T129 Add request-monitoring/code-review evidence that no runtime network/PDF/backend/live-AI dependency exists.
 - [x] T130 Run `pnpm run validate:content`.
 - [x] T131 Run `pnpm run test`.
-- [ ] T132 Run `pnpm run build`.
+- [x] T132 Run `pnpm run build`.
 - [ ] T133 Run `pnpm run test:e2e`.
 - [ ] T134 Run `pnpm run preflight`.
 - [x] T135 Run `git diff --check`.
@@ -278,6 +278,27 @@
   - `docs_project/screens/learning-and-exam-flows.md` now documents the planned `Источники` flow and its relationship to `Материалы`.
 - Governance boundary recorded: original official source archive remains verbatim only; Russian full translations and simple rewrites must live outside `content/official-documents/`, preferably in a future governed `content/primary-sources/` area.
 
+### Slice B Implementation Notes
+
+- Slice B ran in assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-schema` on branch `codex/016-primary-sources-schema-validators`.
+- Implementation started only after confirming all feature memory files exist: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`.
+- Parallel-agent warning was part of the Slice B assignment. This slice preserved unrelated work and edited only the assigned write set.
+- Created governed learner-source area `content/primary-sources/` with local `AGENTS.md`.
+- Added draft/preparatory machine-readable starter files:
+  - `primary-sources.ru.json`
+  - `primary-sources.coverage.json`
+  - `primary-sources.qa.json`
+  - `primary-sources.search.json`
+- Starter corpus intentionally covers only one draft chunk from `ley-24449-transito-seguridad-vial`; it is validation scaffolding, not a translation batch and not final learner content.
+- The draft chunk maps to `content/official-documents/documents/ley-24449-transito-seguridad-vial.md`, lines 1-5, with source span SHA-256 `b8957a98c87f7cfb174d01df3164416f1e95c621966c8daec6c47bb4248a9c97` and archive SHA-256 `deda922c463db247eecc3c4292e76381f9ee86978041e8ba552f65ee7c525ad3`.
+- Added `scripts/primary-sources-validation.mjs` with draft/default and strict/final validation modes.
+- Draft/default mode permits partial manifest/chunk coverage and draft QA so preparatory content-authoring PRs can pass.
+- Strict/final mode fails missing manifest coverage, missing generated chunk coverage, missing or placeholder Russian fields, and non-approved QA.
+- Validator checks source archive mapping, archive hash, source line span hash, source fingerprint, `originalSpanish` span alignment, learner-content archive-boundary violations, forbidden simplified-Spanish fields/paths, orphan learner documents/chunks/QA/search entries, and search-index references.
+- Integrated primary-source validation into `scripts/validate-content.mjs`; it defaults to draft mode so current content validation passes with the explicit draft placeholder, and can be run in final-gate mode with `PRIMARY_SOURCES_VALIDATION_MODE=strict`.
+- Added `tests/primary-sources-validation.test.mjs` covering the Slice B pass/fail cases.
+- No product UI, e2e tests, official archive files, durable docs, package files, or actual translation batch content were changed in Slice B.
+
 ### Implementation Agent Feedback
 
 - None yet.
@@ -293,3 +314,18 @@
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/016-primary-sources-section/{spec,plan,tasks}.md`
   - `pnpm run test` passed: 72 Node tests, 72 pass, 0 fail.
   - `git diff --check` remained passed with no output.
+- Slice B focused verification on 2026-05-10:
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 12 tests, 12 pass, 0 fail.
+  - `node scripts/validate-content.mjs` passed. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Slice B requested verification on 2026-05-10:
+  - `pnpm run validate:content` passed. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 84 Node tests, 84 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - First `pnpm run build` attempt failed because this worktree had no `node_modules` and `vite` was unavailable. `pnpm install --frozen-lockfile` then hydrated dependencies without package metadata changes.
+  - Second `pnpm run build` passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite emitted the existing large-chunk warning for the app bundle.
+- Additional Orchestrator verification after Slice B return:
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 84 Node tests, 84 pass, 0 fail.
+  - `pnpm run build` passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=strict pnpm run validate:content` failed as expected because only the draft placeholder exists. This is positive strict-gate evidence, not a Slice B blocker: strict mode reported missing learner/generated chunk coverage for the remaining manifest entries and draft QA for the placeholder chunk.
+  - `git diff --check` passed with no output.
