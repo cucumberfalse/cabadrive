@@ -778,6 +778,7 @@ function isAllowedPostEffectiveHeadAddition(filePath, lineNumber, content, fileC
   const basename = filePath.split("/").pop();
   if (content.trim() === "") return true;
   if (isEffectiveContentHeadEvidenceLine(content)) return true;
+  if (isFinalValidationHeadingAddition(basename, content)) return true;
   if (basename === "tasks.md" && (cyclePrSetSectionMarker.test(content.trim()) || finalValidationEvidenceSectionMarker.test(content.trim()))) {
     return true;
   }
@@ -798,6 +799,15 @@ function isAllowedPostEffectiveHeadAddition(filePath, lineNumber, content, fileC
     return isFinalValidationProcessEvidenceLine(content, effectiveContentHead);
   }
 
+  return false;
+}
+
+function isFinalValidationHeadingAddition(basename, line = "") {
+  const match = line.trim().match(finalValidationSectionMarker);
+  if (!match) return false;
+  const role = match[1].toLowerCase();
+  if (role === "analyst") return basename === "feature-request.md";
+  if (role === "architect") return basename === "spec.md" || basename === "plan.md" || basename === "tasks.md";
   return false;
 }
 

@@ -661,6 +661,115 @@ test("post-effective-head final-validation and guard evidence additions pass", (
   assert.deepEqual(result.postEffectiveHeadInvalidPaths, []);
 });
 
+test("post-effective-head final-validation note headings can be added in role-owned files", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
+  const featurePath = "specs/999-finalize-test";
+  const featureRoot = join(root, featurePath);
+  initGitRepo(root);
+  mkdirSync(featureRoot, { recursive: true });
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Context
+- Existing intake context.
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Scope
+- Existing scope.
+`);
+  writeFileSync(join(featureRoot, "plan.md"), `# Plan
+
+## Strategy
+- Existing strategy.
+`);
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Verification Evidence
+- Existing evidence.
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "effective content"]);
+  const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Context
+- Existing intake context.
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-10T13:00:01Z
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Scope
+- Existing scope.
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-10T13:00:00Z
+`);
+  writeFileSync(join(featureRoot, "plan.md"), `# Plan
+
+## Strategy
+- Existing strategy.
+
+## Final Architect Validation Notes
+- Architect validation evidence: plan evidence recorded.
+`);
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Verification Evidence
+- Existing evidence.
+
+## Final Architect Validation Notes
+- Open Architect dispositions: none.
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "final validation headings"]);
+  const currentHead = git(root, ["rev-parse", "HEAD"]);
+
+  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+
+  assert.equal(result.postEffectiveHeadEvidenceOnly, true);
+  assert.deepEqual(result.postEffectiveHeadInvalidPaths, []);
+});
+
+test("post-effective-head final-validation note headings in wrong role files remain blocked", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
+  const featurePath = "specs/999-finalize-test";
+  const featureRoot = join(root, featurePath);
+  initGitRepo(root);
+  mkdirSync(featureRoot, { recursive: true });
+  writeFileSync(join(featureRoot, "feature-request.md"), "# Feature Request\n");
+  writeFileSync(join(featureRoot, "spec.md"), "# Specification\n");
+  writeFileSync(join(featureRoot, "plan.md"), "# Plan\n");
+  writeFileSync(join(featureRoot, "tasks.md"), "# Tasks\n");
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "effective content"]);
+  const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+`);
+  writeFileSync(join(featureRoot, "plan.md"), `# Plan
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "wrong role final validation headings"]);
+  const currentHead = git(root, ["rev-parse", "HEAD"]);
+
+  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+
+  assert.equal(result.postEffectiveHeadEvidenceOnly, false);
+  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/feature-request.md:`)));
+  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/plan.md:`)));
+});
+
 test("post-effective-head template verification evidence additions pass", () => {
   const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
   const featurePath = "specs/999-finalize-test";

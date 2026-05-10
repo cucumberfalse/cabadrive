@@ -43,6 +43,7 @@
 - Ninth implementation update evidence: after `origin/main` advanced to `55d196a8762fc156520f045a48c0cb25ee83d569`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped auto-merge-pending gate fix and adding the mainline Docker smoke isolation closure content.
 - Tenth implementation update evidence: after `origin/main` advanced to `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped placeholder-timestamp fix and adding the mainline institution entrance timing contrast content.
 - Eleventh implementation update evidence: current P1 placeholder-timestamp handoff Implementation Agent ran `git fetch origin --prune` on 2026-05-10. `origin/main` remained `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, and `git rev-list --left-right --count HEAD...origin/main` returned `21 0`, so no additional merge was required.
+- Twelfth implementation update evidence: current P2 final-validation-heading review-fix Implementation Agent ran `git fetch origin --prune` on 2026-05-10. `origin/main` remained `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, and `git rev-list --left-right --count HEAD...origin/main` returned `23 0`, so no additional merge was required.
 
 ## Decisions
 
@@ -74,6 +75,7 @@
 - Current P1 validated-effective-head review-fix implementation decision: `readProcessEvidence()` now requires the latest role-owned `Architect validated effective content head: <40-hex>` marker in Architect memory and `Analyst validated effective content head: <40-hex>` marker in Analyst memory to match the latest `Effective content head: <40-hex>` marker before finalization can pass. `evaluateFinalizationGates()` blocks mismatches with `unvalidated-effective-content-head`, including the recorded Architect and Analyst marker values in the blocker message.
 - Current P1 post-effective-evidence implementation decision: final-validation evidence line filters now allow the role-owned validated-effective-head markers in final Architect/Analyst notes and final validation process evidence, so those markers can be added in final-validation evidence-only commits after the effective content head.
 - Current P2 known-issue decision implementation decision: `acceptedKnownIssueDecisionPending` now uses pending/open/unresolved/needs-owner-decision wording instead of the broad `owner decision` predicate. Accepted, resolved, disposed, not-applicable, and no-known-issue wording no longer blocks finalization, while `Owner decision: pending` and `needs owner decision` still block.
+- Current P2 final-validation-heading implementation decision: `verifyPostEffectiveHeadChanges()` now treats newly added final-validation note headings as evidence-only only when the heading is role-owned: `## Final Analyst Validation Notes` in `feature-request.md`, and `## Final Architect Validation Notes` in Architect-owned `spec.md`, `plan.md`, or `tasks.md`. Wrong-role headings and arbitrary peer headings remain non-evidence changes.
 
 ## Dead Ends
 
@@ -217,10 +219,21 @@
 - `pnpm run check:repo`: passed after the validated-effective-head/known-issue review fix; "Repository baseline check passed."
 - `node scripts/check-feature-memory.mjs --worktree`: passed after the validated-effective-head/known-issue review fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `pnpm run preflight`: passed after the validated-effective-head/known-issue review fix; feature-memory gate, repo baseline, content validation, 161 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
+- `git fetch origin --prune`: passed during the final-validation-heading review fix; `origin/main` remained `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, and `git rev-list --left-right --count HEAD...origin/main` returned `23 0`, so no merge was required.
+- `node --check scripts/finalize-pr.mjs`: passed after the final-validation-heading review fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after the final-validation-heading review fix; 43 tests passed, including role-owned final-validation headings being accepted after the effective content head and wrong-role heading/file additions remaining blocked.
+- `git diff --check`: passed after the final-validation-heading review fix; no whitespace errors reported.
+- `node --check scripts/finalize-pr.mjs`: passed during final handoff verification for the P2 final-validation-heading review fix.
+- `node --test tests/finalize-pr.test.mjs`: passed during final handoff verification; 43 tests passed.
+- `pnpm run check:repo`: passed during final handoff verification; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed during final handoff verification; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `pnpm run preflight`: passed during final handoff verification; feature-memory gate, repo baseline, content validation, 163 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
+- `git diff --check`: passed during final handoff verification after process-memory refresh; no whitespace errors reported.
 
 ## Cycle PR Set
 
 - Purpose: address PR #80 AI review P1 validated-effective-head gate and P2 accepted-known-issue decision parsing; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `a1abfc0b2981c5fab819ef189b47fbf97853d9c3`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
+- Purpose: address PR #80 AI review P2 final-validation heading allowance; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `44c056347dfa75c67466d72d289281052471ed96`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
 
 ## Final Validation Evidence
 
