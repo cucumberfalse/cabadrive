@@ -10,8 +10,9 @@
 - dependencies:
 - product paths:
 - data changes:
-- latest-main base evidence:
+- latest-main base evidence: `[Latest verified main evidence, normally origin/main after fetch, or documented fallback/blocker if fetch or base verification was unavailable.]`
 - assigned isolated worktree/branch:
+- cleanup applicability: `[Not applicable, or cleanup scope/candidates/approved roots/refusal expectations.]`
 
 ## Scope Boundaries
 
@@ -26,7 +27,7 @@
 - Spec-first:
 - Testable boundaries:
 - PR-only:
-- Latest-main isolation:
+- Latest-main isolation: `[Fresh isolated worktree/branch from latest verified main; fetch failure or unverified base is a blocker or documented fallback, not silent stale reuse.]`
 - Final validation loop:
 - Simplicity:
 - Deployability:
@@ -40,11 +41,21 @@
 - Cycle PR set recording location: `[tasks.md, PR body, or other durable process evidence.]`
 - PR slice fields: `purpose`, `branch`, `PR metadata`, `head SHA`, `status`, `included in final validation`.
 - Analyst handoff handling: `[Whether latest-main intake branch continues only through planning or is assigned as the single PR slice.]`
-- Additional task-slice startup: `[How each additional slice verifies latest origin/main and creates a fresh isolated worktree/branch/PR.]`
+- Additional task-slice startup: `[How each additional slice verifies latest main, normally origin/main after fetch, handles fetch/base verification failure as a documented fallback or blocker, and creates a fresh isolated worktree/branch/PR.]`
 
 ## Complexity Tracking
 
 `[Document any new abstraction or complexity.]`
+
+## Cleanup Planning
+
+- Cleanup applicability: `[Not applicable, or why cleanup is in scope.]`
+- Cleanup Agent assignment: `[Who performs cleanup-only validation/action, or "not applicable".]`
+- Approved cleanup roots: `[Explicit roots; never rely on name pattern alone.]`
+- Excluded/current work: `[Current Orchestrator, Analyst, Architect, Implementation Agent, Review Agent, Cleanup Agent worktrees, active PR work, user-owned paths, and ambiguous targets.]`
+- Required validation: `[Positive-proof checks for repository identity, worktree registration, agent-created proof, activity, locks/processes, cleanliness, upstream/unpushed state, PR state, completion signal, and deletion method.]`
+- Refusal conditions: `[Current, active, dirty, untracked, unpushed, open-PR, locked, running-process, ambiguous, user-owned, out-of-root, missing-check, or PR-lookup-failure targets are preserved.]`
+- Evidence handoff: `[Dry-run inventory, per-target validation/action/refusal, deletion command, post-cleanup confirmation, and confirmation that active/ambiguous work was not touched.]`
 
 ## Verification
 
@@ -56,8 +67,10 @@
 | Final Architect validation | `[Evidence Architect validation ran before Analyst and covered all PR slices, Architect-assigned tasks/dispositions, architectural guidance, open task state, process memory, and customer intent in spirit]` |
 | Final Analyst validation | `[Evidence Analyst validation ran after Architect and checked customer intent in spirit and letter]` |
 | Effective content head and current-head guard | `[Validated effective content head, final-validation evidence-only commit evidence if any, current PR head, read-only guard result, and stale-validation routing if any non-evidence post-validation content changed]` |
+| Cleanup applicability and evidence/refusal | `[Not applicable rationale, or Cleanup Agent dry-run inventory, validation, action/refusal, post-cleanup confirmation, and active-work preservation evidence]` |
+| Cleanup review expectations | `[Review evidence that cleanup wording preserves role boundaries, blocks unsafe deletion, requires positive proof, and refuses ambiguous/current/active/user-owned targets]` |
 | Return limits | `[Architect return count <= 10, Analyst return count <= 5, or new-feature-request escalation evidence]` |
-| Merge gates | `[Required checks, review, conflict, acceptance evidence, process memory, feedback disposition, final guards, branch-protection readiness, and absence of exceptional human blockers]` |
+| Merge gates | `[Required checks, review, conflict, acceptance evidence, process memory, feedback disposition, current-head guard, final guards, cleanup evidence/refusal when relevant, branch-protection readiness, and absence of exceptional human blockers]` |
 
 Negative scenario evidence:
 

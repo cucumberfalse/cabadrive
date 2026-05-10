@@ -1,0 +1,195 @@
+# Plan: Orchestrator Cleanup Governance
+
+## Summary
+
+Update Cabadrive's process guidance so Orchestrator starts repository-changing work from a fresh latest-main isolated environment, adds a narrowly scoped Cleanup Agent for completion-time disk cleanup, and requires one-time cleanup evidence for completed agent-created environments. This is governance and process work plus an operational one-time cleanup evidence step; it must not change learner-facing product behavior or runtime contracts.
+
+## Technical Context
+
+- runtime: none for product runtime; process documentation, templates, feature memory, and local cleanup evidence only.
+- dependencies: existing Git, GitHub CLI or equivalent PR lookup, shell read-only inspection commands, and existing package tooling for repository verification.
+- product paths: none expected.
+- data changes: none expected.
+- feature memory path: `specs/022-orchestrator-cleanup-governance/`.
+- implementation branch/worktree context: `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on `codex/014-orchestrator-cleanup-governance`.
+- likely documentation targets:
+  - `AGENTS.md`
+  - `CLAUDE.md`
+  - `.specify/memory/constitution.md`
+  - `.specify/templates/feature-request-template.md`
+  - `.specify/templates/spec-template.md`
+  - `.specify/templates/tasks-template.md`
+  - `.github/pull_request_template.md`
+  - `docs_project/project/devops/ai-pr-workflow.md`
+  - `docs_project/project/devops/review-contract.md`
+  - `specs/README.md`
+  - `specs/022-orchestrator-cleanup-governance/tasks.md`
+- likely technical inspection targets:
+  - `scripts/new-worktree.mjs` as evidence for the existing latest-main helper behavior; edit only if implementation finds a direct mismatch with the spec and records why.
+  - `scripts/check-feature-memory.mjs` and `scripts/check-repo-baseline.mjs` for verification, not cleanup.
+
+## Scope Boundaries
+
+- in scope: latest-main Orchestrator startup rule, fresh isolated worktree/branch/PR slice rule, fetch failure handling, exclusive Cleanup Agent cleanup execution role and boundaries, completion-time cleanup coordination, validation/refusal checklist, one-time cleanup evidence, review gates for unsafe cleanup, removal of equivalent-cleanup-role deletion permission, PR #65 coordination mitigation, and this feature memory.
+- out of scope: product code, content, translations, assets, Docker/runtime behavior, service worker behavior, package dependency changes, CI workflow changes, branch-protection changes, secrets, production resources, broad cleanup automation, and deletion of any active or ambiguous work.
+
+## Constitution Check
+
+- Spec-first: yes; Analyst intake exists as `feature-request.md`, and this Architect plan precedes implementation.
+- Testable boundaries: yes; process behavior maps to text search, manual diff review, feature-memory checks, and cleanup inventory evidence.
+- PR-only: yes; repository changes must land through a PR and must not be pushed directly to `main`.
+- One worktree per task: yes; implementation must use the assigned isolated worktree/branch/PR slice and preserve parallel work.
+- Simplicity: yes; prefer durable guidance and explicit validation evidence over automatic deletion tooling. Any new automation needs a current need documented before implementation.
+- Deployability: neutral; no runtime behavior changes are expected.
+- Process memory: yes; `tasks.md` must record decisions, dead ends, known issues, cleanup evidence, verification evidence, and Implementation Agent feedback.
+
+## Implementation Approach
+
+1. Confirm the assigned worktree, branch, feature folder, and baseline status before editing:
+   - `pwd`
+   - `git status --short --branch`
+   - `git branch --show-current`
+   - `test -f specs/022-orchestrator-cleanup-governance/feature-request.md`
+2. Read active feature memory and scoped durable process docs/templates before editing.
+3. Search existing workflow language to avoid contradictions:
+   - `rg -n "Orchestrator|Analyst|Implementation Agent|Review Agent|worktree|main|origin/main|cleanup|artifact|parallel|merge|feature-request|tasks.md" AGENTS.md CLAUDE.md docs_project/project/devops .github/pull_request_template.md .specify/memory/constitution.md .specify/templates specs/README.md scripts/new-worktree.mjs`
+4. Update `AGENTS.md` so it clearly states:
+   - Orchestrator starts every new repository-changing task from a fresh isolated environment based on latest verified `main`.
+   - Normal startup fetches `origin/main`, records the base, creates or assigns a new isolated worktree and branch, and warns subagents about parallel work.
+   - Fetch failure or unverified base state is a blocker or documented fallback, not permission to reuse stale work silently.
+   - Cleanup Agent is a first-class role with narrow cleanup authority and explicit forbidden actions.
+   - Orchestrator coordinates cleanup at completion but does not directly delete local repository environments.
+   - Destructive completion-time local environment cleanup is executed only by an assigned Cleanup Agent; non-cleanup roles may coordinate, request cleanup, or record evidence, but must not execute deletion.
+5. Update `CLAUDE.md` with implementation-agent operating rules for latest-main startup expectations, cleanup handoff, and preserving active/ambiguous work.
+6. Update `.specify/memory/constitution.md` only as needed to make startup isolation and cleanup governance canonical without weakening existing role boundaries.
+7. Update `.specify/templates/*` so future feature memory captures startup base, worktree/branch context, cleanup applicability, cleanup evidence, and feedback disposition.
+8. Update `docs_project/project/devops/ai-pr-workflow.md` as the main durable workflow narrative for latest-main startup, completion-time cleanup coordination, Cleanup Agent assignment, validation, refusal, evidence, and handoff.
+9. Update `docs_project/project/devops/review-contract.md` so reviewers block unsafe cleanup rules, missing cleanup evidence, and role-boundary violations.
+10. Update `specs/README.md` and `.github/pull_request_template.md` only where feature-memory lifecycle, cleanup evidence, parallel-work preservation, or completion gates need alignment.
+11. Do not add automatic deletion tooling in this feature unless implementation records a concrete mismatch that cannot be solved with guidance and Architect disposition. If tooling is proposed, record it as Implementation Agent feedback first.
+12. Perform the one-time cleanup only after the durable validation rules are in place. Cleanup deletion must be assigned to and executed only by a Cleanup Agent, must start with dry-run inventory, and must return evidence for recording in `tasks.md`; equivalent non-Cleanup operational roles are not permitted to execute deletion.
+13. Keep `tasks.md` current throughout implementation, including decisions, known issues, one-time cleanup evidence, verification evidence, and any feedback.
+
+## Cleanup Safety Validation Checklist
+
+Every candidate must pass all required checks before deletion. Failure, inability to run a check, or ambiguous output means preserve the candidate.
+
+1. Approved root: Candidate path is under an explicitly documented Cabadrive agent-environment root, expected to be a managed worktree root under the repository or a Cabadrive sibling worktree root under `/Users/chap/devel/`.
+2. Current-work exclusion: Candidate is not the current Orchestrator, Architect, Implementation Agent, Review Agent, or Cleanup Agent worktree.
+3. Path ownership: Candidate is not the canonical user repository `/Users/chap/devel/cabadrive`, not a user-created directory, and not a durable memory or production resource path.
+4. Repository identity: `git -C <candidate> rev-parse --show-toplevel` succeeds and the remote URL matches the Cabadrive repository remote, or the candidate has an Architect-approved documented helper marker proving Cabadrive agent ownership.
+5. Worktree metadata: Candidate appears in `git worktree list --porcelain` for the Cabadrive repository or has documented helper metadata proving it was created as an agent work environment.
+6. Agent-created proof: Candidate has a branch, path convention, process memory reference, or helper-created metadata tying it to an agent task. Name pattern alone is insufficient.
+7. Activity check: Candidate is not referenced by active feature memory, active branch assignments, current PR work, running Orchestrator/agent instructions, or known active process memory.
+8. Lock/process check: Candidate is not a locked worktree and has no running process using it as a working directory or open project root. If this cannot be checked, preserve it.
+9. Git cleanliness: `git -C <candidate> status --short` has no output.
+10. Upstream state: Candidate branch has an upstream or documented merge/closure evidence. Missing upstream without merge evidence blocks deletion.
+11. Unpushed commits: `git -C <candidate> rev-list --left-right --count @{u}...HEAD` or another recorded reachability command shows no local-only commits requiring preservation. If no upstream exists, preserve unless merge evidence proves all commits are reachable from `origin/main`.
+12. PR state: GitHub lookup by branch/head SHA shows no open PR and no unresolved review/check state. Lookup failure blocks deletion.
+13. Completion evidence: Candidate has final agent report, merged/closed PR evidence, explicit Orchestrator completion state, or another durable completion signal. Absence blocks deletion.
+14. Deletion method: Registered worktrees are removed with `git worktree remove <candidate>` from the managing repository. Raw `rm -rf` is forbidden for registered worktrees and allowed only for non-worktree generated artifacts with explicit Architect-scoped evidence.
+15. Post-cleanup confirmation: After deletion, evidence confirms the path no longer exists or the worktree list no longer references it, and no unrelated worktree was affected.
+
+## One-Time Cleanup Evidence Requirements
+
+Record evidence in `tasks.md` or a scoped feature-memory section before completion. The evidence must include:
+
+- Timestamp and role that performed cleanup.
+- Candidate discovery command and full candidate list.
+- Approved cleanup roots used for this run.
+- Current active worktree and branch that were excluded.
+- For each candidate: path, branch, HEAD SHA, remote URL, worktree registration status, git status result, upstream/unpushed result, PR state, lock/process result, active-process-memory check, completion signal, final action, and reason.
+- For each removed candidate: exact deletion command, command result, and post-cleanup confirmation.
+- For each preserved candidate: explicit refusal reason.
+- Confirmation that `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance`, `/Users/chap/devel/cabadrive`, PR #65 work, and any active or ambiguous work were not touched.
+- Any unavailable check and its conservative outcome.
+
+## Prefix Rename Resolution
+
+Historical PR #86 state, now superseded: after clean rebase onto `origin/main` `2af08b0b918fadb14504ae63a7b2850070906992` from PR #86, this branch was based on the latest verified main state without conflicts. PR #86 added `specs/019-learning-polish-process-memory-closure`, so current main's max feature-memory prefix was then `019`; the cleanup feature memory was valid at `specs/020-orchestrator-cleanup-governance/`. Prior PR #66/PR #72, PR #69/P2, PR #63, and PR #83 rebase notes are historical/superseded latest-base evidence only. Prior final Architect/Analyst validations became stale after later renumbering.
+
+Latest-main numbering update, 2026-05-10: Orchestrator fetched latest `origin/main` `f5fcb1602885022bb60b412f90bf290d51674c76`; merge-base from local head `f61ee93c6d2c5fcce6df0d95b8d9714413204c7c` remains `90a11d943880606586d4bc02aa7774a8d7a73f3d`, and branch comparison is `26 3`. `origin/main:specs` now includes `021-docker-smoke-isolation`, making the current main maximum feature-memory prefix `021`. Because this cleanup feature is still unmerged and latest-main governance has already required renumbering when main advanced, the valid feature-memory path is `specs/022-orchestrator-cleanup-governance/`. The Implementation Agent renamed the feature memory from the former `020` path to `022` and updated current path references; final Architect/Analyst validation must rerun after implementation validation. The final Architect PASS on `f61ee93c6d2c5fcce6df0d95b8d9714413204c7c` remains stale until final validation reruns.
+
+## Complexity Tracking
+
+The only new abstraction planned is the Cleanup Agent role. It is justified because cleanup is destructive local-disk work and should not be folded into Orchestrator's coordination role or Implementation Agent's code/docs role. The role must stay narrow: assigned cleanup, validation, evidence, and refusal. Broader automation or unattended deletion is intentionally out of scope.
+
+## Verification
+
+| Acceptance criterion | Evidence |
+| --- | --- |
+| AC-001 | `rg -n "latest.*main|origin/main|fresh.*isolated|new.*worktree|repository-changing.*start" AGENTS.md CLAUDE.md docs_project/project/devops .specify/memory/constitution.md .specify/templates specs/README.md` |
+| AC-002 | `rg -n "fetch.*origin.*main|fetch.*fail|unverified|stale|fallback|blocker" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates specs/022-orchestrator-cleanup-governance` |
+| AC-003 | `rg -n "Cleanup Agent|cleanup.*role|Orchestrator.*coordinat.*cleanup|must not.*delete" AGENTS.md CLAUDE.md docs_project/project/devops .specify/memory/constitution.md docs_project/project/devops/review-contract.md` |
+| AC-004 | Cleanup evidence table in `tasks.md` shows every removed path passed the full validation checklist. |
+| AC-005 | `rg -n "active|current|dirty|untracked|unpushed|open PR|ambiguous|user-owned|outside.*root|locked|running process|refuse|preserve" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates docs_project/project/devops/review-contract.md specs/022-orchestrator-cleanup-governance` |
+| AC-006 | One-time cleanup evidence in `tasks.md` includes inventory, per-target validation, action, reason, and post-cleanup confirmation. |
+| AC-007 | One-time cleanup evidence explicitly names active/preserved worktrees and confirms the current worktree and PR #65 work were not touched. |
+| AC-008 | Manual diff review plus text search shows scoped process docs/templates align on startup, Cleanup Agent, cleanup validation, and cleanup evidence. |
+| AC-009 | `tasks.md` records PR #65/current-main coordination check before implementation PR publication or merge. |
+| AC-010 | `git diff --name-only` and manual review show no product code, content behavior, runtime configuration, secrets, branch protection, or unrelated automation changes. |
+| AC-011 | `rg -n "Cleanup Agent or.*equivalent|or explicitly.*equivalent|equivalent assigned cleanup role|explicitly scoped equivalent cleanup role|equivalent non-Cleanup.*delete|non-Cleanup.*execute deletion" CLAUDE.md .github/pull_request_template.md docs_project/project/devops .specify/memory/constitution.md specs/022-orchestrator-cleanup-governance` plus manual review shows no live/current permission for non-Cleanup roles to execute deletion; expected remaining matches are rejection requirements, validation-command text, or historical/superseded process-memory evidence. |
+
+Negative scenario evidence:
+
+- Name-pattern-only deletion is forbidden by durable text and no cleanup evidence relies only on names.
+- Dirty/untracked candidates are preserved with recorded `git status --short` output.
+- Unpushed or no-upstream candidates are preserved unless merge evidence proves all commits are reachable from `origin/main`.
+- Open-PR or PR-lookup-failure candidates are preserved.
+- Current, active, locked, running-process, out-of-root, user-owned, and ambiguous candidates are preserved.
+- Non-Cleanup roles refuse destructive cleanup execution and route the work for Cleanup Agent assignment.
+- Fetch failure or unverified latest-main startup is documented as blocker/fallback, not silent stale reuse.
+- PR #65 overlap or same-path conflict triggers Orchestrator/Architect coordination.
+
+Required command evidence:
+
+- `git diff --check`
+- `node scripts/check-feature-memory.mjs --worktree`
+- `pnpm run check:repo`
+- `pnpm run preflight`
+- `git status --short --branch`
+- `git diff --name-only`
+- cleanup inventory command, expected to include `git worktree list --porcelain` and a candidate directory listing under approved roots
+- per-candidate cleanup validation commands, recorded in `tasks.md`
+
+If a command cannot run because of local environment, missing credentials, or unrelated repository state, record the exact command, failure, conservative outcome, and mitigation in `tasks.md`.
+
+## Risks
+
+- Risk: Cleanup guidance could be read as permission for Orchestrator to run destructive shell commands.
+- Mitigation: Define Cleanup Agent as the cleanup executor and state Orchestrator coordinates but does not directly delete environments.
+
+- Risk: Wording that allows equivalent cleanup-role deletion weakens the dedicated Cleanup Agent boundary.
+- Mitigation: Remove live/current equivalent-role deletion permission and state that non-cleanup roles may coordinate, request cleanup, or record evidence only.
+
+- Risk: A directory name or modification time could be mistaken for proof that a path is safe to delete.
+- Mitigation: Require full positive-proof validation and state that name/time are candidate discovery hints only.
+
+- Risk: One-time cleanup could remove active parallel work.
+- Mitigation: Require active worktree/branch/PR/process-memory checks, PR #65 mitigation, and preservation of any ambiguous candidate.
+
+- Risk: Fetching latest `main` can fail because of network or credentials.
+- Mitigation: Treat unverified latest-main state as a blocker or documented fallback, and do not silently reuse stale environments.
+
+- Risk: Cleanup evidence contains local filesystem paths.
+- Mitigation: Record only local paths needed to prove safe cleanup in feature memory; do not include secrets, tokens, or unrelated user directory contents.
+
+- Risk: Broad automation could create data-loss risk.
+- Mitigation: Keep automatic deletion tooling out of scope unless separately planned and reviewed; use evidence-driven manual cleanup for this ticket.
+
+## Process Memory
+
+- PR #67 review finding, 2026-05-10: unresolved P2 found `.specify/templates/plan-template.md` still used old startup wording and lacked cleanup applicability/evidence fields, so AC-008 cross-template consistency was not satisfied.
+- Implementation fix, 2026-05-10: update only `.specify/templates/plan-template.md`, this `plan.md`, and `tasks.md` to align the plan template with the already-updated feature/spec/tasks templates on latest verified main with fetch fallback/blocker language, cleanup applicability/evidence/refusal fields, Cleanup Agent review/verification expectations, and current-head/final-validation guards.
+- PR #67 prefix P2 finding, 2026-05-10: base now contains `specs/012-orchestrator-final-validation-loop/`, so the cleanup feature memory needed renumbering to the next valid prefix before merge.
+- Historical prefix/base update, 2026-05-10: the prior latest-main record was superseded after PR #66 merged. Latest `origin/main` at that time was `b26a37d7d2cb985d70ff8dc79a12b397cc52e271`; this branch was rebased onto it, and governance/template conflicts were resolved preserving both Orchestrator-first enforcement and cleanup/latest-verified-main governance. This PR #66 note is historical/superseded by later latest-base evidence including PR #69/P2 and PR #63.
+- Historical PR #72 base update, 2026-05-10: latest `origin/main` was then `578c618d02a45adffa9f2b18a9373495cf19ed8a`; that evidence is now historical/superseded by later PR #69/P2 evidence and the PR #63 rebase.
+- PRRT_kwDOSX65IM6A517A P2 finding/fix, 2026-05-10: durable docs/templates still contained hard wording that new task slices start from or verify latest `origin/main`, conflicting with the documented fetch/base fallback/blocker startup rule. The fix updates owned docs/templates to require latest verified `main`, normally `origin/main` after fetch, with no silent stale reuse; the Analyst-created latest-main handoff exception remains.
+- Historical PR #69/P2 base update, 2026-05-10: the assigned branch base/merge-base was `origin/main` `65624107d856653e503e3f03fd1d51da83992984` from PR #69. That base's max feature prefix was still `018`, so the then-current cleanup feature prefix remained valid at that time. This is now historical/superseded latest-base evidence after later rebases, while AI Review thread `PRRT_kwDOSX65IM6A517A` remains addressed by the current P2 fix.
+- Historical PR #63 base update, 2026-05-10: the assigned branch was cleanly rebased without conflicts onto `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695` from PR #63. PR #63 added product/content learning support and feature memory `specs/009`; that main's max feature prefix remained `018`, so the then-current cleanup feature prefix remained valid. This evidence is historical/superseded by later latest-base updates.
+- Historical final validation state, 2026-05-10: prior Architect/Analyst validations after earlier heads, including `b4d9391`/`7557e3d` and PR #72/`7d9a09a`, were superseded by the PR #69/P2 fix, the later PR #63 base update, and final validation on effective content head `9db9b87`. Those Architect/Analyst PASS notes are now stale after accepted AI Review thread `PRRT_kwDOSX65IM6A7NJ4` and the T051-T052 Implementation Agent follow-up; T053 must rerun role-owned final validation.
+- Final Architect validation GAP, 2026-05-10: validation on content head `9e50a76a4b0286cc3eec2fdad3cf43cebb7c5575` found remaining hard latest-`origin/main` startup wording in live governance/template scope: `.github/pull_request_template.md:28`, `specs/README.md:26`, and `specs/README.md:38`. This supersedes the prior final-validation PASS state until an Implementation Agent updates those lines to latest verified `main`, normally `origin/main` after fetch, with documented fallback/blocker semantics and reruns validation.
+- Historical Final Architect validation PASS, 2026-05-10: content head `4bcce2a6869efaba25334a8a5dfb593f8cc3e6e7` was based on latest verified `main` base/merge-base `origin/main` `870c7f9514404b36cf75954c3c39814770495342` from PR #83. PR #83 added `specs/010-ui-ux-learning-source-of-truth`; that main's max feature prefix remained `018`, so the then-current cleanup feature prefix remained valid. This PASS is now stale after PR #86 advanced main and this feature memory was renumbered to `020`.
+- Historical PR #86 renumber update, 2026-05-10: current HEAD was `bce10b86b1f238f3943c380631b8741327e2e2f7`, and `origin/main`/merge-base was `2af08b0b918fadb14504ae63a7b2850070906992` from PR #86. `origin/main:specs` then contained `019-learning-polish-process-memory-closure`, so max prefix was `019`; the cleanup feature memory was renamed to `specs/020-orchestrator-cleanup-governance/`. Final Architect and Analyst validations needed rerun because this was a non-evidence feature-memory path change. This state is superseded by the later `022` renumber after `origin/main` added `021-docker-smoke-isolation`.
+- PRRT_kwDOSX65IM6A7NJ4 P1 GAP disposition, 2026-05-10: accepted. Live governance formerly permitted equivalent cleanup-role deletion, which weakened the dedicated Cleanup Agent boundary. Implementation follow-up removes that loophole from current live governance/templates/guidance and reruns validation; prior final Architect/Analyst validation PASS state for head `a93c15e2eabee9f02d1cb57c4330f29afad7b4e6` remains stale until fresh role-owned final validations rerun.
+- Latest-main numbering GAP, 2026-05-10: final Architect PASS on current head `f61ee93c6d2c5fcce6df0d95b8d9714413204c7c` became stale after Orchestrator fetched latest `origin/main` `f5fcb1602885022bb60b412f90bf290d51674c76`, which added `specs/021-docker-smoke-isolation/`. Since the current main max feature prefix is now `021`, this cleanup feature memory must be renumbered from `020` to `022` before final Analyst validation and PR push.
