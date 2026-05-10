@@ -138,9 +138,9 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: PASS after latest-main rebase and `019` renumbering on 2026-05-10. Current HEAD `b4d93914073a297194d0429f472f0d9bd9d5c2df` keeps the feature memory at `specs/019-orchestrator-cleanup-governance/`; `019` is valid because the latest main spec maximum prefix before this feature is `018`.
+- Status: STALE/PENDING after the PR #66 rebase and governance/template conflict resolution on 2026-05-10. Prior final Analyst validation after `b4d9391`/`7557e3d` is superseded; fresh Analyst validation has not yet passed and must rerun on the current PR #66-based content. Latest `origin/main` is `b26a37d7d2cb985d70ff8dc79a12b397cc52e271`, and `019` remains valid because the latest main spec maximum prefix before this feature is still `018`.
 - Analyst return count: 0.
 - Customer intent check: PASS. The intake still fully covers the user's requested governance change: Orchestrator should default each new repository-changing run to a fresh isolated environment from latest verified `main`; cleanup should be a first-class Cleanup Agent responsibility or explicitly equivalent role with positive-proof validation; one-time cleanup evidence must delete only old completed agent-created environments while preserving current, active, open-PR, dirty, ambiguous, and otherwise protected work; and implementation scope stays limited to process/governance plus the requested one-time cleanup.
 - Gaps: none.
 - Analyst routing gaps or new questions: none.
-- Architect disposition routing: none needed from Analyst; existing intake is sufficient for Architect-owned spec, plan, and task validation after the `019` rename.
+- Architect disposition routing: pending fresh Architect/Analyst validation after the PR #66 rebase; do not treat earlier validation passes as current evidence.
