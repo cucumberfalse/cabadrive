@@ -100,6 +100,9 @@
 - [x] D5-001 Translate and simplify all 28 chunks in the Decreto 779/1995 core traffic-law content batch.
 - [x] D5-002 Add per-document learner, QA, and search shards for `decreto-779-1995-reglamentario-ley-24449`.
 - [x] D5-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
+- [x] D6-001 Translate and simplify all 59 chunks in the Anexo L road-signage content batch.
+- [x] D6-002 Add per-document learner, QA, and search shards for `decreto-779-1995-anexo-l-senalizacion-vial-uniforme`.
+- [x] D6-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
 - [ ] T063 For each batch, preserve numbers, dates, legal obligations, exceptions, penalties, source names, and article references in both Russian layers.
@@ -309,6 +312,16 @@
 - Batch QA/lint evidence before final verification: custom batch lint passed for 28 chunks with nonempty Russian fields, QA approvals, `checkedAt: "2026-05-10"`, search references, absence of simplified Spanish fields, and archive-span/hash matches; `npm run validate:content` passed in draft/default mode.
 - No mass translation beyond this assigned document was attempted. Whole-corpus translation, simplification, QA, and final strict/release gates remain open for later D-H batches.
 - D5 does not edit `content/official-documents/**`, UI files, coverage generator files, root primary-source manifests, or unrelated batch files.
+- Slice D6 Anexo L signage content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-signage-dnrpa` on branch `codex/019-primary-sources-content-batch-signage-dnrpa`.
+- Branch was rebased from local DNRPA base `c2f078abb33d5ddd3952e23088a351daf0d20d45` onto PR #104 green base `origin/codex/019-primary-sources-content-batch-core-traffic-law` at `2d49d44bab76cb1fc9eb1275a94bbfbe3fcad158`, preserving the Anexo L batch commit contents above the DNRPA and Decreto evidence.
+- Added reviewed learner, QA, and search shards for 1 official document and 59 chunks:
+  - `decreto-779-1995-anexo-l-senalizacion-vial-uniforme`: 59 chunks.
+- For every D6 chunk, the learner shard copies `chunkId`, `officialDocumentId`, order, heading path, official label, chunking strategy, source span, source text hash, source fingerprint, and `originalSpanish` from the current archive/coverage inventory.
+- Full Russian and simple Russian text were reviewed against the Spanish archive spans and `content/primary-sources/terminology.ru.md`; QA shards mark translation and simplification QA as `approved` with `checkedAt: "2026-05-10"`.
+- D6 search shard adds one entry per translated chunk with `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish` text fields.
+- D6 terminology preserves Anexo L, Decreto 196/2025, Señalización Vial Uniforme, signal codes R/P/I/H/T/F, calzada as `проезжая часть`, banquina as `обочина`, senda peatonal as `пешеходный переход`, semáforo as `светофор`, dimensions, colors, reflectivity standards, railway-crossing rules, temporary-work-zone devices, and the 15 archived Anexo image references.
+- Completing D6 covers the Anexo L part of the signage/study-material grouping in T070. The GCBA four-wheel manual and any remaining study-material source batches still require later content slices before T070 can close.
+- D6 does not edit `content/official-documents/**`, UI files, coverage generator files, root primary-source manifests, or official archive files.
 
 - Slice D1 small admin/study/safety content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-admin-small` on branch `codex/019-primary-sources-content-batch-admin-small`.
 - Added reviewed learner, QA, and search shards for 4 official documents and 21 chunks:
@@ -804,11 +817,18 @@
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed as the actual primary-source coverage mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - First `npm test` attempt failed because the fresh worktree had no installed `node_modules` and `typescript` was unavailable to `tests/domain.test.mjs`. `pnpm install --frozen-lockfile` then completed using the existing lockfile with no package metadata changes.
+- Slice D6 Anexo L signage content batch verification on 2026-05-10:
+  - Custom D6 assigned-batch count/span/fingerprint check passed for `decreto-779-1995-anexo-l-senalizacion-vial-uniforme`: document, QA, and search shards have exactly 59 entries; `originalSpanish`, `sourceTextSha256`, and `sourceFingerprint` match current archived Markdown line spans for all 59 chunks; all 59 translation QA records and all 59 simplification QA records are `approved` with `checkedAt: "2026-05-10"`.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed as the actual primary-source coverage mode with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - First `npm test` attempt failed because this fresh worktree had no installed `node_modules` and `typescript` was unavailable to `tests/domain.test.mjs`. `pnpm install --frozen-lockfile` then completed using the existing lockfile with no package metadata changes.
   - Re-run `npm test` passed: 153 tests, 153 pass, 0 fail.
   - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
-  - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.
+  - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because the GCBA manual, remaining core traffic/CABA code, and large legal-duty sources still require later approved learner-source content and exact-text validation remains pending.
 - PR #104 DNRPA base-branch merge conflict resolution on 2026-05-11:
   - Used isolated worktree `/Users/chap/devel/cabadrive-pr104-decreto-conflict`, fetched origin, checked out detached `origin/codex/019-primary-sources-content-batch-core-traffic-law`, and merged `origin/codex/019-primary-sources-content-batch-dnrpa` into the PR #104 head.
   - The only merge conflict was `specs/019-primary-sources-section/tasks.md`; it was resolved by preserving both the DNRPA PR #103 stack-disposition note and the Decreto PR #104 stack/review/D5 process-memory notes.
@@ -833,3 +853,9 @@
   - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+
+- Rebase sync of D6 Anexo L signage batch onto PR #104 green base on 2026-05-10:
+  - `git fetch origin` completed, then `git rebase origin/codex/019-primary-sources-content-batch-core-traffic-law` replayed the Anexo L batch above `2d49d44bab76cb1fc9eb1275a94bbfbe3fcad158`.
+  - Conflict resolution in this file preserved DNRPA D4 evidence, Decreto D5 evidence from PR #104, and Anexo L evidence as D6. No learner-source shard conflict occurred.
+  - Final diff scope against `origin/codex/019-primary-sources-content-batch-core-traffic-law`: add Anexo L document/QA/search shards and update this process memory only.
+  - Rebase verification commands passed after conflict resolution: `npm run validate:content`; `npm run validate:content -- --coverage`; `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content`; `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs`; `git diff --check`; `node scripts/check-feature-memory.mjs --worktree`.
