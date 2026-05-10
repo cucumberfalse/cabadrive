@@ -14410,7 +14410,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "0d5e4090bebf71406d8ed2d5fc1abbc676d918ce54060491e8a02b1817bac744",
+        "sourceFingerprint": "036d54a52f810edb42829da849d49323073754613060c173acb9dfe5d4a22266",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -14430,24 +14430,24 @@
       "titleRu": "Регулировщики, контроль и санкции",
       "summaryRu": "Блок про autoridad/agente, указания на месте, проверки alcoholemia, retención de licencia, remoción del vehículo, conductor principiante и Scoring.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. На экзамене слова autoridad, agente, control, retener и scoring означают не теорию “про документы”, а практическую власть остановить, проверить, запретить продолжать движение и применить последствия.",
-        "В CABA указания autoridad de control стоят выше обычных сигналов. Поэтому в билете про paso ferroviario не спорьте с оперативным указанием personal ferroviario из самого вопроса, а в билете с agente de tránsito смотрите на жест на изображении: если он показывает остановку, правильный ответ - detenga el vehículo.",
-        "Проверка alcohol/toxicológica не является просьбой. Todo conductor обязан пройти prueba de alcoholemia или toxicológica; negativa constituye falta, презюмируется alcoholemia positiva или действие estupefacientes, агент может запретить продолжать движение и ordenar la remoción del vehículo.",
-        "Retener la licencia можно не за любую falta подряд, а только cuando la normativa vigente así lo indique. В назначенных билетах такие случаи включают alcoholemia positiva/negativa, circulación por carril exclusivo Metrobus без права и другие перечисленные законом ситуации.",
-        "Conductor Principiante в CABA имеет condición de principiante 2 años. Буква P видна первые 6 месяцев, но alcohol cero действует весь период principiante; поэтому в билетах с P выбирайте 0,0, а не 0,5.",
-        "Для картинок с лимитом алкоголя держите границу изображения: обычный автомобиль в fallback-билете - 0,5 gramos por litro de sangre по CABA Ley 2148; автомобиль с P - 0,0. Не превращайте это в общий национальный вывод и не переносите лимит motovehículo 0,2 на автомобиль.",
-        "SEPC/Scoring - система баллов. При первой лицензии CABA назначает 20 puntos, затем puntos se descuentan por infracciones comprobadas; ежегодный курс для всех не является определением scoring."
+        "Этот блок - неофициальная подсказка Cabadrive. На экзамене autoridad, agente, control, retener и scoring - не абстрактные слова про документы. Это полномочия остановить, проверить, запретить ехать дальше и применить последствия.",
+        "Для водителя из РФ логика знакома: указание регулировщика важнее привычной схемы знаков. В CABA в билете про paso ferroviario не спорьте с оперативным указанием personal ferroviario, а в билете с agente de tránsito смотрите на жест на изображении: если он показывает остановку, правильный ответ - detenga el vehículo.",
+        "Проверка alcohol/toxicológica - не просьба. Todo conductor обязан пройти prueba de alcoholemia или toxicológica. Negativa constituye falta: презюмируется alcoholemia positiva или действие estupefacientes, агент может запретить ехать дальше и ordenar la remoción del vehículo.",
+        "Retener la licencia можно не за любую falta подряд, а только cuando la normativa vigente así lo indique. В назначенных билетах это alcoholemia positiva/negativa, движение по carril exclusivo Metrobus без права и другие случаи, перечисленные законом.",
+        "Conductor Principiante в CABA имеет condición de principiante 2 años. Буква P видна первые 6 месяцев, но alcohol cero действует весь период principiante. Поэтому в билетах с P выбирайте 0,0, а не 0,5.",
+        "Для картинок с лимитом алкоголя держите границу изображения: обычный автомобиль в старом билете - 0,5 gramos por litro de sangre по CABA Ley 2148; автомобиль с P - 0,0. Не делайте из этого общий национальный вывод и не переносите лимит motovehículo 0,2 на автомобиль.",
+        "SEPC/Scoring - система баллов. При первой лицензии CABA назначает 20 puntos, затем puntos se descuentan por infracciones comprobadas. Ежегодный курс для всех не является определением scoring."
       ],
       "practicalReasoningRu": [
         "Указания на месте нужны, потому что реальная ситуация может временно отличаться от обычной схемы знаков и светофоров: авария, переезд, работы, контроль или перекрытие требуют единой команды.",
-        "Отказ от теста нельзя делать выгоднее проверки. Поэтому экзаменационная логика проста: отказ = риск продолжения движения, запрет ехать дальше и remoción.",
-        "Retención и Scoring делают санкции проверяемыми: водитель видит, что последствия наступают не “по настроению агента”, а в перечисленных законом случаях и через систему puntaje."
+        "Отказ от теста нельзя делать выгоднее проверки. Экзаменационная логика простая: отказ = риск продолжения движения, запрет ехать дальше и remoción.",
+        "Retención и Scoring делают санкции проверяемыми: последствия наступают не 'по настроению агента', а в перечисленных законом случаях и через систему puntaje."
       ],
       "spanishTerms": [
         {
           "id": "term-autoridad-transito",
           "termEs": "autoridad de tránsito",
-          "translationRu": "транспортная/дорожная власть, орган контроля движения",
+          "translationRu": "дорожный орган / орган контроля движения",
           "sourceQuestionIds": [
             "b-fallback-092"
           ]
@@ -14576,7 +14576,7 @@
         {
           "id": "term-sistema-scoring",
           "termEs": "Sistema de Evaluación Permanente de Conductores (Scoring)",
-          "translationRu": "постоянная система оценки водителей, scoring/баллы",
+          "translationRu": "система баллов Scoring",
           "sourceQuestionIds": [
             "b-fallback-243",
             "b-fallback-367"
@@ -14620,7 +14620,7 @@
             {
               "answerId": "b-fallback-044-a2",
               "verdict": "incorrect",
-              "explanationRu": "Неверно: последствие возникает не только при реально выполненной positive test. Negativa a realizar la prueba сама constituye falta."
+              "explanationRu": "Неверно: последствие возникает не только после фактически положительного теста. Negativa a realizar la prueba сама constituye falta."
             },
             {
               "answerId": "b-fallback-044-a3",
@@ -14636,7 +14636,7 @@
             {
               "answerId": "b-fallback-050-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно для этого билета: personal ferroviario, о котором прямо сказано в вопросе, autorizado a regular el paso de vehículos, поэтому по его указанию можно avanzar."
+              "explanationRu": "Правильно для этого билета: в вопросе прямо сказано, что personal ferroviario autorizado a regular el paso de vehículos, поэтому по его указанию можно avanzar."
             },
             {
               "answerId": "b-fallback-050-a2",
@@ -14719,7 +14719,7 @@
             {
               "answerId": "b-fallback-203-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно для изображения в fallback-билете: показан автомобиль particular без P и без признаков транспорта пассажиров/груза, поэтому в CABA-таблице Ley 2148 выбирается 0,5."
+              "explanationRu": "Правильно для изображения в старом билете: показан automóvil particular без P и без признаков транспорта пассажиров/груза, поэтому в CABA-таблице Ley 2148 выбирается 0,5."
             },
             {
               "answerId": "b-fallback-203-a2",
@@ -14806,7 +14806,7 @@
             {
               "answerId": "b-fallback-338-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по изображению: жест agente de tránsito означает detenga el vehículo. Эта точная связка остается ticket-specific."
+              "explanationRu": "Правильно по изображению: жест agente de tránsito означает detenga el vehículo. Эта точная связка остается ответом именно для этой картинки."
             },
             {
               "answerId": "b-fallback-338-a3",
@@ -14826,7 +14826,7 @@
             {
               "answerId": "b-fallback-367-a2",
               "verdict": "incorrect",
-              "explanationRu": "Неверно: курс может появиться как последствие потери баллов, но Scoring не означает ежегодный obligatorio curso vial для всех."
+              "explanationRu": "Неверно: курс может появиться как последствие потери баллов, но Scoring не означает ежегодный обязательный curso vial для всех."
             },
             {
               "answerId": "b-fallback-367-a3",
@@ -14847,7 +14847,7 @@
             {
               "answerId": "b-fallback-446-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: с símbolo P водитель является principiante; в CABA в этот период нельзя conducir con más de 0,0 gramos por litro de sangre."
+              "explanationRu": "Правильно: símbolo P означает principiante; в CABA в этот период нельзя conducir con más de 0,0 gramos por litro de sangre."
             },
             {
               "answerId": "b-fallback-446-a3",
@@ -14860,7 +14860,7 @@
       "trapNotes": [
         {
           "id": "trap-authority-beats-normal-signal",
-          "textRu": "Если есть operative indication от autoridad/agente/personal в самом билете, не отвечайте только по обычному знаку, барьеру или светофору.",
+          "textRu": "Если в билете есть оперативное указание autoridad/agente/personal, не отвечайте только по обычному знаку, барьеру или светофору.",
           "sourceQuestionIds": [
             "b-fallback-050",
             "b-fallback-338"
@@ -14868,7 +14868,7 @@
         },
         {
           "id": "trap-personal-document-not-absolute",
-          "textRu": "“Licencia es un documento personal” звучит убедительно, но неверно как абсолют: retención возможна в предусмотренных нормативой случаях.",
+          "textRu": "'Licencia es un documento personal' звучит убедительно, но это не абсолют: retención возможна в предусмотренных нормативой случаях.",
           "sourceQuestionIds": [
             "b-fallback-092",
             "b-fallback-157",
@@ -21004,7 +21004,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "95d5a374f8444c5ebc9397bea3435d4148b63354f78b2c524a573222f3282c4b",
+        "sourceFingerprint": "90a8e9cff91ac0eedcafa70dffa773e5c144355317ce1b66bd562d505a8bd2a4",
         "basis": {
           "questionLevelCounts": {
             "green": 3,
@@ -21022,22 +21022,22 @@
         }
       },
       "titleRu": "Аварии, экстренные действия и место ДТП",
-      "summaryRu": "Экзаменационный блок про incidente/siniestro vial: что считать дорожным инцидентом, как защитить место, кому звонить, что сообщать страховщику, и какие билеты проверяют безопасность после удара.",
+      "summaryRu": "Блок про incidente/siniestro vial: что считать дорожным инцидентом, как обезопасить место, кому звонить, что сообщать страховщику и как читать билеты про последствия удара.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах здесь важно не спорить со словом siniestro/incidente: экзамен хочет видеть ситуацию как предотвратимое дорожное событие с обязанностью защитить людей и место, а не как случайность без ответственности.",
-        "Первый порядок действий после siniestro vial: Proteger - Alertar - Socorrer. Сначала защитить место и не создать новый удар, затем вызвать помощь и сообщить точное место/характер происшествия/число пострадавших, и только потом помогать пострадавшим в пределах своих навыков.",
-        "Если автомобиль остался inmovilizado, зона должна быть señalizada: включить balizas, использовать prendas reflectantes/triángulos или balizas portátiles, ставить их со стороны, откуда приближаются автомобили, и учитывать скорость дороги. Это объясняет билеты про avenida и calle de sentido único.",
-        "При пострадавших источник GCBA отдельно выделяет 107 для Emergencias Médicas/SAME и затем 911; общая страница материалов GCBA также показывает полезные номера 107 - SAME и 911 - Policía. В билете с парой номеров выбирайте 107 y 911.",
-        "После первичных действий нужно собрать данные: vehículos, conductor, asegurado, testigos, lesionados, lugar и fotos. Для страховки билет спрашивает 72 horas; это поддержано и практической guía siniestros, и Ley 17.418 как tres días desde que se conoce el siniestro.",
-        "Билеты про Vision Cero, velocidad, factor humano и seguridad pasiva не требуют заучивать длинную статистику. Экзаменационная идея такая: ошибки людей ожидаемы, скорость резко увеличивает тяжесть последствий, а система и элементы безопасности должны уменьшать смерть и lesiones graves.",
-        "Estrellas Amarillas - отдельный знак памяти: текущая страница GCBA объясняет, что карта/знаки постоянно отмечают место смерти víctima de tránsito. Поэтому билет про señal que advierte víctima fatal отвечает Verdadero.",
-        "Некоторые формулировки остаются ticket-specific: Observatorio Vial с rango 15 a 34 в `b-fallback-445`, картинка VTV/RVA в `b-fallback-078`, exact emergency-lane symbol в `b-fallback-216`, и private-vehicle signal combo balizas + bocina + pañuelo в `b-fallback-183`. Не превращайте их в новое общее правило без прямого текущего источника."
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах не спорьте со словами siniestro/incidente: экзамен смотрит на ДТП как на предотвратимое дорожное событие, где надо защитить людей и место, а не как на случайность без обязанностей.",
+        "Первый порядок после siniestro vial - Proteger - Alertar - Socorrer. Сначала защитите место и не создайте второй удар. Затем вызовите помощь и сообщите точное место, характер происшествия и число пострадавших. Помогайте пострадавшим только в пределах своих навыков.",
+        "Если автомобиль остался inmovilizado, место нужно señalizar. Включите balizas, используйте prendas reflectantes, triángulos или balizas portátiles и ставьте их со стороны, откуда едут машины. Поэтому билеты отдельно спрашивают avenida и calle de sentido único.",
+        "Если есть пострадавшие, GCBA выделяет 107 для Emergencias Médicas/SAME, а затем 911; страница материалов также показывает 107 - SAME и 911 - Policía. В билете с парой номеров выбирайте 107 y 911.",
+        "После первых действий соберите данные: vehículos, conductor, asegurado, testigos, lesionados, lugar и fotos. Для страховки запомните 72 horas. Это поддержано guía siniestros и Ley 17.418 как tres días desde que se conoce el siniestro.",
+        "Билеты про Vision Cero, velocidad, factor humano и seguridad pasiva не требуют длинной статистики. Идея простая: люди ошибаются, скорость резко усиливает последствия, а дорожная система и элементы безопасности должны снижать смерть и lesiones graves.",
+        "Estrellas Amarillas - знак памяти. Текущая страница GCBA объясняет, что карта и знаки постоянно отмечают место смерти víctima de tránsito. Поэтому билет про señal que advierte víctima fatal отвечает Verdadero.",
+        "Часть формулировок остается только для конкретных билетов: Observatorio Vial с диапазоном 15 a 34 в `b-fallback-445`, картинка VTV/RVA в `b-fallback-078`, символ аварийной полосы в `b-fallback-216` и связка balizas + bocina + pañuelo для частного автомобиля в `b-fallback-183`. Не делайте из них новое общее правило без прямого текущего источника."
       ],
       "practicalReasoningRu": [
         "PAS начинается с защиты места, потому что неподсвеченный или плохо обозначенный автомобиль на проезжей части может быстро создать второй siniestro.",
-        "Сигнализация места работает только если следующий водитель видит опасность заранее: balizas на машине и переносные balizas/triángulos должны быть там, откуда приходит поток.",
-        "Скорость важна не только для нарушения. Чем выше скорость и хуже поле зрения, тем меньше времени на реакцию и тем больше энергия удара.",
-        "Пассивная безопасность не предотвращает сам siniestro, но уменьшает последствия, когда удар уже произошел."
+        "Обозначение места работает только если следующий водитель видит опасность заранее: balizas на машине и переносные balizas/triángulos должны стоять там, откуда идет поток.",
+        "Скорость важна не только для штрафа. Чем выше скорость и уже поле зрения, тем меньше времени на реакцию и тем сильнее энергия удара.",
+        "Пассивная безопасность не предотвращает сам siniestro. Она уменьшает последствия, когда удар уже произошел."
       ],
       "spanishTerms": [
         {
@@ -21052,7 +21052,7 @@
         {
           "id": "term-incidente-vial",
           "termEs": "incidente vial",
-          "translationRu": "дорожный инцидент / road incident",
+          "translationRu": "дорожный инцидент",
           "sourceQuestionIds": [
             "b-fallback-047"
           ]
@@ -21177,7 +21177,7 @@
         {
           "id": "term-vision-cero",
           "termEs": "Programa Visión Cero",
-          "translationRu": "программа Vision Zero",
+          "translationRu": "программа Vision Cero / Ноль смертей",
           "sourceQuestionIds": [
             "b-fallback-200"
           ]
@@ -21185,7 +21185,7 @@
         {
           "id": "term-observatorio-vial",
           "termEs": "Observatorio Vial",
-          "translationRu": "дорожная обсерватория/статистический орган",
+          "translationRu": "Observatorio Vial, орган дорожной статистики",
           "sourceQuestionIds": [
             "b-fallback-445"
           ]
@@ -21206,12 +21206,12 @@
             {
               "answerId": "b-fallback-047-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: incidente de tránsito/incidente vial в билете - это дорожное событие с daños a persona o cosa при circulación en la vía pública. Слово puede ser evitado направляет к идее preventable incident, а не к фатальной случайности."
+              "explanationRu": "Правильно: incidente de tránsito/incidente vial в билете - это дорожное событие с daños a persona o cosa при circulación en la vía pública. Слова puede ser evitado ведут к идее предотвратимого инцидента, а не фатальной случайности."
             },
             {
               "answerId": "b-fallback-047-a2",
               "verdict": "incorrect",
-              "explanationRu": "Impredecible e inevitable - это как раз ловушка слова accidente. Для этого блока GCBA учит не считать такие события неизбежными."
+              "explanationRu": "Impredecible e inevitable - ловушка слова accidente. Для этого блока GCBA учит не считать такие события неизбежными."
             },
             {
               "answerId": "b-fallback-047-a3",
@@ -21226,7 +21226,7 @@
             {
               "answerId": "b-fallback-056-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: ночью хуже видимость и больше риск не заметить опасность вовремя. В этом topic это читается как фактор риска для incidente."
+              "explanationRu": "Verdadero: ночью хуже видимость и выше риск не заметить опасность вовремя. В этой теме это фактор риска для incidente."
             },
             {
               "answerId": "b-fallback-056-a2",
@@ -21242,7 +21242,7 @@
             {
               "answerId": "b-fallback-078-a1",
               "verdict": "incorrect",
-              "explanationRu": "Opción A на картинке - RVA/autopartes grabadas. Это связано с идентификацией/защитой от угона, но билет спрашивает directly vinculada a la prevención y reducción de siniestros viales."
+              "explanationRu": "Opción A на картинке - RVA/autopartes grabadas. Это связано с идентификацией и защитой от угона, но билет спрашивает, что напрямую связано с prevención y reducción de siniestros viales."
             },
             {
               "answerId": "b-fallback-078-a2",
@@ -21282,7 +21282,7 @@
             {
               "answerId": "b-fallback-095-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: mayor velocidad de la precautoria повышает вероятность, что последствия eventual siniestro sean más graves. В источнике GCBA это объясняется энергией удара и уязвимостью человеческого тела."
+              "explanationRu": "Verdadero: mayor velocidad de la precautoria повышает вероятность, что последствия eventual siniestro будут тяжелее. GCBA объясняет это энергией удара и уязвимостью человеческого тела."
             },
             {
               "answerId": "b-fallback-095-a2",
@@ -21297,7 +21297,7 @@
             {
               "answerId": "b-fallback-096-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по билету: кроме víctimas fatales или lesionados graves, siniestro может повлечь daños materiales, costos sanitarios y administrativos. Точную тройку здесь держим как формулировку fallback-билета."
+              "explanationRu": "Правильно по билету: кроме víctimas fatales или lesionados graves, siniestro может повлечь daños materiales, costos sanitarios y administrativos. Точную тройку держим как формулировку старого билета."
             },
             {
               "answerId": "b-fallback-096-a2",
@@ -21332,12 +21332,12 @@
             {
               "answerId": "b-fallback-146-a1",
               "verdict": "incorrect",
-              "explanationRu": "Это ближе к impericia: lack of adequate response из-за недостатка практики. Вопрос спрашивает negligencia."
+              "explanationRu": "Это ближе к impericia: недостаток практики и слабая реакция. Вопрос спрашивает negligencia."
             },
             {
               "answerId": "b-fallback-146-a2",
               "verdict": "incorrect",
-              "explanationRu": "Actuar peligrosamente por lack of prudence ближе к imprudencia. Negligencia в билете связана с несоответствием требованиям закона/обязанности."
+              "explanationRu": "Actuar peligrosamente por falta de prudencia ближе к imprudencia. Negligencia в билете связана с несоответствием требованиям закона или обязанности."
             },
             {
               "answerId": "b-fallback-146-a3",
@@ -21352,17 +21352,17 @@
             {
               "answerId": "b-fallback-183-a1",
               "verdict": "incorrect",
-              "explanationRu": "Desperfecto слишком узко. В этом fallback-билете combo balizas + bocina repetida + pañuelo указывает не просто поломку, а emergency with a seriously ill person."
+              "explanationRu": "Desperfecto слишком узко. В этом старом билете связка balizas + bocina repetida + pañuelo указывает не просто на поломку, а на emergencia с тяжело больным человеком."
             },
             {
               "answerId": "b-fallback-183-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по билету: автомобиль находится en emergencia, transportando a una persona en grave estado de salud. Деталь pañuelo остается ticket-specific сигналом из этого вопроса."
+              "explanationRu": "Правильно по билету: автомобиль находится en emergencia, transportando a una persona en grave estado de salud. Деталь pañuelo остается сигналом именно этого вопроса."
             },
             {
               "answerId": "b-fallback-183-a3",
               "verdict": "incorrect",
-              "explanationRu": "Ambas неверно: билет хочет выбрать emergency/health emergency, а не одновременно desperfecto."
+              "explanationRu": "Ambas неверно: билет хочет выбрать emergencia médica, а не одновременно desperfecto."
             }
           ]
         },
@@ -21382,7 +21382,7 @@
             {
               "answerId": "b-fallback-196-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: los excesos de velocidad are responsible for most fatal incidents regardless of the road type, по формулировке билета и manual GCBA."
+              "explanationRu": "Правильно: по формулировке билета и manual GCBA los excesos de velocidad отвечают за большую часть incidentes fatales независимо от типа дороги."
             }
           ]
         },
@@ -21392,7 +21392,7 @@
             {
               "answerId": "b-fallback-200-a1",
               "verdict": "incorrect",
-              "explanationRu": "Vision Cero не означает запрет частных автомобилей. Это этический принцип о недопустимости смертей и permanent injuries в дорожной системе."
+              "explanationRu": "Vision Cero не означает запрет частных автомобилей. Это этический принцип о недопустимости смертей и lesiones permanentes в дорожной системе."
             },
             {
               "answerId": "b-fallback-200-a2",
@@ -21418,7 +21418,7 @@
             {
               "answerId": "b-fallback-205-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso неверно: изображение именно предупреждает/напоминает, что в этом месте произошло fatal traffic victim event."
+              "explanationRu": "Falso неверно: изображение предупреждает и напоминает, что в этом месте погибла víctima de tránsito."
             }
           ]
         },
@@ -21429,12 +21429,12 @@
             {
               "answerId": "b-fallback-216-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero по билету: показанный símbolo относится к carril que debe ser liberado cuando se aproxima un vehículo en emergencia. Точную картинку держим как ticket-specific recognition."
+              "explanationRu": "Verdadero по билету: показанный símbolo относится к carril que debe ser liberado cuando se aproxima un vehículo en emergencia. Точную картинку держим как распознавание именно этого вопроса."
             },
             {
               "answerId": "b-fallback-216-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso неверно: билет проверяет именно освобождение полосы при приближении emergency vehicle."
+              "explanationRu": "Falso неверно: билет проверяет именно освобождение полосы при приближении vehículo en emergencia."
             }
           ]
         },
@@ -21449,12 +21449,12 @@
             {
               "answerId": "b-fallback-235-a2",
               "verdict": "incorrect",
-              "explanationRu": "48 horas тоже не тот срок. В билете и источниках для notice to insurer используется 72 horas / tres días."
+              "explanationRu": "48 horas тоже не тот срок. В билете и источниках для aviso страховщику используется 72 horas / tres días."
             },
             {
               "answerId": "b-fallback-235-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: 72 horas. GCBA guide говорит informar a la compañía aseguradora dentro de las 72h, а Ley 17.418 формулирует aviso al asegurador dentro de los tres días desde que se conoce el siniestro."
+              "explanationRu": "Правильно: 72 horas. Guía GCBA говорит informar a la compañía aseguradora dentro de las 72h, а Ley 17.418 формулирует aviso al asegurador dentro de los tres días desde que se conoce el siniestro."
             }
           ]
         },
@@ -21480,7 +21480,7 @@
             {
               "answerId": "b-fallback-282-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: элемент безопасности пассивного типа работает уже при siniestro и уменьшает daño a ocupantes. По картинке это относится к occupant-protection logic, not prevention before the crash."
+              "explanationRu": "Verdadero: элемент пассивной безопасности работает уже при siniestro и уменьшает daño a ocupantes. По картинке это защита после удара, а не предотвращение самого ДТП."
             },
             {
               "answerId": "b-fallback-282-a2",
@@ -21495,17 +21495,17 @@
             {
               "answerId": "b-fallback-307-a1",
               "verdict": "incorrect",
-              "explanationRu": "Alertar first пропускает первый шаг защиты места. Если не proteger, можно создать новый риск для пострадавших и других водителей."
+              "explanationRu": "Alertar первым пропускает шаг защиты места. Если не proteger, можно создать новый риск для пострадавших и других водителей."
             },
             {
               "answerId": "b-fallback-307-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: Proteger - Alertar - Socorrer. Цитируем только корректную строку manual/guía с этой последовательностью, а не PDF-heading с опечаткой."
+              "explanationRu": "Правильно: Proteger - Alertar - Socorrer. Цитируем только корректную строку manual/guía с этой последовательностью, а не заголовок PDF с опечаткой."
             },
             {
               "answerId": "b-fallback-307-a3",
               "verdict": "incorrect",
-              "explanationRu": "Socorrer first опасно: до помощи пострадавшим нужно защитить место и вызвать профессиональную помощь."
+              "explanationRu": "Socorrer первым опасно: до помощи пострадавшим нужно защитить место и вызвать профессиональную помощь."
             }
           ]
         },
@@ -21516,17 +21516,17 @@
             {
               "answerId": "b-fallback-323-a1",
               "verdict": "incorrect",
-              "explanationRu": "No es sólo confort. Apoyacabeza/headrest является элементом защиты и при правильной регулировке снижает эффект látigo."
+              "explanationRu": "No es sólo confort. Apoyacabeza, то есть подголовник, - элемент защиты: при правильной регулировке он снижает эффект látigo."
             },
             {
               "answerId": "b-fallback-323-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: correctly positioned headrest helps avoid lesiones en la zona cervical by reducing excessive movement between head and torso."
+              "explanationRu": "Правильно: правильно отрегулированный apoyacabeza помогает избежать lesiones en la zona cervical, потому что уменьшает резкое движение головы относительно туловища."
             },
             {
               "answerId": "b-fallback-323-a3",
               "verdict": "incorrect",
-              "explanationRu": "Lesiones en el tórax больше связаны с другими элементами защиты. Этот элемент проверяет cervical/neck injury prevention."
+              "explanationRu": "Lesiones en el tórax больше связаны с другими элементами защиты. Этот элемент проверяет профилактику травм шейного отдела."
             }
           ]
         },
@@ -21537,7 +21537,7 @@
             {
               "answerId": "b-fallback-388-a1",
               "verdict": "incorrect",
-              "explanationRu": "Luces bajas delante y detrás не соответствуют логике warning for immobilized vehicle. Нужны balizas, а переносные balizas ставятся со стороны incoming traffic."
+              "explanationRu": "Luces bajas delante y detrás не подходят для обозначения inmovilized vehicle. Нужны balizas, а переносные balizas ставятся со стороны приближающегося потока."
             },
             {
               "answerId": "b-fallback-388-a2",
@@ -21557,12 +21557,12 @@
             {
               "answerId": "b-fallback-443-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: constant and lawful/precautionary speed reduces abrupt acceleration/braking, helps lower siniestro risk, and can optimize fuel consumption."
+              "explanationRu": "Verdadero: постоянная скорость в пределах нормы и с осторожностью уменьшает резкие ускорения/торможения, снижает риск siniestro и помогает экономить топливо."
             },
             {
               "answerId": "b-fallback-443-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso неверно: билет связывает velocidad constante dentro de los límites both with safety and fuel economy."
+              "explanationRu": "Falso неверно: билет связывает velocidad constante dentro de los límites и с безопасностью, и с расходом топлива."
             }
           ]
         },
@@ -21572,12 +21572,12 @@
             {
               "answerId": "b-fallback-445-a1",
               "verdict": "incorrect",
-              "explanationRu": "Menores de 15 años не является ожидаемым rango in this fallback ticket. Current D11 archive did not prove a current Observatorio source for the exact claim, so treat this as ticket-specific."
+              "explanationRu": "Menores de 15 años - не тот диапазон, который ожидает этот старый билет. Текущий архив источников не доказал актуальный источник Observatorio для точного возраста, поэтому держим вопрос как формулировку конкретного билета."
             },
             {
               "answerId": "b-fallback-445-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-билету: Jóvenes y adultos de 15 a 34 años. Это не обобщаем как актуальную статистику GCBA, потому что D11 did not archive direct current Observatorio support for the exact age range."
+              "explanationRu": "Правильно по старому билету: Jóvenes y adultos de 15 a 34 años. Это не обобщаем как актуальную статистику GCBA: текущий архив источников не дает прямого подтверждения точного возрастного диапазона."
             },
             {
               "answerId": "b-fallback-445-a3",
@@ -21592,17 +21592,17 @@
             {
               "answerId": "b-fallback-447-a1",
               "verdict": "incorrect",
-              "explanationRu": "911 подходит для Policía/emergency routing, но 109 не является правильной парой в этом билете."
+              "explanationRu": "911 подходит для Policía и экстренной маршрутизации, но 109 не является правильной парой в этом билете."
             },
             {
               "answerId": "b-fallback-447-a2",
               "verdict": "incorrect",
-              "explanationRu": "103 может быть useful emergency number generally, but this ticket asks the road-user pair for incident help and expects 107 y 911."
+              "explanationRu": "103 может быть полезным номером в других чрезвычайных ситуациях, но этот билет спрашивает пару помощи при дорожном инциденте и ожидает 107 y 911."
             },
             {
               "answerId": "b-fallback-447-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: 107 y 911. GCBA material page lists 107 - SAME and 911 - Policía; siniestros guide also instructs calling 107 for injured people and then 911."
+              "explanationRu": "Правильно: 107 y 911. Страница материалов GCBA показывает 107 - SAME и 911 - Policía; guía siniestros также говорит звонить 107 при пострадавших и затем 911."
             }
           ]
         }
@@ -21610,21 +21610,21 @@
       "trapNotes": [
         {
           "id": "trap-accidente-vs-incidente",
-          "textRu": "Accidente/impredecible/inevitable - ловушка. В этом блоке выбирайте incidente/siniestro as preventable and tied to responsibilities.",
+          "textRu": "Accidente/impredecible/inevitable - ловушка. В этом блоке выбирайте incidente/siniestro как предотвратимое событие, связанное с обязанностями водителя.",
           "sourceQuestionIds": [
             "b-fallback-047"
           ]
         },
         {
           "id": "trap-pas-order",
-          "textRu": "PAS нельзя переставлять: first Proteger, then Alertar, then Socorrer. Не цитируйте typo heading the misspelled heading; опирайтесь на корректную строку Proteger-Alertar-Socorrer.",
+          "textRu": "PAS нельзя переставлять: сначала Proteger, затем Alertar, затем Socorrer. Не цитируйте заголовок PDF с опечаткой; опирайтесь на корректную строку Proteger-Alertar-Socorrer.",
           "sourceQuestionIds": [
             "b-fallback-307"
           ]
         },
         {
           "id": "trap-balizas-word",
-          "textRu": "Balizas в билетах может означать lights on the vehicle или portable warning devices. Смотрите контекст: encender = огни, colocar = переносные warning devices.",
+          "textRu": "Balizas в билетах может означать огни автомобиля или переносные аварийные устройства. Смотрите контекст: encender = включить огни, colocar = поставить переносные устройства.",
           "sourceQuestionIds": [
             "b-fallback-108",
             "b-fallback-388"
@@ -21632,21 +21632,21 @@
         },
         {
           "id": "trap-insurance-time",
-          "textRu": "24/48/72 hours: for insurer notice in this topic choose 72 horas. Three days in Ley 17.418 is the legal wording behind the same exam idea.",
+          "textRu": "24/48/72 horas: для aviso страховщику в этой теме выбирайте 72 horas. Tres días в Ley 17.418 - юридическая формула той же экзаменационной идеи.",
           "sourceQuestionIds": [
             "b-fallback-235"
           ]
         },
         {
           "id": "trap-statistics-currentness",
-          "textRu": "Observatorio Vial statistics in `b-fallback-445` are ticket-specific. Do not repeat them as current GCBA statistics unless a later source archive proves the exact age range.",
+          "textRu": "Статистика Observatorio Vial в `b-fallback-445` - формулировка конкретного старого билета. Не повторяйте ее как текущую статистику GCBA, пока отдельный архив источников не подтвердит точный возрастной диапазон.",
           "sourceQuestionIds": [
             "b-fallback-445"
           ]
         },
         {
           "id": "trap-signal-images",
-          "textRu": "Image tickets are narrow: VTV/RVA, Estrella Amarilla, emergency-lane symbol, passive-safety element, headrest, and one-way street balizas each ask about that image, not a broad new catalogue.",
+          "textRu": "Билеты с картинками узкие: VTV/RVA, Estrella Amarilla, символ аварийной полосы, элемент пассивной безопасности, подголовник и balizas на улице с односторонним движением спрашивают именно эту картинку, а не общий каталог знаков.",
           "sourceQuestionIds": [
             "b-fallback-078",
             "b-fallback-205",
@@ -21658,7 +21658,7 @@
         },
         {
           "id": "trap-speed-two-directions",
-          "textRu": "Do not restrict speed severity to one road type. The ticket says fatal incidents cualquiera sea la vía de circulación.",
+          "textRu": "Не ограничивайте тяжесть скорости одним типом дороги. Билет говорит про incidentes fatales cualquiera sea la vía de circulación.",
           "sourceQuestionIds": [
             "b-fallback-196"
           ]
@@ -21735,7 +21735,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "dd05ef41afaeb9bfe42c103490ba38dfcabf68a6128bbe895c34a45aabb40d48",
+        "sourceFingerprint": "3a85fb7862ae1da8eca61e40b5ee016de339373cbd78900c55dc3102fc28eb65",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -21753,19 +21753,19 @@
         }
       },
       "titleRu": "Ответственность и юридические обязанности после ДТП",
-      "summaryRu": "Короткий блок про civil, penal, seguro и testigo после siniestro vial: что нельзя 'перевести' на другого, когда появляется reclamo/demanda, почему нужно явиться как свидетель и почему seguro обязателен не только на interurbanas.",
+      "summaryRu": "Короткий блок про civil, penal, seguro и testigo после siniestro vial: что нельзя переложить на другого, когда появляется reclamo/demanda, почему свидетель должен явиться и почему seguro нужен не только на interurbanas.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах здесь главное разделять четыре слоя: responsabilidad penal, responsabilidad civil, obligación de seguro и deber de testigo. Они похожи по словам, но отвечают на разные вопросы.",
-        "Responsabilidad penal в билете `b-fallback-023` держите узко как ticket-specific формулу: уголовная ответственность водителя не 'передается' dueño del vehículo или compañía de seguros. D11 не нашел прямой текущий официальный источник для широкого принципа 'penal responsibility is non-transferable', поэтому этот пункт не расширяется в общий legal claim.",
-        "Responsabilidad civil в билете `b-fallback-351` связана не с 'плохим характером' и не с antecedentes, а с daño real: должно быть реальное повреждение/вред конкретному лицу, связанное с incidente. Для учебной логики: гражданская demanda нужна, чтобы reclamar reparación/indemnización por daños.",
-        "Testigo - это не добровольный комментарий 'если хочется'. Если человека вызывают как testigo в procedimiento judicial, guía de siniestros описывает это как carga pública: надо явиться и сказать компетентному органу то, что знаешь и помнишь, правдиво.",
-        "Seguro obligatorio не ограничивается rutas interurbanas. Билет `b-fallback-432` ловит слово ÚNICAMENTE: comprobante/certificado de seguro de responsabilidad civil нужно иметь при движении как часть обязательных документов, а не только за городом.",
-        "Fuga после siniestro с herido/a - отдельная тяжелая ловушка. Формулировка билета аккуратная: человек puede ser juzgada por abandono de persona. Это не значит 'автоматически осужден', но означает, что оставление раненого после ДТП может перейти из административной/страховой зоны в penal boundary."
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах главное разделять четыре слоя: responsabilidad penal, responsabilidad civil, obligación de seguro и deber de testigo. Слова похожи, но вопросы разные.",
+        "Responsabilidad penal в `b-fallback-023` держите узко как формулу конкретного билета: уголовная ответственность водителя не передается dueño del vehículo или compañía de seguros. В текущем архиве нет прямого официального источника для широкого принципа 'уголовная ответственность не передается', поэтому не расширяем это в общее юридическое правило.",
+        "Responsabilidad civil в `b-fallback-351` связана не с 'плохим характером' и не с antecedentes, а с daño real. Должен быть реальный вред конкретному лицу, связанный с incidente. Для экзамена: гражданская demanda нужна, чтобы reclamar reparación/indemnización por daños.",
+        "Testigo - это не комментарий 'если хочется'. Если человека вызывают как testigo в procedimiento judicial, guía de siniestros называет это carga pública: надо явиться и правдиво сказать компетентному органу то, что знаешь и помнишь.",
+        "Seguro obligatorio не ограничивается rutas interurbanas. Билет `b-fallback-432` ловит слово ÚNICAMENTE: comprobante/certificado de seguro de responsabilidad civil нужно иметь при движении как обязательный документ, а не только за городом.",
+        "Fuga после siniestro с herido/a - тяжелая ловушка. Формулировка билета осторожная: человек puede ser juzgada por abandono de persona. Это не 'автоматически осужден', но оставление раненого после ДТП может перейти из административной или страховой зоны в уголовно-правовую."
       ],
       "practicalReasoningRu": [
-        "Разделение civil и penal делает последствия понятнее: civil process ищет reparación del daño, а penal process проверяет возможное delito и responsabilidad criminal.",
-        "Обязанность свидетеля и обмен данными после siniestro нужны, чтобы факт можно было восстановить: кто участвовал, кто видел, какой ущерб возник и куда обращаться за resarcimiento.",
-        "Страховка обязательна везде при движении, потому что риск причинить daños a terceros не появляется только на interurbanas; он есть и в городе."
+        "Разделение civil и penal делает последствия понятнее: гражданская процедура ищет reparación del daño, а уголовная проверяет возможное delito и responsabilidad criminal.",
+        "Обязанность свидетеля и обмен данными после siniestro нужны, чтобы восстановить факт: кто участвовал, кто видел, какой ущерб возник и куда обращаться за resarcimiento.",
+        "Страховка обязательна при движении везде. Риск причинить daños a terceros есть и в городе, а не только на interurbanas."
       ],
       "spanishTerms": [
         {
@@ -21787,7 +21787,7 @@
         {
           "id": "term-responsabilidad-penal-intransferible",
           "termEs": "responsabilidad penal es intransferible",
-          "translationRu": "уголовная ответственность не передается другому лицу; ticket-specific формула",
+          "translationRu": "уголовная ответственность не передается другому лицу; формула конкретного билета",
           "sourceQuestionIds": [
             "b-fallback-023"
           ]
@@ -21867,7 +21867,7 @@
         {
           "id": "term-fiscalia",
           "termEs": "Fiscalía",
-          "translationRu": "прокуратура / fiscalía",
+          "translationRu": "Fiscalía, прокуратура",
           "sourceQuestionIds": [
             "b-fallback-406"
           ]
@@ -21908,7 +21908,7 @@
         {
           "id": "term-abandono-persona",
           "termEs": "abandono de persona",
-          "translationRu": "оставление человека в опасности / abandono de persona",
+          "translationRu": "abandono de persona, оставление человека в опасности",
           "sourceQuestionIds": [
             "b-fallback-434"
           ]
@@ -21921,17 +21921,17 @@
             {
               "answerId": "b-fallback-023-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по формуле этого fallback-билета: responsabilidad penal водителя не передается dueño del vehículo или страховщику. Это оставлено как ticket-specific экзаменационная формулировка, без обобщения через Código Penal Art. 106."
+              "explanationRu": "Правильно по формуле этого старого билета: responsabilidad penal водителя не передается dueño del vehículo или страховщику. Это оставлено как экзаменационная формулировка конкретного вопроса, без обобщения через Código Penal Art. 106."
             },
             {
               "answerId": "b-fallback-023-a2",
               "verdict": "incorrect",
-              "explanationRu": "Неверно: dueño и compañía de seguros могут фигурировать в гражданских/страховых последствиях, но билет спрашивает именно penal responsibility и ловит идею transferirse."
+              "explanationRu": "Неверно: dueño и compañía de seguros могут фигурировать в гражданских или страховых последствиях, но билет спрашивает именно responsabilidad penal и ловит идею transferirse."
             },
             {
               "answerId": "b-fallback-023-a3",
               "verdict": "incorrect",
-              "explanationRu": "Неверно: juez может оценивать факты, gravedad и consecuencias, но вариант делает transferibilidad вопросом усмотрения судьи, а правильная формула билета - no, es intransferible."
+              "explanationRu": "Неверно: juez может оценивать факты, gravedad и consecuencias, но вариант делает transferibilidad вопросом усмотрения судьи. Правильная формула билета - no, es intransferible."
             }
           ]
         },
@@ -21941,17 +21941,17 @@
             {
               "answerId": "b-fallback-351-a1",
               "verdict": "incorrect",
-              "explanationRu": "La intención de la conducta dañosa звучит юридически, но для этого билета не является factor determinante. Civil demand здесь начинается от существования daño real и связи с incidente."
+              "explanationRu": "La intención de la conducta dañosa звучит юридически, но для этого билета не является factor determinante. Гражданская demanda здесь начинается с daño real и связи с incidente."
             },
             {
               "answerId": "b-fallback-351-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: нужен daño real, затрагивающий particular и вызванный incidente. Это совпадает с общей civil logic: требование направлено на reparación/indemnización por daños, а не на оценку личности водителя."
+              "explanationRu": "Правильно: нужен daño real, затрагивающий particular и вызванный incidente. Это совпадает с общей гражданской логикой: требование направлено на reparación/indemnización por daños, а не на оценку личности водителя."
             },
             {
               "answerId": "b-fallback-351-a3",
               "verdict": "incorrect",
-              "explanationRu": "Antecedentes могут иметь значение в других контекстах, но не являются стартовым основанием civil demand в этой формулировке. Без daño real нечего reparar."
+              "explanationRu": "Antecedentes могут иметь значение в других контекстах, но не являются стартовым основанием demanda civil в этой формулировке. Без daño real нечего reparar."
             }
           ]
         },
@@ -21961,12 +21961,12 @@
             {
               "answerId": "b-fallback-406-a1",
               "verdict": "incorrect",
-              "explanationRu": "Verdadero неверно: вопрос сформулирован с отрицанием 'no es obligatorio'. Архивная GCBA guía прямо объясняет, что ser testigo es una carga pública и нужно являться, когда convocado."
+              "explanationRu": "Verdadero неверно: вопрос сформулирован с отрицанием `no es obligatorio`. Архивная guía GCBA прямо объясняет, что ser testigo es una carga pública и нужно являться, когда convocado."
             },
             {
               "answerId": "b-fallback-406-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: Falso, потому что вызванный testigo обязан presentarse a declarar ante juez/fiscal и передать lo que sepa y recuerde правдиво."
+              "explanationRu": "Правильно: Falso, потому что вызванный testigo обязан presentarse a declarar ante juez/fiscal и правдиво передать lo que sepa y recuerde."
             }
           ]
         },
@@ -21976,7 +21976,7 @@
             {
               "answerId": "b-fallback-432-a1",
               "verdict": "incorrect",
-              "explanationRu": "Verdadero неверно из-за ÚNICAMENTE. Ley 24.449 требует llevar comprobante de seguro en vigencia para circular; это не ограничено solo vías interurbanas."
+              "explanationRu": "Verdadero неверно из-за ÚNICAMENTE. Ley 24.449 требует llevar comprobante de seguro en vigencia para circular; это не только solo vías interurbanas."
             },
             {
               "answerId": "b-fallback-432-a2",
@@ -21991,12 +21991,12 @@
             {
               "answerId": "b-fallback-434-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: формулировка осторожная - puede ser juzgada. GCBA guía прямо связывает fuga с оставленным herido/a и delito de abandono de persona; Código Penal Art. 106 дает общий предел для abandono/dejar en desamparo."
+              "explanationRu": "Правильно: формулировка осторожная - puede ser juzgada. Guía GCBA связывает fuga с оставленным herido/a и delito de abandono de persona; Código Penal Art. 106 дает общий предел для abandono/dejar en desamparo."
             },
             {
               "answerId": "b-fallback-434-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso неверно: если человек se da a la fuga и оставляет кого-то herido, это может иметь penal consequence как abandono de persona, а не только страховую или административную проблему."
+              "explanationRu": "Falso неверно: если человек se da a la fuga и оставляет кого-то herido, это может иметь consecuencia penal как abandono de persona, а не только страховую или административную проблему."
             }
           ]
         }
@@ -22004,7 +22004,7 @@
       "trapNotes": [
         {
           "id": "trap-civil-vs-penal",
-          "textRu": "Civil = daño/reparación/indemnización/demanda. Penal = delito/responsabilidad criminal/pena. Не смешивайте daño real для civil demand с personal criminal responsibility.",
+          "textRu": "Civil = daño/reparación/indemnización/demanda. Penal = delito/responsabilidad criminal/pena. Не смешивайте daño real для гражданского требования с личной уголовной ответственностью.",
           "sourceQuestionIds": [
             "b-fallback-023",
             "b-fallback-351",
@@ -22013,28 +22013,28 @@
         },
         {
           "id": "trap-unicamente-interurbanas",
-          "textRu": "ÚNICAMENTE почти всегда опасное слово: seguro obligatorio/comprobante is not only for vías interurbanas.",
+          "textRu": "ÚNICAMENTE почти всегда опасное слово: seguro obligatorio/comprobante нужен не только на vías interurbanas.",
           "sourceQuestionIds": [
             "b-fallback-432"
           ]
         },
         {
           "id": "trap-no-es-obligatorio-testigo",
-          "textRu": "Вопрос `no es obligatorio presentarse` требует перевернуть отрицание: правильный ответ Falso, потому что summoned witness must appear.",
+          "textRu": "Вопрос `no es obligatorio presentarse` требует перевернуть отрицание: правильный ответ Falso, потому что вызванный testigo должен явиться.",
           "sourceQuestionIds": [
             "b-fallback-406"
           ]
         },
         {
           "id": "trap-puede-ser-juzgada",
-          "textRu": "`Puede ser juzgada` означает legal possibility/boundary, not automatic conviction. Для билета достаточно связать fuga + herido/a with abandono de persona.",
+          "textRu": "`Puede ser juzgada` означает юридическую возможность, а не автоматический приговор. Для билета достаточно связать fuga + herido/a с abandono de persona.",
           "sourceQuestionIds": [
             "b-fallback-434"
           ]
         },
         {
           "id": "trap-penal-transfer-ticket-specific",
-          "textRu": "No uses Código Penal Art. 106 to prove broad non-transferability of penal responsibility. `b-fallback-023` stays ticket-specific unless a future source slice archives direct support.",
+          "textRu": "Не используйте Código Penal Art. 106, чтобы доказывать широкий принцип непередаваемости уголовной ответственности. `b-fallback-023` остается формулой конкретного билета, пока будущий источник не подтвердит ее напрямую.",
           "sourceQuestionIds": [
             "b-fallback-023"
           ]

@@ -121,11 +121,11 @@
 
 ## Future Slice K: Crash, Emergency, Legal Duties, And Authorities
 
-- [ ] T084 Review and rewrite `emergency-response-and-crash-scene`.
-- [ ] T085 Review and rewrite `crash-liability-and-legal-duties`.
-- [ ] T086 Review and rewrite `authorities-controls-and-sanctions`.
-- [ ] T087 Preserve PAS, insurance, witness, civil/penal, stale-statistic, emergency, and authority-source boundaries from feature 006.
-- [ ] T088 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T084 Review and rewrite `emergency-response-and-crash-scene`.
+- [x] T085 Review and rewrite `crash-liability-and-legal-duties`.
+- [x] T086 Review and rewrite `authorities-controls-and-sanctions`.
+- [x] T087 Preserve PAS, insurance, witness, civil/penal, stale-statistic, emergency, and authority-source boundaries from feature 006.
+- [x] T088 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice L: Final Coverage And Review Pass
 
@@ -200,7 +200,7 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `right-of-way-basic-intersections` | I | Reviewed in Slice I part 1 |
 | `right-of-way-special-situations` | I | Reviewed in Slice I part 1 |
 | `documents-licenses-and-insurance` | B | Reviewed in Slice B |
-| `authorities-controls-and-sanctions` | K | Pending |
+| `authorities-controls-and-sanctions` | K | Reviewed in Slice K |
 | `safety-principles-and-risk` | F | Reviewed in Slice F |
 | `stopping-vs-parking-maneuvers` | C | Reviewed in Slice C |
 | `center-lines-and-crossing-rules` | I | Reviewed in Slice I part 1 |
@@ -212,8 +212,8 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `bicycles-and-micromobility` | J | Reviewed in Slice J |
 | `mirrors-blind-spots-and-visibility` | D | Reviewed in Slice D |
 | `occupant-protection` | D | Reviewed in Slice D |
-| `emergency-response-and-crash-scene` | K | Pending |
-| `crash-liability-and-legal-duties` | K | Pending |
+| `emergency-response-and-crash-scene` | K | Reviewed in Slice K |
+| `crash-liability-and-legal-duties` | K | Reviewed in Slice K |
 | `pedestrian-crossings-and-priority` | E | Reviewed in Slice E |
 | `turns-direction-and-reversing` | I | Reviewed in Slice I part 2 |
 | `overtaking-and-passing` | I | Reviewed in Slice I part 2 |
@@ -897,6 +897,63 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - Changed-path guard: pass after this evidence update; `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, and the forbidden/non-scope path diff produced no output.
 - Known issues: none introduced. Slice K and Slice L remain pending by design.
 - Implementation Agent feedback: none requiring Architect disposition. Slice J found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs outside this feature memory, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
+- Slice K worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-crash-legal` on `codex/015-study-guide-language-review-crash-legal`, stacked on fixed `origin/codex/015-study-guide-language-review-micromobility` head `03570dcfa5c61444784573d40466957dc94de2a2` / PR #90 follow-up.
+- Parent refresh evidence: local Slice K edits were preserved with `git stash`, the branch was rebased onto `origin/codex/015-study-guide-language-review-micromobility` after the PR #90 follow-up commit `03570dc` landed, and the stash reapplied cleanly with only the expected guide JSON modified. `git merge-base --is-ancestor 03570dcfa5c61444784573d40466957dc94de2a2 HEAD` passed before this entry, and the Slice J follow-up evidence above was preserved.
+- Topics reviewed: `emergency-response-and-crash-scene`, `crash-liability-and-legal-duties`, and `authorities-controls-and-sanctions`.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice K did not touch root fields.
+  - titles: 3
+  - summaries: 3
+  - learning paragraphs: 21
+  - practical reasoning paragraphs: 10
+  - term translations: 56
+  - source-conflict notes: 0 in Slice K topics
+  - answer explanations: 106
+  - trap notes: 18
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 0
+  - summaries: 2
+  - learning paragraphs: 21
+  - practical reasoning paragraphs: 8
+  - term translations: 8
+  - source-conflict notes: 0
+  - answer explanations: 50
+  - trap notes: 14
+  - `difficultyMeta.sourceFingerprint`: 3
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice K topics 39 / 39.
+- Unique question IDs before/after: global 460 / 460; Slice K topics 39 / 39.
+- Answer explanations before/after: global 1,831 / 1,831; Slice K topics 106 / 106.
+- Source-conflict notes before/after: global 4 / 4; Slice K topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-108`, `b-fallback-183`, `b-fallback-388`, `b-fallback-023`, `b-fallback-432`, `b-fallback-044`, `b-fallback-050`, `b-fallback-092`, `b-fallback-117`, `b-fallback-157`, `b-fallback-203`, `b-fallback-243`, `b-fallback-270`, `b-fallback-322`, `b-fallback-367`, and `b-fallback-446`.
+- Duplicate handling decision: reviewed duplicated placements only inside the three assigned Slice K topics. Matching placements from already-reviewed vehicle-lights, documents/insurance, alcohol, and traffic-light slices were not edited again. Internal Slice K wording remains intentionally topic-specific: emergency duplicates keep scene-protection and emergency-signal framing, legal-duty duplicates keep penal/insurance-source boundaries, and authority duplicates keep control/sanction framing. Answer IDs, verdicts, images, placements, and topic assignment shape were preserved.
+- Source-sensitive sentences left unchanged: all 17 `claims[].textRu` entries in Slice K topics were preserved as non-rendered source-trace metadata. Legal/source-sensitive meanings were preserved for PAS order and the manual typo boundary, 107/911 emergency numbers, 72 horas / tres días insurance notice, `b-fallback-445` stale Observatorio age-range wording, Estrellas Amarillas fatal-victim sign, emergency-lane and balizas image details, civil/penal distinction, `b-fallback-023` penal-transfer formula staying ticket-specific, witness `carga pública`, insurance certificate scope, `abandono de persona` only as a `puede ser juzgada` boundary, authority/agent operative commands, alcoholemia refusal consequences, principiante 2 years versus P 6 months, 0,0 / 0,5 / 0,2 alcohol thresholds, retención only when normativa says so, and Scoring 20 puntos.
+- CABA/RF notes added or clarified: Slice K kept comparisons short and source-safe. It clarified that CABA incident language treats crashes as preventable events with duties; that familiar RF-style logic about protecting the scene still starts with PAS; that CABA authority/agent instructions, like RF traffic-controller commands, override the usual sign/light pattern in the exam prompt; and that CABA-specific alcohol/principiante/scoring thresholds must be learned from the ticket/source context rather than generalized nationally.
+- Before/after samples:
+  - `emergency-response-and-crash-scene`: before "ticket-specific ... exact emergency-lane symbol ... private-vehicle signal combo"; after "формулировки остаются только для конкретных билетов ... символ аварийной полосы ... связка balizas + bocina + pañuelo для частного автомобиля".
+  - `emergency-response-and-crash-scene`: before "PAS нельзя переставлять: first Proteger, then Alertar, then Socorrer"; after "PAS нельзя переставлять: сначала Proteger, затем Alertar, затем Socorrer."
+  - `crash-liability-and-legal-duties`: before "ticket-specific формулу ... penal responsibility is non-transferable ... legal claim"; after "формулу конкретного билета ... уголовная ответственность не передается ... общее юридическое правило".
+  - `crash-liability-and-legal-duties`: before "`Puede ser juzgada` означает legal possibility/boundary, not automatic conviction"; after "`Puede ser juzgada` означает юридическую возможность, а не автоматический приговор."
+  - `authorities-controls-and-sanctions`: before "слова autoridad, agente, control, retener и scoring означают не теорию"; after "autoridad, agente, control, retener и scoring - не абстрактные слова про документы."
+  - `authorities-controls-and-sanctions`: before "positive test" and "operative indication"; after "фактически положительного теста" and "оперативное указание".
+- PR #63 / PR #90 guard: Slice K write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch PR #63 / feature 009 forbidden paths (`content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`), coverage/source-trace manifests, validators/tests/docs/package files, product UI, scripts, package files, docs outside this feature memory, or other worktrees/branches/PRs. The branch includes PR #90 follow-up head `03570dc` before the Slice K commit.
+- Difficulty metadata refresh evidence: all three Slice K topics kept their `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only `difficultyMeta.sourceFingerprint` changed, and each new value matched `difficultyTopicFingerprint(topic)` after the learner-facing text rewrite:
+  - `emergency-response-and-crash-scene`: `95d5a374f8444c5ebc9397bea3435d4148b63354f78b2c524a573222f3282c4b` -> `90a8e9cff91ac0eedcafa70dffa773e5c144355317ce1b66bd562d505a8bd2a4`
+  - `crash-liability-and-legal-duties`: `dd05ef41afaeb9bfe42c103490ba38dfcabf68a6128bbe895c34a45aabb40d48` -> `3a85fb7862ae1da8eca61e40b5ee016de339373cbd78900c55dc3102fc28eb65`
+  - `authorities-controls-and-sanctions`: `0d5e4090bebf71406d8ed2d5fc1abbc676d918ce54060491e8a02b1817bac744` -> `036d54a52f810edb42829da849d49323073754613060c173acb9dfe5d4a22266`
+- Validation evidence before final commit:
+  - JSON parse, structural count, and preservation guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 170 claims, 38 `difficulty`, and 38 `difficultyMeta`. Only the three Slice K topics changed in `content/guide/topic-study-guide.ru.json`; IDs, slugs/status, placements, `questionId`, `imageLocalPath`, `answerId`, `verdict`, Spanish `termEs`, term/ticket/trap source references, claims/source traces, `difficulty`, and non-fingerprint `difficultyMeta` were preserved.
+  - Fingerprint guard: pass; all three changed topic `difficultyMeta.sourceFingerprint` values matched `difficultyTopicFingerprint(topic)`, and unchanged topic fingerprints remained untouched.
+  - Targeted rendered-field process/English scan over Slice K topics: pass; scanned rendered fields after ignoring `b-fallback-*` IDs, with 0 matches for curated English/process leftovers including `ticket-specific`, `canonical`, `taxonomy`, `road incident`, `first/then`, `typo`, `warning devices`, `insurer`, `Image tickets`, `emergency-lane`, `private-vehicle`, `exact age`, `health emergency`, `civil process`, `penal process`, `civil demand`, `summoned witness`, `legal possibility`, `positive test`, and `operative indication`.
+  - Duplicate-term guard for Slice K `spanishTerms[].translationRu`: pass; 0 values duplicate `termEs` verbatim.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check`: pass, no output.
+  - Changed-path guard: pass; `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, and the forbidden/non-scope path diff produced no output.
+  - Parent ancestor guard: pass; `git merge-base --is-ancestor 03570dcfa5c61444784573d40466957dc94de2a2 HEAD` returned success.
+- Known issues: none introduced. Slice L remains pending by design.
+- Implementation Agent feedback: none requiring Architect disposition. Slice K found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs outside this feature memory, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
 
 ## Known Issues
 
