@@ -138,9 +138,9 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: STALE/SUPERSEDED after latest-main rebase and `019` rename on 2026-05-10. Earlier PASS notes applied to the previous-prefix state; latest `origin/main` `995905bacdcf46d1d21662c12dba01b8ecda1d36` now has max prefix `018`, and feature memory now consistently uses `specs/019-orchestrator-cleanup-governance/`.
+- Status: PASS after latest-main rebase and `019` renumbering on 2026-05-10. Current HEAD `b4d93914073a297194d0429f472f0d9bd9d5c2df` keeps the feature memory at `specs/019-orchestrator-cleanup-governance/`; `019` is valid because the latest main spec maximum prefix before this feature is `018`.
 - Analyst return count: 0.
-- Customer intent check: PASS in spirit and letter. The final result teaches Orchestrator to default new repository-changing work to a fresh isolated environment from latest verified `main`; coordinates completion-time cleanup through a first-class Cleanup Agent with strict positive-proof validation, refusal, and evidence rules; and records one-time cleanup evidence that preserves current, active, open-PR, dirty, ambiguous, and recurring work including `cabadrive-009-content-277-368`.
-- Gaps: none recorded in the stale validation, but fresh Analyst validation must rerun after the non-evidence rename.
-- Analyst routing gaps or new questions: none recorded in the stale validation.
-- Architect disposition routing: none recorded in the stale validation; fresh Architect validation must rerun after the `019` rename.
+- Customer intent check: PASS. The intake still fully covers the user's requested governance change: Orchestrator should default each new repository-changing run to a fresh isolated environment from latest verified `main`; cleanup should be a first-class Cleanup Agent responsibility or explicitly equivalent role with positive-proof validation; one-time cleanup evidence must delete only old completed agent-created environments while preserving current, active, open-PR, dirty, ambiguous, and otherwise protected work; and implementation scope stays limited to process/governance plus the requested one-time cleanup.
+- Gaps: none.
+- Analyst routing gaps or new questions: none.
+- Architect disposition routing: none needed from Analyst; existing intake is sufficient for Architect-owned spec, plan, and task validation after the `019` rename.

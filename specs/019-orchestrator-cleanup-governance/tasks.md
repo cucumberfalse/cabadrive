@@ -82,7 +82,7 @@
 - Cleanup PR-state validation depends on GitHub lookup. If credentials or network access are unavailable, affected candidates are ambiguous and must be preserved.
 - Existing helper-created and sibling worktree naming conventions may differ. The implementation must document approved cleanup roots and cannot rely on one naming pattern.
 - Resolved sequencing note: PR #65 was the merge-order dependency for overlapping durable workflow/template files, then merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. This branch was rebased and revalidated on that base, then the prefix-rename fix landed as effective content head `d986be885aa2e59166397024a0264e3758c2be95` (`docs: renumber cleanup governance feature memory`).
-- P2 review thread state, 2026-05-10: the `.specify/templates/plan-template.md` consistency finding was addressed and resolved. The duplicate feature-memory prefix P2 after PR #65 merged was addressed by renaming the cleanup feature memory to the then-current next valid prefix and updating scoped references; those final Architect and Analyst validations are now stale after the latest-main rebase and `019` rename.
+- P2 review thread state, 2026-05-10: the `.specify/templates/plan-template.md` consistency finding was addressed and resolved. The duplicate feature-memory prefix P2 after PR #65 merged was addressed by renaming the cleanup feature memory to the then-current next valid prefix and updating scoped references; that intermediate state was superseded by the latest-main rebase and current `019` rename, which now have final validation evidence recorded below.
 
 ### Verification Evidence
 
@@ -144,18 +144,22 @@
 - Final validation rerun, 2026-05-10: Architect final validation PASS on `d986be8` with no blockers.
 - Final validation rerun, 2026-05-10: Analyst final validation PASS in `feature-request.md` with return count 0 and no routing gaps.
 - Post-`d986be8` scope note: changes after `d986be885aa2e59166397024a0264e3758c2be95` are final validation evidence/process-memory only in `feature-request.md` and `tasks.md`.
-- P2 review thread status, 2026-05-10: prefix finding was addressed by `d986be8` for the then-current base; that validation is now stale after the latest-main rebase and `019` rename, leaving fresh Architect/Analyst validation required before PR #67 can be declared merge-ready.
+- P2 review thread status, 2026-05-10: prefix finding was addressed by `d986be8` for the then-current base; that validation was superseded by the latest-main rebase and `019` rename, and fresh Architect/Analyst validation for the current content head is now recorded below.
 
 ### Latest-Main Rebase And 019 Rename
 
 - Main-advance context, 2026-05-10: latest `origin/main` is `995905bacdcf46d1d21662c12dba01b8ecda1d36` and now contains `specs/017-difficulty-labeling/` and `specs/018-learning-ticket-timer/`; current main max feature-memory prefix is therefore `018`.
 - PR sequencing context: PR #65 had already introduced the earlier final-validation-loop prefix conflict; later PR #71/#73/main-advance work added the feature memories that made the previous cleanup prefix stale. Historical notes for PR #65 remain preserved, but the current cleanup memory prefix is `019`.
 - Current rename action, 2026-05-10: as the assigned Implementation Agent for feature-memory renumbering only, used `git mv` to rename the cleanup feature memory to `specs/019-orchestrator-cleanup-governance/` and updated references inside the four files in that directory only.
-- Validation routing state: all Architect/Analyst validations that passed after the previous-prefix rename are stale/superseded by the latest-main rebase and this non-evidence `019` rename. Fresh Architect and Analyst validation must rerun after these scoped changes.
+- Current content head, 2026-05-10: effective content head for the non-evidence latest-main/`019` rename is `b4d93914073a297194d0429f472f0d9bd9d5c2df` (`docs: renumber cleanup governance after latest main`).
+- Latest-main validation rerun, 2026-05-10: full preflight after the latest-main rebase and `019` rename passed with feature-memory gate, `check:repo`, content validation, 82 Node tests, build/service-worker generation, and 18 Playwright e2e tests.
+- Current final validation state, 2026-05-10: Architect final validation PASS on `b4d9391` with no blockers.
+- Current Analyst validation state, 2026-05-10: Analyst final validation PASS in `feature-request.md` with return count 0, no routing gaps, and no Architect routing needed.
+- Post-`b4d9391` scope note: changes after `b4d93914073a297194d0429f472f0d9bd9d5c2df` are final validation evidence/process-memory only in `feature-request.md` and `tasks.md`.
 
 ### Cycle PR Set
 
-- PR #67 (`https://github.com/cucumberfalse/cabadrive/pull/67`): branch `codex/014-orchestrator-cleanup-governance`; purpose is orchestrator cleanup governance plus one-time cleanup evidence; base includes merged PR #65 at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. The plan-template P2 and earlier prefix-rename P2 were addressed through effective content head `d986be885aa2e59166397024a0264e3758c2be95`, but those validation notes are stale after latest `origin/main` `995905bacdcf46d1d21662c12dba01b8ecda1d36` added prefixes through `018`; current cleanup feature memory is `specs/019-orchestrator-cleanup-governance/`.
+- PR #67 (`https://github.com/cucumberfalse/cabadrive/pull/67`): branch `codex/014-orchestrator-cleanup-governance`; purpose is orchestrator cleanup governance plus one-time cleanup evidence; base includes merged PR #65 at `9534ab054b6b22ccd56e5c204ab8469c027faef9` and latest `origin/main` `995905bacdcf46d1d21662c12dba01b8ecda1d36`, where current main feature-memory max prefix is `018`. The plan-template P2 and earlier prefix-rename P2 were addressed, latest-main renumbering now uses `specs/019-orchestrator-cleanup-governance/`, and final Architect/Analyst validation passes for current effective content head `b4d93914073a297194d0429f472f0d9bd9d5c2df` are recorded above.
 
 ### Cleanup Evidence
 
@@ -253,8 +257,9 @@
 
 - PR #65 overlap: path A is resolved. PR #65 merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`; this branch rebased onto that latest verified `main`, reconciled the overlapping governance/template files, and revalidated locally at effective content head `5031c8178035a4a1ca03dbf7f1f7b76a09909baf`.
 - Prior Architect validation GAP: resolved by this process-memory-only update. Architect return count: 1.
-- Final Analyst validation: passed on 2026-05-10 in `feature-request.md`. Analyst return count: 0. Analyst feedback Architect disposition: none needed. This is stale/superseded by the latest-main rebase and `019` rename.
+- Final Analyst validation after PR #65 rebase: passed on 2026-05-10 in `feature-request.md`. Analyst return count: 0. Analyst feedback Architect disposition: none needed. This was later superseded by the latest-main rebase and current `019` rename.
 - Prior final Architect validation after plan-template P2 fix: superseded by final validation rerun after the prefix rename.
 - Prior final Analyst validation after plan-template P2 fix: superseded by final validation rerun after the prefix rename.
-- Prefix-rename P2 review finding: addressed by effective content head `d986be885aa2e59166397024a0264e3758c2be95` for the then-current base; final Architect validation PASS on `d986be8` with no blockers, and final Analyst validation PASS on 2026-05-10 in `feature-request.md` with return count 0 and no routing gaps. These validations are stale/superseded by latest `origin/main` `995905bacdcf46d1d21662c12dba01b8ecda1d36` and the `019` rename; fresh Architect/Analyst validation must rerun.
+- Prefix-rename P2 review finding: addressed by effective content head `d986be885aa2e59166397024a0264e3758c2be95` for the then-current base; final Architect validation PASS on `d986be8` with no blockers, and final Analyst validation PASS on 2026-05-10 in `feature-request.md` with return count 0 and no routing gaps. These validations were superseded by latest `origin/main` `995905bacdcf46d1d21662c12dba01b8ecda1d36` and the current `019` rename.
+- Latest-main/`019` final validation: effective non-evidence content head `b4d93914073a297194d0429f472f0d9bd9d5c2df` (`docs: renumber cleanup governance after latest main`) has Architect final validation PASS with no blockers and Analyst final validation PASS in `feature-request.md` with return count 0, no routing gaps, and no Architect routing needed. Changes after `b4d9391` are only final validation evidence/process-memory in `feature-request.md` and `tasks.md`.
 - One-time cleanup deletion: disposed as Cleanup Agent work after durable rules exist. Cleanup Agent evidence is now recorded above, including first-pass cleanup, mismatch reconciliation, preserved paths, and post-cleanup confirmation. No repository/docs/template change is needed for this feedback item.
