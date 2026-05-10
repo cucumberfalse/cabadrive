@@ -13593,7 +13593,7 @@
           "answerIds": [],
           "relevanceId": "q455-dim-plain-white-background",
           "confidence": "high",
-          "regionIds": [
+          "objectIds": [
             "plain-white-background"
           ]
         }

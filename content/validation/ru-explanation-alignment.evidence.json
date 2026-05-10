@@ -7722,7 +7722,7 @@
       "explanationSha256": "70999eccbf294d868e44a7568a5920461c7a12465a65b271e08a3da7ec5594ef",
       "imageId": "question-image-b272",
       "imageMetadataSha256": "737f51fe5d4524f9782696ff065956a656d01fefa5f13b006dbeb0086fd5911c",
-      "usageSha256": "3e23aba94bb3cfade84087ffec99d914ea246c04b24d8e543098a02b687bba4d",
+      "usageSha256": "9e893a385fe79962c3143c072c634db0604acb25993fd3a5f879cabca7404ffc",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,

@@ -9023,7 +9023,7 @@
       "reviewer": "Cabadrive content agent 369-460",
       "reviewedAt": "2026-05-10",
       "questionFingerprint": "4131016e42ceeab196eefc3acdf4bd44117e560ccc1fc743e7f6dc0433a30397",
-      "usageSha256": "3e23aba94bb3cfade84087ffec99d914ea246c04b24d8e543098a02b687bba4d",
+      "usageSha256": "9e893a385fe79962c3143c072c634db0604acb25993fd3a5f879cabca7404ffc",
       "checks": {
         "questionTupleCurrent": true,
         "imageReferenceCurrent": true,
