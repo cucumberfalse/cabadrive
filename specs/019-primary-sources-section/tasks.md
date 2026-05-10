@@ -377,14 +377,14 @@
 - Implementation started only after re-reading repository memory, official archive governance, learner primary-source governance, feature memory, current manifest, and the Slice B primary-source validator.
 - Parallel-agent warning was part of the Slice C assignment. This slice preserved unrelated work and did not edit `content/official-documents/`.
 - Added `scripts/primary-sources-generate-coverage.mjs` to derive `content/primary-sources/primary-sources.coverage.json` from the official manifest and current archived Markdown.
-- Generated coverage now includes all 19 implementation-time manifest entries and 5,223 generated chunks.
+- Generated coverage now includes all 19 implementation-time manifest entries and 5,225 generated chunks.
 - Each generated coverage chunk has deterministic non-draft `chunkId`, `officialDocumentId`, positive `order`, `headingPath`, `sourceSpan`, `sourceTextSha256`, and `sourceFingerprint` in `sha256:<sourceTextSha256>` format.
 - Each coverage document has `expectedChunkIds` exactly matching its generated `chunks`, archive path, current archive SHA-256, and a `chunkingDecision` with strategy and rationale.
 - Retargeted the existing single draft learner placeholder from `ley-24449-transito-seguridad-vial--draft-001` to generated chunk `ley-24449-transito-seguridad-vial--ley-24449-001` so draft validation remains aligned with generated coverage. The Russian text and QA remain explicitly draft placeholders; no translation batch was performed.
 - Added primary-source validation mode `coverage` / `coverage-only` / `inventory` to prove complete manifest chunk inventory without requiring final Russian translation, simplification, or approved QA. Strict/final mode remains unchanged for final release translation/QA gates.
 - Tightened coverage validation so `expectedChunkIds` must match generated coverage chunks in both directions.
 - Chunking strategy counts:
-  - `legal-articles`: 4,182 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
+  - `legal-articles`: 4,184 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
   - `dotted-code-sections`: 665 chunks for CABA Ley 2148.
   - `annex-numbered-sections`: 59 chunks for Decreto 779 Anexo L.
   - `markdown-heading-sections`: 98 chunks across VTV, automotor/cédula, DNRPA, ANSV news, and chapa patente service pages.
@@ -408,7 +408,7 @@
   - `gcba-manual-vehiculo-4-ruedas-2023`: 198.
   - `gcba-mapa-estrellas-amarillas`: 3.
   - `ley-11179-codigo-penal`: 516.
-  - `ley-26994-codigo-civil-comercial`: 3,259.
+  - `ley-26994-codigo-civil-comercial`: 3,261.
   - `ley-17418-seguros`: 202.
 - Chunking decisions:
   - Laws and legal codes use article boundaries and retain hierarchy labels such as annex, book, title, chapter, and section in heading paths where detectable.
@@ -642,6 +642,27 @@
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #77 comma-dash article heading follow-up on 2026-05-10:
+  - Addressed duplicate P2 review findings for Civil/Commercial Code headings such as `ARTICULO 762,- ...` and `ARTICULO 1536,- ...`.
+  - `scripts/primary-sources-generate-coverage.mjs` now recognizes comma-dash article headings as legal article boundaries while preserving the lowercase narrative cross-reference rejection.
+  - Regenerated `content/primary-sources/primary-sources.coverage.json`; current summary is 19 documents, 5,225 chunks, with `ley-26994-codigo-civil-comercial` at 3,261 `legal-articles` chunks and standalone chunks for source spans 4567-4570 and 8143-8156.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `ley-26994-codigo-civil-comercial` has 3,261 chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 35 tests, 35 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 147 Node tests, 147 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #85 base sync over fresh PR #77 head on 2026-05-10:
+  - Fetched and merged `origin/codex/016-primary-sources-chunk-inventory` at `797353278c33f6a3762a4edf42afa617dde29a3c` into `codex/016-primary-sources-content-shards`.
+  - Merge completed with no conflict files while preserving PR #85 shard-loader work and PR #77 coverage generator fixes.
+  - Preserved the generated coverage inventory at 19 documents and 5,225 chunks.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `ley-26994-codigo-civil-comercial` has 3,261 chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `npm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring. The actual primary-source coverage mode was also run with `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` and passed with the same content-validation summary.
+  - `npm test` passed as the feasible full test command for this Node test-runner project: 153 tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
 - Slice B PR #74 standalone draft marker follow-up on 2026-05-10:
   - Addressed `PRRT_kwDOSX65IM6A6Kmh`: strict/final placeholder validation now rejects standalone draft markers including `DRAFT translation`, `draft rewrite`, `Черновой перевод`, and `Черновик`.
   - Added focused regression tests for standalone English and Russian draft markers in approved strict-mode learner content.
@@ -652,3 +673,16 @@
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #91 terminology sync over fresh PR #85 base on 2026-05-10:
+  - Worktree `/Users/chap/devel/cabadrive-016-primary-sources-terminology` was clean before sync and remained on branch `codex/016-primary-sources-terminology`.
+  - Fetched and merged `origin/codex/016-primary-sources-content-shards`; first merge included expected base head `ca7db1433d24264e1586bf8fe2759f9b0612c63d`, then a second merge incorporated the fresher base head `35abd0c91a734bc29b81eb1ac97e25278810817b`.
+  - Merge completed without manual conflict resolution. Final head has `origin/codex/016-primary-sources-content-shards` as an ancestor and preserves PR #91 terminology work plus upstream PR #85 shard-loader and PR #77 coverage-inventory changes.
+  - Final PR diff versus the synced base remains limited to `content/primary-sources/AGENTS.md`, `content/primary-sources/terminology.ru.md`, and this process-memory file. No translations, UI, official archive files, or unrelated runtime changes were added.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring. `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` also passed as the actual primary-source coverage mode.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `ley-26994-codigo-civil-comercial` has 3,261 chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `npm test -- --run` was not feasible because the Node test runner script treats `--run` as a file path and failed with `Could not find .../--run`; `npm test` was run instead and passed: 153 tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite production build completed, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - No blockers remain from this sync loop.
