@@ -5454,50 +5454,196 @@
       ],
       "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Daytime urban intersection with a multi-lane avenue, moving cars, a sidewalk corner with trees and pedestrians, and a pole-mounted white sign showing a blue right-turn arrow above the words GIRO LIBRE.",
+      "generationPromptSummary": "Daytime Buenos Aires street-corner photo beside a wide multi-lane avenue. Include moving cars, a silver car near the curb, large sidewalk tiles, mature trees, background buildings and an elevated green bridge. In the foreground on a pole place a rectangular white sign with a blue circular field, a white right-turn arrow, and black text GIRO LIBRE.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban intersection",
+        "environment": "wide avenue, sidewalk corner, trees, pedestrians, cars and a right-turn sign",
+        "cameraView": "street-level view from the sidewalk edge",
+        "framing": "GIRO LIBRE sign prominent on the right foreground with the intersection and avenue behind it",
+        "lighting": "bright daylight",
+        "weatherOrSurface": "dry asphalt and dry sidewalk"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "multi-lane urban avenue intersection",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "multiple traffic lanes continue through the intersection",
+          "right turn from the curb lane is indicated by the sign"
+        ],
         "markings": [],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "right-side-sidewalk-corner",
+            "description": "Tiled sidewalk and corner area beside the signpost."
+          }
+        ]
       },
-      "objects": [
+      "regions": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "region-giro-libre-sign",
+          "label": "GIRO LIBRE sign",
+          "semanticLocation": "right foreground, mounted high on a pole",
+          "localizationConfidence": "high"
+        },
+        {
+          "id": "region-sidewalk-corner",
+          "label": "sidewalk and pedestrian corner",
+          "semanticLocation": "right side and lower right of image around trees and pedestrians",
+          "localizationConfidence": "medium"
+        },
+        {
+          "id": "region-wide-avenue",
+          "label": "wide avenue traffic area",
+          "semanticLocation": "left and center background roadway",
+          "localizationConfidence": "medium"
         }
       ],
-      "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "visualDetails": [
+        {
+          "id": "free-right-turn-sign",
+          "type": "traffic_sign_detail",
+          "label": "GIRO LIBRE right-turn sign",
+          "description": "White rectangular sign with blue circle, white right-turn arrow and black GIRO LIBRE text.",
+          "objectIds": [
+            "giro-libre-sign"
+          ],
+          "regionIds": [
+            "region-giro-libre-sign"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "pedestrian-corner-context",
+          "type": "intersection_context",
+          "label": "sidewalk corner with pedestrians",
+          "description": "The sign stands at a sidewalk corner where pedestrians and the turning movement can interact.",
+          "objectIds": [
+            "sidewalk-corner",
+            "pedestrians-at-corner"
+          ],
+          "regionIds": [
+            "region-sidewalk-corner"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "multi-lane-avenue-traffic",
+          "type": "road_context",
+          "label": "wide avenue traffic",
+          "description": "Several lanes of moving traffic are visible through the intersection.",
+          "objectIds": [
+            "wide-avenue-roadway",
+            "moving-cars-b20"
+          ],
+          "regionIds": [
+            "region-wide-avenue"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "objects": [
+        {
+          "id": "giro-libre-sign",
+          "type": "traffic_sign",
+          "label": "GIRO LIBRE right-turn sign",
+          "description": "Pole-mounted white sign with a blue circular right-turn arrow and black GIRO LIBRE text.",
+          "confidence": "high"
+        },
+        {
+          "id": "signpost-and-utility-pole",
+          "type": "pole",
+          "label": "metal signpost",
+          "description": "Grey pole cluster holding the sign at the sidewalk edge.",
+          "confidence": "high"
+        },
+        {
+          "id": "wide-avenue-roadway",
+          "type": "roadway",
+          "label": "wide multi-lane avenue",
+          "description": "Broad asphalt avenue with several traffic lanes and vehicles.",
+          "confidence": "high"
+        },
+        {
+          "id": "moving-cars-b20",
+          "type": "vehicles",
+          "label": "moving cars on avenue",
+          "description": "Cars travel through the intersection, including red, black, grey and silver vehicles.",
+          "confidence": "high"
+        },
+        {
+          "id": "sidewalk-corner",
+          "type": "sidewalk",
+          "label": "right-side sidewalk corner",
+          "description": "Tiled sidewalk corner with trees, a trash bin and pedestrians in the background.",
+          "confidence": "medium"
+        },
+        {
+          "id": "trees-and-buildings-b20",
+          "type": "background",
+          "label": "trees and city buildings",
+          "description": "Large tree canopy and urban buildings frame the right side and background.",
+          "confidence": "medium"
+        }
+      ],
+      "roadUsers": [
+        {
+          "id": "pedestrians-at-corner",
+          "type": "pedestrians",
+          "label": "small pedestrians near corner",
+          "description": "Small figures stand or move near the sidewalk corner in the right background.",
+          "confidence": "medium"
+        }
+      ],
+      "signsSignalsMarkings": [
+        {
+          "id": "giro-libre-sign",
+          "type": "traffic_sign",
+          "label": "GIRO LIBRE right-turn sign",
+          "description": "Right-turn arrow sign allowing a free right turn movement.",
+          "confidence": "high"
+        }
+      ],
       "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "visibleText": [
+        {
+          "id": "visible-text-giro-libre",
+          "text": "GIRO LIBRE",
+          "objectId": "giro-libre-sign",
+          "description": "Black text printed below the blue right-turn arrow.",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "sign-beside-sidewalk-corner",
+          "subjectId": "giro-libre-sign",
+          "relation": "mounted_at",
+          "objectId": "sidewalk-corner",
+          "description": "The free-turn sign is mounted at the sidewalk corner beside the avenue."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "crosswalk-not-clearly-visible-b20",
+          "field": "roadLayout.crossings",
+          "note": "Pedestrian corner context is visible, but a zebra crossing itself is not clearly legible in the cropped frame.",
+          "impact": "do not assert a visible zebra crossing"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b20.jpg locally; GIRO LIBRE sign, wide avenue, sidewalk corner, trees, vehicles and pedestrians are visible.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        },
         "evidenceEntryId": "image-evidence-question-image-b20"
       }
     },
@@ -5509,33 +5655,98 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "street_photo",
+      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Interior car photo of an older male passenger wearing a seat belt incorrectly: the diagonal belt crosses the shoulder/chest, while the lower belt lies high across the abdomen instead of low on the pelvis.",
+      "generationPromptSummary": "Vertical close car-interior photo of an older man in a light beige shirt seated by a door and window. Show a black seat belt with the diagonal strap crossing from shoulder to torso and the lap strap positioned high across the soft abdomen. Include car door panel, side window and daylight outside.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "car interior",
+        "environment": "front or rear passenger seat beside door and window",
+        "cameraView": "close side view from inside the vehicle",
+        "framing": "passenger torso and seat belt dominate the frame",
+        "lighting": "daylight through side window",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not applicable",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "id": "region-passenger-torso-belt",
+          "label": "passenger torso and belt",
+          "semanticLocation": "center and lower half of image",
+          "localizationConfidence": "high"
+        },
+        {
+          "id": "region-car-window-door",
+          "label": "car door and window",
+          "semanticLocation": "left and upper image background",
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "lap-belt-over-abdomen",
+          "type": "seat_belt_position",
+          "label": "lap belt high over abdomen",
+          "description": "The lower belt segment crosses the passenger's abdomen instead of lying low over the pelvis.",
+          "objectIds": [
+            "lap-belt-abdomen-position",
+            "seated-passenger"
+          ],
+          "regionIds": [
+            "region-passenger-torso-belt"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "diagonal-shoulder-belt",
+          "type": "seat_belt_position",
+          "label": "diagonal shoulder belt",
+          "description": "The diagonal belt strap runs from the shoulder area across the chest.",
+          "objectIds": [
+            "diagonal-belt-strap",
+            "seated-passenger"
+          ],
+          "regionIds": [
+            "region-passenger-torso-belt"
+          ],
+          "confidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "seated-passenger",
+          "type": "person",
+          "label": "older seated passenger",
+          "description": "Older man wearing glasses and a light shirt, seated beside the car door.",
+          "confidence": "high"
+        },
+        {
+          "id": "lap-belt-abdomen-position",
+          "type": "seat_belt",
+          "label": "lap belt crossing abdomen",
+          "description": "Black lap belt segment lies across the soft abdomen area.",
+          "confidence": "high"
+        },
+        {
+          "id": "diagonal-belt-strap",
+          "type": "seat_belt",
+          "label": "diagonal shoulder strap",
+          "description": "Black diagonal belt segment crosses upper torso from shoulder toward hip.",
+          "confidence": "high"
+        },
+        {
+          "id": "car-door-window",
+          "type": "vehicle_interior",
+          "label": "car door and side window",
+          "description": "Dark door panel and window frame behind the passenger.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
@@ -5543,18 +5754,19 @@
       "annotations": [],
       "visibleText": [],
       "spatialRelationships": [],
-      "uncertainties": [
-        {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
-        }
-      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b219.jpg locally; the lower belt is visibly across the abdomen while the diagonal strap crosses the shoulder/chest.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        },
         "evidenceEntryId": "image-evidence-question-image-b219"
       }
     },
@@ -5568,50 +5780,90 @@
       ],
       "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Square blue traffic sign with rounded corners and a white divided-highway pictogram: two vertical roadway bands separated in the center and crossed by a horizontal white bridge-like bar.",
+      "generationPromptSummary": "Clean icon-style traffic sign on a white background: blue square with rounded corners, white simplified divided highway symbol with two long vertical road shapes and a horizontal overpass-like white bar crossing them near the upper third.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "isolated traffic sign graphic",
+        "environment": "plain white background",
+        "cameraView": "front-on sign view",
+        "framing": "entire sign centered",
+        "lighting": "flat graphic lighting",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not applicable",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "id": "region-blue-highway-sign",
+          "label": "blue divided-highway sign",
+          "semanticLocation": "full centered sign",
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "blue-divided-highway-pictogram",
+          "type": "traffic_sign_symbol",
+          "label": "white divided-highway pictogram",
+          "description": "The sign shows a white divided-road symbol on a blue square background.",
+          "objectIds": [
+            "blue-square-sign",
+            "white-divided-road-symbol"
+          ],
+          "regionIds": [
+            "region-blue-highway-sign"
+          ],
+          "confidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "blue-square-sign",
+          "type": "traffic_sign",
+          "label": "blue square sign body",
+          "description": "Blue square sign with rounded corners and a thin dark outline.",
+          "confidence": "high"
+        },
+        {
+          "id": "white-divided-road-symbol",
+          "type": "traffic_sign_symbol",
+          "label": "white divided road symbol",
+          "description": "White stylized separated carriageways with a horizontal crossbar.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "signsSignalsMarkings": [
+        {
+          "id": "blue-square-sign",
+          "type": "traffic_sign",
+          "label": "blue divided-highway traffic sign",
+          "description": "Icon-only blue sign with white divided roadway symbol.",
+          "confidence": "high"
+        }
+      ],
       "annotations": [],
       "visibleText": [],
       "spatialRelationships": [],
-      "uncertainties": [
-        {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
-        }
-      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b263.jpg locally; blue sign and white divided-highway pictogram are clear.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        },
         "evidenceEntryId": "image-evidence-question-image-b263"
       }
     },
@@ -5625,50 +5877,207 @@
       ],
       "kind": "road_marking",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Three-panel comparison image labeled A, B and C. Panel A shows a cyclist riding beside a curb on a street; panel B shows a cyclist on a separate path in a sidewalk/plaza-like area under a red structure; panel C shows a painted bicycle lane on the roadway with an arrow, bike symbol, yellow line and black bollards.",
+      "generationPromptSummary": "Horizontal triptych of urban bicycle infrastructure with yellow circular labels A, B and C at the top. Panel A: cyclist beside curb and building facade. Panel B: cyclist on a separate paved path in a plaza or sidewalk area under a large red bridge-like structure with trees. Panel C: narrow city street with painted bike lane, white bicycle symbol and forward arrow, yellow line and black bollards.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "three-option bicycle infrastructure comparison",
+        "environment": "urban street and sidewalk/path scenes arranged side by side",
+        "cameraView": "front-on composite image",
+        "framing": "three vertical panels labeled A, B and C",
+        "lighting": "daylight in all panels",
+        "weatherOrSurface": "dry pavement and street surfaces"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "composite street/path examples",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
+        "laneDirections": [
+          "panel C shows a marked bicycle lane with forward arrow"
+        ],
+        "markings": [
+          {
+            "id": "panel-c-bike-lane-marking",
+            "description": "White bicycle symbol and forward arrow painted in panel C."
+          }
+        ],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "id": "region-option-a",
+          "label": "option A panel",
+          "semanticLocation": "left third of composite image",
+          "localizationConfidence": "high"
+        },
+        {
+          "id": "region-option-b",
+          "label": "option B panel",
+          "semanticLocation": "center third of composite image",
+          "localizationConfidence": "high"
+        },
+        {
+          "id": "region-option-c",
+          "label": "option C panel",
+          "semanticLocation": "right third of composite image",
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "option-b-bicisenda-sidewalk-space",
+          "type": "bike_path_context",
+          "label": "option B separated bike path",
+          "description": "Panel B shows a cyclist on a separate paved path in a sidewalk/plaza-like space rather than in a car lane.",
+          "objectIds": [
+            "option-b-separated-path",
+            "option-b-cyclist"
+          ],
+          "regionIds": [
+            "region-option-b"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "option-c-painted-bike-lane",
+          "type": "road_marking",
+          "label": "option C painted roadway bike lane",
+          "description": "Panel C shows a bicycle lane painted on the roadway, with arrow, bicycle symbol and black bollards.",
+          "objectIds": [
+            "option-c-painted-bike-lane-object",
+            "option-c-bollards"
+          ],
+          "regionIds": [
+            "region-option-c"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "option-a-curbside-cyclist",
+          "type": "bike_context",
+          "label": "option A cyclist near curb",
+          "description": "Panel A shows a cyclist riding close to the curb beside a building facade.",
+          "objectIds": [
+            "option-a-cyclist",
+            "option-a-curbside-street"
+          ],
+          "regionIds": [
+            "region-option-a"
+          ],
+          "confidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
-        }
-      ],
-      "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+          "id": "option-a-cyclist",
+          "type": "cyclist",
+          "label": "option A cyclist",
+          "description": "Cyclist in a pink top riding near the curb beside a building.",
+          "confidence": "high"
+        },
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "option-a-curbside-street",
+          "type": "street_edge",
+          "label": "option A curbside street",
+          "description": "Street edge beside a sidewalk and building facade.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-separated-path",
+          "type": "bike_path",
+          "label": "option B separated path",
+          "description": "Paved path separated from car traffic in a plaza or sidewalk-like space.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-cyclist",
+          "type": "cyclist",
+          "label": "option B cyclist",
+          "description": "Cyclist riding on the center separated path under a red structure.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-c-painted-bike-lane-object",
+          "type": "bike_lane",
+          "label": "option C painted bike lane",
+          "description": "Bike lane painted on the street with white bicycle symbol and arrow.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-c-bollards",
+          "type": "lane_separators",
+          "label": "black bollards",
+          "description": "Short black bollards separate the lane edge from the rest of the roadway.",
+          "confidence": "high"
         }
       ],
+      "roadUsers": [
+        {
+          "id": "option-a-cyclist",
+          "type": "cyclist",
+          "label": "cyclist in panel A",
+          "description": "Person riding a bicycle near the curb.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-cyclist",
+          "type": "cyclist",
+          "label": "cyclist in panel B",
+          "description": "Person riding a bicycle on the separate path.",
+          "confidence": "high"
+        }
+      ],
+      "signsSignalsMarkings": [],
+      "annotations": [
+        {
+          "id": "option-label-a",
+          "type": "option_label",
+          "label": "A",
+          "description": "Yellow circular A label over the left panel."
+        },
+        {
+          "id": "option-label-b",
+          "type": "option_label",
+          "label": "B",
+          "description": "Yellow circular B label over the center panel."
+        },
+        {
+          "id": "option-label-c",
+          "type": "option_label",
+          "label": "C",
+          "description": "Yellow circular C label over the right panel."
+        }
+      ],
+      "visibleText": [
+        {
+          "id": "visible-text-option-labels-b41",
+          "text": "A B C",
+          "objectId": "option-label-b",
+          "description": "Yellow option labels identify the three panels.",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "panels-left-center-right",
+          "subjectId": "option-a-curbside-street",
+          "relation": "left_of",
+          "objectId": "option-b-separated-path",
+          "description": "Option A appears left of option B; option C appears to the right."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b41.jpg locally; panel B is a separated path in sidewalk/plaza space, while panel C is a painted roadway bike lane.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        },
         "evidenceEntryId": "image-evidence-question-image-b41"
       }
     },
@@ -5682,50 +6091,173 @@
       ],
       "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Two-panel comparison labeled A and B. Panel A shows an aerial view of a very wide urban avenue packed with many lanes of private cars and crosswalks. Panel B shows an aerial view of a broad avenue with a separated central Metrobus-style public transport corridor, bus shelters and more organized traffic lanes.",
+      "generationPromptSummary": "Side-by-side aerial city avenue comparison with yellow circular labels A and B. Left panel A: extremely wide tree-lined avenue, many lanes, dense rows of cars, zebra crossings and tall buildings. Right panel B: avenue with separated central bus rapid transit corridor, long turquoise bus shelter platforms, red bus lanes/crossings, surrounding car lanes, trees and high-rise buildings.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "two-option urban mobility comparison",
+        "environment": "large city avenues with dense traffic and public-transport corridor",
+        "cameraView": "high aerial/oblique views",
+        "framing": "two panels labeled A and B",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry roadways"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "wide urban avenues",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
-        "crossings": [],
+        "laneDirections": [
+          "panel A has many same-direction and opposing lanes filled with cars",
+          "panel B has traffic lanes around a central bus corridor"
+        ],
+        "markings": [
+          {
+            "id": "panel-a-crosswalks",
+            "description": "Several zebra crossings across the wide avenue in panel A."
+          },
+          {
+            "id": "panel-b-red-transit-crossings",
+            "description": "Red bus/transit lane markings and crossings around the Metrobus corridor in panel B."
+          }
+        ],
+        "crossings": [
+          {
+            "id": "panel-a-crosswalks",
+            "description": "White zebra crossings visible in panel A."
+          },
+          {
+            "id": "panel-b-crosswalks",
+            "description": "Crosswalks around the central transit station in panel B."
+          }
+        ],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "id": "region-option-a-avenue",
+          "label": "option A dense private-car avenue",
+          "semanticLocation": "left half of image",
+          "localizationConfidence": "high"
+        },
+        {
+          "id": "region-option-b-metrobus",
+          "label": "option B separated Metrobus corridor",
+          "semanticLocation": "right half of image",
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "option-a-dense-private-car-avenue",
+          "type": "traffic_density_context",
+          "label": "option A dense car traffic",
+          "description": "Panel A is dominated by many lanes packed with private cars and multiple conflict points at crosswalks and intersections.",
+          "objectIds": [
+            "option-a-wide-avenue",
+            "option-a-dense-cars"
+          ],
+          "regionIds": [
+            "region-option-a-avenue"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-separated-metrobus-corridor",
+          "type": "traffic_organization_context",
+          "label": "option B separated bus corridor",
+          "description": "Panel B shows a central public transport corridor with shelters and lanes separated from surrounding car traffic.",
+          "objectIds": [
+            "option-b-metrobus-corridor",
+            "option-b-bus-shelters"
+          ],
+          "regionIds": [
+            "region-option-b-metrobus"
+          ],
+          "confidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "option-a-wide-avenue",
+          "type": "roadway",
+          "label": "option A very wide avenue",
+          "description": "Massive multi-lane avenue bordered by trees and tall buildings.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-a-dense-cars",
+          "type": "vehicles",
+          "label": "dense private car traffic in option A",
+          "description": "Many cars fill nearly all lanes in panel A.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-metrobus-corridor",
+          "type": "public_transport_corridor",
+          "label": "separated Metrobus-style corridor",
+          "description": "Central separated corridor for buses/public transport in panel B.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-bus-shelters",
+          "type": "bus_stop_platforms",
+          "label": "central bus shelters",
+          "description": "Long turquoise shelter/platform structures in the center of panel B.",
+          "confidence": "high"
+        },
+        {
+          "id": "city-buildings-and-trees-b4",
+          "type": "background",
+          "label": "city buildings and tree rows",
+          "description": "Tall buildings and rows of trees frame both avenue images.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "annotations": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "option-label-a-b4",
+          "type": "option_label",
+          "label": "A",
+          "description": "Yellow circular A label above the dense avenue panel."
+        },
+        {
+          "id": "option-label-b-b4",
+          "type": "option_label",
+          "label": "B",
+          "description": "Yellow circular B label above the Metrobus corridor panel."
         }
       ],
+      "visibleText": [
+        {
+          "id": "visible-text-option-labels-b4",
+          "text": "A B",
+          "objectId": "option-label-a-b4",
+          "description": "Yellow labels identify the two image options.",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "option-a-left-of-option-b",
+          "subjectId": "option-a-wide-avenue",
+          "relation": "left_of",
+          "objectId": "option-b-metrobus-corridor",
+          "description": "The dense private-car avenue panel A is to the left of panel B."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b4.jpg locally; panel A shows dense multi-lane car traffic, panel B shows a separated Metrobus-style corridor.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        },
         "evidenceEntryId": "image-evidence-question-image-b4"
       }
     },
@@ -5739,31 +6271,111 @@
       ],
       "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Forward road view in very dense fog. A two-lane asphalt road has double yellow center lines and a white right edge line; roadside vegetation fades into grey fog and forward visibility is severely reduced.",
+      "generationPromptSummary": "Driver-eye photo of a rural or highway road in thick grey fog. Show dark asphalt, double yellow center lines, a white right shoulder line, low roadside grass and vegetation, no visible traffic nearby, and the road disappearing into a blank misty horizon.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "foggy two-lane road",
+        "environment": "open roadside with heavy fog and poor visibility",
+        "cameraView": "driver-level forward view",
+        "framing": "road vanishes into fog ahead",
+        "lighting": "diffuse grey daylight",
+        "weatherOrSurface": "dense fog over dry or slightly damp asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
-        "laneCount": "unknown",
+        "roadType": "two-lane road",
+        "laneCount": 2,
         "laneDirections": [],
-        "markings": [],
+        "markings": [
+          {
+            "id": "double-yellow-center-lines-b192",
+            "description": "Double yellow center lines run into the fog."
+          },
+          {
+            "id": "right-white-edge-line-b192",
+            "description": "White line marks the right edge of the roadway."
+          }
+        ],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "right-road-shoulder-fog",
+            "description": "Narrow shoulder or roadside strip fades into fog and grass."
+          }
+        ]
       },
+      "regions": [
+        {
+          "id": "region-foggy-road-ahead",
+          "label": "foggy road and reduced visibility",
+          "semanticLocation": "full roadway leading into the center background",
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "dense-fog-low-visibility-road",
+          "type": "weather_visibility_context",
+          "label": "dense fog and low visibility",
+          "description": "Thick fog hides the horizon and makes the road ahead barely visible.",
+          "objectIds": [
+            "foggy-roadway",
+            "grey-fog-bank"
+          ],
+          "regionIds": [
+            "region-foggy-road-ahead"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "two-lane-road-markings-in-fog",
+          "type": "road_marking",
+          "label": "yellow center and white edge lines",
+          "description": "The double yellow center lines and white edge line remain visible close to the camera.",
+          "objectIds": [
+            "double-yellow-center-lines-object",
+            "right-white-edge-line-object"
+          ],
+          "regionIds": [
+            "region-foggy-road-ahead"
+          ],
+          "confidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "foggy-roadway",
+          "type": "roadway",
+          "label": "two-lane roadway in fog",
+          "description": "Dark asphalt road disappearing into thick fog.",
+          "confidence": "high"
+        },
+        {
+          "id": "grey-fog-bank",
+          "type": "weather",
+          "label": "dense grey fog",
+          "description": "Fog obscures the road, horizon and roadside scenery.",
+          "confidence": "high"
+        },
+        {
+          "id": "double-yellow-center-lines-object",
+          "type": "road_marking",
+          "label": "double yellow center lines",
+          "description": "Two yellow lines run along the center of the roadway.",
+          "confidence": "high"
+        },
+        {
+          "id": "right-white-edge-line-object",
+          "type": "road_marking",
+          "label": "right white edge line",
+          "description": "White line marks the right edge of the lane.",
+          "confidence": "high"
+        },
+        {
+          "id": "roadside-grass-b192",
+          "type": "roadside",
+          "label": "grass and low vegetation",
+          "description": "Low vegetation along the right roadside fades into the fog.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
@@ -5771,18 +6383,19 @@
       "annotations": [],
       "visibleText": [],
       "spatialRelationships": [],
-      "uncertainties": [
-        {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
-        }
-      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b192.jpg locally; dense fog, low visibility, two-lane road and lane markings are visible.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        },
         "evidenceEntryId": "image-evidence-question-image-b192"
       }
     },
@@ -5796,50 +6409,90 @@
       ],
       "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Isolated orange diamond temporary roadwork warning sign with a black border and two black worker bust silhouettes wearing hard hats.",
+      "generationPromptSummary": "Graphic traffic sign on a plain white background: orange diamond with black outline, centered black pictogram of two road workers wearing hard hats, no text.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "isolated temporary roadwork sign graphic",
+        "environment": "plain white background",
+        "cameraView": "front-on sign view",
+        "framing": "entire diamond sign centered",
+        "lighting": "flat graphic lighting",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not applicable",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "id": "region-orange-roadwork-sign",
+          "label": "orange diamond worker sign",
+          "semanticLocation": "full centered sign",
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "orange-road-workers-temporary-sign",
+          "type": "temporary_warning_sign",
+          "label": "orange road workers sign",
+          "description": "Orange diamond sign with black worker silhouettes in hard hats, typical of temporary roadwork warning.",
+          "objectIds": [
+            "orange-diamond-sign",
+            "black-worker-silhouettes"
+          ],
+          "regionIds": [
+            "region-orange-roadwork-sign"
+          ],
+          "confidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "orange-diamond-sign",
+          "type": "traffic_sign",
+          "label": "orange diamond sign body",
+          "description": "Orange diamond with black outline on a white background.",
+          "confidence": "high"
+        },
+        {
+          "id": "black-worker-silhouettes",
+          "type": "traffic_sign_symbol",
+          "label": "two worker silhouettes",
+          "description": "Two black bust silhouettes wearing hard hats centered on the sign.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "signsSignalsMarkings": [
+        {
+          "id": "orange-diamond-sign",
+          "type": "traffic_sign",
+          "label": "temporary roadwork warning sign",
+          "description": "Orange diamond sign with worker pictogram.",
+          "confidence": "high"
+        }
+      ],
       "annotations": [],
       "visibleText": [],
       "spatialRelationships": [],
-      "uncertainties": [
-        {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
-        }
-      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b72.jpg locally; orange diamond road-workers sign is clear and contains no text.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        },
         "evidenceEntryId": "image-evidence-question-image-b72"
       }
     },
@@ -5851,52 +6504,199 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
+      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Narrow hillside road with two opposing vehicles labeled A and B. A red SUV labeled B is in the foreground with its rear facing the camera and appears to be moving uphill along the narrow road; a white car labeled A is farther ahead in the opposing direction. Stone wall, hillside vegetation, utility poles and a house appear around the road.",
+      "generationPromptSummary": "Daytime photo on a narrow mountain or hillside road. Foreground: rear of a red SUV with a yellow circular B label above it. Farther ahead: white car facing the camera with a yellow circular A label above it. Include stone retaining wall and vegetation on the left, rough shoulder and house on the right, utility poles, dry pavement and a slight uphill perspective away from the camera.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "narrow hillside road",
+        "environment": "mountain or hillside residential road with retaining wall, vegetation, house and utility poles",
+        "cameraView": "driver-level rear view behind vehicle B",
+        "framing": "vehicle B foreground, vehicle A ahead on the narrow road",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
-        "laneCount": "unknown",
+        "roadType": "narrow two-way hillside road",
+        "laneCount": 1,
         "laneDirections": [],
         "markings": [],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "rough-right-shoulder-b108",
+            "description": "Rough shoulder area and curb edge on the right side."
+          },
+          {
+            "id": "stone-wall-left-side-b108",
+            "description": "Stone retaining wall and vegetation on the left side of the narrow road."
+          }
+        ]
       },
-      "objects": [
+      "regions": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "region-vehicle-b-foreground",
+          "label": "vehicle B in foreground",
+          "semanticLocation": "lower center and right foreground",
+          "localizationConfidence": "high"
+        },
+        {
+          "id": "region-vehicle-a-background",
+          "label": "vehicle A ahead",
+          "semanticLocation": "center-left midground ahead on the road",
+          "localizationConfidence": "medium"
+        },
+        {
+          "id": "region-narrow-slope-road",
+          "label": "narrow hillside road",
+          "semanticLocation": "road corridor from foreground to background",
+          "localizationConfidence": "medium"
         }
       ],
-      "roadUsers": [],
+      "visualDetails": [
+        {
+          "id": "vehicle-b-ascending-narrow-slope",
+          "type": "vehicle_position_context",
+          "label": "vehicle B on uphill narrow road",
+          "description": "The red SUV labeled B is shown from behind on the narrow road, aligned with the uphill direction away from the camera.",
+          "objectIds": [
+            "red-suv-vehicle-b",
+            "narrow-hillside-road"
+          ],
+          "regionIds": [
+            "region-vehicle-b-foreground",
+            "region-narrow-slope-road"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "vehicle-a-opposing-descending",
+          "type": "vehicle_position_context",
+          "label": "vehicle A opposite vehicle",
+          "description": "The white car labeled A is farther ahead in the opposing direction on the same narrow road.",
+          "objectIds": [
+            "white-car-vehicle-a",
+            "narrow-hillside-road"
+          ],
+          "regionIds": [
+            "region-vehicle-a-background",
+            "region-narrow-slope-road"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "narrow-hillside-road-context",
+          "type": "road_layout",
+          "label": "single narrow hillside road",
+          "description": "The roadway is narrow, with little lateral clearance and hillside/retaining wall context.",
+          "objectIds": [
+            "narrow-hillside-road",
+            "stone-retaining-wall"
+          ],
+          "regionIds": [
+            "region-narrow-slope-road"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "objects": [
+        {
+          "id": "red-suv-vehicle-b",
+          "type": "vehicle",
+          "label": "red SUV labeled B",
+          "description": "Red SUV in the foreground, rear visible, with spare tire cover and yellow B label above.",
+          "confidence": "high"
+        },
+        {
+          "id": "white-car-vehicle-a",
+          "type": "vehicle",
+          "label": "white car labeled A",
+          "description": "White car farther ahead on the narrow road with yellow A label above it.",
+          "confidence": "high"
+        },
+        {
+          "id": "narrow-hillside-road",
+          "type": "roadway",
+          "label": "narrow hillside road",
+          "description": "Single narrow paved road with limited passing space.",
+          "confidence": "high"
+        },
+        {
+          "id": "stone-retaining-wall",
+          "type": "roadside",
+          "label": "stone retaining wall and vegetation",
+          "description": "Stone wall and planted slope run along the left side of the road.",
+          "confidence": "high"
+        },
+        {
+          "id": "right-side-house-and-utility-poles",
+          "type": "background",
+          "label": "house and utility poles",
+          "description": "House, fence and utility poles appear on the right/background side.",
+          "confidence": "medium"
+        }
+      ],
+      "roadUsers": [
+        {
+          "id": "red-suv-vehicle-b",
+          "type": "vehicle",
+          "label": "vehicle B",
+          "description": "Foreground red SUV participating in the narrow-road encounter.",
+          "confidence": "high"
+        },
+        {
+          "id": "white-car-vehicle-a",
+          "type": "vehicle",
+          "label": "vehicle A",
+          "description": "Opposing white car participating in the narrow-road encounter.",
+          "confidence": "high"
+        }
+      ],
       "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
+      "annotations": [
+        {
+          "id": "option-label-a-b108",
+          "type": "vehicle_label",
+          "label": "A",
+          "description": "Yellow circular A label over the white car."
+        },
+        {
+          "id": "option-label-b-b108",
+          "type": "vehicle_label",
+          "label": "B",
+          "description": "Yellow circular B label over the red SUV."
+        }
+      ],
+      "visibleText": [
+        {
+          "id": "visible-text-vehicle-labels-b108",
+          "text": "A B",
+          "objectId": "red-suv-vehicle-b",
+          "description": "Yellow labels identify the two vehicles.",
+          "confidence": "high"
+        }
+      ],
       "spatialRelationships": [],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "slope-direction-medium-confidence-b108",
+          "field": "visualDetails.vehicle-b-ascending-narrow-slope",
+          "note": "The road grade is inferred from the hillside road perspective and vehicle orientation; exact slope angle is not measurable from the image.",
+          "impact": "records medium confidence for ascending/descending detail"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b108.jpg locally; red vehicle B, white vehicle A, narrow hillside road and labels are visible. Slope direction is recorded with medium confidence.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        },
         "evidenceEntryId": "image-evidence-question-image-b108"
       }
     },
@@ -9380,26 +10180,66 @@
       "correctAnswerId": "b-fallback-421-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-421-critical-source-image",
+          "detailId": "free-right-turn-sign",
           "objectIds": [
-            "source-image-frame"
+            "giro-libre-sign"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-giro-libre-sign"
+          ],
+          "description": "The visible GIRO LIBRE right-turn sign is the intersection feature that can tempt drivers to overlook pedestrian priority.",
           "supportsAnswerIds": [
             "b-fallback-421-a2"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-421-a1"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-421"
-      }
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-421",
+        "qualityStatus": "complete"
+      },
+      "relevanceMap": [
+        {
+          "targetId": "free-right-turn-sign",
+          "targetType": "visualDetail",
+          "role": "answer-critical/highlight",
+          "rationaleRu": "Знак свободного поворота задает условие вопроса, но не отменяет приоритет пешехода.",
+          "answerIds": [
+            "b-fallback-421-a2"
+          ]
+        },
+        {
+          "targetId": "pedestrian-corner-context",
+          "targetType": "visualDetail",
+          "role": "supporting",
+          "rationaleRu": "Угол тротуара и пешеходная зона показывают, с кем может пересекаться поворачивающий транспорт.",
+          "answerIds": []
+        },
+        {
+          "targetId": "moving-cars-b20",
+          "targetType": "object",
+          "role": "distractor/trap",
+          "rationaleRu": "Поток машин и знак свободного поворота могут отвлечь от обязанности уступить пешеходу.",
+          "answerIds": [
+            "b-fallback-421-a1"
+          ]
+        },
+        {
+          "targetId": "trees-and-buildings-b20",
+          "targetType": "object",
+          "role": "background/irrelevant/dim",
+          "rationaleRu": "Деревья и здания не влияют на ответ о приоритете.",
+          "answerIds": []
+        }
+      ]
     },
     {
       "questionId": "b-fallback-422",
@@ -9410,26 +10250,68 @@
       "correctAnswerId": "b-fallback-422-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-422-critical-source-image",
+          "detailId": "lap-belt-over-abdomen",
           "objectIds": [
-            "source-image-frame"
+            "lap-belt-abdomen-position",
+            "seated-passenger"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-passenger-torso-belt"
+          ],
+          "description": "The lap belt visibly crosses the abdomen, which is the incorrect placement named by the correct answer.",
           "supportsAnswerIds": [
             "b-fallback-422-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-422-a2",
+            "b-fallback-422-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-422"
-      }
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-422",
+        "qualityStatus": "complete"
+      },
+      "relevanceMap": [
+        {
+          "targetId": "lap-belt-over-abdomen",
+          "targetType": "visualDetail",
+          "role": "answer-critical/highlight",
+          "rationaleRu": "Нижняя лямка на животе делает положение ремня неправильным.",
+          "answerIds": [
+            "b-fallback-422-a1"
+          ]
+        },
+        {
+          "targetId": "diagonal-shoulder-belt",
+          "targetType": "visualDetail",
+          "role": "distractor/trap",
+          "rationaleRu": "Диагональная лямка выглядит допустимо, но она не исправляет неправильное положение нижней лямки.",
+          "answerIds": [
+            "b-fallback-422-a3"
+          ]
+        },
+        {
+          "targetId": "seated-passenger",
+          "targetType": "object",
+          "role": "supporting",
+          "rationaleRu": "Поза пассажира помогает увидеть, где проходит нижняя лямка ремня.",
+          "answerIds": []
+        },
+        {
+          "targetId": "car-door-window",
+          "targetType": "object",
+          "role": "background/irrelevant/dim",
+          "rationaleRu": "Дверь и окно не влияют на правильность положения ремня.",
+          "answerIds": []
+        }
+      ]
     },
     {
       "questionId": "b-fallback-423",
@@ -9440,26 +10322,69 @@
       "correctAnswerId": "b-fallback-423-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-423-critical-source-image",
+          "detailId": "blue-divided-highway-pictogram",
           "objectIds": [
-            "source-image-frame"
+            "blue-square-sign",
+            "white-divided-road-symbol"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-blue-highway-sign"
+          ],
+          "description": "The blue sign with a white divided-highway pictogram identifies the start of an autopista.",
           "supportsAnswerIds": [
             "b-fallback-423-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-423-a2",
+            "b-fallback-423-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-423"
-      }
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-423",
+        "qualityStatus": "complete"
+      },
+      "relevanceMap": [
+        {
+          "targetId": "blue-divided-highway-pictogram",
+          "targetType": "visualDetail",
+          "role": "answer-critical/highlight",
+          "rationaleRu": "Белая пиктограмма разделенной дороги на синем фоне обозначает начало автомагистрали.",
+          "answerIds": [
+            "b-fallback-423-a1"
+          ]
+        },
+        {
+          "targetId": "blue-square-sign",
+          "targetType": "object",
+          "role": "supporting",
+          "rationaleRu": "Синий квадратный фон поддерживает тип информационно-режимного знака автомагистрали.",
+          "answerIds": []
+        },
+        {
+          "targetId": "white-divided-road-symbol",
+          "targetType": "object",
+          "role": "distractor/trap",
+          "rationaleRu": "Символ дороги можно спутать с обычной трассой или полуавтомагистралью, но в этом билете он относится к автомагистрали.",
+          "answerIds": [
+            "b-fallback-423-a2",
+            "b-fallback-423-a3"
+          ]
+        },
+        {
+          "targetId": "region-blue-highway-sign",
+          "targetType": "region",
+          "role": "background/irrelevant/dim",
+          "rationaleRu": "Пустой белый фон вокруг знака не влияет на ответ.",
+          "answerIds": []
+        }
+      ]
     },
     {
       "questionId": "b-fallback-426",
@@ -9470,26 +10395,77 @@
       "correctAnswerId": "b-fallback-426-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-426-critical-source-image",
+          "detailId": "option-b-bicisenda-sidewalk-space",
           "objectIds": [
-            "source-image-frame"
+            "option-b-separated-path",
+            "option-b-cyclist"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-option-b"
+          ],
+          "description": "Option B shows the separated bicycle path in sidewalk/plaza-like space, which matches the requested bicisenda.",
           "supportsAnswerIds": [
             "b-fallback-426-a2"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-426-a1",
+            "b-fallback-426-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-426"
-      }
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-426",
+        "qualityStatus": "complete"
+      },
+      "relevanceMap": [
+        {
+          "targetId": "option-b-bicisenda-sidewalk-space",
+          "targetType": "visualDetail",
+          "role": "answer-critical/highlight",
+          "rationaleRu": "Вариант B показывает дорожку вне автомобильной проезжей части.",
+          "answerIds": [
+            "b-fallback-426-a2"
+          ]
+        },
+        {
+          "targetId": "option-a-curbside-cyclist",
+          "targetType": "visualDetail",
+          "role": "distractor/trap",
+          "rationaleRu": "Вариант A связан с велосипедом, но не показывает нужный тип дорожки.",
+          "answerIds": [
+            "b-fallback-426-a1"
+          ]
+        },
+        {
+          "targetId": "option-c-painted-bike-lane",
+          "targetType": "visualDetail",
+          "role": "distractor/trap",
+          "rationaleRu": "Вариант C похож по теме, но это размеченная велосипедная полоса на проезжей части.",
+          "answerIds": [
+            "b-fallback-426-a3"
+          ]
+        },
+        {
+          "targetId": "visible-text-option-labels-b41",
+          "targetType": "visibleText",
+          "role": "supporting",
+          "rationaleRu": "Метки A, B и C позволяют связать изображение с вариантами ответа.",
+          "answerIds": []
+        },
+        {
+          "targetId": "option-c-bollards",
+          "targetType": "object",
+          "role": "background/irrelevant/dim",
+          "rationaleRu": "Черные разделители в варианте C уточняют обстановку, но сами по себе не делают его bicisenda.",
+          "answerIds": []
+        }
+      ]
     },
     {
       "questionId": "b-fallback-427",
@@ -9500,26 +10476,68 @@
       "correctAnswerId": "b-fallback-427-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-427-critical-source-image",
+          "detailId": "option-a-dense-private-car-avenue",
           "objectIds": [
-            "source-image-frame"
+            "option-a-wide-avenue",
+            "option-a-dense-cars"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-option-a-avenue"
+          ],
+          "description": "Option A shows the densest private-car traffic and many conflict points, making it the higher-risk situation for this question.",
           "supportsAnswerIds": [
             "b-fallback-427-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-427-a2",
+            "b-fallback-427-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-427"
-      }
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-427",
+        "qualityStatus": "complete"
+      },
+      "relevanceMap": [
+        {
+          "targetId": "option-a-dense-private-car-avenue",
+          "targetType": "visualDetail",
+          "role": "answer-critical/highlight",
+          "rationaleRu": "Вариант A показывает наиболее плотный поток автомобилей и больше конфликтных точек.",
+          "answerIds": [
+            "b-fallback-427-a1"
+          ]
+        },
+        {
+          "targetId": "option-b-separated-metrobus-corridor",
+          "targetType": "visualDetail",
+          "role": "distractor/trap",
+          "rationaleRu": "Вариант B тоже выглядит как большая авенида, но центральный коридор организует потоки.",
+          "answerIds": [
+            "b-fallback-427-a2"
+          ]
+        },
+        {
+          "targetId": "visible-text-option-labels-b4",
+          "targetType": "visibleText",
+          "role": "supporting",
+          "rationaleRu": "Метки A и B связывают изображение с вариантами ответа.",
+          "answerIds": []
+        },
+        {
+          "targetId": "city-buildings-and-trees-b4",
+          "targetType": "object",
+          "role": "background/irrelevant/dim",
+          "rationaleRu": "Фоновые здания и деревья не определяют вероятность ДТП.",
+          "answerIds": []
+        }
+      ]
     },
     {
       "questionId": "b-fallback-428",
@@ -9530,26 +10548,67 @@
       "correctAnswerId": "b-fallback-428-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-428-critical-source-image",
+          "detailId": "dense-fog-low-visibility-road",
           "objectIds": [
-            "source-image-frame"
+            "foggy-roadway",
+            "grey-fog-bank"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-foggy-road-ahead"
+          ],
+          "description": "The image shows fog and low visibility, the weather condition asked about; it does not show an emergency stop that would justify hazard lights while driving.",
           "supportsAnswerIds": [
             "b-fallback-428-a2"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-428-a1"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-428"
-      }
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-428",
+        "qualityStatus": "complete"
+      },
+      "relevanceMap": [
+        {
+          "targetId": "dense-fog-low-visibility-road",
+          "targetType": "visualDetail",
+          "role": "answer-critical/highlight",
+          "rationaleRu": "Густой туман задает погодное условие вопроса, но не делает аварийную сигнализацию штатным режимом движения.",
+          "answerIds": [
+            "b-fallback-428-a2"
+          ]
+        },
+        {
+          "targetId": "two-lane-road-markings-in-fog",
+          "targetType": "visualDetail",
+          "role": "supporting",
+          "rationaleRu": "Разметка показывает обычное движение по дороге в условиях плохой видимости.",
+          "answerIds": []
+        },
+        {
+          "targetId": "grey-fog-bank",
+          "targetType": "object",
+          "role": "distractor/trap",
+          "rationaleRu": "Сам факт тумана может подтолкнуть к варианту про аварийку, но это ловушка билета.",
+          "answerIds": [
+            "b-fallback-428-a1"
+          ]
+        },
+        {
+          "targetId": "roadside-grass-b192",
+          "targetType": "object",
+          "role": "background/irrelevant/dim",
+          "rationaleRu": "Придорожная трава не влияет на выбор режима световых сигналов.",
+          "answerIds": []
+        }
+      ]
     },
     {
       "questionId": "b-fallback-429",
@@ -9560,26 +10619,69 @@
       "correctAnswerId": "b-fallback-429-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-429-critical-source-image",
+          "detailId": "orange-road-workers-temporary-sign",
           "objectIds": [
-            "source-image-frame"
+            "orange-diamond-sign",
+            "black-worker-silhouettes"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-orange-roadwork-sign"
+          ],
+          "description": "The orange diamond road-workers sign is a temporary roadwork sign, not a permanent regulatory or informational sign.",
           "supportsAnswerIds": [
             "b-fallback-429-a2"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-429-a1",
+            "b-fallback-429-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-429"
-      }
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-429",
+        "qualityStatus": "complete"
+      },
+      "relevanceMap": [
+        {
+          "targetId": "orange-road-workers-temporary-sign",
+          "targetType": "visualDetail",
+          "role": "answer-critical/highlight",
+          "rationaleRu": "Оранжевый ромб и рабочие в касках указывают на временный знак работ.",
+          "answerIds": [
+            "b-fallback-429-a2"
+          ]
+        },
+        {
+          "targetId": "black-worker-silhouettes",
+          "targetType": "object",
+          "role": "supporting",
+          "rationaleRu": "Силуэты рабочих подтверждают связь с дорожными работами.",
+          "answerIds": []
+        },
+        {
+          "targetId": "orange-diamond-sign",
+          "targetType": "object",
+          "role": "distractor/trap",
+          "rationaleRu": "Форма знака может выглядеть как предупреждение вообще, но оранжевый цвет связывает его с временной группой.",
+          "answerIds": [
+            "b-fallback-429-a1",
+            "b-fallback-429-a3"
+          ]
+        },
+        {
+          "targetId": "region-orange-roadwork-sign",
+          "targetType": "region",
+          "role": "background/irrelevant/dim",
+          "rationaleRu": "Белый фон вокруг знака не несет смысловой нагрузки.",
+          "answerIds": []
+        }
+      ]
     },
     {
       "questionId": "b-fallback-430",
@@ -9590,26 +10692,68 @@
       "correctAnswerId": "b-fallback-430-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-430-critical-source-image",
+          "detailId": "vehicle-b-ascending-narrow-slope",
           "objectIds": [
-            "source-image-frame"
+            "red-suv-vehicle-b",
+            "narrow-hillside-road"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-vehicle-b-foreground",
+            "region-narrow-slope-road"
+          ],
+          "description": "Vehicle B is the foreground vehicle aligned with the uphill direction on the narrow slope, which gives it priority in this ticket.",
           "supportsAnswerIds": [
             "b-fallback-430-a2"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-430-a1"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "medium"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-430"
-      }
+        "reviewer": "Cabadrive content agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-430",
+        "qualityStatus": "complete"
+      },
+      "relevanceMap": [
+        {
+          "targetId": "vehicle-b-ascending-narrow-slope",
+          "targetType": "visualDetail",
+          "role": "answer-critical/highlight",
+          "rationaleRu": "Автомобиль B соответствует движущемуся вверх на узком подъеме.",
+          "answerIds": [
+            "b-fallback-430-a2"
+          ]
+        },
+        {
+          "targetId": "vehicle-a-opposing-descending",
+          "targetType": "visualDetail",
+          "role": "distractor/trap",
+          "rationaleRu": "Автомобиль A хорошо виден, но в этой ситуации не получает преимущество.",
+          "answerIds": [
+            "b-fallback-430-a1"
+          ]
+        },
+        {
+          "targetId": "narrow-hillside-road-context",
+          "targetType": "visualDetail",
+          "role": "supporting",
+          "rationaleRu": "Узкая дорога и уклон объясняют, почему применяется специальное правило приоритета.",
+          "answerIds": []
+        },
+        {
+          "targetId": "right-side-house-and-utility-poles",
+          "targetType": "object",
+          "role": "background/irrelevant/dim",
+          "rationaleRu": "Дом и столбы не определяют, у какого автомобиля преимущество.",
+          "answerIds": []
+        }
+      ]
     },
     {
       "questionId": "b-fallback-433",

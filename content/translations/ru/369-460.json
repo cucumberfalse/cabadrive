@@ -683,128 +683,128 @@
     },
     {
       "questionId": "b-fallback-421",
-      "questionTextRu": "Учебный перевод-смысл: Dadas las características de esta intersección, ¿el пешеход/пешеходы también tiene prioridad?",
+      "questionTextRu": "С учетом особенностей этого перекрестка пешеход тоже имеет преимущество?",
       "answerTranslations": {
-        "b-fallback-421-a1": "Смысл варианта: Нет, pero si el пешеход/пешеходы se encuentra cruzando, el водитель/водители debe dejarlo pasar para Нет producir un дорожное происшествие.",
-        "b-fallback-421-a2": "Смысл варианта: Sí, Всегда."
+        "b-fallback-421-a1": "Нет, но если пешеход уже переходит, водитель должен пропустить его, чтобы не создать ДТП.",
+        "b-fallback-421-a2": "Да, всегда."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-422",
-      "questionTextRu": "Учебный перевод-смысл: ¿Esta persona tiene el cinturón correctamente colocado?",
+      "questionTextRu": "Правильно ли у этого человека пристегнут ремень безопасности?",
       "answerTranslations": {
-        "b-fallback-422-a1": "Смысл варианта: Нет, porque pasa por el abdomen y debería hacerlo por los huesos de la cadera.",
-        "b-fallback-422-a2": "Смысл варианта: Нет, porque pasa por el abdomen y debería hacerlo por los muslos.",
-        "b-fallback-422-a3": "Смысл варианта: Sí, porque pasa por la clavícula y el abdomen."
+        "b-fallback-422-a1": "Нет, потому что он проходит по животу, а должен проходить по костям таза.",
+        "b-fallback-422-a2": "Нет, потому что он проходит по животу, а должен проходить по бедрам.",
+        "b-fallback-422-a3": "Да, потому что он проходит через ключицу и живот."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-423",
-      "questionTextRu": "Учебный перевод-смысл: Determine qué indica la знак que a continuación se presenta:",
+      "questionTextRu": "Определите, что обозначает показанный ниже знак:",
       "answerTranslations": {
-        "b-fallback-423-a1": "Смысл варианта: Comienzo de autopista.",
-        "b-fallback-423-a2": "Смысл варианта: Comienzo de ruta.",
-        "b-fallback-423-a3": "Смысл варианта: Comienzo de semiautopista."
+        "b-fallback-423-a1": "Начало автомагистрали.",
+        "b-fallback-423-a2": "Начало трассы.",
+        "b-fallback-423-a3": "Начало полуавтомагистрали."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-424",
-      "questionTextRu": "Учебный перевод-смысл: Los ciclistas Нет están obligados a respetar todas las normas de tránsito, ya que Нет utilizan un транспортное средство que genera altas velocidades.",
+      "questionTextRu": "Велосипедисты не обязаны соблюдать все правила дорожного движения, поскольку их транспортное средство не развивает высокую скорость.",
       "answerTranslations": {
-        "b-fallback-424-a1": "Смысл варианта: Верно.",
-        "b-fallback-424-a2": "Смысл варианта: Неверно."
+        "b-fallback-424-a1": "Верно.",
+        "b-fallback-424-a2": "Неверно."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-425",
-      "questionTextRu": "Учебный перевод-смысл: ¿Cuál es la velocidad máxima permitida para circular con una bicicleta con asistencia eléctrica?",
+      "questionTextRu": "Какая максимально разрешенная скорость для движения на велосипеде с электрической поддержкой?",
       "answerTranslations": {
-        "b-fallback-425-a1": "Смысл варианта: La velocidad máxima permitida en la vía donde se encuentra la велодорожка.",
-        "b-fallback-425-a2": "Смысл варианта: 25 km/h.",
-        "b-fallback-425-a3": "Смысл варианта: 30 km/h."
+        "b-fallback-425-a1": "Максимальная разрешенная скорость на дороге, где расположена велодорожка.",
+        "b-fallback-425-a2": "25 км/ч.",
+        "b-fallback-425-a3": "30 км/ч."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-426",
-      "questionTextRu": "Учебный перевод-смысл: ¿Cuál de las siguientes imágenes muestra una велополоса?",
+      "questionTextRu": "На какой из следующих картинок показана велодорожка типа bicisenda?",
       "answerTranslations": {
-        "b-fallback-426-a1": "Смысл варианта: Opción A.",
-        "b-fallback-426-a2": "Смысл варианта: Opción B.",
-        "b-fallback-426-a3": "Смысл варианта: Opción C."
+        "b-fallback-426-a1": "Вариант A.",
+        "b-fallback-426-a2": "Вариант B.",
+        "b-fallback-426-a3": "Вариант C."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-427",
-      "questionTextRu": "Учебный перевод-смысл: Indique cuál de las siguientes situaciones conlleva mayor probabilidad de siniestralidad",
+      "questionTextRu": "Укажите, какая из следующих ситуаций несет более высокую вероятность ДТП.",
       "answerTranslations": {
-        "b-fallback-427-a1": "Смысл варианта: Opción A.",
-        "b-fallback-427-a2": "Смысл варианта: Opción B.",
-        "b-fallback-427-a3": "Смысл варианта: Es indistinto."
+        "b-fallback-427-a1": "Вариант A.",
+        "b-fallback-427-a2": "Вариант B.",
+        "b-fallback-427-a3": "Разницы нет."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-428",
-      "questionTextRu": "Учебный перевод-смысл: Se deben utilizar аварийная сигнализация mientras se conduce bajo estas condiciones climáticas.",
+      "questionTextRu": "В таких погодных условиях во время движения нужно использовать аварийную сигнализацию.",
       "answerTranslations": {
-        "b-fallback-428-a1": "Смысл варианта: Верно.",
-        "b-fallback-428-a2": "Смысл варианта: Неверно."
+        "b-fallback-428-a1": "Верно.",
+        "b-fallback-428-a2": "Неверно."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-429",
-      "questionTextRu": "Учебный перевод-смысл: ¿Qué tipo de знак es la siguiente imagen?",
+      "questionTextRu": "К какому типу относится знак на изображении?",
       "answerTranslations": {
-        "b-fallback-429-a1": "Смысл варианта: Reglamentaria.",
-        "b-fallback-429-a2": "Смысл варианта: Transitoria.",
-        "b-fallback-429-a3": "Смысл варианта: Informativa."
+        "b-fallback-429-a1": "Регламентирующий.",
+        "b-fallback-429-a2": "Временный.",
+        "b-fallback-429-a3": "Информационный."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-430",
-      "questionTextRu": "Учебный перевод-смысл: En esta pendiente estrecha, ¿cuál de los dos транспортные средства tiene приоритет проезда?",
+      "questionTextRu": "На этом узком подъеме у какого из двух транспортных средств преимущество проезда?",
       "answerTranslations": {
-        "b-fallback-430-a1": "Смысл варианта: El транспортное средство A.",
-        "b-fallback-430-a2": "Смысл варианта: El транспортное средство B."
+        "b-fallback-430-a1": "У транспортного средства A.",
+        "b-fallback-430-a2": "У транспортного средства B."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
