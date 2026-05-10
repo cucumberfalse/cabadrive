@@ -4,8 +4,8 @@
   "locale": "ru",
   "status": "draft",
   "contentStatus": "unofficial_learning_aid",
-  "titleRu": "Тематический учебный гид по билетам CABA",
-  "disclaimer": "Неофициальный учебный материал Cabadrive. Он помогает разбирать билеты и не является официальным текстом GCBA.",
+  "titleRu": "Тематический гид по билетам CABA",
+  "disclaimer": "Неофициальный учебный материал Cabadrive по доступным билетам. Он помогает учиться, но не заменяет официальные тексты GCBA и не делает эту базу полной официальной подборкой.",
   "topics": [
     {
       "id": "parking-clearances-and-corners",
@@ -6361,15 +6361,15 @@
       "id": "fatigue-distraction-and-attention",
       "titleRu": "Усталость, стресс и отвлечения",
       "status": "draft",
-      "summaryRu": "Блок про fatiga, somnolencia, estrés, atención, teléfono celular, auriculares, пассажирские отвлечения, долгую поездку и несколько смешанных билетов, где правильный ответ сохраняет внимание и контроль.",
+      "summaryRu": "Блок про fatiga, somnolencia, estrés, atención, teléfono celular, auriculares и долгую поездку. Правильный ответ обычно сохраняет внимание, слух, руки и контроль над машиной.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах про fatigue/distraction сначала спрашивайте: водитель сохраняет atención permanente и control del vehículo или делает что-то, что уводит слух, руки, взгляд или мышление от дороги?",
-        "Официальная рамка CABA проста: conductor должен быть в таком estado psicofísico, чтобы контролировать автомобиль и выполнять maniobras, сохранять campo visual, свободу движений и atención permanente. Ley 2148 прямо относит somnolencia, fatiga и изменения atención/percepción/juicio к снижению aptitud para conducir.",
-        "Auriculares и sistemas de comunicación de operación manual continua - красный флаг. Поэтому телефон опасен не только на скорости: если автомобиль стоит на vía de circulación, внимание все равно должно оставаться на semáforos, pedestrians, cyclists и movement around you.",
-        "Для passengers граница другая: билет про telefonía celular указывает, что запрет касается conductor, а не всех ocupantes. Но passenger discussion может отвлечь водителя и создать estado de estrés, поэтому exam wording различает legal prohibition и practical distraction.",
-        "Fatiga в ticket wording проявляется как menor capacidad de reacción, aumento del tiempo de respuesta, visión borrosa, más/different parpadeos, poorer decisions и loss of alerta. Stress в этих билетах тоже не “держит бодрость”, а делает driving less safe или more temeraria.",
-        "Числа и бытовые рекомендации держите как формулы конкретных fallback-билетов: dormir aproximadamente 8 horas, parar cada 2 horas aproximadamente, mantener ventilado el interior, descansar más frecuente in adverse weather. Это не расширяется здесь в общий медицинский curriculum без отдельного source archive.",
-        "Несколько assigned tickets смешанные: objetos sueltos, túnel, cargar combustible, cyclist clothing и emergency call. Они включены потому, что проверяют attention/risk framing, но exact tunnel sequence, kinetic-energy wording, fuel-station image, dark clothing and weather/rest details остаются ticket-specific."
+        "Это неофициальная подсказка Cabadrive. В билетах про fatiga/distracción сначала спрашивайте: водитель сохраняет atención permanente и control del vehículo или теряет слух, руки, взгляд либо мысли из-за отвлечения?",
+        "Рамка CABA простая: conductor должен быть в estado psicofísico, который позволяет контролировать автомобиль, выполнять maniobras, сохранять campo visual, свободу движений и atención permanente. Ley 2148 относит somnolencia, fatiga и изменения atención/percepción/juicio к снижению aptitud para conducir.",
+        "Auriculares и sistemas de comunicación de operación manual continua - красный флаг. Телефон опасен не только на скорости: если машина стоит на vía de circulación, водитель все равно следит за semáforos, peatones, ciclistas и движением вокруг.",
+        "Для pasajeros граница другая. Билет про telefonía celular говорит, что запрет касается conductor, а не всех ocupantes. Но разговор с пассажиром может отвлечь и создать estrés, поэтому экзамен разделяет юридический запрет и практическое отвлечение.",
+        "Fatiga в билетах - это menor capacidad de reacción, aumento del tiempo de respuesta, visión borrosa, больше или длиннее parpadeos, худшие решения и потеря alerta. Estrés тоже не бодрит, а делает conducción менее безопасной или más temeraria.",
+        "Числа и бытовые советы держите как формулы конкретных старых билетов: dormir aproximadamente 8 horas, parar cada 2 horas aproximadamente, mantener ventilado el interior, descansar más frecuente при сложной погоде. Это не общий медицинский курс без отдельного источника.",
+        "Несколько билетов здесь смешанные: objetos sueltos, túnel, cargar combustible, ropa del ciclista и llamada de urgencia. Они попали в тему, потому что проверяют внимание и риск. Но последовательность действий в тоннеле, energía cinética, заправка, темная одежда и погода остаются формулами конкретных билетов."
       ],
       "claims": [
         {
@@ -6399,7 +6399,7 @@
         {
           "id": "term-capacidades-conducir-segura",
           "termEs": "capacidades para conducir de manera segura",
-          "translationRu": "способности безопасно управлять",
+          "translationRu": "способность безопасно управлять",
           "sourceQuestionIds": [
             "b-fallback-033"
           ]
@@ -6415,7 +6415,7 @@
         {
           "id": "term-ropa-clara-visible",
           "termEs": "ropa clara es más visible",
-          "translationRu": "светлая одежда заметнее",
+          "translationRu": "светлая заметная одежда",
           "sourceQuestionIds": [
             "b-fallback-059"
           ]
@@ -6452,7 +6452,7 @@
         {
           "id": "term-interior-vehiculo-ventilado",
           "termEs": "interior del vehículo",
-          "translationRu": "салон автомобиля",
+          "translationRu": "проветренный салон автомобиля",
           "sourceQuestionIds": [
             "b-fallback-073"
           ]
@@ -6460,7 +6460,7 @@
         {
           "id": "term-dormir-noche-anterior",
           "termEs": "dormir la noche anterior",
-          "translationRu": "поспать предыдущей ночью",
+          "translationRu": "поспать накануне поездки",
           "sourceQuestionIds": [
             "b-fallback-086"
           ]
@@ -6485,7 +6485,7 @@
         {
           "id": "term-via-circulacion-fatigue",
           "termEs": "vía de circulación",
-          "translationRu": "проезжая часть/полоса движения",
+          "translationRu": "проезжая часть или полоса движения",
           "sourceQuestionIds": [
             "b-fallback-175"
           ]
@@ -6501,7 +6501,7 @@
         {
           "id": "term-parpadeos",
           "termEs": "parpadeos",
-          "translationRu": "моргания",
+          "translationRu": "моргание",
           "sourceQuestionIds": [
             "b-fallback-204"
           ]
@@ -6509,7 +6509,7 @@
         {
           "id": "term-capacidad-atencion-contexto",
           "termEs": "capacidad de atención al contexto",
-          "translationRu": "способность удерживать внимание на дорожном контексте",
+          "translationRu": "способность держать внимание на дороге",
           "sourceQuestionIds": [
             "b-fallback-209"
           ]
@@ -6517,7 +6517,7 @@
         {
           "id": "term-telefonia-celular-fatigue",
           "termEs": "telefonía celular",
-          "translationRu": "мобильная связь/использование телефона",
+          "translationRu": "использование мобильного телефона",
           "sourceQuestionIds": [
             "b-fallback-217"
           ]
@@ -6525,7 +6525,7 @@
         {
           "id": "term-factores-distraccion-acciones",
           "termEs": "factores de distracción",
-          "translationRu": "факторы отвлечения",
+          "translationRu": "действия, которые отвлекают",
           "sourceQuestionIds": [
             "b-fallback-229"
           ]
@@ -6567,7 +6567,7 @@
         {
           "id": "term-vehiculo-inmovilizado-tunel-fatigue",
           "termEs": "vehículo queda inmovilizado en un túnel",
-          "translationRu": "автомобиль обездвижен в тоннеле",
+          "translationRu": "остановившийся в тоннеле автомобиль",
           "sourceQuestionIds": [
             "b-fallback-276"
           ]
@@ -6575,7 +6575,7 @@
         {
           "id": "term-cargando-combustible-fatigue",
           "termEs": "cargando combustible",
-          "translationRu": "заправляет топливо",
+          "translationRu": "заправка топливом",
           "sourceQuestionIds": [
             "b-fallback-293"
           ]
@@ -6583,7 +6583,7 @@
         {
           "id": "term-condicion-climatica",
           "termEs": "condición climática",
-          "translationRu": "погодное условие",
+          "translationRu": "погодные условия",
           "sourceQuestionIds": [
             "b-fallback-344"
           ]
@@ -6599,7 +6599,7 @@
         {
           "id": "term-ropa-oscura-suelta",
           "termEs": "ropa oscura y suelta",
-          "translationRu": "темная и свободная одежда",
+          "translationRu": "темная свободная одежда",
           "sourceQuestionIds": [
             "b-fallback-354"
           ]
@@ -6607,7 +6607,7 @@
         {
           "id": "term-mas-temeraria",
           "termEs": "Más temeraria",
-          "translationRu": "более рискованное/безрассудное",
+          "translationRu": "более рискованная/безрассудная",
           "sourceQuestionIds": [
             "b-fallback-364"
           ]
@@ -6631,7 +6631,7 @@
         {
           "id": "term-lugar-permitido",
           "termEs": "lugar donde esté permitido",
-          "translationRu": "место, где остановка разрешена",
+          "translationRu": "разрешенное место для остановки",
           "sourceQuestionIds": [
             "b-fallback-405"
           ]
@@ -6655,7 +6655,7 @@
         {
           "id": "term-capacidad-atencional",
           "termEs": "capacidad atencional",
-          "translationRu": "внимательная способность/ресурс внимания",
+          "translationRu": "ресурс внимания",
           "sourceQuestionIds": [
             "b-fallback-441"
           ]
@@ -6676,12 +6676,12 @@
             {
               "answerId": "b-fallback-033-a1",
               "verdict": "incorrect",
-              "explanationRu": "Verdadero неверно: фраза содержит ловушку no necesariamente. Для экзамена estrés как раз может менять способности безопасно управлять, потому что внимание и juicio ухудшаются."
+              "explanationRu": "Verdadero неверно: фраза no necesariamente переворачивает смысл. Для экзамена estrés может менять способности безопасно управлять, потому что ухудшаются внимание и juicio."
             },
             {
               "answerId": "b-fallback-033-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: Falso. Стресс может alterar las capacidades para conducir de manera segura, поэтому нельзя считать его нейтральным состоянием."
+              "explanationRu": "Правильно: Falso. Estrés может alterar las capacidades para conducir de manera segura, поэтому его нельзя считать нейтральным состоянием."
             }
           ]
         },
@@ -6692,17 +6692,17 @@
             {
               "answerId": "b-fallback-059-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-билету: ciclista в ropa clara заметнее, значит риск siniestro vial ниже. Это ticket-specific visibility clue по картинке, а не отдельный официальный каталог одежды."
+              "explanationRu": "По этому старому билету ciclista в ropa clara заметнее, значит риск siniestro vial ниже. Это подсказка по видимости на картинке, а не общий каталог одежды."
             },
             {
               "answerId": "b-fallback-059-a2",
               "verdict": "incorrect",
-              "explanationRu": "Opción B неверна: ropa oscura не становится безопаснее из-за того, что supposedly no distrae. Главный критерий билета - visible vs less visible."
+              "explanationRu": "Opción B неверна: ropa oscura не становится безопаснее из-за того, что якобы no distrae. Главный критерий - заметнее или хуже видно."
             },
             {
               "answerId": "b-fallback-059-a3",
               "verdict": "incorrect",
-              "explanationRu": "Ambas same risk неверно, потому что картинка/варианты противопоставляют светлую и темную одежду именно по видимости."
+              "explanationRu": "Вариант «одинаковый риск» неверен: картинка противопоставляет светлую и темную одежду именно по видимости."
             }
           ]
         },
@@ -6713,17 +6713,17 @@
             {
               "answerId": "b-fallback-069-a1",
               "verdict": "incorrect",
-              "explanationRu": "Нет: conducir correctamente не совместимо с auriculares в логике билета. На велосипеде нужно слышать и замечать, что происходит alrededor."
+              "explanationRu": "Нет: conducir correctamente не сочетается с auriculares в логике билета. На велосипеде нужно слышать и замечать, что происходит alrededor."
             },
             {
               "answerId": "b-fallback-069-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: auriculares - factor de distracción, который мешает conectarse con lo que sucede alrededor. Это ровно тема attention/distraction."
+              "explanationRu": "Правильно: auriculares - factor de distracción. Они мешают conectarse con lo que sucede alrededor: слышать, видеть и реагировать."
             },
             {
               "answerId": "b-fallback-069-a3",
               "verdict": "incorrect",
-              "explanationRu": "Наличие medidas de seguridad не отменяет отвлечение. Улучшение качества поездки не важнее слуха, внимания и реакции."
+              "explanationRu": "Medidas de seguridad не отменяют отвлечение. Комфорт поездки не важнее слуха, внимания и реакции."
             }
           ]
         },
@@ -6733,17 +6733,17 @@
             {
               "answerId": "b-fallback-073-a1",
               "verdict": "incorrect",
-              "explanationRu": "Музыка a alto volumen может дополнительно отвлекать и утомлять, поэтому это не способ retrasar la aparición de la fatiga."
+              "explanationRu": "Музыка a alto volumen может отвлекать и утомлять, поэтому она не помогает retrasar la aparición de la fatiga."
             },
             {
               "answerId": "b-fallback-073-a2",
               "verdict": "incorrect",
-              "explanationRu": "Температура superior a 25 °C в этом fallback-билете - неправильная бытовая формула: жаркий салон не помогает бороться с fatiga."
+              "explanationRu": "Temperatura superior a 25 °C в этом старом билете - неверный бытовой ответ: жаркий салон не помогает против fatiga."
             },
             {
               "answerId": "b-fallback-073-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно по билету: mantener bien ventilado el interior del vehículo. Это ticket-specific recommendation; broader official claim здесь только про необходимость сохранять aptitud/attention."
+              "explanationRu": "Правильно по билету: mantener bien ventilado el interior del vehículo. Это рекомендация именно для этого вопроса; общий источник здесь только про сохранение aptitud и atención."
             }
           ]
         },
@@ -6753,17 +6753,17 @@
             {
               "answerId": "b-fallback-086-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по wording билета: перед долгой поездкой рекомендуется dormir la noche anterior aproximadamente 8 horas."
+              "explanationRu": "По формулировке билета перед долгой поездкой рекомендуется dormir la noche anterior aproximadamente 8 horas."
             },
             {
               "answerId": "b-fallback-086-a2",
               "verdict": "incorrect",
-              "explanationRu": "Al menos 4 horas слишком мало для ожидаемого ответа. Билет не спрашивает минимальное выживание, а безопасную подготовку к largo tiempo driving."
+              "explanationRu": "Al menos 4 horas слишком мало для ожидаемого ответа. Билет спрашивает не минимальное выживание, а безопасную подготовку к долгой conducción."
             },
             {
               "answerId": "b-fallback-086-a3",
               "verdict": "incorrect",
-              "explanationRu": "Неверно: paradas de descanso важны, но они не делают количество сна irrelevant. Билет прямо связывает сон previous night with driving safety."
+              "explanationRu": "Неверно: paradas de descanso важны, но они не отменяют сон. Билет прямо связывает сон накануне с безопасным управлением."
             }
           ]
         },
@@ -6774,17 +6774,17 @@
             {
               "answerId": "b-fallback-175-a1",
               "verdict": "incorrect",
-              "explanationRu": "No other vehicles nearby не снимает риск. Автомобиль остается на vía de circulación, и дорожный контекст может измениться в любой момент."
+              "explanationRu": "Даже если рядом нет других машин, риск остается. Авто стоит на vía de circulación, а дорожная ситуация может измениться в любую секунду."
             },
             {
               "answerId": "b-fallback-175-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: даже detenido, водитель находится на пути движения; teléfono celular уводит atención от context, semáforo, pedestrians, cyclists and traffic around him."
+              "explanationRu": "Правильно: даже detenido, водитель находится на пути движения. Teléfono celular уводит atención от semáforo, peatones, ciclistas и потока вокруг."
             },
             {
               "answerId": "b-fallback-175-a3",
               "verdict": "incorrect",
-              "explanationRu": "Vehicle not moving - не достаточная причина. Если машина стоит в circulation lane, водитель все еще отвечает за риск и должен смотреть на context."
+              "explanationRu": "То, что машина не движется, недостаточно. Если она стоит в полосе движения, водитель все еще отвечает за риск и должен следить за дорогой."
             }
           ]
         },
@@ -6794,7 +6794,7 @@
             {
               "answerId": "b-fallback-204-a1",
               "verdict": "incorrect",
-              "explanationRu": "Sensación de euforia не является ожидаемым symptom of fatigue в этом билете. Это отвлекающий вариант из другой impairment logic."
+              "explanationRu": "Sensación de euforia не ожидаемый признак fatiga в этом билете. Это отвлекающий вариант из другой темы нарушенного состояния."
             },
             {
               "answerId": "b-fallback-204-a2",
@@ -6804,7 +6804,7 @@
             {
               "answerId": "b-fallback-204-a3",
               "verdict": "incorrect",
-              "explanationRu": "No realizar movements/cambios de postura звучит как неподвижность, но билет ожидает visual/eye symptoms. Не выбирайте вариант только потому, что он тоже описывает тело."
+              "explanationRu": "No realizar movimientos/cambios de postura звучит как неподвижность, но билет ждет признаки зрения и глаз. Не выбирайте вариант только потому, что он тоже описывает тело."
             }
           ]
         },
@@ -6814,17 +6814,17 @@
             {
               "answerId": "b-fallback-209-a1",
               "verdict": "incorrect",
-              "explanationRu": "Неверно: discussion с passenger или с человеком вне автомобиля не “keeps alert”. Tensión/estrés может entorpecer attention, а не лечить somnolencia."
+              "explanationRu": "Спор с пассажиром или человеком вне автомобиля не держит бодрость. Tensión/estrés может мешать atención, а не лечить somnolencia."
             },
             {
               "answerId": "b-fallback-209-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: спор создает estado de estrés и может ухудшить capacidad de atención al contexto. Для экзамена passenger distraction тоже опасен."
+              "explanationRu": "Правильно: спор создает estado de estrés и может ухудшить capacidad de atención al contexto. Для экзамена отвлечение пассажиром тоже опасно."
             },
             {
               "answerId": "b-fallback-209-a3",
               "verdict": "incorrect",
-              "explanationRu": "Legal conditions for driving не отменяют психологическое отвлечение. Можно быть legally allowed и всё равно хуже следить за дорожным контекстом."
+              "explanationRu": "Юридическое право ехать не отменяет психологическое отвлечение. Можно быть допущенным к управлению и все равно хуже следить за дорогой."
             }
           ]
         },
@@ -6835,17 +6835,17 @@
             {
               "answerId": "b-fallback-217-a1",
               "verdict": "incorrect",
-              "explanationRu": "Asiento delantero сам по себе не делает действие запрещенным в этом билете. В круге passenger, а не conductor."
+              "explanationRu": "Asiento delantero сам по себе не делает действие запрещенным в этом билете. Вопрос про pasajero, а не conductor."
             },
             {
               "answerId": "b-fallback-217-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: prohibición del uso de telefonía celular reaches only conductor del vehículo. Это legal-boundary билет, а не запрет для всех occupants."
+              "explanationRu": "Правильно: prohibición del uso de telefonía celular касается только conductor del vehículo. Это билет про юридическую границу, а не запрет для всех ocupantes."
             },
             {
               "answerId": "b-fallback-217-a3",
               "verdict": "incorrect",
-              "explanationRu": "Todos los ocupantes слишком широко. Official and ticket wording focus on conductores, so passenger phone use is not the same prohibited action."
+              "explanationRu": "Todos los ocupantes слишком широко. Формулировка билета и правило говорят о conductores, поэтому телефон пассажира - не то же запрещенное действие."
             }
           ]
         },
@@ -6856,17 +6856,17 @@
             {
               "answerId": "b-fallback-229-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: opciones A, B y C are all factores de distracción in this image-choice ticket. Когда вопрос просит set of distractions, не отбрасывайте одну картинку без причины."
+              "explanationRu": "Правильно: opciones A, B y C - все factores de distracción в этом билете по картинкам. Если вопрос просит набор отвлечений, не отбрасывайте одну картинку без причины."
             },
             {
               "answerId": "b-fallback-229-a2",
               "verdict": "incorrect",
-              "explanationRu": "A y C неполно: вариант B тоже считается distraction по fallback-билету, поэтому answer set должен включать all three."
+              "explanationRu": "A y C неполно: вариант B тоже считается distracción, поэтому набор должен включать все три."
             },
             {
               "answerId": "b-fallback-229-a3",
               "verdict": "incorrect",
-              "explanationRu": "B y C тоже неполно: вариант A не исключается. Здесь ловушка в partial combinations, а не в одном единственном wrong action."
+              "explanationRu": "B y C тоже неполно: вариант A не исключается. Здесь ловушка в неполных комбинациях."
             }
           ]
         },
@@ -6876,12 +6876,12 @@
             {
               "answerId": "b-fallback-231-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: objetos sueltos like lentes, celular, llaves могут травмировать при incident/manoobra brusca из-за energía cinética. Это физика салона, а не только порядок."
+              "explanationRu": "Verdadero: objetos sueltos - lentes, celular, llaves - могут травмировать при incident или maniobra brusca из-за energía cinética. Это про физику салона, а не про порядок."
             },
             {
               "answerId": "b-fallback-231-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso неверно: loose objects do not stay harmless during sudden braking or impact. Даже мелкий предмет может стать projectile."
+              "explanationRu": "Falso неверно: незакрепленные предметы не остаются безвредными при резком торможении или ударе. Даже мелочь может стать летящим предметом."
             }
           ]
         },
@@ -6891,17 +6891,17 @@
             {
               "answerId": "b-fallback-245-a1",
               "verdict": "incorrect",
-              "explanationRu": "Это верно, но неполно: dormir pocas horas reduces capacidad de reacción and estado de alerta, but the ticket also includes bad decision-making risk."
+              "explanationRu": "Это верно, но неполно: dormir pocas horas снижает capacidad de reacción и estado de alerta, но билет также включает риск плохих решений."
             },
             {
               "answerId": "b-fallback-245-a2",
               "verdict": "incorrect",
-              "explanationRu": "Тоже верно, но неполно. Malas decisiones and life risk are only one part of the expected combined answer."
+              "explanationRu": "Тоже верно, но неполно. Malas decisiones и риск для жизни - только часть ожидаемого объединенного ответа."
             },
             {
               "answerId": "b-fallback-245-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: ambas. Little sleep reduces reaction/alertness and predisposes to poor decisions, so both A and B describe the fatigue risk."
+              "explanationRu": "Правильно: ambas. Pocas horas de sueño снижает реакцию/alerta и подталкивает к плохим решениям, поэтому A и B подходят вместе."
             }
           ]
         },
@@ -6911,17 +6911,17 @@
             {
               "answerId": "b-fallback-276-a1",
               "verdict": "incorrect",
-              "explanationRu": "Просто closed vehicle and leaving the tunnel skips warning and assistance. Inmovilizado vehicle remains an obstacle that others must see."
+              "explanationRu": "Просто закрыть автомобиль и уйти из тоннеля - мало: пропущены предупреждение и помощь. Vehículo inmovilizado остается препятствием, которое другие должны видеть."
             },
             {
               "answerId": "b-fallback-276-a2",
               "verdict": "incorrect",
-              "explanationRu": "Apagar todas las luces неверно: visibility matters even if the tunnel is illuminated. Calling by mobile alone does not replace balizas/intermitentes."
+              "explanationRu": "Apagar todas las luces неверно: видимость важна даже в освещенном тоннеле. Один звонок по мобильному не заменяет balizas/intermitentes."
             },
             {
               "answerId": "b-fallback-276-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно по ticket sequence: apagar motor, colocar balizas portátiles, keep luces de posición e intermitentes, and call assistance. This keeps the stopped vehicle visible and reduces risk."
+              "explanationRu": "Правильно по последовательности билета: apagar motor, colocar balizas portátiles, оставить luces de posición e intermitentes и вызвать помощь. Так остановившуюся машину видно, а риск ниже."
             }
           ]
         },
@@ -6932,17 +6932,17 @@
             {
               "answerId": "b-fallback-293-a1",
               "verdict": "incorrect",
-              "explanationRu": "Teléfono celular is not the only fuel-station issue. The image asks about cargando combustible with luces y motor encendido."
+              "explanationRu": "Teléfono celular - не единственный риск на заправке. Изображение спрашивает про cargando combustible con luces y motor encendido."
             },
             {
               "answerId": "b-fallback-293-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: no debe cargarse combustible con luces y motor encendido. In this topic, note the distraction trap: do not focus only on cellphone."
+              "explanationRu": "Правильно: no debe cargarse combustible con luces y motor encendido. В этой теме ловушка такая: не смотрите только на телефон."
             },
             {
               "answerId": "b-fallback-293-a3",
               "verdict": "incorrect",
-              "explanationRu": "La Ley no se expresa неверно for this fallback ticket. The expected answer cites Ley 2148 prohibition for lights + running engine during fueling."
+              "explanationRu": "La Ley no se expresa неверно для этого старого билета. Ожидаемый ответ ссылается на запрет Ley 2148 для luces + motor encendido во время заправки."
             }
           ]
         },
@@ -6953,17 +6953,17 @@
             {
               "answerId": "b-fallback-344-a1",
               "verdict": "incorrect",
-              "explanationRu": "Bad weather/condition climática does not make fatigue less likely by magically increasing attention. It usually demands more mental effort."
+              "explanationRu": "Плохая condición climática не снижает fatiga магически. Обычно она требует больше внимания и усилий."
             },
             {
               "answerId": "b-fallback-344-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по билету: in this weather condition during a long drive, it is necessary to descansar con más frecuencia para evitar la fatiga."
+              "explanationRu": "Правильно по билету: при такой погоде в долгой поездке нужно descansar con más frecuencia para evitar la fatiga."
             },
             {
               "answerId": "b-fallback-344-a3",
               "verdict": "incorrect",
-              "explanationRu": "Velocidad prudente is important, but it does not make weather irrelevant to fatigue. The prompt asks about long time plus climatic condition."
+              "explanationRu": "Velocidad prudente важна, но не делает погоду неважной для усталости. Вопрос соединяет долгую поездку и condición climática."
             }
           ]
         },
@@ -6973,17 +6973,17 @@
             {
               "answerId": "b-fallback-354-a1",
               "verdict": "incorrect",
-              "explanationRu": "A is true but incomplete for this multiple-choice wording: auriculares y dispositivos electrónicos affect concentration, but another listed risk is also correct."
+              "explanationRu": "A верно, но неполно: auriculares y dispositivos electrónicos ухудшают concentración, однако в билете есть еще один правильный риск."
             },
             {
               "answerId": "b-fallback-354-a2",
               "verdict": "incorrect",
-              "explanationRu": "B is also true but incomplete: ropa oscura y suelta can hurt visibility/control, yet the ticket asks qué se debe evitar and includes both risks."
+              "explanationRu": "B тоже верно, но неполно: ropa oscura y suelta может ухудшать видимость/контроль, а вопрос qué se debe evitar включает оба риска."
             },
             {
               "answerId": "b-fallback-354-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: ambas respuestas. Avoid both distraction devices and risky clothing; the exam trap is choosing only one valid risk."
+              "explanationRu": "Правильно: ambas respuestas. Избегайте и отвлекающих устройств, и рискованной одежды; ловушка - выбрать только один верный риск."
             }
           ]
         },
@@ -6993,17 +6993,17 @@
             {
               "answerId": "b-fallback-364-a1",
               "verdict": "incorrect",
-              "explanationRu": "Más temeraria is true but incomplete. Stress can push riskier conduct, but the ticket also says driving becomes less safe."
+              "explanationRu": "Más temeraria верно, но неполно. Estrés может толкать к более рискованному поведению, но билет также говорит, что conducción становится менее безопасной."
             },
             {
               "answerId": "b-fallback-364-a2",
               "verdict": "incorrect",
-              "explanationRu": "Menos segura is also true but incomplete. The expected answer combines unsafe and reckless aspects."
+              "explanationRu": "Menos segura тоже верно, но неполно. Ожидаемый ответ объединяет небезопасность и безрассудность."
             },
             {
               "answerId": "b-fallback-364-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: ambas. Bajo estrés, conducción can become más temeraria and menos segura, so both A and B fit."
+              "explanationRu": "Правильно: ambas. Bajo estrés, conducción может стать más temeraria и menos segura, поэтому A и B подходят вместе."
             }
           ]
         },
@@ -7014,17 +7014,17 @@
             {
               "answerId": "b-fallback-374-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: the shown conduct is risky because it is considered a factor de distracción. The key is attention loss, not speed."
+              "explanationRu": "Правильно: показанное действие рискованно, потому что это factor de distracción. Главное - потеря внимания, а не скорость."
             },
             {
               "answerId": "b-fallback-374-a2",
               "verdict": "incorrect",
-              "explanationRu": "Únicamente si se circula a altas velocidades is too narrow. Distraction can be risky in ordinary urban driving too."
+              "explanationRu": "Únicamente si se circula a altas velocidades слишком узко. Отвлечение опасно и в обычной городской езде."
             },
             {
               "answerId": "b-fallback-374-a3",
               "verdict": "incorrect",
-              "explanationRu": "No: the action does not help maintain attention. This option reverses the risk into a supposed benefit."
+              "explanationRu": "Нет: это действие не помогает mantener la atención. Вариант превращает риск в якобы пользу."
             }
           ]
         },
@@ -7034,17 +7034,17 @@
             {
               "answerId": "b-fallback-404-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: tired driving reduces capacidad de reacción and increases time needed to respond to a stimulus. That is the core fatigue formula."
+              "explanationRu": "Правильно: conducir con fatiga снижает capacidad de reacción и увеличивает время ответа на стимул. Это главная формула усталости."
             },
             {
               "answerId": "b-fallback-404-a2",
               "verdict": "incorrect",
-              "explanationRu": "Driving tired does not become dangerous because one necessarily circula más rápido. The danger is slower response and poorer control."
+              "explanationRu": "Усталое вождение опасно не потому, что водитель обязательно circula más rápido. Главный риск - более медленная реакция и хуже контроль."
             },
             {
               "answerId": "b-fallback-404-a3",
               "verdict": "incorrect",
-              "explanationRu": "Trip duration may be associated with fatigue, but “el viaje dura más” is not why tired driving is dangerous. The direct mechanism is reaction/response."
+              "explanationRu": "Длительность поездки может быть связана с fatiga, но «el viaje dura más» не объясняет опасность. Прямая причина - реакция и ответ."
             }
           ]
         },
@@ -7054,17 +7054,17 @@
             {
               "answerId": "b-fallback-405-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: for llamada de urgencia, stop in a lugar donde esté permitido and use balizas. The call leaves active traffic instead of becoming a moving distraction."
+              "explanationRu": "Правильно: для llamada de urgencia нужно остановиться в lugar donde esté permitido и включить balizas. Звонок уходит из движения, а не становится отвлечением на ходу."
             },
             {
               "answerId": "b-fallback-405-a2",
               "verdict": "incorrect",
-              "explanationRu": "Driving slowly in the right lane with balizas while using the phone still keeps the distraction inside moving traffic."
+              "explanationRu": "Медленно ехать справа с balizas и говорить по телефону - все равно держать отвлечение внутри потока."
             },
             {
               "answerId": "b-fallback-405-a3",
               "verdict": "incorrect",
-              "explanationRu": "Urgency does not remove place/safety requirements. The safe exam answer still requires a permitted stopping place."
+              "explanationRu": "Срочность не отменяет требования к месту и безопасности. Экзаменационный ответ все равно требует разрешенное место остановки."
             }
           ]
         },
@@ -7074,17 +7074,17 @@
             {
               "answerId": "b-fallback-435-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-билету: on a long trip, stop cada 2 horas aproximadamente. Treat this as ticket-specific exam wording."
+              "explanationRu": "Правильно по этому старому билету: в долгой поездке останавливаться cada 2 horas aproximadamente. Учите это как формулировку конкретного билета."
             },
             {
               "answerId": "b-fallback-435-a2",
               "verdict": "incorrect",
-              "explanationRu": "Cada 4 horas is too long for the expected fatigue-prevention answer. The ticket asks a practical rest interval."
+              "explanationRu": "Cada 4 horas слишком редко для ожидаемого ответа про профилактику fatiga. Вопрос спрашивает практический интервал отдыха."
             },
             {
               "answerId": "b-fallback-435-a3",
               "verdict": "incorrect",
-              "explanationRu": "Cada 1 hora is more frequent, but it is not the expected wording. The answer in this ticket is approximately every 2 hours."
+              "explanationRu": "Cada 1 hora чаще, но это не ожидаемая формулировка. В этом билете ответ - примерно каждые 2 часа."
             }
           ]
         },
@@ -7094,17 +7094,17 @@
             {
               "answerId": "b-fallback-437-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: conductor principiante can feel fatigued more easily due to falta de experiencia en la conducción. New drivers spend more attention on each task."
+              "explanationRu": "Правильно: conductor principiante может уставать быстрее из-за falta de experiencia en la conducción. Новичок тратит больше внимания на каждое действие."
             },
             {
               "answerId": "b-fallback-437-a2",
               "verdict": "incorrect",
-              "explanationRu": "Todos iguales ante la Ley is a legal equality idea, not a fatigue explanation. The question asks about experience and tiredness."
+              "explanationRu": "Todos iguales ante la Ley - идея юридического равенства, а не объяснение fatiga. Вопрос про опыт и усталость."
             },
             {
               "answerId": "b-fallback-437-a3",
               "verdict": "incorrect",
-              "explanationRu": "Fatiga crónica is too narrow. The ticket says principiante can fatigue more easily even without chronic medical fatigue."
+              "explanationRu": "Fatiga crónica слишком узко. Билет говорит, что principiante может уставать быстрее и без хронической усталости."
             }
           ]
         },
@@ -7115,17 +7115,17 @@
             {
               "answerId": "b-fallback-441-a1",
               "verdict": "incorrect",
-              "explanationRu": "A is true but incomplete: the action decreases capacidad atencional, limits hearing, reduces reaction and increases response time."
+              "explanationRu": "A верно, но неполно: действие снижает capacidad atencional, мешает слуху, замедляет реакцию и увеличивает время ответа."
             },
             {
               "answerId": "b-fallback-441-a2",
               "verdict": "incorrect",
-              "explanationRu": "B is also true but incomplete: manipulating the device can take hands away from driving and reduce maneuvering capacity."
+              "explanationRu": "B тоже верно, но неполно: работа с устройством может убрать руки от управления и снизить способность маневрировать."
             },
             {
               "answerId": "b-fallback-441-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: ambas. The shown action is risky both cognitively/auditorily and manually, so the combined answer is expected."
+              "explanationRu": "Правильно: ambas. Показанное действие опасно и для внимания/слуха, и для рук, поэтому ожидается объединенный ответ."
             }
           ]
         }
@@ -7133,14 +7133,14 @@
       "trapNotes": [
         {
           "id": "trap-no-necesariamente-falso",
-          "textRu": "`No necesariamente` in `b-fallback-033` flips the statement. Stress can affect safe driving, so the correct answer is Falso.",
+          "textRu": "`No necesariamente` в `b-fallback-033` переворачивает смысл. Estrés может мешать безопасному управлению, поэтому правильный ответ - Falso.",
           "sourceQuestionIds": [
             "b-fallback-033"
           ]
         },
         {
           "id": "trap-ambas-two-risks",
-          "textRu": "`Ambas respuestas` appears when two partial risks are both true: little sleep effects, cyclist risks, stress effects, and phone/manual-use effects.",
+          "textRu": "`Ambas respuestas` выбирайте, когда обе частичные причины верны: мало сна, риск для ciclista, estrés или ручное использование телефона.",
           "sourceQuestionIds": [
             "b-fallback-245",
             "b-fallback-354",
@@ -7150,7 +7150,7 @@
         },
         {
           "id": "trap-driver-vs-passenger-phone",
-          "textRu": "Separate legal prohibition from general distraction: conductor phone use is risky/prohibited, but `b-fallback-217` asks about a passenger, so not all occupants are covered by the same prohibition.",
+          "textRu": "Отделяйте юридический запрет от общего отвлечения: телефон у conductor рискован/запрещен, но `b-fallback-217` спрашивает про пассажира.",
           "sourceQuestionIds": [
             "b-fallback-175",
             "b-fallback-217",
@@ -7159,7 +7159,7 @@
         },
         {
           "id": "trap-ticket-specific-health-numbers",
-          "textRu": "Do not turn ticket-specific numbers into a broad medical curriculum: 8 hours of sleep, every 2 hours rest, >25 C, weather-frequency and clothing visibility are used here only as fallback-ticket answers.",
+          "textRu": "Не превращайте числа из билетов в медицинский курс: 8 часов сна, отдых каждые 2 часа, >25 C, погода и видимость одежды здесь нужны только для конкретных старых вопросов.",
           "sourceQuestionIds": [
             "b-fallback-059",
             "b-fallback-073",
@@ -7170,7 +7170,7 @@
         },
         {
           "id": "trap-partial-combinations-images",
-          "textRu": "For image or combination tickets, partial sets are often traps: `b-fallback-229` wants A+B+C; `b-fallback-293` is not only cellphone; `b-fallback-276` needs the full tunnel warning sequence.",
+          "textRu": "В билетах с картинками и комбинациями частичные наборы часто ловушки: `b-fallback-229` хочет A+B+C; `b-fallback-293` не только про teléfono celular; `b-fallback-276` требует полную последовательность в тоннеле.",
           "sourceQuestionIds": [
             "b-fallback-229",
             "b-fallback-276",
@@ -9654,17 +9654,17 @@
       "slug": "information-signs",
       "status": "draft",
       "titleRu": "Информационные знаки, сервисы и ориентиры",
-      "summaryRu": "Экзаменационный блок про señales informativas: сервисные и ориентирующие знаки, которые сообщают место или услугу, а не вводят запрет.",
+      "summaryRu": "Блок про señales informativas: знаки сервиса и ориентира. Они сообщают место или услугу, а не сами вводят запрет.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах señal informativa обычно не приказывает и не запрещает, а помогает понять, что находится рядом: servicio, estacionamiento, puesto sanitario, gomería или другой ориентир.",
-        "Самая важная проверка - не добавить к информационному знаку лишний запрет. Если изображение сообщает estacionamiento vehicular, это не значит, что можно estacionar прямо в этой vía; если показывает teatro или puesto sanitario, это не запрет остановки, а указатель объекта.",
-        "Сервисные картинки различаются по символу: cruz roja - puesto sanitario o socorro, neumático - gomería, llave - servicio mecánico, bomba de combustible - estación de servicio, letra E - estacionamiento.",
-        "В билете про peatón правильный ответ опирается на саму формулировку: la señal corresponde a las informativas que orientan al peatón. Не переносите это на все пешеходные темы: cruce de peatones и senda peatonal в других билетах могут относиться к предупреждающим знакам или разметке.",
-        "В вопросах с Figura A/B/C сначала определяйте категорию по виду: синяя сервисная/информационная табличка - informativa, PARE - reglamentaria, желтый ромб с ребенком - preventiva."
+        "Это неофициальная подсказка Cabadrive. В билетах señal informativa обычно не приказывает и не запрещает. Она сообщает, что рядом есть servicio, estacionamiento, puesto sanitario, gomería или другой ориентир.",
+        "Главная проверка - не добавлять к информационному знаку лишний запрет. Estacionamiento vehicular означает парковку поблизости, а не разрешение estacionar прямо на этой vía. Teatro или puesto sanitario - указатель объекта, не запрет остановки.",
+        "Сервисные символы различайте по картинке: cruz roja - puesto sanitario o socorro, neumático - gomería, llave - servicio mecánico, bomba de combustible - estación de servicio, letra E - estacionamiento.",
+        "В билете про peatón ответ держится на самой фразе: la señal corresponde a las informativas que orientan al peatón. Не переносите это на все пешеходные темы: cruce de peatones и senda peatonal в других билетах могут быть предупреждающим знаком или разметкой.",
+        "В вопросах с Figura A/B/C сначала смотрите на категорию: синяя сервисная табличка - informativa, PARE - reglamentaria, желтый ромб с ребенком - preventiva."
       ],
       "practicalReasoningRu": [
-        "Информационный знак снижает неопределенность без резкого маневра: водитель заранее понимает, где найти помощь, ремонт, парковку или направление, и не ищет это в последний момент.",
-        "Отделение информации от запрета делает ответы предсказуемыми. Если знак только сообщает объект, водитель все равно обязан соблюдать отдельные правила остановки, стоянки, приоритета и скорости."
+        "Информационный знак снижает неопределенность: водитель заранее понимает, где помощь, ремонт, парковка или направление, и не ищет это в последний момент.",
+        "Если знак только сообщает объект, водитель все равно соблюдает отдельные правила остановки, стоянки, приоритета и скорости. Информация - не разрешение нарушать."
       ],
       "spanishTerms": [
         {
@@ -9686,7 +9686,7 @@
         {
           "id": "term-informativas-orientan-peaton",
           "termEs": "informativas que orientan al peatón",
-          "translationRu": "информационные знаки, ориентирующие пешехода",
+          "translationRu": "информационные знаки для ориентации пешехода",
           "sourceQuestionIds": [
             "b-fallback-274"
           ]
@@ -9718,7 +9718,7 @@
         {
           "id": "term-estacion-servicio-information",
           "termEs": "Estación de servicio",
-          "translationRu": "заправочная станция",
+          "translationRu": "заправка",
           "sourceQuestionIds": [
             "b-fallback-287"
           ]
@@ -9734,7 +9734,7 @@
         {
           "id": "term-estacionamiento-vehicular-information",
           "termEs": "estacionamiento vehicular",
-          "translationRu": "автомобильная парковка поблизости",
+          "translationRu": "парковка поблизости",
           "sourceQuestionIds": [
             "b-fallback-455"
           ]
@@ -9742,7 +9742,7 @@
         {
           "id": "term-inmediaciones-information",
           "termEs": "inmediaciones",
-          "translationRu": "поблизости, в окрестности",
+          "translationRu": "поблизости",
           "sourceQuestionIds": [
             "b-fallback-455"
           ]
@@ -9755,17 +9755,17 @@
             {
               "answerId": "b-fallback-066-a1",
               "verdict": "incorrect",
-              "explanationRu": "Una encrucijada peligrosa была бы предупреждением об опасном пересечении, а не сервисным информационным знаком."
+              "explanationRu": "Una encrucijada peligrosa - это предупреждение об опасном пересечении, а не сервисный информационный знак."
             },
             {
               "answerId": "b-fallback-066-a2",
               "verdict": "correct",
-              "explanationRu": "Крест на сервисном информационном знаке указывает existencia de un puesto sanitario o de socorro."
+              "explanationRu": "Крест на сервисном информационном знаке показывает existencia de un puesto sanitario o de socorro."
             },
             {
               "answerId": "b-fallback-066-a3",
               "verdict": "incorrect",
-              "explanationRu": "Templo religioso - другой ориентир. В этом билете символ связан с медицинской помощью/пунктом socorro."
+              "explanationRu": "Templo religioso - другой ориентир. Здесь символ связан с медицинской помощью или пунктом socorro."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b267.jpg"
@@ -9776,12 +9776,12 @@
             {
               "answerId": "b-fallback-274-a1",
               "verdict": "correct",
-              "explanationRu": "Верно: билет прямо описывает изображение как informativas que orientan al peatón, то есть информационный указатель для пешехода."
+              "explanationRu": "Верно: билет сам описывает знак как informativas que orientan al peatón - информационный указатель для пешехода."
             },
             {
               "answerId": "b-fallback-274-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso не подходит: в этом билете знак не является запретом или предупреждением, а классифицируется как информационный ориентир для пешехода."
+              "explanationRu": "Falso не подходит: в этом билете знак не запрет и не предупреждение, а информационный ориентир для пешехода."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b37.jpg"
@@ -9792,7 +9792,7 @@
             {
               "answerId": "b-fallback-287-a1",
               "verdict": "incorrect",
-              "explanationRu": "Servicio mecánico обозначается сервисом ремонта/механиком; в билете правильный ориентир связан именно с шиной."
+              "explanationRu": "Servicio mecánico - это ремонт/механик. В этом билете правильный ориентир связан с шиной."
             },
             {
               "answerId": "b-fallback-287-a2",
@@ -9802,7 +9802,7 @@
             {
               "answerId": "b-fallback-287-a3",
               "verdict": "incorrect",
-              "explanationRu": "Estación de servicio - это заправка, обычно по символу топливной колонки, а не знак с neumático."
+              "explanationRu": "Estación de servicio - заправка, обычно с символом топливной колонки, а не neumático."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b268.jpg"
@@ -9813,17 +9813,17 @@
             {
               "answerId": "b-fallback-348-a1",
               "verdict": "correct",
-              "explanationRu": "La señal A - синяя информационная табличка. Она относится к informativas."
+              "explanationRu": "La señal A - синяя информационная табличка. Ее категория - informativa."
             },
             {
               "answerId": "b-fallback-348-a2",
               "verdict": "incorrect",
-              "explanationRu": "La señal B - PARE, это reglamentaria/de prioridad: она требует полной остановки, а не просто информирует."
+              "explanationRu": "La señal B - PARE, знак reglamentaria/de prioridad. Он требует полной остановки, а не просто информирует."
             },
             {
               "answerId": "b-fallback-348-a3",
               "verdict": "incorrect",
-              "explanationRu": "La señal C - предупреждающий знак с желтым фоном; это preventiva, а не informativa."
+              "explanationRu": "La señal C - желтый предупреждающий знак; это preventiva, а не informativa."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b85.jpg"
@@ -9834,7 +9834,7 @@
             {
               "answerId": "b-fallback-455-a1",
               "verdict": "incorrect",
-              "explanationRu": "Информационный знак parking nearby не означает, что detenerse разрешено прямо на этой vía. Он только указывает объект поблизости."
+              "explanationRu": "Информационный знак о парковке поблизости не означает, что detenerse разрешено прямо на этой vía. Он только указывает объект."
             },
             {
               "answerId": "b-fallback-455-a2",
@@ -9844,7 +9844,7 @@
             {
               "answerId": "b-fallback-455-a3",
               "verdict": "incorrect",
-              "explanationRu": "Знак указывает место парковки поблизости, но не дает общего разрешения estacionar прямо на этой дороге."
+              "explanationRu": "Знак показывает парковку поблизости, но не дает общего разрешения estacionar прямо на дороге."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b272.jpg"
@@ -9853,19 +9853,19 @@
       "trapNotes": [
         {
           "id": "trap-information-not-prohibition",
-          "textRu": "Informativa не равна permitida/prohibida. Если вариант ответа добавляет “можно остановиться” или “запрещено стоять”, проверьте, есть ли на самом знаке запрет."
+          "textRu": "Informativa не равна permitida/prohibida. Если ответ добавляет «можно остановиться» или «запрещено стоять», проверьте, есть ли запрет на самом знаке."
         },
         {
           "id": "trap-service-icons",
-          "textRu": "Сервисные символы похожи только тем, что они на синем информационном фоне. Cruz roja, neumático, bomba de combustible, llave и letra E ведут к разным ответам."
+          "textRu": "Сервисные символы похожи только синим информационным фоном. Cruz roja, neumático, bomba de combustible, llave и letra E ведут к разным ответам."
         },
         {
           "id": "trap-pedestrian-classification",
-          "textRu": "Пешеходная тема не всегда одна категория: orientan al peatón в этом билете - informativa, но cruce de peatones и senda peatonal в других билетах могут быть warning sign или road marking."
+          "textRu": "Пешеходная тема бывает разной: orientan al peatón в этом билете - informativa, но cruce de peatones и senda peatonal в других билетах могут быть предупреждающим знаком или разметкой."
         },
         {
           "id": "trap-abc-category",
-          "textRu": "В вопросе “cuál de estas señales es Informativa” выбирайте категорию картинки, а не знакомое слово: PARE и школьный знак выглядят важнее, но относятся к другим группам."
+          "textRu": "В вопросе «cuál de estas señales es Informativa» выбирайте категорию картинки. PARE и школьный знак выглядят важными, но относятся к другим группам."
         }
       ],
       "claims": [
@@ -12736,31 +12736,31 @@
       "id": "documents-licenses-and-insurance",
       "slug": "documents-licenses-and-insurance",
       "status": "draft",
-      "titleRu": "Документы, лицензия, VTV, страховка и номера",
-      "summaryRu": "Экзаменационный блок про документы для движения, cédula, licencia, VTV, seguro, chapa patente, scoring и административные последствия нарушений.",
+      "titleRu": "Документы, лицензия, VTV, страховка и номерные знаки",
+      "summaryRu": "Разберите, какие документы нужны для движения в CABA: cédula, licencia, VTV, seguro, chapa patente, scoring и последствия проверок.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах про документы сначала отделяйте три слоя: что нужно иметь при движении, что делает орган контроля при нарушении, и что является устаревшей формулировкой старого билета.",
-        "Для обычного движения важны licencia de conducir vigente, cédula de identificación del automotor, comprobante de seguro obligatorio, VTV vigente и chapas/placas de dominio на штатном месте без изменений. Номерной знак должен читаться и быть установлен reglamentariamente: нельзя расширять, переносить, закрывать или использовать как “почти временный” знак.",
-        "Cédula azul - главный источник ловушек. Текущие источники DNRPA/ANSV говорят, что cédula azul больше не является exigible как обязательный документ для движения, cédula verde не истекает, пока нет смены владельца, а пользование машиной третьим лицом может опираться на физическую передачу/наличие Cédula de Identificación и/или на цифровую авторизацию через Mi Argentina с показом Cédula de Identificación Digital. Старые билеты могут спрашивать по прежней логике: в таких местах учите ответ билета как legacy/stale-question trap, а не как новое общее правило.",
-        "VTV в CABA сейчас для частных авто и мото начинается с четвертого года antigüedad cumplido или при 64.000 km, что наступит раньше. Ley 6631 формулирует юридическую деталь как 60.000 km плюс tolerancia de 4.000 km. Месяц VTV берется по último número de la patente/dominio: 1 - noviembre, 2 - febrero, 3 - marzo, 4 - abril, 5 - mayo, 6 - junio, 7 - julio, 8 - agosto, 9 - septiembre, 0 - octubre. Enero и diciembre в расписании vencimientos не используются.",
-        "Если VTV получила результат Condicional или Rechazado, в CABA есть 60 días hábiles на re-verificación sin cargo в той же planta. Corridos и hábiles - не одно и то же: в билетах правильный вариант именно días hábiles.",
-        "Лицензия действует до срока vencimiento без общей “льготной” езды после него. Исключение в CABA: если дата vencimiento выпала на día inhábil, она переносится на следующий día hábil. Для renovación как продления, а не нового otorgamiento, не должно пройти больше одного года после vencimiento.",
-        "Autoridad de Control не “забирает права просто потому, что документ личный”. Retención de licencia возможна только в случаях, прямо перечисленных нормой: например, licencia vencida, alcoholemia positiva, движение по Metrobus/carril exclusivo без разрешения, ноль puntos SEPC и другие специальные случаи. При alcoholemia positiva также запрещают продолжать движение и ordenan la remoción del vehículo.",
-        "Seguro obligatorio покрывает daños a terceros transportados o no. Поэтому неверны варианты, которые ограничивают страховку только пассажирами, только автомобилями или только межгородом.",
-        "После siniestro vial нужно остановиться, помочь пострадавшим, не создавать больший риск, дать данные personales, del vehículo, de la licencia y del seguro, сотрудничать с autoridad. Вызов 107 в билете проверяет практическую информацию: lugar, características del incidente, cantidad y estado de las víctimas.",
-        "Scoring/SEPC - это система баллов: при выдаче первой лицензии CABA назначает 20 puntos, а затем баллы уменьшаются за infracciones. Ноль пунктов может вести к удержанию лицензии и inhabilitación по процедуре.",
-        "Оставшиеся билеты здесь используют документную тему как точку контроля риска: calzado sujeto al pie, distancia de seguridad, velocidad precautoria, cinturón и remolque. Общая идея одна: водитель отвечает перед контролем за состояние управления, пассажиров и предсказуемость машины."
+        "Это неофициальная подсказка Cabadrive. В документных билетах сначала отделяйте три вещи: что нужно иметь с собой, что может сделать контроль при нарушении и где вопрос использует старую формулировку.",
+        "Для движения нужны действующая licencia de conducir, cédula de identificación del automotor, comprobante de seguro obligatorio, VTV vigente и штатные chapas/placas de dominio. Номер должен читаться и стоять как положено: его нельзя расширять, переносить, закрывать или заменять «почти временным» знаком.",
+        "Cédula azul - главная ловушка. По текущим источникам DNRPA/ANSV она больше не является exigible как обязательный документ для движения; cédula verde не истекает, пока не сменился владелец. Третье лицо может пользоваться машиной через физическую Cédula de Identificación и/или цифровую авторизацию в Mi Argentina. Если старый билет требует прежнюю cédula azul-логику, учите это именно как старый ответ, а не как новое общее правило.",
+        "В CABA для частных авто и мото VTV сейчас начинается с четвертого года antigüedad cumplido или при 64.000 km - что наступит раньше. Ley 6631 записывает это как 60.000 km плюс tolerancia de 4.000 km. Месяц VTV берется по último número de la patente/dominio: 1 - noviembre, 2 - febrero, 3 - marzo, 4 - abril, 5 - mayo, 6 - junio, 7 - julio, 8 - agosto, 9 - septiembre, 0 - octubre. Enero и diciembre в обычном расписании vencimientos не выбирают.",
+        "Если VTV получила Condicional или Rechazado, в CABA есть 60 días hábiles на re-verificación sin cargo в той же planta. Hábiles - рабочие дни; corridos - календарные. В билетах правильный срок именно días hábiles.",
+        "Лицензия действует до даты vencimiento. Общей «льготной» езды после этого нет. В CABA есть исключение: если vencimiento пришелся на día inhábil, срок переносится на следующий día hábil. Для renovación как продления, а не нового otorgamiento, должно пройти не больше одного года после vencimiento.",
+        "Autoridad de Control не удерживает лицензию просто потому, что это личный документ. Retención de licencia возможна только в случаях, перечисленных нормой: licencia vencida, alcoholemia positiva, движение по Metrobus/carril exclusivo без разрешения, ноль puntos SEPC и другие специальные случаи. При alcoholemia positiva также запрещают продолжать движение и ordenan la remoción del vehículo.",
+        "Seguro obligatorio покрывает daños a terceros transportados o no: вред третьим лицам, перевозимым или нет. Поэтому неверны варианты, где страховку сужают до пассажиров, автомобилей или межгорода.",
+        "После siniestro vial нужно остановиться, помочь пострадавшим, не создавать новый риск, дать данные personales, del vehículo, de la licencia y del seguro и сотрудничать с autoridad. Для звонка 107 билет спрашивает самое практичное: lugar, características del incidente, cantidad y estado de las víctimas.",
+        "Scoring/SEPC - балльная система. При первой лицензии CABA дает 20 puntos; за infracciones баллы снимают. Ноль пунктов может привести к удержанию лицензии и inhabilitación по процедуре.",
+        "Часть билетов здесь не совсем про бумаги: calzado sujeto al pie, distancia de seguridad, velocidad precautoria, cinturón и remolque. Смысл тот же: водитель отвечает перед контролем за управление, пассажиров и предсказуемость машины."
       ],
       "practicalReasoningRu": [
-        "Документы нужны не для бюрократии ради бюрократии: они показывают, что водитель habilitado, машина идентифицируема, застрахована, технически проверена, а ответственность можно быстро установить после siniestro.",
-        "VTV, страховка, cédula и chapa patente делают автомобиль “проверяемым” для других участников и государства. Если номер не читается или VTV просрочена, поток теряет управляемость: нельзя надежно идентифицировать машину, проверить безопасность или оформить последствия аварии.",
-        "Правила retención и scoring ограничивают произвол контроля: документ удерживают не потому, что инспектор так решил, а потому что норма перечисляет конкретные опасные или административно значимые случаи."
+        "Документы нужны не ради бюрократии. Они показывают, что водитель habilitado, машина опознана, застрахована и технически проверена, а ответственность после siniestro можно быстро установить.",
+        "VTV, seguro, cédula и chapa patente делают автомобиль проверяемым. Если номер не читается или VTV просрочена, сложнее установить машину, проверить безопасность и оформить последствия аварии.",
+        "Retención и scoring ограничивают произвол контроля: документ удерживают не по настроению инспектора, а по конкретным опасным или административно важным случаям."
       ],
       "spanishTerms": [
         {
           "id": "term-cedula-autorizado-conducir",
           "termEs": "cédula para autorizado a conducir",
-          "translationRu": "cédula для лица, уполномоченного управлять; старая cédula azul-логика",
+          "translationRu": "документ для уполномоченного водителя; старая логика отдельной авторизации",
           "sourceQuestionIds": [
             "b-fallback-024"
           ]
@@ -12768,7 +12768,7 @@
         {
           "id": "term-cedulas-autorizados-conducir",
           "termEs": "cédulas para autorizados a conducir",
-          "translationRu": "cédulas для уполномоченных водителей; старая множественная формулировка",
+          "translationRu": "документы для уполномоченных водителей; старая множественная формулировка",
           "sourceQuestionIds": [
             "b-fallback-309"
           ]
@@ -12784,7 +12784,7 @@
         {
           "id": "term-placa-dominio",
           "termEs": "placa de dominio",
-          "translationRu": "номерной знак, chapa patente",
+          "translationRu": "номерной знак автомобиля",
           "sourceQuestionIds": [
             "b-fallback-433"
           ]
@@ -12792,7 +12792,7 @@
         {
           "id": "term-verificacion-tecnica-vehicular",
           "termEs": "Verificación Técnica Vehicular",
-          "translationRu": "технический осмотр VTV",
+          "translationRu": "техосмотр автомобиля",
           "sourceQuestionIds": [
             "b-fallback-114",
             "b-fallback-214",
@@ -12802,7 +12802,7 @@
         {
           "id": "term-reverificacion-vtv",
           "termEs": "reverificación de la VTV",
-          "translationRu": "повторная проверка VTV после неудачного результата",
+          "translationRu": "повторная проверка техосмотра после условного или отклоненного результата",
           "sourceQuestionIds": [
             "b-fallback-072"
           ]
@@ -12810,7 +12810,7 @@
         {
           "id": "term-licencia-conducir",
           "termEs": "licencia de conducir",
-          "translationRu": "водительское удостоверение",
+          "translationRu": "водительское удостоверение, права",
           "sourceQuestionIds": [
             "b-fallback-092",
             "b-fallback-157",
@@ -12820,7 +12820,7 @@
         {
           "id": "term-licencia-vencida",
           "termEs": "licencia vencida",
-          "translationRu": "истекшая водительская лицензия",
+          "translationRu": "просроченные права",
           "sourceQuestionIds": [
             "b-fallback-218"
           ]
@@ -12836,7 +12836,7 @@
         {
           "id": "term-seguro-obligatorio",
           "termEs": "seguro obligatorio",
-          "translationRu": "обязательное страхование",
+          "translationRu": "обязательная страховка",
           "sourceQuestionIds": [
             "b-fallback-253"
           ]
@@ -12868,7 +12868,7 @@
         {
           "id": "term-siniestro",
           "termEs": "siniestro",
-          "translationRu": "инцидент, ДТП",
+          "translationRu": "ДТП, инцидент",
           "sourceQuestionIds": [
             "b-fallback-253"
           ]
@@ -12884,7 +12884,7 @@
         {
           "id": "term-responsable-civil",
           "termEs": "responsable civil",
-          "translationRu": "граждански ответственный",
+          "translationRu": "лицо, отвечающее граждански",
           "sourceQuestionIds": [
             "b-fallback-199"
           ]
@@ -12892,7 +12892,7 @@
         {
           "id": "term-velocidad-precautoria-docs",
           "termEs": "velocidad precautoria",
-          "translationRu": "скорость, безопасная по обстоятельствам",
+          "translationRu": "скорость по обстоятельствам, безопасная в моменте",
           "sourceQuestionIds": [
             "b-fallback-208"
           ]
@@ -12924,7 +12924,7 @@
         {
           "id": "term-scoring",
           "termEs": "Scoring",
-          "translationRu": "балльная система SEPC",
+          "translationRu": "балльная система",
           "sourceQuestionIds": [
             "b-fallback-243",
             "b-fallback-367"
@@ -12949,7 +12949,7 @@
         {
           "id": "term-titular",
           "termEs": "titular",
-          "translationRu": "владелец/зарегистрированный держатель",
+          "translationRu": "зарегистрированный владелец",
           "sourceQuestionIds": [
             "b-fallback-456"
           ]
@@ -12962,38 +12962,38 @@
             {
               "answerId": "b-fallback-023-a1",
               "verdict": "correct",
-              "explanationRu": "Правильная логика билета: ответственность penal личная и не переводится на dueño del vehículo или страховщика."
+              "explanationRu": "В билете правильная логика такая: responsabilidad penal личная. Ее не перекладывают на dueño del vehículo или страховщика."
             },
             {
               "answerId": "b-fallback-023-a2",
               "verdict": "incorrect",
-              "explanationRu": "Страховка и владелец могут быть важны для гражданских/страховых последствий, но уголовную ответственность водителя на них не “передают”."
+              "explanationRu": "Страховка и владелец важны для гражданских или страховых последствий, но уголовную ответственность водителя они не забирают на себя."
             },
             {
               "answerId": "b-fallback-023-a3",
               "verdict": "incorrect",
-              "explanationRu": "Суд оценивает факт и последствия, но вариант неверен, потому что делает transferibilidad вопросом усмотрения судьи."
+              "explanationRu": "Суд оценивает факт и последствия, но этот вариант неверен: он превращает transferibilidad в решение судьи."
             }
           ]
         },
         {
           "questionId": "b-fallback-024",
-          "sourceConflictNoteRu": "Legacy/stale cédula azul wording: current official sources make cédula azul non-exigible and support third-party use through physical possession/delivery of Cédula de Identificación and/or Mi Argentina digital authorization.",
+          "sourceConflictNoteRu": "Старая формулировка про cédula azul: текущие источники говорят, что cédula azul no es exigible. Третье лицо может пользоваться авто при физической Cédula de Identificación и/или цифровой авторизации Mi Argentina.",
           "answerExplanations": [
             {
               "answerId": "b-fallback-024-a1",
               "verdict": "incorrect",
-              "explanationRu": "В старой логике билета недостаточно, что чужая cédula para autorizado esté vigente: документ должен относиться к самому водителю. По текущим источникам cédula azul уже не является exigible, а пользование третьим лицом может подтверждаться физической Cédula de Identificación и/или цифровой авторизацией через Mi Argentina."
+              "explanationRu": "В старой логике билета чужая cédula para autorizado vigente не подходит: документ должен быть на самого водителя. По текущим источникам cédula azul уже no es exigible, а третье лицо может подтвердить пользование физической Cédula de Identificación и/или авторизацией Mi Argentina."
             },
             {
               "answerId": "b-fallback-024-a2",
               "verdict": "incorrect",
-              "explanationRu": "Родство или работа сами по себе не заменяют корректную авторизацию. Это legacy-вопрос по cédula azul, не современное общее правило."
+              "explanationRu": "Родство или работа сами по себе не заменяют авторизацию. Это старый вопрос про cédula azul, а не современное общее правило."
             },
             {
               "answerId": "b-fallback-024-a3",
               "verdict": "correct",
-              "explanationRu": "Для ответа билета: с cédula para autorizado a conducir на имя другого лица управлять нельзя. Учите это как старую формулировку билета; текущая практика DNRPA/ANSV строится вокруг cédula azul no exigible, физической Cédula de Identificación и цифровой авторизации."
+              "explanationRu": "Для ответа в этом старом билете: с cédula para autorizado a conducir на имя другого человека ехать нельзя. Текущая логика DNRPA/ANSV другая: cédula azul no es exigible, есть физическая Cédula de Identificación и цифровая авторизация."
             }
           ]
         },
@@ -13003,17 +13003,17 @@
             {
               "answerId": "b-fallback-027-a1",
               "verdict": "incorrect",
-              "explanationRu": "Даже “для видимости” нельзя самовольно менять размер или положение placas de dominio: знак должен быть штатным и reglamentario."
+              "explanationRu": "Даже «для видимости» нельзя самовольно менять размер или положение placas de dominio. Номер должен быть штатным и reglamentario."
             },
             {
               "answerId": "b-fallback-027-a2",
               "verdict": "correct",
-              "explanationRu": "Номерные знаки должны быть на предусмотренном месте и в установленной форме, чтобы vehículo можно было надежно идентифицировать."
+              "explanationRu": "Номерные знаки стоят на предусмотренном месте и в установленной форме, чтобы vehículo можно было надежно опознать."
             },
             {
               "answerId": "b-fallback-027-a3",
               "verdict": "incorrect",
-              "explanationRu": "Правило касается не только задней placas: обе placas de dominio должны оставаться установленными и читаемыми."
+              "explanationRu": "Правило не только про заднюю placa. Обе placas de dominio должны быть установлены и читаемы."
             }
           ]
         },
@@ -13023,17 +13023,17 @@
             {
               "answerId": "b-fallback-062-a1",
               "verdict": "correct",
-              "explanationRu": "Для 107 полезнее всего сразу дать место, характер incidentе, количество и состояние пострадавших: так помощь понимает куда ехать и какие ресурсы нужны."
+              "explanationRu": "Для звонка 107 сразу называйте место, характер incidente, количество и состояние víctimas. Так диспетчер понимает, куда ехать и какая помощь нужна."
             },
             {
               "answerId": "b-fallback-062-a2",
               "verdict": "incorrect",
-              "explanationRu": "Dominio автомобилей может понадобиться позже, но для экстренной помощи он менее важен, чем características incidente и состояние víctimas."
+              "explanationRu": "Dominio автомобилей может понадобиться позже, но для срочной помощи важнее характеристики incidente и состояние víctimas."
             },
             {
               "answerId": "b-fallback-062-a3",
               "verdict": "incorrect",
-              "explanationRu": "Одного места мало: без масштаба и состояния пострадавших диспетчер хуже оценивает срочность и тип помощи."
+              "explanationRu": "Одного места мало. Без масштаба происшествия и состояния пострадавших диспетчер хуже оценивает срочность."
             }
           ]
         },
@@ -13043,12 +13043,12 @@
             {
               "answerId": "b-fallback-072-a1",
               "verdict": "incorrect",
-              "explanationRu": "Официальная страница VTV CABA предусматривает бесплатную re-verificación в установленный срок, поэтому “нет срока и платить заново сразу” неверно."
+              "explanationRu": "Страница VTV CABA дает срок для бесплатной re-verificación, поэтому вариант «срока нет и сразу платить заново» неверен."
             },
             {
               "answerId": "b-fallback-072-a2",
               "verdict": "incorrect",
-              "explanationRu": "Ловушка в слове corridos: билет и текущая страница говорят о 60 días hábiles, а не календарных днях подряд."
+              "explanationRu": "Ловушка в слове corridos. В билете и на текущей странице срок 60 días hábiles, то есть рабочих дней."
             },
             {
               "answerId": "b-fallback-072-a3",
@@ -13064,17 +13064,17 @@
             {
               "answerId": "b-fallback-092-a1",
               "verdict": "correct",
-              "explanationRu": "Carril exclusivo/Metrobus без разрешения входит в случаи, где CABA допускает retención de licencia; поэтому autoridad может удержать документ."
+              "explanationRu": "Carril exclusivo/Metrobus без разрешения входит в случаи retención de licencia в CABA. Поэтому autoridad может удержать документ."
             },
             {
               "answerId": "b-fallback-092-a2",
               "verdict": "incorrect",
-              "explanationRu": "Нарушение состоит уже в circulando por este carril без права, а не только в фактическом вреде colectivos."
+              "explanationRu": "Нарушение уже в том, что водитель circula por este carril без права. Не нужно ждать фактического вреда colectivos."
             },
             {
               "answerId": "b-fallback-092-a3",
               "verdict": "incorrect",
-              "explanationRu": "Лицензия личная, но нормы прямо перечисляют случаи retención; это не ограничивается acta de infracción."
+              "explanationRu": "Лицензия личная, но нормы прямо перечисляют случаи retención. Дело не ограничивается только acta de infracción."
             }
           ]
         },
@@ -13101,22 +13101,22 @@
         },
         {
           "questionId": "b-fallback-135",
-          "sourceConflictNoteRu": "Stale VTV timing conflict: ticket answer follows old 36-month/60.000-km wording; current CABA sources use fourth year or 64.000 km.",
+          "sourceConflictNoteRu": "Старый вопрос про срок VTV: билет дает ответ 36 месяцев/60.000 km. Текущие источники CABA используют четвертый год или 64.000 km.",
           "answerExplanations": [
             {
               "answerId": "b-fallback-135-a1",
               "verdict": "correct",
-              "explanationRu": "Это правильный ответ старого fallback-билета по прежней формулировке Ley 2265: 3 años или 60.000 km. Как текущую норму это не обобщаем: действующие источники D4 говорят о четвертом году или 64.000 km."
+              "explanationRu": "Это правильный ответ старого билета по прежней Ley 2265: 3 años или 60.000 km. Как текущую норму не обобщайте: действующие источники говорят о четвертом году или 64.000 km."
             },
             {
               "answerId": "b-fallback-135-a2",
               "verdict": "incorrect",
-              "explanationRu": "Даже по старой формулировке ticket не требовал VTV immediately al retirarlo de la agencia."
+              "explanationRu": "Даже старая формулировка не требовала VTV immediately al retirarlo de la agencia."
             },
             {
               "answerId": "b-fallback-135-a3",
               "verdict": "incorrect",
-              "explanationRu": "Старая логика билета не была “сразу после первого года”; текущая официальная логика также позже - с четвертого года или 64.000 km."
+              "explanationRu": "Старый билет не говорил «сразу после первого года». Текущая логика тоже позже: с четвертого года или 64.000 km."
             }
           ]
         },
@@ -13127,17 +13127,17 @@
             {
               "answerId": "b-fallback-137-a1",
               "verdict": "incorrect",
-              "explanationRu": "Неважно только “resbalen/no resbalen”: обувь должна надежно держаться на ноге и не мешать педалям."
+              "explanationRu": "Дело не только в том, resbalen или no resbalen. Обувь должна держаться на ноге и не мешать педалям."
             },
             {
               "answerId": "b-fallback-137-a2",
               "verdict": "incorrect",
-              "explanationRu": "Риск есть не только в viajes largos: потеря контроля педали опасна и в короткой городской поездке."
+              "explanationRu": "Риск есть не только в viajes largos. Потеря контроля педали опасна и в короткой городской поездке."
             },
             {
               "answerId": "b-fallback-137-a3",
               "verdict": "correct",
-              "explanationRu": "Calzado sujeto al pie дает устойчивое управление педалями, поэтому это безопасный экзаменационный ответ."
+              "explanationRu": "Calzado sujeto al pie помогает уверенно нажимать педали. Поэтому это безопасный ответ в билете."
             }
           ]
         },
@@ -13147,12 +13147,12 @@
             {
               "answerId": "b-fallback-157-a1",
               "verdict": "incorrect",
-              "explanationRu": "Документ личный, но это не абсолютный запрет: закон допускает retener la licencia в перечисленных случаях."
+              "explanationRu": "Лицензия личная, но это не абсолютная защита от retención. Закон разрешает удержать ее в перечисленных случаях."
             },
             {
               "answerId": "b-fallback-157-a2",
               "verdict": "correct",
-              "explanationRu": "Ключ - sólo en los casos que la normativa vigente así lo indique: не любая falta, а конкретно предусмотренные случаи."
+              "explanationRu": "Ключевая фраза - sólo en los casos que la normativa vigente así lo indique: не любая falta, а только прямо предусмотренные случаи."
             },
             {
               "answerId": "b-fallback-157-a3",
@@ -13167,7 +13167,7 @@
             {
               "answerId": "b-fallback-173-a1",
               "verdict": "incorrect",
-              "explanationRu": "Seguro obligatorio не ограничивается только terceros transportados: он также покрывает terceros no transportados."
+              "explanationRu": "Seguro obligatorio не ограничивается terceros transportados. Он также покрывает terceros no transportados."
             },
             {
               "answerId": "b-fallback-173-a2",
@@ -13177,7 +13177,7 @@
             {
               "answerId": "b-fallback-173-a3",
               "verdict": "incorrect",
-              "explanationRu": "Вариант про daños a vehículos únicamente сужает покрытие до имущества и пропускает людей/третьих лиц."
+              "explanationRu": "Вариант daños a vehículos únicamente слишком узкий: он сводит покрытие к имуществу и пропускает людей."
             }
           ]
         },
@@ -13187,17 +13187,17 @@
             {
               "answerId": "b-fallback-184-a1",
               "verdict": "incorrect",
-              "explanationRu": "Ответ слишком узкий: ответственность в tránsito касается не только тех, кто ведет любое vehículo."
+              "explanationRu": "Ответ слишком узкий: ответственность в tránsito касается не только тех, кто управляет vehículo."
             },
             {
               "answerId": "b-fallback-184-a2",
               "verdict": "incorrect",
-              "explanationRu": "Licencia важна для водителя, но vía pública включает и других usuarios; обязанность не создавать peligro шире."
+              "explanationRu": "Licencia важна для водителя, но vía pública шире: там есть и другие usuarios. Обязанность не создавать peligro касается всех."
             },
             {
               "answerId": "b-fallback-184-a3",
               "verdict": "correct",
-              "explanationRu": "Идея верна: каждый пользователь должен не создавать peligro и не entorpecer la circulación."
+              "explanationRu": "Идея верна: каждый пользователь дороги не должен создавать peligro или entorpecer la circulación."
             }
           ]
         },
@@ -13207,17 +13207,17 @@
             {
               "answerId": "b-fallback-199-a1",
               "verdict": "correct",
-              "explanationRu": "В логике билета за menor de edad с лицензией граждански отвечает тот, кто подписал autorización para obtener la licencia."
+              "explanationRu": "По логике билета за menor de edad с лицензией граждански отвечает тот, кто подписал autorización para obtener la licencia."
             },
             {
               "answerId": "b-fallback-199-a2",
               "verdict": "incorrect",
-              "explanationRu": "Сопровождающий не является тем юридическим лицом, которое дало разрешение на получение licencia."
+              "explanationRu": "Сопровождающий не становится тем лицом, которое дало разрешение на получение licencia."
             },
             {
               "answerId": "b-fallback-199-a3",
               "verdict": "incorrect",
-              "explanationRu": "Разрешение пользоваться конкретным vehículo не совпадает с authorization para obtener la licencia у несовершеннолетнего."
+              "explanationRu": "Разрешить пользоваться конкретным vehículo - не то же самое, что подписать authorization para obtener la licencia несовершеннолетнему."
             }
           ]
         },
@@ -13227,7 +13227,7 @@
             {
               "answerId": "b-fallback-208-a1",
               "verdict": "correct",
-              "explanationRu": "Velocidad precautoria - это скорость под обстоятельства, в пределах лимитов, при которой водитель сохраняет total dominio del vehículo и не создает riesgo."
+              "explanationRu": "Velocidad precautoria - это скорость по обстоятельствам, в пределах лимитов, при которой водитель сохраняет total dominio del vehículo и не создает riesgo."
             },
             {
               "answerId": "b-fallback-208-a2",
@@ -13237,7 +13237,7 @@
             {
               "answerId": "b-fallback-208-a3",
               "verdict": "incorrect",
-              "explanationRu": "Фиксированные 30/45 km/h не определяют общий термин; обстоятельства могут требовать иной безопасной скорости в пределах нормы."
+              "explanationRu": "Фиксированные 30/45 km/h не раскрывают общий термин. Обстоятельства могут требовать другой безопасной скорости в пределах нормы."
             }
           ]
         },
@@ -13248,7 +13248,7 @@
             {
               "answerId": "b-fallback-214-a1",
               "verdict": "incorrect",
-              "explanationRu": "Enero не входит в обычные vencimientos VTV CABA и не соответствует последней цифре на изображении."
+              "explanationRu": "Enero не используется в обычном расписании vencimientos VTV CABA и не совпадает с последней цифрой на изображении."
             },
             {
               "answerId": "b-fallback-214-a2",
@@ -13268,17 +13268,17 @@
             {
               "answerId": "b-fallback-218-a1",
               "verdict": "incorrect",
-              "explanationRu": "Нет общего разрешения ездить 30 días corridos после vencimiento лицензии."
+              "explanationRu": "Нет общего права ездить 30 días corridos после vencimiento лицензии."
             },
             {
               "answerId": "b-fallback-218-a2",
               "verdict": "incorrect",
-              "explanationRu": "Формулировка про 00 horas del cumpleaños не является правилом CABA для езды с vencida."
+              "explanationRu": "Формула про 00 horas del cumpleaños не является правилом CABA для езды с лицензией vencida."
             },
             {
               "answerId": "b-fallback-218-a3",
               "verdict": "correct",
-              "explanationRu": "С licencia vencida ездить нельзя; исключение - если vencimiento пришелся на día inhábil, тогда он переносится на следующий día hábil."
+              "explanationRu": "С licencia vencida ездить нельзя. Исключение: если vencimiento пришелся на día inhábil, срок переносится на следующий día hábil."
             }
           ]
         },
@@ -13288,7 +13288,7 @@
             {
               "answerId": "b-fallback-226-a1",
               "verdict": "incorrect",
-              "explanationRu": "Chapa patente не делают “в любом коммерческом месте”: это официальный регистрационный trámite."
+              "explanationRu": "Chapa patente не изготавливают «в любом коммерческом месте». Это официальный регистрационный trámite."
             },
             {
               "answerId": "b-fallback-226-a2",
@@ -13298,7 +13298,7 @@
             {
               "answerId": "b-fallback-226-a3",
               "verdict": "incorrect",
-              "explanationRu": "Так как вариант A неверен, “ambas” тоже неверно."
+              "explanationRu": "Так как вариант A неверен, ответ «ambas» тоже неверен."
             }
           ]
         },
@@ -13308,7 +13308,7 @@
             {
               "answerId": "b-fallback-243-a1",
               "verdict": "incorrect",
-              "explanationRu": "10 puntos встречаются в системе как восстановление после cero puntos, но начальное назначение при первой лицензии в CABA - 20."
+              "explanationRu": "10 puntos встречаются при восстановлении после cero puntos, но начальное назначение в CABA при первой лицензии - 20."
             },
             {
               "answerId": "b-fallback-243-a2",
@@ -13318,7 +13318,7 @@
             {
               "answerId": "b-fallback-243-a3",
               "verdict": "incorrect",
-              "explanationRu": "5 puntos - не начальный puntaje; это отвлекающий вариант."
+              "explanationRu": "5 puntos - не начальный puntaje. Это отвлекающий вариант."
             }
           ]
         },
@@ -13328,7 +13328,7 @@
             {
               "answerId": "b-fallback-253-a1",
               "verdict": "incorrect",
-              "explanationRu": "Это действительно обязанность после siniestro, но неполная: нужно также предоставить данные и страховую информацию."
+              "explanationRu": "Это правда, но неполно: после siniestro нужно также дать данные и страховую информацию."
             },
             {
               "answerId": "b-fallback-253-a2",
@@ -13338,7 +13338,7 @@
             {
               "answerId": "b-fallback-253-a3",
               "verdict": "correct",
-              "explanationRu": "Обе группы обязанностей верны: остановиться/помочь/сотрудничать и сообщить datos personales, vehículo, licencia y seguro."
+              "explanationRu": "Обе группы обязанностей верны: остановиться, помочь и сотрудничать, а также сообщить datos personales, vehículo, licencia y seguro."
             }
           ]
         },
@@ -13349,7 +13349,7 @@
             {
               "answerId": "b-fallback-259-a1",
               "verdict": "incorrect",
-              "explanationRu": "Enero не используется как месяц vencimiento VTV CABA и не соответствует последней цифре на изображении."
+              "explanationRu": "Enero не используется как месяц vencimiento VTV CABA и не совпадает с последней цифрой на изображении."
             },
             {
               "answerId": "b-fallback-259-a2",
@@ -13359,7 +13359,7 @@
             {
               "answerId": "b-fallback-259-a3",
               "verdict": "correct",
-              "explanationRu": "Последняя цифра dominio - 3; по расписанию CABA это marzo."
+              "explanationRu": "Последняя цифра dominio - 3. По расписанию CABA это marzo."
             }
           ]
         },
@@ -13375,12 +13375,12 @@
             {
               "answerId": "b-fallback-290-a2",
               "verdict": "incorrect",
-              "explanationRu": "Лицензия с remolque не делает обычный автомобиль службой auxilio/remolque для чужого неисправного авто."
+              "explanationRu": "Лицензия с remolque не превращает обычный автомобиль в службу auxilio/remolque для чужого неисправного авто."
             },
             {
               "answerId": "b-fallback-290-a3",
               "verdict": "correct",
-              "explanationRu": "Remolque de un vehículo averiado должен выполнять транспорт, специально предназначенный для этого; на autopista remolcado должен уйти на первой возможной salida."
+              "explanationRu": "Remolque de un vehículo averiado выполняет транспорт, специально предназначенный для этого. На autopista remolcado должен уйти на первой возможной salida."
             }
           ]
         },
@@ -13390,38 +13390,38 @@
             {
               "answerId": "b-fallback-300-a1",
               "verdict": "incorrect",
-              "explanationRu": "Tomador del seguro отвечает за страховой договор, но не за то, пристегнут ли пассажир в момент контроля."
+              "explanationRu": "Tomador del seguro отвечает за страховой договор, но не за то, пристегнут ли пассажир при движении."
             },
             {
               "answerId": "b-fallback-300-a2",
               "verdict": "incorrect",
-              "explanationRu": "Даже если пассажир совершеннолетний, перед autoridad de control за управление автомобилем и соблюдение обязательных условий отвечает conductor."
+              "explanationRu": "Даже если пассажир совершеннолетний, перед autoridad de control за управление и обязательные условия отвечает conductor."
             },
             {
               "answerId": "b-fallback-300-a3",
               "verdict": "correct",
-              "explanationRu": "В билете правильный ответ - conductor: он отвечает за движение автомобиля и обязательное использование cinturón de seguridad."
+              "explanationRu": "В билете правильный ответ - conductor: он отвечает за движение автомобиля и использование cinturón de seguridad."
             }
           ]
         },
         {
           "questionId": "b-fallback-309",
-          "sourceConflictNoteRu": "Legacy cédula azul quantity wording; current source-traced prose uses non-exigible cédula azul plus physical Cédula de Identificación possession/delivery and/or Mi Argentina digital authorization.",
+          "sourceConflictNoteRu": "Старая формулировка про количество cédula azul. Текущая логика: cédula azul no es exigible; третье лицо может пользоваться авто через физическую Cédula de Identificación и/или цифровую авторизацию Mi Argentina.",
           "answerExplanations": [
             {
               "answerId": "b-fallback-309-a1",
               "verdict": "incorrect",
-              "explanationRu": "В старой ticket-логике количество cédulas para autorizados не ограничивалось одной."
+              "explanationRu": "В старой логике билета количество cédulas para autorizados не ограничивалось одной."
             },
             {
               "answerId": "b-fallback-309-a2",
               "verdict": "correct",
-              "explanationRu": "Для ответа старого билета: titular мог запросить нужное количество. Но как текущую норму это не обобщаем: cédula azul больше не exigible, а авторизация/пользование третьим лицом может подтверждаться физической Cédula de Identificación и/или digital authorization через Mi Argentina."
+              "explanationRu": "Для ответа старого билета: titular мог запросить нужное количество. Как текущую норму это не обобщайте: cédula azul больше no es exigible, а пользование третьим лицом подтверждается физической Cédula de Identificación и/или цифровой авторизацией."
             },
             {
               "answerId": "b-fallback-309-a3",
               "verdict": "incorrect",
-              "explanationRu": "Лимит hasta cinco не соответствует правильному ответу старого билета и не является текущей общей логикой DNRPA."
+              "explanationRu": "Лимит hasta cinco не совпадает с ответом старого билета и не является текущей общей логикой DNRPA."
             }
           ]
         },
@@ -13432,12 +13432,12 @@
             {
               "answerId": "b-fallback-322-a1",
               "verdict": "correct",
-              "explanationRu": "При положительной alcoholemia в CABA autoridad запрещает продолжать driving, применяет санкции/contravención по делу, удерживает licencia и remite/remueve vehículo."
+              "explanationRu": "При положительной alcoholemia в CABA autoridad запрещает продолжать движение, применяет санкции/contravención, удерживает licencia и remite/remueve vehículo."
             },
             {
               "answerId": "b-fallback-322-a2",
               "verdict": "incorrect",
-              "explanationRu": "Нельзя ждать, пока bajе la graduación alcohólica: положительный контроль уже требует impedir продолжение движения."
+              "explanationRu": "Нельзя ждать, пока baje la graduación alcohólica. Положительный контроль уже требует остановить дальнейшее движение."
             },
             {
               "answerId": "b-fallback-322-a3",
@@ -13457,12 +13457,12 @@
             {
               "answerId": "b-fallback-367-a2",
               "verdict": "incorrect",
-              "explanationRu": "Курсы могут появляться как следствие восстановления/переобучения, но Scoring не означает ежегодный обязательный курс для всех."
+              "explanationRu": "Курсы могут появиться при восстановлении или переобучении, но Scoring не означает ежегодный обязательный курс для всех."
             },
             {
               "answerId": "b-fallback-367-a3",
               "verdict": "incorrect",
-              "explanationRu": "Вариант A как раз описывает систему, поэтому “ambas incorrectas” неверно."
+              "explanationRu": "Вариант A как раз описывает систему, поэтому «ambas incorrectas» неверно."
             }
           ]
         },
@@ -13472,17 +13472,17 @@
             {
               "answerId": "b-fallback-395-a1",
               "verdict": "incorrect",
-              "explanationRu": "30 días corridos - ловушка: это не предел для renovación как продления в CABA."
+              "explanationRu": "30 días corridos - ловушка. Это не предел для renovación как продления в CABA."
             },
             {
               "answerId": "b-fallback-395-a2",
               "verdict": "incorrect",
-              "explanationRu": "Водить с vencida нельзя, но renovar как продление можно, если не прошел установленный срок; это разные вопросы."
+              "explanationRu": "С лицензией vencida ездить нельзя, но renovar как продление можно, если не прошел установленный срок. Это разные вопросы."
             },
             {
               "answerId": "b-fallback-395-a3",
               "verdict": "correct",
-              "explanationRu": "Для renovación por vencimiento не должно пройти больше одного года; после этого trámite считается новым otorgamiento."
+              "explanationRu": "Для renovación por vencimiento должно пройти не больше одного года. После этого trámite считается новым otorgamiento."
             }
           ]
         },
@@ -13508,17 +13508,17 @@
             {
               "answerId": "b-fallback-433-a1",
               "verdict": "incorrect",
-              "explanationRu": "Даже documentación provisoria не разрешает ехать с номером, который не выполняет функцию штатной placa reglamentaria."
+              "explanationRu": "Даже documentación provisoria не разрешает ехать с номером, который не работает как штатная placa reglamentaria."
             },
             {
               "answerId": "b-fallback-433-a2",
               "verdict": "incorrect",
-              "explanationRu": "Проблема не в том, что provisoria “надо увеличить”; самовольные изменения номера как раз недопустимы."
+              "explanationRu": "Проблема не в том, что provisoria «надо увеличить». Самовольные изменения номера недопустимы."
             },
             {
               "answerId": "b-fallback-433-a3",
               "verdict": "correct",
-              "explanationRu": "Placa de dominio должна быть установлена на месте и в форме reglamentaria; на изображении это условие не выполнено."
+              "explanationRu": "Placa de dominio должна стоять на месте и в форме reglamentaria. На изображении это условие не выполнено."
             }
           ]
         },
@@ -13528,7 +13528,7 @@
             {
               "answerId": "b-fallback-451-a1",
               "verdict": "correct",
-              "explanationRu": "Distancia de seguridad - это промежуток до автомобиля впереди, который дает margen de reacción и помогает не столкнуться при frenada repentina."
+              "explanationRu": "Distancia de seguridad - это промежуток до автомобиля впереди, который дает margen de reacción при frenada repentina."
             },
             {
               "answerId": "b-fallback-451-a2",
@@ -13538,24 +13538,24 @@
             {
               "answerId": "b-fallback-451-a3",
               "verdict": "incorrect",
-              "explanationRu": "Это скорее distancia/tiempo de reacción до нажатия тормоза, а не дистанция до впереди идущего vehículo."
+              "explanationRu": "Это скорее distancia/tiempo de reacción до нажатия тормоза, а не дистанция до vehículo впереди."
             }
           ]
         },
         {
           "questionId": "b-fallback-456",
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b46.jpg",
-          "sourceConflictNoteRu": "Legacy cédula image prompt; current source-traced prose teaches physical Cédula de Identificación possession/delivery and/or Mi Argentina authorization rather than family-name authorization.",
+          "sourceConflictNoteRu": "Старый вопрос с изображением cédula. Текущая логика учит физическую Cédula de Identificación и/или авторизацию Mi Argentina, а не автоматическое право по фамилии.",
           "answerExplanations": [
             {
               "answerId": "b-fallback-456-a1",
               "verdict": "incorrect",
-              "explanationRu": "В старой логике изображения cédula не делает документ “никто не может”: вопрос спрашивает, кто autorizado."
+              "explanationRu": "В старой логике изображения cédula не означает «никто не может». Вопрос спрашивает, кто autorizado."
             },
             {
               "answerId": "b-fallback-456-a2",
               "verdict": "correct",
-              "explanationRu": "По ответу старого билета с этой документацией autorizado только titular. Текущая официальная логика: cédula azul non-exigible, а terceros могут опираться на физическую Cédula de Identificación и/или digital authorization через Mi Argentina."
+              "explanationRu": "По ответу старого билета с этой документацией autorizado только titular. Текущая логика: cédula azul no es exigible, а terceros могут использовать физическую Cédula de Identificación и/или цифровую авторизацию."
             },
             {
               "answerId": "b-fallback-456-a3",
@@ -13568,7 +13568,7 @@
       "trapNotes": [
         {
           "id": "trap-cedula-azul-current-vs-old",
-          "textRu": "Cédula azul в старых билетах может звучать как обязательный отдельный документ. Текущая подсказка: cédula azul no es exigible, а третье лицо может пользоваться авто при физической Cédula de Identificación и/или digital authorization через Mi Argentina; если билет старый, отвечайте на формулировку билета и помечайте ее как legacy.",
+          "textRu": "Cédula azul в старых билетах может звучать как обязательный отдельный документ. Текущая подсказка: cédula azul no es exigible, а третье лицо может пользоваться авто при физической Cédula de Identificación и/или цифровой авторизации Mi Argentina. Если билет старый, отвечайте на его формулировку как на старый вопрос.",
           "sourceQuestionIds": [
             "b-fallback-024",
             "b-fallback-309",
@@ -13577,7 +13577,7 @@
         },
         {
           "id": "trap-vtv-old-ley-2265",
-          "textRu": "Билет про Ley 2265 и 3 años/60.000 km устарел относительно текущих источников CABA: сейчас учите cuarto año/64.000 km, а старый ответ держите только для самого fallback-вопроса.",
+          "textRu": "Билет про Ley 2265 и 3 años/60.000 km устарел относительно текущих источников CABA: сейчас учите cuarto año/64.000 km, а старый ответ держите только для самого старого вопроса.",
           "sourceQuestionIds": [
             "b-fallback-135"
           ]
@@ -13593,14 +13593,14 @@
         },
         {
           "id": "trap-dias-habiles-corridos",
-          "textRu": "Días hábiles и días corridos - частая ловушка. Для бесплатной re-verificación VTV нужен срок 60 días hábiles.",
+          "textRu": "Días hábiles и días corridos - частая ловушка. Для бесплатной re-verificación VTV нужен срок 60 días hábiles, то есть рабочих дней.",
           "sourceQuestionIds": [
             "b-fallback-072"
           ]
         },
         {
           "id": "trap-personal-document-retention",
-          "textRu": "“Documento personal” не означает, что licencia никогда не удерживают. Ищите формулу sólo en los casos que la normativa indique.",
+          "textRu": "«Documento personal» не означает, что licencia никогда не удерживают. Ищите формулу sólo en los casos que la normativa indique.",
           "sourceQuestionIds": [
             "b-fallback-092",
             "b-fallback-157",
@@ -13616,7 +13616,7 @@
         },
         {
           "id": "trap-ambas-respuestas",
-          "textRu": "Ambas respuestas верно только когда обе части действительно обязательны: в siniestro да, а в reposición de chapa нет, потому что “любой коммерческий изготовитель” неверен.",
+          "textRu": "Ambas respuestas верно только когда обе части действительно обязательны: в siniestro да, а в reposición de chapa нет, потому что «любой коммерческий изготовитель» неверен.",
           "sourceQuestionIds": [
             "b-fallback-226",
             "b-fallback-253"
