@@ -156,6 +156,35 @@ test("learning timeout is unresolved only until the learner answers after the li
   await expect.poll(() => storedAnswerCount(page)).toBe(1);
 });
 
+test("answered learning ticket restored by search does not restart as unresolved timer", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  const search = page.getByPlaceholder("Поиск по испанскому, русскому, теме");
+  const timer = page.getByTestId("learning-ticket-timer");
+  const timerValue = page.getByTestId("learning-ticket-timer-time");
+
+  await expect(page.getByText(questions[0].officialTextEs)).toBeVisible();
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect(page.locator(".result")).toBeVisible();
+  await expect(timer).toContainText("В темпе");
+  await expect(timerValue).toHaveText("1:15");
+
+  await search.fill("b-fallback-004");
+  await expect(page.getByText(questions[3].officialTextEs)).toBeVisible();
+  await search.fill("b-fallback-001");
+  await expect(page.getByText(questions[0].officialTextEs)).toBeVisible();
+  await expect(page.locator(".result")).toBeVisible();
+  await expect(page.locator(".support-block.explanation")).toBeVisible();
+  await expect(timer).toContainText("В темпе");
+  await expect(page.getByRole("button", { name: /таймер билета/ })).toHaveCount(0);
+
+  await page.clock.runFor(80_000);
+  await expect(timer).toContainText("В темпе");
+  await expect(timerValue).toHaveText("1:15");
+  await expect(page.getByText("Время вышло - билет пока не решен")).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+});
+
 test("learning search navigation keeps filtered context and boundary states", async ({ page }) => {
   await page.goto("/");
   const search = page.getByPlaceholder("Поиск по испанскому, русскому, теме");

@@ -226,6 +226,11 @@
 
 ### Review Finding Follow-Up
 
+- Review finding P2: answered learning tickets restored from `attemptState` could receive a fresh running timer after a search query change cleared `timerStates`, so the same completed ticket could later expire as unresolved while still showing the restored selected answer.
+- Fix decision: learning search changes now preserve per-question timer state instead of clearing it. If a completed attempt is restored without a saved timer entry, the learning timer is derived as `answered`, preventing a fresh running timer for an already completed ticket.
+- Active exam timer scope remains unchanged because this fix is confined to `LearnView` learning-ticket timers; `ExamView` keeps its separate attempt timer and active exam support remains hidden.
+- Test coverage added in `tests/e2e/app.spec.ts` for answering a learning question, filtering away and back to the same question, and proving the restored answered card stays `В темпе`, does not expose timer pause/resume controls, does not show unresolved expiry after simulated time passes, and does not record another answer.
+- Focused verification evidence for P2 fix: `pnpm run build && pnpm exec playwright test -g "answered learning ticket restored"` passed 2 tests across `chromium` and `mobile`.
 - Review finding P3: empty scoped collections still fell back to `data.questions[0]`, allowing a zero-match learning search or empty mistake collection to render and answer a question outside the active collection.
 - Fix decision: learning now renders an explicit no-results state when a non-empty query produces zero results, without `QuestionCard`, answer buttons, or footer navigation. Empty query behavior remains unchanged because `searchQuestions("")` returns the default learning collection.
 - Fix decision: mistake review now renders the side empty message plus a main empty state when there are no mistakes, without `QuestionCard`, answer buttons, or footer navigation. It no longer allows recording a mistake-mode answer outside the current mistake collection.
@@ -265,6 +270,7 @@
 - Final verification update after merged 009 sync: `pnpm run preflight` passed, including feature-memory gate, repository baseline, validate, unit tests, build, and desktop/mobile e2e.
 - Final verification update after merged 009 sync: Docker smoke partially passed. `make down` and `make build` passed, but `make up` failed because container name `/cabadrive` is already in use by container `7ed5bedd6e9292856ba08590fddbed9afc5c8f910a9e4f7dd48253af77d661f3`. Per parallel-agent safety, this Implementation Agent did not remove or rename that container. Cleanup `make down` removed only this worktree's compose network. Fallback runtime smoke passed with `pnpm exec vite preview --host 127.0.0.1 --port 5173 --strictPort` and `curl -fsS http://127.0.0.1:5173`, returning the HTML document; preview process was stopped.
 - Docker smoke evidence: `make down` passed, `make build` passed, `make up` failed with Docker daemon conflict because container name `/cabadrive` is already in use by another container. Cleanup `make down` then removed only this worktree's compose network. As fallback runtime evidence, `pnpm exec vite preview --host 127.0.0.1 --port 5173 --strictPort` served the built app and `curl -fsS http://127.0.0.1:5173` returned the HTML document; the preview process was stopped.
+- Review P2 final verification update: `pnpm run validate:overlays && pnpm run validate:content && pnpm run test && pnpm run build && pnpm run test:e2e && pnpm run preflight && git diff --check` passed. The run included 116 unit/content tests, 30 Playwright tests across `chromium` and `mobile`, and the new focused restored-answered-ticket search/timer scenario.
 
 ### Implementation Agent Feedback
 

@@ -110,6 +110,14 @@ function initialLearningTimerState(targetSeconds: number): LearningTicketTimerSt
   };
 }
 
+function completedLearningTimerState(targetSeconds: number): LearningTicketTimerState {
+  return {
+    remainingSeconds: targetSeconds,
+    status: "answered",
+    answeredAfterExpiry: false
+  };
+}
+
 function QuestionImageFigure({
   question,
   overlay,
@@ -449,7 +457,13 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   const question = results[currentIndex];
   const difficult = question ? progress.difficultQuestionIds.includes(question.id) : false;
   const timerTargetSeconds = learningTicketTargetSeconds(data.examFormat);
-  const currentTimerState = question && timerTargetSeconds ? timerStates[question.id] ?? initialLearningTimerState(timerTargetSeconds) : undefined;
+  const currentAttemptState = question ? attemptsByQuestion[question.id] : undefined;
+  const restoredTimerState = timerTargetSeconds && currentAttemptState?.selectedAnswerId
+    ? completedLearningTimerState(timerTargetSeconds)
+    : undefined;
+  const currentTimerState = question && timerTargetSeconds
+    ? timerStates[question.id] ?? restoredTimerState ?? initialLearningTimerState(timerTargetSeconds)
+    : undefined;
 
   useEffect(() => {
     setIndex(0);
@@ -489,7 +503,6 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   function updateQuery(nextQuery: string) {
     setQuery(nextQuery);
     setIndex(0);
-    setTimerStates({});
   }
 
   function toggleCurrentTimer() {
@@ -513,10 +526,12 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
       if (current[question.id]) return current;
       return {
         ...current,
-        [question.id]: initialLearningTimerState(timerTargetSeconds)
+        [question.id]: currentAttemptState?.selectedAnswerId
+          ? completedLearningTimerState(timerTargetSeconds)
+          : initialLearningTimerState(timerTargetSeconds)
       };
     });
-  }, [question?.id, timerTargetSeconds]);
+  }, [question?.id, timerTargetSeconds, currentAttemptState?.selectedAnswerId]);
 
   useEffect(() => {
     if (!question || !timerTargetSeconds || currentTimerState?.status !== "running") return undefined;
