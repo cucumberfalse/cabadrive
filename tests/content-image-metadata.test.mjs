@@ -245,6 +245,39 @@ test("full-quality usage gate requires question-scoped relevance mapping", () =>
   assert(errors.includes("q1: full-quality usage must not mark every relevance entry answer-critical."));
 });
 
+test("full-quality usage gate rejects relevance entries without real ids", () => {
+  const firstRelevance = { ...baseUsage().relevanceMap[0], targetId: "sign-shape" };
+  delete firstRelevance.relevanceId;
+  const usage = {
+    ...baseUsage(),
+    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]]
+  };
+  const errors = validateSyntheticFullQuality({ usage });
+  assert(errors.includes("q1: relevance sign-shape must have a non-empty relevanceId."));
+  assert(errors.includes("q1: relevance sign-shape must use detailIds, objectIds, or regionIds instead of legacy targetId."));
+});
+
+test("full-quality usage gate rejects relevance entries without confidence", () => {
+  const firstRelevance = { ...baseUsage().relevanceMap[0] };
+  delete firstRelevance.confidence;
+  const usage = {
+    ...baseUsage(),
+    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]]
+  };
+  const errors = validateSyntheticFullQuality({ usage });
+  assert(errors.includes("q1: relevance sign-shape-highlight must include confidence for the full-quality gate."));
+});
+
+test("full-quality usage gate rejects relevance entries without grounded references", () => {
+  const firstRelevance = { ...baseUsage().relevanceMap[0], detailIds: [], objectIds: [], regionIds: [] };
+  const usage = {
+    ...baseUsage(),
+    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]]
+  };
+  const errors = validateSyntheticFullQuality({ usage });
+  assert(errors.includes("q1: relevance sign-shape-highlight must reference at least one detail, object, or region id."));
+});
+
 test("shared image metadata rejects global relevance keys", () => {
   const image = {
     ...baseImage(),

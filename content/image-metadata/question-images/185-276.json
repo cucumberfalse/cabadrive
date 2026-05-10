@@ -10197,7 +10197,8 @@
             "b-fallback-185-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Именно красный шеврон является ответным признаком панели кривой."
+          "rationaleRu": "Именно красный шеврон является ответным признаком панели кривой.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-185-relevance-2",
@@ -10214,7 +10215,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Белое поле и рамка нужны для формы знака, но не определяют вариант ответа."
+          "rationaleRu": "Белое поле и рамка нужны для формы знака, но не определяют вариант ответа.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -10295,7 +10297,8 @@
             "b-fallback-186-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Велосипедист и велополоса показывают участника, которому должен уступить поворачивающий автомобиль."
+          "rationaleRu": "Велосипедист и велополоса показывают участника, которому должен уступить поворачивающий автомобиль.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-186-relevance-2",
@@ -10314,7 +10317,8 @@
             "b-fallback-186-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Поворот автомобиля направо объясняет потерю преимущества."
+          "rationaleRu": "Поворот автомобиля направо объясняет потерю преимущества.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-186-relevance-3",
@@ -10329,7 +10333,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Городской перекрёсток и переход оставляют контекст видимым, но не являются главным ответом."
+          "rationaleRu": "Городской перекрёсток и переход оставляют контекст видимым, но не являются главным ответом.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -10391,7 +10396,8 @@
             "b-fallback-188-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Жёлтая штриховка является главным признаком запрета движения по зоне."
+          "rationaleRu": "Жёлтая штриховка является главным признаком запрета движения по зоне.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-188-relevance-2",
@@ -10408,7 +10414,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Красный овал помогает найти нужную разметку на фото."
+          "rationaleRu": "Красный овал помогает найти нужную разметку на фото.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-188-relevance-3",
@@ -10423,7 +10430,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Мост, машины и фон можно приглушить: они не выбирают ответ."
+          "rationaleRu": "Мост, машины и фон можно приглушить: они не выбирают ответ.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -10488,7 +10496,8 @@
             "b-fallback-189-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Вода на проезжей части и брызги показывают условия, под которые нужно подбирать скорость."
+          "rationaleRu": "Вода на проезжей части и брызги показывают условия, под которые нужно подбирать скорость.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-189-relevance-2",
@@ -10503,7 +10512,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Фасады зданий не влияют на выбор скорости и могут быть приглушены."
+          "rationaleRu": "Фасады зданий не влияют на выбор скорости и могут быть приглушены.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -10565,7 +10575,8 @@
             "b-fallback-190-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Знак с поездом является главным предупреждением о приближении железной дороги."
+          "rationaleRu": "Знак с поездом является главным предупреждением о приближении железной дороги.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-190-relevance-2",
@@ -10582,7 +10593,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Прямая дорога показывает подход к опасному месту, но сама не определяет знак."
+          "rationaleRu": "Прямая дорога показывает подход к опасному месту, но сама не определяет знак.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-190-relevance-3",
@@ -10597,7 +10609,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Трава и деревья не важны для ответа."
+          "rationaleRu": "Трава и деревья не важны для ответа.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -10663,7 +10676,8 @@
             "b-fallback-191-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Отсутствие разрешения на поворот при зелёном основном сигнале является ответным признаком."
+          "rationaleRu": "Отсутствие разрешения на поворот при зелёном основном сигнале является ответным признаком.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-191-relevance-2",
@@ -10682,7 +10696,8 @@
           "rejectsAnswerIds": [
             "b-fallback-191-a2"
           ],
-          "rationaleRu": "Зелёный свет — ловушка: он не даёт отдельного разрешения на этот поворот."
+          "rationaleRu": "Зелёный свет — ловушка: он не даёт отдельного разрешения на этот поворот.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-191-relevance-3",
@@ -10697,7 +10712,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Остальной поток и деревья не объясняют запрет манёвра."
+          "rationaleRu": "Остальной поток и деревья не объясняют запрет манёвра.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -10760,7 +10776,8 @@
             "b-fallback-192-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Два выделенных задних указателя показывают аварийную сигнализацию."
+          "rationaleRu": "Два выделенных задних указателя показывают аварийную сигнализацию.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-192-relevance-2",
@@ -10777,7 +10794,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Парковочный знак рядом не является ответным сигналом автомобиля."
+          "rationaleRu": "Парковочный знак рядом не является ответным сигналом автомобиля.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-192-relevance-3",
@@ -10794,7 +10812,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Положение машины у края дороги поддерживает версию о скорой остановке или въезде."
+          "rationaleRu": "Положение машины у края дороги поддерживает версию о скорой остановке или въезде.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -10856,7 +10875,8 @@
             "b-fallback-193-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Задний пассажир без видимого ремня — главный ответный признак."
+          "rationaleRu": "Задний пассажир без видимого ремня — главный ответный признак.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-193-relevance-2",
@@ -10878,7 +10898,8 @@
             "b-fallback-193-a1",
             "b-fallback-193-a2"
           ],
-          "rationaleRu": "Пристёгнутые передние люди могут отвлечь от проблемы заднего пассажира."
+          "rationaleRu": "Пристёгнутые передние люди могут отвлечь от проблемы заднего пассажира.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-193-relevance-3",
@@ -10893,7 +10914,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Интерьер салона не влияет на ответ."
+          "rationaleRu": "Интерьер салона не влияет на ответ.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -10960,7 +10982,8 @@
             "b-fallback-194-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Туман и обочина вместе показывают, почему нельзя считать остановку на обочине безопасной."
+          "rationaleRu": "Туман и обочина вместе показывают, почему нельзя считать остановку на обочине безопасной.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-194-relevance-2",
@@ -10977,7 +11000,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Едва видимые огни подчёркивают плохую видимость."
+          "rationaleRu": "Едва видимые огни подчёркивают плохую видимость.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11041,7 +11065,8 @@
             "b-fallback-195-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Крупный груз на крыше является причиной увеличенного сопротивления воздуха."
+          "rationaleRu": "Крупный груз на крыше является причиной увеличенного сопротивления воздуха.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-195-relevance-2",
@@ -11056,7 +11081,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Движение по дороге показывает ситуацию в движении, но не главный физический фактор."
+          "rationaleRu": "Движение по дороге показывает ситуацию в движении, но не главный физический фактор.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11123,7 +11149,8 @@
             "b-fallback-197-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Красный круг и обочина показывают нарушение места движения."
+          "rationaleRu": "Красный круг и обочина показывают нарушение места движения.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-197-relevance-2",
@@ -11140,7 +11167,8 @@
           "rejectsAnswerIds": [
             "b-fallback-197-a2"
           ],
-          "rationaleRu": "Обычные полосы и другие машины не оправдывают езду по обочине."
+          "rationaleRu": "Обычные полосы и другие машины не оправдывают езду по обочине.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11202,7 +11230,8 @@
             "b-fallback-202-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Двойная крестовина — главный признак переезда с несколькими путями."
+          "rationaleRu": "Двойная крестовина — главный признак переезда с несколькими путями.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-202-relevance-2",
@@ -11217,7 +11246,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Белый фон не определяет значение знака."
+          "rationaleRu": "Белый фон не определяет значение знака.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -11279,7 +11309,8 @@
             "b-fallback-203-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Тип автомобиля на фото нужен для выбора допустимого уровня алкоголя."
+          "rationaleRu": "Тип автомобиля на фото нужен для выбора допустимого уровня алкоголя.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-203-relevance-2",
@@ -11294,7 +11325,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Деревья и улица не влияют на категорию водителя."
+          "rationaleRu": "Деревья и улица не влияют на категорию водителя.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11356,7 +11388,8 @@
             "b-fallback-205-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Жёлтая звезда является ответным символом места смертельной аварии."
+          "rationaleRu": "Жёлтая звезда является ответным символом места смертельной аварии.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-205-relevance-2",
@@ -11371,7 +11404,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Белый фон можно приглушить."
+          "rationaleRu": "Белый фон можно приглушить.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -11435,7 +11469,8 @@
             "b-fallback-210-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Отсутствие видимых ремней у ребёнка — главный признак неправильного использования устройства."
+          "rationaleRu": "Отсутствие видимых ремней у ребёнка — главный признак неправильного использования устройства.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-210-relevance-2",
@@ -11454,7 +11489,8 @@
           "rejectsAnswerIds": [
             "b-fallback-210-a1"
           ],
-          "rationaleRu": "Само наличие кресла — ловушка: оно не помогает без пристёгивания."
+          "rationaleRu": "Само наличие кресла — ловушка: оно не помогает без пристёгивания.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-210-relevance-3",
@@ -11469,7 +11505,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Остальной салон не влияет на ответ."
+          "rationaleRu": "Остальной салон не влияет на ответ.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11531,7 +11568,8 @@
             "b-fallback-211-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Подземный проезд является местом, где остановка запрещена."
+          "rationaleRu": "Подземный проезд является местом, где остановка запрещена.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-211-relevance-2",
@@ -11548,7 +11586,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Узкая разметка проезда поддерживает риск остановки в этом месте."
+          "rationaleRu": "Узкая разметка проезда поддерживает риск остановки в этом месте.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-211-relevance-3",
@@ -11563,7 +11602,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Муралы и стены можно приглушить как фон."
+          "rationaleRu": "Муралы и стены можно приглушить как фон.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11625,7 +11665,8 @@
             "b-fallback-212-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Незакреплённая собака на переднем сиденье — главный ответный признак."
+          "rationaleRu": "Незакреплённая собака на переднем сиденье — главный ответный признак.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-212-relevance-2",
@@ -11642,7 +11683,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Водитель за рулём показывает, что это ситуация движения или управления."
+          "rationaleRu": "Водитель за рулём показывает, что это ситуация движения или управления.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-212-relevance-3",
@@ -11657,7 +11699,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Интерьер салона можно приглушить."
+          "rationaleRu": "Интерьер салона можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11720,7 +11763,8 @@
             "b-fallback-214-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Последняя цифра номера 7 выбирает месяц проверки."
+          "rationaleRu": "Последняя цифра номера 7 выбирает месяц проверки.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-214-relevance-2",
@@ -11735,7 +11779,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Решётка автомобиля не нужна для выбора месяца."
+          "rationaleRu": "Решётка автомобиля не нужна для выбора месяца.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11797,7 +11842,8 @@
             "b-fallback-216-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Белая буква в ромбе — главный символ полосы для экстренного транспорта."
+          "rationaleRu": "Белая буква в ромбе — главный символ полосы для экстренного транспорта.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-216-relevance-2",
@@ -11812,7 +11858,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Серый фон не меняет значение символа."
+          "rationaleRu": "Серый фон не меняет значение символа.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -11876,7 +11923,8 @@
             "b-fallback-217-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Красный круг выделяет пассажирку с телефоном, а не водителя."
+          "rationaleRu": "Красный круг выделяет пассажирку с телефоном, а не водителя.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-217-relevance-2",
@@ -11893,7 +11941,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Водитель рядом нужен для различения ролей в салоне."
+          "rationaleRu": "Водитель рядом нужен для различения ролей в салоне.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-217-relevance-3",
@@ -11908,7 +11957,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Панель и окно можно приглушить."
+          "rationaleRu": "Панель и окно можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -11970,7 +12020,8 @@
             "b-fallback-220-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Фигура B оранжевая и соответствует зоне работ."
+          "rationaleRu": "Фигура B оранжевая и соответствует зоне работ.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-220-relevance-2",
@@ -11989,7 +12040,8 @@
           "rejectsAnswerIds": [
             "b-fallback-220-a1"
           ],
-          "rationaleRu": "Фигура A отличается цветом и не подходит для работ."
+          "rationaleRu": "Фигура A отличается цветом и не подходит для работ.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-220-relevance-3",
@@ -12008,7 +12060,8 @@
           "rejectsAnswerIds": [
             "b-fallback-220-a3"
           ],
-          "rationaleRu": "Фигура C выглядит запрещающей, а не временной рабочей."
+          "rationaleRu": "Фигура C выглядит запрещающей, а не временной рабочей.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-220-relevance-4",
@@ -12023,7 +12076,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Метки A, B, C оставляют связь с вариантами ответа."
+          "rationaleRu": "Метки A, B, C оставляют связь с вариантами ответа.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -12087,7 +12141,8 @@
             "b-fallback-222-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Комбинация сплошной и прерывистой линии внутри красного овала является ответным признаком."
+          "rationaleRu": "Комбинация сплошной и прерывистой линии внутри красного овала является ответным признаком.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-222-relevance-2",
@@ -12102,7 +12157,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Поля и небо можно приглушить."
+          "rationaleRu": "Поля и небо можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -12180,7 +12236,8 @@
             "b-fallback-223-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Табличка времени действия ограничения определяет условие поворота."
+          "rationaleRu": "Табличка времени действия ограничения определяет условие поворота.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-223-relevance-2",
@@ -12199,7 +12256,8 @@
             "b-fallback-223-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Красный круг показывает автомобиль, к которому относится вопрос."
+          "rationaleRu": "Красный круг показывает автомобиль, к которому относится вопрос.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-223-relevance-3",
@@ -12216,7 +12274,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Разметка выделенной полосы оставляет контекст манёвра видимым."
+          "rationaleRu": "Разметка выделенной полосы оставляет контекст манёвра видимым.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-223-relevance-4",
@@ -12231,7 +12290,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Деревья и здания не влияют на ответ."
+          "rationaleRu": "Деревья и здания не влияют на ответ.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -12293,7 +12353,8 @@
             "b-fallback-225-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Форма и красная кайма фигуры C делают её ответом."
+          "rationaleRu": "Форма и красная кайма фигуры C делают её ответом.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-225-relevance-2",
@@ -12312,7 +12373,8 @@
           "rejectsAnswerIds": [
             "b-fallback-225-a1"
           ],
-          "rationaleRu": "Фигура A отвлекает, но не является выбранным регулирующим знаком в билете."
+          "rationaleRu": "Фигура A отвлекает, но не является выбранным регулирующим знаком в билете.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-225-relevance-3",
@@ -12331,7 +12393,8 @@
           "rejectsAnswerIds": [
             "b-fallback-225-a2"
           ],
-          "rationaleRu": "Фигура B предупреждающая, а не регулирующая в данном наборе."
+          "rationaleRu": "Фигура B предупреждающая, а не регулирующая в данном наборе.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -12393,7 +12456,8 @@
             "b-fallback-227-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Прерывистая линия — главный видимый признак разрешения пересечения при безопасности."
+          "rationaleRu": "Прерывистая линия — главный видимый признак разрешения пересечения при безопасности.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-227-relevance-2",
@@ -12408,7 +12472,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Асфальт вокруг линии не влияет на ответ."
+          "rationaleRu": "Асфальт вокруг линии не влияет на ответ.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -12470,7 +12535,8 @@
             "b-fallback-228-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Тип места — парковка — связывает фото с правилом о велосипедах."
+          "rationaleRu": "Тип места — парковка — связывает фото с правилом о велосипедах.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-228-relevance-2",
@@ -12487,7 +12553,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Машины подтверждают, что это автомобильная парковка."
+          "rationaleRu": "Машины подтверждают, что это автомобильная парковка.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-228-relevance-3",
@@ -12505,7 +12572,8 @@
             "b-fallback-228-a1",
             "b-fallback-228-a2"
           ],
-          "rationaleRu": "Отсутствие велосипеда на фото не отменяет обязанности выделять место."
+          "rationaleRu": "Отсутствие велосипеда на фото не отменяет обязанности выделять место.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -12599,7 +12667,8 @@
             "b-fallback-229-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Действие A отвлекает водителя."
+          "rationaleRu": "Действие A отвлекает водителя.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-229-relevance-2",
@@ -12618,7 +12687,8 @@
             "b-fallback-229-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Действие B тоже отвлекает водителя."
+          "rationaleRu": "Действие B тоже отвлекает водителя.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-229-relevance-3",
@@ -12637,7 +12707,8 @@
             "b-fallback-229-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Действие C также отвлекает водителя."
+          "rationaleRu": "Действие C также отвлекает водителя.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-229-relevance-4",
@@ -12652,7 +12723,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Метки A, B, C нужны для связи с ответами."
+          "rationaleRu": "Метки A, B, C нужны для связи с ответами.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -12714,7 +12786,8 @@
             "b-fallback-230-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Жёлтая надпись на дороге является ответной разметкой посадки и высадки."
+          "rationaleRu": "Жёлтая надпись на дороге является ответной разметкой посадки и высадки.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-230-relevance-2",
@@ -12731,7 +12804,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Положение у бордюра поддерживает смысл краткой остановки."
+          "rationaleRu": "Положение у бордюра поддерживает смысл краткой остановки.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-230-relevance-3",
@@ -12746,7 +12820,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Дальние автомобили не определяют значение разметки."
+          "rationaleRu": "Дальние автомобили не определяют значение разметки.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -12808,7 +12883,8 @@
             "b-fallback-234-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Пешеходка на проезжей части — главный объект, ради которого нужно остановиться."
+          "rationaleRu": "Пешеходка на проезжей части — главный объект, ради которого нужно остановиться.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-234-relevance-2",
@@ -12825,7 +12901,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Переход усиливает обязанность дождаться пешехода."
+          "rationaleRu": "Переход усиливает обязанность дождаться пешехода.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-234-relevance-3",
@@ -12842,7 +12919,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Автобусы и машины на фоне не меняют приоритет пешехода."
+          "rationaleRu": "Автобусы и машины на фоне не меняют приоритет пешехода.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -12907,7 +12985,8 @@
             "b-fallback-236-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Проспект на фото связывает вопрос с общим пределом 60 км/ч."
+          "rationaleRu": "Проспект на фото связывает вопрос с общим пределом 60 км/ч.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-236-relevance-2",
@@ -12924,7 +13003,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Припаркованные машины не выбирают скорость."
+          "rationaleRu": "Припаркованные машины не выбирают скорость.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -12986,7 +13066,8 @@
             "b-fallback-237-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Действие водителя с напитком является главным рискованным признаком."
+          "rationaleRu": "Действие водителя с напитком является главным рискованным признаком.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-237-relevance-2",
@@ -13003,7 +13084,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Руль показывает, что действие происходит при управлении автомобилем."
+          "rationaleRu": "Руль показывает, что действие происходит при управлении автомобилем.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-237-relevance-3",
@@ -13018,7 +13100,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Остальной салон можно приглушить."
+          "rationaleRu": "Остальной салон можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13080,7 +13163,8 @@
             "b-fallback-238-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Мостовые створки над водой являются главным символом знака."
+          "rationaleRu": "Мостовые створки над водой являются главным символом знака.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-238-relevance-2",
@@ -13095,7 +13179,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Жёлтый фон оставляет категорию предупреждения, но не отличает тип моста."
+          "rationaleRu": "Жёлтый фон оставляет категорию предупреждения, но не отличает тип моста.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -13157,7 +13242,8 @@
             "b-fallback-239-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Падающие камни со склона являются ответным признаком."
+          "rationaleRu": "Падающие камни со склона являются ответным признаком.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-239-relevance-2",
@@ -13172,7 +13258,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Жёлтая форма только показывает предупреждающую категорию."
+          "rationaleRu": "Жёлтая форма только показывает предупреждающую категорию.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -13234,7 +13321,8 @@
             "b-fallback-241-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Спущенная шина — главный признак для плавного замедления."
+          "rationaleRu": "Спущенная шина — главный признак для плавного замедления.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-241-relevance-2",
@@ -13251,7 +13339,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Кузов автомобиля показывает место повреждения на машине."
+          "rationaleRu": "Кузов автомобиля показывает место повреждения на машине.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13313,7 +13402,8 @@
             "b-fallback-244-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Красный круг показывает автомобиль, который уже пропустил поворот."
+          "rationaleRu": "Красный круг показывает автомобиль, который уже пропустил поворот.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-244-relevance-2",
@@ -13330,7 +13420,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Переход и перекрёсток показывают, почему возврат задним ходом опасен."
+          "rationaleRu": "Переход и перекрёсток показывают, почему возврат задним ходом опасен.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-244-relevance-3",
@@ -13350,7 +13441,8 @@
             "b-fallback-244-a1",
             "b-fallback-244-a2"
           ],
-          "rationaleRu": "Зелёный свет не разрешает задний ход или разворот для исправления ошибки."
+          "rationaleRu": "Зелёный свет не разрешает задний ход или разворот для исправления ошибки.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13412,7 +13504,8 @@
             "b-fallback-246-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Жест регулировщика является главным указанием для водителя."
+          "rationaleRu": "Жест регулировщика является главным указанием для водителя.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-246-relevance-2",
@@ -13431,7 +13524,8 @@
           "rejectsAnswerIds": [
             "b-fallback-246-a1"
           ],
-          "rationaleRu": "Зелёный сигнал — ловушка, потому что указание регулировщика важнее."
+          "rationaleRu": "Зелёный сигнал — ловушка, потому что указание регулировщика важнее.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-246-relevance-3",
@@ -13448,7 +13542,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Окружающие автомобили не меняют приоритет жеста."
+          "rationaleRu": "Окружающие автомобили не меняют приоритет жеста.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13515,7 +13610,8 @@
             "b-fallback-248-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Машина на уклоне у бордюра является главным контекстом для положения колёс и передачи."
+          "rationaleRu": "Машина на уклоне у бордюра является главным контекстом для положения колёс и передачи.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-248-relevance-2",
@@ -13530,7 +13626,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Фасад здания не влияет на способ парковки."
+          "rationaleRu": "Фасад здания не влияет на способ парковки.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13597,7 +13694,8 @@
             "b-fallback-249-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Зазор между колесом и бордюром — главный признак неправильной стоянки."
+          "rationaleRu": "Зазор между колесом и бордюром — главный признак неправильной стоянки.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-249-relevance-2",
@@ -13612,7 +13710,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Кузов и фон не выбирают ответ."
+          "rationaleRu": "Кузов и фон не выбирают ответ.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13677,7 +13776,8 @@
             "b-fallback-251-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Вода под колёсами и брызги являются главным признаком аквапланирования."
+          "rationaleRu": "Вода под колёсами и брызги являются главным признаком аквапланирования.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-251-relevance-2",
@@ -13694,7 +13794,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Машина в воде показывает реальную ситуацию движения."
+          "rationaleRu": "Машина в воде показывает реальную ситуацию движения.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-251-relevance-3",
@@ -13709,7 +13810,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Фасады и фон можно приглушить."
+          "rationaleRu": "Фасады и фон можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13771,7 +13873,8 @@
             "b-fallback-252-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Знак 30 на правой стороне прямо задаёт скорость."
+          "rationaleRu": "Знак 30 на правой стороне прямо задаёт скорость.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-252-relevance-2",
@@ -13788,7 +13891,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Дорога показывает участок, на который действует знак."
+          "rationaleRu": "Дорога показывает участок, на который действует знак.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-252-relevance-3",
@@ -13803,7 +13907,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Деревья и тротуар не меняют цифру ограничения."
+          "rationaleRu": "Деревья и тротуар не меняют цифру ограничения.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13868,7 +13973,8 @@
             "b-fallback-255-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Мокрая дорога и плохая видимость объясняют увеличение дистанции."
+          "rationaleRu": "Мокрая дорога и плохая видимость объясняют увеличение дистанции.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-255-relevance-2",
@@ -13883,7 +13989,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Деревья и припаркованные машины не определяют число секунд."
+          "rationaleRu": "Деревья и припаркованные машины не определяют число секунд.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -13945,7 +14052,8 @@
             "b-fallback-256-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Вариант B с мототранспортом является ответом по статистике смертности."
+          "rationaleRu": "Вариант B с мототранспортом является ответом по статистике смертности.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-256-relevance-2",
@@ -13964,7 +14072,8 @@
           "rejectsAnswerIds": [
             "b-fallback-256-a1"
           ],
-          "rationaleRu": "Вариант A с автомобилем является отвлекающим вариантом."
+          "rationaleRu": "Вариант A с автомобилем является отвлекающим вариантом.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-256-relevance-3",
@@ -13983,7 +14092,8 @@
           "rejectsAnswerIds": [
             "b-fallback-256-a3"
           ],
-          "rationaleRu": "Вариант C с велосипедистом тоже отвлекает от ответа B."
+          "rationaleRu": "Вариант C с велосипедистом тоже отвлекает от ответа B.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-256-relevance-4",
@@ -13998,7 +14108,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Метки A, B, C нужны для связи с вариантами ответа."
+          "rationaleRu": "Метки A, B, C нужны для связи с вариантами ответа.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -14060,7 +14171,8 @@
             "b-fallback-258-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Рука водителя у лица во время управления показывает риск отвлечения."
+          "rationaleRu": "Рука водителя у лица во время управления показывает риск отвлечения.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-258-relevance-2",
@@ -14078,7 +14190,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Руль и посадка за рулём подтверждают, что действие происходит при вождении."
+          "rationaleRu": "Руль и посадка за рулём подтверждают, что действие происходит при вождении.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-258-relevance-3",
@@ -14093,7 +14206,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Фон салона можно приглушить."
+          "rationaleRu": "Фон салона можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -14156,7 +14270,8 @@
             "b-fallback-259-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Последняя цифра 3 является главным признаком месяца проверки."
+          "rationaleRu": "Последняя цифра 3 является главным признаком месяца проверки.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-259-relevance-2",
@@ -14173,7 +14288,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Синяя шапка подтверждает, что это номерной знак, но не выбирает месяц."
+          "rationaleRu": "Синяя шапка подтверждает, что это номерной знак, но не выбирает месяц.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -14235,7 +14351,8 @@
             "b-fallback-260-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Маски и надпись театра являются главным значением знака."
+          "rationaleRu": "Маски и надпись театра являются главным значением знака.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-260-relevance-2",
@@ -14250,7 +14367,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Синий фон показывает информационный тип, но не является запретом."
+          "rationaleRu": "Синий фон показывает информационный тип, но не является запретом.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -14312,7 +14430,8 @@
             "b-fallback-262-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Т-образный символ является главным признаком разветвления."
+          "rationaleRu": "Т-образный символ является главным признаком разветвления.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-262-relevance-2",
@@ -14327,7 +14446,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Жёлтый ромб только указывает предупреждающую категорию."
+          "rationaleRu": "Жёлтый ромб только указывает предупреждающую категорию.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -14389,7 +14509,8 @@
             "b-fallback-263-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Выделенные активные полосы показывают опасность выхода из машины."
+          "rationaleRu": "Выделенные активные полосы показывают опасность выхода из машины.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-263-relevance-2",
@@ -14406,7 +14527,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Движущийся поток поддерживает рекомендацию оставаться пристёгнутым внутри."
+          "rationaleRu": "Движущийся поток поддерживает рекомендацию оставаться пристёгнутым внутри.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-263-relevance-3",
@@ -14421,7 +14543,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Мост на дальнем плане можно приглушить."
+          "rationaleRu": "Мост на дальнем плане можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -14499,7 +14622,8 @@
             "b-fallback-264-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Положение автомобиля B на пересечении является главным признаком приоритета."
+          "rationaleRu": "Положение автомобиля B на пересечении является главным признаком приоритета.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-264-relevance-2",
@@ -14516,7 +14640,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Автомобиль A нужен для сравнения взаимного расположения."
+          "rationaleRu": "Автомобиль A нужен для сравнения взаимного расположения.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-264-relevance-3",
@@ -14535,7 +14660,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Разметка и здания создают контекст, но не меняют выбранный автомобиль."
+          "rationaleRu": "Разметка и здания создают контекст, но не меняют выбранный автомобиль.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -14597,7 +14723,8 @@
             "b-fallback-265-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Две белые стрелки в стороны являются главным значением знака."
+          "rationaleRu": "Две белые стрелки в стороны являются главным значением знака.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-265-relevance-2",
@@ -14612,7 +14739,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Синий круг оставляет тип знака, но не добавляет отдельный ответ."
+          "rationaleRu": "Синий круг оставляет тип знака, но не добавляет отдельный ответ.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -14693,7 +14821,8 @@
             "b-fallback-267-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Разметка и знак 20 вместе задают разрешённую скорость."
+          "rationaleRu": "Разметка и знак 20 вместе задают разрешённую скорость.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-267-relevance-2",
@@ -14708,7 +14837,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Припаркованные машины и здания можно приглушить."
+          "rationaleRu": "Припаркованные машины и здания можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -14807,7 +14937,8 @@
             "b-fallback-268-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Скорая и центральный коридор показывают цель манёвра."
+          "rationaleRu": "Скорая и центральный коридор показывают цель манёвра.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-268-relevance-2",
@@ -14826,7 +14957,8 @@
             "b-fallback-268-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Автомобиль 1 должен освободить коридор влево."
+          "rationaleRu": "Автомобиль 1 должен освободить коридор влево.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-268-relevance-3",
@@ -14845,7 +14977,8 @@
             "b-fallback-268-a3"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Автомобиль 2 должен освободить коридор вправо."
+          "rationaleRu": "Автомобиль 2 должен освободить коридор вправо.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-268-relevance-4",
@@ -14863,7 +14996,8 @@
             "b-fallback-268-a1",
             "b-fallback-268-a2"
           ],
-          "rationaleRu": "Большие стрелки движения не означают, что оба автомобиля должны уйти вправо."
+          "rationaleRu": "Большие стрелки движения не означают, что оба автомобиля должны уйти вправо.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -14927,7 +15061,8 @@
             "b-fallback-272-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Пешеходы на переходе являются главным запретом движения вперёд."
+          "rationaleRu": "Пешеходы на переходе являются главным запретом движения вперёд.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-272-relevance-2",
@@ -14947,7 +15082,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Такси и зебра показывают конфликт движения с переходом."
+          "rationaleRu": "Такси и зебра показывают конфликт движения с переходом.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-272-relevance-3",
@@ -14962,7 +15098,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Дальние машины и здание не меняют наличие пешеходов."
+          "rationaleRu": "Дальние машины и здание не меняют наличие пешеходов.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",
@@ -15024,7 +15161,8 @@
             "b-fallback-273-a2"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Две стрелки вокруг разделителя являются главным символом разделённой проезжей части."
+          "rationaleRu": "Две стрелки вокруг разделителя являются главным символом разделённой проезжей части.",
+          "confidence": "high"
         },
         {
           "relevanceId": "b-fallback-273-relevance-2",
@@ -15039,7 +15177,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Жёлтый фон можно приглушить относительно символа."
+          "rationaleRu": "Жёлтый фон можно приглушить относительно символа.",
+          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -15101,7 +15240,8 @@
             "b-fallback-274-a1"
           ],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Городской указатель на столбе является главным пешеходным информационным знаком."
+          "rationaleRu": "Городской указатель на столбе является главным пешеходным информационным знаком.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-274-relevance-2",
@@ -15118,7 +15258,8 @@
           "displayIntent": "keep_visible",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Столб и тротуар показывают пешеходное размещение знака."
+          "rationaleRu": "Столб и тротуар показывают пешеходное размещение знака.",
+          "confidence": "medium"
         },
         {
           "relevanceId": "b-fallback-274-relevance-3",
@@ -15133,7 +15274,8 @@
           "displayIntent": "dim",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
-          "rationaleRu": "Дверь и фасад можно приглушить."
+          "rationaleRu": "Дверь и фасад можно приглушить.",
+          "confidence": "medium"
         }
       ],
       "imageRole": "answer_critical",

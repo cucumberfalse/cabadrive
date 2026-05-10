@@ -8970,37 +8970,49 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "pedestrian-safety-interventions",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Именно эти выделенные элементы показывают защиту пешеходов.",
           "answerIds": [
             "b-fallback-369-a1"
+          ],
+          "relevanceId": "q369-highlight-pedestrian-safety-interventions",
+          "confidence": "high",
+          "detailIds": [
+            "pedestrian-safety-interventions"
           ]
         },
         {
-          "targetId": "painted-speed-20-road-marking",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Ограничение скорости поддерживает смысл успокоения движения.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q369-supporting-painted-speed-20-road-marking",
+          "confidence": "high",
+          "detailIds": [
+            "painted-speed-20-road-marking"
+          ]
         },
         {
-          "targetId": "background-cars",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Наличие машин не делает целью ускорение автомобильного потока.",
           "answerIds": [
             "b-fallback-369-a2",
             "b-fallback-369-a3"
+          ],
+          "relevanceId": "q369-trap-background-cars",
+          "confidence": "medium",
+          "objectIds": [
+            "background-cars"
           ]
         },
         {
-          "targetId": "shops-and-buildings-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые здания и кафе не влияют на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q369-dim-shops-and-buildings-background",
+          "confidence": "medium",
+          "objectIds": [
+            "shops-and-buildings-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -9051,42 +9063,57 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "avenida-street-name-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Название проспекта отличает ответ 40 км/ч от варианта для обычной улицы.",
           "answerIds": [
             "b-fallback-370-a2"
+          ],
+          "relevanceId": "q370-highlight-avenida-street-name-sign",
+          "confidence": "high",
+          "detailIds": [
+            "avenida-street-name-sign"
           ]
         },
         {
-          "targetId": "unsignalized-avenue-intersection",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Отсутствие видимого светофора связывает изображение с условием вопроса.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q370-highlight-unsignalized-avenue-intersection",
+          "confidence": "medium",
+          "detailIds": [
+            "unsignalized-avenue-intersection"
+          ]
         },
         {
-          "targetId": "moving-cars",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Машины показывают обычное движение через перекрёсток.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q370-supporting-moving-cars",
+          "confidence": "high",
+          "objectIds": [
+            "moving-cars"
+          ]
         },
         {
-          "targetId": "tree-lined-buildings",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Деревья и здания являются фоном.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q370-dim-tree-lined-buildings",
+          "confidence": "medium",
+          "objectIds": [
+            "tree-lined-buildings"
+          ]
         },
         {
-          "targetId": "text-donado",
-          "targetType": "visibleText",
           "role": "distractor_trap",
           "rationaleRu": "Название боковой улицы не отменяет главный признак проспекта и не переводит ответ на 30 км/ч.",
           "answerIds": [
             "b-fallback-370-a3"
+          ],
+          "relevanceId": "q370-trap-text-donado",
+          "confidence": "high",
+          "detailIds": [
+            "text-donado"
           ]
         }
       ],
@@ -9127,36 +9154,48 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "vehicle-a-associated-with-avenue",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Связка метки A с проспектом является главным признаком приоритета.",
           "answerIds": [
             "b-fallback-372-a1"
+          ],
+          "relevanceId": "q372-highlight-vehicle-a-associated-with-avenue",
+          "confidence": "medium",
+          "detailIds": [
+            "vehicle-a-associated-with-avenue"
           ]
         },
         {
-          "targetId": "vehicle-b-side-street-marker",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Метка B может отвлечь на правило справа, но дорога B не является проспектом.",
           "answerIds": [
             "b-fallback-372-a2"
+          ],
+          "relevanceId": "q372-trap-vehicle-b-side-street-marker",
+          "confidence": "high",
+          "detailIds": [
+            "vehicle-b-side-street-marker"
           ]
         },
         {
-          "targetId": "intersection-roadway",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Перекрёсток без светофора задаёт ситуацию выбора приоритета.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q372-supporting-intersection-roadway",
+          "confidence": "high",
+          "objectIds": [
+            "intersection-roadway"
+          ]
         },
         {
-          "targetId": "trees-and-buildings-b100",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые деревья и дома не влияют на приоритет.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q372-dim-trees-and-buildings-b100",
+          "confidence": "medium",
+          "objectIds": [
+            "trees-and-buildings-b100"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -9196,43 +9235,58 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "driver-arm-outside-window",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Красный круг выделяет рискованное отвлекающее поведение.",
           "answerIds": [
             "b-fallback-374-a1"
+          ],
+          "relevanceId": "q374-highlight-driver-arm-outside-window",
+          "confidence": "high",
+          "detailIds": [
+            "driver-arm-outside-window"
           ]
         },
         {
-          "targetId": "white-lane-dashes",
-          "targetType": "roadLayout.markings",
           "role": "supporting",
           "rationaleRu": "Дорожная разметка подтверждает движение в потоке.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q374-supporting-white-lane-dashes",
+          "confidence": "medium",
+          "detailIds": [
+            "white-lane-dashes"
+          ]
         },
         {
-          "targetId": "taxi-foreground-right",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Ближнее такси задаёт контекст, но не является причиной ответа.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q374-dim-taxi-foreground-right",
+          "confidence": "high",
+          "objectIds": [
+            "taxi-foreground-right"
+          ]
         },
         {
-          "targetId": "white-van-ahead",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые транспортные средства не меняют смысл жеста.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q374-dim-white-van-ahead",
+          "confidence": "medium",
+          "objectIds": [
+            "white-van-ahead"
+          ]
         },
         {
-          "targetId": "driver-arm-outside-window",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Та же выделенная рука показывает отвлечение не только на высокой скорости и отсекает вариант о пользе для внимания.",
           "answerIds": [
             "b-fallback-374-a2",
             "b-fallback-374-a3"
+          ],
+          "relevanceId": "q374-trap-driver-arm-outside-window",
+          "confidence": "high",
+          "detailIds": [
+            "driver-arm-outside-window"
           ]
         }
       ],
@@ -9272,43 +9326,58 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "speed-limit-20-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Видимый знак «20» прямо задаёт правильную скорость.",
           "answerIds": [
             "b-fallback-377-a1"
+          ],
+          "relevanceId": "q377-highlight-speed-limit-20-sign",
+          "confidence": "high",
+          "detailIds": [
+            "speed-limit-20-sign"
           ]
         },
         {
-          "targetId": "painted-20-road-marking-b139",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Разметка 20 на дороге подтверждает тот же предел.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q377-supporting-painted-20-road-marking-b139",
+          "confidence": "medium",
+          "detailIds": [
+            "painted-20-road-marking-b139"
+          ]
         },
         {
-          "targetId": "school-crossing-warning-sign",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Школьный знак объясняет повышенную осторожность рядом.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q377-supporting-school-crossing-warning-sign",
+          "confidence": "high",
+          "detailIds": [
+            "school-crossing-warning-sign"
+          ]
         },
         {
-          "targetId": "parked-cars-right",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Припаркованные автомобили не влияют на числовой ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q377-dim-parked-cars-right",
+          "confidence": "high",
+          "objectIds": [
+            "parked-cars-right"
+          ]
         },
         {
-          "targetId": "speed-limit-20-sign",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Видимый знак 20 отсекает числовые ловушки 40 и 30 км/ч.",
           "answerIds": [
             "b-fallback-377-a2",
             "b-fallback-377-a3"
+          ],
+          "relevanceId": "q377-trap-speed-limit-20-sign",
+          "confidence": "high",
+          "detailIds": [
+            "speed-limit-20-sign"
           ]
         }
       ],
@@ -9349,42 +9418,57 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "rear-warning-lights-highlighted",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Два выделенных задних огня показывают правильное предупреждение о манёвре.",
           "answerIds": [
             "b-fallback-378-a1"
+          ],
+          "relevanceId": "q378-highlight-rear-warning-lights-highlighted",
+          "confidence": "high",
+          "detailIds": [
+            "rear-warning-lights-highlighted"
           ]
         },
         {
-          "targetId": "parking-garage-sign-right",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Знак справа поддерживает контекст заезда к правому краю или в гараж.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q378-supporting-parking-garage-sign-right",
+          "confidence": "medium",
+          "detailIds": [
+            "parking-garage-sign-right"
+          ]
         },
         {
-          "targetId": "avenue-traffic",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Остальной поток нужен только как фон.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q378-dim-avenue-traffic",
+          "confidence": "medium",
+          "objectIds": [
+            "avenue-traffic"
+          ]
         },
         {
-          "targetId": "red-circles-rear-lights",
-          "targetType": "annotation",
           "role": "supporting",
           "rationaleRu": "Красные круги помогают увидеть именно сигнальные огни.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q378-supporting-red-circles-rear-lights",
+          "confidence": "medium",
+          "detailIds": [
+            "red-circles-rear-lights"
+          ]
         },
         {
-          "targetId": "rear-warning-lights-highlighted",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Выделенные задние огни отсекают ответ, что манёвр не предупреждён.",
           "answerIds": [
             "b-fallback-378-a2"
+          ],
+          "relevanceId": "q378-trap-rear-warning-lights-highlighted",
+          "confidence": "high",
+          "detailIds": [
+            "rear-warning-lights-highlighted"
           ]
         }
       ],
@@ -9424,43 +9508,58 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "red-white-obstacle-panel",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Форма и красно-белые диагональные полосы определяют знак.",
           "answerIds": [
             "b-fallback-379-a1"
+          ],
+          "relevanceId": "q379-highlight-red-white-obstacle-panel",
+          "confidence": "high",
+          "detailIds": [
+            "red-white-obstacle-panel"
           ]
         },
         {
-          "targetId": "region-full-obstacle-panel",
-          "targetType": "region",
           "role": "answer_critical_highlight",
           "rationaleRu": "Весь знак является объектом распознавания.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q379-highlight-region-full-obstacle-panel",
+          "confidence": "high",
+          "regionIds": [
+            "region-full-obstacle-panel"
+          ]
         },
         {
-          "targetId": "plain-white-background-b244",
-          "targetType": "background",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Белый фон не несёт экзаменационного смысла.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q379-dim-plain-white-background-b244",
+          "confidence": "high",
+          "objectIds": [
+            "plain-white-background-b244"
+          ]
         },
         {
-          "targetId": "red-white-obstacle-panel",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Отсутствие пиктограммы дороги или запрещающего круга отсекает неверные варианты.",
           "answerIds": [
             "b-fallback-379-a2",
             "b-fallback-379-a3"
+          ],
+          "relevanceId": "q379-trap-red-white-obstacle-panel",
+          "confidence": "high",
+          "detailIds": [
+            "red-white-obstacle-panel"
           ]
         },
         {
-          "targetId": "region-full-obstacle-panel",
-          "targetType": "region",
           "role": "supporting",
-          "rationaleRu": "Вся форма вертикальной панели помогает отличить её от знака сужения дороги."
+          "rationaleRu": "Вся форма вертикальной панели помогает отличить её от знака сужения дороги.",
+          "relevanceId": "q379-supporting-region-full-obstacle-panel",
+          "confidence": "high",
+          "regionIds": [
+            "region-full-obstacle-panel"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -9499,43 +9598,58 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "cyclist-left-arm-straight",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Положение левой руки — главный признак поворота налево.",
           "answerIds": [
             "b-fallback-380-a1"
+          ],
+          "relevanceId": "q380-highlight-cyclist-left-arm-straight",
+          "confidence": "high",
+          "detailIds": [
+            "cyclist-left-arm-straight"
           ]
         },
         {
-          "targetId": "red-oval-left-arm",
-          "targetType": "annotation",
           "role": "supporting",
           "rationaleRu": "Красный овал указывает, какую часть картинки анализировать.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q380-supporting-red-oval-left-arm",
+          "confidence": "medium",
+          "detailIds": [
+            "red-oval-left-arm"
+          ]
         },
         {
-          "targetId": "zebra-crossings-b12",
-          "targetType": "roadLayout.crossings",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Переходы и улица не меняют значение жеста.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q380-dim-zebra-crossings-b12",
+          "confidence": "medium",
+          "detailIds": [
+            "zebra-crossings-b12"
+          ]
         },
         {
-          "targetId": "parked-cars-b12",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Припаркованные машины являются фоном.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q380-dim-parked-cars-b12",
+          "confidence": "medium",
+          "objectIds": [
+            "parked-cars-b12"
+          ]
         },
         {
-          "targetId": "cyclist-left-arm-straight",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Горизонтальная рука в сторону отсекает остановку и не указывает на обгон.",
           "answerIds": [
             "b-fallback-380-a2",
             "b-fallback-380-a3"
+          ],
+          "relevanceId": "q380-trap-cyclist-left-arm-straight",
+          "confidence": "high",
+          "detailIds": [
+            "cyclist-left-arm-straight"
           ]
         }
       ],
@@ -9587,44 +9701,59 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "speed-limit-20-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Сам знак «20» задаёт обязательное ограничение.",
           "answerIds": [
             "b-fallback-381-a1"
+          ],
+          "relevanceId": "q381-highlight-speed-limit-20-sign",
+          "confidence": "high",
+          "detailIds": [
+            "speed-limit-20-sign"
           ]
         },
         {
-          "targetId": "no-schedule-panel-on-speed-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Отсутствие расписания на знаке отвергает ответ «только в школьные часы».",
           "answerIds": [
             "b-fallback-381-a1"
+          ],
+          "relevanceId": "q381-highlight-no-schedule-panel-on-speed-sign",
+          "confidence": "medium",
+          "detailIds": [
+            "no-schedule-panel-on-speed-sign"
           ]
         },
         {
-          "targetId": "school-crossing-warning-sign",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Школьный знак может соблазнить выбрать расписание, но он не ограничивает действие знака скорости.",
           "answerIds": [
             "b-fallback-381-a2"
+          ],
+          "relevanceId": "q381-trap-school-crossing-warning-sign",
+          "confidence": "high",
+          "detailIds": [
+            "school-crossing-warning-sign"
           ]
         },
         {
-          "targetId": "parked-cars-b141",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Припаркованные автомобили не влияют на режим действия знака.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q381-dim-parked-cars-b141",
+          "confidence": "high",
+          "objectIds": [
+            "parked-cars-b141"
+          ]
         },
         {
-          "targetId": "school-crossing-warning-sign",
-          "targetType": "visualDetail",
           "role": "supporting",
-          "rationaleRu": "Школьный знак объясняет осторожный участок, но круглый знак скорости остаётся отдельным указанием."
+          "rationaleRu": "Школьный знак объясняет осторожный участок, но круглый знак скорости остаётся отдельным указанием.",
+          "relevanceId": "q381-supporting-school-crossing-warning-sign",
+          "confidence": "high",
+          "detailIds": [
+            "school-crossing-warning-sign"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -9663,36 +9792,48 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "green-direction-distance-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Зелёный указатель с направлениями и расстояниями определяет информационный тип.",
           "answerIds": [
             "b-fallback-383-a3"
+          ],
+          "relevanceId": "q383-highlight-green-direction-distance-sign",
+          "confidence": "high",
+          "detailIds": [
+            "green-direction-distance-sign"
           ]
         },
         {
-          "targetId": "text-arrecifes-33",
-          "targetType": "visibleText",
           "role": "supporting",
           "rationaleRu": "Текст с населённым пунктом и расстоянием поддерживает информационный характер.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q383-supporting-text-arrecifes-33",
+          "confidence": "high",
+          "detailIds": [
+            "text-arrecifes-33"
+          ]
         },
         {
-          "targetId": "road-left-b86",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Дорога слева является контекстом установки знака.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q383-dim-road-left-b86",
+          "confidence": "medium",
+          "objectIds": [
+            "road-left-b86"
+          ]
         },
         {
-          "targetId": "green-direction-distance-sign",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Отсутствие запрета или предупреждающей опасности отсекает два неверных типа.",
           "answerIds": [
             "b-fallback-383-a1",
             "b-fallback-383-a2"
+          ],
+          "relevanceId": "q383-trap-green-direction-distance-sign",
+          "confidence": "high",
+          "detailIds": [
+            "green-direction-distance-sign"
           ]
         }
       ],
@@ -9732,43 +9873,58 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "truck-right-arrow-symbol",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Грузовик и стрелка направо дают правильный смысл знака.",
           "answerIds": [
             "b-fallback-384-a3"
+          ],
+          "relevanceId": "q384-highlight-truck-right-arrow-symbol",
+          "confidence": "high",
+          "detailIds": [
+            "truck-right-arrow-symbol"
           ]
         },
         {
-          "targetId": "region-truck-arrow-sign",
-          "targetType": "region",
           "role": "answer_critical_highlight",
           "rationaleRu": "Распознаётся весь круглый знак.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q384-highlight-region-truck-arrow-sign",
+          "confidence": "high",
+          "regionIds": [
+            "region-truck-arrow-sign"
+          ]
         },
         {
-          "targetId": "truck-right-arrow-symbol",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Стрелка не означает обгон, а грузовик не делает знак дорогой только для грузовиков.",
           "answerIds": [
             "b-fallback-384-a1",
             "b-fallback-384-a2"
+          ],
+          "relevanceId": "q384-trap-truck-right-arrow-symbol",
+          "confidence": "high",
+          "detailIds": [
+            "truck-right-arrow-symbol"
           ]
         },
         {
-          "targetId": "plain-white-background-b252",
-          "targetType": "background",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Белый фон не влияет на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q384-dim-plain-white-background-b252",
+          "confidence": "high",
+          "objectIds": [
+            "plain-white-background-b252"
+          ]
         },
         {
-          "targetId": "region-truck-arrow-sign",
-          "targetType": "region",
           "role": "supporting",
-          "rationaleRu": "Распознавание всего круглого знака поддерживает чтение стрелки и грузовика вместе."
+          "rationaleRu": "Распознавание всего круглого знака поддерживает чтение стрелки и грузовика вместе.",
+          "relevanceId": "q384-supporting-region-truck-arrow-sign",
+          "confidence": "high",
+          "regionIds": [
+            "region-truck-arrow-sign"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -9809,43 +9965,58 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "pedestrian-on-zebra-crossing",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Пешеход на переходе определяет приоритет.",
           "answerIds": [
             "b-fallback-385-a1"
+          ],
+          "relevanceId": "q385-highlight-pedestrian-on-zebra-crossing",
+          "confidence": "medium",
+          "detailIds": [
+            "pedestrian-on-zebra-crossing"
           ]
         },
         {
-          "targetId": "taxi-near-crosswalk",
-          "targetType": "spatialRelationship",
           "role": "supporting",
           "rationaleRu": "Автомобиль рядом с переходом показывает конфликтную ситуацию.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q385-supporting-taxi-near-crosswalk",
+          "confidence": "medium",
+          "detailIds": [
+            "taxi-near-crosswalk"
+          ]
         },
         {
-          "targetId": "green-bike-lane",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Велополоса на ответ о приоритете пешехода не влияет.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q385-dim-green-bike-lane",
+          "confidence": "medium",
+          "objectIds": [
+            "green-bike-lane"
+          ]
         },
         {
-          "targetId": "traffic-light-left",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые светофоры не являются выбранным признаком билета.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q385-dim-traffic-light-left",
+          "confidence": "medium",
+          "objectIds": [
+            "traffic-light-left"
+          ]
         },
         {
-          "targetId": "pedestrian-on-zebra-crossing",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Пешеход на переходе отсекает варианты о приоритете водителя и произвольном выборе.",
           "answerIds": [
             "b-fallback-385-a2",
             "b-fallback-385-a3"
+          ],
+          "relevanceId": "q385-trap-pedestrian-on-zebra-crossing",
+          "confidence": "medium",
+          "detailIds": [
+            "pedestrian-on-zebra-crossing"
           ]
         }
       ],
@@ -9886,35 +10057,47 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "fuel-nozzle-in-car",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Топливный пистолет в баке показывает ситуацию заправки.",
           "answerIds": [
             "b-fallback-386-a2"
+          ],
+          "relevanceId": "q386-highlight-fuel-nozzle-in-car",
+          "confidence": "high",
+          "detailIds": [
+            "fuel-nozzle-in-car"
           ]
         },
         {
-          "targetId": "fuel-hose",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Шланг подтверждает подключение к колонке.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q386-supporting-fuel-hose",
+          "confidence": "high",
+          "objectIds": [
+            "fuel-hose"
+          ]
         },
         {
-          "targetId": "text-forester",
-          "targetType": "visibleText",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Модель автомобиля не влияет на правило.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q386-dim-text-forester",
+          "confidence": "high",
+          "detailIds": [
+            "text-forester"
+          ]
         },
         {
-          "targetId": "fuel-nozzle-in-car",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Картинка проверяет запрет во время заправки, а не просто место у колонки.",
           "answerIds": [
             "b-fallback-386-a1"
+          ],
+          "relevanceId": "q386-trap-fuel-nozzle-in-car",
+          "confidence": "high",
+          "detailIds": [
+            "fuel-nozzle-in-car"
           ]
         }
       ],
@@ -9955,35 +10138,47 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "ordinary-street-intersection-no-signal",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Обычное пересечение улиц без светофора ведёт к ответу 30 км/ч.",
           "answerIds": [
             "b-fallback-387-a3"
+          ],
+          "relevanceId": "q387-highlight-ordinary-street-intersection-no-signal",
+          "confidence": "medium",
+          "detailIds": [
+            "ordinary-street-intersection-no-signal"
           ]
         },
         {
-          "targetId": "zebra-crossing-object-b142",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Переход подчёркивает зону перекрёстка.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q387-supporting-zebra-crossing-object-b142",
+          "confidence": "high",
+          "objectIds": [
+            "zebra-crossing-object-b142"
+          ]
         },
         {
-          "targetId": "black-direction-signs-b142",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Настенные указатели не меняют числовой предел.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q387-dim-black-direction-signs-b142",
+          "confidence": "medium",
+          "objectIds": [
+            "black-direction-signs-b142"
+          ]
         },
         {
-          "targetId": "ordinary-street-intersection-no-signal",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "То, что это не проспект, отсекает 40 км/ч.",
           "answerIds": [
             "b-fallback-387-a2"
+          ],
+          "relevanceId": "q387-trap-ordinary-street-intersection-no-signal",
+          "confidence": "medium",
+          "detailIds": [
+            "ordinary-street-intersection-no-signal"
           ]
         }
       ],
@@ -10023,35 +10218,47 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "one-way-street-direction-signs",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Стрелки показывают тип улицы и сторону приближения транспорта.",
           "answerIds": [
             "b-fallback-388-a3"
+          ],
+          "relevanceId": "q388-highlight-one-way-street-direction-signs",
+          "confidence": "medium",
+          "detailIds": [
+            "one-way-street-direction-signs"
           ]
         },
         {
-          "targetId": "grey-car-on-one-way-street",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Автомобиль на такой улице создаёт контекст неподвижного транспортного средства.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q388-supporting-grey-car-on-one-way-street",
+          "confidence": "high",
+          "detailIds": [
+            "grey-car-on-one-way-street"
+          ]
         },
         {
-          "targetId": "zebra-crossing-edge-b43",
-          "targetType": "roadLayout.markings",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Край перехода не влияет на способ выставления аварийных знаков.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q388-dim-zebra-crossing-edge-b43",
+          "confidence": "medium",
+          "detailIds": [
+            "zebra-crossing-edge-b43"
+          ]
         },
         {
-          "targetId": "one-way-street-direction-signs",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Одностороннее движение отсекает схему с обозначением спереди и сзади как для двусторонней дороги.",
           "answerIds": [
             "b-fallback-388-a1"
+          ],
+          "relevanceId": "q388-trap-one-way-street-direction-signs",
+          "confidence": "medium",
+          "detailIds": [
+            "one-way-street-direction-signs"
           ]
         }
       ],
@@ -10119,38 +10326,50 @@
       },
       "relevanceMap": [
         {
-          "targetId": "circled-curbside-merging-car",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Выделенный автомобиль только въезжает в поток, поэтому должен уступить.",
           "answerIds": [
             "b-fallback-389-a1"
+          ],
+          "relevanceId": "q389-highlight-circled-curbside-merging-car",
+          "confidence": "high",
+          "detailIds": [
+            "circled-curbside-merging-car"
           ]
         },
         {
-          "targetId": "moving-traffic-in-target-lane",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Движущиеся автомобили показывают, кому нужно уступить.",
           "answerIds": [
             "b-fallback-389-a1"
+          ],
+          "relevanceId": "q389-supporting-moving-traffic-in-target-lane",
+          "confidence": "high",
+          "detailIds": [
+            "moving-traffic-in-target-lane"
           ]
         },
         {
-          "targetId": "right-side-position-trap",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Положение справа не дает преимущества при выезде в поток.",
           "answerIds": [
             "b-fallback-389-a2"
+          ],
+          "relevanceId": "q389-trap-right-side-position-trap",
+          "confidence": "medium",
+          "detailIds": [
+            "right-side-position-trap"
           ]
         },
         {
-          "targetId": "right-sidewalk-and-building",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые здания и тротуар не влияют на правило приоритета.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q389-dim-right-sidewalk-and-building",
+          "confidence": "medium",
+          "objectIds": [
+            "right-sidewalk-and-building"
+          ]
         }
       ]
     },
@@ -10193,37 +10412,49 @@
       },
       "relevanceMap": [
         {
-          "targetId": "reduced-visibility-rainy-street",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Сниженная видимость из-за дождя является причиной включить ближний свет.",
           "answerIds": [
             "b-fallback-390-a1"
+          ],
+          "relevanceId": "q390-highlight-reduced-visibility-rainy-street",
+          "confidence": "high",
+          "detailIds": [
+            "reduced-visibility-rainy-street"
           ]
         },
         {
-          "targetId": "daytime-urban-context",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Дневное и городское окружение опровергает варианты «только ночью» и «только на трассе».",
           "answerIds": [
             "b-fallback-390-a2",
             "b-fallback-390-a3"
+          ],
+          "relevanceId": "q390-trap-daytime-urban-context",
+          "confidence": "medium",
+          "detailIds": [
+            "daytime-urban-context"
           ]
         },
         {
-          "targetId": "sidewalk-pedestrians",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Пешеходы в городе усиливают требование быть заметным.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q390-supporting-sidewalk-pedestrians",
+          "confidence": "medium",
+          "objectIds": [
+            "sidewalk-pedestrians"
+          ]
         },
         {
-          "targetId": "old-building-facades",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фасады помогают понять место, но не меняют ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q390-dim-old-building-facades",
+          "confidence": "medium",
+          "objectIds": [
+            "old-building-facades"
+          ]
         }
       ]
     },
@@ -10266,35 +10497,47 @@
       },
       "relevanceMap": [
         {
-          "targetId": "fog-reduced-visibility-road",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Туман и короткая видимость определяют скоростной предел в билете.",
           "answerIds": [
             "b-fallback-391-a1"
+          ],
+          "relevanceId": "q391-highlight-fog-reduced-visibility-road",
+          "confidence": "high",
+          "detailIds": [
+            "fog-reduced-visibility-road"
           ]
         },
         {
-          "targetId": "double-yellow-road-layout",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Разметка подтверждает, что это обычная дорога с встречным движением.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q391-supporting-double-yellow-road-layout",
+          "confidence": "medium",
+          "detailIds": [
+            "double-yellow-road-layout"
+          ]
         },
         {
-          "targetId": "roadside-vegetation",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Растительность у дороги не определяет числовой ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q391-dim-roadside-vegetation",
+          "confidence": "medium",
+          "objectIds": [
+            "roadside-vegetation"
+          ]
         },
         {
-          "targetId": "two-lane-road",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Открытая дорога может соблазнить выбрать большую скорость, но туман важнее.",
           "answerIds": [
             "b-fallback-391-a2"
+          ],
+          "relevanceId": "q391-trap-two-lane-road",
+          "confidence": "high",
+          "objectIds": [
+            "two-lane-road"
           ]
         }
       ]
@@ -10355,37 +10598,49 @@
       },
       "relevanceMap": [
         {
-          "targetId": "driver-single-earbud-phone-use",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Вариант A тоже является телефонным отвлечением за рулем.",
           "answerIds": [
             "b-fallback-392-a3"
+          ],
+          "relevanceId": "q392-highlight-driver-single-earbud-phone-use",
+          "confidence": "high",
+          "detailIds": [
+            "driver-single-earbud-phone-use"
           ]
         },
         {
-          "targetId": "hands-free-phone-use",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Вариант B освобождает руки, но не внимание водителя.",
           "answerIds": [
             "b-fallback-392-a3"
+          ],
+          "relevanceId": "q392-highlight-hands-free-phone-use",
+          "confidence": "high",
+          "detailIds": [
+            "hands-free-phone-use"
           ]
         },
         {
-          "targetId": "yellow-labels-a-b",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Метки A и B связывают изображение с вариантами ответа.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q392-supporting-yellow-labels-a-b",
+          "confidence": "high",
+          "objectIds": [
+            "yellow-labels-a-b"
+          ]
         },
         {
-          "targetId": "rear-view-mirror-device",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Наличие устройства громкой связи может ошибочно казаться безопасным.",
           "answerIds": [
             "b-fallback-392-a2"
+          ],
+          "relevanceId": "q392-trap-rear-view-mirror-device",
+          "confidence": "medium",
+          "objectIds": [
+            "rear-view-mirror-device"
           ]
         }
       ]
@@ -10430,39 +10685,51 @@
       },
       "relevanceMap": [
         {
-          "targetId": "mandatory-safety-items-b-c-d",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Группа B, C и D соответствует правильному набору предметов.",
           "answerIds": [
             "b-fallback-393-a2"
+          ],
+          "relevanceId": "q393-highlight-mandatory-safety-items-b-c-d",
+          "confidence": "high",
+          "detailIds": [
+            "mandatory-safety-items-b-c-d"
           ]
         },
         {
-          "targetId": "item-a-first-aid-kit",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Аптечка A видна, но в этом билете не входит в правильный набор.",
           "answerIds": [
             "b-fallback-393-a1",
             "b-fallback-393-a3"
+          ],
+          "relevanceId": "q393-trap-item-a-first-aid-kit",
+          "confidence": "high",
+          "detailIds": [
+            "item-a-first-aid-kit"
           ]
         },
         {
-          "targetId": "item-e-blue-tow-bar",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Предмет E виден, но отвлекает от требуемой группы B, C и D.",
           "answerIds": [
             "b-fallback-393-a3"
+          ],
+          "relevanceId": "q393-trap-item-e-blue-tow-bar",
+          "confidence": "medium",
+          "detailIds": [
+            "item-e-blue-tow-bar"
           ]
         },
         {
-          "targetId": "trunk-mat-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фон багажника не влияет на выбор набора.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q393-dim-trunk-mat-background",
+          "confidence": "medium",
+          "objectIds": [
+            "trunk-mat-background"
+          ]
         }
       ]
     },
@@ -10504,34 +10771,46 @@
       },
       "relevanceMap": [
         {
-          "targetId": "flashing-yellow-traffic-signal",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Мигающий желтый сигнал требует максимальной осторожности.",
           "answerIds": [
             "b-fallback-394-a3"
+          ],
+          "relevanceId": "q394-highlight-flashing-yellow-traffic-signal",
+          "confidence": "high",
+          "detailIds": [
+            "flashing-yellow-traffic-signal"
           ]
         },
         {
-          "targetId": "urban-intersection-crosswalk",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Перекресток и переход объясняют, почему осторожность важна.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q394-supporting-urban-intersection-crosswalk",
+          "confidence": "medium",
+          "detailIds": [
+            "urban-intersection-crosswalk"
+          ]
         },
         {
-          "targetId": "foreground-black-car",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Передняя машина не меняет значение сигнала.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q394-dim-foreground-black-car",
+          "confidence": "high",
+          "objectIds": [
+            "foreground-black-car"
+          ]
         },
         {
-          "targetId": "red-circle-yellow-signal",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Красная отметка показывает, на какой сигнал смотреть.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q394-supporting-red-circle-yellow-signal",
+          "confidence": "medium",
+          "objectIds": [
+            "red-circle-yellow-signal"
+          ]
         }
       ]
     },
@@ -10574,36 +10853,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "car-parked-in-bike-lane",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Автомобиль стоит на велосипедной полосе и мешает велосипедистам.",
           "answerIds": [
             "b-fallback-396-a3"
+          ],
+          "relevanceId": "q396-highlight-car-parked-in-bike-lane",
+          "confidence": "high",
+          "detailIds": [
+            "car-parked-in-bike-lane"
           ]
         },
         {
-          "targetId": "protected-bike-lane-markings",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Желтая защита и разметка показывают назначение полосы.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q396-supporting-protected-bike-lane-markings",
+          "confidence": "high",
+          "detailIds": [
+            "protected-bike-lane-markings"
+          ]
         },
         {
-          "targetId": "right-sidewalk-building",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фон тротуара и здания не влияет на запрет.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q396-dim-right-sidewalk-building",
+          "confidence": "medium",
+          "objectIds": [
+            "right-sidewalk-building"
+          ]
         },
         {
-          "targetId": "beige-car-in-bike-lane",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "То, что машина стоит у бордюра, не делает парковку допустимой.",
           "answerIds": [
             "b-fallback-396-a1",
             "b-fallback-396-a2"
+          ],
+          "relevanceId": "q396-trap-beige-car-in-bike-lane",
+          "confidence": "high",
+          "objectIds": [
+            "beige-car-in-bike-lane"
           ]
         }
       ]
@@ -10648,34 +10939,46 @@
       },
       "relevanceMap": [
         {
-          "targetId": "red-white-diagonal-warning-panels",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Красно-белые диагональные панели являются предупреждающими щитами.",
           "answerIds": [
             "b-fallback-397-a1"
+          ],
+          "relevanceId": "q397-highlight-red-white-diagonal-warning-panels",
+          "confidence": "high",
+          "detailIds": [
+            "red-white-diagonal-warning-panels"
           ]
         },
         {
-          "targetId": "warning-panel-three-stripes",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Несколько полос усиливают видимость панели, но не меняют ее тип.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q397-supporting-warning-panel-three-stripes",
+          "confidence": "high",
+          "objectIds": [
+            "warning-panel-three-stripes"
+          ]
         },
         {
-          "targetId": "warning-panel-one-stripe",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Все три панели относятся к одному виду предупреждающих элементов.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q397-supporting-warning-panel-one-stripe",
+          "confidence": "high",
+          "objectIds": [
+            "warning-panel-one-stripe"
+          ]
         },
         {
-          "targetId": "region-three-warning-panels",
-          "targetType": "region",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Пустой белый фон можно приглушить, он не несет ответа.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q397-dim-region-three-warning-panels",
+          "confidence": "medium",
+          "regionIds": [
+            "region-three-warning-panels"
+          ]
         }
       ]
     },
@@ -10718,38 +11021,50 @@
       },
       "relevanceMap": [
         {
-          "targetId": "pedestrian-right-direction-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Фигура пешехода и стрелка вправо дают смысл знака.",
           "answerIds": [
             "b-fallback-399-a3"
+          ],
+          "relevanceId": "q399-highlight-pedestrian-right-direction-sign",
+          "confidence": "high",
+          "detailIds": [
+            "pedestrian-right-direction-sign"
           ]
         },
         {
-          "targetId": "red-ring-sign-face",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Красная рамка может напоминать запрет, но символ не запрещает пешеходов.",
           "answerIds": [
             "b-fallback-399-a2"
+          ],
+          "relevanceId": "q399-trap-red-ring-sign-face",
+          "confidence": "high",
+          "objectIds": [
+            "red-ring-sign-face"
           ]
         },
         {
-          "targetId": "right-arrow-symbol",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Стрелка уточняет сторону движения.",
           "answerIds": [
             "b-fallback-399-a3"
+          ],
+          "relevanceId": "q399-supporting-right-arrow-symbol",
+          "confidence": "high",
+          "objectIds": [
+            "right-arrow-symbol"
           ]
         },
         {
-          "targetId": "region-pedestrian-arrow-sign",
-          "targetType": "region",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Белое поле вокруг символов не влияет на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q399-dim-region-pedestrian-arrow-sign",
+          "confidence": "medium",
+          "regionIds": [
+            "region-pedestrian-arrow-sign"
+          ]
         }
       ]
     },
@@ -10792,36 +11107,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "leftmost-lane-a-overtaking-lane",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Крайняя левая полоса A является полосой для обгона.",
           "answerIds": [
             "b-fallback-400-a2"
+          ],
+          "relevanceId": "q400-highlight-leftmost-lane-a-overtaking-lane",
+          "confidence": "high",
+          "detailIds": [
+            "leftmost-lane-a-overtaking-lane"
           ]
         },
         {
-          "targetId": "six-labelled-lanes-a-f",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Подписи A–F задают порядок полос слева направо.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q400-supporting-six-labelled-lanes-a-f",
+          "confidence": "high",
+          "detailIds": [
+            "six-labelled-lanes-a-f"
+          ]
         },
         {
-          "targetId": "rightmost-lane-f",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Полоса F справа отвлекает от правильной левой полосы.",
           "answerIds": [
             "b-fallback-400-a3"
+          ],
+          "relevanceId": "q400-trap-rightmost-lane-f",
+          "confidence": "high",
+          "objectIds": [
+            "rightmost-lane-f"
           ]
         },
         {
-          "targetId": "vehicles-ahead",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Машины впереди не определяют название полосы.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q400-dim-vehicles-ahead",
+          "confidence": "medium",
+          "objectIds": [
+            "vehicles-ahead"
+          ]
         }
       ]
     },
@@ -10865,35 +11192,47 @@
       },
       "relevanceMap": [
         {
-          "targetId": "uphill-curb-parking-wheels-to-road",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Положение на уклоне и угол колес определяют нужную меру предосторожности.",
           "answerIds": [
             "b-fallback-402-a2"
+          ],
+          "relevanceId": "q402-highlight-uphill-curb-parking-wheels-to-road",
+          "confidence": "medium",
+          "detailIds": [
+            "uphill-curb-parking-wheels-to-road"
           ]
         },
         {
-          "targetId": "curbside-slope-context",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Бордюр и уклон объясняют, почему колеса нельзя оставлять параллельно.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q402-supporting-curbside-slope-context",
+          "confidence": "medium",
+          "detailIds": [
+            "curbside-slope-context"
+          ]
         },
         {
-          "targetId": "building-facade-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фасад здания не влияет на выбор передачи и направления колес.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q402-dim-building-facade-background",
+          "confidence": "medium",
+          "objectIds": [
+            "building-facade-background"
+          ]
         },
         {
-          "targetId": "right-side-curb-by-suv-object",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Само наличие бордюра не означает, что колеса нужно повернуть к нему в этой ситуации.",
           "answerIds": [
             "b-fallback-402-a1"
+          ],
+          "relevanceId": "q402-trap-right-side-curb-by-suv-object",
+          "confidence": "high",
+          "objectIds": [
+            "right-side-curb-by-suv-object"
           ]
         }
       ]
@@ -10937,36 +11276,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "yellow-pedestrian-intervention-area",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Желтая зона является пешеходной интервенцией.",
           "answerIds": [
             "b-fallback-408-a1"
+          ],
+          "relevanceId": "q408-highlight-yellow-pedestrian-intervention-area",
+          "confidence": "high",
+          "detailIds": [
+            "yellow-pedestrian-intervention-area"
           ]
         },
         {
-          "targetId": "crosswalk-and-bollards-support",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Переход и болларды подтверждают пешеходное назначение зоны.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q408-supporting-crosswalk-and-bollards-support",
+          "confidence": "high",
+          "detailIds": [
+            "crosswalk-and-bollards-support"
+          ]
         },
         {
-          "targetId": "taxis-and-cars",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Наличие машин не делает зону автомобильной интервенцией.",
           "answerIds": [
             "b-fallback-408-a2"
+          ],
+          "relevanceId": "q408-trap-taxis-and-cars",
+          "confidence": "medium",
+          "objectIds": [
+            "taxis-and-cars"
           ]
         },
         {
-          "targetId": "storefronts-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые здания и витрины не влияют на термин.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q408-dim-storefronts-background",
+          "confidence": "medium",
+          "objectIds": [
+            "storefronts-background"
+          ]
         }
       ]
     },
@@ -11008,35 +11359,47 @@
       },
       "relevanceMap": [
         {
-          "targetId": "slippery-road-warning-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Знак скользкой дороги требует снизить скорость.",
           "answerIds": [
             "b-fallback-410-a1"
+          ],
+          "relevanceId": "q410-highlight-slippery-road-warning-sign",
+          "confidence": "high",
+          "detailIds": [
+            "slippery-road-warning-sign"
           ]
         },
         {
-          "targetId": "curving-road-support",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Поворот дороги усиливает необходимость осторожности.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q410-supporting-curving-road-support",
+          "confidence": "medium",
+          "detailIds": [
+            "curving-road-support"
+          ]
         },
         {
-          "targetId": "motorcyclist-on-road",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Мотоциклист не меняет значение знака.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q410-dim-motorcyclist-on-road",
+          "confidence": "medium",
+          "objectIds": [
+            "motorcyclist-on-road"
+          ]
         },
         {
-          "targetId": "slippery-road-sign-object",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Извилистые линии не обозначают маршрут налево-направо.",
           "answerIds": [
             "b-fallback-410-a3"
+          ],
+          "relevanceId": "q410-trap-slippery-road-sign-object",
+          "confidence": "high",
+          "objectIds": [
+            "slippery-road-sign-object"
           ]
         }
       ]
@@ -11081,34 +11444,46 @@
       },
       "relevanceMap": [
         {
-          "targetId": "underpass-limited-visibility-section",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Подмостовой участок с ограниченной видимостью запрещает обгон.",
           "answerIds": [
             "b-fallback-411-a2"
+          ],
+          "relevanceId": "q411-highlight-underpass-limited-visibility-section",
+          "confidence": "high",
+          "detailIds": [
+            "underpass-limited-visibility-section"
           ]
         },
         {
-          "targetId": "narrow-curved-lane-under-bridge",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Узкая кривая полоса объясняет опасность маневра.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q411-supporting-narrow-curved-lane-under-bridge",
+          "confidence": "medium",
+          "detailIds": [
+            "narrow-curved-lane-under-bridge"
+          ]
         },
         {
-          "targetId": "red-bordered-turn-sign",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Малый знак отвлекает: запрет обгона связан прежде всего с местом.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q411-trap-red-bordered-turn-sign",
+          "confidence": "medium",
+          "objectIds": [
+            "red-bordered-turn-sign"
+          ]
         },
         {
-          "targetId": "bridge-with-train",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Мост подтверждает тип участка.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q411-supporting-bridge-with-train",
+          "confidence": "medium",
+          "objectIds": [
+            "bridge-with-train"
+          ]
         }
       ]
     },
@@ -11150,34 +11525,46 @@
       },
       "relevanceMap": [
         {
-          "targetId": "hospital-entrance-zone",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Вход больницы задает специальный контекст для запрета парковки.",
           "answerIds": [
             "b-fallback-412-a2"
+          ],
+          "relevanceId": "q412-highlight-hospital-entrance-zone",
+          "confidence": "high",
+          "detailIds": [
+            "hospital-entrance-zone"
           ]
         },
         {
-          "targetId": "curbside-access-zone",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Бордюр перед входом показывает, о какой зоне идет речь.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q412-supporting-curbside-access-zone",
+          "confidence": "medium",
+          "detailIds": [
+            "curbside-access-zone"
+          ]
         },
         {
-          "targetId": "visible-text-hospital",
-          "targetType": "visibleText",
           "role": "supporting",
           "rationaleRu": "Надпись подтверждает, что это больница.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q412-supporting-visible-text-hospital",
+          "confidence": "medium",
+          "detailIds": [
+            "visible-text-hospital"
+          ]
         },
         {
-          "targetId": "sidewalk-trees",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Деревья на тротуаре не влияют на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q412-dim-sidewalk-trees",
+          "confidence": "medium",
+          "objectIds": [
+            "sidewalk-trees"
+          ]
         }
       ]
     },
@@ -11220,34 +11607,46 @@
       },
       "relevanceMap": [
         {
-          "targetId": "car-stopped-at-bus-stop-zone",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Машина занимает сектор остановки общественного транспорта.",
           "answerIds": [
             "b-fallback-413-a3"
+          ],
+          "relevanceId": "q413-highlight-car-stopped-at-bus-stop-zone",
+          "confidence": "high",
+          "detailIds": [
+            "car-stopped-at-bus-stop-zone"
           ]
         },
         {
-          "targetId": "bus-stop-shelter-context",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Павильон и пассажиры подтверждают назначение места.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q413-supporting-bus-stop-shelter-context",
+          "confidence": "high",
+          "detailIds": [
+            "bus-stop-shelter-context"
+          ]
         },
         {
-          "targetId": "yellow-curb-bus-zone",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Желтая кромка поддерживает контекст остановочного сектора.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q413-supporting-yellow-curb-bus-zone",
+          "confidence": "medium",
+          "objectIds": [
+            "yellow-curb-bus-zone"
+          ]
         },
         {
-          "targetId": "avenue-traffic-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Движение на проспекте не меняет запрет остановки здесь.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q413-dim-avenue-traffic-background",
+          "confidence": "medium",
+          "objectIds": [
+            "avenue-traffic-background"
+          ]
         }
       ]
     },
@@ -11289,34 +11688,46 @@
       },
       "relevanceMap": [
         {
-          "targetId": "upcoming-right-curve",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Видимый поворот требует заранее снизить скорость.",
           "answerIds": [
             "b-fallback-414-a2"
+          ],
+          "relevanceId": "q414-highlight-upcoming-right-curve",
+          "confidence": "high",
+          "detailIds": [
+            "upcoming-right-curve"
           ]
         },
         {
-          "targetId": "curve-warning-board",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Щит со стрелками подтверждает направление и опасность поворота.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q414-supporting-curve-warning-board",
+          "confidence": "high",
+          "detailIds": [
+            "curve-warning-board"
+          ]
         },
         {
-          "targetId": "vehicles-ahead-curve",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Машины впереди показывают реальную дорожную обстановку.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q414-supporting-vehicles-ahead-curve",
+          "confidence": "medium",
+          "objectIds": [
+            "vehicles-ahead-curve"
+          ]
         },
         {
-          "targetId": "open-sky-fields",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Пейзаж и небо не влияют на технику прохождения поворота.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q414-dim-open-sky-fields",
+          "confidence": "medium",
+          "objectIds": [
+            "open-sky-fields"
+          ]
         }
       ]
     },
@@ -11359,36 +11770,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "no-entry-red-white-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Красный круг с белой полосой означает запрет въезда.",
           "answerIds": [
             "b-fallback-416-a2"
+          ],
+          "relevanceId": "q416-highlight-no-entry-red-white-sign",
+          "confidence": "high",
+          "detailIds": [
+            "no-entry-red-white-sign"
           ]
         },
         {
-          "targetId": "white-horizontal-bar",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Белая полоса является ключевым символом знака.",
           "answerIds": [
             "b-fallback-416-a2"
+          ],
+          "relevanceId": "q416-supporting-white-horizontal-bar",
+          "confidence": "high",
+          "objectIds": [
+            "white-horizontal-bar"
           ]
         },
         {
-          "targetId": "red-disk-sign-face",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Красный диск показывает запрещающий характер знака.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q416-supporting-red-disk-sign-face",
+          "confidence": "high",
+          "objectIds": [
+            "red-disk-sign-face"
+          ]
         },
         {
-          "targetId": "region-no-entry-sign-face",
-          "targetType": "region",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Пустой фон вокруг знака не влияет на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q416-dim-region-no-entry-sign-face",
+          "confidence": "medium",
+          "regionIds": [
+            "region-no-entry-sign-face"
+          ]
         }
       ]
     },
@@ -11448,36 +11871,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "vehicle-a-crossing-double-yellow",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Автомобиль A нарушает разметку, поэтому пары с A неверны.",
           "answerIds": [
             "b-fallback-418-a3"
+          ],
+          "relevanceId": "q418-highlight-vehicle-a-crossing-double-yellow",
+          "confidence": "high",
+          "detailIds": [
+            "vehicle-a-crossing-double-yellow"
           ]
         },
         {
-          "targetId": "vehicles-b-c-proper-lanes",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Автомобили B и C остаются без видимого нарушения.",
           "answerIds": [
             "b-fallback-418-a3"
+          ],
+          "relevanceId": "q418-highlight-vehicles-b-c-proper-lanes",
+          "confidence": "high",
+          "detailIds": [
+            "vehicles-b-c-proper-lanes"
           ]
         },
         {
-          "targetId": "double-yellow-lines-b112-object",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Двойная желтая линия объясняет нарушение A.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q418-supporting-double-yellow-lines-b112-object",
+          "confidence": "high",
+          "objectIds": [
+            "double-yellow-lines-b112-object"
+          ]
         },
         {
-          "targetId": "roadside-trees-grass",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Обочины и деревья не влияют на выбор пары.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q418-dim-roadside-trees-grass",
+          "confidence": "medium",
+          "objectIds": [
+            "roadside-trees-grass"
+          ]
         }
       ]
     },
@@ -11521,36 +11956,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "ordinary-urban-street-speed-context",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Обычная городская улица задает предел 40 км/ч.",
           "answerIds": [
             "b-fallback-420-a2"
+          ],
+          "relevanceId": "q420-highlight-ordinary-urban-street-speed-context",
+          "confidence": "high",
+          "detailIds": [
+            "ordinary-urban-street-speed-context"
           ]
         },
         {
-          "targetId": "parked-cars-and-crosswalk-context",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Припаркованные машины и переход подтверждают уличный городской контекст.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q420-supporting-parked-cars-and-crosswalk-context",
+          "confidence": "high",
+          "detailIds": [
+            "parked-cars-and-crosswalk-context"
+          ]
         },
         {
-          "targetId": "trees-and-buildings-b130",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Деревья и фасады не задают числовой предел скорости.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q420-dim-trees-and-buildings-b130",
+          "confidence": "medium",
+          "objectIds": [
+            "trees-and-buildings-b130"
+          ]
         },
         {
-          "targetId": "urban-street-roadway",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Наличие осевой линии не превращает улицу в более скоростной проспект.",
           "answerIds": [
             "b-fallback-420-a1",
             "b-fallback-420-a3"
+          ],
+          "relevanceId": "q420-trap-urban-street-roadway",
+          "confidence": "high",
+          "objectIds": [
+            "urban-street-roadway"
           ]
         }
       ]
@@ -11592,36 +12039,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "free-right-turn-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Знак свободного поворота задает условие вопроса, но не отменяет приоритет пешехода.",
           "answerIds": [
             "b-fallback-421-a2"
+          ],
+          "relevanceId": "q421-highlight-free-right-turn-sign",
+          "confidence": "high",
+          "detailIds": [
+            "free-right-turn-sign"
           ]
         },
         {
-          "targetId": "pedestrian-corner-context",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Угол тротуара и пешеходная зона показывают, с кем может пересекаться поворачивающий транспорт.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q421-supporting-pedestrian-corner-context",
+          "confidence": "medium",
+          "detailIds": [
+            "pedestrian-corner-context"
+          ]
         },
         {
-          "targetId": "moving-cars-b20",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Поток машин и знак свободного поворота могут отвлечь от обязанности уступить пешеходу.",
           "answerIds": [
             "b-fallback-421-a1"
+          ],
+          "relevanceId": "q421-trap-moving-cars-b20",
+          "confidence": "high",
+          "objectIds": [
+            "moving-cars-b20"
           ]
         },
         {
-          "targetId": "trees-and-buildings-b20",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Деревья и здания не влияют на ответ о приоритете.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q421-dim-trees-and-buildings-b20",
+          "confidence": "medium",
+          "objectIds": [
+            "trees-and-buildings-b20"
+          ]
         }
       ]
     },
@@ -11664,36 +12123,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "lap-belt-over-abdomen",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Нижняя лямка на животе делает положение ремня неправильным.",
           "answerIds": [
             "b-fallback-422-a1"
+          ],
+          "relevanceId": "q422-highlight-lap-belt-over-abdomen",
+          "confidence": "high",
+          "detailIds": [
+            "lap-belt-over-abdomen"
           ]
         },
         {
-          "targetId": "diagonal-shoulder-belt",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Диагональная лямка выглядит допустимо, но она не исправляет неправильное положение нижней лямки.",
           "answerIds": [
             "b-fallback-422-a3"
+          ],
+          "relevanceId": "q422-trap-diagonal-shoulder-belt",
+          "confidence": "high",
+          "detailIds": [
+            "diagonal-shoulder-belt"
           ]
         },
         {
-          "targetId": "seated-passenger",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Поза пассажира помогает увидеть, где проходит нижняя лямка ремня.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q422-supporting-seated-passenger",
+          "confidence": "high",
+          "objectIds": [
+            "seated-passenger"
+          ]
         },
         {
-          "targetId": "car-door-window",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Дверь и окно не влияют на правильность положения ремня.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q422-dim-car-door-window",
+          "confidence": "high",
+          "objectIds": [
+            "car-door-window"
+          ]
         }
       ]
     },
@@ -11736,37 +12207,49 @@
       },
       "relevanceMap": [
         {
-          "targetId": "blue-divided-highway-pictogram",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Белая пиктограмма разделенной дороги на синем фоне обозначает начало автомагистрали.",
           "answerIds": [
             "b-fallback-423-a1"
+          ],
+          "relevanceId": "q423-highlight-blue-divided-highway-pictogram",
+          "confidence": "high",
+          "detailIds": [
+            "blue-divided-highway-pictogram"
           ]
         },
         {
-          "targetId": "blue-square-sign",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Синий квадратный фон поддерживает тип информационно-режимного знака автомагистрали.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q423-supporting-blue-square-sign",
+          "confidence": "high",
+          "objectIds": [
+            "blue-square-sign"
+          ]
         },
         {
-          "targetId": "white-divided-road-symbol",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Символ дороги можно спутать с обычной трассой или полуавтомагистралью, но в этом билете он относится к автомагистрали.",
           "answerIds": [
             "b-fallback-423-a2",
             "b-fallback-423-a3"
+          ],
+          "relevanceId": "q423-trap-white-divided-road-symbol",
+          "confidence": "high",
+          "objectIds": [
+            "white-divided-road-symbol"
           ]
         },
         {
-          "targetId": "region-blue-highway-sign",
-          "targetType": "region",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Пустой белый фон вокруг знака не влияет на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q423-dim-region-blue-highway-sign",
+          "confidence": "high",
+          "regionIds": [
+            "region-blue-highway-sign"
+          ]
         }
       ]
     },
@@ -11809,45 +12292,60 @@
       },
       "relevanceMap": [
         {
-          "targetId": "option-b-bicisenda-sidewalk-space",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Вариант B показывает дорожку вне автомобильной проезжей части.",
           "answerIds": [
             "b-fallback-426-a2"
+          ],
+          "relevanceId": "q426-highlight-option-b-bicisenda-sidewalk-space",
+          "confidence": "high",
+          "detailIds": [
+            "option-b-bicisenda-sidewalk-space"
           ]
         },
         {
-          "targetId": "option-a-curbside-cyclist",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Вариант A связан с велосипедом, но не показывает нужный тип дорожки.",
           "answerIds": [
             "b-fallback-426-a1"
+          ],
+          "relevanceId": "q426-trap-option-a-curbside-cyclist",
+          "confidence": "high",
+          "detailIds": [
+            "option-a-curbside-cyclist"
           ]
         },
         {
-          "targetId": "option-c-painted-bike-lane",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Вариант C похож по теме, но это размеченная велосипедная полоса на проезжей части.",
           "answerIds": [
             "b-fallback-426-a3"
+          ],
+          "relevanceId": "q426-trap-option-c-painted-bike-lane",
+          "confidence": "high",
+          "detailIds": [
+            "option-c-painted-bike-lane"
           ]
         },
         {
-          "targetId": "visible-text-option-labels-b41",
-          "targetType": "visibleText",
           "role": "supporting",
           "rationaleRu": "Метки A, B и C позволяют связать изображение с вариантами ответа.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q426-supporting-visible-text-option-labels-b41",
+          "confidence": "high",
+          "detailIds": [
+            "visible-text-option-labels-b41"
+          ]
         },
         {
-          "targetId": "option-c-bollards",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Черные разделители в варианте C уточняют обстановку, но сами по себе не делают его bicisenda.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q426-dim-option-c-bollards",
+          "confidence": "high",
+          "objectIds": [
+            "option-c-bollards"
+          ]
         }
       ]
     },
@@ -11890,36 +12388,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "option-a-dense-private-car-avenue",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Вариант A показывает наиболее плотный поток автомобилей и больше конфликтных точек.",
           "answerIds": [
             "b-fallback-427-a1"
+          ],
+          "relevanceId": "q427-highlight-option-a-dense-private-car-avenue",
+          "confidence": "high",
+          "detailIds": [
+            "option-a-dense-private-car-avenue"
           ]
         },
         {
-          "targetId": "option-b-separated-metrobus-corridor",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Вариант B тоже выглядит как большая авенида, но центральный коридор организует потоки.",
           "answerIds": [
             "b-fallback-427-a2"
+          ],
+          "relevanceId": "q427-trap-option-b-separated-metrobus-corridor",
+          "confidence": "high",
+          "detailIds": [
+            "option-b-separated-metrobus-corridor"
           ]
         },
         {
-          "targetId": "visible-text-option-labels-b4",
-          "targetType": "visibleText",
           "role": "supporting",
           "rationaleRu": "Метки A и B связывают изображение с вариантами ответа.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q427-supporting-visible-text-option-labels-b4",
+          "confidence": "high",
+          "detailIds": [
+            "visible-text-option-labels-b4"
+          ]
         },
         {
-          "targetId": "city-buildings-and-trees-b4",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые здания и деревья не определяют вероятность ДТП.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q427-dim-city-buildings-and-trees-b4",
+          "confidence": "medium",
+          "objectIds": [
+            "city-buildings-and-trees-b4"
+          ]
         }
       ]
     },
@@ -11961,36 +12471,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "dense-fog-low-visibility-road",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Густой туман задает погодное условие вопроса, но не делает аварийную сигнализацию штатным режимом движения.",
           "answerIds": [
             "b-fallback-428-a2"
+          ],
+          "relevanceId": "q428-highlight-dense-fog-low-visibility-road",
+          "confidence": "high",
+          "detailIds": [
+            "dense-fog-low-visibility-road"
           ]
         },
         {
-          "targetId": "two-lane-road-markings-in-fog",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Разметка показывает обычное движение по дороге в условиях плохой видимости.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q428-supporting-two-lane-road-markings-in-fog",
+          "confidence": "high",
+          "detailIds": [
+            "two-lane-road-markings-in-fog"
+          ]
         },
         {
-          "targetId": "grey-fog-bank",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Сам факт тумана может подтолкнуть к варианту про аварийку, но это ловушка билета.",
           "answerIds": [
             "b-fallback-428-a1"
+          ],
+          "relevanceId": "q428-trap-grey-fog-bank",
+          "confidence": "high",
+          "objectIds": [
+            "grey-fog-bank"
           ]
         },
         {
-          "targetId": "roadside-grass-b192",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Придорожная трава не влияет на выбор режима световых сигналов.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q428-dim-roadside-grass-b192",
+          "confidence": "medium",
+          "objectIds": [
+            "roadside-grass-b192"
+          ]
         }
       ]
     },
@@ -12033,37 +12555,49 @@
       },
       "relevanceMap": [
         {
-          "targetId": "orange-road-workers-temporary-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Оранжевый ромб и рабочие в касках указывают на временный знак работ.",
           "answerIds": [
             "b-fallback-429-a2"
+          ],
+          "relevanceId": "q429-highlight-orange-road-workers-temporary-sign",
+          "confidence": "high",
+          "detailIds": [
+            "orange-road-workers-temporary-sign"
           ]
         },
         {
-          "targetId": "black-worker-silhouettes",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Силуэты рабочих подтверждают связь с дорожными работами.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q429-supporting-black-worker-silhouettes",
+          "confidence": "high",
+          "objectIds": [
+            "black-worker-silhouettes"
+          ]
         },
         {
-          "targetId": "orange-diamond-sign",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Форма знака может выглядеть как предупреждение вообще, но оранжевый цвет связывает его с временной группой.",
           "answerIds": [
             "b-fallback-429-a1",
             "b-fallback-429-a3"
+          ],
+          "relevanceId": "q429-trap-orange-diamond-sign",
+          "confidence": "high",
+          "objectIds": [
+            "orange-diamond-sign"
           ]
         },
         {
-          "targetId": "region-orange-roadwork-sign",
-          "targetType": "region",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Белый фон вокруг знака не несет смысловой нагрузки.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q429-dim-region-orange-roadwork-sign",
+          "confidence": "high",
+          "regionIds": [
+            "region-orange-roadwork-sign"
+          ]
         }
       ]
     },
@@ -12106,36 +12640,48 @@
       },
       "relevanceMap": [
         {
-          "targetId": "vehicle-b-ascending-narrow-slope",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Автомобиль B соответствует движущемуся вверх на узком подъеме.",
           "answerIds": [
             "b-fallback-430-a2"
+          ],
+          "relevanceId": "q430-highlight-vehicle-b-ascending-narrow-slope",
+          "confidence": "medium",
+          "detailIds": [
+            "vehicle-b-ascending-narrow-slope"
           ]
         },
         {
-          "targetId": "vehicle-a-opposing-descending",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Автомобиль A хорошо виден, но в этой ситуации не получает преимущество.",
           "answerIds": [
             "b-fallback-430-a1"
+          ],
+          "relevanceId": "q430-trap-vehicle-a-opposing-descending",
+          "confidence": "medium",
+          "detailIds": [
+            "vehicle-a-opposing-descending"
           ]
         },
         {
-          "targetId": "narrow-hillside-road-context",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Узкая дорога и уклон объясняют, почему применяется специальное правило приоритета.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q430-supporting-narrow-hillside-road-context",
+          "confidence": "high",
+          "detailIds": [
+            "narrow-hillside-road-context"
+          ]
         },
         {
-          "targetId": "right-side-house-and-utility-poles",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Дом и столбы не определяют, у какого автомобиля преимущество.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q430-dim-right-side-house-and-utility-poles",
+          "confidence": "medium",
+          "objectIds": [
+            "right-side-house-and-utility-poles"
+          ]
         }
       ]
     },
@@ -12170,38 +12716,50 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "front-plate-inside-windshield",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Ключевая деталь: номер лежит за стеклом, а не установлен штатно.",
           "answerIds": [
             "b-fallback-433-a3"
+          ],
+          "relevanceId": "q433-highlight-front-plate-inside-windshield",
+          "confidence": "high",
+          "detailIds": [
+            "front-plate-inside-windshield"
           ]
         },
         {
-          "targetId": "missing-exterior-plate-position",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Отсутствие нормального наружного крепления подтверждает нарушение установки.",
           "answerIds": [
             "b-fallback-433-a3"
+          ],
+          "relevanceId": "q433-supporting-missing-exterior-plate-position",
+          "confidence": "medium",
+          "detailIds": [
+            "missing-exterior-plate-position"
           ]
         },
         {
-          "targetId": "plate-visible-text",
-          "targetType": "visibleText",
           "role": "distractor_trap",
           "rationaleRu": "Читаемость символов не делает такое размещение допустимым.",
           "answerIds": [
             "b-fallback-433-a1"
+          ],
+          "relevanceId": "q433-trap-plate-visible-text",
+          "confidence": "medium",
+          "detailIds": [
+            "plate-visible-text"
           ]
         },
         {
-          "targetId": "background-parked-cars",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые припаркованные машины не влияют на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q433-dim-background-parked-cars",
+          "confidence": "medium",
+          "objectIds": [
+            "background-parked-cars"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12245,38 +12803,50 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "opposing-arrows-sign-face",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Именно знак с противоположными стрелками определяет потерю приоритета.",
           "answerIds": [
             "b-fallback-436-a2"
+          ],
+          "relevanceId": "q436-highlight-opposing-arrows-sign-face",
+          "confidence": "high",
+          "detailIds": [
+            "opposing-arrows-sign-face"
           ]
         },
         {
-          "targetId": "black-down-arrow-left",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Черная стрелка показывает направление с преимуществом.",
           "answerIds": [
             "b-fallback-436-a2"
+          ],
+          "relevanceId": "q436-supporting-black-down-arrow-left",
+          "confidence": "high",
+          "detailIds": [
+            "black-down-arrow-left"
           ]
         },
         {
-          "targetId": "red-up-arrow-right",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Красная стрелка помогает не перепутать знак со знаком собственного преимущества.",
           "answerIds": [
             "b-fallback-436-a1"
+          ],
+          "relevanceId": "q436-trap-red-up-arrow-right",
+          "confidence": "high",
+          "detailIds": [
+            "red-up-arrow-right"
           ]
         },
         {
-          "targetId": "white-image-background-b247",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Белый фон вокруг знака не влияет на смысл.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q436-dim-white-image-background-b247",
+          "confidence": "high",
+          "objectIds": [
+            "white-image-background-b247"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12318,38 +12888,50 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "circled-vehicle-beside-stopped-traffic",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Выделенная машина — та, которой нужно включиться в остановившийся поток.",
           "answerIds": [
             "b-fallback-440-a2"
+          ],
+          "relevanceId": "q440-highlight-circled-vehicle-beside-stopped-traffic",
+          "confidence": "high",
+          "detailIds": [
+            "circled-vehicle-beside-stopped-traffic"
           ]
         },
         {
-          "targetId": "stopped-traffic-queue",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Очередь и стоп-сигналы подтверждают условие: движение стоит.",
           "answerIds": [
             "b-fallback-440-a2"
+          ],
+          "relevanceId": "q440-supporting-stopped-traffic-queue",
+          "confidence": "high",
+          "detailIds": [
+            "stopped-traffic-queue"
           ]
         },
         {
-          "targetId": "dark-car-brake-lights",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Наличие автомобиля впереди не означает, что он всегда сохраняет приоритет.",
           "answerIds": [
             "b-fallback-440-a1"
+          ],
+          "relevanceId": "q440-trap-dark-car-brake-lights",
+          "confidence": "high",
+          "objectIds": [
+            "dark-car-brake-lights"
           ]
         },
         {
-          "targetId": "tree-lined-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Деревья и здания только формируют фон улицы.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q440-dim-tree-lined-background",
+          "confidence": "medium",
+          "objectIds": [
+            "tree-lined-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12406,38 +12988,50 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "driver-holding-phone",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Телефон у лица водителя показывает отвлечение внимания.",
           "answerIds": [
             "b-fallback-441-a3"
+          ],
+          "relevanceId": "q441-highlight-driver-holding-phone",
+          "confidence": "high",
+          "detailIds": [
+            "driver-holding-phone"
           ]
         },
         {
-          "targetId": "hand-away-from-wheel",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Занятая телефоном рука подтверждает риск потери контроля.",
           "answerIds": [
             "b-fallback-441-a3"
+          ],
+          "relevanceId": "q441-highlight-hand-away-from-wheel",
+          "confidence": "high",
+          "detailIds": [
+            "hand-away-from-wheel"
           ]
         },
         {
-          "targetId": "driver-gaze-on-phone",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Положение головы усиливает вывод о снижении внимания.",
           "answerIds": [
             "b-fallback-441-a3"
+          ],
+          "relevanceId": "q441-supporting-driver-gaze-on-phone",
+          "confidence": "high",
+          "detailIds": [
+            "driver-gaze-on-phone"
           ]
         },
         {
-          "targetId": "dashboard",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Панель приборов сама по себе не влияет на выбор ответа.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q441-dim-dashboard",
+          "confidence": "medium",
+          "objectIds": [
+            "dashboard"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12476,36 +13070,48 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "right-rear-turn-signal-highlight",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Выделен правый указатель, а не аварийная сигнализация.",
           "answerIds": [
             "b-fallback-442-a2"
+          ],
+          "relevanceId": "q442-highlight-right-rear-turn-signal-highlight",
+          "confidence": "high",
+          "detailIds": [
+            "right-rear-turn-signal-highlight"
           ]
         },
         {
-          "targetId": "garage-entry-context-right",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Правый бордюрный контекст поддерживает сценарий въезда направо.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q442-supporting-garage-entry-context-right",
+          "confidence": "high",
+          "detailIds": [
+            "garage-entry-context-right"
+          ]
         },
         {
-          "targetId": "white-parked-car",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Припаркованная белая машина не делает выбранный сигнал правильным.",
           "answerIds": [
             "b-fallback-442-a1"
+          ],
+          "relevanceId": "q442-trap-white-parked-car",
+          "confidence": "high",
+          "objectIds": [
+            "white-parked-car"
           ]
         },
         {
-          "targetId": "trees-and-sidewalk-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Деревья и тротуар не определяют правильный сигнал.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q442-dim-trees-and-sidewalk-background",
+          "confidence": "medium",
+          "objectIds": [
+            "trees-and-sidewalk-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12545,36 +13151,48 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "green-p-beginner-driver-sticker",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Знак P на заднем стекле указывает на начинающего водителя.",
           "answerIds": [
             "b-fallback-446-a2"
+          ],
+          "relevanceId": "q446-highlight-green-p-beginner-driver-sticker",
+          "confidence": "high",
+          "detailIds": [
+            "green-p-beginner-driver-sticker"
           ]
         },
         {
-          "targetId": "white-car-rear-window",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Размещение знака именно на автомобиле связывает правило с этим водителем.",
           "answerIds": [
             "b-fallback-446-a2"
+          ],
+          "relevanceId": "q446-supporting-white-car-rear-window",
+          "confidence": "high",
+          "detailIds": [
+            "white-car-rear-window"
           ]
         },
         {
-          "targetId": "zebra-crossing-stripes",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Пешеходный переход на фоне не влияет на уровень алкоголя.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q446-dim-zebra-crossing-stripes",
+          "confidence": "medium",
+          "objectIds": [
+            "zebra-crossing-stripes"
+          ]
         },
         {
-          "targetId": "orange-traffic-cones",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Конусы у магазина не относятся к ответу.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q446-dim-orange-traffic-cones",
+          "confidence": "medium",
+          "objectIds": [
+            "orange-traffic-cones"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12613,34 +13231,46 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "ordinary-urban-street",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Тип дороги на фото — обычная улица, поэтому выбирается минимальная скорость для улицы.",
           "answerIds": [
             "b-fallback-449-a3"
+          ],
+          "relevanceId": "q449-highlight-ordinary-urban-street",
+          "confidence": "high",
+          "detailIds": [
+            "ordinary-urban-street"
           ]
         },
         {
-          "targetId": "street-crossing-markings",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Городская разметка у перехода поддерживает вывод, что это не трасса.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q449-supporting-street-crossing-markings",
+          "confidence": "high",
+          "detailIds": [
+            "street-crossing-markings"
+          ]
         },
         {
-          "targetId": "parked-cars-right-curb",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Припаркованные машины подчеркивают обычный городской уличный контекст.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q449-supporting-parked-cars-right-curb",
+          "confidence": "high",
+          "detailIds": [
+            "parked-cars-right-curb"
+          ]
         },
         {
-          "targetId": "trees-and-buildings-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фоновые деревья и фасады не меняют числовой ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q449-dim-trees-and-buildings-background",
+          "confidence": "medium",
+          "objectIds": [
+            "trees-and-buildings-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12678,36 +13308,48 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "avenue-direction-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Указатель на магистральную улицу связывает фото с пределами 30 и 60 км/ч.",
           "answerIds": [
             "b-fallback-452-a1"
+          ],
+          "relevanceId": "q452-highlight-avenue-direction-sign",
+          "confidence": "high",
+          "detailIds": [
+            "avenue-direction-sign"
           ]
         },
         {
-          "targetId": "urban-arterial-corner",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Широкий городской угол и переход поддерживают контекст артерии.",
           "answerIds": [
             "b-fallback-452-a1"
+          ],
+          "relevanceId": "q452-supporting-urban-arterial-corner",
+          "confidence": "high",
+          "detailIds": [
+            "urban-arterial-corner"
           ]
         },
         {
-          "targetId": "red-wall-sign",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Красная табличка на здании не относится к скоростным пределам.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q452-dim-red-wall-sign",
+          "confidence": "medium",
+          "objectIds": [
+            "red-wall-sign"
+          ]
         },
         {
-          "targetId": "cloudy-sky-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Небо и деревья не влияют на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q452-dim-cloudy-sky-background",
+          "confidence": "medium",
+          "objectIds": [
+            "cloudy-sky-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12747,38 +13389,50 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "child-restraint-front-passenger-seat",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Детское устройство стоит спереди, а должно быть на заднем сиденье.",
           "answerIds": [
             "b-fallback-453-a3"
+          ],
+          "relevanceId": "q453-highlight-child-restraint-front-passenger-seat",
+          "confidence": "high",
+          "detailIds": [
+            "child-restraint-front-passenger-seat"
           ]
         },
         {
-          "targetId": "front-cabin-dashboard-context",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Руль и панель подтверждают, что это передняя часть салона.",
           "answerIds": [
             "b-fallback-453-a3"
+          ],
+          "relevanceId": "q453-supporting-front-cabin-dashboard-context",
+          "confidence": "high",
+          "detailIds": [
+            "front-cabin-dashboard-context"
           ]
         },
         {
-          "targetId": "red-black-padding",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Хороший внешний вид кресла не делает место установки правильным.",
           "answerIds": [
             "b-fallback-453-a2"
+          ],
+          "relevanceId": "q453-trap-red-black-padding",
+          "confidence": "high",
+          "objectIds": [
+            "red-black-padding"
           ]
         },
         {
-          "targetId": "outside-window-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Вид за окном не влияет на оценку установки.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q453-dim-outside-window-background",
+          "confidence": "medium",
+          "objectIds": [
+            "outside-window-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12817,36 +13471,48 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "headrest-aligned-with-head",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Высота подголовника относительно головы — ключ к ответу.",
           "answerIds": [
             "b-fallback-454-a1"
+          ],
+          "relevanceId": "q454-highlight-headrest-aligned-with-head",
+          "confidence": "high",
+          "detailIds": [
+            "headrest-aligned-with-head"
           ]
         },
         {
-          "targetId": "driver-side-profile",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Профиль водителя позволяет сравнить голову и подголовник.",
           "answerIds": [
             "b-fallback-454-a1"
+          ],
+          "relevanceId": "q454-supporting-driver-side-profile",
+          "confidence": "high",
+          "detailIds": [
+            "driver-side-profile"
           ]
         },
         {
-          "targetId": "driver-glasses",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Очки водителя не влияют на положение подголовника.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q454-dim-driver-glasses",
+          "confidence": "high",
+          "objectIds": [
+            "driver-glasses"
+          ]
         },
         {
-          "targetId": "side-window-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Фон за окном не влияет на ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q454-dim-side-window-background",
+          "confidence": "medium",
+          "objectIds": [
+            "side-window-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12886,38 +13552,50 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "blue-parking-information-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Синий знак сообщает о наличии парковки поблизости.",
           "answerIds": [
             "b-fallback-455-a2"
+          ],
+          "relevanceId": "q455-highlight-blue-parking-information-sign",
+          "confidence": "high",
+          "detailIds": [
+            "blue-parking-information-sign"
           ]
         },
         {
-          "targetId": "large-letter-e",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Крупная буква E поддерживает распознавание знака парковки.",
           "answerIds": [
             "b-fallback-455-a2"
+          ],
+          "relevanceId": "q455-supporting-large-letter-e",
+          "confidence": "high",
+          "detailIds": [
+            "large-letter-e"
           ]
         },
         {
-          "targetId": "parking-word-text",
-          "targetType": "visibleText",
           "role": "supporting",
           "rationaleRu": "Надпись о парковке подтверждает информационный смысл знака.",
           "answerIds": [
             "b-fallback-455-a2"
+          ],
+          "relevanceId": "q455-supporting-parking-word-text",
+          "confidence": "high",
+          "detailIds": [
+            "parking-word-text"
           ]
         },
         {
-          "targetId": "plain-white-background",
-          "targetType": "region",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Белый фон вокруг графики не влияет на значение.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q455-dim-plain-white-background",
+          "confidence": "high",
+          "regionIds": [
+            "plain-white-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -12956,38 +13634,50 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "green-vehicle-identification-card",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Тип документа на фото определяет, кто может управлять автомобилем.",
           "answerIds": [
             "b-fallback-456-a2"
+          ],
+          "relevanceId": "q456-highlight-green-vehicle-identification-card",
+          "confidence": "high",
+          "detailIds": [
+            "green-vehicle-identification-card"
           ]
         },
         {
-          "targetId": "owner-data-on-card",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Поля владельца показывают привязку документа к конкретному лицу.",
           "answerIds": [
             "b-fallback-456-a2"
+          ],
+          "relevanceId": "q456-supporting-owner-data-on-card",
+          "confidence": "high",
+          "detailIds": [
+            "owner-data-on-card"
           ]
         },
         {
-          "targetId": "old-date-stamp-on-card",
-          "targetType": "visualDetail",
           "role": "distractor_trap",
           "rationaleRu": "Старая дата может отвлечь, но в билете это не означает вариант «никто».",
           "answerIds": [
             "b-fallback-456-a1"
+          ],
+          "relevanceId": "q456-trap-old-date-stamp-on-card",
+          "confidence": "medium",
+          "detailIds": [
+            "old-date-stamp-on-card"
           ]
         },
         {
-          "targetId": "security-seal-pattern",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Защитный рисунок подтверждает документ, но не меняет ответ.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q456-dim-security-seal-pattern",
+          "confidence": "high",
+          "objectIds": [
+            "security-seal-pattern"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -13026,36 +13716,48 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "circled-broken-center-lines",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Прерывистые штрихи показывают, что линию можно пересекать.",
           "answerIds": [
             "b-fallback-457-a1"
+          ],
+          "relevanceId": "q457-highlight-circled-broken-center-lines",
+          "confidence": "high",
+          "detailIds": [
+            "circled-broken-center-lines"
           ]
         },
         {
-          "targetId": "multi-lane-road-context",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Контекст дороги помогает понять, что речь о центральной разметке.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q457-supporting-multi-lane-road-context",
+          "confidence": "high",
+          "detailIds": [
+            "multi-lane-road-context"
+          ]
         },
         {
-          "targetId": "yellow-left-edge-line",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Желтая крайняя линия не является отмеченной центральной линией вопроса.",
           "answerIds": [
             "b-fallback-457-a2"
+          ],
+          "relevanceId": "q457-trap-yellow-left-edge-line",
+          "confidence": "medium",
+          "objectIds": [
+            "yellow-left-edge-line"
           ]
         },
         {
-          "targetId": "roadside-vegetation-background",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Растительность на обочине не влияет на значение разметки.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q457-dim-roadside-vegetation-background",
+          "confidence": "medium",
+          "objectIds": [
+            "roadside-vegetation-background"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -13110,36 +13812,48 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "circled-stop-sign",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Выделенный знак требует полной остановки.",
           "answerIds": [
             "b-fallback-459-a2"
+          ],
+          "relevanceId": "q459-highlight-circled-stop-sign",
+          "confidence": "high",
+          "detailIds": [
+            "circled-stop-sign"
           ]
         },
         {
-          "targetId": "zebra-crossing-before-intersection",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Переход показывает, перед чем нужно остановиться.",
           "answerIds": [
             "b-fallback-459-a2"
+          ],
+          "relevanceId": "q459-highlight-zebra-crossing-before-intersection",
+          "confidence": "high",
+          "detailIds": [
+            "zebra-crossing-before-intersection"
           ]
         },
         {
-          "targetId": "yellow-bollards",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Болларды обозначают зону подхода к перекрестку и переходу.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q459-supporting-yellow-bollards",
+          "confidence": "medium",
+          "objectIds": [
+            "yellow-bollards"
+          ]
         },
         {
-          "targetId": "grey-trash-container",
-          "targetType": "object",
           "role": "background_irrelevant_dim",
           "rationaleRu": "Контейнер у тротуара не относится к ответу.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q459-dim-grey-trash-container",
+          "confidence": "medium",
+          "objectIds": [
+            "grey-trash-container"
+          ]
         }
       ],
       "imageRole": "answer_critical",
@@ -13178,37 +13892,49 @@
       ],
       "relevanceMap": [
         {
-          "targetId": "dense-fog-low-visibility",
-          "targetType": "visualDetail",
           "role": "answer_critical_highlight",
           "rationaleRu": "Густой туман — главная причина снизить скорость и увеличить дистанцию.",
           "answerIds": [
             "b-fallback-460-a2"
+          ],
+          "relevanceId": "q460-highlight-dense-fog-low-visibility",
+          "confidence": "high",
+          "detailIds": [
+            "dense-fog-low-visibility"
           ]
         },
         {
-          "targetId": "lane-lines-fading-into-fog",
-          "targetType": "visualDetail",
           "role": "supporting",
           "rationaleRu": "Исчезающая разметка показывает ограниченную видимость впереди.",
           "answerIds": [
             "b-fallback-460-a2"
+          ],
+          "relevanceId": "q460-supporting-lane-lines-fading-into-fog",
+          "confidence": "high",
+          "detailIds": [
+            "lane-lines-fading-into-fog"
           ]
         },
         {
-          "targetId": "white-right-edge-line",
-          "targetType": "object",
           "role": "supporting",
           "rationaleRu": "Крайняя линия помогает держать полосу, но не заменяет осторожность.",
-          "answerIds": []
+          "answerIds": [],
+          "relevanceId": "q460-supporting-white-right-edge-line",
+          "confidence": "high",
+          "objectIds": [
+            "white-right-edge-line"
+          ]
         },
         {
-          "targetId": "right-grassy-shoulder",
-          "targetType": "object",
           "role": "distractor_trap",
           "rationaleRu": "Обочина видна, но остановка на ней не является общей рекомендацией билета.",
           "answerIds": [
             "b-fallback-460-a3"
+          ],
+          "relevanceId": "q460-trap-right-grassy-shoulder",
+          "confidence": "medium",
+          "objectIds": [
+            "right-grassy-shoulder"
           ]
         }
       ],

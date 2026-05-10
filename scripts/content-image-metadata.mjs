@@ -217,6 +217,12 @@ function allDetailIds(image, usage) {
       if (isNonEmptyString(detail.detailId)) ids.add(detail.detailId);
     }
   }
+  for (const collection of [image.annotations, image.visibleText, image.spatialRelationships]) {
+    for (const detail of collection || []) {
+      if (isNonEmptyString(detail.id)) ids.add(detail.id);
+      if (isNonEmptyString(detail.detailId)) ids.add(detail.detailId);
+    }
+  }
   return ids;
 }
 
@@ -370,14 +376,19 @@ function requireRelevanceMap({ usage, image, question, label, requireFullQuality
       errors.push(`${label}: relevanceMap entries must be objects.`);
       continue;
     }
-    const relevanceId = relevance.relevanceId || relevance.targetId;
-    const relevanceLabel = `${label}: relevance ${relevanceId || "(missing id)"}`;
-    if (!isNonEmptyString(relevanceId)) errors.push(`${relevanceLabel} must have a non-empty relevanceId or targetId.`);
+    const relevanceId = relevance.relevanceId;
+    const relevanceLabel = `${label}: relevance ${relevanceId || relevance.targetId || "(missing id)"}`;
+    if (!isNonEmptyString(relevanceId)) {
+      errors.push(`${relevanceLabel} must have a non-empty relevanceId.`);
+    }
     const role = typeof relevance.role === "string" ? relevance.role.replace(/[/-]/g, "_") : "";
     if (!allowedRoles.has(role)) errors.push(`${relevanceLabel} role is invalid.`);
     roles.push(role);
     if (!isNonEmptyString(relevance.rationaleRuOrEn || relevance.rationaleRu)) {
       errors.push(`${relevanceLabel} must include rationaleRuOrEn or rationaleRu.`);
+    }
+    if (requireFullQuality && relevance.confidence === undefined) {
+      errors.push(`${relevanceLabel} must include confidence for the full-quality gate.`);
     }
     if (relevance.confidence !== undefined && !["high", "medium", "low"].includes(relevance.confidence)) {
       errors.push(`${relevanceLabel} confidence is invalid.`);
@@ -388,10 +399,12 @@ function requireRelevanceMap({ usage, image, question, label, requireFullQuality
     const referencedCount =
       (relevance.detailIds || []).length +
       (relevance.objectIds || []).length +
-      (relevance.regionIds || []).length +
-      (isNonEmptyString(relevance.targetId) ? 1 : 0);
-    if (requireFullQuality && role === "answer_critical_highlight" && referencedCount < 1) {
-      errors.push(`${relevanceLabel} must reference at least one detail, object, region, or target id.`);
+      (relevance.regionIds || []).length;
+    if (requireFullQuality && isNonEmptyString(relevance.targetId)) {
+      errors.push(`${relevanceLabel} must use detailIds, objectIds, or regionIds instead of legacy targetId.`);
+    }
+    if (requireFullQuality && referencedCount < 1) {
+      errors.push(`${relevanceLabel} must reference at least one detail, object, or region id.`);
     }
     for (const detailId of relevance.detailIds || []) {
       if (!detailIds.has(detailId)) errors.push(`${relevanceLabel} references missing detail ${detailId}.`);

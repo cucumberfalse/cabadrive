@@ -197,6 +197,7 @@ export function loadQuestionImageMetadataFromShards(rootPath = root) {
   const questionUsages = [];
   const imageById = new Map();
   const imageByPath = new Map();
+  const imageShardEntries = [];
   const usageByQuestionId = new Map();
 
   for (const { range, relativePath, shard } of shards) {
@@ -219,6 +220,7 @@ export function loadQuestionImageMetadataFromShards(rootPath = root) {
         if (image.localPath) imageByPath.set(image.localPath, image);
         images.push(image);
       }
+      imageShardEntries.push({ image, range, relativePath, label });
     }
 
     for (const usage of shard.questionUsages || []) {
@@ -232,6 +234,40 @@ export function loadQuestionImageMetadataFromShards(rootPath = root) {
       if (usageByQuestionId.has(questionId)) errors.push(`${label}: duplicate question image usage.`);
       usageByQuestionId.set(questionId, usage);
       questionUsages.push(usage);
+    }
+  }
+
+  const usagesByImageId = new Map();
+  const usagesByLocalPath = new Map();
+  for (const usage of questionUsages) {
+    if (usage?.imageId) {
+      const usages = usagesByImageId.get(usage.imageId) || [];
+      usages.push(usage);
+      usagesByImageId.set(usage.imageId, usages);
+    }
+    if (usage?.localPath) {
+      const usages = usagesByLocalPath.get(usage.localPath) || [];
+      usages.push(usage);
+      usagesByLocalPath.set(usage.localPath, usages);
+    }
+  }
+
+  for (const { image, range, label } of imageShardEntries) {
+    const candidateUsages = [
+      ...(usagesByImageId.get(image.imageId) || []),
+      ...(usagesByLocalPath.get(image.localPath) || [])
+    ];
+    const uniqueUsages = [...new Map(candidateUsages.map((usage) => [usage.questionId, usage])).values()];
+    const ownerUsage = uniqueUsages.sort(compareQuestionIds)[0];
+    if (!ownerUsage) {
+      errors.push(`${label}: image metadata must have at least one question usage to determine owning shard.`);
+      continue;
+    }
+    const ownerRange = rangeForQuestionId(ownerUsage.questionId);
+    if (ownerRange && ownerRange.id !== range.id) {
+      errors.push(
+        `${label}: image metadata belongs in shard ${ownerRange.id} because ${ownerUsage.questionId} is the lowest-numbered usage, not ${range.id}.`
+      );
     }
   }
 
