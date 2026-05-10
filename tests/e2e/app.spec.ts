@@ -439,6 +439,12 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await expect(page.locator(".materials-topic-heading").locator(`[aria-label="${difficultyAria[firstTopic.difficulty]}"]`)).toBeVisible();
   await expect(page.getByText(firstTopic.summaryRu)).toBeVisible();
   await expect(page.getByText(firstTopic.learningMaterialRu[0])).toBeVisible();
+  await expect(page.getByText("hospital/centro de salud").first()).toBeVisible();
+  await expect(page.getByText("10 metros de cada lado de la entrada").first()).toBeVisible();
+  await expect(page.locator(".trap-note").filter({ hasText: "5 metros de cada lado de la entrada" }).filter({ hasText: /trap|falso|wrong/i }).first()).toBeVisible();
+  await expect(page.getByText("en horas de clase").first()).toBeVisible();
+  await expect(page.getByText("oficios/ceremonias").first()).toBeVisible();
+  await expect(page.getByText("horario de atención al público").first()).toBeVisible();
   await expect(page.getByText(firstTopic.practicalReasoningRu[0])).toBeVisible();
   const firstTerm = page.locator(".materials-term").filter({ hasText: firstTopic.spanishTerms[0].translationRu });
   await expect(firstTerm.getByText(firstTopic.spanishTerms[0].termEs, { exact: true })).toBeVisible();

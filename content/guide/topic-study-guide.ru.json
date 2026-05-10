@@ -27,7 +27,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "5131312421bf205a64f18e22cc8e3305b7673f8e5d1b1c2eaa2a84205a0da749",
+        "sourceFingerprint": "38a4a7c668baac2c263f18031f98d01dc7ba9374ad0235892e1e7d1fb65d5542",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -49,6 +49,7 @@
       "learningMaterialRu": [
         "Этот блок - неофициальная подсказка Cabadrive. Здесь важно не запомнить одно число на все случаи, а связать место с конкретным запретом: вход учреждения, paso ferroviario, esquina, cordón, garaje или ciclovía.",
         "Для hospital/centro de salud главный экзаменационный якорь такой: entrada - это вход, и около него нужно оставить libre 10 metros de cada lado de la entrada, то есть 10 метров с каждой стороны входа. Фраза 5 metros de cada lado de la entrada в билете про такую зону - trap/falso, а не альтернативная правильная дистанция.",
+        "Соседняя ловушка по учреждениям - timing. Для escuelas правило привязано к en horas de clase, для templos - к oficios/ceremonias, для bancos - к horario de atención al público. Запомните контраст: hospital/centro de salud в текущих билетах держим как 10 metros de cada lado de la entrada, а school/temple/bank проверяют еще и время.",
         "У paso ferroviario ловушка обратная: 20 metros звучит как знакомая дистанция, но в CABA общий запрет estacionar действует a menos de 50 metros a cada lado de los pasos ferroviarios a nivel. Поэтому билет с 20 metros - falso.",
         "Esquina/ochava читается как зона видимости, а не как свободное место у края квартала. В CABA запрещено estacionar y detenerse между vértice ideal и prolongación de la ochava, а также на senda peatonal или línea de pare.",
         "Правильная параллельная парковка - примерно 20 cm del cordón. Машина слишком близко к бордюру или на разметке/пространстве для ciclovía не становится правильной только потому, что cordón не окрашен.",
