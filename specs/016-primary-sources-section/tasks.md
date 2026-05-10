@@ -299,6 +299,14 @@
 - Added `tests/primary-sources-validation.test.mjs` covering the Slice B pass/fail cases.
 - No product UI, e2e tests, official archive files, durable docs, package files, or actual translation batch content were changed in Slice B.
 
+### Slice B Review Follow-Up Notes
+
+- Addressed PR #74 review finding `discussion_r3214865792`.
+- Tightened strict/final primary-source validation so manifest-covered coverage documents cannot satisfy the release gate with an empty generated chunk inventory.
+- Strict/final mode now requires each coverage document to have at least one `expectedChunkIds` entry and at least one generated coverage chunk.
+- Strict/final mode now requires each learner corpus document to have at least one learner chunk.
+- Added focused tests proving strict mode rejects empty coverage chunk inventory, empty `expectedChunkIds`, and empty learner chunks.
+
 ### Implementation Agent Feedback
 
 - None yet.
@@ -329,3 +337,9 @@
   - `pnpm run build` passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `PRIMARY_SOURCES_VALIDATION_MODE=strict pnpm run validate:content` failed as expected because only the draft placeholder exists. This is positive strict-gate evidence, not a Slice B blocker: strict mode reported missing learner/generated chunk coverage for the remaining manifest entries and draft QA for the placeholder chunk.
   - `git diff --check` passed with no output.
+- Slice B PR #74 review finding follow-up verification on 2026-05-10:
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 14 tests, 14 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 86 Node tests, 86 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - Orchestrator reran `pnpm run build` after the review fix and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.

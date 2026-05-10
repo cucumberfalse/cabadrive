@@ -211,6 +211,26 @@ test("rejects learner chunks missing generated chunk coverage", () => {
   assert(errors.includes("doc-1--001: learner chunk is missing generated chunk coverage."));
 });
 
+test("strict mode rejects coverage documents without generated chunks or expected chunk IDs", () => {
+  const badCoverage = coverage();
+  badCoverage.documents[0].expectedChunkIds = [];
+  badCoverage.documents[0].chunks = [];
+
+  const errors = validate({ coverage: badCoverage });
+
+  assert(errors.includes("doc-1.expectedChunkIds must include at least one expected chunk ID in strict mode."));
+  assert(errors.includes("doc-1.chunks must include at least one generated coverage chunk in strict mode."));
+});
+
+test("strict mode rejects learner corpus documents without learner chunks", () => {
+  const badCorpus = corpus();
+  badCorpus.documents[0].chunks = [];
+
+  const errors = validate({ corpus: badCorpus });
+
+  assert(errors.includes("doc-1.chunks must include at least one learner chunk in strict mode."));
+});
+
 test("strict mode rejects missing full Russian translation", () => {
   const badCorpus = corpus();
   badCorpus.documents[0].chunks[0].fullTranslationRu = "";

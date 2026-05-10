@@ -243,6 +243,9 @@ export function validatePrimarySources({
     requireString(errors, document.officialSourceType, `${documentId}.officialSourceType`);
     requireString(errors, document.archiveLocalPath, `${documentId}.archiveLocalPath`);
     requireArray(errors, document.chunks, `${documentId}.chunks`);
+    if (strictMode && Array.isArray(document.chunks) && document.chunks.length === 0) {
+      errors.push(`${documentId}.chunks must include at least one learner chunk in strict mode.`);
+    }
 
     const manifestEntry = manifestEntryById.get(document.officialDocumentId);
     if (manifestEntry) {
@@ -302,6 +305,12 @@ export function validatePrimarySources({
     }
     requireArray(errors, document.expectedChunkIds, `${documentId}.expectedChunkIds`);
     requireArray(errors, document.chunks, `${documentId}.chunks`);
+    if (strictMode && Array.isArray(document.expectedChunkIds) && document.expectedChunkIds.length === 0) {
+      errors.push(`${documentId}.expectedChunkIds must include at least one expected chunk ID in strict mode.`);
+    }
+    if (strictMode && Array.isArray(document.chunks) && document.chunks.length === 0) {
+      errors.push(`${documentId}.chunks must include at least one generated coverage chunk in strict mode.`);
+    }
 
     const manifestEntry = manifestEntryById.get(document.officialDocumentId);
     if (manifestEntry && document.archiveLocalPath !== manifestEntry.localPath) {
