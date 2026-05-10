@@ -106,6 +106,9 @@
 - [x] D7-001 Translate and simplify all 131 chunks in the Ley 24.449 core traffic-law content batch.
 - [x] D7-002 Replace the draft Ley 24.449 placeholder with full reviewed learner, QA, and search shards for `ley-24449-transito-seguridad-vial`.
 - [x] D7-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
+- [x] D8-001 Translate and simplify all 202 chunks in the insurance content batch for `ley-17418-seguros`.
+- [x] D8-002 Add per-document learner, QA, and search shards for `ley-17418-seguros`.
+- [x] D8-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
 - [ ] T063 For each batch, preserve numbers, dates, legal obligations, exceptions, penalties, source names, and article references in both Russian layers.
@@ -829,6 +832,22 @@
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because the GCBA manual, remaining core traffic/CABA code, and large legal-duty sources still require later approved learner-source content and exact-text validation remains pending.
+- Slice D8 insurance content batch verification on 2026-05-10:
+  - Added `content/primary-sources/documents/ley-17418-seguros.ru.json`, `content/primary-sources/qa/ley-17418-seguros.qa.json`, and `content/primary-sources/search/ley-17418-seguros.search.json`.
+  - Covered all 202 generated chunks for `ley-17418-seguros` from `content/primary-sources/primary-sources.coverage.json`; learner `originalSpanish`, `sourceTextSha256`, `sourceFingerprint`, and source spans remain archive-derived from `content/official-documents/documents/ley-17418-seguros.md`.
+  - Full Russian translations and simple Russian rewrites were reviewed against `content/primary-sources/terminology.ru.md` with insurance terminology normalized for `asegurador`, `asegurado`, `tomador`, `prima`, `póliza`, `riesgo`, `suma asegurada`, and `responsabilidad civil`.
+  - QA shard marks every assigned chunk `approved` for translation and simplification with `checkedAt: "2026-05-10"`; method notes preserve the manifest caveat that exact-text validation remains pending and is not resolved by learner-content QA.
+  - Search shard has 202 entries, one per learner chunk, each projecting `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish`.
+  - Custom insurance batch lint passed for 202 chunks: learner, QA, and search counts match; Russian fields are nonempty; no unresolved placeholder/protected-token markers, obvious English translation artifacts, forbidden simplified-Spanish fields, or known insurance-term machine artifacts remained after cleanup.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring. `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` also passed as the actual primary-source coverage mode.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - Initial `npm test` failed because the fresh worktree had no local `node_modules` and `tests/domain.test.mjs` could not import `typescript`; `pnpm install --frozen-lockfile` then completed using the existing lockfile with no package metadata changes.
+  - Re-run `npm test` passed: 153 tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+  - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because the GCBA manual, remaining core traffic/CABA code, and large legal-duty sources still require later approved learner-source content and exact-text validation remains pending.
 - Rebase sync of D6 Anexo L signage batch onto PR #104 green base on 2026-05-10:
   - `git fetch origin` completed, then `git rebase origin/codex/019-primary-sources-content-batch-core-traffic-law` replayed the Anexo L batch above `2d49d44bab76cb1fc9eb1275a94bbfbe3fcad158`.
   - Conflict resolution in this file preserved DNRPA D4 evidence, Decreto D5 evidence from PR #104, and Anexo L evidence as D6. No learner-source shard conflict occurred.
@@ -856,3 +875,6 @@
   - Conflict resolution in this file preserved DNRPA D4 evidence, Decreto D5 evidence, Anexo L D6 signage evidence from PR #105, and Ley 24.449 evidence as D7. Learner-source shard conflicts did not occur.
   - Final diff scope against `origin/codex/019-primary-sources-content-batch-signage-dnrpa`: update Ley 24.449 document/QA/search shards and this process memory only.
   - Rebase verification commands passed after conflict resolution: `npm run validate:content`; `npm run validate:content -- --coverage`; `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content`; `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` with 41 tests passed; `git diff --check`; `node scripts/check-feature-memory.mjs --worktree`.
+- Rebase sync of D8 insurance batch onto PR #106 Ley 24.449 base on 2026-05-10:
+  - `git fetch origin` completed, then `git rebase origin/codex/019-primary-sources-content-batch-ley24449` replayed the insurance batch above Ley 24.449 head `f1e38af1c3e8bb4c918465bcc830692537905b93`.
+  - Conflict resolution in this file preserved DNRPA D4 evidence, Decreto D5 evidence, Anexo L D6 signage evidence, Ley 24.449 D7 evidence, and insurance evidence as D8. Learner-source shard conflicts did not occur.

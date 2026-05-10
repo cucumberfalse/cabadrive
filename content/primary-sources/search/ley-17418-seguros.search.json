@@ -1,0 +1,2230 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-17418-seguros",
+  "entries": [
+    {
+      "entryId": "ley-17418-seguros--ley-no-17-418-ley-de-seguros-001",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--ley-no-17-418-ley-de-seguros-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--titulo-i-002",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--titulo-i-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-i-003",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-i-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--articulo-1-hay-contrato-de-seguro-cuando-el-004",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--articulo-1-hay-contrato-de-seguro-cuando-el-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-2-el-contrato-de-seguro-puede-tener-005",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-2-el-contrato-de-seguro-puede-tener-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-3-el-contrato-de-seguro-es-nulo-006",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-3-el-contrato-de-seguro-es-nulo-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-4-el-contrato-de-seguro-es-consensual-007",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-4-el-contrato-de-seguro-es-consensual-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-ii-008",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-ii-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-5-toda-declaracion-falsa-o-toda-reticencia-009",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-5-toda-declaracion-falsa-o-toda-reticencia-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-6-cuando-la-reticencia-no-dolosa-es-010",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-6-cuando-la-reticencia-no-dolosa-es-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-7-en-los-seguros-de-vida-cuando-011",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-7-en-los-seguros-de-vida-cuando-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-8-si-la-reticencia-fuese-dolosa-o-012",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-8-si-la-reticencia-fuese-dolosa-o-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-9-en-todos-los-casos-si-el-013",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-9-en-todos-los-casos-si-el-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-10-cuando-el-contrato-se-celebre-con-014",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-10-cuando-el-contrato-se-celebre-con-014",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-iii-015",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-iii-015",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-11-el-contrato-de-seguro-solo-puede-016",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-11-el-contrato-de-seguro-solo-puede-016",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-12-cuando-el-texto-de-la-poliza-017",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-12-cuando-el-texto-de-la-poliza-017",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-13-la-transferencia-de-las-polizas-a-018",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-13-la-transferencia-de-las-polizas-a-018",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-14-el-asegurado-tiene-derecho-mediante-el-019",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-14-el-asegurado-tiene-derecho-mediante-el-019",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-iv-020",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-iv-020",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-15-las-denuncias-y-declaraciones-impuestas-por-021",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-15-las-denuncias-y-declaraciones-impuestas-por-021",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-v-022",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-v-022",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-16-se-prohibe-la-constitucion-de-domicilio-023",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-16-se-prohibe-la-constitucion-de-domicilio-023",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-vi-024",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-vi-024",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-17-se-presume-que-el-periodo-de-025",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-17-se-presume-que-el-periodo-de-025",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-18-la-responsabilidad-del-asegurador-comienza-a-026",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-18-la-responsabilidad-del-asegurador-comienza-a-026",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-19-la-prorroga-tacita-prevista-en-el-027",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-19-la-prorroga-tacita-prevista-en-el-027",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-20-la-liquidacion-voluntaria-de-la-empresa-028",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-20-la-liquidacion-voluntaria-de-la-empresa-028",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-vii-029",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-vii-029",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-21-excepto-lo-previsto-para-los-seguros-030",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-21-excepto-lo-previsto-para-los-seguros-030",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-22-el-seguro-por-cuenta-ajena-obliga-031",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-22-el-seguro-por-cuenta-ajena-obliga-031",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-23-cuando-se-encuentre-en-posesion-de-032",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-23-cuando-se-encuentre-en-posesion-de-032",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-24-los-derechos-que-derivan-del-contrato-033",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-24-los-derechos-que-derivan-del-contrato-033",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-25-el-tomador-no-esta-obligado-a-034",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-25-el-tomador-no-esta-obligado-a-034",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-26-para-la-aplicacion-del-articulo-10-035",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-26-para-la-aplicacion-del-articulo-10-035",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-viii-036",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-viii-036",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-27-el-tomador-es-el-obligado-al-037",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-27-el-tomador-es-el-obligado-al-037",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-28-salvo-oposicion-del-asegurado-el-asegurador-038",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-28-salvo-oposicion-del-asegurado-el-asegurador-038",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-29-la-prima-se-pagara-en-el-039",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-29-la-prima-se-pagara-en-el-039",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-30-la-prima-es-debida-desde-la-040",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-30-la-prima-es-debida-desde-la-040",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-31-si-el-pago-de-la-primera-041",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-31-si-el-pago-de-la-primera-041",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-32-cuando-la-rescision-se-produzca-por-042",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-32-cuando-la-rescision-se-produzca-por-042",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-33-en-los-casos-de-reticencia-en-043",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-33-en-los-casos-de-reticencia-en-043",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-34-cuando-el-asegurado-ha-denunciado-erroneamente-044",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-34-cuando-el-asegurado-ha-denunciado-erroneamente-044",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-35-cuando-existiera-agravacion-del-riesgo-y-045",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-35-cuando-existiera-agravacion-del-riesgo-y-045",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-ix-046",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-ix-046",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-36-cuando-por-esta-ley-no-se-047",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-36-cuando-por-esta-ley-no-se-047",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-x-048",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-x-048",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-37-toda-agravacion-del-riesgo-asumido-que-049",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-37-toda-agravacion-del-riesgo-asumido-que-049",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-38-el-tomador-debe-denunciar-al-asegurador-050",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-38-el-tomador-debe-denunciar-al-asegurador-050",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-39-cuando-la-agravacion-se-deba-a-051",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-39-cuando-la-agravacion-se-deba-a-051",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-40-cuando-la-agravacion-resulte-de-un-052",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-40-cuando-la-agravacion-resulte-de-un-052",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-41-la-rescision-del-contrato-da-derecho-053",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-41-la-rescision-del-contrato-da-derecho-053",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-42-el-derecho-a-rescindir-se-extingue-054",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-42-el-derecho-a-rescindir-se-extingue-054",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-43-las-disposiciones-sobre-agravacion-del-riesgo-055",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-43-las-disposiciones-sobre-agravacion-del-riesgo-055",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-44-las-disposiciones-de-esta-seccion-son-056",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-44-las-disposiciones-de-esta-seccion-son-056",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-45-cuando-el-contrato-comprende-pluralidad-de-057",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-45-cuando-el-contrato-comprende-pluralidad-de-057",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-xi-058",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-xi-058",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-46-el-tomador-o-derechohabiente-en-su-059",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-46-el-tomador-o-derechohabiente-en-su-059",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-47-el-asegurado-pierde-el-derecho-a-060",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-47-el-asegurado-pierde-el-derecho-a-060",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-48-el-asegurado-pierde-el-derecho-a-061",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-48-el-asegurado-pierde-el-derecho-a-061",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-xii-062",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-xii-062",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-49-en-los-seguros-de-danos-patrimoniales-063",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-49-en-los-seguros-de-danos-patrimoniales-063",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-50-es-nulo-el-convenio-que-exonere-064",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-50-es-nulo-el-convenio-que-exonere-064",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-51-cuando-el-asegurador-estimo-el-dano-065",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-51-cuando-el-asegurador-estimo-el-dano-065",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-xiii-066",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-xiii-066",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-52-cuando-el-siniestro-solo-causa-un-067",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-52-cuando-el-siniestro-solo-causa-un-067",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-xiv-068",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-xiv-068",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-53-el-productor-o-agente-de-seguro-069",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-53-el-productor-o-agente-de-seguro-069",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-54-cuando-el-asegurador-designa-un-representante-070",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-54-cuando-el-asegurador-designa-un-representante-070",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-55-en-los-casos-del-articulo-anterior-071",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-55-en-los-casos-del-articulo-anterior-071",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-xv-072",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-xv-072",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-56-el-asegurador-debe-pronunciarse-acerca-del-073",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-56-el-asegurador-debe-pronunciarse-acerca-del-073",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-57-son-nulas-las-clausulas-compromisorias-incluidas-074",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-57-son-nulas-las-clausulas-compromisorias-incluidas-074",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-xvi-075",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-xvi-075",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-58-las-acciones-fundadas-en-el-contrato-076",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-58-las-acciones-fundadas-en-el-contrato-076",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-59-el-plazo-de-la-prescripcion-no-077",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-59-el-plazo-de-la-prescripcion-no-077",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--capitulo-ii-078",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--capitulo-ii-078",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-i-079",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-i-079",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-60-puede-ser-objeto-de-estos-seguros-080",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-60-puede-ser-objeto-de-estos-seguros-080",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-61-el-asegurador-se-obliga-a-resarcir-081",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-61-el-asegurador-se-obliga-a-resarcir-081",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-62-si-la-suma-asegurada-supera-notablemente-082",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-62-si-la-suma-asegurada-supera-notablemente-082",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-63-el-valor-del-bien-a-que-083",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-63-el-valor-del-bien-a-que-083",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-64-si-el-contrato-incluye-una-universalidad-084",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-64-si-el-contrato-incluye-una-universalidad-084",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-65-si-al-tiempo-del-siniestro-el-085",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-65-si-al-tiempo-del-siniestro-el-085",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-66-el-asegurador-no-indemnizara-los-danos-086",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-66-el-asegurador-no-indemnizara-los-danos-086",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-ii-087",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-ii-087",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-67-quien-asegura-el-mismo-interes-y-088",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-67-quien-asegura-el-mismo-interes-y-088",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-68-el-asegurado-no-puede-pretender-en-089",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-68-el-asegurado-no-puede-pretender-en-089",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-69-si-el-asegurado-celebra-el-contrato-090",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-69-si-el-asegurado-celebra-el-contrato-090",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-iii-091",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-iii-091",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-70-el-asegurador-queda-liberado-si-el-092",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-70-el-asegurador-queda-liberado-si-el-092",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-71-el-asegurador-no-cubre-los-danos-093",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-71-el-asegurador-no-cubre-los-danos-093",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-iv-094",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-iv-094",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-72-el-asegurado-esta-obligado-a-proveer-095",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-72-el-asegurado-esta-obligado-a-proveer-095",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-73-el-asegurador-esta-obligado-a-reembolsar-096",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-73-el-asegurador-esta-obligado-a-reembolsar-096",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-74-el-asegurado-no-puede-hacer-abandono-097",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-74-el-asegurado-no-puede-hacer-abandono-097",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-75-el-asegurado-podra-hacerse-representar-en-098",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-75-el-asegurado-podra-hacerse-representar-en-098",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-76-los-gastos-necesarios-para-verificar-el-099",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-76-los-gastos-necesarios-para-verificar-el-099",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-77-el-asegurado-no-puede-sin-el-100",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-77-el-asegurado-no-puede-sin-el-100",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-78-cuando-el-monto-de-los-danos-101",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-78-cuando-el-monto-de-los-danos-101",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-79-la-participacion-del-asegurador-en-el-102",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-79-la-participacion-del-asegurador-en-el-102",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-v-103",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-v-103",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-80-los-derechos-que-correspondan-al-asegurado-104",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-80-los-derechos-que-correspondan-al-asegurado-104",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-vi-105",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-vi-105",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-81-cuando-no-exista-el-interes-asegurado-106",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-81-cuando-no-exista-el-interes-asegurado-106",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-82-el-cambio-del-titular-del-interes-107",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-82-el-cambio-del-titular-del-interes-107",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-83-el-articulo-82-se-aplica-a-108",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-83-el-articulo-82-se-aplica-a-108",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-vii-109",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-vii-109",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-84-para-ejercer-los-privilegios-reconocidos-por-110",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-84-para-ejercer-los-privilegios-reconocidos-por-110",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-viii-111",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-viii-111",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-85-el-asegurador-indemnizar-el-dano-causado-112",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-85-el-asegurador-indemnizar-el-dano-causado-112",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-86-el-asegurador-no-responde-por-el-113",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-86-el-asegurador-no-responde-por-el-113",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-87-el-monto-del-resarcimiento-debido-por-114",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-87-el-monto-del-resarcimiento-debido-por-114",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-88-cuando-en-el-seguro-de-incendio-115",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-88-cuando-en-el-seguro-de-incendio-115",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-89-cuando-se-conviene-la-reconstruccion-o-116",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-89-cuando-se-conviene-la-reconstruccion-o-116",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-ix-117",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-ix-117",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-90-en-los-seguros-de-danos-a-118",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-90-en-los-seguros-de-danos-a-118",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-91-el-asegurador-responde-por-los-danos-119",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-91-el-asegurador-responde-por-los-danos-119",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-92-para-valuar-el-dano-se-calculara-120",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-92-para-valuar-el-dano-se-calculara-120",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-93-la-denuncia-del-siniestro-se-remitira-121",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-93-la-denuncia-del-siniestro-se-remitira-121",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-94-cualquiera-de-las-partes-puede-solicitar-122",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-94-cualquiera-de-las-partes-puede-solicitar-122",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-95-el-asegurado-puede-realizar-antes-de-123",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-95-el-asegurado-puede-realizar-antes-de-123",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-96-en-caso-de-enajenacion-del-inmueble-124",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-96-en-caso-de-enajenacion-del-inmueble-124",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-97-los-articulos-90-a-96-se-125",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-97-los-articulos-90-a-96-se-125",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-x-126",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-x-126",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-98-puede-asegurarse-cualquier-riesgo-que-afecte-127",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-98-puede-asegurarse-cualquier-riesgo-que-afecte-127",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-99-en-el-seguro-de-mortalidad-de-128",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-99-en-el-seguro-de-mortalidad-de-128",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-100-el-seguro-no-comprende-los-danos-129",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-100-el-seguro-no-comprende-los-danos-129",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-101-en-la-aplicacion-del-articulo-80-130",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-101-en-la-aplicacion-del-articulo-80-130",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-102-el-asegurador-tiene-derecho-a-inspeccionar-131",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-102-el-asegurador-tiene-derecho-a-inspeccionar-131",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-103-el-asegurado-denunciara-al-asegurador-dentro-132",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-103-el-asegurado-denunciara-al-asegurador-dentro-132",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-104-cuando-el-animal-asegurado-enferme-o-133",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-104-cuando-el-animal-asegurado-enferme-o-133",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-105-el-asegurado-pierde-el-derecho-a-134",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-105-el-asegurado-pierde-el-derecho-a-134",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-106-el-asegurado-no-puede-sacrificar-al-135",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-106-el-asegurado-no-puede-sacrificar-al-135",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-107-la-indemnizacion-se-determina-por-el-136",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-107-la-indemnizacion-se-determina-por-el-136",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-108-el-asegurador-responde-por-la-muerte-137",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-108-el-asegurador-responde-por-la-muerte-137",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-xi-138",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-xi-138",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-109-el-asegurador-se-obliga-a-mantener-139",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-109-el-asegurador-se-obliga-a-mantener-139",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-110-la-garantia-del-asegurador-comprende-140",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-110-la-garantia-del-asegurador-comprende-140",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-111-el-pago-de-los-gastos-y-141",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-111-el-pago-de-los-gastos-y-141",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-112-la-indemnizacion-debida-por-el-asegurador-142",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-112-la-indemnizacion-debida-por-el-asegurador-142",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-113-el-seguro-de-responsabilidad-por-el-143",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-113-el-seguro-de-responsabilidad-por-el-143",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-114-el-asegurado-no-tiene-derecho-a-144",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-114-el-asegurado-no-tiene-derecho-a-144",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-115-el-asegurado-debe-denunciar-el-hecho-145",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-115-el-asegurado-debe-denunciar-el-hecho-145",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-116-el-asegurador-cumplira-la-condenacion-judicial-146",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-116-el-asegurador-cumplira-la-condenacion-judicial-146",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-117-el-asegurador-puede-examinar-las-actuaciones-147",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-117-el-asegurador-puede-examinar-las-actuaciones-147",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-118-el-credito-del-damnificado-tiene-privilegio-148",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-118-el-credito-del-damnificado-tiene-privilegio-148",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-119-si-existe-pluralidad-de-damnificados-la-149",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-119-si-existe-pluralidad-de-damnificados-la-149",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-120-cuando-se-trata-de-un-seguro-150",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-120-cuando-se-trata-de-un-seguro-150",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-xii-151",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-xii-151",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-121-el-seguro-de-los-riesgos-de-152",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-121-el-seguro-de-los-riesgos-de-152",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-122-el-asegurador-no-responde-de-los-153",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-122-el-asegurador-no-responde-de-los-153",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-123-el-seguro-se-puede-convenir-por-154",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-123-el-seguro-se-puede-convenir-por-154",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-124-cuando-se-trate-de-vehiculos-de-155",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-124-cuando-se-trate-de-vehiculos-de-155",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-125-cuando-el-seguro-se-refiere-a-156",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-125-cuando-el-seguro-se-refiere-a-156",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-126-cuando-se-trate-de-mercaderias-salvo-157",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-126-cuando-se-trate-de-mercaderias-salvo-157",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-127-el-asegurador-no-responde-por-el-158",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-127-el-asegurador-no-responde-por-el-158",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--capitulo-iii-159",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--capitulo-iii-159",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-i-160",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-i-160",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-128-el-seguro-se-puede-celebrar-sobre-161",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-128-el-seguro-se-puede-celebrar-sobre-161",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-129-en-el-seguro-de-vida-de-162",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-129-en-el-seguro-de-vida-de-162",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-130-transcurridos-tres-anos-desde-la-celebracion-163",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-130-transcurridos-tres-anos-desde-la-celebracion-163",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-131-la-denuncia-inexacta-de-la-edad-164",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-131-la-denuncia-inexacta-de-la-edad-164",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-132-solo-se-debe-denunciar-la-agravacion-165",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-132-solo-se-debe-denunciar-la-agravacion-165",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-133-los-cambios-de-profesion-o-de-166",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-133-los-cambios-de-profesion-o-de-166",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-134-el-asegurado-puede-rescindir-el-contrato-167",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-134-el-asegurado-puede-rescindir-el-contrato-167",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-135-el-suicidio-voluntario-de-la-persona-168",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-135-el-suicidio-voluntario-de-la-persona-168",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-136-en-el-seguro-sobre-la-vida-169",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-136-en-el-seguro-sobre-la-vida-169",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-137-el-asegurador-se-libera-si-la-170",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-137-el-asegurador-se-libera-si-la-170",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-138-transcurridos-tres-anos-desde-la-celebracion-171",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-138-transcurridos-tres-anos-desde-la-celebracion-171",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-139-cuando-en-el-caso-del-articulo-172",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-139-cuando-en-el-caso-del-articulo-172",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-140-cuando-el-asegurador-se-libera-por-173",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-140-cuando-el-asegurador-se-libera-por-173",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-141-cuando-el-asegurado-se-halla-al-174",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-141-cuando-el-asegurado-se-halla-al-174",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-142-no-obstante-la-reduccion-prevista-en-175",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-142-no-obstante-la-reduccion-prevista-en-175",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-143-se-puede-pactar-que-el-capital-176",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-143-se-puede-pactar-que-el-capital-176",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-144-los-herederos-legitimos-del-asegurado-tienen-177",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-144-los-herederos-legitimos-del-asegurado-tienen-177",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-145-designadas-varias-personas-sin-indicacion-de-178",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-145-designadas-varias-personas-sin-indicacion-de-178",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-146-la-designacion-de-beneficiario-se-hara-179",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-146-la-designacion-de-beneficiario-se-hara-179",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-147-la-quiebra-o-el-concurso-civil-180",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-147-la-quiebra-o-el-concurso-civil-180",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-148-las-disposiciones-de-este-capitulo-se-181",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-148-las-disposiciones-de-este-capitulo-se-181",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-ii-182",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-ii-182",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-149-en-el-seguro-de-accidentes-personales-183",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-149-en-el-seguro-de-accidentes-personales-183",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-150-el-asegurado-en-cuanto-le-sea-184",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-150-el-asegurado-en-cuanto-le-sea-184",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-151-cuando-el-siniestro-o-sus-consecuencias-185",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-151-cuando-el-siniestro-o-sus-consecuencias-185",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-152-el-asegurador-se-libera-si-el-186",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-152-el-asegurador-se-libera-si-el-186",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--seccion-iii-187",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--seccion-iii-187",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-153-en-el-caso-de-contratacion-de-188",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-153-en-el-caso-de-contratacion-de-188",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-154-el-contrato-fijara-las-condiciones-de-189",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-154-el-contrato-fijara-las-condiciones-de-189",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-155-quienes-dejan-de-pertenecer-definitivamente-al-190",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-155-quienes-dejan-de-pertenecer-definitivamente-al-190",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-156-el-contratante-del-seguro-colectivo-puede-191",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-156-el-contratante-del-seguro-colectivo-puede-191",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--capitulo-iv-192",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--capitulo-iv-192",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-157-las-disposiciones-de-este-titulo-se-193",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-157-las-disposiciones-de-este-titulo-se-193",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-158-ademas-de-las-normas-que-por-194",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-158-ademas-de-las-normas-que-por-194",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--titulo-ii-195",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--titulo-ii-195",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-159-el-asegurador-puede-a-su-vez-196",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-159-el-asegurador-puede-a-su-vez-196",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-160-el-asegurado-carece-de-accion-contra-197",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-160-el-asegurado-carece-de-accion-contra-197",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-161-en-caso-de-liquidacion-voluntaria-o-198",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-161-en-caso-de-liquidacion-voluntaria-o-198",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-162-el-contrato-de-reaseguro-se-rige-199",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-162-el-contrato-de-reaseguro-se-rige-199",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--titulo-iii-200",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--titulo-iii-200",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-163-la-presente-ley-se-incorporara-al-201",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-163-la-presente-ley-se-incorporara-al-201",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-17418-seguros--art-164-comuniquese-publiquese-dese-a-la-direccion-202",
+      "officialDocumentId": "ley-17418-seguros",
+      "chunkId": "ley-17418-seguros--art-164-comuniquese-publiquese-dese-a-la-direccion-202",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
