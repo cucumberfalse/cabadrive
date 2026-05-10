@@ -67,9 +67,9 @@
 - [x] T047 Verify the diff is limited to `specs/009-image-metadata-learning-support/tasks.md` and files in `specs/019-feature-009-memory-closure/`.
 - [x] T048 Run any additional local validation required by the Implementation Agent's evidence claims and record exact output.
 - [x] T049 Open a small PR for process-memory closure.
-- [ ] T050 Confirm closure PR required checks are green.
-- [ ] T051 Review Agent reviews the closure PR and confirms no blockers.
-- [ ] T052 Record final PR/check/review evidence in this feature memory.
+- [x] T050 Confirm closure PR required checks are green.
+- [x] T051 Review Agent reviews the closure PR and confirms no blockers.
+- [x] T052 Record final PR/check/review evidence in this feature memory.
 
 ## Process Memory
 
@@ -86,6 +86,10 @@
 - Implementation Agent closed only the user-specified fulfilled feature 009 items T099-T102, T109-T111, T120-T121, T155, T166, T175, and T176, with evidence in `specs/009-image-metadata-learning-support/tasks.md`.
 - Implementation Agent kept the PR process-memory-only; no product code, content JSON, validators, tests, generated indexes, runtime files, or durable docs outside the allowed feature memory were edited.
 - T050-T052 are live Orchestrator merge gates for PR #87 and cannot be truthfully closed inside this same PR without creating a stale-head evidence loop: any commit that records current-head checks/review changes the PR head and requires a fresh check/review cycle.
+- PR #87 post-merge gate closure for T050-T052: PR #87 merged at `2026-05-10T19:22:41Z` with head `e4e92d77ec458e8ca10926bde9289b400d9bebe5`; required checks were green, Review Agent had no blocking findings and review threads were resolved, and final evidence was recorded before merge.
+- Later feature 009 Docker smoke closure PR #93 closed T098 and merged at `2026-05-10T19:41:56Z` with head `d4630809de880dfddb7a5a3ea71ac052f224e172`; final `origin/main` after #93 is `c6076e580f2c59169957800fd2c80eacac3ca328`.
+- Final main validation after PR #93 passed `pnpm run validate:overlays`, `pnpm run validate:content`, `pnpm run test` with 116/116 tests passing, `git diff --check`, and targeted Playwright with 8/8 tests passing.
+- Final closure worktree evidence: `/Users/chap/devel/cabadrive-010-019-final-task-closure` on branch `codex/010-019-final-task-closure` was created from `origin/main` at `c6076e580f2c59169957800fd2c80eacac3ca328`; edited only this file and `specs/010-ui-ux-learning-source-of-truth/tasks.md`; `pnpm run validate:content`, `pnpm run validate:overlays`, `pnpm run test`, and `git diff --check` passed. The first `pnpm run test` attempt failed only because the fresh worktree had no `node_modules` and `tests/domain.test.mjs` could not import `typescript`; `pnpm install --frozen-lockfile` installed dependencies without tracked-file changes, then `pnpm run test` passed 116/116.
 
 ### Dead Ends
 

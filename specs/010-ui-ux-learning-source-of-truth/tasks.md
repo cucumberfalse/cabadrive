@@ -133,12 +133,12 @@
 
 ## Non-Mandatory Audit-Derived Follow-Up Tasks
 
-- [ ] T107 Implement additional audit-derived tasks only after they pass the final task consistency check and receive explicit disposition as in-scope for `010`.
-- [ ] T108 Keep each audit-derived implementation PR atomic and traceable to one or a small cluster of source-of-truth rules.
-- [ ] T109 Preserve `unofficial_b_fallback` clarity in every affected surface.
-- [ ] T110 Preserve local-first/offline behavior and avoid runtime network calls.
-- [ ] T111 Add tests and evidence required by each task's acceptance hook.
-- [ ] T112 Record completed task IDs, evidence, and any follow-up dispositions in Process Memory.
+- [x] T107 Implement additional audit-derived tasks only after they pass the final task consistency check and receive explicit disposition as in-scope for `010`.
+- [x] T108 Keep each audit-derived implementation PR atomic and traceable to one or a small cluster of source-of-truth rules.
+- [x] T109 Preserve `unofficial_b_fallback` clarity in every affected surface.
+- [x] T110 Preserve local-first/offline behavior and avoid runtime network calls.
+- [x] T111 Add tests and evidence required by each task's acceptance hook.
+- [x] T112 Record completed task IDs, evidence, and any follow-up dispositions in Process Memory.
 
 ## Required Slice G: Final Gate And PR Readiness
 
@@ -156,10 +156,10 @@
 - [x] T124 Run `pnpm run preflight`.
 - [x] T125 Run `git diff --check`.
 - [x] T126 For runtime-affecting changes, attempt Docker smoke with `make down`, `make build`, `make up`, smoke check `http://localhost:5173`, and `make down`; local `make up` was blocked by a shared `/cabadrive` container from another worktree, fallback `vite preview` smoke passed, and GitHub `docker-validation` passed.
-- [ ] T127 Confirm required checks are green on the current PR head after PR #88 follow-up push.
-- [ ] T128 Confirm no unresolved merge conflicts remain on the current PR head.
-- [ ] T129 Confirm no blocking review findings remain on PR #88 after GitHub review completes.
-- [ ] T130 Confirm final approval/merge mechanics are satisfied by GitHub/Orchestrator before merge.
+- [x] T127 Confirm required checks are green on the current PR head after PR #88 follow-up push.
+- [x] T128 Confirm no unresolved merge conflicts remain on the current PR head.
+- [x] T129 Confirm no blocking review findings remain on PR #88 after GitHub review completes.
+- [x] T130 Confirm final approval/merge mechanics are satisfied by GitHub/Orchestrator before merge.
 
 ## Review Requirements
 
@@ -306,6 +306,10 @@
 - PR #88 runtime smoke evidence: `make build` passed and built Docker image `cabadrive:local`; `make up` failed because fixed container name `/cabadrive` is already in use by container `938bee2b6df6e436f75470c15ff1aa3d5034a8c3b8c1fef4f37fdeac9a449960`. Per parallel-agent safety, this Implementation Agent did not remove or rename that container. Cleanup `make down` removed only this worktree's compose network. Fallback preview smoke passed with `pnpm exec vite preview --host 127.0.0.1 --port 5173 --strictPort` and `curl -fsS http://127.0.0.1:5173`, returning the HTML document; preview process was stopped. In-app Browser smoke was attempted, but the Browser plugin reported no available browser instances.
 - PR #88 cached-image natural-size P2 verification update, not a current-PR final gate claim: after code, test, and process-memory changes for thread `PRRT_kwDOSX65IM6A6JjI`, `pnpm run validate:overlays` passed; `pnpm run validate:content` passed with 460 category B fallback questions and 276 local image references; `pnpm run test` passed 116 tests; `pnpm run build` passed and generated a service worker with 280 cached assets, with only the existing large-chunk warning; `pnpm run test:e2e` passed 34 Playwright tests across `chromium` and `mobile`; `pnpm run preflight` passed, including feature-memory gate, repository baseline, validate, 116 unit/content tests, build, and 34 Playwright tests; `git diff --check` passed. With that PR #88 head, thread `PRRT_kwDOSX65IM6A6JjI` / comment `3215053435` could be resolved after review confirmed the pushed head.
 - PR #88 process-memory P2 verification update for thread `PRRT_kwDOSX65IM6A627V` / comment `3215286636`: current-PR gate tasks T127-T130 are intentionally unchecked until GitHub/Orchestrator verify checks, conflicts, review findings, approval, and merge mechanics on the pushed head; `pnpm run validate:overlays`, `pnpm run validate:content`, and `pnpm run test` passed for this process-memory-only correction. This thread can be resolved after review confirms this pushed head.
+- Final disposition for non-mandatory audit-derived follow-ups T107-T112: UX-010-004 through UX-010-006 were documented as separate follow-ups in `docs_project/project/frontend/ui-ux-product-audit.md` and explicitly not required for mandatory D/E/F completion. No additional audit-derived implementation was bundled into `010`; mandatory customer tasks were implemented; `unofficial_b_fallback` clarity, local-first/offline behavior, tests, and evidence remained preserved by PR #83, PR #88, and PR #93 validation.
+- PR #88 post-merge gate closure for T127-T130: PR #88 merged at `2026-05-10T18:18:40Z` with head `c3e8b87582d7178eb0bab2b2162b1c0830ca18de`; required checks were green, review blockers were resolved, merge conflicts were clean/merged, and final merge mechanics completed outside the PR before this process-memory-only closure.
+- Final main state after PR #93: `origin/main` head `c6076e580f2c59169957800fd2c80eacac3ca328`. Final validation on main passed `pnpm run validate:overlays`, `pnpm run validate:content`, `pnpm run test` with 116/116 tests passing, `git diff --check`, and targeted Playwright with 8/8 tests passing.
+- Final closure worktree evidence: `/Users/chap/devel/cabadrive-010-019-final-task-closure` on branch `codex/010-019-final-task-closure` was created from `origin/main` at `c6076e580f2c59169957800fd2c80eacac3ca328`; edited only this file and `specs/019-feature-009-memory-closure/tasks.md`; `pnpm run validate:content`, `pnpm run validate:overlays`, `pnpm run test`, and `git diff --check` passed. The first `pnpm run test` attempt failed only because the fresh worktree had no `node_modules` and `tests/domain.test.mjs` could not import `typescript`; `pnpm install --frozen-lockfile` installed dependencies without tracked-file changes, then `pnpm run test` passed 116/116.
 
 ### Implementation Agent Feedback
 
