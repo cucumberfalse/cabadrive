@@ -4115,7 +4115,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "919b09130ef7996c36b3343f34d84fcf633caa0cfb4659ad4b84c3e321fec93f",
+        "sourceFingerprint": "672cae49af40fba59b5202fc602d4857a8b55d13bacde7bee8f037654674f83c",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -4132,19 +4132,20 @@
           ]
         }
       },
-      "titleRu": "Лимиты скорости по типам дорог и зонам",
-      "summaryRu": "Короткий экзаменационный блок про максимальную, минимальную и предупредительную скорость в CABA и на маршрутах.",
+      "titleRu": "Скорость: город, трасса и особые зоны",
+      "summaryRu": "Короткий блок про máximas, mínimas и velocidad precautoria: где в CABA ждать 40/60/20, где включается логика rutas и почему знак или картинка могут менять число.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах про скорость сначала определяйте тип места: calle, avenida, via rapida, ruta, semiautopista, paso a nivel или zona urbana. Число в ответе почти всегда привязано именно к типу дороги или к специальному участку.",
-        "Для обычной городской логики CABA держите базовую сетку: calle обычно 40 km/h, avenida обычно 60 km/h, pasaje или calle de convivencia 20 km/h. Но знак или конкретная артерия могут менять число, поэтому в билетах с изображением смотрите не только слово calle/avenida, но и дорожную ситуацию.",
-        "Для быстрых дорог и маршрутов полезно отделять национальную логику от CABA. На ruta вне городской зоны для автомобиля в билетах встречается 110 km/h, на semiautopista - 120 km/h, а ruta, проходящая через zona urbana, дает 60 km/h, если нет иной señalización.",
-        "Velocidad precautoria - это не отдельный общий максимум. Это требование ехать так, чтобы сохранять контроль с учетом видимости, погоды, состояния дороги, трафика и риска. Поэтому при плохой погоде или у paso a nivel правильная идея - снизить скорость под условия, а не просто держаться максимально разрешенного числа.",
-        "Минимальная скорость - отдельная ловушка. В CABA она считается как половина максимума для типа arteria, а в национальной логике для caminos и semiautopistas в билетах появляется 40 km/h. Знак с числом может обозначать минимум, а не максимум.",
-        "Несколько билетов попали сюда потому, что текущая таксономия связывает их с быстрыми дорогами или словами sobrepaso/velocidad. В них не нужно выводить новый лимит: отвечайте ровно на вопрос билета - про luces bajas, carril de desaceleración, sobrepaso или тип ruta."
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про скорость сначала называйте место: calle, avenida, vía rápida, ruta, semiautopista, paso a nivel или zona urbana. Число почти всегда привязано к типу дороги или к особому участку.",
+        "Для CABA держите базовую сетку как рабочую память: calle обычно 40 km/h, avenida обычно 60 km/h, pasaje или calle de convivencia - 20 km/h. Для водителя из РФ это похоже на привычную идею “город/особая зона”, но цифры CABA учите отдельно.",
+        "Картинка или знак важнее привычки. Один tramo de avenida может дать 40, 60 или 70 km/h, а быстрые arterias вроде Gral. Paz или Intendente Cantilo живут по своим билетным числам.",
+        "Для rutas и semiautopistas отделяйте национальную логику от городской CABA. В билетах для автомобиля встречаются 110 km/h на ruta вне города, 120 km/h на semiautopista и 60 km/h, когда ruta проходит через zona urbana, если нет другой señalización.",
+        "Velocidad precautoria - это скорость по условиям, а не еще один общий максимум. При плохой видимости, дожде, сложной calzada, плотном трафике или у paso a nivel правильная мысль: снизить скорость так, чтобы сохранить контроль.",
+        "Минимальная скорость - отдельная ловушка. В CABA она считается как половина максимума для типа arteria, а в национальной логике для caminos и semiautopistas в билетах появляется 40 km/h. Знак с числом может быть минимумом, а не максимумом.",
+        "Несколько вопросов в этой теме на самом деле про luces bajas, carril de desaceleración, sobrepaso или тип ruta. Они здесь из-за текущего размещения билетов, поэтому не ищите скрытый лимит: отвечайте ровно на смысл вопроса."
       ],
       "practicalReasoningRu": [
-        "Скоростные лимиты делают поток предсказуемым: водитель заранее понимает, где ждать медленное движение, где можно ехать быстрее, а где нужно готовиться к пешеходам, переездам, съездам или плохой видимости.",
-        "На экзамене это помогает не угадывать число, а классифицировать ситуацию. Сначала тип дороги и особый участок, потом максимум или минимум, и только потом выбор ответа."
+        "Лимит скорости делает поток предсказуемым: где все едут медленнее, где можно быстрее, а где нужно заранее ждать пешеходов, переезд, съезд или плохую видимость.",
+        "На экзамене не угадывайте число из памяти. Сначала тип дороги и особый участок, потом максимум или минимум, затем конкретный вариант ответа."
       ],
       "spanishTerms": [
         {
@@ -4342,7 +4343,7 @@
             {
               "answerId": "b-fallback-032-a3",
               "verdict": "correct",
-              "explanationRu": "Для показанного участка avenida правильный ответ билета - 40 km/h; ориентируйтесь на конкретный tramo, а не только на слово avenida."
+              "explanationRu": "Для показанного участка avenida правильный ответ билета - 40 km/h. Смотрите на конкретный tramo, а не только на слово avenida."
             }
           ]
         },
@@ -4362,7 +4363,7 @@
             {
               "answerId": "b-fallback-049-a3",
               "verdict": "incorrect",
-              "explanationRu": "100 km/h относится к другим быстрым arterias, но не к этому указанному tramo de Av. Gral. Paz."
+              "explanationRu": "100 km/h относится к другим быстрым arterias, но не к указанному tramo de Av. Gral. Paz."
             }
           ]
         },
@@ -4382,7 +4383,7 @@
             {
               "answerId": "b-fallback-125-a3",
               "verdict": "incorrect",
-              "explanationRu": "40 km/h больше похоже на обычную calle или специальный участок, а не на этот tramo de avenida."
+              "explanationRu": "40 km/h больше похоже на обычную calle или особый медленный участок. Для этого tramo de avenida число другое."
             }
           ]
         },
@@ -4442,7 +4443,7 @@
             {
               "answerId": "b-fallback-176-a3",
               "verdict": "incorrect",
-              "explanationRu": "Exceder el límite de velocidad máxima - это превышение скорости, а не определение sobrepaso."
+              "explanationRu": "Exceder el límite de velocidad máxima - это превышение скорости. Это не определение sobrepaso."
             }
           ]
         },
@@ -4457,7 +4458,7 @@
             {
               "answerId": "b-fallback-189-a2",
               "verdict": "correct",
-              "explanationRu": "При плохой погоде или сложной дороге водитель должен adaptar la velocidad к климату и состоянию пути."
+              "explanationRu": "При плохой погоде или сложной дороге водитель должен adaptar la velocidad: ехать под климат и состояние пути."
             },
             {
               "answerId": "b-fallback-189-a3",
@@ -4572,7 +4573,7 @@
             {
               "answerId": "b-fallback-296-a1",
               "verdict": "correct",
-              "explanationRu": "В этом speed-adjacent размещении вопрос фактически про распознавание маршрута: знак означает Ruta Nacional N°3."
+              "explanationRu": "В этом размещении вопрос фактически про знак маршрута: на картинке Ruta Nacional N°3. Новый лимит скорости из него не выводите."
             },
             {
               "answerId": "b-fallback-296-a2",
@@ -4637,7 +4638,7 @@
             {
               "answerId": "b-fallback-343-a2",
               "verdict": "correct",
-              "explanationRu": "Вопрос здесь фактически про маршрутный знак: правильное распознавание - Ruta Provincial N°5."
+              "explanationRu": "Здесь вопрос тоже про маршрутный знак: правильное распознавание - Ruta Provincial N°5."
             },
             {
               "answerId": "b-fallback-343-a3",
@@ -4672,7 +4673,7 @@
             {
               "answerId": "b-fallback-391-a1",
               "verdict": "correct",
-              "explanationRu": "В показанной ситуации правильный limite de velocidad máxima - 60 km/h."
+              "explanationRu": "В показанной ситуации правильный límite de velocidad máxima - 60 km/h."
             },
             {
               "answerId": "b-fallback-391-a2",
@@ -4767,7 +4768,7 @@
             {
               "answerId": "b-fallback-452-a1",
               "verdict": "correct",
-              "explanationRu": "Утверждение verdadero: для показанной arteria в билете пара лимитов 30 km/h минимальная и 60 km/h максимальная."
+              "explanationRu": "Verdadero: для показанной arteria в билете пара лимитов 30 km/h mínima и 60 km/h máxima."
             },
             {
               "answerId": "b-fallback-452-a2",
@@ -4799,7 +4800,7 @@
         },
         {
           "id": "trap-image-specific",
-          "textRu": "В билетах с изображением конкретный tramo может быть исключением. Поэтому два похожих вопроса про Costanera или calle могут иметь разные числа.",
+          "textRu": "В билетах с картинкой конкретный tramo может быть исключением. Два похожих вопроса про Costanera или calle могут ждать разные числа.",
           "sourceQuestionIds": [
             "b-fallback-032",
             "b-fallback-125",
@@ -4818,7 +4819,7 @@
         },
         {
           "id": "trap-loose-speed-placement",
-          "textRu": "Маршрутные знаки и luces bajas включены в этот блок только из-за текущей таксономии: отвечайте на конкретный смысл билета, а не ищите там скрытый лимит скорости.",
+          "textRu": "Маршрутные знаки и luces bajas попали в этот блок из-за текущего размещения билетов. Отвечайте на прямой смысл вопроса, а не ищите скрытый лимит скорости.",
           "sourceQuestionIds": [
             "b-fallback-250",
             "b-fallback-296",
@@ -4872,7 +4873,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "57caf3aa097c33e5649843532ce1c6a2304a50254a89e5570bfca9d7e1684aa0",
+        "sourceFingerprint": "c04d37d1b9280caa4f8be26ca1a49a1db168eb375c519e2a5f7a571b1c710a42",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -4890,22 +4891,22 @@
         }
       },
       "titleRu": "Дистанция, торможение и реакция",
-      "summaryRu": "Блок про distancia mínima de seguridad, мокрую calzada, tiempo de reacción, campo visual, стекла, велосипедистов и узкую fuel-consumption ловушку.",
+      "summaryRu": "Блок про distancia mínima de seguridad, мокрую calzada, tiempo de reacción, campo visual, стекла, велосипедистов и узкий вопрос про расход топлива.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. Главная экзаменационная связка: дистанция, скорость, сцепление, обзор и реакция работают вместе; чем хуже условия, тем больше запас нужен водителю.",
-        "Для CABA в Ley 2148 прямо указана distancia prudencial mínima: не меньше двух секунд с учетом velocidad de marcha, calzada и clima. Поэтому в билете `b-fallback-005` правильна не длина в метрах, а diferencia de dos segundos.",
-        "На мокрой calzada тормозной путь больше, потому что сцепление хуже. Архивированные нормы поддерживают общую обязанность держать полный контроль с учетом visibilidad, estado de la calzada и clima; точное увеличение правила 2 segundos до 4 segundos в `b-fallback-255` оставлено как ticket-specific formula.",
-        "Niebla опасна не одним фактором. В fallback-билете она меняет campo visual, percepción del entorno, capacidad lumínica del vehículo и adherencia de las cubiertas; ответы, где туман влияет только на свет или только на обзор, слишком узкие.",
-        "Tiempo de reacción - это промежуток от обнаружения риска до решения/начала действия. В билете `b-fallback-401` среднее значение `aproximadamente 1 segundo` используется как билетная формула; не превращайте ее в универсальный закон для любого водителя и любой ситуации.",
-        "Чем выше скорость, тем уже полезный campo visual. Это не отдельная правовая формула, а практическая причина оставлять запас: на большой скорости водитель позже замечает боковые события и имеет меньше времени на frenado.",
-        "Билет про cristales проверяет не сложный приборный контроль, а конкретную формулу Ley 2148: при tonalidad стекол ocupantes del vehículo должны различаться a corta distancia.",
-        "Велосипедисты не освобождаются от normas de tránsito из-за меньшей скорости. В CABA для motovehículos и ciclorrodados действуют общие права и обязанности водителей, а нормы общего характера применяются к ciclorodados, если по природе они подходят.",
-        "Fuel-consumption вопрос держите узко: по fallback-билету exceso de consumo связан и с velocidad, и с resistencia aerodinámica. Здесь нет попытки строить официальный курс eco-driving."
+        "Этот блок - неофициальная подсказка Cabadrive. Главная мысль простая: дистанция, скорость, сцепление, обзор и реакция работают вместе. Чем хуже условия, тем больше запас нужен водителю.",
+        "В CABA Ley 2148 говорит про distancia prudencial mínima: не меньше двух секунд с учетом velocidad de marcha, calzada и clima. Поэтому в вопросе про дистанцию правильна не мера в метрах, а diferencia de dos segundos.",
+        "На мокрой calzada тормозной путь больше, потому что сцепление хуже. Общее правило требует сохранять контроль с учетом видимости, состояния дороги и погоды; точное увеличение 2 segundos до 4 segundos оставлено как формула конкретного старого билета.",
+        "Niebla бьет сразу по нескольким вещам: campo visual, percepción del entorno, luces del vehículo и adherencia de las cubiertas. Ответ, где туман влияет только на свет или только на обзор, слишком узкий.",
+        "Tiempo de reacción - пауза между тем, как водитель заметил риск, и тем, как решил/начал действовать. Среднее `aproximadamente 1 segundo` - билетная формула; не превращайте ее в закон для любого человека и любой ситуации.",
+        "Чем выше скорость, тем уже полезный campo visual. Это практическая причина держать запас: на большой скорости водитель позже замечает боковые события и имеет меньше времени на frenado.",
+        "Билет про cristales проверяет конкретную формулу Ley 2148: при tonalidad стекол ocupantes del vehículo должны различаться a corta distancia. Не ищите сложный приборный тест.",
+        "Велосипедисты не освобождаются от normas de tránsito из-за меньшей скорости. Для водителя из РФ это знакомая базовая логика: кто едет по дороге, соблюдает применимые правила.",
+        "Вопрос про consumo de combustible держите узко. В этом старом билете exceso de consumo связан и с velocidad, и с resistencia aerodinámica. Это не отдельный официальный курс экономичного вождения."
       ],
       "practicalReasoningRu": [
-        "Дистанция в секундах удобнее метров, потому что автоматически растет с фактической скоростью: за две секунды быстрый автомобиль проходит больше пути, чем медленный.",
-        "Мокрая дорога и туман одновременно ухудшают видимость, сцепление и время на решение. Поэтому безопасная реакция - снизить скорость и увеличить дистанцию, а не держать привычный сухой-road gap.",
-        "Экзамен часто дает неполные ответы: только свет, только 2 metros, только velocidad или только resistencia aerodinámica. Правильный вариант обычно сохраняет всю цепочку риска, а не один элемент."
+        "Дистанция в секундах удобнее метров: за две секунды быстрый автомобиль проходит больше пути, чем медленный. Поэтому запас сам растет вместе со скоростью.",
+        "Мокрая дорога и туман одновременно ухудшают видимость, сцепление и время на решение. Безопасная реакция - снизить скорость и увеличить дистанцию, а не держать привычный сухой запас.",
+        "Экзамен любит неполные ответы: только свет, только 2 metros, только velocidad или только resistencia aerodinámica. Правильный вариант обычно сохраняет всю цепочку риска."
       ],
       "spanishTerms": [
         {
@@ -4975,7 +4976,7 @@
         {
           "id": "term-condicion-climatica",
           "termEs": "condición climática",
-          "translationRu": "погодное условие",
+          "translationRu": "погода / погодное условие",
           "sourceQuestionIds": [
             "b-fallback-255",
             "b-fallback-330"
@@ -5069,12 +5070,12 @@
             {
               "answerId": "b-fallback-005-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: для этого билета и CABA-формулы безопасная дистанция выражается как diferencia de dos segundos, а не как фиксированное число метров."
+              "explanationRu": "Правильно: для этого билета и CABA-формулы безопасная дистанция выражается как diferencia de dos segundos, а не фиксированное число метров."
             },
             {
               "answerId": "b-fallback-005-a2",
               "verdict": "incorrect",
-              "explanationRu": "2 metros звучит конкретно, но это слишком механическая и неверная мера: на разной скорости за одно и то же время автомобиль проходит разный путь."
+              "explanationRu": "2 metros звучит конкретно, но это неверная мера: на разной скорости за одно и то же время автомобиль проходит разный путь."
             },
             {
               "answerId": "b-fallback-005-a3",
@@ -5090,7 +5091,7 @@
             {
               "answerId": "b-fallback-006-a1",
               "verdict": "incorrect",
-              "explanationRu": "Igual que seca неверно: мокрая или скользкая calzada уменьшает запас сцепления, поэтому остановиться так же быстро обычно нельзя."
+              "explanationRu": "Igual que seca неверно: мокрая или скользкая calzada уменьшает сцепление, поэтому остановиться так же быстро обычно нельзя."
             },
             {
               "answerId": "b-fallback-006-a2",
@@ -5151,7 +5152,7 @@
             {
               "answerId": "b-fallback-255-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-билету: при показанной condición climática правило 2 segundos увеличивают до 4 segundos. Это билетная формула, а не обобщенный закон из архивной нормы."
+              "explanationRu": "Правильно по старому билету: при показанной condición climática правило 2 segundos увеличивают до 4 segundos. Это билетная формула, а не общий закон из архивной нормы."
             },
             {
               "answerId": "b-fallback-255-a2",
@@ -5233,7 +5234,7 @@
             {
               "answerId": "b-fallback-417-a1",
               "verdict": "incorrect",
-              "explanationRu": "Portable colorimetric test звучит технически, но билет спрашивает формулу Ley 2148 para control en la vía pública: различимость ocupantes a corta distancia."
+              "explanationRu": "Вариант про портативный цветовой тест звучит убедительно, но билет спрашивает формулу Ley 2148 para control en la vía pública: ocupantes должны различаться a corta distancia."
             },
             {
               "answerId": "b-fallback-417-a2",
@@ -5301,7 +5302,7 @@
         },
         {
           "id": "trap-four-seconds-ticket-specific",
-          "textRu": "`4 segundos` - ожидаемая fallback-формула для показанной condición climática. Не переносите ее как официальный универсальный минимум без отдельного источника.",
+          "textRu": "`4 segundos` - ожидаемая формула для показанной condición climática в старом билете. Не переносите ее как официальный универсальный минимум без отдельного источника.",
           "sourceQuestionIds": [
             "b-fallback-255"
           ]
@@ -5337,7 +5338,7 @@
         },
         {
           "id": "trap-fuel-answer-is-both",
-          "textRu": "В fuel-consumption вопросе не выбирайте один фактор. По билету correct answer - `Ambas respuestas, A y B`.",
+          "textRu": "В вопросе про consumo de combustible не выбирайте один фактор. По билету правильный ответ - `Ambas respuestas, A y B`.",
           "sourceQuestionIds": [
             "b-fallback-450"
           ]
@@ -5389,7 +5390,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "b3642bf7a06e7a68fcc284a52db2fd18997fc44b9e638fd5234f58f83a208c82",
+        "sourceFingerprint": "db5102f0109fb6c77451fcc73dba97989822b4693602e7dcb80f0d0f7c5e667f",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -5407,20 +5408,20 @@
         }
       },
       "titleRu": "Алкоголь, препараты и состояние водителя",
-      "summaryRu": "Блок про alcoholemia, отказ от проверки, состояние principiante, estupefacientes, medicamentos, resaca, cansancio и ticket-specific эффекты, которые ухудшают пригодность к управлению.",
+      "summaryRu": "Блок про alcoholemia, отказ от проверки, principiante, estupefacientes, medicamentos, resaca, cansancio и узкие билетные эффекты, которые ухудшают управление.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах важна простая идея: водитель должен быть в таком estado psicofísico, чтобы контролировать автомобиль, видеть, воспринимать обстановку, держать внимание и принимать решения.",
-        "CABA Ley 2148 запрещает управлять после употребления или внесения в организм sustancias que disminuyan la aptitud para conducir. Закон прямо связывает ухудшение пригодности с somnolencia, fatiga, coordinación motora, atención, percepción sensorial и juicio crítico; поэтому алкоголь, estupefacientes и некоторые medicamentos в билетах читаются как риск для управления, а не как бытовая деталь.",
-        "Для fallback-билетов по CABA держите таблицу Ley 2148: обычный водитель автомобиля - максимум 0,5 gramos de alcohol por litro de sangre; motovehículos - 0,2; vehículos de transporte de pasajeros, de menores, de carga и Conductores Principiantes - 0,0. При этом текущая архивная Ley 24.449 содержит более строгую национальную формулу cero alcohol; этот slice не превращает старые fallback-ответы про 0,5 в общее национальное правило.",
-        "Conductor Principiante в CABA сохраняет это состояние 2 años. Знак `P` виден только первые 6 месяцев, но билет `b-fallback-117` спрашивает именно срок запрета на más de 0,0: правильная связка - 2 años.",
-        "Контроль не добровольная просьба. Todo conductor обязан проходить pruebas de alcoholemia/toxicológicas, которые делает Autoridad de Control. Negativa constituye falta; для предотвращения дальнейшего движения CABA презюмирует alcoholemia positiva или conducción bajo la acción de estupefacientes, запрещает продолжать движение и ordena la remoción del vehículo.",
-        "Про resaca, 17 horas despierto, cerveza/reacción, curva de alcohol que sube 1 hora, alteraciones en la visión и sedantes используйте только логику конкретных билетов. В текущих архивных законах есть общая рамка ухудшенной пригодности, но нет отдельного медицинского учебника с этими числовыми/физиологическими формулами.",
-        "В вопросах про drogas legales ловушка в слове `nunca`: легальный статус вещества не гарантирует безопасность управления. Правильная экзаменационная логика - смотреть, снижает ли оно aptitud para conducir."
+        "Этот блок - неофициальная подсказка Cabadrive. Главная идея: водитель должен быть в estado psicofísico, который позволяет контролировать автомобиль, видеть дорогу, воспринимать обстановку, держать внимание и принимать решения.",
+        "CABA Ley 2148 запрещает вести после веществ, которые снижают aptitud para conducir. Закон связывает ухудшение с somnolencia, fatiga, coordinación motora, atención, percepción sensorial и juicio crítico. Поэтому алкоголь, estupefacientes и некоторые medicamentos в билетах - это риск для управления, а не бытовая деталь.",
+        "Для старых CABA-билетов держите таблицу Ley 2148: обычный водитель автомобиля - максимум 0,5 gramos de alcohol por litro de sangre; motovehículos - 0,2; transporte de pasajeros, de menores, de carga и Conductores Principiantes - 0,0. Но это не надо переносить как общее национальное правило: текущая архивная Ley 24.449 записана строже, с cero alcohol.",
+        "Conductor Principiante в CABA сохраняет этот статус 2 años. Знак `P` виден только первые 6 месяцев, но вопрос спрашивает срок запрета на más de 0,0. Правильная связка - 2 años.",
+        "Проверка - не просьба “по желанию”. Todo conductor обязан проходить pruebas de alcoholemia/toxicológicas у Autoridad de Control. Negativa constituye falta: CABA презюмирует alcoholemia positiva или conducción bajo la acción de estupefacientes, запрещает продолжать движение и ordena la remoción del vehículo.",
+        "Resaca, 17 horas despierto, cerveza/reacción, curva de alcohol que sube 1 hora, alteraciones en la visión и sedantes учите как формулы конкретных билетов. Архивные законы дают общую рамку ухудшенной пригодности, но не отдельный медицинский учебник с этими числами.",
+        "В вопросах про drogas legales ловушка в слове `nunca`. Легальный статус вещества не делает управление безопасным. Смотрите, снижает ли оно aptitud para conducir."
       ],
       "practicalReasoningRu": [
-        "Алкоголь, усталость и вещества опасны не потому, что водитель “плохо выглядит”, а потому что ломают цепочку управления: заметить риск, оценить его, решить и физически выполнить маневр.",
-        "Нулевые лимиты для principiante и для транспорта пассажиров, детей или груза делают правило проще: чем выше ответственность или меньше опыт, тем меньше допустимый запас на ошибку.",
-        "Отказ от теста нельзя делать выгоднее положительного теста. Поэтому билетная логика CABA при negativa такая же практичная: не продолжать движение и убрать автомобиль из риска."
+        "Алкоголь, усталость и вещества опасны не из-за “плохого вида” водителя. Они ломают цепочку управления: заметить риск, оценить его, решить и физически выполнить маневр.",
+        "Нулевые лимиты для principiante и для транспорта пассажиров, детей или груза проще читать так: больше ответственность или меньше опыт - меньше допустимый запас на ошибку.",
+        "Отказ от теста нельзя делать выгоднее положительного результата. Поэтому логика CABA жесткая: не продолжать движение и убрать автомобиль из риска."
       ],
       "spanishTerms": [
         {
@@ -5657,7 +5658,7 @@
             {
               "answerId": "b-fallback-075-a1",
               "verdict": "incorrect",
-              "explanationRu": "Фраза A верна как часть объяснения, но в этом билете она неполная: нужно также учитывать ticket-specific эффект resaca."
+              "explanationRu": "Фраза A верна как часть объяснения, но в этом билете она неполная: нужно также учитывать эффект resaca именно из этого вопроса."
             },
             {
               "answerId": "b-fallback-075-a2",
@@ -5739,7 +5740,7 @@
             {
               "answerId": "b-fallback-203-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно для показанного обычного автомобиля в fallback-билете: по CABA Ley 2148 общий лимит для conductores de automóviles - 0,5 gramos por litro de sangre."
+              "explanationRu": "Правильно для показанного обычного автомобиля в старом CABA-билете: по Ley 2148 общий лимит для conductores de automóviles - 0,5 gramos por litro de sangre. Не переносите это как общий национальный лимит."
             },
             {
               "answerId": "b-fallback-203-a2",
@@ -5759,7 +5760,7 @@
             {
               "answerId": "b-fallback-215-a1",
               "verdict": "incorrect",
-              "explanationRu": "Билет не ожидает disminuye inmediata. По ticket-specific формуле концентрация еще продолжает subiendo durante 1 hora."
+              "explanationRu": "Билет не ожидает disminuye inmediata. По формуле этого вопроса концентрация еще продолжает subiendo durante 1 hora."
             },
             {
               "answerId": "b-fallback-215-a2",
@@ -5784,7 +5785,7 @@
             {
               "answerId": "b-fallback-224-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: ticket-specific ключ - medicamentos con efectos sedantes, потому что sedación может снижать внимание и реакцию."
+              "explanationRu": "Правильно: ключ этого билета - medicamentos con efectos sedantes, потому что sedación может снижать внимание и реакцию."
             },
             {
               "answerId": "b-fallback-224-a3",
@@ -5799,7 +5800,7 @@
             {
               "answerId": "b-fallback-257-a1",
               "verdict": "correct",
-              "explanationRu": "Sí: по билету alcohol может producir alteraciones en la visión; это часть общей пригодности водителя к восприятию дороги."
+              "explanationRu": "Sí: по билету alcohol может producir alteraciones en la visión; это часть общей пригодности водителя воспринимать дорогу."
             },
             {
               "answerId": "b-fallback-257-a2",
@@ -5839,12 +5840,12 @@
             {
               "answerId": "b-fallback-286-a1",
               "verdict": "correct",
-              "explanationRu": "Sí по билету: 17 horas despierto сравниваются с реакцией человека выше разрешенного alcohol limit, потому что обе ситуации aumentan el tiempo de reacción."
+              "explanationRu": "Sí по билету: 17 horas despierto сравниваются с реакцией человека выше разрешенного alcohol limit, потому что обе ситуации aumentan el tiempo de reacción. Держите это как формулу билета."
             },
             {
               "answerId": "b-fallback-286-a2",
               "verdict": "incorrect",
-              "explanationRu": "No, sólo alcoholemia positiva неверно: ticket-specific premise says prolonged wakefulness can also increase reaction time."
+              "explanationRu": "No, sólo alcoholemia positiva неверно: по условию этого билета длительное бодрствование тоже может увеличить tiempo de reacción."
             },
             {
               "answerId": "b-fallback-286-a3",
@@ -5904,12 +5905,12 @@
             {
               "answerId": "b-fallback-355-a2",
               "verdict": "incorrect",
-              "explanationRu": "Sólo propia vida слишком узко: риск распространяется на passengers, pedestrians и других road users."
+              "explanationRu": "Sólo propia vida слишком узко: риск распространяется на pasajeros, peatones и других участников дороги."
             },
             {
               "answerId": "b-fallback-355-a3",
               "verdict": "incorrect",
-              "explanationRu": "Desinhibido no significa menos riesgos. Наоборот, impaired judgment может вести к более опасным решениям."
+              "explanationRu": "Desinhibido no significa меньше риска. Наоборот, ухудшенное juicio crítico может вести к более опасным решениям."
             }
           ]
         },
@@ -5919,12 +5920,12 @@
             {
               "answerId": "b-fallback-431-a1",
               "verdict": "correct",
-              "explanationRu": "Sí: по билету conducir con resaca peligroso porque todavía hay effects en el organismo."
+              "explanationRu": "Sí: по билету conducir con resaca опасно, потому что в организме еще сохраняются эффекты алкоголя."
             },
             {
               "answerId": "b-fallback-431-a2",
               "verdict": "incorrect",
-              "explanationRu": "No, sólo primeras horas неверно: ticket-specific trap в том, что последствия не ограничиваются только первыми часами ingesta."
+              "explanationRu": "No, sólo primeras horas неверно: ловушка в том, что последствия не ограничиваются только первыми часами ingesta."
             },
             {
               "answerId": "b-fallback-431-a3",
@@ -5958,7 +5959,7 @@
       "trapNotes": [
         {
           "id": "trap-legal-does-not-mean-safe",
-          "textRu": "Слово legal не равно safe. В `drogas legales nunca afectan` ловушка именно в `nunca`; некоторые legal substances/medicamentos могут снижать aptitud.",
+          "textRu": "Слово legal не значит безопасно для руля. В `drogas legales nunca afectan` ловушка именно в `nunca`: некоторые medicamentos или legal substances могут снижать aptitud.",
           "sourceQuestionIds": [
             "b-fallback-067",
             "b-fallback-152",
@@ -5985,7 +5986,7 @@
         },
         {
           "id": "trap-caba-thresholds-by-vehicle",
-          "textRu": "0,5 / 0,2 / 0,0 выбираются по категории в CABA fallback-билете: ordinary car, motovehículo или principiante/professional/passenger/cargo context.",
+          "textRu": "0,5 / 0,2 / 0,0 выбираются по категории в старом CABA-билете: обычный автомобиль, motovehículo или principiante / профессиональный, пассажирский либо грузовой контекст. Не переносите 0,5 как общее национальное правило.",
           "sourceQuestionIds": [
             "b-fallback-203",
             "b-fallback-446",
@@ -6002,7 +6003,7 @@
         },
         {
           "id": "trap-ticket-specific-science",
-          "textRu": "Формулы `sube durante 1 hora`, `17 horas despierto`, visual effects и resaca оставлены ticket-specific. Не расширяйте их за пределы билетов без отдельного архивного источника.",
+          "textRu": "Формулы `sube durante 1 hora`, `17 horas despierto`, alteraciones en la visión и resaca оставлены для конкретных билетов. Не расширяйте их без отдельного архивного источника.",
           "sourceQuestionIds": [
             "b-fallback-215",
             "b-fallback-257",
@@ -6053,7 +6054,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "94e68f7c4100ad5a2ff73b622e85b398cb272c64cdfb4c4f22d0db50034a9358",
+        "sourceFingerprint": "4f3ed76a8c57bbaff85970ae859e118554376780abcc7e45650ccac1fe8d195d",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -6071,19 +6072,20 @@
         }
       },
       "titleRu": "Погода, видимость и сцепление",
-      "summaryRu": "Экзаменационный блок про lluvia, niebla, viento fuerte, aquaplaning, торможение на мокрой дороге, сцепление, давление в шинах и безопасную адаптацию к плохой видимости.",
+      "summaryRu": "Блок про lluvia, niebla, viento fuerte, aquaplaning, мокрую дорогу, давление в шинах и спокойную адаптацию к плохой видимости.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В weather-вопросах сначала определите, что ухудшилось: visibilidad, adherencia, frenos, estabilidad, carga/сопротивление воздуха или способность водителя сохранять total dominio del vehículo.",
-        "Общая официальная логика скорости проста: даже если лимит выше, скорость должна соответствовать visibility, состоянию дороги, clima, состоянию автомобиля, состоянию водителя и плотности движения. Поэтому при lluvia, мокрой дороге, fog или strong side wind безопасный ответ обычно связан со снижением скорости, увеличением дистанции и более плавным маневром.",
-        "Вопросы про мокрую дорогу держатся на сцеплении. Lluvia и charcos уменьшают adherencia; wet brakes могут perder eficacia, а aquaplaning означает, что шина идет по слою воды вместо нормального контакта с pavimento. Не выбирайте варианты, где вода якобы улучшает сцепление или distance всегда остается одинаковой.",
-        "В fog/low visibility билеты отделяют обычный свет для движения от emergency warning. Для движения выбирайте bajas и rompeniebla, когда билет спрашивает противотуманные огни; не выбирайте altas или balizas как обычный способ ехать через туман.",
-        "Strong lateral wind - это устойчивость и планирование. Знак с наклоненным деревом означает Vientos fuertes laterales; при обгоне грузовика в сильный ветер не нужна слишком большая разница скорости, потому что автомобиль может дернуться на выходе из воздушного потока грузовика.",
-        "Давление в шинах здесь остается ticket-specific: один ответ говорит использовать manual del usuario, другой - проверять pressure на neumáticos fríos. В этом slice не добавляется широкая официальная формула давления.",
-        "Вопрос про расход топлива и груз на крыше тоже image-specific: показанный багаж увеличивает resistencia del viento и поэтому расход. Это практическая подсказка для билета, а не новый официальный курс eco-driving."
+        "Этот блок - неофициальная подсказка Cabadrive. В вопросах про погоду сначала спросите себя, что ухудшилось: visibilidad, adherencia, frenos, estabilidad, carga/сопротивление воздуха или способность водителя сохранять total dominio del vehículo.",
+        "Общая логика знакома и российскому водителю: лимит не отменяет обязанность ехать по условиям. В CABA это формулируется через velocidad precautoria: скорость должна подходить к видимости, calzada, clima, состоянию машины, водителя и потоку.",
+        "При lluvia, мокрой дороге, niebla или сильном боковом ветре безопасный ответ обычно связан со снижением скорости, большей дистанцией и плавными маневрами. Не ждите, пока автомобиль уже начнет скользить.",
+        "Мокрая дорога - это про сцепление. Lluvia и charcos уменьшают adherencia; мокрые frenos могут perder eficacia, а aquaplaning значит, что шина идет по слою воды вместо нормального контакта с pavimento.",
+        "В fog / плохой видимости отделяйте свет для движения от аварийного предупреждения. Для движения выбирайте luces bajas и rompeniebla, когда билет спрашивает противотуманки; altas или balizas не являются обычным способом ехать через туман.",
+        "Сильный боковой ветер - это устойчивость и планирование. Знак с наклоненным деревом означает Vientos fuertes laterales. При обгоне грузовика в сильный ветер не делайте слишком большой разницы скорости: машину может дернуть на выходе из воздушного потока.",
+        "Давление в шинах остается узким билетным вопросом: один ответ говорит использовать manual del usuario, другой - проверять presión на neumáticos fríos. Здесь не добавляется широкая официальная формула давления.",
+        "Вопрос про расход и груз на крыше тоже решается по картинке: багаж на крыше увеличивает resistencia del viento и расход. Это подсказка к билету, а не новый официальный курс экономичного вождения."
       ],
       "practicalReasoningRu": [
-        "Плохая погода забирает запас сразу с нескольких сторон: меньше сцепления, хуже видимость, длиннее торможение и ниже устойчивость. Безопасная адаптация - снизить скорость до того, как проблема уже перешла в скольжение.",
-        "У lights и balizas разные задачи. Фары и rompeniebla помогают видеть и быть видимым при плохой visibility; balizas показывают остановку, emergency или unusual maneuver, поэтому как обычный режим движения в тумане они сбивают других.",
+        "Плохая погода съедает запас сразу с нескольких сторон: меньше сцепления, хуже видимость, длиннее торможение и ниже устойчивость. Чем раньше снижена скорость, тем спокойнее остается машина.",
+        "У luces и balizas разные задачи. Фары и rompeniebla помогают видеть и быть видимым; balizas показывают остановку, emergency или unusual maneuver. Как обычный режим движения в тумане они сбивают других.",
         "Aquaplaning опасен тем, что steering и braking хуже передаются на дорогу. Меньшая скорость дает протектору больше времени вытеснить воду."
       ],
       "spanishTerms": [
@@ -6278,17 +6280,17 @@
             {
               "answerId": "b-fallback-035-a1",
               "verdict": "incorrect",
-              "explanationRu": "Это важная vehicle-condition проверка, но не определение conducción preventiva. Вопрос спрашивает стиль мышления водителя, а не только проверку oil/fuel/tire."
+              "explanationRu": "Это важная проверка состояния машины, но не определение conducción preventiva. Вопрос спрашивает стиль мышления водителя, а не только oil/fuel/tire check."
             },
             {
               "answerId": "b-fallback-035-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: conducción preventiva означает conductas cautelosas, ответственность за свои действия и anticipar la conducta de los demás. В плохую погоду это превращается в заранее сниженный риск."
+              "explanationRu": "Правильно: conducción preventiva означает conductas cautelosas, ответственность за свои действия и anticipar la conducta de los demás. В плохую погоду это значит заранее снизить риск."
             },
             {
               "answerId": "b-fallback-035-a3",
               "verdict": "incorrect",
-              "explanationRu": "Курсы каждые шесть месяцев не являются определением. Билет проверяет повседневное preventive-driving поведение за рулем."
+              "explanationRu": "Курсы каждые шесть месяцев не являются определением. Билет проверяет повседневное conducción preventiva за рулем."
             }
           ]
         },
@@ -6319,7 +6321,7 @@
             {
               "answerId": "b-fallback-195-a1",
               "verdict": "incorrect",
-              "explanationRu": "Aumenta porque el vehículo se vuelve más ligero неверно: картинка не про снижение массы, а про roof load и сопротивление воздуха."
+              "explanationRu": "Aumenta porque el vehículo se vuelve más ligero неверно: картинка не про снижение массы, а про груз на крыше и сопротивление воздуха."
             },
             {
               "answerId": "b-fallback-195-a2",
@@ -6329,7 +6331,7 @@
             {
               "answerId": "b-fallback-195-a3",
               "verdict": "incorrect",
-              "explanationRu": "Indistinto неверно: расположение груза на изображении влияет на сопротивление воздуха. Это image-specific conclusion, а не общий источник про все варианты груза."
+              "explanationRu": "Indistinto неверно: расположение груза на картинке влияет на сопротивление воздуха. Это вывод по изображению, а не общий источник про все варианты груза."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b200.jpg"
@@ -6340,7 +6342,7 @@
             {
               "answerId": "b-fallback-206-a1",
               "verdict": "incorrect",
-              "explanationRu": "Мокрые neumáticos не “очищают” ситуацию так, чтобы brakes работали лучше. Wet road обычно уменьшает запас сцепления."
+              "explanationRu": "Мокрые neumáticos не делают ситуацию безопаснее и не помогают frenos работать лучше. Мокрая дорога обычно уменьшает запас сцепления."
             },
             {
               "answerId": "b-fallback-206-a2",
@@ -6365,7 +6367,7 @@
             {
               "answerId": "b-fallback-251-a2",
               "verdict": "incorrect",
-              "explanationRu": "Off tracking - не этот эффект. Билет про water layer and loss of tyre grip, а не про траекторию колес при повороте длинного состава."
+              "explanationRu": "Off tracking здесь не подходит. Билет про слой воды и потерю сцепления шины, а не про траекторию колес длинного состава."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b180.jpg"
@@ -6381,7 +6383,7 @@
             {
               "answerId": "b-fallback-269-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по билету: presión de los neumáticos берется из manual del usuario de ese automóvil. Это vehicle-specific answer."
+              "explanationRu": "Правильно по билету: presión de los neumáticos берется из manual del usuario de ese automóvil. Это ответ для конкретной машины."
             },
             {
               "answerId": "b-fallback-269-a3",
@@ -6396,12 +6398,12 @@
             {
               "answerId": "b-fallback-275-a1",
               "verdict": "incorrect",
-              "explanationRu": "Pavimento y clima важны, но ответ неполный: безопасность зависит не только от road/weather."
+              "explanationRu": "Pavimento y clima важны, но ответ неполный: безопасность зависит не только от дороги и погоды."
             },
             {
               "answerId": "b-fallback-275-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: надо учитывать automóvil, infraestructura vial, condiciones climáticas и conductor. Это вся chain of risk для safe adaptation."
+              "explanationRu": "Правильно: надо учитывать automóvil, infraestructura vial, condiciones climáticas и conductor. Это вся цепочка риска для безопасной адаптации."
             },
             {
               "answerId": "b-fallback-275-a3",
@@ -6489,7 +6491,7 @@
             {
               "answerId": "b-fallback-330-a3",
               "verdict": "incorrect",
-              "explanationRu": "Siempre la misma неверно: safety distance adapts to rain, speed, road surface and available control."
+              "explanationRu": "Siempre la misma неверно: безопасная дистанция меняется по дождю, скорости, покрытию и доступному контролю."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b183.jpg"
@@ -6500,7 +6502,7 @@
             {
               "answerId": "b-fallback-335-a1",
               "verdict": "incorrect",
-              "explanationRu": "Desgastar las llantas не главный risk asked here. Вопрос про water on road and speed reduction."
+              "explanationRu": "Desgastar las llantas - не главный риск в этом вопросе. Здесь спрашивают про воду на дороге и снижение скорости."
             },
             {
               "answerId": "b-fallback-335-a2",
@@ -6540,7 +6542,7 @@
             {
               "answerId": "b-fallback-375-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по билету: давление проверяют на neumáticos fríos. Это точная ticket formula for pressure check."
+              "explanationRu": "Правильно по билету: давление проверяют на neumáticos fríos. Это точная формула вопроса про проверку давления."
             },
             {
               "answerId": "b-fallback-375-a2",
@@ -6575,7 +6577,7 @@
             {
               "answerId": "b-fallback-390-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: luces bajas надо encender siempre que está disminuida la visibilidad. Это weather/visibility formula of the ticket."
+              "explanationRu": "Правильно: luces bajas надо encender siempre que está disminuida la visibilidad. Это формула билета про погоду и видимость."
             },
             {
               "answerId": "b-fallback-390-a2",
@@ -6601,7 +6603,7 @@
             {
               "answerId": "b-fallback-428-a2",
               "verdict": "correct",
-              "explanationRu": "Фраза false. При тумане/плохой видимости нужны appropriate lights and speed; balizas reserve for stopped/emergency/unusual situations."
+              "explanationRu": "Фраза false. При тумане/плохой видимости нужны подходящие lights и скорость; balizas оставляют для остановки, emergency или unusual situations."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b192.jpg"
@@ -6617,12 +6619,12 @@
             {
               "answerId": "b-fallback-448-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: aquaplaning is pérdida de adherencia del neumático al piso caused by capa de agua acumulada en el pavimento that exceeds what tire tread can expel."
+              "explanationRu": "Правильно: aquaplaning - это pérdida de adherencia del neumático al piso из-за capa de agua acumulada en el pavimento, которую рисунок протектора не успевает вытеснить."
             },
             {
               "answerId": "b-fallback-448-a3",
               "verdict": "incorrect",
-              "explanationRu": "Calzada resbaladiza luego de llovizna is too general. Aquaplaning is the specific water-layer/loss-of-adherence effect."
+              "explanationRu": "Calzada resbaladiza luego de llovizna слишком общо. Aquaplaning - именно эффект слоя воды и потери adherencia."
             }
           ]
         }
@@ -6630,14 +6632,14 @@
       "trapNotes": [
         {
           "id": "trap-weather-answer-full-chain",
-          "textRu": "Weather questions often punish partial answers. If one option includes vehicle, road/infrastructure, climate and driver together, do not choose only pavement/climate.",
+          "textRu": "В вопросах про погоду часто наказывают за неполный ответ. Если один вариант собирает автомобиль, дорогу/инфраструктуру, климат и водителя, не выбирайте только pavement/climate.",
           "sourceQuestionIds": [
             "b-fallback-275"
           ]
         },
         {
           "id": "trap-wet-road-not-cleaning",
-          "textRu": "Wet road never becomes safer because tyres or brakes are “cleaned” by water. In these tickets, lluvia/charcos mean lower adherence or brake effectiveness.",
+          "textRu": "Мокрая дорога не становится безопаснее потому, что вода “очищает” шины или тормоза. В этих билетах lluvia/charcos означают меньшее сцепление или хуже работающие frenos.",
           "sourceQuestionIds": [
             "b-fallback-206",
             "b-fallback-330"
@@ -6645,7 +6647,7 @@
         },
         {
           "id": "trap-aquaplaning-specific-water-layer",
-          "textRu": "Aquaplaning is not just “a lot of rain” or generic slippery pavement. Look for loss of tyre adherence because water exceeds what the tread can expel.",
+          "textRu": "Aquaplaning - не просто сильный дождь и не любая скользкая дорога. Ищите потерю сцепления шины из-за слоя воды, который протектор не успевает вытеснить.",
           "sourceQuestionIds": [
             "b-fallback-251",
             "b-fallback-335",
@@ -6654,7 +6656,7 @@
         },
         {
           "id": "trap-fog-lights-not-balizas-altas",
-          "textRu": "In fog, altas and balizas are the traps. For circulation, the expected pattern is bajas plus rompeniebla when the ticket asks for them.",
+          "textRu": "В тумане altas и balizas - ловушки. Для движения ожидаемая связка: bajas плюс rompeniebla, если билет спрашивает их.",
           "sourceQuestionIds": [
             "b-fallback-283",
             "b-fallback-317",
@@ -6664,14 +6666,14 @@
         },
         {
           "id": "trap-wind-sign-tree-not-forest",
-          "textRu": "The bent tree sign is not forest or palm-zone information. It warns Vientos fuertes laterales.",
+          "textRu": "Знак с наклоненным деревом - не про лес и не про пальмы. Он предупреждает о Vientos fuertes laterales.",
           "sourceQuestionIds": [
             "b-fallback-110"
           ]
         },
         {
           "id": "trap-tyre-pressure-no-universal-number",
-          "textRu": "For tyre pressure, do not pick universal 28 lbs or 30 lbs. One ticket points to the vehicle manual; another asks for tyres fríos.",
+          "textRu": "Для давления в шинах не выбирайте универсальные 28 lbs или 30 lbs. Один билет ведет к manual del usuario, другой спрашивает neumáticos fríos.",
           "sourceQuestionIds": [
             "b-fallback-269",
             "b-fallback-375"
@@ -6679,7 +6681,7 @@
         },
         {
           "id": "trap-roof-load-image-specific",
-          "textRu": "The fuel-consumption image answer is about roof load increasing resistencia del viento. Do not broaden it into a general official fuel-consumption formula.",
+          "textRu": "Ответ про расход топлива решается по картинке: груз на крыше увеличивает resistencia del viento. Не расширяйте это в общую официальную формулу расхода.",
           "sourceQuestionIds": [
             "b-fallback-195"
           ]
@@ -14959,7 +14961,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "5c8f814dd6c66e71b2e0857b452d9463a4c1dec28dcadffb4c362aeeecc6cdc9",
+        "sourceFingerprint": "e26fc677958af7493b0f1cbc0c11f49fb88fab42ecfa30cdc78ac7ba2d9b6f0a",
         "basis": {
           "questionLevelCounts": {
             "green": 4,
@@ -14976,22 +14978,22 @@
           ]
         }
       },
-      "titleRu": "Базовые принципы безопасности и риска",
-      "summaryRu": "Экзаменационный блок про fluidez y seguridad, conducción preventiva, факторы риска, элементы безопасности автомобиля, VTV и ответственность пользователя дороги.",
+      "titleRu": "Базовая безопасность и риск",
+      "summaryRu": "Блок про fluidez y seguridad, conducción preventiva, факторы риска, элементы безопасности автомобиля, VTV и ответственность каждого пользователя дороги.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах темы слово seguridad почти всегда означает не “формальность”, а управление риском: не мешать потоку, не создавать опасность, держать внимание и поддерживать машину в безопасном состоянии.",
-        "Два базовых принципа системы tránsito в билете - fluidez y seguridad. Fluidez не означает ехать быстрее всех: это предсказуемый поток без ненужных помех. Seguridad означает, что скорость, маневр, состояние водителя и состояние автомобиля не должны создавать опасность другим.",
-        "Conducción preventiva строится на простой мысли: ошибиться может любой. Поэтому водитель смотрит вперед, держит control del vehículo, оставляет запас, ожидает чужую ошибку и не делает действий, которые отвлекают от contexto.",
-        "Риск складывается из трех групп, которые билет называет humano, vehicular y ambiental. Humano - внимание, телефон, курение, mate, усталость. Vehicular - шины, свет, подголовники, ремни, matafuego, VTV. Ambiental - погода, дорога, видимость и дорожная среда. Не выбирайте вариант, где из этой связки исчезает один важный фактор.",
-        "Элементы seguridad activa/passiva работают до и после ошибки. Шины, фары, тормоза и VTV помогают не попасть в опасность; ремень, cabezal/apoyacabezas и правильное расположение пассажиров уменьшают последствия удара.",
-        "Знаки и разметка в этой теме нужны как контроль риска. Cruce exclusivo para ciclistas, senda para ciclistas, señales preventivas, ciclovía и banquina проверяют, видите ли вы назначение пространства, а не просто узнаете отдельное слово.",
-        "Административные вопросы здесь тоже про безопасность: principiante длится два года, детям младше 12 нельзя ехать на переднем сиденье, а emblema internacional para personas con discapacidad не отменяет все случаи remoción/retención.",
-        "Если билет ссылается на OMS или дает старую статистическую формулу, учите это как wording конкретного fallback-билета. В этом topic мы не превращаем такие формулировки в отдельные текущие official-source claims без архивированного источника."
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах seguridad почти всегда означает управление риском: не мешать потоку, не создавать опасность, держать внимание и поддерживать машину в безопасном состоянии.",
+        "Два базовых принципа tránsito в билете - fluidez y seguridad. Fluidez не значит “ехать быстрее всех”: это предсказуемый поток без лишних помех. Seguridad значит, что скорость, маневр, состояние водителя и состояние автомобиля не создают опасность другим.",
+        "Conducción preventiva строится на простой мысли: ошибиться может любой. Поэтому водитель смотрит вперед, держит control del vehículo, оставляет запас, ждет чужую ошибку и не отвлекается от contexto.",
+        "Риск складывается из трех групп: humano, vehicular y ambiental. Humano - внимание, телефон, курение, mate, усталость. Vehicular - шины, свет, подголовники, ремни, matafuego, VTV. Ambiental - погода, дорога, видимость и дорожная среда. Если в варианте исчезает один фактор, он часто неполный.",
+        "Элементы seguridad activa/passiva работают до и после ошибки. Шины, фары, тормоза и VTV помогают не попасть в опасность; ремень, cabezal/apoyacabezas и правильное место пассажира уменьшают последствия удара.",
+        "Знаки и разметка здесь тоже про риск. Cruce exclusivo para ciclistas, senda para ciclistas, señales preventivas, ciclovía и banquina проверяют, понимаете ли вы назначение пространства, а не просто узнаете отдельное слово.",
+        "Административные вопросы тоже читаются через безопасность: principiante длится 2 años, детям младше 12 нельзя ехать спереди, а emblema internacional para personas con discapacidad не отменяет все случаи remoción/retención.",
+        "Если билет ссылается на OMS или дает старую статистическую формулу, учите это как формулировку конкретного старого билета. Мы не превращаем такие фразы в текущую статистику без отдельного архивированного официального источника."
       ],
       "practicalReasoningRu": [
-        "Безопасность дорожной системы держится не на одном “идеальном” водителе, а на запасе против чужих ошибок. Поэтому профилактическое вождение просит заранее снижать риск, а не реагировать в последний момент.",
-        "Техническое состояние машины влияет на всех: плохая шина, неправильный свет или недоступный огнетушитель превращают обычную ситуацию в аварийную быстрее, чем водитель успевает компенсировать опытом.",
-        "Отвлечение опасно даже когда руки свободны. Мозг перестает полноценно читать зеркала, скорость сближения, пешеходов, велосипедистов и сигналы других участников."
+        "Безопасность держится не на одном “идеальном” водителе, а на запасе против чужих ошибок. Поэтому профилактическое вождение просит снижать риск заранее, а не спасаться в последний момент.",
+        "Техническое состояние машины влияет на всех вокруг. Плохая шина, неправильный свет или недоступный огнетушитель превращают обычную ситуацию в аварийную быстрее, чем опытный водитель успеет компенсировать.",
+        "Отвлечение опасно даже когда руки свободны. Мозг хуже читает зеркала, скорость сближения, пешеходов, велосипедистов и сигналы других участников."
       ],
       "spanishTerms": [
         {
@@ -15157,7 +15159,7 @@
         {
           "id": "term-manos-libres-risk",
           "termEs": "manos libres",
-          "translationRu": "hands-free, громкая связь",
+          "translationRu": "громкая связь / manos libres; руки свободны, но внимание все равно занято",
           "sourceQuestionIds": [
             "b-fallback-392"
           ]
@@ -15249,7 +15251,7 @@
             {
               "answerId": "b-fallback-054-a3",
               "verdict": "incorrect",
-              "explanationRu": "Подголовник относится к безопасности автомобиля; утверждение, что он не часть active/passive safety, неверно для смысла билета."
+              "explanationRu": "Подголовник относится к безопасности автомобиля; утверждение, что он не часть активной/пассивной безопасности, неверно для смысла билета."
             }
           ]
         },
@@ -15275,7 +15277,7 @@
             {
               "answerId": "b-fallback-109-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: emblema internacional para personas con discapacidad не дает абсолютного иммунитета. Если есть предусмотренный нормой случай remoción/retención, автомобиль всё равно может быть remitido."
+              "explanationRu": "Verdadero: emblema internacional para personas con discapacidad не дает абсолютного иммунитета. Если есть предусмотренный нормой случай remoción/retención, автомобиль всё равно могут убрать."
             },
             {
               "answerId": "b-fallback-109-a2",
@@ -15355,7 +15357,7 @@
             {
               "answerId": "b-fallback-143-a3",
               "verdict": "correct",
-              "explanationRu": "Ambas correctas: VTV проверяет и safety-related systems, и emission/contamination aspects, поэтому нужно выбирать A + B."
+              "explanationRu": "Ambas correctas: VTV проверяет и системы безопасности, и emisiones/contaminación, поэтому нужно выбирать A + B."
             }
           ]
         },
@@ -15456,7 +15458,7 @@
             {
               "answerId": "b-fallback-237-a1",
               "verdict": "correct",
-              "explanationRu": "На фото водитель пьет mate/напиток за рулем: одна рука и внимание уходят от управления, поэтому acción riesgosa."
+              "explanationRu": "На фото водитель пьет mate/напиток за рулем: одна рука и внимание уходят от управления, поэтому это acción riesgosa."
             },
             {
               "answerId": "b-fallback-237-a2",
@@ -15472,7 +15474,7 @@
             {
               "answerId": "b-fallback-241-a1",
               "verdict": "incorrect",
-              "explanationRu": "Frenar inmediatamente при проколе/потере давления может сорвать траекторию и усилить потерю контроля."
+              "explanationRu": "Frenar inmediatamente при проколе или потере давления может сорвать траекторию и усилить потерю контроля."
             },
             {
               "answerId": "b-fallback-241-a2",
@@ -15544,7 +15546,7 @@
             {
               "answerId": "b-fallback-299-a1",
               "verdict": "correct",
-              "explanationRu": "Для ответа билета порог обновления шины - когда profundidad del dibujo меньше 1,6 mm. Меньший рисунок хуже отводит воду и снижает сцепление."
+              "explanationRu": "Для ответа этого старого билета порог обновления шины - когда profundidad del dibujo меньше 1,6 mm. Меньший рисунок хуже отводит воду и снижает сцепление. Не обобщайте это число без отдельного источника."
             },
             {
               "answerId": "b-fallback-299-a2",
@@ -15601,12 +15603,12 @@
             {
               "answerId": "b-fallback-334-a1",
               "verdict": "incorrect",
-              "explanationRu": "Даже без телефона в руке hands-free/voice use может отвлекать внимание. Вариант неверно сводит риск только к занятым рукам."
+              "explanationRu": "Даже без телефона в руке manos libres или голосовое управление может отвлекать внимание. Вариант неверно сводит риск только к занятым рукам."
             },
             {
               "answerId": "b-fallback-334-a2",
               "verdict": "incorrect",
-              "explanationRu": "Риск не появляется только at high speeds: потеря внимания опасна и на низкой скорости, особенно в городе."
+              "explanationRu": "Риск не появляется только на высокой скорости: потеря внимания опасна и на низкой скорости, особенно в городе."
             },
             {
               "answerId": "b-fallback-334-a3",
@@ -15622,7 +15624,7 @@
             {
               "answerId": "b-fallback-339-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero по формулировке билета: проблема siniestralidad vial представлена как масштабная global health problem. Запомните как ticket wording, без расширения в отдельную статистику."
+              "explanationRu": "Verdadero по формулировке билета: siniestralidad vial представлена как масштабная проблема общественного здоровья. Запомните это как формулировку билета, без расширения в свежую статистику."
             },
             {
               "answerId": "b-fallback-339-a2",
@@ -15750,7 +15752,7 @@
         },
         {
           "id": "trap-attention-not-only-hands",
-          "textRu": "Телефон, mate, курение и auricular/manos libres проверяют внимание, а не только занятые руки. “Hands free” не делает действие безопасным.",
+          "textRu": "Телефон, mate, курение и auricular/manos libres проверяют внимание, а не только занятые руки. Свободные руки не делают действие безопасным.",
           "sourceQuestionIds": [
             "b-fallback-237",
             "b-fallback-258",
@@ -15769,7 +15771,7 @@
         },
         {
           "id": "trap-ticket-specific-numbers",
-          "textRu": "Числа 12 años, 2 años и 1,6 mm не взаимозаменяемы: первое про переднее сиденье, второе про principiante, третье про протектор в конкретном fallback-билете.",
+          "textRu": "Числа 12 años, 2 años и 1,6 mm не взаимозаменяемы: первое про переднее сиденье, второе про principiante, третье про протектор в конкретном старом билете.",
           "sourceQuestionIds": [
             "b-fallback-113",
             "b-fallback-145",
@@ -15794,7 +15796,7 @@
         },
         {
           "id": "trap-oms-wording",
-          "textRu": "OMS/“pandemia” в этом наборе учите как формулировку самого билета. Не добавляйте к ней свежую статистику без отдельного архивированного official source.",
+          "textRu": "OMS/“pandemia” в этом наборе учите как формулировку самого билета. Не добавляйте свежую статистику без отдельного архивированного официального источника.",
           "sourceQuestionIds": [
             "b-fallback-339"
           ]

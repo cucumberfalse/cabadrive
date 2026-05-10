@@ -75,13 +75,13 @@
 
 ## Future Slice F: Speed, Weather, Impairment, And Risk Topics
 
-- [ ] T053 Review and rewrite `speed-limits`.
-- [ ] T054 Review and rewrite `safe-distance-and-braking`.
-- [ ] T055 Review and rewrite `alcohol-drugs-and-impairment`.
-- [ ] T056 Review and rewrite `adverse-weather-and-visibility`.
-- [ ] T057 Review and rewrite `safety-principles-and-risk`.
-- [ ] T058 Preserve feature 006 source boundaries for medical, statistical, numeric, and ticket-specific claims.
-- [ ] T059 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T053 Review and rewrite `speed-limits`.
+- [x] T054 Review and rewrite `safe-distance-and-braking`.
+- [x] T055 Review and rewrite `alcohol-drugs-and-impairment`.
+- [x] T056 Review and rewrite `adverse-weather-and-visibility`.
+- [x] T057 Review and rewrite `safety-principles-and-risk`.
+- [x] T058 Preserve feature 006 source boundaries for medical, statistical, numeric, and ticket-specific claims.
+- [x] T059 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice G: Warning Signs And Related Priority Signals
 
@@ -186,10 +186,10 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `vehicle-condition-maintenance-loads` | D | Reviewed in Slice D |
 | `pedestrian-and-school-road-markings` | E | Reviewed in Slice E |
 | `pedestrian-school-zones-and-markings` | E | Reviewed in Slice E |
-| `speed-limits` | F | Pending |
-| `safe-distance-and-braking` | F | Pending |
-| `alcohol-drugs-and-impairment` | F | Pending |
-| `adverse-weather-and-visibility` | F | Pending |
+| `speed-limits` | F | Reviewed in Slice F |
+| `safe-distance-and-braking` | F | Reviewed in Slice F |
+| `alcohol-drugs-and-impairment` | F | Reviewed in Slice F |
+| `adverse-weather-and-visibility` | F | Reviewed in Slice F |
 | `fatigue-distraction-and-attention` | B | Reviewed in Slice B |
 | `road-types-highways-and-routes` | H | Pending |
 | `regulatory-signs` | H | Pending |
@@ -201,7 +201,7 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `right-of-way-special-situations` | I | Pending |
 | `documents-licenses-and-insurance` | B | Reviewed in Slice B |
 | `authorities-controls-and-sanctions` | K | Pending |
-| `safety-principles-and-risk` | F | Pending |
+| `safety-principles-and-risk` | F | Reviewed in Slice F |
 | `stopping-vs-parking-maneuvers` | C | Reviewed in Slice C |
 | `center-lines-and-crossing-rules` | I | Pending |
 | `lane-and-channelization-markings` | I | Pending |
@@ -498,6 +498,67 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-pedestrian...origin/codex/015-study-guide-language-review-vehicle` with exactly the two expected modified files before commit.
 - Known issues: none introduced. Slice E intentionally kept picture-bound and old-ticket wording narrow for green bicycle markings, `Personas trabajando`, `Calle Prioridad Peatón`, slope-parking images, the posted `20 km/h` school-zone sign, yellow cordón, under-12 bicycle rules, pedestrian-signal behavior, and Observatorio Vial image-statistic wording.
 - Implementation Agent feedback: none requiring Architect disposition. Slice E found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
+- Slice F worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-risk` on `codex/015-study-guide-language-review-risk`, stacked on `origin/codex/015-study-guide-language-review-pedestrian` / PR #78.
+- Topics reviewed: `speed-limits`, `safe-distance-and-braking`, `alcohol-drugs-and-impairment`, `adverse-weather-and-visibility`, and `safety-principles-and-risk`. User assignment also named `weather-and-low-visibility`; the existing guide topic ID is `adverse-weather-and-visibility`, so the slice preserved the existing topic ID/slug.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice F did not touch root fields.
+  - titles: 5
+  - summaries: 5
+  - learning paragraphs: 39 current rendered paragraphs across Slice F topics
+  - practical reasoning paragraphs: 14
+  - term translations: 103
+  - source-conflict notes: 0 in Slice F topics
+  - answer explanations: 283
+  - trap notes: 34
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 2
+  - summaries: 5
+  - learning paragraphs: 39
+  - practical reasoning paragraphs: 13
+  - term translations: 2
+  - source-conflict notes: 0
+  - answer explanations: 51
+  - trap notes: 17
+  - `difficultyMeta.sourceFingerprint`: 5
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice F topics 101 / 101.
+- Unique question IDs before/after: global 460 / 460; Slice F topics 87 / 87.
+- Answer explanations before/after: global 1,831 / 1,831; Slice F topics 283 / 283.
+- Source-conflict notes before/after: global 4 / 4; Slice F topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-026`, `b-fallback-029`, `b-fallback-032`, `b-fallback-035`, `b-fallback-044`, `b-fallback-049`, `b-fallback-117`, `b-fallback-144`, `b-fallback-176`, `b-fallback-203`, `b-fallback-236`, `b-fallback-250`, `b-fallback-254`, `b-fallback-267`, `b-fallback-269`, `b-fallback-270`, `b-fallback-283`, `b-fallback-289`, `b-fallback-292`, `b-fallback-296`, `b-fallback-314`, `b-fallback-315`, `b-fallback-317`, `b-fallback-330`, `b-fallback-343`, `b-fallback-360`, `b-fallback-375`, `b-fallback-377`, `b-fallback-390`, `b-fallback-398`, `b-fallback-420`, `b-fallback-428`, `b-fallback-439`, `b-fallback-446`, and `b-fallback-449`.
+- Duplicate handling decision: reviewed duplicated placements only inside the five assigned Slice F topics. Matching placements outside Slice F remain for their future slices. Internal Slice F overlaps were kept intentionally topic-specific: for example, `b-fallback-035` keeps preventive-driving/weather framing in `adverse-weather-and-visibility`, `b-fallback-330` keeps distance/rain wording in both distance and weather contexts, and `b-fallback-203` / `b-fallback-446` keep CABA alcohol-threshold wording without generalizing it as current national law. Answer IDs, verdicts, images, placements, and topic assignment shape were preserved.
+- Source-sensitive sentences left unchanged: all 21 `claims[].textRu` entries in Slice F topics were preserved as non-rendered source-trace metadata. Numeric, medical, statistical, and ticket-specific boundaries were preserved, including 40/60/20 km/h CABA speed grid, 110/120/60 km/h route/semiautopista/zona urbana formulas, 20 km/h paso a nivel precautionary speed, minimum-speed half-maximum rule, 2-second CABA distance rule, old-ticket `4 segundos`, `aproximadamente 1 segundo`, CABA alcohol thresholds 0,5 / 0,2 / 0,0, `2 años` principiante, refusal/removal consequences, old-ticket medical formulas such as `sube durante 1 hora`, `17 horas despierto`, resaca and vision effects, aquaplaning/wet-brake wording, manual/cold tyre-pressure answers, roof-load fuel-consumption image answer, `1,6 mm` tire-depth answer kept to the specific old ticket, and OMS/statistical wording kept as old-ticket wording.
+- CABA/RF notes added or clarified: Slice F added practical CABA/RF framing without creating new comparative-law claims. It clarified that CABA speed numbers should be learned separately from RF habits, that distance/time-gap logic is familiar but CABA tests the two-second formula, that weather adaptation matches the familiar RF safety instinct while using CABA `velocidad precautoria` anchors, and that alcohol/drug text must stay CABA/fallback-ticket specific because current national zero-alcohol wording is stricter than the old ordinary-car 0,5 ticket premise.
+- Before/after samples:
+  - `speed-limits`: before "Лимиты скорости по типам дорог и зонам"; after "Скорость: город, трасса и особые зоны."
+  - `speed-limits`: before "текущая таксономия связывает их"; after "они здесь из-за текущего размещения билетов."
+  - `safe-distance-and-braking`: before "ticket-specific formula"; after "формула конкретного старого билета."
+  - `safe-distance-and-braking`: before "сухой-road gap"; after "привычный сухой запас."
+  - `alcohol-drugs-and-impairment`: before "ticket-specific эффекты"; after "узкие билетные эффекты."
+  - `alcohol-drugs-and-impairment`: before "ordinary car ... passenger/cargo context"; after "обычный автомобиль ... профессиональный, пассажирский либо грузовой контекст."
+  - `adverse-weather-and-visibility`: before "weather-вопросах" and "fog/low visibility"; after "вопросах про погоду" and "fog / плохой видимости."
+  - `adverse-weather-and-visibility`: before "roof load ... eco-driving"; after "багаж на крыше ... курс экономичного вождения."
+  - `safety-principles-and-risk`: before "official source" and "global health problem"; after "официального источника" and "проблема общественного здоровья."
+- PR #63 / #78 guard: Slice F write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch PR #63 / feature 009 forbidden paths (`content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`, coverage/source-trace manifests, related validators/tests/docs/package files). It also did not touch product UI, tests, scripts, package files, docs outside this feature memory, other worktrees/branches/PRs, or PR #78 files beyond this branch's stacked guide/tasks changes.
+- Difficulty metadata refresh evidence: all five Slice F topics kept their `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only `difficultyMeta.sourceFingerprint` changed, and each new value matched `difficultyTopicFingerprint(topic)` after the learner-facing text rewrite:
+  - `speed-limits`: `919b09130ef7996c36b3343f34d84fcf633caa0cfb4659ad4b84c3e321fec93f` -> `672cae49af40fba59b5202fc602d4857a8b55d13bacde7bee8f037654674f83c`
+  - `safe-distance-and-braking`: `57caf3aa097c33e5649843532ce1c6a2304a50254a89e5570bfca9d7e1684aa0` -> `c04d37d1b9280caa4f8be26ca1a49a1db168eb375c519e2a5f7a571b1c710a42`
+  - `alcohol-drugs-and-impairment`: `b3642bf7a06e7a68fcc284a52db2fd18997fc44b9e638fd5234f58f83a208c82` -> `db5102f0109fb6c77451fcc73dba97989822b4693602e7dcb80f0d0f7c5e667f`
+  - `adverse-weather-and-visibility`: `94e68f7c4100ad5a2ff73b622e85b398cb272c64cdfb4c4f22d0db50034a9358` -> `4f3ed76a8c57bbaff85970ae859e118554376780abcc7e45650ccac1fe8d195d`
+  - `safety-principles-and-risk`: `5c8f814dd6c66e71b2e0857b452d9463a4c1dec28dcadffb4c362aeeecc6cdc9` -> `e26fc677958af7493b0f1cbc0c11f49fb88fab42ecfa30cdc78ac7ba2d9b6f0a`
+- Validation evidence before final commit:
+  - JSON parse and structural count guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 38 `difficulty`, and 38 `difficultyMeta`.
+  - Targeted learner-facing process/English scan over Slice F rendered fields: pass; no matches for `fallback` as prose, `ticket-specific`, `canonical`, `source-backed`, `claim`, `prompt`, `taxonomy`, `weather question`, `weather condition`, `fuel-consumption`, `image-specific`, `official source`, `preventive-driving`, `road gap`, `chain of risk`, `safe adaptation`, `vehicle-specific`, `pressure check`, `roof load`, `strong side wind`, `strong lateral wind`, `low visibility`, `ordinary car`, `professional`, `passenger`, `cargo context`, `global health problem`, `official-source`, `at high speeds`, `hands-free`, `voice use`, `active/passive safety`, `Portable colorimetric test`, `colorimetric test`, `eco-driving`, `wording`, `wet road`, or `road users`.
+  - Duplicate-term guard for Slice F `spanishTerms[].translationRu`: pass; 0 values duplicate `termEs` verbatim.
+  - Difficulty guard: pass; for all five Slice F topics, fingerprint changed, computed fingerprint matched, non-fingerprint metadata was preserved, difficulty was preserved, and claims were preserved.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass, no output.
+  - Changed-path guard versus PR #63 forbidden paths and non-scope paths: pass; forbidden/non-scope path diff produced no output, and `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`.
+  - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-risk...origin/codex/015-study-guide-language-review-pedestrian` with exactly the two expected modified files before commit.
+- Known issues: none introduced. Slice F intentionally kept old-ticket and source-sensitive wording narrow for route-sign placements `b-fallback-296` / `b-fallback-343`, old CABA alcohol threshold tickets, refusal/removal consequences, medical-style impairment formulas, aquaplaning/fog/balizas behavior, tyre pressure, roof-load fuel-consumption, `1,6 mm` tyre-depth wording, and OMS/statistical wording.
+- Implementation Agent feedback: none requiring Architect disposition. Slice F found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
 
 ## Known Issues
 
