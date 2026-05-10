@@ -83,11 +83,11 @@
     {
       "id": "ansv-cenat-payment",
       "title": "ANSV: Boleta de Pago CENAT",
-      "url": "https://cnatboleta.com/",
+      "url": "https://boletadepago.seguridadvial.gob.ar/",
       "checkedAt": "2026-05-10",
       "officialOwner": "ANSV",
       "currentnessStatus": "volatile_check_required",
-      "resultRu": "Официальный сайт ANSV для генерации boleta CENAT. На странице видны шаги centro de emisión, datos personales, confirmación и волатильный importe; сумму не фиксируем в вечном тексте."
+      "resultRu": "Официальный GCBA CENAT page ведет на .gob.ar страницу ANSV/Mi Argentina для генерации boleta CENAT. На странице видны шаги centro de emisión, datos personales, confirmación и волатильный importe; сумму не фиксируем в вечном тексте."
     },
     {
       "id": "gcba-principiantes",
@@ -289,7 +289,7 @@
         {
           "sourceId": "ansv-cenat-payment",
           "labelRu": "Сгенерировать boleta CENAT на сайте ANSV",
-          "url": "https://cnatboleta.com/"
+          "url": "https://boletadepago.seguridadvial.gob.ar/"
         }
       ]
     },

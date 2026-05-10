@@ -10,6 +10,13 @@ test("CABA exam process guide validates structured official-source metadata", ()
   assert.deepEqual(errors, []);
 });
 
+test("CABA exam process guide uses the current official CENAT payment endpoint", () => {
+  const paymentSource = guide.sources.find((source) => source.id === "ansv-cenat-payment");
+  const staleNonGobArDomain = ["cnat", "boleta.com"].join("");
+  assert.equal(paymentSource?.url, "https://boletadepago.seguridadvial.gob.ar/");
+  assert.ok(!JSON.stringify(guide).includes(staleNonGobArDomain));
+});
+
 test("CABA exam process guide keeps the first slice narrow and unofficial", () => {
   assert.equal(guide.primaryScope.jurisdiction, "CABA");
   assert.equal(guide.primaryScope.procedure, "otorgamiento");

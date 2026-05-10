@@ -106,8 +106,8 @@ Official sources checked on 2026-05-10:
 - GCBA, Certificado Nacional de Antecedentes de Tránsito (CENAT): https://buenosaires.gob.ar/certificado-nacional-de-antecedentes-de-transito-cenat
   - Key points found: CENAT is required for all procedures within the Dirección General Habilitación de Conductores; the form is required to start the license request; it is mandatory and not part of the fee for each class processed.
 
-- ANSV / Gobierno Argentino, Boleta de Pago CENAT: https://cnatboleta.com/
-  - Key points found: official ANSV page to generate CENAT payment; form asks location/province, interjurisdictional professional license status, emission center, personal data, document type, document number, email, and reCAPTCHA.
+- ANSV / Gobierno Argentino, Boleta de Pago CENAT: https://boletadepago.seguridadvial.gob.ar/
+  - Key points found: official GCBA CENAT page points payment generation to this `.gob.ar` endpoint; form asks location/province, interjurisdictional professional license status, emission center, personal data, document type, document number, email, and reCAPTCHA. A previously observed non-.gob.ar payment URL was superseded by the PR #72 review fix and must not be used for user-facing payment actions.
   - Current amount shown during intake: ARS 8,840. This is volatile and must be rechecked before publication.
 
 - GCBA, Manual de Procedimientos Abril 2025: https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-DIS-SECGVC-DGHC-562-25-ANX.pdf

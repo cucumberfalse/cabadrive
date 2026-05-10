@@ -58,7 +58,7 @@ function isIsoDate(value) {
 }
 
 function isOfficialUrl(value) {
-  return typeof value === "string" && /^https:\/\/(buenosaires\.gob\.ar|documentosboletinoficial\.buenosaires\.gob\.ar|cnatboleta\.com)\//.test(value);
+  return typeof value === "string" && /^https:\/\/(buenosaires\.gob\.ar|documentosboletinoficial\.buenosaires\.gob\.ar|boletadepago\.seguridadvial\.gob\.ar)\//.test(value);
 }
 
 function requireString(errors, value, label) {
