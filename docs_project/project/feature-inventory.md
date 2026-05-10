@@ -19,7 +19,9 @@
 - Durable UI/UX and learning source-of-truth documentation with a product audit and atomic UX task inventory.
 - Validated question-specific image explanation overlays that consume feature 009 image usage/relevance records for the concrete ticket and render only as learning support.
 - Offline-capable local-first behavior after build.
-- Docker-only local runtime with `make build`, `make up`, and `make down`.
+- Docker-only local runtime with `make build`, `make up`, and `make down`;
+  ordinary use serves `http://localhost:5173`, while parallel worktree smoke
+  runs can isolate with `COMPOSE_PROJECT_NAME` and `CABADRIVE_HOST_PORT`.
 
 ## Current Content Mode
 

@@ -37,6 +37,16 @@ http://localhost:5173
 
 The Docker image builds the static app and serves it with nginx. Host Node.js or pnpm is not required for end-user runtime.
 
+For parallel-agent validation, the Docker host port can be isolated without
+changing the end-user default:
+
+```bash
+COMPOSE_PROJECT_NAME=cabadrive-021-isolation CABADRIVE_HOST_PORT=5175 make up
+```
+
+That serves the app at `http://localhost:5175` for that compose project. Agents
+must choose a free port and must not stop or remove sibling compose projects.
+
 ## Current Workflow Commands
 
 Current repository verification commands:
