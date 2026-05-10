@@ -7,6 +7,7 @@
 - [x] Update `docs_project/project/devops/ai-pr-workflow.md` to replace authorization-only merge mechanics with the new conservative finalization flow.
 - [x] Update `docs_project/project/devops/review-contract.md` so review expectations align with automatic finalization and preserved gates.
 - [x] Update `.github/pull_request_template.md` so the SENAR and merge-readiness checklists no longer require routine human merge-owner acceptance after objective gates pass.
+- [x] Follow-up: align `CLAUDE.md` with the standing automatic Orchestrator finalization model after failed Architect validation.
 - [x] Implement `scripts/finalize-pr.mjs` with pure gate evaluation separated from GitHub mutation.
 - [x] Add a package script for the finalization helper.
 - [x] Add focused tests covering successful readiness and blocker scenarios.
@@ -76,6 +77,7 @@
 - Current P1 post-effective-evidence implementation decision: final-validation evidence line filters now allow the role-owned validated-effective-head markers in final Architect/Analyst notes and final validation process evidence, so those markers can be added in final-validation evidence-only commits after the effective content head.
 - Current P2 known-issue decision implementation decision: `acceptedKnownIssueDecisionPending` now uses pending/open/unresolved/needs-owner-decision wording instead of the broad `owner decision` predicate. Accepted, resolved, disposed, not-applicable, and no-known-issue wording no longer blocks finalization, while `Owner decision: pending` and `needs owner decision` still block.
 - Current P2 final-validation-heading implementation decision: `verifyPostEffectiveHeadChanges()` now treats newly added final-validation note headings as evidence-only only when the heading is role-owned: `## Final Analyst Validation Notes` in `feature-request.md`, and `## Final Architect Validation Notes` in Architect-owned `spec.md`, `plan.md`, or `tasks.md`. Wrong-role headings and arbitrary peer headings remain non-evidence changes.
+- Current follow-up implementation decision: `CLAUDE.md` now treats Orchestrator-managed PRs as having standing repository workflow authorization for conservative finalization and merge after objective gates pass, while preserving PR-only delivery, Orchestrator no-file-edit boundaries, Implementation/Review no-merge boundaries, final Architect-before-Analyst validation, current/effective-head guards, and narrow exceptional human blockers.
 
 ## Dead Ends
 
@@ -88,12 +90,13 @@
 
 ## Known Issues
 
-- Final Architect validation and final Analyst validation are intentionally still marked "not yet invoked" in feature memory; this Implementation Agent does not perform those roles.
+- Final Architect validation failed once on 2026-05-10 because `CLAUDE.md` still contained explicit-authorization/default-human-merge-owner wording. This follow-up addresses that gap, but final Architect validation rerun and final Analyst validation remain Orchestrator-owned and pending.
 - No PR was merged by this Implementation Agent. Merge/finalization remains Orchestrator-owned after review, final validation, current-head guard, and required GitHub gates.
 
 ## Implementation Agent Feedback
 
-- None yet.
+- No unresolved Implementation Agent feedback.
+- Architect-discovered `CLAUDE.md` finalization alignment gap: addressed and disposed by this follow-up implementation in `CLAUDE.md`; no separate Implementation Agent feedback item remains pending.
 
 ## Verification Evidence
 
@@ -229,16 +232,23 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed during final handoff verification; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `pnpm run preflight`: passed during final handoff verification; feature-memory gate, repo baseline, content validation, 163 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
 - `git diff --check`: passed during final handoff verification after process-memory refresh; no whitespace errors reported.
+- `rg -n "authorized merge mechanics|human remains the default|human merge owner|user explicitly authorizes|explicit merge authorization|only final human approval|merge mechanics" CLAUDE.md AGENTS.md docs_project/project/devops/ai-pr-workflow.md docs_project/project/devops/review-contract.md .github/pull_request_template.md`: passed after `CLAUDE.md` follow-up alignment; remaining matches are a historical root-cause explanation in `docs_project/project/devops/ai-pr-workflow.md` and an unrelated accidental-edit recovery authorization line in `AGENTS.md`, not active merge instructions.
+- `git diff --check`: passed after `CLAUDE.md` follow-up alignment; no whitespace errors reported.
+- `node scripts/check-feature-memory.mjs --worktree`: passed after `CLAUDE.md` follow-up alignment; no configured product paths changed, so the feature-memory gate passed.
+- `pnpm run check:repo`: passed after `CLAUDE.md` follow-up alignment; "Repository baseline check passed."
+- `node --test tests/finalize-pr.test.mjs`: passed after `CLAUDE.md` follow-up alignment; 43 tests passed.
+- `pnpm run preflight`: passed after `CLAUDE.md` follow-up alignment; feature-memory gate, repo baseline, content validation, 163 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
 
 ## Cycle PR Set
 
 - Purpose: address PR #80 AI review P1 validated-effective-head gate and P2 accepted-known-issue decision parsing; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `a1abfc0b2981c5fab819ef189b47fbf97853d9c3`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
 - Purpose: address PR #80 AI review P2 final-validation heading allowance; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `44c056347dfa75c67466d72d289281052471ed96`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
+- Purpose: address failed Architect validation gap by aligning `CLAUDE.md` with standing Orchestrator finalization guidance; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `cc0dc8f845c4bfa56edc8eb3ca9a0411ff4780c4`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 
 ## Final Validation Evidence
 
-- Architect validation: not yet invoked.
-- Architect return count: 0.
+- Architect validation: failed once at 2026-05-10T21:53:12Z on `CLAUDE.md` explicit-authorization/default-human-merge-owner wording; follow-up implementation addressed the gap in `CLAUDE.md`.
+- Architect return count: 1.
 - Analyst validation: not yet invoked.
 - Analyst return count: 0.
 - Effective content head: not yet validated.
@@ -253,3 +263,8 @@ Append-only Architect-owned section used only when Orchestrator invokes final Ar
 
 - Architect validation pass: not yet invoked.
 - Architect return count for this work cycle: 0.
+- Architect validation pass: failed. `CLAUDE.md` still preserves explicit-authorization-only Orchestrator merge wording and says a human remains the default final merge owner, which conflicts with the standing Orchestrator finalization model and can recreate the routine human approval/merge mechanics stop condition for Claude-guided orchestration.
+- Architect validation evidence: failed at 2026-05-10T21:53:12Z after reviewing feature memory, the requested durable docs/template/helper/tests/package script, PR diff, and focused helper tests; the blocker is in changed `CLAUDE.md`, which is outside the user's requested read list but inside the effective PR diff.
+- Architect return count for this work cycle: 1.
+- Architect gaps: Align `CLAUDE.md` Orchestrator Autonomy and role-boundary wording with standing automatic Orchestrator finalization after objective gates pass, preserving exceptional human blockers, PR-only delivery, required checks, review resolution, effective-head/current-head guard evidence, feedback disposition, and final Architect-before-Analyst validation.
+- Open Architect dispositions: addressed/disposed by follow-up Implementation Agent alignment of `CLAUDE.md`; final Architect validation rerun remains pending.
