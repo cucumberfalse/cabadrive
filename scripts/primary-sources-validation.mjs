@@ -527,6 +527,7 @@ export function validatePrimarySources({
     if (!qaChunksById.has(chunkId)) errors.push(`${chunkId}: learner chunk is missing QA metadata.`);
   }
 
+  const searchProjectionKeys = new Set();
   for (const entry of asArray(searchIndex?.entries)) {
     if (!isPlainObject(entry)) {
       errors.push("primary sources search entry must be an object.");
@@ -542,6 +543,14 @@ export function validatePrimarySources({
     if (isNonEmptyString(entry.chunkId) && !corpusChunksById.has(entry.chunkId)) {
       errors.push(`${entryId}: search entry references missing learner chunk ${entry.chunkId}.`);
     }
+    const corpusChunk = isNonEmptyString(entry.chunkId) ? corpusChunksById.get(entry.chunkId) : undefined;
+    if (corpusChunk && isNonEmptyString(entry.officialDocumentId)) {
+      if (corpusChunk.officialDocumentId !== entry.officialDocumentId) {
+        errors.push(`${entryId}.officialDocumentId must match learner chunk officialDocumentId.`);
+      } else {
+        searchProjectionKeys.add(`${entry.officialDocumentId}\0${entry.chunkId}`);
+      }
+    }
     if (!Array.isArray(entry.textFields) || entry.textFields.some((field) => !isNonEmptyString(field))) {
       errors.push(`${entryId}.textFields must be an array of non-empty strings.`);
     } else {
@@ -549,6 +558,17 @@ export function validatePrimarySources({
         if (isForbiddenSpanishSimplificationKey(field)) {
           errors.push(`${entryId}.textFields must not reference ${field}; simplified Spanish is out of scope.`);
         }
+      }
+    }
+  }
+
+  if (strictMode) {
+    for (const [chunkId, chunk] of corpusChunksById) {
+      if (
+        isNonEmptyString(chunk.officialDocumentId) &&
+        !searchProjectionKeys.has(`${chunk.officialDocumentId}\0${chunkId}`)
+      ) {
+        errors.push(`${chunkId}: learner chunk is missing search projection entry in strict mode.`);
       }
     }
   }

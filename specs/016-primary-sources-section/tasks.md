@@ -317,6 +317,9 @@
 - Simplified-Spanish rejection now detects prefixed and variant keys/search fields such as `simplifiedSpanishText` and `learnerSimplifiedSpanishText`, not only exact key names.
 - Strict/final validation now checks generated coverage chunk `sourceSpan`s against the available archive Markdown and requires contiguous full-document line coverage.
 - Added focused regression tests for simplified-Spanish variant keys/search projections, incomplete archive span coverage, and non-contiguous archive span coverage.
+- Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A55Vw`.
+- Strict/final validation now requires every learner corpus chunk to have a matching search projection keyed by the same official document ID and chunk ID, so translated and QA-approved chunks cannot pass the release gate while missing from the local source reader/search index.
+- Added a focused regression test proving an otherwise complete strict fixture with `searchIndex.entries: []` fails validation.
 
 ### Implementation Agent Feedback
 
@@ -408,5 +411,13 @@
   - `node --test tests/primary-sources-validation.test.mjs` passed: 21 tests, 21 pass, 0 fail.
   - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 109 Node tests, 109 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+- Slice B PR #74 unresolved search-projection follow-up on 2026-05-10:
+  - Addressed `PRRT_kwDOSX65IM6A55Vw`: strict/final validation now requires a local search projection entry for every learner corpus chunk, keyed by matching official document ID and chunk ID.
+  - Added a regression test with `searchIndex.entries: []` against an otherwise complete strict fixture.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 22 tests, 22 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 110 Node tests, 110 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.

@@ -194,6 +194,15 @@ test("valid strict primary-source fixture passes", () => {
   assert.deepEqual(validate(), []);
 });
 
+test("strict mode rejects learner chunks missing search projection entries", () => {
+  const badSearchIndex = searchIndex();
+  badSearchIndex.entries = [];
+
+  const errors = validate({ searchIndex: badSearchIndex });
+
+  assert(errors.includes("doc-1--001: learner chunk is missing search projection entry in strict mode."));
+});
+
 test("strict mode rejects missing manifest document coverage", () => {
   const errors = validate({ manifest: manifest({ includeDoc2: true }) });
 
