@@ -140,7 +140,7 @@
 - [x] T109 Confirm no out-of-scope product/content/source changes are included.
 - [x] T110 Confirm no blocking review findings remain.
 - [ ] T111 Confirm required checks are green after push/PR.
-- [x] T112 Confirm the PR has no unresolved merge conflicts.
+- [ ] T112 Confirm the PR has no unresolved merge conflicts.
 - [ ] T113 Leave only final human approval or merge mechanics remaining.
 
 ## Process Memory
@@ -216,6 +216,13 @@
 
 ### Verification Evidence
 
+- 2026-05-10 PR #72 conflict/review fix: Worktree started clean at `c5890e24de093ca2a2ec27e664e8fb49dee0a964` on `/Users/chap/devel/cabadrive-012-caba-exam-process` branch `codex/012-caba-exam-process`. `git fetch origin` confirmed `origin/main` at `a26a12493123fcc0774a513e44fbf23663658ec0`.
+- 2026-05-10 PR #72 conflict/review fix: Used a non-destructive `git merge --no-edit origin/main`. Conflicts occurred in `docs_project/project/content-sources.md`, `docs_project/project/feature-inventory.md`, `docs_project/project/frontend/frontend-docs.md`, and `scripts/validate-content.mjs`. Resolution preserved both PR #72 process-guide content/governance and main's learner difficulty labels/validator integration.
+- 2026-05-10 PR #72 conflict/review fix: `T112` is intentionally unchecked until the merge-resolution commit is pushed and `gh pr view 72 --json mergeable,mergeStateStatus,headRefOid` confirms the current PR head has no unresolved conflicts.
+- 2026-05-10 PR #72 conflict/review fix local checks after resolving `origin/main` merge conflicts: `pnpm run validate:content` passed with difficulty labels validated for 460 questions and 38 topics, and content validation passed for 460 category B fallback questions and 276 local image references.
+- 2026-05-10 PR #72 conflict/review fix local checks after resolving `origin/main` merge conflicts: `pnpm run test` passed with 83 node tests; `pnpm run build` passed and generated a service worker with 280 cached assets, with the existing Vite large chunk warning.
+- 2026-05-10 PR #72 conflict/review fix local checks after resolving `origin/main` merge conflicts: `pnpm run test:e2e` passed with 18 Playwright tests; `git diff --check` passed; `pnpm run check:feature-memory -- --worktree` passed.
+- 2026-05-10 PR #72 conflict/review fix: `pnpm run preflight` was feasible and passed: feature-memory gate, repository baseline, content validation, 83 node tests, build, and 18 Playwright tests all completed successfully.
 - 2026-05-10 process-memory follow-up for PR #72: Codex Review for head `4fa9cc1177f7f12d46e6155b012fdeeeb435d68b` reported no findings. The prior CENAT P1 review thread is resolved/outdated after the `.gob.ar` CENAT payment endpoint correction, so no blocking review findings remain.
 - 2026-05-10 process-memory follow-up for PR #72: `gh pr view 72 --json mergeable,mergeStateStatus,headRefOid,statusCheckRollup,reviewDecision,url` reported head `4fa9cc1177f7f12d46e6155b012fdeeeb435d68b`, `mergeable: MERGEABLE`, and `mergeStateStatus: UNSTABLE`. This confirms no unresolved merge conflicts; T111 and T113 remain open because required checks are not green.
 - 2026-05-10 process-memory follow-up for PR #72: GitHub Actions required checks `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` still fail before job execution with the annotation `The job was not started because recent account payments have failed or your spending limit needs to be increased...`. This is an external GitHub billing/spending-limit blocker, not a code failure; local validation evidence remains green below.

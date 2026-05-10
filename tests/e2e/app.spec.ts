@@ -6,6 +6,12 @@ const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.j
 const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
+const difficultyAria: Record<string, string> = {
+  green: "Сложность: зеленый, легко",
+  blue: "Сложность: синий, обычная",
+  yellow: "Сложность: желтый, разбирать внимательно",
+  red: "Сложность: красный, целевой повтор"
+};
 
 async function storedAnswerCount(page: Page) {
   return page.evaluate(() => JSON.parse(localStorage.getItem("cabadrive.progress.v1") || "{\"answers\":[]}").answers.length);
@@ -17,6 +23,7 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(page.getByRole("heading", { name: /Тренажер теории/ })).toBeVisible();
   const card = page.getByTestId("question-card");
   const questionToggle = card.getByRole("button", { name: /¿Qué indica esta seña/ });
+  await expect(card.locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(card.locator("img")).toBeVisible();
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
   await expect(page.getByText("Обгон справа.")).toHaveCount(0);
@@ -53,6 +60,8 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect.poll(() => storedAnswerCount(page)).toBe(1);
   await page.getByRole("button", { name: /Ошибки/ }).click();
   await expect(page.getByRole("heading", { name: "Ошибки" })).toBeVisible();
+  await expect(page.locator(".side-list").locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
+  await expect(page.getByTestId("question-card").locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
   const mistakeToggle = page.getByTestId("question-card").getByRole("button", { name: /¿Qué indica esta seña/ });
   await mistakeToggle.click();
@@ -73,6 +82,7 @@ test("exam mode hides translation and explanation during active attempt and stor
   await expect(page.locator(".official-block[role='button']")).toHaveCount(0);
   await expect(page.locator(".support-block.translation")).toHaveCount(0);
   await expect(page.locator(".support-block.explanation")).toHaveCount(0);
+  await expect(page.locator(".difficulty-chip")).toHaveCount(0);
   await expect(page.getByRole("button", { name: /Пояснение/ })).toHaveCount(0);
   await page.getByRole("button", { name: "Пропустить" }).click();
   await expect(page.getByText("2 / 40")).toBeVisible();
@@ -142,6 +152,7 @@ test("materials view renders topic guide status, list, details, canonical ticket
   const firstTicket = firstTopic.tickets[0];
   const canonicalQuestion = canonicalQuestionById.get(firstTicket.questionId) as {
     officialTextEs: string;
+    difficulty: string;
     answers: { id: string; officialTextEs: string }[];
     correctAnswerId: string;
     image: { localPath: string };
@@ -158,7 +169,9 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await expect(page.getByText("Неофициальная учебная поддержка")).toBeVisible();
   await expect(page.getByText("Текущие билеты: неофициальная B-практика, не полная официальная база GCBA")).toBeVisible();
   await expect(page.getByRole("button", { name: new RegExp(firstTopic.titleRu) })).toBeVisible();
+  await expect(page.getByRole("button", { name: new RegExp(firstTopic.titleRu) }).locator(`[aria-label="${difficultyAria[firstTopic.difficulty]}"]`)).toBeVisible();
   await expect(page.getByRole("heading", { name: firstTopic.titleRu })).toBeVisible();
+  await expect(page.locator(".materials-topic-heading").locator(`[aria-label="${difficultyAria[firstTopic.difficulty]}"]`)).toBeVisible();
   await expect(page.getByText(firstTopic.summaryRu)).toBeVisible();
   await expect(page.getByText(firstTopic.learningMaterialRu[0])).toBeVisible();
   await expect(page.getByText(firstTopic.practicalReasoningRu[0])).toBeVisible();
@@ -169,6 +182,7 @@ test("materials view renders topic guide status, list, details, canonical ticket
 
   const ticketBlock = page.getByTestId(`materials-ticket-${firstTicket.questionId}`);
   await expect(ticketBlock).toBeVisible();
+  await expect(ticketBlock.locator(`[aria-label="${difficultyAria[canonicalQuestion.difficulty]}"]`)).toBeVisible();
   await expect(ticketBlock.getByText(canonicalQuestion.officialTextEs)).toBeVisible();
   const ticketAnswers = ticketBlock.locator(".materials-answers");
   for (const answer of canonicalQuestion.answers) {
@@ -194,15 +208,17 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
   }
   const canonicalQuestion = canonicalQuestionById.get(dualQuestionId) as {
     officialTextEs: string;
+    difficulty: string;
     answers: { id: string; officialTextEs: string }[];
     correctAnswerId: string;
   };
 
   async function expectFullDualTopicTicket(ticketBlock: Locator, guideTicket: {
     answerExplanations: { explanationRu: string }[];
-  }) {
+    }) {
     await expect(ticketBlock).toBeVisible();
     await expect(ticketBlock.getByText(canonicalQuestion.officialTextEs)).toBeVisible();
+    await expect(ticketBlock.locator(`[aria-label="${difficultyAria[canonicalQuestion.difficulty]}"]`)).toBeVisible();
     const ticketAnswers = ticketBlock.locator(".materials-answers");
     for (const answer of canonicalQuestion.answers) {
       await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();

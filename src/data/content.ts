@@ -14,6 +14,41 @@ export type Answer = {
   officialTextEs: string;
 };
 
+export type DifficultyLevel = "green" | "blue" | "yellow" | "red";
+
+export type DifficultyDimension =
+  | "simple_common_spanish"
+  | "spanish_lexical_load"
+  | "legal_admin_terms"
+  | "caba_rf_divergence"
+  | "rule_complexity"
+  | "numbers_thresholds"
+  | "trap_negation"
+  | "visual_cue_load"
+  | "cross_topic_dependence";
+
+export type DifficultyMeta = {
+  rubricVersion: "cabadrive-difficulty-v1";
+  dimensions: DifficultyDimension[];
+  rationaleRu: string;
+  provenance: {
+    method: "manual_rubric_review";
+    reviewer: string;
+    reviewedAt: string;
+  };
+  sourceFingerprint: string;
+};
+
+export type TopicDifficultyBasis = {
+  questionLevelCounts: Record<DifficultyLevel, number>;
+  ticketQuestionIdsSha256: string;
+  dominantDimensions: DifficultyDimension[];
+};
+
+export type TopicDifficultyMeta = DifficultyMeta & {
+  basis: TopicDifficultyBasis;
+};
+
 export type Question = {
   id: string;
   sourceId: string;
@@ -31,7 +66,8 @@ export type Question = {
   };
   topics: string[];
   vocabularyTermIds: string[];
-  difficulty: "low" | "medium" | "high";
+  difficulty: DifficultyLevel;
+  difficultyMeta: DifficultyMeta;
   flags: {
     hasImage: boolean;
     hasNegationOrException: boolean;
@@ -72,6 +108,8 @@ export type TopicGuideTopic = {
   id: string;
   slug: string;
   status: TopicGuideStatus;
+  difficulty: DifficultyLevel;
+  difficultyMeta: TopicDifficultyMeta;
   titleRu: string;
   summaryRu: string;
   learningMaterialRu: string[];

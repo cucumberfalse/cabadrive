@@ -5,6 +5,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
 import { validateCabaExamProcessGuide } from "./content-caba-exam-process.mjs";
+import { validateDifficultyContent } from "./content-difficulty.mjs";
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
 import { validateOfficialDocumentsManifest } from "./official-documents-validation.mjs";
@@ -198,6 +199,8 @@ errors.push(
     }
   })
 );
+const difficultyValidation = validateDifficultyContent({ questions, topicGuide });
+errors.push(...difficultyValidation.errors);
 
 const exceptionByApproval = new Map();
 for (const exception of exceptions) {
@@ -224,4 +227,5 @@ if (errors.length) {
 }
 
 for (const warning of warnings) console.warn(`Warning: ${warning}`);
+console.log(`Difficulty labels validated: ${difficultyValidation.questionCount} questions, ${difficultyValidation.topicCount} topics.`);
 console.log(`Content validation passed: ${questions.length} category B fallback questions, ${imageCount} local image references.`);
