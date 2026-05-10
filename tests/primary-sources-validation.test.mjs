@@ -222,6 +222,19 @@ test("strict mode rejects coverage documents without generated chunks or expecte
   assert(errors.includes("doc-1.chunks must include at least one generated coverage chunk in strict mode."));
 });
 
+test("rejects generated coverage chunks missing from expectedChunkIds", () => {
+  const badCoverage = coverage();
+  badCoverage.documents[0].chunks.push({
+    ...badCoverage.documents[0].chunks[0],
+    chunkId: "doc-1--002",
+    order: 2
+  });
+
+  const errors = validate({ coverage: badCoverage, mode: "draft" });
+
+  assert(errors.includes("doc-1: generated coverage chunk doc-1--002 is missing from expectedChunkIds."));
+});
+
 test("strict mode rejects learner corpus documents without learner chunks", () => {
   const badCorpus = corpus();
   badCorpus.documents[0].chunks = [];

@@ -382,11 +382,20 @@ export function validatePrimarySources({
         }
       }
     }
+    const expectedChunkIdsInDocument = new Set();
     for (const expectedChunkId of asArray(document.expectedChunkIds)) {
       if (!isNonEmptyString(expectedChunkId)) {
         errors.push(`${documentId}.expectedChunkIds must contain only non-empty strings.`);
-      } else if (!chunkIdsInDocument.has(expectedChunkId)) {
-        errors.push(`${documentId}: expected chunk ${expectedChunkId} is missing from coverage chunks.`);
+      } else {
+        expectedChunkIdsInDocument.add(expectedChunkId);
+        if (!chunkIdsInDocument.has(expectedChunkId)) {
+          errors.push(`${documentId}: expected chunk ${expectedChunkId} is missing from coverage chunks.`);
+        }
+      }
+    }
+    for (const generatedChunkId of chunkIdsInDocument) {
+      if (isNonEmptyString(generatedChunkId) && !expectedChunkIdsInDocument.has(generatedChunkId)) {
+        errors.push(`${documentId}: generated coverage chunk ${generatedChunkId} is missing from expectedChunkIds.`);
       }
     }
   }

@@ -310,6 +310,9 @@
 - Replaced ASCII `\b` placeholder matching with Unicode-aware placeholder detection so strict/final mode catches Russian draft placeholders such as `Черновой подготовительный...` and `заглушка`, plus English placeholder forms such as `TODO` and `draft placeholder`.
 - Tightened strict/final QA validation so reviewed/approved QA records require `checkedAt`; strict mode now rejects approved release-ready QA records without a checked-at date.
 - Added focused tests for Russian placeholder detection, English placeholder detection, and approved QA records missing `checkedAt`.
+- Addressed Codex AI Review P1 finding on PR #74 head `987e712`.
+- Tightened coverage inventory validation so every generated coverage chunk ID must also be listed in the same document's `expectedChunkIds`. This makes coverage chunk IDs exact in both directions and prevents a generated chunk from bypassing learner translation, simplification, and QA validation.
+- Added a focused regression test proving draft validation rejects a generated coverage chunk omitted from `expectedChunkIds`.
 
 ### Implementation Agent Feedback
 
@@ -353,3 +356,8 @@
   - `pnpm run test` passed: 89 Node tests, 89 pass, 0 fail.
   - `git diff --check` passed with no output.
   - Orchestrator reran `pnpm run build` after the P2 fixes and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- Slice B PR #74 head `987e712` P1 review follow-up verification on 2026-05-10:
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 18 tests, 18 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 90 Node tests, 90 pass, 0 fail.
+  - Orchestrator reran `pnpm run build` after the P1 expectedChunkIds fix and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
