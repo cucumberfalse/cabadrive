@@ -109,7 +109,7 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 - Requirement clarification was not requested because the assignment says to record assumptions and open questions instead.
 - Analyst hands off to Orchestrator and shuts down after intake is ready.
 - Architect starts from this artifact and writes `spec.md`, `plan.md`, and `tasks.md`.
-- Handoff context for Orchestrator: feature folder `specs/013-orchestrator-cleanup-governance/` in worktree `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on branch `codex/014-orchestrator-cleanup-governance`; parallel work may exist and all existing dirty diffs, branches, commits, PRs, process memory, and active environments must be preserved.
+- Handoff context for Orchestrator: feature folder `specs/019-orchestrator-cleanup-governance/` in worktree `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on branch `codex/014-orchestrator-cleanup-governance`; parallel work may exist and all existing dirty diffs, branches, commits, PRs, process memory, and active environments must be preserved.
 
 ## Open Questions And Risks
 
@@ -138,9 +138,9 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: PASS after prefix-rename validation on 2026-05-10. Feature memory now consistently uses `specs/013-orchestrator-cleanup-governance/`, with no stale old cleanup feature path routing.
+- Status: STALE/SUPERSEDED after latest-main rebase and `019` rename on 2026-05-10. Earlier PASS notes applied to the previous-prefix state; latest `origin/main` `995905bacdcf46d1d21662c12dba01b8ecda1d36` now has max prefix `018`, and feature memory now consistently uses `specs/019-orchestrator-cleanup-governance/`.
 - Analyst return count: 0.
 - Customer intent check: PASS in spirit and letter. The final result teaches Orchestrator to default new repository-changing work to a fresh isolated environment from latest verified `main`; coordinates completion-time cleanup through a first-class Cleanup Agent with strict positive-proof validation, refusal, and evidence rules; and records one-time cleanup evidence that preserves current, active, open-PR, dirty, ambiguous, and recurring work including `cabadrive-009-content-277-368`.
-- Gaps: none.
-- Analyst routing gaps or new questions: none.
-- Architect disposition routing: none needed; no new requirements, risks, scope drift, or implementation feedback are raised by final Analyst validation.
+- Gaps: none recorded in the stale validation, but fresh Analyst validation must rerun after the non-evidence rename.
+- Analyst routing gaps or new questions: none recorded in the stale validation.
+- Architect disposition routing: none recorded in the stale validation; fresh Architect validation must rerun after the `019` rename.

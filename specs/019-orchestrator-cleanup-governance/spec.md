@@ -14,7 +14,7 @@
   - Architect planning starts from that handoff and must not perform cleanup, implementation, staging, commits, pushes, PR creation, or review.
 - Parallel-work constraints:
   - Parallel agents and Orchestrators may be active. All existing dirty diffs, branches, commits, PRs, process memory, active worktrees, and ambiguous local paths must be preserved.
-  - Coordination risk resolved: after PR #65 merged, base `main` already contained `specs/012-orchestrator-final-validation-loop/`, so this cleanup feature memory was renumbered to `specs/013-orchestrator-cleanup-governance/` to satisfy the max-prefix-plus-one rule and remove the duplicate feature ID.
+  - Coordination risk resolved and updated: after PR #65 merged, an intermediate cleanup feature-memory renumbering was performed. After rebasing onto latest `origin/main` `995905bacdcf46d1d21662c12dba01b8ecda1d36`, `main` contains feature prefixes through `018`, including `specs/017-difficulty-labeling/` and `specs/018-learning-ticket-timer/`, so this cleanup feature memory is now `specs/019-orchestrator-cleanup-governance/` to satisfy the max-prefix-plus-one rule.
 
 ## Goal
 
@@ -30,7 +30,7 @@ In scope:
 - Review guidance that blocks unsafe cleanup wording or implementation.
 - Future feature-memory and PR-template guidance so cleanup evidence and parallel-work preservation are captured.
 - One-time cleanup task definition and evidence requirements for completed agent-created local environments under approved Cabadrive agent-environment roots.
-- `specs/013-orchestrator-cleanup-governance/{feature-request.md,spec.md,plan.md,tasks.md}`.
+- `specs/019-orchestrator-cleanup-governance/{feature-request.md,spec.md,plan.md,tasks.md}`.
 
 Out of scope:
 
