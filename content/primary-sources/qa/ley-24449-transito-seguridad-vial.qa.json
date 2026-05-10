@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "draft",
+  "officialDocumentId": "ley-24449-transito-seguridad-vial",
+  "document": {
+    "officialDocumentId": "ley-24449-transito-seguridad-vial",
+    "chunks": [
+      {
+        "chunkId": "ley-24449-transito-seguridad-vial--ley-24449-001",
+        "translationQa": {
+          "status": "draft",
+          "methodNotes": "Preparatory placeholder only; not a reviewed translation batch."
+        },
+        "simplificationQa": {
+          "status": "draft",
+          "methodNotes": "Preparatory placeholder only; not a reviewed simple rewrite."
+        }
+      }
+    ]
+  }
+}

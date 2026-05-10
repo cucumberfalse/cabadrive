@@ -79,6 +79,11 @@
 
 ## Slices D-H: Translation And Simplification Content Batches
 
+- [x] D0-001 Add supported per-document learner-source shard references for corpus, QA, and search root files.
+- [x] D0-002 Move current draft placeholder learner-source content into document, QA, and search shards without mass translation work.
+- [x] D0-003 Validate primary-source content after combining inline root data and referenced shards.
+- [x] D0-004 Add tests for shard loading, missing shard references, and strict QA/search projection failures after combining.
+- [x] D0-005 Document the sharding contract in `content/primary-sources/AGENTS.md` so D-H batches can edit one document's learner text, QA, and search projection independently.
 - [ ] T060 Create or update the shared terminology/glossary approach for consistent Russian legal/traffic terms.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
@@ -236,6 +241,20 @@
 - If new manifest entries land during implementation, coverage must expand before final release.
 - Navigation may become crowded; any grouping must keep the source reader visibly distinct from topic `Материалы`.
 - Bundle size/performance must be measured once full Russian and Spanish chunk data are imported.
+
+### Slice D0 Implementation Notes
+
+- Slice D0 ran in assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-content-shards` on branch `codex/016-primary-sources-content-shards`.
+- Implemented root-file shard references for the learner corpus, QA metadata, and search projection:
+  - `primary-sources.ru.json` uses `documentShards`.
+  - `primary-sources.qa.json` uses `qaShards`.
+  - `primary-sources.search.json` uses `searchShards`.
+- Added per-document shard directories under `content/primary-sources/documents/`, `content/primary-sources/qa/`, and `content/primary-sources/search/`.
+- Moved the existing draft placeholder for `ley-24449-transito-seguridad-vial` into one document shard, one QA shard, and one search shard. No mass translations or reviewed content batches were added in this slice.
+- Validator behavior remains centralized in `validatePrimarySources`; file-based validation now combines inline root data plus referenced shards before applying draft, coverage, strict, final, or release rules.
+- Strict/final validation still blocks missing manifest coverage, missing chunk coverage, missing full Russian, missing simple Russian, non-approved QA, missing search projection coverage, simplified Spanish fields, and learner Russian content under `content/official-documents/` after shard combination.
+- Sharding contract is recorded in `content/primary-sources/AGENTS.md` so future D-H batches can edit one document's learner text, QA, and search projection independently without contending on one giant JSON file.
+- Known limitation: only the existing placeholder document has learner content shards now; the remaining 18 documents and 5,222 chunks still require future translation/simplification batch shards.
 
 ### Slice A Implementation Notes
 

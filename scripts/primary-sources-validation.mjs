@@ -8,6 +8,7 @@ const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const QA_STATUSES = new Set(["draft", "reviewed", "approved"]);
 const STRICT_MODES = new Set(["strict", "final", "release"]);
 const COVERAGE_ONLY_MODES = new Set(["coverage", "coverage-only", "inventory"]);
+const PRIMARY_SOURCES_SECTION_PATH = "content/primary-sources";
 const FORBIDDEN_SPANISH_SIMPLIFICATION_PATHS = [
   "simplified-spanish",
   "simple-spanish",
@@ -110,6 +111,153 @@ function readArchiveText(root, archiveFiles, relativePath) {
   const absolutePath = join(root, relativePath);
   if (!existsSync(absolutePath)) return undefined;
   return readFileSync(absolutePath, "utf8");
+}
+
+function readJsonShard(root, shardFiles, relativePath) {
+  if (!isNonEmptyString(relativePath)) return undefined;
+  if (shardFiles instanceof Map && shardFiles.has(relativePath)) return shardFiles.get(relativePath);
+  if (isPlainObject(shardFiles) && Object.hasOwn(shardFiles, relativePath)) return shardFiles[relativePath];
+  const absolutePath = join(root, relativePath);
+  if (!existsSync(absolutePath)) return undefined;
+  return JSON.parse(readFileSync(absolutePath, "utf8"));
+}
+
+function shardPathFromReference(reference) {
+  if (isNonEmptyString(reference)) return reference;
+  if (isPlainObject(reference) && isNonEmptyString(reference.path)) return reference.path;
+  return undefined;
+}
+
+function validateShardPath(errors, relativePath, label) {
+  if (!isNonEmptyString(relativePath)) {
+    errors.push(`${label} must be a non-empty shard path.`);
+    return false;
+  }
+  const normalized = normalizePath(relativePath);
+  if (!normalized.endsWith(".json")) {
+    errors.push(`${label} must point to a JSON shard.`);
+    return false;
+  }
+  if (!isInsidePath(normalized, PRIMARY_SOURCES_SECTION_PATH)) {
+    errors.push(`${label} must stay under ${PRIMARY_SOURCES_SECTION_PATH}.`);
+    return false;
+  }
+  if (isInsidePath(normalized, "content/official-documents")) {
+    errors.push(`${label} must not point under content/official-documents.`);
+    return false;
+  }
+  return true;
+}
+
+function loadShardList({ root, shardFiles, owner, key, label, expectedSchema, extractItems }) {
+  const errors = [];
+  const items = [];
+  const learnerContentPaths = [];
+  const references = asArray(owner?.[key]);
+
+  references.forEach((reference, index) => {
+    const relativePath = shardPathFromReference(reference);
+    const referenceLabel = `${label}[${index}]`;
+    if (!validateShardPath(errors, relativePath, referenceLabel)) return;
+    learnerContentPaths.push(relativePath);
+
+    let shard;
+    try {
+      shard = readJsonShard(root, shardFiles, relativePath);
+    } catch (error) {
+      errors.push(`${relativePath}: ${error.message}`);
+      return;
+    }
+    if (shard === undefined) {
+      errors.push(`${relativePath}: shard file is missing.`);
+      return;
+    }
+    if (!isPlainObject(shard)) {
+      errors.push(`${relativePath}: shard must be an object.`);
+      return;
+    }
+    if (shard.schema !== expectedSchema) {
+      errors.push(`${relativePath}: shard schema must be ${expectedSchema}.`);
+    }
+
+    const extracted = extractItems(shard, relativePath, errors);
+    for (const item of extracted) items.push(item);
+  });
+
+  return { errors, items, learnerContentPaths };
+}
+
+export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, searchIndex, shardFiles } = {}) {
+  const errors = [];
+  const learnerContentPaths = [
+    "content/primary-sources/primary-sources.ru.json",
+    "content/primary-sources/primary-sources.qa.json",
+    "content/primary-sources/primary-sources.search.json"
+  ];
+
+  const corpusShardResult = loadShardList({
+    root,
+    shardFiles,
+    owner: corpus,
+    key: "documentShards",
+    label: "primary sources corpus.documentShards",
+    expectedSchema: "primary-sources-document-shard.v1",
+    extractItems: (shard, relativePath, shardErrors) => {
+      const documents = Array.isArray(shard.documents) ? shard.documents : [shard.document].filter(Boolean);
+      if (documents.length === 0) shardErrors.push(`${relativePath}: document shard must contain document or documents.`);
+      return documents;
+    }
+  });
+  errors.push(...corpusShardResult.errors);
+  learnerContentPaths.push(...corpusShardResult.learnerContentPaths);
+
+  const qaShardResult = loadShardList({
+    root,
+    shardFiles,
+    owner: qa,
+    key: "qaShards",
+    label: "primary sources QA.qaShards",
+    expectedSchema: "primary-sources-qa-shard.v1",
+    extractItems: (shard, relativePath, shardErrors) => {
+      const documents = Array.isArray(shard.documents) ? shard.documents : [shard.document].filter(Boolean);
+      if (documents.length === 0) shardErrors.push(`${relativePath}: QA shard must contain document or documents.`);
+      return documents;
+    }
+  });
+  errors.push(...qaShardResult.errors);
+  learnerContentPaths.push(...qaShardResult.learnerContentPaths);
+
+  const searchShardResult = loadShardList({
+    root,
+    shardFiles,
+    owner: searchIndex,
+    key: "searchShards",
+    label: "primary sources search index.searchShards",
+    expectedSchema: "primary-sources-search-shard.v1",
+    extractItems: (shard, relativePath, shardErrors) => {
+      if (!Array.isArray(shard.entries)) shardErrors.push(`${relativePath}: search shard entries must be an array.`);
+      return asArray(shard.entries);
+    }
+  });
+  errors.push(...searchShardResult.errors);
+  learnerContentPaths.push(...searchShardResult.learnerContentPaths);
+
+  return {
+    errors,
+    learnerContentPaths,
+    corpus: {
+      ...corpus,
+      documents: [...asArray(corpus?.documents), ...corpusShardResult.items]
+    },
+    qa: {
+      ...qa,
+      documents: [...asArray(qa?.documents), ...qaShardResult.items]
+    },
+    searchIndex: {
+      ...searchIndex,
+      entries: [...asArray(searchIndex?.entries), ...searchShardResult.items]
+    }
+  };
 }
 
 function sourceSpanText(text, sourceSpan) {
@@ -583,17 +731,23 @@ export function validatePrimarySources({
 
 export function validatePrimarySourcesFromFiles({ root = defaultRoot, mode = "draft" } = {}) {
   const readJson = (relativePath) => JSON.parse(readFileSync(join(root, relativePath), "utf8"));
-  return validatePrimarySources({
-    mode,
+  const primarySources = combinePrimarySourceShards({
     root,
-    manifest: readJson("content/official-documents/manifest.json"),
     corpus: readJson("content/primary-sources/primary-sources.ru.json"),
-    coverage: readJson("content/primary-sources/primary-sources.coverage.json"),
     qa: readJson("content/primary-sources/primary-sources.qa.json"),
-    searchIndex: readJson("content/primary-sources/primary-sources.search.json"),
-    learnerContentPaths: [
-      "content/primary-sources/primary-sources.ru.json",
-      "content/primary-sources/primary-sources.qa.json"
-    ]
+    searchIndex: readJson("content/primary-sources/primary-sources.search.json")
   });
+  return [
+    ...primarySources.errors,
+    ...validatePrimarySources({
+      mode,
+      root,
+      manifest: readJson("content/official-documents/manifest.json"),
+      corpus: primarySources.corpus,
+      coverage: readJson("content/primary-sources/primary-sources.coverage.json"),
+      qa: primarySources.qa,
+      searchIndex: primarySources.searchIndex,
+      learnerContentPaths: primarySources.learnerContentPaths
+    })
+  ];
 }
