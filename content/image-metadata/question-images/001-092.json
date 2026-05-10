@@ -2641,52 +2641,260 @@
       ],
       "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Daylight street view of a hospital or health institution entrance. A blue hospital sign with a red cross stands beside the main doorway, pedestrians are walking near the curb, and a white car is parked along the frontage.",
+      "generationPromptSummary": "Realistic daylight photo of a pale institutional building facade with a main arched entrance, stairs, ramp railings, and a blue roadside sign showing a red cross and the word HOSPITAL. Include pedestrians in front, a white car parked near the curb, and a dry urban street at the bottom of frame.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban hospital frontage",
+        "environment": "institutional facade with sidewalk, curb, pedestrians, and parked car",
+        "cameraView": "street-level view from across the street",
+        "framing": "hospital entrance centered with frontage and curb visible",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry street and sidewalk"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban street in front of institution",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "street runs across the foreground"
+        ],
         "markings": [],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "curbside-entrance-zone",
+            "description": "Curbside frontage directly in front of the hospital entrance and sign."
+          }
+        ]
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
+          "id": "hospital-building-facade",
+          "type": "building",
+          "label": "hospital building facade",
+          "description": "Light-colored institutional facade with large windows and an arched main entrance.",
+          "confidence": "high"
+        },
+        {
+          "id": "hospital-main-entrance-object",
+          "type": "building_entrance",
+          "label": "hospital main entrance",
+          "description": "Arched doorway with stairs and ramp railings leading into the building.",
+          "confidence": "high"
+        },
+        {
+          "id": "curbside-street-frontage",
+          "type": "curbside_frontage",
+          "label": "curbside frontage before entrance",
+          "description": "Street curb and sidewalk frontage immediately before the institution entrance.",
+          "confidence": "high"
+        },
+        {
+          "id": "white-car-near-hospital-front",
+          "type": "car",
+          "label": "white car near frontage",
+          "description": "White hatchback parked along the curb near the left side of the hospital frontage.",
+          "confidence": "high"
+        }
+      ],
+      "roadUsers": [
+        {
+          "id": "pedestrians-near-hospital-front",
+          "type": "pedestrians",
+          "label": "pedestrians near hospital entrance",
+          "description": "Several pedestrians walk or stand on the sidewalk and near the curb in front of the hospital.",
+          "confidence": "medium"
+        }
+      ],
+      "signsSignalsMarkings": [
+        {
+          "id": "hospital-sign-object",
+          "type": "institution_sign",
+          "label": "blue hospital sign with red cross",
+          "description": "Blue sign beside the entrance with a red cross symbol and the word HOSPITAL.",
+          "confidence": "high"
+        }
+      ],
+      "annotations": [],
+      "visibleText": [
+        {
+          "id": "hospital-sign-text",
+          "text": "HOSPITAL",
+          "language": "es",
+          "locationDescription": "blue sign to the right of the entrance",
+          "confidence": "high"
+        },
+        {
+          "id": "entrance-header-text",
+          "text": "Hospital General ... Dr. Teodoro Alvarez",
+          "language": "es",
+          "locationDescription": "low-resolution sign above the arched entrance",
           "confidence": "low"
         }
       ],
-      "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "spatialRelationships": [
+        {
+          "id": "hospital-sign-beside-entrance",
+          "subjectId": "hospital-sign-object",
+          "relation": "beside",
+          "objectId": "hospital-main-entrance-object",
+          "description": "The blue hospital sign stands beside the entrance."
+        },
+        {
+          "id": "curb-before-hospital-entrance",
+          "subjectId": "curbside-street-frontage",
+          "relation": "in_front_of",
+          "objectId": "hospital-main-entrance-object",
+          "description": "The curbside frontage lies directly in front of the hospital entrance."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "header-text-partly-low-resolution",
+          "field": "visibleText.entrance-header-text",
+          "note": "The building header text is partly legible due low image resolution; the blue HOSPITAL sign is clear.",
+          "impact": "does not affect the ticket-critical institution type and entrance location"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b152"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b152",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b152.jpg locally; confirmed hospital sign, entrance, curbside frontage, pedestrians, and white car.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-hospital-entrance",
+          "label": "hospital main entrance",
+          "semanticLocation": "center-right of building facade",
+          "includesObjectIds": [
+            "hospital-main-entrance-object"
+          ],
+          "includesDetailIds": [
+            "hospital-main-entrance"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-hospital-sign",
+          "label": "blue hospital sign",
+          "semanticLocation": "right of the entrance",
+          "includesObjectIds": [
+            "hospital-sign-object"
+          ],
+          "includesDetailIds": [
+            "hospital-sign-blue-cross"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-curbside-frontage",
+          "label": "curbside area before entrance",
+          "semanticLocation": "bottom and middle foreground along building frontage",
+          "includesObjectIds": [
+            "curbside-street-frontage",
+            "white-car-near-hospital-front"
+          ],
+          "includesDetailIds": [
+            "curbside-entrance-zone",
+            "white-car-parked-near-frontage"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-pedestrian-frontage",
+          "label": "pedestrians near frontage",
+          "semanticLocation": "sidewalk and street edge in front of building",
+          "includesObjectIds": [
+            "pedestrians-near-hospital-front"
+          ],
+          "includesDetailIds": [
+            "pedestrians-frontage-context"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "hospital-sign-blue-cross",
+          "objectIds": [
+            "hospital-sign-object"
+          ],
+          "regionIds": [
+            "region-hospital-sign"
+          ],
+          "category": "institution_sign",
+          "description": "Blue sign with red cross and HOSPITAL text identifies the institution as a hospital or health facility.",
+          "confidence": "high"
+        },
+        {
+          "id": "hospital-main-entrance",
+          "objectIds": [
+            "hospital-main-entrance-object"
+          ],
+          "regionIds": [
+            "region-hospital-entrance"
+          ],
+          "category": "building_entrance",
+          "description": "Main entrance with stairs and ramp railings is the reference point for the clearance distance.",
+          "confidence": "high"
+        },
+        {
+          "id": "curbside-entrance-zone",
+          "objectIds": [
+            "curbside-street-frontage"
+          ],
+          "regionIds": [
+            "region-curbside-frontage"
+          ],
+          "category": "parking_clearance_area",
+          "description": "Curbside frontage directly in front of the hospital entrance where parking clearance is relevant.",
+          "confidence": "high"
+        },
+        {
+          "id": "white-car-parked-near-frontage",
+          "objectIds": [
+            "white-car-near-hospital-front"
+          ],
+          "regionIds": [
+            "region-curbside-frontage"
+          ],
+          "category": "vehicle_context",
+          "description": "White car is parked near the institutional frontage but is not the distance rule itself.",
+          "confidence": "high"
+        },
+        {
+          "id": "pedestrians-frontage-context",
+          "objectIds": [
+            "pedestrians-near-hospital-front"
+          ],
+          "regionIds": [
+            "region-pedestrian-frontage"
+          ],
+          "category": "pedestrian_context",
+          "description": "Pedestrians in front of the building provide access-context but are not the measured distance.",
+          "confidence": "medium"
+        },
+        {
+          "id": "hospital-building-frontage",
+          "objectIds": [
+            "hospital-building-facade"
+          ],
+          "regionIds": [
+            "region-hospital-entrance"
+          ],
+          "category": "building_context",
+          "description": "The hospital facade frames the entrance; the ticket asks for clearance around the entrance, not the entire facade.",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "imageId": "question-image-b258",
@@ -2698,15 +2906,15 @@
       ],
       "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Catalog-style circular regulatory sign on a white background: red outer ring, blue circular center, and large white number 35.",
+      "generationPromptSummary": "Centered traffic sign on plain white background. Draw a circular sign with a red outer ring, blue center, thin dark outline, and large white number 35 in the middle.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "traffic sign catalog image",
+        "environment": "plain white background",
+        "cameraView": "front-on sign view",
+        "framing": "single circular sign centered",
+        "lighting": "even",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
         "roadType": "unknown",
@@ -2718,32 +2926,139 @@
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "circular-regulatory-sign",
+          "type": "traffic_sign",
+          "label": "round red and blue regulatory sign",
+          "description": "Circular sign with red outer ring, blue center, and white number 35.",
+          "confidence": "high"
+        },
+        {
+          "id": "white-35-number",
+          "type": "sign_text_number",
+          "label": "white number 35",
+          "description": "Large white number 35 centered on the blue field.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "minimum-speed-sign-face",
+          "type": "regulatory_sign",
+          "label": "minimum speed sign face",
+          "description": "Red-ring and blue-center regulatory sign carrying the number 35.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [
+        {
+          "id": "visible-number-35",
+          "text": "35",
+          "language": "numeric",
+          "locationDescription": "center of the sign",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "number-centered-on-sign",
+          "subjectId": "white-35-number",
+          "relation": "centered_on",
+          "objectId": "circular-regulatory-sign",
+          "description": "The number 35 is centered inside the circular sign."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b258"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b258",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b258.jpg locally; confirmed red-ring/blue-center sign and white number 35.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-whole-minimum-sign",
+          "label": "round red and blue 35 sign",
+          "semanticLocation": "center of image",
+          "includesObjectIds": [
+            "circular-regulatory-sign",
+            "minimum-speed-sign-face"
+          ],
+          "includesDetailIds": [
+            "blue-center-red-ring-sign",
+            "minimum-speed-35-number"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-number-35",
+          "label": "white 35 number",
+          "semanticLocation": "center of blue sign face",
+          "includesObjectIds": [
+            "white-35-number"
+          ],
+          "includesDetailIds": [
+            "minimum-speed-35-number"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-white-background",
+          "label": "plain background",
+          "semanticLocation": "outside the sign",
+          "includesObjectIds": [],
+          "includesDetailIds": [
+            "plain-white-background"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "blue-center-red-ring-sign",
+          "objectIds": [
+            "circular-regulatory-sign",
+            "minimum-speed-sign-face"
+          ],
+          "regionIds": [
+            "region-whole-minimum-sign"
+          ],
+          "category": "sign_design",
+          "description": "Round regulatory sign has a red ring and blue center, the visual design used here for the minimum-speed ticket.",
+          "confidence": "high"
+        },
+        {
+          "id": "minimum-speed-35-number",
+          "objectIds": [
+            "white-35-number"
+          ],
+          "regionIds": [
+            "region-number-35"
+          ],
+          "category": "sign_number",
+          "description": "Large white number 35 is the answer-critical numeric value.",
+          "confidence": "high"
+        },
+        {
+          "id": "plain-white-background",
+          "objectIds": [],
+          "regionIds": [
+            "region-white-background"
+          ],
+          "category": "background",
+          "description": "The white background is not part of the traffic instruction.",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "imageId": "question-image-b133",
@@ -2753,54 +3068,223 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
+      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Urban avenue intersection on a sunny day with zebra crossings, parked cars, houses, overhead street signs, and a round 40 speed-limit sign mounted on a pole at the right side.",
+      "generationPromptSummary": "Daylight city avenue intersection with zebra crosswalks, houses with red tile roofs, trees, overhead street-name signs, parked cars, and a pole on the right carrying a circular white speed-limit sign with red border and black number 40.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban avenue intersection",
+        "environment": "residential avenue with houses, trees, parked cars, and overhead wires",
+        "cameraView": "street-level view looking along the avenue",
+        "framing": "speed-limit sign on right side with avenue and crosswalks visible",
+        "lighting": "bright daylight",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban avenue",
         "laneCount": "unknown",
         "laneDirections": [],
-        "markings": [],
-        "crossings": [],
+        "markings": [
+          {
+            "id": "lane-and-edge-markings",
+            "description": "White roadway markings and curb edges are visible near the intersection."
+          }
+        ],
+        "crossings": [
+          {
+            "id": "foreground-zebra-crosswalks",
+            "description": "White zebra pedestrian crossings are visible at the intersection."
+          }
+        ],
         "curbsOrShoulders": []
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "urban-avenue-roadway",
+          "type": "roadway",
+          "label": "urban avenue roadway",
+          "description": "Avenue running away from the camera through an urban residential area.",
+          "confidence": "high"
+        },
+        {
+          "id": "posted-40-speed-sign-object",
+          "type": "traffic_sign",
+          "label": "posted 40 speed-limit sign",
+          "description": "Round speed-limit sign on the right pole with black 40 inside a red border.",
+          "confidence": "high"
+        },
+        {
+          "id": "street-sign-panels",
+          "type": "street_signs",
+          "label": "overhead street sign panels",
+          "description": "Black rectangular street-name/direction panels mounted above the speed sign.",
+          "confidence": "medium"
+        },
+        {
+          "id": "residential-buildings",
+          "type": "buildings",
+          "label": "residential buildings",
+          "description": "Houses and apartment facades line the avenue.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "signsSignalsMarkings": [
+        {
+          "id": "posted-40-speed-sign-face",
+          "type": "speed_limit_sign",
+          "label": "40 km/h sign face",
+          "description": "White circular sign face with red border and black 40.",
+          "confidence": "high"
+        },
+        {
+          "id": "foreground-zebra-crosswalks-object",
+          "type": "road_marking",
+          "label": "zebra crosswalks",
+          "description": "White zebra crosswalk stripes at the intersection.",
+          "confidence": "high"
+        }
+      ],
       "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "visibleText": [
+        {
+          "id": "speed-sign-40-text",
+          "text": "40",
+          "language": "numeric",
+          "locationDescription": "speed-limit sign on right-side pole",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "speed-sign-right-of-avenue",
+          "subjectId": "posted-40-speed-sign-object",
+          "relation": "right_side_of",
+          "objectId": "urban-avenue-roadway",
+          "description": "The 40 sign is mounted on a pole at the right edge of the avenue scene."
+        },
+        {
+          "id": "crosswalks-at-intersection",
+          "subjectId": "foreground-zebra-crosswalks-object",
+          "relation": "at",
+          "objectId": "urban-avenue-roadway",
+          "description": "Zebra crossings mark the intersection area in the foreground and side street."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "street-name-low-resolution",
+          "field": "visibleText.street-sign-panels",
+          "note": "The overhead street-name text is too small to transcribe reliably.",
+          "impact": "not answer-critical; the speed sign number is clear"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b133"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b133",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b133.jpg locally; confirmed right-side 40 speed sign, urban avenue, crosswalks, street sign panels, houses, and dry road.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-40-speed-sign",
+          "label": "posted 40 speed sign",
+          "semanticLocation": "upper-right on roadside pole",
+          "includesObjectIds": [
+            "posted-40-speed-sign-object",
+            "posted-40-speed-sign-face"
+          ],
+          "includesDetailIds": [
+            "posted-40-speed-limit-sign"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-avenue-intersection",
+          "label": "urban avenue and intersection",
+          "semanticLocation": "middle and left background roadway",
+          "includesObjectIds": [
+            "urban-avenue-roadway",
+            "foreground-zebra-crosswalks-object"
+          ],
+          "includesDetailIds": [
+            "urban-avenue-intersection",
+            "foreground-zebra-crosswalks"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-background-buildings",
+          "label": "buildings and trees",
+          "semanticLocation": "background around the avenue",
+          "includesObjectIds": [
+            "residential-buildings"
+          ],
+          "includesDetailIds": [
+            "residential-background-context"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "posted-40-speed-limit-sign",
+          "objectIds": [
+            "posted-40-speed-sign-object",
+            "posted-40-speed-sign-face"
+          ],
+          "regionIds": [
+            "region-40-speed-sign"
+          ],
+          "category": "speed_limit_sign",
+          "description": "Round roadside sign displays the number 40 and is the answer-critical speed value.",
+          "confidence": "high"
+        },
+        {
+          "id": "urban-avenue-intersection",
+          "objectIds": [
+            "urban-avenue-roadway"
+          ],
+          "regionIds": [
+            "region-avenue-intersection"
+          ],
+          "category": "road_context",
+          "description": "The scene is an urban avenue intersection, matching the question's tramo de avenida context.",
+          "confidence": "high"
+        },
+        {
+          "id": "foreground-zebra-crosswalks",
+          "objectIds": [
+            "foreground-zebra-crosswalks-object"
+          ],
+          "regionIds": [
+            "region-avenue-intersection"
+          ],
+          "category": "road_marking",
+          "description": "Zebra crossings mark the nearby intersection but do not set the speed answer.",
+          "confidence": "high"
+        },
+        {
+          "id": "residential-background-context",
+          "objectIds": [
+            "residential-buildings"
+          ],
+          "regionIds": [
+            "region-background-buildings"
+          ],
+          "category": "background",
+          "description": "Buildings, trees, and sky are background context and not speed-limit evidence.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b273",
@@ -2812,15 +3296,15 @@
       ],
       "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Diagram with three route-sign options labeled A, B, and C in yellow circles. Option A is an Argentina-shaped national shield with map, option B is a shield with number 2, and option C is a square sign with number 4.",
+      "generationPromptSummary": "Clean white-background diagram showing three black-and-white route signs in a row. Left: irregular shield with ARGENTINA text and map of South America, yellow label A below. Middle: shield-shaped sign with large black number 2, yellow label B below. Right: square sign with black border and large black number 4, yellow label C below.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "traffic sign comparison diagram",
+        "environment": "plain white background",
+        "cameraView": "front-on diagram view",
+        "framing": "three signs arranged horizontally with labels beneath",
+        "lighting": "even",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
         "roadType": "unknown",
@@ -2832,32 +3316,235 @@
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "option-a-national-route-sign-object",
+          "type": "route_sign",
+          "label": "option A Argentina shield",
+          "description": "Irregular shield-shaped sign with ARGENTINA text and a map graphic.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-shield-route-sign-object",
+          "type": "route_sign",
+          "label": "option B shield sign",
+          "description": "Shield-shaped sign with large black number 2.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-c-square-route-sign-object",
+          "type": "route_sign",
+          "label": "option C square sign",
+          "description": "Square sign with black border and large black number 4.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-option-labels",
+          "type": "diagram_labels",
+          "label": "yellow A B C labels",
+          "description": "Yellow circular labels A, B, and C below the three signs.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "three-route-sign-options",
+          "type": "route_sign_group",
+          "label": "three route-sign options",
+          "description": "Three route signs are shown side by side for comparison.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [
+        {
+          "id": "argentina-text",
+          "text": "ARGENTINA",
+          "language": "es",
+          "locationDescription": "inside option A sign",
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-number-2",
+          "text": "2",
+          "language": "numeric",
+          "locationDescription": "inside option B sign",
+          "confidence": "high"
+        },
+        {
+          "id": "option-c-number-4",
+          "text": "4",
+          "language": "numeric",
+          "locationDescription": "inside option C sign",
+          "confidence": "high"
+        },
+        {
+          "id": "option-label-a-text",
+          "text": "A",
+          "language": "letter",
+          "locationDescription": "yellow circle below left sign",
+          "confidence": "high"
+        },
+        {
+          "id": "option-label-b-text",
+          "text": "B",
+          "language": "letter",
+          "locationDescription": "yellow circle below middle sign",
+          "confidence": "high"
+        },
+        {
+          "id": "option-label-c-text",
+          "text": "C",
+          "language": "letter",
+          "locationDescription": "yellow circle below right sign",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "label-c-under-square-sign",
+          "subjectId": "yellow-option-labels",
+          "relation": "labels",
+          "objectId": "option-c-square-route-sign-object",
+          "description": "Yellow label C is positioned beneath the square route sign."
+        },
+        {
+          "id": "route-options-left-to-right",
+          "subjectId": "option-a-national-route-sign-object",
+          "relation": "left_of",
+          "objectId": "option-b-shield-route-sign-object",
+          "description": "The three options are arranged left to right as A, B, and C."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b273"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b273",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b273.jpg locally; confirmed three route-sign options, A/B/C labels, Argentina text, number 2, and square C sign with number 4.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-option-a",
+          "label": "option A national route sign",
+          "semanticLocation": "left third of diagram",
+          "includesObjectIds": [
+            "option-a-national-route-sign-object"
+          ],
+          "includesDetailIds": [
+            "option-a-national-route-sign",
+            "option-label-a"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-option-b",
+          "label": "option B shield route sign",
+          "semanticLocation": "center of diagram",
+          "includesObjectIds": [
+            "option-b-shield-route-sign-object"
+          ],
+          "includesDetailIds": [
+            "option-b-shield-route-sign",
+            "option-label-b"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-option-c",
+          "label": "option C square provincial route sign",
+          "semanticLocation": "right third of diagram",
+          "includesObjectIds": [
+            "option-c-square-route-sign-object"
+          ],
+          "includesDetailIds": [
+            "option-c-square-route-sign",
+            "option-label-c"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "option-a-national-route-sign",
+          "objectIds": [
+            "option-a-national-route-sign-object"
+          ],
+          "regionIds": [
+            "region-option-a"
+          ],
+          "category": "route_sign_option",
+          "description": "Option A is the Argentina/map shield sign, not the provincial route sign for this ticket.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-b-shield-route-sign",
+          "objectIds": [
+            "option-b-shield-route-sign-object"
+          ],
+          "regionIds": [
+            "region-option-b"
+          ],
+          "category": "route_sign_option",
+          "description": "Option B is a shield-shaped route sign with number 2, not the provincial route sign for this ticket.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-c-square-route-sign",
+          "objectIds": [
+            "option-c-square-route-sign-object"
+          ],
+          "regionIds": [
+            "region-option-c"
+          ],
+          "category": "route_sign_option",
+          "description": "Option C is the square route sign with number 4 and is the answer-critical provincial route option.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-label-a",
+          "objectIds": [
+            "yellow-option-labels"
+          ],
+          "regionIds": [
+            "region-option-a"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow label A identifies the left sign option.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-label-b",
+          "objectIds": [
+            "yellow-option-labels"
+          ],
+          "regionIds": [
+            "region-option-b"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow label B identifies the middle sign option.",
+          "confidence": "high"
+        },
+        {
+          "id": "option-label-c",
+          "objectIds": [
+            "yellow-option-labels"
+          ],
+          "regionIds": [
+            "region-option-c"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow label C identifies the right sign option.",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "imageId": "question-image-b15",
@@ -2869,52 +3556,247 @@
       ],
       "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Street-level view of a residential urban intersection with zebra crosswalks in the foreground, a black car crossing the intersection, and visible side approaches to the left and right.",
+      "generationPromptSummary": "Daylight city intersection viewed from a driver's approach. Put broad white zebra crosswalk stripes in the foreground, a black hatchback crossing left-to-right through the intersection, buildings on both sides, trees ahead, and side-street approaches visible to both left and right.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban residential intersection",
+        "environment": "buildings, trees, crosswalks, and side streets",
+        "cameraView": "driver-level approach view toward the intersection",
+        "framing": "crosswalk foreground with intersection and crossing car centered",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry pavement"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban intersection",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "approach road from foreground into intersection",
+          "cross street extends left and right"
+        ],
         "markings": [],
-        "crossings": [],
+        "crossings": [
+          {
+            "id": "foreground-zebra-crosswalk",
+            "description": "Wide white zebra crossing spans the foreground approach."
+          },
+          {
+            "id": "side-crosswalk-markings",
+            "description": "Additional crosswalk markings are visible across the cross street."
+          }
+        ],
         "curbsOrShoulders": []
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "intersection-roadway",
+          "type": "roadway",
+          "label": "intersection roadway",
+          "description": "Approach road and cross street forming the visible intersection.",
+          "confidence": "high"
+        },
+        {
+          "id": "black-car-crossing-intersection-object",
+          "type": "car",
+          "label": "black car crossing intersection",
+          "description": "Black hatchback positioned across the intersection, moving or stopped laterally in the crossing path.",
+          "confidence": "high"
+        },
+        {
+          "id": "left-side-approach",
+          "type": "road_approach",
+          "label": "left side approach",
+          "description": "Left side of the cross street visible beyond the foreground crosswalk.",
+          "confidence": "medium"
+        },
+        {
+          "id": "right-side-approach",
+          "type": "road_approach",
+          "label": "right side approach",
+          "description": "Right side of the cross street visible beyond the foreground crosswalk.",
+          "confidence": "medium"
+        },
+        {
+          "id": "surrounding-buildings",
+          "type": "buildings",
+          "label": "buildings around intersection",
+          "description": "Residential and commercial building facades frame the intersection.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "signsSignalsMarkings": [
+        {
+          "id": "zebra-crosswalk-markings-object",
+          "type": "road_marking",
+          "label": "zebra crosswalk markings",
+          "description": "White zebra crosswalk stripes in the foreground and across the side street.",
+          "confidence": "high"
+        }
+      ],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [],
+      "spatialRelationships": [
+        {
+          "id": "black-car-on-cross-street",
+          "subjectId": "black-car-crossing-intersection-object",
+          "relation": "crossing",
+          "objectId": "intersection-roadway",
+          "description": "The black car is positioned across the driver's intended crossing path."
+        },
+        {
+          "id": "approaches-on-both-sides",
+          "subjectId": "left-side-approach",
+          "relation": "opposite_side_of",
+          "objectId": "right-side-approach",
+          "description": "The cross street has visible approaches on both left and right sides."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "traffic-direction-not-marked",
+          "field": "roadLayout.laneDirections",
+          "note": "Exact legal traffic direction on each approach is not marked, but the visual task is to check both sides before crossing.",
+          "impact": "does not affect both-sides answer"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b15"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b15",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b15.jpg locally; confirmed intersection, foreground zebra crosswalk, black crossing car, and visible left/right approaches.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-foreground-crosswalk",
+          "label": "foreground zebra crosswalk",
+          "semanticLocation": "bottom foreground across approach road",
+          "includesObjectIds": [
+            "zebra-crosswalk-markings-object"
+          ],
+          "includesDetailIds": [
+            "foreground-zebra-crosswalk"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-left-approach",
+          "label": "left side cross-street approach",
+          "semanticLocation": "left side of intersection beyond crosswalk",
+          "includesObjectIds": [
+            "left-side-approach"
+          ],
+          "includesDetailIds": [
+            "cross-street-left-approach"
+          ],
+          "localizationConfidence": "medium"
+        },
+        {
+          "regionId": "region-right-approach",
+          "label": "right side cross-street approach",
+          "semanticLocation": "right side of intersection beyond crosswalk",
+          "includesObjectIds": [
+            "right-side-approach"
+          ],
+          "includesDetailIds": [
+            "cross-street-right-approach"
+          ],
+          "localizationConfidence": "medium"
+        },
+        {
+          "regionId": "region-crossing-car",
+          "label": "black car in intersection",
+          "semanticLocation": "center of intersection",
+          "includesObjectIds": [
+            "black-car-crossing-intersection-object"
+          ],
+          "includesDetailIds": [
+            "black-car-crossing-intersection"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-background-buildings-b15",
+          "label": "buildings and trees",
+          "semanticLocation": "left, right, and background edges",
+          "includesObjectIds": [
+            "surrounding-buildings"
+          ],
+          "includesDetailIds": [
+            "intersection-background-buildings"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "foreground-zebra-crosswalk",
+          "objectIds": [
+            "zebra-crosswalk-markings-object"
+          ],
+          "regionIds": [
+            "region-foreground-crosswalk"
+          ],
+          "category": "road_marking",
+          "description": "White zebra crosswalk marks the driver's approach into the intersection.",
+          "confidence": "high"
+        },
+        {
+          "id": "cross-street-left-approach",
+          "objectIds": [
+            "left-side-approach"
+          ],
+          "regionIds": [
+            "region-left-approach"
+          ],
+          "category": "intersection_approach",
+          "description": "Left side of the cross street is visible and must be checked before crossing.",
+          "confidence": "medium"
+        },
+        {
+          "id": "cross-street-right-approach",
+          "objectIds": [
+            "right-side-approach"
+          ],
+          "regionIds": [
+            "region-right-approach"
+          ],
+          "category": "intersection_approach",
+          "description": "Right side of the cross street is visible and must be checked before crossing.",
+          "confidence": "medium"
+        },
+        {
+          "id": "black-car-crossing-intersection",
+          "objectIds": [
+            "black-car-crossing-intersection-object"
+          ],
+          "regionIds": [
+            "region-crossing-car"
+          ],
+          "category": "vehicle_context",
+          "description": "Black car in the intersection demonstrates that cross traffic or obstacles can occupy the path.",
+          "confidence": "high"
+        },
+        {
+          "id": "intersection-background-buildings",
+          "objectIds": [
+            "surrounding-buildings"
+          ],
+          "regionIds": [
+            "region-background-buildings-b15"
+          ],
+          "category": "background",
+          "description": "Buildings and trees frame the scene but are not answer-critical.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b22",
@@ -2926,52 +3808,222 @@
       ],
       "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Residential sidewalk and garage entrance scene. A silver hatchback is angled across the sidewalk/driveway area near an open garage, while a pedestrian stands on the sidewalk close to the vehicle's path.",
+      "generationPromptSummary": "Daylight residential frontage with an open garage doorway, house entrance, sidewalk, plants, and a silver hatchback angled across the sidewalk/driveway apron. Place a pedestrian standing on the sidewalk near the driveway opening, facing the car's path.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "residential garage and sidewalk",
+        "environment": "house frontage with garage opening, sidewalk, plants, and driveway apron",
+        "cameraView": "street-level rear three-quarter view of the car",
+        "framing": "silver car left foreground, pedestrian right of garage opening",
+        "lighting": "daylight with shadows",
+        "weatherOrSurface": "dry sidewalk and driveway"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "residential street frontage",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "sidewalk-driveway-apron",
+            "description": "Sidewalk and driveway apron crossing the pedestrian path before the garage."
+          }
+        ]
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "silver-car-crossing-sidewalk-object",
+          "type": "car",
+          "label": "silver car crossing sidewalk/driveway",
+          "description": "Silver hatchback angled across the sidewalk/driveway apron near the garage entrance.",
+          "confidence": "high"
+        },
+        {
+          "id": "garage-driveway-opening-object",
+          "type": "garage_entrance",
+          "label": "open garage/driveway entrance",
+          "description": "Open garage doorway and driveway apron behind the silver car.",
+          "confidence": "high"
+        },
+        {
+          "id": "sidewalk-pedestrian-zone-object",
+          "type": "sidewalk",
+          "label": "sidewalk pedestrian zone",
+          "description": "Sidewalk area in front of the residence and driveway.",
+          "confidence": "high"
+        },
+        {
+          "id": "residential-frontage-b22",
+          "type": "building_frontage",
+          "label": "residential frontage",
+          "description": "House facade, door, window, plants, and wall around the driveway.",
+          "confidence": "medium"
         }
       ],
-      "roadUsers": [],
+      "roadUsers": [
+        {
+          "id": "pedestrian-on-sidewalk-object",
+          "type": "pedestrian",
+          "label": "pedestrian on sidewalk",
+          "description": "Person standing on the sidewalk near the driveway and vehicle path.",
+          "confidence": "high"
+        }
+      ],
       "signsSignalsMarkings": [],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [],
+      "spatialRelationships": [
+        {
+          "id": "car-crosses-pedestrian-zone",
+          "subjectId": "silver-car-crossing-sidewalk-object",
+          "relation": "crosses",
+          "objectId": "sidewalk-pedestrian-zone-object",
+          "description": "The car is positioned across the sidewalk/driveway area used by pedestrians."
+        },
+        {
+          "id": "pedestrian-near-car-path",
+          "subjectId": "pedestrian-on-sidewalk-object",
+          "relation": "near",
+          "objectId": "silver-car-crossing-sidewalk-object",
+          "description": "The pedestrian stands close to the path of the vehicle crossing the sidewalk."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "car-motion-state-uncertain",
+          "field": "objects.silver-car-crossing-sidewalk-object",
+          "note": "The still image does not prove whether the car is actively moving or paused, but it is positioned across the sidewalk/driveway conflict area.",
+          "impact": "does not affect the pedestrian-priority rationale"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b22"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b22",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b22.jpg locally; confirmed silver car crossing sidewalk/driveway, open garage, sidewalk pedestrian zone, and pedestrian nearby.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-car-sidewalk-conflict",
+          "label": "car crossing sidewalk/driveway",
+          "semanticLocation": "left and center foreground",
+          "includesObjectIds": [
+            "silver-car-crossing-sidewalk-object"
+          ],
+          "includesDetailIds": [
+            "car-crossing-sidewalk-driveway"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-pedestrian-sidewalk",
+          "label": "pedestrian on sidewalk",
+          "semanticLocation": "right-center near the garage and house entrance",
+          "includesObjectIds": [
+            "pedestrian-on-sidewalk-object"
+          ],
+          "includesDetailIds": [
+            "pedestrian-on-sidewalk"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-garage-driveway",
+          "label": "garage driveway opening",
+          "semanticLocation": "center background behind car",
+          "includesObjectIds": [
+            "garage-driveway-opening-object"
+          ],
+          "includesDetailIds": [
+            "garage-driveway-opening"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-residential-background-b22",
+          "label": "residential background",
+          "semanticLocation": "right and upper background",
+          "includesObjectIds": [
+            "residential-frontage-b22"
+          ],
+          "includesDetailIds": [
+            "residential-background-b22"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "car-crossing-sidewalk-driveway",
+          "objectIds": [
+            "silver-car-crossing-sidewalk-object"
+          ],
+          "regionIds": [
+            "region-car-sidewalk-conflict"
+          ],
+          "category": "vehicle_pedestrian_conflict",
+          "description": "Silver car is positioned across the sidewalk/driveway area where pedestrian movement has priority.",
+          "confidence": "high"
+        },
+        {
+          "id": "pedestrian-on-sidewalk",
+          "objectIds": [
+            "pedestrian-on-sidewalk-object"
+          ],
+          "regionIds": [
+            "region-pedestrian-sidewalk"
+          ],
+          "category": "pedestrian",
+          "description": "Pedestrian stands on the sidewalk near the vehicle path.",
+          "confidence": "high"
+        },
+        {
+          "id": "garage-driveway-opening",
+          "objectIds": [
+            "garage-driveway-opening-object"
+          ],
+          "regionIds": [
+            "region-garage-driveway"
+          ],
+          "category": "driveway_context",
+          "description": "Open garage and driveway show why the car is crossing the pedestrian area.",
+          "confidence": "high"
+        },
+        {
+          "id": "sidewalk-pedestrian-zone",
+          "objectIds": [
+            "sidewalk-pedestrian-zone-object"
+          ],
+          "regionIds": [
+            "region-car-sidewalk-conflict",
+            "region-pedestrian-sidewalk"
+          ],
+          "category": "pedestrian_space",
+          "description": "Sidewalk area is the pedestrian path that the car must not take priority over.",
+          "confidence": "high"
+        },
+        {
+          "id": "residential-background-b22",
+          "objectIds": [
+            "residential-frontage-b22"
+          ],
+          "regionIds": [
+            "region-residential-background-b22"
+          ],
+          "category": "background",
+          "description": "House facade and plants provide background context and can be dimmed.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b162",
@@ -2983,52 +4035,246 @@
       ],
       "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Tree-lined urban street with a silver car stopped in the travel lane beside a white car parked at the curb. A passenger door area is open or occupied between the two cars, creating a double-parking/passenger-stop situation.",
+      "generationPromptSummary": "Daylight tree-lined urban street with multiple lanes and dashed white lane markings. A white car is parked at the curb on the right, while a silver car is stopped alongside it in the adjacent traffic lane with a door/passenger area open between the cars. Include sidewalk, trees, and other distant vehicles.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban street with curb parking",
+        "environment": "tree-lined street, sidewalk, curbside parking, and traffic lane",
+        "cameraView": "street-level rear view of stopped vehicles",
+        "framing": "double-parked silver car and curbside white car centered",
+        "lighting": "daylight with tree shade",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban multi-lane street",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
+        "laneDirections": [
+          "traffic lanes extend away from camera"
+        ],
+        "markings": [
+          {
+            "id": "dashed-lane-markings-b162",
+            "description": "White dashed lane line is visible beside the stopped silver car."
+          }
+        ],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "right-curb-parking-edge",
+            "description": "Right curbside area where the white car is parked."
+          }
+        ]
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "double-parked-silver-car-object",
+          "type": "car",
+          "label": "silver car stopped in second row",
+          "description": "Silver car stopped in the traffic lane beside the curbside white car.",
+          "confidence": "high"
+        },
+        {
+          "id": "curbside-white-car-object",
+          "type": "car",
+          "label": "white car parked at curb",
+          "description": "White hatchback parked along the right curb.",
+          "confidence": "high"
+        },
+        {
+          "id": "open-door-passenger-area-object",
+          "type": "passenger_area",
+          "label": "open door/passenger area between cars",
+          "description": "Person and open-door area are visible between the double-parked silver car and curbside white car.",
+          "confidence": "medium"
+        },
+        {
+          "id": "active-traffic-lane-object",
+          "type": "traffic_lane",
+          "label": "active traffic lane",
+          "description": "Travel lane occupied by the silver car rather than a curbside parking position.",
+          "confidence": "high"
+        },
+        {
+          "id": "tree-lined-sidewalk-b162",
+          "type": "sidewalk_and_trees",
+          "label": "tree-lined sidewalk",
+          "description": "Sidewalk, trees, and building fronts along the right side.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [],
+      "spatialRelationships": [
+        {
+          "id": "silver-car-beside-curbside-white-car",
+          "subjectId": "double-parked-silver-car-object",
+          "relation": "beside",
+          "objectId": "curbside-white-car-object",
+          "description": "The silver car is stopped alongside the curbside white car, forming a second row."
+        },
+        {
+          "id": "silver-car-in-traffic-lane",
+          "subjectId": "double-parked-silver-car-object",
+          "relation": "occupies",
+          "objectId": "active-traffic-lane-object",
+          "description": "The silver car occupies the lane rather than being parked at the curb."
+        },
+        {
+          "id": "passenger-area-between-cars",
+          "subjectId": "open-door-passenger-area-object",
+          "relation": "between",
+          "objectId": "double-parked-silver-car-object",
+          "description": "The passenger/open door area is between the silver car and the curbside white car."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "hazard-lights-not-confirmed",
+          "field": "objects.double-parked-silver-car-object",
+          "note": "The still image does not make hazard lights/turn signals reliably visible; the answer does not depend on confirming them.",
+          "impact": "do not use hazard-light visibility as an answer-critical fact"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b162"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b162",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b162.jpg locally; confirmed silver car stopped alongside curbside white car, open/passenger area between cars, lane occupation, and tree-lined street context.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-double-parked-silver-car",
+          "label": "silver car in second row",
+          "semanticLocation": "center-left foreground lane",
+          "includesObjectIds": [
+            "double-parked-silver-car-object"
+          ],
+          "includesDetailIds": [
+            "double-parked-silver-car"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-curbside-white-car",
+          "label": "curbside white car",
+          "semanticLocation": "center-right at curb",
+          "includesObjectIds": [
+            "curbside-white-car-object"
+          ],
+          "includesDetailIds": [
+            "curbside-white-car"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-passenger-door-area",
+          "label": "open door/passenger area",
+          "semanticLocation": "between the silver and white cars",
+          "includesObjectIds": [
+            "open-door-passenger-area-object"
+          ],
+          "includesDetailIds": [
+            "open-door-passenger-area"
+          ],
+          "localizationConfidence": "medium"
+        },
+        {
+          "regionId": "region-active-lane-b162",
+          "label": "active traffic lane",
+          "semanticLocation": "lane area under and beside the silver car",
+          "includesObjectIds": [
+            "active-traffic-lane-object"
+          ],
+          "includesDetailIds": [
+            "active-traffic-lane-blockage"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-street-background-b162",
+          "label": "street background",
+          "semanticLocation": "sidewalk, trees, and distant vehicles",
+          "includesObjectIds": [
+            "tree-lined-sidewalk-b162"
+          ],
+          "includesDetailIds": [
+            "tree-lined-street-background"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "double-parked-silver-car",
+          "objectIds": [
+            "double-parked-silver-car-object"
+          ],
+          "regionIds": [
+            "region-double-parked-silver-car"
+          ],
+          "category": "double_parking",
+          "description": "Silver car is stopped in the traffic lane beside a curbside parked car, forming a second row.",
+          "confidence": "high"
+        },
+        {
+          "id": "curbside-white-car",
+          "objectIds": [
+            "curbside-white-car-object"
+          ],
+          "regionIds": [
+            "region-curbside-white-car"
+          ],
+          "category": "curbside_vehicle",
+          "description": "White car is parked at the curb, showing the silver car is not at the curb.",
+          "confidence": "high"
+        },
+        {
+          "id": "open-door-passenger-area",
+          "objectIds": [
+            "open-door-passenger-area-object"
+          ],
+          "regionIds": [
+            "region-passenger-door-area"
+          ],
+          "category": "passenger_stop_context",
+          "description": "Person/open-door area between cars suggests a passenger stop, which is the distractor in the answer choices.",
+          "confidence": "medium"
+        },
+        {
+          "id": "active-traffic-lane-blockage",
+          "objectIds": [
+            "active-traffic-lane-object"
+          ],
+          "regionIds": [
+            "region-active-lane-b162"
+          ],
+          "category": "lane_position",
+          "description": "Silver car occupies an active lane instead of a curbside parking space.",
+          "confidence": "high"
+        },
+        {
+          "id": "tree-lined-street-background",
+          "objectIds": [
+            "tree-lined-sidewalk-b162"
+          ],
+          "regionIds": [
+            "region-street-background-b162"
+          ],
+          "category": "background",
+          "description": "Street trees, sidewalk, and distant vehicles are background context.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b270",
@@ -6780,26 +8026,146 @@
       "correctAnswerId": "b-fallback-028-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-028-critical-source-image",
+          "detailId": "hospital-sign-blue-cross",
           "objectIds": [
-            "source-image-frame"
+            "hospital-sign-object"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-hospital-sign"
+          ],
+          "description": "The blue HOSPITAL sign with red cross identifies the type of institution in the question.",
           "supportsAnswerIds": [
             "b-fallback-028-a2"
           ],
           "rejectsAnswerIds": [],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "hospital-main-entrance",
+          "objectIds": [
+            "hospital-main-entrance-object"
+          ],
+          "regionIds": [
+            "region-hospital-entrance"
+          ],
+          "description": "The main entrance is the reference point for the 10 meters on each side clearance.",
+          "supportsAnswerIds": [
+            "b-fallback-028-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-028-a1",
+            "b-fallback-028-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-028"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-028",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped hospital sign, entrance, curbside frontage, pedestrians, and frontage background for b-fallback-028.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b028-highlight-hospital-entrance",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "hospital-sign-blue-cross",
+            "hospital-main-entrance",
+            "curbside-entrance-zone"
+          ],
+          "objectIds": [
+            "hospital-sign-object",
+            "hospital-main-entrance-object",
+            "curbside-street-frontage"
+          ],
+          "regionIds": [
+            "region-hospital-sign",
+            "region-hospital-entrance",
+            "region-curbside-frontage"
+          ],
+          "rationaleRuOrEn": "Highlight the hospital identity and the entrance/curbside zone because the clearance is measured from the entrance.",
+          "supportsAnswerIds": [
+            "b-fallback-028-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-028-a1",
+            "b-fallback-028-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b028-support-frontage-context",
+          "role": "supporting",
+          "detailIds": [
+            "white-car-parked-near-frontage",
+            "pedestrians-frontage-context"
+          ],
+          "objectIds": [
+            "white-car-near-hospital-front",
+            "pedestrians-near-hospital-front"
+          ],
+          "regionIds": [
+            "region-curbside-frontage",
+            "region-pedestrian-frontage"
+          ],
+          "rationaleRuOrEn": "The parked car and pedestrians show why access clearance matters, but they do not set the numeric answer.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b028-trap-whole-facade",
+          "role": "distractor_trap",
+          "detailIds": [
+            "hospital-building-frontage"
+          ],
+          "objectIds": [
+            "hospital-building-facade"
+          ],
+          "regionIds": [
+            "region-hospital-entrance"
+          ],
+          "rationaleRuOrEn": "The facade is visible, but the ticket asks for distance on each side of the entrance, not the whole frontage.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-028-a1"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b028-background-pedestrians",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "pedestrians-frontage-context"
+          ],
+          "objectIds": [
+            "pedestrians-near-hospital-front"
+          ],
+          "regionIds": [
+            "region-pedestrian-frontage"
+          ],
+          "rationaleRuOrEn": "Pedestrians are context and can be dimmed once the entrance and hospital sign are clear.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-029",
@@ -6810,26 +8176,143 @@
       "correctAnswerId": "b-fallback-029-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-029-critical-source-image",
+          "detailId": "blue-center-red-ring-sign",
           "objectIds": [
-            "source-image-frame"
+            "circular-regulatory-sign",
+            "minimum-speed-sign-face"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-whole-minimum-sign"
+          ],
+          "description": "The red-ring and blue-center regulatory sign design is the visual cue for the minimum-speed meaning in this ticket.",
           "supportsAnswerIds": [
             "b-fallback-029-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-029-a2",
+            "b-fallback-029-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "minimum-speed-35-number",
+          "objectIds": [
+            "white-35-number"
+          ],
+          "regionIds": [
+            "region-number-35"
+          ],
+          "description": "The visible number 35 is the numeric threshold in the answer.",
+          "supportsAnswerIds": [
+            "b-fallback-029-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-029-a2",
+            "b-fallback-029-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-029"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-029",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped sign design and visible 35 for b-fallback-029 after local image inspection.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b029-highlight-minimum-35",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "blue-center-red-ring-sign",
+            "minimum-speed-35-number"
+          ],
+          "objectIds": [
+            "circular-regulatory-sign",
+            "minimum-speed-sign-face",
+            "white-35-number"
+          ],
+          "regionIds": [
+            "region-whole-minimum-sign",
+            "region-number-35"
+          ],
+          "rationaleRuOrEn": "Highlight the sign design and number 35 because the answer is a 35 km/h minimum.",
+          "supportsAnswerIds": [
+            "b-fallback-029-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-029-a2",
+            "b-fallback-029-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b029-support-catalog-view",
+          "role": "supporting",
+          "detailIds": [
+            "blue-center-red-ring-sign"
+          ],
+          "objectIds": [
+            "circular-regulatory-sign"
+          ],
+          "regionIds": [
+            "region-whole-minimum-sign"
+          ],
+          "rationaleRuOrEn": "The clean catalog view keeps the whole sign visible for recognition.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b029-trap-maximum-vs-minimum",
+          "role": "distractor_trap",
+          "detailIds": [
+            "blue-center-red-ring-sign"
+          ],
+          "objectIds": [
+            "minimum-speed-sign-face"
+          ],
+          "regionIds": [
+            "region-whole-minimum-sign"
+          ],
+          "rationaleRuOrEn": "The trap is reading the number as a maximum; the blue-center/red-ring sign is the visible distinction in this ticket.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-029-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b029-background-white",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "plain-white-background"
+          ],
+          "objectIds": [],
+          "regionIds": [
+            "region-white-background"
+          ],
+          "rationaleRuOrEn": "The white background is not part of the instruction and can be dimmed.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-032",
@@ -6840,26 +8323,126 @@
       "correctAnswerId": "b-fallback-032-a3",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-032-critical-source-image",
+          "detailId": "posted-40-speed-limit-sign",
           "objectIds": [
-            "source-image-frame"
+            "posted-40-speed-sign-object",
+            "posted-40-speed-sign-face"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-40-speed-sign"
+          ],
+          "description": "The right-side sign visibly posts 40, which is the maximum speed answer for this avenue segment.",
           "supportsAnswerIds": [
             "b-fallback-032-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-032-a1",
+            "b-fallback-032-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-032"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-032",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped posted 40 sign and avenue context for b-fallback-032 after local image inspection.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b032-highlight-40-sign",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "posted-40-speed-limit-sign"
+          ],
+          "objectIds": [
+            "posted-40-speed-sign-object",
+            "posted-40-speed-sign-face"
+          ],
+          "regionIds": [
+            "region-40-speed-sign"
+          ],
+          "rationaleRuOrEn": "Highlight the posted 40 sign; it directly determines the maximum speed answer.",
+          "supportsAnswerIds": [
+            "b-fallback-032-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-032-a1",
+            "b-fallback-032-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b032-support-avenue-context",
+          "role": "supporting",
+          "detailIds": [
+            "urban-avenue-intersection",
+            "foreground-zebra-crosswalks"
+          ],
+          "objectIds": [
+            "urban-avenue-roadway",
+            "foreground-zebra-crosswalks-object"
+          ],
+          "regionIds": [
+            "region-avenue-intersection"
+          ],
+          "rationaleRuOrEn": "Keep the avenue/intersection context visible because the question asks about this specific tramo.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b032-trap-general-avenue-speed",
+          "role": "distractor_trap",
+          "detailIds": [
+            "urban-avenue-intersection"
+          ],
+          "objectIds": [
+            "urban-avenue-roadway"
+          ],
+          "regionIds": [
+            "region-avenue-intersection"
+          ],
+          "rationaleRuOrEn": "The word avenue can tempt a general speed answer, but the posted 40 sign overrides that for this segment.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-032-a1",
+            "b-fallback-032-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b032-background-buildings",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "residential-background-context"
+          ],
+          "objectIds": [
+            "residential-buildings"
+          ],
+          "regionIds": [
+            "region-background-buildings"
+          ],
+          "rationaleRuOrEn": "Houses, trees, and sky are background and can be dimmed once the 40 sign is visible.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-034",
@@ -6870,26 +8453,129 @@
       "correctAnswerId": "b-fallback-034-a3",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-034-critical-source-image",
+          "detailId": "option-c-square-route-sign",
           "objectIds": [
-            "source-image-frame"
+            "option-c-square-route-sign-object"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-option-c"
+          ],
+          "description": "Option C is the square route sign that corresponds to the provincial route answer in this ticket.",
           "supportsAnswerIds": [
             "b-fallback-034-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-034-a1",
+            "b-fallback-034-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-034"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-034",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped option C square route sign and A/B distractor signs for b-fallback-034.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b034-highlight-option-c",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "option-c-square-route-sign",
+            "option-label-c"
+          ],
+          "objectIds": [
+            "option-c-square-route-sign-object",
+            "yellow-option-labels"
+          ],
+          "regionIds": [
+            "region-option-c"
+          ],
+          "rationaleRuOrEn": "Highlight option C and its label because it is the provincial route sign in the image.",
+          "supportsAnswerIds": [
+            "b-fallback-034-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-034-a1",
+            "b-fallback-034-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b034-support-three-options",
+          "role": "supporting",
+          "detailIds": [
+            "option-a-national-route-sign",
+            "option-b-shield-route-sign"
+          ],
+          "objectIds": [
+            "option-a-national-route-sign-object",
+            "option-b-shield-route-sign-object"
+          ],
+          "regionIds": [
+            "region-option-a",
+            "region-option-b"
+          ],
+          "rationaleRuOrEn": "Keep A and B visible so learners can compare all three route-sign options.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b034-trap-a-b",
+          "role": "distractor_trap",
+          "detailIds": [
+            "option-a-national-route-sign",
+            "option-b-shield-route-sign"
+          ],
+          "objectIds": [
+            "option-a-national-route-sign-object",
+            "option-b-shield-route-sign-object"
+          ],
+          "regionIds": [
+            "region-option-a",
+            "region-option-b"
+          ],
+          "rationaleRuOrEn": "A and B are visually plausible route signs, but they are the wrong options for provincial route in this ticket.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-034-a1",
+            "b-fallback-034-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b034-background-white",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "option-label-a",
+            "option-label-b"
+          ],
+          "objectIds": [
+            "yellow-option-labels"
+          ],
+          "regionIds": [],
+          "rationaleRuOrEn": "Non-selected labels and empty white background can be deemphasized after option C is identified.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-036",
@@ -6900,26 +8586,148 @@
       "correctAnswerId": "b-fallback-036-a3",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-036-critical-source-image",
+          "detailId": "cross-street-left-approach",
           "objectIds": [
-            "source-image-frame"
+            "left-side-approach"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-left-approach"
+          ],
+          "description": "The left side of the cross street is one direction that must be checked before crossing.",
           "supportsAnswerIds": [
             "b-fallback-036-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-036-a1"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "medium"
+        },
+        {
+          "detailId": "cross-street-right-approach",
+          "objectIds": [
+            "right-side-approach"
+          ],
+          "regionIds": [
+            "region-right-approach"
+          ],
+          "description": "The right side of the cross street is also visible and must be checked before crossing.",
+          "supportsAnswerIds": [
+            "b-fallback-036-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-036-a2"
+          ],
+          "criticality": "required",
+          "confidence": "medium"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-036"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-036",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped both side approaches, crosswalk, and crossing car context for b-fallback-036.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b036-highlight-both-approaches",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "cross-street-left-approach",
+            "cross-street-right-approach"
+          ],
+          "objectIds": [
+            "left-side-approach",
+            "right-side-approach"
+          ],
+          "regionIds": [
+            "region-left-approach",
+            "region-right-approach"
+          ],
+          "rationaleRuOrEn": "Highlight both side approaches because the correct answer is to look both ways before crossing.",
+          "supportsAnswerIds": [
+            "b-fallback-036-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-036-a1",
+            "b-fallback-036-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b036-support-crosswalk-car",
+          "role": "supporting",
+          "detailIds": [
+            "foreground-zebra-crosswalk",
+            "black-car-crossing-intersection"
+          ],
+          "objectIds": [
+            "zebra-crosswalk-markings-object",
+            "black-car-crossing-intersection-object"
+          ],
+          "regionIds": [
+            "region-foreground-crosswalk",
+            "region-crossing-car"
+          ],
+          "rationaleRuOrEn": "The crosswalk and car in the intersection show this is an active crossing situation.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b036-trap-one-side-only",
+          "role": "distractor_trap",
+          "detailIds": [
+            "cross-street-left-approach",
+            "cross-street-right-approach"
+          ],
+          "objectIds": [
+            "left-side-approach",
+            "right-side-approach"
+          ],
+          "regionIds": [
+            "region-left-approach",
+            "region-right-approach"
+          ],
+          "rationaleRuOrEn": "Single-direction answers are traps because both sides of the cross street are relevant.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-036-a1",
+            "b-fallback-036-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b036-background-buildings",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "intersection-background-buildings"
+          ],
+          "objectIds": [
+            "surrounding-buildings"
+          ],
+          "regionIds": [
+            "region-background-buildings-b15"
+          ],
+          "rationaleRuOrEn": "Buildings and trees are scene background and can be dimmed.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-038",
@@ -6930,26 +8738,149 @@
       "correctAnswerId": "b-fallback-038-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-038-critical-source-image",
+          "detailId": "pedestrian-on-sidewalk",
           "objectIds": [
-            "source-image-frame"
+            "pedestrian-on-sidewalk-object"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-pedestrian-sidewalk"
+          ],
+          "description": "The pedestrian on the sidewalk is the user whose movement must be prioritized.",
           "supportsAnswerIds": [
             "b-fallback-038-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-038-a2",
+            "b-fallback-038-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "car-crossing-sidewalk-driveway",
+          "objectIds": [
+            "silver-car-crossing-sidewalk-object"
+          ],
+          "regionIds": [
+            "region-car-sidewalk-conflict"
+          ],
+          "description": "The car is crossing the pedestrian sidewalk/driveway zone, creating the priority conflict.",
+          "supportsAnswerIds": [
+            "b-fallback-038-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-038-a2",
+            "b-fallback-038-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-038"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-038",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped pedestrian, car crossing sidewalk/driveway, garage opening, and residential background for b-fallback-038.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b038-highlight-pedestrian-conflict",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "pedestrian-on-sidewalk",
+            "car-crossing-sidewalk-driveway",
+            "sidewalk-pedestrian-zone"
+          ],
+          "objectIds": [
+            "pedestrian-on-sidewalk-object",
+            "silver-car-crossing-sidewalk-object",
+            "sidewalk-pedestrian-zone-object"
+          ],
+          "regionIds": [
+            "region-pedestrian-sidewalk",
+            "region-car-sidewalk-conflict"
+          ],
+          "rationaleRuOrEn": "Highlight the pedestrian and the car crossing the sidewalk because the driver must prioritize pedestrian movement.",
+          "supportsAnswerIds": [
+            "b-fallback-038-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-038-a2",
+            "b-fallback-038-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b038-support-garage-context",
+          "role": "supporting",
+          "detailIds": [
+            "garage-driveway-opening"
+          ],
+          "objectIds": [
+            "garage-driveway-opening-object"
+          ],
+          "regionIds": [
+            "region-garage-driveway"
+          ],
+          "rationaleRuOrEn": "The garage/driveway explains the vehicle maneuver across the pedestrian area.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b038-trap-driver-preference",
+          "role": "distractor_trap",
+          "detailIds": [
+            "pedestrian-on-sidewalk",
+            "car-crossing-sidewalk-driveway"
+          ],
+          "objectIds": [
+            "pedestrian-on-sidewalk-object",
+            "silver-car-crossing-sidewalk-object"
+          ],
+          "regionIds": [
+            "region-pedestrian-sidewalk",
+            "region-car-sidewalk-conflict"
+          ],
+          "rationaleRuOrEn": "The visible pedestrian conflict rejects answers where the driver claims preference with lights or speed.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-038-a2",
+            "b-fallback-038-a3"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b038-background-residential",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "residential-background-b22"
+          ],
+          "objectIds": [
+            "residential-frontage-b22"
+          ],
+          "regionIds": [
+            "region-residential-background-b22"
+          ],
+          "rationaleRuOrEn": "House facade and plants are background once the pedestrian conflict is clear.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-039",
@@ -6960,26 +8891,150 @@
       "correctAnswerId": "b-fallback-039-a3",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-039-critical-source-image",
+          "detailId": "double-parked-silver-car",
           "objectIds": [
-            "source-image-frame"
+            "double-parked-silver-car-object"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-double-parked-silver-car"
+          ],
+          "description": "The silver car is stopped in a second row beside a curbside car, which is the action under evaluation.",
           "supportsAnswerIds": [
             "b-fallback-039-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-039-a1",
+            "b-fallback-039-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "open-door-passenger-area",
+          "objectIds": [
+            "open-door-passenger-area-object"
+          ],
+          "regionIds": [
+            "region-passenger-door-area"
+          ],
+          "description": "The passenger/open-door area shows the passenger-stop trap, not a parking-preparation exception.",
+          "supportsAnswerIds": [
+            "b-fallback-039-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-039-a1",
+            "b-fallback-039-a2"
+          ],
+          "criticality": "required",
+          "confidence": "medium"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-039"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-039",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped double-parked silver car, curbside white car, passenger/open-door area, and lane blockage for b-fallback-039.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b039-highlight-double-row",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "double-parked-silver-car",
+            "curbside-white-car",
+            "active-traffic-lane-blockage"
+          ],
+          "objectIds": [
+            "double-parked-silver-car-object",
+            "curbside-white-car-object",
+            "active-traffic-lane-object"
+          ],
+          "regionIds": [
+            "region-double-parked-silver-car",
+            "region-curbside-white-car",
+            "region-active-lane-b162"
+          ],
+          "rationaleRuOrEn": "Highlight the second-row position: the silver car is beside the curbside car and occupies the traffic lane.",
+          "supportsAnswerIds": [
+            "b-fallback-039-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-039-a1",
+            "b-fallback-039-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b039-support-passenger-area",
+          "role": "supporting",
+          "detailIds": [
+            "open-door-passenger-area"
+          ],
+          "objectIds": [
+            "open-door-passenger-area-object"
+          ],
+          "regionIds": [
+            "region-passenger-door-area"
+          ],
+          "rationaleRuOrEn": "The passenger/open-door area explains why the wrong answers mention passenger descent.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b039-trap-passenger-stop",
+          "role": "distractor_trap",
+          "detailIds": [
+            "open-door-passenger-area",
+            "double-parked-silver-car"
+          ],
+          "objectIds": [
+            "open-door-passenger-area-object",
+            "double-parked-silver-car-object"
+          ],
+          "regionIds": [
+            "region-passenger-door-area",
+            "region-double-parked-silver-car"
+          ],
+          "rationaleRuOrEn": "A passenger-stop scene may tempt a yes answer, but the second-row position remains prohibited in this ticket.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-039-a1",
+            "b-fallback-039-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b039-background-street",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "tree-lined-street-background"
+          ],
+          "objectIds": [
+            "tree-lined-sidewalk-b162"
+          ],
+          "regionIds": [
+            "region-street-background-b162"
+          ],
+          "rationaleRuOrEn": "Trees, sidewalk, and distant vehicles are not central to the double-row answer.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-042",
