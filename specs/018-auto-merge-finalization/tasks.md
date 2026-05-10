@@ -65,6 +65,7 @@
 - Current P1 review-fix implementation decision: `currentProcessMemory` now requires concrete process evidence beyond generic sections: a non-placeholder `Cycle PR Set` entry with PR/branch/head/status/final-validation inclusion, Architect and Analyst return-count markers within limits unless escalation is recorded, and explicit `Limit escalation: none` or new-feature-request escalation state in `Final Validation Evidence`.
 - Current P1 process-evidence implementation decision: post-effective-head verification treats well-formed `Cycle PR Set` and `Final Validation Evidence` additions in `tasks.md` as allowed process evidence, while arbitrary peer-section edits and malformed process-evidence lines still block finalization.
 - Current P2 review-fix implementation decision: PR conversation comments fetched through GraphQL now request comment connection `pageInfo`. If `comments(last: 100)` is truncated, the helper fails closed with a `review-pagination` blocking finding so older current-head Claude block outcomes cannot be silently dropped.
+- Current P2 disposition-parsing implementation decision: Implementation Agent feedback disposition markers count only when their disposition text contains final wording such as `not needed`, `accepted`, `resolved`, `disposed`, `addressed`, `superseded`, or `no unresolved`, and contains no open-state wording such as `pending`, `unresolved`, `open`, `needs review`, or `requires disposition`.
 
 ## Dead Ends
 
@@ -177,6 +178,12 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`; no configured product paths changed, so the feature-memory gate passed.
 - `git diff --check`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`; no whitespace errors reported.
 - `pnpm run preflight`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`; feature-memory gate, repo baseline, content validation, 151 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BfSagyH6.js` but completed successfully.
+- `node --check scripts/finalize-pr.mjs`: passed after feedback disposition parsing review fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after feedback disposition parsing review fix; 37 tests passed, including pending/unresolved/open/needs-review disposition wording blocking and final disposition wording passing.
+- `git diff --check`: passed after feedback disposition parsing review fix; no whitespace errors reported.
+- `pnpm run check:repo`: passed after feedback disposition parsing review fix; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after feedback disposition parsing review fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `pnpm run preflight`: passed after feedback disposition parsing review fix; feature-memory gate, repo baseline, content validation, 153 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BfSagyH6.js` but completed successfully.
 
 ## Cycle PR Set
 

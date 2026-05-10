@@ -9,6 +9,7 @@ import {
   collectPaginationFindings,
   evaluatePostEffectiveHeadChangedFiles,
   evaluateFinalizationGates,
+  hasImplementationFeedbackDisposition,
   isFinalValidationEvidencePath,
   normalizeCheckState,
   readProcessEvidence,
@@ -957,6 +958,44 @@ ${evidenceTasks}`);
 - Required checks passed.
 `);
   assert.equal(readProcessEvidence(root, featurePath, "abc123def456").currentHeadGuardEvidence, false);
+});
+
+test("feedback disposition parsing rejects pending or unresolved disposition wording", () => {
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+- Disposition: pending
+`), false);
+
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+- Architect disposition: unresolved
+`), false);
+
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review. Disposition: needs review by Architect.
+`), false);
+
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+- Architect disposition: open pending review.
+`), false);
+
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+- Architect disposition: requires Architect disposition.
+`), false);
+});
+
+test("feedback disposition parsing accepts final disposition wording", () => {
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+- Disposition: not needed because existing tasks cover it.
+`), true);
+
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review. Architect disposition: accepted and addressed in this slice.
+`), true);
+
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+- No unresolved Implementation Agent feedback remains.
+`), true);
+
+  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+- Disposition: superseded by the final validation evidence task.
+`), true);
 });
 
 test("process evidence accepts effective-head marker plus guard reference", () => {

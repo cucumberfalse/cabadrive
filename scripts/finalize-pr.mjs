@@ -557,11 +557,67 @@ function isNoFeedbackMarker(text = "") {
 }
 
 function isDispositionOnly(text = "") {
-  return /^(?:Architect disposition|Disposition|No unresolved|Disposed)\b/i.test(text.trim());
+  const trimmed = text.trim();
+  if (!/^(?:Architect disposition|Disposition|No unresolved|Disposed)\b/i.test(trimmed)) return false;
+  return hasResolvedDispositionCandidate(trimmed);
 }
 
 function hasDispositionMarker(text = "") {
-  return /\b(?:Architect disposition|Disposition|No unresolved|disposed)\b/i.test(text);
+  return hasResolvedDispositionCandidate(text);
+}
+
+function hasResolvedDispositionCandidate(text = "") {
+  const candidates = extractDispositionCandidates(text);
+  if (candidates.length === 0) return false;
+  if (candidates.some((candidate) => hasOpenDispositionWording(candidate))) return false;
+  return candidates.some((candidate) => hasFinalDispositionWording(candidate));
+}
+
+function extractDispositionCandidates(text = "") {
+  const candidates = [];
+
+  for (const line of String(text).split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    const lineMarker = trimmed.match(/^(?:Architect disposition|Disposition)\s*:\s*(.+)$/i);
+    if (lineMarker) {
+      candidates.push(lineMarker[1].trim());
+      continue;
+    }
+
+    const inlineMarker = trimmed.match(/\b(?:Architect disposition|Disposition)\s*:\s*(.+)$/i);
+    if (inlineMarker) {
+      candidates.push(inlineMarker[1].trim());
+      continue;
+    }
+
+    if (/^(?:No unresolved|Disposed)\b/i.test(trimmed)) {
+      candidates.push(trimmed);
+    }
+  }
+
+  return candidates;
+}
+
+function hasOpenDispositionWording(text = "") {
+  const normalized = text.trim().toLowerCase();
+  const withoutNoUnresolved = normalized.replace(/\bno unresolved\b/g, "");
+  return /\b(?:pending|unresolved|open)\b/.test(withoutNoUnresolved) ||
+    /\bneeds?\s+(?:architect\s+)?review\b/.test(normalized) ||
+    /\brequires?\s+(?:architect\s+)?review\b/.test(normalized) ||
+    /\bawaiting\b.*\breview\b/.test(normalized) ||
+    /\bneeds?\s+(?:architect\s+)?disposition\b/.test(normalized) ||
+    /\brequires?\s+(?:architect\s+)?disposition\b/.test(normalized) ||
+    /\bawaiting\b.*\bdisposition\b/.test(normalized) ||
+    /\b(?:tbd|todo|not yet)\b/.test(normalized);
+}
+
+function hasFinalDispositionWording(text = "") {
+  const normalized = text.trim().toLowerCase();
+  if (!normalized) return false;
+  return /\bno unresolved\b/.test(normalized) ||
+    /\b(?:not needed|no action needed|accepted|resolved|disposed|addressed|superseded|rejected|closed|complete|completed|done)\b/.test(normalized);
 }
 
 function readLatestEffectiveContentHead(memory) {
