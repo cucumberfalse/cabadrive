@@ -193,7 +193,7 @@
 - [x] T150 Durable docs state that deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, overlay/relevance mappings, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
 - [x] T151 Durable docs state that shared image metadata is removed only when no remaining question usage references that image; otherwise only the deleted/changed ticket's usage and related evidence are removed or refreshed.
 - [x] T152 Implementation Agent updates `docs_project/project/backend/backend-docs.md` for offline validators, shard writer/index generation, evidence files, and quality gates if not already current.
-- [ ] T153 Implementation Agent updates `docs_project/project/frontend/frontend-docs.md` only if shard imports, runtime data behavior, missing-support UI behavior, or the feature `009`/`010` overlay semantics boundary changed.
+- [x] T153 Implementation Agent updates `docs_project/project/frontend/frontend-docs.md` only if shard imports, runtime data behavior, missing-support UI behavior, or the feature `009`/`010` overlay semantics boundary changed.
 - [x] T154 Implementation Agent updates `docs/specify/04_data_model.md` and `docs/specify/05_content_pipeline.md` when canonical schema, source-of-truth paths, evidence model, generated-index flow, relevance schema, or lifecycle pipeline terms changed.
 - [ ] T155 Review Agent verifies durable docs lifecycle coverage before final readiness and blocks the PR if add/change/delete cleanup rules or overlay/relevance refresh rules are absent or incomplete.
 
@@ -313,7 +313,7 @@
 - Infrastructure tests: `pnpm run test` passed with `87` tests, `87` pass, `0` fail.
 - Infrastructure build: `pnpm run build` passed after sharding; Vite emitted only the existing large chunk-size warning and generated a service worker with `280` cached assets.
 - Infrastructure preflight: `pnpm run preflight` passed, including feature-memory gate, repo baseline check, structural content validation, `87` unit tests, production build, and `14` Playwright e2e tests.
-- Content integration merge evidence on 2026-05-10: final range heads merged into `codex/009-ticket-image-metadata-intake`: `origin/codex/009-content-001-092` at `ac761c449a355b79a0d78ef7850337ca7f989f1a`, `origin/codex/009-content-277-368` at `57eacf4246ea3f7f08364e54413b3f427d722c86`, and `origin/codex/009-content-369-460` at `f0ac31e24910640c2ecc3765d713ec8631fd8dfc`; `093-184` and `185-276` were already ancestors of the feature branch.
+- Content integration merge evidence on 2026-05-10: final range heads verified in `codex/009-ticket-image-metadata-intake`: `origin/codex/009-content-001-092` at `ac761c449a355b79a0d78ef7850337ca7f989f1a`, `origin/codex/009-content-093-184` at `56f858fd68d81a2e5998e11cfb919cf789d683c4`, `origin/codex/009-content-185-276` at `53d1732f7784e927a735b69a708458fe5428438a`, `origin/codex/009-content-277-368` at `57eacf4246ea3f7f08364e54413b3f427d722c86`, and `origin/codex/009-content-369-460` at `f0ac31e24910640c2ecc3765d713ec8631fd8dfc`. The `093-184` and `185-276` heads were already ancestors before the final integration merge commits.
 - Content integration shard audit on 2026-05-10: all five range shards for translations, explanations, and question-image metadata report `qualityStatus: "complete"`; generated indexes contain `460` translations, `460` explanations, `275` image metadata entries, and `276` question usages.
 - Generated-index refresh on 2026-05-10: `node scripts/content-shards.mjs --write-indexes` followed by `node scripts/content-shards.mjs --check-indexes` passed with `Generated content indexes are fresh.`
 - Evidence-only refresh on 2026-05-10: `pnpm run refresh:content-evidence` passed with `Refreshed learning-support evidence: 275 images, 276 usages, 460 translations, 460 explanations.`
@@ -325,6 +325,7 @@
 - `git diff --check` passed on 2026-05-10 with no whitespace errors.
 - Validator/test update on 2026-05-10: `scripts/content-image-metadata.mjs` now includes `relevanceMap` and `questionContext` in usage fingerprints, rejects global relevance keys in shared image metadata, validates relevance-map roles/references, and rejects mark-everything-critical mappings in the full-quality gate.
 - Draft-generator guard on 2026-05-10: `scripts/generate-learning-support.mjs` now exits unless called with `--allow-draft-overwrite`; reviewed content integration uses `node scripts/content-shards.mjs --write-indexes` plus `pnpm run refresh:content-evidence` instead.
+- Frontend docs boundary update on 2026-05-10: `docs_project/project/frontend/frontend-docs.md` now records that future highlight/dim overlays consume question-specific feature `009` usage relevance and must not infer importance from shared image metadata alone.
 
 ### Implementation Agent Feedback
 
