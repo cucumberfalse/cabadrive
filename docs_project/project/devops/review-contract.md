@@ -40,16 +40,21 @@ Reviewers check role boundaries in addition to code behavior:
   mix unrelated changes.
 - Blocking Implementation Agent feedback must be either resolved in scope or
   have Architect disposition before completion.
+- Initial Review Agent review may proceed before final Architect or Analyst
+  validation evidence exists. Reviewers may still review whether the PR text,
+  docs, specs, and templates require the planned final-validation steps at the
+  right phase.
 - Final Architect validation must occur before final Analyst validation,
-  completion, or authorized merge mechanics. Reviewers should check that
-  Architect validation covers all PR slices, Architect-assigned tasks and
+  completion, or authorized merge mechanics, after implementation, review,
+  checks, and follow-up development appear complete. Reviewers should check
+  that Architect validation covers all PR slices, Architect-assigned tasks and
   dispositions, architectural guidance, open task state, process memory, and
   customer intent in spirit.
-- Final Analyst validation must occur after Architect passes and must check the
-  customer's desired outcome in spirit and letter. Analyst gap notes must be
-  Analyst-owned, return counts must stay within the limit of 5, and Analyst
-  feedback must receive Architect accept/task/ticket/dispose disposition before
-  follow-up development.
+- Final Analyst validation must occur after Architect passes and before final
+  completion or authorized merge mechanics. It must check the customer's desired
+  outcome in spirit and letter. Analyst gap notes must be Analyst-owned, return
+  counts must stay within the limit of 5, and Analyst feedback must receive
+  Architect accept/task/ticket/dispose disposition before follow-up development.
 - Architect gap returns must stay within the limit of 10 per work cycle. If the
   limit is exceeded, reviewers should expect a recorded Architect breach and
   Orchestrator request for Analyst to create a new feature request; if the
@@ -61,9 +66,13 @@ permit unsafe completion. Blocking conditions include red, missing, queued, or
 running required checks; unresolved `P0`, `P1`, or `P2` review findings;
 unresolved conflicts; stale process memory; missing acceptance evidence; missing
 negative-scenario coverage; or unresolved Implementation Agent feedback without
-Architect disposition. Missing final-validation evidence, incomplete cycle PR
-set coverage, Analyst feedback without Architect disposition, or exhausted
-return limits without new-feature-request escalation are also blocking process
+Architect disposition. During initial PR review, absence of final Architect or
+Analyst validation evidence is not itself blocking because the final-validation
+loop is invoked only after implementation, review, checks, and follow-up
+development appear complete. During Orchestrator's final completion or
+merge-readiness evaluation, missing final-validation evidence, incomplete cycle
+PR set coverage, Analyst feedback without Architect disposition, or exhausted
+return limits without new-feature-request escalation are blocking process
 findings.
 
 Review findings that require code, docs, tests, content, specs, metadata, or
