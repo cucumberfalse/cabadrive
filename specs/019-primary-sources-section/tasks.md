@@ -325,6 +325,9 @@
 - Added focused regression tests for pending exact-text validation, failed currentness validation, and stale/non-current effective source status.
 - Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A6Ad-`.
 - `scripts/validate-content.mjs` now binds `--quality-gate` and `--final-content` to strict primary-source validation automatically; default draft `pnpm run validate:content` remains permissive for the current preparatory corpus.
+- Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A6Kmh`.
+- Strict/final placeholder validation now rejects standalone English `draft` markers and Russian `чернов...` markers such as `DRAFT translation`, `Черновой перевод`, and `Черновик`, while preserving Unicode word-boundary handling.
+- Added focused regression tests for standalone English and Russian draft markers in approved strict-mode learner text.
 
 ### Slice C Implementation Notes
 
@@ -594,6 +597,16 @@
   - `pnpm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 144 Node tests, 144 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- Slice B PR #74 standalone draft marker follow-up on 2026-05-10:
+  - Addressed `PRRT_kwDOSX65IM6A6Kmh`: strict/final placeholder validation now rejects standalone draft markers including `DRAFT translation`, `draft rewrite`, `Черновой перевод`, and `Черновик`.
+  - Added focused regression tests for standalone English and Russian draft markers in approved strict-mode learner content.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 27 tests, 27 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run validate:content:quality` failed as expected with exit code 1. This remains positive final-gate evidence for the current draft corpus: the output included 19 `exactTextValidation.status must be passed for strict primary-source validation` errors, strict placeholder errors for the draft content file, partial span coverage, missing manifest coverage, and draft QA errors.
+  - `pnpm run test` passed: 139 Node tests, 139 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`

@@ -488,6 +488,28 @@ test("strict mode rejects English placeholder learner text", () => {
   assert(errors.includes("doc-1--001.simpleRu must not be placeholder or draft text in strict mode."));
 });
 
+test("strict mode rejects standalone English draft markers", () => {
+  const badCorpus = corpus();
+  badCorpus.documents[0].chunks[0].fullTranslationRu = "DRAFT translation of the source chunk.";
+  badCorpus.documents[0].chunks[0].simpleRu = "This is a draft rewrite for later review.";
+
+  const errors = validate({ corpus: badCorpus });
+
+  assert(errors.includes("doc-1--001.fullTranslationRu must not be placeholder or draft text in strict mode."));
+  assert(errors.includes("doc-1--001.simpleRu must not be placeholder or draft text in strict mode."));
+});
+
+test("strict mode rejects standalone Russian draft markers", () => {
+  const badCorpus = corpus();
+  badCorpus.documents[0].chunks[0].fullTranslationRu = "Черновой перевод официального фрагмента.";
+  badCorpus.documents[0].chunks[0].simpleRu = "Черновик простого объяснения.";
+
+  const errors = validate({ corpus: badCorpus });
+
+  assert(errors.includes("doc-1--001.fullTranslationRu must not be placeholder or draft text in strict mode."));
+  assert(errors.includes("doc-1--001.simpleRu must not be placeholder or draft text in strict mode."));
+});
+
 test("strict mode rejects non-approved translation and simplification QA", () => {
   const errors = validate({ qa: qa({ status: "reviewed" }) });
 
