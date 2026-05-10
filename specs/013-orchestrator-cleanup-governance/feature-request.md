@@ -109,7 +109,7 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 - Requirement clarification was not requested because the assignment says to record assumptions and open questions instead.
 - Analyst hands off to Orchestrator and shuts down after intake is ready.
 - Architect starts from this artifact and writes `spec.md`, `plan.md`, and `tasks.md`.
-- Handoff context for Orchestrator: feature folder `specs/012-orchestrator-cleanup-governance/` in worktree `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on branch `codex/014-orchestrator-cleanup-governance`; parallel work may exist and all existing dirty diffs, branches, commits, PRs, process memory, and active environments must be preserved.
+- Handoff context for Orchestrator: feature folder `specs/013-orchestrator-cleanup-governance/` in worktree `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on branch `codex/014-orchestrator-cleanup-governance`; parallel work may exist and all existing dirty diffs, branches, commits, PRs, process memory, and active environments must be preserved.
 
 ## Open Questions And Risks
 
@@ -138,8 +138,8 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: PASS after review fix on 2026-05-10.
-- Analyst return count: 0; no Analyst return to Architect is needed.
+- Status: STALE/PENDING after prefix-rename review fix on 2026-05-10. The prior PASS after the plan-template review fix remains historical and must be rerun by Analyst after rename verification.
+- Prior Analyst return count: 0. A fresh Analyst validation rerun is pending because the prefix rename changed feature memory after the prior pass.
 - Customer intent check: PASS in spirit and letter. The final result teaches Orchestrator to coordinate completion-time cleanup through a first-class Cleanup Agent with strict validation, refusal, and evidence rules; records one-time cleanup of validated completed agent-created environments while preserving active, ambiguous, current, dirty, open-PR, and recurring paths including `cabadrive-009-content-277-368`; and makes fresh isolated startup from latest verified `main` the default for new Orchestrator work. The plan-template consistency fix supports future planning fidelity and does not change the user-facing scope.
 - Gaps: none.
 - Architect disposition routing: none needed; no new requirements, risks, or implementation feedback are raised by final Analyst validation.

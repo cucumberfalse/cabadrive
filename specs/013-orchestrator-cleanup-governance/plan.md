@@ -10,7 +10,7 @@ Update Cabadrive's process guidance so Orchestrator starts repository-changing w
 - dependencies: existing Git, GitHub CLI or equivalent PR lookup, shell read-only inspection commands, and existing package tooling for repository verification.
 - product paths: none expected.
 - data changes: none expected.
-- feature memory path: `specs/012-orchestrator-cleanup-governance/`.
+- feature memory path: `specs/013-orchestrator-cleanup-governance/`.
 - implementation branch/worktree context: `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on `codex/014-orchestrator-cleanup-governance`.
 - likely documentation targets:
   - `AGENTS.md`
@@ -23,7 +23,7 @@ Update Cabadrive's process guidance so Orchestrator starts repository-changing w
   - `docs_project/project/devops/ai-pr-workflow.md`
   - `docs_project/project/devops/review-contract.md`
   - `specs/README.md`
-  - `specs/012-orchestrator-cleanup-governance/tasks.md`
+  - `specs/013-orchestrator-cleanup-governance/tasks.md`
 - likely technical inspection targets:
   - `scripts/new-worktree.mjs` as evidence for the existing latest-main helper behavior; edit only if implementation finds a direct mismatch with the spec and records why.
   - `scripts/check-feature-memory.mjs` and `scripts/check-repo-baseline.mjs` for verification, not cleanup.
@@ -49,7 +49,7 @@ Update Cabadrive's process guidance so Orchestrator starts repository-changing w
    - `pwd`
    - `git status --short --branch`
    - `git branch --show-current`
-   - `test -f specs/012-orchestrator-cleanup-governance/feature-request.md`
+   - `test -f specs/013-orchestrator-cleanup-governance/feature-request.md`
 2. Read active feature memory and scoped durable process docs/templates before editing.
 3. Search existing workflow language to avoid contradictions:
    - `rg -n "Orchestrator|Analyst|Implementation Agent|Review Agent|worktree|main|origin/main|cleanup|artifact|parallel|merge|feature-request|tasks.md" AGENTS.md CLAUDE.md docs_project/project/devops .github/pull_request_template.md .specify/memory/constitution.md .specify/templates specs/README.md scripts/new-worktree.mjs`
@@ -103,9 +103,9 @@ Record evidence in `tasks.md` or a scoped feature-memory section before completi
 - Confirmation that `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance`, `/Users/chap/devel/cabadrive`, PR #65 work, and any active or ambiguous work were not touched.
 - Any unavailable check and its conservative outcome.
 
-## Coordination Risk: `012` And PR #65
+## Prefix Rename Resolution
 
-The `specs/012-orchestrator-cleanup-governance/` folder can remain in this branch. Reason: the Analyst followed the numbering visible from fresh `origin/main`, the slug is distinct, the branch name is `codex/014-orchestrator-cleanup-governance`, and existing repository guidance already handles duplicate numeric prefixes by using max-prefix-plus-one in future work. The mitigation is mandatory: before publishing or merging, Orchestrator must inspect PR #65 and current `main`; if there is a same-path conflict or overlapping request, Orchestrator must stop and route to Architect rather than deleting, renaming, or overwriting parallel artifacts.
+After PR #65 merged, base `main` already contained `specs/012-orchestrator-final-validation-loop/`. The cleanup feature memory was therefore renamed with `git mv` to `specs/013-orchestrator-cleanup-governance/`, the next valid prefix after excluding the cleanup folder being renamed. This resolves the PR #67 P2 duplicate-prefix finding and preserves PR #65 process memory unchanged.
 
 ## Complexity Tracking
 
@@ -116,10 +116,10 @@ The only new abstraction planned is the Cleanup Agent role. It is justified beca
 | Acceptance criterion | Evidence |
 | --- | --- |
 | AC-001 | `rg -n "latest.*main|origin/main|fresh.*isolated|new.*worktree|repository-changing.*start" AGENTS.md CLAUDE.md docs_project/project/devops .specify/memory/constitution.md .specify/templates specs/README.md` |
-| AC-002 | `rg -n "fetch.*origin.*main|fetch.*fail|unverified|stale|fallback|blocker" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates specs/012-orchestrator-cleanup-governance` |
+| AC-002 | `rg -n "fetch.*origin.*main|fetch.*fail|unverified|stale|fallback|blocker" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates specs/013-orchestrator-cleanup-governance` |
 | AC-003 | `rg -n "Cleanup Agent|cleanup.*role|Orchestrator.*coordinat.*cleanup|must not.*delete" AGENTS.md CLAUDE.md docs_project/project/devops .specify/memory/constitution.md docs_project/project/devops/review-contract.md` |
 | AC-004 | Cleanup evidence table in `tasks.md` shows every removed path passed the full validation checklist. |
-| AC-005 | `rg -n "active|current|dirty|untracked|unpushed|open PR|ambiguous|user-owned|outside.*root|locked|running process|refuse|preserve" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates docs_project/project/devops/review-contract.md specs/012-orchestrator-cleanup-governance` |
+| AC-005 | `rg -n "active|current|dirty|untracked|unpushed|open PR|ambiguous|user-owned|outside.*root|locked|running process|refuse|preserve" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates docs_project/project/devops/review-contract.md specs/013-orchestrator-cleanup-governance` |
 | AC-006 | One-time cleanup evidence in `tasks.md` includes inventory, per-target validation, action, reason, and post-cleanup confirmation. |
 | AC-007 | One-time cleanup evidence explicitly names active/preserved worktrees and confirms the current worktree and PR #65 work were not touched. |
 | AC-008 | Manual diff review plus text search shows scoped process docs/templates align on startup, Cleanup Agent, cleanup validation, and cleanup evidence. |
@@ -173,4 +173,6 @@ If a command cannot run because of local environment, missing credentials, or un
 
 - PR #67 review finding, 2026-05-10: unresolved P2 found `.specify/templates/plan-template.md` still used old startup wording and lacked cleanup applicability/evidence fields, so AC-008 cross-template consistency was not satisfied.
 - Implementation fix, 2026-05-10: update only `.specify/templates/plan-template.md`, this `plan.md`, and `tasks.md` to align the plan template with the already-updated feature/spec/tasks templates on latest verified main with fetch fallback/blocker language, cleanup applicability/evidence/refusal fields, Cleanup Agent review/verification expectations, and current-head/final-validation guards.
-- Final validation state, 2026-05-10: this is a non-evidence template/content change after prior Architect and Analyst validation, so those validations are stale and must rerun after review-fix verification.
+- PR #67 prefix P2 finding, 2026-05-10: base now contains `specs/012-orchestrator-final-validation-loop/`, so the cleanup feature memory needed renumbering to the next valid prefix before merge.
+- Prefix rename decision, 2026-05-10: move the cleanup feature memory to `specs/013-orchestrator-cleanup-governance/` and update scoped references in the renamed feature memory; do not change product code, unrelated docs, staging, commit, push, review, resolve threads, or merge in this implementation slice.
+- Final validation state, 2026-05-10: the plan-template P2 was previously validated, but this feature-memory rename is another non-evidence process-memory change. Final Architect and Analyst validation are stale and must rerun after the rename verification is complete.
