@@ -66,9 +66,9 @@
 - [x] T047 Verify the diff is limited to `specs/009-image-metadata-learning-support/tasks.md` and files in `specs/019-feature-009-memory-closure/`.
 - [x] T048 Run any additional local validation required by the Implementation Agent's evidence claims and record exact output.
 - [x] T049 Open a small PR for process-memory closure.
-- [ ] T050 Confirm closure PR required checks are green.
-- [ ] T051 Review Agent reviews the closure PR and confirms no blockers.
-- [ ] T052 Record final PR/check/review evidence in this feature memory.
+- [x] T050 Confirm closure PR required checks are green.
+- [x] T051 Review Agent reviews the closure PR and confirms no blockers.
+- [x] T052 Record final PR/check/review evidence in this feature memory.
 
 ## Process Memory
 
@@ -95,8 +95,7 @@
 - T120, T155, T166, T175, and T176 require task-specific review/sampling evidence; merge status alone is not enough to close them.
 - T098 may need careful disposition because this follow-up is process-memory-only and occurs after PR #63 merge.
 - After this implementation pass, feature 009 T098 remains intentionally open with an explicit disposition because the exact local Docker/runtime smoke sequence was not evidenced.
-- Closure PR checks and Review Agent review for feature 019 are still pending until the PR is opened and CI/review complete.
-- PR #87 is open and ready for review, but required checks and Review Agent completion are pending on the current branch head until GitHub finishes the new PR run.
+- PR #87 is open, ready, and clean on head `91b32cb91a8b9dc423428b6c10a0caaccefbbbce`; required checks passed and Codex Review reported no major issues.
 
 ### Verification Evidence
 
@@ -131,6 +130,11 @@
 - Implementation Agent opened PR #87: `https://github.com/cucumberfalse/cabadrive/pull/87`, state `OPEN`, `isDraft: false`, base `main`, head `codex/019-feature-009-memory-closure`.
 - Implementation Agent `gh pr view 87 --repo cucumberfalse/cabadrive --json number,url,state,isDraft,headRefName,headRefOid,baseRefName,mergeStateStatus,statusCheckRollup` immediately after PR creation showed head `99e1aaeebd5b1b8a1691e055d7a429208aeb53bc`, `mergeStateStatus: UNSTABLE`, and `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all `IN_PROGRESS`.
 - Implementation Agent `gh pr checks 87 --repo cucumberfalse/cabadrive` immediately after PR creation returned all required checks as `pending`. T050-T052 remain open until the current PR head checks and Review Agent result are final.
+- Finalization Agent `gh pr view 87 --json number,state,isDraft,headRefName,headRefOid,mergeStateStatus,reviewDecision,url` showed PR #87 `OPEN`, `isDraft: false`, head `codex/019-feature-009-memory-closure`, head SHA `91b32cb91a8b9dc423428b6c10a0caaccefbbbce`, `mergeStateStatus: CLEAN`, and URL `https://github.com/cucumberfalse/cabadrive/pull/87`.
+- Finalization Agent `gh pr checks 87` showed all required checks passing on head `91b32cb91a8b9dc423428b6c10a0caaccefbbbce`: `AI Review pass 3m55s`, `baseline-checks pass 1m17s`, `docker-validation pass 23s`, `guard pass 10s`, and `osv-scan pass 15s`.
+- Finalization Agent `gh pr view 87 --json reviews,comments,latestReviews,reviewDecision` showed Codex Review comment `4415584584` from `chatgpt-codex-connector` with no major issues.
+- Finalization Agent GraphQL `reviewThreads(first:100)` audit for PR #87 showed head `91b32cb91a8b9dc423428b6c10a0caaccefbbbce`, no submitted reviews, and no review threads.
+- Finalization Agent `git diff --check` passed with no output before the finalization edit.
 
 ### Implementation Agent Feedback
 
