@@ -85,10 +85,10 @@
 
 ## Future Slice G: Warning Signs And Related Priority Signals
 
-- [ ] T060 Review and rewrite `warning-signs`.
-- [ ] T061 Review and rewrite `right-of-way-signals-and-rail-crossings`.
-- [ ] T062 Preserve mixed warning/priority/authority source boundaries and ticket placements from feature 006.
-- [ ] T063 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T060 Review and rewrite `warning-signs`.
+- [x] T061 Review and rewrite `right-of-way-signals-and-rail-crossings`.
+- [x] T062 Preserve mixed warning/priority/authority source boundaries and ticket placements from feature 006.
+- [x] T063 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice H: Road Types, Regulatory Signs, Traffic Lights, And Public Transport
 
@@ -193,10 +193,10 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `fatigue-distraction-and-attention` | B | Reviewed in Slice B |
 | `road-types-highways-and-routes` | H | Pending |
 | `regulatory-signs` | H | Pending |
-| `warning-signs` | G | Pending |
+| `warning-signs` | G | Reviewed in Slice G |
 | `information-signs` | B | Reviewed in Slice B |
 | `traffic-lights-and-rail-crossings` | H | Pending |
-| `right-of-way-signals-and-rail-crossings` | G | Pending |
+| `right-of-way-signals-and-rail-crossings` | G | Reviewed in Slice G |
 | `right-of-way-basic-intersections` | I | Pending |
 | `right-of-way-special-situations` | I | Pending |
 | `documents-licenses-and-insurance` | B | Reviewed in Slice B |
@@ -561,6 +561,63 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-risk...origin/codex/015-study-guide-language-review-pedestrian` with exactly the two expected modified files before commit.
 - Known issues: none introduced. Slice F intentionally kept old-ticket and source-sensitive wording narrow for route-sign placements `b-fallback-296` / `b-fallback-343`, old CABA alcohol threshold tickets, refusal/removal consequences, medical-style impairment formulas, aquaplaning/fog/balizas behavior, tyre pressure, roof-load fuel-consumption, `1,6 mm` tyre-depth wording, and OMS/statistical wording.
 - Implementation Agent feedback: none requiring Architect disposition. Slice F found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
+- Slice G worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-warning` on `codex/015-study-guide-language-review-warning`, stacked on `origin/codex/015-study-guide-language-review-risk` / PR #79.
+- Topics reviewed: `warning-signs` and `right-of-way-signals-and-rail-crossings`.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice G did not touch root fields.
+  - titles: 2
+  - summaries: 2
+  - learning paragraphs: 13
+  - practical reasoning paragraphs: 5
+  - term translations: 35
+  - source-conflict notes: 0 in Slice G topics
+  - answer explanations: 118
+  - trap notes: 12
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 2
+  - summaries: 2
+  - learning paragraphs: 12
+  - practical reasoning paragraphs: 5
+  - term translations: 21
+  - source-conflict notes: 0
+  - answer explanations: 101
+  - trap notes: 10
+  - `difficultyMeta.sourceFingerprint`: 2
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice G topics 41 / 41.
+- Unique question IDs before/after: global 460 / 460; Slice G topics 41 / 41.
+- Answer explanations before/after: global 1,831 / 1,831; Slice G topics 118 / 118.
+- Source-conflict notes before/after: global 4 / 4; Slice G topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-009`, `b-fallback-063`, `b-fallback-068`, `b-fallback-070`, `b-fallback-076`, `b-fallback-077`, `b-fallback-085`, `b-fallback-119`, `b-fallback-124`, `b-fallback-128`, `b-fallback-129`, `b-fallback-131`, `b-fallback-153`, `b-fallback-159`, `b-fallback-180`, `b-fallback-238`, `b-fallback-262`, `b-fallback-273`, `b-fallback-288`, `b-fallback-311`, `b-fallback-312`, `b-fallback-340`, `b-fallback-345`, `b-fallback-347`, `b-fallback-357`, `b-fallback-370`, `b-fallback-372`, `b-fallback-389`, `b-fallback-394`, `b-fallback-410`, `b-fallback-436`, `b-fallback-440`, and `b-fallback-444`.
+- Duplicate handling decision: reviewed duplicated placements only inside the two assigned Slice G topics. Matching placements outside Slice G remain for their future slices, especially traffic-light/rail topics and broader right-of-way/turning topics. Wording stayed intentionally topic-specific: warning-sign duplicates keep picture/sign-recognition framing in `warning-signs`, while `right-of-way-signals-and-rail-crossings` keeps priority, signal hierarchy, railway, and cautious-speed framing. Answer IDs, verdicts, images, placements, and topic assignment shape were preserved.
+- Source-sensitive sentences left unchanged: all 9 `claims[].textRu` entries in Slice G topics were preserved as non-rendered source-trace metadata. Source-sensitive boundaries were kept narrow for picture-bound sign answers, `máximo peligro`, `zona escolar`, `Cruce de Peatones`, `obstrucción de vía`, `prioridad de avance`, `personal de obra`, autoridad/señalización/general-norm hierarchy, the `tránsito detenido` incorporation case, `señalización transitoria` over semáforos, red/yellow `señalización intermitente`, `paso a nivel ferroviario` exceptions, 20/30/40 km/h speed traps, and the `puente levadizo` versus railway-crossing image distinction. No PARE, railway, priority, warning, school/person/animal meaning was broadened beyond existing content.
+- CABA/RF notes added or clarified: Slice G kept comparison practical. It reminded the familiar РФ-style basics that warning signs buy reaction time and do not themselves give priority, while clarifying CABA exam anchors that can trip a Russian driver: signal/source hierarchy before ordinary rules, avenida/calle/pasaje before the right-side rule, railway-crossing exceptions, red versus yellow flashing signals, and CABA's exact 30/40 km/h unsignalized-intersection pair versus 20 km/h at paso a nivel.
+- Before/after samples:
+  - `warning-signs`: before "obey personal de obra"; after "выполнить указание personal de obra".
+  - `warning-signs`: before "форма/цвет знаков"; after "форму и цвет знаков".
+  - `warning-signs`: before "camino sin salida => дорога без выхода, тупик"; after "дорога без сквозного проезда, тупик".
+  - `warning-signs`: before "warning does not give priority" style wording in the trap context; after "Предупреждающий знак сам по себе не дает приоритет."
+  - `right-of-way-signals-and-rail-crossings`: before "Puente de menor ancho - другой warning sign"; after "puente de menor ancho - другой предупреждающий знак".
+  - `right-of-way-signals-and-rail-crossings`: before "Практический блок про prioridad de paso, semáforos..."; after "Практический блок про prioridad de paso: светофоры, мигающие сигналы..."
+  - `right-of-way-signals-and-rail-crossings`: before "не “у кого приоритет”, а требуемое действие"; after "проверяет действие, а не “у кого приоритет”."
+  - `right-of-way-signals-and-rail-crossings`: before "right-of-way" remained only in machine IDs; rendered learner text now uses Russian priority wording with Spanish exam anchors.
+- PR #63 / #79 guard: Slice G write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch PR #63 / feature 009 forbidden paths (`content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`, coverage/source-trace manifests, related validators/tests/docs/package files). It also did not touch product UI, tests, scripts, package files, docs outside this feature memory, other worktrees/branches/PRs, or PR #79 files beyond this branch's stacked guide/tasks changes.
+- Difficulty metadata refresh evidence: both Slice G topics kept their `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only `difficultyMeta.sourceFingerprint` changed, and each new value matched `difficultyTopicFingerprint(topic)` after the learner-facing text rewrite:
+  - `warning-signs`: `11111aad055e8d0a2b66aae9114997509d04ae38279e6e23a9f43b2496a4f39c` -> `b92f584dc5a0db31426306d045a3e25e4341d486c8fb691faf77a1836c263b3e`
+  - `right-of-way-signals-and-rail-crossings`: `d15d75472f88d93948dd13b308b36977a0278fb17c412e98a711d0a8dc9416a2` -> `8ef8891d74ccc2c92573a59446af91f41b16127c24858fbb7871ff28fef8c71d`
+- Validation evidence before final commit:
+  - JSON parse and structural count guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 38 `difficulty`, and 38 `difficultyMeta`.
+  - Targeted learner-facing process/English scan over Slice G rendered fields: pass; no matches for `fallback` as prose, `ticket-specific`, `canonical`, `source-backed`, `claim`, `prompt`, `taxonomy`, `warning sign`, `right-of-way`, `source trace`, `image-specific`, `correct answer`, `old ticket`, `process`, `authority`, `obey`, `picture-bound`, or related learner-facing process English.
+  - Duplicate-term guard for Slice G `spanishTerms[].translationRu`: pass; 0 values duplicate `termEs` verbatim.
+  - Difficulty guard: pass; for both Slice G topics, fingerprint changed, computed fingerprint matched, non-fingerprint metadata was preserved, difficulty was preserved, and claims were preserved.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass, no output.
+  - Changed-path guard versus PR #63 forbidden paths and non-scope paths: pass; forbidden/non-scope path diff produced no output, and `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`.
+  - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-warning...origin/codex/015-study-guide-language-review-risk` with exactly the two expected modified files before commit.
+- Known issues: none introduced. Slice G intentionally kept picture-bound sign wording narrow for similar warning symbols, `figura A/B/C` choices, `zona escolar`, `Cruce de Peatones`, `puente levadizo`, `paso a nivel`, red/yellow flashing signals, and priority-hierarchy tickets. Duplicate placements outside Slice G remain for their assigned future slices.
+- Implementation Agent feedback: none requiring Architect disposition. Slice G found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
 
 ## Known Issues
 
