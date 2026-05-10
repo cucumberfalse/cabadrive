@@ -161,13 +161,13 @@
 - [ ] T127 Add responsive e2e coverage for compact and expanded widths.
 - [ ] T128 Add keyboard/focus e2e coverage for search, filters, source selection, chunk navigation, and view controls.
 - [ ] T129 Add request-monitoring/code-review evidence that no runtime network/PDF/backend/live-AI dependency exists.
-- [x] T130 Run `pnpm run validate:content`.
-- [x] T131 Run `pnpm run test`.
-- [x] T132 Run `pnpm run build`.
+- [ ] T130 Run final-head `pnpm run validate:content`.
+- [ ] T131 Run final-head `pnpm run test`.
+- [ ] T132 Run `pnpm run build`.
 - [ ] T133 Run `pnpm run test:e2e`.
 - [ ] T134 Run `pnpm run preflight`.
-- [x] T135 Run `git diff --check`.
-- [x] T136 Record command output summaries and exact unrelated blockers in Process Memory.
+- [ ] T135 Run final-head `git diff --check`.
+- [ ] T136 Record final-head command output summaries and exact unrelated blockers in Process Memory.
 
 ## Final Whole-Corpus Release Gate
 
@@ -392,3 +392,21 @@
   - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - Initial `pnpm run test` exposed missing local dependencies (`ERR_MODULE_NOT_FOUND` for `typescript`); after `pnpm install --frozen-lockfile`, `pnpm run test` passed: 86 Node tests, 86 pass, 0 fail.
   - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
+- PR #68 review follow-up on 2026-05-10:
+  - Left final-head verification checklist tasks T130, T131, T135, and T136 open; Slice A command results remain historical process evidence only and do not satisfy final feature validation.
+- Main refresh pass on 2026-05-10:
+  - Fetched and merged `origin/main` at `65624107d856653e503e3f03fd1d51da83992984` into `codex/016-primary-sources-section-intake` while preserving PR #68 feature memory and open final-head verification tasks T130, T131, T135, and T136.
+  - Resolved `docs_project/project/feature-inventory.md` by keeping current main learning-content polish wording and PR #68's planned `Источники` reader inventory entry plus official-primary-source boundary note.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 88 Node tests, 88 pass, 0 fail.
+  - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
+  - `git diff --check` passed with no output.
+- Slice B branch update over fresh PR #68 head on 2026-05-10:
+  - Fetched `origin/codex/016-primary-sources-section-intake` at `1b056182d1ffac18c3c36e3db08b5614ac118059`.
+  - Merged the fresh PR #68 branch into `codex/016-primary-sources-schema-validators` while preserving local PR #74 validator fixes.
+  - Resolved the `tasks.md` conflict by keeping PR #68's final-head verification checklist tasks open and preserving PR #74 process-memory evidence.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 21 tests, 21 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 109 Node tests, 109 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
