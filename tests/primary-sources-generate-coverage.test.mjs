@@ -12,6 +12,8 @@ test("article boundary detection accepts official article heading formats", () =
   assert.equal(isArticleLine("ARTICULO 167 quinque.- En caso de condena."), true);
   assert.equal(isArticleLine("ARTICULO 210 quáter. - Será reprimido."), true);
   assert.equal(isArticleLine("ARTICULO 268 (1). - Será reprimido."), true);
+  assert.equal(isArticleLine("ARTICULO 762,- Individualización."), true);
+  assert.equal(isArticleLine("ARTICULO 1536,- Obligaciones del comodatario."), true);
   assert.equal(isArticleLine("ARTÍCULO 1°.- Establécese la entrada en vigencia."), true);
   assert.equal(isArticleLine("Artículo 1°.- Habrá sociedad si una o más personas."), true);
   assert.equal(isArticleLine("Art. 2. El contrato de seguro puede tener por objeto toda clase de riesgos."), true);
@@ -49,4 +51,34 @@ test("pdf page groups keep hierarchy headings inside the current page chunk", ()
     coverage.chunks.some((chunk) => chunk.officialLabel === "CAPÍTULO UNO" || chunk.officialLabel === "ANEXO I"),
     false
   );
+});
+
+test("article boundary detection splits comma-dash official article headings", () => {
+  const coverage = generateDocumentCoverageFromText(
+    {
+      id: "ley-26994-codigo-civil-comercial",
+      title: "Código Civil y Comercial",
+      localPath: "content/official-documents/documents/ley-26994-codigo-civil-comercial.md"
+    },
+    [
+      "# Código Civil y Comercial",
+      "",
+      "ARTICULO 761.- Especificación.",
+      "Texto del artículo 761.",
+      "",
+      "ARTICULO 762,- Individualización. La obligación de dar es de género.",
+      "Texto del artículo 762.",
+      "",
+      "ARTICULO 1536,- Obligaciones del comodatario. Son obligaciones del comodatario:",
+      "Texto del artículo 1536."
+    ].join("\n")
+  );
+
+  const article761 = coverage.chunks.find((chunk) => chunk.officialLabel.startsWith("ARTICULO 761"));
+  const article762 = coverage.chunks.find((chunk) => chunk.officialLabel.startsWith("ARTICULO 762,-"));
+  const article1536 = coverage.chunks.find((chunk) => chunk.officialLabel.startsWith("ARTICULO 1536,-"));
+
+  assert.deepEqual(article761.sourceSpan, { startLine: 3, endLine: 5 });
+  assert.deepEqual(article762.sourceSpan, { startLine: 6, endLine: 8 });
+  assert.deepEqual(article1536.sourceSpan, { startLine: 9, endLine: 10 });
 });
