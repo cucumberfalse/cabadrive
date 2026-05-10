@@ -276,14 +276,18 @@ test("strict mode rejects coverage documents without generated chunks or expecte
 test("rejects generated coverage chunks missing from expectedChunkIds", () => {
   const badCoverage = coverage();
   badCoverage.documents[0].chunks.push({
-    ...badCoverage.documents[0].chunks[0],
-    chunkId: "doc-1--002",
-    order: 2
+    chunkId: "doc-1--extra",
+    officialDocumentId: "doc-1",
+    order: 3,
+    headingPath: ["Doc One"],
+    sourceSpan: { startLine: 3, endLine: 3 },
+    sourceTextSha256: doc1TailHash,
+    sourceFingerprint: `sha256:${doc1TailHash}`
   });
 
   const errors = validate({ coverage: badCoverage, mode: "draft" });
 
-  assert(errors.includes("doc-1: generated coverage chunk doc-1--002 is missing from expectedChunkIds."));
+  assert(errors.includes("doc-1: generated coverage chunk doc-1--extra is missing from expectedChunkIds."));
 });
 
 test("coverage mode validates complete chunk inventory without full learner coverage", () => {

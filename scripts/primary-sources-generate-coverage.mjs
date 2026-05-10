@@ -62,7 +62,7 @@ function markdownHeadingLevel(line) {
 
 export function isArticleLine(line) {
   const normalized = normalizeLine(line);
-  return /^(?:ART[ÍI]CULO|ART\.|Art[íi]culo|Art\.)\s*\d+(?:\s*(?:[º°]|bis|ter|quater|quinquies))?(?:\s*(?:[.)]|\.?[—-])|\s+[A-ZÁÉÍÓÚÑÜ])/u.test(
+  return /^(?:ART[ÍI]CULO|ART\.|Art[íi]culo|Art\.)\s*\d+(?:\s*(?:[º°]|bis|ter|quater|quinquies))?(?:\s*(?:[.):]|\.?[—-])|\s+[A-ZÁÉÍÓÚÑÜ])/u.test(
     normalized
   );
 }
