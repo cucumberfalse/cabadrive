@@ -14,6 +14,7 @@ import { findRepoRoot, parseArgs, readConfig } from "./shared.mjs";
 
 const cleanMergeStates = new Set(["CLEAN", "HAS_HOOKS", "UNSTABLE"]);
 const conflictMergeStates = new Set(["CONFLICTING", "DIRTY", "UNKNOWN", "DRAFT"]);
+const protectedAutoMergePendingStates = new Set(["BLOCKED"]);
 const successValues = new Set(["SUCCESS", "success"]);
 const pendingValues = new Set([
   "EXPECTED",
@@ -108,7 +109,7 @@ export function evaluateFinalizationGates(input = {}) {
   }
 
   if (pr.mergeStateStatus && !cleanMergeStates.has(pr.mergeStateStatus) && !conflictMergeStates.has(pr.mergeStateStatus)) {
-    const mayBePendingProtection = pr.mergeStateStatus === "BLOCKED" && pendingChecks.length > 0 && input.autoMergePending;
+    const mayBePendingProtection = protectedAutoMergePendingStates.has(pr.mergeStateStatus) && pendingChecks.length > 0 && input.autoMergePending;
     if (!mayBePendingProtection) {
       block("protected-branch-state", `GitHub merge state is ${pr.mergeStateStatus}; protected-branch readiness is not clean.`);
     }
@@ -167,7 +168,8 @@ export function evaluateFinalizationGates(input = {}) {
   }
 
   const nonPendingBlockers = blockers.filter((entry) => entry.code !== "pending-required-check");
-  if (pendingChecks.length > 0 && nonPendingBlockers.length === 0 && input.autoMergePending) {
+  const protectedPendingChecksBlockMerge = protectedAutoMergePendingStates.has(pr.mergeStateStatus);
+  if (pendingChecks.length > 0 && nonPendingBlockers.length === 0 && input.autoMergePending && protectedPendingChecksBlockMerge) {
     return {
       ready: false,
       action: "enable-auto-merge",

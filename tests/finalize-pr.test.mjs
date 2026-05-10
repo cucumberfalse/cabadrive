@@ -248,6 +248,31 @@ test("pending required checks may enable protected auto-merge only with explicit
   assert.deepEqual(result.pendingChecks, ["guard"]);
 });
 
+test("pending required checks stay blocked with auto-merge flag when GitHub reports a clean merge state", () => {
+  const checks = requiredChecks.map((name) => ({
+    name,
+    status: name === "guard" ? "QUEUED" : "COMPLETED",
+    conclusion: name === "guard" ? null : "SUCCESS"
+  }));
+
+  const result = evaluateFinalizationGates(successfulInput({
+    autoMergePending: true,
+    checks,
+    pr: {
+      number: 12,
+      headSha: "abc123",
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    }
+  }));
+
+  assert.equal(result.ready, false);
+  assert.equal(result.action, "block");
+  assert.deepEqual(result.pendingChecks, ["guard"]);
+  assert.ok(result.blockers.some((blocker) => blocker.code === "pending-required-check"));
+});
+
 test("unresolved review state and blocking findings block finalization", () => {
   const result = evaluateFinalizationGates(successfulInput({
     reviewThreads: [{ isResolved: false, comments: [] }],

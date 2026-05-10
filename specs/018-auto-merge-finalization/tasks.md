@@ -40,6 +40,7 @@
 - Sixth implementation update evidence: after `origin/main` advanced to `870c7f9514404b36cf75954c3c39814770495342`, current review-fix Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with no conflicts, preserving this scoped review fix and adding the mainline UI UX learning overlays content.
 - Seventh implementation update evidence: after `origin/main` advanced to `a66320a50c7d04721b929880d4f01dc6feb28a24`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped review fix and adding the mainline learning-polish process-memory closure content.
 - Eighth implementation update evidence: after `origin/main` advanced again to `90a11d943880606586d4bc02aa7774a8d7a73f3d`, current review-fix Implementation Agent ran `git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with no conflicts, preserving this scoped review fix and adding the mainline feature-009 process-memory closure content.
+- Ninth implementation update evidence: after `origin/main` advanced to `55d196a8762fc156520f045a48c0cb25ee83d569`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped auto-merge-pending gate fix and adding the mainline Docker smoke isolation closure content.
 
 ## Decisions
 
@@ -66,6 +67,7 @@
 - Current P1 process-evidence implementation decision: post-effective-head verification treats well-formed `Cycle PR Set` and `Final Validation Evidence` additions in `tasks.md` as allowed process evidence, while arbitrary peer-section edits and malformed process-evidence lines still block finalization.
 - Current P2 review-fix implementation decision: PR conversation comments fetched through GraphQL now request comment connection `pageInfo`. If `comments(last: 100)` is truncated, the helper fails closed with a `review-pagination` blocking finding so older current-head Claude block outcomes cannot be silently dropped.
 - Current P2 disposition-parsing implementation decision: Implementation Agent feedback disposition markers count only when their disposition text contains final wording such as `not needed`, `accepted`, `resolved`, `disposed`, `addressed`, `superseded`, or `no unresolved`, and contains no open-state wording such as `pending`, `unresolved`, `open`, `needs review`, or `requires disposition`.
+- Current P2 auto-merge-pending gate implementation decision: `--auto-merge-pending` may return `enable-auto-merge` for pending configured checks only when GitHub reports a protected-blocking merge state. At this time the helper treats `BLOCKED` as the only such state; clean/otherwise mergeable states such as `CLEAN`, `HAS_HOOKS`, and `UNSTABLE` keep pending configured checks as blockers.
 
 ## Dead Ends
 
@@ -184,10 +186,18 @@
 - `pnpm run check:repo`: passed after feedback disposition parsing review fix; "Repository baseline check passed."
 - `node scripts/check-feature-memory.mjs --worktree`: passed after feedback disposition parsing review fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `pnpm run preflight`: passed after feedback disposition parsing review fix; feature-memory gate, repo baseline, content validation, 153 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BfSagyH6.js` but completed successfully.
+- `node --test tests/finalize-pr.test.mjs`: passed after auto-merge-pending protected-state gate fix; 38 tests passed, including pending configured check plus `--auto-merge-pending` staying blocked when GitHub reports `CLEAN` and enabling auto-merge when GitHub reports `BLOCKED`.
+- `git fetch origin --prune && git merge --autostash --no-edit origin/main`: passed after auto-merge-pending protected-state gate fix; merged latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569` with no conflicts and reapplied the scoped working tree.
+- `node --check scripts/finalize-pr.mjs`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`.
+- `git diff --check`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`; no whitespace errors reported.
+- `node --test tests/finalize-pr.test.mjs`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`; 38 tests passed.
+- `pnpm run check:repo`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `pnpm run preflight`: passed after merging latest `origin/main` `55d196a8762fc156520f045a48c0cb25ee83d569`; feature-memory gate, repo baseline, content validation, 158 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BfSagyH6.js` but completed successfully.
 
 ## Cycle PR Set
 
-- Purpose: address PR #80 AI review blockers for full process evidence and paginated PR conversation comments; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `bb23eb2d8f6f053fe2736dc506a122194b40a8f5`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
+- Purpose: address PR #80 AI review P2 auto-merge-pending protected-state gate; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `a4561a33bc74c239749eba74bb606ebd4ebeedea`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
 
 ## Final Validation Evidence
 
