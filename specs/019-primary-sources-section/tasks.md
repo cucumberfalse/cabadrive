@@ -97,6 +97,9 @@
 - [x] D4-001 Translate and simplify all 31 chunks in the DNRPA registros content batch.
 - [x] D4-002 Add per-document learner, QA, and search shards for `dnrpa-registros-propiedad-automotor`.
 - [x] D4-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
+- [x] D5-001 Translate and simplify all 28 chunks in the Decreto 779/1995 core traffic-law content batch.
+- [x] D5-002 Add per-document learner, QA, and search shards for `decreto-779-1995-reglamentario-ley-24449`.
+- [x] D5-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
 - [ ] T063 For each batch, preserve numbers, dates, legal obligations, exceptions, penalties, source names, and article references in both Russian layers.
@@ -294,6 +297,18 @@
 - D4 terminology preserves DNRPA, RUNA, RUDAC, RAC, cédula, dominio, patente/chapa patente, Registros Seccionales, procedure/service labels, contact details, `1° de Septiembre`, `0KM`, `Mi Argentina`, and portal-currentness limitations.
 - Completing D4 closes the assigned vehicle/document/admin grouping in T071: VTV, Ley 6631, vehicle/cédula/chapa, DNRPA, and ANSV learner-source batches now have approved shards. Whole-corpus translation, simplification, QA, and final strict/release gates remain open for core law, signage/manual, and large legal-duty batches.
 - D4 does not edit `content/official-documents/**`, UI files, coverage generator files, or official archive files.
+
+- Slice D5 Decreto 779/1995 core traffic-law content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-core-traffic-law` on branch `codex/019-primary-sources-content-batch-core-traffic-law`.
+- Branch was synced by fast-forward to `origin/codex/019-primary-sources-content-batch-vtv-siniestros` before editing, preserving the assigned feature branch.
+- Added reviewed learner, QA, and search shards for 1 official document and 28 chunks:
+  - `decreto-779-1995-reglamentario-ley-24449`: 28 chunks.
+- For every D5 chunk, the learner shard copies `chunkId`, `officialDocumentId`, order, heading path, official label, chunking strategy, source span, source text hash, source fingerprint, and exact `originalSpanish` from the current archive/coverage inventory.
+- Full Russian and simple Russian text were reviewed against the Spanish archive spans and `content/primary-sources/terminology.ru.md`; QA shards mark translation and simplification QA as `approved` with `checkedAt: "2026-05-10"`.
+- D5 search shards add one entry per translated chunk with `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish` text fields.
+- D5 terminology preserves Decreto 779/95, Ley 24.449, annex labels A/B/C/G/I/J/K/L/LL/M/N/Ñ/O/P/R/S/T/U/2, amendment/effective-date notes, Infoleg notes, the National Road Safety System, competent national authorities, province-adherence language, and implementation exceptions for authorized experimental vehicle-technology tests.
+- Batch QA/lint evidence before final verification: custom batch lint passed for 28 chunks with nonempty Russian fields, QA approvals, `checkedAt: "2026-05-10"`, search references, absence of simplified Spanish fields, and archive-span/hash matches; `npm run validate:content` passed in draft/default mode.
+- No mass translation beyond this assigned document was attempted. Whole-corpus translation, simplification, QA, and final strict/release gates remain open for later D-H batches.
+- D5 does not edit `content/official-documents/**`, UI files, coverage generator files, root primary-source manifests, or unrelated batch files.
 
 - Slice D1 small admin/study/safety content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-admin-small` on branch `codex/019-primary-sources-content-batch-admin-small`.
 - Added reviewed learner, QA, and search shards for 4 official documents and 21 chunks:
@@ -766,3 +781,17 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- Slice D5 Decreto 779/1995 core traffic-law content batch verification on 2026-05-10:
+  - Custom D5 batch lint passed for 28 chunks: Russian fields are nonempty, no draft/placeholder markers in Russian fields, QA status is `approved`, all QA records have `checkedAt: "2026-05-10"`, search entries reference `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish`, no simplified Spanish fields were found, and `originalSpanish`, `sourceTextSha256`, and `sourceFingerprint` match current archived Markdown line spans.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `decreto-779-1995-reglamentario-ley-24449` has 28 `legal-articles` chunks.
+  - Learner primary-source coverage after this batch on its original VTV/siniestros base: 163 learner chunks total, 162 reviewed content-batch chunks, and 162 chunks with both translation and simplification QA approved. The remaining `ley-24449-transito-seguridad-vial` learner chunk is the existing draft placeholder.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed as the actual primary-source coverage mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - First `npm test` attempt failed because the fresh worktree had no installed `node_modules` and `typescript` was unavailable to `tests/domain.test.mjs`. `pnpm install --frozen-lockfile` then completed using the existing lockfile with no package metadata changes.
+  - Re-run `npm test` passed: 153 tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+  - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.
