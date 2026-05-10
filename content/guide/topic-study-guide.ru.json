@@ -18071,7 +18071,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "b099d3658b50fc131acac0c81005a5f8bb615c672eb46d40489ffb213f25d03d",
+        "sourceFingerprint": "799cf02750cd05627ba48dd96cdab3ee48011da061be89c74aa2a7e83e50a451",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -18276,7 +18276,7 @@
             {
               "answerId": "b-fallback-298-a2",
               "verdict": "incorrect",
-              "explanationRu": "Cruce exclusivo de vehículos de emergencia - другая идея. Здесь нет отдельного проезда для экстренных машин; билет показывает выделенную полосу для bus/colectivo."
+              "explanationRu": "Cruce exclusivo de vehículos de emergencia - другая идея. Здесь нет отдельного проезда для экстренных машин; билет показывает выделенную полосу для автобуса/colectivo."
             },
             {
               "answerId": "b-fallback-298-a3",

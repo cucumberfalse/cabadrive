@@ -695,6 +695,7 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - Changed-path guard after this process-memory update: pass; changed paths were limited to `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, with no PR #63 forbidden paths, validators/tests/docs/package/product files, or other worktrees touched.
 - Slice H PR #82 review follow-up known issues: none introduced.
 - Slice H PR #82 review follow-up Implementation Agent feedback: none requiring Architect disposition.
+- Slice H PR #82 P3 style follow-up addressed: in `public-transport-and-exclusive-lanes`, `b-fallback-298-a2` now says `автобуса/colectivo` instead of `bus/colectivo`; only that rendered wording and the topic `difficultyMeta.sourceFingerprint` changed, from `b099d3658b50fc131acac0c81005a5f8bb615c672eb46d40489ffb213f25d03d` to `799cf02750cd05627ba48dd96cdab3ee48011da061be89c74aa2a7e83e50a451`.
 
 ## Known Issues
 
