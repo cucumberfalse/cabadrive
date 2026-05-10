@@ -4,6 +4,8 @@
 
 - Source request: `feature-request.md`
 - Intake assumptions or open questions carried into this spec: `[list or "none"]`
+- Orchestrator routing context: `[Orchestrator-first entry, Analyst handoff branch/worktree, and clarification relay summary.]`
+- Parallel-work constraints: `[Known isolated worktree/branch/PR expectations and preservation warnings.]`
 
 ## Goal
 
@@ -36,6 +38,7 @@ As a `[user]`, I want `[capability]`, so that `[value]`.
 ## Requirements
 
 - FR-001: `[Functional requirement]`
+- FR-XXX: `If this is repository-changing process work, preserve Orchestrator-first routing, Analyst-through-Orchestrator clarification, and role boundaries.`
 
 ## Success Criteria
 
@@ -50,3 +53,4 @@ As a `[user]`, I want `[capability]`, so that `[value]`.
 - Implementation requirements: `[Constraints the Implementation Agent must follow.]`
 - Review requirements: `[What Review Agent must verify, including workflow compliance when relevant.]`
 - Test/verification requirements: `[Commands, checks, screenshots, or evidence expected before completion.]`
+- Handoff and blocker requirements: `[How post-Analyst assumptions, Implementation Agent feedback, Architect dispositions, blocker exceptions, and merge-owner rules are handled.]`

@@ -4,7 +4,9 @@
 
 ## SENAR Done Gate
 
+- [ ] Repository-changing work entered through Orchestrator; Orchestrator invoked Analyst first when no current `feature-request.md` existed and did not directly edit repository files.
 - [ ] Manual author/review check: Analyst intake artifact `feature-request.md` is present, or legacy/no-intake reason is recorded in `tasks.md`. This item is not currently enforced by `pnpm run preflight`, CI, or `scripts/check-feature-memory.mjs`.
+- [ ] Analyst clarification, if needed, was relayed through Orchestrator; otherwise intake records why no clarification was needed.
 - [ ] Feature memory names the goal and scope.
 - [ ] Every acceptance criterion has evidence in the PR, plan, or linked checks.
 - [ ] At least one negative scenario is covered or explicitly waived.
@@ -15,6 +17,7 @@
 ## Workflow Scope
 
 - [ ] This PR is one task slice: one isolated worktree, one branch, and one PR.
+- [ ] Orchestrator warned assigned subagents that parallel agents may be active and existing dirty diffs, branches, commits, PRs, and process memory must be preserved.
 - [ ] Changes are limited to the assigned feature memory and scoped files; unrelated work is deferred.
 - [ ] Role boundaries were preserved: Orchestrator did not directly edit repo files, and agents did not switch roles mid-task.
 - [ ] Required review fixes, source prerequisites, metadata fixes, and final-guard fixes are split into separate PRs when separation lowers risk or clarifies gates.

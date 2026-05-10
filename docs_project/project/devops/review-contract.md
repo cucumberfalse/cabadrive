@@ -14,11 +14,21 @@ below.
 
 Reviewers check role boundaries in addition to code behavior:
 
+- Repository-changing work must enter through Orchestrator by default, and
+  Orchestrator must invoke Analyst first when no current `feature-request.md`
+  exists.
 - Orchestrator must not directly edit repository files. File changes must come
   from the role-appropriate subagent.
+- Analyst requirement clarification must be relayed through Orchestrator.
+  Analyst is the only normal-flow role that may initiate user requirement
+  clarification; after Analyst handoff, later roles use recorded assumptions,
+  Implementation Agent feedback, or documented blocker exceptions.
 - Agents must not switch roles mid-task. Work outside the current role must be
   rerouted by Orchestrator.
 - One task slice must map to one isolated worktree, one branch, and one PR.
+- Orchestrator assignment should warn subagents that parallel agents may be
+  active and require preservation of existing dirty diffs, branches, commits,
+  PRs, and process memory.
 - Implementation PRs must stay inside the assigned feature memory and must not
   mix unrelated changes.
 - Blocking Implementation Agent feedback must be either resolved in scope or
@@ -40,7 +50,12 @@ outdated, or still blocking before merge.
 
 No-finding summaries satisfy the review gate only for the current PR head and do
 not replace required checks, merge-conflict checks, feature-memory evidence,
-local guard evidence, or manual review of the SENAR done gate.
+local guard evidence, Orchestrator-first routing evidence, Analyst
+clarification-relay evidence, parallel-work isolation evidence, or manual
+review of the SENAR done gate. Explicit user authorization for Orchestrator
+merge removes only the need to ask again; it does not remove any merge-readiness
+gate. A human remains the default final merge owner when no such authorization
+exists.
 
 ## Codex
 
