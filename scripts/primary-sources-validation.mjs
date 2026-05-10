@@ -7,6 +7,7 @@ const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const QA_STATUSES = new Set(["draft", "reviewed", "approved"]);
 const STRICT_MODES = new Set(["strict", "final", "release"]);
+const COVERAGE_ONLY_MODES = new Set(["coverage", "coverage-only", "inventory"]);
 const FORBIDDEN_SPANISH_SIMPLIFICATION_PATHS = [
   "simplified-spanish",
   "simple-spanish",
@@ -246,35 +247,39 @@ export function validatePrimarySources({
 } = {}) {
   const errors = [];
   const strictMode = STRICT_MODES.has(mode);
+  const coverageOnlyMode = COVERAGE_ONLY_MODES.has(mode);
+  const requireCompleteCoverage = strictMode || coverageOnlyMode;
 
   if (!requireObject(errors, manifest, "official documents manifest")) return errors;
   if (!requireArray(errors, manifest.entries, "official documents manifest entries")) return errors;
-  requireObject(errors, corpus, "primary sources corpus");
+  if (!coverageOnlyMode) requireObject(errors, corpus, "primary sources corpus");
   requireObject(errors, coverage, "primary sources coverage");
-  requireObject(errors, qa, "primary sources QA");
-  requireObject(errors, searchIndex, "primary sources search index");
+  if (!coverageOnlyMode) requireObject(errors, qa, "primary sources QA");
+  if (!coverageOnlyMode) requireObject(errors, searchIndex, "primary sources search index");
 
-  if (corpus?.schema !== "primary-sources-learner-corpus.v1") {
-    errors.push("primary sources corpus schema must be primary-sources-learner-corpus.v1.");
-  }
-  if (corpus?.sectionPath !== "content/primary-sources") {
-    errors.push("primary sources corpus sectionPath must be content/primary-sources.");
-  }
-  if (corpus?.locale !== "ru") errors.push("primary sources corpus locale must be ru.");
-  if (isInsidePath(corpus?.sectionPath, "content/official-documents")) {
-    errors.push("primary sources corpus sectionPath must not be under content/official-documents.");
-  }
-  for (const learnerPath of learnerContentPaths) {
-    if (isInsidePath(learnerPath, "content/official-documents")) {
-      errors.push(`${learnerPath} must not store learner Russian content under content/official-documents.`);
+  if (!coverageOnlyMode) {
+    if (corpus?.schema !== "primary-sources-learner-corpus.v1") {
+      errors.push("primary sources corpus schema must be primary-sources-learner-corpus.v1.");
     }
+    if (corpus?.sectionPath !== "content/primary-sources") {
+      errors.push("primary sources corpus sectionPath must be content/primary-sources.");
+    }
+    if (corpus?.locale !== "ru") errors.push("primary sources corpus locale must be ru.");
+    if (isInsidePath(corpus?.sectionPath, "content/official-documents")) {
+      errors.push("primary sources corpus sectionPath must not be under content/official-documents.");
+    }
+    for (const learnerPath of learnerContentPaths) {
+      if (isInsidePath(learnerPath, "content/official-documents")) {
+        errors.push(`${learnerPath} must not store learner Russian content under content/official-documents.`);
+      }
+    }
+    validateLearnerRussianPaths(errors, corpus, "primary sources corpus");
+    validateLearnerRussianPaths(errors, qa, "primary sources QA");
+    validateNoForbiddenSpanishSimplification(errors, corpus, "primary sources corpus");
+    validateNoForbiddenSpanishSimplification(errors, qa, "primary sources QA");
+    validateNoForbiddenSpanishSimplification(errors, searchIndex, "primary sources search index");
   }
-  validateLearnerRussianPaths(errors, corpus, "primary sources corpus");
-  validateLearnerRussianPaths(errors, qa, "primary sources QA");
-  validateNoForbiddenSpanishSimplification(errors, corpus, "primary sources corpus");
   validateNoForbiddenSpanishSimplification(errors, coverage, "primary sources coverage");
-  validateNoForbiddenSpanishSimplification(errors, qa, "primary sources QA");
-  validateNoForbiddenSpanishSimplification(errors, searchIndex, "primary sources search index");
 
   const manifestEntryById = new Map();
   const manifestIds = [];
@@ -287,7 +292,7 @@ export function validatePrimarySources({
 
   const corpusDocumentById = new Map();
   const corpusChunksById = new Map();
-  for (const document of asArray(corpus?.documents)) {
+  for (const document of coverageOnlyMode ? [] : asArray(corpus?.documents)) {
     if (!isPlainObject(document)) {
       errors.push("primary sources corpus document must be an object.");
       continue;
@@ -370,11 +375,11 @@ export function validatePrimarySources({
     }
     requireArray(errors, document.expectedChunkIds, `${documentId}.expectedChunkIds`);
     requireArray(errors, document.chunks, `${documentId}.chunks`);
-    if (strictMode && Array.isArray(document.expectedChunkIds) && document.expectedChunkIds.length === 0) {
-      errors.push(`${documentId}.expectedChunkIds must include at least one expected chunk ID in strict mode.`);
+    if (requireCompleteCoverage && Array.isArray(document.expectedChunkIds) && document.expectedChunkIds.length === 0) {
+      errors.push(`${documentId}.expectedChunkIds must include at least one expected chunk ID in ${mode} mode.`);
     }
-    if (strictMode && Array.isArray(document.chunks) && document.chunks.length === 0) {
-      errors.push(`${documentId}.chunks must include at least one generated coverage chunk in strict mode.`);
+    if (requireCompleteCoverage && Array.isArray(document.chunks) && document.chunks.length === 0) {
+      errors.push(`${documentId}.chunks must include at least one generated coverage chunk in ${mode} mode.`);
     }
 
     const manifestEntry = manifestEntryById.get(document.officialDocumentId);
@@ -468,12 +473,12 @@ export function validatePrimarySources({
     if (strictMode && !corpusDocumentById.has(manifestId)) {
       errors.push(`${manifestId}: missing learner document coverage in strict mode.`);
     }
-    if (strictMode && !coverageDocumentById.has(manifestId)) {
-      errors.push(`${manifestId}: missing generated chunk coverage in strict mode.`);
+    if (requireCompleteCoverage && !coverageDocumentById.has(manifestId)) {
+      errors.push(`${manifestId}: missing generated chunk coverage in ${mode} mode.`);
     }
   }
 
-  for (const [documentId, document] of corpusDocumentById) {
+  for (const [documentId, document] of coverageOnlyMode ? [] : corpusDocumentById) {
     const coverageDocument = coverageDocumentById.get(documentId);
     if (!coverageDocument) {
       errors.push(`${documentId}: learner document is missing generated chunk coverage.`);
@@ -496,7 +501,7 @@ export function validatePrimarySources({
   }
 
   const qaChunksById = new Map();
-  for (const document of asArray(qa?.documents)) {
+  for (const document of coverageOnlyMode ? [] : asArray(qa?.documents)) {
     if (!isPlainObject(document)) {
       errors.push("primary sources QA document must be an object.");
       continue;
@@ -523,12 +528,14 @@ export function validatePrimarySources({
     }
   }
 
-  for (const chunkId of corpusChunksById.keys()) {
-    if (!qaChunksById.has(chunkId)) errors.push(`${chunkId}: learner chunk is missing QA metadata.`);
+  if (!coverageOnlyMode) {
+    for (const chunkId of corpusChunksById.keys()) {
+      if (!qaChunksById.has(chunkId)) errors.push(`${chunkId}: learner chunk is missing QA metadata.`);
+    }
   }
 
   const searchProjectionKeys = new Set();
-  for (const entry of asArray(searchIndex?.entries)) {
+  for (const entry of coverageOnlyMode ? [] : asArray(searchIndex?.entries)) {
     if (!isPlainObject(entry)) {
       errors.push("primary sources search entry must be an object.");
       continue;

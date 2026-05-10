@@ -22,18 +22,20 @@
       "exactTextValidationStatus": "pending",
       "chunks": [
         {
-          "chunkId": "ley-24449-transito-seguridad-vial--draft-001",
+          "chunkId": "ley-24449-transito-seguridad-vial--ley-24449-001",
           "officialDocumentId": "ley-24449-transito-seguridad-vial",
           "order": 1,
-          "headingPath": ["Ley 24449"],
+          "headingPath": [
+            "Ley 24449"
+          ],
           "officialLabel": "Titulo",
-          "originalSpanish": "# Ley 24449\n\nHONORABLE CONGRESO DE LA NACION ARGENTINA\n\nLEY DE TRANSITO",
+          "originalSpanish": "# Ley 24449\n\nHONORABLE CONGRESO DE LA NACION ARGENTINA\n\nLEY DE TRANSITO\n\nREGIMEN LEGAL\n\nSanción: 23-12-1994\n\nPublicada en el Boletín Oficial: 10-02-1995\n\nTexto actualizado de la norma\n\nNormativa\n\nLey Nº 24.449\n\nPrincipios Básicos. Coordinación Federal. Consejo\nFederal de Seguridad Vial Registro Nacional de Antecedentes del\nTránsito. Usuario de la Vía Pública. Capacitación. Licencia de\nConductor. Vía Pública. Vehículo. Modelos Nuevos. Parque Usado.\nCirculación. Reglas Generales. Reglas de Velocidad. Reglas para\nVehículos de Transporte. Reglas para Casos Especiales. Accidentes.\nBases para el Procedimiento. Principios Procesales. Medidas Cautelares.\nRecursos Judiciales. Régimen de Sanciones. Principios Generales.\nSanciones. Extinción de Acciones y Sanciones. Norma supletoria.\nDisposiciones Transitorias y Complementarias.\n\nSancionada: Diciembre 23 de 1994.\n\nPromulgada Parcialmente: Febrero 6 de 1995.\n\nVer Antecedentes Normativos\n\nEl Senado y Cámara de Diputados de la Nación Argentina reunidos en Congreso, etc., sancionan con fuerza de Ley\n",
           "fullTranslationRu": "Черновой подготовительный перевод: Закон 24449, Национальный конгресс Аргентинской Республики, закон о дорожном движении.",
           "simpleRu": "Черновой подготовительный текст: это начало закона Аргентины о дорожном движении.",
-          "sourceFingerprint": "sha256:b8957a98c87f7cfb174d01df3164416f1e95c621966c8daec6c47bb4248a9c97",
+          "sourceFingerprint": "sha256:0ef933085fd0ad235e915397aea2045643cf02f2952c7259f772782bb4518d7c",
           "sourceSpan": {
             "startLine": 1,
-            "endLine": 5
+            "endLine": 37
           }
         }
       ]

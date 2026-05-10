@@ -244,6 +244,45 @@ test("rejects generated coverage chunks missing from expectedChunkIds", () => {
   assert(errors.includes("doc-1: generated coverage chunk doc-1--002 is missing from expectedChunkIds."));
 });
 
+test("coverage mode validates complete chunk inventory without full learner coverage", () => {
+  const coverageOnly = coverage();
+  coverageOnly.documents.push({
+    officialDocumentId: "doc-2",
+    archiveLocalPath: "content/official-documents/documents/doc-2.md",
+    archiveSha256: doc2Hash,
+    expectedChunkIds: ["doc-2--001"],
+    chunks: [
+      {
+        chunkId: "doc-2--001",
+        officialDocumentId: "doc-2",
+        order: 1,
+        headingPath: ["Doc Two"],
+        sourceSpan: { startLine: 1, endLine: 2 },
+        sourceTextSha256: doc2SpanHash,
+        sourceFingerprint: `sha256:${doc2SpanHash}`
+      }
+    ]
+  });
+
+  assert.deepEqual(
+    validate({
+      manifest: manifest({ includeDoc2: true }),
+      coverage: coverageOnly,
+      mode: "coverage"
+    }),
+    []
+  );
+});
+
+test("coverage mode rejects missing manifest chunk inventory", () => {
+  const errors = validate({
+    manifest: manifest({ includeDoc2: true }),
+    mode: "coverage"
+  });
+
+  assert(errors.includes("doc-2: missing generated chunk coverage in coverage mode."));
+});
+
 test("strict mode rejects learner corpus documents without learner chunks", () => {
   const badCorpus = corpus();
   badCorpus.documents[0].chunks = [];

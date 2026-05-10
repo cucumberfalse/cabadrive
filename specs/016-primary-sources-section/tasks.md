@@ -67,15 +67,15 @@
 
 ## Slice C: Corpus Inventory And Chunking
 
-- [ ] T051 Generate or author a complete document inventory for every implementation-time manifest entry.
-- [ ] T052 Generate or author stable chunk IDs for every official document.
-- [ ] T053 Preserve official ordering and heading/article/section labels where available.
-- [ ] T054 Record line spans, heading paths, hashes, or structural fingerprints for each chunk.
-- [ ] T055 Record special chunking decisions for weakly structured pages or lossy PDF/manual conversions.
-- [ ] T056 Validate every manifest entry produces at least one source chunk.
-- [ ] T057 Validate every chunk maps back to an archived Markdown document.
-- [ ] T058 Record total chunk count and per-document chunk counts in Process Memory.
-- [ ] T059 Confirm no chunking step edits or rewrites official archive text.
+- [x] T051 Generate or author a complete document inventory for every implementation-time manifest entry.
+- [x] T052 Generate or author stable chunk IDs for every official document.
+- [x] T053 Preserve official ordering and heading/article/section labels where available.
+- [x] T054 Record line spans, heading paths, hashes, or structural fingerprints for each chunk.
+- [x] T055 Record special chunking decisions for weakly structured pages or lossy PDF/manual conversions.
+- [x] T056 Validate every manifest entry produces at least one source chunk.
+- [x] T057 Validate every chunk maps back to an archived Markdown document.
+- [x] T058 Record total chunk count and per-document chunk counts in Process Memory.
+- [x] T059 Confirm no chunking step edits or rewrites official archive text.
 
 ## Slices D-H: Translation And Simplification Content Batches
 
@@ -321,6 +321,55 @@
 - Strict/final validation now requires every learner corpus chunk to have a matching search projection keyed by the same official document ID and chunk ID, so translated and QA-approved chunks cannot pass the release gate while missing from the local source reader/search index.
 - Added a focused regression test proving an otherwise complete strict fixture with `searchIndex.entries: []` fails validation.
 
+### Slice C Implementation Notes
+
+- Slice C ran in assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-chunks` on branch `codex/016-primary-sources-chunk-inventory`, stacked on PR #74.
+- Implementation started only after re-reading repository memory, official archive governance, learner primary-source governance, feature memory, current manifest, and the Slice B primary-source validator.
+- Parallel-agent warning was part of the Slice C assignment. This slice preserved unrelated work and did not edit `content/official-documents/`.
+- Added `scripts/primary-sources-generate-coverage.mjs` to derive `content/primary-sources/primary-sources.coverage.json` from the official manifest and current archived Markdown.
+- Generated coverage now includes all 19 implementation-time manifest entries and 5,277 generated chunks.
+- Each generated coverage chunk has deterministic non-draft `chunkId`, `officialDocumentId`, positive `order`, `headingPath`, `sourceSpan`, `sourceTextSha256`, and `sourceFingerprint` in `sha256:<sourceTextSha256>` format.
+- Each coverage document has `expectedChunkIds` exactly matching its generated `chunks`, archive path, current archive SHA-256, and a `chunkingDecision` with strategy and rationale.
+- Retargeted the existing single draft learner placeholder from `ley-24449-transito-seguridad-vial--draft-001` to generated chunk `ley-24449-transito-seguridad-vial--ley-24449-001` so draft validation remains aligned with generated coverage. The Russian text and QA remain explicitly draft placeholders; no translation batch was performed.
+- Added primary-source validation mode `coverage` / `coverage-only` / `inventory` to prove complete manifest chunk inventory without requiring final Russian translation, simplification, or approved QA. Strict/final mode remains unchanged for final release translation/QA gates.
+- Tightened coverage validation so `expectedChunkIds` must match generated coverage chunks in both directions.
+- Chunking strategy counts:
+  - `legal-articles`: 4,129 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
+  - `dotted-code-sections`: 665 chunks for CABA Ley 2148.
+  - `annex-numbered-sections`: 60 chunks for Decreto 779 Anexo L.
+  - `markdown-heading-sections`: 98 chunks across VTV, automotor/cédula, DNRPA, ANSV news, and chapa patente service pages.
+  - `pdf-page-groups`: 244 chunks for the GCBA four-wheel manual.
+  - `bounded-paragraph-groups`: 21 chunks for weakly structured GCBA siniestros, material de estudio, and Estrellas Amarillas pages.
+- Per-document chunk counts:
+  - `ley-24449-transito-seguridad-vial`: 136.
+  - `decreto-779-1995-reglamentario-ley-24449`: 28.
+  - `decreto-779-1995-anexo-l-senalizacion-vial-uniforme`: 60.
+  - `ley-2148-caba-codigo-transito-transporte`: 665.
+  - `ley-6631-caba-vtv-modificatoria-ley-2265`: 19.
+  - `gcba-vtv-tramite-current`: 36.
+  - `argentina-vehiculos-automotor-cedulas`: 13.
+  - `dnrpa-registros-propiedad-automotor`: 31.
+  - `ansv-cedula-azul-no-exigible`: 5.
+  - `disposicion-29-2024-cedulas-identificacion`: 18.
+  - `disposicion-343-2024-autorizacion-cedula-digital`: 9.
+  - `argentina-duplicado-chapa-patente-automotor`: 13.
+  - `gcba-guia-practica-siniestros-viales`: 14.
+  - `gcba-material-estudio-examen-teorico`: 4.
+  - `gcba-manual-vehiculo-4-ruedas-2023`: 244.
+  - `gcba-mapa-estrellas-amarillas`: 3.
+  - `ley-11179-codigo-penal`: 516.
+  - `ley-26994-codigo-civil-comercial`: 3,261.
+  - `ley-17418-seguros`: 202.
+- Chunking decisions:
+  - Laws and legal codes use article boundaries and retain hierarchy labels such as annex, book, title, chapter, and section in heading paths where detectable.
+  - CABA Ley 2148 uses dotted code section numbers because those are the stable official structure preserved in the Markdown.
+  - Decreto 779 Anexo L uses chapter and numbered signal/section boundaries because the HTML conversion preserves numbered annex sections better than Markdown headings.
+  - Service and news pages use Markdown heading sections generated from official page structure.
+  - The GCBA four-wheel manual uses detected PDF page groups because the source conversion preserves page numbers more reliably than semantic headings.
+  - Weakly structured converted pages use bounded paragraph groups with source line spans and hashes.
+- No official archive Markdown or manifest files were edited in Slice C.
+- Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to `987e712`, this worktree stashed Slice C edits, fetched the updated base, fast-forwarded from `641fdfa` to `987e712`, reapplied Slice C edits, and resolved the only conflict in this process-memory file by retaining both Slice B hardening notes and Slice C notes.
+
 ### Implementation Agent Feedback
 
 - None yet.
@@ -437,3 +486,13 @@
   - `pnpm run test` passed: 134 Node tests, 134 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
+- Slice C focused verification on 2026-05-10:
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,277 chunks, with per-document counts recorded in Slice C Implementation Notes.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage node scripts/validate-content.mjs` passed. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node --test tests/primary-sources-validation.test.mjs` passed after updating to base `987e712`: 20 tests, 20 pass, 0 fail.
+  - `node scripts/validate-content.mjs` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run validate:content` passed after updating to base `987e712` in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed after updating to base `987e712`. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed after updating to base `987e712`: 92 Node tests, 92 pass, 0 fail.
+  - `git diff --check` passed after updating to base `987e712` with no output.
+  - Orchestrator build verification after Slice C: first `pnpm run build` attempt failed because the fresh worktree had no `node_modules` and `vite` was unavailable. `pnpm install --frozen-lockfile` then completed using the existing lockfile and reused packages without package metadata changes. A second `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
