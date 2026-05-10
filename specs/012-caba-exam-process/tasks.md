@@ -134,10 +134,10 @@
 
 ## PR Readiness
 
-- [ ] T106 Confirm implementation PR has a single assigned slice.
-- [ ] T107 Confirm `tasks.md` process memory is current before review.
-- [ ] T108 Confirm any Implementation Agent feedback items are recorded for Architect disposition.
-- [ ] T109 Confirm no out-of-scope product/content/source changes are included.
+- [x] T106 Confirm implementation PR has a single assigned slice.
+- [x] T107 Confirm `tasks.md` process memory is current before review.
+- [x] T108 Confirm any Implementation Agent feedback items are recorded for Architect disposition.
+- [x] T109 Confirm no out-of-scope product/content/source changes are included.
 - [ ] T110 Confirm no blocking review findings remain.
 - [ ] T111 Confirm required checks are green after push/PR.
 - [ ] T112 Confirm the PR has no unresolved merge conflicts.
@@ -221,6 +221,7 @@
 - `pnpm run test:e2e` passed on 2026-05-10: 18 Playwright tests passed across chromium and mobile projects, including process guide reachability, scope/status/source/link/glossary rendering, no external requests, no remote images, and no PDF viewer.
 - `pnpm run preflight` passed on 2026-05-10: feature-memory gate, repo baseline, content validation, node tests, build, and e2e all passed.
 - `git diff --check` passed on 2026-05-10 with no whitespace errors.
+- Draft PR opened on 2026-05-10: `https://github.com/cucumberfalse/cabadrive/pull/72`.
 
 ### Implementation Agent Feedback
 
