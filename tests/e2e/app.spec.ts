@@ -22,6 +22,8 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(page.getByText("unofficial category B practice set")).toBeVisible();
   await expect(page.getByRole("heading", { name: /Тренажер теории/ })).toBeVisible();
   const card = page.getByTestId("question-card");
+  await expect(page.getByTestId("learning-ticket-timer")).toContainText("Темп билета");
+  await expect(page.getByTestId("learning-ticket-timer-time")).toHaveText("1:15");
   const questionToggle = card.getByRole("button", { name: /¿Qué indica esta seña/ });
   await expect(card.locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(card.locator("img")).toBeVisible();
@@ -74,11 +76,62 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect.poll(() => storedAnswerCount(page)).toBe(3);
 });
 
+test("learning timer pauses, resumes, and does not count down invisible tickets", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+
+  const timer = page.getByTestId("learning-ticket-timer");
+  const timerValue = page.getByTestId("learning-ticket-timer-time");
+  await expect(timer).toContainText("Темп билета");
+  await expect(timerValue).toHaveText("1:15");
+
+  await page.clock.runFor(5_000);
+  await expect(timerValue).toHaveText("1:10");
+
+  const pauseButton = page.getByRole("button", { name: "Поставить таймер билета на паузу" });
+  await pauseButton.focus();
+  await expect(pauseButton).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(timer).toContainText("Пауза");
+  await page.clock.runFor(10_000);
+  await expect(timerValue).toHaveText("1:10");
+
+  await page.getByRole("button", { name: "Продолжить таймер билета" }).click();
+  await page.clock.runFor(1_000);
+  await expect(timerValue).toHaveText("1:09");
+
+  await page.getByRole("button", { name: "Следующий" }).click();
+  await expect(timerValue).toHaveText("1:15");
+  await page.clock.runFor(10_000);
+
+  for (let i = 0; i < 24; i += 1) {
+    await page.getByRole("button", { name: "Следующий" }).click();
+  }
+  await expect(timerValue).toHaveText("1:09");
+});
+
+test("learning timeout is unresolved only until the learner answers after the limit", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await expect(page.getByTestId("learning-ticket-timer-time")).toHaveText("1:15");
+
+  await page.clock.runFor(76_000);
+  await expect(page.getByText("Время вышло - билет пока не решен")).toBeVisible();
+  await expect(page.locator(".answer.correct, .answer.incorrect")).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+
+  await page.locator(".answer").first().click();
+  await expect(page.getByText("Ответ после лимита")).toBeVisible();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+});
+
 test("exam mode hides translation and explanation during active attempt and stores score", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Экзамен/ }).click();
   await expect(page.getByText(/45:00|44:59/)).toBeVisible();
   await expect(page.getByText(/Формат defined/)).toBeVisible();
+  await expect(page.getByText("Темп билета")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /таймер билета/ })).toHaveCount(0);
   await expect(page.locator(".official-block[role='button']")).toHaveCount(0);
   await expect(page.locator(".support-block.translation")).toHaveCount(0);
   await expect(page.locator(".support-block.explanation")).toHaveCount(0);

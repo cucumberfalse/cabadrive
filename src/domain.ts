@@ -1,5 +1,10 @@
 import type { ProgressAnswer, Question } from "./data/content";
 
+export type ExamFormatTiming = {
+  questionCount?: number;
+  timeLimitMinutes?: number;
+};
+
 export function scorePercent(correct: number, total: number) {
   if (total <= 0) return 0;
   return Math.floor((correct / total) * 100);
@@ -7,6 +12,30 @@ export function scorePercent(correct: number, total: number) {
 
 export function isPassing(score: number, passingScore: number) {
   return score >= passingScore;
+}
+
+export function formatDuration(totalSeconds: number) {
+  const minutes = Math.floor(Math.max(totalSeconds, 0) / 60);
+  const seconds = Math.max(totalSeconds, 0) % 60;
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
+}
+
+export function learningTicketTargetSeconds(examFormat: ExamFormatTiming, roundingStepSeconds = 15) {
+  const { questionCount, timeLimitMinutes } = examFormat;
+  if (
+    !Number.isFinite(questionCount) ||
+    !Number.isFinite(timeLimitMinutes) ||
+    !Number.isFinite(roundingStepSeconds) ||
+    questionCount === undefined ||
+    timeLimitMinutes === undefined ||
+    questionCount <= 0 ||
+    timeLimitMinutes <= 0 ||
+    roundingStepSeconds <= 0
+  ) {
+    return undefined;
+  }
+
+  return Math.ceil(((timeLimitMinutes * 60) / questionCount) / roundingStepSeconds) * roundingStepSeconds;
 }
 
 function sortedExamSet(questions: Question[], count: number) {

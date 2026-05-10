@@ -22,23 +22,27 @@
 
 1. Load question card (Spanish official text + answer options).
 2. Show compact static difficulty metadata near the question metadata as `Уровень`/`Сложность билета`; it is a study-planning signal, not correctness or the user `Сложный` flag.
-3. Keep Russian question and answer translations hidden on initial render.
-4. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
-5. Show answer-choice translations only while the same translation reveal state is active.
-6. Show the local question image when the source question includes one.
-7. Optional toggle for explanation.
-8. Submit answer.
-9. Show correctness, key terms, and related weak-topic links.
-10. Optional mark as difficult.
+3. Start a soft per-ticket pacing timer derived from the exam format average rounded up to a readable training target.
+4. Allow the learner to pause and resume that timer for the current ticket without disabling timers globally.
+5. Keep Russian question and answer translations hidden on initial render.
+6. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
+7. Show answer-choice translations only while the same translation reveal state is active.
+8. Show the local question image when the source question includes one.
+9. Optional toggle for explanation.
+10. If the timer expires before answer selection, show the current ticket as unresolved in-session without recording an answer or moving to mistake review.
+11. Submit answer; answering after the timer expires remains possible and records a normal learning answer with visible after-limit status.
+12. Show correctness, key terms, and related weak-topic links.
+13. Optional mark as difficult.
 
 ## Exam Simulation Flow
 
 1. Start exam with parameters from `content/config/caba-exam-format.json`.
-2. Hide translation/explanation during active attempt.
-3. Do not show difficulty rationale, dimensions, or study hints during active attempt; current active exam UI also omits compact difficulty chips.
-4. Record timing and selected answers.
-5. Complete exam and show score.
-6. Generate weak-topic and mistake review recommendations.
+2. Use the exam-wide timer only; do not show learning per-ticket timer controls during an active attempt.
+3. Hide translation/explanation during active attempt.
+4. Do not show difficulty rationale, dimensions, or study hints during active attempt; current active exam UI also omits compact difficulty chips.
+5. Record timing and selected answers.
+6. Complete exam and show score.
+7. Generate weak-topic and mistake review recommendations.
 
 ## Mistake Review Flow
 
