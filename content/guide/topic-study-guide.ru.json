@@ -3153,7 +3153,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "e05e900532dfd1b83359694b1ad77e6cc1e05509e045de82b368e42e2451684d",
+        "sourceFingerprint": "812efcd6e383f17f43f4f51dbaab8527de6d7e6a75cd0c759bba35d0480b6340",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -4033,7 +4033,7 @@
         },
         {
           "id": "trap-ochava-not-only-senda",
-          "textRu": "Near esquina мало освободить только senda peatonal. Ориентир - воображаемое продолжение ochava.",
+          "textRu": "Около esquina мало освободить только senda peatonal. Ориентир - воображаемое продолжение ochava.",
           "sourceQuestionIds": [
             "b-fallback-089",
             "b-fallback-221"
@@ -4041,7 +4041,7 @@
         },
         {
           "id": "trap-yellow-cordon-not-red-cordon",
-          "textRu": "Yellow cordon означает: парковка запрещена, но detenciones возможны. Красный cordón запрещал бы и остановку, и парковку.",
+          "textRu": "Желтый cordón означает: парковка запрещена, но detenciones возможны. Красный cordón запрещал бы и остановку, и парковку.",
           "sourceQuestionIds": [
             "b-fallback-362"
           ]
