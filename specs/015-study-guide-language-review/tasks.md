@@ -1019,6 +1019,13 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - Changed-path guard before commit: pass; `git diff --name-only origin/main` listed only `content/guide/topic-study-guide.ru.json` and the four files under `specs/015-study-guide-language-review/`.
 - Landing recovery known issues: existing `fatigue-distraction-and-attention` missing `slug` and non-rendered English-heavy `claims[].textRu` metadata remain out of scope. No PR #63 paths, translations, explanations, image metadata, validation manifests, scripts, package files, product UI, docs outside `specs/015-study-guide-language-review/`, or source manifests were modified.
+- PR #70 CI blocker follow-up: `baseline-checks` failed in `tests/e2e/app.spec.ts` because the Playwright fixture still expected a `.trap-note` containing the older full phrase `5 metros de cada lado de la entrada` plus English/process markers `/trap|falso|wrong/i`. The current learner text intentionally uses Russian wording and a shorter `5 metros` / `10 metros` contrast, so the fix updated only the e2e assertion to read the current trap note from `topicGuide` and assert visible `5 metros` plus Russian learner markers `похож` / `выбирайте`. No English/process words were reintroduced into `content/guide/topic-study-guide.ru.json`.
+- PR #70 CI blocker validation evidence:
+  - `pnpm run test:e2e -- tests/e2e/app.spec.ts`: pass, 34/34 tests across chromium and mobile.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 22/22 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check origin/main...HEAD`: pass.
+  - Scope guard: changed files for this follow-up are limited to `tests/e2e/app.spec.ts` and this feature memory note.
 
 ## Known Issues
 
