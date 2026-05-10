@@ -72,15 +72,15 @@ Agents must not paraphrase, translate, simplify, summarize, or otherwise rewrite
 
 Feature `019-primary-sources-section` implements a learner-facing `Источники` / official primary-source reader. The section remains distinct from the topic-study `Материалы` guide and:
 
-- covers every entry in the current manifest at the document/status level;
-- imports the generated coverage inventory for chunk navigation and original Spanish archive-derived text;
-- defaults translated chunks to schoolchild-friendly simple Russian text;
-- lets the learner switch to full Russian translation where a reviewed shard exists and original Spanish official text for local archive chunks;
+- covers every entry in the current manifest at the corpus-count/status level;
+- imports the generated coverage inventory for counts and chunk metadata without bundling the raw official archive into the initial app bundle;
+- defaults approved learner chunks to schoolchild-friendly simple Russian text;
+- lets the learner switch approved learner chunks to full Russian translation or the original Spanish stored in the reviewed learner shard;
 - omit simplified Spanish;
 - displays compact source/currentness/exact-text and translation-readiness status;
 - preserves local-first behavior without runtime network calls, live AI, or raw PDF viewing.
 
-The current source-reader release slice is not a whole-corpus translation release. Russian learner coverage remains partial while D-H content batches continue, and untranslated documents/chunks stay visible with honest not-yet-translated states. Strict/final primary-source validation and exact-text readiness remain blockers before this feature can be declared a finished whole-corpus release.
+The current source-reader release slice is not a whole-corpus translation release. Russian learner coverage remains partial while D-H content batches continue, and untranslated documents/chunks are not exposed as readable rows with placeholder text. They remain visible only as aggregate not-yet-available status until approved learner shards exist. Strict/final primary-source validation and exact-text readiness remain blockers before this feature can be declared a finished whole-corpus release.
 
 The original Spanish archive remains the official/verbatim source layer. Russian translation, simplification, summaries, and learner notes are unofficial support layers and must be stored and validated outside `content/official-documents/`.
 

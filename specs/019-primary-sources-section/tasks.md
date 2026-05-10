@@ -449,16 +449,16 @@
 
 - UI reader slice ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-ui-reader` on branch `codex/019-primary-sources-ui-reader`, based on `origin/codex/019-primary-sources-content-batch-vehicle-docs` at `14bf08c`.
 - Preserved the modified UI/e2e files that Orchestrator had moved into this worktree and continued from them instead of reverting.
-- `src/data/content.ts` now imports the official manifest, primary-source coverage, learner corpus root, QA root, search root, discovered document/QA/search shards, and local official-document Markdown through the existing bundled data boundary.
+- `src/data/content.ts` now imports the official manifest, primary-source coverage metadata, learner corpus root, QA root, search root, and discovered document/QA/search shards through the existing bundled data boundary. PR #102 review follow-up removed the eager raw official-document Markdown import from the initial app bundle.
 - Added typed UI-facing primary-source reader models for manifest entries, coverage documents/chunks, learner documents/chunks, QA records, search entries, translation readiness, and the combined reader corpus.
-- The combined reader corpus represents every manifest entry and every coverage document honestly: approved/partial/draft/not-translated status is derived from translated chunk counts, QA status, shard status, and draft-marker checks. Untranslated documents still have archive-derived original Spanish chunks and explicit not-ready Russian states.
+- The combined reader corpus represents every manifest entry and every coverage document honestly in aggregate counts, but the readable document/chunk list includes only chunks with approved Russian learner content. Untranslated or draft chunks are not exposed as readable rows with fallback text.
 - `src/App.tsx` adds the `Источники` navigation item and a distinct source reader view without changing active exam translation/explanation behavior.
-- The source reader defaults to `Просто`, selects an approved translated vehicle-document batch when available, offers `Полный перевод` and `Оригинал ES`, and does not add a simplified-Spanish mode.
+- The source reader defaults to `Просто`, selects an approved translated learner batch when available, offers `Полный перевод` and `Оригинал ES` only for approved learner chunks, and does not add a simplified-Spanish mode.
 - Search/filter/detail behavior is local-only. Search covers title/metadata, simple Russian, full Russian, and original Spanish, with diacritic-insensitive matching so learner input such as `cedula` can find `Cédula`.
 - Long documents are navigated through the generated chunk inventory with a select control plus a capped quick-list rather than rendering every chunk as a monolithic page.
 - The UI shows compact currentness, exact-text, archive path, source URL, chunking strategy, and Russian coverage counts, including exact-text pending state while final source readiness remains unresolved.
 - Durable docs were updated from planned to implemented for the UI reader slice while preserving the final whole-corpus translation/exact-text blockers.
-- T095 remains open for the final whole-corpus release because many documents/chunks do not yet have approved full Russian translations. This UI slice exposes the full-translation mode for translated chunks and a truthful not-yet-prepared state for untranslated chunks.
+- T095 remains open for the final whole-corpus release because many documents/chunks do not yet have approved full Russian translations. This UI slice exposes full-translation/original-Spanish mode for approved translated chunks and hides/blocks untranslated chunks from the reading list instead of showing placeholders.
 - No `content/official-documents/**`, content translation shards, coverage generator, or learner-source content shards were edited in this UI slice.
 
 ### Implementation Agent Feedback
@@ -728,4 +728,16 @@
   - `npm run check:repo` passed. Output: `Repository baseline check passed.`
   - `npm run preflight` passed end-to-end: feature-memory gate, repo baseline, content validation, 153 Node tests, production build, and 30 Playwright tests all passed.
   - `git diff --check` passed with no output.
-  - Known residual risk: bundle size is larger after importing the local source-reader corpus/archive projection. This does not introduce external requests or PDF viewing, but future slices may want local code-splitting or static asset partitioning if startup size becomes a blocker.
+- Known residual risk before PR #102 review follow-up: bundle size was larger after importing the local source-reader corpus/archive projection. PR #102 follow-up removes the eager raw archive import; future slices may still want local code-splitting or static asset partitioning as the approved learner corpus grows.
+- PR #102 review-blocker follow-up on 2026-05-10:
+  - Addressed P1 by changing the source reader data boundary and UI so the reading list contains only chunks with approved Russian learner content, approved translation/simplification QA, non-draft text, and learner-shard `originalSpanish`. Untranslated/draft documents and chunks are represented only through aggregate unavailable counts and are not opened as readable rows with fallback placeholder text.
+  - Addressed P2 bundle concern by removing the eager `?raw` import of `content/official-documents/documents/*.md` from `src/data/content.ts`. Available Spanish source text now comes from approved learner shards; raw official archive Markdown is no longer part of the initial source-reader bundle projection.
+  - Addressed P2 source-type filtering by adding a `Тип источника` select backed by `officialSourceType`, while preserving category and jurisdiction filters.
+  - Updated e2e coverage to prove unavailable source documents are not listed as readable buttons, placeholder source-reader text is absent, source-type filtering works, and simple/full/original modes still work for approved chunks.
+  - Updated durable docs to record the new behavior: manifest/coverage are used for counts/status, while readable source rows require approved learner content.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm test` passed: 153 Node tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Main built JS was `8,756.75 kB` / `1,416.40 kB gzip`; Vite retained the existing large-chunk warning, but the previous raw archive import size was reduced from the earlier `~11.55 MB` JS bundle.
+  - `npm run test:e2e` passed: 30 Playwright tests, 30 pass, 0 fail across desktop and mobile projects.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`

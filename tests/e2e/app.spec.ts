@@ -177,9 +177,12 @@ test("primary sources reader opens in simple Russian and switches to full Russia
 
   await expect(page.getByRole("heading", { name: "Официальные источники" })).toBeVisible();
   await expect(page.getByText("19 документов manifest")).toBeVisible();
+  await expect(page.getByText("7 документов доступно для чтения")).toBeVisible();
+  await expect(page.getByText("12 документов ждут одобренный русский слой")).toBeVisible();
   await expect(page.getByText(primarySourceVehicleDocuments.shortTitleRu).first()).toBeVisible();
   await expect(page.getByRole("heading", { name: primarySourceVehicleDocuments.shortTitleRu })).toBeVisible();
-  await expect(page.getByText("Русский слой не готов").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: /Ley 24449/ })).toHaveCount(0);
+  await expect(page.getByText(/еще не подготовлен/)).toHaveCount(0);
 
   const reader = page.getByTestId("primary-source-reader");
   await expect(reader).toContainText(firstChunk.simpleRu);
@@ -205,6 +208,7 @@ test("primary sources search, filters, and chunk navigation stay local and chunk
   await page.getByPlaceholder(/Искать по источникам/).fill("cedula");
   await page.getByLabel("Категория").selectOption("vehicle-documents");
   await page.getByLabel("Юрисдикция").selectOption("national");
+  await page.getByLabel("Тип источника").selectOption(primarySourceVehicleDocuments.officialSourceType);
 
   await expect(page.getByRole("button", { name: new RegExp(primarySourceVehicleDocuments.shortTitleRu) })).toBeVisible();
   await page.locator(".source-chunk-list button").filter({ hasText: "Cédulas" }).first().click();

@@ -357,6 +357,7 @@ export type PrimarySourceReaderCorpus = {
   manifestDocumentCount: number;
   coverageDocumentCount: number;
   translatedDocumentCount: number;
+  unavailableDocumentCount: number;
   approvedDocumentCount: number;
   totalChunkCount: number;
   translatedChunkCount: number;
@@ -465,11 +466,6 @@ const primarySourceSearchShardEntries = collectSearchShardEntries(
   import.meta.glob("../../content/primary-sources/search/*.json", { eager: true }),
   "Primary source search"
 );
-const officialDocumentMarkdownModules = import.meta.glob("../../content/official-documents/documents/*.md", {
-  eager: true,
-  query: "?raw",
-  import: "default"
-}) as Record<string, string>;
 
 function primarySourceRootDocuments() {
   return (primarySourcesRootJson as { documents?: PrimarySourceLearnerDocument[] }).documents || [];
@@ -481,20 +477,6 @@ function primarySourceRootQaDocuments() {
 
 function primarySourceRootSearchEntries() {
   return (primarySourcesSearchJson as { entries?: PrimarySourceSearchEntry[] }).entries || [];
-}
-
-function archiveMarkdownFor(localPath: string) {
-  return officialDocumentMarkdownModules[`../../${localPath}`] || "";
-}
-
-function archiveSpanText(localPath: string, span: PrimarySourceSpan) {
-  const markdown = archiveMarkdownFor(localPath);
-  if (!markdown) return "";
-  return markdown
-    .split(/\r?\n/)
-    .slice(Math.max(span.startLine - 1, 0), Math.max(span.endLine, span.startLine))
-    .join("\n")
-    .trim();
 }
 
 function normalizePrimarySourceSearchText(value: string) {
@@ -533,6 +515,18 @@ function isDraftLearnerText(text: string | undefined) {
   return Boolean(text && /\bDRAFT\b|чернов/i.test(text));
 }
 
+function isApprovedReadablePrimarySourceChunk(
+  learnerChunk: PrimarySourceLearnerChunk | undefined,
+  qaChunk: PrimarySourceQaChunk | undefined,
+  shardStatus: string | undefined
+) {
+  if (!learnerChunk) return false;
+  if (shardStatus === "draft") return false;
+  if (!learnerChunk.originalSpanish.trim() || !learnerChunk.fullTranslationRu.trim() || !learnerChunk.simpleRu.trim()) return false;
+  if (isDraftLearnerText(learnerChunk.fullTranslationRu) || isDraftLearnerText(learnerChunk.simpleRu)) return false;
+  return qaChunk?.translationQa.status === "approved" && qaChunk.simplificationQa.status === "approved";
+}
+
 function buildPrimarySourceReaderCorpus(): PrimarySourceReaderCorpus {
   const manifest = officialDocumentsManifestJson as OfficialDocumentsManifest;
   const coverage = primarySourcesCoverageJson as PrimarySourcesCoverage;
@@ -544,47 +538,38 @@ function buildPrimarySourceReaderCorpus(): PrimarySourceReaderCorpus {
   const qaByDocumentId = new Map(qaDocuments.map((document) => [document.officialDocumentId, document]));
   const coverageById = new Map(coverage.documents.map((document) => [document.officialDocumentId, document]));
 
-  const documents = manifest.entries.map((entry) => {
+  const allDocuments = manifest.entries.map((entry) => {
     const learnerDocument = learnerById.get(entry.id);
     const coverageDocument = coverageById.get(entry.id);
     const qaDocument = qaByDocumentId.get(entry.id);
     const learnerChunks = new Map((learnerDocument?.chunks || []).map((chunk) => [chunk.chunkId, chunk]));
     const qaChunks = new Map((qaDocument?.chunks || []).map((chunk) => [chunk.chunkId, chunk]));
-    const coverageChunks = coverageDocument?.chunks || learnerDocument?.chunks || [];
+    const coverageChunks = coverageDocument?.chunks || [];
     const category = inferPrimarySourceCategory(entry, learnerDocument);
     const jurisdiction = inferPrimarySourceJurisdiction(entry, learnerDocument);
+    const shardStatus = learnerShardStatusById.get(entry.id);
 
-    const chunks = coverageChunks.map((coverageChunk) => {
+    const chunks = coverageChunks.flatMap((coverageChunk) => {
       const learnerChunk = learnerChunks.get(coverageChunk.chunkId);
       const qaChunk = qaChunks.get(coverageChunk.chunkId);
-      const originalSpanish =
-        learnerChunk?.originalSpanish ||
-        archiveSpanText(coverageDocument?.archiveLocalPath || learnerDocument?.archiveLocalPath || entry.localPath, coverageChunk.sourceSpan);
+      if (!isApprovedReadablePrimarySourceChunk(learnerChunk, qaChunk, shardStatus)) return [];
 
-      return {
+      return [{
         ...coverageChunk,
-        originalSpanish,
-        fullTranslationRu: learnerChunk?.fullTranslationRu,
-        simpleRu: learnerChunk?.simpleRu,
-        translationQa: qaChunk?.translationQa,
-        simplificationQa: qaChunk?.simplificationQa,
-        hasLearnerText: Boolean(learnerChunk?.fullTranslationRu && learnerChunk.simpleRu)
-      };
+        originalSpanish: learnerChunk.originalSpanish,
+        fullTranslationRu: learnerChunk.fullTranslationRu,
+        simpleRu: learnerChunk.simpleRu,
+        translationQa: qaChunk.translationQa,
+        simplificationQa: qaChunk.simplificationQa,
+        hasLearnerText: true
+      }];
     });
 
-    const translatedChunkCount = chunks.filter((chunk) => chunk.hasLearnerText).length;
-    const hasDraftText = chunks.some((chunk) => isDraftLearnerText(chunk.fullTranslationRu) || isDraftLearnerText(chunk.simpleRu));
-    const hasUnapprovedQa = chunks.some((chunk) => {
-      if (!chunk.hasLearnerText) return false;
-      return chunk.translationQa?.status !== "approved" || chunk.simplificationQa?.status !== "approved";
-    });
-    const shardStatus = learnerShardStatusById.get(entry.id);
+    const translatedChunkCount = chunks.length;
     const translationStatus: PrimarySourceTranslationStatus =
       translatedChunkCount === 0
         ? "not_translated"
-        : hasDraftText || hasUnapprovedQa || shardStatus === "draft"
-          ? "draft"
-          : translatedChunkCount < coverageChunks.length
+        : translatedChunkCount < coverageChunks.length
             ? "partial"
             : "approved";
 
@@ -634,6 +619,7 @@ function buildPrimarySourceReaderCorpus(): PrimarySourceReaderCorpus {
       searchText
     };
   });
+  const documents = allDocuments.filter((document) => document.translatedChunkCount > 0);
 
   return {
     disclaimerRu: (primarySourcesRootJson as { disclaimerRu?: string }).disclaimerRu || "Русский слой источников является неофициальной учебной поддержкой.",
@@ -641,8 +627,9 @@ function buildPrimarySourceReaderCorpus(): PrimarySourceReaderCorpus {
     manifestDocumentCount: manifest.entries.length,
     coverageDocumentCount: coverage.documents.length,
     translatedDocumentCount: documents.filter((document) => document.translatedChunkCount > 0).length,
+    unavailableDocumentCount: allDocuments.filter((document) => document.translatedChunkCount === 0).length,
     approvedDocumentCount: documents.filter((document) => document.translationStatus === "approved").length,
-    totalChunkCount: documents.reduce((sum, document) => sum + document.totalChunkCount, 0),
+    totalChunkCount: allDocuments.reduce((sum, document) => sum + document.totalChunkCount, 0),
     translatedChunkCount: documents.reduce((sum, document) => sum + document.translatedChunkCount, 0),
     searchProjectionCount: searchEntries.length
   };

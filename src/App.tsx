@@ -139,12 +139,12 @@ function primarySourceModeLabel(mode: PrimarySourceTextMode) {
 
 function primarySourceChunkText(chunk: PrimarySourceReaderChunk, mode: PrimarySourceTextMode) {
   if (mode === "full") {
-    return chunk.fullTranslationRu || "Полный русский перевод для этого фрагмента еще не подготовлен.";
+    return chunk.fullTranslationRu || "";
   }
   if (mode === "spanish") {
-    return chunk.originalSpanish || "Оригинальный испанский фрагмент не найден в локальном архиве.";
+    return chunk.originalSpanish || "";
   }
-  return chunk.simpleRu || "Простой русский текст для этого фрагмента еще не подготовлен.";
+  return chunk.simpleRu || "";
 }
 
 function normalizePrimarySourceSearch(value: string) {
@@ -1034,12 +1034,14 @@ function PrimarySourcesView() {
   const [query, setQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [jurisdictionFilter, setJurisdictionFilter] = useState("all");
+  const [sourceTypeFilter, setSourceTypeFilter] = useState("all");
   const [selectedDocumentId, setSelectedDocumentId] = useState(defaultDocument?.officialDocumentId);
   const [selectedChunkId, setSelectedChunkId] = useState(defaultDocument?.chunks[0]?.chunkId);
   const [textMode, setTextMode] = useState<PrimarySourceTextMode>("simple");
   const normalizedQuery = normalizePrimarySourceSearch(query.trim());
   const categories = useMemo(() => [...new Set(corpus.documents.map((document) => document.category))].sort(), [corpus.documents]);
   const jurisdictions = useMemo(() => [...new Set(corpus.documents.map((document) => document.jurisdiction))].sort(), [corpus.documents]);
+  const sourceTypes = useMemo(() => [...new Set(corpus.documents.map((document) => document.officialSourceType))].sort(), [corpus.documents]);
 
   function documentMatchesQuery(document: PrimarySourceReaderDocument) {
     if (!normalizedQuery) return true;
@@ -1056,12 +1058,13 @@ function PrimarySourcesView() {
       corpus.documents.filter((document) => {
         const matchesCategory = categoryFilter === "all" || document.category === categoryFilter;
         const matchesJurisdiction = jurisdictionFilter === "all" || document.jurisdiction === jurisdictionFilter;
-        return matchesCategory && matchesJurisdiction && documentMatchesQuery(document);
+        const matchesSourceType = sourceTypeFilter === "all" || document.officialSourceType === sourceTypeFilter;
+        return matchesCategory && matchesJurisdiction && matchesSourceType && documentMatchesQuery(document);
       }),
-    [categoryFilter, corpus.documents, jurisdictionFilter, normalizedQuery]
+    [categoryFilter, corpus.documents, jurisdictionFilter, normalizedQuery, sourceTypeFilter]
   );
   const selectedDocument =
-    corpus.documents.find((document) => document.officialDocumentId === selectedDocumentId) || filteredDocuments[0] || defaultDocument;
+    filteredDocuments.find((document) => document.officialDocumentId === selectedDocumentId) || filteredDocuments[0] || defaultDocument;
   const selectedChunk =
     selectedDocument?.chunks.find((chunk) => chunk.chunkId === selectedChunkId) || selectedDocument?.chunks[0];
   const matchingChunks = selectedDocument?.chunks.filter(chunkMatchesQuery) || [];
@@ -1087,6 +1090,7 @@ function PrimarySourcesView() {
     setQuery("");
     setCategoryFilter("all");
     setJurisdictionFilter("all");
+    setSourceTypeFilter("all");
     if (defaultDocument) {
       setSelectedDocumentId(defaultDocument.officialDocumentId);
       setSelectedChunkId(defaultDocument.chunks[0]?.chunkId);
@@ -1114,8 +1118,9 @@ function PrimarySourcesView() {
         <div className="materials-status" aria-label="Статус корпуса источников">
           <span>{corpus.manifestDocumentCount} документов manifest</span>
           <span>{corpus.coverageDocumentCount} документов coverage</span>
-          <span>{corpus.approvedDocumentCount} готовых русских пачек</span>
-          <span>{corpus.translatedChunkCount} / {corpus.totalChunkCount} фрагментов с русским слоем</span>
+          <span>{corpus.translatedDocumentCount} документов доступно для чтения</span>
+          <span>{corpus.unavailableDocumentCount} документов ждут одобренный русский слой</span>
+          <span>{corpus.translatedChunkCount} / {corpus.totalChunkCount} одобренных RU-фрагментов</span>
         </div>
       </header>
 
@@ -1153,13 +1158,26 @@ function PrimarySourcesView() {
                   ))}
                 </select>
               </label>
+              <label className="source-filter">
+                <span>Тип источника</span>
+                <select value={sourceTypeFilter} onChange={(event) => setSourceTypeFilter(event.target.value)}>
+                  <option value="all">Все типы</option>
+                  {sourceTypes.map((sourceType) => (
+                    <option value={sourceType} key={sourceType}>
+                      {primarySourceTypeLabel(sourceType)}
+                    </option>
+                  ))}
+                </select>
+              </label>
             </div>
           </div>
 
           {filteredDocuments.length ? (
             <div className="source-result-list">
               {filteredDocuments.map((document) => {
-                const matchCount = normalizedQuery ? document.chunks.filter((chunk) => primarySourceChunkSearchText(chunk).includes(normalizedQuery)).length : document.totalChunkCount;
+                const matchCount = normalizedQuery
+                  ? document.chunks.filter((chunk) => primarySourceChunkSearchText(chunk).includes(normalizedQuery)).length
+                  : document.translatedChunkCount;
                 return (
                   <button
                     type="button"
@@ -1174,7 +1192,7 @@ function PrimarySourcesView() {
                       <span>{primarySourceJurisdictionLabel(document.jurisdiction)}</span>
                       <span>{primarySourceTranslationStatusLabel(document.translationStatus)}</span>
                     </span>
-                    <small>{matchCount} фрагментов</small>
+                    <small>{matchCount} доступных фрагментов</small>
                   </button>
                 );
               })}
@@ -1230,7 +1248,7 @@ function PrimarySourcesView() {
             <span className="block-label">Граница доверия</span>
             <p>Испанский архивный текст является официальным слоем. Русский перевод и простой русский текст - неофициальная учебная поддержка Cabadrive.</p>
             {selectedDocument.translationStatus !== "approved" && (
-              <p>Этот источник показан в корпусе, но русский слой еще не готов полностью: статус не скрывается до завершения переводческих batches.</p>
+              <p>Этот источник открыт только по фрагментам с одобренным русским учебным слоем; непереведенные фрагменты не показываются как читаемый текст.</p>
             )}
           </aside>
 
@@ -1271,7 +1289,6 @@ function PrimarySourcesView() {
                 >
                   <span>{String(chunk.order).padStart(3, "0")}</span>
                   <span>{primarySourceChunkLabel(chunk)}</span>
-                  {!chunk.hasLearnerText && <small>RU не готов</small>}
                 </button>
               ))}
             </div>
@@ -1289,7 +1306,7 @@ function PrimarySourcesView() {
               </div>
               <div className="source-row-meta">
                 <span>Фрагмент {selectedChunk.order}</span>
-                <span>{selectedChunk.hasLearnerText ? "RU есть" : "RU не готов"}</span>
+                <span>RU одобрен</span>
               </div>
             </div>
             <pre className={textMode === "spanish" ? "source-text spanish" : "source-text"}>{primarySourceChunkText(selectedChunk, textMode)}</pre>

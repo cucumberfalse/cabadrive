@@ -76,12 +76,12 @@
 
 ## Official Sources / `Источники` Flow
 
-The `Источники` reader is implemented by feature `019-primary-sources-section` as a local source-reference section. It covers every current official manifest entry at the document/status level, while Russian learner text remains partial until the remaining translation batches and strict final gates are complete.
+The `Источники` reader is implemented by feature `019-primary-sources-section` as a local source-reference section. It accounts for every current official manifest entry in corpus counts/status, while the readable list is limited to approved Russian learner shards until the remaining translation batches and strict final gates are complete.
 
 1. Open `Источники` as a distinct source-reference section, separate from topic-study `Материалы`.
-2. Browse, search, and filter official source documents from `content/official-documents/manifest.json` plus the generated `content/primary-sources/` coverage inventory.
-3. Open a source detail that defaults to simple Russian learner text when an approved Russian shard exists, or shows a clear not-yet-translated state for untranslated chunks.
-4. Switch the selected document or chunk to full Russian translation when available, or original Spanish official text for every locally archived chunk.
+2. Browse, search, and filter the currently approved reader subset, with corpus counts/status derived from `content/official-documents/manifest.json` plus the generated `content/primary-sources/` coverage inventory.
+3. Open only source details/chunks that have approved Russian learner content; untranslated documents/chunks are not readable rows with placeholder text.
+4. Switch the selected approved document or chunk to full Russian translation or the original Spanish stored in the learner shard.
 5. Show compact metadata and status: source title, jurisdiction/type, retrieval date, currentness status, exact-text validation status, and archive reference.
 6. Keep Russian translation and simple rewrite clearly labeled as unofficial learning support.
 7. Do not provide simplified Spanish.
