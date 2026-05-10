@@ -8,7 +8,8 @@
 4. Mistake Review
 5. Vocabulary
 6. Topic Materials
-7. CABA vs RF Guide
+7. CABA License Process Guide
+8. CABA vs RF Guide
 
 ## Home / Onboarding
 
@@ -64,6 +65,16 @@
 
 1. Open `CABA/RF` as the existing compact contrast guide.
 2. Keep this guide separate from the topic materials section.
+
+## CABA License Process Flow
+
+1. Open `Процесс` as a separate top-level section from `Учить`, `Экзамен`, `Ошибки`, `Словарь`, `Материалы`, and `CABA/RF`.
+2. Read the Russian unofficial-support status, B1/private-car `Otorgamiento` scope, last checked date, and official-action warning before using the guide.
+3. Review the source-backed step flow for CENAT, online start, course, turno/sede/BUI, psychophysical evaluation, theory, practical B1 exam, and same-day/pass-fail expectations.
+4. Use grouped official GCBA/ANSV links for real applications, payments, booking, document checks, and current requirements.
+5. Treat fees, sedes, turn availability, Boti/miBA screens, and document lists as volatile and verify them on official pages.
+6. Use adjacent-path callouts only as routing hints for renewal, change of jurisdiction, beginner status, prior licenses, and foreigner documentation.
+7. Browse the Spanish administrative glossary for low-Spanish support while keeping official Spanish terms visible.
 
 ## Status Labels
 

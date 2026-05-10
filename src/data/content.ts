@@ -6,6 +6,7 @@ import translations from "../../content/translations/ru.translations.json";
 import explanations from "../../content/explanations/ru.explanations.json";
 import vocabulary from "../../content/vocabulary/ru.vocabulary.json";
 import guide from "../../content/guide/ru.condensed-guide.json";
+import cabaExamProcessGuideJson from "../../content/guide/caba-exam-process.ru.json";
 import topicStudyGuideJson from "../../content/guide/topic-study-guide.ru.json";
 
 export type Answer = {
@@ -91,6 +92,73 @@ export type TopicStudyGuide = {
   topics: TopicGuideTopic[];
 };
 
+export type ProcessGuideSource = {
+  id: string;
+  title: string;
+  url: string;
+  checkedAt: string;
+  officialOwner: "GCBA" | "ANSV" | "Gobierno Argentino";
+  currentnessStatus: "checked_current" | "checked_current_with_historico_url" | "volatile_check_required";
+  resultRu: string;
+};
+
+export type ProcessGuideSection = {
+  id: string;
+  titleRu: string;
+  summaryRu?: string;
+  bodyRu: string[];
+  spanishTerms?: string[];
+  sourceIds: string[];
+  calloutType: "required_step" | "optional_preparation" | "adjacent_path" | "warning";
+  volatility?: "stable_procedure" | "volatile_fee" | "volatile_location" | "volatile_screen" | "volatile_document_list";
+  volatilityWarningRu?: string;
+};
+
+export type ProcessGuideOfficialLink = {
+  sourceId: string;
+  labelRu: string;
+  url: string;
+};
+
+export type ProcessGuideOfficialLinkGroup = {
+  id: string;
+  titleRu: string;
+  links: ProcessGuideOfficialLink[];
+};
+
+export type ProcessGuideGlossaryTerm = {
+  id: string;
+  termEs: string;
+  translationRu: string;
+  explanationRu: string;
+  sourceIds: string[];
+};
+
+export type CabaExamProcessGuide = {
+  version: number;
+  id: "caba-exam-process";
+  locale: "ru";
+  status: "draft" | "published";
+  contentStatus: "unofficial_learning_aid";
+  titleRu: string;
+  primaryScope: {
+    jurisdiction: "CABA";
+    procedure: "otorgamiento";
+    category: "B1";
+    audienceRu: string;
+  };
+  lastReviewedAt: string;
+  disclaimerRu: string;
+  officialActionWarningRu: string;
+  volatilityWarningRu: string;
+  communityContextRu: string;
+  sources: ProcessGuideSource[];
+  sections: ProcessGuideSection[];
+  officialLinks: ProcessGuideOfficialLinkGroup[];
+  glossary: ProcessGuideGlossaryTerm[];
+  optionalImages: never[];
+};
+
 export type Translation = {
   questionId: string;
   questionTextRu: string;
@@ -123,6 +191,7 @@ export const data = {
   explanations: explanations as Explanation[],
   vocabulary,
   guide,
+  cabaExamProcessGuide: cabaExamProcessGuideJson as CabaExamProcessGuide,
   topicStudyGuide: topicStudyGuideJson as TopicStudyGuide
 };
 

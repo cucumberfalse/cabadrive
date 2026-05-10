@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 
 const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
+const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
 
@@ -90,8 +91,50 @@ test("vocabulary and guide are available", async ({ page }) => {
   await expect(page.getByText("balizas")).toBeVisible();
   await page.getByRole("button", { name: /Материалы/ }).click();
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  await page.getByRole("button", { name: /Процесс/ }).click();
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
   await page.getByRole("button", { name: /CABA\/RF/ }).click();
   await expect(page.getByText("Статус вопросов категории B")).toBeVisible();
+});
+
+test("process guide renders B1 Otorgamiento scope, official sources, volatile warnings, and glossary", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Процесс/ }).click();
+
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
+  await expect(page.getByText("Неофициальная русская поддержка")).toBeVisible();
+  await expect(page.getByText(processGuide.officialActionWarningRu)).toBeVisible();
+  await expect(page.getByText(/CABA · B1 · otorgamiento/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Официальная последовательность" })).toBeVisible();
+  await expect(page.getByTestId("process-section-practical-car-exam")).toContainText("autos doble comando");
+  await expect(page.getByTestId("process-section-exam-day-psychophysical")).toContainText("psicología, visión, audición");
+  await expect(page.getByTestId("process-section-turno-bui-sede")).toContainText("Sedes, turnos");
+  await expect(page.getByTestId("process-section-adjacent-paths")).toContainText("Renovación por cambio de jurisdicción");
+  await expect(page.getByText("GCBA: Otorgamiento de Licencia de Conducir").first()).toBeVisible();
+  await expect(page.getByText(`Проверено ${processGuide.lastReviewedAt}`).first()).toBeVisible();
+  await expect(page.getByTestId("process-section-practical-car-exam").getByRole("link", { name: /GCBA: Examen práctico/ })).toHaveAttribute("href", /buenosaires\.gob\.ar/);
+  await expect(page.getByRole("link", { name: /Manual de Procedimientos GCBA/ })).toHaveAttribute("href", /PE-DIS-SECGVC-DGHC-562-25-ANX\.pdf/);
+  await expect(page.getByText("Declaración Jurada / DDJJ")).toBeVisible();
+  await expect(page.getByText("siniestro vial / incidente vial / accidente vial")).toBeVisible();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+});
+
+test("process guide stays local-first without external requests, remote images, or PDF viewer", async ({ page }) => {
+  const externalRequests: string[] = [];
+  const pdfRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
+    if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+  });
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Процесс/ }).click();
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+  await expect(page.locator(".process-view img")).toHaveCount(0);
+  expect(externalRequests).toEqual([]);
+  expect(pdfRequests).toEqual([]);
 });
 
 test("materials view renders topic guide status, list, details, canonical ticket data, and local images", async ({ page }) => {
