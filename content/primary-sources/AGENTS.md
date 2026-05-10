@@ -13,6 +13,40 @@ This directory is the governed learner-facing layer for official primary sources
 - Keep draft placeholders plainly marked as draft/preparatory until the content batch is translated, reviewed, and approved.
 - Before final release, every manifest document and every generated source chunk must have approved translation QA and approved simplification QA.
 
+## Sharding Contract
+
+Root files are content manifests, not the preferred editing surface for translation batches:
+
+```text
+content/primary-sources/primary-sources.ru.json
+content/primary-sources/primary-sources.qa.json
+content/primary-sources/primary-sources.search.json
+```
+
+They may keep small inline arrays and explicit shard lists for compatibility, but normal D-H content work must add or edit one document's shards at a time:
+
+```text
+content/primary-sources/documents/<officialDocumentId>.ru.json
+content/primary-sources/qa/<officialDocumentId>.qa.json
+content/primary-sources/search/<officialDocumentId>.search.json
+```
+
+The root learner corpus uses `documentShardDirectories`, the root QA file uses `qaShardDirectories`, and the root search file uses `searchShardDirectories`. These stable directory references are committed once. Future translation batches must not edit the root JSON files just to add a document; add the document, QA, and search shard files in the directories above and record evidence in process memory.
+
+Validators auto-discover flat shard files by suffix from those directories:
+
+```text
+documents/*.ru.json
+qa/*.qa.json
+search/*.search.json
+```
+
+Validators combine inline root data plus discovered shards before applying draft, coverage, strict, final, or release validation rules.
+
+Document shards use `schema: "primary-sources-document-shard.v1"` and contain either `document` or `documents`. QA shards use `schema: "primary-sources-qa-shard.v1"` and contain either `document` or `documents`. Search shards use `schema: "primary-sources-search-shard.v1"` and contain `entries`.
+
+Each shard path or shard directory must stay under `content/primary-sources/`, must use JSON shard files, and must not point into `content/official-documents/`. Future translation batches should keep one PR focused on one source document or a clearly assigned source group so agents do not edit one giant JSON file or the root shard manifests at the same time.
+
 ## Content Quality Rules
 
 - Full Russian translation must preserve legal meaning, conditions, exceptions, numbers, dates, article references, and institutional names.
@@ -24,4 +58,5 @@ This directory is the governed learner-facing layer for official primary sources
 
 - Draft validation may pass with partial, clearly marked placeholder content.
 - Strict validation must fail partial manifest coverage, missing chunk coverage, missing Russian fields, placeholder text, and non-approved QA.
+- Strict validation runs after root files and shards are combined, so missing document shards, QA shards, search projections, or shard/chunk mismatches block final release.
 - Any learner Russian content under `content/official-documents/` is a governance violation.

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "draft",
+  "officialDocumentId": "ley-24449-transito-seguridad-vial",
+  "entries": [
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--ley-24449-001",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--ley-24449-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

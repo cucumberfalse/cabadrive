@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { validatePrimarySources } from "../scripts/primary-sources-validation.mjs";
+import {
+  combinePrimarySourceShards,
+  validatePrimarySources,
+  validatePrimarySourcesFromFiles
+} from "../scripts/primary-sources-validation.mjs";
 
 const doc1Text = "# Doc One\nArticulo 1\nTexto oficial uno.";
 const doc2Text = "# Doc Two\nArticulo 1\nTexto oficial dos.";
@@ -219,17 +222,249 @@ function validate(overrides = {}) {
 }
 
 test("current repository draft primary-source corpus passes draft validation", () => {
+  assert.deepEqual(validatePrimarySourcesFromFiles({ mode: "draft" }), []);
+});
+
+test("primary-source shard directory loading combines document, QA, and search shards", () => {
+  const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
+  const qaRoot = { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] };
+  const searchRoot = { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] };
+  const combined = combinePrimarySourceShards({
+    corpus: corpusRoot,
+    qa: qaRoot,
+    searchIndex: searchRoot,
+    shardFiles: {
+      "content/primary-sources/documents/doc-1.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: corpus().documents[0]
+      },
+      "content/primary-sources/qa/doc-1.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: qa().documents[0]
+      },
+      "content/primary-sources/search/doc-1.search.json": {
+        version: 1,
+        schema: "primary-sources-search-shard.v1",
+        entries: searchIndex().entries
+      },
+      "content/primary-sources/search/doc-1.ignored.json": {
+        version: 1,
+        schema: "ignored"
+      }
+    }
+  });
+
+  assert.deepEqual(combined.errors, []);
+  assert.equal(combined.corpus.documents.length, 1);
+  assert.equal(combined.qa.documents.length, 1);
+  assert.equal(combined.searchIndex.entries.length, 2);
   assert.deepEqual(
-    validatePrimarySources({
-      manifest: JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8")),
-      corpus: JSON.parse(readFileSync("content/primary-sources/primary-sources.ru.json", "utf8")),
-      coverage: JSON.parse(readFileSync("content/primary-sources/primary-sources.coverage.json", "utf8")),
-      qa: JSON.parse(readFileSync("content/primary-sources/primary-sources.qa.json", "utf8")),
-      searchIndex: JSON.parse(readFileSync("content/primary-sources/primary-sources.search.json", "utf8")),
-      mode: "draft"
+    validate({
+      corpus: combined.corpus,
+      qa: combined.qa,
+      searchIndex: combined.searchIndex,
+      learnerContentPaths: combined.learnerContentPaths
     }),
     []
   );
+});
+
+test("future document shards are discovered without root file list edits", () => {
+  const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
+  const qaRoot = { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] };
+  const searchRoot = { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] };
+  const doc2 = {
+    ...corpus().documents[0],
+    officialDocumentId: "doc-2",
+    title: "Doc Two",
+    archiveLocalPath: "content/official-documents/documents/doc-2.md",
+    chunks: [
+      {
+        ...corpus().documents[0].chunks[0],
+        chunkId: "doc-2--001",
+        officialDocumentId: "doc-2",
+        originalSpanish: doc2Text,
+        sourceSpan: { startLine: 1, endLine: 3 },
+        sourceFingerprint: `sha256:${doc2Hash}`
+      }
+    ]
+  };
+  const doc2Qa = {
+    officialDocumentId: "doc-2",
+    chunks: [
+      {
+        chunkId: "doc-2--001",
+        translationQa: { status: "approved", checkedAt: "2026-05-09" },
+        simplificationQa: { status: "approved", checkedAt: "2026-05-09" }
+      }
+    ]
+  };
+  const doc2Search = {
+    entryId: "doc-2--001",
+    officialDocumentId: "doc-2",
+    chunkId: "doc-2--001",
+    textFields: ["title", "fullTranslationRu", "simpleRu", "originalSpanish"]
+  };
+
+  const combined = combinePrimarySourceShards({
+    corpus: corpusRoot,
+    qa: qaRoot,
+    searchIndex: searchRoot,
+    shardFiles: {
+      "content/primary-sources/documents/doc-1.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: corpus().documents[0]
+      },
+      "content/primary-sources/documents/doc-2.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: doc2
+      },
+      "content/primary-sources/qa/doc-1.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: qa().documents[0]
+      },
+      "content/primary-sources/qa/doc-2.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: doc2Qa
+      },
+      "content/primary-sources/search/doc-1.search.json": {
+        version: 1,
+        schema: "primary-sources-search-shard.v1",
+        entries: searchIndex().entries
+      },
+      "content/primary-sources/search/doc-2.search.json": {
+        version: 1,
+        schema: "primary-sources-search-shard.v1",
+        entries: [doc2Search]
+      }
+    }
+  });
+
+  assert.deepEqual(combined.errors, []);
+  assert.deepEqual(
+    combined.corpus.documents.map((document) => document.officialDocumentId).sort(),
+    ["doc-1", "doc-2"]
+  );
+  assert.deepEqual(
+    combined.learnerContentPaths.filter((path) => path.includes("doc-2")),
+    [
+      "content/primary-sources/documents/doc-2.ru.json",
+      "content/primary-sources/qa/doc-2.qa.json",
+      "content/primary-sources/search/doc-2.search.json"
+    ]
+  );
+});
+
+test("primary-source shard loading reports missing referenced shards", () => {
+  const combined = combinePrimarySourceShards({
+    corpus: { ...corpus(), documents: [], documentShards: ["content/primary-sources/documents/missing.ru.json"] },
+    qa: qa(),
+    searchIndex: searchIndex(),
+    shardFiles: {}
+  });
+
+  assert(combined.errors.includes("content/primary-sources/documents/missing.ru.json: shard file is missing."));
+});
+
+test("primary-source shard loading rejects non-array root shard fields", () => {
+  const combined = combinePrimarySourceShards({
+    corpus: {
+      ...corpus(),
+      documents: [],
+      documentShards: "content/primary-sources/documents/doc-1.ru.json",
+      documentShardDirectories: { path: "content/primary-sources/documents" }
+    },
+    qa: {
+      ...qa(),
+      documents: [],
+      qaShards: { path: "content/primary-sources/qa/doc-1.qa.json" },
+      qaShardDirectories: "content/primary-sources/qa"
+    },
+    searchIndex: {
+      ...searchIndex(),
+      entries: [],
+      searchShards: "content/primary-sources/search/doc-1.search.json",
+      searchShardDirectories: { path: "content/primary-sources/search" }
+    },
+    shardFiles: {}
+  });
+
+  assert(combined.errors.includes("primary sources corpus.documentShards must be an array."));
+  assert(combined.errors.includes("primary sources corpus.documentShardDirectories must be an array."));
+  assert(combined.errors.includes("primary sources QA.qaShards must be an array."));
+  assert(combined.errors.includes("primary sources QA.qaShardDirectories must be an array."));
+  assert(combined.errors.includes("primary sources search index.searchShards must be an array."));
+  assert(combined.errors.includes("primary sources search index.searchShardDirectories must be an array."));
+});
+
+test("strict mode catches missing QA and search projections after shard combining", () => {
+  const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
+  const combined = combinePrimarySourceShards({
+    corpus: corpusRoot,
+    qa: { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] },
+    searchIndex: { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] },
+    shardFiles: {
+      "content/primary-sources/documents/doc-1.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: corpus().documents[0]
+      }
+    }
+  });
+
+  const errors = validate({
+    corpus: combined.corpus,
+    qa: combined.qa,
+    searchIndex: combined.searchIndex,
+    learnerContentPaths: combined.learnerContentPaths
+  });
+
+  assert(errors.includes("doc-1--001: learner chunk is missing QA metadata."));
+  assert(errors.includes("doc-1--001: learner chunk is missing search projection entry in strict mode."));
+});
+
+test("strict mode catches missing translations after shard combining", () => {
+  const shardDocument = corpus().documents[0];
+  delete shardDocument.chunks[0].fullTranslationRu;
+  delete shardDocument.chunks[0].simpleRu;
+  const combined = combinePrimarySourceShards({
+    corpus: { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] },
+    qa: { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] },
+    searchIndex: { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] },
+    shardFiles: {
+      "content/primary-sources/documents/doc-1.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: shardDocument
+      },
+      "content/primary-sources/qa/doc-1.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: qa().documents[0]
+      },
+      "content/primary-sources/search/doc-1.search.json": {
+        version: 1,
+        schema: "primary-sources-search-shard.v1",
+        entries: searchIndex().entries
+      }
+    }
+  });
+
+  const errors = validate({
+    corpus: combined.corpus,
+    qa: combined.qa,
+    searchIndex: combined.searchIndex,
+    learnerContentPaths: combined.learnerContentPaths
+  });
+
+  assert(errors.includes("doc-1--001.fullTranslationRu must be a non-empty string in strict mode."));
+  assert(errors.includes("doc-1--001.simpleRu must be a non-empty string in strict mode."));
 });
 
 test("valid strict primary-source fixture passes", () => {

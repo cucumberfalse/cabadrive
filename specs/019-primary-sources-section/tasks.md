@@ -79,6 +79,11 @@
 
 ## Slices D-H: Translation And Simplification Content Batches
 
+- [x] D0-001 Add supported stable learner-source shard directory references for corpus, QA, and search root files.
+- [x] D0-002 Move current draft placeholder learner-source content into document, QA, and search shards without mass translation work.
+- [x] D0-003 Validate primary-source content after combining inline root data and referenced shards.
+- [x] D0-004 Add tests for shard loading, missing shard references, and strict QA/search projection failures after combining.
+- [x] D0-005 Document the sharding contract in `content/primary-sources/AGENTS.md` so D-H batches can edit one document's learner text, QA, and search projection independently.
 - [ ] T060 Create or update the shared terminology/glossary approach for consistent Russian legal/traffic terms.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
@@ -236,6 +241,22 @@
 - If new manifest entries land during implementation, coverage must expand before final release.
 - Navigation may become crowded; any grouping must keep the source reader visibly distinct from topic `Материалы`.
 - Bundle size/performance must be measured once full Russian and Spanish chunk data are imported.
+
+### Slice D0 Implementation Notes
+
+- Slice D0 ran in assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-content-shards` on branch `codex/016-primary-sources-content-shards`.
+- Implemented stable root-file shard directory references for the learner corpus, QA metadata, and search projection:
+  - `primary-sources.ru.json` uses `documentShardDirectories`.
+  - `primary-sources.qa.json` uses `qaShardDirectories`.
+  - `primary-sources.search.json` uses `searchShardDirectories`.
+- PR #85 review follow-up closed the parallelism gap from per-file shard lists: validators now auto-discover `documents/*.ru.json`, `qa/*.qa.json`, and `search/*.search.json` from stable directories so future per-document batches do not edit root JSON just to add a shard.
+- Added per-document shard directories under `content/primary-sources/documents/`, `content/primary-sources/qa/`, and `content/primary-sources/search/`.
+- Moved the existing draft placeholder for `ley-24449-transito-seguridad-vial` into one document shard, one QA shard, and one search shard. No mass translations or reviewed content batches were added in this slice.
+- Validator behavior remains centralized in `validatePrimarySources`; file-based validation now combines inline root data plus discovered/referenced shards before applying draft, coverage, strict, final, or release rules.
+- PR #85 review follow-up for `PRRT_kwDOSX65IM6A6EKR` added root manifest type validation so `documentShards`, `qaShards`, `searchShards`, `documentShardDirectories`, `qaShardDirectories`, and `searchShardDirectories` must be arrays when present instead of silently behaving as empty lists.
+- Strict/final validation still blocks missing manifest coverage, missing chunk coverage, missing full Russian, missing simple Russian, non-approved QA, missing search projection coverage, simplified Spanish fields, and learner Russian content under `content/official-documents/` after shard combination.
+- Sharding contract is recorded in `content/primary-sources/AGENTS.md` so future D-H batches can edit one document's learner text, QA, and search projection independently without contending on one giant JSON file or root shard lists.
+- Known limitation: only the existing placeholder document has learner content shards now; the remaining 18 documents and 5,222 chunks still require future translation/simplification batch shards.
 
 ### Slice A Implementation Notes
 
@@ -610,6 +631,17 @@
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 147 Node tests, 147 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #85 base sync over fresh PR #77 head on 2026-05-10:
+  - Fetched and merged `origin/codex/016-primary-sources-chunk-inventory` at `797353278c33f6a3762a4edf42afa617dde29a3c` into `codex/016-primary-sources-content-shards`.
+  - Merge completed with no conflict files while preserving PR #85 shard-loader work and PR #77 coverage generator fixes.
+  - Preserved the generated coverage inventory at 19 documents and 5,225 chunks.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `ley-26994-codigo-civil-comercial` has 3,261 chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `npm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring. The actual primary-source coverage mode was also run with `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` and passed with the same content-validation summary.
+  - `npm test` passed as the feasible full test command for this Node test-runner project: 153 tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
 - Slice B PR #74 standalone draft marker follow-up on 2026-05-10:
   - Addressed `PRRT_kwDOSX65IM6A6Kmh`: strict/final placeholder validation now rejects standalone draft markers including `DRAFT translation`, `draft rewrite`, `Черновой перевод`, and `Черновик`.
   - Added focused regression tests for standalone English and Russian draft markers in approved strict-mode learner content.
