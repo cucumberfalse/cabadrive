@@ -76,7 +76,7 @@
 
 ## Official Sources / `Источники` Flow (Planned)
 
-The `Источники` reader is planned by feature `016-primary-sources-section` and is not implemented in the current product yet.
+The `Источники` reader is planned by feature `019-primary-sources-section` and is not implemented in the current product yet.
 
 1. Open `Источники` as a distinct source-reference section, separate from topic-study `Материалы`.
 2. Browse or search official source documents from `content/official-documents/manifest.json`.

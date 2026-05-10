@@ -3,9 +3,9 @@
 ## Analyst Intake
 
 - Source request: `feature-request.md`.
-- Assigned feature: `016-primary-sources-section`.
-- Assigned worktree: `/Users/chap/devel/cabadrive-016-primary-sources-section`.
-- Assigned branch: `codex/016-primary-sources-section-intake`.
+- Assigned feature: `019-primary-sources-section`.
+- Assigned worktree: `/Users/chap/devel/cabadrive-016-primary-sources-section` (historical implementation label retained after feature-memory rename).
+- Assigned branch: `codex/016-primary-sources-section-intake` (historical implementation label retained after feature-memory rename).
 - Architect scope: feature memory only. This pass may create or update only `spec.md`, `plan.md`, and `tasks.md` in this feature folder. Product code, tests, content, durable docs, official archive files, commits, pushes, PRs, and review output are out of scope for this Architect pass.
 
 ## Context Reviewed
