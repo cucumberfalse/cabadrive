@@ -2,8 +2,8 @@
 
 ## Architect Planning Setup
 
-- [x] T001 Confirm assigned worktree is `/Users/chap/devel/cabadrive-016-primary-sources-section`.
-- [x] T002 Confirm active branch is `codex/016-primary-sources-section-intake`.
+- [x] T001 Confirm assigned worktree is `/Users/chap/devel/cabadrive-016-primary-sources-section` (historical implementation label retained after feature-memory rename).
+- [x] T002 Confirm active branch is `codex/016-primary-sources-section-intake` (historical implementation label retained after feature-memory rename).
 - [x] T003 Read `.specify/memory/constitution.md`.
 - [x] T004 Read `docs_project/README.md`.
 - [x] T005 Read `docs_project/project-idea.md`.
@@ -12,7 +12,7 @@
 - [x] T008 Read `docs_project/project/feature-inventory.md`.
 - [x] T009 Read `docs_project/screens/learning-and-exam-flows.md`.
 - [x] T010 Read `docs/specify/README.md`.
-- [x] T011 Read `specs/016-primary-sources-section/feature-request.md`.
+- [x] T011 Read `specs/019-primary-sources-section/feature-request.md`.
 - [x] T012 Read `content/official-documents/AGENTS.md`.
 - [x] T013 Inspect `content/official-documents/manifest.json` for current count/status context.
 - [x] T014 Read feature 010 UI/UX source-of-truth material from the parallel worktree as context only.
@@ -290,7 +290,7 @@
   - `git diff --check` passed with no output.
   - `pnpm run build`, `pnpm run test:e2e`, and `pnpm run preflight` were not run for this docs/process-only slice.
 - Additional Orchestrator verification after Slice A return:
-  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/016-primary-sources-section/{spec,plan,tasks}.md`
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - `pnpm run test` passed: 72 Node tests, 72 pass, 0 fail.
   - `git diff --check` remained passed with no output.
 - Conflict resolution pass on 2026-05-10:
@@ -304,6 +304,16 @@
   - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
 - PR #68 review follow-up on 2026-05-10:
   - Left final-head verification checklist tasks T130, T131, T135, and T136 open; Slice A command results remain historical process evidence only and do not satisfy final feature validation.
+- PR #68 P2 rename follow-up on 2026-05-10:
+  - Moved the active feature memory to `specs/019-primary-sources-section` to satisfy the current numeric-prefix rule after higher prefixes were present on the base branch.
+  - Updated durable docs and feature memory references to use `019-primary-sources-section`.
+  - Retained assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-section` and branch `codex/016-primary-sources-section-intake` as historical implementation labels, not feature-folder references.
+  - Preserved open final-head verification tasks T130, T131, T135, and T136.
+  - The requested old-id reference scan over `docs_project` and the current feature folder returned only the retained historical worktree/branch labels.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 112 Node tests, 112 pass, 0 fail.
+  - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
+  - `git diff --check` passed with no output.
 - Main refresh pass on 2026-05-10:
   - Fetched and merged `origin/main` at `65624107d856653e503e3f03fd1d51da83992984` into `codex/016-primary-sources-section-intake` while preserving PR #68 feature memory and open final-head verification tasks T130, T131, T135, and T136.
   - Resolved `docs_project/project/feature-inventory.md` by keeping current main learning-content polish wording and PR #68's planned `Источники` reader inventory entry plus official-primary-source boundary note.
