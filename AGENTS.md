@@ -42,9 +42,11 @@ The Orchestrator stays strictly in the Orchestrator role. When no current `featu
 
 Analyst is the only normal-flow role that may initiate user requirement clarification. Analyst sends concise clarification questions to Orchestrator; Orchestrator asks the user and returns the answers to Analyst. After Analyst handoff, Orchestrator, Architect, Implementation Agent, and Review Agent do not initiate new user requirement clarification; they use recorded assumptions, record Implementation Agent feedback for Architect disposition, or stop only for documented blocker exceptions such as safety, permissions, credentials, data-loss risk, repository conflicts or status ambiguity, or an unapproved human merge-owner decision.
 
-Orchestrator must assume parallel Orchestrators and agents may be active. Before starting a new repository-changing work item or assigning a new task slice, Orchestrator fetches or otherwise verifies latest `origin/main`, creates or requires a fresh isolated worktree/branch from that latest main, records the base context, and explicitly warns each subagent that parallel work may exist and that existing dirty diffs, branches, commits, PRs, and process memory must be preserved.
+Orchestrator must assume parallel Orchestrators and agents may be active. Before starting a new repository-changing work item or assigning a new task slice, Orchestrator verifies latest `main`, normally by fetching `origin/main`, creates or requires a fresh isolated worktree/branch from that verified base, records the base context, and explicitly warns each subagent that parallel work may exist and that existing dirty diffs, branches, commits, PRs, and process memory must be preserved. Fetch failure or unavailable base verification is a documented fallback or blocker, never permission to silently reuse stale local state.
 
-After Analyst creates the latest-main intake branch/worktree context and `feature-request.md`, Orchestrator takes that handoff forward by invoking Architect and later Implementation Agent and Review Agent as needed. That Analyst-created handoff context may continue through Architect planning and may be assigned as the single implementation PR slice when Orchestrator explicitly chooses that route; additional implementation task slices require their own latest-main isolated worktrees, branches, and PRs. If the user explicitly authorizes Orchestrator merge or auto-merge behavior, Orchestrator may continue without asking again through implementation, review, checks, final validation, and merge, but only after every merge-readiness gate is verified. Without that explicit authorization, a human remains the default final merge owner.
+At the start of every new repository-changing task, Orchestrator defaults to a fresh isolated environment based on latest verified `main`. The normal path is to fetch `origin main`, record the resulting `origin/main` base SHA, then create or assign a new worktree, branch, and PR slice from that verified base. If fetch fails, `origin/main` cannot be verified, or the only available environment is stale, dirty, or ambiguous, Orchestrator must stop for a documented blocker exception or record an explicit fallback with evidence; it must not silently reuse an old worktree or unknown base as if it were current.
+
+After Analyst creates the latest-main intake branch/worktree context and `feature-request.md`, Orchestrator takes that handoff forward by invoking Architect and later Implementation Agent and Review Agent as needed. That Analyst-created handoff context may continue through Architect planning and may be assigned as the single implementation PR slice when Orchestrator explicitly chooses that route; additional implementation task slices require their own latest-main isolated worktrees, branches, and PRs. If the user explicitly authorizes Orchestrator merge or auto-merge behavior, Orchestrator may continue without asking again through implementation, review, checks, final validation, cleanup handoff when applicable, and merge, but only after every merge-readiness gate is verified. Without that explicit authorization, a human remains the default final merge owner.
 
 If an agent realizes it has started direct repository changes before the required Orchestrator-first route or feature-memory prerequisites are satisfied, it must stop immediately, report the process failure to Orchestrator or the user, preserve all user and sibling-agent work, and wait for Orchestrator/user disposition. Recovery may adopt, revert, or salvage the accidental edits only when Orchestrator or the user explicitly authorizes that path and assigns the role-appropriate agent. Hidden continuation, silent role switching, destructive cleanup, and reverting work the current agent did not make are forbidden.
 
@@ -94,6 +96,8 @@ If an agent realizes it has started direct repository changes before the require
 - Invokes Architect, Implementation Agent, and Review Agent as needed after Analyst handoff.
 - Slices work into one branch and one PR per task, then delegates repository file changes to assigned agents.
 - Creates or requires isolated worktrees/branches/PR slices for assigned subagents and warns them that parallel agents may be active and existing work must be preserved.
+- Starts new repository-changing work from a fresh isolated environment based on latest verified `main`, normally `origin/main` after `git fetch origin main`, and records the base evidence before assigning implementation.
+- Treats fetch failure, unverified `origin/main`, stale base state, dirty candidate environments, or ambiguous startup state as a blocker or documented fallback; it does not continue by silently reusing stale work.
 - Keeps docs, specs, and PR state aligned through coordination and verification.
 - Tracks Implementation Agent feedback and invokes Architect to dispose each item as a task/ticket or an explicit not-needed decision.
 - Tracks the work cycle and cycle PR set before final validation. A work cycle is one repository-changing user request represented by one `specs/<feature-id>/` folder from latest-main startup through final validation, follow-up returns, completion, or escalation. The cycle PR set lists every contributing PR slice by purpose, branch, PR metadata, current or final head SHA, status, and whether it is included in final validation.
@@ -104,6 +108,7 @@ If an agent realizes it has started direct repository changes before the require
 - Treats any post-validation non-evidence change as making prior Architect and Analyst validation stale. Product behavior, durable workflow rules, templates, scoped implementation docs, code, tests, runtime files, CI, branch protection, review dispositions, or other non-evidence content changes must be routed back through role-appropriate follow-up and final validation.
 - Routes Analyst final-validation gaps to Architect for accept/task/ticket/dispose disposition before any follow-up development starts.
 - Must not directly edit repository files, including code, docs, specs, workflow files, or scripts.
+- Coordinates completion-time cleanup through a Cleanup Agent when completed agent-created local environments should be removed; Orchestrator must not directly delete local repository environments or delegate cleanup without validation evidence.
 - May proceed autonomously when repository memory, PR state, check state, and reviewer feedback give enough context to continue without product or architecture decisions.
 - May retry or rerun stuck, failed, or inconclusive checks when the cause is a clear workflow state; routes code, docs, content, spec, or test fixes to the proper subagent.
 - May perform GitHub-level coordination that does not edit repository files, including check/rerun coordination, review routing, merge-readiness checks, conflict/status inspection, and authorized merge actions.
@@ -139,14 +144,28 @@ If an agent realizes it has started direct repository changes before the require
 - Does not stage, commit, push, open implementation PRs, rerun checks, or merge while acting as Review Agent.
 - Must not switch into Analyst, Architect, Implementation Agent, or Orchestrator work during the same task. If fixes are needed, Orchestrator routes them to the proper role.
 
+### Cleanup Agent
+
+- Starts only from an explicit Orchestrator assignment that names the cleanup scope, approved cleanup roots, current active worktree exclusions, and evidence destination.
+- Owns local-disk cleanup of assigned completed agent-created Cabadrive environments only; it does not perform product, docs, specs, tests, review, PR, or merge work.
+- Runs a dry-run inventory before deletion and records candidate paths, branches, HEAD SHAs, remotes, worktree metadata, git status, upstream/unpushed state, PR state, lock/process checks, active process-memory checks, completion signals, and planned action.
+- Deletes a candidate only with positive proof that the path is inside an approved cleanup root, belongs to the Cabadrive repository remote or approved Cabadrive agent metadata, was agent-created, is inactive, is clean with no untracked work, has no unpushed commits, has no open or unresolved PR, is not locked, has no running process using it, is not referenced by active process memory, and has completion evidence.
+- Must preserve and record refusal evidence for any current, active, dirty, untracked, unpushed, no-upstream, open-PR, PR-lookup-failed, locked, running-process, ambiguous, user-owned, out-of-root, non-Cabadrive, or process-memory-referenced target.
+- Uses `git worktree remove <path>` for registered worktrees. Raw recursive deletion is forbidden for registered worktrees and may be used only for non-worktree generated artifacts when the cleanup assignment and evidence explicitly authorize it.
+- Must not edit repository files, stage, commit, push, open PRs, review, rerun checks, merge, change branch protection, touch secrets, touch production resources, or remove user-owned directories.
+- Records exact deletion commands, refusal reasons, unavailable checks, conservative outcomes, and post-cleanup confirmations before handing back to Orchestrator.
+- Must not switch into Analyst, Architect, Implementation Agent, Review Agent, or Orchestrator work during the same task. If cleanup scope is unclear or unsafe, stops and reports the blocker.
+
 ## Agent Boundaries
 
 - Non-Orchestrator active models must stop on new repository-changing requests unless Orchestrator has already assigned the role, worktree, branch, PR slice, and feature memory for that task.
 - One worker equals one worktree.
 - One implementation loop equals one branch and one PR.
 - One task slice equals one isolated worktree, one branch, and one PR.
-- New repository-changing work and each new task slice start from latest `origin/main` in a fresh isolated worktree/branch unless Orchestrator explicitly assigns the Analyst-created latest-main handoff branch as the single implementation PR slice.
+- New repository-changing work and each new task slice start from latest verified `main`, normally `origin/main` after fetch, in a fresh isolated worktree/branch unless Orchestrator explicitly assigns the Analyst-created latest-main handoff branch as the single implementation PR slice; fetch/base verification failure must be recorded as a blocker or explicit fallback.
 - Orchestrator must tell assigned subagents when parallel work may be active and must require preservation of existing dirty diffs, branches, commits, PRs, and process memory. Existing in-flight branches are not discarded merely because `main` advances; any update, rebase, merge, conflict, or replacement work is routed to the proper role and recorded.
+- Orchestrator startup uses latest verified `main` in a fresh isolated environment by default; fetch or base verification failure must be recorded as a blocker or explicit fallback before work proceeds.
+- Cleanup is a separate assigned role. Orchestrator coordinates cleanup, Cleanup Agent validates and executes cleanup, and ambiguous or active environments are preserved.
 - Large or risky work should be decomposed into atomic PR slices when separation lowers risk or clarifies gates, including source prerequisites, Architect dispositions, content implementation, metadata fixes, final strict gates, and review fixes.
 - Every repository-changing user request must be represented by its own `specs/<feature-id>/` folder before implementation.
 - Analyst-created feature folders start with `feature-request.md`; Architect then adds `spec.md`, `plan.md`, and `tasks.md`.
@@ -204,6 +223,7 @@ A task is complete only when the current PR head SHA has:
 - final Architect validation passed before final Analyst validation
 - final Analyst validation passed, with any Analyst feedback disposed by Architect before follow-up development
 - validation return counts within limits, or required new-feature-request escalation recorded
+- cleanup evidence or an explicit not-applicable/refusal record for any assigned cleanup scope
 - final guard evidence from GitHub state and local read-only checks
 - updated specs and docs where needed
 - only final human approval or merge mechanics remaining
