@@ -859,3 +859,13 @@
   - Conflict resolution in this file preserved DNRPA D4 evidence, Decreto D5 evidence from PR #104, and Anexo L evidence as D6. No learner-source shard conflict occurred.
   - Final diff scope against `origin/codex/019-primary-sources-content-batch-core-traffic-law`: add Anexo L document/QA/search shards and update this process memory only.
   - Rebase verification commands passed after conflict resolution: `npm run validate:content`; `npm run validate:content -- --coverage`; `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content`; `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs`; `git diff --check`; `node scripts/check-feature-memory.mjs --worktree`.
+- PR #105 D6 Anexo L review-fix verification on 2026-05-10:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--47-barandas-canalizadoras-de-transito-057` simple Russian text to preserve the reviewed legal numeric requirements: 70-90 cm height, 40 cm base width, 1 m length, at least 10 cm embedding when needed, and white/orange temporary versus white/red permanent color rules.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--48-carteles-preventivos-especiales-para-cruces-059` full Russian translation image links by copying all 15 Markdown image link paths verbatim from `originalSpanish`; local check confirmed 15 original links, 15 translated links, and exact ordered path equality.
+  - Confirmed the Anexo L search shard stores field references only (`title`, `fullTranslationRu`, `simpleRu`, `originalSpanish`) and does not mirror chunk text or image paths, so no search-shard text update was required.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
