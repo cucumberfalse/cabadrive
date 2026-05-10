@@ -924,6 +924,116 @@ test("blocking review finding collection detects current-head blocker signals", 
   assert.equal(findings.length, 3);
 });
 
+test("later trusted Codex approval clears stale current-head review-body blockers", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"] } },
+    reviews: [{
+      state: "COMMENTED",
+      body: "[P2] Fix this before merge",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "codex-bot" },
+      commit: { oid: headSha }
+    }, {
+      state: "APPROVED",
+      body: "",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "codex-bot" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.some((finding) => finding.source === "codex-review"), false);
+});
+
+test("later trusted Codex dismissal clears stale current-head review-body blockers", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"] } },
+    reviews: [{
+      state: "COMMENTED",
+      body: "[P2] Fix this before merge",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "codex-bot" },
+      commit: { oid: headSha }
+    }, {
+      state: "DISMISSED",
+      body: "",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "codex-bot" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.some((finding) => finding.source === "codex-review"), false);
+});
+
+test("latest trusted Gemini review body with blocking severity still blocks", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    config: { trustedReviewLoginsByAgent: { gemini: ["gemini-bot"] } },
+    reviews: [{
+      state: "APPROVED",
+      body: "",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "gemini-bot" },
+      commit: { oid: headSha }
+    }, {
+      state: "COMMENTED",
+      body: "High severity: this still blocks finalization",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "gemini-bot" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.filter((finding) => finding.source === "gemini-review").length, 1);
+});
+
+test("later trusted Codex non-severity comment clears stale review-body blocker without clearing native changes-requested", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"] } },
+    reviews: [{
+      state: "CHANGES_REQUESTED",
+      body: "[P2] Fix this before merge",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "codex-bot" },
+      commit: { oid: headSha }
+    }, {
+      state: "COMMENTED",
+      body: "Thanks, this looks addressed.",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "codex-bot" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.some((finding) => finding.source === "codex-review"), false);
+  assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
+});
+
+test("trusted review bodies from older commits do not block current-head finalization", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"] } },
+    reviews: [{
+      state: "COMMENTED",
+      body: "[P2] Fix this before merge",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "codex-bot" },
+      commit: { oid: "oldsha" }
+    }]
+  });
+
+  assert.deepEqual(findings, []);
+});
+
 test("older same-reviewer changes-requested review is superseded by approval on the same head", () => {
   const headSha = "abc1234";
   const findings = collectBlockingFindings({

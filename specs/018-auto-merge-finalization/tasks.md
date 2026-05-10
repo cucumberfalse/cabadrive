@@ -78,6 +78,7 @@
 - Current P2 known-issue decision implementation decision: `acceptedKnownIssueDecisionPending` now uses pending/open/unresolved/needs-owner-decision wording instead of the broad `owner decision` predicate. Accepted, resolved, disposed, not-applicable, and no-known-issue wording no longer blocks finalization, while `Owner decision: pending` and `needs owner decision` still block.
 - Current P2 final-validation-heading implementation decision: `verifyPostEffectiveHeadChanges()` now treats newly added final-validation note headings as evidence-only only when the heading is role-owned: `## Final Analyst Validation Notes` in `feature-request.md`, and `## Final Architect Validation Notes` in Architect-owned `spec.md`, `plan.md`, or `tasks.md`. Wrong-role headings and arbitrary peer headings remain non-evidence changes.
 - Current follow-up implementation decision: `CLAUDE.md` now treats Orchestrator-managed PRs as having standing repository workflow authorization for conservative finalization and merge after objective gates pass, while preserving PR-only delivery, Orchestrator no-file-edit boundaries, Implementation/Review no-merge boundaries, final Architect-before-Analyst validation, current/effective-head guards, and narrow exceptional human blockers.
+- Current review-fix implementation decision: trusted Codex/Gemini review-body blockers are now computed from the latest current-head review per trusted reviewer after commit filtering. Later same-reviewer `APPROVED` or `DISMISSED` reviews clear stale body-severity blockers, later non-severity `COMMENTED` reviews clear stale body-severity blockers only for the body-finding path, and native `CHANGES_REQUESTED` state remains governed separately by `applyNativeReviewState()`.
 
 ## Dead Ends
 
@@ -239,12 +240,19 @@
 - `pnpm run check:repo`: passed after `CLAUDE.md` follow-up alignment; "Repository baseline check passed."
 - `node --test tests/finalize-pr.test.mjs`: passed after `CLAUDE.md` follow-up alignment; 43 tests passed.
 - `pnpm run preflight`: passed after `CLAUDE.md` follow-up alignment; feature-memory gate, repo baseline, content validation, 163 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
+- `node --check scripts/finalize-pr.mjs`: passed after current trusted review-body supersession fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after current trusted review-body supersession fix; 48 tests passed, including later trusted Codex `APPROVED` and `DISMISSED` clearing stale body-severity blockers, latest trusted Gemini severity body still blocking, later non-severity Codex `COMMENTED` clearing only the body blocker while native `CHANGES_REQUESTED` remains blocking, and older-commit trusted body findings being ignored.
+- `git diff --check`: passed after current trusted review-body supersession fix; no whitespace errors reported.
+- `pnpm run check:repo`: passed after current trusted review-body supersession fix; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after current trusted review-body supersession fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `pnpm run preflight`: passed after current trusted review-body supersession fix; feature-memory gate, repo baseline, content validation, 168 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
 
 ## Cycle PR Set
 
 - Purpose: address PR #80 AI review P1 validated-effective-head gate and P2 accepted-known-issue decision parsing; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `a1abfc0b2981c5fab819ef189b47fbf97853d9c3`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
 - Purpose: address PR #80 AI review P2 final-validation heading allowance; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `44c056347dfa75c67466d72d289281052471ed96`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
 - Purpose: address failed Architect validation gap by aligning `CLAUDE.md` with standing Orchestrator finalization guidance; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `cc0dc8f845c4bfa56edc8eb3ca9a0411ff4780c4`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation rerun.
+- Purpose: address PR #80 review thread `PRRT_kwDOSX65IM6A7yWO` for superseded trusted Codex/Gemini review-body findings; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `1cdc824ad2c8368ac53cb464e7ab3f74d7e10fd7`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 
 ## Final Validation Evidence
 

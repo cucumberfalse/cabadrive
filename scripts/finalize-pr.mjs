@@ -257,6 +257,10 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
   }
 
   const nativeReviewStateByReviewer = new Map();
+  const trustedReviewBodyStateByReviewer = {
+    codex: new Map(),
+    gemini: new Map()
+  };
   for (const [index, review] of reviews.entries()) {
     const commitSha = review.commit?.oid || review.commit_id;
     if (commitSha && headSha && commitSha !== headSha) continue;
@@ -265,16 +269,22 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
     const submittedAtTime = Date.parse(review.submittedAt || review.submitted_at || review.createdAt || review.created_at || "");
     const order = Number.isNaN(submittedAtTime) ? index : submittedAtTime;
     applyNativeReviewState(nativeReviewStateByReviewer, reviewerKey, review, order);
-    if (isTrustedReviewLogin(login, "codex", config) && containsBlockingSeverity(review.body, "codex")) {
-      findings.push({ source: "codex-review", message: "A current-head Codex P0-P2 review finding remains." });
-    }
-    if (isTrustedReviewLogin(login, "gemini", config) && containsBlockingSeverity(review.body, "gemini")) {
-      findings.push({ source: "gemini-review", message: "A current-head Gemini critical/high finding remains." });
-    }
+    applyTrustedReviewBodyState(trustedReviewBodyStateByReviewer, "codex", reviewerKey, login, review, order, config);
+    applyTrustedReviewBodyState(trustedReviewBodyStateByReviewer, "gemini", reviewerKey, login, review, order, config);
   }
   for (const { review } of nativeReviewStateByReviewer.values()) {
     if (review.state === "CHANGES_REQUESTED") {
       findings.push({ source: "native-review", message: "A latest current-head changes-requested review remains." });
+    }
+  }
+  for (const { review } of trustedReviewBodyStateByReviewer.codex.values()) {
+    if (review.state !== "APPROVED" && review.state !== "DISMISSED" && containsBlockingSeverity(review.body, "codex")) {
+      findings.push({ source: "codex-review", message: "A current-head Codex P0-P2 review finding remains." });
+    }
+  }
+  for (const { review } of trustedReviewBodyStateByReviewer.gemini.values()) {
+    if (review.state !== "APPROVED" && review.state !== "DISMISSED" && containsBlockingSeverity(review.body, "gemini")) {
+      findings.push({ source: "gemini-review", message: "A current-head Gemini critical/high finding remains." });
     }
   }
 
@@ -318,6 +328,14 @@ function applyNativeReviewState(stateByReviewer, reviewerKey, review, order) {
   if (state === "CHANGES_REQUESTED" || state === "APPROVED" || state === "DISMISSED") {
     stateByReviewer.set(reviewerKey, { review, order });
   }
+}
+
+function applyTrustedReviewBodyState(stateByAgent, agent, reviewerKey, login, review, order, config) {
+  if (!isTrustedReviewLogin(login, agent, config)) return;
+  const stateByReviewer = stateByAgent[agent];
+  const current = stateByReviewer.get(reviewerKey);
+  if (current && order < current.order) return;
+  stateByReviewer.set(reviewerKey, { review, order });
 }
 
 export function readProcessEvidence(root, featurePath, currentHead = "") {
