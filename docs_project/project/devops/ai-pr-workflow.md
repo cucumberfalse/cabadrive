@@ -22,10 +22,12 @@ needed. It must not silently become Orchestrator, Analyst, Architect,
 Implementation Agent, or Review Agent, and it must not treat a direct user
 implementation request as a role handoff.
 
-Before starting any new repository-changing work item, Orchestrator fetches or
-otherwise verifies latest `origin/main`, creates or requires a fresh isolated
-worktree/branch from that latest main, records the base context, and preserves
-parallel work. When no current `feature-request.md` exists, Orchestrator
+Before starting any new repository-changing work item, Orchestrator verifies
+latest `main`, normally by fetching `origin/main`, creates or requires a fresh
+isolated worktree/branch from that verified base, records the base context, and
+preserves parallel work. Fetch failure or unavailable base verification is a
+documented fallback or blocker, never permission to silently reuse stale local
+state. When no current `feature-request.md` exists, Orchestrator
 invokes Analyst first for intake while remaining strictly in the Orchestrator
 role. Analyst creates the next numbered `specs/<feature-id>/` folder, writes the
 intake `feature-request.md`, hands off the latest-main intake branch/worktree
@@ -38,8 +40,10 @@ The Analyst-created latest-main handoff context may continue through Architect
 planning. Orchestrator may also assign that same handoff branch/worktree as the
 single implementation PR slice for the work cycle when it explicitly chooses
 that route. Additional implementation task slices always start from latest
-`origin/main` in their own isolated worktrees, branches, and PRs, with the
-active feature memory included or referenced as Orchestrator directs.
+verified `main`, normally `origin/main` after fetch, in their own isolated
+worktrees, branches, and PRs, with the active feature memory included or
+referenced as Orchestrator directs; fetch/base verification failure must be
+recorded as a blocker or explicit fallback.
 
 The Orchestrator controls development through production readiness by invoking
 Analyst, Architect, Implementation Agent, and Review Agent as needed. The
@@ -234,10 +238,12 @@ One task slice equals one isolated worktree, one branch, and one PR.
 Implementation PRs must not mix unrelated work or silently broaden scope beyond
 the assigned feature memory.
 
-Each new task slice starts from latest `origin/main`, records the base context,
-and receives its own isolated worktree, branch, and PR. Existing in-flight
-branches are not discarded merely because `main` advances. If merge readiness
-requires rebasing, merging, conflict resolution, or replacement work,
+Each new task slice starts from latest verified `main`, normally `origin/main`
+after fetch, records the base context, and receives its own isolated worktree,
+branch, and PR. Fetch/base verification failure must be recorded as a blocker
+or explicit fallback; stale local state must not be silently reused. Existing
+in-flight branches are not discarded merely because `main` advances. If merge
+readiness requires rebasing, merging, conflict resolution, or replacement work,
 Orchestrator routes that work to the proper role and records it in process
 memory and the cycle PR set.
 

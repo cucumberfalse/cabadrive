@@ -14,7 +14,7 @@
   - Architect planning starts from that handoff and must not perform cleanup, implementation, staging, commits, pushes, PR creation, or review.
 - Parallel-work constraints:
   - Parallel agents and Orchestrators may be active. All existing dirty diffs, branches, commits, PRs, process memory, active worktrees, and ambiguous local paths must be preserved.
-  - Coordination risk resolved and updated: after PR #72 merged, the latest `origin/main` is `578c618d02a45adffa9f2b18a9373495cf19ed8a`. This branch was rebased onto that base cleanly without conflicts. PR #72 adds product/content guide work, and `origin/main` still contains feature prefixes only through `018`, so this cleanup feature memory remains valid at `specs/019-orchestrator-cleanup-governance/`. Prior PR #66 rebase notes are historical/superseded latest-base evidence only.
+  - Coordination risk resolved and updated: after PR #69 merged, the assigned branch base/merge-base is `origin/main` `65624107d856653e503e3f03fd1d51da83992984`. This branch is based on that main state, and that base contains feature prefixes only through `018`, so this cleanup feature memory remains valid at `specs/019-orchestrator-cleanup-governance/`. Prior PR #66/PR #72 rebase notes are historical/superseded latest-base evidence only, and prior final validations are stale pending fresh rerun.
 
 ## Goal
 

@@ -41,7 +41,7 @@
 - Cycle PR set recording location: `[tasks.md, PR body, or other durable process evidence.]`
 - PR slice fields: `purpose`, `branch`, `PR metadata`, `head SHA`, `status`, `included in final validation`.
 - Analyst handoff handling: `[Whether latest-main intake branch continues only through planning or is assigned as the single PR slice.]`
-- Additional task-slice startup: `[How each additional slice verifies latest origin/main, handles fetch/base verification failure, and creates a fresh isolated worktree/branch/PR.]`
+- Additional task-slice startup: `[How each additional slice verifies latest main, normally origin/main after fetch, handles fetch/base verification failure as a documented fallback or blocker, and creates a fresh isolated worktree/branch/PR.]`
 
 ## Complexity Tracking
 

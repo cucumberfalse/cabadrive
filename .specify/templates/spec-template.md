@@ -15,7 +15,7 @@
 
 - Work cycle: `[One repository-changing user request represented by this feature folder, from latest-main startup through PR slices, final validation, completion, or escalation.]`
 - Cycle PR set expectations: `[How each PR slice will record purpose, branch, PR metadata, head SHA, status, and final-validation inclusion.]`
-- Latest-main startup rule: `[How new work and additional task slices verify latest origin/main and create fresh isolated worktrees/branches/PRs; note whether the Analyst handoff branch may be the single PR slice.]`
+- Latest-main startup rule: `[How new work and additional task slices verify latest main, normally origin/main after fetch, handle fetch/base verification fallback or blocker state, and create fresh isolated worktrees/branches/PRs; note whether the Analyst handoff branch may be the single PR slice.]`
 
 ## Goal
 

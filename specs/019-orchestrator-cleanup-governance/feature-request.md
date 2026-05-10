@@ -138,9 +138,9 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: PASS after final Analyst validation on 2026-05-10 following the PR #72 rebase. Latest PR #72 base is `578c618d02a45adffa9f2b18a9373495cf19ed8a`, current validation HEAD is `7d9a09a59227980c32534f51fb58ef33e8050c96`, and Architect final validation already passed on `7d9a09a`. The `019` feature prefix remains valid because the latest main spec maximum prefix before this feature is still `018`.
-- Analyst return count: 0.
-- Customer intent check: PASS. The intake still fully covers the user's requested governance change: Orchestrator should default each new repository-changing run to a fresh isolated environment from latest verified `main`; cleanup should be a first-class Cleanup Agent responsibility or explicitly equivalent role with positive-proof validation; one-time cleanup evidence must delete only old completed agent-created environments while preserving current, active, open-PR, dirty, ambiguous, and otherwise protected work; and implementation scope stays limited to process/governance plus the requested one-time cleanup.
-- Gaps: none.
-- Analyst routing gaps or new questions: none.
-- Architect disposition routing: none needed after Architect final validation PASS on `7d9a09a`; no Analyst gaps require routing back to Architect.
+- Status: STALE/PENDING after the PR #69 base update. The assigned branch base/merge-base is `origin/main` `65624107d856653e503e3f03fd1d51da83992984` from PR #69, and `019` remains valid because that base's main spec maximum prefix before this feature is still `018`. Prior final Architect/Analyst validation evidence from earlier heads, including the PR #72/`7d9a09a` cycle, is stale and must be rerun before completion.
+- Analyst return count: historical count remains 0; no fresh final Analyst validation has passed after the PR #69 base update.
+- Customer intent check: pending fresh final Analyst validation. The previous PASS is historical only.
+- Gaps: pending fresh validation.
+- Analyst routing gaps or new questions: none recorded for this P2 fix.
+- Architect disposition routing: pending fresh final validation after the P2 latest-base wording fix.

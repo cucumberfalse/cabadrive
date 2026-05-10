@@ -31,7 +31,7 @@ Claude Code is the default implementation agent unless repository policy says ot
 - If latest `main` cannot be fetched or verified, or the available environment is stale, dirty, or ambiguous, Orchestrator records a blocker or explicit fallback; implementation agents must not treat stale local state as current by assumption.
 - Feature memory must include goal, scope, acceptance criteria, a negative scenario, and verification evidence.
 - One task slice equals one isolated worktree, one branch, and one PR.
-- New repository-changing work and each new task slice start from latest `origin/main` in a fresh isolated worktree/branch unless Orchestrator explicitly assigns the Analyst-created latest-main handoff branch as the single implementation PR slice.
+- New repository-changing work and each new task slice start from latest verified `main`, normally `origin/main` after fetch, in a fresh isolated worktree/branch unless Orchestrator explicitly assigns the Analyst-created latest-main handoff branch as the single implementation PR slice; fetch/base verification failure must be recorded as a blocker or explicit fallback.
 - When Orchestrator assigns a task, follow the assigned worktree, branch, PR slice, recorded base context, and explicit parallel-work warning; preserve existing dirty diffs, branches, commits, PRs, and process memory from other agents.
 - Large or risky work should be split into atomic PR slices when separation lowers risk or clarifies gates, including source prerequisites, Architect dispositions, content implementation, metadata fixes, final strict gates, and review fixes.
 - Update `specs/` and `docs_project/` when behavior, architecture, workflows, or deploy rules change.
