@@ -11,6 +11,39 @@
       "id": "parking-clearances-and-corners",
       "slug": "parking-clearances-and-corners",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "caba_rf_divergence",
+          "rule_complexity",
+          "spanish_lexical_load",
+          "numbers_thresholds",
+          "trap_negation"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 4, красные 6; ответ легко спутать с привычками или ожиданиями из РФ; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 13 терминов, 5 заметок о ловушках, 3 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "445db97198ddeabd80f0c1da983f8f0787fcfb3ef18faeff933452d42a772a63",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 1,
+            "yellow": 4,
+            "red": 6
+          },
+          "ticketQuestionIdsSha256": "3d7043ec439ff4c562a9bff9bae6ddfc87c59d76041a3e34d318633f62778d9b",
+          "dominantDimensions": [
+            "caba_rf_divergence",
+            "rule_complexity",
+            "spanish_lexical_load",
+            "numbers_thresholds"
+          ]
+        }
+      },
       "titleRu": "Расстояния при парковке, углы и въезды",
       "summaryRu": "Экзаменационный блок про отступы у входов, углы/ochava, cordón, garaje, marcha atrás и несколько смешанных билетов, которые попали сюда по текущей taxonomy.",
       "learningMaterialRu": [
@@ -407,6 +440,39 @@
       "id": "parking-prohibitions-and-signed-zones",
       "slug": "parking-prohibitions-and-signed-zones",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "rule_complexity",
+          "spanish_lexical_load",
+          "trap_negation",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 3, красные 3; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 5 заметок о ловушках, 3 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "7b0a88b6b18865d0a85cdd12ddbd99582737c3ed643990d86216033c6dbdcf26",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 1,
+            "yellow": 3,
+            "red": 3
+          },
+          "ticketQuestionIdsSha256": "b4bdf57f951f54b96568c554169ce92369155e4d9ad58c7ed109d43fb832342f",
+          "dominantDimensions": [
+            "rule_complexity",
+            "spanish_lexical_load",
+            "trap_negation",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Запреты стоянки и знаки парковки",
       "summaryRu": "Экзаменационный блок про prohibido estacionar, Permitido Estacionar, acera izquierda/ambas aceras, yellow markings, isletas и знак no entry, который маскируется парковочным distractor.",
       "learningMaterialRu": [
@@ -756,6 +822,39 @@
       "id": "driver-hand-signals",
       "slug": "driver-hand-signals",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "visual_cue_load",
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "trap_negation"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 2, красные 0; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 8 терминов, 3 заметок о ловушках, 2 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "97fde5f15d549bf2eabd3c090bba3c97ff89ada1dfc38dc0ac3a3a30e8dcd8c2",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 3,
+            "yellow": 2,
+            "red": 0
+          },
+          "ticketQuestionIdsSha256": "d6a481b9611e2d589549756abaad53f334ae8810e1a87550c850bd9361e5e875",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "visual_cue_load",
+            "caba_rf_divergence",
+            "cross_topic_dependence"
+          ]
+        }
+      },
       "titleRu": "Жесты водителя и ручные сигналы",
       "summaryRu": "Короткий блок про ручные жесты водителя, аварийные предупреждения и ловушку seña/señal.",
       "learningMaterialRu": [
@@ -990,6 +1089,39 @@
       "id": "vehicle-lights-and-signaling",
       "slug": "vehicle-lights-and-signaling",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "cross_topic_dependence",
+          "spanish_lexical_load",
+          "visual_cue_load",
+          "rule_complexity",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 12, красные 6; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "f058e16e434ad09516e54dd8b39941c4f841178e68200eb219e72c905e582084",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 3,
+            "yellow": 12,
+            "red": 6
+          },
+          "ticketQuestionIdsSha256": "6b5a8b31f5daa88384769baa68cfae0831b7b9f63189da16de8a9792aff28d5b",
+          "dominantDimensions": [
+            "cross_topic_dependence",
+            "spanish_lexical_load",
+            "visual_cue_load",
+            "rule_complexity"
+          ]
+        }
+      },
       "titleRu": "Свет, поворотники и аварийная сигнализация",
       "summaryRu": "Экзаменационный блок про luces bajas/altas, rompeniebla, balizas, luz de giro и световое предупреждение маневра, остановки или аварийной ситуации.",
       "learningMaterialRu": [
@@ -1698,6 +1830,39 @@
       "id": "vehicle-condition-maintenance-loads",
       "slug": "vehicle-condition-maintenance-loads",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "trap_negation",
+          "rule_complexity",
+          "cross_topic_dependence",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 2, синие 8, желтые 8, красные 3; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; правило условное или требует разобрать ситуацию, а не угадать по одному слову; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 38 терминов, 7 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "dbcbcce6ca8f348e6a366aa179ce9117891f2c95bcb173da6f9b6500e3b62cce",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 2,
+            "blue": 8,
+            "yellow": 8,
+            "red": 3
+          },
+          "ticketQuestionIdsSha256": "6e4481f88f4417f5291316b7865ee30b28891e03818033b67053b3264118a3ed",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "trap_negation",
+            "rule_complexity",
+            "cross_topic_dependence"
+          ]
+        }
+      },
       "titleRu": "Состояние автомобиля, обслуживание и груз",
       "summaryRu": "Экзаменационный блок про техническое состояние, шины, масло, топливо, стекла, груз, буксировку, предметы в салоне и несколько смешанных билетов на границе с авариями, вниманием и административными вопросами.",
       "learningMaterialRu": [
@@ -2529,6 +2694,39 @@
       "id": "pedestrian-and-school-road-markings",
       "slug": "pedestrian-and-school-road-markings",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "cross_topic_dependence",
+          "spanish_lexical_load",
+          "caba_rf_divergence",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 4, красные 3; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 6 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "55c22c176bc19f932254db1f1438fc134e1802431c45116c446ebf14b7189d7c",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 2,
+            "yellow": 4,
+            "red": 3
+          },
+          "ticketQuestionIdsSha256": "91dda4ced89081ce04834f1ee3040a39e2e880eea3cfe9309e5cf53fb7da425a",
+          "dominantDimensions": [
+            "cross_topic_dependence",
+            "spanish_lexical_load",
+            "caba_rf_divergence",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Пешеходная и школьная разметка",
       "summaryRu": "Короткий блок про senda peatonal, школьную разметку, желтые intervenciones peatonales, линию остановки перед переходом и несколько ticket-specific ловушек про ochava и знак работ.",
       "learningMaterialRu": [
@@ -2939,6 +3137,39 @@
       "id": "pedestrian-school-zones-and-markings",
       "slug": "pedestrian-school-zones-and-markings",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 7, желтые 10, красные 8; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 34 терминов, 10 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "d3240d5d018811c293ecd5a8a45155c38155109d5a72a41ccbec14622310671d",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 7,
+            "yellow": 10,
+            "red": 8
+          },
+          "ticketQuestionIdsSha256": "c756d2bd3241578a282c419f90ad7c116df252b6f637a2cb6c0cb5accab5f5f4",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "caba_rf_divergence",
+            "cross_topic_dependence",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Пешеходы, школы и разметка зон",
       "summaryRu": "Блок про школьные зоны, prioridad peatón, sendas peatonales, green bicycle crossings, school-speed traps, ciclovía/bicisenda wording, ochava, yellow cordon, и парковку на уклоне в ticket-specific картинках.",
       "learningMaterialRu": [
@@ -3868,6 +4099,39 @@
       "id": "speed-limits",
       "slug": "speed-limits",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "numbers_thresholds",
+          "cross_topic_dependence",
+          "visual_cue_load",
+          "rule_complexity",
+          "trap_negation"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 19, красные 4; нужно удержать точное число, расстояние, срок или порог; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 16 терминов, 5 заметок о ловушках, 4 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "919b09130ef7996c36b3343f34d84fcf633caa0cfb4659ad4b84c3e321fec93f",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 2,
+            "yellow": 19,
+            "red": 4
+          },
+          "ticketQuestionIdsSha256": "bbbac8d8823c6574a40a69cec2cbb039fed3ba11dc5535ee43a0c5789125a0a0",
+          "dominantDimensions": [
+            "numbers_thresholds",
+            "cross_topic_dependence",
+            "visual_cue_load",
+            "rule_complexity"
+          ]
+        }
+      },
       "titleRu": "Лимиты скорости по типам дорог и зонам",
       "summaryRu": "Короткий экзаменационный блок про максимальную, минимальную и предупредительную скорость в CABA и на маршрутах.",
       "learningMaterialRu": [
@@ -4593,6 +4857,38 @@
       "id": "safe-distance-and-braking",
       "slug": "safe-distance-and-braking",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "rule_complexity",
+          "trap_negation",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 2, синие 3, желтые 5, красные 1; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 8 заметок о ловушках, 4 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "57caf3aa097c33e5649843532ce1c6a2304a50254a89e5570bfca9d7e1684aa0",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 2,
+            "blue": 3,
+            "yellow": 5,
+            "red": 1
+          },
+          "ticketQuestionIdsSha256": "b3415220727ae1d140b5bbde13199b7e1779b3e2cd761d0cff4b84bc03610ade",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "rule_complexity",
+            "trap_negation",
+            "numbers_thresholds"
+          ]
+        }
+      },
       "titleRu": "Дистанция, торможение и реакция",
       "summaryRu": "Блок про distancia mínima de seguridad, мокрую calzada, tiempo de reacción, campo visual, стекла, велосипедистов и узкую fuel-consumption ловушку.",
       "learningMaterialRu": [
@@ -5078,6 +5374,38 @@
       "id": "alcohol-drugs-and-impairment",
       "slug": "alcohol-drugs-and-impairment",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "trap_negation",
+          "numbers_thresholds",
+          "rule_complexity"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 5, желтые 10, красные 2; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог; правило условное или требует разобрать ситуацию, а не угадать по одному слову. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 3 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "b3642bf7a06e7a68fcc284a52db2fd18997fc44b9e638fd5234f58f83a208c82",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 1,
+            "blue": 5,
+            "yellow": 10,
+            "red": 2
+          },
+          "ticketQuestionIdsSha256": "d2d94e20c58a15c758af3457d9e02e531e79b714d96961c484dac9c718d40a0a",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "trap_negation",
+            "numbers_thresholds",
+            "rule_complexity"
+          ]
+        }
+      },
       "titleRu": "Алкоголь, препараты и состояние водителя",
       "summaryRu": "Блок про alcoholemia, отказ от проверки, состояние principiante, estupefacientes, medicamentos, resaca, cansancio и ticket-specific эффекты, которые ухудшают пригодность к управлению.",
       "learningMaterialRu": [
@@ -5709,6 +6037,39 @@
       "id": "adverse-weather-and-visibility",
       "slug": "adverse-weather-and-visibility",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "rule_complexity",
+          "cross_topic_dependence",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 2, синие 7, желтые 8, красные 1; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 22 терминов, 7 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "94e68f7c4100ad5a2ff73b622e85b398cb272c64cdfb4c4f22d0db50034a9358",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 2,
+            "blue": 7,
+            "yellow": 8,
+            "red": 1
+          },
+          "ticketQuestionIdsSha256": "036ad1c4dde78fcd12b617ba749ffae552cb897b92e35266b65dc8d803751507",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "rule_complexity",
+            "cross_topic_dependence",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Погода, видимость и сцепление",
       "summaryRu": "Экзаменационный блок про lluvia, niebla, viento fuerte, aquaplaning, торможение на мокрой дороге, сцепление, давление в шинах и безопасную адаптацию к плохой видимости.",
       "learningMaterialRu": [
@@ -6361,6 +6722,39 @@
       "id": "fatigue-distraction-and-attention",
       "titleRu": "Усталость, стресс и отвлечения",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "rule_complexity",
+          "trap_negation",
+          "cross_topic_dependence",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 3, синие 8, желтые 10, красные 2; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 34 терминов, 5 заметок о ловушках, 2 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "7acbfec39aae950fd53b523815a72ffbd1b1b0aae352598d58a2c930959fe70e",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 3,
+            "blue": 8,
+            "yellow": 10,
+            "red": 2
+          },
+          "ticketQuestionIdsSha256": "f579a18f829c39b257c6d63e2e7115015fbdb16b8fd93892b41b85cb6c91d0d2",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "rule_complexity",
+            "trap_negation",
+            "cross_topic_dependence"
+          ]
+        }
+      },
       "summaryRu": "Блок про fatiga, somnolencia, estrés, atención, teléfono celular, auriculares, пассажирские отвлечения, долгую поездку и несколько смешанных билетов, где правильный ответ сохраняет внимание и контроль.",
       "learningMaterialRu": [
         "Этот блок - неофициальная подсказка Cabadrive. В билетах про fatigue/distraction сначала спрашивайте: водитель сохраняет atención permanente и control del vehículo или делает что-то, что уводит слух, руки, взгляд или мышление от дороги?",
@@ -7183,6 +7577,39 @@
       "id": "road-types-highways-and-routes",
       "slug": "road-types-highways-and-routes",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "cross_topic_dependence",
+          "numbers_thresholds",
+          "visual_cue_load",
+          "rule_complexity",
+          "trap_negation"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 6, желтые 19, красные 1; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 18 терминов, 6 заметок о ловушках, 4 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "a374d956773052943f39c2e82d4f6b902c398e3cf7ad01aa6d0ca1d06bed5ccf",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 6,
+            "yellow": 19,
+            "red": 1
+          },
+          "ticketQuestionIdsSha256": "5eeeca290f8479bab3843e42077316809b8a4437e5c762766264b7f9745b17f6",
+          "dominantDimensions": [
+            "cross_topic_dependence",
+            "numbers_thresholds",
+            "visual_cue_load",
+            "rule_complexity"
+          ]
+        }
+      },
       "titleRu": "Типы дорог, трассы, автомагистрали и маршруты",
       "summaryRu": "Короткий блок про то, как в билетах распознавать calle, avenida, ruta, autopista, semiautopista, banquina и специальные быстрые участки.",
       "learningMaterialRu": [
@@ -7981,6 +8408,39 @@
       "id": "regulatory-signs",
       "slug": "regulatory-signs",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "visual_cue_load",
+          "cross_topic_dependence",
+          "spanish_lexical_load",
+          "trap_negation",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 13, желтые 10, красные 3; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 4 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "a846d05f2993b4706dd41f12029690d27b949c4823d5933a084f59c44bd7e8c2",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 13,
+            "yellow": 10,
+            "red": 3
+          },
+          "ticketQuestionIdsSha256": "fba64ffa55ea09e9ae3569df2ff12ee79f1f208128137e92890f4a987af8a9e8",
+          "dominantDimensions": [
+            "visual_cue_load",
+            "cross_topic_dependence",
+            "spanish_lexical_load",
+            "trap_negation"
+          ]
+        }
+      },
       "titleRu": "Запрещающие и предписывающие знаки",
       "summaryRu": "Экзаменационный блок про señales reglamentarias, похожие предупреждающие/информационные знаки и ловушки с обязательностью, запретом и классификацией.",
       "learningMaterialRu": [
@@ -8799,6 +9259,39 @@
       "id": "warning-signs",
       "slug": "warning-signs",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "visual_cue_load",
+          "cross_topic_dependence",
+          "spanish_lexical_load",
+          "caba_rf_divergence",
+          "trap_negation"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 1, синие 14, желтые 8, красные 6; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 19 терминов, 5 заметок о ловушках, 4 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "11111aad055e8d0a2b66aae9114997509d04ae38279e6e23a9f43b2496a4f39c",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 1,
+            "blue": 14,
+            "yellow": 8,
+            "red": 6
+          },
+          "ticketQuestionIdsSha256": "2d328aa0680a1b90c30cc4776032c047661844cdbfdc8bda2bef0bf52a0c2e1d",
+          "dominantDimensions": [
+            "visual_cue_load",
+            "cross_topic_dependence",
+            "spanish_lexical_load",
+            "caba_rf_divergence"
+          ]
+        }
+      },
       "titleRu": "Предупреждающие знаки и опасные участки",
       "summaryRu": "Экзаменационный блок про señales preventivas, опасные участки, форму/цвет знаков, временные работы и несколько ситуаций, где предупреждение связано с приоритетом или регулировкой движения.",
       "learningMaterialRu": [
@@ -9653,6 +10146,39 @@
       "id": "information-signs",
       "slug": "information-signs",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "visual_cue_load",
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "rule_complexity",
+          "trap_negation"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 2, красные 1; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 10 терминов, 4 заметок о ловушках, 2 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "3555c35d3ab51323aa94d37f1ca6e12d9629253a74d08d401d1885ab41d3bcc4",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 2,
+            "yellow": 2,
+            "red": 1
+          },
+          "ticketQuestionIdsSha256": "5e09355b89440a56c8dcdcb622fe47b10473433cf3f28cd48d2273d705e5843d",
+          "dominantDimensions": [
+            "visual_cue_load",
+            "caba_rf_divergence",
+            "cross_topic_dependence",
+            "rule_complexity"
+          ]
+        }
+      },
       "titleRu": "Информационные знаки, сервисы и ориентиры",
       "summaryRu": "Экзаменационный блок про señales informativas: сервисные и ориентирующие знаки, которые сообщают место или услугу, а не вводят запрет.",
       "learningMaterialRu": [
@@ -9887,6 +10413,39 @@
       "id": "traffic-lights-and-rail-crossings",
       "slug": "traffic-lights-and-rail-crossings",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "caba_rf_divergence",
+          "spanish_lexical_load",
+          "rule_complexity",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 12, красные 10; ответ легко спутать с привычками или ожиданиями из РФ; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 28 терминов, 7 заметок о ловушках, 6 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "dbffbffa9f6241baad9998787967ea1d03f522b92c7c5d3f5b21efa258392e8d",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 4,
+            "yellow": 12,
+            "red": 10
+          },
+          "ticketQuestionIdsSha256": "bf9907dc9f7268b4f7b8e33b602250022cffb3023df8a69d43e3d6a55090c34d",
+          "dominantDimensions": [
+            "caba_rf_divergence",
+            "spanish_lexical_load",
+            "rule_complexity",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Светофоры, переезды и сигналы регулирования",
       "summaryRu": "Экзаменационный блок про semáforos, luces intermitentes, cruces ferroviarios, barreras и правила перекрестков sin semáforos.",
       "learningMaterialRu": [
@@ -10773,6 +11332,39 @@
       "id": "right-of-way-signals-and-rail-crossings",
       "slug": "right-of-way-signals-and-rail-crossings",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "rule_complexity",
+          "spanish_lexical_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 0, желтые 7, красные 5; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 16 терминов, 7 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "d15d75472f88d93948dd13b308b36977a0278fb17c412e98a711d0a8dc9416a2",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 0,
+            "yellow": 7,
+            "red": 5
+          },
+          "ticketQuestionIdsSha256": "bc58138383d4155f16186fc7715f034eaad6f178a25f2b8e50207048fd115e55",
+          "dominantDimensions": [
+            "caba_rf_divergence",
+            "cross_topic_dependence",
+            "rule_complexity",
+            "spanish_lexical_load"
+          ]
+        }
+      },
       "titleRu": "Приоритет при сигналах и переездах",
       "summaryRu": "Практический блок про prioridad de paso, semáforos, señalización intermitente, señales transitorias, cruces sin semáforo и paso a nivel ferroviario.",
       "learningMaterialRu": [
@@ -11248,6 +11840,39 @@
       "id": "right-of-way-basic-intersections",
       "slug": "right-of-way-basic-intersections",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "visual_cue_load",
+          "spanish_lexical_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 7, желтые 11, красные 6; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "efe538a7124015ca270bef740d7e92e3525478d098f76ee19714b84d2dc79614",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 7,
+            "yellow": 11,
+            "red": 6
+          },
+          "ticketQuestionIdsSha256": "f9361ee7c96d1c524d6493d5568d6c5f8c558480ffe4f753f808385a3da5f061",
+          "dominantDimensions": [
+            "caba_rf_divergence",
+            "cross_topic_dependence",
+            "visual_cue_load",
+            "spanish_lexical_load"
+          ]
+        }
+      },
       "titleRu": "Базовый приоритет на перекрестках",
       "summaryRu": "Блок про prioridad de paso на обычных cruces/encrucijadas, порядок autoridad-señales-normas, правило avenida/calle/derecha, запрет блокировать перекресток и билеты-ловушки со знаками, перестроением, задним ходом и плохой видимостью.",
       "learningMaterialRu": [
@@ -12023,6 +12648,39 @@
       "id": "right-of-way-special-situations",
       "slug": "right-of-way-special-situations",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "rule_complexity",
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 10, красные 7; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 23 терминов, 5 заметок о ловушках, 7 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "bf58c21edead46e541607c6bcb9c5ee37951db1d38813007567ff532d13ecbeb",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 4,
+            "yellow": 10,
+            "red": 7
+          },
+          "ticketQuestionIdsSha256": "18e674e76d3104709c68fb3e3e95d0d22c6dcff7297dabaa250f93cbccf6dc01",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "rule_complexity",
+            "caba_rf_divergence",
+            "cross_topic_dependence"
+          ]
+        }
+      },
       "titleRu": "Особые ситуации уступания и приоритета",
       "summaryRu": "Экзаменационный блок про rotondas, obstrucción/estrechamiento, pendiente, emergencia, incorporación al tránsito, bocina, giro и порядок autoridad-señalización-normas.",
       "learningMaterialRu": [
@@ -12736,6 +13394,39 @@
       "id": "documents-licenses-and-insurance",
       "slug": "documents-licenses-and-insurance",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "legal_admin_terms",
+          "caba_rf_divergence",
+          "trap_negation",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 18, красные 10; есть испанские термины или плотная формулировка для A1-уровня; используется юридико-административная лексика; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 24 терминов, 8 заметок о ловушках, 10 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "adda9a9745092a2188dd2a615b6acfd9e8ab0292f8cf299112dd2111693d4fd2",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 2,
+            "yellow": 18,
+            "red": 10
+          },
+          "ticketQuestionIdsSha256": "51d08c4f3a4419a0b8411ad2bc49473cb45f75ff453b0b13430efe7f0884ddfa",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "legal_admin_terms",
+            "caba_rf_divergence",
+            "trap_negation"
+          ]
+        }
+      },
       "titleRu": "Документы, лицензия, VTV, страховка и номера",
       "summaryRu": "Экзаменационный блок про документы для движения, cédula, licencia, VTV, seguro, chapa patente, scoring и административные последствия нарушений.",
       "learningMaterialRu": [
@@ -13701,6 +14392,39 @@
       "id": "authorities-controls-and-sanctions",
       "slug": "authorities-controls-and-sanctions",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "cross_topic_dependence",
+          "spanish_lexical_load",
+          "legal_admin_terms",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 4, красные 5; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; используется юридико-административная лексика; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 6 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "0d5e4090bebf71406d8ed2d5fc1abbc676d918ce54060491e8a02b1817bac744",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 3,
+            "yellow": 4,
+            "red": 5
+          },
+          "ticketQuestionIdsSha256": "cad9bb3b31f1ca75e9eb9c5e91ea6d95cd6db16d43221b98b4990793cd8c61a4",
+          "dominantDimensions": [
+            "cross_topic_dependence",
+            "spanish_lexical_load",
+            "legal_admin_terms",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Регулировщики, контроль и санкции",
       "summaryRu": "Блок про autoridad/agente, указания на месте, проверки alcoholemia, retención de licencia, remoción del vehículo, conductor principiante и Scoring.",
       "learningMaterialRu": [
@@ -14219,6 +14943,39 @@
       "id": "safety-principles-and-risk",
       "slug": "safety-principles-and-risk",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "trap_negation",
+          "spanish_lexical_load",
+          "visual_cue_load",
+          "rule_complexity",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 4, синие 11, желтые 14, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 25 терминов, 8 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "5c8f814dd6c66e71b2e0857b452d9463a4c1dec28dcadffb4c362aeeecc6cdc9",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 4,
+            "blue": 11,
+            "yellow": 14,
+            "red": 0
+          },
+          "ticketQuestionIdsSha256": "ff9a8e01c5a272b72b8599325da46587cc199003edf3e9968c49dd7c30b01e6b",
+          "dominantDimensions": [
+            "trap_negation",
+            "spanish_lexical_load",
+            "visual_cue_load",
+            "rule_complexity"
+          ]
+        }
+      },
       "titleRu": "Базовые принципы безопасности и риска",
       "summaryRu": "Экзаменационный блок про fluidez y seguridad, conducción preventiva, факторы риска, элементы безопасности автомобиля, VTV и ответственность пользователя дороги.",
       "learningMaterialRu": [
@@ -15080,6 +15837,39 @@
       "id": "stopping-vs-parking-maneuvers",
       "slug": "stopping-vs-parking-maneuvers",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "visual_cue_load",
+          "spanish_lexical_load",
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 5, желтые 11, красные 11; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "7c79052e79fb7223c8f2a8791085c2b5ab8af3246b9499a9783fdf9cde079207",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 5,
+            "yellow": 11,
+            "red": 11
+          },
+          "ticketQuestionIdsSha256": "f44d6ea6820b13be78fe2b798ce5ffc56633833d0caab69d2404d7b44afde283",
+          "dominantDimensions": [
+            "visual_cue_load",
+            "spanish_lexical_load",
+            "caba_rf_divergence",
+            "cross_topic_dependence"
+          ]
+        }
+      },
       "titleRu": "Остановка, стоянка и маневры парковки",
       "summaryRu": "Экзаменационный блок про diferencia entre detención y estacionamiento, double fila, balizas, въезд в garaje, banquina, emergency vehicles, PARE и знаки, которые маскируются под parking-тему.",
       "learningMaterialRu": [
@@ -15846,6 +16636,39 @@
       "id": "center-lines-and-crossing-rules",
       "slug": "center-lines-and-crossing-rules",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "trap_negation",
+          "visual_cue_load",
+          "cross_topic_dependence",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 6, красные 1; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 5 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "5111ceabe4ffa81b4bdcff779b628a489f8bdd373b449844907a7411003e5211",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 1,
+            "yellow": 6,
+            "red": 1
+          },
+          "ticketQuestionIdsSha256": "e05406e4164bfe7a97cb46f479be670e77e93231f9383f3e95788e1669c37821",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "trap_negation",
+            "visual_cue_load",
+            "cross_topic_dependence"
+          ]
+        }
+      },
       "titleRu": "Осевые линии и правила пересечения разметки",
       "summaryRu": "Короткий блок про demarcación horizontal: когда линию можно пересекать, когда нельзя traspasar/circular sobre ella, и как не спутать осевую линию с пешеходной или успокаивающей разметкой.",
       "learningMaterialRu": [
@@ -16220,6 +17043,39 @@
       "id": "lane-and-channelization-markings",
       "slug": "lane-and-channelization-markings",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "trap_negation",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 10, красные 6; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 18 терминов, 7 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "7f689529cae9e5d0cbd0b501838cc3d31051915bce07b45944df6bf05d744bbb",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 2,
+            "yellow": 10,
+            "red": 6
+          },
+          "ticketQuestionIdsSha256": "08b4da00ff5f44e2652c9c12d29b5dfd8d705fb3695c6e90f7c55d8534b3811c",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "caba_rf_divergence",
+            "cross_topic_dependence",
+            "trap_negation"
+          ]
+        }
+      },
       "titleRu": "Полосы, островки и направляющая разметка",
       "summaryRu": "Блок про carriles, carriles exclusivos, carril de sobrepaso/aceleración/desaceleración, isletas, marcas canalizadoras, временные orange devices и запреты менять полосу.",
       "learningMaterialRu": [
@@ -16849,6 +17705,39 @@
       "id": "lane-choice-and-lane-changes",
       "slug": "lane-choice-and-lane-changes",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "spanish_lexical_load",
+          "rule_complexity",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 3, красные 2; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "51dd58225d2403bbb9920fbbf267b25539bf376c948aea0781c118706a0b170c",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 2,
+            "yellow": 3,
+            "red": 2
+          },
+          "ticketQuestionIdsSha256": "d4a449f5b471e515aaf3f1b60bba2507cdca8ae52eb8f0af3ba0964d9348e220",
+          "dominantDimensions": [
+            "caba_rf_divergence",
+            "cross_topic_dependence",
+            "spanish_lexical_load",
+            "rule_complexity"
+          ]
+        }
+      },
       "titleRu": "Выбор полосы и перестроение",
       "summaryRu": "Блок про cambio de carril, carril derecho/izquierdo, carriles exclusivos, carril de aceleración/deceleración и безопасный возврат в полосу.",
       "learningMaterialRu": [
@@ -17164,6 +18053,39 @@
       "id": "public-transport-and-exclusive-lanes",
       "slug": "public-transport-and-exclusive-lanes",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "caba_rf_divergence",
+          "spanish_lexical_load",
+          "visual_cue_load",
+          "cross_topic_dependence",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 2, красные 1; ответ легко спутать с привычками или ожиданиями из РФ; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "692a31bf6129951e4fe503e93860ce5c0ccb30108abb282f39b0be3145f26561",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 2,
+            "yellow": 2,
+            "red": 1
+          },
+          "ticketQuestionIdsSha256": "258be9d06994b91573e99a9225ea99e4f530f451acf995e515809a391c718e60",
+          "dominantDimensions": [
+            "caba_rf_divergence",
+            "spanish_lexical_load",
+            "visual_cue_load",
+            "cross_topic_dependence"
+          ]
+        }
+      },
       "titleRu": "Общественный транспорт и выделенные полосы",
       "summaryRu": "Блок про Metrobus, carril exclusivo, colectivos autorizados, terminal de ómnibus и разметку/знаки мест остановки транспорта.",
       "learningMaterialRu": [
@@ -17439,6 +18361,39 @@
       "id": "sustainable-mobility-and-vulnerable-users",
       "slug": "sustainable-mobility-and-vulnerable-users",
       "status": "draft",
+      "difficulty": "blue",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "simple_common_spanish",
+          "spanish_lexical_load",
+          "caba_rf_divergence",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Обычная сложность по материалу: связанные билеты распределены как зеленые 4, синие 1, желтые 0, красные 0; знакомая дорожная логика и простая формулировка; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "63b3b8f923471de52329527b31a5e016655a2f360e349fe5e69527bf81734703",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 4,
+            "blue": 1,
+            "yellow": 0,
+            "red": 0
+          },
+          "ticketQuestionIdsSha256": "8d0e6c029889ffdc8ef351df5350d370901c85c4af5dfdddcbac3fb66cc171b3",
+          "dominantDimensions": [
+            "simple_common_spanish",
+            "spanish_lexical_load",
+            "caba_rf_divergence",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Устойчивая мобильность и уязвимые участники",
       "summaryRu": "Блок про movilidad sustentable, выбор менее конфликтного транспорта, Metrobus/carril exclusivo и билетные сравнения риска по изображениям.",
       "learningMaterialRu": [
@@ -17719,6 +18674,39 @@
       "id": "vulnerable-users-and-shared-spaces",
       "slug": "vulnerable-users-and-shared-spaces",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 1, желтые 4, красные 4; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 8 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "2055802a4f7d874d3be3c5d04755cdf5fbdb5172a5d47e45127282457d36784a",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 1,
+            "blue": 1,
+            "yellow": 4,
+            "red": 4
+          },
+          "ticketQuestionIdsSha256": "be0d8959817c63a4893f1376bb1496e9b3ace87ade78c4e0f5d03691a3a687a0",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "caba_rf_divergence",
+            "cross_topic_dependence",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Уязвимые участники и совместное пространство",
       "summaryRu": "Блок про peatón/ciclista, movilidad sustentable, bicisenda/ciclovía, общую обязанность не мешать движению и приоритет велосипедиста при повороте автомобиля.",
       "learningMaterialRu": [
@@ -18156,6 +19144,39 @@
       "id": "bicycles-and-micromobility",
       "slug": "bicycles-and-micromobility",
       "status": "draft",
+      "difficulty": "red",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "caba_rf_divergence",
+          "cross_topic_dependence",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 5, желтые 11, красные 8; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 28 терминов, 8 заметок о ловушках, 6 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "f966577d48ab0a24d4a8ee67fc0efb29986e36387f62d87451a3e857c15768d0",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 5,
+            "yellow": 11,
+            "red": 8
+          },
+          "ticketQuestionIdsSha256": "b80dc6f984dca5799da21736700a9404c2d7ff3530387e7d0316231b1e656e73",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "caba_rf_divergence",
+            "cross_topic_dependence",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Велосипеды, ciclorodados и микромобильность",
       "summaryRu": "Блок про bicisenda/ciclovía, ciclorrodados, DMP, движение велосипедистов, приоритет около велоинфраструктуры, парковку, груз, возраст и скорость assisted bike.",
       "learningMaterialRu": [
@@ -19022,6 +20043,39 @@
       "id": "mirrors-blind-spots-and-visibility",
       "slug": "mirrors-blind-spots-and-visibility",
       "status": "draft",
+      "difficulty": "blue",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "rule_complexity",
+          "spanish_lexical_load",
+          "trap_negation",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Обычная сложность по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 1, красные 0; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 15 терминов, 5 заметок о ловушках, 3 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "8d18c1d842f29107f894e09831f0d078389cc1d52b683257ab12006bc8476a5d",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 4,
+            "yellow": 1,
+            "red": 0
+          },
+          "ticketQuestionIdsSha256": "b83d54a625c204e4886aeedd4ab08a75c8e47b2c667d34c4a4d27aa2bcb2e436",
+          "dominantDimensions": [
+            "rule_complexity",
+            "spanish_lexical_load",
+            "trap_negation",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Зеркала, слепые зоны и обзор",
       "summaryRu": "Блок про espejos retrovisores, punto ciego, настройку зеркал до начала движения и ловушку с visibilidad в велосипедном билете.",
       "learningMaterialRu": [
@@ -19321,6 +20375,39 @@
       "id": "occupant-protection",
       "slug": "occupant-protection",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "trap_negation",
+          "rule_complexity",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 4, желтые 6, красные 5; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 6 заметок о ловушках, 3 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "bae3fa6e21ff8dce6d085ad36672b9fb196969c8411fd224852b162cd7f8d182",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 1,
+            "blue": 4,
+            "yellow": 6,
+            "red": 5
+          },
+          "ticketQuestionIdsSha256": "94f49437ad8692db88ef1e01752d3afa2a5a92f345dfa1c96c58069f30ba1f88",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "trap_negation",
+            "rule_complexity",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Ремни, детские кресла и подголовники",
       "summaryRu": "Экзаменационный блок про cinturón de seguridad, Sistema de Retención Infantil, airbag, apoyacabeza, chaleco reflectivo и безопасную перевозку пассажиров/животных.",
       "learningMaterialRu": [
@@ -19899,6 +20986,39 @@
       "id": "emergency-response-and-crash-scene",
       "slug": "emergency-response-and-crash-scene",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "trap_negation",
+          "spanish_lexical_load",
+          "rule_complexity",
+          "visual_cue_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 3, синие 10, желтые 9, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 7 заметок о ловушках, 8 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "95d5a374f8444c5ebc9397bea3435d4148b63354f78b2c524a573222f3282c4b",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 3,
+            "blue": 10,
+            "yellow": 9,
+            "red": 0
+          },
+          "ticketQuestionIdsSha256": "55fd93827fdef4a8d3ee73e9ce94bae62aeee75f4ea56f4a95645cb38fabfca5",
+          "dominantDimensions": [
+            "trap_negation",
+            "spanish_lexical_load",
+            "rule_complexity",
+            "visual_cue_load"
+          ]
+        }
+      },
       "titleRu": "Аварии, экстренные действия и место ДТП",
       "summaryRu": "Экзаменационный блок про incidente/siniestro vial: что считать дорожным инцидентом, как защитить место, кому звонить, что сообщать страховщику, и какие билеты проверяют безопасность после удара.",
       "learningMaterialRu": [
@@ -20597,6 +21717,39 @@
       "id": "crash-liability-and-legal-duties",
       "slug": "crash-liability-and-legal-duties",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "trap_negation",
+          "legal_admin_terms",
+          "rule_complexity",
+          "spanish_lexical_load",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 3, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; используется юридико-административная лексика; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 18 терминов, 5 заметок о ловушках, 4 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "dd05ef41afaeb9bfe42c103490ba38dfcabf68a6128bbe895c34a45aabb40d48",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 2,
+            "yellow": 3,
+            "red": 0
+          },
+          "ticketQuestionIdsSha256": "6588e50075907d487b42bf984dd0fac0542ab257209e7bd060f654e942eec124",
+          "dominantDimensions": [
+            "trap_negation",
+            "legal_admin_terms",
+            "rule_complexity",
+            "spanish_lexical_load"
+          ]
+        }
+      },
       "titleRu": "Ответственность и юридические обязанности после ДТП",
       "summaryRu": "Короткий блок про civil, penal, seguro и testigo после siniestro vial: что нельзя 'перевести' на другого, когда появляется reclamo/demanda, почему нужно явиться как свидетель и почему seguro обязателен не только на interurbanas.",
       "learningMaterialRu": [
@@ -20916,6 +22069,39 @@
       "id": "pedestrian-crossings-and-priority",
       "slug": "pedestrian-crossings-and-priority",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "visual_cue_load",
+          "trap_negation",
+          "caba_rf_divergence",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 9, красные 4; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ легко спутать с привычками или ожиданиями из РФ; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "203eb4a0949e4b86e25427fb149040de1bd39caf32275b3b7ecf836c13ef81a1",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 0,
+            "blue": 4,
+            "yellow": 9,
+            "red": 4
+          },
+          "ticketQuestionIdsSha256": "d263a5bf69dc4ff837162f3018ba2668e17e3e4ea12fc0ec4279dbede217b815",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "visual_cue_load",
+            "trap_negation",
+            "caba_rf_divergence"
+          ]
+        }
+      },
       "titleRu": "Пешеходы на переходах и приоритет",
       "summaryRu": "Экзаменационный блок про peatón, cruce de peatones, semáforo peatonal и ситуации, где водитель должен ждать, даже если ему кажется, что можно проехать.",
       "learningMaterialRu": [
@@ -21484,6 +22670,39 @@
       "id": "turns-direction-and-reversing",
       "slug": "turns-direction-and-reversing",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "cross_topic_dependence",
+          "visual_cue_load",
+          "rule_complexity",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 8, желтые 7, красные 0; есть испанские термины или плотная формулировка для A1-уровня; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "e353717de3f90f0e9a6ccc4c9030d5ba3e159c751bda20cbcd8f748fa56014e5",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 1,
+            "blue": 8,
+            "yellow": 7,
+            "red": 0
+          },
+          "ticketQuestionIdsSha256": "164a72f48a369a8f7a0a6ee884610b76f0dd02c4b6d24087d7a70f9f476ba54f",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "cross_topic_dependence",
+            "visual_cue_load",
+            "rule_complexity"
+          ]
+        }
+      },
       "titleRu": "Повороты, направление движения и задний ход",
       "summaryRu": "Блок про giro, sentido de circulación, luces de giro, dirección permitida/obligatoria, curvas и marcha atrás в экзаменационных ловушках.",
       "learningMaterialRu": [
@@ -22091,6 +23310,39 @@
       "id": "overtaking-and-passing",
       "slug": "overtaking-and-passing",
       "status": "draft",
+      "difficulty": "yellow",
+      "difficultyMeta": {
+        "rubricVersion": "cabadrive-difficulty-v1",
+        "dimensions": [
+          "spanish_lexical_load",
+          "cross_topic_dependence",
+          "caba_rf_divergence",
+          "trap_negation",
+          "numbers_thresholds"
+        ],
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 2, желтые 14, красные 3; есть испанские термины или плотная формулировка для A1-уровня; билет смешивает несколько тем или попадает в разные материалы; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 4 source claims.",
+        "provenance": {
+          "method": "manual_rubric_review",
+          "reviewer": "cabadrive-017",
+          "reviewedAt": "2026-05-10"
+        },
+        "sourceFingerprint": "005fafc9030670132b82af9043cdb92df9c5c887dcff552bed68fb13d743d1d9",
+        "basis": {
+          "questionLevelCounts": {
+            "green": 1,
+            "blue": 2,
+            "yellow": 14,
+            "red": 3
+          },
+          "ticketQuestionIdsSha256": "518bcaa9da1025368c29f8343f41aa534f3842770cc94efa10a7d518b790b18b",
+          "dominantDimensions": [
+            "spanish_lexical_load",
+            "cross_topic_dependence",
+            "caba_rf_divergence",
+            "trap_negation"
+          ]
+        }
+      },
       "titleRu": "Обгон и опережение",
       "summaryRu": "Блок про adelantamiento/sobrepaso: когда можно выходить в левую полосу, где маневр запрещен, как возвращаться вправо и как читать билеты со знаками, разметкой, тоннелями, мостами, кривыми и велосипедистами.",
       "learningMaterialRu": [
