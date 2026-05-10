@@ -44,12 +44,14 @@
 ### Dead Ends
 
 - Initial `pnpm run preflight` could not complete because the local worktree had no `node_modules`; build failed at `vite build` with `sh: vite: command not found`. Mitigation: ran `pnpm install --frozen-lockfile` without lockfile changes, then reran `pnpm run preflight` successfully.
+- Previous Implementation Agent was replaced after being stuck/non-reporting. Replacement Implementation Agent inspected the assigned worktree, branch status, committed diff against `origin/main`, and scoped process files before continuing; no existing useful work was reverted or overwritten.
 
 ### Decisions
 
 - Implementation decision: fast-forwarded the assigned branch from `origin/main` before editing because it was behind by one commit; `origin/main` did not contain `specs/011-orchestrator-analyst-routing/`, so the untracked feature memory was preserved without conflict.
 - Implementation decision: kept this feature documentation/template-only and did not add executable enforcement for Orchestrator-first routing or `feature-request.md` presence.
 - Implementation decision: updated only the scoped process docs/templates plus this `tasks.md`; product/runtime files changed by the fast-forward are not part of this branch diff against `origin/main`.
+- Replacement Implementation Agent decision: preserved the existing committed implementation, reran required validation, and limited follow-up edits to this process-memory update in `tasks.md`.
 - Architect decision: Treat this as one process feature because all requested changes concern the same Orchestrator-first repository-changing workflow.
 - Architect decision: Implementation is documentation/template-only. No learner-facing app, runtime, CI workflow, branch-protection, executable guard, secret, or production-resource changes are in scope.
 - Architect decision: "Analyst is the only role allowed to clarify" means Analyst is the only normal-flow role that may initiate user requirement clarification. It does not remove Orchestrator responsibility to ask the human about safety, permissions, credentials, data-loss risk, repository conflicts/status ambiguity, or unapproved human merge-owner decisions.
@@ -86,6 +88,13 @@
 - AC-007 text search: `rg -n "authorized.*merge|merge without asking|required checks|blocking review|conflicts|process memory|acceptance evidence|Implementation Agent feedback" AGENTS.md CLAUDE.md docs_project/project/devops .github/pull_request_template.md` found authorized-merge language and preserved merge gates in `AGENTS.md`, `CLAUDE.md`, `.github/pull_request_template.md`, and devops docs.
 - AC-008 text search: `rg -n "human.*default.*merge|default.*merge owner|no such authorization|human remains" AGENTS.md CLAUDE.md docs_project/project/devops .github/pull_request_template.md` found default human merge-owner language in `AGENTS.md`, `CLAUDE.md`, `docs_project/project/devops/ai-pr-workflow.md`, and `docs_project/project/devops/review-contract.md`.
 - Scope review: `git diff --name-only` showed only `.github/pull_request_template.md`, `.specify/memory/constitution.md`, `.specify/templates/feature-request-template.md`, `.specify/templates/spec-template.md`, `.specify/templates/tasks-template.md`, `AGENTS.md`, `CLAUDE.md`, `docs_project/project/devops/ai-pr-workflow.md`, `docs_project/project/devops/review-contract.md`, and `specs/README.md`; `git ls-files --modified --others --deleted --exclude-standard` additionally showed only the assigned `specs/011-orchestrator-analyst-routing/{feature-request.md,plan.md,spec.md,tasks.md}` feature memory.
+- Replacement verification on resumed worktree: `git status --short --branch` reported `## codex/011-orchestrator-analyst-routing-intake...origin/codex/011-orchestrator-analyst-routing-intake`; `git log --oneline --decorate --max-count=8` showed existing commit `b9cba60 [codex] Route repository-changing work through Orchestrator` at local and remote branch heads before this process-memory update.
+- Replacement verification: `git diff --check` passed.
+- Replacement verification: `node scripts/check-feature-memory.mjs --worktree` passed with `No configured product paths changed; feature-memory gate passes.`
+- Replacement verification: `pnpm run check:repo` passed with `Repository baseline check passed.`
+- Replacement verification: `pnpm run preflight` passed with feature-memory gate pass, repository baseline pass, content validation pass for 460 category B fallback questions and 276 local image references, 72/72 node tests passed, production build completed with the existing large chunk warning, service worker generated with 280 cached assets, and 14/14 Playwright tests passed.
+- Replacement AC text-search evidence: reran the AC-001 through AC-008 `rg` commands from `plan.md`; matches were found for Orchestrator-first trigger language, Analyst-first/no-direct-edit boundaries, Analyst-through-Orchestrator clarification, Analyst-only normal-flow clarification with blocker exceptions, parallel-work isolation and preservation warnings, Analyst handoff continuation, authorized merge gates, and default human merge ownership across the scoped durable guidance and templates.
+- Replacement scope review: `git diff --name-only origin/main...HEAD` showed only scoped process docs/templates and `specs/011-orchestrator-analyst-routing/*` files.
 
 ## Implementation Agent Feedback
 
