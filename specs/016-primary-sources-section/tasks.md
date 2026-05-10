@@ -420,4 +420,20 @@
   - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 110 Node tests, 110 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- Main refresh pass on 2026-05-10 for image metadata support:
+  - Fetched and merged `origin/main` at `78e0176e361eeea583dd797296bfa994b3f1f695` into `codex/016-primary-sources-section-intake` while preserving PR #68 docs/spec/process additions and open final-head verification tasks T130, T131, T135, and T136.
+  - Resolved `docs_project/project/content-sources.md` by keeping current main ticket learning-support/image-metadata lifecycle guidance and PR #68's 19-entry official archive/currentness/exact-text primary-source documentation.
+  - Resolved `docs_project/project/feature-inventory.md` by keeping current main image metadata coverage notes and PR #68's planned `Источники` reader inventory entry plus official-primary-source boundary note.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 112 Node tests, 112 pass, 0 fail.
+  - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
+  - `git diff --check` passed with no output.
+- Slice B branch update over fresh PR #68 image-metadata-support head on 2026-05-10:
+  - Fetched `origin/codex/016-primary-sources-section-intake` at `1de7d1f357b86faa22f1faadfc87167ea545be11`, which includes `origin/main` at `78e0176`.
+  - Merged the fresh PR #68 branch into `codex/016-primary-sources-schema-validators` while preserving all PR #74 validator fixes: strict empty coverage, Unicode placeholders, QA `checkedAt`, exact chunk IDs, simplified-Spanish variant rejection, contiguous full-document source spans, and strict search projection coverage.
+  - Resolved the `tasks.md` conflict by preserving PR #68/main process evidence and PR #74 validator follow-up evidence.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 22 tests, 22 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 134 Node tests, 134 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.

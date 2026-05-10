@@ -19,6 +19,33 @@ This area is for verbatim official source documents and materials that support C
 
 `content/official-documents/manifest.json` is the machine-readable manifest for the archive. It is no longer only a three-source seed: as of the Slice A implementation-time inventory on 2026-05-10, the manifest contains 19 official-document entries covering national traffic law and regulation, CABA traffic/VTV materials, vehicle-document procedures, road-incident/study materials, and related penal, civil/commercial, and insurance sources.
 
+Question-image semantic metadata is also outside the official archive. Current practice-image metadata lives under `content/image-metadata/` with review evidence under `content/validation/`; it describes local fallback practice images for learning-support validation and must not be treated as official GCBA source text.
+
+## Ticket Learning-Support Lifecycle
+
+Current question-card Russian translations, Russian explanations, and question-image metadata are maintained from reviewed range shards:
+
+```text
+content/translations/ru/<range>.json
+content/explanations/ru/<range>.json
+content/image-metadata/question-images/<range>.json
+```
+
+The adjacent monolithic files are generated compatibility indexes. Do not edit them by hand.
+
+When adding a ticket:
+
+- add or validate the Spanish source tuple, answer IDs, correct answer, source ID, and local image/hash when an image exists;
+- if an image exists, inspect the actual local image and add question-neutral shared image metadata with stable object/detail/region IDs;
+- add a question-specific image usage mapping that classifies referenced details as answer-critical/highlight, supporting, distractor/trap, or background/irrelevant/dim for that ticket only;
+- add the Russian question translation, all answer translations, and a ticket-specific Russian explanation with correct-answer and wrong-answer rationales;
+- run `node scripts/content-shards.mjs --write-indexes`, `pnpm run refresh:content-evidence`, `pnpm run validate:content`, and `pnpm run validate:content:quality`;
+- record process-memory evidence in the active feature folder.
+
+When materially changing ticket text, answer IDs/text, correct answer, image path/hash/content, image usage, or explanation text, refresh every affected translation, explanation, image usage mapping, image metadata record when the visible image facts changed, overlay/relevance roles, generated indexes, validation evidence, and process-memory evidence.
+
+When deleting a ticket, remove or refresh linked translations, explanations, question image usages, overlay/relevance mappings, translation evidence, explanation evidence, image usage evidence, generated indexes, and validation records. Remove shared image metadata only when no remaining question usage references that image; if another ticket still uses the image, keep the shared metadata and remove only the deleted ticket's usage/evidence.
+
 The current archive stores one Markdown document for each manifest entry under `content/official-documents/documents/`, raw/original evidence under `content/official-documents/originals/` where required, SHA-256 metadata for the Markdown, and currentness/effective-status evidence. Currentness validation is recorded as passed for all 19 entries, but `exactTextValidation.status` remains pending for all 19 entries until a dedicated whole-archive exact-text validation slice completes.
 
 Each future manifest entry must record:

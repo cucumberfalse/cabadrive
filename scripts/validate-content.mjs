@@ -6,6 +6,9 @@ import { fileURLToPath } from "node:url";
 import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
 import { validateCabaExamProcessGuide } from "./content-caba-exam-process.mjs";
 import { validateDifficultyContent } from "./content-difficulty.mjs";
+import { validateExplanationAlignment } from "./content-explanation-alignment.mjs";
+import { validateQuestionImageMetadata } from "./content-image-metadata.mjs";
+import { assertGeneratedContentIndexesFresh, combinedContentFromShards } from "./content-shards.mjs";
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
 import { validateOfficialDocumentsManifest } from "./official-documents-validation.mjs";
@@ -14,6 +17,7 @@ import { validatePrimarySources } from "./primary-sources-validation.mjs";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
 const warnings = [];
+const qualityGate = process.argv.includes("--quality-gate") || process.argv.includes("--final-content");
 
 function path(...parts) {
   return join(root, ...parts);
@@ -44,9 +48,24 @@ const mode = readJson("content/meta/content-mode.json");
 const policy = readJson("content/validation/production-eligibility.policy.json");
 const sources = readJson("content/sources/sources.json") || [];
 const questions = readJson("content/questions/caba-b.unofficial-fallback.questions.json") || [];
-const translations = readJson("content/translations/ru.translations.json") || [];
+const shardedContent = combinedContentFromShards(root);
+errors.push(...shardedContent.errors);
+errors.push(...assertGeneratedContentIndexesFresh(root));
+if (qualityGate) {
+  for (const [kind, shards] of Object.entries(shardedContent.shards || {})) {
+    for (const { relativePath, shard } of shards) {
+      if (shard.qualityStatus !== "complete") {
+        errors.push(`${relativePath}: ${kind} shard qualityStatus must be complete for the full content quality gate.`);
+      }
+    }
+  }
+}
+const translations = shardedContent.translations || [];
 const translationAlignmentEvidence = readJson("content/validation/ru-translation-alignment.evidence.json");
-const explanations = readJson("content/explanations/ru.explanations.json") || [];
+const explanations = shardedContent.explanations || [];
+const questionImageMetadata = shardedContent.imageMetadataManifest;
+const questionImageMetadataEvidence = readJson("content/validation/question-image-metadata.evidence.json");
+const explanationAlignmentEvidence = readJson("content/validation/ru-explanation-alignment.evidence.json");
 const vocabulary = readJson("content/vocabulary/ru.vocabulary.json") || [];
 const guide = readJson("content/guide/ru.condensed-guide.json") || [];
 const cabaExamProcessGuide = readJson("content/guide/caba-exam-process.ru.json");
@@ -150,7 +169,23 @@ for (const translation of translations) {
   if (!questionIds.has(translation.questionId)) errors.push(`Translation references missing question ${translation.questionId}`);
   if (!translation.disclaimer?.includes("Неофициальный")) errors.push(`${translation.questionId}: translation disclaimer must mark unofficial status.`);
 }
-errors.push(...validateTranslationAlignment({ questions, translations, evidence: translationAlignmentEvidence, locale: "ru" }));
+errors.push(
+  ...validateTranslationAlignment({
+    questions,
+    translations,
+    evidence: translationAlignmentEvidence,
+    locale: "ru",
+    requireFullQuality: qualityGate
+  })
+);
+errors.push(
+  ...validateQuestionImageMetadata({
+    questions,
+    manifest: questionImageMetadata,
+    evidence: questionImageMetadataEvidence,
+    requireFullQuality: qualityGate
+  })
+);
 
 for (const explanation of explanations) {
   if (!questionIds.has(explanation.questionId)) errors.push(`Explanation references missing question ${explanation.questionId}`);
@@ -159,6 +194,16 @@ for (const explanation of explanations) {
     if (!sourceById.has(sourceId)) errors.push(`${explanation.questionId}: explanation source missing ${sourceId}`);
   }
 }
+errors.push(
+  ...validateExplanationAlignment({
+    questions,
+    explanations,
+    imageMetadataManifest: questionImageMetadata,
+    evidence: explanationAlignmentEvidence,
+    locale: "ru",
+    requireFullQuality: qualityGate
+  })
+);
 
 for (const term of vocabulary) {
   requireString(term.id, "vocabulary.id");
@@ -249,4 +294,8 @@ if (errors.length) {
 
 for (const warning of warnings) console.warn(`Warning: ${warning}`);
 console.log(`Difficulty labels validated: ${difficultyValidation.questionCount} questions, ${difficultyValidation.topicCount} topics.`);
-console.log(`Content validation passed: ${questions.length} category B fallback questions, ${imageCount} local image references.`);
+console.log(
+  `Content validation passed: ${questions.length} category B fallback questions, ${imageCount} local image references${
+    qualityGate ? ", full content quality gate enabled" : ""
+  }.`
+);
