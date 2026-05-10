@@ -4,12 +4,15 @@
 
 Created by Analyst intake in worktree `/Users/chap/devel/cabadrive-013-learning-content-ui-polish` on branch `codex/013-learning-content-ui-polish`.
 
+Historical exception/revalidation note: Orchestrator approved preserving this as the original split-intake artifact because the initial `014` intake was created during the corrected split from the `013` intake worktree. Before merge readiness, Orchestrator/agents revalidated `014` in its isolated worktree/branch, confirmed scope separation from `013`, and refreshed latest-main evidence.
+
 This artifact records request intake only. It intentionally does not include technical architecture, implementation planning, task breakdown, source edits, tests, commits, pushes, PR state, or files outside this assigned `feature-request.md`.
 
 ## Orchestrator Routing Context
 
 - Orchestrator entry: the parent Orchestrator restarted the work after an improper direct-edit attempt and delegated intake to Analyst.
 - Assigned intake worktree/branch for this intake pass: `/Users/chap/devel/cabadrive-013-learning-content-ui-polish`, `codex/013-learning-content-ui-polish`.
+- Historical split exception: Orchestrator accepted the 013-origin intake location above as historical process context, with later 014-scoped revalidation in `/Users/chap/devel/cabadrive-014-orchestrator-first-enforcement` before merge readiness.
 - Base context: current worktree was reset clean from `origin/main` before this Analyst pass.
 - Parallel-work note: sibling worktrees exist at `/Users/chap/devel/cabadrive-010-ui-ux-learning-intake` and `/Users/chap/devel/cabadrive-012-orchestrator-final-validation-loop`; their branches, diffs, PR state, and feature memory must be preserved.
 
