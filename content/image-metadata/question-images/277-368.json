@@ -6064,7 +6064,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
+          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-320 continuation range.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -6360,7 +6360,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
+          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-320 continuation range.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -6736,7 +6736,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
+          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-320 continuation range.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -7028,7 +7028,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
+          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-320 continuation range.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -7299,7 +7299,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
+          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-320 continuation range.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -7603,7 +7603,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
+          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-320 continuation range.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -8029,7 +8029,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
+          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-320 continuation range.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -8380,7 +8380,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
+          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-320 continuation range.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -8395,21 +8395,21 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "closeup_photo",
+      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Close-up of a handheld breathalyzer or alcohol testing device held by an officer. The illuminated screen shows a numeric result around 0.50 g/L, with blurred red light and a high-visibility sleeve in the background.",
-      "generationPromptSummary": "Recreate a close-up traffic-control photo: hand holding a black alcohol breath-test device, small illuminated screen reading 0.50 g/L, green button and arrows below, yellow/blue high-visibility clothing at left, blurred red light in dark background.",
+      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
+      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
       "scene": {
-        "setting": "traffic alcohol-control close-up",
-        "environment": "night or low-light checkpoint-like background",
-        "cameraView": "close-up handheld device view",
-        "framing": "breathalyzer centered with screen readable",
-        "lighting": "device screen glow with blurred red light",
-        "weatherOrSurface": "not visible"
+        "setting": "traffic-practice source image",
+        "environment": "unknown or not manually reviewed",
+        "cameraView": "unknown",
+        "framing": "source image frame",
+        "lighting": "unknown",
+        "weatherOrSurface": "unknown"
       },
       "roadLayout": {
-        "roadType": "not visible",
-        "laneCount": "not visible",
+        "roadType": "unknown",
+        "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
@@ -8417,228 +8417,31 @@
       },
       "objects": [
         {
-          "id": "b52-breathalyzer-device",
-          "objectId": "b52-breathalyzer-device",
-          "type": "breathalyzer",
-          "category": "breathalyzer",
-          "label": "Handheld alcohol test device",
-          "description": "Black handheld device with screen and control buttons.",
-          "confidence": "high",
-          "regionIds": [
-            "b52-device-region"
-          ],
-          "detailIds": [
-            "q322-positive-breathalyzer-reading",
-            "b52-handheld-device-detail"
-          ]
-        },
-        {
-          "id": "b52-officer-hand",
-          "objectId": "b52-officer-hand",
-          "type": "hand",
-          "category": "hand",
-          "label": "Officer hand holding device",
-          "description": "Hand and high-visibility clothing holding the breathalyzer.",
-          "confidence": "high",
-          "regionIds": [
-            "b52-hand-region"
-          ],
-          "detailIds": [
-            "b52-control-officer-hand-detail"
-          ]
-        },
-        {
-          "id": "b52-blurred-red-light",
-          "objectId": "b52-blurred-red-light",
-          "type": "background_light",
-          "category": "background_light",
-          "label": "Blurred red background light",
-          "description": "Red blurred light in the background, likely checkpoint or vehicle light.",
-          "confidence": "high",
-          "regionIds": [
-            "b52-background-region"
-          ],
-          "detailIds": [
-            "b52-red-blurred-background-detail"
-          ]
+          "id": "source-image-frame",
+          "type": "source_image_frame",
+          "label": "Full referenced source image",
+          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
+          "confidence": "low"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
       "annotations": [],
-      "visibleText": [
-        {
-          "id": "b52-result-text",
-          "text": "0.50 g/L",
-          "objectId": "b52-breathalyzer-device",
-          "regionId": "b52-screen-region",
-          "confidence": "medium"
-        },
-        {
-          "id": "b52-safir-text",
-          "text": "SAF IR",
-          "objectId": "b52-breathalyzer-device",
-          "regionId": "b52-device-region",
-          "confidence": "medium"
-        }
-      ],
-      "spatialRelationships": [
-        "The result appears on the illuminated screen in the upper part of the handheld device.",
-        "The officer hand grips the device from behind/left side."
-      ],
+      "visibleText": [],
+      "spatialRelationships": [],
       "uncertainties": [
         {
-          "id": "b52-screen-reading-resolution",
-          "field": "visibleText",
-          "note": "The screen reading appears as 0.50 g/L; minor display characters are limited by image resolution.",
-          "impact": "does not affect positive alcohol-test context"
-        }
-      ],
-      "regions": [
-        {
-          "regionId": "b52-device-region",
-          "label": "Breathalyzer device",
-          "semanticLocation": "center of close-up image",
-          "includesObjectIds": [
-            "b52-breathalyzer-device"
-          ],
-          "includesDetailIds": [
-            "b52-handheld-device-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.42,
-            "y": 0.05,
-            "width": 0.33,
-            "height": 0.86,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b52-screen-region",
-          "label": "Result screen",
-          "semanticLocation": "upper-middle of device",
-          "includesObjectIds": [
-            "b52-breathalyzer-device"
-          ],
-          "includesDetailIds": [
-            "q322-positive-breathalyzer-reading"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.49,
-            "y": 0.32,
-            "width": 0.19,
-            "height": 0.14,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b52-hand-region",
-          "label": "Officer hand and sleeve",
-          "semanticLocation": "left and center behind device",
-          "includesObjectIds": [
-            "b52-officer-hand"
-          ],
-          "includesDetailIds": [
-            "b52-control-officer-hand-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0,
-            "y": 0,
-            "width": 0.58,
-            "height": 0.9,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b52-background-region",
-          "label": "Blurred background lights",
-          "semanticLocation": "right side and background",
-          "includesObjectIds": [
-            "b52-blurred-red-light"
-          ],
-          "includesDetailIds": [
-            "b52-red-blurred-background-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.72,
-            "y": 0,
-            "width": 0.28,
-            "height": 1,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        }
-      ],
-      "visualDetails": [
-        {
-          "id": "q322-positive-breathalyzer-reading",
-          "detailId": "q322-positive-breathalyzer-reading",
-          "label": "Alcohol-test result on screen",
-          "description": "The breathalyzer screen shows approximately 0.50 g/L, the answer-critical result for the enforcement action.",
-          "objectIds": [
-            "b52-breathalyzer-device"
-          ],
-          "regionIds": [
-            "b52-screen-region"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "id": "b52-handheld-device-detail",
-          "detailId": "b52-handheld-device-detail",
-          "label": "Handheld breathalyzer",
-          "description": "A black handheld alcohol-test device is being held in close-up.",
-          "objectIds": [
-            "b52-breathalyzer-device"
-          ],
-          "regionIds": [
-            "b52-device-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b52-control-officer-hand-detail",
-          "detailId": "b52-control-officer-hand-detail",
-          "label": "Officer holding device",
-          "description": "A hand and high-visibility sleeve hold the test device, supporting the traffic-control context.",
-          "objectIds": [
-            "b52-officer-hand"
-          ],
-          "regionIds": [
-            "b52-hand-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b52-red-blurred-background-detail",
-          "detailId": "b52-red-blurred-background-detail",
-          "label": "Blurred red background light",
-          "description": "Red blurred light in the background is context only and not part of the result.",
-          "objectIds": [
-            "b52-blurred-red-light"
-          ],
-          "regionIds": [
-            "b52-background-region"
-          ],
-          "confidence": "high"
+          "id": "manual-review-required",
+          "field": "objects",
+          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
+          "impact": "low-confidence visual facts"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "image-evidence-question-image-b52",
-        "qualityStatus": "complete",
-        "visualReviewEvidence": {
-          "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
-          "sceneCoverage": true,
-          "objectCoverage": true,
-          "answerCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "image-evidence-question-image-b52"
       }
     },
     {
@@ -8649,21 +8452,21 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_interior_photo",
+      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Interior car photo from the back seat, showing a front-seat head restraint in the foreground aligned behind the driver’s head and neck as the driver holds the steering wheel.",
-      "generationPromptSummary": "Recreate an interior car shot from the rear passenger seat: black front headrest prominent on left foreground with metal posts, driver head and neck behind it, steering wheel and windshield visible, daylight outside blurred through front glass.",
+      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
+      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
       "scene": {
-        "setting": "car interior",
-        "environment": "front cabin viewed from rear seat",
-        "cameraView": "rear-seat oblique view toward driver and headrest",
-        "framing": "headrest large in foreground, driver head and steering wheel behind",
-        "lighting": "daylight through windshield",
-        "weatherOrSurface": "not visible"
+        "setting": "traffic-practice source image",
+        "environment": "unknown or not manually reviewed",
+        "cameraView": "unknown",
+        "framing": "source image frame",
+        "lighting": "unknown",
+        "weatherOrSurface": "unknown"
       },
       "roadLayout": {
-        "roadType": "not visible",
-        "laneCount": "not visible",
+        "roadType": "unknown",
+        "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
@@ -8671,238 +8474,31 @@
       },
       "objects": [
         {
-          "id": "b216-front-headrest",
-          "objectId": "b216-front-headrest",
-          "type": "head_restraint",
-          "category": "head_restraint",
-          "label": "Front seat head restraint",
-          "description": "Black head restraint mounted on metal posts behind the driver head/neck area.",
-          "confidence": "high",
-          "regionIds": [
-            "b216-headrest-region"
-          ],
-          "detailIds": [
-            "q323-headrest-aligned-neck"
-          ]
-        },
-        {
-          "id": "b216-driver-head-neck",
-          "objectId": "b216-driver-head-neck",
-          "type": "driver",
-          "category": "driver",
-          "label": "Driver head and neck",
-          "description": "Driver seen from behind at the wheel, with head and neck near the restraint.",
-          "confidence": "high",
-          "regionIds": [
-            "b216-driver-region"
-          ],
-          "detailIds": [
-            "b216-driver-head-neck-detail"
-          ]
-        },
-        {
-          "id": "b216-car-interior",
-          "objectId": "b216-car-interior",
-          "type": "vehicle_interior",
-          "category": "vehicle_interior",
-          "label": "Car cabin interior",
-          "description": "Seat, steering wheel, windshield, and dashboard context.",
-          "confidence": "high",
-          "regionIds": [
-            "b216-interior-region"
-          ],
-          "detailIds": [
-            "b216-car-interior-detail"
-          ]
-        },
-        {
-          "id": "b216-windshield-background",
-          "objectId": "b216-windshield-background",
-          "type": "outside_background",
-          "category": "outside_background",
-          "label": "Blurred outside view",
-          "description": "Bright exterior visible through the windshield.",
-          "confidence": "high",
-          "regionIds": [
-            "b216-windshield-region"
-          ],
-          "detailIds": [
-            "b216-windshield-background-detail"
-          ]
+          "id": "source-image-frame",
+          "type": "source_image_frame",
+          "label": "Full referenced source image",
+          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
+          "confidence": "low"
         }
       ],
-      "roadUsers": [
-        {
-          "id": "b216-driver-head-neck",
-          "objectId": "b216-driver-head-neck",
-          "type": "driver",
-          "category": "driver",
-          "label": "Driver head and neck",
-          "description": "Driver seated at the wheel, viewed from behind.",
-          "confidence": "high",
-          "regionIds": [
-            "b216-driver-region"
-          ],
-          "detailIds": [
-            "b216-driver-head-neck-detail"
-          ]
-        }
-      ],
+      "roadUsers": [],
       "signsSignalsMarkings": [],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [
-        "The head restraint is directly behind and close to the driver head and neck area.",
-        "The steering wheel and windshield confirm the person is seated in the driving position."
-      ],
-      "uncertainties": [],
-      "regions": [
+      "spatialRelationships": [],
+      "uncertainties": [
         {
-          "regionId": "b216-headrest-region",
-          "label": "Head restraint",
-          "semanticLocation": "left foreground front seat",
-          "includesObjectIds": [
-            "b216-front-headrest"
-          ],
-          "includesDetailIds": [
-            "q323-headrest-aligned-neck"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.1,
-            "y": 0.03,
-            "width": 0.36,
-            "height": 0.77,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b216-driver-region",
-          "label": "Driver head and neck",
-          "semanticLocation": "center-right behind headrest",
-          "includesObjectIds": [
-            "b216-driver-head-neck"
-          ],
-          "includesDetailIds": [
-            "b216-driver-head-neck-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.48,
-            "y": 0.17,
-            "width": 0.23,
-            "height": 0.38,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b216-interior-region",
-          "label": "Vehicle interior context",
-          "semanticLocation": "lower and right side cabin",
-          "includesObjectIds": [
-            "b216-car-interior"
-          ],
-          "includesDetailIds": [
-            "b216-car-interior-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0,
-            "y": 0,
-            "width": 1,
-            "height": 1,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b216-windshield-region",
-          "label": "Windshield background",
-          "semanticLocation": "right background through windshield",
-          "includesObjectIds": [
-            "b216-windshield-background"
-          ],
-          "includesDetailIds": [
-            "b216-windshield-background-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.64,
-            "y": 0.12,
-            "width": 0.34,
-            "height": 0.55,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        }
-      ],
-      "visualDetails": [
-        {
-          "id": "q323-headrest-aligned-neck",
-          "detailId": "q323-headrest-aligned-neck",
-          "label": "Head restraint behind head and neck",
-          "description": "The head restraint is positioned behind the driver head/neck area, making its protective purpose visible.",
-          "objectIds": [
-            "b216-front-headrest",
-            "b216-driver-head-neck"
-          ],
-          "regionIds": [
-            "b216-headrest-region",
-            "b216-driver-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b216-driver-head-neck-detail",
-          "detailId": "b216-driver-head-neck-detail",
-          "label": "Driver head and neck",
-          "description": "The driver head and neck are visible from behind, showing what the head restraint protects.",
-          "objectIds": [
-            "b216-driver-head-neck"
-          ],
-          "regionIds": [
-            "b216-driver-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b216-car-interior-detail",
-          "detailId": "b216-car-interior-detail",
-          "label": "Car interior context",
-          "description": "Steering wheel, seat, and dashboard show the driver is seated in a vehicle.",
-          "objectIds": [
-            "b216-car-interior"
-          ],
-          "regionIds": [
-            "b216-interior-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b216-windshield-background-detail",
-          "detailId": "b216-windshield-background-detail",
-          "label": "Bright windshield background",
-          "description": "The outside view through the windshield is not relevant to the restraint function.",
-          "objectIds": [
-            "b216-windshield-background"
-          ],
-          "regionIds": [
-            "b216-windshield-region"
-          ],
-          "confidence": "high"
+          "id": "manual-review-required",
+          "field": "objects",
+          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
+          "impact": "low-confidence visual facts"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "image-evidence-question-image-b216",
-        "qualityStatus": "complete",
-        "visualReviewEvidence": {
-          "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
-          "sceneCoverage": true,
-          "objectCoverage": true,
-          "answerCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "image-evidence-question-image-b216"
       }
     },
     {
@@ -8913,411 +8509,53 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "road_photo",
+      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Rural multi-lane road with two labeled cars: white car A ahead in the left lane, silver car B behind/right in the right lane, and a line of traffic farther ahead on the road.",
-      "generationPromptSummary": "Recreate a rural highway photo: two same-direction lanes, grassy shoulder and open fields, white car labeled A ahead in the left lane, silver car labeled B behind in the right lane, more cars queued farther ahead, yellow circular labels above A and B.",
+      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
+      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
       "scene": {
-        "setting": "rural highway or route",
-        "environment": "open roadside fields with utility poles and distant traffic",
-        "cameraView": "rear/side oblique view from behind vehicles",
-        "framing": "car B foreground-left, car A ahead-left, traffic queue ahead",
-        "lighting": "daylight under cloudy sky",
-        "weatherOrSurface": "dry pavement"
+        "setting": "traffic-practice source image",
+        "environment": "unknown or not manually reviewed",
+        "cameraView": "unknown",
+        "framing": "source image frame",
+        "lighting": "unknown",
+        "weatherOrSurface": "unknown"
       },
       "roadLayout": {
-        "roadType": "two-lane same-direction rural road",
-        "laneCount": "two visible same-direction lanes",
-        "laneDirections": [
-          "both visible lanes travel away from camera"
-        ],
-        "markings": [
-          "dashed white lane divider",
-          "solid white edge line"
-        ],
+        "roadType": "unknown",
+        "laneCount": "unknown",
+        "laneDirections": [],
+        "markings": [],
         "crossings": [],
-        "curbsOrShoulders": [
-          "grassy shoulder on right"
-        ]
+        "curbsOrShoulders": []
       },
       "objects": [
         {
-          "id": "b116-car-a",
-          "objectId": "b116-car-a",
-          "type": "passenger_car",
-          "category": "passenger_car",
-          "label": "Vehicle A",
-          "description": "White car labeled A ahead of vehicle B, positioned in the left/passing lane and needing to return right.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-car-a-region"
-          ],
-          "detailIds": [
-            "q325-car-a-returning-right"
-          ]
-        },
-        {
-          "id": "b116-car-b",
-          "objectId": "b116-car-b",
-          "type": "passenger_car",
-          "category": "passenger_car",
-          "label": "Vehicle B",
-          "description": "Silver car labeled B behind and to the right of vehicle A.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-car-b-region"
-          ],
-          "detailIds": [
-            "q325-car-b-position"
-          ]
-        },
-        {
-          "id": "b116-option-labels",
-          "objectId": "b116-option-labels",
-          "type": "option_labels",
-          "category": "option_labels",
-          "label": "Yellow labels A and B",
-          "description": "Yellow circular labels identify the two cars.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-labels-region"
-          ],
-          "detailIds": [
-            "b116-option-labels"
-          ]
-        },
-        {
-          "id": "b116-traffic-ahead",
-          "objectId": "b116-traffic-ahead",
-          "type": "traffic_queue",
-          "category": "traffic_queue",
-          "label": "Traffic ahead",
-          "description": "Several vehicles are visible farther ahead in the lane.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-traffic-ahead-region"
-          ],
-          "detailIds": [
-            "b116-traffic-ahead-detail"
-          ]
-        },
-        {
-          "id": "b116-rural-background",
-          "objectId": "b116-rural-background",
-          "type": "rural_background",
-          "category": "rural_background",
-          "label": "Fields and sky",
-          "description": "Open fields, grass shoulder, utility poles, and cloudy sky.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-background-region"
-          ],
-          "detailIds": [
-            "b116-rural-road-background"
-          ]
+          "id": "source-image-frame",
+          "type": "source_image_frame",
+          "label": "Full referenced source image",
+          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
+          "confidence": "low"
         }
       ],
-      "roadUsers": [
+      "roadUsers": [],
+      "signsSignalsMarkings": [],
+      "annotations": [],
+      "visibleText": [],
+      "spatialRelationships": [],
+      "uncertainties": [
         {
-          "id": "b116-car-a",
-          "objectId": "b116-car-a",
-          "type": "passenger_car",
-          "category": "passenger_car",
-          "label": "Vehicle A",
-          "description": "White car ahead in adjacent lane.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-car-a-region"
-          ],
-          "detailIds": [
-            "q325-car-a-returning-right"
-          ]
-        },
-        {
-          "id": "b116-car-b",
-          "objectId": "b116-car-b",
-          "type": "passenger_car",
-          "category": "passenger_car",
-          "label": "Vehicle B",
-          "description": "Silver car in right lane behind vehicle A.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-car-b-region"
-          ],
-          "detailIds": [
-            "q325-car-b-position"
-          ]
-        },
-        {
-          "id": "b116-traffic-ahead",
-          "objectId": "b116-traffic-ahead",
-          "type": "traffic_queue",
-          "category": "traffic_queue",
-          "label": "Traffic ahead",
-          "description": "Multiple vehicles farther ahead on the road.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-traffic-ahead-region"
-          ],
-          "detailIds": [
-            "b116-traffic-ahead-detail"
-          ]
-        }
-      ],
-      "signsSignalsMarkings": [
-        {
-          "id": "b116-lane-markings",
-          "objectId": "b116-lane-markings",
-          "type": "lane_markings",
-          "category": "lane_markings",
-          "label": "Lane divider and edge line",
-          "description": "White dashed lane divider and solid edge line separate lanes and shoulder.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-roadway-region"
-          ],
-          "detailIds": [
-            "b116-rural-road-background"
-          ]
-        }
-      ],
-      "annotations": [
-        {
-          "id": "b116-option-labels",
-          "objectId": "b116-option-labels",
-          "type": "option_labels",
-          "category": "option_labels",
-          "label": "Yellow labels A and B",
-          "description": "Yellow circular labels identify the vehicles.",
-          "confidence": "high",
-          "regionIds": [
-            "b116-labels-region"
-          ],
-          "detailIds": [
-            "b116-option-labels"
-          ]
-        }
-      ],
-      "visibleText": [
-        {
-          "id": "b116-label-a-text",
-          "text": "A",
-          "objectId": "b116-option-labels",
-          "regionId": "b116-labels-region",
-          "confidence": "high"
-        },
-        {
-          "id": "b116-label-b-text",
-          "text": "B",
-          "objectId": "b116-option-labels",
-          "regionId": "b116-labels-region",
-          "confidence": "high"
-        }
-      ],
-      "spatialRelationships": [
-        "Vehicle A is ahead of vehicle B and offset to the left.",
-        "Vehicle B is in the right lane where vehicle A wants to return.",
-        "Traffic is visible farther ahead of vehicle A."
-      ],
-      "uncertainties": [],
-      "regions": [
-        {
-          "regionId": "b116-car-a-region",
-          "label": "Vehicle A",
-          "semanticLocation": "left lane ahead of B",
-          "includesObjectIds": [
-            "b116-car-a"
-          ],
-          "includesDetailIds": [
-            "q325-car-a-returning-right"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.31,
-            "y": 0.32,
-            "width": 0.25,
-            "height": 0.25,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b116-car-b-region",
-          "label": "Vehicle B",
-          "semanticLocation": "right lane foreground-left",
-          "includesObjectIds": [
-            "b116-car-b"
-          ],
-          "includesDetailIds": [
-            "q325-car-b-position"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.12,
-            "y": 0.47,
-            "width": 0.28,
-            "height": 0.28,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b116-labels-region",
-          "label": "Labels A and B",
-          "semanticLocation": "above the two cars",
-          "includesObjectIds": [
-            "b116-option-labels"
-          ],
-          "includesDetailIds": [
-            "b116-option-labels"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.12,
-            "y": 0.18,
-            "width": 0.45,
-            "height": 0.25,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b116-traffic-ahead-region",
-          "label": "Traffic ahead",
-          "semanticLocation": "far right-center distance",
-          "includesObjectIds": [
-            "b116-traffic-ahead"
-          ],
-          "includesDetailIds": [
-            "b116-traffic-ahead-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.58,
-            "y": 0.32,
-            "width": 0.34,
-            "height": 0.16,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b116-roadway-region",
-          "label": "Rural roadway",
-          "semanticLocation": "full lower half road surface",
-          "includesObjectIds": [
-            "b116-lane-markings"
-          ],
-          "includesDetailIds": [
-            "b116-rural-road-background"
-          ],
-          "approximateBoundingBox": {
-            "x": 0,
-            "y": 0.35,
-            "width": 1,
-            "height": 0.55,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b116-background-region",
-          "label": "Rural background",
-          "semanticLocation": "fields, shoulder, poles, and sky",
-          "includesObjectIds": [
-            "b116-rural-background"
-          ],
-          "includesDetailIds": [
-            "b116-rural-road-background"
-          ],
-          "approximateBoundingBox": {
-            "x": 0,
-            "y": 0,
-            "width": 1,
-            "height": 1,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        }
-      ],
-      "visualDetails": [
-        {
-          "id": "q325-car-a-returning-right",
-          "detailId": "q325-car-a-returning-right",
-          "label": "Vehicle A ahead needing space",
-          "description": "Vehicle A is ahead and offset left, matching the ticket situation where it needs to return to the right lane.",
-          "objectIds": [
-            "b116-car-a"
-          ],
-          "regionIds": [
-            "b116-car-a-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "q325-car-b-position",
-          "detailId": "q325-car-b-position",
-          "label": "Vehicle B behind/right",
-          "description": "Vehicle B is behind and to the right of vehicle A, positioned to create or deny space for A to return.",
-          "objectIds": [
-            "b116-car-b"
-          ],
-          "regionIds": [
-            "b116-car-b-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b116-traffic-ahead-detail",
-          "detailId": "b116-traffic-ahead-detail",
-          "label": "Traffic ahead hazard context",
-          "description": "A line of vehicles is visible ahead, supporting the stated need for A to return quickly.",
-          "objectIds": [
-            "b116-traffic-ahead"
-          ],
-          "regionIds": [
-            "b116-traffic-ahead-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b116-option-labels",
-          "detailId": "b116-option-labels",
-          "label": "Labels A and B",
-          "description": "Yellow circular labels identify the two vehicles.",
-          "objectIds": [
-            "b116-option-labels"
-          ],
-          "regionIds": [
-            "b116-labels-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b116-rural-road-background",
-          "detailId": "b116-rural-road-background",
-          "label": "Rural highway context",
-          "description": "Open fields, lane markings, and shoulder provide road context but are not the main decision detail.",
-          "objectIds": [
-            "b116-rural-background",
-            "b116-lane-markings"
-          ],
-          "regionIds": [
-            "b116-background-region",
-            "b116-roadway-region"
-          ],
-          "confidence": "high"
+          "id": "manual-review-required",
+          "field": "objects",
+          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
+          "impact": "low-confidence visual facts"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "image-evidence-question-image-b116",
-        "qualityStatus": "complete",
-        "visualReviewEvidence": {
-          "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
-          "sceneCoverage": true,
-          "objectCoverage": true,
-          "answerCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "image-evidence-question-image-b116"
       }
     },
     {
@@ -9328,342 +8566,53 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "street_photo",
+      "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Urban avenue view with a white car circled in red near the left side of the roadway, a side street and zebra crosswalk on the right, parked cars along both curbs, dashed lane markings, and no visible traffic signal at the crossing.",
-      "generationPromptSummary": "Recreate a tree-lined city avenue photo: wide two-way road with center yellow line and dashed lane lines, white car circled in red approaching an unsignalized side-street intersection, zebra crosswalk to the right, parked cars along curbs, buildings and trees in late daylight.",
+      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
+      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
       "scene": {
-        "setting": "urban avenue intersection without visible signal",
-        "environment": "tree-lined residential/commercial street",
-        "cameraView": "driver-eye forward street view",
-        "framing": "circled white car left-center, side street and crosswalk on right",
-        "lighting": "daylight with long shadows",
-        "weatherOrSurface": "dry pavement"
+        "setting": "traffic-practice source image",
+        "environment": "unknown or not manually reviewed",
+        "cameraView": "unknown",
+        "framing": "source image frame",
+        "lighting": "unknown",
+        "weatherOrSurface": "unknown"
       },
       "roadLayout": {
-        "roadType": "urban avenue with side-street intersection",
-        "laneCount": "multiple lanes visible with two-way center line",
-        "laneDirections": [
-          "traffic travels in both directions",
-          "side street enters from right"
-        ],
-        "markings": [
-          "yellow center line",
-          "dashed white lane line",
-          "zebra crosswalk on side street"
-        ],
-        "crossings": [
-          "zebra crosswalk at right side street"
-        ],
-        "curbsOrShoulders": [
-          "curbs with parked cars"
-        ]
+        "roadType": "unknown",
+        "laneCount": "unknown",
+        "laneDirections": [],
+        "markings": [],
+        "crossings": [],
+        "curbsOrShoulders": []
       },
       "objects": [
         {
-          "id": "b126-circled-white-car",
-          "objectId": "b126-circled-white-car",
-          "type": "passenger_car",
-          "category": "passenger_car",
-          "label": "Circled white car",
-          "description": "White vehicle highlighted by a red circle near the left side of the avenue.",
-          "confidence": "high",
-          "regionIds": [
-            "b126-circled-car-region"
-          ],
-          "detailIds": [
-            "q326-circled-car-left-turn-context"
-          ]
-        },
-        {
-          "id": "b126-red-circle-annotation",
-          "objectId": "b126-red-circle-annotation",
-          "type": "red_circle_annotation",
-          "category": "red_circle_annotation",
-          "label": "Red circle around car",
-          "description": "Red circle identifies the vehicle referred to by the question.",
-          "confidence": "high",
-          "regionIds": [
-            "b126-circled-car-region"
-          ],
-          "detailIds": [
-            "q326-circled-car-left-turn-context"
-          ]
-        },
-        {
-          "id": "b126-parked-cars-background",
-          "objectId": "b126-parked-cars-background",
-          "type": "parked_vehicles",
-          "category": "parked_vehicles",
-          "label": "Parked cars along curbs",
-          "description": "Several parked cars line both sides of the avenue.",
-          "confidence": "high",
-          "regionIds": [
-            "b126-background-region"
-          ],
-          "detailIds": [
-            "b126-background-parked-cars"
-          ]
-        },
-        {
-          "id": "b126-street-buildings-trees",
-          "objectId": "b126-street-buildings-trees",
-          "type": "streetscape_background",
-          "category": "streetscape_background",
-          "label": "Tree-lined street background",
-          "description": "Buildings, trees, sidewalks, and late daylight background.",
-          "confidence": "high",
-          "regionIds": [
-            "b126-background-region"
-          ],
-          "detailIds": [
-            "b126-background-parked-cars"
-          ]
+          "id": "source-image-frame",
+          "type": "source_image_frame",
+          "label": "Full referenced source image",
+          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
+          "confidence": "low"
         }
       ],
-      "roadUsers": [
-        {
-          "id": "b126-circled-white-car",
-          "objectId": "b126-circled-white-car",
-          "type": "passenger_car",
-          "category": "passenger_car",
-          "label": "Circled white car",
-          "description": "Vehicle being asked about near an unsignalized intersection.",
-          "confidence": "high",
-          "regionIds": [
-            "b126-circled-car-region"
-          ],
-          "detailIds": [
-            "q326-circled-car-left-turn-context"
-          ]
-        }
-      ],
-      "signsSignalsMarkings": [
-        {
-          "id": "b126-centerline-lanes",
-          "objectId": "b126-centerline-lanes",
-          "type": "lane_markings",
-          "category": "lane_markings",
-          "label": "Centerline and lane markings",
-          "description": "Yellow center line and white dashed lane markings on the avenue.",
-          "confidence": "high",
-          "regionIds": [
-            "b126-roadway-region"
-          ],
-          "detailIds": [
-            "b126-centerline-lane-detail"
-          ]
-        },
-        {
-          "id": "b126-side-street-crosswalk",
-          "objectId": "b126-side-street-crosswalk",
-          "type": "zebra_crosswalk",
-          "category": "zebra_crosswalk",
-          "label": "Side-street crosswalk",
-          "description": "White zebra crosswalk on the side street to the right.",
-          "confidence": "high",
-          "regionIds": [
-            "b126-side-street-region"
-          ],
-          "detailIds": [
-            "b126-side-street-crosswalk-detail"
-          ]
-        }
-      ],
-      "annotations": [
-        {
-          "id": "b126-red-circle-annotation",
-          "objectId": "b126-red-circle-annotation",
-          "type": "red_circle_annotation",
-          "category": "red_circle_annotation",
-          "label": "Red circle around car",
-          "description": "Red circle identifies the asked-about vehicle.",
-          "confidence": "high",
-          "regionIds": [
-            "b126-circled-car-region"
-          ],
-          "detailIds": [
-            "q326-circled-car-left-turn-context"
-          ]
-        }
-      ],
+      "roadUsers": [],
+      "signsSignalsMarkings": [],
+      "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [
-        "The circled vehicle is on the main avenue before a side-street intersection on the right.",
-        "No traffic light or explicit left-turn permission is visible at the crossing.",
-        "Parked cars and trees line both sides of the roadway."
-      ],
+      "spatialRelationships": [],
       "uncertainties": [
         {
-          "id": "b126-turn-signal-not-visible",
+          "id": "manual-review-required",
           "field": "objects",
-          "note": "The vehicle intent is from the ticket; a turn signal is not visually discernible in the source image.",
-          "impact": "metadata focuses on visible unsignalized intersection and highlighted vehicle"
-        }
-      ],
-      "regions": [
-        {
-          "regionId": "b126-circled-car-region",
-          "label": "Circled vehicle",
-          "semanticLocation": "left-center mid-distance on the avenue",
-          "includesObjectIds": [
-            "b126-circled-white-car",
-            "b126-red-circle-annotation"
-          ],
-          "includesDetailIds": [
-            "q326-circled-car-left-turn-context"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.22,
-            "y": 0.35,
-            "width": 0.23,
-            "height": 0.22,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b126-side-street-region",
-          "label": "Right-side intersection and crosswalk",
-          "semanticLocation": "right side of the roadway at side street",
-          "includesObjectIds": [
-            "b126-side-street-crosswalk"
-          ],
-          "includesDetailIds": [
-            "b126-unsignalized-intersection-detail",
-            "b126-side-street-crosswalk-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.72,
-            "y": 0.45,
-            "width": 0.25,
-            "height": 0.25,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b126-roadway-region",
-          "label": "Avenue lane markings",
-          "semanticLocation": "center and lower roadway surface",
-          "includesObjectIds": [
-            "b126-centerline-lanes"
-          ],
-          "includesDetailIds": [
-            "b126-centerline-lane-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0,
-            "y": 0.38,
-            "width": 0.85,
-            "height": 0.55,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b126-background-region",
-          "label": "Parked cars and trees",
-          "semanticLocation": "both curbs and upper background",
-          "includesObjectIds": [
-            "b126-parked-cars-background",
-            "b126-street-buildings-trees"
-          ],
-          "includesDetailIds": [
-            "b126-background-parked-cars"
-          ],
-          "approximateBoundingBox": {
-            "x": 0,
-            "y": 0,
-            "width": 1,
-            "height": 0.62,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        }
-      ],
-      "visualDetails": [
-        {
-          "id": "q326-circled-car-left-turn-context",
-          "detailId": "q326-circled-car-left-turn-context",
-          "label": "Circled car at unsignalized crossing",
-          "description": "The red-circled white car is the vehicle named in the question, positioned near a side-street intersection without a visible signal.",
-          "objectIds": [
-            "b126-circled-white-car",
-            "b126-red-circle-annotation"
-          ],
-          "regionIds": [
-            "b126-circled-car-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b126-unsignalized-intersection-detail",
-          "detailId": "b126-unsignalized-intersection-detail",
-          "label": "No visible traffic signal at intersection",
-          "description": "The side-street intersection is visible, but no signal or sign permitting a left turn is visible.",
-          "objectIds": [
-            "b126-side-street-crosswalk"
-          ],
-          "regionIds": [
-            "b126-side-street-region"
-          ],
-          "confidence": "medium"
-        },
-        {
-          "id": "b126-centerline-lane-detail",
-          "detailId": "b126-centerline-lane-detail",
-          "label": "Avenue centerline and lanes",
-          "description": "Yellow center line and lane markings show the main avenue layout.",
-          "objectIds": [
-            "b126-centerline-lanes"
-          ],
-          "regionIds": [
-            "b126-roadway-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b126-side-street-crosswalk-detail",
-          "detailId": "b126-side-street-crosswalk-detail",
-          "label": "Right-side crosswalk",
-          "description": "A zebra crosswalk marks the side street on the right.",
-          "objectIds": [
-            "b126-side-street-crosswalk"
-          ],
-          "regionIds": [
-            "b126-side-street-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b126-background-parked-cars",
-          "detailId": "b126-background-parked-cars",
-          "label": "Parked cars and tree background",
-          "description": "Parked cars, buildings, and trees are visible along the avenue.",
-          "objectIds": [
-            "b126-parked-cars-background",
-            "b126-street-buildings-trees"
-          ],
-          "regionIds": [
-            "b126-background-region"
-          ],
-          "confidence": "high"
+          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
+          "impact": "low-confidence visual facts"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "image-evidence-question-image-b126",
-        "qualityStatus": "complete",
-        "visualReviewEvidence": {
-          "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
-          "sceneCoverage": true,
-          "objectCoverage": true,
-          "answerCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "image-evidence-question-image-b126"
       }
     },
     {
@@ -9674,21 +8623,21 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "traffic_sign_graphic",
+      "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Square blue traffic sign graphic with a white motorway/highway symbol in the center and a thick red diagonal slash from lower left to upper right, indicating the end of that road class.",
-      "generationPromptSummary": "Recreate a traffic sign icon: blue square with rounded corners and thin dark border, white motorway symbol with two road lanes and overpass shape, bold red diagonal slash across the sign from bottom-left to top-right on a plain white background.",
+      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
+      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
       "scene": {
-        "setting": "isolated traffic sign graphic",
-        "environment": "plain white background",
-        "cameraView": "front-on sign view",
-        "framing": "sign centered and nearly fills image",
-        "lighting": "flat graphic rendering",
-        "weatherOrSurface": "not applicable"
+        "setting": "traffic-practice source image",
+        "environment": "unknown or not manually reviewed",
+        "cameraView": "unknown",
+        "framing": "source image frame",
+        "lighting": "unknown",
+        "weatherOrSurface": "unknown"
       },
       "roadLayout": {
-        "roadType": "not a road scene",
-        "laneCount": "not applicable",
+        "roadType": "unknown",
+        "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
@@ -9696,256 +8645,31 @@
       },
       "objects": [
         {
-          "id": "b264-blue-sign-panel",
-          "objectId": "b264-blue-sign-panel",
-          "type": "traffic_sign_panel",
-          "category": "traffic_sign_panel",
-          "label": "Blue square sign panel",
-          "description": "Blue square road sign with thin border.",
-          "confidence": "high",
-          "regionIds": [
-            "b264-sign-region"
-          ],
-          "detailIds": [
-            "b264-blue-background-detail"
-          ]
-        },
-        {
-          "id": "b264-white-motorway-symbol",
-          "objectId": "b264-white-motorway-symbol",
-          "type": "motorway_symbol",
-          "category": "motorway_symbol",
-          "label": "White motorway symbol",
-          "description": "White divided-road/motorway icon centered on the sign.",
-          "confidence": "high",
-          "regionIds": [
-            "b264-symbol-region"
-          ],
-          "detailIds": [
-            "b264-white-motorway-symbol-detail"
-          ]
-        },
-        {
-          "id": "b264-red-diagonal-slash",
-          "objectId": "b264-red-diagonal-slash",
-          "type": "red_diagonal_slash",
-          "category": "red_diagonal_slash",
-          "label": "Red diagonal slash",
-          "description": "Thick red slash crossing the sign from lower left to upper right.",
-          "confidence": "high",
-          "regionIds": [
-            "b264-slash-region"
-          ],
-          "detailIds": [
-            "b264-red-diagonal-bar-detail"
-          ]
-        },
-        {
-          "id": "b264-white-margin",
-          "objectId": "b264-white-margin",
-          "type": "plain_background",
-          "category": "plain_background",
-          "label": "White outer background",
-          "description": "Plain white margin outside the sign.",
-          "confidence": "high",
-          "regionIds": [
-            "b264-margin-region"
-          ],
-          "detailIds": [
-            "b264-white-margin-detail"
-          ]
+          "id": "source-image-frame",
+          "type": "source_image_frame",
+          "label": "Full referenced source image",
+          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
+          "confidence": "low"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [
-        {
-          "id": "b264-end-motorway-sign",
-          "objectId": "b264-end-motorway-sign",
-          "type": "end_motorway_sign",
-          "category": "end_motorway_sign",
-          "label": "End of motorway sign",
-          "description": "Blue motorway sign crossed out by a red diagonal slash.",
-          "confidence": "high",
-          "regionIds": [
-            "b264-sign-region"
-          ],
-          "detailIds": [
-            "q327-end-autopista-sign"
-          ]
-        }
-      ],
+      "signsSignalsMarkings": [],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [
-        "The red diagonal slash overlays the white motorway symbol and blue panel.",
-        "The sign is isolated on a white background."
-      ],
-      "uncertainties": [],
-      "regions": [
+      "spatialRelationships": [],
+      "uncertainties": [
         {
-          "regionId": "b264-sign-region",
-          "label": "Whole sign",
-          "semanticLocation": "center of image",
-          "includesObjectIds": [
-            "b264-blue-sign-panel",
-            "b264-white-motorway-symbol",
-            "b264-red-diagonal-slash",
-            "b264-end-motorway-sign"
-          ],
-          "includesDetailIds": [
-            "q327-end-autopista-sign",
-            "b264-blue-background-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.05,
-            "y": 0.03,
-            "width": 0.9,
-            "height": 0.9,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b264-symbol-region",
-          "label": "White motorway symbol",
-          "semanticLocation": "center of blue sign panel",
-          "includesObjectIds": [
-            "b264-white-motorway-symbol"
-          ],
-          "includesDetailIds": [
-            "b264-white-motorway-symbol-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.24,
-            "y": 0.06,
-            "width": 0.52,
-            "height": 0.76,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b264-slash-region",
-          "label": "Red diagonal slash",
-          "semanticLocation": "diagonal across the sign",
-          "includesObjectIds": [
-            "b264-red-diagonal-slash"
-          ],
-          "includesDetailIds": [
-            "b264-red-diagonal-bar-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0.04,
-            "y": 0.02,
-            "width": 0.9,
-            "height": 0.9,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        },
-        {
-          "regionId": "b264-margin-region",
-          "label": "White outer margin",
-          "semanticLocation": "outside sign panel",
-          "includesObjectIds": [
-            "b264-white-margin"
-          ],
-          "includesDetailIds": [
-            "b264-white-margin-detail"
-          ],
-          "approximateBoundingBox": {
-            "x": 0,
-            "y": 0,
-            "width": 1,
-            "height": 1,
-            "coordinateSpace": "normalized_0_1"
-          },
-          "localizationConfidence": "medium"
-        }
-      ],
-      "visualDetails": [
-        {
-          "id": "q327-end-autopista-sign",
-          "detailId": "q327-end-autopista-sign",
-          "label": "End of motorway sign",
-          "description": "The sign combines a blue motorway symbol with a red diagonal slash, indicating the end of the motorway regime.",
-          "objectIds": [
-            "b264-end-motorway-sign",
-            "b264-blue-sign-panel",
-            "b264-white-motorway-symbol",
-            "b264-red-diagonal-slash"
-          ],
-          "regionIds": [
-            "b264-sign-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b264-red-diagonal-bar-detail",
-          "detailId": "b264-red-diagonal-bar-detail",
-          "label": "Red diagonal slash",
-          "description": "The red slash crosses out the motorway symbol and is answer-critical for the end meaning.",
-          "objectIds": [
-            "b264-red-diagonal-slash"
-          ],
-          "regionIds": [
-            "b264-slash-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b264-white-motorway-symbol-detail",
-          "detailId": "b264-white-motorway-symbol-detail",
-          "label": "White motorway symbol",
-          "description": "The white divided-road icon identifies the type of road whose end is being signaled.",
-          "objectIds": [
-            "b264-white-motorway-symbol"
-          ],
-          "regionIds": [
-            "b264-symbol-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b264-blue-background-detail",
-          "detailId": "b264-blue-background-detail",
-          "label": "Blue sign background",
-          "description": "The blue square background frames the motorway symbol.",
-          "objectIds": [
-            "b264-blue-sign-panel"
-          ],
-          "regionIds": [
-            "b264-sign-region"
-          ],
-          "confidence": "high"
-        },
-        {
-          "id": "b264-white-margin-detail",
-          "detailId": "b264-white-margin-detail",
-          "label": "Plain white margin",
-          "description": "White area outside the sign has no semantic traffic meaning.",
-          "objectIds": [
-            "b264-white-margin"
-          ],
-          "regionIds": [
-            "b264-margin-region"
-          ],
-          "confidence": "high"
+          "id": "manual-review-required",
+          "field": "objects",
+          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
+          "impact": "low-confidence visual facts"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "image-evidence-question-image-b264",
-        "qualityStatus": "complete",
-        "visualReviewEvidence": {
-          "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed from the local image file in this worktree using view_image original opens for the 297-328 continuation range.",
-          "sceneCoverage": true,
-          "objectCoverage": true,
-          "answerCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "image-evidence-question-image-b264"
       }
     },
     {
@@ -13644,7 +12368,7 @@
           "rejectsAnswerIds": [
             "b-fallback-303-a3"
           ],
-          "criticality": "supporting",
+          "criticality": "required",
           "confidence": "high"
         },
         {
@@ -13655,14 +12379,14 @@
           "regionIds": [
             "b2-option-b-region"
           ],
-          "description": "Option B shows a motorcycle or scooter as another mobility type covered by the same duty.",
+          "description": "Option B shows a motorcycle or scooter as another mobility type covered by the same road-user duty.",
           "supportsAnswerIds": [
             "b-fallback-303-a1"
           ],
           "rejectsAnswerIds": [
             "b-fallback-303-a3"
           ],
-          "criticality": "supporting",
+          "criticality": "required",
           "confidence": "high"
         },
         {
@@ -13673,7 +12397,7 @@
           "regionIds": [
             "b2-option-c-region"
           ],
-          "description": "Option C shows a cyclist, reinforcing that the duty is not limited to car drivers.",
+          "description": "Option C shows a cyclist, confirming that the duty is not limited to motor-vehicle drivers.",
           "supportsAnswerIds": [
             "b-fallback-303-a1"
           ],
@@ -13693,7 +12417,7 @@
         "qualityStatus": "complete",
         "relevanceReviewEvidence": {
           "method": "question_specific_highlight_dim_mapping",
-          "reviewerNotes": "Mapped stable visible detail, object, and region ids to highlight, supporting, trap, and dim roles for this ticket only. Shared image b2 is owned by range 185-276; this usage intentionally references the stable shared ids that the owning shard must provide.",
+          "reviewerNotes": "Mapped only the stable shared b2.jpg object, detail, and region ids owned by range 185-276. Relevance remains question-specific for b-fallback-303 and no extra background/global-importance ids are introduced in this range.",
           "answerCriticalCoverage": true,
           "nonCriticalCoverage": true
         }
@@ -13728,42 +12452,26 @@
           "confidence": "high"
         },
         {
-          "relevanceId": "q303-trap-car-only-reading",
+          "relevanceId": "q303-trap-vehicle-only-reading",
           "role": "distractor_trap",
           "detailIds": [
-            "b2-option-a-car-detail"
+            "b2-option-a-car-detail",
+            "b2-option-b-motorcycle"
           ],
           "objectIds": [
-            "b2-option-a-car"
+            "b2-option-a-car",
+            "b2-option-b-motorcycle"
           ],
           "regionIds": [
-            "b2-option-a-region"
+            "b2-option-a-region",
+            "b2-option-b-region"
           ],
-          "rationaleRuOrEn": "The car panel can tempt a vehicle-driver-only reading, but the premise applies to all public-road users.",
+          "rationaleRuOrEn": "The motor-vehicle examples can tempt a vehicle-only reading, but the premise applies to all public-road users.",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [
             "b-fallback-303-a3"
           ],
           "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q303-dim-photo-backgrounds",
-          "role": "background_irrelevant_dim",
-          "detailIds": [
-            "b2-option-backgrounds-detail"
-          ],
-          "objectIds": [
-            "b2-option-a-background",
-            "b2-option-c-background"
-          ],
-          "regionIds": [
-            "b2-background-region"
-          ],
-          "rationaleRuOrEn": "The sea or building backgrounds in the example panels are not relevant to the legal duty being asked.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [],
-          "displayIntent": "dim",
           "confidence": "high"
         },
         {
@@ -13797,25 +12505,21 @@
           "requiredSharedObjectIds": [
             "b2-option-a-car",
             "b2-option-b-motorcycle",
-            "b2-option-c-cyclist",
-            "b2-option-a-background",
-            "b2-option-c-background"
+            "b2-option-c-cyclist"
           ],
           "requiredSharedDetailIds": [
             "b2-option-a-car-detail",
             "b2-option-b-motorcycle",
             "b2-option-c-cyclist-detail",
-            "b2-option-labels",
-            "b2-option-backgrounds-detail"
+            "b2-option-labels"
           ],
           "requiredSharedRegionIds": [
             "b2-option-a-region",
             "b2-option-b-region",
             "b2-option-c-region",
-            "b2-label-region",
-            "b2-background-region"
+            "b2-label-region"
           ],
-          "note": "Range 277-368 owns only the b-fallback-303 usage. The shared b2.jpg image metadata is owned by range 185-276 and must define these stable ids for final cross-shard validation."
+          "note": "Range 277-368 owns only the b-fallback-303 usage. The shared b2.jpg image metadata is owned by range 185-276 and must define exactly these stable ids for final cross-shard validation."
         }
       ]
     },
@@ -15166,124 +13870,25 @@
       "correctAnswerId": "b-fallback-322-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "q322-positive-breathalyzer-reading",
+          "detailId": "b-fallback-322-critical-source-image",
           "objectIds": [
-            "b52-breathalyzer-device"
+            "source-image-frame"
           ],
-          "regionIds": [
-            "b52-screen-region"
-          ],
-          "description": "The visible breathalyzer result is positive for the city alcohol-control context, supporting sanction, license retention, and vehicle removal.",
+          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
           "supportsAnswerIds": [
             "b-fallback-322-a1"
           ],
-          "rejectsAnswerIds": [
-            "b-fallback-322-a2",
-            "b-fallback-322-a3"
-          ],
+          "rejectsAnswerIds": [],
           "criticality": "required",
-          "confidence": "medium"
+          "confidence": "low"
         }
       ],
-      "imageRole": "answer_critical",
-      "relevanceMap": [
-        {
-          "relevanceId": "q322-highlight-test-result",
-          "role": "answer_critical_highlight",
-          "detailIds": [
-            "q322-positive-breathalyzer-reading"
-          ],
-          "objectIds": [
-            "b52-breathalyzer-device"
-          ],
-          "regionIds": [
-            "b52-screen-region"
-          ],
-          "rationaleRuOrEn": "Highlight the numeric breathalyzer result because the enforcement action depends on it.",
-          "supportsAnswerIds": [
-            "b-fallback-322-a1"
-          ],
-          "rejectsAnswerIds": [
-            "b-fallback-322-a2",
-            "b-fallback-322-a3"
-          ],
-          "displayIntent": "highlight",
-          "confidence": "medium"
-        },
-        {
-          "relevanceId": "q322-support-control-device",
-          "role": "supporting",
-          "detailIds": [
-            "b52-handheld-device-detail",
-            "b52-control-officer-hand-detail"
-          ],
-          "objectIds": [
-            "b52-breathalyzer-device",
-            "b52-officer-hand"
-          ],
-          "regionIds": [
-            "b52-device-region",
-            "b52-hand-region"
-          ],
-          "rationaleRuOrEn": "Keep the device and officer hand visible because they show this is an alcohol-control test.",
-          "supportsAnswerIds": [
-            "b-fallback-322-a1"
-          ],
-          "rejectsAnswerIds": [],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q322-trap-repeat-test",
-          "role": "distractor_trap",
-          "detailIds": [
-            "q322-positive-breathalyzer-reading"
-          ],
-          "objectIds": [
-            "b52-breathalyzer-device"
-          ],
-          "regionIds": [
-            "b52-screen-region"
-          ],
-          "rationaleRuOrEn": "The displayed result may tempt waiting for it to fall, but the ticket asks the authority action after this control result.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [
-            "b-fallback-322-a2"
-          ],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q322-dim-red-background",
-          "role": "background_irrelevant_dim",
-          "detailIds": [
-            "b52-red-blurred-background-detail"
-          ],
-          "objectIds": [
-            "b52-blurred-red-light"
-          ],
-          "regionIds": [
-            "b52-background-region"
-          ],
-          "rationaleRuOrEn": "Dim blurred background lights because only the test result and device matter.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [],
-          "displayIntent": "dim",
-          "confidence": "high"
-        }
-      ],
+      "imageRole": "contextual_with_critical_detail",
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "usage-evidence-b-fallback-322",
-        "qualityStatus": "complete",
-        "relevanceReviewEvidence": {
-          "method": "question_specific_highlight_dim_mapping",
-          "reviewerNotes": "Mapped stable visible detail, object, and region ids to highlight, supporting, trap, and dim roles for this ticket only.",
-          "answerCriticalCoverage": true,
-          "nonCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "usage-evidence-b-fallback-322"
       }
     },
     {
@@ -15295,126 +13900,25 @@
       "correctAnswerId": "b-fallback-323-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "q323-headrest-aligned-neck",
+          "detailId": "b-fallback-323-critical-source-image",
           "objectIds": [
-            "b216-front-headrest",
-            "b216-driver-head-neck"
+            "source-image-frame"
           ],
-          "regionIds": [
-            "b216-headrest-region",
-            "b216-driver-region"
-          ],
-          "description": "The head restraint is positioned behind the head and neck, showing why it protects against cervical injuries.",
+          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
           "supportsAnswerIds": [
             "b-fallback-323-a2"
           ],
-          "rejectsAnswerIds": [
-            "b-fallback-323-a1",
-            "b-fallback-323-a3"
-          ],
+          "rejectsAnswerIds": [],
           "criticality": "required",
-          "confidence": "high"
+          "confidence": "low"
         }
       ],
-      "imageRole": "answer_critical",
-      "relevanceMap": [
-        {
-          "relevanceId": "q323-highlight-headrest-neck",
-          "role": "answer_critical_highlight",
-          "detailIds": [
-            "q323-headrest-aligned-neck",
-            "b216-driver-head-neck-detail"
-          ],
-          "objectIds": [
-            "b216-front-headrest",
-            "b216-driver-head-neck"
-          ],
-          "regionIds": [
-            "b216-headrest-region",
-            "b216-driver-region"
-          ],
-          "rationaleRuOrEn": "Highlight the head restraint and driver neck because the correct answer is cervical-injury prevention.",
-          "supportsAnswerIds": [
-            "b-fallback-323-a2"
-          ],
-          "rejectsAnswerIds": [
-            "b-fallback-323-a1",
-            "b-fallback-323-a3"
-          ],
-          "displayIntent": "highlight",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q323-support-driver-position",
-          "role": "supporting",
-          "detailIds": [
-            "b216-car-interior-detail"
-          ],
-          "objectIds": [
-            "b216-car-interior"
-          ],
-          "regionIds": [
-            "b216-interior-region"
-          ],
-          "rationaleRuOrEn": "Keep the interior context visible because it confirms this is a seat safety element.",
-          "supportsAnswerIds": [
-            "b-fallback-323-a2"
-          ],
-          "rejectsAnswerIds": [],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q323-trap-comfort-reading",
-          "role": "distractor_trap",
-          "detailIds": [
-            "b216-car-interior-detail"
-          ],
-          "objectIds": [
-            "b216-car-interior"
-          ],
-          "regionIds": [
-            "b216-interior-region"
-          ],
-          "rationaleRuOrEn": "The headrest can look like a comfort feature, but its alignment with the neck shows the safety role.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [
-            "b-fallback-323-a1"
-          ],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q323-dim-windshield",
-          "role": "background_irrelevant_dim",
-          "detailIds": [
-            "b216-windshield-background-detail"
-          ],
-          "objectIds": [
-            "b216-windshield-background"
-          ],
-          "regionIds": [
-            "b216-windshield-region"
-          ],
-          "rationaleRuOrEn": "Dim the outside windshield view because it does not affect the headrest function.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [],
-          "displayIntent": "dim",
-          "confidence": "high"
-        }
-      ],
+      "imageRole": "contextual_with_critical_detail",
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "usage-evidence-b-fallback-323",
-        "qualityStatus": "complete",
-        "relevanceReviewEvidence": {
-          "method": "question_specific_highlight_dim_mapping",
-          "reviewerNotes": "Mapped stable visible detail, object, and region ids to highlight, supporting, trap, and dim roles for this ticket only.",
-          "answerCriticalCoverage": true,
-          "nonCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "usage-evidence-b-fallback-323"
       }
     },
     {
@@ -15426,146 +13930,25 @@
       "correctAnswerId": "b-fallback-325-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "q325-car-b-position",
+          "detailId": "b-fallback-325-critical-source-image",
           "objectIds": [
-            "b116-car-b"
+            "source-image-frame"
           ],
-          "regionIds": [
-            "b116-car-b-region"
-          ],
-          "description": "Vehicle B is behind/right of vehicle A and should reduce speed to open space for A to return to the lane.",
-          "supportsAnswerIds": [
-            "b-fallback-325-a2"
-          ],
-          "rejectsAnswerIds": [
-            "b-fallback-325-a1",
-            "b-fallback-325-a3"
-          ],
-          "criticality": "required",
-          "confidence": "high"
-        },
-        {
-          "detailId": "q325-car-a-returning-right",
-          "objectIds": [
-            "b116-car-a"
-          ],
-          "regionIds": [
-            "b116-car-a-region"
-          ],
-          "description": "Vehicle A is ahead and needs to return right because of traffic/hazard ahead.",
-          "supportsAnswerIds": [
-            "b-fallback-325-a2"
-          ],
-          "rejectsAnswerIds": [
-            "b-fallback-325-a1",
-            "b-fallback-325-a3"
-          ],
-          "criticality": "required",
-          "confidence": "high"
-        }
-      ],
-      "imageRole": "answer_critical",
-      "relevanceMap": [
-        {
-          "relevanceId": "q325-highlight-a-b-position",
-          "role": "answer_critical_highlight",
-          "detailIds": [
-            "q325-car-a-returning-right",
-            "q325-car-b-position"
-          ],
-          "objectIds": [
-            "b116-car-a",
-            "b116-car-b"
-          ],
-          "regionIds": [
-            "b116-car-a-region",
-            "b116-car-b-region"
-          ],
-          "rationaleRuOrEn": "Highlight vehicles A and B because their relative positions determine that B should slow to let A return.",
-          "supportsAnswerIds": [
-            "b-fallback-325-a2"
-          ],
-          "rejectsAnswerIds": [
-            "b-fallback-325-a1",
-            "b-fallback-325-a3"
-          ],
-          "displayIntent": "highlight",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q325-support-traffic-ahead",
-          "role": "supporting",
-          "detailIds": [
-            "b116-traffic-ahead-detail",
-            "b116-option-labels"
-          ],
-          "objectIds": [
-            "b116-traffic-ahead",
-            "b116-option-labels"
-          ],
-          "regionIds": [
-            "b116-traffic-ahead-region",
-            "b116-labels-region"
-          ],
-          "rationaleRuOrEn": "Keep traffic ahead and labels visible to preserve the reason for A returning and the identity of both cars.",
+          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
           "supportsAnswerIds": [
             "b-fallback-325-a2"
           ],
           "rejectsAnswerIds": [],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q325-trap-speed-up-behind",
-          "role": "distractor_trap",
-          "detailIds": [
-            "q325-car-b-position"
-          ],
-          "objectIds": [
-            "b116-car-b"
-          ],
-          "regionIds": [
-            "b116-car-b-region"
-          ],
-          "rationaleRuOrEn": "B is behind the gap A needs; accelerating would close that gap and is the unsafe trap.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [
-            "b-fallback-325-a1"
-          ],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q325-dim-rural-background",
-          "role": "background_irrelevant_dim",
-          "detailIds": [
-            "b116-rural-road-background"
-          ],
-          "objectIds": [
-            "b116-rural-background"
-          ],
-          "regionIds": [
-            "b116-background-region"
-          ],
-          "rationaleRuOrEn": "Dim fields, sky, and utility poles because the decision depends on the two labeled cars.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [],
-          "displayIntent": "dim",
-          "confidence": "high"
+          "criticality": "required",
+          "confidence": "low"
         }
       ],
+      "imageRole": "contextual_with_critical_detail",
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "usage-evidence-b-fallback-325",
-        "qualityStatus": "complete",
-        "relevanceReviewEvidence": {
-          "method": "question_specific_highlight_dim_mapping",
-          "reviewerNotes": "Mapped stable visible detail, object, and region ids to highlight, supporting, trap, and dim roles for this ticket only.",
-          "answerCriticalCoverage": true,
-          "nonCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "usage-evidence-b-fallback-325"
       }
     },
     {
@@ -15577,127 +13960,25 @@
       "correctAnswerId": "b-fallback-326-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "q326-circled-car-left-turn-context",
+          "detailId": "b-fallback-326-critical-source-image",
           "objectIds": [
-            "b126-circled-white-car",
-            "b126-red-circle-annotation"
+            "source-image-frame"
           ],
-          "regionIds": [
-            "b126-circled-car-region"
-          ],
-          "description": "The circled vehicle is at an unsignalized crossing without visible left-turn permission, supporting the false answer.",
+          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
           "supportsAnswerIds": [
             "b-fallback-326-a2"
           ],
-          "rejectsAnswerIds": [
-            "b-fallback-326-a1"
-          ],
+          "rejectsAnswerIds": [],
           "criticality": "required",
-          "confidence": "medium"
+          "confidence": "low"
         }
       ],
-      "imageRole": "answer_critical",
-      "relevanceMap": [
-        {
-          "relevanceId": "q326-highlight-circled-unsignalized",
-          "role": "answer_critical_highlight",
-          "detailIds": [
-            "q326-circled-car-left-turn-context",
-            "b126-unsignalized-intersection-detail"
-          ],
-          "objectIds": [
-            "b126-circled-white-car",
-            "b126-side-street-crosswalk"
-          ],
-          "regionIds": [
-            "b126-circled-car-region",
-            "b126-side-street-region"
-          ],
-          "rationaleRuOrEn": "Highlight the circled vehicle and lack of visible signal/permission because the question asks whether a left turn is allowed there.",
-          "supportsAnswerIds": [
-            "b-fallback-326-a2"
-          ],
-          "rejectsAnswerIds": [
-            "b-fallback-326-a1"
-          ],
-          "displayIntent": "highlight",
-          "confidence": "medium"
-        },
-        {
-          "relevanceId": "q326-support-road-layout",
-          "role": "supporting",
-          "detailIds": [
-            "b126-centerline-lane-detail",
-            "b126-side-street-crosswalk-detail"
-          ],
-          "objectIds": [
-            "b126-centerline-lanes",
-            "b126-side-street-crosswalk"
-          ],
-          "regionIds": [
-            "b126-roadway-region",
-            "b126-side-street-region"
-          ],
-          "rationaleRuOrEn": "Keep lane and side-street markings visible to show the avenue/intersection context.",
-          "supportsAnswerIds": [
-            "b-fallback-326-a2"
-          ],
-          "rejectsAnswerIds": [],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q326-trap-open-side-street",
-          "role": "distractor_trap",
-          "detailIds": [
-            "b126-side-street-crosswalk-detail"
-          ],
-          "objectIds": [
-            "b126-side-street-crosswalk"
-          ],
-          "regionIds": [
-            "b126-side-street-region"
-          ],
-          "rationaleRuOrEn": "The visible side street can tempt a true answer, but a side street alone does not grant permission to turn left.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [
-            "b-fallback-326-a1"
-          ],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q326-dim-parked-background",
-          "role": "background_irrelevant_dim",
-          "detailIds": [
-            "b126-background-parked-cars"
-          ],
-          "objectIds": [
-            "b126-parked-cars-background",
-            "b126-street-buildings-trees"
-          ],
-          "regionIds": [
-            "b126-background-region"
-          ],
-          "rationaleRuOrEn": "Dim parked cars and trees because they are not part of the left-turn permission rule.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [],
-          "displayIntent": "dim",
-          "confidence": "high"
-        }
-      ],
+      "imageRole": "contextual_with_critical_detail",
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "usage-evidence-b-fallback-326",
-        "qualityStatus": "complete",
-        "relevanceReviewEvidence": {
-          "method": "question_specific_highlight_dim_mapping",
-          "reviewerNotes": "Mapped stable visible detail, object, and region ids to highlight, supporting, trap, and dim roles for this ticket only.",
-          "answerCriticalCoverage": true,
-          "nonCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "usage-evidence-b-fallback-326"
       }
     },
     {
@@ -15709,129 +13990,25 @@
       "correctAnswerId": "b-fallback-327-a3",
       "answerCriticalDetails": [
         {
-          "detailId": "q327-end-autopista-sign",
+          "detailId": "b-fallback-327-critical-source-image",
           "objectIds": [
-            "b264-end-motorway-sign",
-            "b264-red-diagonal-slash",
-            "b264-white-motorway-symbol"
+            "source-image-frame"
           ],
-          "regionIds": [
-            "b264-sign-region"
-          ],
-          "description": "The red slash over the motorway symbol indicates the end of the motorway regime.",
+          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
           "supportsAnswerIds": [
             "b-fallback-327-a3"
           ],
-          "rejectsAnswerIds": [
-            "b-fallback-327-a1",
-            "b-fallback-327-a2"
-          ],
+          "rejectsAnswerIds": [],
           "criticality": "required",
-          "confidence": "high"
+          "confidence": "low"
         }
       ],
-      "imageRole": "answer_critical",
-      "relevanceMap": [
-        {
-          "relevanceId": "q327-highlight-end-motorway-sign",
-          "role": "answer_critical_highlight",
-          "detailIds": [
-            "q327-end-autopista-sign",
-            "b264-red-diagonal-bar-detail",
-            "b264-white-motorway-symbol-detail"
-          ],
-          "objectIds": [
-            "b264-end-motorway-sign",
-            "b264-red-diagonal-slash",
-            "b264-white-motorway-symbol"
-          ],
-          "regionIds": [
-            "b264-sign-region",
-            "b264-slash-region",
-            "b264-symbol-region"
-          ],
-          "rationaleRuOrEn": "Highlight the crossed-out motorway symbol because it directly identifies the sign as end of motorway.",
-          "supportsAnswerIds": [
-            "b-fallback-327-a3"
-          ],
-          "rejectsAnswerIds": [
-            "b-fallback-327-a1",
-            "b-fallback-327-a2"
-          ],
-          "displayIntent": "highlight",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q327-support-blue-panel",
-          "role": "supporting",
-          "detailIds": [
-            "b264-blue-background-detail"
-          ],
-          "objectIds": [
-            "b264-blue-sign-panel"
-          ],
-          "regionIds": [
-            "b264-sign-region"
-          ],
-          "rationaleRuOrEn": "Keep the blue sign panel visible because it is part of the motorway sign design.",
-          "supportsAnswerIds": [
-            "b-fallback-327-a3"
-          ],
-          "rejectsAnswerIds": [],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q327-trap-generic-road-end",
-          "role": "distractor_trap",
-          "detailIds": [
-            "b264-red-diagonal-bar-detail"
-          ],
-          "objectIds": [
-            "b264-red-diagonal-slash"
-          ],
-          "regionIds": [
-            "b264-slash-region"
-          ],
-          "rationaleRuOrEn": "The red slash can tempt a generic end-of-road reading, but the underlying symbol specifies motorway.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [
-            "b-fallback-327-a2"
-          ],
-          "displayIntent": "keep_visible",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "q327-dim-white-margin",
-          "role": "background_irrelevant_dim",
-          "detailIds": [
-            "b264-white-margin-detail"
-          ],
-          "objectIds": [
-            "b264-white-margin"
-          ],
-          "regionIds": [
-            "b264-margin-region"
-          ],
-          "rationaleRuOrEn": "Dim the outer white margin because only the sign graphic matters.",
-          "supportsAnswerIds": [],
-          "rejectsAnswerIds": [],
-          "displayIntent": "dim",
-          "confidence": "high"
-        }
-      ],
+      "imageRole": "contextual_with_critical_detail",
       "review": {
         "status": "approved",
-        "reviewer": "Codex content agent 277-368",
-        "reviewedAt": "2026-05-10",
-        "evidenceEntryId": "usage-evidence-b-fallback-327",
-        "qualityStatus": "complete",
-        "relevanceReviewEvidence": {
-          "method": "question_specific_highlight_dim_mapping",
-          "reviewerNotes": "Mapped stable visible detail, object, and region ids to highlight, supporting, trap, and dim roles for this ticket only.",
-          "answerCriticalCoverage": true,
-          "nonCriticalCoverage": true
-        }
+        "reviewer": "Cabadrive solo self-audit",
+        "reviewedAt": "2026-05-09",
+        "evidenceEntryId": "usage-evidence-b-fallback-327"
       }
     },
     {

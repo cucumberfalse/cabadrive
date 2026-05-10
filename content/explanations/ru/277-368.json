@@ -960,175 +960,168 @@
     },
     {
       "questionId": "b-fallback-321",
-      "textRu": "Правильный ответ: Лекарства могут влиять на сонливость, внимание, зрение, координацию и скорость реакции, но такое влияние зависит от конкретного препарата, дозы и состояния человека. Поэтому правильный ответ - зависит от вида лекарства. Неверные ответы: Не каждое лекарство автоматически ухудшает способность водить, поэтому ответ «всегда» слишком общий. Важно читать предупреждения и учитывать конкретный препарат. Ответ «никогда» опасен и неверен: многие препараты действительно могут снижать внимание, вызывать сонливость или замедлять реакцию водителя.",
+      "textRu": "Правильный вариант - \"Depende del tipo de medicamento.\". Правильно: depende del tipo de medicamento и его эффекта на aptitud para conducir. Неверные варианты: b-fallback-321-a1: Siempre слишком абсолютно: не каждый medicamento автоматически снижает capacidad de conducir. b-fallback-321-a2: Nunca тоже абсолютно неверно: некоторые лекарства могут снижать внимание, реакцию или состояние водителя.",
       "correctAnswerId": "b-fallback-321-a3",
-      "correctAnswerExplanationRu": "Лекарства могут влиять на сонливость, внимание, зрение, координацию и скорость реакции, но такое влияние зависит от конкретного препарата, дозы и состояния человека. Поэтому правильный ответ - зависит от вида лекарства.",
+      "correctAnswerExplanationRu": "Правильно: depende del tipo de medicamento и его эффекта на aptitud para conducir.",
       "wrongAnswerExplanations": {
-        "b-fallback-321-a1": "Не каждое лекарство автоматически ухудшает способность водить, поэтому ответ «всегда» слишком общий. Важно читать предупреждения и учитывать конкретный препарат.",
-        "b-fallback-321-a2": "Ответ «никогда» опасен и неверен: многие препараты действительно могут снижать внимание, вызывать сонливость или замедлять реакцию водителя."
+        "b-fallback-321-a1": "Siempre слишком абсолютно: не каждый medicamento автоматически снижает capacidad de conducir.",
+        "b-fallback-321-a2": "Nunca тоже абсолютно неверно: некоторые лекарства могут снижать внимание, реакцию или состояние водителя."
       },
-      "explanationType": "content-agent-reviewed",
+      "explanationType": "alcohol-drugs-and-impairment",
       "claimScope": "ticket_specific_fallback",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "content_agent_review",
-      "reviewer": "Codex content agent 277-368",
-      "reviewedAt": "2026-05-10",
-      "disclaimer": "Это пояснение является неофициальной учебной поддержкой Cabadrive и не является официальной формулировкой экзаменационного материала."
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-322",
-      "textRu": "Правильный ответ: На фото прибор проверки показывает положительный результат для водителя легкового автомобиля в городе Буэнос-Айрес. При таком результате орган контроля должен оформить взыскание, удержать водительское удостоверение и направить автомобиль на спецстоянку. Неверные ответы: Ожидание снижения уровня алкоголя и повторная проверка не являются правильным действием по этому билету. Показанный результат уже требует предусмотренных мер контроля. Вызов третьего лица не заменяет санкции и удержание автомобиля при положительном результате проверки. Контролирующий орган должен применить установленную процедуру.",
+      "textRu": "Правильный вариант - \"Sancionar la falta administrativa y contravencional, retener la licencia de conducir y remitir el vehículo.\". При положительной alcoholemia в CABA autoridad запрещает продолжать driving, применяет санкции/contravención по делу, удерживает licencia и remite/remueve vehículo. Неверные варианты: b-fallback-322-a2: Нельзя ждать, пока bajе la graduación alcohólica: положительный контроль уже требует impedir продолжение движения. b-fallback-322-a3: Передача авто третьему лицу не заменяет procedimiento de control: retención/remoción и санкция остаются.",
       "correctAnswerId": "b-fallback-322-a1",
-      "correctAnswerExplanationRu": "На фото прибор проверки показывает положительный результат для водителя легкового автомобиля в городе Буэнос-Айрес. При таком результате орган контроля должен оформить взыскание, удержать водительское удостоверение и направить автомобиль на спецстоянку.",
+      "correctAnswerExplanationRu": "При положительной alcoholemia в CABA autoridad запрещает продолжать driving, применяет санкции/contravención по делу, удерживает licencia и remite/remueve vehículo.",
       "wrongAnswerExplanations": {
-        "b-fallback-322-a2": "Ожидание снижения уровня алкоголя и повторная проверка не являются правильным действием по этому билету. Показанный результат уже требует предусмотренных мер контроля.",
-        "b-fallback-322-a3": "Вызов третьего лица не заменяет санкции и удержание автомобиля при положительном результате проверки. Контролирующий орган должен применить установленную процедуру."
+        "b-fallback-322-a2": "Нельзя ждать, пока bajе la graduación alcohólica: положительный контроль уже требует impedir продолжение движения.",
+        "b-fallback-322-a3": "Передача авто третьему лицу не заменяет procedimiento de control: retención/remoción и санкция остаются."
       },
-      "explanationType": "content-agent-reviewed",
-      "claimScope": "direct_image",
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "q322-positive-breathalyzer-reading",
-        "b52-handheld-device-detail"
+        "b-fallback-322-critical-source-image"
       ],
-      "method": "content_agent_review",
-      "reviewer": "Codex content agent 277-368",
-      "reviewedAt": "2026-05-10",
-      "disclaimer": "Это пояснение является неофициальной учебной поддержкой Cabadrive и не является официальной формулировкой экзаменационного материала."
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-323",
-      "textRu": "Правильный ответ: На изображении показан подголовник за головой водителя. Если он расположен правильно, он ограничивает резкое движение головы назад при ударе и помогает снизить риск травм шейного отдела. Неверные ответы: Подголовник не является только элементом комфорта: его положение имеет прямое значение для защиты головы и шеи при столкновении. Подголовник защищает прежде всего голову и шею, а не грудную клетку. Для грудной клетки важнее ремень безопасности и другие элементы удержания.",
+      "textRu": "Правильный вариант - \"Lesiones en la zona cervical.\". Правильно: correctly positioned headrest helps avoid lesiones en la zona cervical by reducing excessive movement between head and torso. Неверные варианты: b-fallback-323-a1: No es sólo confort. Apoyacabeza/headrest является элементом защиты и при правильной регулировке снижает эффект látigo. b-fallback-323-a3: Lesiones en el tórax больше связаны с другими элементами защиты. Этот элемент проверяет cervical/neck injury prevention.",
       "correctAnswerId": "b-fallback-323-a2",
-      "correctAnswerExplanationRu": "На изображении показан подголовник за головой водителя. Если он расположен правильно, он ограничивает резкое движение головы назад при ударе и помогает снизить риск травм шейного отдела.",
+      "correctAnswerExplanationRu": "Правильно: correctly positioned headrest helps avoid lesiones en la zona cervical by reducing excessive movement between head and torso.",
       "wrongAnswerExplanations": {
-        "b-fallback-323-a1": "Подголовник не является только элементом комфорта: его положение имеет прямое значение для защиты головы и шеи при столкновении.",
-        "b-fallback-323-a3": "Подголовник защищает прежде всего голову и шею, а не грудную клетку. Для грудной клетки важнее ремень безопасности и другие элементы удержания."
+        "b-fallback-323-a1": "No es sólo confort. Apoyacabeza/headrest является элементом защиты и при правильной регулировке снижает эффект látigo.",
+        "b-fallback-323-a3": "Lesiones en el tórax больше связаны с другими элементами защиты. Этот элемент проверяет cervical/neck injury prevention."
       },
-      "explanationType": "content-agent-reviewed",
-      "claimScope": "direct_image",
+      "explanationType": "emergency-response-and-crash-scene",
+      "claimScope": "ticket_specific_fallback",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "q323-headrest-aligned-neck",
-        "b216-driver-head-neck-detail"
+        "b-fallback-323-critical-source-image"
       ],
-      "method": "content_agent_review",
-      "reviewer": "Codex content agent 277-368",
-      "reviewedAt": "2026-05-10",
-      "disclaimer": "Это пояснение является неофициальной учебной поддержкой Cabadrive и не является официальной формулировкой экзаменационного материала."
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-324",
-      "textRu": "Правильный ответ: Знак, разрешающий стоянку, относится к информационно-разрешающим указателям и выполняется в синем цвете. Поэтому при выборе цвета нужно отличать его от белых или красных запрещающих и предупреждающих элементов. Неверные ответы: Белый цвет может быть частью символов или фона отдельных знаков, но сам знак разрешенной стоянки в этом билете определяется синим цветом. Красный цвет обычно связан с запретами или предупреждением об опасности. Для разрешения стоянки в этом вопросе правильным является синий цвет.",
+      "textRu": "Правильный вариант - \"Azul.\". Правильно: в билете cartelería de Permitido Estacionar связана с Azul. Синий parking sign читается как разрешение/назначение, а не запрет. Неверные варианты: b-fallback-324-a2: Blanco сам по себе не является правильным цветом для cartelería de Permitido Estacionar в этом вопросе. b-fallback-324-a3: Rojo в parking-sign context обычно ведет к запрету или ограничению; в этом ticket correct color для Permitido Estacionar - azul.",
       "correctAnswerId": "b-fallback-324-a1",
-      "correctAnswerExplanationRu": "Знак, разрешающий стоянку, относится к информационно-разрешающим указателям и выполняется в синем цвете. Поэтому при выборе цвета нужно отличать его от белых или красных запрещающих и предупреждающих элементов.",
+      "correctAnswerExplanationRu": "Правильно: в билете cartelería de Permitido Estacionar связана с Azul. Синий parking sign читается как разрешение/назначение, а не запрет.",
       "wrongAnswerExplanations": {
-        "b-fallback-324-a2": "Белый цвет может быть частью символов или фона отдельных знаков, но сам знак разрешенной стоянки в этом билете определяется синим цветом.",
-        "b-fallback-324-a3": "Красный цвет обычно связан с запретами или предупреждением об опасности. Для разрешения стоянки в этом вопросе правильным является синий цвет."
+        "b-fallback-324-a2": "Blanco сам по себе не является правильным цветом для cartelería de Permitido Estacionar в этом вопросе.",
+        "b-fallback-324-a3": "Rojo в parking-sign context обычно ведет к запрету или ограничению; в этом ticket correct color для Permitido Estacionar - azul."
       },
-      "explanationType": "content-agent-reviewed",
+      "explanationType": "parking-prohibitions-and-signed-zones",
       "claimScope": "ticket_specific_fallback",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "content_agent_review",
-      "reviewer": "Codex content agent 277-368",
-      "reviewedAt": "2026-05-10",
-      "disclaimer": "Это пояснение является неофициальной учебной поддержкой Cabadrive и не является официальной формулировкой экзаменационного материала."
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-325",
-      "textRu": "Правильный ответ: На фото автомобиль A находится впереди и хочет вернуться вправо из-за опасности впереди, а автомобиль B расположен так, что может облегчить этот маневр. Безопасное действие для B - снизить скорость и дать A место для возвращения. Неверные ответы: Ускорение автомобиля B ухудшит ситуацию: оно сократит пространство для возвращения автомобиля A и может усилить риск перед опасностью впереди. Звуковой сигнал и мигание фарами не решают проблему свободного места в полосе. В этой ситуации важнее снизить скорость и позволить A безопасно вернуться.",
+      "textRu": "Правильный вариант - \"Reducir la velocidad para facilitarle el retorno al carril.\". Правильно: B должен reducir la velocidad para facilitarle el retorno al carril. Это lane-cooperation logic: не ускоряться в закрывающуюся gap. Неверные варианты: b-fallback-325-a1: Aumentar la velocidad блокирует возврат автомобиля A в правую полосу и создает новый конфликт вместо решения peligro ahead. b-fallback-325-a3: Bocina/luces не помогают безопасно завершить возврат в carril derecho. Билет ожидает снижение скорости, а не конфликтный сигнал.",
       "correctAnswerId": "b-fallback-325-a2",
-      "correctAnswerExplanationRu": "На фото автомобиль A находится впереди и хочет вернуться вправо из-за опасности впереди, а автомобиль B расположен так, что может облегчить этот маневр. Безопасное действие для B - снизить скорость и дать A место для возвращения.",
+      "correctAnswerExplanationRu": "Правильно: B должен reducir la velocidad para facilitarle el retorno al carril. Это lane-cooperation logic: не ускоряться в закрывающуюся gap.",
       "wrongAnswerExplanations": {
-        "b-fallback-325-a1": "Ускорение автомобиля B ухудшит ситуацию: оно сократит пространство для возвращения автомобиля A и может усилить риск перед опасностью впереди.",
-        "b-fallback-325-a3": "Звуковой сигнал и мигание фарами не решают проблему свободного места в полосе. В этой ситуации важнее снизить скорость и позволить A безопасно вернуться."
+        "b-fallback-325-a1": "Aumentar la velocidad блокирует возврат автомобиля A в правую полосу и создает новый конфликт вместо решения peligro ahead.",
+        "b-fallback-325-a3": "Bocina/luces не помогают безопасно завершить возврат в carril derecho. Билет ожидает снижение скорости, а не конфликтный сигнал."
       },
-      "explanationType": "content-agent-reviewed",
-      "claimScope": "direct_image",
-      "relatedSourceIds": [
-        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
-      ],
-      "imageDetailReferences": [
-        "q325-car-a-returning-right",
-        "q325-car-b-position",
-        "b116-traffic-ahead-detail"
-      ],
-      "method": "content_agent_review",
-      "reviewer": "Codex content agent 277-368",
-      "reviewedAt": "2026-05-10",
-      "disclaimer": "Это пояснение является неофициальной учебной поддержкой Cabadrive и не является официальной формулировкой экзаменационного материала."
-    },
-    {
-      "questionId": "b-fallback-326",
-      "textRu": "Правильный ответ: На изображении отмечен автомобиль у перекрестка без светофора и без видимого разрешающего указания для поворота налево. В таком случае утверждение о разрешенном левом повороте неверно. Неверные ответы: Наличие боковой улицы само по себе не делает левый поворот разрешенным. На фото нет светофора или специального разрешения, которое позволяло бы отмеченному автомобилю выполнить этот маневр.",
-      "correctAnswerId": "b-fallback-326-a2",
-      "correctAnswerExplanationRu": "На изображении отмечен автомобиль у перекрестка без светофора и без видимого разрешающего указания для поворота налево. В таком случае утверждение о разрешенном левом повороте неверно.",
-      "wrongAnswerExplanations": {
-        "b-fallback-326-a1": "Наличие боковой улицы само по себе не делает левый поворот разрешенным. На фото нет светофора или специального разрешения, которое позволяло бы отмеченному автомобилю выполнить этот маневр."
-      },
-      "explanationType": "content-agent-reviewed",
-      "claimScope": "direct_image",
-      "relatedSourceIds": [
-        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
-      ],
-      "imageDetailReferences": [
-        "q326-circled-car-left-turn-context",
-        "b126-unsignalized-intersection-detail"
-      ],
-      "method": "content_agent_review",
-      "reviewer": "Codex content agent 277-368",
-      "reviewedAt": "2026-05-10",
-      "disclaimer": "Это пояснение является неофициальной учебной поддержкой Cabadrive и не является официальной формулировкой экзаменационного материала."
-    },
-    {
-      "questionId": "b-fallback-327",
-      "textRu": "Правильный ответ: На знаке показан символ автомагистрали, перечеркнутый красной диагональной полосой. Такое сочетание означает окончание автомагистрали, а не просто окончание любой дороги или другого скоростного участка. Неверные ответы: Символ на синем фоне относится к автомагистрали, а не к скоростной дороге другого типа. Красная диагональ отменяет именно этот режим. Знак не означает конец трассы вообще: он показывает окончание специального режима автомагистрали, что видно по белому дорожному символу на синем фоне.",
-      "correctAnswerId": "b-fallback-327-a3",
-      "correctAnswerExplanationRu": "На знаке показан символ автомагистрали, перечеркнутый красной диагональной полосой. Такое сочетание означает окончание автомагистрали, а не просто окончание любой дороги или другого скоростного участка.",
-      "wrongAnswerExplanations": {
-        "b-fallback-327-a1": "Символ на синем фоне относится к автомагистрали, а не к скоростной дороге другого типа. Красная диагональ отменяет именно этот режим.",
-        "b-fallback-327-a2": "Знак не означает конец трассы вообще: он показывает окончание специального режима автомагистрали, что видно по белому дорожному символу на синем фоне."
-      },
-      "explanationType": "content-agent-reviewed",
-      "claimScope": "direct_image",
-      "relatedSourceIds": [
-        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
-      ],
-      "imageDetailReferences": [
-        "q327-end-autopista-sign",
-        "b264-red-diagonal-bar-detail",
-        "b264-white-motorway-symbol-detail"
-      ],
-      "method": "content_agent_review",
-      "reviewer": "Codex content agent 277-368",
-      "reviewedAt": "2026-05-10",
-      "disclaimer": "Это пояснение является неофициальной учебной поддержкой Cabadrive и не является официальной формулировкой экзаменационного материала."
-    },
-    {
-      "questionId": "b-fallback-328",
-      "textRu": "Правильный ответ: Утверждение верно: если в ДТП есть пострадавшие, полиция должна обеспечить сохранность места происшествия, помочь работе экстренных служб и охранять автомобили, следы и другие доказательства для дальнейшего разбирательства. Неверные ответы: Отрицательный вариант неверен, потому что описанные действия соответствуют роли полиции при происшествии с пострадавшими: сохранить место, обеспечить помощь и защитить доказательства.",
-      "correctAnswerId": "b-fallback-328-a1",
-      "correctAnswerExplanationRu": "Утверждение верно: если в ДТП есть пострадавшие, полиция должна обеспечить сохранность места происшествия, помочь работе экстренных служб и охранять автомобили, следы и другие доказательства для дальнейшего разбирательства.",
-      "wrongAnswerExplanations": {
-        "b-fallback-328-a2": "Отрицательный вариант неверен, потому что описанные действия соответствуют роли полиции при происшествии с пострадавшими: сохранить место, обеспечить помощь и защитить доказательства."
-      },
-      "explanationType": "content-agent-reviewed",
+      "explanationType": "lane-and-channelization-markings",
       "claimScope": "ticket_specific_fallback",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "content_agent_review",
-      "reviewer": "Codex content agent 277-368",
-      "reviewedAt": "2026-05-10",
-      "disclaimer": "Это пояснение является неофициальной учебной поддержкой Cabadrive и не является официальной формулировкой экзаменационного материала."
+      "imageDetailReferences": [
+        "b-fallback-325-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-326",
+      "textRu": "Правильный вариант - \"Falso.\". Falso: señalizado vehicle не может выполнить этот giro a la izquierda в показанной конфигурации без нарушения безопасной траектории. Неверные варианты: b-fallback-326-a1: Verdadero ошибочно разрешает поворот: в показанном cruce sin semáforo условия для такого giro a la izquierda не выполняются.",
+      "correctAnswerId": "b-fallback-326-a2",
+      "correctAnswerExplanationRu": "Falso: señalizado vehicle не может выполнить этот giro a la izquierda в показанной конфигурации без нарушения безопасной траектории.",
+      "wrongAnswerExplanations": {
+        "b-fallback-326-a1": "Verdadero ошибочно разрешает поворот: в показанном cruce sin semáforo условия для такого giro a la izquierda не выполняются."
+      },
+      "explanationType": "traffic-lights-and-rail-crossings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-326-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-327",
+      "textRu": "Правильный вариант - \"Fin de autopista.\". Знак означает fin de autopista: конец режима автомагистрали. Неверные варианты: b-fallback-327-a1: Fin de semiautopista - похожая идея окончания быстрой дороги, но знак в билете не этот. b-fallback-327-a2: Fin de ruta не совпадает с изображением.",
+      "correctAnswerId": "b-fallback-327-a3",
+      "correctAnswerExplanationRu": "Знак означает fin de autopista: конец режима автомагистрали.",
+      "wrongAnswerExplanations": {
+        "b-fallback-327-a1": "Fin de semiautopista - похожая идея окончания быстрой дороги, но знак в билете не этот.",
+        "b-fallback-327-a2": "Fin de ruta не совпадает с изображением."
+      },
+      "explanationType": "road-types-highways-and-routes",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-327-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-328",
+      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero по билету: когда есть personas heridas, policía сохраняет escena del hecho, дает emergency services возможность помочь пострадавшим и охраняет vehicles/evidence. Неверные варианты: b-fallback-328-a2: Falso неверно, потому что утверждение описывает ожидаемую роль полиции в этом билете про escena del hecho.",
+      "correctAnswerId": "b-fallback-328-a1",
+      "correctAnswerExplanationRu": "Verdadero по билету: когда есть personas heridas, policía сохраняет escena del hecho, дает emergency services возможность помочь пострадавшим и охраняет vehicles/evidence.",
+      "wrongAnswerExplanations": {
+        "b-fallback-328-a2": "Falso неверно, потому что утверждение описывает ожидаемую роль полиции в этом билете про escena del hecho."
+      },
+      "explanationType": "vehicle-condition-maintenance-loads",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-329",
