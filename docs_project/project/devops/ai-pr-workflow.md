@@ -8,12 +8,26 @@ requests, and similarly phrased work must not begin as direct Analyst,
 Architect, Implementation Agent, or Review Agent work unless Orchestrator has
 assigned that role and task slice.
 
+Read-only assistance is allowed outside the implementation flow when it only
+inspects, explains, summarizes, reports status, shows command output, plans
+without writing files, or reviews without mutating files or GitHub state. The
+moment the interaction asks for or implies repository mutation, including docs
+or process edits, staging, committing, pushing, opening or changing a PR, or
+workflow-setting changes, the active model must apply Orchestrator-first
+routing before the first mutation.
+
+If the active model is not explicitly operating as Orchestrator for that
+repository-changing request, it must stop and say Orchestrator routing is
+needed. It must not silently become Orchestrator, Analyst, Architect,
+Implementation Agent, or Review Agent, and it must not treat a direct user
+implementation request as a role handoff.
+
 Before starting any new repository-changing work item, Orchestrator fetches or
 otherwise verifies latest `origin/main`, creates or requires a fresh isolated
 worktree/branch from that latest main, records the base context, and preserves
-parallel work. When no current `feature-request.md` exists, Orchestrator invokes
-Analyst first for intake while remaining strictly in the Orchestrator role.
-Analyst creates the next numbered `specs/<feature-id>/` folder, writes the
+parallel work. When no current `feature-request.md` exists, Orchestrator
+invokes Analyst first for intake while remaining strictly in the Orchestrator
+role. Analyst creates the next numbered `specs/<feature-id>/` folder, writes the
 intake `feature-request.md`, hands off the latest-main intake branch/worktree
 context to Orchestrator, and shuts down until Orchestrator explicitly invokes
 final Analyst validation or a new intake request. The Architect then writes
@@ -33,6 +47,14 @@ Orchestrator coordinates and gates the work, but must not directly edit
 repository files. If an Implementation Agent records divergence or improvement
 feedback, the Orchestrator tracks it and invokes Architect so each item becomes
 either a task/ticket or an explicit not-needed decision.
+
+If accidental direct edits or GitHub mutations start before the Orchestrator
+route or implementation prerequisites are satisfied, recovery is stop, report,
+preserve, and restart through Orchestrator/user disposition. The agent records
+what happened, preserves user and sibling-agent work, and waits for an explicit
+adopt/revert/salvage decision assigned to the proper role. Hidden continuation,
+silent role switching, destructive cleanup, and reverting work the agent did
+not make are not allowed.
 
 ## Work Cycle And PR Set
 
@@ -63,6 +85,8 @@ new or existing subagent with the correct role.
   actions, or non-Analyst-owned files, and shuts down after handoff until
   Orchestrator explicitly invokes final Analyst validation or a new intake
   request.
+- Analyst starts only after Orchestrator routes the request to Analyst; Analyst
+  does not self-assign intake from a new repository-changing request.
 - Analyst final validation, when invoked after Architect passes, checks the
   final result against the customer's desired outcome in spirit and letter using
   the original request, clarified answers, assumptions, and acceptance
@@ -75,6 +99,8 @@ new or existing subagent with the correct role.
 - Architect creates and updates `spec.md`, `plan.md`, `tasks.md`, and
   disposition records, but does not write implementation changes, review PRs,
   commit, push, open PRs, or merge.
+- If asked to implement while acting as Architect, Architect stops and routes
+  the request back to Orchestrator.
 - Architect final validation, when invoked before Analyst validation,
   completion, or authorized merge mechanics, covers all PR slices in the cycle
   PR set, all Architect-assigned tasks and dispositions, architectural guidance,
@@ -90,8 +116,10 @@ new or existing subagent with the correct role.
   as safety, permissions, credentials, data-loss risk, repository conflicts or
   status ambiguity, or an unapproved human merge-owner decision.
 - Implementation Agent works in the assigned isolated worktree, branch, and PR
-  slice. It may stage, commit, push, and open a ready PR for that slice, but it
-  does not merge.
+  slice only after complete feature memory exists: `feature-request.md`,
+  `spec.md`, `plan.md`, and `tasks.md`, except documented legacy/no-intake
+  exceptions. It may stage, commit, push, and open a ready PR for that slice,
+  but it does not merge.
 - Review Agent reviews the PR and reports findings, preferably as GitHub inline
   review threads. It does not edit files, implement fixes, rerun checks, or
   merge while acting as reviewer.
@@ -244,11 +272,15 @@ Before merge, the author should also confirm the SENAR done gate:
 
 - repository-changing work entered through Orchestrator, and Orchestrator did
   not directly edit repository files
+- no non-Orchestrator active model implemented directly, self-promoted, or left
+  an unhandled accidental-start recovery issue
 - manual author/review check: Analyst intake is present as `feature-request.md`, or a legacy/no-intake reason is recorded; this is not currently a preflight/CI guarantee
 - any Analyst clarification was relayed through Orchestrator, or intake records
   why no clarification was needed
 - assigned work used an isolated worktree, branch, and PR slice with
   parallel-work preservation guidance
+- sibling worktrees, branches, dirty diffs, commits, PR state, and process
+  memory were preserved unless Orchestrator explicitly coordinated a change
 - latest `origin/main` startup/base context is recorded for the work item and
   each new task slice, except when the Analyst-created latest-main handoff
   branch is explicitly used as the single PR slice

@@ -181,6 +181,24 @@ test("current topic guide placeholder and manifests pass draft validation", () =
   );
 });
 
+test("parking clearance material teaches hospital entrance ten-meter rule and five-meter trap", () => {
+  const currentGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
+  const parkingTopic = currentGuide.topics.find((topic) => topic.id === "parking-clearances-and-corners");
+  assert(parkingTopic, "Expected parking-clearances-and-corners topic to exist.");
+
+  const topicText = [
+    ...parkingTopic.learningMaterialRu,
+    ...parkingTopic.spanishTerms.map((term) => `${term.termEs} ${term.translationRu}`),
+    ...parkingTopic.trapNotes.map((note) => note.textRu),
+    ...parkingTopic.tickets
+      .filter((ticket) => ["b-fallback-028", "b-fallback-412"].includes(ticket.questionId))
+      .flatMap((ticket) => ticket.answerExplanations.map((explanation) => explanation.explanationRu))
+  ].join("\n");
+
+  assert.match(topicText, /hospital\/centro de salud -> 10 metros de cada lado de la entrada|hospital\/centro de salud .*10 metros de cada lado de la entrada/s);
+  assert.match(topicText, /5 metros de cada lado de la entrada .*trap|5 metros de cada lado de la entrada .*falso|5 metros de cada lado de la entrada .*wrong/s);
+});
+
 test("planned full coverage passes without requiring rendered content for planned assignments", () => {
   assert.deepEqual(validate(), []);
 });

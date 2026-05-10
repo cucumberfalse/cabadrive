@@ -1,4 +1,4 @@
-import { BookMarked, BookOpen, CheckCircle2, ClipboardList, Flag, Image as ImageIcon, RotateCcw, Search, Timer, XCircle } from "lucide-react";
+import { BookMarked, BookOpen, CheckCircle2, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
 import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import {
   data,
@@ -8,6 +8,7 @@ import {
   sourceById,
   translationByQuestion,
   type ProgressAnswer,
+  type ProcessGuideSection,
   type Question,
   type TopicGuideTicket
 } from "./data/content";
@@ -16,7 +17,7 @@ import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHis
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process";
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
 type LearningTicketTimerState = {
   remainingSeconds: number;
@@ -63,6 +64,20 @@ function sourceStatusLabel(status: string | undefined) {
   if (status === "current") return "источник проверен как текущий";
   if (status === "stale") return "источник требует обновления";
   return "статус источника требует проверки";
+}
+
+function processSourceStatusLabel(status: string) {
+  if (status === "checked_current") return "проверен как текущий";
+  if (status === "checked_current_with_historico_url") return "проверен как текущий; URL может вести через gcaba_historico";
+  if (status === "volatile_check_required") return "волатильные данные: проверить перед действием";
+  return "статус требует проверки";
+}
+
+function processCalloutLabel(section: ProcessGuideSection) {
+  if (section.calloutType === "required_step") return "Шаг процесса";
+  if (section.calloutType === "optional_preparation") return "Опциональная подготовка";
+  if (section.calloutType === "adjacent_path") return "Соседний путь";
+  return "Предупреждение";
 }
 
 function learningTimerStatusText(timer: LearningTicketTimerState) {
@@ -183,6 +198,7 @@ function QuestionCard({
   return (
     <article className="question-card" data-testid="question-card">
       <div className="question-meta">
+        {mode === "learning" && <span>Билет {question.id}</span>}
         <span>Категория B</span>
         <span>{question.jurisdiction}</span>
         <span>{question.topics.map(topicLabel).join(", ")}</span>
@@ -587,6 +603,7 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
   const question = questionById.get(ticket.questionId);
   const explanations = explanationByAnswer(ticket);
   const localImagePath = safeLocalImagePath(question, ticket);
+  const translation = translationByQuestion.get(ticket.questionId);
   const source = question ? sourceById.get(question.sourceId) : undefined;
   const correctAnswer = question?.answers.find((answer) => answer.id === question.correctAnswerId);
 
@@ -606,12 +623,22 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
         <span>Категория {question.category}</span>
         <span>{question.jurisdiction}</span>
         <DifficultyIndicator level={question.difficulty} label="Сложность билета" />
-        <span>Статус: неофициальная B-практика</span>
       </div>
       <div className="official-block">
         <span className="block-label">Испанский текст из canonical question</span>
         <h3>{question.officialTextEs}</h3>
       </div>
+      {translation ? (
+        <aside className="support-block translation materials-translation">
+          <span className="block-label">Неофициальный русский перевод</span>
+          <p>{translation.questionTextRu}</p>
+        </aside>
+      ) : (
+        <aside className="support-block translation materials-translation missing-translation">
+          <span className="block-label">Русский перевод</span>
+          <p>Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.</p>
+        </aside>
+      )}
       {localImagePath && (
         <figure className="question-image materials-image">
           <img src={assetUrl(localImagePath)} alt={question.image?.altEs || `Изображение билета ${question.id}`} />
@@ -634,6 +661,7 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
             <div className={isCorrectAnswer ? "material-answer correct" : "material-answer"} role="listitem" key={answer.id}>
               <div>
                 <strong>{answer.officialTextEs}</strong>
+                {translation?.answerTranslations[answer.id] && <small className="answer-translation">{translation.answerTranslations[answer.id]}</small>}
                 {isCorrectAnswer && <span className="answer-badge">Правильный ответ</span>}
               </div>
               <p>{answerExplanation?.explanationRu || "Пояснение для этого варианта пока не связано с материалом."}</p>
@@ -766,6 +794,150 @@ function TopicGuideView() {
   );
 }
 
+function ProcessGuideView() {
+  const guide = data.cabaExamProcessGuide;
+  const sourceByProcessId = new Map(guide.sources.map((source) => [source.id, source]));
+  const stepSections = guide.sections.filter((section) => section.calloutType === "required_step");
+  const supportingSections = guide.sections.filter((section) => section.calloutType !== "required_step");
+
+  function renderSources(section: ProcessGuideSection) {
+    return (
+      <div className="process-source-list" aria-label={`Источники для ${section.titleRu}`}>
+        {section.sourceIds.map((sourceId) => {
+          const source = sourceByProcessId.get(sourceId);
+          if (!source) return null;
+          return (
+            <a href={source.url} target="_blank" rel="noreferrer" key={source.id}>
+              <span>{source.title}</span>
+              <small>Проверено {source.checkedAt} · {processSourceStatusLabel(source.currentnessStatus)}</small>
+            </a>
+          );
+        })}
+      </div>
+    );
+  }
+
+  function renderSection(section: ProcessGuideSection, index?: number) {
+    return (
+      <article className="process-section" key={section.id} data-testid={`process-section-${section.id}`}>
+        <div className="process-section-heading">
+          <div>
+            <span className="block-label">{index === undefined ? processCalloutLabel(section) : `Шаг ${index + 1}`}</span>
+            <h3>{section.titleRu}</h3>
+          </div>
+          <span>{processCalloutLabel(section)}</span>
+        </div>
+        {section.summaryRu && <p className="muted">{section.summaryRu}</p>}
+        {section.bodyRu.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+        {section.spanishTerms?.length ? (
+          <div className="process-term-row" aria-label={`Испанские термины для ${section.titleRu}`}>
+            {section.spanishTerms.map((term) => (
+              <span key={term}>{term}</span>
+            ))}
+          </div>
+        ) : null}
+        {section.volatilityWarningRu && (
+          <aside className="support-block process-warning">
+            <span className="block-label">Волатильная информация</span>
+            <p>{section.volatilityWarningRu}</p>
+          </aside>
+        )}
+        {renderSources(section)}
+      </article>
+    );
+  }
+
+  return (
+    <section className="process-view" aria-labelledby="process-title">
+      <header className="materials-header process-header">
+        <div>
+          <p className="eyebrow">Процесс</p>
+          <h2 id="process-title">{guide.titleRu}</h2>
+          <p>{guide.primaryScope.audienceRu}</p>
+        </div>
+        <div className="materials-status" aria-label="Статус процессного гайда">
+          <span>{guideContentStatusLabel(guide.contentStatus)}</span>
+          <span>Проверено {guide.lastReviewedAt}</span>
+          <span>{guide.primaryScope.jurisdiction} · {guide.primaryScope.category} · {guide.primaryScope.procedure}</span>
+        </div>
+      </header>
+
+      <div className="process-alerts">
+        <aside className="support-block">
+          <span className="block-label">Неофициальная русская поддержка</span>
+          <p>{guide.disclaimerRu}</p>
+          <p>{guide.officialActionWarningRu}</p>
+        </aside>
+        <aside className="support-block process-warning">
+          <span className="block-label">Проверяйте перед действием</span>
+          <p>{guide.volatilityWarningRu}</p>
+        </aside>
+      </div>
+
+      <section className="process-grid" aria-labelledby="process-steps-title">
+        <div className="process-main">
+          <div className="materials-topic-heading">
+            <div>
+              <span className="block-label">B1/private car Otorgamiento</span>
+              <h2 id="process-steps-title">Официальная последовательность</h2>
+              <p>Сжатая русская карта того, что обычно происходит до и во время exam day.</p>
+            </div>
+          </div>
+          <div className="process-section-list">
+            {stepSections.map((section, index) => renderSection(section, index))}
+          </div>
+        </div>
+
+        <aside className="process-aside">
+          <section className="process-links" aria-labelledby="official-links-title">
+            <h3 id="official-links-title"><ExternalLink size={18} aria-hidden="true" /> Официальные ссылки</h3>
+            {guide.officialLinks.map((group) => (
+              <div className="process-link-group" key={group.id}>
+                <h4>{group.titleRu}</h4>
+                {group.links.map((link) => {
+                  const source = sourceByProcessId.get(link.sourceId);
+                  return (
+                    <a href={link.url} target="_blank" rel="noreferrer" key={`${group.id}-${link.sourceId}`}>
+                      <span>{link.labelRu}</span>
+                      {source && <small>{source.officialOwner} · проверено {source.checkedAt}</small>}
+                    </a>
+                  );
+                })}
+              </div>
+            ))}
+          </section>
+        </aside>
+      </section>
+
+      <section className="materials-section" aria-labelledby="supporting-process-title">
+        <h2 id="supporting-process-title">Соседние пути и предупреждения</h2>
+        <div className="process-support-grid">
+          {supportingSections.map((section) => renderSection(section))}
+        </div>
+      </section>
+
+      <section className="materials-section" aria-labelledby="process-glossary-title">
+        <h2 id="process-glossary-title">Испанские термины процесса</h2>
+        <div className="process-glossary-grid">
+          {guide.glossary.map((term) => (
+            <article className="materials-term process-glossary-term" key={term.id}>
+              <strong>{term.termEs}</strong>
+              <p>{term.translationRu}</p>
+              <small>{term.explanationRu}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <footer className="source-line process-footnote">
+        <FileText size={16} aria-hidden="true" /> Изображения не включены: для первого slice не было необходимости добавлять официальные изображения; так сохраняется offline/local-first режим без риска устаревших или персональных данных.
+      </footer>
+    </section>
+  );
+}
+
 export function App() {
   const [view, setView] = useState<View>("learn");
   const [progress, setProgress] = useState(loadProgress);
@@ -795,6 +967,7 @@ export function App() {
         <button className={view === "mistakes" ? "active" : ""} onClick={() => setView("mistakes")}><XCircle size={18} /> Ошибки</button>
         <button className={view === "vocabulary" ? "active" : ""} onClick={() => setView("vocabulary")}><Search size={18} /> Словарь</button>
         <button className={view === "materials" ? "active" : ""} onClick={() => setView("materials")}><BookMarked size={18} /> Материалы</button>
+        <button className={view === "process" ? "active" : ""} onClick={() => setView("process")}><MapPinned size={18} /> Процесс</button>
         <button className={view === "guide" ? "active" : ""} onClick={() => setView("guide")}><Flag size={18} /> CABA/RF</button>
       </nav>
 
@@ -803,6 +976,7 @@ export function App() {
       {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}
+      {view === "process" && <ProcessGuideView />}
       {view === "guide" && <GuideView />}
     </main>
   );

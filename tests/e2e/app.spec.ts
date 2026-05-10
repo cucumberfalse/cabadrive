@@ -2,9 +2,12 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 
 const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
+const translations = JSON.parse(readFileSync("content/translations/ru.translations.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
+const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
+const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
 const difficultyAria: Record<string, string> = {
   green: "Сложность: зеленый, легко",
   blue: "Сложность: синий, обычная",
@@ -21,6 +24,7 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(page.getByText("unofficial category B practice set")).toBeVisible();
   await expect(page.getByRole("heading", { name: /Тренажер теории/ })).toBeVisible();
   const card = page.getByTestId("question-card");
+  await expect(card.getByText(`Билет ${questions[0].id}`, { exact: true })).toBeVisible();
   await expect(page.getByTestId("learning-ticket-timer")).toContainText("Темп билета");
   await expect(page.getByTestId("learning-ticket-timer-time")).toHaveText("1:15");
   const questionToggle = card.getByRole("button", { name: /¿Qué indica esta seña/ });
@@ -153,8 +157,51 @@ test("vocabulary and guide are available", async ({ page }) => {
   await expect(page.getByText("balizas")).toBeVisible();
   await page.getByRole("button", { name: /Материалы/ }).click();
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  await page.getByRole("button", { name: /Процесс/ }).click();
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
   await page.getByRole("button", { name: /CABA\/RF/ }).click();
   await expect(page.getByText("Статус вопросов категории B")).toBeVisible();
+  await expect(page.getByText("Входы в больницы и centros de salud")).toBeVisible();
+});
+
+test("process guide renders B1 Otorgamiento scope, official sources, volatile warnings, and glossary", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Процесс/ }).click();
+
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
+  await expect(page.getByText("Неофициальная русская поддержка")).toBeVisible();
+  await expect(page.getByText(processGuide.officialActionWarningRu)).toBeVisible();
+  await expect(page.getByText(/CABA · B1 · otorgamiento/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Официальная последовательность" })).toBeVisible();
+  await expect(page.getByTestId("process-section-practical-car-exam")).toContainText("autos doble comando");
+  await expect(page.getByTestId("process-section-exam-day-psychophysical")).toContainText("psicología, visión, audición");
+  await expect(page.getByTestId("process-section-turno-bui-sede")).toContainText("Sedes, turnos");
+  await expect(page.getByTestId("process-section-adjacent-paths")).toContainText("Renovación por cambio de jurisdicción");
+  await expect(page.getByText("GCBA: Otorgamiento de Licencia de Conducir").first()).toBeVisible();
+  await expect(page.getByText(`Проверено ${processGuide.lastReviewedAt}`).first()).toBeVisible();
+  await expect(page.getByTestId("process-section-practical-car-exam").getByRole("link", { name: /GCBA: Examen práctico/ })).toHaveAttribute("href", /buenosaires\.gob\.ar/);
+  await expect(page.getByRole("link", { name: /Manual de Procedimientos GCBA/ })).toHaveAttribute("href", /PE-DIS-SECGVC-DGHC-562-25-ANX\.pdf/);
+  await expect(page.getByText("Declaración Jurada / DDJJ")).toBeVisible();
+  await expect(page.getByText("siniestro vial / incidente vial / accidente vial")).toBeVisible();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+});
+
+test("process guide stays local-first without external requests, remote images, or PDF viewer", async ({ page }) => {
+  const externalRequests: string[] = [];
+  const pdfRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
+    if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+  });
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Процесс/ }).click();
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+  await expect(page.locator(".process-view img")).toHaveCount(0);
+  expect(externalRequests).toEqual([]);
+  expect(pdfRequests).toEqual([]);
 });
 
 test("materials view renders topic guide status, list, details, canonical ticket data, and local images", async ({ page }) => {
@@ -170,6 +217,10 @@ test("materials view renders topic guide status, list, details, canonical ticket
   const correctAnswer = canonicalQuestion.answers.find((answer) => answer.id === canonicalQuestion.correctAnswerId)!;
   const correctExplanation = firstTicket.answerExplanations.find((item: { answerId: string }) => item.answerId === correctAnswer.id)!;
   const incorrectExplanation = firstTicket.answerExplanations.find((item: { answerId: string }) => item.answerId !== correctAnswer.id)!;
+  const translation = translationByQuestionId.get(firstTicket.questionId) as {
+    questionTextRu: string;
+    answerTranslations: Record<string, string>;
+  };
 
   await page.goto("/");
   await page.getByRole("button", { name: /Материалы/ }).click();
@@ -194,9 +245,12 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await expect(ticketBlock).toBeVisible();
   await expect(ticketBlock.locator(`[aria-label="${difficultyAria[canonicalQuestion.difficulty]}"]`)).toBeVisible();
   await expect(ticketBlock.getByText(canonicalQuestion.officialTextEs)).toBeVisible();
+  await expect(ticketBlock.getByText(translation.questionTextRu)).toBeVisible();
+  await expect(ticketBlock.getByText("Статус: неофициальная B-практика")).toHaveCount(0);
   const ticketAnswers = ticketBlock.locator(".materials-answers");
   for (const answer of canonicalQuestion.answers) {
     await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
+    await expect(ticketAnswers.getByText(translation.answerTranslations[answer.id], { exact: true })).toBeVisible();
   }
   await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
   await expect(ticketBlock.locator(".material-answer p").filter({ hasText: correctExplanation.explanationRu }).first()).toBeVisible();
@@ -222,6 +276,10 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
     answers: { id: string; officialTextEs: string }[];
     correctAnswerId: string;
   };
+  const translation = translationByQuestionId.get(dualQuestionId) as {
+    questionTextRu: string;
+    answerTranslations: Record<string, string>;
+  };
 
   async function expectFullDualTopicTicket(ticketBlock: Locator, guideTicket: {
     answerExplanations: { explanationRu: string }[];
@@ -232,7 +290,10 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
     const ticketAnswers = ticketBlock.locator(".materials-answers");
     for (const answer of canonicalQuestion.answers) {
       await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
+      await expect(ticketAnswers.getByText(translation.answerTranslations[answer.id], { exact: true })).toBeVisible();
     }
+    await expect(ticketBlock.getByText(translation.questionTextRu)).toBeVisible();
+    await expect(ticketBlock.getByText("Статус: неофициальная B-практика")).toHaveCount(0);
     await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
     for (const explanation of guideTicket.answerExplanations) {
       await expect(ticketBlock.locator(".material-answer p").filter({ hasText: explanation.explanationRu }).first()).toBeVisible();

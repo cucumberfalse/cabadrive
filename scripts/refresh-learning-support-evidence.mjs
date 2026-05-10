@@ -79,6 +79,9 @@ const imageEvidence = {
 const translationEvidence = {
   locale: "ru",
   version: 1,
+  generatedAt: "2026-05-10",
+  evidenceType: "translation_alignment_fingerprints",
+  description: "Deterministic offline evidence that each reviewed Russian translation entry matches the current Spanish question tuple and answer ids.",
   entries: combined.translations.map((translation) =>
     buildTranslationAlignmentEvidenceEntry({
       question: questionById.get(translation.questionId),

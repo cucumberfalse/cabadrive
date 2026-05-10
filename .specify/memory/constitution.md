@@ -6,6 +6,8 @@
 
 Every repository-changing request defaults to Orchestrator entry and must have feature memory under `specs/<feature-id>/` before implementation. Orchestrator invokes Analyst first when no current `feature-request.md` exists; Analyst intake creates `feature-request.md`; Architect planning creates `spec.md`, `plan.md`, and `tasks.md` before implementation agents edit repository files.
 
+Read-only inspection, explanation, status reporting, summarization, non-mutating planning, and review may proceed without feature memory until they become repository-changing. A non-Orchestrator active model that receives a new repository-changing request must stop, must not self-promote into another role, and must route the request to Orchestrator.
+
 ### II. Testable Boundaries
 
 Product behavior must be implemented behind boundaries that can be tested without real external services unless the test is explicitly integration-level.
@@ -25,6 +27,8 @@ Direct pushes to the default branch are forbidden after branch protection is ena
 ### VI. One Worktree Per Task
 
 New repository-changing work and each new task slice must start from latest `origin/main` in a fresh isolated worktree/branch, except that an Analyst-created latest-main intake handoff may continue through Architect planning and may be assigned as the single implementation PR slice. Parallel implementation work must use separate worktrees, branches, and PRs. Orchestrator must warn assigned subagents when parallel work may exist and require preservation of existing dirty diffs, branches, commits, PRs, and process memory.
+
+Accidental direct edits before Orchestrator routing or implementation prerequisites are a stop condition. The agent must report the failure, preserve user and sibling work, avoid destructive cleanup or unauthorized reverts, and restart only through Orchestrator/user disposition.
 
 ### VII. Deployability Contract
 
