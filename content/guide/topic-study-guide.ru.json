@@ -5390,7 +5390,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "db5102f0109fb6c77451fcc73dba97989822b4693602e7dcb80f0d0f7c5e667f",
+        "sourceFingerprint": "70cc98fda873b8791c824b44e5906c052940a0e3e5260310f990ad7e81b97118",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -5959,7 +5959,7 @@
       "trapNotes": [
         {
           "id": "trap-legal-does-not-mean-safe",
-          "textRu": "Слово legal не значит безопасно для руля. В `drogas legales nunca afectan` ловушка именно в `nunca`: некоторые medicamentos или legal substances могут снижать aptitud.",
+          "textRu": "Слово legal не значит безопасно для руля. В `drogas legales nunca afectan` ловушка именно в `nunca`: некоторые medicamentos или легальные вещества могут снижать aptitud.",
           "sourceQuestionIds": [
             "b-fallback-067",
             "b-fallback-152",
@@ -6054,7 +6054,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "4f3ed76a8c57bbaff85970ae859e118554376780abcc7e45650ccac1fe8d195d",
+        "sourceFingerprint": "a089fe49c1d6fbc4f484bac496efc387bb763b471ea5b12727d4f582ffcae5ca",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -6085,7 +6085,7 @@
       ],
       "practicalReasoningRu": [
         "Плохая погода съедает запас сразу с нескольких сторон: меньше сцепления, хуже видимость, длиннее торможение и ниже устойчивость. Чем раньше снижена скорость, тем спокойнее остается машина.",
-        "У luces и balizas разные задачи. Фары и rompeniebla помогают видеть и быть видимым; balizas показывают остановку, emergency или unusual maneuver. Как обычный режим движения в тумане они сбивают других.",
+        "У luces и balizas разные задачи. Фары и rompeniebla помогают видеть и быть видимым; balizas показывают остановку, аварийную ситуацию или нестандартный маневр. Как обычный режим движения в тумане они сбивают других.",
         "Aquaplaning опасен тем, что steering и braking хуже передаются на дорогу. Меньшая скорость дает протектору больше времени вытеснить воду."
       ],
       "spanishTerms": [
@@ -6465,7 +6465,7 @@
             {
               "answerId": "b-fallback-317-a2",
               "verdict": "incorrect",
-              "explanationRu": "Sólo por vías sin banquina не является назначением этих lights. Banquina здесь отвлекающий критерий."
+              "explanationRu": "Sólo por vías sin banquina не является назначением этих огней. Banquina здесь отвлекающий критерий."
             },
             {
               "answerId": "b-fallback-317-a3",
@@ -6527,7 +6527,7 @@
             {
               "answerId": "b-fallback-360-a2",
               "verdict": "incorrect",
-              "explanationRu": "Se puede agregar las luces que se deseen неверно: лишний свет может ослеплять и путать, поэтому additional lights ограничены."
+              "explanationRu": "Se puede agregar las luces que se deseen неверно: лишний свет может ослеплять и путать, поэтому дополнительные огни ограничены."
             },
             {
               "answerId": "b-fallback-360-a3",
@@ -6582,7 +6582,7 @@
             {
               "answerId": "b-fallback-390-a2",
               "verdict": "incorrect",
-              "explanationRu": "Sólo por la noche неверно. Сниженная visibility днем тоже требует lights."
+              "explanationRu": "Sólo por la noche неверно. Сниженная visibility днем тоже требует фар."
             },
             {
               "answerId": "b-fallback-390-a3",
@@ -6603,7 +6603,7 @@
             {
               "answerId": "b-fallback-428-a2",
               "verdict": "correct",
-              "explanationRu": "Фраза false. При тумане/плохой видимости нужны подходящие lights и скорость; balizas оставляют для остановки, emergency или unusual situations."
+              "explanationRu": "Фраза false. При тумане/плохой видимости нужны подходящие фары и скорость; balizas оставляют для остановки, аварийной ситуации или необычных обстоятельств."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b192.jpg"
@@ -6632,7 +6632,7 @@
       "trapNotes": [
         {
           "id": "trap-weather-answer-full-chain",
-          "textRu": "В вопросах про погоду часто наказывают за неполный ответ. Если один вариант собирает автомобиль, дорогу/инфраструктуру, климат и водителя, не выбирайте только pavement/climate.",
+          "textRu": "В вопросах про погоду часто наказывают за неполный ответ. Если один вариант собирает автомобиль, дорогу/инфраструктуру, климат и водителя, не выбирайте только дорогу и климат.",
           "sourceQuestionIds": [
             "b-fallback-275"
           ]
