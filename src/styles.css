@@ -25,6 +25,11 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 main {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
@@ -165,7 +170,8 @@ small,
 
 .question-meta,
 .actions-row,
-.exam-bar {
+.exam-bar,
+.question-flow-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -328,9 +334,14 @@ small,
   margin: 16px 0;
 }
 
+.question-image-frame {
+  position: relative;
+  width: min(100%, 620px);
+}
+
 .question-image img {
   display: block;
-  width: min(100%, 620px);
+  width: 100%;
   max-height: 360px;
   object-fit: contain;
   border: 1px solid #ccd3ce;
@@ -338,11 +349,47 @@ small,
   background: #ffffff;
 }
 
+.image-explanation-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.image-overlay-region {
+  position: absolute;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.image-overlay-region.dim {
+  background: rgba(22, 32, 29, 0.48);
+  backdrop-filter: grayscale(0.8);
+}
+
+.image-overlay-region.critical {
+  border: 3px solid #ffd166;
+  box-shadow: 0 0 0 999px rgba(22, 32, 29, 0.16), 0 0 0 2px rgba(22, 32, 29, 0.72);
+}
+
+.image-overlay-region.supporting {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
 .question-image figcaption {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 6px;
   margin-top: 6px;
+  color: #617069;
+  font-size: 0.9rem;
+}
+
+.image-overlay-fallback {
+  max-width: 64ch;
+  margin-top: 8px;
   color: #617069;
   font-size: 0.9rem;
 }
@@ -380,6 +427,18 @@ small,
   align-items: center;
   gap: 8px;
   margin-top: 14px;
+  font-weight: 700;
+}
+
+.question-flow-nav {
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e1e5e0;
+}
+
+.question-flow-nav span {
+  color: #617069;
   font-weight: 700;
 }
 
@@ -439,11 +498,42 @@ small,
   padding: 14px;
 }
 
-.mistake-list-row {
+.empty-state {
+  min-height: 220px;
+  padding: 18px;
+  border: 1px solid #d4d9d1;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.empty-state h2 {
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  max-width: 64ch;
+  color: #617069;
+}
+
+.mistake-link {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border: 1px solid #d4d9d1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #16201d;
+  text-align: left;
+}
+
+.mistake-link:hover,
+.mistake-link:focus-visible,
+.mistake-link.active {
+  border-color: #176b57;
+  background: #dff3eb;
 }
 
 .term-grid {
@@ -830,6 +920,15 @@ small,
   .learning-timer-main,
   .timer-toggle {
     width: 100%;
+  }
+
+  .question-flow-nav {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .question-flow-nav span {
+    text-align: center;
   }
 
   .materials-topic-list,

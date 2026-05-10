@@ -3,11 +3,13 @@ import { readFileSync } from "node:fs";
 
 const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
 const translations = JSON.parse(readFileSync("content/translations/ru.translations.json", "utf8"));
+const explanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
 const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
+const explanationByQuestionId = new Map(explanations.map((explanation: { questionId: string }) => [explanation.questionId, explanation]));
 const difficultyAria: Record<string, string> = {
   green: "Сложность: зеленый, легко",
   blue: "Сложность: синий, обычная",
@@ -27,11 +29,19 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(card.getByText(`Билет ${questions[0].id}`, { exact: true })).toBeVisible();
   await expect(page.getByTestId("learning-ticket-timer")).toContainText("Темп билета");
   await expect(page.getByTestId("learning-ticket-timer-time")).toHaveText("1:15");
+  await expect(page.locator(".toolbar").getByRole("button", { name: "Следующий" })).toHaveCount(0);
+  const bottomNav = card.locator(".question-flow-nav");
+  await expect(bottomNav).toBeVisible();
+  await expect(bottomNav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
+  await expect(bottomNav.getByRole("button", { name: "Следующий" })).toBeEnabled();
   const questionToggle = card.getByRole("button", { name: /¿Qué indica esta seña/ });
   await expect(card.locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(card.locator("img")).toBeVisible();
+  await expect(card.getByTestId("image-explanation-overlay")).toHaveCount(0);
+  await expect(card.getByTestId("image-overlay-fallback")).toHaveCount(0);
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
   await expect(page.getByText("Обгон справа.")).toHaveCount(0);
+  await expect(page.locator(".support-block.explanation")).toHaveCount(0);
   await expect(page.getByText("Неофициальный перевод")).toHaveCount(0);
   await questionToggle.click();
   await expect(page.getByText("Что означает этот жест?")).toBeVisible();
@@ -62,18 +72,37 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await page.getByRole("button", { name: /Сложный/ }).click();
   await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
   await expect(page.locator(".result")).toBeVisible();
+  await expect(page.locator(".support-block.translation")).toBeVisible();
+  await expect(page.locator(".support-block.explanation")).toContainText((explanationByQuestionId.get(questions[0].id) as { textRu: string }).textRu);
+  await expect(card.getByTestId("image-explanation-overlay")).toBeVisible();
+  await expect(card.locator("[data-overlay-role='answer_critical_highlight']")).toBeVisible();
+  await expect(card.locator("[data-overlay-role='background_irrelevant_dim']")).toHaveCount(2);
   await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await bottomNav.getByRole("button", { name: "Следующий" }).click();
+  await expect(page.getByText(questions[1].officialTextEs)).toBeVisible();
+  await page.getByTestId("question-card").locator(".question-flow-nav").getByRole("button", { name: "Предыдущий" }).click();
+  await expect(page.getByText(questions[0].officialTextEs)).toBeVisible();
+  await expect(page.locator(".result")).toBeVisible();
+  await expect(page.locator(".support-block.translation")).toBeVisible();
+  await expect(page.locator(".support-block.explanation")).toContainText((explanationByQuestionId.get(questions[0].id) as { textRu: string }).textRu);
   await page.getByRole("button", { name: /Ошибки/ }).click();
   await expect(page.getByRole("heading", { name: "Ошибки" })).toBeVisible();
   await expect(page.locator(".side-list").locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(page.getByTestId("question-card").locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
+  await expect(page.locator(".support-block.explanation")).toHaveCount(0);
+  const mistakesNav = page.getByTestId("question-card").locator(".question-flow-nav");
+  await expect(mistakesNav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
+  await expect(mistakesNav.getByRole("button", { name: "Следующий" })).toBeDisabled();
   const mistakeToggle = page.getByTestId("question-card").getByRole("button", { name: /¿Qué indica esta seña/ });
   await mistakeToggle.click();
   await expect(page.getByText("Что означает этот жест?")).toBeVisible();
   await mistakeToggle.click();
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
   await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect(page.getByText("Что означает этот жест?")).toBeVisible();
+  await expect(page.locator(".support-block.explanation")).toContainText((explanationByQuestionId.get(questions[0].id) as { textRu: string }).textRu);
+  await expect(page.getByTestId("question-card").getByTestId("image-explanation-overlay")).toBeVisible();
   await expect.poll(() => storedAnswerCount(page)).toBe(2);
   await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
   await expect.poll(() => storedAnswerCount(page)).toBe(3);
@@ -106,10 +135,9 @@ test("learning timer pauses, resumes, and does not count down invisible tickets"
   await page.getByRole("button", { name: "Следующий" }).click();
   await expect(timerValue).toHaveText("1:15");
   await page.clock.runFor(10_000);
+  await expect(timerValue).toHaveText("1:05");
 
-  for (let i = 0; i < 24; i += 1) {
-    await page.getByRole("button", { name: "Следующий" }).click();
-  }
+  await page.getByRole("button", { name: "Предыдущий" }).click();
   await expect(timerValue).toHaveText("1:09");
 });
 
@@ -128,6 +156,42 @@ test("learning timeout is unresolved only until the learner answers after the li
   await expect.poll(() => storedAnswerCount(page)).toBe(1);
 });
 
+test("learning search navigation keeps filtered context and boundary states", async ({ page }) => {
+  await page.goto("/");
+  const search = page.getByPlaceholder("Поиск по испанскому, русскому, теме");
+  await search.fill("prioridad");
+  const card = page.getByTestId("question-card");
+  const nav = card.locator(".question-flow-nav");
+  await expect(nav.getByText(/^1 \/ /)).toBeVisible();
+  await expect(nav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
+  await nav.getByRole("button", { name: "Следующий" }).click();
+  await expect(nav.getByRole("button", { name: "Предыдущий" })).toBeEnabled();
+  await nav.getByRole("button", { name: "Предыдущий" }).click();
+  await expect(nav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
+});
+
+test("learning search with no matches does not fall back to an answerable question", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByTestId("question-card")).toBeVisible();
+  await page.getByPlaceholder("Поиск по испанскому, русскому, теме").fill("zzzz-no-local-ticket-match");
+  await expect(page.getByRole("heading", { name: "Ничего не найдено" })).toBeVisible();
+  await expect(page.getByTestId("question-card")).toHaveCount(0);
+  await expect(page.locator(".question-flow-nav")).toHaveCount(0);
+  await expect(page.locator(".answer")).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+});
+
+test("mistake review with no mistakes does not render fallback question", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await expect(page.getByRole("heading", { name: "Ошибки" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Ошибок пока нет" })).toBeVisible();
+  await expect(page.getByTestId("question-card")).toHaveCount(0);
+  await expect(page.locator(".question-flow-nav")).toHaveCount(0);
+  await expect(page.locator(".answer")).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+});
+
 test("exam mode hides translation and explanation during active attempt and stores score", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Экзамен/ }).click();
@@ -138,6 +202,7 @@ test("exam mode hides translation and explanation during active attempt and stor
   await expect(page.locator(".official-block[role='button']")).toHaveCount(0);
   await expect(page.locator(".support-block.translation")).toHaveCount(0);
   await expect(page.locator(".support-block.explanation")).toHaveCount(0);
+  await expect(page.getByTestId("image-explanation-overlay")).toHaveCount(0);
   await expect(page.locator(".difficulty-chip")).toHaveCount(0);
   await expect(page.getByRole("button", { name: /Пояснение/ })).toHaveCount(0);
   await page.getByRole("button", { name: "Пропустить" }).click();

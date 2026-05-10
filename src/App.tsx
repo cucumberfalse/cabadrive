@@ -1,12 +1,14 @@
 import { BookMarked, BookOpen, CheckCircle2, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
+import { useEffect, useMemo, useState, type KeyboardEvent, type ReactNode } from "react";
 import {
   data,
   assetUrl,
   explanationByQuestion,
+  imageOverlayByQuestion,
   questionById,
   sourceById,
   translationByQuestion,
+  type ImageExplanationOverlay,
   type ProgressAnswer,
   type ProcessGuideSection,
   type Question,
@@ -27,6 +29,18 @@ type LearningTicketTimerState = {
 
 type LearningTicketTimerView = LearningTicketTimerState & {
   onTogglePause: () => void;
+};
+
+type QuestionAttemptState = {
+  selectedAnswerId?: string;
+  showTranslation: boolean;
+  showExplanation: boolean;
+};
+
+const emptyAttemptState: QuestionAttemptState = {
+  selectedAnswerId: undefined,
+  showTranslation: false,
+  showExplanation: false
 };
 
 function topicLabel(topic: string) {
@@ -96,6 +110,53 @@ function initialLearningTimerState(targetSeconds: number): LearningTicketTimerSt
   };
 }
 
+function QuestionImageFigure({
+  question,
+  overlay,
+  showOverlay,
+  showFallback
+}: {
+  question: Question;
+  overlay?: ImageExplanationOverlay;
+  showOverlay: boolean;
+  showFallback: boolean;
+}) {
+  return (
+    <figure className={showOverlay ? "question-image has-explanation-overlay" : "question-image"}>
+      <div className="question-image-frame">
+        <img src={assetUrl(question.image!.localPath)} alt={question.image!.altEs} />
+        {showOverlay && overlay && (
+          <div className="image-explanation-overlay" data-testid="image-explanation-overlay" aria-hidden="true">
+            {overlay.regions.map((region) => (
+              <span
+                key={region.overlayRegionId}
+                className={`image-overlay-region ${region.sourceRole === "answer_critical_highlight" ? "critical" : ""} ${region.sourceRole === "background_irrelevant_dim" || region.sourceRole === "distractor_trap" ? "dim" : ""} ${region.sourceRole === "supporting" ? "supporting" : ""}`}
+                style={{
+                  left: `${region.rect.x}%`,
+                  top: `${region.rect.y}%`,
+                  width: `${region.rect.width}%`,
+                  height: `${region.rect.height}%`
+                }}
+                data-overlay-role={region.sourceRole}
+                data-relevance-id={region.relevanceId}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <figcaption>
+        <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса
+        {showOverlay && overlay ? <span> · включено проверенное визуальное пояснение</span> : null}
+      </figcaption>
+      {showFallback && (
+        <p className="image-overlay-fallback" data-testid="image-overlay-fallback">
+          Для этого изображения пока нет проверенного overlay-пояснения; показана обычная локальная картинка без угаданных подсветок.
+        </p>
+      )}
+    </figure>
+  );
+}
+
 function StatusStrip({ progress }: { progress: StoredProgress }) {
   const wrong = mistakesFromHistory(progress.answers).length;
   const lastAttempt = progress.examAttempts.at(-1);
@@ -127,6 +188,9 @@ function QuestionCard({
   onAnswered,
   difficult,
   onToggleDifficult,
+  attemptState,
+  onAttemptStateChange,
+  footerNavigation,
   revealAfterAnswer = true,
   allowRepeatedAnswers = false,
   learningTimer
@@ -136,30 +200,49 @@ function QuestionCard({
   onAnswered: (answer: ProgressAnswer) => void;
   difficult: boolean;
   onToggleDifficult: () => void;
+  attemptState?: QuestionAttemptState;
+  onAttemptStateChange?: (state: QuestionAttemptState) => void;
+  footerNavigation?: ReactNode;
   revealAfterAnswer?: boolean;
   allowRepeatedAnswers?: boolean;
   learningTimer?: LearningTicketTimerView;
 }) {
-  const [selected, setSelected] = useState<string | undefined>();
-  const [showTranslation, setShowTranslation] = useState(false);
-  const [showExplanation, setShowExplanation] = useState(false);
+  const [selected, setSelected] = useState<string | undefined>(attemptState?.selectedAnswerId);
+  const [showTranslation, setShowTranslation] = useState(attemptState?.showTranslation ?? false);
+  const [showExplanation, setShowExplanation] = useState(attemptState?.showExplanation ?? false);
   const translation = translationByQuestion.get(question.id);
   const explanation = explanationByQuestion.get(question.id);
   const source = sourceById.get(question.sourceId);
+  const imageOverlay = question.image ? imageOverlayByQuestion.get(question.id) : undefined;
   const answered = Boolean(selected);
   const correct = selected === question.correctAnswerId;
   const canToggleSupport = mode !== "exam";
   const translationId = `translation-${question.id}`;
+  const showImageOverlay = Boolean(canToggleSupport && answered && showExplanation && imageOverlay);
+  const showImageOverlayFallback = Boolean(canToggleSupport && answered && showExplanation && question.image && !imageOverlay);
 
   useEffect(() => {
-    setSelected(undefined);
-    setShowTranslation(false);
-    setShowExplanation(false);
-  }, [mode, question.id]);
+    setSelected(attemptState?.selectedAnswerId);
+    setShowTranslation(attemptState?.showTranslation ?? false);
+    setShowExplanation(attemptState?.showExplanation ?? false);
+  }, [mode, question.id, attemptState?.selectedAnswerId, attemptState?.showTranslation, attemptState?.showExplanation]);
+
+  function updateAttemptState(nextState: QuestionAttemptState) {
+    onAttemptStateChange?.(nextState);
+  }
 
   function selectAnswer(answerId: string) {
     if (answered && !allowRepeatedAnswers) return;
+    const nextShowTranslation = canToggleSupport ? true : showTranslation;
+    const nextShowExplanation = canToggleSupport ? true : showExplanation;
     setSelected(answerId);
+    setShowTranslation(nextShowTranslation);
+    setShowExplanation(nextShowExplanation);
+    updateAttemptState({
+      selectedAnswerId: answerId,
+      showTranslation: nextShowTranslation,
+      showExplanation: nextShowExplanation
+    });
     onAnswered({
       questionId: question.id,
       selectedAnswerId: answerId,
@@ -171,7 +254,15 @@ function QuestionCard({
 
   function toggleTranslation() {
     if (!canToggleSupport) return;
-    setShowTranslation((value) => !value);
+    setShowTranslation((value) => {
+      const nextValue = !value;
+      updateAttemptState({
+        selectedAnswerId: selected,
+        showTranslation: nextValue,
+        showExplanation
+      });
+      return nextValue;
+    });
   }
 
   function handleQuestionKeyDown(event: KeyboardEvent<HTMLDivElement>) {
@@ -240,17 +331,30 @@ function QuestionCard({
       )}
 
       {question.image && (
-        <figure className="question-image">
-          <img src={assetUrl(question.image.localPath)} alt={question.image.altEs} />
-          <figcaption>
-            <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса
-          </figcaption>
-        </figure>
+        <QuestionImageFigure
+          question={question}
+          overlay={imageOverlay}
+          showOverlay={showImageOverlay}
+          showFallback={showImageOverlayFallback}
+        />
       )}
 
       {canToggleSupport && (
         <div className="actions-row">
-          <button type="button" className="tool-button" onClick={() => setShowExplanation((value) => !value)}>
+          <button
+            type="button"
+            className="tool-button"
+            aria-expanded={showExplanation}
+            onClick={() => setShowExplanation((value) => {
+              const nextValue = !value;
+              updateAttemptState({
+                selectedAnswerId: selected,
+                showTranslation,
+                showExplanation: nextValue
+              });
+              return nextValue;
+            })}
+          >
             <BookOpen size={18} aria-hidden="true" /> Пояснение
           </button>
           <button type="button" className={difficult ? "tool-button active" : "tool-button"} onClick={onToggleDifficult}>
@@ -293,6 +397,8 @@ function QuestionCard({
         </aside>
       )}
 
+      {footerNavigation}
+
       <footer className="source-line">
         Источник: {source?.title || question.sourceId}. Статус вопроса: неофициальная B-практика, нужна внешняя проверка.
       </footer>
@@ -300,17 +406,57 @@ function QuestionCard({
   );
 }
 
+function QuestionFlowNavigation({
+  position,
+  total,
+  onPrevious,
+  onNext,
+  collectionLabel
+}: {
+  position: number;
+  total: number;
+  onPrevious: () => void;
+  onNext: () => void;
+  collectionLabel: string;
+}) {
+  const isFirst = position <= 0;
+  const isLast = total === 0 || position >= total - 1;
+
+  return (
+    <nav className="question-flow-nav" aria-label={`Навигация по ${collectionLabel}`}>
+      <button type="button" className="tool-button" onClick={onPrevious} disabled={isFirst} aria-disabled={isFirst}>
+        Предыдущий
+      </button>
+      <span aria-live="polite">
+        {total > 0 ? `${position + 1} / ${total}` : "0 / 0"}
+      </span>
+      <button type="button" className="tool-button" onClick={onNext} disabled={isLast} aria-disabled={isLast}>
+        Следующий
+      </button>
+    </nav>
+  );
+}
+
 function LearnView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const [timerStates, setTimerStates] = useState<Record<string, LearningTicketTimerState>>({});
+  const [attemptsByQuestion, setAttemptsByQuestion] = useState<Record<string, QuestionAttemptState>>({});
   const results = useMemo(() => searchQuestions(query), [query]);
-  const question = results[index % Math.max(results.length, 1)] || data.questions[0];
-  const difficult = progress.difficultQuestionIds.includes(question.id);
+  const hasActiveSearch = query.trim().length > 0;
+  const hasResults = results.length > 0;
+  const currentIndex = results.length ? Math.min(index, results.length - 1) : 0;
+  const question = results[currentIndex];
+  const difficult = question ? progress.difficultQuestionIds.includes(question.id) : false;
   const timerTargetSeconds = learningTicketTargetSeconds(data.examFormat);
-  const currentTimerState = timerTargetSeconds ? timerStates[question.id] ?? initialLearningTimerState(timerTargetSeconds) : undefined;
+  const currentTimerState = question && timerTargetSeconds ? timerStates[question.id] ?? initialLearningTimerState(timerTargetSeconds) : undefined;
+
+  useEffect(() => {
+    setIndex(0);
+  }, [query]);
 
   function record(answer: ProgressAnswer) {
+    if (!question) return;
     if (timerTargetSeconds) {
       setTimerStates((current) => {
         const state = current[question.id] ?? initialLearningTimerState(timerTargetSeconds);
@@ -330,6 +476,7 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   }
 
   function toggleDifficult() {
+    if (!question) return;
     const exists = progress.difficultQuestionIds.includes(question.id);
     const next = {
       ...progress,
@@ -346,7 +493,7 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   }
 
   function toggleCurrentTimer() {
-    if (!timerTargetSeconds) return;
+    if (!question || !timerTargetSeconds) return;
     setTimerStates((current) => {
       const state = current[question.id] ?? initialLearningTimerState(timerTargetSeconds);
       if (state.status !== "running" && state.status !== "paused") return current;
@@ -361,7 +508,7 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   }
 
   useEffect(() => {
-    if (!timerTargetSeconds) return;
+    if (!question || !timerTargetSeconds) return;
     setTimerStates((current) => {
       if (current[question.id]) return current;
       return {
@@ -369,10 +516,10 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
         [question.id]: initialLearningTimerState(timerTargetSeconds)
       };
     });
-  }, [question.id, timerTargetSeconds]);
+  }, [question?.id, timerTargetSeconds]);
 
   useEffect(() => {
-    if (!timerTargetSeconds || currentTimerState?.status !== "running") return undefined;
+    if (!question || !timerTargetSeconds || currentTimerState?.status !== "running") return undefined;
     const timer = window.setInterval(() => {
       setTimerStates((current) => {
         const state = current[question.id];
@@ -397,7 +544,7 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
       });
     }, 1000);
     return () => window.clearInterval(timer);
-  }, [question.id, timerTargetSeconds, currentTimerState?.status]);
+  }, [question?.id, timerTargetSeconds, currentTimerState?.status]);
 
   return (
     <section className="workspace">
@@ -406,19 +553,38 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
           <Search size={18} aria-hidden="true" />
           <input value={query} onChange={(event) => updateQuery(event.target.value)} placeholder="Поиск по испанскому, русскому, теме" />
         </label>
-        <button type="button" className="tool-button" onClick={() => setIndex((value) => value + 1)}>
-          Следующий
-        </button>
       </div>
-      <QuestionCard
-        key={question.id}
-        question={question}
-        mode="learning"
-        onAnswered={record}
-        difficult={difficult}
-        onToggleDifficult={toggleDifficult}
-        learningTimer={currentTimerState ? { ...currentTimerState, onTogglePause: toggleCurrentTimer } : undefined}
-      />
+      {hasResults && question ? (
+        <QuestionCard
+          key={question.id}
+          question={question}
+          mode="learning"
+          onAnswered={record}
+          difficult={difficult}
+          onToggleDifficult={toggleDifficult}
+          attemptState={attemptsByQuestion[question.id] || emptyAttemptState}
+          onAttemptStateChange={(nextState) => setAttemptsByQuestion((current) => ({ ...current, [question.id]: nextState }))}
+          learningTimer={currentTimerState ? { ...currentTimerState, onTogglePause: toggleCurrentTimer } : undefined}
+          footerNavigation={(
+            <QuestionFlowNavigation
+              position={currentIndex}
+              total={results.length}
+              collectionLabel="результатам обучения"
+              onPrevious={() => setIndex((value) => Math.max(value - 1, 0))}
+              onNext={() => setIndex((value) => Math.min(value + 1, Math.max(results.length - 1, 0)))}
+            />
+          )}
+        />
+      ) : (
+        <div className="empty-state" role="status">
+          <h2>Ничего не найдено</h2>
+          <p>
+            {hasActiveSearch
+              ? "В текущей локальной базе нет вопросов по этому запросу. Измените поиск, чтобы продолжить обучение внутри найденной коллекции."
+              : "В локальной базе пока нет доступных вопросов для обучения."}
+          </p>
+        </div>
+      )}
     </section>
   );
 }
@@ -517,8 +683,15 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
 }
 
 function MistakesView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
+  const [index, setIndex] = useState(0);
+  const [attemptsByQuestion, setAttemptsByQuestion] = useState<Record<string, QuestionAttemptState>>({});
   const mistakes = mistakesFromHistory(progress.answers);
-  const question = data.questions.find((item) => item.id === mistakes[0]?.questionId) || data.questions[0];
+  const currentIndex = mistakes.length ? Math.min(index, mistakes.length - 1) : 0;
+  const question = mistakes.length ? data.questions.find((item) => item.id === mistakes[currentIndex]?.questionId) : undefined;
+
+  useEffect(() => {
+    setIndex((value) => Math.min(value, Math.max(mistakes.length - 1, 0)));
+  }, [mistakes.length]);
 
   function record(answer: ProgressAnswer) {
     const next = { ...progress, answers: [...progress.answers, answer] };
@@ -531,21 +704,45 @@ function MistakesView({ progress, setProgress }: { progress: StoredProgress; set
       <aside className="side-list">
         <h2>Ошибки</h2>
         {mistakes.length ? mistakes.slice(0, 12).map((mistake) => (
-          <p className="mistake-list-row" key={mistake.questionId}>
+          <button
+            type="button"
+            className={mistake.questionId === question?.id ? "mistake-link active" : "mistake-link"}
+            key={mistake.questionId}
+            onClick={() => setIndex(mistakes.findIndex((item) => item.questionId === mistake.questionId))}
+          >
             <strong>{mistake.wrong}x</strong>
             <span>{mistake.questionId}</span>
             {questionById.get(mistake.questionId) && <DifficultyIndicator level={questionById.get(mistake.questionId)!.difficulty} compact />}
-          </p>
+          </button>
         )) : <p>Ошибок пока нет. Ответьте на пару вопросов в обучении.</p>}
       </aside>
-      <QuestionCard
-        question={question}
-        mode="mistakes"
-        onAnswered={record}
-        difficult={progress.difficultQuestionIds.includes(question.id)}
-        onToggleDifficult={() => undefined}
-        allowRepeatedAnswers
-      />
+      {question ? (
+        <QuestionCard
+          key={question.id}
+          question={question}
+          mode="mistakes"
+          onAnswered={record}
+          difficult={progress.difficultQuestionIds.includes(question.id)}
+          onToggleDifficult={() => undefined}
+          attemptState={attemptsByQuestion[question.id] || emptyAttemptState}
+          onAttemptStateChange={(nextState) => setAttemptsByQuestion((current) => ({ ...current, [question.id]: nextState }))}
+          footerNavigation={(
+            <QuestionFlowNavigation
+              position={currentIndex}
+              total={mistakes.length}
+              collectionLabel="ошибкам"
+              onPrevious={() => setIndex((value) => Math.max(value - 1, 0))}
+              onNext={() => setIndex((value) => Math.min(value + 1, Math.max(mistakes.length - 1, 0)))}
+            />
+          )}
+          allowRepeatedAnswers
+        />
+      ) : (
+        <div className="empty-state" role="status">
+          <h2>Ошибок пока нет</h2>
+          <p>Здесь появятся только вопросы, на которые вы уже ответили неверно. Сейчас коллекция ошибок пуста.</p>
+        </div>
+      )}
     </section>
   );
 }

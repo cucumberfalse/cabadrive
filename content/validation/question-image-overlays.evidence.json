@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "reviewer": "Codex Implementation Agent 010",
+  "reviewedAt": "2026-05-10",
+  "overlayEntries": [
+    {
+      "overlayId": "overlay-b-fallback-001-b13-explanation",
+      "questionId": "b-fallback-001",
+      "status": "approved",
+      "reviewer": "Codex Implementation Agent 010",
+      "reviewedAt": "2026-05-10",
+      "overlaySha256": "044772b616a03e270fc14b9f7f850d9b021abf98cd2248f6b57773bd58e958c7",
+      "checks": {
+        "questionUsageCurrent": true,
+        "metadataCurrent": true,
+        "rolesFromQuestionUsage": true,
+        "regionsInBounds": true,
+        "localAssetOnly": true,
+        "noInventedRelevance": true
+      },
+      "notes": "Approved overlay references only b-fallback-001 009 usage roles b001-highlight-gesture, b001-support-annotation, and b001-background-city."
+    }
+  ]
+}
