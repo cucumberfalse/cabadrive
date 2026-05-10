@@ -28,6 +28,10 @@ const validationCompletedAtMarkers = {
   architect: /Final\s+Architect\s+validation\s+completed\s+at:\s*([^\r\n]+)/ig,
   analyst: /Final\s+Analyst\s+validation\s+completed\s+at:\s*([^\r\n]+)/ig
 };
+const effectiveContentHeadMarker = /Effective\s+content\s+head:\s*([0-9a-f]{40})/ig;
+const guardTextMarker = /current-PR-head|current PR head|head guard/i;
+const shaReferenceMarker = /\b[0-9a-f]{12,40}\b/ig;
+const allowedEvidenceFilenames = new Set(["feature-request.md", "spec.md", "plan.md", "tasks.md"]);
 
 export function evaluateFinalizationGates(input = {}) {
   const blockers = [];
@@ -121,8 +125,25 @@ export function evaluateFinalizationGates(input = {}) {
   if (!evidence.feedbackDisposition) {
     block("missing-feedback-disposition", "Implementation Agent feedback disposition evidence is missing.");
   }
+  if (!evidence.effectiveContentHead) {
+    block("missing-effective-content-head", "Effective content head evidence is missing.");
+  }
   if (!evidence.currentHeadGuardEvidence) {
     block("missing-current-head-guard", "Current-PR-head guard evidence is missing.");
+  }
+  if (evidence.effectiveContentHead && pr.headSha && evidence.effectiveContentHead.toLowerCase() !== pr.headSha.toLowerCase()) {
+    if (evidence.postEffectiveHeadVerificationError) {
+      block(
+        "post-effective-head-unverified",
+        `Could not verify changes after effective content head ${evidence.effectiveContentHead}: ${evidence.postEffectiveHeadVerificationError}`
+      );
+    } else if (!evidence.postEffectiveHeadEvidenceOnly) {
+      const paths = (evidence.postEffectiveHeadInvalidPaths || []).join(", ") || "unknown paths";
+      block(
+        "post-effective-head-non-evidence",
+        `Current PR head includes non-evidence changes after effective content head ${evidence.effectiveContentHead}: ${paths}.`
+      );
+    }
   }
   if (evidence.acceptedKnownIssueDecisionPending) {
     block("human-known-issue-decision", "A remaining known issue still needs an explicit owner decision.");
@@ -256,6 +277,7 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
   const tasks = read("tasks.md");
   const architectMemory = [spec, plan, tasks].join("\n");
   const analystMemory = featureRequest;
+  const allMemory = [featureRequest, spec, plan, tasks].join("\n");
 
   const hasArchitectPass = /Architect validation pass:\s*(pass|passed|yes|true)/i.test(architectMemory);
   const hasAnalystPass = /Analyst validation pass:\s*(pass|passed|yes|true)/i.test(analystMemory);
@@ -267,6 +289,8 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
   const feedbackText = feedbackSection.trim();
   const noFeedbackRecorded = /^(?:[-*]\s*)?(?:None yet|None|No Implementation Agent feedback)\.?\s*$/i.test(feedbackText);
   const feedbackDisposed = /No unresolved|Architect disposition|disposed/i.test(feedbackText);
+  const effectiveContentHead = readLatestEffectiveContentHead(allMemory);
+  const guardEvidenceText = readCurrentHeadGuardEvidenceText(tasks);
 
   return {
     finalArchitectValidation: hasArchitectPass,
@@ -282,10 +306,87 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
       /## Known Issues/i.test(tasks) &&
       /## Verification Evidence/i.test(tasks),
     feedbackDisposition: noFeedbackRecorded || feedbackDisposed,
-    currentHeadGuardEvidence: /current-PR-head|current PR head|head guard/i.test(tasks),
+    effectiveContentHead,
+    currentHeadMatchesEffectiveContentHead: Boolean(currentHead && effectiveContentHead) &&
+      currentHead.toLowerCase() === effectiveContentHead.toLowerCase(),
+    postEffectiveHeadEvidenceOnly: Boolean(currentHead && effectiveContentHead) &&
+      currentHead.toLowerCase() === effectiveContentHead.toLowerCase(),
+    currentHeadGuardEvidence: Boolean(effectiveContentHead) &&
+      guardEvidenceReferencesEffectiveHead(guardEvidenceText, effectiveContentHead),
     acceptedKnownIssueDecisionPending: /accepted known issue|owner decision|human decision/i.test(knownIssueSection) &&
       !/none|not applicable|no known/i.test(knownIssueSection)
   };
+}
+
+function readLatestEffectiveContentHead(memory) {
+  effectiveContentHeadMarker.lastIndex = 0;
+  let latest = null;
+  let match;
+  while ((match = effectiveContentHeadMarker.exec(memory)) !== null) {
+    latest = match[1].toLowerCase();
+  }
+  return latest;
+}
+
+function readCurrentHeadGuardEvidenceText(tasks) {
+  return tasks
+    .split(/\r?\n/)
+    .filter((line) => guardTextMarker.test(line))
+    .join("\n");
+}
+
+function guardEvidenceReferencesEffectiveHead(text, effectiveContentHead) {
+  if (!text || !effectiveContentHead) return false;
+  shaReferenceMarker.lastIndex = 0;
+  let match;
+  while ((match = shaReferenceMarker.exec(text)) !== null) {
+    const candidate = match[0].toLowerCase();
+    if (effectiveContentHead.startsWith(candidate)) return true;
+  }
+  return false;
+}
+
+export function evaluatePostEffectiveHeadChangedFiles(changedFiles = [], featurePath = "") {
+  const invalidPaths = changedFiles.filter((path) => !isFinalValidationEvidencePath(path, featurePath));
+  return {
+    postEffectiveHeadEvidenceOnly: invalidPaths.length === 0,
+    postEffectiveHeadChangedFiles: changedFiles,
+    postEffectiveHeadInvalidPaths: invalidPaths
+  };
+}
+
+export function isFinalValidationEvidencePath(filePath = "", featurePath = "") {
+  const normalizedFilePath = normalizeRepoPath(filePath);
+  const normalizedFeaturePath = normalizeRepoPath(featurePath);
+  if (!normalizedFilePath || !normalizedFeaturePath) return false;
+  const prefix = `${normalizedFeaturePath}/`;
+  if (!normalizedFilePath.startsWith(prefix)) return false;
+  const relative = normalizedFilePath.slice(prefix.length);
+  return allowedEvidenceFilenames.has(relative);
+}
+
+function normalizeRepoPath(path = "") {
+  return String(path).replace(/\\/g, "/").replace(/^\.\//, "").replace(/\/+$/g, "");
+}
+
+export function verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead) {
+  try {
+    run("git", ["cat-file", "-e", `${effectiveContentHead}^{commit}`], { cwd: root });
+    run("git", ["cat-file", "-e", `${currentHead}^{commit}`], { cwd: root });
+    const output = run("git", ["diff", "--name-only", effectiveContentHead, currentHead, "--"], { cwd: root });
+    const changedFiles = output ? output.split(/\r?\n/).filter(Boolean) : [];
+    return {
+      ...evaluatePostEffectiveHeadChangedFiles(changedFiles, featurePath),
+      postEffectiveHeadVerificationError: null
+    };
+  } catch (error) {
+    return {
+      postEffectiveHeadEvidenceOnly: false,
+      postEffectiveHeadChangedFiles: [],
+      postEffectiveHeadInvalidPaths: [],
+      postEffectiveHeadVerificationError: error.message || String(error)
+    };
+  }
 }
 
 function readLatestValidationCompletedAt(memory, role) {
@@ -465,6 +566,17 @@ async function main() {
   const processEvidence = featurePath
     ? readProcessEvidence(root, featurePath, state.pr.headSha)
     : {};
+  if (
+    featurePath &&
+    processEvidence.effectiveContentHead &&
+    state.pr.headSha &&
+    processEvidence.effectiveContentHead.toLowerCase() !== state.pr.headSha.toLowerCase()
+  ) {
+    Object.assign(
+      processEvidence,
+      verifyPostEffectiveHeadChanges(root, featurePath, processEvidence.effectiveContentHead, state.pr.headSha)
+    );
+  }
   const blockingFindings = collectBlockingFindings({
     reviews: state.reviews,
     reviewThreads: state.reviewThreads,

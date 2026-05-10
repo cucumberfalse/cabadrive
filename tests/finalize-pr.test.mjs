@@ -5,7 +5,9 @@ import { join } from "node:path";
 import { test } from "node:test";
 import {
   collectBlockingFindings,
+  evaluatePostEffectiveHeadChangedFiles,
   evaluateFinalizationGates,
+  isFinalValidationEvidencePath,
   normalizeCheckState,
   readProcessEvidence
 } from "../scripts/finalize-pr.mjs";
@@ -33,6 +35,8 @@ function successfulInput(overrides = {}) {
       acceptanceEvidence: true,
       currentProcessMemory: true,
       feedbackDisposition: true,
+      effectiveContentHead: "abc123",
+      postEffectiveHeadEvidenceOnly: true,
       currentHeadGuardEvidence: true,
       acceptedKnownIssueDecisionPending: false
     },
@@ -153,6 +157,7 @@ test("missing final validation and process evidence block finalization", () => {
       acceptanceEvidence: false,
       currentProcessMemory: false,
       feedbackDisposition: false,
+      effectiveContentHead: null,
       currentHeadGuardEvidence: false,
       acceptedKnownIssueDecisionPending: true
     }
@@ -161,7 +166,33 @@ test("missing final validation and process evidence block finalization", () => {
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-architect-validation"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-analyst-validation"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-acceptance-evidence"));
+  assert.ok(result.blockers.some((blocker) => blocker.code === "missing-effective-content-head"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"));
+});
+
+test("post-effective-head non-evidence paths block finalization", () => {
+  const effectiveContentHead = "a".repeat(40);
+  const currentHead = "b".repeat(40);
+  const result = evaluateFinalizationGates(successfulInput({
+    pr: {
+      number: 12,
+      headSha: currentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    suppliedHeadSha: currentHead,
+    processEvidence: {
+      ...successfulInput().processEvidence,
+      effectiveContentHead,
+      currentHeadGuardEvidence: true,
+      postEffectiveHeadEvidenceOnly: false,
+      postEffectiveHeadInvalidPaths: ["scripts/finalize-pr.mjs"]
+    }
+  }));
+
+  assert.equal(result.action, "block");
+  assert.ok(result.blockers.some((blocker) => blocker.code === "post-effective-head-non-evidence"));
 });
 
 test("blocking review finding collection detects current-head blocker signals", () => {
@@ -336,7 +367,7 @@ test("process evidence orders final validation by explicit role-owned timestamps
   assert.equal(missingMarkers.finalValidationOrder, false);
 });
 
-test("process evidence accepts current-head guard marker without head SHA", () => {
+test("process evidence rejects generic current-head guard marker without effective head reference", () => {
   const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
   const featurePath = "specs/999-finalize-test";
   const featureRoot = join(root, featurePath);
@@ -368,9 +399,10 @@ Final Architect validation completed at: 2026-05-10T13:00:00Z
 `;
 
   writeFileSync(join(featureRoot, "tasks.md"), `${baseTasks}- None yet.\n${evidenceTasks}`);
-  const evidenceWithoutHeadSha = readProcessEvidence(root, featurePath, "abc123def456");
-  assert.equal(evidenceWithoutHeadSha.feedbackDisposition, true);
-  assert.equal(evidenceWithoutHeadSha.currentHeadGuardEvidence, true);
+  const genericEvidence = readProcessEvidence(root, featurePath, "abc123def456");
+  assert.equal(genericEvidence.effectiveContentHead, null);
+  assert.equal(genericEvidence.feedbackDisposition, true);
+  assert.equal(genericEvidence.currentHeadGuardEvidence, false);
 
   writeFileSync(join(featureRoot, "tasks.md"), `${baseTasks}- None yet.
 - Follow-up concern needs Architect review.
@@ -388,4 +420,63 @@ ${evidenceTasks}`);
 - Required checks passed.
 `);
   assert.equal(readProcessEvidence(root, featurePath, "abc123def456").currentHeadGuardEvidence, false);
+});
+
+test("process evidence accepts effective-head marker plus guard reference", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const featureRoot = join(root, featurePath);
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  mkdirSync(featureRoot, { recursive: true });
+  writeFileSync(join(featureRoot, "feature-request.md"), `Analyst validation pass: passed
+Final Analyst validation completed at: 2026-05-10T13:00:01Z
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `Architect validation pass: passed
+Final Architect validation completed at: 2026-05-10T13:00:00Z
+`);
+  writeFileSync(join(featureRoot, "plan.md"), "");
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Decisions
+- Effective content head: ${effectiveContentHead}
+
+## Dead Ends
+- None.
+
+## Known Issues
+- None.
+
+## Implementation Agent Feedback
+- None yet.
+
+## Verification Evidence
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
+`);
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  assert.equal(evidence.effectiveContentHead, effectiveContentHead);
+  assert.equal(evidence.currentHeadGuardEvidence, true);
+  assert.equal(evidence.currentHeadMatchesEffectiveContentHead, true);
+  assert.equal(evidence.postEffectiveHeadEvidenceOnly, true);
+});
+
+test("post-effective-head path helper allows only role process evidence files", () => {
+  const featurePath = "specs/999-finalize-test";
+  const changedFiles = [
+    "specs/999-finalize-test/feature-request.md",
+    "specs/999-finalize-test/spec.md",
+    "specs/999-finalize-test/plan.md",
+    "specs/999-finalize-test/tasks.md"
+  ];
+
+  assert.equal(isFinalValidationEvidencePath("specs/999-finalize-test/tasks.md", featurePath), true);
+  assert.equal(isFinalValidationEvidencePath("specs/999-finalize-test/notes.md", featurePath), false);
+  assert.equal(isFinalValidationEvidencePath("scripts/finalize-pr.mjs", featurePath), false);
+
+  const allowed = evaluatePostEffectiveHeadChangedFiles(changedFiles, featurePath);
+  assert.equal(allowed.postEffectiveHeadEvidenceOnly, true);
+
+  const blocked = evaluatePostEffectiveHeadChangedFiles([...changedFiles, "scripts/finalize-pr.mjs"], featurePath);
+  assert.equal(blocked.postEffectiveHeadEvidenceOnly, false);
+  assert.deepEqual(blocked.postEffectiveHeadInvalidPaths, ["scripts/finalize-pr.mjs"]);
 });

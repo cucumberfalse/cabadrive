@@ -86,11 +86,14 @@ Reviewers check role boundaries in addition to code behavior:
   Analyst limit is exceeded, reviewers should expect a new feature request in a
   separate latest-main branch/worktree.
 - When final Architect and Analyst validation target an effective content head,
-  any later commit may be treated as valid only if it is final-validation
+  role/process evidence must record `Effective content head: <40-hex-sha>`.
+  Any later commit may be treated as valid only if it is final-validation
   evidence-only process memory and Orchestrator's read-only current-PR-head
-  guard proves no non-evidence content changed. Non-evidence changes after role
-  validation make prior validation stale and must be routed back through
-  role-appropriate follow-up or final validation before completion or merge.
+  guard explicitly references that effective content head by full SHA or
+  unambiguous short prefix and proves no non-evidence content changed.
+  Non-evidence changes after role validation make prior validation stale and
+  must be routed back through role-appropriate follow-up or final validation
+  before completion or merge.
 
 Reviewers should block merge when the PR text, docs, specs, or implementation
 permit unsafe completion. Blocking conditions include red, missing, queued, or
@@ -133,7 +136,12 @@ resolved or outdated blocking findings, clean mergeability, final validation
 evidence, current process memory, feedback disposition, and local guard
 evidence. Mutating helper usage must require an explicit expected head for the
 reviewed and validated PR head, while dry-run inspection may remain read-only
-without it. Human intervention remains a blocker only for exceptional cases:
+without it. Helper process-evidence parsing must require an `Effective content
+head: <40-hex-sha>` marker and current-head guard text that explicitly
+references that effective content head; if the current PR head differs from the
+effective content head, local git must prove all later changed files are limited
+to the active feature memory evidence files before merge can proceed. Human
+intervention remains a blocker only for exceptional cases:
 missing credentials or permissions, explicit instruction not to merge,
 ambiguous repository or PR state, pending owner decision for an accepted known
 issue, or protected-branch/ruleset policy blockers.
