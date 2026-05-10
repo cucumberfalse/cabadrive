@@ -32,6 +32,9 @@ const effectiveContentHeadMarker = /Effective\s+content\s+head:\s*([0-9a-f]{40})
 const guardTextMarker = /current-PR-head|current PR head|head guard/i;
 const shaReferenceMarker = /\b[0-9a-f]{12,40}\b/ig;
 const allowedEvidenceFilenames = new Set(["feature-request.md", "spec.md", "plan.md", "tasks.md"]);
+const finalValidationSectionMarker = /^##\s+Final\s+(Architect|Analyst)\s+Validation\s+Notes\s*$/i;
+const verificationEvidenceSectionMarker = /^##\s+Verification\s+Evidence\s*$/i;
+const sectionMarker = /^##\s+/;
 
 export function evaluateFinalizationGates(input = {}) {
   const blockers = [];
@@ -262,6 +265,20 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
   return findings;
 }
 
+export function collectPaginationFindings(truncated = {}) {
+  const findings = [];
+  if (truncated.checks) {
+    findings.push({ source: "status-pagination", message: "Required check rollup is paginated; refusing to finalize without complete status data." });
+  }
+  if (truncated.reviewThreads) {
+    findings.push({ source: "review-pagination", message: "Review threads are paginated; refusing to finalize without complete thread data." });
+  }
+  if (truncated.reviews) {
+    findings.push({ source: "review-pagination", message: "Native PR reviews are paginated; refusing to finalize without complete review data." });
+  }
+  return findings;
+}
+
 function applyNativeReviewState(stateByReviewer, reviewerKey, review, order) {
   const state = review.state;
   const current = stateByReviewer.get(reviewerKey);
@@ -432,6 +449,128 @@ export function isFinalValidationEvidencePath(filePath = "", featurePath = "") {
   return allowedEvidenceFilenames.has(relative);
 }
 
+export function evaluatePostEffectiveHeadDiff(diffText = "", currentFiles = {}, featurePath = "", effectiveContentHead = "") {
+  const invalidChanges = [];
+  let currentPath = null;
+  let newLine = 0;
+  let oldLine = 0;
+
+  for (const rawLine of String(diffText).split(/\r?\n/)) {
+    if (!rawLine) continue;
+    if (rawLine.startsWith("diff --git ")) {
+      currentPath = null;
+      continue;
+    }
+    if (rawLine.startsWith("+++ b/")) {
+      currentPath = normalizeRepoPath(rawLine.slice("+++ b/".length));
+      continue;
+    }
+    if (rawLine.startsWith("+++ /dev/null")) {
+      currentPath = null;
+      continue;
+    }
+    const hunk = rawLine.match(/^@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/);
+    if (hunk) {
+      oldLine = Number(hunk[1]);
+      newLine = Number(hunk[2]);
+      continue;
+    }
+    if (!currentPath || rawLine.startsWith("--- ")) continue;
+
+    if (rawLine.startsWith("+")) {
+      const content = rawLine.slice(1);
+      const fileContent = currentFiles[currentPath] || "";
+      if (!isAllowedPostEffectiveHeadAddition(currentPath, newLine, content, fileContent, featurePath, effectiveContentHead)) {
+        invalidChanges.push(`${currentPath}:${newLine}`);
+      }
+      newLine += 1;
+      continue;
+    }
+
+    if (rawLine.startsWith("-")) {
+      invalidChanges.push(`${currentPath}:${oldLine}`);
+      oldLine += 1;
+      continue;
+    }
+
+    oldLine += 1;
+    newLine += 1;
+  }
+
+  return {
+    postEffectiveHeadEvidenceOnly: invalidChanges.length === 0,
+    postEffectiveHeadInvalidChanges: invalidChanges
+  };
+}
+
+function isAllowedPostEffectiveHeadAddition(filePath, lineNumber, content, fileContent, featurePath, effectiveContentHead) {
+  if (!isFinalValidationEvidencePath(filePath, featurePath)) return false;
+  if (content.trim() === "") return true;
+  if (isEffectiveContentHeadEvidenceLine(content)) return true;
+
+  const section = sectionAtLine(fileContent, lineNumber);
+  const basename = filePath.split("/").pop();
+  if (section?.type === "final-validation") {
+    if (section.role === "analyst" && basename !== "feature-request.md") return false;
+    if (section.role === "architect" && basename === "feature-request.md") return false;
+    return isFinalValidationEvidenceLine(content, section.role);
+  }
+  if (section?.type === "verification" && basename === "tasks.md") {
+    return isVerificationEvidenceLine(content, effectiveContentHead);
+  }
+
+  return false;
+}
+
+function sectionAtLine(fileContent = "", lineNumber = 0) {
+  const lines = String(fileContent).split(/\r?\n/);
+  let current = null;
+  for (let index = 0; index < Math.min(lineNumber, lines.length); index += 1) {
+    const line = lines[index].trim();
+    const finalMatch = line.match(finalValidationSectionMarker);
+    if (finalMatch) {
+      current = { type: "final-validation", role: finalMatch[1].toLowerCase() };
+      continue;
+    }
+    if (verificationEvidenceSectionMarker.test(line)) {
+      current = { type: "verification" };
+      continue;
+    }
+    if (sectionMarker.test(line)) {
+      current = null;
+    }
+  }
+  return current;
+}
+
+function isEffectiveContentHeadEvidenceLine(line = "") {
+  return /^\s*(?:[-*]\s*)?Effective\s+content\s+head:\s*[0-9a-f]{40}\s*\.?\s*$/i.test(line);
+}
+
+function isFinalValidationEvidenceLine(line = "", role = "") {
+  const text = line.trim();
+  if (/^\s*(?:[-*]\s*)?$/.test(text)) return true;
+  if (role === "architect") {
+    return /^\s*(?:[-*]\s*)?(?:Architect validation pass|Architect return count|Open Architect dispositions|Final Architect validation completed at|Architect validation evidence|Architect gaps|Architect disposition)\b/i.test(text);
+  }
+  if (role === "analyst") {
+    return /^\s*(?:[-*]\s*)?(?:Analyst validation pass|Analyst return count|Customer intent check|Gaps, if any|Architect disposition routing|Analyst limit escalation|Analyst boundary reminder|Final Analyst validation completed at|Analyst validation evidence)\b/i.test(text);
+  }
+  return false;
+}
+
+function isVerificationEvidenceLine(line = "", effectiveContentHead = "") {
+  const text = line.trim();
+  if (!/^\s*[-*]\s+/.test(line)) return false;
+  if (!/\b(?:evidence|passed|Effective content head|current-PR-head|current PR head|head guard|required checks|review|mergeability|preflight|node --test|pnpm run|git diff --check)\b/i.test(text)) {
+    return false;
+  }
+  if (guardTextMarker.test(text) && effectiveContentHead) {
+    return guardEvidenceReferencesEffectiveHead(text, effectiveContentHead);
+  }
+  return true;
+}
+
 function normalizeRepoPath(path = "") {
   return String(path).replace(/\\/g, "/").replace(/^\.\//, "").replace(/\/+$/g, "");
 }
@@ -442,8 +581,23 @@ export function verifyPostEffectiveHeadChanges(root, featurePath, effectiveConte
     run("git", ["cat-file", "-e", `${currentHead}^{commit}`], { cwd: root });
     const output = run("git", ["diff", "--name-only", effectiveContentHead, currentHead, "--"], { cwd: root });
     const changedFiles = output ? output.split(/\r?\n/).filter(Boolean) : [];
+    const pathResult = evaluatePostEffectiveHeadChangedFiles(changedFiles, featurePath);
+    const currentFiles = {};
+    for (const filePath of changedFiles.filter((path) => isFinalValidationEvidencePath(path, featurePath))) {
+      currentFiles[filePath] = run("git", ["show", `${currentHead}:${filePath}`], { cwd: root });
+    }
+    const diffOutput = changedFiles.length > 0
+      ? run("git", ["diff", "--unified=0", effectiveContentHead, currentHead, "--", ...changedFiles], { cwd: root })
+      : "";
+    const diffResult = evaluatePostEffectiveHeadDiff(diffOutput, currentFiles, featurePath, effectiveContentHead);
+    const invalidPaths = [
+      ...pathResult.postEffectiveHeadInvalidPaths,
+      ...(diffResult.postEffectiveHeadInvalidChanges || [])
+    ];
     return {
-      ...evaluatePostEffectiveHeadChangedFiles(changedFiles, featurePath),
+      postEffectiveHeadEvidenceOnly: pathResult.postEffectiveHeadEvidenceOnly && diffResult.postEffectiveHeadEvidenceOnly,
+      postEffectiveHeadChangedFiles: changedFiles,
+      postEffectiveHeadInvalidPaths: invalidPaths,
       postEffectiveHeadVerificationError: null
     };
   } catch (error) {
@@ -562,6 +716,7 @@ async function fetchPullRequestState(root, repo, prNumber) {
             }
           }
           reviews(last: 100) {
+            pageInfo { hasPreviousPage }
             nodes {
               state
               body
@@ -597,6 +752,7 @@ async function fetchPullRequestState(root, repo, prNumber) {
   const hasTruncatedThreads = pull.reviewThreads.pageInfo.hasNextPage ||
     pull.reviewThreads.nodes.some((thread) => thread.comments.pageInfo.hasNextPage);
   const hasTruncatedChecks = pull.statusCheckRollup?.contexts?.pageInfo?.hasNextPage;
+  const hasTruncatedReviews = pull.reviews.pageInfo.hasPreviousPage;
   return {
     pr: {
       number: pull.number,
@@ -617,7 +773,8 @@ async function fetchPullRequestState(root, repo, prNumber) {
     issueComments: pull.comments.nodes,
     truncated: {
       checks: Boolean(hasTruncatedChecks),
-      reviewThreads: Boolean(hasTruncatedThreads)
+      reviewThreads: Boolean(hasTruncatedThreads),
+      reviews: Boolean(hasTruncatedReviews)
     }
   };
 }
@@ -652,12 +809,7 @@ async function main() {
     config
   });
 
-  if (state.truncated.checks) {
-    blockingFindings.push({ source: "status-pagination", message: "Required check rollup is paginated; refusing to finalize without complete status data." });
-  }
-  if (state.truncated.reviewThreads) {
-    blockingFindings.push({ source: "review-pagination", message: "Review threads are paginated; refusing to finalize without complete thread data." });
-  }
+  blockingFindings.push(...collectPaginationFindings(state.truncated));
 
   const suppliedHeadSha = args["expected-head"] || args["head-sha"];
   const result = evaluateFinalizationGates({

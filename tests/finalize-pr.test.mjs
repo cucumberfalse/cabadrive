@@ -1,15 +1,18 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { mkdirSync, mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import {
   collectBlockingFindings,
+  collectPaginationFindings,
   evaluatePostEffectiveHeadChangedFiles,
   evaluateFinalizationGates,
   isFinalValidationEvidencePath,
   normalizeCheckState,
-  readProcessEvidence
+  readProcessEvidence,
+  verifyPostEffectiveHeadChanges
 } from "../scripts/finalize-pr.mjs";
 
 const requiredChecks = JSON.parse(readFileSync(".unicorn-hub/config.json", "utf8")).requiredChecks;
@@ -42,6 +45,51 @@ function successfulInput(overrides = {}) {
     },
     ...overrides
   };
+}
+
+function git(root, args) {
+  return execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
+}
+
+function initGitRepo(root) {
+  git(root, ["init", "-q"]);
+  git(root, ["config", "user.email", "test@example.com"]);
+  git(root, ["config", "user.name", "Finalize Test"]);
+}
+
+function writeMinimalFeatureMemory(root, featurePath, tasksExtra = "") {
+  const featureRoot = join(root, featurePath);
+  mkdirSync(featureRoot, { recursive: true });
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Final Analyst Validation Notes
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+`);
+  writeFileSync(join(featureRoot, "plan.md"), `# Plan
+`);
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Task List
+- [x] Existing task.
+
+## Decisions
+- Existing decision.
+
+## Dead Ends
+- None.
+
+## Known Issues
+- None.
+
+## Implementation Agent Feedback
+- None yet.
+
+## Verification Evidence
+- Existing evidence.
+${tasksExtra}`);
 }
 
 test("finalization gate passes only with current head, green required checks, and process evidence", () => {
@@ -195,6 +243,99 @@ test("post-effective-head non-evidence paths block finalization", () => {
   assert.ok(result.blockers.some((blocker) => blocker.code === "post-effective-head-non-evidence"));
 });
 
+test("post-effective-head non-evidence edits inside allowed memory files block finalization", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
+  const featurePath = "specs/999-finalize-test";
+  initGitRepo(root);
+  writeMinimalFeatureMemory(root, featurePath);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "effective content"]);
+  const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFileSync(join(root, featurePath, "tasks.md"), `# Tasks
+
+## Task List
+- [x] Existing task.
+- [x] New implementation task after final validation.
+
+## Decisions
+- Existing decision.
+
+## Dead Ends
+- None.
+
+## Known Issues
+- None.
+
+## Implementation Agent Feedback
+- None yet.
+
+## Verification Evidence
+- Existing evidence.
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "non evidence edit"]);
+  const currentHead = git(root, ["rev-parse", "HEAD"]);
+
+  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+
+  assert.equal(result.postEffectiveHeadEvidenceOnly, false);
+  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/tasks.md:`)));
+});
+
+test("post-effective-head final-validation and guard evidence additions pass", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
+  const featurePath = "specs/999-finalize-test";
+  initGitRepo(root);
+  writeMinimalFeatureMemory(root, featurePath);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "effective content"]);
+  const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFileSync(join(root, featurePath, "feature-request.md"), `# Feature Request
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-10T13:00:01Z
+`);
+  writeFileSync(join(root, featurePath, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-10T13:00:00Z
+`);
+  writeFileSync(join(root, featurePath, "tasks.md"), `# Tasks
+
+## Task List
+- [x] Existing task.
+
+## Decisions
+- Existing decision.
+- Effective content head: ${effectiveContentHead}
+
+## Dead Ends
+- None.
+
+## Known Issues
+- None.
+
+## Implementation Agent Feedback
+- None yet.
+
+## Verification Evidence
+- Existing evidence.
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
+`);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "final validation evidence"]);
+  const currentHead = git(root, ["rev-parse", "HEAD"]);
+
+  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+
+  assert.equal(result.postEffectiveHeadEvidenceOnly, true);
+  assert.deepEqual(result.postEffectiveHeadInvalidPaths, []);
+});
+
 test("blocking review finding collection detects current-head blocker signals", () => {
   const headSha = "abc1234";
   const findings = collectBlockingFindings({
@@ -333,6 +474,22 @@ test("different reviewer latest changes-requested review still blocks current-he
   });
 
   assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
+});
+
+test("truncated native review data fails closed before finalization", () => {
+  const findings = collectPaginationFindings({ reviews: true });
+  assert.equal(findings.length, 1);
+  assert.equal(findings[0].source, "review-pagination");
+
+  const result = evaluateFinalizationGates(successfulInput({
+    blockingFindings: findings
+  }));
+
+  assert.equal(result.action, "block");
+  assert.ok(result.blockers.some((blocker) =>
+    blocker.code === "blocking-review-finding" &&
+    blocker.message.includes("Native PR reviews are paginated")
+  ));
 });
 
 test("skipped or neutral required checks are not treated as green", () => {

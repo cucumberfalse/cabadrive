@@ -55,6 +55,8 @@
 - Review-fix implementation decision: `collectBlockingFindings()` now keeps native GitHub `CHANGES_REQUESTED` blocking for a reviewer on the current head until that reviewer has a later current-head `APPROVED` or `DISMISSED` review. Later same-reviewer `COMMENTED` reviews do not clear the blocker, while latest change requests from the same or another reviewer still block. Trusted Codex/Gemini blocking severity checks in unresolved threads and review bodies remain independent blockers.
 - Review-fix implementation decision: the earlier generic current-head guard rule is superseded. `readProcessEvidence()` now requires an exact `Effective content head: <40-hex-sha>` marker in role/process evidence and requires the current-head guard evidence text to reference that effective content head by full SHA or a 12+ character prefix. If the current PR head differs from the effective content head, `scripts/finalize-pr.mjs` verifies with local git that every changed file is limited to the active feature memory evidence files before allowing finalization; local-git verification failure or any non-evidence path blocks.
 - Current review-fix implementation decision: `readProcessEvidence()` now parses `Implementation Agent Feedback` as individual markdown feedback items. A section-level no-feedback marker is valid only when all items are no-feedback markers; each substantive feedback item must contain an explicit disposition marker or be immediately followed by a disposition item, so one disposed item no longer hides a second open item.
+- Current review-fix implementation decision: `verifyPostEffectiveHeadChanges()` now inspects the actual `git diff --unified=0` from effective content head to current head. Post-effective-head changes are evidence-only only when they are additions in final role validation notes, `tasks.md` verification evidence, or exact `Effective content head` evidence; removals, task-list edits, decisions, scope, architecture, and disposition edits inside otherwise allowed memory files block finalization.
+- Current review-fix implementation decision: native GitHub reviews fetched through GraphQL now request review connection `pageInfo`. If `reviews(last: 100)` is truncated, the helper fails closed with a blocking review-pagination finding instead of risking a missed older current-head `CHANGES_REQUESTED`.
 
 ## Dead Ends
 
@@ -129,6 +131,12 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed after current P2 review-fix updates; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `git diff --check`: passed after current P2 review-fix updates; no whitespace errors reported.
 - `pnpm run preflight`: passed after current P2 review-fix updates; feature-memory gate, repo baseline, content validation, 132 node tests, build, service-worker generation with 280 cached assets, and 22 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-xji3BCFN.js` but completed successfully.
+- `node --check scripts/finalize-pr.mjs`: passed after current P1/P2 review-fix updates.
+- `node --test tests/finalize-pr.test.mjs`: passed after current P1/P2 review-fix updates; 23 tests passed, including allowed-file non-evidence post-effective-head edits blocking, legitimate final-validation/guard evidence additions passing, and truncated native review data failing closed.
+- `pnpm run check:repo`: passed after current P1/P2 review-fix updates; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after current P1/P2 review-fix updates; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `git diff --check`: passed after current P1/P2 review-fix updates; no whitespace errors reported.
+- `pnpm run preflight`: passed after current P1/P2 review-fix updates; feature-memory gate, repo baseline, content validation, 135 node tests, build, service-worker generation with 280 cached assets, and 22 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-xji3BCFN.js` but completed successfully.
 
 ## Final Architect Validation Notes
 
