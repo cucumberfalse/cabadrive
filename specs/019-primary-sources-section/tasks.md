@@ -109,6 +109,46 @@
 - [x] D8-001 Translate and simplify all 202 chunks in the insurance content batch for `ley-17418-seguros`.
 - [x] D8-002 Add per-document learner, QA, and search shards for `ley-17418-seguros`.
 - [x] D8-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
+- [ ] D9-001 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 001-086 inclusive.
+- [ ] D9-002 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 087-172 inclusive.
+- [ ] D9-003 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 173-258 inclusive.
+- [ ] D9-004 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 259-344 inclusive.
+- [ ] D9-005 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 345-430 inclusive.
+- [ ] D9-006 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 431-516 inclusive.
+- [ ] D9-900 Recompose `ley-11179-codigo-penal` after D9-001 through D9-006: verify all 516 generated chunks are present exactly once, archive-aligned, searchable, terminology-consistent, and approved with non-mechanical QA notes before marking the document complete.
+- [ ] D10-001 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 0001-0182 inclusive.
+- [ ] D10-002 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 0183-0364 inclusive.
+- [ ] D10-003 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 0365-0546 inclusive.
+- [ ] D10-004 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 0547-0728 inclusive.
+- [ ] D10-005 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 0729-0910 inclusive.
+- [ ] D10-006 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 0911-1092 inclusive.
+- [ ] D10-007 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 1093-1274 inclusive.
+- [ ] D10-008 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 1275-1456 inclusive.
+- [ ] D10-009 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 1457-1638 inclusive.
+- [ ] D10-010 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 1639-1820 inclusive.
+- [ ] D10-011 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 1821-2002 inclusive.
+- [ ] D10-012 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 2003-2184 inclusive.
+- [ ] D10-013 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 2185-2366 inclusive.
+- [ ] D10-014 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 2367-2548 inclusive.
+- [ ] D10-015 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 2549-2730 inclusive.
+- [ ] D10-016 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 2731-2912 inclusive.
+- [ ] D10-017 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 2913-3094 inclusive.
+- [ ] D10-018 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 3095-3261 inclusive.
+- [ ] D10-900 Recompose `ley-26994-codigo-civil-comercial` after D10-001 through D10-018: verify all 3,261 generated chunks are present exactly once, archive-aligned, searchable, terminology-consistent, and approved with non-mechanical QA notes before marking the document complete.
+- [ ] D11-001 Translate, simplify, QA, and search-project `ley-2148-caba-codigo-transito-transporte` generated coverage chunks 001-095 inclusive.
+- [ ] D11-002 Translate, simplify, QA, and search-project `ley-2148-caba-codigo-transito-transporte` generated coverage chunks 096-190 inclusive.
+- [ ] D11-003 Translate, simplify, QA, and search-project `ley-2148-caba-codigo-transito-transporte` generated coverage chunks 191-285 inclusive.
+- [ ] D11-004 Translate, simplify, QA, and search-project `ley-2148-caba-codigo-transito-transporte` generated coverage chunks 286-380 inclusive.
+- [ ] D11-005 Translate, simplify, QA, and search-project `ley-2148-caba-codigo-transito-transporte` generated coverage chunks 381-475 inclusive.
+- [ ] D11-006 Translate, simplify, QA, and search-project `ley-2148-caba-codigo-transito-transporte` generated coverage chunks 476-570 inclusive.
+- [ ] D11-007 Translate, simplify, QA, and search-project `ley-2148-caba-codigo-transito-transporte` generated coverage chunks 571-665 inclusive.
+- [ ] D11-900 Recompose `ley-2148-caba-codigo-transito-transporte` after D11-001 through D11-007: verify all 665 generated chunks are present exactly once, archive-aligned, searchable, terminology-consistent, and approved with non-mechanical QA notes before marking the document complete.
+- [ ] D12-001 Translate, simplify, QA, and search-project `gcba-manual-vehiculo-4-ruedas-2023` generated PDF page-group chunks 001-050 inclusive.
+- [ ] D12-002 Translate, simplify, QA, and search-project `gcba-manual-vehiculo-4-ruedas-2023` generated PDF page-group chunks 051-100 inclusive.
+- [ ] D12-003 Translate, simplify, QA, and search-project `gcba-manual-vehiculo-4-ruedas-2023` generated PDF page-group chunks 101-150 inclusive.
+- [ ] D12-004 Translate, simplify, QA, and search-project `gcba-manual-vehiculo-4-ruedas-2023` generated PDF page-group chunks 151-198 inclusive.
+- [ ] D12-900 Recompose `gcba-manual-vehiculo-4-ruedas-2023` after D12-001 through D12-004: verify all 198 generated chunks are present exactly once, archive-aligned, searchable, terminology-consistent, image/page references remain traceable where applicable, and QA is approved with non-mechanical notes before marking the document complete.
+- [ ] D13-900 Run final large-document recomposition gate after D9-900, D10-900, D11-900, and D12-900: verify no partial sub-batch is described as release-complete, all four large documents satisfy strict chunk/search/QA coverage, and any adjusted natural-boundary ranges are reflected in this task list before final release.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
 - [ ] T063 For each batch, preserve numbers, dates, legal obligations, exceptions, penalties, source names, and article references in both Russian layers.
@@ -243,6 +283,8 @@
 - Simplified Spanish is explicitly out of scope and should be rejected by data/UI validation.
 - Original Spanish shown in UI should be archive-derived and fingerprint-validated.
 - UI architecture should be adaptive list-detail with search/filter, compact metadata, chunk navigation, and progressive disclosure for long documents.
+- Implementation Agent feedback from the stopped Penal Code pass is accepted: very large documents must be sliced by generated coverage chunk order and recomposed through document-level QA gates instead of assigned as one unreviewable translation batch.
+- `ley-11179-codigo-penal`, `ley-26994-codigo-civil-comercial`, `ley-2148-caba-codigo-transito-transporte`, and `gcba-manual-vehiculo-4-ruedas-2023` are explicitly not release-complete until their full document recomposition tasks and the final large-document recomposition gate pass.
 
 ### Architect Context Evidence
 
@@ -261,6 +303,7 @@
 
 - Exact-text validation is pending for all observed manifest entries; final feature release should block until resolved or explicitly disposed.
 - The corpus is large enough that translation/simplification should be batched across multiple PRs.
+- Very large legal/manual documents are too large for quality-safe single-pass translation/simplification/QA. Partial sub-batches may be useful implementation slices, but they are not learner-release-complete documents.
 - Translation quality and simplification fidelity are the highest content risks; validators alone cannot prove semantic quality.
 - If new manifest entries land during implementation, coverage must expand before final release.
 - Navigation may become crowded; any grouping must keep the source reader visibly distinct from topic `Материалы`.
@@ -514,7 +557,16 @@
 
 ### Implementation Agent Feedback
 
-- None yet.
+- Penal Code batch stop-before-commit on 2026-05-10: assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-penal-code` on branch `codex/019-primary-sources-content-batch-penal-code` was clean at start and based on `origin/codex/019-primary-sources-content-batch-ley24449` head `f1e38af`.
+- The assigned document `ley-11179-codigo-penal` has 516 generated chunks, 396 article chunks and 120 heading/index chunks, with about 267,732 archived Spanish characters / 41,561 words across source spans. Producing full Russian translation, schoolchild-friendly Russian rewrite, and review-grade QA for every chunk is larger than can be completed responsibly in this implementation pass without risking machine-only or partial learner content.
+- No Penal Code document, QA, or search shards were authored in this pass, and no partial content batch should be pushed as ready. Recommended disposition: split `ley-11179-codigo-penal` into smaller Orchestrator-assigned sub-batches with explicit review capacity, or assign a dedicated translation workflow capable of producing and reviewing the full 516-chunk legal text before a content commit.
+
+### Architect Disposition Of Implementation Feedback
+
+- Accepted on 2026-05-10. The stopped Penal Code batch is disposed by replacing the one-document giant batch expectation with explicit generated-chunk-range sub-batches D8-001 through D8-006 plus recomposition gate D8-900.
+- The same quality-safe slicing rule now applies to other very large documents: Civil/Commercial Code D9-001 through D9-018 plus D9-900, CABA Transit Code D10-001 through D10-007 plus D10-900, and GCBA four-wheel manual D11-001 through D11-004 plus D11-900.
+- D12-900 is the cross-document final recomposition gate. It blocks final release if any sub-batch is missing, any document-level recomposition gate is incomplete, any approved QA looks mechanical or lacks notes, or any partial sub-batch is presented as release-complete.
+- Ranges are inclusive generated coverage order ranges. Implementation Agents may align a range edge to the nearest official title/chapter/page boundary only if the resulting changed ranges remain non-overlapping, cover the full document exactly once, and this task list is updated in the same feature-memory PR before content is authored.
 
 ### Verification Evidence
 
