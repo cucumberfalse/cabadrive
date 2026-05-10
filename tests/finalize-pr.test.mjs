@@ -41,6 +41,7 @@ function successfulInput(overrides = {}) {
       currentProcessMemory: true,
       feedbackDisposition: true,
       effectiveContentHead: "abc123",
+      effectiveContentHeadValidation: true,
       postEffectiveHeadEvidenceOnly: true,
       currentHeadGuardEvidence: true,
       acceptedKnownIssueDecisionPending: false
@@ -95,7 +96,7 @@ ${tasksExtra}`);
 }
 
 function writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, options = {}) {
-  const { includeRoleReturnCounts = true, taskOverrides = {} } = options;
+  const { includeRoleReturnCounts = true, taskOverrides = {}, validatedEffectiveContentHead = effectiveContentHead } = options;
   const featureRoot = join(root, featurePath);
   mkdirSync(featureRoot, { recursive: true });
   writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
@@ -103,6 +104,7 @@ function writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHe
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
+- Analyst validated effective content head: ${validatedEffectiveContentHead}
 ${includeRoleReturnCounts ? "- Analyst return count for this work cycle: 0.\n" : ""}
 `);
   writeFileSync(join(featureRoot, "spec.md"), `# Specification
@@ -110,6 +112,7 @@ ${includeRoleReturnCounts ? "- Analyst return count for this work cycle: 0.\n" :
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
+- Architect validated effective content head: ${validatedEffectiveContentHead}
 ${includeRoleReturnCounts ? "- Architect return count for this work cycle: 0.\n" : ""}
 `);
   writeFileSync(join(featureRoot, "plan.md"), `# Plan
@@ -122,7 +125,8 @@ function buildCompleteTasks(effectiveContentHead, overrides = {}) {
     includeCyclePrSet = true,
     includeArchitectReturnCount = true,
     includeAnalystReturnCount = true,
-    includeLimitEscalation = true
+    includeLimitEscalation = true,
+    knownIssues = "- None.\n"
   } = overrides;
 
   return `# Tasks
@@ -138,7 +142,7 @@ function buildCompleteTasks(effectiveContentHead, overrides = {}) {
 - None.
 
 ## Known Issues
-- None.
+${knownIssues.trimEnd()}
 
 ## Implementation Agent Feedback
 - None yet.
@@ -302,6 +306,117 @@ test("missing final validation and process evidence block finalization", () => {
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-analyst-validation"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-acceptance-evidence"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-effective-content-head"));
+  assert.ok(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"));
+});
+
+test("role-owned validated effective head markers must match the latest effective content head", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const validatedHead = "a".repeat(40);
+  const effectiveContentHead = "b".repeat(40);
+
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    validatedEffectiveContentHead: validatedHead
+  });
+  const mismatchedEvidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  const mismatchedResult = evaluateFinalizationGates(successfulInput({
+    suppliedHeadSha: effectiveContentHead,
+    pr: {
+      number: 12,
+      headSha: effectiveContentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: mismatchedEvidence
+  }));
+
+  assert.equal(mismatchedEvidence.effectiveContentHead, effectiveContentHead);
+  assert.equal(mismatchedEvidence.architectValidatedEffectiveContentHead, validatedHead);
+  assert.equal(mismatchedEvidence.analystValidatedEffectiveContentHead, validatedHead);
+  assert.equal(mismatchedEvidence.effectiveContentHeadValidation, false);
+  assert.ok(mismatchedResult.blockers.some((blocker) =>
+    blocker.code === "unvalidated-effective-content-head" &&
+    blocker.message.includes(`Effective content head ${effectiveContentHead}`)
+  ));
+
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead);
+  const matchingEvidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  const matchingResult = evaluateFinalizationGates(successfulInput({
+    suppliedHeadSha: effectiveContentHead,
+    pr: {
+      number: 12,
+      headSha: effectiveContentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: matchingEvidence
+  }));
+
+  assert.equal(matchingEvidence.effectiveContentHeadValidation, true);
+  assert.equal(
+    matchingResult.blockers.some((blocker) => blocker.code === "unvalidated-effective-content-head"),
+    false
+  );
+  assert.equal(matchingResult.action, "merge");
+});
+
+test("accepted known issue owner decisions do not block finalization", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    taskOverrides: {
+      knownIssues: `- Remaining accepted known issue: minor manual merge delay.
+- Owner decision: accepted.
+`
+    }
+  });
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  const result = evaluateFinalizationGates(successfulInput({
+    suppliedHeadSha: effectiveContentHead,
+    pr: {
+      number: 12,
+      headSha: effectiveContentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: evidence
+  }));
+
+  assert.equal(evidence.acceptedKnownIssueDecisionPending, false);
+  assert.equal(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"), false);
+});
+
+test("pending known issue owner decisions block finalization", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    taskOverrides: {
+      knownIssues: `- Remaining accepted known issue needs owner decision.
+- Owner decision: pending.
+`
+    }
+  });
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  const result = evaluateFinalizationGates(successfulInput({
+    suppliedHeadSha: effectiveContentHead,
+    pr: {
+      number: 12,
+      headSha: effectiveContentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: evidence
+  }));
+
+  assert.equal(evidence.acceptedKnownIssueDecisionPending, true);
   assert.ok(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"));
 });
 
@@ -505,12 +620,14 @@ test("post-effective-head final-validation and guard evidence additions pass", (
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
+- Analyst validated effective content head: ${effectiveContentHead}
 `);
   writeFileSync(join(root, featurePath, "spec.md"), `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
+- Architect validated effective content head: ${effectiveContentHead}
 `);
   writeFileSync(join(root, featurePath, "tasks.md"), `# Tasks
 

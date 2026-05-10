@@ -71,6 +71,9 @@
 - Current P2 disposition-parsing implementation decision: Implementation Agent feedback disposition markers count only when their disposition text contains final wording such as `not needed`, `accepted`, `resolved`, `disposed`, `addressed`, `superseded`, or `no unresolved`, and contains no open-state wording such as `pending`, `unresolved`, `open`, `needs review`, or `requires disposition`.
 - Current P2 auto-merge-pending gate implementation decision: `--auto-merge-pending` may return `enable-auto-merge` for pending configured checks only when GitHub reports a protected-blocking merge state. At this time the helper treats `BLOCKED` as the only such state; clean/otherwise mergeable states such as `CLEAN`, `HAS_HOOKS`, and `UNSTABLE` keep pending configured checks as blockers.
 - Current P1 placeholder-timestamp review-fix implementation decision: final-validation timestamp parsing now ignores invalid marker matches such as documentation placeholders while continuing to require at least one valid ISO timestamp per role for `finalValidationOrder`; placeholder-only markers keep final-validation order false.
+- Current P1 validated-effective-head review-fix implementation decision: `readProcessEvidence()` now requires the latest role-owned `Architect validated effective content head: <40-hex>` marker in Architect memory and `Analyst validated effective content head: <40-hex>` marker in Analyst memory to match the latest `Effective content head: <40-hex>` marker before finalization can pass. `evaluateFinalizationGates()` blocks mismatches with `unvalidated-effective-content-head`, including the recorded Architect and Analyst marker values in the blocker message.
+- Current P1 post-effective-evidence implementation decision: final-validation evidence line filters now allow the role-owned validated-effective-head markers in final Architect/Analyst notes and final validation process evidence, so those markers can be added in final-validation evidence-only commits after the effective content head.
+- Current P2 known-issue decision implementation decision: `acceptedKnownIssueDecisionPending` now uses pending/open/unresolved/needs-owner-decision wording instead of the broad `owner decision` predicate. Accepted, resolved, disposed, not-applicable, and no-known-issue wording no longer blocks finalization, while `Owner decision: pending` and `needs owner decision` still block.
 
 ## Dead Ends
 
@@ -207,10 +210,17 @@
 - `pnpm run check:repo`: passed after the placeholder-timestamp parser fix; "Repository baseline check passed."
 - `node scripts/check-feature-memory.mjs --worktree`: passed after the placeholder-timestamp parser fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `pnpm run preflight`: passed after the placeholder-timestamp parser fix; feature-memory gate, repo baseline, content validation, node tests, build, service-worker generation, and Playwright e2e tests passed.
+- `git fetch origin --prune`: passed during the validated-effective-head/known-issue review fix; `origin/main` remained `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, and `git rev-list --left-right --count HEAD...origin/main` returned `22 0`, so no merge was required.
+- `node --check scripts/finalize-pr.mjs`: passed after the validated-effective-head/known-issue review fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after the validated-effective-head/known-issue review fix; 41 tests passed, including mismatched role-owned validated-effective-head markers blocking, matching markers passing that gate, accepted owner decisions not blocking, and pending owner decisions blocking.
+- `git diff --check`: passed after the validated-effective-head/known-issue review fix; no whitespace errors reported.
+- `pnpm run check:repo`: passed after the validated-effective-head/known-issue review fix; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after the validated-effective-head/known-issue review fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `pnpm run preflight`: passed after the validated-effective-head/known-issue review fix; feature-memory gate, repo baseline, content validation, 161 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
 
 ## Cycle PR Set
 
-- Purpose: address PR #80 AI review P1 placeholder validation timestamp gate; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `cb282d4b0fc85089a6aef5953908765e6aff7c17`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
+- Purpose: address PR #80 AI review P1 validated-effective-head gate and P2 accepted-known-issue decision parsing; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `a1abfc0b2981c5fab819ef189b47fbf97853d9c3`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
 
 ## Final Validation Evidence
 

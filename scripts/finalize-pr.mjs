@@ -29,7 +29,11 @@ const validationCompletedAtMarkers = {
   architect: /Final\s+Architect\s+validation\s+completed\s+at:\s*([^\r\n]+)/ig,
   analyst: /Final\s+Analyst\s+validation\s+completed\s+at:\s*([^\r\n]+)/ig
 };
-const effectiveContentHeadMarker = /Effective\s+content\s+head:\s*([0-9a-f]{40})/ig;
+const validatedEffectiveContentHeadMarkers = {
+  architect: /^\s*(?:[-*]\s*)?Architect\s+validated\s+effective\s+content\s+head:\s*([0-9a-f]{40})\s*\.?\s*$/gim,
+  analyst: /^\s*(?:[-*]\s*)?Analyst\s+validated\s+effective\s+content\s+head:\s*([0-9a-f]{40})\s*\.?\s*$/gim
+};
+const effectiveContentHeadMarker = /^\s*(?:[-*]\s*)?Effective\s+content\s+head:\s*([0-9a-f]{40})\s*\.?\s*$/gim;
 const guardTextMarker = /current-PR-head|current PR head|head guard/i;
 const shaReferenceMarker = /\b[0-9a-f]{12,40}\b/ig;
 const returnCountMarkers = {
@@ -145,6 +149,15 @@ export function evaluateFinalizationGates(input = {}) {
   }
   if (!evidence.effectiveContentHead) {
     block("missing-effective-content-head", "Effective content head evidence is missing.");
+  }
+  if (evidence.effectiveContentHead && !evidence.effectiveContentHeadValidation) {
+    const architectHead = evidence.architectValidatedEffectiveContentHead || "missing";
+    const analystHead = evidence.analystValidatedEffectiveContentHead || "missing";
+    block(
+      "unvalidated-effective-content-head",
+      `Effective content head ${evidence.effectiveContentHead} was not validated by both role-owned markers ` +
+        `(Architect: ${architectHead}; Analyst: ${analystHead}).`
+    );
   }
   if (!evidence.currentHeadGuardEvidence) {
     block("missing-current-head-guard", "Current-PR-head guard evidence is missing.");
@@ -374,10 +387,15 @@ function parseProcessEvidence(files = {}, currentHead = "") {
   const feedbackSection = readMarkdownSection(tasks, "Implementation Agent Feedback") || "";
   const knownIssueSection = readMarkdownSection(tasks, "Known Issues") || "";
   const effectiveContentHead = readLatestEffectiveContentHead(allMemory);
+  const architectValidatedEffectiveContentHead = readLatestValidatedEffectiveContentHead(architectMemory, "architect");
+  const analystValidatedEffectiveContentHead = readLatestValidatedEffectiveContentHead(analystMemory, "analyst");
   const guardEvidenceText = readCurrentHeadGuardEvidenceText(tasks);
   const returnCounts = readValidationReturnCounts(allMemory);
   const limitEscalationState = readLimitEscalationState(finalValidationEvidenceSection);
   const hasReturnCountsWithinLimits = hasValidationReturnCountsWithinLimits(returnCounts);
+  const effectiveContentHeadValidation = Boolean(effectiveContentHead) &&
+    architectValidatedEffectiveContentHead === effectiveContentHead &&
+    analystValidatedEffectiveContentHead === effectiveContentHead;
 
   return {
     finalArchitectValidation: hasArchitectPass,
@@ -397,14 +415,16 @@ function parseProcessEvidence(files = {}, currentHead = "") {
       (hasReturnCountsWithinLimits || limitEscalationState === "escalated"),
     feedbackDisposition: hasImplementationFeedbackDisposition(feedbackSection),
     effectiveContentHead,
+    architectValidatedEffectiveContentHead,
+    analystValidatedEffectiveContentHead,
+    effectiveContentHeadValidation,
     currentHeadMatchesEffectiveContentHead: Boolean(currentHead && effectiveContentHead) &&
       currentHead.toLowerCase() === effectiveContentHead.toLowerCase(),
     postEffectiveHeadEvidenceOnly: Boolean(currentHead && effectiveContentHead) &&
       currentHead.toLowerCase() === effectiveContentHead.toLowerCase(),
     currentHeadGuardEvidence: Boolean(effectiveContentHead) &&
       guardEvidenceReferencesEffectiveHead(guardEvidenceText, effectiveContentHead),
-    acceptedKnownIssueDecisionPending: /accepted known issue|owner decision|human decision/i.test(knownIssueSection) &&
-      !/none|not applicable|no known/i.test(knownIssueSection)
+    acceptedKnownIssueDecisionPending: hasPendingKnownIssueDecision(knownIssueSection)
   };
 }
 
@@ -423,6 +443,24 @@ function stripPlaceholderLines(section = "") {
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter((line) => line && !/^\s*[-*]?\s*\[.+\]\s*$/.test(line));
+}
+
+function hasPendingKnownIssueDecision(section = "") {
+  return stripPlaceholderLines(section).some((line) => hasPendingKnownIssueDecisionWording(line));
+}
+
+function hasPendingKnownIssueDecisionWording(line = "") {
+  const normalized = line.trim().toLowerCase();
+  if (!normalized) return false;
+  if (/\b(?:no known issues?|none|not applicable|n\/a)\b/.test(normalized)) return false;
+  if (/\b(?:no|none|not)\s+(?:pending|unresolved|open|needed|required|awaiting)\b/.test(normalized)) return false;
+
+  return /\b(?:owner|human)\s+decision\s*:\s*(?:pending|unresolved|open|tbd|todo|needed|required|not yet)\b/.test(normalized) ||
+    /\b(?:needs?|requires?|awaiting)\s+(?:an?\s+)?(?:explicit\s+)?(?:owner|human)\s+decision\b/.test(normalized) ||
+    /\b(?:pending|unresolved|open)\s+(?:owner|human)\s+decision\b/.test(normalized) ||
+    /\b(?:pending|unresolved|open)\s+(?:accepted\s+)?known\s+issue\b/.test(normalized) ||
+    /\bknown\s+issue\b.*\b(?:pending|unresolved|open)\b/.test(normalized) ||
+    /\bknown\s+issue\b.*\b(?:needs?|requires?|awaiting)\s+(?:an?\s+)?(?:explicit\s+)?(?:owner|human)\s+decision\b/.test(normalized);
 }
 
 function readValidationReturnCounts(memory = "") {
@@ -632,6 +670,18 @@ function readLatestEffectiveContentHead(memory) {
   return latest;
 }
 
+function readLatestValidatedEffectiveContentHead(memory = "", role = "") {
+  const marker = validatedEffectiveContentHeadMarkers[role];
+  if (!marker) return null;
+  marker.lastIndex = 0;
+  let latest = null;
+  let match;
+  while ((match = marker.exec(memory)) !== null) {
+    latest = match[1].toLowerCase();
+  }
+  return latest;
+}
+
 function readCurrentHeadGuardEvidenceText(tasks) {
   return tasks
     .split(/\r?\n/)
@@ -792,10 +842,10 @@ function isFinalValidationEvidenceLine(line = "", role = "") {
   const text = line.trim();
   if (/^\s*(?:[-*]\s*)?$/.test(text)) return true;
   if (role === "architect") {
-    return /^\s*(?:[-*]\s*)?(?:Architect validation pass|Architect return count|Open Architect dispositions|Final Architect validation completed at|Architect validation evidence|Architect gaps|Architect disposition)\b/i.test(text);
+    return /^\s*(?:[-*]\s*)?(?:Architect validation pass|Architect return count|Architect validated effective content head|Open Architect dispositions|Final Architect validation completed at|Architect validation evidence|Architect gaps|Architect disposition)\b/i.test(text);
   }
   if (role === "analyst") {
-    return /^\s*(?:[-*]\s*)?(?:Analyst validation pass|Analyst return count|Customer intent check|Gaps, if any|Architect disposition routing|Analyst limit escalation|Analyst boundary reminder|Final Analyst validation completed at|Analyst validation evidence)\b/i.test(text);
+    return /^\s*(?:[-*]\s*)?(?:Analyst validation pass|Analyst return count|Analyst validated effective content head|Customer intent check|Gaps, if any|Architect disposition routing|Analyst limit escalation|Analyst boundary reminder|Final Analyst validation completed at|Analyst validation evidence)\b/i.test(text);
   }
   return false;
 }
@@ -828,7 +878,7 @@ function isFinalValidationProcessEvidenceLine(line = "", effectiveContentHead = 
   if (guardTextMarker.test(text) && effectiveContentHead) {
     return guardEvidenceReferencesEffectiveHead(text, effectiveContentHead);
   }
-  return /\b(?:Architect validation|Architect return count|Analyst validation|Analyst return count|Effective content head|Final-validation evidence-only commit|Current-PR-head read-only guard|Analyst feedback Architect disposition|Limit escalation)\s*:/i.test(text) &&
+  return /\b(?:Architect validation|Architect return count|Architect validated effective content head|Analyst validation|Analyst return count|Analyst validated effective content head|Effective content head|Final-validation evidence-only commit|Current-PR-head read-only guard|Analyst feedback Architect disposition|Limit escalation)\s*:/i.test(text) &&
     !/\[(?:.+)\]/.test(text) &&
     !/\b(?:pending|blocker|unknown|tbd)\b/i.test(text);
 }
