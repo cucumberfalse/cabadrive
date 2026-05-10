@@ -17061,7 +17061,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "5b4bd3dfd0ddba4bd3c69e89d109da701dec61ae2e5851f83bf394fca64c5a4c",
+        "sourceFingerprint": "8d5614d9dc5b4c4461a8d920e5580168051b9a42185a55b310f30f2a2bf0c1da",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -17433,7 +17433,7 @@
             {
               "answerId": "b-fallback-325-a1",
               "verdict": "incorrect",
-              "explanationRu": "Aumentar la velocidad блокирует возврат автомобиля A в правую полосу и создает новый конфликт вместо реакции на peligro ahead."
+              "explanationRu": "Aumentar la velocidad блокирует возврат автомобиля A в правую полосу и создает новый конфликт вместо реакции на опасность впереди."
             },
             {
               "answerId": "b-fallback-325-a2",
@@ -17474,7 +17474,7 @@
             {
               "answerId": "b-fallback-356-a1",
               "verdict": "incorrect",
-              "explanationRu": "Rotondas - это круговое движение, а не значение isleta в вопросе про horizontal signaling."
+              "explanationRu": "Rotondas - это круговое движение, а не значение isleta в вопросе про señalización horizontal, то есть горизонтальную разметку."
             },
             {
               "answerId": "b-fallback-356-a2",
@@ -17514,7 +17514,7 @@
             {
               "answerId": "b-fallback-359-a1",
               "verdict": "incorrect",
-              "explanationRu": "Prohibición de Girar a la Derecha - другой знак. Здесь символ связан с line/carril и запретом менять полосу."
+              "explanationRu": "Prohibición de Girar a la Derecha - другой знак. Здесь символ показывает полосу (carril) и запрет cambiar de carril."
             },
             {
               "answerId": "b-fallback-359-a2",
@@ -17566,7 +17566,7 @@
             {
               "answerId": "b-fallback-362-a3",
               "verdict": "incorrect",
-              "explanationRu": "Prohibido estacionar o detenerse соответствовало бы логике красного cordón/no stopping. Здесь запрет касается estacionar, а detención допускается."
+              "explanationRu": "Prohibido estacionar o detenerse соответствовало бы красному cordón: там нельзя ни estacionar, ни detenerse. Здесь запрет касается estacionar, а detención допускается."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b81.jpg"
@@ -17664,7 +17664,7 @@
         },
         {
           "id": "trap-yellow-cordon-vs-red-cordon",
-          "textRu": "Yellow marking/cordón в `b-fallback-362` запрещает estacionar, но не всякую detención. Красный cordón/no stopping дал бы другой ответ.",
+          "textRu": "Желтая разметка/cordón amarillo в `b-fallback-362` запрещает estacionar, но не всякую detención. Красный cordón с запретом detenerse дал бы другой ответ.",
           "sourceQuestionIds": [
             "b-fallback-362"
           ]
