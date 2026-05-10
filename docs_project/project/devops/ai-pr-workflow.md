@@ -222,10 +222,24 @@ work at most 10 times per work cycle. If another Architect gap would exceed
 that limit, Architect records the breach and tells Orchestrator to ask Analyst
 for a new feature request.
 
+When Architect passes final validation, Architect records the pass in
+Architect-owned memory with both `Architect validation pass: passed` and
+`Final Architect validation completed at: <ISO 8601 timestamp>`. The timestamp
+must be a parseable ISO 8601 timestamp with timezone, such as
+`2026-05-10T13:00:00Z`.
+
 Only after final Architect validation passes does Orchestrator invoke final
 Analyst validation. Analyst checks whether the final result matches the
 customer's desired outcome in spirit and letter using the original request,
 clarified answers, assumptions, open questions, and acceptance expectations.
+
+When Analyst passes final validation, Analyst records the pass in
+Analyst-owned `feature-request.md` memory with both
+`Analyst validation pass: passed` and
+`Final Analyst validation completed at: <ISO 8601 timestamp>`. The Analyst
+timestamp must be later than the Architect timestamp. The finalization helper
+treats missing, invalid, equal, or reversed completion markers as a validation
+order blocker, even when both legacy pass lines are present.
 
 If Analyst finds gaps within the return limit, Analyst updates only
 Analyst-owned validation notes in `feature-request.md`, increments the Analyst
@@ -268,6 +282,7 @@ blocking review findings are resolved or outdated, required review conversations
 are resolved, docs/specs are updated, feature-memory feedback has Architect
 disposition, acceptance evidence is recorded, final guards have evidence, final
 Architect validation and final Analyst validation have passed in order,
+with explicit ISO completion markers proving Architect completed before Analyst,
 return-limit state is recorded, the current-PR-head guard is current when
 required, and no conflicts remain. Red, missing,
 queued, or running required checks; unresolved blocking review findings;
@@ -282,10 +297,13 @@ terminal state. Orchestrator should run the finalization helper, for example
 after final validation and current-head guards are recorded. The helper reads
 required checks from `.unicorn-hub/config.json`, verifies the current head,
 review resolution, blocking findings, mergeability, process evidence, and then
-uses GitHub squash merge. It provides no direct-push, force, or admin-bypass
-path. With `--auto-merge-pending`, pending required checks may enable GitHub
-protected auto-merge instead of immediate merge; without that flag they remain
-blockers.
+uses GitHub squash merge. Mutating finalization and auto-merge require
+`--expected-head` or `--head-sha` for the reviewed and validated PR head; the
+helper blocks if the explicit expected head is absent or differs from the
+current PR head returned by GitHub. Dry-run inspection may omit the expected
+head. The helper provides no direct-push, force, or admin-bypass path. With
+`--auto-merge-pending`, pending required checks may enable GitHub protected
+auto-merge instead of immediate merge; without that flag they remain blockers.
 
 Current executable feature-memory checks, including local preflight and the CI
 guard script, still validate the existing `spec.md`, `plan.md`, and `tasks.md`

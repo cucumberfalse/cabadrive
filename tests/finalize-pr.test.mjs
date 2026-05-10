@@ -80,6 +80,21 @@ test("stale head, draft PRs, and conflicts block finalization", () => {
   assert.ok(result.blockers.some((blocker) => blocker.code === "merge-state"));
 });
 
+test("mutating finalization requires an explicit expected head", () => {
+  const missingExpectedHead = evaluateFinalizationGates(successfulInput({
+    requireExpectedHead: true
+  }));
+  assert.equal(missingExpectedHead.action, "block");
+  assert.ok(missingExpectedHead.blockers.some((blocker) => blocker.code === "missing-expected-head"));
+
+  const suppliedExpectedHead = evaluateFinalizationGates(successfulInput({
+    requireExpectedHead: true,
+    suppliedHeadSha: "abc123"
+  }));
+  assert.equal(suppliedExpectedHead.ready, true);
+  assert.equal(suppliedExpectedHead.action, "merge");
+});
+
 test("pending required checks block by default", () => {
   const checks = requiredChecks.map((name) => ({
     name,
@@ -181,13 +196,85 @@ test("skipped or neutral required checks are not treated as green", () => {
   assert.equal(normalizeCheckState({ state: "NEUTRAL" }), "failed");
 });
 
+test("process evidence orders final validation by explicit role-owned timestamps", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const featureRoot = join(root, featurePath);
+  mkdirSync(featureRoot, { recursive: true });
+
+  const tasks = `# Tasks
+
+## Decisions
+- Decision recorded.
+
+## Dead Ends
+- None.
+
+## Known Issues
+- None.
+
+## Implementation Agent Feedback
+- None yet.
+
+## Verification Evidence
+- current-PR-head guard evidence recorded by the helper's match-head-commit check.
+`;
+
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-10T13:00:01Z
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-10T13:00:00Z
+`);
+  writeFileSync(join(featureRoot, "plan.md"), "");
+  writeFileSync(join(featureRoot, "tasks.md"), tasks);
+
+  const ordered = readProcessEvidence(root, featurePath, "abc123def456");
+  assert.equal(ordered.finalArchitectValidation, true);
+  assert.equal(ordered.finalAnalystValidation, true);
+  assert.equal(ordered.finalValidationOrder, true);
+
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-10T13:00:02Z
+`);
+  assert.equal(readProcessEvidence(root, featurePath, "abc123def456").finalValidationOrder, false);
+
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+`);
+  const missingMarkers = readProcessEvidence(root, featurePath, "abc123def456");
+  assert.equal(missingMarkers.finalArchitectValidation, true);
+  assert.equal(missingMarkers.finalAnalystValidation, true);
+  assert.equal(missingMarkers.finalValidationOrder, false);
+});
+
 test("process evidence accepts current-head guard marker without head SHA", () => {
   const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
   const featurePath = "specs/999-finalize-test";
   const featureRoot = join(root, featurePath);
   mkdirSync(featureRoot, { recursive: true });
-  writeFileSync(join(featureRoot, "feature-request.md"), "Analyst validation pass: passed\n");
-  writeFileSync(join(featureRoot, "spec.md"), "Architect validation pass: passed\n");
+  writeFileSync(join(featureRoot, "feature-request.md"), `Analyst validation pass: passed
+Final Analyst validation completed at: 2026-05-10T13:00:01Z
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `Architect validation pass: passed
+Final Architect validation completed at: 2026-05-10T13:00:00Z
+`);
   writeFileSync(join(featureRoot, "plan.md"), "");
 
   const baseTasks = `# Tasks

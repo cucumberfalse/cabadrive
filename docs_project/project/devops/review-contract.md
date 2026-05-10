@@ -74,6 +74,12 @@ Reviewers check role boundaries in addition to code behavior:
   outcome in spirit and letter. Analyst gap notes must be Analyst-owned, return
   counts must stay within the limit of 5, and Analyst feedback must receive
   Architect accept/task/ticket/dispose disposition before follow-up development.
+- Passing final validation must include explicit role-owned completion markers:
+  `Final Architect validation completed at: <ISO 8601 timestamp>` in
+  Architect-owned memory and `Final Analyst validation completed at:
+  <ISO 8601 timestamp>` in `feature-request.md`. The Analyst timestamp must be
+  later than the Architect timestamp; file concatenation order is not valid
+  chronology evidence.
 - Architect gap returns must stay within the limit of 10 per work cycle. If the
   limit is exceeded, reviewers should expect a recorded Architect breach and
   Orchestrator request for Analyst to create a new feature request; if the
@@ -125,7 +131,9 @@ finalization when the PR permits merge without current-head verification, green
 required checks from `.unicorn-hub/config.json`, resolved review threads,
 resolved or outdated blocking findings, clean mergeability, final validation
 evidence, current process memory, feedback disposition, and local guard
-evidence. Human intervention remains a blocker only for exceptional cases:
+evidence. Mutating helper usage must require an explicit expected head for the
+reviewed and validated PR head, while dry-run inspection may remain read-only
+without it. Human intervention remains a blocker only for exceptional cases:
 missing credentials or permissions, explicit instruction not to merge,
 ambiguous repository or PR state, pending owner decision for an accepted known
 issue, or protected-branch/ruleset policy blockers.

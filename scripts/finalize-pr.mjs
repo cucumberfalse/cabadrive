@@ -24,6 +24,10 @@ const pendingValues = new Set([
   "WAITING",
   "pending"
 ]);
+const validationCompletedAtMarkers = {
+  architect: /Final\s+Architect\s+validation\s+completed\s+at:\s*([^\r\n]+)/ig,
+  analyst: /Final\s+Analyst\s+validation\s+completed\s+at:\s*([^\r\n]+)/ig
+};
 
 export function evaluateFinalizationGates(input = {}) {
   const blockers = [];
@@ -37,6 +41,10 @@ export function evaluateFinalizationGates(input = {}) {
 
   if (!pr.number && !input.prIdentifier) {
     block("missing-pr-context", "A pull request context or explicit PR identifier is required.");
+  }
+
+  if (input.requireExpectedHead && !input.suppliedHeadSha) {
+    block("missing-expected-head", "Mutating finalization requires --expected-head or --head-sha for the reviewed and validated PR head.");
   }
 
   if (input.suppliedHeadSha && pr.headSha && input.suppliedHeadSha !== pr.headSha) {
@@ -233,11 +241,16 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
     return existsSync(path) ? readFileSync(path, "utf8") : "";
   };
   const featureRequest = read("feature-request.md");
+  const spec = read("spec.md");
+  const plan = read("plan.md");
   const tasks = read("tasks.md");
-  const allMemory = [featureRequest, read("spec.md"), read("plan.md"), tasks].join("\n");
+  const architectMemory = [spec, plan, tasks].join("\n");
+  const analystMemory = featureRequest;
 
-  const architectIndex = allMemory.search(/Architect validation pass:\s*(pass|passed|yes|true)/i);
-  const analystIndex = allMemory.search(/Analyst validation pass:\s*(pass|passed|yes|true)/i);
+  const hasArchitectPass = /Architect validation pass:\s*(pass|passed|yes|true)/i.test(architectMemory);
+  const hasAnalystPass = /Analyst validation pass:\s*(pass|passed|yes|true)/i.test(analystMemory);
+  const architectCompletedAt = readLatestValidationCompletedAt(architectMemory, "architect");
+  const analystCompletedAt = readLatestValidationCompletedAt(analystMemory, "analyst");
   const verificationSection = tasks.match(/## Verification Evidence([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
   const feedbackSection = tasks.match(/## Implementation Agent Feedback([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
   const knownIssueSection = tasks.match(/## Known Issues([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
@@ -246,9 +259,13 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
   const feedbackDisposed = /No unresolved|Architect disposition|disposed/i.test(feedbackText);
 
   return {
-    finalArchitectValidation: architectIndex >= 0,
-    finalAnalystValidation: analystIndex >= 0,
-    finalValidationOrder: architectIndex >= 0 && analystIndex > architectIndex,
+    finalArchitectValidation: hasArchitectPass,
+    finalAnalystValidation: hasAnalystPass,
+    finalValidationOrder: hasArchitectPass &&
+      hasAnalystPass &&
+      Boolean(architectCompletedAt) &&
+      Boolean(analystCompletedAt) &&
+      architectCompletedAt.getTime() < analystCompletedAt.getTime(),
     acceptanceEvidence: verificationSection.trim().length > 0 && !/Pending implementation/i.test(verificationSection),
     currentProcessMemory: /## Decisions/i.test(tasks) &&
       /## Dead Ends/i.test(tasks) &&
@@ -259,6 +276,28 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
     acceptedKnownIssueDecisionPending: /accepted known issue|owner decision|human decision/i.test(knownIssueSection) &&
       !/none|not applicable|no known/i.test(knownIssueSection)
   };
+}
+
+function readLatestValidationCompletedAt(memory, role) {
+  const marker = validationCompletedAtMarkers[role];
+  marker.lastIndex = 0;
+  let latest = null;
+  let match;
+  while ((match = marker.exec(memory)) !== null) {
+    const parsed = parseIsoDate(match[1]);
+    if (!parsed) return null;
+    latest = parsed;
+  }
+  return latest;
+}
+
+function parseIsoDate(value = "") {
+  const candidate = value.trim().replace(/^`|`$/g, "");
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(candidate)) {
+    return null;
+  }
+  const date = new Date(candidate);
+  return Number.isNaN(date.getTime()) ? null : date;
 }
 
 function run(command, commandArgs, options = {}) {
@@ -431,10 +470,12 @@ async function main() {
     blockingFindings.push({ source: "review-pagination", message: "Review threads are paginated; refusing to finalize without complete thread data." });
   }
 
+  const suppliedHeadSha = args["expected-head"] || args["head-sha"];
   const result = evaluateFinalizationGates({
     prIdentifier: prNumber,
     pr: state.pr,
-    suppliedHeadSha: args["expected-head"] || args["head-sha"],
+    suppliedHeadSha,
+    requireExpectedHead: !args["dry-run"],
     requiredChecks: config.requiredChecks || [],
     checks: state.checks,
     reviewThreads: state.reviewThreads,
