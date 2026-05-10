@@ -14,7 +14,7 @@
   - Architect planning starts from that handoff and must not perform cleanup, implementation, staging, commits, pushes, PR creation, or review.
 - Parallel-work constraints:
   - Parallel agents and Orchestrators may be active. All existing dirty diffs, branches, commits, PRs, process memory, active worktrees, and ambiguous local paths must be preserved.
-  - Coordination risk resolved and updated: after clean rebase onto `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695` from PR #63, this branch is based on the latest verified main state without conflicts. PR #63 adds product/content learning support and feature memory `specs/009`; current main's maximum feature-memory prefix remains `018`, so this cleanup feature memory remains valid at `specs/019-orchestrator-cleanup-governance/`. Prior PR #66/PR #72 and PR #69/P2 latest-base notes are historical/superseded latest-base evidence only, and prior final Architect/Analyst validations are stale pending fresh rerun after this PR #63 rebase.
+  - Coordination risk resolved and updated: after clean rebase onto `origin/main` `2af08b0b918fadb14504ae63a7b2850070906992` from PR #86, `origin/main:specs` now contains `019-learning-polish-process-memory-closure`; the current main maximum feature-memory prefix is `019`, so this cleanup feature memory is now valid at `specs/020-orchestrator-cleanup-governance/`. Prior PR #66/PR #72, PR #69/P2, PR #63, and PR #83 latest-base notes are historical/superseded latest-base evidence only, and prior final Architect/Analyst validations are stale pending fresh rerun after this PR #86 rebase and renumber.
 
 ## Goal
 
@@ -30,7 +30,7 @@ In scope:
 - Review guidance that blocks unsafe cleanup wording or implementation.
 - Future feature-memory and PR-template guidance so cleanup evidence and parallel-work preservation are captured.
 - One-time cleanup task definition and evidence requirements for completed agent-created local environments under approved Cabadrive agent-environment roots.
-- `specs/019-orchestrator-cleanup-governance/{feature-request.md,spec.md,plan.md,tasks.md}`.
+- `specs/020-orchestrator-cleanup-governance/{feature-request.md,spec.md,plan.md,tasks.md}`.
 
 Out of scope:
 

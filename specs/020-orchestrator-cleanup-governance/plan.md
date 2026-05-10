@@ -10,7 +10,7 @@ Update Cabadrive's process guidance so Orchestrator starts repository-changing w
 - dependencies: existing Git, GitHub CLI or equivalent PR lookup, shell read-only inspection commands, and existing package tooling for repository verification.
 - product paths: none expected.
 - data changes: none expected.
-- feature memory path: `specs/019-orchestrator-cleanup-governance/`.
+- feature memory path: `specs/020-orchestrator-cleanup-governance/`.
 - implementation branch/worktree context: `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on `codex/014-orchestrator-cleanup-governance`.
 - likely documentation targets:
   - `AGENTS.md`
@@ -23,7 +23,7 @@ Update Cabadrive's process guidance so Orchestrator starts repository-changing w
   - `docs_project/project/devops/ai-pr-workflow.md`
   - `docs_project/project/devops/review-contract.md`
   - `specs/README.md`
-  - `specs/019-orchestrator-cleanup-governance/tasks.md`
+  - `specs/020-orchestrator-cleanup-governance/tasks.md`
 - likely technical inspection targets:
   - `scripts/new-worktree.mjs` as evidence for the existing latest-main helper behavior; edit only if implementation finds a direct mismatch with the spec and records why.
   - `scripts/check-feature-memory.mjs` and `scripts/check-repo-baseline.mjs` for verification, not cleanup.
@@ -49,7 +49,7 @@ Update Cabadrive's process guidance so Orchestrator starts repository-changing w
    - `pwd`
    - `git status --short --branch`
    - `git branch --show-current`
-   - `test -f specs/019-orchestrator-cleanup-governance/feature-request.md`
+   - `test -f specs/020-orchestrator-cleanup-governance/feature-request.md`
 2. Read active feature memory and scoped durable process docs/templates before editing.
 3. Search existing workflow language to avoid contradictions:
    - `rg -n "Orchestrator|Analyst|Implementation Agent|Review Agent|worktree|main|origin/main|cleanup|artifact|parallel|merge|feature-request|tasks.md" AGENTS.md CLAUDE.md docs_project/project/devops .github/pull_request_template.md .specify/memory/constitution.md .specify/templates specs/README.md scripts/new-worktree.mjs`
@@ -105,7 +105,7 @@ Record evidence in `tasks.md` or a scoped feature-memory section before completi
 
 ## Prefix Rename Resolution
 
-After clean rebase onto `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695` from PR #63, this branch is based on the latest verified main state without conflicts. PR #63 adds product/content learning support and feature memory `specs/009`; current main's max feature-memory prefix remains `018`, so the cleanup feature memory remains valid at `specs/019-orchestrator-cleanup-governance/`. Prior PR #66/PR #72 and PR #69/P2 rebase notes are historical/superseded latest-base evidence only, and prior final Architect/Analyst validations are superseded by the fresh Architect PASS and Analyst PASS recorded after this PR #63 rebase on effective content head `9db9b87`.
+After clean rebase onto `origin/main` `2af08b0b918fadb14504ae63a7b2850070906992` from PR #86, this branch is based on the latest verified main state without conflicts. PR #86 adds `specs/019-learning-polish-process-memory-closure`, so current main's max feature-memory prefix is now `019`; the cleanup feature memory is now valid at `specs/020-orchestrator-cleanup-governance/`. Prior PR #66/PR #72, PR #69/P2, PR #63, and PR #83 rebase notes are historical/superseded latest-base evidence only. Prior final Architect/Analyst validations are stale and must rerun after this PR #86 rebase and renumber.
 
 ## Complexity Tracking
 
@@ -116,10 +116,10 @@ The only new abstraction planned is the Cleanup Agent role. It is justified beca
 | Acceptance criterion | Evidence |
 | --- | --- |
 | AC-001 | `rg -n "latest.*main|origin/main|fresh.*isolated|new.*worktree|repository-changing.*start" AGENTS.md CLAUDE.md docs_project/project/devops .specify/memory/constitution.md .specify/templates specs/README.md` |
-| AC-002 | `rg -n "fetch.*origin.*main|fetch.*fail|unverified|stale|fallback|blocker" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates specs/019-orchestrator-cleanup-governance` |
+| AC-002 | `rg -n "fetch.*origin.*main|fetch.*fail|unverified|stale|fallback|blocker" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates specs/020-orchestrator-cleanup-governance` |
 | AC-003 | `rg -n "Cleanup Agent|cleanup.*role|Orchestrator.*coordinat.*cleanup|must not.*delete" AGENTS.md CLAUDE.md docs_project/project/devops .specify/memory/constitution.md docs_project/project/devops/review-contract.md` |
 | AC-004 | Cleanup evidence table in `tasks.md` shows every removed path passed the full validation checklist. |
-| AC-005 | `rg -n "active|current|dirty|untracked|unpushed|open PR|ambiguous|user-owned|outside.*root|locked|running process|refuse|preserve" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates docs_project/project/devops/review-contract.md specs/019-orchestrator-cleanup-governance` |
+| AC-005 | `rg -n "active|current|dirty|untracked|unpushed|open PR|ambiguous|user-owned|outside.*root|locked|running process|refuse|preserve" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates docs_project/project/devops/review-contract.md specs/020-orchestrator-cleanup-governance` |
 | AC-006 | One-time cleanup evidence in `tasks.md` includes inventory, per-target validation, action, reason, and post-cleanup confirmation. |
 | AC-007 | One-time cleanup evidence explicitly names active/preserved worktrees and confirms the current worktree and PR #65 work were not touched. |
 | AC-008 | Manual diff review plus text search shows scoped process docs/templates align on startup, Cleanup Agent, cleanup validation, and cleanup evidence. |
@@ -177,8 +177,9 @@ If a command cannot run because of local environment, missing credentials, or un
 - Historical prefix/base update, 2026-05-10: the prior latest-main record was superseded after PR #66 merged. Latest `origin/main` at that time was `b26a37d7d2cb985d70ff8dc79a12b397cc52e271`; this branch was rebased onto it, and governance/template conflicts were resolved preserving both Orchestrator-first enforcement and cleanup/latest-verified-main governance. This PR #66 note is historical/superseded by later latest-base evidence including PR #69/P2 and PR #63.
 - Historical PR #72 base update, 2026-05-10: latest `origin/main` was then `578c618d02a45adffa9f2b18a9373495cf19ed8a`; that evidence is now historical/superseded by later PR #69/P2 evidence and the PR #63 rebase.
 - PRRT_kwDOSX65IM6A517A P2 finding/fix, 2026-05-10: durable docs/templates still contained hard wording that new task slices start from or verify latest `origin/main`, conflicting with the documented fetch/base fallback/blocker startup rule. The fix updates owned docs/templates to require latest verified `main`, normally `origin/main` after fetch, with no silent stale reuse; the Analyst-created latest-main handoff exception remains.
-- Historical PR #69/P2 base update, 2026-05-10: the assigned branch base/merge-base was `origin/main` `65624107d856653e503e3f03fd1d51da83992984` from PR #69. That base's max feature prefix was still `018`, so `specs/019-orchestrator-cleanup-governance/` remained valid at that time. This is now historical/superseded latest-base evidence after the PR #63 rebase, while AI Review thread `PRRT_kwDOSX65IM6A517A` remains addressed by the current P2 fix.
-- Prefix/base update, 2026-05-10: the assigned branch was cleanly rebased without conflicts onto `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695` from PR #63. PR #63 adds product/content learning support and feature memory `specs/009`; current main's max feature prefix remains `018`, so `specs/019-orchestrator-cleanup-governance/` remains valid. Do not change product code, unrelated docs, staging, commit, push, review, resolve threads, or merge in this implementation slice.
+- Historical PR #69/P2 base update, 2026-05-10: the assigned branch base/merge-base was `origin/main` `65624107d856653e503e3f03fd1d51da83992984` from PR #69. That base's max feature prefix was still `018`, so the then-current cleanup feature prefix remained valid at that time. This is now historical/superseded latest-base evidence after later rebases, while AI Review thread `PRRT_kwDOSX65IM6A517A` remains addressed by the current P2 fix.
+- Historical PR #63 base update, 2026-05-10: the assigned branch was cleanly rebased without conflicts onto `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695` from PR #63. PR #63 added product/content learning support and feature memory `specs/009`; that main's max feature prefix remained `018`, so the then-current cleanup feature prefix remained valid. This evidence is historical/superseded by later latest-base updates.
 - Final validation state, 2026-05-10: prior Architect/Analyst validations after earlier heads, including `b4d9391`/`7557e3d` and PR #72/`7d9a09a`, are superseded by the PR #69/P2 fix, the later PR #63 base update, and fresh final validation on effective content head `9db9b87`. Architect final validation PASS and Analyst final validation PASS are now recorded for the current cycle.
 - Final Architect validation GAP, 2026-05-10: validation on content head `9e50a76a4b0286cc3eec2fdad3cf43cebb7c5575` found remaining hard latest-`origin/main` startup wording in live governance/template scope: `.github/pull_request_template.md:28`, `specs/README.md:26`, and `specs/README.md:38`. This supersedes the prior final-validation PASS state until an Implementation Agent updates those lines to latest verified `main`, normally `origin/main` after fetch, with documented fallback/blocker semantics and reruns validation.
-- Final Architect validation PASS, 2026-05-10: current content head `4bcce2a6869efaba25334a8a5dfb593f8cc3e6e7` is based on latest verified `main` base/merge-base `origin/main` `870c7f9514404b36cf75954c3c39814770495342` from PR #83. PR #83 adds `specs/010-ui-ux-learning-source-of-truth`; current main's max feature prefix remains `018`, so `specs/019-orchestrator-cleanup-governance/` remains valid. T045-T046 and T047-T048 close the prior hard-origin GAPs; `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, stale hard-origin live-rule search, and old cleanup feature-path search all pass. Full current-head preflight evidence was provided by Orchestrator and passed with feature-memory gate, repo baseline, content validation, 116 Node tests, production build/service-worker generation with 280 cached assets, and 30 Playwright e2e tests. Architect return count remains `3`; no unresolved Architect tasks or GAPs remain.
+- Historical Final Architect validation PASS, 2026-05-10: content head `4bcce2a6869efaba25334a8a5dfb593f8cc3e6e7` was based on latest verified `main` base/merge-base `origin/main` `870c7f9514404b36cf75954c3c39814770495342` from PR #83. PR #83 added `specs/010-ui-ux-learning-source-of-truth`; that main's max feature prefix remained `018`, so the then-current cleanup feature prefix remained valid. This PASS is now stale after PR #86 advanced main and this feature memory was renumbered to `020`.
+- Current PR #86 renumber update, 2026-05-10: current HEAD is `bce10b86b1f238f3943c380631b8741327e2e2f7`, and `origin/main`/merge-base is `2af08b0b918fadb14504ae63a7b2850070906992` from PR #86. `origin/main:specs` now contains `019-learning-polish-process-memory-closure`, so max prefix is `019`; the cleanup feature memory was renamed to `specs/020-orchestrator-cleanup-governance/`. Final Architect and Analyst validations must rerun because this is a non-evidence feature-memory path change.

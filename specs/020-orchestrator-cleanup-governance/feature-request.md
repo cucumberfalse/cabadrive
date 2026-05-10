@@ -109,7 +109,7 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 - Requirement clarification was not requested because the assignment says to record assumptions and open questions instead.
 - Analyst hands off to Orchestrator and shuts down after intake is ready.
 - Architect starts from this artifact and writes `spec.md`, `plan.md`, and `tasks.md`.
-- Handoff context for Orchestrator: feature folder `specs/019-orchestrator-cleanup-governance/` in worktree `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on branch `codex/014-orchestrator-cleanup-governance`; parallel work may exist and all existing dirty diffs, branches, commits, PRs, process memory, and active environments must be preserved.
+- Handoff context for Orchestrator: feature folder `specs/020-orchestrator-cleanup-governance/` in worktree `/Users/chap/devel/cabadrive-014-orchestrator-cleanup-governance` on branch `codex/014-orchestrator-cleanup-governance`; parallel work may exist and all existing dirty diffs, branches, commits, PRs, process memory, and active environments must be preserved.
 
 ## Open Questions And Risks
 
