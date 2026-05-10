@@ -76,15 +76,20 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 
 ## UI Rules
 
+- Durable UI/UX rules live in `docs_project/project/frontend/ui-ux-source-of-truth.md`.
+- Durable learning-experience rules live in `docs_project/project/learning/learning-experience-source-of-truth.md`.
+- Image explanation overlay rules live in `docs_project/project/frontend/image-explanation-overlays.md`; current approved overlay records live under `content/image-overlays/` and validate against merged feature 009 metadata/usage fingerprints.
 - Official Spanish text stays primary.
 - Russian translations and explanations are unofficial learning aids; product-level onboarding, content-mode/status surfaces, and source/status footers carry that clarity instead of repeating long disclaimer paragraphs inside every question card.
 - Learning and mistake review start with Russian translation hidden.
 - Learn question cards show the ticket ID in the metadata row for reporting and cross-reference.
 - Learning, mistake review, and materials surfaces show a compact static difficulty indicator (`green`, `blue`, `yellow`, `red`) as unofficial study-planning metadata. Difficulty is not correctness, source confidence, progress, or the user-controlled `Сложный` mark.
+- After answer selection in learning and mistake review, question translation, answer translations, and learning explanation reveal automatically.
+- Bottom previous/next navigation belongs where feedback and explanation reading ends; learning navigation follows the active search collection, and mistake review navigation follows the current mistake collection.
 - The Spanish question text area reveals or hides the question translation and answer-choice translations with the same shared state; the revealed question translation appears directly under the Spanish question text before images and answer choices.
 - The current 460-question fallback bank has complete question-card Russian translation and explanation records. These records remain unofficial learning aids and are guarded by deterministic local fingerprint evidence.
 - Image-backed questions are guarded by `content/image-metadata/question-images.manifest.json` and related validation evidence. The metadata is not rendered in the MVP UI; it exists to prevent learning explanations from contradicting local images and to keep image-critical details reviewable.
-- Future image highlight/dim overlays consume question-specific usage relevance from feature `009`; frontend overlay rendering must not infer importance from shared image metadata alone.
+- Image highlight/dim overlays consume question-specific usage relevance from feature `009`; frontend overlay rendering must not infer importance from shared image metadata alone and must fall back truthfully when no approved overlay exists.
 - Active exam attempts hide translation and explanation support.
 - Active exam attempts do not show difficulty rationale, dimensions, or study hints; current UI omits difficulty chips during active attempts.
 - Support mobile-first interaction and exam-focused speed.
