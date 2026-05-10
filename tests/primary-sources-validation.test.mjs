@@ -194,6 +194,43 @@ test("valid strict primary-source fixture passes", () => {
   assert.deepEqual(validate(), []);
 });
 
+test("strict mode rejects pending exact-text source validation", () => {
+  const badManifest = manifest();
+  badManifest.entries[0].exactTextValidation.status = "pending";
+
+  const errors = validate({ manifest: badManifest });
+
+  assert(
+    errors.includes(
+      "doc-1.exactTextValidation.status must be passed for strict primary-source validation."
+    )
+  );
+});
+
+test("strict mode rejects failed currentness validation", () => {
+  const badManifest = manifest();
+  badManifest.entries[0].currentness.validationStatus = "failed";
+
+  const errors = validate({ manifest: badManifest });
+
+  assert(
+    errors.includes(
+      "doc-1.currentness.validationStatus must be passed for strict primary-source validation."
+    )
+  );
+});
+
+test("strict mode rejects non-current effective source status", () => {
+  const badManifest = manifest();
+  badManifest.entries[0].currentness.status = "stale";
+
+  const errors = validate({ manifest: badManifest });
+
+  assert(
+    errors.includes("doc-1.currentness.status must be release-ready for strict primary-source validation.")
+  );
+});
+
 test("strict mode rejects learner chunks missing search projection entries", () => {
   const badSearchIndex = searchIndex();
   badSearchIndex.entries = [];
