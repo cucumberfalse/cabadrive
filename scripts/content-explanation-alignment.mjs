@@ -108,10 +108,10 @@ function findImageAndUsage({ question, imageMetadataManifest }) {
 function allVisualObjects(image) {
   const objects = new Map();
   for (const object of [...(image?.objects || []), ...(image?.roadUsers || []), ...(image?.signsSignalsMarkings || [])]) {
-    if (isNonEmptyString(object.id)) objects.set(object.id, object);
+    if (isNonEmptyString(object.id)) objects.set(object.id, [...(objects.get(object.id) || []), object]);
   }
   for (const annotation of image?.annotations || []) {
-    if (isNonEmptyString(annotation.id)) objects.set(annotation.id, annotation);
+    if (isNonEmptyString(annotation.id)) objects.set(annotation.id, [...(objects.get(annotation.id) || []), annotation]);
   }
   return objects;
 }
@@ -141,13 +141,17 @@ function validateVisualClaims({ explanation, image, label, errors }) {
       errors.push(`${label}: visual claim objectId must be non-empty.`);
       continue;
     }
-    const object = objects.get(claim.objectId);
-    if (!object) {
+    const matchingObjects = objects.get(claim.objectId);
+    if (!matchingObjects) {
       errors.push(`${label}: visual claim references missing object ${claim.objectId}.`);
       continue;
     }
-    if (isNonEmptyString(claim.objectType) && object.type && claim.objectType !== object.type) {
-      errors.push(`${label}: visual claim objectType ${claim.objectType} contradicts metadata type ${object.type}.`);
+    if (
+      isNonEmptyString(claim.objectType) &&
+      matchingObjects.some((object) => object.type) &&
+      !matchingObjects.some((object) => object.type === claim.objectType)
+    ) {
+      errors.push(`${label}: visual claim objectType ${claim.objectType} contradicts metadata types ${matchingObjects.map((object) => object.type).join(", ")}.`);
     }
     if (isNonEmptyString(claim.gestureId)) {
       const gesture = findGesture(image, claim.gestureId);

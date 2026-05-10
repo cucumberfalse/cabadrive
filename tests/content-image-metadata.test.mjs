@@ -40,9 +40,10 @@ function baseImage() {
     generationPromptSummary: "Synthetic sign image prompt.",
     scene: { setting: "synthetic" },
     objects: [{ id: "sign", type: "traffic_sign", label: "sign", confidence: "high" }],
+    regions: [{ regionId: "sign-region", label: "sign region", semanticLocation: "center", localizationConfidence: "high" }],
     roadUsers: [],
     signsSignalsMarkings: [],
-    visualDetails: [{ id: "sign-shape", objectIds: ["sign"], description: "The sign shape is visible and answer-critical." }],
+    visualDetails: [{ id: "sign-shape", objectIds: ["sign"], regionIds: ["sign-region"], description: "The sign shape is visible and answer-critical." }],
     annotations: [],
     visibleText: [],
     spatialRelationships: [],
@@ -67,6 +68,7 @@ function baseUsage() {
       {
         detailId: "sign-shape",
         objectIds: ["sign"],
+        regionIds: ["sign-region"],
         description: "The sign is the relevant visual cue.",
         supportsAnswerIds: ["q1-a2"],
         rejectsAnswerIds: ["q1-a1"],
@@ -75,6 +77,30 @@ function baseUsage() {
       }
     ],
     imageRole: "answer_critical",
+    relevanceMap: [
+      {
+        relevanceId: "sign-shape-highlight",
+        detailIds: ["sign-shape"],
+        objectIds: ["sign"],
+        regionIds: ["sign-region"],
+        role: "answer_critical_highlight",
+        rationaleRuOrEn: "The sign shape is the question-specific cue for the correct answer.",
+        supportsAnswerIds: ["q1-a2"],
+        rejectsAnswerIds: ["q1-a1"],
+        displayIntent: "highlight",
+        confidence: "high"
+      },
+      {
+        relevanceId: "sign-background-context",
+        detailIds: [],
+        objectIds: ["sign"],
+        regionIds: ["sign-region"],
+        role: "supporting",
+        rationaleRuOrEn: "The visible sign panel should remain visible as supporting context.",
+        displayIntent: "keep_visible",
+        confidence: "high"
+      }
+    ],
     review: {
       status: "approved",
       reviewer,
@@ -195,6 +221,56 @@ test("full-quality image gate rejects placeholder metadata and generic source-im
       "q1: critical detail q1-critical-source-image must name actual visible answer-critical facts, not source-image or answer-cue placeholders."
     )
   );
+});
+
+test("full-quality usage gate requires question-scoped relevance mapping", () => {
+  const usage = {
+    ...baseUsage(),
+    relevanceMap: [
+      {
+        relevanceId: "missing-context",
+        detailIds: ["sign-shape"],
+        objectIds: ["sign"],
+        regionIds: ["sign-region"],
+        role: "answer_critical_highlight",
+        rationaleRuOrEn: "Only the critical cue is mapped.",
+        supportsAnswerIds: ["q1-a2"],
+        displayIntent: "highlight",
+        confidence: "high"
+      }
+    ]
+  };
+  const errors = validateSyntheticFullQuality({ usage });
+  assert(errors.includes("q1: full-quality usage must include non-critical supporting, distractor, or background relevance context."));
+  assert(errors.includes("q1: full-quality usage must not mark every relevance entry answer-critical."));
+});
+
+test("shared image metadata rejects global relevance keys", () => {
+  const image = {
+    ...baseImage(),
+    objects: [{ id: "sign", type: "traffic_sign", label: "sign", confidence: "high", criticality: "required" }]
+  };
+  const errors = validateSyntheticFullQuality({ image });
+  assert(errors.includes("question-image-example: shared image metadata must not contain question-scoped relevance key question-image-example.objects[0].criticality."));
+});
+
+test("relevance mappings must reference existing stable ids", () => {
+  const usage = {
+    ...baseUsage(),
+    relevanceMap: [
+      {
+        ...baseUsage().relevanceMap[0],
+        detailIds: ["missing-detail"],
+        objectIds: ["missing-object"],
+        regionIds: ["missing-region"]
+      },
+      baseUsage().relevanceMap[1]
+    ]
+  };
+  const errors = validateSyntheticFullQuality({ usage });
+  assert(errors.includes("q1: relevance sign-shape-highlight references missing detail missing-detail."));
+  assert(errors.includes("q1: relevance sign-shape-highlight references missing object missing-object."));
+  assert(errors.includes("q1: relevance sign-shape-highlight references missing region missing-region."));
 });
 
 test("stale question fingerprint fails image usage validation", () => {

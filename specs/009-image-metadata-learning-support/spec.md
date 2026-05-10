@@ -32,7 +32,7 @@ This feature is explicitly not an MVP, placeholder, draft-seed, baseline-coverag
 Required final quality:
 
 - every one of the 460 current fallback tickets has a complete idiomatic Russian question translation, complete idiomatic Russian answer translations, and a complete learner-facing Russian explanation;
-- every one of the 275 current unique image files has full visual metadata based on the actual image, detailed enough for a reviewer to recreate a close image prompt or detect that a generated close image is missing important visible facts;
+- every one of the 275 current unique image files has full visual metadata based on the actual image, detailed enough for a reviewer to recreate a close image prompt or detect that a generated close image is missing visible facts that are material to that image;
 - every one of the 276 current image-backed question usages has question-specific relevance mappings tied to actual image object/detail/region IDs and the current answer choices;
 - every image-backed question usage identifies at least one answer-critical/highlight detail and enough supporting, distractor/trap, or background/irrelevant/dim context to support future explanation overlays without marking every visible item critical;
 - every explanation explains why the correct answer is correct and why each incorrect answer is not correct for this ticket;
@@ -70,12 +70,13 @@ The final PR must include evidence that all assigned content-agent ranges for al
 In scope:
 
 - Define one consistent structured JSON schema for current question-image metadata.
-- Cover every current question image reference with metadata, using shared visual metadata for each unique image and question-specific critical-detail mappings for every image-backed question.
+- Cover every current question image reference with metadata, using shared visual metadata for each unique image and question-specific relevance mappings for every image-backed question.
 - Tie image metadata to local image path, image SHA-256, original URL when present, source ID, and deterministic review evidence.
-- Tie every question-specific critical-detail mapping to a stable question fingerprint that includes question text, ordered answers, correct answer ID, image path, and image hash.
-- Mark answer-critical visual details for every image-backed question and link them to the relevant question ID and, when applicable, correct answer ID or wrong-answer trap.
+- Tie every question-specific relevance mapping to a stable question fingerprint that includes question text, ordered answers, correct answer ID, image path, and image hash.
+- Mark answer-critical visual details only in per-question usage records for image-backed questions and link them to the relevant question ID and, when applicable, correct answer ID or wrong-answer trap.
 - Define stable object/detail/region IDs in shared image metadata so downstream feature `010` can consume `009` as the semantic source for highlight/dim overlays.
 - Require per-question image usage mappings to classify referenced details or regions as `answer-critical/highlight`, `supporting`, `distractor/trap`, or `background/irrelevant/dim` for that exact ticket.
+- Forbid global importance, unimportance, criticality, highlight, dim, distractor, or relevance-role flags in shared image metadata. Shared metadata describes visible facts only; question-specific usage records own all importance/relevance judgments.
 - Preserve the feature boundary: `009` owns visible image semantics and question-specific relevance; `010` owns presentation geometry, dimming, spotlight rendering, label placement, masks, and interaction behavior.
 - Correct the `b-fallback-001` Russian explanation so it describes the visible cyclist and straight right-arm signal rather than a driver with a bent raised left arm.
 - Add validation regression coverage proving the old `b-fallback-001` explanation fails.
@@ -107,6 +108,7 @@ Out of scope:
 - "Every image" means every local image referenced by the current 460-question fallback bank.
 - "Every ticket" means the 460 records in `content/questions/caba-b.unofficial-fallback.questions.json` at implementation time.
 - Questions without images need translations and explanations, but no image metadata.
+- Local images that are not referenced by a current question do not need image metadata or any importance/relevance evaluation in this feature.
 - The duplicate `b2.jpg` image should have one shared visual metadata entry and two question-specific usage mappings.
 - AI assistance may be used by implementation agents to draft descriptions, translations, or explanations, but committed validation must rely on deterministic local JSON, fingerprints, and review evidence.
 - Review evidence may be solo self-audit unless the Orchestrator or repository policy requires additional human review; the evidence must still be explicit and reproducible.
@@ -124,9 +126,10 @@ Rationale:
 
 - The same local image can be reused by multiple questions, as `b2.jpg` already is.
 - The visible scene should be described once so metadata review does not drift.
-- Answer-critical interpretation, supporting context, distractors, and irrelevant/background details depend on the question text and answer choices, so they belong in a per-question usage record.
+- Answer-critical interpretation, supporting context, distractors, and irrelevant/background details depend on the question text, answer choices, correct answer, and explanation, so they belong only in a per-question usage record.
 - This avoids duplicating 275 full image descriptions across 276 image-backed questions while still allowing each ticket to mark the same object as answer-critical in one question and background in another.
 - Feature `009` is the semantic contract for future feature `010` overlays. `009` must expose stable visible detail/object/region IDs and question-specific relevance roles. `010` may later decide how to render highlights, dimming, callouts, labels, or masks, but it must not invent a competing answer-critical source of truth.
+- Shared image metadata must not contain global `important`, `unimportant`, `criticality`, `relevance`, `highlight`, `dim`, or equivalent flags. If the implementation needs compatibility helpers such as `answerCriticalDetails`, those helpers must be stored under `QuestionImageUsage` or derived from `QuestionImageRelevance`, never under `ImageMetadataEntry`, `VisualObject`, `VisualRegion`, or shared detail records.
 
 ### Preferred Future Content Layout
 
@@ -219,6 +222,13 @@ type QuestionImageUsage = {
   imageSha256: string;
   questionFingerprint: string;
   correctAnswerId: string;
+  questionContext: {
+    questionTextFingerprint: string;
+    answerChoicesFingerprint: string;
+    correctAnswerId: string;
+    explanationFingerprint?: string;
+  };
+  // Question-scoped fields; shared ImageMetadataEntry must not carry these semantics.
   answerCriticalDetails: AnswerCriticalDetail[];
   relevanceMap: QuestionImageRelevance[];
   imageRole: "answer_critical" | "contextual_with_critical_detail";
@@ -307,6 +317,8 @@ Required visual detail categories:
 - spatial relationships such as ahead/behind, left/right from viewer perspective, left/right from actor perspective, next to, crossing, approaching, stopping, parked, or yielding;
 - uncertainties for unclear, cropped, low-resolution, or ambiguous details.
 
+Shared visual detail categories explicitly exclude question-scoped importance or relevance. Objects, regions, road users, signs, markings, annotations, and uncertainties may say what is visible and where it is, but not whether it is important, irrelevant, a trap, highlighted, dimmed, or answer-critical outside a concrete question usage.
+
 ### Image Metadata Quality Gate
 
 Approved image metadata must be based on inspection of the actual local image. It must not be inferred only from question text, answer text, filenames, source URLs, topic-guide rationale, or the correct answer.
@@ -320,6 +332,7 @@ Validation/review must reject final approved metadata when:
 - the entry cannot support a close visual recreation of the image because it lacks concrete object, position, relationship, text/sign, marking, gesture, or annotation details;
 - the entry lacks stable object/detail/region IDs for visible details that are referenced by a question usage, explanation, or future overlay consumer;
 - the entry lacks semantic localization for referenced regions, even if exact bounding boxes or polygons are unavailable;
+- the shared metadata entry or any shared object/detail/region assigns global importance, unimportance, answer criticality, distractor status, background irrelevance, highlight intent, dim intent, or any equivalent relevance role;
 - uncertainty is used as a substitute for review instead of a scoped note about genuinely ambiguous/cropped/low-resolution visual facts;
 - question usage records use generic critical details such as "source image", "answer cue", or "visible context" without naming the actual answer-critical visible fact and linking it to answer reasoning;
 - question usage records mark every visible detail critical or fail to identify non-critical, distractor, or background/irrelevant regions that can be dimmed or de-emphasized in future explanation overlays.
@@ -330,6 +343,8 @@ Low confidence is acceptable only for a specific ambiguous visual fact that has 
 
 Every image-backed question usage must map shared visible detail IDs to relevance for that exact ticket. The same sign, light, marking, vehicle, gesture, road user, annotation, or background region may be answer-critical/highlight in one question, supporting in another, a distractor/trap in another, and background/irrelevant/dim in another.
 
+Question-specific relevance must be grounded in the current question text, ordered answer choices, correct answer, and explanation rationale. If an image is not used by a question, no answer-critical, supporting, distractor, background, important, or unimportant evaluation is required for that image in this feature.
+
 Approved question usage must include:
 
 - at least one `answer_critical_highlight` relevance entry tied to the visible fact needed to choose or justify the correct answer;
@@ -338,7 +353,7 @@ Approved question usage must include:
 - references only to stable `objectId`, `detailId`, and `regionId` values defined in shared image metadata;
 - a rationale explaining why each referenced detail matters or does not matter for the current ticket.
 
-Validation/review must fail when a usage mapping has only a prose description, lacks stable references, marks all visible details as critical, omits background/irrelevant or other non-critical context, or creates relevance categories that cannot be reconciled with the current question, answer choices, image metadata, and explanation rationale.
+Validation/review must fail when a usage mapping has only a prose description, lacks stable references, marks all visible details as critical, omits background/irrelevant or other non-critical context, or creates relevance categories that cannot be reconciled with the current question, ordered answer choices, correct answer, shared image metadata, and explanation rationale.
 
 ### `b-fallback-001` Required Metadata
 
@@ -500,6 +515,8 @@ The feature must not imply that the current fallback set is an official or compl
 - FR-032: Require validation/review to reject image-backed usage mappings that mark everything critical, omit non-critical or background/irrelevant context, or cannot support future highlight/dim overlay semantics.
 - FR-033: Require content agents working on image metadata/usage to produce relevance mappings, not only prose image descriptions.
 - FR-034: Require durable lifecycle docs to include overlay/relevance metadata refresh when tickets, images, answers, image usages, or explanations are added, changed, or deleted.
+- FR-035: Require validation/review to reject any shared image metadata field, shared object/detail/region record, generated compatibility index, or overlay handoff artifact that stores global important/unimportant/critical/relevance roles outside per-question usage.
+- FR-036: Require every approved question usage relevance role to be grounded in the concrete question text, ordered answer choices, correct answer, and explanation rationale, not in a global image-level judgment.
 
 ## Acceptance Criteria
 
@@ -552,6 +569,9 @@ The feature must not imply that the current fallback set is an official or compl
 47. Given the same image is reused by more than one question, review fails if relevance roles are copied blindly instead of being evaluated against each exact question and answer set.
 48. Given feature `010` later renders overlays, durable docs and feature memory must make clear that `010` consumes `009` semantics and does not invent answer-critical details.
 49. Given a ticket, image, answer, usage mapping, or explanation changes in future repository work, durable docs require refreshing overlay/relevance metadata, evidence fingerprints, generated indexes, and validation.
+50. Given any shared image metadata entry, shared object/detail/region record, generated index, or evidence file contains global important/unimportant/critical/relevance roles, validation/review fails until those roles are removed or moved into the relevant per-question usage record.
+51. Given any question-specific usage role is not traceable to the concrete question text, ordered answer choices, correct answer, and explanation rationale, review fails even if the referenced image detail exists.
+52. Given an image exists locally but is not referenced by a current question, review does not require importance/relevance evaluation for that image.
 
 ## Negative Scenarios
 
@@ -560,6 +580,7 @@ The feature must not imply that the current fallback set is an official or compl
 - A metadata record marked approved while saying object-level detail is uncertain or manual review is still required is not complete.
 - A low-confidence deterministic baseline record cannot be made final by adding an evidence hash.
 - A metadata file that describes the full scene but has no per-question answer-critical detail mapping is not complete.
+- A shared metadata file that labels a visible object or region as globally important, globally unimportant, answer-critical, a distractor, highlighted, or dimmed is not acceptable.
 - A metadata file that has visible objects but no stable object/detail/region IDs for referenced facts is not complete.
 - A per-image metadata entry copied into every question instead of sharing unique-image metadata is not acceptable unless implementation records a concrete reviewability reason and Architect approves it.
 - A question usage mapping that marks all objects as critical without linking to answer reasoning is not complete.
@@ -609,6 +630,7 @@ Review Agent requirements:
 - Use an isolated review worktree/context and do not edit files while acting as reviewer.
 - Verify that image metadata, critical detail mappings, translations, explanations, evidence, validators, docs, and tests match the assigned slice.
 - Verify that image metadata/usage mappings can serve as the semantic contract for future feature `010` highlight/dim overlays without moving presentation decisions into `009`.
+- Verify that shared image metadata remains question-neutral and contains no global important/unimportant/relevance flags; all relevance roles must live in per-question usage mappings.
 - Sample and inspect content quality, not only schema/count success. Review must include representative image metadata, high-risk image metadata, representative translations, representative explanations, all known prior blockers, and any generator/validator patterns likely to create placeholders.
 - Block the PR if placeholders, draft wrappers, transliteration, Spanish residue, low-confidence baseline metadata, generic source-image/answer-cue usage mappings, generic explanation filler, or unreviewed approved content remain.
 - Verify deterministic offline behavior and absence of live AI/network validation.

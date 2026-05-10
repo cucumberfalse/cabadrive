@@ -6,7 +6,7 @@ Build the feature in staged PR-sized implementation slices. First add the schema
 
 This plan is a full-completion plan, not an MVP or placeholder-seeding plan. Final readiness requires qualitative content review for every current ticket and image: complete image metadata, complete idiomatic Russian translations, and complete ticket-specific explanations. Count coverage, hashes, generated evidence, and locally passing tests do not make the feature ready when the content itself remains generic, draft-like, question-derived-only, or unreviewed.
 
-The content completion model is one-time parallel content-agent work over non-overlapping shards. Image metadata agents inspect actual local image files and capture stable object/detail/region IDs plus semantic localization. Usage/relevance agents map those details to question-specific answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim roles. Translation and explanation agents prepare or review every Russian text item in their range. Generators, templates, transliteration, glossary drafts, and text-inferred image metadata may be draft scaffolding only; they cannot be final approved content without range-level content-agent review evidence.
+The content completion model is one-time parallel content-agent work over non-overlapping shards. Image metadata agents inspect actual local image files and capture stable object/detail/region IDs plus semantic localization without assigning global importance. Usage/relevance agents map those details to question-specific answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim roles grounded in the concrete question text, ordered answer choices, correct answer, and explanation rationale. Translation and explanation agents prepare or review every Russian text item in their range. Generators, templates, transliteration, glossary drafts, and text-inferred image metadata may be draft scaffolding only; they cannot be final approved content without range-level content-agent review evidence.
 
 This Architect pass creates only `spec.md`, `plan.md`, and `tasks.md`.
 
@@ -71,11 +71,11 @@ Final filenames may differ if implementation records a better repository fit in 
 
 The question file remains the source of truth for Spanish question text, ordered answers, correct answer ID, image path, and image SHA-256.
 
-The new image metadata layer owns semantic visual facts from actual local image review. It must not duplicate Spanish question text except as fingerprints or trace labels, and it must not substitute question-derived answer cues for visual inspection.
+The new image metadata layer owns semantic visual facts from actual local image review. It must not duplicate Spanish question text except as fingerprints or trace labels, must not substitute question-derived answer cues for visual inspection, and must not assign global important/unimportant, criticality, distractor, highlight, dim, or relevance roles to shared image objects/details/regions.
 
 The new question image usage layer owns per-question relevance semantics. It references shared image metadata by `imageId`, references visible objects/details/regions by stable IDs, and references question/answer IDs by stable IDs.
 
-Feature `009` owns image semantics and question-specific relevance. Parallel feature `010` may later render overlays, highlights, dimming, spotlights, callouts, and labels from `009` metadata. `010` owns presentation geometry and interaction, but it must not invent a competing source for answer-critical or irrelevant visual details.
+Feature `009` owns image semantics and question-specific relevance. Parallel feature `010` may later render overlays, highlights, dimming, spotlights, callouts, and labels from completed `009` per-question usage/relevance plus shared visible-detail IDs. `010` owns presentation geometry and interaction, but it must not invent a competing source for answer-critical or irrelevant visual details.
 
 The Russian translation layer owns question and answer translations for the question card.
 
@@ -92,7 +92,7 @@ Image metadata quality requires:
 - stable object/detail/region IDs and semantic localization for every visual fact referenced by usage mappings or explanations;
 - optional approximate bounding boxes or polygons when the content agent can identify reliable boundaries, with semantic region descriptors required when exact coordinates are not feasible;
 - enough detail for close visual recreation or review against a close recreation;
-- question-specific relevance mappings that name actual visible facts, identify answer-critical/highlight details, distinguish supporting, distractor/trap, and background/irrelevant/dim details, and link answer-critical or trap details to the current answer choices.
+- question-specific relevance mappings that name actual visible facts, identify answer-critical/highlight details, distinguish supporting, distractor/trap, and background/irrelevant/dim details, and link answer-critical or trap details to the current question text, current ordered answer choices, correct answer, and explanation rationale.
 
 Translation quality requires:
 
@@ -115,7 +115,7 @@ Use one shared visual metadata entry per unique image path/hash plus one questio
 
 This is required because `b2.jpg` is reused by two different questions. Shared visual metadata prevents drift; question usage mappings let the same image support different answer-critical interpretations.
 
-Shared metadata must remain question-neutral: it names what is visibly present, assigns stable IDs, describes regions, and records uncertainty. Per-question usage must remain question-specific: it classifies those same IDs as answer-critical/highlight, supporting, distractor/trap, or background/irrelevant/dim for the exact question and answer set. The same object can be answer-critical in one usage and background/irrelevant in another.
+Shared metadata must remain question-neutral: it names what is visibly present, assigns stable IDs, describes regions, and records uncertainty. It must not contain global important/unimportant flags, criticality, distractor status, highlight/dim intent, or any equivalent relevance role. Per-question usage must remain question-specific: it classifies those same IDs as answer-critical/highlight, supporting, distractor/trap, or background/irrelevant/dim for the exact question text, ordered answer choices, correct answer, and explanation rationale. The same object can be answer-critical in one usage and background/irrelevant in another.
 
 ### Sharding For Reviewability
 
@@ -160,7 +160,7 @@ The final content pass is not an automated generator job. It is a coordinated on
 - Image metadata agents inspect the assigned local images directly and replace or approve every visible scene/object/road/sign/marking/road-user/annotation/relationship detail in the assigned image metadata shard.
 - Image metadata agents capture stable `objectId`, `detailId`, and `regionId` references for visible facts that may be used by explanations, validators, or future overlays.
 - Image metadata agents provide semantic region descriptors for referenced details and add approximate boxes/polygons only when reliable enough for review.
-- Usage/relevance agents review the assigned question usage mappings and ensure answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim roles are actual visible facts linked to current answer reasoning.
+- Usage/relevance agents review the assigned question usage mappings and ensure answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim roles are actual visible facts linked to the current question text, ordered answer choices, correct answer, and explanation rationale.
 - Usage/relevance agents must not submit only prose descriptions; each mapping must reference shared image IDs and explain why each referenced detail matters or can be ignored for that exact ticket.
 - Translation agents review or author idiomatic Russian question and answer-choice translations for every assigned ticket, preserving answer-critical meaning and removing Spanish residue, transliteration, wrappers, and glossary scaffolding.
 - Explanation agents review or author ticket-specific explanations for every assigned ticket, including correct-answer rationale, wrong-answer rationales, source/ticket scoping, and image-critical reasoning where applicable.
@@ -175,8 +175,8 @@ Durable docs must be updated after Architect handoff to document how future tick
 
 Required lifecycle coverage:
 
-- Adding a ticket requires adding or validating the Spanish source tuple, local image/hash when present, image metadata when an image exists, question image usage mapping when an image exists, Russian question/answer translations, Russian explanation, review evidence, generated indexes, and validation/preflight evidence.
-- Changing ticket text, answer IDs/text, correct answer, image path, image hash, or material image content requires refreshing affected translations, explanations, image usage mappings, overlay/relevance roles, image metadata when relevant, evidence fingerprints, generated indexes, and validators.
+- Adding a ticket requires adding or validating the Spanish source tuple, local image/hash when present, image metadata when an image exists, question image usage mapping when an image exists, Russian question/answer translations, Russian explanation, review evidence, generated indexes, and validation/preflight evidence. The image metadata remains question-neutral; relevance roles are created only in the new ticket's usage mapping.
+- Changing ticket text, answer IDs/text, correct answer, image path, image hash, explanation, or material image content requires refreshing affected translations, explanations, image usage mappings, overlay/relevance roles, image metadata when relevant, evidence fingerprints, generated indexes, and validators.
 - Deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, overlay/relevance mappings, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
 - Shared image metadata is removed only when no remaining question usage references the image. If another ticket still uses the image, only the deleted/changed ticket's usage and related evidence are removed or refreshed.
 
@@ -253,7 +253,7 @@ Question usage evidence entries must record:
 - `questionFingerprint`;
 - `usageSha256`;
 - reviewer/reviewedAt/status;
-- checks for answer-critical/highlight detail mapping, supporting/distractor/background relevance mapping, answer/trap linkage, no generic source-image/answer-cue detail IDs, no mark-everything-critical mapping, and no usage approval without reviewed visual facts.
+- checks for answer-critical/highlight detail mapping, supporting/distractor/background relevance mapping, answer/trap linkage, grounding in the current question text, ordered answer choices, correct answer, and explanation rationale, no generic source-image/answer-cue detail IDs, no mark-everything-critical mapping, and no usage approval without reviewed visual facts.
 
 Explanation alignment evidence entries must record:
 
@@ -367,6 +367,7 @@ The Orchestrator may choose different exact ranges only with an Architect-record
 Each shard must:
 
 - inspect every assigned local image file directly and add detailed visual metadata based on actual image review, not only question text, answer keys, topic-guide rationale, filenames, hashes, source URLs, or generated captions;
+- keep shared image metadata question-neutral, with no global importance, irrelevance, criticality, distractor, highlight, dim, or relevance-role fields;
 - assign stable object/detail/region IDs to referenced visible facts and provide semantic localization for those regions;
 - include approximate boxes or polygons when a visible region can be localized reliably, while allowing semantic-only localization when exact coordinates would be misleading;
 - add or update question usage mappings for assigned image-backed questions;
@@ -389,6 +390,7 @@ Final C slice must enable strict image coverage:
 - no image-backed question missing answer-critical/highlight details;
 - no image-backed question missing relevance mappings for non-critical, distractor, supporting, or background/irrelevant context;
 - no usage mapping that marks every visible detail critical;
+- no shared metadata record or generated index containing global important/unimportant/relevance semantics;
 - no approved placeholder, baseline, low-confidence overall, question-derived-only, source-image-frame, or generic answer-cue metadata/usage records.
 
 ### Slice D: Translation Coverage Shards
@@ -512,10 +514,11 @@ Tasks:
 | Area | Required evidence |
 | --- | --- |
 | Image metadata schema | Unit tests for required fields, duplicate image IDs, missing visual detail IDs, invalid enums, uncertainty handling. |
+| Shared metadata neutrality | Validator and review evidence that shared image entries, objects, details, regions, generated indexes, and evidence contain no global important/unimportant, criticality, distractor, highlight, dim, or relevance-role fields. |
 | Region/object IDs | Validator evidence that referenced object/detail/region IDs exist, have semantic localization, and use optional boxes/polygons only when present and well-formed. |
 | Image coverage | Validator evidence showing 275 unique image entries and 276 question usages against current question file. |
 | Image metadata quality | Review evidence and tests rejecting placeholder/baseline/question-derived-only/source-image-frame metadata, low-confidence overall approval, and generic answer-cue usage records. |
-| Highlight/dim relevance | Validator and review evidence that every image-backed usage has answer-critical/highlight detail(s), enough supporting/distractor/background context for dimming, and no mark-everything-critical mappings. |
+| Highlight/dim relevance | Validator and review evidence that every image-backed usage has answer-critical/highlight detail(s), enough supporting/distractor/background context for dimming, no mark-everything-critical mappings, and relevance roles grounded in the concrete question text, ordered answers, correct answer, and explanation rationale. |
 | Content-agent shard evidence | For each assigned image, translation, and explanation range: content family, range, files touched, reviewer/agent, IDs covered, direct image-inspection confirmation where applicable, validation commands, ambiguities, and controlled exceptions. |
 | Stale image detection | Unit test mutating an image hash/path and expecting metadata/evidence failure. |
 | Stale question detection | Unit test mutating text, answer IDs/text, correct answer ID, or image hash and expecting usage/evidence failure. |
@@ -558,6 +561,9 @@ Tasks:
 
 - Risk: feature `010` overlay work cannot reliably highlight/dim because `009` records only prose or flat critical booleans.
   - Mitigation: require stable object/detail/region IDs, semantic localization, optional boxes/polygons where feasible, and per-question relevance roles that distinguish answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim.
+
+- Risk: content agents encode relevance as global image importance and cause `010` to dim/highlight the same areas for every question using the image.
+  - Mitigation: validators and Review Agent must reject global importance/relevance fields in shared metadata; relevance roles must live only in question usage records and be justified by the concrete question, answers, correct answer, and explanation.
 
 - Risk: future ticket additions/deletions leave stale derived artifacts.
   - Mitigation: require durable ticket lifecycle docs and validation/evidence cleanup rules, including shared image metadata reference checks and overlay/relevance metadata refresh.
@@ -604,6 +610,7 @@ This feature is complete only when:
 
 - all current image-backed questions have metadata and critical detail mappings;
 - all current image-backed questions have stable object/detail/region references and question-specific relevance mappings for highlight/dim semantics;
+- shared image metadata remains question-neutral and contains no global important/unimportant/relevance flags;
 - all current questions have validated Russian translations and explanations;
 - all image metadata is complete enough for close recreation and has full visual-review evidence;
 - all translations are idiomatic Russian with no Spanish residue, transliteration, wrappers, or incomplete answer translations;

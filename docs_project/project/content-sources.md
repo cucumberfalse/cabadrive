@@ -19,6 +19,31 @@ This area is for verbatim official source documents and materials that support C
 
 Question-image semantic metadata is also outside the official archive. Current practice-image metadata lives under `content/image-metadata/` with review evidence under `content/validation/`; it describes local fallback practice images for learning-support validation and must not be treated as official GCBA source text.
 
+## Ticket Learning-Support Lifecycle
+
+Current question-card Russian translations, Russian explanations, and question-image metadata are maintained from reviewed range shards:
+
+```text
+content/translations/ru/<range>.json
+content/explanations/ru/<range>.json
+content/image-metadata/question-images/<range>.json
+```
+
+The adjacent monolithic files are generated compatibility indexes. Do not edit them by hand.
+
+When adding a ticket:
+
+- add or validate the Spanish source tuple, answer IDs, correct answer, source ID, and local image/hash when an image exists;
+- if an image exists, inspect the actual local image and add question-neutral shared image metadata with stable object/detail/region IDs;
+- add a question-specific image usage mapping that classifies referenced details as answer-critical/highlight, supporting, distractor/trap, or background/irrelevant/dim for that ticket only;
+- add the Russian question translation, all answer translations, and a ticket-specific Russian explanation with correct-answer and wrong-answer rationales;
+- run `node scripts/content-shards.mjs --write-indexes`, `pnpm run refresh:content-evidence`, `pnpm run validate:content`, and `pnpm run validate:content:quality`;
+- record process-memory evidence in the active feature folder.
+
+When materially changing ticket text, answer IDs/text, correct answer, image path/hash/content, image usage, or explanation text, refresh every affected translation, explanation, image usage mapping, image metadata record when the visible image facts changed, overlay/relevance roles, generated indexes, validation evidence, and process-memory evidence.
+
+When deleting a ticket, remove or refresh linked translations, explanations, question image usages, overlay/relevance mappings, translation evidence, explanation evidence, image usage evidence, generated indexes, and validation records. Remove shared image metadata only when no remaining question usage references that image; if another ticket still uses the image, keep the shared metadata and remove only the deleted ticket's usage/evidence.
+
 `content/official-documents/manifest.json` is the machine-readable manifest for the archive. The manifest remains draft while exact-text and whole-archive currentness validation are future release gates, but Slice D seeds a small reusable official-source bundle for later topic-guide work:
 
 - `ley-24449-transito-seguridad-vial`: Ley Nacional de Tránsito 24.449 updated text from Argentina.gob.ar, with official InfoLeg retained as supporting/alternative evidence.

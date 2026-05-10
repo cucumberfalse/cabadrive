@@ -94,9 +94,11 @@ Pipeline должен преобразовать официальные мате
 
 - локальный путь и SHA-256 изображения;
 - единый структурированный JSON с visible-scene facts, объектами, участниками движения, знаками/разметкой, аннотациями, отношениями и uncertainty notes;
-- отдельный per-question usage record с answer-critical visual details и ссылками на варианты ответа;
+- отдельный per-question usage record с answer-critical/highlight, supporting, distractor/trap и background/irrelevant/dim visual details, grounded only in the concrete ticket;
+- shared image metadata остается question-neutral и не содержит global important/unimportant/relevance flags;
 - deterministic evidence fingerprints для image metadata, question usage и explanation alignment;
-- явная uncertainty вместо неподтвержденной детализации, если изображение не прошло ручной визуальный review.
+- явная uncertainty вместо неподтвержденной детализации;
+- actual local image inspection и `qualityStatus: "complete"` обязательны для завершенных feature 009 shards.
 
 ## Normalization
 
@@ -137,6 +139,7 @@ Pipeline должен преобразовать официальные мате
 - перевод не должен подсказывать ответ сильнее, чем оригинальный вопрос;
 - каждый перевод должен иметь disclaimer.
 - для текущего question-card слоя перевод должен иметь deterministic alignment evidence; `validate-content` отклоняет отсутствующие, лишние, пустые или устаревшие переводы и варианты ответов.
+- текущие question-card переводы редактируются в range shards under `content/translations/ru/`; после изменения нужно запускать `node scripts/content-shards.mjs --write-indexes` и `pnpm run refresh:content-evidence`.
 
 ## Annotation Strategy
 
@@ -152,6 +155,25 @@ Pipeline должен преобразовать официальные мате
 Аннотации не должны выглядеть как официальный текст.
 
 Question-card explanations должны иметь structured correct-answer rationale и wrong-answer rationales для каждого неверного варианта. Для image-backed questions explanations ссылаются на answer-critical details из image metadata; structured visual claims валидируются детерминированно против metadata, чтобы регрессии вроде перепутанной руки/объекта не проходили preflight.
+
+Текущие question-card explanations редактируются в range shards under `content/explanations/ru/`. После изменения explanations, translations, image metadata или question usages нужно регенерировать compatibility indexes и evidence:
+
+```bash
+node scripts/content-shards.mjs --write-indexes
+pnpm run refresh:content-evidence
+pnpm run validate:content
+pnpm run validate:content:quality
+```
+
+`scripts/generate-learning-support.mjs` не используется для завершенного feature 009 контента: это draft-scaffold helper, который требует явного `--allow-draft-overwrite` и не должен перезаписывать reviewed shards.
+
+## Ticket Change Lifecycle
+
+Добавление билета требует source tuple validation, локального image/hash при наличии изображения, actual image analysis и shared metadata для нового изображения, per-question usage/relevance mapping, Russian question/answer translations, Russian explanation, refreshed evidence, generated indexes, validation и process-memory evidence.
+
+Изменение текста билета, answer IDs/text, correct answer, image path/hash/content, usage mapping или explanation требует обновить affected translations, explanations, image metadata/usages, overlay/relevance roles, evidence fingerprints, generated indexes и validation evidence.
+
+Удаление билета требует удалить или обновить linked translations, explanations, question usages, overlay/relevance mappings, translation/explanation/image evidence, generated indexes и validation records. Shared image metadata удаляется только если больше нет question usages for that image.
 
 ## Vocabulary Extraction
 

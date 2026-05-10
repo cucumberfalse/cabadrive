@@ -105,7 +105,7 @@ test("old b-fallback-001 visual claim fails against approved metadata", () => {
     evidence,
     locale: "ru"
   });
-  assert(errors.includes("b-fallback-001: visual claim objectType driver contradicts metadata type cyclist."));
+  assert(errors.includes("b-fallback-001: visual claim objectType driver contradicts metadata types cyclist."));
   assert(errors.includes("b-fallback-001: visual claim bodyPart left_arm contradicts metadata bodyPart right_arm."));
   assert(errors.includes("b-fallback-001: visual claim pose bent_up contradicts metadata pose extended_straight_horizontal."));
 });

@@ -14,6 +14,7 @@
     "validate:content:quality": "node scripts/validate-content.mjs --quality-gate",
     "generate:content-indexes": "node scripts/content-shards.mjs --write-indexes",
     "check:content-indexes": "node scripts/content-shards.mjs --check-indexes",
+    "refresh:content-evidence": "node scripts/refresh-learning-support-evidence.mjs",
     "prepare:assets": "node scripts/sync-public-assets.mjs",
     "generate:sw": "node scripts/generate-service-worker.mjs",
     "build": "pnpm run validate:content && pnpm run prepare:assets && vite build && pnpm run generate:sw",

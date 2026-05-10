@@ -134,6 +134,8 @@ type ImageMetadataEntry = {
   objects: Array<Record<string, unknown>>;
   roadUsers?: Array<Record<string, unknown>>;
   signsSignalsMarkings?: Array<Record<string, unknown>>;
+  regions?: Array<Record<string, unknown>>;
+  visualDetails?: Array<Record<string, unknown>>;
   annotations?: Array<Record<string, unknown>>;
   visibleText?: Array<Record<string, unknown>>;
   spatialRelationships?: Array<Record<string, unknown>>;
@@ -156,11 +158,25 @@ type QuestionImageUsage = {
   answerCriticalDetails: Array<{
     detailId: string;
     objectIds: string[];
+    regionIds?: string[];
     description: string;
     supportsAnswerIds?: string[];
     rejectsAnswerIds?: string[];
     criticality: "required" | "trap" | "supporting";
     confidence: "high" | "medium" | "low";
+  }>;
+  relevanceMap: Array<{
+    relevanceId: string;
+    detailIds?: string[];
+    objectIds?: string[];
+    regionIds?: string[];
+    role: "answer_critical_highlight" | "supporting" | "distractor_trap" | "background_irrelevant_dim";
+    rationaleRuOrEn?: string;
+    rationaleRu?: string;
+    supportsAnswerIds?: string[];
+    rejectsAnswerIds?: string[];
+    displayIntent?: "highlight" | "keep_visible" | "callout_optional" | "dim";
+    confidence?: "high" | "medium" | "low";
   }>;
   imageRole: "answer_critical" | "contextual_with_critical_detail";
   review: {
@@ -172,7 +188,7 @@ type QuestionImageUsage = {
 };
 ```
 
-Question-image metadata is an unofficial learning-support validation layer. It is hash-pinned to local practice images and question fingerprints. Final approved entries must come from actual image inspection, describe concrete scene/object/sign/road/road-user cues, and name answer-critical visual details. Low-confidence baseline or source-image-frame records are draft scaffolding only and fail the full content quality gate.
+Question-image metadata is an unofficial learning-support validation layer. It is hash-pinned to local practice images and question fingerprints. Final approved entries must come from actual image inspection and describe concrete scene/object/sign/road/road-user cues with stable object/detail/region IDs. Shared image metadata is question-neutral: it must not encode global importance, irrelevance, criticality, highlight, dim, or distractor semantics. Those roles live only in per-question usage records. Low-confidence baseline or source-image-frame records are draft scaffolding only and fail the full content quality gate.
 
 Question-image metadata, Russian translations, and Russian explanations are authored in non-overlapping ticket-range shards:
 
@@ -385,10 +401,19 @@ content/
   questions/
     caba.questions.json
   image-metadata/
+    question-images/
+      001-092.json
+      ...
     question-images.manifest.json
   translations/
+    ru/
+      001-092.json
+      ...
     ru.translations.json
   explanations/
+    ru/
+      001-092.json
+      ...
     ru.explanations.json
   vocabulary/
     ru.vocabulary.json

@@ -29,6 +29,7 @@ test("Russian explanations cover every current question with structured rational
     assert.equal(typeof explanation.correctAnswerId, "string", explanation.questionId);
     assert.equal(typeof explanation.correctAnswerExplanationRu, "string", explanation.questionId);
     assert.equal(typeof explanation.wrongAnswerExplanations, "object", explanation.questionId);
-    assert.match(explanation.textRu, /вариант|правильн|верно|неверн|изображен|билет/i, explanation.questionId);
+    assert.ok(explanation.correctAnswerExplanationRu.length >= 40, `${explanation.questionId} correct-answer rationale is too terse`);
+    assert.ok(Object.keys(explanation.wrongAnswerExplanations).length >= 1, `${explanation.questionId} missing wrong-answer rationales`);
   }
 });

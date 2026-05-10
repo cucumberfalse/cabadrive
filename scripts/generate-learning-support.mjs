@@ -16,6 +16,17 @@ const REVIEWED_AT = "2026-05-09";
 const QUESTION_PATH = "content/questions/caba-b.unofficial-fallback.questions.json";
 const SOURCE_ID = "bandinopla-testdeconducir-caba-b-source1-2026-05-08";
 
+if (!process.argv.includes("--allow-draft-overwrite")) {
+  console.error(
+    [
+      "scripts/generate-learning-support.mjs creates draft scaffold content and must not overwrite completed feature 009 shards/indexes.",
+      "Use `pnpm run generate:content-indexes` and `pnpm run refresh:content-evidence` for reviewed shard integration.",
+      "Pass --allow-draft-overwrite only for an explicit Architect-approved draft reset."
+    ].join("\n")
+  );
+  process.exit(2);
+}
+
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
 }

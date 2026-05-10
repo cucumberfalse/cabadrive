@@ -746,7 +746,7 @@
     },
     {
       "questionId": "b-fallback-426",
-      "questionTextRu": "На какой из следующих картинок показана велодорожка типа bicisenda?",
+      "questionTextRu": "На какой из следующих картинок показана отдельная велосипедная дорожка вне проезжей части?",
       "answerTranslations": {
         "b-fallback-426-a1": "Вариант A.",
         "b-fallback-426-a2": "Вариант B.",

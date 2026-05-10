@@ -10185,14 +10185,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-103-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -10285,14 +10277,6 @@
             "b-fallback-106-a3"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-106-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -10498,14 +10482,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-110-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -10601,14 +10577,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-111-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -10701,14 +10669,6 @@
             "b-fallback-114-a2"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-114-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -10804,14 +10764,6 @@
             "b-fallback-115-a3"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-115-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -11013,14 +10965,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-117-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -11112,14 +11056,6 @@
             "b-fallback-121-a1"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-121-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -11216,14 +11152,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-123-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -11319,14 +11247,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-124-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -11419,14 +11339,6 @@
             "b-fallback-125-a3"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-125-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -11625,14 +11537,6 @@
             "b-fallback-127-a3"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-127-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -12149,14 +12053,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-133-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -12357,14 +12253,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-137-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -12562,14 +12450,6 @@
             "b-fallback-140-a3"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-140-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -13191,14 +13071,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-154-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -13293,14 +13165,6 @@
             "b-fallback-156-a2"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-156-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -13397,14 +13261,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-159-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -13499,14 +13355,6 @@
             "b-fallback-162-a3"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-162-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -13603,14 +13451,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-163-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -13702,14 +13542,6 @@
             "b-fallback-164-a2"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-164-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -13907,14 +13739,6 @@
             "b-fallback-166-a3"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-166-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -14431,14 +14255,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-172-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -14534,14 +14350,6 @@
             "b-fallback-174-a2"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-174-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],
@@ -14745,14 +14553,6 @@
           ],
           "displayIntent": "callout_optional",
           "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-177-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
-          "confidence": "high"
         }
       ],
       "imageRole": "answer_critical",
@@ -14847,14 +14647,6 @@
             "b-fallback-180-a2"
           ],
           "displayIntent": "callout_optional",
-          "confidence": "high"
-        },
-        {
-          "relevanceId": "b-fallback-180-dim-background",
-          "detailIds": [],
-          "role": "background_irrelevant_dim",
-          "rationaleRuOrEn": "These surrounding details can be dimmed during an explanation overlay because they do not decide the answer.",
-          "displayIntent": "dim",
           "confidence": "high"
         }
       ],

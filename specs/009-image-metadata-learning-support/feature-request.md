@@ -96,6 +96,18 @@ Read-only branch `010` context inspected:
 
 This clarification supersedes any interpretation that a simple "critical detail" boolean alone is sufficient if it cannot distinguish question-specific answer-critical, supporting, distractor, and background relevance for future highlight/dim behavior.
 
+## User Clarification / Intake Update: Question-Scoped Image Relevance
+
+The user further clarified the boundary between shared image semantics and question-specific importance/relevance:
+
+- Importance and unimportance of an image area must be evaluated only in the context of the specific question where that image is used.
+- Shared image metadata may describe visible objects, details, relationships, regions, annotations, and uncertainty, but it must not assign global "important" or "unimportant" meaning to those details independently of a question.
+- Question-specific image usage owns the relevance role for a visible detail in a concrete ticket: answer-critical, supporting, distractor/trap, background/irrelevant, or another Architect-defined role.
+- The same shared visible detail can be important in one question, irrelevant in another, and a distractor in a third, depending on the question wording, answer choices, correct answer, and explanation.
+- If an image is not used by a question, this feature should not evaluate importance/relevance for its details. The original "every image" scope means every local image referenced by the current question bank, not arbitrary repository images.
+
+This clarification supersedes any interpretation that shared image metadata may contain global important/unimportant flags or that non-question images need importance/relevance evaluation.
+
 ## Environment And Prefix Decision
 
 The Analyst work was performed in an isolated worktree:
@@ -239,9 +251,9 @@ The translation and explanation coverage is also incomplete relative to the user
 
 ## Desired Product Outcome
 
-Every question image should have structured, reviewable JSON metadata that describes the visible scene, objects, actors, road environment, markings, signs, gestures, vehicle states, camera/framing, and any other relevant details. The metadata should be detailed enough to serve as a high-quality prompt for recreating a close visual match with an image-generation model.
+Every question-referenced image should have structured, reviewable JSON metadata that describes the visible scene, objects, actors, road environment, markings, signs, gestures, vehicle states, camera/framing, and visible details. The metadata should be detailed enough to serve as a high-quality prompt for recreating a close visual match with an image-generation model.
 
-For each image-backed ticket, the metadata must identify which visual details matter for answering that ticket. Those important details should be linked to the relevant question and, where appropriate, to the correct answer or a common wrong-answer trap.
+For each image-backed ticket, the question-specific image usage must identify which shared visible details matter for answering that ticket. Those relevant details should be linked to the specific question and, where appropriate, to the correct answer or a common wrong-answer trap.
 
 The metadata and question-specific image usage should also support future explanation-time UI signaling. Shared image metadata should describe what is visibly present. Per-question usage should classify how those visible details function for the current ticket, such as answer-critical cue, supporting context, distractor/trap cue, or irrelevant/background detail that may be dimmed when explaining the answer.
 
@@ -271,15 +283,17 @@ Architect should convert these into formal acceptance criteria and verification 
 - Metadata inferred only from question text, answer keys, topic-guide rationales, filenames, hashes, placeholder templates, generic answer cues, or deterministic baseline generators is rejected.
 - Placeholder metadata, `source image` generic cues, low-confidence baseline descriptions, and records that say precise visual details are still uncertain cannot be marked complete or approved.
 - Architect should require a parallel-agent content workflow for the one-time image analysis, while preserving deterministic local validation for committed artifacts.
-- The metadata marks details that are important for answering each ticket.
+- Shared image metadata does not mark details as globally important or unimportant.
+- Question-specific image usage marks details that are important, supporting, distracting, or irrelevant for answering each concrete ticket.
 - Critical details can be linked to a question ID and, where relevant, the correct answer ID or wrong-answer trap.
 - Shared image metadata describes visible scene/object/detail facts independently from any one question's answer logic.
 - Per-question image usage maps shared visible details to relevance for that specific ticket, including answer-critical, supporting, distractor/trap, and background/irrelevant roles where applicable.
 - The same shared visible detail can have different relevance roles in different tickets without duplicating or corrupting the shared image description.
+- Images not referenced by any current question do not need image metadata or importance/relevance evaluation for this feature.
 - The metadata/usage contract provides enough semantic structure for downstream feature `010` to highlight important details and dim irrelevant/background details during explanation-time UI, while leaving presentation geometry/rendering decisions to `010`.
 - Validation or review evidence rejects image-backed question usage that lacks enough question-specific relevance information to support explanation validation and future highlight/dim behavior.
 - `b-fallback-001` image metadata explicitly records that the subject is a cyclist, not merely a generic driver, and that the cyclist's right arm is extended straight/horizontally to the cyclist's right side.
-- `b-fallback-001` metadata marks the cyclist and the right-arm gesture as answer-critical.
+- `b-fallback-001` question-specific image usage marks the cyclist and the right-arm gesture as answer-critical for that question.
 - The `b-fallback-001` Russian explanation is corrected so it no longer says the driver extends the left arm and bends it upward.
 - The corrected `b-fallback-001` explanation describes the actual right-arm straight extension and keeps the correct answer `Giro a la derecha`.
 - Explanation validation includes a regression fixture or equivalent evidence proving that the current wrong `b-fallback-001` explanation would fail.
@@ -312,6 +326,7 @@ Architect should convert these into formal acceptance criteria and verification 
 - "Every image" means every local image referenced by the current question bank. Because one local image is reused by two question records, Architect should decide whether the canonical metadata is per unique image or per question-image pair.
 - "Every ticket" means the current 460 records in `content/questions/caba-b.unofficial-fallback.questions.json`.
 - Questions without images still need Russian translations and explanations, but they do not need image metadata.
+- Images that are not referenced by any current question are outside the image-metadata and importance/relevance evaluation scope of this request.
 - If the same image supports multiple questions, the visible-scene metadata may be shared, but the answer-critical detail mapping may need to be question-specific.
 - Branch `010` is dependency context for this intake only. It does not change the feature `009` role boundary: `009` should own image semantics and question-specific relevance, while `010` should own overlay presentation and rendering after consuming completed `009` metadata.
 - A visible detail's relevance is not intrinsic to the image alone. Relevance must be evaluated against the specific question, answer choices, correct answer, and explanation.

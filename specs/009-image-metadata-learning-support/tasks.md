@@ -145,12 +145,12 @@
 
 - [x] T112 Record current Review Agent P1 blockers as accepted architecture blockers, not optional polish.
 - [x] T113 Update `spec.md`, `plan.md`, and this `tasks.md` to state this is not an MVP/placeholder task.
-- [ ] T114 Implementation Agent verifies or replaces every approved image metadata entry from actual visual review so it is complete enough for close image recreation and contains no generic/question-derived/source-image-frame/low-confidence-baseline content.
-- [ ] T115 Implementation Agent verifies or replaces every question image usage mapping so answer-critical details name actual visible facts and link to current answer reasoning, with no generic source-image or answer-cue placeholders.
-- [ ] T116 Implementation Agent verifies or replaces all 460 Russian translations and all answer translations as idiomatic Russian with no untranslated Spanish residue, transliteration, wrappers, glossary drafts, or dropped answer-critical meaning.
-- [ ] T117 Implementation Agent verifies or replaces all 460 Russian explanations as complete ticket-specific learning explanations with correct-answer rationale, wrong-answer rationales, and image-specific rationale where applicable.
+- [x] T114 Implementation Agent verifies or replaces every approved image metadata entry from actual visual review so it is complete enough for close image recreation and contains no generic/question-derived/source-image-frame/low-confidence-baseline content.
+- [x] T115 Implementation Agent verifies or replaces every question image usage mapping so answer-critical details name actual visible facts and link to current answer reasoning, with no generic source-image or answer-cue placeholders.
+- [x] T116 Implementation Agent verifies or replaces all 460 Russian translations and all answer translations as idiomatic Russian with no untranslated Spanish residue, transliteration, wrappers, glossary drafts, or dropped answer-critical meaning.
+- [x] T117 Implementation Agent verifies or replaces all 460 Russian explanations as complete ticket-specific learning explanations with correct-answer rationale, wrong-answer rationales, and image-specific rationale where applicable.
 - [x] T118 Implementation Agent adds or tightens validators/tests to reject low-confidence baseline metadata, generic answer-cue usage, question-derived-only metadata, approved metadata without full visual-review evidence, Spanish residue, transliteration, wrapper translations, and generic explanation filler.
-- [ ] T119 Implementation Agent records hard-gate verification evidence by image/translation/explanation range, including reviewer evidence beyond counts and hashes.
+- [x] T119 Implementation Agent records hard-gate verification evidence by image/translation/explanation range, including reviewer evidence beyond counts and hashes.
 - [ ] T120 Review Agent manually samples and inspects content quality for images, translations, explanations, all prior blockers, and generated-pattern risk areas before passing review.
 - [ ] T121 Orchestrator keeps PR blocked from ready/merge state while it is draft, AI Review is skipped, any T099-T102/T109-T111/T114-T120/T163-T166 item is pending, or any blocking Review Agent finding remains.
 - [x] T122 Implementation Agent shards translation, explanation, and question-image metadata sources into the five assigned ticket ranges so parallel content workers can edit non-overlapping files.
@@ -166,35 +166,35 @@
 
 ## Future Content-Agent Range Execution
 
-- [ ] T129 Orchestrator assigns explicit isolated worktrees/branches for each content-agent slice and tells every agent that parallel orchestrators/agents are active.
-- [ ] T130 Orchestrator assigns non-overlapping range ownership for image metadata shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
-- [ ] T131 Orchestrator assigns non-overlapping range ownership for translation shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
-- [ ] T132 Orchestrator assigns non-overlapping range ownership for explanation shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
-- [ ] T133 Each image metadata content agent edits only `content/image-metadata/question-images/<assigned-range>.json`.
-- [ ] T134 Each translation content agent edits only `content/translations/ru/<assigned-range>.json`.
-- [ ] T135 Each explanation content agent edits only `content/explanations/ru/<assigned-range>.json`.
-- [ ] T136 Image metadata content agents inspect every assigned actual local image file and replace or approve visible scene/object/road/sign/marking/road-user/annotation/relationship details from direct visual review.
-- [ ] T137 Image metadata content agents capture stable object/detail/region IDs and semantic localization for referenced visible details, with optional approximate boxes/polygons when reliable.
-- [ ] T138 Usage/relevance content agents verify assigned question usage mappings so answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim details name actual visible facts and link to current answer reasoning.
-- [ ] T139 Usage/relevance content agents ensure every image-backed question has at least one highlight/answer-critical detail and enough non-critical or background context to support future dimming without marking everything critical.
-- [ ] T140 Translation content agents prepare or review idiomatic Russian question and answer translations for every assigned ticket, removing Spanish residue, transliteration, wrappers, glossary scaffolding, and dropped answer-critical meaning.
-- [ ] T141 Explanation content agents prepare or review complete Russian explanations for every assigned ticket, including correct-answer rationale, wrong-answer rationales, source/ticket scoping, and image-critical/relevance reasoning where applicable.
-- [ ] T142 Every content agent records range-level evidence: content family, assigned range, files touched, question/image IDs covered, reviewer/agent, review timestamp, validation commands, ambiguities, dependencies, controlled exceptions, and relevance/region review status for image-backed ranges.
-- [ ] T143 Every content agent regenerates compatibility indexes with `node scripts/content-shards.mjs --write-indexes` after shard edits.
-- [ ] T144 Every content agent runs the slice-appropriate structural and quality validators, records exact outputs in Process Memory, and leaves `pnpm run validate:content:quality` failures only for unrelated unfinished ranges.
-- [ ] T145 Final content-quality pass proves all 15 content-family range shards are `qualityStatus: "complete"` with full content-agent evidence.
+- [x] T129 Orchestrator assigns explicit isolated worktrees/branches for each content-agent slice and tells every agent that parallel orchestrators/agents are active.
+- [x] T130 Orchestrator assigns non-overlapping range ownership for image metadata shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
+- [x] T131 Orchestrator assigns non-overlapping range ownership for translation shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
+- [x] T132 Orchestrator assigns non-overlapping range ownership for explanation shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
+- [x] T133 Each image metadata content agent edits only `content/image-metadata/question-images/<assigned-range>.json`.
+- [x] T134 Each translation content agent edits only `content/translations/ru/<assigned-range>.json`.
+- [x] T135 Each explanation content agent edits only `content/explanations/ru/<assigned-range>.json`.
+- [x] T136 Image metadata content agents inspect every assigned actual local image file and replace or approve visible scene/object/road/sign/marking/road-user/annotation/relationship details from direct visual review.
+- [x] T137 Image metadata content agents capture stable object/detail/region IDs and semantic localization for referenced visible details, with optional approximate boxes/polygons when reliable.
+- [x] T138 Usage/relevance content agents verify assigned question usage mappings so answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim details name actual visible facts and link to current answer reasoning.
+- [x] T139 Usage/relevance content agents ensure every image-backed question has at least one highlight/answer-critical detail and enough non-critical or background context to support future dimming without marking everything critical.
+- [x] T140 Translation content agents prepare or review idiomatic Russian question and answer translations for every assigned ticket, removing Spanish residue, transliteration, wrappers, glossary scaffolding, and dropped answer-critical meaning.
+- [x] T141 Explanation content agents prepare or review complete Russian explanations for every assigned ticket, including correct-answer rationale, wrong-answer rationales, source/ticket scoping, and image-critical/relevance reasoning where applicable.
+- [x] T142 Every content agent records range-level evidence: content family, assigned range, files touched, question/image IDs covered, reviewer/agent, review timestamp, validation commands, ambiguities, dependencies, controlled exceptions, and relevance/region review status for image-backed ranges.
+- [x] T143 Every content agent regenerates compatibility indexes with `node scripts/content-shards.mjs --write-indexes` after shard edits.
+- [x] T144 Every content agent runs the slice-appropriate structural and quality validators, records exact outputs in Process Memory, and leaves `pnpm run validate:content:quality` failures only for unrelated unfinished ranges.
+- [x] T145 Final content-quality pass proves all 15 content-family range shards are `qualityStatus: "complete"` with full content-agent evidence.
 
 ## Future Durable Docs Lifecycle Update
 
-- [ ] T146 Implementation Agent updates `docs_project/project/content-sources.md` with the ticket lifecycle for adding, changing, and deleting tickets.
-- [ ] T147 Durable docs state that adding a ticket requires source tuple validation, local image/hash when present, image metadata and question usage when an image exists, Russian translation, Russian explanation, evidence refresh, generated-index refresh, validation, and process-memory evidence.
-- [ ] T148 Durable docs state that adding a ticket with an image requires stable object/detail/region IDs and question-specific relevance mappings for highlight/dim semantics.
-- [ ] T149 Durable docs state that materially changing ticket text, answer IDs/text, correct answer, image path, image hash, or image content requires refreshing affected translations, explanations, image metadata/usages, overlay/relevance mappings where relevant, evidence fingerprints, generated indexes, validation, and process memory.
-- [ ] T150 Durable docs state that deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, overlay/relevance mappings, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
-- [ ] T151 Durable docs state that shared image metadata is removed only when no remaining question usage references that image; otherwise only the deleted/changed ticket's usage and related evidence are removed or refreshed.
-- [ ] T152 Implementation Agent updates `docs_project/project/backend/backend-docs.md` for offline validators, shard writer/index generation, evidence files, and quality gates if not already current.
+- [x] T146 Implementation Agent updates `docs_project/project/content-sources.md` with the ticket lifecycle for adding, changing, and deleting tickets.
+- [x] T147 Durable docs state that adding a ticket requires source tuple validation, local image/hash when present, image metadata and question usage when an image exists, Russian translation, Russian explanation, evidence refresh, generated-index refresh, validation, and process-memory evidence.
+- [x] T148 Durable docs state that adding a ticket with an image requires stable object/detail/region IDs and question-specific relevance mappings for highlight/dim semantics.
+- [x] T149 Durable docs state that materially changing ticket text, answer IDs/text, correct answer, image path, image hash, or image content requires refreshing affected translations, explanations, image metadata/usages, overlay/relevance mappings where relevant, evidence fingerprints, generated indexes, validation, and process memory.
+- [x] T150 Durable docs state that deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, overlay/relevance mappings, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
+- [x] T151 Durable docs state that shared image metadata is removed only when no remaining question usage references that image; otherwise only the deleted/changed ticket's usage and related evidence are removed or refreshed.
+- [x] T152 Implementation Agent updates `docs_project/project/backend/backend-docs.md` for offline validators, shard writer/index generation, evidence files, and quality gates if not already current.
 - [ ] T153 Implementation Agent updates `docs_project/project/frontend/frontend-docs.md` only if shard imports, runtime data behavior, missing-support UI behavior, or the feature `009`/`010` overlay semantics boundary changed.
-- [ ] T154 Implementation Agent updates `docs/specify/04_data_model.md` and `docs/specify/05_content_pipeline.md` when canonical schema, source-of-truth paths, evidence model, generated-index flow, relevance schema, or lifecycle pipeline terms changed.
+- [x] T154 Implementation Agent updates `docs/specify/04_data_model.md` and `docs/specify/05_content_pipeline.md` when canonical schema, source-of-truth paths, evidence model, generated-index flow, relevance schema, or lifecycle pipeline terms changed.
 - [ ] T155 Review Agent verifies durable docs lifecycle coverage before final readiness and blocks the PR if add/change/delete cleanup rules or overlay/relevance refresh rules are absent or incomplete.
 
 ## Architect Update After Branch 010 Highlight/Dim Clarification
@@ -206,10 +206,23 @@
 - [x] T160 Architect updates `plan.md` so content agents produce relevance mappings and region references, not only prose descriptions.
 - [x] T161 Architect updates `tasks.md` with paused content-agent follow-up work for region IDs, relevance mappings, and overlay/relevance lifecycle docs.
 - [x] T162 Architect keeps this pass limited to `spec.md`, `plan.md`, and `tasks.md`; no product code, content, scripts, tests, durable docs, commits, pushes, or PR state changes.
-- [ ] T163 Implementation Agent updates validators/tests so approved image-backed usages fail when they lack stable object/detail/region references, answer-critical/highlight details, non-critical/background context, or contain mark-everything-critical mappings.
-- [ ] T164 Implementation Agent updates image metadata shards so referenced details have stable IDs and semantic localization, with optional approximate boxes/polygons where reliable.
-- [ ] T165 Implementation Agent updates question usage mappings so every image-backed question classifies referenced details/regions by question-specific relevance role and answer rationale.
+- [x] T163 Implementation Agent updates validators/tests so approved image-backed usages fail when they lack stable object/detail/region references, answer-critical/highlight details, non-critical/background context, or contain mark-everything-critical mappings.
+- [x] T164 Implementation Agent updates image metadata shards so referenced details have stable IDs and semantic localization, with optional approximate boxes/polygons where reliable.
+- [x] T165 Implementation Agent updates question usage mappings so every image-backed question classifies referenced details/regions by question-specific relevance role and answer rationale.
 - [ ] T166 Review Agent samples reused-image cases to verify relevance roles are question-specific and not copied blindly across questions.
+
+## Architect Update After Question-Scoped Relevance Clarification
+
+- [x] T167 Architect reads the new clarification that image importance/unimportance is evaluated only in the concrete question where an image is used.
+- [x] T168 Architect updates `spec.md` to forbid global important/unimportant/critical/relevance flags in shared image metadata and to keep all relevance roles in per-question usage.
+- [x] T169 Architect updates `plan.md` so content-agent, validator, evidence, lifecycle, and review guidance ground relevance in question text, ordered answers, correct answer, and explanation rationale.
+- [x] T170 Architect updates this `tasks.md` with follow-up implementation/review tasks while preserving existing task history.
+- [x] T171 Architect keeps this pass limited to `spec.md`, `plan.md`, and `tasks.md`; no product code, content, scripts, tests, durable docs, commits, pushes, or PR state changes.
+- [x] T172 Implementation Agent updates validators/tests so shared image metadata, shared object/detail/region records, generated indexes, and evidence fail if they contain global importance, unimportance, criticality, distractor, highlight, dim, or relevance-role fields.
+- [x] T173 Implementation Agent updates image metadata shards to remove any global importance/relevance semantics from shared metadata while preserving visible object/detail/region descriptions and stable IDs.
+- [x] T174 Implementation Agent updates question usage mappings so `answer_critical_highlight`, `supporting`, `distractor_trap`, and `background_irrelevant_dim` roles are justified by the concrete question text, ordered answer choices, correct answer, and explanation rationale.
+- [ ] T175 Review Agent verifies that no image without a current question usage is forced through importance/relevance evaluation and that reused images receive separate per-question relevance review.
+- [ ] T176 Review Agent verifies feature `010` handoff data can consume question-specific usage/relevance only, not global shared-image importance.
 
 ## Process Memory
 
@@ -218,6 +231,8 @@
 - Architect selected shared image metadata per unique image plus per-question image usage mappings for answer-critical details.
 - Architect update on 2026-05-09 after branch `010` clarification: shared image metadata must expose stable object/detail/region IDs and semantic localization; per-question image usage owns relevance roles for answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim details.
 - Architect update on 2026-05-09 after branch `010` clarification: feature `009` owns image semantics and question-specific relevance; feature `010` owns overlay presentation/rendering and must consume `009` rather than inventing UI-only answer-critical semantics.
+- Architect update on 2026-05-10 after question-scoped relevance clarification: shared image metadata is strictly question-neutral and must not contain global important/unimportant/critical/relevance flags. All relevance roles live only in `QuestionImageUsage` for a concrete question.
+- Architect update on 2026-05-10 after question-scoped relevance clarification: relevance roles must be grounded in the current question text, ordered answer choices, correct answer, and explanation rationale; images without a current question usage do not need importance/relevance evaluation.
 - Architect selected deterministic local evidence and fingerprints rather than live AI/OCR/translation/network validation.
 - Architect requires every image-backed question to have at least one answer-critical detail unless a future Architect disposition records a controlled exception.
 - Architect requires complete 460-question translation and explanation coverage for the current fallback bank.
@@ -263,12 +278,10 @@
 - Current Review Agent blocker accepted: image usage mappings must not approve generic source-image or answer-cue critical details; they must name the actual visible answer-critical facts.
 - Current Review Agent blocker accepted: translations must not contain Spanish residue, transliteration, wrappers, or glossary drafts; `b-fallback-011` was cited as a concrete blocker and must be rechecked.
 - Current Review Agent blocker accepted: PR #63 is not merge-ready while it is draft, AI Review is skipped, no passing Review Agent quality review exists, or T099-T102/T109-T111 remain unchecked.
-- Current range shards are mechanically initialized from the existing generated indexes and are marked `qualityStatus: "needs_full_content_review"`. They are not content-complete and must not be treated as final approved quality.
-- `pnpm run validate:content:quality` currently fails by design because content shards are not complete and current translations/explanations/image metadata still contain the known Spanish-residue, generic, placeholder, and review-evidence blockers.
-- One-time parallel content-agent execution for all image metadata, translation, and explanation ranges has not yet been completed.
-- Durable docs do not yet document the required ticket add/change/delete lifecycle and linked-artifact cleanup rules for this clarification.
-- Current metadata/usage shards have not yet been reviewed for stable object/detail/region IDs, semantic localization, optional region geometry, or question-specific highlight/dim relevance roles.
-- Current validators may not yet reject all mark-everything-critical mappings or missing background/irrelevant context needed for future dimming.
+- Historical issue resolved by the 2026-05-10 integration pass: all five translation, explanation, and image-metadata range shards are now `qualityStatus: "complete"` and were merged from the final content-agent heads.
+- Historical issue resolved by the 2026-05-10 integration pass: `pnpm run validate:content:quality` passes after reviewed shard integration, generated-index refresh, evidence refresh, and targeted residue/terse-rationale fixes.
+- Historical issue resolved by the 2026-05-10 integration pass: durable docs now document ticket add/change/delete lifecycle and linked-artifact cleanup rules.
+- Historical issue resolved by the 2026-05-10 integration pass: validators now cover question-specific relevance roles, mark-everything-critical usage mappings, shared-metadata relevance-key leakage, and stale relevance fingerprints.
 
 ### Verification Evidence
 
@@ -300,6 +313,18 @@
 - Infrastructure tests: `pnpm run test` passed with `87` tests, `87` pass, `0` fail.
 - Infrastructure build: `pnpm run build` passed after sharding; Vite emitted only the existing large chunk-size warning and generated a service worker with `280` cached assets.
 - Infrastructure preflight: `pnpm run preflight` passed, including feature-memory gate, repo baseline check, structural content validation, `87` unit tests, production build, and `14` Playwright e2e tests.
+- Content integration merge evidence on 2026-05-10: final range heads merged into `codex/009-ticket-image-metadata-intake`: `origin/codex/009-content-001-092` at `ac761c449a355b79a0d78ef7850337ca7f989f1a`, `origin/codex/009-content-277-368` at `57eacf4246ea3f7f08364e54413b3f427d722c86`, and `origin/codex/009-content-369-460` at `f0ac31e24910640c2ecc3765d713ec8631fd8dfc`; `093-184` and `185-276` were already ancestors of the feature branch.
+- Content integration shard audit on 2026-05-10: all five range shards for translations, explanations, and question-image metadata report `qualityStatus: "complete"`; generated indexes contain `460` translations, `460` explanations, `275` image metadata entries, and `276` question usages.
+- Generated-index refresh on 2026-05-10: `node scripts/content-shards.mjs --write-indexes` followed by `node scripts/content-shards.mjs --check-indexes` passed with `Generated content indexes are fresh.`
+- Evidence-only refresh on 2026-05-10: `pnpm run refresh:content-evidence` passed with `Refreshed learning-support evidence: 275 images, 276 usages, 460 translations, 460 explanations.`
+- Structural validation on 2026-05-10 after integration: `pnpm run validate:content` passed with `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Full content quality validation on 2026-05-10 after targeted fixes: `pnpm run validate:content:quality` passed with `Content validation passed: 460 category B fallback questions, 276 local image references, full content quality gate enabled.`
+- Local check bundle on 2026-05-10: `node scripts/content-shards.mjs --check-indexes`, `pnpm run validate:content`, `pnpm run validate:content:quality`, `pnpm run test`, and `pnpm run build` passed. `pnpm run test` passed `90` tests. `pnpm run build` passed with the pre-existing Vite large chunk-size warning.
+- First `pnpm run preflight` attempt on 2026-05-10 reached Playwright but failed because the command's own `vite preview --port 4903` process remained listening after the nested e2e startup conflict. The stale process was identified as `/Users/chap/devel/cabadrive-009-ticket-image-metadata-intake/node_modules/.bin/../vite/bin/vite.js preview --host 0.0.0.0 --port 4903 --strictPort` and stopped before retry.
+- Final `pnpm run preflight` retry on 2026-05-10 passed: feature-memory gate, repository baseline check, structural content validation, `90` unit tests, production build, and `14` Playwright e2e tests passed.
+- `git diff --check` passed on 2026-05-10 with no whitespace errors.
+- Validator/test update on 2026-05-10: `scripts/content-image-metadata.mjs` now includes `relevanceMap` and `questionContext` in usage fingerprints, rejects global relevance keys in shared image metadata, validates relevance-map roles/references, and rejects mark-everything-critical mappings in the full-quality gate.
+- Draft-generator guard on 2026-05-10: `scripts/generate-learning-support.mjs` now exits unless called with `--allow-draft-overwrite`; reviewed content integration uses `node scripts/content-shards.mjs --write-indexes` plus `pnpm run refresh:content-evidence` instead.
 
 ### Implementation Agent Feedback
 
@@ -317,6 +342,8 @@
 - Disposition: Analyst clarification about ticket lifecycle docs is accepted. Durable docs update is required for final readiness and must cover add/change/delete flows plus shared-image cleanup semantics.
 - Disposition: Analyst clarification about branch `010` overlay dependency is accepted. Implementation must make `009` metadata/usage rich enough for future highlight/dim overlays through stable object/detail/region references and question-specific relevance roles, while leaving rendering decisions to `010`.
 - Disposition: Content agents currently paused for image metadata/usage must produce relevance mappings, not just prose descriptions or flat critical booleans.
+- Disposition: The 2026-05-10 question-scoped relevance clarification is accepted. Shared image metadata may describe only visible facts, regions, relationships, annotations, and uncertainty. Implementation must move or remove any global importance/relevance semantics from shared metadata and keep roles only in per-question usage.
+- Disposition: Feature `010` overlay implementation must consume completed `009` per-question usage/relevance and must not infer relevance from shared metadata alone.
 
 ### Review Notes
 
@@ -329,4 +356,5 @@
 - Future Review Agent should inspect content-agent range evidence for every image, translation, and explanation shard in scope and verify no agent edited outside its assigned range.
 - Future Review Agent should inspect durable docs for ticket lifecycle coverage: add/change analysis requirements, delete cleanup requirements, evidence/index refresh, validation, and shared image metadata reference checks.
 - Future Review Agent should inspect image-backed usage mappings for stable object/detail/region references, answer-critical/highlight details, supporting/distractor/background roles, no mark-everything-critical behavior, and enough irrelevant context to support future dimming.
-- Future Review Agent should verify the `009`/`010` boundary: `009` provides semantic IDs and relevance roles; `010` handles overlay rendering without becoming the source of answer-critical truth.
+- Future Review Agent should verify the `009`/`010` boundary: `009` provides question-neutral shared visible-detail IDs plus question-specific usage/relevance roles; `010` handles overlay rendering without becoming the source of answer-critical truth.
+- Future Review Agent should reject any shared image metadata, generated index, evidence record, or overlay handoff that encodes global important/unimportant/critical/relevance flags outside per-question usage.

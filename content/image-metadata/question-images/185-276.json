@@ -229,17 +229,17 @@
         "curbsOrShoulders": []
       },
       "regions": [
-    {
-      "regionId": "b95-car-region",
-      "label": "turning taxi region",
-      "semanticLocation": "lower left foreground",
-      "includesObjectIds": [
-        "b95-turning-car"
-      ],
-      "includesDetailIds": [
-        "b95-turning-car",
-        "b95-turning-car-path"
-      ],
+        {
+          "regionId": "b95-car-region",
+          "label": "turning taxi region",
+          "semanticLocation": "lower left foreground",
+          "includesObjectIds": [
+            "b95-turning-car"
+          ],
+          "includesDetailIds": [
+            "b95-turning-car",
+            "b95-turning-car-path"
+          ],
           "approximateBoundingBox": {
             "x": 0.12,
             "y": 0.42,
@@ -289,40 +289,40 @@
         }
       ],
       "visualDetails": [
-    {
-      "id": "b95-turning-car",
-      "detailId": "b95-turning-car",
-      "label": "taxi entering right turn",
-      "description": "The taxi is positioned to turn right across the crossing area.",
+        {
+          "id": "b95-turning-car",
+          "detailId": "b95-turning-car",
+          "label": "taxi entering right turn",
+          "description": "The taxi is positioned to turn right across the crossing area.",
           "objectIds": [
             "b95-turning-car"
           ],
           "regionIds": [
             "b95-car-region"
           ],
-      "semanticLocation": "foreground left",
-      "confidence": "high"
-    },
-    {
-      "id": "b95-turning-car-path",
-      "detailId": "b95-turning-car-path",
-      "label": "taxi path across bike lane",
-      "description": "The taxi's position and angle show it crossing the zebra crossing and green bicycle lane while turning right.",
-      "objectIds": [
-        "b95-turning-car",
-        "b95-green-bike-lane-object"
-      ],
-      "regionIds": [
-        "b95-car-region",
-        "b95-bike-lane-region"
-      ],
-      "semanticLocation": "foreground left toward mid-ground right",
-      "confidence": "high"
-    },
-    {
-      "id": "b95-green-bike-lane",
-      "detailId": "b95-green-bike-lane",
-      "label": "green bike lane through intersection",
+          "semanticLocation": "foreground left",
+          "confidence": "high"
+        },
+        {
+          "id": "b95-turning-car-path",
+          "detailId": "b95-turning-car-path",
+          "label": "taxi path across bike lane",
+          "description": "The taxi's position and angle show it crossing the zebra crossing and green bicycle lane while turning right.",
+          "objectIds": [
+            "b95-turning-car",
+            "b95-green-bike-lane-object"
+          ],
+          "regionIds": [
+            "b95-car-region",
+            "b95-bike-lane-region"
+          ],
+          "semanticLocation": "foreground left toward mid-ground right",
+          "confidence": "high"
+        },
+        {
+          "id": "b95-green-bike-lane",
+          "detailId": "b95-green-bike-lane",
+          "label": "green bike lane through intersection",
           "description": "Green painted lane crosses the vehicle path near the zebra crossing.",
           "objectIds": [
             "b95-green-bike-lane-object"
@@ -1096,10 +1096,10 @@
           "semanticLocation": "center mid-ground",
           "confidence": "high"
         },
-    {
-      "id": "b128-green-traffic-light",
-      "detailId": "b128-green-traffic-light",
-      "label": "green traffic light",
+        {
+          "id": "b128-green-traffic-light",
+          "detailId": "b128-green-traffic-light",
+          "label": "green traffic light",
           "description": "Traffic light visible above the lanes is green.",
           "objectIds": [
             "b128-green-traffic-light-object"
@@ -1107,26 +1107,26 @@
           "regionIds": [
             "b128-signal-region"
           ],
-      "semanticLocation": "upper left and upper center",
-      "confidence": "high"
-    },
-    {
-      "id": "b128-straight-lane-arrows",
-      "detailId": "b128-straight-lane-arrows",
-      "label": "straight-ahead lane arrows",
-      "description": "White pavement arrows in the visible lanes point straight ahead rather than showing a turn arrow.",
-      "objectIds": [
-        "b128-straight-lane-arrows-object"
-      ],
-      "regionIds": [
-        "b128-lane-region"
-      ],
-      "semanticLocation": "lower lanes",
-      "confidence": "high"
-    },
-    {
-      "id": "b128-no-turn-indication",
-      "detailId": "b128-no-turn-indication",
+          "semanticLocation": "upper left and upper center",
+          "confidence": "high"
+        },
+        {
+          "id": "b128-straight-lane-arrows",
+          "detailId": "b128-straight-lane-arrows",
+          "label": "straight-ahead lane arrows",
+          "description": "White pavement arrows in the visible lanes point straight ahead rather than showing a turn arrow.",
+          "objectIds": [
+            "b128-straight-lane-arrows-object"
+          ],
+          "regionIds": [
+            "b128-lane-region"
+          ],
+          "semanticLocation": "lower lanes",
+          "confidence": "high"
+        },
+        {
+          "id": "b128-no-turn-indication",
+          "detailId": "b128-no-turn-indication",
           "label": "no visible turn authorization",
           "description": "The visible pavement arrows point straight and no separate turn arrow signal is visible for the questioned turn.",
           "objectIds": [
@@ -1917,10 +1917,10 @@
           "semanticLocation": "top center",
           "confidence": "high"
         },
-    {
-      "id": "b200-black-straps",
-      "detailId": "b200-black-straps",
-      "label": "black securing straps",
+        {
+          "id": "b200-black-straps",
+          "detailId": "b200-black-straps",
+          "label": "black securing straps",
           "description": "Black straps hold the roof cargo down.",
           "objectIds": [
             "b200-roof-cargo-object"
@@ -1928,26 +1928,26 @@
           "regionIds": [
             "b200-cargo-region"
           ],
-      "semanticLocation": "over cargo",
-      "confidence": "high"
-    },
-    {
-      "id": "b200-suv-body",
-      "detailId": "b200-suv-body",
-      "label": "black SUV body",
-      "description": "Black sport utility vehicle is visible from the rear three-quarter view beneath the roof cargo.",
-      "objectIds": [
-        "b200-suv"
-      ],
-      "regionIds": [
-        "b200-suv-region"
-      ],
-      "semanticLocation": "center foreground",
-      "confidence": "high"
-    },
-    {
-      "id": "b200-highway-background",
-      "detailId": "b200-highway-background",
+          "semanticLocation": "over cargo",
+          "confidence": "high"
+        },
+        {
+          "id": "b200-suv-body",
+          "detailId": "b200-suv-body",
+          "label": "black SUV body",
+          "description": "Black sport utility vehicle is visible from the rear three-quarter view beneath the roof cargo.",
+          "objectIds": [
+            "b200-suv"
+          ],
+          "regionIds": [
+            "b200-suv-region"
+          ],
+          "semanticLocation": "center foreground",
+          "confidence": "high"
+        },
+        {
+          "id": "b200-highway-background",
+          "detailId": "b200-highway-background",
           "label": "highway with other vehicles",
           "description": "Open road and other vehicles provide travel context.",
           "objectIds": [
@@ -2675,10 +2675,10 @@
         }
       ],
       "visualDetails": [
-    {
-      "id": "b213-child-without-harness",
-      "detailId": "b213-child-without-harness",
-      "label": "child not visibly harnessed",
+        {
+          "id": "b213-child-without-harness",
+          "detailId": "b213-child-without-harness",
+          "label": "child not visibly harnessed",
           "description": "No visible harness straps or safety belt secure the child across torso or lap.",
           "objectIds": [
             "b213-child",
@@ -2687,27 +2687,27 @@
           "regionIds": [
             "b213-child-region"
           ],
-      "semanticLocation": "child body",
-      "confidence": "high"
-    },
-    {
-      "id": "b213-child-in-seat",
-      "detailId": "b213-child-in-seat",
-      "label": "child seated in rear restraint",
-      "description": "The child is sitting in the rear child-restraint seat, with the seat shell and side supports visible around her.",
-      "objectIds": [
-        "b213-child",
-        "b213-child-seat"
-      ],
-      "regionIds": [
-        "b213-child-region"
-      ],
-      "semanticLocation": "right rear seat",
-      "confidence": "high"
-    },
-    {
-      "id": "b213-child-restraint",
-      "detailId": "b213-child-restraint",
+          "semanticLocation": "child body",
+          "confidence": "high"
+        },
+        {
+          "id": "b213-child-in-seat",
+          "detailId": "b213-child-in-seat",
+          "label": "child seated in rear restraint",
+          "description": "The child is sitting in the rear child-restraint seat, with the seat shell and side supports visible around her.",
+          "objectIds": [
+            "b213-child",
+            "b213-child-seat"
+          ],
+          "regionIds": [
+            "b213-child-region"
+          ],
+          "semanticLocation": "right rear seat",
+          "confidence": "high"
+        },
+        {
+          "id": "b213-child-restraint",
+          "detailId": "b213-child-restraint",
           "label": "child restraint present",
           "description": "The child is seated in a restraint seat, but it is not enough without fastening.",
           "objectIds": [
@@ -6845,10 +6845,10 @@
           "semanticLocation": "center",
           "confidence": "high"
         },
-    {
-      "id": "b167-wheels-toward-curb",
-      "detailId": "b167-wheels-toward-curb",
-      "label": "front wheels angled toward curb",
+        {
+          "id": "b167-wheels-toward-curb",
+          "detailId": "b167-wheels-toward-curb",
+          "label": "front wheels angled toward curb",
           "description": "Front wheel orientation appears turned toward the curb for hill parking.",
           "objectIds": [
             "b167-parked-red-car",
@@ -6857,26 +6857,26 @@
           "regionIds": [
             "b167-car-region"
           ],
-      "semanticLocation": "front wheel area",
-      "confidence": "high"
-    },
-    {
-      "id": "b167-curb-context",
-      "detailId": "b167-curb-context",
-      "label": "curb next to parked car",
-      "description": "Raised curb and sidewalk run alongside the parked car on the sloped street.",
-      "objectIds": [
-        "b167-curb"
-      ],
-      "regionIds": [
-        "b167-curb-region"
-      ],
-      "semanticLocation": "below and behind the car",
-      "confidence": "high"
-    },
-    {
-      "id": "b167-building-background",
-      "detailId": "b167-building-background",
+          "semanticLocation": "front wheel area",
+          "confidence": "high"
+        },
+        {
+          "id": "b167-curb-context",
+          "detailId": "b167-curb-context",
+          "label": "curb next to parked car",
+          "description": "Raised curb and sidewalk run alongside the parked car on the sloped street.",
+          "objectIds": [
+            "b167-curb"
+          ],
+          "regionIds": [
+            "b167-curb-region"
+          ],
+          "semanticLocation": "below and behind the car",
+          "confidence": "high"
+        },
+        {
+          "id": "b167-building-background",
+          "detailId": "b167-building-background",
           "label": "building facade background",
           "description": "Residential facade and sidewalk are non-critical context.",
           "objectIds": [

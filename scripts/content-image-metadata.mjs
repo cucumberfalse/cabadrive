@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const REVIEW_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const PLACEHOLDER_IMAGE_METADATA_PATTERN =
-  /\b(source[-_ ]?image[-_ ]?frame|source image|manual[-_ ]?review[-_ ]?required|deterministic baseline|baseline metadata|object-level visual facts are not asserted|object-level detail remains uncertain|specific visual objects are not asserted|unknown or not manually reviewed|pending manual image review)\b/i;
+  /\b(source[-_ ]?image[-_ ]?frame|manual[-_ ]?review[-_ ]?required|deterministic baseline|baseline metadata|object-level visual facts are not asserted|object-level detail remains uncertain|specific visual objects are not asserted|unknown or not manually reviewed|pending manual image review)\b/i;
 const GENERIC_USAGE_DETAIL_PATTERN =
   /\b(source[-_ ]?image|answer[-_ ]?cue|visible context|critical[-_ ]?source[-_ ]?image|referenced source image|generic visual|object-level detail remains uncertain)\b/i;
 
@@ -102,7 +102,9 @@ export function questionUsageTuple(usage) {
     imageSha256: usage.imageSha256,
     questionFingerprint: usage.questionFingerprint,
     correctAnswerId: usage.correctAnswerId,
+    questionContext: usage.questionContext || null,
     answerCriticalDetails: usage.answerCriticalDetails || [],
+    relevanceMap: usage.relevanceMap || [],
     imageRole: usage.imageRole
   };
 }
@@ -185,9 +187,11 @@ function allObjectIds(image) {
   const ids = new Set();
   for (const object of [...(image.objects || []), ...(image.roadUsers || []), ...(image.signsSignalsMarkings || [])]) {
     if (isNonEmptyString(object.id)) ids.add(object.id);
+    if (isNonEmptyString(object.objectId)) ids.add(object.objectId);
   }
   for (const annotation of image.annotations || []) {
     if (isNonEmptyString(annotation.id)) ids.add(annotation.id);
+    if (isNonEmptyString(annotation.objectId)) ids.add(annotation.objectId);
   }
   return ids;
 }
@@ -196,6 +200,7 @@ function allDetailIds(image, usage) {
   const ids = new Set();
   for (const detail of image.visualDetails || []) {
     if (isNonEmptyString(detail.id)) ids.add(detail.id);
+    if (isNonEmptyString(detail.detailId)) ids.add(detail.detailId);
   }
   for (const detail of usage.answerCriticalDetails || []) {
     if (isNonEmptyString(detail.detailId)) ids.add(detail.detailId);
@@ -203,9 +208,66 @@ function allDetailIds(image, usage) {
   for (const roadUser of image.roadUsers || []) {
     for (const gesture of roadUser.gestures || []) {
       if (isNonEmptyString(gesture.id)) ids.add(gesture.id);
+      if (isNonEmptyString(gesture.detailId)) ids.add(gesture.detailId);
+    }
+  }
+  for (const field of ["markings", "crossings", "curbsOrShoulders"]) {
+    for (const detail of image.roadLayout?.[field] || []) {
+      if (isNonEmptyString(detail.id)) ids.add(detail.id);
+      if (isNonEmptyString(detail.detailId)) ids.add(detail.detailId);
     }
   }
   return ids;
+}
+
+function allRegionIds(image) {
+  const ids = new Set();
+  for (const region of image?.regions || []) {
+    if (isNonEmptyString(region.regionId)) ids.add(region.regionId);
+    if (isNonEmptyString(region.id)) ids.add(region.id);
+  }
+  return ids;
+}
+
+function allReferenceIds(image, usage) {
+  const ids = new Set([...allObjectIds(image), ...allDetailIds(image, usage), ...allRegionIds(image)]);
+  for (const collection of [image?.annotations, image?.visibleText, image?.spatialRelationships]) {
+    for (const item of collection || []) {
+      if (isNonEmptyString(item.id)) ids.add(item.id);
+      if (isNonEmptyString(item.objectId)) ids.add(item.objectId);
+      if (isNonEmptyString(item.detailId)) ids.add(item.detailId);
+      if (isNonEmptyString(item.regionId)) ids.add(item.regionId);
+    }
+  }
+  return ids;
+}
+
+const FORBIDDEN_SHARED_RELEVANCE_KEYS = new Set([
+  "important",
+  "importance",
+  "unimportant",
+  "criticality",
+  "relevance",
+  "relevanceRole",
+  "highlight",
+  "dim",
+  "distractor",
+  "displayIntent"
+]);
+
+function requireQuestionNeutralSharedMetadata(value, label, errors, path = label) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => requireQuestionNeutralSharedMetadata(item, label, errors, `${path}[${index}]`));
+    return;
+  }
+  if (!isPlainObject(value)) return;
+  for (const [key, child] of Object.entries(value)) {
+    if (key === "review") continue;
+    if (FORBIDDEN_SHARED_RELEVANCE_KEYS.has(key)) {
+      errors.push(`${label}: shared image metadata must not contain question-scoped relevance key ${path}.${key}.`);
+    }
+    requireQuestionNeutralSharedMetadata(child, label, errors, `${path}.${key}`);
+  }
 }
 
 function requireApprovedReview(review, label, errors) {
@@ -281,6 +343,83 @@ function requireFullQualityUsageDetail(detail, label, errors) {
   }
   if (detail.criticality === "required" && detail.confidence === "low") {
     errors.push(`${label}: required critical detail ${detail.detailId || "(missing id)"} cannot have low confidence in the full-quality gate.`);
+  }
+}
+
+function requireRelevanceMap({ usage, image, question, label, requireFullQuality, errors }) {
+  if (usage.relevanceMap === undefined) {
+    if (requireFullQuality) errors.push(`${label}: full-quality usage must include relevanceMap.`);
+    return;
+  }
+  if (!Array.isArray(usage.relevanceMap)) {
+    errors.push(`${label}: relevanceMap must be an array when present.`);
+    return;
+  }
+
+  const allowedRoles = new Set(["answer_critical_highlight", "supporting", "distractor_trap", "background_irrelevant_dim"]);
+  const allowedDisplayIntents = new Set(["highlight", "keep_visible", "callout_optional", "dim"]);
+  const roles = [];
+  const objectIds = image ? allObjectIds(image) : new Set();
+  const detailIds = image ? allDetailIds(image, usage) : new Set();
+  const regionIds = image ? allRegionIds(image) : new Set();
+  const referenceIds = image ? allReferenceIds(image, usage) : new Set();
+  const sourceAnswerIds = new Set((question.answers || []).map((answer) => answer.id));
+
+  for (const relevance of usage.relevanceMap) {
+    if (!isPlainObject(relevance)) {
+      errors.push(`${label}: relevanceMap entries must be objects.`);
+      continue;
+    }
+    const relevanceId = relevance.relevanceId || relevance.targetId;
+    const relevanceLabel = `${label}: relevance ${relevanceId || "(missing id)"}`;
+    if (!isNonEmptyString(relevanceId)) errors.push(`${relevanceLabel} must have a non-empty relevanceId or targetId.`);
+    const role = typeof relevance.role === "string" ? relevance.role.replace(/[/-]/g, "_") : "";
+    if (!allowedRoles.has(role)) errors.push(`${relevanceLabel} role is invalid.`);
+    roles.push(role);
+    if (!isNonEmptyString(relevance.rationaleRuOrEn || relevance.rationaleRu)) {
+      errors.push(`${relevanceLabel} must include rationaleRuOrEn or rationaleRu.`);
+    }
+    if (relevance.confidence !== undefined && !["high", "medium", "low"].includes(relevance.confidence)) {
+      errors.push(`${relevanceLabel} confidence is invalid.`);
+    }
+    if (relevance.displayIntent !== undefined && !allowedDisplayIntents.has(relevance.displayIntent)) {
+      errors.push(`${relevanceLabel} displayIntent is invalid.`);
+    }
+    const referencedCount =
+      (relevance.detailIds || []).length +
+      (relevance.objectIds || []).length +
+      (relevance.regionIds || []).length +
+      (isNonEmptyString(relevance.targetId) ? 1 : 0);
+    if (requireFullQuality && role === "answer_critical_highlight" && referencedCount < 1) {
+      errors.push(`${relevanceLabel} must reference at least one detail, object, region, or target id.`);
+    }
+    for (const detailId of relevance.detailIds || []) {
+      if (!detailIds.has(detailId)) errors.push(`${relevanceLabel} references missing detail ${detailId}.`);
+    }
+    for (const objectId of relevance.objectIds || []) {
+      if (!objectIds.has(objectId)) errors.push(`${relevanceLabel} references missing object ${objectId}.`);
+    }
+    for (const regionId of relevance.regionIds || []) {
+      if (!regionIds.has(regionId)) errors.push(`${relevanceLabel} references missing region ${regionId}.`);
+    }
+    if (isNonEmptyString(relevance.targetId) && !referenceIds.has(relevance.targetId)) {
+      errors.push(`${relevanceLabel} references missing target ${relevance.targetId}.`);
+    }
+    for (const answerId of [...(relevance.supportsAnswerIds || []), ...(relevance.rejectsAnswerIds || []), ...(relevance.answerIds || [])]) {
+      if (!sourceAnswerIds.has(answerId)) errors.push(`${relevanceLabel} references missing answer ${answerId}.`);
+    }
+  }
+
+  if (requireFullQuality) {
+    if (!roles.includes("answer_critical_highlight")) {
+      errors.push(`${label}: full-quality usage must include an answer_critical_highlight relevance role.`);
+    }
+    if (!roles.some((role) => role !== "answer_critical_highlight")) {
+      errors.push(`${label}: full-quality usage must include non-critical supporting, distractor, or background relevance context.`);
+    }
+    if (roles.length > 0 && roles.every((role) => role === "answer_critical_highlight")) {
+      errors.push(`${label}: full-quality usage must not mark every relevance entry answer-critical.`);
+    }
   }
 }
 
@@ -424,6 +563,7 @@ export function validateQuestionImageMetadata({ questions, manifest, evidence, s
     if (!isNonEmptyString(image.generationPromptSummary)) errors.push(`${label}: generationPromptSummary must be a non-empty string.`);
     if (!Array.isArray(image.objects) || image.objects.length < 1) errors.push(`${label}: objects must include at least one object.`);
     if (!Array.isArray(image.uncertainties)) errors.push(`${label}: uncertainties must be an array.`);
+    requireQuestionNeutralSharedMetadata(image, label, errors);
     if (requireFullQuality) requireFullQualityImageMetadata(image, label, errors);
     requireApprovedReview(image.review, label, errors);
     requireEvidenceEntry(
@@ -494,6 +634,7 @@ export function validateQuestionImageMetadata({ questions, manifest, evidence, s
       if (!["required", "trap", "supporting"].includes(detail.criticality)) errors.push(`${label}: criticality is invalid for ${detail.detailId}.`);
       if (!["high", "medium", "low"].includes(detail.confidence)) errors.push(`${label}: confidence is invalid for ${detail.detailId}.`);
     }
+    requireRelevanceMap({ usage, image, question, label, requireFullQuality, errors });
     requireApprovedReview(usage.review, label, errors);
     requireEvidenceEntry(
       usageEvidenceByQuestionId.get(usage.questionId),

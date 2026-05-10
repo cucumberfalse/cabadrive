@@ -5,7 +5,7 @@
 - Official source registry with source ownership, jurisdiction, verification date, and hashes.
 - Governed official-documents archive foundation at `content/official-documents/` for verbatim official source materials, manifest metadata, exact-text/currentness validation expectations, and future source-document rules.
 - Content validation pipeline for source records, exam config, fallback question data, local images, and unofficial support layers.
-- Structured image metadata and per-question image usage validation for the current image-backed fallback questions, including answer-critical detail mappings and stale image/question fingerprint checks.
+- Structured image metadata and per-question image usage validation for the current image-backed fallback questions, including answer-critical/highlight, supporting, distractor/trap, background/irrelevant/dim mappings and stale image/question fingerprint checks.
 - Category B practice question presentation in Spanish with source traceability and non-official fallback labeling.
 - Complete current-bank unofficial Russian translation and explanation layers, clarified at product/status level, revealed intentionally inside question practice instead of shown by default, and protected by deterministic alignment evidence.
 - Learning mode with answer feedback and linked weak-topic hints.
@@ -25,8 +25,8 @@
 - Important boundary: A/A4, motorcycle, and other non-B question sources are not used for practice questions.
 - Source guard behavior: this is a source-level eligibility rule, not a text-level topic filter. Valid category B practice material may mention motorcycles, motovehicles, ciclomotors, parking areas, lanes, signs, or other shared-road topics when the source `practiceQuestionScope` explicitly allows category B.
 - Question images are part of the learning surface and are stored locally in the repository for offline use.
-- Current image metadata coverage is complete for 275 unique local images and 276 image-backed question references. Most image entries are deterministic low-confidence baseline records with explicit uncertainty pending manual visual review; high-risk `b-fallback-001` has precise cyclist/right-arm signal metadata and regression validation.
-- Feature 009 content work is now sharded by ticket range under `content/translations/ru/`, `content/explanations/ru/`, and `content/image-metadata/question-images/`. The adjacent monolithic JSON files are generated compatibility indexes, not editing sources. Full feature readiness requires `pnpm run validate:content:quality` to pass after every shard reaches `qualityStatus: "complete"`.
+- Current image metadata coverage is complete for 275 unique local images and 276 image-backed question references. Feature 009 reviewed shards contain actual-image visual metadata, stable object/detail/region IDs, question-specific relevance roles, complete Russian translations, complete Russian explanations, and deterministic evidence for the current 460-ticket fallback bank.
+- Feature 009 content is sharded by ticket range under `content/translations/ru/`, `content/explanations/ru/`, and `content/image-metadata/question-images/`. The adjacent monolithic JSON files are generated compatibility indexes, not editing sources. Full feature readiness requires fresh indexes/evidence plus passing `pnpm run validate:content` and `pnpm run validate:content:quality`.
 
 ## Post-MVP Candidates
 

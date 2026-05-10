@@ -4324,7 +4324,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed directly from the local source image in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
+          "reviewerNotes": "Reviewed directly from the local image file in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -4594,7 +4594,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed directly from the local source image in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
+          "reviewerNotes": "Reviewed directly from the local image file in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -4834,7 +4834,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed directly from the local source image in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
+          "reviewerNotes": "Reviewed directly from the local image file in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -5080,7 +5080,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed directly from the local source image in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
+          "reviewerNotes": "Reviewed directly from the local image file in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -5353,7 +5353,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed directly from the local source image in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
+          "reviewerNotes": "Reviewed directly from the local image file in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -5617,7 +5617,7 @@
         "qualityStatus": "complete",
         "visualReviewEvidence": {
           "method": "actual_image_inspection",
-          "reviewerNotes": "Reviewed directly from the local source image in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
+          "reviewerNotes": "Reviewed directly from the local image file in /Users/chap/devel/cabadrive-009-content-277-368 using view_image before editing this shard.",
           "sceneCoverage": true,
           "objectCoverage": true,
           "answerCriticalCoverage": true
@@ -13304,6 +13304,21 @@
           "detailIds": [
             "q345-roundabout-arrows"
           ]
+        },
+        {
+          "id": "b233-white-background",
+          "objectId": "b233-white-background",
+          "type": "plain_background",
+          "category": "background",
+          "label": "plain white image background",
+          "description": "Plain white background around the yellow roundabout warning sign; it does not change the sign meaning.",
+          "confidence": "high",
+          "regionIds": [
+            "b233-white-background-region"
+          ],
+          "detailIds": [
+            "b233-plain-white-background"
+          ]
         }
       ],
       "roadUsers": [],
@@ -13350,6 +13365,18 @@
             "coordinateSpace": "normalized_0_1"
           },
           "localizationConfidence": "high"
+        },
+        {
+          "regionId": "b233-white-background-region",
+          "label": "plain white image background",
+          "semanticLocation": "plain white area outside the sign face",
+          "includesObjectIds": [
+            "b233-white-background"
+          ],
+          "includesDetailIds": [
+            "b233-plain-white-background"
+          ],
+          "localizationConfidence": "medium"
         }
       ],
       "visualDetails": [
@@ -13363,6 +13390,19 @@
           ],
           "regionIds": [
             "b233-sign-region"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "b233-plain-white-background",
+          "detailId": "b233-plain-white-background",
+          "label": "plain white image background",
+          "description": "Plain white background around the yellow roundabout warning sign; it does not change the sign meaning.",
+          "objectIds": [
+            "b233-white-background"
+          ],
+          "regionIds": [
+            "b233-white-background-region"
           ],
           "confidence": "high"
         }
@@ -15107,6 +15147,21 @@
           "detailIds": [
             "q359-no-lane-change-symbol"
           ]
+        },
+        {
+          "id": "b259-white-background",
+          "objectId": "b259-white-background",
+          "type": "plain_background",
+          "category": "background",
+          "label": "plain white image background",
+          "description": "Plain white background around the no-lane-change sign; it does not change the sign meaning.",
+          "confidence": "high",
+          "regionIds": [
+            "b259-white-background-region"
+          ],
+          "detailIds": [
+            "b259-plain-white-background"
+          ]
         }
       ],
       "roadUsers": [],
@@ -15153,6 +15208,18 @@
             "coordinateSpace": "normalized_0_1"
           },
           "localizationConfidence": "high"
+        },
+        {
+          "regionId": "b259-white-background-region",
+          "label": "plain white image background",
+          "semanticLocation": "plain white area outside the sign face",
+          "includesObjectIds": [
+            "b259-white-background"
+          ],
+          "includesDetailIds": [
+            "b259-plain-white-background"
+          ],
+          "localizationConfidence": "medium"
         }
       ],
       "visualDetails": [
@@ -15166,6 +15233,19 @@
           ],
           "regionIds": [
             "b259-sign-region"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "b259-plain-white-background",
+          "detailId": "b259-plain-white-background",
+          "label": "plain white image background",
+          "description": "Plain white background around the no-lane-change sign; it does not change the sign meaning.",
+          "objectIds": [
+            "b259-white-background"
+          ],
+          "regionIds": [
+            "b259-white-background-region"
           ],
           "confidence": "high"
         }
@@ -22024,9 +22104,15 @@
         {
           "relevanceId": "q345-dim-blank-background",
           "role": "background_irrelevant_dim",
-          "detailIds": [],
-          "objectIds": [],
-          "regionIds": [],
+          "detailIds": [
+            "b233-plain-white-background"
+          ],
+          "objectIds": [
+            "b233-white-background"
+          ],
+          "regionIds": [
+            "b233-white-background-region"
+          ],
           "rationaleRuOrEn": "Dim the blank white background because it carries no answer information.",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
@@ -22740,9 +22826,15 @@
         {
           "relevanceId": "q359-dim-white-background",
           "role": "background_irrelevant_dim",
-          "detailIds": [],
-          "objectIds": [],
-          "regionIds": [],
+          "detailIds": [
+            "b259-plain-white-background"
+          ],
+          "objectIds": [
+            "b259-white-background"
+          ],
+          "regionIds": [
+            "b259-white-background-region"
+          ],
           "rationaleRuOrEn": "Dim the blank background because the symbol inside the sign is the only relevant visual fact.",
           "supportsAnswerIds": [],
           "rejectsAnswerIds": [],
