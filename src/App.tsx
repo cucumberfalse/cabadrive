@@ -129,30 +129,29 @@ function QuestionImageFigure({
   showOverlay: boolean;
   showFallback: boolean;
 }) {
-  const [naturalSize, setNaturalSize] = useState<{ width: number; height: number }>();
   const imagePath = question.image!.localPath;
-  const imageFrameStyle = naturalSize
+  const imageSrc = assetUrl(imagePath);
+  const [naturalSize, setNaturalSize] = useState<{ src: string; width: number; height: number }>();
+  const currentNaturalSize = naturalSize?.src === imageSrc ? naturalSize : undefined;
+  const imageFrameStyle = currentNaturalSize
     ? ({
-        "--question-image-max-width-by-height": `${(360 * naturalSize.width) / naturalSize.height}px`
+        "--question-image-max-width-by-height": `${(360 * currentNaturalSize.width) / currentNaturalSize.height}px`
       } as CSSProperties)
     : undefined;
-
-  useEffect(() => {
-    setNaturalSize(undefined);
-  }, [imagePath]);
 
   return (
     <figure className={showOverlay ? "question-image has-explanation-overlay" : "question-image"}>
       <div className="question-image-frame" style={imageFrameStyle}>
         <img
-          src={assetUrl(imagePath)}
+          src={imageSrc}
           alt={question.image!.altEs}
           onLoad={(event) => {
             const { naturalWidth, naturalHeight } = event.currentTarget;
             if (naturalWidth <= 0 || naturalHeight <= 0) return;
+            if (event.currentTarget.getAttribute("src") !== imageSrc) return;
             setNaturalSize((current) => {
-              if (current?.width === naturalWidth && current.height === naturalHeight) return current;
-              return { width: naturalWidth, height: naturalHeight };
+              if (current?.src === imageSrc && current.width === naturalWidth && current.height === naturalHeight) return current;
+              return { src: imageSrc, width: naturalWidth, height: naturalHeight };
             });
           }}
         />

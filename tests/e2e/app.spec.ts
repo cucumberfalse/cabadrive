@@ -174,6 +174,50 @@ test("image explanation overlay bounds follow the rendered bitmap when image hei
   }
 });
 
+test("cached image path navigation keeps the frame keyed to the current source dimensions", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+
+  const nextImagePath = (questions[1] as { image: { localPath: string } }).image.localPath;
+  await page.evaluate(async (src) => {
+    const image = new Image();
+    image.src = src;
+    await image.decode();
+  }, `/${nextImagePath}`);
+
+  await page.getByTestId("question-card").locator(".question-flow-nav").getByRole("button", { name: "Следующий" }).click();
+  await expect(page.getByText(questions[1].officialTextEs)).toBeVisible();
+  await expect(page.locator(".question-image-frame img")).toHaveAttribute("src", `/${nextImagePath}`);
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+
+  const geometry = await page.getByTestId("question-card").evaluate((element) => {
+    const frame = element.querySelector(".question-image-frame");
+    const image = element.querySelector(".question-image-frame img");
+    if (!(frame instanceof HTMLElement) || !(image instanceof HTMLImageElement)) {
+      throw new Error("Expected cached current image frame to exist.");
+    }
+
+    const frameRect = frame.getBoundingClientRect();
+    const imageRect = image.getBoundingClientRect();
+    return {
+      frameWidth: frameRect.width,
+      imageWidth: imageRect.width,
+      imageHeight: imageRect.height,
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight
+    };
+  });
+
+  const expectedWidth = (360 * geometry.naturalWidth) / geometry.naturalHeight;
+  expect(geometry.naturalWidth).toBe(573);
+  expect(geometry.naturalHeight).toBe(367);
+  expect(Math.abs(geometry.frameWidth - expectedWidth)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.imageWidth - expectedWidth)).toBeLessThanOrEqual(3);
+  expect(geometry.imageHeight).toBeGreaterThan(350);
+  expect(geometry.imageHeight).toBeLessThanOrEqual(361);
+  expect(geometry.frameWidth).toBeLessThan(590);
+});
+
 test("learning timer pauses, resumes, and does not count down invisible tickets", async ({ page }) => {
   await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
   await page.goto("/");
