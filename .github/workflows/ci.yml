@@ -81,16 +81,18 @@ jobs:
         run: make up
 
       - name: Smoke test local app
+        env:
+          CABADRIVE_HOST_PORT: "5173"
         run: |
           set -euo pipefail
           for attempt in $(seq 1 30); do
-            if curl --fail --silent --show-error http://localhost:5173/ >/tmp/cabadrive-home.html; then
+            if curl --fail --silent --show-error "http://localhost:${CABADRIVE_HOST_PORT}/" >/tmp/cabadrive-home.html; then
               break
             fi
             sleep 1
           done
           grep -q "Cabadrive" /tmp/cabadrive-home.html
-          curl --fail --silent --show-error http://localhost:5173/sw.js >/dev/null
+          curl --fail --silent --show-error "http://localhost:${CABADRIVE_HOST_PORT}/sw.js" >/dev/null
 
       - name: Stop Docker app
         if: always()
