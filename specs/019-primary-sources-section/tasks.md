@@ -48,22 +48,22 @@
 
 ## Slice B: Learner Source Schema And Validators
 
-- [ ] T035 Create a governed learner-source content area outside `content/official-documents/`, preferred `content/primary-sources/`.
-- [ ] T036 Add local instructions for learner-source content governance, translation QA, simplification QA, and archive boundary rules.
-- [ ] T037 Define document, chunk, QA, coverage, and search-index schemas/types.
-- [ ] T038 Add validator support for manifest-entry coverage.
-- [ ] T039 Add validator support for generated chunk coverage.
-- [ ] T040 Add validator support for source fingerprint/span alignment against archive Markdown.
-- [ ] T041 Add validator support for required full Russian translation per chunk.
-- [ ] T042 Add validator support for required simple Russian rewrite per chunk.
-- [ ] T043 Add validator support for translation QA status.
-- [ ] T044 Add validator support for simplification QA status.
-- [ ] T045 Add validator support that forbids learner Russian content under `content/official-documents/`.
-- [ ] T046 Add validator support that rejects simplified Spanish fields/content paths.
-- [ ] T047 Add validator support that rejects orphan learner documents/chunks not tied to manifest/chunk inventory.
-- [ ] T048 Add strict final mode that fails partial coverage or non-approved QA.
-- [ ] T049 Integrate source-section validation with `pnpm run validate:content` before final release.
-- [ ] T050 Add unit tests for validator pass/fail cases.
+- [x] T035 Create a governed learner-source content area outside `content/official-documents/`, preferred `content/primary-sources/`.
+- [x] T036 Add local instructions for learner-source content governance, translation QA, simplification QA, and archive boundary rules.
+- [x] T037 Define document, chunk, QA, coverage, and search-index schemas/types.
+- [x] T038 Add validator support for manifest-entry coverage.
+- [x] T039 Add validator support for generated chunk coverage.
+- [x] T040 Add validator support for source fingerprint/span alignment against archive Markdown.
+- [x] T041 Add validator support for required full Russian translation per chunk.
+- [x] T042 Add validator support for required simple Russian rewrite per chunk.
+- [x] T043 Add validator support for translation QA status.
+- [x] T044 Add validator support for simplification QA status.
+- [x] T045 Add validator support that forbids learner Russian content under `content/official-documents/`.
+- [x] T046 Add validator support that rejects simplified Spanish fields/content paths.
+- [x] T047 Add validator support that rejects orphan learner documents/chunks not tied to manifest/chunk inventory.
+- [x] T048 Add strict final mode that fails partial coverage or non-approved QA.
+- [x] T049 Integrate source-section validation with `pnpm run validate:content` before final release.
+- [x] T050 Add unit tests for validator pass/fail cases.
 
 ## Slice C: Corpus Inventory And Chunking
 
@@ -141,14 +141,14 @@
 
 ## Tests And Verification
 
-- [ ] T110 Add validator tests for missing manifest document coverage.
-- [ ] T111 Add validator tests for missing chunk coverage.
-- [ ] T112 Add validator tests for missing full Russian translation.
-- [ ] T113 Add validator tests for missing simple Russian rewrite.
-- [ ] T114 Add validator tests for non-approved translation/simplification QA in strict mode.
-- [ ] T115 Add validator tests for Russian learner content under `content/official-documents/`.
-- [ ] T116 Add validator tests for forbidden simplified Spanish.
-- [ ] T117 Add validator tests for stale source fingerprints or missing archive mappings.
+- [x] T110 Add validator tests for missing manifest document coverage.
+- [x] T111 Add validator tests for missing chunk coverage.
+- [x] T112 Add validator tests for missing full Russian translation.
+- [x] T113 Add validator tests for missing simple Russian rewrite.
+- [x] T114 Add validator tests for non-approved translation/simplification QA in strict mode.
+- [x] T115 Add validator tests for Russian learner content under `content/official-documents/`.
+- [x] T116 Add validator tests for forbidden simplified Spanish.
+- [x] T117 Add validator tests for stale source fingerprints or missing archive mappings.
 - [ ] T118 Add e2e coverage that `Источники` opens the source section.
 - [ ] T119 Add e2e coverage that existing primary flows remain reachable.
 - [ ] T120 Add e2e coverage that a source detail defaults to simple Russian.
@@ -278,6 +278,57 @@
   - `docs_project/screens/learning-and-exam-flows.md` now documents the planned `Источники` flow and its relationship to `Материалы`.
 - Governance boundary recorded: original official source archive remains verbatim only; Russian full translations and simple rewrites must live outside `content/official-documents/`, preferably in a future governed `content/primary-sources/` area.
 
+### Slice B Implementation Notes
+
+- Slice B ran in assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-schema` on branch `codex/016-primary-sources-schema-validators`.
+- Implementation started only after confirming all feature memory files exist: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`.
+- Parallel-agent warning was part of the Slice B assignment. This slice preserved unrelated work and edited only the assigned write set.
+- Created governed learner-source area `content/primary-sources/` with local `AGENTS.md`.
+- Added draft/preparatory machine-readable starter files:
+  - `primary-sources.ru.json`
+  - `primary-sources.coverage.json`
+  - `primary-sources.qa.json`
+  - `primary-sources.search.json`
+- Starter corpus intentionally covers only one draft chunk from `ley-24449-transito-seguridad-vial`; it is validation scaffolding, not a translation batch and not final learner content.
+- The draft chunk maps to `content/official-documents/documents/ley-24449-transito-seguridad-vial.md`, lines 1-5, with source span SHA-256 `b8957a98c87f7cfb174d01df3164416f1e95c621966c8daec6c47bb4248a9c97` and archive SHA-256 `deda922c463db247eecc3c4292e76381f9ee86978041e8ba552f65ee7c525ad3`.
+- Added `scripts/primary-sources-validation.mjs` with draft/default and strict/final validation modes.
+- Draft/default mode permits partial manifest/chunk coverage and draft QA so preparatory content-authoring PRs can pass.
+- Strict/final mode fails missing manifest coverage, missing generated chunk coverage, missing or placeholder Russian fields, and non-approved QA.
+- Validator checks source archive mapping, archive hash, source line span hash, source fingerprint, `originalSpanish` span alignment, learner-content archive-boundary violations, forbidden simplified-Spanish fields/paths, orphan learner documents/chunks/QA/search entries, and search-index references.
+- Integrated primary-source validation into `scripts/validate-content.mjs`; it defaults to draft mode so current content validation passes with the explicit draft placeholder, and can be run in final-gate mode with `PRIMARY_SOURCES_VALIDATION_MODE=strict`.
+- Added `tests/primary-sources-validation.test.mjs` covering the Slice B pass/fail cases.
+- No product UI, e2e tests, official archive files, durable docs, package files, or actual translation batch content were changed in Slice B.
+
+### Slice B Review Follow-Up Notes
+
+- Addressed PR #74 review finding `discussion_r3214865792`.
+- Tightened strict/final primary-source validation so manifest-covered coverage documents cannot satisfy the release gate with an empty generated chunk inventory.
+- Strict/final mode now requires each coverage document to have at least one `expectedChunkIds` entry and at least one generated coverage chunk.
+- Strict/final mode now requires each learner corpus document to have at least one learner chunk.
+- Added focused tests proving strict mode rejects empty coverage chunk inventory, empty `expectedChunkIds`, and empty learner chunks.
+- Addressed two additional Codex AI Review P2 findings on PR #74 head `641fdfa`.
+- Replaced ASCII `\b` placeholder matching with Unicode-aware placeholder detection so strict/final mode catches Russian draft placeholders such as `Черновой подготовительный...` and `заглушка`, plus English placeholder forms such as `TODO` and `draft placeholder`.
+- Tightened strict/final QA validation so reviewed/approved QA records require `checkedAt`; strict mode now rejects approved release-ready QA records without a checked-at date.
+- Added focused tests for Russian placeholder detection, English placeholder detection, and approved QA records missing `checkedAt`.
+- Addressed Codex AI Review P1 finding on PR #74 head `987e712`.
+- Tightened coverage inventory validation so every generated coverage chunk ID must also be listed in the same document's `expectedChunkIds`. This makes coverage chunk IDs exact in both directions and prevents a generated chunk from bypassing learner translation, simplification, and QA validation.
+- Added a focused regression test proving draft validation rejects a generated coverage chunk omitted from `expectedChunkIds`.
+- Addressed unresolved Codex AI Review findings `PRRT_kwDOSX65IM6A5vO2` and `PRRT_kwDOSX65IM6A51IX`.
+- Simplified-Spanish rejection now detects prefixed and variant keys/search fields such as `simplifiedSpanishText` and `learnerSimplifiedSpanishText`, not only exact key names.
+- Strict/final validation now checks generated coverage chunk `sourceSpan`s against the available archive Markdown and requires contiguous full-document line coverage.
+- Added focused regression tests for simplified-Spanish variant keys/search projections, incomplete archive span coverage, and non-contiguous archive span coverage.
+- Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A55Vw`.
+- Strict/final validation now requires every learner corpus chunk to have a matching search projection keyed by the same official document ID and chunk ID, so translated and QA-approved chunks cannot pass the release gate while missing from the local source reader/search index.
+- Added a focused regression test proving an otherwise complete strict fixture with `searchIndex.entries: []` fails validation.
+- Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A59hb`.
+- Strict/final/release validation now rejects manifest entries that are not source-ready: `currentness.status` must be release-ready, `currentness.validationStatus` must be `passed`, and `exactTextValidation.status` must be `passed`.
+- Added focused regression tests for pending exact-text validation, failed currentness validation, and stale/non-current effective source status.
+- Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A6Ad-`.
+- `scripts/validate-content.mjs` now binds `--quality-gate` and `--final-content` to strict primary-source validation automatically; default draft `pnpm run validate:content` remains permissive for the current preparatory corpus.
+- Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A6Kmh`.
+- Strict/final placeholder validation now rejects standalone English `draft` markers and Russian `чернов...` markers such as `DRAFT translation`, `Черновой перевод`, and `Черновик`, while preserving Unicode word-boundary handling.
+- Added focused regression tests for standalone English and Russian draft markers in approved strict-mode learner text.
+
 ### Implementation Agent Feedback
 
 - None yet.
@@ -293,6 +344,56 @@
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - `pnpm run test` passed: 72 Node tests, 72 pass, 0 fail.
   - `git diff --check` remained passed with no output.
+- Slice B focused verification on 2026-05-10:
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 12 tests, 12 pass, 0 fail.
+  - `node scripts/validate-content.mjs` passed. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Slice B requested verification on 2026-05-10:
+  - `pnpm run validate:content` passed. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 84 Node tests, 84 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - First `pnpm run build` attempt failed because this worktree had no `node_modules` and `vite` was unavailable. `pnpm install --frozen-lockfile` then hydrated dependencies without package metadata changes.
+  - Second `pnpm run build` passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite emitted the existing large-chunk warning for the app bundle.
+- Additional Orchestrator verification after Slice B return:
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 84 Node tests, 84 pass, 0 fail.
+  - `pnpm run build` passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=strict pnpm run validate:content` failed as expected because only the draft placeholder exists. This is positive strict-gate evidence, not a Slice B blocker: strict mode reported missing learner/generated chunk coverage for the remaining manifest entries and draft QA for the placeholder chunk.
+  - `git diff --check` passed with no output.
+- Slice B PR #74 review finding follow-up verification on 2026-05-10:
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 14 tests, 14 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 86 Node tests, 86 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - Orchestrator reran `pnpm run build` after the review fix and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- Slice B PR #74 head `641fdfa` P2 review follow-up verification on 2026-05-10:
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 17 tests, 17 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 89 Node tests, 89 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - Orchestrator reran `pnpm run build` after the P2 fixes and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- Slice B PR #74 head `987e712` P1 review follow-up verification on 2026-05-10:
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 18 tests, 18 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 90 Node tests, 90 pass, 0 fail.
+  - Orchestrator reran `pnpm run build` after the P1 expectedChunkIds fix and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- Slice B branch update over fresh Slice A intake on 2026-05-10:
+  - Fetched `origin/codex/016-primary-sources-section-intake` at merge commit `70d069a56dbbed9d8d770a7d9f9410b596f1cdf8`.
+  - Merged the fresh intake branch into `codex/016-primary-sources-schema-validators`.
+  - Resolved conflicts in `scripts/validate-content.mjs` by keeping both fresh-base difficulty/CABA process validation and Slice B primary-source draft/strict validation.
+  - Resolved conflicts in this `tasks.md` by preserving fresh Slice A/#68 process notes and all Slice B/#74 schema-validator notes and verification evidence.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 18 tests, 18 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 104 Node tests, 104 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+- Slice B PR #74 unresolved review findings follow-up on 2026-05-10:
+  - Addressed `PRRT_kwDOSX65IM6A5vO2`: simplified-Spanish validation now rejects variant/prefixed learner-data and search-projection keys such as `simplifiedSpanishText` and `learnerSimplifiedSpanishText`.
+  - Addressed `PRRT_kwDOSX65IM6A51IX`: strict/final validation now requires generated coverage chunk source spans to cover the available archived source Markdown contiguously from first line through final source line.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 21 tests, 21 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 107 Node tests, 107 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
 - Conflict resolution pass on 2026-05-10:
   - Fetched and merged `origin/main` at `578c618d02a45adffa9f2b18a9373495cf19ed8a` into `codex/016-primary-sources-section-intake`; merge commit remains pending for a human/Orchestrator to commit and push.
   - Resolved conflicts in `docs_project/project/feature-inventory.md` by preserving main's process-guide and validated-difficulty inventory entries plus PR #68's planned `Источники` reader and official-primary-source boundary note.
@@ -321,6 +422,22 @@
   - `pnpm run test` passed: 88 Node tests, 88 pass, 0 fail.
   - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
   - `git diff --check` passed with no output.
+- Slice B branch update over fresh PR #68 head on 2026-05-10:
+  - Fetched `origin/codex/016-primary-sources-section-intake` at `1b056182d1ffac18c3c36e3db08b5614ac118059`.
+  - Merged the fresh PR #68 branch into `codex/016-primary-sources-schema-validators` while preserving local PR #74 validator fixes.
+  - Resolved the `tasks.md` conflict by keeping PR #68's final-head verification checklist tasks open and preserving PR #74 process-memory evidence.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 21 tests, 21 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 109 Node tests, 109 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+- Slice B PR #74 unresolved search-projection follow-up on 2026-05-10:
+  - Addressed `PRRT_kwDOSX65IM6A55Vw`: strict/final validation now requires a local search projection entry for every learner corpus chunk, keyed by matching official document ID and chunk ID.
+  - Added a regression test with `searchIndex.entries: []` against an otherwise complete strict fixture.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 22 tests, 22 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 110 Node tests, 110 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
 - Main refresh pass on 2026-05-10 for image metadata support:
   - Fetched and merged `origin/main` at `78e0176e361eeea583dd797296bfa994b3f1f695` into `codex/016-primary-sources-section-intake` while preserving PR #68 docs/spec/process additions and open final-head verification tasks T130, T131, T135, and T136.
   - Resolved `docs_project/project/content-sources.md` by keeping current main ticket learning-support/image-metadata lifecycle guidance and PR #68's 19-entry official archive/currentness/exact-text primary-source documentation.
@@ -329,3 +446,36 @@
   - `pnpm run test` passed: 112 Node tests, 112 pass, 0 fail.
   - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
   - `git diff --check` passed with no output.
+- Slice B branch update over fresh PR #68 image-metadata-support head on 2026-05-10:
+  - Fetched `origin/codex/016-primary-sources-section-intake` at `1de7d1f357b86faa22f1faadfc87167ea545be11`, which includes `origin/main` at `78e0176`.
+  - Merged the fresh PR #68 branch into `codex/016-primary-sources-schema-validators` while preserving all PR #74 validator fixes: strict empty coverage, Unicode placeholders, QA `checkedAt`, exact chunk IDs, simplified-Spanish variant rejection, contiguous full-document source spans, and strict search projection coverage.
+  - Resolved the `tasks.md` conflict by preserving PR #68/main process evidence and PR #74 validator follow-up evidence.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 22 tests, 22 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 134 Node tests, 134 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+- Slice B branch update over renamed PR #68 feature memory on 2026-05-10:
+  - Fetched and merged `origin/codex/016-primary-sources-section-intake` at `6ae7e78bd57e84e96a052396fb3805bcc9e059a0`.
+  - Adopted the active feature-memory rename from `specs/016-primary-sources-section` to `specs/019-primary-sources-section`; no active `specs/016-primary-sources-section` folder remains after sync.
+  - Confirmed historical branch/worktree labels remain only as historical process text in this `019` feature memory.
+  - Preserved all PR #74 validator fixes after the rename: strict empty coverage, Unicode placeholders, QA `checkedAt`, exact chunk IDs, simplified-Spanish variant rejection, contiguous full-document source spans, strict search projection coverage, strict source-readiness manifest gates, and quality/final gate strict-mode binding.
+  - Addressed `PRRT_kwDOSX65IM6A59hb`: strict/final/release validation now rejects manifest entries whose currentness/effective status or exact-text validation is not release-ready.
+  - Addressed `PRRT_kwDOSX65IM6A6Ad-`: `--quality-gate`/`--final-content` validation now runs primary-source validation in strict mode automatically.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 25 tests, 25 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run validate:content:quality` failed as expected with exit code 1. This is positive final-gate evidence for the current draft corpus: the output included 19 `exactTextValidation.status must be passed for strict primary-source validation` errors, plus existing strict-mode placeholder, partial span coverage, missing manifest coverage, and draft QA errors.
+  - `pnpm run test` passed: 137 Node tests, 137 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- Slice B PR #74 standalone draft marker follow-up on 2026-05-10:
+  - Addressed `PRRT_kwDOSX65IM6A6Kmh`: strict/final placeholder validation now rejects standalone draft markers including `DRAFT translation`, `draft rewrite`, `Черновой перевод`, and `Черновик`.
+  - Added focused regression tests for standalone English and Russian draft markers in approved strict-mode learner content.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 27 tests, 27 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run validate:content:quality` failed as expected with exit code 1. This remains positive final-gate evidence for the current draft corpus: the output included 19 `exactTextValidation.status must be passed for strict primary-source validation` errors, strict placeholder errors for the draft content file, partial span coverage, missing manifest coverage, and draft QA errors.
+  - `pnpm run test` passed: 139 Node tests, 139 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`

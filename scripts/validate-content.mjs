@@ -12,6 +12,7 @@ import { assertGeneratedContentIndexesFresh, combinedContentFromShards } from ".
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
 import { validateOfficialDocumentsManifest } from "./official-documents-validation.mjs";
+import { validatePrimarySources } from "./primary-sources-validation.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
@@ -72,6 +73,11 @@ const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
 const topicGuideCoverage = readJson("content/guide/topic-study-guide.coverage.json");
 const topicGuideSourceTrace = readJson("content/guide/topic-study-guide.source-trace.json");
 const officialDocumentsManifest = readJson("content/official-documents/manifest.json");
+const primarySourcesCorpus = readJson("content/primary-sources/primary-sources.ru.json");
+const primarySourcesCoverage = readJson("content/primary-sources/primary-sources.coverage.json");
+const primarySourcesQa = readJson("content/primary-sources/primary-sources.qa.json");
+const primarySourcesSearch = readJson("content/primary-sources/primary-sources.search.json");
+const primarySourcesValidationMode = qualityGate ? "strict" : process.env.PRIMARY_SOURCES_VALIDATION_MODE || "draft";
 const exam = readJson("content/config/caba-exam-format.json");
 const approvals = readJson("content/validation/validator-approvals.json") || [];
 const exceptions = readJson("content/validation/release-exceptions.json") || [];
@@ -242,6 +248,21 @@ errors.push(
         ...(exists ? { sha256: sha256(relativePath) } : {})
       };
     }
+  })
+);
+errors.push(
+  ...validatePrimarySources({
+    manifest: officialDocumentsManifest,
+    corpus: primarySourcesCorpus,
+    coverage: primarySourcesCoverage,
+    qa: primarySourcesQa,
+    searchIndex: primarySourcesSearch,
+    mode: primarySourcesValidationMode,
+    root,
+    learnerContentPaths: [
+      "content/primary-sources/primary-sources.ru.json",
+      "content/primary-sources/primary-sources.qa.json"
+    ]
   })
 );
 const difficultyValidation = validateDifficultyContent({ questions, topicGuide });
