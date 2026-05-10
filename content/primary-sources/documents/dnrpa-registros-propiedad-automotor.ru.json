@@ -87,7 +87,7 @@
         "chunkingStrategy": "markdown-heading-sections",
         "originalSpanish": "##### NUEVO SERVICIO DIGITAL PARA CONSULTAR EL ESTADO DE NORMALIZACIÓN DE ENTREGA DE PATENTES\n\nEl Ministerio de Justicia informa que, en el marco de la normalización de entrega de patentes al 1° de Septiembre en todo el país, ya se encuentra habilitado un nuevo servicio digital en el sitio web de la Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios, a través del cual los ciudadanos pueden consultar el estado de su trámite de asignación de chapa patente ingresando a la sección \"Disponibilidad de Chapas\" en el sitio oficial de la DNRPA (www.dnrpa.gov.ar).\n\nDisponibilidad de Chapas\n",
         "fullTranslationRu": "##### НОВЫЙ ЦИФРОВОЙ СЕРВИС ДЛЯ ПРОВЕРКИ СОСТОЯНИЯ НОРМАЛИЗАЦИИ ВЫДАЧИ НОМЕРНЫХ ЗНАКОВ\n\nМинистерство юстиции сообщает, что в рамках нормализации выдачи номерных знаков по всей стране к 1° de Septiembre уже включен новый цифровой сервис на сайте Национальной дирекции национальных реестров собственности на автотранспортные средства и залоговых кредитов. Через него граждане могут проверить состояние своей процедуры назначения номерного знака, войдя в раздел \"Disponibilidad de Chapas\" на официальном сайте DNRPA (www.dnrpa.gov.ar).\n\nНаличие номерных знаков",
-        "simpleRu": "На сайте DNRPA появился сервис для проверки, как идет выдача номерного знака. Он связан с нормализацией выдачи патентов по стране к 1° de Septiembre. Проверка делается через раздел \"Disponibilidad de Chapas\" на www.dnrpa.gov.ar.",
+        "simpleRu": "На сайте DNRPA появился сервис для проверки, как идет выдача номерного знака. Он связан с нормализацией выдачи номерных знаков по стране к 1° de Septiembre. Проверка делается через раздел \"Disponibilidad de Chapas\" на www.dnrpa.gov.ar.",
         "sourceTextSha256": "7cee588e6a7841ff78bb91d027726da6aaba15e3acc96e45f7599d8b45594e5b",
         "sourceFingerprint": "sha256:7cee588e6a7841ff78bb91d027726da6aaba15e3acc96e45f7599d8b45594e5b",
         "sourceSpan": {
@@ -186,7 +186,7 @@
         "officialLabel": "Retiro de Trámites",
         "chunkingStrategy": "markdown-heading-sections",
         "originalSpanish": "### Retiro de Trámites\n\nVerificá el Estado de tu Trámite y solicitá un Turno para retirarlo.\n",
-        "fullTranslationRu": "### Получение оформленных процедур\n\nПроверьте состояние своей процедуры и запросите turno, чтобы ее забрать.",
+        "fullTranslationRu": "### Получение оформленных процедур\n\nПроверьте состояние своей процедуры и запросите запись, чтобы ее забрать.",
         "simpleRu": "Чтобы забрать результат процедуры, сначала проверьте ее статус и запросите запись на получение.",
         "sourceTextSha256": "659d51c74700d957a039773c7529d3a000811f4d65d14e092f2535fa5ec48ae5",
         "sourceFingerprint": "sha256:659d51c74700d957a039773c7529d3a000811f4d65d14e092f2535fa5ec48ae5",

@@ -758,3 +758,11 @@
   - `git diff --check` passed with no output after process-memory updates.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because core law, signage/manual, and large legal-duty documents still lack approved learner-source content and exact-text validation remains pending.
+- PR #103 DNRPA review-finding follow-up on 2026-05-10:
+  - Corrected Russian DNRPA terminology for `patentes`/`chapas` from ambiguous `патентов` to `номерных знаков`, and translated `turno` as `запись` in the learner-facing full translation. Search shard only references document fields, so no mirrored text update was needed.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
