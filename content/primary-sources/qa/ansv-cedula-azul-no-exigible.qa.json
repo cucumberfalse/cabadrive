@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ansv-cedula-azul-no-exigible",
+  "document": {
+    "officialDocumentId": "ansv-cedula-azul-no-exigible",
+    "chunks": [
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--la-cedula-azul-ya-no-es-documento-exigible-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-30, coverage fingerprint sha256:78ef2aa2a5ea7c70fa834463dd53a6ab3f038ec251f11e008c585c097a3b19ea, and content/primary-sources/terminology.ru.md. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        }
+      },
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--noticias-relacionadas-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 31-33, coverage fingerprint sha256:2cb55d5840e06cb3d7eba23a24ed72d652c75f51158dcffbf534188eb1566415, and content/primary-sources/terminology.ru.md. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        }
+      },
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--recomendaciones-para-manejar-en-rutas-y-caminos-con-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 34-36, coverage fingerprint sha256:a627deb8e13d6498f81f92de2d5f0cebd76ee4aaeedb18058631183314304624, and content/primary-sources/terminology.ru.md. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        }
+      },
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--elegi-llegar-conoce-la-campana-de-concientizacion-de-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 37-39, coverage fingerprint sha256:a82cda695e0950c3e03f487c74063fe37b294e81245e87f5d96504e465efa07f, and content/primary-sources/terminology.ru.md. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        }
+      },
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--verano-2026-la-ansv-controlo-a-mas-de-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 40-41, coverage fingerprint sha256:f8faf69835dea7a7d226cd89e482ffeb95e4cfa7c431c49ca6516dacf166374e, and content/primary-sources/terminology.ru.md. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Main ANSV note is translated as current learner guidance; related-news snippets are translated only as visible page links, not as primary circulation rules."
+        }
+      }
+    ]
+  }
+}

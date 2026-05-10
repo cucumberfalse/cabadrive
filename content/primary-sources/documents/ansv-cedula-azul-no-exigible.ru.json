@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ansv-cedula-azul-no-exigible",
+  "document": {
+    "officialDocumentId": "ansv-cedula-azul-no-exigible",
+    "title": "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+    "shortTitleRu": "Cédula azul больше не обязательна",
+    "category": "vehicle-documents",
+    "jurisdiction": "national",
+    "officialSourceType": "national_road_safety_official_note",
+    "sourceUrl": "https://www.argentina.gob.ar/noticias/la-cedula-azul-ya-no-es-documento-exigible-para-la-circulacion-de-vehiculos-en-el-pais",
+    "archiveLocalPath": "content/official-documents/documents/ansv-cedula-azul-no-exigible.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--la-cedula-azul-ya-no-es-documento-exigible-001",
+        "officialDocumentId": "ansv-cedula-azul-no-exigible",
+        "order": 1,
+        "headingPath": [
+          "La cédula azul ya no es documento exigible para la circulación de vehículos en el país"
+        ],
+        "officialLabel": "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "# La cédula azul ya no es documento exigible para la circulación de vehículos en el país\n\n13 de mayo de 2024\n\nA partir de la publicación en el Boletín Oficial de la Disposición 29/2024 de la Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor (DNRPA), la cédula de identificación para autorizados a conducir, conocida como cédula azul, quedó sin efecto como documento de identificación obligatorio para la circulación en vehículos por el territorio nacional.\n\nA su vez, la cédula verde no tendrá fecha de vencimiento y se podrá presentar tanto en formato físico como en digital (mediante la app Mi Argentina).\n\nEl documento oficial de la DNRPA publicado este lunes por la mañana aclara que “habiéndose establecido en el Decreto de Necesidad y Urgencia N° DNU-2023-70 el no vencimiento de las Cédulas de Identificación, la existencia de la “Cédula de Identificación para autorizado a conducir” carecería de sustento y aplicación prácticos”.\n\nLa nueva normativa también aclara que “las cédulas azules ya emitidas continuarán vigentes hasta tanto sean revocadas por quien las peticionó”.\n\nDe esta manera, la Agencia Nacional de Seguridad Vial (ANSV) comunica que los documentos y los elementos de seguridad con los que deberán circular los conductores en todo el territorio nacional son los siguientes:\n\n-Documento Nacional de Identidad (DNI).\n\n-Licencia Nacional de Conducir.\n\n-Cédula verde (o Cédula azul vigente y autorizada por el titular en caso de no contar con la Cédula verde).\n\n-Comprobante de seguro vigente.\n\n-Constancia de Revisión Técnica Obligatoria (RTO) o Verificación Técnica\n\nVehicular (VTV).\n\n-Chapas patente colocadas visibles, sin alteraciones y en buen estado.\n\n-Matafuegos con fecha vigente y balizas triangulares.\n",
+        "fullTranslationRu": "# Cédula azul больше не является документом, обязательным для движения транспортных средств в стране\n\n13 мая 2024 года\n\nС момента публикации в Официальном бюллетене Распоряжения 29/2024 Национальной дирекции национальных реестров собственности на автомобили и залоговых кредитов (DNRPA) идентификационная cédula для лиц, уполномоченных управлять транспортным средством, известная как cédula azul, перестала действовать как обязательный идентификационный документ для движения на транспортных средствах по национальной территории.\n\nВ то же время cédula verde не будет иметь даты истечения срока действия, и ее можно предъявлять как в физическом, так и в цифровом формате через приложение Mi Argentina.\n\nОфициальный документ DNRPA, опубликованный этим понедельником утром, поясняет, что «поскольку Декретом необходимости и срочности N DNU-2023-70 установлено отсутствие истечения срока действия идентификационных cédulas, существование “Cédula de Identificación para autorizado a conducir” лишилось бы практического основания и применения».\n\nНовая норма также уточняет, что «уже выданные cédulas azules сохраняют действие до тех пор, пока не будут отозваны тем, кто их запросил».\n\nТаким образом, Национальное агентство безопасности дорожного движения (ANSV) сообщает, что документы и элементы безопасности, с которыми водители должны ездить по всей национальной территории, следующие:\n\n-Документ национальной идентификации (DNI).\n\n-Национальное водительское удостоверение.\n\n-Cédula verde или действующая cédula azul, уполномоченная владельцем, если cédula verde отсутствует.\n\n-Подтверждение действующего страхования.\n\n-Справка о обязательном техническом осмотре (RTO) или Verificación Técnica Vehicular (VTV).\n\n-Установленные видимые номерные знаки, без изменений и в хорошем состоянии.\n\n-Огнетушитель с действующей датой и треугольные аварийные знаки.",
+        "simpleRu": "С 13 мая 2024 года cédula azul больше не обязательна для движения по стране. Cédula verde не имеет срока окончания и может быть бумажной или цифровой в Mi Argentina. Уже выданная cédula azul действует, пока ее не отменит тот, кто ее запросил. Водитель все равно должен иметь DNI, водительское удостоверение, cédula verde или действующую cédula azul в указанном случае, страховку, RTO или VTV, видимые номера, огнетушитель и аварийные треугольники.",
+        "sourceTextSha256": "78ef2aa2a5ea7c70fa834463dd53a6ab3f038ec251f11e008c585c097a3b19ea",
+        "sourceFingerprint": "sha256:78ef2aa2a5ea7c70fa834463dd53a6ab3f038ec251f11e008c585c097a3b19ea",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 30
+        }
+      },
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--noticias-relacionadas-002",
+        "officialDocumentId": "ansv-cedula-azul-no-exigible",
+        "order": 2,
+        "headingPath": [
+          "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+          "Noticias relacionadas"
+        ],
+        "officialLabel": "Noticias relacionadas",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Noticias relacionadas\n\n16 de abril de 2026",
+        "fullTranslationRu": "## Связанные новости\n\n16 апреля 2026 года",
+        "simpleRu": "Это блок связанных новостей на странице ANSV. В нем указана дата: 16 апреля 2026 года.",
+        "sourceTextSha256": "2cb55d5840e06cb3d7eba23a24ed72d652c75f51158dcffbf534188eb1566415",
+        "sourceFingerprint": "sha256:2cb55d5840e06cb3d7eba23a24ed72d652c75f51158dcffbf534188eb1566415",
+        "sourceSpan": {
+          "startLine": 31,
+          "endLine": 33
+        }
+      },
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--recomendaciones-para-manejar-en-rutas-y-caminos-con-003",
+        "officialDocumentId": "ansv-cedula-azul-no-exigible",
+        "order": 3,
+        "headingPath": [
+          "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+          "Noticias relacionadas",
+          "Recomendaciones para manejar en rutas y caminos con nieve sobre la calzada"
+        ],
+        "officialLabel": "Recomendaciones para manejar en rutas y caminos con nieve sobre la calzada",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Recomendaciones para manejar en rutas y caminos con nieve sobre la calzada\n\n07 de abril de 2026",
+        "fullTranslationRu": "### Рекомендации по вождению на трассах и дорогах со снегом на проезжей части\n\n07 апреля 2026 года",
+        "simpleRu": "Связанная новость ANSV: рекомендации для движения по трассам и дорогам, где на проезжей части есть снег. Дата: 07 апреля 2026 года.",
+        "sourceTextSha256": "a627deb8e13d6498f81f92de2d5f0cebd76ee4aaeedb18058631183314304624",
+        "sourceFingerprint": "sha256:a627deb8e13d6498f81f92de2d5f0cebd76ee4aaeedb18058631183314304624",
+        "sourceSpan": {
+          "startLine": 34,
+          "endLine": 36
+        }
+      },
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--elegi-llegar-conoce-la-campana-de-concientizacion-de-004",
+        "officialDocumentId": "ansv-cedula-azul-no-exigible",
+        "order": 4,
+        "headingPath": [
+          "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+          "Noticias relacionadas",
+          "Elegí llegar: conocé la campaña de concientización de la ANSV y el Automóvil Club Argentino"
+        ],
+        "officialLabel": "Elegí llegar: conocé la campaña de concientización de la ANSV y el Automóvil Club Argentino",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Elegí llegar: conocé la campaña de concientización de la ANSV y el Automóvil Club Argentino\n\n06 de marzo de 2026",
+        "fullTranslationRu": "### Elegí llegar: узнайте о кампании по повышению осведомленности ANSV и Automóvil Club Argentino\n\n06 марта 2026 года",
+        "simpleRu": "Связанная новость ANSV о кампании «Elegí llegar» от ANSV и Automóvil Club Argentino. Дата: 06 марта 2026 года.",
+        "sourceTextSha256": "a82cda695e0950c3e03f487c74063fe37b294e81245e87f5d96504e465efa07f",
+        "sourceFingerprint": "sha256:a82cda695e0950c3e03f487c74063fe37b294e81245e87f5d96504e465efa07f",
+        "sourceSpan": {
+          "startLine": 37,
+          "endLine": 39
+        }
+      },
+      {
+        "chunkId": "ansv-cedula-azul-no-exigible--verano-2026-la-ansv-controlo-a-mas-de-005",
+        "officialDocumentId": "ansv-cedula-azul-no-exigible",
+        "order": 5,
+        "headingPath": [
+          "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+          "Noticias relacionadas",
+          "Verano 2026: la ANSV controló a más de 1 millón de vehículos y sancionó a 3.672 conductores alcoholizados"
+        ],
+        "officialLabel": "Verano 2026: la ANSV controló a más de 1 millón de vehículos y sancionó a 3.672 conductores alcoholizados",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Verano 2026: la ANSV controló a más de 1 millón de vehículos y sancionó a 3.672 conductores alcoholizados\n",
+        "fullTranslationRu": "### Лето 2026: ANSV проверило более 1 миллиона транспортных средств и применило санкции к 3.672 водителям в состоянии алкогольного опьянения",
+        "simpleRu": "Связанная новость ANSV: летом 2026 года проверили более 1 миллиона транспортных средств и наказали 3.672 водителей за алкоголь.",
+        "sourceTextSha256": "f8faf69835dea7a7d226cd89e482ffeb95e4cfa7c431c49ca6516dacf166374e",
+        "sourceFingerprint": "sha256:f8faf69835dea7a7d226cd89e482ffeb95e4cfa7c431c49ca6516dacf166374e",
+        "sourceSpan": {
+          "startLine": 40,
+          "endLine": 41
+        }
+      }
+    ]
+  }
+}

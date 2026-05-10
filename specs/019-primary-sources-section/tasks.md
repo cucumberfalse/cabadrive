@@ -85,6 +85,9 @@
 - [x] D0-004 Add tests for shard loading, missing shard references, and strict QA/search projection failures after combining.
 - [x] D0-005 Document the sharding contract in `content/primary-sources/AGENTS.md` so D-H batches can edit one document's learner text, QA, and search projection independently.
 - [x] T060 Create or update the shared terminology/glossary approach for consistent Russian legal/traffic terms.
+- [x] D1-001 Translate and simplify all 21 chunks in the small admin/study/safety content batch.
+- [x] D1-002 Add per-document learner, QA, and search shards for `gcba-material-estudio-examen-teorico`, `gcba-mapa-estrellas-amarillas`, `ansv-cedula-azul-no-exigible`, and `disposicion-343-2024-autorizacion-cedula-digital`.
+- [x] D1-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
 - [ ] T063 For each batch, preserve numbers, dates, legal obligations, exceptions, penalties, source names, and article references in both Russian layers.
@@ -243,6 +246,18 @@
 - Bundle size/performance must be measured once full Russian and Spanish chunk data are imported.
 
 ### Slice D0 Implementation Notes
+
+- Slice D1 small admin/study/safety content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-admin-small` on branch `codex/019-primary-sources-content-batch-admin-small`.
+- Added reviewed learner, QA, and search shards for 4 official documents and 21 chunks:
+  - `gcba-material-estudio-examen-teorico`: 4 chunks.
+  - `gcba-mapa-estrellas-amarillas`: 3 chunks.
+  - `ansv-cedula-azul-no-exigible`: 5 chunks.
+  - `disposicion-343-2024-autorizacion-cedula-digital`: 9 chunks.
+- For every D1 chunk, the learner shard copies `chunkId`, `officialDocumentId`, order, heading path, official label, chunking strategy, source span, source text hash, source fingerprint, and `originalSpanish` from the current archive/coverage inventory.
+- Full Russian and simple Russian text were reviewed against the Spanish archive spans and `content/primary-sources/terminology.ru.md`; QA shards mark translation and simplification QA as `approved` with `checkedAt: "2026-05-10"`.
+- D1 search shards add one entry per translated chunk with `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish` text fields.
+- No mass translation beyond the 4 assigned documents was attempted. Whole-corpus translation, simplification, QA, and final strict/release gates remain open for later D-H batches.
+- D1 does not edit `content/official-documents/**`.
 
 - Slice T060 terminology ran in assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-terminology` on branch `codex/016-primary-sources-terminology`.
 - Added `content/primary-sources/terminology.ru.md` as durable glossary and translation guidance for primary-source Russian full translations and simple Russian rewrites.
