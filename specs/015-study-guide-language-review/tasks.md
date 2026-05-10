@@ -113,11 +113,11 @@
 
 ## Future Slice J: Bicycles, Micromobility, And Shared Spaces
 
-- [ ] T079 Review and rewrite `bicycles-and-micromobility`.
-- [ ] T080 Review and rewrite `sustainable-mobility-and-vulnerable-users`.
-- [ ] T081 Review and rewrite `vulnerable-users-and-shared-spaces`.
-- [ ] T082 Keep Spanish terms such as `bicisenda`, `ciclovía`, `ciclorrodado`, and `DMP` visible with clear Russian anchors.
-- [ ] T083 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T079 Review and rewrite `bicycles-and-micromobility`.
+- [x] T080 Review and rewrite `sustainable-mobility-and-vulnerable-users`.
+- [x] T081 Review and rewrite `vulnerable-users-and-shared-spaces`.
+- [x] T082 Keep Spanish terms such as `bicisenda`, `ciclovía`, `ciclorrodado`, and `DMP` visible with clear Russian anchors.
+- [x] T083 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice K: Crash, Emergency, Legal Duties, And Authorities
 
@@ -207,9 +207,9 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `lane-and-channelization-markings` | I | Reviewed in Slice I part 1 |
 | `lane-choice-and-lane-changes` | I | Reviewed in Slice I part 2 |
 | `public-transport-and-exclusive-lanes` | H | Reviewed in Slice H |
-| `sustainable-mobility-and-vulnerable-users` | J | Pending |
-| `vulnerable-users-and-shared-spaces` | J | Pending |
-| `bicycles-and-micromobility` | J | Pending |
+| `sustainable-mobility-and-vulnerable-users` | J | Reviewed in Slice J |
+| `vulnerable-users-and-shared-spaces` | J | Reviewed in Slice J |
+| `bicycles-and-micromobility` | J | Reviewed in Slice J |
 | `mirrors-blind-spots-and-visibility` | D | Reviewed in Slice D |
 | `occupant-protection` | D | Reviewed in Slice D |
 | `emergency-response-and-crash-scene` | K | Pending |
@@ -830,6 +830,73 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `git diff --check`: pass after this evidence update.
   - Changed-path guard: pass after this evidence update; changed paths stayed limited to `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, with no PR #63 forbidden paths, coverage/source-trace manifests, validators/tests/docs/package/product files, scripts, or other non-scope paths.
 - PR #89 follow-up known issues: none introduced. The global `rg` scan still sees `gradual` in already-reviewed Slice I part 1 rendered strings outside this part 2 follow-up scope, and sees `route` / mixed English inside non-rendered machine IDs and `claims[].textRu` metadata; those were not edited because the assignment limited this cleanup to Slice I part 2 rendered fields and affected topic fingerprints.
+- Slice J worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-micromobility` on `codex/015-study-guide-language-review-micromobility`, stacked on fixed `origin/codex/015-study-guide-language-review-lanes-turns` head `f32055e` / PR #89 follow-up.
+- Parent refresh evidence: initial fetch saw parent `4e062b5`; after Orchestrator reported a lanes-turns follow-up, fetched again and found `f32055e` (`Fix Slice I language review leftovers`). Local Slice J work was preserved with `git stash`, the branch was rebased onto `origin/codex/015-study-guide-language-review-lanes-turns`, and the stash reapplied cleanly with only the two expected files modified.
+- Topics reviewed: `bicycles-and-micromobility`, `sustainable-mobility-and-vulnerable-users`, and `vulnerable-users-and-shared-spaces`.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice J did not touch root fields.
+  - titles: 3
+  - summaries: 3
+  - learning paragraphs: 21
+  - practical reasoning paragraphs: 9
+  - term translations: 54
+  - source-conflict notes: 0 in Slice J topics
+  - answer explanations: 117
+  - trap notes: 20
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 2
+  - summaries: 3
+  - learning paragraphs: 19
+  - practical reasoning paragraphs: 9
+  - term translations: 3
+  - source-conflict notes: 0
+  - answer explanations: 67
+  - trap notes: 13
+  - `difficultyMeta.sourceFingerprint`: 3
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice J topics 39 / 39.
+- Unique question IDs before/after: global 460 / 460; Slice J topics 39 / 39.
+- Answer explanations before/after: global 1,831 / 1,831; Slice J topics 117 / 117.
+- Source-conflict notes before/after: global 4 / 4; Slice J topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-008`, `b-fallback-037`, `b-fallback-069`, `b-fallback-094`, `b-fallback-136`, `b-fallback-140`, `b-fallback-142`, `b-fallback-167`, `b-fallback-168`, `b-fallback-186`, `b-fallback-294`, `b-fallback-337`, `b-fallback-354`, `b-fallback-373`, `b-fallback-425`, `b-fallback-426`, and `b-fallback-458`.
+- Duplicate handling decision: reviewed duplicated placements only inside the three assigned Slice J topics. Matching placements from already-reviewed pedestrian, risk, right-of-way, road, and warning slices were not edited again. Internal Slice J duplicates remain intentionally topic-specific: `vulnerable-users-and-shared-spaces` keeps shared-space and priority framing, while `bicycles-and-micromobility` keeps bicycle/DMP definitions, image recognition, parking, cargo, and age/speed framing. Answer IDs, verdicts, images, placements, and topic assignment shape were preserved.
+- Source-sensitive sentences left unchanged: all 14 `claims[].textRu` entries in Slice J topics were preserved as non-rendered source-trace metadata. Numeric, source-currentness, picture-bound, and ticket-bound meanings were preserved for `25 km/h`, `menor de 12 años`, `mayores de 12 años`, `Ambas respuestas`, `bicisenda`/`ciclovía`/`ciclocarril` definitions, `DMP`, `cordón anaranjado`, `descender de la bicicleta`, `giro a la derecha` cyclist priority, `autopistas/vías rápidas` prohibition, `b-fallback-228` parking-lot obligation wording, exact A/B/C image labels, and sustainable-mobility image comparisons.
+- CABA/RF notes added or clarified: Slice J made the CABA framing practical for an RF-trained driver without adding new legal claims. It clarified that a driver should expect cyclist/DMP infrastructure as a real exam signal, not decoration; that `bicisenda`, `ciclovía`, `ciclocarril`, and `DMP` are different Spanish anchors; that a car turning right across a cyclist path is not solved by a generic “велосипед всегда прав” shortcut; that exclusive public-transport or micromobility space is not a private-car bypass; and that `25 km/h` for electric-assist micromobility should be learned as a CABA ticket number.
+- Spanish-term evidence: kept `bicisenda`, `ciclovía`, `ciclocarril`, `ciclorodado`/`ciclorrodado`, `DMP`, `dispositivos de movilidad personal`, `cordón anaranjado`, `Metrobus`, `carril exclusivo`, `descender de la bicicleta`, and `movilidad sustentable` visible with Russian anchors; duplicate-term guard found 0 `spanishTerms[].translationRu` values duplicating their `termEs`.
+- Before/after samples:
+  - `sustainable-mobility-and-vulnerable-users`: before "Metrobus и carriles exclusivos существуют не как удобный объезд..."; after "Metrobus и carriles exclusivos - не объезд для частных автомобилей. Это приоритет для пассажирского транспорта."
+  - `sustainable-mobility-and-vulnerable-users`: before "probabilidad de siniestralidad ... количество и плотность транспортных конфликтов"; after "Фраза probabilidad de siniestralidad здесь про плотность конфликтов. Меньше vehículos обычно значит меньше точек риска."
+  - `vulnerable-users-and-shared-spaces`: before "wording конкретного fallback-билета" and "ticket-specific ranking"; after "ответ старого билета" and "ответ именно этого билета".
+  - `vulnerable-users-and-shared-spaces`: before "cyclist always wins" and "speed of the road"; after "велосипедист всегда главный" and "скорость этой дороги".
+  - `bicycles-and-micromobility`: before "Bicisenda vs ciclovía: do not swap vereda and calzada"; after "Bicisenda и ciclovía: не меняйте местами vereda/acera и calzada."
+  - `bicycles-and-micromobility`: before "bicycle-crossing cue", "image-specific mapping", "parking lot", and "cargo may be carried"; after "подсказка про велосипедное пересечение", "привязка к конкретной картинке", "парковка на изображении", and "carga можно перевозить".
+- PR #63 / PR #89 guard: Slice J write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch PR #63 / feature 009 forbidden paths (`content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`), coverage/source-trace manifests, validators/tests/docs/package files, product UI, scripts, package files, docs outside this feature memory, or other worktrees/branches/PRs. The final branch includes PR #89 follow-up head `f32055e` before the Slice J commit.
+- Difficulty metadata refresh evidence: all three Slice J topics kept their `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only `difficultyMeta.sourceFingerprint` changed, and each new value matched `difficultyTopicFingerprint(topic)` after the learner-facing text rewrite:
+  - `sustainable-mobility-and-vulnerable-users`: `63b3b8f923471de52329527b31a5e016655a2f360e349fe5e69527bf81734703` -> `b8fa767b024a145feb4c1e0c90c7d0231a02881827c42bae6efb8f7b9a52b42f`
+  - `vulnerable-users-and-shared-spaces`: `2055802a4f7d874d3be3c5d04755cdf5fbdb5172a5d47e45127282457d36784a` -> `6620134e1af15cb330f086c2b7a4eb1f6c93d1dfe612af0c3720af1a86d2f7bd`
+  - `bicycles-and-micromobility`: `f966577d48ab0a24d4a8ee67fc0efb29986e36387f62d87451a3e857c15768d0` -> `8543bc798474bff3d62725fbc8b539f4318e04e511d3729df3ae5c27135fef1c`
+- Validation evidence before final commit, after stacking on fixed `f32055e`:
+  - JSON parse, structural count, and preservation guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 170 claims, 38 `difficulty`, and 38 `difficultyMeta`. Only the three Slice J topics changed in `content/guide/topic-study-guide.ru.json`; IDs, slugs/status, placements, `questionId`, `imageLocalPath`, `answerId`, `verdict`, Spanish `termEs`, term/ticket/trap source references, claims/source traces, `difficulty`, and non-fingerprint `difficultyMeta` were preserved.
+  - Fingerprint guard: pass; all three changed topic `difficultyMeta.sourceFingerprint` values matched `difficultyTopicFingerprint(topic)`, and unchanged topic fingerprints remained untouched.
+  - Targeted rendered-field process/English scan over Slice J topics: pass; scanned 227 rendered fields after ignoring `b-fallback-*` ticket IDs, with 0 matches for curated English/process leftovers including `fallback`, `ticket-specific`, `wording`, `image-choice`, `assisted bike`, `bike topic`, `parking lot`, `route`, `gradual`, `official source`, `green crossing`, `visibility`, `stability`, and related terms.
+  - Duplicate-term guard for Slice J `spanishTerms[].translationRu`: pass; 0 values duplicate `termEs` verbatim.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check`: pass after this evidence update.
+  - Changed-path guard: pass after this evidence update; `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, and the forbidden/non-scope path diff produced no output.
+- PR #90 advisory clarity follow-up addressed: in `bicycles-and-micromobility`, added Russian learner anchors for DMP `casco (шлем)` and parking source wording `red de estacionamiento (сеть парковок)` / `espacios de estacionamiento (места парковки)`. Meaning stayed limited to the existing DMP equipment/parking/source-currentness wording; no answer IDs, verdicts, placements, source claims, slug/status, difficulty, or non-fingerprint difficulty metadata changed.
+- PR #90 advisory fingerprint refresh evidence: only `bicycles-and-micromobility` `difficultyMeta.sourceFingerprint` changed, from `8543bc798474bff3d62725fbc8b539f4318e04e511d3729df3ae5c27135fef1c` to `5aeabb8bcc2321ca9ea580ba17656af1f3632f285cbf243961acba074f87deec`, matching `difficultyTopicFingerprint(topic)` after the two learner-facing anchor edits.
+- PR #90 advisory validation evidence:
+  - JSON parse, structural count, and affected-topic preservation guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 170 claims, 38 `difficulty`, and 38 `difficultyMeta`. Compared with the prior Slice J head, the guide diff was limited to `bicycles-and-micromobility` `learningMaterialRu[4]`, `learningMaterialRu[7]`, and that topic's `difficultyMeta.sourceFingerprint`.
+  - Affected topic fingerprint guard: pass; `bicycles-and-micromobility` computed fingerprint and stored fingerprint both equal `5aeabb8bcc2321ca9ea580ba17656af1f3632f285cbf243961acba074f87deec`.
+  - Targeted Slice J rendered-field clarity scan: pass; scanned 227 rendered fields with 0 hits for bare `casco`, ambiguous `red/espacios de estacionamiento`, curated English/process leftovers, or exact duplicated `spanishTerms[].translationRu` values.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check`: pass after this evidence update.
+  - Changed-path guard: pass after this evidence update; `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, and the forbidden/non-scope path diff produced no output.
+- Known issues: none introduced. Slice K and Slice L remain pending by design.
+- Implementation Agent feedback: none requiring Architect disposition. Slice J found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs outside this feature memory, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
 
 ## Known Issues
 
