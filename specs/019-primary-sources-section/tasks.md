@@ -91,6 +91,9 @@
 - [x] D2-001 Translate and simplify all 44 chunks in the vehicle-document content batch.
 - [x] D2-002 Add per-document learner, QA, and search shards for `argentina-vehiculos-automotor-cedulas`, `disposicion-29-2024-cedulas-identificacion`, and `argentina-duplicado-chapa-patente-automotor`.
 - [x] D2-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
+- [x] D3-001 Translate and simplify all 69 chunks in the VTV/Ley 6631/siniestros content batch.
+- [x] D3-002 Add per-document learner, QA, and search shards for `ley-6631-caba-vtv-modificatoria-ley-2265`, `gcba-vtv-tramite-current`, and `gcba-guia-practica-siniestros-viales`.
+- [x] D3-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
 - [ ] T063 For each batch, preserve numbers, dates, legal obligations, exceptions, penalties, source names, and article references in both Russian layers.
@@ -261,6 +264,21 @@
 - Legal/admin terminology in D2 preserves cédula, DNRPA, DNU, Digesto, SITE, VEP, CUIT/CUIL/CDI, article references, dates, ownership/scope exceptions, revocation rules, and vehicle-registration procedure limits.
 - No mass translation beyond the 3 assigned documents was attempted. Whole-corpus translation, simplification, QA, and final strict/release gates remain open for later D-H batches.
 - D2 does not edit `content/official-documents/**`.
+
+- Slice D3 VTV/Ley 6631/siniestros content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-vtv-siniestros` on branch `codex/019-primary-sources-content-batch-vtv-siniestros`.
+- Branch base is `origin/codex/019-primary-sources-content-batch-vehicle-docs` at `14bf08ce653211e620608373b17e2f79734443ec`.
+- Added reviewed learner, QA, and search shards for 3 official documents and 69 chunks:
+  - `ley-6631-caba-vtv-modificatoria-ley-2265`: 19 chunks.
+  - `gcba-vtv-tramite-current`: 36 chunks.
+  - `gcba-guia-practica-siniestros-viales`: 14 chunks.
+- For every D3 chunk, the learner shard copies `chunkId`, `officialDocumentId`, order, heading path, official label, chunking strategy, source span, source text hash, source fingerprint, and `originalSpanish` from the current archive/coverage inventory.
+- Full Russian and simple Russian text were reviewed against the Spanish archive spans and `content/primary-sources/terminology.ru.md`; QA shards mark translation and simplification QA as `approved` with `checkedAt: "2026-05-10"`.
+- D3 search shards add one entry per translated chunk with `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish` text fields.
+- Quality follow-up in this worktree replaced the VTV responsible-office chunk's untranslated full-Russian heading with a Russian translation while retaining the official Spanish office name in parentheses for source traceability.
+- D3 terminology preserves VTV/VTO/RTRA, Ley 6631, Ley 2265, certificate validity and tolerance windows, tariff exemptions, classic/collection vehicle scope, station lists and schedules, PAS incident protocol, 72-hour insurance notice, emergency/reporting channels, witness duties, compensation deadlines, mediation/civil claim routes, and psychological/legal assistance context.
+- Batch QA/lint evidence before final verification: `npm run validate:content` passed; custom batch lint passed for Russian fields, QA approvals, `checkedAt: "2026-05-10"`, search references, and absence of simplified Spanish fields; archive-span/hash check passed for all 69 assigned chunks.
+- No mass translation beyond the 3 assigned documents was attempted. Whole-corpus translation, simplification, QA, and final strict/release gates remain open for later D-H batches.
+- D3 does not edit `content/official-documents/**`, UI files, coverage generator files, or official archive files.
 
 - Slice D1 small admin/study/safety content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-admin-small` on branch `codex/019-primary-sources-content-batch-admin-small`.
 - Added reviewed learner, QA, and search shards for 4 official documents and 21 chunks:
@@ -701,3 +719,15 @@
   - `npm run build` passed: content validation passed, assets synced, Vite production build completed, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - No blockers remain from this sync loop.
+- Slice D3 VTV/Ley 6631/siniestros content batch verification on 2026-05-10:
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring. `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` also passed as the actual primary-source coverage mode.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - Custom D3 batch lint passed for 69 chunks: Russian fields are nonempty, no draft/placeholder markers in Russian fields, QA status is `approved`, all QA records have `checkedAt: "2026-05-10"`, search entries reference `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish`, and no simplified Spanish fields were found.
+  - Custom archive-span/hash check passed for all 69 assigned chunks: `originalSpanish`, `sourceTextSha256`, and `sourceFingerprint` match current archived Markdown line spans.
+  - First `npm test` and `npm run build` attempts failed because the fresh worktree had no installed `node_modules` (`typescript` and `vite` unavailable). `pnpm install --frozen-lockfile` then completed using the existing lockfile with no package metadata changes.
+  - Re-run `npm test` passed: 153 tests, 153 pass, 0 fail.
+  - Re-run `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+  - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.

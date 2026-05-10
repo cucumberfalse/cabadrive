@@ -1,0 +1,784 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-vtv-tramite-current",
+  "document": {
+    "officialDocumentId": "gcba-vtv-tramite-current",
+    "title": "Verificación Técnica Vehicular Obligatoria",
+    "shortTitleRu": "Обязательная VTV в CABA",
+    "category": "vehicle-documents",
+    "jurisdiction": "caba",
+    "officialSourceType": "caba_service_current_material",
+    "sourceUrl": "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+    "archiveLocalPath": "content/official-documents/documents/gcba-vtv-tramite-current.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "gcba-vtv-tramite-current--verificacion-tecnica-vehicular-obligatoria-001",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 1,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria"
+        ],
+        "officialLabel": "Verificación Técnica Vehicular Obligatoria",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "# Verificación Técnica Vehicular Obligatoria\n\nLa Verificación Técnica Vehicular Obligatoria (VTVO) está destinada a aquellos vehículos y motovehículos particulares radicados en la Ciudad.\n\nRecordá que es obligatorio circular con la Verificación Técnica Vehicular Obligatoria (VTVO) al día.\n\nModalidad:\nOnline\nPresencial\n",
+        "fullTranslationRu": "# Обязательная техническая проверка транспортного средства\n\nОбязательная техническая проверка транспортного средства (VTVO) предназначена для частных транспортных средств и мототранспортных средств, зарегистрированных в городе.\n\nПомните, что движение с действующей Обязательной технической проверкой транспортного средства (VTVO) является обязательным.\n\nФормат:\nОнлайн\nОчный",
+        "simpleRu": "VTV нужна частным машинам и мотоциклам, зарегистрированным в CABA. Ездить надо с действующей VTV. Процедура начинается онлайн и продолжается очно.",
+        "sourceTextSha256": "2e77a3407a8eaec3f06353622e5cffd1c901b778bc626126cbef7b66602fbbed",
+        "sourceFingerprint": "sha256:2e77a3407a8eaec3f06353622e5cffd1c901b778bc626126cbef7b66602fbbed",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 10
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--cuales-son-los-requisitos-002",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 2,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?"
+        ],
+        "officialLabel": "¿Cuáles son los requisitos?",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## ¿Cuáles son los requisitos?\n",
+        "fullTranslationRu": "## Какие требования?",
+        "simpleRu": "Этот раздел перечисляет, какие документы и предметы нужны для VTV.",
+        "sourceTextSha256": "d799875b3cfdb117efe10e70242f78a01d7c1839b35699be05493d9293fc8a74",
+        "sourceFingerprint": "sha256:d799875b3cfdb117efe10e70242f78a01d7c1839b35699be05493d9293fc8a74",
+        "sourceSpan": {
+          "startLine": 11,
+          "endLine": 12
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--requisitos-obligatorios-003",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 3,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Requisitos obligatorios:"
+        ],
+        "officialLabel": "Requisitos obligatorios:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Requisitos obligatorios:\n\n- DNI vigente.\n\n- Licencia de conducir vigente.\n\n- Seguro del vehículo vigente.\n\n- Constancia de pago correspondiente a la reserva del turno.\n\n- Si tenés vehículo: cédula verde o azul (en caso de presentarse un tercero).\n\n- Título de propiedad del vehículo.\n\n- Si tenés motovehículo: cédula verde y/o rosa (en caso de presentarse un tercero).\n\n- Correo electrónico válido: recibirás un mail con el código de reserva y otro para descargar la boleta.\n",
+        "fullTranslationRu": "### Обязательные требования:\n\n- Действующий DNI.\n\n- Действующее водительское удостоверение.\n\n- Действующая страховка транспортного средства.\n\n- Подтверждение оплаты, соответствующее бронированию turno.\n\n- Если у вас транспортное средство: cédula verde или azul, если приходит третье лицо.\n\n- Документ о праве собственности на транспортное средство.\n\n- Если у вас мототранспортное средство: cédula verde и/или rosa, если приходит третье лицо.\n\n- Действующий адрес электронной почты: вы получите письмо с кодом бронирования и другое письмо для скачивания платежной квитанции.",
+        "simpleRu": "Для записи нужны DNI, права, страховка, подтверждение оплаты записи, документы на транспорт, email и, если идет другой человек, соответствующая cédula. Для мототранспорта указана cédula verde и/или rosa.",
+        "sourceTextSha256": "d3162f01f6de094fd6b1ba57a05e43bde632af015861289deb00b59f528aa7ab",
+        "sourceFingerprint": "sha256:d3162f01f6de094fd6b1ba57a05e43bde632af015861289deb00b59f528aa7ab",
+        "sourceSpan": {
+          "startLine": 13,
+          "endLine": 30
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--requisitos-obligatorios-al-momento-de-presentarte-al-turno-004",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 4,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Requisitos obligatorios al momento de presentarte al turno:"
+        ],
+        "officialLabel": "Requisitos obligatorios al momento de presentarte al turno:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Requisitos obligatorios al momento de presentarte al turno:\n\n- Matafuegos.\n\n- Balizas.\n\n- Botiquín de emergencias dentro del habitáculo.\n\n- Cinturones de seguridad del vehículo abrochados.\n",
+        "fullTranslationRu": "### Обязательные требования в момент явки на turno:\n\n- Огнетушитель.\n\n- Аварийные знаки.\n\n- Аптечка внутри салона.\n\n- Ремни безопасности транспортного средства должны быть пристегнуты.",
+        "simpleRu": "На саму проверку надо приехать с огнетушителем, аварийными знаками, аптечкой в салоне и пристегнутыми ремнями безопасности.",
+        "sourceTextSha256": "d9e5e7239d6d3212b532c9db5bacbca0ab794e6d45bf98120a97175152c1e54d",
+        "sourceFingerprint": "sha256:d9e5e7239d6d3212b532c9db5bacbca0ab794e6d45bf98120a97175152c1e54d",
+        "sourceSpan": {
+          "startLine": 31,
+          "endLine": 40
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--para-vehiculos-en-condicion-de-clasico-o-de-005",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 5,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Para vehículos en condición de Clásico o de Colección:"
+        ],
+        "officialLabel": "Para vehículos en condición de Clásico o de Colección:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Para vehículos en condición de Clásico o de Colección:\n\n- Deberá tener una antigüedad mínima de 30 años.\n\n- Tendrá que estar radicado en la Ciudad Autónoma de Buenos Aires.\n\n- Deberá mantener un alto grado de originalidad.\n\n- Estará obligado a cumplir la normativa actual respecto a las chapas patentes.\n",
+        "fullTranslationRu": "### Для транспортных средств в статусе классических или коллекционных:\n\n- Они должны иметь минимальный возраст 30 лет.\n\n- Они должны быть зарегистрированы в Автономном городе Буэнос-Айрес.\n\n- Они должны сохранять высокую степень оригинальности.\n\n- Они обязаны соблюдать действующие правила по номерным знакам.",
+        "simpleRu": "Классическая или коллекционная машина должна быть старше 30 лет, зарегистрирована в CABA, хорошо сохранять оригинальность и соответствовать правилам по номерным знакам.",
+        "sourceTextSha256": "36753ab5460564666ea78ec402ede594005a1e08218dcfbf1e8e0f6649d51466",
+        "sourceFingerprint": "sha256:36753ab5460564666ea78ec402ede594005a1e08218dcfbf1e8e0f6649d51466",
+        "sourceSpan": {
+          "startLine": 41,
+          "endLine": 50
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--exentos-de-pago-006",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 6,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:"
+        ],
+        "officialLabel": "Exentos de pago:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Exentos de pago:\n\n- Jubilados, pensionados y mayores de 65 años titulares de un vehículo y que cobren hasta 2 haberes mínimos jubilatorios.\n\n- Discapacitados titulares de vehículos.\n\n- Discapacitados no titulares del vehículo (padres, tutores, descendientes, cónyuges, convivientes).\n",
+        "fullTranslationRu": "### Освобожденные от оплаты:\n\n- Пенсионеры, получатели пенсий и лица старше 65 лет, которые являются владельцами транспортного средства и получают не больше 2 минимальных пенсионных выплат.\n\n- Люди с инвалидностью, являющиеся владельцами транспортных средств.\n\n- Люди с инвалидностью, не являющиеся владельцами транспортного средства: родители, опекуны, потомки, супруги, сожители.",
+        "simpleRu": "Не платить могут некоторые пенсионеры и люди старше 65 лет с низким доходом, люди с инвалидностью, а также определенные родственники или сожители человека с инвалидностью.",
+        "sourceTextSha256": "d9a7ba48466655da0991238f7d6bab07425108720eca11d970b46e8cfd1dc63d",
+        "sourceFingerprint": "sha256:d9a7ba48466655da0991238f7d6bab07425108720eca11d970b46e8cfd1dc63d",
+        "sourceSpan": {
+          "startLine": 51,
+          "endLine": 58
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-jubilados-pensionados-007",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 7,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "Para solicitar la exención de pago: Jubilados - pensionados - mayores de 65 años:"
+        ],
+        "officialLabel": "Para solicitar la exención de pago: Jubilados - pensionados - mayores de 65 años:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Para solicitar la exención de pago: Jubilados - pensionados - mayores de 65 años:\n\n- Copia de la cédula verde (ambas caras).\n\n- Título del vehículo.\n\n- Copia del DNI (ambas caras).\n\n- Comprobante de haberes.\n\n- Kilometraje del vehículo.\n\n- Fecha de nacimiento del titular del vehículo.\n\n- CUIT/CUIL del titular del vehículo.\n",
+        "fullTranslationRu": "#### Чтобы запросить освобождение от оплаты: пенсионеры, получатели пенсий, лица старше 65 лет:\n\n- Копия cédula verde с обеих сторон.\n\n- Документ о праве собственности на транспортное средство.\n\n- Копия DNI с обеих сторон.\n\n- Подтверждение выплат.\n\n- Пробег транспортного средства.\n\n- Дата рождения владельца транспортного средства.\n\n- CUIT/CUIL владельца транспортного средства.",
+        "simpleRu": "Для льготы пенсионеру или человеку старше 65 лет нужны копия cédula verde, титул машины, DNI, подтверждение дохода, пробег, дата рождения владельца и его CUIT/CUIL.",
+        "sourceTextSha256": "956bbed6c1aa21afb37a96e2b947947c989aeeead3667d50de8e58503dd67a17",
+        "sourceFingerprint": "sha256:956bbed6c1aa21afb37a96e2b947947c989aeeead3667d50de8e58503dd67a17",
+        "sourceSpan": {
+          "startLine": 59,
+          "endLine": 74
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-personas-con-008",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 8,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "Para solicitar la exención de pago: personas con discapacidades titulares de vehículos:"
+        ],
+        "officialLabel": "Para solicitar la exención de pago: personas con discapacidades titulares de vehículos:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Para solicitar la exención de pago: personas con discapacidades titulares de vehículos:\n\n- Copia de la cédula verde (ambas caras).\n\n- Título del vehículo.\n\n- Copia del DNI (ambas caras).\n\n- Copia del Certificado Único de Discapacidad.\n\n- Kilometraje del vehículo.\n\n- Fecha de nacimiento del titular del vehículo.\n\n- CUIT/CUIL del titular del vehículo.\n",
+        "fullTranslationRu": "#### Чтобы запросить освобождение от оплаты: люди с инвалидностью, являющиеся владельцами транспортных средств:\n\n- Копия cédula verde с обеих сторон.\n\n- Документ о праве собственности на транспортное средство.\n\n- Копия DNI с обеих сторон.\n\n- Копия Единого сертификата инвалидности.\n\n- Пробег транспортного средства.\n\n- Дата рождения владельца транспортного средства.\n\n- CUIT/CUIL владельца транспортного средства.",
+        "simpleRu": "Если человек с инвалидностью сам владелец машины, нужны cédula verde, титул, DNI, CUD, пробег, дата рождения владельца и CUIT/CUIL.",
+        "sourceTextSha256": "af67827e4f81a9bfd21f0e56fd44df2cbff1dbdeab53e54c13b608ce85ff3236",
+        "sourceFingerprint": "sha256:af67827e4f81a9bfd21f0e56fd44df2cbff1dbdeab53e54c13b608ce85ff3236",
+        "sourceSpan": {
+          "startLine": 75,
+          "endLine": 90
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-personas-con-009",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 9,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "Para solicitar la exención de pago: personas con discapacidades no titulares de vehículos:"
+        ],
+        "officialLabel": "Para solicitar la exención de pago: personas con discapacidades no titulares de vehículos:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Para solicitar la exención de pago: personas con discapacidades no titulares de vehículos:\n",
+        "fullTranslationRu": "#### Чтобы запросить освобождение от оплаты: люди с инвалидностью, не являющиеся владельцами транспортных средств:",
+        "simpleRu": "Дальше перечислены документы для случаев, когда машина оформлена не на человека с инвалидностью.",
+        "sourceTextSha256": "f7fe55d2eb1dab9d30daf60142ad2ce9dd8dfb789e2f593f096cfb56959255e0",
+        "sourceFingerprint": "sha256:f7fe55d2eb1dab9d30daf60142ad2ce9dd8dfb789e2f593f096cfb56959255e0",
+        "sourceSpan": {
+          "startLine": 91,
+          "endLine": 92
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--padres-010",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 10,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "Para solicitar la exención de pago: personas con discapacidades no titulares de vehículos:",
+          "Padres:"
+        ],
+        "officialLabel": "Padres:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Padres:\n\n- Frente y dorso cedula verde.\n\n- Título del vehículo.\n\n- Partida de nacimiento del titular del CUD.\n\n- Certificado Único de Discapacidad.\n\n- Frente y dorso del DNI del solicitante.\n\n- Kilometraje del vehículo.\n\n- Fecha de nacimiento del titular del vehículo.\n\n- CUIT/CUIL del titular del vehículo.\n",
+        "fullTranslationRu": "##### Родители:\n\n- Лицевая и обратная сторона cédula verde.\n\n- Документ о праве собственности на транспортное средство.\n\n- Свидетельство о рождении владельца CUD.\n\n- Единый сертификат инвалидности.\n\n- Лицевая и обратная сторона DNI заявителя.\n\n- Пробег транспортного средства.\n\n- Дата рождения владельца транспортного средства.\n\n- CUIT/CUIL владельца транспортного средства.",
+        "simpleRu": "Если льготу просит родитель, нужны документы на машину, свидетельство о рождении человека с CUD, сам CUD, DNI заявителя, пробег, дата рождения владельца и CUIT/CUIL.",
+        "sourceTextSha256": "01c2ed0d5b1c0c8a3fca2900cc1bdeb627e4a0714e6d276fc1c6d6cda7f78372",
+        "sourceFingerprint": "sha256:01c2ed0d5b1c0c8a3fca2900cc1bdeb627e4a0714e6d276fc1c6d6cda7f78372",
+        "sourceSpan": {
+          "startLine": 93,
+          "endLine": 110
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--tutores-011",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 11,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "Para solicitar la exención de pago: personas con discapacidades no titulares de vehículos:",
+          "Tutores:"
+        ],
+        "officialLabel": "Tutores:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Tutores:\n\n- Frente y dorso cedula verde.\n\n- Título del vehículo.\n\n- Certificado Único de Discapacidad.\n\n- Documento que acredite el otorgamiento de la tutela.\n\n- Frente y dorso del DNI del titular del CUD.\n\n- Frente y dorso del DNI del solicitante.\n\n- Kilometraje del vehículo.\n\n- Fecha de nacimiento del titular del vehículo.\n\n- CUIT/CUIL del titular del vehículo.\n",
+        "fullTranslationRu": "##### Опекуны:\n\n- Лицевая и обратная сторона cédula verde.\n\n- Документ о праве собственности на транспортное средство.\n\n- Единый сертификат инвалидности.\n\n- Документ, подтверждающий назначение опеки.\n\n- Лицевая и обратная сторона DNI владельца CUD.\n\n- Лицевая и обратная сторона DNI заявителя.\n\n- Пробег транспортного средства.\n\n- Дата рождения владельца транспортного средства.\n\n- CUIT/CUIL владельца транспортного средства.",
+        "simpleRu": "Для опекуна нужны документы на машину, CUD, документ об опеке, DNI человека с CUD и заявителя, пробег, дата рождения владельца и CUIT/CUIL.",
+        "sourceTextSha256": "29e02cf301c2b6c527b9bc326b9726e973792c3cc3827e9433a335a800413c7a",
+        "sourceFingerprint": "sha256:29e02cf301c2b6c527b9bc326b9726e973792c3cc3827e9433a335a800413c7a",
+        "sourceSpan": {
+          "startLine": 111,
+          "endLine": 130
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--descendientes-012",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 12,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "Para solicitar la exención de pago: personas con discapacidades no titulares de vehículos:",
+          "Descendientes:"
+        ],
+        "officialLabel": "Descendientes:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Descendientes:\n\n- Frente y dorso cedula verde.\n\n- Título del vehículo.\n\n- Certificado Único de Discapacidad.\n\n- Partida de nacimiento del hijo del titular del CUD.\n\n- Frente y dorso del DNI del titular del CUD.\n\n- Frente y dorso del DNI del solicitante.\n\n- Kilometraje del vehículo.\n\n- Fecha de nacimiento del titular del vehículo.\n\n- CUIT/CUIL del titular del vehículo.\n",
+        "fullTranslationRu": "##### Потомки:\n\n- Лицевая и обратная сторона cédula verde.\n\n- Документ о праве собственности на транспортное средство.\n\n- Единый сертификат инвалидности.\n\n- Свидетельство о рождении ребенка владельца CUD.\n\n- Лицевая и обратная сторона DNI владельца CUD.\n\n- Лицевая и обратная сторона DNI заявителя.\n\n- Пробег транспортного средства.\n\n- Дата рождения владельца транспортного средства.\n\n- CUIT/CUIL владельца транспортного средства.",
+        "simpleRu": "Для потомка нужны документы на машину, CUD, свидетельство о рождении ребенка владельца CUD, DNI человека с CUD и заявителя, пробег, дата рождения владельца и CUIT/CUIL.",
+        "sourceTextSha256": "117249ee17908294b8111c4f2e603ef0b5d33cb88961274f209dd022c0422aa4",
+        "sourceFingerprint": "sha256:117249ee17908294b8111c4f2e603ef0b5d33cb88961274f209dd022c0422aa4",
+        "sourceSpan": {
+          "startLine": 131,
+          "endLine": 150
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--conyuges-013",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 13,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "Para solicitar la exención de pago: personas con discapacidades no titulares de vehículos:",
+          "Cónyuges:"
+        ],
+        "officialLabel": "Cónyuges:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Cónyuges:\n\n- Frente y dorso cedula verde.\n\n- Título del vehículo.\n\n- Certificado Único de Discapacidad.\n\n- Certificado de matrimonio.\n\n- Frente y dorso del DNI del titular del CUD.\n\n- Frente y dorso del DNI del solicitante.\n\n- Kilometraje del vehículo.\n\n- Fecha de nacimiento del titular del vehículo.\n\n- CUIT/CUIL del titular del vehículo.\n",
+        "fullTranslationRu": "##### Супруги:\n\n- Лицевая и обратная сторона cédula verde.\n\n- Документ о праве собственности на транспортное средство.\n\n- Единый сертификат инвалидности.\n\n- Свидетельство о браке.\n\n- Лицевая и обратная сторона DNI владельца CUD.\n\n- Лицевая и обратная сторона DNI заявителя.\n\n- Пробег транспортного средства.\n\n- Дата рождения владельца транспортного средства.\n\n- CUIT/CUIL владельца транспортного средства.",
+        "simpleRu": "Супругу нужны документы на машину, CUD, свидетельство о браке, DNI человека с CUD и заявителя, пробег, дата рождения владельца и CUIT/CUIL.",
+        "sourceTextSha256": "3e3b863e2eceb3be036c6c630da202664dd0c63ccb40a07fd17baf511d2fee81",
+        "sourceFingerprint": "sha256:3e3b863e2eceb3be036c6c630da202664dd0c63ccb40a07fd17baf511d2fee81",
+        "sourceSpan": {
+          "startLine": 151,
+          "endLine": 170
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--convivientes-014",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 14,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "Para solicitar la exención de pago: personas con discapacidades no titulares de vehículos:",
+          "Convivientes:"
+        ],
+        "officialLabel": "Convivientes:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Convivientes:\n\n- Frente y dorso cedula verde.\n\n- Título del vehículo.\n\n- Certificado Único de Discapacidad.\n\n- Certificado de convivencia (debe poseer mínimo 2 años de convivencia).\n\n- Frente y dorso del DNI del titular del CUD.\n\n- Frente y dorso del DNI del solicitante.\n\n- Kilometraje del vehículo.\n\n- Fecha de nacimiento del titular del vehículo.\n\n- CUIT/CUIL del titular del vehículo.\n",
+        "fullTranslationRu": "##### Сожители:\n\n- Лицевая и обратная сторона cédula verde.\n\n- Документ о праве собственности на транспортное средство.\n\n- Единый сертификат инвалидности.\n\n- Сертификат совместного проживания, при этом должно быть минимум 2 года совместного проживания.\n\n- Лицевая и обратная сторона DNI владельца CUD.\n\n- Лицевая и обратная сторона DNI заявителя.\n\n- Пробег транспортного средства.\n\n- Дата рождения владельца транспортного средства.\n\n- CUIT/CUIL владельца транспортного средства.",
+        "simpleRu": "Сожителю нужны документы на машину, CUD, сертификат совместного проживания минимум 2 года, DNI человека с CUD и заявителя, пробег, дата рождения владельца и CUIT/CUIL.",
+        "sourceTextSha256": "80d286ac764f6f9767d9b98fd107a264996843cb6d81481bd15955c3f15258ce",
+        "sourceFingerprint": "sha256:80d286ac764f6f9767d9b98fd107a264996843cb6d81481bd15955c3f15258ce",
+        "sourceSpan": {
+          "startLine": 171,
+          "endLine": 190
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--como-solicitar-la-exencion-de-pago-015",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 15,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "¿Cómo solicitar la exención de pago?"
+        ],
+        "officialLabel": "¿Cómo solicitar la exención de pago?",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### ¿Cómo solicitar la exención de pago?\n\nDebés ingresar a la Web del Gobierno de la Ciudad, cargar los datos relacionados al vehículo y a la persona de contacto, seleccionar el motivo por el cual solicitás el beneficio de pago, adjuntar la documentación respaldatoria y aguardar el resultado de tu solicitud.\n\nTambién podés enviar la documentación escaneada indicando CUIT/ CUIL, fecha de nacimiento del titular del vehículo, mes, año de patentamiento y el kilometraje de la unidad a: exentosvtv@buenosaires.gob.ar.\n",
+        "fullTranslationRu": "#### Как запросить освобождение от оплаты?\n\nНужно зайти на сайт Правительства города, загрузить данные о транспортном средстве и контактном лице, выбрать причину, по которой вы просите льготу по оплате, приложить подтверждающие документы и ждать результата запроса.\n\nТакже можно отправить отсканированные документы с указанием CUIT/CUIL, даты рождения владельца транспортного средства, месяца и года выдачи номерного знака и пробега единицы на: exentosvtv@buenosaires.gob.ar.",
+        "simpleRu": "Льготу запрашивают на сайте города: вводят данные машины и контакта, выбирают причину, прикладывают документы и ждут ответ. Можно также отправить сканы на exentosvtv@buenosaires.gob.ar с CUIT/CUIL, датой рождения владельца, месяцем и годом регистрации и пробегом.",
+        "sourceTextSha256": "6a4b4ce91016756fad390fd4bc982f3c6bc1586990928b28d8688ae22c186ce2",
+        "sourceFingerprint": "sha256:6a4b4ce91016756fad390fd4bc982f3c6bc1586990928b28d8688ae22c186ce2",
+        "sourceSpan": {
+          "startLine": 191,
+          "endLine": 196
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--cuando-son-aplicables-las-bonificaciones-016",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 16,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "¿Cuáles son los requisitos?",
+          "Exentos de pago:",
+          "¿Cuándo son aplicables las bonificaciones?"
+        ],
+        "officialLabel": "¿Cuándo son aplicables las bonificaciones?",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### ¿Cuándo son aplicables las bonificaciones?\n\nPara aplicar la exención de pago a la hora de realizar la VTV es importante que la documentación respaldatoria que envíes se presente dentro del plazo establecido por la ley. Este plazo está pautado según el último número de la patente del vehículo.\n\nPara los vehículos cuya patente termine en 1 el mes es noviembre, para los terminados en 2 es febrero, 3 es marzo, 4 es abril, 5 es mayo, 6 es junio, 7 es julio, 8 es agosto, 9 es septiembre y 0 es octubre. Recordá que en diciembre y enero no hay vencimientos.\n\nSi la documentación es enviada en el plazo correcto y la solicitud de exención es aprobada, el beneficio quedará activo y podrá ser utilizado. En caso de que no se envíe dentro de los plazos, no podrá ser procesada.\n",
+        "fullTranslationRu": "#### Когда применяются льготы?\n\nЧтобы применить освобождение от оплаты при прохождении VTV, важно, чтобы подтверждающие документы были отправлены в срок, установленный законом. Этот срок определяется по последней цифре номерного знака транспортного средства.\n\nДля транспортных средств, номер которых заканчивается на 1, месяц - ноябрь; на 2 - февраль; на 3 - март; на 4 - апрель; на 5 - май; на 6 - июнь; на 7 - июль; на 8 - август; на 9 - сентябрь; на 0 - октябрь. Помните, что в декабре и январе сроков окончания нет.\n\nЕсли документы отправлены в правильный срок и запрос об освобождении одобрен, льгота станет активной и ее можно будет использовать. Если документы не отправлены в срок, запрос не сможет быть обработан.",
+        "simpleRu": "Документы на льготу надо отправить в месяц, который соответствует последней цифре номера: 1 - ноябрь, 2 - февраль, 3 - март, 4 - апрель, 5 - май, 6 - июнь, 7 - июль, 8 - август, 9 - сентябрь, 0 - октябрь. В декабре и январе сроков нет. Если отправить не вовремя, запрос не обработают.",
+        "sourceTextSha256": "d3b9efed5fe40c62f18e41945f8db0bf3b3effc96ff0eeb0154f8c5ed3bd6e54",
+        "sourceFingerprint": "sha256:d3b9efed5fe40c62f18e41945f8db0bf3b3effc96ff0eeb0154f8c5ed3bd6e54",
+        "sourceSpan": {
+          "startLine": 197,
+          "endLine": 204
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--pasos-para-realizar-el-tramite-017",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 17,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Pasos para realizar el trámite"
+        ],
+        "officialLabel": "Pasos para realizar el trámite",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Pasos para realizar el trámite\n\n-\n",
+        "fullTranslationRu": "## Шаги для выполнения процедуры\n\n-",
+        "simpleRu": "Дальше идут шаги, как записаться и пройти процедуру VTV.",
+        "sourceTextSha256": "15985e93ef73c003355ec5fa31b076ae8a9c6304e71073791b15b3fabf0f2567",
+        "sourceFingerprint": "sha256:15985e93ef73c003355ec5fa31b076ae8a9c6304e71073791b15b3fabf0f2567",
+        "sourceSpan": {
+          "startLine": 205,
+          "endLine": 208
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--reserva-tu-turno-018",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 18,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Pasos para realizar el trámite",
+          "Reservá tu turno"
+        ],
+        "officialLabel": "Reservá tu turno",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Reservá tu turno\n\nHacé clic en “Iniciar trámite”.\n\nAccedé al sistema de asignación de turnos para la Verificación Técnica Vehicular.\n\nImportante:\n\n- Tené en cuenta los vencimientos que figuran al principio de esta página para saber cuándo debés realizar la Verificación Técnica Vehicular Obligatoria (VTVO).\n\n- Recordá que cuando verificás tu vehículo fuera de plazo, la vigencia de tu oblea será la misma de haberla realizado en tiempo y forma.\n\n-\n",
+        "fullTranslationRu": "#### Забронируйте turno\n\nНажмите \"Начать процедуру\".\n\nВойдите в систему назначения turno для Обязательной технической проверки транспортного средства.\n\nВажно:\n\n- Учитывайте сроки окончания, указанные в начале этой страницы, чтобы знать, когда нужно проходить Обязательную техническую проверку транспортного средства (VTVO).\n\n- Помните, что если вы проверяете транспортное средство после срока, срок действия вашей наклейки будет таким же, как если бы проверка была выполнена своевременно и правильно.\n\n-",
+        "simpleRu": "Запись начинается кнопкой \"Iniciar trámite\". Важно смотреть срок по номеру машины. Если пройти VTV поздно, новая наклейка не даст дополнительный срок: ее срок будет как при своевременной проверке.",
+        "sourceTextSha256": "78f157edd6a2eba5ea3eb1234f9f50085bef89ce470dfcee61ef563396f76d63",
+        "sourceFingerprint": "sha256:78f157edd6a2eba5ea3eb1234f9f50085bef89ce470dfcee61ef563396f76d63",
+        "sourceSpan": {
+          "startLine": 209,
+          "endLine": 222
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--completa-el-formulario-web-019",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 19,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Pasos para realizar el trámite",
+          "Completá el formulario web"
+        ],
+        "officialLabel": "Completá el formulario web",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Completá el formulario web\n\nSeguí las indicaciones de la plataforma.\n\nSe te pedirán los datos del vehículo y de contacto. Luego, seleccioná el método de pago del trámite (online o presencial).\n\n-\n",
+        "fullTranslationRu": "#### Заполните веб-форму\n\nСледуйте указаниям платформы.\n\nУ вас попросят данные транспортного средства и контактные данные. Затем выберите способ оплаты процедуры: онлайн или очно.\n\n-",
+        "simpleRu": "В форме вводят данные машины и контакта, затем выбирают оплату онлайн или очно.",
+        "sourceTextSha256": "3305c2f6ddca58841e01c736b8ed35c3c1678594b1011b26044c4ab8eb44b1c5",
+        "sourceFingerprint": "sha256:3305c2f6ddca58841e01c736b8ed35c3c1678594b1011b26044c4ab8eb44b1c5",
+        "sourceSpan": {
+          "startLine": 223,
+          "endLine": 230
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--selecciona-alguna-de-las-7-plantas-la-fecha-020",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 20,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Pasos para realizar el trámite",
+          "Seleccioná alguna de las 7 plantas, la fecha y el horario del turno"
+        ],
+        "officialLabel": "Seleccioná alguna de las 7 plantas, la fecha y el horario del turno",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Seleccioná alguna de las 7 plantas, la fecha y el horario del turno\n\nImportante: una vez seleccionada la planta de verificación, NO podrás cambiarla.\n\n-\n",
+        "fullTranslationRu": "#### Выберите одну из 7 станций, дату и время turno\n\nВажно: после выбора станции проверки вы НЕ сможете ее изменить.\n\n-",
+        "simpleRu": "Нужно выбрать станцию, дату и время. После выбора станцию поменять нельзя.",
+        "sourceTextSha256": "707de459bb5ac8333b0b219a5b41a1bb5405c197839fbb74c1cdd6fdedcd353e",
+        "sourceFingerprint": "sha256:707de459bb5ac8333b0b219a5b41a1bb5405c197839fbb74c1cdd6fdedcd353e",
+        "sourceSpan": {
+          "startLine": 231,
+          "endLine": 236
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--completa-los-datos-del-pago-que-se-te-021",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 21,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Pasos para realizar el trámite",
+          "Completá los datos del pago que se te solicitan en el formulario"
+        ],
+        "officialLabel": "Completá los datos del pago que se te solicitan en el formulario",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Completá los datos del pago que se te solicitan en el formulario\n\nSon aquellos correspondientes a la boleta de pago del trámite.\n\n-\n",
+        "fullTranslationRu": "#### Заполните платежные данные, которые запрашиваются в форме\n\nЭто данные, относящиеся к платежной квитанции процедуры.\n\n-",
+        "simpleRu": "В форме нужно заполнить данные платежной квитанции за процедуру.",
+        "sourceTextSha256": "cae3cf4727e965e921038c306815f1714ba7f00939f68d2b409043254bbc4640",
+        "sourceFingerprint": "sha256:cae3cf4727e965e921038c306815f1714ba7f00939f68d2b409043254bbc4640",
+        "sourceSpan": {
+          "startLine": 237,
+          "endLine": 242
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--abona-la-reserva-del-turno-022",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 22,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Pasos para realizar el trámite",
+          "Aboná la reserva del turno"
+        ],
+        "officialLabel": "Aboná la reserva del turno",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Aboná la reserva del turno\n\nSegún el método de pago que hayas elegido (online o presencial).\n\nPodés pagar la BUI (Boleta Única Inteligente) desde: Pago Fácil, Rapipago, Mercado Pago, Portal de pago electrónico o Billetera Virtual BUEPP (para más información ingresá a www.buepp.com.ar).\n",
+        "fullTranslationRu": "#### Оплатите бронирование turno\n\nВ зависимости от выбранного способа оплаты: онлайн или очно.\n\nBUI (Boleta Única Inteligente) можно оплатить через Pago Fácil, Rapipago, Mercado Pago, портал электронных платежей или виртуальный кошелек BUEPP; для дополнительной информации зайдите на www.buepp.com.ar.",
+        "simpleRu": "Бронирование turno надо оплатить выбранным способом. BUI можно оплатить через Pago Fácil, Rapipago, Mercado Pago, электронный платежный портал или BUEPP.",
+        "sourceTextSha256": "bdaeae8cdba50daa414700e8f033a2b489c8249e2515782ccb38fc58a66a775b",
+        "sourceFingerprint": "sha256:bdaeae8cdba50daa414700e8f033a2b489c8249e2515782ccb38fc58a66a775b",
+        "sourceSpan": {
+          "startLine": 243,
+          "endLine": 248
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--costos-del-tramite-023",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 23,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Costos del trámite"
+        ],
+        "officialLabel": "Costos del trámite",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Costos del trámite\n\n###\n\n$96.968,19\n\nVehículos\n\n###\n\n$36.459,72\n\nMotovehículos\n\nSegún la Ley Tarifaria vigente.\n",
+        "fullTranslationRu": "## Стоимость процедуры\n\n###\n\n$96.968,19\n\nТранспортные средства\n\n###\n\n$36.459,72\n\nМототранспортные средства\n\nСогласно действующему тарифному закону.",
+        "simpleRu": "На странице указаны тарифы: $96.968,19 для транспортных средств и $36.459,72 для мототранспорта. Суммы зависят от действующего тарифного закона, поэтому их надо проверять на официальной странице.",
+        "sourceTextSha256": "41a7e58373943467efd81ac742f7e35d380dde13b60b9ed10f9887ad3bae2708",
+        "sourceFingerprint": "sha256:41a7e58373943467efd81ac742f7e35d380dde13b60b9ed10f9887ad3bae2708",
+        "sourceSpan": {
+          "startLine": 249,
+          "endLine": 264
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--nuevas-medidas-en-el-tramite-de-la-vtv-024",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 24,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Nuevas medidas en el trámite de la VTV:"
+        ],
+        "officialLabel": "Nuevas medidas en el trámite de la VTV:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Nuevas medidas en el trámite de la VTV:\n\nA partir de las modificaciones que implementamos en la normativa, debés tener en cuenta el kilometraje, el mes y año de patentamiento de tu vehículo para saber cuándo tenés que realizar la inspección.\n\nPrimera Verificación\n\nA partir de que entró en vigencia el cambio normativo el día 04/05/2023 los autos y motos de uso particular radicados en la Ciudad de Buenos Aires realizan su primera revisión a partir del cuarto año de antigüedad cumplido (tomando como referencia el mes y año de patentamiento) en el mes que te corresponde por la terminación numérica de tu patente o a los 64.000 kilómetros lo que suceda primero.\n\nPor ejemplo: auto patentado en febrero del año 2022 cuyo dominio finaliza en “9” con menos de 64.000 kilómetros debe realizar su primera verificación en septiembre (9) de 2026.\n\n- Febrero 2022 a febrero 2023 1er año.\n\n- Febrero 2023 a febrero 2024 2do año.\n\n- Febrero 2024 a febrero 2025 3er año.\n\n- Febrero 2025 a febrero 2026 4to año cumplido.\n\nUna vez que cumpliste con los cuatro años de antigüedad verificás en el mes que te corresponda por la terminación numérica de tu patente.\n\nRenová tu verificación\n\nPara los autos y motos cuya antigüedad del vehículo se encuentre entre los 4 años y menores a 7 años y menos de 84.000 kilómetros que deban renovar su verificación, la vigencia de su próxima verificación será de hasta 2 años. A partir de los 7 años de antigüedad o 84.000 kilómetros recorridos será de hasta 1 año.\n\nPor ejemplo:\n\nSi tenés una VTV vigente antes de la reforma de la nueva Ley en mayo de 2023, deberás realizar tu próxima inspección de acuerdo a lo que indica la fecha de vencimiento de tu certificado de inspección.\n\nTu próxima VTV dentro del marco normativo actual puede tener una vigencia de hasta 24 meses si cumplís con los requisitos antes mencionados.\n\nVigencia oblea\n\nEn cualquier caso, la oblea tendrá vigencia al mes que le corresponda por la finalización de la patente en el cronograma habitual. Por ejemplo, si la patente finaliza en 3 y la realizó en septiembre de 2025, la vigencia será hasta marzo de 2026.\n\nOblea Única de VTV\n\nAhora, los parabrisas de los autos radicados en la Ciudad ya no van a tener que cambiar sus obleas de VTV.\n\nGracias a la nueva normativa, se implementó una única oblea con QR en la que se aloja toda la información necesaria y se actualiza de manera automática después de cada nueva revisión.\n\nSi ya tenés la nueva Oblea Única de VTV es importante no despegarla del parabrisas porque la misma almacena todas las verificaciones de tu vehículo.\n\nTambién incorporamos un apartado de consulta donde vas a poder ver el historial de verificaciones de cualquier vehículo.\n",
+        "fullTranslationRu": "## Новые меры в процедуре VTV:\n\nПосле изменений, которые мы внедрили в нормативные правила, нужно учитывать пробег, месяц и год выдачи номерного знака вашего транспортного средства, чтобы знать, когда нужно проходить проверку.\n\nПервая проверка\n\nС момента вступления нормативного изменения в силу 04/05/2023 частные автомобили и мотоциклы, зарегистрированные в городе Буэнос-Айрес, проходят первую проверку начиная с полного четвертого года возраста, с ориентиром на месяц и год выдачи номерного знака, в месяц, соответствующий цифровому окончанию вашего номера, либо при 64.000 километрах - в зависимости от того, что наступит раньше.\n\nНапример: автомобиль, зарегистрированный в феврале 2022 года, чей номер заканчивается на \"9\" и у которого меньше 64.000 километров, должен пройти первую проверку в сентябре (9) 2026 года.\n\n- Февраль 2022 - февраль 2023: 1-й год.\n\n- Февраль 2023 - февраль 2024: 2-й год.\n\n- Февраль 2024 - февраль 2025: 3-й год.\n\n- Февраль 2025 - февраль 2026: полный 4-й год.\n\nПосле того как исполнены четыре года возраста, проверка проводится в месяц, который соответствует цифровому окончанию номера.\n\nОбновите свою проверку\n\nДля автомобилей и мотоциклов, чей возраст находится между 4 годами и менее 7 лет и пробег меньше 84.000 километров, при необходимости обновить проверку срок действия следующей проверки будет до 2 лет. Начиная с 7 лет возраста или 84.000 километров пробега срок будет до 1 года.\n\nНапример:\n\nЕсли у вас была действующая VTV до реформы нового закона в мае 2023 года, следующую проверку нужно пройти согласно дате окончания срока в вашем сертификате проверки.\n\nВ рамках действующих правил ваша следующая VTV может иметь срок действия до 24 месяцев, если вы выполняете указанные выше требования.\n\nСрок действия наклейки\n\nВ любом случае наклейка будет действовать до месяца, который соответствует окончанию номера по обычному графику. Например, если номер заканчивается на 3 и проверка была проведена в сентябре 2025 года, срок действия будет до марта 2026 года.\n\nЕдиная наклейка VTV\n\nТеперь лобовые стекла автомобилей, зарегистрированных в городе, больше не должны менять наклейки VTV.\n\nБлагодаря новым правилам внедрена единая наклейка с QR, где хранится вся необходимая информация и которая автоматически обновляется после каждой новой проверки.\n\nЕсли у вас уже есть новая Единая наклейка VTV, важно не отклеивать ее от лобового стекла, потому что она хранит все проверки вашего транспортного средства.\n\nТакже добавлен раздел консультации, где можно посмотреть историю проверок любого транспортного средства.",
+        "simpleRu": "С 04/05/2023 первая VTV для частных машин и мотоциклов в CABA обычно нужна после полного 4-го года или при 64 000 км, что наступит раньше. Для транспорта от 4 до менее 7 лет и меньше 84 000 км следующая VTV может действовать до 2 лет. С 7 лет или 84 000 км срок до 1 года. Наклейка действует до месяца по последней цифре номера. Новая единая наклейка с QR остается на стекле и обновляется после проверок.",
+        "sourceTextSha256": "ae36146a3f8a2be2c5b0b9acfafedcfda7ec4f0bf04016f51797b30eb4ed0c33",
+        "sourceFingerprint": "sha256:ae36146a3f8a2be2c5b0b9acfafedcfda7ec4f0bf04016f51797b30eb4ed0c33",
+        "sourceSpan": {
+          "startLine": 265,
+          "endLine": 308
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--resultados-de-la-vtv-025",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 25,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Resultados de la VTV:"
+        ],
+        "officialLabel": "Resultados de la VTV:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Resultados de la VTV:\n\nResultados habituales\n\n- Apto: vehículo sin desperfectos que recibe el Certificado de Verificación y un informe técnico. Podés circular hasta su vencimiento, el próximo año.\n\n- Condicional: vehículo con desperfectos leves, detallados en el Informe de Inspección. Tenés 60 días hábiles para volver a re-verificar sin cargo y podés circular hasta cumplir el plazo. La re-verificación se realiza en la misma planta y debés obtener un nuevo turno.\n\n- Rechazado: vehículo con desperfectos graves, detallados en el Informe de Inspección. Tenés 60 días hábiles para volver a re-verificar sin cargo y no estás habilitado a circular hasta solucionarlos. La re-verificación se realiza en la misma planta y debés sacar un nuevo turno.\n\nCasos de extravío del certificado\n\nEn caso de extravío del certificado, se repondrá la documentación gratuitamente. Deberás presentarte en la planta donde realizaste la verificación con el vehículo, sin turno previo, de lunes a viernes de 10 a 16 horas, con la denuncia policial correspondiente.\n\nRoturas del parabrisas\n\nEn caso de rotura del parabrisas o daño de la oblea, se repondrá la documentación gratuitamente. Para eso, deberás presentarte con el Informe Técnico en la planta donde realizaste la verificación con el vehículo, de lunes a viernes de 10 a 16 horas, sin turno previo, con el recorte del parabrisas o con la oblea dañada, según corresponda.\n\nVTV después de su vencimiento\n\nQuienes no realicen la Verificación Técnica Vehicular Obligatoria (VTVO) antes de su vencimiento, pueden solicitar un turno para el mes siguiente. Esto no los exime de ser pasible de sanciones, en caso de circular con la Verificación Técnica Vehicular Obligatoria (VTVO) vencida.\n",
+        "fullTranslationRu": "## Результаты VTV:\n\nОбычные результаты\n\n- Годен: транспортное средство без неисправностей получает Сертификат проверки и технический отчет. Можно ездить до окончания срока, в следующем году.\n\n- Условно годен: транспортное средство с легкими неисправностями, указанными в отчете о проверке. У вас есть 60 рабочих дней, чтобы бесплатно пройти повторную проверку, и можно ездить до истечения этого срока. Повторная проверка проводится на той же станции, и нужно получить новый turno.\n\n- Отклонен: транспортное средство с серьезными неисправностями, указанными в отчете о проверке. У вас есть 60 рабочих дней, чтобы бесплатно пройти повторную проверку, и вы не имеете права ездить до устранения неисправностей. Повторная проверка проводится на той же станции, и нужно взять новый turno.\n\nСлучаи потери сертификата\n\nВ случае потери сертификата документы восстановят бесплатно. Нужно явиться на станцию, где вы проходили проверку, с транспортным средством, без предварительного turno, с понедельника по пятницу с 10 до 16 часов, с соответствующим полицейским заявлением.\n\nПовреждение лобового стекла\n\nВ случае разбитого лобового стекла или повреждения наклейки документы восстановят бесплатно. Для этого нужно явиться с Техническим отчетом на станцию, где была проведена проверка, с транспортным средством, с понедельника по пятницу с 10 до 16 часов, без предварительного turno, с вырезом лобового стекла или с поврежденной наклейкой, в зависимости от случая.\n\nVTV после окончания срока\n\nТе, кто не прошел Обязательную техническую проверку транспортного средства (VTVO) до окончания срока, могут запросить turno на следующий месяц. Это не освобождает их от возможных санкций, если они ездят с просроченной VTVO.",
+        "simpleRu": "Есть три результата VTV. \"Apto\" - можно ездить до срока окончания. \"Condicional\" - легкие неисправности: есть 60 рабочих дней на бесплатную повторную проверку, ездить можно до конца срока. \"Rechazado\" - серьезные неисправности: есть 60 рабочих дней на повторную проверку, но ездить нельзя до ремонта. Потерянный сертификат или поврежденную наклейку восстанавливают бесплатно на той же станции. С просроченной VTV можно записаться на следующий месяц, но езда с просрочкой может привести к санкциям.",
+        "sourceTextSha256": "8345abff555736157acd797d8429a39934f417ee186030ecb1b973604e144497",
+        "sourceFingerprint": "sha256:8345abff555736157acd797d8429a39934f417ee186030ecb1b973604e144497",
+        "sourceSpan": {
+          "startLine": 309,
+          "endLine": 330
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--exentos-de-pago-026",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 26,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Exentos de pago:"
+        ],
+        "officialLabel": "Exentos de pago:",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Exentos de pago:\n\nPara solicitar la exención de pago\n\nPara solicitar la exención de pago ingresá a la Web del Gobierno de la Ciudad, cargá los datos relacionados al vehículo y a la persona de contacto, seleccioná el motivo por el cual solicitás el beneficio de pago, adjuntá la documentación respaldatoria y aguardá el resultado de tu solicitud.\n\nTambién podés enviar la documentación escaneada indicando CUIT/ CUIL, fecha de nacimiento del titular del vehículo, mes, año de patentamiento y el kilometraje de la unidad a: exentosvtv@buenosaires.gob.ar.\n\nCuándo son aplicables las bonificaciones\n\nPara aplicar la exención de pago a la hora de realizar la VTV es importante que la documentación respaldatoria que envíes se presente dentro del plazo establecido por la ley. Este plazo está pautado según el último número de la patente del vehículo.\n\nPara los vehículos cuya patente termine en 1 el mes es noviembre, para los terminados en 2 es febrero, 3 es marzo, 4 es abril, 5 es mayo, 6 es junio, 7 es julio, 8 es agosto, 9 es septiembre y 0 es octubre. Recordá que en diciembre y enero no hay vencimientos.\n\nSi la documentación es enviada en el plazo correcto y la solicitud de exención es aprobada, el beneficio quedará activo y podrá ser utilizado. En caso de que no se envíe dentro de los plazos, no podrá ser procesada.\n",
+        "fullTranslationRu": "## Освобожденные от оплаты:\n\nЧтобы запросить освобождение от оплаты\n\nЧтобы запросить освобождение от оплаты, зайдите на сайт Правительства города, загрузите данные о транспортном средстве и контактном лице, выберите причину, по которой просите льготу по оплате, приложите подтверждающие документы и ожидайте результат запроса.\n\nТакже можно отправить отсканированные документы с указанием CUIT/CUIL, даты рождения владельца транспортного средства, месяца и года выдачи номерного знака и пробега единицы на: exentosvtv@buenosaires.gob.ar.\n\nКогда применяются льготы\n\nЧтобы применить освобождение от оплаты при прохождении VTV, важно, чтобы подтверждающие документы, которые вы отправляете, были представлены в срок, установленный законом. Этот срок определяется по последней цифре номерного знака транспортного средства.\n\nДля транспортных средств, номер которых заканчивается на 1, месяц - ноябрь; на 2 - февраль; на 3 - март; на 4 - апрель; на 5 - май; на 6 - июнь; на 7 - июль; на 8 - август; на 9 - сентябрь; на 0 - октябрь. Помните, что в декабре и январе сроков окончания нет.\n\nЕсли документы отправлены в правильный срок и запрос об освобождении одобрен, льгота станет активной и ее можно будет использовать. Если документы не отправлены в срок, запрос не сможет быть обработан.",
+        "simpleRu": "Раздел повторяет: льготу по оплате запрашивают через сайт города или email exentosvtv@buenosaires.gob.ar. Документы надо отправить в месяц по последней цифре номера. Если отправить вовремя и запрос одобрят, льгота активируется; если поздно, ее не обработают.",
+        "sourceTextSha256": "18c11d0e2ee4bfedd7ebbd75feb015145bde3882420b2268b6dabbc4a944d593",
+        "sourceFingerprint": "sha256:18c11d0e2ee4bfedd7ebbd75feb015145bde3882420b2268b6dabbc4a944d593",
+        "sourceSpan": {
+          "startLine": 331,
+          "endLine": 346
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--mas-informacion-027",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 27,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Más Información"
+        ],
+        "officialLabel": "Más Información",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Más Información\n\nAnte la gran cantidad de estafas en las reservas de turnos para la VTV, a raíz de la existencia de múltiples sitios falsos, informamos que el único canal oficial para la reserva de turnos correspondiente al distrito de CABA es: www.suvtv.com.ar/turnos/.\n\nEn caso de detectar sitios fraudulentos, notificar a ciberseguridad@ba-csirt.gob.ar\n\nPor dudas o consultas sobre este trámite, podés escribir a vtv@buenosaires.gob.ar o a taxis@buenosaires.gob.ar, según sea el caso.\n\nRecordá que si te desuscribiste de los mails del GCBA no podrás recibir el mail de confirmación de citas, por lo que deberás comunicarte con el 147 para indicar un correo alternativo.\n",
+        "fullTranslationRu": "## Дополнительная информация\n\nИз-за большого количества мошенничеств при бронировании turno для VTV и множества поддельных сайтов сообщается, что единственный официальный канал для бронирования turno в округе CABA: www.suvtv.com.ar/turnos/.\n\nЕсли вы обнаружили мошеннические сайты, сообщите на ciberseguridad@ba-csirt.gob.ar.\n\nПо вопросам или консультациям об этой процедуре можно писать на vtv@buenosaires.gob.ar или taxis@buenosaires.gob.ar, в зависимости от случая.\n\nПомните: если вы отписались от писем GCBA, вы не сможете получить письмо с подтверждением записи, поэтому нужно связаться с 147 и указать альтернативную почту.",
+        "simpleRu": "Официальная запись на VTV в CABA идет только через www.suvtv.com.ar/turnos/. Поддельные сайты просят сообщать на ciberseguridad@ba-csirt.gob.ar. Вопросы можно отправлять на vtv@buenosaires.gob.ar или taxis@buenosaires.gob.ar. Если письма GCBA отключены, надо позвонить 147 и дать другой email.",
+        "sourceTextSha256": "5e15330b7d45cadd91a0d5da426cef43ffa349b2b5c8b229a1f4431ee06f40f3",
+        "sourceFingerprint": "sha256:5e15330b7d45cadd91a0d5da426cef43ffa349b2b5c8b229a1f4431ee06f40f3",
+        "sourceSpan": {
+          "startLine": 347,
+          "endLine": 356
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--descargas-028",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 28,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Descargas"
+        ],
+        "officialLabel": "Descargas",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Descargas\n\nRs-2022-03174478-gcaba-sectop 1\n\nIF-2023-17152742-GCABA-DGGSM (1).pdf\n\nRS-2023-17174293-GCABA-SECTOP (1).pdf\n\nRS-2023-17193405-GCABA-SECTOP (1).pdf\n\nRS-2024-01533910-GCABA-SECT (1).pdf\n\nRS-2024-41301939-GCABA-SECT.pdf\n\nCuadro tarifario\n",
+        "fullTranslationRu": "## Загрузки\n\nRs-2022-03174478-gcaba-sectop 1\n\nIF-2023-17152742-GCABA-DGGSM (1).pdf\n\nRS-2023-17174293-GCABA-SECTOP (1).pdf\n\nRS-2023-17193405-GCABA-SECTOP (1).pdf\n\nRS-2024-01533910-GCABA-SECT (1).pdf\n\nRS-2024-41301939-GCABA-SECT.pdf\n\nТарифная таблица",
+        "simpleRu": "Здесь перечислены файлы для скачивания, связанные с процедурой VTV, включая нормативные документы и тарифную таблицу.",
+        "sourceTextSha256": "290d6dde1190c061f7a3e6f341d38602773350c19177184d578193a9776ca768",
+        "sourceFingerprint": "sha256:290d6dde1190c061f7a3e6f341d38602773350c19177184d578193a9776ca768",
+        "sourceSpan": {
+          "startLine": 357,
+          "endLine": 372
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--normativa-029",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 29,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Normativa"
+        ],
+        "officialLabel": "Normativa",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Normativa\n\nLey N° 6631 (Ley VTVO)\n\nResol-2026-19345751-GCABA-SECT\n",
+        "fullTranslationRu": "## Нормативные акты\n\nЗакон N 6631 (Закон VTVO)\n\nResol-2026-19345751-GCABA-SECT",
+        "simpleRu": "Страница ссылается на Закон 6631 о VTVO и резолюцию Resol-2026-19345751-GCABA-SECT.",
+        "sourceTextSha256": "33202fdb1e710eea6f30ab614e4fd1977540f3ae2fce1fd21769f6f3001136fd",
+        "sourceFingerprint": "sha256:33202fdb1e710eea6f30ab614e4fd1977540f3ae2fce1fd21769f6f3001136fd",
+        "sourceSpan": {
+          "startLine": 373,
+          "endLine": 378
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--inicia-el-tramite-y-completa-todos-los-pasos-030",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 30,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Normativa",
+          "Iniciá el trámite y completá todos los pasos"
+        ],
+        "officialLabel": "Iniciá el trámite y completá todos los pasos",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Iniciá el trámite y completá todos los pasos\n\nIniciar Trámite\n",
+        "fullTranslationRu": "#### Начните процедуру и выполните все шаги\n\nНачать процедуру",
+        "simpleRu": "Это кнопка или блок для начала процедуры VTV.",
+        "sourceTextSha256": "eba6a45ebe5eb81fbf54f16644f1938f1aa349e632a55e0d0988ae965a36fd9c",
+        "sourceFingerprint": "sha256:eba6a45ebe5eb81fbf54f16644f1938f1aa349e632a55e0d0988ae965a36fd9c",
+        "sourceSpan": {
+          "startLine": 379,
+          "endLine": 382
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--encontra-la-oficina-mas-cercana-031",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 31,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Normativa",
+          "Encontrá la oficina más cercana"
+        ],
+        "officialLabel": "Encontrá la oficina más cercana",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Encontrá la oficina más cercana\n\n###\n\nPlanta Verificadora Vélez Sarsfield\n\nAv. Vélez Sarsfield 566\n\nLunes a viernes de 8 a 18 hs. y sábados de 8 a 13 hs.\n\n###\n\nPlanta Verificadora 9 de Julio Sur\n\nHerrera 1995\n\nLunes a viernes de 8 a 18 hs. y sábados de 8 a 13 hs.\n\n###\n\nPlanta Verificadora Tronador\n\nTronador 115/151\n\nLunes a viernes de 8 a 18 hs. y sábados de 8 a 13 hs.\n\n###\n\nPlanta Verificadora Osvaldo Cruz\n\nAv. Osvaldo Cruz 1711\n\nLunes a viernes de 8 a 18 hs. y sábados de 8 a 13 hs.\n\n###\n\nPlanta Verificadora 27 de Febrero\n\nAv. 27 de Febrero 5483\n\nLunes a viernes de 8 a 18 hs. y sábados de 8 a 13 hs.\n\n###\n\nPlanta Verificadora Donado\n\nDonado 973\n\nLunes a viernes de 8 a 18 hs. y sábados de 8 a 13 hs.\n\n###\n\nPlanta Verificadora Santa María del Buen Aire\n\nSanta María del Buen Aire 1001\n\nLunes a viernes de 8 a 18 hs. y sábados de 8 a 13 hs.\n",
+        "fullTranslationRu": "### Найдите ближайший офис\n\n###\n\nСтанция проверки Vélez Sarsfield\n\nAv. Vélez Sarsfield 566\n\nПонедельник - пятница с 8 до 18, суббота с 8 до 13.\n\n###\n\nСтанция проверки 9 de Julio Sur\n\nHerrera 1995\n\nПонедельник - пятница с 8 до 18, суббота с 8 до 13.\n\n###\n\nСтанция проверки Tronador\n\nTronador 115/151\n\nПонедельник - пятница с 8 до 18, суббота с 8 до 13.\n\n###\n\nСтанция проверки Osvaldo Cruz\n\nAv. Osvaldo Cruz 1711\n\nПонедельник - пятница с 8 до 18, суббота с 8 до 13.\n\n###\n\nСтанция проверки 27 de Febrero\n\nAv. 27 de Febrero 5483\n\nПонедельник - пятница с 8 до 18, суббота с 8 до 13.\n\n###\n\nСтанция проверки Donado\n\nDonado 973\n\nПонедельник - пятница с 8 до 18, суббота с 8 до 13.\n\n###\n\nСтанция проверки Santa María del Buen Aire\n\nSanta María del Buen Aire 1001\n\nПонедельник - пятница с 8 до 18, суббота с 8 до 13.",
+        "simpleRu": "В CABA перечислены 7 станций VTV: Vélez Sarsfield, 9 de Julio Sur, Tronador, Osvaldo Cruz, 27 de Febrero, Donado и Santa María del Buen Aire. Обычное расписание: понедельник-пятница 8-18, суббота 8-13.",
+        "sourceTextSha256": "b9a3f36a7088090558b508e81cc6c8465ca1615db6f81cb52508923129f1376b",
+        "sourceFingerprint": "sha256:b9a3f36a7088090558b508e81cc6c8465ca1615db6f81cb52508923129f1376b",
+        "sourceSpan": {
+          "startLine": 383,
+          "endLine": 440
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--organismo-responsable-032",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 32,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Organismo Responsable"
+        ],
+        "officialLabel": "Organismo Responsable",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Organismo Responsable\n",
+        "fullTranslationRu": "## Ответственный орган",
+        "simpleRu": "Дальше указан орган GCBA, отвечающий за эту процедуру.",
+        "sourceTextSha256": "9164ec768df4dab19c0a1948fc560a0f7b9df887ecf3afad8b574cf61586b140",
+        "sourceFingerprint": "sha256:9164ec768df4dab19c0a1948fc560a0f7b9df887ecf3afad8b574cf61586b140",
+        "sourceSpan": {
+          "startLine": 441,
+          "endLine": 442
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--gerencia-operativa-transporte-de-pasajeros-no-colectivo-y-033",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 33,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Organismo Responsable",
+          "Gerencia Operativa Transporte de Pasajeros No Colectivo y Logística de Entrega Urbana"
+        ],
+        "officialLabel": "Gerencia Operativa Transporte de Pasajeros No Colectivo y Logística de Entrega Urbana",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Gerencia Operativa Transporte de Pasajeros No Colectivo y Logística de Entrega Urbana\n",
+        "fullTranslationRu": "### Оперативное управление перевозками пассажиров неколлективного транспорта и городской логистикой доставки (Gerencia Operativa Transporte de Pasajeros No Colectivo y Logística de Entrega Urbana)",
+        "simpleRu": "Ответственный орган указан как Gerencia Operativa Transporte de Pasajeros No Colectivo y Logística de Entrega Urbana.",
+        "sourceTextSha256": "1801b11d54a79d4cf9bb694c82134151ba5492febbbdb5e8a7308f3cc260a3b0",
+        "sourceFingerprint": "sha256:1801b11d54a79d4cf9bb694c82134151ba5492febbbdb5e8a7308f3cc260a3b0",
+        "sourceSpan": {
+          "startLine": 443,
+          "endLine": 444
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--ubicacion-034",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 34,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Organismo Responsable",
+          "Gerencia Operativa Transporte de Pasajeros No Colectivo y Logística de Entrega Urbana",
+          "Ubicación"
+        ],
+        "officialLabel": "Ubicación",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Ubicación\n\nAv. Escalada 4988.\n",
+        "fullTranslationRu": "#### Местоположение\n\nAv. Escalada 4988.",
+        "simpleRu": "Адрес ответственного органа: Av. Escalada 4988.",
+        "sourceTextSha256": "8fe0e919c95b9896518aecc093cfad757a2cc325ca0b004e7845b3aac3ada7e2",
+        "sourceFingerprint": "sha256:8fe0e919c95b9896518aecc093cfad757a2cc325ca0b004e7845b3aac3ada7e2",
+        "sourceSpan": {
+          "startLine": 445,
+          "endLine": 448
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--dias-de-atencion-035",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 35,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Organismo Responsable",
+          "Gerencia Operativa Transporte de Pasajeros No Colectivo y Logística de Entrega Urbana",
+          "Días de atención"
+        ],
+        "officialLabel": "Días de atención",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Días de atención\n\nLunes a viernes\n",
+        "fullTranslationRu": "#### Дни приема\n\nПонедельник - пятница",
+        "simpleRu": "Прием указан с понедельника по пятницу.",
+        "sourceTextSha256": "73b797d1ec7600a265811f75beb093ea686f53fdc4604497626f5a2fa0e76a19",
+        "sourceFingerprint": "sha256:73b797d1ec7600a265811f75beb093ea686f53fdc4604497626f5a2fa0e76a19",
+        "sourceSpan": {
+          "startLine": 449,
+          "endLine": 452
+        }
+      },
+      {
+        "chunkId": "gcba-vtv-tramite-current--horarios-de-atencion-036",
+        "officialDocumentId": "gcba-vtv-tramite-current",
+        "order": 36,
+        "headingPath": [
+          "Verificación Técnica Vehicular Obligatoria",
+          "Organismo Responsable",
+          "Gerencia Operativa Transporte de Pasajeros No Colectivo y Logística de Entrega Urbana",
+          "Horarios de atención"
+        ],
+        "officialLabel": "Horarios de atención",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Horarios de atención\n\n8:30 a 16:00 hs\n",
+        "fullTranslationRu": "#### Часы приема\n\n8:30-16:00",
+        "simpleRu": "Часы приема: с 8:30 до 16:00.",
+        "sourceTextSha256": "62cbbc0a758ea540f40864d0890a4f4161a57a810fbf01c2ddeb539cc845f71d",
+        "sourceFingerprint": "sha256:62cbbc0a758ea540f40864d0890a4f4161a57a810fbf01c2ddeb539cc845f71d",
+        "sourceSpan": {
+          "startLine": 453,
+          "endLine": 456
+        }
+      }
+    ]
+  }
+}
