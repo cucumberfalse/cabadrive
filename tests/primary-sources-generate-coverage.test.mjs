@@ -8,6 +8,10 @@ test("article boundary detection accepts official article heading formats", () =
   assert.equal(isArticleLine("ARTICULO 21 bis: Estructura"), true);
   assert.equal(isArticleLine("ARTICULO 40 bis) Requisitos para circular con bicicletas."), true);
   assert.equal(isArticleLine("ARTICULO 46 bis: Ciclovías. Las"), true);
+  assert.equal(isArticleLine("ARTICULO 144 quinto.- Si se ejecutase el hecho previsto."), true);
+  assert.equal(isArticleLine("ARTICULO 167 quinque.- En caso de condena."), true);
+  assert.equal(isArticleLine("ARTICULO 210 quáter. - Será reprimido."), true);
+  assert.equal(isArticleLine("ARTICULO 268 (1). - Será reprimido."), true);
   assert.equal(isArticleLine("ARTÍCULO 1°.- Establécese la entrada en vigencia."), true);
   assert.equal(isArticleLine("Artículo 1°.- Habrá sociedad si una o más personas."), true);
   assert.equal(isArticleLine("Art. 2. El contrato de seguro puede tener por objeto toda clase de riesgos."), true);

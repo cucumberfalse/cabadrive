@@ -327,14 +327,14 @@
 - Implementation started only after re-reading repository memory, official archive governance, learner primary-source governance, feature memory, current manifest, and the Slice B primary-source validator.
 - Parallel-agent warning was part of the Slice C assignment. This slice preserved unrelated work and did not edit `content/official-documents/`.
 - Added `scripts/primary-sources-generate-coverage.mjs` to derive `content/primary-sources/primary-sources.coverage.json` from the official manifest and current archived Markdown.
-- Generated coverage now includes all 19 implementation-time manifest entries and 5,216 generated chunks.
+- Generated coverage now includes all 19 implementation-time manifest entries and 5,223 generated chunks.
 - Each generated coverage chunk has deterministic non-draft `chunkId`, `officialDocumentId`, positive `order`, `headingPath`, `sourceSpan`, `sourceTextSha256`, and `sourceFingerprint` in `sha256:<sourceTextSha256>` format.
 - Each coverage document has `expectedChunkIds` exactly matching its generated `chunks`, archive path, current archive SHA-256, and a `chunkingDecision` with strategy and rationale.
 - Retargeted the existing single draft learner placeholder from `ley-24449-transito-seguridad-vial--draft-001` to generated chunk `ley-24449-transito-seguridad-vial--ley-24449-001` so draft validation remains aligned with generated coverage. The Russian text and QA remain explicitly draft placeholders; no translation batch was performed.
 - Added primary-source validation mode `coverage` / `coverage-only` / `inventory` to prove complete manifest chunk inventory without requiring final Russian translation, simplification, or approved QA. Strict/final mode remains unchanged for final release translation/QA gates.
 - Tightened coverage validation so `expectedChunkIds` must match generated coverage chunks in both directions.
 - Chunking strategy counts:
-  - `legal-articles`: 4,175 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
+  - `legal-articles`: 4,182 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
   - `dotted-code-sections`: 665 chunks for CABA Ley 2148.
   - `annex-numbered-sections`: 59 chunks for Decreto 779 Anexo L.
   - `markdown-heading-sections`: 98 chunks across VTV, automotor/cédula, DNRPA, ANSV news, and chapa patente service pages.
@@ -357,7 +357,7 @@
   - `gcba-material-estudio-examen-teorico`: 4.
   - `gcba-manual-vehiculo-4-ruedas-2023`: 198.
   - `gcba-mapa-estrellas-amarillas`: 3.
-  - `ley-11179-codigo-penal`: 509.
+  - `ley-11179-codigo-penal`: 516.
   - `ley-26994-codigo-civil-comercial`: 3,259.
   - `ley-17418-seguros`: 202.
 - Chunking decisions:
@@ -373,6 +373,7 @@
 - PR #77 P2 contiguous-coverage follow-up tightened coverage validation so complete-coverage modes require each coverage document's sorted source spans to cover the archived Markdown from line 1 through the current final line without gaps or overlaps when archive text is available.
 - PR #77 P2 colon-heading follow-up extended article-boundary detection to accept valid colon-suffixed article headings such as Ley 24.449 `ARTICULO 21 bis: Estructura` and `ARTICULO 46 bis: Ciclovías...` while still rejecting lowercase narrative cross-references.
 - PR #77 P2 PDF page-group follow-up changed `pdf-page-groups` boundary detection so hierarchy lines such as `CAPÍTULO` and `ANEXO` stay inside the current page chunk instead of becoming standalone boundary chunks. The GCBA manual now has 198 page-group chunks and no page-number-only or hierarchy-only generated chunks.
+- PR #77 P2 Penal Code suffix follow-up extended article-boundary detection to accept official heading suffixes and punctuation such as `ARTICULO 144 quinto`, `ARTICULO 167 quinque`, `ARTICULO 210 quáter`, and `ARTICULO 268 (1)` while still rejecting lowercase narrative cross-references. The Penal Code now has 516 generated article chunks.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced again from `987e712` to `bdfc00d`, this worktree stashed the uncommitted colon-heading fixes, fetched the updated base, rebased Slice C onto `bdfc00d`, resolved validator/test/task conflicts by keeping exact `expectedChunkIds` validation from PR #74 plus contiguous coverage validation from PR #77, then reapplied the colon-heading stash cleanly.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to merge commit `d16ce87b5a108701e22dd563e41ebd72a642df18`, this worktree rebased Slice C onto the fresh base and resolved the only conflict in this process-memory file by keeping #68 intake/docs notes, #74 schema-validator notes, and #77 generated inventory notes.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to `0c44f655a0a8567598f50aa55fded90147a6df8c`, this worktree rebased Slice C onto the fresh base and resolved validator/test/task conflicts by keeping #74's stricter simplified-Spanish and contiguous-source-span validation while retaining #77 coverage-only inventory validation and generated inventory fixes.
@@ -533,3 +534,9 @@
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed after rebasing onto base `0c44f65`. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed after rebasing onto base `0c44f65`: 116 Node tests, 116 pass, 0 fail.
   - `pnpm run build` passed after rebasing onto base `0c44f65`: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed after the PR #77 Penal Code suffix fix. Output summary: 19 documents, 5,223 chunks; `ley-11179-codigo-penal` has 516 `legal-articles` chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed after the PR #77 Penal Code suffix fix: 28 tests, 28 pass, 0 fail.
+  - `pnpm run validate:content` passed after the PR #77 Penal Code suffix fix. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed after the PR #77 Penal Code suffix fix. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed after the PR #77 Penal Code suffix fix: 116 Node tests, 116 pass, 0 fail.
+  - `pnpm run build` passed after the PR #77 Penal Code suffix fix: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
