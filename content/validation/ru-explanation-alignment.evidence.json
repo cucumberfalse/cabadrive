@@ -10,7 +10,7 @@
       "sourceQuestionSha256": "a378cdcb51a67298a29274456c649c45b3424f02de2e32c2cd452c9395d8b59a",
       "explanationSha256": "bc2bbe41e404669ae8bd1c1e518d7ee53a9589025b5269348dfb6559badc01da",
       "imageId": "question-image-b13",
-      "imageMetadataSha256": "57284be06ff5e955ef82024059c3eb872954f6f288fe8cfe9f7433a99b58b9e5",
+      "imageMetadataSha256": "6b37a26f75ff0b8b68c6a2a51d03645ac95386849dfcb9fc86baf1130de6149b",
       "usageSha256": "767a43d6cfbb28dcc8b55c4f0df6d28d5acbadb53b40df9a44da27a90cb9c82a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -29,7 +29,7 @@
       "sourceQuestionSha256": "37561066789f3151e104b44f341cbcf85c5e8f697e3dece92a97b60eb3870f02",
       "explanationSha256": "cd5053117d5b192ece20289a7a055f1cd2090fc71b7116f651cd12afc09ff8b2",
       "imageId": "question-image-b173",
-      "imageMetadataSha256": "6d8858881b7f3696d6d62990c82a6fae8c773f2949c47b5dd4e9dc76024fb803",
+      "imageMetadataSha256": "16fbb7aa2141cfc5b3bfa69f53f0de358ef7944f97e803d4d844ecdde818b868",
       "usageSha256": "4e27e250e1d5c5728e118cc4768cf2fb7947e5a1ebe55a96661e146a7a3112c7",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -62,7 +62,7 @@
       "sourceQuestionSha256": "68186a626e51f56c83baebd4d835d75c9d1fcd2c4675e3fab995a02b6c33bb12",
       "explanationSha256": "d3e474df536dc178b75c42469c3c82840e9bd856790b00ddcddeb184ed166c73",
       "imageId": "question-image-b225",
-      "imageMetadataSha256": "756b0abef326d7e9f581abaee32ec1d4e3458216af05d190fce5e846f9fa5e3e",
+      "imageMetadataSha256": "612269b7905e9e9a34efbaab4ae4b3e0b4487d42b6d4a0c1e171b8aacbf46c0a",
       "usageSha256": "8c396c9598a25c4b58f0edc6c37b261afd3239c97e5cdfeb424586e7c03e0a38",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -81,7 +81,7 @@
       "sourceQuestionSha256": "df5da176a7b8508b4ac469cd186abba306b82eea5b30bda3bd90dd0d768cf803",
       "explanationSha256": "4ab0f67a1f715d5f46c00dda04d38b3e64762bdeb920cf1463813ca1cc0d61e1",
       "imageId": "question-image-b144",
-      "imageMetadataSha256": "c93e6084e289a742949cb33625b8937237b834622b0c931a645ed78fea3e6b27",
+      "imageMetadataSha256": "73e8716bb08838fa4c8700102912f3d1b8f5b06ffd0f3719b385a61010702790",
       "usageSha256": "96291073a142e75433f1ad4a0d1aad148275932ee095cd0df6e3c6bf887bba78",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -100,7 +100,7 @@
       "sourceQuestionSha256": "ebf491dbdac8389fcb259a60bae0009f471f94800a072fa0d1e57fd80b5928ba",
       "explanationSha256": "d61271b266ec137cb66f941cdf5ea2976aebd49f87916c426365a077dbbef02a",
       "imageId": "question-image-b185",
-      "imageMetadataSha256": "cb77e852e543daa31aeb145a16e6ef66d6246f20667105c53e80cd354727b568",
+      "imageMetadataSha256": "bdba993ebc03d833fdff542b144c4c73be7a6e5863960d8c69d166dd346a20e8",
       "usageSha256": "acf56b0186b792ac7a2d6e9134c92402a56969c00461bbe75e9e7790cf6d462b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -133,7 +133,7 @@
       "sourceQuestionSha256": "7af0d47b39038739458c41aa8c084005fecb8d7acded8bb277e70815039c14f3",
       "explanationSha256": "115940882b69c94b76e35f3cf016f7dde195402797e7fb270376693a976174db",
       "imageId": "question-image-b39",
-      "imageMetadataSha256": "a38c6dd95860dc9e84d51f7e5bfbee0b42a841a55659c35d01fd7f85ab9e87d9",
+      "imageMetadataSha256": "5bdb6fb37822e57fa36418c27b927beecc4d78b1f304aa64fee82082ef9054c5",
       "usageSha256": "d58c3de91f1ce9372f5327aef4fa46db130c6e8679e1457b63adbd478b3fbd0c",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -166,7 +166,7 @@
       "sourceQuestionSha256": "c653123ed2a97f3ce55f4ab392e2c4a112253d15a0a31a36b5e51431ab392766",
       "explanationSha256": "915e24621fea646237ad3fa2334863bb8ab2b77ebf5e8e09431786099a4e213b",
       "imageId": "question-image-b157",
-      "imageMetadataSha256": "b12f193a2cec5c292f2d741e24a5164234b59d2769b0f4bf6923f9c75dd4d30b",
+      "imageMetadataSha256": "3e77a279250ab8c8f5491363a1fe3d7ab3256d86b40aefa0e7ee0ed550ba57ae",
       "usageSha256": "260c9f4c63ab03b970fc9d86d38f9994f7556383e12776eeb01b55b8b80f80c4",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -185,7 +185,7 @@
       "sourceQuestionSha256": "be2dbeab7cf63a031752263510c3c4e9aef376096de25b6a80c69952fb91679b",
       "explanationSha256": "0da225b35437da6a84e4bc2705f258b8529f6ca175441b08b2660c5dde4d6e77",
       "imageId": "question-image-b223",
-      "imageMetadataSha256": "53d660436a75382831b091929b4b809e0bc8519ac376a3d52b9053b3e59ab991",
+      "imageMetadataSha256": "8b4e206c7031897485aa35fe8776eee817f1120b43f42e77c72147be95b661f0",
       "usageSha256": "57cfff828c0837cc4509bf61e0efc983898cd4605c0c24291dcbd807596e62f1",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -218,7 +218,7 @@
       "sourceQuestionSha256": "92f6ec223495b68dbb9b812ec45db7f7a4633f466bda92a3d4c0118f381e1a95",
       "explanationSha256": "0f45a58b62285a847f86cb0c21823051799ee7f0ca76b1c177b7fec3e03c923f",
       "imageId": "question-image-b210",
-      "imageMetadataSha256": "0e8f35be92e5f74d662079e02b164a8ff7a376ef177b0320a04cd33de6042605",
+      "imageMetadataSha256": "b99e1c8053f26db496fc6a324cde5415d02658c6d8c9bf528917a262c536983e",
       "usageSha256": "2c0bc364b39ca1dc7fd7f3c1d992d15a260b958b57e054de0c24f626761253ab",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -237,7 +237,7 @@
       "sourceQuestionSha256": "73100f5f9b24e49ef7c31bd5a5190598d693a6a1443bde3ee5cb9be7a087d6c9",
       "explanationSha256": "9eb53e76fd33b04d5068a75ba10f2e022634c99d14f1a1cf7d9fd99ec0d7bdec",
       "imageId": "question-image-b175",
-      "imageMetadataSha256": "82219cc6733193dd3a4a8dd80726a61d9ef21cdcf182431491424fc4ba1fd0a1",
+      "imageMetadataSha256": "feb9daf3a1062b1b220219a7510eb982f3e8456f2e9dcc9eb11b8ab5e533f2a0",
       "usageSha256": "2cdab17da78e14fbb5735a95bd22b508a37509b1ff4896555e422e5aaa16e014",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -270,7 +270,7 @@
       "sourceQuestionSha256": "64015ae1b5f7e20b196a0bd82f92771c26e00bddf51bc442791461e1568e122e",
       "explanationSha256": "889f107f9a5a670a2f94412d48489ec4884fe9ffe26a76cacc9fe05290431061",
       "imageId": "question-image-b164",
-      "imageMetadataSha256": "1fbbd777c119a8d2e378ff4f390164e706a9dc4f5d899db7a2bf2b20ddcf52fb",
+      "imageMetadataSha256": "5d5962a44d97481f4803afb8c223156a65a4735262b3362c724f64171bd4b5c5",
       "usageSha256": "a60d8bc6a3c7221cbd75e1a1aa4e5e704aa691982cc39ef73600ccef15df990d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -289,7 +289,7 @@
       "sourceQuestionSha256": "9eae4cb42612d6fbbc28602126adf657a2fd02eddb225cab35fe060fe16cd804",
       "explanationSha256": "46daccd29cf1acb5dcccd32c8d0f6ece85dde779eaf4d557d5c67eee79ebb4fc",
       "imageId": "question-image-b93",
-      "imageMetadataSha256": "0bb6aa5693a33880bca7d1e2074ee9f2b7bc6a68fb849d6f8598e61105723399",
+      "imageMetadataSha256": "643983bd125ee2857969e7eb154d755e812abb6f4e991c83ef585d638b2de026",
       "usageSha256": "dd7156ac963d292330705c7a11ee0a3b60f15aa3bfcd8e2641b792f40e0bfac2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -308,7 +308,7 @@
       "sourceQuestionSha256": "10abdd238895fa2b5aaca49bca9cab18cd948303e0b8dc309170f2753adae6e3",
       "explanationSha256": "aa97aaf1b5ac18e7c99bbf1405bdf1b7cf806f09ac59d018e0c676ff862e1dd1",
       "imageId": "question-image-b230",
-      "imageMetadataSha256": "1c844e8e21b1b72cd93c5ae869e2e8877b43cd8731b82764918417068b059749",
+      "imageMetadataSha256": "d9d27cb7d17a0b1bc6341acc50dc2d508b82a95c6fd727da329bca942b01b235",
       "usageSha256": "b10fcbd0c45cfec6f584807160c276aef47a723d2c5f44f5ecd874c3ebb47d67",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -327,7 +327,7 @@
       "sourceQuestionSha256": "1d7b1e0391ce061af7bb0e36601402ff9e4ef28dd68edce160e34ab4228b8d54",
       "explanationSha256": "f1647a68118ac89918deb9422dd599e127e0b6b8cd674f7d80edf4f506c3a102",
       "imageId": "question-image-b148",
-      "imageMetadataSha256": "95123b5820d1f2d6b71c3de5a30efddad43c050ca63e25185d18799ff24678c6",
+      "imageMetadataSha256": "ecac825f22b929c3c505b51f62b3de0ba83dde698d5dd0322577cbc33484a5b2",
       "usageSha256": "5e525381efef7f40c77f789b17f730b68359e2e056dd717d7138e07e9b9607b9",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -346,7 +346,7 @@
       "sourceQuestionSha256": "864ef3999ca13c1829408f6e5a1d4cefb86e957fbbd8a55e7a02fa3eab3e2680",
       "explanationSha256": "d49ac3960eaae2adfe95c8093046d580d8c57680a016e02977833d4f58209e3a",
       "imageId": "question-image-b38",
-      "imageMetadataSha256": "8efcb3d104df0a3458d93b2e9f906bf66613cb7841bc0fd1fa694e658d518cfe",
+      "imageMetadataSha256": "25c2f78f4e53f30e2240a5361f32948d89c7754fab77a5699eab4b96c8b28eb6",
       "usageSha256": "0e6cb62ee45bf7e8ded109a71174776090b4cdae4e7e741846f04fbd52d3b67a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -463,7 +463,7 @@
       "sourceQuestionSha256": "15790286af3981659ec06e161fbd52bda55d5a1c7a868979046388e19582dc5d",
       "explanationSha256": "34bb8b252ed6effe75100d2c852de3de3a12ec0b42c0c15cd3f1720ff9967a84",
       "imageId": "question-image-b152",
-      "imageMetadataSha256": "0129bad0317db4bd82fc2b77b27460fafb4397bdede9cec31a92348055ce13b5",
+      "imageMetadataSha256": "766f53418f7b2ebdc88a526a27ebf2b2acb15cb67a1ef851191d5dbbeb31fa28",
       "usageSha256": "6d5b0dcfdf42d70a7aadf7e99fe68d1f61ddff30dfb83dc025ef21ed00154463",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -482,7 +482,7 @@
       "sourceQuestionSha256": "5aba52573ff8886af8d3ee934a7c7aa9ee1c3459f3a6ca77e55f32a2d0a35cdd",
       "explanationSha256": "c9472e473357a5f1663ab23d492e057468f10b5bed5350dd7c99aab83c551ebc",
       "imageId": "question-image-b258",
-      "imageMetadataSha256": "6cd71ac6e4df69e9d3332c0c5093926f2a7c03df79b75c826f5a6a5102ed3f5c",
+      "imageMetadataSha256": "cf2df2d80434c2cc1a6ed772562f1087f74894c97a2f213321c2855a6214d735",
       "usageSha256": "028ee0d2f715ad2399625a7036ddd5a60efeef32fb1f7dd246ac84464d79bea3",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -529,7 +529,7 @@
       "sourceQuestionSha256": "45dadba6d416a0dc5df29bbf80a045b82440734b5d7bb2d95ada0229e07f5118",
       "explanationSha256": "7b12b8b4950dc0bf71e36ca6281b3a472a8db8d94b80807660f1e6bd2f52b999",
       "imageId": "question-image-b133",
-      "imageMetadataSha256": "a09d2daf1d2492e67cf33c43f9ed1c080c69490c7c10ed7cd9f2eb7e67d73c17",
+      "imageMetadataSha256": "9a7662c425bdbd07afc3dee2548cd3c286ac667d63bf9193375d150a5184a283",
       "usageSha256": "be88454029dd50bffaac1318b8848e28a1b2de589df3c2515ff78e920d0e52cc",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -562,7 +562,7 @@
       "sourceQuestionSha256": "14f55991c4024cdcf923ad98d65fcb863910de24ab5f6f2822cf7a9d982f2cc4",
       "explanationSha256": "703530c78d5549da8c5e934503b2cbf2ddd412d67a3e7b5e112b1b8b4b759d43",
       "imageId": "question-image-b273",
-      "imageMetadataSha256": "acd3ec898a15720dd6ef6fec99ac5c617c83dbc4ad891bd57c39119793affeb4",
+      "imageMetadataSha256": "4f1a30e5a3191be652f4021891438ed064c776af258246793c44d3d2060813bf",
       "usageSha256": "e8f17567bccc00ea0e7eff1491f397be3ce88ba61e82840a259930c57e6496f1",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -595,7 +595,7 @@
       "sourceQuestionSha256": "3d35838d9fb114c0db0582d1e4dc8142ea45b2cc3a926071ef0b365c268a2da3",
       "explanationSha256": "9bec75db9aadbabef8bca4c0615522a784874102496680aef31a82cefc5bff8b",
       "imageId": "question-image-b15",
-      "imageMetadataSha256": "7de17d272a1810d1edb218f93582503bcf68bcac02f3b09b97a6ab448c520c8e",
+      "imageMetadataSha256": "a2d7c30ebe03045293e9119fe68baa411072a4dcd5e784066cd181e32fcbaed5",
       "usageSha256": "98dfaf5f8b5a8e531252006a15429925d72a11d3ee720fa6bd2d72051f532587",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -628,7 +628,7 @@
       "sourceQuestionSha256": "5629e061d030eefe2ef255a93c9ec9749993b8301d8e66227367651bc214f5eb",
       "explanationSha256": "16f08090cea02dd88ae9555f303fb6f9735d37bd674d597b09e4584fe3195f52",
       "imageId": "question-image-b22",
-      "imageMetadataSha256": "5f2e36599adedc6aa37bebcfdeecd3a5ee72ac799433a239aa24aa2ff70e73f9",
+      "imageMetadataSha256": "5709692223ce66bff6333e8e3a934071f539234bd4597a3d89f5e4ee16daaa4b",
       "usageSha256": "9f4e3a578ff50985c89c152330d58ee291d11b956e0ace531de134caaef474e0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -647,7 +647,7 @@
       "sourceQuestionSha256": "17f3f3b6eddf62f7a47923fbccb7fbaade4f24878de02147a382374bbbf6f873",
       "explanationSha256": "e76da819f0e4727c8f45f0066a4064373d4cf7430b5958536e00844822a4dd44",
       "imageId": "question-image-b162",
-      "imageMetadataSha256": "d5ea55c5eb28cf7f10d4a3abd1477621baa75049db7ec27b21e63d0afb71bf35",
+      "imageMetadataSha256": "e57a7f4334184ade0d9765ad47744898a891057010fb3235298cc37ce09be0c9",
       "usageSha256": "fffae06e38ec99503fbc254120ae73d3f778dbe230bb80fa30591378c0700e29",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -694,7 +694,7 @@
       "sourceQuestionSha256": "df53b2173ae285c74e8d4c845e386d4ead1e1a30fbeb3382c2fdb14b41f5de71",
       "explanationSha256": "eb08e5a78834efdfbcccf93ede9ac2b91991820ea59463829b4d5cd55ddb841c",
       "imageId": "question-image-b270",
-      "imageMetadataSha256": "a27c802e8170d67afad18b4759c66379ec1586f2bb61a91de06e6bdf658d02fb",
+      "imageMetadataSha256": "a752e95f7ae910899dc9367a2da57f0d422bc4947f9e14712631207a5f488bdf",
       "usageSha256": "57d180c11d487b68dd3a6a74737cef2e2c3803e0806d5ffa47a944485f2e930c",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -727,7 +727,7 @@
       "sourceQuestionSha256": "fe6bc6a29645dcebcee7114933e272537acdc32c76b5dfc9fbe39f4a2fbb861c",
       "explanationSha256": "db652d4097b3f7612f4e0fa12432ac002c224b0a87676a1d2ca8a11439e4aac5",
       "imageId": "question-image-b53",
-      "imageMetadataSha256": "e670c75866509dc2cf7116d372433a9a83f53aeb44b14e5409bdb228382e458e",
+      "imageMetadataSha256": "83bf6c82bcc2ca5e9e07337e4af0dd926ef8f48949543a81f985a8c48967b152",
       "usageSha256": "e81329ff737357c828feecade3f1dfe0c303bf85f596fab2c5b3cb38ca85087c",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -746,7 +746,7 @@
       "sourceQuestionSha256": "c013745a0c612154827e78830dc03c65ad52b839a53ae6f9efa5aaf97cbbb56f",
       "explanationSha256": "dd32e6ab82f9cea151d4a46a4bf098543706389c98b41de7441459c02d710c63",
       "imageId": "question-image-b154",
-      "imageMetadataSha256": "833f76eebc3a47c32535ea112e9b770ba26cbe0bcd56d48e50806aef87264850",
+      "imageMetadataSha256": "cb603a044af7668f9baa4a8ef848da176cc2953f2faf0ac293078034e8dcbb82",
       "usageSha256": "0b379cb69d22786ce99f857c80b46bc8cc82ac8ece8ce2d0bf0bd72e63a33815",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -821,7 +821,7 @@
       "sourceQuestionSha256": "d929fb1c69e49d3bf86530054468aa310cda6674bce872d5c5c0826e5362d0a7",
       "explanationSha256": "0d853f1327979e96b0bbd26672037a6e4da2b5494503ec4c1a9483e67d00f2a4",
       "imageId": "question-image-b70",
-      "imageMetadataSha256": "9919a7839ce2259db895584bfb38ce84569c7a8ee6a5f16880f2e3231b5f131a",
+      "imageMetadataSha256": "e2231757b78a5d9c866cffd20e72916882a67156d2767b5e54d6d26807aa10f2",
       "usageSha256": "0e6a1cc3b5f7aad5f0c9f3bef9874155faadff795cef4aafe7fb0af5def936d0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -840,7 +840,7 @@
       "sourceQuestionSha256": "95f92a1fe8084570609553a090c8dae445955142aac7a8872d1db1c8e3b5c4d7",
       "explanationSha256": "e63ac548f5ec39595cf8e5cd2ca36578dacb1850f44039753ec258e22bf08228",
       "imageId": "question-image-b161",
-      "imageMetadataSha256": "e47d3952a5532cb81550d029578172b7e8f0398a94610ce8759c741b30bc201a",
+      "imageMetadataSha256": "10aa8c7040416fbe96a6d85524c7d4c7e6de12cc6987de64d4ae48956226687f",
       "usageSha256": "7712467438bd2580c5eac0b13105600d6383541f25eb999d410d073704ac0924",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -859,7 +859,7 @@
       "sourceQuestionSha256": "658c56c01a1119c75d9cc61972d77f9002a96684b68164b8cd465b25ae6340cb",
       "explanationSha256": "2cfffa5bd63dc4c7b30ba2e64da6d1abf42d2da35f100e3c112d1ce68fe87325",
       "imageId": "question-image-b31",
-      "imageMetadataSha256": "329ab29ab2eaea4322dddee3978fb22e147140ef72f5e8b66a40135008c85ae6",
+      "imageMetadataSha256": "88f5034bd9da01ec7e69f02e83c1386ff3285eb425e0566b4406ff32793648de",
       "usageSha256": "13e19ebde7c81ca13a271940a2c044eee335ccb73d268490a86407f3a42db2e9",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -878,7 +878,7 @@
       "sourceQuestionSha256": "547375cc0ea4e4defb9c9929e4fc930f885068231019173cc0d4cfd91c0c950d",
       "explanationSha256": "28ca0fd2746762a20740c37ca8cc1da7b9c2171ac93f062eb3db1ae3e753b8d7",
       "imageId": "question-image-b98",
-      "imageMetadataSha256": "c8e1918c61cdcfc6930d5b0267bbd7e1fdf0baad73f4e90552e651f2536c5dd1",
+      "imageMetadataSha256": "849b5abf901f4d37d3ec1243c7c735d763250de8f36f264e7be9d24cd3d1e501",
       "usageSha256": "0e4f1a3c0a447a5b4e1f6dfdd01dc9623bbb411eabdd5b76a2f724732aeef00b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -897,7 +897,7 @@
       "sourceQuestionSha256": "65d32e4d6ab3a654ecc49a779affa4ee2aa60a011448d83e8e67d21401fc9050",
       "explanationSha256": "b54105f3736bd968bbca4a21fc9deefcb2b9505d1a03c8753060e8bf26718757",
       "imageId": "question-image-b215",
-      "imageMetadataSha256": "34198dfa21acaab136d8dc736685dcfce2c87ea22c73a0c95e35932860a6a714",
+      "imageMetadataSha256": "a6d05c9f4c207962687fd656d2ae6a06f0dbeeee211acdf061d3ecc26615cb64",
       "usageSha256": "526079eb61d85a5512de599f9f8c16e40e6cbcbf61e1bc3825e5c4068d5ee38c",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -916,7 +916,7 @@
       "sourceQuestionSha256": "17b8a42e1e26e7ec0f4910bf8fefd978dbf45bc4488fe114e86ecf38784ab2a1",
       "explanationSha256": "91f6361c4dda1dddce5b92653dd7edd7c4cc10421a8b7bda0e7bebd5bb94003e",
       "imageId": "question-image-b202",
-      "imageMetadataSha256": "0b369ae6a8a78cdad4b2ce4755e8fd82d0e8e985c647f9f30dc98a0ae61cce3d",
+      "imageMetadataSha256": "44ee4e5689c06d22fc6c3dc4737438a1e5808275e3732c378252dff52272b2fd",
       "usageSha256": "0a7dd0b3f823d32714d2bc856e009b21e562c681c7fe79a9f3a93b9063a536e2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -977,7 +977,7 @@
       "sourceQuestionSha256": "c1589fead41db4dc2345d55391209fc1e187903a5d79086bfa48b9df894c2ecf",
       "explanationSha256": "55417df2000b998ad4a89a9cc322c4558b39fbe1a1e9471908719134c8868729",
       "imageId": "question-image-b7",
-      "imageMetadataSha256": "e433863240b5cba122cd3705671ca04ea519ed241aa096f36b7267f969fdfd7d",
+      "imageMetadataSha256": "4fd625d3c33c3fdbf22cae7eb3eb73c76b7a444361987e094235e1622ec67a89",
       "usageSha256": "6ec59795c04da000a69a8c4ecac149da079aa70e227a6c4afb4555631508938e",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -996,7 +996,7 @@
       "sourceQuestionSha256": "445d8cac625e41030f5d52718ad967a3dda06f951d3c04bb1f836c6381d1e308",
       "explanationSha256": "08a6fa2fd5b8acd5682853789bb07334f9ffc701cc455614cc381aa8622509f0",
       "imageId": "question-image-b246",
-      "imageMetadataSha256": "4a17a601d37bfb680cb7241bf059f79fe3323b8b5610eba7a4baccc6de46b0c2",
+      "imageMetadataSha256": "d84bd7a3dafc9a91a037c6e2bd7fb930c6d9e308ca74d61e696ccc48a2bee98a",
       "usageSha256": "0e2afc19cbe93dff2870dac45999eecbb70b12a39d1ab0c4a8dc0c8d1a0ad2bf",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1043,7 +1043,7 @@
       "sourceQuestionSha256": "e329fc521f97ff77dffbb93b5811e0a9e32bff2342408d38d8e4f37273e0584c",
       "explanationSha256": "c9642eba8bcc308337ce6bbe955a5af107731b9d2185330cf2b4bff0830ee9a2",
       "imageId": "question-image-b74",
-      "imageMetadataSha256": "1e4686bbfd419e7066ca4765f4da93e80be394da8c7f0a187d1247804c1333e1",
+      "imageMetadataSha256": "ca8ccdb7419c12d595dc09bd15252d5046c9d8b59a4ecc1b976115086c62f7dc",
       "usageSha256": "78f841923ad2a96c9573bcda8406b207ee74e5e6378f9e580fb2e3e93869da80",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1076,7 +1076,7 @@
       "sourceQuestionSha256": "fd3b022699f70133d15e8bd6c84b1e6ab8800c369b8918918699b1bc02c14cac",
       "explanationSha256": "32b73b9ac25d66973d8d97abe236db5c4cafe0cc8e2c0b896234f90a3d81246b",
       "imageId": "question-image-b226",
-      "imageMetadataSha256": "4688efa427a1147d1a26b8e8eab6a60c8e7fc8d021dca7ce4be3ce90ba0c4285",
+      "imageMetadataSha256": "f1bb93250d4047ba3045b3764ee39cee819ff9cab03ea22f62ea713a7719a19f",
       "usageSha256": "85335d164782d6ead61cef04afc24dc43fb4575fd7cbc516368667c3550b964d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1095,7 +1095,7 @@
       "sourceQuestionSha256": "865c352c29364cb70ea2d9a583772dcbd750289b2d792da9c97e03ca780babd7",
       "explanationSha256": "8314ab1236f73e083b52affa2aa9f4ac6db509b1073ff3f5f6bb77d74446c10a",
       "imageId": "question-image-b267",
-      "imageMetadataSha256": "ebe335d3d44c4e1f80ba74b1d9d62b3c4f74b4fd1d471f8c5b5cb9093d97a234",
+      "imageMetadataSha256": "e72b00fa1afccecbf4e8641d57ba844cd69ea89325a8840836bff4d656bcb3fe",
       "usageSha256": "2ab92273c659f0afbcd9c1ed8543a9a0a944f8178759e68a143be5ab991e1848",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1128,7 +1128,7 @@
       "sourceQuestionSha256": "baec37ef40d613a551cbea0906ab266a93711b75ea3f89cdb96410afe542b229",
       "explanationSha256": "4c41d990bea40309b749e3cb8f42d2a56732277679ce0f76382ccb416d205cd4",
       "imageId": "question-image-b228",
-      "imageMetadataSha256": "84282a295cf380774607f018ec9dd76ecf56b680b68d2397e37046aa2afbece9",
+      "imageMetadataSha256": "3a0d64a18d93a4bf2b3e2821c7949bbd317783e54985af0fc794acd41926f2fe",
       "usageSha256": "71c0c3add34092c96f4c44523e519b9e5b3d62c7ddeb8736c1104753b214ba19",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1147,7 +1147,7 @@
       "sourceQuestionSha256": "24c1374882b748f54c08366a0b33bb0a298eeeec225a4a85af6432af3d58b4a8",
       "explanationSha256": "991fb04509eb460c2a78d4c26a9c1a904cbc4949e8ee3171055c06736677b72a",
       "imageId": "question-image-b6",
-      "imageMetadataSha256": "56c25310b7cc7a2f547c010dd0ddcf4954cef3f17027ff423dfe809670206b21",
+      "imageMetadataSha256": "8ca966030e90c5630ed95b4b29372ff4c2941e19ed89dfcfc74a84694591170f",
       "usageSha256": "3c439c691ac02caa1fe0410a016e3502cbe5cf52b151ce4375953deed3e8523d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1166,7 +1166,7 @@
       "sourceQuestionSha256": "d282947b8a4d8d8880f919c7b517121cb94fff08ebc461986644ab63f467e3cf",
       "explanationSha256": "8bef6d7cfa9aa1db2650d055449a6f0ff1e22f8a4059f51f940240e06fd62cde",
       "imageId": "question-image-b105",
-      "imageMetadataSha256": "7b4588b0c0ab8885376eae98526fa6971b47241cc910269175e734ab3c23795b",
+      "imageMetadataSha256": "a076343762972a53c1eb6ec4c6035ce885686b8bbeaf687ed74df2d6e5ec5d4b",
       "usageSha256": "835dbc6402484d5b2a76fbdcb111b7c7d1153e58e0c6edd9bb9601c361104123",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1185,7 +1185,7 @@
       "sourceQuestionSha256": "666f137cb7c5c3476fd809786c2aaf743524fde2e26d7292ae690acc00f9f05c",
       "explanationSha256": "b485e80c942e17ef0a146cad404e919b7cde0e42cf3c07deb9ef959d53215534",
       "imageId": "question-image-b206",
-      "imageMetadataSha256": "2917bd2d24be96d8134aa37b5b2735d51f357a51a3d24697ab31ac089db994d1",
+      "imageMetadataSha256": "b20aff32cce0521233eba41f0eb4c61d9fe16c44ae5c3801ec09aab54e3d80be",
       "usageSha256": "ab9266ed3d1c7d9ca2d44dd006e572f773cd47168339234a0207d07c68a20830",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1232,7 +1232,7 @@
       "sourceQuestionSha256": "95ac40a5674f559071fc69254287c954b705ed3138da0bc2cf7ab573cac57308",
       "explanationSha256": "013e16f346ff4dce34a67cfd5dbb7873811778ce784ff3cc671f859e3ede1110",
       "imageId": "question-image-b158",
-      "imageMetadataSha256": "804da7881b3f4693094ad5aad84315cf93beda0140376fdab3e4225fa47186c7",
+      "imageMetadataSha256": "dd63a1d3b769fcf25759d33fee921c45986fd6815049a5856ca20c0dc7210efe",
       "usageSha256": "45a6f9b3f91e37ff98003e113b03c75c5adb523040b8295fec9a7f15c3e057ad",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1265,7 +1265,7 @@
       "sourceQuestionSha256": "0ff07cb55ada271c4405f70896f181c1b25c67458e53e05e2dc7cbdafbd3cf4d",
       "explanationSha256": "de48998f34931b4576e35e8988974f0f87a8cfa7bdc0e96fa7fa8c39d95d3554",
       "imageId": "question-image-b103",
-      "imageMetadataSha256": "cb45f5394c1471a65b7904a75d882647512cb1f66e438858e618ab0b4acec734",
+      "imageMetadataSha256": "8a8a2d12f3f6694340a003e009e5266bba454d45c249b7984c662f3467ba2629",
       "usageSha256": "51a22a0984eb35c0398de29f2413079fb35566c6627969fbe9c7ce8cc5a78ae2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1284,7 +1284,7 @@
       "sourceQuestionSha256": "59b69c8c7c6d52f2eca931da21ee027ea33a17aee31775bd621950510f39a99e",
       "explanationSha256": "13d1695511c47d8b0d10184dbe06ef4b894fa4b6f1ebec099d9d6b327bad143e",
       "imageId": "question-image-b176",
-      "imageMetadataSha256": "4b078238933c4f870b48b18a88a87db85ffb76f4edd48d572e24d02c2b154606",
+      "imageMetadataSha256": "309e988d9de0d2f6baf187cfa18f6f1c2d1531d135c80eecb20d2a609472c2ab",
       "usageSha256": "b81f8cdc6205e6d4a42c88b3f3ff8660ec1adbfb46c2943aa817ec7c30ac7aa0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1303,7 +1303,7 @@
       "sourceQuestionSha256": "3df26628d7402c9efca12aebbef4296812e881519d71ff990ccb623b78adf66a",
       "explanationSha256": "887cf14ff1d376a29a40e9822fa45d15100c4b97a47be3bbafc9d24d500c54e9",
       "imageId": "question-image-b48",
-      "imageMetadataSha256": "b4d92214c8768a8f837e7a52eba987826e9e54cae02a7d2e431b305d70000d42",
+      "imageMetadataSha256": "af698c6d7d59e07c9d0fc932886ac018eb34ef07d1cbbaa5e35044a6b02895d2",
       "usageSha256": "f6b0dc1bb70906708e95f281249d38470e70810fcda3e0f8c801fb96f93cd491",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1322,7 +1322,7 @@
       "sourceQuestionSha256": "1d0dad865ec33a6ec7ef8a072e7e02900a48a35ec03b3dbc8e744b1b7aa9a6e8",
       "explanationSha256": "f7fd34a67414366d3b2899fb482b914ff16a1de7d8582ef5997dee239b302286",
       "imageId": "question-image-b156",
-      "imageMetadataSha256": "5f537a6811aec0368a3f8795e0385bae506f315b6ed1682400dc5f2ad13bc2e8",
+      "imageMetadataSha256": "eea398f4f94c71e6439f55d78d34e35f81957da2a05082c78cf56c13f8809e94",
       "usageSha256": "e557b73f926169b07ceca9f89e58ae55edebd2fa5a71e449f24d17cbe70199ae",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1341,7 +1341,7 @@
       "sourceQuestionSha256": "83db9da4c605482265f6a1f3722bd4ab16a7ad6bad6e025aeab61995946fced4",
       "explanationSha256": "cd56ca65c818580f4ae93e437b82ca19787e439b1e6a786114885472a9023e93",
       "imageId": "question-image-b83",
-      "imageMetadataSha256": "e645f9524f2c99e1238d2858e304d2d02e6e98648e5df3858877e23e026d6757",
+      "imageMetadataSha256": "20bdde461de2e71dd3abc405c45c9baefe41e2f76f7a59a9e5ce2a4221e2b6ed",
       "usageSha256": "a25c68438998e946a38cee479607e34f36bd7e2b3a81d6b8f42df008ad9e2944",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1360,7 +1360,7 @@
       "sourceQuestionSha256": "95f00f91a9bb98e5a3fad43316ca114f41b0d66fca263a409ea73e7c530cffab",
       "explanationSha256": "2c5bbe9d14894e4e19f72829e6209e65e6178e7b567e1b53373fd91379079264",
       "imageId": "question-image-b209",
-      "imageMetadataSha256": "7beb1cedc331e6310a23ea326c0fe463f4190efdd327abaf71f3e5f3df6d229d",
+      "imageMetadataSha256": "4c251794dc446aaa0ccd2384bed1cef2d9d2ff293c8fac3cc4c84371cdc96cd1",
       "usageSha256": "12db677e7d8803142634c030ee63eb43c48d8dae148f6fa995ad5268f5e7758a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1421,7 +1421,7 @@
       "sourceQuestionSha256": "5ffae44f3b566085b8bc2443bcdfea9e5bdadabcebe12d32f3b57f7a70101247",
       "explanationSha256": "92222ed8ed21e7a19ed23219e7bf6b8c124a3bbc8839cccd2cb3d59eb8b5cf0d",
       "imageId": "question-image-b97",
-      "imageMetadataSha256": "e4709017009193a9f9e7a0a250f31da09ff1addea5e134134b90d01401361c45",
+      "imageMetadataSha256": "bf64b52ab8079d7c259cad3d76df82d4ef5094c4cf28b7711005128dac01b92f",
       "usageSha256": "6d04cb5de0dfca6e9e3e0de4b0f97f84c44ae7963f296be224a5e50f9b186514",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1454,7 +1454,7 @@
       "sourceQuestionSha256": "024948a7e6053136a48fe59522bdacd7003b40755132afacb1e15f8565739618",
       "explanationSha256": "4c6bda2ac5dab55fd6f0b48f1b5d96ada72747cefcd6cc979bca359775319491",
       "imageId": "question-image-b159",
-      "imageMetadataSha256": "7d2d7d7b773bbc9f68b45d16c50f24275146427f98193d68f84a1b99549f5507",
+      "imageMetadataSha256": "edcf9530f4c6a5a7e08b208d0ca138fa713466ddd7b67fb5cc747cab4d257660",
       "usageSha256": "3953262170863b4526c35c19e5a779897679e045dbf9195731669acc402c3a05",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1473,7 +1473,7 @@
       "sourceQuestionSha256": "a8dc86df708f29eb2f5d90e0b009274daa3b77140c6fe5bf31ade53e118a9231",
       "explanationSha256": "b23692381d26e6ac68359c1e6e703ae537c7fad3babf17997ee94b269c24e26c",
       "imageId": "question-image-b107",
-      "imageMetadataSha256": "2ae62a6f383a8efa15a02e673197cd923b480a5826aa07557b4e718436188c5b",
+      "imageMetadataSha256": "fcc4ac251f7588e6e8fd383e409b17b3399328a08cb416982ebeb98de0c8613a",
       "usageSha256": "13f44bc1d58bbbfd1641f138ca504513f73d68a44cc03c9f343105ab3f79698b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1492,7 +1492,7 @@
       "sourceQuestionSha256": "0b9d583a1d8fec078de488b63f16a754a50916c11ad3ee33ec2fe78c088fe579",
       "explanationSha256": "2545596c03c078e10f981944892e20aa83a5fbf5dbfbe63dedaf2ebf47ce5bbf",
       "imageId": "question-image-b163",
-      "imageMetadataSha256": "cdf3eb5370fd84c22de2db4505e513f685d99bbcbdb9ecec573b5d8ffe9eecbc",
+      "imageMetadataSha256": "f737a8fd090459fff5a57337dd426358a84e4664ed33f4db9597946d662238f7",
       "usageSha256": "ea04774fe9e237ed5224ea5da3cce6b042604fa793533e018b1752b60714af2a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1511,7 +1511,7 @@
       "sourceQuestionSha256": "f32ff7b8513a0bc7c06444529cd01b041d181915fdc73e4ca4d89448639165f2",
       "explanationSha256": "5048ba973b1341b323424263f2a9bcbc5b2457e3239d8137c8d96bd4f1a39963",
       "imageId": "question-image-b24",
-      "imageMetadataSha256": "5c5db00a8111d748b445ccdeb78b682dfc8dc3dc08327babf5a621ee1ddf94b4",
+      "imageMetadataSha256": "b48f44526920c73e54e6e779b82a087a11ab2b59c15bfc9a081efaf5001e19ff",
       "usageSha256": "6ae5d3a157e7c762b5e7b6a7a7bea98801f7c4489ed45298f5b4570f68c0854d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1530,7 +1530,7 @@
       "sourceQuestionSha256": "1353dd40ade9e8febe5cc167785dc926cf0dbdff1a27e4ad949678f8b7901282",
       "explanationSha256": "ab461c29b319f2868467388ceaebeae7ee0537cda1ff6dd01d6606cc4bcacfff",
       "imageId": "question-image-b260",
-      "imageMetadataSha256": "a0efb1227ea29964abcdc8154a5ba071e2508e3d1292073d8cd003e669c5fba8",
+      "imageMetadataSha256": "10816f68750c8022354bd75171cee073f305bc193b7ea31c11582c141a682f11",
       "usageSha256": "d317dab3a7e7844103e84427ba8bbaaabc1fa8694501ac494c1f7b821a77b66b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1549,7 +1549,7 @@
       "sourceQuestionSha256": "b412642178a33e1b4f4a6b08cf205a6edc4c75c123b7e9cd78a3f26d09256f7b",
       "explanationSha256": "6636b36b783b894d0b54585739503322f0ae4768042c3a8e5d77e82f19fe053b",
       "imageId": "question-image-b27",
-      "imageMetadataSha256": "8d657088329fd6a8ef4e24ebbaa0301e699c552a9e8fe77009db745effce1026",
+      "imageMetadataSha256": "7a731f504a0c9a7b900cd7d19306f1e93a1b7c22a226e4c69e68f750b6a6ad4b",
       "usageSha256": "258e47b28e356514b878f7a09199b09cb1154d6048812b247d3134f1c59648bc",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1568,7 +1568,7 @@
       "sourceQuestionSha256": "0d2b10d7992d5ddb8a290b02371f2d215ef9a211000c32f0fba02895ff86e136",
       "explanationSha256": "54fdc2728505c8ef50303a8377879e4828a771a2887c5647c0fb469b2856db9a",
       "imageId": "question-image-b94",
-      "imageMetadataSha256": "47dcb7c94446db8ca107ecad6999b93e604c81c15331bf7e45ecd7506034f31e",
+      "imageMetadataSha256": "a5731d1b3637b40ea99a7c1bb29f9dc51b622c2821507af77edd02bc522a89bb",
       "usageSha256": "c62da420473812d6167f027a5ad1a220407a71e408cfe51322ede845eac8f60a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1587,7 +1587,7 @@
       "sourceQuestionSha256": "614fefa96f062e7f47b8297293179696848a4ab42ff2f207e479b28ccfade65c",
       "explanationSha256": "fb335bf3f1f9548672aa1e03c84e5a0e0f0bbf251a4449db1a05a21c0509ce08",
       "imageId": "question-image-b16",
-      "imageMetadataSha256": "1b4204697afb6f5bf9af72810c0db49ebf2e95e8a99a19d8e9b3ba687b0debdd",
+      "imageMetadataSha256": "18a0f95a534cd49d931ca6a376f538c898fed1dd9f9cd4aca682dbab50d49f49",
       "usageSha256": "e6292a61006f1fd4f022e9b6dcc4fcea99b395c71507711a25254ce0aec8c040",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1634,7 +1634,7 @@
       "sourceQuestionSha256": "af3fa7cc88928ef0f05bcd9f70f6b3c1bcd1425ab2c07ced8c29ace92f6f0358",
       "explanationSha256": "0a2ba1e1fd50dbbb464ce9bed722a99343ed4a32f2962eb421b60b41e6821ad9",
       "imageId": "question-image-b160",
-      "imageMetadataSha256": "54e4409ad150fe632649d76b8caaf1607b0e8fa97abf5ea627c7eee2a78f3fcf",
+      "imageMetadataSha256": "c8710804774cc386efd30871781f69c3bda86aea531c4f4d16a7195410766a79",
       "usageSha256": "affeb3800a069c89d10ef7edaf6fdd703f3aef8caf810cc0594dcedcfd28353a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1709,7 +1709,7 @@
       "sourceQuestionSha256": "c68493770586870387d01d586edfd7af65e784fc158154bb0615263fc36ab239",
       "explanationSha256": "321200765e2b5b401cbdeedfe34a3befce07f2cb79a16d12607b0bd8eb9fe802",
       "imageId": "question-image-b218",
-      "imageMetadataSha256": "6831a9535fdea7cd1dfe6c4bf1b8ee721851d798474a5ec19dcce0f380728da4",
+      "imageMetadataSha256": "2cae0c52d99a459e796bdabef3fb38ee1340f86ca7ee35c8777fdb54941ef658",
       "usageSha256": "2b1dae35fa87100e97493b084f1ee3a4f8481cd6d7afcb154a993a7a3cfc0d82",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1728,7 +1728,7 @@
       "sourceQuestionSha256": "e799612e20ad4e58841804b0342093fef24936ec48c54f5d6c1f3a3d66598272",
       "explanationSha256": "7a1602d23512a0598c3f5046aed9bddf53382c6c14a7b33ebd0670989eb30867",
       "imageId": "question-image-b199",
-      "imageMetadataSha256": "f046e194b896703337f7b66de01395deb99e34b65a7d4310b1cf6aee172f3830",
+      "imageMetadataSha256": "f01d4b69236d6da7491a3484a3c224aa7c432b1d21b39e9af05b7d847469dccf",
       "usageSha256": "33f66c51baf4bb89f2480222a8f319a0cf0dfd371eef6ab4e73026e72eb46386",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1775,7 +1775,7 @@
       "sourceQuestionSha256": "46f4fc868c29f402c8b30c2d97e28e435c6924fb82f2c740bc995f1f2f30a774",
       "explanationSha256": "c1d9d5c113ca8d95bad6e98626b1101cc66901c385d6860229619a9400fe3190",
       "imageId": "question-image-b238",
-      "imageMetadataSha256": "0c244e5b5d391a7d3520e0ad4247fa90c610c99488a68bfeea27a5d618eab54e",
+      "imageMetadataSha256": "e7eb81d76fb4f55b9471670e508ee4f239880921c0d031e57edbcb6f285d60bd",
       "usageSha256": "4a9ce6b0a777e1c55d3e4716b975eea8665e43c73afb9215a1f74455699b0b19",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1794,7 +1794,7 @@
       "sourceQuestionSha256": "5c37a631790b75aa35406faa3f691820df1f69dd889ddd3f58902eeebbca6e71",
       "explanationSha256": "b25ab5128951c939b6d1e842674ecc7c7c3e9eeedeb7df0e85874818e2e80f66",
       "imageId": "question-image-b25",
-      "imageMetadataSha256": "51e7d63f8dd3f429446a381193a8299d26b444b076563fbe0af264a7559cba75",
+      "imageMetadataSha256": "6f0e7fd24b7c74288a26ddc44bdc28dce2f8f4e6baacf0933879ba228a88df29",
       "usageSha256": "faabc711e425d0d9bfa997c64cbeb1583081e0b6b45262f689ff637e79d600a0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1841,7 +1841,7 @@
       "sourceQuestionSha256": "9893cc2786800c82a3daf495bdf6853d789dd4305eee7426230bf2a93a187192",
       "explanationSha256": "46600b3dec0edabe0fdedbb34dcd315e5b4f70894569c4c45e452dbf8b1b68a1",
       "imageId": "question-image-b224",
-      "imageMetadataSha256": "2be0fe38c045f21a31dbce868e7801308a7be84c90bad8099c9bd9ef5c093710",
+      "imageMetadataSha256": "fdc163b13d1feb09956862a9b3e6eb1dfacb214cb8bdaa83f892b633f6d3786a",
       "usageSha256": "ae1259bce58476affadd060c442b304f091f9cf1ea604307186aa7c706e1a3d5",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1860,7 +1860,7 @@
       "sourceQuestionSha256": "c93dca004eba0425b3abeb7d8c3ac0e056085e14006cff36978edf92731d522f",
       "explanationSha256": "e8ec605f617954d2ce1739e997bcb915b0abdfb7cd32415fe64752e7bf4ba98e",
       "imageId": "question-image-b123",
-      "imageMetadataSha256": "cb7b9803c236409ee3e397e688df86f406c34e1e6444bc96865681063132e6b7",
+      "imageMetadataSha256": "4622051d3924b3c85aff11300e634853a43dc4f47c67685869fbe10d1d60ec06",
       "usageSha256": "304f006d54beb57bf9963cad1319f70f9b2c9b2577a947ebdb48557520cbd0bf",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1907,7 +1907,7 @@
       "sourceQuestionSha256": "d90255095f5a0d7237d42d07b882ecf67251fbe8e7ddcc051419b638c45a4b96",
       "explanationSha256": "5026d9c51aede9eb10e6710f41d2c954ea40885c8cc63dcfa8b69076548bb945",
       "imageId": "question-image-b49",
-      "imageMetadataSha256": "0ada11ca704bfbb6df9f52829ef84d4ccd5799be3f9bdcb00158a33e9d16c206",
+      "imageMetadataSha256": "2959632b4db87cf2001f7b38cdab795b0cc6328647e1625e12fb22b67ce5b466",
       "usageSha256": "2d168e8c5c1cc6f24cb5009de3d283546b55ff1b64a4a191d00604599fe9a9a1",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1926,7 +1926,7 @@
       "sourceQuestionSha256": "5105e733e2cd44024f82120a75dc94d9208ebc3e6f5ee9e3445c6f2996ed8f43",
       "explanationSha256": "4cab3259a47f037ffa3e5ab937df99914cb8763cfdea02842fa383f9b817fbbe",
       "imageId": "question-image-b249",
-      "imageMetadataSha256": "37a9afd6c74fe0991aa75fcb04c57796150ab54dbf2c4a2e5d740030063b7d89",
+      "imageMetadataSha256": "63db92b8f548f10a33909b6ff1d80896e1d127c63964b2571ef5cc89d3dcf863",
       "usageSha256": "4eff090d3de5f278250e9acbae4f0b80dffc4a6e9978386b8b1227755c082348",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1945,7 +1945,7 @@
       "sourceQuestionSha256": "aca425d1ffbe25c13879dd88818fa482fb93be0019d1de1a5d11e2a738a1a63a",
       "explanationSha256": "72bd18adb84b307e5d8d0613e5a4aeb4f80e357020ce0aa869b2b5b022ab8263",
       "imageId": "question-image-b104",
-      "imageMetadataSha256": "8481dd6fd6ad93a7f363d5898e454e62f164329b06bc410395fe5306c746b1e5",
+      "imageMetadataSha256": "974864c394356b07478a48251bcd6b658269a5025dcf32346422a67b3afe192b",
       "usageSha256": "ea9a3ced7b5b3b54b98f24aaf774a959a1698d45ee57f5501f04d68a715d3343",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -1964,7 +1964,7 @@
       "sourceQuestionSha256": "b2fb1cbd6f89f1e314eef5879402976cd7fc6d0e7dd4160de2e8b8dc0bfcf2b3",
       "explanationSha256": "5d300f29cd180866676e394fa994180df841153ae4fcf787e4067b9c9700eb20",
       "imageId": "question-image-b54",
-      "imageMetadataSha256": "dce5646af114923a91dd62bc0bc94bfb0fc81748cff3f0bc5865ea69269ddb45",
+      "imageMetadataSha256": "4410c11ab05e46f39ca56dbc641547a352f7e7ddaa3d293bb3404200ddb35a89",
       "usageSha256": "885029b41a2b7b944369502dd352aa1019949f24c3a28935c736cdc845720524",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2025,7 +2025,7 @@
       "sourceQuestionSha256": "30b7dce68411fa89d70e3fad4b3cb631e5ae872890d90c72397ed5a3aac21e84",
       "explanationSha256": "ded4d7b9c43c868af6310fbeb8890071ab9d56af17dcaaaaaae5a8c7ef120a47",
       "imageId": "question-image-b155",
-      "imageMetadataSha256": "9c1683c76b2a4631f5493a1fcbc730203d2b789946e20df5db149cf48ea85572",
+      "imageMetadataSha256": "d7a0ff4da7219e33a0bb5616360843db25e59db5ce358ceda7bfc3c6d1e8b56b",
       "usageSha256": "14bc6ff1b2ec7beef6f3c512a3a06d11e22030d1143b4bfe5e762b32fce17d2b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2058,7 +2058,7 @@
       "sourceQuestionSha256": "b53cac99b6a5b1c6fc91709d94cfd3f27672dcc690c2d3e849c3c5c1ba599800",
       "explanationSha256": "9ef5baace3466be7d5499bd760f8966b020f073b72ad5c52d5103c8c5c1d257c",
       "imageId": "question-image-b240",
-      "imageMetadataSha256": "d268f9a1e059d008abee9aaa42f18569f4c85353cac7f9bf1374ad369919ab1b",
+      "imageMetadataSha256": "8a68520e1029bc373d7c965b8276089f3f2c1d805f8092f5c5143b3bf7f7834b",
       "usageSha256": "8814c7904de04223b55930e12c633fc816c5c78a583f49517af8d2dd850474f6",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2077,7 +2077,7 @@
       "sourceQuestionSha256": "a3e9275ee2504f9cdf00638235fb4ecdf5144ad7231709ad724433c3fa0597f5",
       "explanationSha256": "7d31e85b2f96d408affd97a94d76ac12f2603c450a73216de1cc5b9d0f0e8184",
       "imageId": "question-image-b241",
-      "imageMetadataSha256": "26b0d132ea664f9886a3fa51c045a59a12ea26510fe4a54966bf8cde6e49a7ec",
+      "imageMetadataSha256": "b2e5b88cf2b454e8e72dc6c49072b8321363e32e289b9e8de7dbbf864a7c7f40",
       "usageSha256": "703b4ce4ff17ce74b0ee12fdbd824bd03eb6ea273fef59c6bbcd4bb7bb39d863",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2096,7 +2096,7 @@
       "sourceQuestionSha256": "609742297a86e1eef7b3d067c29d34859c9ce283f4b016aa3cfc6e355d2cff14",
       "explanationSha256": "aa7acf0f81f1612aab22fedc82f701252fbc5858fc537b3f42eda82cc2f0ce1e",
       "imageId": "question-image-b135",
-      "imageMetadataSha256": "e063209352e0be0031f2c38e3ef455eb063298d95408e9718b3c03b3fa266d82",
+      "imageMetadataSha256": "4c23543403ccddb353061e341f8d56b12f9e397b600f9d2b5c4aaaeaed6674d6",
       "usageSha256": "2d845b13a3eaa891f8ea1294e8b5b65e8ed9165bbb872b6f05fffbd3d87e1dae",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2115,7 +2115,7 @@
       "sourceQuestionSha256": "bfb73af54802c6a875c67e2672bdf7e52d8a4701f414c5517311501875d02ef8",
       "explanationSha256": "19ca997757deb493770b3185b84c4c0fc90ad408573c19ee46ac5a4eeddf9cff",
       "imageId": "question-image-b201",
-      "imageMetadataSha256": "af60e1c0d0a3edb43d67dd3da8a6140e1de53326d9c561f7a69f4549982d9822",
+      "imageMetadataSha256": "42c19a3a4425632169b0974a116dc5e832cb533b3988935e6e6f41ea497286c7",
       "usageSha256": "f5ba54308172c42ed0258ffa8f397cbe570e7a69395b9c512b1945befb2b48f7",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2134,7 +2134,7 @@
       "sourceQuestionSha256": "a68d052e8d4965becda3b43307ab5a310a5c31e38da6e5aa048e9bbb8be854d9",
       "explanationSha256": "fae13fa44a0b52802ecdf74876fc4f30007eb892a470c0e287be159875c2df91",
       "imageId": "question-image-b255",
-      "imageMetadataSha256": "9e8c7d535477a271f554ef1daaa7f785a61ec96a2660fafa045bf6d5642a785e",
+      "imageMetadataSha256": "61a1c424e2c367e9bd7f0ddde675641e20e3df5946a1903f93713e198c07107d",
       "usageSha256": "1e9595732c96d6ee744e0642708eedbb91e2d68a58ff9d4137eabc5701245479",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2153,7 +2153,7 @@
       "sourceQuestionSha256": "b12f1d40d42d82bb2b4254ffdd503525bd0901a26b1327c8fce9125e64cdb5eb",
       "explanationSha256": "b7bf6c798fbec6fa2ac9111e5625d7924cbfc6edeba928b3cc4b60944453d629",
       "imageId": "question-image-b262",
-      "imageMetadataSha256": "408062ef79e9bbf2291032eaa8e0c5947b607d41e5d7a321a07bbb1f13678fcb",
+      "imageMetadataSha256": "cc88507adf05e1476ffe4ae87b782d8ced41ee0a0c0329d6c6925dace4f746ed",
       "usageSha256": "cd6f1444e312ce201a842e60a8acd88b56b4933d8b6c91fc5748eb603d067706",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2172,7 +2172,7 @@
       "sourceQuestionSha256": "3c8518c6196ce72f965ad1af4ea2ed7a951059bf2fada4035e927e3fd36296c7",
       "explanationSha256": "40bc0b4d140c12fc985dade83b6a22481516d80765e815748a9a89d8eda8c253",
       "imageId": "question-image-b87",
-      "imageMetadataSha256": "f66c735914f49430b4a0033cfd5b6ca7e1e051c8c75d19e444aecfc72aff03c5",
+      "imageMetadataSha256": "f0d6f444edaa18e527e134eb802a7aa236473eea298ae349898ffa82fc70eaa9",
       "usageSha256": "31d510110f813b669f1af70563b593d96e064d62042e1f60cade84dc9914a1e0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2191,7 +2191,7 @@
       "sourceQuestionSha256": "efae972d2ca4b8a61e33bfd42ec9f51027803f624c2ec5bdd82bac70e1be3049",
       "explanationSha256": "d15239fc93a978a9b87449fe0c39c5a6f543f0b5facdbf28ff8430e1d4e55119",
       "imageId": "question-image-b10",
-      "imageMetadataSha256": "efbe103b530806d2dcc41b6973815303d3e3154d3666e9046876abfb97c0ff33",
+      "imageMetadataSha256": "2365d66610c8693910be43a42e6d425458018b0c4e7844c2b4aed3763459bb02",
       "usageSha256": "5ecda312e45be7c7011468e88e0dedb8addf67c2cc4d49e9c983255237096de0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2224,7 +2224,7 @@
       "sourceQuestionSha256": "2634fb22256d1dc4832d43848a4c3d130ed3a74f512f6d8f4816c5db6f1d8eb8",
       "explanationSha256": "569db43b79f8d2d399ac352b620051d3428ce292ded2d42b1370e9f4db5f58bd",
       "imageId": "question-image-b26",
-      "imageMetadataSha256": "de82912df9b67976cc8656e12b9bf4e59a0aefb5e0e3405016338ac30fa2aeea",
+      "imageMetadataSha256": "8f20a505d27f28558ad402f71c0a70446254f1ede2b06859c61267fc31d3265f",
       "usageSha256": "c4614de574a25a8f5612b93849197bcf059159bc28a83abbe3d5c8e176c24125",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2243,7 +2243,7 @@
       "sourceQuestionSha256": "39ad170ff62a28865a2633b4a20804dd97907376756c2eb8b56909dcbd595950",
       "explanationSha256": "474bd84751ea4b2f95ae7d403a569382c2e00ba17d19f3d74b7eacad2c3c281a",
       "imageId": "question-image-b89",
-      "imageMetadataSha256": "b8adf410b0577b02e9675326a3d59086db2077408fe4370701f0d37d953edac3",
+      "imageMetadataSha256": "64d2c553dea4c8e37c115e1b8db809d82bb634687a7c83698277c5c58736da36",
       "usageSha256": "70447aee73edac32852eb25c02bc935d6af5cd887764a9c65576506e7d5fb4f8",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2290,7 +2290,7 @@
       "sourceQuestionSha256": "f137c61b3a88ebafdbdfa0d493627b15a6777ca9c22f26314803f84023b2884f",
       "explanationSha256": "d7c723cc1946df653110c5c4f3eb91804399ea952145fcae2d8f1c54b06b56bb",
       "imageId": "question-image-b11",
-      "imageMetadataSha256": "e20aad4cd202fa5be1922995910fa6662a710812ce62208ba99089557d6d5a8a",
+      "imageMetadataSha256": "be96aa99bce024230332169094f98743b37b3ea4e74cb011e5feec0acffebe95",
       "usageSha256": "a7bc6ca11c8627b30a80731b6815e56c855204fb284b8249f799c388b17aecec",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2309,7 +2309,7 @@
       "sourceQuestionSha256": "ed70295e34b87db7c572b88c3b9a8f79b42e79343aade89b51a281dc7b21ec1a",
       "explanationSha256": "dac998b40643397c92db6d9b925737ad255851af5e5e5453f6a86091a2d8550d",
       "imageId": "question-image-b194",
-      "imageMetadataSha256": "611dfcbb84cabdb9b132e6504262bf5aefc576cd3ffa49e503d8c26d06b7dbef",
+      "imageMetadataSha256": "d21df63dd3aa6f1298a5446bf8adc879c54007d9b5a9b281543879a93d5c8fa8",
       "usageSha256": "721e4f1e7227d73ec4188a5e9ddcec29face5c782ab67bbf06d32b51180857f2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2328,7 +2328,7 @@
       "sourceQuestionSha256": "9afa0e5315c2e289e490970731c2d3d96cca11c67e35603be14e9710778cd752",
       "explanationSha256": "c18228df74de0d1ce1ab038fb0fe3c00dd62601d915a0e213b94085f77e07fb9",
       "imageId": "question-image-b28",
-      "imageMetadataSha256": "0fcdf613539bfc16f8ab11ecc6a5e6e571a5f8caa3992745c03fab05d8afdd9b",
+      "imageMetadataSha256": "efe49c475eea6885432304e40dc8f1a80ef601e39365ea2b01d7ee8ecdc20f45",
       "usageSha256": "93aaa231ff1f9b1c88e7993ff0a8be5d2f4d7047422d21084f05a83c5b1526ef",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2361,7 +2361,7 @@
       "sourceQuestionSha256": "e909dd2c42efaf0a052a7802b2051c3904a4f7b67277d1f2bd9b91cb80ea8505",
       "explanationSha256": "3523a32e048119b97deac0deabf39c6081907d61170f21b335bf37a636a34e26",
       "imageId": "question-image-b254",
-      "imageMetadataSha256": "956e92d5f4daf6ae246c4ee283c0215ec3ca49dd04108ffd6b49ebea58dae3f4",
+      "imageMetadataSha256": "190025e111d3fb05dd28b95696ac400ef0ea2aca837775084b0ac9d5c8255626",
       "usageSha256": "f70ef63198ea2f44e1f6b8a15568a4d555d1c1adcf70ae210de0555b20f4138c",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2478,7 +2478,7 @@
       "sourceQuestionSha256": "066b4c099504e4060800c3af34a0d1bea4e379de2c23d830ffcc9c1e3f377798",
       "explanationSha256": "b8b45079bdce923ae0bed1aceb4a2411c565170a73d4392a379e2de8b4706041",
       "imageId": "question-image-b114",
-      "imageMetadataSha256": "839a82d22df8a36a19b81c65e49c8fc1789c470c805305337e4afc3ad83e9cb0",
+      "imageMetadataSha256": "2f3bd47f7ab99fdd2b7e2f889b776f8829ddaca0b08f39ba3e6907548bae4b1e",
       "usageSha256": "f07e1d82aa8a0871d34fef59c91755348f6331a012c0191afb1b60d48c638927",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2497,7 +2497,7 @@
       "sourceQuestionSha256": "25024df6adca74b615c916f53c6070db83c389062097f10a917bac599d3139d9",
       "explanationSha256": "1c8bdc2ea254635a3c97156ca654289dcc7392b63446a458cb5a79ba6da2ea33",
       "imageId": "question-image-b220",
-      "imageMetadataSha256": "39e2040791a16fa75d4fe716187140ced497d157f0da67a0e81ab1cb5c590ebd",
+      "imageMetadataSha256": "dbc02a413ea587706f1a2d9579c1d295642de6553f2de9cc33d63f02fcd6cde5",
       "usageSha256": "cbf49b664ae7b65ef99f2b7d3ee06908af7b58bc204b6906a2c8550a7601570b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2516,7 +2516,7 @@
       "sourceQuestionSha256": "d50836b428c90cc5de4613ddf9e5bb60d48fa6dcaf22db7669e64b14d0a1af1d",
       "explanationSha256": "5d03e4ff959d27b61fe2fd6173108d538b25a4027b4b9e5ebd45847ab30d2249",
       "imageId": "question-image-b119",
-      "imageMetadataSha256": "bd840a90aeaa9050854f24f1b14237956ca0d23d0eea82abee79faa59f2d69f1",
+      "imageMetadataSha256": "1dca8d8d9b6e5b4a4017c6f83ed6c107653580f3350d6255c0d29d4ffbd9ff20",
       "usageSha256": "8e92c32215838e5bc9cf34fd7b02d3e5acffbf941b9401cf1700e56f730b8071",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2535,7 +2535,7 @@
       "sourceQuestionSha256": "29cb6627439777adb975d3d4bd108c7b479eaf18f4d189fc26842719e2319082",
       "explanationSha256": "df247926b35a5562f446f22aea170ed46f6a38ebbefcf1c586cb5303e8d9fabd",
       "imageId": "question-image-b45",
-      "imageMetadataSha256": "f5bdbce8a42b4bd389d8dfecebbab7356d0110dad40d8a6e13918a5cd209426f",
+      "imageMetadataSha256": "e0043d72bc402e96a558765182d924e2702e21b91d8ddd892bb6d4174aed793e",
       "usageSha256": "bfaa9785455d4e616bea31f021783531642b450fdb695d34abee5290368f1811",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2568,7 +2568,7 @@
       "sourceQuestionSha256": "2619998ce2b53024ec582c572b6bc8570c8448d7ffebcd031c4eac2d4ce58764",
       "explanationSha256": "ab1749830382f222ea7458a9602d61fd0558188511871b9cec4b051aa8654775",
       "imageId": "question-image-b239",
-      "imageMetadataSha256": "f7d5d3a3a66268b65d57afb5cb67829f6cd9eb3f21c30f5e2a372cdb6a66ae15",
+      "imageMetadataSha256": "a69ba41769e0c7f838a0d18dd89ddef198650fd6538674b820b3785f794b8724",
       "usageSha256": "7c419bce95260868317334eb6f46e97da186eff6d3a9dbf88a4559ea11d5a962",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2587,7 +2587,7 @@
       "sourceQuestionSha256": "39511f215fce645d1e4c76e6fa8d81693405dc15c780bf3f2631df67fe34bc15",
       "explanationSha256": "1e395fb3f7d593ad0133006b25d6a5516a8ce7d1d2d4ad6a6a42e2a7872b85c1",
       "imageId": "question-image-b237",
-      "imageMetadataSha256": "cda6bc3b0f3476665b40f606ede46452714d9eb3d2cf799cb8921ec4b5bfb5ec",
+      "imageMetadataSha256": "e60ff7c8408c8eeaea986fa6237eba935999538e517e65753d7f4d16628c985e",
       "usageSha256": "8fa32ed8f247d4155957b0ce915552e9a244c7844b497d0e0673e79c7daea473",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2620,7 +2620,7 @@
       "sourceQuestionSha256": "c6a7156ea98ebcc12b4eabad457eba7c1a41dae34d67185d5740b460b2700f42",
       "explanationSha256": "4a4f16f2596500c08633ec1517893f090e5d74db5ee744ca54d18442cf68b61d",
       "imageId": "question-image-b271",
-      "imageMetadataSha256": "4b316ff1ee37c0305b30b324b42a375ce961eee241893222d21428d60e8d6e62",
+      "imageMetadataSha256": "a7bc75572ce6b4e33be1d0c33d6f756eed54c0e28d38094a507d93c6ff085c11",
       "usageSha256": "209a37685f7532e0e605192699e88da74cf7a38532b3b1559a2c940882f9832f",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2667,7 +2667,7 @@
       "sourceQuestionSha256": "5c3ef352f50597c9b09e427ff3b1ffa21b1e727214d2b13d36505bca48ad1330",
       "explanationSha256": "16a81464b0577e514918a6cdb04af8d665d70addeb6d4a6cf800c9e628a48078",
       "imageId": "question-image-b235",
-      "imageMetadataSha256": "4ce12cf8e455c7e02a009cd0b95f7e068cf279b044bebbe410c24ef49fd16bc6",
+      "imageMetadataSha256": "9ff6d7e77da0d8b3f5171bef9625a33b57d45a92f814923523d03f249e655f70",
       "usageSha256": "14ffd70eecc3555e685ec806995266502aac23e1bb0052ddbc10910216ed6f90",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2714,7 +2714,7 @@
       "sourceQuestionSha256": "92d36da06818b386ee234aca63f74217f31996ae9a74526938e227b64fc12652",
       "explanationSha256": "d10e9582e914294a0d0a8057088be27e5b132accc0e8ec11d8c6fcd4050d8c62",
       "imageId": "question-image-b257",
-      "imageMetadataSha256": "ceb9f36e9229126eba5dfcbb839b6966501765bfc80a3f25d9a34b9579ba6e38",
+      "imageMetadataSha256": "4ab74c80f1ae3d1a030a0fb488106ef3acd42769731d873a20a7ccb1d47b1f11",
       "usageSha256": "3a7d0bac2ffee60bd965a334ae88146239a14341ed19a48fd958ce11e46201b8",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2733,7 +2733,7 @@
       "sourceQuestionSha256": "3a31d761ba618f853d0e519e2e6e139ac65b7b2361754fdc205d0aa35325ba08",
       "explanationSha256": "335d0c84b0b15e47c2a9e459f68d8713d03c57e24be203b544268a23ec61b223",
       "imageId": "question-image-b253",
-      "imageMetadataSha256": "6ac2c8d5671de39b531d23b9d27e66cda5260bbceaada164e74479278367e0b5",
+      "imageMetadataSha256": "ff47c8e54254dac74c4c5ed176783ed0ffe849041de08e5ed6f7c9c6570b0a65",
       "usageSha256": "91b42300c9a18d39fc7292ea6a9e9d9b8a1621c0e2a6294fc1abfc755b774458",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2752,7 +2752,7 @@
       "sourceQuestionSha256": "878ade8dd0aba41d97060028cc5cfc661ffbcd1c6ff9cd783f9258bfd03aef1b",
       "explanationSha256": "00209b7a326c43877509f1c0a9ef0b97457528817e98a6f5e2dcd89edab23869",
       "imageId": "question-image-b250",
-      "imageMetadataSha256": "c8b425becd3a2c6276b90c92c4595916c628d86bfbe2d16dda579e038192e574",
+      "imageMetadataSha256": "61a3136e7e8e446fe1dcc4e6df7c11d46e32e4a13ff0225eaeb50f2c16a05208",
       "usageSha256": "58559ebd4c2ad13de0443f02b64e970ed964366b6ae21f60a57d3da2f91290ca",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2771,7 +2771,7 @@
       "sourceQuestionSha256": "366f83392431c58d8c726dbc4c22685c270ecf5e42faaba734e75036c5f5d724",
       "explanationSha256": "15f8cc727b40d60723c1318b4e2ca2af82d2ae3541c5f69c782305f928136229",
       "imageId": "question-image-b113",
-      "imageMetadataSha256": "d8a1301661dfb272656fb7d9a6fa4d08ee8dc764119053c31d502d92ea6b67c2",
+      "imageMetadataSha256": "b4c52cfca70e8edd0c1f90bf39cd167c0a3063f46f4f1f3b917039ecd2f519ec",
       "usageSha256": "89c2ca1278941cf112bc97239313564d12540fc1088b3ca008e311385fcc1ce1",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2790,7 +2790,7 @@
       "sourceQuestionSha256": "673de3ed202270020db941b4a0718b63e5961db48d2d4bbe20484b6bcfe9025b",
       "explanationSha256": "2db9f79873ef6a3dd2518d226834b8e740f4a2d8ed921062c2cbde6e75ebe47c",
       "imageId": "question-image-b186",
-      "imageMetadataSha256": "e36db527b1e00c1b0d54efc4557d9456fa58cd461476e9e2f415297f4be1c300",
+      "imageMetadataSha256": "330ebf19026f005fd92ec29d559d23837c78e0aad53da49d8377ce88a20e430d",
       "usageSha256": "0ed834acc57e7f8e26d8130794a46951cd2d57c51f2c82919390f278891f9ed9",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2809,7 +2809,7 @@
       "sourceQuestionSha256": "24c4a642343748d7728da613c973969d789aa81efbd0d43068122fe7aef06eb3",
       "explanationSha256": "5912179e779bd6a796c19a3699192f3ca0eb0070e2044a7fcde0505f25cf9e40",
       "imageId": "question-image-b33",
-      "imageMetadataSha256": "cc77e6c644d931d31ad45a5b3b2386c3920716e290b4dfc04e8a13e23a8ea877",
+      "imageMetadataSha256": "60774bc00b791f864a4940a7f74fa05deab2da6d5eff677c3636ed7da2cd840a",
       "usageSha256": "4cd5b3458088936d8fd281b31f2b6754efda0994bbf7e985dbc1057f20cf55f5",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2828,7 +2828,7 @@
       "sourceQuestionSha256": "5ff563d7f6a449c895fc19d4081f11bed0b4f61a6ebad51d96b7e6db2f8612e3",
       "explanationSha256": "8305dd3b4b2b1330a8a0b2d97920c5826b653839e53f780f0390f4ca0d34c6d5",
       "imageId": "question-image-b42",
-      "imageMetadataSha256": "a91082cb92a4a561d37ac9a7d5ffbd1cf309fe2f8d59d012599bf41ee1b85109",
+      "imageMetadataSha256": "62e3cafd417a723655be8df6420789d2084386e51b100ed9fa222cd50c8adde4",
       "usageSha256": "cd8cc97bcd946112abc5c096bda2eef14c65d460ce10d07f392777bd7e2f35b3",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2847,7 +2847,7 @@
       "sourceQuestionSha256": "15a4e58c2c4c3ac43aebe8f6f7939fd307ec76194468f8cd8e24721d0d49e883",
       "explanationSha256": "137ecc61d4f23c441735db395e1fd8f76e848738b90480f4e7142248bb9ad1e1",
       "imageId": "question-image-b82",
-      "imageMetadataSha256": "effc8e618a37ee84831ac869150ed7b2785726eba3a1d2cb760703f5b0ea1bdf",
+      "imageMetadataSha256": "d0c7bab7b6e4e2a2d88f5844627250fecaf32e5265901d3a888c3d9984767d98",
       "usageSha256": "9c1511a3b14b78177af9923d4fcd1f299ed7823f1a458061d4238032f637da7d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2866,7 +2866,7 @@
       "sourceQuestionSha256": "13f79d863189cbf236a10ffb6166e221de3ec717b680a315c142b51376db9c7b",
       "explanationSha256": "248b890ead1835255a1a99c3c2873f767adf4697672a888f659e40db59959cba",
       "imageId": "question-image-b111",
-      "imageMetadataSha256": "9e89e15075ba2cbbc9ba919fd1178f8da042fcaeec290f62909e8fce1e99d400",
+      "imageMetadataSha256": "8a591c8f6c8b3319e3f27fdfef347b54979025a058e685506f6d73a62c52fcda",
       "usageSha256": "285908b1a0a898ce196cab8cfd3d27b9afd1fcfd968c2e6774fc5a04351386f7",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2899,7 +2899,7 @@
       "sourceQuestionSha256": "dee89b71ed8f31e17c8cc0be916c57f47a76d09130e901877f37e32d63fc0cb6",
       "explanationSha256": "437fbbccd78de7b628fc2fb33ef9a6ddefe0ec99e4e327594554d5d2e8e9bda5",
       "imageId": "question-image-b222",
-      "imageMetadataSha256": "857f57438e8408c2159e2247afa7c89c62c4dd6967bf44a9986682f2d52d0689",
+      "imageMetadataSha256": "e4956e5d7964c48824e4d6d57ed068378f6dd183d225e1a4f6a14ac42c60184a",
       "usageSha256": "0d2457eae614852e2ab6e065182526cde99c18a690b3c1252874f600c9366fb9",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2932,7 +2932,7 @@
       "sourceQuestionSha256": "28d5bf3e0721c45d71a38bed9c8959bbc910358c39a08b3fb1552709fe858015",
       "explanationSha256": "2bebe0849d1c05e5f678c94260f2417a7f0a787a3a1dcd53778e2c50a427680b",
       "imageId": "question-image-b18",
-      "imageMetadataSha256": "73406b93a6fc179c73b869d0240ff9efa1cc650fed4bdb2e89136133679c1599",
+      "imageMetadataSha256": "3960967a82e15cd2b7a9eaadbf231a98e1882a9bc91c0068bf12225448b08cee",
       "usageSha256": "0515380b592d4b79fcedbb3dc405e9fd44f1d94bfdc80519d78822e0aa718747",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2951,7 +2951,7 @@
       "sourceQuestionSha256": "139ac16b8c1812b4394ee05027b65f46469a020e3f71f10e163aa8ea284de6d2",
       "explanationSha256": "ee017e0cf11351b25935115b9d02fe772efa5392ec66693b142d27359ea33334",
       "imageId": "question-image-b57",
-      "imageMetadataSha256": "8a4f0aa8c71fd8048696527ebe65dcfa6b61138e335814ad5d36346e50fd1147",
+      "imageMetadataSha256": "77fa6248e0e9ce69c533ba22919b1bd7c792fded4c744e6d4266a9777517c483",
       "usageSha256": "31718906a90d5d1a97b103e9ad9317601fd818af41d3c7598d4afcc16155de6d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -2984,7 +2984,7 @@
       "sourceQuestionSha256": "4c32f268a058eac8681f6cc6a8314a4670f4985d3db8cb5c08b55d032ec82455",
       "explanationSha256": "6faa357aad96b61dd69ce531d3f54937992017b043e5351626b8d3f3565089fc",
       "imageId": "question-image-b265",
-      "imageMetadataSha256": "83ccc179460d1cce4d3b6d786ece6c3989b4c3e97d83cf9ce4a425885f2dacb4",
+      "imageMetadataSha256": "81210c05c499c2278fe30166eaface6c033b82875767251116b7d655f6937ceb",
       "usageSha256": "ccd4983dc2d9a9829239b240a2557cacd5777aad49de644a5f337f216fb2e6eb",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3031,7 +3031,7 @@
       "sourceQuestionSha256": "edf0f820f2f5ba9740feb868f48ac3678245fb0e6f3b313f4946a200e3361f27",
       "explanationSha256": "18c84d84d1d9ef0f99744b8009fdfba10fcf01bb0b3ef60626d1f7a687380d9f",
       "imageId": "question-image-b231",
-      "imageMetadataSha256": "ec69c834886fc9fb9e9aa296f9f23a52dff1e477d1c70971db411b19505b1f7f",
+      "imageMetadataSha256": "f37cbc932b07da0bb8777695891ace8499412f7d18f2deafc62124baf586b838",
       "usageSha256": "20a621ab0ceb4b48103a8dd23cb96e8560c4ab0faa4a550dce2a38ba89538093",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3050,7 +3050,7 @@
       "sourceQuestionSha256": "b776a3049854ca153cc4f446056345f9851369e78966f5673e221a3750725f93",
       "explanationSha256": "af136ac37e0e00e435e6019ae417dc6df30a2dd56e25bd4fcef6ae53c6f7816c",
       "imageId": "question-image-b170",
-      "imageMetadataSha256": "ac15010890eab89fdffe7f495446f5c752be84630ec0f18c44ee81bb589f73b0",
+      "imageMetadataSha256": "73cb035106b3ca16b7c4ccb0277ba72b15b45227b1ab0785240e0acb1e7b8978",
       "usageSha256": "01db4a71ff9b4c460fab43865b94b0cc1af2858048b7904b9814a0d1ba4cece1",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3111,7 +3111,7 @@
       "sourceQuestionSha256": "739f509aedd689fa9c81f76c30c11fde56941d7114074fc54f10a1db3a6a30b3",
       "explanationSha256": "eeed2aa1030b2f11c2d4377d5e904f3b120a8d9439ef2d14e47507c6547342fd",
       "imageId": "question-image-b245",
-      "imageMetadataSha256": "da29d93a0cbf53281c65a9f95c387127e441c85fd12272d17d9428f58587f2e0",
+      "imageMetadataSha256": "1ba80adb08e8c21ba986dca8e2a4de861d6f285edca8c3b8977d4eebdab371d7",
       "usageSha256": "d16edfa8e411abce283178a5c78ac7a7ff58e03a6f54d765908c500a22f67398",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3130,7 +3130,7 @@
       "sourceQuestionSha256": "f5922632feef17ca7d0b6af9f5bc5bdf85c10b51fb62a9d9bfae31cc9d45665e",
       "explanationSha256": "45d8ba89b3fc45372d19ae881de4609d256b802d22806ebd88143aca01fbfcf9",
       "imageId": "question-image-b95",
-      "imageMetadataSha256": "f18b35afb7807b3b36d8009ed7c5783ba1227c7e1990066bb253a426f3660a27",
+      "imageMetadataSha256": "42466f211a73975370c1dc96f5fed712309b6f6e2396dff59a0217ffdf4c5017",
       "usageSha256": "9a1f0b770790237d58495714880cd2acf25c7eb7d6f625213a469927995237da",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3163,7 +3163,7 @@
       "sourceQuestionSha256": "d0825c2738c9225a45aa514903ba6d049fc641d1eca75ca3e806a8eb8d2dcf41",
       "explanationSha256": "fb505348ea1242db802b36dc06c43c9091f4cbdef2b817143161ca47fdd9ea09",
       "imageId": "question-image-b76",
-      "imageMetadataSha256": "9a0a32453f71b14ebc8aa6b8985b808d37b0ced0920eddcada3f8626a252cd03",
+      "imageMetadataSha256": "344877439dc751ac7cf8cc985f8858b5e77064c6410298979377441295c89afc",
       "usageSha256": "4327470882e7bfb1a11d098f5eb9df9cd0f21cf572879c6adf442132ff9609df",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3182,7 +3182,7 @@
       "sourceQuestionSha256": "651f05de1df3c09f69694bad5048fef91cf5f523518b1ce4df71a3ff9ca5a909",
       "explanationSha256": "94f1633fd31977092ccb4bfe06533a5db6bd020c65e3b1d37ab9f46aecf9975e",
       "imageId": "question-image-b179",
-      "imageMetadataSha256": "059ff5ab91f285cc64e2d953f98e998efc0016e52901c9e6cc4fe30663ca5d4a",
+      "imageMetadataSha256": "9bae15cd66981752f8ef28d32c89d71e5db50334fdf681ac5b61d65e191d33a4",
       "usageSha256": "2c16a0abee535ee6f04f772bbe3308b101affbfc9ec8d16904ba602d7ffbb382",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3201,7 +3201,7 @@
       "sourceQuestionSha256": "d5f6db5f60d26361b0906efb25f68a4e22209a7ff80fc9ca555f520f7b5642e3",
       "explanationSha256": "57735009f35b0ea1e3ad6e70bf790a910e5fc8d178e1ce7d73bbe46a004d5ade",
       "imageId": "question-image-b147",
-      "imageMetadataSha256": "f7711c1862414dcc91216299acfe2c058352f6f65e8e4b319c094c6ddafb5c6d",
+      "imageMetadataSha256": "e316495062054a05cb3a01d7ec0d34c44dd3f88bfe4df657417fa6e57e47fdb7",
       "usageSha256": "02691610afdb8a4a519284513b272912dd488a92c64145f65503eda697d04d2a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3220,7 +3220,7 @@
       "sourceQuestionSha256": "7c3aa1d7e32064c9a42734fcc82c1c8473ec898c15ef133bdc085f517cf54ff3",
       "explanationSha256": "cacd34c393aaf8708632b8076d156fef6b6c58960da14ce5f58ff4f42d9bf3c0",
       "imageId": "question-image-b128",
-      "imageMetadataSha256": "ef296a92c28b1b766f45f4c91fe6b66bda6e1904cf2852fe8d496de8432478c7",
+      "imageMetadataSha256": "a3231138b1338a26453bce1379b39750217c254ebb9bb3e987881bb6d0dba443",
       "usageSha256": "48a338e0e6d62172c7c8903936e378da48265efac344287ba9580bfd87d6f1c6",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3239,7 +3239,7 @@
       "sourceQuestionSha256": "f2d70f87aa80c20404272f531e671ca1b5fcae1fe8e4ac6cf7cc25159927e32c",
       "explanationSha256": "2b69b31c3f7a108e989d0fb37ea4586f5a1dbe6f62d6870549815ad01f3c00e2",
       "imageId": "question-image-b169",
-      "imageMetadataSha256": "f2b39798afe9e24624e01dbc2fc0eefc04c2e8cd8ee786a0982eab113f4dcb1d",
+      "imageMetadataSha256": "8666bc3f36d593dae49847f3897d917c55c264de8cbe4cc82066a51193b01bd5",
       "usageSha256": "b1cfddb0abcdee3ff94c86ae35527507a21cc15ecbebfa36a3ea0fd0ac7c4d49",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3258,7 +3258,7 @@
       "sourceQuestionSha256": "d1d7d5db985d01884bef0a1ddacafc823d2ea01a95f390258b5e0f2a4afcfa13",
       "explanationSha256": "deef1f58cb3aee2232c60bd6708794971d4339a376cf7f0cb230935f9d088d7d",
       "imageId": "question-image-b217",
-      "imageMetadataSha256": "7768b5b0d48f486c6ad02f0305452a66722e0259b2d6ccf2a643ee4cf57412e0",
+      "imageMetadataSha256": "9e5878935ef1469e0432626fd89eb07187b1d960e585fb54e3375f36d6f5da1b",
       "usageSha256": "4ae5fdf8e1f7913b8069ded2864260980f3b0ee6378d22b20d169a3d15139208",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3277,7 +3277,7 @@
       "sourceQuestionSha256": "b37a878a89a9f389b455d933b24cc1374ae175d40df5ea1f21ab4f445d22cb61",
       "explanationSha256": "68d513cef0624197d5d65105ad4a84db7be7e7d3bf178c2cb121335c9bb468d7",
       "imageId": "question-image-b191",
-      "imageMetadataSha256": "157f584418e34a91e68a7f9930eb267bcab964f13a18c1ab2a12b70122a61284",
+      "imageMetadataSha256": "006e8a7d0ac408aa2326cc5fc59fb62fc5e78ca7e7b74109a62cce247ef1e3e0",
       "usageSha256": "2e287c36df38e8f6320307c5cb3ca5c082078e3e5d32c9bb168643e769134638",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3296,7 +3296,7 @@
       "sourceQuestionSha256": "4bb9a37c6412b5934ac7a4d2cb9ddd062ae71f0fc71caa926fdb0a7dbb92b54c",
       "explanationSha256": "e3ec4d01a853fd54737432d236680fb7ff8feecb9cc088fa24524adede718987",
       "imageId": "question-image-b200",
-      "imageMetadataSha256": "fd5c17ecb234e42ceb71aa9e16bacdb3ecc11fa54097c19138e55394c70b1370",
+      "imageMetadataSha256": "7c3cf83b4bc38492976fd184290c2e05a8ced91bf9125d5937e8de04314a09e7",
       "usageSha256": "c356c232a9563e18031914332ece59671717b1b4a9285c6283cf887318277c46",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3329,7 +3329,7 @@
       "sourceQuestionSha256": "2034aeba671867bf133f49c256765443f1a00fd07b1e393186c294a718a93754",
       "explanationSha256": "a080510e9430637e6159efe06a582fda35ceae45d467b909e3d4a4bcf2dec1a1",
       "imageId": "question-image-b124",
-      "imageMetadataSha256": "3ef00746b9d4d9d928c6d266a077642c1f164d14a840886c7db6fc849194929e",
+      "imageMetadataSha256": "1c405bbb9355fa5eec4a77b567b1f3ca35743b36c383e90ec3063907ad32f0af",
       "usageSha256": "6e7c2c819b8662419268329b3369ab95b0041e6fcd8c3132890743d90bbbfd82",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3404,7 +3404,7 @@
       "sourceQuestionSha256": "7f56b5bb01a476f7e995d15983393f762b8fe8cc0a72db1462974084e1f7c0f8",
       "explanationSha256": "5f96b178e8ba3261e4120443d88bd20e4264c6de78c46ae5e2e063b540a905de",
       "imageId": "question-image-b242",
-      "imageMetadataSha256": "67bd4dcc4b2b4a7c880b397c3144161c068505a3ccb0e223e080618bf7994e44",
+      "imageMetadataSha256": "f007b9630c3356240ca4e2c360734bc5203d9e3fe713fb18e2195fe9ea18edaf",
       "usageSha256": "93ceadcacec220fc4f8d34d3fbac35392dfa8c6715f259d1673672c7daae9cea",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3423,7 +3423,7 @@
       "sourceQuestionSha256": "50b1f32a0014802e593d511750e29abd927ff3c6ea758fad7ae5f677a874dbc3",
       "explanationSha256": "c8ae47b468b1b22f612c6d3afd6bef1c8b71300867e6c98efd9a97b52b48b455",
       "imageId": "question-image-b56",
-      "imageMetadataSha256": "0c71095ccebaf6634a2e0f96951140cf03726edbb0fb15417b97f5b87453024b",
+      "imageMetadataSha256": "a131f5b79e14cbe6560bd59876a82422bb259de5e63e47ba92d4f2a58c78e5d0",
       "usageSha256": "f0d1f7855a11a4209072a067e6c1fb25926355541e923a84c3cce8b918845f80",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3456,7 +3456,7 @@
       "sourceQuestionSha256": "b5bb346b56caba5516ee27a0e3b0326c636bcd8da16137597950cdb6c461d34f",
       "explanationSha256": "45bd467fa9a3a7929ebe56ad59059a54eb54abeb8d601230bf2103def931f87c",
       "imageId": "question-image-b266",
-      "imageMetadataSha256": "a2933d4d42888e3c01e9bc451f92dd98e12f6ab39314bb5e732ef26aad8f6d35",
+      "imageMetadataSha256": "23c02cbf6fbad340e2fe4b056526e9d218fecd1f21fa6f5a9e19d0a3534feca1",
       "usageSha256": "0490b39f556410dec4b1438bdd8d4847ef23eb79c3da3586e93a90490cbe265b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3531,7 +3531,7 @@
       "sourceQuestionSha256": "522b970c9f38a7391d3e34194d353468b626b81c0de6bce5acdce4139a65b6c6",
       "explanationSha256": "3298e513da1f27a046ad6636e02648fc77f5f58675ae3acffa152c3edd5acf8a",
       "imageId": "question-image-b213",
-      "imageMetadataSha256": "9856e05f0e4d5a7853cd0a62e0a65741b39a32e6cfc76550822c828adc604445",
+      "imageMetadataSha256": "438e842f6315875d99f1d664365fe1a245fc8c708ec2f1b1143b65dfd784074b",
       "usageSha256": "ad52c19ee7810c5a99d2526b6d9c6c390b9a04cda13d85593141b8a93cca14b6",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3550,7 +3550,7 @@
       "sourceQuestionSha256": "649dbe7de65e6985ab8614c9bd138d5f96ed9e2eebd170d3bfc2591f7f490bba",
       "explanationSha256": "2a48e7cbd44428026a3508e6426dd6278150f29e74f10c16532a21f17f07912c",
       "imageId": "question-image-b168",
-      "imageMetadataSha256": "0bac4aa9931ad5a438cb6da582b8d52a8b644b4c786c822c5ea88b08420de5ba",
+      "imageMetadataSha256": "44fcdf0e094c793433f3189a7420c3a1b7255c757fa3455cdfe23b3399753273",
       "usageSha256": "c7bff3d12499f529e7d831b207413aa1ee1bfcc487a92ae158be8f9dd2ad369d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3569,7 +3569,7 @@
       "sourceQuestionSha256": "e9787dd0185d1690903ff0b0c037a7e8924da4a59c6c10541ccf475518f6237e",
       "explanationSha256": "64484c6de1d14617e3abb7141a467ff9f6ceec527c0dda64f28439d962e84fe7",
       "imageId": "question-image-b221",
-      "imageMetadataSha256": "9d3b42ff2d39930a50e82e210664e4aa438689ac5a8526429cd21e17467393c8",
+      "imageMetadataSha256": "881ec0c9ae74847b399f9647b4a63c3f8db603c63ce6762cbefe701f84258666",
       "usageSha256": "e817707325effe72f4395826ba93dd5de0c408858b1756923349ccff7bd6fdc6",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3602,7 +3602,7 @@
       "sourceQuestionSha256": "716f0e4d1c0fca72b81a2169aab38318a8f1126ed4fae42085f1f0a6367c79d9",
       "explanationSha256": "d89b2900638e1a789a4ecc02af4b2a9d99dae5e22d735048b734a24b64cfee08",
       "imageId": "question-image-b51",
-      "imageMetadataSha256": "75f10aefc0f4e8ed4b12b0322861b2b75e26b8b771d6eb94ec1e7749f64ed445",
+      "imageMetadataSha256": "3df23f4d4bc7ca2b7ce4f616d2fd5556fe5b54ab8e794d89769485c153daf122",
       "usageSha256": "1dcdc75ca5edb80a05e6b2f81d329d7a2b7406965cf7fb15b182c7ac069da252",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3635,7 +3635,7 @@
       "sourceQuestionSha256": "c9e2bb2a2454c7a47d4a5d82754b1bfc2e0ea85f2e7d62ab7533129eae933337",
       "explanationSha256": "1db71d7176b7a58c8967729e77f74d3d2f72084958e486338c95482bc5b7e73c",
       "imageId": "question-image-b90",
-      "imageMetadataSha256": "8a0b74ea4cb32619b1b095366ad34f4b360ab3b879cf095ab549a5465c92a246",
+      "imageMetadataSha256": "c2ea7e412689556ec02ee56d4600486638c7591c2c792b2b21e681ddc2669160",
       "usageSha256": "16588d02175c8b76a134ec4db57cb5255352be2d664fa2084c8ec40d44c7687b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3654,7 +3654,7 @@
       "sourceQuestionSha256": "24f58deede2ac4059cb84c861d6c7b14cf50224d5581e124d2a609218b74c437",
       "explanationSha256": "cc7d1845cc8fe96341c1e1b8d4f1b8b781297210520a50003d4597537f8a3096",
       "imageId": "question-image-b61",
-      "imageMetadataSha256": "06e9805bac3978e19e82847d23cb072caba9417cf28f32c4e7ccae7539ff8536",
+      "imageMetadataSha256": "6a8d66c860dd9500825f21ef94479082b8ad15a08d3935418c386a089a1df5d6",
       "usageSha256": "3c06c39f33e80617224822cafd2922d0b2093a40e82a4a6a4d1fb4123ab4fb1b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3701,7 +3701,7 @@
       "sourceQuestionSha256": "9fcbf4059a0ec3384d77229745db6ad37c1d612efce8935b8cda8ef5622ea7b4",
       "explanationSha256": "6169e9c0588c91427bbd48e225fcb06a4bf99a3a6845de1ac821aaa64c551873",
       "imageId": "question-image-b88",
-      "imageMetadataSha256": "37964bc4c32b28150ebba6f56dd8cca0d0905727454bccff66b1a9d2ac271b24",
+      "imageMetadataSha256": "3f0b38506a0c718162b8e69573acabc175cbfc2e8ddbb6272f2542d9fd8f9b6d",
       "usageSha256": "38c2445a8b28ca6ac145461109e57d6c0e5666de175d81ad702c33427b855873",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3734,7 +3734,7 @@
       "sourceQuestionSha256": "3a96a3a20fa9dd670f7a87ce4d651374394de8250b0ad7c4eacef826cf3786e7",
       "explanationSha256": "21ce1b199c920c60adea6883ff9fc9f1e758f165616dc0c8c69daece73dfd28c",
       "imageId": "question-image-b122",
-      "imageMetadataSha256": "c1420ea19f544c3531fc1a9b8346eca6e6ddd493be673125fe6684de2882eea8",
+      "imageMetadataSha256": "9af55e97fb832c104d1e55a84681ad832985ea1e8f40fd791c111c93e69728d8",
       "usageSha256": "9a4044027a3e73084d965aafd33190721a0f565009c35425fafdefb6aaaac72b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3753,7 +3753,7 @@
       "sourceQuestionSha256": "ae0e027b3dd8329de34dee64042ab8fcbcd76c223366ab394595dda4d6772f42",
       "explanationSha256": "3e18dffb4c73842896ce40b35d62e7273ad482fb8f0e7c13c00dce42a704966f",
       "imageId": "question-image-b30",
-      "imageMetadataSha256": "b5d4e1e2a15f13125aaf446e201f2221a1747ba95428b5fc3a6659c8461de15c",
+      "imageMetadataSha256": "aee1a2fb62921f808c4766c107cad6c66e87b89598c1d8ca02f7a80d9df32e93",
       "usageSha256": "5903b650c71ec73fa716699740193d52e997a15b40884621911693473a901f34",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3786,7 +3786,7 @@
       "sourceQuestionSha256": "2060c2f39a171e0a1645514e469346bdbe5978842552c18865691de37c13836a",
       "explanationSha256": "19de704b22003fe492da967b6a71e2ec177a52947c4bbc381206536f5e0cd564",
       "imageId": "question-image-b84",
-      "imageMetadataSha256": "ae215212c7b7ca4ce2de165e5ae4b29ed02c1ad417850bac10055127e64aa223",
+      "imageMetadataSha256": "cc0ddcf8af5052ab177bf4be362aea153a7664bff33f8e23eecda4bcb26a2e04",
       "usageSha256": "c07448d269464bcd56d33e5a72a9e6bc5863c94d7e8f6eab2de968481cdde776",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3819,7 +3819,7 @@
       "sourceQuestionSha256": "e8e611925785db98a2776410b1aff68166ad78381d21128eb2f1cbed86e0dc62",
       "explanationSha256": "ecb950ffb905dbcaa8a99ed376b8db41614204fc604f910a3410448d046a0fcd",
       "imageId": "question-image-b120",
-      "imageMetadataSha256": "b75552916e5529ce442a2b256f7bf6258e07effd5eafead6ec24d41880bef4a4",
+      "imageMetadataSha256": "8915ff691cd0c65703a0a35b162778ca7cf684124e491dadeb6aa8826aba75ed",
       "usageSha256": "71e0aab7376b9144093473bd7e2dcd66d92f8305ce9b3215844d9e19b8fe0ccd",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3838,7 +3838,7 @@
       "sourceQuestionSha256": "ecbd5bcc3114df3fb480f7be2215560c46580a5e4f734df8f75196e47e523f14",
       "explanationSha256": "0280be5e0fe354508c6f653b0b5058c971bb3323a3a94e305427ae103b94f9c9",
       "imageId": "question-image-b9",
-      "imageMetadataSha256": "c83c21f7569c9d2baf71d3b3665a61ae5e3b87a12b4bcbb1fa5e481404b373a8",
+      "imageMetadataSha256": "610f2c96659cd5db161a3d7a7601bab01653c7a53b529e14e05dea5dfa6633ed",
       "usageSha256": "db29032003605c602d70cf76dc7aebac58521cb0011f54ab920cafcecbe679aa",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3857,7 +3857,7 @@
       "sourceQuestionSha256": "ca9543fa778df60c54340ca8894620f2153484a4076b171d86355674a8d0b13f",
       "explanationSha256": "e9a623099ffd9bbc484ea5d1892f3ebf7f0fb96796ca3a423adc8ef8dd870d1d",
       "imageId": "question-image-b65",
-      "imageMetadataSha256": "559090554677be3ad704b119958386a7f4c014b51e8b1d949e376e8c92e05e57",
+      "imageMetadataSha256": "e38f1435ad20dbf7e1f4cff1e91885599bee3cd7639c1ef3499a3e241f2e1a94",
       "usageSha256": "e45193219e5bdfc3587a32f02d25e8dbd777c77bca6f451fcd95431d55dd6da2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3876,7 +3876,7 @@
       "sourceQuestionSha256": "a18e55d5436427c30d0329a77892d8d274b2a02768dee96f6f9e9b0a5a13ef16",
       "explanationSha256": "8911692c5419271150c84af5ee2bb96b917b5244d95fb6c7cd00df82225e56bf",
       "imageId": "question-image-b32",
-      "imageMetadataSha256": "eadb32dd88064558e92bbfe58d87a51591da2cf8854a54d75451bec24a3eaf8d",
+      "imageMetadataSha256": "eb4ae52ecc85bb056c129c267103baab7bf9aa55730aab666ee92e350a64a286",
       "usageSha256": "56e8b143b40570dee1744728507a1d4ef3f94555632de6062c6a87afb33a5a74",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3937,7 +3937,7 @@
       "sourceQuestionSha256": "d557f5694ec53c8ab98c6f423f7cf36cfb31238063bed54ff537e7e12088e51d",
       "explanationSha256": "4991978ba345e5c898d6c741422d114be088646039abae099bfb06600cbfa015",
       "imageId": "question-image-b19",
-      "imageMetadataSha256": "5b54c5839639fb28adae4aeb76884435110c96c22bca530f2ff9b8a8bbf725b7",
+      "imageMetadataSha256": "eaa730e63f66028e1473b2d608b18b884e8673ac18a1f89cd2bb319a3c27fe6a",
       "usageSha256": "dc1456610b5d3c2501b8f6348c6a0fd9767ea51277b4e0b5c8d5bc3b5a9a989d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3970,7 +3970,7 @@
       "sourceQuestionSha256": "9552d27a835f25e895ff76ea2149c967aba138378c32120f13b9917fe5d4bb5a",
       "explanationSha256": "1753908e382926134b34958ee7469176e40666195748fb0881a1a5e4c4b33294",
       "imageId": "question-image-b132",
-      "imageMetadataSha256": "42e1f18736c60c188c0c88b624b9c579488e139d39a91ff731120a87023acc09",
+      "imageMetadataSha256": "502bc1780bd37e889c42cacba7fe8b5182d48726b404403ad629ca3f440fae0b",
       "usageSha256": "be359a86a739140aa4b0feae0926d3c49f45a683f123998c3ba235bd8303aaf6",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -3989,7 +3989,7 @@
       "sourceQuestionSha256": "6eb57a194f2450b46f8fc37e9409cd254a89d1c978b33a63ea6c1f8a4d8f49a8",
       "explanationSha256": "1d890bba5fb610a7e51aff994e5bd533f37294a625ce95207ab5c5026a54502a",
       "imageId": "question-image-b64",
-      "imageMetadataSha256": "3c462c8ff7b6fae21cd0650585de79077370e8f615b54ba8a22d8b61d6cfe1a8",
+      "imageMetadataSha256": "ffd6dd4474bde782aefb77ea6259a89b1ffb7304d7d7e58dca4a0cce2bbbc4d2",
       "usageSha256": "445ca390e930c91ec15db266b5b295f190dfafd4c488ba65ca810f441cb9e857",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4008,7 +4008,7 @@
       "sourceQuestionSha256": "2a0bedc65e9c3a81d448ac8155ef0d3c038adbcd4dcdc1c6343192df2b24f01e",
       "explanationSha256": "e6bd8891bf5438e15cf6ee30ecbfc29d7b1ede3d69e32cb8b8010af1a399a0f2",
       "imageId": "question-image-b227",
-      "imageMetadataSha256": "732501c6f59cab0737b23f91b422d4e7c71bea50f13e11d6932a12facd1bc4e5",
+      "imageMetadataSha256": "60bebd34af6be493b404e57596101b34fb1e51511b9a78a99f40a9916f2ed7e3",
       "usageSha256": "b90e3b65e6757dfd87157d054d135b34d17efbdeb75ca8ca926dbebf8d6e1be0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4027,7 +4027,7 @@
       "sourceQuestionSha256": "e2212c91e52effd4d00cf40ac83f6a4a7eb6f27ca39c34b8f3b28a33ab0f5a79",
       "explanationSha256": "43ad020de655247df8910ea2c5681460dd93304e34182fed31ef909e8b9a741d",
       "imageId": "question-image-b234",
-      "imageMetadataSha256": "db1e0e2fa0e6f9ed47128d7a7ef44bae4e5a6717b3d7d0bb851ac21b662eb983",
+      "imageMetadataSha256": "1b50fc0058881b70927c2484e0eb9f7fced3da551fb7766df67ed69986566fd4",
       "usageSha256": "07835004a1e4d99786567d54e7220d5ce7fc20267257efa4a9c835bbf01faf07",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4060,7 +4060,7 @@
       "sourceQuestionSha256": "b61836a6766aa33be7ee35d18c05144cdaf8b770b94ff06ef4bcb8eab01ae648",
       "explanationSha256": "bd9e910bf8938e8cb8a9227f092a4a9be6a5b1bc0e7ea088f3636ccb9d4f208d",
       "imageId": "question-image-b204",
-      "imageMetadataSha256": "91ea8a566656f4771bde1f1966ec322f6e57281e5585959e98702b5e76f3b7b4",
+      "imageMetadataSha256": "a2d4586744fa9366df75069a867e10d4042d682cccf9e68479a65482a3ef1236",
       "usageSha256": "548546a33761c158118353a4c49663012487776015d6aaff377ec7e9270d0e1b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4107,7 +4107,7 @@
       "sourceQuestionSha256": "dfeea021dd10f8286965c58f6775332a65f8754759e346df2ec61d5a65299143",
       "explanationSha256": "bc490629f503f9d25859df2005471e49c1fb67e5c203d3ee9a237a77952203f5",
       "imageId": "question-image-b129",
-      "imageMetadataSha256": "0045984d07057453039200787ab43c04d40ec1b38c630eb5bcdfa25d3129536e",
+      "imageMetadataSha256": "cbc05c522633e66a900fdec6b1206a151fcc5b8128af4a6e6bcbf9a4e2033f31",
       "usageSha256": "3b51fce24aed0164db308f4bdc042dc005a800b56a4e03a1b44958fd8b05b805",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4140,7 +4140,7 @@
       "sourceQuestionSha256": "732467b9550f6421b4fd0aa4de3549bdb4b9b03d7a621249f13626061f84ac26",
       "explanationSha256": "fe34eb1c2695ed529686a102d429d62e9817fef5e4c6515724a974528b61e4c1",
       "imageId": "question-image-b67",
-      "imageMetadataSha256": "d47b2ca5355c6534a593619f65f7e7af2d79702aef93bf198a63135a0e2f6339",
+      "imageMetadataSha256": "83668382f40120e5ef2695dc534ffcb7298f2a11cebebfc3b620d1b68682b782",
       "usageSha256": "94d3742c6e768a2d61ea589f92d037678200d2ad8009087fce50913b4a2464f8",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4173,7 +4173,7 @@
       "sourceQuestionSha256": "be8dbf6ff7e715685a501cce316cdd09a27d9fbce55abc25eb9a832592c1f43d",
       "explanationSha256": "4178b4d4d9d0e5e7c4f9eeb0f046b5fa483c839af0eb6181562ab3be1ea9f422",
       "imageId": "question-image-b167",
-      "imageMetadataSha256": "0c6710ed6ce810f8fc857fd62b403ad7ad7f9fa420fd55eda1dc72e4ccdd8319",
+      "imageMetadataSha256": "4875c16d7239341186dc0264d0387d4b304c28e70750a4932635318470f20779",
       "usageSha256": "b0e9ec4522c73f2a87efa6a4a1eed9b582ccaf44bbf4e45bdac0ea8478f26869",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4192,7 +4192,7 @@
       "sourceQuestionSha256": "149ea83e6a60c42f0d1226d2f296159bd4d0de42639b4a041fb05f59990ce4a7",
       "explanationSha256": "ff2c703ef42277d9dcca86cefc8a6c314e27d3f25447a0da8ec75c7318b2dc1b",
       "imageId": "question-image-b165",
-      "imageMetadataSha256": "b76848fc5bf078ef7ca6146c986f66460d482c0d604765f382742546a94873fc",
+      "imageMetadataSha256": "7197e7e55875cf8c1d7cb9c45971d78ddaba5a3e0e40f1d7e3d6b1124c422308",
       "usageSha256": "00d2ccef2c7b5cb65ca9f9d2752ff5c3342fd581b28552c8de08481d401b7e47",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4225,7 +4225,7 @@
       "sourceQuestionSha256": "355df3cfb7d9c7f837a65f648ff63ac1f493a5d2c4c7cbbf580eadf67a6bf7a3",
       "explanationSha256": "43bc8d1442958ab475d95952192c17b1d40d0b96aaa84fa0790bcee8baf7ef50",
       "imageId": "question-image-b180",
-      "imageMetadataSha256": "89c7ea0632644ad29317688ebfa4b2537f7c42d52bca4a4640576e852fa32218",
+      "imageMetadataSha256": "70ed3b369e0d9c1061c787de80fb41353d7345b322be377e3b7b0481126da7ca",
       "usageSha256": "97723709f6e23a262478d2666e84f87230107c7d9db3739d4088095c242d329b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4244,7 +4244,7 @@
       "sourceQuestionSha256": "25fbec4938dbca8b430eff52f6eac17e405a207664d1f9c45c72525ff5ccbb3b",
       "explanationSha256": "871764eddc8265de427a3e9d349cf79a1299adb12398e8b750d59af736e6e3bb",
       "imageId": "question-image-b140",
-      "imageMetadataSha256": "8f10a3e56d85b62f5eeea054cd0ea2e36cfb2b598e16f7592fb290f78062d4af",
+      "imageMetadataSha256": "64bcb5771eb78ccc3c01464466496d85f46c1433cee7b88ef1270a428ffad924",
       "usageSha256": "2b5efaeadb6fac4eeaec7998f5a4bb03f98dd84ad8510b0e3e597a1dceed24db",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4291,7 +4291,7 @@
       "sourceQuestionSha256": "e251326d533cbdf080f8c89e5985170f1f3b575043c96d16a624d71a72bfe743",
       "explanationSha256": "ff267cfa865497cfa8a94b5c628ce1d8d58750593a267728d46120874b83d526",
       "imageId": "question-image-b184",
-      "imageMetadataSha256": "ccf047428c9d8791a15019a2eb44355fd19535478e5dca88ea25f6afa245b294",
+      "imageMetadataSha256": "d4e591f58b4aeae1b7293f094da5d830cd7527366c3c78436c56da5b46c234e7",
       "usageSha256": "7b7e8e6fce59f464e402cc8ef09e4e199cd807a89a1b333d6f8087b252085f4b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4310,7 +4310,7 @@
       "sourceQuestionSha256": "d84f703cdc1daafca429c156d646eb2af2636aef178033ba8c525fde65abaaf2",
       "explanationSha256": "5048b332ceedad7e5a94452ebde1eb89df038ab4146ee358140a207fb5491b31",
       "imageId": "question-image-b2",
-      "imageMetadataSha256": "0e200ffb473de4977aa1c78210a24c9a1c52bd634a96fc0921d3911c729d1aca",
+      "imageMetadataSha256": "383b42f929c388a840294c24326812d7f144472ae9f012e92e2a9ccae52a8814",
       "usageSha256": "a9b2820b31724ab5ad110068273a205cbb6a397e8908981d1d6a61befd80c11e",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4343,7 +4343,7 @@
       "sourceQuestionSha256": "271644efb3ae32716f086642ffeb27ef368c43733b0da41079c05cdac2bc58cf",
       "explanationSha256": "a6e3fc496fc2d1bfaab1acab8dc039f848d472827f5803b58116a699a49c499b",
       "imageId": "question-image-b63",
-      "imageMetadataSha256": "117f33726eae3d904b98634cb1bb2facb2495d43332dc848bc218db45d27f812",
+      "imageMetadataSha256": "48db284424559c50b20f70c8d7417d588996c8ac67e8f0e65736f6303b5e6117",
       "usageSha256": "41796c0640d7fa226b259dc69e28d0e412905228c9cdf519fe684ac3a1f8c56f",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4362,7 +4362,7 @@
       "sourceQuestionSha256": "8df4238c9fde4141088e27ab4cf321d527f38d1a548d169ea51ce13ebc22529d",
       "explanationSha256": "13d111b1a4d5c1b64d8706d981c2f0ca8a362afdfbc270f22369bd7f271d72c5",
       "imageId": "question-image-b50",
-      "imageMetadataSha256": "7b107b8a454210efe3b0f744a501de37c33fa9dd5a6a7f1ff3c5e2657acfbb2f",
+      "imageMetadataSha256": "4dcf2141b0cbd016587bf6c3dd6882cc910cf242e459f4988807e5a5cff0da01",
       "usageSha256": "08fb191243af53d6a56f3d6ac3a533adbae2d6aa63a10f3aeaaec23f7b440570",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4381,7 +4381,7 @@
       "sourceQuestionSha256": "7bc7d37997cc6bea24f3e5512df870a05565cf1bede54d017dbc4dd7e90fc088",
       "explanationSha256": "c17fd9325afbeee6acbfd5a30e8f90555d72f558ea037a179f71ce5e67fef9a6",
       "imageId": "question-image-b269",
-      "imageMetadataSha256": "3aeefb4a2a3088524826d18c1e246ce21812528ef89b1259046eff09c70bcf23",
+      "imageMetadataSha256": "aae7c75a232177fd5bb931252a8e90b07e83fdca39f5209fef981fc5356cdc6f",
       "usageSha256": "ef487756c7699ebfc56d8f1477b5f291fbf8e07bee60236dd4f98bbc3de20d97",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4414,7 +4414,7 @@
       "sourceQuestionSha256": "938198e0dd13e2f874c99b4b93839196ae486065e5ad2cbc518c79936e888475",
       "explanationSha256": "f5fb30b1d1228be16b56c54fcf04d6b3b822ed3cb4dfab50e5482d0445912206",
       "imageId": "question-image-b229",
-      "imageMetadataSha256": "37f0bdad3ca8ae3acbe890dce0c488b6edaa003c8a2c66cfe8c164c0194bc80d",
+      "imageMetadataSha256": "61587a7db9ae6adf220498d8d0b5977abc491d61860f25f8a478f5f8a3cf6021",
       "usageSha256": "4ea7eb6a72f2b67fef73c23fb2f0554f5015ab851c9b8ce27723f3f68856a7b0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4433,7 +4433,7 @@
       "sourceQuestionSha256": "89f6282d482905c4925a46593fb431be25582329760abc03a80e5334d8207f68",
       "explanationSha256": "c226f793386f10253991e06935bcb23777468f521534a54966eb381e7f721360",
       "imageId": "question-image-b44",
-      "imageMetadataSha256": "699a92d1929016a44f54f9027d0088b2f9edf7e42abaa5445dccaa137d72a3da",
+      "imageMetadataSha256": "e5d038eaa723d746ebcbc38b86cda3b81d9c9bd42e34f7d2a64265aadbda8d59",
       "usageSha256": "66d949e146224f892105406c9d855abae1da8f07db014c2b72808e30777431a1",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4452,7 +4452,7 @@
       "sourceQuestionSha256": "bd8422af5a08bd7926418f2c10a51cce48a3687614ac44bed8ad002a4035c2a4",
       "explanationSha256": "34f09a0c6b35efa02e20bf95c24c417e6a38ba32ef9115c64fa6591b39a5f22a",
       "imageId": "question-image-b99",
-      "imageMetadataSha256": "d5fdcc583fdf8dcc7073e0e168e1d0bc71ecb813c5de90e5cb3452026959f8a5",
+      "imageMetadataSha256": "f9dbbb2315226470a83cefada336618d9ebae19c1f3b83c27ac948a852d01bd8",
       "usageSha256": "3ef74674de915c7bf5c8297803c31e8fc875c5ae44e58d86b5fb2fa405851b5a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4471,7 +4471,7 @@
       "sourceQuestionSha256": "6fa33a1c9ee11b8b67bbf0ab14ec6c5a50bbac8ef878b3ac6e04e3e91c1b686e",
       "explanationSha256": "1e3b38fcbdddc126b7731f6e9ad85b9e4ec8943c7c07a249fbc5aeb9c826dbd8",
       "imageId": "question-image-b261",
-      "imageMetadataSha256": "f63ff992aeb2ffea4dee01c76a491abd14551d4d20c9df8027e31f515a1dae86",
+      "imageMetadataSha256": "51ff26dbeeca46b2f5baaca1f2c9e3e78acc139318b435625da3c0b2ac0bf5a2",
       "usageSha256": "9b5a334256b7cb92a5202be2912cf2ec4d876f4b43c58c22136794183fa1c843",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4504,7 +4504,7 @@
       "sourceQuestionSha256": "feb2b23afe99ae331179f5bc15f08097f58d12857c16f5146b9eeacecff13922",
       "explanationSha256": "0cc600f6423db3a6d5d71ec516cd09874f8d500b812c474a9c24872294a1d780",
       "imageId": "question-image-b138",
-      "imageMetadataSha256": "39766b3de008751f6ca82642e3c0dcd5347d3374124044d5f24ad36a11708a9e",
+      "imageMetadataSha256": "bb352c2d9c93105b239a8b0784413ec90a455a2b86f75441e35d1b37cc049eec",
       "usageSha256": "bb4b15a4e8c9993bb4ef3548746386f0a23ae888ae599d8cbe15ff9f95165e47",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4523,7 +4523,7 @@
       "sourceQuestionSha256": "fed3aaac96dbbef2546ff41bedab75b21985153712173d3215bb6a81feb1241f",
       "explanationSha256": "c05654fcf6d0239b9bc282162fe4b9e088ca6d74070b9922718b971013b3f999",
       "imageId": "question-image-b91",
-      "imageMetadataSha256": "d924d4937f63a78118b8c4ee5d4cbff07ff2ba8fe6798d90c3159bcf86588859",
+      "imageMetadataSha256": "13c8c49a29bf476f2b9631fa8780326fe6b5a1a0428ca746023b53a96e267f04",
       "usageSha256": "3583903b4d28350a3453fbc494492bef88623acdfb3a216cadc207b5e04be42f",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4584,7 +4584,7 @@
       "sourceQuestionSha256": "d2184dd901e43fd87f5ed71a8b12fb7e0a37475846f2ff292dfdfb07eaaccd32",
       "explanationSha256": "4e094b6eb82d739cf486399e3c84cedb804d01249362dbb459982529488c44cd",
       "imageId": "question-image-b17",
-      "imageMetadataSha256": "fb70bb46868cdefdcec185de64d7507274e52f088b8938c8b63f129fd39eed9d",
+      "imageMetadataSha256": "b7127ba33f5936ee7afd0e8d477ab02c8675e19b51668674ae4247cb3a3c04cb",
       "usageSha256": "35c48e79ffb55dce5c56efd3aba510299c7f660b30dde21d922e0ed991cd5602",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4603,7 +4603,7 @@
       "sourceQuestionSha256": "06a2d3bd5eee4e3e6c0039026d62359b2866c511dec9735e97c2bc81cf857384",
       "explanationSha256": "d15f17c77c8b2fe97bea48ff08483bbe29330dfc92e7c21bf648a9afd44b40d7",
       "imageId": "question-image-b236",
-      "imageMetadataSha256": "e559fd614515d98e616ba08952f6efbe595d0b46cd19272b94a518f8e28b16d8",
+      "imageMetadataSha256": "73216be50e40c303477cf64d1b98f4241ffa5b1e82b386294b4471c67fad964b",
       "usageSha256": "6e55c31140ab0121362bb0b1f733e640ba2ccb8ffd573094c0c87b93a8561720",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4622,7 +4622,7 @@
       "sourceQuestionSha256": "50e7093e767e98ffe240cca399674b31fe3cb8e5418f318e70d4d9692b68bc21",
       "explanationSha256": "79f7528aed604eac4e9b142debddc97c812f73cadc0fa9bc1f0c0960c2f9bd87",
       "imageId": "question-image-b37",
-      "imageMetadataSha256": "34373690bd52b0bab812682aa6a30069806cfe07be60cb20b6d719e5d7b2e03d",
+      "imageMetadataSha256": "2c249caa7a93b1ede8f1034c0e9df6293d9a1f88ce43e82bcb58122097ef7081",
       "usageSha256": "65638f9f38757547e6311b54c5f380d6dbbebee9e5795b7f147d0e43580e9fb4",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4697,7 +4697,7 @@
       "sourceQuestionSha256": "3311e6f961d9cb8646d472c0ba3bb669c9467d2ac5764ac4f6b69853de7d5689",
       "explanationSha256": "fd254aca3b592b3a7b78f5ce7f54e592c7a277d106c779a48a7ffa32e63c4cd4",
       "imageId": "question-image-b21",
-      "imageMetadataSha256": "e0e12a8fac475c948ee2ca017365dc2b6bcae262d83361110b8145f4a069fbfc",
+      "imageMetadataSha256": "82c78c3bf9794fd060fa3a050ba99c992672366fe492664b0df92464c00db958",
       "usageSha256": "c621d8f2a9c57bfa66f1f1c1c9dda8a03b8d5dcfa819fad98182d8567bac7f9b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4716,7 +4716,7 @@
       "sourceQuestionSha256": "878094c1c987853c6c4d552690f9589a9d75379efb278b436830675c13ec7ffb",
       "explanationSha256": "235230ff3e1d76e8edf2892baa64a4ebcf53f387a04bd824271a40d03815840e",
       "imageId": "question-image-b80",
-      "imageMetadataSha256": "70c1cf1b800f363b2c16453562ab6328ab737c59caaa3f3fbf2682b02a5bf45c",
+      "imageMetadataSha256": "46f8d7c856d2b833cae1cbb59f7c733208ab7ff863d5b33143881d37fefcfec6",
       "usageSha256": "1d29a5cdeefce4d27f08179bd7c58e6ae449866f72b04f131f050ee9cfd0d1af",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4735,7 +4735,7 @@
       "sourceQuestionSha256": "e19ab6a50f04139a4484a2ccaf8c96a5c098fabf452d2777f2fbe60a11798664",
       "explanationSha256": "fad7cc568283bcb78c761f3aac5981bfb4014e7dc8cf679544162bc73a857f89",
       "imageId": "question-image-b106",
-      "imageMetadataSha256": "473ca36cb3b8f1aa988eaa9a7c96dc8f4c399e3650afab6fd784255ca4e5be59",
+      "imageMetadataSha256": "d71b8969e71167292eb9cd58cee0e0afaf1c23a1432185f8a5d9cdc0ec63ff68",
       "usageSha256": "60c5e8b8f8e17e45919d91145950a3ca1873bb1cd3abdc19d276fd37e2c9ae1e",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4754,7 +4754,7 @@
       "sourceQuestionSha256": "843e938a113620b45df8b40b02fafd7c2c78c9c8074ce5b37bdb55c31ddd4b23",
       "explanationSha256": "8b8e69af41f77cd6e0c01a3bc4e43e517c454e464748f16be921b299cb127967",
       "imageId": "question-image-b208",
-      "imageMetadataSha256": "ff6f544d31b7b7e80cb07a2deb787c23420fafe434e0b804d2c7c5e1f96ee623",
+      "imageMetadataSha256": "c8a449498d1a07bd14aa470fd181b8b480a9fb81c2dd729617b6bbc1a0cefecd",
       "usageSha256": "c02098ad4dcc8cd9b51ff3fa2033f8a757ea8e36aa89e012558f3800d03b64cc",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4773,7 +4773,7 @@
       "sourceQuestionSha256": "504a57f8ac292833406bfc44db22dd2c33e84311c9b6e7e640077de851fcf1a2",
       "explanationSha256": "d64014f3f6a607294eed171e847c0a33ec475a0454400760b19b36e4a2c75430",
       "imageId": "question-image-b189",
-      "imageMetadataSha256": "9819d86ce5e1397613e50781708c2cff4fc719052ca951a4278a7ace7b3f2a26",
+      "imageMetadataSha256": "867727cebad8e61dff3b2a53c0366ff96b903b6c4941e8cf0db7fea268865609",
       "usageSha256": "a91024866d974f05119c5ab201ce0f0e4b75bcbefb52c48c973fc5d98384d468",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4792,7 +4792,7 @@
       "sourceQuestionSha256": "4dad1cb78fa7adf32037c0f2e5297581acb127a472d924e0cbb95c45fc0226d6",
       "explanationSha256": "cb8dca16e5d77d029f481e1a5682b098c18c107b751901e35e22a131d10cba75",
       "imageId": "question-image-b8",
-      "imageMetadataSha256": "3362847f63faad69b78617cd25c5c44ae9979f9db83ee26f5e859d738ead4369",
+      "imageMetadataSha256": "79ea71d1cf85aedb820e12de3009ee53d940ca30e141bfb6c5926790b0a16d2c",
       "usageSha256": "f775384726ebd703cf59981469a120656a5038f61c971222b43ee63e5713c6c8",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4811,7 +4811,7 @@
       "sourceQuestionSha256": "8969b27878b3134c07a27caf01e9fe634d422d3fcf332f17228f12a61254ba6c",
       "explanationSha256": "b1fbb49f3d70956eb9d911033eaeae58f71c7e0c149343870372737b1db884d3",
       "imageId": "question-image-b3",
-      "imageMetadataSha256": "a3707a6007245e1c149deb910c2bef57d42d51b9a70856f0b2430483bf1f2489",
+      "imageMetadataSha256": "e4c05785d22cbef98ae97b08f532aed719b11ba0650e7c5e3df701266645a04b",
       "usageSha256": "801088e50c165f14ee169e29c0d05531df3c4529ec844d41243c61b61c20149e",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4844,7 +4844,7 @@
       "sourceQuestionSha256": "5d7629c423b0e60869e36393d6b78ccea24523682bc9f592937318f0ef594fc3",
       "explanationSha256": "8e11c575e14caa3594e0afd73fc8fc4780e69d266fb0d05bb93ddde8273100d3",
       "imageId": "question-image-b268",
-      "imageMetadataSha256": "5e54f545002027ce61d41a85547db07bd31eb4270ad3dd88adcecd3766f9313d",
+      "imageMetadataSha256": "a7ee2879516606c224852ee240d6d98ada4dcb943587db83523ce821c241d185",
       "usageSha256": "8cae54b91a177797152e58d3284fef6132810349c3e22b84dfb4d367bb07d52a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4863,7 +4863,7 @@
       "sourceQuestionSha256": "5d6772c48c63f341387bcd631ee8b4c969390ec46195c71b9021478a2dc4f22a",
       "explanationSha256": "2daff0a54357ea4fdbd159b28824e14850b693adad368b83efb38726c861b4e0",
       "imageId": "question-image-b251",
-      "imageMetadataSha256": "d668150f267db88aa872fdf9dfabb23e3587560d0493a477311f6bf7659d86a3",
+      "imageMetadataSha256": "97679c6add7d653659d4f18c5f1b54f2c7140f11b593183ccf67c70af7a45af5",
       "usageSha256": "ca9f8725e02a5bd380a38cc768ccc31ecd5d39f08d9df4c3cc0ba347620ebf19",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4882,7 +4882,7 @@
       "sourceQuestionSha256": "e655cab29920a51780aafe49c2aac2bc7c8b06030494dd15ae9887354da13098",
       "explanationSha256": "0a5f789443931b1d0a755aed1c598f8399918d540191611955dda36437c3a190",
       "imageId": "question-image-b134",
-      "imageMetadataSha256": "b5b472c4fcba21e5d76b42ea177f6f8e2a194e786fc953c3f25ef0fbffe6fbc4",
+      "imageMetadataSha256": "c947f406a6fc2def31cfbe61a951341b955a299a830ae447a9af73d777dba399",
       "usageSha256": "c5702d0aef62473de4a359b2326feb5ca195f19cf8c1fb153ae85cae765dca30",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4901,7 +4901,7 @@
       "sourceQuestionSha256": "c5ab03afcfe436502f7a28520a8b58cf79ec960f1a5999260f5ca682b1d399ab",
       "explanationSha256": "a6de8485c69f3a5092c2969ac1f78729287d51d11006e3fdaf49b629e48c3f36",
       "imageId": "question-image-b196",
-      "imageMetadataSha256": "9faf9da9cd6f68f71c935425845c84cc5af4e87e42c21086abfba7a8037b9daa",
+      "imageMetadataSha256": "1384f1739ea3aadf0eec83d31fb272df18ce69a38e683461b42063b79cde1241",
       "usageSha256": "14f818635aaf962735c70a07eb97449f266ef5c26837ab7fd127d8e0b7320a0b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4920,7 +4920,7 @@
       "sourceQuestionSha256": "52d66f024dbbc7baf1c4236358cca75baffe0230e5dc9bc2e417c95eb37b2c77",
       "explanationSha256": "64e3db80924338a3bffc8e9622fe9d236619d73ec2dff2ee27489b4a52c60c1a",
       "imageId": "question-image-b71",
-      "imageMetadataSha256": "79b433b5e72201c40dca5215bf3834a88c4cecaadbc58dcdeab01ef4d0857a10",
+      "imageMetadataSha256": "b076f7e42652504640991346a3ff2a4e60169f2d86c037bc68f3fb5e8536e423",
       "usageSha256": "4985fdfefc7867da466048982a7f2600e0db8c4ea334bbf17f0084ec411e606e",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4939,7 +4939,7 @@
       "sourceQuestionSha256": "7110c0043fb2042b089f75139be1d326691a53b798f4fce5d441e890ab0a9f84",
       "explanationSha256": "717dc8b5889f482ea2062c8896307aadb956f4eb80b20a5ad0243ff7b4824496",
       "imageId": "question-image-b177",
-      "imageMetadataSha256": "8a6e95b882f8066700c6c474d2d93d53be1bf560b19c0da2f9b2f7cf164f0dd3",
+      "imageMetadataSha256": "13753247094bb81efd007f046d7819ac15abe005130a4cad1d6293491c439973",
       "usageSha256": "ec0e44eb7ceae08a6625b04cfe9b12fec146ae440154b8c1fd5c4a754419f979",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4958,7 +4958,7 @@
       "sourceQuestionSha256": "1c63b2c1e0c7c3370e9741408eb280e3599cbb55e0e8be1debcf4773f50ae882",
       "explanationSha256": "6746d17ae96c5cdd7026df84649bef9679f40bf0a567f2d2028da1d59a3b9cda",
       "imageId": "question-image-b198",
-      "imageMetadataSha256": "8f40aaac10d9b8381cb34e58d599c5aadd7c43921b84b48742ec4c1b50bf90c8",
+      "imageMetadataSha256": "74817a4dda125992256c0799ca8eda30b0bfdc47dcd1fc744000d0a4a0873a29",
       "usageSha256": "5f995b58f3e6ad3571c212b4b4de0ee491b9312c43b8a3b04061269cf68d728b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4977,7 +4977,7 @@
       "sourceQuestionSha256": "76d0d0664d016568671fa0f44494d3801c0990a0ef9bbf03553200174132d4eb",
       "explanationSha256": "cfe255255d9c6193abd4f2ad435f63c9820be8f34fb81d4557d3c6d11b49b0be",
       "imageId": "question-image-b40",
-      "imageMetadataSha256": "c0e4b145b00256e6b6c2e96b39da2c4d664e7816fded2df7f205057c05dbfd63",
+      "imageMetadataSha256": "b825f13fe63261fcedb2d74ff737f9142d7719be91ad7ac2ec206578bcc16ed9",
       "usageSha256": "d044496793c0281dad85cf2e31806195609c8029c1c0569bd05b9f32b26a4418",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -4996,7 +4996,7 @@
       "sourceQuestionSha256": "bb086be1e2a2a20f1748f454ab1775669216fe7fd9424effa938709f0451060f",
       "explanationSha256": "cd3a056a65f6654ce95679e4f08480f40eee15b98fff23e3c64dbf470cb4624e",
       "imageId": "question-image-b232",
-      "imageMetadataSha256": "4488001c11ae12555826b19c7eaac8603f21c96fb66f8d5094769fd3630fadf7",
+      "imageMetadataSha256": "e60fd3f306349c605c5743fa15c9377cf0a17ee0bdf55a5a840315526dab8a7e",
       "usageSha256": "3a66cdc11d915f03da7235d2d18fbf8895533632b72ea457a63302d1b0d84705",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5015,7 +5015,7 @@
       "sourceQuestionSha256": "6571d5ef71155c977096b2eb7a4609e338ae857c1a4e8cf23a05fdd665fe13c1",
       "explanationSha256": "7b82074f68ed22852eedbaa469b39295f734d62754f13d8e500278bd9661ddf6",
       "imageId": "question-image-b275",
-      "imageMetadataSha256": "52873295a370fb0d05e3629d057316b5321ad2d73e9a2e7a969d97dc66c43750",
+      "imageMetadataSha256": "63f1fc4f1ec4e03156c3d10c7a07d7b78ef006b8e74ee65fadafb17b7aaae807",
       "usageSha256": "9fc612c730ba319be006816781c2ecc615fccf518bda4262016af5edc9bbec76",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5034,7 +5034,7 @@
       "sourceQuestionSha256": "69316f6cf57483ab2254ccfb6f076f3ac5dbb2cafdd19047c546565eb1347074",
       "explanationSha256": "f2a2bb24529d1a57e68fe6997c9ef8863207e0521f07163ab0007f167787bda0",
       "imageId": "question-image-b212",
-      "imageMetadataSha256": "9489b155feb622e4176373a82d1929430035230cab823e5a35b008ea27d74ff8",
+      "imageMetadataSha256": "00bcbb4713c5855e4440658ece9ead238881078ae2e0725a9884be7d118ec146",
       "usageSha256": "f65b678c47b74965f8e2c948307088cd970dfcc72a73e564a42535adf81296e2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5053,7 +5053,7 @@
       "sourceQuestionSha256": "3caf2f5459c21b6f81d22fad758ab06aae28a1d0989f9791632a9d7bfc7c3258",
       "explanationSha256": "759b82fb51ee83d66bc54968f5abb0805465ed8f3ca27e5bd578576c4f2db831",
       "imageId": "question-image-b29",
-      "imageMetadataSha256": "b65fd0e7c994422d8c16b0fc5e42a57caa4f8faa16023444210bd2aecef08391",
+      "imageMetadataSha256": "f1dbb0ec0ce8a574200495adbd00d7642f749de5361175dd9ee14aa2526faf89",
       "usageSha256": "c560cc762eaefc3ccc80564389204790664461421a5a4f5e2c7a31c822de8840",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5072,7 +5072,7 @@
       "sourceQuestionSha256": "17082998ace192b16895d19cf033e780a430b9c1eaa37993aeb537148f1399f3",
       "explanationSha256": "328721c2cca22023246905e5d6b3eed5052db719a1ca6a875162b9d7f5a141c9",
       "imageId": "question-image-b203",
-      "imageMetadataSha256": "b5a0e30daca2bc29a24b72255033ce708cf0b1c98f291c87b5abb6f148443591",
+      "imageMetadataSha256": "43b1864a75d6edfbadcffd7890611b81f9603cc97a3fd0aab479e3af2eafdc09",
       "usageSha256": "c4140ab9938fc1b768e61d4f4b9f82db0fa12c718dee1927a5c6a6889ca85bc4",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5105,7 +5105,7 @@
       "sourceQuestionSha256": "dbe5a440e68252f1bb2d8cf38cde2afec5565ef12c75357b8faf48c18320f660",
       "explanationSha256": "b605240871317d4c41ad06e83471da1c0e96c678825c8cc8b853f798436722ea",
       "imageId": "question-image-b193",
-      "imageMetadataSha256": "3b56c9df03464f0e207708613c3ccc82cfbd2e5f81ef1eb12c4a0bdf9d8e459d",
+      "imageMetadataSha256": "a8283a41ea0bfcfbbbc0174865a1825f8cb236198bfaab08089cf428e9fbbd64",
       "usageSha256": "a8898d6cd8aabc608e0d59f4f66c36f6dc024fa4edb8f57877032855f6868af5",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5138,7 +5138,7 @@
       "sourceQuestionSha256": "face59c454b82ffeb3411b160b9921fa649d2aacfcdf56b58be8744afc31b7b3",
       "explanationSha256": "22e809bc4112e51ac2d39f4acb3557ba66c7b60e15d2f3a642c113fed87eef20",
       "imageId": "question-image-b2",
-      "imageMetadataSha256": "0e200ffb473de4977aa1c78210a24c9a1c52bd634a96fc0921d3911c729d1aca",
+      "imageMetadataSha256": "383b42f929c388a840294c24326812d7f144472ae9f012e92e2a9ccae52a8814",
       "usageSha256": "f653f8fb1b79693592b54a0601ab9bec58473a3ee4c1cb1db8ed53eb37fb8cfd",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5157,7 +5157,7 @@
       "sourceQuestionSha256": "17263f0876cc036794829155b43e430e0a7bd2912aaa7942eb26d0986a3d8d7b",
       "explanationSha256": "621f5c6179d8dcdcca04ec735227954810f13792db49032dd33e563e54d7044f",
       "imageId": "question-image-b178",
-      "imageMetadataSha256": "7b331c457dc208525151aa017d9d32625a5ab950fa8987562991b640823abf3f",
+      "imageMetadataSha256": "95d1b6f05e2413b9b6da5502f43cdf4d3935cdfe48389594d5dfdf1e0c57f164",
       "usageSha256": "b24fdd60d60578a9d4ca7dc419c84b4ab6beae691e9b8336f97601f0a459fae7",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5176,7 +5176,7 @@
       "sourceQuestionSha256": "c97cf6c63729a3bc21da839047f53f0c38d0414560f20f0280bf629c3b9ba5e3",
       "explanationSha256": "42b12d35725b7c05465c582e636fc479e506460b6e10b945f7608f546d56fa77",
       "imageId": "question-image-b207",
-      "imageMetadataSha256": "b426b613255cbffad59fce5818e4e77d21b59114db582f9794f5b9a8c4bde4b8",
+      "imageMetadataSha256": "73d355f31ba797107eb9887e60ea96640eba6f0e7f481026a10d99ff7536f288",
       "usageSha256": "835c9124cfe018a1b50fa057ab9f01072adaba99a376e7d32e38b1a2faa715d9",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5223,7 +5223,7 @@
       "sourceQuestionSha256": "63b1b52ef3aa4d5b530e9399f2232d61c210941d965523d917235eaea5924202",
       "explanationSha256": "492bb0727469b5838186deddd8458f9e363388cc5457a5fd374319faacb50feb",
       "imageId": "question-image-b150",
-      "imageMetadataSha256": "d62f92ea76ae11c9ce231d8653327c20845f58dd200671e35734a65dcf877710",
+      "imageMetadataSha256": "810029f6c84bf073fac0cbf0d6b5b7bc2662792befc12d9b794540634503907e",
       "usageSha256": "819b8f9c326286edf582b00af19e52d93e4e86031e501049be04b8cccd4570ce",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5270,7 +5270,7 @@
       "sourceQuestionSha256": "9327d3a5cf7c0c6ad3cad1ad07b0e2f371892f05eafd0e58e084e9cc6ab55684",
       "explanationSha256": "d776a0d6800f6e90c344ed465aee4e2e03df195adf2726ab4f285fd78ed04211",
       "imageId": "question-image-b66",
-      "imageMetadataSha256": "b507974211bf211bf77d623b6c9ac821386d37fc4a4405ddc9f179cdb3c76b00",
+      "imageMetadataSha256": "7d859f3b89c039c6e2b5c8dac3830cbdee18e5be9a186c8d50071e710ac0d5ab",
       "usageSha256": "2b595f0013871af4dd97ca721d1ca3ef92855d839be3bfcbdd0e63e4459feeb8",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5289,7 +5289,7 @@
       "sourceQuestionSha256": "c57315073292ef5d89181c192de82063a2a705eca42887047a491d610c72f291",
       "explanationSha256": "e2651beb55e0283bf6f81d308c35f8b646680aab34cce2600b3d9d827da910ff",
       "imageId": "question-image-b75",
-      "imageMetadataSha256": "024582e51c26fed1630f9db485a60a7a6ae6e9544a53fcbe5471da7bf7f90261",
+      "imageMetadataSha256": "5b2bec111ce667e5b865138fae348a43495d80b2b6a6400af0137bf4bcbc5b8f",
       "usageSha256": "de9d3237f043d33b9bba99be803b1ac3574d8f595514d24f6a9f2de22e3ea0ea",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5322,7 +5322,7 @@
       "sourceQuestionSha256": "cab2bf257a3648f0061788d34b014bcfb3762fa7cff303a1725aceac260949cb",
       "explanationSha256": "16ca6ee1db474e9ecd6cda9ad830ddce0f38964c4523ed6aff81102b59ea85c0",
       "imageId": "question-image-b137",
-      "imageMetadataSha256": "fce8872865b8026eda25327d2f4bdabbfadfdd4e1af69da9a7c9b5bc2b823d6d",
+      "imageMetadataSha256": "931ed8d63d41dd6108347917d4ae43005815f9dba2fa1c0682ab7401a2d69732",
       "usageSha256": "100aadeef290acc45fd160f5cbbea11dc350729029415f8aa97f6ef3c4a257ed",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5369,7 +5369,7 @@
       "sourceQuestionSha256": "3d504bd4c1ed6e2cf6be1d64b957089e2e2e815b3647fcdd0e0655a55a4d9ad0",
       "explanationSha256": "af19b48a2a3a2a23cf10cd62c33a13dfe7dcb2e0a418f790bfb24d33ae498ca9",
       "imageId": "question-image-b190",
-      "imageMetadataSha256": "7d3a4f82e0a3c0a933fc6d68238fc57eb5b127b5d095ccfebf86202e206075d8",
+      "imageMetadataSha256": "a9e0b029047bde61992fb9f1d6cc3a8ec6b82569fedc754110a275a90f9de445",
       "usageSha256": "5dc3d2ba04b24e74b7ee8ba95771a8c5cd48fa3926cdee4f4a8367de2e5d0ade",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5388,7 +5388,7 @@
       "sourceQuestionSha256": "ad68960da536c60a53d509cf616e7ad698b445308df5b05e5ea8ab88044d8f3b",
       "explanationSha256": "c79b5de03af2defd71db8f7b1b38679bdab31910e9a4c6cb608ca6b2dbc35909",
       "imageId": "question-image-b102",
-      "imageMetadataSha256": "de63891a47a8005813a30a959ecb80690181bb2f0fb41722fe16fd742c96ab01",
+      "imageMetadataSha256": "3ab47784e735b4c0db7b21ed9ea86f66c09e25b8d60576afe16573382d7950bf",
       "usageSha256": "7ea5fe08071c63aef4139fa83dff4ba9182cd8699acb2e9edbd2ca0350447fc5",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5407,7 +5407,7 @@
       "sourceQuestionSha256": "4f72f9bdcd432a6aaa436a3bfc7d8b96280786cc49eda54af904b3f27f2460a1",
       "explanationSha256": "6fe4d50e7d1ebb7c8ea3dbd2c39329010b5b63fc5271384a924ef0920c22d983",
       "imageId": "question-image-b92",
-      "imageMetadataSha256": "dba6fc7ac2dd00101b43ac06aa1bf577dbd15323451725be28d78768c9a2c9f0",
+      "imageMetadataSha256": "4f19aeb894f9c24d31db217c7e83498b7f6171ebe1d83d58810d28379d71e62f",
       "usageSha256": "04fd7b8bc56b262afc36df77216b5fcc4ed61145e623a09d83ac0682a4240a11",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5426,7 +5426,7 @@
       "sourceQuestionSha256": "f85da6bda1eea395875ae00b96fc4483286278f430fdfb427b9366146aa8f22f",
       "explanationSha256": "f340e7f379649f2591aec07f433cb85cc4db150defbe0ff35bb666b02e6c0461",
       "imageId": "question-image-b36",
-      "imageMetadataSha256": "23e0c0e8bd430621e46211fb9b578683a2e23969d2b3526e4e796dfe63db74a6",
+      "imageMetadataSha256": "7419c739aa4499fbe5af366373c4c4a746b431a3fea9f74e8f63d2274fa0072d",
       "usageSha256": "3a732526aaf6bdd4c817bc0df6289d43b1222ae77e2fd739c0456a5adec242d4",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5459,7 +5459,7 @@
       "sourceQuestionSha256": "0caadbf469c8dd12f53b6eac34cc1afdde65a5a0648ab1b7406c184ec816c189",
       "explanationSha256": "f1502e4237b7c24cd949db44c829680dcca9e24fbdedf3257bffeab03bb4d0f7",
       "imageId": "question-image-b52",
-      "imageMetadataSha256": "0d15a3ddd1bf5d11075aec7ad3eb49a0445c10032fdd1b241052d75d836064fc",
+      "imageMetadataSha256": "209f56115d723e009b5faa4c267e20611fe549d898bb9408eab7fb12a41323d9",
       "usageSha256": "7b3d948770267f83729dac8caad66adde61520c29274bbe486969378ce808644",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5478,7 +5478,7 @@
       "sourceQuestionSha256": "60fe1982235f6687f4453da8d2e096dc9b0d1ccc43145229657e6d02db3d9d4f",
       "explanationSha256": "80a6937a995a48e72ad36574a783db2e6de3ae0bb162e767855741792a1b8777",
       "imageId": "question-image-b216",
-      "imageMetadataSha256": "6e63429bba293eb3df9336b424ce05958628d78e6d0a5fe9f6e7f00289127542",
+      "imageMetadataSha256": "94fde3aa898e06a9affffbdc1c281924d6e99a4f9b90bebbb8b345398752e99d",
       "usageSha256": "6c586403cb857d338a28b3b395fb31e38140c88e6430b95edd0ff4feae73f3ff",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5511,7 +5511,7 @@
       "sourceQuestionSha256": "2ffaea6c73e8fbfecfd488f4c20b00724568f0164e3728760c0cf8a88b7afa7e",
       "explanationSha256": "686e62aaefda5db23d6dcd6d3f5f8109a31d40cc401ef8b122e11153a31a2db5",
       "imageId": "question-image-b116",
-      "imageMetadataSha256": "5581089054fdf872d1f0fc6a34d086ea315e427ff3078aa51b7e4512a160a81f",
+      "imageMetadataSha256": "87a1b3866a08f2c98287bf77eee2aef7d39a016e992eff8b569a4c75c7d316f7",
       "usageSha256": "4be4ded587438de537cd11355ea3dfdc5dcd6debe9ea27b3bd3febea53df2b1b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5530,7 +5530,7 @@
       "sourceQuestionSha256": "9e975f3bfed7df05155f6017d0e016dfc7d957a2d4530bf8417f2ebb4d605b06",
       "explanationSha256": "97bc3a0f96ffe60fc0ac41a3c06f5bb19847304e6abec2ff96b5be1d6dfe02c0",
       "imageId": "question-image-b126",
-      "imageMetadataSha256": "f6964cb327039b002cb6bf1c319ec45f46ece3e27e7743a7ed357a5b195c5321",
+      "imageMetadataSha256": "798ad1d4d5a6c67d12c37e82879f5b4751a80a1f1782b0bba6eea9958a1806de",
       "usageSha256": "dfb4391baa2417169300fce6443ec28233ca1d9553924c35014e175d8ff7b1cd",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5549,7 +5549,7 @@
       "sourceQuestionSha256": "5fcb4b22c5f9e6db8c3c748611b1b18c5e3076f8b47e8a58c0919f39dd1c3ebb",
       "explanationSha256": "eeaed97d44c9b02b97427b569b90f95f96135fad59b94967fa06eea44459187d",
       "imageId": "question-image-b264",
-      "imageMetadataSha256": "9f6c4baa72e0d3951572d65fd9da22eb8ee86f07eb41f675df0dffb6be366cfc",
+      "imageMetadataSha256": "e051d39e0589bca669fa6218edbc2553ab5c50f58f17bbe2df75a9e3012e06ee",
       "usageSha256": "9282c91a39962fab61f8a1ba0bbeba1a00c1ccb047107188a9da0ec65bf1a304",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5596,7 +5596,7 @@
       "sourceQuestionSha256": "ad7f00df7c5c12bd9a043b25285d4a6f8876a609d5507ffa8f60a371e236d75e",
       "explanationSha256": "7f3fefa5b7ad0fc99bc52431bbc59fedf0c519fbfba6fd90438168fd3e1ac01c",
       "imageId": "question-image-b183",
-      "imageMetadataSha256": "b079b5b48af79310986f7f89abc5a9a90670cc2cb539d1c2d09db6d8d8ba84db",
+      "imageMetadataSha256": "d38f6612e5676a598278fbc80e7808f81d39d09d9cbc0074ba8c3676b78a6355",
       "usageSha256": "cd02688a1574975241b25c7bf2c1e252aef03e339f73f0882df53c4217ad4c2b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5615,7 +5615,7 @@
       "sourceQuestionSha256": "a55a2dc2067a9264fe86b994c553f1740eee8bb6405d89a266583ca36935feb6",
       "explanationSha256": "45c311f53f0f9512be96bbad7edb644c08246c61fa897119e42849d9eba8466e",
       "imageId": "question-image-b121",
-      "imageMetadataSha256": "2ef908d0a0d970c58dd482c4bc2dce223a453b9503f10bab3424fa6d04cc3282",
+      "imageMetadataSha256": "de6e3b7a0edb2d93e5bc5d1a354d9966297a2dcb45926304e02a0ccb233ad762",
       "usageSha256": "90c2756db76de05690081ee769986b6a7f3616f29deb67bea4e1078dd67fba39",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5648,7 +5648,7 @@
       "sourceQuestionSha256": "d33513ddf7d1a59156ef3edf52b75e9529205163dfc1ab50bc43f40d16976b12",
       "explanationSha256": "d83c7b53d5ce74369e10dcb54db3e177e05d5ecb17c440441c91b1a6652d1213",
       "imageId": "question-image-b117",
-      "imageMetadataSha256": "428a1aa150aa27a7dd84214b760b5b6415cd05cbabb310cec968e28165f2233f",
+      "imageMetadataSha256": "258a6d1ae3fec9bd24e92fd894b4ca4284c470446976ef5c29d99038d6cf9a4e",
       "usageSha256": "e9b8d44913406d51974e6c7a26c3a7709dac5726b203d41201a8d585b3b3e08e",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5667,7 +5667,7 @@
       "sourceQuestionSha256": "591a8280e6140b8d1e0cf3993c547f02d9f2db5ad30b0ec6d3d1a8045e08065b",
       "explanationSha256": "bb62878c1b217632b02830f115c880b38a3c41fdee86da44dae440ff9d532141",
       "imageId": "question-image-b59",
-      "imageMetadataSha256": "313349a6c5ad4f4e297e5e68fc399855ffceb45bccb6c2fe90e5d69881e83529",
+      "imageMetadataSha256": "efaf65d7a2c103f55704b7b45173e73960c161a5d15a4e5b43b5fcea09fb304f",
       "usageSha256": "e48651f68db5d0f6bb42518779014236ee49c8cf87eeb5a088b761cb02ec8d32",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5728,7 +5728,7 @@
       "sourceQuestionSha256": "0fd7ad8004788ccb4c36fbc17184d61ffe9963df63e92cb8d751cf19601a5de2",
       "explanationSha256": "da24fc26731da0c30ca8beb77205a24695fe3b7c765d8bc57d27e0deb74515ad",
       "imageId": "question-image-b68",
-      "imageMetadataSha256": "3ea8d92089894af98270c5c07cfd9aabc8113f99f1febdb86debd305e86a7e76",
+      "imageMetadataSha256": "c5466bd10b9c4d7e902bc85617c2177e9ea079aa83fc537da78f15c45d9f43c6",
       "usageSha256": "bc7c960111ca00b33e5c1f0b05a6eca4550ea097f699ea9f82979df0ce81fcdf",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5747,7 +5747,7 @@
       "sourceQuestionSha256": "8cac707cef3b7bd5c32bbb3d72c6328257946c26528299f9112afd10d99e9108",
       "explanationSha256": "5b1149d601ebce890e7f6597b7c3221ae6645d602fed8e1b86d79f6d721edc8c",
       "imageId": "question-image-b1",
-      "imageMetadataSha256": "a0c2d2282ffc5565b755329a892a9ac0884ef14718c35ec304a35a0b8db7dcfa",
+      "imageMetadataSha256": "2d604c096b5c6a2621f54558ae3e26aabdffe07c7ee907dec22de5e3c8e20dd0",
       "usageSha256": "98a01e781a439fe5bcce70dde2589ddef461c6bb7af9f859ecf98c2e85436241",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5766,7 +5766,7 @@
       "sourceQuestionSha256": "11eb8d530db440265e6116a6e1bccf382a271bc32eeacb6e3de2cd70f1396dad",
       "explanationSha256": "ffb77e39063ce25ae0c719b904d324038238659d3b6cb4ae14aec2448137f18b",
       "imageId": "question-image-b127",
-      "imageMetadataSha256": "e1377bc64cc883dd1a87b3c9bdf3efd62b59a2d762cc3703ec3e87d66e16279b",
+      "imageMetadataSha256": "91478deb9da3c34052c18fbbab05b60388ac68cb93814868bbf7fc6df0d00531",
       "usageSha256": "64ce99a26079af2a6cc04631185d734bde16c57b8e1dc8966b91d008da1bffc3",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5785,7 +5785,7 @@
       "sourceQuestionSha256": "81e09140fb2b6a96dd9b04524bd4189c945a2301cb1a5d31af707b68b34e1263",
       "explanationSha256": "dd87765271d8b10c20329980e166e92a3e82905791a15cfd1a56f4bdd40dc1ea",
       "imageId": "question-image-b79",
-      "imageMetadataSha256": "e24b7852c6688c891ef0ebd0795628782fb67693ffd7e55fe27a9f1176aba243",
+      "imageMetadataSha256": "f51eab3c4debabfd78e977956c53796c0fd10f1a4a3d8239c34514845193412c",
       "usageSha256": "e13fc05fa06e56415154e71796e57baf7de7874bf45f9217d93e1f2c36a2f60a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5818,7 +5818,7 @@
       "sourceQuestionSha256": "6c794db78ce31675eb4de9138a43b26445de83c0b04dac1e283a83ef534c3c0f",
       "explanationSha256": "c45558b94245704d6d056914fd9d7bcc6e32fc514d0075d183d17259b0da12ed",
       "imageId": "question-image-b274",
-      "imageMetadataSha256": "eba16066f78f81afdfdd1b2f049a057fe9feaa09c9b68ecfb63df6939c564678",
+      "imageMetadataSha256": "113df07fb4092e94b541d818b724cf4c62bf92483109d3d1b9a663101d29ac6d",
       "usageSha256": "2137f8cdc43efe61a9b1a321d32f4ae61c80afc812277b9f205f687261163c83",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5837,7 +5837,7 @@
       "sourceQuestionSha256": "fd7b9b6e754b2b9cc42b1b37c2ead83cd34e7e631913f4a710206b211799915e",
       "explanationSha256": "fd0b71b1029daf6e9b5cf76754791101bf9521f7479f93d8ebaa4c8c3630a6ef",
       "imageId": "question-image-b182",
-      "imageMetadataSha256": "140d8b024bafab9fbdc3a4828300dc52868073b49cb784c7e2a09918ae81ccec",
+      "imageMetadataSha256": "40d0ef3247eb40b4f70ee5be2a77d387562944ec7d727d5f36d5659817db716c",
       "usageSha256": "b6338d1f95033c90657b43a244d79788aa819fa9ab0f14da5e72da40174a6719",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5856,7 +5856,7 @@
       "sourceQuestionSha256": "4385d00de5298713280d6e8d3052484e63400e820e96a73f2e53d0daeea1a26b",
       "explanationSha256": "24e17e1cfbb7299741a79ae2838039b3514836d23e7601b762200549106dffbf",
       "imageId": "question-image-b233",
-      "imageMetadataSha256": "76798f074d92e9bd633f27f2280d741d63185fff79b7c7e0b61860399169f737",
+      "imageMetadataSha256": "25db6304aa42e3d46fad214afe91d017ad0b10ddd129c215550d3062cd842a62",
       "usageSha256": "08acfc6499a7117957144d77486b506e591f0b433482f64cd6012c64981a959c",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5889,7 +5889,7 @@
       "sourceQuestionSha256": "3758de74ff45a1173436618589594db80c2a65c1b2f7904af24f72c395a33d1b",
       "explanationSha256": "d8179bd2fc050185f29ab958dae7a75a7823809f710a16c2f134060552525e1d",
       "imageId": "question-image-b69",
-      "imageMetadataSha256": "2700289499305ab1baad82206b5134b5eb40c8376da32670bcac4c15420059bd",
+      "imageMetadataSha256": "42da233428408ce7f9891a1109cf975e7d2cda93ed33d22efe3295dcda3ea8c7",
       "usageSha256": "1836aa7372a6a71646bdcae24288b8a0dd068828c8f1fcda22eaf9cd94bd2129",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5908,7 +5908,7 @@
       "sourceQuestionSha256": "779c50dc79aaf7e155c92dd9695c9f4c7b2ba3b9206684662e2800c95e194f0e",
       "explanationSha256": "365b520180b7c1d7de7786f1e17c4f712678aa890cc436a9b6f35f620f706537",
       "imageId": "question-image-b85",
-      "imageMetadataSha256": "47aba9f0ca500a676607ffdc425a188a1359e74ca46ad28e189a1e13e4f3daad",
+      "imageMetadataSha256": "fcae0b03868193b78f4948dccb86c9193c02152a0c69975bc916664bced86622",
       "usageSha256": "49bb3e49b3164b3ef9bbe9d4674e8fdcfd3972af57f0aea1efc749e849e392ec",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5927,7 +5927,7 @@
       "sourceQuestionSha256": "6fd2d3bf41c8c6aafb6525a63af8eb1ffc91c9dbb1b4a5cc8080a161bc1cfb35",
       "explanationSha256": "c9439c216d66326a4b27e29d6a6ca0465bf94afa260ebe8bb172099da28cd0e8",
       "imageId": "question-image-b174",
-      "imageMetadataSha256": "ee4b4967ba234e247de908eb0aef31ba92d4de2116366708a5afc5d3e841f5b2",
+      "imageMetadataSha256": "98facd7d4026ffee854cb8aa80e01275ce66cd472402d82e1798382436ea96ca",
       "usageSha256": "29c3e1d552fd77911cf5f312697d5c9f56df2d1e424e295c74f9756c09bd2077",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5946,7 +5946,7 @@
       "sourceQuestionSha256": "714940fc131f99d0b98c17082b0545adb59b3e134fefefae4fb76dfe361c61e5",
       "explanationSha256": "2827e7f97b4750a20f60964d38ffdfab9f56b4c38b48c4c1eced7ddbffabd163",
       "imageId": "question-image-b14",
-      "imageMetadataSha256": "07f9ab9b80338c7f85b3fe5e70fdbd823b11d594bccf6410664b2b9cd75a1ebc",
+      "imageMetadataSha256": "ba56e15af609a310c6fdeed97cbfb9e70e2ef0f617d4255e3315caf36948090f",
       "usageSha256": "7032f21e2cb797db460087b6306e1944e9aa92e17dbbf4dde1fe64196a657d72",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -5993,7 +5993,7 @@
       "sourceQuestionSha256": "ff31ff97efbb193edc9b1d4f23e5cb9cfe33d2abe254be1f11d5ca6e495390d5",
       "explanationSha256": "18a5f6bb8d63513d0e39e67793f50d636d36229f520e78c3b09497792912729e",
       "imageId": "question-image-b195",
-      "imageMetadataSha256": "58a3d2b89d4f720091c115e39a7c8cc0f685c488d942918ce70941c50ebf5b88",
+      "imageMetadataSha256": "1d4ab80cd50baaf9ed5b3a60057628cff68f1638e935c5c6842404cb8df8c1b7",
       "usageSha256": "729bb600c9f20d909ed6521914baa888ada6d9b8c3fb810a5cc61b8054145c63",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6054,7 +6054,7 @@
       "sourceQuestionSha256": "35bf8b988cf332d17e6ff1ac07b39c153d6e231ed3e5612e62fe2f60923dbfb5",
       "explanationSha256": "e145c55b5cc15c9a4162a44a2f7c90e9104ddaa30a3b0c59b174f01e908d70f9",
       "imageId": "question-image-b96",
-      "imageMetadataSha256": "f7f831c2b8c9e08725413241217de6f3e62c47672c707a66666638e2362dac38",
+      "imageMetadataSha256": "a7b3f23f610608047bcb9a4223b5a1d44095c5f296dac9d6934c9af46cda7c25",
       "usageSha256": "4d43bcc9bc228d0af6e4e0eaed892151b80c6137eb1b28428c86bda575f543e2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6087,7 +6087,7 @@
       "sourceQuestionSha256": "fe0e9a5ebff9a024e3ceac75428970477f977d5a65ca2fb8dc56c07deb7c254e",
       "explanationSha256": "45e6a17e4b9a875e58594fe74b0fc162e0e959b5a6529cbce99737b3f5909a38",
       "imageId": "question-image-b259",
-      "imageMetadataSha256": "71f00b9dc0f333c6637219b0bea1d7687bf5e83d8988edbd9436ee4b6c9cea32",
+      "imageMetadataSha256": "7299288c3fa294c8d47b8ba6cb57d0ec6a8d8c5208fba3cbea0cae4ca7cfd8cc",
       "usageSha256": "ef1fd164ea018b121522c3494421179fa34763fb0e383922f84be4bc5c330100",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6120,7 +6120,7 @@
       "sourceQuestionSha256": "770f6400f67731a6b30a6e402b1823854da3472aae45862fe7f00c8851c1af72",
       "explanationSha256": "764d9dceaef23865af3055e2a942c92b1af6707487bbea915a486a93c9554426",
       "imageId": "question-image-b77",
-      "imageMetadataSha256": "6ad628d8ee3350ebfb58b04dea01d2b1e1fc4c6df23415fded0f2a118982b276",
+      "imageMetadataSha256": "d101a9576840055aa9aa9233443d277c1f5679b9bd5d4f4240f065f669724660",
       "usageSha256": "d96fbf63e51cb891603ab7aada7a5c4b149ff8e3dae421058fb63338ee6dfa91",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6139,7 +6139,7 @@
       "sourceQuestionSha256": "67db56e5465d282369e1c88c1f2fe67a010d185132f6a7bebe6af76d9ba720d3",
       "explanationSha256": "4664d24f2e033d9f7799387fee3057b5c7e0cd1632ca4227ddf2a60022a254d5",
       "imageId": "question-image-b81",
-      "imageMetadataSha256": "f840ec187903087ff6c97f0d353d1e254149d53a129fe735f5929cc3004d8a9a",
+      "imageMetadataSha256": "d490b722769cc160c6ed1bbe38f4eb5372be45559256d13cc29a814b41f2ceea",
       "usageSha256": "d862a99ba0ee966cc032e0b6941ad3ddd72244ce9f921109079a517812a88d9a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6158,7 +6158,7 @@
       "sourceQuestionSha256": "dc1bd9232dc334a8924cf4e0b11617f9ac7e2214b2648245dbcd55285ae889fb",
       "explanationSha256": "bb2057b5c55d40a059804db3c01c310fa8c99291fbc7b8a56877258abe05ce9c",
       "imageId": "question-image-b125",
-      "imageMetadataSha256": "19decfcb1faee5992bee4cfa754fb4da466407d3a6ea272ccfeacd4270a8c5ed",
+      "imageMetadataSha256": "16f825c8d0836bfe0c949d0709aebac666b6f9c5d074bf626b163cf345a8d90f",
       "usageSha256": "e1b4ef8b5d32d208ecf377e5f3028790e779f325e9b6e1119970893b33423e85",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6233,7 +6233,7 @@
       "sourceQuestionSha256": "c80dd7d1b2b46a7a8c261a9d1d96ecdd8266baa3ac93db1b9233e764c7f6aabe",
       "explanationSha256": "3ff7400c9f8a34e45bdb59b834e067a03a8696f925df936ccff161492f901ea7",
       "imageId": "question-image-b5",
-      "imageMetadataSha256": "cf8fa25ff170cdbd559026b4f616eaa5bef45f4c2446ede101436a3feabd8cd0",
+      "imageMetadataSha256": "b45c055c70e76c5cb5d8375ac2d9ea61db7620a8fe66105713b9e1d9fcd2752e",
       "usageSha256": "7b491aaa37966eee59890c3b33302396fb584c29b43c32b8bbf5a8a0406f15cb",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6252,7 +6252,7 @@
       "sourceQuestionSha256": "f2b7a0c15b18d1d4488f713be634ed59037581ea6627c7e873cff0e1f8b2bb30",
       "explanationSha256": "eca59202e38caef11c13da73b2f00cbda5e1f4b712b9bcc09a13a234968b1f79",
       "imageId": "question-image-b34",
-      "imageMetadataSha256": "f636c072cb9e0a4935e3579313a36553a6c4222887f15e008d3ed603584ba86d",
+      "imageMetadataSha256": "755060c59a9e54c5b3e383e34ec05f3d7f4958442a4763fce688cb2178c9958e",
       "usageSha256": "e2568bc2b8b3e3bfdf860a3f7bd7d402395733770f2f54ff52c2c923c6914031",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6271,7 +6271,7 @@
       "sourceQuestionSha256": "2c7b496a37a5e58b97f654040b744d4a5a086da803aa575fd449e2888e119af3",
       "explanationSha256": "c31895651f49997e6ec2c1a0bbd9372718e6977bc7f09e43b482ba3ad5d9ce74",
       "imageId": "question-image-b143",
-      "imageMetadataSha256": "bc1e5bec03d0ccda92440b189613daaac47fa19d11db3a1a5fb133ddb1f7395b",
+      "imageMetadataSha256": "74bc31dfc474b7856d7bb7602b665fcc479feb6db210ea1339e67ccee971e5fc",
       "usageSha256": "bd38d1a30116d050f44c08fdeeb4b82fea1f1af103426d6fdd64de44fab90605",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6304,7 +6304,7 @@
       "sourceQuestionSha256": "91fca24bd65e8c76d74e51c8b48ba40596309eddc645181ff1739dae3bb2ee5a",
       "explanationSha256": "b570d6ef56247f631fc4e6e04aec6f99b0bad5b4cac1ab948966da704ba66758",
       "imageId": "question-image-b100",
-      "imageMetadataSha256": "a6001d2a715a128f1b60a3979ff83901bf45b37db62ceef9ded0330dd282f953",
+      "imageMetadataSha256": "e4d79460f91eef18406c72aadba6af69e0cf58e66131cbfcae995a9faa8b08ab",
       "usageSha256": "cfc5f3cfcbe05cfe2d0e9f786b9c5626d46f4bd04c810a74adc5b53cfd2095b3",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6337,7 +6337,7 @@
       "sourceQuestionSha256": "344751111bcd866bb2468c9bdf76fc06966931dd35ef51ccececd843bc4cfa57",
       "explanationSha256": "11f56ffa9780b946d918f3ace6bd9be73fa0075369e59d0dbeafb9d51c3a1d86",
       "imageId": "question-image-b62",
-      "imageMetadataSha256": "9965e27a73a4bf06efe3e982283bd36b5f185399f2f842a10ef22d104a1dfc7b",
+      "imageMetadataSha256": "30c5357597b195c77ba24a3e4e5504fa9c3dc6a624dc67db5613dc96ac62e69b",
       "usageSha256": "332471241a8a8c03274aceaa15d45593565218e9263b1b52c1992702972bcbe9",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6384,7 +6384,7 @@
       "sourceQuestionSha256": "a7a431ffa505d10bd8e8e72a452b9d0ad753422a328595061bdb777074916926",
       "explanationSha256": "35cfb142e72fb502b14da280a089886abad805f1f63908275a64e5eece87437c",
       "imageId": "question-image-b139",
-      "imageMetadataSha256": "25050b79219646590dab8b0cae45c8befc2af7775474ce791661d81846e191f7",
+      "imageMetadataSha256": "5c03e422378c2d0c39cb405dc8ce08b6caffe436f2cfaa74d308881161390d8b",
       "usageSha256": "486926f4231b8b992018f9fb2691f5740b187f202596f20e8ac71f9b735d4d33",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6403,7 +6403,7 @@
       "sourceQuestionSha256": "ffc211fb9f664710bd79b2b72dc2967b4b4ac866e1c69f11942a7ab779bfc4db",
       "explanationSha256": "e6597b65bab7fb52819ce327510493671c19fb250e9fd6f0b746cdf21a2498d3",
       "imageId": "question-image-b171",
-      "imageMetadataSha256": "e19818b09f24a6a955e9011203cdb81e79a0a84442eb88839c62b94c9120e161",
+      "imageMetadataSha256": "b0576cfa023f66509c3a0ea64c9a357f49e65446b592393574b41ee728939362",
       "usageSha256": "001ef39730b14fe1052053ca08da077a7158ab27be813f32673614c5d325ad73",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6422,7 +6422,7 @@
       "sourceQuestionSha256": "a54e968b373b7c94e3f5ceaa53424e173d00ed8dcc530b617546e01dabd831b2",
       "explanationSha256": "2e1eb59c0bb132494c418890e7fd1f85ed0870ea7848763f3f7da93bdd55a1a3",
       "imageId": "question-image-b244",
-      "imageMetadataSha256": "714f5b69e3e6491f1e22f8ccef86053bd09b573c6052bafb92f2d38f1bdbd853",
+      "imageMetadataSha256": "9aa93c9acbb5dd1d4e960a13bd5deac284bb777d1203b0c68bad9b052da7cadc",
       "usageSha256": "abb39488b0264f9490dc9a0329cee5fa4cf27a41b2eb3fe2706202de161c19a2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6441,7 +6441,7 @@
       "sourceQuestionSha256": "3966c3b10e8d0e98bd57cf06d35578e62d14f4d778359e89b87b9feab386f446",
       "explanationSha256": "859ebfde903586e1d5d17d693d6ff7c0d5570666896683a018ce8a8886d6c5f9",
       "imageId": "question-image-b12",
-      "imageMetadataSha256": "0e212e01f93e3ca675271ffca76cd3401df834b7b56dfcaf779e5e3be263c80b",
+      "imageMetadataSha256": "b2d809d45fd8ce48229280f300f1b4aa4370c9b82ef7ddbee8db133022ce5613",
       "usageSha256": "743ddf20df894073f1b34aa16fc6be8ff1407fbc3610752ecd88716e1c408d11",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6460,7 +6460,7 @@
       "sourceQuestionSha256": "36a8bac261c11fb88394a29be36a221eee244f3527fffdf399e4fc0673d54649",
       "explanationSha256": "d019f486ce573e96d513e3acd8c7dd192e6514e57880fe1015801ecaf4963903",
       "imageId": "question-image-b141",
-      "imageMetadataSha256": "80430f3456e346470f82fb99cb1e28075ab7a8d4353ec3df57b16421a2f82efd",
+      "imageMetadataSha256": "4035e0f1417cee82670bb7240af19ed82800a2716d7b2851c9ed46c836752857",
       "usageSha256": "d5d7d3114a322dd4ec2263cf3c1a4494b4bd57e87b0a1ea46753f82b167c86b2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6493,7 +6493,7 @@
       "sourceQuestionSha256": "31c85d9300e607f2580612771e5ecedc6472825d19d60523a334e721ae9b9ebc",
       "explanationSha256": "16479591f290938fd73c1a2c957469feb859b7a92a5875e463f0ea57154fe6e5",
       "imageId": "question-image-b86",
-      "imageMetadataSha256": "63ae4856294f66db8853da78ea10e3ab2b84db0da9a8f4e1432643dba04548ee",
+      "imageMetadataSha256": "a1f091540bf652576760578f6c312cc2875a472785f6150828711e1bf5691323",
       "usageSha256": "3c7992f082bb4e9119a2dc091535ab8433f5db0c27719213b058f3ad57d1681e",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6512,7 +6512,7 @@
       "sourceQuestionSha256": "3dbc8760cafe61aa7041a078e657473f8b872d6bb624e480f4695e56615b0a91",
       "explanationSha256": "95ab58ea038feb32f8b2234caa61703c7c4ac6b419596c38952268fc766f9b4a",
       "imageId": "question-image-b252",
-      "imageMetadataSha256": "893f22334a6b7bf85b612841b3eef3132d7c73a14767e7e1a971eaf53b043a63",
+      "imageMetadataSha256": "593f5f683af7cb41203455c0aec7154ef6bbdea30d8153852123805bf58f26ff",
       "usageSha256": "0fa9f28d3824378c98e7292e127d125403d453c21c388fc24fe28eba6c2c4287",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6531,7 +6531,7 @@
       "sourceQuestionSha256": "f20cd779fa1d596cdb9cdf2305fdd1759870f19f31a4aadd64326aa7f300a344",
       "explanationSha256": "54725936d0981f16c362c1c9fbf87a7b306c8b68484268cf45ea2155bc481bd8",
       "imageId": "question-image-b23",
-      "imageMetadataSha256": "7343fe7b328ba5b3d432aa21078bdcc366b4db8bac56134413909dd97670a498",
+      "imageMetadataSha256": "aac77610cb95da948ab26835bb4973e372589ce94d610bfc65beef5945295ac1",
       "usageSha256": "b47f81bf56e5f2287ed4105860c32377f510702c6f06106150c78a34553b18c6",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6550,7 +6550,7 @@
       "sourceQuestionSha256": "7b16b5d6b61d78fcc798239058273ad2ff1fe752c7b30a781dc823b9a22ba141",
       "explanationSha256": "380654c5c5846f4192ce85abfd0ae1e623e9b816a37c88265149020d7b4b2dd0",
       "imageId": "question-image-b197",
-      "imageMetadataSha256": "55f950714c3f4ffd7fe89c86574992d6dba816b5478b977844694ba14262d54c",
+      "imageMetadataSha256": "22a611c8cc3b4075bf17c6372c4941ba7e58389eb20a7fbe9f9b39b64d4a2fb4",
       "usageSha256": "62d0f53c242a3353b0aef0defde4384112f3adeaa1a6365c0057f2dda1dff4ce",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6569,7 +6569,7 @@
       "sourceQuestionSha256": "86c6d1e969cbc80bf165bdf492ac1a3d5f33dd09bce6c405f5e1afeaed813c9a",
       "explanationSha256": "2c859b590a4dcd35c4067dce901b6b02cf7a139cba9f8ac6d2ebeca6cab5ae39",
       "imageId": "question-image-b142",
-      "imageMetadataSha256": "13213fb33c26d0201f5d1c12bd3c21bd0a9d57ef40d25443361e112243e8f904",
+      "imageMetadataSha256": "2f7a8e07e35fb55cccbba0668d4d10d529df5e52737af963d1a3a970f81b0dd5",
       "usageSha256": "d9857dd28d41e204e5512afe0ca73e648e03da4b42464068ef566e75abad5d1a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6588,7 +6588,7 @@
       "sourceQuestionSha256": "2a1e7d41c62084b08ba7c4119c83414b244026487c0ee4da4f806e94eb5c49f7",
       "explanationSha256": "b5e6800c067f7f033c21f54721e4ebb225508d7227a3df6c4ce995061dc40d0e",
       "imageId": "question-image-b43",
-      "imageMetadataSha256": "5e3c1faac4f7e66317e52055a8565901928a447deac6a8d011c6e0e70dd0f5bb",
+      "imageMetadataSha256": "c40681765df3ab2a4fa57681c9ca411bd684a088651ca94797fc3495ea04d5dc",
       "usageSha256": "6db75e3d54ddd18b15325b0a73a7a61b37b7929eca67e870ef615becce2ed2f6",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6607,7 +6607,7 @@
       "sourceQuestionSha256": "8cf69da277282616bc5d019e96dcc19f623a3c0d9642a203b6ff26fc3df0bd0c",
       "explanationSha256": "4527f7c244d48ee9b4eb85d0bda58c19c92ed128fc7eaa27cc095b16411bdbf8",
       "imageId": "question-image-b109",
-      "imageMetadataSha256": "332dcfd5bf64a6ad3b5990a62bd593b70ad692242b13f528c4f74018c5f516ff",
+      "imageMetadataSha256": "7e3526461cb9a8604da8a7b377743c615a4e9c1de78ede883a6117225edf1e72",
       "usageSha256": "923cf5fe311f60d8bccd7e33bbf4d3ce4739e8d3c9b10f5fad561ba0d49aac16",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6626,7 +6626,7 @@
       "sourceQuestionSha256": "d3832a79922bf4aad9d1db15197fd70aa998a71f2ad61af913d3c4ea2d696484",
       "explanationSha256": "1a3058f356dc0ceaca8cebe501efa012ec9bade8c9b47bc36b42cfc4b94715de",
       "imageId": "question-image-b181",
-      "imageMetadataSha256": "c2b126f7b9ffdd1beb6e7edb0d9efe371afb894bc52536704a5fb6eae466a1c2",
+      "imageMetadataSha256": "fe8f74a96ef57bf55ead716058886cdb85e274550115be8115fd1c9e39639a9d",
       "usageSha256": "4351cd91f61ad1ae4d5197b9e77a7fb61c2a6130b2de5e007b4ae49bbfe8bc40",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6645,7 +6645,7 @@
       "sourceQuestionSha256": "b70de9549f78525ef7807f2a058bdcfa390b987e22b6f6ecc468719977ed3a25",
       "explanationSha256": "da4478c9451a83d9bc2ace4f1aea400677ac4a29b643d3574f23f029881deb35",
       "imageId": "question-image-b187",
-      "imageMetadataSha256": "929df54e50901ac4fbc8a55a5353f0fe993d664fd45316267e55ded792f7058f",
+      "imageMetadataSha256": "8719a6fb73f10853511d0d138b20b5d7e0f4ca3eb6ee12a10e5c8aebe6347b22",
       "usageSha256": "ffa384587ba96e91b652e9e34112026a53767046836f30a26ca74cacb0333473",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6664,7 +6664,7 @@
       "sourceQuestionSha256": "8832994699b7ff5f6103f870c6881110c1b47aade90d71adec6c43a7790db528",
       "explanationSha256": "11ed58b1db446f2aee342d1923cc89d06214e34c12e5f3920be47a2a1b5108d7",
       "imageId": "question-image-b58",
-      "imageMetadataSha256": "0cffca20e9f6eae00d3e7ca02557adf83805f4de535cf2bdb8dcb89d9ff74042",
+      "imageMetadataSha256": "09e61b9a888d3e7c58c648cd03ead45161ff8d18ae48d418a7b4e7051244f743",
       "usageSha256": "f420575da96f840c51a814c05c6fd7e614a299c80da439d252a070999e98781d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6683,7 +6683,7 @@
       "sourceQuestionSha256": "af22519d87ab3dcfb66e30dd95ba2a1f70a44dd8ff6c67e1baeae20a238a742a",
       "explanationSha256": "76a0a1e85bd06ec96a5a2af69498f33b89ed0f6707dfed3e2980fb99cccc77d1",
       "imageId": "question-image-b205",
-      "imageMetadataSha256": "25bd8e3d1c64cb5a3e0b0fa027679d3f9900bde0d0adbc1a87d8125b774c8268",
+      "imageMetadataSha256": "b00829aabb2480b9c6128851b2117f13e45e2fab761e3847000a41ebd574848c",
       "usageSha256": "1372c7057f88cec4b2706636d0eeea21995ad3cf299c6679a4cc8d0e8d479561",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6702,7 +6702,7 @@
       "sourceQuestionSha256": "c4b4b72375e1963767c2e56ec51b2eddafcc28502d73087c7659f22eba38b7a2",
       "explanationSha256": "76c562c51960232833facecd999dde8e55d1f393c2c2c34fbd3e1bdd698940b7",
       "imageId": "question-image-b73",
-      "imageMetadataSha256": "4fea69778d7ab39615ba23359ebc8a560e432e33c081886db4b515419667f437",
+      "imageMetadataSha256": "ccb79039371e15649140142deade29f4eef081120a2577f0592b4e2396b6e5d6",
       "usageSha256": "3d12a69157f177c6300b1ed8a62580d3133760922f6dca7d295191d37450bd80",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6735,7 +6735,7 @@
       "sourceQuestionSha256": "381b981169495829bb7baa8f46aa53d4ae28484ee647eb23addee701056579d7",
       "explanationSha256": "64288bbc33cce9cc26f8b3accafd835ac0aea22b5511d57c072b8d110528d1dc",
       "imageId": "question-image-b149",
-      "imageMetadataSha256": "62d8c1e1cc8a25388e42ea9d6641477f97d480afb39cc4d145ee24b6ad21a59e",
+      "imageMetadataSha256": "2f327f4147cbd59b0aea87616b57bb55037242d25ed5a9ef31388072b9733106",
       "usageSha256": "de69c64349624215b16ba669362e41e36260f2f9ff0d977e0dd4f04c251d41ae",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6754,7 +6754,7 @@
       "sourceQuestionSha256": "6eb94f0932a0116f248f54e38ab5eb0a5566f5f274a6b0cbfdb1683f6f14c389",
       "explanationSha256": "99f0f52017357a24b5d735d816e61f63294f1612260ca5b71df2a997681ec80a",
       "imageId": "question-image-b243",
-      "imageMetadataSha256": "f34fa2e32d74d27adcb7068c8ff8cfedfe4742dbc3ce90e5859a321e37abe261",
+      "imageMetadataSha256": "40d07eca8cbc66e2a808f9e1455f0bc82ab7f2c8d4cd6052953828ea89279856",
       "usageSha256": "8fde150f37b66ad9ea595ec8b43cb662cc8ab51bb6964ec8ab3d137f225daae6",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6787,7 +6787,7 @@
       "sourceQuestionSha256": "cae4b5409798f0201b430a118442287009ef431e8fe7ec627a8fcff458e1aa3a",
       "explanationSha256": "edfd38d30b1b5dde143c51d2112c184f587cc9beb67430e12fdd93d81a7f03e9",
       "imageId": "question-image-b256",
-      "imageMetadataSha256": "3a83229ef42bb3cb286fc9c2f1e725016cfd611bfe44ffe39f4af00cf34650e7",
+      "imageMetadataSha256": "67bb251620f2cdbe1e179a5c4c188eac93086f56a1102489288db6c016c7b03d",
       "usageSha256": "b406866a9e27fdc6098ce3b6ae330b4b4ba8236f9c3d4dc31ce99fadabd34d53",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6806,7 +6806,7 @@
       "sourceQuestionSha256": "64c319c309e60887e936bb9d041fa1af5ed2765dae9d75d18417f63bfa011d31",
       "explanationSha256": "80fcba191832cafd36b41b0594d2b753d2972000f7941774f51789802fa8faee",
       "imageId": "question-image-b115",
-      "imageMetadataSha256": "2d5e543acb58156ea241f2b9d6fe72d41dbea4ca60077c492820ab3aa96eebb6",
+      "imageMetadataSha256": "309c09d85a0d2df0e9d16ed72da7c359c01e616f602edc1fc198feb0d960d61d",
       "usageSha256": "da2c59d6f34de1537fd581bef5d6b5fef0a6aa309207945da4a59ec19d4dd9c8",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6839,7 +6839,7 @@
       "sourceQuestionSha256": "599ecf4060f8ae57c6e2424891e553a19f98af72cbd2df300163bd4c7c812af6",
       "explanationSha256": "d648c3624042059f00fec42703babd32d28c27f517fc2edef182c3221147f976",
       "imageId": "question-image-b166",
-      "imageMetadataSha256": "3c529c62b6a004b70cec5a023c0a9978f648357967b788b17aa875445f2ea257",
+      "imageMetadataSha256": "2d15fad3627222a84b17fa2ba19718e389ce802a10d5c1065f884092bf0ad1eb",
       "usageSha256": "fdd345759f84b569b2cdc494e47800ae88074852f0463d189abcc770bf1fa180",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6928,7 +6928,7 @@
       "sourceQuestionSha256": "60826827b1527d8ac27cd75e9679ae8860c381303817cbad85008e3252fbd232",
       "explanationSha256": "1cf54edbce33be0c54f6b1c3e0857a0102aa7016025b6897815e164730ef2f32",
       "imageId": "question-image-b35",
-      "imageMetadataSha256": "3f363ed64607bc7034b56fbae5379ea163fa17eafe534fb595516b35b43888e9",
+      "imageMetadataSha256": "20f82f502dcbcb2bfd16259ef00c121dc7fee84d2e1d7f926202f53f211acbed",
       "usageSha256": "dd6f3afd9c641a4f33ec3db59eb2b7e5d6d7e5125aa9728fcd17e63f89fc657b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6961,7 +6961,7 @@
       "sourceQuestionSha256": "2a4a385298a1386fb2e1eb6520bfb37d9b8cbb7ce8eb51038e3990114c2bcf7c",
       "explanationSha256": "6a6f57c32679780f5b3e6eb31dd06a733d85fec9a466a3415b313890f15e9650",
       "imageId": "question-image-b146",
-      "imageMetadataSha256": "24207b829c24036ca61144b465d1cad9cf8951aa015293ed76f760df360f6900",
+      "imageMetadataSha256": "db95be4ddc4013141832cf0a1c74faf6798d652730066edf10328a1fea2146ff",
       "usageSha256": "c9ae3cb7be8ae98dcb8e15d2235de7c2160f8879e12a8a092c2ae9973e06338f",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6980,7 +6980,7 @@
       "sourceQuestionSha256": "0556870c1b948907f351f6ddc8479e8204499fb5ec432a5c45134b888f0ea79d",
       "explanationSha256": "66353b9d95326ed3f369a27ab0af5f160b6c2280a3c3d0040e6fc127790dbbda",
       "imageId": "question-image-b118",
-      "imageMetadataSha256": "62e847b71987dc66c7d47c567c2fc5038b168f25447b5edcecac868236b19900",
+      "imageMetadataSha256": "2f47537e0dde3ff2a04f446cb97c1031aea89d1f25697fbf0c7f43dfeeb9e7d8",
       "usageSha256": "ac1c89dffbfba727b21e02fe3ed8c1feaec5bc13bf2b713afa955dae27782c57",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -6999,7 +6999,7 @@
       "sourceQuestionSha256": "26fbbc0c4bf846cec47213daaa4bf0262a055e059374796338cf780300e89de8",
       "explanationSha256": "c52c5945daf376eff650a796887d02cec5a711befb272d92582df766f6dfa618",
       "imageId": "question-image-b153",
-      "imageMetadataSha256": "43deca0e9737608720724e4b77b32570d4c280ff72fb3bb0bb137fee6270f44f",
+      "imageMetadataSha256": "eff29907ac2cf5b4f1c36f489fafa0a9af19f965aa4ebaa4a3e28ccec897cd54",
       "usageSha256": "f96c65c9f9cf624370d03ef4b44d2dc6f02200367d6dd7d4ea1a1295cc50734b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7018,7 +7018,7 @@
       "sourceQuestionSha256": "e8f1cb5bdd4fca2013220d41fff9e4762aed749121f69ad99e917572bfe4b564",
       "explanationSha256": "3c430707cc998172c0e254288c93014c0aa12b4bcdfc0aa37274831e1a1b7f21",
       "imageId": "question-image-b151",
-      "imageMetadataSha256": "494db7a41577e114ae5976b7527439734b0de79c995468a1769d48a814c172a3",
+      "imageMetadataSha256": "c720cd30a788e1ab9f0744808a310bcadabb5d628e5729fe0220eebcb04c8163",
       "usageSha256": "674011e637157b5c5c07d7d13cd002b867deedb49779a75dd486cde0190b20aa",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7037,7 +7037,7 @@
       "sourceQuestionSha256": "bbb4c1172e32dbda4f645774a470d33246eb608b7024b6ba90e11c587a4e5413",
       "explanationSha256": "c1a13a8db09c0d5f4839b74843f1e85b70bee7a13a1721640d3eac74ec9de289",
       "imageId": "question-image-b145",
-      "imageMetadataSha256": "3b13129c317e86d43ca970aac502b5d1125a015caf89b8c85d3e0d4120f7a226",
+      "imageMetadataSha256": "1b7083af041e4aa938978d8dfe58bda441b5637c9bdfc1042c470c48b2bd914e",
       "usageSha256": "cae404e2bfb334379aed132a73ef002952777f6f6b9025d834d4ac234e5fa71a",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7070,7 +7070,7 @@
       "sourceQuestionSha256": "3e7791c356abb1bff428bf482a43dad6c04d79def08ba316fcbd613ba0eb2ace",
       "explanationSha256": "d9f7906cfea51aab8f5981abb1d36b01903c46053bf656eb1b26def3bce77eb2",
       "imageId": "question-image-b248",
-      "imageMetadataSha256": "9df2464031436bb1e472a8130554c7fad24a7efd926e2a7be8b45e5e00363b46",
+      "imageMetadataSha256": "f9df4a862c059522520349ca9f694df024213ec5c4af0806c48572d0e50eb4e5",
       "usageSha256": "67888aab9f2942e592a5ec33851ab559c067be5a119238c259386beb995b5e27",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7103,7 +7103,7 @@
       "sourceQuestionSha256": "e9096422fc123ccea07121272063904d4f7a8c522132c713b764a5c9d16aff1e",
       "explanationSha256": "2434c5f960d486ad41e28a92a79e1206682943d3876ed866c8ef1015ba9e22ea",
       "imageId": "question-image-b112",
-      "imageMetadataSha256": "80d95fcfa4ca6a4f606b8524df26863ffacce96152a8d29159397d20c34899fb",
+      "imageMetadataSha256": "a82b11aa10a6c2c970b9bea3acc6f66ccb5fd0ea5f7a4b9e9c215da79750ede6",
       "usageSha256": "e9442eaaf6cd2bd5f1c4d518660a6c3aec46489a39fb8dec947ceeaf0d0a61c7",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7136,7 +7136,7 @@
       "sourceQuestionSha256": "43405703832d04790b4013515d2b276adfda1968945332c1a88f5a13bd8b0408",
       "explanationSha256": "9fb752d8f0bdce030f6acf535e3a70472f3d9346c3e772544dc60935ead6244b",
       "imageId": "question-image-b130",
-      "imageMetadataSha256": "2297f18d497e95cb63273dc23c3721666d752571eb69d1304fb8f2af8f691a9d",
+      "imageMetadataSha256": "fca251fa25e472c7fac51cc33580006a1a139ed666ad3b14962f3aee65d45c82",
       "usageSha256": "9aa4aa4d788a9841b56c49e19029dbfbbd9b662f11839094a549d0101c29a385",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7155,7 +7155,7 @@
       "sourceQuestionSha256": "402ddb56c71646c4ba58db895262b04672b85ba3cc40eb6826593882dc984038",
       "explanationSha256": "6009a1a3c182867442ef5b6eb971012d6e97bd4e45e8ba3af3464d6ed477d711",
       "imageId": "question-image-b20",
-      "imageMetadataSha256": "4dbf4e122e0384c6f729ba191e2f1d4b2491ed30105c4f7fd910340dd3429f78",
+      "imageMetadataSha256": "672d5076c2c7073e046e3a81163f51c2bb7f4b9e822f99947b101794b056efb1",
       "usageSha256": "4a5b62cfb53967009918a9ad91b890fce3976fd6df987ad77e84a0cba605f459",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7174,7 +7174,7 @@
       "sourceQuestionSha256": "3bce015fac3c9cc52d94b6d6e2f11577c5fd1173ff2ada9373cb967b176413f9",
       "explanationSha256": "b1ee3949e7b2af5f858073dab047811117719a10dbfc814239416b7419d6ef76",
       "imageId": "question-image-b219",
-      "imageMetadataSha256": "778f58362c27078ed1e64e5ad7d995d9af78118e74756b5cf273f9ed0dda4061",
+      "imageMetadataSha256": "943b80caae3622383722d5480d2b9c245d8ee1c5ac6812f6526876cee2a64c04",
       "usageSha256": "02c7dbeeea51be195eef2c0a4e4eb8a873ac88d595a59f36f0ccbdb43c293bf5",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7193,7 +7193,7 @@
       "sourceQuestionSha256": "c25b0e9569a034bfeed02cd6e7a4be7e241e921742bcdef6ac33e00daf0b1ed0",
       "explanationSha256": "b0356950f0068b455d42acb352989fe715688e5286bdcfde4527174fcce6cf3c",
       "imageId": "question-image-b263",
-      "imageMetadataSha256": "380052535d59357c56418d92ff4e2db69b555277038ad5ccf24e17d5bc5ffd15",
+      "imageMetadataSha256": "4189fb06e01dc4d5c8916ee4e425951b71813c4df82e414d902d493d0c7b22db",
       "usageSha256": "324290f9b71063d4c345d6471196e21212cc5132fee694fad9c07a7d9e7bcb27",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7240,7 +7240,7 @@
       "sourceQuestionSha256": "f149b8ef967002da6f53ec537297ac716508296b647da5feab29ce6b96899821",
       "explanationSha256": "5537c900176984abc448f9ba09a30dd86b516ac36bbc7ccae3dd9522559f5ea0",
       "imageId": "question-image-b41",
-      "imageMetadataSha256": "68d3548082c9cf6a9f0e9b57f655ad5c5bfdb02feda3a0ab0d1b0af96d17e3a2",
+      "imageMetadataSha256": "1e8bfa7742b1a31e3178e060715c770828157602e4a589f4e4205f9e6967acdf",
       "usageSha256": "db8da9ee2400192b23bba1739a9f7d61ab3503dc6c197c11d8fea186b3b154e2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7259,7 +7259,7 @@
       "sourceQuestionSha256": "3f1c495466c0f9f00456223a713ac4f0119cab66b34c8885cae34fa25de48ea2",
       "explanationSha256": "9a6594220d93dee96291a5b9a12d3838a0532434a36f252a2b6e1ed0c9fa43c2",
       "imageId": "question-image-b4",
-      "imageMetadataSha256": "89c1575bb3608d628f598f4fe496a167819b7cd083e1ac22ee860ab2e3c06ffe",
+      "imageMetadataSha256": "811d12e68eb6ebd1178df72f64cdbd91147335de363022d0d9d394be79d343cf",
       "usageSha256": "8d95601bcf8b190868d8d80b17410c296e5ea61cb33ed92a82488fa22dfc8ce5",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7278,7 +7278,7 @@
       "sourceQuestionSha256": "a44e932abd9ee345487b7f9f9a86fddc8ed875bdbf37d7d86d137dd4cb62403a",
       "explanationSha256": "0d1fa28376f4e45103735e78dc0920c5a19a77b41cfaa716968ff4b0ad06a1a2",
       "imageId": "question-image-b192",
-      "imageMetadataSha256": "01d0b668718821accf5edb91ccecb86a98edd4c289c3bcf7125d483d3fc9b0a6",
+      "imageMetadataSha256": "7e5a0532395473bff47926f2a103698ccaa216342c719149c1650f7eebdf96f1",
       "usageSha256": "21ae4c1dea2b612cb8cfc80e9bf672178a19a8860f0e818035ead1c61bb953b1",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7297,7 +7297,7 @@
       "sourceQuestionSha256": "d9ca4d22ab9565ec4593c0d0333330df2dd3b3727b220f87eaa7b01c7fe84413",
       "explanationSha256": "29c1a556280fe42d3b258b1176eff1a200ab054f462b41cd1d2bdb8c965ec4d4",
       "imageId": "question-image-b72",
-      "imageMetadataSha256": "7d29b8830ad96a1ca20f46176baf423c3315de651ebe6dbf40da9b1e912c9f41",
+      "imageMetadataSha256": "1a86d4f4b6e4026a3059bdef53f8c9d0460d3212119f74eba3c73a1d18096074",
       "usageSha256": "93a56b7963d78fab3f3c4800661a2cbd82e44c6487bb74e58472ab2124996a80",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7316,7 +7316,7 @@
       "sourceQuestionSha256": "8eb0ecda8c42fed8264b1e953b5a8404786df6f00e27436426851415192b558f",
       "explanationSha256": "93959e8571f361e17d6aaa2a88b1b16473edb7d5a5ffbe4cefe4878d836f3f93",
       "imageId": "question-image-b108",
-      "imageMetadataSha256": "2510d7b9270d882e01171ef34ec2615ee8751852af8b2b5293bb25816227d383",
+      "imageMetadataSha256": "08fd0e136fc97fcc50ae5b62596830a3bccfe278c1947bb272744c988819efde",
       "usageSha256": "25335dbbef58683d938ee2479abc6072e8ec0732394ea5eba5d98548e0918ff0",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7363,7 +7363,7 @@
       "sourceQuestionSha256": "3e81ab606e108aa979d19b1ec7aec4eb6e6158330b6f0d31357728bfc1df1d9d",
       "explanationSha256": "acba7d071a24b1765ed88138ffb1d65a32509eaebd998626abb7a38e2ceed48f",
       "imageId": "question-image-b47",
-      "imageMetadataSha256": "3d24292e558d1561108c54421ec754430cbaa9e33fb5a067cb9c5f41e81e3a05",
+      "imageMetadataSha256": "039d08f8b69324b98d5837c9ee0817a90de27d484a1434c993714fbe4b42a81e",
       "usageSha256": "9ffe4e6bc94ce9c9f5ea11b20ac3417b3c2d5db3577f2f6ff5d79c335f7b302b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7410,7 +7410,7 @@
       "sourceQuestionSha256": "e3917651f23ddc2cf9ea94ba64523d5d81bc6237b2ea9110b6d929577bc209c9",
       "explanationSha256": "d781e18c3d321dad96ce2ba90f1c1f54e09ece5fdf009479a1c33ff2e2457a2d",
       "imageId": "question-image-b247",
-      "imageMetadataSha256": "cb16aecc863490f1bb931bd210fc8d084f50208051580551646bd4795b9d54f2",
+      "imageMetadataSha256": "c59b6ae04d3681528eeb558276c26937c89b2106d66d6c55ac3b07697c21821e",
       "usageSha256": "13d870c44449a86406dacb52dfad866a976a93df0f19d96fdf0e8029d653d760",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7471,7 +7471,7 @@
       "sourceQuestionSha256": "d852a514314fffceb331c2710aa25a0dc2c043068411057785453b40c9057aa0",
       "explanationSha256": "bf3738d3efb115bd1c799c00bbc87b0ca71a61ba7041bcde73960be9e7bf2088",
       "imageId": "question-image-b110",
-      "imageMetadataSha256": "70164b82aa42c289058b031e5ade8ece87ba716e6135debe7079586d167bfb9e",
+      "imageMetadataSha256": "4534e74370dbf0e9c6c9191d4dc6a32907f3d2b4b92b2275b7e04f23353b9847",
       "usageSha256": "51c2f993e2024af06a4ff576dea4ba2bf6848bdb3dcd88858f897147093a0bef",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7490,7 +7490,7 @@
       "sourceQuestionSha256": "ea4768f9066fd6dde55f89ed4e91348fd46c8184ad37fe219b74ae55fecdfaef",
       "explanationSha256": "22d232da827efd4b55c73f92beed6fb8d74e755dd01bef0f6eb6af1482059caa",
       "imageId": "question-image-b60",
-      "imageMetadataSha256": "5f728c46e98800bec23c9e7009ca405ac44cb245b91dbc249e7a4582c5e68f36",
+      "imageMetadataSha256": "c8746f846346e9bedf8f557af3bce94092ff651a381c91cabb976b89890f6d6c",
       "usageSha256": "9651ccb7f0e173481f213ad95d654ce2f8c6422086f778da95a78edd48dbdc3b",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7509,7 +7509,7 @@
       "sourceQuestionSha256": "ab4b4b9c3d7c065f00216379aec0ff4ca8159f56aaa4237b8d15a979127e94da",
       "explanationSha256": "11a777c6df884de422f4949d90386715369bbf543cb7ea1f39a0864b25bb60e3",
       "imageId": "question-image-b172",
-      "imageMetadataSha256": "088cac8d754677c5394c94ec150aa9e18dbf2161949dcea25e76a4dfcc940607",
+      "imageMetadataSha256": "bad5bd0cbb77a7059df70455cd6ae4e4ec166c7f90af03735638e069553bba3d",
       "usageSha256": "b408444d9137edb0919dc0e9e0dd502fc610a2a1cc8b1fbbf01e8f495967c84d",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7570,7 +7570,7 @@
       "sourceQuestionSha256": "867a88c2179e92e178bfb837c00aa7c7be51b2dc03b75a0d8f5513184ab8605e",
       "explanationSha256": "64fe3d505937c16fce00ccec41d38be680f8e5af2a08a358df89763de317ecc8",
       "imageId": "question-image-b55",
-      "imageMetadataSha256": "ee8b9aef7bfc9395c2e8e6a583615d786f8e54907a5fd95d9dd3f6d3a27bec8c",
+      "imageMetadataSha256": "96650160c58622982a97b6a45dafdf8521c63be5a8556363207fd0161a969953",
       "usageSha256": "ceba4507c9b9c3e12b94a15828f03af17e36956a3a352d7d24b82ae6bdd0522f",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7617,7 +7617,7 @@
       "sourceQuestionSha256": "f5b7cdaf10fc079c416c670656950a5f3f1e43afb9dcc422ea2a3fd500f735f1",
       "explanationSha256": "cd1a235263a3d0adf39beb37983dae54ca825bf231c9f5b30127fbbb46bfbe33",
       "imageId": "question-image-b131",
-      "imageMetadataSha256": "f22298b43b73876939652cabb169e30f65784a508da97289949014226f15a2f9",
+      "imageMetadataSha256": "630205616e52e0ccaaf765793313aedf458829e8543aea39dee863649c720d68",
       "usageSha256": "cf1951d852db15209cbca6dc79b290114df49eda6b91844885b39ea7c5729557",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7664,7 +7664,7 @@
       "sourceQuestionSha256": "317e64b50e667350df4f06037b80a85bc0b061306efb4219e6ca2ba1eafa1fe7",
       "explanationSha256": "c39e3aead68f5e05a8efeba52929f77553a334fbe5d27590a9cce94db42ed977",
       "imageId": "question-image-b136",
-      "imageMetadataSha256": "7fab8aac41e73395a5d70b246dd97549d1a4d44454401fc3388e945569d2dd40",
+      "imageMetadataSha256": "51ab2350e794ea4037daefca1f495bb5e338e988c50ca5567728388424852ac9",
       "usageSha256": "20c205e3e3ac56c8c347364e4ec8b394f523029372b8cad4745f6dc168dbf9c4",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7683,7 +7683,7 @@
       "sourceQuestionSha256": "8dd4ace81e394a708992aad9ad6957924b338d540b8f947a4896d94e54e69274",
       "explanationSha256": "bcade1ad9d2d9ecd7e3480e508f1fc63fcb940fb5d3a282100fa9ac44a78b579",
       "imageId": "question-image-b211",
-      "imageMetadataSha256": "9c44de771910ae5c5ee72862ab91ca97abbbd706e16dc1c6c7387cdc197fcaf4",
+      "imageMetadataSha256": "d27fdc09ec1325559a664df061c533a49dd2a1740a2e79318f16c9c8557bb929",
       "usageSha256": "f45ba73e7fdbac201aa3576640d1454001f6103af22991dc25f599394e189dab",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7702,7 +7702,7 @@
       "sourceQuestionSha256": "ae5f736c370ddddce9db8553d1c7dd153d4cf84e4cc141573c6f2fa0ccd4a64e",
       "explanationSha256": "688e3a372f438da9df8329cf0b1aff21b5f812c50ad0396ce2c8be79845578e9",
       "imageId": "question-image-b214",
-      "imageMetadataSha256": "3b7f1216f4b4e535da31c86861efbe7406bff4436630dc1c6e21e53801e5b9d4",
+      "imageMetadataSha256": "8de9b6791f1161fcc48219e352842b282764a723d879df84166b1737fb6ca60d",
       "usageSha256": "394f32d7e06c514480b036a203a9623d85ce89e20ff4c8094809b2ed88f5a627",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7721,7 +7721,7 @@
       "sourceQuestionSha256": "4131016e42ceeab196eefc3acdf4bd44117e560ccc1fc743e7f6dc0433a30397",
       "explanationSha256": "70999eccbf294d868e44a7568a5920461c7a12465a65b271e08a3da7ec5594ef",
       "imageId": "question-image-b272",
-      "imageMetadataSha256": "737f51fe5d4524f9782696ff065956a656d01fefa5f13b006dbeb0086fd5911c",
+      "imageMetadataSha256": "62613fda57892df328fbd297a28e288f056a0973ef943d53aafcfc741047cd65",
       "usageSha256": "9e893a385fe79962c3143c072c634db0604acb25993fd3a5f879cabca7404ffc",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7740,7 +7740,7 @@
       "sourceQuestionSha256": "a7a358179968bec5bf05ee60528d71b7ae8892504423a81a942e70255bbbbb45",
       "explanationSha256": "0559dcaa2c75ad591d931ec993af74cdcda594531836c1921a3e3e62d36ac850",
       "imageId": "question-image-b46",
-      "imageMetadataSha256": "889a7fa7b0badf436bbf6bef66d86c84d685fc308d3a30eda5caee1c8390809c",
+      "imageMetadataSha256": "8b7f2e62d4e39b9be07514b02eb33f130801a6c73b58563c50734b0b6f969ceb",
       "usageSha256": "bd6d80bc173f1f94d519baac961eef9d460c6c34adfb2e8dbf7bf14da619dce4",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7759,7 +7759,7 @@
       "sourceQuestionSha256": "2fafb39dd05aa03be11a5744c00ecbb3835421bdb83a4c09735908b277a03829",
       "explanationSha256": "4e8541a39078c7f570dd751bde9570fb3b58b9324d136effdc2225c3292c8d7b",
       "imageId": "question-image-b78",
-      "imageMetadataSha256": "1a14d743c632449cf799a78d35da9a79901d0787317d25a16eb116ef168c8bbb",
+      "imageMetadataSha256": "d00935a772ce656f358947ab0262f202578f4748dfb285a397fd5b1a566ccece",
       "usageSha256": "75da432615f69c0869eabb7c9e3c1aca0120ab604ba9698bde631bc2a2c72b95",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7792,7 +7792,7 @@
       "sourceQuestionSha256": "27d677c085232e603ef0a9faa184fdd06dc6a390edcc87554805a572c0fe91ef",
       "explanationSha256": "784e9f9b394b8a649a79e158e3345d8163cd1c39f8139d1e7590972c379a90f1",
       "imageId": "question-image-b101",
-      "imageMetadataSha256": "4bf8799e4dd8f233823b42b5ac3777c541016f70246a13ff255a64e2b4415669",
+      "imageMetadataSha256": "c1a98eb2983ee2cc92b61ed5017ca241ca21ba137bfd1e2e4d879819e448c073",
       "usageSha256": "cf973323c5c9e36bd12781e53f3d7dcbe5af2f963e4e98f3011c2f0a67f1ecf2",
       "checks": {
         "correctAnswerRationalePresent": true,
@@ -7811,7 +7811,7 @@
       "sourceQuestionSha256": "e36ee9442d2bfcf3bd93a29d321045503b6c86fd293149a90c76aa14b82e5be5",
       "explanationSha256": "d35fb1f3583985f9aba8eea158092d06d97add0e424b9937a2b8cc6c14feef00",
       "imageId": "question-image-b188",
-      "imageMetadataSha256": "77a1ca0411127a88a8d9a16dfa28416e4473d7635c757e37e974ef9a6b1a0f51",
+      "imageMetadataSha256": "47d31672d5ceaf354966857ed9466afa71f776cf226c5b46a66d001238869ea7",
       "usageSha256": "06250b654ae09ba91f88a2ec882fa95156ab207b22c8b6aa7f219a7e5356d37c",
       "checks": {
         "correctAnswerRationalePresent": true,

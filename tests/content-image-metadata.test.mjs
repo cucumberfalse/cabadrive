@@ -4,6 +4,7 @@ import { test } from "node:test";
 import {
   buildImageMetadataEvidenceEntry,
   buildQuestionUsageEvidenceEntry,
+  imageMetadataFingerprint,
   questionFingerprint,
   validateQuestionImageMetadata
 } from "../scripts/content-image-metadata.mjs";
@@ -186,6 +187,51 @@ test("missing critical details fail image usage validation", () => {
 
 test("full-quality image gate accepts concrete reviewed metadata", () => {
   assert.deepEqual(validateSyntheticFullQuality(), []);
+});
+
+test("image metadata fingerprint includes regions and visualDetails", () => {
+  const image = baseImage();
+  const originalEvidenceEntry = buildImageMetadataEvidenceEntry({ image, reviewer, reviewedAt });
+  const originalFingerprint = imageMetadataFingerprint(image);
+  const originalMetadataSha256 = originalEvidenceEntry.metadataSha256;
+
+  const changedRegion = {
+    ...image,
+    regions: [
+      {
+        ...image.regions[0],
+        semanticLocation: "upper left instead of center"
+      }
+    ]
+  };
+  const changedVisualDetail = {
+    ...image,
+    visualDetails: [
+      {
+        ...image.visualDetails[0],
+        description: "The sign shape changed to a different inspected visual fact."
+      }
+    ]
+  };
+
+  assert.notEqual(imageMetadataFingerprint(changedRegion), originalFingerprint);
+  assert.notEqual(imageMetadataFingerprint(changedVisualDetail), originalFingerprint);
+  assert.notEqual(buildImageMetadataEvidenceEntry({ image: changedRegion, reviewer, reviewedAt }).metadataSha256, originalMetadataSha256);
+  assert.notEqual(buildImageMetadataEvidenceEntry({ image: changedVisualDetail, reviewer, reviewedAt }).metadataSha256, originalMetadataSha256);
+
+  for (const changedImage of [changedRegion, changedVisualDetail]) {
+    const { manifest, evidence } = manifestAndEvidence({ image: changedImage });
+    manifest.baseline.questionSetFingerprint = "skip";
+    manifest.baseline.imageReferenceFingerprint = "skip";
+    evidence.imageEntries = [originalEvidenceEntry];
+    const errors = validateQuestionImageMetadata({
+      questions: [baseQuestion],
+      manifest,
+      evidence,
+      strictCoverage: false
+    }).filter((error) => !error.includes("baseline.questionSetFingerprint") && !error.includes("baseline.imageReferenceFingerprint"));
+    assert(errors.includes("question-image-example: evidence metadataSha256 mismatch."));
+  }
 });
 
 test("full-quality image gate rejects placeholder metadata and generic source-image details", () => {
