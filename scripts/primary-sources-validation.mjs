@@ -464,7 +464,7 @@ export function validatePrimarySources({
         errors.push(`${documentId}: generated coverage chunk ${generatedChunkId} is missing from expectedChunkIds.`);
       }
     }
-    if (strictMode && archiveText !== undefined && Array.isArray(document.chunks)) {
+    if (requireCompleteCoverage && archiveText !== undefined && Array.isArray(document.chunks)) {
       validateContiguousSourceSpanCoverage(errors, { documentId, chunks: document.chunks, archiveText });
     }
   }

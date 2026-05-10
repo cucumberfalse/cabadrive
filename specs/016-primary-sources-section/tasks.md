@@ -370,6 +370,7 @@
 - No official archive Markdown or manifest files were edited in Slice C.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to `987e712`, this worktree stashed Slice C edits, fetched the updated base, fast-forwarded from `641fdfa` to `987e712`, reapplied Slice C edits, and resolved the only conflict in this process-memory file by retaining both Slice B hardening notes and Slice C notes.
 - PR #77 P2 review follow-up tightened article-boundary detection so lowercase narrative references such as Ley 24.449 line 1234 `artículo 68, el cual...` no longer become generated article chunks. Official article heading forms such as `ARTICULO 1º — ...`, `ARTICULO 10. — ...`, `ARTICULO 40 bis) ...`, `ARTÍCULO 1°.- ...`, `Artículo 1°.- ...`, and `Art. 2. ...` remain accepted.
+- PR #77 P2 contiguous-coverage follow-up tightened coverage validation so complete-coverage modes require each coverage document's sorted source spans to cover the archived Markdown from line 1 through the current final line without gaps or overlaps when archive text is available.
 
 ### Implementation Agent Feedback
 
@@ -491,11 +492,13 @@
   - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed after the PR #77 article-boundary fix. Output summary: 19 documents, 5,255 chunks, with per-document counts recorded in Slice C Implementation Notes.
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage node scripts/validate-content.mjs` passed. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `node --test tests/primary-sources-validation.test.mjs` passed after updating to base `987e712`: 20 tests, 20 pass, 0 fail.
+  - `node --test tests/primary-sources-validation.test.mjs` passed after the PR #77 contiguous-coverage fix: 22 tests, 22 pass, 0 fail.
   - `node --test tests/primary-sources-generate-coverage.test.mjs` passed after the PR #77 article-boundary fix: 2 tests, 2 pass, 0 fail.
   - `node scripts/validate-content.mjs` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run validate:content` passed after updating to base `987e712` in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed after updating to base `987e712`. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
-  - `pnpm run test` passed after the PR #77 article-boundary fix: 94 Node tests, 94 pass, 0 fail.
+  - `pnpm run test` passed after the PR #77 contiguous-coverage fix: 96 Node tests, 96 pass, 0 fail.
   - `git diff --check` passed after updating to base `987e712` with no output.
   - Orchestrator build verification after Slice C: first `pnpm run build` attempt failed because the fresh worktree had no `node_modules` and `vite` was unavailable. `pnpm install --frozen-lockfile` then completed using the existing lockfile and reused packages without package metadata changes. A second `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - Orchestrator reran `pnpm run build` after the PR #77 article-boundary fix and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - Orchestrator reran `pnpm run build` after the PR #77 contiguous-coverage fix and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.

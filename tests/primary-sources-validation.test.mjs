@@ -8,10 +8,14 @@ const doc1Text = "# Doc One\nArticulo 1\nTexto oficial uno.";
 const doc2Text = "# Doc Two\nArticulo 1\nTexto oficial dos.";
 const doc1SpanText = doc1Text;
 const doc2SpanText = "# Doc Two\nArticulo 1";
+const doc1TailText = "Texto oficial uno.";
+const doc2TailText = "Texto oficial dos.";
 const doc1Hash = sha256(doc1Text);
 const doc2Hash = sha256(doc2Text);
 const doc1SpanHash = sha256(doc1SpanText);
 const doc2SpanHash = sha256(doc2SpanText);
+const doc1TailHash = sha256(doc1TailText);
+const doc2TailHash = sha256(doc2TailText);
 
 function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
@@ -81,6 +85,16 @@ function corpus() {
             fullTranslationRu: "Полный русский перевод официального фрагмента.",
             simpleRu: "Простое русское объяснение этого фрагмента.",
             sourceFingerprint: `sha256:${doc1SpanHash}`
+          },
+          {
+            chunkId: "doc-1--002",
+            officialDocumentId: "doc-1",
+            order: 2,
+            headingPath: ["Doc One"],
+            originalSpanish: doc1TailText,
+            fullTranslationRu: "Полный русский перевод заключительной строки.",
+            simpleRu: "Простое русское объяснение заключительной строки.",
+            sourceFingerprint: `sha256:${doc1TailHash}`
           }
         ]
       }
@@ -98,7 +112,7 @@ function coverage() {
         officialDocumentId: "doc-1",
         archiveLocalPath: "content/official-documents/documents/doc-1.md",
         archiveSha256: doc1Hash,
-        expectedChunkIds: ["doc-1--001"],
+        expectedChunkIds: ["doc-1--001", "doc-1--002"],
         chunks: [
           {
             chunkId: "doc-1--001",
@@ -108,6 +122,15 @@ function coverage() {
             sourceSpan: { startLine: 1, endLine: 3 },
             sourceTextSha256: doc1SpanHash,
             sourceFingerprint: `sha256:${doc1SpanHash}`
+          },
+          {
+            chunkId: "doc-1--002",
+            officialDocumentId: "doc-1",
+            order: 2,
+            headingPath: ["Doc One"],
+            sourceSpan: { startLine: 3, endLine: 3 },
+            sourceTextSha256: doc1TailHash,
+            sourceFingerprint: `sha256:${doc1TailHash}`
           }
         ]
       }
@@ -136,6 +159,19 @@ function qa({ status = "approved" } = {}) {
               checkedAt: "2026-05-10",
               methodNotes: "Reviewed for faithful simple wording."
             }
+          },
+          {
+            chunkId: "doc-1--002",
+            translationQa: {
+              status,
+              checkedAt: "2026-05-10",
+              methodNotes: "Reviewed against the official Spanish source."
+            },
+            simplificationQa: {
+              status,
+              checkedAt: "2026-05-10",
+              methodNotes: "Reviewed for faithful simple wording."
+            }
           }
         ]
       }
@@ -153,6 +189,12 @@ function searchIndex() {
         entryId: "doc-1--001",
         officialDocumentId: "doc-1",
         chunkId: "doc-1--001",
+        textFields: ["title", "fullTranslationRu", "simpleRu", "originalSpanish"]
+      },
+      {
+        entryId: "doc-1--002",
+        officialDocumentId: "doc-1",
+        chunkId: "doc-1--002",
         textFields: ["title", "fullTranslationRu", "simpleRu", "originalSpanish"]
       }
     ]
@@ -250,7 +292,7 @@ test("coverage mode validates complete chunk inventory without full learner cove
     officialDocumentId: "doc-2",
     archiveLocalPath: "content/official-documents/documents/doc-2.md",
     archiveSha256: doc2Hash,
-    expectedChunkIds: ["doc-2--001"],
+    expectedChunkIds: ["doc-2--001", "doc-2--002"],
     chunks: [
       {
         chunkId: "doc-2--001",
@@ -260,6 +302,15 @@ test("coverage mode validates complete chunk inventory without full learner cove
         sourceSpan: { startLine: 1, endLine: 2 },
         sourceTextSha256: doc2SpanHash,
         sourceFingerprint: `sha256:${doc2SpanHash}`
+      },
+      {
+        chunkId: "doc-2--002",
+        officialDocumentId: "doc-2",
+        order: 2,
+        headingPath: ["Doc Two"],
+        sourceSpan: { startLine: 3, endLine: 3 },
+        sourceTextSha256: doc2TailHash,
+        sourceFingerprint: `sha256:${doc2TailHash}`
       }
     ]
   });
@@ -281,6 +332,31 @@ test("coverage mode rejects missing manifest chunk inventory", () => {
   });
 
   assert(errors.includes("doc-2: missing generated chunk coverage in coverage mode."));
+});
+
+test("coverage mode rejects source spans that miss archive tail lines", () => {
+  const badCoverage = coverage();
+  badCoverage.documents[0].expectedChunkIds = ["doc-1--001"];
+  badCoverage.documents[0].chunks = [badCoverage.documents[0].chunks[0]];
+
+  const errors = validate({ coverage: badCoverage, mode: "coverage" });
+
+  assert(errors.includes("doc-1: sourceSpan coverage must include all archive lines; covered through line 2 of 3."));
+});
+
+test("coverage mode rejects source span gaps", () => {
+  const badCoverage = coverage();
+  badCoverage.documents[0].chunks[0].sourceSpan = { startLine: 1, endLine: 1 };
+  badCoverage.documents[0].chunks[0].sourceTextSha256 = sha256("# Doc One");
+  badCoverage.documents[0].chunks[0].sourceFingerprint = `sha256:${sha256("# Doc One")}`;
+
+  const errors = validate({ coverage: badCoverage, mode: "coverage" });
+
+  assert(
+    errors.includes(
+      "doc-1: sourceSpan coverage must be contiguous; expected line 2 but doc-1--002 starts at line 3."
+    )
+  );
 });
 
 test("strict mode rejects learner corpus documents without learner chunks", () => {
