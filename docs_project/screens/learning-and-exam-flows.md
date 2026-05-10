@@ -32,8 +32,11 @@
 10. Optional toggle for explanation.
 11. If the timer expires before answer selection, show the current ticket as unresolved in-session without recording an answer or moving to mistake review.
 12. Submit answer; answering after the timer expires remains possible and records a normal learning answer with visible after-limit status.
-13. Show correctness, key terms, and related weak-topic links.
-14. Optional mark as difficult.
+13. Automatically reveal Russian question translation, answer translations, and learning explanation.
+14. When a validated question-specific image overlay exists, explanation mode dims only feature-009 `background_irrelevant_dim` regions and keeps feature-009 `answer_critical_highlight` regions prominent for the current ticket.
+15. Show correctness, key terms, and related weak-topic links.
+16. Use bottom previous/next navigation inside the active search collection; previous restores the selected answer and revealed support for questions already attempted in the current session.
+17. Optional mark as difficult.
 
 ## Exam Simulation Flow
 
@@ -41,9 +44,10 @@
 2. Use the exam-wide timer only; do not show learning per-ticket timer controls during an active attempt.
 3. Hide translation/explanation during active attempt.
 4. Do not show difficulty rationale, dimensions, or study hints during active attempt; current active exam UI also omits compact difficulty chips.
-5. Record timing and selected answers.
-6. Complete exam and show score.
-7. Generate weak-topic and mistake review recommendations.
+5. Keep translation/explanation and image overlays hidden after answer selection during the active attempt.
+6. Record timing and selected answers.
+7. Complete exam and show score.
+8. Generate weak-topic and mistake review recommendations.
 
 ## Mistake Review Flow
 
@@ -51,7 +55,10 @@
 2. Show compact static ticket difficulty in the mistake list context and selected question card, separate from wrong-counts.
 3. Re-attempt focused set with translation hidden by default.
 4. Reveal or hide translation from the Spanish question text area, matching learning mode.
-5. Track repeated-error reduction.
+5. After answer selection, automatically reveal Russian question translation, answer translations, and learning explanation.
+6. Use validated question-specific image overlays only when explanation support is visible; otherwise show the normal local image and truthful fallback.
+7. Use bottom previous/next navigation inside the current mistake collection.
+8. Track repeated-error reduction.
 
 ## Vocabulary Flow
 
