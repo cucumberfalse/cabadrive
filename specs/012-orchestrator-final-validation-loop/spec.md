@@ -46,6 +46,8 @@ Out of scope:
 
 - Work cycle: one repository-changing user request represented by one `specs/<feature-id>/` folder, from Orchestrator startup through final completion, including Analyst intake, Architect planning, all implementation/review PR slices, final validation passes, and any follow-up slices before completion or escalation.
 - Cycle PR set: the durable list of PR slices for the work cycle. It must identify each slice by purpose, branch, PR number or discoverable PR metadata, current or final head SHA, merge/open/closed status, and whether it is included in final validation.
+- Effective content head: the PR head that contains the implementation, docs/templates, feature memory, review-fix changes, and other behaviorally meaningful content that Architect and Analyst validate before completion. A later final-validation evidence-only commit may exist only to record those validation results in role-owned process memory.
+- Final-validation evidence-only commit: a narrow follow-up commit after Architect and Analyst validation that changes only role-owned validation evidence or process-memory records, such as Analyst-owned validation notes in `feature-request.md` and Implementation Agent process evidence in `tasks.md`. It must not change product behavior, durable workflow rules, templates, scoped implementation docs, code, tests, runtime files, CI, branch protection, or review dispositions except to record the already-completed validation evidence.
 - Final validation return: a failed final validation pass that sends the work back to Orchestrator for follow-up development or disposition. Passing validation and read-only rechecks do not count as returns.
 - Architect return limit: at most 10 failed Architect final-validation or Architect-disposition returns per work cycle. On the next Architect gap after the limit is exhausted, Architect records the limit breach and tells Orchestrator to ask Analyst for a new feature request.
 - Analyst return limit: at most 5 failed Analyst final-validation returns per work cycle. On the next Analyst gap after the limit is exhausted, Analyst creates a new feature request in a separate latest-main branch/worktree.
@@ -82,7 +84,8 @@ As a Review Agent or project owner, I want bounded return counts and escalation 
 9. Given Analyst finds gaps within the return limit, when returning feedback, then Analyst updates only Analyst-owned validation notes, increments the Analyst return count, and Orchestrator must route that feedback to Architect for accept/task/ticket/dispose disposition before any follow-up development starts.
 10. Given Architect or Analyst return limits are exhausted, when another gap would require a return, then durable guidance requires the specified escalation: Architect reports the breach to Orchestrator and Orchestrator asks Analyst for a new feature request; Analyst creates a new feature request in a separate latest-main branch/worktree.
 11. Given final validation is added, when merge readiness is evaluated, then existing gates remain intact: green required checks on current heads, no blocking review findings, no unresolved conflicts, acceptance evidence, current process memory, resolved/disposed Implementation Agent feedback, final guard evidence, and human merge-owner rules.
-12. Given this feature is implemented, when the final diff is reviewed, then changed files are limited to scoped process docs/templates and `specs/012-orchestrator-final-validation-loop/*`, with no product, runtime, CI, branch-protection, secret, or production-resource changes.
+12. Given Architect and Analyst validated an effective content head, when a later commit only records final-validation evidence in role-owned process memory, then Orchestrator may use that validation for the effective content head only if a read-only final guard on the current PR head confirms the later commit is evidence-only, process memory is current, checks/review/conflict gates are still satisfied, and no non-evidence content changed after role validation.
+13. Given this feature is implemented, when the final diff is reviewed, then changed files are limited to scoped process docs/templates and `specs/012-orchestrator-final-validation-loop/*`, with no product, runtime, CI, branch-protection, secret, or production-resource changes.
 
 ## Negative Scenarios
 
@@ -94,6 +97,7 @@ As a Review Agent or project owner, I want bounded return counts and escalation 
 6. Given validation returns exceed the configured limit, when the cycle still has gaps, then guidance must not allow unbounded retries inside the same feature cycle.
 7. Given final validation passes but checks are red, missing, queued, or running; blocking review findings remain; conflicts exist; process memory is stale; acceptance evidence is missing; or unresolved feedback lacks disposition, then Orchestrator must not declare completion or merge.
 8. Given Analyst final validation notes are needed, when Analyst writes them, then Analyst must not edit Architect artifacts, implementation files, review comments, commits, pushes, PRs, or merge state.
+9. Given a commit lands after Architect or Analyst validation, when that commit changes anything beyond final-validation evidence-only process memory or invalidates current-head gates, then Orchestrator must treat the prior role validations as stale and route the work for role-appropriate follow-up instead of recursively relying on the stale evidence.
 
 ## Requirements
 
@@ -113,6 +117,7 @@ As a Review Agent or project owner, I want bounded return counts and escalation 
 - FR-014: Final validation guidance must preserve current merge-readiness gates and must not replace evidence with AI-written summaries.
 - FR-015: Templates and PR guidance must make future cycle tracking, final validation evidence, return counts, and dispositions reproducible.
 - FR-016: Implementation must remain process documentation/template work plus feature memory unless a future Architect feature scopes executable enforcement.
+- FR-017: Final validation guidance must define how to handle a later final-validation evidence-only commit without an infinite loop: Architect and Analyst validate the effective content head, and Orchestrator performs a current-head read-only guard that proves any later commit is evidence-only and all merge-readiness gates remain current.
 
 ## Success Criteria
 
@@ -125,7 +130,8 @@ As a Review Agent or project owner, I want bounded return counts and escalation 
 - SC-007: Text search finds Analyst return-limit escalation to a new feature request in a separate branch/worktree.
 - SC-008: Text search finds preserved merge-readiness gates and role boundaries.
 - SC-009: Diff review shows only scoped process docs/templates and `specs/012-orchestrator-final-validation-loop/*` changed.
-- SC-010: Verification evidence and any Implementation Agent feedback are recorded in `tasks.md`.
+- SC-010: Text search finds final-validation evidence-only commit handling, effective content head validation, and current PR head read-only guard requirements.
+- SC-011: Verification evidence and any Implementation Agent feedback are recorded in `tasks.md`.
 
 ## Assumptions
 

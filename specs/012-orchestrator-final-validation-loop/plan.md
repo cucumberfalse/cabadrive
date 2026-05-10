@@ -84,6 +84,14 @@ Update Cabadrive's durable process guidance and templates so Orchestrator starts
 - The cycle PR set must include each contributing PR slice with branch, PR number or discovery metadata, purpose, head SHA, status, and validation inclusion.
 - Replacement-agent or rerouted-slice work must preserve and document the prior slice state instead of hiding it from final validation.
 
+## Final-Validation Evidence-Only Commit Rule
+
+- Architect and Analyst final validation may validate the effective content head: the head that contains implementation, docs/templates, feature memory, review fixes, and other behaviorally meaningful changes.
+- A later commit may record final-validation evidence without forcing recursive Architect and Analyst revalidation only when it is strictly evidence-only process memory, such as Analyst-owned validation notes in `feature-request.md` or final-validation evidence in `tasks.md`.
+- Orchestrator must perform a read-only current-head guard before completion or authorized merge mechanics. That guard verifies the current PR head, compares it to the validated effective content head, confirms intervening changes are evidence-only, checks process memory is current, and confirms required checks, review, conflict, acceptance-evidence, feedback-disposition, final guard, and human merge-owner gates remain satisfied.
+- If any post-validation commit changes product behavior, durable workflow rules, templates, scoped implementation docs, code, tests, runtime files, CI, branch protection, review dispositions, or any non-evidence content, prior Architect and Analyst validations are stale and Orchestrator must route the work back through role-appropriate final validation or follow-up development.
+- A failed read-only current-head guard is not a validation return by itself. It counts as an Architect return only when Architect finds a gap or records a disposition that sends the cycle back to Orchestrator for follow-up development.
+
 ## Latest-Main Startup Rule
 
 - Orchestrator must fetch or otherwise verify latest `origin/main` before creating a new work item or task-slice branch/worktree.
@@ -111,7 +119,8 @@ No new runtime, CI, or tooling abstraction is expected. The main complexity is p
 | AC-009 | `rg -n "Analyst-owned|validation notes|feature-request.md|Analyst feedback|Architect.*accept|Architect.*task|Architect.*ticket|Architect.*dispose|before.*follow-up" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates specs/README.md` |
 | AC-010 | `rg -n "10|ten|5|five|return limit|limit.*exceed|new feature request|separate.*branch|separate.*worktree" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates specs/README.md` |
 | AC-011 | `rg -n "required checks|blocking review|conflicts|process memory|acceptance evidence|Implementation Agent feedback|final guard|human.*merge|AI-written summaries" AGENTS.md CLAUDE.md docs_project/project/devops .github/pull_request_template.md .specify/memory/constitution.md` |
-| AC-012 | `git diff --name-only` plus manual diff review showing only scoped process docs/templates and `specs/012-orchestrator-final-validation-loop/*` changed. |
+| AC-012 | `rg -n "effective content head|evidence-only|current PR head|read-only.*guard|post-validation commit|recursive|stale" AGENTS.md CLAUDE.md docs_project/project/devops .specify/templates .github/pull_request_template.md specs/README.md specs/012-orchestrator-final-validation-loop/*.md` |
+| AC-013 | `git diff --name-only` plus manual diff review showing only scoped process docs/templates and `specs/012-orchestrator-final-validation-loop/*` changed. |
 
 Negative scenario evidence:
 
@@ -121,6 +130,7 @@ Negative scenario evidence:
 - Search evidence shows Analyst gaps must receive Architect disposition before follow-up development.
 - Search evidence shows validation loops are bounded and escalate to new feature requests when limits are exceeded.
 - Search evidence shows final validation does not replace required checks, review, conflict, process-memory, evidence, feedback-disposition, or human merge-owner gates.
+- Search evidence shows final-validation evidence-only commits are allowed only for role-owned evidence recording and must be covered by Orchestrator's current-head read-only guard.
 - Manual diff review confirms no learner-facing, runtime, CI workflow, branch-protection, secret, or production-resource changes.
 
 Required command evidence:
@@ -146,6 +156,9 @@ If a command cannot run because of local environment or unrelated repository sta
 
 - Risk: Final validation could become an AI-written summary that weakens merge gates.
 - Mitigation: Preserve existing gates and require evidence from PR state, local read-only checks, text search, diff review, and recorded process memory.
+
+- Risk: Requiring final validation on every evidence-recording commit could create an infinite loop where validation evidence makes itself stale.
+- Mitigation: Define the effective content head and allow a narrow final-validation evidence-only commit, then require Orchestrator's current-head read-only guard to prove the later commit only records validation evidence and does not change meaningful content.
 
 - Risk: Return limits could hide unresolved work.
 - Mitigation: Exceeding a limit escalates into a new feature request with preserved context instead of allowing completion.

@@ -187,6 +187,27 @@ read-only rechecks do not count as returns. Follow-up PRs opened to address
 Architect or Analyst validation gaps stay in the same work cycle until
 completion or return-limit escalation.
 
+Architect and Analyst final validation may validate the effective content head:
+the PR head that contains implementation, workflow docs/templates, feature
+memory, review fixes, and other behaviorally meaningful content. A later commit
+may avoid recursive Architect and Analyst validation only when it is strictly a
+final-validation evidence-only commit. Evidence-only means it changes only
+role-owned validation evidence or process memory, such as Analyst-owned
+validation notes in `feature-request.md` or final-validation evidence in
+`tasks.md`.
+
+Before declaring completion or performing authorized merge mechanics after such
+a commit, Orchestrator must run a read-only current-PR-head guard. The guard
+names the current PR head, compares it with the validated effective content
+head, confirms any intervening commit is evidence-only, verifies process memory
+is current, and rechecks required checks, blocking review findings, conflicts,
+acceptance evidence, feedback disposition, final guards, and human merge-owner
+rules. If any post-validation commit changes product behavior, durable workflow
+rules, templates, scoped implementation docs, code, tests, runtime files, CI,
+branch protection, review dispositions, or other non-evidence content, prior
+Architect and Analyst validation is stale and Orchestrator must route the work
+back through role-appropriate follow-up or final validation.
+
 The active required-check list is `.unicorn-hub/config.json` (`requiredChecks`); installed defaults reflect the active profile. Stack-specific profiles that preserve existing target CI ship only `guard` and `AI Review` and expect the team to add the repository's real CI job names before applying branch protection.
 
 PRs are merge-ready only when every required check is green on the current head,
@@ -244,6 +265,10 @@ Before merge, the author should also confirm the SENAR done gate:
   gaps were recorded only in Analyst-owned validation notes, counted against the
   limit of 5, and routed through Architect disposition before follow-up
   development
+- if the current PR head is after the effective content head validated by
+  Architect and Analyst, Orchestrator's read-only current-PR-head guard confirms
+  every later commit is final-validation evidence-only and all merge-readiness
+  gates still apply to the current head
 - any remaining known issue is accepted by the human merge owner
 
 Completion cannot rely only on an Implementation Agent summary, Review Agent

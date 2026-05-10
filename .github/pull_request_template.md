@@ -32,6 +32,7 @@
 - [ ] The PR has no unresolved merge conflicts.
 - [ ] Final Architect validation passed before final Analyst validation and covered all PR slices, Architect-assigned tasks/dispositions, architectural guidance, open task state, process memory, and customer intent in spirit.
 - [ ] Final Analyst validation passed after Architect validation and checked customer intent in spirit and letter.
+- [ ] If commits landed after final Architect or Analyst validation, the PR records the effective content head, proves later commits are final-validation evidence-only, and includes Orchestrator current-PR-head read-only guard evidence. Non-evidence post-validation changes were routed back through role-appropriate follow-up or final validation.
 - [ ] Architect return count is within the limit of 10 and Analyst return count is within the limit of 5, or limit-exceeded escalation created a new feature request as required.
 - [ ] Analyst feedback, if any, has Architect accept/task/ticket/dispose disposition before follow-up development.
 - [ ] Completion evidence uses GitHub state and local read-only guards, not only AI-written summaries.

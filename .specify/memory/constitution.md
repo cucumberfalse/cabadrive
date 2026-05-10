@@ -40,7 +40,7 @@ Feature tasks must record dead ends, decisions, known issues, verification evide
 
 ### X. Final Validation Loop
 
-Before completion or authorized merge mechanics, Orchestrator must track the work cycle and cycle PR set, invoke final Architect validation, then invoke final Analyst validation only after Architect passes. Architect validates all PR slices, Architect-assigned tasks and dispositions, architectural guidance, open task state, process memory, and customer intent in spirit. Analyst validates the final result against the customer's desired outcome in spirit and letter. Architect gaps return to Orchestrator through Architect-owned artifacts/dispositions, up to 10 returns per work cycle before Architect reports a limit breach and Orchestrator asks Analyst for a new feature request. Analyst gaps update only Analyst-owned validation notes and must receive Architect accept/task/ticket/dispose disposition before follow-up development, up to 5 returns per work cycle before Analyst creates a new feature request in a separate latest-main branch/worktree.
+Before completion or authorized merge mechanics, Orchestrator must track the work cycle and cycle PR set, invoke final Architect validation, then invoke final Analyst validation only after Architect passes. Architect validates all PR slices, Architect-assigned tasks and dispositions, architectural guidance, open task state, process memory, and customer intent in spirit. Analyst validates the final result against the customer's desired outcome in spirit and letter. Architect gaps return to Orchestrator through Architect-owned artifacts/dispositions, up to 10 returns per work cycle before Architect reports a limit breach and Orchestrator asks Analyst for a new feature request. Analyst gaps update only Analyst-owned validation notes and must receive Architect accept/task/ticket/dispose disposition before follow-up development, up to 5 returns per work cycle before Analyst creates a new feature request in a separate latest-main branch/worktree. Final validation applies to the effective content head. A later final-validation evidence-only commit may record role-owned validation evidence or process memory only when Orchestrator's read-only current-PR-head guard proves no non-evidence content changed and all merge-readiness gates still apply to the current head.
 
 ## Workflow
 
@@ -56,7 +56,8 @@ Before completion or authorized merge mechanics, Orchestrator must track the wor
 10. Review Agent checks the diff and feature-memory compliance without changing code; code review findings are GitHub inline review threads.
 11. Resolve CI and review.
 12. Orchestrator verifies the cycle PR set and invokes final Architect validation before final Analyst validation.
-13. Merge only when final validation passes, gates are green, and merge authority is satisfied; explicit user authorization may let Orchestrator merge without asking again, but does not remove gates.
+13. Orchestrator runs the current-PR-head read-only guard when evidence-only commits land after final validation; any non-evidence post-validation change makes prior role validation stale and returns through role-appropriate follow-up or final validation.
+14. Merge only when final validation passes, gates are green, and merge authority is satisfied; explicit user authorization may let Orchestrator merge without asking again, but does not remove gates.
 
 ## Governance
 

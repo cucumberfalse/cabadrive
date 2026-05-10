@@ -60,6 +60,12 @@ Reviewers check role boundaries in addition to code behavior:
   Orchestrator request for Analyst to create a new feature request; if the
   Analyst limit is exceeded, reviewers should expect a new feature request in a
   separate latest-main branch/worktree.
+- When final Architect and Analyst validation target an effective content head,
+  any later commit may be treated as valid only if it is final-validation
+  evidence-only process memory and Orchestrator's read-only current-PR-head
+  guard proves no non-evidence content changed. Non-evidence changes after role
+  validation make prior validation stale and must be routed back through
+  role-appropriate follow-up or final validation before completion.
 
 Reviewers should block merge when the PR text, docs, specs, or implementation
 permit unsafe completion. Blocking conditions include red, missing, queued, or
@@ -73,7 +79,9 @@ development appear complete. During Orchestrator's final completion or
 merge-readiness evaluation, missing final-validation evidence, incomplete cycle
 PR set coverage, Analyst feedback without Architect disposition, or exhausted
 return limits without new-feature-request escalation are blocking process
-findings.
+findings. So are missing current-PR-head guard evidence after a post-validation
+evidence commit, or any non-evidence post-validation change that still relies on
+prior Architect or Analyst validation.
 
 Review findings that require code, docs, tests, content, specs, metadata, or
 process-memory edits are routed by Orchestrator to the proper role. Source
@@ -87,7 +95,8 @@ not replace required checks, merge-conflict checks, feature-memory evidence,
 local guard evidence, Orchestrator-first routing evidence, Analyst
 clarification-relay evidence, latest-main startup evidence, parallel-work
 isolation evidence, cycle PR-set evidence, final Architect validation, final
-Analyst validation, return-limit state, or manual review of the SENAR done gate.
+Analyst validation, effective content head evidence, current-PR-head guard
+evidence, return-limit state, or manual review of the SENAR done gate.
 Explicit user authorization for Orchestrator
 merge removes only the need to ask again; it does not remove any merge-readiness
 gate. A human remains the default final merge owner when no such authorization
