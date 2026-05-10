@@ -1,0 +1,258 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+  "document": {
+    "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+    "chunks": [
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--ley-6631-2023-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-4, coverage fingerprint sha256:073470e6b7ae6a06ffded885a80b6bcff0102957cb16a15bac642f18b7c7b6b7, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 1-4, the full Russian translation, coverage fingerprint sha256:073470e6b7ae6a06ffded885a80b6bcff0102957cb16a15bac642f18b7c7b6b7, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--ley-6631-2023-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 5-36, coverage fingerprint sha256:eb93a10e5a9e9d80555054014ae8d52ed0ef0ae49441022e8da51fe44893eac6, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 5-36, the full Russian translation, coverage fingerprint sha256:eb93a10e5a9e9d80555054014ae8d52ed0ef0ae49441022e8da51fe44893eac6, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--articulo-1o-sustituyese-el-texto-del-articulo-7-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 37-54, coverage fingerprint sha256:893cb3883713528e1847eca9a53be66bbdd3f685ff1c3a7799f773780eb033bf, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 37-54, the full Russian translation, coverage fingerprint sha256:893cb3883713528e1847eca9a53be66bbdd3f685ff1c3a7799f773780eb033bf, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-2o-sustituyese-el-texto-del-articulo-15-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 55-78, coverage fingerprint sha256:715387929ded934d2c9b0a0ae221c7f6dcf86328d804a074d16f1a69248b317b, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 55-78, the full Russian translation, coverage fingerprint sha256:715387929ded934d2c9b0a0ae221c7f6dcf86328d804a074d16f1a69248b317b, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-3o-sustituyese-el-texto-del-articulo-16-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 79-92, coverage fingerprint sha256:35c2a933a071765718eb4a2810867d82d6b458b330bbc3fd82dd66f2694f9aa9, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 79-92, the full Russian translation, coverage fingerprint sha256:35c2a933a071765718eb4a2810867d82d6b458b330bbc3fd82dd66f2694f9aa9, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-4o-sustituyese-el-texto-del-articulo-17-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 93-140, coverage fingerprint sha256:4735e42e7d769923c7591e4a26ffd2c973b3d478ce1c33e1cdc4bdfb3fa142df, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 93-140, the full Russian translation, coverage fingerprint sha256:4735e42e7d769923c7591e4a26ffd2c973b3d478ce1c33e1cdc4bdfb3fa142df, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-5o-sustituyese-el-texto-del-articulo-20-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 141-188, coverage fingerprint sha256:e75d63e7226cdb687c45a0e5556578479ee54d11bb231912b4e486355bc1424a, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 141-188, the full Russian translation, coverage fingerprint sha256:e75d63e7226cdb687c45a0e5556578479ee54d11bb231912b4e486355bc1424a, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-6o-sustituyese-el-texto-del-articulo-23-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 189-210, coverage fingerprint sha256:ab65629dccc83214f5e60b981f4cbbe253756067e9bbeb964612cd68f0500d94, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 189-210, the full Russian translation, coverage fingerprint sha256:ab65629dccc83214f5e60b981f4cbbe253756067e9bbeb964612cd68f0500d94, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-7o-sustituyese-el-texto-del-articulo-26-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 211-248, coverage fingerprint sha256:8cfadbe2fd00b753982856fc4c0a307debe999197158b50c7e6d7e0ee5af199e, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 211-248, the full Russian translation, coverage fingerprint sha256:8cfadbe2fd00b753982856fc4c0a307debe999197158b50c7e6d7e0ee5af199e, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-8o-sustituyese-el-texto-del-articulo-28-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 249-290, coverage fingerprint sha256:daa623e28cc4667e7b7c3056827ec570a783ec876f2650f5e8749e49b5047c08, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 249-290, the full Russian translation, coverage fingerprint sha256:daa623e28cc4667e7b7c3056827ec570a783ec876f2650f5e8749e49b5047c08, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-9o-sustituyese-el-titulo-iv-de-la-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 291-298, coverage fingerprint sha256:bf5bf1136832a102d18a0f44d5c3998c7cf8ac89b7a4c046cf511f93106da678, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 291-298, the full Russian translation, coverage fingerprint sha256:bf5bf1136832a102d18a0f44d5c3998c7cf8ac89b7a4c046cf511f93106da678, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-10-sustituyese-el-articulo-29-de-la-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 299-320, coverage fingerprint sha256:c06e05a3047be85f56a1aeda2a7e7e7629d09dba23715dd724179050780b42f4, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 299-320, the full Russian translation, coverage fingerprint sha256:c06e05a3047be85f56a1aeda2a7e7e7629d09dba23715dd724179050780b42f4, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-11-sustituyese-el-articulo-31-de-la-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 321-338, coverage fingerprint sha256:334ec61132a2af455d90b3f6a83d5b54428059c8a8a4e5afe40518d649de6338, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 321-338, the full Russian translation, coverage fingerprint sha256:334ec61132a2af455d90b3f6a83d5b54428059c8a8a4e5afe40518d649de6338, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-12-sustituyese-el-articulo-35-de-la-014",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 339-352, coverage fingerprint sha256:1abe3d04189a4272f7ae90ab8f2ce16fa65a224f0e34a72fa42779aea7e52e4e, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 339-352, the full Russian translation, coverage fingerprint sha256:1abe3d04189a4272f7ae90ab8f2ce16fa65a224f0e34a72fa42779aea7e52e4e, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-13-autorizase-al-poder-ejecutivo-a-traves-015",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 353-384, coverage fingerprint sha256:6aa7a8f0a4af6cecdcab10b50502a819cb828affee4922e88b538928afe5875d, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 353-384, the full Russian translation, coverage fingerprint sha256:6aa7a8f0a4af6cecdcab10b50502a819cb828affee4922e88b538928afe5875d, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-14-comuniquese-etc-ferrario-schillagi-016",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 385-409, coverage fingerprint sha256:8a6d592984366247d77da071c9cc565f13f493d14046e0985f4bd493fac022df, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 385-409, the full Russian translation, coverage fingerprint sha256:8a6d592984366247d77da071c9cc565f13f493d14046e0985f4bd493fac022df, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--tipo-de-relacion-017",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 410-411, coverage fingerprint sha256:b2a91c63dcb23d4a60bdd09d42651927f04f18cd5ea86fa89819dc0f6e2f96dc, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 410-411, the full Russian translation, coverage fingerprint sha256:b2a91c63dcb23d4a60bdd09d42651927f04f18cd5ea86fa89819dc0f6e2f96dc, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--norma-relacionada-018",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 412-413, coverage fingerprint sha256:3858c06902c6b64fe698d6428e7b0087c7bc4bb1a7221b0c516d2bf786193637, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 412-413, the full Russian translation, coverage fingerprint sha256:3858c06902c6b64fe698d6428e7b0087c7bc4bb1a7221b0c516d2bf786193637, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--detalle-019",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 414-425, coverage fingerprint sha256:3bd621309320a60de4861ea72ab08f6fb525e7dcf0be9536a21682dcaa7ff3f6, and content/primary-sources/terminology.ru.md. VTV/Ley 6631/siniestros batch self-review preserved numbers, dates, authorities, legal duties, exceptions, and visible source-page/PDF text. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 414-425, the full Russian translation, coverage fingerprint sha256:3bd621309320a60de4861ea72ab08f6fb525e7dcf0be9536a21682dcaa7ff3f6, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, deadlines, exceptions, penalties, and scope limits while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      }
+    ]
+  }
+}
