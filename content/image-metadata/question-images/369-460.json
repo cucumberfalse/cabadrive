@@ -7,7 +7,7 @@
     "start": 369,
     "end": 460
   },
-  "qualityStatus": "needs_full_content_review",
+  "qualityStatus": "in_progress",
   "workerInstructions": "This range shard is the source of truth for its ticket range. Content workers may edit only their assigned shard files.",
   "imageOwnership": "images contains records owned by the lowest-numbered question usage for that image; questionUsages contains records for this range only.",
   "images": [
@@ -19,53 +19,225 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Elevated urban intersection view with red oval annotations around pedestrian-oriented street interventions: curb extensions, small plaza-like sidewalk areas, bollards, planters, benches, zebra crossings, a painted 20 speed marking, and traffic-calming geometry.",
+      "generationPromptSummary": "Daytime high-angle city intersection, gray asphalt, zebra crossings, white turn arrow, large painted 20 speed marking, curb extensions and pedestrian refuge areas with bollards, planters, tables, benches, several pedestrians, parked and moving cars near shopfronts; red oval annotations encircle the pedestrian intervention areas.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban intersection",
+        "environment": "commercial city street with sidewalks, shops, pedestrians, cars, and traffic-calming pedestrian spaces",
+        "cameraView": "elevated oblique view looking down at the intersection",
+        "framing": "wide intersection with annotated pedestrian areas around the edges",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry asphalt and paved sidewalks"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban intersection with pedestrian safety interventions",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
-        "crossings": [],
-        "curbsOrShoulders": []
+        "laneDirections": [
+          "one lane with a white directional arrow visible in the lower-left roadway"
+        ],
+        "markings": [
+          {
+            "id": "painted-20-speed-marking",
+            "description": "A large 20 speed marking is painted inside a red-bordered circle on the roadway."
+          },
+          {
+            "id": "white-turn-arrow",
+            "description": "A white directional arrow is painted on the lower-left part of the road."
+          }
+        ],
+        "crossings": [
+          {
+            "id": "zebra-crossings",
+            "description": "White zebra crossings are visible at the intersection."
+          }
+        ],
+        "curbsOrShoulders": [
+          {
+            "id": "curb-extension-areas",
+            "description": "Expanded pedestrian curb and island areas narrow the vehicle path."
+          }
+        ]
       },
+      "regions": [
+        {
+          "regionId": "intersection-roadway",
+          "label": "main roadway",
+          "semanticLocation": "center and left side of the image",
+          "includesObjectIds": [
+            "roadway",
+            "painted-speed-zone"
+          ],
+          "includesDetailIds": [
+            "painted-20-speed-marking"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "pedestrian-interventions",
+          "label": "annotated pedestrian intervention zones",
+          "semanticLocation": "upper-left, upper-right, and lower-right areas inside red ovals",
+          "includesObjectIds": [
+            "curb-extensions-pedestrian-areas",
+            "planters-bollards-seating"
+          ],
+          "includesDetailIds": [
+            "pedestrian-safety-interventions"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
-        }
-      ],
-      "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+          "id": "roadway",
+          "type": "roadway",
+          "label": "intersection roadway",
+          "description": "Gray asphalt intersection with painted markings, crossings, and a narrowed vehicle path.",
+          "confidence": "high"
+        },
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "curb-extensions-pedestrian-areas",
+          "type": "pedestrian_infrastructure",
+          "label": "curb extensions and pedestrian islands",
+          "description": "Expanded sidewalk or island areas project into the intersection and shorten pedestrian crossing distance.",
+          "confidence": "high"
+        },
+        {
+          "id": "planters-bollards-seating",
+          "type": "street_furniture",
+          "label": "planters, bollards, benches, and tables",
+          "description": "Large planters, short bollards, seats, and cafe-style tables occupy the pedestrian areas.",
+          "confidence": "high"
+        },
+        {
+          "id": "painted-speed-zone",
+          "type": "road_marking",
+          "label": "painted 20 marking",
+          "description": "A large 20 speed marking is painted on the roadway.",
+          "confidence": "high"
+        },
+        {
+          "id": "background-vehicles",
+          "type": "vehicles",
+          "label": "cars at the intersection",
+          "description": "Several cars are visible near the top of the intersection.",
+          "confidence": "medium"
         }
       ],
+      "roadUsers": [
+        {
+          "id": "pedestrians-near-interventions",
+          "type": "pedestrians",
+          "label": "pedestrians using the improved corner area",
+          "description": "Several pedestrians stand or walk within and near the annotated pedestrian spaces.",
+          "confidence": "medium"
+        }
+      ],
+      "signsSignalsMarkings": [
+        {
+          "id": "zebra-crossings",
+          "type": "road_marking",
+          "label": "zebra crossings",
+          "description": "Multiple white zebra crossings connect the pedestrian areas across the roadway.",
+          "confidence": "high"
+        }
+      ],
+      "annotations": [
+        {
+          "id": "red-oval-lower-pedestrian-area",
+          "type": "red_oval",
+          "label": "lower red oval",
+          "description": "Red oval around the large pedestrian area with people, planters, seats, and bollards.",
+          "targetIds": [
+            "curb-extensions-pedestrian-areas",
+            "planters-bollards-seating"
+          ]
+        },
+        {
+          "id": "red-oval-left-pedestrian-area",
+          "type": "red_oval",
+          "label": "left red oval",
+          "description": "Red oval around a sidewalk extension and crossing area on the upper-left side.",
+          "targetIds": [
+            "curb-extensions-pedestrian-areas"
+          ]
+        },
+        {
+          "id": "red-oval-right-pedestrian-area",
+          "type": "red_oval",
+          "label": "right red oval",
+          "description": "Red oval around a smaller pedestrian corner area on the upper-right side.",
+          "targetIds": [
+            "curb-extensions-pedestrian-areas"
+          ]
+        }
+      ],
+      "visibleText": [
+        {
+          "id": "painted-number-20",
+          "text": "20",
+          "language": "numeric",
+          "location": "painted on road near center"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "pedestrian-safety-interventions",
+          "description": "Red ovals mark curb extensions, pedestrian island/plaza areas, planters, bollards, seating, and crossings that protect pedestrians and calm traffic.",
+          "relatedObjectIds": [
+            "curb-extensions-pedestrian-areas",
+            "planters-bollards-seating",
+            "zebra-crossings"
+          ],
+          "regionIds": [
+            "pedestrian-interventions"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "painted-20-speed-marking",
+          "description": "The roadway includes a visible 20 speed marking reinforcing low-speed traffic-calming context.",
+          "relatedObjectIds": [
+            "painted-speed-zone"
+          ],
+          "regionIds": [
+            "intersection-roadway"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "background-vehicle-flow",
+          "description": "Cars and shopfronts remain visible in the background but are not the main subject of the red annotations.",
+          "relatedObjectIds": [
+            "background-vehicles"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "interventions-around-crossings",
+          "subjectId": "curb-extensions-pedestrian-areas",
+          "relation": "surround_and_shorten_crossings",
+          "objectId": "zebra-crossings",
+          "description": "The pedestrian intervention areas are positioned around the zebra crossings and reduce exposed crossing distance."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b34"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b34",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b34.jpg locally: red ovals identify pedestrian safety street interventions, crossings, planters, bollards, seating, and a 20 road marking.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -76,53 +248,143 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Daytime urban intersection with street-name direction signs, including a black sign for an avenue, trees, buildings, and cars crossing the junction; no traffic signal is visible in the frame.",
+      "generationPromptSummary": "Street-level city intersection under trees, black and white direction signs mounted on a pole at right, one sign naming an avenue and blocks, cars crossing the intersection, residential and commercial buildings, bright daylight, no visible traffic lights.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban avenue intersection",
+        "environment": "tree-lined city streets with buildings and cars",
+        "cameraView": "street-level oblique view across the intersection",
+        "framing": "street sign pole on the right and cars in the center-left crossing area",
+        "lighting": "daylight with tree shade",
+        "weatherOrSurface": "dry paved street"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "avenue intersection",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "cross traffic visible through the intersection"
+        ],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "regionId": "right-sign-pole-region",
+          "label": "street-name signs",
+          "semanticLocation": "right side of image, upper half",
+          "includesObjectIds": [
+            "avenue-direction-signs"
+          ],
+          "includesDetailIds": [
+            "avenue-name-and-unsignalized-intersection"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "avenue-direction-signs",
+          "type": "street_name_direction_signs",
+          "label": "black avenue and street direction signs",
+          "description": "Stacked black signs show arrows and street names, including an avenue reference and block numbers.",
+          "confidence": "high"
+        },
+        {
+          "id": "intersection-roadway",
+          "type": "roadway",
+          "label": "intersection roadway",
+          "description": "Wide paved intersection with vehicles crossing.",
+          "confidence": "high"
+        },
+        {
+          "id": "crossing-cars",
+          "type": "vehicles",
+          "label": "cars in intersection",
+          "description": "A black taxi-like car and a white car are visible moving through or waiting in the intersection.",
+          "confidence": "high"
+        },
+        {
+          "id": "trees-and-buildings",
+          "type": "background",
+          "label": "trees and buildings",
+          "description": "Large trees and low-rise buildings frame the intersection.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "signsSignalsMarkings": [
+        {
+          "id": "avenue-sign-face",
+          "type": "street_name_sign",
+          "label": "avenue sign face",
+          "description": "A black sign face includes an avenue name and block-range text with arrows.",
+          "confidence": "medium"
+        }
+      ],
       "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "visibleText": [
+        {
+          "id": "avenue-visible-text",
+          "text": "Avenida De Los Incas / Donado / 1400-1500",
+          "language": "es",
+          "location": "right-side black direction signs"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "avenue-name-and-unsignalized-intersection",
+          "description": "The image shows street-name direction signs identifying an avenue context and an intersection where no traffic light is visible.",
+          "relatedObjectIds": [
+            "avenue-direction-signs",
+            "intersection-roadway"
+          ],
+          "regionIds": [
+            "right-sign-pole-region"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "cars-crossing-intersection",
+          "description": "Cars are present in the crossing area, reinforcing that the scene is an active intersection.",
+          "relatedObjectIds": [
+            "crossing-cars"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "signs-beside-intersection",
+          "subjectId": "avenue-direction-signs",
+          "relation": "mounted_beside",
+          "objectId": "intersection-roadway",
+          "description": "The direction signs stand at the side of the intersection and identify the roadway context."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "traffic-signal-visibility",
+          "field": "scene",
+          "note": "The frame shows no traffic signal, but the statement that the junction has no signal comes from the ticket wording.",
+          "impact": "metadata records visible absence only within the frame"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b143"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b143",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b143.jpg locally: avenue/street direction signs, cars, and unsignalized-looking intersection are visible; no signal heads are visible in frame.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -133,53 +395,182 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Urban intersection with yellow A and B labels overlaid: A is near the street-sign/avenue direction area, B is next to a silver car entering from the lower-left side. Black direction signs identify the avenue context.",
+      "generationPromptSummary": "Bright urban intersection with trees and buildings, silver car entering from lower-left foreground, other cars across the far side, black street-name direction signs at right naming an avenue, yellow circular labels A and B overlaid near the relevant vehicle/road positions.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban intersection",
+        "environment": "tree-lined city street with buildings, parked cars, and direction signs",
+        "cameraView": "street-level oblique view",
+        "framing": "silver car in lower-left foreground, signs on right, yellow A/B labels overlaid",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "avenue and side-street intersection",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "vehicle B appears to enter from a side street",
+          "vehicle A context is associated with the avenue direction"
+        ],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "regionId": "avenue-sign-and-label-a-region",
+          "label": "A label and avenue sign area",
+          "semanticLocation": "upper-right and center-left area near sign context",
+          "includesObjectIds": [
+            "avenue-direction-signs",
+            "label-a"
+          ],
+          "includesDetailIds": [
+            "vehicle-a-on-avenue"
+          ],
+          "localizationConfidence": "medium"
+        },
+        {
+          "regionId": "foreground-vehicle-b-region",
+          "label": "B vehicle area",
+          "semanticLocation": "lower-left foreground",
+          "includesObjectIds": [
+            "vehicle-b-silver-car",
+            "label-b"
+          ],
+          "includesDetailIds": [
+            "vehicle-b-side-street-position"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "intersection-roadway",
+          "type": "roadway",
+          "label": "urban intersection roadway",
+          "description": "Wide paved crossing area between the avenue and side street.",
+          "confidence": "high"
+        },
+        {
+          "id": "avenue-direction-signs",
+          "type": "street_name_direction_signs",
+          "label": "avenue direction signs",
+          "description": "Black direction signs on the right include the avenue name and arrows.",
+          "confidence": "high"
+        },
+        {
+          "id": "vehicle-b-silver-car",
+          "type": "car",
+          "label": "silver car marked B",
+          "description": "Silver passenger car in the lower-left foreground next to the yellow B label.",
+          "confidence": "high"
+        },
+        {
+          "id": "distant-avenue-vehicles",
+          "type": "vehicles",
+          "label": "vehicles across avenue",
+          "description": "Several vehicles are visible across the intersection in the avenue direction.",
+          "confidence": "medium"
+        },
+        {
+          "id": "building-background",
+          "type": "background",
+          "label": "buildings and trees around intersection",
+          "description": "Buildings, trees, and parked cars in the background around the avenue intersection.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "annotations": [
+        {
+          "id": "label-a",
+          "type": "yellow_label",
+          "label": "A label",
+          "description": "Yellow circular A label marking the priority candidate associated with the avenue context.",
+          "targetIds": [
+            "distant-avenue-vehicles",
+            "avenue-direction-signs"
+          ]
+        },
+        {
+          "id": "label-b",
+          "type": "yellow_label",
+          "label": "B label",
+          "description": "Yellow circular B label beside the foreground silver car.",
+          "targetIds": [
+            "vehicle-b-silver-car"
+          ]
+        }
+      ],
+      "visibleText": [
+        {
+          "id": "avenue-sign-text",
+          "text": "Avenida De Los Incas / Donado",
+          "language": "es",
+          "location": "right-side black signs"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "vehicle-a-on-avenue",
+          "description": "The A marker is visually tied to the avenue-sign context, indicating the candidate moving along the avenue.",
+          "relatedObjectIds": [
+            "label-a",
+            "avenue-direction-signs",
+            "distant-avenue-vehicles"
+          ],
+          "regionIds": [
+            "avenue-sign-and-label-a-region"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "vehicle-b-side-street-position",
+          "description": "The B marker is tied to the silver car entering from the foreground side-street area.",
+          "relatedObjectIds": [
+            "label-b",
+            "vehicle-b-silver-car"
+          ],
+          "regionIds": [
+            "foreground-vehicle-b-region"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "b-enters-toward-avenue",
+          "subjectId": "vehicle-b-silver-car",
+          "relation": "approaches_intersection_from_side",
+          "objectId": "intersection-roadway",
+          "description": "The silver B vehicle sits in the foreground approaching the intersection from a side direction."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
+          "id": "vehicle-a-exact-vehicle",
           "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "note": "The A label is placed near the avenue/sign context rather than directly on a single clearly isolated car.",
+          "impact": "priority rationale still uses the visible avenue context and A marker"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b100"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b100",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b100.jpg locally: A/B labels, avenue direction signs, and foreground B car are visible; A is associated with the avenue context.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -190,53 +581,146 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Close urban traffic scene behind taxis and other vehicles. A red circle highlights a driver-side hand holding or manipulating a small phone-like device beside the rear/side of the adjacent vehicle.",
+      "generationPromptSummary": "City traffic lane in daylight, black-and-yellow taxi in foreground, another taxi or car ahead, dashed lane markings, buses and vehicles in the lane, red circle around a hand extended near the driver-side window holding a small phone-like device, emphasizing distracted driving behavior.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban traffic lane",
+        "environment": "dense city traffic with taxis, cars, motorcycles, and lane markings",
+        "cameraView": "rear close-up from following vehicle perspective",
+        "framing": "taxi rear in foreground and red-circled hand/device near adjacent car",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "multi-lane city street",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
+        "laneDirections": [
+          "same-direction vehicles visible ahead"
+        ],
+        "markings": [
+          {
+            "id": "dashed-lane-lines",
+            "description": "White dashed lane lines are visible along the roadway."
+          }
+        ],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "regionId": "red-circled-hand-region",
+          "label": "highlighted hand and device",
+          "semanticLocation": "center-right between two vehicles",
+          "includesObjectIds": [
+            "driver-hand-with-device",
+            "red-circle-distraction"
+          ],
+          "includesDetailIds": [
+            "driver-hand-held-device"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "foreground-taxi",
+          "type": "car",
+          "label": "black-and-yellow taxi in foreground",
+          "description": "Rear-right portion of a taxi occupies the right foreground.",
+          "confidence": "high"
+        },
+        {
+          "id": "adjacent-black-car",
+          "type": "car",
+          "label": "adjacent black car",
+          "description": "Black car directly ahead/left of the foreground taxi, near the highlighted hand.",
+          "confidence": "high"
+        },
+        {
+          "id": "traffic-lane",
+          "type": "roadway",
+          "label": "traffic lane",
+          "description": "Urban lane with several vehicles ahead.",
+          "confidence": "high"
+        },
+        {
+          "id": "driver-hand-with-device",
+          "type": "handheld_device_use",
+          "label": "hand holding phone-like device",
+          "description": "A hand near the driver-side area appears to hold or manipulate a small phone-like device while in traffic.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "id": "red-circle-distraction",
+          "type": "red_circle",
+          "label": "red circle annotation",
+          "description": "Red circle highlights the hand and small device near the vehicle.",
+          "targetIds": [
+            "driver-hand-with-device"
+          ]
+        }
+      ],
       "visibleText": [],
-      "spatialRelationships": [],
+      "visualDetails": [
+        {
+          "id": "driver-hand-held-device",
+          "description": "The red annotation highlights a driver-side hand holding or manipulating a small phone-like device in traffic.",
+          "relatedObjectIds": [
+            "driver-hand-with-device",
+            "red-circle-distraction"
+          ],
+          "regionIds": [
+            "red-circled-hand-region"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "dense-traffic-context",
+          "description": "Multiple vehicles and lane markings show the behavior occurs while driving in traffic.",
+          "relatedObjectIds": [
+            "foreground-taxi",
+            "adjacent-black-car",
+            "traffic-lane"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "device-between-vehicles",
+          "subjectId": "driver-hand-with-device",
+          "relation": "beside",
+          "objectId": "adjacent-black-car",
+          "description": "The highlighted hand/device is positioned beside the adjacent car in the traffic stream."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "device-shape-small",
+          "field": "objects.driver-hand-with-device",
+          "note": "The small object is low-resolution; it appears phone-like and is highlighted as the distracting conduct in the ticket.",
+          "impact": "the answer relies on distraction behavior, not exact device model"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b62"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b62",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b62.jpg locally: red circle marks a hand with a small phone-like device amid moving traffic, supporting distraction-risk reasoning.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -247,53 +731,159 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Narrow city street with parked cars, a red-bordered circular 20 speed-limit sign, a yellow school crossing warning sign, a wheelchair parking sign, and a painted school-related road marking.",
+      "generationPromptSummary": "Daytime urban street corridor with trees, parked cars along the right curb, red-bordered circular 20 speed sign mounted on the sidewalk, yellow school crossing warning sign above/right of it, accessible parking sign below, painted school-zone marking on road, dry pavement.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban street segment",
+        "environment": "tree-lined city street with parked cars and school-zone signs",
+        "cameraView": "street-level view looking down the street",
+        "framing": "speed and school signs on right sidewalk, roadway extending into distance",
+        "lighting": "daylight with shade",
+        "weatherOrSurface": "dry paved street"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban street with posted low-speed school-zone context",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
+        "laneDirections": [
+          "traffic lane continues straight ahead"
+        ],
+        "markings": [
+          {
+            "id": "painted-school-zone-road-marking",
+            "description": "A partially visible painted road marking appears near the lower center of the roadway."
+          }
+        ],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "right-curb-parked-cars",
+            "description": "Cars are parked along the right curb."
+          }
+        ]
       },
+      "regions": [
+        {
+          "regionId": "right-side-speed-school-signs",
+          "label": "20 sign and school warning sign",
+          "semanticLocation": "upper-right sidewalk area",
+          "includesObjectIds": [
+            "posted-20-speed-sign",
+            "yellow-school-crossing-sign"
+          ],
+          "includesDetailIds": [
+            "posted-20-speed-limit-sign"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "posted-20-speed-sign",
+          "type": "speed_limit_sign",
+          "label": "20 speed limit sign",
+          "description": "Circular sign with red border and black number 20.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-school-crossing-sign",
+          "type": "warning_sign",
+          "label": "school crossing warning sign",
+          "description": "Yellow diamond sign showing a walking adult/child school crossing symbol.",
+          "confidence": "high"
+        },
+        {
+          "id": "street-with-parked-cars",
+          "type": "roadway",
+          "label": "street with parked cars",
+          "description": "Urban street lined with parked cars on the right.",
+          "confidence": "high"
+        },
+        {
+          "id": "painted-school-zone-marking",
+          "type": "road_marking",
+          "label": "painted school-zone marking",
+          "description": "Partially visible red and white marking painted on the pavement.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "posted-20-speed-sign-face",
+          "type": "speed_limit_sign",
+          "label": "20 sign face",
+          "description": "The number 20 is clearly displayed inside a red-bordered circle.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [
+        {
+          "id": "speed-limit-number-20",
+          "text": "20",
+          "language": "numeric",
+          "location": "right-side circular sign"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "posted-20-speed-limit-sign",
+          "description": "A red-bordered circular speed sign clearly displays 20 on the right side of the street.",
+          "relatedObjectIds": [
+            "posted-20-speed-sign",
+            "posted-20-speed-sign-face"
+          ],
+          "regionIds": [
+            "right-side-speed-school-signs"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "school-zone-context-sign",
+          "description": "The adjacent yellow school crossing sign and road marking indicate a school-zone context.",
+          "relatedObjectIds": [
+            "yellow-school-crossing-sign",
+            "painted-school-zone-marking"
+          ],
+          "regionIds": [
+            "right-side-speed-school-signs"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "parked-cars-background",
+          "description": "Parked cars and trees form background context and are not the speed answer itself.",
+          "relatedObjectIds": [
+            "street-with-parked-cars"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "school-sign-above-speed-sign",
+          "subjectId": "yellow-school-crossing-sign",
+          "relation": "near_above",
+          "objectId": "posted-20-speed-sign",
+          "description": "The school crossing sign is mounted near and above the 20 speed sign."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b139"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b139",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b139.jpg locally: 20 speed-limit sign, school crossing warning sign, road marking, and parked urban street context are visible.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -304,53 +894,180 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Rear view of a red car stopped along the right curb near a parking/garage context. Red oval annotations highlight both rear lamp clusters, and a blue parking sign with arrow is visible above the sidewalk.",
+      "generationPromptSummary": "Daytime city avenue, red hatchback stopped near right curb beside a sidewalk and parking/garage area, blue E parking sign with arrow above, bus-stop or signpost nearby, red ovals around left and right rear lamp clusters to indicate signaling, roadway and other cars in background.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban curbside lane",
+        "environment": "city avenue with curb, sidewalk, parking sign, and nearby building",
+        "cameraView": "rear view from behind the vehicle",
+        "framing": "red car centered with highlighted rear lights and parking sign to the upper right",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry roadway"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "city street curb lane",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "same-direction roadway visible behind the car"
+        ],
         "markings": [],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "right-curb",
+            "description": "The car is stopped close to the right curb beside the sidewalk."
+          }
+        ]
       },
+      "regions": [
+        {
+          "regionId": "rear-light-region",
+          "label": "rear signal lamp clusters",
+          "semanticLocation": "left and right sides of the rear of the red car",
+          "includesObjectIds": [
+            "red-car",
+            "rear-signal-lamp-clusters",
+            "red-oval-left-lamp",
+            "red-oval-right-lamp"
+          ],
+          "includesDetailIds": [
+            "rear-signal-lamps-highlighted"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "parking-garage-context-region",
+          "label": "parking/garage context",
+          "semanticLocation": "upper-right sidewalk area",
+          "includesObjectIds": [
+            "parking-sign"
+          ],
+          "includesDetailIds": [
+            "parking-garage-context"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "red-car",
+          "type": "car",
+          "label": "red car at curb",
+          "description": "Red hatchback stopped or slowing next to the right curb.",
+          "confidence": "high"
+        },
+        {
+          "id": "rear-signal-lamp-clusters",
+          "type": "vehicle_lights",
+          "label": "rear lamp clusters",
+          "description": "Both rear lamp clusters of the red car are encircled by red annotations.",
+          "confidence": "high"
+        },
+        {
+          "id": "parking-sign",
+          "type": "parking_sign",
+          "label": "blue parking sign",
+          "description": "Blue parking sign with a white letter and red directional arrow above the sidewalk.",
+          "confidence": "high"
+        },
+        {
+          "id": "right-curb-sidewalk",
+          "type": "curb_and_sidewalk",
+          "label": "right curb and sidewalk",
+          "description": "Curb and sidewalk area next to the red car.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "annotations": [
+        {
+          "id": "red-oval-left-lamp",
+          "type": "red_oval",
+          "label": "left lamp highlight",
+          "description": "Red oval around the left rear lamp cluster.",
+          "targetIds": [
+            "rear-signal-lamp-clusters"
+          ]
+        },
+        {
+          "id": "red-oval-right-lamp",
+          "type": "red_oval",
+          "label": "right lamp highlight",
+          "description": "Red oval around the right rear lamp cluster.",
+          "targetIds": [
+            "rear-signal-lamp-clusters"
+          ]
+        }
+      ],
+      "visibleText": [
+        {
+          "id": "parking-letter-e",
+          "text": "E",
+          "language": "es",
+          "location": "blue parking sign above right sidewalk"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "rear-signal-lamps-highlighted",
+          "description": "Red ovals emphasize both rear light/signal clusters of the car as the visible cue for advance warning.",
+          "relatedObjectIds": [
+            "rear-signal-lamp-clusters",
+            "red-oval-left-lamp",
+            "red-oval-right-lamp"
+          ],
+          "regionIds": [
+            "rear-light-region"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "parking-garage-context",
+          "description": "The car is stopped close to the right curb below a parking sign, matching a curbside entry or parking/garage maneuver context.",
+          "relatedObjectIds": [
+            "red-car",
+            "parking-sign",
+            "right-curb-sidewalk"
+          ],
+          "regionIds": [
+            "parking-garage-context-region"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "red-car-beside-curb",
+          "subjectId": "red-car",
+          "relation": "beside",
+          "objectId": "right-curb-sidewalk",
+          "description": "The red car is positioned immediately beside the right curb."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "lamp-illumination-still-frame",
+          "field": "objects.rear-signal-lamp-clusters",
+          "note": "The still frame emphasizes the lamp areas with red ovals; actual bulb illumination is not the most reliable visible fact.",
+          "impact": "usage relies on highlighted signal areas and curbside maneuver context"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b171"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b171",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b171.jpg locally: red car at right curb, parking/garage context, and red ovals around rear signal/lamp clusters are visible.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -361,53 +1078,108 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "traffic_sign",
+      "visualSummary": "Standalone vertical rectangular marker panel with a white face, thin dark border, and multiple red diagonal stripes running from upper-left to lower-right, representing a rigid-object warning panel.",
+      "generationPromptSummary": "Simple traffic sign illustration on white background: tall narrow vertical rectangle with rounded corners, thin dark border, white face, bold red diagonal stripes slanting downward from left to right, no other symbols or text.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "isolated traffic sign graphic",
+        "environment": "plain white background",
+        "cameraView": "front-on sign view",
+        "framing": "sign centered and fills most of square image",
+        "lighting": "even graphic lighting",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not shown",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "regionId": "whole-sign-panel",
+          "label": "whole vertical striped panel",
+          "semanticLocation": "center of image",
+          "includesObjectIds": [
+            "red-white-striped-panel"
+          ],
+          "includesDetailIds": [
+            "red-white-diagonal-rigid-object-panel"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "red-white-striped-panel",
+          "type": "traffic_sign_panel",
+          "label": "vertical red-white striped panel",
+          "description": "Tall narrow rectangular warning panel with red diagonal stripes on a white background.",
+          "confidence": "high"
+        },
+        {
+          "id": "plain-white-background",
+          "type": "background",
+          "label": "plain white background",
+          "description": "Blank white background around the isolated sign panel.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "rigid-object-warning-panel",
+          "type": "warning_panel",
+          "label": "rigid object prevention panel",
+          "description": "Red-and-white striped panel used to mark a rigid object or obstruction.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [],
+      "visualDetails": [
+        {
+          "id": "red-white-diagonal-rigid-object-panel",
+          "description": "The sign is a vertical red-and-white diagonal striped panel, the visual form of a rigid-object warning panel.",
+          "relatedObjectIds": [
+            "red-white-striped-panel",
+            "rigid-object-warning-panel"
+          ],
+          "regionIds": [
+            "whole-sign-panel"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "plain-white-background",
+          "description": "The plain white background has no answer meaning and only frames the isolated striped panel.",
+          "relatedObjectIds": [
+            "plain-white-background"
+          ],
+          "regionIds": [
+            "whole-sign-panel"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b244"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b244",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b244.jpg locally: centered vertical red-white diagonal striped object marker panel, no other symbols or text.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -418,53 +1190,156 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Rear view of a cyclist riding in a city street. The cyclist wears a helmet and blue backpack, and a red oval highlights the cyclist extending the left arm straight and horizontally to the left.",
+      "generationPromptSummary": "Daytime urban street from behind a cyclist, cyclist centered wearing helmet, white shirt, shorts, blue backpack, riding a bicycle over zebra crossing markings, cars parked and moving around, trees and buildings, red oval around the cyclist left arm stretched straight horizontally to the left.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban street",
+        "environment": "tree-lined city street with cars, crosswalks, and buildings",
+        "cameraView": "rear view from behind cyclist",
+        "framing": "cyclist centered in foreground with extended arm highlighted",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban street with crosswalk markings",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
-        "crossings": [],
+        "laneDirections": [
+          "same-direction travel away from viewer"
+        ],
+        "markings": [
+          {
+            "id": "zebra-crosswalk-markings",
+            "description": "White zebra crosswalk markings are visible across the street."
+          }
+        ],
+        "crossings": [
+          {
+            "id": "zebra-crosswalk",
+            "description": "A crosswalk runs across the foreground and midground."
+          }
+        ],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "regionId": "cyclist-arm-region",
+          "label": "highlighted left arm",
+          "semanticLocation": "upper-left side of cyclist body, left half of image",
+          "includesObjectIds": [
+            "cyclist-from-behind",
+            "red-oval-left-arm"
+          ],
+          "includesDetailIds": [
+            "cyclist-left-arm-extended"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
-        }
-      ],
-      "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+          "id": "street-roadway",
+          "type": "roadway",
+          "label": "city roadway",
+          "description": "Paved city street with crosswalks and traffic around the cyclist.",
+          "confidence": "high"
+        },
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "surrounding-cars",
+          "type": "vehicles",
+          "label": "cars around cyclist",
+          "description": "Cars are parked or moving on both sides and ahead of the cyclist.",
+          "confidence": "medium"
         }
       ],
+      "roadUsers": [
+        {
+          "id": "cyclist-from-behind",
+          "type": "cyclist",
+          "label": "cyclist viewed from behind",
+          "description": "Cyclist riding away from the viewer, wearing a helmet and blue backpack.",
+          "confidence": "high",
+          "attributes": {
+            "helmet": true,
+            "backpack": "blue",
+            "clothing": [
+              "white shirt",
+              "shorts"
+            ],
+            "facing": "away_from_viewer"
+          },
+          "gestures": [
+            {
+              "id": "cyclist-left-arm-horizontal",
+              "bodyPart": "left_arm",
+              "pose": "extended_straight_horizontal",
+              "actorPerspectiveDirection": "left",
+              "viewerPerspectiveDirection": "left",
+              "description": "The cyclist extends the left arm straight and horizontally to the left side, highlighted by a red oval."
+            }
+          ]
+        }
+      ],
+      "signsSignalsMarkings": [],
+      "annotations": [
+        {
+          "id": "red-oval-left-arm",
+          "type": "red_oval",
+          "label": "red oval over left arm",
+          "description": "Red oval annotation surrounds the cyclist extended left arm.",
+          "targetIds": [
+            "cyclist-left-arm-horizontal"
+          ]
+        }
+      ],
+      "visibleText": [],
+      "visualDetails": [
+        {
+          "id": "cyclist-left-arm-extended",
+          "description": "The cyclist left arm is extended straight and horizontally to the cyclist left side, visible as a left-turn hand signal.",
+          "relatedObjectIds": [
+            "cyclist-from-behind",
+            "red-oval-left-arm"
+          ],
+          "regionIds": [
+            "cyclist-arm-region"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "cyclist-riding-in-street",
+          "description": "The subject is a cyclist riding in the roadway rather than a car driver.",
+          "relatedObjectIds": [
+            "cyclist-from-behind",
+            "street-roadway"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "arm-highlight-on-cyclist",
+          "subjectId": "red-oval-left-arm",
+          "relation": "highlights",
+          "objectId": "cyclist-left-arm-horizontal",
+          "description": "The red oval marks the extended left arm gesture."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b12"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b12",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b12.jpg locally: cyclist viewed from behind, helmet/backpack visible, left arm extended horizontally and highlighted by red oval.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -475,53 +1350,161 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "City street scene similar to a school-zone image: parked cars along the right curb, a red-bordered 20 speed-limit sign, a yellow school crossing warning sign, a blue accessible parking sign, and partial pavement marking.",
+      "generationPromptSummary": "Daytime narrow urban street with trees and parked cars, right-side sidewalk signs including red-bordered circular 20 speed-limit sign, yellow school crossing sign, blue wheelchair parking sign, partial painted school marking on asphalt, no extra time plate below the speed sign.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban street segment",
+        "environment": "tree-lined street with parked cars and school-related signs",
+        "cameraView": "street-level view down the road",
+        "framing": "sign cluster on right side, street receding leftward into distance",
+        "lighting": "daylight with shade",
+        "weatherOrSurface": "dry paved street"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban street with posted 20 speed limit",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
+        "laneDirections": [
+          "traffic lane continues straight"
+        ],
+        "markings": [
+          {
+            "id": "partial-school-road-marking",
+            "description": "A partial painted marking is visible on the roadway near the lower center."
+          }
+        ],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "right-parked-cars-curb",
+            "description": "Parked cars line the right curb."
+          }
+        ]
       },
+      "regions": [
+        {
+          "regionId": "right-sign-cluster",
+          "label": "20 and school signs",
+          "semanticLocation": "right side, upper half near building facade",
+          "includesObjectIds": [
+            "posted-20-speed-sign",
+            "yellow-school-crossing-sign"
+          ],
+          "includesDetailIds": [
+            "posted-20-speed-limit-sign"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "posted-20-speed-sign",
+          "type": "speed_limit_sign",
+          "label": "20 speed limit sign",
+          "description": "Circular red-bordered sign showing the number 20.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-school-crossing-sign",
+          "type": "warning_sign",
+          "label": "school crossing warning sign",
+          "description": "Yellow diamond sign with school pedestrian symbol above the speed sign.",
+          "confidence": "high"
+        },
+        {
+          "id": "street-with-parked-cars",
+          "type": "roadway",
+          "label": "street and parked cars",
+          "description": "Urban street with cars parked along the curb.",
+          "confidence": "high"
+        },
+        {
+          "id": "accessible-parking-sign",
+          "type": "parking_sign",
+          "label": "accessible parking sign",
+          "description": "Blue wheelchair parking sign mounted near the 20 sign.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "speed-sign-face-20",
+          "type": "speed_limit_sign",
+          "label": "20 sign face",
+          "description": "The number 20 is clearly visible in the red-bordered speed sign.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [
+        {
+          "id": "speed-limit-number-20",
+          "text": "20",
+          "language": "numeric",
+          "location": "right-side circular sign"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "posted-20-speed-limit-sign",
+          "description": "The red-bordered sign clearly posts a 20 speed limit.",
+          "relatedObjectIds": [
+            "posted-20-speed-sign",
+            "speed-sign-face-20"
+          ],
+          "regionIds": [
+            "right-sign-cluster"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "school-zone-context-sign",
+          "description": "The yellow school crossing sign provides school-zone context near the 20 sign.",
+          "relatedObjectIds": [
+            "yellow-school-crossing-sign"
+          ],
+          "regionIds": [
+            "right-sign-cluster"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "no-time-plate-visible",
+          "description": "No supplemental time schedule plate is visible below the 20 sign in the image.",
+          "relatedObjectIds": [
+            "posted-20-speed-sign"
+          ],
+          "regionIds": [
+            "right-sign-cluster"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "school-sign-near-speed-sign",
+          "subjectId": "yellow-school-crossing-sign",
+          "relation": "near",
+          "objectId": "posted-20-speed-sign",
+          "description": "The school warning sign is mounted next to the 20 speed sign."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b141"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b141",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b141.jpg locally: 20 speed sign, school crossing sign, accessible parking sign, no visible time schedule plate.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -532,53 +1515,147 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "traffic_sign",
+      "visualSummary": "Green rectangular direction sign beside a roadway. It lists destinations and distances in white text, including Arrecifes 33, Carmen de Areco 45, and Chacabuco 50, with white directional arrows.",
+      "generationPromptSummary": "Roadside green informational guide sign on two posts in grassy shoulder beside a highway or rural road, white arrows and destination text with distances: Arrecifes 33, C. de Areco 45, Chacabuco 50; open sky, roadway, trucks, industrial buildings in background.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "roadside guide sign",
+        "environment": "grassy roadside next to a road with distant vehicles and industrial buildings",
+        "cameraView": "front oblique view of sign",
+        "framing": "green sign centered, road to left and grass foreground",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry grass and paved road"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "road beside guide sign",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "roadway visible to the left of the sign"
+        ],
         "markings": [],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "grass-shoulder",
+            "description": "Grass shoulder surrounds the sign posts."
+          }
+        ]
       },
+      "regions": [
+        {
+          "regionId": "green-guide-sign-face",
+          "label": "green sign face",
+          "semanticLocation": "center of image",
+          "includesObjectIds": [
+            "green-destination-sign"
+          ],
+          "includesDetailIds": [
+            "green-direction-distance-sign"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "green-destination-sign",
+          "type": "informational_guide_sign",
+          "label": "green destination sign",
+          "description": "Large green rectangular sign with white arrows, destinations, and kilometer distances.",
+          "confidence": "high"
+        },
+        {
+          "id": "sign-support-posts",
+          "type": "posts",
+          "label": "two support posts",
+          "description": "Two dark posts hold the sign over the grass.",
+          "confidence": "high"
+        },
+        {
+          "id": "roadside-background",
+          "type": "background",
+          "label": "road and buildings",
+          "description": "Road, trucks, grassy area, and distant buildings behind the sign.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "destination-text-and-arrows",
+          "type": "guide_sign_content",
+          "label": "destination text and arrows",
+          "description": "White arrows and destination names with numeric distances appear on the green sign.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [
+        {
+          "id": "text-arrecifes-33",
+          "text": "ARRECIFES 33",
+          "language": "es",
+          "location": "top line of green sign"
+        },
+        {
+          "id": "text-carmen-de-areco-45",
+          "text": "C. DE ARECO 45",
+          "language": "es",
+          "location": "middle line of green sign"
+        },
+        {
+          "id": "text-chacabuco-50",
+          "text": "CHACABUCO 50",
+          "language": "es",
+          "location": "bottom line of green sign"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "green-direction-distance-sign",
+          "description": "The sign is a green guide panel with arrows, place names, and distances, which visually identifies it as informational.",
+          "relatedObjectIds": [
+            "green-destination-sign",
+            "destination-text-and-arrows"
+          ],
+          "regionIds": [
+            "green-guide-sign-face"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "roadside-background-context",
+          "description": "The sign stands on a roadside shoulder with a road and buildings in the background.",
+          "relatedObjectIds": [
+            "roadside-background",
+            "sign-support-posts"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "sign-next-to-road",
+          "subjectId": "green-destination-sign",
+          "relation": "beside",
+          "objectId": "roadside-background",
+          "description": "The guide sign stands next to the roadway."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b86"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b86",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b86.jpg locally: green guide sign with destination names, distances, arrows, and roadside context is visible.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -589,53 +1666,133 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "traffic_sign",
+      "visualSummary": "Circular red-bordered sign with a white center. A black truck silhouette is shown next to a black arrow pointing to the right, indicating heavy vehicles should go right.",
+      "generationPromptSummary": "Simple traffic sign graphic on white background: circular sign with thick red border and white interior, black side/rear silhouette of a truck, bold black arrow pointing right toward or beside the truck, no text.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "isolated traffic sign graphic",
+        "environment": "plain white background",
+        "cameraView": "front-on sign view",
+        "framing": "circular sign centered in square image",
+        "lighting": "even graphic lighting",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not shown",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "regionId": "whole-circular-truck-sign",
+          "label": "truck and right arrow sign",
+          "semanticLocation": "center of image",
+          "includesObjectIds": [
+            "red-circle-truck-sign",
+            "black-truck-symbol",
+            "right-arrow-symbol"
+          ],
+          "includesDetailIds": [
+            "truck-symbol-with-right-arrow"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "red-circle-truck-sign",
+          "type": "traffic_sign",
+          "label": "circular red-bordered truck sign",
+          "description": "Round sign with red border and white center.",
+          "confidence": "high"
+        },
+        {
+          "id": "black-truck-symbol",
+          "type": "truck_symbol",
+          "label": "black truck symbol",
+          "description": "Black truck silhouette in the sign center-right.",
+          "confidence": "high"
+        },
+        {
+          "id": "right-arrow-symbol",
+          "type": "direction_arrow",
+          "label": "black right arrow",
+          "description": "Black arrow points right toward the truck direction.",
+          "confidence": "high"
+        },
+        {
+          "id": "plain-white-background",
+          "type": "background",
+          "label": "plain white background",
+          "description": "Blank white background around the isolated circular truck sign.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "heavy-traffic-right-sign-face",
+          "type": "regulatory_direction_sign",
+          "label": "truck right direction sign face",
+          "description": "The sign combines a truck silhouette with a right-pointing arrow inside a red-bordered circle.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [],
+      "visualDetails": [
+        {
+          "id": "truck-symbol-with-right-arrow",
+          "description": "A black truck symbol appears with a black arrow pointing to the right inside a red-bordered circular sign.",
+          "relatedObjectIds": [
+            "black-truck-symbol",
+            "right-arrow-symbol",
+            "red-circle-truck-sign"
+          ],
+          "regionIds": [
+            "whole-circular-truck-sign"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "plain-white-background",
+          "description": "The plain white background has no answer meaning and only frames the truck-and-arrow sign.",
+          "relatedObjectIds": [
+            "plain-white-background"
+          ],
+          "regionIds": [
+            "whole-circular-truck-sign"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "arrow-points-to-truck-direction",
+          "subjectId": "right-arrow-symbol",
+          "relation": "points_right_near",
+          "objectId": "black-truck-symbol",
+          "description": "The arrow points to the right beside the truck symbol."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b252"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b252",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b252.jpg locally: circular red-bordered sign contains truck silhouette and right-pointing arrow, no text.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -646,53 +1803,170 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Large urban intersection with a zebra crosswalk, green-painted lane area, a black-and-yellow taxi in the foreground, and pedestrians crossing or about to cross in the intersection.",
+      "generationPromptSummary": "Daytime downtown avenue intersection, zebra crosswalk across foreground, green bike/bus lane strip through crossing, black-and-yellow taxi near the crosswalk, pedestrians in light clothing crossing on far side, traffic lights, trees and tall buildings casting shadows.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban intersection with crosswalk",
+        "environment": "downtown avenue with buildings, trees, taxi traffic, and pedestrians",
+        "cameraView": "street-level diagonal view across the crossing",
+        "framing": "taxi at lower-left foreground, broad crosswalk center, pedestrians mid-distance",
+        "lighting": "daylight with strong shade",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "multi-lane city intersection",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
-        "crossings": [],
-        "curbsOrShoulders": []
+        "laneDirections": [
+          "traffic approaches and crosses the intersection"
+        ],
+        "markings": [
+          {
+            "id": "zebra-crosswalk-markings",
+            "description": "Wide white zebra stripes mark the pedestrian crossing."
+          },
+          {
+            "id": "green-painted-lane",
+            "description": "A green-painted lane or crossing area runs through the intersection."
+          }
+        ],
+        "crossings": [
+          {
+            "id": "zebra-crosswalk",
+            "description": "Marked pedestrian crosswalk across the intersection."
+          }
+        ],
+        "curbsOrShoulders": [
+          {
+            "id": "corner-curb",
+            "description": "Curbed corner visible in the lower-right foreground."
+          }
+        ]
       },
-      "objects": [
+      "regions": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "regionId": "crosswalk-pedestrian-region",
+          "label": "pedestrian crossing zone",
+          "semanticLocation": "center and right side of the intersection",
+          "includesObjectIds": [
+            "pedestrian-on-crosswalk",
+            "zebra-crosswalk",
+            "foreground-taxi"
+          ],
+          "includesDetailIds": [
+            "pedestrian-on-crosswalk"
+          ],
+          "localizationConfidence": "high"
         }
       ],
-      "roadUsers": [],
+      "objects": [
+        {
+          "id": "zebra-crosswalk",
+          "type": "crosswalk",
+          "label": "zebra crosswalk",
+          "description": "Broad white zebra crossing spans the road in front of the taxi.",
+          "confidence": "high"
+        },
+        {
+          "id": "green-painted-lane",
+          "type": "road_marking",
+          "label": "green painted lane area",
+          "description": "Green lane marking crosses part of the intersection.",
+          "confidence": "high"
+        },
+        {
+          "id": "foreground-taxi",
+          "type": "car",
+          "label": "black-and-yellow taxi",
+          "description": "Taxi is positioned near or before the crosswalk in the foreground.",
+          "confidence": "high"
+        },
+        {
+          "id": "urban-background",
+          "type": "background",
+          "label": "buildings and trees",
+          "description": "Tall buildings, trees, and other traffic frame the intersection.",
+          "confidence": "medium"
+        }
+      ],
+      "roadUsers": [
+        {
+          "id": "pedestrian-on-crosswalk",
+          "type": "pedestrian",
+          "label": "pedestrian in crossing area",
+          "description": "A pedestrian in light clothing is walking across the intersection on or near the marked crossing.",
+          "confidence": "high"
+        },
+        {
+          "id": "distant-pedestrian-right",
+          "type": "pedestrian",
+          "label": "additional pedestrian on far side",
+          "description": "Another pedestrian is visible near the far-right sidewalk.",
+          "confidence": "medium"
+        }
+      ],
       "signsSignalsMarkings": [],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "visualDetails": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "pedestrian-on-crosswalk",
+          "description": "A pedestrian is in the marked crossing/intersection area while a taxi is nearby, establishing pedestrian priority.",
+          "relatedObjectIds": [
+            "pedestrian-on-crosswalk",
+            "zebra-crosswalk",
+            "foreground-taxi"
+          ],
+          "regionIds": [
+            "crosswalk-pedestrian-region"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "taxi-approaching-crosswalk",
+          "description": "The taxi is close to the crosswalk and must yield in the ticket situation.",
+          "relatedObjectIds": [
+            "foreground-taxi",
+            "zebra-crosswalk"
+          ],
+          "regionIds": [
+            "crosswalk-pedestrian-region"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "urban-background-traffic",
+          "description": "Other vehicles, traffic lights, buildings, and shade are background context.",
+          "relatedObjectIds": [
+            "urban-background"
+          ],
+          "confidence": "medium"
         }
       ],
+      "spatialRelationships": [
+        {
+          "id": "taxi-near-crosswalk-pedestrian",
+          "subjectId": "foreground-taxi",
+          "relation": "near",
+          "objectId": "pedestrian-on-crosswalk",
+          "description": "The taxi is near the marked crossing where the pedestrian is crossing."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b23"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b23",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b23.jpg locally: crosswalk, pedestrian in crossing area, taxi near the crossing, green lane marking, and urban intersection context visible.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -703,53 +1977,130 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "vehicle_photo",
+      "visualSummary": "Close-up of a red car being refueled. A fuel pump nozzle is inserted into the open fuel filler on the rear-right side of the vehicle; part of the pump hose extends out of frame.",
+      "generationPromptSummary": "Close-up at a gas station, rear-right side of red Subaru-like car, fuel filler door open, black fuel pump nozzle inserted into filler neck, hose extending to the right, rear taillight and hatch visible, concrete station floor, bright light in background.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "fuel station refueling area",
+        "environment": "close view of a car at a pump on concrete surface",
+        "cameraView": "close rear-side view of vehicle fuel filler",
+        "framing": "fuel nozzle and car rear side dominate frame",
+        "lighting": "daylight or bright station lighting",
+        "weatherOrSurface": "dry concrete forecourt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not a roadway scene",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
+      "regions": [
+        {
+          "regionId": "fuel-filler-region",
+          "label": "fuel nozzle and filler",
+          "semanticLocation": "right-center of image beside rear quarter panel",
+          "includesObjectIds": [
+            "fuel-nozzle",
+            "open-fuel-filler",
+            "red-car-rear"
+          ],
+          "includesDetailIds": [
+            "fuel-nozzle-in-vehicle"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "red-car-rear",
+          "type": "car",
+          "label": "red car rear quarter",
+          "description": "Rear side of a red car with taillight and hatch visible.",
+          "confidence": "high"
+        },
+        {
+          "id": "open-fuel-filler",
+          "type": "fuel_filler",
+          "label": "open fuel filler",
+          "description": "Fuel filler door/opening is exposed on the side of the car.",
+          "confidence": "high"
+        },
+        {
+          "id": "fuel-nozzle",
+          "type": "fuel_pump_nozzle",
+          "label": "fuel pump nozzle",
+          "description": "Black fuel nozzle inserted into the car fuel filler, with hose extending rightward.",
+          "confidence": "high"
+        },
+        {
+          "id": "station-forecourt",
+          "type": "fuel_station_surface",
+          "label": "station concrete surface",
+          "description": "Concrete refueling area around the vehicle.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
       "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "visibleText": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "vehicle-model-text",
+          "text": "FORESTER",
+          "language": "brand",
+          "location": "left rear of car"
         }
       ],
+      "visualDetails": [
+        {
+          "id": "fuel-nozzle-in-vehicle",
+          "description": "A fuel pump nozzle is inserted into the vehicle fuel filler, showing the car is actively being refueled.",
+          "relatedObjectIds": [
+            "fuel-nozzle",
+            "open-fuel-filler",
+            "red-car-rear"
+          ],
+          "regionIds": [
+            "fuel-filler-region"
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "fuel-station-context",
+          "description": "The close station forecourt and pump hose place the scene in a refueling context.",
+          "relatedObjectIds": [
+            "station-forecourt",
+            "fuel-nozzle"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "nozzle-in-filler",
+          "subjectId": "fuel-nozzle",
+          "relation": "inserted_into",
+          "objectId": "open-fuel-filler",
+          "description": "The fuel nozzle is inserted into the open fuel filler."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b197"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b197",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b197.jpg locally: fuel nozzle inserted into the open filler of a red car at a refueling area.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -760,53 +2111,137 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Urban street intersection with a gray car in the foreground/midground, yellow curbs, building corner, street-name signs on the wall, and no visible traffic lights in the frame.",
+      "generationPromptSummary": "Daytime city corner with brick building, gray sedan crossing or approaching an intersection, yellow-painted curbs, small street-name direction signs on building facade, sidewalk and doorway, dry asphalt, no visible traffic signals.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban two-street intersection",
+        "environment": "city corner with buildings, sidewalk, signs, and a single gray car",
+        "cameraView": "street-level oblique view across intersection",
+        "framing": "gray car centered with building corner and street signs behind",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "ordinary city street intersection",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "two streets meet at the corner"
+        ],
         "markings": [],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "yellow-painted-curbs",
+            "description": "Yellow curbs are visible around the corner."
+          }
+        ]
       },
+      "regions": [
+        {
+          "regionId": "intersection-corner-region",
+          "label": "unsignalized street corner",
+          "semanticLocation": "center and upper-left portion of image",
+          "includesObjectIds": [
+            "gray-car",
+            "street-corner",
+            "street-name-signs"
+          ],
+          "includesDetailIds": [
+            "unsignalized-two-street-intersection"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "gray-car",
+          "type": "car",
+          "label": "gray sedan at intersection",
+          "description": "Gray car is traveling through or approaching the corner.",
+          "confidence": "high"
+        },
+        {
+          "id": "street-corner",
+          "type": "intersection",
+          "label": "street corner intersection",
+          "description": "Two urban streets meet at a corner with sidewalks and yellow curbs.",
+          "confidence": "high"
+        },
+        {
+          "id": "street-name-signs",
+          "type": "street_name_signs",
+          "label": "black street-name signs",
+          "description": "Small black street-name direction signs are mounted on the building wall.",
+          "confidence": "medium"
+        },
+        {
+          "id": "building-background",
+          "type": "background",
+          "label": "brick building facade",
+          "description": "Brick and concrete building forms the backdrop.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [],
+      "visualDetails": [
+        {
+          "id": "unsignalized-two-street-intersection",
+          "description": "The image shows an ordinary urban intersection of two streets with no traffic signal visible in the frame.",
+          "relatedObjectIds": [
+            "street-corner",
+            "gray-car",
+            "street-name-signs"
+          ],
+          "regionIds": [
+            "intersection-corner-region"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "ordinary-street-not-avenue-context",
+          "description": "The scene reads as a local street corner rather than a broad avenue intersection.",
+          "relatedObjectIds": [
+            "street-corner",
+            "building-background"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "car-at-corner",
+          "subjectId": "gray-car",
+          "relation": "at",
+          "objectId": "street-corner",
+          "description": "The gray car is positioned in the intersection/corner area."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "signal-outside-frame-possibility",
+          "field": "scene",
+          "note": "No traffic signal is visible in this frame; the no-signal condition is also specified by the ticket wording.",
+          "impact": "usage combines visible street-corner context with the ticket wording"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b142"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b142",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b142.jpg locally: ordinary street corner, gray car, street signs, yellow curbs, and no visible signal heads in frame.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -817,53 +2252,161 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "kind": "street_photo",
+      "visualSummary": "Narrow urban street with zebra crossing in the foreground, parked cars along the right side, a blue parking sign, and a black direction sign with an arrow on a building wall indicating traffic-direction context.",
+      "generationPromptSummary": "Daytime narrow city street viewed from one end, zebra crossing stripes in foreground, row of parked cars along the right curb, sidewalk and trees, blue parking sign in distance, black street-direction sign with white arrow on left building facade, dry roadway.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "narrow urban street",
+        "environment": "residential/commercial street with parked cars, sidewalk, crosswalk, trees, and direction signs",
+        "cameraView": "street-level view along the lane",
+        "framing": "crosswalk foreground and one-way-looking street receding into distance",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
-        "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
-        "crossings": [],
-        "curbsOrShoulders": []
+        "roadType": "narrow one-way-looking city street",
+        "laneCount": 1,
+        "laneDirections": [
+          "traffic direction indicated by visible direction signage and parked-car orientation context"
+        ],
+        "markings": [
+          {
+            "id": "foreground-zebra-crosswalk",
+            "description": "White zebra crossing stripes are visible at the bottom of the image."
+          }
+        ],
+        "crossings": [
+          {
+            "id": "zebra-crosswalk",
+            "description": "Marked pedestrian crossing in the foreground."
+          }
+        ],
+        "curbsOrShoulders": [
+          {
+            "id": "right-parked-car-curb",
+            "description": "Cars are parked along the right curb."
+          }
+        ]
       },
+      "regions": [
+        {
+          "regionId": "traffic-direction-context-region",
+          "label": "street direction cues",
+          "semanticLocation": "left wall sign and roadway corridor",
+          "includesObjectIds": [
+            "black-direction-sign",
+            "parked-cars-row",
+            "street-corridor"
+          ],
+          "includesDetailIds": [
+            "one-way-traffic-direction-cues"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "street-corridor",
+          "type": "roadway",
+          "label": "narrow street corridor",
+          "description": "One-lane-looking roadway extending away from the foreground crosswalk.",
+          "confidence": "high"
+        },
+        {
+          "id": "foreground-crosswalk",
+          "type": "crosswalk",
+          "label": "foreground zebra crossing",
+          "description": "White zebra crossing stripes at the near end of the street.",
+          "confidence": "high"
+        },
+        {
+          "id": "parked-cars-row",
+          "type": "vehicles",
+          "label": "parked cars along right side",
+          "description": "Cars parked along the right curb in the direction of the street.",
+          "confidence": "high"
+        },
+        {
+          "id": "black-direction-sign",
+          "type": "direction_sign",
+          "label": "black wall sign with arrow",
+          "description": "Black sign on the left building wall includes a white arrow, indicating street direction context.",
+          "confidence": "medium"
+        },
+        {
+          "id": "blue-parking-sign",
+          "type": "parking_sign",
+          "label": "blue parking sign",
+          "description": "Blue parking sign visible farther down the street on the right.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
       "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "visibleText": [
+        {
+          "id": "parking-letter-e",
+          "text": "E",
+          "language": "es",
+          "location": "blue sign farther down street"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "one-way-traffic-direction-cues",
+          "description": "The narrow lane, row of parked cars, and visible direction signs provide the one-direction street context used to place warnings from the side where traffic approaches.",
+          "relatedObjectIds": [
+            "street-corridor",
+            "black-direction-sign",
+            "parked-cars-row"
+          ],
+          "regionIds": [
+            "traffic-direction-context-region"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "foreground-crosswalk-and-street-context",
+          "description": "The zebra crossing and curbside parked cars are background street-layout context, not the warning-device answer by themselves.",
+          "relatedObjectIds": [
+            "foreground-crosswalk",
+            "parked-cars-row"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "parked-cars-along-right-curb",
+          "subjectId": "parked-cars-row",
+          "relation": "along",
+          "objectId": "street-corridor",
+          "description": "Parked cars line the right side of the narrow street corridor."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "one-way-inferred-from-cues",
+          "field": "roadLayout.laneDirections",
+          "note": "The one-direction character is inferred from visible direction signage and street layout cues together with the ticket wording.",
+          "impact": "usage focuses on warning placement relative to approaching traffic, not exact arrow text"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b43"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b43",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b43.jpg locally: narrow street, foreground crosswalk, parked cars, blue parking sign, and wall direction sign visible; cues support one-way warning-placement context.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
       }
     },
     {
@@ -3326,27 +4869,92 @@
       "imageSha256": "26cb8565e3196367db420a785083544a9e4236856a9b62233b660b0377a9d1ec",
       "questionFingerprint": "f2b7a0c15b18d1d4488f713be634ed59037581ea6627c7e873cff0e1f8b2bb30",
       "correctAnswerId": "b-fallback-369-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-369-critical-source-image",
+          "detailId": "pedestrian-safety-interventions",
           "objectIds": [
-            "source-image-frame"
+            "curb-extensions-pedestrian-areas",
+            "planters-bollards-seating",
+            "zebra-crossings"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "pedestrian-interventions"
+          ],
+          "description": "Red-circled curb extensions, pedestrian spaces, crossings, planters, and bollards are visible safety interventions for pedestrians.",
           "supportsAnswerIds": [
             "b-fallback-369-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-369-a2",
+            "b-fallback-369-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b369-highlight-pedestrian-interventions",
+          "detailIds": [
+            "pedestrian-safety-interventions"
+          ],
+          "objectIds": [
+            "curb-extensions-pedestrian-areas",
+            "planters-bollards-seating",
+            "zebra-crossings"
+          ],
+          "regionIds": [
+            "pedestrian-interventions"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "These annotated elements explain that the purpose is pedestrian safety.",
+          "supportsAnswerIds": [
+            "b-fallback-369-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-369-a2",
+            "b-fallback-369-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b369-support-speed-calm",
+          "detailIds": [
+            "painted-20-speed-marking"
+          ],
+          "objectIds": [
+            "painted-speed-zone"
+          ],
+          "regionIds": [
+            "intersection-roadway"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "The 20 marking supports a low-speed, pedestrian-focused traffic-calming reading.",
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b369-dim-background-cars",
+          "detailIds": [
+            "background-vehicle-flow"
+          ],
+          "objectIds": [
+            "background-vehicles"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Background vehicles are context and should not be mistaken for the purpose of the highlighted interventions.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-369"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-369",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3356,27 +4964,87 @@
       "imageSha256": "689a23c904be2bb5c3a7d897b98033f2fa071e6a5aba597979a0e0bd4708aaef",
       "questionFingerprint": "2c7b496a37a5e58b97f654040b744d4a5a086da803aa575fd449e2888e119af3",
       "correctAnswerId": "b-fallback-370-a2",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-370-critical-source-image",
+          "detailId": "avenue-name-and-unsignalized-intersection",
           "objectIds": [
-            "source-image-frame"
+            "avenue-direction-signs",
+            "intersection-roadway"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "right-sign-pole-region"
+          ],
+          "description": "The visible direction signs and intersection establish an avenue intersection context with no signal visible in the frame.",
           "supportsAnswerIds": [
             "b-fallback-370-a2"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-370-a1",
+            "b-fallback-370-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "medium"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b370-highlight-avenue-context",
+          "detailIds": [
+            "avenue-name-and-unsignalized-intersection"
+          ],
+          "objectIds": [
+            "avenue-direction-signs",
+            "intersection-roadway"
+          ],
+          "regionIds": [
+            "right-sign-pole-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The avenue context distinguishes the 40 km/h answer from ordinary-street or school-zone traps.",
+          "supportsAnswerIds": [
+            "b-fallback-370-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-370-a1",
+            "b-fallback-370-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b370-support-crossing-cars",
+          "detailIds": [
+            "cars-crossing-intersection"
+          ],
+          "objectIds": [
+            "crossing-cars"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "Cars in the junction support that the photo is an active intersection.",
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b370-dim-trees-buildings",
+          "detailIds": [
+            "cars-crossing-intersection"
+          ],
+          "objectIds": [
+            "trees-and-buildings"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Trees and buildings do not determine the speed answer.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-370"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-370",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3386,27 +5054,96 @@
       "imageSha256": "3eb9c60216289749b3953b5768b157e32698c68c87e67fab13dab83753ace387",
       "questionFingerprint": "91fca24bd65e8c76d74e51c8b48ba40596309eddc645181ff1739dae3bb2ee5a",
       "correctAnswerId": "b-fallback-372-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-372-critical-source-image",
+          "detailId": "vehicle-a-on-avenue",
           "objectIds": [
-            "source-image-frame"
+            "label-a",
+            "avenue-direction-signs",
+            "distant-avenue-vehicles"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "avenue-sign-and-label-a-region"
+          ],
+          "description": "The A marker is tied to the avenue context, which is the visible reason A has priority in this ticket.",
           "supportsAnswerIds": [
             "b-fallback-372-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-372-a2",
+            "b-fallback-372-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "medium"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b372-highlight-a-avenue",
+          "detailIds": [
+            "vehicle-a-on-avenue"
+          ],
+          "objectIds": [
+            "label-a",
+            "avenue-direction-signs",
+            "distant-avenue-vehicles"
+          ],
+          "regionIds": [
+            "avenue-sign-and-label-a-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "A is associated with the avenue direction, making it the priority vehicle.",
+          "supportsAnswerIds": [
+            "b-fallback-372-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-372-a2",
+            "b-fallback-372-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b372-trap-b-right-side",
+          "detailIds": [
+            "vehicle-b-side-street-position"
+          ],
+          "objectIds": [
+            "label-b",
+            "vehicle-b-silver-car"
+          ],
+          "regionIds": [
+            "foreground-vehicle-b-region"
+          ],
+          "role": "distractor_trap",
+          "rationaleRuOrEn": "B may tempt a right-side-priority answer but is not the priority cue in this avenue-ticket context.",
+          "rejectsAnswerIds": [
+            "b-fallback-372-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b372-dim-background",
+          "detailIds": [
+            "vehicle-b-side-street-position"
+          ],
+          "objectIds": [
+            "building-background"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Buildings and parked background cars are not needed for the priority decision.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-372"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-372",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3416,27 +5153,88 @@
       "imageSha256": "3aabdfa7cbe50d2af4034098d9e7799b89444042b99400a022116a48fe630db7",
       "questionFingerprint": "344751111bcd866bb2468c9bdf76fc06966931dd35ef51ccececd843bc4cfa57",
       "correctAnswerId": "b-fallback-374-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-374-critical-source-image",
+          "detailId": "driver-hand-held-device",
           "objectIds": [
-            "source-image-frame"
+            "driver-hand-with-device",
+            "red-circle-distraction"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "red-circled-hand-region"
+          ],
+          "description": "The red circle marks a driver-side hand using a small phone-like device in traffic, the visible distraction.",
           "supportsAnswerIds": [
             "b-fallback-374-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-374-a2",
+            "b-fallback-374-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "medium"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b374-highlight-device",
+          "detailIds": [
+            "driver-hand-held-device"
+          ],
+          "objectIds": [
+            "driver-hand-with-device",
+            "red-circle-distraction"
+          ],
+          "regionIds": [
+            "red-circled-hand-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The highlighted hand/device is the risky distracting conduct.",
+          "supportsAnswerIds": [
+            "b-fallback-374-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-374-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b374-support-traffic-context",
+          "detailIds": [
+            "dense-traffic-context"
+          ],
+          "objectIds": [
+            "foreground-taxi",
+            "adjacent-black-car",
+            "traffic-lane"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "Dense traffic reinforces why distraction is unsafe even at urban speeds.",
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b374-dim-distant-vehicles",
+          "detailIds": [
+            "dense-traffic-context"
+          ],
+          "objectIds": [
+            "traffic-lane"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Distant vehicles are context and not the specific answer cue.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-374"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-374",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3446,27 +5244,91 @@
       "imageSha256": "7dc7ff0aff52d9d09fea3e03437329077f5ca04b6f9d542559f24abdec9b9b59",
       "questionFingerprint": "a7a431ffa505d10bd8e8e72a452b9d0ad753422a328595061bdb777074916926",
       "correctAnswerId": "b-fallback-377-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-377-critical-source-image",
+          "detailId": "posted-20-speed-limit-sign",
           "objectIds": [
-            "source-image-frame"
+            "posted-20-speed-sign",
+            "posted-20-speed-sign-face"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "right-side-speed-school-signs"
+          ],
+          "description": "The visible red-bordered speed sign displays 20, directly setting the maximum speed for the shown street segment.",
           "supportsAnswerIds": [
             "b-fallback-377-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-377-a2",
+            "b-fallback-377-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b377-highlight-20-sign",
+          "detailIds": [
+            "posted-20-speed-limit-sign"
+          ],
+          "objectIds": [
+            "posted-20-speed-sign",
+            "posted-20-speed-sign-face"
+          ],
+          "regionIds": [
+            "right-side-speed-school-signs"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The posted 20 sign is the direct speed answer.",
+          "supportsAnswerIds": [
+            "b-fallback-377-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-377-a2",
+            "b-fallback-377-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b377-support-school-context",
+          "detailIds": [
+            "school-zone-context-sign"
+          ],
+          "objectIds": [
+            "yellow-school-crossing-sign",
+            "painted-school-zone-marking"
+          ],
+          "regionIds": [
+            "right-side-speed-school-signs"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "The school sign supports why the posted speed is low.",
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b377-dim-parked-cars",
+          "detailIds": [
+            "parked-cars-background"
+          ],
+          "objectIds": [
+            "street-with-parked-cars"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Parked cars and building background do not determine the numeric answer.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-377"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-377",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3476,27 +5338,92 @@
       "imageSha256": "27d5eaa741c3cd1082f868cfaa49913d71fc8361d1ae383bfbc6191c7dfaeef8",
       "questionFingerprint": "ffc211fb9f664710bd79b2b72dc2967b4b4ac866e1c69f11942a7ab779bfc4db",
       "correctAnswerId": "b-fallback-378-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-378-critical-source-image",
+          "detailId": "rear-signal-lamps-highlighted",
           "objectIds": [
-            "source-image-frame"
+            "rear-signal-lamp-clusters",
+            "red-oval-left-lamp",
+            "red-oval-right-lamp"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "rear-light-region"
+          ],
+          "description": "Red ovals highlight the rear signal/lamp clusters used to indicate the vehicle maneuver.",
           "supportsAnswerIds": [
             "b-fallback-378-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-378-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b378-highlight-rear-signals",
+          "detailIds": [
+            "rear-signal-lamps-highlighted"
+          ],
+          "objectIds": [
+            "rear-signal-lamp-clusters",
+            "red-oval-left-lamp",
+            "red-oval-right-lamp"
+          ],
+          "regionIds": [
+            "rear-light-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The highlighted rear lights are the cue that the maneuver is being signaled.",
+          "supportsAnswerIds": [
+            "b-fallback-378-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-378-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b378-support-curb-parking",
+          "detailIds": [
+            "parking-garage-context"
+          ],
+          "objectIds": [
+            "red-car",
+            "parking-sign",
+            "right-curb-sidewalk"
+          ],
+          "regionIds": [
+            "parking-garage-context-region"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "Curbside parking/garage context supports the described entry maneuver.",
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b378-dim-road-background",
+          "detailIds": [
+            "parking-garage-context"
+          ],
+          "objectIds": [
+            "right-curb-sidewalk"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Distant traffic and buildings are not needed for the true/false decision.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-378"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-378",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3506,27 +5433,77 @@
       "imageSha256": "28c99e51d64a571c86b9b3c945c7e024089963b22f4c542bb01a64e074bdd49f",
       "questionFingerprint": "a54e968b373b7c94e3f5ceaa53424e173d00ed8dcc530b617546e01dabd831b2",
       "correctAnswerId": "b-fallback-379-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-379-critical-source-image",
+          "detailId": "red-white-diagonal-rigid-object-panel",
           "objectIds": [
-            "source-image-frame"
+            "red-white-striped-panel",
+            "rigid-object-warning-panel"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "whole-sign-panel"
+          ],
+          "description": "The tall red-white diagonal striped panel is the visual form of a rigid-object warning panel.",
           "supportsAnswerIds": [
             "b-fallback-379-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-379-a2",
+            "b-fallback-379-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b379-highlight-striped-panel",
+          "detailIds": [
+            "red-white-diagonal-rigid-object-panel"
+          ],
+          "objectIds": [
+            "red-white-striped-panel",
+            "rigid-object-warning-panel"
+          ],
+          "regionIds": [
+            "whole-sign-panel"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The red-white diagonal striped panel identifies the rigid-object warning panel answer.",
+          "supportsAnswerIds": [
+            "b-fallback-379-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-379-a2",
+            "b-fallback-379-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b379-dim-plain-background",
+          "detailIds": [
+            "plain-white-background"
+          ],
+          "objectIds": [
+            "plain-white-background"
+          ],
+          "regionIds": [
+            "whole-sign-panel"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "The blank background can be dimmed; only the red-white striped panel matters.",
+          "displayIntent": "dim",
+          "confidence": "high"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-379"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-379",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3536,27 +5513,88 @@
       "imageSha256": "47baec6debdf00d2f66d9efbf1c2800671db2e87a96f51b87c7f690e71c2db3c",
       "questionFingerprint": "3966c3b10e8d0e98bd57cf06d35578e62d14f4d778359e89b87b9feab386f446",
       "correctAnswerId": "b-fallback-380-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-380-critical-source-image",
+          "detailId": "cyclist-left-arm-extended",
           "objectIds": [
-            "source-image-frame"
+            "cyclist-from-behind",
+            "red-oval-left-arm"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "cyclist-arm-region"
+          ],
+          "description": "The cyclist extends the left arm straight and horizontally to the left, the visible hand signal for a left turn.",
           "supportsAnswerIds": [
             "b-fallback-380-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-380-a2",
+            "b-fallback-380-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b380-highlight-left-arm",
+          "detailIds": [
+            "cyclist-left-arm-extended"
+          ],
+          "objectIds": [
+            "cyclist-from-behind",
+            "red-oval-left-arm"
+          ],
+          "regionIds": [
+            "cyclist-arm-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The extended left arm is the hand signal that selects left turn.",
+          "supportsAnswerIds": [
+            "b-fallback-380-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-380-a2",
+            "b-fallback-380-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b380-support-cyclist-roadway",
+          "detailIds": [
+            "cyclist-riding-in-street"
+          ],
+          "objectIds": [
+            "cyclist-from-behind",
+            "street-roadway"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "The road user is a cyclist giving a hand signal, not a vehicle overtaking cue.",
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b380-dim-surrounding-cars",
+          "detailIds": [
+            "cyclist-riding-in-street"
+          ],
+          "objectIds": [
+            "surrounding-cars"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Nearby cars and crosswalks are context but not the signal meaning.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-380"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-380",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3566,27 +5604,94 @@
       "imageSha256": "d1f65b0eeb880fb85cd153985cff121361fd72b8b831f3db54021a23a0e5b8be",
       "questionFingerprint": "36a8bac261c11fb88394a29be36a221eee244f3527fffdf399e4fc0673d54649",
       "correctAnswerId": "b-fallback-381-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-381-critical-source-image",
+          "detailId": "posted-20-speed-limit-sign",
           "objectIds": [
-            "source-image-frame"
+            "posted-20-speed-sign",
+            "speed-sign-face-20"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "right-sign-cluster"
+          ],
+          "description": "The 20 speed-limit sign is visible without a time schedule plate, so the ticket answer treats it as generally in force.",
           "supportsAnswerIds": [
             "b-fallback-381-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-381-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b381-highlight-20-sign",
+          "detailIds": [
+            "posted-20-speed-limit-sign"
+          ],
+          "objectIds": [
+            "posted-20-speed-sign",
+            "speed-sign-face-20"
+          ],
+          "regionIds": [
+            "right-sign-cluster"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The 20 sign itself is the limit and no visible schedule plate limits it to school hours.",
+          "supportsAnswerIds": [
+            "b-fallback-381-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-381-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b381-trap-school-context",
+          "detailIds": [
+            "school-zone-context-sign"
+          ],
+          "objectIds": [
+            "yellow-school-crossing-sign"
+          ],
+          "regionIds": [
+            "right-sign-cluster"
+          ],
+          "role": "distractor_trap",
+          "rationaleRuOrEn": "The school sign can tempt a school-hours-only answer, but no schedule plate is visible.",
+          "rejectsAnswerIds": [
+            "b-fallback-381-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b381-support-no-time-plate",
+          "detailIds": [
+            "no-time-plate-visible"
+          ],
+          "objectIds": [
+            "posted-20-speed-sign"
+          ],
+          "regionIds": [
+            "right-sign-cluster"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "Absence of a visible time plate supports the all-times reading in this ticket.",
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-381"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-381",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3596,27 +5701,88 @@
       "imageSha256": "5c91282ce06b3d4acb3f1c6217d414164c7bdf7c41b6b31fbd8a0900e6ae064f",
       "questionFingerprint": "31c85d9300e607f2580612771e5ecedc6472825d19d60523a334e721ae9b9ebc",
       "correctAnswerId": "b-fallback-383-a3",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-383-critical-source-image",
+          "detailId": "green-direction-distance-sign",
           "objectIds": [
-            "source-image-frame"
+            "green-destination-sign",
+            "destination-text-and-arrows"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "green-guide-sign-face"
+          ],
+          "description": "The green sign lists destinations, arrows, and distances, which visually identifies it as informational.",
           "supportsAnswerIds": [
             "b-fallback-383-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-383-a1",
+            "b-fallback-383-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b383-highlight-green-guide-sign",
+          "detailIds": [
+            "green-direction-distance-sign"
+          ],
+          "objectIds": [
+            "green-destination-sign",
+            "destination-text-and-arrows"
+          ],
+          "regionIds": [
+            "green-guide-sign-face"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "Destination names, arrows, and distances are the informational-sign cue.",
+          "supportsAnswerIds": [
+            "b-fallback-383-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-383-a1",
+            "b-fallback-383-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b383-support-roadside-context",
+          "detailIds": [
+            "roadside-background-context"
+          ],
+          "objectIds": [
+            "roadside-background",
+            "sign-support-posts"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "Roadside placement supports guide-sign reading but is not the category by itself.",
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b383-dim-background-road",
+          "detailIds": [
+            "roadside-background-context"
+          ],
+          "objectIds": [
+            "roadside-background"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Road, grass, and buildings are not the sign type cue.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-383"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-383",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3626,27 +5792,76 @@
       "imageSha256": "c561f4d5ecb011a54c70465857b45369b5f43aef803488f26aa9bbca6d2418c1",
       "questionFingerprint": "3dbc8760cafe61aa7041a078e657473f8b872d6bb624e480f4695e56615b0a91",
       "correctAnswerId": "b-fallback-384-a3",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-384-critical-source-image",
+          "detailId": "truck-symbol-with-right-arrow",
           "objectIds": [
-            "source-image-frame"
+            "black-truck-symbol",
+            "right-arrow-symbol",
+            "red-circle-truck-sign"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "whole-circular-truck-sign"
+          ],
+          "description": "A truck symbol combined with a right-pointing arrow indicates heavy traffic should go right.",
           "supportsAnswerIds": [
             "b-fallback-384-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-384-a1",
+            "b-fallback-384-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b384-highlight-truck-arrow",
+          "detailIds": [
+            "truck-symbol-with-right-arrow"
+          ],
+          "objectIds": [
+            "black-truck-symbol",
+            "right-arrow-symbol",
+            "red-circle-truck-sign"
+          ],
+          "regionIds": [
+            "whole-circular-truck-sign"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The truck plus right arrow is the heavy-traffic-right cue.",
+          "supportsAnswerIds": [
+            "b-fallback-384-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-384-a1",
+            "b-fallback-384-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b384-dim-plain-background",
+          "detailIds": [
+            "plain-white-background"
+          ],
+          "objectIds": [
+            "plain-white-background"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "The blank background can be dimmed; the truck symbol and arrow are the answer cue.",
+          "displayIntent": "dim",
+          "confidence": "high"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-384"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-384",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3656,27 +5871,94 @@
       "imageSha256": "2215885204866256db03ae5999b17045aaccecd9c96a3f19c5f1a25ea6536957",
       "questionFingerprint": "f20cd779fa1d596cdb9cdf2305fdd1759870f19f31a4aadd64326aa7f300a344",
       "correctAnswerId": "b-fallback-385-a1",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-385-critical-source-image",
+          "detailId": "pedestrian-on-crosswalk",
           "objectIds": [
-            "source-image-frame"
+            "pedestrian-on-crosswalk",
+            "zebra-crosswalk",
+            "foreground-taxi"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "crosswalk-pedestrian-region"
+          ],
+          "description": "A pedestrian is in the marked crossing area while a taxi is nearby, establishing pedestrian priority.",
           "supportsAnswerIds": [
             "b-fallback-385-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-385-a2",
+            "b-fallback-385-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b385-highlight-pedestrian-crosswalk",
+          "detailIds": [
+            "pedestrian-on-crosswalk"
+          ],
+          "objectIds": [
+            "pedestrian-on-crosswalk",
+            "zebra-crosswalk"
+          ],
+          "regionIds": [
+            "crosswalk-pedestrian-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The pedestrian in the crosswalk is the priority cue.",
+          "supportsAnswerIds": [
+            "b-fallback-385-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-385-a2",
+            "b-fallback-385-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b385-trap-driver-taxi",
+          "detailIds": [
+            "taxi-approaching-crosswalk"
+          ],
+          "objectIds": [
+            "foreground-taxi"
+          ],
+          "regionIds": [
+            "crosswalk-pedestrian-region"
+          ],
+          "role": "distractor_trap",
+          "rationaleRuOrEn": "The nearby taxi is the driver candidate but must yield to the pedestrian.",
+          "rejectsAnswerIds": [
+            "b-fallback-385-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b385-dim-background-traffic",
+          "detailIds": [
+            "urban-background-traffic"
+          ],
+          "objectIds": [
+            "urban-background"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Buildings and distant traffic are not needed for the priority decision.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-385"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-385",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3686,27 +5968,90 @@
       "imageSha256": "5d7bf9a62ff1eb429889eed8bcf106a8c321523f377c46658a13c0c1bd27cceb",
       "questionFingerprint": "7b16b5d6b61d78fcc798239058273ad2ff1fe752c7b30a781dc823b9a22ba141",
       "correctAnswerId": "b-fallback-386-a2",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-386-critical-source-image",
+          "detailId": "fuel-nozzle-in-vehicle",
           "objectIds": [
-            "source-image-frame"
+            "fuel-nozzle",
+            "open-fuel-filler",
+            "red-car-rear"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "fuel-filler-region"
+          ],
+          "description": "The visible fuel nozzle inserted into the car identifies the refueling situation where engine and lights must be off.",
           "supportsAnswerIds": [
             "b-fallback-386-a2"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-386-a1",
+            "b-fallback-386-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b386-highlight-refueling",
+          "detailIds": [
+            "fuel-nozzle-in-vehicle"
+          ],
+          "objectIds": [
+            "fuel-nozzle",
+            "open-fuel-filler",
+            "red-car-rear"
+          ],
+          "regionIds": [
+            "fuel-filler-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The inserted nozzle is the refueling cue for the prohibition.",
+          "supportsAnswerIds": [
+            "b-fallback-386-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-386-a1",
+            "b-fallback-386-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b386-support-station-context",
+          "detailIds": [
+            "fuel-station-context"
+          ],
+          "objectIds": [
+            "station-forecourt",
+            "fuel-nozzle"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "Fuel station surroundings support the refueling context.",
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b386-dim-car-brand",
+          "detailIds": [
+            "fuel-station-context"
+          ],
+          "objectIds": [
+            "red-car-rear"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Vehicle brand and body shape do not determine the prohibited action.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-386"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-386",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3716,27 +6061,90 @@
       "imageSha256": "fce5f7f66b4ed605fa80a15e091f3c4a4f91363710f58a5ba2af0aff50e7a8c2",
       "questionFingerprint": "86c6d1e969cbc80bf165bdf492ac1a3d5f33dd09bce6c405f5e1afeaed813c9a",
       "correctAnswerId": "b-fallback-387-a3",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-387-critical-source-image",
+          "detailId": "unsignalized-two-street-intersection",
           "objectIds": [
-            "source-image-frame"
+            "street-corner",
+            "gray-car",
+            "street-name-signs"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "intersection-corner-region"
+          ],
+          "description": "The image shows an ordinary two-street corner with no traffic light visible in frame, matching the 30 km/h precautionary-speed ticket.",
           "supportsAnswerIds": [
             "b-fallback-387-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-387-a1",
+            "b-fallback-387-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "medium"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b387-highlight-street-intersection",
+          "detailIds": [
+            "unsignalized-two-street-intersection"
+          ],
+          "objectIds": [
+            "street-corner",
+            "gray-car",
+            "street-name-signs"
+          ],
+          "regionIds": [
+            "intersection-corner-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "The ordinary two-street intersection context selects 30 km/h.",
+          "supportsAnswerIds": [
+            "b-fallback-387-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-387-a1",
+            "b-fallback-387-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b387-support-not-avenue",
+          "detailIds": [
+            "ordinary-street-not-avenue-context"
+          ],
+          "objectIds": [
+            "street-corner",
+            "building-background"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "The local-street context helps distinguish this from an avenue ticket.",
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b387-dim-building-background",
+          "detailIds": [
+            "ordinary-street-not-avenue-context"
+          ],
+          "objectIds": [
+            "building-background"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Building facade details are not the numeric speed cue.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-387"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-387",
+        "qualityStatus": "complete"
       }
     },
     {
@@ -3746,27 +6154,90 @@
       "imageSha256": "b910e5bc79560ddec317206da6117639ca33cd46ff7f471696a99583bce8ddba",
       "questionFingerprint": "2a1e7d41c62084b08ba7c4119c83414b244026487c0ee4da4f806e94eb5c49f7",
       "correctAnswerId": "b-fallback-388-a3",
+      "imageRole": "answer_critical",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-388-critical-source-image",
+          "detailId": "one-way-traffic-direction-cues",
           "objectIds": [
-            "source-image-frame"
+            "street-corridor",
+            "black-direction-sign",
+            "parked-cars-row"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "traffic-direction-context-region"
+          ],
+          "description": "The narrow street layout and direction signage provide the one-direction context for warning vehicles from the approach side.",
           "supportsAnswerIds": [
             "b-fallback-388-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-388-a1",
+            "b-fallback-388-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "medium"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "relevanceMap": [
+        {
+          "relevanceId": "b388-highlight-direction-cues",
+          "detailIds": [
+            "one-way-traffic-direction-cues"
+          ],
+          "objectIds": [
+            "street-corridor",
+            "black-direction-sign",
+            "parked-cars-row"
+          ],
+          "regionIds": [
+            "traffic-direction-context-region"
+          ],
+          "role": "answer_critical_highlight",
+          "rationaleRuOrEn": "Traffic-direction cues explain why warnings are placed on the side vehicles approach from.",
+          "supportsAnswerIds": [
+            "b-fallback-388-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-388-a1",
+            "b-fallback-388-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b388-support-crosswalk-street",
+          "detailIds": [
+            "foreground-crosswalk-and-street-context"
+          ],
+          "objectIds": [
+            "foreground-crosswalk",
+            "parked-cars-row"
+          ],
+          "role": "supporting",
+          "rationaleRuOrEn": "Crosswalk and parked cars support narrow street context but do not set the warning method alone.",
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b388-dim-building-background",
+          "detailIds": [
+            "foreground-crosswalk-and-street-context"
+          ],
+          "objectIds": [
+            "street-corridor"
+          ],
+          "role": "background_irrelevant_dim",
+          "rationaleRuOrEn": "Building surfaces and sidewalk details can be dimmed during explanation.",
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-388"
+        "reviewer": "Codex Content Agent 369-460",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-388",
+        "qualityStatus": "complete"
       }
     },
     {
