@@ -581,310 +581,310 @@
     },
     {
       "questionId": "b-fallback-321",
-      "questionTextRu": "Учебный перевод-смысл: El consumo de medicamentos, ¿puede afectar la capacidad de conducir?",
+      "questionTextRu": "Может ли употребление лекарств повлиять на способность управлять автомобилем?",
       "answerTranslations": {
-        "b-fallback-321-a1": "Смысл варианта: Всегда.",
-        "b-fallback-321-a2": "Смысл варианта: Никогда.",
-        "b-fallback-321-a3": "Смысл варианта: Depende del tipo de medicamento."
+        "b-fallback-321-a1": "Всегда.",
+        "b-fallback-321-a2": "Никогда.",
+        "b-fallback-321-a3": "Зависит от вида лекарства."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-322",
-      "questionTextRu": "Учебный перевод-смысл: Si un водитель/водители de un automóvil particular obtiene el siguiente resultado en un control de alcoholemia realizado en la Ciudad Autónoma de Buenos Aires, ¿cómo debe proceder la autoridad de control de tránsito?",
+      "questionTextRu": "Если водитель частного автомобиля получает такой результат при проверке на алкоголь в городе Буэнос-Айресе, как должен действовать орган дорожного контроля?",
       "answerTranslations": {
-        "b-fallback-322-a1": "Смысл варианта: Sancionar la falta administrativa y contravencional, retener la licencia de conducir y remitir el транспортное средство.",
-        "b-fallback-322-a2": "Смысл варианта: Esperar un tiempo prudencial y realizar una contraprueba, a la espera de que descienda la graduación alcohólica.",
-        "b-fallback-322-a3": "Смысл варианта: Darle la opción al водитель/водители de llamar a un tercero para que se haga responsable de la conducción del транспортное средство."
+        "b-fallback-322-a1": "Применить административную и контравенционную санкцию, изъять водительское удостоверение и отправить транспортное средство на спецстоянку.",
+        "b-fallback-322-a2": "Подождать разумное время и провести повторную проверку, ожидая снижения уровня алкоголя.",
+        "b-fallback-322-a3": "Предложить водителю вызвать третье лицо, которое возьмет на себя управление автомобилем."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-323",
-      "questionTextRu": "Учебный перевод-смысл: Frente a un siniestro, ¿qué puede evitar este elemento si está correctamente ubicado?",
+      "questionTextRu": "Что при ДТП может предотвратить этот элемент, если он правильно расположен?",
       "answerTranslations": {
-        "b-fallback-323-a1": "Смысл варианта: Nada en especial, dado que sólo es un elemento de confort.",
-        "b-fallback-323-a2": "Смысл варианта: Lesiones en la zona cervical.",
-        "b-fallback-323-a3": "Смысл варианта: Lesiones en el tórax."
+        "b-fallback-323-a1": "Ничего особенного, потому что это только элемент комфорта.",
+        "b-fallback-323-a2": "Повреждения шейного отдела.",
+        "b-fallback-323-a3": "Повреждения грудной клетки."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-324",
-      "questionTextRu": "Учебный перевод-смысл: ¿De qué color es la cartelería de Permitido парковаться/ставить на стоянку?",
+      "questionTextRu": "Какого цвета знаки, обозначающие разрешенную стоянку?",
       "answerTranslations": {
-        "b-fallback-324-a1": "Смысл варианта: Azul.",
-        "b-fallback-324-a2": "Смысл варианта: Blanco.",
-        "b-fallback-324-a3": "Смысл варианта: Rojo."
+        "b-fallback-324-a1": "Синего.",
+        "b-fallback-324-a2": "Белого.",
+        "b-fallback-324-a3": "Красного."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-325",
-      "questionTextRu": "Учебный перевод-смысл: El водитель/водители del транспортное средство A quiere volver rápidamente al carril derecho porque ve ante él una situación de peligro, ¿qué debe hacer el водитель/водители del транспортное средство B?",
+      "questionTextRu": "Водитель автомобиля A хочет быстро вернуться в правую полосу, потому что впереди видит опасную ситуацию. Что должен сделать водитель автомобиля B?",
       "answerTranslations": {
-        "b-fallback-325-a1": "Смысл варианта: Aumentar la velocidad para que realice la maniobra detrás suyo.",
-        "b-fallback-325-a2": "Смысл варианта: Reducir la velocidad para facilitarle el retorno al carril.",
-        "b-fallback-325-a3": "Смысл варианта: Tocar bocina y hacer guiño de luces para indicarle que Нет debe realizar la maniobra."
+        "b-fallback-325-a1": "Увеличить скорость, чтобы автомобиль A выполнил маневр позади него.",
+        "b-fallback-325-a2": "Снизить скорость, чтобы облегчить автомобилю A возвращение в полосу.",
+        "b-fallback-325-a3": "Посигналить и мигнуть фарами, чтобы указать, что автомобиль A не должен выполнять маневр."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-326",
-      "questionTextRu": "Учебный перевод-смысл: El транспортное средство señalizado tiene permitido girar a la слева/налево en este переезд/пересечение que Нет tiene светофор/светофоры.",
+      "questionTextRu": "Отмеченному автомобилю разрешено повернуть налево на этом перекрестке без светофора.",
       "answerTranslations": {
-        "b-fallback-326-a1": "Смысл варианта: Верно.",
-        "b-fallback-326-a2": "Смысл варианта: Неверно."
+        "b-fallback-326-a1": "Верно.",
+        "b-fallback-326-a2": "Неверно."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-327",
-      "questionTextRu": "Учебный перевод-смысл: Determine qué indica la знак que a continuación se presenta:",
+      "questionTextRu": "Определите, что означает показанный ниже знак:",
       "answerTranslations": {
-        "b-fallback-327-a1": "Смысл варианта: Fin de semiautopista.",
-        "b-fallback-327-a2": "Смысл варианта: Fin de ruta.",
-        "b-fallback-327-a3": "Смысл варианта: Fin de autopista."
+        "b-fallback-327-a1": "Конец полуавтомагистрали.",
+        "b-fallback-327-a2": "Конец дороги.",
+        "b-fallback-327-a3": "Конец автомагистрали."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-328",
-      "questionTextRu": "Учебный перевод-смысл: En caso de participar en un дорожное происшествие, en el que resultaron personas heridas, el personal policial que acuda al lugar se encargará de preservar la escena del hecho, brindando los medios para que los servicios de экстренная ситуация atiendan a los heridos y resguardando los транспортные средства y otras pruebas del incidente para una adecuada resolución del caso.",
+      "questionTextRu": "Если вы участвуете в ДТП, в котором есть пострадавшие, прибывшие сотрудники полиции должны сохранить место происшествия, обеспечить условия для помощи пострадавшим экстренными службами и охранять транспортные средства и другие доказательства для надлежащего разбирательства.",
       "answerTranslations": {
-        "b-fallback-328-a1": "Смысл варианта: Верно.",
-        "b-fallback-328-a2": "Смысл варианта: Неверно."
+        "b-fallback-328-a1": "Верно.",
+        "b-fallback-328-a2": "Неверно."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-329",
-      "questionTextRu": "Учебный перевод-смысл: Todos los cristales de un транспортное средство deben garantizar visibilidad...",
+      "questionTextRu": "Все стекла транспортного средства должны обеспечивать видимость...",
       "answerTranslations": {
-        "b-fallback-329-a1": "Смысл варианта: Solamente de adentro del automóvil hacia afuera.",
-        "b-fallback-329-a2": "Смысл варианта: Desde adentro hacia fuera y de afuera hacia adentro del транспортное средство.",
-        "b-fallback-329-a3": "Смысл варианта: El único cristal que debe garantizar plena y total visibilidad es el parabrisas."
+        "b-fallback-329-a1": "Только изнутри автомобиля наружу.",
+        "b-fallback-329-a2": "Изнутри наружу и снаружи внутрь транспортного средства.",
+        "b-fallback-329-a3": "Единственное стекло, которое должно обеспечивать полную видимость, - это лобовое стекло."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-330",
-      "questionTextRu": "Учебный перевод-смысл: Bajo esta condición climática, ¿es recomendable aumentar la дистанция/расстояние de безопасность y reducir la velocidad?",
+      "questionTextRu": "При таких погодных условиях рекомендуется ли увеличить безопасную дистанцию и снизить скорость?",
       "answerTranslations": {
-        "b-fallback-330-a1": "Смысл варианта: Нет, al reducir la velocidad, mayor es la proporción de agua en el asfalto.",
-        "b-fallback-330-a2": "Смысл варианта: Sí, con lluvia la adherencia es menor.",
-        "b-fallback-330-a3": "Смысл варианта: Нет. La дистанция/расстояние de безопасность debe ser Всегда la misma."
+        "b-fallback-330-a1": "Нет, потому что при снижении скорости на асфальте становится больше воды.",
+        "b-fallback-330-a2": "Да, при дожде сцепление с дорогой меньше.",
+        "b-fallback-330-a3": "Нет. Безопасная дистанция всегда должна быть одинаковой."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-331",
-      "questionTextRu": "Учебный перевод-смысл: En este lugar, ¿está permitido sobrepasar a otro транспортное средство?",
+      "questionTextRu": "В этом месте разрешено обгонять другое транспортное средство?",
       "answerTranslations": {
-        "b-fallback-331-a1": "Смысл варианта: Sí, salvo que haya una знак que indique lo contrario.",
-        "b-fallback-331-a2": "Смысл варианта: Нет, está prohibido por normativa.",
-        "b-fallback-331-a3": "Смысл варианта: Sólo si Нет se perjudica la circulación de otros транспортные средства."
+        "b-fallback-331-a1": "Да, если нет знака, указывающего обратное.",
+        "b-fallback-331-a2": "Нет, это запрещено правилами.",
+        "b-fallback-331-a3": "Только если это не мешает движению других транспортных средств."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-332",
-      "questionTextRu": "Учебный перевод-смысл: Todo usuario de la vía pública debe, como premisa básica…",
+      "questionTextRu": "Каждый участник дорожного движения в качестве базового принципа должен...",
       "answerTranslations": {
-        "b-fallback-332-a1": "Смысл варианта: Asumir la obligación de Нет entorpecer la circulación y Нет causar peligro, perjuicios o molestias innecesarias a las personas o daños a los bienes.",
-        "b-fallback-332-a2": "Смысл варианта: Acreditar experiencia de manejo en транспортные средства por más de un año.",
-        "b-fallback-332-a3": "Смысл варианта: Concurrir a cursos de actualización en temática vial, con una frecuencia Нет mayor a seis meses."
+        "b-fallback-332-a1": "Принять обязанность не затруднять движение, не создавать опасность, лишние неудобства людям и не причинять ущерб имуществу.",
+        "b-fallback-332-a2": "Подтвердить опыт управления транспортными средствами более одного года.",
+        "b-fallback-332-a3": "Посещать курсы повышения знаний по дорожной тематике не реже одного раза в шесть месяцев."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-333",
-      "questionTextRu": "Учебный перевод-смысл: En este tramo de la vía Нет se puede realizar un sobrepaso",
+      "questionTextRu": "На этом участке дороги нельзя выполнять обгон.",
       "answerTranslations": {
-        "b-fallback-333-a1": "Смысл варианта: Верно.",
-        "b-fallback-333-a2": "Смысл варианта: Неверно."
+        "b-fallback-333-a1": "Верно.",
+        "b-fallback-333-a2": "Неверно."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-334",
-      "questionTextRu": "Учебный перевод-смысл: La siguiente acción del водитель/водители, ¿es considerada un factor de riesgo?",
+      "questionTextRu": "Считается ли следующее действие водителя фактором риска?",
       "answerTranslations": {
-        "b-fallback-334-a1": "Смысл варианта: Нет, ya que el водитель/водители Нет está utilizando sus manos para mantener una comunicación telefónica.",
-        "b-fallback-334-a2": "Смысл варианта: Sí, sólo cuando circula a altas velocidades.",
-        "b-fallback-334-a3": "Смысл варианта: Sí, porque interfiere en su atención al contexto."
+        "b-fallback-334-a1": "Нет, потому что водитель не использует руки для телефонного разговора.",
+        "b-fallback-334-a2": "Да, но только при движении на высокой скорости.",
+        "b-fallback-334-a3": "Да, потому что это мешает его вниманию к дорожной обстановке."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-335",
-      "questionTextRu": "Учебный перевод-смысл: Cuando hay agua en el camino, debe reducir su velocidad para evitar…",
+      "questionTextRu": "Когда на дороге есть вода, нужно снизить скорость, чтобы избежать...",
       "answerTranslations": {
-        "b-fallback-335-a1": "Смысл варианта: Desgastar las llantas.",
-        "b-fallback-335-a2": "Смысл варианта: Sobrecalentar las llantas.",
-        "b-fallback-335-a3": "Смысл варианта: El aquaplaning."
+        "b-fallback-335-a1": "Износа шин.",
+        "b-fallback-335-a2": "Перегрева шин.",
+        "b-fallback-335-a3": "Аквапланирования."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-336",
-      "questionTextRu": "Учебный перевод-смысл: ¿A qué se denomina 'carril de aceleración'?",
+      "questionTextRu": "Что называется полосой разгона?",
       "answerTranslations": {
-        "b-fallback-336-a1": "Смысл варианта: Es el carril de incorporación a una autopista.",
-        "b-fallback-336-a2": "Смысл варианта: Es el carril derecho de una autopista.",
-        "b-fallback-336-a3": "Смысл варианта: Es el carril izquierdo de una autopista."
+        "b-fallback-336-a1": "Полоса для въезда на автомагистраль.",
+        "b-fallback-336-a2": "Правая полоса автомагистрали.",
+        "b-fallback-336-a3": "Левая полоса автомагистрали."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-337",
-      "questionTextRu": "Учебный перевод-смысл: ¿Qué es una велодорожка?",
+      "questionTextRu": "Что такое велодорожка?",
       "answerTranslations": {
-        "b-fallback-337-a1": "Смысл варианта: Sector señalizado especialmente en la проезжая часть para la circulación con carácter preferente de ciclorodados (bicicletas) y dispositivos de movilidad personal.",
-        "b-fallback-337-a2": "Смысл варианта: Sector de la проезжая часть señalizado especialmente con una separación física o demarcación horizontal para la circulación exclusiva de ciclorodados (bicicletas) y dispositivos de movilidad personal.",
-        "b-fallback-337-a3": "Смысл варианта: Sector señalizado y especialmente acondicionado en aceras y espacios verdes para la circulación de ciclorodados (bicicletas) y dispositivos de movilidad personal."
+        "b-fallback-337-a1": "Специально обозначенный участок проезжей части для преимущественного движения велосипедов и средств индивидуальной мобильности.",
+        "b-fallback-337-a2": "Специально обозначенный участок проезжей части с физическим отделением или горизонтальной разметкой для исключительного движения велосипедов и средств индивидуальной мобильности.",
+        "b-fallback-337-a3": "Специально обозначенный и оборудованный участок на тротуарах и в зеленых зонах для движения велосипедов и средств индивидуальной мобильности."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-338",
-      "questionTextRu": "Учебный перевод-смысл: ¿Qué está indicando el agente de tránsito al realizar esta знак a un водитель/водители?",
+      "questionTextRu": "Что указывает регулировщик водителю этим жестом?",
       "answerTranslations": {
-        "b-fallback-338-a1": "Смысл варианта: Que circule con precaución.",
-        "b-fallback-338-a2": "Смысл варианта: Que detenga el транспортное средство.",
-        "b-fallback-338-a3": "Смысл варианта: Que continúe avanzando."
+        "b-fallback-338-a1": "Двигаться с осторожностью.",
+        "b-fallback-338-a2": "Остановить транспортное средство.",
+        "b-fallback-338-a3": "Продолжать движение вперед."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-339",
-      "questionTextRu": "Учебный перевод-смысл: Según la Organización Mundial de la Salud, la siguiente problemática es categorizada como 'pandemia' ya que constituye la décima causa de muerte en todo el mundo.",
+      "questionTextRu": "По данным Всемирной организации здравоохранения, следующая проблема относится к «пандемии», поскольку является десятой причиной смерти во всем мире.",
       "answerTranslations": {
-        "b-fallback-339-a1": "Смысл варианта: Верно.",
-        "b-fallback-339-a2": "Смысл варианта: Неверно."
+        "b-fallback-339-a1": "Верно.",
+        "b-fallback-339-a2": "Неверно."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-340",
-      "questionTextRu": "Учебный перевод-смысл: De acuerdo a la Ley N° 2148, ¿está permitido realizar el siguiente поворот?",
+      "questionTextRu": "Согласно Закону N 2148, разрешено ли выполнить показанный поворот?",
       "answerTranslations": {
-        "b-fallback-340-a1": "Смысл варианта: Нет, ya que sólo está permitido hacer ese поворот si existe un светофор/светофоры que lo habilita.",
-        "b-fallback-340-a2": "Смысл варианта: Sí, ya que es una intersección Нет semaforizada.",
-        "b-fallback-340-a3": "Смысл варианта: Нет, ya que es una vía de doble sentido de circulación."
+        "b-fallback-340-a1": "Нет, потому что такой поворот разрешен только при наличии светофора, который его разрешает.",
+        "b-fallback-340-a2": "Да, потому что это перекресток без светофора.",
+        "b-fallback-340-a3": "Нет, потому что это дорога с двусторонним движением."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-341",
-      "questionTextRu": "Учебный перевод-смысл: Согласно Закону N 2148, ¿qué indica la siguiente demarcación horizontal?",
+      "questionTextRu": "Согласно Закону N 2148, что обозначает следующая горизонтальная разметка?",
       "answerTranslations": {
-        "b-fallback-341-a1": "Смысл варианта: Que está prohibido парковаться/ставить на стоянку, pudiendo efectuarse la detención para ascenso y descenso de pasajeros.",
-        "b-fallback-341-a2": "Смысл варианта: Que es un espacio reservado al парковка/стоянка exclusivo de транспортные средства destinados al servicio de экстренная ситуация.",
-        "b-fallback-341-a3": "Смысл варианта: Que está prohibido парковаться/ставить на стоянку o остановиться paralelo al cordón."
+        "b-fallback-341-a1": "Стоянка запрещена, но остановка для посадки и высадки пассажиров разрешена.",
+        "b-fallback-341-a2": "Это место, зарезервированное исключительно для стоянки транспортных средств экстренных служб.",
+        "b-fallback-341-a3": "Запрещены стоянка и остановка параллельно бордюру."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-342",
-      "questionTextRu": "Учебный перевод-смысл: ¿A qué se denomina 'дистанция/расстояние de reacción'?",
+      "questionTextRu": "Что называется «дистанцией реакции»?",
       "answerTranslations": {
-        "b-fallback-342-a1": "Смысл варианта: A la дистанция/расстояние que recorre un транспортное средство hasta su detención.",
-        "b-fallback-342-a2": "Смысл варианта: A la дистанция/расстояние que debe guardar un транспортное средство, respecto de otro, para poder maniobrar.",
-        "b-fallback-342-a3": "Смысл варианта: A la дистанция/расстояние que recorre un транспортное средство desde que el водитель/водители percibe un peligro hasta que toma una decisión."
+        "b-fallback-342-a1": "Расстояние, которое транспортное средство проходит до полной остановки.",
+        "b-fallback-342-a2": "Расстояние, которое транспортное средство должно соблюдать относительно другого, чтобы можно было маневрировать.",
+        "b-fallback-342-a3": "Расстояние, которое транспортное средство проходит с момента, когда водитель замечает опасность, до момента принятия решения."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-343",
-      "questionTextRu": "Учебный перевод-смысл: Indique qué significa esta знак:",
+      "questionTextRu": "Укажите, что означает этот знак:",
       "answerTranslations": {
-        "b-fallback-343-a1": "Смысл варианта: Ruta Nacional N°5.",
-        "b-fallback-343-a2": "Смысл варианта: Ruta Provincial N°5.",
-        "b-fallback-343-a3": "Смысл варианта: Ruta Panamericana N°5."
+        "b-fallback-343-a1": "Национальная трасса N 5.",
+        "b-fallback-343-a2": "Провинциальная трасса N 5.",
+        "b-fallback-343-a3": "Панамериканская трасса N 5."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-344",
-      "questionTextRu": "Учебный перевод-смысл: Al conducir por un largo lapso de tiempo y en esta condición climática…",
+      "questionTextRu": "При длительном вождении в таких погодных условиях...",
       "answerTranslations": {
-        "b-fallback-344-a1": "Смысл варианта: Es menos probable que aparezca la fatiga, ya que aumenta la atención.",
-        "b-fallback-344-a2": "Смысл варианта: Es necesario descansar con más frecuencia, para evitar la fatiga.",
-        "b-fallback-344-a3": "Смысл варианта: Нет influye en la aparición de fatiga, Всегда y cuando se mantenga una velocidad prudente."
+        "b-fallback-344-a1": "Усталость менее вероятна, потому что внимание повышается.",
+        "b-fallback-344-a2": "Нужно отдыхать чаще, чтобы избежать усталости.",
+        "b-fallback-344-a3": "Это не влияет на появление усталости, если поддерживать разумную скорость."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_review",
+      "reviewer": "Codex content agent 277-368",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
