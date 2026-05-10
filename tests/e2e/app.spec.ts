@@ -2,9 +2,11 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 
 const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
+const translations = JSON.parse(readFileSync("content/translations/ru.translations.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
+const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
 
 async function storedAnswerCount(page: Page) {
   return page.evaluate(() => JSON.parse(localStorage.getItem("cabadrive.progress.v1") || "{\"answers\":[]}").answers.length);
@@ -15,6 +17,7 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(page.getByText("unofficial category B practice set")).toBeVisible();
   await expect(page.getByRole("heading", { name: /Тренажер теории/ })).toBeVisible();
   const card = page.getByTestId("question-card");
+  await expect(card.getByText(`Билет ${questions[0].id}`, { exact: true })).toBeVisible();
   const questionToggle = card.getByRole("button", { name: /¿Qué indica esta seña/ });
   await expect(card.locator("img")).toBeVisible();
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
@@ -92,6 +95,7 @@ test("vocabulary and guide are available", async ({ page }) => {
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
   await page.getByRole("button", { name: /CABA\/RF/ }).click();
   await expect(page.getByText("Статус вопросов категории B")).toBeVisible();
+  await expect(page.getByText("Входы в больницы и centros de salud")).toBeVisible();
 });
 
 test("materials view renders topic guide status, list, details, canonical ticket data, and local images", async ({ page }) => {
@@ -106,6 +110,10 @@ test("materials view renders topic guide status, list, details, canonical ticket
   const correctAnswer = canonicalQuestion.answers.find((answer) => answer.id === canonicalQuestion.correctAnswerId)!;
   const correctExplanation = firstTicket.answerExplanations.find((item: { answerId: string }) => item.answerId === correctAnswer.id)!;
   const incorrectExplanation = firstTicket.answerExplanations.find((item: { answerId: string }) => item.answerId !== correctAnswer.id)!;
+  const translation = translationByQuestionId.get(firstTicket.questionId) as {
+    questionTextRu: string;
+    answerTranslations: Record<string, string>;
+  };
 
   await page.goto("/");
   await page.getByRole("button", { name: /Материалы/ }).click();
@@ -127,9 +135,12 @@ test("materials view renders topic guide status, list, details, canonical ticket
   const ticketBlock = page.getByTestId(`materials-ticket-${firstTicket.questionId}`);
   await expect(ticketBlock).toBeVisible();
   await expect(ticketBlock.getByText(canonicalQuestion.officialTextEs)).toBeVisible();
+  await expect(ticketBlock.getByText(translation.questionTextRu)).toBeVisible();
+  await expect(ticketBlock.getByText("Статус: неофициальная B-практика")).toHaveCount(0);
   const ticketAnswers = ticketBlock.locator(".materials-answers");
   for (const answer of canonicalQuestion.answers) {
     await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
+    await expect(ticketAnswers.getByText(translation.answerTranslations[answer.id], { exact: true })).toBeVisible();
   }
   await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
   await expect(ticketBlock.locator(".material-answer p").filter({ hasText: correctExplanation.explanationRu }).first()).toBeVisible();
@@ -164,6 +175,8 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
     for (const answer of canonicalQuestion.answers) {
       await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
     }
+    await expect(ticketBlock.getByText("Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.")).toBeVisible();
+    await expect(ticketBlock.getByText("Статус: неофициальная B-практика")).toHaveCount(0);
     await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
     for (const explanation of guideTicket.answerExplanations) {
       await expect(ticketBlock.locator(".material-answer p").filter({ hasText: explanation.explanationRu }).first()).toBeVisible();

@@ -77,10 +77,12 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 - Official Spanish text stays primary.
 - Russian translations and explanations are unofficial learning aids; product-level onboarding, content-mode/status surfaces, and source/status footers carry that clarity instead of repeating long disclaimer paragraphs inside every question card.
 - Learning and mistake review start with Russian translation hidden.
+- Learn question cards show the ticket ID in the metadata row for reporting and cross-reference.
 - The Spanish question text area reveals or hides the question translation and answer-choice translations with the same shared state; the revealed question translation appears directly under the Spanish question text before images and answer choices.
 - Active exam attempts hide translation and explanation support.
 - Support mobile-first interaction and exam-focused speed.
 - Keep weak-topic review prominent in study loops.
 - Render question images as part of the question, using only local offline assets.
-- `Материалы` renders the topic study guide from bundled JSON, labels it as draft/incomplete and unofficial while those statuses remain, and joins ticket references back to canonical questions for Spanish text, answers, correct answer, explanations, source status, and local images.
+- `Материалы` renders the topic study guide from bundled JSON, labels it as draft/incomplete and unofficial while those statuses remain, and joins ticket references back to canonical questions for Spanish text, governed Russian translations when available, answers, correct answer, explanations, source status, and local images.
+- Repeated materials ticket blocks should not each repeat the full fallback-status chip; section/product status surfaces carry the current unofficial fallback truth.
 - `CABA/RF` remains a separate compact contrast guide.

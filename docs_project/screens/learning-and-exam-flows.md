@@ -20,14 +20,15 @@
 ## Learn Questions Flow
 
 1. Load question card (Spanish official text + answer options).
-2. Keep Russian question and answer translations hidden on initial render.
-3. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
-4. Show answer-choice translations only while the same translation reveal state is active.
-5. Show the local question image when the source question includes one.
-6. Optional toggle for explanation.
-7. Submit answer.
-8. Show correctness, key terms, and related weak-topic links.
-9. Optional mark as difficult.
+2. Show the ticket ID in the metadata row for reporting and cross-reference.
+3. Keep Russian question and answer translations hidden on initial render.
+4. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
+5. Show answer-choice translations only while the same translation reveal state is active.
+6. Show the local question image when the source question includes one.
+7. Optional toggle for explanation.
+8. Submit answer.
+9. Show correctness, key terms, and related weak-topic links.
+10. Optional mark as difficult.
 
 ## Exam Simulation Flow
 
@@ -57,8 +58,9 @@
 2. Browse topic sections from `content/guide/topic-study-guide.ru.json`.
 3. Select a topic and read Russian learning material, practical reasoning when present, Spanish terms, trap notes, and full guide ticket blocks.
 4. Render ticket blocks by joining guide `questionId` and `answerId` references to canonical bundled questions and answers.
-5. Show local question images through bundled offline assets only.
-6. Keep draft/incomplete, unofficial learning aid, and current fallback question-set labels visible.
+5. Show governed Russian question and answer translations in ticket blocks when available; otherwise show a concise missing-translation fallback while keeping canonical Spanish primary.
+6. Show local question images through bundled offline assets only.
+7. Keep draft/incomplete, unofficial learning aid, and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
 
 ## CABA Vs RF Guide Flow
 

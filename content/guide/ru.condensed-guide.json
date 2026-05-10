@@ -31,5 +31,16 @@
     "relatedQuestionIds": ["b-fallback-001"],
     "confidence": "needs_review",
     "disclaimer": "Комментарий Cabadrive. Это учебное сопоставление, а не официальный текст GCBA."
+  },
+  {
+    "id": "guide-parking-health-entrance",
+    "title": "Входы в больницы и centros de salud",
+    "topic": "parking",
+    "cabaRuleSummaryRu": "В CABA-тренировке для hospital/centro de salud держите испанскую связку: entrada -> 10 metros de cada lado de la entrada. Вариант 5 metros de cada lado de la entrada в таком билете является falso/trap.",
+    "rfContrastRu": "Не отвечайте по привычке одним общим расстоянием для всех учреждений. В этих билетах важно распознать тип входа и точную испанскую формулу, а не переносить похожее число из другой ситуации.",
+    "sourceIds": ["bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
+    "relatedQuestionIds": ["b-fallback-028", "b-fallback-412"],
+    "confidence": "needs_review",
+    "disclaimer": "Комментарий Cabadrive. Это учебное сопоставление, а не официальный текст GCBA."
   }
 ]

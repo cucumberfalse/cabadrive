@@ -518,6 +518,14 @@ small,
   max-height: 300px;
 }
 
+.materials-translation {
+  margin-top: 10px;
+}
+
+.missing-translation {
+  border-style: dashed;
+}
+
 .materials-answers {
   display: grid;
   gap: 10px;
@@ -534,6 +542,12 @@ small,
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+}
+
+.answer-translation {
+  flex-basis: 100%;
+  color: #4f5f58;
+  font-weight: 500;
 }
 
 .material-answer.correct {

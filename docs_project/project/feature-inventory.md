@@ -5,14 +5,14 @@
 - Official source registry with source ownership, jurisdiction, verification date, and hashes.
 - Governed official-documents archive foundation at `content/official-documents/` for verbatim official source materials, manifest metadata, exact-text/currentness validation expectations, and future source-document rules.
 - Content validation pipeline for source records, exam config, fallback question data, local images, and unofficial support layers.
-- Category B practice question presentation in Spanish with source traceability and non-official fallback labeling.
+- Category B practice question presentation in Spanish with source traceability, ticket IDs in learning mode, and non-official fallback labeling.
 - Unofficial Russian translation and explanation layers, clarified at product/status level and revealed intentionally inside question practice instead of shown by default.
 - Learning mode with answer feedback and linked weak-topic hints.
 - Exam mode driven by `content/config/caba-exam-format.json` with approximate/exact status labeling.
 - Mistake tracking and repeated-error review loop.
 - Exam-oriented vocabulary module with topic grouping and search.
-- Topic materials module that renders the draft `006` topic study guide with topic list/detail, Russian learning material, Spanish terms, trap notes, canonical ticket blocks, and local images.
-- Guide module focused on CABA-vs-RF differences that matter for exam outcomes.
+- Topic materials module that renders the draft `006` topic study guide with topic list/detail, Russian learning material, Spanish terms, trap notes, canonical ticket blocks, governed Russian translations where available, concise missing-translation fallback, and local images.
+- Guide module focused on CABA-vs-RF differences that matter for exam outcomes, including compact parking-clearance contrast notes where source-supported by the current fallback practice set.
 - Offline-capable local-first behavior after build.
 - Docker-only local runtime with `make build`, `make up`, and `make down`.
 
