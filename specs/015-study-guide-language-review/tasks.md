@@ -322,6 +322,64 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/*`: pass.
   - changed-path guard against PR #63 forbidden paths: pass; `git diff --name-only origin/main...HEAD` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/{feature-request.md,plan.md,spec.md,tasks.md}`, with no `content/translations`, `content/explanations`, `content/image-metadata`, `content/validation`, validators, tests, docs, scripts, or package files.
   - `git status --short --branch`: pass; clean working tree on `codex/015-study-guide-language-review-intake` after the merge/evidence commit, ahead of `origin/codex/015-study-guide-language-review-intake` pending push.
+- Slice C worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-parking` on `codex/015-study-guide-language-review-parking`, stacked on PR #70 branch `codex/015-study-guide-language-review-intake`.
+- Topics reviewed: `parking-clearances-and-corners`, `parking-prohibitions-and-signed-zones`, and `stopping-vs-parking-maneuvers`.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice C did not touch root fields.
+  - titles: 3
+  - summaries: 3
+  - learning paragraphs: 23
+  - practical reasoning paragraphs: 9
+  - term translations: 44
+  - source-conflict notes: 0 in Slice C topics
+  - answer explanations: 128
+  - trap notes: 15
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 2
+  - summaries: 3
+  - learning paragraphs: 19
+  - practical reasoning paragraphs: 3
+  - term translations: 1
+  - source-conflict notes: 0
+  - answer explanations: 35
+  - trap notes: 9
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice C topics 45 / 45.
+- Unique question IDs before/after: global 460 / 460; Slice C topics 45 / 45.
+- Answer explanations before/after: global 1,831 / 1,831; Slice C topics 128 / 128.
+- Source-conflict notes before/after: global 4 / 4; Slice C topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-031`, `b-fallback-043`, `b-fallback-341`, `b-fallback-396`, `b-fallback-460`, `b-fallback-320`, `b-fallback-356`, `b-fallback-416`, `b-fallback-011`, `b-fallback-015`, `b-fallback-039`, `b-fallback-045`, `b-fallback-051`, `b-fallback-077`, `b-fallback-097`, `b-fallback-127`, `b-fallback-156`, `b-fallback-188`, `b-fallback-211`, `b-fallback-232`, `b-fallback-260`, `b-fallback-347`, `b-fallback-378`, `b-fallback-413`, `b-fallback-442`, and `b-fallback-455`.
+- Duplicate handling decision: reviewed duplicated placements only inside the three assigned Slice C topics. Matching placements in other topics were not edited or aligned in this PR; they remain intentionally topic-specific for their assigned slices. Changed duplicate explanations in Slice C were limited to learner wording cleanup for `b-fallback-460`, `b-fallback-320`, `b-fallback-356`, `b-fallback-416`, `b-fallback-039`, `b-fallback-051`, `b-fallback-077`, `b-fallback-097`, `b-fallback-413`, and `b-fallback-455`; answer IDs, verdicts, placements, and neighboring topic placements were preserved.
+- Source-sensitive sentences left unchanged: all 11 `claims[].textRu` entries in Slice C topics were preserved. Numeric/source-sensitive rules and ticket formulas were preserved, including 10 m hospital/health-center entrance distance, 50 m railway crossing parking boundary, 20 cm cordón parking distance, marcha atrás `mínimo e indispensable`, `tránsito se encuentra interrumpido`, red cordón no stopping/parking, old `acera izquierda` / `ambas aceras` formulas for `b-fallback-010`, `b-fallback-074`, and `b-fallback-079`, detención up to two minutes, `doble fila` exception only before a parking maneuver, and `No estacionar` vs `No estacionar ni detenerse`.
+- CABA/RF notes added or clarified: no broad РФ legal comparison was added. Slice C clarified CABA-specific exam anchors that are likely to trip an RF-trained driver answering from habit: CABA institutional entrance timing, 50 m railway crossing boundary, CABA `marcha atrás` as only a short necessary maneuver, CABA two-minute `detención`, `balizas` not being permission, and `doble fila` being allowed only as `detención previa a la maniobra de estacionamiento`.
+- Before/after samples:
+  - `parking-clearances-and-corners`: before "taxonomy-mixed ... ticket-specific prompts"; after "Два билета в этой теме смешанные ... Они не дают новое правило парковки."
+  - `parking-clearances-and-corners`: before "доступ emergency/service vehicles"; after "доступ машин экстренных служб или служебного транспорта."
+  - `parking-prohibitions-and-signed-zones`: before "fallback-формулу ... current-rule statement"; after "эти три старые формулы не надо учить как сегодняшнее универсальное правило."
+  - `parking-prohibitions-and-signed-zones`: before "parking distractor" / "traffic-calming/channelization cue"; after "ловушка про парковку" / "помогает замедлить и направить движение."
+  - `stopping-vs-parking-maneuvers`: before "double fila ... emergency vehicles ... parking-тему"; after "doble fila ... vehículos de emergencia ... знаки, которые легко принять за парковочные."
+  - `stopping-vs-parking-maneuvers`: before "authorized work personnel"; after "personal de obra autorizado."
+- PR #63 forbidden-path guard: Slice C write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. `content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`, related validators/tests/docs, package files, and PR #71 difficulty/schema/UI/validator/docs/test paths were not edited.
+- Slice C refresh base/head: rebased the Slice C WIP onto fresh PR #70 intake base `aab522d45865bde3eda3c31e40a88ef6b56b08af`; validation ran on refreshed Slice C head `b28530dcd2aa46afaacca195e7ad862d6f02753c` before this evidence-only amend.
+- Slice C refresh merge decision: used `origin/codex/015-study-guide-language-review-intake` as the JSON structure and metadata base, preserved #71/#70 `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` for all three Slice C topics, overlaid only the Slice C learner-facing rewrites, and refreshed only the three stale topic `difficultyMeta.sourceFingerprint` values:
+  - `parking-clearances-and-corners`: `445db97198ddeabd80f0c1da983f8f0787fcfb3ef18faeff933452d42a772a63` -> `f338477641e41853830d427ae886468a33e1d77563e4fb538a11e8e16f5a5506`
+  - `parking-prohibitions-and-signed-zones`: `7b0a88b6b18865d0a85cdd12ddbd99582737c3ed643990d86216033c6dbdcf26` -> `041540efe392e31ed5ffda5b704ccbd48122e65ea2dd84ba85ab6d68e6199f5d`
+  - `stopping-vs-parking-maneuvers`: `7c79052e79fb7223c8f2a8791085c2b5ab8af3246b9499a9783fdf9cde079207` -> `7272ffd967a11462a4dd24983fc18cc6284d61a54ab1b92bbbe41619479f3597`
+- Dependency note: this isolated worktree initially had no `node_modules`. `pnpm install` completed with lockfile already up to date; no tracked package or lockfile changes were introduced.
+- Validation evidence:
+  - JSON parse, difficulty, and Slice C refresh guard: pass; Node parsed `content/guide/topic-study-guide.ru.json`, found 38 topics, 38 `difficulty` entries, and 38 `difficultyMeta` entries. The three Slice C topic IDs retained their #71/#70 difficulty levels and non-fingerprint metadata, their fingerprints matched `difficultyTopicFingerprint(topic)` after the text overlay, and targeted text markers confirmed the intended Slice C rewrites were present.
+  - Structural count guard before validation: pass; global totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, and 170 claims; Slice C topics remained 45 placements and 128 answer explanations.
+  - Learner-facing process-word scan for Slice C topics: pass; targeted scan found no remaining `fallback`, `ticket-specific`, `canonical`, `taxonomy`, `fixed-distance`, `double fila`, `emergency vehicles`, `parking nearby`, or similar learner-facing process English.
+  - Final JSON parse sanity for `content/guide/topic-study-guide.ru.json`: pass, `JSON parse OK; topics=38; difficulty=38; difficultyMeta=38`.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass, no output.
+  - Changed-path guard versus PR #63 forbidden paths and PR #71 non-content paths: pass; `git diff --name-only origin/codex/015-study-guide-language-review-intake...HEAD` showed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, with no `content/translations`, `content/explanations`, `content/image-metadata`, `content/validation`, coverage/source-trace manifests, product code, tests, scripts, docs, package/lock files, or PR #71 difficulty UI/validator/docs/test paths.
+  - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-parking...origin/codex/015-study-guide-language-review-intake [ahead 1]`.
+  - Package/lockfile guard after dependency setup: pass; `git diff --name-only -- package.json pnpm-lock.yaml pnpm-workspace.yaml` produced no output.
+- Known issues: none introduced. The old `acera izquierda` / `ambas aceras` formulas remain explicitly old-ticket/image-recognition context and were not generalized as current CABA law. `b-fallback-342`, `b-fallback-460`, `b-fallback-320`, `b-fallback-356`, and `b-fallback-416` remain mixed/ticket-specific in meaning, with no placement change.
+- Implementation Agent feedback: none requiring Architect disposition. Slice C found no reason to edit claims metadata, coverage/source-trace manifests, product code, tests, docs, translations/explanations, generated indexes, package files, or difficulty-labeling files.
 
 ## Known Issues
 

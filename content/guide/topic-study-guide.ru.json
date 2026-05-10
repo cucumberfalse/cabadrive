@@ -27,7 +27,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "445db97198ddeabd80f0c1da983f8f0787fcfb3ef18faeff933452d42a772a63",
+        "sourceFingerprint": "f338477641e41853830d427ae886468a33e1d77563e4fb538a11e8e16f5a5506",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -44,20 +44,20 @@
           ]
         }
       },
-      "titleRu": "Расстояния при парковке, углы и въезды",
-      "summaryRu": "Экзаменационный блок про отступы у входов, углы/ochava, cordón, garaje, marcha atrás и несколько смешанных билетов, которые попали сюда по текущей taxonomy.",
+      "titleRu": "Отступы при парковке, углы и въезды",
+      "summaryRu": "Блок про отступы у входов, углы/ochava, cordón, garaje, marcha atrás и пару смешанных билетов, где важно не сделать из вопроса новое правило парковки.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. Здесь важно не запомнить одно число на все случаи, а связать место с конкретным запретом: вход учреждения, paso ferroviario, esquina, cordón, garaje или ciclovía.",
-        "У entradas de hospitales, sanatorios, clínicas и centros de salud стоянка ограничивается отступом 10 metros de cada lado de la entrada. Для школ это правило действует en horas de clase, для храмов - во время oficios/ceremonias, для банков - durante el horario de atención al público; поэтому ответы с 5 metros для больницы неверны, а 10 metros - правильная экзаменационная связка.",
-        "У paso ferroviario ловушка обратная: 20 metros звучит как знакомая дистанция, но в CABA общий запрет estacionar действует a menos de 50 metros a cada lado de los pasos ferroviarios a nivel. Поэтому билет с 20 metros - falso.",
-        "Esquina/ochava читается как зона видимости, а не как свободное место у края квартала. В CABA запрещено estacionar y detenerse между vértice ideal и prolongación de la ochava, а также на senda peatonal или línea de pare.",
-        "Правильная параллельная парковка - примерно 20 cm del cordón. Машина слишком близко к бордюру или на разметке/пространстве для ciclovía не становится правильной только потому, что cordón не окрашен.",
-        "Marcha atrás в CABA запрещена как обычное движение. Она допускается только как необходимое дополнение к estacionamiento, detención, ingreso/egreso или похожей ситуации, когда вперед ехать нельзя; recorrido должен быть mínimo e indispensable.",
-        "Въезд из garaje или с места estacionado не дает автоматического приоритета. Уступать такому автомобилю нужно только когда tránsito se encuentra interrumpido; иначе водитель, который выезжает, должен встроиться без опасности и помех.",
-        "Два билета здесь taxonomy-mixed: distancia de reacción и banco de niebla. Они оставлены в этой теме как ticket-specific prompts: не превращайте их в правило парковки, просто отвечайте по формулировке конкретного билета."
+        "Этот блок - неофициальная подсказка Cabadrive. Не учите одно число на все случаи. Сначала поймите место: вход учреждения, paso ferroviario, esquina, cordón, garaje или ciclovía.",
+        "У entradas de hospitales, sanatorios, clínicas и centros de salud нужен отступ 10 metros de cada lado de la entrada. Для школ это работает en horas de clase, для храмов - во время oficios/ceremonias, для банков - durante el horario de atención al público. Поэтому 5 metros для больницы неверно, а 10 metros - нужная связка для экзамена CABA.",
+        "У paso ferroviario ловушка обратная. 20 metros звучит привычно, но в CABA общий запрет estacionar действует a menos de 50 metros a cada lado de los pasos ferroviarios a nivel. Поэтому утверждение с 20 metros - falso.",
+        "Esquina/ochava - это зона видимости, а не свободное место у края квартала. В CABA нельзя estacionar y detenerse между vértice ideal и prolongación de la ochava, а также на senda peatonal или línea de pare.",
+        "Правильная параллельная парковка - примерно 20 cm del cordón. Если машина стоит вплотную к бордюру, на разметке или в пространстве для ciclovía, ответ не становится правильным только потому, что cordón не окрашен.",
+        "Marcha atrás в CABA не считается обычным способом движения. Она допускается только как короткое необходимое дополнение к estacionamiento, detención, ingreso/egreso или похожей ситуации, когда вперед ехать нельзя; recorrido должен быть mínimo e indispensable.",
+        "Выезд из garaje или с места estacionado не дает автоматического приоритета. Уступать такому автомобилю нужно только когда tránsito se encuentra interrumpido; в обычной ситуации выезжающий водитель сам встраивается без опасности и помех.",
+        "Два билета в этой теме смешанные: distancia de reacción и banco de niebla. Они не дают новое правило парковки. Отвечайте по тексту конкретного билета."
       ],
       "practicalReasoningRu": [
-        "Отступы у входов и углов освобождают обзор, место для маневра и доступ emergency/service vehicles; без них водители и пешеходы появляются друг для друга слишком поздно.",
+        "Отступы у входов и углов освобождают обзор, место для маневра и доступ машин экстренных служб или служебного транспорта; без них водители и пешеходы замечают друг друга слишком поздно.",
         "Правило 20 cm от cordón делает парковку предсказуемой: автомобиль не торчит в поток, но и не заезжает на бордюр, разметку или пространство уязвимых участников.",
         "Ограничение marcha atrás нужно потому, что обзор сзади хуже. Законная логика - коротко закончить маневр, а не ехать задним ходом как обычным способом движения."
       ],
@@ -90,7 +90,7 @@
         {
           "id": "term-20-metros",
           "termEs": "20 metros",
-          "translationRu": "20 метров; в этих билетах это неверная fixed-distance ловушка",
+          "translationRu": "20 метров; здесь это ловушка с готовым расстоянием",
           "sourceQuestionIds": [
             "b-fallback-121",
             "b-fallback-271"
@@ -181,7 +181,7 @@
             {
               "answerId": "b-fallback-028-a1",
               "verdict": "incorrect",
-              "explanationRu": "Todo el frente del edificio слишком широко для общей формулы билета. Для такого входа проверяется конкретный отступ от entrada."
+              "explanationRu": "Вариант про весь фасад здания слишком широкий. Для такого входа проверяется конкретный отступ от entrada."
             },
             {
               "answerId": "b-fallback-028-a2",
@@ -247,7 +247,7 @@
             {
               "answerId": "b-fallback-121-a2",
               "verdict": "correct",
-              "explanationRu": "Фраза false: для pasos ferroviarios a nivel CABA использует запрет estacionar a menos de 50 metros a cada lado, а не 20."
+              "explanationRu": "Утверждение falso: для pasos ferroviarios a nivel CABA использует запрет estacionar a menos de 50 metros a cada lado, а не 20."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b155.jpg"
@@ -284,7 +284,7 @@
             {
               "answerId": "b-fallback-271-a2",
               "verdict": "incorrect",
-              "explanationRu": "20 metros тоже неверная fixed-distance ловушка: задним ходом нельзя ехать просто до заданного максимума."
+              "explanationRu": "20 metros тоже неверная ловушка с готовым расстоянием: задним ходом нельзя ехать просто до заданного максимума."
             },
             {
               "answerId": "b-fallback-271-a3",
@@ -330,7 +330,7 @@
             {
               "answerId": "b-fallback-342-a3",
               "verdict": "correct",
-              "explanationRu": "Correcto по формулировке билета: distancia de reacción - путь, который автомобиль проходит от момента, когда водитель percibe un peligro, до принятия решения."
+              "explanationRu": "Правильно по формулировке билета: distancia de reacción - путь, который автомобиль проходит от момента, когда водитель percibe un peligro, до принятия решения."
             }
           ]
         },
@@ -366,7 +366,7 @@
             {
               "answerId": "b-fallback-412-a2",
               "verdict": "correct",
-              "explanationRu": "Фраза false: в такой зоне нужно оставлять 10 metros de cada lado de la entrada, поэтому вариант с 5 metros не подходит."
+              "explanationRu": "Утверждение falso: в такой зоне нужно оставлять 10 metros de cada lado de la entrada, поэтому вариант с 5 metros не подходит."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b153.jpg"
@@ -377,7 +377,7 @@
             {
               "answerId": "b-fallback-460-a1",
               "verdict": "incorrect",
-              "explanationRu": "Luces rompeniebla могут помочь видеть/быть видимым, но не son suficientes: в тумане также нужны снижение скорости, дистанция и контроль."
+              "explanationRu": "Luces rompeniebla могут помочь видеть и быть видимым, но их недостаточно: в тумане также нужны снижение скорости, дистанция и контроль."
             },
             {
               "answerId": "b-fallback-460-a2",
@@ -400,7 +400,7 @@
         },
         {
           "id": "trap-5-vs-10-institutions",
-          "textRu": "В больничных/институциональных входах варианты 5 metros и 10 metros похожи. Для этих билетов выбирайте 10 metros."
+          "textRu": "У hospital/centro de salud варианты 5 metros и 10 metros похожи. Для этих билетов выбирайте 10 metros."
         },
         {
           "id": "trap-cordon-color-and-distance",
@@ -412,7 +412,7 @@
         },
         {
           "id": "trap-mixed-distance-questions",
-          "textRu": "Distancia de reacción и banco de niebla попали в этот topic по taxonomy, но отвечаются не как parking-clearance: читайте конкретный текст билета."
+          "textRu": "Distancia de reacción и banco de niebla попали в эту тему как смешанные вопросы, но отвечаются не как отступы для парковки. Читайте конкретный текст билета."
         }
       ],
       "claims": [
@@ -456,7 +456,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "7b0a88b6b18865d0a85cdd12ddbd99582737c3ed643990d86216033c6dbdcf26",
+        "sourceFingerprint": "041540efe392e31ed5ffda5b704ccbd48122e65ea2dd84ba85ab6d68e6199f5d",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -473,20 +473,20 @@
           ]
         }
       },
-      "titleRu": "Запреты стоянки и знаки парковки",
-      "summaryRu": "Экзаменационный блок про prohibido estacionar, Permitido Estacionar, acera izquierda/ambas aceras, yellow markings, isletas и знак no entry, который маскируется парковочным distractor.",
+      "titleRu": "Запреты парковки и знаки",
+      "summaryRu": "Блок про prohibido estacionar, Permitido Estacionar, старые формулы acera izquierda/ambas aceras, желтую разметку, isletas и знак contramano/R.2, который не про парковку.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В этих билетах слово estacionar почти всегда связано с местом и сигналом: avenida или calle, acera derecha/izquierda, ambas aceras, cartelería, color del cordón или горизонтальная разметка.",
-        "Три image-ticket про Ley 2148 требуют читать не только слово avenida/calle, но и показанный тип улицы. В fallback-билетах b-fallback-010, b-fallback-074 и b-fallback-079 правильный ответ выбирается как готовая связка из изображения: для одной avenidas-ситуации acera izquierda en días hábiles de 7 a 21, для calles - acera izquierda todos los días 24 horas, для другой avenida - ambas aceras en días hábiles de 7 a 21.",
-        "Текущий архив Ley 2148 подтверждает общую систему правил estacionamiento/detención, но не надо превращать каждую старую fallback-формулу из этих трех билетов в универсальное current-rule statement. Для экзаменационной тренировки здесь важна ticket-specific recognition: avenidas, calles, acera izquierda, ambas aceras и временная формула в вариантах ответа.",
-        "Знак или cartelería может менять смысл быстрее, чем длинное рассуждение. No estacionar запрещает estacionamiento; No estacionar ni detenerse строже и запрещает даже обычную detención. Permitido Estacionar в билете связан с azul, а rojo обычно считывается как запретный warning-color, не как разрешение парковки.",
-        "Желтая demarcación horizontal и isleta - не дополнительная парковочная площадь. В b-fallback-320 желтая зона нужна для traffic calming/channelization; в b-fallback-356 isleta - marcas canalizadoras de tránsito, по которым нельзя circular или traspasar.",
-        "Contramano/no entry в b-fallback-416 тоже не парковочная тема, хотя один distractor говорит про bancos. Красный круг с белой горизонтальной полосой означает sentido de circulación opuesto: въезжать нельзя, а не искать правило estacionamiento у банка."
+        "Этот блок - неофициальная подсказка Cabadrive. В этих билетах estacionar всегда надо читать вместе с местом и сигналом: avenida или calle, acera derecha/izquierda, ambas aceras, cartelería, color del cordón или горизонтальная разметка.",
+        "Три билета с изображениями по Ley 2148 требуют смотреть не только на avenida/calle, но и на показанный тип улицы. В этих старых билетах правильный ответ выбирается как готовая связка из картинки: для одной ситуации с avenida - acera izquierda en días hábiles de 7 a 21, для calles - acera izquierda todos los días 24 horas, для другой avenida - ambas aceras en días hábiles de 7 a 21.",
+        "Текущий архив Ley 2148 подтверждает общую систему правил estacionamiento/detención, но эти три старые формулы не надо учить как сегодняшнее универсальное правило. Для экзамена здесь важны именно показанная улица, acera izquierda, ambas aceras и временная формула в варианте ответа.",
+        "Знак или cartelería может сразу менять смысл. No estacionar запрещает estacionamiento; No estacionar ni detenerse строже и запрещает даже обычную detención. Permitido Estacionar в билете связан с azul, а rojo обычно подсказывает запрет или ограничение, не разрешение парковки.",
+        "Желтая demarcación horizontal и isleta - не дополнительное место для стоянки. В одном билете желтая зона помогает замедлить и направить поток; в другом isleta - это marcas canalizadoras de tránsito, по которым нельзя circular или traspasar.",
+        "Contramano/R.2 тоже не про парковку, хотя один неверный вариант говорит про banco. Красный круг с белой горизонтальной полосой означает sentido de circulación opuesto: въезжать нельзя, а не искать правило estacionamiento у банка."
       ],
       "practicalReasoningRu": [
         "Парковочные правила разгружают край calzada: водители заранее понимают, где поток должен оставаться свободным, где нужна видимость, а где остановка или стоянка создаст конфликт.",
         "Разделение no estacionar и no estacionar ni detenerse важно практически: иногда короткая высадка еще допустима, а иногда даже краткая остановка создает опасность или блокирует пространство.",
-        "Разметка isletas и желтые channelization zones делает траекторию движения понятной. Если принять ее за parking space, водитель заезжает туда, где поток как раз должен быть направлен и замедлен."
+        "Разметка isletas и желтые направляющие зоны делают траекторию движения понятной. Если принять их за место стоянки, водитель заезжает туда, где поток как раз должен быть направлен и замедлен."
       ],
       "spanishTerms": [
         {
@@ -616,17 +616,17 @@
             {
               "answerId": "b-fallback-010-a1",
               "verdict": "incorrect",
-              "explanationRu": "24 horas слишком широко для этой fallback-ситуации: билет ожидает запрет junto a la acera izquierda именно en días hábiles entre las 7 y las 21 horas."
+              "explanationRu": "24 horas слишком широко для этой старой ситуации из билета: ожидается запрет junto a la acera izquierda именно en días hábiles entre las 7 y las 21 horas."
             },
             {
               "answerId": "b-fallback-010-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по canonical fallback answer: для показанной avenida-ситуации запрещено estacionar junto a la acera izquierda los días hábiles entre las 7 y las 21 horas."
+              "explanationRu": "Правильно по этому старому билету: для показанной ситуации с avenida запрещено estacionar junto a la acera izquierda los días hábiles entre las 7 y las 21 horas."
             },
             {
               "answerId": "b-fallback-010-a3",
               "verdict": "incorrect",
-              "explanationRu": "Acera derecha - ловушка стороны. В этом ticket-image правильная связка идет с acera izquierda, а не с правой стороной."
+              "explanationRu": "Acera derecha - ловушка стороны. На этом изображении правильная связка идет с acera izquierda, а не с правой стороной."
             }
           ]
         },
@@ -637,17 +637,17 @@
             {
               "answerId": "b-fallback-074-a1",
               "verdict": "incorrect",
-              "explanationRu": "Acera derecha не совпадает с canonical answer. Билет проверяет запрет junto a la acera izquierda."
+              "explanationRu": "Acera derecha не совпадает с правильным вариантом. Билет проверяет запрет junto a la acera izquierda."
             },
             {
               "answerId": "b-fallback-074-a2",
               "verdict": "incorrect",
-              "explanationRu": "Формула días hábiles 7-21 похожа на avenue-trap из соседних билетов, но здесь вопрос про calles и ожидает otra franja."
+              "explanationRu": "Формула días hábiles 7-21 похожа на ловушку из соседних билетов про avenida, но здесь вопрос про calles и ожидает otra franja."
             },
             {
               "answerId": "b-fallback-074-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback ticket: для показанного типа calles запрещено estacionar junto a la acera izquierda todos los días durante las 24 horas."
+              "explanationRu": "Правильно по этому старому билету: для показанного типа calles запрещено estacionar junto a la acera izquierda todos los días durante las 24 horas."
             }
           ]
         },
@@ -663,7 +663,7 @@
             {
               "answerId": "b-fallback-079-a2",
               "verdict": "incorrect",
-              "explanationRu": "Только acera derecha слишком узко. Вариант теряет ambas aceras, поэтому не совпадает с показанной avenue-rule recognition."
+              "explanationRu": "Только acera derecha слишком узко. Вариант теряет ambas aceras, поэтому не совпадает с правилом, которое надо узнать по изображению avenida."
             },
             {
               "answerId": "b-fallback-079-a3",
@@ -679,17 +679,17 @@
             {
               "answerId": "b-fallback-320-a1",
               "verdict": "incorrect",
-              "explanationRu": "Ampliar estacionamiento para motos - parking distractor. Желтая зона на изображении не создает разрешенное место стоянки."
+              "explanationRu": "Ampliar estacionamiento para motos - ловушка про парковку. Желтая зона на изображении не создает разрешенное место стоянки."
             },
             {
               "answerId": "b-fallback-320-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback ticket: такая желтая demarcación horizontal работает как traffic-calming/channelization cue, чтобы reducir la velocidad y radio de giro de los vehículos."
+              "explanationRu": "Правильно по этому билету: такая желтая demarcación horizontal помогает замедлить и направить движение, чтобы reducir la velocidad y radio de giro de los vehículos."
             },
             {
               "answerId": "b-fallback-320-a3",
               "verdict": "incorrect",
-              "explanationRu": "Это не парковка для vehículos de emergencia. Вариант снова пытается прочитать marking как parking extension, хотя смысл билета - организация движения."
+              "explanationRu": "Это не парковка для vehículos de emergencia. Вариант снова пытается прочитать разметку как расширение стоянки, хотя смысл билета - организация движения."
             }
           ]
         },
@@ -699,7 +699,7 @@
             {
               "answerId": "b-fallback-324-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: в билете cartelería de Permitido Estacionar связана с Azul. Синий parking sign читается как разрешение/назначение, а не запрет."
+              "explanationRu": "Правильно: в билете cartelería de Permitido Estacionar связана с Azul. Синий знак читается как разрешение или назначенное место, а не запрет."
             },
             {
               "answerId": "b-fallback-324-a2",
@@ -709,7 +709,7 @@
             {
               "answerId": "b-fallback-324-a3",
               "verdict": "incorrect",
-              "explanationRu": "Rojo в parking-sign context обычно ведет к запрету или ограничению; в этом ticket correct color для Permitido Estacionar - azul."
+              "explanationRu": "Rojo в парковочных знаках обычно ведет к запрету или ограничению; в этом билете правильный цвет для Permitido Estacionar - azul."
             }
           ]
         },
@@ -724,7 +724,7 @@
             {
               "answerId": "b-fallback-356-a2",
               "verdict": "incorrect",
-              "explanationRu": "Isleta не означает espacio reservado para estacionamiento exclusivo de motovehículos. Это parking distractor, который надо отбросить."
+              "explanationRu": "Isleta не означает espacio reservado para estacionamiento exclusivo de motovehículos. Это парковочная ловушка, которую надо отбросить."
             },
             {
               "answerId": "b-fallback-356-a3",
@@ -740,17 +740,17 @@
             {
               "answerId": "b-fallback-416-a1",
               "verdict": "incorrect",
-              "explanationRu": "Entidad bancaria - distractor из parking topic. Этот знак не сообщает запрет estacionamiento frente al banco."
+              "explanationRu": "Entidad bancaria - отвлекающий вариант из темы парковки. Этот знак не сообщает запрет estacionamiento frente al banco."
             },
             {
               "answerId": "b-fallback-416-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: знак означает sentido de circulación opuesto; перед такой vía no se puede ingresar."
+              "explanationRu": "Правильно: знак означает sentido de circulación opuesto; на такую vía no se puede ingresar."
             },
             {
               "answerId": "b-fallback-416-a3",
               "verdict": "incorrect",
-              "explanationRu": "Это не запрет для vehículos sin permiso de ingreso. Запрет связан именно с contramano/no entry, то есть встречным направлением."
+              "explanationRu": "Это не запрет для vehículos sin permiso de ingreso. Запрет связан именно с contramano/R.2, то есть встречным направлением."
             }
           ]
         }
@@ -758,7 +758,7 @@
       "trapNotes": [
         {
           "id": "trap-avenida-calle-acera-side",
-          "textRu": "Не отвечайте по одному слову avenida или calle. В этих fallback tickets меняются сторона и охват: acera izquierda, acera derecha или ambas aceras.",
+          "textRu": "Не отвечайте по одному слову avenida или calle. В этих старых билетах меняются сторона и охват: acera izquierda, acera derecha или ambas aceras.",
           "sourceQuestionIds": [
             "b-fallback-010",
             "b-fallback-074",
@@ -767,7 +767,7 @@
         },
         {
           "id": "trap-days-hours-vs-24h",
-          "textRu": "días hábiles entre las 7 y las 21 horas и todos los días durante las 24 horas выглядят похожими fixed phrases, но в билетах они привязаны к разным street/avenue images.",
+          "textRu": "días hábiles entre las 7 y las 21 horas и todos los días durante las 24 horas выглядят похожими готовыми фразами, но в билетах они привязаны к разным изображениям улицы или avenida.",
           "sourceQuestionIds": [
             "b-fallback-010",
             "b-fallback-074",
@@ -783,7 +783,7 @@
         },
         {
           "id": "trap-yellow-marking-not-parking",
-          "textRu": "Demarcación horizontal amarilla и isleta - не место для motos или emergency vehicles. Это разметка для channelization/traffic calming.",
+          "textRu": "Demarcación horizontal amarilla и isleta - не место для motos или vehículos de emergencia. Это разметка, которая направляет и замедляет поток.",
           "sourceQuestionIds": [
             "b-fallback-320",
             "b-fallback-356"
@@ -791,7 +791,7 @@
         },
         {
           "id": "trap-bank-front-distractor",
-          "textRu": "В b-fallback-416 вариант про banco использует parking wording, но знак R.2/contramano отвечает про sentido opuesto и запрет въезда.",
+          "textRu": "Вариант про banco звучит как парковочная тема, но знак R.2/contramano отвечает про sentido opuesto и запрет въезда.",
           "sourceQuestionIds": [
             "b-fallback-416"
           ]
@@ -15853,7 +15853,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "7c79052e79fb7223c8f2a8791085c2b5ab8af3246b9499a9783fdf9cde079207",
+        "sourceFingerprint": "7272ffd967a11462a4dd24983fc18cc6284d61a54ab1b92bbbe41619479f3597",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -15871,22 +15871,22 @@
         }
       },
       "titleRu": "Остановка, стоянка и маневры парковки",
-      "summaryRu": "Экзаменационный блок про diferencia entre detención y estacionamiento, double fila, balizas, въезд в garaje, banquina, emergency vehicles, PARE и знаки, которые маскируются под parking-тему.",
+      "summaryRu": "Блок про разницу detención и estacionamiento, doble fila, balizas, въезд в garaje, banquina, vehículos de emergencia, PARE и знаки, которые легко принять за парковочные.",
       "learningMaterialRu": [
         "Этот блок - неофициальная подсказка Cabadrive. В испанских билетах держите три разных слова отдельно: detenerse - кратко остановиться, estacionar - оставить транспорт дольше/как стоянку, maniobra de estacionamiento - сам маневр парковки.",
-        "В CABA detención в обычной ситуации - краткая остановка до двух минут, водитель не покидает автомобиль, машина ставится как можно ближе к acera и обязательно предупреждает balizas. Если водитель ушел или время больше, ситуация уже читается как estacionamiento.",
-        "Balizas не являются “магической кнопкой разрешения”. Они предупреждают о detenido, egreso a garage, próxima maniobra de detención/estacionamiento, emergencia или другой необычной ситуации. Но они не разрешают double fila для высадки пассажиров, не отменяют знак No estacionar ni detenerse и не дают права стоять на ciclovía, senda peatonal, esquina, puente, túnel или vía rápida.",
-        "Double fila - главная ловушка темы. Общая формула билетов: нельзя останавливаться во второй ряд, кроме detención previa a la maniobra de estacionamiento. Ascenso y descenso de pasajeros, “2 a 5 minutos”, водитель внутри и включенные balizas не делают double fila законной.",
+        "В CABA detención в обычной ситуации - краткая остановка до двух минут: водитель не покидает автомобиль, машина стоит как можно ближе к acera и предупреждает balizas. Если водитель ушел или время больше, ситуация уже читается как estacionamiento.",
+        "Balizas не являются кнопкой “можно”. Они предупреждают о detenido, egreso a garage, próxima maniobra de detención/estacionamiento, emergencia или другой необычной ситуации. Но они не разрешают doble fila для высадки пассажиров, не отменяют знак No estacionar ni detenerse и не дают права стоять на ciclovía, senda peatonal, esquina, puente, túnel или vía rápida.",
+        "Doble fila - главная ловушка темы. Общая формула билетов: нельзя останавливаться во второй ряд, кроме detención previa a la maniobra de estacionamiento. Ascenso y descenso de pasajeros, “2 a 5 minutos”, водитель внутри и включенные balizas не делают doble fila законной.",
         "No estacionar и No estacionar ni detenerse - разные запреты. No estacionar запрещает стоянку, но по общей логике допускает краткую detención для ascenso/descenso, если нет другого запрета. No estacionar ni detenerse запрещает и стоянку, и остановку; единственная вынужденная остановка - por motivos de la circulación.",
         "При ingreso a garaje/playa de estacionamiento/estación de servicio используйте luces intermitentes de emergencia или balizas, а не обычный поворотник. Для едущего сзади это сигнал: машина может резко замедлиться, остановиться у acera или начать необычный маневр.",
         "На autopistas, vías rápidas и banquina остановка не превращается в “безопасную” только потому, что видимость плохая. Если движение невозможно из-за niebla или аварии, цель - уйти как можно дальше от calzada и banquina, предупредить других и не оставаться в траектории потока.",
-        "После siniestro vial первый шаг - detenerse inmediatamente, не уезжать в comisaría и не продолжать поездку после звонка. При emergency vehicle нужно дать место, освободить carril de emergencias и при необходимости остановиться. При agente de tránsito или personal de obra в зоне работ выполняйте их указание detenerse, даже если обычный сигнал кажется разрешающим.",
-        "Часть билетов выглядит как parking, но на самом деле проверяет распознавание знаков: PARE требует полной остановки; Corredor aéreo предупреждает о низких самолетах; Plaza, Teatro и Estacionamiento vehicular - информационные ориентиры, а не запреты парковки."
+        "После siniestro vial первый шаг - detenerse inmediatamente, не уезжать в comisaría и не продолжать поездку после звонка. При vehículo de emergencia нужно дать место, освободить carril de emergencias и при необходимости остановиться. При agente de tránsito или personal de obra в зоне работ выполняйте их указание detenerse, даже если обычный сигнал кажется разрешающим.",
+        "Часть билетов выглядит как тема парковки, но на самом деле проверяет распознавание знаков: PARE требует полной остановки; Corredor aéreo предупреждает о низких самолетах; Plaza, Teatro и Estacionamiento vehicular - информационные ориентиры, а не запреты парковки."
       ],
       "practicalReasoningRu": [
         "Различие detención/estacionamiento нужно, чтобы поток понимал намерение водителя: кратко высадить пассажира, начать парковку, въехать в гараж или реально оставить машину.",
         "Balizas делают маневр предсказуемым, но если ими “покупать” право стоять где угодно, остальные водители начнут угадывать, объезжать и резко перестраиваться.",
-        "Запреты на double fila, banquina, esquinas, sendas, puentes и vías rápidas защищают видимость, траекторию объезда и пространство для emergency vehicles."
+        "Запреты на doble fila, banquina, esquinas, sendas, puentes и vías rápidas защищают видимость, траекторию объезда и пространство для vehículos de emergencia."
       ],
       "spanishTerms": [
         {
@@ -16100,7 +16100,7 @@
             {
               "answerId": "b-fallback-017-a1",
               "verdict": "incorrect",
-              "explanationRu": "Ускоряться рядом с emergency vehicle опасно: вы можете закрыть carril de emergencias и помешать приоритетному проезду."
+              "explanationRu": "Ускоряться рядом с vehículo de emergencia опасно: вы можете закрыть carril de emergencias и помешать приоритетному проезду."
             },
             {
               "answerId": "b-fallback-017-a2",
@@ -16110,7 +16110,7 @@
             {
               "answerId": "b-fallback-017-a3",
               "verdict": "correct",
-              "explanationRu": "При сигнале emergency vehicle нужно немедленно дать место, despejar el carril de emergencias и при необходимости detenerse."
+              "explanationRu": "При сигнале vehículo de emergencia нужно немедленно дать место, despejar el carril de emergencias и при необходимости detenerse."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b93.jpg"
@@ -16121,17 +16121,17 @@
             {
               "answerId": "b-fallback-039-a1",
               "verdict": "incorrect",
-              "explanationRu": "Balizas и короткое время не делают doble fila разрешенной для высадки пассажира. Это ровно ловушка билета."
+              "explanationRu": "Balizas и короткое время не делают doble fila разрешенной для высадки пассажира. Это как раз ловушка билета."
             },
             {
               "answerId": "b-fallback-039-a2",
               "verdict": "incorrect",
-              "explanationRu": "Ascenso y descenso de pasajeros сам по себе не разрешает double fila. Исключение уже - только detención previa a la maniobra de estacionamiento."
+              "explanationRu": "Ascenso y descenso de pasajeros сам по себе не разрешает doble fila. Единственное исключение здесь - detención previa a la maniobra de estacionamiento."
             },
             {
               "answerId": "b-fallback-039-a3",
               "verdict": "correct",
-              "explanationRu": "Действие не разрешено: double fila допускается только как краткая остановка перед маневром парковки, а не как обычная посадка или высадка."
+              "explanationRu": "Действие не разрешено: doble fila допускается только как краткая остановка перед маневром парковки, а не как обычная посадка или высадка."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b162.jpg"
@@ -16163,7 +16163,7 @@
             {
               "answerId": "b-fallback-051-a1",
               "verdict": "incorrect",
-              "explanationRu": "Detención para ascenso o descenso de pasajeros не является исключением для показанной double fila в этом билете."
+              "explanationRu": "Detención para ascenso o descenso de pasajeros не является исключением для показанной doble fila в этом билете."
             },
             {
               "answerId": "b-fallback-051-a2",
@@ -16173,7 +16173,7 @@
             {
               "answerId": "b-fallback-051-a3",
               "verdict": "incorrect",
-              "explanationRu": "Не обе: посадка/высадка не разрешает double fila, поэтому вариант A+B слишком широкий."
+              "explanationRu": "Не обе: посадка/высадка не разрешает doble fila, поэтому вариант A+B слишком широкий."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b161.jpg"
@@ -16189,7 +16189,7 @@
             {
               "answerId": "b-fallback-077-a2",
               "verdict": "correct",
-              "explanationRu": "Balizas предупреждают, что vehículo detenido или приближается к detención, estacionamiento, emergency или другой рискованной/необычной маневрe."
+              "explanationRu": "Balizas предупреждают, что vehículo detenido или приближается к detención, estacionamiento, emergencia или другому рискованному/необычному маневру."
             },
             {
               "answerId": "b-fallback-077-a3",
@@ -16221,7 +16221,7 @@
             {
               "answerId": "b-fallback-097-a1",
               "verdict": "incorrect",
-              "explanationRu": "2-5 минут - не критерий законности. Если это не непосредственная maniobra de estacionamiento, double fila остается нарушением."
+              "explanationRu": "2-5 минут - не критерий законности. Если это не непосредственная maniobra de estacionamiento, doble fila остается нарушением."
             },
             {
               "answerId": "b-fallback-097-a2",
@@ -16283,12 +16283,12 @@
             {
               "answerId": "b-fallback-133-a2",
               "verdict": "incorrect",
-              "explanationRu": "Многократная bocina не является правильным способом уступить emergency vehicle; нужно физически освободить путь."
+              "explanationRu": "Многократная bocina не является правильным способом уступить vehículo de emergencia; нужно физически освободить путь."
             },
             {
               "answerId": "b-fallback-133-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно dar lugar, despejar el carril de emergencias и при необходимости detenerse, чтобы emergency vehicle прошел без задержки."
+              "explanationRu": "Правильно dar lugar, despejar el carril de emergencias и при необходимости detenerse, чтобы vehículo de emergencia прошел без задержки."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b89.jpg"
@@ -16524,7 +16524,7 @@
             {
               "answerId": "b-fallback-413-a1",
               "verdict": "incorrect",
-              "explanationRu": "Balizas не отменяют запрет. В секторе, где запрещены detención и estacionamiento, аварийка не превращает остановку в разрешенную."
+              "explanationRu": "Balizas не отменяют запрет. В секторе, где запрещены detención и estacionamiento, аварийная сигнализация не превращает остановку в разрешенную."
             },
             {
               "answerId": "b-fallback-413-a2",
@@ -16561,7 +16561,7 @@
             {
               "answerId": "b-fallback-455-a1",
               "verdict": "incorrect",
-              "explanationRu": "Информационный знак parking nearby не означает, что detenerse разрешено прямо на этой vía. Он только указывает объект поблизости."
+              "explanationRu": "Информационный знак о парковке поблизости не означает, что detenerse разрешено прямо на этой vía. Он только указывает объект поблизости."
             },
             {
               "answerId": "b-fallback-455-a2",
@@ -16584,7 +16584,7 @@
         },
         {
           "id": "trap-double-row-exception",
-          "textRu": "Double fila разрешается в этих билетах только как detención previa a la maniobra de estacionamiento; пассажиры и 2-5 минут не подходят."
+          "textRu": "Doble fila разрешается в этих билетах только как detención previa a la maniobra de estacionamiento; пассажиры и 2-5 минут не подходят."
         },
         {
           "id": "trap-no-estacionar-vs-no-detenerse",
@@ -16592,11 +16592,11 @@
         },
         {
           "id": "trap-information-signs",
-          "textRu": "Не каждое изображение с parking-словами является запретом: aeropuerto, plaza, teatro и estacionamiento vehicular в этих билетах - ориентиры/информация."
+          "textRu": "Не каждое изображение с парковочными словами является запретом: aeropuerto, plaza, teatro и estacionamiento vehicular в этих билетах - ориентиры/информация."
         },
         {
           "id": "trap-authority-over-signal",
-          "textRu": "Когда агент или authorized work personnel показывает остановиться, не спорьте с зеленым сигналом или общей логикой приоритета: выполняется оперативное указание."
+          "textRu": "Когда agente de tránsito или personal de obra autorizado показывает остановиться, не спорьте с зеленым сигналом или общей логикой приоритета: выполняется оперативное указание."
         }
       ],
       "claims": [
