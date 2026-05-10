@@ -7595,7 +7595,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "a374d956773052943f39c2e82d4f6b902c398e3cf7ad01aa6d0ca1d06bed5ccf",
+        "sourceFingerprint": "fce671fd20cc8bdaba8fc8f54bd052ff301db82cb2c7f71faa8ec1b45375aa6b",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -7612,19 +7612,19 @@
           ]
         }
       },
-      "titleRu": "Типы дорог, трассы, автомагистрали и маршруты",
-      "summaryRu": "Короткий блок про то, как в билетах распознавать calle, avenida, ruta, autopista, semiautopista, banquina и специальные быстрые участки.",
+      "titleRu": "Типы дорог: улицы, трассы и быстрые дороги",
+      "summaryRu": "Как в билетах отличать calle, avenida, ruta, autopista, semiautopista, banquina и особые быстрые участки CABA.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах по дорожному контексту сначала назовите место: calle, avenida, ruta, autopista, semiautopista, via rapida, banquina, tunel или конкретная артерия CABA. От этого зависит и правильное действие, и число скорости, и режим света.",
-        "Calle и avenida в городе отличаются не только шириной, но и экзаменационной логикой: обычная calle дает более спокойный городской режим, avenida чаще связывается с 60 km/h, а отдельные tramos могут иметь свою скорость по знаку или по специальному правилу. Поэтому в вопросах с изображением не отвечайте только по слову avenida: смотрите, какой именно tramo показан.",
-        "Ruta, autopista и semiautopista в билетах ведут себя как быстрые дороги. На них важны carriles, banquina, carril de desaceleracion, luces bajas и запрет превышать максимум даже при sobrepaso. Если нужно съехать с autopista или semiautopista, снижайте скорость после входа в carril de desaceleracion, чтобы не тормозить основной поток.",
-        "Banquina - не дополнительная полоса движения. Она находится рядом с calzada и нужна для безопасности или аварийной ситуации; билет с автомобилем на banquina требует ответить, что он circula incorrectamente.",
-        "Маршрутные знаки в этом срезе объясняются только на уровне конкретных билетов: Ruta Nacional N°3, Ruta Provincial N°5 и знак ruta provincial в вопросе. Без отдельного архивного среза по приложениям/аннексам Decreto 779 не делаем общего учебного утверждения о системе всех дорожных знаков.",
-        "Туннели, узкие мосты, камнепады и начало/конец autopista часто проверяются как распознавание дорожного контекста по изображению. В таких билетах выбирайте конкретный смысл картинки, а не самый знакомый дорожный термин."
+        "Этот блок - неофициальная подсказка Cabadrive. В вопросе сначала поймите, где вы едете: calle, avenida, ruta, autopista, semiautopista, via rapida, banquina, tunel или конкретная артерия CABA. От места зависят скорость, свет и само действие.",
+        "Calle и avenida в CABA - не просто «улица поменьше» и «улица побольше». В билетах обычная calle часто ведет к городскому режиму, avenida часто к 60 km/h, а отдельный tramo может иметь свой лимит. Если есть картинка, не отвечайте только по слову avenida: смотрите, какой участок показан.",
+        "Ruta, autopista и semiautopista в билетах - быстрые дороги. На них важны carriles, banquina, carril de desaceleracion, luces bajas и правило: даже при sobrepaso нельзя превышать максимум. Съезжая с autopista или semiautopista, снижайте скорость уже в carril de desaceleracion, а не в основном потоке.",
+        "Banquina - не запасная полоса. Это зона рядом с calzada для безопасности и аварийных ситуаций; если машина просто едет по banquina, билет ждет ответ circula incorrectamente.",
+        "Маршрутные знаки здесь читаем узко, по конкретным картинкам: Ruta Nacional N°3, Ruta Provincial N°5 и знак ruta provincial. Общую систему всех маршрутных знаков из этого блока не выводим.",
+        "Туннели, узкие мосты, камнепады и начало/конец autopista часто проверяются по картинке. Выбирайте то, что реально изображено, а не самый знакомый дорожный термин."
       ],
       "practicalReasoningRu": [
-        "Тип дороги заранее сообщает водителю ожидаемую скорость, число конфликтов, наличие съездов, пешеходов, обочины и встречного движения. Поэтому экзамен часто спрашивает не только правило, но и способность распознать среду движения.",
-        "Разделение быстрых дорог на основной поток, banquina и carriles de desaceleracion делает поведение предсказуемым: кто едет прямо, не получает внезапное торможение перед съездом, а аварийная зона не превращается в полосу движения."
+        "Тип дороги сразу подсказывает ожидаемую скорость, съезды, пешеходов, обочину и встречное движение. Поэтому экзамен проверяет не только правило, но и умение узнать дорожную среду.",
+        "На быстрых дорогах основной поток, banquina и carriles de desaceleracion разделены не случайно. Так прямой поток не получает резкое торможение перед съездом, а аварийная зона не превращается в обычную полосу."
       ],
       "spanishTerms": [
         {
@@ -7785,7 +7785,7 @@
         {
           "id": "term-intendente-cantilo-road",
           "termEs": "Intendente Cantilo",
-          "translationRu": "Intendente Cantilo",
+          "translationRu": "проспект Intendente Cantilo",
           "sourceQuestionIds": [
             "b-fallback-250",
             "b-fallback-398"
@@ -7862,17 +7862,17 @@
             {
               "answerId": "b-fallback-034-a1",
               "verdict": "incorrect",
-              "explanationRu": "В билете provincial route соответствует не senal A; это отвлекающий вариант среди трех похожих маршрутных знаков."
+              "explanationRu": "В билете знак провинциального маршрута - не senal A; это отвлекающий вариант среди трех похожих маршрутных знаков."
             },
             {
               "answerId": "b-fallback-034-a2",
               "verdict": "incorrect",
-              "explanationRu": "Senal B тоже не обозначает ruta provincial в данном изображении."
+              "explanationRu": "Senal B тоже не обозначает провинциальную ruta в данном изображении."
             },
             {
               "answerId": "b-fallback-034-a3",
               "verdict": "correct",
-              "explanationRu": "По изображению правильная ruta provincial - senal C. Здесь нужно распознать конкретный маршрутный знак, не выводя общее правило о всей системе знаков."
+              "explanationRu": "По изображению правильная провинциальная ruta - senal C. Здесь нужно распознать конкретный маршрутный знак, не выводя общее правило о всей системе знаков."
             }
           ]
         },
@@ -8068,12 +8068,12 @@
             {
               "answerId": "b-fallback-296-a1",
               "verdict": "correct",
-              "explanationRu": "В этом билете изображенный маршрутный знак означает Ruta Nacional N°3. Объяснение остается ticket-specific без общей ссылки на аннексы знаков."
+              "explanationRu": "В этом билете изображенный маршрутный знак означает Ruta Nacional N°3. Это только чтение конкретной картинки, без общего вывода по аннексам знаков."
             },
             {
               "answerId": "b-fallback-296-a2",
               "verdict": "incorrect",
-              "explanationRu": "Ruta Provincial N°3 - похожий маршрутный вариант, но изображение в билете указывает national, не provincial."
+              "explanationRu": "Ruta Provincial N°3 - похожий маршрутный вариант, но изображение в билете указывает национальный, а не провинциальный маршрут."
             },
             {
               "answerId": "b-fallback-296-a3",
@@ -8151,12 +8151,12 @@
             {
               "answerId": "b-fallback-343-a1",
               "verdict": "incorrect",
-              "explanationRu": "Ruta Nacional N°5 - похожий маршрутный ответ, но изображение в билете указывает provincial."
+              "explanationRu": "Ruta Nacional N°5 - похожий маршрутный ответ, но изображение в билете указывает провинциальный маршрут."
             },
             {
               "answerId": "b-fallback-343-a2",
               "verdict": "correct",
-              "explanationRu": "В этом билете изображенный знак означает Ruta Provincial N°5. Это ticket-specific recognition без общего аннексного утверждения."
+              "explanationRu": "В этом билете изображенный знак означает Ruta Provincial N°5. Это распознавание конкретной картинки, без общего утверждения по аннексам."
             },
             {
               "answerId": "b-fallback-343-a3",
@@ -8338,7 +8338,7 @@
         },
         {
           "id": "trap-image-specific-tramos",
-          "textRu": "В билетах с изображением tramo может быть исключением: Costanera, Cantilo, Gral. Paz или специальная calle проверяются отдельно от общего правила.",
+          "textRu": "В билетах с изображением отдельный tramo может быть исключением: Costanera, Cantilo, Gral. Paz или специальная calle проверяются отдельно от общего правила.",
           "sourceQuestionIds": [
             "b-fallback-032",
             "b-fallback-049",
@@ -8357,7 +8357,7 @@
         },
         {
           "id": "trap-route-sign-ticket-specific",
-          "textRu": "Ruta Nacional/Ruta Provincial в билетах 296 и 343 - распознавание конкретной картинки. Не расширяйте это в общее правило о всей системе знаков без отдельного архивного источника.",
+          "textRu": "Ruta Nacional/Ruta Provincial в этих двух билетах - распознавание конкретной картинки. Не расширяйте это в общее правило о всей системе знаков без отдельного архивного источника.",
           "sourceQuestionIds": [
             "b-fallback-296",
             "b-fallback-343"
@@ -8373,7 +8373,7 @@
         },
         {
           "id": "trap-ambas-respuestas",
-          "textRu": "Cuando aparece Ambas respuestas, проверьте, правда ли обе части. В билете про luces bajas верны и autopistas, и перечисленные vias rapidas.",
+          "textRu": "Если видите Ambas respuestas, проверьте обе части. В билете про luces bajas верны и autopistas, и перечисленные vias rapidas.",
           "sourceQuestionIds": [
             "b-fallback-250"
           ]
@@ -8426,7 +8426,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "a846d05f2993b4706dd41f12029690d27b949c4823d5933a084f59c44bd7e8c2",
+        "sourceFingerprint": "e278ad346dc5ffd893eada0fe656af439b2b42581f66f3dc23e6373ab3ec0c86",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -8443,19 +8443,19 @@
           ]
         }
       },
-      "titleRu": "Запрещающие и предписывающие знаки",
-      "summaryRu": "Экзаменационный блок про señales reglamentarias, похожие предупреждающие/информационные знаки и ловушки с обязательностью, запретом и классификацией.",
+      "titleRu": "Знаки приказа и запрета",
+      "summaryRu": "Как отличать señales reglamentarias от предупреждающих, информационных и временных знаков, чтобы не перепутать приказ, запрет и подсказку.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах слово reglamentaria означает не просто «дорожный знак», а знак, который передает обязательное правило: запрет, ограничение, приказ остановиться, направление движения, минимум скорости или выделенную полосу.",
-        "Сначала определяйте функцию знака. Reglamentarias/prescriptivas дают orden obligatoria; preventivas предупреждают об опасности или необычном участке; informativas ориентируют и сообщают место или сервис; transitorias относятся к временным работам, объездам и ограничениям.",
-        "Красный обод, перечеркнутый символ, PARE, contramano, giro obligatorio, velocidad mínima, carril exclusivo и tránsito pesado a la derecha - это типичные экзаменационные сигналы обязательности. В ответах ищите не красивый перевод, а действие: нельзя ехать, нужно остановиться, нужно ехать в указанном направлении или нельзя ехать медленнее указанного минимума.",
-        "Не все билеты в этой теме на самом деле имеют правильный ответ «reglamentaria». Часть из них попала сюда как ловушки классификации: jinetes, aeropuerto, plaza, teatro, paneles de prevención, informativa и transitoria проверяют, умеете ли вы отличать запрет от предупреждения или информации.",
-        "Если вопрос говорит prohibido por normativa, отдельный знак на картинке может быть не нужен. Для тоннеля, опасного места или участка с запретом остановки отвечайте по правилу билета: «нет, запрещено», даже если вариант предлагает «если не мешает» или «если нет знака».",
-        "Скоростные знаки читайте особенно внимательно: velocidad mínima - нижний предел, а velocidad máxima - верхний. Число само по себе не говорит, какой это предел; смотрите тип знака и формулировку вопроса."
+        "Этот блок - неофициальная подсказка Cabadrive. Reglamentaria в билете - это не любой знак, а знак с обязательным правилом: запрет, ограничение, PARE, направление движения, минимум скорости или выделенная полоса.",
+        "Сначала спросите: что знак делает? Reglamentarias/prescriptivas приказывают или запрещают. Preventivas предупреждают об опасности. Informativas подсказывают место или сервис. Transitorias относятся к временным работам, объездам и ограничениям.",
+        "Красный обод, перечеркнутый символ, PARE, contramano, giro obligatorio, velocidad mínima, carril exclusivo и tránsito pesado a la derecha - сигналы обязательности. В ответах ищите действие: нельзя въезжать, нужно остановиться, ехать только так или не ехать медленнее минимума.",
+        "Не каждый билет в этой теме имеет ответ reglamentaria. Jinetes, aeropuerto, plaza, teatro, paneles de prevención, informativa и transitoria проверяют, умеете ли вы отличить запрет от предупреждения или информации.",
+        "Если вопрос говорит prohibido por normativa, отдельный знак на картинке может быть не нужен. Для тоннеля, опасного места или участка с запретом остановки отвечайте по правилу билета: нет, запрещено. Варианты «если не мешает» или «если нет знака» здесь ловушки.",
+        "Скоростные знаки читайте по типу. Velocidad mínima - нижний предел, velocidad máxima - верхний. Одного числа мало: смотрите знак и формулировку вопроса."
       ],
       "practicalReasoningRu": [
-        "Смысл системы знаков - дать водителю короткий и единый язык дороги. Когда знак является обязательным, поток становится предсказуемым: каждый водитель знает, где остановиться, куда нельзя въезжать, какой ряд кому предназначен и какое направление разрешено.",
-        "Классификация нужна не ради теории. На экзамене она помогает не перепутать предупреждение «будь готов» с приказом «обязан выполнить» и не выбрать запрет там, где знак только сообщает о месте поблизости."
+        "Знаки дают водителю короткий общий язык дороги. Если знак обязательный, поток становится предсказуемым: где остановиться, куда нельзя въезжать, какой ряд кому нужен и куда разрешено ехать.",
+        "Классификация нужна не для теории. На экзамене она спасает от типичной ошибки: принять предупреждение «будь готов» за приказ или увидеть запрет там, где знак только сообщает место поблизости."
       ],
       "spanishTerms": [
         {
@@ -9174,7 +9174,7 @@
       "trapNotes": [
         {
           "id": "trap-reglamentaria-vs-preventiva",
-          "textRu": "Reglamentaria = приказ или запрет. Preventiva = предупреждение. Если ответ говорит «предупреждает о близости/опасности», это обычно не reglamentaria.",
+          "textRu": "Reglamentaria = приказ или запрет. Preventiva = предупреждение. Если ответ говорит «предупреждает о близости/опасности», это обычно не знак обязательного правила.",
           "sourceQuestionIds": [
             "b-fallback-004",
             "b-fallback-011",
@@ -9195,14 +9195,14 @@
         },
         {
           "id": "trap-minimum-vs-maximum",
-          "textRu": "Число на знаке может быть mínimo, а не máximo. В билете b-fallback-029 правильный ответ запрещает ехать медленнее 35 km/h.",
+          "textRu": "Число на знаке может быть mínimo, а не máximo. В вопросе про 35 km/h правильный ответ запрещает ехать медленнее этого числа.",
           "sourceQuestionIds": [
             "b-fallback-029"
           ]
         },
         {
           "id": "trap-obligatorio-vs-permitida",
-          "textRu": "Obligatorio и permitida не одно и то же: giro obligatorio требует маневр, dirección permitida только показывает разрешенное направление.",
+          "textRu": "Obligatorio и permitida не одно и то же: giro obligatorio требует маневр, dirección permitida только показывает, куда можно ехать.",
           "sourceQuestionIds": [
             "b-fallback-115",
             "b-fallback-177",
@@ -10431,7 +10431,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "dbffbffa9f6241baad9998787967ea1d03f522b92c7c5d3f5b21efa258392e8d",
+        "sourceFingerprint": "2f5268e3c252bc01d5fc0f5a4fc5966a66213b573692c84a72c28c3336742c81",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -10448,21 +10448,21 @@
           ]
         }
       },
-      "titleRu": "Светофоры, переезды и сигналы регулирования",
-      "summaryRu": "Экзаменационный блок про semáforos, luces intermitentes, cruces ferroviarios, barreras и правила перекрестков sin semáforos.",
+      "titleRu": "Светофоры, переезды и сигналы",
+      "summaryRu": "Как отвечать на билеты про semáforos, luces intermitentes, cruces ferroviarios, barreras и перекрестки sin semáforos.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах этой темы сначала спрашивайте: движение регулирует semáforo, señalización intermitente, autoridad/personal ferroviario, временная señalización или вообще cruce sin semáforos. От этого зависит, включается ли обычное правило приоритета.",
-        "Иерархия сигналов важнее привычки. Señales u órdenes de la autoridad и señalización transitoria могут изменить обычный режим; затем идут semáforos; ниже - вертикальные знаки, разметка и общие нормы. Поэтому билет про señalización transitoria sobre semáforos отвечает не по цвету светофора, а по порядку приоритета.",
-        "В semáforo intermitente цвет решает действие. Amarillo/intermitente предупреждает о cruce riesgoso: пересекать можно, но с максимальной осторожностью. Rojo/intermitente требует полной остановки и продолжения только когда есть certeza de que no existe riesgo.",
-        "Paso a nivel и cruce ferroviario - отдельная зона риска. Barrera baja, barrera descendiendo, luz roja ferroviaria или señal del personal ferroviario означают, что нельзя действовать как на обычной bocacalle. Перед переездом нужно убедиться, что нет tren, salida está libre, и нельзя останавливаться sobre los rieles или слишком близко к ним.",
-        "Если semáforo отсутствует, возвращайтесь к правилам encrucijadas sin semáforos: сначала jerarquía de arterias - avenida, calle, pasaje; при равной jerarquía обычно derecho, но есть исключения, например vehículo que sale del paso a nivel ferroviario. Для скорости в таких местах помните: calle 30 km/h, avenida 40 km/h как верхний предел velocidad precautoria.",
-        "Поворот налево - частая ловушка. На intersección semaforizada de doble sentido без flecha/semáforo de giro поворот запрещен; в cruce sin semáforos он может быть разрешен, если траектория безопасна и не приближается встречный транспорт.",
-        "Экстренные сигналы читаются по назначению, а не по раздражающему звуку. Bocina repetida, balizas, paño или luces intermitentes могут означать emergencia или рискованный маневр; рядом с таким транспортом нужно уступить или проверить условия, а не отвечать собственной bocina."
+        "Этот блок - неофициальная подсказка Cabadrive. Сначала поймите, кто управляет ситуацией: semáforo, señalización intermitente, autoridad/personal ferroviario, временная señalización или вообще cruce sin semáforos. От этого зависит, работает ли обычный приоритет.",
+        "Иерархия сигналов важнее привычки. Señales u órdenes de la autoridad и señalización transitoria могут изменить обычный режим; затем идут semáforos; ниже - вертикальные знаки, разметка и общие нормы. Поэтому в билете про señalización transitoria важнее порядок приоритета, а не цвет обычного светофора.",
+        "У мигающего semáforo цвет решает действие. Amarillo/intermitente предупреждает о рискованном пересечении: ехать можно, но очень осторожно. Rojo/intermitente требует полной остановки и продолжения только при certeza de que no existe riesgo.",
+        "Paso a nivel и cruce ferroviario - не обычная esquina. Barrera baja, barrera descendiendo, luz roja ferroviaria или señal del personal ferroviario означают отдельный режим. Перед переездом нужно убедиться, что нет tren, salida está libre, и нельзя останавливаться sobre los rieles или слишком близко к ним.",
+        "Если semáforo нет, возвращайтесь к encrucijadas sin semáforos: сначала jerarquía de arterias - avenida, calle, pasaje; при равной jerarquía обычно derecho. Но есть исключения, например vehículo que sale del paso a nivel ferroviario. Для скорости помните верхний предел velocidad precautoria: calle 30 km/h, avenida 40 km/h.",
+        "Поворот налево - частая ловушка для водителя из РФ. На intersección semaforizada de doble sentido без flecha/semáforo de giro он запрещен; на cruce sin semáforos может быть разрешен, если траектория безопасна и встречный транспорт не приближается.",
+        "Экстренные сигналы оценивайте по смыслу, а не по раздражающему звуку. Bocina repetida, balizas, paño или luces intermitentes могут означать emergencia или рискованный маневр; рядом нужно уступить или проверить условия, а не отвечать своей bocina."
       ],
       "practicalReasoningRu": [
-        "Светофор, переезд и временный регулировщик нужны для одного и того же: заменить угадывание понятным сигналом. Чем опаснее место, тем меньше водитель должен полагаться на привычное “кто справа” или “у меня зеленый”.",
-        "Железнодорожный переезд особенно строгий, потому что поезд не может быстро остановиться. Поэтому экзамен любит ответы с detenerse, certeza de que no existe riesgo и свободным выходом из зоны путей.",
-        "На перекрестках без светофора правила скорости и приоритета делают конфликт предсказуемым: водитель заранее снижает скорость и понимает, кого пропустить."
+        "Светофор, переезд и временный регулировщик делают одно: заменяют угадывание понятным сигналом. Чем опаснее место, тем меньше водитель должен полагаться на привычное «кто справа» или «у меня зеленый».",
+        "Железнодорожный переезд строгий, потому что поезд не остановится как автомобиль. Поэтому экзамен любит ответы с detenerse, certeza de que no existe riesgo и свободным выездом из зоны путей.",
+        "На перекрестках без светофора скорость и приоритет дают предсказуемость: водитель заранее снижает скорость и понимает, кого пропустить."
       ],
       "spanishTerms": [
         {
@@ -10911,7 +10911,7 @@
             {
               "answerId": "b-fallback-134-a1",
               "verdict": "correct",
-              "explanationRu": "Обычный автомобиль в extrema necesidad может действовать как emergency service, но должен advertirlo: balizas, bocina intermitente и paño."
+              "explanationRu": "Обычный автомобиль в extrema necesidad может действовать как служба экстренной помощи, но должен advertirlo: balizas, bocina intermitente и paño."
             },
             {
               "answerId": "b-fallback-134-a2",
@@ -11055,7 +11055,7 @@
             {
               "answerId": "b-fallback-326-a2",
               "verdict": "correct",
-              "explanationRu": "Falso: señalizado vehicle не может выполнить этот giro a la izquierda в показанной конфигурации без нарушения безопасной траектории."
+              "explanationRu": "Falso: указанный автомобиль не может выполнить этот giro a la izquierda в показанной конфигурации без нарушения безопасной траектории."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b126.jpg"
@@ -11230,7 +11230,7 @@
       "trapNotes": [
         {
           "id": "trap-red-yellow-intermitente",
-          "textRu": "Intermitente amarillo и intermitente rojo не одно и то же: amarillo = cruzar con precaución, rojo = detenerse и продолжить только без риска.",
+          "textRu": "Intermitente amarillo и intermitente rojo не одно и то же: amarillo - пересекать с осторожностью, rojo - остановиться и продолжить только без риска.",
           "sourceQuestionIds": [
             "b-fallback-063",
             "b-fallback-394"
@@ -11283,7 +11283,7 @@
         },
         {
           "id": "trap-emergency-signals",
-          "textRu": "Bocina repetida и balizas в emergency-вопросах не являются поводом спорить за приоритет: задача рядом идущего водителя - уступить или убедиться в безопасности.",
+          "textRu": "Bocina repetida и balizas в вопросах про emergencia не повод спорить за приоритет. Задача рядом идущего водителя - уступить или убедиться в безопасности.",
           "sourceQuestionIds": [
             "b-fallback-093",
             "b-fallback-134",
@@ -18071,7 +18071,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "692a31bf6129951e4fe503e93860ce5c0ccb30108abb282f39b0be3145f26561",
+        "sourceFingerprint": "a660b25d087b8c0339510bfed07bc0047887c7f836ba9e5e99f3febb916bb4b4",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -18088,20 +18088,20 @@
           ]
         }
       },
-      "titleRu": "Общественный транспорт и выделенные полосы",
-      "summaryRu": "Блок про Metrobus, carril exclusivo, colectivos autorizados, terminal de ómnibus и разметку/знаки мест остановки транспорта.",
+      "titleRu": "Автобусы, Metrobus и выделенные полосы",
+      "summaryRu": "Как читать билеты про Metrobus, carril exclusivo, colectivos autorizados, terminal de ómnibus и места посадки пассажиров.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах про transporte público главное различать три вещи: информационный знак места, выделенную полосу движения и зону/разметку для остановки или посадки.",
-        "Terminal de ómnibus на синем информационном знаке означает существование terminal de ómnibus поблизости. Это не запрет estacionar и не запрет detenerse: если вариант ответа добавляет prohibición, он меняет смысл знака.",
-        "Carril exclusivo или señal horizontal на calzada резервирует полосу для указанного типа транспорта. Для обычного автомобиля это не запасная полоса для sobrepaso: даже кратковременное движение по carril exclusivo del Metrobús без autorización в CABA рассматривается как нарушение.",
-        "Metrobus в CABA описан как система массового, быстрого и дифференцированного общественного транспорта. Поэтому экзаменационная логика такая: выделенная полоса нужна не для удобства частного автомобиля, а чтобы transporte público двигался предсказуемо и не застревал в общем потоке.",
-        "В билете `b-fallback-107` правильный fallback-ответ включает colectivos autorizados и vehículos destinados al servicio de emergencia en cumplimiento de sus funciones. Архивированные источники прямо поддерживают идею authorized/exclusive lane; emergency-часть здесь оставлена как wording конкретного билета и не расширяется в общее правило.",
-        "Разметка для escolares в `b-fallback-230` тоже читается узко: это не estacionamiento para micros escolares и не generic public-transport stop, а место/полоса detention для ascenso y descenso de escolares по изображению билета. Школьный контекст не надо переносить на все paradas de transporte público."
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про transporte público различайте три вещи: информационный знак места, выделенную полосу и зону/разметку для остановки или посадки.",
+        "Terminal de ómnibus на синем информационном знаке означает: поблизости есть автобусный терминал. Это не запрет estacionar и не запрет detenerse. Если вариант добавляет prohibición, он меняет смысл знака.",
+        "Carril exclusivo или señal horizontal на calzada резервирует полосу для указанного транспорта. Для обычного автомобиля это не запасная полоса для sobrepaso: даже краткое движение по carril exclusivo del Metrobús без разрешения в CABA считается нарушением.",
+        "Metrobus в CABA - это система быстрого и отдельного движения автобусов. Экзаменационная логика простая: выделенная полоса нужна не частному автомобилю, а чтобы transporte público ехал предсказуемо и не застревал в общем потоке.",
+        "В одном старом билете правильный ответ включает colectivos autorizados и vehículos destinados al servicio de emergencia en cumplimiento de sus funciones. Источники прямо поддерживают идею выделенной полосы для разрешенного транспорта; часть про emergencia оставляем только как формулировку этого билета.",
+        "Разметка для escolares в другом билете тоже читается узко: это не estacionamiento para micros escolares и не обычная parada транспорта, а место/полоса detención для ascenso y descenso de escolares по картинке. Школьный контекст не переносим на все paradas de transporte público."
       ],
       "practicalReasoningRu": [
         "Выделенная полоса работает только если обычные водители не используют ее для коротких маневров. Иначе общественный транспорт теряет свой отдельный поток, а места посадки становятся непредсказуемыми.",
-        "Информационные знаки terminal/parada помогают заранее понять, где будет концентрация автобусов и пассажиров; запретные знаки и road markings отвечают уже за конкретное действие водителя.",
-        "Школьные зоны посадки и высадки нужны, чтобы дети не выходили в случайном месте потока. Поэтому ответы про parking или generic transport stop в школьном билете выглядят похожими, но не попадают в назначение разметки."
+        "Информационные знаки terminal/parada помогают заранее понять, где будет много автобусов и пассажиров. Запретные знаки и дорожная разметка уже отвечают за конкретное действие водителя.",
+        "Школьные зоны посадки и высадки нужны, чтобы дети не выходили в случайном месте потока. Поэтому ответы про стоянку или обычную остановку транспорта в школьном билете выглядят похожими, но не попадают в назначение разметки."
       ],
       "spanishTerms": [
         {
@@ -18123,7 +18123,7 @@
         {
           "id": "term-colectivos-autorizados",
           "termEs": "Colectivos autorizados",
-          "translationRu": "авторизованные автобусы/colectivos",
+          "translationRu": "разрешенные автобусы/colectivos",
           "sourceQuestionIds": [
             "b-fallback-107"
           ]
@@ -18147,7 +18147,7 @@
         {
           "id": "term-carril-detencion",
           "termEs": "Carril de detención",
-          "translationRu": "полоса/место остановки",
+          "translationRu": "полоса или место для остановки",
           "sourceQuestionIds": [
             "b-fallback-230"
           ]
@@ -18208,7 +18208,7 @@
             {
               "answerId": "b-fallback-042-a1",
               "verdict": "incorrect",
-              "explanationRu": "Prohibición de estacionar добавляет запрет, которого этот информационный знак не передает. Он не про parking restriction у входа."
+              "explanationRu": "Prohibición de estacionar добавляет запрет, которого этот информационный знак не передает. Он не про ограничение стоянки у входа."
             },
             {
               "answerId": "b-fallback-042-a2",
@@ -18229,17 +18229,17 @@
             {
               "answerId": "b-fallback-107-a1",
               "verdict": "incorrect",
-              "explanationRu": "Todos los transportes de pasajeros слишком широко. Carril exclusivo предназначен для тех, кто указан/авторизован, а не автоматически для любого passenger transport."
+              "explanationRu": "Todos los transportes de pasajeros слишком широко. Carril exclusivo предназначен для указанного или разрешенного транспорта, а не автоматически для любого перевозчика пассажиров."
             },
             {
               "answerId": "b-fallback-107-a2",
               "verdict": "incorrect",
-              "explanationRu": "Sólo colectivos entre las 07 h y las 21 h добавляет schedule, которого нет в правильной формулировке этого билета, и не учитывает emergency-service wording."
+              "explanationRu": "Sólo colectivos entre las 07 h y las 21 h добавляет расписание, которого нет в правильной формулировке этого билета, и не учитывает часть про vehículos de emergencia."
             },
             {
               "answerId": "b-fallback-107-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-билету: полоса предназначена для colectivos autorizados, а также для vehículos destinados al servicio de emergencia en cumplimiento de sus funciones. Emergency-часть не расширяем за пределы этого билета без отдельного источника."
+              "explanationRu": "В этом билете полоса предназначена для colectivos autorizados, а также для vehículos destinados al servicio de emergencia en cumplimiento de sus funciones. Часть про emergencia не расширяем за пределы этого билета без отдельного источника."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b25.jpg"
@@ -18255,12 +18255,12 @@
             {
               "answerId": "b-fallback-230-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: по изображению это carril de detención para el ascenso y descenso de escolares. Держите школьный контекст узко, не превращая его в общий parking или generic parada."
+              "explanationRu": "Правильно: по изображению это carril de detención para el ascenso y descenso de escolares. Держите школьный контекст узко, не превращая его в стоянку или обычную parada."
             },
             {
               "answerId": "b-fallback-230-a3",
               "verdict": "incorrect",
-              "explanationRu": "Zona de ascenso y descenso de pasajeros de transporte público похожа по словам, но этот билет указывает на escolares, поэтому generic public transport answer не подходит."
+              "explanationRu": "Zona de ascenso y descenso de pasajeros de transporte público похожа по словам, но этот билет указывает на escolares. Обычный ответ про пассажиров транспорта здесь не подходит."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b32.jpg"
@@ -18271,12 +18271,12 @@
             {
               "answerId": "b-fallback-298-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: demarcación sobre la calzada указывает carril exclusivo de colectivo de pasajeros, то есть выделенную полосу для passenger collective transport."
+              "explanationRu": "Правильно: demarcación sobre la calzada указывает carril exclusivo de colectivo de pasajeros, то есть выделенную полосу для автобуса/colectivo."
             },
             {
               "answerId": "b-fallback-298-a2",
               "verdict": "incorrect",
-              "explanationRu": "Cruce exclusivo de vehículos de emergencia - другая идея. Здесь нет crossing for emergency vehicles; билет показывает bus/colectivo exclusive lane marking."
+              "explanationRu": "Cruce exclusivo de vehículos de emergencia - другая идея. Здесь нет переезда для экстренных машин; билет показывает выделенную полосу для bus/colectivo."
             },
             {
               "answerId": "b-fallback-298-a3",
@@ -18292,17 +18292,17 @@
             {
               "answerId": "b-fallback-438-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: для обычного водителя carril exclusivo del Metrobús нельзя использовать ни permanentemente, ни transitoriamente для sobrepaso."
+              "explanationRu": "Правильно: обычный водитель не может использовать carril exclusivo del Metrobús для sobrepaso ни постоянно, ни временно."
             },
             {
               "answerId": "b-fallback-438-a2",
               "verdict": "incorrect",
-              "explanationRu": "Línea longitudinal discontinua не делает Metrobus lane доступной для обгона. Вопрос проверяет именно запрет использования exclusive lane для этой маневра."
+              "explanationRu": "Línea longitudinal discontinua не открывает полосу Metrobus для обгона. Вопрос проверяет именно запрет использовать выделенную полосу для этого маневра."
             },
             {
               "answerId": "b-fallback-438-a3",
               "verdict": "incorrect",
-              "explanationRu": "Sólo para realizar alguna maniobra звучит как краткое исключение, но билет прямо отвергает transitory circulation по exclusive Metrobús lane."
+              "explanationRu": "Sólo para realizar alguna maniobra звучит как краткое исключение, но билет прямо отвергает временное движение по carril exclusivo del Metrobús."
             }
           ]
         }
@@ -18317,7 +18317,7 @@
         },
         {
           "id": "trap-authorized-not-all-transport",
-          "textRu": "Carril exclusivo не равен “весь транспорт пассажиров”. Ищите autorizado, colectivo/Metrobús и конкретный vehicle type, показанный знаком или разметкой.",
+          "textRu": "Carril exclusivo не означает «любой пассажирский транспорт». Ищите autorizado, colectivo/Metrobús и конкретный тип транспорта на знаке или разметке.",
           "sourceQuestionIds": [
             "b-fallback-107",
             "b-fallback-298"
@@ -18325,14 +18325,14 @@
         },
         {
           "id": "trap-metrobus-no-transitory-overtake",
-          "textRu": "Transitoria в `b-fallback-438` - ловушка: короткий sobrepaso все равно считается использованием carril exclusivo del Metrobús.",
+          "textRu": "Transitoria в билете про Metrobús - ловушка: короткий sobrepaso все равно считается использованием carril exclusivo del Metrobús.",
           "sourceQuestionIds": [
             "b-fallback-438"
           ]
         },
         {
           "id": "trap-school-detention-not-parking",
-          "textRu": "Ascenso y descenso de escolares - не estacionamiento. В школьном билете выбирайте detención/boarding context, а не parking и не generic public transport stop.",
+          "textRu": "Ascenso y descenso de escolares - не estacionamiento. В школьном билете выбирайте detención для посадки и высадки, а не стоянку и не обычную parada транспорта.",
           "sourceQuestionIds": [
             "b-fallback-230"
           ]

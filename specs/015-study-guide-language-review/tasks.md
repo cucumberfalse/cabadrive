@@ -92,12 +92,12 @@
 
 ## Future Slice H: Road Types, Regulatory Signs, Traffic Lights, And Public Transport
 
-- [ ] T064 Review and rewrite `road-types-highways-and-routes`.
-- [ ] T065 Review and rewrite `regulatory-signs`.
-- [ ] T066 Review and rewrite `traffic-lights-and-rail-crossings`.
-- [ ] T067 Review and rewrite `public-transport-and-exclusive-lanes`.
-- [ ] T068 Preserve taxonomy-mixed and ticket-specific decisions from feature 006.
-- [ ] T069 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T064 Review and rewrite `road-types-highways-and-routes`.
+- [x] T065 Review and rewrite `regulatory-signs`.
+- [x] T066 Review and rewrite `traffic-lights-and-rail-crossings`.
+- [x] T067 Review and rewrite `public-transport-and-exclusive-lanes`.
+- [x] T068 Preserve taxonomy-mixed and ticket-specific decisions from feature 006.
+- [x] T069 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice I: Right-Of-Way, Lanes, Turns, And Overtaking
 
@@ -191,11 +191,11 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `alcohol-drugs-and-impairment` | F | Reviewed in Slice F |
 | `adverse-weather-and-visibility` | F | Reviewed in Slice F |
 | `fatigue-distraction-and-attention` | B | Reviewed in Slice B |
-| `road-types-highways-and-routes` | H | Pending |
-| `regulatory-signs` | H | Pending |
+| `road-types-highways-and-routes` | H | Reviewed in Slice H |
+| `regulatory-signs` | H | Reviewed in Slice H |
 | `warning-signs` | G | Reviewed in Slice G |
 | `information-signs` | B | Reviewed in Slice B |
-| `traffic-lights-and-rail-crossings` | H | Pending |
+| `traffic-lights-and-rail-crossings` | H | Reviewed in Slice H |
 | `right-of-way-signals-and-rail-crossings` | G | Reviewed in Slice G |
 | `right-of-way-basic-intersections` | I | Pending |
 | `right-of-way-special-situations` | I | Pending |
@@ -206,7 +206,7 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `center-lines-and-crossing-rules` | I | Pending |
 | `lane-and-channelization-markings` | I | Pending |
 | `lane-choice-and-lane-changes` | I | Pending |
-| `public-transport-and-exclusive-lanes` | H | Pending |
+| `public-transport-and-exclusive-lanes` | H | Reviewed in Slice H |
 | `sustainable-mobility-and-vulnerable-users` | J | Pending |
 | `vulnerable-users-and-shared-spaces` | J | Pending |
 | `bicycles-and-micromobility` | J | Pending |
@@ -618,6 +618,65 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-warning...origin/codex/015-study-guide-language-review-risk` with exactly the two expected modified files before commit.
 - Known issues: none introduced. Slice G intentionally kept picture-bound sign wording narrow for similar warning symbols, `figura A/B/C` choices, `zona escolar`, `Cruce de Peatones`, `puente levadizo`, `paso a nivel`, red/yellow flashing signals, and priority-hierarchy tickets. Duplicate placements outside Slice G remain for their assigned future slices.
 - Implementation Agent feedback: none requiring Architect disposition. Slice G found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
+- Slice H worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-road` on `codex/015-study-guide-language-review-road`, stacked on `origin/codex/015-study-guide-language-review-warning` / PR #81.
+- Topics reviewed: `road-types-highways-and-routes`, `regulatory-signs`, `traffic-lights-and-rail-crossings`, and `public-transport-and-exclusive-lanes`.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice H did not touch root fields.
+  - titles: 4
+  - summaries: 4
+  - learning paragraphs: 25
+  - practical reasoning paragraphs: 10
+  - term translations: 79
+  - source-conflict notes: 0 in Slice H topics
+  - answer explanations: 242
+  - trap notes: 23
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 4
+  - summaries: 4
+  - learning paragraphs: 25
+  - practical reasoning paragraphs: 9
+  - term translations: 3
+  - source-conflict notes: 0
+  - answer explanations: 20
+  - trap notes: 11
+  - `difficultyMeta.sourceFingerprint`: 4
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice H topics 83 / 83.
+- Unique question IDs before/after: global 460 / 460; Slice H topics 83 / 83.
+- Answer explanations before/after: global 1,831 / 1,831; Slice H topics 242 / 242.
+- Source-conflict notes before/after: global 4 / 4; Slice H topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-026`, `b-fallback-032`, `b-fallback-049`, `b-fallback-144`, `b-fallback-236`, `b-fallback-250`, `b-fallback-254`, `b-fallback-267`, `b-fallback-289`, `b-fallback-296`, `b-fallback-314`, `b-fallback-315`, `b-fallback-343`, `b-fallback-377`, `b-fallback-398`, `b-fallback-420`, `b-fallback-439`, `b-fallback-449`, `b-fallback-011`, `b-fallback-029`, `b-fallback-106`, `b-fallback-115`, `b-fallback-127`, `b-fallback-156`, `b-fallback-177`, `b-fallback-207`, `b-fallback-211`, `b-fallback-260`, `b-fallback-265`, `b-fallback-331`, `b-fallback-381`, `b-fallback-384`, `b-fallback-399`, `b-fallback-411`, `b-fallback-416`, `b-fallback-009`, `b-fallback-050`, `b-fallback-063`, `b-fallback-076`, `b-fallback-085`, `b-fallback-093`, `b-fallback-119`, `b-fallback-131`, `b-fallback-139`, `b-fallback-191`, `b-fallback-238`, `b-fallback-340`, `b-fallback-357`, `b-fallback-370`, `b-fallback-372`, `b-fallback-394`, `b-fallback-403`, `b-fallback-298`, and `b-fallback-438`.
+- Duplicate handling decision: reviewed duplicated placements only inside the four assigned Slice H topics. Matching placements outside Slice H remain for their later slices. Wording stayed intentionally topic-specific: road-type duplicates keep speed/road-context framing; regulatory-sign duplicates keep sign-classification or normative-prohibition framing; traffic-light/rail duplicates keep signal hierarchy, railway, left-turn, and cautious-speed framing; public-transport duplicates keep Metrobus/colectivo lane framing. Answer IDs, verdicts, images, placements, and topic assignment shape were preserved.
+- Source-sensitive sentences left unchanged: all 17 `claims[].textRu` entries in Slice H topics were preserved as non-rendered source-trace metadata. Numeric, procedural, picture-bound, and old-ticket boundaries were preserved for road speeds 20/30/40/60/70/80/100/110/120 km/h, minimum-speed half-maximum logic, `banquina` not being a lane, `carril de desaceleración`, Ruta Nacional/Provincial picture answers, `PARE`, `velocidad mínima` 35 km/h, normative no-overtake/no-stop places, school-zone 20 km/h sign wording, `contramano`, red/yellow flashing signals, 5 m from rails, `personal ferroviario`, semáforo/temporary-signal hierarchy, 30/40 km/h unsignalized-intersection limits, left-turn conditions, `b-fallback-107` emergency-service wording, `b-fallback-230` school detención wording, and `b-fallback-438` Metrobus-lane wording.
+- CABA/RF notes added or clarified: Slice H kept comparison practical. It clarified that CABA road labels and exact arterial limits should not be answered from РФ habit; that `calle`/`avenida` and named CABA fast roads can change the speed answer; that reglamentaria is an exam category for mandatory signs, not just "a sign"; that CABA signal hierarchy and no-left-turn-without-arrow behavior can override familiar green-light intuition; and that Metrobus/carril exclusivo is not a short private-car passing lane.
+- Before/after samples:
+  - `road-types-highways-and-routes`: before "по дорожному контексту сначала назовите место"; after "сначала поймите, где вы едете".
+  - `road-types-highways-and-routes`: before "ticket-specific recognition"; after "распознавание конкретной картинки".
+  - `regulatory-signs`: before "слово reglamentaria означает не просто «дорожный знак»"; after "reglamentaria в билете - это не любой знак, а знак с обязательным правилом".
+  - `regulatory-signs`: before "В билете b-fallback-029"; after "В вопросе про 35 km/h".
+  - `traffic-lights-and-rail-crossings`: before "сначала спрашивайте: движение регулирует..."; after "сначала поймите, кто управляет ситуацией".
+  - `traffic-lights-and-rail-crossings`: before "emergency service"; after "служба экстренной помощи".
+  - `public-transport-and-exclusive-lanes`: before "fallback-ответ" and "authorized/exclusive lane"; after "правильный ответ" and "выделенная полоса для разрешенного транспорта".
+  - `public-transport-and-exclusive-lanes`: before "generic public transport answer"; after "обычный ответ про пассажиров транспорта".
+- PR #63 / #81 guard: Slice H write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch PR #63 / feature 009 forbidden paths (`content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`, coverage/source-trace manifests, related validators/tests/docs/package files). It also did not touch product UI, tests, scripts, package files, docs outside this feature memory, other worktrees/branches/PRs, or PR #81 files beyond this branch's stacked guide/tasks changes.
+- Difficulty metadata refresh evidence: all four Slice H topics kept their `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only `difficultyMeta.sourceFingerprint` changed, and each new value matched `difficultyTopicFingerprint(topic)` after the learner-facing text rewrite:
+  - `road-types-highways-and-routes`: `a374d956773052943f39c2e82d4f6b902c398e3cf7ad01aa6d0ca1d06bed5ccf` -> `fce671fd20cc8bdaba8fc8f54bd052ff301db82cb2c7f71faa8ec1b45375aa6b`
+  - `regulatory-signs`: `a846d05f2993b4706dd41f12029690d27b949c4823d5933a084f59c44bd7e8c2` -> `e278ad346dc5ffd893eada0fe656af439b2b42581f66f3dc23e6373ab3ec0c86`
+  - `traffic-lights-and-rail-crossings`: `dbffbffa9f6241baad9998787967ea1d03f522b92c7c5d3f5b21efa258392e8d` -> `2f5268e3c252bc01d5fc0f5a4fc5966a66213b573692c84a72c28c3336742c81`
+  - `public-transport-and-exclusive-lanes`: `692a31bf6129951e4fe503e93860ce5c0ccb30108abb282f39b0be3145f26561` -> `a660b25d087b8c0339510bfed07bc0047887c7f836ba9e5e99f3febb916bb4b4`
+- Validation evidence before final commit:
+  - JSON parse and structural count guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 38 `difficulty`, and 38 `difficultyMeta`.
+  - Targeted learner-facing process/English scan over Slice H rendered fields: pass; no matches for `fallback`, `ticket-specific`, `canonical`, `source-backed`, `claim`, `prompt`, `taxonomy`, `regulatory sign`, `traffic light`, `public transport`, `road marking`, `image-specific`, `correct answer`, `emergency service`, `generic`, `passenger transport`, `exclusive lane`, `Metrobus lane`, `authorized`, `wording`, `old ticket`, `process`, `parking`, or related learner-facing process English.
+  - Duplicate-term guard for Slice H `spanishTerms[].translationRu`: pass; 0 values duplicate `termEs` verbatim.
+  - Difficulty guard: pass; for all four Slice H topics, fingerprint changed, computed fingerprint matched, non-fingerprint metadata was preserved, difficulty was preserved, and claims were preserved.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass, no output after this process-memory update.
+  - Changed-path guard versus PR #63 forbidden paths and non-scope paths: pass; `git diff --name-only` listed only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, and the forbidden-path scan produced no output.
+  - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-road...origin/codex/015-study-guide-language-review-warning` with exactly the two expected modified files before commit.
+- Known issues: none introduced. Slice H intentionally kept picture-bound and old-ticket wording narrow for Ruta Nacional/Provincial signs, special CABA road segments, `banquina`, minimum/maximum-speed signs, reglamentaria/preventiva/informativa/transitoria classification traps, normative prohibitions without an extra sign, railway-crossing signals and exceptions, no-left-turn-without-arrow tickets, Metrobus/carril exclusivo tickets, and school detención markings.
+- Implementation Agent feedback: none requiring Architect disposition. Slice H found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
 
 ## Known Issues
 
