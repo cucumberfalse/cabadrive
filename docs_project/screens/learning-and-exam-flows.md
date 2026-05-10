@@ -21,18 +21,19 @@
 ## Learn Questions Flow
 
 1. Load question card (Spanish official text + answer options).
-2. Show compact static difficulty metadata near the question metadata as `Уровень`/`Сложность билета`; it is a study-planning signal, not correctness or the user `Сложный` flag.
-3. Start a soft per-ticket pacing timer derived from the exam format average rounded up to a readable training target.
-4. Allow the learner to pause and resume that timer for the current ticket without disabling timers globally.
-5. Keep Russian question and answer translations hidden on initial render.
-6. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
-7. Show answer-choice translations only while the same translation reveal state is active.
-8. Show the local question image when the source question includes one.
-9. Optional toggle for explanation.
-10. If the timer expires before answer selection, show the current ticket as unresolved in-session without recording an answer or moving to mistake review.
-11. Submit answer; answering after the timer expires remains possible and records a normal learning answer with visible after-limit status.
-12. Show correctness, key terms, and related weak-topic links.
-13. Optional mark as difficult.
+2. Show the ticket ID in the metadata row for reporting and cross-reference.
+3. Show compact static difficulty metadata near the question metadata as `Уровень`/`Сложность билета`; it is a study-planning signal, not correctness or the user `Сложный` flag.
+4. Start a soft per-ticket pacing timer derived from the exam format average rounded up to a readable training target.
+5. Allow the learner to pause and resume that timer for the current ticket without disabling timers globally.
+6. Keep Russian question and answer translations hidden on initial render.
+7. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
+8. Show answer-choice translations only while the same translation reveal state is active.
+9. Show the local question image when the source question includes one.
+10. Optional toggle for explanation.
+11. If the timer expires before answer selection, show the current ticket as unresolved in-session without recording an answer or moving to mistake review.
+12. Submit answer; answering after the timer expires remains possible and records a normal learning answer with visible after-limit status.
+13. Show correctness, key terms, and related weak-topic links.
+14. Optional mark as difficult.
 
 ## Exam Simulation Flow
 
@@ -67,8 +68,9 @@
 4. Select a topic and read Russian learning material, practical reasoning when present, Spanish terms, trap notes, and full guide ticket blocks.
 5. Render ticket blocks by joining guide `questionId` and `answerId` references to canonical bundled questions and answers.
 6. Render ticket difficulty in material ticket blocks from the canonical question record, never from per-topic duplicate labels.
-7. Show local question images through bundled offline assets only.
-8. Keep draft/incomplete, unofficial learning aid, and current fallback question-set labels visible.
+7. Show governed Russian question and answer translations in ticket blocks when available; otherwise show a concise missing-translation fallback while keeping canonical Spanish primary.
+8. Show local question images through bundled offline assets only.
+9. Keep draft/incomplete, unofficial learning aid, and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
 
 ## CABA Vs RF Guide Flow
 

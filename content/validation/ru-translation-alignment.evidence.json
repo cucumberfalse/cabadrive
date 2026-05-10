@@ -1,7 +1,7 @@
 {
   "locale": "ru",
   "version": 1,
-  "generatedAt": "2026-05-08",
+  "generatedAt": "2026-05-10",
   "evidenceType": "translation_alignment_fingerprints",
   "description": "Deterministic offline evidence that each reviewed Russian translation entry matches the current Spanish question tuple and answer ids.",
   "entries": [
@@ -144,6 +144,34 @@
         "answerIdsAligned": true
       },
       "notes": "Russian question and each answer translation were checked against the current Spanish source tuple for this feature."
+    },
+    {
+      "questionId": "b-fallback-028",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-10",
+      "sourceTextSha256": "5796f77cc8b1a3989e29f9ad79c92b5ad39aae66a908715ee7a03eb042e2a3fc",
+      "translationTextSha256": "c782d2adc122ac62ef20d3a32ccf99027d4d3525a67646c1e29106c8216a8fcb",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian parking-clearance translation was checked against the current Spanish source tuple for feature 013."
+    },
+    {
+      "questionId": "b-fallback-412",
+      "status": "approved",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-10",
+      "sourceTextSha256": "d10d878a7729e99794daae45a43886fae081d0a5d3d024dbe74b3c39d49e1493",
+      "translationTextSha256": "3f6d97f90ebcff29f5f798ccd5a82e102f754bc7e48bdbfe25c1c3c9e2a8e2cf",
+      "checks": {
+        "questionTextAligned": true,
+        "answerChoicesAligned": true,
+        "answerIdsAligned": true
+      },
+      "notes": "Russian parking-clearance translation was checked against the current Spanish source tuple for feature 013."
     }
   ]
 }

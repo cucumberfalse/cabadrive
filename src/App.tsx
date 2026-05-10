@@ -198,6 +198,7 @@ function QuestionCard({
   return (
     <article className="question-card" data-testid="question-card">
       <div className="question-meta">
+        {mode === "learning" && <span>Билет {question.id}</span>}
         <span>Категория B</span>
         <span>{question.jurisdiction}</span>
         <span>{question.topics.map(topicLabel).join(", ")}</span>
@@ -602,6 +603,7 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
   const question = questionById.get(ticket.questionId);
   const explanations = explanationByAnswer(ticket);
   const localImagePath = safeLocalImagePath(question, ticket);
+  const translation = translationByQuestion.get(ticket.questionId);
   const source = question ? sourceById.get(question.sourceId) : undefined;
   const correctAnswer = question?.answers.find((answer) => answer.id === question.correctAnswerId);
 
@@ -621,12 +623,22 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
         <span>Категория {question.category}</span>
         <span>{question.jurisdiction}</span>
         <DifficultyIndicator level={question.difficulty} label="Сложность билета" />
-        <span>Статус: неофициальная B-практика</span>
       </div>
       <div className="official-block">
         <span className="block-label">Испанский текст из canonical question</span>
         <h3>{question.officialTextEs}</h3>
       </div>
+      {translation ? (
+        <aside className="support-block translation materials-translation">
+          <span className="block-label">Неофициальный русский перевод</span>
+          <p>{translation.questionTextRu}</p>
+        </aside>
+      ) : (
+        <aside className="support-block translation materials-translation missing-translation">
+          <span className="block-label">Русский перевод</span>
+          <p>Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.</p>
+        </aside>
+      )}
       {localImagePath && (
         <figure className="question-image materials-image">
           <img src={assetUrl(localImagePath)} alt={question.image?.altEs || `Изображение билета ${question.id}`} />
@@ -649,6 +661,7 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
             <div className={isCorrectAnswer ? "material-answer correct" : "material-answer"} role="listitem" key={answer.id}>
               <div>
                 <strong>{answer.officialTextEs}</strong>
+                {translation?.answerTranslations[answer.id] && <small className="answer-translation">{translation.answerTranslations[answer.id]}</small>}
                 {isCorrectAnswer && <span className="answer-badge">Правильный ответ</span>}
               </div>
               <p>{answerExplanation?.explanationRu || "Пояснение для этого варианта пока не связано с материалом."}</p>
