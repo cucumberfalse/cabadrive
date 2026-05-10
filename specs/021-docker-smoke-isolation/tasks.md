@@ -89,16 +89,16 @@
 
 ## Review Requirements
 
-- [ ] T061 Review Agent verifies complete feature `021` memory exists and role boundaries were followed.
-- [ ] T062 Review Agent verifies `docker-compose.yml` no longer declares a fixed global `container_name`.
-- [ ] T063 Review Agent verifies host port configurability preserves default `5173`.
-- [ ] T064 Review Agent verifies Makefile targets use project-scoped Compose behavior and do not mutate hardcoded containers.
-- [ ] T065 Review Agent verifies docs explain both default and parallel-agent override flows.
-- [ ] T066 Review Agent verifies verification evidence includes default and isolated alternate-port Docker smoke, or exact blockers.
-- [ ] T067 Review Agent verifies isolated `make down` did not stop a sibling/first stack.
-- [ ] T068 Review Agent verifies no learner-facing product/content changes were included.
-- [ ] T069 Review Agent verifies no unresolved Implementation Agent feedback remains before merge readiness.
-- [ ] T070 Review Agent verifies Docker compose does not require a fixed shared `cabadrive:local` image tag and isolated smoke uses project-scoped image identity.
+- [x] T061 Review Agent verifies complete feature `021` memory exists and role boundaries were followed.
+- [x] T062 Review Agent verifies `docker-compose.yml` no longer declares a fixed global `container_name`.
+- [x] T063 Review Agent verifies host port configurability preserves default `5173`.
+- [x] T064 Review Agent verifies Makefile targets use project-scoped Compose behavior and do not mutate hardcoded containers.
+- [x] T065 Review Agent verifies docs explain both default and parallel-agent override flows.
+- [x] T066 Review Agent verifies verification evidence includes default and isolated alternate-port Docker smoke, or exact blockers.
+- [x] T067 Review Agent verifies isolated `make down` did not stop a sibling/first stack.
+- [x] T068 Review Agent verifies no learner-facing product/content changes were included.
+- [x] T069 Review Agent verifies no unresolved Implementation Agent feedback remains before merge readiness.
+- [x] T070 Review Agent verifies Docker compose does not require a fixed shared `cabadrive:local` image tag and isolated smoke uses project-scoped image identity.
 
 ## Process Memory
 
@@ -173,6 +173,24 @@
 - Review-fix `git diff --check` passed, and `git diff --name-only --diff-filter=U` returned no paths.
 - Review-fix `pnpm run check:repo` passed with `Repository baseline check passed.`
 - Review-fix feature-memory worktree gate passed: `node scripts/check-feature-memory.mjs --worktree` reported `Feature-memory gate passed via specs/021-docker-smoke-isolation/{spec,plan,tasks}.md`.
+
+### Post-Merge Review Closure Evidence
+
+- Final closure worktree for this process-memory-only pass: `/Users/chap/devel/cabadrive-021-final-task-closure` on branch `codex/021-final-task-closure`, created from `origin/main` at `f5fcb1602885022bb60b412f90bf290d51674c76`.
+- PR #94 `[codex] Isolate Docker smoke runtime` merged into `main` at `2026-05-10T19:50:44Z`; merged head was `7627b74264acf1ff592db7be94db4d29336b49cb`.
+- PR #94 required checks were green on the merged head: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all reported `SUCCESS`.
+- PR #94 review thread `PRRT_kwDOSX65IM6A7Nop` for the shared `cabadrive:local` image tag was resolved; the final Codex review comment after retrigger reported no major issues.
+- Complete feature `021` memory exists on `main`: `feature-request.md`, `spec.md`, `plan.md`, and this `tasks.md`. Analyst, Architect, Implementation Agent, and Review Agent work is recorded in the appropriate feature-memory sections.
+- `docker-compose.yml` on `main` defines service `cabadrive` with Compose-owned project-scoped container naming, host mapping `${CABADRIVE_HOST_PORT:-5173}:8080`, container port `8080`, and no fixed global `container_name`.
+- `docker-compose.yml` on `main` has no required shared `image: cabadrive:local`; Compose auto-tags local builds from the compose project and service name for isolated smoke identity.
+- `Makefile` on `main` keeps `make build`, `make up`, `make down`, and `make logs` on plain `docker compose` commands. `make up` prints `http://localhost:${CABADRIVE_HOST_PORT:-5173}`, `make down` runs project-scoped `docker compose down`, and no target stops or removes a hardcoded container.
+- Durable docs on `main` cover the default `http://localhost:5173` Docker flow and isolated agent smoke with unique `COMPOSE_PROJECT_NAME` plus `CABADRIVE_HOST_PORT`; docs also warn agents not to stop, remove, rename, or mutate sibling compose projects to clear conflicts.
+- PR #94 verification evidence covers default compose config with host port `"5173"`, isolated compose config with host port `"5176"`, isolated Docker smoke at `http://localhost:5176/` and `/sw.js`, and project-scoped image `cabadrive-021-review-fix-cabadrive:latest`.
+- PR #94 evidence records that isolated `make down` removed only the implementation-owned project (`cabadrive-021-review-fix-cabadrive-1` and `cabadrive-021-review-fix_default`). Earlier sibling-preservation evidence also recorded protected sibling `cabadrive` on `5173` still running after isolated cleanup.
+- Final main preflight and Docker smoke after merge ran from `/Users/chap/devel/cabadrive-main-010-verification`: required preflight passed; Docker smoke used project-scoped container `cabadrive-main-010-verification-cabadrive-1` and image `cabadrive-main-010-verification-cabadrive`; HTTP returned `HTTP/1.1 200 OK`, HTML contained `<html lang="ru">` and `<title>Cabadrive</title>`, and `make down` removed the container/network.
+- Read-only post-merge Docker status for this closure found no running Cabadrive containers after the final main smoke cleanup.
+- PR #94 changed Docker runtime contract, Makefile/CI/docs/tests, and feature `021` memory only. The diff included no learner-facing product behavior, content data, translations, explanations, image metadata, overlays, or service-worker semantic changes.
+- No unresolved Implementation Agent feedback remains for feature `021`; Architect disposition remains `None yet` because no feedback items were filed.
 
 ### Implementation Agent Feedback
 
