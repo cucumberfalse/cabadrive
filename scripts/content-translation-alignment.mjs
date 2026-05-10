@@ -2,6 +2,23 @@ import { createHash } from "node:crypto";
 
 const CHECK_FIELDS = ["questionTextAligned", "answerChoicesAligned", "answerIdsAligned"];
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
+const DRAFT_WRAPPER_PATTERN = /Учебный перевод-смысл:|Смысл варианта:|глоссарн|чернов/i;
+const SPANISH_MARKER_PATTERN =
+  /[¿¡]|\b(que|qué|indica|señal|senal|veh[ií]culo|vehiculos|vehículos|conductor|conductores|peat[oó]n|peatones|porque|seg[uú]n|para|como|cuando|solo|s[oó]lo|verdadero|falso|prohibido|estacionar|circular|calzada|carril|derecha|izquierda|prioridad|balizas|luces|siniestro|vial)\b/i;
+const LATIN_TOKEN_PATTERN = /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]{3,}/g;
+const ALLOWED_LATIN_TOKENS = new Set([
+  "abs",
+  "airbag",
+  "caba",
+  "dni",
+  "gps",
+  "http",
+  "https",
+  "iso",
+  "pdf",
+  "url",
+  "vtv"
+]);
 
 function isPlainObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -9,6 +26,17 @@ function isPlainObject(value) {
 
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim() !== "";
+}
+
+function latinResidueTokens(value) {
+  if (typeof value !== "string") return [];
+  return (value.match(LATIN_TOKEN_PATTERN) || [])
+    .map((token) => token.toLowerCase())
+    .filter((token) => !ALLOWED_LATIN_TOKENS.has(token));
+}
+
+function hasTranslationQualityResidue(value) {
+  return typeof value === "string" && (DRAFT_WRAPPER_PATTERN.test(value) || SPANISH_MARKER_PATTERN.test(value) || latinResidueTokens(value).length > 0);
 }
 
 export function canonicalJson(value) {
@@ -77,7 +105,7 @@ export function buildTranslationAlignmentEvidenceEntry({ question, translation, 
   };
 }
 
-export function validateTranslationAlignment({ questions, translations, evidence, locale = "ru", strictCoverage = true }) {
+export function validateTranslationAlignment({ questions, translations, evidence, locale = "ru", strictCoverage = true, requireFullQuality = false }) {
   const errors = [];
   const questionById = new Map((questions || []).map((question) => [question.id, question]));
   const translationQuestionIds = new Set();
@@ -131,6 +159,9 @@ export function validateTranslationAlignment({ questions, translations, evidence
     }
 
     if (!isNonEmptyString(translation.questionTextRu)) errors.push(`${translation.questionId}: questionTextRu must be a non-empty string.`);
+    if (requireFullQuality && hasTranslationQualityResidue(translation.questionTextRu)) {
+      errors.push(`${translation.questionId}: questionTextRu contains draft-wrapper, untranslated Spanish, transliteration, or unsupported Latin residue.`);
+    }
     if (!isPlainObject(translation.answerTranslations)) errors.push(`${translation.questionId}: answerTranslations must be an object.`);
 
     const answerTranslations = isPlainObject(translation.answerTranslations) ? translation.answerTranslations : {};
@@ -142,6 +173,10 @@ export function validateTranslationAlignment({ questions, translations, evidence
         errors.push(`${translation.questionId}: missing answer translation for ${answerId}.`);
       } else if (!isNonEmptyString(answerTranslations[answerId])) {
         errors.push(`${translation.questionId}: answer translation for ${answerId} must be a non-empty string.`);
+      } else if (requireFullQuality && hasTranslationQualityResidue(answerTranslations[answerId])) {
+        errors.push(
+          `${translation.questionId}: answer translation for ${answerId} contains draft-wrapper, untranslated Spanish, transliteration, or unsupported Latin residue.`
+        );
       }
     }
 

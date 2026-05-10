@@ -26,6 +26,7 @@
 - Source guard behavior: this is a source-level eligibility rule, not a text-level topic filter. Valid category B practice material may mention motorcycles, motovehicles, ciclomotors, parking areas, lanes, signs, or other shared-road topics when the source `practiceQuestionScope` explicitly allows category B.
 - Question images are part of the learning surface and are stored locally in the repository for offline use.
 - Current image metadata coverage is complete for 275 unique local images and 276 image-backed question references. Most image entries are deterministic low-confidence baseline records with explicit uncertainty pending manual visual review; high-risk `b-fallback-001` has precise cyclist/right-arm signal metadata and regression validation.
+- Feature 009 content work is now sharded by ticket range under `content/translations/ru/`, `content/explanations/ru/`, and `content/image-metadata/question-images/`. The adjacent monolithic JSON files are generated compatibility indexes, not editing sources. Full feature readiness requires `pnpm run validate:content:quality` to pass after every shard reaches `qualityStatus: "complete"`.
 
 ## Post-MVP Candidates
 

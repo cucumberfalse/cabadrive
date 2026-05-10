@@ -172,7 +172,25 @@ type QuestionImageUsage = {
 };
 ```
 
-Question-image metadata is an unofficial learning-support validation layer. It is hash-pinned to local practice images and question fingerprints, and low-confidence entries must record uncertainty instead of invented visual precision.
+Question-image metadata is an unofficial learning-support validation layer. It is hash-pinned to local practice images and question fingerprints. Final approved entries must come from actual image inspection, describe concrete scene/object/sign/road/road-user cues, and name answer-critical visual details. Low-confidence baseline or source-image-frame records are draft scaffolding only and fail the full content quality gate.
+
+Question-image metadata, Russian translations, and Russian explanations are authored in non-overlapping ticket-range shards:
+
+```ts
+type ContentShard<T> = {
+  version: 1;
+  contentKind: "question-image-metadata" | "ru-translations" | "ru-explanations";
+  sourceQuestionPath: "content/questions/caba-b.unofficial-fallback.questions.json";
+  range: {
+    id: "001-092" | "093-184" | "185-276" | "277-368" | "369-460";
+    start: number;
+    end: number;
+  };
+  qualityStatus: "needs_full_content_review" | "in_progress" | "complete";
+};
+```
+
+Shard directories are `content/image-metadata/question-images/*.json`, `content/translations/ru/*.json`, and `content/explanations/ru/*.json`. The monolithic JSON files next to those directories are generated compatibility indexes and are not the source of truth.
 
 ## VocabularyTerm
 

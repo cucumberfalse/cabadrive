@@ -7,6 +7,12 @@ import {
 
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const REVIEW_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const GENERIC_EXPLANATION_FILLER_PATTERN =
+  /\b(учебное пояснение|ориентируйтесь на смысл билета|выберите вариант|на текущей карточке правильный вариант|общая подсказка|generic|placeholder|draft)\b/i;
+const SPANISH_RESIDUE_PATTERN =
+  /[¿¡]|\b(que|qué|indica|señal|senal|veh[ií]culo|vehiculos|vehículos|conductor|conductores|peat[oó]n|peatones|porque|seg[uú]n|para|como|cuando|solo|s[oó]lo|verdadero|falso|prohibido|estacionar|circular|calzada|carril|derecha|izquierda|prioridad|balizas|luces|siniestro|vial|jinete|cruce)\b/i;
+const LATIN_TOKEN_PATTERN = /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]{3,}/g;
+const ALLOWED_LATIN_TOKENS = new Set(["abs", "airbag", "caba", "dni", "gps", "http", "https", "iso", "pdf", "url", "vtv"]);
 
 function isPlainObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -14,6 +20,30 @@ function isPlainObject(value) {
 
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim() !== "";
+}
+
+function latinResidueTokens(value) {
+  if (typeof value !== "string") return [];
+  return (value.match(LATIN_TOKEN_PATTERN) || [])
+    .map((token) => token.toLowerCase())
+    .filter((token) => !ALLOWED_LATIN_TOKENS.has(token));
+}
+
+function hasExplanationQualityResidue(value) {
+  return (
+    typeof value === "string" &&
+    (GENERIC_EXPLANATION_FILLER_PATTERN.test(value) || SPANISH_RESIDUE_PATTERN.test(value) || latinResidueTokens(value).length > 0)
+  );
+}
+
+function requireFullQualityExplanationText(value, label, field, errors) {
+  if (!isNonEmptyString(value)) return;
+  if (hasExplanationQualityResidue(value)) {
+    errors.push(`${label}: ${field} contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue.`);
+  }
+  if (value.trim().length < 80) {
+    errors.push(`${label}: ${field} is too terse for full-quality ticket-specific explanation.`);
+  }
 }
 
 function explanationTupleForQuestion(question, explanation) {
@@ -177,7 +207,8 @@ export function validateExplanationAlignment({
   imageMetadataManifest,
   evidence,
   locale = "ru",
-  strictCoverage = true
+  strictCoverage = true,
+  requireFullQuality = false
 }) {
   const errors = [];
   const questionById = new Map((questions || []).map((question) => [question.id, question]));
@@ -223,10 +254,14 @@ export function validateExplanationAlignment({
       continue;
     }
     if (!isNonEmptyString(explanation.textRu)) errors.push(`${label}: textRu must be a non-empty string.`);
+    if (requireFullQuality) requireFullQualityExplanationText(explanation.textRu, label, "textRu", errors);
     if (!isNonEmptyString(explanation.correctAnswerId)) errors.push(`${label}: correctAnswerId must be a non-empty string.`);
     if (explanation.correctAnswerId !== question.correctAnswerId) errors.push(`${label}: correctAnswerId must match the current question.`);
     if (!isNonEmptyString(explanation.correctAnswerExplanationRu)) {
       errors.push(`${label}: correctAnswerExplanationRu must be a non-empty string.`);
+    }
+    if (requireFullQuality) {
+      requireFullQualityExplanationText(explanation.correctAnswerExplanationRu, label, "correctAnswerExplanationRu", errors);
     }
     if (!isPlainObject(explanation.wrongAnswerExplanations)) {
       errors.push(`${label}: wrongAnswerExplanations must be an object.`);
@@ -249,6 +284,8 @@ export function validateExplanationAlignment({
       if (!providedWrongIds.has(answerId)) errors.push(`${label}: missing wrong-answer rationale for ${answerId}.`);
       if (providedWrongIds.has(answerId) && !isNonEmptyString(wrongAnswerExplanations[answerId])) {
         errors.push(`${label}: wrong-answer rationale for ${answerId} must be a non-empty string.`);
+      } else if (requireFullQuality && providedWrongIds.has(answerId)) {
+        requireFullQualityExplanationText(wrongAnswerExplanations[answerId], label, `wrong-answer rationale for ${answerId}`, errors);
       }
     }
     for (const answerId of providedWrongIds) {

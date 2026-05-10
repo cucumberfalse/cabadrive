@@ -4,6 +4,8 @@
 
 Build the feature in staged PR-sized implementation slices. First add the schema and deterministic validators in draft-safe mode. Then prove the model on the known `b-fallback-001` defect. Then complete image metadata, translations, and explanations in reviewable shards, with evidence gates that detect stale images, stale question tuples, stale metadata, stale translations, and stale explanations. Finish by enabling strict global validation, updating durable docs/specs, running local preflight, and opening PRs through the repository workflow.
 
+This plan is a full-completion plan, not an MVP or placeholder-seeding plan. Final readiness requires qualitative content review for every current ticket and image: complete image metadata, complete idiomatic Russian translations, and complete ticket-specific explanations. Count coverage, hashes, generated evidence, and locally passing tests do not make the feature ready when the content itself remains generic, draft-like, question-derived-only, or unreviewed.
+
 This Architect pass creates only `spec.md`, `plan.md`, and `tasks.md`.
 
 ## Technical Context
@@ -67,13 +69,39 @@ Final filenames may differ if implementation records a better repository fit in 
 
 The question file remains the source of truth for Spanish question text, ordered answers, correct answer ID, image path, and image SHA-256.
 
-The new image metadata layer owns semantic visual facts. It must not duplicate Spanish question text except as fingerprints or trace labels.
+The new image metadata layer owns semantic visual facts from actual local image review. It must not duplicate Spanish question text except as fingerprints or trace labels, and it must not substitute question-derived answer cues for visual inspection.
 
 The new question image usage layer owns per-question critical details. It references shared image metadata by `imageId` and references question/answer IDs by stable IDs.
 
 The Russian translation layer owns question and answer translations for the question card.
 
 The Russian explanation layer owns learner-facing explanations for the question card. Topic guide content may be used as drafting input, but it is not automatically the source of truth for the question-card explanation layer.
+
+### Quality Bar
+
+Implementation must treat image metadata, translations, and explanations as final user-facing learning content.
+
+Image metadata quality requires:
+
+- actual visual review of every image;
+- concrete scene, camera/framing, object, road layout, sign/signal/marking, road-user, annotation, visible-text, relationship, and uncertainty details where visible;
+- enough detail for close visual recreation or review against a close recreation;
+- answer-critical usage details that name actual visible facts and link them to the current answer choices.
+
+Translation quality requires:
+
+- idiomatic Russian question and answer text;
+- no untranslated Spanish except intentional proper nouns, acronyms, source labels, or visible sign text;
+- no transliteration, glossary scaffolding, draft wrappers, or machine-output labels;
+- preservation of answer-critical qualifiers, negation, modality, numeric values, and road-user/sign/traffic context.
+
+Explanation quality requires:
+
+- ticket-specific correct-answer rationale;
+- ticket-specific wrong-answer rationales for every incorrect answer;
+- image-specific rationale where the image carries answer-critical information;
+- source trace or ticket-specific fallback scoping for generalized rule/legal/procedure claims;
+- no generic filler that would fit many unrelated tickets.
 
 ### Metadata Granularity
 
@@ -146,7 +174,7 @@ Image metadata evidence entries must record:
 - `imageSha256`;
 - `metadataSha256`;
 - reviewer/reviewedAt/status;
-- checks for visible scene coverage, object/detail coverage, annotation coverage, uncertainty handling, and no invented critical facts.
+- checks for visible scene coverage, object/detail coverage, road/sign/marking/road-user coverage, annotation coverage, spatial relationship coverage, uncertainty handling, no question-derived-only description, no placeholder/baseline wording, and no invented critical facts.
 
 Question usage evidence entries must record:
 
@@ -155,7 +183,7 @@ Question usage evidence entries must record:
 - `questionFingerprint`;
 - `usageSha256`;
 - reviewer/reviewedAt/status;
-- checks for answer-critical detail mapping and answer/trap linkage.
+- checks for answer-critical detail mapping, answer/trap linkage, no generic source-image/answer-cue detail IDs, and no usage approval without reviewed visual facts.
 
 Explanation alignment evidence entries must record:
 
@@ -164,7 +192,9 @@ Explanation alignment evidence entries must record:
 - `explanationSha256`;
 - `imageMetadataSha256` and `usageSha256` for image-backed questions;
 - reviewer/reviewedAt/status;
-- checks for correct-answer rationale, wrong-answer rationales, source/ticket-specific scoping, image-critical details addressed, and no visual contradiction.
+- checks for correct-answer rationale, wrong-answer rationales, source/ticket-specific scoping, image-critical details addressed, no generic filler, and no visual contradiction.
+
+Translation evidence entries must also record reviewer checks for idiomatic Russian, complete answer translations, no untranslated Spanish residue, no transliteration, no wrapper/draft scaffolding, and no dropped answer-critical meaning.
 
 Translation evidence entries must extend the existing model to full coverage of all current questions.
 
@@ -265,9 +295,9 @@ The Orchestrator may choose exact ranges based on file counts. Each shard must o
 
 Each shard must:
 
-- add detailed visual metadata for assigned unique images;
+- add detailed visual metadata for assigned unique images based on actual image review, not only question text or answer keys;
 - add or update question usage mappings for assigned image-backed questions;
-- mark answer-critical details;
+- mark answer-critical details with actual visible facts and current answer-choice linkage;
 - record uncertainty for ambiguous images;
 - add metadata evidence;
 - run targeted validator tests and `pnpm run validate:content`;
@@ -279,6 +309,7 @@ Final C slice must enable strict image coverage:
 - 275 current unique image paths covered by metadata;
 - no stale image hash/path/question fingerprints;
 - no image-backed question missing answer-critical details.
+- no approved placeholder, baseline, low-confidence overall, question-derived-only, source-image-frame, or generic answer-cue metadata/usage records.
 
 ### Slice D: Translation Coverage Shards
 
@@ -296,13 +327,14 @@ If implementation uses a monolithic translation JSON file, run these slices sequ
 
 Each shard must:
 
-- add Russian question translation;
-- add answer translations for exact answer IDs;
+- add idiomatic Russian question translation;
+- add idiomatic Russian answer translations for exact answer IDs;
 - add or refresh translation alignment evidence;
+- add reviewer evidence for completeness, absence of untranslated Spanish residue, absence of transliteration, and preservation of answer-critical meaning;
 - run translation validation and tests;
 - record evidence.
 
-Final D slice must enable strict full translation coverage for all 460 current question IDs.
+Final D slice must enable strict full translation coverage for all 460 current question IDs and must block wrapper/draft/glossary/scaffolded translations even when coverage counts pass.
 
 ### Slice E: Explanation Coverage Shards
 
@@ -316,17 +348,19 @@ Recommended slicing:
 Each shard must:
 
 - add learner-facing explanation text;
-- add correct-answer rationale;
-- add wrong-answer rationales for every incorrect answer ID;
+- add ticket-specific correct-answer rationale;
+- add ticket-specific wrong-answer rationales for every incorrect answer ID;
 - add related source IDs or ticket-specific fallback scoping;
 - for image-backed questions, reference image metadata critical details and add explanation alignment evidence;
 - keep explanations concise and exam-focused;
 - avoid unsupported current legal/rule claims;
+- add reviewer evidence for answer-specificity, image-specificity where applicable, completeness, and absence of generic filler;
 - record evidence.
 
 No explanation shard may invent image facts not present in metadata. If metadata is missing for an image-backed question in the shard, the shard must either depend on the relevant C slice or include the missing metadata in the same PR only if the Orchestrator scopes it explicitly.
 
 Final E slice must enable strict explanation coverage for all 460 current question IDs.
+It must also block explanations that are structurally present but generic, missing answer-specific rationale, missing image-specific rationale, or not backed by review evidence.
 
 ### Slice F: Docs, Import, And UX Cleanup
 
@@ -353,7 +387,10 @@ Tasks:
   - all 276 image-backed question usages;
   - all 275 unique image metadata entries;
   - answer-critical detail coverage;
-  - image/explanation alignment evidence freshness.
+  - image/explanation alignment evidence freshness;
+  - no placeholder/generic/low-confidence-baseline image metadata or usage records;
+  - no translation Spanish residue, transliteration, wrappers, or glossary drafts;
+  - no generic explanation filler or missing answer-specific rationale.
 - Run:
   - `pnpm run validate:content`;
   - `pnpm run test`;
@@ -369,7 +406,7 @@ Tasks:
   - `make down`.
 - Record exact evidence for every acceptance criterion in `tasks.md`.
 - Confirm required checks are green after PR push.
-- Confirm no blocking review findings and no merge conflicts remain.
+- Confirm the PR is not draft, AI Review has run on the current head and is not skipped, no blocking review findings remain, no merge conflicts remain, and Review Agent content-quality sampling evidence is recorded.
 
 ## Validation Matrix
 
@@ -377,17 +414,20 @@ Tasks:
 | --- | --- |
 | Image metadata schema | Unit tests for required fields, duplicate image IDs, missing visual detail IDs, invalid enums, uncertainty handling. |
 | Image coverage | Validator evidence showing 275 unique image entries and 276 question usages against current question file. |
+| Image metadata quality | Review evidence and tests rejecting placeholder/baseline/question-derived-only/source-image-frame metadata, low-confidence overall approval, and generic answer-cue usage records. |
 | Stale image detection | Unit test mutating an image hash/path and expecting metadata/evidence failure. |
 | Stale question detection | Unit test mutating text, answer IDs/text, correct answer ID, or image hash and expecting usage/evidence failure. |
 | Critical details | Validator evidence that every image-backed question has at least one answer-critical detail linked to current question and answer context. |
 | `b-fallback-001` | Metadata assertion for cyclist/right-arm straight gesture, corrected explanation assertion, old-explanation regression failure. |
-| Translation coverage | Validator evidence for all 460 current question IDs, exact answer IDs, and fresh translation evidence. |
+| Translation coverage | Validator evidence for all 460 current question IDs, exact answer IDs, fresh translation evidence, no untranslated Spanish residue, no transliteration, and no draft/wrapper scaffolding. |
+| Translation quality | Review evidence that translations are idiomatic Russian and preserve answer-critical meaning for sampled/high-risk tickets and every prior blocker. |
 | Explanation coverage | Validator evidence for all 460 current question IDs, correct-answer rationales, wrong-answer rationales, and fresh explanation evidence. |
+| Explanation quality | Review evidence that explanations are ticket-specific, answer-specific, image-specific where needed, and not generic filler. |
 | Image-aware explanations | Validator evidence that image-backed explanations reference critical details and fail stale/contradictory claims. |
 | Official-source boundary | Review evidence that generalized legal/rule/numeric/procedure claims are source-traced or scoped ticket-specific. |
 | Docs/specs | `rg` or diff evidence showing updated durable docs/specs for new paths, schemas, validators, and coverage rules. |
 | Local preflight | `pnpm run preflight` and `git diff --check` result, plus Docker smoke flow if runtime-affecting. |
-| PR workflow | PR shows required checks green, AI Review satisfied, no conflicts, no blocking findings. |
+| PR workflow | PR is not draft; required checks are green; AI Review is completed, not skipped; Review Agent content sampling is recorded; no conflicts; no blocking findings; T099-T102/T109-T111/T114-T120 are complete. |
 
 ## Risks And Mitigations
 
@@ -395,7 +435,7 @@ Tasks:
   - Mitigation: shard metadata work, require structured fields, require uncertainty notes, and require deterministic review evidence.
 
 - Risk: validators create false confidence by checking evidence rather than visual truth.
-  - Mitigation: evidence explicitly records reviewer approval and fingerprints; Review Agent must inspect representative images and all high-risk/critical details in each shard.
+  - Mitigation: evidence explicitly records reviewer approval and fingerprints; Review Agent must inspect representative images, all prior blockers, generated-pattern risks, and all high-risk/critical details in each shard.
 
 - Risk: natural-language explanation validation becomes brittle.
   - Mitigation: validate structured explanation fields and image detail references instead of raw keyword overlap.
@@ -404,7 +444,10 @@ Tasks:
   - Mitigation: prefer sharded metadata and consider sharded translations/explanations; otherwise sequence monolithic-file slices.
 
 - Risk: AI-generated drafts hallucinate visual details or legal claims.
-  - Mitigation: require local review evidence, source trace/ticket-specific scoping, uncertainty fields, and no live AI dependency in validation.
+  - Mitigation: require local review evidence, source trace/ticket-specific scoping, uncertainty fields, no live AI dependency in validation, and explicit rejection of draft wrappers/placeholders as final content.
+
+- Risk: count coverage hides poor-quality generated content.
+  - Mitigation: add hard quality gates, reviewer evidence fields, Review Agent sampling, and blocker tests for placeholder metadata, generic usage mappings, Spanish residue, transliteration, and generic explanation filler.
 
 - Risk: expanded explanations duplicate or diverge from topic guide content.
   - Mitigation: keep question-card explanation layer as source of truth for this feature, record any reuse/sync decision in process memory, and validate complete coverage there.
@@ -422,6 +465,7 @@ Tasks:
 - Implementation Agents must not edit files in other worktrees, reuse another agent's branch, or revert unrelated changes.
 - Review Agents must inspect diffs without changing code, content, docs, tests, specs, scripts, or templates.
 - Orchestrator must avoid parallel assignments that write the same monolithic content file unless the work has been serialized or sharded.
+- All agents must be told that parallel orchestrators/agents are active and that they must use only their assigned isolated environment.
 
 ## PR Workflow Requirements
 
@@ -433,9 +477,12 @@ For every implementation PR:
 4. Run local verification appropriate to the slice.
 5. Push the branch and open a PR through the repository workflow.
 6. Wait for required checks: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`.
-7. Resolve blocking review findings.
-8. Confirm no merge conflicts.
-9. Leave final merge to a human.
+7. Ensure AI Review is completed on the current head; skipped AI Review is not acceptable for readiness.
+8. Resolve blocking review findings.
+9. Confirm the PR is not draft.
+10. Confirm no merge conflicts.
+11. Confirm T099-T102, T109-T111, and T114-T120 are complete before marking ready.
+12. Leave final merge to a human or Orchestrator-controlled auto-merge only after all readiness gates pass.
 
 ## Completion Definition
 
@@ -443,8 +490,11 @@ This feature is complete only when:
 
 - all current image-backed questions have metadata and critical detail mappings;
 - all current questions have validated Russian translations and explanations;
+- all image metadata is complete enough for close recreation and has full visual-review evidence;
+- all translations are idiomatic Russian with no Spanish residue, transliteration, wrappers, or incomplete answer translations;
+- all explanations are ticket-specific, answer-specific, image-specific where needed, and free of generic filler;
 - the old `b-fallback-001` explanation fails validation and the corrected explanation passes;
 - strict deterministic offline validation is enabled and passing;
 - docs/specs and process memory are current;
 - local preflight passes;
-- the final PR has green required checks, no blocking review findings, no conflicts, and only human approval/merge mechanics remaining.
+- the final PR is not draft, has completed non-skipped AI Review, green required checks, no blocking review findings, no conflicts, completed T099-T102/T109-T111/T114-T120, and only human approval/merge mechanics remaining.

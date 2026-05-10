@@ -1,0 +1,1913 @@
+{
+  "version": 1,
+  "contentKind": "ru-explanations",
+  "sourceQuestionPath": "content/questions/caba-b.unofficial-fallback.questions.json",
+  "range": {
+    "id": "185-276",
+    "start": 185,
+    "end": 276
+  },
+  "qualityStatus": "needs_full_content_review",
+  "workerInstructions": "This range shard is the source of truth for its ticket range. Content workers may edit only their assigned shard files.",
+  "locale": "ru",
+  "entries": [
+    {
+      "questionId": "b-fallback-185",
+      "textRu": "Правильный вариант - \"Panel de Prevención (Curva).\". Это Panel de Prevención (Curva): знак предупреждает и направляет внимание на опасный изгиб дороги. Неверные варианты: b-fallback-185-a1: Cruce ferroviario por la derecha связан с путями; на картинке не этот железнодорожный знак. b-fallback-185-a2: Prohibición de girar была бы запрещающим знаком, а здесь показан panel preventivo для кривой.",
+      "correctAnswerId": "b-fallback-185-a3",
+      "correctAnswerExplanationRu": "Это Panel de Prevención (Curva): знак предупреждает и направляет внимание на опасный изгиб дороги.",
+      "wrongAnswerExplanations": {
+        "b-fallback-185-a1": "Cruce ferroviario por la derecha связан с путями; на картинке не этот железнодорожный знак.",
+        "b-fallback-185-a2": "Prohibición de girar была бы запрещающим знаком, а здесь показан panel preventivo для кривой."
+      },
+      "explanationType": "traffic-lights-and-rail-crossings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-185-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-186",
+      "textRu": "Правильный вариант - \"El ciclista, porque el automóvil pierde la prioridad al querer girar.\". Правильно: ciclista имеет prioridad, потому что automóvil выполняет giro a la derecha para ingresar a otra arteria. Это официальный приоритетный случай для ciclorrodados, а не просто уважительная уступка. Неверные варианты: b-fallback-186-a1: Неверно: правило mano derecha не спасает автомобиль, который gira a la derecha через траекторию ciclista. При повороте automotor pierde la prioridad frente al ciclorrodado. b-fallback-186-a3: Формулировка “siempre tiene prioridad” слишком широкая. В этом билете приоритет возникает из-за конкретного маневра автомобиля - поворота через путь велосипедиста.",
+      "correctAnswerId": "b-fallback-186-a2",
+      "correctAnswerExplanationRu": "Правильно: ciclista имеет prioridad, потому что automóvil выполняет giro a la derecha para ingresar a otra arteria. Это официальный приоритетный случай для ciclorrodados, а не просто уважительная уступка.",
+      "wrongAnswerExplanations": {
+        "b-fallback-186-a1": "Неверно: правило mano derecha не спасает автомобиль, который gira a la derecha через траекторию ciclista. При повороте automotor pierde la prioridad frente al ciclorrodado.",
+        "b-fallback-186-a3": "Формулировка “siempre tiene prioridad” слишком широкая. В этом билете приоритет возникает из-за конкретного маневра автомобиля - поворота через путь велосипедиста."
+      },
+      "explanationType": "vulnerable-users-and-shared-spaces",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-186-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-187",
+      "textRu": "Правильный вариант - \"30 metros antes de realizar la maniobra.\". Верно: luz de giro нужно включить por lo menos 30 metros antes de realizar la maniobra. Неверные варианты: b-fallback-187-a1: 20 metros недостаточно по этому билету: ожидаемая дистанция предупреждения о giro больше. b-fallback-187-a2: 10 metros - еще короче и не дает другим участникам достаточно времени понять маневр.",
+      "correctAnswerId": "b-fallback-187-a3",
+      "correctAnswerExplanationRu": "Верно: luz de giro нужно включить por lo menos 30 metros antes de realizar la maniobra.",
+      "wrongAnswerExplanations": {
+        "b-fallback-187-a1": "20 metros недостаточно по этому билету: ожидаемая дистанция предупреждения о giro больше.",
+        "b-fallback-187-a2": "10 metros - еще короче и не дает другим участникам достаточно времени понять маневр."
+      },
+      "explanationType": "right-of-way-special-situations",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-188",
+      "textRu": "Правильный вариант - \"Que no se debe circular sobre ella.\". Правильно: sobre esta demarcación amarilla no se debe circular. Это зона, которую надо объезжать, а не использовать как полосу. Неверные варианты: b-fallback-188-a1: Желтая демаркация на проезжей части не делает сектор местом detención и estacionamiento. b-fallback-188-a2: Она не приглашает ехать медленно по центру сектора; вопрос проверяет запрет движения по разметке.",
+      "correctAnswerId": "b-fallback-188-a3",
+      "correctAnswerExplanationRu": "Правильно: sobre esta demarcación amarilla no se debe circular. Это зона, которую надо объезжать, а не использовать как полосу.",
+      "wrongAnswerExplanations": {
+        "b-fallback-188-a1": "Желтая демаркация на проезжей части не делает сектор местом detención и estacionamiento.",
+        "b-fallback-188-a2": "Она не приглашает ехать медленно по центру сектора; вопрос проверяет запрет движения по разметке."
+      },
+      "explanationType": "stopping-vs-parking-maneuvers",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-188-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-189",
+      "textRu": "Правильный вариант - \"Debería adecuar la velocidad de acuerdo a las condiciones climáticas y de dicha vía de circulación.\". При плохой погоде или сложной дороге водитель должен adaptar la velocidad к климату и состоянию пути. Неверные варианты: b-fallback-189-a1: Правило не говорит автоматически ехать ровно в половину максимума; нужна оценка конкретных условий. b-fallback-189-a3: Одного соблюдения максимума недостаточно, если видимость, calzada или clima требуют ехать медленнее.",
+      "correctAnswerId": "b-fallback-189-a2",
+      "correctAnswerExplanationRu": "При плохой погоде или сложной дороге водитель должен adaptar la velocidad к климату и состоянию пути.",
+      "wrongAnswerExplanations": {
+        "b-fallback-189-a1": "Правило не говорит автоматически ехать ровно в половину максимума; нужна оценка конкретных условий.",
+        "b-fallback-189-a3": "Одного соблюдения максимума недостаточно, если видимость, calzada или clima требуют ехать медленнее."
+      },
+      "explanationType": "speed-limits",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-189-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-190",
+      "textRu": "Правильный вариант - \"Se debe disminuir la velocidad y prestar atención a la posible aproximación de trenes.\". Правильно: знак предупреждает cruce ferroviario, поэтому надо disminuir la velocidad и prestar atención a la posible aproximación de trenes. Неверные варианты: b-fallback-190-a2: Continuar con la misma velocidad опасно и против смысла предупреждающего знака: снижаться надо заранее, не только когда поезд уже виден. b-fallback-190-a3: Colocar balizas не является нужной реакцией на этот знак. Здесь не нужно обозначать свой автомобиль; нужно самому снизить скорость и следить за поездом.",
+      "correctAnswerId": "b-fallback-190-a1",
+      "correctAnswerExplanationRu": "Правильно: знак предупреждает cruce ferroviario, поэтому надо disminuir la velocidad и prestar atención a la posible aproximación de trenes.",
+      "wrongAnswerExplanations": {
+        "b-fallback-190-a2": "Continuar con la misma velocidad опасно и против смысла предупреждающего знака: снижаться надо заранее, не только когда поезд уже виден.",
+        "b-fallback-190-a3": "Colocar balizas не является нужной реакцией на этот знак. Здесь не нужно обозначать свой автомобиль; нужно самому снизить скорость и следить за поездом."
+      },
+      "explanationType": "vehicle-lights-and-signaling",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-190-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-191",
+      "textRu": "Правильный вариант - \"No, porque al ser una intersección semaforizada pero sin giro, no está permitido realizar esa maniobra.\". На intersección semaforizada без señal luminosa de giro поворот налево запрещен, даже если общий semáforo está en verde. Неверные варианты: b-fallback-191-a2: Verde разрешает движение, но не отменяет отдельный запрет girar a la izquierda без разрешающей стрелки. b-fallback-191-a3: Причина не просто doble sentido: ключевое условие билета - semaforizada pero sin giro.",
+      "correctAnswerId": "b-fallback-191-a1",
+      "correctAnswerExplanationRu": "На intersección semaforizada без señal luminosa de giro поворот налево запрещен, даже если общий semáforo está en verde.",
+      "wrongAnswerExplanations": {
+        "b-fallback-191-a2": "Verde разрешает движение, но не отменяет отдельный запрет girar a la izquierda без разрешающей стрелки.",
+        "b-fallback-191-a3": "Причина не просто doble sentido: ключевое условие билета - semaforizada pero sin giro."
+      },
+      "explanationType": "traffic-lights-and-rail-crossings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-191-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-192",
+      "textRu": "Правильный вариант - \"Que el vehículo próximamente ingresará a un garage o se detendrá.\". Intermitentes могут предупреждать, что водитель скоро ingresará a un garage или se detendrá; именно поэтому нужно держать дистанцию. Неверные варианты: b-fallback-192-a1: Balizas не означают просто “еду медленно”. Для этого водитель должен выбирать скорость и не путать остальных. b-fallback-192-a3: Giro en próxima intersección обычно показывают luz de giro, а не balizas.",
+      "correctAnswerId": "b-fallback-192-a2",
+      "correctAnswerExplanationRu": "Intermitentes могут предупреждать, что водитель скоро ingresará a un garage или se detendrá; именно поэтому нужно держать дистанцию.",
+      "wrongAnswerExplanations": {
+        "b-fallback-192-a1": "Balizas не означают просто “еду медленно”. Для этого водитель должен выбирать скорость и не путать остальных.",
+        "b-fallback-192-a3": "Giro en próxima intersección обычно показывают luz de giro, а не balizas."
+      },
+      "explanationType": "stopping-vs-parking-maneuvers",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-192-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-193",
+      "textRu": "Правильный вариант - \"No, porque la obligación del uso del cinturón de seguridad es para todas las personas transportadas.\". Правильно: на фото не все едут корректно, потому что cinturón de seguridad обязателен для всех людей в автомобиле. Неверные варианты: b-fallback-193-a1: Sólo al conductor неверно: обязанность cinturón распространяется не только на водителя. b-fallback-193-a2: Sólo asientos delanteros неверно: задние пассажиры тоже входят в todas las personas transportadas / demás ocupantes.",
+      "correctAnswerId": "b-fallback-193-a3",
+      "correctAnswerExplanationRu": "Правильно: на фото не все едут корректно, потому что cinturón de seguridad обязателен для всех людей в автомобиле.",
+      "wrongAnswerExplanations": {
+        "b-fallback-193-a1": "Sólo al conductor неверно: обязанность cinturón распространяется не только на водителя.",
+        "b-fallback-193-a2": "Sólo asientos delanteros неверно: задние пассажиры тоже входят в todas las personas transportadas / demás ocupantes."
+      },
+      "explanationType": "occupant-protection",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-193-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-194",
+      "textRu": "Правильный вариант - \"No. Si no hay posibilidad de circular, debe alejarse lo más posible de la calzada y de la banquina.\". Если ехать невозможно, нужно уйти как можно дальше от calzada и banquina. Идея - не оставаться в зоне, где вас может задеть поток. Неверные варианты: b-fallback-194-a1: При плотном тумане banquina на ruta не должна становиться обычным местом остановки: там вас могут не увидеть. b-fallback-194-a2: Дальний свет в тумане ухудшает видимость и не делает остановку на banquina безопасной.",
+      "correctAnswerId": "b-fallback-194-a3",
+      "correctAnswerExplanationRu": "Если ехать невозможно, нужно уйти как можно дальше от calzada и banquina. Идея - не оставаться в зоне, где вас может задеть поток.",
+      "wrongAnswerExplanations": {
+        "b-fallback-194-a1": "При плотном тумане banquina на ruta не должна становиться обычным местом остановки: там вас могут не увидеть.",
+        "b-fallback-194-a2": "Дальний свет в тумане ухудшает видимость и не делает остановку на banquina безопасной."
+      },
+      "explanationType": "stopping-vs-parking-maneuvers",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-194-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-195",
+      "textRu": "Правильный вариант - \"Incrementa la resistencia del viento y con ello, aumenta el consumo de combustible.\". Правильно по картинке: груз на крыше incrementa la resistencia del viento, поэтому aumenta el consumo de combustible. Неверные варианты: b-fallback-195-a1: Aumenta porque el vehículo se vuelve más ligero неверно: картинка не про снижение массы, а про roof load и сопротивление воздуха. b-fallback-195-a3: Indistinto неверно: расположение груза на изображении влияет на сопротивление воздуха. Это image-specific conclusion, а не общий источник про все варианты груза.",
+      "correctAnswerId": "b-fallback-195-a2",
+      "correctAnswerExplanationRu": "Правильно по картинке: груз на крыше incrementa la resistencia del viento, поэтому aumenta el consumo de combustible.",
+      "wrongAnswerExplanations": {
+        "b-fallback-195-a1": "Aumenta porque el vehículo se vuelve más ligero неверно: картинка не про снижение массы, а про roof load и сопротивление воздуха.",
+        "b-fallback-195-a3": "Indistinto неверно: расположение груза на изображении влияет на сопротивление воздуха. Это image-specific conclusion, а не общий источник про все варианты груза."
+      },
+      "explanationType": "adverse-weather-and-visibility",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-195-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-196",
+      "textRu": "Правильный вариант - \"Son responsables de la mayoría de los incidentes fatales cualquiera sea la vía de circulación.\". Правильно: los excesos de velocidad are responsible for most fatal incidents regardless of the road type, по формулировке билета и manual GCBA. Неверные варианты: b-fallback-196-a1: Безопасность современных автомобилей не отменяет роль скорости. GCBA прямо связывает exceso de velocidad с incidentes fatales и graves. b-fallback-196-a2: Solamente en vías de doble sentido - ложное ограничение. Билет говорит cualquiera sea la vía de circulación.",
+      "correctAnswerId": "b-fallback-196-a3",
+      "correctAnswerExplanationRu": "Правильно: los excesos de velocidad are responsible for most fatal incidents regardless of the road type, по формулировке билета и manual GCBA.",
+      "wrongAnswerExplanations": {
+        "b-fallback-196-a1": "Безопасность современных автомобилей не отменяет роль скорости. GCBA прямо связывает exceso de velocidad с incidentes fatales и graves.",
+        "b-fallback-196-a2": "Solamente en vías de doble sentido - ложное ограничение. Билет говорит cualquiera sea la vía de circulación."
+      },
+      "explanationType": "emergency-response-and-crash-scene",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-197",
+      "textRu": "Правильный вариант - \"No, dado que está circulando por la banquina.\". Vehiculo circula por la banquina, а banquina не является обычной полосой для движения; поэтому circula incorrectamente. Неверные варианты: b-fallback-197-a1: Даже если на такой дороге важны luces, вопрос показывает проблему не со светом, а с местом движения. b-fallback-197-a2: Distancia prudencial не исправляет ошибку: автомобиль находится не в нормальной полосе движения.",
+      "correctAnswerId": "b-fallback-197-a3",
+      "correctAnswerExplanationRu": "Vehiculo circula por la banquina, а banquina не является обычной полосой для движения; поэтому circula incorrectamente.",
+      "wrongAnswerExplanations": {
+        "b-fallback-197-a1": "Даже если на такой дороге важны luces, вопрос показывает проблему не со светом, а с местом движения.",
+        "b-fallback-197-a2": "Distancia prudencial не исправляет ошибку: автомобиль находится не в нормальной полосе движения."
+      },
+      "explanationType": "road-types-highways-and-routes",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-197-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-198",
+      "textRu": "Правильный вариант - \"Al espacio a ser ocupado por el conductor y los pasajeros.\". Правильно: habitáculo - это пространство, которое занимают conductor и pasajeros, то есть салон автомобиля. Неверные варианты: b-fallback-198-a2: Baúl - это luggage compartment, а не habitáculo. Билет проверяет именно это различие слов. b-fallback-198-a3: Todo el vehículo en general слишком широко. Habitáculo - только салон, где находятся водитель и пассажиры.",
+      "correctAnswerId": "b-fallback-198-a1",
+      "correctAnswerExplanationRu": "Правильно: habitáculo - это пространство, которое занимают conductor и pasajeros, то есть салон автомобиля.",
+      "wrongAnswerExplanations": {
+        "b-fallback-198-a2": "Baúl - это luggage compartment, а не habitáculo. Билет проверяет именно это различие слов.",
+        "b-fallback-198-a3": "Todo el vehículo en general слишком широко. Habitáculo - только салон, где находятся водитель и пассажиры."
+      },
+      "explanationType": "vehicle-condition-maintenance-loads",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-199",
+      "textRu": "Правильный вариант - \"El que firmó la autorización para obtener la licencia.\". В логике билета за menor de edad с лицензией граждански отвечает тот, кто подписал autorización para obtener la licencia. Неверные варианты: b-fallback-199-a2: Сопровождающий не является тем юридическим лицом, которое дало разрешение на получение licencia. b-fallback-199-a3: Разрешение пользоваться конкретным vehículo не совпадает с authorization para obtener la licencia у несовершеннолетнего.",
+      "correctAnswerId": "b-fallback-199-a1",
+      "correctAnswerExplanationRu": "В логике билета за menor de edad с лицензией граждански отвечает тот, кто подписал autorización para obtener la licencia.",
+      "wrongAnswerExplanations": {
+        "b-fallback-199-a2": "Сопровождающий не является тем юридическим лицом, которое дало разрешение на получение licencia.",
+        "b-fallback-199-a3": "Разрешение пользоваться конкретным vehículo не совпадает с authorization para obtener la licencia у несовершеннолетнего."
+      },
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-200",
+      "textRu": "Правильный вариант - \"Principio ético que establece que nadie debería morir ni sufrir lesiones permanentes en siniestros de tránsito.\". Правильно: Vision Cero устанавливает, что никто не должен погибать или получать lesiones permanentes в siniestros de tránsito. Неверные варианты: b-fallback-200-a1: Vision Cero не означает запрет частных автомобилей. Это этический принцип о недопустимости смертей и permanent injuries в дорожной системе. b-fallback-200-a3: Цель не в ускорении движения. В Vision Cero фокус на сохранении жизни и снижении тяжелых последствий.",
+      "correctAnswerId": "b-fallback-200-a2",
+      "correctAnswerExplanationRu": "Правильно: Vision Cero устанавливает, что никто не должен погибать или получать lesiones permanentes в siniestros de tránsito.",
+      "wrongAnswerExplanations": {
+        "b-fallback-200-a1": "Vision Cero не означает запрет частных автомобилей. Это этический принцип о недопустимости смертей и permanent injuries в дорожной системе.",
+        "b-fallback-200-a3": "Цель не в ускорении движения. В Vision Cero фокус на сохранении жизни и снижении тяжелых последствий."
+      },
+      "explanationType": "emergency-response-and-crash-scene",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-201",
+      "textRu": "Правильный вариант - \"Ante la oficina de la Dirección General de Administración de Infracciones que corresponda.\". Правильно по билету: оплату делают ante la Dirección General de Administración de Infracciones que corresponda. Неверные варианты: b-fallback-201-a1: Платеж immediately to Autoridad de Control - ловушка. Билет ожидает administrative office path, а не оплату на месте инспектору. b-fallback-201-a3: Ambas неверно, потому что option A не принимается. Не объединяйте правильный путь через DGAI с оплатой на месте.",
+      "correctAnswerId": "b-fallback-201-a2",
+      "correctAnswerExplanationRu": "Правильно по билету: оплату делают ante la Dirección General de Administración de Infracciones que corresponda.",
+      "wrongAnswerExplanations": {
+        "b-fallback-201-a1": "Платеж immediately to Autoridad de Control - ловушка. Билет ожидает administrative office path, а не оплату на месте инспектору.",
+        "b-fallback-201-a3": "Ambas неверно, потому что option A не принимается. Не объединяйте правильный путь через DGAI с оплатой на месте."
+      },
+      "explanationType": "vehicle-condition-maintenance-loads",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-202",
+      "textRu": "Правильный вариант - \"Cruce Ferroviario (Más de dos vías).\". Señal указывает cruce ferroviario с más de dos vías: нужно понимать, что железнодорожная зона шире обычной. Неверные варианты: b-fallback-202-a2: Estación ferroviaria обозначает станцию, а не количество путей в зоне пересечения. b-fallback-202-a3: Atención a Ferrocarril слишком общее; билет требует конкретный вариант про más de dos vías.",
+      "correctAnswerId": "b-fallback-202-a1",
+      "correctAnswerExplanationRu": "Señal указывает cruce ferroviario с más de dos vías: нужно понимать, что железнодорожная зона шире обычной.",
+      "wrongAnswerExplanations": {
+        "b-fallback-202-a2": "Estación ferroviaria обозначает станцию, а не количество путей в зоне пересечения.",
+        "b-fallback-202-a3": "Atención a Ferrocarril слишком общее; билет требует конкретный вариант про más de dos vías."
+      },
+      "explanationType": "traffic-lights-and-rail-crossings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-202-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-203",
+      "textRu": "Правильный вариант - \"0,5 gramos de alcohol por litro de sangre.\". Правильно для показанного обычного автомобиля в fallback-билете: по CABA Ley 2148 общий лимит для conductores de automóviles - 0,5 gramos por litro de sangre. Неверные варианты: b-fallback-203-a2: 0,0 относится к principiante, transporte de pasajeros, menores или carga в CABA. На изображении нет признака P/профессионального или грузового/пассажирского случая. b-fallback-203-a3: 0,2 - лимит CABA для motovehículos, а не для показанного автомобиля.",
+      "correctAnswerId": "b-fallback-203-a1",
+      "correctAnswerExplanationRu": "Правильно для показанного обычного автомобиля в fallback-билете: по CABA Ley 2148 общий лимит для conductores de automóviles - 0,5 gramos por litro de sangre.",
+      "wrongAnswerExplanations": {
+        "b-fallback-203-a2": "0,0 относится к principiante, transporte de pasajeros, menores или carga в CABA. На изображении нет признака P/профессионального или грузового/пассажирского случая.",
+        "b-fallback-203-a3": "0,2 - лимит CABA для motovehículos, а не для показанного автомобиля."
+      },
+      "explanationType": "alcohol-drugs-and-impairment",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-203-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-204",
+      "textRu": "Правильный вариант - \"La visión borrosa y el aumento del número y duración de parpadeos.\". Правильно: visión borrosa и aumento del número y duración de parpadeos - признаки, что внимание и зрительное восприятие ухудшаются. Неверные варианты: b-fallback-204-a1: Sensación de euforia не является ожидаемым symptom of fatigue в этом билете. Это отвлекающий вариант из другой impairment logic. b-fallback-204-a3: No realizar movements/cambios de postura звучит как неподвижность, но билет ожидает visual/eye symptoms. Не выбирайте вариант только потому, что он тоже описывает тело.",
+      "correctAnswerId": "b-fallback-204-a2",
+      "correctAnswerExplanationRu": "Правильно: visión borrosa и aumento del número y duración de parpadeos - признаки, что внимание и зрительное восприятие ухудшаются.",
+      "wrongAnswerExplanations": {
+        "b-fallback-204-a1": "Sensación de euforia не является ожидаемым symptom of fatigue в этом билете. Это отвлекающий вариант из другой impairment logic.",
+        "b-fallback-204-a3": "No realizar movements/cambios de postura звучит как неподвижность, но билет ожидает visual/eye symptoms. Не выбирайте вариант только потому, что он тоже описывает тело."
+      },
+      "explanationType": "fatigue-distraction-and-attention",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-205",
+      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero: это Estrella Amarilla. Текущий материал GCBA объясняет, что такие звезды постоянно указывают место fallecimiento de una víctima de tránsito. Неверные варианты: b-fallback-205-a2: Falso неверно: изображение именно предупреждает/напоминает, что в этом месте произошло fatal traffic victim event.",
+      "correctAnswerId": "b-fallback-205-a1",
+      "correctAnswerExplanationRu": "Verdadero: это Estrella Amarilla. Текущий материал GCBA объясняет, что такие звезды постоянно указывают место fallecimiento de una víctima de tránsito.",
+      "wrongAnswerExplanations": {
+        "b-fallback-205-a2": "Falso неверно: изображение именно предупреждает/напоминает, что в этом месте произошло fatal traffic victim event."
+      },
+      "explanationType": "emergency-response-and-crash-scene",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-205-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-206",
+      "textRu": "Правильный вариант - \"Sí, porque al mojarse pueden no funcionar eficazmente.\". Верно: если calzada está mojada y hay charcos, frenos могут намокнуть и perder eficacia. Нужен больший запас скорости и дистанции. Неверные варианты: b-fallback-206-a1: Мокрые neumáticos не “очищают” ситуацию так, чтобы brakes работали лучше. Wet road обычно уменьшает запас сцепления. b-fallback-206-a3: Тормоза не отменяют slippery-road physics. Если они мокрые или сцепление хуже, эффективность торможения как раз может снизиться.",
+      "correctAnswerId": "b-fallback-206-a2",
+      "correctAnswerExplanationRu": "Верно: если calzada está mojada y hay charcos, frenos могут намокнуть и perder eficacia. Нужен больший запас скорости и дистанции.",
+      "wrongAnswerExplanations": {
+        "b-fallback-206-a1": "Мокрые neumáticos не “очищают” ситуацию так, чтобы brakes работали лучше. Wet road обычно уменьшает запас сцепления.",
+        "b-fallback-206-a3": "Тормоза не отменяют slippery-road physics. Если они мокрые или сцепление хуже, эффективность торможения как раз может снизиться."
+      },
+      "explanationType": "adverse-weather-and-visibility",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-207",
+      "textRu": "Правильный вариант - \"No, ya que está prohibido por normativa.\". В таком тоннеле sobrepasar нельзя: это опасный участок с ограниченной видимостью и встречным движением. Неверные варианты: b-fallback-207-a1: Даже если отдельного знака нет, в túnel с обоими направлениями билет проверяет запрет по normativa. b-fallback-207-a3: Suficiente visibilidad не отменяет запрет билета; нельзя превращать опасный участок в обычный обгон.",
+      "correctAnswerId": "b-fallback-207-a2",
+      "correctAnswerExplanationRu": "В таком тоннеле sobrepasar нельзя: это опасный участок с ограниченной видимостью и встречным движением.",
+      "wrongAnswerExplanations": {
+        "b-fallback-207-a1": "Даже если отдельного знака нет, в túnel с обоими направлениями билет проверяет запрет по normativa.",
+        "b-fallback-207-a3": "Suficiente visibilidad не отменяет запрет билета; нельзя превращать опасный участок в обычный обгон."
+      },
+      "explanationType": "regulatory-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-208",
+      "textRu": "Правильный вариант - \"A la velocidad adecuada a las circunstancias (dentro de los límites establecidos) que permite mantener el total dominio del vehículo sin generar riesgo.\". Velocidad precautoria - это скорость под обстоятельства, в пределах лимитов, при которой водитель сохраняет total dominio del vehículo и не создает riesgo. Неверные варианты: b-fallback-208-a2: Минимальная скорость - отдельное правило; precautoria говорит не о нижнем пределе, а о безопасной адаптации к условиям. b-fallback-208-a3: Фиксированные 30/45 km/h не определяют общий термин; обстоятельства могут требовать иной безопасной скорости в пределах нормы.",
+      "correctAnswerId": "b-fallback-208-a1",
+      "correctAnswerExplanationRu": "Velocidad precautoria - это скорость под обстоятельства, в пределах лимитов, при которой водитель сохраняет total dominio del vehículo и не создает riesgo.",
+      "wrongAnswerExplanations": {
+        "b-fallback-208-a2": "Минимальная скорость - отдельное правило; precautoria говорит не о нижнем пределе, а о безопасной адаптации к условиям.",
+        "b-fallback-208-a3": "Фиксированные 30/45 km/h не определяют общий термин; обстоятельства могут требовать иной безопасной скорости в пределах нормы."
+      },
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-209",
+      "textRu": "Правильный вариант - \"Sí, puede entorpecer su capacidad de atención al contexto, ya que las discusiones generan un estado de estrés.\". Правильно: спор создает estado de estrés и может ухудшить capacidad de atención al contexto. Для экзамена passenger distraction тоже опасен. Неверные варианты: b-fallback-209-a1: Неверно: discussion с passenger или с человеком вне автомобиля не “keeps alert”. Tensión/estrés может entorpecer attention, а не лечить somnolencia. b-fallback-209-a3: Legal conditions for driving не отменяют психологическое отвлечение. Можно быть legally allowed и всё равно хуже следить за дорожным контекстом.",
+      "correctAnswerId": "b-fallback-209-a2",
+      "correctAnswerExplanationRu": "Правильно: спор создает estado de estrés и может ухудшить capacidad de atención al contexto. Для экзамена passenger distraction тоже опасен.",
+      "wrongAnswerExplanations": {
+        "b-fallback-209-a1": "Неверно: discussion с passenger или с человеком вне автомобиля не “keeps alert”. Tensión/estrés может entorpecer attention, а не лечить somnolencia.",
+        "b-fallback-209-a3": "Legal conditions for driving не отменяют психологическое отвлечение. Можно быть legally allowed и всё равно хуже следить за дорожным контекстом."
+      },
+      "explanationType": "fatigue-distraction-and-attention",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-210",
+      "textRu": "Правильный вариант - \"No, ya que la niña no utiliza el cinturón de seguridad del SRI.\". Правильно: niña no utiliza el cinturón de seguridad del SRI. Детское устройство без фиксации ребенка не выполняет свою функцию. Неверные варианты: b-fallback-210-a1: SRI и asiento trasero сами по себе недостаточны. На картинке девочка не использует cinturón de seguridad del SRI. b-fallback-210-a2: A contra marcha здесь не причина ошибки. Этот точный orientation/group вопрос относится к другому билету; в данной картинке главная проблема - отсутствие ремня SRI.",
+      "correctAnswerId": "b-fallback-210-a3",
+      "correctAnswerExplanationRu": "Правильно: niña no utiliza el cinturón de seguridad del SRI. Детское устройство без фиксации ребенка не выполняет свою функцию.",
+      "wrongAnswerExplanations": {
+        "b-fallback-210-a1": "SRI и asiento trasero сами по себе недостаточны. На картинке девочка не использует cinturón de seguridad del SRI.",
+        "b-fallback-210-a2": "A contra marcha здесь не причина ошибки. Этот точный orientation/group вопрос относится к другому билету; в данной картинке главная проблема - отсутствие ремня SRI."
+      },
+      "explanationType": "occupant-protection",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-210-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-211",
+      "textRu": "Правильный вариант - \"No, está prohibido estacionar y detenerse por normativa.\". Правильный ответ: здесь запрещены и estacionar, и detenerse; это не ситуация для добровольной остановки. Неверные варианты: b-fallback-211-a1: Не достаточно «не мешать движению»: в показанном месте detener и estacionar запрещены нормативно. b-fallback-211-a3: Запрет не зависит только от наличия отдельной señal expresa; место само попадает под нормативный запрет.",
+      "correctAnswerId": "b-fallback-211-a2",
+      "correctAnswerExplanationRu": "Правильный ответ: здесь запрещены и estacionar, и detenerse; это не ситуация для добровольной остановки.",
+      "wrongAnswerExplanations": {
+        "b-fallback-211-a1": "Не достаточно «не мешать движению»: в показанном месте detener и estacionar запрещены нормативно.",
+        "b-fallback-211-a3": "Запрет не зависит только от наличия отдельной señal expresa; место само попадает под нормативный запрет."
+      },
+      "explanationType": "regulatory-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-211-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-212",
+      "textRu": "Правильный вариант - \"No, ya que las mascotas deben ser transportadas en los asientos traseros sujetos con arnés o sistema de retención correspondiente.\". Правильно по fallback-билету: mascotas должны ехать на asientos traseros sujetas con arnés o sistema de retención correspondiente. Архивная Ley 2148 прямо поддерживает запрет transportar animales sueltos; exact arnés/rear-seat wording остается ticket-specific. Неверные варианты: b-fallback-212-a1: Cinturón у людей не делает поездку безопасной, если mascota в салоне не закреплена и может мешать или травмироваться. b-fallback-212-a2: Запрета перевозить mascotas в частном автомобиле как такового этот билет не утверждает. Проблема не в самом животном, а в перевозке без retención.",
+      "correctAnswerId": "b-fallback-212-a3",
+      "correctAnswerExplanationRu": "Правильно по fallback-билету: mascotas должны ехать на asientos traseros sujetas con arnés o sistema de retención correspondiente. Архивная Ley 2148 прямо поддерживает запрет transportar animales sueltos; exact arnés/rear-seat wording остается ticket-specific.",
+      "wrongAnswerExplanations": {
+        "b-fallback-212-a1": "Cinturón у людей не делает поездку безопасной, если mascota в салоне не закреплена и может мешать или травмироваться.",
+        "b-fallback-212-a2": "Запрета перевозить mascotas в частном автомобиле как такового этот билет не утверждает. Проблема не в самом животном, а в перевозке без retención."
+      },
+      "explanationType": "occupant-protection",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-212-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-213",
+      "textRu": "Правильный вариант - \"El vehículo que asciende.\". Верно: приоритет у vehículo que asciende, потому что речь о arteria de doble circulación, pendiente pronunciada и недостаточной ширине. Неверные варианты: b-fallback-213-a1: Vehículo que desciende неверно: в pendiente estrecha с невозможностью одновременного проезда общий ответ CABA - уступить тому, кто sube. b-fallback-213-a3: No hay prioridad неверно: для такой pendiente есть специальное правило, чтобы не спорить в узком месте.",
+      "correctAnswerId": "b-fallback-213-a2",
+      "correctAnswerExplanationRu": "Верно: приоритет у vehículo que asciende, потому что речь о arteria de doble circulación, pendiente pronunciada и недостаточной ширине.",
+      "wrongAnswerExplanations": {
+        "b-fallback-213-a1": "Vehículo que desciende неверно: в pendiente estrecha с невозможностью одновременного проезда общий ответ CABA - уступить тому, кто sube.",
+        "b-fallback-213-a3": "No hay prioridad неверно: для такой pendiente есть специальное правило, чтобы не спорить в узком месте."
+      },
+      "explanationType": "right-of-way-special-situations",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-214",
+      "textRu": "Правильный вариант - \"Julio.\". Последняя цифра dominio на изображении - 7; в расписании CABA это julio. Неверные варианты: b-fallback-214-a1: Enero не входит в обычные vencimientos VTV CABA и не соответствует последней цифре на изображении. b-fallback-214-a3: Diciembre в расписании vencimientos VTV не используется.",
+      "correctAnswerId": "b-fallback-214-a2",
+      "correctAnswerExplanationRu": "Последняя цифра dominio на изображении - 7; в расписании CABA это julio.",
+      "wrongAnswerExplanations": {
+        "b-fallback-214-a1": "Enero не входит в обычные vencimientos VTV CABA и не соответствует последней цифре на изображении.",
+        "b-fallback-214-a3": "Diciembre в расписании vencimientos VTV не используется."
+      },
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-214-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-215",
+      "textRu": "Правильный вариант - \"Continúa subiendo durante 1 hora y luego comienza a descender paulatinamente.\". Правильно по билету: после прекращения ingesta концентрация alcohol continúa subiendo durante 1 hora и только потом desciende paulatinamente. Неверные варианты: b-fallback-215-a1: Билет не ожидает disminuye inmediata. По ticket-specific формуле концентрация еще продолжает subiendo durante 1 hora. b-fallback-215-a3: Se mantiene en el mismo valor неверно: ожидаемая формула не “стоит”, а продолжает расти около часа.",
+      "correctAnswerId": "b-fallback-215-a2",
+      "correctAnswerExplanationRu": "Правильно по билету: после прекращения ingesta концентрация alcohol continúa subiendo durante 1 hora и только потом desciende paulatinamente.",
+      "wrongAnswerExplanations": {
+        "b-fallback-215-a1": "Билет не ожидает disminuye inmediata. По ticket-specific формуле концентрация еще продолжает subiendo durante 1 hora.",
+        "b-fallback-215-a3": "Se mantiene en el mismo valor неверно: ожидаемая формула не “стоит”, а продолжает расти около часа."
+      },
+      "explanationType": "alcohol-drugs-and-impairment",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-216",
+      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero по билету: показанный símbolo относится к carril que debe ser liberado cuando se aproxima un vehículo en emergencia. Точную картинку держим как ticket-specific recognition. Неверные варианты: b-fallback-216-a2: Falso неверно: билет проверяет именно освобождение полосы при приближении emergency vehicle.",
+      "correctAnswerId": "b-fallback-216-a1",
+      "correctAnswerExplanationRu": "Verdadero по билету: показанный símbolo относится к carril que debe ser liberado cuando se aproxima un vehículo en emergencia. Точную картинку держим как ticket-specific recognition.",
+      "wrongAnswerExplanations": {
+        "b-fallback-216-a2": "Falso неверно: билет проверяет именно освобождение полосы при приближении emergency vehicle."
+      },
+      "explanationType": "emergency-response-and-crash-scene",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-216-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-217",
+      "textRu": "Правильный вариант - \"No, porque la prohibición del uso de telefonía celular alcanza sólo al conductor del vehículo.\". Правильно по билету: запрет telefonía celular касается только conductor del vehículo. Использование телефона пассажиром не является тем же нарушением. Неверные варианты: b-fallback-217-a1: Место на asiento delantero не является запретом, который проверяет билет. Человек в круге - pasajero, а не conductor. b-fallback-217-a3: Todos los ocupantes слишком широко для этого билета. Ожидаемая граница - запрет только для conductor.",
+      "correctAnswerId": "b-fallback-217-a2",
+      "correctAnswerExplanationRu": "Правильно по билету: запрет telefonía celular касается только conductor del vehículo. Использование телефона пассажиром не является тем же нарушением.",
+      "wrongAnswerExplanations": {
+        "b-fallback-217-a1": "Место на asiento delantero не является запретом, который проверяет билет. Человек в круге - pasajero, а не conductor.",
+        "b-fallback-217-a3": "Todos los ocupantes слишком широко для этого билета. Ожидаемая граница - запрет только для conductor."
+      },
+      "explanationType": "vehicle-condition-maintenance-loads",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-217-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-218",
+      "textRu": "Правильный вариант - \"No está permitido conducir con la licencia vencida, excepto que el vencimiento fuese un día inhábil, en cuyo caso se traslada al día hábil siguiente.\". С licencia vencida ездить нельзя; исключение - если vencimiento пришелся на día inhábil, тогда он переносится на следующий día hábil. Неверные варианты: b-fallback-218-a1: Нет общего разрешения ездить 30 días corridos после vencimiento лицензии. b-fallback-218-a2: Формулировка про 00 horas del cumpleaños не является правилом CABA для езды с vencida.",
+      "correctAnswerId": "b-fallback-218-a3",
+      "correctAnswerExplanationRu": "С licencia vencida ездить нельзя; исключение - если vencimiento пришелся на día inhábil, тогда он переносится на следующий día hábil.",
+      "wrongAnswerExplanations": {
+        "b-fallback-218-a1": "Нет общего разрешения ездить 30 días corridos после vencimiento лицензии.",
+        "b-fallback-218-a2": "Формулировка про 00 horas del cumpleaños не является правилом CABA для езды с vencida."
+      },
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-219",
+      "textRu": "Правильный вариант - \"Realizar maniobras de sobrepaso.\". Правильно: carril de sobrepaso sirve para realizar maniobras de sobrepaso. После маневра логика билетов ведет к возврату в правую полосу, когда это возможно. Неверные варианты: b-fallback-219-a1: Circular por él cuando a la derecha existe otro carril disponible превращает carril de sobrepaso в обычную полосу движения. Это не назначение такой полосы. b-fallback-219-a2: Даже скорость máxima permitida не дает права постоянно занимать carril de sobrepaso, если он нужен для maneuver, а справа есть доступная полоса.",
+      "correctAnswerId": "b-fallback-219-a3",
+      "correctAnswerExplanationRu": "Правильно: carril de sobrepaso sirve para realizar maniobras de sobrepaso. После маневра логика билетов ведет к возврату в правую полосу, когда это возможно.",
+      "wrongAnswerExplanations": {
+        "b-fallback-219-a1": "Circular por él cuando a la derecha existe otro carril disponible превращает carril de sobrepaso в обычную полосу движения. Это не назначение такой полосы.",
+        "b-fallback-219-a2": "Даже скорость máxima permitida не дает права постоянно занимать carril de sobrepaso, если он нужен для maneuver, а справа есть доступная полоса."
+      },
+      "explanationType": "lane-and-channelization-markings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-220",
+      "textRu": "Правильный вариант - \"Figura B.\". Верно: Figura B соответствует señal indicativa de estar próximo a una zona afectada por obras. Неверные варианты: b-fallback-220-a1: Неверно: Figura A не соответствует форме и цвету предупреждения о зоне obras. b-fallback-220-a3: Неверно: Figura C показывает другой тип/смысл знака и не является нужным предупреждением о работах.",
+      "correctAnswerId": "b-fallback-220-a2",
+      "correctAnswerExplanationRu": "Верно: Figura B соответствует señal indicativa de estar próximo a una zona afectada por obras.",
+      "wrongAnswerExplanations": {
+        "b-fallback-220-a1": "Неверно: Figura A не соответствует форме и цвету предупреждения о зоне obras.",
+        "b-fallback-220-a3": "Неверно: Figura C показывает другой тип/смысл знака и не является нужным предупреждением о работах."
+      },
+      "explanationType": "warning-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-220-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-221",
+      "textRu": "Правильный вариант - \"La línea imaginaria de prolongación de ochava.\". Правильно: при остановке или стоянке около esquina reference is la línea imaginaria de prolongación de ochava. Неверные варианты: b-fallback-221-a1: La línea peatonal важна для crossing, но вопрос именно про detenerse/estacionar near esquina. Для этого reference line - ochava. b-fallback-221-a3: Línea de edificación transversal не является проверяемой reference line для этого parking/corner ticket.",
+      "correctAnswerId": "b-fallback-221-a2",
+      "correctAnswerExplanationRu": "Правильно: при остановке или стоянке около esquina reference is la línea imaginaria de prolongación de ochava.",
+      "wrongAnswerExplanations": {
+        "b-fallback-221-a1": "La línea peatonal важна для crossing, но вопрос именно про detenerse/estacionar near esquina. Для этого reference line - ochava.",
+        "b-fallback-221-a3": "Línea de edificación transversal не является проверяемой reference line для этого parking/corner ticket."
+      },
+      "explanationType": "pedestrian-and-school-road-markings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-222",
+      "textRu": "Правильный вариант - \"Se debe respetar lo que rige con respecto a la línea más próxima; si es continua no traspasarla y si es discontinua está permitido hacerlo.\". Правильно: смотрим на línea más próxima. Если ближайшая линия continua - ее нельзя traspasar; если ближайшая discontinua - пересечение разрешено при безопасном маневре. Неверные варианты: b-fallback-222-a2: Этот вариант переворачивает смысл: discontinua как раз указывает возможность пересечения, а continua - запрет. b-fallback-222-a3: Полный запрет для обеих сторон был бы логикой doble línea continua. Здесь билет проверяет правило ближайшей линии.",
+      "correctAnswerId": "b-fallback-222-a1",
+      "correctAnswerExplanationRu": "Правильно: смотрим на línea más próxima. Если ближайшая линия continua - ее нельзя traspasar; если ближайшая discontinua - пересечение разрешено при безопасном маневре.",
+      "wrongAnswerExplanations": {
+        "b-fallback-222-a2": "Этот вариант переворачивает смысл: discontinua как раз указывает возможность пересечения, а continua - запрет.",
+        "b-fallback-222-a3": "Полный запрет для обеих сторон был бы логикой doble línea continua. Здесь билет проверяет правило ближайшей линии."
+      },
+      "explanationType": "center-lines-and-crossing-rules",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-222-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-223",
+      "textRu": "Правильный вариант - \"Sólo si lo realiza fuera del horario de restricción de los carriles exclusivos.\". Правильно: girar можно sólo si lo realiza fuera del horario de restricción de los carriles exclusivos. Внутри restricted hours вторжение в carril exclusivo запрещает маневр. Неверные варианты: b-fallback-223-a1: Señalizar con anticipación недостаточно: если для giro надо invadir carriles exclusivos, нужно учитывать режим этой выделенной полосы. b-fallback-223-a2: No слишком абсолютен для этой image question. Билет добавляет horario de restricción: вне этого времени правильная оценка может быть иной.",
+      "correctAnswerId": "b-fallback-223-a3",
+      "correctAnswerExplanationRu": "Правильно: girar можно sólo si lo realiza fuera del horario de restricción de los carriles exclusivos. Внутри restricted hours вторжение в carril exclusivo запрещает маневр.",
+      "wrongAnswerExplanations": {
+        "b-fallback-223-a1": "Señalizar con anticipación недостаточно: если для giro надо invadir carriles exclusivos, нужно учитывать режим этой выделенной полосы.",
+        "b-fallback-223-a2": "No слишком абсолютен для этой image question. Билет добавляет horario de restricción: вне этого времени правильная оценка может быть иной."
+      },
+      "explanationType": "lane-and-channelization-markings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-223-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-224",
+      "textRu": "Правильный вариант - \"Todos los medicamentos con efectos sedantes.\". Правильно: ticket-specific ключ - medicamentos con efectos sedantes, потому что sedación может снижать внимание и реакцию. Неверные варианты: b-fallback-224-a1: Todos los medicamentos de venta libre слишком широко. Не каждое средство без рецепта автоматически ухудшает conducción. b-fallback-224-a3: Ambas неверно, потому что A слишком абсолютна. Правильна только группа с efectos sedantes.",
+      "correctAnswerId": "b-fallback-224-a2",
+      "correctAnswerExplanationRu": "Правильно: ticket-specific ключ - medicamentos con efectos sedantes, потому что sedación может снижать внимание и реакцию.",
+      "wrongAnswerExplanations": {
+        "b-fallback-224-a1": "Todos los medicamentos de venta libre слишком широко. Не каждое средство без рецепта автоматически ухудшает conducción.",
+        "b-fallback-224-a3": "Ambas неверно, потому что A слишком абсолютна. Правильна только группа с efectos sedantes."
+      },
+      "explanationType": "alcohol-drugs-and-impairment",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-225",
+      "textRu": "Правильный вариант - \"La señal C.\". Señal C является reglamentaria: она задает обязательное правило, запрет или ограничение. Неверные варианты: b-fallback-225-a1: Señal A не является reglamentaria в этом наборе; она не передает обязательное предписание. b-fallback-225-a2: Señal B относится к другой категории; не выбирайте ее только из-за формы или цвета.",
+      "correctAnswerId": "b-fallback-225-a3",
+      "correctAnswerExplanationRu": "Señal C является reglamentaria: она задает обязательное правило, запрет или ограничение.",
+      "wrongAnswerExplanations": {
+        "b-fallback-225-a1": "Señal A не является reglamentaria в этом наборе; она не передает обязательное предписание.",
+        "b-fallback-225-a2": "Señal B относится к другой категории; не выбирайте ее только из-за формы или цвета."
+      },
+      "explanationType": "regulatory-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-225-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-226",
+      "textRu": "Правильный вариант - \"Se la debe solicitar en el Registro Nacional de la Propiedad del Automotor que corresponde al vehículo.\". Reposición/duplicado de chapa patente оформляется в Registro Nacional de la Propiedad del Automotor, где radicado el vehículo. Неверные варианты: b-fallback-226-a1: Chapa patente не делают “в любом коммерческом месте”: это официальный регистрационный trámite. b-fallback-226-a3: Так как вариант A неверен, “ambas” тоже неверно.",
+      "correctAnswerId": "b-fallback-226-a2",
+      "correctAnswerExplanationRu": "Reposición/duplicado de chapa patente оформляется в Registro Nacional de la Propiedad del Automotor, где radicado el vehículo.",
+      "wrongAnswerExplanations": {
+        "b-fallback-226-a1": "Chapa patente не делают “в любом коммерческом месте”: это официальный регистрационный trámite.",
+        "b-fallback-226-a3": "Так как вариант A неверен, “ambas” тоже неверно."
+      },
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-227",
+      "textRu": "Правильный вариант - \"Sí, porque ordena la circulación de carriles e indica que se puede sobrepasar a otro vehículo.\". Правильно: показанная señal horizontal ordena la circulación de carriles и в этом ticket-specific контексте indica que se puede sobrepasar a otro vehículo. Неверные варианты: b-fallback-227-a2: Sólo cuando la vía tiene dos carriles por sentido добавляет условие, которого нет в правильном смысле показанной горизонтальной señal. b-fallback-227-a3: No/prohibición de sobrepaso неверно для этой картинки: билет проверяет разрешающую/организующую lane marking, а не запрет.",
+      "correctAnswerId": "b-fallback-227-a1",
+      "correctAnswerExplanationRu": "Правильно: показанная señal horizontal ordena la circulación de carriles и в этом ticket-specific контексте indica que se puede sobrepasar a otro vehículo.",
+      "wrongAnswerExplanations": {
+        "b-fallback-227-a2": "Sólo cuando la vía tiene dos carriles por sentido добавляет условие, которого нет в правильном смысле показанной горизонтальной señal.",
+        "b-fallback-227-a3": "No/prohibición de sobrepaso неверно для этой картинки: билет проверяет разрешающую/организующую lane marking, а не запрет."
+      },
+      "explanationType": "lane-and-channelization-markings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-227-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-228",
+      "textRu": "Правильный вариант - \"Sí, los estacionamientos están obligados a destinar un espacio para bicicletas.\". Правильно по билету: sí, los estacionamientos están obligados a destinar un espacio para bicicletas. Official source broadly supports bike/DMP parking network and designated spaces; exact parking-lot obligation remains ticket-specific unless future archive refines it. Неверные варианты: b-fallback-228-a1: Неверно: parking lot на изображении не считается exclusivo para autos y motos. Вопрос проверяет, что bicicleta не исключается из parking context. b-fallback-228-a2: Неверно для fallback-билета: вариант “sólo en algunos” делает правило слишком ограниченным. Exact obligation wording держим как ticket-specific.",
+      "correctAnswerId": "b-fallback-228-a3",
+      "correctAnswerExplanationRu": "Правильно по билету: sí, los estacionamientos están obligados a destinar un espacio para bicicletas. Official source broadly supports bike/DMP parking network and designated spaces; exact parking-lot obligation remains ticket-specific unless future archive refines it.",
+      "wrongAnswerExplanations": {
+        "b-fallback-228-a1": "Неверно: parking lot на изображении не считается exclusivo para autos y motos. Вопрос проверяет, что bicicleta не исключается из parking context.",
+        "b-fallback-228-a2": "Неверно для fallback-билета: вариант “sólo en algunos” делает правило слишком ограниченным. Exact obligation wording держим как ticket-specific."
+      },
+      "explanationType": "bicycles-and-micromobility",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-228-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-229",
+      "textRu": "Правильный вариант - \"Las opciones A, B y C.\". Правильно: opciones A, B y C are all factores de distracción in this image-choice ticket. Когда вопрос просит set of distractions, не отбрасывайте одну картинку без причины. Неверные варианты: b-fallback-229-a2: A y C неполно: вариант B тоже считается distraction по fallback-билету, поэтому answer set должен включать all three. b-fallback-229-a3: B y C тоже неполно: вариант A не исключается. Здесь ловушка в partial combinations, а не в одном единственном wrong action.",
+      "correctAnswerId": "b-fallback-229-a1",
+      "correctAnswerExplanationRu": "Правильно: opciones A, B y C are all factores de distracción in this image-choice ticket. Когда вопрос просит set of distractions, не отбрасывайте одну картинку без причины.",
+      "wrongAnswerExplanations": {
+        "b-fallback-229-a2": "A y C неполно: вариант B тоже считается distraction по fallback-билету, поэтому answer set должен включать all three.",
+        "b-fallback-229-a3": "B y C тоже неполно: вариант A не исключается. Здесь ловушка в partial combinations, а не в одном единственном wrong action."
+      },
+      "explanationType": "fatigue-distraction-and-attention",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-229-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-230",
+      "textRu": "Правильный вариант - \"Carril de detención para el ascenso y descenso de escolares.\". Правильно: по изображению это carril de detención para el ascenso y descenso de escolares. Держите школьный контекст узко, не превращая его в общий parking или generic parada. Неверные варианты: b-fallback-230-a1: Estacionamiento para micros escolares неверно: билет спрашивает demarcación para detención/ascenso y descenso, а не место стоянки. b-fallback-230-a3: Zona de ascenso y descenso de pasajeros de transporte público похожа по словам, но этот билет указывает на escolares, поэтому generic public transport answer не подходит.",
+      "correctAnswerId": "b-fallback-230-a2",
+      "correctAnswerExplanationRu": "Правильно: по изображению это carril de detención para el ascenso y descenso de escolares. Держите школьный контекст узко, не превращая его в общий parking или generic parada.",
+      "wrongAnswerExplanations": {
+        "b-fallback-230-a1": "Estacionamiento para micros escolares неверно: билет спрашивает demarcación para detención/ascenso y descenso, а не место стоянки.",
+        "b-fallback-230-a3": "Zona de ascenso y descenso de pasajeros de transporte público похожа по словам, но этот билет указывает на escolares, поэтому generic public transport answer не подходит."
+      },
+      "explanationType": "public-transport-and-exclusive-lanes",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-230-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-231",
+      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero: objetos sueltos вроде очков, телефона или ключей могут стать снарядами при incident или maniobra brusca, потому что сохраняют energía cinética. Неверные варианты: b-fallback-231-a2: Falso игнорирует физику loose objects. Даже маленькие предметы могут травмировать, когда автомобиль резко останавливается или меняет направление.",
+      "correctAnswerId": "b-fallback-231-a1",
+      "correctAnswerExplanationRu": "Verdadero: objetos sueltos вроде очков, телефона или ключей могут стать снарядами при incident или maniobra brusca, потому что сохраняют energía cinética.",
+      "wrongAnswerExplanations": {
+        "b-fallback-231-a2": "Falso игнорирует физику loose objects. Даже маленькие предметы могут травмировать, когда автомобиль резко останавливается или меняет направление."
+      },
+      "explanationType": "vehicle-condition-maintenance-loads",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-232",
+      "textRu": "Правильный вариант - \"Con las luces intermitentes (balizas).\". Правильно: ingreso hacia un garaje o estacionamiento обозначается luces intermitentes (balizas), потому что водитель замедляется и уходит из потока нестандартным образом. Неверные варианты: b-fallback-232-a1: Luz de giro hacia el lado del ingreso не тот сигнал для въезда в garaje/estacionamiento в этом билете. b-fallback-232-a2: Luz de giro hacia el lado opuesto еще сильнее вводит в заблуждение: она сообщает не тот маневр.",
+      "correctAnswerId": "b-fallback-232-a3",
+      "correctAnswerExplanationRu": "Правильно: ingreso hacia un garaje o estacionamiento обозначается luces intermitentes (balizas), потому что водитель замедляется и уходит из потока нестандартным образом.",
+      "wrongAnswerExplanations": {
+        "b-fallback-232-a1": "Luz de giro hacia el lado del ingreso не тот сигнал для въезда в garaje/estacionamiento в этом билете.",
+        "b-fallback-232-a2": "Luz de giro hacia el lado opuesto еще сильнее вводит в заблуждение: она сообщает не тот маневр."
+      },
+      "explanationType": "vehicle-lights-and-signaling",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-233",
+      "textRu": "Правильный вариант - \"Es igual a la mínima establecida para el tipo de arteria correspondiente.\". Правильно по Ley 2148 wording в билете: frente a establecimientos escolares during horarios de ingreso y egreso скорость precautionary равна mínima establecida para el tipo de arteria correspondiente. Неверные варианты: b-fallback-233-a1: 20 km/h para todas las arterias - это national-looking trap, но вопрос прямо говорит Según Ley 2148. В CABA формулировка билета выбирает minimum for artery type. b-fallback-233-a2: 30 km/h calles / 45 km/h avenidas не совпадает с fallback answer и не является этой school-ingreso/egreso formula.",
+      "correctAnswerId": "b-fallback-233-a3",
+      "correctAnswerExplanationRu": "Правильно по Ley 2148 wording в билете: frente a establecimientos escolares during horarios de ingreso y egreso скорость precautionary равна mínima establecida para el tipo de arteria correspondiente.",
+      "wrongAnswerExplanations": {
+        "b-fallback-233-a1": "20 km/h para todas las arterias - это national-looking trap, но вопрос прямо говорит Según Ley 2148. В CABA формулировка билета выбирает minimum for artery type.",
+        "b-fallback-233-a2": "30 km/h calles / 45 km/h avenidas не совпадает с fallback answer и не является этой school-ingreso/egreso formula."
+      },
+      "explanationType": "pedestrian-school-zones-and-markings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-234",
+      "textRu": "Правильный вариант - \"Frenar y esperar a que termine de cruzar la peatona, aun sabiendo que el vehículo pueda obstaculizar el flujo vehicular.\". Правильно: frenar y esperar a que termine de cruzar. Даже если автомобиль на момент остановки мешает потоку, приоритет - не создать опасность для пешехода. Неверные варианты: b-fallback-234-a1: Esquivar и tocar bocina - опасная логика: водитель переносит риск на peatona вместо того, чтобы убрать конфликт.",
+      "correctAnswerId": "b-fallback-234-a2",
+      "correctAnswerExplanationRu": "Правильно: frenar y esperar a que termine de cruzar. Даже если автомобиль на момент остановки мешает потоку, приоритет - не создать опасность для пешехода.",
+      "wrongAnswerExplanations": {
+        "b-fallback-234-a1": "Esquivar и tocar bocina - опасная логика: водитель переносит риск на peatona вместо того, чтобы убрать конфликт."
+      },
+      "explanationType": "pedestrian-crossings-and-priority",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-234-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-235",
+      "textRu": "Правильный вариант - \"72 horas.\". Правильно: 72 horas. GCBA guide говорит informar a la compañía aseguradora dentro de las 72h, а Ley 17.418 формулирует aviso al asegurador dentro de los tres días desde que se conoce el siniestro. Неверные варианты: b-fallback-235-a1: 24 horas слишком коротко для этого билета. Он спрашивает срок aviso a la compañía aseguradora после siniestro. b-fallback-235-a2: 48 horas тоже не тот срок. В билете и источниках для notice to insurer используется 72 horas / tres días.",
+      "correctAnswerId": "b-fallback-235-a3",
+      "correctAnswerExplanationRu": "Правильно: 72 horas. GCBA guide говорит informar a la compañía aseguradora dentro de las 72h, а Ley 17.418 формулирует aviso al asegurador dentro de los tres días desde que se conoce el siniestro.",
+      "wrongAnswerExplanations": {
+        "b-fallback-235-a1": "24 horas слишком коротко для этого билета. Он спрашивает срок aviso a la compañía aseguradora после siniestro.",
+        "b-fallback-235-a2": "48 horas тоже не тот срок. В билете и источниках для notice to insurer используется 72 horas / tres días."
+      },
+      "explanationType": "emergency-response-and-crash-scene",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-236",
+      "textRu": "Правильный вариант - \"60 km/h.\". Для обычной avenida в CABA билет проверяет максимальную скорость 60 km/h. Неверные варианты: b-fallback-236-a1: 40 km/h - типичное число для calle, но билет показывает avenida. b-fallback-236-a2: 70 km/h - исключение для отдельных avenidas, но не общий ответ для этой avenida.",
+      "correctAnswerId": "b-fallback-236-a3",
+      "correctAnswerExplanationRu": "Для обычной avenida в CABA билет проверяет максимальную скорость 60 km/h.",
+      "wrongAnswerExplanations": {
+        "b-fallback-236-a1": "40 km/h - типичное число для calle, но билет показывает avenida.",
+        "b-fallback-236-a2": "70 km/h - исключение для отдельных avenidas, но не общий ответ для этой avenida."
+      },
+      "explanationType": "speed-limits",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-236-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-237",
+      "textRu": "Правильный вариант - \"Verdadero.\". На фото водитель пьет mate/напиток за рулем: одна рука и внимание уходят от управления, поэтому acción riesgosa. Неверные варианты: b-fallback-237-a2: Falso неверно: даже если это не телефон, действие отвлекает и ухудшает dominio del vehículo.",
+      "correctAnswerId": "b-fallback-237-a1",
+      "correctAnswerExplanationRu": "На фото водитель пьет mate/напиток за рулем: одна рука и внимание уходят от управления, поэтому acción riesgosa.",
+      "wrongAnswerExplanations": {
+        "b-fallback-237-a2": "Falso неверно: даже если это не телефон, действие отвлекает и ухудшает dominio del vehículo."
+      },
+      "explanationType": "safety-principles-and-risk",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-237-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-238",
+      "textRu": "Правильный вариант - \"Aproximación a un puente levadizo, rotatorio o flotante.\". На изображении знак aproximación a un puente levadizo, rotatorio o flotante: возможна преграда из-за подвижного моста. Неверные варианты: b-fallback-238-a2: Puente de menor ancho - другой знак про узкий мост, а не подъемный или поворотный мост. b-fallback-238-a3: Proximidad de un paso a nivel относится к железнодорожному переезду; символ на картинке про puente móvil.",
+      "correctAnswerId": "b-fallback-238-a1",
+      "correctAnswerExplanationRu": "На изображении знак aproximación a un puente levadizo, rotatorio o flotante: возможна преграда из-за подвижного моста.",
+      "wrongAnswerExplanations": {
+        "b-fallback-238-a2": "Puente de menor ancho - другой знак про узкий мост, а не подъемный или поворотный мост.",
+        "b-fallback-238-a3": "Proximidad de un paso a nivel относится к железнодорожному переезду; символ на картинке про puente móvil."
+      },
+      "explanationType": "traffic-lights-and-rail-crossings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-238-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-239",
+      "textRu": "Правильный вариант - \"Indica que de la elevación próxima a la ruta, pueden desprenderse rocas o partes que ruedan sobre la calzada.\". Знак предупреждает, что с возвышения рядом с ruta могут desprenderse rocas или части, которые катятся на calzada. Неверные варианты: b-fallback-239-a2: Zona selvatica - другой образ и не связан с падающими камнями на дорогу. b-fallback-239-a3: Irregularidades de calzada означает неровную дорогу; здесь опасность именно desprendimiento de rocas.",
+      "correctAnswerId": "b-fallback-239-a1",
+      "correctAnswerExplanationRu": "Знак предупреждает, что с возвышения рядом с ruta могут desprenderse rocas или части, которые катятся на calzada.",
+      "wrongAnswerExplanations": {
+        "b-fallback-239-a2": "Zona selvatica - другой образ и не связан с падающими камнями на дорогу.",
+        "b-fallback-239-a3": "Irregularidades de calzada означает неровную дорогу; здесь опасность именно desprendimiento de rocas."
+      },
+      "explanationType": "road-types-highways-and-routes",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-239-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-240",
+      "textRu": "Правильный вариант - \"El campo visual del conductor, su percepción del entorno, la capacidad lumínica del vehículo y la adherencia de las cubiertas.\". Верно: niebla затрагивает всю цепочку риска - campo visual, percepción del entorno, capacidad lumínica del vehículo и adherencia de las cubiertas. Неверные варианты: b-fallback-240-a2: Ответ неполный: он оставляет только обзор и свет, но теряет percepción del entorno и adherencia de las cubiertas. b-fallback-240-a3: Sólo afecta la capacidad lumínica слишком узко. Туман также влияет на восприятие, поле зрения и сцепление.",
+      "correctAnswerId": "b-fallback-240-a1",
+      "correctAnswerExplanationRu": "Верно: niebla затрагивает всю цепочку риска - campo visual, percepción del entorno, capacidad lumínica del vehículo и adherencia de las cubiertas.",
+      "wrongAnswerExplanations": {
+        "b-fallback-240-a2": "Ответ неполный: он оставляет только обзор и свет, но теряет percepción del entorno и adherencia de las cubiertas.",
+        "b-fallback-240-a3": "Sólo afecta la capacidad lumínica слишком узко. Туман также влияет на восприятие, поле зрения и сцепление."
+      },
+      "explanationType": "safe-distance-and-braking",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-241",
+      "textRu": "Правильный вариант - \"Desacelerar lentamente y sujetar el volante.\". Правильная реакция - desacelerar lentamente y sujetar el volante: удержать направление, плавно сбросить скорость и не делать резких движений. Неверные варианты: b-fallback-241-a1: Frenar inmediatamente при проколе/потере давления может сорвать траекторию и усилить потерю контроля. b-fallback-241-a2: Desacelerar rápidamente y frenar слишком резкое действие для такой ситуации: автомобиль может стать менее устойчивым.",
+      "correctAnswerId": "b-fallback-241-a3",
+      "correctAnswerExplanationRu": "Правильная реакция - desacelerar lentamente y sujetar el volante: удержать направление, плавно сбросить скорость и не делать резких движений.",
+      "wrongAnswerExplanations": {
+        "b-fallback-241-a1": "Frenar inmediatamente при проколе/потере давления может сорвать траекторию и усилить потерю контроля.",
+        "b-fallback-241-a2": "Desacelerar rápidamente y frenar слишком резкое действие для такой ситуации: автомобиль может стать менее устойчивым."
+      },
+      "explanationType": "safety-principles-and-risk",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-241-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-242",
+      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero: luz alta не используют как обычный городской режим. В городе она слепит и мешает другим участникам. Неверные варианты: b-fallback-242-a2: Falso неверно: билет проверяет именно запрет/неуместность circular con luz alta encendida en zonas urbanas.",
+      "correctAnswerId": "b-fallback-242-a1",
+      "correctAnswerExplanationRu": "Verdadero: luz alta не используют как обычный городской режим. В городе она слепит и мешает другим участникам.",
+      "wrongAnswerExplanations": {
+        "b-fallback-242-a2": "Falso неверно: билет проверяет именно запрет/неуместность circular con luz alta encendida en zonas urbanas."
+      },
+      "explanationType": "safety-principles-and-risk",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-243",
+      "textRu": "Правильный вариант - \"20 puntos.\". SEPC назначает 20 puntos водителю, который получает licencia de conducir por primera vez. Неверные варианты: b-fallback-243-a1: 10 puntos встречаются в системе как восстановление после cero puntos, но начальное назначение при первой лицензии в CABA - 20. b-fallback-243-a3: 5 puntos - не начальный puntaje; это отвлекающий вариант.",
+      "correctAnswerId": "b-fallback-243-a2",
+      "correctAnswerExplanationRu": "SEPC назначает 20 puntos водителю, который получает licencia de conducir por primera vez.",
+      "wrongAnswerExplanations": {
+        "b-fallback-243-a1": "10 puntos встречаются в системе как восстановление после cero puntos, но начальное назначение при первой лицензии в CABA - 20.",
+        "b-fallback-243-a3": "5 puntos - не начальный puntaje; это отвлекающий вариант."
+      },
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-244",
+      "textRu": "Правильный вариант - \"Ambas respuestas, A y B, son incorrectas.\". Правильно: обе альтернативы incorrectas. Водитель продолжает безопасно и выбирает разрешенный маршрут, не блокируя поток задним ходом или U-turn. Неверные варианты: b-fallback-244-a1: Marcha atrás нельзя использовать как удобный способ вернуться к пропущенному giro, даже если участок кажется коротким. b-fallback-244-a2: Vuelta en U также не является правильным исправлением в показанной ситуации; фото и контекст не дают безопасного разрешенного сценария.",
+      "correctAnswerId": "b-fallback-244-a3",
+      "correctAnswerExplanationRu": "Правильно: обе альтернативы incorrectas. Водитель продолжает безопасно и выбирает разрешенный маршрут, не блокируя поток задним ходом или U-turn.",
+      "wrongAnswerExplanations": {
+        "b-fallback-244-a1": "Marcha atrás нельзя использовать как удобный способ вернуться к пропущенному giro, даже если участок кажется коротким.",
+        "b-fallback-244-a2": "Vuelta en U также не является правильным исправлением в показанной ситуации; фото и контекст не дают безопасного разрешенного сценария."
+      },
+      "explanationType": "right-of-way-basic-intersections",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-244-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-245",
+      "textRu": "Правильный вариант - \"Ambas respuestas, la A y la B, son correctas.\". Правильно: ambas. Little sleep reduces reaction/alertness and predisposes to poor decisions, so both A and B describe the fatigue risk. Неверные варианты: b-fallback-245-a1: Это верно, но неполно: dormir pocas horas reduces capacidad de reacción and estado de alerta, but the ticket also includes bad decision-making risk. b-fallback-245-a2: Тоже верно, но неполно. Malas decisiones and life risk are only one part of the expected combined answer.",
+      "correctAnswerId": "b-fallback-245-a3",
+      "correctAnswerExplanationRu": "Правильно: ambas. Little sleep reduces reaction/alertness and predisposes to poor decisions, so both A and B describe the fatigue risk.",
+      "wrongAnswerExplanations": {
+        "b-fallback-245-a1": "Это верно, но неполно: dormir pocas horas reduces capacidad de reacción and estado de alerta, but the ticket also includes bad decision-making risk.",
+        "b-fallback-245-a2": "Тоже верно, но неполно. Malas decisiones and life risk are only one part of the expected combined answer."
+      },
+      "explanationType": "fatigue-distraction-and-attention",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-246",
+      "textRu": "Правильный вариант - \"Detenerse y esperar a la indicación del agente de tránsito para avanzar.\". Правильно остановиться и ждать indicación del agente de tránsito: его регулирование имеет приоритет для движения в этой ситуации. Неверные варианты: b-fallback-246-a1: Зеленый свет не отменяет указание agente de tránsito. В оперативной ситуации надо ждать его команды. b-fallback-246-a3: Самостоятельно оценить “если нет машин” недостаточно, когда движение регулирует агент.",
+      "correctAnswerId": "b-fallback-246-a2",
+      "correctAnswerExplanationRu": "Правильно остановиться и ждать indicación del agente de tránsito: его регулирование имеет приоритет для движения в этой ситуации.",
+      "wrongAnswerExplanations": {
+        "b-fallback-246-a1": "Зеленый свет не отменяет указание agente de tránsito. В оперативной ситуации надо ждать его команды.",
+        "b-fallback-246-a3": "Самостоятельно оценить “если нет машин” недостаточно, когда движение регулирует агент."
+      },
+      "explanationType": "stopping-vs-parking-maneuvers",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-246-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-247",
+      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero: luces не только освещают. Они показывают другим vehicles и peatones намерения водителя - например, giro, detención, emergencia или движение atrás. Неверные варианты: b-fallback-247-a2: Falso неверно: если считать luces только освещением, теряется их функция comunicación в дорожной ситуации.",
+      "correctAnswerId": "b-fallback-247-a1",
+      "correctAnswerExplanationRu": "Verdadero: luces не только освещают. Они показывают другим vehicles и peatones намерения водителя - например, giro, detención, emergencia или движение atrás.",
+      "wrongAnswerExplanations": {
+        "b-fallback-247-a2": "Falso неверно: если считать luces только освещением, теряется их функция comunicación в дорожной ситуации."
+      },
+      "explanationType": "pedestrian-crossings-and-priority",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-248",
+      "textRu": "Правильный вариант - \"Orientar las ruedas hacia el cordón de la vereda y dejar la marcha hacia atrás o en posición de estacionamiento en el caso de tener caja automática.\". Правильно для показанной downhill/curb-side situation: ruedas hacia el cordón de la vereda и marcha atrás/parking in automatic. Так автомобиль упирается в curb, а не выкатывается в поток. Неверные варианты: b-fallback-248-a2: Ruedas hacia el centro de la calzada и primera соответствуют противоположному направлению уклона, не этой картинке. b-fallback-248-a3: Ruedas paralelas и sin cambio оставляют автомобиль менее защищенным от самопроизвольного движения; билет требует active wheel/gear precaution.",
+      "correctAnswerId": "b-fallback-248-a1",
+      "correctAnswerExplanationRu": "Правильно для показанной downhill/curb-side situation: ruedas hacia el cordón de la vereda и marcha atrás/parking in automatic. Так автомобиль упирается в curb, а не выкатывается в поток.",
+      "wrongAnswerExplanations": {
+        "b-fallback-248-a2": "Ruedas hacia el centro de la calzada и primera соответствуют противоположному направлению уклона, не этой картинке.",
+        "b-fallback-248-a3": "Ruedas paralelas и sin cambio оставляют автомобиль менее защищенным от самопроизвольного движения; билет требует active wheel/gear precaution."
+      },
+      "explanationType": "pedestrian-school-zones-and-markings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-248-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-249",
+      "textRu": "Правильный вариант - \"No, porque debería estar más alejado del cordón (a 20 cm de él).\". Правильно: при обычной параллельной парковке автомобиль должен стоять примерно a 20 cm del cordón, а не вплотную к нему. Неверные варианты: b-fallback-249-a1: Отсутствие желтого cordón не доказывает, что машина bien estacionada: вопрос проверяет положение относительно бордюра. b-fallback-249-a2: Красный cordón связан с запретом остановки/стоянки, но здесь ошибка не в цвете бордюра, а в слишком близкой парковке.",
+      "correctAnswerId": "b-fallback-249-a3",
+      "correctAnswerExplanationRu": "Правильно: при обычной параллельной парковке автомобиль должен стоять примерно a 20 cm del cordón, а не вплотную к нему.",
+      "wrongAnswerExplanations": {
+        "b-fallback-249-a1": "Отсутствие желтого cordón не доказывает, что машина bien estacionada: вопрос проверяет положение относительно бордюра.",
+        "b-fallback-249-a2": "Красный cordón связан с запретом остановки/стоянки, но здесь ошибка не в цвете бордюра, а в слишком близкой парковке."
+      },
+      "explanationType": "parking-clearances-and-corners",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-249-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-250",
+      "textRu": "Правильный вариант - \"Ambas respuestas, la A y B, son correctas.\". Правильный ответ объединяет оба набора: ближний свет нужен на autopistas и на указанных быстрых arterias. Неверные варианты: b-fallback-250-a1: Todas las autopistas верно, но вариант неполный: билет также включает быстрые arterias, перечисленные в другом варианте. b-fallback-250-a2: Av. Gral. Paz, Lugones и Cantilo тоже верны, но вариант неполный без autopistas.",
+      "correctAnswerId": "b-fallback-250-a3",
+      "correctAnswerExplanationRu": "Правильный ответ объединяет оба набора: ближний свет нужен на autopistas и на указанных быстрых arterias.",
+      "wrongAnswerExplanations": {
+        "b-fallback-250-a1": "Todas las autopistas верно, но вариант неполный: билет также включает быстрые arterias, перечисленные в другом варианте.",
+        "b-fallback-250-a2": "Av. Gral. Paz, Lugones и Cantilo тоже верны, но вариант неполный без autopistas."
+      },
+      "explanationType": "speed-limits",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-251",
+      "textRu": "Правильный вариант - \"Aquaplaning.\". Правильно: на изображении показан aquaplaning - автомобиль едет по воде/через воду так, что контакт шины с дорогой может потеряться. Неверные варианты: b-fallback-251-a2: Off tracking - не этот эффект. Билет про water layer and loss of tyre grip, а не про траекторию колес при повороте длинного состава.",
+      "correctAnswerId": "b-fallback-251-a1",
+      "correctAnswerExplanationRu": "Правильно: на изображении показан aquaplaning - автомобиль едет по воде/через воду так, что контакт шины с дорогой может потеряться.",
+      "wrongAnswerExplanations": {
+        "b-fallback-251-a2": "Off tracking - не этот эффект. Билет про water layer and loss of tyre grip, а не про траекторию колес при повороте длинного состава."
+      },
+      "explanationType": "adverse-weather-and-visibility",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-251-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-252",
+      "textRu": "Правильный вариант - \"30 km/h.\". Правильно по конкретному image/sign ticket: на этом tramo de Av. Gral Roca near school maximum is 30 km/h. Это ticket-specific posted limit, не замена общей формулы Ley 2148 из `b-fallback-233`. Неверные варианты: b-fallback-252-a2: 40 km/h похоже на обычную calle limit in CABA, но вопрос показывает school-adjacent tramo with a lower ticket answer. b-fallback-252-a3: 60 km/h похоже на avenida default, но school-zone sign in this ticket lowers the answer to 30 km/h.",
+      "correctAnswerId": "b-fallback-252-a1",
+      "correctAnswerExplanationRu": "Правильно по конкретному image/sign ticket: на этом tramo de Av. Gral Roca near school maximum is 30 km/h. Это ticket-specific posted limit, не замена общей формулы Ley 2148 из `b-fallback-233`.",
+      "wrongAnswerExplanations": {
+        "b-fallback-252-a2": "40 km/h похоже на обычную calle limit in CABA, но вопрос показывает school-adjacent tramo with a lower ticket answer.",
+        "b-fallback-252-a3": "60 km/h похоже на avenida default, но school-zone sign in this ticket lowers the answer to 30 km/h."
+      },
+      "explanationType": "pedestrian-school-zones-and-markings",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-252-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-253",
+      "textRu": "Правильный вариант - \"Ambas respuestas, A y B, son correctas.\". Обе группы обязанностей верны: остановиться/помочь/сотрудничать и сообщить datos personales, vehículo, licencia y seguro. Неверные варианты: b-fallback-253-a1: Это действительно обязанность после siniestro, но неполная: нужно также предоставить данные и страховую информацию. b-fallback-253-a2: Это тоже обязанность, но неполная без detenerse, auxiliar и colaborar para evitar mayores daños.",
+      "correctAnswerId": "b-fallback-253-a3",
+      "correctAnswerExplanationRu": "Обе группы обязанностей верны: остановиться/помочь/сотрудничать и сообщить datos personales, vehículo, licencia y seguro.",
+      "wrongAnswerExplanations": {
+        "b-fallback-253-a1": "Это действительно обязанность после siniestro, но неполная: нужно также предоставить данные и страховую информацию.",
+        "b-fallback-253-a2": "Это тоже обязанность, но неполная без detenerse, auxiliar и colaborar para evitar mayores daños."
+      },
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-254",
+      "textRu": "Правильный вариант - \"40 km/h.\". Для semiautopistas в национальной логике билет проверяет минимальную скорость 40 km/h. Неверные варианты: b-fallback-254-a2: 50 km/h не соответствует минимальному пределу, который спрашивает этот билет. b-fallback-254-a3: 60 km/h слишком высоко для минимальной скорости semiautopista в этой формулировке.",
+      "correctAnswerId": "b-fallback-254-a1",
+      "correctAnswerExplanationRu": "Для semiautopistas в национальной логике билет проверяет минимальную скорость 40 km/h.",
+      "wrongAnswerExplanations": {
+        "b-fallback-254-a2": "50 km/h не соответствует минимальному пределу, который спрашивает этот билет.",
+        "b-fallback-254-a3": "60 km/h слишком высоко для минимальной скорости semiautopista в этой формулировке."
+      },
+      "explanationType": "speed-limits",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-255",
+      "textRu": "Правильный вариант - \"A 4 segundos.\". Правильно по fallback-билету: при показанной condición climática правило 2 segundos увеличивают до 4 segundos. Это билетная формула, а не обобщенный закон из архивной нормы. Неверные варианты: b-fallback-255-a2: 3 segundos - слишком маленькое увеличение для ожидаемого ответа. Билет просит конкретную формулу 4 segundos. b-fallback-255-a3: 5 segundos может звучать осторожно, но в этом билете ожидается именно 4 segundos, а не максимально большой вариант.",
+      "correctAnswerId": "b-fallback-255-a1",
+      "correctAnswerExplanationRu": "Правильно по fallback-билету: при показанной condición climática правило 2 segundos увеличивают до 4 segundos. Это билетная формула, а не обобщенный закон из архивной нормы.",
+      "wrongAnswerExplanations": {
+        "b-fallback-255-a2": "3 segundos - слишком маленькое увеличение для ожидаемого ответа. Билет просит конкретную формулу 4 segundos.",
+        "b-fallback-255-a3": "5 segundos может звучать осторожно, но в этом билете ожидается именно 4 segundos, а не максимально большой вариант."
+      },
+      "explanationType": "safe-distance-and-braking",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-255-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-256",
+      "textRu": "Правильный вариант - \"Opción B.\". Правильно по билету: Opción B, moto/motovehículo. Это ticket-specific ответ на статистический вопрос Observatorio Vial, а не новое общее правило из этого topic. Неверные варианты: b-fallback-256-a1: Opción A показывает автомобиль. В этом fallback-билете после peatones правильная категория víctimas fatales - не autos. b-fallback-256-a3: Opción C показывает велосипедиста. В данном билете correct answer привязан к картинке B.",
+      "correctAnswerId": "b-fallback-256-a2",
+      "correctAnswerExplanationRu": "Правильно по билету: Opción B, moto/motovehículo. Это ticket-specific ответ на статистический вопрос Observatorio Vial, а не новое общее правило из этого topic.",
+      "wrongAnswerExplanations": {
+        "b-fallback-256-a1": "Opción A показывает автомобиль. В этом fallback-билете после peatones правильная категория víctimas fatales - не autos.",
+        "b-fallback-256-a3": "Opción C показывает велосипедиста. В данном билете correct answer привязан к картинке B."
+      },
+      "explanationType": "pedestrian-crossings-and-priority",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-256-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-257",
+      "textRu": "Правильный вариант - \"Sí.\". Sí: по билету alcohol может producir alteraciones en la visión; это часть общей пригодности водителя к восприятию дороги. Неверные варианты: b-fallback-257-a2: No, solamente motora слишком узко: билет проверяет, что алкоголь влияет не только на motor capacity, но и на vision. b-fallback-257-a3: Sólo con más de 1 gramo добавляет неверный порог. Билет не ограничивает visual effects таким числом.",
+      "correctAnswerId": "b-fallback-257-a1",
+      "correctAnswerExplanationRu": "Sí: по билету alcohol может producir alteraciones en la visión; это часть общей пригодности водителя к восприятию дороги.",
+      "wrongAnswerExplanations": {
+        "b-fallback-257-a2": "No, solamente motora слишком узко: билет проверяет, что алкоголь влияет не только на motor capacity, но и на vision.",
+        "b-fallback-257-a3": "Sólo con más de 1 gramo добавляет неверный порог. Билет не ограничивает visual effects таким числом."
+      },
+      "explanationType": "alcohol-drugs-and-impairment",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-258",
+      "textRu": "Правильный вариант - \"Verdadero.\". На фото водитель курит за рулем: это отвлекает руку и внимание, поэтому действие считается riesgosa para la conducción. Неверные варианты: b-fallback-258-a2: Falso неверно: риск не исчезает от того, что машина движется медленно или водитель опытный; отвлечение остается.",
+      "correctAnswerId": "b-fallback-258-a1",
+      "correctAnswerExplanationRu": "На фото водитель курит за рулем: это отвлекает руку и внимание, поэтому действие считается riesgosa para la conducción.",
+      "wrongAnswerExplanations": {
+        "b-fallback-258-a2": "Falso неверно: риск не исчезает от того, что машина движется медленно или водитель опытный; отвлечение остается."
+      },
+      "explanationType": "safety-principles-and-risk",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-258-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-259",
+      "textRu": "Правильный вариант - \"Marzo.\". Последняя цифра dominio - 3; по расписанию CABA это marzo. Неверные варианты: b-fallback-259-a1: Enero не используется как месяц vencimiento VTV CABA и не соответствует последней цифре на изображении. b-fallback-259-a2: Febrero соответствует final 2, но на изображении final 3.",
+      "correctAnswerId": "b-fallback-259-a3",
+      "correctAnswerExplanationRu": "Последняя цифра dominio - 3; по расписанию CABA это marzo.",
+      "wrongAnswerExplanations": {
+        "b-fallback-259-a1": "Enero не используется как месяц vencimiento VTV CABA и не соответствует последней цифре на изображении.",
+        "b-fallback-259-a2": "Febrero соответствует final 2, но на изображении final 3."
+      },
+      "explanationType": "documents-licenses-and-insurance",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-259-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-260",
+      "textRu": "Правильный вариант - \"Existencia de un teatro, en las inmediaciones.\". Пиктограмма teatro сообщает о существовании театра поблизости; это информационный знак. Неверные варианты: b-fallback-260-a2: Prohibición de estacionar не следует из изображения театра: знак не запрещает стоянку. b-fallback-260-a3: Prohibición de detenerse тоже не подходит: знак не вводит запрет остановки.",
+      "correctAnswerId": "b-fallback-260-a1",
+      "correctAnswerExplanationRu": "Пиктограмма teatro сообщает о существовании театра поблизости; это информационный знак.",
+      "wrongAnswerExplanations": {
+        "b-fallback-260-a2": "Prohibición de estacionar не следует из изображения театра: знак не запрещает стоянку.",
+        "b-fallback-260-a3": "Prohibición de detenerse тоже не подходит: знак не вводит запрет остановки."
+      },
+      "explanationType": "regulatory-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-260-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-261",
+      "textRu": "Правильный вариант - \"Circular por la derecha de la calzada y mantenerse. En el caso de ser necesario, reducir la velocidad.\". Правильно: держаться справа на calzada и mantener, а при необходимости reducir la velocidad. Так вы не мешаете безопасному завершению маневра. Неверные варианты: b-fallback-261-a1: Circular por la banquina неверно: обочина не становится нормальной полосой только потому, что вас хотят sobrepasar. b-fallback-261-a3: Ambas неверно, потому что вариант A с banquina опасен и не является правильной обязанностью.",
+      "correctAnswerId": "b-fallback-261-a2",
+      "correctAnswerExplanationRu": "Правильно: держаться справа на calzada и mantener, а при необходимости reducir la velocidad. Так вы не мешаете безопасному завершению маневра.",
+      "wrongAnswerExplanations": {
+        "b-fallback-261-a1": "Circular por la banquina неверно: обочина не становится нормальной полосой только потому, что вас хотят sobrepasar.",
+        "b-fallback-261-a3": "Ambas неверно, потому что вариант A с banquina опасен и не является правильной обязанностью."
+      },
+      "explanationType": "overtaking-and-passing",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-262",
+      "textRu": "Правильный вариант - \"Encrucijada (bifurcación).\". Верно: знак предупреждает об encrucijada (bifurcación), где движение или дорога разделяются. Неверные варианты: b-fallback-262-a1: Неверно: inicio de doble mano - начало двустороннего движения, а не bifurcación. b-fallback-262-a3: Неверно: estrechamiento en una sola mano - сужение с одной стороны; это не показанный знак.",
+      "correctAnswerId": "b-fallback-262-a2",
+      "correctAnswerExplanationRu": "Верно: знак предупреждает об encrucijada (bifurcación), где движение или дорога разделяются.",
+      "wrongAnswerExplanations": {
+        "b-fallback-262-a1": "Неверно: inicio de doble mano - начало двустороннего движения, а не bifurcación.",
+        "b-fallback-262-a3": "Неверно: estrechamiento en una sola mano - сужение с одной стороны; это не показанный знак."
+      },
+      "explanationType": "warning-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-262-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-263",
+      "textRu": "Правильный вариант - \"Permanecer dentro del vehículo con el cinturón de seguridad abrochado, encender las balizas y llamar al número de emergencia de la Autopista.\". Правильно: permanecer dentro del vehículo con el cinturón de seguridad abrochado, encender las balizas и llamar al número de emergencia de la Autopista. Для этого билета главный смысл - предупредить светом и вызвать помощь, не выходя подавать жесты. Неверные варианты: b-fallback-263-a1: Вариант с balizas portátiles и выходом за defensa может звучать безопасно, но в этом билете правильный шаблон другой: не выходить в поток на отмеченных carriles, а остаться пристегнутым, включить balizas и вызвать помощь. b-fallback-263-a2: Descender para hacer señas al resto de los vehículos опасно и не является ожидаемым ответом. Ручные сигналы не должны превращать водителя в человека на проезжей части рядом с быстрым потоком.",
+      "correctAnswerId": "b-fallback-263-a3",
+      "correctAnswerExplanationRu": "Правильно: permanecer dentro del vehículo con el cinturón de seguridad abrochado, encender las balizas и llamar al número de emergencia de la Autopista. Для этого билета главный смысл - предупредить светом и вызвать помощь, не выходя подавать жесты.",
+      "wrongAnswerExplanations": {
+        "b-fallback-263-a1": "Вариант с balizas portátiles и выходом за defensa может звучать безопасно, но в этом билете правильный шаблон другой: не выходить в поток на отмеченных carriles, а остаться пристегнутым, включить balizas и вызвать помощь.",
+        "b-fallback-263-a2": "Descender para hacer señas al resto de los vehículos опасно и не является ожидаемым ответом. Ручные сигналы не должны превращать водителя в человека на проезжей части рядом с быстрым потоком."
+      },
+      "explanationType": "driver-hand-signals",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-263-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-264",
+      "textRu": "Правильный вариант - \"El vehículo B.\". Правильно по изображению: prioridad corresponde al vehículo B. Это конкретная image-order mapping для данного cruce. Неверные варианты: b-fallback-264-a1: Vehículo A в этой картинке не имеет prioridad de paso; не выбирайте его только из-за того, что он ближе к правому краю кадра.",
+      "correctAnswerId": "b-fallback-264-a2",
+      "correctAnswerExplanationRu": "Правильно по изображению: prioridad corresponde al vehículo B. Это конкретная image-order mapping для данного cruce.",
+      "wrongAnswerExplanations": {
+        "b-fallback-264-a1": "Vehículo A в этой картинке не имеет prioridad de paso; не выбирайте его только из-за того, что он ближе к правому краю кадра."
+      },
+      "explanationType": "right-of-way-basic-intersections",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-264-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-265",
+      "textRu": "Правильный вариант - \"Dirección permitida en ambos sentidos.\". Dirección permitida en ambos sentidos - правильный смысл: можно продолжать в любом из двух указанных направлений. Неверные варианты: b-fallback-265-a1: Dirección obligatoria en ambos sentidos означала бы обязанность выбрать один из указанных ходов; в билете знак дает разрешенные направления. b-fallback-265-a3: Giros permitidos слишком узко: знак говорит о направлениях движения, а не только о маневре поворота.",
+      "correctAnswerId": "b-fallback-265-a2",
+      "correctAnswerExplanationRu": "Dirección permitida en ambos sentidos - правильный смысл: можно продолжать в любом из двух указанных направлений.",
+      "wrongAnswerExplanations": {
+        "b-fallback-265-a1": "Dirección obligatoria en ambos sentidos означала бы обязанность выбрать один из указанных ходов; в билете знак дает разрешенные направления.",
+        "b-fallback-265-a3": "Giros permitidos слишком узко: знак говорит о направлениях движения, а не только о маневре поворота."
+      },
+      "explanationType": "regulatory-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-265-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-266",
+      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero: ехать ниже límite mínimo de velocidad тоже может вызвать incidente, потому что мешает нормальной fluidez и предсказуемости потока. Неверные варианты: b-fallback-266-a2: Falso неверно: опасность может создавать не только exceso de velocidad, но и слишком медленное движение ниже установленного минимума.",
+      "correctAnswerId": "b-fallback-266-a1",
+      "correctAnswerExplanationRu": "Verdadero: ехать ниже límite mínimo de velocidad тоже может вызвать incidente, потому что мешает нормальной fluidez и предсказуемости потока.",
+      "wrongAnswerExplanations": {
+        "b-fallback-266-a2": "Falso неверно: опасность может создавать не только exceso de velocidad, но и слишком медленное движение ниже установленного минимума."
+      },
+      "explanationType": "emergency-response-and-crash-scene",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-267",
+      "textRu": "Правильный вариант - \"20 km/h.\". Для показанного tramo de calle правильный максимум в билете - 20 km/h. Неверные варианты: b-fallback-267-a1: 40 km/h - обычная calle, но изображение указывает на участок с более низким пределом. b-fallback-267-a3: 30 km/h не является правильным числом для этого изображенного участка.",
+      "correctAnswerId": "b-fallback-267-a2",
+      "correctAnswerExplanationRu": "Для показанного tramo de calle правильный максимум в билете - 20 km/h.",
+      "wrongAnswerExplanations": {
+        "b-fallback-267-a1": "40 km/h - обычная calle, но изображение указывает на участок с более низким пределом.",
+        "b-fallback-267-a3": "30 km/h не является правильным числом для этого изображенного участка."
+      },
+      "explanationType": "speed-limits",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-267-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-268",
+      "textRu": "Правильный вариант - \"El auto 1 hacia su izquierda y el 2 hacia su derecha.\". Верно именно для этой image choreography: auto 1 se aparta hacia su izquierda, auto 2 hacia su derecha, и между ними освобождается paso a la ambulancia. Неверные варианты: b-fallback-268-a1: Ambos hacia su derecha не создает правильный коридор на этой картинке: auto 1 должен освободить место в другую сторону. b-fallback-268-a2: Только auto 2 недостаточно: ambulancia нужна полоса/коридор между автомобилями, поэтому оба участвуют в освобождении пути.",
+      "correctAnswerId": "b-fallback-268-a3",
+      "correctAnswerExplanationRu": "Верно именно для этой image choreography: auto 1 se aparta hacia su izquierda, auto 2 hacia su derecha, и между ними освобождается paso a la ambulancia.",
+      "wrongAnswerExplanations": {
+        "b-fallback-268-a1": "Ambos hacia su derecha не создает правильный коридор на этой картинке: auto 1 должен освободить место в другую сторону.",
+        "b-fallback-268-a2": "Только auto 2 недостаточно: ambulancia нужна полоса/коридор между автомобилями, поэтому оба участвуют в освобождении пути."
+      },
+      "explanationType": "right-of-way-special-situations",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-268-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-269",
+      "textRu": "Правильный вариант - \"La que indique el manual del usuario de ese automóvil.\". Правильно по билету: используется manual del usuario de ese automóvil. Давление в шинах зависит от конкретного автомобиля. Неверные варианты: b-fallback-269-a1: 28 lbs может подходить какому-то автомобилю, но билет не указывает конкретную модель. Универсальные числа давления здесь ловушка. b-fallback-269-a3: 30 lbs - такое же неподтвержденное универсальное число. Правильное давление зависит от manual del usuario.",
+      "correctAnswerId": "b-fallback-269-a2",
+      "correctAnswerExplanationRu": "Правильно по билету: используется manual del usuario de ese automóvil. Давление в шинах зависит от конкретного автомобиля.",
+      "wrongAnswerExplanations": {
+        "b-fallback-269-a1": "28 lbs может подходить какому-то автомобилю, но билет не указывает конкретную модель. Универсальные числа давления здесь ловушка.",
+        "b-fallback-269-a3": "30 lbs - такое же неподтвержденное универсальное число. Правильное давление зависит от manual del usuario."
+      },
+      "explanationType": "vehicle-condition-maintenance-loads",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-270",
+      "textRu": "Правильный вариант - \"Ambas respuestas, la A y la B, son correctas.\". Правильно: ambas. При negativa CABA presume alcoholemia positiva, запрещает продолжать conducir и ordena la remoción del vehículo. Неверные варианты: b-fallback-270-a1: Фраза про presunción de alcoholemia positiva верна, но в этом вопросе она неполная: при отказе также ordena la remoción del vehículo. b-fallback-270-a2: Remoción del vehículo тоже верна как последствие, но одна она не включает presunción, из-за которой agent puede prohibir continuar conduciendo.",
+      "correctAnswerId": "b-fallback-270-a3",
+      "correctAnswerExplanationRu": "Правильно: ambas. При negativa CABA presume alcoholemia positiva, запрещает продолжать conducir и ordena la remoción del vehículo.",
+      "wrongAnswerExplanations": {
+        "b-fallback-270-a1": "Фраза про presunción de alcoholemia positiva верна, но в этом вопросе она неполная: при отказе также ordena la remoción del vehículo.",
+        "b-fallback-270-a2": "Remoción del vehículo тоже верна как последствие, но одна она не включает presunción, из-за которой agent puede prohibir continuar conduciendo."
+      },
+      "explanationType": "alcohol-drugs-and-impairment",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-271",
+      "textRu": "Правильный вариант - \"El recorrido mínimo e indispensable, siempre que se trate de una maniobra de estacionamiento.\". Правильно: при maniobra de estacionamiento marcha atrás должна быть recorrido mínimo e indispensable и выполняться с максимальной осторожностью. Неверные варианты: b-fallback-271-a1: Mitad de una cuadra - не правило для marcha atrás. Билет проверяет не фиксированную часть квартала, а необходимость маневра. b-fallback-271-a2: 20 metros тоже неверная fixed-distance ловушка: задним ходом нельзя ехать просто до заданного максимума.",
+      "correctAnswerId": "b-fallback-271-a3",
+      "correctAnswerExplanationRu": "Правильно: при maniobra de estacionamiento marcha atrás должна быть recorrido mínimo e indispensable и выполняться с максимальной осторожностью.",
+      "wrongAnswerExplanations": {
+        "b-fallback-271-a1": "Mitad de una cuadra - не правило для marcha atrás. Билет проверяет не фиксированную часть квартала, а необходимость маневра.",
+        "b-fallback-271-a2": "20 metros тоже неверная fixed-distance ловушка: задним ходом нельзя ехать просто до заданного максимума."
+      },
+      "explanationType": "parking-clearances-and-corners",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-272",
+      "textRu": "Правильный вариант - \"No, porque aún hay peatones cruzando de un lado al otro de la arteria.\". Правильно: автомобиль не должен avanzar, пока pedestrians продолжают cruzar de un lado al otro de la arteria. Неверные варианты: b-fallback-272-a1: На картинке как раз есть peatones cruzando; утверждение por allí no circulan peatones не совпадает с ситуацией. b-fallback-272-a3: Espacio suficiente para avanzar не дает права ехать между пешеходами на переходе. Запас места не отменяет ожидание.",
+      "correctAnswerId": "b-fallback-272-a2",
+      "correctAnswerExplanationRu": "Правильно: автомобиль не должен avanzar, пока pedestrians продолжают cruzar de un lado al otro de la arteria.",
+      "wrongAnswerExplanations": {
+        "b-fallback-272-a1": "На картинке как раз есть peatones cruzando; утверждение por allí no circulan peatones не совпадает с ситуацией.",
+        "b-fallback-272-a3": "Espacio suficiente para avanzar не дает права ехать между пешеходами на переходе. Запас места не отменяет ожидание."
+      },
+      "explanationType": "pedestrian-crossings-and-priority",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-272-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-273",
+      "textRu": "Правильный вариант - \"Calzada dividida.\". Верно: знак указывает calzada dividida, то есть начало участка с разделенной проезжей частью. Неверные варианты: b-fallback-273-a1: Неверно: estrechamiento en las dos manos - сужение с двух сторон, а здесь речь не о сужении. b-fallback-273-a3: Неверно: inicio doble mano означает начало двустороннего движения; это другой предупреждающий знак.",
+      "correctAnswerId": "b-fallback-273-a2",
+      "correctAnswerExplanationRu": "Верно: знак указывает calzada dividida, то есть начало участка с разделенной проезжей частью.",
+      "wrongAnswerExplanations": {
+        "b-fallback-273-a1": "Неверно: estrechamiento en las dos manos - сужение с двух сторон, а здесь речь не о сужении.",
+        "b-fallback-273-a3": "Неверно: inicio doble mano означает начало двустороннего движения; это другой предупреждающий знак."
+      },
+      "explanationType": "warning-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-273-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-274",
+      "textRu": "Правильный вариант - \"Verdadero.\". Верно: билет прямо описывает изображение как informativas que orientan al peatón, то есть информационный указатель для пешехода. Неверные варианты: b-fallback-274-a2: Falso не подходит: в этом билете знак не является запретом или предупреждением, а классифицируется как информационный ориентир для пешехода.",
+      "correctAnswerId": "b-fallback-274-a1",
+      "correctAnswerExplanationRu": "Верно: билет прямо описывает изображение как informativas que orientan al peatón, то есть информационный указатель для пешехода.",
+      "wrongAnswerExplanations": {
+        "b-fallback-274-a2": "Falso не подходит: в этом билете знак не является запретом или предупреждением, а классифицируется как информационный ориентир для пешехода."
+      },
+      "explanationType": "information-signs",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "imageDetailReferences": [
+        "b-fallback-274-critical-source-image"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-275",
+      "textRu": "Правильный вариант - \"A las condiciones en que se encuentran: el automóvil, la infraestructura vial, las condiciones climáticas y el conductor.\". Правильно: надо учитывать automóvil, infraestructura vial, condiciones climáticas и conductor. Это вся chain of risk для safe adaptation. Неверные варианты: b-fallback-275-a1: Pavimento y clima важны, но ответ неполный: безопасность зависит не только от road/weather. b-fallback-275-a3: Ninguna de las anteriores неверно, потому что полный вариант B прямо перечисляет ключевые условия.",
+      "correctAnswerId": "b-fallback-275-a2",
+      "correctAnswerExplanationRu": "Правильно: надо учитывать automóvil, infraestructura vial, condiciones climáticas и conductor. Это вся chain of risk для safe adaptation.",
+      "wrongAnswerExplanations": {
+        "b-fallback-275-a1": "Pavimento y clima важны, но ответ неполный: безопасность зависит не только от road/weather.",
+        "b-fallback-275-a3": "Ninguna de las anteriores неверно, потому что полный вариант B прямо перечисляет ключевые условия."
+      },
+      "explanationType": "adverse-weather-and-visibility",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    },
+    {
+      "questionId": "b-fallback-276",
+      "textRu": "Правильный вариант - \"Apagar el motor, colocar las balizas portátiles, mantener encendidas las luces de posición e intermitentes y llamar al número de asistencia.\". Правильно: apagar el motor, colocar balizas portátiles, оставить включенными luces de posición e intermitentes и llamar al número de asistencia. Так уменьшается пожарный риск и сохраняется visibility. Неверные варианты: b-fallback-276-a1: Просто закрыть автомобиль и выйти из túnel недостаточно: вариант пропускает предупреждение и вызов помощи. В тоннеле важны видимость и риск препятствия. b-fallback-276-a2: Apagar todas las luces неверно: автомобиль должен оставаться видимым. Один звонок с телефона не заменяет luces de posición/intermitentes и balizas/dispositivos de advertencia.",
+      "correctAnswerId": "b-fallback-276-a3",
+      "correctAnswerExplanationRu": "Правильно: apagar el motor, colocar balizas portátiles, оставить включенными luces de posición e intermitentes и llamar al número de asistencia. Так уменьшается пожарный риск и сохраняется visibility.",
+      "wrongAnswerExplanations": {
+        "b-fallback-276-a1": "Просто закрыть автомобиль и выйти из túnel недостаточно: вариант пропускает предупреждение и вызов помощи. В тоннеле важны видимость и риск препятствия.",
+        "b-fallback-276-a2": "Apagar todas las luces неверно: автомобиль должен оставаться видимым. Один звонок с телефона не заменяет luces de posición/intermitentes и balizas/dispositivos de advertencia."
+      },
+      "explanationType": "vehicle-condition-maintenance-loads",
+      "claimScope": "ticket_specific_fallback",
+      "relatedSourceIds": [
+        "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
+      ],
+      "method": "topic_guide_reused_or_deterministic_draft",
+      "reviewer": "Cabadrive solo self-audit",
+      "reviewedAt": "2026-05-09",
+      "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    }
+  ]
+}

@@ -2,8 +2,6 @@ import contentMode from "../../content/meta/content-mode.json";
 import examFormat from "../../content/config/caba-exam-format.json";
 import sources from "../../content/sources/sources.json";
 import questions from "../../content/questions/caba-b.unofficial-fallback.questions.json";
-import translations from "../../content/translations/ru.translations.json";
-import explanations from "../../content/explanations/ru.explanations.json";
 import vocabulary from "../../content/vocabulary/ru.vocabulary.json";
 import guide from "../../content/guide/ru.condensed-guide.json";
 import topicStudyGuideJson from "../../content/guide/topic-study-guide.ru.json";
@@ -118,6 +116,37 @@ export type ProgressAnswer = {
   answeredAt: string;
   mode: "learning" | "exam" | "mistakes";
 };
+
+type ContentShard<T> = {
+  range: {
+    id: string;
+    start: number;
+    end: number;
+  };
+  entries: T[];
+};
+
+function collectShardEntries<T>(modules: Record<string, unknown>, label: string): T[] {
+  return Object.entries(modules)
+    .map(([path, module]) => {
+      const shard = (module as { default: ContentShard<T> }).default;
+      if (!shard?.range || !Array.isArray(shard.entries)) {
+        throw new Error(`${label} shard ${path} is malformed.`);
+      }
+      return { path, shard };
+    })
+    .sort((a, b) => a.shard.range.start - b.shard.range.start || a.path.localeCompare(b.path))
+    .flatMap(({ shard }) => shard.entries);
+}
+
+const translations = collectShardEntries<Translation>(
+  import.meta.glob("../../content/translations/ru/*.json", { eager: true }),
+  "Russian translation"
+);
+const explanations = collectShardEntries<Explanation>(
+  import.meta.glob("../../content/explanations/ru/*.json", { eager: true }),
+  "Russian explanation"
+);
 
 export const data = {
   contentMode,

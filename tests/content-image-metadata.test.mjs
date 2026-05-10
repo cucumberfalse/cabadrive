@@ -42,6 +42,7 @@ function baseImage() {
     objects: [{ id: "sign", type: "traffic_sign", label: "sign", confidence: "high" }],
     roadUsers: [],
     signsSignalsMarkings: [],
+    visualDetails: [{ id: "sign-shape", objectIds: ["sign"], description: "The sign shape is visible and answer-critical." }],
     annotations: [],
     visibleText: [],
     spatialRelationships: [],
@@ -116,6 +117,34 @@ function validateSynthetic(input = {}) {
   }).filter((error) => !error.includes("baseline.questionSetFingerprint") && !error.includes("baseline.imageReferenceFingerprint"));
 }
 
+function validateSyntheticFullQuality(input = {}) {
+  const image = input.image || {
+    ...baseImage(),
+    review: {
+      ...baseImage().review,
+      qualityStatus: "complete",
+      visualReviewEvidence: {
+        method: "actual_image_inspection",
+        reviewerNotes: "Synthetic reviewed sign fixture with a visible answer-critical sign shape.",
+        sceneCoverage: true,
+        objectCoverage: true,
+        answerCriticalCoverage: true
+      }
+    }
+  };
+  const usage = input.usage || baseUsage();
+  const { manifest, evidence } = manifestAndEvidence({ image, usage });
+  manifest.baseline.questionSetFingerprint = "skip";
+  manifest.baseline.imageReferenceFingerprint = "skip";
+  return validateQuestionImageMetadata({
+    questions: [baseQuestion],
+    manifest,
+    evidence,
+    strictCoverage: false,
+    requireFullQuality: true
+  }).filter((error) => !error.includes("baseline.questionSetFingerprint") && !error.includes("baseline.imageReferenceFingerprint"));
+}
+
 test("current question image metadata has approved fresh coverage", () => {
   const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
   const manifest = JSON.parse(readFileSync("content/image-metadata/question-images.manifest.json", "utf8"));
@@ -127,6 +156,45 @@ test("missing critical details fail image usage validation", () => {
   const usage = { ...baseUsage(), answerCriticalDetails: [] };
   const errors = validateSynthetic({ usage });
   assert(errors.includes("q1: usage must include at least one answer-critical detail."));
+});
+
+test("full-quality image gate accepts concrete reviewed metadata", () => {
+  assert.deepEqual(validateSyntheticFullQuality(), []);
+});
+
+test("full-quality image gate rejects placeholder metadata and generic source-image details", () => {
+  const image = {
+    ...baseImage(),
+    visualSummary: "Deterministic baseline metadata for a source image frame pending manual review required.",
+    objects: [{ id: "source-image-frame", type: "source_image_frame", label: "source image", confidence: "low" }],
+    visualDetails: [],
+    uncertainties: [{ id: "manual-review-required", field: "objects", note: "object-level detail remains uncertain" }]
+  };
+  const usage = {
+    ...baseUsage(),
+    answerCriticalDetails: [
+      {
+        detailId: "q1-critical-source-image",
+        objectIds: ["source-image-frame"],
+        description: "The referenced source image is answer-critical for this ticket.",
+        supportsAnswerIds: ["q1-a2"],
+        rejectsAnswerIds: [],
+        criticality: "required",
+        confidence: "low"
+      }
+    ]
+  };
+  const errors = validateSyntheticFullQuality({ image, usage });
+  assert(
+    errors.includes(
+      "question-image-example: full-quality image metadata must not contain placeholder, baseline, source-image-frame, or manual-review-required wording."
+    )
+  );
+  assert(
+    errors.includes(
+      "q1: critical detail q1-critical-source-image must name actual visible answer-critical facts, not source-image or answer-cue placeholders."
+    )
+  );
 });
 
 test("stale question fingerprint fails image usage validation", () => {

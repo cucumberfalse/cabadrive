@@ -6,6 +6,52 @@ import {
   validateExplanationAlignment
 } from "../scripts/content-explanation-alignment.mjs";
 
+const syntheticQuestion = {
+  id: "q1",
+  officialTextEs: "¿Qué indica esta señal?",
+  answers: [
+    { id: "q1-a1", officialTextEs: "Opción incorrecta." },
+    { id: "q1-a2", officialTextEs: "Opción correcta." }
+  ],
+  correctAnswerId: "q1-a2"
+};
+
+function syntheticExplanation(overrides = {}) {
+  return {
+    questionId: "q1",
+    textRu:
+      "Этот билет проверяет конкретное значение дорожного знака. Правильный ответ выбирается по видимому регулирующему признаку, а не по общему предположению о ситуации.",
+    correctAnswerId: "q1-a2",
+    correctAnswerExplanationRu:
+      "Правильный вариант соответствует видимому требованию знака и сохраняет смысл исходного билета без расширения правила за пределы показанной ситуации.",
+    wrongAnswerExplanations: {
+      "q1-a1":
+        "Этот вариант неверен, потому что описывает другое действие и не подтверждается тем визуальным признаком, который проверяет текущий билет."
+    },
+    explanationType: "learning_support",
+    claimScope: "direct_ticket",
+    relatedSourceIds: ["source-1"],
+    disclaimer: "Это учебное пояснение не является официальной формулировкой экзамена.",
+    ...overrides
+  };
+}
+
+function syntheticEvidence(explanation) {
+  return {
+    locale: "ru",
+    version: 1,
+    entries: [
+      buildExplanationAlignmentEvidenceEntry({
+        question: syntheticQuestion,
+        explanation,
+        reviewer: "Cabadrive solo self-audit",
+        reviewedAt: "2026-05-09",
+        notes: "Synthetic explanation quality fixture."
+      })
+    ]
+  };
+}
+
 test("current Russian explanations have full approved alignment evidence", () => {
   const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
   const explanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
@@ -95,4 +141,33 @@ test("missing wrong-answer rationale fails explanation validation", () => {
   });
   assert(errors.includes("b-fallback-003: missing wrong-answer rationale for b-fallback-003-a2."));
   assert(errors.includes("b-fallback-003: missing wrong-answer rationale for b-fallback-003-a3."));
+});
+
+test("full-quality explanation gate rejects generic filler and Spanish residue", () => {
+  const explanation = syntheticExplanation({
+    textRu: "Учебное пояснение: cruce de jinetes. Выберите вариант по смыслу билета.",
+    correctAnswerExplanationRu: "Правильный вариант - cruce de jinetes.",
+    wrongAnswerExplanations: {
+      "q1-a1": "Generic placeholder rationale."
+    }
+  });
+  const errors = validateExplanationAlignment({
+    questions: [syntheticQuestion],
+    explanations: [explanation],
+    imageMetadataManifest: { questionUsages: [], images: [] },
+    evidence: syntheticEvidence(explanation),
+    locale: "ru",
+    requireFullQuality: true
+  });
+  assert(errors.includes("q1: textRu contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue."));
+  assert(
+    errors.includes(
+      "q1: correctAnswerExplanationRu contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue."
+    )
+  );
+  assert(
+    errors.includes(
+      "q1: wrong-answer rationale for q1-a1 contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue."
+    )
+  );
 });

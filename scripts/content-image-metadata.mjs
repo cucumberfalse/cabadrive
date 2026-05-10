@@ -2,6 +2,10 @@ import { createHash } from "node:crypto";
 
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const REVIEW_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const PLACEHOLDER_IMAGE_METADATA_PATTERN =
+  /\b(source[-_ ]?image[-_ ]?frame|source image|manual[-_ ]?review[-_ ]?required|deterministic baseline|baseline metadata|object-level visual facts are not asserted|object-level detail remains uncertain|specific visual objects are not asserted|unknown or not manually reviewed|pending manual image review)\b/i;
+const GENERIC_USAGE_DETAIL_PATTERN =
+  /\b(source[-_ ]?image|answer[-_ ]?cue|visible context|critical[-_ ]?source[-_ ]?image|referenced source image|generic visual|object-level detail remains uncertain)\b/i;
 
 function isPlainObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -190,6 +194,9 @@ function allObjectIds(image) {
 
 function allDetailIds(image, usage) {
   const ids = new Set();
+  for (const detail of image.visualDetails || []) {
+    if (isNonEmptyString(detail.id)) ids.add(detail.id);
+  }
   for (const detail of usage.answerCriticalDetails || []) {
     if (isNonEmptyString(detail.detailId)) ids.add(detail.detailId);
   }
@@ -209,6 +216,72 @@ function requireApprovedReview(review, label, errors) {
   if (review.status !== "approved") errors.push(`${label}: review.status must be approved.`);
   if (!isNonEmptyString(review.reviewer)) errors.push(`${label}: review.reviewer must be a non-empty string.`);
   if (!REVIEW_DATE_PATTERN.test(review.reviewedAt || "")) errors.push(`${label}: review.reviewedAt must be YYYY-MM-DD.`);
+}
+
+function serializedText(value) {
+  return JSON.stringify(value || "").replace(/[_-]+/g, " ");
+}
+
+function hasPlaceholderImageMetadata(image) {
+  return PLACEHOLDER_IMAGE_METADATA_PATTERN.test(serializedText(image));
+}
+
+function hasGenericUsageDetail(detail) {
+  return GENERIC_USAGE_DETAIL_PATTERN.test(serializedText(detail));
+}
+
+function hasConcreteVisualObject(object) {
+  if (!isPlainObject(object)) return false;
+  if (!isNonEmptyString(object.id) || !isNonEmptyString(object.type)) return false;
+  if (/source[-_ ]?image|unknown|frame|placeholder|generic/i.test(`${object.id} ${object.type} ${object.label || ""}`)) return false;
+  return object.confidence !== "low";
+}
+
+function hasConcreteVisualReviewEvidence(review) {
+  const evidence = review?.visualReviewEvidence;
+  return (
+    isPlainObject(evidence) &&
+    evidence.method === "actual_image_inspection" &&
+    isNonEmptyString(evidence.reviewerNotes) &&
+    evidence.sceneCoverage === true &&
+    evidence.objectCoverage === true &&
+    evidence.answerCriticalCoverage === true
+  );
+}
+
+function requireFullQualityImageMetadata(image, label, errors) {
+  if (hasPlaceholderImageMetadata(image)) {
+    errors.push(`${label}: full-quality image metadata must not contain placeholder, baseline, source-image-frame, or manual-review-required wording.`);
+  }
+  if (!hasConcreteVisualReviewEvidence(image.review)) {
+    errors.push(`${label}: full-quality image metadata requires review.visualReviewEvidence from actual image inspection.`);
+  }
+  const concreteObjects = [
+    ...(image.objects || []),
+    ...(image.roadUsers || []),
+    ...(image.signsSignalsMarkings || [])
+  ].filter(hasConcreteVisualObject);
+  if (concreteObjects.length < 1) {
+    errors.push(`${label}: full-quality image metadata must include concrete non-placeholder visible objects with at least medium confidence.`);
+  }
+  if (!Array.isArray(image.visualDetails) || image.visualDetails.length < 1) {
+    errors.push(`${label}: full-quality image metadata must include visualDetails that name visible, recreatable image facts.`);
+  }
+  if (image.review?.qualityStatus && image.review.qualityStatus !== "complete") {
+    errors.push(`${label}: review.qualityStatus must be complete for full-quality image metadata.`);
+  }
+}
+
+function requireFullQualityUsageDetail(detail, label, errors) {
+  if (hasGenericUsageDetail(detail)) {
+    errors.push(`${label}: critical detail ${detail.detailId || "(missing id)"} must name actual visible answer-critical facts, not source-image or answer-cue placeholders.`);
+  }
+  if (!isNonEmptyString(detail.description) || detail.description.trim().length < 24) {
+    errors.push(`${label}: critical detail ${detail.detailId || "(missing id)"} must include a specific visible-fact description.`);
+  }
+  if (detail.criticality === "required" && detail.confidence === "low") {
+    errors.push(`${label}: required critical detail ${detail.detailId || "(missing id)"} cannot have low confidence in the full-quality gate.`);
+  }
 }
 
 function requireEvidenceEntry(entry, label, expectedHashes, checks, errors) {
@@ -267,7 +340,7 @@ function validateB001({ image, usage, errors }) {
   }
 }
 
-export function validateQuestionImageMetadata({ questions, manifest, evidence, strictCoverage = true }) {
+export function validateQuestionImageMetadata({ questions, manifest, evidence, strictCoverage = true, requireFullQuality = false }) {
   const errors = [];
   const { imageBackedQuestions, uniqueImages } = collectImageReferences(questions);
   const questionById = new Map((questions || []).map((question) => [question.id, question]));
@@ -351,6 +424,7 @@ export function validateQuestionImageMetadata({ questions, manifest, evidence, s
     if (!isNonEmptyString(image.generationPromptSummary)) errors.push(`${label}: generationPromptSummary must be a non-empty string.`);
     if (!Array.isArray(image.objects) || image.objects.length < 1) errors.push(`${label}: objects must include at least one object.`);
     if (!Array.isArray(image.uncertainties)) errors.push(`${label}: uncertainties must be an array.`);
+    if (requireFullQuality) requireFullQualityImageMetadata(image, label, errors);
     requireApprovedReview(image.review, label, errors);
     requireEvidenceEntry(
       imageEvidenceById.get(image.imageId),
@@ -408,6 +482,7 @@ export function validateQuestionImageMetadata({ questions, manifest, evidence, s
       if (!isNonEmptyString(detail.detailId)) errors.push(`${label}: critical detail id must be non-empty.`);
       if (detailIdSet.has(detail.detailId)) errors.push(`${label}: duplicate critical detail ${detail.detailId}.`);
       detailIdSet.add(detail.detailId);
+      if (requireFullQuality) requireFullQualityUsageDetail(detail, label, errors);
       if (!detailIds.has(detail.detailId)) errors.push(`${label}: critical detail ${detail.detailId} is not present in the metadata detail set.`);
       if (!Array.isArray(detail.objectIds) || detail.objectIds.length < 1) errors.push(`${label}: critical detail ${detail.detailId} must reference objectIds.`);
       for (const objectId of detail.objectIds || []) {

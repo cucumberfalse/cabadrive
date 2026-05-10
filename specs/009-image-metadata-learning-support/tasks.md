@@ -124,10 +124,10 @@
 - [x] T096 Run `pnpm run preflight`.
 - [x] T097 Run `git diff --check`.
 - [ ] T098 If runtime-affecting changes exist, run `make down`, `make build`, `make up`, HTTP/browser smoke test against `http://localhost:5173`, and `make down`.
-- [ ] T099 Confirm required checks are green after PR push: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`.
+- [ ] T099 Confirm required checks are green after PR push and AI Review completed on the current head without being skipped: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`.
 - [ ] T100 Confirm no unresolved merge conflicts.
 - [ ] T101 Confirm no blocking review findings remain.
-- [ ] T102 Confirm only final human approval or merge mechanics remain.
+- [ ] T102 Confirm the PR is not draft and only final human approval or merge mechanics remain after T099-T101, T109-T111, and T114-T120 are complete.
 
 ## Agent Boundaries For Future Work
 
@@ -137,9 +137,24 @@
 - [x] T106 Implementation Agent keeps each PR within the Orchestrator-assigned slice.
 - [x] T107 Implementation Agent updates this `tasks.md` with verification evidence and process memory in the same PR.
 - [x] T108 Implementation Agent records divergence or improvement feedback here for Architect disposition instead of implementing out-of-scope changes silently.
-- [ ] T109 Review Agent reviews against this feature memory and PR diff.
+- [ ] T109 Review Agent reviews against this feature memory, PR diff, and the hard quality gates for full image metadata, translations, and explanations.
 - [ ] T110 Review Agent does not edit code, content, docs, tests, scripts, templates, specs, or workflow files while acting as reviewer.
-- [ ] T111 Review Agent reports blocking code/content findings as GitHub inline review threads under the repository review contract.
+- [ ] T111 Review Agent reports blocking code/content findings as GitHub inline review threads under the repository review contract and records/links content-quality sampling evidence.
+
+## Architect Hard-Gate Update After Review Blockers
+
+- [x] T112 Record current Review Agent P1 blockers as accepted architecture blockers, not optional polish.
+- [x] T113 Update `spec.md`, `plan.md`, and this `tasks.md` to state this is not an MVP/placeholder task.
+- [ ] T114 Implementation Agent verifies or replaces every approved image metadata entry from actual visual review so it is complete enough for close image recreation and contains no generic/question-derived/source-image-frame/low-confidence-baseline content.
+- [ ] T115 Implementation Agent verifies or replaces every question image usage mapping so answer-critical details name actual visible facts and link to current answer reasoning, with no generic source-image or answer-cue placeholders.
+- [ ] T116 Implementation Agent verifies or replaces all 460 Russian translations and all answer translations as idiomatic Russian with no untranslated Spanish residue, transliteration, wrappers, glossary drafts, or dropped answer-critical meaning.
+- [ ] T117 Implementation Agent verifies or replaces all 460 Russian explanations as complete ticket-specific learning explanations with correct-answer rationale, wrong-answer rationales, and image-specific rationale where applicable.
+- [x] T118 Implementation Agent adds or tightens validators/tests to reject low-confidence baseline metadata, generic answer-cue usage, question-derived-only metadata, approved metadata without full visual-review evidence, Spanish residue, transliteration, wrapper translations, and generic explanation filler.
+- [ ] T119 Implementation Agent records hard-gate verification evidence by image/translation/explanation range, including reviewer evidence beyond counts and hashes.
+- [ ] T120 Review Agent manually samples and inspects content quality for images, translations, explanations, all prior blockers, and generated-pattern risk areas before passing review.
+- [ ] T121 Orchestrator keeps PR blocked from ready/merge state while it is draft, AI Review is skipped, any T099-T102/T109-T111/T114-T120 item is pending, or any blocking Review Agent finding remains.
+- [x] T122 Implementation Agent shards translation, explanation, and question-image metadata sources into the five assigned ticket ranges so parallel content workers can edit non-overlapping files.
+- [x] T123 Implementation Agent updates app imports, validation, and generated compatibility indexes to consume shards deterministically.
 
 ## Process Memory
 
@@ -155,11 +170,19 @@
 - Architect did not edit `feature-request.md`, product code, content data, tests, scripts, durable docs, commits, pushes, or PR state.
 - Implementation Agent confirmed the required feature memory existed before product edits and worked only in `/Users/chap/devel/cabadrive-009-ticket-image-metadata-intake` on `codex/009-ticket-image-metadata-intake`.
 - Orchestrator assignment requested end-to-end implementation in this branch rather than separate PR slices; Implementation Agent recorded this divergence and kept the scope in one branch to satisfy the latest assignment.
-- Implementation kept translations and explanations monolithic in `content/translations/ru.translations.json` and `content/explanations/ru.explanations.json` because the app already imports those files directly and no parallel writer was assigned to this worktree.
-- Implementation used one monolithic image metadata manifest at `content/image-metadata/question-images.manifest.json` plus a separate evidence file. This preserves shared metadata per unique image and per-question usage mappings without changing runtime imports.
+- Earlier implementation kept translations and explanations monolithic in `content/translations/ru.translations.json` and `content/explanations/ru.explanations.json` because the app imported those files directly. The 2026-05-09 infrastructure pass superseded this: `content/translations/ru/*.json` and `content/explanations/ru/*.json` are now the source of truth, and the monolithic files are generated compatibility indexes.
+- Earlier implementation used one monolithic image metadata manifest at `content/image-metadata/question-images.manifest.json` plus a separate evidence file. The 2026-05-09 infrastructure pass superseded this: `content/image-metadata/question-images/*.json` is now the source of truth, with `questionUsages` owned by question range and shared `images` owned by the lowest-numbered image-backed question using that image.
 - Implementation reused topic-study-guide answer rationales for question-card explanations where available, with deterministic fallback text only when topic-guide rationale was unavailable.
-- Implementation used deterministic glossary-assisted draft translations for previously uncovered questions. These entries are complete, answer-ID exact, fingerprinted, and marked unofficial, but they are not claimed as native human translations.
-- Implementation used deterministic low-confidence baseline image metadata for images that were not manually described, with explicit uncertainty records. `b-fallback-001`/`b13.jpg` is the manually precise high-confidence regression case.
+- Review-fix implementation replaced deterministic glossary wrapper translations with rule-based Russian question/answer translations and added validation that rejects draft wrappers and obvious Spanish markers.
+- Review-fix implementation replaced placeholder image metadata/usage records with structured scene/object/sign/road/road-user cue metadata derived from current ticket wording, answer keys, and topic-guide rationales. Architect disposition: this may be useful as draft scaffolding, but it is not final acceptable image metadata unless each entry is visually reviewed against the actual image and made complete enough for close recreation. `b-fallback-001`/`b13.jpg` remains the manually precise high-confidence regression case.
+- Review-fix implementation strengthened validators so approved metadata cannot use `source_image_frame`, `manual-review-required`, `Deterministic baseline metadata`, or generic source-image critical details. Architect disposition: validator keyword bans are necessary but insufficient; final gates must also reject question-derived-only metadata, low-confidence overall metadata, generic answer-cue usage, and approved records without full visual-review evidence.
+- Architect hard-gate update on 2026-05-09: the feature is not an MVP and cannot be completed with placeholders, generated baseline coverage, wrappers, transliteration, Spanish residue, or generic explanations.
+- Architect hard-gate update on 2026-05-09: Russian copy-edit/content review is not optional polish; translation and explanation quality is part of merge readiness.
+- Architect hard-gate update on 2026-05-09: PR readiness requires non-draft status, completed non-skipped AI Review on the current head, green required checks, no merge conflicts, no blocking Review Agent findings, and completed T099-T102/T109-T111/T114-T120.
+- Implementation Lead infrastructure pass on 2026-05-09 reverted the rejected uncommitted review-fix product/content/script/test/doc changes while preserving Architect updates in this feature memory, then rebuilt the work as an infrastructure/refactor slice.
+- Implementation Lead infrastructure pass on 2026-05-09 introduced five shard ranges for each content area: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
+- Implementation Lead infrastructure pass on 2026-05-09 added `scripts/content-shards.mjs` as the deterministic loader/writer. Content workers edit only their assigned shard files, then run `node scripts/content-shards.mjs --write-indexes`.
+- Implementation Lead infrastructure pass on 2026-05-09 kept `pnpm run validate:content` as structural offline validation and added `pnpm run validate:content:quality` as the hard content-quality gate. The quality gate is expected to fail until every range is fully reviewed and marked complete.
 
 ### Dead Ends
 
@@ -174,9 +197,13 @@
 - Baseline before implementation: validation proved image files existed and hashes matched, but not that explanations matched image semantics.
 - Large content files may cause merge conflicts unless future implementation shards data or serializes monolithic edits.
 - Some images may be ambiguous, low-resolution, annotated, or cropped; implementation records uncertainty instead of inventing visual facts.
-- Resolved in this implementation: strict validation now requires 460 translations, 460 explanations, 275 unique image metadata entries, 276 question usages, answer-critical image details, and fresh deterministic evidence.
-- Remaining content-quality caveat: 274 non-`b13.jpg` image metadata entries intentionally use low-confidence baseline descriptions with uncertainty rather than detailed manual object inventories. This satisfies deterministic coverage and stale validation, but future content-review slices should manually enrich high-risk images before treating those metadata entries as precise image-generation prompts.
-- Remaining content-quality caveat: generated translations for newly covered questions are deterministic glossary-assisted drafts. They are useful for offline completeness and alignment checks, but a future language-review pass should improve idiomatic Russian wording.
+- Count/fingerprint gate implemented: strict validation now requires 460 translations, 460 explanations, 275 unique image metadata entries, 276 question usages, answer-critical image details, and fresh deterministic evidence. Architect disposition: this is necessary but not sufficient for final quality.
+- Current Review Agent blocker accepted: most image metadata must not remain placeholder/baseline/question-derived-only coverage or be marked approved without full visual review.
+- Current Review Agent blocker accepted: image usage mappings must not approve generic source-image or answer-cue critical details; they must name the actual visible answer-critical facts.
+- Current Review Agent blocker accepted: translations must not contain Spanish residue, transliteration, wrappers, or glossary drafts; `b-fallback-011` was cited as a concrete blocker and must be rechecked.
+- Current Review Agent blocker accepted: PR #63 is not merge-ready while it is draft, AI Review is skipped, no passing Review Agent quality review exists, or T099-T102/T109-T111 remain unchecked.
+- Current range shards are mechanically initialized from the existing generated indexes and are marked `qualityStatus: "needs_full_content_review"`. They are not content-complete and must not be treated as final approved quality.
+- `pnpm run validate:content:quality` currently fails by design because content shards are not complete and current translations/explanations/image metadata still contain the known Spanish-residue, generic, placeholder, and review-evidence blockers.
 
 ### Verification Evidence
 
@@ -198,19 +225,35 @@
 - Final `pnpm run preflight` passed after rebasing onto current `origin/main` (`f6882e5`): feature-memory gate, repo baseline check, content validation, all unit tests, production build, and Playwright e2e all succeeded.
 - Final `pnpm run test:e2e` passed inside preflight: `14` tests passed across chromium/mobile.
 - `git diff --check` passed with no whitespace errors.
+- Review-fix audit: local Node query returned `genericImages=0` and `genericUsages=0` after regenerating metadata.
+- Review-fix audit: `b-fallback-011` translation is now `Что означает этот знак?` with Russian answer translations for the airport/low-flying aircraft sign.
+- Review-fix tests: `pnpm run test` passed with `82` tests after adding placeholder-metadata, generic-usage, and Spanish-marker translation regressions.
+- Infrastructure shard generation: `node scripts/content-shards.mjs --init-from-current` initialized range shards from the current generated indexes and regenerated compatibility indexes.
+- Generated-index freshness: `node scripts/content-shards.mjs --check-indexes` passed with `Generated content indexes are fresh.`
+- Structural validation after sharding: `pnpm run validate:content` passed with `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Full content quality gate after sharding: `pnpm run validate:content:quality` failed as expected, starting with all 15 range shards requiring `qualityStatus: complete`, then reporting translation residue (including `b-fallback-011`), placeholder/low-quality image metadata, and generic/Spanish-residue explanation blockers.
+- Infrastructure tests: `pnpm run test` passed with `87` tests, `87` pass, `0` fail.
+- Infrastructure build: `pnpm run build` passed after sharding; Vite emitted only the existing large chunk-size warning and generated a service worker with `280` cached assets.
+- Infrastructure preflight: `pnpm run preflight` passed, including feature-memory gate, repo baseline check, structural content validation, `87` unit tests, production build, and `14` Playwright e2e tests.
 
 ### Implementation Agent Feedback
 
-- Future Architect/Orchestrator should decide whether to split manual enrichment of low-confidence image metadata into follow-up review slices by image range or risk class.
-- Future Architect/Orchestrator should decide whether deterministic glossary-assisted translations should be upgraded to human-reviewed translations before any public release beyond local/private MVP.
+- Implementation Agent feedback said future human copy-editing of rule-based Russian translations could be optional before a broader public release.
+- Review Agent blockers showed that generated/count coverage can still leave placeholder metadata, generic image usage, and non-Russian translation residue.
 
 ### Architect Disposition Of Feedback
 
-- Pending: low-confidence image metadata enrichment follow-up.
-- Pending: human-quality translation review follow-up.
+- Disposition: Russian translation quality review is no longer optional for this feature. All 460 question translations and all answer translations must be idiomatic, complete Russian and must pass hard gates before merge readiness.
+- Disposition: image metadata generated from ticket wording, answer keys, topic-guide rationales, or generic source-image cues is acceptable only as draft scaffolding. Final approved metadata must come from actual image review and be detailed enough for close recreation.
+- Disposition: explanation coverage by deterministic fallback text is acceptable only as draft scaffolding. Final approved explanations must be ticket-specific, answer-specific, and image-specific where applicable.
+- Disposition: the Review Agent P1 findings are accepted as blocking architecture requirements. Implementation must address them through content changes, validator/test gates, evidence updates, and a fresh Review Agent pass.
+- Disposition: Orchestrator must not mark PR #63 or any successor PR ready for merge while draft, with skipped AI Review, with pending T099-T102/T109-T111/T114-T120, or with unresolved blocking findings.
 
 ### Review Notes
 
 - Future Review Agent should verify that any implementation PR updates this process memory with exact evidence rather than only a prose summary.
 - Future Review Agent should verify that any full-coverage claim is backed by validator output against the current question file, not hard-coded counts alone.
-- Future Review Agent should inspect high-risk image metadata manually, including `b-fallback-001`, duplicated images, hand signals, traffic signs, lane markings, and any low-confidence images.
+- Future Review Agent should inspect high-risk image metadata manually, including `b-fallback-001`, duplicated images, hand signals, traffic signs, and lane markings.
+- Future Review Agent should inspect representative non-`b13.jpg` images for full visual metadata quality and reject records that could not recreate a close image.
+- Future Review Agent should inspect representative translations, including `b-fallback-011`, for Spanish residue, transliteration, wrappers, and dropped answer-critical meaning.
+- Future Review Agent should inspect representative explanations for correct-answer rationale, wrong-answer rationales, image-aware rationale where applicable, and generic filler.
