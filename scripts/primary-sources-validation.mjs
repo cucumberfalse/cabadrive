@@ -29,7 +29,7 @@ const RUSSIAN_TEXT_PATH_KEYS = new Set([
   "learnerRussianPath"
 ]);
 const PLACEHOLDER_PATTERN =
-  /(?:^|[^\p{L}\p{N}_])(?:todo|tbd|placeholder|draft(?:\s|-)+placeholder|lorem\s+ipsum|чернов\p{L}*\s+подготовительн\p{L}*|заглушк\p{L}*)(?=$|[^\p{L}\p{N}_])/iu;
+  /(?:^|[^\p{L}\p{N}_])(?:todo|tbd|placeholder|draft|lorem\s+ipsum|чернов\p{L}*|заглушк\p{L}*)(?=$|[^\p{L}\p{N}_])/iu;
 
 const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
