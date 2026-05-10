@@ -155,24 +155,24 @@
 - [x] T123 Run `pnpm run test:e2e`.
 - [x] T124 Run `pnpm run preflight`.
 - [x] T125 Run `git diff --check`.
-- [ ] T126 For runtime-affecting changes, run `make down`, `make build`, `make up`, smoke check `http://localhost:5173`, and `make down`.
-- [ ] T127 Confirm required checks are green after PR push.
-- [ ] T128 Confirm no unresolved merge conflicts.
-- [ ] T129 Confirm no blocking review findings remain.
-- [ ] T130 Confirm only final human approval or merge mechanics remain; do not check while mandatory Slice F is waiting for merged `009`.
+- [x] T126 For runtime-affecting changes, attempt Docker smoke with `make down`, `make build`, `make up`, smoke check `http://localhost:5173`, and `make down`; local `make up` was blocked by a shared `/cabadrive` container from another worktree, fallback `vite preview` smoke passed, and GitHub `docker-validation` passed.
+- [x] T127 Confirm required checks are green after PR push.
+- [x] T128 Confirm no unresolved merge conflicts.
+- [x] T129 Confirm no blocking review findings remain.
+- [x] T130 Confirm final approval/merge mechanics were satisfied before merge.
 
 ## Review Requirements
 
-- [ ] T131 Review Agent verifies implementation stayed within the Orchestrator-assigned slice and worktree.
-- [ ] T132 Review Agent verifies source-of-truth docs are durable, Cabadrive-specific, and consistent with existing project constraints.
-- [ ] T133 Review Agent verifies the final documentation consistency check exists and has no unresolved blocker.
-- [ ] T134 Review Agent verifies the full product audit covers every surface named in this tasks file.
-- [ ] T135 Review Agent verifies atomic tasks trace from source-of-truth rule to implementation and evidence.
-- [ ] T136 Review Agent verifies post-answer auto reveal applies only to learning/support modes and not active exam attempts.
-- [ ] T137 Review Agent verifies bottom previous/next navigation has accessible labels, boundaries, mobile behavior, and state rules.
-- [ ] T138 Review Agent verifies image overlays depend on completed `009` per-question usage/relevance and are blocked/fenced when usage/relevance is unavailable, stale, or incomplete.
-- [ ] T139 Review Agent verifies no backend, runtime network, remote image, live AI, or live image-analysis dependency is introduced.
-- [ ] T140 Review Agent verifies `tasks.md` process memory and verification evidence are current before merge readiness.
+- [x] T131 Review Agent verifies implementation stayed within the Orchestrator-assigned slice and worktree.
+- [x] T132 Review Agent verifies source-of-truth docs are durable, Cabadrive-specific, and consistent with existing project constraints.
+- [x] T133 Review Agent verifies the final documentation consistency check exists and has no unresolved blocker.
+- [x] T134 Review Agent verifies the full product audit covers every surface named in this tasks file.
+- [x] T135 Review Agent verifies atomic tasks trace from source-of-truth rule to implementation and evidence.
+- [x] T136 Review Agent verifies post-answer auto reveal applies only to learning/support modes and not active exam attempts.
+- [x] T137 Review Agent verifies bottom previous/next navigation has accessible labels, boundaries, mobile behavior, and state rules.
+- [x] T138 Review Agent verifies image overlays depend on completed `009` per-question usage/relevance and are blocked/fenced when usage/relevance is unavailable, stale, or incomplete.
+- [x] T139 Review Agent verifies no backend, runtime network, remote image, live AI, or live image-analysis dependency is introduced.
+- [x] T140 Review Agent verifies `tasks.md` process memory and verification evidence are current before merge readiness.
 
 ## Architect Update After Question-Scoped Relevance Clarification
 
@@ -184,7 +184,7 @@
 - [x] T146 Implementation Agent ensures overlay definitions cannot be created from shared `009` metadata alone; each active overlay must reference the current question's completed `009` usage/relevance.
 - [x] T147 Implementation Agent ensures overlay validators reject UI-authored important/unimportant/critical/relevance roles that are not present in the current question's `009` usage record.
 - [x] T148 Implementation Agent ensures fallback behavior for missing/stale `009` usage/relevance keeps the normal local image and explanation text without invented highlight/dim overlays.
-- [ ] T149 Review Agent verifies overlay examples and tests consume `answer_critical_highlight`, `supporting`, `distractor_trap`, and `background_irrelevant_dim` only from `009` per-question usage for the concrete ticket.
+- [x] T149 Review Agent verifies overlay examples and tests consume `answer_critical_highlight`, `supporting`, `distractor_trap`, and `background_irrelevant_dim` only from `009` per-question usage for the concrete ticket.
 
 ## Process Memory
 
@@ -271,6 +271,14 @@
 - Final verification update after merged 009 sync: Docker smoke partially passed. `make down` and `make build` passed, but `make up` failed because container name `/cabadrive` is already in use by container `7ed5bedd6e9292856ba08590fddbed9afc5c8f910a9e4f7dd48253af77d661f3`. Per parallel-agent safety, this Implementation Agent did not remove or rename that container. Cleanup `make down` removed only this worktree's compose network. Fallback runtime smoke passed with `pnpm exec vite preview --host 127.0.0.1 --port 5173 --strictPort` and `curl -fsS http://127.0.0.1:5173`, returning the HTML document; preview process was stopped.
 - Docker smoke evidence: `make down` passed, `make build` passed, `make up` failed with Docker daemon conflict because container name `/cabadrive` is already in use by another container. Cleanup `make down` then removed only this worktree's compose network. As fallback runtime evidence, `pnpm exec vite preview --host 127.0.0.1 --port 5173 --strictPort` served the built app and `curl -fsS http://127.0.0.1:5173` returned the HTML document; the preview process was stopped.
 - Review P2 final verification update: `pnpm run validate:overlays && pnpm run validate:content && pnpm run test && pnpm run build && pnpm run test:e2e && pnpm run preflight && git diff --check` passed. The run included 116 unit/content tests, 30 Playwright tests across `chromium` and `mobile`, and the new focused restored-answered-ticket search/timer scenario.
+- PR #83 merge evidence: `origin/main` contains `870c7f9 [codex] Implement UI UX learning overlays (#83)` after feature `009` commit `78e0176`; PR #83 was merged from head `97babbb`.
+- PR #83 required-check evidence on `97babbb`: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all passed.
+- PR #83 final gate evidence: no unresolved merge conflicts remained before merge, the old P2 review thread was resolved, read-only review passed, GitHub AI Review passed, and final approval/merge mechanics were satisfied before PR #83 merged.
+- Review Agent Pascal verified review requirements T131-T140 on `97babbb`, including scope/worktree, durable docs, consistency audit, task traceability, support-mode-only reveal, bottom navigation accessibility/state behavior, 009-dependent overlays, no backend/runtime-network/live-AI dependency, and current process memory.
+- Review Agent Pascal verified T149 on `97babbb`: overlay examples and tests consume `answer_critical_highlight`, `supporting`, `distractor_trap`, and `background_irrelevant_dim` only from `009` per-question usage for the concrete ticket.
+- Final main verification evidence: worktree `/Users/chap/devel/cabadrive-main-010-verification` verified `origin/main` at `870c7f9514404b36cf75954c3c39814770495342`; `pnpm install --frozen-lockfile`, `pnpm run validate:overlays`, `pnpm run validate:content`, `pnpm run test` (116/116), `pnpm run build`, `pnpm run test:e2e` (30/30), `pnpm run preflight` (including 30/30 e2e), and `git diff --check` all passed. Vite emitted only the existing large-chunk warning.
+- Final main verification E2E evidence included post-answer support/overlay visibility, bottom navigation/search state, no empty fallback, active exam support hidden, answered timer restore, and local-first/offline scenarios.
+- Follow-up process-memory branch evidence: `/Users/chap/devel/cabadrive-010-main-verification-memory` on `codex/010-main-verification-memory` updated only this `tasks.md`; `pnpm run validate:content`, `pnpm run validate:overlays`, `pnpm run test` (116/116 after `pnpm install --frozen-lockfile` restored missing `node_modules`), and `git diff --check` passed.
 
 ### Implementation Agent Feedback
 
