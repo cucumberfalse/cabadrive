@@ -22688,7 +22688,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "9ed3344449062bfa71e0355a37b18f67cf1219cf6ad1511f637b18bad276d663",
+        "sourceFingerprint": "9740216f0ded7a7dea31ad12a47cc60864c44f3566e300c3f42c1a1a130d6f48",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -23218,7 +23218,7 @@
             {
               "answerId": "b-fallback-414-a3",
               "verdict": "incorrect",
-              "explanationRu": "Mantener la misma velocidad y acelerar en la curva неверно: ускорение внутри кривой повышает риск потерять траекторию, особенно на route с ограниченным обзором."
+              "explanationRu": "Mantener la misma velocidad y acelerar en la curva неверно: ускорение внутри кривой повышает риск потерять траекторию, особенно на дороге с ограниченным обзором."
             }
           ]
         }
@@ -23328,7 +23328,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "83064ac891334810ab5ea3f9cd2e74683cf95935d662c2d0cee275a995053e91",
+        "sourceFingerprint": "be6a6d2342383ffabc8fa2c5d353ab92b1496c7f4a5eee8d4ef174eab0217de2",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -23351,7 +23351,7 @@
         "Этот блок - неофициальная подсказка Cabadrive. В билетах adelantamiento и sobrepaso проверяют не желание ехать быстрее, а безопасный выход из своей траектории и спокойный возврат в поток.",
         "Основная логика из источников такая: обычно sobrepaso делают слева от автомобиля впереди, только при нормальной видимости, свободном месте слева и без риска для встречного или попутного движения. Ley 2148 допускает узкие исключения справа, когда автомобиль впереди явно собирается girar/detenerse a la izquierda или когда левая fila в заторе стоит либо движется медленнее; билеты этого блока в основном проверяют левое правило и запреты, а не эти исключения. Перед маневром проверяют espejos, puntos ciegos, автомобиль сзади и включают indicador de giro.",
         "Запретные места запоминайте списком: trazo continuo, encrucijada, curva, puente, paso a nivel, túnel, lugar peligroso и estrechamiento temporal/obra. Если билет говорит \"salvo que no venga nadie\" или \"si hay visibilidad\", это обычно ловушка: знак, разметка или тип места сильнее вашей личной оценки.",
-        "Carril de sobrepaso на autopista нужен для maniobras de sobrepaso, а не для постоянной езды. Логика полос такая: держитесь своего carril, выходите в левый carril для маневра и retomar el carril derecho gradual, con luz de giro derecha, без помех тому, кого уже прошли.",
+        "Carril de sobrepaso на autopista нужен для maniobras de sobrepaso, а не для постоянной езды. Логика полос такая: держитесь своего carril, выходите в левый carril для маневра и retomar el carril derecho постепенно (gradual), con luz de giro derecha, без помех тому, кого уже прошли.",
         "Bocina не является обычным \"сигналом обгона\". В CABA ее используют только для situación potencialmente de peligro, когда другой способ предупреждения невозможен или не сработал. Для sobrepaso смотрите destellos de luces frontales и indicador de giro.",
         "С билетом про ciclista будьте аккуратны: `b-fallback-130` ожидает ответ \"al menos, un metro y medio\". В текущем архиве нет прямой опоры, чтобы сделать это число новым общим правилом в материалах, поэтому учите его как ответ именно этого билета.",
         "Билеты с картинками и порядком машин (`b-fallback-150`, `b-fallback-171`, `b-fallback-400`, а также знаки и разметка) решаются по конкретной схеме и формулировке. Не переносите букву автомобиля или полосы на другую картинку."
@@ -23359,7 +23359,7 @@
       "practicalReasoningRu": [
         "Обгон опасен потому, что на короткое время водитель занимает пространство, которое может понадобиться встречному потоку, соседней полосе или машине впереди. Поэтому нужно заранее видеть свободное место и не начинать маневр рядом со сложными участками.",
         "Запрет на línea continua/trazo continuo, túnel, puente, curva или encrucijada делает поведение предсказуемым. Другие водители не ждут, что кто-то внезапно выйдет на встречную или соседнюю траекторию там, где обзор и запас места ограничены.",
-        "Возврат вправо после sobrepaso освобождает левую полосу для следующего маневра и снижает давление сзади. Но возвращаться надо gradual: нельзя \"подрезать\" или заставлять другого менять скорость."
+        "Возврат вправо после sobrepaso освобождает левую полосу для следующего маневра и снижает давление сзади. Но возвращаться надо постепенно (gradual): нельзя \"подрезать\" или заставлять другого менять скорость."
       ],
       "spanishTerms": [
         {
@@ -23678,7 +23678,7 @@
             {
               "answerId": "b-fallback-179-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: нужно incorporarse al carril derecho, если он свободен, gradual и sin obstaculizar la fluidez de tránsito."
+              "explanationRu": "Правильно: нужно incorporarse al carril derecho, если он свободен, постепенно (gradual) и sin obstaculizar la fluidez de tránsito."
             },
             {
               "answerId": "b-fallback-179-a3",
