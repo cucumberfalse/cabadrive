@@ -127,26 +127,36 @@
 - [x] T093 Confirm all changed acceptance criteria have evidence, not only a summary.
 - [x] T094 Confirm Implementation Agent feedback is recorded for Architect disposition.
 - [x] T095 Confirm no unresolved merge conflicts before PR readiness.
-- [ ] T096 Confirm no blocking review findings remain before completion.
-- [ ] T097 Confirm required checks are green after PR push.
-- [ ] T098 Confirm only final human approval or merge mechanics remain before marking the PR complete.
+- [x] T096 Confirm no blocking review findings remain before completion.
+- [x] T097 Confirm required checks are green after PR push.
+- [x] T098 Confirm only final human approval or merge mechanics remain before marking the PR complete.
 
 ## Review Requirements
 
-- [ ] T099 Review Agent verifies complete feature memory exists and role boundaries were followed.
-- [ ] T100 Review Agent verifies no files under `specs/014-orchestrator-first-enforcement/` were edited.
-- [ ] T101 Review Agent verifies sibling `010` artifacts were not copied or consumed while unmerged.
-- [ ] T102 Review Agent verifies 010 overlap was checked and recorded before UI edits.
-- [ ] T103 Review Agent verifies materials translations preserve Spanish-primary display and use governed translation data.
-- [ ] T104 Review Agent verifies translation alignment evidence is fresh for every added or changed translation.
-- [ ] T105 Review Agent verifies parking-clearance text teaches `10 metros de cada lado de la entrada` and frames `5 metros` as the hospital/health entrance trap.
-- [ ] T106 Review Agent verifies vocabulary additions are scoped, useful, and linked to valid questions.
-- [ ] T107 Review Agent verifies CABA/RF additions or repositioning are compact, source-supported, and not padded with unsupported claims.
-- [ ] T108 Review Agent verifies repeated per-ticket status noise is reduced without hiding fallback/unofficial content-mode truth.
-- [ ] T109 Review Agent verifies `Учить` ticket IDs are visible and mobile-safe.
-- [ ] T110 Review Agent verifies active exam support-hiding behavior did not regress.
-- [ ] T111 Review Agent verifies local-first/offline behavior remains intact.
-- [ ] T112 Review Agent verifies `tasks.md` contains current process memory, verification evidence, known issues, dead ends, and Implementation Agent feedback before merge readiness.
+- [x] T099 Review Agent verifies complete feature memory exists and role boundaries were followed.
+- [x] T100 Review Agent verifies no files under `specs/014-orchestrator-first-enforcement/` were edited.
+- [x] T101 Review Agent verifies sibling `010` artifacts were not copied or consumed while unmerged.
+- [x] T102 Review Agent verifies 010 overlap was checked and recorded before UI edits.
+- [x] T103 Review Agent verifies materials translations preserve Spanish-primary display and use governed translation data.
+- [x] T104 Review Agent verifies translation alignment evidence is fresh for every added or changed translation.
+- [x] T105 Review Agent verifies parking-clearance text teaches `10 metros de cada lado de la entrada` and frames `5 metros` as the hospital/health entrance trap.
+- [x] T106 Review Agent verifies vocabulary additions are scoped, useful, and linked to valid questions.
+- [x] T107 Review Agent verifies CABA/RF additions or repositioning are compact, source-supported, and not padded with unsupported claims.
+- [x] T108 Review Agent verifies repeated per-ticket status noise is reduced without hiding fallback/unofficial content-mode truth.
+- [x] T109 Review Agent verifies `Учить` ticket IDs are visible and mobile-safe.
+- [x] T110 Review Agent verifies active exam support-hiding behavior did not regress.
+- [x] T111 Review Agent verifies local-first/offline behavior remains intact.
+- [x] T112 Review Agent verifies `tasks.md` contains current process memory, verification evidence, known issues, dead ends, and Implementation Agent feedback before merge readiness.
+
+### Feature 019 Post-Merge Closure
+
+- Feature 019 post-merge closure, 2026-05-10: T096-T112 were reconciled after PR #69 had already merged. This note preserves chronology and does not claim the original 013 Implementation Agent checked these boxes before merge.
+- Git evidence rechecked from feature `019`: `git fetch origin` completed; `git merge-base --is-ancestor 6562410 origin/main` exited 0; `origin/main` was `78e0176e361eeea583dd797296bfa994b3f1f695` (`[codex] Implement image metadata learning support (#63)`), with PR #69 merge commit `65624107d856653e503e3f03fd1d51da83992984` (`[codex] Polish learning content study surfaces (#69)`) reachable behind it.
+- GitHub evidence rechecked from feature `019`: PR #69 was `MERGED` at `2026-05-10T13:58:13Z`, URL `https://github.com/cucumberfalse/cabadrive/pull/69`, head `bfe67a6ee245759f9fb51203f3452f1ee1f8b703`, merge commit `65624107d856653e503e3f03fd1d51da83992984`.
+- Required-check evidence rechecked from feature `019`: `gh pr view 69 --json statusCheckRollup` reported `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all `COMPLETED` with `SUCCESS` on PR head `bfe67a6ee245759f9fb51203f3452f1ee1f8b703`.
+- Review evidence rechecked from feature `019`: GitHub PR comments include Codex no-major-issues summaries, including the final bot summary at `2026-05-10T13:51:11Z`; the GitHub connector reported no review submissions and no review threads for PR #69. A human process comment at `2026-05-10T12:53:34Z` also recorded no findings on head `c4aa18fed00e5ab9ce99f3010228b558d6c75fd7` during an earlier latest-main review pass.
+- Final validation evidence source: `specs/019-learning-polish-process-memory-closure/feature-request.md` records the Orchestrator/Analyst intake fact that PR #69 merged after Architect validation PASS, Analyst validation PASS, and post-merge latest-main validation confirming the learner-facing behavior on `main`. GitHub PR comments did not expose those role-validation notes, so this closure records that boundary instead of converting it into a GitHub-verified claim.
+- Existing feature `013` evidence preserved: the verification evidence below already records `pnpm run preflight`, `git diff --check`, `node scripts/check-feature-memory.mjs origin/main HEAD`, current-main merges through #71/#66/#72, Review Agent follow-up, and the learner-facing e2e/content/build evidence for the materials translations, parking-clearance text, vocabulary/CABA-RF update, status-noise reduction, visible `Учить` ticket IDs, active exam support-hiding, and local-first behavior.
 
 ## Process Memory
 
