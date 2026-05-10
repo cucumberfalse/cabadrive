@@ -127,25 +127,25 @@
 - [x] T091 Run `git diff --check`.
 - [ ] T092 For runtime-affecting changes, run `make down`, `make build`, `make up`, smoke check `http://localhost:5173`, and `make down`.
 - [x] T093 If Docker smoke is blocked by unrelated environment state, record the exact blocker and fallback runtime evidence.
-- [ ] T094 Confirm required checks are green after PR push.
+- [x] T094 Confirm required checks are green after PR push.
 - [x] T095 Confirm no unresolved merge conflicts.
 - [x] T096 Confirm no blocking review findings remain.
 - [x] T097 Confirm acceptance evidence, process memory, docs decisions, and known issues are current before merge readiness.
 
 ## Review Requirements
 
-- [ ] T098 Review Agent verifies implementation stayed within the Orchestrator-assigned slice and worktree.
-- [ ] T099 Review Agent verifies feature memory is complete and current.
-- [ ] T100 Review Agent verifies target formula is derived from exam format metadata and tests cover `45 / 40 -> 75s`.
-- [ ] T101 Review Agent verifies no unmerged feature `010` files were copied or consumed.
-- [ ] T102 Review Agent verifies timer scope is learning mode only.
-- [ ] T103 Review Agent verifies active exam non-regression.
-- [ ] T104 Review Agent verifies timeout before answer is session-only and does not append progress answers.
-- [ ] T104A Review Agent verifies timeout is not represented as a fake incorrect `ProgressAnswer`, does not pollute `mistakesFromHistory`, and does not trigger 010 post-answer auto-reveal by itself.
-- [ ] T105 Review Agent verifies answer after timeout remains possible and records a normal learning answer.
-- [ ] T106 Review Agent verifies pause/resume is per-ticket, accessible, keyboard reachable, and not global.
-- [ ] T107 Review Agent verifies mobile layout evidence and no text/control overlap.
-- [ ] T108 Review Agent verifies `tasks.md` process memory and verification evidence are current before merge readiness.
+- [x] T098 Review Agent verifies implementation stayed within the Orchestrator-assigned slice and worktree.
+- [x] T099 Review Agent verifies feature memory is complete and current.
+- [x] T100 Review Agent verifies target formula is derived from exam format metadata and tests cover `45 / 40 -> 75s`.
+- [x] T101 Review Agent verifies no unmerged feature `010` files were copied or consumed.
+- [x] T102 Review Agent verifies timer scope is learning mode only.
+- [x] T103 Review Agent verifies active exam non-regression.
+- [x] T104 Review Agent verifies timeout before answer is session-only and does not append progress answers.
+- [x] T104A Review Agent verifies timeout is not represented as a fake incorrect `ProgressAnswer`, does not pollute `mistakesFromHistory`, and does not trigger 010 post-answer auto-reveal by itself.
+- [x] T105 Review Agent verifies answer after timeout remains possible and records a normal learning answer.
+- [x] T106 Review Agent verifies pause/resume is per-ticket, accessible, keyboard reachable, and not global.
+- [x] T107 Review Agent verifies mobile layout evidence and no text/control overlap.
+- [x] T108 Review Agent verifies `tasks.md` process memory and verification evidence are current before merge readiness.
 
 ## Process Memory
 
@@ -209,6 +209,11 @@
 - Rebased `codex/018-learning-ticket-timer` onto `origin/main` `a26a124` on 2026-05-10. Strategy was rebase to preserve a linear feature commit over the merged difficulty-label work.
 - Rebase conflicts were resolved in `src/App.tsx`, `src/styles.css`, and `docs_project/screens/learning-and-exam-flows.md`; `tests/e2e/app.spec.ts` auto-merged but was inspected because it covers both difficulty labels and timer behavior.
 - Conflict resolution preserved both main's difficulty-label behavior and this feature's learning timer behavior: `DifficultyIndicator` remains imported/rendered in learning, mistakes, and materials; active exams still omit difficulty chips; timer helpers remain imported from `src/domain.ts`; learning timer UI/CSS remains adjacent to difficulty chip CSS; flow docs now mention both difficulty metadata and the learning timer.
+- PR #73 is ready for review on head `b70e91c` and is mergeable after rebase over `origin/main` `a26a124`.
+- Required PR #73 checks are green on head `b70e91c`: baseline-checks, docker-validation, guard, AI Review, and osv-scan.
+- Remote AI Review completed successfully and posted `Codex Review: Didn't find any major issues.`
+- Local/rebased Review Agent found no blocking or advisory findings. There are no unresolved merge conflicts and no blocking review findings.
+- Final human approval and merge authority remain the only non-task gate before merge.
 
 ### Verification Evidence
 
