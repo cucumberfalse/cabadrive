@@ -584,9 +584,9 @@
 
 ### Architect Disposition Of Implementation Feedback
 
-- Accepted on 2026-05-10. The stopped Penal Code batch is disposed by replacing the one-document giant batch expectation with explicit generated-chunk-range sub-batches D8-001 through D8-006 plus recomposition gate D8-900.
-- The same quality-safe slicing rule now applies to other very large documents: Civil/Commercial Code D9-001 through D9-018 plus D9-900, CABA Transit Code D10-001 through D10-007 plus D10-900, and GCBA four-wheel manual D11-001 through D11-004 plus D11-900.
-- D12-900 is the cross-document final recomposition gate. It blocks final release if any sub-batch is missing, any document-level recomposition gate is incomplete, any approved QA looks mechanical or lacks notes, or any partial sub-batch is presented as release-complete.
+- Accepted on 2026-05-10. The stopped Penal Code batch is disposed by replacing the one-document giant batch expectation with explicit generated-chunk-range sub-batches D9-001 through D9-006 plus recomposition gate D9-900.
+- The same quality-safe slicing rule now applies to other very large documents: Civil/Commercial Code D10-001 through D10-018 plus D10-900, CABA Transit Code D11-001 through D11-007 plus D11-900, and GCBA four-wheel manual D12-001 through D12-004 plus D12-900.
+- D13-900 is the cross-document final recomposition gate. It blocks final release if any sub-batch is missing, any document-level recomposition gate is incomplete, any approved QA looks mechanical or lacks notes, or any partial sub-batch is presented as release-complete.
 - Ranges are inclusive generated coverage order ranges. Implementation Agents may align a range edge to the nearest official title/chapter/page boundary only if the resulting changed ranges remain non-overlapping, cover the full document exactly once, and this task list is updated in the same feature-memory PR before content is authored.
 
 ### Verification Evidence
