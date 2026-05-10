@@ -196,13 +196,10 @@ function allObjectIds(image) {
   return ids;
 }
 
-function allDetailIds(image, usage) {
+function allDetailIds(image) {
   const ids = new Set();
   for (const detail of image.visualDetails || []) {
     if (isNonEmptyString(detail.id)) ids.add(detail.id);
-    if (isNonEmptyString(detail.detailId)) ids.add(detail.detailId);
-  }
-  for (const detail of usage.answerCriticalDetails || []) {
     if (isNonEmptyString(detail.detailId)) ids.add(detail.detailId);
   }
   for (const roadUser of image.roadUsers || []) {
@@ -235,8 +232,8 @@ function allRegionIds(image) {
   return ids;
 }
 
-function allReferenceIds(image, usage) {
-  const ids = new Set([...allObjectIds(image), ...allDetailIds(image, usage), ...allRegionIds(image)]);
+function allReferenceIds(image) {
+  const ids = new Set([...allObjectIds(image), ...allDetailIds(image), ...allRegionIds(image)]);
   for (const collection of [image?.annotations, image?.visibleText, image?.spatialRelationships]) {
     for (const item of collection || []) {
       if (isNonEmptyString(item.id)) ids.add(item.id);
@@ -366,9 +363,9 @@ function requireRelevanceMap({ usage, image, question, label, requireFullQuality
   const allowedDisplayIntents = new Set(["highlight", "keep_visible", "callout_optional", "dim"]);
   const roles = [];
   const objectIds = image ? allObjectIds(image) : new Set();
-  const detailIds = image ? allDetailIds(image, usage) : new Set();
+  const detailIds = image ? allDetailIds(image) : new Set();
   const regionIds = image ? allRegionIds(image) : new Set();
-  const referenceIds = image ? allReferenceIds(image, usage) : new Set();
+  const referenceIds = image ? allReferenceIds(image) : new Set();
   const sourceAnswerIds = new Set((question.answers || []).map((answer) => answer.id));
 
   for (const relevance of usage.relevanceMap) {
@@ -629,7 +626,7 @@ export function validateQuestionImageMetadata({ questions, manifest, evidence, s
     }
     const sourceAnswerIds = new Set((question.answers || []).map((answer) => answer.id));
     const objectIds = image ? allObjectIds(image) : new Set();
-    const detailIds = image ? allDetailIds(image, usage) : new Set();
+    const detailIds = image ? allDetailIds(image) : new Set();
     const detailIdSet = new Set();
     for (const detail of usage.answerCriticalDetails || []) {
       if (!isNonEmptyString(detail.detailId)) errors.push(`${label}: critical detail id must be non-empty.`);

@@ -306,6 +306,21 @@ test("relevance mappings must reference existing stable ids", () => {
   assert(errors.includes("q1: relevance sign-shape-highlight references missing region missing-region."));
 });
 
+test("full-quality usage gate rejects answer-critical details not defined in shared image metadata", () => {
+  const usage = {
+    ...baseUsage(),
+    answerCriticalDetails: [
+      {
+        ...baseUsage().answerCriticalDetails[0],
+        detailId: "invented-usage-only-detail",
+        description: "The invented detail is described only in usage and is not grounded in shared metadata."
+      }
+    ]
+  };
+  const errors = validateSyntheticFullQuality({ usage });
+  assert(errors.includes("q1: critical detail invented-usage-only-detail is not present in the metadata detail set."));
+});
+
 test("stale question fingerprint fails image usage validation", () => {
   const usage = { ...baseUsage(), questionFingerprint: "0".repeat(64) };
   const { manifest, evidence } = manifestAndEvidence({ usage });
