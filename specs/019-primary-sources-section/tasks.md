@@ -951,3 +951,9 @@
 - Rebase sync of D8 insurance batch onto PR #106 Ley 24.449 base on 2026-05-10:
   - `git fetch origin` completed, then `git rebase origin/codex/019-primary-sources-content-batch-ley24449` replayed the insurance batch above Ley 24.449 head `f1e38af1c3e8bb4c918465bcc830692537905b93`.
   - Conflict resolution in this file preserved DNRPA D4 evidence, Decreto D5 evidence, Anexo L D6 signage evidence, Ley 24.449 D7 evidence, and insurance evidence as D8. Learner-source shard conflicts did not occur.
+- PR #109 partial-shard recomposition mutation fix on 2026-05-10:
+  - Updated `scripts/primary-sources-validation.mjs` so range-shard recomposition clones document `chunks` arrays before appending additional shards, covering both learner document and QA recomposition through the shared helper.
+  - Added a regression test that calls `combinePrimarySourceShards` twice with the exact same in-memory shard file objects and verifies no duplicate corpus/QA chunks or mutation of source shard `chunks` arrays.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 47 tests, 47 pass, 0 fail.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check` passed with no output.

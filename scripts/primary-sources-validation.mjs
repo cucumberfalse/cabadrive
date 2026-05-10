@@ -307,25 +307,25 @@ function recombineDocumentsByOfficialDocumentId(documents, { label, chunkLabel }
       continue;
     }
 
+    const recomposedDocument = { ...document, chunks: [...asArray(document.chunks)] };
     const officialDocumentId = document.officialDocumentId;
     if (!isNonEmptyString(officialDocumentId)) {
       orderedIds.push(`__missing_${index}`);
-      documentsById.set(`__missing_${index}`, document);
+      documentsById.set(`__missing_${index}`, recomposedDocument);
       continue;
     }
     if (!Array.isArray(document.chunks)) {
       errors.push(`${officialDocumentId}: ${label}.chunks must be an array before range-shard recomposition.`);
     }
 
-    const metadata = Object.fromEntries(Object.entries(document).filter(([key]) => key !== "chunks"));
+    const metadata = Object.fromEntries(Object.entries(recomposedDocument).filter(([key]) => key !== "chunks"));
     if (!documentsById.has(officialDocumentId)) {
       orderedIds.push(officialDocumentId);
       documentsById.set(officialDocumentId, {
-        ...document,
-        chunks: asArray(document.chunks),
+        ...recomposedDocument,
         __primarySourcesRecompositionMetadata: metadata,
         __primarySourcesRecompositionChunkIds: new Set(
-          asArray(document.chunks)
+          recomposedDocument.chunks
             .map((chunk) => chunk?.chunkId)
             .filter(isNonEmptyString)
         )
@@ -343,7 +343,7 @@ function recombineDocumentsByOfficialDocumentId(documents, { label, chunkLabel }
       }
     }
 
-    for (const chunk of asArray(document.chunks)) {
+    for (const chunk of recomposedDocument.chunks) {
       const chunkId = chunk?.chunkId;
       if (isNonEmptyString(chunkId) && existing.__primarySourcesRecompositionChunkIds.has(chunkId)) {
         errors.push(`${chunkId}: duplicate ${chunkLabel} across range shards for ${officialDocumentId}.`);
