@@ -56,7 +56,9 @@ Reviewers check role boundaries in addition to code behavior:
   the cycle PR set records each PR slice's purpose, branch, PR metadata, head
   SHA, status, and inclusion in final validation.
 - Completion-time cleanup must be coordinated by Orchestrator and executed only
-  by Cleanup Agent or an explicitly equivalent assigned cleanup role.
+  by an assigned Cleanup Agent.
+- Non-cleanup roles may coordinate cleanup, request Cleanup Agent assignment, or
+  record evidence only; they must not delete local repository environments.
 - Orchestrator must not directly delete local repository environments.
 - Implementation PRs must stay inside the assigned feature memory and must not
   mix unrelated changes.

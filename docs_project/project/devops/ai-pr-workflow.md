@@ -194,10 +194,11 @@ worker's files.
 ## Completion-Time Cleanup
 
 Cleanup is destructive local-disk work, so it is coordinated by Orchestrator and
-executed only by an assigned Cleanup Agent or explicitly equivalent cleanup
-role. Cleanup starts with a dry-run inventory and approved cleanup roots. Name
-patterns, modification times, and memory are discovery hints only; they are not
-proof that deletion is safe.
+executed only by an assigned Cleanup Agent. Non-cleanup roles may coordinate
+cleanup, request Cleanup Agent assignment, or record evidence only; they must
+not delete local repository environments. Cleanup starts with a dry-run
+inventory and approved cleanup roots. Name patterns, modification times, and
+memory are discovery hints only; they are not proof that deletion is safe.
 
 Cleanup Agent may remove a candidate only when evidence proves all of the
 following:

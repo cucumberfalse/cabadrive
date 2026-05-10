@@ -28,7 +28,7 @@
 - [ ] Additional task slices, if any, started from latest verified `main` in separate isolated worktrees/branches/PRs, normally `origin/main` after fetch; any fetch/base verification failure is recorded as a fallback/blocker, no stale base was silently reused, and in-flight work was preserved rather than overwritten.
 - [ ] Changes are limited to the assigned feature memory and scoped files; unrelated work is deferred.
 - [ ] Role boundaries were preserved: Orchestrator did not directly edit repo files, and agents did not switch roles mid-task.
-- [ ] Cleanup, if applicable, was coordinated through Cleanup Agent or explicitly equivalent cleanup role; Orchestrator did not directly delete local repository environments.
+- [ ] Cleanup, if applicable, was coordinated through an assigned Cleanup Agent; Orchestrator and other non-cleanup roles did not directly delete local repository environments and only coordinated/requested cleanup or recorded evidence.
 - [ ] Cleanup evidence, if applicable, records approved roots, candidate inventory, validation, action/refusal reason, post-cleanup confirmation, and preservation of current/active/dirty/untracked/unpushed/open-PR/ambiguous/user-owned/out-of-root/locked/running-process targets.
 - [ ] Required review fixes, source prerequisites, metadata fixes, and final-guard fixes are split into separate PRs when separation lowers risk or clarifies gates.
 

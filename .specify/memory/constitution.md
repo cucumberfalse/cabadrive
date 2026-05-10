@@ -48,7 +48,7 @@ Before completion or authorized merge mechanics, Orchestrator must track the wor
 
 ### XI. Cleanup Governance
 
-Completed agent-created local environments may be cleaned only by an assigned Cleanup Agent or explicitly equivalent cleanup role after positive-proof validation. Cleanup must preserve current, active, dirty, untracked, unpushed, open-PR, ambiguous, user-owned, out-of-root, locked, running-process, or process-memory-referenced targets and must record inventory, action, refusal, and post-cleanup evidence.
+Completed agent-created local environments may be cleaned only by an assigned Cleanup Agent after positive-proof validation. Non-cleanup roles may coordinate cleanup, request Cleanup Agent assignment, or record evidence only; they must not delete local repository environments. Cleanup must preserve current, active, dirty, untracked, unpushed, open-PR, ambiguous, user-owned, out-of-root, locked, running-process, or process-memory-referenced targets and must record inventory, action, refusal, and post-cleanup evidence.
 
 ## Workflow
 

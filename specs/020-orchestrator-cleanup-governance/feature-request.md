@@ -87,7 +87,7 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 1. Durable Orchestrator startup guidance should state that every new repository-changing Orchestrator run starts from a newly created isolated environment based on the latest verified `main` state, normally after fetching `origin/main`.
 2. Durable completion guidance should require Orchestrator to coordinate cleanup of completed agent-created disk environments after work is complete and merge-readiness or handoff state is verified.
-3. A Cleanup Agent role, or an explicitly equivalent delegated cleanup responsibility, should be defined with strict boundaries and no permission to remove anything unless validation proves it is an old agent-created environment.
+3. A first-class Cleanup Agent role should be defined with strict boundaries and no permission to remove anything unless validation proves it is an old agent-created environment.
 4. Cleanup validation should identify candidate directories by repository/worktree metadata, naming/path conventions, branch/PR state, git cleanliness, unpushed commit checks, active process/worktree checks, and any durable process-memory references.
 5. Cleanup must refuse ambiguous targets, active current worktrees, dirty worktrees, worktrees with unpushed commits, open or unresolved PRs, missing/unfinished process memory, or paths outside the allowed agent-environment roots.
 6. The one-time cleanup requested in this ticket should inventory candidate agent-created environments, validate which completed ones are safe, remove only those safe targets, and record evidence for every removed and preserved path.
@@ -113,7 +113,7 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Open Questions And Risks
 
-- Architect should decide whether `Cleanup Agent` becomes a new first-class role in `AGENTS.md` or whether cleanup is assigned as a narrowly scoped Implementation Agent or Orchestrator-coordinated operational task.
+- Historical intake question resolved by current spec: `Cleanup Agent` is a first-class role in durable guidance, and destructive completion-time cleanup is not assigned to Implementation Agent, Orchestrator, or equivalent non-cleanup operational tasks.
 - Architect should define the authoritative roots and naming conventions for agent-created environments. Candidate examples under `/Users/chap/devel/` must not be deleted unless they are positively identified as agent-created and inactive.
 - Architect should decide how to validate "agent-created" status when a directory was created outside `git worktree`, lacks metadata, or follows a naming convention that a human could also use.
 - Architect should define "finished agent" precisely. Possible signals include merged/closed PR state, no open PR for branch, clean worktree, no unpushed commits, no running process, no recent active assignment, and process memory showing completion.
@@ -138,7 +138,7 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: PASS on 2026-05-10 after Architect PASS. Current content head `e3d51d6ae2378499872324cf6c4f4a1e02feb3a5` is validated against latest verified `main` base/merge-base `a66320a50c7d04721b929880d4f01dc6feb28a24`; current evidence/process-memory head is `68e2efd282733fe14ff5f8cae44b5add90c5c06e`; feature memory path is `specs/020-orchestrator-cleanup-governance`. This supersedes prior Analyst validation notes for earlier effective/evidence heads, bases, and feature-memory paths.
+- Status: PASS at the time, now stale after accepted AI Review thread `PRRT_kwDOSX65IM6A7NJ4` and the T051-T052 Implementation Agent follow-up. Historical content head `e3d51d6ae2378499872324cf6c4f4a1e02feb3a5` was validated against latest verified `main` base/merge-base `a66320a50c7d04721b929880d4f01dc6feb28a24`; historical evidence/process-memory head was `68e2efd282733fe14ff5f8cae44b5add90c5c06e`; feature memory path is `specs/020-orchestrator-cleanup-governance`. This superseded prior Analyst validation notes for earlier effective/evidence heads, bases, and feature-memory paths at the time.
 - Analyst return count: 0.
 - Customer intent check: PASS. Whole-project/TZ coverage is complete: durable governance defines Cleanup Agent positive-proof cleanup for old completed agent-created environments only; one-time cleanup evidence records removed validated completed artifacts and preserves/refuses current, active, open-PR, dirty, untracked, unpushed, locked, running-process, ambiguous, user-owned, out-of-root, and otherwise unsafe work; Orchestrator startup defaults to a fresh isolated environment from latest verified `main`, normally `origin/main` after fetch, with documented fallback/blocker handling and no silent stale reuse; prior GAP follow-ups T045-T046, T047-T048, and T049-T050 are closed; no product/runtime scope drift is present.
 - Validation evidence: inspected current feature memory and scoped governance/template content; `git diff --check` passed with no output; stale hard-`origin/main` live-rule search found only historical/process-memory references or acceptable latest-verified-main fallback-contract wording, not live hard-origin startup rules; stale pre-020 cleanup feature-path search found only historical PR #86 renumber evidence for `specs/019-orchestrator-cleanup-governance`; `origin/main:specs` max prefix is `019`, so `specs/020-orchestrator-cleanup-governance` remains valid.
@@ -147,9 +147,9 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 - Analyst routing gaps or new questions: none.
 - Architect disposition routing: none needed.
 
-Current final Analyst validation after Architect PASS, 2026-05-10, superseding previous validation notes:
+Historical final Analyst validation after Architect PASS, 2026-05-10, superseding previous validation notes at that time:
 
-- Status: PASS. Current content head `e9be712c9bfc56a0b5834a8272f3af3eeab9a206`; current evidence/process-memory head `ff62a4d6d71df12720725a55b82f51fc6a4e3684`; latest verified `main` base/merge-base `90a11d943880606586d4bc02aa7774a8d7a73f3d`; feature memory path `specs/020-orchestrator-cleanup-governance`.
+- Status: PASS at the time, now stale after accepted AI Review thread `PRRT_kwDOSX65IM6A7NJ4` and the T051-T052 Implementation Agent follow-up. Historical content head `e9be712c9bfc56a0b5834a8272f3af3eeab9a206`; historical evidence/process-memory head `ff62a4d6d71df12720725a55b82f51fc6a4e3684`; latest verified `main` base/merge-base `90a11d943880606586d4bc02aa7774a8d7a73f3d`; feature memory path `specs/020-orchestrator-cleanup-governance`.
 - Analyst return count: 0.
 - Whole-project/customer-TZ coverage: PASS. Cleanup Agent governance requires positive proof and preserves ambiguous or active work; one-time cleanup evidence records removed validated completed agent artifacts and refusal/preservation for current, active, dirty, untracked, unpushed, open-PR, locked, running-process, ambiguous, user-owned, out-of-root, and otherwise unsafe targets; Orchestrator startup defaults to a fresh isolated environment from latest verified `main`, normally `origin/main` after fetch, with fallback/blocker handling and no silent stale reuse.
 - Follow-up disposition: no customer-task gaps found, no unaddressed request remains, and no Architect routing is needed.
