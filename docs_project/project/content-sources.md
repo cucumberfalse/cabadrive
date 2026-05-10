@@ -73,6 +73,14 @@ content/guide/topic-study-guide.source-trace.json
 
 Source-trace entries for current guide claims must reference official-document IDs that exist in the official-documents manifest and are verified as current/currently valid. The guide content itself remains structured learning content under `content/guide/` and must not duplicate or rewrite the official archive as prose.
 
+The CABA exam-process guide is also structured learning content under:
+
+```text
+content/guide/caba-exam-process.ru.json
+```
+
+It stores official GCBA/ANSV source URLs, checked dates, currentness labels, grouped official-action links, volatile-information warnings, and Russian explanatory prose. It does not archive verbatim official documents or render raw PDFs in the app. Images for this guide should remain omitted unless a future slice records asset-level license, attribution, privacy, currentness, local path, and offline-rendering evidence.
+
 ## Difficulty Metadata
 
 Question and topic-guide content carries a local, reviewable learner-difficulty layer for study planning. The canonical machine enum is:

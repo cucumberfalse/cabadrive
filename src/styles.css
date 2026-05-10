@@ -467,6 +467,10 @@ small,
   margin-top: 14px;
 }
 
+.process-view {
+  margin-top: 14px;
+}
+
 .materials-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
@@ -612,6 +616,137 @@ small,
   gap: 12px;
 }
 
+.process-alerts,
+.process-section-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.process-main,
+.process-aside,
+.process-section,
+.process-links {
+  border: 1px solid #d4d9d1;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.process-main,
+.process-section,
+.process-links {
+  padding: 16px;
+}
+
+.process-aside {
+  align-self: start;
+  position: sticky;
+  top: 12px;
+  overflow: hidden;
+}
+
+.process-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.process-section-heading h3 {
+  margin-bottom: 8px;
+}
+
+.process-section-heading > span,
+.process-term-row span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #eef3f0;
+  color: #30443d;
+  font-size: 0.82rem;
+}
+
+.process-warning {
+  border-color: #bd5f28;
+  background: #fff6ef;
+}
+
+.process-term-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.process-term-row span {
+  background: #f0f6ff;
+  color: #28456e;
+}
+
+.process-source-list,
+.process-link-group {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.process-source-list a,
+.process-link-group a {
+  display: grid;
+  gap: 3px;
+  padding: 10px;
+  border: 1px solid #e1e5e0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #16201d;
+  text-decoration: none;
+}
+
+.process-source-list a:hover,
+.process-source-list a:focus-visible,
+.process-link-group a:hover,
+.process-link-group a:focus-visible {
+  border-color: #176b57;
+  background: #f7fbf8;
+}
+
+.process-links h3 {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.process-link-group h4 {
+  margin: 14px 0 8px;
+}
+
+.process-support-grid,
+.process-glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.process-glossary-term {
+  min-width: 0;
+}
+
+.process-footnote {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .materials-ticket {
   padding: 16px;
 }
@@ -668,7 +803,8 @@ small,
   .status-strip,
   .split,
   .materials-header,
-  .materials-layout {
+  .materials-layout,
+  .process-grid {
     grid-template-columns: 1fr;
   }
 
@@ -682,7 +818,9 @@ small,
     width: 100%;
   }
 
-  .materials-topic-list {
+  .materials-topic-list,
+  .process-aside {
     max-height: none;
+    position: static;
   }
 }

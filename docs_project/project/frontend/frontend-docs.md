@@ -14,6 +14,7 @@ Implemented MVP stack:
 - localStorage-backed progress adapter for MVP progress/statistics
 - local in-memory search index over bundled content
 - bundled topic study guide data rendered as local learning materials
+- bundled CABA exam-process guide data rendered as an unofficial Russian procedural guide
 - validated four-level learner difficulty metadata for every bundled question and topic material
 - native service worker generated after production build
 - Node test runner + Playwright for testing
@@ -86,4 +87,5 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 - Keep weak-topic review prominent in study loops.
 - Render question images as part of the question, using only local offline assets.
 - `Материалы` renders the topic study guide from bundled JSON, labels it as draft/incomplete and unofficial while those statuses remain, and joins ticket references back to canonical questions for Spanish text, answers, correct answer, explanations, source status, and local images.
+- `Процесс` renders the bundled CABA B1/private-car `Otorgamiento` process guide from local JSON, labels it as unofficial Russian support, shows official GCBA/ANSV source links with checked dates, and keeps volatile payments/sedes/turnos/document details behind explicit verify-on-official-source warnings.
 - `CABA/RF` remains a separate compact contrast guide.
