@@ -3,21 +3,26 @@
 ## Setup
 
 - [ ] T001 Confirm active feature folder, assigned isolated worktree, branch, and PR slice.
-- [ ] T002 Read `feature-request.md`, `spec.md`, and `plan.md` before editing.
-- [ ] T003 Record baseline checks before editing, including `git status --short --branch`.
-- [ ] T004 Confirm Orchestrator provided any parallel-work warning and preserve existing dirty diffs, branches, commits, PRs, and process memory.
+- [ ] T002 Confirm complete feature memory exists: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except documented legacy/no-intake exceptions.
+- [ ] T003 Confirm the active model is operating under Orchestrator assignment and is not self-promoting from a new repository-changing user request.
+- [ ] T004 Read `feature-request.md`, `spec.md`, and `plan.md` before editing.
+- [ ] T005 If the request began read-only, record the transition point that made it repository-changing.
+- [ ] T006 If any direct edits started before routing or prerequisites, record stop/report/preserve/recovery disposition before continuing.
+- [ ] T007 Confirm Orchestrator provided any parallel-work warning and preserve existing dirty diffs, branches, commits, PRs, sibling feature folders, and process memory.
+- [ ] T008 Record baseline checks before editing, including `git status --short --branch`.
 
 ## Implementation
 
-- [ ] T005 `[Task]`
-- [ ] T006 Record any scope tension, proposed executable enforcement, or missing architecture decision as Implementation Agent feedback instead of implementing it directly.
+- [ ] T009 `[Task]`
+- [ ] T010 Record any scope tension, proposed executable enforcement, missing architecture decision, or `011`/`012` coordination issue as Implementation Agent feedback instead of implementing it directly.
 
 ## Verification
 
-- [ ] T007 Run local preflight.
-- [ ] T008 Record verification evidence and update docs/tasks status.
-- [ ] T009 Confirm changed files are limited to assigned scope.
-- [ ] T010 Confirm every Implementation Agent feedback item has Architect disposition before completion.
+- [ ] T011 Run local preflight.
+- [ ] T012 Record verification evidence and update docs/tasks status.
+- [ ] T013 Confirm changed files are limited to assigned scope and exclude sibling feature folders/worktrees.
+- [ ] T014 Confirm Review Agent enforcement evidence covers Orchestrator-first bypasses, missing feature memory, role-boundary violations, unsafe recovery, and sibling-work preservation when relevant.
+- [ ] T015 Confirm every Implementation Agent feedback item has Architect disposition before completion.
 
 ## Process Memory
 

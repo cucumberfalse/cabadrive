@@ -17,6 +17,12 @@ Reviewers check role boundaries in addition to code behavior:
 - Repository-changing work must enter through Orchestrator by default, and
   Orchestrator must invoke Analyst first when no current `feature-request.md`
   exists.
+- Read-only work may proceed without feature memory only while it remains
+  non-mutating. Reviewers should flag repository mutations that began from a
+  read-only interaction without an Orchestrator-first stop and handoff.
+- A non-Orchestrator active model must not directly implement a new
+  repository-changing request or self-promote into another role. Reviewers
+  should flag any bypass even when the resulting diff is otherwise correct.
 - Orchestrator must not directly edit repository files. File changes must come
   from the role-appropriate subagent.
 - Analyst requirement clarification must be relayed through Orchestrator.
@@ -25,21 +31,36 @@ Reviewers check role boundaries in addition to code behavior:
   Implementation Agent feedback, or documented blocker exceptions.
 - Agents must not switch roles mid-task. Work outside the current role must be
   rerouted by Orchestrator.
+- Accidental direct-edit recovery must be visible in process memory when it
+  occurs: stop/report/preserve/restart through Orchestrator or user
+  disposition, with no hidden continuation, silent role switching, destructive
+  cleanup, or unauthorized revert of user/sibling work.
 - One task slice must map to one isolated worktree, one branch, and one PR.
 - Orchestrator assignment should warn subagents that parallel agents may be
   active and require preservation of existing dirty diffs, branches, commits,
   PRs, and process memory.
+- Sibling worktrees, branches, dirty diffs, commits, PR state, feature folders,
+  and process memory must not be mutated without explicit Orchestrator
+  coordination.
 - Implementation PRs must stay inside the assigned feature memory and must not
   mix unrelated changes.
+- Implementation must not start without complete feature memory:
+  `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except documented
+  legacy/no-intake exceptions.
 - Blocking Implementation Agent feedback must be either resolved in scope or
   have Architect disposition before completion.
+- Process changes must not contradict the existing `011` Orchestrator-Analyst
+  routing baseline or sibling `012` final-validation-loop guidance when that
+  guidance is present or in flight.
 
 Reviewers should block merge when the PR text, docs, specs, or implementation
 permit unsafe completion. Blocking conditions include red, missing, queued, or
 running required checks; unresolved `P0`, `P1`, or `P2` review findings;
 unresolved conflicts; stale process memory; missing acceptance evidence; missing
-negative-scenario coverage; or unresolved Implementation Agent feedback without
-Architect disposition.
+negative-scenario coverage; Orchestrator-first bypasses; missing feature
+memory; role-boundary violations; unsafe accidental-start recovery; sibling-work
+mutation; contradictions with required `011`/`012` process guidance; or
+unresolved Implementation Agent feedback without Architect disposition.
 
 Review findings that require code, docs, tests, content, specs, metadata, or
 process-memory edits are routed by Orchestrator to the proper role. Source

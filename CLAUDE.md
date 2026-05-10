@@ -23,13 +23,17 @@ Claude Code is the default implementation agent unless repository policy says ot
 
 - All product changes go through pull requests.
 - Any request that implies repository changes starts with Orchestrator entry, not direct implementation-agent work.
+- Read-only inspection, explanation, status reporting, command output, summarization, non-mutating planning, and code review without edits may proceed without feature memory. When that interaction becomes a request to write files, stage, commit, push, open or mutate a PR, change workflow settings, or otherwise mutate repository or GitHub state, stop for Orchestrator-first routing before the first mutation.
+- If you are not explicitly acting as Orchestrator and receive a new repository-changing request, stop and say Orchestrator routing is required. Do not self-promote into Orchestrator, Analyst, Architect, Implementation Agent, or Review Agent work because the request sounds small or urgent.
 - Repository-changing work starts from an active `specs/<feature-id>/` folder.
+- Implementation work starts only after Orchestrator assigns the isolated worktree, branch, PR slice, scoped files, and complete feature memory: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except documented legacy/no-intake exceptions.
 - Feature memory must include goal, scope, acceptance criteria, a negative scenario, and verification evidence.
 - One task slice equals one isolated worktree, one branch, and one PR.
 - When Orchestrator assigns a task, follow the assigned worktree, branch, PR slice, and explicit parallel-work warning; preserve existing dirty diffs, branches, commits, PRs, and process memory from other agents.
 - Large or risky work should be split into atomic PR slices when separation lowers risk or clarifies gates, including source prerequisites, Architect dispositions, content implementation, metadata fixes, final strict gates, and review fixes.
 - Update `specs/` and `docs_project/` when behavior, architecture, workflows, or deploy rules change.
 - Record dead ends, decisions, and known issues before calling work complete.
+- If direct edits start before Orchestrator routing or implementation prerequisites are satisfied, stop immediately, report the process failure, preserve user and sibling-agent work, and wait for Orchestrator/user disposition. Do not hide the bypass, silently switch roles, run destructive cleanup, or revert work you did not make without explicit authorization.
 - Before every push, run `pnpm run preflight` (and Docker contract checks for runtime-affecting changes).
 - Never merge while required checks are queued, running, red, or missing; while blocking review findings or conflicts remain; while process memory is stale; while acceptance evidence is missing; or while Implementation Agent feedback lacks Architect disposition.
 - Keep commit subjects short, conventional, and focused.
@@ -38,12 +42,12 @@ Claude Code is the default implementation agent unless repository policy says ot
 ## Role Boundaries
 
 - Orchestrator is the default entrypoint for repository-changing requests and invokes Analyst first when no current `feature-request.md` exists. Orchestrator must remain in the Orchestrator role and must not directly edit repository files.
-- Analyst writes only `feature-request.md`, then hands off. Analyst does not write plans, code, reviews, commits, pushes, or PRs.
+- Analyst starts only from Orchestrator routing, writes only `feature-request.md`, then hands off. Analyst does not write plans, code, reviews, commits, pushes, or PRs.
 - Analyst is the only normal-flow role that may initiate user requirement clarification, and those questions flow through Orchestrator: Analyst gives questions to Orchestrator, Orchestrator asks the user, and Orchestrator returns answers to Analyst.
 - Architect writes `spec.md`, `plan.md`, and `tasks.md`, including dispositions. Architect does not write implementation, review, commits, pushes, PRs, or merges.
 - Orchestrator coordinates through production readiness, invokes the right subagent, and must not directly edit repository files. Orchestrator may perform GitHub-level coordination such as check reruns, review routing, merge-readiness checks, and authorized merge actions when those actions do not edit files.
-- Implementation Agent works only from the assigned feature memory, worktree, branch, and PR slice. Implementation Agent may stage, commit, push, and open a ready PR for that slice, but does not merge.
-- Review Agent reviews diffs, feature-memory compliance, and role/process boundaries. Review Agent does not edit files, implement fixes, rerun checks, or merge while acting as reviewer.
+- Implementation Agent works only from the assigned complete feature memory, worktree, branch, and PR slice. Implementation Agent may stage, commit, push, and open a ready PR for that slice, but does not merge.
+- Review Agent reviews diffs, feature-memory compliance, role/process boundaries, Orchestrator-first bypasses, unsafe recovery, sibling-work preservation, and consistency with prior process features such as `011` and sibling `012`. Review Agent does not edit files, implement fixes, rerun checks, or merge while acting as reviewer.
 - Agents must not switch roles mid-task. If different work is needed, Orchestrator reroutes it to the correct role.
 - After Analyst handoff, Orchestrator, Architect, Implementation Agent, and Review Agent must not initiate new normal-flow requirement clarification with the user. Use recorded assumptions, record Implementation Agent feedback for Architect disposition, or stop only for blocker exceptions such as safety, permissions, credentials, data-loss risk, repository conflicts or status ambiguity, or an unapproved human merge-owner decision.
 
