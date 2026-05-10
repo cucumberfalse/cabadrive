@@ -228,3 +228,9 @@
 - Potential future slice: exact official fee display could be added only with an explicit dated-value UI pattern and maintenance workflow. For this slice, omission is safer.
 - Potential future slice: official images from GCBA practical-exam or Pista pages can be reviewed asset by asset for license, attribution, privacy, currentness, and local offline storage. Not needed for this slice.
 - Potential future slice: prior Russian license seniority / certificado de legalidad may deserve a dedicated official-source verification feature; this slice intentionally keeps it as a generic adjacent-path callout.
+
+### Architect Disposition Of Implementation Feedback
+
+- Future dated-fee display maintenance workflow: out of scope and not needed for PR #72. Current PR intentionally omits exact BUI/CENAT fee amounts from evergreen learner prose and points users to official GCBA/ANSV pages because fees are volatile. Future slice candidate: add dated fee display only if it includes an explicit source recheck cadence, owner workflow, stale-state handling, validation, and UI copy that cannot present values as evergreen.
+- Future official images: out of scope and not needed for PR #72. Current PR satisfies acceptance without images and records the no-images decision to avoid asset-specific licensing, attribution, privacy, currentness, and offline-storage risk. Future slice candidate: review each proposed GCBA/official image independently before bundling it locally.
+- Russian prior-license / `certificado de legalidad` source verification: out of scope and not needed for PR #72. Current PR keeps prior-license and beginner-status material as a generic adjacent-path callout backed by current official sources, and does not publish Russia-specific consular or document instructions. Future slice candidate: create a dedicated source-verification feature before adding Russia-specific guidance.
