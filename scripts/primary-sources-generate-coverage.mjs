@@ -4,7 +4,8 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const currentFilePath = fileURLToPath(import.meta.url);
+const root = resolve(dirname(currentFilePath), "..");
 const coveragePath = "content/primary-sources/primary-sources.coverage.json";
 const manifestPath = "content/official-documents/manifest.json";
 const today = "2026-05-10";
@@ -59,8 +60,11 @@ function markdownHeadingLevel(line) {
   return line.match(/^(#{1,6})\s+/)?.[1].length ?? 0;
 }
 
-function isArticleLine(line) {
-  return /^(?:ART[ÍI]CULO|Artículo|Articulo|Art\.|ART\.)\s*\d+/iu.test(normalizeLine(line));
+export function isArticleLine(line) {
+  const normalized = normalizeLine(line);
+  return /^(?:ART[ÍI]CULO|ART\.|Art[íi]culo|Art\.)\s*\d+(?:\s*(?:[º°]|bis|ter|quater|quinquies))?(?:\s*(?:[.)]|\.?[—-])|\s+[A-ZÁÉÍÓÚÑÜ])/u.test(
+    normalized
+  );
 }
 
 function isHierarchyLine(line) {
@@ -305,21 +309,23 @@ function printSummary(coverage) {
   }
 }
 
-const args = new Set(process.argv.slice(2));
-const coverage = generateCoverage();
-const json = `${JSON.stringify(coverage, null, 2)}\n`;
+if (process.argv[1] && resolve(process.argv[1]) === currentFilePath) {
+  const args = new Set(process.argv.slice(2));
+  const coverage = generateCoverage();
+  const json = `${JSON.stringify(coverage, null, 2)}\n`;
 
-if (args.has("--check")) {
-  const current = readText(coveragePath);
-  if (current !== json) {
-    console.error(`${coveragePath} is not up to date. Run scripts/primary-sources-generate-coverage.mjs --write.`);
-    process.exit(1);
+  if (args.has("--check")) {
+    const current = readText(coveragePath);
+    if (current !== json) {
+      console.error(`${coveragePath} is not up to date. Run scripts/primary-sources-generate-coverage.mjs --write.`);
+      process.exit(1);
+    }
   }
-}
 
-if (args.has("--summary")) printSummary(coverage);
+  if (args.has("--summary")) printSummary(coverage);
 
-if (args.has("--write")) {
-  writeFileSync(join(root, coveragePath), json);
-  if (!args.has("--summary")) printSummary(coverage);
+  if (args.has("--write")) {
+    writeFileSync(join(root, coveragePath), json);
+    if (!args.has("--summary")) printSummary(coverage);
+  }
 }
