@@ -79,11 +79,11 @@ specs/022-feature-009-memory-consistency/tasks.md
 
 ## Required Slice E: PR And Review
 
-- [ ] T041 Open one small process-memory-only PR.
+- [x] T041 Open one small process-memory-only PR.
 - [ ] T042 Confirm required checks are green on the PR head.
 - [ ] T043 Review Agent verifies stale contradiction removal, evidence quality, scope control, and role-boundary compliance.
 - [ ] T044 Resolve or route any Review Agent findings through Orchestrator.
-- [ ] T045 Record final PR/check/review evidence without preclaiming stale-head gates.
+- [x] T045 Record PR/check/review evidence without preclaiming stale-head gates.
 
 ## Process Memory
 
@@ -144,6 +144,7 @@ specs/022-feature-009-memory-consistency/tasks.md
 - `git diff --check` passed with no output.
 - Pre-staging `git diff --name-only` returned only `specs/009-image-metadata-learning-support/tasks.md`; the feature 022 memory folder was still untracked from the Analyst/Architect handoff. Final staged-file review must include only feature 009 process memory plus complete feature 022 process memory (`feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`) and no product/content/validator/test/runtime/durable-doc files.
 - Staged-file review with `git diff --cached --name-only` returned exactly `specs/009-image-metadata-learning-support/tasks.md`, `specs/022-feature-009-memory-consistency/feature-request.md`, `specs/022-feature-009-memory-consistency/plan.md`, `specs/022-feature-009-memory-consistency/spec.md`, and `specs/022-feature-009-memory-consistency/tasks.md`.
+- PR evidence: opened ready PR #112, `[codex] Close feature 009 memory consistency gap`, at `https://github.com/cucumberfalse/cabadrive/pull/112` from `codex/022-feature-009-memory-consistency` to `main`. Initial PR head was `fe59ec9d3ab529b4d8ba0e42efb3a8da3cf89f9e`; initial `gh pr view` showed `isDraft: false`, `state: OPEN`, and required checks pending/in progress. T042 remains unchecked here to avoid preclaiming green checks on a head that may change after this evidence commit.
 
 ### Implementation Agent Feedback
 
