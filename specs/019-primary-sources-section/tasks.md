@@ -356,14 +356,14 @@
 - Implementation started only after re-reading repository memory, official archive governance, learner primary-source governance, feature memory, current manifest, and the Slice B primary-source validator.
 - Parallel-agent warning was part of the Slice C assignment. This slice preserved unrelated work and did not edit `content/official-documents/`.
 - Added `scripts/primary-sources-generate-coverage.mjs` to derive `content/primary-sources/primary-sources.coverage.json` from the official manifest and current archived Markdown.
-- Generated coverage now includes all 19 implementation-time manifest entries and 5,223 generated chunks.
+- Generated coverage now includes all 19 implementation-time manifest entries and 5,225 generated chunks.
 - Each generated coverage chunk has deterministic non-draft `chunkId`, `officialDocumentId`, positive `order`, `headingPath`, `sourceSpan`, `sourceTextSha256`, and `sourceFingerprint` in `sha256:<sourceTextSha256>` format.
 - Each coverage document has `expectedChunkIds` exactly matching its generated `chunks`, archive path, current archive SHA-256, and a `chunkingDecision` with strategy and rationale.
 - Retargeted the existing single draft learner placeholder from `ley-24449-transito-seguridad-vial--draft-001` to generated chunk `ley-24449-transito-seguridad-vial--ley-24449-001` so draft validation remains aligned with generated coverage. The Russian text and QA remain explicitly draft placeholders; no translation batch was performed.
 - Added primary-source validation mode `coverage` / `coverage-only` / `inventory` to prove complete manifest chunk inventory without requiring final Russian translation, simplification, or approved QA. Strict/final mode remains unchanged for final release translation/QA gates.
 - Tightened coverage validation so `expectedChunkIds` must match generated coverage chunks in both directions.
 - Chunking strategy counts:
-  - `legal-articles`: 4,182 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
+  - `legal-articles`: 4,184 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
   - `dotted-code-sections`: 665 chunks for CABA Ley 2148.
   - `annex-numbered-sections`: 59 chunks for Decreto 779 Anexo L.
   - `markdown-heading-sections`: 98 chunks across VTV, automotor/cédula, DNRPA, ANSV news, and chapa patente service pages.
@@ -387,7 +387,7 @@
   - `gcba-manual-vehiculo-4-ruedas-2023`: 198.
   - `gcba-mapa-estrellas-amarillas`: 3.
   - `ley-11179-codigo-penal`: 516.
-  - `ley-26994-codigo-civil-comercial`: 3,259.
+  - `ley-26994-codigo-civil-comercial`: 3,261.
   - `ley-17418-seguros`: 202.
 - Chunking decisions:
   - Laws and legal codes use article boundaries and retain hierarchy labels such as annex, book, title, chapter, and section in heading paths where detectable.
@@ -621,6 +621,16 @@
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #77 comma-dash article heading follow-up on 2026-05-10:
+  - Addressed duplicate P2 review findings for Civil/Commercial Code headings such as `ARTICULO 762,- ...` and `ARTICULO 1536,- ...`.
+  - `scripts/primary-sources-generate-coverage.mjs` now recognizes comma-dash article headings as legal article boundaries while preserving the lowercase narrative cross-reference rejection.
+  - Regenerated `content/primary-sources/primary-sources.coverage.json`; current summary is 19 documents, 5,225 chunks, with `ley-26994-codigo-civil-comercial` at 3,261 `legal-articles` chunks and standalone chunks for source spans 4567-4570 and 8143-8156.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `ley-26994-codigo-civil-comercial` has 3,261 chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 35 tests, 35 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 147 Node tests, 147 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
 - Slice B PR #74 standalone draft marker follow-up on 2026-05-10:
   - Addressed `PRRT_kwDOSX65IM6A6Kmh`: strict/final placeholder validation now rejects standalone draft markers including `DRAFT translation`, `draft rewrite`, `Черновой перевод`, and `Черновик`.
   - Added focused regression tests for standalone English and Russian draft markers in approved strict-mode learner content.
