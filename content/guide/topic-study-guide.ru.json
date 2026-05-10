@@ -14961,7 +14961,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "e26fc677958af7493b0f1cbc0c11f49fb88fab42ecfa30cdc78ac7ba2d9b6f0a",
+        "sourceFingerprint": "51d6085caaf8bdd1765a2431ea8d1c0bbcc01686506c6bd1417263ca68a0bb83",
         "basis": {
           "questionLevelCounts": {
             "green": 4,
@@ -15159,7 +15159,7 @@
         {
           "id": "term-manos-libres-risk",
           "termEs": "manos libres",
-          "translationRu": "громкая связь / manos libres; руки свободны, но внимание все равно занято",
+          "translationRu": "громкая связь; руки свободны, но внимание все равно занято",
           "sourceQuestionIds": [
             "b-fallback-392"
           ]
