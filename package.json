@@ -12,6 +12,7 @@
     "check:repo": "node scripts/check-repo-baseline.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:content:quality": "node scripts/validate-content.mjs --quality-gate",
+    "validate:overlays": "node scripts/content-image-overlays.mjs",
     "generate:content-indexes": "node scripts/content-shards.mjs --write-indexes",
     "check:content-indexes": "node scripts/content-shards.mjs --check-indexes",
     "refresh:content-evidence": "node scripts/refresh-learning-support-evidence.mjs",

@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "contentKind": "question-image-explanation-overlays",
+  "questionSourcePath": "content/questions/caba-b.unofficial-fallback.questions.json",
+  "imageMetadataPath": "content/image-metadata/question-images.manifest.json",
+  "imageMetadataEvidencePath": "content/validation/question-image-metadata.evidence.json",
+  "ownership": {
+    "sourceSemantics": "Feature 009 per-question image usage owns answer-critical, supporting, distractor, and background relevance roles.",
+    "overlayPresentation": "Feature 010 owns only image-relative presentation geometry for explanation-time support."
+  },
+  "overlays": [
+    {
+      "overlayId": "overlay-b-fallback-001-b13-explanation",
+      "status": "approved",
+      "questionId": "b-fallback-001",
+      "imageId": "question-image-b13",
+      "localPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+      "imageSha256": "aae6435fd73747197db844c9cfc7f520b94efb5095e33f043b84d5dc15e7f2b7",
+      "questionFingerprint": "a378cdcb51a67298a29274456c649c45b3424f02de2e32c2cd452c9395d8b59a",
+      "metadataFingerprint": "6b37a26f75ff0b8b68c6a2a51d03645ac95386849dfcb9fc86baf1130de6149b",
+      "usageFingerprint": "767a43d6cfbb28dcc8b55c4f0df6d28d5acbadb53b40df9a44da27a90cb9c82a",
+      "relevanceIds": [
+        "b001-highlight-gesture",
+        "b001-support-annotation",
+        "b001-background-city"
+      ],
+      "referencedDetailIds": [
+        "right-arm-straight-horizontal",
+        "red-oval-arm-highlight",
+        "background-zebra-crossings"
+      ],
+      "referencedRegionIds": [
+        "region-highlighted-arm",
+        "region-background-road"
+      ],
+      "regions": [
+        {
+          "overlayRegionId": "overlay-b001-dim-background-road",
+          "sourceRole": "background_irrelevant_dim",
+          "relevanceId": "b001-background-city",
+          "detailIds": [
+            "background-zebra-crossings"
+          ],
+          "regionIds": [
+            "region-background-road"
+          ],
+          "rect": {
+            "x": 0,
+            "y": 47,
+            "width": 100,
+            "height": 53
+          },
+          "labelRu": "Фон дороги не решает вопрос"
+        },
+        {
+          "overlayRegionId": "overlay-b001-dim-right-background",
+          "sourceRole": "background_irrelevant_dim",
+          "relevanceId": "b001-background-city",
+          "detailIds": [
+            "background-zebra-crossings"
+          ],
+          "regionIds": [
+            "region-background-road"
+          ],
+          "rect": {
+            "x": 63,
+            "y": 0,
+            "width": 37,
+            "height": 47
+          },
+          "labelRu": "Городской фон вторичен"
+        },
+        {
+          "overlayRegionId": "overlay-b001-highlight-arm-signal",
+          "sourceRole": "answer_critical_highlight",
+          "relevanceId": "b001-highlight-gesture",
+          "detailIds": [
+            "right-arm-straight-horizontal"
+          ],
+          "regionIds": [
+            "region-highlighted-arm"
+          ],
+          "rect": {
+            "x": 21,
+            "y": 25,
+            "width": 25,
+            "height": 16
+          },
+          "labelRu": "Ключ: правая рука велосипедиста"
+        },
+        {
+          "overlayRegionId": "overlay-b001-keep-red-oval",
+          "sourceRole": "supporting",
+          "relevanceId": "b001-support-annotation",
+          "detailIds": [
+            "red-oval-arm-highlight"
+          ],
+          "regionIds": [
+            "region-highlighted-arm"
+          ],
+          "rect": {
+            "x": 21,
+            "y": 25,
+            "width": 25,
+            "height": 16
+          },
+          "labelRu": "Красный овал подтверждает область"
+        }
+      ],
+      "provenance": {
+        "method": "manual_overlay_from_approved_009_usage",
+        "reviewer": "Codex Implementation Agent 010",
+        "reviewedAt": "2026-05-10",
+        "notes": "Geometry was set against local b13.jpg dimensions and references only 009 usage relevance for b-fallback-001."
+      }
+    }
+  ]
+}
