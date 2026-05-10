@@ -8426,7 +8426,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "e278ad346dc5ffd893eada0fe656af439b2b42581f66f3dc23e6373ab3ec0c86",
+        "sourceFingerprint": "03ad5cb81b3ffd250f2b1a928c9e38dba8f9e86214e717e68e5fec18bf7e5bc0",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -9140,7 +9140,7 @@
             {
               "answerId": "b-fallback-416-a2",
               "verdict": "correct",
-              "explanationRu": "Это contramano/no entry по смыслу: улица имеет sentido de circulación opuesto, поэтому въезжать нельзя."
+              "explanationRu": "Это contramano по смыслу: улица имеет sentido de circulación opuesto, то есть встречное направление, поэтому въезд запрещен."
             },
             {
               "answerId": "b-fallback-416-a3",
@@ -18071,7 +18071,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "a660b25d087b8c0339510bfed07bc0047887c7f836ba9e5e99f3febb916bb4b4",
+        "sourceFingerprint": "b099d3658b50fc131acac0c81005a5f8bb615c672eb46d40489ffb213f25d03d",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -18276,7 +18276,7 @@
             {
               "answerId": "b-fallback-298-a2",
               "verdict": "incorrect",
-              "explanationRu": "Cruce exclusivo de vehículos de emergencia - другая идея. Здесь нет переезда для экстренных машин; билет показывает выделенную полосу для bus/colectivo."
+              "explanationRu": "Cruce exclusivo de vehículos de emergencia - другая идея. Здесь нет отдельного проезда для экстренных машин; билет показывает выделенную полосу для bus/colectivo."
             },
             {
               "answerId": "b-fallback-298-a3",

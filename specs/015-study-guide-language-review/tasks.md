@@ -677,6 +677,24 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-road...origin/codex/015-study-guide-language-review-warning` with exactly the two expected modified files before commit.
 - Known issues: none introduced. Slice H intentionally kept picture-bound and old-ticket wording narrow for Ruta Nacional/Provincial signs, special CABA road segments, `banquina`, minimum/maximum-speed signs, reglamentaria/preventiva/informativa/transitoria classification traps, normative prohibitions without an extra sign, railway-crossing signals and exceptions, no-left-turn-without-arrow tickets, Metrobus/carril exclusivo tickets, and school detención markings.
 - Implementation Agent feedback: none requiring Architect disposition. Slice H found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
+- Slice H PR #82 review follow-up worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-road` on `codex/015-study-guide-language-review-road`.
+- Slice H PR #82 review follow-up scope: fixed two read-only review findings only. In `regulatory-signs`, `b-fallback-416-a2` now explains `contramano` with Russian "въезд запрещен" wording instead of learner-facing English `no entry`. In `public-transport-and-exclusive-lanes`, `b-fallback-298-a2` now says "отдельного проезда для экстренных машин" instead of ambiguous "переезда для экстренных машин".
+- Slice H PR #82 review follow-up field counts changed:
+  - answer explanations: 2 (`regulatory-signs` `b-fallback-416-a2`; `public-transport-and-exclusive-lanes` `b-fallback-298-a2`)
+  - `difficultyMeta.sourceFingerprint`: 2 (`regulatory-signs`; `public-transport-and-exclusive-lanes`)
+  - all IDs, verdicts, placements, answer IDs, claims/source traces, slugs/status, `difficulty`, and non-fingerprint `difficultyMeta` were preserved.
+- Slice H PR #82 review follow-up fingerprint evidence:
+  - `regulatory-signs`: `e278ad346dc5ffd893eada0fe656af439b2b42581f66f3dc23e6373ab3ec0c86` -> `03ad5cb81b3ffd250f2b1a928c9e38dba8f9e86214e717e68e5fec18bf7e5bc0`, matching `difficultyTopicFingerprint(topic)`.
+  - `public-transport-and-exclusive-lanes`: `a660b25d087b8c0339510bfed07bc0047887c7f836ba9e5e99f3febb916bb4b4` -> `b099d3658b50fc131acac0c81005a5f8bb615c672eb46d40489ffb213f25d03d`, matching `difficultyTopicFingerprint(topic)`.
+- Slice H PR #82 review follow-up validation evidence:
+  - JSON parse and structural count guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, and 4 source-conflict notes.
+  - Targeted Slice H rendered-field English/process scan: pass; scanned 387 rendered fields with 0 matches, including 0 matches for `no entry`.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass after this process-memory update.
+  - Changed-path guard after this process-memory update: pass; changed paths were limited to `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, with no PR #63 forbidden paths, validators/tests/docs/package/product files, or other worktrees touched.
+- Slice H PR #82 review follow-up known issues: none introduced.
+- Slice H PR #82 review follow-up Implementation Agent feedback: none requiring Architect disposition.
 
 ## Known Issues
 
