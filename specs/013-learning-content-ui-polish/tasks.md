@@ -180,6 +180,9 @@
 - Current `b-fallback-028` and `b-fallback-412` have no entries in `content/translations/ru.translations.json`.
 - Current parking-clearance topic already includes `b-fallback-028` and `b-fallback-412`, Spanish phrase terms around `10 metros` and `5 metros`, and explanations that can be polished narrowly.
 - Sibling 010 feature memory/diff indicates overlapping work in `src/App.tsx`, `src/styles.css`, `tests/e2e/app.spec.ts`, and durable docs around support reveal/navigation/source-of-truth behavior.
+- Latest-main update on 2026-05-10: fetched `origin`, confirmed `origin/main` at `a26a12493123fcc0774a513e44fbf23663658ec0` (`[codex] Add learner difficulty labels (#71)`), and merged `origin/main` into `codex/013-learning-content-ui-polish` with `git merge --no-ff origin/main` rather than squash.
+- Latest-main conflict resolution on 2026-05-10: resolved conflicts in `src/App.tsx`, `tests/e2e/app.spec.ts`, `docs_project/project/feature-inventory.md`, `docs_project/project/frontend/frontend-docs.md`, and `docs_project/screens/learning-and-exam-flows.md`. Resolution preserved feature 013 materials translations, missing-translation fallback, ticket IDs in `Учить`, compact CABA/RF wording, and removal of repeated materials per-ticket `Статус: неофициальная B-практика`; it also kept feature #71 learner difficulty indicators in learning, mistakes, materials topic headings, and materials ticket blocks.
+- Latest-main scope boundary on 2026-05-10: no `specs/014-orchestrator-first-enforcement/*` files were edited while resolving the merge.
 
 ### Dead Ends
 
@@ -193,7 +196,7 @@
 - Docker smoke may conflict across parallel worktrees if the project keeps a fixed container name; Implementation should record any environment blocker exactly rather than silently skipping runtime evidence.
 - `CABA/RF` enrichment may require source verification beyond this polish slice; unsupported additions should become follow-up, not filler.
 - 010 remains unmerged and overlaps the same UI/test/docs files. This implementation did not consume 010 files; future sequencing/rebase may need small conflict resolution in `QuestionCard`, `TopicGuideTicketBlock`, `src/styles.css`, e2e tests, and durable docs.
-- Full PR readiness items requiring push, required GitHub checks, and Review Agent findings remain not applicable in this non-publish implementation assignment.
+- External GitHub Actions are currently blocked by a repository billing/spending-limit annotation; this implementation update will not attempt to change workflows, branch protection, or billing configuration.
 
 ### Verification Evidence
 
@@ -212,6 +215,16 @@
 - Review follow-up 2026-05-10: `node --test tests/content-validation.test.mjs` passed 4 tests after adding focused parking vocabulary provenance coverage for `term-de-cada-lado` and `term-para-cada-lado`.
 - Review follow-up 2026-05-10: `node --test tests/content-topic-guide.test.mjs` passed 22 tests after the vocabulary provenance fix.
 - Review follow-up 2026-05-10: `pnpm run validate:content` passed after the vocabulary provenance fix: 460 category B fallback questions and 276 local image references.
+- Latest-main update 2026-05-10: initial `pnpm run validate:content` and `node --test tests/content-validation.test.mjs` failed because #71 difficulty metadata detected stale `parking-clearances-and-corners` `difficultyMeta.sourceFingerprint` after the 013 topic-guide prose changes. Resolution was to recompute only that topic fingerprint with `difficultyTopicFingerprint`, leaving the #71 basis counts/hash unchanged.
+- Latest-main update 2026-05-10: `git diff --check` passed after conflict resolution.
+- Latest-main update 2026-05-10: `pnpm run validate:content` passed after fingerprint refresh: difficulty labels validated for 460 questions and 38 topics; content validation passed for 460 category B fallback questions and 276 local image references.
+- Latest-main update 2026-05-10: `node --test tests/content-topic-guide.test.mjs` passed 22 tests.
+- Latest-main update 2026-05-10: `node --test tests/content-validation.test.mjs` passed 4 tests.
+- Latest-main update 2026-05-10: `pnpm run test` passed 81 Node tests.
+- Latest-main update 2026-05-10: `pnpm run build` passed; Vite built production assets and generated a service worker with 280 cached assets. Vite emitted the existing large chunk warning for `index-B1FNbUYD.js`.
+- Latest-main update 2026-05-10: `pnpm run test:e2e` passed 14 Playwright tests across `chromium` and `mobile`.
+- Latest-main update 2026-05-10: `pnpm run preflight` passed: feature-memory gate, repository baseline check, content validation, Node tests, build, and e2e. Note: the feature-memory gate reported `specs/012-orchestrator-final-validation-loop/{spec,plan,tasks}.md` because that mainline feature memory is now present on `origin/main`; the 013 feature memory remains complete and current.
+- Latest-main update 2026-05-10 Docker blocker: `docker ps` failed with `Cannot connect to the Docker daemon at unix:///Users/chap/.docker/run/docker.sock. Is the docker daemon running?`; per instruction, no `make build`, `make up`, or `make down` was attempted.
 
 ### Implementation Agent Feedback
 

@@ -14,6 +14,7 @@ Implemented MVP stack:
 - localStorage-backed progress adapter for MVP progress/statistics
 - local in-memory search index over bundled content
 - bundled topic study guide data rendered as local learning materials
+- validated four-level learner difficulty metadata for every bundled question and topic material
 - native service worker generated after production build
 - Node test runner + Playwright for testing
 
@@ -78,8 +79,10 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 - Russian translations and explanations are unofficial learning aids; product-level onboarding, content-mode/status surfaces, and source/status footers carry that clarity instead of repeating long disclaimer paragraphs inside every question card.
 - Learning and mistake review start with Russian translation hidden.
 - Learn question cards show the ticket ID in the metadata row for reporting and cross-reference.
+- Learning, mistake review, and materials surfaces show a compact static difficulty indicator (`green`, `blue`, `yellow`, `red`) as unofficial study-planning metadata. Difficulty is not correctness, source confidence, progress, or the user-controlled `Сложный` mark.
 - The Spanish question text area reveals or hides the question translation and answer-choice translations with the same shared state; the revealed question translation appears directly under the Spanish question text before images and answer choices.
 - Active exam attempts hide translation and explanation support.
+- Active exam attempts do not show difficulty rationale, dimensions, or study hints; current UI omits difficulty chips during active attempts.
 - Support mobile-first interaction and exam-focused speed.
 - Keep weak-topic review prominent in study loops.
 - Render question images as part of the question, using only local offline assets.
