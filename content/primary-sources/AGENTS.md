@@ -45,6 +45,20 @@ Validators combine inline root data plus discovered shards before applying draft
 
 Document shards use `schema: "primary-sources-document-shard.v1"` and contain either `document` or `documents`. QA shards use `schema: "primary-sources-qa-shard.v1"` and contain either `document` or `documents`. Search shards use `schema: "primary-sources-search-shard.v1"` and contain `entries`.
 
+Large documents may be split into recomposable range shards by generated coverage order. Use inclusive range suffixes that match the assigned task range:
+
+```text
+content/primary-sources/documents/<officialDocumentId>--001-086.ru.json
+content/primary-sources/qa/<officialDocumentId>--001-086.qa.json
+content/primary-sources/search/<officialDocumentId>--001-086.search.json
+```
+
+For four-digit generated coverage IDs, use four digits in the range suffix, for example `--0001-0182`.
+
+Range shards for the same `officialDocumentId` must use identical document metadata and non-overlapping generated chunk ranges. Validators recompose document and QA shards by `officialDocumentId`, fail mismatched metadata, and fail duplicate learner or QA chunk IDs. Search shards remain flat, but duplicate search entry IDs or duplicate `officialDocumentId`/`chunkId` search references are validation failures.
+
+No partial range shard is a complete learner document by itself. A large document is release-complete only after its recomposition gate proves all generated chunks for the document are present exactly once, archive-aligned, searchable, terminology-consistent, and approved in both translation and simplification QA.
+
 Each shard path or shard directory must stay under `content/primary-sources/`, must use JSON shard files, and must not point into `content/official-documents/`. Future translation batches should keep one PR focused on one source document or a clearly assigned source group so agents do not edit one giant JSON file or the root shard manifests at the same time.
 
 ## Content Quality Rules
