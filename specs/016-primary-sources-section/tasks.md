@@ -334,7 +334,7 @@
 - Added primary-source validation mode `coverage` / `coverage-only` / `inventory` to prove complete manifest chunk inventory without requiring final Russian translation, simplification, or approved QA. Strict/final mode remains unchanged for final release translation/QA gates.
 - Tightened coverage validation so `expectedChunkIds` must match generated coverage chunks in both directions.
 - Chunking strategy counts:
-  - `legal-articles`: 4,129 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
+  - `legal-articles`: 4,189 chunks across Ley 24.449, Decreto 779 main text, Ley 6631, Disposiciones 29/2024 and 343/2024, Código Penal, Código Civil y Comercial, and Ley de Seguros.
   - `dotted-code-sections`: 665 chunks for CABA Ley 2148.
   - `annex-numbered-sections`: 60 chunks for Decreto 779 Anexo L.
   - `markdown-heading-sections`: 98 chunks across VTV, automotor/cédula, DNRPA, ANSV news, and chapa patente service pages.
