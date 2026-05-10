@@ -18,7 +18,7 @@
 - [ ] At least one negative scenario is covered or explicitly waived.
 - [ ] `tasks.md` records dead ends, decisions, known issues, and verification evidence.
 - [ ] Implementation Agent feedback is either absent or has Architect disposition recorded.
-- [ ] Any remaining known issue is accepted by the human merge owner.
+- [ ] Any remaining known issue is resolved, explicitly disposed by Architect, or recorded as an exceptional owner-decision blocker before merge.
 
 ## Workflow Scope
 
@@ -34,6 +34,7 @@
 
 - [ ] Required checks are green on the current head, not red, missing, queued, or running.
 - [ ] Blocking review findings are resolved or outdated.
+- [ ] Required review conversations are resolved.
 - [ ] The PR has no unresolved merge conflicts.
 - [ ] Final Architect validation passed before final Analyst validation and covered all PR slices, Architect-assigned tasks/dispositions, architectural guidance, open task state, process memory, and customer intent in spirit.
 - [ ] Final Analyst validation passed after Architect validation and checked customer intent in spirit and letter.
@@ -41,7 +42,8 @@
 - [ ] Architect return count is within the limit of 10 and Analyst return count is within the limit of 5, or limit-exceeded escalation created a new feature request as required.
 - [ ] Analyst feedback, if any, has Architect accept/task/ticket/dispose disposition before follow-up development.
 - [ ] Completion evidence uses GitHub state and local read-only guards, not only AI-written summaries.
-- [ ] If auto-merge or Orchestrator merge is requested, the user has already authorized it and all merge-ready preconditions above are met.
+- [ ] Orchestrator finalization is expected for Orchestrator-managed PRs after all gates pass; any no-merge instruction, credentials/permissions problem, protected-branch policy blocker, ambiguous PR state, or pending accepted-known-issue owner decision is recorded as an exceptional human blocker.
+- [ ] If pending required checks remain, `pnpm run pr:finalize -- --auto-merge-pending` may only enable GitHub protected auto-merge; it must not bypass required checks or branch protection.
 
 ## Validation
 

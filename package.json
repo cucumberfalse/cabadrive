@@ -22,6 +22,7 @@
     "agent:set": "node scripts/set-implementation-agent.mjs",
     "worktree:new": "node scripts/new-worktree.mjs",
     "pr:publish": "node scripts/publish-branch.mjs",
+    "pr:finalize": "node scripts/finalize-pr.mjs",
     "review:switch": "node scripts/switch-review-agent.mjs"
   },
   "dependencies": {

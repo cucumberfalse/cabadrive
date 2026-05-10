@@ -64,13 +64,13 @@ Reviewers check role boundaries in addition to code behavior:
   docs, specs, and templates require the planned final-validation steps at the
   right phase.
 - Final Architect validation must occur before final Analyst validation,
-  completion, or authorized merge mechanics, after implementation, review,
+  completion, or Orchestrator finalization/merge, after implementation, review,
   checks, and follow-up development appear complete. Reviewers should check
   that Architect validation covers all PR slices, Architect-assigned tasks and
   dispositions, architectural guidance, open task state, process memory, and
   customer intent in spirit.
 - Final Analyst validation must occur after Architect passes and before final
-  completion or authorized merge mechanics. It must check the customer's desired
+  completion or Orchestrator finalization/merge. It must check the customer's desired
   outcome in spirit and letter. Analyst gap notes must be Analyst-owned, return
   counts must stay within the limit of 5, and Analyst feedback must receive
   Architect accept/task/ticket/dispose disposition before follow-up development.
@@ -84,7 +84,7 @@ Reviewers check role boundaries in addition to code behavior:
   evidence-only process memory and Orchestrator's read-only current-PR-head
   guard proves no non-evidence content changed. Non-evidence changes after role
   validation make prior validation stale and must be routed back through
-  role-appropriate follow-up or final validation before completion.
+  role-appropriate follow-up or final validation before completion or merge.
 
 Reviewers should block merge when the PR text, docs, specs, or implementation
 permit unsafe completion. Blocking conditions include red, missing, queued, or
@@ -97,7 +97,7 @@ unresolved Implementation Agent feedback without Architect disposition. During
 initial PR review, absence of final Architect or Analyst validation evidence is
 not itself blocking because the final-validation loop is invoked only after
 implementation, review, checks, and follow-up development appear complete.
-During Orchestrator's final completion or merge-readiness evaluation, missing
+During Orchestrator's final completion or finalization/merge-readiness evaluation, missing
 final-validation evidence, incomplete cycle PR set coverage, Analyst feedback
 without Architect disposition, or exhausted return limits without
 new-feature-request escalation are blocking process findings. So are missing
@@ -119,10 +119,16 @@ clarification-relay evidence, latest-main startup evidence, parallel-work
 isolation evidence, cycle PR-set evidence, final Architect validation, final
 Analyst validation, effective content head evidence, current-PR-head guard
 evidence, return-limit state, or manual review of the SENAR done gate.
-Explicit user authorization for Orchestrator
-merge removes only the need to ask again; it does not remove any merge-readiness
-gate. A human remains the default final merge owner when no such authorization
-exists.
+For Orchestrator-managed PRs, routine human final approval is not a terminal
+blocker after objective gates pass. Reviewers should instead block unsafe
+finalization when the PR permits merge without current-head verification, green
+required checks from `.unicorn-hub/config.json`, resolved review threads,
+resolved or outdated blocking findings, clean mergeability, final validation
+evidence, current process memory, feedback disposition, and local guard
+evidence. Human intervention remains a blocker only for exceptional cases:
+missing credentials or permissions, explicit instruction not to merge,
+ambiguous repository or PR state, pending owner decision for an accepted known
+issue, or protected-branch/ruleset policy blockers.
 
 ## Codex
 
