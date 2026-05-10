@@ -187,6 +187,15 @@ function discoverShardPaths(root, shardFiles, relativeDirectory, filenameSuffix)
     .sort();
 }
 
+function optionalArrayField(errors, owner, key, label) {
+  if (!isPlainObject(owner) || !Object.hasOwn(owner, key)) return [];
+  if (!Array.isArray(owner[key])) {
+    errors.push(`${label}.${key} must be an array.`);
+    return [];
+  }
+  return owner[key];
+}
+
 function shardPathReferences({ root, shardFiles, owner, listKey, directoryKey, label, filenameSuffix }) {
   const errors = [];
   const references = [];
@@ -200,11 +209,11 @@ function shardPathReferences({ root, shardFiles, owner, listKey, directoryKey, l
     }
   };
 
-  asArray(owner?.[listKey]).forEach((reference, index) => {
+  optionalArrayField(errors, owner, listKey, label).forEach((reference, index) => {
     appendReference(shardPathFromReference(reference), `${label}.${listKey}[${index}]`);
   });
 
-  asArray(owner?.[directoryKey]).forEach((directoryReference, index) => {
+  optionalArrayField(errors, owner, directoryKey, label).forEach((directoryReference, index) => {
     const relativeDirectory = shardPathFromReference(directoryReference);
     const referenceLabel = `${label}.${directoryKey}[${index}]`;
     if (!validateShardDirectoryPath(errors, relativeDirectory, referenceLabel)) return;

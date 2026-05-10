@@ -372,6 +372,37 @@ test("primary-source shard loading reports missing referenced shards", () => {
   assert(combined.errors.includes("content/primary-sources/documents/missing.ru.json: shard file is missing."));
 });
 
+test("primary-source shard loading rejects non-array root shard fields", () => {
+  const combined = combinePrimarySourceShards({
+    corpus: {
+      ...corpus(),
+      documents: [],
+      documentShards: "content/primary-sources/documents/doc-1.ru.json",
+      documentShardDirectories: { path: "content/primary-sources/documents" }
+    },
+    qa: {
+      ...qa(),
+      documents: [],
+      qaShards: { path: "content/primary-sources/qa/doc-1.qa.json" },
+      qaShardDirectories: "content/primary-sources/qa"
+    },
+    searchIndex: {
+      ...searchIndex(),
+      entries: [],
+      searchShards: "content/primary-sources/search/doc-1.search.json",
+      searchShardDirectories: { path: "content/primary-sources/search" }
+    },
+    shardFiles: {}
+  });
+
+  assert(combined.errors.includes("primary sources corpus.documentShards must be an array."));
+  assert(combined.errors.includes("primary sources corpus.documentShardDirectories must be an array."));
+  assert(combined.errors.includes("primary sources QA.qaShards must be an array."));
+  assert(combined.errors.includes("primary sources QA.qaShardDirectories must be an array."));
+  assert(combined.errors.includes("primary sources search index.searchShards must be an array."));
+  assert(combined.errors.includes("primary sources search index.searchShardDirectories must be an array."));
+});
+
 test("strict mode catches missing QA and search projections after shard combining", () => {
   const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
   const combined = combinePrimarySourceShards({
