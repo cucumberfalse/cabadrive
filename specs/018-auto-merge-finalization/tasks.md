@@ -37,6 +37,7 @@
 - Third implementation update evidence: after `origin/main` advanced to `578c618`, follow-up Implementation Agent ran `git fetch origin && git stash push --include-untracked -m codex-preserve-018-auto-merge-finalization-followup && git merge --ff-only origin/main && git stash pop` on 2026-05-10. The branch fast-forwarded from `b26a37d` to `578c618`; the scoped implementation patch was restored unstaged with no conflicts, preserving sibling feature work and the new `specs/012-caba-exam-process/` mainline content.
 - Fourth implementation update evidence: after `origin/main` advanced to `6562410`, latest-main refresh Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly from PR head `ebe6c09` with no conflicts, preserving existing feature commits and adding the mainline `specs/013-learning-content-ui-polish/` content.
 - Fifth implementation update evidence: after `origin/main` advanced to `78e0176e361eeea583dd797296bfa994b3f1f695`, review-fix Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly from PR head `328c7c3`, preserving existing PR work and adding the mainline learning-support content/sharding updates.
+- Sixth implementation update evidence: after `origin/main` advanced to `870c7f9514404b36cf75954c3c39814770495342`, current review-fix Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with no conflicts, preserving this scoped review fix and adding the mainline UI UX learning overlays content.
 
 ## Decisions
 
@@ -57,6 +58,7 @@
 - Current review-fix implementation decision: `readProcessEvidence()` now parses `Implementation Agent Feedback` as individual markdown feedback items. A section-level no-feedback marker is valid only when all items are no-feedback markers; each substantive feedback item must contain an explicit disposition marker or be immediately followed by a disposition item, so one disposed item no longer hides a second open item.
 - Current review-fix implementation decision: `verifyPostEffectiveHeadChanges()` now inspects the actual `git diff --unified=0` from effective content head to current head. Post-effective-head changes are evidence-only only when they are additions in final role validation notes, `tasks.md` verification evidence, or exact `Effective content head` evidence; removals, task-list edits, decisions, scope, architecture, and disposition edits inside otherwise allowed memory files block finalization.
 - Current review-fix implementation decision: native GitHub reviews fetched through GraphQL now request review connection `pageInfo`. If `reviews(last: 100)` is truncated, the helper fails closed with a blocking review-pagination finding instead of risking a missed older current-head `CHANGES_REQUESTED`.
+- Current P1 review-fix implementation decision: mutating finalization now reads process evidence from `state.pr.headSha` with `git show <head>:<feature-memory-file>` through `readProcessEvidenceFromHead()`. Local working-tree evidence can still be parsed by the local helper for tests/inspection, but the CLI merge and protected auto-merge path no longer trusts dirty, local-only, or different-checkout process memory.
 
 ## Dead Ends
 
@@ -137,6 +139,15 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed after current P1/P2 review-fix updates; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `git diff --check`: passed after current P1/P2 review-fix updates; no whitespace errors reported.
 - `pnpm run preflight`: passed after current P1/P2 review-fix updates; feature-memory gate, repo baseline, content validation, 135 node tests, build, service-worker generation with 280 cached assets, and 22 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-xji3BCFN.js` but completed successfully.
+- `node --check scripts/finalize-pr.mjs`: passed after current PR-head process-evidence review fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after current PR-head process-evidence review fix; 26 tests passed, including dirty local-only evidence being ignored, different-checkout evidence being ignored, and clean exact PR-head evidence satisfying merge gates.
+- `git fetch origin --prune && git merge --no-edit origin/main`: passed after current PR-head process-evidence review fix; merged latest `origin/main` `870c7f9514404b36cf75954c3c39814770495342` with no conflicts.
+- `node --check scripts/finalize-pr.mjs`: passed after latest-main merge.
+- `node --test tests/finalize-pr.test.mjs`: passed after latest-main merge and unreadable-source regression; 27 tests passed.
+- `pnpm run check:repo`: passed after latest-main merge; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after latest-main merge; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `git diff --check`: passed after latest-main merge; no whitespace errors reported.
+- `pnpm run preflight`: passed after latest-main merge and unreadable-source regression; feature-memory gate, repo baseline, content validation, 143 node tests, build, service-worker generation with 280 cached assets, and 30 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-DrCZBMfu.js` but completed successfully.
 
 ## Final Architect Validation Notes
 

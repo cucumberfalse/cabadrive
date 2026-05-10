@@ -12,6 +12,7 @@ import {
   isFinalValidationEvidencePath,
   normalizeCheckState,
   readProcessEvidence,
+  readProcessEvidenceFromHead,
   verifyPostEffectiveHeadChanges
 } from "../scripts/finalize-pr.mjs";
 
@@ -90,6 +91,47 @@ function writeMinimalFeatureMemory(root, featurePath, tasksExtra = "") {
 ## Verification Evidence
 - Existing evidence.
 ${tasksExtra}`);
+}
+
+function writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead) {
+  const featureRoot = join(root, featurePath);
+  mkdirSync(featureRoot, { recursive: true });
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-10T13:00:01Z
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-10T13:00:00Z
+`);
+  writeFileSync(join(featureRoot, "plan.md"), `# Plan
+`);
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Task List
+- [x] Existing task.
+
+## Decisions
+- Existing decision.
+- Effective content head: ${effectiveContentHead}
+
+## Dead Ends
+- None.
+
+## Known Issues
+- None.
+
+## Implementation Agent Feedback
+- None yet.
+
+## Verification Evidence
+- Existing evidence.
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
+`);
 }
 
 test("finalization gate passes only with current head, green required checks, and process evidence", () => {
@@ -216,6 +258,127 @@ test("missing final validation and process evidence block finalization", () => {
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-acceptance-evidence"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-effective-content-head"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"));
+});
+
+test("unreadable PR-head process evidence source blocks finalization", () => {
+  const result = evaluateFinalizationGates(successfulInput({
+    processEvidence: {
+      ...successfulInput().processEvidence,
+      processEvidenceSourceError: "fatal: bad object abc123"
+    }
+  }));
+
+  assert.equal(result.action, "block");
+  assert.ok(result.blockers.some((blocker) => blocker.code === "unverified-process-evidence"));
+});
+
+test("dirty local-only process evidence is ignored when reading from the PR head", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-head-"));
+  const featurePath = "specs/999-finalize-test";
+  initGitRepo(root);
+  writeMinimalFeatureMemory(root, featurePath);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "pr head without final evidence"]);
+  const prHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFinalValidationFeatureMemory(root, featurePath, prHead);
+  const localEvidence = readProcessEvidence(root, featurePath, prHead);
+  const headEvidence = readProcessEvidenceFromHead(root, featurePath, prHead);
+
+  assert.equal(localEvidence.finalArchitectValidation, true);
+  assert.equal(localEvidence.finalAnalystValidation, true);
+  assert.equal(headEvidence.finalArchitectValidation, false);
+  assert.equal(headEvidence.finalAnalystValidation, false);
+
+  const result = evaluateFinalizationGates(successfulInput({
+    requireExpectedHead: true,
+    suppliedHeadSha: prHead,
+    pr: {
+      number: 12,
+      headSha: prHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: headEvidence
+  }));
+
+  assert.equal(result.action, "block");
+  assert.ok(result.blockers.some((blocker) => blocker.code === "missing-architect-validation"));
+  assert.ok(result.blockers.some((blocker) => blocker.code === "missing-analyst-validation"));
+});
+
+test("process evidence from a checkout that is not the PR head is ignored", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-head-"));
+  const featurePath = "specs/999-finalize-test";
+  initGitRepo(root);
+  writeMinimalFeatureMemory(root, featurePath);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "pr head without final evidence"]);
+  const prHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFinalValidationFeatureMemory(root, featurePath, prHead);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "local checkout evidence"]);
+  const localHead = git(root, ["rev-parse", "HEAD"]);
+  assert.notEqual(localHead, prHead);
+
+  const localEvidence = readProcessEvidence(root, featurePath, prHead);
+  const headEvidence = readProcessEvidenceFromHead(root, featurePath, prHead);
+
+  assert.equal(localEvidence.finalValidationOrder, true);
+  assert.equal(headEvidence.finalValidationOrder, false);
+
+  const result = evaluateFinalizationGates(successfulInput({
+    requireExpectedHead: true,
+    suppliedHeadSha: prHead,
+    pr: {
+      number: 12,
+      headSha: prHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: headEvidence
+  }));
+
+  assert.equal(result.action, "block");
+  assert.ok(result.blockers.some((blocker) => blocker.code === "missing-validation-order"));
+});
+
+test("clean exact PR head process evidence can satisfy merge gates", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-head-"));
+  const featurePath = "specs/999-finalize-test";
+  initGitRepo(root);
+  writeMinimalFeatureMemory(root, featurePath);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "effective content"]);
+  const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
+
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "final validation evidence"]);
+  const prHead = git(root, ["rev-parse", "HEAD"]);
+
+  const evidence = {
+    ...readProcessEvidenceFromHead(root, featurePath, prHead),
+    ...verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, prHead)
+  };
+  const result = evaluateFinalizationGates(successfulInput({
+    requireExpectedHead: true,
+    suppliedHeadSha: prHead,
+    pr: {
+      number: 12,
+      headSha: prHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: evidence
+  }));
+
+  assert.equal(result.ready, true);
+  assert.equal(result.action, "merge");
 });
 
 test("post-effective-head non-evidence paths block finalization", () => {

@@ -62,6 +62,10 @@ export function evaluateFinalizationGates(input = {}) {
     block("missing-head", "Current PR head SHA could not be verified.");
   }
 
+  if (evidence.processEvidenceSourceError) {
+    block("unverified-process-evidence", `Process evidence could not be read from the PR head: ${evidence.processEvidenceSourceError}`);
+  }
+
   if (pr.isDraft) {
     block("draft-pr", "Draft pull requests cannot be finalized.");
   }
@@ -294,10 +298,53 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
     const path = join(featureRoot, name);
     return existsSync(path) ? readFileSync(path, "utf8") : "";
   };
-  const featureRequest = read("feature-request.md");
-  const spec = read("spec.md");
-  const plan = read("plan.md");
-  const tasks = read("tasks.md");
+  return parseProcessEvidence({
+    featureRequest: read("feature-request.md"),
+    spec: read("spec.md"),
+    plan: read("plan.md"),
+    tasks: read("tasks.md")
+  }, currentHead);
+}
+
+export function readProcessEvidenceFromHead(root, featurePath, currentHead = "") {
+  if (!currentHead) {
+    return {
+      ...parseProcessEvidence({}, currentHead),
+      processEvidenceSourceError: "missing PR head SHA"
+    };
+  }
+
+  try {
+    run("git", ["cat-file", "-e", `${currentHead}^{commit}`], { cwd: root });
+  } catch (error) {
+    return {
+      ...parseProcessEvidence({}, currentHead),
+      processEvidenceSourceError: error.message || String(error)
+    };
+  }
+
+  const read = (name) => {
+    const repoPath = normalizeRepoPath(join(featurePath || "", name));
+    try {
+      return run("git", ["show", `${currentHead}:${repoPath}`], { cwd: root });
+    } catch {
+      return "";
+    }
+  };
+
+  return parseProcessEvidence({
+    featureRequest: read("feature-request.md"),
+    spec: read("spec.md"),
+    plan: read("plan.md"),
+    tasks: read("tasks.md")
+  }, currentHead);
+}
+
+function parseProcessEvidence(files = {}, currentHead = "") {
+  const featureRequest = files.featureRequest || "";
+  const spec = files.spec || "";
+  const plan = files.plan || "";
+  const tasks = files.tasks || "";
   const architectMemory = [spec, plan, tasks].join("\n");
   const analystMemory = featureRequest;
   const allMemory = [featureRequest, spec, plan, tasks].join("\n");
@@ -788,7 +835,7 @@ async function main() {
   const featurePath = inferFeaturePath(root, args);
   const state = await fetchPullRequestState(root, repo, prNumber);
   const processEvidence = featurePath
-    ? readProcessEvidence(root, featurePath, state.pr.headSha)
+    ? readProcessEvidenceFromHead(root, featurePath, state.pr.headSha)
     : {};
   if (
     featurePath &&
