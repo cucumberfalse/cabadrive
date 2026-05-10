@@ -172,10 +172,10 @@ small,
   align-items: center;
 }
 
-.question-meta span,
+.question-meta > span,
 .exam-bar span,
-.term-card span,
-.guide-item span {
+.term-card > span,
+.guide-item > span {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -189,6 +189,52 @@ small,
 .question-meta .warning {
   background: #fff0c2;
   color: #674b00;
+}
+
+.difficulty-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 9px;
+  border: 1px solid #d8d2c6;
+  border-radius: 999px;
+  background: #fffdf8;
+  color: #30443d;
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+
+.question-meta > .difficulty-chip {
+  border: 1px solid #d8d2c6;
+  background: #fffdf8;
+}
+
+.difficulty-dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: inset 0 0 0 2px #fffdf8;
+}
+
+.difficulty-chip.difficulty-green {
+  color: #456d58;
+}
+
+.difficulty-chip.difficulty-blue {
+  color: #425f8f;
+}
+
+.difficulty-chip.difficulty-yellow {
+  color: #7a641e;
+}
+
+.difficulty-chip.difficulty-red {
+  color: #8b4255;
 }
 
 .official-block,
@@ -346,6 +392,13 @@ small,
   padding: 14px;
 }
 
+.mistake-list-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
 .term-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -384,14 +437,15 @@ small,
 }
 
 .materials-status,
-.materials-topic-heading {
+.materials-topic-heading,
+.materials-topic-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.materials-status span,
-.materials-topic-heading > span,
+.materials-status > span,
+.materials-topic-badges > span:not(.difficulty-chip),
 .answer-badge {
   display: inline-flex;
   align-items: center;
@@ -403,8 +457,8 @@ small,
   font-size: 0.82rem;
 }
 
-.materials-status span:first-child,
-.materials-topic-heading > span {
+.materials-status > span:first-child,
+.materials-topic-badges > span:not(.difficulty-chip) {
   background: #fff0c2;
   color: #674b00;
 }
@@ -445,8 +499,14 @@ small,
   text-align: left;
 }
 
-.materials-topic-list button span {
+.materials-topic-list .topic-index {
   color: #617069;
+}
+
+.topic-button-content {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
 }
 
 .materials-topic-list button:hover,
