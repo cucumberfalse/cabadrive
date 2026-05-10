@@ -81,8 +81,8 @@
 - Some old local artifacts may not contain enough metadata to prove they were agent-created and completed. Those paths must be preserved unless the user authorizes a separate manual cleanup.
 - Cleanup PR-state validation depends on GitHub lookup. If credentials or network access are unavailable, affected candidates are ambiguous and must be preserved.
 - Existing helper-created and sibling worktree naming conventions may differ. The implementation must document approved cleanup roots and cannot rely on one naming pattern.
-- Resolved sequencing note: PR #65 was the merge-order dependency for overlapping durable workflow/template files, then merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. This branch has been rebased and revalidated on that base. The current working tree now includes the resolved plan-template P2 and the local prefix-rename P2; final Architect/Analyst validations are stale until rerun, then the remaining operational step is to commit/push the current working tree and run a current-PR-head guard so GitHub PR #67 reflects the validated content.
-- P2 review thread state, 2026-05-10: the `.specify/templates/plan-template.md` consistency finding was addressed and resolved. The current unresolved P2 is the duplicate feature-memory prefix after PR #65 merged; this implementation slice addresses it locally by renaming the cleanup feature memory to the next valid prefix and updating scoped references. It remains pending commit/push plus GitHub re-review or explicit thread resolution before PR #67 can be declared merge-ready.
+- Resolved sequencing note: PR #65 was the merge-order dependency for overlapping durable workflow/template files, then merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. This branch was rebased and revalidated on that base, then the prefix-rename fix landed as effective content head `d986be885aa2e59166397024a0264e3758c2be95` (`docs: renumber cleanup governance feature memory`).
+- P2 review thread state, 2026-05-10: the `.specify/templates/plan-template.md` consistency finding was addressed and resolved. The duplicate feature-memory prefix P2 after PR #65 merged was addressed by renaming the cleanup feature memory to the next valid prefix and updating scoped references; final Architect and Analyst validations now pass after the rename.
 
 ### Verification Evidence
 
@@ -129,23 +129,26 @@
 - Prior Architect validation gap resolved by this process-memory update: stale PR #65 wording is corrected, the current cycle PR set is recorded below, and Architect return count is 1.
 - Final Analyst validation passed on 2026-05-10 in `feature-request.md`: Analyst return count is 0, customer intent check passed, gaps are none, and no Architect routing is needed.
 - PR #67 P2 review finding, 2026-05-10: `.specify/templates/plan-template.md` still used old latest-main startup wording and lacked cleanup applicability/evidence fields, leaving AC-008 cross-template consistency unsatisfied.
-- PR #67 P2 implementation fix, 2026-05-10: updated `.specify/templates/plan-template.md` to use latest verified main with fetch fallback/blocker language, cleanup applicability/evidence/refusal fields, Cleanup Agent review/verification expectations, and effective-content/current-head final validation guards; updated this feature's `plan.md` and `tasks.md` process memory to record the finding, fix, and stale-validation routing.
+- PR #67 P2 implementation fix, 2026-05-10: updated `.specify/templates/plan-template.md` to use latest verified main with fetch fallback/blocker language, cleanup applicability/evidence/refusal fields, Cleanup Agent review/verification expectations, and effective-content/current-head final validation guards; updated this feature's `plan.md` and `tasks.md` process memory to record the finding, fix, and validation routing.
 - PR #67 P2 validation, 2026-05-10: `git diff --check` passed with no output.
 - PR #67 P2 validation, 2026-05-10: `node scripts/check-feature-memory.mjs --worktree` passed with `No configured product paths changed; feature-memory gate passes.`
 - PR #67 P2 scope check, 2026-05-10: `git diff --name-only` listed only `.specify/templates/plan-template.md`, `specs/013-orchestrator-cleanup-governance/plan.md`, and `specs/013-orchestrator-cleanup-governance/tasks.md`.
 - PR #67 P2 full validation, 2026-05-10: `pnpm run preflight` passed after the plan-template fix.
-- Prior final Architect validation after plan-template P2 fix, 2026-05-10: PASS at that point; now stale because the prefix rename changed feature memory afterward.
-- Prior final Analyst validation after plan-template P2 fix, 2026-05-10: PASS at that point; now stale because the prefix rename changed feature memory afterward.
+- Prior final Architect validation after plan-template P2 fix, 2026-05-10: PASS at that point; superseded by the final validation rerun after the prefix rename.
+- Prior final Analyst validation after plan-template P2 fix, 2026-05-10: PASS at that point; superseded by the final validation rerun after the prefix rename.
 - PR #67 prefix P2 finding, 2026-05-10: GitHub review identified that base `main` now includes `specs/012-orchestrator-final-validation-loop/`, so this cleanup feature memory needed the next valid prefix instead of another `012-*` folder.
 - Prefix rename decision, 2026-05-10: inspected current `specs/` directories after excluding the cleanup folder being renamed, found max prefix `012`, and used `git mv` to rename the cleanup feature memory to `specs/013-orchestrator-cleanup-governance/`.
 - Prefix rename scope, 2026-05-10: update only renamed feature-memory files and path references needed for this P2; do not edit product code, unrelated docs, staging, commit, push, review, resolve threads, or merge.
-- Stale validation routing, 2026-05-10: because the prefix rename is a non-evidence feature-memory change after prior Architect and Analyst final validation, those final validations are now stale and must rerun after rename verification.
-- Effective content head note, 2026-05-10: the new non-evidence prefix fix effective content head is the commit that will be created from the current working tree. Orchestrator must run the current-head guard after commit/push against the new PR #67 head.
-- P2 review thread status, 2026-05-10: prefix finding addressed locally, pending commit/push and GitHub re-review or explicit thread resolution.
+- Prefix-rename validation rerun, 2026-05-10: review-fix commit/effective content head is `d986be885aa2e59166397024a0264e3758c2be95` (`docs: renumber cleanup governance feature memory`).
+- Prefix-rename validation rerun, 2026-05-10: full preflight passed after the rename, including feature-memory gate, `check:repo`, `validate:content`, 72 Node tests, build/service-worker generation, and 14 Playwright e2e tests.
+- Final validation rerun, 2026-05-10: Architect final validation PASS on `d986be8` with no blockers.
+- Final validation rerun, 2026-05-10: Analyst final validation PASS in `feature-request.md` with return count 0 and no routing gaps.
+- Post-`d986be8` scope note: changes after `d986be885aa2e59166397024a0264e3758c2be95` are final validation evidence/process-memory only in `feature-request.md` and `tasks.md`.
+- P2 review thread status, 2026-05-10: prefix finding addressed by `d986be8`; final Architect/Analyst reruns passed, leaving only GitHub re-review or explicit thread resolution before PR #67 can be declared merge-ready.
 
 ### Cycle PR Set
 
-- PR #67 (`https://github.com/cucumberfalse/cabadrive/pull/67`): branch `codex/014-orchestrator-cleanup-governance`; purpose is orchestrator cleanup governance plus one-time cleanup evidence; base includes merged PR #65 at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. The current working tree includes the resolved plan-template P2 and the local prefix-rename P2 fix to `specs/013-orchestrator-cleanup-governance/`; status is pending final Architect/Analyst rerun, commit/push, GitHub re-review, and a new PR-head currentness guard. Effective content head for the prefix rename will be the commit created from this working tree.
+- PR #67 (`https://github.com/cucumberfalse/cabadrive/pull/67`): branch `codex/014-orchestrator-cleanup-governance`; purpose is orchestrator cleanup governance plus one-time cleanup evidence; base includes merged PR #65 at `9534ab054b6b22ccd56e5c204ab8469c027faef9`. The plan-template P2 and prefix-rename P2 are addressed through effective content head `d986be885aa2e59166397024a0264e3758c2be95`; final Architect/Analyst reruns passed after the rename, and later changes are process-memory evidence only in `feature-request.md` and `tasks.md`.
 
 ### Cleanup Evidence
 
@@ -244,7 +247,7 @@
 - PR #65 overlap: path A is resolved. PR #65 merged into `origin/main` at `9534ab054b6b22ccd56e5c204ab8469c027faef9`; this branch rebased onto that latest verified `main`, reconciled the overlapping governance/template files, and revalidated locally at effective content head `5031c8178035a4a1ca03dbf7f1f7b76a09909baf`.
 - Prior Architect validation GAP: resolved by this process-memory-only update. Architect return count: 1.
 - Final Analyst validation: passed on 2026-05-10 in `feature-request.md`. Analyst return count: 0. Analyst feedback Architect disposition: none needed.
-- Prior final Architect validation after plan-template P2 fix: PASS on 2026-05-10, now stale after the prefix rename.
-- Prior final Analyst validation after plan-template P2 fix: PASS on 2026-05-10, now stale after the prefix rename.
-- Prefix-rename P2 review finding: addressed locally by the current working tree; prior final Architect/Analyst validations are stale after the rename and must rerun before commit/push plus GitHub re-review or explicit thread resolution.
+- Prior final Architect validation after plan-template P2 fix: superseded by final validation rerun after the prefix rename.
+- Prior final Analyst validation after plan-template P2 fix: superseded by final validation rerun after the prefix rename.
+- Prefix-rename P2 review finding: addressed by effective content head `d986be885aa2e59166397024a0264e3758c2be95`; final Architect validation PASS on `d986be8` with no blockers, and final Analyst validation PASS on 2026-05-10 in `feature-request.md` with return count 0 and no routing gaps.
 - One-time cleanup deletion: disposed as Cleanup Agent work after durable rules exist. Cleanup Agent evidence is now recorded above, including first-pass cleanup, mismatch reconciliation, preserved paths, and post-cleanup confirmation. No repository/docs/template change is needed for this feedback item.

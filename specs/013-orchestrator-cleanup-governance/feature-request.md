@@ -138,8 +138,9 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: STALE/PENDING after prefix-rename review fix on 2026-05-10. The prior PASS after the plan-template review fix remains historical and must be rerun by Analyst after rename verification.
-- Prior Analyst return count: 0. A fresh Analyst validation rerun is pending because the prefix rename changed feature memory after the prior pass.
-- Customer intent check: PASS in spirit and letter. The final result teaches Orchestrator to coordinate completion-time cleanup through a first-class Cleanup Agent with strict validation, refusal, and evidence rules; records one-time cleanup of validated completed agent-created environments while preserving active, ambiguous, current, dirty, open-PR, and recurring paths including `cabadrive-009-content-277-368`; and makes fresh isolated startup from latest verified `main` the default for new Orchestrator work. The plan-template consistency fix supports future planning fidelity and does not change the user-facing scope.
+- Status: PASS after prefix-rename validation on 2026-05-10. Feature memory now consistently uses `specs/013-orchestrator-cleanup-governance/`, with no stale old cleanup feature path routing.
+- Analyst return count: 0.
+- Customer intent check: PASS in spirit and letter. The final result teaches Orchestrator to default new repository-changing work to a fresh isolated environment from latest verified `main`; coordinates completion-time cleanup through a first-class Cleanup Agent with strict positive-proof validation, refusal, and evidence rules; and records one-time cleanup evidence that preserves current, active, open-PR, dirty, ambiguous, and recurring work including `cabadrive-009-content-277-368`.
 - Gaps: none.
-- Architect disposition routing: none needed; no new requirements, risks, or implementation feedback are raised by final Analyst validation.
+- Analyst routing gaps or new questions: none.
+- Architect disposition routing: none needed; no new requirements, risks, scope drift, or implementation feedback are raised by final Analyst validation.
