@@ -423,7 +423,7 @@ function parseProcessEvidence(files = {}, currentHead = "") {
       Boolean(architectCompletedAt) &&
       Boolean(analystCompletedAt) &&
       architectCompletedAt.getTime() < analystCompletedAt.getTime(),
-    acceptanceEvidence: verificationSection.trim().length > 0 && !/Pending implementation/i.test(verificationSection),
+    acceptanceEvidence: hasSubstantiveVerificationEvidence(verificationSection),
     currentProcessMemory: hasMarkdownSection(tasks, "Decisions") &&
       hasMarkdownSection(tasks, "Dead Ends") &&
       hasMarkdownSection(tasks, "Known Issues") &&
@@ -442,8 +442,12 @@ function parseProcessEvidence(files = {}, currentHead = "") {
       currentHead.toLowerCase() === effectiveContentHead.toLowerCase(),
     currentHeadGuardEvidence: Boolean(effectiveContentHead) &&
       guardEvidenceReferencesEffectiveHead(guardEvidenceText, effectiveContentHead),
-    acceptedKnownIssueDecisionPending: hasPendingKnownIssueDecision(knownIssueSection)
+    acceptedKnownIssueDecisionPending: hasUndisposedKnownIssue(knownIssueSection)
   };
+}
+
+function hasSubstantiveVerificationEvidence(section = "") {
+  return stripPlaceholderLines(section).some((line) => !/\bPending implementation\b/i.test(line));
 }
 
 function hasCyclePrSetEvidence(section = "") {
@@ -463,8 +467,55 @@ function stripPlaceholderLines(section = "") {
     .filter((line) => line && !/^\s*[-*]?\s*\[.+\]\s*$/.test(line));
 }
 
-function hasPendingKnownIssueDecision(section = "") {
-  return stripPlaceholderLines(section).some((line) => hasPendingKnownIssueDecisionWording(line));
+function hasUndisposedKnownIssue(section = "") {
+  const items = readKnownIssueItems(section);
+  if (items.length === 0) return false;
+  return items.some((item) =>
+    hasPendingKnownIssueDecisionWording(item) ||
+    !hasKnownIssueFinalDisposition(item)
+  );
+}
+
+function readKnownIssueItems(section = "") {
+  const items = [];
+  let current = null;
+
+  for (const line of stripPlaceholderLines(section)) {
+    const text = line.replace(/^\s*[-*]\s*/, "").trim();
+    if (!text || isNoKnownIssueMarker(text)) continue;
+
+    if (current && isKnownIssueDispositionLine(text)) {
+      current = `${current}\n${text}`;
+      continue;
+    }
+
+    if (current) items.push(current);
+    current = text;
+  }
+
+  if (current) items.push(current);
+  return items;
+}
+
+function isNoKnownIssueMarker(line = "") {
+  const normalized = line.trim().toLowerCase().replace(/[.;:]+$/, "");
+  return /^(?:no known issues?|none|not applicable|n\/a)$/.test(normalized) ||
+    /^no\s+(?:pending|unresolved|open|remaining)\s+known issues?\b/.test(normalized);
+}
+
+function isKnownIssueDispositionLine(line = "") {
+  return /^\s*(?:(?:owner|human)\s+decision|architect\s+disposition|disposition|resolution)\s*:/i.test(line);
+}
+
+function hasKnownIssueFinalDisposition(text = "") {
+  const normalized = text.trim().toLowerCase();
+  if (!normalized) return false;
+
+  return /\b(?:owner|human)\s+decision\s*:\s*(?:accepted|approved|resolved|disposed|not applicable|n\/a)\b/.test(normalized) ||
+    /\b(?:architect\s+)?disposition\s*:\s*(?:accepted|approved|resolved|disposed|addressed|not needed|not applicable|n\/a|superseded)\b/.test(normalized) ||
+    /\bresolution\s*:\s*(?:accepted|approved|resolved|disposed|addressed|not needed|not applicable|n\/a|superseded)\b/.test(normalized) ||
+    /\b(?:accepted|approved|resolved|disposed|addressed|superseded)\s+(?:known\s+issue|issue|risk|blocker)\b/.test(normalized) ||
+    /\b(?:known\s+issue|issue|risk|blocker)\b.*\b(?:accepted|approved|resolved|disposed|addressed|superseded|not applicable|n\/a)\b/.test(normalized);
 }
 
 function hasPendingKnownIssueDecisionWording(line = "") {

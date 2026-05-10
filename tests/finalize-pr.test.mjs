@@ -126,7 +126,9 @@ function buildCompleteTasks(effectiveContentHead, overrides = {}) {
     includeArchitectReturnCount = true,
     includeAnalystReturnCount = true,
     includeLimitEscalation = true,
-    knownIssues = "- None.\n"
+    knownIssues = "- None.\n",
+    verificationEvidence = `- Existing evidence.
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.`
   } = overrides;
 
   return `# Tasks
@@ -148,8 +150,7 @@ ${knownIssues.trimEnd()}
 - None yet.
 
 ## Verification Evidence
-- Existing evidence.
-- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
+${verificationEvidence.trimEnd()}
 
 ${includeCyclePrSet ? `## Cycle PR Set
 - Purpose: finalize PR automation; branch: codex/999-finalize-test; PR: #999; head SHA: ${effectiveContentHead}; status: ready for final validation; final-validation inclusion: included.
@@ -391,6 +392,70 @@ test("accepted known issue owner decisions do not block finalization", () => {
   assert.equal(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"), false);
 });
 
+test("generic known issues without final disposition block finalization", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    taskOverrides: {
+      knownIssues: "- Search index is stale.\n"
+    }
+  });
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  const result = evaluateFinalizationGates(successfulInput({
+    suppliedHeadSha: effectiveContentHead,
+    pr: {
+      number: 12,
+      headSha: effectiveContentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: evidence
+  }));
+
+  assert.equal(evidence.acceptedKnownIssueDecisionPending, true);
+  assert.ok(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"));
+});
+
+test("architect-disposed known issues do not block finalization", () => {
+  const finalDispositions = ["accepted", "resolved", "disposed"];
+
+  for (const finalDisposition of finalDispositions) {
+    const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+    const featurePath = "specs/999-finalize-test";
+    const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+    writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+      taskOverrides: {
+        knownIssues: `- Search index is stale.
+- Architect disposition: ${finalDisposition}.
+`
+      }
+    });
+
+    const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+    const result = evaluateFinalizationGates(successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN"
+      },
+      processEvidence: evidence
+    }));
+
+    assert.equal(evidence.acceptedKnownIssueDecisionPending, false, finalDisposition);
+    assert.equal(
+      result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"),
+      false,
+      finalDisposition
+    );
+  }
+});
+
 test("pending known issue owner decisions block finalization", () => {
   const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
   const featurePath = "specs/999-finalize-test";
@@ -418,6 +483,63 @@ test("pending known issue owner decisions block finalization", () => {
 
   assert.equal(evidence.acceptedKnownIssueDecisionPending, true);
   assert.ok(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"));
+});
+
+test("verification evidence placeholders do not satisfy acceptance evidence", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    taskOverrides: {
+      verificationEvidence: "- [Command/check and result]\n- Pending implementation."
+    }
+  });
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  const result = evaluateFinalizationGates(successfulInput({
+    suppliedHeadSha: effectiveContentHead,
+    pr: {
+      number: 12,
+      headSha: effectiveContentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: evidence
+  }));
+
+  assert.equal(evidence.acceptanceEvidence, false);
+  assert.ok(result.blockers.some((blocker) => blocker.code === "missing-acceptance-evidence"));
+});
+
+test("substantive verification evidence satisfies acceptance evidence", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
+  writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
+    taskOverrides: {
+      verificationEvidence: `- [Command/check and result]
+- node --test tests/finalize-pr.test.mjs: passed.
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.`
+    }
+  });
+
+  const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
+  const result = evaluateFinalizationGates(successfulInput({
+    suppliedHeadSha: effectiveContentHead,
+    pr: {
+      number: 12,
+      headSha: effectiveContentHead,
+      isDraft: false,
+      mergeable: "MERGEABLE",
+      mergeStateStatus: "CLEAN"
+    },
+    processEvidence: evidence
+  }));
+
+  assert.equal(evidence.acceptanceEvidence, true);
+  assert.equal(result.ready, true);
+  assert.equal(result.action, "merge");
 });
 
 test("unreadable PR-head process evidence source blocks finalization", () => {
