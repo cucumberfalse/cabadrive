@@ -27,7 +27,7 @@
 
 - [x] T018 Confirm Implementation Agent is in `/Users/chap/devel/cabadrive-019-feature-009-memory-closure` on `codex/019-feature-009-memory-closure`.
 - [x] T019 Confirm feature 019 memory is complete before editing: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` exist.
-- [x] T020 Inspect `specs/009-image-metadata-learning-support/tasks.md` target unchecked items T098-T102, T109-T111, T120, T155, T166, T175, and T176.
+- [x] T020 Inspect `specs/009-image-metadata-learning-support/tasks.md` target unchecked items T098-T102, T109-T111, T120-T121, T155, T166, T175, and T176.
 - [x] T021 Verify PR #63 merge commit on current `main`.
 - [x] T022 Verify PR #63 state, draft status, merge time, merge commit, base/head refs, and URL.
 - [x] T023 Verify PR #63 required checks and AI Review status on the relevant current head.
@@ -52,6 +52,7 @@
 - [x] T039 Close T176 only with evidence that feature 010 handoff consumes question-specific usage/relevance rather than global shared-image importance.
 - [x] T040 Add a concise closure-audit process-memory note naming PR #63, merge commit `78e0176e361eeea583dd797296bfa994b3f1f695`, commands run, and any unresolved caveats.
 - [x] T041 Do not change product code, content shards, generated indexes, validators, tests, runtime files, or docs outside allowed process memory.
+- [x] T053 Close T121 only with evidence that PR #63 stayed blocked until non-draft state, non-skipped green AI Review, green required checks, completed target readiness/review gates, and no unresolved blocking Review Agent findings.
 
 ## Future Implementation: Feature 019 Memory Update
 
@@ -80,7 +81,7 @@
 - Architect requires any insufficiently evidenced target task to remain open or receive an explicit not-closed/not-applicable disposition.
 - Architect did not edit product code, content, old feature memory, tests, runtime files, durable docs outside this feature folder, commits, pushes, or PR state.
 - Implementation Agent left feature 009 T098 unchecked because no exact local `make down`, `make build`, `make up`, HTTP/browser smoke, `make down` evidence was found. Green PR #63 `docker-validation` was recorded as related evidence, but not treated as the same task.
-- Implementation Agent closed only the user-specified fulfilled feature 009 items T099-T102, T109-T111, T120, T155, T166, T175, and T176, with evidence in `specs/009-image-metadata-learning-support/tasks.md`.
+- Implementation Agent closed only the user-specified fulfilled feature 009 items T099-T102, T109-T111, T120-T121, T155, T166, T175, and T176, with evidence in `specs/009-image-metadata-learning-support/tasks.md`.
 - Implementation Agent kept the PR process-memory-only; no product code, content JSON, validators, tests, generated indexes, runtime files, or durable docs outside the allowed feature memory were edited.
 - T050-T052 are live Orchestrator merge gates for PR #87 and cannot be truthfully closed inside this same PR without creating a stale-head evidence loop: any commit that records current-head checks/review changes the PR head and requires a fresh check/review cycle.
 
@@ -90,14 +91,16 @@
 - Implementation Agent found no GitHub or process-memory artifact naming a separate `Russell` actor in this worktree. The closure uses the concrete Orchestrator audit comment `4415464185`, Review Agent comments/reviews, GitHub checks, resolved review-thread state, and local audit commands as the evidence source.
 - First `pnpm run test` attempt failed because this isolated worktree had no `node_modules` and `tests/domain.test.mjs` could not import `typescript` (`ERR_MODULE_NOT_FOUND`). This was resolved by running `pnpm install --frozen-lockfile`, which reused packages from the local pnpm store and installed dependencies without changing tracked files.
 - Finalization attempt `0b9b690b67b26bff1a86c2db8ed221d78ec0bf8c` incorrectly closed T050-T052 using evidence from prior head `91b32cb91a8b9dc423428b6c10a0caaccefbbbce`; AI Review opened unresolved P2 thread `PRRT_kwDOSX65IM6A6Gd6` / comment `3215037987` (`https://github.com/cucumberfalse/cabadrive/pull/87#discussion_r3215037987`) explaining that final PR gates must not be closed against a stale head.
+- AI Review opened unresolved P2 thread `PRRT_kwDOSX65IM6A6Jvb` / comment `3215054162` (`https://github.com/cucumberfalse/cabadrive/pull/87#discussion_r3215054162`) because the closure audit omitted feature 009 T121 even though T121 was still unchecked. This fix extends the target audit to T121 and closes it with PR #63 gate evidence.
 
 ### Known Issues
 
-- Feature 009 currently has unchecked final readiness/review tasks even though PR #63 is merged on `main`.
+- Feature 009 T098 remains the only known unchecked final readiness/review task from this closure target set; it intentionally stays open because no exact local Docker/runtime smoke evidence was found.
 - T120, T155, T166, T175, and T176 require task-specific review/sampling evidence; merge status alone is not enough to close them.
 - T098 may need careful disposition because this follow-up is process-memory-only and occurs after PR #63 merge.
 - After this implementation pass, feature 009 T098 remains intentionally open with an explicit disposition because the exact local Docker/runtime smoke sequence was not evidenced.
 - PR #87 final merge readiness remains a live Orchestrator gate outside durable in-PR completion of T050-T052; the latest pushed commit must be evaluated by GitHub checks and Review Agent after it becomes the PR head.
+- PR #87 current-head checks and Review Agent verdict are not preclaimed by this fix. After this commit is pushed, Orchestrator/GitHub must verify required checks and review state for the new PR #87 head.
 
 ### Verification Evidence
 
@@ -110,7 +113,7 @@
 - Architect did not run product validation because this pass is planning-only.
 - Implementation Agent `git status --short --branch` showed `## codex/019-feature-009-memory-closure...origin/main` with only untracked `specs/019-feature-009-memory-closure/` before edits.
 - Implementation Agent confirmed feature 019 memory files exist: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`.
-- Implementation Agent `rg -n "T098|T099|T100|T101|T102|T109|T110|T111|T120|T155|T166|T175|T176" specs/009-image-metadata-learning-support/tasks.md` found the target feature 009 items before closure.
+- Implementation Agent `rg -n "T098|T099|T100|T101|T102|T109|T110|T111|T120|T121|T155|T166|T175|T176" specs/009-image-metadata-learning-support/tasks.md` found the target feature 009 items before closure.
 - Implementation Agent `git log origin/main --oneline --decorate --max-count=20` showed `78e0176 (HEAD -> codex/019-feature-009-memory-closure, origin/main, origin/HEAD, codex/019-learning-polish-process-memory-closure) [codex] Implement image metadata learning support (#63)`.
 - Implementation Agent `git show --stat --oneline --decorate --max-count=1 78e0176e361eeea583dd797296bfa994b3f1f695` confirmed PR #63 merged 55 files with feature 009 content, validators, docs, tests, and process memory.
 - Implementation Agent `gh pr view 63 --repo cucumberfalse/cabadrive --json number,title,state,isDraft,mergeCommit,headRefName,baseRefName,mergedAt,statusCheckRollup,url,headRefOid,reviewDecision,mergeStateStatus` returned PR #63 `MERGED`, `isDraft: false`, base `main`, head `codex/009-ticket-image-metadata-intake`, final head `3d49a66b1972ef4950a70b41a35e17fc4a03f215`, merged at `2026-05-10T14:10:41Z`, merge commit `78e0176e361eeea583dd797296bfa994b3f1f695`, and successful check rollup entries for `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`.
@@ -123,7 +126,7 @@
 - Implementation Agent reused-image query returned one reused image, `question-image-b2`, with separate usages for `b-fallback-256` and `b-fallback-303`.
 - Implementation Agent unused-image query returned `images=275`, `usedImages=275`, `unusedImages=0`, and `unusedWithRelevance=0`.
 - Implementation Agent docs lifecycle `rg` audit found ticket add/change/delete, overlay/relevance refresh, shared-image cleanup, generated-index/evidence refresh, validation, feature `010` handoff, and shared metadata question-neutrality coverage in `docs_project/project/content-sources.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/frontend/frontend-docs.md`, `docs/specify/04_data_model.md`, and `docs/specify/05_content_pipeline.md`.
-- Implementation Agent post-edit target audit `rg -n "^- \\[ \\] T(099|100|101|102|109|110|111|120|155|166|175|176)" specs/009-image-metadata-learning-support/tasks.md || true` returned no output, confirming all known fulfilled target tasks are checked. T098 remains unchecked with explicit disposition.
+- Implementation Agent post-edit target audit `rg -n "^- \\[ \\] T(099|100|101|102|109|110|111|120|121|155|166|175|176)" specs/009-image-metadata-learning-support/tasks.md || true` returned no output, confirming all known fulfilled target tasks are checked. T098 remains unchecked with explicit disposition.
 - Implementation Agent `git diff --check` passed with no output.
 - Implementation Agent `node scripts/content-shards.mjs --check-indexes` passed with `Generated content indexes are fresh.`
 - Implementation Agent `pnpm run validate:content:quality` passed with `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references, full content quality gate enabled.`
@@ -134,6 +137,14 @@
 - Implementation Agent `gh pr checks 87 --repo cucumberfalse/cabadrive` immediately after PR creation returned all required checks as `pending`. T050-T052 remain open until the current PR head checks and Review Agent result are final.
 - Superseded finalization evidence: `gh pr view 87 --json number,state,isDraft,headRefName,headRefOid,mergeStateStatus,reviewDecision,url` showed PR #87 `OPEN`, `isDraft: false`, head SHA `91b32cb91a8b9dc423428b6c10a0caaccefbbbce`, and `mergeStateStatus: CLEAN`; `gh pr checks 87` showed all required checks passing on that head; `gh pr view 87 --json reviews,comments,latestReviews,reviewDecision` showed Codex Review comment `4415584584` with no major issues; GraphQL `reviewThreads(first:100)` showed no review threads. This evidence is retained as history but is not valid closure evidence after finalization commit `0b9b690b67b26bff1a86c2db8ed221d78ec0bf8c` changed the PR head.
 - Finalization correction GraphQL lookup for `PRRT_kwDOSX65IM6A6Gd6` showed unresolved P2 review thread comment `3215037987` at `https://github.com/cucumberfalse/cabadrive/pull/87#discussion_r3215037987`, path `specs/019-feature-009-memory-closure/tasks.md`, line 71, from `chatgpt-codex-connector`, with rationale that T050-T052 must remain open or be refreshed for the exact current PR head.
+- Implementation Agent T121 fix began from rebased local head `da4904cf1163b1b1971ad220b963e5fdfacc4133` after `git fetch origin --prune` and `git rebase origin/main`; `git status --short --branch` showed the branch on `codex/019-feature-009-memory-closure` before edits.
+- Implementation Agent T121 fix post-edit target audit `rg -n "^- \\[ \\] T(099|100|101|102|109|110|111|120|121|155|166|175|176)" specs/009-image-metadata-learning-support/tasks.md || true` returned no output, confirming T121 is now included and no fulfilled target readiness/review task remains unchecked. T098 remains intentionally open with explicit disposition.
+- Implementation Agent T121 fix scope audit `git diff -- specs/009-image-metadata-learning-support/tasks.md specs/019-feature-009-memory-closure/tasks.md` showed only process-memory edits to those two task files.
+- Implementation Agent T121 fix `pnpm run validate:content` passed with `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Implementation Agent T121 fix `pnpm run validate:overlays` passed with `Image explanation overlays validated.`
+- Implementation Agent T121 fix `pnpm run test` passed with `116` tests, `116` pass, `0` fail.
+- Implementation Agent T121 fix `git diff --check` passed with no output.
+- Implementation Agent T121 fix does not close T050-T052 for PR #87; after push, required checks and Review Agent state must be verified for the new PR #87 head before those live merge gates can be closed.
 
 ### Implementation Agent Feedback
 
