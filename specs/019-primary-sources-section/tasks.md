@@ -309,6 +309,27 @@
 - Navigation may become crowded; any grouping must keep the source reader visibly distinct from topic `Материалы`.
 - Bundle size/performance must be measured once full Russian and Spanish chunk data are imported.
 
+### Partial Range Shard Infrastructure Notes
+
+- Slice ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-partial-shards` on branch `codex/019-primary-sources-partial-shards`, stacked on `origin/codex/019-primary-sources-content-batch-penal-code` at `ae8f6dd`.
+- Purpose: unblock large-document batches such as D9-001/D9-002 by allowing multiple learner and QA shards for the same `officialDocumentId` to be recomposed by generated coverage range.
+- Validator now recomposes learner corpus documents by `officialDocumentId` after inline root data and discovered shards are loaded. Recomposition requires identical document metadata across range shards and rejects duplicate learner chunk IDs.
+- Validator now recomposes QA documents by `officialDocumentId` and preserves duplicate QA chunk detection across recomposed range shards.
+- Search shards intentionally remain flat; validation now rejects duplicate search `entryId` values and duplicate `officialDocumentId`/`chunkId` projection references.
+- `content/primary-sources/AGENTS.md` now documents range shard names such as `documents/<officialDocumentId>--001-086.ru.json`, `qa/<officialDocumentId>--001-086.qa.json`, and `search/<officialDocumentId>--001-086.search.json`, plus non-overlap and recomposition-gate rules.
+- UI integration note: this branch has no `src/data/primarySources.ts` or primary-source UI data import path. The only current frontend data boundary is `src/data/content.ts`, which does not import primary-source shards yet. Runtime learner/QA recomposition must be implemented in the later UI integration branch when the lazy primary-source module/data path exists.
+- Added validator regression tests for successful learner document range recomposition, mismatched metadata failure, duplicate learner chunk failure, successful QA range recomposition, and duplicate search projection detection.
+- Verification evidence for this slice:
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed with 46 tests.
+  - `npm run validate:content` passed.
+  - `npm run validate:content -- --coverage` passed.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed.
+  - Initial `npm test` attempt failed because this fresh worktree had no `node_modules` and `tests/domain.test.mjs` could not resolve `typescript`; resolved by `pnpm install --frozen-lockfile`.
+  - Re-run `npm test` passed with 158 tests.
+  - `npm run build` passed; Vite emitted the pre-existing large chunk size warning and generated a service worker with 280 cached assets.
+  - `git diff --check` passed.
+  - `node scripts/check-feature-memory.mjs --worktree` passed.
+
 ### Slice D0 Implementation Notes
 
 - Slice D2 vehicle-document content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-vehicle-docs` on branch `codex/019-primary-sources-content-batch-vehicle-docs`.
@@ -930,3 +951,9 @@
 - Rebase sync of D8 insurance batch onto PR #106 Ley 24.449 base on 2026-05-10:
   - `git fetch origin` completed, then `git rebase origin/codex/019-primary-sources-content-batch-ley24449` replayed the insurance batch above Ley 24.449 head `f1e38af1c3e8bb4c918465bcc830692537905b93`.
   - Conflict resolution in this file preserved DNRPA D4 evidence, Decreto D5 evidence, Anexo L D6 signage evidence, Ley 24.449 D7 evidence, and insurance evidence as D8. Learner-source shard conflicts did not occur.
+- PR #109 partial-shard recomposition mutation fix on 2026-05-10:
+  - Updated `scripts/primary-sources-validation.mjs` so range-shard recomposition clones document `chunks` arrays before appending additional shards, covering both learner document and QA recomposition through the shared helper.
+  - Added a regression test that calls `combinePrimarySourceShards` twice with the exact same in-memory shard file objects and verifies no duplicate corpus/QA chunks or mutation of source shard `chunks` arrays.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 47 tests, 47 pass, 0 fail.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check` passed with no output.
