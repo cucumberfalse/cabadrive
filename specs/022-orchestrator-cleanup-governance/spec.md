@@ -14,9 +14,9 @@
   - Architect planning starts from that handoff and must not perform cleanup, implementation, staging, commits, pushes, PR creation, or review.
 - Parallel-work constraints:
   - Parallel agents and Orchestrators may be active. All existing dirty diffs, branches, commits, PRs, process memory, active worktrees, and ambiguous local paths must be preserved.
-  - Coordination risk resolved and updated: after clean rebase onto `origin/main` `2af08b0b918fadb14504ae63a7b2850070906992` from PR #86, `origin/main:specs` now contains `019-learning-polish-process-memory-closure`; the current main maximum feature-memory prefix is `019`, so this cleanup feature memory is now valid at `specs/020-orchestrator-cleanup-governance/`. Prior PR #66/PR #72, PR #69/P2, PR #63, and PR #83 latest-base notes are historical/superseded latest-base evidence only, and prior final Architect/Analyst validations are stale pending fresh rerun after this PR #86 rebase and renumber.
+  - Historical PR #86 coordination state, now superseded: after clean rebase onto `origin/main` `2af08b0b918fadb14504ae63a7b2850070906992` from PR #86, `origin/main:specs` contained `019-learning-polish-process-memory-closure`; the then-current main maximum feature-memory prefix was `019`, so this cleanup feature memory was valid at `specs/020-orchestrator-cleanup-governance/`. Prior PR #66/PR #72, PR #69/P2, PR #63, and PR #83 latest-base notes are historical/superseded latest-base evidence only, and prior final Architect/Analyst validations are stale pending fresh rerun after later renumbering.
   - PR #67 P1 review disposition update: prior final Architect/Analyst validations are stale again after AI Review thread `PRRT_kwDOSX65IM6A7NJ4` found live equivalent-role cleanup wording that permits destructive cleanup outside the dedicated Cleanup Agent boundary. Current design requires destructive completion-time local environment cleanup to be executed only by an assigned `Cleanup Agent`; non-cleanup roles may coordinate, request cleanup, or record evidence, but must not delete local environments.
-  - Latest-main numbering GAP, 2026-05-10: after Orchestrator fetched latest `origin/main` `f5fcb1602885022bb60b412f90bf290d51674c76`, `origin/main:specs` now includes `021-docker-smoke-isolation`, so the current main maximum feature-memory prefix is `021`. Under the repository numbering rule, this unmerged cleanup feature memory must be renumbered from `specs/020-orchestrator-cleanup-governance/` to `specs/022-orchestrator-cleanup-governance/` before final Analyst validation, PR push, or merge-readiness claims. The final Architect PASS recorded on `f61ee93c6d2c5fcce6df0d95b8d9714413204c7c` is stale until an Implementation Agent performs that renumbering and reruns validation.
+  - Latest-main numbering update, 2026-05-10: after Orchestrator fetched latest `origin/main` `f5fcb1602885022bb60b412f90bf290d51674c76`, `origin/main:specs` now includes `021-docker-smoke-isolation`, so the current main maximum feature-memory prefix is `021`. Under the repository numbering rule, this unmerged cleanup feature memory has been renumbered from the former `specs/020-orchestrator-cleanup-governance/` path to `specs/022-orchestrator-cleanup-governance/`. The final Architect PASS recorded on `f61ee93c6d2c5fcce6df0d95b8d9714413204c7c` remains stale until post-renumber validation and role-owned final validation rerun.
 
 ## Goal
 
@@ -32,7 +32,7 @@ In scope:
 - Review guidance that blocks unsafe cleanup wording or implementation.
 - Future feature-memory and PR-template guidance so cleanup evidence and parallel-work preservation are captured.
 - One-time cleanup task definition and evidence requirements for completed agent-created local environments under approved Cabadrive agent-environment roots.
-- `specs/020-orchestrator-cleanup-governance/{feature-request.md,spec.md,plan.md,tasks.md}`.
+- `specs/022-orchestrator-cleanup-governance/{feature-request.md,spec.md,plan.md,tasks.md}`.
 
 Out of scope:
 
