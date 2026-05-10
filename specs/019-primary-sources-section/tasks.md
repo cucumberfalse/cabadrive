@@ -94,6 +94,9 @@
 - [x] D3-001 Translate and simplify all 69 chunks in the VTV/Ley 6631/siniestros content batch.
 - [x] D3-002 Add per-document learner, QA, and search shards for `ley-6631-caba-vtv-modificatoria-ley-2265`, `gcba-vtv-tramite-current`, and `gcba-guia-practica-siniestros-viales`.
 - [x] D3-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
+- [x] D4-001 Translate and simplify all 31 chunks in the DNRPA registros content batch.
+- [x] D4-002 Add per-document learner, QA, and search shards for `dnrpa-registros-propiedad-automotor`.
+- [x] D4-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
 - [ ] T061 For each batch, translate every assigned chunk into full Russian.
 - [ ] T062 For each batch, rewrite every assigned chunk into simple schoolchild-friendly Russian.
 - [ ] T063 For each batch, preserve numbers, dates, legal obligations, exceptions, penalties, source names, and article references in both Russian layers.
@@ -104,7 +107,7 @@
 - [ ] T068 For each batch, record QA method notes, reviewer notes, checked-at dates, and known limitations.
 - [ ] T069 Batch core traffic law and CABA code sources: Ley 24.449, Decreto 779 main text, Ley 2148.
 - [ ] T070 Batch signage and driving study material sources: Anexo L, GCBA four-wheel manual, GCBA study-material page.
-- [ ] T071 Batch vehicle/document/admin sources: VTV, Ley 6631, vehicle/cédula/chapa/DNRPA/ANSV materials.
+- [x] T071 Batch vehicle/document/admin sources: VTV, Ley 6631, vehicle/cédula/chapa/DNRPA/ANSV materials.
 - [ ] T072 Batch incident, road-safety, insurance, and legal-duty sources: siniestros guide, Estrellas Amarillas, Código Penal, Código Civil y Comercial, Ley de Seguros.
 - [ ] T073 Add any new manifest entries discovered before final validation to an explicit content batch.
 - [ ] T074 Record per-batch coverage progress and blockers in Process Memory.
@@ -279,6 +282,17 @@
 - Batch QA/lint evidence before final verification: `npm run validate:content` passed; custom batch lint passed for Russian fields, QA approvals, `checkedAt: "2026-05-10"`, search references, and absence of simplified Spanish fields; archive-span/hash check passed for all 69 assigned chunks.
 - No mass translation beyond the 3 assigned documents was attempted. Whole-corpus translation, simplification, QA, and final strict/release gates remain open for later D-H batches.
 - D3 does not edit `content/official-documents/**`, UI files, coverage generator files, or official archive files.
+
+- Slice D4 DNRPA registros content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-dnrpa` on branch `codex/019-primary-sources-content-batch-dnrpa`.
+- Branch base is `origin/codex/019-primary-sources-content-batch-vtv-siniestros` at `3f17d87f72579efdcea6568860ee270bfe7a4bad`.
+- Added reviewed learner, QA, and search shards for 1 official document and 31 chunks:
+  - `dnrpa-registros-propiedad-automotor`: 31 chunks.
+- For every D4 chunk, the learner shard copies `chunkId`, `officialDocumentId`, order, heading path, official label, chunking strategy, source span, source text hash, source fingerprint, and `originalSpanish` from the current archive/coverage inventory.
+- Full Russian and simple Russian text were reviewed against the Spanish archive spans and `content/primary-sources/terminology.ru.md`; QA shards mark translation and simplification QA as `approved` with `checkedAt: "2026-05-10"`.
+- D4 search shards add one entry per translated chunk with `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish` text fields.
+- D4 terminology preserves DNRPA, RUNA, RUDAC, RAC, cédula, dominio, patente/chapa patente, Registros Seccionales, procedure/service labels, contact details, `1° de Septiembre`, `0KM`, `Mi Argentina`, and portal-currentness limitations.
+- Completing D4 closes the assigned vehicle/document/admin grouping in T071: VTV, Ley 6631, vehicle/cédula/chapa, DNRPA, and ANSV learner-source batches now have approved shards. Whole-corpus translation, simplification, QA, and final strict/release gates remain open for core law, signage/manual, and large legal-duty batches.
+- D4 does not edit `content/official-documents/**`, UI files, coverage generator files, or official archive files.
 
 - Slice D1 small admin/study/safety content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-admin-small` on branch `codex/019-primary-sources-content-batch-admin-small`.
 - Added reviewed learner, QA, and search shards for 4 official documents and 21 chunks:
@@ -731,3 +745,15 @@
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.
+- Slice D4 DNRPA registros content batch verification on 2026-05-10:
+  - Custom D4 assigned-batch count/fingerprint/QA check passed for 31 chunks: document, QA, and search shards have exactly 31 entries; chunk IDs match coverage `expectedChunkIds`; `originalSpanish`, `sourceTextSha256`, and `sourceFingerprint` match current archived Markdown line spans; Russian fields are nonempty and free of draft/placeholder markers; QA status is `approved`; all QA records have `checkedAt: "2026-05-10"`; search entries reference `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish`; no simplified Spanish keys were found.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed as the actual primary-source coverage mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - First `npm test` attempt failed because the fresh worktree had no installed `node_modules` and `typescript` was unavailable to `tests/domain.test.mjs`. `pnpm install --frozen-lockfile` then completed using the existing lockfile with no package metadata changes.
+  - Re-run `npm test` passed: 153 tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output after process-memory updates.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+  - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because core law, signage/manual, and large legal-duty documents still lack approved learner-source content and exact-text validation remains pending.
