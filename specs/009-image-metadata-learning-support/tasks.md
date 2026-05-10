@@ -127,7 +127,7 @@
 - [ ] T099 Confirm required checks are green after PR push and AI Review completed on the current head without being skipped: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`.
 - [ ] T100 Confirm no unresolved merge conflicts.
 - [ ] T101 Confirm no blocking review findings remain.
-- [ ] T102 Confirm the PR is not draft and only final human approval or merge mechanics remain after T099-T101, T109-T111, and T114-T120 are complete.
+- [ ] T102 Confirm the PR is not draft and only final human approval or merge mechanics remain after T099-T101, T109-T111, T114-T120, and T163-T166 are complete.
 
 ## Agent Boundaries For Future Work
 
@@ -152,7 +152,7 @@
 - [x] T118 Implementation Agent adds or tightens validators/tests to reject low-confidence baseline metadata, generic answer-cue usage, question-derived-only metadata, approved metadata without full visual-review evidence, Spanish residue, transliteration, wrapper translations, and generic explanation filler.
 - [ ] T119 Implementation Agent records hard-gate verification evidence by image/translation/explanation range, including reviewer evidence beyond counts and hashes.
 - [ ] T120 Review Agent manually samples and inspects content quality for images, translations, explanations, all prior blockers, and generated-pattern risk areas before passing review.
-- [ ] T121 Orchestrator keeps PR blocked from ready/merge state while it is draft, AI Review is skipped, any T099-T102/T109-T111/T114-T120 item is pending, or any blocking Review Agent finding remains.
+- [ ] T121 Orchestrator keeps PR blocked from ready/merge state while it is draft, AI Review is skipped, any T099-T102/T109-T111/T114-T120/T163-T166 item is pending, or any blocking Review Agent finding remains.
 - [x] T122 Implementation Agent shards translation, explanation, and question-image metadata sources into the five assigned ticket ranges so parallel content workers can edit non-overlapping files.
 - [x] T123 Implementation Agent updates app imports, validation, and generated compatibility indexes to consume shards deterministically.
 
@@ -174,31 +174,50 @@
 - [ ] T134 Each translation content agent edits only `content/translations/ru/<assigned-range>.json`.
 - [ ] T135 Each explanation content agent edits only `content/explanations/ru/<assigned-range>.json`.
 - [ ] T136 Image metadata content agents inspect every assigned actual local image file and replace or approve visible scene/object/road/sign/marking/road-user/annotation/relationship details from direct visual review.
-- [ ] T137 Image metadata content agents verify assigned question usage mappings so answer-critical details name actual visible facts and link to current answer reasoning.
-- [ ] T138 Translation content agents prepare or review idiomatic Russian question and answer translations for every assigned ticket, removing Spanish residue, transliteration, wrappers, glossary scaffolding, and dropped answer-critical meaning.
-- [ ] T139 Explanation content agents prepare or review complete Russian explanations for every assigned ticket, including correct-answer rationale, wrong-answer rationales, source/ticket scoping, and image-critical reasoning where applicable.
-- [ ] T140 Every content agent records range-level evidence: content family, assigned range, files touched, question/image IDs covered, reviewer/agent, review timestamp, validation commands, ambiguities, dependencies, and controlled exceptions.
-- [ ] T141 Every content agent regenerates compatibility indexes with `node scripts/content-shards.mjs --write-indexes` after shard edits.
-- [ ] T142 Every content agent runs the slice-appropriate structural and quality validators, records exact outputs in Process Memory, and leaves `pnpm run validate:content:quality` failures only for unrelated unfinished ranges.
-- [ ] T143 Final content-quality pass proves all 15 content-family range shards are `qualityStatus: "complete"` with full content-agent evidence.
+- [ ] T137 Image metadata content agents capture stable object/detail/region IDs and semantic localization for referenced visible details, with optional approximate boxes/polygons when reliable.
+- [ ] T138 Usage/relevance content agents verify assigned question usage mappings so answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim details name actual visible facts and link to current answer reasoning.
+- [ ] T139 Usage/relevance content agents ensure every image-backed question has at least one highlight/answer-critical detail and enough non-critical or background context to support future dimming without marking everything critical.
+- [ ] T140 Translation content agents prepare or review idiomatic Russian question and answer translations for every assigned ticket, removing Spanish residue, transliteration, wrappers, glossary scaffolding, and dropped answer-critical meaning.
+- [ ] T141 Explanation content agents prepare or review complete Russian explanations for every assigned ticket, including correct-answer rationale, wrong-answer rationales, source/ticket scoping, and image-critical/relevance reasoning where applicable.
+- [ ] T142 Every content agent records range-level evidence: content family, assigned range, files touched, question/image IDs covered, reviewer/agent, review timestamp, validation commands, ambiguities, dependencies, controlled exceptions, and relevance/region review status for image-backed ranges.
+- [ ] T143 Every content agent regenerates compatibility indexes with `node scripts/content-shards.mjs --write-indexes` after shard edits.
+- [ ] T144 Every content agent runs the slice-appropriate structural and quality validators, records exact outputs in Process Memory, and leaves `pnpm run validate:content:quality` failures only for unrelated unfinished ranges.
+- [ ] T145 Final content-quality pass proves all 15 content-family range shards are `qualityStatus: "complete"` with full content-agent evidence.
 
 ## Future Durable Docs Lifecycle Update
 
-- [ ] T144 Implementation Agent updates `docs_project/project/content-sources.md` with the ticket lifecycle for adding, changing, and deleting tickets.
-- [ ] T145 Durable docs state that adding a ticket requires source tuple validation, local image/hash when present, image metadata and question usage when an image exists, Russian translation, Russian explanation, evidence refresh, generated-index refresh, validation, and process-memory evidence.
-- [ ] T146 Durable docs state that materially changing ticket text, answer IDs/text, correct answer, image path, image hash, or image content requires refreshing affected translations, explanations, image metadata/usages where relevant, evidence fingerprints, generated indexes, validation, and process memory.
-- [ ] T147 Durable docs state that deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
-- [ ] T148 Durable docs state that shared image metadata is removed only when no remaining question usage references that image; otherwise only the deleted/changed ticket's usage and related evidence are removed or refreshed.
-- [ ] T149 Implementation Agent updates `docs_project/project/backend/backend-docs.md` for offline validators, shard writer/index generation, evidence files, and quality gates if not already current.
-- [ ] T150 Implementation Agent updates `docs_project/project/frontend/frontend-docs.md` only if shard imports, runtime data behavior, or missing-support UI behavior changed.
-- [ ] T151 Implementation Agent updates `docs/specify/04_data_model.md` and `docs/specify/05_content_pipeline.md` when canonical schema, source-of-truth paths, evidence model, generated-index flow, or lifecycle pipeline terms changed.
-- [ ] T152 Review Agent verifies durable docs lifecycle coverage before final readiness and blocks the PR if add/change/delete cleanup rules are absent or incomplete.
+- [ ] T146 Implementation Agent updates `docs_project/project/content-sources.md` with the ticket lifecycle for adding, changing, and deleting tickets.
+- [ ] T147 Durable docs state that adding a ticket requires source tuple validation, local image/hash when present, image metadata and question usage when an image exists, Russian translation, Russian explanation, evidence refresh, generated-index refresh, validation, and process-memory evidence.
+- [ ] T148 Durable docs state that adding a ticket with an image requires stable object/detail/region IDs and question-specific relevance mappings for highlight/dim semantics.
+- [ ] T149 Durable docs state that materially changing ticket text, answer IDs/text, correct answer, image path, image hash, or image content requires refreshing affected translations, explanations, image metadata/usages, overlay/relevance mappings where relevant, evidence fingerprints, generated indexes, validation, and process memory.
+- [ ] T150 Durable docs state that deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, overlay/relevance mappings, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
+- [ ] T151 Durable docs state that shared image metadata is removed only when no remaining question usage references that image; otherwise only the deleted/changed ticket's usage and related evidence are removed or refreshed.
+- [ ] T152 Implementation Agent updates `docs_project/project/backend/backend-docs.md` for offline validators, shard writer/index generation, evidence files, and quality gates if not already current.
+- [ ] T153 Implementation Agent updates `docs_project/project/frontend/frontend-docs.md` only if shard imports, runtime data behavior, missing-support UI behavior, or the feature `009`/`010` overlay semantics boundary changed.
+- [ ] T154 Implementation Agent updates `docs/specify/04_data_model.md` and `docs/specify/05_content_pipeline.md` when canonical schema, source-of-truth paths, evidence model, generated-index flow, relevance schema, or lifecycle pipeline terms changed.
+- [ ] T155 Review Agent verifies durable docs lifecycle coverage before final readiness and blocks the PR if add/change/delete cleanup rules or overlay/relevance refresh rules are absent or incomplete.
+
+## Architect Update After Branch 010 Highlight/Dim Clarification
+
+- [x] T156 Architect reads updated Analyst clarification informed by branch `codex/010-ui-ux-learning-intake`.
+- [x] T157 Architect records that feature `009` owns image semantics and question-specific relevance, while feature `010` owns overlay presentation/rendering.
+- [x] T158 Architect updates `spec.md` so shared image metadata requires stable object/detail/region IDs, semantic localization, and optional boxes/polygons when feasible.
+- [x] T159 Architect updates `spec.md` so per-question usage requires answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim relevance roles.
+- [x] T160 Architect updates `plan.md` so content agents produce relevance mappings and region references, not only prose descriptions.
+- [x] T161 Architect updates `tasks.md` with paused content-agent follow-up work for region IDs, relevance mappings, and overlay/relevance lifecycle docs.
+- [x] T162 Architect keeps this pass limited to `spec.md`, `plan.md`, and `tasks.md`; no product code, content, scripts, tests, durable docs, commits, pushes, or PR state changes.
+- [ ] T163 Implementation Agent updates validators/tests so approved image-backed usages fail when they lack stable object/detail/region references, answer-critical/highlight details, non-critical/background context, or contain mark-everything-critical mappings.
+- [ ] T164 Implementation Agent updates image metadata shards so referenced details have stable IDs and semantic localization, with optional approximate boxes/polygons where reliable.
+- [ ] T165 Implementation Agent updates question usage mappings so every image-backed question classifies referenced details/regions by question-specific relevance role and answer rationale.
+- [ ] T166 Review Agent samples reused-image cases to verify relevance roles are question-specific and not copied blindly across questions.
 
 ## Process Memory
 
 ### Decisions
 
 - Architect selected shared image metadata per unique image plus per-question image usage mappings for answer-critical details.
+- Architect update on 2026-05-09 after branch `010` clarification: shared image metadata must expose stable object/detail/region IDs and semantic localization; per-question image usage owns relevance roles for answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim details.
+- Architect update on 2026-05-09 after branch `010` clarification: feature `009` owns image semantics and question-specific relevance; feature `010` owns overlay presentation/rendering and must consume `009` rather than inventing UI-only answer-critical semantics.
 - Architect selected deterministic local evidence and fingerprints rather than live AI/OCR/translation/network validation.
 - Architect requires every image-backed question to have at least one answer-critical detail unless a future Architect disposition records a controlled exception.
 - Architect requires complete 460-question translation and explanation coverage for the current fallback bank.
@@ -216,7 +235,7 @@
 - Review-fix implementation strengthened validators so approved metadata cannot use `source_image_frame`, `manual-review-required`, `Deterministic baseline metadata`, or generic source-image critical details. Architect disposition: validator keyword bans are necessary but insufficient; final gates must also reject question-derived-only metadata, low-confidence overall metadata, generic answer-cue usage, and approved records without full visual-review evidence.
 - Architect hard-gate update on 2026-05-09: the feature is not an MVP and cannot be completed with placeholders, generated baseline coverage, wrappers, transliteration, Spanish residue, or generic explanations.
 - Architect hard-gate update on 2026-05-09: Russian copy-edit/content review is not optional polish; translation and explanation quality is part of merge readiness.
-- Architect hard-gate update on 2026-05-09: PR readiness requires non-draft status, completed non-skipped AI Review on the current head, green required checks, no merge conflicts, no blocking Review Agent findings, and completed T099-T102/T109-T111/T114-T120.
+- Architect hard-gate update on 2026-05-09: PR readiness requires non-draft status, completed non-skipped AI Review on the current head, green required checks, no merge conflicts, no blocking Review Agent findings, and completed T099-T102/T109-T111/T114-T120/T163-T166.
 - Implementation Lead infrastructure pass on 2026-05-09 reverted the rejected uncommitted review-fix product/content/script/test/doc changes while preserving Architect updates in this feature memory, then rebuilt the work as an infrastructure/refactor slice.
 - Implementation Lead infrastructure pass on 2026-05-09 introduced five shard ranges for each content area: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
 - Implementation Lead infrastructure pass on 2026-05-09 added `scripts/content-shards.mjs` as the deterministic loader/writer. Content workers edit only their assigned shard files, then run `node scripts/content-shards.mjs --write-indexes`.
@@ -224,6 +243,7 @@
 - Architect clarification update on 2026-05-09: image metadata, translations, and explanations all require one-time parallel content-agent production or full review. Generator/template/transliteration/glossary output and text-inferred image metadata are draft scaffolding only.
 - Architect clarification update on 2026-05-09: content agents must use isolated worktrees/branches, own non-overlapping ranges, edit only assigned shard files, regenerate indexes with `node scripts/content-shards.mjs --write-indexes`, and record range-level evidence.
 - Architect clarification update on 2026-05-09: durable docs must document ticket add/change/delete lifecycle, including image analysis when an image exists, Russian translation, Russian explanation, evidence refresh, validation, generated indexes, linked artifact cleanup, and shared-image metadata reference checks.
+- Architect highlight/dim update on 2026-05-09: durable docs must also require overlay/relevance metadata refresh when ticket text, answer IDs/text, correct answer, image path/hash/content, usage mappings, or explanations change or delete.
 
 ### Dead Ends
 
@@ -247,6 +267,8 @@
 - `pnpm run validate:content:quality` currently fails by design because content shards are not complete and current translations/explanations/image metadata still contain the known Spanish-residue, generic, placeholder, and review-evidence blockers.
 - One-time parallel content-agent execution for all image metadata, translation, and explanation ranges has not yet been completed.
 - Durable docs do not yet document the required ticket add/change/delete lifecycle and linked-artifact cleanup rules for this clarification.
+- Current metadata/usage shards have not yet been reviewed for stable object/detail/region IDs, semantic localization, optional region geometry, or question-specific highlight/dim relevance roles.
+- Current validators may not yet reject all mark-everything-critical mappings or missing background/irrelevant context needed for future dimming.
 
 ### Verification Evidence
 
@@ -290,9 +312,11 @@
 - Disposition: image metadata generated from ticket wording, answer keys, topic-guide rationales, or generic source-image cues is acceptable only as draft scaffolding. Final approved metadata must come from actual image review and be detailed enough for close recreation.
 - Disposition: explanation coverage by deterministic fallback text is acceptable only as draft scaffolding. Final approved explanations must be ticket-specific, answer-specific, and image-specific where applicable.
 - Disposition: the Review Agent P1 findings are accepted as blocking architecture requirements. Implementation must address them through content changes, validator/test gates, evidence updates, and a fresh Review Agent pass.
-- Disposition: Orchestrator must not mark PR #63 or any successor PR ready for merge while draft, with skipped AI Review, with pending T099-T102/T109-T111/T114-T120, or with unresolved blocking findings.
+- Disposition: Orchestrator must not mark PR #63 or any successor PR ready for merge while draft, with skipped AI Review, with pending T099-T102/T109-T111/T114-T120/T163-T166, or with unresolved blocking findings.
 - Disposition: Analyst clarification about one-time parallel content agents is accepted. Implementation must use range-owned content-agent review for image metadata, translations, and explanations before final quality approval.
 - Disposition: Analyst clarification about ticket lifecycle docs is accepted. Durable docs update is required for final readiness and must cover add/change/delete flows plus shared-image cleanup semantics.
+- Disposition: Analyst clarification about branch `010` overlay dependency is accepted. Implementation must make `009` metadata/usage rich enough for future highlight/dim overlays through stable object/detail/region references and question-specific relevance roles, while leaving rendering decisions to `010`.
+- Disposition: Content agents currently paused for image metadata/usage must produce relevance mappings, not just prose descriptions or flat critical booleans.
 
 ### Review Notes
 
@@ -304,3 +328,5 @@
 - Future Review Agent should inspect representative explanations for correct-answer rationale, wrong-answer rationales, image-aware rationale where applicable, and generic filler.
 - Future Review Agent should inspect content-agent range evidence for every image, translation, and explanation shard in scope and verify no agent edited outside its assigned range.
 - Future Review Agent should inspect durable docs for ticket lifecycle coverage: add/change analysis requirements, delete cleanup requirements, evidence/index refresh, validation, and shared image metadata reference checks.
+- Future Review Agent should inspect image-backed usage mappings for stable object/detail/region references, answer-critical/highlight details, supporting/distractor/background roles, no mark-everything-critical behavior, and enough irrelevant context to support future dimming.
+- Future Review Agent should verify the `009`/`010` boundary: `009` provides semantic IDs and relevance roles; `010` handles overlay rendering without becoming the source of answer-critical truth.

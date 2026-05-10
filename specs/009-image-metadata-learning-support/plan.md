@@ -2,11 +2,11 @@
 
 ## Summary
 
-Build the feature in staged PR-sized implementation slices. First add the schema and deterministic validators in draft-safe mode. Then prove the model on the known `b-fallback-001` defect. Then complete image metadata, translations, and explanations in reviewable shards, with evidence gates that detect stale images, stale question tuples, stale metadata, stale translations, and stale explanations. Finish by enabling strict global validation, updating durable docs/specs, running local preflight, and opening PRs through the repository workflow.
+Build the feature in staged PR-sized implementation slices. First add the schema and deterministic validators in draft-safe mode. Then prove the model on the known `b-fallback-001` defect. Then complete image metadata, question-specific relevance mappings, translations, and explanations in reviewable shards, with evidence gates that detect stale images, stale question tuples, stale metadata, stale relevance roles, stale translations, and stale explanations. Finish by enabling strict global validation, updating durable docs/specs, running local preflight, and opening PRs through the repository workflow.
 
 This plan is a full-completion plan, not an MVP or placeholder-seeding plan. Final readiness requires qualitative content review for every current ticket and image: complete image metadata, complete idiomatic Russian translations, and complete ticket-specific explanations. Count coverage, hashes, generated evidence, and locally passing tests do not make the feature ready when the content itself remains generic, draft-like, question-derived-only, or unreviewed.
 
-The content completion model is one-time parallel content-agent work over non-overlapping shards. Image metadata agents inspect actual local image files. Translation and explanation agents prepare or review every Russian text item in their range. Generators, templates, transliteration, glossary drafts, and text-inferred image metadata may be draft scaffolding only; they cannot be final approved content without range-level content-agent review evidence.
+The content completion model is one-time parallel content-agent work over non-overlapping shards. Image metadata agents inspect actual local image files and capture stable object/detail/region IDs plus semantic localization. Usage/relevance agents map those details to question-specific answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim roles. Translation and explanation agents prepare or review every Russian text item in their range. Generators, templates, transliteration, glossary drafts, and text-inferred image metadata may be draft scaffolding only; they cannot be final approved content without range-level content-agent review evidence.
 
 This Architect pass creates only `spec.md`, `plan.md`, and `tasks.md`.
 
@@ -73,7 +73,9 @@ The question file remains the source of truth for Spanish question text, ordered
 
 The new image metadata layer owns semantic visual facts from actual local image review. It must not duplicate Spanish question text except as fingerprints or trace labels, and it must not substitute question-derived answer cues for visual inspection.
 
-The new question image usage layer owns per-question critical details. It references shared image metadata by `imageId` and references question/answer IDs by stable IDs.
+The new question image usage layer owns per-question relevance semantics. It references shared image metadata by `imageId`, references visible objects/details/regions by stable IDs, and references question/answer IDs by stable IDs.
+
+Feature `009` owns image semantics and question-specific relevance. Parallel feature `010` may later render overlays, highlights, dimming, spotlights, callouts, and labels from `009` metadata. `010` owns presentation geometry and interaction, but it must not invent a competing source for answer-critical or irrelevant visual details.
 
 The Russian translation layer owns question and answer translations for the question card.
 
@@ -87,8 +89,10 @@ Image metadata quality requires:
 
 - actual visual review of every image;
 - concrete scene, camera/framing, object, road layout, sign/signal/marking, road-user, annotation, visible-text, relationship, and uncertainty details where visible;
+- stable object/detail/region IDs and semantic localization for every visual fact referenced by usage mappings or explanations;
+- optional approximate bounding boxes or polygons when the content agent can identify reliable boundaries, with semantic region descriptors required when exact coordinates are not feasible;
 - enough detail for close visual recreation or review against a close recreation;
-- answer-critical usage details that name actual visible facts and link them to the current answer choices.
+- question-specific relevance mappings that name actual visible facts, identify answer-critical/highlight details, distinguish supporting, distractor/trap, and background/irrelevant/dim details, and link answer-critical or trap details to the current answer choices.
 
 Translation quality requires:
 
@@ -110,6 +114,8 @@ Explanation quality requires:
 Use one shared visual metadata entry per unique image path/hash plus one question usage mapping per image-backed question.
 
 This is required because `b2.jpg` is reused by two different questions. Shared visual metadata prevents drift; question usage mappings let the same image support different answer-critical interpretations.
+
+Shared metadata must remain question-neutral: it names what is visibly present, assigns stable IDs, describes regions, and records uncertainty. Per-question usage must remain question-specific: it classifies those same IDs as answer-critical/highlight, supporting, distractor/trap, or background/irrelevant/dim for the exact question and answer set. The same object can be answer-critical in one usage and background/irrelevant in another.
 
 ### Sharding For Reviewability
 
@@ -152,7 +158,10 @@ Any replacement sharding scheme must be recorded in `tasks.md`, preserve non-ove
 The final content pass is not an automated generator job. It is a coordinated one-time production/review workflow:
 
 - Image metadata agents inspect the assigned local images directly and replace or approve every visible scene/object/road/sign/marking/road-user/annotation/relationship detail in the assigned image metadata shard.
-- Image metadata agents also review the assigned question usage mappings and ensure answer-critical details are actual visible facts linked to current answer reasoning.
+- Image metadata agents capture stable `objectId`, `detailId`, and `regionId` references for visible facts that may be used by explanations, validators, or future overlays.
+- Image metadata agents provide semantic region descriptors for referenced details and add approximate boxes/polygons only when reliable enough for review.
+- Usage/relevance agents review the assigned question usage mappings and ensure answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim roles are actual visible facts linked to current answer reasoning.
+- Usage/relevance agents must not submit only prose descriptions; each mapping must reference shared image IDs and explain why each referenced detail matters or can be ignored for that exact ticket.
 - Translation agents review or author idiomatic Russian question and answer-choice translations for every assigned ticket, preserving answer-critical meaning and removing Spanish residue, transliteration, wrappers, and glossary scaffolding.
 - Explanation agents review or author ticket-specific explanations for every assigned ticket, including correct-answer rationale, wrong-answer rationales, source/ticket scoping, and image-critical reasoning where applicable.
 - Each agent records range evidence: assigned range, content family, local files touched, question/image IDs covered, reviewer identity, review timestamp, validation commands, remaining ambiguities, and controlled exceptions.
@@ -167,8 +176,8 @@ Durable docs must be updated after Architect handoff to document how future tick
 Required lifecycle coverage:
 
 - Adding a ticket requires adding or validating the Spanish source tuple, local image/hash when present, image metadata when an image exists, question image usage mapping when an image exists, Russian question/answer translations, Russian explanation, review evidence, generated indexes, and validation/preflight evidence.
-- Changing ticket text, answer IDs/text, correct answer, image path, image hash, or material image content requires refreshing affected translations, explanations, image usage mappings, image metadata when relevant, evidence fingerprints, generated indexes, and validators.
-- Deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
+- Changing ticket text, answer IDs/text, correct answer, image path, image hash, or material image content requires refreshing affected translations, explanations, image usage mappings, overlay/relevance roles, image metadata when relevant, evidence fingerprints, generated indexes, and validators.
+- Deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, overlay/relevance mappings, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
 - Shared image metadata is removed only when no remaining question usage references the image. If another ticket still uses the image, only the deleted/changed ticket's usage and related evidence are removed or refreshed.
 
 Preferred docs to update in implementation:
@@ -196,6 +205,7 @@ Required image tuple components:
 - `localPath`;
 - `sha256`;
 - normalized metadata fields that describe visible scene, objects, annotations, relationships, uncertainties, and visual detail IDs.
+- normalized object/detail/region IDs and semantic localization descriptors referenced by usage or explanation evidence.
 
 Required usage tuple components:
 
@@ -203,7 +213,8 @@ Required usage tuple components:
 - `imageId`;
 - `questionFingerprint`;
 - `correctAnswerId`;
-- answer-critical details and linked answer IDs.
+- relevance mappings for answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim details;
+- linked object/detail/region IDs and answer IDs where applicable.
 
 Required translation tuple components:
 
@@ -233,7 +244,7 @@ Image metadata evidence entries must record:
 - `imageSha256`;
 - `metadataSha256`;
 - reviewer/reviewedAt/status;
-- checks for visible scene coverage, object/detail coverage, road/sign/marking/road-user coverage, annotation coverage, spatial relationship coverage, uncertainty handling, no question-derived-only description, no placeholder/baseline wording, and no invented critical facts.
+- checks for visible scene coverage, object/detail/region ID coverage, road/sign/marking/road-user coverage, annotation coverage, spatial relationship coverage, semantic localization, uncertainty handling, no question-derived-only description, no placeholder/baseline wording, and no invented critical facts.
 
 Question usage evidence entries must record:
 
@@ -242,7 +253,7 @@ Question usage evidence entries must record:
 - `questionFingerprint`;
 - `usageSha256`;
 - reviewer/reviewedAt/status;
-- checks for answer-critical detail mapping, answer/trap linkage, no generic source-image/answer-cue detail IDs, and no usage approval without reviewed visual facts.
+- checks for answer-critical/highlight detail mapping, supporting/distractor/background relevance mapping, answer/trap linkage, no generic source-image/answer-cue detail IDs, no mark-everything-critical mapping, and no usage approval without reviewed visual facts.
 
 Explanation alignment evidence entries must record:
 
@@ -252,6 +263,7 @@ Explanation alignment evidence entries must record:
 - `imageMetadataSha256` and `usageSha256` for image-backed questions;
 - reviewer/reviewedAt/status;
 - checks for correct-answer rationale, wrong-answer rationales, source/ticket-specific scoping, image-critical details addressed, no generic filler, and no visual contradiction.
+- checks that image-backed explanations reference the relevant answer-critical/highlight and supporting or distractor details needed for the rationale, while remaining consistent with background/irrelevant/dim mappings.
 
 Translation evidence entries must also record reviewer checks for idiomatic Russian, complete answer translations, no untranslated Spanish residue, no transliteration, no wrapper/draft scaffolding, and no dropped answer-critical meaning.
 
@@ -355,10 +367,15 @@ The Orchestrator may choose different exact ranges only with an Architect-record
 Each shard must:
 
 - inspect every assigned local image file directly and add detailed visual metadata based on actual image review, not only question text, answer keys, topic-guide rationale, filenames, hashes, source URLs, or generated captions;
+- assign stable object/detail/region IDs to referenced visible facts and provide semantic localization for those regions;
+- include approximate boxes or polygons when a visible region can be localized reliably, while allowing semantic-only localization when exact coordinates would be misleading;
 - add or update question usage mappings for assigned image-backed questions;
-- mark answer-critical details with actual visible facts and current answer-choice linkage;
+- map referenced details/regions to question-specific relevance roles: answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim;
+- mark answer-critical/highlight details with actual visible facts and current answer-choice linkage;
+- identify enough non-critical, distractor, supporting, or background/irrelevant context to support future dimming rather than marking the whole image critical;
 - record uncertainty for ambiguous images;
 - add metadata evidence;
+- add usage/relevance evidence;
 - record range-level image-analysis content-agent evidence;
 - edit only the assigned shard file and regenerate generated indexes through `node scripts/content-shards.mjs --write-indexes`;
 - run targeted validator tests and `pnpm run validate:content`;
@@ -369,7 +386,9 @@ Final C slice must enable strict image coverage:
 - 276 current image references covered by question usages;
 - 275 current unique image paths covered by metadata;
 - no stale image hash/path/question fingerprints;
-- no image-backed question missing answer-critical details.
+- no image-backed question missing answer-critical/highlight details;
+- no image-backed question missing relevance mappings for non-critical, distractor, supporting, or background/irrelevant context;
+- no usage mapping that marks every visible detail critical;
 - no approved placeholder, baseline, low-confidence overall, question-derived-only, source-image-frame, or generic answer-cue metadata/usage records.
 
 ### Slice D: Translation Coverage Shards
@@ -420,6 +439,7 @@ Each shard must:
 - add or review ticket-specific wrong-answer rationales for every incorrect answer ID;
 - add related source IDs or ticket-specific fallback scoping;
 - for image-backed questions, reference image metadata critical details and add explanation alignment evidence;
+- for image-backed questions, reference the required answer-critical/highlight details and any supporting or distractor/trap details needed to explain wrong answers;
 - keep explanations concise and exam-focused;
 - avoid unsupported current legal/rule claims;
 - add reviewer evidence for answer-specificity, image-specificity where applicable, completeness, and absence of generic filler;
@@ -443,7 +463,8 @@ Tasks:
 - Update durable `docs_project/` docs for image metadata, complete translation/explanation coverage, evidence files, offline validation, and unofficial-support boundaries.
 - Update `docs_project/project/content-sources.md` with ticket lifecycle flow for adding, changing, and deleting tickets.
 - Document that adding or materially changing a ticket requires image metadata/usage review when an image exists, Russian translation review, Russian explanation review, evidence refresh, generated-index refresh, strict validation, and process-memory evidence.
-- Document that deleting a ticket requires deleting or refreshing linked translations, explanations, question image usages, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
+- Document that adding or materially changing a ticket with an image requires object/detail/region IDs and question-specific relevance mappings sufficient for future highlight/dim overlays.
+- Document that deleting a ticket requires deleting or refreshing linked translations, explanations, question image usages, overlay/relevance mappings, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
 - Document that shared image metadata is removed only when no remaining question usage references it.
 - Update backend/frontend docs only where the import, validation, or user-facing support behavior changed.
 - Update `docs/specify/04_data_model.md` and `docs/specify/05_content_pipeline.md` if canonical data model or pipeline terms changed.
@@ -461,9 +482,12 @@ Tasks:
   - all 460 explanations;
   - all 276 image-backed question usages;
   - all 275 unique image metadata entries;
-  - answer-critical detail coverage;
+  - answer-critical/highlight detail coverage;
+  - supporting/distractor/background relevance coverage sufficient for future dimming;
   - image/explanation alignment evidence freshness;
+  - stable object/detail/region ID references and semantic region localization;
   - no placeholder/generic/low-confidence-baseline image metadata or usage records;
+  - no mark-everything-critical usage mappings;
   - no translation Spanish residue, transliteration, wrappers, or glossary drafts;
   - no generic explanation filler or missing answer-specific rationale.
 - Run:
@@ -488,12 +512,14 @@ Tasks:
 | Area | Required evidence |
 | --- | --- |
 | Image metadata schema | Unit tests for required fields, duplicate image IDs, missing visual detail IDs, invalid enums, uncertainty handling. |
+| Region/object IDs | Validator evidence that referenced object/detail/region IDs exist, have semantic localization, and use optional boxes/polygons only when present and well-formed. |
 | Image coverage | Validator evidence showing 275 unique image entries and 276 question usages against current question file. |
 | Image metadata quality | Review evidence and tests rejecting placeholder/baseline/question-derived-only/source-image-frame metadata, low-confidence overall approval, and generic answer-cue usage records. |
+| Highlight/dim relevance | Validator and review evidence that every image-backed usage has answer-critical/highlight detail(s), enough supporting/distractor/background context for dimming, and no mark-everything-critical mappings. |
 | Content-agent shard evidence | For each assigned image, translation, and explanation range: content family, range, files touched, reviewer/agent, IDs covered, direct image-inspection confirmation where applicable, validation commands, ambiguities, and controlled exceptions. |
 | Stale image detection | Unit test mutating an image hash/path and expecting metadata/evidence failure. |
 | Stale question detection | Unit test mutating text, answer IDs/text, correct answer ID, or image hash and expecting usage/evidence failure. |
-| Critical details | Validator evidence that every image-backed question has at least one answer-critical detail linked to current question and answer context. |
+| Critical details | Validator evidence that every image-backed question has at least one answer-critical/highlight detail linked to current question and answer context. |
 | `b-fallback-001` | Metadata assertion for cyclist/right-arm straight gesture, corrected explanation assertion, old-explanation regression failure. |
 | Translation coverage | Validator evidence for all 460 current question IDs, exact answer IDs, fresh translation evidence, no untranslated Spanish residue, no transliteration, and no draft/wrapper scaffolding. |
 | Translation quality | Review evidence that translations are idiomatic Russian and preserve answer-critical meaning for sampled/high-risk tickets and every prior blocker. |
@@ -503,8 +529,9 @@ Tasks:
 | Official-source boundary | Review evidence that generalized legal/rule/numeric/procedure claims are source-traced or scoped ticket-specific. |
 | Docs/specs | `rg` or diff evidence showing updated durable docs/specs for new paths, schemas, validators, and coverage rules. |
 | Ticket lifecycle docs | Durable docs evidence showing add/change/delete ticket flow, evidence refresh, generated-index refresh, validation requirements, linked artifact cleanup, and shared image metadata reference checks. |
+| Overlay/relevance lifecycle docs | Durable docs evidence showing overlay/relevance metadata refresh when ticket text, answer IDs/text, correct answer, image path/hash/content, usage mappings, or explanations change or delete. |
 | Local preflight | `pnpm run preflight` and `git diff --check` result, plus Docker smoke flow if runtime-affecting. |
-| PR workflow | PR is not draft; required checks are green; AI Review is completed, not skipped; Review Agent content sampling is recorded; no conflicts; no blocking findings; T099-T102/T109-T111/T114-T120 are complete. |
+| PR workflow | PR is not draft; required checks are green; AI Review is completed, not skipped; Review Agent content sampling is recorded; no conflicts; no blocking findings; T099-T102/T109-T111/T114-T120/T163-T166 are complete. |
 
 ## Risks And Mitigations
 
@@ -529,8 +556,11 @@ Tasks:
 - Risk: content-agent parallelism creates inconsistent style or missed cross-family dependencies.
   - Mitigation: use shared schema and validation, require range evidence, record dependencies between image metadata and image-backed explanations, and run final global quality review after all ranges merge.
 
+- Risk: feature `010` overlay work cannot reliably highlight/dim because `009` records only prose or flat critical booleans.
+  - Mitigation: require stable object/detail/region IDs, semantic localization, optional boxes/polygons where feasible, and per-question relevance roles that distinguish answer-critical/highlight, supporting, distractor/trap, and background/irrelevant/dim.
+
 - Risk: future ticket additions/deletions leave stale derived artifacts.
-  - Mitigation: require durable ticket lifecycle docs and validation/evidence cleanup rules, including shared image metadata reference checks.
+  - Mitigation: require durable ticket lifecycle docs and validation/evidence cleanup rules, including shared image metadata reference checks and overlay/relevance metadata refresh.
 
 - Risk: expanded explanations duplicate or diverge from topic guide content.
   - Mitigation: keep question-card explanation layer as source of truth for this feature, record any reuse/sync decision in process memory, and validate complete coverage there.
@@ -565,7 +595,7 @@ For every implementation PR:
 8. Resolve blocking review findings.
 9. Confirm the PR is not draft.
 10. Confirm no merge conflicts.
-11. Confirm T099-T102, T109-T111, and T114-T120 are complete before marking ready.
+11. Confirm T099-T102, T109-T111, T114-T120, and T163-T166 are complete before marking ready.
 12. Leave final merge to a human or Orchestrator-controlled auto-merge only after all readiness gates pass.
 
 ## Completion Definition
@@ -573,6 +603,7 @@ For every implementation PR:
 This feature is complete only when:
 
 - all current image-backed questions have metadata and critical detail mappings;
+- all current image-backed questions have stable object/detail/region references and question-specific relevance mappings for highlight/dim semantics;
 - all current questions have validated Russian translations and explanations;
 - all image metadata is complete enough for close recreation and has full visual-review evidence;
 - all translations are idiomatic Russian with no Spanish residue, transliteration, wrappers, or incomplete answer translations;
@@ -582,4 +613,4 @@ This feature is complete only when:
 - strict deterministic offline validation is enabled and passing;
 - docs/specs and process memory are current, including ticket add/change/delete lifecycle and shared-image cleanup rules;
 - local preflight passes;
-- the final PR is not draft, has completed non-skipped AI Review, green required checks, no blocking review findings, no conflicts, completed T099-T102/T109-T111/T114-T120, and only human approval/merge mechanics remaining.
+- the final PR is not draft, has completed non-skipped AI Review, green required checks, no blocking review findings, no conflicts, completed T099-T102/T109-T111/T114-T120/T163-T166, and only human approval/merge mechanics remaining.

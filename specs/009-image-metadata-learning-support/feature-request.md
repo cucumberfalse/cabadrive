@@ -71,6 +71,31 @@ Clarified intent:
 
 This clarification supersedes any interpretation that translation or explanation completion can be treated as generator output with a validation wrapper. The requested outcome is complete, high-quality, agent-reviewed content for the whole current ticket set plus documented maintenance rules for future ticket changes.
 
+## User Clarification / Intake Update: Branch 010 Image Overlay Dependency
+
+The user added context from parallel branch `codex/010-ui-ux-learning-intake`: feature `010` is expected to use feature `009` image descriptions as the semantic source for image explanation overlays.
+
+Clarified intent:
+
+- Analyst should inspect branch `010` read-only as an example of how image descriptions will be consumed.
+- Image metadata must contain enough information not only for description/recreation and explanation validation, but also for downstream learning UI behavior.
+- The downstream UI should be able to highlight important image details and dim or de-emphasize irrelevant details/background while an explanation is shown.
+- Important details include signs, traffic lights, markings, gestures, road users, vehicles, objects, annotations, and other visual facts when they affect the answer.
+- Importance is question-specific. The same visible sign, marking, object, or background element may be answer-critical in one ticket, supporting context in another, a distractor in another, or irrelevant background in another.
+- Shared image metadata should describe visible objects/details/relationships independently of any one question.
+- Per-question image usage should identify the relevance of those visible details for that specific ticket, including answer-critical, supporting, distractor, and background/irrelevant details where applicable.
+- Architect should ensure the metadata/usage schema and validation support these question-specific highlight/dim relevance semantics without creating a competing UI-only source of truth.
+
+Read-only branch `010` context inspected:
+
+- `docs_project/project/frontend/image-explanation-overlays.md` states that feature `009` owns image semantics, answer-critical details, question usage mappings, fingerprints, and stale-data evidence, while feature `010` owns presentation geometry, dimming, spotlight, outline, callout, label placement, and rendering rules.
+- The same overlay document says the UI must not invent highlights when approved `009` metadata or usage mapping is missing, stale, or incomplete; the fallback is a normal local image plus truthful explanation text.
+- `specs/010-ui-ux-learning-source-of-truth/spec.md` requires image-backed explanations to signal important visual details, reduce irrelevant visual load, keep labels near referenced regions, and consume `009` metadata/usage mappings rather than defining a competing source for answer-critical details.
+- `specs/010-ui-ux-learning-source-of-truth/feature-request.md` records the current UI gap: `QuestionCard` renders a static local image and explanation text, with no overlay, dimming, or answer-critical visual highlighting.
+- `src/App.tsx` in branch `010` confirms the current product surface renders the image as a normal `<img>` and renders explanation text separately; no image-level relevance data is available there yet.
+
+This clarification supersedes any interpretation that a simple "critical detail" boolean alone is sufficient if it cannot distinguish question-specific answer-critical, supporting, distractor, and background relevance for future highlight/dim behavior.
+
 ## Environment And Prefix Decision
 
 The Analyst work was performed in an isolated worktree:
@@ -121,6 +146,12 @@ Repository memory and durable docs reviewed:
 - `specs/005-translation-validation-toggle/spec.md`
 - `specs/006-topic-study-guide/feature-request.md`
 - `specs/006-topic-study-guide/spec.md`
+- branch `codex/010-ui-ux-learning-intake`, read-only:
+  - `docs_project/project/frontend/image-explanation-overlays.md`
+  - `docs_project/project/frontend/ui-ux-source-of-truth.md`
+  - `specs/010-ui-ux-learning-source-of-truth/feature-request.md`
+  - `specs/010-ui-ux-learning-source-of-truth/spec.md`
+  - `src/App.tsx`
 
 Relevant local files inspected for evidence only:
 
@@ -212,6 +243,8 @@ Every question image should have structured, reviewable JSON metadata that descr
 
 For each image-backed ticket, the metadata must identify which visual details matter for answering that ticket. Those important details should be linked to the relevant question and, where appropriate, to the correct answer or a common wrong-answer trap.
 
+The metadata and question-specific image usage should also support future explanation-time UI signaling. Shared image metadata should describe what is visibly present. Per-question usage should classify how those visible details function for the current ticket, such as answer-critical cue, supporting context, distractor/trap cue, or irrelevant/background detail that may be dimmed when explaining the answer.
+
 Russian explanations should be validated against those image descriptions. If an explanation references visual details that are absent, contradicted, or attached to the wrong object, validation should fail or the content should be corrected before publication.
 
 Every current question should have Russian learning support coverage:
@@ -240,6 +273,11 @@ Architect should convert these into formal acceptance criteria and verification 
 - Architect should require a parallel-agent content workflow for the one-time image analysis, while preserving deterministic local validation for committed artifacts.
 - The metadata marks details that are important for answering each ticket.
 - Critical details can be linked to a question ID and, where relevant, the correct answer ID or wrong-answer trap.
+- Shared image metadata describes visible scene/object/detail facts independently from any one question's answer logic.
+- Per-question image usage maps shared visible details to relevance for that specific ticket, including answer-critical, supporting, distractor/trap, and background/irrelevant roles where applicable.
+- The same shared visible detail can have different relevance roles in different tickets without duplicating or corrupting the shared image description.
+- The metadata/usage contract provides enough semantic structure for downstream feature `010` to highlight important details and dim irrelevant/background details during explanation-time UI, while leaving presentation geometry/rendering decisions to `010`.
+- Validation or review evidence rejects image-backed question usage that lacks enough question-specific relevance information to support explanation validation and future highlight/dim behavior.
 - `b-fallback-001` image metadata explicitly records that the subject is a cyclist, not merely a generic driver, and that the cyclist's right arm is extended straight/horizontally to the cyclist's right side.
 - `b-fallback-001` metadata marks the cyclist and the right-arm gesture as answer-critical.
 - The `b-fallback-001` Russian explanation is corrected so it no longer says the driver extends the left arm and bends it upward.
@@ -275,6 +313,9 @@ Architect should convert these into formal acceptance criteria and verification 
 - "Every ticket" means the current 460 records in `content/questions/caba-b.unofficial-fallback.questions.json`.
 - Questions without images still need Russian translations and explanations, but they do not need image metadata.
 - If the same image supports multiple questions, the visible-scene metadata may be shared, but the answer-critical detail mapping may need to be question-specific.
+- Branch `010` is dependency context for this intake only. It does not change the feature `009` role boundary: `009` should own image semantics and question-specific relevance, while `010` should own overlay presentation and rendering after consuming completed `009` metadata.
+- A visible detail's relevance is not intrinsic to the image alone. Relevance must be evaluated against the specific question, answer choices, correct answer, and explanation.
+- Future highlight/dim behavior can be supported by semantic detail references and relevance roles in `009`; exact overlay geometry, masks, CSS treatment, and label placement can remain `010` concerns unless Architect decides some minimal region identifier is necessary for a stable contract.
 - The request does not ask to generate or replace source images.
 - The image-analysis work is a one-time content completion effort carried out before merge by assigned agents inspecting local files, not an ongoing app feature.
 - Agent-based image analysis may be parallelized by image or question ranges, but each range still needs the same full-quality acceptance standard.
@@ -320,12 +361,20 @@ Architect should require current official-source verification during implementat
 - Metadata tied only to image hash may become stale if question wording or answer choices change; answer-critical mappings likely need question/answer fingerprints too.
 - Future ticket deletion can leave stale translations, explanations, evidence, image usages, or orphaned metadata unless the documented lifecycle and validators require cleanup.
 - Shared image metadata can be accidentally deleted when one ticket is removed even though another ticket still uses the same image.
+- If `009` records only a flat recreation-oriented description, feature `010` will not know which details to highlight or dim for a specific question.
+- If `009` records only answer-critical booleans, it may miss distractors and background elements that matter for teaching why the learner should ignore them.
+- If question-specific relevance is mixed into shared image metadata without a usage layer, reused images can inherit the wrong answer-critical interpretation.
+- If future overlay work has to infer relevance from explanation text or UI guesses because `009` lacks structured usage semantics, it can reintroduce the same class of image/explanation mismatch this feature is meant to prevent.
 
 ## Open Questions For Architect
 
 - Should image metadata be one entry per unique image path, one entry per question-image pair, or a shared image entry plus question-specific critical-detail annotations?
 - What exact JSON schema should represent scene context, objects, road layout, road users, gestures, signs, markings, annotations, object states, spatial relationships, and uncertainty?
 - How should the schema mark answer-critical details: boolean flags, `criticalForQuestionIds`, links to answer IDs, trap IDs, or another structure?
+- How should per-question usage represent relevance roles such as answer-critical, supporting, distractor/trap, and background/irrelevant without turning `009` into the UI overlay renderer?
+- What stable identifiers should shared visible details expose so feature `010` can later reference them for highlight/dim behavior and stale-data validation?
+- Should background/irrelevant details be explicitly enumerated for every image-backed question, or can they be derived from "visible details not marked answer-critical/supporting/distractor" with review evidence?
+- How should validation prove that each image-backed question has enough question-specific relevance semantics for both explanation validation and future highlight/dim behavior?
 - Should critical details be required for every image-backed question, or only for images where the correct answer depends on a visual element?
 - How should metadata handle duplicated images used by multiple questions with different answer-critical interpretations?
 - How should metadata capture visible annotations such as the red oval on `b13.jpg`?
@@ -357,3 +406,5 @@ Orchestrator should hand this feature folder to Architect next. Architect should
 Architect should also update feature memory so the implementation gate explicitly rejects MVP/placeholder completion. The plan and tasks should require a one-time parallel-agent image-analysis workflow in which agents inspect the local images, plus full-quality completion gates for every current translation, explanation, ticket, and image metadata entry.
 
 Architect should additionally carry forward this latest clarification: translations and explanations must also be completed or reviewed by one-time parallel content-agent work, not by generator/template/transliteration output. Architect should also require a durable docs update that explains the future ticket lifecycle for adding, changing, and deleting tickets, including associated artifact cleanup and shared-image retention rules.
+
+Architect should also carry forward the branch `010` dependency clarification: feature `009` metadata and per-question usage must be rich enough to serve as the semantic contract for future image explanation overlays. In particular, shared image metadata should describe visible facts, while per-question usage should classify those facts as answer-critical, supporting, distractor/trap, or background/irrelevant for that ticket so feature `010` can later highlight or dim the right details without inventing UI-only semantics.
