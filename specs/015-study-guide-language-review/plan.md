@@ -54,6 +54,15 @@ Most implementation slices should edit only:
 
 They must not edit translation shards, explanation shards, image metadata, validation evidence, coverage/source-trace manifests, validators, tests, product code, package files, or durable docs unless a later Architect update explicitly scopes that change.
 
+### PR #70 E2E Fixture Scope Expansion
+
+Codex AI Review raised a blocking P2 on PR #70 because the final diff included `tests/e2e/app.spec.ts` while the feature memory still described tests as out of scope. The later Architect disposition is:
+
+- The `tests/e2e/app.spec.ts` change is allowed only as a narrow fixture update after CI proved the old assertion still expected English/process markers in a rendered Russian learner text check.
+- The test must assert the current Russian learner-facing semantics from the guide data instead of forcing English words back into `content/guide/topic-study-guide.ru.json`.
+- No other tests, validators, packages, product code, content manifests, translation/explanation/image metadata, durable docs outside this feature folder, or source files are added to scope by this exception.
+- The final PR #70 changed-path guard must list `tests/e2e/app.spec.ts` explicitly alongside the guide JSON and `specs/015-study-guide-language-review/` files.
+
 ### Claims Metadata Is Preserved
 
 `topics[].claims[].textRu` is Russian but not rendered in the current app. Treat it as source/validation metadata. A language slice must preserve it by default. If implementation finds claim wording that is dangerously unclear, it records feedback for Architect instead of silently editing metadata.

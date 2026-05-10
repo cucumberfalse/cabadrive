@@ -39,6 +39,13 @@ In scope:
 - Preserve guide status, fallback-bank clarity, unofficial-learning-aid labeling, source-trace semantics, validator shape, and ticket coverage.
 - Record per-slice process memory in `tasks.md`, including field counts, source-sensitive unchanged text, duplicated-ticket handling, validation evidence, and PR #63 conflict guards.
 
+Later Architect scope update for PR #70:
+
+- After `baseline-checks` failed on PR #70, the old Playwright e2e fixture in `tests/e2e/app.spec.ts` was found to assert English/process markers (`trap|falso|wrong`) against text that had intentionally been rewritten as Russian learner-facing guidance.
+- Architect disposition: a narrow update to `tests/e2e/app.spec.ts` is in scope solely to keep the fixture aligned with the reviewed Russian guide text and to avoid reintroducing English/process words into `content/guide/topic-study-guide.ru.json`.
+- This scope expansion is limited to the existing materials-view assertion for the institution-distance trap note. Other tests, validators, package files, product code, durable docs outside this feature folder, content manifests, translation/explanation/image metadata, and guide content changes remain out of scope for this CI fixture follow-up.
+- Traceability: this disposition was recorded after the Codex AI Review P2 finding on PR #70 that the feature memory did not yet explain why `tests/e2e/app.spec.ts` appeared in the final PR diff.
+
 ## Exact Field Scope
 
 Rendered learner-facing fields in scope:
@@ -125,6 +132,7 @@ Meaning preservation:
 
 - Do not rewrite `content/translations/*` or `content/explanations/*`.
 - Do not edit `content/image-metadata/*`, `content/validation/*`, validators, tests, package files, source-trace files, coverage files, product code, or docs outside this feature folder.
+- Exception: the later PR #70 Architect scope update permits only the narrow `tests/e2e/app.spec.ts` fixture assertion update described above.
 - Do not add official sources or expand the official-documents archive.
 - Do not reclassify topics or move tickets.
 - Do not fix image metadata, translation quality, or explanation shard alignment from PR #63 / feature 009.

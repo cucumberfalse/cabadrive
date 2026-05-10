@@ -1017,15 +1017,24 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - Rendered-field scan: pass; scanned 3,247 rendered fields with 0 curated English/process leftovers, including the Slice L leftovers plus `creates risk`.
   - `node --test tests/content-topic-guide.test.mjs`: pass, 22/22 tests on current `origin/main`.
   - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
-  - Changed-path guard before commit: pass; `git diff --name-only origin/main` listed only `content/guide/topic-study-guide.ru.json` and the four files under `specs/015-study-guide-language-review/`.
+  - Changed-path guard before the later e2e fixture follow-up: pass; `git diff --name-only origin/main` listed only `content/guide/topic-study-guide.ru.json` and the four files under `specs/015-study-guide-language-review/`.
 - Landing recovery known issues: existing `fatigue-distraction-and-attention` missing `slug` and non-rendered English-heavy `claims[].textRu` metadata remain out of scope. No PR #63 paths, translations, explanations, image metadata, validation manifests, scripts, package files, product UI, docs outside `specs/015-study-guide-language-review/`, or source manifests were modified.
 - PR #70 CI blocker follow-up: `baseline-checks` failed in `tests/e2e/app.spec.ts` because the Playwright fixture still expected a `.trap-note` containing the older full phrase `5 metros de cada lado de la entrada` plus English/process markers `/trap|falso|wrong/i`. The current learner text intentionally uses Russian wording and a shorter `5 metros` / `10 metros` contrast, so the fix updated only the e2e assertion to read the current trap note from `topicGuide` and assert visible `5 metros` plus Russian learner markers `похож` / `выбирайте`. No English/process words were reintroduced into `content/guide/topic-study-guide.ru.json`.
+- Architect scope update for CI fixture: after the PR #70 CI failure, the Architect disposition expanded scope narrowly to `tests/e2e/app.spec.ts` for this single fixture assertion so tests stay aligned with the reviewed Russian learner-facing text. The exception does not add scope for other tests, validators, package files, product code, content manifests, translations, explanations, image metadata, docs outside this feature folder, or source manifests.
 - PR #70 CI blocker validation evidence:
   - `pnpm run test:e2e -- tests/e2e/app.spec.ts`: pass, 34/34 tests across chromium and mobile.
   - `node --test tests/content-topic-guide.test.mjs`: pass, 22/22 tests.
   - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `git diff --check origin/main...HEAD`: pass.
-  - Scope guard: changed files for this follow-up are limited to `tests/e2e/app.spec.ts` and this feature memory note.
+- Codex AI Review P2 memory fix: review correctly noted that the final changed-path guard still described the pre-fixture landing diff and did not list `tests/e2e/app.spec.ts`. This memory-only follow-up updates `spec.md`, `plan.md`, and this ledger so the final PR #70 scope and evidence match the reviewed head.
+- Final PR #70 changed-path guard: pass; final `git diff --name-only origin/main...HEAD` is limited to:
+  - `content/guide/topic-study-guide.ru.json`
+  - `specs/015-study-guide-language-review/feature-request.md`
+  - `specs/015-study-guide-language-review/plan.md`
+  - `specs/015-study-guide-language-review/spec.md`
+  - `specs/015-study-guide-language-review/tasks.md`
+  - `tests/e2e/app.spec.ts`
+- Final PR #70 scope guard: pass; the only non-guide/non-feature-memory path is the explicitly scoped `tests/e2e/app.spec.ts` fixture update. PR #63 paths, translations, explanations, image metadata, validation manifests, scripts, package files, product UI, docs outside `specs/015-study-guide-language-review/`, source manifests, and additional tests/validators remain untouched.
 
 ## Known Issues
 
