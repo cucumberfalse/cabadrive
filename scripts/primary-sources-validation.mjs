@@ -9,6 +9,7 @@ const QA_STATUSES = new Set(["draft", "reviewed", "approved"]);
 const STRICT_MODES = new Set(["strict", "final", "release"]);
 const COVERAGE_ONLY_MODES = new Set(["coverage", "coverage-only", "inventory"]);
 const PRIMARY_SOURCES_SECTION_PATH = "content/primary-sources";
+const CURRENT_USABLE_STATUSES = new Set(["current", "in_force", "currently_valid", "valid_current_material"]);
 const FORBIDDEN_SPANISH_SIMPLIFICATION_PATHS = [
   "simplified-spanish",
   "simple-spanish",
@@ -481,6 +482,27 @@ function validateRussianField(errors, value, label, { strictMode }) {
   }
 }
 
+function validateManifestReleaseReadiness(errors, entry, label) {
+  const currentness = entry.currentness;
+  if (!isPlainObject(currentness)) {
+    errors.push(`${label}.currentness must be an object for strict primary-source validation.`);
+  } else {
+    if (!CURRENT_USABLE_STATUSES.has(currentness.status)) {
+      errors.push(`${label}.currentness.status must be release-ready for strict primary-source validation.`);
+    }
+    if (currentness.validationStatus !== "passed") {
+      errors.push(`${label}.currentness.validationStatus must be passed for strict primary-source validation.`);
+    }
+  }
+
+  const exactTextValidation = entry.exactTextValidation;
+  if (!isPlainObject(exactTextValidation)) {
+    errors.push(`${label}.exactTextValidation must be an object for strict primary-source validation.`);
+  } else if (exactTextValidation.status !== "passed") {
+    errors.push(`${label}.exactTextValidation.status must be passed for strict primary-source validation.`);
+  }
+}
+
 export function validatePrimarySources({
   manifest,
   corpus,
@@ -535,6 +557,7 @@ export function validatePrimarySources({
     if (manifestEntryById.has(entry.id)) errors.push(`${entry.id}: duplicate official document id in manifest.`);
     manifestEntryById.set(entry.id, entry);
     manifestIds.push(entry.id);
+    if (strictMode) validateManifestReleaseReadiness(errors, entry, entry.id);
   }
 
   const corpusDocumentById = new Map();

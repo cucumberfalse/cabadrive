@@ -2,7 +2,7 @@
 
 ## Summary
 
-Implement feature 016 as a corpus-wide source-reader program, not a small tab. The final product must expose every current official source document through a local, searchable, adaptive reader that defaults to simple Russian and provides full Russian translation plus original Spanish for every chunk.
+Implement feature `019-primary-sources-section` as a corpus-wide source-reader program, not a small tab. The final product must expose every current official source document through a local, searchable, adaptive reader that defaults to simple Russian and provides full Russian translation plus original Spanish for every chunk.
 
 Because the corpus is large and exact-text validation is currently pending, implementation should be decomposed into several PR-sized slices. Intermediate slices may create schemas, validators, chunk inventories, content batches, and UI behind incomplete data, but the final release gate must prove whole-manifest and whole-chunk coverage before the section is declared complete.
 
@@ -187,7 +187,7 @@ docs_project/project/content-sources.md
 docs_project/project/frontend/frontend-docs.md
 docs_project/project/feature-inventory.md
 docs_project/screens/learning-and-exam-flows.md
-specs/016-primary-sources-section/tasks.md
+specs/019-primary-sources-section/tasks.md
 ```
 
 Implementation must not store learner Russian content in:

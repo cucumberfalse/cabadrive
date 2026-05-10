@@ -84,7 +84,7 @@ const primarySources = combinePrimarySourceShards({
   searchIndex: primarySourcesSearch
 });
 errors.push(...primarySources.errors);
-const primarySourcesValidationMode = process.env.PRIMARY_SOURCES_VALIDATION_MODE || "draft";
+const primarySourcesValidationMode = qualityGate ? "strict" : process.env.PRIMARY_SOURCES_VALIDATION_MODE || "draft";
 const exam = readJson("content/config/caba-exam-format.json");
 const approvals = readJson("content/validation/validator-approvals.json") || [];
 const exceptions = readJson("content/validation/release-exceptions.json") || [];
