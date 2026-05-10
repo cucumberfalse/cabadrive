@@ -24,9 +24,12 @@ Reviewers check role boundaries in addition to code behavior:
   repository-changing request or self-promote into another role. Reviewers
   should flag any bypass even when the resulting diff is otherwise correct.
 - New repository-changing work and each new task slice must have latest
-  `origin/main` startup/base evidence and a fresh isolated worktree/branch,
-  except when Orchestrator explicitly assigns the Analyst-created latest-main
-  handoff branch as the single implementation PR slice.
+  verified `main` startup/base evidence, normally `origin/main` after fetch,
+  with a fresh isolated worktree/branch. If fetch/base verification is
+  unavailable, reviewers require a documented fallback or blocker; silent stale
+  base reuse is a process violation. The exception remains when Orchestrator
+  explicitly assigns the Analyst-created latest-main handoff branch as the
+  single implementation PR slice.
 - Orchestrator must not directly edit repository files. File changes must come
   from the role-appropriate subagent.
 - Analyst requirement clarification must be relayed through Orchestrator.
