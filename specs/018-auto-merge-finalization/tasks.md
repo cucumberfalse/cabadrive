@@ -39,6 +39,7 @@
 - Fifth implementation update evidence: after `origin/main` advanced to `78e0176e361eeea583dd797296bfa994b3f1f695`, review-fix Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly from PR head `328c7c3`, preserving existing PR work and adding the mainline learning-support content/sharding updates.
 - Sixth implementation update evidence: after `origin/main` advanced to `870c7f9514404b36cf75954c3c39814770495342`, current review-fix Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with no conflicts, preserving this scoped review fix and adding the mainline UI UX learning overlays content.
 - Seventh implementation update evidence: after `origin/main` advanced to `a66320a50c7d04721b929880d4f01dc6feb28a24`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge --autostash --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with autostash reapplied, preserving this scoped review fix and adding the mainline learning-polish process-memory closure content.
+- Eighth implementation update evidence: after `origin/main` advanced again to `90a11d943880606586d4bc02aa7774a8d7a73f3d`, current review-fix Implementation Agent ran `git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with no conflicts, preserving this scoped review fix and adding the mainline feature-009 process-memory closure content.
 
 ## Decisions
 
@@ -169,6 +170,13 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed after latest-main merge; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `git diff --check`: passed after latest-main merge; no whitespace errors reported.
 - `pnpm run preflight`: passed after latest-main merge and current P1/P2 review-fix updates; feature-memory gate, repo baseline, content validation, 151 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BfSagyH6.js` but completed successfully.
+- `git merge --no-edit origin/main`: passed after `origin/main` advanced again to `90a11d943880606586d4bc02aa7774a8d7a73f3d`; merged latest main cleanly with no conflicts.
+- `node --check scripts/finalize-pr.mjs`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`.
+- `node --test tests/finalize-pr.test.mjs`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`; 35 tests passed.
+- `pnpm run check:repo`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`; no configured product paths changed, so the feature-memory gate passed.
+- `git diff --check`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`; no whitespace errors reported.
+- `pnpm run preflight`: passed after merging latest `origin/main` `90a11d943880606586d4bc02aa7774a8d7a73f3d`; feature-memory gate, repo baseline, content validation, 151 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BfSagyH6.js` but completed successfully.
 
 ## Cycle PR Set
 
