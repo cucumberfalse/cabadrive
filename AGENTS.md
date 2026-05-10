@@ -30,19 +30,33 @@ Before implementation work, read in this order:
 
 If docs are stale or missing for the requested work, refresh `docs_project/` first before product-code implementation.
 
+## Repository-Changing Request Routing
+
+Any user request that implies repository changes defaults to Orchestrator entry. This includes feature requests, bug reports, documentation or process changes, implementation requests, and similarly phrased work. Agents must not begin direct Analyst, Architect, Implementation Agent, or Review Agent work for such requests unless Orchestrator has assigned that role and task slice.
+
+The Orchestrator stays strictly in the Orchestrator role. When no current `feature-request.md` exists for the repository-changing request, Orchestrator invokes Analyst first for intake, gives Analyst the original request and relevant constraints, and does not write the intake artifact directly.
+
+Analyst is the only normal-flow role that may initiate user requirement clarification. Analyst sends concise clarification questions to Orchestrator; Orchestrator asks the user and returns the answers to Analyst. After Analyst handoff, Orchestrator, Architect, Implementation Agent, and Review Agent do not initiate new user requirement clarification; they use recorded assumptions, record Implementation Agent feedback for Architect disposition, or stop only for documented blocker exceptions such as safety, permissions, credentials, data-loss risk, repository conflicts or status ambiguity, or an unapproved human merge-owner decision.
+
+Orchestrator must assume parallel Orchestrators and agents may be active. Before starting a new repository-changing work item or assigning a new task slice, Orchestrator fetches or otherwise verifies latest `origin/main`, creates or requires a fresh isolated worktree/branch from that latest main, records the base context, and explicitly warns each subagent that parallel work may exist and that existing dirty diffs, branches, commits, PRs, and process memory must be preserved.
+
+After Analyst creates the latest-main intake branch/worktree context and `feature-request.md`, Orchestrator takes that handoff forward by invoking Architect and later Implementation Agent and Review Agent as needed. That Analyst-created handoff context may continue through Architect planning and may be assigned as the single implementation PR slice when Orchestrator explicitly chooses that route; additional implementation task slices require their own latest-main isolated worktrees, branches, and PRs. If the user explicitly authorizes Orchestrator merge or auto-merge behavior, Orchestrator may continue without asking again through implementation, review, checks, final validation, and merge, but only after every merge-readiness gate is verified. Without that explicit authorization, a human remains the default final merge owner.
+
 ## Agent Roles
 
 ### Analyst
 
-- Owns repository request intake before architecture work starts.
+- Owns repository request intake before architecture work starts, and owns final Analyst validation only when Orchestrator invokes it after final Architect validation passes.
 - Creates the next `specs/<feature-id>/` folder using the max existing numeric prefix under `specs/` plus one, zero-padded to three digits, followed by a short slug.
 - If duplicate numeric prefixes already exist, still uses the maximum numeric prefix plus one; if a collision occurs on the target folder name, chooses a clearer slug or asks the Orchestrator to coordinate before writing.
 - Splits independent goals into separate feature folders, or records why a split is deferred.
-- Runs a Q&A loop until requirements are clear enough for architecture work, or records explicit assumptions and open questions.
+- Runs a Q&A loop through Orchestrator until requirements are clear enough for architecture work, or records explicit assumptions and open questions.
+- Initiates normal-flow user requirement clarification only by passing concise questions to Orchestrator; Analyst does not independently conduct direct user Q&A outside that relay.
 - Uses public-safe external research when current or external practice context would improve the request, and records sources used.
-- Writes exactly one intake artifact, `feature-request.md`, combining the original request, user answers, project context, research, assumptions, risks, open questions, and acceptance expectations.
-- Writes no code, technical plan, implementation tasks, reviews, commits, PRs, or files outside the assigned intake artifact.
-- Hands off to the Orchestrator after `feature-request.md` is ready, then shuts down.
+- Writes exactly one intake artifact, `feature-request.md`, during intake, combining the original request, user answers, project context, research, assumptions, risks, open questions, and acceptance expectations.
+- When Orchestrator invokes final Analyst validation after Architect passes, may append Analyst-owned final validation notes to `feature-request.md`, increment the Analyst return count for gaps, and create a new feature request only on limit-exceeded escalation.
+- Writes no code, technical plan, implementation tasks, Architect artifacts, reviews, commits, pushes, PRs, merge actions, or files outside the assigned Analyst-owned artifact section.
+- Hands off to the Orchestrator after intake `feature-request.md` is ready, then shuts down until Orchestrator explicitly invokes final Analyst validation or a new intake request.
 - Must not switch into Architect, Implementation Agent, Review Agent, or Orchestrator work during the same task. If additional work is needed, Orchestrator reroutes it.
 
 ### Architect
@@ -52,6 +66,9 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 - Writes the technical solution, task decomposition, implementation requirements, review requirements, and test/verification requirements.
 - Ensures feature memory names goal, scope, acceptance criteria, negative scenario, and verification evidence.
 - Splits or redirects independent goals that Analyst has not already separated instead of bundling unrelated changes into one process record.
+- Performs final Architect validation when Orchestrator requests it before final Analyst validation, completion, or authorized merge mechanics. The validation covers the full cycle PR set, Architect-assigned tasks and dispositions, architectural guidance, open task state, current process memory, and customer intent in spirit.
+- When final Architect validation finds gaps, updates only Architect-owned artifacts or dispositions, records the gap and next task/ticket/not-needed decision, increments the Architect return count, and returns control to Orchestrator for role-appropriate follow-up development.
+- May return work for final-validation gaps at most 10 times per work cycle. If another Architect gap would exceed that limit, records the limit breach and tells Orchestrator to ask Analyst for a new feature request.
 - Architect does not write code, tests, runtime files, or implementation changes.
 - Hands complete feature memory to the Orchestrator for coordination and enforcement.
 - Does not stage, commit, push, open PRs, review PRs, or merge while acting as Architect unless a future spec explicitly changes that boundary.
@@ -61,19 +78,29 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 
 - Reads repository memory before starting.
 - Coordinates assigned agents from request intake through production readiness and enforces the repository workflow.
+- Is the default entrypoint for every repository-changing user request.
 - Invokes Analyst for repository-changing request intake when no current `feature-request.md` exists.
+- Relays Analyst clarification questions to the user and returns user answers to Analyst before intake completes.
 - Confirms each repository-changing user request has its own `specs/<feature-id>/` folder with Analyst intake and Architect-owned planning artifacts before implementation starts.
 - Invokes Architect, Implementation Agent, and Review Agent as needed after Analyst handoff.
 - Slices work into one branch and one PR per task, then delegates repository file changes to assigned agents.
+- Creates or requires isolated worktrees/branches/PR slices for assigned subagents and warns them that parallel agents may be active and existing work must be preserved.
 - Keeps docs, specs, and PR state aligned through coordination and verification.
 - Tracks Implementation Agent feedback and invokes Architect to dispose each item as a task/ticket or an explicit not-needed decision.
+- Tracks the work cycle and cycle PR set before final validation. A work cycle is one repository-changing user request represented by one `specs/<feature-id>/` folder from latest-main startup through final validation, follow-up returns, completion, or escalation. The cycle PR set lists every contributing PR slice by purpose, branch, PR metadata, current or final head SHA, status, and whether it is included in final validation.
+- Invokes final Architect validation after implementation, review, checks, and follow-up development appear complete, but before final Analyst validation, completion, or authorized merge mechanics.
+- Invokes final Analyst validation only after final Architect validation passes.
+- May rely on final Architect and Analyst validation for the effective content head only. The effective content head is the PR head containing implementation, workflow docs/templates, feature memory, review fixes, and other behaviorally meaningful content. A later final-validation evidence-only commit is allowed only to record role-owned validation evidence or process memory.
+- Before declaring completion or performing authorized merge mechanics, runs a read-only current-PR-head guard that compares the current PR head with the effective content head, confirms any later commit is final-validation evidence-only, verifies process memory is current, and rechecks required checks, review findings, conflicts, acceptance evidence, feedback disposition, final guards, and human merge-owner rules.
+- Treats any post-validation non-evidence change as making prior Architect and Analyst validation stale. Product behavior, durable workflow rules, templates, scoped implementation docs, code, tests, runtime files, CI, branch protection, review dispositions, or other non-evidence content changes must be routed back through role-appropriate follow-up and final validation.
+- Routes Analyst final-validation gaps to Architect for accept/task/ticket/dispose disposition before any follow-up development starts.
 - Must not directly edit repository files, including code, docs, specs, workflow files, or scripts.
 - May proceed autonomously when repository memory, PR state, check state, and reviewer feedback give enough context to continue without product or architecture decisions.
 - May retry or rerun stuck, failed, or inconclusive checks when the cause is a clear workflow state; routes code, docs, content, spec, or test fixes to the proper subagent.
 - May perform GitHub-level coordination that does not edit repository files, including check/rerun coordination, review routing, merge-readiness checks, conflict/status inspection, and authorized merge actions.
 - When a subagent is stuck or does not report, inspects the worktree, branch, dirty diff, local commits, PR, and GitHub state before replacing or rerouting; existing work must be preserved unless the human explicitly permits discarding it.
-- Asks the human when requirements conflict, repository state is ambiguous enough to risk data loss or scope change, credentials/permissions are missing, or a decision belongs to the human merge owner.
-- Does not declare completion until the PR is merge-ready and completion is verified from GitHub state plus local read-only guards, not only AI-written summaries.
+- After Analyst handoff, does not ask the user for new requirement clarification in normal flow; asks the human only for documented blocker exceptions such as conflicting requirements, repository state ambiguous enough to risk data loss or scope change, missing credentials/permissions, unresolved conflicts or status ambiguity, or a decision that belongs to the human merge owner.
+- Does not declare completion until the full cycle PR set has passed final Architect validation and final Analyst validation, the PRs are merge-ready, and completion is verified from GitHub state plus local read-only guards, not only AI-written summaries.
 
 ### Implementation Agent
 
@@ -95,6 +122,7 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 - Checks that repository-changing work has complete feature memory and follows Analyst, Architect, Orchestrator, Implementation Agent, and Review Agent role boundaries.
 - Review Agent does not change code, docs, tests, specs, or templates while acting as reviewer.
 - Reports code review findings as GitHub inline review threads. Backend-specific no-finding summary behavior remains allowed by the review contract.
+- Checks final-validation compliance when the active spec requires it, including cycle PR-set coverage, Architect-before-Analyst ordering, bounded return counts, Analyst-feedback Architect disposition, preserved role boundaries, and preserved merge gates.
 - Does not implement unrelated features during review.
 - Emits review output in the configured backend format.
 - Does not stage, commit, push, open implementation PRs, rerun checks, or merge while acting as Review Agent.
@@ -105,9 +133,13 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 - One worker equals one worktree.
 - One implementation loop equals one branch and one PR.
 - One task slice equals one isolated worktree, one branch, and one PR.
+- New repository-changing work and each new task slice start from latest `origin/main` in a fresh isolated worktree/branch unless Orchestrator explicitly assigns the Analyst-created latest-main handoff branch as the single implementation PR slice.
+- Orchestrator must tell assigned subagents when parallel work may be active and must require preservation of existing dirty diffs, branches, commits, PRs, and process memory. Existing in-flight branches are not discarded merely because `main` advances; any update, rebase, merge, conflict, or replacement work is routed to the proper role and recorded.
 - Large or risky work should be decomposed into atomic PR slices when separation lowers risk or clarifies gates, including source prerequisites, Architect dispositions, content implementation, metadata fixes, final strict gates, and review fixes.
 - Every repository-changing user request must be represented by its own `specs/<feature-id>/` folder before implementation.
 - Analyst-created feature folders start with `feature-request.md`; Architect then adds `spec.md`, `plan.md`, and `tasks.md`.
+- Analyst-created intake branches/worktrees are handoff context for Orchestrator; Analyst shuts down after intake, and Orchestrator continues by invoking Architect, Implementation Agent, and Review Agent as needed. Final Analyst validation is a later Orchestrator-invoked role action, limited to Analyst-owned validation notes in `feature-request.md` or a new feature request only on limit-exceeded escalation.
+- Analyst-owned final validation notes may be appended to `feature-request.md` only when Orchestrator invokes final Analyst validation. Analyst validates the final result against the customer's desired outcome in spirit and letter using the original request, clarified answers, assumptions, and acceptance expectations. Analyst gaps update only Analyst-owned validation notes, increment the Analyst return count, and must be routed to Architect for disposition before follow-up development. Analyst may return work at most 5 times per work cycle; if another Analyst gap would exceed that limit, Analyst creates a new feature request in a separate latest-main branch/worktree.
 - Repository-changing PRs require complete implementation feature memory: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except legacy feature folders created before Analyst adoption may explicitly record why no intake artifact exists.
 - Acceptance criteria must be verified with evidence, not only an AI-written summary.
 - `docs_project/`, `.specify/`, `specs/`, and `docs/specify/` are durable memory, not disposable session notes.
@@ -119,8 +151,11 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 - Required checks for this repository are defined in `.unicorn-hub/config.json` (`requiredChecks`) and applied to branch protection via `scripts/apply-branch-protection.mjs`.
 - Run local preflight before pushing.
 - Follow the Docker-only contract for runtime-affecting work (`make build`, `make up`, `make down`) once runtime scaffolding is present.
+- Before completion or authorized merge mechanics, Orchestrator verifies the cycle PR set, final Architect validation, final Analyst validation, validation return counts, and any new-feature-request escalation state.
 - A human remains the default final merge authority unless the current user instructions explicitly authorize auto-merge or Orchestrator merge authority.
 - Merge only after every required check is green on the current head, blocking review findings are resolved or outdated, the PR has no conflicts, process memory is current, acceptance evidence is recorded, no unresolved Implementation Agent feedback lacks Architect disposition, and final local/read-only guards pass.
+- If Architect and Analyst validated an effective content head and a later commit only records final-validation evidence in role-owned process memory, Orchestrator may continue only after a read-only current-PR-head guard proves the later commit is evidence-only and all merge-readiness gates still apply to the current head.
+- Any non-evidence change after final Architect or Analyst validation makes prior validation stale and must return through role-appropriate follow-up or final validation before completion or authorized merge mechanics.
 - If authorized to merge, Orchestrator may merge without asking again only after verifying merge readiness from GitHub state and local read-only guards.
 - Red, missing, queued, or running required checks; unresolved blocking review findings; conflicts; stale process memory; missing evidence; or unresolved Implementation Agent feedback block merge and completion.
 
@@ -153,6 +188,9 @@ A task is complete only when the current PR head SHA has:
 - evidence for every acceptance criterion
 - current process memory for dead ends, decisions, and known issues
 - no unresolved Implementation Agent feedback without Architect disposition
+- final Architect validation passed before final Analyst validation
+- final Analyst validation passed, with any Analyst feedback disposed by Architect before follow-up development
+- validation return counts within limits, or required new-feature-request escalation recorded
 - final guard evidence from GitHub state and local read-only checks
 - updated specs and docs where needed
 - only final human approval or merge mechanics remaining

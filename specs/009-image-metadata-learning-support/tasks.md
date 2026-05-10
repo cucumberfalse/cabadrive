@@ -264,6 +264,7 @@
 
 - None during Architect planning.
 - No live OCR/LLM/image-captioning path was used because runtime/tests/build/preflight must remain deterministic and offline.
+- Finalization loop on 2026-05-10 briefly encountered stale unmerged index/worktree entries from the earlier mergeability probe against `origin/main`; the entries were restored to current `HEAD` after confirming no background git process was active, and no feature content changes were lost.
 
 ### Known Issues
 
@@ -326,6 +327,7 @@
 - Validator/test update on 2026-05-10: `scripts/content-image-metadata.mjs` now includes `relevanceMap` and `questionContext` in usage fingerprints, rejects global relevance keys in shared image metadata, validates relevance-map roles/references, and rejects mark-everything-critical mappings in the full-quality gate.
 - Draft-generator guard on 2026-05-10: `scripts/generate-learning-support.mjs` now exits unless called with `--allow-draft-overwrite`; reviewed content integration uses `node scripts/content-shards.mjs --write-indexes` plus `pnpm run refresh:content-evidence` instead.
 - Frontend docs boundary update on 2026-05-10: `docs_project/project/frontend/frontend-docs.md` now records that future highlight/dim overlays consume question-specific feature `009` usage relevance and must not infer importance from shared image metadata alone.
+- Finalization loop on 2026-05-10 after Orchestrator ping: `node scripts/content-shards.mjs --check-indexes` passed with `Generated content indexes are fresh.`; `pnpm run validate:content` passed with `Content validation passed: 460 category B fallback questions, 276 local image references.`; `pnpm run validate:content:quality` passed with `Content validation passed: 460 category B fallback questions, 276 local image references, full content quality gate enabled.`; `pnpm run test` passed with `90` tests, `90` pass, `0` fail; `pnpm run build` passed with the existing Vite large chunk-size warning and generated a service worker with `280` cached assets; `pnpm run test:e2e` passed with `14` tests; `pnpm run preflight` passed with feature-memory gate, repository baseline check, structural content validation, `90` unit tests, production build, and `14` Playwright e2e tests.
 
 ### Implementation Agent Feedback
 

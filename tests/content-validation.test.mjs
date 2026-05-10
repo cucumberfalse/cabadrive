@@ -5,6 +5,7 @@ import { test } from "node:test";
 
 test("content validation command passes", () => {
   const output = execFileSync("node", ["scripts/validate-content.mjs"], { encoding: "utf8" });
+  assert.match(output, /Difficulty labels validated: 460 questions, 38 topics/);
   assert.match(output, /Content validation passed/);
 });
 

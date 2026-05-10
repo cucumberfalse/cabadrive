@@ -14,6 +14,7 @@ Implemented MVP stack:
 - localStorage-backed progress adapter for MVP progress/statistics
 - local in-memory search index over bundled content
 - bundled topic study guide data rendered as local learning materials
+- validated four-level learner difficulty metadata for every bundled question and topic material
 - native service worker generated after production build
 - Node test runner + Playwright for testing
 
@@ -77,11 +78,13 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 - Official Spanish text stays primary.
 - Russian translations and explanations are unofficial learning aids; product-level onboarding, content-mode/status surfaces, and source/status footers carry that clarity instead of repeating long disclaimer paragraphs inside every question card.
 - Learning and mistake review start with Russian translation hidden.
+- Learning, mistake review, and materials surfaces show a compact static difficulty indicator (`green`, `blue`, `yellow`, `red`) as unofficial study-planning metadata. Difficulty is not correctness, source confidence, progress, or the user-controlled `Сложный` mark.
 - The Spanish question text area reveals or hides the question translation and answer-choice translations with the same shared state; the revealed question translation appears directly under the Spanish question text before images and answer choices.
 - The current 460-question fallback bank has complete question-card Russian translation and explanation records. These records remain unofficial learning aids and are guarded by deterministic local fingerprint evidence.
 - Image-backed questions are guarded by `content/image-metadata/question-images.manifest.json` and related validation evidence. The metadata is not rendered in the MVP UI; it exists to prevent learning explanations from contradicting local images and to keep image-critical details reviewable.
 - Future image highlight/dim overlays consume question-specific usage relevance from feature `009`; frontend overlay rendering must not infer importance from shared image metadata alone.
 - Active exam attempts hide translation and explanation support.
+- Active exam attempts do not show difficulty rationale, dimensions, or study hints; current UI omits difficulty chips during active attempts.
 - Support mobile-first interaction and exam-focused speed.
 - Keep weak-topic review prominent in study loops.
 - Render question images as part of the question, using only local offline assets.

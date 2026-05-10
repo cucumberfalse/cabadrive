@@ -4,7 +4,7 @@
 
 ### I. Spec-First Development
 
-Every repository-changing request must have feature memory under `specs/<feature-id>/` before implementation. Analyst intake creates `feature-request.md`; Architect planning creates `spec.md`, `plan.md`, and `tasks.md` before implementation agents edit repository files.
+Every repository-changing request defaults to Orchestrator entry and must have feature memory under `specs/<feature-id>/` before implementation. Orchestrator invokes Analyst first when no current `feature-request.md` exists; Analyst intake creates `feature-request.md`; Architect planning creates `spec.md`, `plan.md`, and `tasks.md` before implementation agents edit repository files.
 
 ### II. Testable Boundaries
 
@@ -24,7 +24,7 @@ Direct pushes to the default branch are forbidden after branch protection is ena
 
 ### VI. One Worktree Per Task
 
-Parallel implementation work must use separate worktrees, branches, and PRs.
+New repository-changing work and each new task slice must start from latest `origin/main` in a fresh isolated worktree/branch, except that an Analyst-created latest-main intake handoff may continue through Architect planning and may be assigned as the single implementation PR slice. Parallel implementation work must use separate worktrees, branches, and PRs. Orchestrator must warn assigned subagents when parallel work may exist and require preservation of existing dirty diffs, branches, commits, PRs, and process memory.
 
 ### VII. Deployability Contract
 
@@ -38,19 +38,26 @@ New abstractions require a current reason documented in `plan.md`.
 
 Feature tasks must record dead ends, decisions, known issues, verification evidence, and Implementation Agent feedback before merge so future agents inherit the working context. Orchestrator must route each feedback item to Architect for a task/ticket or an explicit not-needed decision.
 
+### X. Final Validation Loop
+
+Before completion or authorized merge mechanics, Orchestrator must track the work cycle and cycle PR set, invoke final Architect validation, then invoke final Analyst validation only after Architect passes. Architect validates all PR slices, Architect-assigned tasks and dispositions, architectural guidance, open task state, process memory, and customer intent in spirit. Analyst validates the final result against the customer's desired outcome in spirit and letter. Architect gaps return to Orchestrator through Architect-owned artifacts/dispositions, up to 10 returns per work cycle before Architect reports a limit breach and Orchestrator asks Analyst for a new feature request. Analyst gaps update only Analyst-owned validation notes and must receive Architect accept/task/ticket/dispose disposition before follow-up development, up to 5 returns per work cycle before Analyst creates a new feature request in a separate latest-main branch/worktree. Final validation applies to the effective content head. A later final-validation evidence-only commit may record role-owned validation evidence or process memory only when Orchestrator's read-only current-PR-head guard proves no non-evidence content changed and all merge-readiness gates still apply to the current head.
+
 ## Workflow
 
-1. Analyst creates the next numbered feature folder and writes `feature-request.md`.
-2. Orchestrator invokes Architect after Analyst handoff.
-3. Architect writes `spec.md`, `plan.md`, and `tasks.md`, including implementation, review, and test/verification requirements.
-4. Orchestrator assigns implementation in an isolated worktree and does not directly edit repository files.
-5. Implementation Agent follows the active feature memory and records verification evidence, process memory, and any divergence or improvement feedback.
-6. Orchestrator routes Implementation Agent feedback to Architect for disposition.
-7. Run local preflight.
-8. Open a PR.
-9. Review Agent checks the diff and feature-memory compliance without changing code; code review findings are GitHub inline review threads.
-10. Resolve CI and review.
-11. Merge only when gates are green.
+1. Orchestrator receives repository-changing work by default, remains in the Orchestrator role, verifies latest `origin/main`, creates or requires a fresh isolated environment, and invokes Analyst first when no current `feature-request.md` exists.
+2. Analyst creates the next numbered feature folder, writes the intake `feature-request.md`, routes any normal-flow requirement clarification through Orchestrator, then hands off and shuts down until Orchestrator explicitly invokes final Analyst validation or a new intake request.
+3. Orchestrator takes the Analyst-created intake context forward and invokes Architect after Analyst handoff.
+4. Architect writes `spec.md`, `plan.md`, and `tasks.md`, including implementation, review, and test/verification requirements.
+5. Orchestrator assigns implementation in an isolated latest-main worktree/branch/PR slice and does not directly edit repository files.
+6. Implementation Agent follows the active feature memory and records verification evidence, process memory, and any divergence or improvement feedback.
+7. Orchestrator routes Implementation Agent feedback to Architect for disposition.
+8. Run local preflight.
+9. Open a PR.
+10. Review Agent checks the diff and feature-memory compliance without changing code; code review findings are GitHub inline review threads.
+11. Resolve CI and review.
+12. Orchestrator verifies the cycle PR set and invokes final Architect validation before final Analyst validation.
+13. Orchestrator runs the current-PR-head read-only guard when evidence-only commits land after final validation; any non-evidence post-validation change makes prior role validation stale and returns through role-appropriate follow-up or final validation.
+14. Merge only when final validation passes, gates are green, and merge authority is satisfied; explicit user authorization may let Orchestrator merge without asking again, but does not remove gates.
 
 ## Governance
 
