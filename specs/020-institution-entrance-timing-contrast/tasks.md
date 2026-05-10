@@ -111,24 +111,24 @@
 - [x] T080 Confirm all acceptance criteria have evidence, not only AI-written summary.
 - [x] T081 Confirm Implementation Agent feedback is recorded for Architect disposition.
 - [x] T082 Confirm no unresolved merge conflicts before PR readiness.
-- [ ] T083 Confirm no blocking review findings remain before completion.
-- [ ] T084 Confirm required checks are green after PR push.
-- [ ] T085 Confirm only final human approval or merge mechanics remain before marking the PR complete.
+- [x] T083 Confirm no blocking review findings remain before completion.
+- [x] T084 Confirm required checks are green after PR push.
+- [x] T085 Confirm only final human approval or merge mechanics remain before marking the PR complete.
 
 ## Review Requirements
 
-- [ ] T086 Review Agent verifies complete feature memory exists and role boundaries were followed.
-- [ ] T087 Review Agent verifies implementation did not render all topic `claims` globally.
-- [ ] T088 Review Agent verifies the timing contrast is visible in rendered learner material, not only source metadata.
-- [ ] T089 Review Agent verifies hospital/health `10 metros de cada lado de la entrada` remains visible.
-- [ ] T090 Review Agent verifies `5 metros` remains framed as trap/falso/wrong for the hospital/health entrance context.
-- [ ] T091 Review Agent verifies school timing uses `en horas de clase` or source-equivalent wording.
-- [ ] T092 Review Agent verifies temple timing uses `oficios/ceremonias` or `oficios o ceremonias`.
-- [ ] T093 Review Agent verifies bank timing uses `horario de atención al público`.
-- [ ] T094 Review Agent verifies tests do not rely only on non-rendered `claims`.
-- [ ] T095 Review Agent verifies source-trace/fingerprint evidence is current for touched content.
-- [ ] T096 Review Agent verifies active exam support-hiding and local-first constraints did not regress.
-- [ ] T097 Review Agent verifies `tasks.md` contains current decisions, verification evidence, known issues, dead ends, and Implementation Agent feedback before merge readiness.
+- [x] T086 Review Agent verifies complete feature memory exists and role boundaries were followed.
+- [x] T087 Review Agent verifies implementation did not render all topic `claims` globally.
+- [x] T088 Review Agent verifies the timing contrast is visible in rendered learner material, not only source metadata.
+- [x] T089 Review Agent verifies hospital/health `10 metros de cada lado de la entrada` remains visible.
+- [x] T090 Review Agent verifies `5 metros` remains framed as trap/falso/wrong for the hospital/health entrance context.
+- [x] T091 Review Agent verifies school timing uses `en horas de clase` or source-equivalent wording.
+- [x] T092 Review Agent verifies temple timing uses `oficios/ceremonias` or `oficios o ceremonias`.
+- [x] T093 Review Agent verifies bank timing uses `horario de atención al público`.
+- [x] T094 Review Agent verifies tests do not rely only on non-rendered `claims`.
+- [x] T095 Review Agent verifies source-trace/fingerprint evidence is current for touched content.
+- [x] T096 Review Agent verifies active exam support-hiding and local-first constraints did not regress.
+- [x] T097 Review Agent verifies `tasks.md` contains current decisions, verification evidence, known issues, dead ends, and Implementation Agent feedback before merge readiness.
 
 ## Process Memory
 
@@ -199,6 +199,17 @@
 - Docker evidence: `make build` passed and built image `cabadrive:local`, including content validation and production build inside Docker.
 - Docker smoke blocker and fallback: `make up` failed because sibling container `/cabadrive` from `/Users/chap/devel/cabadrive-main-final-validation` already owns the fixed name. `make down` then removed only the failed current-worktree Compose network. To smoke the built image without disturbing sibling work, `docker run --rm -d --name cabadrive-020-smoke -p 5174:8080 cabadrive:local` started a temporary container, `curl -fsS http://localhost:5174/` returned the Cabadrive HTML shell with `<title>Cabadrive</title>`, and `docker stop cabadrive-020-smoke` removed the temporary container. A follow-up `docker ps --filter name=cabadrive-020-smoke` and current-worktree network check returned no entries.
 - Current diff evidence: tracked product/test files changed are `content/guide/topic-study-guide.ru.json`, `tests/content-topic-guide.test.mjs`, and `tests/e2e/app.spec.ts`; `specs/020-institution-entrance-timing-contrast/` remains untracked feature memory from the assigned Analyst/Architect handoff, with this Implementation Agent updating `tasks.md`.
+
+### Review And Check Evidence
+
+- PR #95 head reviewed for merge readiness was `2bbc7b35f9b4cb2982ea3804ebedd0fc1bde52b0`; local follow-up status check also showed `git rev-parse HEAD` at that same SHA before this process-memory-only update.
+- PR metadata check on 2026-05-10 showed PR #95 open, ready for review, `mergeable: true`, base `main` at `90a11d943880606586d4bc02aa7774a8d7a73f3d`, head branch `codex/020-institution-entrance-timing-contrast`, and head SHA `2bbc7b35f9b4cb2982ea3804ebedd0fc1bde52b0`.
+- Review Agent evidence: PR comment `https://github.com/cucumberfalse/cabadrive/pull/95#issuecomment-4416173331` says `Codex Review: no findings on head 2bbc7b35f9b4cb2982ea3804ebedd0fc1bde52b0.` It explicitly records that the review verified feature 020 memory completeness, content-only `Материалы` fix, no global topic `claims` rendering, visible school/temple/bank timing phrases in rendered material, preserved hospital/health `10 metros de cada lado de la entrada` and `5 metros` trap framing, rendered-field-only tests, current source-trace/fingerprint evidence, and active exam/local-first regression coverage.
+- GitHub bot review evidence: PR comment `https://github.com/cucumberfalse/cabadrive/pull/95#issuecomment-4416173414` says `Codex Review: Didn't find any major issues.`
+- Required check evidence for head `2bbc7b35f9b4cb2982ea3804ebedd0fc1bde52b0`: workflow runs completed successfully for `AI Review` run `25637924917`, `PR Guard` run `25637924923`, `OSV Scan` run `25637924931`, and `CI` run `25637924928`.
+- Required job evidence for head `2bbc7b35f9b4cb2982ea3804ebedd0fc1bde52b0`: `AI Review`, `guard`, `osv-scan`, `baseline-checks`, and `docker-validation` jobs were all `completed` with `conclusion: success`.
+- PR #95 had no native pull-request review submissions returned by the GitHub review API at the time of this evidence update; review evidence is recorded from the trusted no-findings PR comments above.
+- Chronology guard: this `tasks.md` update is intentionally process-memory-only and happens after the reviewed/checks-green head `2bbc7b35f9b4cb2982ea3804ebedd0fc1bde52b0`. If this update is committed and pushed, Orchestrator must not treat the older review/check evidence as automatically applying to the new head. Before merge, Orchestrator must re-check latest-head diff scope, required checks, review status, mergeability, and that the only post-review content is this task-memory evidence update.
 
 ### Implementation Agent Feedback
 
