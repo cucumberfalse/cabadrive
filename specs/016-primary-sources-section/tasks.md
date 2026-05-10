@@ -361,3 +361,22 @@
   - `pnpm run validate:content` passed in draft/default mode. Output summary: `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 90 Node tests, 90 pass, 0 fail.
   - Orchestrator reran `pnpm run build` after the P1 expectedChunkIds fix and it passed. Output summary: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- Slice B branch update over fresh Slice A intake on 2026-05-10:
+  - Fetched `origin/codex/016-primary-sources-section-intake` at merge commit `70d069a56dbbed9d8d770a7d9f9410b596f1cdf8`.
+  - Merged the fresh intake branch into `codex/016-primary-sources-schema-validators`.
+  - Resolved conflicts in `scripts/validate-content.mjs` by keeping both fresh-base difficulty/CABA process validation and Slice B primary-source draft/strict validation.
+  - Resolved conflicts in this `tasks.md` by preserving fresh Slice A/#68 process notes and all Slice B/#74 schema-validator notes and verification evidence.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 18 tests, 18 pass, 0 fail.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 104 Node tests, 104 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+- Conflict resolution pass on 2026-05-10:
+  - Fetched and merged `origin/main` at `578c618d02a45adffa9f2b18a9373495cf19ed8a` into `codex/016-primary-sources-section-intake`; merge commit remains pending for a human/Orchestrator to commit and push.
+  - Resolved conflicts in `docs_project/project/feature-inventory.md` by preserving main's process-guide and validated-difficulty inventory entries plus PR #68's planned `Источники` reader and official-primary-source boundary note.
+  - Resolved conflicts in `docs_project/screens/learning-and-exam-flows.md` by preserving main's CABA license process navigation/flow and PR #68's planned `Источники` navigation/flow.
+  - No `content/official-documents/**`, Slice B/C primary-source validator/content files, or unrelated worktrees were manually edited during conflict resolution.
+  - `git diff --check` passed with no output.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - Initial `pnpm run test` exposed missing local dependencies (`ERR_MODULE_NOT_FOUND` for `typescript`); after `pnpm install --frozen-lockfile`, `pnpm run test` passed: 86 Node tests, 86 pass, 0 fail.
+  - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
