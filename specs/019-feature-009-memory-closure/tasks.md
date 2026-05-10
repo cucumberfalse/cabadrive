@@ -81,6 +81,7 @@
 - Architect requires any insufficiently evidenced target task to remain open or receive an explicit not-closed/not-applicable disposition.
 - Architect did not edit product code, content, old feature memory, tests, runtime files, durable docs outside this feature folder, commits, pushes, or PR state.
 - Implementation Agent left feature 009 T098 unchecked because no exact local `make down`, `make build`, `make up`, HTTP/browser smoke, `make down` evidence was found. Green PR #63 `docker-validation` was recorded as related evidence, but not treated as the same task.
+- Follow-up branch `codex/019-feature-009-docker-smoke-closure` attempted the exact T098 local Docker smoke on 2026-05-10 but did not close T098: `make down` and `make build` passed, `make up` failed because the fixed container name `/cabadrive` was already used by a running container from unrelated worktree `/Users/chap/devel/cabadrive-main-final-validation`. The branch records this blocker as process memory only and does not preclaim PR-specific future gates T050-T052 for this new PR/head.
 - Implementation Agent closed only the user-specified fulfilled feature 009 items T099-T102, T109-T111, T120-T121, T155, T166, T175, and T176, with evidence in `specs/009-image-metadata-learning-support/tasks.md`.
 - Implementation Agent kept the PR process-memory-only; no product code, content JSON, validators, tests, generated indexes, runtime files, or durable docs outside the allowed feature memory were edited.
 - T050-T052 are live Orchestrator merge gates for PR #87 and cannot be truthfully closed inside this same PR without creating a stale-head evidence loop: any commit that records current-head checks/review changes the PR head and requires a fresh check/review cycle.
@@ -99,6 +100,7 @@
 - T120, T155, T166, T175, and T176 require task-specific review/sampling evidence; merge status alone is not enough to close them.
 - T098 may need careful disposition because this follow-up is process-memory-only and occurs after PR #63 merge.
 - After this implementation pass, feature 009 T098 remains intentionally open with an explicit disposition because the exact local Docker/runtime smoke sequence was not evidenced.
+- After the `codex/019-feature-009-docker-smoke-closure` follow-up, feature 009 T098 still remains open. The exact local smoke sequence was attempted, but `make up` failed on an unrelated existing `/cabadrive` container; HTTP `200 OK` on `localhost:5173` was therefore not accepted as evidence for this branch.
 - PR #87 final merge readiness remains a live Orchestrator gate outside durable in-PR completion of T050-T052; the latest pushed commit must be evaluated by GitHub checks and Review Agent after it becomes the PR head.
 - PR #87 current-head checks and Review Agent verdict are not preclaimed by this fix. After this commit is pushed, Orchestrator/GitHub must verify required checks and review state for the new PR #87 head.
 
@@ -145,6 +147,18 @@
 - Implementation Agent T121 fix `pnpm run test` passed with `116` tests, `116` pass, `0` fail.
 - Implementation Agent T121 fix `git diff --check` passed with no output.
 - Implementation Agent T121 fix does not close T050-T052 for PR #87; after push, required checks and Review Agent state must be verified for the new PR #87 head before those live merge gates can be closed.
+- Implementation Agent Docker-smoke follow-up began from clean branch `codex/019-feature-009-docker-smoke-closure`; `git fetch origin --prune` left local `HEAD` and `origin/main` both at `90a11d943880606586d4bc02aa7774a8d7a73f3d`, so no rebase or merge was needed.
+- Implementation Agent Docker-smoke follow-up `make down` passed with `docker compose down`.
+- Implementation Agent Docker-smoke follow-up `make build` passed; Docker reported `cabadrive Built` and wrote image `sha256:7a0ca7ec04fddd97a74c03c25ad03e1bfb680a90953a01df336479bba9fec7d4` as `docker.io/library/cabadrive:local`.
+- Implementation Agent Docker-smoke follow-up `make up` failed: `Error response from daemon: Conflict. The container name "/cabadrive" is already in use by container "0d6fc7e5f782eec79a308c7acb95c2f14bf79a03e8b8c53fe50cb38dfc049c3b"`. `docker inspect` showed the conflicting container was running from unrelated worktree `/Users/chap/devel/cabadrive-main-final-validation`, Compose project `cabadrive-main-final-validation`, service `cabadrive`, image `cabadrive:local`, config `/Users/chap/devel/cabadrive-main-final-validation/docker-compose.yml`.
+- Implementation Agent Docker-smoke follow-up checked the image mismatch: the pre-existing container used image ID `sha256:32c0b98f11b73980db69c58bb08d0f465051982662699aeb4b8146b246ea9ccf`, while this branch's fresh local image was `sha256:7a0ca7ec04fddd97a74c03c25ad03e1bfb680a90953a01df336479bba9fec7d4`.
+- Implementation Agent Docker-smoke follow-up `curl -I --max-time 10 http://localhost:5173` returned `HTTP/1.1 200 OK`, and `curl --max-time 10 -sS http://localhost:5173` returned Cabadrive HTML with `<title>Cabadrive</title>`, but this response was not accepted as T098 closure evidence because it came from the pre-existing unrelated container after this branch's `make up` failed.
+- Implementation Agent Docker-smoke follow-up final `make down` passed and removed only `cabadrive-019-feature-009-docker-smoke-closure_default`; no unrelated container was deleted or stopped.
+- Implementation Agent Docker-smoke follow-up `pnpm run validate:content` passed with `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Implementation Agent Docker-smoke follow-up `pnpm run validate:overlays` passed with `Image explanation overlays validated.`
+- Implementation Agent Docker-smoke follow-up `git diff --check` passed with no output.
+- Implementation Agent Docker-smoke follow-up first `pnpm run test` failed because this fresh isolated worktree had no `node_modules`; `tests/domain.test.mjs` could not import `typescript` (`ERR_MODULE_NOT_FOUND`) and pnpm warned `Local package.json exists, but node_modules missing`. `pnpm install --frozen-lockfile` then installed 74 packages from the local store without changing tracked files.
+- Implementation Agent Docker-smoke follow-up second `pnpm run test` passed with `116` tests, `116` pass, `0` fail.
 
 ### Implementation Agent Feedback
 
