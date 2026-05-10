@@ -2,8 +2,8 @@
 
 ## Architect Planning Setup
 
-- [x] T001 Confirm assigned worktree is `/Users/chap/devel/cabadrive-016-primary-sources-section`.
-- [x] T002 Confirm active branch is `codex/016-primary-sources-section-intake`.
+- [x] T001 Confirm assigned worktree is `/Users/chap/devel/cabadrive-016-primary-sources-section` (historical implementation label retained after feature-memory rename).
+- [x] T002 Confirm active branch is `codex/016-primary-sources-section-intake` (historical implementation label retained after feature-memory rename).
 - [x] T003 Read `.specify/memory/constitution.md`.
 - [x] T004 Read `docs_project/README.md`.
 - [x] T005 Read `docs_project/project-idea.md`.
@@ -12,7 +12,7 @@
 - [x] T008 Read `docs_project/project/feature-inventory.md`.
 - [x] T009 Read `docs_project/screens/learning-and-exam-flows.md`.
 - [x] T010 Read `docs/specify/README.md`.
-- [x] T011 Read `specs/016-primary-sources-section/feature-request.md`.
+- [x] T011 Read `specs/019-primary-sources-section/feature-request.md`.
 - [x] T012 Read `content/official-documents/AGENTS.md`.
 - [x] T013 Inspect `content/official-documents/manifest.json` for current count/status context.
 - [x] T014 Read feature 010 UI/UX source-of-truth material from the parallel worktree as context only.
@@ -320,6 +320,11 @@
 - Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A55Vw`.
 - Strict/final validation now requires every learner corpus chunk to have a matching search projection keyed by the same official document ID and chunk ID, so translated and QA-approved chunks cannot pass the release gate while missing from the local source reader/search index.
 - Added a focused regression test proving an otherwise complete strict fixture with `searchIndex.entries: []` fails validation.
+- Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A59hb`.
+- Strict/final/release validation now rejects manifest entries that are not source-ready: `currentness.status` must be release-ready, `currentness.validationStatus` must be `passed`, and `exactTextValidation.status` must be `passed`.
+- Added focused regression tests for pending exact-text validation, failed currentness validation, and stale/non-current effective source status.
+- Addressed unresolved Codex AI Review finding `PRRT_kwDOSX65IM6A6Ad-`.
+- `scripts/validate-content.mjs` now binds `--quality-gate` and `--final-content` to strict primary-source validation automatically; default draft `pnpm run validate:content` remains permissive for the current preparatory corpus.
 
 ### Slice C Implementation Notes
 
@@ -392,7 +397,7 @@
   - `git diff --check` passed with no output.
   - `pnpm run build`, `pnpm run test:e2e`, and `pnpm run preflight` were not run for this docs/process-only slice.
 - Additional Orchestrator verification after Slice A return:
-  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/016-primary-sources-section/{spec,plan,tasks}.md`
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - `pnpm run test` passed: 72 Node tests, 72 pass, 0 fail.
   - `git diff --check` remained passed with no output.
 - Slice B focused verification on 2026-05-10:
@@ -456,6 +461,16 @@
   - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
 - PR #68 review follow-up on 2026-05-10:
   - Left final-head verification checklist tasks T130, T131, T135, and T136 open; Slice A command results remain historical process evidence only and do not satisfy final feature validation.
+- PR #68 P2 rename follow-up on 2026-05-10:
+  - Moved the active feature memory to `specs/019-primary-sources-section` to satisfy the current numeric-prefix rule after higher prefixes were present on the base branch.
+  - Updated durable docs and feature memory references to use `019-primary-sources-section`.
+  - Retained assigned worktree `/Users/chap/devel/cabadrive-016-primary-sources-section` and branch `codex/016-primary-sources-section-intake` as historical implementation labels, not feature-folder references.
+  - Preserved open final-head verification tasks T130, T131, T135, and T136.
+  - The requested old-id reference scan over `docs_project` and the current feature folder returned only the retained historical worktree/branch labels.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 112 Node tests, 112 pass, 0 fail.
+  - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
+  - `git diff --check` passed with no output.
 - Main refresh pass on 2026-05-10:
   - Fetched and merged `origin/main` at `65624107d856653e503e3f03fd1d51da83992984` into `codex/016-primary-sources-section-intake` while preserving PR #68 feature memory and open final-head verification tasks T130, T131, T135, and T136.
   - Resolved `docs_project/project/feature-inventory.md` by keeping current main learning-content polish wording and PR #68's planned `Источники` reader inventory entry plus official-primary-source boundary note.
@@ -554,3 +569,31 @@
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed after rebasing onto base `957f4e2`. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed after rebasing onto base `957f4e2`: 141 Node tests, 141 pass, 0 fail.
   - `pnpm run build` passed after rebasing onto base `957f4e2`: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- Slice B branch update over renamed PR #68 feature memory on 2026-05-10:
+  - Fetched and merged `origin/codex/016-primary-sources-section-intake` at `6ae7e78bd57e84e96a052396fb3805bcc9e059a0`.
+  - Adopted the active feature-memory rename from `specs/016-primary-sources-section` to `specs/019-primary-sources-section`; no active `specs/016-primary-sources-section` folder remains after sync.
+  - Confirmed historical branch/worktree labels remain only as historical process text in this `019` feature memory.
+  - Preserved all PR #74 validator fixes after the rename: strict empty coverage, Unicode placeholders, QA `checkedAt`, exact chunk IDs, simplified-Spanish variant rejection, contiguous full-document source spans, strict search projection coverage, strict source-readiness manifest gates, and quality/final gate strict-mode binding.
+  - Addressed `PRRT_kwDOSX65IM6A59hb`: strict/final/release validation now rejects manifest entries whose currentness/effective status or exact-text validation is not release-ready.
+  - Addressed `PRRT_kwDOSX65IM6A6Ad-`: `--quality-gate`/`--final-content` validation now runs primary-source validation in strict mode automatically.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 25 tests, 25 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run validate:content:quality` failed as expected with exit code 1. This is positive final-gate evidence for the current draft corpus: the output included 19 `exactTextValidation.status must be passed for strict primary-source validation` errors, plus existing strict-mode placeholder, partial span coverage, missing manifest coverage, and draft QA errors.
+  - `pnpm run test` passed: 137 Node tests, 137 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- Slice C branch update over fresh PR #74 release-gate head on 2026-05-10:
+  - Fetched and merged `origin/codex/016-primary-sources-schema-validators` at `fbd5ffa3c824addb7d7c68f3738141ca3251f485` into `codex/016-primary-sources-chunk-inventory`.
+  - Adopted the renamed active feature memory `specs/019-primary-sources-section` and migrated Slice C process-memory notes from the old `specs/016-primary-sources-section/tasks.md`; no active `specs/016-primary-sources-section` folder remains after sync.
+  - Resolved conflicts in `scripts/primary-sources-validation.mjs` by keeping #77 coverage-only inventory validation and #74 strict/final release-readiness gates.
+  - Resolved conflicts in this `tasks.md` by preserving #77 generated-inventory process evidence and fresh #74 schema-validator/release-gate evidence.
+  - Preserved the generated coverage inventory at 19 documents and 5,223 chunks.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,223 chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 32 tests, 32 pass, 0 fail.
+  - `pnpm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 144 Node tests, 144 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`

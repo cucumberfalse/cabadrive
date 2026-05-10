@@ -70,7 +70,7 @@ Agents must not paraphrase, translate, simplify, summarize, or otherwise rewrite
 
 ## Planned Primary-Source Reader
 
-Feature `016-primary-sources-section` plans a learner-facing `Источники` / official primary-source reader. This section is not implemented in the current product at the time of this Slice A docs refresh. When implemented, it should remain distinct from the topic-study `Материалы` guide and should:
+Feature `019-primary-sources-section` plans a learner-facing `Источники` / official primary-source reader. This section is not implemented in the current product at the time of this Slice A docs refresh. When implemented, it should remain distinct from the topic-study `Материалы` guide and should:
 
 - cover every entry in the implementation-time and final manifest;
 - default to schoolchild-friendly simple Russian text;

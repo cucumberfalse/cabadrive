@@ -8,10 +8,10 @@ This is the only file written by this Analyst pass. Code, tests, durable docs, s
 
 ## Numbering Note
 
-The main-based worktree initially showed merged feature folders only through numeric prefix `011`, but Orchestrator later clarified that parent and parallel worktrees already contain or are using higher prefixes including `015`. To avoid colliding with parallel agents, and because no `016` folder existed in this worktree, this intake uses:
+PR #68 review identified that the feature memory must use the next available numeric prefix after the feature folders already present on the base branch. The current feature memory path is:
 
 ```text
-specs/016-primary-sources-section/
+specs/019-primary-sources-section/
 ```
 
 ## Original User Request
@@ -307,9 +307,9 @@ Architect should define acceptance criteria that prove:
 
 This Analyst pass is complete. Orchestrator should invoke Architect next to write:
 
-- `specs/016-primary-sources-section/spec.md`
-- `specs/016-primary-sources-section/plan.md`
-- `specs/016-primary-sources-section/tasks.md`
+- `specs/019-primary-sources-section/spec.md`
+- `specs/019-primary-sources-section/plan.md`
+- `specs/019-primary-sources-section/tasks.md`
 
 Architect should pay special attention to task slicing. A sensible future decomposition is likely:
 
