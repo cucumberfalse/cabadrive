@@ -140,7 +140,7 @@
 - [x] T109 Confirm no out-of-scope product/content/source changes are included.
 - [x] T110 Confirm no blocking review findings remain.
 - [ ] T111 Confirm required checks are green after push/PR.
-- [ ] T112 Confirm the PR has no unresolved merge conflicts.
+- [x] T112 Confirm the PR has no unresolved merge conflicts.
 - [ ] T113 Leave only final human approval or merge mechanics remaining.
 
 ## Process Memory
@@ -223,6 +223,7 @@
 - 2026-05-10 PR #72 conflict/review fix local checks after resolving `origin/main` merge conflicts: `pnpm run test` passed with 83 node tests; `pnpm run build` passed and generated a service worker with 280 cached assets, with the existing Vite large chunk warning.
 - 2026-05-10 PR #72 conflict/review fix local checks after resolving `origin/main` merge conflicts: `pnpm run test:e2e` passed with 18 Playwright tests; `git diff --check` passed; `pnpm run check:feature-memory -- --worktree` passed.
 - 2026-05-10 PR #72 conflict/review fix: `pnpm run preflight` was feasible and passed: feature-memory gate, repository baseline, content validation, 83 node tests, build, and 18 Playwright tests all completed successfully.
+- 2026-05-10 PR #72 conflict/review fix: After pushing merge-resolution head `686256adf46a67f6af2b4e08826ab46730fff2f8`, `gh pr view 72 --json mergeable,mergeStateStatus,headRefOid,statusCheckRollup,reviewDecision,url` reported `mergeable: MERGEABLE` and `mergeStateStatus: BLOCKED`. This confirms no unresolved merge conflicts, so T112 is checked. T111 and T113 remain open because required checks are not green.
 - 2026-05-10 process-memory follow-up for PR #72: Codex Review for head `4fa9cc1177f7f12d46e6155b012fdeeeb435d68b` reported no findings. The prior CENAT P1 review thread is resolved/outdated after the `.gob.ar` CENAT payment endpoint correction, so no blocking review findings remain.
 - 2026-05-10 process-memory follow-up for PR #72: `gh pr view 72 --json mergeable,mergeStateStatus,headRefOid,statusCheckRollup,reviewDecision,url` reported head `4fa9cc1177f7f12d46e6155b012fdeeeb435d68b`, `mergeable: MERGEABLE`, and `mergeStateStatus: UNSTABLE`. This confirms no unresolved merge conflicts; T111 and T113 remain open because required checks are not green.
 - 2026-05-10 process-memory follow-up for PR #72: GitHub Actions required checks `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` still fail before job execution with the annotation `The job was not started because recent account payments have failed or your spending limit needs to be increased...`. This is an external GitHub billing/spending-limit blocker, not a code failure; local validation evidence remains green below.
