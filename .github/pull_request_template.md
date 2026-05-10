@@ -25,7 +25,7 @@
 - [ ] This PR is one task slice: one isolated worktree, one branch, and one PR.
 - [ ] Orchestrator warned assigned subagents that parallel agents may be active and existing dirty diffs, branches, commits, PRs, and process memory must be preserved.
 - [ ] Sibling worktrees, branches, dirty diffs, commits, PR state, feature folders, and process memory were not mutated without explicit Orchestrator coordination.
-- [ ] Additional task slices, if any, started from latest `origin/main` in separate isolated worktrees/branches/PRs; in-flight work was preserved rather than overwritten.
+- [ ] Additional task slices, if any, started from latest verified `main` in separate isolated worktrees/branches/PRs, normally `origin/main` after fetch; any fetch/base verification failure is recorded as a fallback/blocker, no stale base was silently reused, and in-flight work was preserved rather than overwritten.
 - [ ] Changes are limited to the assigned feature memory and scoped files; unrelated work is deferred.
 - [ ] Role boundaries were preserved: Orchestrator did not directly edit repo files, and agents did not switch roles mid-task.
 - [ ] Cleanup, if applicable, was coordinated through Cleanup Agent or explicitly equivalent cleanup role; Orchestrator did not directly delete local repository environments.

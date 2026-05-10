@@ -22,9 +22,11 @@ planning starts. When Orchestrator later invokes final Analyst validation after
 Architect passes, the same artifact may receive append-only Analyst-owned final
 validation notes.
 
-Repository-changing requests default to Orchestrator entry. Orchestrator
-fetches or otherwise verifies latest `origin/main`, creates or requires a fresh
-isolated intake worktree/branch, invokes Analyst first when no current
+Repository-changing requests default to Orchestrator entry. Orchestrator starts
+from latest verified `main`, normally `origin/main` after fetch; if fetch/base
+verification is unavailable, it records a blocker or explicit fallback and must
+not silently reuse stale base state. It records the base, creates or requires a
+fresh isolated intake worktree/branch, invokes Analyst first when no current
 `feature-request.md` exists, relays any Analyst clarification questions to the
 user, returns answers to Analyst, and takes the Analyst-created latest-main
 intake branch/worktree context forward after Analyst handoff. Analyst shuts down
@@ -35,8 +37,10 @@ requirement clarification.
 The Analyst-created latest-main handoff context may continue through Architect
 planning. It may become the single implementation PR slice only when
 Orchestrator explicitly assigns it that way. Additional task slices must start
-from latest `origin/main` in separate isolated worktrees, branches, and PRs, and
-parallel dirty diffs, branches, commits, PRs, and process memory must be
+from latest verified `main`, normally `origin/main` after fetch, in separate
+isolated worktrees, branches, and PRs. Fetch/base verification failure requires
+a documented fallback or blocker; stale base state must not be silently reused,
+and parallel dirty diffs, branches, commits, PRs, and process memory must be
 preserved.
 
 A non-Orchestrator active model that receives a new repository-changing request
