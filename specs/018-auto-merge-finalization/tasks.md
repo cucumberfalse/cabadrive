@@ -95,9 +95,9 @@
 
 ## Known Issues
 
-- No unresolved implementation known issues.
+- No unresolved known issues.
 - Prior `CLAUDE.md` validation gap was addressed by follow-up implementation. Architect disposition: disposed/addressed.
-- PR merge, review-thread resolution, and final validation remain Orchestrator-owned workflow gates, not implementation known issues. Architect disposition: not applicable.
+- Required checks, PR merge, review-thread resolution, and final validation remain Orchestrator-owned workflow gates, not Known Issues. Resolution: not applicable.
 
 ## Implementation Agent Feedback
 
