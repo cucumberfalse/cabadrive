@@ -5157,282 +5157,282 @@
     {
       "questionId": "b-fallback-369",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "f2b7a0c15b18d1d4488f713be634ed59037581ea6627c7e873cff0e1f8b2bb30",
-      "translationTextSha256": "ec52d5547cc1a3a1c018fd75fce2903452e2068e5bb2c98c1a39f395bb065707",
+      "translationTextSha256": "c6fd0b97fef361a6b43d838338ecf18a177735436bc1d1dd4fdc4139e5e3b486",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-370",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "2c7b496a37a5e58b97f654040b744d4a5a086da803aa575fd449e2888e119af3",
-      "translationTextSha256": "0910d471a570c7c46641b8c439a44a283d4662aaee9c3b0b3a948738c67f66eb",
+      "translationTextSha256": "18b8ab546723f5d2cd9154a8562e3356fc18e34be184e1b46d9059deb16b6415",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-371",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "cd0ce25122dda1471737327528d5d7ef2a4b814ed455089d0746d66e7a869109",
-      "translationTextSha256": "a80a6b5ed97c6da0866612d818723154b32738cb888baeafb899d74dfd698455",
+      "translationTextSha256": "1fb9b9452d34b59f6320b95f5ead0294eb99d8845fe0c3968865ba3de2724a75",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-372",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "91fca24bd65e8c76d74e51c8b48ba40596309eddc645181ff1739dae3bb2ee5a",
-      "translationTextSha256": "a2209acec0424009cc7b3ac61147f011939316c0ca1944ba43c5383371dbbbf1",
+      "translationTextSha256": "4f006cda58d09c31b189e2f6a9a55de5b0126ce96a1a0956649994bf8e2752d0",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-373",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "686d26051ac8e266892d5ad6631348c56665d069759b5c691d1d3f015ad8c0f5",
-      "translationTextSha256": "682abbec910bda5b628ff9360819717ca68845e6c5bdaa56490c3af391569fe8",
+      "translationTextSha256": "f83619788302e1f5395a8dff733343d2d9632cb6e5238ed22f639f0720dd96db",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-374",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "344751111bcd866bb2468c9bdf76fc06966931dd35ef51ccececd843bc4cfa57",
-      "translationTextSha256": "9845962d8d55f7577a658898230f24bc28626f339b99617eaea339a6be1ab829",
+      "translationTextSha256": "3bffc68a4af99be7c2dfc143517811176991358a25d6efaf63c62b5651f3eabc",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-375",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "ae213f0faae875794b36fbb4cdb8ed872c25449c33fc6411b6e0c4063c192809",
-      "translationTextSha256": "1f69cf55fe024bb2767286e9a6206e0f37582b7164d53b91e68cf3219a096b59",
+      "translationTextSha256": "65c44e9baf8f1d069a7563fcf056709f56538cd0f1bff4fb3439710160cbf823",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-376",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "b97f038a4d3a43ea053ea79128418982333494f68bd30385895dbcce229daa78",
-      "translationTextSha256": "ac862027cba9780de154cf5a9008035dcbfca3761b0fbafa0c871f47e41b0fcf",
+      "translationTextSha256": "e41b77fc6545f831c115f1afab4ead085d1edc49790c95b68eef4f591f5089bc",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-377",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "a7a431ffa505d10bd8e8e72a452b9d0ad753422a328595061bdb777074916926",
-      "translationTextSha256": "a0af3ad1b8e5645ffbd66705bfd18f28f1d2d14f23fd602cc208bbc417d41080",
+      "translationTextSha256": "e912cbbea4a15fd9ddfd862d2717a57f630ab3ded51244a2cbae314b24a0c038",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-378",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "ffc211fb9f664710bd79b2b72dc2967b4b4ac866e1c69f11942a7ab779bfc4db",
-      "translationTextSha256": "07f462db56fa60e6239428bf9ec09b4dfa4a9e7c073d76fbba34aeb93ff986cf",
+      "translationTextSha256": "d5ba81a47ca4a99b46c94e1044d6f36d2f3126c6219b3613da6113bf0269fff4",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-379",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "a54e968b373b7c94e3f5ceaa53424e173d00ed8dcc530b617546e01dabd831b2",
-      "translationTextSha256": "d3a4e17d5aa35103b8767d5ce6c086d3ddd0fd995b5b94083de40e492a393dc8",
+      "translationTextSha256": "0643aff98c3d828969882321ce5b09f39e409da12a51b40746c05e4d1fec39a6",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-380",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "3966c3b10e8d0e98bd57cf06d35578e62d14f4d778359e89b87b9feab386f446",
-      "translationTextSha256": "8d648faf5a161cca9c34b367877cb5efbe54b6b6d816d86e212bcb857ff68bc7",
+      "translationTextSha256": "0d0ecb93665e748c62a6a9fc6876df8b7ee179a5622f6ac625534b13079dcde7",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-381",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "36a8bac261c11fb88394a29be36a221eee244f3527fffdf399e4fc0673d54649",
-      "translationTextSha256": "6b55a0454133bdc1d170fd3905f93712491f8c1f6bd77811d368c71ad721b4eb",
+      "translationTextSha256": "18c73f905fb85e62dcfa3a8e3ae30db7c72cc5d87328329780c693cf93aca558",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-382",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "93abbdc0736285fea85f1273f7914acf80560506373d0ed7a6abff8a9dad4f6c",
-      "translationTextSha256": "805f0b51214aee35472f02acc52825f510af34e40297994b2131ba2fd52f53d0",
+      "translationTextSha256": "d7f8b2064ac067c03e6cbb86a720175f385957dcd0d3ae9efa24920312f88e52",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-383",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "31c85d9300e607f2580612771e5ecedc6472825d19d60523a334e721ae9b9ebc",
-      "translationTextSha256": "ecd808baa50a5db0810966c80e571be7977ac838b0628db1eabeb3069bcebf94",
+      "translationTextSha256": "a999c8bedc07cfbe85471a4b6f0d80528ce552eaea047ee67dcc464786bc8790",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-384",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "3dbc8760cafe61aa7041a078e657473f8b872d6bb624e480f4695e56615b0a91",
-      "translationTextSha256": "accc2a4f5ec7ace3fae38a061b0ffef1acafb92331bca7d7eb9142e6ee498159",
+      "translationTextSha256": "3b720541386aa97b93f7445eacaa3b6d2d4af885e2fcbc6f127c6430c4d4170b",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-385",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "f20cd779fa1d596cdb9cdf2305fdd1759870f19f31a4aadd64326aa7f300a344",
-      "translationTextSha256": "c78415122d30b2a8ecd33c1de5f18fd813f7ee0d7979bc8aa314b34721d97b04",
+      "translationTextSha256": "dcb027a08cd76974e2c9e4683c1ba47375971f97b272f0b00cbfe48d277a3a8b",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-386",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "7b16b5d6b61d78fcc798239058273ad2ff1fe752c7b30a781dc823b9a22ba141",
-      "translationTextSha256": "0cf0cb933092ab5ef904d9ef185b5de93b08f1d81d32719f64fa712a50104943",
+      "translationTextSha256": "7faa0cc9716f9a40d3a1d4a35350da4095cf5ef402c9ee834ffdb299ea749289",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-387",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "86c6d1e969cbc80bf165bdf492ac1a3d5f33dd09bce6c405f5e1afeaed813c9a",
-      "translationTextSha256": "a8147342a928536f00042f2decd39db2c01cd4e5bb879aff404d32d8609488af",
+      "translationTextSha256": "12f4e17f479e3a249bdae064811306ca74fa58b7482dcbba609d33e5270af9d9",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-388",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceTextSha256": "2a1e7d41c62084b08ba7c4119c83414b244026487c0ee4da4f806e94eb5c49f7",
-      "translationTextSha256": "be08924f6419eea1b18e5685f626577c1d22bc417a9ddf867910bdcc86c4c11e",
+      "translationTextSha256": "ab536091dae087e63c579178468ec8252bdaec6b5507c801aafbb89198fddb43",
       "checks": {
         "questionTextAligned": true,
         "answerChoicesAligned": true,
         "answerIdsAligned": true
       },
-      "notes": "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
+      "notes": "Content-agent reviewed Russian translation for range 369-388; draft wrappers, transliteration and Spanish residue removed."
     },
     {
       "questionId": "b-fallback-389",

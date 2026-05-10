@@ -7,265 +7,265 @@
     "start": 369,
     "end": 460
   },
-  "qualityStatus": "needs_full_content_review",
+  "qualityStatus": "in_progress",
   "workerInstructions": "This range shard is the source of truth for its ticket range. Content workers may edit only their assigned shard files.",
   "locale": "ru",
   "entries": [
     {
       "questionId": "b-fallback-369",
-      "questionTextRu": "Учебный перевод-смысл: Las intervenciones horizontales señaladas, sirven para…",
+      "questionTextRu": "Для чего служат отмеченные горизонтальные элементы благоустройства?",
       "answerTranslations": {
-        "b-fallback-369-a1": "Смысл варианта: Incrementar la безопасность de los peatones.",
-        "b-fallback-369-a2": "Смысл варианта: Promover la movilidad vehicular.",
-        "b-fallback-369-a3": "Смысл варианта: Colaborar con la rapidez en la movilidad."
+        "b-fallback-369-a1": "Повысить безопасность пешеходов.",
+        "b-fallback-369-a2": "Стимулировать движение автомобилей.",
+        "b-fallback-369-a3": "Помочь ускорить перемещение."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-370",
-      "questionTextRu": "Учебный перевод-смысл: Los транспортные средства que circulan por la siguiente проспект/проспекты, al llegar a esta bocacalle sin светофор/светофоры, ¿cuál es el límite superior de velocidad precautoria que deben respetar?",
+      "questionTextRu": "Транспортные средства, которые едут по показанному проспекту, подъезжая к этому перекрёстку без светофоров, какой верхний предел осторожной скорости должны соблюдать?",
       "answerTranslations": {
-        "b-fallback-370-a1": "Смысл варианта: 20 kilóметры por hora.",
-        "b-fallback-370-a2": "Смысл варианта: 40 kilóметры por hora.",
-        "b-fallback-370-a3": "Смысл варианта: 30 kilóметры por hora."
+        "b-fallback-370-a1": "20 км/ч.",
+        "b-fallback-370-a2": "40 км/ч.",
+        "b-fallback-370-a3": "30 км/ч."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-371",
-      "questionTextRu": "Учебный перевод-смысл: Indique cuál es la premisa correcta:",
+      "questionTextRu": "Укажите правильное утверждение:",
       "answerTranslations": {
-        "b-fallback-371-a1": "Смысл варианта: A menor cantidad de транспортные средства, mayor probabilidad de siniestralidad.",
-        "b-fallback-371-a2": "Смысл варианта: A mayor cantidad de транспортные средства, menor probabilidad de siniestralidad.",
-        "b-fallback-371-a3": "Смысл варианта: A menor cantidad de транспортные средства, menor probabilidad de siniestralidad."
+        "b-fallback-371-a1": "Чем меньше транспортных средств, тем выше вероятность ДТП.",
+        "b-fallback-371-a2": "Чем больше транспортных средств, тем ниже вероятность ДТП.",
+        "b-fallback-371-a3": "Чем меньше транспортных средств, тем ниже вероятность ДТП."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-372",
-      "questionTextRu": "Учебный перевод-смысл: ¿Qué транспортное средство tiene приоритет проезда en esta intersección sin светофор/светофоры?",
+      "questionTextRu": "У какого транспортного средства приоритет проезда на этом перекрёстке без светофора?",
       "answerTranslations": {
-        "b-fallback-372-a1": "Смысл варианта: El транспортное средство A porque circula por una проспект/проспекты.",
-        "b-fallback-372-a2": "Смысл варианта: El транспортное средство B porque circula por la справа/направо.",
-        "b-fallback-372-a3": "Смысл варианта: Es indistinto ya que es una esquina sin светофор/светофоры."
+        "b-fallback-372-a1": "У транспортного средства A, потому что оно движется по проспекту.",
+        "b-fallback-372-a2": "У транспортного средства B, потому что оно находится справа.",
+        "b-fallback-372-a3": "Без разницы, потому что это перекрёсток без светофора."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-373",
-      "questionTextRu": "Учебный перевод-смысл: ¿Por qué sector de una calle sin demarcación deben circular los ciclistas cuando Нет existen ciclovías o bicisendas?",
+      "questionTextRu": "По какой части улицы без разметки должны ехать велосипедисты, если нет велодорожек или велосипедных полос?",
       "answerTranslations": {
-        "b-fallback-373-a1": "Смысл варианта: Cerca del borde derecho de la проезжая часть.",
-        "b-fallback-373-a2": "Смысл варианта: Cerca del borde izquierdo de la проезжая часть.",
-        "b-fallback-373-a3": "Смысл варианта: Нет pueden circular. Únicamente pueden hacerlo por ciclovías o bicisendas y los menores de 12 años por la vereda."
+        "b-fallback-373-a1": "У правого края проезжей части.",
+        "b-fallback-373-a2": "У левого края проезжей части.",
+        "b-fallback-373-a3": "Они не могут ехать по такой улице. Можно только по велодорожкам или велосипедным полосам, а детям младше 12 лет — по тротуару."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-374",
-      "questionTextRu": "Учебный перевод-смысл: La presente conducta, ¿es riesgosa al momento de conducir?",
+      "questionTextRu": "Является ли показанное поведение рискованным во время управления автомобилем?",
       "answerTranslations": {
-        "b-fallback-374-a1": "Смысл варианта: Sí, porque es considerado un factor de distracción.",
-        "b-fallback-374-a2": "Смысл варианта: Únicamente si se circula a altas velocidades.",
-        "b-fallback-374-a3": "Смысл варианта: Al contrario, ayuda a mantener la atención en la conducción."
+        "b-fallback-374-a1": "Да, потому что это считается отвлекающим фактором.",
+        "b-fallback-374-a2": "Только если ехать на высокой скорости.",
+        "b-fallback-374-a3": "Наоборот, это помогает сохранять внимание при управлении."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-375",
-      "questionTextRu": "Учебный перевод-смысл: ¿Cómo deben encontrarse los neumáticos para comprobar la correcta presión de aire?",
+      "questionTextRu": "Какими должны быть шины, чтобы правильно проверить давление воздуха?",
       "answerTranslations": {
-        "b-fallback-375-a1": "Смысл варианта: Fríos.",
-        "b-fallback-375-a2": "Смысл варианта: Calientes.",
-        "b-fallback-375-a3": "Смысл варианта: Es indistinto, al ser de caucho se mantienen aislados de la temperatura."
+        "b-fallback-375-a1": "Холодными.",
+        "b-fallback-375-a2": "Горячими.",
+        "b-fallback-375-a3": "Неважно: поскольку шины из резины, температура на них не влияет."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-376",
-      "questionTextRu": "Учебный перевод-смысл: En condiciones de viento fuerte, es recomendable realizar los sobrepasos de un camión con una diferencia de velocidad Нет demasiado elevada.",
+      "questionTextRu": "При сильном ветре рекомендуется обгонять грузовик без слишком большой разницы в скорости.",
       "answerTranslations": {
-        "b-fallback-376-a1": "Смысл варианта: Верно.",
-        "b-fallback-376-a2": "Смысл варианта: Неверно."
+        "b-fallback-376-a1": "Верно.",
+        "b-fallback-376-a2": "Неверно."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-377",
-      "questionTextRu": "Учебный перевод-смысл: ¿Cuál es la velocidad máxima permitida en este tramo de calle?",
+      "questionTextRu": "Какая максимальная разрешённая скорость на этом участке улицы?",
       "answerTranslations": {
-        "b-fallback-377-a1": "Смысл варианта: 20 km/h.",
-        "b-fallback-377-a2": "Смысл варианта: 40 km/h.",
-        "b-fallback-377-a3": "Смысл варианта: 30 km/h."
+        "b-fallback-377-a1": "20 км/ч.",
+        "b-fallback-377-a2": "40 км/ч.",
+        "b-fallback-377-a3": "30 км/ч."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-378",
-      "questionTextRu": "Учебный перевод-смысл: Si el транспортное средство de la imagen se dispone a ingresar a un garaje, está anticipando su maniobra, utilizando las luces correctas.",
+      "questionTextRu": "Если автомобиль на изображении собирается заехать в гараж, он заранее предупреждает о манёвре правильными огнями.",
       "answerTranslations": {
-        "b-fallback-378-a1": "Смысл варианта: Верно.",
-        "b-fallback-378-a2": "Смысл варианта: Неверно."
+        "b-fallback-378-a1": "Верно.",
+        "b-fallback-378-a2": "Неверно."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-379",
-      "questionTextRu": "Учебный перевод-смысл: Determine qué indica la знак que a continuación se presenta:",
+      "questionTextRu": "Определите, что означает показанный ниже знак:",
       "answerTranslations": {
-        "b-fallback-379-a1": "Смысл варианта: Panel de Prevención (Objeto Rígido).",
-        "b-fallback-379-a2": "Смысл варианта: проезжая часть Reducida.",
-        "b-fallback-379-a3": "Смысл варианта: Contramano."
+        "b-fallback-379-a1": "Предупреждающая панель для жёсткого препятствия.",
+        "b-fallback-379-a2": "Сужение проезжей части.",
+        "b-fallback-379-a3": "Движение против установленного направления."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-380",
-      "questionTextRu": "Учебный перевод-смысл: ¿Qué indica esta жест/сигнал?",
+      "questionTextRu": "Что означает этот жест?",
       "answerTranslations": {
-        "b-fallback-380-a1": "Смысл варианта: поворот a la слева/налево.",
-        "b-fallback-380-a2": "Смысл варианта: обгон por la слева/налево.",
-        "b-fallback-380-a3": "Смысл варианта: остановиться."
+        "b-fallback-380-a1": "Поворот налево.",
+        "b-fallback-380-a2": "Обгон слева.",
+        "b-fallback-380-a3": "Остановиться."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-381",
-      "questionTextRu": "Учебный перевод-смысл: ¿El límite de velocidad máxima de 20 km/h en este tramo de calle se debe respetar sólo en el horario de funcionamiento escolar?",
+      "questionTextRu": "Нужно ли соблюдать максимальную скорость 20 км/ч на этом участке улицы только во время работы школы?",
       "answerTranslations": {
-        "b-fallback-381-a1": "Смысл варианта: Нет, ya que el límite de la знак de tránsito rige independientemente del día y horario.",
-        "b-fallback-381-a2": "Смысл варианта: Sí, ya que la Ley 2148 establece que esta restricción es durante el horario de funcionamiento escolar."
+        "b-fallback-381-a1": "Нет, потому что ограничение на дорожном знаке действует независимо от дня и времени.",
+        "b-fallback-381-a2": "Да, потому что Закон № 2148 устанавливает это ограничение на время работы школы."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-382",
-      "questionTextRu": "Учебный перевод-смысл: Para circular de noche por una calle de la Ciudad de Buenos Aires, ¿qué luces deben utilizarse?",
+      "questionTextRu": "Какие фары нужно использовать для движения ночью по улице города Буэнос-Айрес?",
       "answerTranslations": {
-        "b-fallback-382-a1": "Смысл варианта: Las bajas.",
-        "b-fallback-382-a2": "Смысл варианта: Las altas.",
-        "b-fallback-382-a3": "Смысл варианта: Las de posición solamente."
+        "b-fallback-382-a1": "Ближний свет.",
+        "b-fallback-382-a2": "Дальний свет.",
+        "b-fallback-382-a3": "Только габаритные огни."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-383",
-      "questionTextRu": "Учебный перевод-смысл: Indique qué tipo de знак es la que a continuación se muestra:",
+      "questionTextRu": "Укажите, к какому типу относится показанный ниже знак:",
       "answerTranslations": {
-        "b-fallback-383-a1": "Смысл варианта: Preventiva",
-        "b-fallback-383-a2": "Смысл варианта: Reglamentaria.",
-        "b-fallback-383-a3": "Смысл варианта: Informativa."
+        "b-fallback-383-a1": "Предупреждающий.",
+        "b-fallback-383-a2": "Регулирующий.",
+        "b-fallback-383-a3": "Информационный."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-384",
-      "questionTextRu": "Учебный перевод-смысл: Determine qué indica la знак que a continuación se presenta:",
+      "questionTextRu": "Определите, что означает показанный ниже знак:",
       "answerTranslations": {
-        "b-fallback-384-a1": "Смысл варианта: Sobrepasos por la справа/направо.",
-        "b-fallback-384-a2": "Смысл варианта: Circulación exclusiva (camión).",
-        "b-fallback-384-a3": "Смысл варианта: Tránsito pesado a la справа/направо."
+        "b-fallback-384-a1": "Обгон справа.",
+        "b-fallback-384-a2": "Исключительное движение грузовиков.",
+        "b-fallback-384-a3": "Движение грузового транспорта направо."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-385",
-      "questionTextRu": "Учебный перевод-смысл: En esta intersección, ¿quién tiene приоритет проезда?",
+      "questionTextRu": "На этом перекрёстке у кого приоритет проезда?",
       "answerTranslations": {
-        "b-fallback-385-a1": "Смысл варианта: El пешеход/пешеходы.",
-        "b-fallback-385-a2": "Смысл варианта: El водитель/водители.",
-        "b-fallback-385-a3": "Смысл варианта: Es indistinto."
+        "b-fallback-385-a1": "У пешехода.",
+        "b-fallback-385-a2": "У водителя.",
+        "b-fallback-385-a3": "Без разницы."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-386",
-      "questionTextRu": "Учебный перевод-смысл: De acuerdo a la Ley N°2148 durante la siguiente circunstancia, ¿qué acción está prohibida realizar?",
+      "questionTextRu": "Согласно Закону № 2148, в показанной ситуации какое действие запрещено?",
       "answerTranslations": {
-        "b-fallback-386-a1": "Смысл варианта: Ubicarse cerca del surtidor.",
-        "b-fallback-386-a2": "Смысл варианта: Dejar el motor y las luces encendidas.",
-        "b-fallback-386-a3": "Смысл варианта: Sólo dejar el motor encendido."
+        "b-fallback-386-a1": "Находиться рядом с топливораздаточной колонкой.",
+        "b-fallback-386-a2": "Оставлять двигатель и фары включёнными.",
+        "b-fallback-386-a3": "Только оставлять двигатель включённым."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-387",
-      "questionTextRu": "Учебный перевод-смысл: En este переезд/пересечение de dos calles sin светофор/светофоры, ¿cuál es el límite superior de la velocidad precautoria establecida por ley?",
+      "questionTextRu": "На этом пересечении двух улиц без светофоров какой верхний предел осторожной скорости установлен законом?",
       "answerTranslations": {
-        "b-fallback-387-a1": "Смысл варианта: 20 kilóметры por hora.",
-        "b-fallback-387-a2": "Смысл варианта: 40 kilóметры por hora.",
-        "b-fallback-387-a3": "Смысл варианта: 30 kilóметры por hora."
+        "b-fallback-387-a1": "20 км/ч.",
+        "b-fallback-387-a2": "40 км/ч.",
+        "b-fallback-387-a3": "30 км/ч."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {
       "questionId": "b-fallback-388",
-      "questionTextRu": "Учебный перевод-смысл: En caso de un дорожное происшествие en este tipo de calle, ¿cómo es recomendable señalizar la zona del транспортное средство inmovilizado?",
+      "questionTextRu": "В случае ДТП на улице такого типа как рекомендуется обозначить зону неподвижного автомобиля?",
       "answerTranslations": {
-        "b-fallback-388-a1": "Смысл варианта: Se deben encender las luces bajas y, en lo posible, colocar аварийная сигнализация portátiles delante y detrás del mismo.",
-        "b-fallback-388-a2": "Смысл варианта: Se deben encender las luces altas y, en lo posible, colocar аварийная сигнализация portátiles detrás del mismo.",
-        "b-fallback-388-a3": "Смысл варианта: Se deben encender las аварийная сигнализация y, en lo posible, colocar аварийная сигнализация portátiles del lado de donde provienen los транспортные средства a una дистанция/расстояние adecuada del транспортное средство."
+        "b-fallback-388-a1": "Нужно включить ближний свет и, если возможно, поставить переносные аварийные знаки перед автомобилем и позади него.",
+        "b-fallback-388-a2": "Нужно включить дальний свет и, если возможно, поставить переносные аварийные знаки позади автомобиля.",
+        "b-fallback-388-a3": "Нужно включить аварийную сигнализацию и, если возможно, поставить переносные аварийные знаки со стороны, откуда приближается транспорт, на подходящем расстоянии от автомобиля."
       },
-      "method": "deterministic_glossary_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
     },
     {

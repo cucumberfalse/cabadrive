@@ -7,430 +7,443 @@
     "start": 369,
     "end": 460
   },
-  "qualityStatus": "needs_full_content_review",
+  "qualityStatus": "in_progress",
   "workerInstructions": "This range shard is the source of truth for its ticket range. Content workers may edit only their assigned shard files.",
   "locale": "ru",
   "entries": [
     {
       "questionId": "b-fallback-369",
-      "textRu": "Правильный вариант - \"Incrementar la seguridad de los peatones.\". Правильно: intervenciones horizontales señaladas читаются как pedestrian-focused measures; fallback-answer формулирует это как incrementar la seguridad de los peatones. Неверные варианты: b-fallback-369-a2: Promover la movilidad vehicular смещает цель к автомобилям. Вопрос и изображение ведут к pedestrian safety, не к vehicle throughput. b-fallback-369-a3: Rapidez en la movilidad - ловушка: pedestrian interventions не выбирают для ускорения движения, когда правильный вариант говорит о безопасности пешеходов.",
+      "textRu": "На фото красными овалами отмечены расширенные пешеходные зоны, островки и элементы успокоения движения вокруг переходов. Такие горизонтальные элементы делают переход улицы заметнее и безопаснее для людей, поэтому правильный ответ — повысить безопасность пешеходов. Варианты про движение автомобилей и ускорение перемещения не подходят: изображение показывает не расширение пропускной способности для машин, а перераспределение пространства в пользу пешеходов.",
       "correctAnswerId": "b-fallback-369-a1",
-      "correctAnswerExplanationRu": "Правильно: intervenciones horizontales señaladas читаются как pedestrian-focused measures; fallback-answer формулирует это как incrementar la seguridad de los peatones.",
+      "correctAnswerExplanationRu": "Красные овалы выделяют пешеходные островки, расширения тротуара и переходы: их цель — уменьшить риск для пешеходов и сделать пересечение улицы безопаснее.",
       "wrongAnswerExplanations": {
-        "b-fallback-369-a2": "Promover la movilidad vehicular смещает цель к автомобилям. Вопрос и изображение ведут к pedestrian safety, не к vehicle throughput.",
-        "b-fallback-369-a3": "Rapidez en la movilidad - ловушка: pedestrian interventions не выбирают для ускорения движения, когда правильный вариант говорит о безопасности пешеходов."
+        "b-fallback-369-a2": "Стимулирование движения автомобилей не соответствует изображению: часть пространства, наоборот, выделена под пешеходные зоны и элементы успокоения движения.",
+        "b-fallback-369-a3": "Ускорение перемещения не является главным смыслом этих элементов: они ограничивают и организуют поток ради безопасности людей на переходах."
       },
       "explanationType": "pedestrian-and-school-road-markings",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-369-critical-source-image"
+        "pedestrian-safety-interventions"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-370",
-      "textRu": "Правильный вариант - \"40 kilómetros por hora.\". Для avenida в bocacalle sin semáforos límite superior de velocidad precautoria - 40 km/h. Неверные варианты: b-fallback-370-a1: 20 km/h относится к другим специальным зонам, например paso a nivel, но билет про avenida sin semáforos. b-fallback-370-a3: 30 km/h подходит для calle sin semáforos, а не для avenida из вопроса.",
+      "textRu": "Правильный вариант — 40 км/ч: на снимке виден перекрёсток без светофора и уличный указатель с проспектом. Для вопроса важно именно слово «проспект»: на таком пересечении верхний предел осторожной скорости — 40 км/ч. 20 км/ч относится к более специальным ситуациям, а 30 км/ч — к обычному пересечению двух улиц без светофора, но здесь показан проспект.",
       "correctAnswerId": "b-fallback-370-a2",
-      "correctAnswerExplanationRu": "Для avenida в bocacalle sin semáforos límite superior de velocidad precautoria - 40 km/h.",
+      "correctAnswerExplanationRu": "Указатель на изображении показывает, что движение идёт по проспекту, а вопрос говорит о перекрёстке без светофоров; для такого случая правильный предел — 40 км/ч.",
       "wrongAnswerExplanations": {
-        "b-fallback-370-a1": "20 km/h относится к другим специальным зонам, например paso a nivel, но билет про avenida sin semáforos.",
-        "b-fallback-370-a3": "30 km/h подходит для calle sin semáforos, а не для avenida из вопроса."
+        "b-fallback-370-a1": "20 км/ч — слишком малое значение для указанного в билете проспекта и относится к другим особым условиям.",
+        "b-fallback-370-a3": "30 км/ч было бы верным для пересечения обычных улиц без светофора, но изображение и текст подчёркивают проспект."
       },
       "explanationType": "traffic-lights-and-rail-crossings",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-370-critical-source-image"
+        "avenida-street-name-sign",
+        "unsignalized-avenue-intersection"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-371",
-      "textRu": "Правильный вариант - \"A menor cantidad de vehículos, menor probabilidad de siniestralidad.\". Правильно: a menor cantidad de vehículos, menor probabilidad de siniestralidad. Это экзаменационная формула про связь количества транспортных средств и потенциальных конфликтов. Неверные варианты: b-fallback-371-a1: Неверно: утверждение переворачивает смысл. Меньше vehicles не означает большую вероятность siniestralidad; меньше конфликтующих участников обычно снижает риск. b-fallback-371-a2: Неверно: mayor cantidad de vehículos не уменьшает риск само по себе. Больше машин означает больше взаимодействий, очередей, перестроений и конфликтных точек.",
+      "textRu": "Правильное утверждение: чем меньше транспортных средств, тем ниже вероятность ДТП. Логика билета простая: меньше машин означает меньше конфликтных точек, перестроений, очередей и взаимных ошибок. Первый вариант переворачивает причинно-следственную связь, а второй неверно утверждает, что увеличение количества транспорта само по себе снижает риск.",
       "correctAnswerId": "b-fallback-371-a3",
-      "correctAnswerExplanationRu": "Правильно: a menor cantidad de vehículos, menor probabilidad de siniestralidad. Это экзаменационная формула про связь количества транспортных средств и потенциальных конфликтов.",
+      "correctAnswerExplanationRu": "Меньшее количество транспортных средств обычно уменьшает число взаимодействий между участниками движения, поэтому вероятность ДТП становится ниже.",
       "wrongAnswerExplanations": {
-        "b-fallback-371-a1": "Неверно: утверждение переворачивает смысл. Меньше vehicles не означает большую вероятность siniestralidad; меньше конфликтующих участников обычно снижает риск.",
-        "b-fallback-371-a2": "Неверно: mayor cantidad de vehículos не уменьшает риск само по себе. Больше машин означает больше взаимодействий, очередей, перестроений и конфликтных точек."
+        "b-fallback-371-a1": "Этот вариант неверно говорит, что при меньшем количестве транспорта риск становится выше; для билета смысл противоположный.",
+        "b-fallback-371-a2": "Большее количество транспорта не снижает риск: оно создаёт больше взаимодействий и потенциальных конфликтов."
       },
       "explanationType": "sustainable-mobility-and-vulnerable-users",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-372",
-      "textRu": "Правильный вариант - \"El vehículo A porque circula por una avenida.\". Vehículo A circula por una avenida, а при arterias разной jerarquía avenida имеет приоритет над calle. Неверные варианты: b-fallback-372-a2: Derecha применима между arterias igual jerarquía; здесь avenida важнее. b-fallback-372-a3: Это не indistinto: даже без semáforo нужно применить порядок prioridad.",
+      "textRu": "На изображении рядом с машиной A виден указатель проспекта, а машина B находится на пересекающей улице. При пересечении дорог разной значимости проспект имеет приоритет, поэтому правильный ответ — транспортное средство A. Правило помехи справа не выбирают автоматически, когда одно транспортное средство движется по проспекту. Вариант «без разницы» тоже неверен: отсутствие светофора не отменяет порядок приоритета.",
       "correctAnswerId": "b-fallback-372-a1",
-      "correctAnswerExplanationRu": "Vehículo A circula por una avenida, а при arterias разной jerarquía avenida имеет приоритет над calle.",
+      "correctAnswerExplanationRu": "Транспортное средство A связано с проспектом на изображении, а проспект имеет приоритет над обычной пересекающей улицей.",
       "wrongAnswerExplanations": {
-        "b-fallback-372-a2": "Derecha применима между arterias igual jerarquía; здесь avenida важнее.",
-        "b-fallback-372-a3": "Это не indistinto: даже без semáforo нужно применить порядок prioridad."
+        "b-fallback-372-a2": "Положение справа не решает этот билет, потому что дороги имеют разную значимость: проспект важнее обычной улицы.",
+        "b-fallback-372-a3": "Ответ не может быть произвольным: даже без светофора нужно определить приоритет по типу дороги."
       },
       "explanationType": "traffic-lights-and-rail-crossings",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-372-critical-source-image"
+        "vehicle-a-associated-with-avenue"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-373",
-      "textRu": "Правильный вариант - \"Cerca del borde derecho de la calzada.\". Правильно: calle sin demarcación and no ciclovías/bicisendas -> ciclistas circulate cerca del borde derecho de la calzada. Неверные варианты: b-fallback-373-a2: Borde izquierdo is wrong for this ordinary street wording. The fallback answer uses right edge. b-fallback-373-a3: No pueden circular is too absolute. Lack of ciclovía/bicisenda does not automatically prohibit bicycle circulation in the ticket.",
+      "textRu": "Правильный вариант — движение у правого края проезжей части. Если на улице нет разметки, велодорожки или велосипедной полосы, велосипедист должен ехать у правого края. Левый край не подходит для обычного движения по такой улице. Полный запрет тоже неверен: отсутствие отдельной велоинфраструктуры не означает, что велосипедист вообще не может двигаться по проезжей части.",
       "correctAnswerId": "b-fallback-373-a1",
-      "correctAnswerExplanationRu": "Правильно: calle sin demarcación and no ciclovías/bicisendas -> ciclistas circulate cerca del borde derecho de la calzada.",
+      "correctAnswerExplanationRu": "В условиях билета велосипедисты движутся у правого края проезжей части, потому что отдельной велосипедной инфраструктуры нет.",
       "wrongAnswerExplanations": {
-        "b-fallback-373-a2": "Borde izquierdo is wrong for this ordinary street wording. The fallback answer uses right edge.",
-        "b-fallback-373-a3": "No pueden circular is too absolute. Lack of ciclovía/bicisenda does not automatically prohibit bicycle circulation in the ticket."
+        "b-fallback-373-a2": "Левый край не является правильным местом движения для велосипедиста в описанной обычной ситуации.",
+        "b-fallback-373-a3": "Запрет сформулирован слишком широко: велосипедистам не требуется отдельная велодорожка во всех случаях, чтобы двигаться по дороге."
       },
       "explanationType": "pedestrian-school-zones-and-markings",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-374",
-      "textRu": "Правильный вариант - \"Sí, porque es considerado un factor de distracción.\". Правильно: the shown conduct is risky because it is considered a factor de distracción. The key is attention loss, not speed. Неверные варианты: b-fallback-374-a2: Únicamente si se circula a altas velocidades is too narrow. Distraction can be risky in ordinary urban driving too. b-fallback-374-a3: No: the action does not help maintain attention. This option reverses the risk into a supposed benefit.",
+      "textRu": "Правильный вариант — да: на фото красным кругом выделена рука водителя, высунутая из окна соседнего автомобиля во время движения. Такая поза отвлекает и снижает контроль над управлением, поэтому поведение считается рискованным. Ограничивать опасность только высокой скоростью нельзя: отвлечение опасно и в обычном городском потоке. И тем более это не помогает сохранять внимание.",
       "correctAnswerId": "b-fallback-374-a1",
-      "correctAnswerExplanationRu": "Правильно: the shown conduct is risky because it is considered a factor de distracción. The key is attention loss, not speed.",
+      "correctAnswerExplanationRu": "Показанное действие является отвлекающим фактором: водитель держит руку снаружи автомобиля во время движения.",
       "wrongAnswerExplanations": {
-        "b-fallback-374-a2": "Únicamente si se circula a altas velocidades is too narrow. Distraction can be risky in ordinary urban driving too.",
-        "b-fallback-374-a3": "No: the action does not help maintain attention. This option reverses the risk into a supposed benefit."
+        "b-fallback-374-a2": "Риск отвлечения существует не только на высокой скорости; в городе он также может привести к ошибке или поздней реакции.",
+        "b-fallback-374-a3": "Поведение не повышает внимательность: оно отвлекает водителя и ухудшает контроль над ситуацией."
       },
       "explanationType": "fatigue-distraction-and-attention",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-374-critical-source-image"
+        "driver-arm-outside-window"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-375",
-      "textRu": "Правильный вариант - \"Fríos.\". Правильно по билету: presión проверяют на neumáticos fríos. Неверные варианты: b-fallback-375-a2: Calientes неверно, потому что нагрев меняет показание presión. Билет требует neumáticos fríos. b-fallback-375-a3: Es indistinto неверно. Ответ связан не с материалом caucho, а с температурным состоянием шин при проверке.",
+      "textRu": "Давление воздуха проверяют на холодных шинах. При нагреве давление меняется, и измерение может дать неправильное представление о реальном состоянии шин. Поэтому вариант с горячими шинами неверен, а ответ «неважно» не подходит: важен не материал шины, а её температурное состояние во время проверки.",
       "correctAnswerId": "b-fallback-375-a1",
-      "correctAnswerExplanationRu": "Правильно по билету: presión проверяют на neumáticos fríos.",
+      "correctAnswerExplanationRu": "Холодные шины дают корректное показание давления, потому что температура ещё не исказила результат измерения.",
       "wrongAnswerExplanations": {
-        "b-fallback-375-a2": "Calientes неверно, потому что нагрев меняет показание presión. Билет требует neumáticos fríos.",
-        "b-fallback-375-a3": "Es indistinto неверно. Ответ связан не с материалом caucho, а с температурным состоянием шин при проверке."
+        "b-fallback-375-a2": "Горячие шины могут показывать изменённое давление, поэтому это не лучший момент для проверки.",
+        "b-fallback-375-a3": "Температура имеет значение: резина не делает измерение независимым от нагрева шины."
       },
       "explanationType": "vehicle-condition-maintenance-loads",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-376",
-      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero: при viento fuerte обгон грузовика стоит выполнять без слишком большой разницы скорости, чтобы автомобиль оставался устойчивым около боковых порывов и воздушного потока грузовика. Неверные варианты: b-fallback-376-a2: Falso неверно: сильный ветер как раз требует более плавного, контролируемого обгона, а не агрессивной разницы скорости.",
+      "textRu": "Утверждение верное. При сильном ветре обгон грузовика лучше выполнять без чрезмерной разницы в скорости: рядом с крупным транспортом сильнее ощущаются боковой ветер и воздушные потоки. Слишком резкий обгон может ухудшить устойчивость и контроль. Поэтому вариант «неверно» не подходит: осторожная, плавная разница скоростей как раз помогает снизить риск.",
       "correctAnswerId": "b-fallback-376-a1",
-      "correctAnswerExplanationRu": "Verdadero: при viento fuerte обгон грузовика стоит выполнять без слишком большой разницы скорости, чтобы автомобиль оставался устойчивым около боковых порывов и воздушного потока грузовика.",
+      "correctAnswerExplanationRu": "При сильном ветре рядом с грузовиком важно сохранять устойчивость, поэтому обгон выполняют без слишком большой разницы скоростей.",
       "wrongAnswerExplanations": {
-        "b-fallback-376-a2": "Falso неверно: сильный ветер как раз требует более плавного, контролируемого обгона, а не агрессивной разницы скорости."
+        "b-fallback-376-a2": "Это не ложное утверждение: сильный ветер требует более контролируемого обгона, а не резкого ускорения рядом с грузовиком."
       },
       "explanationType": "adverse-weather-and-visibility",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-377",
-      "textRu": "Правильный вариант - \"20 km/h.\". Показанный tramo de calle имеет максимум 20 km/h; не применяйте автоматически общий предел calle. Неверные варианты: b-fallback-377-a2: 40 km/h - общий ориентир для calle, но в этом изображенном месте действует меньший предел. b-fallback-377-a3: 30 km/h не является правильным числом для данного tramo.",
+      "textRu": "На правой стороне улицы виден круглый знак ограничения скорости «20», а на покрытии заметна такая же отметка. Поэтому на этом участке действует максимум 20 км/ч. Варианты 40 и 30 км/ч являются ловушками: они могут напоминать общие городские пределы или другие случаи, но здесь конкретный знак задаёт меньшую скорость.",
       "correctAnswerId": "b-fallback-377-a1",
-      "correctAnswerExplanationRu": "Показанный tramo de calle имеет максимум 20 km/h; не применяйте автоматически общий предел calle.",
+      "correctAnswerExplanationRu": "Ответ берётся с изображения: знак ограничения скорости показывает 20 км/ч, значит именно этот предел действует на участке.",
       "wrongAnswerExplanations": {
-        "b-fallback-377-a2": "40 km/h - общий ориентир для calle, но в этом изображенном месте действует меньший предел.",
-        "b-fallback-377-a3": "30 km/h не является правильным числом для данного tramo."
+        "b-fallback-377-a2": "40 км/ч не подходит, потому что на данном участке установлен отдельный меньший предел.",
+        "b-fallback-377-a3": "30 км/ч также не подходит: видимый знак указывает конкретно 20 км/ч."
       },
       "explanationType": "speed-limits",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-377-critical-source-image"
+        "speed-limit-20-sign"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-378",
-      "textRu": "Правильный вариант - \"Verdadero.\". Верно: на изображении автомобиль собирается ingresar a un garaje и заранее использует правильные огни - balizas/intermitentes. Неверные варианты: b-fallback-378-a2: Falso неверно: для ingreso a garaje именно balizas являются правильным предупреждением, а картинка показывает этот сигнал.",
+      "textRu": "Утверждение верное. На изображении задние указатели автомобиля выделены красными кругами: машина заранее предупреждает о манёвре при заезде к правому краю, где расположен въезд или парковочная зона. Для этого билета важен именно видимый сигнал огнями. Ответ «неверно» не подходит, потому что картинка показывает предупреждение о манёвре, а не движение без сигнала.",
       "correctAnswerId": "b-fallback-378-a1",
-      "correctAnswerExplanationRu": "Верно: на изображении автомобиль собирается ingresar a un garaje и заранее использует правильные огни - balizas/intermitentes.",
+      "correctAnswerExplanationRu": "Красные круги выделяют включённые задние сигнальные огни автомобиля, которыми водитель заранее предупреждает о заезде в гараж.",
       "wrongAnswerExplanations": {
-        "b-fallback-378-a2": "Falso неверно: для ingreso a garaje именно balizas являются правильным предупреждением, а картинка показывает этот сигнал."
+        "b-fallback-378-a2": "Этот вариант отвергает видимый сигнал, но на изображении как раз отмечены правильные предупреждающие огни."
       },
       "explanationType": "vehicle-lights-and-signaling",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-378-critical-source-image"
+        "rear-warning-lights-highlighted"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-379",
-      "textRu": "Правильный вариант - \"Panel de Prevención (Objeto Rígido).\". Изображение соответствует panel de prevención para objeto rígido: он предупреждает и направляет вокруг жесткого препятствия. Неверные варианты: b-fallback-379-a2: Calzada reducida - предупреждение о сужении дороги, но не тот панельный знак, который показан. b-fallback-379-a3: Contramano - красный запрещающий знак о встречном направлении; здесь показан предупреждающий panel.",
+      "textRu": "На изображении узкая вертикальная панель с красно-белыми диагональными полосами. Такой знак обозначает предупреждающую панель у жёсткого препятствия. Это не знак сужения проезжей части: у него была бы другая пиктограмма дороги. И это не движение против установленного направления, потому что здесь нет красного запрещающего круга с соответствующим символом.",
       "correctAnswerId": "b-fallback-379-a1",
-      "correctAnswerExplanationRu": "Изображение соответствует panel de prevención para objeto rígido: он предупреждает и направляет вокруг жесткого препятствия.",
+      "correctAnswerExplanationRu": "Красно-белая диагональная панель служит для обозначения жёсткого препятствия и предупреждает водителя о нём.",
       "wrongAnswerExplanations": {
-        "b-fallback-379-a2": "Calzada reducida - предупреждение о сужении дороги, но не тот панельный знак, который показан.",
-        "b-fallback-379-a3": "Contramano - красный запрещающий знак о встречном направлении; здесь показан предупреждающий panel."
+        "b-fallback-379-a2": "Сужение проезжей части обозначается другим знаком, а не простой вертикальной полосатой панелью.",
+        "b-fallback-379-a3": "Движение против установленного направления обозначается запрещающим знаком, которого на этой картинке нет."
       },
       "explanationType": "regulatory-signs",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-379-critical-source-image"
+        "red-white-obstacle-panel"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-380",
-      "textRu": "Правильный вариант - \"Giro a la izquierda.\". Показанная seña в этом билете соответствует giro a la izquierda. Неверные варианты: b-fallback-380-a2: Adelantamiento por la izquierda - похожая формулировка с izquierda, но изображение проверяет поворот, а не обгон. b-fallback-380-a3: Detenerse - это другой сигнал из соседнего билета. Здесь правильная интерпретация картинки - поворот налево.",
+      "textRu": "На изображении велосипедист едет от камеры и вытягивает левую руку прямо в сторону; красный овал выделяет этот жест. В этом билете такой сигнал означает поворот налево. Обгон слева не подходит, потому что вопрос спрашивает именно ручной сигнал манёвра, а не действие обгона. Остановка обозначается другим жестом и на фото не показана.",
       "correctAnswerId": "b-fallback-380-a1",
-      "correctAnswerExplanationRu": "Показанная seña в этом билете соответствует giro a la izquierda.",
+      "correctAnswerExplanationRu": "Прямо вытянутая влево рука велосипедиста — это сигнал поворота налево.",
       "wrongAnswerExplanations": {
-        "b-fallback-380-a2": "Adelantamiento por la izquierda - похожая формулировка с izquierda, но изображение проверяет поворот, а не обгон.",
-        "b-fallback-380-a3": "Detenerse - это другой сигнал из соседнего билета. Здесь правильная интерпретация картинки - поворот налево."
+        "b-fallback-380-a2": "Обгон слева — другое действие; видимый жест сообщает о повороте, а не о намерении обгонять.",
+        "b-fallback-380-a3": "Остановка обозначается другим сигналом; здесь рука вытянута горизонтально в сторону."
       },
       "explanationType": "driver-hand-signals",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-380-critical-source-image"
+        "cyclist-left-arm-straight"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "visualClaims": [
+        {
+          "objectId": "cyclist-rear",
+          "objectType": "cyclist",
+          "gestureId": "cyclist-left-arm-straight",
+          "bodyPart": "left_arm",
+          "pose": "extended_straight_horizontal",
+          "actorPerspectiveDirection": "left",
+          "viewerPerspectiveDirection": "left"
+        }
+      ],
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-381",
-      "textRu": "Правильный вариант - \"No, ya que el límite de la señal de tránsito rige independientemente del día y horario.\". Правильно: posted 20 km/h sign in this tramo must be respected independently of day and school operating hours. The question contrasts sign validity with school-hour wording. Неверные варианты: b-fallback-381-a2: This confuses the special Ley 2148 ingreso/egreso formula with a posted traffic sign. A sign-limited tramo does not disappear outside school hours unless the sign itself says so.",
+      "textRu": "На изображении виден знак ограничения скорости «20» без таблички с расписанием. Поэтому ограничение действует как обычный дорожный знак — независимо от дня и времени, пока знак установлен и применим к участку. Вариант про время работы школы ошибочно переносит школьный контекст на знак: жёлтый школьный знак рядом не отменяет круглое ограничение скорости вне расписания.",
       "correctAnswerId": "b-fallback-381-a1",
-      "correctAnswerExplanationRu": "Правильно: posted 20 km/h sign in this tramo must be respected independently of day and school operating hours. The question contrasts sign validity with school-hour wording.",
+      "correctAnswerExplanationRu": "Круглый знак «20» действует сам по себе; на изображении нет указания, что ограничение применяется только в школьные часы.",
       "wrongAnswerExplanations": {
-        "b-fallback-381-a2": "This confuses the special Ley 2148 ingreso/egreso formula with a posted traffic sign. A sign-limited tramo does not disappear outside school hours unless the sign itself says so."
+        "b-fallback-381-a2": "Школьная зона рядом может объяснять осторожность, но видимый знак скорости не содержит расписания, поэтому нельзя ограничивать его только временем работы школы."
       },
       "explanationType": "pedestrian-school-zones-and-markings",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-381-critical-source-image"
+        "speed-limit-20-sign",
+        "no-schedule-panel-on-speed-sign"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-382",
-      "textRu": "Правильный вариант - \"Las bajas.\". Для ночного движения по calle de la Ciudad de Buenos Aires билет требует luces bajas. Неверные варианты: b-fallback-382-a2: Luces altas могут ослеплять и не являются правильным базовым ответом для городской calle ночью. b-fallback-382-a3: Luces de posicion solamente недостаточны для движения ночью.",
+      "textRu": "Для ночного движения по городской улице нужно использовать ближний свет. Дальний свет в городе может ослеплять встречных и попутных участников движения, поэтому он не является правильным базовым ответом. Одних габаритных огней тоже недостаточно: они обозначают автомобиль, но не дают нужного освещения для движения.",
       "correctAnswerId": "b-fallback-382-a1",
-      "correctAnswerExplanationRu": "Для ночного движения по calle de la Ciudad de Buenos Aires билет требует luces bajas.",
+      "correctAnswerExplanationRu": "Ближний свет — правильный вариант для движения ночью по улице города.",
       "wrongAnswerExplanations": {
-        "b-fallback-382-a2": "Luces altas могут ослеплять и не являются правильным базовым ответом для городской calle ночью.",
-        "b-fallback-382-a3": "Luces de posicion solamente недостаточны для движения ночью."
+        "b-fallback-382-a2": "Дальний свет не выбирают как основной режим для городской улицы, потому что он может ослеплять других.",
+        "b-fallback-382-a3": "Только габаритные огни недостаточны для безопасного движения ночью."
       },
       "explanationType": "road-types-highways-and-routes",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-383",
-      "textRu": "Правильный вариант - \"Informativa.\". Это informativa: знак сообщает полезные сведения/ориентир, а не вводит запрет или предупреждение об опасности. Неверные варианты: b-fallback-383-a1: Preventiva предупреждала бы о риске или изменении дороги; показанный знак относится к информации. b-fallback-383-a2: Reglamentaria передает обязательный приказ или запрет; изображение этого не делает.",
+      "textRu": "Правильный вариант — информационный знак: показан зелёный прямоугольный указатель с названиями населённых пунктов, стрелками и расстояниями. Такой знак сообщает водителю направление и справочную информацию. Предупреждающий знак обычно сообщает об опасности впереди, а регулирующий вводит запрет, обязанность или ограничение; здесь этого нет.",
       "correctAnswerId": "b-fallback-383-a3",
-      "correctAnswerExplanationRu": "Это informativa: знак сообщает полезные сведения/ориентир, а не вводит запрет или предупреждение об опасности.",
+      "correctAnswerExplanationRu": "Зелёный указатель с направлениями и расстояниями информирует о маршруте, поэтому это информационный знак.",
       "wrongAnswerExplanations": {
-        "b-fallback-383-a1": "Preventiva предупреждала бы о риске или изменении дороги; показанный знак относится к информации.",
-        "b-fallback-383-a2": "Reglamentaria передает обязательный приказ или запрет; изображение этого не делает."
+        "b-fallback-383-a1": "Предупреждающий знак должен заранее указывать на опасность или изменение дорожных условий, а здесь перечислены направления и расстояния.",
+        "b-fallback-383-a2": "Регулирующий знак устанавливает запрет, обязанность или ограничение; этот знак только сообщает информацию о движении по маршруту."
       },
       "explanationType": "regulatory-signs",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-383-critical-source-image"
+        "green-direction-distance-sign"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-384",
-      "textRu": "Правильный вариант - \"Tránsito pesado a la derecha.\". Tránsito pesado a la derecha требует, чтобы тяжелый транспорт двигался по правой стороне/полосе. Неверные варианты: b-fallback-384-a1: Sobrepasos por la derecha - это не значение знака; изображение касается движения тяжелого транспорта. b-fallback-384-a2: Circulación exclusiva para camión означала бы отдельную исключительную полосу, но здесь смысл другой.",
+      "textRu": "На знаке изображён грузовик и стрелка, направленная вправо. Это означает, что грузовой транспорт должен двигаться направо. Вариант про обгон справа не подходит: знак относится к грузовикам и направлению движения, а не к обгону. Вариант об исключительном движении грузовиков тоже неверен, потому что изображение указывает направление для тяжёлого транспорта.",
       "correctAnswerId": "b-fallback-384-a3",
-      "correctAnswerExplanationRu": "Tránsito pesado a la derecha требует, чтобы тяжелый транспорт двигался по правой стороне/полосе.",
+      "correctAnswerExplanationRu": "Пиктограмма грузовика вместе со стрелкой вправо указывает направление движения грузового транспорта направо.",
       "wrongAnswerExplanations": {
-        "b-fallback-384-a1": "Sobrepasos por la derecha - это не значение знака; изображение касается движения тяжелого транспорта.",
-        "b-fallback-384-a2": "Circulación exclusiva para camión означала бы отдельную исключительную полосу, но здесь смысл другой."
+        "b-fallback-384-a1": "Обгон справа не связан с изображённым грузовиком и стрелкой направления.",
+        "b-fallback-384-a2": "Знак не сообщает об исключительной полосе или дороге только для грузовиков; он показывает направление для такого транспорта."
       },
       "explanationType": "regulatory-signs",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-384-critical-source-image"
+        "truck-right-arrow-symbol"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-385",
-      "textRu": "Правильный вариант - \"El peatón.\". Правильно: приоритет в этой ситуации у peatón. Водитель должен остановиться/ждать, а не пытаться проскочить перед человеком на переходе. Неверные варианты: b-fallback-385-a2: El conductor не получает priority of passage только потому, что едет по дороге. В зоне crossing пешеход имеет приоритет. b-fallback-385-a3: Es indistinto опасно: билет требует выбрать конкретного участника с приоритетом, а не договариваться на ходу.",
+      "textRu": "На изображении виден пешеходный переход на перекрёстке и автомобиль, подъезжающий к нему. В такой ситуации приоритет у пешехода: водитель должен уступить человеку, который пересекает проезжую часть по переходу. Вариант с приоритетом водителя неверен, а «без разницы» не подходит, потому что наличие перехода и пешехода задаёт конкретное правило.",
       "correctAnswerId": "b-fallback-385-a1",
-      "correctAnswerExplanationRu": "Правильно: приоритет в этой ситуации у peatón. Водитель должен остановиться/ждать, а не пытаться проскочить перед человеком на переходе.",
+      "correctAnswerExplanationRu": "Пешеход на переходе имеет приоритет перед водителем, подъезжающим к пересечению.",
       "wrongAnswerExplanations": {
-        "b-fallback-385-a2": "El conductor не получает priority of passage только потому, что едет по дороге. В зоне crossing пешеход имеет приоритет.",
-        "b-fallback-385-a3": "Es indistinto опасно: билет требует выбрать конкретного участника с приоритетом, а не договариваться на ходу."
+        "b-fallback-385-a2": "Водитель не имеет приоритета перед пешеходом на переходе; он должен уступить.",
+        "b-fallback-385-a3": "Ситуация не является произвольной: разметка перехода и присутствие пешехода определяют приоритет."
       },
-      "explanationType": "pedestrian-crossings-and-priority",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "pedestrian-school-zones-and-markings",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-385-critical-source-image"
+        "pedestrian-on-zebra-crossing"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-386",
-      "textRu": "Правильный вариант - \"Dejar el motor y las luces encendidas.\". Правильно: во время заправки dejar el motor y las luces encendidas запрещено в логике билета и Ley 2148. Неверные варианты: b-fallback-386-a1: Находиться cerca del surtidor - не запрещенное действие, которое здесь спрашивают. Контекст картинки с заправкой указывает на motor y luces encendidas. b-fallback-386-a3: Only motor encendido неполно. Ожидаемый вариант включает и motor, и luces.",
+      "textRu": "На фото автомобиль заправляется: топливный пистолет вставлен в горловину бака. В такой ситуации запрещено оставлять включёнными двигатель и огни, потому что во время заправки нужно снизить риск воспламенения и лишних источников опасности. Просто находиться рядом с колонкой не является ответом билета, а вариант «только двигатель» неполный: правильный ответ включает и двигатель, и фары.",
       "correctAnswerId": "b-fallback-386-a2",
-      "correctAnswerExplanationRu": "Правильно: во время заправки dejar el motor y las luces encendidas запрещено в логике билета и Ley 2148.",
+      "correctAnswerExplanationRu": "При заправке автомобиля нужно выключить двигатель и огни; именно эта запрещённая ситуация проверяется в билете.",
       "wrongAnswerExplanations": {
-        "b-fallback-386-a1": "Находиться cerca del surtidor - не запрещенное действие, которое здесь спрашивают. Контекст картинки с заправкой указывает на motor y luces encendidas.",
-        "b-fallback-386-a3": "Only motor encendido неполно. Ожидаемый вариант включает и motor, и luces."
+        "b-fallback-386-a1": "Само нахождение рядом с колонкой не является тем запретом, который указан в правильном ответе.",
+        "b-fallback-386-a3": "Этот вариант неполный: билет требует не оставлять включёнными и двигатель, и фары."
       },
       "explanationType": "vehicle-condition-maintenance-loads",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-386-critical-source-image"
+        "fuel-nozzle-in-car"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-387",
-      "textRu": "Правильный вариант - \"30 kilómetros por hora.\". Для calle в encrucijada sin semáforos límite superior de velocidad precautoria - 30 km/h. Неверные варианты: b-fallback-387-a1: 20 km/h относится к paso a nivel или другим специальным условиям, не к обычному cruce de dos calles sin semáforos. b-fallback-387-a2: 40 km/h относится к avenida sin semáforos, а вопрос говорит о cruce de dos calles.",
+      "textRu": "Изображение показывает пересечение обычных городских улиц без видимого светофора. Для такого перекрёстка верхний предел осторожной скорости — 30 км/ч. 20 км/ч относится к другим более ограниченным ситуациям, а 40 км/ч применяют к проспекту; здесь на фото не показан проспект, а вопрос говорит именно о двух улицах.",
       "correctAnswerId": "b-fallback-387-a3",
-      "correctAnswerExplanationRu": "Для calle в encrucijada sin semáforos límite superior de velocidad precautoria - 30 km/h.",
+      "correctAnswerExplanationRu": "Для пересечения двух обычных улиц без светофоров правильный верхний предел осторожной скорости — 30 км/ч.",
       "wrongAnswerExplanations": {
-        "b-fallback-387-a1": "20 km/h относится к paso a nivel или другим специальным условиям, не к обычному cruce de dos calles sin semáforos.",
-        "b-fallback-387-a2": "40 km/h относится к avenida sin semáforos, а вопрос говорит о cruce de dos calles."
+        "b-fallback-387-a1": "20 км/ч слишком мало для указанного в билете пересечения двух обычных улиц и относится к другим специальным случаям.",
+        "b-fallback-387-a2": "40 км/ч связано с проспектом, но здесь вопрос и изображение описывают пересечение улиц."
       },
       "explanationType": "traffic-lights-and-rail-crossings",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-387-critical-source-image"
+        "ordinary-street-intersection-no-signal"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-388",
-      "textRu": "Правильный вариант - \"Se deben encender las balizas y, en lo posible, colocar balizas portátiles del lado de donde provienen los vehículos a una distancia adecuada del vehículo.\". Правильно: encender las balizas и, по возможности, colocar balizas portátiles del lado de donde provienen los vehículos a una distancia adecuada. Неверные варианты: b-fallback-388-a1: Luces bajas плюс balizas portátiles delante y detrás не совпадает с ожидаемым ответом для этого tipo de calle: главное - balizas и размещение со стороны приближающегося потока. b-fallback-388-a2: Luces altas здесь не нужны и могут мешать. Кроме того, вариант говорит только detrás, а билет требует учитывать сторону, откуда идут vehículos.",
+      "textRu": "Изображение показывает улицу с движением в одном направлении: это видно по уличным стрелкам. Если на такой улице после ДТП автомобиль обездвижен, нужно включить аварийную сигнализацию и поставить переносные аварийные знаки со стороны, откуда приближается транспорт, на достаточном расстоянии. Ставить их спереди и сзади как на двусторонней дороге не является лучшим ответом для такого типа улицы, а дальний свет не заменяет аварийное обозначение.",
       "correctAnswerId": "b-fallback-388-a3",
-      "correctAnswerExplanationRu": "Правильно: encender las balizas и, по возможности, colocar balizas portátiles del lado de donde provienen los vehículos a una distancia adecuada.",
+      "correctAnswerExplanationRu": "На улице с односторонним движением предупреждающие знаки ставят со стороны приближения транспорта, а автомобиль обозначают аварийной сигнализацией.",
       "wrongAnswerExplanations": {
-        "b-fallback-388-a1": "Luces bajas плюс balizas portátiles delante y detrás не совпадает с ожидаемым ответом для этого tipo de calle: главное - balizas и размещение со стороны приближающегося потока.",
-        "b-fallback-388-a2": "Luces altas здесь не нужны и могут мешать. Кроме того, вариант говорит только detrás, а билет требует учитывать сторону, откуда идут vehículos."
+        "b-fallback-388-a1": "Ближний свет и знаки перед и позади автомобиля не учитывают, что на показанной улице транспорт приближается с одной стороны.",
+        "b-fallback-388-a2": "Дальний свет не является правильным способом обозначить место ДТП; переносные знаки должны стоять со стороны приближения транспорта."
       },
-      "explanationType": "vehicle-lights-and-signaling",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "incident-and-breakdown-signaling",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-388-critical-source-image"
+        "one-way-street-direction-signs"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "human_reviewed_machine",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
