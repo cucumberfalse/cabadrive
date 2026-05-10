@@ -3,7 +3,7 @@
 ## MVP Features
 
 - Official source registry with source ownership, jurisdiction, verification date, and hashes.
-- Governed official-documents archive foundation at `content/official-documents/` for verbatim official source materials, manifest metadata, exact-text/currentness validation expectations, and future source-document rules.
+- Governed official-documents archive at `content/official-documents/` for verbatim official source materials, manifest metadata, exact-text/currentness validation expectations, and future source-document rules. The archive currently has a broader manifest than the original three-source seed; implementation-time inventory for feature `016` observed 19 entries.
 - Content validation pipeline for source records, exam config, fallback question data, local images, and unofficial support layers.
 - Category B practice question presentation in Spanish with source traceability and non-official fallback labeling.
 - Unofficial Russian translation and explanation layers, clarified at product/status level and revealed intentionally inside question practice instead of shown by default.
@@ -12,6 +12,7 @@
 - Mistake tracking and repeated-error review loop.
 - Exam-oriented vocabulary module with topic grouping and search.
 - Topic materials module that renders the draft `006` topic study guide with topic list/detail, Russian learning material, Spanish terms, trap notes, canonical ticket blocks, and local images.
+- Planned `Источники` / official primary-source reader from feature `016`, not implemented in the current product yet: it should expose every official manifest entry as a local reference surface, default to simple Russian, allow full Russian translation and original Spanish views, and keep all Russian source-reader content outside `content/official-documents/`.
 - Guide module focused on CABA-vs-RF differences that matter for exam outcomes.
 - Offline-capable local-first behavior after build.
 - Docker-only local runtime with `make build`, `make up`, and `make down`.
@@ -24,6 +25,7 @@
 - Important boundary: A/A4, motorcycle, and other non-B question sources are not used for practice questions.
 - Source guard behavior: this is a source-level eligibility rule, not a text-level topic filter. Valid category B practice material may mention motorcycles, motovehicles, ciclomotors, parking areas, lanes, signs, or other shared-road topics when the source `practiceQuestionScope` explicitly allows category B.
 - Question images are part of the learning surface and are stored locally in the repository for offline use.
+- Official primary-source documents are separate from practice-question availability. They support source traceability and future reader behavior, but their presence does not make the current practice set an official full GCBA question bank.
 
 ## Post-MVP Candidates
 
