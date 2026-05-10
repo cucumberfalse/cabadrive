@@ -13,15 +13,19 @@ Create one folder per repository-changing feature or change:
 `feature-request.md` is the Analyst intake artifact. It records the original
 request, clarification Q&A, assumptions, project context, external research
 when used, open questions, risks, and acceptance expectations before Architect
-planning starts.
+planning starts. When Orchestrator later invokes final Analyst validation after
+Architect passes, the same artifact may receive append-only Analyst-owned final
+validation notes.
 
 Repository-changing requests default to Orchestrator entry. Orchestrator
 fetches or otherwise verifies latest `origin/main`, creates or requires a fresh
 isolated intake worktree/branch, invokes Analyst first when no current
 `feature-request.md` exists, relays any Analyst clarification questions to the
 user, returns answers to Analyst, and takes the Analyst-created latest-main
-intake branch/worktree context forward after Analyst handoff. Analyst is the
-only normal-flow role that may initiate user requirement clarification.
+intake branch/worktree context forward after Analyst handoff. Analyst shuts down
+after intake until Orchestrator explicitly invokes final Analyst validation or a
+new intake request. Analyst is the only normal-flow role that may initiate user
+requirement clarification.
 
 The Analyst-created latest-main handoff context may continue through Architect
 planning. It may become the single implementation PR slice only when

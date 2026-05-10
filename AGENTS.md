@@ -46,16 +46,17 @@ After Analyst creates the latest-main intake branch/worktree context and `featur
 
 ### Analyst
 
-- Owns repository request intake before architecture work starts.
+- Owns repository request intake before architecture work starts, and owns final Analyst validation only when Orchestrator invokes it after final Architect validation passes.
 - Creates the next `specs/<feature-id>/` folder using the max existing numeric prefix under `specs/` plus one, zero-padded to three digits, followed by a short slug.
 - If duplicate numeric prefixes already exist, still uses the maximum numeric prefix plus one; if a collision occurs on the target folder name, chooses a clearer slug or asks the Orchestrator to coordinate before writing.
 - Splits independent goals into separate feature folders, or records why a split is deferred.
 - Runs a Q&A loop through Orchestrator until requirements are clear enough for architecture work, or records explicit assumptions and open questions.
 - Initiates normal-flow user requirement clarification only by passing concise questions to Orchestrator; Analyst does not independently conduct direct user Q&A outside that relay.
 - Uses public-safe external research when current or external practice context would improve the request, and records sources used.
-- Writes exactly one intake artifact, `feature-request.md`, combining the original request, user answers, project context, research, assumptions, risks, open questions, and acceptance expectations.
-- Writes no code, technical plan, implementation tasks, reviews, commits, PRs, or files outside the assigned intake artifact.
-- Hands off to the Orchestrator after `feature-request.md` is ready, then shuts down.
+- Writes exactly one intake artifact, `feature-request.md`, during intake, combining the original request, user answers, project context, research, assumptions, risks, open questions, and acceptance expectations.
+- When Orchestrator invokes final Analyst validation after Architect passes, may append Analyst-owned final validation notes to `feature-request.md`, increment the Analyst return count for gaps, and create a new feature request only on limit-exceeded escalation.
+- Writes no code, technical plan, implementation tasks, Architect artifacts, reviews, commits, pushes, PRs, merge actions, or files outside the assigned Analyst-owned artifact section.
+- Hands off to the Orchestrator after intake `feature-request.md` is ready, then shuts down until Orchestrator explicitly invokes final Analyst validation or a new intake request.
 - Must not switch into Architect, Implementation Agent, Review Agent, or Orchestrator work during the same task. If additional work is needed, Orchestrator reroutes it.
 
 ### Architect
@@ -134,7 +135,7 @@ After Analyst creates the latest-main intake branch/worktree context and `featur
 - Large or risky work should be decomposed into atomic PR slices when separation lowers risk or clarifies gates, including source prerequisites, Architect dispositions, content implementation, metadata fixes, final strict gates, and review fixes.
 - Every repository-changing user request must be represented by its own `specs/<feature-id>/` folder before implementation.
 - Analyst-created feature folders start with `feature-request.md`; Architect then adds `spec.md`, `plan.md`, and `tasks.md`.
-- Analyst-created intake branches/worktrees are handoff context for Orchestrator; Analyst shuts down, and Orchestrator continues by invoking Architect, Implementation Agent, and Review Agent as needed.
+- Analyst-created intake branches/worktrees are handoff context for Orchestrator; Analyst shuts down after intake, and Orchestrator continues by invoking Architect, Implementation Agent, and Review Agent as needed. Final Analyst validation is a later Orchestrator-invoked role action, limited to Analyst-owned validation notes in `feature-request.md` or a new feature request only on limit-exceeded escalation.
 - Analyst-owned final validation notes may be appended to `feature-request.md` only when Orchestrator invokes final Analyst validation. Analyst validates the final result against the customer's desired outcome in spirit and letter using the original request, clarified answers, assumptions, and acceptance expectations. Analyst gaps update only Analyst-owned validation notes, increment the Analyst return count, and must be routed to Architect for disposition before follow-up development. Analyst may return work at most 5 times per work cycle; if another Analyst gap would exceed that limit, Analyst creates a new feature request in a separate latest-main branch/worktree.
 - Repository-changing PRs require complete implementation feature memory: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except legacy feature folders created before Analyst adoption may explicitly record why no intake artifact exists.
 - Acceptance criteria must be verified with evidence, not only an AI-written summary.

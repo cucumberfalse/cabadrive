@@ -45,7 +45,7 @@ Before completion or authorized merge mechanics, Orchestrator must track the wor
 ## Workflow
 
 1. Orchestrator receives repository-changing work by default, remains in the Orchestrator role, verifies latest `origin/main`, creates or requires a fresh isolated environment, and invokes Analyst first when no current `feature-request.md` exists.
-2. Analyst creates the next numbered feature folder, writes `feature-request.md`, routes any normal-flow requirement clarification through Orchestrator, then hands off and shuts down.
+2. Analyst creates the next numbered feature folder, writes the intake `feature-request.md`, routes any normal-flow requirement clarification through Orchestrator, then hands off and shuts down until Orchestrator explicitly invokes final Analyst validation or a new intake request.
 3. Orchestrator takes the Analyst-created intake context forward and invokes Architect after Analyst handoff.
 4. Architect writes `spec.md`, `plan.md`, and `tasks.md`, including implementation, review, and test/verification requirements.
 5. Orchestrator assigns implementation in an isolated latest-main worktree/branch/PR slice and does not directly edit repository files.

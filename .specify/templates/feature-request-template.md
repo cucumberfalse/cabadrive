@@ -44,9 +44,9 @@ If external research was not used, record why it was unnecessary or unsafe for t
 
 ## Artifact And Handoff Expectations
 
-- Analyst writes only this `feature-request.md` intake artifact.
+- Analyst writes only this `feature-request.md` intake artifact during intake.
 - Requirement clarification, when needed, is initiated only by Analyst and relayed through Orchestrator.
-- Analyst hands off to Orchestrator and shuts down after intake is ready.
+- Analyst hands off to Orchestrator and shuts down after intake is ready, until Orchestrator explicitly invokes final Analyst validation after Architect passes or assigns a new intake request.
 - Architect starts from this artifact and writes `spec.md`, `plan.md`, and `tasks.md`.
 - Handoff context for Orchestrator: `[intake branch/worktree, feature folder, and any known parallel-work constraints.]`
 - The Analyst-created latest-main handoff context may continue through Architect planning and may become the single implementation PR slice only if Orchestrator explicitly assigns it that way; additional task slices require separate latest-main isolated worktrees/branches/PRs.
@@ -70,3 +70,4 @@ Analyst validation after final Architect validation passes.
 - Gaps, if any: `[Analyst-owned note only; do not plan implementation here.]`
 - Architect disposition routing: `[Orchestrator must route any Analyst feedback to Architect for accept/task/ticket/dispose before follow-up development.]`
 - Analyst limit escalation: `[If another gap would exceed 5 returns, Analyst creates a new feature request in a separate latest-main branch/worktree and records the handoff.]`
+- Analyst boundary reminder: `[Do not edit Architect artifacts, code, reviews, commits, pushes, PRs, merge state, or files outside Analyst-owned intake/final-validation notes except the new feature request required by limit-exceeded escalation.]`

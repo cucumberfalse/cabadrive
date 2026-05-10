@@ -13,10 +13,12 @@ otherwise verifies latest `origin/main`, creates or requires a fresh isolated
 worktree/branch from that latest main, records the base context, and preserves
 parallel work. When no current `feature-request.md` exists, Orchestrator invokes
 Analyst first for intake while remaining strictly in the Orchestrator role.
-Analyst creates the next numbered `specs/<feature-id>/` folder, writes
-`feature-request.md`, hands off the latest-main intake branch/worktree context
-to Orchestrator, and shuts down. The Architect then writes `spec.md`, `plan.md`,
-and `tasks.md` from that intake artifact before implementation begins.
+Analyst creates the next numbered `specs/<feature-id>/` folder, writes the
+intake `feature-request.md`, hands off the latest-main intake branch/worktree
+context to Orchestrator, and shuts down until Orchestrator explicitly invokes
+final Analyst validation or a new intake request. The Architect then writes
+`spec.md`, `plan.md`, and `tasks.md` from that intake artifact before
+implementation begins.
 
 The Analyst-created latest-main handoff context may continue through Architect
 planning. Orchestrator may also assign that same handoff branch/worktree as the
@@ -56,13 +58,17 @@ Agents stay inside the role assigned for the current task. They must not switch
 roles mid-task; when different work is needed, the Orchestrator reroutes it to a
 new or existing subagent with the correct role.
 
-- Analyst creates only `feature-request.md`, does not write plans, code,
-  reviews, commits, pushes, or PRs, and shuts down after handoff.
+- Analyst creates only the intake `feature-request.md` during intake, does not
+  write plans, Architect artifacts, code, reviews, commits, pushes, PRs, merge
+  actions, or non-Analyst-owned files, and shuts down after handoff until
+  Orchestrator explicitly invokes final Analyst validation or a new intake
+  request.
 - Analyst final validation, when invoked after Architect passes, checks the
   final result against the customer's desired outcome in spirit and letter using
   the original request, clarified answers, assumptions, and acceptance
   expectations. Analyst updates only append-only Analyst-owned validation notes
-  in `feature-request.md`.
+  in `feature-request.md`, or creates a new feature request only when
+  limit-exceeded escalation requires it.
 - Analyst is the only normal-flow role that may initiate user requirement
   clarification. Analyst passes concise questions to Orchestrator; Orchestrator
   asks the user and returns the answers to Analyst before intake completes.
