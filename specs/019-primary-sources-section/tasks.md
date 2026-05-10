@@ -637,6 +637,17 @@
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 147 Node tests, 147 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #85 base sync over fresh PR #77 head on 2026-05-10:
+  - Fetched and merged `origin/codex/016-primary-sources-chunk-inventory` at `797353278c33f6a3762a4edf42afa617dde29a3c` into `codex/016-primary-sources-content-shards`.
+  - Merge completed with no conflict files while preserving PR #85 shard-loader work and PR #77 coverage generator fixes.
+  - Preserved the generated coverage inventory at 19 documents and 5,225 chunks.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `ley-26994-codigo-civil-comercial` has 3,261 chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `npm run validate:content` passed in draft/default mode. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring. The actual primary-source coverage mode was also run with `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` and passed with the same content-validation summary.
+  - `npm test` passed as the feasible full test command for this Node test-runner project: 153 tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
 - Slice B PR #74 standalone draft marker follow-up on 2026-05-10:
   - Addressed `PRRT_kwDOSX65IM6A6Kmh`: strict/final placeholder validation now rejects standalone draft markers including `DRAFT translation`, `draft rewrite`, `Черновой перевод`, and `Черновик`.
   - Added focused regression tests for standalone English and Russian draft markers in approved strict-mode learner content.
@@ -647,3 +658,16 @@
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #91 terminology sync over fresh PR #85 base on 2026-05-10:
+  - Worktree `/Users/chap/devel/cabadrive-016-primary-sources-terminology` was clean before sync and remained on branch `codex/016-primary-sources-terminology`.
+  - Fetched and merged `origin/codex/016-primary-sources-content-shards`; first merge included expected base head `ca7db1433d24264e1586bf8fe2759f9b0612c63d`, then a second merge incorporated the fresher base head `35abd0c91a734bc29b81eb1ac97e25278810817b`.
+  - Merge completed without manual conflict resolution. Final head has `origin/codex/016-primary-sources-content-shards` as an ancestor and preserves PR #91 terminology work plus upstream PR #85 shard-loader and PR #77 coverage-inventory changes.
+  - Final PR diff versus the synced base remains limited to `content/primary-sources/AGENTS.md`, `content/primary-sources/terminology.ru.md`, and this process-memory file. No translations, UI, official archive files, or unrelated runtime changes were added.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the current script argument wiring. `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` also passed as the actual primary-source coverage mode.
+  - `node scripts/primary-sources-generate-coverage.mjs --check --summary` passed. Output summary: 19 documents, 5,225 chunks; `ley-26994-codigo-civil-comercial` has 3,261 chunks.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `npm test -- --run` was not feasible because the Node test runner script treats `--run` as a file path and failed with `Could not find .../--run`; `npm test` was run instead and passed: 153 tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite production build completed, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - `git diff --check` passed with no output.
+  - No blockers remain from this sync loop.
