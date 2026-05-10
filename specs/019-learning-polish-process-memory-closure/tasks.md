@@ -66,13 +66,13 @@
 
 ## Review Requirements
 
-- [ ] T047 Review Agent verifies complete feature `019` memory exists and role boundaries were followed.
-- [ ] T048 Review Agent verifies changed files are limited to allowed process-memory files.
-- [ ] T049 Review Agent verifies feature `013` T096-T112 closure is explicitly labeled as post-merge via feature `019`.
-- [ ] T050 Review Agent verifies chronology is preserved and no false pre-merge completion claim was introduced.
-- [ ] T051 Review Agent verifies evidence supports the closed review/check/final-validation items.
-- [ ] T052 Review Agent verifies no learner-facing product, content, tests, runtime, CI, or unrelated docs changed.
-- [ ] T053 Review Agent verifies this `tasks.md` contains current verification evidence, known issues, and Implementation Agent feedback disposition before merge readiness.
+- [x] T047 Review Agent verifies complete feature `019` memory exists and role boundaries were followed.
+- [x] T048 Review Agent verifies changed files are limited to allowed process-memory files.
+- [x] T049 Review Agent verifies feature `013` T096-T112 closure is explicitly labeled as post-merge via feature `019`.
+- [x] T050 Review Agent verifies chronology is preserved and no false pre-merge completion claim was introduced.
+- [x] T051 Review Agent verifies evidence supports the closed review/check/final-validation items.
+- [x] T052 Review Agent verifies no learner-facing product, content, tests, runtime, CI, or unrelated docs changed.
+- [x] T053 Review Agent verifies this `tasks.md` contains current verification evidence, known issues, and Implementation Agent feedback disposition before merge readiness.
 
 ## Process Memory
 
@@ -103,6 +103,8 @@
 - Scope decision, 2026-05-10: only `specs/013-learning-content-ui-polish/tasks.md` and `specs/019-learning-polish-process-memory-closure/tasks.md` are in the assigned write scope. No product, content, test, runtime, CI, scripts, durable product docs, or unrelated feature memory edits are in scope.
 - Closure edit, 2026-05-10: updated `specs/013-learning-content-ui-polish/tasks.md` to check T096-T112 and added a `Feature 019 Post-Merge Closure` note that preserves chronology, records PR #69 Git/GitHub evidence, and cites feature `019` intake for Architect PASS, Analyst PASS, and post-merge latest-main validation evidence.
 - Latest-main sync follow-up, 2026-05-10: Orchestrator merged current `origin/main` into this feature branch as merge commit `8ebeea768f936919c903983f07bacb6c423f4ca4` (`Merge origin/main into learning polish process memory closure`). The merge parents are feature head `1977874f4cf653d10a38949fd130b2481424c3c8` and latest `origin/main` `870c7f9514404b36cf75954c3c39814770495342` (`[codex] Implement UI UX learning overlays (#83)`, `2026-05-10T11:53:09-03:00`).
+- Review Agent pass, 2026-05-10: Review Agent reviewed PR #86 head `3baf89033948310953e132fe256dc27dc0180f6b` and reported no findings at `https://github.com/cucumberfalse/cabadrive/pull/86#issuecomment-4415594461`. Scope reviewed: expected changed-file scope, complete feature `019` memory, post-merge feature `013` T096-T112 closure/chronology, PR #69 evidence, and no product/content/test/runtime/CI/unrelated docs changes.
+- Post-review process-memory note, 2026-05-10: this update marks T047-T053 and records the Review Agent pass after the reviewed head. Because this is a process-memory update after review, Orchestrator must re-check latest-head diff scope, required checks, and review status before merge.
 
 ### Dead Ends
 
@@ -130,6 +132,7 @@
 - Final post-#83 latest-base `pnpm run preflight` passed after the Orchestrator merge of `origin/main` `870c7f9514404b36cf75954c3c39814770495342`: feature-memory gate passed; repository baseline check passed; content validation passed with difficulty labels for 460 questions and 38 topics plus 460 category B fallback questions and 276 local image references; `pnpm run test` passed 116 Node tests; `pnpm run build` passed and generated a service worker with 280 cached assets, with the existing Vite large chunk warning; `pnpm run test:e2e` passed 30 Playwright tests across `chromium` and `mobile`.
 - `git diff --name-only --diff-filter=U` returned no paths, confirming no unresolved merge conflicts.
 - Earlier pre-commit status evidence: `git status --short --branch` showed only `M specs/013-learning-content-ui-polish/tasks.md` and untracked `specs/019-learning-polish-process-memory-closure/` process-memory files. Latest-main sync status before this wording-only follow-up showed `## codex/019-learning-polish-process-memory-closure...origin/codex/019-learning-polish-process-memory-closure [ahead 2]` with no dirty paths. No learner-facing product behavior, content, tests, runtime files, CI files, scripts, durable product docs, or unrelated feature memory changed.
+- Review Agent evidence: PR #86 review comment `https://github.com/cucumberfalse/cabadrive/pull/86#issuecomment-4415594461` reported no findings on head `3baf89033948310953e132fe256dc27dc0180f6b` after reviewing expected changed-file scope, complete feature `019` memory, feature `013` post-merge closure chronology, PR #69 evidence, and the absence of product/content/test/runtime/CI/unrelated docs changes.
 
 ### Implementation Agent Feedback
 
