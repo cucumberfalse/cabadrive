@@ -32,6 +32,17 @@ function clone(value) {
   return structuredClone(value);
 }
 
+function renderedTopicGuideText(topic) {
+  return [
+    topic.summaryRu,
+    ...topic.learningMaterialRu,
+    ...(topic.practicalReasoningRu || []),
+    ...(topic.spanishTerms || []).map((term) => `${term.termEs} ${term.translationRu}`),
+    ...(topic.trapNotes || []).map((note) => note.textRu),
+    ...(topic.tickets || []).flatMap((ticket) => ticket.answerExplanations.map((explanation) => explanation.explanationRu))
+  ].join("\n");
+}
+
 function guide(overrides = {}) {
   return {
     version: 1,
@@ -181,22 +192,18 @@ test("current topic guide placeholder and manifests pass draft validation", () =
   );
 });
 
-test("parking clearance material teaches hospital entrance ten-meter rule and five-meter trap", () => {
+test("parking clearance material teaches hospital ten-meter rule, five-meter trap, and institution timing contrast", () => {
   const currentGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
   const parkingTopic = currentGuide.topics.find((topic) => topic.id === "parking-clearances-and-corners");
   assert(parkingTopic, "Expected parking-clearances-and-corners topic to exist.");
 
-  const topicText = [
-    ...parkingTopic.learningMaterialRu,
-    ...parkingTopic.spanishTerms.map((term) => `${term.termEs} ${term.translationRu}`),
-    ...parkingTopic.trapNotes.map((note) => note.textRu),
-    ...parkingTopic.tickets
-      .filter((ticket) => ["b-fallback-028", "b-fallback-412"].includes(ticket.questionId))
-      .flatMap((ticket) => ticket.answerExplanations.map((explanation) => explanation.explanationRu))
-  ].join("\n");
+  const topicText = renderedTopicGuideText(parkingTopic);
 
   assert.match(topicText, /hospital\/centro de salud -> 10 metros de cada lado de la entrada|hospital\/centro de salud .*10 metros de cada lado de la entrada/s);
   assert.match(topicText, /5 metros de cada lado de la entrada .*trap|5 metros de cada lado de la entrada .*falso|5 metros de cada lado de la entrada .*wrong/s);
+  assert.match(topicText, /en horas de clase/);
+  assert.match(topicText, /oficios.*ceremonias|ceremonias.*oficios/s);
+  assert.match(topicText, /horario de atención al público/);
 });
 
 test("planned full coverage passes without requiring rendered content for planned assignments", () => {
