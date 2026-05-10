@@ -11858,7 +11858,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "efe538a7124015ca270bef740d7e92e3525478d098f76ee19714b84d2dc79614",
+        "sourceFingerprint": "b33c99e1bbfc855d16eb7714f687c079be38c0fd8c377a9e1002b4922762cbff",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -11875,23 +11875,23 @@
           ]
         }
       },
-      "titleRu": "Базовый приоритет на перекрестках",
-      "summaryRu": "Блок про prioridad de paso на обычных cruces/encrucijadas, порядок autoridad-señales-normas, правило avenida/calle/derecha, запрет блокировать перекресток и билеты-ловушки со знаками, перестроением, задним ходом и плохой видимостью.",
+      "titleRu": "Приоритет на обычных перекрестках",
+      "summaryRu": "Как отвечать на билеты про prioridad de paso на обычных cruces/encrucijadas: сначала смотрите регулировщика, светофор, знаки и разметку, затем avenida/calle/derecha. Отдельно держите ловушки про блокировку перекрестка, перестроение, задний ход, стоянку и туман.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах про cruce или intersección сначала ищите, есть ли autoridad, semáforo, señal vertical или demarcación. Только если специального сигнала нет, переходите к общей логике prioridad de paso.",
-        "Нормативная иерархия в CABA простая для экзамена: órdenes de autoridad стоят выше временной/обстоятельственной señalización, затем идут semáforos, vertical signs и demarcación horizontal, а уже потом общие нормы. Поэтому на картинке с агентом, PARE и semáforo правильный ответ - autoridad.",
-        "В encrucijadas sin semáforo CABA сначала сравнивает jerarquía de arterias: avenida важнее calle, calle важнее pasaje. Если дороги одинаковой jerarquía, обычно уступают тому, кто cruza desde su derecha; но исключения и señales могут поменять ответ.",
-        "Не въезжайте в intersección или cruce peatonal, если поток впереди может остановить вас внутри и bloquear la circulación transversal. Даже зеленый свет или общий приоритет не дают права закрыть перекресток.",
-        "PARE означает полную остановку перед encrucijada; CEDA EL PASO означает потерю обычной prioridad без обязательной остановки, если можно безопасно пропустить; PREFERENCIA DE AVANCE на встречной узкой зоне может означать, что именно вы pierde la prioridad de avance.",
-        "Предупреждающие знаки типа encrucijada, bifurcación или incorporación de tránsito lateral не дают приоритет сами по себе. Они предупреждают: снизить скорость, посмотреть порядок потоков и применить правило ситуации.",
-        "Часть билетов здесь смешанная. Cambio de carril решается не правой стороной, а тем, кто уже circula por el carril que se pretende ocupar; sobrepaso около encrucijadas/curvas/puentes/pasos a nivel запрещается как опасная маневра; marcha atrás не используется для исправления пропущенного giro.",
-        "Если картинка показывает туман, ciclovía, знак No estacionar или знак giro obligatorio, это соседние темы, но здесь они полезны как ловушки: не переносите правило prioridad de paso туда, где вопрос спрашивает безопасность, стоянку, направление или маневр."
+        "Этот блок - неофициальная подсказка Cabadrive. В вопросах про cruce или intersección не начинайте сразу с привычного “кто справа”. Сначала проверьте, есть ли autoridad, semáforo, señal vertical или demarcación. Только потом применяйте общее правило prioridad de paso.",
+        "Для экзамена иерархия в CABA такая: primero autoridad, затем временная или обстоятельственная señalización, потом semáforos, señales verticales и demarcación horizontal, а после них общие нормы. Поэтому на картинке с агентом, PARE и semáforo выбирайте autoridad.",
+        "В encrucijadas sin semáforo CABA смотрит на jerarquía de arterias: avenida важнее calle, calle важнее pasaje. Если дороги одного уровня, обычно работает derecha. Для водителя из РФ подвох в том, что слово avenida может быть важнее привычной “помехи справа”.",
+        "Не въезжайте в intersección или cruce peatonal, если впереди пробка и вы можете застрять внутри. Даже зеленый сигнал или ваш приоритет не разрешают bloquear la circulación transversal.",
+        "PARE - это полная остановка перед encrucijada. CEDA EL PASO - уступить, но останавливаться нужно только если без этого нельзя пропустить безопасно. PREFERENCIA DE AVANCE в узком месте может означать, что именно вы теряете prioridad de avance.",
+        "Предупреждающие знаки encrucijada, bifurcación или incorporación de tránsito lateral сами по себе не дают приоритет. Они говорят: сбросьте скорость, посмотрите на потоки и примените правило ситуации.",
+        "Некоторые билеты здесь рядом с другими темами. Cambio de carril решается по тому, кто уже едет в carril que se pretende ocupar. Sobrepaso рядом с encrucijadas, curvas, puentes или pasos a nivel опасен и запрещается. Marcha atrás не используют, чтобы вернуться к пропущенному giro.",
+        "Если на картинке туман, ciclovía, No estacionar или giro obligatorio, не тяните туда правило перекрестка. Вопрос может проверять безопасность, стоянку, направление или отдельный маневр."
       ],
       "practicalReasoningRu": [
-        "Приоритет делает перекресток предсказуемым: все водители должны понять один и тот же порядок, а не угадывать намерения друг друга.",
-        "Иерархия avenida/calle/pasaje нужна потому, что потоки на более крупных arterias обычно плотнее; правило derecha работает как простой резерв, когда дороги равны.",
-        "Запрет блокировать intersección защищает поперечный поток и пешеходов: лучше подождать перед линией, чем застрять посередине и создать конфликт.",
-        "Знаки PARE, CEDA и PREFERENCIA DE AVANCE заранее снимают спор о том, кто едет первым, особенно там, где геометрия перекрестка или узкого места может ввести в заблуждение."
+        "Приоритет нужен не для спора, а для предсказуемости: все водители должны понять один и тот же порядок движения.",
+        "Иерархия avenida/calle/pasaje помогает не смешивать крупный поток с маленькой улицей. Правило derecha остается запасным правилом для равных дорог.",
+        "Запрет блокировать intersección защищает поперечный поток и пешеходов. Лучше подождать перед линией, чем встать посередине и закрыть всем дорогу.",
+        "PARE, CEDA и PREFERENCIA DE AVANCE заранее снимают спор, особенно на сложном перекрестке или в узком месте."
       ],
       "spanishTerms": [
         {
@@ -11932,7 +11932,7 @@
         {
           "id": "row-basic-term-arteria",
           "termEs": "arteria",
-          "translationRu": "дорога/транспортная артерия",
+          "translationRu": "улица/дорога в иерархии CABA",
           "sourceQuestionIds": [
             "b-fallback-148"
           ]
@@ -11990,7 +11990,7 @@
         {
           "id": "row-basic-term-prioridad-normativa-basic",
           "termEs": "prioridad normativa",
-          "translationRu": "нормативный приоритет между сигналами/правилами",
+          "translationRu": "порядок, какое указание важнее",
           "sourceQuestionIds": [
             "b-fallback-311"
           ]
@@ -11998,7 +11998,7 @@
         {
           "id": "row-basic-term-no-iniciar-cruce",
           "termEs": "No iniciar el cruce",
-          "translationRu": "не начинать пересечение",
+          "translationRu": "не начинать проезд перекрестка",
           "sourceQuestionIds": [
             "b-fallback-312"
           ]
@@ -12078,12 +12078,12 @@
             {
               "answerId": "b-fallback-036-a1",
               "verdict": "incorrect",
-              "explanationRu": "Только derecha недостаточно: перед пересечением водитель должен проверить оба направления, потому что конфликт может прийти не только справа."
+              "explanationRu": "Только derecha недостаточно: перед пересечением нужно проверить оба направления. Конфликт может прийти не только справа."
             },
             {
               "answerId": "b-fallback-036-a2",
               "verdict": "incorrect",
-              "explanationRu": "Только izquierda тоже недостаточно. Билет спрашивает безопасную проверку перед cruzar la intersección, а не отдельное направление с приоритетом."
+              "explanationRu": "Только izquierda тоже недостаточно. Билет спрашивает безопасную проверку перед cruce, а не отдельное направление с приоритетом."
             },
             {
               "answerId": "b-fallback-036-a3",
@@ -12099,7 +12099,7 @@
             {
               "answerId": "b-fallback-043-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: marcha atrás запрещена как обычное движение, но допускается для estacionar, entrar o salir de un garaje, когда нет другой возможности, или для обхода препятствия."
+              "explanationRu": "Правильно: marcha atrás не является обычным способом движения. Ее допускают для estacionar, entrar o salir de un garaje, когда нет другой возможности, или для обхода препятствия."
             },
             {
               "answerId": "b-fallback-043-a2",
@@ -12124,7 +12124,7 @@
             {
               "answerId": "b-fallback-045-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: как norma general знак запрещает estacionar, но краткая detención для ascenso o descenso de pasajeros не запрещена самим этим знаком."
+              "explanationRu": "Правильно: как norma general знак запрещает estacionar. Но краткая detención для ascenso o descenso de pasajeros самим этим знаком не запрещена."
             },
             {
               "answerId": "b-fallback-045-a3",
@@ -12140,7 +12140,7 @@
             {
               "answerId": "b-fallback-053-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно по изображению: calle A имеет приоритет в этом cruce de dos calles. Это ticket-specific mapping картинки; не переносите букву A на другие схемы."
+              "explanationRu": "Правильно по этой картинке: calle A имеет приоритет в этом cruce de dos calles. Букву A не переносите на другие схемы."
             },
             {
               "answerId": "b-fallback-053-a2",
@@ -12156,7 +12156,7 @@
             {
               "answerId": "b-fallback-066-a1",
               "verdict": "incorrect",
-              "explanationRu": "Una encrucijada peligrosa - это предупреждение об опасном пересечении, а не показанный сервисный информационный знак."
+              "explanationRu": "Una encrucijada peligrosa - это предупреждение об опасном пересечении. На картинке показан информационный знак помощи/сервиса."
             },
             {
               "answerId": "b-fallback-066-a2",
@@ -12166,7 +12166,7 @@
             {
               "answerId": "b-fallback-066-a3",
               "verdict": "incorrect",
-              "explanationRu": "Templo religioso - другой информационный ориентир. В этом билете символ связан с medical/socorro."
+              "explanationRu": "Templo religioso - другой информационный ориентир. В этом билете символ связан с puesto sanitario или socorro."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b267.jpg"
@@ -12177,7 +12177,7 @@
             {
               "answerId": "b-fallback-068-a1",
               "verdict": "incorrect",
-              "explanationRu": "Inicio de doble mano показывал бы начало двустороннего движения, а не Y-shaped encrucijada."
+              "explanationRu": "Inicio de doble mano показывал бы начало двустороннего движения, а не Y-образную encrucijada."
             },
             {
               "answerId": "b-fallback-068-a2",
@@ -12198,7 +12198,7 @@
             {
               "answerId": "b-fallback-116-a1",
               "verdict": "incorrect",
-              "explanationRu": "Automóvil не получает приоритет просто потому, что находится ближе к нам на фото. Нужно читать jerarquía/траекторию ситуации."
+              "explanationRu": "Automóvil не получает приоритет просто потому, что стоит ближе на фото. Нужно читать jerarquía и траекторию ситуации."
             },
             {
               "answerId": "b-fallback-116-a2",
@@ -12224,7 +12224,7 @@
             {
               "answerId": "b-fallback-118-a2",
               "verdict": "incorrect",
-              "explanationRu": "Curvas, encrucijadas, pasos a nivel o puentes тоже опасные места для sobrepaso, но вариант неполный, потому что не включает continuous line."
+              "explanationRu": "Curvas, encrucijadas, pasos a nivel o puentes тоже опасные места для sobrepaso. Но вариант неполный, потому что не включает trazo continuo."
             },
             {
               "answerId": "b-fallback-118-a3",
@@ -12281,7 +12281,7 @@
             {
               "answerId": "b-fallback-164-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: знак перед intersección показывает obligación de girar a la derecha. Это предписание направления, а не просто предупреждение."
+              "explanationRu": "Verdadero: знак перед intersección показывает obligación de girar a la derecha. Это обязательное направление, а не просто предупреждение."
             },
             {
               "answerId": "b-fallback-164-a2",
@@ -12318,12 +12318,12 @@
             {
               "answerId": "b-fallback-171-a2",
               "verdict": "incorrect",
-              "explanationRu": "El último de la fila не получает автоматического преимущества; он дальше всего от vehicle que se desea sobrepasar."
+              "explanationRu": "El último de la fila не получает автоматического преимущества. Он дальше всего от vehículo que se desea sobrepasar."
             },
             {
               "answerId": "b-fallback-171-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: когда vehicles circulan encolumnados, первым на sobrepaso идет тот, кто circula más próximo al vehículo que se desea sobrepasar."
+              "explanationRu": "Правильно: когда vehículos circulan encolumnados, первым на sobrepaso идет тот, кто circula más próximo al vehículo que se desea sobrepasar."
             }
           ]
         },
@@ -12364,7 +12364,7 @@
             {
               "answerId": "b-fallback-244-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: обе альтернативы incorrectas. Водитель продолжает безопасно и выбирает разрешенный маршрут, не блокируя поток задним ходом или U-turn."
+              "explanationRu": "Правильно: оба варианта неверны. Водитель продолжает безопасно и выбирает разрешенный маршрут, не блокируя поток задним ходом или разворотом."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b129.jpg"
@@ -12401,7 +12401,7 @@
             {
               "answerId": "b-fallback-264-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по изображению: prioridad corresponde al vehículo B. Это конкретная image-order mapping для данного cruce."
+              "explanationRu": "Правильно по этой картинке: prioridad corresponde al vehículo B. Это порядок именно для данного cruce."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b99.jpg"
@@ -12443,7 +12443,7 @@
             {
               "answerId": "b-fallback-311-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: opción C - agente/autoridad de control, поэтому имеет prioridad normativa por sobre las demás."
+              "explanationRu": "Правильно: opción C - agente/autoridad de control. В этой иерархии указание autoridad важнее остальных сигналов."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b66.jpg"
@@ -12454,7 +12454,7 @@
             {
               "answerId": "b-fallback-312-a1",
               "verdict": "incorrect",
-              "explanationRu": "Luz verde не разрешает въезжать, если другой vehicle еще cruza и конфликтная зона занята."
+              "explanationRu": "Luz verde не разрешает въезжать, если другой vehículo еще cruza и конфликтная зона занята."
             },
             {
               "answerId": "b-fallback-312-a2",
@@ -12496,7 +12496,7 @@
             {
               "answerId": "b-fallback-410-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: предупреждающий знак о скользкой/опасной calzada требует reducir la velocidad del vehículo."
+              "explanationRu": "Правильно: предупреждающий знак о скользкой или опасной calzada требует reducir la velocidad del vehículo."
             },
             {
               "answerId": "b-fallback-410-a2",
@@ -12576,7 +12576,7 @@
         },
         {
           "id": "row-basic-trap-warning-not-priority",
-          "textRu": "Желтый предупреждающий знак encrucijada/incorporación/slippery road не дает автоматического приоритета: он говорит подготовиться и снизить риск.",
+          "textRu": "Желтый предупреждающий знак encrucijada/incorporación/calzada resbaladiza не дает автоматического приоритета. Он просит подготовиться и снизить риск.",
           "sourceQuestionIds": [
             "b-fallback-068",
             "b-fallback-180",
@@ -12593,7 +12593,7 @@
         },
         {
           "id": "row-basic-trap-stop-yield-preference",
-          "textRu": "PARE, CEDA EL PASO и PREFERENCIA DE AVANCE похожи темой, но требуют разных действий: stop total, уступить без обязательной остановки или потерять avance в узком месте.",
+          "textRu": "PARE, CEDA EL PASO и PREFERENCIA DE AVANCE похожи темой, но действия разные: остановиться, уступить или потерять avance в узком месте.",
           "sourceQuestionIds": [
             "b-fallback-311",
             "b-fallback-436"
@@ -12601,7 +12601,7 @@
         },
         {
           "id": "row-basic-trap-neighbor-topics",
-          "textRu": "Если билет спрашивает sobrepaso, cambio de carril, marcha atrás, estacionar, ciclovía или niebla, не отвечайте правилом перекрестка: это mixed-ticket ловушки.",
+          "textRu": "Если вопрос про sobrepaso, cambio de carril, marcha atrás, estacionar, ciclovía или niebla, не отвечайте правилом перекрестка. Это соседняя тема внутри билета.",
           "sourceQuestionIds": [
             "b-fallback-043",
             "b-fallback-118",
@@ -12666,7 +12666,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "bf58c21edead46e541607c6bcb9c5ee37951db1d38813007567ff532d13ecbeb",
+        "sourceFingerprint": "7d568512996adb0e90e179716d34bc45fee5fad285ed48b95ebf6a910acd5ec7",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -12683,23 +12683,23 @@
           ]
         }
       },
-      "titleRu": "Особые ситуации уступания и приоритета",
-      "summaryRu": "Экзаменационный блок про rotondas, obstrucción/estrechamiento, pendiente, emergencia, incorporación al tránsito, bocina, giro и порядок autoridad-señalización-normas.",
+      "titleRu": "Особые случаи приоритета и уступания",
+      "summaryRu": "Как отвечать на билеты про rotondas, obstrucción/estrechamiento, pendiente, emergencia, incorporación al tránsito, bocina, giro и порядок autoridad-señalización-normas.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В особых ситуациях приоритет не решается одной привычкой “кто справа”: сначала ищите rotonda, pendiente, obstrucción de vía, emergencia, incorporación al tránsito или указание autoridad/señalización.",
-        "В rotonda главное правило простое: кто уже circula por la calzada circular, имеет приоритет перед тем, кто intenta ingresar. Но тот, кто движется по кругу, должен уступить тому, кто egresa, если нет иной señalización.",
-        "Obstrucción или estrechamiento требует не спорить за узкое место, а оставить безопасный проезд. В билетной картинке, где препятствие на вашей стороне, правильная логика - ceder el paso al vehículo que circula en sentido contrario.",
-        "На pendiente estrecha с двойным направлением в CABA приоритет у автомобиля, который circula en sentido ascendente. На экзамене это часто превращается в вопрос “vehículo que asciende” против “vehículo que desciende”.",
-        "Emergencia читается по сигналам и задаче: vehículos de emergencia или vehículo en servicio de emergencia нужно пропустить сразу. Для обычного автомобиля с repeated bocina в `b-fallback-093` не расширяйте вывод слишком широко: билет трактует показанную bocina как emergency signal, а не как общее право шуметь или проезжать на rojo.",
-        "Incorporación al tránsito из estacionamiento, garaje, playa de estacionamiento или estación de servicio не дает автоматического приоритета. Уступают такому автомобилю только когда tránsito se encuentra interrumpido; если поток circulando, въезжающий водитель ждет.",
-        "Giro и поворот налево остаются особой ловушкой внутри этой темы. Luz de giro del lado correspondiente и 30 metros antes нужны для предупреждения, но bocina или ambos giros не заменяют нормальный указатель; на intersección semaforizada de doble sentido поворот налево без разрешающей señal luminosa de giro запрещен.",
-        "Нормативная иерархия нужна для конфликтов между правилами: primero indicaciones de la autoridad competente, затем señalización/semáforos по уровню, и только потом normas legales de carácter general. Поэтому ответ с “общий закон выше регулировщика” в билетах неверен."
+        "Этот блок - неофициальная подсказка Cabadrive. В особых ситуациях не решайте все правилом “кто справа”. Сначала ищите rotonda, pendiente, obstrucción de vía, emergencia, incorporación al tránsito или прямое указание autoridad/señalización.",
+        "В rotonda базовая логика простая: кто уже circula por la calzada circular, тот имеет приоритет перед въезжающим. Но водитель на круге должен пропустить того, кто egresa, если нет другой señalización.",
+        "Obstrucción или estrechamiento - это не соревнование за узкое место. Нужно оставить безопасный проезд. Если препятствие на вашей стороне, билетная логика обычно ведет к ceder el paso al vehículo que circula en sentido contrario.",
+        "На узкой pendiente с двусторонним движением в CABA приоритет у автомобиля, который идет вверх: vehículo que asciende. В билетах это часто прячут за выбором “sube” против “desciende”.",
+        "Emergencia узнается по сигналам и задаче. Vehículos de emergencia или vehículo en servicio de emergencia пропускают сразу. В `b-fallback-093` repeated bocina держите узко: этот старый билет читает ее как señal de emergencia, но не как общее право шуметь или ехать на rojo.",
+        "Incorporación al tránsito из estacionamiento, garaje, playa de estacionamiento или estación de servicio не дает автоматического преимущества. Уступают такому автомобилю только когда tránsito se encuentra interrumpido. Если поток едет, въезжающий водитель ждет.",
+        "Giro тоже ловушка. Luz de giro del lado correspondiente включают заранее, al menos 30 metros antes. Bocina или оба указателя вместе не заменяют нормальный поворотник. На intersección semaforizada de doble sentido поворот налево без разрешающей señal luminosa de giro запрещен.",
+        "Иерархия правил решает споры: primero indicaciones de la autoridad competente, затем señalización и semáforos по уровню, потом normas legales de carácter general. Ответ “общий закон выше регулировщика” для таких билетов неверен."
       ],
       "practicalReasoningRu": [
-        "Особые правила снимают неоднозначность там, где обычное правило “справа” было бы опасным: круговое движение, сужение, уклон, выезд из гаража или экстренный проезд.",
-        "Приоритет на rotonda защищает непрерывность потока: если каждый въезжающий будет требовать преимущество, круг быстро заблокируется.",
-        "На подъеме автомобиль тяжелее снова трогается и может откатиться; поэтому при узкой pendiente поток делают предсказуемым через приоритет ascendente.",
-        "У emergency vehicles время и свободный коридор важнее обычной очередности, но соседние билеты с exact image choreography остаются именно ответами на показанную картинку."
+        "Особые правила нужны там, где обычная привычка “справа” может привести к опасному конфликту: круг, сужение, уклон, выезд из гаража или экстренный проезд.",
+        "Приоритет в rotonda удерживает поток на круге. Если каждый въезжающий будет требовать преимущество, круг быстро встанет.",
+        "На подъеме машине тяжелее снова тронуться и проще откатиться. Поэтому на узкой pendiente правило делает движение предсказуемым: сначала проходит ascendente.",
+        "Для vehículos de emergencia важны секунды и свободный коридор. Но билеты с картинками про ambulancia все равно отвечайте по конкретной схеме на изображении."
       ],
       "spanishTerms": [
         {
@@ -12724,7 +12724,7 @@
         {
           "id": "term-transito-interrumpido-special",
           "termEs": "tránsito se encuentra interrumpido",
-          "translationRu": "движение прервано/заблокировано",
+          "translationRu": "движение остановлено или заблокировано",
           "sourceQuestionIds": [
             "b-fallback-031"
           ]
@@ -12886,7 +12886,7 @@
         {
           "id": "term-orden-prioridad-normativo-special",
           "termEs": "orden de prioridad normativo",
-          "translationRu": "нормативный порядок приоритета",
+          "translationRu": "порядок, какое правило важнее",
           "sourceQuestionIds": [
             "b-fallback-444"
           ]
@@ -12912,7 +12912,7 @@
             {
               "answerId": "b-fallback-031-a2",
               "verdict": "correct",
-              "explanationRu": "Верно: уступают только когда tránsito se encuentra interrumpido. Тогда выпуск машины из места стоянки или garaje помогает восстановить движение."
+              "explanationRu": "Верно: уступают только когда tránsito se encuentra interrumpido. Тогда выпуск машины из места стоянки или garaje помогает снова запустить движение."
             },
             {
               "answerId": "b-fallback-031-a3",
@@ -12948,7 +12948,7 @@
             {
               "answerId": "b-fallback-070-a1",
               "verdict": "correct",
-              "explanationRu": "Верно для показанной картинки: obstrucción de vía находится на стороне señalizado, поэтому он должен ceder el paso al vehículo que circula en sentido contrario."
+              "explanationRu": "Верно для картинки: obstrucción de vía находится на стороне обозначенного автомобиля, поэтому он должен ceder el paso al vehículo que circula en sentido contrario."
             },
             {
               "answerId": "b-fallback-070-a2",
@@ -12979,7 +12979,7 @@
             {
               "answerId": "b-fallback-084-a3",
               "verdict": "incorrect",
-              "explanationRu": "Ambos giros - это не обычный сигнал поворота. Оба указателя вместе читаются как balizas/emergencia или необычный маневр, а не как выбор стороны."
+              "explanationRu": "Ambos giros - не обычный сигнал поворота. Два указателя вместе читаются как balizas/emergencia или необычная ситуация, а не как выбор стороны."
             }
           ]
         },
@@ -13010,7 +13010,7 @@
             {
               "answerId": "b-fallback-093-a1",
               "verdict": "correct",
-              "explanationRu": "В этом fallback ticket repeated bocina читается как señal de emergencia; рядом с таким автомобилем нужно cederle el paso."
+              "explanationRu": "В этом старом билете repeated bocina читается как señal de emergencia. Рядом с таким автомобилем нужно cederle el paso."
             },
             {
               "answerId": "b-fallback-093-a2",
@@ -13041,7 +13041,7 @@
             {
               "answerId": "b-fallback-129-a3",
               "verdict": "correct",
-              "explanationRu": "Верно: в этой группе изображений правильная figura для предупреждения rotonda o pendiente pronunciada - C."
+              "explanationRu": "Верно: в этой группе изображений правильная figura для предупреждения rotonda o pendiente pronunciada - C. Не переносите букву C на другие билеты."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b87.jpg"
@@ -13163,7 +13163,7 @@
             {
               "answerId": "b-fallback-268-a3",
               "verdict": "correct",
-              "explanationRu": "Верно именно для этой image choreography: auto 1 se aparta hacia su izquierda, auto 2 hacia su derecha, и между ними освобождается paso a la ambulancia."
+              "explanationRu": "Верно именно для этой картинки: auto 1 se aparta hacia su izquierda, auto 2 hacia su derecha, и между ними освобождается paso a la ambulancia."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b91.jpg"
@@ -13174,7 +13174,7 @@
             {
               "answerId": "b-fallback-319-a1",
               "verdict": "incorrect",
-              "explanationRu": "Только auto 2 не освобождает достаточный corridor для ambulancia в показанной трехмашинной ситуации."
+              "explanationRu": "Только auto 2 не освобождает достаточный коридор для ambulancia в показанной трехмашинной ситуации."
             },
             {
               "answerId": "b-fallback-319-a2",
@@ -13221,7 +13221,7 @@
             {
               "answerId": "b-fallback-345-a2",
               "verdict": "incorrect",
-              "explanationRu": "Peligro extremo de rotonda добавляет лишний смысл; билет спрашивает обычное распознавание знака rotonda."
+              "explanationRu": "Peligro extremo de rotonda добавляет лишний смысл. Билет спрашивает обычное распознавание знака rotonda."
             },
             {
               "answerId": "b-fallback-345-a3",
@@ -13294,7 +13294,7 @@
             {
               "answerId": "b-fallback-440-a1",
               "verdict": "incorrect",
-              "explanationRu": "Independientemente de si están detenidos o circulando неверно: билет как раз делает различие между flujo circulando и tránsito detenido/interrumpido."
+              "explanationRu": "Independientemente de si están detenidos o circulando неверно: билет различает flujo circulando и tránsito detenido/interrumpido."
             },
             {
               "answerId": "b-fallback-440-a2",
@@ -13335,13 +13335,13 @@
           "textRu": "Не переносите обычное правило “derecha” на rotonda, incorporación al tránsito или pendiente: эти ситуации имеют специальные ответы."
         },
         {
-          "textRu": "В билетах про emergency corridor `b-fallback-268` и `b-fallback-319` отвечайте по картинке; общий закон требует facilitar el avance, но не диктует одну универсальную схему для всех изображений."
+          "textRu": "В билетах про коридор для ambulancia `b-fallback-268` и `b-fallback-319` отвечайте по картинке. Общая идея - facilitar el avance, но схема разъезда зависит от изображения."
         },
         {
-          "textRu": "Bocina сама по себе не заменяет luz de giro и не дает преимущества. Исключение `b-fallback-093` держите как ticket-specific emergency signal."
+          "textRu": "Bocina сама по себе не заменяет luz de giro и не дает преимущества. `b-fallback-093` держите узко: там repeated bocina считается señal de emergencia именно для этого билета."
         },
         {
-          "textRu": "Фразы detenido/interrumpido и circulando меняют ответ в incorporación tickets: при остановленном потоке уступают, при движущемся - нет."
+          "textRu": "Фразы detenido/interrumpido и circulando меняют ответ в incorporación: при остановленном потоке уступают, при движущемся - нет."
         },
         {
           "textRu": "В вопросах с A/B/C или vehículo A/B не угадывайте по букве: сначала определите, кто уже в rotonda, кто asciende или куда нужно apartarse для ambulancia."
@@ -16654,7 +16654,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "5111ceabe4ffa81b4bdcff779b628a489f8bdd373b449844907a7411003e5211",
+        "sourceFingerprint": "2bbe6af6b6e183a88699ac5b28a4dbe56a148aca152cb1d328c3761f8e1fed29",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -16671,21 +16671,21 @@
           ]
         }
       },
-      "titleRu": "Осевые линии и правила пересечения разметки",
-      "summaryRu": "Короткий блок про demarcación horizontal: когда линию можно пересекать, когда нельзя traspasar/circular sobre ella, и как не спутать осевую линию с пешеходной или успокаивающей разметкой.",
+      "titleRu": "Осевые линии и пересечение разметки",
+      "summaryRu": "Короткий блок про demarcación horizontal: когда линию можно traspasar, когда нельзя circular sobre ella, и как не спутать осевую линию с пешеходной или успокаивающей разметкой.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. В билетах про разметку сначала определяйте, что перед вами: линия разделения встречных потоков, двойная/сплошная линия, прерывистая линия, заштрихованная canalizadora/isleta или отдельная городская разметка для снижения скорости.",
-        "Demarcación horizontal имеет тот же учебный вес, что и vertical signs: это не украшение на асфальте, а señalización. Если вопрос говорит señal vertical o demarcación horizontal, правильная логика - обе могут выражать indicación и находятся в одном нормативном уровне.",
-        "Línea continua - запрет. Ее нельзя traspasar и нельзя circular sobre ella, независимо от того, белая она или желтая. Doble línea continua только усиливает эту идею и разделяет направления движения.",
-        "Línea discontinua - разрешение пересечь, но только когда маневр безопасен и не противоречит другой señalización. В билете с двумя параллельными линиями смотрите на линию más próxima: со стороны discontinua можно traspasar, со стороны continua - нельзя.",
-        "Желтая центральная разметка чаще всего подсказывает sentidos opuestos или zona de obstrucción. Если вариант предлагает ехать по желтой зоне или использовать ее как место остановки/стоянки, это обычно ловушка.",
-        "Заштрихованные или канализирующие маркировки не являются полосой. Они направляют поток в сторону от препятствия или зоны, по которой нельзя ехать; в ticket-specific вопросах такая желтая поверхность может также объяснять снижение скорости и радиуса поворота.",
-        "Смешанные билеты в этой теме не надо превращать в общий урок про перекрестки или парковку. В `b-fallback-174` ключ - peatón и senda/semáforo, а в `b-fallback-320` - успокаивающая/канализирующая разметка; они остаются здесь только потому, что current taxonomy связывает их с demarcación horizontal."
+        "Этот блок - неофициальная подсказка Cabadrive. В билетах про разметку сначала назовите, что перед вами: линия между встречными потоками, двойная или сплошная линия, прерывистая линия, isleta/canalizadora или городская разметка для снижения скорости.",
+        "Demarcación horizontal - это не рисунок на асфальте, а señalización. Если вопрос говорит señal vertical o demarcación horizontal, правильная логика такая: и знак, и разметка могут задавать indicación и стоят на одном уровне перед общими нормами.",
+        "Línea continua - запрет. Ее нельзя traspasar и нельзя circular sobre ella, белая она или желтая. Doble línea continua говорит то же самое еще сильнее: направления разделены, пересекать нельзя.",
+        "Línea discontinua можно пересекать только при безопасном маневре и если другая señalización не запрещает. В билете с двумя параллельными линиями смотрите на línea más próxima: со стороны discontinua можно, со стороны continua нельзя.",
+        "Желтая центральная разметка обычно подсказывает sentidos opuestos или зону, через которую нельзя ехать. Если вариант предлагает ехать по желтой зоне, стоять там или парковаться, это ловушка.",
+        "Заштрихованные и канализирующие зоны не являются полосой. Они ведут поток в сторону от препятствия или места, по которому нельзя ехать. В `b-fallback-320` желтая поверхность объясняет снижение скорости и radio de giro только в рамках этого билета.",
+        "Смешанные билеты здесь не превращайте в общий урок про перекрестки или парковку. В `b-fallback-174` ключ - peatón и senda/semáforo. В `b-fallback-320` ключ - успокаивающая/направляющая разметка. Они остаются в этой теме из-за текущей раскладки материалов."
       ],
       "practicalReasoningRu": [
-        "Линии работают как быстрый язык дороги: водитель видит запрет или разрешение на маневр раньше, чем успевает читать знак.",
-        "Разделение встречных потоков снижает риск лобового конфликта: сплошная линия говорит не начинать маневр, даже если кажется, что места достаточно.",
-        "Канализация и островки делают траекторию машин предсказуемой, поэтому водитель не должен воспринимать заштрихованную зону как свободное пространство."
+        "Разметка - быстрый язык дороги: водитель видит запрет или разрешение на маневр раньше, чем успевает искать отдельный знак.",
+        "Разделение встречных потоков защищает от лобового конфликта. Сплошная линия говорит не начинать маневр, даже если кажется, что места хватает.",
+        "Канализация и островки делают траекторию машин предсказуемой. Заштрихованная зона не становится свободным коридором просто потому, что автомобиль физически туда помещается."
       ],
       "spanishTerms": [
         {
@@ -16700,7 +16700,7 @@
         {
           "id": "term-demarcacion-horizontal",
           "termEs": "demarcación horizontal",
-          "translationRu": "горизонтальная дорожная разметка",
+          "translationRu": "горизонтальная разметка как дорожный сигнал",
           "sourceQuestionIds": [
             "b-fallback-170",
             "b-fallback-320",
@@ -16779,7 +16779,7 @@
         {
           "id": "term-orden-jerarquico",
           "termEs": "orden jerárquico",
-          "translationRu": "нормативная иерархия/порядок приоритета",
+          "translationRu": "порядок, какое указание важнее",
           "sourceQuestionIds": [
             "b-fallback-415"
           ]
@@ -16816,7 +16816,7 @@
             {
               "answerId": "b-fallback-111-a1",
               "verdict": "incorrect",
-              "explanationRu": "Indica que se puede traspasar противоречит смыслу показанной желтой осевой разметки: билет проверяет запрет пересечения."
+              "explanationRu": "Indica que se puede traspasar противоречит смыслу желтой осевой разметки на картинке: билет проверяет запрет пересечения."
             },
             {
               "answerId": "b-fallback-111-a2",
@@ -16826,7 +16826,7 @@
             {
               "answerId": "b-fallback-111-a3",
               "verdict": "incorrect",
-              "explanationRu": "Желтая разметка не превращает центральную зону в место, по которому можно circular sobre ella."
+              "explanationRu": "Желтая разметка не превращает центральную зону в место, по которому можно ехать. Circular sobre ella нельзя."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b123.jpg"
@@ -16837,7 +16837,7 @@
             {
               "answerId": "b-fallback-170-a1",
               "verdict": "incorrect",
-              "explanationRu": "Наличие или отсутствие встречного автомобиля не отменяет запрет, если horizontal marking сама запрещает sobrepasar."
+              "explanationRu": "Наличие или отсутствие встречного автомобиля не отменяет запрет, если demarcación horizontal сама запрещает sobrepasar."
             },
             {
               "answerId": "b-fallback-170-a2",
@@ -16858,12 +16858,12 @@
             {
               "answerId": "b-fallback-174-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: даже при желании ехать en línea recta водитель должен остановиться и дать peatón закончить переход. Контакт глазами с пешеходами помогает убедиться, что они не начнут переход в опасный момент."
+              "explanationRu": "Правильно: даже если водитель хочет ехать en línea recta, он должен остановиться и дать peatón закончить переход. Контакт глазами помогает убедиться, что пешеход не начнет движение в опасный момент."
             },
             {
               "answerId": "b-fallback-174-a2",
               "verdict": "incorrect",
-              "explanationRu": "Luz verde не разрешает ехать на пешехода и bocina не заменяет уступание. Этот билет не про осевую линию, а про приоритет пешехода в зоне перехода."
+              "explanationRu": "Luz verde не разрешает ехать на пешехода, а bocina не заменяет уступание. Этот билет не про осевую линию, а про приоритет пешехода в зоне перехода."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b18.jpg"
@@ -16874,7 +16874,7 @@
             {
               "answerId": "b-fallback-188-a1",
               "verdict": "incorrect",
-              "explanationRu": "Желтая demarcación en la calzada не делает сектор местом detención или estacionamiento; этот вариант смешивает разметку с зоной остановки/стоянки."
+              "explanationRu": "Желтая demarcación en la calzada не делает сектор местом detención или estacionamiento. Вариант смешивает разметку с остановкой/стоянкой."
             },
             {
               "answerId": "b-fallback-188-a2",
@@ -16921,12 +16921,12 @@
             {
               "answerId": "b-fallback-320-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-ticket: такая желтая разметка нужна, чтобы reducir la velocidad y radio de giro de los vehículos. Обобщать это как универсальное правило осевых линий не нужно."
+              "explanationRu": "Правильно по этому старому билету: желтая разметка нужна, чтобы reducir la velocidad y radio de giro de los vehículos. Не делайте из этого универсальное правило про все осевые линии."
             },
             {
               "answerId": "b-fallback-320-a3",
               "verdict": "incorrect",
-              "explanationRu": "Она не создает специальную парковку для emergency vehicles; в билете проверяется traffic-calming/channelization effect."
+              "explanationRu": "Она не создает специальную парковку для vehículos de emergencia. В билете проверяется эффект снижения скорости и направления потока."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b36.jpg"
@@ -16937,12 +16937,12 @@
             {
               "answerId": "b-fallback-415-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: indicación может выражаться vertical sign или demarcación horizontal. В CABA señales verticales y demarcación horizontal находятся на одном уровне перед общими legal rules."
+              "explanationRu": "Verdadero: indicación может выражаться señal vertical или demarcación horizontal. В CABA они находятся на одном уровне перед общими нормами."
             },
             {
               "answerId": "b-fallback-415-a2",
               "verdict": "incorrect",
-              "explanationRu": "Falso неверно: horizontal marking не ниже по смыслу только потому, что она нанесена на calzada."
+              "explanationRu": "Falso неверно: demarcación horizontal не ниже по смыслу только потому, что она нанесена на calzada."
             }
           ]
         },
@@ -16952,12 +16952,12 @@
             {
               "answerId": "b-fallback-457-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: на изображении líneas centrales показывают ситуацию, где se pueden traspasar. Это типичный contrast с continuous-line tickets."
+              "explanationRu": "Правильно: на изображении líneas centrales показывают ситуацию, где se pueden traspasar. Это контраст с билетами про línea continua."
             },
             {
               "answerId": "b-fallback-457-a2",
               "verdict": "incorrect",
-              "explanationRu": "Запрет traspasar относится к continua/doble continua или стороне continuous line; здесь правильный ответ про возможность пересечения."
+              "explanationRu": "Запрет traspasar относится к continua/doble continua или стороне línea continua; здесь правильный ответ про возможность пересечения."
             },
             {
               "answerId": "b-fallback-457-a3",
@@ -16971,7 +16971,7 @@
       "trapNotes": [
         {
           "id": "trap-continuous-vs-discontinuous",
-          "textRu": "Самая частая ловушка: continua и discontinua поменяны местами. Continua = нельзя, discontinua = можно при безопасном маневре.",
+          "textRu": "Главная ловушка: continua и discontinua легко поменять местами. Continua = нельзя, discontinua = можно при безопасном маневре.",
           "sourceQuestionIds": [
             "b-fallback-222",
             "b-fallback-457"
@@ -16988,21 +16988,21 @@
         },
         {
           "id": "trap-overtake-conditions-do-not-override-markings",
-          "textRu": "Если demarcación horizontal запрещает sobrepasar, варианты про luces, distancia до встречного авто или cuidado не спасают ответ.",
+          "textRu": "Если demarcación horizontal запрещает sobrepasar, варианты про luces, distancia до встречного авто или cuidado не отменяют запрет.",
           "sourceQuestionIds": [
             "b-fallback-170"
           ]
         },
         {
           "id": "trap-green-light-does-not-cancel-pedestrian-priority",
-          "textRu": "В taxonomy-mixed `b-fallback-174` green light не отменяет pedestrian-priority logic; bocina не является способом решить конфликт с пешеходом.",
+          "textRu": "В `b-fallback-174` luz verde не отменяет приоритет пешехода; bocina не решает конфликт с человеком на переходе.",
           "sourceQuestionIds": [
             "b-fallback-174"
           ]
         },
         {
           "id": "trap-horizontal-and-vertical-same-level",
-          "textRu": "Не думайте, что только vertical signs важны. В билете `b-fallback-415` demarcación horizontal имеет тот же meaning/order level для указания.",
+          "textRu": "Не думайте, что важны только señales verticales. В `b-fallback-415` demarcación horizontal имеет тот же уровень для indicación.",
           "sourceQuestionIds": [
             "b-fallback-415"
           ]
@@ -17061,7 +17061,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "7f689529cae9e5d0cbd0b501838cc3d31051915bce07b45944df6bf05d744bbb",
+        "sourceFingerprint": "8d5614d9dc5b4c4461a8d920e5580168051b9a42185a55b310f30f2a2bf0c1da",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -17079,20 +17079,20 @@
         }
       },
       "titleRu": "Полосы, островки и направляющая разметка",
-      "summaryRu": "Блок про carriles, carriles exclusivos, carril de sobrepaso/aceleración/desaceleración, isletas, marcas canalizadoras, временные orange devices и запреты менять полосу.",
+      "summaryRu": "Как читать carriles, carriles exclusivos, carril de sobrepaso/aceleración/desaceleración, isletas, marcas canalizadoras, временные оранжевые элементы и запрет менять полосу.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. Здесь разметка не просто делит асфальт: она показывает, где поток должен идти по carril, где carril reservado/exclusivo, где можно или нельзя сменить полосу, а где поверхность вообще не является полосой.",
-        "Carril в билетах - продольная demarcated band на calzada. На multicarril и autopista водитель должен держаться своего carril y por su centro; left/overtaking lane не превращается в постоянную полосу для cruising, если справа есть доступная полоса.",
-        "Sobrepaso в Ley 2148 - это обгон/опережение с cambio de carril. Поэтому билеты про carril de sobrepaso, return al carril derecho и ayuda para volver вправо проверяют не скорость сама по себе, а организацию полос и безопасный возврат в поток.",
-        "Carriles exclusivos читаются по разметке, знаку и horario. Если знак или señal horizontal резервирует полосу для colectivo/Metrobús, частный автомобиль не может использовать ее как запасную полосу для sobrepaso; билет `b-fallback-223` отдельно спрашивает про turning outside the restriction window.",
-        "Isleta и marcas canalizadoras - это заштрихованные или выделенные зоны, которые направляют поток и показывают no-circulation area. Их нельзя traspasar или circular sobre ellas, даже если физически машина могла бы проехать.",
-        "R.10 Prohibición de Cambiar de Carril и соответствующая horizontal marking означают: в зоне нужно mantener el mismo carril. Это не то же самое, что no girar a la derecha или prohibition de adelantar.",
-        "Orange/transitory devices в билетах воспринимайте как временную canalización: они ведут поток через obra/desvío/опасную зону. В `b-fallback-291` точный ответ про línea imaginaria kept ticket-specific, но общий смысл тот же - через временную линию не переезжают."
+        "Этот блок - неофициальная подсказка Cabadrive. Здесь разметка не просто делит асфальт. Она показывает, где поток идет по carril, где полоса reservado/exclusivo, где можно или нельзя перестроиться, а где поверхность вообще не является полосой.",
+        "Carril в билетах - продольная полоса на calzada, отмеченная разметкой. На multicarril и autopista держитесь своего carril y por su centro. Левая полоса для sobrepaso не становится постоянной полосой движения, если справа есть доступная полоса.",
+        "Sobrepaso в Ley 2148 связан с cambio de carril. Поэтому билеты про carril de sobrepaso, retorno al carril derecho и помощь при возвращении вправо проверяют не “кто быстрее”, а организацию полос и безопасный возврат в поток.",
+        "Carriles exclusivos читайте по разметке, знаку и horario. Если señal horizontal или знак резервирует полосу для colectivo/Metrobús, частный автомобиль не может использовать ее как короткий обход. В `b-fallback-223` отдельно важен horario de restricción.",
+        "Isleta и marcas canalizadoras - это заштрихованные или выделенные зоны, которые направляют поток и показывают: здесь не едут. Их нельзя traspasar или circular sobre ellas, даже если машина физически проходит.",
+        "R.10 Prohibición de Cambiar de Carril и связанная разметка означают: mantener el mismo carril. Это не знак no girar a la derecha и не знак Prohibición de Adelantar.",
+        "Оранжевые временные элементы в билетах воспринимайте как canalización на время obra, desvío или опасности. В `b-fallback-291` точный ответ про línea imaginaria остается ответом к конкретной картинке, но общий смысл простой: временную линию не пересекают."
       ],
       "practicalReasoningRu": [
-        "Разметка полос делает поток читаемым: каждый водитель заранее понимает, кто остается в своей полосе, кто выходит на sobrepaso, а кто готовится к salida или incorporación.",
-        "Островки и channelization zones убирают конфликтные траектории. Если разрешить ехать по ним, машины начнут выбирать разные линии движения в одном месте, и остальные не смогут предсказать маневр.",
-        "Exclusive lanes работают только когда обычные автомобили не используют их временно. Даже короткий sobrepaso ломает предсказуемость для colectivo/Metrobús и для водителей рядом."
+        "Разметка полос делает поток читаемым: каждый заранее понимает, кто остается в своей полосе, кто выходит на sobrepaso, а кто готовится к salida или incorporación.",
+        "Островки и zonas canalizadoras убирают конфликтные траектории. Если разрешить ехать по ним, водители начнут выбирать разные линии в одном месте, и маневры станут непредсказуемыми.",
+        "Carriles exclusivos работают только когда обычные автомобили не используют их “на минутку”. Даже короткий sobrepaso мешает colectivo/Metrobús и сбивает водителей рядом."
       ],
       "spanishTerms": [
         {
@@ -17134,7 +17134,7 @@
         {
           "id": "term-carril-de-sobrepaso",
           "termEs": "carril de sobrepaso",
-          "translationRu": "полоса для sobrepaso",
+          "translationRu": "полоса для обгона/опережения",
           "sourceQuestionIds": [
             "b-fallback-219",
             "b-fallback-400"
@@ -17143,7 +17143,7 @@
         {
           "id": "term-carriles-exclusivos-channelization",
           "termEs": "carriles exclusivos",
-          "translationRu": "выделенные/эксклюзивные полосы",
+          "translationRu": "выделенные полосы для указанного транспорта",
           "sourceQuestionIds": [
             "b-fallback-223",
             "b-fallback-302"
@@ -17160,7 +17160,7 @@
         {
           "id": "term-senal-horizontal-channelization",
           "termEs": "señal horizontal",
-          "translationRu": "горизонтальная сигнализация/разметка",
+          "translationRu": "разметка как дорожный сигнал",
           "sourceQuestionIds": [
             "b-fallback-227",
             "b-fallback-298"
@@ -17193,7 +17193,7 @@
         {
           "id": "term-carril-de-aceleracion",
           "termEs": "carril de aceleración",
-          "translationRu": "полоса разгона/въезда на autopista",
+          "translationRu": "полоса разгона для въезда на autopista",
           "sourceQuestionIds": [
             "b-fallback-336"
           ]
@@ -17241,7 +17241,7 @@
         {
           "id": "term-carril-exclusivo-metrobus",
           "termEs": "carril exclusivo del Metrobús",
-          "translationRu": "выделенная полоса Metrobús",
+          "translationRu": "выделенная полоса для Metrobús",
           "sourceQuestionIds": [
             "b-fallback-438"
           ]
@@ -17254,12 +17254,12 @@
             {
               "answerId": "b-fallback-012-a1",
               "verdict": "incorrect",
-              "explanationRu": "Verdadero неверно: фраза no puede abandonarlo слишком абсолютна. Полоса для tránsito lento не означает пожизненно оставаться в ней, если нужен разрешенный sobrepaso и маневр можно сделать безопасно."
+              "explanationRu": "Verdadero неверно: фраза no puede abandonarlo слишком абсолютна. Полоса для tránsito lento не означает, что водитель навсегда остается в ней, если разрешенный sobrepaso можно сделать безопасно."
             },
             {
               "answerId": "b-fallback-012-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: утверждение falso. В рамках билета водитель из carril destinado al tránsito lento может покинуть его для sobrepasar a otro vehículo que transita más lento, если разметка/сигналы и безопасность маневра это позволяют."
+              "explanationRu": "Правильно: утверждение falso. В рамках билета водитель из carril destinado al tránsito lento может покинуть его для sobrepasar a otro vehículo que transita más lento, если разметка, сигналы и безопасность это позволяют."
             }
           ]
         },
@@ -17269,12 +17269,12 @@
             {
               "answerId": "b-fallback-176-a1",
               "verdict": "incorrect",
-              "explanationRu": "Sin necesidad de cambiar de carril описывает другой термин в локальной паре понятий. Для pregunta про sobrepaso Ley 2148 ключевой элемент - cambio de carril."
+              "explanationRu": "Sin necesidad de cambiar de carril описывает другой термин в этой паре понятий. Для вопроса про sobrepaso ключевой элемент - cambio de carril."
             },
             {
               "answerId": "b-fallback-176-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: sobrepaso - это sobrepasar la línea de otro vehículo en circulación cambiando de carril. Поэтому ticket относится и к полосам, и к будущей теме overtaking."
+              "explanationRu": "Правильно: sobrepaso - это sobrepasar la línea de otro vehículo en circulación cambiando de carril. Поэтому этот билет связан и с полосами, и с будущей темой обгона."
             },
             {
               "answerId": "b-fallback-176-a3",
@@ -17314,7 +17314,7 @@
             {
               "answerId": "b-fallback-219-a2",
               "verdict": "incorrect",
-              "explanationRu": "Даже скорость máxima permitida не дает права постоянно занимать carril de sobrepaso, если он нужен для maneuver, а справа есть доступная полоса."
+              "explanationRu": "Даже velocidad máxima permitida не дает права постоянно занимать carril de sobrepaso, если он нужен для маневра, а справа есть доступная полоса."
             },
             {
               "answerId": "b-fallback-219-a3",
@@ -17334,12 +17334,12 @@
             {
               "answerId": "b-fallback-223-a2",
               "verdict": "incorrect",
-              "explanationRu": "No слишком абсолютен для этой image question. Билет добавляет horario de restricción: вне этого времени правильная оценка может быть иной."
+              "explanationRu": "No слишком абсолютен для вопроса с картинкой. Билет добавляет horario de restricción: вне этого времени оценка может быть другой."
             },
             {
               "answerId": "b-fallback-223-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: girar можно sólo si lo realiza fuera del horario de restricción de los carriles exclusivos. Внутри restricted hours вторжение в carril exclusivo запрещает маневр."
+              "explanationRu": "Правильно: girar можно sólo si lo realiza fuera del horario de restricción de los carriles exclusivos. В часы ограничения въезд в carril exclusivo запрещает маневр."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b30.jpg"
@@ -17350,7 +17350,7 @@
             {
               "answerId": "b-fallback-227-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: показанная señal horizontal ordena la circulación de carriles и в этом ticket-specific контексте indica que se puede sobrepasar a otro vehículo."
+              "explanationRu": "Правильно: показанная señal horizontal ordena la circulación de carriles и в этой картинке indica que se puede sobrepasar a otro vehículo."
             },
             {
               "answerId": "b-fallback-227-a2",
@@ -17360,7 +17360,7 @@
             {
               "answerId": "b-fallback-227-a3",
               "verdict": "incorrect",
-              "explanationRu": "No/prohibición de sobrepaso неверно для этой картинки: билет проверяет разрешающую/организующую lane marking, а не запрет."
+              "explanationRu": "No/prohibición de sobrepaso неверно для этой картинки: билет проверяет разрешающую или организующую разметку полос, а не запрет."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b120.jpg"
@@ -17371,12 +17371,12 @@
             {
               "answerId": "b-fallback-291-a1",
               "verdict": "incorrect",
-              "explanationRu": "Refuerzan líneas discontinuas звучит похоже на разметку полос, но на image речь о temporary orange devices, которые задают отдельную временную границу."
+              "explanationRu": "Refuerzan líneas discontinuas звучит похоже на обычную разметку полос, но на картинке оранжевые временные элементы задают отдельную границу."
             },
             {
               "answerId": "b-fallback-291-a2",
               "verdict": "incorrect",
-              "explanationRu": "Nada/ilegal неверно: señales transitorias naranjas как раз используются для временной canalización и предупреждения в зоне работ/опасности."
+              "explanationRu": "Nada/ilegal неверно: señales transitorias naranjas как раз используются для временной canalización и предупреждения в зоне работ или опасности."
             },
             {
               "answerId": "b-fallback-291-a3",
@@ -17392,17 +17392,17 @@
             {
               "answerId": "b-fallback-298-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: horizontal marking на calzada указывает carril exclusivo de colectivo de pasajeros, то есть полосу, зарезервированную для указанного транспорта."
+              "explanationRu": "Правильно: demarcación horizontal на calzada указывает carril exclusivo de colectivo de pasajeros, то есть полосу для указанного пассажирского транспорта."
             },
             {
               "answerId": "b-fallback-298-a2",
               "verdict": "incorrect",
-              "explanationRu": "Cruce exclusivo de vehículos de emergencia неверно: изображенная разметка не про emergency crossing, а про exclusive passenger-bus lane."
+              "explanationRu": "Cruce exclusivo de vehículos de emergencia неверно: изображенная разметка не про экстренный проезд, а про выделенную автобусную полосу."
             },
             {
               "answerId": "b-fallback-298-a3",
               "verdict": "incorrect",
-              "explanationRu": "Ceda el paso - другой тип сигнала. Здесь знак/разметка на pavement обозначает reserved lane, а не priority-yield command."
+              "explanationRu": "Ceda el paso - другой тип сигнала. Здесь знак/разметка на calzada обозначает полосу для указанного транспорта, а не команду уступить."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b29.jpg"
@@ -17413,7 +17413,7 @@
             {
               "answerId": "b-fallback-302-a1",
               "verdict": "incorrect",
-              "explanationRu": "Vías con un único sentido de circulación описывает направление движения, но не exclusive lane. У carril exclusivo ключ не sentido único, а reserved use."
+              "explanationRu": "Vías con un único sentido de circulación описывает направление движения, но не carril exclusivo. Ключ у carril exclusivo - uso reservado, а не sentido único."
             },
             {
               "answerId": "b-fallback-302-a2",
@@ -17423,7 +17423,7 @@
             {
               "answerId": "b-fallback-302-a3",
               "verdict": "incorrect",
-              "explanationRu": "Ambulancias/bomberos/policiales - слишком узкая и одновременно неточная формула. Carril exclusivo определяется конкретно указанными vehicles, а не всегда emergency vehicles."
+              "explanationRu": "Ambulancias/bomberos/policiales - слишком узкая и неточная формула. Carril exclusivo определяется указанным транспортом, а не всегда vehículos de emergencia."
             }
           ]
         },
@@ -17433,12 +17433,12 @@
             {
               "answerId": "b-fallback-325-a1",
               "verdict": "incorrect",
-              "explanationRu": "Aumentar la velocidad блокирует возврат автомобиля A в правую полосу и создает новый конфликт вместо решения peligro ahead."
+              "explanationRu": "Aumentar la velocidad блокирует возврат автомобиля A в правую полосу и создает новый конфликт вместо реакции на опасность впереди."
             },
             {
               "answerId": "b-fallback-325-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: B должен reducir la velocidad para facilitarle el retorno al carril. Это lane-cooperation logic: не ускоряться в закрывающуюся gap."
+              "explanationRu": "Правильно: B должен reducir la velocidad para facilitarle el retorno al carril. Идея простая: не закрывать промежуток, куда другой автомобиль возвращается."
             },
             {
               "answerId": "b-fallback-325-a3",
@@ -17464,7 +17464,7 @@
             {
               "answerId": "b-fallback-336-a3",
               "verdict": "incorrect",
-              "explanationRu": "Carril izquierdo связан с sobrepaso/adelantamiento, а не с incorporación через acceleration lane."
+              "explanationRu": "Carril izquierdo связан с sobrepaso/adelantamiento, а не с incorporación через полосу разгона."
             }
           ]
         },
@@ -17474,12 +17474,12 @@
             {
               "answerId": "b-fallback-356-a1",
               "verdict": "incorrect",
-              "explanationRu": "Rotondas - это circular intersection/roundabout, а не значение isleta в horizontal signaling question."
+              "explanationRu": "Rotondas - это круговое движение, а не значение isleta в вопросе про señalización horizontal, то есть горизонтальную разметку."
             },
             {
               "answerId": "b-fallback-356-a2",
               "verdict": "incorrect",
-              "explanationRu": "Espacios reservados para estacionamiento exclusivo de motovehículos - парковочный контекст. Isleta в этом билете не parking area."
+              "explanationRu": "Espacios reservados para estacionamiento exclusivo de motovehículos - парковочный контекст. Isleta в этом билете не место стоянки."
             },
             {
               "answerId": "b-fallback-356-a3",
@@ -17494,17 +17494,17 @@
             {
               "answerId": "b-fallback-358-a1",
               "verdict": "incorrect",
-              "explanationRu": "Carril de desaceleración не является полосой для продолжительного движения slow vehicles. Он нужен для egresar/salida, а не чтобы ехать по autopista с falla grave."
+              "explanationRu": "Carril de desaceleración не является полосой для долгого движения медленного автомобиля. Он нужен для egresar/salida, а не чтобы ехать по autopista с falla grave."
             },
             {
               "answerId": "b-fallback-358-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по fallback-ticket: circular por el carril derecho y en la próxima salida abandonar la autopista para llamar al auxilio. Обобщение про vehículos remolcados уже ограничено в соседнем topic; здесь ответ остается ticket-specific."
+              "explanationRu": "Правильно для этого билета: circular por el carril derecho y en la próxima salida abandonar la autopista para llamar al auxilio. Более широкий вопрос про remolque ограничен в соседней теме."
             },
             {
               "answerId": "b-fallback-358-a3",
               "verdict": "incorrect",
-              "explanationRu": "Continuar a baja velocidad manteniéndose en cualquier carril плохо: это мешает flow и оставляет неисправный автомобиль на autopista дольше, чем нужно."
+              "explanationRu": "Continuar a baja velocidad manteniéndose en cualquier carril плохо: это мешает потоку и оставляет неисправный автомобиль на autopista дольше, чем нужно."
             }
           ]
         },
@@ -17514,7 +17514,7 @@
             {
               "answerId": "b-fallback-359-a1",
               "verdict": "incorrect",
-              "explanationRu": "Prohibición de Girar a la Derecha - другой знак. Здесь символ связан с line/carril и запретом менять lane."
+              "explanationRu": "Prohibición de Girar a la Derecha - другой знак. Здесь символ показывает полосу (carril) и запрет cambiar de carril."
             },
             {
               "answerId": "b-fallback-359-a2",
@@ -17524,7 +17524,7 @@
             {
               "answerId": "b-fallback-359-a3",
               "verdict": "incorrect",
-              "explanationRu": "Prohibición de Adelantar похожа по смыслу ограничения маневра, но это не exact sign in the image. Билет спрашивает именно lane-change prohibition."
+              "explanationRu": "Prohibición de Adelantar похожа как ограничение маневра, но это не тот знак на картинке. Билет спрашивает именно запрет менять полосу."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b259.jpg"
@@ -17535,7 +17535,7 @@
             {
               "answerId": "b-fallback-361-a1",
               "verdict": "incorrect",
-              "explanationRu": "Únicamente para dividir carriles слишком узко: показанная demarcación amarilla не просто делит lanes, а запрещает ее пересечение/движение по ней."
+              "explanationRu": "Únicamente para dividir carriles слишком узко: показанная demarcación amarilla не просто делит полосы, а запрещает пересекать ее и ехать по ней."
             },
             {
               "answerId": "b-fallback-361-a2",
@@ -17545,7 +17545,7 @@
             {
               "answerId": "b-fallback-361-a3",
               "verdict": "incorrect",
-              "explanationRu": "Sólo pueden circular vehículos particulares неверно: желтая marking не резервирует полосу для private vehicles."
+              "explanationRu": "Sólo pueden circular vehículos particulares неверно: желтая разметка не резервирует полосу для частных автомобилей."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b77.jpg"
@@ -17561,12 +17561,12 @@
             {
               "answerId": "b-fallback-362-a2",
               "verdict": "incorrect",
-              "explanationRu": "Reserved parking for passenger-transport vehicles - другой режим. Желтая marking в этом билете не создает exclusive parking place."
+              "explanationRu": "Estacionamiento reservado para transporte de pasajeros - другой режим. Желтая demarcación в этом билете не создает выделенное место стоянки."
             },
             {
               "answerId": "b-fallback-362-a3",
               "verdict": "incorrect",
-              "explanationRu": "Prohibido estacionar o detenerse corresponded бы red/no stopping logic. Здесь запрет касается estacionar, а detención допускается."
+              "explanationRu": "Prohibido estacionar o detenerse соответствовало бы красному cordón: там нельзя ни estacionar, ни detenerse. Здесь запрет касается estacionar, а detención допускается."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b81.jpg"
@@ -17577,17 +17577,17 @@
             {
               "answerId": "b-fallback-400-a1",
               "verdict": "incorrect",
-              "explanationRu": "Cualquiera de ellos неверно: carril de sobrepaso не может быть любым lane по выбору водителя."
+              "explanationRu": "Cualquiera de ellos неверно: carril de sobrepaso не может быть любой полосой по выбору водителя."
             },
             {
               "answerId": "b-fallback-400-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по image ticket: carril de sobrepaso - только carril señalado como A, то есть lane, предназначенный для maneuver, а не для постоянного движения в любом месте."
+              "explanationRu": "Правильно по картинке: carril de sobrepaso - только carril señalado como A, то есть полоса для маневра, а не для постоянного движения где угодно."
             },
             {
               "answerId": "b-fallback-400-a3",
               "verdict": "incorrect",
-              "explanationRu": "Carril F на изображении не является called carril de sobrepaso. Это distractor на чтение lane labels."
+              "explanationRu": "Carril F на изображении не называется carril de sobrepaso. Это ловушка на чтение букв полос."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b115.jpg"
@@ -17598,17 +17598,17 @@
             {
               "answerId": "b-fallback-438-a1",
               "verdict": "correct",
-              "explanationRu": "Правильно: нельзя использовать carril exclusivo del Metrobús для sobrepaso, потому что запрещено circular de manera permanente o transitoria por dicho carril без authorization."
+              "explanationRu": "Правильно: нельзя использовать carril exclusivo del Metrobús для sobrepaso, потому что без autorización запрещено circular de manera permanente o transitoria por dicho carril."
             },
             {
               "answerId": "b-fallback-438-a2",
               "verdict": "incorrect",
-              "explanationRu": "Discontinuous line on the outer side не делает Metrobús lane доступной для обычного sobrepaso. Exclusive-use rule важнее этой ловушки."
+              "explanationRu": "Línea discontinua del lado externo не делает полосу Metrobús доступной для обычного sobrepaso. Правило carril exclusivo важнее этой ловушки."
             },
             {
               "answerId": "b-fallback-438-a3",
               "verdict": "incorrect",
-              "explanationRu": "Маневр не является exception сам по себе. Короткое использование carril exclusivo все равно считается prohibited transitory circulation."
+              "explanationRu": "Сам маневр не является исключением. Короткое использование carril exclusivo все равно считается circulación transitoria prohibida."
             }
           ]
         }
@@ -17616,7 +17616,7 @@
       "trapNotes": [
         {
           "id": "trap-lane-marking-vs-overtake-topic",
-          "textRu": "Sobrepaso здесь изучается только через lane/marking angle. Не переносите из этих билетов broad overtaking rules в соседний topic, пока он planned.",
+          "textRu": "Sobrepaso здесь разбирается только через полосы и разметку. Широкие правила обгона остаются для соседней темы.",
           "sourceQuestionIds": [
             "b-fallback-012",
             "b-fallback-176",
@@ -17627,7 +17627,7 @@
         },
         {
           "id": "trap-exclusive-lane-not-shortcut",
-          "textRu": "Carril exclusivo не становится разрешенным для короткого sobrepaso. `Transitoria` в `b-fallback-438` - ключевая ловушка.",
+          "textRu": "Carril exclusivo не становится разрешенным для короткого sobrepaso. Слово `transitoria` в `b-fallback-438` - главная ловушка.",
           "sourceQuestionIds": [
             "b-fallback-298",
             "b-fallback-302",
@@ -17636,35 +17636,35 @@
         },
         {
           "id": "trap-time-window-exclusive-lane",
-          "textRu": "В `b-fallback-223` правильный answer зависит от horario de restricción. Absolute `sí` и absolute `no` оба выглядят подозрительно.",
+          "textRu": "В `b-fallback-223` правильный ответ зависит от horario de restricción. Абсолютные `sí` и `no` выглядят подозрительно.",
           "sourceQuestionIds": [
             "b-fallback-223"
           ]
         },
         {
           "id": "trap-isleta-not-parking-or-roundabout",
-          "textRu": "Isleta в horizontal signaling ticket - marcas canalizadoras, а не rotonda и не parking reservado.",
+          "textRu": "Isleta в вопросе про señalización horizontal - это marcas canalizadoras, а не rotonda и не estacionamiento reservado.",
           "sourceQuestionIds": [
             "b-fallback-356"
           ]
         },
         {
           "id": "trap-orange-temporary-line",
-          "textRu": "Orange temporary devices create a temporary boundary/guide. В `b-fallback-291` надо выбрать línea imaginaria, а не illegal/no meaning.",
+          "textRu": "Оранжевые временные элементы создают временную границу. В `b-fallback-291` выбирайте línea imaginaria, а не “нет значения”.",
           "sourceQuestionIds": [
             "b-fallback-291"
           ]
         },
         {
           "id": "trap-no-change-lane-vs-no-overtake",
-          "textRu": "Prohibición de Cambiar de Carril не то же самое, что Prohibición de Adelantar или no girar. Смотрите на symbol и wording.",
+          "textRu": "Prohibición de Cambiar de Carril не то же самое, что Prohibición de Adelantar или no girar. Смотрите на символ и формулировку.",
           "sourceQuestionIds": [
             "b-fallback-359"
           ]
         },
         {
           "id": "trap-yellow-cordon-vs-red-cordon",
-          "textRu": "Yellow marking/cordón в `b-fallback-362` запрещает estacionar, но не всякую detención; red/no stopping logic был бы другим ответом.",
+          "textRu": "Желтая разметка/cordón amarillo в `b-fallback-362` запрещает estacionar, но не всякую detención. Красный cordón с запретом detenerse дал бы другой ответ.",
           "sourceQuestionIds": [
             "b-fallback-362"
           ]

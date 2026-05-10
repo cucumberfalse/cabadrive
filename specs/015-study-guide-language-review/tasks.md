@@ -101,15 +101,15 @@
 
 ## Future Slice I: Right-Of-Way, Lanes, Turns, And Overtaking
 
-- [ ] T070 Review and rewrite `right-of-way-basic-intersections`.
-- [ ] T071 Review and rewrite `right-of-way-special-situations`.
-- [ ] T072 Review and rewrite `center-lines-and-crossing-rules`.
-- [ ] T073 Review and rewrite `lane-and-channelization-markings`.
+- [x] T070 Review and rewrite `right-of-way-basic-intersections`.
+- [x] T071 Review and rewrite `right-of-way-special-situations`.
+- [x] T072 Review and rewrite `center-lines-and-crossing-rules`.
+- [x] T073 Review and rewrite `lane-and-channelization-markings`.
 - [ ] T074 Review and rewrite `lane-choice-and-lane-changes`.
 - [ ] T075 Review and rewrite `turns-direction-and-reversing`.
 - [ ] T076 Review and rewrite `overtaking-and-passing`.
-- [ ] T077 Ask Orchestrator to split this slice into two sequential PRs if the diff becomes too large for reliable review.
-- [ ] T078 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T077 Orchestrator split Slice I into two sequential PRs before this implementation: part 1 covers T070-T073 only, and part 2 remains T074-T076.
+- [x] T078 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice J: Bicycles, Micromobility, And Shared Spaces
 
@@ -197,14 +197,14 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `information-signs` | B | Reviewed in Slice B |
 | `traffic-lights-and-rail-crossings` | H | Reviewed in Slice H |
 | `right-of-way-signals-and-rail-crossings` | G | Reviewed in Slice G |
-| `right-of-way-basic-intersections` | I | Pending |
-| `right-of-way-special-situations` | I | Pending |
+| `right-of-way-basic-intersections` | I | Reviewed in Slice I part 1 |
+| `right-of-way-special-situations` | I | Reviewed in Slice I part 1 |
 | `documents-licenses-and-insurance` | B | Reviewed in Slice B |
 | `authorities-controls-and-sanctions` | K | Pending |
 | `safety-principles-and-risk` | F | Reviewed in Slice F |
 | `stopping-vs-parking-maneuvers` | C | Reviewed in Slice C |
-| `center-lines-and-crossing-rules` | I | Pending |
-| `lane-and-channelization-markings` | I | Pending |
+| `center-lines-and-crossing-rules` | I | Reviewed in Slice I part 1 |
+| `lane-and-channelization-markings` | I | Reviewed in Slice I part 1 |
 | `lane-choice-and-lane-changes` | I | Pending |
 | `public-transport-and-exclusive-lanes` | H | Reviewed in Slice H |
 | `sustainable-mobility-and-vulnerable-users` | J | Pending |
@@ -696,6 +696,72 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 - Slice H PR #82 review follow-up known issues: none introduced.
 - Slice H PR #82 review follow-up Implementation Agent feedback: none requiring Architect disposition.
 - Slice H PR #82 P3 style follow-up addressed: in `public-transport-and-exclusive-lanes`, `b-fallback-298-a2` now says `автобуса/colectivo` instead of `bus/colectivo`; only that rendered wording and the topic `difficultyMeta.sourceFingerprint` changed, from `b099d3658b50fc131acac0c81005a5f8bb615c672eb46d40489ffb213f25d03d` to `799cf02750cd05627ba48dd96cdab3ee48011da061be89c74aa2a7e83e50a451`.
+- Slice I part 1 worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-rightofway` on `codex/015-study-guide-language-review-rightofway`, stacked on latest `origin/codex/015-study-guide-language-review-road` / PR #82 follow-up head `baa0f2edc74a405d260e64010d0cf916d691c212`.
+- Slice I split decision: Orchestrator split the original large Slice I into two sequential PRs. This PR implements only part 1 (`right-of-way-basic-intersections`, `right-of-way-special-situations`, `center-lines-and-crossing-rules`, `lane-and-channelization-markings`). Part 2 remains pending for `lane-choice-and-lane-changes`, `turns-direction-and-reversing`, and `overtaking-and-passing`.
+- Topics reviewed: `right-of-way-basic-intersections`, `right-of-way-special-situations`, `center-lines-and-crossing-rules`, and `lane-and-channelization-markings`.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice I part 1 did not touch root fields.
+  - titles: 4
+  - summaries: 4
+  - learning paragraphs: 30
+  - practical reasoning paragraphs: 14
+  - term translations: 76
+  - source-conflict notes: 0 in Slice I part 1 topics
+  - answer explanations: 205
+  - trap notes: 23
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 3
+  - summaries: 4
+  - learning paragraphs: 30
+  - practical reasoning paragraphs: 14
+  - term translations: 12
+  - source-conflict notes: 0
+  - answer explanations: 75
+  - trap notes: 17
+  - `difficultyMeta.sourceFingerprint`: 4
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice I part 1 topics 71 / 71.
+- Unique question IDs before/after: global 460 / 460; Slice I part 1 topics 71 / 71.
+- Answer explanations before/after: global 1,831 / 1,831; Slice I part 1 topics 205 / 205.
+- Source-conflict notes before/after: global 4 / 4; Slice I part 1 topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-043`, `b-fallback-045`, `b-fallback-066`, `b-fallback-068`, `b-fallback-118`, `b-fallback-148`, `b-fallback-150`, `b-fallback-164`, `b-fallback-165`, `b-fallback-171`, `b-fallback-180`, `b-fallback-244`, `b-fallback-262`, `b-fallback-311`, `b-fallback-312`, `b-fallback-396`, `b-fallback-410`, `b-fallback-436`, `b-fallback-460`, `b-fallback-031`, `b-fallback-051`, `b-fallback-070`, `b-fallback-084`, `b-fallback-093`, `b-fallback-129`, `b-fallback-139`, `b-fallback-187`, `b-fallback-191`, `b-fallback-341`, `b-fallback-345`, `b-fallback-389`, `b-fallback-403`, `b-fallback-440`, `b-fallback-444`, `b-fallback-170`, `b-fallback-174`, `b-fallback-188`, `b-fallback-320`, `b-fallback-012`, `b-fallback-176`, `b-fallback-179`, `b-fallback-219`, `b-fallback-223`, `b-fallback-227`, `b-fallback-291`, `b-fallback-298`, `b-fallback-302`, `b-fallback-325`, `b-fallback-336`, `b-fallback-356`, `b-fallback-358`, `b-fallback-359`, `b-fallback-362`, `b-fallback-400`, and `b-fallback-438`.
+- Duplicate handling decision: reviewed duplicated placements only inside the four assigned Slice I part 1 topics. Matching placements outside this PR remain for their already-reviewed slices or for Slice I part 2. Wording stayed intentionally topic-specific: basic-intersection duplicates keep signal hierarchy, avenida/calle/derecha, no-blocking, sign, lane-change, and mixed maneuver framing; special-situation duplicates keep rotonda, obstruction, pendiente, emergency, incorporation, turn, and authority hierarchy framing; center-line duplicates keep pedestrian-priority and yellow channelization exceptions narrow; lane/channelization duplicates keep lane, exclusive-lane, isleta, temporary-channelization, and Metrobus framing. Answer IDs, verdicts, images, placements, and topic assignment shape were preserved.
+- Source-sensitive sentences left unchanged: all 22 `claims[].textRu` entries in Slice I part 1 topics were preserved as non-rendered source-trace metadata. Numeric, procedural, picture-bound, and old-ticket boundaries were preserved for authority/signal/general-rule hierarchy, avenida/calle/pasaje before derecha, no-blocking intersections, PARE/CEDA/PREFERENCIA meanings, warning signs that do not grant priority, exact image/letter vehicle-order answers, marcha atrás and giro boundaries, rotonda priority and egreso caveat, obstruction-side yielding, pendiente ascendente priority, repeated-bocina emergency reading in `b-fallback-093`, emergency-corridor image choreography in `b-fallback-268` and `b-fallback-319`, incorporation only when `tránsito se encuentra interrumpido`, giro signal at least 30 m before, left turn with/without signal permission, red/yellow cordón distinctions, continuous/discontinuous line rules, `b-fallback-174` pedestrian-priority scope, `b-fallback-320` yellow traffic-calming/channelization scope, `b-fallback-291` `línea imaginaria`, `b-fallback-223` `horario de restricción`, and `b-fallback-358` non-towed serious-failure advice.
+- CABA/RF notes added or clarified: Slice I part 1 kept comparison practical. It clarified that an RF-trained driver should not jump straight to "помеха справа" when CABA tickets show avenida/calle/pasaje or signal hierarchy; that familiar basics like not blocking intersections and checking both directions still matter for the exam; that rotonda, pendiente, incorporation, and emergency vehicles have special CABA answer patterns; that demarcación horizontal is a real signal, not decoration; and that carriles exclusivos/Metrobús are not a short private-car bypass.
+- Before/after samples:
+  - `right-of-way-basic-intersections`: before "vertical signs и demarcación horizontal"; after "señales verticales и demarcación horizontal".
+  - `right-of-way-basic-intersections`: before "ticket-specific mapping картинки"; after "Букву A не переносите на другие схемы."
+  - `right-of-way-special-situations`: before "приоритет не решается одной привычкой"; after "не решайте все правилом 'кто справа'."
+  - `right-of-way-special-situations`: before "ticket-specific emergency signal"; after "señal de emergencia именно для этого билета."
+  - `center-lines-and-crossing-rules`: before "taxonomy-mixed ... pedestrian-priority logic"; after "`b-fallback-174` luz verde не отменяет приоритет пешехода."
+  - `center-lines-and-crossing-rules`: before "traffic-calming/channelization effect"; after "эффект снижения скорости и направления потока."
+  - `lane-and-channelization-markings`: before "demarcated band ... left/overtaking lane ... cruising"; after "продольная полоса на calzada ... Левая полоса для sobrepaso не становится постоянной полосой движения."
+  - `lane-and-channelization-markings`: before "Reserved parking for passenger-transport vehicles" and "Discontinuous line on the outer side"; after "Estacionamiento reservado para transporte de pasajeros" and "Línea discontinua del lado externo."
+- PR #63 / #82 guard: Slice I part 1 write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch PR #63 / feature 009 forbidden paths (`content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`), coverage/source-trace manifests, validators/tests/docs/package files, product UI, scripts, package files, docs outside this feature memory, or other worktrees/branches/PRs. The branch was fast-forwarded to PR #82 follow-up head `baa0f2e` before final validation and commit, preserving Slice H review fixes.
+- Difficulty metadata refresh evidence: all four Slice I part 1 topics kept their `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only `difficultyMeta.sourceFingerprint` changed, and each new value matched `difficultyTopicFingerprint(topic)` after the learner-facing text rewrite:
+  - `right-of-way-basic-intersections`: `efe538a7124015ca270bef740d7e92e3525478d098f76ee19714b84d2dc79614` -> `b33c99e1bbfc855d16eb7714f687c079be38c0fd8c377a9e1002b4922762cbff`
+  - `right-of-way-special-situations`: `bf58c21edead46e541607c6bcb9c5ee37951db1d38813007567ff532d13ecbeb` -> `7d568512996adb0e90e179716d34bc45fee5fad285ed48b95ebf6a910acd5ec7`
+  - `center-lines-and-crossing-rules`: `5111ceabe4ffa81b4bdcff779b628a489f8bdd373b449844907a7411003e5211` -> `2bbe6af6b6e183a88699ac5b28a4dbe56a148aca152cb1d328c3761f8e1fed29`
+  - `lane-and-channelization-markings`: `7f689529cae9e5d0cbd0b501838cc3d31051915bce07b45944df6bf05d744bbb` -> `5b4bd3dfd0ddba4bd3c69e89d109da701dec61ae2e5851f83bf394fca64c5a4c`
+- Validation evidence before final commit, after rebasing onto `baa0f2e`:
+  - JSON parse, structural count, and preservation guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 170 claims, 38 `difficulty`, and 38 `difficultyMeta`. Only the four Slice I part 1 topics changed in `content/guide/topic-study-guide.ru.json`; IDs, slugs/status, placements, `questionId`, `imageLocalPath`, `answerId`, `verdict`, Spanish `termEs`, term/ticket/trap source references, claims/source traces, `difficulty`, and non-fingerprint `difficultyMeta` were preserved.
+  - Fingerprint guard: pass; all four changed topic `difficultyMeta.sourceFingerprint` values matched `difficultyTopicFingerprint(topic)`, and unchanged topic fingerprints remained untouched.
+  - Targeted rendered-field process/English scan over Slice I part 1 topics: pass after the `baa0f2e` rebase; scanned 356 rendered fields with 0 matches after ignoring `b-fallback-*` ticket IDs. Duplicate-term guard found 0 `spanishTerms[].translationRu` values duplicating their `termEs`.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check` and `git diff --cached --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass before this evidence wording update.
+  - Changed-path guard before this evidence wording update: pass; staged changed paths were limited to `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`, with no PR #63 forbidden paths, coverage/source-trace manifests, validators/tests/docs/package/product files, scripts, or other non-scope paths.
+- PR #84 expanded review follow-up addressed: in `lane-and-channelization-markings`, replaced learner-facing English fragments `peligro ahead`, `horizontal signaling`, `line/carril`, `cordón/no stopping`, and `Yellow marking/cordón` with Russian or Spanish terms anchored in Russian. IDs, answer IDs, verdicts, placements, claims/source traces, `difficulty`, and non-fingerprint `difficultyMeta` stayed unchanged. Refreshed only this topic's `difficultyMeta.sourceFingerprint`, from `5b4bd3dfd0ddba4bd3c69e89d109da701dec61ae2e5851f83bf394fca64c5a4c` to `8d5614d9dc5b4c4461a8d920e5580168051b9a42185a55b310f30f2a2bf0c1da`.
+- PR #84 expanded follow-up validation evidence:
+  - JSON parse and affected topic fingerprint guard: pass; parsed 38 topics, and `lane-and-channelization-markings` `difficultyMeta.sourceFingerprint` matched `difficultyTopicFingerprint(topic)` at `8d5614d9dc5b4c4461a8d920e5580168051b9a42185a55b310f30f2a2bf0c1da`.
+  - Targeted Slice I part 1 rendered-field English/process scan: pass; scanned 356 rendered fields across the four part 1 topics after ignoring `b-fallback-*` IDs, with 0 matches for `ahead`, `horizontal signaling`, `line/carril`, `cordón/no stopping`, `Yellow marking`, `no stopping`, and the curated process-English leftovers.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check`: pass.
+  - Changed-path guard: pass; changed paths stayed limited to `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`.
+- Known issues: none introduced. Slice I part 2 remains pending by design for `lane-choice-and-lane-changes`, `turns-direction-and-reversing`, and `overtaking-and-passing`.
+- Implementation Agent feedback: none requiring Architect disposition. Slice I part 1 found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs outside this feature memory, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
 
 ## Known Issues
 
