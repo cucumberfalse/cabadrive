@@ -34,6 +34,10 @@ If docs are stale or missing for the requested work, refresh `docs_project/` fir
 
 Any user request that implies repository changes defaults to Orchestrator entry. This includes feature requests, bug reports, documentation or process changes, implementation requests, and similarly phrased work. Agents must not begin direct Analyst, Architect, Implementation Agent, or Review Agent work for such requests unless Orchestrator has assigned that role and task slice.
 
+Read-only requests may be answered without creating feature memory or invoking the implementation flow when they are limited to inspection, explanation, status reporting, command output, summarization, planning that writes no files, or non-mutating code review. If a read-only interaction becomes a request to write repository files, stage, commit, push, open or mutate a PR, change workflow settings, or otherwise mutate repository or GitHub state, the Orchestrator-first stop condition applies before the first mutation.
+
+The active model must identify its current role before acting on a repository-changing request. If the active model is not explicitly operating as Orchestrator with a repository-changing assignment, it must stop, state that Orchestrator routing is required, and must not self-promote into Orchestrator, Analyst, Architect, Implementation Agent, or Review Agent work. A user request to "just fix", "update docs", "change the workflow", or similar repository-changing phrasing is not by itself an Orchestrator handoff.
+
 The Orchestrator stays strictly in the Orchestrator role. When no current `feature-request.md` exists for the repository-changing request, Orchestrator invokes Analyst first for intake, gives Analyst the original request and relevant constraints, and does not write the intake artifact directly.
 
 Analyst is the only normal-flow role that may initiate user requirement clarification. Analyst sends concise clarification questions to Orchestrator; Orchestrator asks the user and returns the answers to Analyst. After Analyst handoff, Orchestrator, Architect, Implementation Agent, and Review Agent do not initiate new user requirement clarification; they use recorded assumptions, record Implementation Agent feedback for Architect disposition, or stop only for documented blocker exceptions such as safety, permissions, credentials, data-loss risk, repository conflicts or status ambiguity, or an unapproved human merge-owner decision.
@@ -42,11 +46,14 @@ Orchestrator must assume parallel Orchestrators and agents may be active. Before
 
 After Analyst creates the latest-main intake branch/worktree context and `feature-request.md`, Orchestrator takes that handoff forward by invoking Architect and later Implementation Agent and Review Agent as needed. That Analyst-created handoff context may continue through Architect planning and may be assigned as the single implementation PR slice when Orchestrator explicitly chooses that route; additional implementation task slices require their own latest-main isolated worktrees, branches, and PRs. If the user explicitly authorizes Orchestrator merge or auto-merge behavior, Orchestrator may continue without asking again through implementation, review, checks, final validation, and merge, but only after every merge-readiness gate is verified. Without that explicit authorization, a human remains the default final merge owner.
 
+If an agent realizes it has started direct repository changes before the required Orchestrator-first route or feature-memory prerequisites are satisfied, it must stop immediately, report the process failure to Orchestrator or the user, preserve all user and sibling-agent work, and wait for Orchestrator/user disposition. Recovery may adopt, revert, or salvage the accidental edits only when Orchestrator or the user explicitly authorizes that path and assigns the role-appropriate agent. Hidden continuation, silent role switching, destructive cleanup, and reverting work the current agent did not make are forbidden.
+
 ## Agent Roles
 
 ### Analyst
 
 - Owns repository request intake before architecture work starts, and owns final Analyst validation only when Orchestrator invokes it after final Architect validation passes.
+- May start only after Orchestrator routes a repository-changing request to Analyst; Analyst must not self-assign intake from a new user request.
 - Creates the next `specs/<feature-id>/` folder using the max existing numeric prefix under `specs/` plus one, zero-padded to three digits, followed by a short slug.
 - If duplicate numeric prefixes already exist, still uses the maximum numeric prefix plus one; if a collision occurs on the target folder name, chooses a clearer slug or asks the Orchestrator to coordinate before writing.
 - Splits independent goals into separate feature folders, or records why a split is deferred.
@@ -70,6 +77,7 @@ After Analyst creates the latest-main intake branch/worktree context and `featur
 - When final Architect validation finds gaps, updates only Architect-owned artifacts or dispositions, records the gap and next task/ticket/not-needed decision, increments the Architect return count, and returns control to Orchestrator for role-appropriate follow-up development.
 - May return work for final-validation gaps at most 10 times per work cycle. If another Architect gap would exceed that limit, records the limit breach and tells Orchestrator to ask Analyst for a new feature request.
 - Architect does not write code, tests, runtime files, or implementation changes.
+- While acting as Architect, writes only assigned Architect-owned artifacts such as `spec.md`, `plan.md`, `tasks.md`, and dispositions; if asked to implement, stops and routes back to Orchestrator.
 - Hands complete feature memory to the Orchestrator for coordination and enforcement.
 - Does not stage, commit, push, open PRs, review PRs, or merge while acting as Architect unless a future spec explicitly changes that boundary.
 - Must not switch into Analyst, Implementation Agent, Review Agent, or Orchestrator work during the same task. If additional work is needed, Orchestrator reroutes it.
@@ -79,6 +87,7 @@ After Analyst creates the latest-main intake branch/worktree context and `featur
 - Reads repository memory before starting.
 - Coordinates assigned agents from request intake through production readiness and enforces the repository workflow.
 - Is the default entrypoint for every repository-changing user request.
+- Remains in the Orchestrator role even when the requested change is small; Orchestrator coordinates and delegates file-changing work instead of performing it directly.
 - Invokes Analyst for repository-changing request intake when no current `feature-request.md` exists.
 - Relays Analyst clarification questions to the user and returns user answers to Analyst before intake completes.
 - Confirms each repository-changing user request has its own `specs/<feature-id>/` folder with Analyst intake and Architect-owned planning artifacts before implementation starts.
@@ -104,9 +113,10 @@ After Analyst creates the latest-main intake branch/worktree context and `featur
 
 ### Implementation Agent
 
-- Starts from assigned feature memory and does not begin implementation if `spec.md`, `plan.md`, or `tasks.md` is missing.
-- Works only from an assigned isolated worktree.
+- Starts from assigned feature memory and does not begin implementation unless `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` exist for the assigned feature, except for documented legacy/no-intake exceptions.
+- Works only from an Orchestrator-assigned isolated worktree.
 - Stays within one branch and one PR per task slice.
+- Confirms the assigned branch, PR slice, scoped files, and parallel-work preservation warning before editing repository files.
 - Keeps `specs/<feature-id>/tasks.md` current in the same PR.
 - Records dead ends, decisions, and known issues in the active feature memory.
 - Follows the active spec and tasks strictly; if it needs to diverge or identifies an improvement outside scope, records feedback in markdown process memory for Architect disposition instead of implementing it directly.
@@ -120,6 +130,7 @@ After Analyst creates the latest-main intake branch/worktree context and `featur
 
 - Reviews pull request diffs for bugs, regressions, missing tests, and contract violations.
 - Checks that repository-changing work has complete feature memory and follows Analyst, Architect, Orchestrator, Implementation Agent, and Review Agent role boundaries.
+- Flags Orchestrator-first bypasses, role self-promotion, missing `feature-request.md`/`spec.md`/`plan.md`/`tasks.md`, unsafe accidental-edit recovery, unapproved destructive cleanup, sibling-work mutation, and contradictions with prior process features such as `011` routing or sibling `012` final-validation guidance.
 - Review Agent does not change code, docs, tests, specs, or templates while acting as reviewer.
 - Reports code review findings as GitHub inline review threads. Backend-specific no-finding summary behavior remains allowed by the review contract.
 - Checks final-validation compliance when the active spec requires it, including cycle PR-set coverage, Architect-before-Analyst ordering, bounded return counts, Analyst-feedback Architect disposition, preserved role boundaries, and preserved merge gates.
@@ -130,6 +141,7 @@ After Analyst creates the latest-main intake branch/worktree context and `featur
 
 ## Agent Boundaries
 
+- Non-Orchestrator active models must stop on new repository-changing requests unless Orchestrator has already assigned the role, worktree, branch, PR slice, and feature memory for that task.
 - One worker equals one worktree.
 - One implementation loop equals one branch and one PR.
 - One task slice equals one isolated worktree, one branch, and one PR.
@@ -144,6 +156,7 @@ After Analyst creates the latest-main intake branch/worktree context and `featur
 - Acceptance criteria must be verified with evidence, not only an AI-written summary.
 - `docs_project/`, `.specify/`, `specs/`, and `docs/specify/` are durable memory, not disposable session notes.
 - Do not edit secrets or production resources directly.
+- Do not overwrite, revert, rebase, merge, close, delete, move, or otherwise mutate sibling worktrees, branches, dirty diffs, commits, PR state, or process memory except through explicit Orchestrator coordination.
 
 ## Delivery Workflow
 
