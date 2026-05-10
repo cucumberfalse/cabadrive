@@ -17,6 +17,8 @@ content/official-documents/
 
 This area is for verbatim official source documents and materials that support Cabadrive source traceability. It is not a place for Russian explanations, summaries, translations, or topic-guide prose.
 
+`content/official-documents/manifest.json` is the machine-readable manifest for the archive. It is no longer only a three-source seed: as of the Slice A implementation-time inventory on 2026-05-10, the manifest contains 19 official-document entries covering national traffic law and regulation, CABA traffic/VTV materials, vehicle-document procedures, road-incident/study materials, and related penal, civil/commercial, and insurance sources.
+
 Question-image semantic metadata is also outside the official archive. Current practice-image metadata lives under `content/image-metadata/` with review evidence under `content/validation/`; it describes local fallback practice images for learning-support validation and must not be treated as official GCBA source text.
 
 ## Ticket Learning-Support Lifecycle
@@ -44,13 +46,7 @@ When materially changing ticket text, answer IDs/text, correct answer, image pat
 
 When deleting a ticket, remove or refresh linked translations, explanations, question image usages, overlay/relevance mappings, translation evidence, explanation evidence, image usage evidence, generated indexes, and validation records. Remove shared image metadata only when no remaining question usage references that image; if another ticket still uses the image, keep the shared metadata and remove only the deleted ticket's usage/evidence.
 
-`content/official-documents/manifest.json` is the machine-readable manifest for the archive. The manifest remains draft while exact-text and whole-archive currentness validation are future release gates, but Slice D seeds a small reusable official-source bundle for later topic-guide work:
-
-- `ley-24449-transito-seguridad-vial`: Ley Nacional de Tránsito 24.449 updated text from Argentina.gob.ar, with official InfoLeg retained as supporting/alternative evidence.
-- `decreto-779-1995-reglamentario-ley-24449`: Decreto 779/1995 updated main regulatory text from Argentina.gob.ar.
-- `ley-2148-caba-codigo-transito-transporte`: Ley 2148 / Código de Tránsito y Transporte de la CABA updated provincial text from Argentina.gob.ar.
-
-Each seeded entry has Markdown under `content/official-documents/documents/`, clean HTML evidence under `content/official-documents/originals/`, SHA-256 metadata for the Markdown, and preliminary currentness/effective-status evidence checked on 2026-05-09.
+The current archive stores one Markdown document for each manifest entry under `content/official-documents/documents/`, raw/original evidence under `content/official-documents/originals/` where required, SHA-256 metadata for the Markdown, and currentness/effective-status evidence. Currentness validation is recorded as passed for all 19 entries, but `exactTextValidation.status` remains pending for all 19 entries until a dedicated whole-archive exact-text validation slice completes.
 
 Each future manifest entry must record:
 
@@ -70,7 +66,20 @@ Each future manifest entry must record:
 
 Official archive Markdown must preserve the source title, wording, numbering, headings, article/rule/section/page structure, bullet structure, and formal terminology as exactly as Markdown reasonably allows.
 
-Agents must not paraphrase, translate, simplify, summarize, or otherwise rewrite official text inside `content/official-documents/`. Any Russian learning material derived from official sources belongs in guide content outside this archive and remains unofficial learning support.
+Agents must not paraphrase, translate, simplify, summarize, or otherwise rewrite official text inside `content/official-documents/`. Any Russian learning material derived from official sources belongs outside this archive and remains unofficial learning support. For the planned primary-source reader, full Russian translations and simple Russian rewrites should live in a governed learner-content area such as `content/primary-sources/`, not in `content/official-documents/`.
+
+## Planned Primary-Source Reader
+
+Feature `019-primary-sources-section` plans a learner-facing `Источники` / official primary-source reader. This section is not implemented in the current product at the time of this Slice A docs refresh. When implemented, it should remain distinct from the topic-study `Материалы` guide and should:
+
+- cover every entry in the implementation-time and final manifest;
+- default to schoolchild-friendly simple Russian text;
+- let the learner switch to full Russian translation and original Spanish official text;
+- omit simplified Spanish;
+- display compact source/currentness/exact-text status;
+- preserve local-first behavior without runtime network calls, live AI, or raw PDF viewing.
+
+The original Spanish archive remains the official/verbatim source layer. Russian translation, simplification, summaries, and learner notes are unofficial support layers and must be stored and validated outside `content/official-documents/`.
 
 ## Currentness Rules
 
@@ -88,7 +97,7 @@ Allowed `currentness.validationStatus` and `exactTextValidation.status` values a
 
 `scripts/validate-content.mjs` integrates the official-documents manifest validator with real local file existence and SHA-256 checks. An empty draft manifest passes validation. Entries, when present, must have required metadata, local paths inside the archive section, SHA-256 hash metadata that matches the local archived Markdown file, conversion notes, currentness fields, exact-text validation status, and raw/original evidence for lossy formats.
 
-The final topic-study-guide release still requires later dedicated whole-archive exact-text and currentness validation slices. The seeded Slice D entries intentionally keep `exactTextValidation.status` as `pending` until that dedicated validation is performed.
+The final topic-study-guide release and the final primary-source reader release still require later dedicated whole-archive exact-text and currentness validation evidence. The current manifest records currentness validation as passed, but exact-text validation remains pending and must not be described as release-ready until the dedicated validation is performed or an explicit Architect/user disposition narrows the release status.
 
 ## Related Guide Files
 
