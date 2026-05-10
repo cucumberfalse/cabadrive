@@ -161,13 +161,13 @@
 - [ ] T127 Add responsive e2e coverage for compact and expanded widths.
 - [ ] T128 Add keyboard/focus e2e coverage for search, filters, source selection, chunk navigation, and view controls.
 - [ ] T129 Add request-monitoring/code-review evidence that no runtime network/PDF/backend/live-AI dependency exists.
-- [x] T130 Run `pnpm run validate:content`.
-- [x] T131 Run `pnpm run test`.
+- [ ] T130 Run final-head `pnpm run validate:content`.
+- [ ] T131 Run final-head `pnpm run test`.
 - [ ] T132 Run `pnpm run build`.
 - [ ] T133 Run `pnpm run test:e2e`.
 - [ ] T134 Run `pnpm run preflight`.
-- [x] T135 Run `git diff --check`.
-- [x] T136 Record command output summaries and exact unrelated blockers in Process Memory.
+- [ ] T135 Run final-head `git diff --check`.
+- [ ] T136 Record final-head command output summaries and exact unrelated blockers in Process Memory.
 
 ## Final Whole-Corpus Release Gate
 
@@ -302,3 +302,5 @@
   - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - Initial `pnpm run test` exposed missing local dependencies (`ERR_MODULE_NOT_FOUND` for `typescript`); after `pnpm install --frozen-lockfile`, `pnpm run test` passed: 86 Node tests, 86 pass, 0 fail.
   - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
+- PR #68 review follow-up on 2026-05-10:
+  - Left final-head verification checklist tasks T130, T131, T135, and T136 open; Slice A command results remain historical process evidence only and do not satisfy final feature validation.
