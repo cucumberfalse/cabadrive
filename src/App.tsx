@@ -1111,7 +1111,7 @@ function PrimarySourcesReader({ corpus }: { corpus: PrimarySourceReaderCorpus })
     [categoryFilter, corpus.documents, jurisdictionFilter, normalizedQuery, sourceTypeFilter]
   );
   const selectedDocument =
-    filteredDocuments.find((document) => document.officialDocumentId === selectedDocumentId) || filteredDocuments[0] || defaultDocument;
+    filteredDocuments.find((document) => document.officialDocumentId === selectedDocumentId) || filteredDocuments[0];
   const selectedChunk =
     selectedDocument?.chunks.find((chunk) => chunk.chunkId === selectedChunkId) || selectedDocument?.chunks[0];
   const matchingChunks = selectedDocument?.chunks.filter(chunkMatchesQuery) || [];
@@ -1145,7 +1145,7 @@ function PrimarySourcesReader({ corpus }: { corpus: PrimarySourceReaderCorpus })
     setTextMode("simple");
   }
 
-  if (!selectedDocument || !selectedChunk) {
+  if (!corpus.documents.length) {
     return (
       <section className="workspace">
         <h2>Источники</h2>
@@ -1228,7 +1228,7 @@ function PrimarySourcesReader({ corpus }: { corpus: PrimarySourceReaderCorpus })
                 return (
                   <button
                     type="button"
-                    className={document.officialDocumentId === selectedDocument.officialDocumentId ? "source-row active" : "source-row"}
+                    className={document.officialDocumentId === selectedDocument?.officialDocumentId ? "source-row active" : "source-row"}
                     key={document.officialDocumentId}
                     onClick={() => selectDocument(document)}
                   >
@@ -1246,7 +1246,7 @@ function PrimarySourcesReader({ corpus }: { corpus: PrimarySourceReaderCorpus })
             </div>
           ) : (
             <div className="source-empty-state">
-              <p>По локальному корпусу ничего не найдено.</p>
+              <p>По текущему поиску и фильтрам ничего не найдено.</p>
               <button type="button" className="tool-button" onClick={resetFilters}>
                 Сбросить фильтры
               </button>
@@ -1254,111 +1254,124 @@ function PrimarySourcesReader({ corpus }: { corpus: PrimarySourceReaderCorpus })
           )}
         </aside>
 
-        <article className="source-detail-pane" aria-labelledby="source-detail-title">
-          <div className="source-detail-heading">
-            <div>
-              <span className="block-label">Выбранный источник</span>
-              <h2 id="source-detail-title">{selectedDocument.shortTitleRu}</h2>
-              <p>{selectedDocument.title}</p>
-              <a className="source-back-link" href="#primary-source-list">
-                К списку
-              </a>
-            </div>
-            <div className="source-view-controls" role="tablist" aria-label="Режим текста источника">
-              {(["simple", "full", "spanish"] as PrimarySourceTextMode[]).map((mode) => (
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={textMode === mode}
-                  className={textMode === mode ? "active" : ""}
-                  onClick={() => setTextMode(mode)}
-                  key={mode}
-                >
-                  {primarySourceModeLabel(mode)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="source-status-grid" aria-label="Статус выбранного источника">
-            <span>{primarySourceCategoryLabel(selectedDocument.category)}</span>
-            <span>{primarySourceJurisdictionLabel(selectedDocument.jurisdiction)}</span>
-            <span>{primarySourceTypeLabel(selectedDocument.officialSourceType)}</span>
-            <span>{primarySourceTranslationStatusLabel(selectedDocument.translationStatus)}</span>
-            <span>{primarySourceCurrentnessLabel(selectedDocument)}</span>
-            <span>{primarySourceExactTextLabel(selectedDocument)}</span>
-            <span>Получено {selectedDocument.retrievalDate}</span>
-            <span>{selectedDocument.translatedChunkCount} / {selectedDocument.totalChunkCount} RU-фрагментов</span>
-          </div>
-
-          <aside className="support-block source-trust">
-            <span className="block-label">Граница доверия</span>
-            <p>Испанский архивный текст является официальным слоем. Русский перевод и простой русский текст - неофициальная учебная поддержка Cabadrive.</p>
-            {selectedDocument.translationStatus !== "approved" && (
-              <p>Этот источник открыт только по фрагментам с одобренным русским учебным слоем; непереведенные фрагменты не показываются как читаемый текст.</p>
-            )}
-          </aside>
-
-          <div className="source-links">
-            <a href={selectedDocument.sourceUrl} target="_blank" rel="noreferrer">
-              <ExternalLink size={16} aria-hidden="true" /> Официальная страница
-            </a>
-            <span>{selectedDocument.archiveLocalPath}</span>
-          </div>
-
-          <section className="source-chunk-navigation" aria-labelledby="source-chunks-title">
-            <div className="source-chunk-navigation-heading">
-              <h3 id="source-chunks-title">Фрагменты</h3>
-              <span>{selectedDocument.chunkingStrategy}</span>
-            </div>
-            <p className="muted">{selectedDocument.chunkingNote}</p>
-            <label className="source-filter source-chunk-select">
-              <span>Фрагмент</span>
-              <select
-                aria-label="Выбор фрагмента"
-                value={selectedChunk.chunkId}
-                onChange={(event) => setSelectedChunkId(event.target.value)}
-              >
-                {selectedDocument.chunks.map((chunk) => (
-                  <option value={chunk.chunkId} key={chunk.chunkId}>
-                    {chunk.order}. {primarySourceChunkLabel(chunk)}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <div className="source-chunk-list" aria-label="Навигация по фрагментам">
-              {quickChunks.map((chunk) => (
-                <button
-                  type="button"
-                  className={chunk.chunkId === selectedChunk.chunkId ? "active" : ""}
-                  key={chunk.chunkId}
-                  onClick={() => setSelectedChunkId(chunk.chunkId)}
-                >
-                  <span>{String(chunk.order).padStart(3, "0")}</span>
-                  <span>{primarySourceChunkLabel(chunk)}</span>
-                </button>
-              ))}
-            </div>
-            {!normalizedQuery && selectedDocument.chunks.length > quickChunkLimit && (
-              <p className="muted">Быстрый список: первые {quickChunkLimit} из {selectedDocument.chunks.length}.</p>
-            )}
-          </section>
-
-          <section className="source-reader" aria-labelledby="source-reader-title" data-testid="primary-source-reader">
-            <div className="source-reader-heading">
+        {selectedDocument && selectedChunk ? (
+          <article className="source-detail-pane" aria-labelledby="source-detail-title">
+            <div className="source-detail-heading">
               <div>
-                <span className="block-label">{primarySourceModeLabel(textMode)}</span>
-                <h3 id="source-reader-title">{primarySourceChunkLabel(selectedChunk)}</h3>
-                <p>{selectedChunk.headingPath.join(" / ")}</p>
+                <span className="block-label">Выбранный источник</span>
+                <h2 id="source-detail-title">{selectedDocument.shortTitleRu}</h2>
+                <p>{selectedDocument.title}</p>
+                <a className="source-back-link" href="#primary-source-list">
+                  К списку
+                </a>
               </div>
-              <div className="source-row-meta">
-                <span>Фрагмент {selectedChunk.order}</span>
-                <span>RU одобрен</span>
+              <div className="source-view-controls" role="tablist" aria-label="Режим текста источника">
+                {(["simple", "full", "spanish"] as PrimarySourceTextMode[]).map((mode) => (
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={textMode === mode}
+                    className={textMode === mode ? "active" : ""}
+                    onClick={() => setTextMode(mode)}
+                    key={mode}
+                  >
+                    {primarySourceModeLabel(mode)}
+                  </button>
+                ))}
               </div>
             </div>
-            <pre className={textMode === "spanish" ? "source-text spanish" : "source-text"}>{primarySourceChunkText(selectedChunk, textMode)}</pre>
-          </section>
-        </article>
+
+            <div className="source-status-grid" aria-label="Статус выбранного источника">
+              <span>{primarySourceCategoryLabel(selectedDocument.category)}</span>
+              <span>{primarySourceJurisdictionLabel(selectedDocument.jurisdiction)}</span>
+              <span>{primarySourceTypeLabel(selectedDocument.officialSourceType)}</span>
+              <span>{primarySourceTranslationStatusLabel(selectedDocument.translationStatus)}</span>
+              <span>{primarySourceCurrentnessLabel(selectedDocument)}</span>
+              <span>{primarySourceExactTextLabel(selectedDocument)}</span>
+              <span>Получено {selectedDocument.retrievalDate}</span>
+              <span>{selectedDocument.translatedChunkCount} / {selectedDocument.totalChunkCount} RU-фрагментов</span>
+            </div>
+
+            <aside className="support-block source-trust">
+              <span className="block-label">Граница доверия</span>
+              <p>Испанский архивный текст является официальным слоем. Русский перевод и простой русский текст - неофициальная учебная поддержка Cabadrive.</p>
+              {selectedDocument.translationStatus !== "approved" && (
+                <p>Этот источник открыт только по фрагментам с одобренным русским учебным слоем; непереведенные фрагменты не показываются как читаемый текст.</p>
+              )}
+            </aside>
+
+            <div className="source-links">
+              <a href={selectedDocument.sourceUrl} target="_blank" rel="noreferrer">
+                <ExternalLink size={16} aria-hidden="true" /> Официальная страница
+              </a>
+              <span>{selectedDocument.archiveLocalPath}</span>
+            </div>
+
+            <section className="source-chunk-navigation" aria-labelledby="source-chunks-title">
+              <div className="source-chunk-navigation-heading">
+                <h3 id="source-chunks-title">Фрагменты</h3>
+                <span>{selectedDocument.chunkingStrategy}</span>
+              </div>
+              <p className="muted">{selectedDocument.chunkingNote}</p>
+              <label className="source-filter source-chunk-select">
+                <span>Фрагмент</span>
+                <select
+                  aria-label="Выбор фрагмента"
+                  value={selectedChunk.chunkId}
+                  onChange={(event) => setSelectedChunkId(event.target.value)}
+                >
+                  {selectedDocument.chunks.map((chunk) => (
+                    <option value={chunk.chunkId} key={chunk.chunkId}>
+                      {chunk.order}. {primarySourceChunkLabel(chunk)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <div className="source-chunk-list" aria-label="Навигация по фрагментам">
+                {quickChunks.map((chunk) => (
+                  <button
+                    type="button"
+                    className={chunk.chunkId === selectedChunk.chunkId ? "active" : ""}
+                    key={chunk.chunkId}
+                    onClick={() => setSelectedChunkId(chunk.chunkId)}
+                  >
+                    <span>{String(chunk.order).padStart(3, "0")}</span>
+                    <span>{primarySourceChunkLabel(chunk)}</span>
+                  </button>
+                ))}
+              </div>
+              {!normalizedQuery && selectedDocument.chunks.length > quickChunkLimit && (
+                <p className="muted">Быстрый список: первые {quickChunkLimit} из {selectedDocument.chunks.length}.</p>
+              )}
+            </section>
+
+            <section className="source-reader" aria-labelledby="source-reader-title" data-testid="primary-source-reader">
+              <div className="source-reader-heading">
+                <div>
+                  <span className="block-label">{primarySourceModeLabel(textMode)}</span>
+                  <h3 id="source-reader-title">{primarySourceChunkLabel(selectedChunk)}</h3>
+                  <p>{selectedChunk.headingPath.join(" / ")}</p>
+                </div>
+                <div className="source-row-meta">
+                  <span>Фрагмент {selectedChunk.order}</span>
+                  <span>RU одобрен</span>
+                </div>
+              </div>
+              <pre className={textMode === "spanish" ? "source-text spanish" : "source-text"}>{primarySourceChunkText(selectedChunk, textMode)}</pre>
+            </section>
+          </article>
+        ) : (
+          <article className="source-detail-pane source-detail-empty" aria-labelledby="source-detail-empty-title">
+            <div className="source-empty-state">
+              <span className="block-label">Источник не выбран</span>
+              <h2 id="source-detail-empty-title">Ничего не найдено</h2>
+              <p>В локальном корпусе есть источники, но ни один не совпал с текущим поиском и фильтрами.</p>
+              <button type="button" className="tool-button" onClick={resetFilters}>
+                Сбросить фильтры
+              </button>
+            </div>
+          </article>
+        )}
       </div>
     </section>
   );

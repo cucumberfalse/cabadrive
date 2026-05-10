@@ -250,6 +250,14 @@
 
 ### Slice D0 Implementation Notes
 
+- PR #102 UI review follow-up ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-ui-reader` on branch `codex/019-primary-sources-ui-reader`.
+- Addressed P2 finding "Do not show a fallback document for empty results".
+- `PrimarySourcesReader` now selects the active document only from `filteredDocuments`; when search/filter combinations produce no results, the detail pane shows a truthful no-results state with reset instead of falling back to the default source.
+- Existing reset/default behavior remains: clearing filters selects the default approved document when corpus results exist and restores simple Russian mode.
+- Added Playwright e2e coverage proving no-result search hides selected source metadata, source link, chunk reader, and view tabs, then restores the default reader after reset.
+- Did not edit `src/data/primarySources.ts`; the prior total-count fix is preserved.
+- Verification on this follow-up passed: `npm run validate:content`, `npm test` (153 tests), `npm run build`, `npm run test:e2e` (32 tests across desktop/mobile), `git diff --check`, and `node scripts/check-feature-memory.mjs --worktree`.
+
 - Slice D2 vehicle-document content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-vehicle-docs` on branch `codex/019-primary-sources-content-batch-vehicle-docs`.
 - Added reviewed learner, QA, and search shards for 3 official documents and 44 chunks:
   - `argentina-vehiculos-automotor-cedulas`: 13 chunks.

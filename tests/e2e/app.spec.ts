@@ -217,6 +217,29 @@ test("primary sources search, filters, and chunk navigation stay local and chunk
   await expect(page.locator(".source-text")).toHaveCount(1);
 });
 
+test("primary sources no-result search leaves detail in empty filter state", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Источники/ }).click();
+  await expect(page.getByRole("heading", { name: primarySourceVehicleDocuments.shortTitleRu })).toBeVisible();
+
+  await page.getByPlaceholder(/Искать по источникам/).fill("zz-no-local-primary-source-match");
+
+  await expect(page.getByText("По текущему поиску и фильтрам ничего не найдено.")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Ничего не найдено" })).toBeVisible();
+  await expect(page.getByText("В локальном корпусе есть источники, но ни один не совпал с текущим поиском и фильтрами.")).toBeVisible();
+  await expect(page.getByText("Выбранный источник")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: primarySourceVehicleDocuments.shortTitleRu })).toHaveCount(0);
+  await expect(page.getByText(primarySourceVehicleDocuments.title)).toHaveCount(0);
+  await expect(page.getByRole("link", { name: /Официальная страница/ })).toHaveCount(0);
+  await expect(page.getByTestId("primary-source-reader")).toHaveCount(0);
+  await expect(page.getByRole("tab", { name: "Просто" })).toHaveCount(0);
+
+  await page.getByRole("button", { name: "Сбросить фильтры" }).first().click();
+  await expect(page.getByRole("heading", { name: primarySourceVehicleDocuments.shortTitleRu })).toBeVisible();
+  await expect(page.getByTestId("primary-source-reader")).toBeVisible();
+  await expect(page.getByRole("tab", { name: "Просто" })).toHaveAttribute("aria-selected", "true");
+});
+
 test("primary sources reader has responsive layout and keyboard reachable controls", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/");
