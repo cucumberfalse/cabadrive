@@ -766,3 +766,6 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #103 P2 rebase finding disposition on 2026-05-10:
+  - D4/DNRPA is intentionally stacked on PR #101 by Orchestrator assignment to preserve the prerequisite content/schema stack and keep this PR diff limited to one document batch.
+  - This PR should not be retargeted or rebased to latest `main` outside that assigned stacked sequence. The final merge gate remains a green stacked sequence plus human-controlled merge ordering.
