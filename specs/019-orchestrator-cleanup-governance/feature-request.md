@@ -120,7 +120,7 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 - There is a data-loss risk if cleanup relies only on directory names or modification dates. Validation must include git/worktree and PR/process state where available.
 - There is a workflow risk if cleanup removes worktrees that are still referenced by active Orchestrator, Implementation Agent, Review Agent, or recovery work.
 - There is a governance risk if Orchestrator cleanup guidance appears to permit direct destructive shell operations without delegation, validation, or evidence.
-- Starting every Orchestrator run from latest `origin/main` may need an offline or network-failure fallback rule. Architect should decide whether failure to fetch blocks startup, uses verified local `main`, or requires Orchestrator escalation.
+- Starting every Orchestrator run from latest verified `main` may need an offline or network-failure fallback rule. Architect should decide whether failure to fetch blocks startup, uses verified local `main`, or requires Orchestrator escalation.
 - The one-time cleanup may require local filesystem and GitHub/PR inspection that is not itself a repository file change. Architect should define which role performs it and how evidence is recorded without touching unrelated files.
 - Cleanup evidence may contain local paths. Architect should decide how much local-path detail belongs in durable process memory versus a transient final report.
 
@@ -138,7 +138,7 @@ Cabadrive's current multi-agent workflow requires isolated worktrees and preserv
 
 ## Final Analyst Validation Notes
 
-- Status: PASS on 2026-05-10 after clean rebase onto latest `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695` from PR #63, with current PR head `9db9b874087f5b6db5eebf62d9919339e0c84fb7`. PR #63 adds product/content learning support and feature memory `specs/009`; current main's maximum feature-memory prefix remains `018`, so `019` remains valid. Final Architect validation already passed on `9db9b87`.
+- Status: PASS on 2026-05-10 after clean rebase onto latest verified `main` base `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695` from PR #63, with effective content head `9db9b874087f5b6db5eebf62d9919339e0c84fb7`. Current evidence-only PR head is `8d92b3d9b312f447217d08f4f3e54d13eb7e85cf`, based on `origin/main` `78e0176e361eeea583dd797296bfa994b3f1f695`. PR #63 adds product/content learning support and feature memory `specs/009`; current main's maximum feature-memory prefix remains `018`, so `019` remains valid. Final Architect validation already passed on effective content head `9db9b87`.
 - Analyst return count: 0.
 - Customer intent check: PASS. The final content covers Orchestrator startup from a fresh isolated environment based on latest verified `main` by default, with documented fallback/blocker handling and no silent stale reuse; defines Cleanup Agent as a first-class positive-proof cleanup role for old completed agent-created environments only; records one-time cleanup evidence that preserves current, active, open-PR, dirty, ambiguous, and otherwise unsafe work; and remains limited to governance/process scope without product/content drift from PR #63.
 - Gaps: none.
