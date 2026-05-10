@@ -6,7 +6,7 @@ import { validatePrimarySources } from "../scripts/primary-sources-validation.mj
 
 const doc1Text = "# Doc One\nArticulo 1\nTexto oficial uno.";
 const doc2Text = "# Doc Two\nArticulo 1\nTexto oficial dos.";
-const doc1SpanText = doc1Text;
+const doc1SpanText = "# Doc One\nArticulo 1";
 const doc2SpanText = "# Doc Two\nArticulo 1";
 const doc1TailText = "Texto oficial uno.";
 const doc2TailText = "Texto oficial dos.";
@@ -119,7 +119,7 @@ function coverage() {
             officialDocumentId: "doc-1",
             order: 1,
             headingPath: ["Doc One"],
-            sourceSpan: { startLine: 1, endLine: 3 },
+            sourceSpan: { startLine: 1, endLine: 2 },
             sourceTextSha256: doc1SpanHash,
             sourceFingerprint: `sha256:${doc1SpanHash}`
           },
@@ -376,9 +376,12 @@ test("strict mode rejects sourceSpans that do not cover the full archive", () =>
   const partialSpanText = "# Doc One\nArticulo 1";
   const partialSpanHash = sha256(partialSpanText);
   const badCorpus = corpus();
+  badCorpus.documents[0].chunks = [badCorpus.documents[0].chunks[0]];
   badCorpus.documents[0].chunks[0].originalSpanish = partialSpanText;
   badCorpus.documents[0].chunks[0].sourceFingerprint = `sha256:${partialSpanHash}`;
   const badCoverage = coverage();
+  badCoverage.documents[0].expectedChunkIds = ["doc-1--001"];
+  badCoverage.documents[0].chunks = [badCoverage.documents[0].chunks[0]];
   badCoverage.documents[0].chunks[0].sourceSpan = { startLine: 1, endLine: 2 };
   badCoverage.documents[0].chunks[0].sourceTextSha256 = partialSpanHash;
   badCoverage.documents[0].chunks[0].sourceFingerprint = `sha256:${partialSpanHash}`;

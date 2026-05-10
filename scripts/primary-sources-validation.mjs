@@ -125,9 +125,7 @@ function sourceSpanText(text, sourceSpan) {
 }
 
 function sourceLines(text) {
-  const lines = text.split(/\r?\n/);
-  if (lines.length > 1 && lines.at(-1) === "") lines.pop();
-  return lines;
+  return text.split(/\r?\n/);
 }
 
 function isValidSourceSpan(value) {
