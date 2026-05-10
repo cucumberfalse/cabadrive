@@ -81,3 +81,34 @@ content/guide/topic-study-guide.source-trace.json
 ```
 
 Source-trace entries for current guide claims must reference official-document IDs that exist in the official-documents manifest and are verified as current/currently valid. The guide content itself remains structured learning content under `content/guide/` and must not duplicate or rewrite the official archive as prose.
+
+The CABA exam-process guide is also structured learning content under:
+
+```text
+content/guide/caba-exam-process.ru.json
+```
+
+It stores official GCBA/ANSV source URLs, checked dates, currentness labels, grouped official-action links, volatile-information warnings, and Russian explanatory prose. It does not archive verbatim official documents or render raw PDFs in the app. Images for this guide should remain omitted unless a future slice records asset-level license, attribution, privacy, currentness, local path, and offline-rendering evidence.
+
+## Difficulty Metadata
+
+Question and topic-guide content carries a local, reviewable learner-difficulty layer for study planning. The canonical machine enum is:
+
+```text
+green | blue | yellow | red
+```
+
+Each current question in `content/questions/caba-b.unofficial-fallback.questions.json` and each current topic in `content/guide/topic-study-guide.ru.json` must include:
+
+- `difficulty`;
+- `difficultyMeta.rubricVersion`;
+- `difficultyMeta.dimensions`;
+- `difficultyMeta.rationaleRu`;
+- `difficultyMeta.provenance`;
+- `difficultyMeta.sourceFingerprint`.
+
+Topic difficulty metadata also includes `difficultyMeta.basis` with current child-ticket level counts, a SHA-256 hash of the topic ticket question IDs, and dominant dimensions.
+
+Difficulty is unofficial learner guidance for an experienced Russian-speaking driver with very low Spanish proficiency. It is not official source status, legal severity, correctness, progress, or the user-controlled `Сложный` mark.
+
+`scripts/content-difficulty.mjs` owns deterministic fingerprinting and validation for this layer. `pnpm run validate:content` fails when a question or topic has a missing/legacy/invalid level, empty or duplicate dimensions, missing rationale/provenance, stale source fingerprint, or stale topic basis.

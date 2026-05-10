@@ -6,11 +6,47 @@ import translations from "../../content/translations/ru.translations.json";
 import explanations from "../../content/explanations/ru.explanations.json";
 import vocabulary from "../../content/vocabulary/ru.vocabulary.json";
 import guide from "../../content/guide/ru.condensed-guide.json";
+import cabaExamProcessGuideJson from "../../content/guide/caba-exam-process.ru.json";
 import topicStudyGuideJson from "../../content/guide/topic-study-guide.ru.json";
 
 export type Answer = {
   id: string;
   officialTextEs: string;
+};
+
+export type DifficultyLevel = "green" | "blue" | "yellow" | "red";
+
+export type DifficultyDimension =
+  | "simple_common_spanish"
+  | "spanish_lexical_load"
+  | "legal_admin_terms"
+  | "caba_rf_divergence"
+  | "rule_complexity"
+  | "numbers_thresholds"
+  | "trap_negation"
+  | "visual_cue_load"
+  | "cross_topic_dependence";
+
+export type DifficultyMeta = {
+  rubricVersion: "cabadrive-difficulty-v1";
+  dimensions: DifficultyDimension[];
+  rationaleRu: string;
+  provenance: {
+    method: "manual_rubric_review";
+    reviewer: string;
+    reviewedAt: string;
+  };
+  sourceFingerprint: string;
+};
+
+export type TopicDifficultyBasis = {
+  questionLevelCounts: Record<DifficultyLevel, number>;
+  ticketQuestionIdsSha256: string;
+  dominantDimensions: DifficultyDimension[];
+};
+
+export type TopicDifficultyMeta = DifficultyMeta & {
+  basis: TopicDifficultyBasis;
 };
 
 export type Question = {
@@ -30,7 +66,8 @@ export type Question = {
   };
   topics: string[];
   vocabularyTermIds: string[];
-  difficulty: "low" | "medium" | "high";
+  difficulty: DifficultyLevel;
+  difficultyMeta: DifficultyMeta;
   flags: {
     hasImage: boolean;
     hasNegationOrException: boolean;
@@ -71,6 +108,8 @@ export type TopicGuideTopic = {
   id: string;
   slug: string;
   status: TopicGuideStatus;
+  difficulty: DifficultyLevel;
+  difficultyMeta: TopicDifficultyMeta;
   titleRu: string;
   summaryRu: string;
   learningMaterialRu: string[];
@@ -89,6 +128,73 @@ export type TopicStudyGuide = {
   titleRu: string;
   disclaimer: string;
   topics: TopicGuideTopic[];
+};
+
+export type ProcessGuideSource = {
+  id: string;
+  title: string;
+  url: string;
+  checkedAt: string;
+  officialOwner: "GCBA" | "ANSV" | "Gobierno Argentino";
+  currentnessStatus: "checked_current" | "checked_current_with_historico_url" | "volatile_check_required";
+  resultRu: string;
+};
+
+export type ProcessGuideSection = {
+  id: string;
+  titleRu: string;
+  summaryRu?: string;
+  bodyRu: string[];
+  spanishTerms?: string[];
+  sourceIds: string[];
+  calloutType: "required_step" | "optional_preparation" | "adjacent_path" | "warning";
+  volatility?: "stable_procedure" | "volatile_fee" | "volatile_location" | "volatile_screen" | "volatile_document_list";
+  volatilityWarningRu?: string;
+};
+
+export type ProcessGuideOfficialLink = {
+  sourceId: string;
+  labelRu: string;
+  url: string;
+};
+
+export type ProcessGuideOfficialLinkGroup = {
+  id: string;
+  titleRu: string;
+  links: ProcessGuideOfficialLink[];
+};
+
+export type ProcessGuideGlossaryTerm = {
+  id: string;
+  termEs: string;
+  translationRu: string;
+  explanationRu: string;
+  sourceIds: string[];
+};
+
+export type CabaExamProcessGuide = {
+  version: number;
+  id: "caba-exam-process";
+  locale: "ru";
+  status: "draft" | "published";
+  contentStatus: "unofficial_learning_aid";
+  titleRu: string;
+  primaryScope: {
+    jurisdiction: "CABA";
+    procedure: "otorgamiento";
+    category: "B1";
+    audienceRu: string;
+  };
+  lastReviewedAt: string;
+  disclaimerRu: string;
+  officialActionWarningRu: string;
+  volatilityWarningRu: string;
+  communityContextRu: string;
+  sources: ProcessGuideSource[];
+  sections: ProcessGuideSection[];
+  officialLinks: ProcessGuideOfficialLinkGroup[];
+  glossary: ProcessGuideGlossaryTerm[];
+  optionalImages: never[];
 };
 
 export type Translation = {
@@ -123,6 +229,7 @@ export const data = {
   explanations: explanations as Explanation[],
   vocabulary,
   guide,
+  cabaExamProcessGuide: cabaExamProcessGuideJson as CabaExamProcessGuide,
   topicStudyGuide: topicStudyGuideJson as TopicStudyGuide
 };
 

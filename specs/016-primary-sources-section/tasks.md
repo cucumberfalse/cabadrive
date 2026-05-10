@@ -293,3 +293,12 @@
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/016-primary-sources-section/{spec,plan,tasks}.md`
   - `pnpm run test` passed: 72 Node tests, 72 pass, 0 fail.
   - `git diff --check` remained passed with no output.
+- Conflict resolution pass on 2026-05-10:
+  - Fetched and merged `origin/main` at `578c618d02a45adffa9f2b18a9373495cf19ed8a` into `codex/016-primary-sources-section-intake`; merge commit remains pending for a human/Orchestrator to commit and push.
+  - Resolved conflicts in `docs_project/project/feature-inventory.md` by preserving main's process-guide and validated-difficulty inventory entries plus PR #68's planned `Источники` reader and official-primary-source boundary note.
+  - Resolved conflicts in `docs_project/screens/learning-and-exam-flows.md` by preserving main's CABA license process navigation/flow and PR #68's planned `Источники` navigation/flow.
+  - No `content/official-documents/**`, Slice B/C primary-source validator/content files, or unrelated worktrees were manually edited during conflict resolution.
+  - `git diff --check` passed with no output.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - Initial `pnpm run test` exposed missing local dependencies (`ERR_MODULE_NOT_FOUND` for `typescript`); after `pnpm install --frozen-lockfile`, `pnpm run test` passed: 86 Node tests, 86 pass, 0 fail.
+  - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
