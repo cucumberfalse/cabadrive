@@ -57,7 +57,7 @@
 | Final Analyst validation | `[Evidence Analyst validation ran after Architect and checked customer intent in spirit and letter]` |
 | Effective content head and current-head guard | `[Validated effective content head, final-validation evidence-only commit evidence if any, current PR head, read-only guard result, and stale-validation routing if any non-evidence post-validation content changed]` |
 | Return limits | `[Architect return count <= 10, Analyst return count <= 5, or new-feature-request escalation evidence]` |
-| Merge gates | `[Required checks, review, conflict, acceptance evidence, process memory, feedback disposition, final guards, and human merge-owner evidence]` |
+| Merge gates | `[Required checks, review, conflict, acceptance evidence, process memory, feedback disposition, final guards, branch-protection readiness, and absence of exceptional human blockers]` |
 
 Negative scenario evidence:
 

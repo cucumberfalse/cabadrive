@@ -8,6 +8,7 @@
 - [x] Update `docs_project/project/devops/review-contract.md` so review expectations align with automatic finalization and preserved gates.
 - [x] Update `.github/pull_request_template.md` so the SENAR and merge-readiness checklists no longer require routine human merge-owner acceptance after objective gates pass.
 - [x] Follow-up: align `CLAUDE.md` with the standing automatic Orchestrator finalization model after failed Architect validation.
+- [x] Review-fix sweep: align `.specify/templates/*`, `specs/README.md`, and remaining active `CLAUDE.md` wording with standing Orchestrator finalization after review thread `PRRT_kwDOSX65IM6A7zpT`.
 - [x] Implement `scripts/finalize-pr.mjs` with pure gate evaluation separated from GitHub mutation.
 - [x] Add a package script for the finalization helper.
 - [x] Add focused tests covering successful readiness and blocker scenarios.
@@ -79,6 +80,7 @@
 - Current P2 final-validation-heading implementation decision: `verifyPostEffectiveHeadChanges()` now treats newly added final-validation note headings as evidence-only only when the heading is role-owned: `## Final Analyst Validation Notes` in `feature-request.md`, and `## Final Architect Validation Notes` in Architect-owned `spec.md`, `plan.md`, or `tasks.md`. Wrong-role headings and arbitrary peer headings remain non-evidence changes.
 - Current follow-up implementation decision: `CLAUDE.md` now treats Orchestrator-managed PRs as having standing repository workflow authorization for conservative finalization and merge after objective gates pass, while preserving PR-only delivery, Orchestrator no-file-edit boundaries, Implementation/Review no-merge boundaries, final Architect-before-Analyst validation, current/effective-head guards, and narrow exceptional human blockers.
 - Current review-fix implementation decision: trusted Codex/Gemini review-body blockers are now computed from the latest current-head review per trusted reviewer after commit filtering. Later same-reviewer `APPROVED` or `DISMISSED` reviews clear stale body-severity blockers, later non-severity `COMMENTED` reviews clear stale body-severity blockers only for the body-finding path, and native `CHANGES_REQUESTED` state remains governed separately by `applyNativeReviewState()`.
+- Current template-sweep implementation decision: review thread `PRRT_kwDOSX65IM6A7zpT` identified stale active merge-owner wording in durable templates and guidance. This slice replaces routine human merge-owner and authorized-merge-mechanics gates with standing Orchestrator finalization/merge after objective gates pass, while preserving final Architect-before-Analyst validation, effective/current-head guards, required checks, review/conflict gates, process memory, feedback disposition, branch protection, PR-only delivery, role boundaries, and narrow exceptional human blockers.
 
 ## Dead Ends
 
@@ -93,11 +95,13 @@
 
 - Final Architect validation failed once on 2026-05-10 because `CLAUDE.md` still contained explicit-authorization/default-human-merge-owner wording. This follow-up addresses that gap, but final Architect validation rerun and final Analyst validation remain Orchestrator-owned and pending.
 - No PR was merged by this Implementation Agent. Merge/finalization remains Orchestrator-owned after review, final validation, current-head guard, and required GitHub gates.
+- Review thread `PRRT_kwDOSX65IM6A7zpT` remains for Orchestrator-owned GitHub resolution after verification; this Implementation Agent did not resolve threads or touch PR merge state.
 
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback.
 - Architect-discovered `CLAUDE.md` finalization alignment gap: addressed by follow-up implementation in `CLAUDE.md`. Architect disposition: addressed and disposed; no unresolved Implementation Agent feedback remains.
+- Review thread `PRRT_kwDOSX65IM6A7zpT` template-sweep finding: addressed in `.specify/templates/tasks-template.md`, `.specify/templates/plan-template.md`, `.specify/templates/spec-template.md`, `specs/README.md`, and `CLAUDE.md`. Architect disposition: addressed/resolved by this assigned review-fix slice; no unresolved Implementation Agent feedback remains.
 
 ## Verification Evidence
 
@@ -246,6 +250,11 @@
 - `pnpm run check:repo`: passed after current trusted review-body supersession fix; "Repository baseline check passed."
 - `node scripts/check-feature-memory.mjs --worktree`: passed after current trusted review-body supersession fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `pnpm run preflight`: passed after current trusted review-body supersession fix; feature-memory gate, repo baseline, content validation, 168 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
+- `rg -n "authorized merge mechanics|human remains the default|human merge owner|human merge-owner|user explicitly authorizes|explicit merge authorization|only final human approval|merge mechanics" .specify/templates specs/README.md CLAUDE.md AGENTS.md docs_project/project/devops .github/pull_request_template.md`: passed after current template-sweep review fix. Remaining matches are historical root-cause text in `docs_project/project/devops/ai-pr-workflow.md` and unrelated accidental-edit recovery authorization in `AGENTS.md`; no active durable template/current guidance still requires routine human merge-owner rules, evidence, explicit merge authorization, or authorized merge mechanics.
+- `git diff --check`: passed after current template-sweep review fix; no whitespace errors reported.
+- `node scripts/check-feature-memory.mjs --worktree`: passed after current template-sweep review fix; no configured product paths changed, so the feature-memory gate passed.
+- `pnpm run check:repo`: passed after current template-sweep review fix; "Repository baseline check passed."
+- `pnpm run preflight`: passed after current template-sweep review fix; feature-memory gate, repo baseline, content validation, 168 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
 
 ## Cycle PR Set
 
@@ -253,6 +262,7 @@
 - Purpose: address PR #80 AI review P2 final-validation heading allowance; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `44c056347dfa75c67466d72d289281052471ed96`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation.
 - Purpose: address failed Architect validation gap by aligning `CLAUDE.md` with standing Orchestrator finalization guidance; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `cc0dc8f845c4bfa56edc8eb3ca9a0411ff4780c4`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 - Purpose: address PR #80 review thread `PRRT_kwDOSX65IM6A7yWO` for superseded trusted Codex/Gemini review-body findings; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `1cdc824ad2c8368ac53cb464e7ab3f74d7e10fd7`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation rerun.
+- Purpose: address PR #80 review thread `PRRT_kwDOSX65IM6A7zpT` for stale durable workflow/template merge-owner wording; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `9750d9c6fabd143cd74055eaf0f8700112cc6fd4`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 
 ## Final Validation Evidence
 

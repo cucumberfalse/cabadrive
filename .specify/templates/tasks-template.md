@@ -27,7 +27,7 @@
 - [ ] T017 Record final Architect validation evidence, return count, and gap dispositions when Orchestrator invokes it.
 - [ ] T018 Record final Analyst validation evidence, Analyst return count, and Architect disposition for any Analyst feedback when Orchestrator invokes it.
 - [ ] T019 If any commit lands after final Architect or Analyst validation, record the effective content head and confirm whether the later commit is final-validation evidence-only or makes prior validation stale.
-- [ ] T020 Confirm merge-readiness gates remain satisfied after final validation on the current PR head: required checks, blocking review status, conflicts, acceptance evidence, process memory, feedback disposition, current-PR-head read-only guard, final guards, and human merge-owner rules.
+- [ ] T020 Confirm merge-readiness gates remain satisfied after final validation on the current PR head: required checks, blocking review status, conflicts, acceptance evidence, process memory, feedback disposition, current-PR-head read-only guard, final guards, branch-protection readiness, and absence of exceptional human blockers.
 
 ## Process Memory
 

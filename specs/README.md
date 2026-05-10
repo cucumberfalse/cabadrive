@@ -80,14 +80,15 @@ validation. The set records every contributing PR slice by purpose, branch, PR
 number or reliable discovery metadata, current or final head SHA, status, and
 whether it is included in final validation.
 
-Before completion or authorized merge mechanics, Orchestrator invokes final
-Architect validation first. Architect validates all PR slices, Architect-assigned
-tasks and dispositions, architectural guidance, open task state, process memory,
-and customer intent in spirit. Architect gaps update only Architect-owned
-artifacts/dispositions, increment the Architect return count, and return control
-to Orchestrator. Architect may return work at most 10 times per work cycle; if
-another Architect gap would exceed that limit, Architect reports the breach and
-Orchestrator asks Analyst for a new feature request.
+Before completion, conservative Orchestrator finalization, or merge,
+Orchestrator invokes final Architect validation first. Architect validates all PR
+slices, Architect-assigned tasks and dispositions, architectural guidance, open
+task state, process memory, and customer intent in spirit. Architect gaps update
+only Architect-owned artifacts/dispositions, increment the Architect return
+count, and return control to Orchestrator. Architect may return work at most 10
+times per work cycle; if another Architect gap would exceed that limit,
+Architect reports the breach and Orchestrator asks Analyst for a new feature
+request.
 
 After Architect passes, Orchestrator invokes final Analyst validation. Analyst
 validates the final result against the customer's desired outcome in spirit and
@@ -102,7 +103,13 @@ separate latest-main branch/worktree.
 Final validation adds gates but does not replace merge readiness. Required
 checks, blocking review status, conflict status, acceptance evidence, current
 process memory, Implementation Agent feedback disposition, final guard evidence,
-and human merge-owner rules remain required.
+branch-protection readiness, and PR-only delivery remain required. For
+Orchestrator-managed PRs, those gates lead to conservative Orchestrator
+finalization and merge instead of routine human approval. Human
+involvement remains a narrow blocker only for explicit no-merge instructions,
+missing credentials or permissions, ambiguous repository or PR state risking the
+wrong PR, data loss, conflicts or status ambiguity, protected-branch policy
+blockers, or an unresolved owner decision for an accepted known issue.
 
 Architect and Analyst final validation apply to the effective content head: the
 PR head containing implementation, workflow docs/templates, feature memory,
