@@ -11,6 +11,7 @@ import {
   type Question,
   type TopicGuideTicket
 } from "./data/content";
+import { DifficultyIndicator } from "./difficulty";
 import { isPassing, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
@@ -163,6 +164,7 @@ function QuestionCard({
         <span>Категория B</span>
         <span>{question.jurisdiction}</span>
         <span>{question.topics.map(topicLabel).join(", ")}</span>
+        {mode !== "exam" && <DifficultyIndicator level={question.difficulty} label="Сложность билета" />}
         {question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
       </div>
 
@@ -382,7 +384,11 @@ function MistakesView({ progress, setProgress }: { progress: StoredProgress; set
       <aside className="side-list">
         <h2>Ошибки</h2>
         {mistakes.length ? mistakes.slice(0, 12).map((mistake) => (
-          <p key={mistake.questionId}><strong>{mistake.wrong}x</strong> {mistake.questionId}</p>
+          <p className="mistake-list-row" key={mistake.questionId}>
+            <strong>{mistake.wrong}x</strong>
+            <span>{mistake.questionId}</span>
+            {questionById.get(mistake.questionId) && <DifficultyIndicator level={questionById.get(mistake.questionId)!.difficulty} compact />}
+          </p>
         )) : <p>Ошибок пока нет. Ответьте на пару вопросов в обучении.</p>}
       </aside>
       <QuestionCard
@@ -468,6 +474,7 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
         <span>Билет {question.id}</span>
         <span>Категория {question.category}</span>
         <span>{question.jurisdiction}</span>
+        <DifficultyIndicator level={question.difficulty} label="Сложность билета" />
         <span>Статус: неофициальная B-практика</span>
       </div>
       <div className="official-block">
@@ -549,8 +556,11 @@ function TopicGuideView() {
               className={topic.id === selectedTopic.id ? "active" : ""}
               onClick={() => setSelectedTopicId(topic.id)}
             >
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              {topic.titleRu}
+              <span className="topic-index">{String(index + 1).padStart(2, "0")}</span>
+              <span className="topic-button-content">
+                <span>{topic.titleRu}</span>
+                <DifficultyIndicator level={topic.difficulty} compact label="Сложность темы" />
+              </span>
             </button>
           ))}
         </aside>
@@ -562,7 +572,10 @@ function TopicGuideView() {
               <h2>{selectedTopic.titleRu}</h2>
               <p>{selectedTopic.summaryRu}</p>
             </div>
-            <span>{guideStatusLabel(selectedTopic.status)}</span>
+            <div className="materials-topic-badges">
+              <span>{guideStatusLabel(selectedTopic.status)}</span>
+              <DifficultyIndicator level={selectedTopic.difficulty} label="Сложность темы" />
+            </div>
           </div>
 
           <section className="materials-section" aria-labelledby="learning-material-title">
