@@ -96,10 +96,11 @@
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback.
-- Architect-discovered `CLAUDE.md` finalization alignment gap: addressed and disposed by this follow-up implementation in `CLAUDE.md`; no separate Implementation Agent feedback item remains pending.
+- Architect-discovered `CLAUDE.md` finalization alignment gap: addressed by follow-up implementation in `CLAUDE.md`. Architect disposition: addressed and disposed; no unresolved Implementation Agent feedback remains.
 
 ## Verification Evidence
 
+- `pnpm run pr:finalize -- --pr 80 --expected-head be84410d0b5040c16347949d49c412fcbc633cec --dry-run`: run after adding the local disposition marker and before committing/pushing it; still reported missing feedback disposition because the PR head did not yet contain this process-memory correction, alongside pending AI Review, final Architect/Analyst validation, validation order, effective content head, and current-PR-head guard blockers.
 - `git fetch origin && git merge --no-edit origin/main`: passed; fast-forwarded from `a26a124` to `995905b` and preserved sibling `specs/018-learning-ticket-timer/`.
 - `git merge --autostash --no-edit origin/main`: passed after resolving one scoped autostash conflict; branch now based on `b26a37d`.
 - `git fetch origin && git stash push --include-untracked -m codex-preserve-018-auto-merge-finalization-followup && git merge --ff-only origin/main && git stash pop`: passed; fast-forwarded from `b26a37d` to `578c618`, restored the scoped patch unstaged, and produced no conflicts.
