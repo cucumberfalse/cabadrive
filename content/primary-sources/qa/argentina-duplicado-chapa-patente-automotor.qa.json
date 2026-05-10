@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+  "document": {
+    "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+    "chunks": [
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-10, coverage fingerprint sha256:2d10a4fb145025052edd09cbfcfd923097377d502d2e8bfb5ef7601ed42ac332, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 1-10, the full Russian translation, coverage fingerprint sha256:2d10a4fb145025052edd09cbfcfd923097377d502d2e8bfb5ef7601ed42ac332, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 11-22, coverage fingerprint sha256:28942712c76ee5d5c71703687bc1b62b376c39ff3fee719c95565ed7aca26dbe, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 11-22, the full Russian translation, coverage fingerprint sha256:28942712c76ee5d5c71703687bc1b62b376c39ff3fee719c95565ed7aca26dbe, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--a-quien-esta-dirigido-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 23-26, coverage fingerprint sha256:4f7420e282bcfe0eb6e7a01e5b65371300c07c199690794af76901535f307de2, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 23-26, the full Russian translation, coverage fingerprint sha256:4f7420e282bcfe0eb6e7a01e5b65371300c07c199690794af76901535f307de2, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--que-necesito-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 27-42, coverage fingerprint sha256:46f0c7f6a6ab37933944e820a178d02a9f0fe8c2ae9afb90532c2f43dbad21f3, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 27-42, the full Russian translation, coverage fingerprint sha256:46f0c7f6a6ab37933944e820a178d02a9f0fe8c2ae9afb90532c2f43dbad21f3, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--titulo-del-vehiculo-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 43-52, coverage fingerprint sha256:d57f97d296f0dac43b173ea66285caf3c229c8d903bb74075f2e8402d4f22668, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 43-52, the full Russian translation, coverage fingerprint sha256:d57f97d296f0dac43b173ea66285caf3c229c8d903bb74075f2e8402d4f22668, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--como-hago-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 53-56, coverage fingerprint sha256:25fc615136e84c644deedc9da57ba14a4091c7f822c1bfc7e1cfe0d4034ef214, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 53-56, the full Russian translation, coverage fingerprint sha256:25fc615136e84c644deedc9da57ba14a4091c7f822c1bfc7e1cfe0d4034ef214, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--semipresencial-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 57-74, coverage fingerprint sha256:43de4381e4e3cdb5f0ffd3e5ac9cb1cb84efead82eba91d0111549d6a34988fc, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 57-74, the full Russian translation, coverage fingerprint sha256:43de4381e4e3cdb5f0ffd3e5ac9cb1cb84efead82eba91d0111549d6a34988fc, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--presencial-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 75-88, coverage fingerprint sha256:948f8be17052130f61badd6b01ecc67176740675476aaaa7b99826050f5e87f0, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 75-88, the full Russian translation, coverage fingerprint sha256:948f8be17052130f61badd6b01ecc67176740675476aaaa7b99826050f5e87f0, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--cuanto-tiempo-lleva-hacer-el-tramite-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 89-90, coverage fingerprint sha256:b53eb431352a4a773ab6f76d8311526c408917829b12f60ea3223fdf65aec184, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 89-90, the full Russian translation, coverage fingerprint sha256:b53eb431352a4a773ab6f76d8311526c408917829b12f60ea3223fdf65aec184, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--tene-en-cuenta-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 91-104, coverage fingerprint sha256:93f5603f6f0a4e7df5fa5938fb11f232e12233567e7e16a490902dcfb2c4d959, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 91-104, the full Russian translation, coverage fingerprint sha256:93f5603f6f0a4e7df5fa5938fb11f232e12233567e7e16a490902dcfb2c4d959, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--cual-es-el-costo-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 105-106, coverage fingerprint sha256:bf93a8a1343f243fc537286431e2c5cdde586da1670581abfcd808ed7ff816b8, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 105-106, the full Russian translation, coverage fingerprint sha256:bf93a8a1343f243fc537286431e2c5cdde586da1670581abfcd808ed7ff816b8, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--tene-en-cuenta-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 107-124, coverage fingerprint sha256:bceee6902d0825d8325f17649f49f3c9644dac313fa1168df2fc33fc45141495, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 107-124, the full Russian translation, coverage fingerprint sha256:bceee6902d0825d8325f17649f49f3c9644dac313fa1168df2fc33fc45141495, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--vigencia-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 125-143, coverage fingerprint sha256:e3a291a3599e065d58cecddf6fcb85522bec228bcfcca4a8fa49a3d79f1eb73c, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 125-143, the full Russian translation, coverage fingerprint sha256:e3a291a3599e065d58cecddf6fcb85522bec228bcfcca4a8fa49a3d79f1eb73c, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      }
+    ]
+  }
+}

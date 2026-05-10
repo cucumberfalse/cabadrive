@@ -1,0 +1,293 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+  "document": {
+    "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+    "title": "Obtener un duplicado de la chapa patente del automotor",
+    "shortTitleRu": "Дубликат номерного знака",
+    "category": "vehicle-documents",
+    "jurisdiction": "national",
+    "officialSourceType": "national_service_current_material",
+    "sourceUrl": "https://www.argentina.gob.ar/servicio/obtener-un-duplicado-de-la-chapa-patente-del-automotor",
+    "archiveLocalPath": "content/official-documents/documents/argentina-duplicado-chapa-patente-automotor.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-001",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 1,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor"
+        ],
+        "officialLabel": "Obtener un duplicado de la chapa patente del automotor",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "# Obtener un duplicado de la chapa patente del automotor\n\n- Inicio\n\n- Ministerio de Justicia\n\n- Registros de la Propiedad Automotor\n\n- Obtener un duplicado de la chapa patente del automotor\n",
+        "fullTranslationRu": "# Получить дубликат номерного знака автомобиля\n\n- Главная\n\n- Министерство юстиции\n\n- Реестры собственности на автомобили\n\n- Получить дубликат номерного знака автомобиля",
+        "simpleRu": "Это официальная страница услуги Министерства юстиции: как получить дубликат номерного знака автомобиля.",
+        "sourceTextSha256": "2d10a4fb145025052edd09cbfcfd923097377d502d2e8bfb5ef7601ed42ac332",
+        "sourceFingerprint": "sha256:2d10a4fb145025052edd09cbfcfd923097377d502d2e8bfb5ef7601ed42ac332",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 10
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-002",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 2,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor"
+        ],
+        "officialLabel": "Obtener un duplicado de la chapa patente del automotor",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "# Obtener un duplicado de la chapa patente del automotor\n\nSi perdiste, te robaron o se deterioró la chapa de tu auto o moto, debés realizar el trámite para su reposición.\n\nSemipresencial\nPresencial\n\ndocumentación ciudadana\ntránsito y transporte\n\nSi una chapa patente de tu vehículo está muy deteriorada o te la robaron, tenés que tramitar un duplicado de esa identificación metálica ante el Registro donde está radicado el automotor.\n",
+        "fullTranslationRu": "# Получить дубликат номерного знака автомобиля\n\nЕсли вы потеряли номерной знак своего автомобиля или мотоцикла, у вас его украли либо знак испортился, вы должны выполнить процедуру его замены.\n\nПолуочная процедура\nОчная процедура\n\nгражданская документация\nдорожное движение и транспорт\n\nЕсли номерной знак вашего транспортного средства сильно поврежден или его украли, вы должны оформить дубликат этой металлической идентификации в Реестре, где зарегистрирован автомобиль.",
+        "simpleRu": "Если номерной знак автомобиля или мотоцикла потерян, украден или сильно испорчен, нужно оформить дубликат в Реестре, где зарегистрирован транспорт. Процедуру можно начать полуочно или сделать лично.",
+        "sourceTextSha256": "28942712c76ee5d5c71703687bc1b62b376c39ff3fee719c95565ed7aca26dbe",
+        "sourceFingerprint": "sha256:28942712c76ee5d5c71703687bc1b62b376c39ff3fee719c95565ed7aca26dbe",
+        "sourceSpan": {
+          "startLine": 11,
+          "endLine": 22
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--a-quien-esta-dirigido-003",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 3,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿A quién está dirigido?"
+        ],
+        "officialLabel": "¿A quién está dirigido?",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## ¿A quién está dirigido?\n\nA los propietarios/as de autos o motos cuya chapa patente se haya deteriorado o haya sido robada.\n",
+        "fullTranslationRu": "## Для кого предназначено?\n\nДля владельцев автомобилей или мотоциклов, у которых номерной знак испортился или был украден.",
+        "simpleRu": "Эта процедура для владельцев автомобилей или мотоциклов, если номерной знак поврежден или украден.",
+        "sourceTextSha256": "4f7420e282bcfe0eb6e7a01e5b65371300c07c199690794af76901535f307de2",
+        "sourceFingerprint": "sha256:4f7420e282bcfe0eb6e7a01e5b65371300c07c199690794af76901535f307de2",
+        "sourceSpan": {
+          "startLine": 23,
+          "endLine": 26
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--que-necesito-004",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 4,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Qué necesito?"
+        ],
+        "officialLabel": "¿Qué necesito?",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## ¿Qué necesito?\n\n-\n\nDocumento identificatorio:\n\n- Si sos argentino: DNI.\n\n- Si sos extranjero sin residencia: pasaporte; con residencia permanente: DNI; de países limítrofes: DNI, CI, CI del país de origen o pasaporte.\n\n- La constancia de Documento en trámite no acredita identidad.\n\n- Si sos el representante legal o apoderado, deberás presentar documentos que prueben esa representación que invocás.\n\n-\n",
+        "fullTranslationRu": "## Что мне нужно?\n\n-\n\nДокумент, удостоверяющий личность:\n\n- Если вы аргентинец: DNI.\n\n- Если вы иностранец без резиденции: паспорт; с постоянной резиденцией: DNI; из соседних стран: DNI, CI, CI страны происхождения или паспорт.\n\n- Справка о том, что документ находится в процессе оформления, не подтверждает личность.\n\n- Если вы законный представитель или уполномоченный представитель, вы должны представить документы, подтверждающие заявляемое представительство.\n\n-",
+        "simpleRu": "Нужен документ личности. Для граждан Аргентины - DNI. Для иностранцев правила зависят от резиденции: паспорт, DNI, CI или документ страны происхождения. Справка о документе в оформлении не считается удостоверением личности. Представитель должен показать документы, подтверждающие его полномочия.",
+        "sourceTextSha256": "46f0c7f6a6ab37933944e820a178d02a9f0fe8c2ae9afb90532c2f43dbad21f3",
+        "sourceFingerprint": "sha256:46f0c7f6a6ab37933944e820a178d02a9f0fe8c2ae9afb90532c2f43dbad21f3",
+        "sourceSpan": {
+          "startLine": 27,
+          "endLine": 42
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--titulo-del-vehiculo-005",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 5,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Qué necesito?",
+          "Título del vehículo."
+        ],
+        "officialLabel": "Título del vehículo.",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "Título del vehículo.\n\n-\n\nCédulas del vehículo.\n\n-\n\nSi la pérdida o el robo afectó solamente a una de las placas, deberás presentar la restante.\n",
+        "fullTranslationRu": "Титул транспортного средства.\n\n-\n\nCédulas транспортного средства.\n\n-\n\nЕсли потеря или кража затронула только одну из пластин, вы должны представить оставшуюся.",
+        "simpleRu": "Также нужны титул транспортного средства и его cédulas. Если потерян или украден только один номерной знак, второй оставшийся знак нужно принести.",
+        "sourceTextSha256": "d57f97d296f0dac43b173ea66285caf3c229c8d903bb74075f2e8402d4f22668",
+        "sourceFingerprint": "sha256:d57f97d296f0dac43b173ea66285caf3c229c8d903bb74075f2e8402d4f22668",
+        "sourceSpan": {
+          "startLine": 43,
+          "endLine": 52
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--como-hago-006",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 6,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Cómo hago?",
+          "Título del vehículo."
+        ],
+        "officialLabel": "¿Cómo hago?",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## ¿Cómo hago?\n\n-\n",
+        "fullTranslationRu": "## Как мне сделать?\n\n-",
+        "simpleRu": "Дальше страница объясняет два способа процедуры: полуочно и лично.",
+        "sourceTextSha256": "25fc615136e84c644deedc9da57ba14a4091c7f822c1bfc7e1cfe0d4034ef214",
+        "sourceFingerprint": "sha256:25fc615136e84c644deedc9da57ba14a4091c7f822c1bfc7e1cfe0d4034ef214",
+        "sourceSpan": {
+          "startLine": 53,
+          "endLine": 56
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--semipresencial-007",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 7,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Cómo hago?",
+          "Semipresencial",
+          "Título del vehículo."
+        ],
+        "officialLabel": "Semipresencial",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Semipresencial\n\n1. Completá la Solicitud electrónica, buscando el trámite llamado reposición de placa metálica, para luego complementar la tramitación de manera presencial en el Registro.\n\n2. De forma opcional: podés abonar en línea.\n\n3. Acercate al registro con la documentación correspondiente y completá allí los formularios que te van a entregar:\n\n- Solicitud TP\n\n- Formulario 59 (solo en caso de que el trámite lo realice un tercero).\n\n4. Te entregarán unas placas provisorias de papel en letras y números rojos, hasta la entrega de los duplicados de la chapa patente.\n\n5. Retirá las chapas definitivas en el plazo que te indiquen en el Registro. Para hacerlo vas a tener que presentar la cédula verde.\n\n-\n",
+        "fullTranslationRu": "##### Полуочная процедура\n\n1. Заполните электронную заявку, найдя процедуру под названием «замена металлической пластины», чтобы затем дополнить оформление лично в Реестре.\n\n2. По желанию: вы можете оплатить онлайн.\n\n3. Подойдите в Реестр с соответствующими документами и заполните там формы, которые вам выдадут:\n\n- Solicitud TP\n\n- Formulario 59 (только если процедуру выполняет третье лицо).\n\n4. Вам выдадут временные бумажные пластины с красными буквами и цифрами до выдачи дубликатов номерного знака.\n\n5. Заберите окончательные номерные знаки в срок, который вам укажут в Реестре. Для этого вам нужно будет предъявить cédula verde.\n\n-",
+        "simpleRu": "Полуочно: заполните электронную заявку на замену металлической пластины, при желании оплатите онлайн, затем идите в Реестр с документами и заполните формы TP и, если делает третье лицо, Formulario 59. Сначала выдадут временные бумажные номера с красными буквами и цифрами. Постоянные номера нужно забрать в срок, указанный Реестром, предъявив cédula verde.",
+        "sourceTextSha256": "43de4381e4e3cdb5f0ffd3e5ac9cb1cb84efead82eba91d0111549d6a34988fc",
+        "sourceFingerprint": "sha256:43de4381e4e3cdb5f0ffd3e5ac9cb1cb84efead82eba91d0111549d6a34988fc",
+        "sourceSpan": {
+          "startLine": 57,
+          "endLine": 74
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--presencial-008",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 8,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Cómo hago?",
+          "Presencial",
+          "Título del vehículo."
+        ],
+        "officialLabel": "Presencial",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Presencial\n\n1. Presentá la documentación en el Registro donde está radicado el vehículo y completá allí los formularios que te van a entregar:\n\n- Formulario 02.\n\n- Formulario 59 (solo en caso de que el trámite lo realice un tercero).\n\n2. Pagá allí los aranceles.\n\n3. Te entregarán unas placas provisorias de papel en letras y números rojos, hasta la entrega de los duplicados de la chapa patente.\n\n4. Retirá las chapas definitivas en el plazo que te indiquen en el Registro. Para hacerlo vas a tener que presentar la cédula verde.\n",
+        "fullTranslationRu": "##### Очная процедура\n\n1. Представьте документы в Реестре, где зарегистрировано транспортное средство, и заполните там формы, которые вам выдадут:\n\n- Formulario 02.\n\n- Formulario 59 (только если процедуру выполняет третье лицо).\n\n2. Оплатите там сборы.\n\n3. Вам выдадут временные бумажные пластины с красными буквами и цифрами до выдачи дубликатов номерного знака.\n\n4. Заберите окончательные номерные знаки в срок, который вам укажут в Реестре. Для этого вам нужно будет предъявить cédula verde.",
+        "simpleRu": "Лично: принесите документы в Реестр, где зарегистрирован транспорт, заполните Formulario 02 и, если процедуру делает третье лицо, Formulario 59. Там же оплатите сборы. Сначала выдадут временные бумажные номера, потом постоянные номера в указанный срок; для получения нужна cédula verde.",
+        "sourceTextSha256": "948f8be17052130f61badd6b01ecc67176740675476aaaa7b99826050f5e87f0",
+        "sourceFingerprint": "sha256:948f8be17052130f61badd6b01ecc67176740675476aaaa7b99826050f5e87f0",
+        "sourceSpan": {
+          "startLine": 75,
+          "endLine": 88
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--cuanto-tiempo-lleva-hacer-el-tramite-009",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 9,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Cuánto tiempo lleva hacer el trámite?",
+          "Título del vehículo."
+        ],
+        "officialLabel": "¿Cuánto tiempo lleva hacer el trámite?",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## ¿Cuánto tiempo lleva hacer el trámite?\n",
+        "fullTranslationRu": "## Сколько времени занимает процедура?",
+        "simpleRu": "Этот раздел объясняет сроки процедуры.",
+        "sourceTextSha256": "b53eb431352a4a773ab6f76d8311526c408917829b12f60ea3223fdf65aec184",
+        "sourceFingerprint": "sha256:b53eb431352a4a773ab6f76d8311526c408917829b12f60ea3223fdf65aec184",
+        "sourceSpan": {
+          "startLine": 89,
+          "endLine": 90
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--tene-en-cuenta-010",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 10,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Cuánto tiempo lleva hacer el trámite?",
+          "Tené en cuenta",
+          "Título del vehículo."
+        ],
+        "officialLabel": "Tené en cuenta",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### Tené en cuenta\n\nDeberías asistir dos veces para:\n\n- Presentar la documentación y recibir las placas provisorias.\n\n- Recibir las chapas metálicas en duplicado.\n\nTiempo de entrega:\n\n- Placas provisorias de papel en letras y números rojos: en el momento.\n\n- Duplicado de placas metálicas: 15 días.\n",
+        "fullTranslationRu": "#### Имейте в виду\n\nВам, вероятно, нужно будет прийти два раза, чтобы:\n\n- представить документы и получить временные пластины.\n\n- получить металлические номерные знаки в дубликате.\n\nСрок выдачи:\n\n- Временные бумажные пластины с красными буквами и цифрами: сразу.\n\n- Дубликат металлических пластин: 15 дней.",
+        "simpleRu": "Обычно нужно прийти два раза: сначала подать документы и получить временные номера, потом получить металлические дубликаты. Временные бумажные номера выдают сразу. Металлические дубликаты выдают через 15 дней.",
+        "sourceTextSha256": "93f5603f6f0a4e7df5fa5938fb11f232e12233567e7e16a490902dcfb2c4d959",
+        "sourceFingerprint": "sha256:93f5603f6f0a4e7df5fa5938fb11f232e12233567e7e16a490902dcfb2c4d959",
+        "sourceSpan": {
+          "startLine": 91,
+          "endLine": 104
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--cual-es-el-costo-011",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 11,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Cuál es el costo?",
+          "Título del vehículo."
+        ],
+        "officialLabel": "¿Cuál es el costo?",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## ¿Cuál es el costo?\n",
+        "fullTranslationRu": "## Какова стоимость?",
+        "simpleRu": "Этот раздел объясняет стоимость процедуры.",
+        "sourceTextSha256": "bf93a8a1343f243fc537286431e2c5cdde586da1670581abfcd808ed7ff816b8",
+        "sourceFingerprint": "sha256:bf93a8a1343f243fc537286431e2c5cdde586da1670581abfcd808ed7ff816b8",
+        "sourceSpan": {
+          "startLine": 105,
+          "endLine": 106
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--tene-en-cuenta-012",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 12,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "¿Cuál es el costo?",
+          "Tené en cuenta",
+          "Título del vehículo."
+        ],
+        "officialLabel": "Tené en cuenta",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Tené en cuenta\n\nEl Formulario 02 es gratuito si certificás la firma ante el Registro Seccional y presentás el trámite en ese momento.\n\nLos aranceles varían en función de si el vehículo es una moto o un auto. Los involucrados son:\n\n- Placa metálica – Reposición de modelo anterior.\n\n- Certificado de firma.\n\n- Formulario TP.\n\n- Solicitud deuda / multa / infracción.\n\n- Formulario 13.\n\nPodés encontrar estos aranceles, de acuerdo con la categoría de tu vehículo.\n",
+        "fullTranslationRu": "##### Имейте в виду\n\nFormulario 02 является бесплатной, если вы заверяете подпись в Секционном реестре и подаете процедуру в этот момент.\n\nСборы различаются в зависимости от того, является ли транспортное средство мотоциклом или автомобилем. Участвуют следующие позиции:\n\n- Металлическая пластина - замена предыдущей модели.\n\n- Сертификат подписи.\n\n- Formulario TP.\n\n- Запрос долга / штрафа / нарушения.\n\n- Formulario 13.\n\nВы можете найти эти сборы согласно категории вашего транспортного средства.",
+        "simpleRu": "Formulario 02 бесплатна, если подпись заверяют в Секционном реестре и процедуру подают сразу. Сборы зависят от категории транспорта: мотоцикл или автомобиль. Могут учитываться замена металлической пластины, сертификат подписи, Formulario TP, запрос долга, штрафа или нарушения и Formulario 13.",
+        "sourceTextSha256": "bceee6902d0825d8325f17649f49f3c9644dac313fa1168df2fc33fc45141495",
+        "sourceFingerprint": "sha256:bceee6902d0825d8325f17649f49f3c9644dac313fa1168df2fc33fc45141495",
+        "sourceSpan": {
+          "startLine": 107,
+          "endLine": 124
+        }
+      },
+      {
+        "chunkId": "argentina-duplicado-chapa-patente-automotor--vigencia-013",
+        "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+        "order": 13,
+        "headingPath": [
+          "Obtener un duplicado de la chapa patente del automotor",
+          "Vigencia",
+          "Título del vehículo."
+        ],
+        "officialLabel": "Vigencia",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Vigencia\n\nLas chapas patente tienen vigencia hasta que no se puedan leer más o te falte una o ambas.\n\nIniciar trámite\n\nCompartir en\nredes sociales\n\n- Compartir en Facebook\n\n- Compartir en X\n\n- Compartir en Linkedin\n\n- Compartir en Whatsapp\n\n- Compartir en Telegram\n",
+        "fullTranslationRu": "## Срок действия\n\nНомерные знаки действуют до тех пор, пока они больше не читаются или пока у вас не отсутствует один или оба знака.\n\nНачать процедуру\n\nПоделиться в\nсоциальных сетях\n\n- Поделиться в Facebook\n\n- Поделиться в X\n\n- Поделиться в Linkedin\n\n- Поделиться в Whatsapp\n\n- Поделиться в Telegram",
+        "simpleRu": "Номерные знаки действуют, пока их можно прочитать и пока оба знака на месте. Если один или оба отсутствуют либо знак уже нельзя прочитать, нужно начинать процедуру. В конце страницы есть кнопка начала процедуры и ссылки для поделиться.",
+        "sourceTextSha256": "e3a291a3599e065d58cecddf6fcb85522bec228bcfcca4a8fa49a3d79f1eb73c",
+        "sourceFingerprint": "sha256:e3a291a3599e065d58cecddf6fcb85522bec228bcfcca4a8fa49a3d79f1eb73c",
+        "sourceSpan": {
+          "startLine": 125,
+          "endLine": 143
+        }
+      }
+    ]
+  }
+}

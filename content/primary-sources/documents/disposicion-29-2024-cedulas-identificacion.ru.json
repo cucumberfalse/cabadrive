@@ -1,0 +1,409 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+  "document": {
+    "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+    "title": "Disposición 29 / 2024",
+    "shortTitleRu": "Распоряжение 29/2024 о cédulas",
+    "category": "vehicle-documents",
+    "jurisdiction": "national",
+    "officialSourceType": "dnrpa_disposition_original_text",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+    "archiveLocalPath": "content/official-documents/documents/disposicion-29-2024-cedulas-identificacion.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "in_force",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--disposicion-29-2024-001",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 1,
+        "headingPath": [
+          "Disposición 29 / 2024"
+        ],
+        "officialLabel": "Disposición 29 / 2024",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "# Disposición 29 / 2024\n\n- Inicio\n\n- Ministerio de Justicia\n\n- Normativa\n\n- Disposición 29/2024\n\n- TEXTO ORIGINAL - DISPOSICIÓN 29 / 2024 - MINISTERIO DE JUSTICIA\n",
+        "fullTranslationRu": "# Распоряжение 29 / 2024\n\n- Главная\n\n- Министерство юстиции\n\n- Нормативные акты\n\n- Распоряжение 29/2024\n\n- ИСХОДНЫЙ ТЕКСТ - РАСПОРЯЖЕНИЕ 29 / 2024 - МИНИСТЕРСТВО ЮСТИЦИИ",
+        "simpleRu": "Это начало официальной страницы Распоряжения 29/2024 Министерства юстиции. Здесь указан исходный текст нормы.",
+        "sourceTextSha256": "8f08c4557e7b30b5d2ba2e71d25af04950852919190c7d09b4e3bef30b72c855",
+        "sourceFingerprint": "sha256:8f08c4557e7b30b5d2ba2e71d25af04950852919190c7d09b4e3bef30b72c855",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 12
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--disposicion-29-2024-002",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 2,
+        "headingPath": [
+          "Disposición 29 / 2024"
+        ],
+        "officialLabel": "Disposición 29 / 2024",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "# Disposición 29 / 2024\n\nDIRECCION NAC.REG.NAC.PROP.AUTO. Y CRED.PRENDARIOS\n",
+        "fullTranslationRu": "# Распоряжение 29 / 2024\n\nНАЦИОНАЛЬНАЯ ДИРЕКЦИЯ НАЦИОНАЛЬНЫХ РЕЕСТРОВ СОБСТВЕННОСТИ НА АВТОМОБИЛИ И ЗАЛОГОВЫХ КРЕДИТОВ",
+        "simpleRu": "Распоряжение 29/2024 относится к DNRPA, национальному органу по реестрам собственности на автомобили.",
+        "sourceTextSha256": "110da381c1aa07e2d738d0f859261ab516f9fed3bb95cb14be4053db9867756c",
+        "sourceFingerprint": "sha256:110da381c1aa07e2d738d0f859261ab516f9fed3bb95cb14be4053db9867756c",
+        "sourceSpan": {
+          "startLine": 13,
+          "endLine": 16
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--ministerio-de-justicia-003",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 3,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA"
+        ],
+        "officialLabel": "MINISTERIO DE JUSTICIA",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "## MINISTERIO DE JUSTICIA\n\nDIGESTO DE NORMAS TECNICO-REGISTRALES - MODIFICASE\n\nSanción:\n\n10-05-2024\n\nPublicada en el Boletín Oficial:\n\nFecha:\n13-05-2024\n\nNúmero:\n\nBoletín Oficial número:\n35419\n\nPágina:\n61\n\nTexto original de la norma\n",
+        "fullTranslationRu": "## МИНИСТЕРСТВО ЮСТИЦИИ\n\nСВОД ТЕХНИКО-РЕГИСТРАЦИОННЫХ НОРМ - ИЗМЕНЯЕТСЯ\n\nПринятие:\n\n10-05-2024\n\nОпубликовано в Официальном бюллетене:\n\nДата:\n13-05-2024\n\nНомер:\n\nНомер Официального бюллетеня:\n35419\n\nСтраница:\n61\n\nИсходный текст нормы",
+        "simpleRu": "Норма принята 10-05-2024 и опубликована в Официальном бюллетене 13-05-2024, номер бюллетеня 35419, страница 61. Она изменяет Свод технико-регистрационных норм.",
+        "sourceTextSha256": "ba70e1fb438b21165b302b7d51d381813935e9cf5a918f4bc1f9aa19a1eb07e6",
+        "sourceFingerprint": "sha256:ba70e1fb438b21165b302b7d51d381813935e9cf5a918f4bc1f9aa19a1eb07e6",
+        "sourceSpan": {
+          "startLine": 17,
+          "endLine": 39
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--normativa-004",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 4,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa"
+        ],
+        "officialLabel": "Normativa",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "### Normativa\n\nDI-2024-29-APN-DNRNPACP#MJ Ciudad de Buenos Aires, 10/05/2024\n\nVISTO el Expediente Nº EX-2024-47822708-APN-DGDYD#MJ y el Decreto de Necesidad y Urgencia N° DNU-2023-70-APN-PTE del 20 de diciembre de 2023, y\n\nCONSIDERANDO:\n\nQue a través del artículo 361 de la norma citada en el Visto se sustituyó el artículo 22 del Decreto-Ley N° 6582/58 -ratificado por Ley N° 14.467-, t.o. Decreto N° 1114/97, y sus modificatorias, el que establece que “(…) el Registro entregará al titular del automotor una o más cédulas de identificación de este, en las que se consignarán los datos que, con respecto al automotor y a su propietario, establezca la autoridad de aplicación (…) y que (…) las cédulas se entregarán digitalmente, las que tendrán la misma validez que las físicas. El adquirente podrá pedir una o varias cédulas físicas (…)”.\n\nQue, a su vez, el artículo 362 sustituyó el primer párrafo del artículo 23 del citado Régimen a fin de establecer que es la DIRECCIÓN NACIONAL DE LOS REGISTROS NACIONALES DE LA PROPIEDAD DEL AUTOMOTOR Y DE CRÉDITOS PRENDARIOS, en su carácter de Organismo de Aplicación del Régimen Jurídico del Automotor, quien “(…) determinará los distintos tipos de cédulas que se expedirán, las cuales no caducarán mientras no haya cambios en la titularidad del vehículo (…)”.\n\nQue el Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, Título II, Capítulo IX, regula todo lo atinente a la expedición de Cédulas de Identificación del Automotor, sean éstas originales, duplicados o para autorizados a conducir.\n\nQue el artículo 4° de la Sección 1ª del citado cuerpo normativo establece que “(…) las Cédulas de Identificación del Automotor y del Motovehículo, cuyo modelo obra como Anexo I de la presente Sección, vencerán a UN (1) año corrido desde su expedición, excepto en poder del titular registral del automotor o cuando se trate de automotores destinados y debidamente habilitados por la autoridad competente al uso taxi o remís, al servicio de alquiler sin conductor, al transporte de carga o de pasajeros o registrados a nombre del estado nacional, provincial o municipal, en cuyo caso no tendrán plazo de vencimiento. Al efecto previsto en este artículo, los Encargados consignarán en el espacio pertinente de las Cédulas la fecha de su vencimiento (…)”.\n\nQue, por otra parte, la Sección 3ª del mismo plexo normativo regula todo lo atinente a la expedición de la “Cédula de Identificación para autorizado a conducir”.\n\nQue la “Cédula de Identificación para autorizado a conducir” constituyó un instrumento por el cual el titular de un dominio puede habilitar a un tercero para circular con el vehículo de su propiedad en los términos de las previsiones contenidas en el artículo 40, inciso b), de la Ley de Tránsito y Seguridad Vial N° 24.449.\n\nQue esa autorización también puede ser exteriorizada a través de la entrega física de la Cédula de Identificación, en tanto y en cuanto la misma no se encuentre vencida.\n\nQue habiéndose establecido en el Decreto de Necesidad y Urgencia N° DNU-2023-70-APN-PTE el no vencimiento de las Cédulas de Identificación, la existencia de la “Cédula de Identificación para autorizado a conducir” carecería de sustento y aplicación prácticos, razón por la cual deviene pertinente proceder a la derogación de la Sección 3ª, Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, denominada “Expedición de Cédula de Identificación para Autorizado a Conducir”.\n\nQue, en lo que respecta a la entrega digital de las Cédulas de Identificación, cabe destacar que la Cédula Digital ha sido creada mediante Disposición Conjunta N° DISFC-2019-1-APN-DNRNPACP#MJ del 5 de junio de 2019 entre la entonces SUBSECRETARÍA DE GOBIERNO DIGITAL y esta Dirección Nacional, cuya implementación se realiza a través del Perfil Digital del Ciudadano en la aplicación “Mi Argentina”.\n\nQue, consecuentemente, cabe en esta instancia adecuar el texto del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, Título II, Capítulo IX, a las modificaciones introducidas por conducto del Decreto de Necesidad y Urgencia N° DNU-2023-70-APN-PTE.\n\nQue esta DIRECCIÓN NACIONAL DE LOS REGISTROS NACIONALES DE LA PROPIEDAD DEL AUTOMOTOR Y DE CRÉDITOS PRENDARIOS se encuentra bajo la órbita de la SUBSECRETARÍA DE ASUNTOS REGISTRALES, de la SECRETARÍA DE JUSTICIA del MINISTERIO DE JUSTICIA.\n\nQue, en ese marco, cabe indicar que las medidas adoptadas por el presente acto se dictan en virtud del requerimiento efectuado por esa Superioridad, conforme se desprende de las Notas Nros. NO-2024-47594459-APN-SSAR#MJ y NO-2024-47829639-APN-SSAR#MJ.\n\nQue ha tomado debida intervención la Coordinación de Asuntos Jurídicos.\n\nQue la presente se dicta en virtud de las facultades conferidas por el artículo 2°, inciso c), del Decreto N° 335/88 y la Disposición N° DI-2024-10-APN-SSAR#MJ del 17 de abril del 2024.\n\nPor ello,\n\nEL DIRECTOR DE LA DIRECCIÓN TÉCNICO-REGISTRAL Y RUDAC A CARGO DE LA DIRECCIÓN NACIONAL DE LOS REGISTROS NACIONALES DE LA PROPIEDAD DEL AUTOMOTOR Y DE CRÉDITOS PRENDARIOS\n\nDISPONE:\n",
+        "fullTranslationRu": "### Нормативный текст\n\nDI-2024-29-APN-DNRNPACP#MJ, город Буэнос-Айрес, 10/05/2024\n\nУЧИТЫВАЯ дело N EX-2024-47822708-APN-DGDYD#MJ и Декрет необходимости и срочности N DNU-2023-70-APN-PTE от 20 декабря 2023 года, и\n\nПРИНИМАЯ ВО ВНИМАНИЕ:\n\nЧто статьей 361 нормы, указанной в разделе «Учитывая», была заменена статья 22 Декрет-закона N 6582/58, ратифицированного Законом N 14.467, текст упорядочен Декретом N 1114/97, с изменениями; эта статья устанавливает, что «(...) Реестр выдаст владельцу автомобиля одну или несколько идентификационных cédulas этого автомобиля, в которых будут указаны данные об автомобиле и его собственнике, определенные органом применения (...), и что (...) cédulas будут выдаваться в цифровом виде и будут иметь ту же действительность, что и физические. Приобретатель может запросить одну или несколько физических cédulas (...)».\n\nЧто, в свою очередь, статья 362 заменила первый абзац статьи 23 указанного режима, чтобы установить, что именно НАЦИОНАЛЬНАЯ ДИРЕКЦИЯ НАЦИОНАЛЬНЫХ РЕЕСТРОВ СОБСТВЕННОСТИ НА АВТОМОБИЛИ И ЗАЛОГОВЫХ КРЕДИТОВ, как орган применения правового режима автомобилей, «(...) определит различные виды cédulas, которые будут выдаваться; они не истекают, пока не произойдут изменения в праве собственности на транспортное средство (...)».\n\nЧто Свод технико-регистрационных норм Национального реестра собственности на автомобили, Раздел II, Глава IX, регулирует все, что относится к выдаче идентификационных cédulas автомобиля: первоначальных, дубликатов или cédulas для лиц, уполномоченных управлять.\n\nЧто статья 4 раздела 1 указанного нормативного корпуса устанавливает, что «(...) идентификационные cédulas автомобиля и мототранспортного средства, модель которых содержится в Приложении I к настоящему разделу, истекают через ОДИН (1) календарный год с момента их выдачи, кроме случаев, когда они находятся у зарегистрированного владельца автомобиля или когда речь идет об автомобилях, предназначенных и надлежащим образом разрешенных компетентным органом для использования как такси или remís, для аренды без водителя, для грузовых или пассажирских перевозок либо зарегистрированных на имя национального, провинциального или муниципального государства; в этих случаях срока истечения не будет. Для цели, предусмотренной этой статьей, ответственные лица Реестров укажут в соответствующем месте cédulas дату их истечения (...)».\n\nЧто, с другой стороны, раздел 3 того же нормативного комплекса регулирует все, что относится к выдаче «Cédula de Identificación para autorizado a conducir».\n\nЧто «Cédula de Identificación para autorizado a conducir» являлась инструментом, с помощью которого владелец регистрационного номера мог разрешить третьему лицу ездить на принадлежащем ему транспортном средстве согласно положениям статьи 40, пункта b), Закона о дорожном движении и безопасности дорожного движения N 24.449.\n\nЧто это разрешение также может выражаться через физическую передачу идентификационной cédula, если она не просрочена.\n\nЧто, поскольку Декретом необходимости и срочности N DNU-2023-70-APN-PTE установлено отсутствие истечения срока действия идентификационных cédulas, существование «Cédula de Identificación para autorizado a conducir» лишилось бы практического основания и применения; поэтому уместно отменить раздел 3, Главу IX, Раздел II Свода технико-регистрационных норм Национального реестра собственности на автомобили, называемый «Выдача идентификационной cédula для лица, уполномоченного управлять».\n\nЧто в отношении цифровой выдачи идентификационных cédulas следует подчеркнуть: цифровая cédula была создана Совместным распоряжением N DISFC-2019-1-APN-DNRNPACP#MJ от 5 июня 2019 года между тогдашним Подсекретариатом цифрового правительства и этой Национальной дирекцией; ее внедрение осуществляется через Цифровой профиль гражданина в приложении «Mi Argentina».\n\nЧто, следовательно, на данном этапе необходимо привести текст Свода технико-регистрационных норм Национального реестра собственности на автомобили, Раздел II, Глава IX, в соответствие с изменениями, внесенными Декретом необходимости и срочности N DNU-2023-70-APN-PTE.\n\nЧто эта НАЦИОНАЛЬНАЯ ДИРЕКЦИЯ НАЦИОНАЛЬНЫХ РЕЕСТРОВ СОБСТВЕННОСТИ НА АВТОМОБИЛИ И ЗАЛОГОВЫХ КРЕДИТОВ находится в сфере Подсекретариата регистрационных вопросов Секретариата юстиции Министерства юстиции.\n\nЧто в этих рамках следует указать, что меры, принятые настоящим актом, издаются на основании требования, сделанного вышестоящим органом, как следует из нот N NO-2024-47594459-APN-SSAR#MJ и NO-2024-47829639-APN-SSAR#MJ.\n\nЧто Координация юридических вопросов приняла надлежащее участие.\n\nЧто настоящее распоряжение издается на основании полномочий, предоставленных статьей 2, пунктом c), Декрета N 335/88 и Распоряжением N DI-2024-10-APN-SSAR#MJ от 17 апреля 2024 года.\n\nВ связи с этим,\n\nДИРЕКТОР ТЕХНИКО-РЕГИСТРАЦИОННОЙ ДИРЕКЦИИ И RUDAC, ИСПОЛНЯЮЩИЙ ОБЯЗАННОСТИ РУКОВОДИТЕЛЯ НАЦИОНАЛЬНОЙ ДИРЕКЦИИ НАЦИОНАЛЬНЫХ РЕЕСТРОВ СОБСТВЕННОСТИ НА АВТОМОБИЛИ И ЗАЛОГОВЫХ КРЕДИТОВ\n\nРАСПОРЯЖАЕТСЯ:",
+        "simpleRu": "Распоряжение объясняет причину изменений: DNU 70/2023 сделал идентификационные cédulas бессрочными, пока не меняется собственник. Поэтому отдельная cédula azul для уполномоченного водителя потеряла практический смысл. DNRPA меняет свои регистрационные правила, чтобы cédulas могли быть цифровыми, действовать как физические и отображаться в Mi Argentina.",
+        "sourceTextSha256": "37f1b9e348c9174031e9797eba30d045541ce02e3ea8f5e280d2681ceb829531",
+        "sourceFingerprint": "sha256:37f1b9e348c9174031e9797eba30d045541ce02e3ea8f5e280d2681ceb829531",
+        "sourceSpan": {
+          "startLine": 40,
+          "endLine": 81
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-1o-sustituyense-los-articulos-1o-3o-4o-005",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 5,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 1°.- Sustitúyense los artículos 1°, 3°, 4° y 5° de la Sección 1ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registra..."
+        ],
+        "officialLabel": "ARTÍCULO 1°.- Sustitúyense los artículos 1°, 3°, 4° y 5° de la Sección 1ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registra...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 1°.- Sustitúyense los artículos 1°, 3°, 4° y 5° de la Sección 1ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, por los que a continuación se indican:\n\n“ARTÍCULO 1º.- Además de los casos en que así lo prevé este Digesto, los Registros Seccionales expedirán una Cédula de Identificación del Automotor original en los siguientes trámites:\n\na) Al practicar la Inscripción Inicial.\n\nb) Al inscribir una transferencia.\n\nc) Al inscribir una comunicación de recupero.\n\nd) Al practicarse un cambio de radicación.\n\ne) Al practicarse un cambio de domicilio.\n\nf) Al practicarse un cambio de denominación de la persona jurídica en caso de que sea titular registral.\n\ng) Al practicarse un cambio de motor.\n\nh) Al practicarse un cambio de chasis o cuadro.\n\ni) Al practicarse una rectificación del nombre o apellido del titular o de otro dato en ella consignado.\n\nj) Al disponer la reposición de placas metálicas.\n\nk) Al practicarse un cambio de uso.\n\nl) Al practicarse la inscripción a nombre de una sociedad en formación y, en su caso, la inscripción definitiva a nombre de la persona jurídica, una vez constituida la sociedad.\n\nEn todos los supuestos, el Registro expedirá una Cédula en formato digital y físico (cuyo modelo obra como Anexo I de la presente Sección) como consecuencia de los trámites arriba indicados. La Cédula de Identificación de carácter físico quedará a disposición dentro del Legajo del dominio para su retiro por parte del peticionario que así lo requiriere. La Cédula en formato digital será puesta a disposición del titular registral de manera automática a través de su Perfil Digital del Ciudadano de la aplicación “Mi Argentina” o la que en el futuro la reemplace.\n\nSin perjuicio de ello, el Registro podrá expedir otras Cédulas en carácter de adicional, si así lo solicitare el peticionario en alguna de las formas previstas en los artículos 3º y 10.\n\nNo obstante lo dispuesto en el inciso b) de este artículo, el Registro Seccional no expedirá la Cédula si el adquirente fuere un comerciante habitualista que así lo hubiere solicitado en la forma prevista en el Capítulo VI, Sección 5ª, artículo 4º de este Título.\n\nEn los casos en que para la radicación del automotor se hubiere invocado su guarda habitual, al expedir la Cédula de Identificación el Registro Seccional deberá agregar en el espacio destinado a consignar el domicilio el lugar de la guarda seguido por la sigla “G.H.””\n\n“ARTÍCULO 3°.- Las Cédulas adicionales a que se refieren los artículos 1º y 2º podrán peticionarse de alguna de las siguientes formas:\n\n1. Mediante la presentación de la Solicitud Tipo “TP”, “TPM” o “02”;\n\n2. Mediante mención expresa en el rubro “Observaciones” de la Solicitud Tipo que corresponda presentar, cuando se peticionare cualquier trámite que dé lugar a la emisión de una Cédula. En estos casos, se abonará el arancel por la Cédula adicional, pero no será necesaria la presentación de Solicitud Tipo al efecto.\n\nEl Registro no expedirá la Cédula cuando mediare alguna de las siguientes causas:\n\na) que el peticionario no fuere el titular registral o uno de ellos en caso de condominio, o no fuere uno de los adquirentes si la petición se formulare simultáneamente con la inscripción de la transferencia; o aun tratándose de un adquirente, si la transferencia no resultare efectivamente inscripta;\n\nb) que se haya anotado una denuncia de robo o hurto y no se hubiere operado el recupero;\n\nc) que se haya anotado una denuncia de venta y no se hubiere operado la inscripción de la transferencia a favor del adquirente, ni efectuado la notificación prevista en el Título II, Capítulo IV, Sección 2ª;\n\nd) que se haya anotado una orden judicial o de autoridad administrativa competente que prohíba la circulación del automotor o la expedición de cédulas de identificación;\n\ne) que se haya dado de baja el motor y no se hubiere inscripto un alta posterior.\n\nAsimismo, no se entregará la Cédula en el supuesto previsto en el segundo párrafo del artículo 4° del Capítulo XXV de este Título.\n",
+        "fullTranslationRu": "СТАТЬЯ 1.- Заменяются статьи 1, 3, 4 и 5 раздела 1, Главы IX, Раздела II Свода технико-регистрационных норм Национального реестра собственности на автомобили следующими текстами:\n\n«СТАТЬЯ 1.- Помимо случаев, предусмотренных настоящим Сводом, Секционные реестры будут выдавать первоначальную идентификационную cédula автомобиля при следующих процедурах:\n\na) при первоначальной регистрации;\n\nb) при регистрации передачи права собственности;\n\nc) при регистрации сообщения о возвращении транспортного средства;\n\nd) при изменении места регистрации;\n\ne) при изменении адреса;\n\nf) при изменении наименования юридического лица, если оно является зарегистрированным владельцем;\n\ng) при замене двигателя;\n\nh) при замене шасси или рамы;\n\ni) при исправлении имени или фамилии владельца либо другого указанного в cédula сведения;\n\nj) при распоряжении о замене металлических номерных знаков;\n\nk) при изменении назначения использования;\n\nl) при регистрации на имя общества в процессе создания и, при необходимости, при окончательной регистрации на имя юридического лица после создания общества.\n\nВо всех случаях Реестр выдаст cédula в цифровом и физическом формате (ее модель содержится в Приложении I к настоящему разделу) как следствие указанных выше процедур. Физическая идентификационная cédula останется в деле регистрационного номера для выдачи заявителю, который ее запросит. Цифровая cédula будет автоматически предоставлена зарегистрированному владельцу через его Цифровой профиль гражданина в приложении «Mi Argentina» или в приложении, которое заменит его в будущем.\n\nБез ущерба этому Реестр может выдавать другие cédulas как дополнительные, если заявитель запросит это одним из способов, предусмотренных статьями 3 и 10.\n\nНесмотря на пункт b) этой статьи, Секционный реестр не выдаст cédula, если приобретатель является обычным торговцем и запросил это способом, предусмотренным в Главе VI, разделе 5, статье 4 настоящего Раздела.\n\nВ случаях, когда для места регистрации автомобиля была указана его обычная стоянка, при выдаче идентификационной cédula Секционный реестр должен добавить в место для адреса место стоянки, за которым следует сокращение “G.H.”»\n\n«СТАТЬЯ 3.- Дополнительные cédulas, о которых говорят статьи 1 и 2, могут запрашиваться одним из следующих способов:\n\n1. путем подачи Solicitud Tipo “TP”, “TPM” или “02”;\n\n2. путем прямого указания в разделе “Observaciones” соответствующей Solicitud Tipo, которую надо подать, когда запрашивается любая процедура, ведущая к выдаче cédula. В этих случаях оплачивается сбор за дополнительную cédula, но отдельная Solicitud Tipo для этой цели не требуется.\n\nРеестр не выдаст cédula при наличии любой из следующих причин:\n\na) заявитель не является зарегистрированным владельцем или одним из владельцев при общей собственности, либо не является одним из приобретателей, если запрос подан одновременно с регистрацией передачи; или даже если он приобретатель, если передача фактически не зарегистрирована;\n\nb) зарегистрировано заявление о краже или хищении, и возвращение транспортного средства не оформлено;\n\nc) зарегистрировано заявление о продаже, и не зарегистрирована передача в пользу приобретателя, а также не выполнено уведомление, предусмотренное в Разделе II, Главе IV, разделе 2;\n\nd) зарегистрирован судебный приказ или приказ компетентного административного органа, запрещающий движение автомобиля или выдачу идентификационных cédulas;\n\ne) двигатель снят с учета, и последующая постановка нового двигателя на учет не зарегистрирована.\n\nТакже cédula не будет выдана в случае, предусмотренном вторым абзацем статьи 4 Главы XXV настоящего Раздела.",
+        "simpleRu": "Статья 1 перечисляет, когда Реестр выдает cédula: первая регистрация, передача собственности, возвращение после кражи, смена места регистрации или адреса, изменение данных владельца, замена двигателя, шасси или рамы, исправление данных, замена номерных знаков, смена использования и регистрация компании. Cédula выдается цифровой и физической. Дополнительную cédula можно запросить через формы TP, TPM или 02 либо через поле Observaciones. Реестр не выдаст cédula, если заявитель не имеет права, есть незакрытая кража или продажа, запрет суда или органа, либо двигатель снят с учета без новой регистрации.",
+        "sourceTextSha256": "70953c3d1fa1a94c768ff034e47f00df31225f64e80cd156b94ae039c3698c4c",
+        "sourceFingerprint": "sha256:70953c3d1fa1a94c768ff034e47f00df31225f64e80cd156b94ae039c3698c4c",
+        "sourceSpan": {
+          "startLine": 82,
+          "endLine": 137
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-4o-salvo-en-los-casos-en-que-006",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 6,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 4°.- Salvo en los casos en que expresamente se determine un plazo de vigencia específico (v. gr. automotores importados temporal..."
+        ],
+        "officialLabel": "ARTÍCULO 4°.- Salvo en los casos en que expresamente se determine un plazo de vigencia específico (v. gr. automotores importados temporal...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 4°.- Salvo en los casos en que expresamente se determine un plazo de vigencia específico (v. gr. automotores importados temporalmente), las Cédulas de Identificación del Automotor y del Motovehículo, ya sea en su formato digital o físico, no caducarán mientras no haya cambios en la titularidad del vehículo.\n",
+        "fullTranslationRu": "СТАТЬЯ 4.- Кроме случаев, когда прямо установлен специальный срок действия (например, временно импортированные автомобили), идентификационные cédulas автомобиля и мототранспортного средства, как в цифровом, так и в физическом формате, не истекают, пока не произойдут изменения в праве собственности на транспортное средство.",
+        "simpleRu": "Обычно cédula автомобиля или мотоцикла больше не имеет срока окончания. Она действует, пока не меняется собственник. Исключение: если другая норма прямо устанавливает специальный срок, например для временно ввезенных автомобилей.",
+        "sourceTextSha256": "15838ed519bf165c898d6cdae3a5aeb51ba6c6f195c67d2173943d188c77e724",
+        "sourceFingerprint": "sha256:15838ed519bf165c898d6cdae3a5aeb51ba6c6f195c67d2173943d188c77e724",
+        "sourceSpan": {
+          "startLine": 138,
+          "endLine": 139
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-5o-el-titular-registral-podra-solicitar-que-007",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 7,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 5°.- El titular registral podrá solicitar que su propia Cédula digital sea visualizada en el Perfil Digital del Ciudadano de la ..."
+        ],
+        "officialLabel": "ARTÍCULO 5°.- El titular registral podrá solicitar que su propia Cédula digital sea visualizada en el Perfil Digital del Ciudadano de la ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 5°.- El titular registral podrá solicitar que su propia Cédula digital sea visualizada en el Perfil Digital del Ciudadano de la aplicación “Mi Argentina” de uno o más terceros determinados. A tal efecto, la persona humana o jurídica deberá:\n\n1. Ingresar en el Sistema Integral de Trámites Electrónicos;\n\n2. Validarse en el portal de la Administración Federal de Ingresos Públicos con clave fiscal;\n\n3. Seleccionar un dominio sobre el cual es titular;\n\n4. Identificar al tercero mediante su nombre y apellido, y CUIT, CUIL o CDI.\n\nEn estos casos, no se emitirá Cédula adicional.\n\nIgual procedimiento deberá realizar el titular registral si pretendiera desafectar la Cédula del Perfil Digital de la persona oportunamente informada.”\n",
+        "fullTranslationRu": "СТАТЬЯ 5.- Зарегистрированный владелец может запросить, чтобы его собственная цифровая cédula отображалась в Цифровом профиле гражданина приложения «Mi Argentina» одного или нескольких определенных третьих лиц. Для этого физическое или юридическое лицо должно:\n\n1. войти в Sistema Integral de Trámites Electrónicos;\n\n2. подтвердиться на портале Федеральной администрации государственных доходов с налоговым ключом;\n\n3. выбрать регистрационный номер, владельцем которого оно является;\n\n4. идентифицировать третье лицо по имени и фамилии, а также CUIT, CUIL или CDI.\n\nВ этих случаях дополнительная cédula не выдается.\n\nТакую же процедуру должен выполнить зарегистрированный владелец, если он намерен убрать cédula из Цифрового профиля ранее указанного лица.»",
+        "simpleRu": "Владелец может разрешить, чтобы его цифровая cédula была видна в Mi Argentina у другого конкретного человека. Для этого он входит в электронную систему, подтверждается через AFIP с clave fiscal, выбирает свой регистрационный номер и указывает данные третьего лица: имя, фамилию и CUIT, CUIL или CDI. Дополнительная cédula при этом не выдается. Так же владелец может убрать доступ.",
+        "sourceTextSha256": "da5adfb88406def4b28fa2db61362de67e297d512d83626c45582745f4c9713d",
+        "sourceFingerprint": "sha256:da5adfb88406def4b28fa2db61362de67e297d512d83626c45582745f4c9713d",
+        "sourceSpan": {
+          "startLine": 140,
+          "endLine": 153
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-2o-incorporanse-como-articulos-10-11-y-008",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 8,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 2°.- Incorpóranse como artículos 10, 11 y 12 de la Sección 1ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales..."
+        ],
+        "officialLabel": "ARTÍCULO 2°.- Incorpóranse como artículos 10, 11 y 12 de la Sección 1ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 2°.- Incorpóranse como artículos 10, 11 y 12 de la Sección 1ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, los textos que a continuación se indican:\n\n“ARTÍCULO 10.- EXPEDICIÓN ELECTRÓNICA DE CÉDULA ADICIONAL O DE DUPLICADO DE CÉDULA. Cuando el titular registral sea una persona humana, la expedición de duplicado de Cédula de Identificación del Automotor o sus adicionales previstas en esta Sección también podrá ser peticionada y expedida en forma completamente electrónica.\n\nA tal efecto, el titular registral deberá:\n\na) Acceder al Sistema de Trámites Electrónicos (SITE);\n\nb) Realizar la precarga de datos para la confección de la Solicitud Tipo “TP”;\n\nc) Incorporar los datos que le sean requeridos según la Cédula de Identificación que se peticione;\n\nd) Generar un Volante Electrónico de Pago (VEP) o utilizar un concentrador de pago con su número de CUIT/CUIL;\n\ne) Abonar el arancel correspondiente a través de un sistema habilitado de pago electrónico, desde una cuenta bancaria o desde un concentrador de pagos, registrados a su nombre.\n",
+        "fullTranslationRu": "СТАТЬЯ 2.- В раздел 1, Главу IX, Раздел II Свода технико-регистрационных норм Национального реестра собственности на автомобили включаются статьи 10, 11 и 12 следующего содержания:\n\n«СТАТЬЯ 10.- ЭЛЕКТРОННАЯ ВЫДАЧА ДОПОЛНИТЕЛЬНОЙ CÉDULA ИЛИ ДУБЛИКАТА CÉDULA. Когда зарегистрированный владелец является физическим лицом, выдача дубликата идентификационной cédula автомобиля или дополнительных cédulas, предусмотренных в этом разделе, также может быть запрошена и выполнена полностью в электронной форме.\n\nДля этого зарегистрированный владелец должен:\n\na) войти в Sistema de Trámites Electrónicos (SITE);\n\nb) выполнить предварительную загрузку данных для составления Solicitud Tipo “TP”;\n\nc) внести данные, которые будут запрошены в зависимости от идентификационной cédula, которую он просит;\n\nd) создать Volante Electrónico de Pago (VEP) или использовать платежный концентратор со своим номером CUIT/CUIL;\n\ne) оплатить соответствующий сбор через разрешенную систему электронного платежа, с банковского счета или через платежный концентратор, зарегистрированные на его имя.",
+        "simpleRu": "Статья 2 добавляет электронную процедуру. Если владелец - физическое лицо, он может полностью онлайн запросить дубликат cédula или дополнительную cédula. Нужно войти в SITE, заполнить данные для формы TP, добавить нужные данные, создать VEP или использовать платежный сервис со своим CUIT/CUIL и оплатить сбор со счета или сервиса на свое имя.",
+        "sourceTextSha256": "4e28baa57653c9ce94d33fe43a666488ba878210fbd7880f84852e3541c6f1f9",
+        "sourceFingerprint": "sha256:4e28baa57653c9ce94d33fe43a666488ba878210fbd7880f84852e3541c6f1f9",
+        "sourceSpan": {
+          "startLine": 154,
+          "endLine": 169
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-11-una-vez-que-el-requerimiento-se-009",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 9,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 11.- Una vez que el requerimiento se visualice en la bandeja “SITE Pago”, el Encargado deberá emitir el recibo, imprimir la Soli..."
+        ],
+        "officialLabel": "ARTÍCULO 11.- Una vez que el requerimiento se visualice en la bandeja “SITE Pago”, el Encargado deberá emitir el recibo, imprimir la Soli...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 11.- Una vez que el requerimiento se visualice en la bandeja “SITE Pago”, el Encargado deberá emitir el recibo, imprimir la Solicitud Tipo “TP” correspondiente, calificar y procesar el trámite, dentro de los plazos legales. En el espacio reservado en ella para la firma del titular registral, deberá dejar constancia del número de VEP o de la identificación de la operación que consigne el concentrador de pagos utilizado.\n\nLuego, salvo que mediare alguna de las causas previstas en esta Sección que impidan su expedición, expedirá la o las Cédulas de Identificación del Automotor que se hubiesen peticionado, tanto en su formato digital como físico.”\n",
+        "fullTranslationRu": "СТАТЬЯ 11.- После того как запрос появится в лотке “SITE Pago”, ответственное лицо Реестра должно выдать квитанцию, распечатать соответствующую Solicitud Tipo “TP”, оценить и обработать процедуру в пределах законных сроков. В месте, отведенном для подписи зарегистрированного владельца, оно должно указать номер VEP или идентификацию операции, указанную использованным платежным концентратором.\n\nЗатем, если не существует одной из причин, предусмотренных в этом разделе, которые препятствуют выдаче, оно выдаст запрошенную одну или несколько идентификационных cédulas автомобиля как в цифровом, так и в физическом формате.»",
+        "simpleRu": "Когда онлайн-запрос появляется в SITE Pago, сотрудник Реестра выдает квитанцию, печатает форму TP и обрабатывает процедуру в законный срок. В поле подписи он указывает номер VEP или платежной операции. Если нет причины отказа, Реестр выдает запрошенные cédulas в цифровом и физическом виде.",
+        "sourceTextSha256": "b558713e4f8b85c56b2b187f98e758ec10927c456a6c4461646d3a40ab119982",
+        "sourceFingerprint": "sha256:b558713e4f8b85c56b2b187f98e758ec10927c456a6c4461646d3a40ab119982",
+        "sourceSpan": {
+          "startLine": 170,
+          "endLine": 173
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-12-el-peticionante-podra-realizar-el-seguimiento-010",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 10,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 12.- El peticionante podrá realizar el seguimiento del trámite a través de la página web del organismo.”"
+        ],
+        "officialLabel": "ARTÍCULO 12.- El peticionante podrá realizar el seguimiento del trámite a través de la página web del organismo.”",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 12.- El peticionante podrá realizar el seguimiento del trámite a través de la página web del organismo.”\n",
+        "fullTranslationRu": "СТАТЬЯ 12.- Заявитель сможет отслеживать процедуру через веб-страницу органа.»",
+        "simpleRu": "Заявитель может следить за ходом процедуры на сайте органа.",
+        "sourceTextSha256": "84e66784222dd1b983b65f216b7a29324d6c7e057c146585b005744f8ce68045",
+        "sourceFingerprint": "sha256:84e66784222dd1b983b65f216b7a29324d6c7e057c146585b005744f8ce68045",
+        "sourceSpan": {
+          "startLine": 174,
+          "endLine": 175
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-3o-sustituyense-los-articulos-2o-3o-y-011",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 11,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 3°.- Sustitúyense los artículos 2°, 3° y 4° de la Sección 2ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales ..."
+        ],
+        "officialLabel": "ARTÍCULO 3°.- Sustitúyense los artículos 2°, 3° y 4° de la Sección 2ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 3°.- Sustitúyense los artículos 2°, 3° y 4° de la Sección 2ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, por los que a continuación se indican:\n\n“ARTÍCULO 2º.- La solicitud de duplicado de Cédula sólo podrá ser efectuada por el titular registral o uno de ellos en caso de condominio en la forma prevista en los artículos 3° o 10 de la Sección 1ra.\n",
+        "fullTranslationRu": "СТАТЬЯ 3.- Заменяются статьи 2, 3 и 4 раздела 2, Главы IX, Раздела II Свода технико-регистрационных норм Национального реестра собственности на автомобили следующими текстами:\n\n«СТАТЬЯ 2.- Запрос дубликата cédula может быть сделан только зарегистрированным владельцем или одним из владельцев при общей собственности способом, предусмотренным статьями 3 или 10 раздела 1.",
+        "simpleRu": "Дубликат cédula может запросить только зарегистрированный владелец или один из владельцев, если транспорт оформлен на нескольких лиц. Запрос делается по правилам статей 3 или 10 раздела 1.",
+        "sourceTextSha256": "13e9a7b0ceddadb1f06d1b7af57078d2d85dc58ea3d20acece94d81ccd6330d0",
+        "sourceFingerprint": "sha256:13e9a7b0ceddadb1f06d1b7af57078d2d85dc58ea3d20acece94d81ccd6330d0",
+        "sourceSpan": {
+          "startLine": 176,
+          "endLine": 179
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-3o-en-el-supuesto-del-inciso-b-012",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 12,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 3º.- En el supuesto del inciso b), artículo 1º, de esta Sección y cuando la petición sea efectuada de forma presencial, se deber..."
+        ],
+        "officialLabel": "ARTÍCULO 3º.- En el supuesto del inciso b), artículo 1º, de esta Sección y cuando la petición sea efectuada de forma presencial, se deber...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 3º.- En el supuesto del inciso b), artículo 1º, de esta Sección y cuando la petición sea efectuada de forma presencial, se deberá acompañar además la Cédula deteriorada, la que será retenida por el Registro. El Registro no expedirá el duplicado de Cédula si mediare alguna de las causas previstas en el artículo 3º de la Sección 1ª que impiden la expedición de una Cédula adicional.\n",
+        "fullTranslationRu": "СТАТЬЯ 3.- В случае пункта b), статьи 1 этого раздела, и когда запрос подается лично, необходимо также приложить поврежденную cédula, которую Реестр удержит. Реестр не выдаст дубликат cédula, если существует одна из причин, предусмотренных статьей 3 раздела 1, которые препятствуют выдаче дополнительной cédula.",
+        "simpleRu": "Если дубликат запрашивают лично из-за повреждения cédula, поврежденную cédula нужно сдать в Реестр. Реестр не выдаст дубликат, если есть причина, по которой нельзя выдать дополнительную cédula.",
+        "sourceTextSha256": "98588fe7b0d68c6ca44c4719d8a1f4d8c6707802c9754247c2a01a56a9dfdc46",
+        "sourceFingerprint": "sha256:98588fe7b0d68c6ca44c4719d8a1f4d8c6707802c9754247c2a01a56a9dfdc46",
+        "sourceSpan": {
+          "startLine": 180,
+          "endLine": 181
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-4o-los-duplicados-de-cedula-se-extenderan-013",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 13,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 4°.- Los duplicados de Cédula se extenderán sin vencimiento, excepto cuando normas vigentes fijen un plazo determinado. En este ..."
+        ],
+        "officialLabel": "ARTÍCULO 4°.- Los duplicados de Cédula se extenderán sin vencimiento, excepto cuando normas vigentes fijen un plazo determinado. En este ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 4°.- Los duplicados de Cédula se extenderán sin vencimiento, excepto cuando normas vigentes fijen un plazo determinado. En este caso, la fecha de vencimiento será la oportunamente consignada en la Cédula original.”\n",
+        "fullTranslationRu": "СТАТЬЯ 4.- Дубликаты cédula будут выдаваться без срока истечения, кроме случаев, когда действующие нормы устанавливают определенный срок. В таком случае датой истечения будет дата, своевременно указанная в первоначальной cédula.»",
+        "simpleRu": "Дубликат cédula обычно бессрочный. Если другая действующая норма устанавливает срок, сохраняется дата окончания из исходной cédula.",
+        "sourceTextSha256": "ba0a062e1d4b97f60d2154c1f6a79d2447c8ab41a4cd2abcedbd00766aa28ba7",
+        "sourceFingerprint": "sha256:ba0a062e1d4b97f60d2154c1f6a79d2447c8ab41a4cd2abcedbd00766aa28ba7",
+        "sourceSpan": {
+          "startLine": 182,
+          "endLine": 183
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-4o-derogase-la-seccion-3a-capitulo-ix-014",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 14,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 4°.- Derógase la Sección 3ª, Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propie..."
+        ],
+        "officialLabel": "ARTÍCULO 4°.- Derógase la Sección 3ª, Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propie...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 4°.- Derógase la Sección 3ª, Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor.\n",
+        "fullTranslationRu": "СТАТЬЯ 4.- Отменяется раздел 3, Глава IX, Раздел II Свода технико-регистрационных норм Национального реестра собственности на автомобили.",
+        "simpleRu": "Эта статья отменяет раздел правил о cédula для лица, уполномоченного управлять.",
+        "sourceTextSha256": "451c15f8bc96fbd53410be1de1006d742b17280cefb1eb4a00c1dc16dcb0cbc8",
+        "sourceFingerprint": "sha256:451c15f8bc96fbd53410be1de1006d742b17280cefb1eb4a00c1dc16dcb0cbc8",
+        "sourceSpan": {
+          "startLine": 184,
+          "endLine": 185
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-5o-las-cedulas-de-identificacion-emitidas-con-015",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 15,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 5°.- Las Cédulas de Identificación emitidas con anterioridad a la vigencia de la presente, que en su formato físico contuvieren ..."
+        ],
+        "officialLabel": "ARTÍCULO 5°.- Las Cédulas de Identificación emitidas con anterioridad a la vigencia de la presente, que en su formato físico contuvieren ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 5°.- Las Cédulas de Identificación emitidas con anterioridad a la vigencia de la presente, que en su formato físico contuvieren una fecha de vencimiento, no tendrán vencimiento. Esa circunstancia constará debidamente en su formato digital.\n",
+        "fullTranslationRu": "СТАТЬЯ 5.- Идентификационные cédulas, выданные до вступления в силу настоящего распоряжения, которые в физическом формате содержали дату истечения, не будут иметь срока истечения. Это обстоятельство будет надлежащим образом указано в их цифровом формате.",
+        "simpleRu": "Cédulas, выданные раньше и имеющие дату окончания на бумажной версии, больше не считаются просроченными. В цифровой версии должно быть указано, что срока окончания нет.",
+        "sourceTextSha256": "15da0ac7cee63e92c0d9815753bbe414cede6cda7e673f71ad5163f453005d6a",
+        "sourceFingerprint": "sha256:15da0ac7cee63e92c0d9815753bbe414cede6cda7e673f71ad5163f453005d6a",
+        "sourceSpan": {
+          "startLine": 186,
+          "endLine": 187
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-6o-las-cedulas-de-identificacion-para-autorizados-016",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 16,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 6°.- Las Cédulas de Identificación para Autorizados a Conducir ya emitidas continuarán vigentes hasta tanto sean revocadas por q..."
+        ],
+        "officialLabel": "ARTÍCULO 6°.- Las Cédulas de Identificación para Autorizados a Conducir ya emitidas continuarán vigentes hasta tanto sean revocadas por q...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 6°.- Las Cédulas de Identificación para Autorizados a Conducir ya emitidas continuarán vigentes hasta tanto sean revocadas por quien las peticionó. La revocación no deberá ser peticionada en caso de solicitarse la inscripción de una transferencia o de una denuncia de venta.\n\nLa solicitud expresa de revocación deberá ser requerida al Registro mediante el uso de una Solicitud Tipo “TP”, “TPM” o “02” a la que deberá acompañarse la o las Cédulas de Identificación para Autorizado a Conducir oportunamente expedidas, si las tuviere en su poder, siendo aplicable a ellas lo previsto para el robo, hurto o extravío de la Cédula de Identificación. Si el autorizado no se la hubiere entregado, se dejará constancia de ello en el rubro “Observaciones” de la Solicitud Tipo pertinente e igualmente caducará el derecho a su uso.\n\nEl Registro anulará y destruirá la Cédula de Identificación para Autorizado a Conducir presentada, salvo la parte de ésta que contenga el número de control, la que se agregará al Legajo.\n\nEn todos los casos se procederá a su revocación en el sistema informático.\n",
+        "fullTranslationRu": "СТАТЬЯ 6.- Уже выданные идентификационные cédulas для лиц, уполномоченных управлять, продолжают действовать до тех пор, пока не будут отозваны тем, кто их запросил. Отзыв не нужно запрашивать, если подается заявление о регистрации передачи права собственности или заявление о продаже.\n\nПрямой запрос об отзыве должен быть сделан в Реестр с использованием Solicitud Tipo “TP”, “TPM” или “02”; к нему должны прилагаться одна или несколько идентификационных cédulas для уполномоченного водителя, ранее выданных, если они находятся у заявителя. К ним применяются правила, предусмотренные для кражи, хищения или утраты идентификационной cédula. Если уполномоченное лицо не передало ее, это будет указано в разделе “Observaciones” соответствующей Solicitud Tipo, и право на ее использование также прекратится.\n\nРеестр аннулирует и уничтожит представленную идентификационную cédula для уполномоченного водителя, кроме той ее части, которая содержит контрольный номер; эта часть будет добавлена в дело.\n\nВо всех случаях отзыв будет выполнен в компьютерной системе.",
+        "simpleRu": "Уже выданная cédula для уполномоченного водителя действует, пока ее не отменит тот, кто ее запросил. Отдельно отменять ее не нужно при регистрации передачи собственности или заявления о продаже. Для отмены используют форму TP, TPM или 02 и, если cédula есть у заявителя, сдают ее. Если уполномоченный водитель ее не отдал, это записывают в Observaciones, и право пользоваться cédula все равно прекращается. Реестр аннулирует ее в системе.",
+        "sourceTextSha256": "eae3074474e7d83da8940552db2983dbe22596c2bebfecdedffa14f72f933424",
+        "sourceFingerprint": "sha256:eae3074474e7d83da8940552db2983dbe22596c2bebfecdedffa14f72f933424",
+        "sourceSpan": {
+          "startLine": 188,
+          "endLine": 195
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-7o-la-presente-medida-entrara-en-vigencia-017",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 17,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 7º.- La presente medida entrará en vigencia a partir del día de su publicación, con excepción de la modificación introducida en ..."
+        ],
+        "officialLabel": "ARTÍCULO 7º.- La presente medida entrará en vigencia a partir del día de su publicación, con excepción de la modificación introducida en ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 7º.- La presente medida entrará en vigencia a partir del día de su publicación, con excepción de la modificación introducida en el artículo 5° de la Sección 1ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, previsión que entrará en vigencia cuando así lo disponga esta Dirección Nacional.\n",
+        "fullTranslationRu": "СТАТЬЯ 7.- Настоящая мера вступит в силу со дня ее публикации, за исключением изменения, внесенного в статью 5 раздела 1, Главы IX, Раздела II Свода технико-регистрационных норм Национального реестра собственности на автомобили; это положение вступит в силу, когда так распорядится эта Национальная дирекция.",
+        "simpleRu": "Распоряжение действует с дня публикации. Исключение - изменение по статье 5 раздела 1 о цифровом отображении cédula у третьих лиц: оно начнет действовать, когда это отдельно установит Национальная дирекция.",
+        "sourceTextSha256": "954708562775324cd153c96e7880b89e4866c202e86cd2fd9fea193a209b32a1",
+        "sourceFingerprint": "sha256:954708562775324cd153c96e7880b89e4866c202e86cd2fd9fea193a209b32a1",
+        "sourceSpan": {
+          "startLine": 196,
+          "endLine": 197
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-8o-comuniquese-publiquese-dese-a-la-direccion-018",
+        "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+        "order": 18,
+        "headingPath": [
+          "Disposición 29 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 8°.- Comuníquese, publíquese, dése a la Dirección Nacional del Registro Oficial y archívese."
+        ],
+        "officialLabel": "ARTÍCULO 8°.- Comuníquese, publíquese, dése a la Dirección Nacional del Registro Oficial y archívese.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 8°.- Comuníquese, publíquese, dése a la Dirección Nacional del Registro Oficial y archívese.\n\nMartin Enrique Pennella\n\ne. 13/05/2024 N° 28413/24 v. 13/05/2024\n\nVolver\n\nAcerca de esta norma\n",
+        "fullTranslationRu": "СТАТЬЯ 8.- Сообщить, опубликовать, передать в Национальную дирекцию Официального реестра и архивировать.\n\nMartin Enrique Pennella\n\ne. 13/05/2024 N 28413/24 v. 13/05/2024\n\nНазад\n\nОб этой норме",
+        "simpleRu": "Это заключительная статья: норму нужно сообщить, опубликовать, передать в Национальную дирекцию Официального реестра и архивировать. Подписант: Martin Enrique Pennella. Публикационная строка: 13/05/2024 N 28413/24.",
+        "sourceTextSha256": "359a43b5d9c141847ced6b5ad694f7601fd4a2cf3d98050914e69b7aad6e241a",
+        "sourceFingerprint": "sha256:359a43b5d9c141847ced6b5ad694f7601fd4a2cf3d98050914e69b7aad6e241a",
+        "sourceSpan": {
+          "startLine": 198,
+          "endLine": 207
+        }
+      }
+    ]
+  }
+}

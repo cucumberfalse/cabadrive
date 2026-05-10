@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+  "entries": [
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-001",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-002",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--a-quien-esta-dirigido-003",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--a-quien-esta-dirigido-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--que-necesito-004",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--que-necesito-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--titulo-del-vehiculo-005",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--titulo-del-vehiculo-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--como-hago-006",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--como-hago-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--semipresencial-007",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--semipresencial-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--presencial-008",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--presencial-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--cuanto-tiempo-lleva-hacer-el-tramite-009",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--cuanto-tiempo-lleva-hacer-el-tramite-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--tene-en-cuenta-010",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--tene-en-cuenta-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--cual-es-el-costo-011",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--cual-es-el-costo-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--tene-en-cuenta-012",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--tene-en-cuenta-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-duplicado-chapa-patente-automotor--vigencia-013",
+      "officialDocumentId": "argentina-duplicado-chapa-patente-automotor",
+      "chunkId": "argentina-duplicado-chapa-patente-automotor--vigencia-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

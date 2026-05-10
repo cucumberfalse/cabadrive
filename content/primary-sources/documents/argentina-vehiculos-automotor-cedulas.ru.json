@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+  "document": {
+    "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+    "title": "Vehículos",
+    "shortTitleRu": "Документы и процедуры по транспортным средствам",
+    "category": "vehicle-documents",
+    "jurisdiction": "national",
+    "officialSourceType": "national_service_topic_current_material",
+    "sourceUrl": "https://www.argentina.gob.ar/tema/automotor",
+    "archiveLocalPath": "content/official-documents/documents/argentina-vehiculos-automotor-cedulas.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--vehiculos-001",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 1,
+        "headingPath": [
+          "Vehículos"
+        ],
+        "officialLabel": "Vehículos",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "# Vehículos\n\n- Inicio\n\n- Circular con auto o moto en Argentina\n\n- Vehículos\n",
+        "fullTranslationRu": "# Транспортные средства\n\n- Главная\n\n- Ездить на автомобиле или мотоцикле в Аргентине\n\n- Транспортные средства",
+        "simpleRu": "Это начало официальной страницы Argentina.gob.ar о транспортных средствах: раздел для тех, кто ездит на автомобиле или мотоцикле в Аргентине.",
+        "sourceTextSha256": "ac6084d46bb023ef74649f4bd4d5b663e95944fa9a099a0bc800ddd1b32552ca",
+        "sourceFingerprint": "sha256:ac6084d46bb023ef74649f4bd4d5b663e95944fa9a099a0bc800ddd1b32552ca",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 8
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--vehiculos-002",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 2,
+        "headingPath": [
+          "Vehículos"
+        ],
+        "officialLabel": "Vehículos",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "# Vehículos\n\nCompartir en\nredes sociales\n\n- Compartir en Facebook\n\n- Compartir en X\n\n- Compartir en Linkedin\n\n- Compartir en Whatsapp\n\n- Compartir en Telegram\n\nAquí encontrarás los trámites más frecuentes vinculados con la propiedad de tu vehículo. Se realizan habitualmente ante la Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (DNRPA) y sólo en casos muy puntuales, ante otros organismos del Estado como la AFIP o la Superintendencia de Seguros de la Nación.\n",
+        "fullTranslationRu": "# Транспортные средства\n\nПоделиться в\nсоциальных сетях\n\n- Поделиться в Facebook\n\n- Поделиться в X\n\n- Поделиться в Linkedin\n\n- Поделиться в Whatsapp\n\n- Поделиться в Telegram\n\nЗдесь вы найдете самые частые процедуры, связанные с собственностью на ваше транспортное средство. Обычно они выполняются в Национальной дирекции национальных реестров собственности на автомобили и залоговых кредитов (DNRPA) и только в очень отдельных случаях - перед другими государственными органами, такими как AFIP или Superintendencia de Seguros de la Nación.",
+        "simpleRu": "На этой странице собраны частые процедуры по собственности на автомобиль, мотоцикл или другое транспортное средство. Обычно ими занимается DNRPA. В отдельных случаях участвуют другие органы, например AFIP или орган надзора за страхованием.",
+        "sourceTextSha256": "d2436a05d3c638290868b8e28897772acd678ade59e09ef3b5621f1b5ba2800d",
+        "sourceFingerprint": "sha256:d2436a05d3c638290868b8e28897772acd678ade59e09ef3b5621f1b5ba2800d",
+        "sourceSpan": {
+          "startLine": 9,
+          "endLine": 25
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--en-esta-pagina-003",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 3,
+        "headingPath": [
+          "Vehículos",
+          "En esta página"
+        ],
+        "officialLabel": "En esta página",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "#### En esta página\n\n- Cédulas\n\n- Titularidad y dominio\n\n- Compra-venta\n\n- Discapacidad\n\n- Cambios en el vehículo\n\n- Robo\n\n- Seguros\n\n- Consultas\n",
+        "fullTranslationRu": "#### На этой странице\n\n- Cédulas\n\n- Право собственности и регистрационный номер\n\n- Купля-продажа\n\n- Инвалидность\n\n- Изменения в транспортном средстве\n\n- Кража\n\n- Страхование\n\n- Консультации",
+        "simpleRu": "Разделы страницы: cédulas, собственность и регистрационный номер, купля-продажа, вопросы инвалидности, изменения в транспортном средстве, кража, страхование и консультации.",
+        "sourceTextSha256": "9d6de100d5b10cce1b2b580c027e217409ece68744854006be3555e5f039578a",
+        "sourceFingerprint": "sha256:9d6de100d5b10cce1b2b580c027e217409ece68744854006be3555e5f039578a",
+        "sourceSpan": {
+          "startLine": 26,
+          "endLine": 43
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--cedulas-004",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 4,
+        "headingPath": [
+          "Vehículos",
+          "Cédulas"
+        ],
+        "officialLabel": "Cédulas",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Cédulas\n\nLa cédula del automotor es el documento público que habilita al vehículo para circular en todas las rutas argentinas y para salir temporalmente del país. Identifica a su dueño o titular (cédula verde) y a la persona autorizada a conducirlo (cédula azul, o rosa para las motos).\n",
+        "fullTranslationRu": "## Cédulas\n\nCédula транспортного средства - это публичный документ, который дает транспортному средству право ездить по всем аргентинским дорогам и временно выезжать из страны. Она идентифицирует его собственника или зарегистрированного владельца (cédula verde) и лицо, уполномоченное управлять им (cédula azul, либо розовая cédula для мотоциклов).",
+        "simpleRu": "Cédula - это официальный документ на транспорт. Он показывает, что транспорт может ездить по дорогам Аргентины и временно выезжать из страны. Cédula verde связана с владельцем, а cédula azul или розовая cédula для мотоциклов - с человеком, которому разрешили управлять.",
+        "sourceTextSha256": "20beeda8b8a65290191e615106ec76bebf9a213ea292d71bd2e73b280ea4a7b8",
+        "sourceFingerprint": "sha256:20beeda8b8a65290191e615106ec76bebf9a213ea292d71bd2e73b280ea4a7b8",
+        "sourceSpan": {
+          "startLine": 44,
+          "endLine": 47
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--tu-cedula-automotor-digital-005",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 5,
+        "headingPath": [
+          "Vehículos",
+          "Cédulas",
+          "Tu cédula automotor digital"
+        ],
+        "officialLabel": "Tu cédula automotor digital",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Tu cédula automotor digital\n\nEn Mi Argentina podés acceder a tu cédula digital con la misma validez que la física.\nDescargate la aplicación, creá tu cuenta, validá tu identidad y llevala siempre con vos en tu teléfono.\n\n- Renovar la cédula del vehículo\n\n- Obtener un duplicado de la cédula del vehículo\n\n- Solicitar adicional de la cédula del vehículo\n\n- Revocar o dar de baja la cédula para autorizado a conducir\n\nEn estos momentos, la DNRPA otorga la cédula única para automotores, motos y maquinaria agrícola. Sin embargo, nadie está obligado a renovar las ya emitidas.\n\nVolver al índice\n",
+        "fullTranslationRu": "##### Ваша цифровая cédula на транспортное средство\n\nВ Mi Argentina вы можете получить доступ к своей цифровой cédula с той же действительностью, что и у физической.\nСкачайте приложение, создайте учетную запись, подтвердите личность и всегда носите ее с собой в телефоне.\n\n- Обновить cédula транспортного средства\n\n- Получить дубликат cédula транспортного средства\n\n- Запросить дополнительную cédula транспортного средства\n\n- Отозвать или снять с учета cédula для лица, уполномоченного управлять\n\nВ настоящее время DNRPA выдает единую cédula для автомобилей, мотоциклов и сельскохозяйственной техники. Однако никто не обязан обновлять уже выданные cédulas.\n\nВернуться к указателю",
+        "simpleRu": "В приложении Mi Argentina цифровая cédula имеет такую же силу, как бумажная. Нужно скачать приложение, создать аккаунт и подтвердить личность. DNRPA сейчас выдает единую cédula для автомобилей, мотоциклов и сельхозтехники, но уже выданные cédulas не обязательно менять.",
+        "sourceTextSha256": "9811669b7b4fbf2659e9906d2dd89535684c667d89bab45afc55aad43fc842be",
+        "sourceFingerprint": "sha256:9811669b7b4fbf2659e9906d2dd89535684c667d89bab45afc55aad43fc842be",
+        "sourceSpan": {
+          "startLine": 48,
+          "endLine": 64
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--titularidad-y-dominio-006",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 6,
+        "headingPath": [
+          "Vehículos",
+          "Titularidad y dominio"
+        ],
+        "officialLabel": "Titularidad y dominio",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Titularidad y dominio\n\nLos trámites de dominio incluyen documentos donde se vuelca información sobre el vehículo, quién es su dueño y otros datos que están en los registros, como por ejemplo, si tiene denuncias de robo.\n\nAlgunos de estos trámites son necesarios en caso de compra-venta, aunque no exclusivamente.\n\n- Anotar por primera vez el dominio de un automotor\n\n- Solicitar un informe de dominio del automotor\n\n- Solicitar un informe de dominio del automotor con carácter urgente\n\n- Solicitar informe histórico de dominio del automotor\n\n- Cambiar denominación de personas jurídicas titulares de un automotor\n\n- Solicitar un certificado de dominio del automotor\n\n- Solicitar Informe nominal nacional del automotor\n\n- Obtener duplicado del título del automotor\n\n- Cambiar el domicilio del titular de un automotor\n\n- Obtener un duplicado de la chapa patente del automotor\n\nVolver al índice\n",
+        "fullTranslationRu": "## Право собственности и регистрационный номер\n\nПроцедуры по регистрационному номеру включают документы, куда вносится информация о транспортном средстве, о том, кто является его владельцем, и другие данные из реестров, например есть ли заявления о краже.\n\nНекоторые из этих процедур необходимы при купле-продаже, хотя не только в этих случаях.\n\n- Впервые зарегистрировать регистрационный номер автомобиля\n\n- Запросить отчет о регистрационном номере автомобиля\n\n- Срочно запросить отчет о регистрационном номере автомобиля\n\n- Запросить исторический отчет о регистрационном номере автомобиля\n\n- Изменить наименование юридических лиц - владельцев автомобиля\n\n- Запросить сертификат о регистрационном номере автомобиля\n\n- Запросить национальный именной отчет по автомобилю\n\n- Получить дубликат титула автомобиля\n\n- Изменить адрес владельца автомобиля\n\n- Получить дубликат номерного знака автомобиля\n\nВернуться к указателю",
+        "simpleRu": "Эти процедуры нужны для данных о транспортном средстве, владельце и регистрационном номере. Они могут понадобиться при покупке или продаже, а также для отчетов, сертификатов, смены адреса владельца, дубликата титула или дубликата номерного знака.",
+        "sourceTextSha256": "eeaf542ff6b52bd61e82f27a1e8120c980f0483b788cf56d286465101802f0ca",
+        "sourceFingerprint": "sha256:eeaf542ff6b52bd61e82f27a1e8120c980f0483b788cf56d286465101802f0ca",
+        "sourceSpan": {
+          "startLine": 65,
+          "endLine": 92
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--compra-venta-007",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 7,
+        "headingPath": [
+          "Vehículos",
+          "Compra-venta"
+        ],
+        "officialLabel": "Compra-venta",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Compra-venta\n\nEn caso de compra-venta, sucesión, donación o permuta de un auto, moto o maquinaria agrícola (vial o industrial), vas a tener que realizar, obligatoriamente, alguno estos trámites.\n\n- Denunciar la venta de un automotor\n\n- Tramitar Certificado CETA ante AFIP\n\n- Solicitar Certificado de transferencia de auto, moto o maquinaria\n\n- Hacer la transferencia de dominio de un auto, moto o maquinaria\n\n- Tramitar en línea el formulario 08 para transferencia automotor\n\nVolver al índice\n",
+        "fullTranslationRu": "## Купля-продажа\n\nВ случае купли-продажи, наследования, дарения или обмена автомобиля, мотоцикла либо сельскохозяйственной техники (дорожной или промышленной) вам обязательно придется выполнить одну из этих процедур.\n\n- Заявить о продаже автомобиля\n\n- Оформить сертификат CETA в AFIP\n\n- Запросить сертификат передачи автомобиля, мотоцикла или техники\n\n- Выполнить передачу права собственности на автомобиль, мотоцикл или технику\n\n- Оформить онлайн форму 08 для передачи автомобиля\n\nВернуться к указателю",
+        "simpleRu": "Если автомобиль, мотоцикл или техника продается, наследуется, дарится или меняется, нужно оформить соответствующую процедуру: сообщение о продаже, CETA, сертификат передачи, передачу права собственности или форму 08.",
+        "sourceTextSha256": "56e38ec5084786c3ad2f55f3e549f151d6e2e0888b544a9605362c0056e3b39b",
+        "sourceFingerprint": "sha256:56e38ec5084786c3ad2f55f3e549f151d6e2e0888b544a9605362c0056e3b39b",
+        "sourceSpan": {
+          "startLine": 93,
+          "endLine": 108
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--discapacidad-008",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 8,
+        "headingPath": [
+          "Vehículos",
+          "Discapacidad"
+        ],
+        "officialLabel": "Discapacidad",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Discapacidad\n\nEstos trámites te ayudarán a tener un vehículo accesible en caso de que vos, un allegado o un familiar posean alguna discapacidad que les impida usar el transporte público.\n\n- Solicitar una franquicia automotor para personas con discapacidad\n\n- Obtener el certificado de capacidad económica\n\n- Obtener símbolo de acceso vehicular para personas con discapacidad\n\n- Obtener pase libre en los peajes para ingresar a la Ciudad para vehículos que trasladan personas con discapacidad\n\nVolver al índice\n",
+        "fullTranslationRu": "## Инвалидность\n\nЭти процедуры помогут вам иметь доступное транспортное средство, если у вас, близкого человека или родственника есть инвалидность, которая не позволяет пользоваться общественным транспортом.\n\n- Запросить автомобильную льготу для людей с инвалидностью\n\n- Получить сертификат экономической способности\n\n- Получить символ доступа транспортного средства для людей с инвалидностью\n\n- Получить бесплатный проезд через пункты оплаты при въезде в город для транспортных средств, перевозящих людей с инвалидностью\n\nВернуться к указателю",
+        "simpleRu": "Если человек с инвалидностью не может пользоваться общественным транспортом, здесь перечислены процедуры для доступного транспорта: льгота на автомобиль, сертификат экономической способности, символ доступа и бесплатный проезд через платные пункты при въезде в город.",
+        "sourceTextSha256": "e2b79cb17d69985600729cb2d96c1d3ac626ea9c6bfa1e73363e0e6dbe8dc0ae",
+        "sourceFingerprint": "sha256:e2b79cb17d69985600729cb2d96c1d3ac626ea9c6bfa1e73363e0e6dbe8dc0ae",
+        "sourceSpan": {
+          "startLine": 109,
+          "endLine": 122
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--cambios-en-el-vehiculo-009",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 9,
+        "headingPath": [
+          "Vehículos",
+          "Cambios en el vehículo"
+        ],
+        "officialLabel": "Cambios en el vehículo",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Cambios en el vehículo\n\nTe orientamos cómo hacer en el caso de que realices cambios en tu vehículo.\n\n- Cambiar el uso del automotor\n\n- Inscribir las modificaciones hechas en la carrocería de un vehículo\n\nVolver al índice\n",
+        "fullTranslationRu": "## Изменения в транспортном средстве\n\nМы объясняем, что делать, если вы вносите изменения в свое транспортное средство.\n\n- Изменить назначение автомобиля\n\n- Зарегистрировать изменения, внесенные в кузов транспортного средства\n\nВернуться к указателю",
+        "simpleRu": "Если вы меняете назначение автомобиля или его кузов, эти изменения нужно оформить через соответствующие процедуры.",
+        "sourceTextSha256": "6740ac6fa4a4fd317cd46ae0e34c31c00248831d4b383fa1a622f4d12bacc406",
+        "sourceFingerprint": "sha256:6740ac6fa4a4fd317cd46ae0e34c31c00248831d4b383fa1a622f4d12bacc406",
+        "sourceSpan": {
+          "startLine": 123,
+          "endLine": 132
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--robo-010",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 10,
+        "headingPath": [
+          "Vehículos",
+          "Robo"
+        ],
+        "officialLabel": "Robo",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Robo\n\nEstos trámites te serán de utilidad si te robaron o sustrajeron el rodado, como así también si lograste recuperarlo.\n\n- Denunciar el robo o hurto del automotor\n\n- Comunicar el recupero del automotor\n\nVolver al índice\n",
+        "fullTranslationRu": "## Кража\n\nЭти процедуры будут полезны, если у вас украли или похитили транспортное средство, а также если вам удалось его вернуть.\n\n- Заявить о краже или хищении автомобиля\n\n- Сообщить о возвращении автомобиля\n\nВернуться к указателю",
+        "simpleRu": "Если транспортное средство украли или потом нашли, нужно оформить заявление о краже или хищении и, при возвращении, сообщить о восстановлении автомобиля.",
+        "sourceTextSha256": "1c9418ef9b82e66436f900560c5ff4a15d32d74a638ebac9f1755a6ad4833a14",
+        "sourceFingerprint": "sha256:1c9418ef9b82e66436f900560c5ff4a15d32d74a638ebac9f1755a6ad4833a14",
+        "sourceSpan": {
+          "startLine": 133,
+          "endLine": 142
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--seguros-011",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 11,
+        "headingPath": [
+          "Vehículos",
+          "Seguros"
+        ],
+        "officialLabel": "Seguros",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Seguros\n\nLa Ley de Tránsito te obliga a asegurar tu vehículo contra terceros. Con los siguientes servicios te orientamos para que cumplas con tu obligación del modo más confiable.\n\n- Asesorarme sobre seguros del automotor\n\n- Hacer una denuncia sobre el seguro del automotor\n\n- Seguro del automotor: Preguntas frecuentes\n",
+        "fullTranslationRu": "## Страхование\n\nЗакон о дорожном движении обязывает вас застраховать свое транспортное средство от гражданской ответственности перед третьими лицами. С помощью следующих сервисов мы ориентируем вас, чтобы вы выполнили эту обязанность наиболее надежным образом.\n\n- Получить консультацию по автомобильному страхованию\n\n- Подать жалобу по автомобильному страхованию\n\n- Автомобильное страхование: часто задаваемые вопросы",
+        "simpleRu": "Закон о дорожном движении требует иметь страховку от ущерба третьим лицам. На странице есть ссылки для консультации по страховке, жалобы по страховке и частых вопросов.",
+        "sourceTextSha256": "4461230b88f173ca76ba1cb550e1e1710550d7668f0aa6bd71aafd13913d7f50",
+        "sourceFingerprint": "sha256:4461230b88f173ca76ba1cb550e1e1710550d7668f0aa6bd71aafd13913d7f50",
+        "sourceSpan": {
+          "startLine": 143,
+          "endLine": 152
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--poliza-de-seguro-digital-012",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 12,
+        "headingPath": [
+          "Vehículos",
+          "Seguros",
+          "Póliza de seguro digital"
+        ],
+        "officialLabel": "Póliza de seguro digital",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Póliza de seguro digital\n\nDesde 2018 podés circular con el comprobante del seguro en PDF o imagen legible desde cualquier dispositivo móvil.\n\nVolver al índice\n",
+        "fullTranslationRu": "##### Цифровой страховой полис\n\nС 2018 года вы можете ездить с подтверждением страхования в PDF или в виде читаемого изображения с любого мобильного устройства.\n\nВернуться к указателю",
+        "simpleRu": "С 2018 года подтверждение страховки можно показывать на телефоне: как PDF или читаемое изображение.",
+        "sourceTextSha256": "b6955ff664a72ddd53ca5075b8bd06ba21957433ae3a95ed75699db1f4499b49",
+        "sourceFingerprint": "sha256:b6955ff664a72ddd53ca5075b8bd06ba21957433ae3a95ed75699db1f4499b49",
+        "sourceSpan": {
+          "startLine": 153,
+          "endLine": 158
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--consultas-013",
+        "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+        "order": 13,
+        "headingPath": [
+          "Vehículos",
+          "Consultas"
+        ],
+        "officialLabel": "Consultas",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Consultas\n\nEstas instrucciones te permitirán resolver las consultas más frecuentes ante el Registro del Automotor.\n\n- Pedir fotocopia de una constancia registral del automotor\n\n- Consultar el estado de un trámite en el Registro Automotor\n\n- Consultar el legajo del automotor\n\n- Consultar dónde está radicado un vehículo\n\n- Consultar dónde radicar un automotor\n\nVolver al índice\n",
+        "fullTranslationRu": "## Консультации\n\nЭти инструкции позволят вам решить самые частые вопросы перед Реестром автомобилей.\n\n- Запросить фотокопию регистрационной справки по автомобилю\n\n- Проверить состояние процедуры в Реестре автомобилей\n\n- Проверить дело автомобиля\n\n- Проверить, где зарегистрировано транспортное средство\n\n- Проверить, куда зарегистрировать автомобиль\n\nВернуться к указателю",
+        "simpleRu": "В разделе консультаций можно узнать о частых вопросах в Реестре автомобилей: копия регистрационной справки, состояние процедуры, дело автомобиля, где транспорт зарегистрирован и куда его регистрировать.",
+        "sourceTextSha256": "55dc923c900616a4026ccbea80d8fa0a0812471e17e5dd7c114654343c44cef0",
+        "sourceFingerprint": "sha256:55dc923c900616a4026ccbea80d8fa0a0812471e17e5dd7c114654343c44cef0",
+        "sourceSpan": {
+          "startLine": 159,
+          "endLine": 174
+        }
+      }
+    ]
+  }
+}
