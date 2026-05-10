@@ -1,40 +1,20 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
+import ts from "typescript";
 
-function scorePercent(correct, total) {
-  if (total <= 0) return 0;
-  return Math.floor((correct / total) * 100);
-}
-
-function mistakesFromHistory(history) {
-  const stats = new Map();
-  for (const answer of history) {
-    const current = stats.get(answer.questionId) || { wrong: 0 };
-    if (!answer.isCorrect) current.wrong += 1;
-    current.last = answer;
-    stats.set(answer.questionId, current);
-  }
-  return [...stats.entries()].filter(([, stat]) => stat.wrong > 0).sort((a, b) => b[1].wrong - a[1].wrong);
-}
-
-function selectExamSet(questions, count, questionOrderRule, random = Math.random) {
-  if (questionOrderRule === "random_questions_from_available_validated_pool") {
-    const shuffled = [...questions];
-    for (let index = shuffled.length - 1; index > 0; index -= 1) {
-      const swapIndex = Math.floor(random() * (index + 1));
-      [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
-    }
-    return shuffled.slice(0, Math.min(count, shuffled.length));
-  }
-
-  return [...questions].sort((a, b) => {
-    if (Number(b.flags.hasImage) !== Number(a.flags.hasImage)) {
-      return Number(b.flags.hasImage) - Number(a.flags.hasImage);
-    }
-    return a.id.localeCompare(b.id);
-  }).slice(0, Math.min(count, questions.length));
-}
+const domainSource = readFileSync("src/domain.ts", "utf8");
+const domainJavaScript = ts.transpileModule(domainSource, {
+  compilerOptions: {
+    module: ts.ModuleKind.ESNext,
+    target: ts.ScriptTarget.ES2022,
+    moduleResolution: ts.ModuleResolutionKind.Bundler,
+    isolatedModules: true
+  },
+  fileName: "src/domain.ts"
+}).outputText;
+const domain = await import(`data:text/javascript;base64,${Buffer.from(domainJavaScript).toString("base64")}`);
+const { formatDuration, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet } = domain;
 
 test("scoring floors percentage for official exam threshold comparison", () => {
   assert.equal(scorePercent(34, 40), 85);
@@ -48,8 +28,8 @@ test("mistake history prioritizes repeated wrong answers", () => {
     { questionId: "b-fallback-001", isCorrect: false },
     { questionId: "b-fallback-003", isCorrect: true }
   ]);
-  assert.equal(mistakes[0][0], "b-fallback-001");
-  assert.equal(mistakes[0][1].wrong, 2);
+  assert.equal(mistakes[0].questionId, "b-fallback-001");
+  assert.equal(mistakes[0].wrong, 2);
 });
 
 test("exam selection honors random order rule from the configured pool", () => {
@@ -71,4 +51,23 @@ test("exam config uses current 2025 CABA format", () => {
   assert.equal(exam.timeLimitMinutes, 45);
   assert.equal(exam.passingScore, 85);
   assert.equal(exam.status, "defined");
+});
+
+test("learning ticket target derives from official exam format and displays as m:ss", () => {
+  const exam = JSON.parse(readFileSync("content/config/caba-exam-format.json", "utf8"));
+  const target = learningTicketTargetSeconds(exam);
+
+  assert.equal(target, 75);
+  assert.equal(formatDuration(target), "1:15");
+});
+
+test("learning ticket target rounds alternate valid formats to nearest 15 seconds upward", () => {
+  assert.equal(learningTicketTargetSeconds({ timeLimitMinutes: 30, questionCount: 20 }), 90);
+  assert.equal(learningTicketTargetSeconds({ timeLimitMinutes: 10, questionCount: 9 }), 75);
+});
+
+test("learning ticket target fails closed for invalid exam format metadata", () => {
+  assert.equal(learningTicketTargetSeconds({ timeLimitMinutes: 45, questionCount: 0 }), undefined);
+  assert.equal(learningTicketTargetSeconds({ timeLimitMinutes: 0, questionCount: 40 }), undefined);
+  assert.equal(learningTicketTargetSeconds({ timeLimitMinutes: Number.NaN, questionCount: 40 }), undefined);
 });
