@@ -67,11 +67,11 @@
 
 ## Future Slice E: Pedestrian And School-Zone Topics
 
-- [ ] T048 Review and rewrite `pedestrian-and-school-road-markings`.
-- [ ] T049 Review and rewrite `pedestrian-school-zones-and-markings`.
-- [ ] T050 Review and rewrite `pedestrian-crossings-and-priority`.
-- [ ] T051 Split this slice before implementation if `pedestrian-school-zones-and-markings` makes the diff too large for reliable review.
-- [ ] T052 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
+- [x] T048 Review and rewrite `pedestrian-and-school-road-markings`.
+- [x] T049 Review and rewrite `pedestrian-school-zones-and-markings`.
+- [x] T050 Review and rewrite `pedestrian-crossings-and-priority`.
+- [x] T051 Split this slice before implementation if `pedestrian-school-zones-and-markings` makes the diff too large for reliable review. Reviewed and not split: all three assigned topics stayed within one coherent pedestrian/school-zone slice and final diff remained limited to the guide JSON plus this feature-memory file.
+- [x] T052 Record counts, samples, source-sensitive unchanged text, duplicated-ticket handling, PR #63 guard, and validation evidence.
 
 ## Future Slice F: Speed, Weather, Impairment, And Risk Topics
 
@@ -184,8 +184,8 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `driver-hand-signals` | D | Reviewed in Slice D |
 | `vehicle-lights-and-signaling` | D | Reviewed in Slice D |
 | `vehicle-condition-maintenance-loads` | D | Reviewed in Slice D |
-| `pedestrian-and-school-road-markings` | E | Pending |
-| `pedestrian-school-zones-and-markings` | E | Pending |
+| `pedestrian-and-school-road-markings` | E | Reviewed in Slice E |
+| `pedestrian-school-zones-and-markings` | E | Reviewed in Slice E |
 | `speed-limits` | F | Pending |
 | `safe-distance-and-braking` | F | Pending |
 | `alcohol-drugs-and-impairment` | F | Pending |
@@ -214,7 +214,7 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
 | `occupant-protection` | D | Reviewed in Slice D |
 | `emergency-response-and-crash-scene` | K | Pending |
 | `crash-liability-and-legal-duties` | K | Pending |
-| `pedestrian-crossings-and-priority` | E | Pending |
+| `pedestrian-crossings-and-priority` | E | Reviewed in Slice E |
 | `turns-direction-and-reversing` | I | Pending |
 | `overtaking-and-passing` | I | Pending |
 
@@ -439,6 +439,65 @@ Implementation Agents must add one entry per slice under "Process Memory" with t
   - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-vehicle...origin/codex/015-study-guide-language-review-parking` with exactly the two expected modified files before commit.
 - Known issues: none introduced. Slice D intentionally kept picture-bound and old-ticket wording narrow, especially for illustrated hand signals, mirror images, oil/lubrication images, pregnancy/SRI/belt/headrest images, `balizas` in old parking/light duplicates, and the old `mascotas` answer. Future slices still need to remove learner-facing process words in their own topics.
 - Implementation Agent feedback: none requiring Architect disposition. Slice D found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, or validation artifacts.
+- Slice E worktree/branch: `/Users/chap/devel/cabadrive-015-study-guide-language-review-pedestrian` on `codex/015-study-guide-language-review-pedestrian`, stacked on `origin/codex/015-study-guide-language-review-vehicle` / PR #76.
+- Parent refresh evidence: after PR #76 review fix, preserved local Slice E WIP with `git stash`, fast-forwarded this branch from `72b246e0e49b257ff420554254572657d12119a5` to updated parent `53a89f051b59471601c01b991a3189b5eb7d3873`, then restored Slice E changes. No conflict occurred; corrected Slice D fingerprint evidence from parent `53a89f0` and Slice E JSON/tasks evidence are both present.
+- Topics reviewed: `pedestrian-and-school-road-markings`, `pedestrian-school-zones-and-markings`, and `pedestrian-crossings-and-priority`.
+- Field counts reviewed:
+  - root title/disclaimer: 0; Slice E did not touch root fields.
+  - titles: 3
+  - summaries: 3
+  - learning paragraphs: 22
+  - practical reasoning paragraphs: 9
+  - term translations: 65
+  - source-conflict notes: 0 in Slice E topics
+  - answer explanations: 146
+  - trap notes: 21
+- Field counts changed:
+  - root title/disclaimer: 0
+  - titles: 0
+  - summaries: 3
+  - learning paragraphs: 17
+  - practical reasoning paragraphs: 4
+  - term translations: 3
+  - source-conflict notes: 0
+  - answer explanations: 110
+  - trap notes: 20
+  - `difficultyMeta.sourceFingerprint`: 3
+  - claims: 0
+- Ticket placements before/after: global 639 / 639; Slice E topics 51 / 51.
+- Unique question IDs before/after: global 460 / 460; Slice E topics 42 / 42.
+- Answer explanations before/after: global 1,831 / 1,831; Slice E topics 146 / 146.
+- Source-conflict notes before/after: global 4 / 4; Slice E topics 0 / 0.
+- Duplicated question IDs touched: `b-fallback-008`, `b-fallback-037`, `b-fallback-052`, `b-fallback-082`, `b-fallback-089`, `b-fallback-106`, `b-fallback-136`, `b-fallback-153`, `b-fallback-159`, `b-fallback-167`, `b-fallback-172`, `b-fallback-174`, `b-fallback-221`, `b-fallback-274`, `b-fallback-294`, `b-fallback-318`, `b-fallback-337`, `b-fallback-362`, `b-fallback-369`, `b-fallback-373`, `b-fallback-381`, `b-fallback-399`, `b-fallback-408`, `b-fallback-458`, and `b-fallback-459`.
+- Duplicate handling decision: reviewed duplicated placements only inside the three assigned Slice E topics. Matching placements outside Slice E remain for their future slices, while duplicates inside Slice E were kept intentionally topic-specific when the same question appears in both pedestrian-marking and broader school-zone contexts. Shared examples such as `b-fallback-052`, `b-fallback-082`, `b-fallback-089`, `b-fallback-172`, `b-fallback-221`, `b-fallback-318`, `b-fallback-369`, `b-fallback-408`, and `b-fallback-459` were simplified in both Slice E placements without changing answer IDs, verdicts, images, or placement shape.
+- Source-sensitive sentences left unchanged: all 15 `claims[].textRu` entries in Slice E topics were preserved as non-rendered source-trace metadata. Numeric/procedural anchors were preserved, including the CABA no-marked-senda crossing reference at `esquina`, `prolongación longitudinal de la vereda`, `línea imaginaria de prolongación de ochava`, `reducir la velocidad y detener el vehículo antes de la senda peatonal`, Ley 2148 `ingreso/egreso` school-speed formula, the separate posted `20 km/h` school-zone sign in `b-fallback-381`, `30 km/h` on Av. Gral Roca in `b-fallback-252`, yellow cordón allowing `detención` but not `estacionamiento`, wheel/gear formulas in `b-fallback-248` and `b-fallback-402`, the under-12 bicycle combined answer in `b-fallback-458`, semáforo peatonal intermitente behavior, and the Observatorio Vial `Opción B` statistic caveat in `b-fallback-256`.
+- CABA/RF notes added or clarified: Slice E kept CABA/RF framing practical rather than legal-comparative. It clarified likely RF-habit traps around unmarked crossings in CABA being tied to the `esquina`, school speed being different when a posted sign applies versus when Ley 2148 `ingreso/egreso` wording applies, `ochava` as a visibility boundary near corners, yellow cordón permitting stopping but not parking, and the familiar basic rule that pedestrian priority is not cancelled by speed, horn, a green light, or a driver feeling able to pass.
+- Before/after samples:
+  - `pedestrian-and-school-road-markings`: before "marking/sign: senda peatonal ... transitory working sign"; after "что именно показано: senda peatonal ... временный знак дорожных работ."
+  - `pedestrian-and-school-road-markings`: before "`b-fallback-172` тоже ticket-specific ... visual trap ... taxonomy"; after "`b-fallback-172` решается по картинке ... похожие варианты про пешеходный переход здесь остаются ловушкой."
+  - `pedestrian-school-zones-and-markings`: before "green bicycle crossings, school-speed traps ... ticket-specific картинках"; after "зеленые велопересечения, скорости у школ ... по конкретным картинкам."
+  - `pedestrian-school-zones-and-markings`: before "The line/marking tells you where to stop"; after "Линия и разметка показывают, где остановиться."
+  - `pedestrian-crossings-and-priority`: before "ticket-specific ответ на статистический вопрос Observatorio Vial"; after "ответ на конкретный статистический вопрос Observatorio Vial."
+  - `pedestrian-crossings-and-priority`: before "Отвечайте по image and exact fallback wording"; after "Отвечайте по картинке и точной формулировке старого билета."
+- PR #63 / #76 guard: Slice E write scope stayed limited to `content/guide/topic-study-guide.ru.json` and this `tasks.md`. It did not touch PR #63 / feature 009 forbidden paths (`content/translations/*`, `content/explanations/*`, `content/image-metadata/*`, `content/validation/*`, coverage/source-trace manifests, related validators/tests/docs/package files). It also did not touch product UI, tests, scripts, package files, docs outside this feature memory, or other worktrees/branches/PRs.
+- Difficulty metadata refresh evidence: all three Slice E topics kept their `difficulty`, `difficultyMeta.dimensions`, `difficultyMeta.rationaleRu`, `difficultyMeta.provenance`, and `difficultyMeta.basis` unchanged. Only `difficultyMeta.sourceFingerprint` changed, and each new value matched `difficultyTopicFingerprint(topic)` after the learner-facing text rewrite:
+  - `pedestrian-and-school-road-markings`: `55c22c176bc19f932254db1f1438fc134e1802431c45116c446ebf14b7189d7c` -> `872b567ebbc4617e530008c506c9558dc107ff09a7a0593b8ae883f115f054fa`
+  - `pedestrian-school-zones-and-markings`: `d3240d5d018811c293ecd5a8a45155c38155109d5a72a41ccbec14622310671d` -> `e05e900532dfd1b83359694b1ad77e6cc1e05509e045de82b368e42e2451684d`
+  - `pedestrian-crossings-and-priority`: `203eb4a0949e4b86e25427fb149040de1bd39caf32275b3b7ecf836c13ef81a1` -> `85b57ed59dd3265cf3af8eea9f3694c3a302582300d6efd4c3242a67ed8a4c7d`
+- PR #78 local review feedback addressed: replaced the learner-facing English starts `Near esquina` and `Yellow cordon` in `pedestrian-school-zones-and-markings` trap notes with Russian starts, preserved trap IDs/source question IDs, and refreshed only that topic's `difficultyMeta.sourceFingerprint` from `e05e900532dfd1b83359694b1ad77e6cc1e05509e045de82b368e42e2451684d` to `812efcd6e383f17f43f4f51dbaab8527de6d7e6a75cd0c759bba35d0480b6340`.
+- Validation evidence before final commit:
+  - JSON parse and structural count guard: pass; totals remained 38 topics, 639 rendered placements, 460 unique question IDs, 1,831 answer explanations, 225 trap notes, 4 source-conflict notes, 38 `difficulty`, and 38 `difficultyMeta`.
+  - Targeted learner-facing process/English scan over current Slice E rendered fields: pass; no matches for `fallback` as prose, `ticket-specific`, `canonical`, `source-backed`, `claim`, `prompt`, `taxonomy`, `school-zone`, `school-zone image`, `road marking`, `image-specific`, `correct answer`, or the broader English/process terms used in the local scan. The scan inspected current rendered fields only, not removed diff lines or non-rendered claims metadata.
+  - Duplicate-term guard for Slice E `spanishTerms[].translationRu`: pass; 0 values duplicate `termEs` verbatim.
+  - Difficulty guard: pass; for all three Slice E topics, fingerprint changed, computed fingerprint matched, non-fingerprint metadata was preserved, difficulty was preserved, and claims were preserved.
+  - `node --test tests/content-topic-guide.test.mjs`: pass, 21/21 tests.
+  - `pnpm run validate:content`: pass, `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `git diff --check -- content/guide/topic-study-guide.ru.json specs/015-study-guide-language-review/tasks.md`: pass, no output.
+  - Changed-path guard versus PR #63 forbidden paths and non-scope paths: pass; `git diff --name-only -- content/translations content/explanations content/image-metadata content/validation scripts tests src package.json pnpm-lock.yaml pnpm-workspace.yaml docs_project content/guide/topic-study-guide.coverage.json content/guide/topic-study-guide.source-trace.json content/official-documents` produced no output.
+  - `git diff --name-only`: pass; only `content/guide/topic-study-guide.ru.json` and `specs/015-study-guide-language-review/tasks.md`.
+  - `git status --short --branch`: pass; branch showed `## codex/015-study-guide-language-review-pedestrian...origin/codex/015-study-guide-language-review-vehicle` with exactly the two expected modified files before commit.
+- Known issues: none introduced. Slice E intentionally kept picture-bound and old-ticket wording narrow for green bicycle markings, `Personas trabajando`, `Calle Prioridad Peatón`, slope-parking images, the posted `20 km/h` school-zone sign, yellow cordón, under-12 bicycle rules, pedestrian-signal behavior, and Observatorio Vial image-statistic wording.
+- Implementation Agent feedback: none requiring Architect disposition. Slice E found no need to edit claims metadata, source-trace or coverage manifests, product code, tests, scripts, docs, package files, translations/explanations, image metadata, validation artifacts, or PR #63 paths.
 
 ## Known Issues
 
