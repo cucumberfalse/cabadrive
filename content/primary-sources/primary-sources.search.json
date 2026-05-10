@@ -3,7 +3,7 @@
   "schema": "primary-sources-search.v1",
   "status": "draft",
   "entries": [],
-  "searchShards": [
-    "content/primary-sources/search/ley-24449-transito-seguridad-vial.search.json"
+  "searchShardDirectories": [
+    "content/primary-sources/search"
   ]
 }

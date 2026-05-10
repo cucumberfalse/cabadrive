@@ -7,7 +7,7 @@
   "contentStatus": "draft_placeholder",
   "disclaimerRu": "Неофициальный учебный слой Cabadrive. Официальным источником остается испанский текст из архива.",
   "documents": [],
-  "documentShards": [
-    "content/primary-sources/documents/ley-24449-transito-seguridad-vial.ru.json"
+  "documentShardDirectories": [
+    "content/primary-sources/documents"
   ]
 }

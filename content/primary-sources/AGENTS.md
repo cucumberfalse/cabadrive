@@ -23,7 +23,7 @@ content/primary-sources/primary-sources.qa.json
 content/primary-sources/primary-sources.search.json
 ```
 
-They may keep small inline arrays for compatibility, but normal D-H content work must edit one document's shards at a time:
+They may keep small inline arrays and explicit shard lists for compatibility, but normal D-H content work must add or edit one document's shards at a time:
 
 ```text
 content/primary-sources/documents/<officialDocumentId>.ru.json
@@ -31,11 +31,21 @@ content/primary-sources/qa/<officialDocumentId>.qa.json
 content/primary-sources/search/<officialDocumentId>.search.json
 ```
 
-The root learner corpus uses `documentShards`, the root QA file uses `qaShards`, and the root search file uses `searchShards`. Validators combine inline root data plus all referenced shards before applying draft, coverage, strict, final, or release validation rules.
+The root learner corpus uses `documentShardDirectories`, the root QA file uses `qaShardDirectories`, and the root search file uses `searchShardDirectories`. These stable directory references are committed once. Future translation batches must not edit the root JSON files just to add a document; add the document, QA, and search shard files in the directories above and record evidence in process memory.
+
+Validators auto-discover flat shard files by suffix from those directories:
+
+```text
+documents/*.ru.json
+qa/*.qa.json
+search/*.search.json
+```
+
+Validators combine inline root data plus discovered shards before applying draft, coverage, strict, final, or release validation rules.
 
 Document shards use `schema: "primary-sources-document-shard.v1"` and contain either `document` or `documents`. QA shards use `schema: "primary-sources-qa-shard.v1"` and contain either `document` or `documents`. Search shards use `schema: "primary-sources-search-shard.v1"` and contain `entries`.
 
-Each shard path must stay under `content/primary-sources/`, must be JSON, and must not point into `content/official-documents/`. Future translation batches should keep one PR focused on one source document or a clearly assigned source group so agents do not edit one giant JSON file at the same time.
+Each shard path or shard directory must stay under `content/primary-sources/`, must use JSON shard files, and must not point into `content/official-documents/`. Future translation batches should keep one PR focused on one source document or a clearly assigned source group so agents do not edit one giant JSON file or the root shard manifests at the same time.
 
 ## Content Quality Rules
 

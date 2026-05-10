@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -149,16 +149,102 @@ function validateShardPath(errors, relativePath, label) {
   return true;
 }
 
-function loadShardList({ root, shardFiles, owner, key, label, expectedSchema, extractItems }) {
+function validateShardDirectoryPath(errors, relativePath, label) {
+  if (!isNonEmptyString(relativePath)) {
+    errors.push(`${label} must be a non-empty shard directory path.`);
+    return false;
+  }
+  const normalized = normalizePath(relativePath).replace(/\/+$/, "");
+  if (!isInsidePath(normalized, PRIMARY_SOURCES_SECTION_PATH)) {
+    errors.push(`${label} must stay under ${PRIMARY_SOURCES_SECTION_PATH}.`);
+    return false;
+  }
+  if (isInsidePath(normalized, "content/official-documents")) {
+    errors.push(`${label} must not point under content/official-documents.`);
+    return false;
+  }
+  return true;
+}
+
+function discoverShardPaths(root, shardFiles, relativeDirectory, filenameSuffix) {
+  const normalizedDirectory = normalizePath(relativeDirectory).replace(/\/+$/, "");
+  const prefix = `${normalizedDirectory}/`;
+  const matchesDirectory = (relativePath) => {
+    const normalized = normalizePath(relativePath);
+    if (!normalized.startsWith(prefix) || !normalized.endsWith(filenameSuffix)) return false;
+    const basename = normalized.slice(prefix.length);
+    return basename !== "" && !basename.includes("/");
+  };
+
+  if (shardFiles instanceof Map) return [...shardFiles.keys()].filter(matchesDirectory).sort();
+  if (isPlainObject(shardFiles)) return Object.keys(shardFiles).filter(matchesDirectory).sort();
+
+  const absoluteDirectory = join(root, normalizedDirectory);
+  if (!existsSync(absoluteDirectory)) return undefined;
+  return readdirSync(absoluteDirectory, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith(filenameSuffix))
+    .map((entry) => `${normalizedDirectory}/${entry.name}`)
+    .sort();
+}
+
+function shardPathReferences({ root, shardFiles, owner, listKey, directoryKey, label, filenameSuffix }) {
+  const errors = [];
+  const references = [];
+  const seen = new Set();
+  const appendReference = (relativePath, referenceLabel) => {
+    if (!validateShardPath(errors, relativePath, referenceLabel)) return;
+    const normalized = normalizePath(relativePath);
+    if (!seen.has(normalized)) {
+      references.push(normalized);
+      seen.add(normalized);
+    }
+  };
+
+  asArray(owner?.[listKey]).forEach((reference, index) => {
+    appendReference(shardPathFromReference(reference), `${label}.${listKey}[${index}]`);
+  });
+
+  asArray(owner?.[directoryKey]).forEach((directoryReference, index) => {
+    const relativeDirectory = shardPathFromReference(directoryReference);
+    const referenceLabel = `${label}.${directoryKey}[${index}]`;
+    if (!validateShardDirectoryPath(errors, relativeDirectory, referenceLabel)) return;
+    const discovered = discoverShardPaths(root, shardFiles, relativeDirectory, filenameSuffix);
+    if (discovered === undefined) {
+      errors.push(`${normalizePath(relativeDirectory).replace(/\/+$/, "")}: shard directory is missing.`);
+      return;
+    }
+    for (const relativePath of discovered) appendReference(relativePath, referenceLabel);
+  });
+
+  return { errors, references };
+}
+
+function loadShardList({
+  root,
+  shardFiles,
+  owner,
+  listKey,
+  directoryKey,
+  label,
+  filenameSuffix,
+  expectedSchema,
+  extractItems
+}) {
   const errors = [];
   const items = [];
   const learnerContentPaths = [];
-  const references = asArray(owner?.[key]);
+  const shardReferences = shardPathReferences({
+    root,
+    shardFiles,
+    owner,
+    listKey,
+    directoryKey,
+    label,
+    filenameSuffix
+  });
+  errors.push(...shardReferences.errors);
 
-  references.forEach((reference, index) => {
-    const relativePath = shardPathFromReference(reference);
-    const referenceLabel = `${label}[${index}]`;
-    if (!validateShardPath(errors, relativePath, referenceLabel)) return;
+  shardReferences.references.forEach((relativePath) => {
     learnerContentPaths.push(relativePath);
 
     let shard;
@@ -199,8 +285,10 @@ export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, sea
     root,
     shardFiles,
     owner: corpus,
-    key: "documentShards",
-    label: "primary sources corpus.documentShards",
+    listKey: "documentShards",
+    directoryKey: "documentShardDirectories",
+    label: "primary sources corpus",
+    filenameSuffix: ".ru.json",
     expectedSchema: "primary-sources-document-shard.v1",
     extractItems: (shard, relativePath, shardErrors) => {
       const documents = Array.isArray(shard.documents) ? shard.documents : [shard.document].filter(Boolean);
@@ -215,8 +303,10 @@ export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, sea
     root,
     shardFiles,
     owner: qa,
-    key: "qaShards",
-    label: "primary sources QA.qaShards",
+    listKey: "qaShards",
+    directoryKey: "qaShardDirectories",
+    label: "primary sources QA",
+    filenameSuffix: ".qa.json",
     expectedSchema: "primary-sources-qa-shard.v1",
     extractItems: (shard, relativePath, shardErrors) => {
       const documents = Array.isArray(shard.documents) ? shard.documents : [shard.document].filter(Boolean);
@@ -231,8 +321,10 @@ export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, sea
     root,
     shardFiles,
     owner: searchIndex,
-    key: "searchShards",
-    label: "primary sources search index.searchShards",
+    listKey: "searchShards",
+    directoryKey: "searchShardDirectories",
+    label: "primary sources search index",
+    filenameSuffix: ".search.json",
     expectedSchema: "primary-sources-search-shard.v1",
     extractItems: (shard, relativePath, shardErrors) => {
       if (!Array.isArray(shard.entries)) shardErrors.push(`${relativePath}: search shard entries must be an array.`);
