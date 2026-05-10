@@ -241,6 +241,50 @@ test("older same-reviewer changes-requested review is superseded by approval on 
   assert.equal(findings.some((finding) => finding.source === "native-review"), false);
 });
 
+test("later same-reviewer commented review does not clear changes-requested on the same head", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    reviews: [{
+      state: "CHANGES_REQUESTED",
+      body: "",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "reviewer" },
+      commit: { oid: headSha }
+    }, {
+      state: "COMMENTED",
+      body: "",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "reviewer" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
+});
+
+test("dismissed same-reviewer changes-requested review clears the native blocker", () => {
+  const headSha = "abc1234";
+  const findings = collectBlockingFindings({
+    headSha,
+    reviews: [{
+      state: "CHANGES_REQUESTED",
+      body: "",
+      submittedAt: "2026-05-10T13:00:00Z",
+      author: { login: "reviewer" },
+      commit: { oid: headSha }
+    }, {
+      state: "DISMISSED",
+      body: "",
+      submittedAt: "2026-05-10T13:01:00Z",
+      author: { login: "reviewer" },
+      commit: { oid: headSha }
+    }]
+  });
+
+  assert.equal(findings.some((finding) => finding.source === "native-review"), false);
+});
+
 test("latest same-reviewer changes-requested review still blocks on the current head", () => {
   const headSha = "abc1234";
   const findings = collectBlockingFindings({
@@ -413,6 +457,12 @@ ${evidenceTasks}`);
 - Architect disposition: not needed because covered by existing task.
 ${evidenceTasks}`);
   assert.equal(readProcessEvidence(root, featurePath, "abc123def456").feedbackDisposition, true);
+
+  writeFileSync(join(featureRoot, "tasks.md"), `${baseTasks}- Follow-up concern needs Architect review.
+- Architect disposition: not needed because covered by existing task.
+- Second follow-up concern still needs Architect review.
+${evidenceTasks}`);
+  assert.equal(readProcessEvidence(root, featurePath, "abc123def456").feedbackDisposition, false);
 
   writeFileSync(join(featureRoot, "tasks.md"), `${baseTasks}- None yet.
 

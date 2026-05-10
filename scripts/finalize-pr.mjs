@@ -224,7 +224,7 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
     }
   }
 
-  const latestNativeReviewByReviewer = new Map();
+  const nativeReviewStateByReviewer = new Map();
   for (const [index, review] of reviews.entries()) {
     const commitSha = review.commit?.oid || review.commit_id;
     if (commitSha && headSha && commitSha !== headSha) continue;
@@ -232,10 +232,7 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
     const reviewerKey = login || `unknown-reviewer-${index}`;
     const submittedAtTime = Date.parse(review.submittedAt || review.submitted_at || review.createdAt || review.created_at || "");
     const order = Number.isNaN(submittedAtTime) ? index : submittedAtTime;
-    const latest = latestNativeReviewByReviewer.get(reviewerKey);
-    if (!latest || order >= latest.order) {
-      latestNativeReviewByReviewer.set(reviewerKey, { review, order });
-    }
+    applyNativeReviewState(nativeReviewStateByReviewer, reviewerKey, review, order);
     if (isTrustedReviewLogin(login, "codex", config) && containsBlockingSeverity(review.body, "codex")) {
       findings.push({ source: "codex-review", message: "A current-head Codex P0-P2 review finding remains." });
     }
@@ -243,7 +240,7 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
       findings.push({ source: "gemini-review", message: "A current-head Gemini critical/high finding remains." });
     }
   }
-  for (const { review } of latestNativeReviewByReviewer.values()) {
+  for (const { review } of nativeReviewStateByReviewer.values()) {
     if (review.state === "CHANGES_REQUESTED") {
       findings.push({ source: "native-review", message: "A latest current-head changes-requested review remains." });
     }
@@ -263,6 +260,15 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
   }
 
   return findings;
+}
+
+function applyNativeReviewState(stateByReviewer, reviewerKey, review, order) {
+  const state = review.state;
+  const current = stateByReviewer.get(reviewerKey);
+  if (current && order < current.order) return;
+  if (state === "CHANGES_REQUESTED" || state === "APPROVED" || state === "DISMISSED") {
+    stateByReviewer.set(reviewerKey, { review, order });
+  }
 }
 
 export function readProcessEvidence(root, featurePath, currentHead = "") {
@@ -286,9 +292,6 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
   const verificationSection = tasks.match(/## Verification Evidence([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
   const feedbackSection = tasks.match(/## Implementation Agent Feedback([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
   const knownIssueSection = tasks.match(/## Known Issues([\s\S]*?)(?:\n## |\n# |$)/i)?.[1] || "";
-  const feedbackText = feedbackSection.trim();
-  const noFeedbackRecorded = /^(?:[-*]\s*)?(?:None yet|None|No Implementation Agent feedback)\.?\s*$/i.test(feedbackText);
-  const feedbackDisposed = /No unresolved|Architect disposition|disposed/i.test(feedbackText);
   const effectiveContentHead = readLatestEffectiveContentHead(allMemory);
   const guardEvidenceText = readCurrentHeadGuardEvidenceText(tasks);
 
@@ -305,7 +308,7 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
       /## Dead Ends/i.test(tasks) &&
       /## Known Issues/i.test(tasks) &&
       /## Verification Evidence/i.test(tasks),
-    feedbackDisposition: noFeedbackRecorded || feedbackDisposed,
+    feedbackDisposition: hasImplementationFeedbackDisposition(feedbackSection),
     effectiveContentHead,
     currentHeadMatchesEffectiveContentHead: Boolean(currentHead && effectiveContentHead) &&
       currentHead.toLowerCase() === effectiveContentHead.toLowerCase(),
@@ -316,6 +319,70 @@ export function readProcessEvidence(root, featurePath, currentHead = "") {
     acceptedKnownIssueDecisionPending: /accepted known issue|owner decision|human decision/i.test(knownIssueSection) &&
       !/none|not applicable|no known/i.test(knownIssueSection)
   };
+}
+
+export function hasImplementationFeedbackDisposition(feedbackSection = "") {
+  const feedbackItems = parseFeedbackItems(feedbackSection);
+  if (feedbackItems.length === 0) return false;
+  const nonEmptyItems = feedbackItems.filter((item) => stripFeedbackBullet(item).trim());
+  if (nonEmptyItems.length === 0) return false;
+  if (nonEmptyItems.every((item) => isNoFeedbackMarker(stripFeedbackBullet(item)))) return true;
+
+  for (let index = 0; index < nonEmptyItems.length; index += 1) {
+    const itemText = stripFeedbackBullet(nonEmptyItems[index]);
+    if (isNoFeedbackMarker(itemText)) continue;
+    if (isDispositionOnly(itemText)) continue;
+    if (hasDispositionMarker(itemText)) continue;
+
+    const nextText = stripFeedbackBullet(nonEmptyItems[index + 1] || "");
+    if (isDispositionOnly(nextText)) {
+      index += 1;
+      continue;
+    }
+
+    return false;
+  }
+
+  return true;
+}
+
+function parseFeedbackItems(section = "") {
+  const lines = section.split(/\r?\n/);
+  const items = [];
+  let current = null;
+
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    if (/^\s*[-*]\s+/.test(line)) {
+      if (current) items.push(current);
+      current = line;
+      continue;
+    }
+    if (!current) {
+      current = line;
+      continue;
+    }
+    current += `\n${line}`;
+  }
+  if (current) items.push(current);
+
+  return items;
+}
+
+function stripFeedbackBullet(item = "") {
+  return item.replace(/^\s*[-*]\s+/, "").trim();
+}
+
+function isNoFeedbackMarker(text = "") {
+  return /^(?:None yet|None|No Implementation Agent feedback|No unresolved Implementation Agent feedback)\.?\s*$/i.test(text.trim());
+}
+
+function isDispositionOnly(text = "") {
+  return /^(?:Architect disposition|Disposition|No unresolved|Disposed)\b/i.test(text.trim());
+}
+
+function hasDispositionMarker(text = "") {
+  return /\b(?:Architect disposition|Disposition|No unresolved|disposed)\b/i.test(text);
 }
 
 function readLatestEffectiveContentHead(memory) {
