@@ -317,3 +317,22 @@ Recommended architecture attention areas:
 - keep community research in a clearly labeled unofficial context bucket;
 - avoid turning this into a backend appointment helper or a broad immigration/legal guide;
 - align any official-document archiving with the existing `content/official-documents/` governance instead of inventing a parallel source system.
+
+## Final Analyst Validation
+
+2026-05-10 status: pass. Analyst return count: 0.
+
+Validation scope: PR #72 at head `3f66a1a86bd6a4c2a8240e2e11aa3984b7668910`, current `origin/main` `995905bacdcf46d1d21662c12dba01b8ecda1d36`, after final Architect validation pass.
+
+Evidence against the original request:
+
+- The web app adds a reachable Russian `Процесс` section for CABA B1/private-car `Otorgamiento de Licencia de Conducir`.
+- The guide uses simple Russian explanations, keeps Spanish official terms visible, includes phrase/glossary support, and clearly labels itself as unofficial Russian support.
+- Official GCBA/ANSV links and checked dates are bundled in `content/guide/caba-exam-process.ru.json` for `Otorgamiento`, `Extranjeros`, `Curso de Educación Vial`, `Material de estudio`, `Examen práctico`, `Pista de aprendizaje`, `CENAT`, CENAT payment, `Principiantes`, `Renovación por Cambio de Jurisdicción`, and the April 2025 procedure manual.
+- The content covers booking/start flow, CENAT/payment direction, BUI/turno/sede, documents and foreigner caveats, course, psychophysical evaluation, theory, practical B1 exam, where/practice resources, pass/fail/reattempt rules, and adjacent paths without over-expanding beyond the first slice.
+- Final spot-check of current official pages still supports the shipped claims: GCBA `Otorgamiento` lists miBA/DNI/CABA/foreigner requirements, CENAT, online DDJJ, course, turno/sede/BUI, psychophysical areas, theory, B1 practical, costs, sedes, and 180-day window; GCBA `Extranjeros`, course, theory-material, practical-exam, Pista, CENAT, Principiantes, and jurisdiction-change pages remain consistent with the guide; ANSV CENAT payment is the official `.gob.ar` boleta page.
+- Russian community/Telegram context remains subordinate and visible only as stale-risk/confusion context; stale community prices are not published as current values.
+- Images are omitted with a documented license/currentness/privacy/offline rationale, which satisfies the accepted no-images path.
+- Tests and process memory record local-first/offline behavior, source metadata validation, no runtime external requests, no remote images, and no raw PDF viewer.
+
+Residual risks: GCBA/ANSV fees, sedes, turn availability, Boti/miBA screens, document requirements, and official URLs remain volatile and must be rechecked in future source-maintenance slices.
