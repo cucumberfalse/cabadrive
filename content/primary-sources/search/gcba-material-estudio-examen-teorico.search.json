@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-material-estudio-examen-teorico",
+  "entries": [
+    {
+      "entryId": "gcba-material-estudio-examen-teorico--material-de-estudio-para-examen-teorico-001",
+      "officialDocumentId": "gcba-material-estudio-examen-teorico",
+      "chunkId": "gcba-material-estudio-examen-teorico--material-de-estudio-para-examen-teorico-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-38-002",
+      "officialDocumentId": "gcba-material-estudio-examen-teorico",
+      "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-38-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-75-003",
+      "officialDocumentId": "gcba-material-estudio-examen-teorico",
+      "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-75-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-113-004",
+      "officialDocumentId": "gcba-material-estudio-examen-teorico",
+      "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-113-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

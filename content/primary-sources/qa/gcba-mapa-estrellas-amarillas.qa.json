@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+  "document": {
+    "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+    "chunks": [
+      {
+        "chunkId": "gcba-mapa-estrellas-amarillas--mapa-de-estrellas-amarillas-en-la-ciudad-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-37, coverage fingerprint sha256:828d7b094cac51a9c9ee97ab50b8977510939f632021ebf9fbd02ae874a4f528, and content/primary-sources/terminology.ru.md. Contact details and campaign text are translated as visible GCBA page content; phone numbers, emails, names, and social handles are preserved as source data."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Contact details and campaign text are translated as visible GCBA page content; phone numbers, emails, names, and social handles are preserved as source data."
+        }
+      },
+      {
+        "chunkId": "gcba-mapa-estrellas-amarillas--grupo-de-parrafos-linea-38-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 38-81, coverage fingerprint sha256:87e1a6893bed5e3b28d47f1310ab0c8910a31156eaf4721dd27f2e4d04ad2617, and content/primary-sources/terminology.ru.md. Contact details and campaign text are translated as visible GCBA page content; phone numbers, emails, names, and social handles are preserved as source data."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Contact details and campaign text are translated as visible GCBA page content; phone numbers, emails, names, and social handles are preserved as source data."
+        }
+      },
+      {
+        "chunkId": "gcba-mapa-estrellas-amarillas--grupo-de-parrafos-linea-82-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 82-107, coverage fingerprint sha256:9bc4a743a8963c1fc32445b84ccf4ff5ea71ec3220be7a6f31289fd4dd3cec20, and content/primary-sources/terminology.ru.md. Contact details and campaign text are translated as visible GCBA page content; phone numbers, emails, names, and social handles are preserved as source data."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Contact details and campaign text are translated as visible GCBA page content; phone numbers, emails, names, and social handles are preserved as source data."
+        }
+      }
+    ]
+  }
+}

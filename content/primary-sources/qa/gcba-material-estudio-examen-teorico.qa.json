@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-material-estudio-examen-teorico",
+  "document": {
+    "officialDocumentId": "gcba-material-estudio-examen-teorico",
+    "chunks": [
+      {
+        "chunkId": "gcba-material-estudio-examen-teorico--material-de-estudio-para-examen-teorico-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-37, coverage fingerprint sha256:d8c9304b26d6d03e7126c279fbe94d3a0d4eafbed1a5d126c5f1b1069be58fe3, and content/primary-sources/terminology.ru.md. Visible GCBA page chrome, feedback form, footer, and links are translated because they are present in the archived source; they are not treated as exam rules beyond their visible wording."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Visible GCBA page chrome, feedback form, footer, and links are translated because they are present in the archived source; they are not treated as exam rules beyond their visible wording."
+        }
+      },
+      {
+        "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-38-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 38-74, coverage fingerprint sha256:6f94cc2fe882e3f10d91d35b7c715a61221f69da27de63c154d5c68df33ab7cf, and content/primary-sources/terminology.ru.md. Visible GCBA page chrome, feedback form, footer, and links are translated because they are present in the archived source; they are not treated as exam rules beyond their visible wording."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Visible GCBA page chrome, feedback form, footer, and links are translated because they are present in the archived source; they are not treated as exam rules beyond their visible wording."
+        }
+      },
+      {
+        "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-75-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 75-112, coverage fingerprint sha256:2331b7513283524d506becb5113dc4db56cccd2a4b84e04dd09ca635f8a942a8, and content/primary-sources/terminology.ru.md. Visible GCBA page chrome, feedback form, footer, and links are translated because they are present in the archived source; they are not treated as exam rules beyond their visible wording."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Visible GCBA page chrome, feedback form, footer, and links are translated because they are present in the archived source; they are not treated as exam rules beyond their visible wording."
+        }
+      },
+      {
+        "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-113-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 113-132, coverage fingerprint sha256:b10ccc0db2478729b5d64681bb00e06e9b626614428596a3106ec2c1db1c2d6a, and content/primary-sources/terminology.ru.md. Visible GCBA page chrome, feedback form, footer, and links are translated because they are present in the archived source; they are not treated as exam rules beyond their visible wording."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Visible GCBA page chrome, feedback form, footer, and links are translated because they are present in the archived source; they are not treated as exam rules beyond their visible wording."
+        }
+      }
+    ]
+  }
+}
