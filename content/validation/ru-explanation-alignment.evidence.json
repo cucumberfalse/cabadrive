@@ -6602,13 +6602,13 @@
     {
       "questionId": "b-fallback-389",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "8cf69da277282616bc5d019e96dcc19f623a3c0d9642a203b6ff26fc3df0bd0c",
-      "explanationSha256": "46f0f601126bb6ab33a6d685bff2fa712854e359ab027562eb02cbedd501e414",
+      "explanationSha256": "4527f7c244d48ee9b4eb85d0bda58c19c92ed128fc7eaa27cc095b16411bdbf8",
       "imageId": "question-image-b109",
-      "imageMetadataSha256": "31f136d88baf0fbf655c3f110c49ff2afcaf02cc1454d6da0766a494333f288b",
-      "usageSha256": "4e3476301eb8db7af85ee5590044bf7db0dd3e8589ee7e925b48935fb919c33d",
+      "imageMetadataSha256": "332dcfd5bf64a6ad3b5990a62bd593b70ad692242b13f528c4f74018c5f516ff",
+      "usageSha256": "9d94aaa0d51ec486469bc3ca9b88f10dd94c7c17b24ee1e0ca32edb60ced0ff7",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6616,18 +6616,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-390",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "d3832a79922bf4aad9d1db15197fd70aa998a71f2ad61af913d3c4ea2d696484",
-      "explanationSha256": "8ac8fbe838893995e23f85342f65a0787bb8fe2e0efc6015c9ed9a491b9c7b5f",
+      "explanationSha256": "1a3058f356dc0ceaca8cebe501efa012ec9bade8c9b47bc36b42cfc4b94715de",
       "imageId": "question-image-b181",
-      "imageMetadataSha256": "ab52c68ea06394dc263ec3e0d684098aadbc805b68fc2cb171c79458ea3c0428",
-      "usageSha256": "c569c57e5a7ae9b028e9cef7d19a2a71f0513748548ebc87983f6095855c8012",
+      "imageMetadataSha256": "c2b126f7b9ffdd1beb6e7edb0d9efe371afb894bc52536704a5fb6eae466a1c2",
+      "usageSha256": "c986c6a3c1df330a2cb8a8add4d7706dc97aeb421d10912b59f8319172ecd2b5",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6635,18 +6635,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-391",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "b70de9549f78525ef7807f2a058bdcfa390b987e22b6f6ecc468719977ed3a25",
-      "explanationSha256": "a9477031af0009a3e4008c29a479c5bc0d12d75de832f3f3c67081c71634a0e1",
+      "explanationSha256": "da4478c9451a83d9bc2ace4f1aea400677ac4a29b643d3574f23f029881deb35",
       "imageId": "question-image-b187",
-      "imageMetadataSha256": "f1de27d2ad988987d97582e2d75387cee62648523243cfa0ad931499abcac018",
-      "usageSha256": "e55956b67d7e2fae72e6afe72495b93e91cec366bc593fef728d383b687032d4",
+      "imageMetadataSha256": "929df54e50901ac4fbc8a55a5353f0fe993d664fd45316267e55ded792f7058f",
+      "usageSha256": "a1edeb8f1376ad63269527d0ee56ca7ec3e11e2079c506b5ac9c93ea7d142a76",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6654,18 +6654,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-392",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "8832994699b7ff5f6103f870c6881110c1b47aade90d71adec6c43a7790db528",
-      "explanationSha256": "9611d6cb6c1b8648c2115b331deb89e728de69e3ef5b411f56143f3bd4355448",
+      "explanationSha256": "11ed58b1db446f2aee342d1923cc89d06214e34c12e5f3920be47a2a1b5108d7",
       "imageId": "question-image-b58",
-      "imageMetadataSha256": "e2e38733950a62e0016c5dea325c6b9700cda895e7210c4ac5eb007b3e8773e1",
-      "usageSha256": "1c0d4ef03a4da101ca66f6c6ad3bed4256b6722410add2abe41e08a9af68afb5",
+      "imageMetadataSha256": "0cffca20e9f6eae00d3e7ca02557adf83805f4de535cf2bdb8dcb89d9ff74042",
+      "usageSha256": "f43e635acbc545cfb7cb99cbe9014e3145fa51700fa49f00b360b064d4a96e88",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6673,18 +6673,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-393",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "af22519d87ab3dcfb66e30dd95ba2a1f70a44dd8ff6c67e1baeae20a238a742a",
-      "explanationSha256": "24c06eb50213de3613748e7877dd1e666b9554240ea763c509aa1ab460e43c95",
+      "explanationSha256": "76a0a1e85bd06ec96a5a2af69498f33b89ed0f6707dfed3e2980fb99cccc77d1",
       "imageId": "question-image-b205",
-      "imageMetadataSha256": "0323e3df050fee7e6fdddc8ed48054f8734108fe9e78d29754d05569175a3712",
-      "usageSha256": "23f8b4a45114605c82b76d268f736c5f0a7b43d485c36295850963f6a520ed8e",
+      "imageMetadataSha256": "25bd8e3d1c64cb5a3e0b0fa027679d3f9900bde0d0adbc1a87d8125b774c8268",
+      "usageSha256": "3f3d8555cd81e3c703139415157f6f0edb63c72a41efb6fe7d734813a2f5f14f",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6692,18 +6692,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-394",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "c4b4b72375e1963767c2e56ec51b2eddafcc28502d73087c7659f22eba38b7a2",
-      "explanationSha256": "2ad07abb750b88c6c675501d1cd0b5eee5cda6b3d71a124dd879434c7d61023e",
+      "explanationSha256": "76c562c51960232833facecd999dde8e55d1f393c2c2c34fbd3e1bdd698940b7",
       "imageId": "question-image-b73",
-      "imageMetadataSha256": "b6c760141064e7bf1c17caee7fbd04306abf04093dc84780133adad6bf9abd76",
-      "usageSha256": "71b8612e787b2939ca8b64f7c21ad8f2f07c08a5c9317c62b443aad5698d5d14",
+      "imageMetadataSha256": "4fea69778d7ab39615ba23359ebc8a560e432e33c081886db4b515419667f437",
+      "usageSha256": "de6bc181feb19c2e760dc3b62839ec9f10b3df0e6476b2c50223ddf41515f04b",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6711,32 +6711,32 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-395",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "995104ab2632bfc1f1f5d47afe3197e63eaabc59906f3467fc040ecf8de76e93",
-      "explanationSha256": "d83e4a35b44155dd7e29f2e179eb2409ff1abe7b05102db9efff4f3765a73447",
+      "explanationSha256": "7d3bd197ab115f129d000079d75187dc7edd2a72f5bfa0ee88ee6ebaf8372d60",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-396",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "381b981169495829bb7baa8f46aa53d4ae28484ee647eb23addee701056579d7",
-      "explanationSha256": "acc6238956cc6c9f56de9e6add127a1af073705a99b7566692dcc7c6923698be",
+      "explanationSha256": "64288bbc33cce9cc26f8b3accafd835ac0aea22b5511d57c072b8d110528d1dc",
       "imageId": "question-image-b149",
-      "imageMetadataSha256": "1fccfd4ffaa0e6bf835d1a651bfd0ff4f02ed6a1726f3352d000f6ac1dd12819",
-      "usageSha256": "f46e970258fddde2878e1f2f5889127a2985746e694f571dbb6d181e185bba46",
+      "imageMetadataSha256": "62d8c1e1cc8a25388e42ea9d6641477f97d480afb39cc4d145ee24b6ad21a59e",
+      "usageSha256": "e9a785da2a9f813d18a59d04019f9ee86dc6d6276181305748f2d6faaf6e8f32",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6744,18 +6744,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-397",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "6eb94f0932a0116f248f54e38ab5eb0a5566f5f274a6b0cbfdb1683f6f14c389",
-      "explanationSha256": "e779a124961751d23c4f7d7cc2ed2960412e52817d2fc3f9abd19b5b6eaceba9",
+      "explanationSha256": "99f0f52017357a24b5d735d816e61f63294f1612260ca5b71df2a997681ec80a",
       "imageId": "question-image-b243",
-      "imageMetadataSha256": "c457775499484764870d2e2f19de15266f105bc6a5ab51f4d34a47db2e772f9d",
-      "usageSha256": "10e8fbc56ac8db6a8bcf064e784a66a9d166486725e5ed76189680f1a6e58201",
+      "imageMetadataSha256": "f34fa2e32d74d27adcb7068c8ff8cfedfe4742dbc3ce90e5859a321e37abe261",
+      "usageSha256": "cc1292863296e22b2e752745ae1b50cf35e08dd77b90ab8566ab66e2c8322224",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6763,32 +6763,32 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-398",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "8bcdc0ac317086d93cd9206b1d5dfdff385d1eace050b453ce3772612a141183",
-      "explanationSha256": "f6dc803729a1c5ebda0a54a4adab05107e5fd69fa4c222ce502c421f83995aee",
+      "explanationSha256": "64645fa6d0f9361bc3dfc823cd09695e53466d78593cb29384b20b2f45298939",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-399",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "cae4b5409798f0201b430a118442287009ef431e8fe7ec627a8fcff458e1aa3a",
-      "explanationSha256": "41d868e83600360a5fc1cc3449e2c82500712e4b46d5a99da03a51dbbee75bd0",
+      "explanationSha256": "edfd38d30b1b5dde143c51d2112c184f587cc9beb67430e12fdd93d81a7f03e9",
       "imageId": "question-image-b256",
-      "imageMetadataSha256": "ed9b65d6757f274290ad16ba5e13ee3ec5a65993ee40ac4121d0bcd1fb5b9092",
-      "usageSha256": "0065784605c066528ce9f174878f6d8e1412abe3dfe4214d6381d31ab8d722c7",
+      "imageMetadataSha256": "3a83229ef42bb3cb286fc9c2f1e725016cfd611bfe44ffe39f4af00cf34650e7",
+      "usageSha256": "bca8acda4fb09c93ec34b5a4a73d4de12dfbcf6e74eb0f25e7f8997d621bed85",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6796,18 +6796,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-400",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "64c319c309e60887e936bb9d041fa1af5ed2765dae9d75d18417f63bfa011d31",
-      "explanationSha256": "836115878e37de1baa751ac3b9ec39ca73a650b1f29d1d77be59919b545fa0ef",
+      "explanationSha256": "80fcba191832cafd36b41b0594d2b753d2972000f7941774f51789802fa8faee",
       "imageId": "question-image-b115",
-      "imageMetadataSha256": "a7332736b916c68219362b964f764d00694705bbd7c9086dda16a648eac3bfff",
-      "usageSha256": "5e3d3c6b27072a0877de481ebe0cdf81b5f43c65c08264541c0cbbda14654c49",
+      "imageMetadataSha256": "2d5e543acb58156ea241f2b9d6fe72d41dbea4ca60077c492820ab3aa96eebb6",
+      "usageSha256": "b7cf87a6fb0c6c3cd1941124d6c34aefd6df47be48939efa9e5de6c28ad14782",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6815,32 +6815,32 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-401",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "85628954b87b6f59e84cd9b6b1ee6df2be25aba039a69a6c21cf1115761c4355",
-      "explanationSha256": "7e85c45b97b6aa68c85a94510d4e9697b15b4f4a633bcfdc3a87ec458e845d01",
+      "explanationSha256": "775208218ba4d929a5b29959e3c9e03efde7b00f83b7d85d5e800f5dd5a2fecc",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-402",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "599ecf4060f8ae57c6e2424891e553a19f98af72cbd2df300163bd4c7c812af6",
-      "explanationSha256": "d9f23e1d1509d0edaad8c6d6a5416bf3ff56e34094cd7cd0ed29da8f4f9e369b",
+      "explanationSha256": "d648c3624042059f00fec42703babd32d28c27f517fc2edef182c3221147f976",
       "imageId": "question-image-b166",
-      "imageMetadataSha256": "0aacc8dd77019a99c491df44f7f167d85af4330937615118946512526766507c",
-      "usageSha256": "ca5bac58ebe08b0617cd6eb07766bd3742870668da441f4dd4c83a59f525bed4",
+      "imageMetadataSha256": "3c529c62b6a004b70cec5a023c0a9978f648357967b788b17aa875445f2ea257",
+      "usageSha256": "92b081080d9aebc201e8c73d58d13c41e58a0977fe67ee919f7422fb22186e05",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6848,88 +6848,88 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-403",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "b89fa9f85f8347c390be03e814af006646fa36557cf9842c6829a8ccca622995",
-      "explanationSha256": "3a242350869f6a5840d5ed04f82562ae25ff486f61fa6d94bb681697c5f5d2ba",
+      "explanationSha256": "9dc9b6bedc63ea139d2648547f82b75cfe25efd8733b1ed2d856aae3b67b5ec9",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-404",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "e55ced406304ea47b656b2ea93ec799c4a433746c5dde1b342836ec74c01fa54",
-      "explanationSha256": "295bed9b3ec9f59b255be0aaaa042d729fe1d2d7623aedc9795d3c78c2bcfa45",
+      "explanationSha256": "7ed3d5d10de9c6f70a2243939127af9513cc61b5a4f5300525bc4f20279579d8",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-405",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "dbdbe217e485f50458c8a94207148492fb965d3e37e56997ce31e9a67c12ba1a",
-      "explanationSha256": "12b229fa2402cee2a446cc81b555659a60fb115f8e861a68f404a5f879be2624",
+      "explanationSha256": "4d46573c0e8f1bb1d1be96f2f831a273a8938579ca950ca5b9a2168f742c6941",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-406",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "e57d987f9d157b2b3231359fb35644ee58ce794fda9c93027fea295268dce33c",
-      "explanationSha256": "98febf4fb733bc04531d934c92da2e1692029785077c7a088231cbed9509750e",
+      "explanationSha256": "f54851effbd02072cd9fa427c8acc47069b65c78031406c3f439500694f886ab",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-407",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "1b8f6f160a1deaa608767580e7c81544f2a10ff392835a6018bd139acf014553",
-      "explanationSha256": "e0a43ad089572b0a1d6f1d7811b54703dd986057249dc64a0cfc5fed88fec2c3",
+      "explanationSha256": "ebfb985d62d2f4d4ee5fd8a99e83b06cb0e3076f1a77f4e777104e946de6ff62",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-408",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "60826827b1527d8ac27cd75e9679ae8860c381303817cbad85008e3252fbd232",
-      "explanationSha256": "916166d83c87ac994a17d3528169d830796fdb7b718913aa3fcee817a28527b9",
+      "explanationSha256": "1cf54edbce33be0c54f6b1c3e0857a0102aa7016025b6897815e164730ef2f32",
       "imageId": "question-image-b35",
-      "imageMetadataSha256": "2157d48c0472bef1ca1a8215594e0364a560c269cec9e401ed1934a289a1b9f0",
-      "usageSha256": "70b4df27d5e14125a630d266cc41ae6e5133336f11c172738593f394ae32b586",
+      "imageMetadataSha256": "3f363ed64607bc7034b56fbae5379ea163fa17eafe534fb595516b35b43888e9",
+      "usageSha256": "596cc2554ca8a30dea1b45b37763962c41769764b24d1309191a69b8d0eaa60d",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6937,32 +6937,32 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-409",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "b693fe1666f8ee82efc2da2adea309781d939df0178b2dba2abe50c0f305dca3",
-      "explanationSha256": "f3b4bf9f268c6f92c812cd650cd16c9919b4ee66e0fe1e3717993d67a2f4b1f2",
+      "explanationSha256": "a55f5d82face62759599e405315e5b28135353f415efca1d80967e433a794c4b",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-410",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "2a4a385298a1386fb2e1eb6520bfb37d9b8cbb7ce8eb51038e3990114c2bcf7c",
-      "explanationSha256": "a702cb28afbca44c513233e9313a4e0c59c143ca90f401dfbe819aa285b32e75",
+      "explanationSha256": "6a6f57c32679780f5b3e6eb31dd06a733d85fec9a466a3415b313890f15e9650",
       "imageId": "question-image-b146",
-      "imageMetadataSha256": "e00afca22c13ec009a22c76553452c3b52810a39111d53df702bea782ca4a206",
-      "usageSha256": "dc48a4142e07fb81918d2bd85fa0b2f5a6890976037d495ba911f736db609278",
+      "imageMetadataSha256": "24207b829c24036ca61144b465d1cad9cf8951aa015293ed76f760df360f6900",
+      "usageSha256": "e123472dcd74fa496e48e18a28a571e878afe056d922c2aeeef2c0cdbed01ae6",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6970,18 +6970,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-411",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "0556870c1b948907f351f6ddc8479e8204499fb5ec432a5c45134b888f0ea79d",
-      "explanationSha256": "c3152b2e4c1dd3b2a6e2d89abc025bd5cec15ec834a777052c9fcff5c93f51ce",
+      "explanationSha256": "66353b9d95326ed3f369a27ab0af5f160b6c2280a3c3d0040e6fc127790dbbda",
       "imageId": "question-image-b118",
-      "imageMetadataSha256": "ef665428924e9b35cd6bd4d26b32563dde28f69ab556b8ea594f29b49e8cb583",
-      "usageSha256": "139c05bb7e1e4662a1ee224e6fc2b72edd63402ef1992eace4ec0e3ccd8d8806",
+      "imageMetadataSha256": "62e847b71987dc66c7d47c567c2fc5038b168f25447b5edcecac868236b19900",
+      "usageSha256": "fa1cfc790ad54e092354ca9af0a00f54187e34904af05a1bc65676384160cbca",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -6989,18 +6989,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-412",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "26fbbc0c4bf846cec47213daaa4bf0262a055e059374796338cf780300e89de8",
-      "explanationSha256": "a7402ccf63844b8b0a697888ad430b4331bc10305b607f3e6dc7644c2f954303",
+      "explanationSha256": "c52c5945daf376eff650a796887d02cec5a711befb272d92582df766f6dfa618",
       "imageId": "question-image-b153",
-      "imageMetadataSha256": "fe4bf0b8d2355304ac3f7ffb912f219856e87c021aec277efe55d678fd65a345",
-      "usageSha256": "02b3550c3ba23463cd019b9560d0b3ba38be0e619cc5fce1c02635446b5841a9",
+      "imageMetadataSha256": "43deca0e9737608720724e4b77b32570d4c280ff72fb3bb0bb137fee6270f44f",
+      "usageSha256": "ecc816f6ad616cb32a4dc81fc72cbc016d7f5256db8145b92e1ff3d3fabf36ad",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -7008,18 +7008,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-413",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "e8f1cb5bdd4fca2013220d41fff9e4762aed749121f69ad99e917572bfe4b564",
-      "explanationSha256": "4c5f0d34e49873991af98529eeda3b4e867f181075d50b639a98ced53e734de3",
+      "explanationSha256": "3c430707cc998172c0e254288c93014c0aa12b4bcdfc0aa37274831e1a1b7f21",
       "imageId": "question-image-b151",
-      "imageMetadataSha256": "98be62e2dd458239333c14191f40e4121cb970666af87d077c10d66d00a58ae8",
-      "usageSha256": "e12303e30b03a6cfe383414e59cf553345834146dd387906ca1e55d71c212629",
+      "imageMetadataSha256": "494db7a41577e114ae5976b7527439734b0de79c995468a1769d48a814c172a3",
+      "usageSha256": "4901b9dae932f7497241f81b153746846a6c859b70079280696dae7a58d6141b",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -7027,18 +7027,18 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-414",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "bbb4c1172e32dbda4f645774a470d33246eb608b7024b6ba90e11c587a4e5413",
-      "explanationSha256": "71959e65fc2b536825fcf9263bc13f3b494fa3bd21b8e25a45d495279d104757",
+      "explanationSha256": "c1a13a8db09c0d5f4839b74843f1e85b70bee7a13a1721640d3eac74ec9de289",
       "imageId": "question-image-b145",
-      "imageMetadataSha256": "2d64e629de4039f6462847555ed91bc02319bea1a29d7411e9381e3772910ced",
-      "usageSha256": "04ed492ae49a75afadfe9a2dafa606e58a088f552e717fac5e7991e05bcdc9ca",
+      "imageMetadataSha256": "3b13129c317e86d43ca970aac502b5d1125a015caf89b8c85d3e0d4120f7a226",
+      "usageSha256": "2b46c5ca3dc9caf9ff63464a2a678efe68ec8722d7c5b45ab45317a73cd6ed45",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -7046,32 +7046,32 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-415",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "593f76d6f15958c813a857c4bc72757686ba4c45613d5d17e6d3825cbc42b956",
-      "explanationSha256": "d92ab27b819b3be95521c86b303cc5ee0aa89dd82840301bfc79d8547117b49b",
+      "explanationSha256": "20ca9f764ab50e5a4a7d09c201596851477539876ecd8a2ae55c91c62f28992c",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-416",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "3e7791c356abb1bff428bf482a43dad6c04d79def08ba316fcbd613ba0eb2ace",
-      "explanationSha256": "01f98d324bc7af4ad81abbc33fc509914b80735b9bfd7a5d4cc2433886cf8a62",
+      "explanationSha256": "d9f7906cfea51aab8f5981abb1d36b01903c46053bf656eb1b26def3bce77eb2",
       "imageId": "question-image-b248",
-      "imageMetadataSha256": "0de5bcc11bf7eeb9c74371aeeed92173f8a3faa6bb8498ba3e0883e34f150e75",
-      "usageSha256": "6f5b42bd6eb59f4ebea70dc54f3d31284cc12ba755669062f2202d1123d4567f",
+      "imageMetadataSha256": "9df2464031436bb1e472a8130554c7fad24a7efd926e2a7be8b45e5e00363b46",
+      "usageSha256": "52aa040cc9e7e8611203606c3696fd8ff18823a1d9c3eadcb715442708330984",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -7079,32 +7079,32 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-417",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "f42353195ab3749fd47f1183fbc9657bc62bc676f8a4953bdbb6535c128645d2",
-      "explanationSha256": "a43704f5e13a25f5d9c6de0b4e5d399e2e6fe5f3b262975a22ed3dd33adda121",
+      "explanationSha256": "51f34e3b2c00ec82db6a7c7b672529e37f12d69855d5d961261e80bcc75d35f0",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-418",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "e9096422fc123ccea07121272063904d4f7a8c522132c713b764a5c9d16aff1e",
-      "explanationSha256": "023930be9092cb93e05a8bfd44f8ea96c69381a22d04b246056c6879bf696242",
+      "explanationSha256": "2434c5f960d486ad41e28a92a79e1206682943d3876ed866c8ef1015ba9e22ea",
       "imageId": "question-image-b112",
-      "imageMetadataSha256": "caa0d3da81d7feafed5e1fd1d7af70d4b19ad28e2a774dac98f64697dad2e8e7",
-      "usageSha256": "9fad816b5456fd0f94942eeaaa7e17743c18a2be6623384e20866b7c80aa9196",
+      "imageMetadataSha256": "80d95fcfa4ca6a4f606b8524df26863ffacce96152a8d29159397d20c34899fb",
+      "usageSha256": "5054cdb9dc7d30a5dff01f87c26c09f7a28e39ecdb7e2252f92393098748aa56",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -7112,32 +7112,32 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-419",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "881b4864c8dfd9d323c04ceabeeb86f4e4e4718d43e330dae7c5e99f3bf91572",
-      "explanationSha256": "02bdcfe1f1d222580ae62e30e2acdafbfc4c9982fac546611a684ae6763f1e27",
+      "explanationSha256": "105fc3d325cff8a43c15d1faf3af77738359fbbe74c881cdda4fd259550884b9",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
         "claimScopeReviewed": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-420",
       "status": "approved",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "reviewer": "Cabadrive content agent 369-460",
+      "reviewedAt": "2026-05-10",
       "sourceQuestionSha256": "43405703832d04790b4013515d2b276adfda1968945332c1a88f5a13bd8b0408",
-      "explanationSha256": "27e08da58aec62ae4a430259f5c65d51e4aa7f3a44e60cd471759a4adfca2156",
+      "explanationSha256": "9fb752d8f0bdce030f6acf535e3a70472f3d9346c3e772544dc60935ead6244b",
       "imageId": "question-image-b130",
-      "imageMetadataSha256": "fb79b7900bd43c8aab49925024aceb46e5552899f8b0fbf663ba9407afb21d0f",
-      "usageSha256": "b650bf4fbda3344ad6590e26733f9c1ee55a9212a151f75b3110126911174f16",
+      "imageMetadataSha256": "2297f18d497e95cb63273dc23c3721666d752571eb69d1304fb8f2af8f691a9d",
+      "usageSha256": "2b98da85e5aa3d1dbab7a2704e7fb69b05bca37ee155336aea83290c0b5bba25",
       "checks": {
         "correctAnswerRationalePresent": true,
         "wrongAnswerRationalesPresent": true,
@@ -7145,7 +7145,7 @@
         "imageCriticalDetailsAddressed": true,
         "noVisualContradiction": true
       },
-      "notes": "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+      "notes": "Range 389-420 content-agent review added ticket-specific correct and wrong-answer rationales, with image detail references where applicable."
     },
     {
       "questionId": "b-fallback-421",
