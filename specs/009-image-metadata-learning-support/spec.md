@@ -40,6 +40,30 @@ Required final quality:
 
 Validation and review must reject placeholders even when counts are correct. A PR that reaches 460 translations, 460 explanations, 275 image records, or 276 usage records by using generic templates, question-derived-only descriptions, source-image-frame placeholders, transliteration, Spanish residue, or generic filler is not complete.
 
+## One-Time Parallel Content-Agent Workflow
+
+Image metadata, Russian translations, and Russian explanations must be produced or fully reviewed by one-time content agents working in parallel over non-overlapping shards. This is repository content production, not a permanent runtime service.
+
+Required orchestration model:
+
+- Orchestrator assigns each content agent an isolated worktree/branch and an explicit non-overlapping range.
+- Current shard ranges are `001-092`, `093-184`, `185-276`, `277-368`, and `369-460` unless an Implementation Agent records an Architect-approved replacement.
+- Each range owner edits only the assigned shard files for the assigned content family:
+  - image metadata: `content/image-metadata/question-images/<range>.json`;
+  - translations: `content/translations/ru/<range>.json`;
+  - explanations: `content/explanations/ru/<range>.json`.
+- Content agents must not edit another range, another agent's worktree, generated compatibility indexes by hand, unrelated product files, or durable docs unless their slice explicitly assigns that work.
+- After shard edits, agents regenerate compatibility indexes with the repository shard writer and record the exact command evidence.
+- Each shard must carry review evidence naming the range, content family, reviewer/agent, source files touched, question/image IDs covered, validation commands, remaining ambiguities, and any controlled exceptions.
+
+Image metadata agents must inspect the actual local image files. Metadata cannot be approved from Spanish question text, answer keys, topic-guide rationales, filenames, hashes, source URLs, or generated captions alone.
+
+Translation agents must prepare or review idiomatic Russian question and answer translations for every ticket in their assigned range. Generator output, glossary wrappers, transliteration, draft scaffolds, or Spanish-with-Russian-framing cannot be accepted as completed translations.
+
+Explanation agents must prepare or review ticket-specific Russian explanations for every ticket in their assigned range. Explanations must cover correct-answer rationale, wrong-answer rationales, source/ticket scoping, and image-critical reasoning where applicable. Generated fallback prose is draft scaffolding only until a content agent reviews and approves it.
+
+The final PR must include evidence that all assigned content-agent ranges for all three content families were completed and reviewed. Count coverage and fingerprint freshness remain required, but they are not enough without this range-level content evidence.
+
 ## Scope
 
 In scope:
@@ -58,6 +82,8 @@ In scope:
 - Require full qualitative review gates for image metadata, translations, and explanations in addition to deterministic coverage gates.
 - Reject generic baseline metadata, answer-cue-only mappings, draft-wrapper translations, transliteration, untranslated Spanish residue, and generic explanation filler from approved final content.
 - Require official-source trace or cautious ticket-specific scoping for rule, legal, procedure, numeric, traffic-sign, licensing, or road-safety claims that go beyond direct ticket wording and direct image description.
+- Require range-owned one-time content-agent production/review for image metadata, translations, and explanations.
+- Require durable docs to describe the ticket lifecycle for adding, changing, and deleting tickets, including content artifacts, evidence refresh, validation, and cleanup of linked artifacts.
 - Add or extend deterministic offline validators, unit tests, content validation integration, docs, feature-memory evidence, local preflight, and PR workflow evidence in future implementation slices.
 
 Out of scope:
@@ -70,6 +96,7 @@ Out of scope:
 - Rewriting the topic study guide as the source of truth for question-card translations or explanations without an explicit synchronization decision recorded in this feature memory.
 - Broad driving-school, legal-manual, or Spanish-course content beyond what helps answer the current tickets.
 - Direct merges to `main`.
+- A permanent runtime agent, live image-analysis service, live translation service, or live explanation-generation service.
 
 ## Assumptions
 
@@ -382,6 +409,11 @@ The feature must not imply that the current fallback set is an official or compl
 - FR-022: Reject approved Russian translations that contain untranslated Spanish residue, transliteration, wrapper/draft scaffolding, incomplete answer coverage, or non-idiomatic Russian not backed by review evidence.
 - FR-023: Reject approved explanations that are generic filler, lack answer-specific rationales, omit image-specific reasoning where needed, or are not backed by review evidence.
 - FR-024: Require final PR readiness to include non-draft PR state, completed AI Review, green required checks, resolved Review Agent findings, and completed T099-T102/T109-T111 readiness tasks.
+- FR-025: Require one-time parallel content-agent production or full review for image metadata, translations, and explanations using non-overlapping range-owned shards.
+- FR-026: Require image metadata range agents to inspect actual local image files and record evidence of direct visual review.
+- FR-027: Require translation and explanation range agents to record review evidence that final Russian content is idiomatic, complete, ticket-specific, and not generator/template/transliteration output.
+- FR-028: Require durable documentation for adding, changing, and deleting tickets, including image analysis when an image exists, Russian translation, Russian explanation, evidence refresh, validation, and cleanup of linked artifacts.
+- FR-029: Require shared image metadata deletion rules: when a ticket is deleted, remove only its usage/evidence unless no remaining question usage references the shared image metadata.
 
 ## Acceptance Criteria
 
@@ -418,6 +450,14 @@ The feature must not imply that the current fallback set is an official or compl
 31. Given an explanation lacks ticket-specific correct-answer rationale or any ticket-specific wrong-answer rationale, validation/review fails.
 32. Given an image-backed explanation omits required answer-critical image facts or relies only on question-derived text when the image is answer-critical, validation/review fails.
 33. Given a final PR remains draft, has skipped AI Review, has pending T099-T102, T109-T111, or T114-T120, or lacks Review Agent content-quality sampling evidence, it is not ready to merge.
+34. Given any final image metadata shard, review fails unless shard evidence identifies the assigned image-analysis content agent/range and confirms direct inspection of every local image in that range.
+35. Given any final translation shard, review fails unless shard evidence identifies the assigned translation content agent/range and confirms idiomatic Russian review for every question and answer choice in that range.
+36. Given any final explanation shard, review fails unless shard evidence identifies the assigned explanation content agent/range and confirms ticket-specific correct/wrong-answer rationale review for every question in that range.
+37. Given any content-agent slice, review fails if the agent edited shard files outside its assigned non-overlapping range or hand-edited generated compatibility indexes.
+38. Given a ticket is added or materially changed in future repository work, durable docs require image metadata analysis when an image exists, Russian translations, Russian explanations, evidence refresh, strict validation, and process-memory evidence before completion.
+39. Given a ticket is deleted in future repository work, durable docs require removal or refresh of linked translations, explanations, question image usages, content evidence, and validation records.
+40. Given a deleted ticket used a shared image, durable docs require preserving shared image metadata while any remaining usage references it and deleting shared metadata only when it has no remaining usages.
+41. Given final feature readiness, review fails unless durable docs include the ticket add/change/delete lifecycle and cleanup rules from AC-38 through AC-40.
 
 ## Negative Scenarios
 
@@ -435,8 +475,14 @@ The feature must not imply that the current fallback set is an official or compl
 - A validation approach that requires live AI/OCR/translation/network access is not acceptable.
 - A translation layer covering fewer than 460 current questions is not complete.
 - A translation layer with 460 entries is still incomplete if entries contain Spanish residue, transliteration, wrappers, glossary drafts, or incomplete answer translations.
+- A translation shard produced by a generator, glossary pass, transliteration pass, or template fill is not complete until a content agent reviews every question and answer in the assigned range and records evidence.
 - An explanation layer covering fewer than 460 current questions is not complete.
 - An explanation layer with 460 entries is still incomplete if entries are generic filler, lack correct/wrong-answer rationales, omit image-specific reasoning, or are not reviewed.
+- An explanation shard produced by fallback templates, copied topic labels, or generic generated prose is not complete until a content agent reviews every rationale in the assigned range and records evidence.
+- An image metadata shard inferred from ticket text, answers, filenames, hashes, or generated captions is not complete until a content agent inspects every actual local image in the assigned range and replaces or approves the visible facts.
+- A content-agent PR that edits outside its assigned range, edits another agent's shard, or hand-edits generated compatibility indexes is not acceptable.
+- Durable docs that describe adding tickets but omit translation, explanation, image analysis, evidence refresh, or validation are incomplete.
+- Durable docs that describe deleting tickets but omit cleanup of translations, explanations, image usages, evidence records, or shared-image reference checks are incomplete.
 - A bulk content PR that adds all metadata, all translations, all explanations, validators, docs, and UI/import changes at once is too large for reliable review and violates this plan.
 - Russian support must not become official source text, hide Spanish source text, or imply official-bank coverage.
 - Implementation must not change product code, content, tests, scripts, or durable docs from this Architect-only branch before Orchestrator handoff.
@@ -450,6 +496,11 @@ Implementation Agent requirements:
 - Use only the assigned isolated worktree and branch for the slice.
 - Do not touch other agents' worktrees, branches, or unrelated changes.
 - Keep the slice within the task scope assigned by the Orchestrator.
+- For content slices, edit only the assigned non-overlapping shard files and never another content agent's range.
+- For image metadata slices, inspect the actual local image files before approving metadata and record range-level evidence.
+- For translation and explanation slices, perform full content-agent review of every assigned ticket and answer, not only generator output validation.
+- Regenerate compatibility indexes with the repository shard writer after shard edits and record the exact command evidence.
+- For durable docs slices, document ticket add/change/delete lifecycle rules without editing unrelated product content.
 - Update this feature memory in the same PR with evidence, decisions, dead ends, known issues, and feedback.
 - If implementation needs to diverge from this spec, record feedback in `tasks.md` for Architect disposition instead of silently changing scope.
 
@@ -462,6 +513,8 @@ Review Agent requirements:
 - Block the PR if placeholders, draft wrappers, transliteration, Spanish residue, low-confidence baseline metadata, generic source-image/answer-cue usage mappings, generic explanation filler, or unreviewed approved content remain.
 - Verify deterministic offline behavior and absence of live AI/network validation.
 - Verify stale hash/fingerprint failure modes and the old `b-fallback-001` regression.
+- Verify content-agent shard evidence for every assigned image, translation, and explanation range included in the PR.
+- Verify durable docs include ticket lifecycle rules for adding, changing, deleting, evidence refresh, and shared image cleanup before final readiness.
 - Report blocking findings as GitHub inline review threads when acting under the repository review contract.
 
 Final feature readiness requires:
@@ -473,6 +526,8 @@ Final feature readiness requires:
 - no blocking review findings;
 - evidence for every acceptance criterion;
 - Review Agent content-quality sampling evidence for images, translations, and explanations;
+- content-agent range evidence for all image metadata, translation, and explanation shards;
+- durable docs for ticket add/change/delete lifecycle and artifact cleanup;
 - tasks T099-T102, T109-T111, and T114-T120 complete;
 - current process memory for dead ends, decisions, known issues, verification evidence, and Implementation Agent feedback;
 - only final human approval or merge mechanics remaining.

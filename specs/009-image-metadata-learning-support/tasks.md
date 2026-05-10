@@ -156,6 +156,44 @@
 - [x] T122 Implementation Agent shards translation, explanation, and question-image metadata sources into the five assigned ticket ranges so parallel content workers can edit non-overlapping files.
 - [x] T123 Implementation Agent updates app imports, validation, and generated compatibility indexes to consume shards deterministically.
 
+## Architect Update After Content-Agent And Lifecycle Clarification
+
+- [x] T124 Architect reads updated Analyst clarification that image metadata, translations, and explanations must all be completed by one-time parallel content agents.
+- [x] T125 Architect updates `spec.md` with one-time parallel content-agent workflow, range ownership, direct local image inspection, translation/explanation content-agent review, durable ticket lifecycle requirements, acceptance criteria, and negative scenarios.
+- [x] T126 Architect updates `plan.md` with content-agent production model, current shard paths, exact range-owned implementation slices, durable docs lifecycle requirements, validation matrix updates, and PR readiness gates.
+- [x] T127 Architect updates this `tasks.md` with follow-up implementation tasks for range agents and durable docs.
+- [x] T128 Architect keeps this pass limited to `spec.md`, `plan.md`, and `tasks.md`; no product code, content, scripts, tests, durable docs, commits, pushes, or PR state changes.
+
+## Future Content-Agent Range Execution
+
+- [ ] T129 Orchestrator assigns explicit isolated worktrees/branches for each content-agent slice and tells every agent that parallel orchestrators/agents are active.
+- [ ] T130 Orchestrator assigns non-overlapping range ownership for image metadata shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
+- [ ] T131 Orchestrator assigns non-overlapping range ownership for translation shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
+- [ ] T132 Orchestrator assigns non-overlapping range ownership for explanation shards: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
+- [ ] T133 Each image metadata content agent edits only `content/image-metadata/question-images/<assigned-range>.json`.
+- [ ] T134 Each translation content agent edits only `content/translations/ru/<assigned-range>.json`.
+- [ ] T135 Each explanation content agent edits only `content/explanations/ru/<assigned-range>.json`.
+- [ ] T136 Image metadata content agents inspect every assigned actual local image file and replace or approve visible scene/object/road/sign/marking/road-user/annotation/relationship details from direct visual review.
+- [ ] T137 Image metadata content agents verify assigned question usage mappings so answer-critical details name actual visible facts and link to current answer reasoning.
+- [ ] T138 Translation content agents prepare or review idiomatic Russian question and answer translations for every assigned ticket, removing Spanish residue, transliteration, wrappers, glossary scaffolding, and dropped answer-critical meaning.
+- [ ] T139 Explanation content agents prepare or review complete Russian explanations for every assigned ticket, including correct-answer rationale, wrong-answer rationales, source/ticket scoping, and image-critical reasoning where applicable.
+- [ ] T140 Every content agent records range-level evidence: content family, assigned range, files touched, question/image IDs covered, reviewer/agent, review timestamp, validation commands, ambiguities, dependencies, and controlled exceptions.
+- [ ] T141 Every content agent regenerates compatibility indexes with `node scripts/content-shards.mjs --write-indexes` after shard edits.
+- [ ] T142 Every content agent runs the slice-appropriate structural and quality validators, records exact outputs in Process Memory, and leaves `pnpm run validate:content:quality` failures only for unrelated unfinished ranges.
+- [ ] T143 Final content-quality pass proves all 15 content-family range shards are `qualityStatus: "complete"` with full content-agent evidence.
+
+## Future Durable Docs Lifecycle Update
+
+- [ ] T144 Implementation Agent updates `docs_project/project/content-sources.md` with the ticket lifecycle for adding, changing, and deleting tickets.
+- [ ] T145 Durable docs state that adding a ticket requires source tuple validation, local image/hash when present, image metadata and question usage when an image exists, Russian translation, Russian explanation, evidence refresh, generated-index refresh, validation, and process-memory evidence.
+- [ ] T146 Durable docs state that materially changing ticket text, answer IDs/text, correct answer, image path, image hash, or image content requires refreshing affected translations, explanations, image metadata/usages where relevant, evidence fingerprints, generated indexes, validation, and process memory.
+- [ ] T147 Durable docs state that deleting a ticket requires removing or refreshing linked translations, explanations, question image usages, explanation alignment evidence, translation evidence, usage evidence, generated indexes, and validation records.
+- [ ] T148 Durable docs state that shared image metadata is removed only when no remaining question usage references that image; otherwise only the deleted/changed ticket's usage and related evidence are removed or refreshed.
+- [ ] T149 Implementation Agent updates `docs_project/project/backend/backend-docs.md` for offline validators, shard writer/index generation, evidence files, and quality gates if not already current.
+- [ ] T150 Implementation Agent updates `docs_project/project/frontend/frontend-docs.md` only if shard imports, runtime data behavior, or missing-support UI behavior changed.
+- [ ] T151 Implementation Agent updates `docs/specify/04_data_model.md` and `docs/specify/05_content_pipeline.md` when canonical schema, source-of-truth paths, evidence model, generated-index flow, or lifecycle pipeline terms changed.
+- [ ] T152 Review Agent verifies durable docs lifecycle coverage before final readiness and blocks the PR if add/change/delete cleanup rules are absent or incomplete.
+
 ## Process Memory
 
 ### Decisions
@@ -183,6 +221,9 @@
 - Implementation Lead infrastructure pass on 2026-05-09 introduced five shard ranges for each content area: `001-092`, `093-184`, `185-276`, `277-368`, and `369-460`.
 - Implementation Lead infrastructure pass on 2026-05-09 added `scripts/content-shards.mjs` as the deterministic loader/writer. Content workers edit only their assigned shard files, then run `node scripts/content-shards.mjs --write-indexes`.
 - Implementation Lead infrastructure pass on 2026-05-09 kept `pnpm run validate:content` as structural offline validation and added `pnpm run validate:content:quality` as the hard content-quality gate. The quality gate is expected to fail until every range is fully reviewed and marked complete.
+- Architect clarification update on 2026-05-09: image metadata, translations, and explanations all require one-time parallel content-agent production or full review. Generator/template/transliteration/glossary output and text-inferred image metadata are draft scaffolding only.
+- Architect clarification update on 2026-05-09: content agents must use isolated worktrees/branches, own non-overlapping ranges, edit only assigned shard files, regenerate indexes with `node scripts/content-shards.mjs --write-indexes`, and record range-level evidence.
+- Architect clarification update on 2026-05-09: durable docs must document ticket add/change/delete lifecycle, including image analysis when an image exists, Russian translation, Russian explanation, evidence refresh, validation, generated indexes, linked artifact cleanup, and shared-image metadata reference checks.
 
 ### Dead Ends
 
@@ -204,6 +245,8 @@
 - Current Review Agent blocker accepted: PR #63 is not merge-ready while it is draft, AI Review is skipped, no passing Review Agent quality review exists, or T099-T102/T109-T111 remain unchecked.
 - Current range shards are mechanically initialized from the existing generated indexes and are marked `qualityStatus: "needs_full_content_review"`. They are not content-complete and must not be treated as final approved quality.
 - `pnpm run validate:content:quality` currently fails by design because content shards are not complete and current translations/explanations/image metadata still contain the known Spanish-residue, generic, placeholder, and review-evidence blockers.
+- One-time parallel content-agent execution for all image metadata, translation, and explanation ranges has not yet been completed.
+- Durable docs do not yet document the required ticket add/change/delete lifecycle and linked-artifact cleanup rules for this clarification.
 
 ### Verification Evidence
 
@@ -248,6 +291,8 @@
 - Disposition: explanation coverage by deterministic fallback text is acceptable only as draft scaffolding. Final approved explanations must be ticket-specific, answer-specific, and image-specific where applicable.
 - Disposition: the Review Agent P1 findings are accepted as blocking architecture requirements. Implementation must address them through content changes, validator/test gates, evidence updates, and a fresh Review Agent pass.
 - Disposition: Orchestrator must not mark PR #63 or any successor PR ready for merge while draft, with skipped AI Review, with pending T099-T102/T109-T111/T114-T120, or with unresolved blocking findings.
+- Disposition: Analyst clarification about one-time parallel content agents is accepted. Implementation must use range-owned content-agent review for image metadata, translations, and explanations before final quality approval.
+- Disposition: Analyst clarification about ticket lifecycle docs is accepted. Durable docs update is required for final readiness and must cover add/change/delete flows plus shared-image cleanup semantics.
 
 ### Review Notes
 
@@ -257,3 +302,5 @@
 - Future Review Agent should inspect representative non-`b13.jpg` images for full visual metadata quality and reject records that could not recreate a close image.
 - Future Review Agent should inspect representative translations, including `b-fallback-011`, for Spanish residue, transliteration, wrappers, and dropped answer-critical meaning.
 - Future Review Agent should inspect representative explanations for correct-answer rationale, wrong-answer rationales, image-aware rationale where applicable, and generic filler.
+- Future Review Agent should inspect content-agent range evidence for every image, translation, and explanation shard in scope and verify no agent edited outside its assigned range.
+- Future Review Agent should inspect durable docs for ticket lifecycle coverage: add/change analysis requirements, delete cleanup requirements, evidence/index refresh, validation, and shared image metadata reference checks.

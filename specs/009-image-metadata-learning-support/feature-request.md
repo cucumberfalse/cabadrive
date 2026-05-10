@@ -34,6 +34,43 @@ Translated intent:
 
 The user later instructed that the final response for this turn should contain only the branch name.
 
+## User Clarification / Intake Update: Agent-Based Full Content Completion
+
+The user later clarified, while again emphasizing parallel work and role boundaries, that the image-analysis portion must be treated as a one-time content-production operation performed by agents that actually inspect the local image files.
+
+Clarified intent:
+
+- Image metadata must be produced from real visual analysis of the local question images by agents.
+- This is a one-time repository content task, not a permanent runtime service.
+- The expected execution model is to run a batch of agents in parallel over the image set so each assigned image range is visually inspected and described.
+- Image metadata must not be replaced by generation from ticket text, answer keys, topic-guide rationales, deterministic placeholders, baseline records, generic answer cues, or inferred metadata that does not come from looking at the image.
+- The feature is not an MVP or partial scaffold. Completion means all current tickets, all current text support, and all current images are fully handled.
+- All Russian translations must be complete and high quality across the full current question set.
+- All Russian explanations must be complete and high quality across the full current question set.
+- All image metadata must be complete and high quality across the full current image set.
+- Image analysis must be detailed enough to support the originally requested recreation-quality metadata and ticket-critical visual validation.
+
+This clarification supersedes any interpretation that placeholder image metadata, low-confidence baseline coverage, generic source-image descriptions, or draft/wrapped translations could satisfy the feature.
+
+## User Clarification / Intake Update: Agent-Based Translation, Explanation, And Ticket Lifecycle Flow
+
+The user further clarified that the same one-time agent-based content standard applies to Russian translations and Russian explanations, not only to image metadata.
+
+Clarified intent:
+
+- Russian translations must be produced or reviewed by assigned content agents as a one-time full-content completion task.
+- Russian explanations must be produced or reviewed by assigned content agents as a one-time full-content completion task.
+- Translation and explanation coverage must not be satisfied by a generator, template, glossary wrapper, transliteration pass, semi-automatic placeholder, or other mechanical fallback.
+- The parallel content-agent batch should cover all three artifact families at full quality: image metadata, Russian translations, and Russian explanations.
+- Content agents may work in parallel by assigned ranges, but each range must meet the same completion bar for every ticket, every answer choice, every explanation, and every image/usage in scope.
+- Architect should hand off to Implementation Agents with explicit range ownership and isolated worktree expectations because other orchestrators and agents are working in parallel.
+- Durable project documentation must describe the lifecycle for adding, changing, and deleting tickets.
+- When a ticket is added or materially changed, the documented lifecycle must require the relevant analysis/review workflows before the change can be considered complete: image metadata if an image exists, Russian translations, Russian explanations, quality evidence, and consistency validation.
+- When a ticket is deleted, the documented lifecycle must require deleting or updating related artifacts such as translation entries, explanation entries, evidence records, question-image usage mappings, and validation records.
+- Shared image metadata must be deleted only when no remaining ticket uses that image; otherwise only the deleted ticket's usage or critical-detail mapping should be removed.
+
+This clarification supersedes any interpretation that translation or explanation completion can be treated as generator output with a validation wrapper. The requested outcome is complete, high-quality, agent-reviewed content for the whole current ticket set plus documented maintenance rules for future ticket changes.
+
 ## Environment And Prefix Decision
 
 The Analyst work was performed in an isolated worktree:
@@ -197,6 +234,10 @@ Architect should convert these into formal acceptance criteria and verification 
 - The metadata is tied to the image path and image hash so stale metadata is detected when an image changes.
 - The metadata enumerates scene context, road layout, lanes, markings, visible signs/signals, vehicles, road users, gestures, object positions, object states, annotations, and relevant visual relationships where present.
 - The metadata includes enough detail to recreate a close visual approximation of the original image with an image-generation model.
+- The metadata for every image is based on direct inspection of the local image file by an assigned image-analysis agent, with reviewable evidence that the image was inspected.
+- Metadata inferred only from question text, answer keys, topic-guide rationales, filenames, hashes, placeholder templates, generic answer cues, or deterministic baseline generators is rejected.
+- Placeholder metadata, `source image` generic cues, low-confidence baseline descriptions, and records that say precise visual details are still uncertain cannot be marked complete or approved.
+- Architect should require a parallel-agent content workflow for the one-time image analysis, while preserving deterministic local validation for committed artifacts.
 - The metadata marks details that are important for answering each ticket.
 - Critical details can be linked to a question ID and, where relevant, the correct answer ID or wrong-answer trap.
 - `b-fallback-001` image metadata explicitly records that the subject is a cyclist, not merely a generic driver, and that the cyclist's right arm is extended straight/horizontally to the cyclist's right side.
@@ -209,13 +250,22 @@ Architect should convert these into formal acceptance criteria and verification 
 - All 460 current questions have Russian question translations and answer-choice translations.
 - Translation validation covers all 460 current questions, not only the currently translated subset.
 - Translation validation remains deterministic and offline, preferably with explicit local review evidence/fingerprints similar to the existing translation alignment model.
+- Draft translations, glossary wrappers, partially Spanish text, untranslated answer choices, or machine-looking placeholders cannot count as translation coverage.
+- Russian translations are completed or reviewed by assigned content agents as a one-time full-content operation; generator-only, template-only, glossary-only, transliteration-only, or semi-automatic placeholder output cannot count as done.
+- Translation quality expectations apply to every ticket and every answer choice, not only to examples or sampled items.
 - All 460 current questions have Russian explanations.
 - Explanation validation covers all 460 current questions, not only existing explanation entries.
 - Explanations explain why the correct answer is correct and, where the answer choices make it useful, why incorrect answers are incorrect.
 - Explanations for image-backed questions are consistent with the image metadata.
+- Draft explanations, filler rationales, copied topic labels, generic answer cues, or explanations that have not been checked against ticket text and image metadata cannot count as explanation coverage.
+- Russian explanations are completed or reviewed by assigned content agents as a one-time full-content operation; generator-only, template-only, copied-guide-only, or filler output cannot count as done.
+- Explanation quality expectations apply to every ticket, not only to image-backed questions or known failing examples.
 - Explanations that include legal, rule, procedure, numeric, traffic-sign, or licensing claims beyond direct ticket wording are traceable to appropriate current official sources or are kept ticket-specific and explicitly cautious.
 - Existing topic-guide answer explanations are either reused, synchronized, or intentionally kept separate from the main question-card explanation layer by an Architect decision.
 - Durable docs are updated if new content files, metadata schemas, validation gates, or learning-support coverage rules are introduced.
+- Durable docs are updated with a ticket lifecycle flow for adding, changing, and deleting tickets, including required image-metadata, translation, explanation, evidence, usage, and cleanup rules.
+- The ticket lifecycle flow requires added or materially changed tickets to pass the relevant content-agent analysis/review workflows before merge.
+- The ticket lifecycle flow requires deleted tickets to remove or update related translations, explanations, evidence, validation records, and question-image usages; shared image metadata is retained until no remaining ticket uses the image.
 - Local verification evidence includes content validation, unit tests for metadata/explanation validation, translation alignment coverage, and preflight.
 
 ## Clarified Assumptions
@@ -226,12 +276,20 @@ Architect should convert these into formal acceptance criteria and verification 
 - Questions without images still need Russian translations and explanations, but they do not need image metadata.
 - If the same image supports multiple questions, the visible-scene metadata may be shared, but the answer-critical detail mapping may need to be question-specific.
 - The request does not ask to generate or replace source images.
+- The image-analysis work is a one-time content completion effort carried out before merge by assigned agents inspecting local files, not an ongoing app feature.
+- Agent-based image analysis may be parallelized by image or question ranges, but each range still needs the same full-quality acceptance standard.
+- Parallel agents should be told to work only in their assigned isolated worktree/range to avoid conflicts with other orchestrators and agents.
+- Any automated helper may organize, shard, validate, or load content, but it may not stand in for direct visual inspection of the images.
 - The request does not ask to replace the fallback question bank or change content availability mode.
 - The request does not ask to make Russian text official or primary over Spanish source text.
 - The detailed image metadata is a learning/validation support artifact, not an official description of the exam image.
 - AI assistance may be useful for drafting image descriptions, translations, or explanations, but final committed validation should rely on deterministic local evidence and reviewable content, not live AI calls.
+- AI assistance for image metadata is acceptable only when the assigned agent actually views the local image and records visually grounded metadata; text-only inference is out of scope.
+- AI assistance for translations and explanations is acceptable only as assigned content-agent work with full-ticket review and quality responsibility, not as unattended generator output.
+- Translation, explanation, and image-metadata agents may be parallelized by ticket or artifact ranges, but the feature should still be treated as one complete content-quality outcome.
 - The existing translation-alignment evidence model is relevant precedent but may need to expand from 10 entries to complete coverage.
 - The existing topic guide has many guide-specific ticket explanations, but the user appears to be asking about the main question-card translation/explanation coverage. Architect should confirm or decide how these layers should relate.
+- Durable docs are part of this feature's expected output if they are the right place to record future ticket add/change/delete workflow; Analyst is intentionally not choosing the exact docs path.
 
 ## External Research
 
@@ -246,15 +304,22 @@ Architect should require current official-source verification during implementat
 - Image metadata can become subjective or inconsistent unless the schema constrains objects, states, relationships, critical details, and uncertainty.
 - Validation can easily prove only that metadata exists, not that it is visually true. The feature needs review evidence or another durable quality-control mechanism.
 - If image metadata is generated by an AI model and not reviewed, hallucinated objects or wrong gestures could become trusted validation data.
+- If image metadata is generated from ticket text or answer keys instead of direct image inspection, it can reproduce the same class of bug this feature is intended to prevent.
+- Parallel image-analysis agents may produce inconsistent detail levels unless Architect defines minimum quality expectations and reviewer evidence.
+- Parallel content work can create merge conflicts or duplicated edits unless work ranges and source-of-truth files are clearly assigned.
 - Some source images may be low-resolution, cropped, annotated, or visually ambiguous; metadata may need an uncertainty field rather than forced precision.
 - Explanation validation against metadata may create false positives if explanations use natural language that does not map cleanly to structured detail fields.
 - Explanation validation may create false confidence if it only checks keyword overlap.
 - Filling all translations and explanations can duplicate or diverge from existing topic-guide explanations unless Architect defines a source-of-truth relationship.
+- Translation and explanation content can appear complete while still being low-quality if produced by a deterministic generator, glossary substitution, transliteration, or copied template; the feature needs review expectations that catch this.
+- Parallel translation/explanation agents may produce inconsistent tone, terminology, depth, or explanation style unless Architect defines shared quality expectations and review evidence.
 - Expanded explanation coverage can drift into a broad legal/driving-school manual unless kept exam-focused.
 - Official traffic rules and GCBA materials can change; source-backed claims need currentness checks at implementation time.
 - The current question set is an unofficial fallback set. Full learning-support coverage must not imply official or complete GCBA category B bank coverage.
 - The image descriptions are detailed enough to recreate images; this may raise source-attribution and licensing-review concerns that Architect should consider in docs and metadata provenance.
 - Metadata tied only to image hash may become stale if question wording or answer choices change; answer-critical mappings likely need question/answer fingerprints too.
+- Future ticket deletion can leave stale translations, explanations, evidence, image usages, or orphaned metadata unless the documented lifecycle and validators require cleanup.
+- Shared image metadata can be accidentally deleted when one ticket is removed even though another ticket still uses the same image.
 
 ## Open Questions For Architect
 
@@ -268,6 +333,9 @@ Architect should require current official-source verification during implementat
 - How should ambiguous or low-quality images be represented without inventing details?
 - Should the new metadata live under `content/images/`, `content/questions/`, `content/validation/`, or another path?
 - Should generated image metadata have its own review evidence file with reviewer, reviewed date, image hash, and question/answer fingerprints?
+- What evidence should prove that an assigned image-analysis agent actually inspected each local image rather than inferring metadata from ticket text?
+- How should image ranges be assigned to parallel agents while keeping one consistent schema and quality bar?
+- What minimum sampling or full-review requirement should catch inconsistent or shallow agent-produced metadata before PR readiness?
 - Should explanation validation be deterministic schema/fingerprint validation, rule-based contradiction checks, human review evidence, or a combination?
 - How should validation prove that the old `b-fallback-001` left-arm/bent-arm explanation fails?
 - Should the main `content/explanations/ru.explanations.json` become the complete 460-question explanation layer, or should complete explanations be sourced from `content/guide/topic-study-guide.ru.json` and exported/synchronized?
@@ -277,7 +345,15 @@ Architect should require current official-source verification during implementat
 - How should complete translation evidence be generated and reviewed without relying on live network or LLM validation in CI?
 - How should implementation slices be partitioned so parallel agents can work without conflicting on one huge JSON file?
 - Should docs clarify that detailed image metadata is unofficial learning/validation support, not an official visual catalog?
+- How should Architect define the one-time parallel content-agent workflow across image metadata, Russian translations, and Russian explanations without turning generator output into accepted content?
+- What shared terminology, tone, and quality expectations should translation/explanation agents follow so parallel ranges read as one coherent learning-support layer?
+- Which durable docs should record the add/change/delete ticket lifecycle flow?
+- What exact lifecycle expectations should docs state for adding or changing tickets with images, adding or changing tickets without images, and deleting tickets that share image metadata with other tickets?
 
 ## Handoff Expectation
 
 Orchestrator should hand this feature folder to Architect next. Architect should create `spec.md`, `plan.md`, and `tasks.md` before any Implementation Agent changes product code, content files, validation scripts, tests, durable docs, image metadata, translations, or explanations.
+
+Architect should also update feature memory so the implementation gate explicitly rejects MVP/placeholder completion. The plan and tasks should require a one-time parallel-agent image-analysis workflow in which agents inspect the local images, plus full-quality completion gates for every current translation, explanation, ticket, and image metadata entry.
+
+Architect should additionally carry forward this latest clarification: translations and explanations must also be completed or reviewed by one-time parallel content-agent work, not by generator/template/transliteration output. Architect should also require a durable docs update that explains the future ticket lifecycle for adding, changing, and deleting tickets, including associated artifact cleanup and shared-image retention rules.
