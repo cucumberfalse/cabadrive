@@ -1,5 +1,5 @@
 import { BookMarked, BookOpen, CheckCircle2, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useEffect, useMemo, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
 import {
   data,
   assetUrl,
@@ -129,10 +129,33 @@ function QuestionImageFigure({
   showOverlay: boolean;
   showFallback: boolean;
 }) {
+  const [naturalSize, setNaturalSize] = useState<{ width: number; height: number }>();
+  const imagePath = question.image!.localPath;
+  const imageFrameStyle = naturalSize
+    ? ({
+        "--question-image-max-width-by-height": `${(360 * naturalSize.width) / naturalSize.height}px`
+      } as CSSProperties)
+    : undefined;
+
+  useEffect(() => {
+    setNaturalSize(undefined);
+  }, [imagePath]);
+
   return (
     <figure className={showOverlay ? "question-image has-explanation-overlay" : "question-image"}>
-      <div className="question-image-frame">
-        <img src={assetUrl(question.image!.localPath)} alt={question.image!.altEs} />
+      <div className="question-image-frame" style={imageFrameStyle}>
+        <img
+          src={assetUrl(imagePath)}
+          alt={question.image!.altEs}
+          onLoad={(event) => {
+            const { naturalWidth, naturalHeight } = event.currentTarget;
+            if (naturalWidth <= 0 || naturalHeight <= 0) return;
+            setNaturalSize((current) => {
+              if (current?.width === naturalWidth && current.height === naturalHeight) return current;
+              return { width: naturalWidth, height: naturalHeight };
+            });
+          }}
+        />
         {showOverlay && overlay && (
           <div className="image-explanation-overlay" data-testid="image-explanation-overlay" aria-hidden="true">
             {overlay.regions.map((region) => (
