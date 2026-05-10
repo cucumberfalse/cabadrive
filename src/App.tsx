@@ -1,22 +1,47 @@
-import { BookMarked, BookOpen, CheckCircle2, ClipboardList, Flag, Image as ImageIcon, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
+import { BookMarked, BookOpen, CheckCircle2, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
+import { useEffect, useMemo, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
 import {
   data,
   assetUrl,
   explanationByQuestion,
+  imageOverlayByQuestion,
   questionById,
   sourceById,
   translationByQuestion,
+  type ImageExplanationOverlay,
   type ProgressAnswer,
+  type ProcessGuideSection,
   type Question,
   type TopicGuideTicket
 } from "./data/content";
 import { DifficultyIndicator } from "./difficulty";
-import { isPassing, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
+import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process";
+type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
+type LearningTicketTimerState = {
+  remainingSeconds: number;
+  status: LearningTicketTimerStatus;
+  answeredAfterExpiry: boolean;
+};
+
+type LearningTicketTimerView = LearningTicketTimerState & {
+  onTogglePause: () => void;
+};
+
+type QuestionAttemptState = {
+  selectedAnswerId?: string;
+  showTranslation: boolean;
+  showExplanation: boolean;
+};
+
+const emptyAttemptState: QuestionAttemptState = {
+  selectedAnswerId: undefined,
+  showTranslation: false,
+  showExplanation: false
+};
 
 function topicLabel(topic: string) {
   const labels: Record<string, string> = {
@@ -32,12 +57,6 @@ function topicLabel(topic: string) {
     general: "Общее"
   };
   return labels[topic] || topic;
-}
-
-function formatDuration(totalSeconds: number) {
-  const minutes = Math.floor(Math.max(totalSeconds, 0) / 60);
-  const seconds = Math.max(totalSeconds, 0) % 60;
-  return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
 function guideStatusLabel(status: string) {
@@ -59,6 +78,113 @@ function sourceStatusLabel(status: string | undefined) {
   if (status === "current") return "источник проверен как текущий";
   if (status === "stale") return "источник требует обновления";
   return "статус источника требует проверки";
+}
+
+function processSourceStatusLabel(status: string) {
+  if (status === "checked_current") return "проверен как текущий";
+  if (status === "checked_current_with_historico_url") return "проверен как текущий; URL может вести через gcaba_historico";
+  if (status === "volatile_check_required") return "волатильные данные: проверить перед действием";
+  return "статус требует проверки";
+}
+
+function processCalloutLabel(section: ProcessGuideSection) {
+  if (section.calloutType === "required_step") return "Шаг процесса";
+  if (section.calloutType === "optional_preparation") return "Опциональная подготовка";
+  if (section.calloutType === "adjacent_path") return "Соседний путь";
+  return "Предупреждение";
+}
+
+function learningTimerStatusText(timer: LearningTicketTimerState) {
+  if (timer.answeredAfterExpiry) return "Ответ после лимита";
+  if (timer.status === "expired") return "Время вышло - билет пока не решен";
+  if (timer.status === "paused") return "Пауза";
+  if (timer.status === "answered") return "В темпе";
+  return "Мягкий лимит";
+}
+
+function initialLearningTimerState(targetSeconds: number): LearningTicketTimerState {
+  return {
+    remainingSeconds: targetSeconds,
+    status: "running",
+    answeredAfterExpiry: false
+  };
+}
+
+function completedLearningTimerState(targetSeconds: number): LearningTicketTimerState {
+  return {
+    remainingSeconds: targetSeconds,
+    status: "answered",
+    answeredAfterExpiry: false
+  };
+}
+
+function QuestionImageFigure({
+  question,
+  overlay,
+  showOverlay,
+  showFallback
+}: {
+  question: Question;
+  overlay?: ImageExplanationOverlay;
+  showOverlay: boolean;
+  showFallback: boolean;
+}) {
+  const imagePath = question.image!.localPath;
+  const imageSrc = assetUrl(imagePath);
+  const [naturalSize, setNaturalSize] = useState<{ src: string; width: number; height: number }>();
+  const currentNaturalSize = naturalSize?.src === imageSrc ? naturalSize : undefined;
+  const imageFrameStyle = currentNaturalSize
+    ? ({
+        "--question-image-max-width-by-height": `${(360 * currentNaturalSize.width) / currentNaturalSize.height}px`
+      } as CSSProperties)
+    : undefined;
+
+  return (
+    <figure className={showOverlay ? "question-image has-explanation-overlay" : "question-image"}>
+      <div className="question-image-frame" style={imageFrameStyle}>
+        <img
+          src={imageSrc}
+          alt={question.image!.altEs}
+          onLoad={(event) => {
+            const { naturalWidth, naturalHeight } = event.currentTarget;
+            if (naturalWidth <= 0 || naturalHeight <= 0) return;
+            if (event.currentTarget.getAttribute("src") !== imageSrc) return;
+            setNaturalSize((current) => {
+              if (current?.src === imageSrc && current.width === naturalWidth && current.height === naturalHeight) return current;
+              return { src: imageSrc, width: naturalWidth, height: naturalHeight };
+            });
+          }}
+        />
+        {showOverlay && overlay && (
+          <div className="image-explanation-overlay" data-testid="image-explanation-overlay" aria-hidden="true">
+            {overlay.regions.map((region) => (
+              <span
+                key={region.overlayRegionId}
+                className={`image-overlay-region ${region.sourceRole === "answer_critical_highlight" ? "critical" : ""} ${region.sourceRole === "background_irrelevant_dim" || region.sourceRole === "distractor_trap" ? "dim" : ""} ${region.sourceRole === "supporting" ? "supporting" : ""}`}
+                style={{
+                  left: `${region.rect.x}%`,
+                  top: `${region.rect.y}%`,
+                  width: `${region.rect.width}%`,
+                  height: `${region.rect.height}%`
+                }}
+                data-overlay-role={region.sourceRole}
+                data-relevance-id={region.relevanceId}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <figcaption>
+        <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса
+        {showOverlay && overlay ? <span> · включено проверенное визуальное пояснение</span> : null}
+      </figcaption>
+      {showFallback && (
+        <p className="image-overlay-fallback" data-testid="image-overlay-fallback">
+          Для этого изображения пока нет проверенного overlay-пояснения; показана обычная локальная картинка без угаданных подсветок.
+        </p>
+      )}
+    </figure>
+  );
 }
 
 function StatusStrip({ progress }: { progress: StoredProgress }) {
@@ -92,37 +218,61 @@ function QuestionCard({
   onAnswered,
   difficult,
   onToggleDifficult,
+  attemptState,
+  onAttemptStateChange,
+  footerNavigation,
   revealAfterAnswer = true,
-  allowRepeatedAnswers = false
+  allowRepeatedAnswers = false,
+  learningTimer
 }: {
   question: Question;
   mode: "learning" | "exam" | "mistakes";
   onAnswered: (answer: ProgressAnswer) => void;
   difficult: boolean;
   onToggleDifficult: () => void;
+  attemptState?: QuestionAttemptState;
+  onAttemptStateChange?: (state: QuestionAttemptState) => void;
+  footerNavigation?: ReactNode;
   revealAfterAnswer?: boolean;
   allowRepeatedAnswers?: boolean;
+  learningTimer?: LearningTicketTimerView;
 }) {
-  const [selected, setSelected] = useState<string | undefined>();
-  const [showTranslation, setShowTranslation] = useState(false);
-  const [showExplanation, setShowExplanation] = useState(false);
+  const [selected, setSelected] = useState<string | undefined>(attemptState?.selectedAnswerId);
+  const [showTranslation, setShowTranslation] = useState(attemptState?.showTranslation ?? false);
+  const [showExplanation, setShowExplanation] = useState(attemptState?.showExplanation ?? false);
   const translation = translationByQuestion.get(question.id);
   const explanation = explanationByQuestion.get(question.id);
   const source = sourceById.get(question.sourceId);
+  const imageOverlay = question.image ? imageOverlayByQuestion.get(question.id) : undefined;
   const answered = Boolean(selected);
   const correct = selected === question.correctAnswerId;
   const canToggleSupport = mode !== "exam";
   const translationId = `translation-${question.id}`;
+  const showImageOverlay = Boolean(canToggleSupport && answered && showExplanation && imageOverlay);
+  const showImageOverlayFallback = Boolean(canToggleSupport && answered && showExplanation && question.image && !imageOverlay);
 
   useEffect(() => {
-    setSelected(undefined);
-    setShowTranslation(false);
-    setShowExplanation(false);
-  }, [mode, question.id]);
+    setSelected(attemptState?.selectedAnswerId);
+    setShowTranslation(attemptState?.showTranslation ?? false);
+    setShowExplanation(attemptState?.showExplanation ?? false);
+  }, [mode, question.id, attemptState?.selectedAnswerId, attemptState?.showTranslation, attemptState?.showExplanation]);
+
+  function updateAttemptState(nextState: QuestionAttemptState) {
+    onAttemptStateChange?.(nextState);
+  }
 
   function selectAnswer(answerId: string) {
     if (answered && !allowRepeatedAnswers) return;
+    const nextShowTranslation = canToggleSupport ? true : showTranslation;
+    const nextShowExplanation = canToggleSupport ? true : showExplanation;
     setSelected(answerId);
+    setShowTranslation(nextShowTranslation);
+    setShowExplanation(nextShowExplanation);
+    updateAttemptState({
+      selectedAnswerId: answerId,
+      showTranslation: nextShowTranslation,
+      showExplanation: nextShowExplanation
+    });
     onAnswered({
       questionId: question.id,
       selectedAnswerId: answerId,
@@ -134,7 +284,15 @@ function QuestionCard({
 
   function toggleTranslation() {
     if (!canToggleSupport) return;
-    setShowTranslation((value) => !value);
+    setShowTranslation((value) => {
+      const nextValue = !value;
+      updateAttemptState({
+        selectedAnswerId: selected,
+        showTranslation: nextValue,
+        showExplanation
+      });
+      return nextValue;
+    });
   }
 
   function handleQuestionKeyDown(event: KeyboardEvent<HTMLDivElement>) {
@@ -161,12 +319,38 @@ function QuestionCard({
   return (
     <article className="question-card" data-testid="question-card">
       <div className="question-meta">
+        {mode === "learning" && <span>Билет {question.id}</span>}
         <span>Категория B</span>
         <span>{question.jurisdiction}</span>
         <span>{question.topics.map(topicLabel).join(", ")}</span>
         {mode !== "exam" && <DifficultyIndicator level={question.difficulty} label="Сложность билета" />}
         {question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
       </div>
+
+      {learningTimer && (
+        <div
+          className={`learning-timer ${learningTimer.status} ${learningTimer.answeredAfterExpiry ? "after-limit" : ""}`}
+          data-testid="learning-ticket-timer"
+          aria-label={`Темп билета: осталось ${formatDuration(learningTimer.remainingSeconds)}; ${learningTimerStatusText(learningTimer)}`}
+        >
+          <div className="learning-timer-main">
+            <Timer size={18} aria-hidden="true" />
+            <span className="learning-timer-label">Темп билета</span>
+            <strong data-testid="learning-ticket-timer-time">{formatDuration(learningTimer.remainingSeconds)}</strong>
+            <span className="learning-timer-state">{learningTimerStatusText(learningTimer)}</span>
+          </div>
+          {(learningTimer.status === "running" || learningTimer.status === "paused") && (
+            <button
+              type="button"
+              className="tool-button timer-toggle"
+              onClick={learningTimer.onTogglePause}
+              aria-label={learningTimer.status === "running" ? "Поставить таймер билета на паузу" : "Продолжить таймер билета"}
+            >
+              {learningTimer.status === "running" ? "Пауза" : "Продолжить"}
+            </button>
+          )}
+        </div>
+      )}
 
       {officialBlock}
 
@@ -177,17 +361,30 @@ function QuestionCard({
       )}
 
       {question.image && (
-        <figure className="question-image">
-          <img src={assetUrl(question.image.localPath)} alt={question.image.altEs} />
-          <figcaption>
-            <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса
-          </figcaption>
-        </figure>
+        <QuestionImageFigure
+          question={question}
+          overlay={imageOverlay}
+          showOverlay={showImageOverlay}
+          showFallback={showImageOverlayFallback}
+        />
       )}
 
       {canToggleSupport && (
         <div className="actions-row">
-          <button type="button" className="tool-button" onClick={() => setShowExplanation((value) => !value)}>
+          <button
+            type="button"
+            className="tool-button"
+            aria-expanded={showExplanation}
+            onClick={() => setShowExplanation((value) => {
+              const nextValue = !value;
+              updateAttemptState({
+                selectedAnswerId: selected,
+                showTranslation,
+                showExplanation: nextValue
+              });
+              return nextValue;
+            })}
+          >
             <BookOpen size={18} aria-hidden="true" /> Пояснение
           </button>
           <button type="button" className={difficult ? "tool-button active" : "tool-button"} onClick={onToggleDifficult}>
@@ -230,6 +427,8 @@ function QuestionCard({
         </aside>
       )}
 
+      {footerNavigation}
+
       <footer className="source-line">
         Источник: {source?.title || question.sourceId}. Статус вопроса: неофициальная B-практика, нужна внешняя проверка.
       </footer>
@@ -237,20 +436,83 @@ function QuestionCard({
   );
 }
 
+function QuestionFlowNavigation({
+  position,
+  total,
+  onPrevious,
+  onNext,
+  collectionLabel
+}: {
+  position: number;
+  total: number;
+  onPrevious: () => void;
+  onNext: () => void;
+  collectionLabel: string;
+}) {
+  const isFirst = position <= 0;
+  const isLast = total === 0 || position >= total - 1;
+
+  return (
+    <nav className="question-flow-nav" aria-label={`Навигация по ${collectionLabel}`}>
+      <button type="button" className="tool-button" onClick={onPrevious} disabled={isFirst} aria-disabled={isFirst}>
+        Предыдущий
+      </button>
+      <span aria-live="polite">
+        {total > 0 ? `${position + 1} / ${total}` : "0 / 0"}
+      </span>
+      <button type="button" className="tool-button" onClick={onNext} disabled={isLast} aria-disabled={isLast}>
+        Следующий
+      </button>
+    </nav>
+  );
+}
+
 function LearnView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
+  const [timerStates, setTimerStates] = useState<Record<string, LearningTicketTimerState>>({});
+  const [attemptsByQuestion, setAttemptsByQuestion] = useState<Record<string, QuestionAttemptState>>({});
   const results = useMemo(() => searchQuestions(query), [query]);
-  const question = results[index % Math.max(results.length, 1)] || data.questions[0];
-  const difficult = progress.difficultQuestionIds.includes(question.id);
+  const hasActiveSearch = query.trim().length > 0;
+  const hasResults = results.length > 0;
+  const currentIndex = results.length ? Math.min(index, results.length - 1) : 0;
+  const question = results[currentIndex];
+  const difficult = question ? progress.difficultQuestionIds.includes(question.id) : false;
+  const timerTargetSeconds = learningTicketTargetSeconds(data.examFormat);
+  const currentAttemptState = question ? attemptsByQuestion[question.id] : undefined;
+  const restoredTimerState = timerTargetSeconds && currentAttemptState?.selectedAnswerId
+    ? completedLearningTimerState(timerTargetSeconds)
+    : undefined;
+  const currentTimerState = question && timerTargetSeconds
+    ? timerStates[question.id] ?? restoredTimerState ?? initialLearningTimerState(timerTargetSeconds)
+    : undefined;
+
+  useEffect(() => {
+    setIndex(0);
+  }, [query]);
 
   function record(answer: ProgressAnswer) {
+    if (!question) return;
+    if (timerTargetSeconds) {
+      setTimerStates((current) => {
+        const state = current[question.id] ?? initialLearningTimerState(timerTargetSeconds);
+        return {
+          ...current,
+          [question.id]: {
+            ...state,
+            status: "answered",
+            answeredAfterExpiry: state.answeredAfterExpiry || state.status === "expired" || state.remainingSeconds <= 0
+          }
+        };
+      });
+    }
     const next = { ...progress, answers: [...progress.answers, answer] };
     setProgress(next);
     saveProgress(next);
   }
 
   function toggleDifficult() {
+    if (!question) return;
     const exists = progress.difficultQuestionIds.includes(question.id);
     const next = {
       ...progress,
@@ -260,18 +522,106 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
     saveProgress(next);
   }
 
+  function updateQuery(nextQuery: string) {
+    setQuery(nextQuery);
+    setIndex(0);
+  }
+
+  function toggleCurrentTimer() {
+    if (!question || !timerTargetSeconds) return;
+    setTimerStates((current) => {
+      const state = current[question.id] ?? initialLearningTimerState(timerTargetSeconds);
+      if (state.status !== "running" && state.status !== "paused") return current;
+      return {
+        ...current,
+        [question.id]: {
+          ...state,
+          status: state.status === "running" ? "paused" : "running"
+        }
+      };
+    });
+  }
+
+  useEffect(() => {
+    if (!question || !timerTargetSeconds) return;
+    setTimerStates((current) => {
+      if (current[question.id]) return current;
+      return {
+        ...current,
+        [question.id]: currentAttemptState?.selectedAnswerId
+          ? completedLearningTimerState(timerTargetSeconds)
+          : initialLearningTimerState(timerTargetSeconds)
+      };
+    });
+  }, [question?.id, timerTargetSeconds, currentAttemptState?.selectedAnswerId]);
+
+  useEffect(() => {
+    if (!question || !timerTargetSeconds || currentTimerState?.status !== "running") return undefined;
+    const timer = window.setInterval(() => {
+      setTimerStates((current) => {
+        const state = current[question.id];
+        if (!state || state.status !== "running") return current;
+        if (state.remainingSeconds <= 1) {
+          return {
+            ...current,
+            [question.id]: {
+              ...state,
+              remainingSeconds: 0,
+              status: "expired"
+            }
+          };
+        }
+        return {
+          ...current,
+          [question.id]: {
+            ...state,
+            remainingSeconds: state.remainingSeconds - 1
+          }
+        };
+      });
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [question?.id, timerTargetSeconds, currentTimerState?.status]);
+
   return (
     <section className="workspace">
       <div className="toolbar">
         <label className="search-box">
           <Search size={18} aria-hidden="true" />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Поиск по испанскому, русскому, теме" />
+          <input value={query} onChange={(event) => updateQuery(event.target.value)} placeholder="Поиск по испанскому, русскому, теме" />
         </label>
-        <button type="button" className="tool-button" onClick={() => setIndex((value) => value + 1)}>
-          Следующий
-        </button>
       </div>
-      <QuestionCard key={question.id} question={question} mode="learning" onAnswered={record} difficult={difficult} onToggleDifficult={toggleDifficult} />
+      {hasResults && question ? (
+        <QuestionCard
+          key={question.id}
+          question={question}
+          mode="learning"
+          onAnswered={record}
+          difficult={difficult}
+          onToggleDifficult={toggleDifficult}
+          attemptState={attemptsByQuestion[question.id] || emptyAttemptState}
+          onAttemptStateChange={(nextState) => setAttemptsByQuestion((current) => ({ ...current, [question.id]: nextState }))}
+          learningTimer={currentTimerState ? { ...currentTimerState, onTogglePause: toggleCurrentTimer } : undefined}
+          footerNavigation={(
+            <QuestionFlowNavigation
+              position={currentIndex}
+              total={results.length}
+              collectionLabel="результатам обучения"
+              onPrevious={() => setIndex((value) => Math.max(value - 1, 0))}
+              onNext={() => setIndex((value) => Math.min(value + 1, Math.max(results.length - 1, 0)))}
+            />
+          )}
+        />
+      ) : (
+        <div className="empty-state" role="status">
+          <h2>Ничего не найдено</h2>
+          <p>
+            {hasActiveSearch
+              ? "В текущей локальной базе нет вопросов по этому запросу. Измените поиск, чтобы продолжить обучение внутри найденной коллекции."
+              : "В локальной базе пока нет доступных вопросов для обучения."}
+          </p>
+        </div>
+      )}
     </section>
   );
 }
@@ -370,8 +720,15 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
 }
 
 function MistakesView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
+  const [index, setIndex] = useState(0);
+  const [attemptsByQuestion, setAttemptsByQuestion] = useState<Record<string, QuestionAttemptState>>({});
   const mistakes = mistakesFromHistory(progress.answers);
-  const question = data.questions.find((item) => item.id === mistakes[0]?.questionId) || data.questions[0];
+  const currentIndex = mistakes.length ? Math.min(index, mistakes.length - 1) : 0;
+  const question = mistakes.length ? data.questions.find((item) => item.id === mistakes[currentIndex]?.questionId) : undefined;
+
+  useEffect(() => {
+    setIndex((value) => Math.min(value, Math.max(mistakes.length - 1, 0)));
+  }, [mistakes.length]);
 
   function record(answer: ProgressAnswer) {
     const next = { ...progress, answers: [...progress.answers, answer] };
@@ -384,21 +741,45 @@ function MistakesView({ progress, setProgress }: { progress: StoredProgress; set
       <aside className="side-list">
         <h2>Ошибки</h2>
         {mistakes.length ? mistakes.slice(0, 12).map((mistake) => (
-          <p className="mistake-list-row" key={mistake.questionId}>
+          <button
+            type="button"
+            className={mistake.questionId === question?.id ? "mistake-link active" : "mistake-link"}
+            key={mistake.questionId}
+            onClick={() => setIndex(mistakes.findIndex((item) => item.questionId === mistake.questionId))}
+          >
             <strong>{mistake.wrong}x</strong>
             <span>{mistake.questionId}</span>
             {questionById.get(mistake.questionId) && <DifficultyIndicator level={questionById.get(mistake.questionId)!.difficulty} compact />}
-          </p>
+          </button>
         )) : <p>Ошибок пока нет. Ответьте на пару вопросов в обучении.</p>}
       </aside>
-      <QuestionCard
-        question={question}
-        mode="mistakes"
-        onAnswered={record}
-        difficult={progress.difficultQuestionIds.includes(question.id)}
-        onToggleDifficult={() => undefined}
-        allowRepeatedAnswers
-      />
+      {question ? (
+        <QuestionCard
+          key={question.id}
+          question={question}
+          mode="mistakes"
+          onAnswered={record}
+          difficult={progress.difficultQuestionIds.includes(question.id)}
+          onToggleDifficult={() => undefined}
+          attemptState={attemptsByQuestion[question.id] || emptyAttemptState}
+          onAttemptStateChange={(nextState) => setAttemptsByQuestion((current) => ({ ...current, [question.id]: nextState }))}
+          footerNavigation={(
+            <QuestionFlowNavigation
+              position={currentIndex}
+              total={mistakes.length}
+              collectionLabel="ошибкам"
+              onPrevious={() => setIndex((value) => Math.max(value - 1, 0))}
+              onNext={() => setIndex((value) => Math.min(value + 1, Math.max(mistakes.length - 1, 0)))}
+            />
+          )}
+          allowRepeatedAnswers
+        />
+      ) : (
+        <div className="empty-state" role="status">
+          <h2>Ошибок пока нет</h2>
+          <p>Здесь появятся только вопросы, на которые вы уже ответили неверно. Сейчас коллекция ошибок пуста.</p>
+        </div>
+      )}
     </section>
   );
 }
@@ -456,6 +837,7 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
   const question = questionById.get(ticket.questionId);
   const explanations = explanationByAnswer(ticket);
   const localImagePath = safeLocalImagePath(question, ticket);
+  const translation = translationByQuestion.get(ticket.questionId);
   const source = question ? sourceById.get(question.sourceId) : undefined;
   const correctAnswer = question?.answers.find((answer) => answer.id === question.correctAnswerId);
 
@@ -475,12 +857,22 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
         <span>Категория {question.category}</span>
         <span>{question.jurisdiction}</span>
         <DifficultyIndicator level={question.difficulty} label="Сложность билета" />
-        <span>Статус: неофициальная B-практика</span>
       </div>
       <div className="official-block">
         <span className="block-label">Испанский текст из canonical question</span>
         <h3>{question.officialTextEs}</h3>
       </div>
+      {translation ? (
+        <aside className="support-block translation materials-translation">
+          <span className="block-label">Неофициальный русский перевод</span>
+          <p>{translation.questionTextRu}</p>
+        </aside>
+      ) : (
+        <aside className="support-block translation materials-translation missing-translation">
+          <span className="block-label">Русский перевод</span>
+          <p>Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.</p>
+        </aside>
+      )}
       {localImagePath && (
         <figure className="question-image materials-image">
           <img src={assetUrl(localImagePath)} alt={question.image?.altEs || `Изображение билета ${question.id}`} />
@@ -503,6 +895,7 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
             <div className={isCorrectAnswer ? "material-answer correct" : "material-answer"} role="listitem" key={answer.id}>
               <div>
                 <strong>{answer.officialTextEs}</strong>
+                {translation?.answerTranslations[answer.id] && <small className="answer-translation">{translation.answerTranslations[answer.id]}</small>}
                 {isCorrectAnswer && <span className="answer-badge">Правильный ответ</span>}
               </div>
               <p>{answerExplanation?.explanationRu || "Пояснение для этого варианта пока не связано с материалом."}</p>
@@ -635,6 +1028,150 @@ function TopicGuideView() {
   );
 }
 
+function ProcessGuideView() {
+  const guide = data.cabaExamProcessGuide;
+  const sourceByProcessId = new Map(guide.sources.map((source) => [source.id, source]));
+  const stepSections = guide.sections.filter((section) => section.calloutType === "required_step");
+  const supportingSections = guide.sections.filter((section) => section.calloutType !== "required_step");
+
+  function renderSources(section: ProcessGuideSection) {
+    return (
+      <div className="process-source-list" aria-label={`Источники для ${section.titleRu}`}>
+        {section.sourceIds.map((sourceId) => {
+          const source = sourceByProcessId.get(sourceId);
+          if (!source) return null;
+          return (
+            <a href={source.url} target="_blank" rel="noreferrer" key={source.id}>
+              <span>{source.title}</span>
+              <small>Проверено {source.checkedAt} · {processSourceStatusLabel(source.currentnessStatus)}</small>
+            </a>
+          );
+        })}
+      </div>
+    );
+  }
+
+  function renderSection(section: ProcessGuideSection, index?: number) {
+    return (
+      <article className="process-section" key={section.id} data-testid={`process-section-${section.id}`}>
+        <div className="process-section-heading">
+          <div>
+            <span className="block-label">{index === undefined ? processCalloutLabel(section) : `Шаг ${index + 1}`}</span>
+            <h3>{section.titleRu}</h3>
+          </div>
+          <span>{processCalloutLabel(section)}</span>
+        </div>
+        {section.summaryRu && <p className="muted">{section.summaryRu}</p>}
+        {section.bodyRu.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+        {section.spanishTerms?.length ? (
+          <div className="process-term-row" aria-label={`Испанские термины для ${section.titleRu}`}>
+            {section.spanishTerms.map((term) => (
+              <span key={term}>{term}</span>
+            ))}
+          </div>
+        ) : null}
+        {section.volatilityWarningRu && (
+          <aside className="support-block process-warning">
+            <span className="block-label">Волатильная информация</span>
+            <p>{section.volatilityWarningRu}</p>
+          </aside>
+        )}
+        {renderSources(section)}
+      </article>
+    );
+  }
+
+  return (
+    <section className="process-view" aria-labelledby="process-title">
+      <header className="materials-header process-header">
+        <div>
+          <p className="eyebrow">Процесс</p>
+          <h2 id="process-title">{guide.titleRu}</h2>
+          <p>{guide.primaryScope.audienceRu}</p>
+        </div>
+        <div className="materials-status" aria-label="Статус процессного гайда">
+          <span>{guideContentStatusLabel(guide.contentStatus)}</span>
+          <span>Проверено {guide.lastReviewedAt}</span>
+          <span>{guide.primaryScope.jurisdiction} · {guide.primaryScope.category} · {guide.primaryScope.procedure}</span>
+        </div>
+      </header>
+
+      <div className="process-alerts">
+        <aside className="support-block">
+          <span className="block-label">Неофициальная русская поддержка</span>
+          <p>{guide.disclaimerRu}</p>
+          <p>{guide.officialActionWarningRu}</p>
+        </aside>
+        <aside className="support-block process-warning">
+          <span className="block-label">Проверяйте перед действием</span>
+          <p>{guide.volatilityWarningRu}</p>
+        </aside>
+      </div>
+
+      <section className="process-grid" aria-labelledby="process-steps-title">
+        <div className="process-main">
+          <div className="materials-topic-heading">
+            <div>
+              <span className="block-label">B1/private car Otorgamiento</span>
+              <h2 id="process-steps-title">Официальная последовательность</h2>
+              <p>Сжатая русская карта того, что обычно происходит до и во время exam day.</p>
+            </div>
+          </div>
+          <div className="process-section-list">
+            {stepSections.map((section, index) => renderSection(section, index))}
+          </div>
+        </div>
+
+        <aside className="process-aside">
+          <section className="process-links" aria-labelledby="official-links-title">
+            <h3 id="official-links-title"><ExternalLink size={18} aria-hidden="true" /> Официальные ссылки</h3>
+            {guide.officialLinks.map((group) => (
+              <div className="process-link-group" key={group.id}>
+                <h4>{group.titleRu}</h4>
+                {group.links.map((link) => {
+                  const source = sourceByProcessId.get(link.sourceId);
+                  return (
+                    <a href={link.url} target="_blank" rel="noreferrer" key={`${group.id}-${link.sourceId}`}>
+                      <span>{link.labelRu}</span>
+                      {source && <small>{source.officialOwner} · проверено {source.checkedAt}</small>}
+                    </a>
+                  );
+                })}
+              </div>
+            ))}
+          </section>
+        </aside>
+      </section>
+
+      <section className="materials-section" aria-labelledby="supporting-process-title">
+        <h2 id="supporting-process-title">Соседние пути и предупреждения</h2>
+        <div className="process-support-grid">
+          {supportingSections.map((section) => renderSection(section))}
+        </div>
+      </section>
+
+      <section className="materials-section" aria-labelledby="process-glossary-title">
+        <h2 id="process-glossary-title">Испанские термины процесса</h2>
+        <div className="process-glossary-grid">
+          {guide.glossary.map((term) => (
+            <article className="materials-term process-glossary-term" key={term.id}>
+              <strong>{term.termEs}</strong>
+              <p>{term.translationRu}</p>
+              <small>{term.explanationRu}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <footer className="source-line process-footnote">
+        <FileText size={16} aria-hidden="true" /> Изображения не включены: для первого slice не было необходимости добавлять официальные изображения; так сохраняется offline/local-first режим без риска устаревших или персональных данных.
+      </footer>
+    </section>
+  );
+}
+
 export function App() {
   const [view, setView] = useState<View>("learn");
   const [progress, setProgress] = useState(loadProgress);
@@ -664,6 +1201,7 @@ export function App() {
         <button className={view === "mistakes" ? "active" : ""} onClick={() => setView("mistakes")}><XCircle size={18} /> Ошибки</button>
         <button className={view === "vocabulary" ? "active" : ""} onClick={() => setView("vocabulary")}><Search size={18} /> Словарь</button>
         <button className={view === "materials" ? "active" : ""} onClick={() => setView("materials")}><BookMarked size={18} /> Материалы</button>
+        <button className={view === "process" ? "active" : ""} onClick={() => setView("process")}><MapPinned size={18} /> Процесс</button>
         <button className={view === "guide" ? "active" : ""} onClick={() => setView("guide")}><Flag size={18} /> CABA/RF</button>
       </nav>
 
@@ -672,6 +1210,7 @@ export function App() {
       {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}
+      {view === "process" && <ProcessGuideView />}
       {view === "guide" && <GuideView />}
     </main>
   );

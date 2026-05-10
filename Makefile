@@ -5,7 +5,7 @@ build:
 
 up:
 	docker compose up -d
-	@echo "Cabadrive is available at http://localhost:5173"
+	@echo "Cabadrive is available at http://localhost:$${CABADRIVE_HOST_PORT:-5173}"
 
 down:
 	docker compose down

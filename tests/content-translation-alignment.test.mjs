@@ -53,6 +53,16 @@ function validate({ question = baseQuestion, translation = baseTranslation, evid
   });
 }
 
+function validateFullQuality({ question = baseQuestion, translation = baseTranslation, evidence = evidenceFor(question, translation) } = {}) {
+  return validateTranslationAlignment({
+    questions: [question],
+    translations: [translation],
+    evidence,
+    locale: "ru",
+    requireFullQuality: true
+  });
+}
+
 test("current translation content has approved fresh alignment evidence", () => {
   const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
   const translations = JSON.parse(readFileSync("content/translations/ru.translations.json", "utf8"));
@@ -86,9 +96,42 @@ test("translation referencing a missing question fails validation", () => {
   assert(errors.includes("missing-question: translation references missing question."));
 });
 
+test("full-quality translation gate rejects wrappers, Spanish residue, and transliteration", () => {
+  const translation = {
+    questionId: "q1",
+    questionTextRu: "Учебный перевод-смысл: ¿Qué indica esta señal?",
+    answerTranslations: {
+      "q1-a1": "Смысл варианта: Prohibido estacionar.",
+      "q1-a2": "Giro a la derecha."
+    }
+  };
+  const errors = validateFullQuality({ translation });
+  assert(errors.includes("q1: questionTextRu contains draft-wrapper, untranslated Spanish, transliteration, or unsupported Latin residue."));
+  assert(
+    errors.includes(
+      "q1: answer translation for q1-a1 contains draft-wrapper, untranslated Spanish, transliteration, or unsupported Latin residue."
+    )
+  );
+  assert(
+    errors.includes(
+      "q1: answer translation for q1-a2 contains draft-wrapper, untranslated Spanish, transliteration, or unsupported Latin residue."
+    )
+  );
+});
+
 test("missing translation alignment evidence fails validation", () => {
   const errors = validate({ evidence: { locale: "ru", version: 1, entries: [] } });
   assert(errors.includes("q1: missing approved translation alignment evidence."));
+});
+
+test("missing current question translation fails full-coverage validation", () => {
+  const errors = validateTranslationAlignment({
+    questions: [baseQuestion],
+    translations: [],
+    evidence: { locale: "ru", version: 1, entries: [] },
+    locale: "ru"
+  });
+  assert(errors.includes("q1: missing translation entry."));
 });
 
 test("stale source and translation fingerprints fail validation", () => {

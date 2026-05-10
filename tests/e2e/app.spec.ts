@@ -2,9 +2,14 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 
 const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
+const translations = JSON.parse(readFileSync("content/translations/ru.translations.json", "utf8"));
+const explanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
+const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
+const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
+const explanationByQuestionId = new Map(explanations.map((explanation: { questionId: string }) => [explanation.questionId, explanation]));
 const difficultyAria: Record<string, string> = {
   green: "Сложность: зеленый, легко",
   blue: "Сложность: синий, обычная",
@@ -21,11 +26,22 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(page.getByText("unofficial category B practice set")).toBeVisible();
   await expect(page.getByRole("heading", { name: /Тренажер теории/ })).toBeVisible();
   const card = page.getByTestId("question-card");
+  await expect(card.getByText(`Билет ${questions[0].id}`, { exact: true })).toBeVisible();
+  await expect(page.getByTestId("learning-ticket-timer")).toContainText("Темп билета");
+  await expect(page.getByTestId("learning-ticket-timer-time")).toHaveText("1:15");
+  await expect(page.locator(".toolbar").getByRole("button", { name: "Следующий" })).toHaveCount(0);
+  const bottomNav = card.locator(".question-flow-nav");
+  await expect(bottomNav).toBeVisible();
+  await expect(bottomNav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
+  await expect(bottomNav.getByRole("button", { name: "Следующий" })).toBeEnabled();
   const questionToggle = card.getByRole("button", { name: /¿Qué indica esta seña/ });
   await expect(card.locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(card.locator("img")).toBeVisible();
+  await expect(card.getByTestId("image-explanation-overlay")).toHaveCount(0);
+  await expect(card.getByTestId("image-overlay-fallback")).toHaveCount(0);
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
   await expect(page.getByText("Обгон справа.")).toHaveCount(0);
+  await expect(page.locator(".support-block.explanation")).toHaveCount(0);
   await expect(page.getByText("Неофициальный перевод")).toHaveCount(0);
   await questionToggle.click();
   await expect(page.getByText("Что означает этот жест?")).toBeVisible();
@@ -56,21 +72,263 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await page.getByRole("button", { name: /Сложный/ }).click();
   await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
   await expect(page.locator(".result")).toBeVisible();
+  await expect(page.locator(".support-block.translation")).toBeVisible();
+  await expect(page.locator(".support-block.explanation")).toContainText((explanationByQuestionId.get(questions[0].id) as { textRu: string }).textRu);
+  await expect(card.getByTestId("image-explanation-overlay")).toBeVisible();
+  await expect(card.locator("[data-overlay-role='answer_critical_highlight']")).toBeVisible();
+  await expect(card.locator("[data-overlay-role='background_irrelevant_dim']")).toHaveCount(2);
   await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await bottomNav.getByRole("button", { name: "Следующий" }).click();
+  await expect(page.getByText(questions[1].officialTextEs)).toBeVisible();
+  await page.getByTestId("question-card").locator(".question-flow-nav").getByRole("button", { name: "Предыдущий" }).click();
+  await expect(page.getByText(questions[0].officialTextEs)).toBeVisible();
+  await expect(page.locator(".result")).toBeVisible();
+  await expect(page.locator(".support-block.translation")).toBeVisible();
+  await expect(page.locator(".support-block.explanation")).toContainText((explanationByQuestionId.get(questions[0].id) as { textRu: string }).textRu);
   await page.getByRole("button", { name: /Ошибки/ }).click();
   await expect(page.getByRole("heading", { name: "Ошибки" })).toBeVisible();
   await expect(page.locator(".side-list").locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(page.getByTestId("question-card").locator(`[aria-label="${difficultyAria[questions[0].difficulty]}"]`)).toBeVisible();
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
+  await expect(page.locator(".support-block.explanation")).toHaveCount(0);
+  const mistakesNav = page.getByTestId("question-card").locator(".question-flow-nav");
+  await expect(mistakesNav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
+  await expect(mistakesNav.getByRole("button", { name: "Следующий" })).toBeDisabled();
   const mistakeToggle = page.getByTestId("question-card").getByRole("button", { name: /¿Qué indica esta seña/ });
   await mistakeToggle.click();
   await expect(page.getByText("Что означает этот жест?")).toBeVisible();
   await mistakeToggle.click();
   await expect(page.getByText("Что означает этот жест?")).toHaveCount(0);
   await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect(page.getByText("Что означает этот жест?")).toBeVisible();
+  await expect(page.locator(".support-block.explanation")).toContainText((explanationByQuestionId.get(questions[0].id) as { textRu: string }).textRu);
+  await expect(page.getByTestId("question-card").getByTestId("image-explanation-overlay")).toBeVisible();
   await expect.poll(() => storedAnswerCount(page)).toBe(2);
   await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
   await expect.poll(() => storedAnswerCount(page)).toBe(3);
+});
+
+test("image explanation overlay bounds follow the rendered bitmap when image height is constrained", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+
+  const card = page.getByTestId("question-card");
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect(card.getByTestId("image-explanation-overlay")).toBeVisible();
+
+  const geometry = await card.evaluate((element) => {
+    const image = element.querySelector(".question-image-frame img");
+    const overlay = element.querySelector("[data-testid='image-explanation-overlay']");
+    const highlight = element.querySelector("[data-overlay-role='answer_critical_highlight']");
+    const dimRegions = [...element.querySelectorAll("[data-overlay-role='background_irrelevant_dim']")];
+    if (!(image instanceof HTMLImageElement) || !(overlay instanceof HTMLElement) || !(highlight instanceof HTMLElement)) {
+      throw new Error("Expected image overlay geometry elements to exist.");
+    }
+
+    const rect = (target: Element) => {
+      const box = target.getBoundingClientRect();
+      return {
+        left: box.left,
+        top: box.top,
+        right: box.right,
+        bottom: box.bottom,
+        width: box.width,
+        height: box.height
+      };
+    };
+
+    const imageRect = rect(image);
+    const overlayRect = rect(overlay);
+    const highlightRect = rect(highlight);
+    const dimRects = dimRegions.map(rect);
+    const imageAspect = image.naturalWidth / image.naturalHeight;
+    const imageBoxAspect = imageRect.width / imageRect.height;
+
+    return {
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+      imageAspect,
+      imageBoxAspect,
+      imageRect,
+      overlayRect,
+      highlightRect,
+      dimRects
+    };
+  });
+
+  expect(geometry.naturalWidth).toBe(537);
+  expect(geometry.naturalHeight).toBe(344);
+  expect(geometry.imageRect.height).toBeGreaterThan(350);
+  expect(geometry.imageRect.height).toBeLessThanOrEqual(361);
+  expect(Math.abs(geometry.imageBoxAspect - geometry.imageAspect)).toBeLessThan(0.01);
+  expect(Math.abs(geometry.overlayRect.left - geometry.imageRect.left)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.overlayRect.top - geometry.imageRect.top)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.overlayRect.width - geometry.imageRect.width)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.overlayRect.height - geometry.imageRect.height)).toBeLessThanOrEqual(1);
+
+  for (const region of [geometry.highlightRect, ...geometry.dimRects]) {
+    expect(region.left).toBeGreaterThanOrEqual(geometry.imageRect.left - 1);
+    expect(region.top).toBeGreaterThanOrEqual(geometry.imageRect.top - 1);
+    expect(region.right).toBeLessThanOrEqual(geometry.imageRect.right + 1);
+    expect(region.bottom).toBeLessThanOrEqual(geometry.imageRect.bottom + 1);
+  }
+});
+
+test("cached image path navigation keeps the frame keyed to the current source dimensions", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+
+  const nextImagePath = (questions[1] as { image: { localPath: string } }).image.localPath;
+  await page.evaluate(async (src) => {
+    const image = new Image();
+    image.src = src;
+    await image.decode();
+  }, `/${nextImagePath}`);
+
+  await page.getByTestId("question-card").locator(".question-flow-nav").getByRole("button", { name: "Следующий" }).click();
+  await expect(page.getByText(questions[1].officialTextEs)).toBeVisible();
+  await expect(page.locator(".question-image-frame img")).toHaveAttribute("src", `/${nextImagePath}`);
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+
+  const geometry = await page.getByTestId("question-card").evaluate((element) => {
+    const frame = element.querySelector(".question-image-frame");
+    const image = element.querySelector(".question-image-frame img");
+    if (!(frame instanceof HTMLElement) || !(image instanceof HTMLImageElement)) {
+      throw new Error("Expected cached current image frame to exist.");
+    }
+
+    const frameRect = frame.getBoundingClientRect();
+    const imageRect = image.getBoundingClientRect();
+    return {
+      frameWidth: frameRect.width,
+      imageWidth: imageRect.width,
+      imageHeight: imageRect.height,
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight
+    };
+  });
+
+  const expectedWidth = (360 * geometry.naturalWidth) / geometry.naturalHeight;
+  expect(geometry.naturalWidth).toBe(573);
+  expect(geometry.naturalHeight).toBe(367);
+  expect(Math.abs(geometry.frameWidth - expectedWidth)).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.imageWidth - expectedWidth)).toBeLessThanOrEqual(3);
+  expect(geometry.imageHeight).toBeGreaterThan(350);
+  expect(geometry.imageHeight).toBeLessThanOrEqual(361);
+  expect(geometry.frameWidth).toBeLessThan(590);
+});
+
+test("learning timer pauses, resumes, and does not count down invisible tickets", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+
+  const timer = page.getByTestId("learning-ticket-timer");
+  const timerValue = page.getByTestId("learning-ticket-timer-time");
+  await expect(timer).toContainText("Темп билета");
+  await expect(timerValue).toHaveText("1:15");
+
+  await page.clock.runFor(5_000);
+  await expect(timerValue).toHaveText("1:10");
+
+  const pauseButton = page.getByRole("button", { name: "Поставить таймер билета на паузу" });
+  await pauseButton.focus();
+  await expect(pauseButton).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(timer).toContainText("Пауза");
+  await page.clock.runFor(10_000);
+  await expect(timerValue).toHaveText("1:10");
+
+  await page.getByRole("button", { name: "Продолжить таймер билета" }).click();
+  await page.clock.runFor(1_000);
+  await expect(timerValue).toHaveText("1:09");
+
+  await page.getByRole("button", { name: "Следующий" }).click();
+  await expect(timerValue).toHaveText("1:15");
+  await page.clock.runFor(10_000);
+  await expect(timerValue).toHaveText("1:05");
+
+  await page.getByRole("button", { name: "Предыдущий" }).click();
+  await expect(timerValue).toHaveText("1:09");
+});
+
+test("learning timeout is unresolved only until the learner answers after the limit", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await expect(page.getByTestId("learning-ticket-timer-time")).toHaveText("1:15");
+
+  await page.clock.runFor(76_000);
+  await expect(page.getByText("Время вышло - билет пока не решен")).toBeVisible();
+  await expect(page.locator(".answer.correct, .answer.incorrect")).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+
+  await page.locator(".answer").first().click();
+  await expect(page.getByText("Ответ после лимита")).toBeVisible();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+});
+
+test("answered learning ticket restored by search does not restart as unresolved timer", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  const search = page.getByPlaceholder("Поиск по испанскому, русскому, теме");
+  const timer = page.getByTestId("learning-ticket-timer");
+  const timerValue = page.getByTestId("learning-ticket-timer-time");
+
+  await expect(page.getByText(questions[0].officialTextEs)).toBeVisible();
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect(page.locator(".result")).toBeVisible();
+  await expect(timer).toContainText("В темпе");
+  await expect(timerValue).toHaveText("1:15");
+
+  await search.fill("b-fallback-004");
+  await expect(page.getByText(questions[3].officialTextEs)).toBeVisible();
+  await search.fill("b-fallback-001");
+  await expect(page.getByText(questions[0].officialTextEs)).toBeVisible();
+  await expect(page.locator(".result")).toBeVisible();
+  await expect(page.locator(".support-block.explanation")).toBeVisible();
+  await expect(timer).toContainText("В темпе");
+  await expect(page.getByRole("button", { name: /таймер билета/ })).toHaveCount(0);
+
+  await page.clock.runFor(80_000);
+  await expect(timer).toContainText("В темпе");
+  await expect(timerValue).toHaveText("1:15");
+  await expect(page.getByText("Время вышло - билет пока не решен")).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+});
+
+test("learning search navigation keeps filtered context and boundary states", async ({ page }) => {
+  await page.goto("/");
+  const search = page.getByPlaceholder("Поиск по испанскому, русскому, теме");
+  await search.fill("prioridad");
+  const card = page.getByTestId("question-card");
+  const nav = card.locator(".question-flow-nav");
+  await expect(nav.getByText(/^1 \/ /)).toBeVisible();
+  await expect(nav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
+  await nav.getByRole("button", { name: "Следующий" }).click();
+  await expect(nav.getByRole("button", { name: "Предыдущий" })).toBeEnabled();
+  await nav.getByRole("button", { name: "Предыдущий" }).click();
+  await expect(nav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
+});
+
+test("learning search with no matches does not fall back to an answerable question", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByTestId("question-card")).toBeVisible();
+  await page.getByPlaceholder("Поиск по испанскому, русскому, теме").fill("zzzz-no-local-ticket-match");
+  await expect(page.getByRole("heading", { name: "Ничего не найдено" })).toBeVisible();
+  await expect(page.getByTestId("question-card")).toHaveCount(0);
+  await expect(page.locator(".question-flow-nav")).toHaveCount(0);
+  await expect(page.locator(".answer")).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+});
+
+test("mistake review with no mistakes does not render fallback question", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await expect(page.getByRole("heading", { name: "Ошибки" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Ошибок пока нет" })).toBeVisible();
+  await expect(page.getByTestId("question-card")).toHaveCount(0);
+  await expect(page.locator(".question-flow-nav")).toHaveCount(0);
+  await expect(page.locator(".answer")).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
 });
 
 test("exam mode hides translation and explanation during active attempt and stores score", async ({ page }) => {
@@ -78,9 +336,12 @@ test("exam mode hides translation and explanation during active attempt and stor
   await page.getByRole("button", { name: /Экзамен/ }).click();
   await expect(page.getByText(/45:00|44:59/)).toBeVisible();
   await expect(page.getByText(/Формат defined/)).toBeVisible();
+  await expect(page.getByText("Темп билета")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /таймер билета/ })).toHaveCount(0);
   await expect(page.locator(".official-block[role='button']")).toHaveCount(0);
   await expect(page.locator(".support-block.translation")).toHaveCount(0);
   await expect(page.locator(".support-block.explanation")).toHaveCount(0);
+  await expect(page.getByTestId("image-explanation-overlay")).toHaveCount(0);
   await expect(page.locator(".difficulty-chip")).toHaveCount(0);
   await expect(page.getByRole("button", { name: /Пояснение/ })).toHaveCount(0);
   await page.getByRole("button", { name: "Пропустить" }).click();
@@ -100,8 +361,51 @@ test("vocabulary and guide are available", async ({ page }) => {
   await expect(page.getByText("balizas")).toBeVisible();
   await page.getByRole("button", { name: /Материалы/ }).click();
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  await page.getByRole("button", { name: /Процесс/ }).click();
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
   await page.getByRole("button", { name: /CABA\/RF/ }).click();
   await expect(page.getByText("Статус вопросов категории B")).toBeVisible();
+  await expect(page.getByText("Входы в больницы и centros de salud")).toBeVisible();
+});
+
+test("process guide renders B1 Otorgamiento scope, official sources, volatile warnings, and glossary", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Процесс/ }).click();
+
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
+  await expect(page.getByText("Неофициальная русская поддержка")).toBeVisible();
+  await expect(page.getByText(processGuide.officialActionWarningRu)).toBeVisible();
+  await expect(page.getByText(/CABA · B1 · otorgamiento/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Официальная последовательность" })).toBeVisible();
+  await expect(page.getByTestId("process-section-practical-car-exam")).toContainText("autos doble comando");
+  await expect(page.getByTestId("process-section-exam-day-psychophysical")).toContainText("psicología, visión, audición");
+  await expect(page.getByTestId("process-section-turno-bui-sede")).toContainText("Sedes, turnos");
+  await expect(page.getByTestId("process-section-adjacent-paths")).toContainText("Renovación por cambio de jurisdicción");
+  await expect(page.getByText("GCBA: Otorgamiento de Licencia de Conducir").first()).toBeVisible();
+  await expect(page.getByText(`Проверено ${processGuide.lastReviewedAt}`).first()).toBeVisible();
+  await expect(page.getByTestId("process-section-practical-car-exam").getByRole("link", { name: /GCBA: Examen práctico/ })).toHaveAttribute("href", /buenosaires\.gob\.ar/);
+  await expect(page.getByRole("link", { name: /Manual de Procedimientos GCBA/ })).toHaveAttribute("href", /PE-DIS-SECGVC-DGHC-562-25-ANX\.pdf/);
+  await expect(page.getByText("Declaración Jurada / DDJJ")).toBeVisible();
+  await expect(page.getByText("siniestro vial / incidente vial / accidente vial")).toBeVisible();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+});
+
+test("process guide stays local-first without external requests, remote images, or PDF viewer", async ({ page }) => {
+  const externalRequests: string[] = [];
+  const pdfRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
+    if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+  });
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Процесс/ }).click();
+  await expect(page.getByRole("heading", { name: processGuide.titleRu })).toBeVisible();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+  await expect(page.locator(".process-view img")).toHaveCount(0);
+  expect(externalRequests).toEqual([]);
+  expect(pdfRequests).toEqual([]);
 });
 
 test("materials view renders topic guide status, list, details, canonical ticket data, and local images", async ({ page }) => {
@@ -117,6 +421,10 @@ test("materials view renders topic guide status, list, details, canonical ticket
   const correctAnswer = canonicalQuestion.answers.find((answer) => answer.id === canonicalQuestion.correctAnswerId)!;
   const correctExplanation = firstTicket.answerExplanations.find((item: { answerId: string }) => item.answerId === correctAnswer.id)!;
   const incorrectExplanation = firstTicket.answerExplanations.find((item: { answerId: string }) => item.answerId !== correctAnswer.id)!;
+  const translation = translationByQuestionId.get(firstTicket.questionId) as {
+    questionTextRu: string;
+    answerTranslations: Record<string, string>;
+  };
 
   await page.goto("/");
   await page.getByRole("button", { name: /Материалы/ }).click();
@@ -131,6 +439,12 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await expect(page.locator(".materials-topic-heading").locator(`[aria-label="${difficultyAria[firstTopic.difficulty]}"]`)).toBeVisible();
   await expect(page.getByText(firstTopic.summaryRu)).toBeVisible();
   await expect(page.getByText(firstTopic.learningMaterialRu[0])).toBeVisible();
+  await expect(page.getByText("hospital/centro de salud").first()).toBeVisible();
+  await expect(page.getByText("10 metros de cada lado de la entrada").first()).toBeVisible();
+  await expect(page.locator(".trap-note").filter({ hasText: "5 metros de cada lado de la entrada" }).filter({ hasText: /trap|falso|wrong/i }).first()).toBeVisible();
+  await expect(page.getByText("en horas de clase").first()).toBeVisible();
+  await expect(page.getByText("oficios/ceremonias").first()).toBeVisible();
+  await expect(page.getByText("horario de atención al público").first()).toBeVisible();
   await expect(page.getByText(firstTopic.practicalReasoningRu[0])).toBeVisible();
   const firstTerm = page.locator(".materials-term").filter({ hasText: firstTopic.spanishTerms[0].translationRu });
   await expect(firstTerm.getByText(firstTopic.spanishTerms[0].termEs, { exact: true })).toBeVisible();
@@ -141,9 +455,12 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await expect(ticketBlock).toBeVisible();
   await expect(ticketBlock.locator(`[aria-label="${difficultyAria[canonicalQuestion.difficulty]}"]`)).toBeVisible();
   await expect(ticketBlock.getByText(canonicalQuestion.officialTextEs)).toBeVisible();
+  await expect(ticketBlock.getByText(translation.questionTextRu)).toBeVisible();
+  await expect(ticketBlock.getByText("Статус: неофициальная B-практика")).toHaveCount(0);
   const ticketAnswers = ticketBlock.locator(".materials-answers");
   for (const answer of canonicalQuestion.answers) {
     await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
+    await expect(ticketAnswers.getByText(translation.answerTranslations[answer.id], { exact: true })).toBeVisible();
   }
   await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
   await expect(ticketBlock.locator(".material-answer p").filter({ hasText: correctExplanation.explanationRu }).first()).toBeVisible();
@@ -169,6 +486,10 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
     answers: { id: string; officialTextEs: string }[];
     correctAnswerId: string;
   };
+  const translation = translationByQuestionId.get(dualQuestionId) as {
+    questionTextRu: string;
+    answerTranslations: Record<string, string>;
+  };
 
   async function expectFullDualTopicTicket(ticketBlock: Locator, guideTicket: {
     answerExplanations: { explanationRu: string }[];
@@ -179,7 +500,10 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
     const ticketAnswers = ticketBlock.locator(".materials-answers");
     for (const answer of canonicalQuestion.answers) {
       await expect(ticketAnswers.getByText(answer.officialTextEs, { exact: true })).toBeVisible();
+      await expect(ticketAnswers.getByText(translation.answerTranslations[answer.id], { exact: true })).toBeVisible();
     }
+    await expect(ticketBlock.getByText(translation.questionTextRu)).toBeVisible();
+    await expect(ticketBlock.getByText("Статус: неофициальная B-практика")).toHaveCount(0);
     await expect(ticketAnswers.getByText("Правильный ответ", { exact: true })).toBeVisible();
     for (const explanation of guideTicket.answerExplanations) {
       await expect(ticketBlock.locator(".material-answer p").filter({ hasText: explanation.explanationRu }).first()).toBeVisible();

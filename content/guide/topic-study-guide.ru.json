@@ -21,13 +21,13 @@
           "numbers_thresholds",
           "trap_negation"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 4, красные 6; ответ легко спутать с привычками или ожиданиями из РФ; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 13 терминов, 5 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 4, красные 6; ответ легко спутать с привычками или ожиданиями из РФ; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 15 терминов, 5 заметок о ловушках, 3 source claims.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "f338477641e41853830d427ae886468a33e1d77563e4fb538a11e8e16f5a5506",
+        "sourceFingerprint": "38a4a7c668baac2c263f18031f98d01dc7ba9374ad0235892e1e7d1fb65d5542",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -47,14 +47,15 @@
       "titleRu": "Отступы при парковке, углы и въезды",
       "summaryRu": "Блок про отступы у входов, углы/ochava, cordón, garaje, marcha atrás и пару смешанных билетов, где важно не сделать из вопроса новое правило парковки.",
       "learningMaterialRu": [
-        "Этот блок - неофициальная подсказка Cabadrive. Не учите одно число на все случаи. Сначала поймите место: вход учреждения, paso ferroviario, esquina, cordón, garaje или ciclovía.",
-        "У entradas de hospitales, sanatorios, clínicas и centros de salud нужен отступ 10 metros de cada lado de la entrada. Для школ это работает en horas de clase, для храмов - во время oficios/ceremonias, для банков - durante el horario de atención al público. Поэтому 5 metros для больницы неверно, а 10 metros - нужная связка для экзамена CABA.",
-        "У paso ferroviario ловушка обратная. 20 metros звучит привычно, но в CABA общий запрет estacionar действует a menos de 50 metros a cada lado de los pasos ferroviarios a nivel. Поэтому утверждение с 20 metros - falso.",
-        "Esquina/ochava - это зона видимости, а не свободное место у края квартала. В CABA нельзя estacionar y detenerse между vértice ideal и prolongación de la ochava, а также на senda peatonal или línea de pare.",
-        "Правильная параллельная парковка - примерно 20 cm del cordón. Если машина стоит вплотную к бордюру, на разметке или в пространстве для ciclovía, ответ не становится правильным только потому, что cordón не окрашен.",
-        "Marcha atrás в CABA не считается обычным способом движения. Она допускается только как короткое необходимое дополнение к estacionamiento, detención, ingreso/egreso или похожей ситуации, когда вперед ехать нельзя; recorrido должен быть mínimo e indispensable.",
-        "Выезд из garaje или с места estacionado не дает автоматического приоритета. Уступать такому автомобилю нужно только когда tránsito se encuentra interrumpido; в обычной ситуации выезжающий водитель сам встраивается без опасности и помех.",
-        "Два билета в этой теме смешанные: distancia de reacción и banco de niebla. Они не дают новое правило парковки. Отвечайте по тексту конкретного билета."
+        "Этот блок - неофициальная подсказка Cabadrive. Здесь важно не запомнить одно число на все случаи, а связать место с конкретным запретом: вход учреждения, paso ferroviario, esquina, cordón, garaje или ciclovía.",
+        "Для hospital/centro de salud главный экзаменационный якорь такой: entrada - это вход, и около него нужно оставить libre 10 metros de cada lado de la entrada, то есть 10 метров с каждой стороны входа. Фраза 5 metros de cada lado de la entrada в билете про такую зону - trap/falso, а не альтернативная правильная дистанция.",
+        "Соседняя ловушка по учреждениям - timing. Для escuelas правило привязано к en horas de clase, для templos - к oficios/ceremonias, для bancos - к horario de atención al público. Запомните контраст: hospital/centro de salud в текущих билетах держим как 10 metros de cada lado de la entrada, а school/temple/bank проверяют еще и время.",
+        "У paso ferroviario ловушка обратная: 20 metros звучит как знакомая дистанция, но в CABA общий запрет estacionar действует a menos de 50 metros a cada lado de los pasos ferroviarios a nivel. Поэтому билет с 20 metros - falso.",
+        "Esquina/ochava читается как зона видимости, а не как свободное место у края квартала. В CABA запрещено estacionar y detenerse между vértice ideal и prolongación de la ochava, а также на senda peatonal или línea de pare.",
+        "Правильная параллельная парковка - примерно 20 cm del cordón. Машина слишком близко к бордюру или на разметке/пространстве для ciclovía не становится правильной только потому, что cordón не окрашен.",
+        "Marcha atrás в CABA запрещена как обычное движение. Она допускается только как необходимое дополнение к estacionamiento, detención, ingreso/egreso или похожей ситуации, когда вперед ехать нельзя; recorrido должен быть mínimo e indispensable.",
+        "Въезд из garaje или с места estacionado не дает автоматического приоритета. Уступать такому автомобилю нужно только когда tránsito se encuentra interrumpido; иначе водитель, который выезжает, должен встроиться без опасности и помех.",
+        "Два билета здесь taxonomy-mixed: distancia de reacción и banco de niebla. Они оставлены в этой теме как ticket-specific prompts: не превращайте их в правило парковки, просто отвечайте по формулировке конкретного билета."
       ],
       "practicalReasoningRu": [
         "Отступы у входов и углов освобождают обзор, место для маневра и доступ машин экстренных служб или служебного транспорта; без них водители и пешеходы замечают друг друга слишком поздно.",
@@ -80,9 +81,26 @@
           ]
         },
         {
+          "id": "term-entrada-clearances",
+          "termEs": "entrada",
+          "translationRu": "вход; в этих билетах важно расстояние от входа в учреждение",
+          "sourceQuestionIds": [
+            "b-fallback-028",
+            "b-fallback-412"
+          ]
+        },
+        {
+          "id": "term-de-cada-lado-entrada",
+          "termEs": "de cada lado de la entrada",
+          "translationRu": "с каждой стороны входа",
+          "sourceQuestionIds": [
+            "b-fallback-028"
+          ]
+        },
+        {
           "id": "term-5-metros-entrada",
-          "termEs": "5 metros",
-          "translationRu": "5 метров с каждой стороны входа; ловушка в билете про hospital",
+          "termEs": "5 metros para cada lado de la entrada",
+          "translationRu": "5 метров с каждой стороны входа; неправильная ловушка для hospital/centro de salud",
           "sourceQuestionIds": [
             "b-fallback-412"
           ]
@@ -181,17 +199,17 @@
             {
               "answerId": "b-fallback-028-a1",
               "verdict": "incorrect",
-              "explanationRu": "Вариант про весь фасад здания слишком широкий. Для такого входа проверяется конкретный отступ от entrada."
+              "explanationRu": "Todo el frente del edificio слишком широко для этого билета. Экзамен проверяет не весь фасад, а конкретную формулу у entrada: 10 metros de cada lado de la entrada."
             },
             {
               "answerId": "b-fallback-028-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: у входа в hospital/centro de salud нужно оставить 10 metros de cada lado de la entrada, чтобы не закрыть доступ и маневр."
+              "explanationRu": "Правильно: для hospital/centro de salud нужно оставить libre 10 metros de cada lado de la entrada. Entrada означает вход; отсчет идет по обе стороны от него."
             },
             {
               "answerId": "b-fallback-028-a3",
               "verdict": "incorrect",
-              "explanationRu": "5 метров недостаточно для этой категории входов. Это ловушка, которая повторяется в похожем билете с больницей."
+              "explanationRu": "5 metros de cada lado de la entrada недостаточно для hospital/centro de salud. Это именно trap: похожая фраза повторяется в билете b-fallback-412, где ответ falso."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b152.jpg"
@@ -361,12 +379,12 @@
             {
               "answerId": "b-fallback-412-a1",
               "verdict": "incorrect",
-              "explanationRu": "Verdadero неверно: для entrada de hospital/centro de salud 5 metros de cada lado de la entrada - недостаточный отступ."
+              "explanationRu": "Verdadero неверно: фраза 5 metros de cada lado de la entrada для hospital/centro de salud задает слишком маленький отступ. Экзаменационная связка здесь - 10 metros de cada lado de la entrada."
             },
             {
               "answerId": "b-fallback-412-a2",
               "verdict": "correct",
-              "explanationRu": "Утверждение falso: в такой зоне нужно оставлять 10 metros de cada lado de la entrada, поэтому вариант с 5 metros не подходит."
+              "explanationRu": "Falso правильно: в такой зоне нужно оставлять 10 metros de cada lado de la entrada. 5 metros - trap value, а не допустимая альтернатива."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b153.jpg"
@@ -396,11 +414,11 @@
       "trapNotes": [
         {
           "id": "trap-one-distance-is-not-all-distances",
-          "textRu": "Не переносите одно число на все места: entrada de hospital - 10 m с каждой стороны, paso ferroviario - не 20 m, а другая зона запрета."
+          "textRu": "Не переносите одно число на все места: entrada de hospital/centro de salud - 10 metros de cada lado de la entrada, paso ferroviario - не 20 m, а другая зона запрета."
         },
         {
           "id": "trap-5-vs-10-institutions",
-          "textRu": "У hospital/centro de salud варианты 5 metros и 10 metros похожи. Для этих билетов выбирайте 10 metros."
+          "textRu": "В больничной/медицинской зоне 5 metros de cada lado de la entrada - wrong/trap wording. Для b-fallback-028 и b-fallback-412 держите правило: hospital/centro de salud -> 10 metros de cada lado de la entrada."
         },
         {
           "id": "trap-cordon-color-and-distance",

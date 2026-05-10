@@ -1,0 +1,485 @@
+{
+  "version": 1,
+  "id": "caba-exam-process",
+  "locale": "ru",
+  "status": "published",
+  "contentStatus": "unofficial_learning_aid",
+  "titleRu": "Процесс получения прав в CABA",
+  "primaryScope": {
+    "jurisdiction": "CABA",
+    "procedure": "otorgamiento",
+    "category": "B1",
+    "audienceRu": "Русскоязычный заявитель на первую или давно просроченную лицензию B1 для частного автомобиля в CABA."
+  },
+  "lastReviewedAt": "2026-05-10",
+  "disclaimerRu": "Это неофициальная русская учебная поддержка Cabadrive. Она помогает понять испанские термины и порядок действий, но не заменяет GCBA, ANSV, miBA, Boti, медицинскую оценку или юридическую консультацию.",
+  "officialActionWarningRu": "Для реального заявления, оплаты, выбора turno, проверки документов и текущих требований всегда переходите на официальные страницы GCBA/ANSV.",
+  "volatilityWarningRu": "Суммы BUI/CENAT, sedes, доступность turnos, экраны Boti/miBA и перечни документов меняются. В этом разделе такие данные либо не указаны, либо помечены как волатильные и требуют проверки на официальной странице перед оплатой или записью.",
+  "communityContextRu": "Публичные русскоязычные обсуждения использованы только как подсказка, какие слова и шаги часто путают. Они не являются источником требований, цен или правил.",
+  "sources": [
+    {
+      "id": "gcba-otorgamiento",
+      "title": "GCBA: Otorgamiento de Licencia de Conducir",
+      "url": "https://buenosaires.gob.ar/tramites/otorgamiento-de-licencia-de-conducir",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Страница открывается как текущий GCBA trámite через gcaba_historico. Подтверждены Otorgamiento, срок 180 дней, miBA, CENAT, DDJJ, curso, turno/sede, BUI, психофизическая оценка, теория, практический B1 экзамен, sedes и волатильные стоимости."
+    },
+    {
+      "id": "gcba-extranjeros",
+      "title": "GCBA: Extranjeros",
+      "url": "https://buenosaires.gob.ar/licenciasdeconducir/casosespeciales/extranjeros",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Подтверждены разные случаи для extranjeros с domicilio CABA: radicación permanente, temporaria, DNI vencido con disposición vigente, precaria, sin DNI con precaria. Все требования печатные и зависят от статуса."
+    },
+    {
+      "id": "gcba-curso",
+      "title": "GCBA: Curso de Educación Vial para Otorgamiento de Licencia",
+      "url": "https://buenosaires.gob.ar/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Подтверждены обязательность курса для primera licencia/licencia vencida más de un año, письмо в течение 48 часов после проверки данных, virtual con docente или presencial en Sede Roca, 3 часа, validez 1 año, курсы ANSV не валидны для CABA."
+    },
+    {
+      "id": "gcba-material-teorico",
+      "title": "GCBA: Material de estudio para examen teórico",
+      "url": "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Подтверждены multiple choice, 45 минут и официальный manual de conducción de vehículos urbanos de cuatro ruedas для autos."
+    },
+    {
+      "id": "gcba-examen-practico",
+      "title": "GCBA: Examen práctico",
+      "url": "https://buenosaires.gob.ar/gcaba_historico/gobierno/licencias-de-conducir/examen-practico",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Подтвержден B1 examen práctico en calle: autos doble comando, circuito monitoreado/controlado, radio 200/300 m alrededor de la sede comunal, recorrido señalizado/publicado, примерно 15 минут, licencia el día si aprueba, два дополнительных intentos con 5 días."
+    },
+    {
+      "id": "gcba-pista-aprendizaje",
+      "title": "GCBA: Pista de aprendizaje para conductores",
+      "url": "https://buenosaires.gob.ar/infraestructura/movilidad/pistadeaprendizaje",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Подтверждена как необязательная подготовка: vecinos de CABA, auto/moto, DNI conductor/aprendiz, turno previo, 45 минут, agenda 15 дней, todos los días, Av. Cnel. Roca 5050/5500."
+    },
+    {
+      "id": "gcba-cenat",
+      "title": "GCBA: Certificado Nacional de Antecedentes de Tránsito (CENAT)",
+      "url": "https://buenosaires.gob.ar/certificado-nacional-de-antecedentes-de-transito-cenat",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Подтверждено: CENAT обязателен для trámites в Dirección General Habilitación de Conductores, нужен для начала solicitud и не входит в arancel каждой class."
+    },
+    {
+      "id": "ansv-cenat-payment",
+      "title": "ANSV: Boleta de Pago CENAT",
+      "url": "https://boletadepago.seguridadvial.gob.ar/",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "ANSV",
+      "currentnessStatus": "volatile_check_required",
+      "resultRu": "Официальный GCBA CENAT page ведет на .gob.ar страницу ANSV/Mi Argentina для генерации boleta CENAT. На странице видны шаги centro de emisión, datos personales, confirmación и волатильный importe; сумму не фиксируем в вечном тексте."
+    },
+    {
+      "id": "gcba-principiantes",
+      "title": "GCBA: Principiantes",
+      "url": "https://buenosaires.gob.ar/tramites/otorgamiento-de-licencia-de-conducir/casos-especiales/casosespeciales/principiantes",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Подтверждено: principiante применяется к первой licencia A/A4/B1, длится 6 месяцев, habilitación максимум 2 года с учетом психофизики, ограничения по vías >70 km/h и alcohol cero в CABA, не применяют при подтвержденной antigüedad другой лицензии."
+    },
+    {
+      "id": "gcba-cambio-jurisdiccion",
+      "title": "GCBA: Renovación por Cambio de Jurisdicción",
+      "url": "https://buenosaires.gob.ar/tramites/renovacion-por-cambio-de-jurisdiccion",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current_with_historico_url",
+      "resultRu": "Используется только как adjacent-path callout: действует для переезда domicilio a CABA с vigente или vencida menos de 1 año licencia particular A/B/G; отдельные canje cases и certificado de legalidad."
+    },
+    {
+      "id": "gcba-manual-procedimientos-2025",
+      "title": "GCBA: Manual de Procedimientos, abril 2025",
+      "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-DIS-SECGVC-DGHC-562-25-ANX.pdf",
+      "checkedAt": "2026-05-10",
+      "officialOwner": "GCBA",
+      "currentnessStatus": "checked_current",
+      "resultRu": "PDF официального Manual de Procedimientos открыт для recheck. В UI он дается как справочная официальная ссылка, без встроенного PDF viewer и без глубоких медицинских выводов."
+    }
+  ],
+  "sections": [
+    {
+      "id": "scope-and-status",
+      "titleRu": "Что покрывает этот раздел",
+      "summaryRu": "Консервативный путь: CABA, Otorgamiento, B1, частный автомобиль.",
+      "bodyRu": [
+        "Главный сценарий здесь - Otorgamiento de Licencia de Conducir для B1: первая лицензия или лицензия, просроченная больше чем на год. Для других процедур используйте официальные ссылки и не переносите этот порядок автоматически.",
+        "Русский текст объясняет логику и слова. Официальные действия - заявление, платежи, запись, документы и решения по пригодности - остаются на стороне GCBA/ANSV."
+      ],
+      "spanishTerms": ["Otorgamiento de Licencia de Conducir", "B1", "licencia de conducir"],
+      "sourceIds": ["gcba-otorgamiento"],
+      "calloutType": "warning"
+    },
+    {
+      "id": "requirements-documents",
+      "titleRu": "Перед стартом: документы и правильная процедура",
+      "summaryRu": "Проверьте miBA, DNI/domicilio CABA, иностранный статус и отсутствие блокеров.",
+      "bodyRu": [
+        "GCBA указывает miBA, DNI vigente с domicilio в CABA или отдельный сценарий для DNI en trámite. Для extranjeros требования зависят от radicación и документов, поэтому не используйте один универсальный список.",
+        "Если у вас уже есть лицензия другой юрисдикции или страны, внимательно проверьте Renovación por cambio de jurisdicción, canje и certificado de legalidad. В первом slice Cabadrive это только соседний путь, не полная инструкция.",
+        "GCBA также указывает проверку infracciones de tránsito и отдельные условия для некоторых категорий. Для B1 ориентируйтесь на официальный trámite Otorgamiento."
+      ],
+      "spanishTerms": ["miBA", "DNI vigente", "domicilio en CABA", "extranjeros", "certificado de legalidad", "infracciones"],
+      "sourceIds": ["gcba-otorgamiento", "gcba-extranjeros", "gcba-cambio-jurisdiccion"],
+      "calloutType": "required_step",
+      "volatility": "volatile_document_list",
+      "volatilityWarningRu": "Список документов зависит от статуса и меняется. Проверяйте официальные страницы GCBA перед записью."
+    },
+    {
+      "id": "cenat-and-start",
+      "titleRu": "CENAT и старт онлайн",
+      "summaryRu": "CENAT оплачивается отдельно, затем запускается trámite online.",
+      "bodyRu": [
+        "CENAT - Certificado Nacional de Antecedentes de Tránsito. GCBA пишет, что он обязателен для trámites в Dirección General Habilitación de Conductores и нужен для начала solicitud.",
+        "После CENAT официальный путь ведет к web de trámites: там заполняются персональные данные и Declaración Jurada (DDJJ) de aptitud psicofísica.",
+        "Сумму CENAT и детали формы лучше не запоминать по чатам или старым скриншотам: ANSV-страница показывает актуальный поток генерации boleta и платежа."
+      ],
+      "spanishTerms": ["CENAT", "boleta de pago", "web de trámites", "Declaración Jurada", "DDJJ", "aptitud psicofísica"],
+      "sourceIds": ["gcba-cenat", "ansv-cenat-payment", "gcba-otorgamiento"],
+      "calloutType": "required_step",
+      "volatility": "volatile_fee",
+      "volatilityWarningRu": "Стоимость CENAT и платежный экран волатильны. Перед оплатой проверяйте официальный сайт ANSV."
+    },
+    {
+      "id": "course",
+      "titleRu": "Curso de Educación Vial",
+      "summaryRu": "Обязательный курс до визита в sede.",
+      "bodyRu": [
+        "Для primera licencia и licencia vencida por más de un año GCBA описывает Curso de Educación Vial как обязательную формальную часть.",
+        "После проверки данных GCBA сообщает, что в течение 48 часов приходит email со ссылками. Курс можно сделать virtual con docente или presencial en Sede Roca; длительность указана 3 часа, validez - 1 año.",
+        "GCBA отдельно предупреждает: курс ANSV и другие неавторизованные курсы не валидны в CABA."
+      ],
+      "spanishTerms": ["Curso de Educación Vial", "virtual con docente", "Sede Roca", "validez"],
+      "sourceIds": ["gcba-curso", "gcba-otorgamiento"],
+      "calloutType": "required_step"
+    },
+    {
+      "id": "turno-bui-sede",
+      "titleRu": "Turno, sede и BUI",
+      "summaryRu": "После курса выбирается дата/место и оплачивается городская boleta.",
+      "bodyRu": [
+        "GCBA описывает agenda de turnos: можно выбрать sede и дату среди sedes habilitadas. Это не гарантирует, что конкретная sede или день доступны в момент вашей записи.",
+        "BUI - Boleta Única Inteligente - оплачивается после выбора turno. GCBA указывает срок оплаты и validez, но суммы и доступность нужно проверять только на официальной странице.",
+        "Если есть слуховые особенности, GCBA перечисляет sedes habilitadas для соответствующего atendimento; не переносите общий список sedes на этот случай."
+      ],
+      "spanishTerms": ["turno", "sede", "subsede comunal", "agenda de turnos", "BUI", "Boleta Única Inteligente"],
+      "sourceIds": ["gcba-otorgamiento"],
+      "calloutType": "required_step",
+      "volatility": "volatile_location",
+      "volatilityWarningRu": "Sedes, turnos, сроки оплаты и суммы BUI волатильны. Проверяйте GCBA перед выбором и оплатой."
+    },
+    {
+      "id": "exam-day-psychophysical",
+      "titleRu": "День визита: aptitud psicofísica",
+      "summaryRu": "Это процедурная оценка, а не совет по медицине.",
+      "bodyRu": [
+        "GCBA указывает четыре области оценки: psicología, visión, audición и médica. Если вы пользуетесь anteojos, lentes de contacto или audífonos, официальный текст напоминает взять их в день turno.",
+        "Если есть заболевания или лечение, GCBA говорит о vigentes certificados/estudios médicos. Какие документы подходят именно вам, решает официальный процесс, не Cabadrive.",
+        "Если заявитель queda retenido en alguna posta, GCBA сообщает, что инструкции и ссылка для нового turno приходят по email."
+      ],
+      "spanishTerms": ["aptitud psicofísica", "psicología", "visión", "audición", "médica", "queda retenido", "posta"],
+      "sourceIds": ["gcba-otorgamiento"],
+      "calloutType": "required_step"
+    },
+    {
+      "id": "theory-exam",
+      "titleRu": "Examen teórico",
+      "summaryRu": "Связь с Cabadrive: тренироваться удобно здесь, официальный материал проверять у GCBA.",
+      "bodyRu": [
+        "GCBA описывает теоретический экзамен как multiple choice и указывает 45 минут. Для autos используется manual de conducción de vehículos urbanos de cuatro ruedas.",
+        "Cabadrive помогает русскоязычно тренироваться на текущем локальном B-наборе, но этот набор прямо помечен как неофициальная fallback-практика, не полная официальная база GCBA."
+      ],
+      "spanishTerms": ["examen teórico", "multiple choice", "material de estudio", "manual de conducción"],
+      "sourceIds": ["gcba-material-teorico"],
+      "calloutType": "required_step"
+    },
+    {
+      "id": "practical-car-exam",
+      "titleRu": "Examen práctico B1",
+      "summaryRu": "Для автомобиля GCBA описывает экзамен в улице на авто doble comando.",
+      "bodyRu": [
+        "Для autos практический экзамен проводится en calle, с autos doble comando, по monitoreado/controlado circuito рядом с sede comunal. GCBA указывает радиус около 200/300 метров и duración aproximadamente 15 minutos.",
+        "При aprobar GCBA пишет, что licencia выдается в тот же день. При desaprobar остаются два дополнительных intentos; новый turno дают в той же sede с 5 днями между неудачной попыткой и новым turno.",
+        "Если не сдать все попытки, официальный текст говорит начать trámite заново и оплатить новый turno."
+      ],
+      "spanishTerms": ["examen práctico", "autos doble comando", "recorrido", "aprobar", "desaprobar", "reevaluación"],
+      "sourceIds": ["gcba-examen-practico", "gcba-otorgamiento"],
+      "calloutType": "required_step"
+    },
+    {
+      "id": "where-and-practice",
+      "titleRu": "Где это происходит и где можно потренироваться",
+      "summaryRu": "Sede выбирается в официальной agenda; Pista de aprendizaje - подготовка, а не обязательный шаг.",
+      "bodyRu": [
+        "GCBA показывает Sede Central de Licencias, Av. Coronel Roca 5252, и sedes/subsedes на странице trámite. Но конкретная доступность зависит от agenda.",
+        "Pista de aprendizaje para conductores - официальный тренировочный ресурс для vecinos de CABA с turno previo. GCBA указывает 45 минут на turno и адрес в зоне Av. Cnel. Roca 5050/5500.",
+        "Не путайте Pista de aprendizaje с обязательным экзаменом B1: практический B1 экзамен описан отдельно как examen en calle."
+      ],
+      "spanishTerms": ["Sede Central de Licencias", "Sede Roca", "Pista de aprendizaje", "turno previo"],
+      "sourceIds": ["gcba-otorgamiento", "gcba-pista-aprendizaje", "gcba-examen-practico"],
+      "calloutType": "optional_preparation",
+      "volatility": "volatile_location",
+      "volatilityWarningRu": "Адреса и sedes видны в официальных страницах, но доступность turnos и habilitación нужно проверять в момент записи."
+    },
+    {
+      "id": "adjacent-paths",
+      "titleRu": "Соседние пути: не путать с этим сценарием",
+      "summaryRu": "Renovación, cambio de jurisdicción, canje и principiante - отдельные условия.",
+      "bodyRu": [
+        "Renovación - это не Otorgamiento. Если лицензия действующая или просрочена меньше года, может применяться другой trámite.",
+        "Renovación por cambio de jurisdicción относится к смене domicilio на CABA с уже имеющейся particular A/B/G лицензией. GCBA отдельно упоминает canje для некоторых стран; Россия здесь не добавлена Cabadrive как отдельная инструкция.",
+        "Principiante применяется к первой B1, но GCBA пишет, что не являются principiantes те, кто подтверждает antigüedad лицензией другого municipio или país. Как именно подтвердить ваш случай, проверяйте по официальным требованиям и certificado de legalidad."
+      ],
+      "spanishTerms": ["Renovación", "Renovación por cambio de jurisdicción", "canje", "principiante", "antigüedad", "certificado de legalidad"],
+      "sourceIds": ["gcba-principiantes", "gcba-cambio-jurisdiccion", "gcba-otorgamiento"],
+      "calloutType": "adjacent_path",
+      "volatility": "volatile_document_list",
+      "volatilityWarningRu": "Adjacent paths зависят от страны, документа, срока, класса и domicilio. Этот раздел не заменяет отдельную проверку trámite."
+    },
+    {
+      "id": "community-cautions",
+      "titleRu": "Что часто сбивает русскоязычных водителей",
+      "summaryRu": "Наблюдения из публичных обсуждений, не требования.",
+      "bodyRu": [
+        "В русскоязычных обсуждениях часто путают Boti, miBA, CENAT, BUI, turno, sede, curso и recorrido. Поэтому в Cabadrive эти слова вынесены в глоссарий.",
+        "Старые посты и чаты могут содержать устаревшие цены или screenshots. В этой версии не публикуются старые community-цены как актуальные."
+      ],
+      "spanishTerms": ["Boti", "miBA", "CENAT", "BUI", "turno", "sede", "recorrido"],
+      "sourceIds": ["gcba-otorgamiento", "ansv-cenat-payment"],
+      "calloutType": "warning",
+      "volatility": "volatile_fee",
+      "volatilityWarningRu": "Community context не является официальным источником. Проверяйте цены и экраны только в GCBA/ANSV."
+    }
+  ],
+  "officialLinks": [
+    {
+      "id": "start-and-pay",
+      "titleRu": "Начать и оплатить",
+      "links": [
+        {
+          "sourceId": "gcba-otorgamiento",
+          "labelRu": "Старт Otorgamiento и официальный порядок GCBA",
+          "url": "https://buenosaires.gob.ar/tramites/otorgamiento-de-licencia-de-conducir"
+        },
+        {
+          "sourceId": "gcba-cenat",
+          "labelRu": "GCBA о CENAT",
+          "url": "https://buenosaires.gob.ar/certificado-nacional-de-antecedentes-de-transito-cenat"
+        },
+        {
+          "sourceId": "ansv-cenat-payment",
+          "labelRu": "Сгенерировать boleta CENAT на сайте ANSV",
+          "url": "https://boletadepago.seguridadvial.gob.ar/"
+        }
+      ]
+    },
+    {
+      "id": "documents-and-adjacent-paths",
+      "titleRu": "Документы и соседние пути",
+      "links": [
+        {
+          "sourceId": "gcba-extranjeros",
+          "labelRu": "Extranjeros: требования по статусу",
+          "url": "https://buenosaires.gob.ar/licenciasdeconducir/casosespeciales/extranjeros"
+        },
+        {
+          "sourceId": "gcba-principiantes",
+          "labelRu": "Principiantes",
+          "url": "https://buenosaires.gob.ar/tramites/otorgamiento-de-licencia-de-conducir/casos-especiales/casosespeciales/principiantes"
+        },
+        {
+          "sourceId": "gcba-cambio-jurisdiccion",
+          "labelRu": "Renovación por Cambio de Jurisdicción",
+          "url": "https://buenosaires.gob.ar/tramites/renovacion-por-cambio-de-jurisdiccion"
+        }
+      ]
+    },
+    {
+      "id": "learn-and-exam",
+      "titleRu": "Курс, теория и практика",
+      "links": [
+        {
+          "sourceId": "gcba-curso",
+          "labelRu": "Curso de Educación Vial",
+          "url": "https://buenosaires.gob.ar/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia"
+        },
+        {
+          "sourceId": "gcba-material-teorico",
+          "labelRu": "Material de estudio para examen teórico",
+          "url": "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para"
+        },
+        {
+          "sourceId": "gcba-examen-practico",
+          "labelRu": "Examen práctico",
+          "url": "https://buenosaires.gob.ar/gcaba_historico/gobierno/licencias-de-conducir/examen-practico"
+        },
+        {
+          "sourceId": "gcba-pista-aprendizaje",
+          "labelRu": "Pista de aprendizaje para conductores",
+          "url": "https://buenosaires.gob.ar/infraestructura/movilidad/pistadeaprendizaje"
+        },
+        {
+          "sourceId": "gcba-manual-procedimientos-2025",
+          "labelRu": "Manual de Procedimientos GCBA, abril 2025",
+          "url": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-DIS-SECGVC-DGHC-562-25-ANX.pdf"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "otorgamiento",
+      "termEs": "Otorgamiento de Licencia de Conducir",
+      "translationRu": "выдача водительской лицензии",
+      "explanationRu": "Процедура для первой лицензии или лицензии, просроченной больше года.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "renovacion",
+      "termEs": "Renovación",
+      "translationRu": "продление",
+      "explanationRu": "Другой trámite, если лицензия не относится к сценарию Otorgamiento.",
+      "sourceIds": ["gcba-cambio-jurisdiccion"]
+    },
+    {
+      "id": "renovacion-cambio-jurisdiccion",
+      "termEs": "Renovación por cambio de jurisdicción",
+      "translationRu": "продление при смене юрисдикции",
+      "explanationRu": "Сценарий для переезда domicilio в CABA с уже имеющейся particular лицензией, если официальный page подходит вашему случаю.",
+      "sourceIds": ["gcba-cambio-jurisdiccion"]
+    },
+    {
+      "id": "ampliacion",
+      "termEs": "Ampliación",
+      "translationRu": "добавление категории",
+      "explanationRu": "Отдельный trámite, если нужно добавить класс или профессиональный путь; не покрывается этим slice.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "cenat",
+      "termEs": "CENAT",
+      "translationRu": "национальная справка/сертификат по дорожным antecedentes",
+      "explanationRu": "Обязательная boleta/certificado для начала license trámite; оплачивается отдельно.",
+      "sourceIds": ["gcba-cenat", "ansv-cenat-payment"]
+    },
+    {
+      "id": "bui",
+      "termEs": "BUI",
+      "translationRu": "Boleta Única Inteligente",
+      "explanationRu": "Городская платежная boleta GCBA для trámite; сумма и сроки требуют проверки перед оплатой.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "miba",
+      "termEs": "miBA",
+      "translationRu": "городской аккаунт",
+      "explanationRu": "Учетная запись GCBA, указанная как requisito для Otorgamiento.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "boti",
+      "termEs": "Boti",
+      "translationRu": "чатбот города",
+      "explanationRu": "Официальный канал для ориентации по trámite; не заменяет проверку страницы и записи.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "turno",
+      "termEs": "turno",
+      "translationRu": "запись/слот",
+      "explanationRu": "Дата и время для курса, sede, reevaluación или другой официальной операции.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "sede",
+      "termEs": "sede / subsede comunal",
+      "translationRu": "офис/коммунальная площадка",
+      "explanationRu": "Место, которое выбирается в agenda; доступность зависит от официальной turnera.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "ddjj",
+      "termEs": "Declaración Jurada / DDJJ",
+      "translationRu": "декларация под ответственность заявителя",
+      "explanationRu": "В Otorgamiento GCBA упоминает DDJJ de aptitud psicofísica на этапе online start.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "aptitud-psicofisica",
+      "termEs": "aptitud psicofísica",
+      "translationRu": "психофизическая пригодность",
+      "explanationRu": "Оценка GCBA по психологии, зрению, слуху и медицинской части; Cabadrive не оценивает пригодность.",
+      "sourceIds": ["gcba-otorgamiento"]
+    },
+    {
+      "id": "curso-educacion-vial",
+      "termEs": "curso de educación vial",
+      "translationRu": "курс дорожного образования",
+      "explanationRu": "Обязательный курс для первого Otorgamiento/давно просроченной лицензии; должен быть валиден в CABA.",
+      "sourceIds": ["gcba-curso"]
+    },
+    {
+      "id": "examen-teorico",
+      "termEs": "examen teórico",
+      "translationRu": "теоретический экзамен",
+      "explanationRu": "Multiple choice, 45 минут по официальной странице материала.",
+      "sourceIds": ["gcba-material-teorico"]
+    },
+    {
+      "id": "examen-practico",
+      "termEs": "examen práctico",
+      "translationRu": "практический экзамен",
+      "explanationRu": "Для B1 - уличный маршрут на auto doble comando по официальному описанию GCBA.",
+      "sourceIds": ["gcba-examen-practico"]
+    },
+    {
+      "id": "principiante",
+      "termEs": "principiante",
+      "translationRu": "начинающий водитель",
+      "explanationRu": "Статус первой A/A4/B1 лицензии; может не применяться при подтвержденной antigüedad другой лицензии.",
+      "sourceIds": ["gcba-principiantes"]
+    },
+    {
+      "id": "certificado-legalidad",
+      "termEs": "certificado de legalidad",
+      "translationRu": "сертификат легальности лицензии",
+      "explanationRu": "Документ, который GCBA упоминает для некоторых prior-license/cambio cases и для избежания principiante при подтверждении стажа.",
+      "sourceIds": ["gcba-otorgamiento", "gcba-cambio-jurisdiccion"]
+    },
+    {
+      "id": "recorrido",
+      "termEs": "recorrido",
+      "translationRu": "маршрут",
+      "explanationRu": "В практическом экзамене - опубликованный/обозначенный маршрут около sede.",
+      "sourceIds": ["gcba-examen-practico"]
+    },
+    {
+      "id": "siniestro-incidente-accidente",
+      "termEs": "siniestro vial / incidente vial / accidente vial",
+      "translationRu": "дорожное происшествие / инцидент / авария",
+      "explanationRu": "Слова встречаются в дорожной и экзаменационной лексике; для требований ориентируйтесь на официальный контекст страницы или manual.",
+      "sourceIds": ["gcba-material-teorico"]
+    }
+  ],
+  "optionalImages": []
+}

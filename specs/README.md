@@ -10,6 +10,11 @@ Create one folder per repository-changing feature or change:
   tasks.md
 ```
 
+Read-only inspection, explanation, status reporting, command output,
+summarization, non-mutating planning, and review without edits do not require a
+new feature folder. If a read-only interaction becomes repository-changing, stop
+before the first mutation and route it through Orchestrator.
+
 `feature-request.md` is the Analyst intake artifact. It records the original
 request, clarification Q&A, assumptions, project context, external research
 when used, open questions, risks, and acceptance expectations before Architect
@@ -17,9 +22,11 @@ planning starts. When Orchestrator later invokes final Analyst validation after
 Architect passes, the same artifact may receive append-only Analyst-owned final
 validation notes.
 
-Repository-changing requests default to Orchestrator entry. Orchestrator
-fetches or otherwise verifies latest `origin/main`, creates or requires a fresh
-isolated intake worktree/branch, invokes Analyst first when no current
+Repository-changing requests default to Orchestrator entry. Orchestrator starts
+from latest verified `main`, normally `origin/main` after fetch; if fetch/base
+verification is unavailable, it records a blocker or explicit fallback and must
+not silently reuse stale base state. It records the base, creates or requires a
+fresh isolated intake worktree/branch, invokes Analyst first when no current
 `feature-request.md` exists, relays any Analyst clarification questions to the
 user, returns answers to Analyst, and takes the Analyst-created latest-main
 intake branch/worktree context forward after Analyst handoff. Analyst shuts down
@@ -30,9 +37,17 @@ requirement clarification.
 The Analyst-created latest-main handoff context may continue through Architect
 planning. It may become the single implementation PR slice only when
 Orchestrator explicitly assigns it that way. Additional task slices must start
-from latest `origin/main` in separate isolated worktrees, branches, and PRs, and
-parallel dirty diffs, branches, commits, PRs, and process memory must be
+from latest verified `main`, normally `origin/main` after fetch, in separate
+isolated worktrees, branches, and PRs. Fetch/base verification failure requires
+a documented fallback or blocker; stale base state must not be silently reused,
+and parallel dirty diffs, branches, commits, PRs, and process memory must be
 preserved.
+
+A non-Orchestrator active model that receives a new repository-changing request
+must stop and must not self-promote into Orchestrator, Analyst, Architect,
+Implementation Agent, or Review Agent work. Direct implementation starts only
+after Orchestrator assignment to an isolated worktree, branch, and PR slice with
+complete feature memory.
 
 `spec.md`, `plan.md`, and `tasks.md` are the Architect-owned implementation
 feature memory. Repository-changing PRs must include all four artifacts once the
@@ -48,6 +63,14 @@ manual author/review process check for non-legacy repository-changing work.
 Use the installed `.specify/templates/` files so each feature records goal,
 scope, acceptance evidence, negative scenarios, process memory, review
 requirements, and verification requirements.
+
+If an agent accidentally starts direct edits, staging, commits, pushes, PR
+mutations, or other repository changes before Orchestrator routing or
+implementation prerequisites, `tasks.md` must record the stop/report/preserve
+recovery path and Orchestrator/user disposition before any adopted work
+continues. Recovery does not authorize destructive cleanup, hidden continuation,
+silent role switching, or reverting user/sibling work without explicit
+authorization.
 
 ## Work Cycle And Final Validation
 
@@ -98,6 +121,14 @@ tests, runtime files, CI, branch protection, review dispositions, or other
 non-evidence content makes prior validation stale and must be routed back
 through role-appropriate follow-up or final validation.
 
+Feature memory should also record the startup base for repository-changing work:
+latest verified `main`, normally `origin/main` after fetch, or a documented
+fallback/blocker when verification is unavailable. When cleanup is in scope,
+feature memory must record approved cleanup roots, active/current exclusions,
+candidate inventory, validation, action/refusal reason, and post-cleanup
+confirmation for each candidate. Name patterns, timestamps, and memory are only
+candidate discovery hints; positive proof is required before deletion.
+
 ## Numbering
 
 The Analyst chooses the feature folder number by scanning existing directories
@@ -110,6 +141,13 @@ a clearer slug, or ask the Orchestrator to coordinate before writing. When
 parallel Orchestrators or agents may be active, Orchestrator must account for
 observed sibling worktrees, branches, and unmerged feature folders before
 assigning work, and must warn subagents to preserve existing dirty diffs,
-branches, commits, PRs, and process memory. If one request contains independent
-goals, split them into separate folders or record a split decision before
-handoff.
+branches, commits, PRs, process memory, active worktrees, and ambiguous local
+paths. Cleanup of completed agent-created environments is coordinated through
+Cleanup Agent and must preserve current, active, dirty, untracked, unpushed,
+open-PR, locked, running-process, ambiguous, user-owned, out-of-root, or
+process-memory-referenced targets. If one request contains independent goals,
+split them into separate folders or record a split decision before handoff.
+
+Do not edit, delete, move, stage, or otherwise mutate sibling feature folders or
+process memory while working on an assigned feature unless Orchestrator
+explicitly coordinates that change.

@@ -48,5 +48,55 @@
     "examples": [{ "questionId": "b-fallback-006", "textEs": "¿Qué indican las señales reglamentarias?" }],
     "criticality": "high",
     "sourceQuestionIds": ["b-fallback-006"]
+  },
+  {
+    "id": "term-estacionar",
+    "termEs": "estacionar",
+    "translationRu": "парковаться, ставить транспортное средство на стоянку",
+    "category": "parking",
+    "explanationRu": "Ключевой глагол в билетах про разрешение или запрет парковки; не путайте с краткой detención.",
+    "examples": [{ "questionId": "b-fallback-028", "textEs": "cuando se va a estacionar" }],
+    "criticality": "high",
+    "sourceQuestionIds": ["b-fallback-028"]
+  },
+  {
+    "id": "term-entrada",
+    "termEs": "entrada",
+    "translationRu": "вход",
+    "category": "parking",
+    "explanationRu": "В билетах про больницу или медицинский центр расстояние считают от entrada, а не от всего фасада здания.",
+    "examples": [{ "questionId": "b-fallback-028", "textEs": "10 metros de cada lado de la entrada" }],
+    "criticality": "high",
+    "sourceQuestionIds": ["b-fallback-028", "b-fallback-412"]
+  },
+  {
+    "id": "term-de-cada-lado",
+    "termEs": "de cada lado",
+    "translationRu": "с каждой стороны",
+    "category": "parking",
+    "explanationRu": "Фраза показывает, что расстояние применяется по обе стороны ориентира, например входа.",
+    "examples": [{ "questionId": "b-fallback-028", "textEs": "10 metros de cada lado de la entrada" }],
+    "criticality": "medium",
+    "sourceQuestionIds": ["b-fallback-028"]
+  },
+  {
+    "id": "term-para-cada-lado",
+    "termEs": "para cada lado",
+    "translationRu": "в каждую сторону, с каждой стороны",
+    "category": "parking",
+    "explanationRu": "Вариант формулы расстояния, который в билете b-fallback-412 используется в ложном утверждении про 5 метров.",
+    "examples": [{ "questionId": "b-fallback-412", "textEs": "5 metros para cada lado de la entrada" }],
+    "criticality": "medium",
+    "sourceQuestionIds": ["b-fallback-412"]
+  },
+  {
+    "id": "term-libre",
+    "termEs": "libre",
+    "translationRu": "свободный, незанятый",
+    "category": "parking",
+    "explanationRu": "В parking clearance вопросах слово libre означает, что указанную зону нельзя занимать припаркованным автомобилем.",
+    "examples": [{ "questionId": "b-fallback-412", "textEs": "se deben dejar libre" }],
+    "criticality": "medium",
+    "sourceQuestionIds": ["b-fallback-412"]
   }
 ]

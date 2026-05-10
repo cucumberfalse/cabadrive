@@ -5,9 +5,13 @@
 ## SENAR Done Gate
 
 - [ ] Repository-changing work entered through Orchestrator; Orchestrator invoked Analyst first when no current `feature-request.md` existed and did not directly edit repository files.
+- [ ] No non-Orchestrator active model directly implemented, self-promoted, or skipped the Orchestrator-first stop condition for this repository-changing work.
+- [ ] Read-only interactions, if any, stopped for Orchestrator routing before becoming repository-changing.
 - [ ] Manual author/review check: Analyst intake artifact `feature-request.md` is present, or legacy/no-intake reason is recorded in `tasks.md`. This item is not currently enforced by `pnpm run preflight`, CI, or `scripts/check-feature-memory.mjs`.
+- [ ] Complete implementation feature memory is present: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except documented legacy/no-intake exceptions.
 - [ ] Analyst clarification, if needed, was relayed through Orchestrator; otherwise intake records why no clarification was needed.
-- [ ] Latest `origin/main` startup/base evidence is recorded for the work item and for this task slice, or the PR explicitly uses the Analyst-created latest-main handoff branch as the single implementation PR slice.
+- [ ] Accidental direct-edit recovery, if any, is recorded with stop/report/preserve/restart disposition and no unauthorized destructive cleanup.
+- [ ] Latest verified `main` startup/base evidence is recorded for the work item and for this task slice, normally `origin/main` after fetch, or the PR explicitly uses the Analyst-created latest-main handoff branch as the single implementation PR slice.
 - [ ] Cycle PR set is current and records each contributing PR slice by purpose, branch, PR metadata, head SHA, status, and final-validation inclusion.
 - [ ] Feature memory names the goal and scope.
 - [ ] Every acceptance criterion has evidence in the PR, plan, or linked checks.
@@ -20,9 +24,12 @@
 
 - [ ] This PR is one task slice: one isolated worktree, one branch, and one PR.
 - [ ] Orchestrator warned assigned subagents that parallel agents may be active and existing dirty diffs, branches, commits, PRs, and process memory must be preserved.
-- [ ] Additional task slices, if any, started from latest `origin/main` in separate isolated worktrees/branches/PRs; in-flight work was preserved rather than overwritten.
+- [ ] Sibling worktrees, branches, dirty diffs, commits, PR state, feature folders, and process memory were not mutated without explicit Orchestrator coordination.
+- [ ] Additional task slices, if any, started from latest verified `main` in separate isolated worktrees/branches/PRs, normally `origin/main` after fetch; any fetch/base verification failure is recorded as a fallback/blocker, no stale base was silently reused, and in-flight work was preserved rather than overwritten.
 - [ ] Changes are limited to the assigned feature memory and scoped files; unrelated work is deferred.
 - [ ] Role boundaries were preserved: Orchestrator did not directly edit repo files, and agents did not switch roles mid-task.
+- [ ] Cleanup, if applicable, was coordinated through an assigned Cleanup Agent; Orchestrator and other non-cleanup roles did not directly delete local repository environments and only coordinated/requested cleanup or recorded evidence.
+- [ ] Cleanup evidence, if applicable, records approved roots, candidate inventory, validation, action/refusal reason, post-cleanup confirmation, and preservation of current/active/dirty/untracked/unpushed/open-PR/ambiguous/user-owned/out-of-root/locked/running-process targets.
 - [ ] Required review fixes, source prerequisites, metadata fixes, and final-guard fixes are split into separate PRs when separation lowers risk or clarifies gates.
 
 ## Merge Readiness

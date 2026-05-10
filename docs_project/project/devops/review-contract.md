@@ -17,10 +17,19 @@ Reviewers check role boundaries in addition to code behavior:
 - Repository-changing work must enter through Orchestrator by default, and
   Orchestrator must invoke Analyst first when no current `feature-request.md`
   exists.
+- Read-only work may proceed without feature memory only while it remains
+  non-mutating. Reviewers should flag repository mutations that began from a
+  read-only interaction without an Orchestrator-first stop and handoff.
+- A non-Orchestrator active model must not directly implement a new
+  repository-changing request or self-promote into another role. Reviewers
+  should flag any bypass even when the resulting diff is otherwise correct.
 - New repository-changing work and each new task slice must have latest
-  `origin/main` startup/base evidence and a fresh isolated worktree/branch,
-  except when Orchestrator explicitly assigns the Analyst-created latest-main
-  handoff branch as the single implementation PR slice.
+  verified `main` startup/base evidence, normally `origin/main` after fetch,
+  with a fresh isolated worktree/branch. If fetch/base verification is
+  unavailable, reviewers require a documented fallback or blocker; silent stale
+  base reuse is a process violation. The exception remains when Orchestrator
+  explicitly assigns the Analyst-created latest-main handoff branch as the
+  single implementation PR slice.
 - Orchestrator must not directly edit repository files. File changes must come
   from the role-appropriate subagent.
 - Analyst requirement clarification must be relayed through Orchestrator.
@@ -29,17 +38,38 @@ Reviewers check role boundaries in addition to code behavior:
   Implementation Agent feedback, or documented blocker exceptions.
 - Agents must not switch roles mid-task. Work outside the current role must be
   rerouted by Orchestrator.
+- Accidental direct-edit recovery must be visible in process memory when it
+  occurs: stop/report/preserve/restart through Orchestrator or user
+  disposition, with no hidden continuation, silent role switching, destructive
+  cleanup, or unauthorized revert of user/sibling work.
 - One task slice must map to one isolated worktree, one branch, and one PR.
+- New repository-changing work should show latest verified `main` startup
+  evidence, normally `origin/main` after fetch, or a documented fallback/blocker
+  when fetch/base verification was unavailable.
 - Orchestrator assignment should warn subagents that parallel agents may be
   active and require preservation of existing dirty diffs, branches, commits,
   PRs, and process memory.
+- Sibling worktrees, branches, dirty diffs, commits, PR state, feature folders,
+  and process memory must not be mutated without explicit Orchestrator
+  coordination.
 - When a feature has multiple contributing slices, reviewers should verify that
   the cycle PR set records each PR slice's purpose, branch, PR metadata, head
   SHA, status, and inclusion in final validation.
+- Completion-time cleanup must be coordinated by Orchestrator and executed only
+  by an assigned Cleanup Agent.
+- Non-cleanup roles may coordinate cleanup, request Cleanup Agent assignment, or
+  record evidence only; they must not delete local repository environments.
+- Orchestrator must not directly delete local repository environments.
 - Implementation PRs must stay inside the assigned feature memory and must not
   mix unrelated changes.
+- Implementation must not start without complete feature memory:
+  `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`, except documented
+  legacy/no-intake exceptions.
 - Blocking Implementation Agent feedback must be either resolved in scope or
   have Architect disposition before completion.
+- Process changes must not contradict the existing `011` Orchestrator-Analyst
+  routing baseline or sibling `012` final-validation-loop guidance when that
+  guidance is present or in flight.
 - Initial Review Agent review may proceed before final Architect or Analyst
   validation evidence exists. Reviewers may still review whether the PR text,
   docs, specs, and templates require the planned final-validation steps at the
@@ -71,17 +101,30 @@ Reviewers should block merge when the PR text, docs, specs, or implementation
 permit unsafe completion. Blocking conditions include red, missing, queued, or
 running required checks; unresolved `P0`, `P1`, or `P2` review findings;
 unresolved conflicts; stale process memory; missing acceptance evidence; missing
-negative-scenario coverage; or unresolved Implementation Agent feedback without
-Architect disposition. During initial PR review, absence of final Architect or
-Analyst validation evidence is not itself blocking because the final-validation
-loop is invoked only after implementation, review, checks, and follow-up
-development appear complete. During Orchestrator's final completion or
-merge-readiness evaluation, missing final-validation evidence, incomplete cycle
-PR set coverage, Analyst feedback without Architect disposition, or exhausted
-return limits without new-feature-request escalation are blocking process
-findings. So are missing current-PR-head guard evidence after a post-validation
-evidence commit, or any non-evidence post-validation change that still relies on
-prior Architect or Analyst validation.
+negative-scenario coverage; Orchestrator-first bypasses; missing feature
+memory; role-boundary violations; unsafe accidental-start recovery; sibling-work
+mutation; contradictions with required `011`/`012` process guidance; or
+unresolved Implementation Agent feedback without Architect disposition. During
+initial PR review, absence of final Architect or Analyst validation evidence is
+not itself blocking because the final-validation loop is invoked only after
+implementation, review, checks, and follow-up development appear complete.
+During Orchestrator's final completion or merge-readiness evaluation, missing
+final-validation evidence, incomplete cycle PR set coverage, Analyst feedback
+without Architect disposition, or exhausted return limits without
+new-feature-request escalation are blocking process findings. So are missing
+current-PR-head guard evidence after a post-validation evidence commit, or any
+non-evidence post-validation change that still relies on prior Architect or
+Analyst validation.
+
+For cleanup-related changes or cleanup evidence, reviewers must block merge when
+the rules or evidence permit deletion based only on name, timestamp, or memory;
+when cleanup can touch current, active, dirty, untracked, unpushed, open-PR,
+locked, running-process, ambiguous, user-owned, out-of-root, non-Cabadrive, or
+process-memory-referenced targets; when PR lookup failure is treated as safe;
+when registered worktrees can be removed with raw recursive deletion; when
+cleanup evidence omits inventory, validation, action/refusal reason, or
+post-cleanup confirmation; or when a non-cleanup role performs destructive
+local-environment cleanup.
 
 Review findings that require code, docs, tests, content, specs, metadata, or
 process-memory edits are routed by Orchestrator to the proper role. Source
@@ -96,8 +139,8 @@ local guard evidence, Orchestrator-first routing evidence, Analyst
 clarification-relay evidence, latest-main startup evidence, parallel-work
 isolation evidence, cycle PR-set evidence, final Architect validation, final
 Analyst validation, effective content head evidence, current-PR-head guard
-evidence, return-limit state, or manual review of the SENAR done gate.
-Explicit user authorization for Orchestrator
+evidence, return-limit state, cleanup evidence/refusal records when relevant,
+or manual review of the SENAR done gate. Explicit user authorization for Orchestrator
 merge removes only the need to ask again; it does not remove any merge-readiness
 gate. A human remains the default final merge owner when no such authorization
 exists.
