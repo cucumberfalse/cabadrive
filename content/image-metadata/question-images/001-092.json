@@ -4286,18 +4286,18 @@
       ],
       "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Blue rectangular information sign with a white inset panel showing a black bus symbol under a terminal canopy or platform roof.",
+      "generationPromptSummary": "Simple traffic information sign on a white background: blue vertical rectangle with rounded corners and gray edge, white inset panel at the top, black pictogram of a bus below a slanted terminal canopy line, no red prohibition circle or slash.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "isolated traffic sign graphic",
+        "environment": "plain white background",
+        "cameraView": "front-on view",
+        "framing": "entire sign centered",
+        "lighting": "even graphic lighting",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not shown",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
@@ -4306,32 +4306,134 @@
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "blue-information-sign-panel",
+          "type": "traffic_sign_panel",
+          "label": "blue information sign panel",
+          "description": "Tall blue rectangular panel with rounded gray border and a white inset pictogram area.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "signsSignalsMarkings": [
+        {
+          "id": "bus-terminal-symbol",
+          "type": "public_transport_symbol",
+          "label": "bus terminal pictogram",
+          "description": "Black bus pictogram shown below a terminal canopy or platform roof inside the white inset.",
+          "confidence": "high"
+        }
+      ],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [],
+      "spatialRelationships": [
+        {
+          "id": "symbol-inside-white-inset",
+          "subjectId": "bus-terminal-symbol",
+          "relation": "inside",
+          "objectId": "blue-information-sign-panel",
+          "description": "The bus terminal pictogram sits inside the white inset area at the upper part of the blue sign."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "terminal-canopy-symbol-simplified",
+          "field": "signsSignalsMarkings.bus-terminal-symbol",
+          "note": "The canopy/platform line is stylized, but the bus pictogram and information-sign format are clear.",
+          "impact": "does not affect terminal meaning"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b270"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b270",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b270.jpg locally; confirmed blue information sign, bus pictogram, terminal canopy line, and absence of red prohibition markings.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-blue-sign-panel",
+          "label": "blue sign body",
+          "semanticLocation": "entire sign face",
+          "includesObjectIds": [
+            "blue-information-sign-panel"
+          ],
+          "includesDetailIds": [
+            "blue-information-sign",
+            "no-red-prohibition-marking"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-white-bus-pictogram",
+          "label": "bus pictogram panel",
+          "semanticLocation": "upper white inset of sign",
+          "includesObjectIds": [
+            "bus-terminal-symbol"
+          ],
+          "includesDetailIds": [
+            "bus-terminal-pictogram",
+            "terminal-canopy-line"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "bus-terminal-pictogram",
+          "objectIds": [
+            "bus-terminal-symbol"
+          ],
+          "regionIds": [
+            "region-white-bus-pictogram"
+          ],
+          "category": "public_transport_symbol",
+          "description": "Black bus pictogram identifies the sign as referring to a bus terminal or bus facility.",
+          "confidence": "high"
+        },
+        {
+          "id": "terminal-canopy-line",
+          "objectIds": [
+            "bus-terminal-symbol"
+          ],
+          "regionIds": [
+            "region-white-bus-pictogram"
+          ],
+          "category": "terminal_symbol_detail",
+          "description": "Slanted roof or platform line above the bus indicates a terminal or station setting.",
+          "confidence": "medium"
+        },
+        {
+          "id": "blue-information-sign",
+          "objectIds": [
+            "blue-information-sign-panel"
+          ],
+          "regionIds": [
+            "region-blue-sign-panel"
+          ],
+          "category": "information_sign_format",
+          "description": "Blue rectangular sign format indicates information or service, not a prohibition.",
+          "confidence": "high"
+        },
+        {
+          "id": "no-red-prohibition-marking",
+          "objectIds": [
+            "blue-information-sign-panel"
+          ],
+          "regionIds": [
+            "region-blue-sign-panel"
+          ],
+          "category": "absence_of_prohibition_marking",
+          "description": "The sign has no red circle, slash, or stopping/parking prohibition symbol.",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "imageId": "question-image-b53",
@@ -4341,20 +4443,20 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
+      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Night roadside alcohol-control scene where a uniformed traffic officer holds a breathalyzer to a driver seated inside a car with the window open.",
+      "generationPromptSummary": "Realistic night street checkpoint photo: traffic officer in yellow and blue reflective uniform and cap stands beside the open driver window of a silver car, holding a breathalyzer near the mouth of an older male driver; blurred city lights in background.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "night roadside checkpoint",
+        "environment": "urban street with blurred lights and car stopped at control",
+        "cameraView": "close street-level side view into driver window",
+        "framing": "officer and driver fill the frame",
+        "lighting": "night lighting with vehicle and street lights",
+        "weatherOrSurface": "dry roadway not central"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban roadway checkpoint",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
@@ -4363,32 +4465,199 @@
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
+          "id": "silver-car-driver-side",
+          "type": "car",
+          "label": "silver car at checkpoint",
+          "description": "Silver car stopped with the driver-side window open for inspection.",
+          "confidence": "high"
+        },
+        {
+          "id": "breathalyzer-device",
+          "type": "testing_device",
+          "label": "breathalyzer device",
+          "description": "Small handheld alcohol-test device held close to the driver’s mouth.",
+          "confidence": "high"
+        },
+        {
+          "id": "open-driver-window",
+          "type": "vehicle_window",
+          "label": "open driver window",
+          "description": "Open side window between officer and seated driver.",
+          "confidence": "high"
+        }
+      ],
+      "roadUsers": [
+        {
+          "id": "traffic-control-officer",
+          "type": "traffic_officer",
+          "label": "traffic control officer",
+          "description": "Uniformed officer in high-visibility yellow and blue clothing and cap administering the roadside test.",
+          "confidence": "high"
+        },
+        {
+          "id": "driver-inside-car",
+          "type": "driver",
+          "label": "driver being tested",
+          "description": "Older male driver seated inside the vehicle and facing the breathalyzer device.",
+          "confidence": "high"
+        }
+      ],
+      "signsSignalsMarkings": [],
+      "annotations": [],
+      "visibleText": [
+        {
+          "id": "uniform-back-text-partial",
+          "text": "TRANSITO / SEGURIDAD",
+          "language": "es",
+          "locationDescription": "partially visible on the officer uniform back",
           "confidence": "low"
         }
       ],
-      "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "spatialRelationships": [
+        {
+          "id": "officer-beside-driver-window",
+          "subjectId": "traffic-control-officer",
+          "relation": "beside",
+          "objectId": "open-driver-window",
+          "description": "The officer stands beside the open driver window."
+        },
+        {
+          "id": "breathalyzer-near-driver-mouth",
+          "subjectId": "breathalyzer-device",
+          "relation": "held_near",
+          "objectId": "driver-inside-car",
+          "description": "The breathalyzer is held directly near the driver’s mouth."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "uniform-text-low-resolution",
+          "field": "visibleText.uniform-back-text-partial",
+          "note": "Uniform text is partly obscured and low resolution, but the roadside test action is clear.",
+          "impact": "not needed for the answer"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b53"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b53",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b53.jpg locally; confirmed officer, driver, car window, breathalyzer device, night checkpoint context, and low-resolution uniform text.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-officer-and-device",
+          "label": "officer administering test",
+          "semanticLocation": "left and center foreground",
+          "includesObjectIds": [
+            "traffic-control-officer",
+            "breathalyzer-device"
+          ],
+          "includesDetailIds": [
+            "traffic-officer-administering-test",
+            "breathalyzer-at-driver-window"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-driver-window",
+          "label": "driver at open window",
+          "semanticLocation": "right-center of frame inside car",
+          "includesObjectIds": [
+            "driver-inside-car",
+            "open-driver-window",
+            "silver-car-driver-side"
+          ],
+          "includesDetailIds": [
+            "driver-seated-for-test",
+            "open-window-checkpoint"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-night-background",
+          "label": "night checkpoint background",
+          "semanticLocation": "blurred street background",
+          "includesObjectIds": [],
+          "includesDetailIds": [
+            "night-roadside-control-context"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "breathalyzer-at-driver-window",
+          "objectIds": [
+            "breathalyzer-device",
+            "driver-inside-car"
+          ],
+          "regionIds": [
+            "region-officer-and-device",
+            "region-driver-window"
+          ],
+          "category": "alcohol_test_action",
+          "description": "Handheld breathalyzer is positioned at the driver window near the driver’s mouth.",
+          "confidence": "high"
+        },
+        {
+          "id": "traffic-officer-administering-test",
+          "objectIds": [
+            "traffic-control-officer",
+            "breathalyzer-device"
+          ],
+          "regionIds": [
+            "region-officer-and-device"
+          ],
+          "category": "traffic_control_action",
+          "description": "Uniformed traffic officer administers the roadside alcohol test.",
+          "confidence": "high"
+        },
+        {
+          "id": "driver-seated-for-test",
+          "objectIds": [
+            "driver-inside-car",
+            "silver-car-driver-side"
+          ],
+          "regionIds": [
+            "region-driver-window"
+          ],
+          "category": "driver_context",
+          "description": "Driver remains seated in the car while being tested through the open window.",
+          "confidence": "high"
+        },
+        {
+          "id": "night-roadside-control-context",
+          "objectIds": [
+            "silver-car-driver-side"
+          ],
+          "regionIds": [
+            "region-night-background"
+          ],
+          "category": "roadside_context",
+          "description": "Night urban setting with blurred lights suggests a roadside control operation.",
+          "confidence": "medium"
+        },
+        {
+          "id": "open-window-checkpoint",
+          "objectIds": [
+            "open-driver-window"
+          ],
+          "regionIds": [
+            "region-driver-window"
+          ],
+          "category": "vehicle_access_detail",
+          "description": "The open window provides access for the test without the driver leaving the car.",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "imageId": "question-image-b154",
@@ -4400,18 +4669,18 @@
       ],
       "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Circular no-parking sign: black letter E on white background crossed by a red diagonal bar inside a red border.",
+      "generationPromptSummary": "Close-up graphic traffic sign on white background: black capital E centered in a white circle, red circular border, and red diagonal slash from upper left to lower right indicating no parking.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "isolated traffic sign graphic",
+        "environment": "plain white background",
+        "cameraView": "front-on close-up",
+        "framing": "round sign centered",
+        "lighting": "even graphic lighting",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not shown",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
@@ -4420,32 +4689,143 @@
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "round-no-parking-sign-panel",
+          "type": "traffic_sign_panel",
+          "label": "round no-parking sign panel",
+          "description": "Circular white sign with red border and diagonal slash.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "black-parking-e-symbol",
+          "type": "parking_symbol",
+          "label": "black E parking symbol",
+          "description": "Large black letter E at center of the sign.",
+          "confidence": "high"
+        },
+        {
+          "id": "red-prohibition-slash-object",
+          "type": "prohibition_mark",
+          "label": "red slash and border",
+          "description": "Red diagonal slash and circular red border indicate a prohibition applied to parking.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [
+        {
+          "id": "parking-letter-e",
+          "text": "E",
+          "language": "es",
+          "locationDescription": "center of sign",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "slash-crosses-e-symbol",
+          "subjectId": "red-prohibition-slash-object",
+          "relation": "crosses",
+          "objectId": "black-parking-e-symbol",
+          "description": "The red diagonal slash crosses the black E parking symbol."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b154"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b154",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b154.jpg locally; confirmed no-parking E symbol, red border and slash, and no additional time plate or no-stopping symbol.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-no-parking-sign",
+          "label": "entire no-parking sign",
+          "semanticLocation": "center of image",
+          "includesObjectIds": [
+            "round-no-parking-sign-panel",
+            "black-parking-e-symbol",
+            "red-prohibition-slash-object"
+          ],
+          "includesDetailIds": [
+            "no-parking-e-symbol",
+            "red-prohibition-slash"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-sign-background",
+          "label": "plain background",
+          "semanticLocation": "outside sign face",
+          "includesObjectIds": [],
+          "includesDetailIds": [
+            "no-time-plate-visible",
+            "no-stopping-symbol-absent"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "no-parking-e-symbol",
+          "objectIds": [
+            "black-parking-e-symbol"
+          ],
+          "regionIds": [
+            "region-no-parking-sign"
+          ],
+          "category": "parking_symbol",
+          "description": "Black E parking symbol identifies the sign as related to parking.",
+          "confidence": "high"
+        },
+        {
+          "id": "red-prohibition-slash",
+          "objectIds": [
+            "red-prohibition-slash-object",
+            "round-no-parking-sign-panel"
+          ],
+          "regionIds": [
+            "region-no-parking-sign"
+          ],
+          "category": "prohibition_mark",
+          "description": "Red diagonal slash prohibits the parking action represented by the E symbol.",
+          "confidence": "high"
+        },
+        {
+          "id": "no-stopping-symbol-absent",
+          "objectIds": [
+            "round-no-parking-sign-panel"
+          ],
+          "regionIds": [
+            "region-sign-background"
+          ],
+          "category": "absence_of_no_stopping_symbol",
+          "description": "There is no separate no-stopping symbol or double prohibition shown.",
+          "confidence": "high"
+        },
+        {
+          "id": "no-time-plate-visible",
+          "objectIds": [
+            "round-no-parking-sign-panel"
+          ],
+          "regionIds": [
+            "region-sign-background"
+          ],
+          "category": "absence_of_time_plate",
+          "description": "No supplementary time plate or schedule is visible with the sign.",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "imageId": "question-image-b70",
@@ -4455,54 +4835,232 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
+      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Daylight urban railway level crossing with rail tracks in the foreground, red-and-white crossing barriers, nearby cars, a bus, overhead wires, and buildings beyond the crossing.",
+      "generationPromptSummary": "Realistic daylight city railway crossing photo from a car viewpoint: rail tracks across the foreground, red-and-white barrier arms and posts, several cars and a bus near the crossing, apartment buildings, storefronts, overhead wires, and dry pavement.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban railway level crossing",
+        "environment": "city intersection with rail crossing, vehicles, buildings, and overhead wires",
+        "cameraView": "street-level view facing across the tracks",
+        "framing": "rail tracks foreground with barriers and traffic beyond",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry pavement and rails"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban street crossing railway tracks",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "road crosses the rail line from foreground to background"
+        ],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "rail-tracks-object",
+          "type": "rail_tracks",
+          "label": "rail tracks",
+          "description": "Railway tracks run horizontally across the foreground pavement.",
+          "confidence": "high"
+        },
+        {
+          "id": "red-white-barrier-arms",
+          "type": "railway_barrier",
+          "label": "red and white crossing barriers",
+          "description": "Red-and-white crossing barrier arms and posts are visible across the road area.",
+          "confidence": "high"
+        },
+        {
+          "id": "background-bus",
+          "type": "bus",
+          "label": "bus beyond crossing",
+          "description": "Large bus visible beyond the crossing area among other traffic.",
+          "confidence": "high"
+        },
+        {
+          "id": "background-cars-crossing",
+          "type": "cars",
+          "label": "cars near crossing",
+          "description": "Several cars are visible near or beyond the level crossing.",
+          "confidence": "high"
+        },
+        {
+          "id": "urban-buildings-crossing",
+          "type": "buildings",
+          "label": "urban buildings around crossing",
+          "description": "Residential and commercial buildings frame the crossing in the background.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "signsSignalsMarkings": [
+        {
+          "id": "railway-crossing-barrier-system",
+          "type": "railway_crossing_control",
+          "label": "railway crossing control system",
+          "description": "Barrier posts and crossing-control elements mark the railway crossing.",
+          "confidence": "high"
+        }
+      ],
       "annotations": [],
       "visibleText": [],
-      "spatialRelationships": [],
+      "spatialRelationships": [
+        {
+          "id": "barriers-across-road-near-tracks",
+          "subjectId": "red-white-barrier-arms",
+          "relation": "at",
+          "objectId": "rail-tracks-object",
+          "description": "The barrier arms are positioned at the roadway area where it meets the railway tracks."
+        },
+        {
+          "id": "vehicles-beyond-crossing",
+          "subjectId": "background-cars-crossing",
+          "relation": "beyond",
+          "objectId": "rail-tracks-object",
+          "description": "Cars and bus are visible beyond the foreground railway tracks."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "railway-worker-not-visible",
+          "field": "roadUsers",
+          "note": "A railway worker giving an instruction is not clearly visible in the photo; that instruction is supplied by the question text.",
+          "impact": "answer reasoning must combine image context with the ticket wording"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b70"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b70",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b70.jpg locally; confirmed urban railway crossing, rails, red-white barriers, bus, cars, buildings, and that railway staff is not clearly visible.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-rail-tracks-foreground",
+          "label": "rail tracks in foreground",
+          "semanticLocation": "bottom foreground",
+          "includesObjectIds": [
+            "rail-tracks-object"
+          ],
+          "includesDetailIds": [
+            "rail-tracks-foreground"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-crossing-barriers",
+          "label": "red-white crossing barriers",
+          "semanticLocation": "middle of image across roadway",
+          "includesObjectIds": [
+            "red-white-barrier-arms",
+            "railway-crossing-barrier-system"
+          ],
+          "includesDetailIds": [
+            "railway-crossing-barriers",
+            "railway-crossing-control-system"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-traffic-beyond-crossing",
+          "label": "vehicles beyond crossing",
+          "semanticLocation": "mid-background beyond barriers",
+          "includesObjectIds": [
+            "background-bus",
+            "background-cars-crossing"
+          ],
+          "includesDetailIds": [
+            "bus-and-cars-near-crossing"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-urban-background",
+          "label": "buildings and wires",
+          "semanticLocation": "upper background",
+          "includesObjectIds": [
+            "urban-buildings-crossing"
+          ],
+          "includesDetailIds": [
+            "urban-building-background"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "railway-crossing-barriers",
+          "objectIds": [
+            "red-white-barrier-arms",
+            "railway-crossing-barrier-system"
+          ],
+          "regionIds": [
+            "region-crossing-barriers"
+          ],
+          "category": "railway_crossing_control",
+          "description": "Red-and-white barrier arms mark the railway level crossing and create the controlled-crossing situation.",
+          "confidence": "high"
+        },
+        {
+          "id": "rail-tracks-foreground",
+          "objectIds": [
+            "rail-tracks-object"
+          ],
+          "regionIds": [
+            "region-rail-tracks-foreground"
+          ],
+          "category": "railway_tracks",
+          "description": "Visible rails across the foreground confirm that this is a railway crossing.",
+          "confidence": "high"
+        },
+        {
+          "id": "bus-and-cars-near-crossing",
+          "objectIds": [
+            "background-bus",
+            "background-cars-crossing"
+          ],
+          "regionIds": [
+            "region-traffic-beyond-crossing"
+          ],
+          "category": "traffic_context",
+          "description": "Bus and cars show traffic waiting or moving near the crossing.",
+          "confidence": "high"
+        },
+        {
+          "id": "railway-crossing-control-system",
+          "objectIds": [
+            "railway-crossing-barrier-system"
+          ],
+          "regionIds": [
+            "region-crossing-barriers"
+          ],
+          "category": "control_context",
+          "description": "Crossing equipment indicates that passage is controlled at this location.",
+          "confidence": "high"
+        },
+        {
+          "id": "urban-building-background",
+          "objectIds": [
+            "urban-buildings-crossing"
+          ],
+          "regionIds": [
+            "region-urban-background"
+          ],
+          "category": "background_context",
+          "description": "Urban buildings and wires provide city context but do not decide the answer.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b161",
@@ -4512,54 +5070,230 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "traffic_sign",
+      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Daylight urban street with parked cars along both sides; a dark car in the travel lane is highlighted by a red oval, positioned near the curbside parking row.",
+      "generationPromptSummary": "Realistic daylight city street photo with cobblestone roadway, parked cars along both curbs, pedestrians on the right sidewalk, and a dark hatchback stopped in the lane near the right parking row, circled with a red oval annotation.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban street with curbside parking",
+        "environment": "tree-lined street with parked cars, storefronts, pedestrians, and apartments",
+        "cameraView": "street-level view down the roadway",
+        "framing": "red-circled car centered ahead",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry cobblestone or rough pavement"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban one-way or narrow street with curbside parking",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "traffic lane extends away from viewer"
+        ],
         "markings": [],
         "crossings": [],
-        "curbsOrShoulders": []
+        "curbsOrShoulders": [
+          {
+            "id": "right-curbside-parking-row",
+            "description": "Parked cars line the right side of the street beside the highlighted vehicle."
+          }
+        ]
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "red-circled-dark-car",
+          "type": "car",
+          "label": "red-circled dark car",
+          "description": "Dark hatchback stopped or paused in the travel lane, highlighted by a red oval.",
+          "confidence": "high"
+        },
+        {
+          "id": "right-curb-parked-cars",
+          "type": "parked_cars",
+          "label": "right curb parked cars",
+          "description": "Line of parked cars along the right curb beside the highlighted vehicle.",
+          "confidence": "high"
+        },
+        {
+          "id": "left-curb-parked-cars",
+          "type": "parked_cars",
+          "label": "left curb parked cars",
+          "description": "Additional parked cars line the left side of the street.",
+          "confidence": "medium"
+        },
+        {
+          "id": "urban-street-surface",
+          "type": "roadway",
+          "label": "urban street surface",
+          "description": "Cobblestone or rough paved roadway leading away from the viewer.",
+          "confidence": "high"
         }
       ],
-      "roadUsers": [],
+      "roadUsers": [
+        {
+          "id": "sidewalk-pedestrians",
+          "type": "pedestrians",
+          "label": "sidewalk pedestrians",
+          "description": "People stand or walk on the right sidewalk near storefronts.",
+          "confidence": "medium"
+        }
+      ],
       "signsSignalsMarkings": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "id": "red-oval-stopped-car",
+          "type": "red_oval",
+          "label": "red oval around stopped car",
+          "description": "Red oval annotation circles the dark car in the lane.",
+          "confidence": "high",
+          "targetIds": [
+            "red-circled-dark-car"
+          ]
+        }
+      ],
       "visibleText": [],
-      "spatialRelationships": [],
+      "spatialRelationships": [
+        {
+          "id": "dark-car-beside-parked-row",
+          "subjectId": "red-circled-dark-car",
+          "relation": "beside",
+          "objectId": "right-curb-parked-cars",
+          "description": "The highlighted car is beside the right curbside row of parked cars."
+        },
+        {
+          "id": "red-oval-targets-dark-car",
+          "subjectId": "red-oval-stopped-car",
+          "relation": "surrounds",
+          "objectId": "red-circled-dark-car",
+          "description": "The red oval surrounds the car whose stopping position is being tested."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "exact-maneuver-not-visible",
+          "field": "spatialRelationships.dark-car-beside-parked-row",
+          "note": "The still image does not show whether the car has begun backing into a space; it shows the paused position beside a parking row.",
+          "impact": "ticket text supplies the parking-maneuver exception"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b161"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b161",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b161.jpg locally; confirmed red-circled dark car in lane, curbside parked rows, pedestrians, and no visible passenger boarding context.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-circled-car",
+          "label": "red-circled stopped car",
+          "semanticLocation": "center of roadway ahead",
+          "includesObjectIds": [
+            "red-circled-dark-car",
+            "red-oval-stopped-car"
+          ],
+          "includesDetailIds": [
+            "red-circled-stopped-car",
+            "red-oval-vehicle-highlight"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-right-parking-row",
+          "label": "right curbside parking row",
+          "semanticLocation": "right side of street",
+          "includesObjectIds": [
+            "right-curb-parked-cars"
+          ],
+          "includesDetailIds": [
+            "curbside-parked-row"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-street-background",
+          "label": "street and pedestrians",
+          "semanticLocation": "background and sidewalks",
+          "includesObjectIds": [
+            "left-curb-parked-cars",
+            "sidewalk-pedestrians",
+            "urban-street-surface"
+          ],
+          "includesDetailIds": [
+            "no-passenger-boarding-visible",
+            "urban-street-parking-context"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "red-circled-stopped-car",
+          "objectIds": [
+            "red-circled-dark-car"
+          ],
+          "regionIds": [
+            "region-circled-car"
+          ],
+          "category": "stopping_position",
+          "description": "Dark car is highlighted while paused in the travel lane beside parked vehicles.",
+          "confidence": "high"
+        },
+        {
+          "id": "curbside-parked-row",
+          "objectIds": [
+            "right-curb-parked-cars"
+          ],
+          "regionIds": [
+            "region-right-parking-row"
+          ],
+          "category": "parking_context",
+          "description": "Row of parked cars along the right curb provides the context for a parking maneuver.",
+          "confidence": "high"
+        },
+        {
+          "id": "red-oval-vehicle-highlight",
+          "objectIds": [
+            "red-oval-stopped-car"
+          ],
+          "regionIds": [
+            "region-circled-car"
+          ],
+          "category": "annotation",
+          "description": "Red oval directs attention to the stopped vehicle position.",
+          "confidence": "high"
+        },
+        {
+          "id": "no-passenger-boarding-visible",
+          "objectIds": [
+            "red-circled-dark-car"
+          ],
+          "regionIds": [
+            "region-street-background"
+          ],
+          "category": "absence_of_passenger_activity",
+          "description": "No passenger entering or leaving the circled car is visible.",
+          "confidence": "medium"
+        },
+        {
+          "id": "urban-street-parking-context",
+          "objectIds": [
+            "urban-street-surface",
+            "left-curb-parked-cars"
+          ],
+          "regionIds": [
+            "region-street-background"
+          ],
+          "category": "street_context",
+          "description": "Dense parked urban street context supports the interpretation of a parking-related stop.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b31",
@@ -4571,52 +5305,228 @@
       ],
       "kind": "road_marking",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Urban intersection with a wide pedestrian crossing painted in alternating white and orange stripes, plus a green lane segment and yellow bollards nearby.",
+      "generationPromptSummary": "Realistic daylight city intersection photo: foreground crosswalk with alternating white and orange bands across asphalt, corner storefront, sidewalk curb ramps, yellow bollards, green lane segment beyond the crosswalk, parked cars and trees in background.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban intersection with special crosswalk marking",
+        "environment": "street corner with storefront, sidewalks, curb ramps, bollards, and vehicles",
+        "cameraView": "street-level view looking across the crosswalk",
+        "framing": "orange-white crosswalk dominates foreground",
+        "lighting": "daylight with some shade",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban intersection",
         "laneCount": "unknown",
-        "laneDirections": [],
-        "markings": [],
-        "crossings": [],
-        "curbsOrShoulders": []
+        "laneDirections": [
+          "cross street visible beyond marked pedestrian crossing"
+        ],
+        "markings": [
+          {
+            "id": "orange-white-crosswalk-marking",
+            "description": "Alternating white and orange crosswalk bands across the road."
+          },
+          {
+            "id": "green-lane-segment",
+            "description": "Green lane segment visible beyond the crossing."
+          }
+        ],
+        "crossings": [
+          {
+            "id": "marked-pedestrian-crossing",
+            "description": "Wide marked pedestrian crossing in foreground."
+          }
+        ],
+        "curbsOrShoulders": [
+          {
+            "id": "corner-curb-ramps",
+            "description": "Curb ramps at the intersection corners."
+          }
+        ]
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "urban-intersection-roadway",
+          "type": "roadway",
+          "label": "urban intersection roadway",
+          "description": "Asphalt roadway at an intersection with marked crossing.",
+          "confidence": "high"
+        },
+        {
+          "id": "corner-storefront",
+          "type": "building_front",
+          "label": "corner storefront",
+          "description": "Building corner and storefront behind the crossing.",
+          "confidence": "medium"
+        },
+        {
+          "id": "yellow-bollards",
+          "type": "bollards",
+          "label": "yellow bollards",
+          "description": "Short yellow bollards at the curb edge near the crossing.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
+      "signsSignalsMarkings": [
+        {
+          "id": "orange-white-school-crosswalk-marking",
+          "type": "road_marking",
+          "label": "orange-white school crosswalk",
+          "description": "Pedestrian crossing with alternating white and orange bands.",
+          "confidence": "high"
+        },
+        {
+          "id": "green-lane-marking-object",
+          "type": "road_marking",
+          "label": "green lane marking",
+          "description": "Green road marking segment beyond the crosswalk.",
+          "confidence": "medium"
+        }
+      ],
       "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "visibleText": [
+        {
+          "id": "storefront-text-low-resolution",
+          "text": "Cafe Resto ... Bella",
+          "language": "es",
+          "locationDescription": "storefront sign in upper left background",
+          "confidence": "low"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "crosswalk-spans-roadway",
+          "subjectId": "orange-white-school-crosswalk-marking",
+          "relation": "spans",
+          "objectId": "urban-intersection-roadway",
+          "description": "The orange-white crossing spans the roadway in the foreground."
+        },
+        {
+          "id": "green-lane-beyond-crosswalk",
+          "subjectId": "green-lane-marking-object",
+          "relation": "beyond",
+          "objectId": "orange-white-school-crosswalk-marking",
+          "description": "The green lane segment lies beyond the marked crossing."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "background-store-text-low-resolution",
+          "field": "visibleText.storefront-text-low-resolution",
+          "note": "Background storefront text is not central and partly low resolution.",
+          "impact": "does not affect the school crossing marking meaning"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b31"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b31",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b31.jpg locally; confirmed orange-white pedestrian crossing, intersection, green lane segment, bollards, and no visible medical-center sign.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-orange-white-crosswalk",
+          "label": "orange-white pedestrian crossing",
+          "semanticLocation": "foreground across roadway",
+          "includesObjectIds": [
+            "orange-white-school-crosswalk-marking",
+            "urban-intersection-roadway"
+          ],
+          "includesDetailIds": [
+            "orange-white-school-crosswalk",
+            "pedestrian-crossing-bands"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-intersection-context",
+          "label": "intersection and corner context",
+          "semanticLocation": "middle and upper background",
+          "includesObjectIds": [
+            "corner-storefront",
+            "yellow-bollards",
+            "green-lane-marking-object"
+          ],
+          "includesDetailIds": [
+            "green-lane-context",
+            "corner-bollards-context",
+            "no-health-center-sign-visible"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "orange-white-school-crosswalk",
+          "objectIds": [
+            "orange-white-school-crosswalk-marking"
+          ],
+          "regionIds": [
+            "region-orange-white-crosswalk"
+          ],
+          "category": "school_zone_marking",
+          "description": "Alternating orange and white bands identify a special pedestrian crossing associated with school-zone context in this ticket.",
+          "confidence": "high"
+        },
+        {
+          "id": "pedestrian-crossing-bands",
+          "objectIds": [
+            "orange-white-school-crosswalk-marking",
+            "urban-intersection-roadway"
+          ],
+          "regionIds": [
+            "region-orange-white-crosswalk"
+          ],
+          "category": "pedestrian_crossing",
+          "description": "Broad crosswalk bands span the roadway for pedestrian crossing.",
+          "confidence": "high"
+        },
+        {
+          "id": "green-lane-context",
+          "objectIds": [
+            "green-lane-marking-object"
+          ],
+          "regionIds": [
+            "region-intersection-context"
+          ],
+          "category": "background_marking",
+          "description": "Green lane segment is visible beyond the crossing but is not the answer-critical marking.",
+          "confidence": "medium"
+        },
+        {
+          "id": "corner-bollards-context",
+          "objectIds": [
+            "yellow-bollards"
+          ],
+          "regionIds": [
+            "region-intersection-context"
+          ],
+          "category": "street_furniture_context",
+          "description": "Yellow bollards and corner curb ramps frame the crossing area.",
+          "confidence": "medium"
+        },
+        {
+          "id": "no-health-center-sign-visible",
+          "objectIds": [
+            "corner-storefront"
+          ],
+          "regionIds": [
+            "region-intersection-context"
+          ],
+          "category": "absence_of_health_institution_sign",
+          "description": "No clear hospital or health-center sign is visible in the scene.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b98",
@@ -4626,54 +5536,263 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "vehicle_photo",
+      "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Urban intersection photo with two yellow circular labels, A on the left approach near a truck and B on the right approach, marking which street has priority.",
+      "generationPromptSummary": "Realistic daylight city intersection with corner buildings, trees, cars, a large truck on the left approach, crosswalk edge at lower right, and two overlaid yellow circular labels: A near the left approach and B near the right approach.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban street intersection",
+        "environment": "corner with buildings, storefront, trees, cars, and truck",
+        "cameraView": "street-level view into an intersection",
+        "framing": "intersection centered with A and B labels overlaid near approaches",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry asphalt"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban intersection",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "street A approach from left side",
+          "street B approach from right side"
+        ],
         "markings": [],
-        "crossings": [],
+        "crossings": [
+          {
+            "id": "partial-zebra-crossing-right",
+            "description": "Partial zebra crossing visible at lower right edge."
+          }
+        ],
         "curbsOrShoulders": []
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "intersection-roadway",
+          "type": "roadway",
+          "label": "intersection roadway",
+          "description": "Open paved area where two streets cross.",
+          "confidence": "high"
+        },
+        {
+          "id": "left-approach-truck",
+          "type": "truck",
+          "label": "truck near street A approach",
+          "description": "Large truck visible on the left side near the A-labeled approach.",
+          "confidence": "high"
+        },
+        {
+          "id": "right-approach-cars",
+          "type": "cars",
+          "label": "cars near street B approach",
+          "description": "Cars visible along the right side near the B-labeled approach.",
+          "confidence": "medium"
+        },
+        {
+          "id": "corner-building-storefront",
+          "type": "building_front",
+          "label": "corner building and storefront",
+          "description": "Corner building with storefront behind the intersection.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
+      "annotations": [
+        {
+          "id": "yellow-a-label-object",
+          "type": "yellow_label",
+          "label": "A label",
+          "description": "Yellow circular overlay with black letter A near the left approach.",
+          "confidence": "high",
+          "targetIds": [
+            "intersection-roadway"
+          ]
+        },
+        {
+          "id": "yellow-b-label-object",
+          "type": "yellow_label",
+          "label": "B label",
+          "description": "Yellow circular overlay with black letter B near the right approach.",
+          "confidence": "high",
+          "targetIds": [
+            "intersection-roadway"
+          ]
+        }
+      ],
+      "visibleText": [
+        {
+          "id": "label-a-text",
+          "text": "A",
+          "language": "es",
+          "locationDescription": "yellow circle over left approach",
+          "confidence": "high"
+        },
+        {
+          "id": "label-b-text",
+          "text": "B",
+          "language": "es",
+          "locationDescription": "yellow circle over right approach",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "a-label-left-approach",
+          "subjectId": "yellow-a-label-object",
+          "relation": "marks",
+          "objectId": "left-approach-truck",
+          "description": "The A label marks the left-side approach where the truck is visible."
+        },
+        {
+          "id": "b-label-right-approach",
+          "subjectId": "yellow-b-label-object",
+          "relation": "marks",
+          "objectId": "right-approach-cars",
+          "description": "The B label marks the right-side approach across the intersection."
+        }
+      ],
       "uncertainties": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "traffic-control-not-clearly-visible",
+          "field": "signsSignalsMarkings",
+          "note": "No controlling signal or stop sign is clearly legible in the image; priority is read from the ticket-specific A/B diagram.",
+          "impact": "supports using the labeled mapping rather than inventing a separate signal rule"
         }
       ],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b98"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b98",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b98.jpg locally; confirmed urban intersection, yellow A and B labels, left truck, right-side cars, and no clearly legible traffic-control sign.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-street-a-left",
+          "label": "street A approach",
+          "semanticLocation": "left lower/middle side near truck",
+          "includesObjectIds": [
+            "yellow-a-label-object",
+            "left-approach-truck",
+            "intersection-roadway"
+          ],
+          "includesDetailIds": [
+            "yellow-a-street-label",
+            "street-a-approach"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-street-b-right",
+          "label": "street B approach",
+          "semanticLocation": "right lower/middle side",
+          "includesObjectIds": [
+            "yellow-b-label-object",
+            "right-approach-cars",
+            "intersection-roadway"
+          ],
+          "includesDetailIds": [
+            "yellow-b-street-label",
+            "street-b-approach"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-intersection-background",
+          "label": "intersection context",
+          "semanticLocation": "upper center and background",
+          "includesObjectIds": [
+            "corner-building-storefront"
+          ],
+          "includesDetailIds": [
+            "corner-building-context",
+            "partial-crosswalk-context"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "yellow-a-street-label",
+          "objectIds": [
+            "yellow-a-label-object"
+          ],
+          "regionIds": [
+            "region-street-a-left"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow circular A label marks the street or traffic stream that is the correct priority answer in this image.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-b-street-label",
+          "objectIds": [
+            "yellow-b-label-object"
+          ],
+          "regionIds": [
+            "region-street-b-right"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow circular B label marks the other street or traffic stream in the comparison.",
+          "confidence": "high"
+        },
+        {
+          "id": "street-a-approach",
+          "objectIds": [
+            "left-approach-truck",
+            "intersection-roadway"
+          ],
+          "regionIds": [
+            "region-street-a-left"
+          ],
+          "category": "intersection_approach",
+          "description": "Left-side approach associated with label A and visible truck.",
+          "confidence": "high"
+        },
+        {
+          "id": "street-b-approach",
+          "objectIds": [
+            "right-approach-cars",
+            "intersection-roadway"
+          ],
+          "regionIds": [
+            "region-street-b-right"
+          ],
+          "category": "intersection_approach",
+          "description": "Right-side approach associated with label B.",
+          "confidence": "medium"
+        },
+        {
+          "id": "corner-building-context",
+          "objectIds": [
+            "corner-building-storefront"
+          ],
+          "regionIds": [
+            "region-intersection-background"
+          ],
+          "category": "background_context",
+          "description": "Corner building and storefront provide location context but do not decide the A/B answer.",
+          "confidence": "medium"
+        },
+        {
+          "id": "partial-crosswalk-context",
+          "objectIds": [
+            "intersection-roadway"
+          ],
+          "regionIds": [
+            "region-intersection-background"
+          ],
+          "category": "background_marking",
+          "description": "Partial zebra crossing at the edge of the image is background context.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b215",
@@ -4685,18 +5804,18 @@
       ],
       "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Car interior photo with a seat head restraint circled in red, showing the headrest above the seatback near the rear side window.",
+      "generationPromptSummary": "Close interior car photo focused on a black seat headrest, red oval annotation around the head restraint, seatback below, rear side pillar and window on the right, soft daylight through vehicle glass.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "car interior",
+        "environment": "vehicle seat area with window and pillar",
+        "cameraView": "close interior view from passenger compartment",
+        "framing": "headrest centered and circled",
+        "lighting": "daylight through vehicle windows",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not shown",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
@@ -4705,32 +5824,155 @@
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "seat-headrest-object",
+          "type": "head_restraint",
+          "label": "seat headrest",
+          "description": "Black padded head restraint positioned above the seatback.",
+          "confidence": "high"
+        },
+        {
+          "id": "seatback-object",
+          "type": "vehicle_seat",
+          "label": "seatback",
+          "description": "Vehicle seatback below the head restraint.",
+          "confidence": "high"
+        },
+        {
+          "id": "rear-side-window-pillar",
+          "type": "vehicle_interior",
+          "label": "rear side window and pillar",
+          "description": "Interior pillar and window area to the right of the headrest.",
+          "confidence": "medium"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "annotations": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "red-oval-headrest-highlight",
+          "type": "red_oval",
+          "label": "red oval around headrest",
+          "description": "Red oval annotation surrounds the head restraint.",
+          "confidence": "high",
+          "targetIds": [
+            "seat-headrest-object"
+          ]
         }
       ],
+      "visibleText": [],
+      "spatialRelationships": [
+        {
+          "id": "headrest-above-seatback",
+          "subjectId": "seat-headrest-object",
+          "relation": "above",
+          "objectId": "seatback-object",
+          "description": "The head restraint is mounted above the seatback where it can support the occupant head and neck."
+        },
+        {
+          "id": "red-oval-targets-headrest",
+          "subjectId": "red-oval-headrest-highlight",
+          "relation": "surrounds",
+          "objectId": "seat-headrest-object",
+          "description": "The red oval directs attention to the head restraint."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b215"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b215",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b215.jpg locally; confirmed car seat head restraint, red oval annotation, seatback, and vehicle interior context.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-circled-headrest",
+          "label": "circled head restraint",
+          "semanticLocation": "center of image",
+          "includesObjectIds": [
+            "seat-headrest-object",
+            "red-oval-headrest-highlight"
+          ],
+          "includesDetailIds": [
+            "circled-head-restraint",
+            "seat-headrest-protective-position"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-seat-interior-context",
+          "label": "seat and interior context",
+          "semanticLocation": "lower and right side of image",
+          "includesObjectIds": [
+            "seatback-object",
+            "rear-side-window-pillar"
+          ],
+          "includesDetailIds": [
+            "seatback-context",
+            "vehicle-interior-background"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "circled-head-restraint",
+          "objectIds": [
+            "seat-headrest-object",
+            "red-oval-headrest-highlight"
+          ],
+          "regionIds": [
+            "region-circled-headrest"
+          ],
+          "category": "safety_equipment",
+          "description": "The red-circled object is the seat head restraint/headrest.",
+          "confidence": "high"
+        },
+        {
+          "id": "seat-headrest-protective-position",
+          "objectIds": [
+            "seat-headrest-object",
+            "seatback-object"
+          ],
+          "regionIds": [
+            "region-circled-headrest"
+          ],
+          "category": "occupant_protection_position",
+          "description": "Headrest is positioned above the seatback where it protects the head and neck area.",
+          "confidence": "high"
+        },
+        {
+          "id": "seatback-context",
+          "objectIds": [
+            "seatback-object"
+          ],
+          "regionIds": [
+            "region-seat-interior-context"
+          ],
+          "category": "seat_context",
+          "description": "Seatback below the headrest confirms this is a seat safety component.",
+          "confidence": "high"
+        },
+        {
+          "id": "vehicle-interior-background",
+          "objectIds": [
+            "rear-side-window-pillar"
+          ],
+          "regionIds": [
+            "region-seat-interior-context"
+          ],
+          "category": "background_context",
+          "description": "Vehicle window and pillar give interior context but are not answer-critical.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b202",
@@ -4740,54 +5982,281 @@
       "sourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "kind": "street_photo",
+      "kind": "vehicle_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Split comparison image of two side-mirror settings labeled A and B; A shows a broad road view with little car body, while B shows too much of the car side.",
+      "generationPromptSummary": "Two-panel driver-side mirror comparison from inside a car, yellow label A over left panel and yellow label B over right panel. In A, mirror shows road and traffic behind with only a small edge of the car; in B, mirror shows much of the red car side and less useful road view.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "car interior side-mirror comparison",
+        "environment": "split photo of side mirror views on city street",
+        "cameraView": "inside-car view toward driver-side mirror",
+        "framing": "two panels side by side labeled A and B",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry urban street visible in reflections"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban street reflected in mirrors",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "road recedes in mirror reflections"
+        ],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "panel-a-side-mirror",
+          "type": "side_mirror",
+          "label": "side mirror in option A",
+          "description": "Left panel mirror showing road and traffic behind with a small car edge.",
+          "confidence": "high"
+        },
+        {
+          "id": "panel-b-side-mirror",
+          "type": "side_mirror",
+          "label": "side mirror in option B",
+          "description": "Right panel mirror showing a large portion of the car side.",
+          "confidence": "high"
+        },
+        {
+          "id": "car-interior-a",
+          "type": "vehicle_interior",
+          "label": "car interior panel A",
+          "description": "Interior door frame and mirror housing in option A.",
+          "confidence": "high"
+        },
+        {
+          "id": "car-interior-b",
+          "type": "vehicle_interior",
+          "label": "car interior panel B",
+          "description": "Interior pillar, door frame, and red car body visible in option B.",
+          "confidence": "high"
+        },
+        {
+          "id": "reflected-road-traffic-a",
+          "type": "reflected_road_view",
+          "label": "road view in mirror A",
+          "description": "Road and vehicle behind visible in the mirror reflection of option A.",
+          "confidence": "high"
+        },
+        {
+          "id": "reflected-car-body-b",
+          "type": "vehicle_body_reflection",
+          "label": "car body in mirror B",
+          "description": "Large red side of the car dominates much of option B mirror reflection.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
       "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "annotations": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "yellow-a-mirror-label",
+          "type": "yellow_label",
+          "label": "A label",
+          "description": "Yellow circular label A above the left mirror panel.",
+          "confidence": "high",
+          "targetIds": [
+            "panel-a-side-mirror"
+          ]
+        },
+        {
+          "id": "yellow-b-mirror-label",
+          "type": "yellow_label",
+          "label": "B label",
+          "description": "Yellow circular label B above the right mirror panel.",
+          "confidence": "high",
+          "targetIds": [
+            "panel-b-side-mirror"
+          ]
         }
       ],
+      "visibleText": [
+        {
+          "id": "mirror-label-a-text",
+          "text": "A",
+          "language": "es",
+          "locationDescription": "top-left label over option A",
+          "confidence": "high"
+        },
+        {
+          "id": "mirror-label-b-text",
+          "text": "B",
+          "language": "es",
+          "locationDescription": "top-right label over option B",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "label-a-over-left-panel",
+          "subjectId": "yellow-a-mirror-label",
+          "relation": "above",
+          "objectId": "panel-a-side-mirror",
+          "description": "A label is above the left mirror setting."
+        },
+        {
+          "id": "label-b-over-right-panel",
+          "subjectId": "yellow-b-mirror-label",
+          "relation": "above",
+          "objectId": "panel-b-side-mirror",
+          "description": "B label is above the right mirror setting."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b202"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b202",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b202.jpg locally; confirmed split A/B mirror comparison, A wider road view, B excessive car-body reflection, and yellow labels.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-mirror-option-a",
+          "label": "option A mirror",
+          "semanticLocation": "left half of split image",
+          "includesObjectIds": [
+            "panel-a-side-mirror",
+            "yellow-a-mirror-label",
+            "reflected-road-traffic-a"
+          ],
+          "includesDetailIds": [
+            "mirror-a-wide-road-view",
+            "mirror-a-small-car-edge",
+            "yellow-a-option-label"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-mirror-option-b",
+          "label": "option B mirror",
+          "semanticLocation": "right half of split image",
+          "includesObjectIds": [
+            "panel-b-side-mirror",
+            "yellow-b-mirror-label",
+            "reflected-car-body-b"
+          ],
+          "includesDetailIds": [
+            "mirror-b-too-much-car-body",
+            "mirror-b-narrower-road-view",
+            "yellow-b-option-label"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-car-interior-context",
+          "label": "car interior context",
+          "semanticLocation": "door frames and pillars around mirrors",
+          "includesObjectIds": [
+            "car-interior-a",
+            "car-interior-b"
+          ],
+          "includesDetailIds": [
+            "interior-door-frame-context"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "mirror-a-wide-road-view",
+          "objectIds": [
+            "panel-a-side-mirror",
+            "reflected-road-traffic-a"
+          ],
+          "regionIds": [
+            "region-mirror-option-a"
+          ],
+          "category": "mirror_setting",
+          "description": "Option A mirror shows a broad useful view of the road and traffic behind.",
+          "confidence": "high"
+        },
+        {
+          "id": "mirror-a-small-car-edge",
+          "objectIds": [
+            "panel-a-side-mirror",
+            "car-interior-a"
+          ],
+          "regionIds": [
+            "region-mirror-option-a"
+          ],
+          "category": "mirror_setting_reference",
+          "description": "Only a small edge of the vehicle is visible in option A as an orientation reference.",
+          "confidence": "high"
+        },
+        {
+          "id": "mirror-b-too-much-car-body",
+          "objectIds": [
+            "panel-b-side-mirror",
+            "reflected-car-body-b"
+          ],
+          "regionIds": [
+            "region-mirror-option-b"
+          ],
+          "category": "incorrect_mirror_setting",
+          "description": "Option B mirror includes too much of the car body, reducing useful rear and side road view.",
+          "confidence": "high"
+        },
+        {
+          "id": "mirror-b-narrower-road-view",
+          "objectIds": [
+            "panel-b-side-mirror",
+            "reflected-car-body-b"
+          ],
+          "regionIds": [
+            "region-mirror-option-b"
+          ],
+          "category": "mirror_visibility_loss",
+          "description": "Road view in option B is narrower because the vehicle side dominates the reflection.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-a-option-label",
+          "objectIds": [
+            "yellow-a-mirror-label"
+          ],
+          "regionIds": [
+            "region-mirror-option-a"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow A label identifies the left mirror setting.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-b-option-label",
+          "objectIds": [
+            "yellow-b-mirror-label"
+          ],
+          "regionIds": [
+            "region-mirror-option-b"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow B label identifies the right mirror setting.",
+          "confidence": "high"
+        },
+        {
+          "id": "interior-door-frame-context",
+          "objectIds": [
+            "car-interior-a",
+            "car-interior-b"
+          ],
+          "regionIds": [
+            "region-car-interior-context"
+          ],
+          "category": "background_context",
+          "description": "Interior door frames establish that both panels show side-mirror views from inside a car.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b7",
@@ -4799,52 +6268,297 @@
       ],
       "kind": "street_photo",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Side-by-side comparison of two cyclists labeled A and B; cyclist A wears a light white shirt while cyclist B wears a dark black shirt on a city street.",
+      "generationPromptSummary": "Two-panel daylight street photo comparing cyclists, yellow label A over left cyclist and yellow label B over right cyclist. Both ride bicycles wearing helmets; A wears a bright white T-shirt and B wears a black T-shirt, with cars and trees in background.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "urban street cyclist comparison",
+        "environment": "two-panel city street view with cyclists, parked cars, and trees",
+        "cameraView": "front view of cyclists riding toward camera",
+        "framing": "cyclist A left panel and cyclist B right panel separated by vertical white divider",
+        "lighting": "daylight",
+        "weatherOrSurface": "dry street"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "urban street",
         "laneCount": "unknown",
-        "laneDirections": [],
+        "laneDirections": [
+          "cyclists ride toward viewer"
+        ],
         "markings": [],
         "crossings": [],
         "curbsOrShoulders": []
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
-        }
-      ],
-      "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+          "id": "left-panel-background-cars",
+          "type": "background_vehicles",
+          "label": "background cars near cyclist A",
+          "description": "Cars and street elements behind cyclist A.",
+          "confidence": "medium"
+        },
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "right-panel-background-cars",
+          "type": "background_vehicles",
+          "label": "background cars near cyclist B",
+          "description": "Cars and street elements behind cyclist B.",
+          "confidence": "medium"
+        },
+        {
+          "id": "vertical-panel-divider",
+          "type": "image_divider",
+          "label": "white divider between options",
+          "description": "White vertical divider separates option A and option B panels.",
+          "confidence": "high"
         }
       ],
+      "roadUsers": [
+        {
+          "id": "cyclist-option-a",
+          "type": "cyclist",
+          "label": "cyclist option A",
+          "description": "Helmeted cyclist in the left panel wearing a light white shirt and riding a bicycle.",
+          "confidence": "high",
+          "attributes": {
+            "helmet": true,
+            "clothing": [
+              "white shirt",
+              "denim shorts"
+            ],
+            "facing": "toward_viewer"
+          }
+        },
+        {
+          "id": "cyclist-option-b",
+          "type": "cyclist",
+          "label": "cyclist option B",
+          "description": "Helmeted cyclist in the right panel wearing a dark black shirt and riding a bicycle.",
+          "confidence": "high",
+          "attributes": {
+            "helmet": true,
+            "clothing": [
+              "black shirt",
+              "denim shorts"
+            ],
+            "facing": "toward_viewer"
+          }
+        }
+      ],
+      "signsSignalsMarkings": [],
+      "annotations": [
+        {
+          "id": "yellow-a-cyclist-label",
+          "type": "yellow_label",
+          "label": "A label",
+          "description": "Yellow circular label A above the left cyclist.",
+          "confidence": "high",
+          "targetIds": [
+            "cyclist-option-a"
+          ]
+        },
+        {
+          "id": "yellow-b-cyclist-label",
+          "type": "yellow_label",
+          "label": "B label",
+          "description": "Yellow circular label B above the right cyclist.",
+          "confidence": "high",
+          "targetIds": [
+            "cyclist-option-b"
+          ]
+        }
+      ],
+      "visibleText": [
+        {
+          "id": "cyclist-label-a-text",
+          "text": "A",
+          "language": "es",
+          "locationDescription": "top of left panel",
+          "confidence": "high"
+        },
+        {
+          "id": "cyclist-label-b-text",
+          "text": "B",
+          "language": "es",
+          "locationDescription": "top of right panel",
+          "confidence": "high"
+        }
+      ],
+      "spatialRelationships": [
+        {
+          "id": "label-a-over-light-cyclist",
+          "subjectId": "yellow-a-cyclist-label",
+          "relation": "above",
+          "objectId": "cyclist-option-a",
+          "description": "A label is above the cyclist wearing light clothing."
+        },
+        {
+          "id": "label-b-over-dark-cyclist",
+          "subjectId": "yellow-b-cyclist-label",
+          "relation": "above",
+          "objectId": "cyclist-option-b",
+          "description": "B label is above the cyclist wearing dark clothing."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b7"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b7",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b7.jpg locally; confirmed A/B cyclist comparison, cyclist A white shirt, cyclist B black shirt, helmets, bicycles, and street background.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-cyclist-a",
+          "label": "cyclist A in light clothing",
+          "semanticLocation": "left panel",
+          "includesObjectIds": [
+            "cyclist-option-a",
+            "yellow-a-cyclist-label"
+          ],
+          "includesDetailIds": [
+            "cyclist-a-light-shirt",
+            "yellow-a-cyclist-label-detail",
+            "cyclist-a-helmet-bicycle"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-cyclist-b",
+          "label": "cyclist B in dark clothing",
+          "semanticLocation": "right panel",
+          "includesObjectIds": [
+            "cyclist-option-b",
+            "yellow-b-cyclist-label"
+          ],
+          "includesDetailIds": [
+            "cyclist-b-dark-shirt",
+            "yellow-b-cyclist-label-detail",
+            "cyclist-b-helmet-bicycle"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-street-background-cyclists",
+          "label": "street background",
+          "semanticLocation": "behind both cyclists",
+          "includesObjectIds": [
+            "left-panel-background-cars",
+            "right-panel-background-cars",
+            "vertical-panel-divider"
+          ],
+          "includesDetailIds": [
+            "urban-street-background-cyclists",
+            "side-by-side-comparison-layout"
+          ],
+          "localizationConfidence": "medium"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "cyclist-a-light-shirt",
+          "objectIds": [
+            "cyclist-option-a"
+          ],
+          "regionIds": [
+            "region-cyclist-a"
+          ],
+          "category": "visibility_clothing",
+          "description": "Cyclist A wears a light white shirt, making him more visible against the street background.",
+          "confidence": "high"
+        },
+        {
+          "id": "cyclist-b-dark-shirt",
+          "objectIds": [
+            "cyclist-option-b"
+          ],
+          "regionIds": [
+            "region-cyclist-b"
+          ],
+          "category": "visibility_clothing",
+          "description": "Cyclist B wears a dark black shirt, making him less conspicuous than cyclist A.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-a-cyclist-label-detail",
+          "objectIds": [
+            "yellow-a-cyclist-label"
+          ],
+          "regionIds": [
+            "region-cyclist-a"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow A label identifies the light-clothing cyclist.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-b-cyclist-label-detail",
+          "objectIds": [
+            "yellow-b-cyclist-label"
+          ],
+          "regionIds": [
+            "region-cyclist-b"
+          ],
+          "category": "diagram_label",
+          "description": "Yellow B label identifies the dark-clothing cyclist.",
+          "confidence": "high"
+        },
+        {
+          "id": "cyclist-a-helmet-bicycle",
+          "objectIds": [
+            "cyclist-option-a"
+          ],
+          "regionIds": [
+            "region-cyclist-a"
+          ],
+          "category": "cyclist_context",
+          "description": "Cyclist A rides a bicycle and wears a helmet; clothing color is the tested difference.",
+          "confidence": "high"
+        },
+        {
+          "id": "cyclist-b-helmet-bicycle",
+          "objectIds": [
+            "cyclist-option-b"
+          ],
+          "regionIds": [
+            "region-cyclist-b"
+          ],
+          "category": "cyclist_context",
+          "description": "Cyclist B rides a bicycle and wears a helmet; clothing color is the tested difference.",
+          "confidence": "high"
+        },
+        {
+          "id": "side-by-side-comparison-layout",
+          "objectIds": [
+            "vertical-panel-divider"
+          ],
+          "regionIds": [
+            "region-street-background-cyclists"
+          ],
+          "category": "comparison_layout",
+          "description": "White divider separates the two compared options.",
+          "confidence": "high"
+        },
+        {
+          "id": "urban-street-background-cyclists",
+          "objectIds": [
+            "left-panel-background-cars",
+            "right-panel-background-cars"
+          ],
+          "regionIds": [
+            "region-street-background-cyclists"
+          ],
+          "category": "background_context",
+          "description": "Cars and trees establish the roadway setting but do not determine the clothing-visibility answer.",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "imageId": "question-image-b246",
@@ -4856,18 +6570,18 @@
       ],
       "kind": "traffic_sign",
       "descriptionLanguage": "en",
-      "visualSummary": "Deterministic baseline metadata for a local fallback practice image. The source image is present and hash-pinned; object-level visual facts are intentionally marked uncertain pending manual image review.",
-      "generationPromptSummary": "Use the referenced local traffic-practice image as the canonical visual. This baseline metadata does not assert precise objects, road layout, colors, text, or gestures except where a ticket-specific approved metadata entry overrides it.",
+      "visualSummary": "Yellow diamond warning sign with black border showing a black car descending a steep sloped roadway.",
+      "generationPromptSummary": "Traffic warning sign graphic on white background: yellow diamond with black border, black silhouette of a car angled downward on a steep black triangular slope, indicating a dangerous downhill grade.",
       "scene": {
-        "setting": "traffic-practice source image",
-        "environment": "unknown or not manually reviewed",
-        "cameraView": "unknown",
-        "framing": "source image frame",
-        "lighting": "unknown",
-        "weatherOrSurface": "unknown"
+        "setting": "isolated traffic warning sign graphic",
+        "environment": "plain white background",
+        "cameraView": "front-on view",
+        "framing": "diamond sign centered",
+        "lighting": "even graphic lighting",
+        "weatherOrSurface": "not applicable"
       },
       "roadLayout": {
-        "roadType": "unknown",
+        "roadType": "not shown except sign symbol",
         "laneCount": "unknown",
         "laneDirections": [],
         "markings": [],
@@ -4876,32 +6590,114 @@
       },
       "objects": [
         {
-          "id": "source-image-frame",
-          "type": "source_image_frame",
-          "label": "Full referenced source image",
-          "description": "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-          "confidence": "low"
+          "id": "yellow-warning-diamond-panel",
+          "type": "traffic_sign_panel",
+          "label": "yellow warning diamond",
+          "description": "Diamond-shaped yellow warning sign panel with black border.",
+          "confidence": "high"
         }
       ],
       "roadUsers": [],
-      "signsSignalsMarkings": [],
-      "annotations": [],
-      "visibleText": [],
-      "spatialRelationships": [],
-      "uncertainties": [
+      "signsSignalsMarkings": [
         {
-          "id": "manual-review-required",
-          "field": "objects",
-          "note": "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-          "impact": "low-confidence visual facts"
+          "id": "black-car-on-descending-slope-symbol",
+          "type": "warning_symbol",
+          "label": "car descending slope symbol",
+          "description": "Black vehicle icon shown on a steep downward sloped roadway symbol.",
+          "confidence": "high"
         }
       ],
+      "annotations": [],
+      "visibleText": [],
+      "spatialRelationships": [
+        {
+          "id": "car-icon-on-downhill-slope",
+          "subjectId": "black-car-on-descending-slope-symbol",
+          "relation": "inside",
+          "objectId": "yellow-warning-diamond-panel",
+          "description": "The car-on-slope symbol appears inside the yellow diamond warning sign."
+        }
+      ],
+      "uncertainties": [],
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "image-evidence-question-image-b246"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "image-evidence-question-image-b246",
+        "qualityStatus": "complete",
+        "visualReviewEvidence": {
+          "method": "actual_image_inspection",
+          "reviewerNotes": "Inspected b246.jpg locally; confirmed yellow diamond warning sign, black car symbol, and steep descending slope graphic.",
+          "sceneCoverage": true,
+          "objectCoverage": true,
+          "answerCriticalCoverage": true
+        }
+      },
+      "regions": [
+        {
+          "regionId": "region-warning-sign-panel",
+          "label": "yellow warning sign panel",
+          "semanticLocation": "entire diamond sign",
+          "includesObjectIds": [
+            "yellow-warning-diamond-panel"
+          ],
+          "includesDetailIds": [
+            "yellow-warning-diamond"
+          ],
+          "localizationConfidence": "high"
+        },
+        {
+          "regionId": "region-descending-slope-symbol",
+          "label": "car descending slope symbol",
+          "semanticLocation": "center of yellow diamond",
+          "includesObjectIds": [
+            "black-car-on-descending-slope-symbol"
+          ],
+          "includesDetailIds": [
+            "descending-slope-car-symbol",
+            "black-downhill-road-symbol"
+          ],
+          "localizationConfidence": "high"
+        }
+      ],
+      "visualDetails": [
+        {
+          "id": "descending-slope-car-symbol",
+          "objectIds": [
+            "black-car-on-descending-slope-symbol"
+          ],
+          "regionIds": [
+            "region-descending-slope-symbol"
+          ],
+          "category": "warning_symbol",
+          "description": "Black car icon descending on a steep slope indicates a downhill grade hazard.",
+          "confidence": "high"
+        },
+        {
+          "id": "black-downhill-road-symbol",
+          "objectIds": [
+            "black-car-on-descending-slope-symbol"
+          ],
+          "regionIds": [
+            "region-descending-slope-symbol"
+          ],
+          "category": "slope_symbol",
+          "description": "Black triangular sloped roadway shape shows a strong downward grade.",
+          "confidence": "high"
+        },
+        {
+          "id": "yellow-warning-diamond",
+          "objectIds": [
+            "yellow-warning-diamond-panel"
+          ],
+          "regionIds": [
+            "region-warning-sign-panel"
+          ],
+          "category": "warning_sign_format",
+          "description": "Yellow diamond format marks the sign as a preventive warning sign.",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "imageId": "question-image-b74",
@@ -9045,26 +10841,144 @@
       "correctAnswerId": "b-fallback-042-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-042-critical-source-image",
+          "detailId": "bus-terminal-pictogram",
           "objectIds": [
-            "source-image-frame"
+            "bus-terminal-symbol"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-white-bus-pictogram"
+          ],
+          "description": "Visible bus pictogram under a terminal canopy identifies the sign as a bus terminal information sign.",
+          "supportsAnswerIds": [
+            "b-fallback-042-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-042-a1",
+            "b-fallback-042-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        },
+        {
+          "detailId": "blue-information-sign",
+          "objectIds": [
+            "blue-information-sign-panel"
+          ],
+          "regionIds": [
+            "region-blue-sign-panel"
+          ],
+          "description": "Blue information-sign format supports interpreting the sign as a nearby service or place rather than a prohibition.",
+          "supportsAnswerIds": [
+            "b-fallback-042-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-042-a1",
+            "b-fallback-042-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        }
+      ],
+      "imageRole": "answer_critical",
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-042",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped bus terminal pictogram, blue information format, absence of red prohibition markings, and sign background for b-fallback-042.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b042-highlight-bus-terminal",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "bus-terminal-pictogram",
+            "terminal-canopy-line"
+          ],
+          "objectIds": [
+            "bus-terminal-symbol"
+          ],
+          "regionIds": [
+            "region-white-bus-pictogram"
+          ],
+          "rationaleRuOrEn": "Highlight the bus and terminal canopy symbol because it identifies the nearby bus terminal answer.",
+          "supportsAnswerIds": [
+            "b-fallback-042-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-042-a1",
+            "b-fallback-042-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b042-support-blue-info-panel",
+          "role": "supporting",
+          "detailIds": [
+            "blue-information-sign"
+          ],
+          "objectIds": [
+            "blue-information-sign-panel"
+          ],
+          "regionIds": [
+            "region-blue-sign-panel"
+          ],
+          "rationaleRuOrEn": "Keep the blue sign format visible because it supports an informational meaning.",
           "supportsAnswerIds": [
             "b-fallback-042-a2"
           ],
           "rejectsAnswerIds": [],
-          "criticality": "required",
-          "confidence": "low"
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b042-trap-no-prohibition",
+          "role": "distractor_trap",
+          "detailIds": [
+            "no-red-prohibition-marking"
+          ],
+          "objectIds": [
+            "blue-information-sign-panel"
+          ],
+          "regionIds": [
+            "region-blue-sign-panel"
+          ],
+          "rationaleRuOrEn": "The absence of red prohibition markings rejects the parking and stopping-ban distractors.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-042-a1",
+            "b-fallback-042-a3"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b042-background-sign-border",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "blue-information-sign"
+          ],
+          "objectIds": [
+            "blue-information-sign-panel"
+          ],
+          "regionIds": [
+            "region-blue-sign-panel"
+          ],
+          "rationaleRuOrEn": "The outer sign body can be dimmed after the bus terminal pictogram is clear.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
         }
-      ],
-      "imageRole": "contextual_with_critical_detail",
-      "review": {
-        "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-042"
-      }
+      ]
     },
     {
       "questionId": "b-fallback-044",
@@ -9075,26 +10989,151 @@
       "correctAnswerId": "b-fallback-044-a3",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-044-critical-source-image",
+          "detailId": "breathalyzer-at-driver-window",
           "objectIds": [
-            "source-image-frame"
+            "breathalyzer-device",
+            "driver-inside-car"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-officer-and-device",
+            "region-driver-window"
+          ],
+          "description": "Breathalyzer held to the driver at the open window identifies the test that the question asks about refusing.",
+          "supportsAnswerIds": [
+            "b-fallback-044-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-044-a1",
+            "b-fallback-044-a2"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        },
+        {
+          "detailId": "traffic-officer-administering-test",
+          "objectIds": [
+            "traffic-control-officer",
+            "breathalyzer-device"
+          ],
+          "regionIds": [
+            "region-officer-and-device"
+          ],
+          "description": "Uniformed officer administering the test makes this an enforcement check rather than a casual interaction.",
+          "supportsAnswerIds": [
+            "b-fallback-044-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-044-a2"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        }
+      ],
+      "imageRole": "answer_critical",
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-044",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped breathalyzer, officer, driver-window interaction, and night checkpoint background for b-fallback-044.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b044-highlight-breathalyzer",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "breathalyzer-at-driver-window",
+            "traffic-officer-administering-test"
+          ],
+          "objectIds": [
+            "breathalyzer-device",
+            "traffic-control-officer",
+            "driver-inside-car"
+          ],
+          "regionIds": [
+            "region-officer-and-device",
+            "region-driver-window"
+          ],
+          "rationaleRuOrEn": "Highlight the alcohol-test action because refusal of this test is the ticket issue.",
+          "supportsAnswerIds": [
+            "b-fallback-044-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-044-a1",
+            "b-fallback-044-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b044-support-driver-context",
+          "role": "supporting",
+          "detailIds": [
+            "driver-seated-for-test",
+            "open-window-checkpoint"
+          ],
+          "objectIds": [
+            "driver-inside-car",
+            "open-driver-window",
+            "silver-car-driver-side"
+          ],
+          "regionIds": [
+            "region-driver-window"
+          ],
+          "rationaleRuOrEn": "Driver and open window confirm the roadside driver-check setting.",
           "supportsAnswerIds": [
             "b-fallback-044-a3"
           ],
           "rejectsAnswerIds": [],
-          "criticality": "required",
-          "confidence": "low"
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b044-trap-crash-not-visible",
+          "role": "distractor_trap",
+          "detailIds": [
+            "night-roadside-control-context"
+          ],
+          "objectIds": [
+            "silver-car-driver-side"
+          ],
+          "regionIds": [
+            "region-night-background"
+          ],
+          "rationaleRuOrEn": "No crash scene is visible, so the image does not support limiting refusal consequences only to crashes.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-044-a1"
+          ],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b044-background-night-lights",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "night-roadside-control-context"
+          ],
+          "objectIds": [
+            "silver-car-driver-side"
+          ],
+          "regionIds": [
+            "region-night-background"
+          ],
+          "rationaleRuOrEn": "Night background establishes checkpoint atmosphere but does not change the refusal rule.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
         }
-      ],
-      "imageRole": "contextual_with_critical_detail",
-      "review": {
-        "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-044"
-      }
+      ]
     },
     {
       "questionId": "b-fallback-045",
@@ -9105,26 +11144,144 @@
       "correctAnswerId": "b-fallback-045-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-045-critical-source-image",
+          "detailId": "no-parking-e-symbol",
           "objectIds": [
-            "source-image-frame"
+            "black-parking-e-symbol"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-no-parking-sign"
+          ],
+          "description": "The crossed E symbol identifies a no-parking sign, not a full no-stopping sign.",
           "supportsAnswerIds": [
             "b-fallback-045-a2"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-045-a1",
+            "b-fallback-045-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "red-prohibition-slash",
+          "objectIds": [
+            "red-prohibition-slash-object"
+          ],
+          "regionIds": [
+            "region-no-parking-sign"
+          ],
+          "description": "The red slash applies to the parking symbol and supports the distinction between parking and brief stopping.",
+          "supportsAnswerIds": [
+            "b-fallback-045-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-045-a1"
+          ],
+          "criticality": "required",
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-045"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-045",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped no-parking E symbol, red slash, absent no-stopping/time plate details, and sign background for b-fallback-045.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b045-highlight-no-parking",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "no-parking-e-symbol",
+            "red-prohibition-slash"
+          ],
+          "objectIds": [
+            "black-parking-e-symbol",
+            "red-prohibition-slash-object"
+          ],
+          "regionIds": [
+            "region-no-parking-sign"
+          ],
+          "rationaleRuOrEn": "Highlight the crossed E because it is a no-parking sign and allows the brief-stop distinction.",
+          "supportsAnswerIds": [
+            "b-fallback-045-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-045-a1"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b045-support-no-time-plate",
+          "role": "supporting",
+          "detailIds": [
+            "no-time-plate-visible"
+          ],
+          "objectIds": [
+            "round-no-parking-sign-panel"
+          ],
+          "regionIds": [
+            "region-sign-background"
+          ],
+          "rationaleRuOrEn": "No time plate is visible, so the answer should use the general sign meaning.",
+          "supportsAnswerIds": [
+            "b-fallback-045-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-045-a3"
+          ],
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b045-trap-no-stopping-absent",
+          "role": "distractor_trap",
+          "detailIds": [
+            "no-stopping-symbol-absent"
+          ],
+          "objectIds": [
+            "round-no-parking-sign-panel"
+          ],
+          "regionIds": [
+            "region-sign-background"
+          ],
+          "rationaleRuOrEn": "Absence of a no-stopping symbol rejects the answer that stopping is also prohibited.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-045-a1"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b045-background-white-field",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "no-time-plate-visible"
+          ],
+          "objectIds": [
+            "round-no-parking-sign-panel"
+          ],
+          "regionIds": [
+            "region-sign-background"
+          ],
+          "rationaleRuOrEn": "Plain background and sign edge can be dimmed after the crossed E is visible.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-050",
@@ -9135,26 +11292,148 @@
       "correctAnswerId": "b-fallback-050-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-050-critical-source-image",
+          "detailId": "railway-crossing-barriers",
           "objectIds": [
-            "source-image-frame"
+            "red-white-barrier-arms",
+            "railway-crossing-barrier-system"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-crossing-barriers"
+          ],
+          "description": "Red-and-white barriers identify the controlled railway crossing situation where personnel instruction matters.",
+          "supportsAnswerIds": [
+            "b-fallback-050-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-050-a2",
+            "b-fallback-050-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        },
+        {
+          "detailId": "rail-tracks-foreground",
+          "objectIds": [
+            "rail-tracks-object"
+          ],
+          "regionIds": [
+            "region-rail-tracks-foreground"
+          ],
+          "description": "Visible rail tracks confirm the scene is a railway crossing rather than an ordinary road closure.",
           "supportsAnswerIds": [
             "b-fallback-050-a1"
           ],
           "rejectsAnswerIds": [],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
         }
       ],
       "imageRole": "contextual_with_critical_detail",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-050"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-050",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped rail tracks, red-white barriers, traffic near crossing, background city context, and noted that staff instruction is supplied by text.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b050-highlight-rail-crossing",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "railway-crossing-barriers",
+            "rail-tracks-foreground"
+          ],
+          "objectIds": [
+            "red-white-barrier-arms",
+            "railway-crossing-barrier-system",
+            "rail-tracks-object"
+          ],
+          "regionIds": [
+            "region-crossing-barriers",
+            "region-rail-tracks-foreground"
+          ],
+          "rationaleRuOrEn": "Highlight railway crossing controls and rails because the answer depends on competent railway personnel in this setting.",
+          "supportsAnswerIds": [
+            "b-fallback-050-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-050-a2",
+            "b-fallback-050-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b050-support-traffic-context",
+          "role": "supporting",
+          "detailIds": [
+            "bus-and-cars-near-crossing",
+            "railway-crossing-control-system"
+          ],
+          "objectIds": [
+            "background-bus",
+            "background-cars-crossing",
+            "railway-crossing-barrier-system"
+          ],
+          "regionIds": [
+            "region-traffic-beyond-crossing",
+            "region-crossing-barriers"
+          ],
+          "rationaleRuOrEn": "Traffic near the crossing supports that vehicles are being regulated at the railway passage.",
+          "supportsAnswerIds": [
+            "b-fallback-050-a1"
+          ],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b050-trap-barrier-only",
+          "role": "distractor_trap",
+          "detailIds": [
+            "railway-crossing-barriers"
+          ],
+          "objectIds": [
+            "red-white-barrier-arms"
+          ],
+          "regionIds": [
+            "region-crossing-barriers"
+          ],
+          "rationaleRuOrEn": "The barrier may tempt a wait-only answer, but the ticket adds an authorized railway-personnel instruction.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-050-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b050-background-buildings",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "urban-building-background"
+          ],
+          "objectIds": [
+            "urban-buildings-crossing"
+          ],
+          "regionIds": [
+            "region-urban-background"
+          ],
+          "rationaleRuOrEn": "Buildings and overhead wires set the urban context but do not decide the authority question.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-051",
@@ -9165,26 +11444,146 @@
       "correctAnswerId": "b-fallback-051-a2",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-051-critical-source-image",
+          "detailId": "red-circled-stopped-car",
           "objectIds": [
-            "source-image-frame"
+            "red-circled-dark-car"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-circled-car"
+          ],
+          "description": "Red-circled car paused beside a row of parked cars is the visible stopping position tested by the exception question.",
+          "supportsAnswerIds": [
+            "b-fallback-051-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-051-a1",
+            "b-fallback-051-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        },
+        {
+          "detailId": "curbside-parked-row",
+          "objectIds": [
+            "right-curb-parked-cars"
+          ],
+          "regionIds": [
+            "region-right-parking-row"
+          ],
+          "description": "Curbside parked row supports interpreting the stop as linked to a parking maneuver rather than passenger loading.",
+          "supportsAnswerIds": [
+            "b-fallback-051-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-051-a1"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        }
+      ],
+      "imageRole": "answer_critical",
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-051",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped red-circled stopped car, parked row, absence of passenger activity, and urban parking context for b-fallback-051.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b051-highlight-parking-stop",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "red-circled-stopped-car",
+            "curbside-parked-row"
+          ],
+          "objectIds": [
+            "red-circled-dark-car",
+            "right-curb-parked-cars"
+          ],
+          "regionIds": [
+            "region-circled-car",
+            "region-right-parking-row"
+          ],
+          "rationaleRuOrEn": "Highlight the stopped car beside parked cars because the exception is a stop before parking.",
+          "supportsAnswerIds": [
+            "b-fallback-051-a2"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-051-a1",
+            "b-fallback-051-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b051-support-red-oval",
+          "role": "supporting",
+          "detailIds": [
+            "red-oval-vehicle-highlight"
+          ],
+          "objectIds": [
+            "red-oval-stopped-car"
+          ],
+          "regionIds": [
+            "region-circled-car"
+          ],
+          "rationaleRuOrEn": "The red oval confirms which vehicle position the ticket is testing.",
           "supportsAnswerIds": [
             "b-fallback-051-a2"
           ],
           "rejectsAnswerIds": [],
-          "criticality": "required",
-          "confidence": "low"
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b051-trap-passenger-stop",
+          "role": "distractor_trap",
+          "detailIds": [
+            "no-passenger-boarding-visible"
+          ],
+          "objectIds": [
+            "red-circled-dark-car"
+          ],
+          "regionIds": [
+            "region-street-background"
+          ],
+          "rationaleRuOrEn": "No visible passenger activity supports rejecting the passenger boarding exception for this image.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-051-a1",
+            "b-fallback-051-a3"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b051-background-street",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "urban-street-parking-context"
+          ],
+          "objectIds": [
+            "urban-street-surface",
+            "left-curb-parked-cars"
+          ],
+          "regionIds": [
+            "region-street-background"
+          ],
+          "rationaleRuOrEn": "Other parked cars and street texture are context once the circled car and parking row are clear.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
         }
-      ],
-      "imageRole": "contextual_with_critical_detail",
-      "review": {
-        "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-051"
-      }
+      ]
     },
     {
       "questionId": "b-fallback-052",
@@ -9195,26 +11594,143 @@
       "correctAnswerId": "b-fallback-052-a3",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-052-critical-source-image",
+          "detailId": "orange-white-school-crosswalk",
           "objectIds": [
-            "source-image-frame"
+            "orange-white-school-crosswalk-marking"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-orange-white-crosswalk"
+          ],
+          "description": "Orange-white pedestrian crossing marking is the visible cue for a school-zone pedestrian crossing.",
           "supportsAnswerIds": [
             "b-fallback-052-a3"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-052-a1",
+            "b-fallback-052-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "pedestrian-crossing-bands",
+          "objectIds": [
+            "orange-white-school-crosswalk-marking",
+            "urban-intersection-roadway"
+          ],
+          "regionIds": [
+            "region-orange-white-crosswalk"
+          ],
+          "description": "Broad crossing bands show the marking is a pedestrian crossing, not a general lighting hazard.",
+          "supportsAnswerIds": [
+            "b-fallback-052-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-052-a1"
+          ],
+          "criticality": "required",
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-052"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-052",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped orange-white crosswalk, pedestrian bands, green lane context, bollards, and absence of health-center sign for b-fallback-052.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b052-highlight-school-crosswalk",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "orange-white-school-crosswalk",
+            "pedestrian-crossing-bands"
+          ],
+          "objectIds": [
+            "orange-white-school-crosswalk-marking",
+            "urban-intersection-roadway"
+          ],
+          "regionIds": [
+            "region-orange-white-crosswalk"
+          ],
+          "rationaleRuOrEn": "Highlight orange-white crossing bands because they identify the school-zone pedestrian crossing answer.",
+          "supportsAnswerIds": [
+            "b-fallback-052-a3"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-052-a1",
+            "b-fallback-052-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b052-support-intersection-context",
+          "role": "supporting",
+          "detailIds": [
+            "corner-bollards-context"
+          ],
+          "objectIds": [
+            "yellow-bollards"
+          ],
+          "regionIds": [
+            "region-intersection-context"
+          ],
+          "rationaleRuOrEn": "Bollards and corner context support that this is a pedestrian crossing area.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b052-trap-health-lighting",
+          "role": "distractor_trap",
+          "detailIds": [
+            "no-health-center-sign-visible"
+          ],
+          "objectIds": [
+            "corner-storefront"
+          ],
+          "regionIds": [
+            "region-intersection-context"
+          ],
+          "rationaleRuOrEn": "No medical-center sign is visible, and the image is not about poor lighting.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-052-a1",
+            "b-fallback-052-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b052-background-green-lane",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "green-lane-context"
+          ],
+          "objectIds": [
+            "green-lane-marking-object"
+          ],
+          "regionIds": [
+            "region-intersection-context"
+          ],
+          "rationaleRuOrEn": "The green lane segment is visible background and can be dimmed for this marking question.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-053",
@@ -9225,26 +11741,141 @@
       "correctAnswerId": "b-fallback-053-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-053-critical-source-image",
+          "detailId": "yellow-a-street-label",
           "objectIds": [
-            "source-image-frame"
+            "yellow-a-label-object"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-street-a-left"
+          ],
+          "description": "Yellow A label identifies the traffic stream that has priority in this ticket-specific image.",
           "supportsAnswerIds": [
             "b-fallback-053-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-053-a2"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "yellow-b-street-label",
+          "objectIds": [
+            "yellow-b-label-object"
+          ],
+          "regionIds": [
+            "region-street-b-right"
+          ],
+          "description": "Yellow B label marks the competing street and helps reject choosing B for this image.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-053-a2"
+          ],
+          "criticality": "trap",
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-053"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-053",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped yellow A/B labels, intersection approaches, truck, cars, and background crosswalk/building context for b-fallback-053.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b053-highlight-street-a",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "yellow-a-street-label",
+            "street-a-approach"
+          ],
+          "objectIds": [
+            "yellow-a-label-object",
+            "left-approach-truck",
+            "intersection-roadway"
+          ],
+          "regionIds": [
+            "region-street-a-left"
+          ],
+          "rationaleRuOrEn": "Highlight label A and its approach because the correct priority answer names street A.",
+          "supportsAnswerIds": [
+            "b-fallback-053-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-053-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b053-support-intersection-layout",
+          "role": "supporting",
+          "detailIds": [
+            "street-b-approach"
+          ],
+          "objectIds": [
+            "right-approach-cars",
+            "intersection-roadway"
+          ],
+          "regionIds": [
+            "region-street-b-right"
+          ],
+          "rationaleRuOrEn": "Street B approach should remain visible for comparing the two labeled directions.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "medium"
+        },
+        {
+          "relevanceId": "b053-trap-street-b",
+          "role": "distractor_trap",
+          "detailIds": [
+            "yellow-b-street-label"
+          ],
+          "objectIds": [
+            "yellow-b-label-object"
+          ],
+          "regionIds": [
+            "region-street-b-right"
+          ],
+          "rationaleRuOrEn": "Label B is the wrong choice in this ticket and should be visually distinguishable from A.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-053-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b053-background-corner",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "corner-building-context",
+            "partial-crosswalk-context"
+          ],
+          "objectIds": [
+            "corner-building-storefront",
+            "intersection-roadway"
+          ],
+          "regionIds": [
+            "region-intersection-background"
+          ],
+          "rationaleRuOrEn": "Buildings and partial crosswalk are background context and do not decide the A/B priority answer.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-054",
@@ -9255,26 +11886,147 @@
       "correctAnswerId": "b-fallback-054-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-054-critical-source-image",
+          "detailId": "circled-head-restraint",
           "objectIds": [
-            "source-image-frame"
+            "seat-headrest-object",
+            "red-oval-headrest-highlight"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-circled-headrest"
+          ],
+          "description": "Red-circled head restraint is the safety element whose mandatory use is being asked about.",
+          "supportsAnswerIds": [
+            "b-fallback-054-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-054-a2",
+            "b-fallback-054-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        },
+        {
+          "detailId": "seat-headrest-protective-position",
+          "objectIds": [
+            "seat-headrest-object",
+            "seatback-object"
+          ],
+          "regionIds": [
+            "region-circled-headrest"
+          ],
+          "description": "Headrest position above the seatback shows its role in protecting the neck area.",
+          "supportsAnswerIds": [
+            "b-fallback-054-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-054-a3"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        }
+      ],
+      "imageRole": "answer_critical",
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-054",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped red-circled headrest, seatback, protective position, and interior background for b-fallback-054.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b054-highlight-headrest",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "circled-head-restraint",
+            "seat-headrest-protective-position"
+          ],
+          "objectIds": [
+            "seat-headrest-object",
+            "red-oval-headrest-highlight",
+            "seatback-object"
+          ],
+          "regionIds": [
+            "region-circled-headrest"
+          ],
+          "rationaleRuOrEn": "Highlight the head restraint because it is the element whose use and safety purpose are tested.",
+          "supportsAnswerIds": [
+            "b-fallback-054-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-054-a2",
+            "b-fallback-054-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b054-support-seatback",
+          "role": "supporting",
+          "detailIds": [
+            "seatback-context"
+          ],
+          "objectIds": [
+            "seatback-object"
+          ],
+          "regionIds": [
+            "region-seat-interior-context"
+          ],
+          "rationaleRuOrEn": "Seatback context supports identifying the circled object as part of a car seat.",
           "supportsAnswerIds": [
             "b-fallback-054-a1"
           ],
           "rejectsAnswerIds": [],
-          "criticality": "required",
-          "confidence": "low"
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b054-trap-not-decorative",
+          "role": "distractor_trap",
+          "detailIds": [
+            "seat-headrest-protective-position"
+          ],
+          "objectIds": [
+            "seat-headrest-object"
+          ],
+          "regionIds": [
+            "region-circled-headrest"
+          ],
+          "rationaleRuOrEn": "The protective position rejects the claim that the element has no safety function.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-054-a2",
+            "b-fallback-054-a3"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b054-background-interior",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "vehicle-interior-background"
+          ],
+          "objectIds": [
+            "rear-side-window-pillar"
+          ],
+          "regionIds": [
+            "region-seat-interior-context"
+          ],
+          "rationaleRuOrEn": "Window and pillar are background once the headrest is identified.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
         }
-      ],
-      "imageRole": "contextual_with_critical_detail",
-      "review": {
-        "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-054"
-      }
+      ]
     },
     {
       "questionId": "b-fallback-055",
@@ -9285,26 +12037,151 @@
       "correctAnswerId": "b-fallback-055-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-055-critical-source-image",
+          "detailId": "mirror-a-wide-road-view",
           "objectIds": [
-            "source-image-frame"
+            "panel-a-side-mirror",
+            "reflected-road-traffic-a"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-mirror-option-a"
+          ],
+          "description": "Option A mirror shows a wide useful road view and is the correct setting in the ticket.",
           "supportsAnswerIds": [
             "b-fallback-055-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-055-a2",
+            "b-fallback-055-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "mirror-b-too-much-car-body",
+          "objectIds": [
+            "panel-b-side-mirror",
+            "reflected-car-body-b"
+          ],
+          "regionIds": [
+            "region-mirror-option-b"
+          ],
+          "description": "Option B mirror shows too much of the car body, which is the visible trap for the wrong answer.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-055-a2",
+            "b-fallback-055-a3"
+          ],
+          "criticality": "trap",
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-055"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-055",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped A/B mirror settings, A wide road view, B excessive car-body view, labels, and interior context for b-fallback-055.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b055-highlight-option-a",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "mirror-a-wide-road-view",
+            "mirror-a-small-car-edge",
+            "yellow-a-option-label"
+          ],
+          "objectIds": [
+            "panel-a-side-mirror",
+            "reflected-road-traffic-a",
+            "yellow-a-mirror-label"
+          ],
+          "regionIds": [
+            "region-mirror-option-a"
+          ],
+          "rationaleRuOrEn": "Highlight option A because it shows the correct mirror view with broad road visibility.",
+          "supportsAnswerIds": [
+            "b-fallback-055-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-055-a2",
+            "b-fallback-055-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b055-support-labels",
+          "role": "supporting",
+          "detailIds": [
+            "yellow-a-option-label",
+            "yellow-b-option-label"
+          ],
+          "objectIds": [
+            "yellow-a-mirror-label",
+            "yellow-b-mirror-label"
+          ],
+          "regionIds": [
+            "region-mirror-option-a",
+            "region-mirror-option-b"
+          ],
+          "rationaleRuOrEn": "Labels must stay visible so the learner can match the answer choices to the panels.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b055-trap-option-b",
+          "role": "distractor_trap",
+          "detailIds": [
+            "mirror-b-too-much-car-body",
+            "mirror-b-narrower-road-view"
+          ],
+          "objectIds": [
+            "panel-b-side-mirror",
+            "reflected-car-body-b"
+          ],
+          "regionIds": [
+            "region-mirror-option-b"
+          ],
+          "rationaleRuOrEn": "Option B is the trap because the car body occupies too much of the mirror.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-055-a2",
+            "b-fallback-055-a3"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b055-background-interior",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "interior-door-frame-context"
+          ],
+          "objectIds": [
+            "car-interior-a",
+            "car-interior-b"
+          ],
+          "regionIds": [
+            "region-car-interior-context"
+          ],
+          "rationaleRuOrEn": "Interior door frames provide context and can be dimmed after the mirror views are understood.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-059",
@@ -9315,26 +12192,151 @@
       "correctAnswerId": "b-fallback-059-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-059-critical-source-image",
+          "detailId": "cyclist-a-light-shirt",
           "objectIds": [
-            "source-image-frame"
+            "cyclist-option-a"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-cyclist-a"
+          ],
+          "description": "Cyclist A wears a light shirt, making him visibly more conspicuous and supporting the lower-risk answer.",
           "supportsAnswerIds": [
             "b-fallback-059-a1"
           ],
-          "rejectsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-059-a2",
+            "b-fallback-059-a3"
+          ],
           "criticality": "required",
-          "confidence": "low"
+          "confidence": "high"
+        },
+        {
+          "detailId": "cyclist-b-dark-shirt",
+          "objectIds": [
+            "cyclist-option-b"
+          ],
+          "regionIds": [
+            "region-cyclist-b"
+          ],
+          "description": "Cyclist B wears dark clothing, which is the visible contrast and the trap answer.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-059-a2",
+            "b-fallback-059-a3"
+          ],
+          "criticality": "trap",
+          "confidence": "high"
         }
       ],
-      "imageRole": "contextual_with_critical_detail",
+      "imageRole": "answer_critical",
       "review": {
         "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-059"
-      }
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-059",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped cyclist A light clothing, cyclist B dark clothing, labels, bicycles, helmets, and street background for b-fallback-059.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b059-highlight-light-clothing-a",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "cyclist-a-light-shirt",
+            "yellow-a-cyclist-label-detail"
+          ],
+          "objectIds": [
+            "cyclist-option-a",
+            "yellow-a-cyclist-label"
+          ],
+          "regionIds": [
+            "region-cyclist-a"
+          ],
+          "rationaleRuOrEn": "Highlight cyclist A light clothing because visibility is the decisive safety cue.",
+          "supportsAnswerIds": [
+            "b-fallback-059-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-059-a2",
+            "b-fallback-059-a3"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b059-support-comparison-layout",
+          "role": "supporting",
+          "detailIds": [
+            "side-by-side-comparison-layout",
+            "yellow-b-cyclist-label-detail"
+          ],
+          "objectIds": [
+            "vertical-panel-divider",
+            "yellow-b-cyclist-label"
+          ],
+          "regionIds": [
+            "region-street-background-cyclists",
+            "region-cyclist-b"
+          ],
+          "rationaleRuOrEn": "Comparison layout and labels keep the two options easy to distinguish.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b059-trap-dark-clothing-b",
+          "role": "distractor_trap",
+          "detailIds": [
+            "cyclist-b-dark-shirt"
+          ],
+          "objectIds": [
+            "cyclist-option-b"
+          ],
+          "regionIds": [
+            "region-cyclist-b"
+          ],
+          "rationaleRuOrEn": "Cyclist B dark shirt is the wrong visibility choice and should remain distinguishable as the trap.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-059-a2",
+            "b-fallback-059-a3"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b059-background-street",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "urban-street-background-cyclists",
+            "cyclist-a-helmet-bicycle",
+            "cyclist-b-helmet-bicycle"
+          ],
+          "objectIds": [
+            "left-panel-background-cars",
+            "right-panel-background-cars",
+            "cyclist-option-a",
+            "cyclist-option-b"
+          ],
+          "regionIds": [
+            "region-street-background-cyclists",
+            "region-cyclist-a",
+            "region-cyclist-b"
+          ],
+          "rationaleRuOrEn": "Helmets, bicycles, cars, and trees are context; clothing color is the answer-critical difference.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "questionId": "b-fallback-060",
@@ -9345,26 +12347,143 @@
       "correctAnswerId": "b-fallback-060-a1",
       "answerCriticalDetails": [
         {
-          "detailId": "b-fallback-060-critical-source-image",
+          "detailId": "descending-slope-car-symbol",
           "objectIds": [
-            "source-image-frame"
+            "black-car-on-descending-slope-symbol"
           ],
-          "description": "The referenced source image is answer-critical for this ticket; object-level detail remains explicitly uncertain in the deterministic baseline metadata.",
+          "regionIds": [
+            "region-descending-slope-symbol"
+          ],
+          "description": "Black car on a steep descending slope is the visible symbol for a dangerous downhill grade.",
+          "supportsAnswerIds": [
+            "b-fallback-060-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-060-a2"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        },
+        {
+          "detailId": "yellow-warning-diamond",
+          "objectIds": [
+            "yellow-warning-diamond-panel"
+          ],
+          "regionIds": [
+            "region-warning-sign-panel"
+          ],
+          "description": "Yellow diamond format identifies the sign as a preventive warning sign.",
+          "supportsAnswerIds": [
+            "b-fallback-060-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-060-a2"
+          ],
+          "criticality": "required",
+          "confidence": "high"
+        }
+      ],
+      "imageRole": "answer_critical",
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex content agent 001-092",
+        "reviewedAt": "2026-05-10",
+        "evidenceEntryId": "usage-evidence-b-fallback-060",
+        "qualityStatus": "complete",
+        "relevanceReviewEvidence": {
+          "method": "actual_image_inspection_and_ticket_mapping",
+          "reviewerNotes": "Mapped yellow warning diamond, black car-on-descending-slope symbol, and plain background for b-fallback-060.",
+          "answerCriticalMapped": true,
+          "nonCriticalContextMapped": true,
+          "backgroundDimMapped": true
+        }
+      },
+      "relevanceMap": [
+        {
+          "relevanceId": "b060-highlight-downhill-warning",
+          "role": "answer_critical_highlight",
+          "detailIds": [
+            "descending-slope-car-symbol",
+            "black-downhill-road-symbol",
+            "yellow-warning-diamond"
+          ],
+          "objectIds": [
+            "black-car-on-descending-slope-symbol",
+            "yellow-warning-diamond-panel"
+          ],
+          "regionIds": [
+            "region-descending-slope-symbol",
+            "region-warning-sign-panel"
+          ],
+          "rationaleRuOrEn": "Highlight the car descending a steep slope inside a warning diamond because it confirms the statement is true.",
+          "supportsAnswerIds": [
+            "b-fallback-060-a1"
+          ],
+          "rejectsAnswerIds": [
+            "b-fallback-060-a2"
+          ],
+          "displayIntent": "highlight",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b060-support-warning-format",
+          "role": "supporting",
+          "detailIds": [
+            "yellow-warning-diamond"
+          ],
+          "objectIds": [
+            "yellow-warning-diamond-panel"
+          ],
+          "regionIds": [
+            "region-warning-sign-panel"
+          ],
+          "rationaleRuOrEn": "The yellow diamond format supports the preventive warning classification.",
           "supportsAnswerIds": [
             "b-fallback-060-a1"
           ],
           "rejectsAnswerIds": [],
-          "criticality": "required",
-          "confidence": "low"
+          "displayIntent": "keep_visible",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b060-trap-not-false",
+          "role": "distractor_trap",
+          "detailIds": [
+            "descending-slope-car-symbol"
+          ],
+          "objectIds": [
+            "black-car-on-descending-slope-symbol"
+          ],
+          "regionIds": [
+            "region-descending-slope-symbol"
+          ],
+          "rationaleRuOrEn": "The downhill car symbol rejects the false answer.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [
+            "b-fallback-060-a2"
+          ],
+          "displayIntent": "callout_optional",
+          "confidence": "high"
+        },
+        {
+          "relevanceId": "b060-background-white-space",
+          "role": "background_irrelevant_dim",
+          "detailIds": [
+            "yellow-warning-diamond"
+          ],
+          "objectIds": [
+            "yellow-warning-diamond-panel"
+          ],
+          "regionIds": [
+            "region-warning-sign-panel"
+          ],
+          "rationaleRuOrEn": "Plain surrounding background is irrelevant once the symbol and warning shape are visible.",
+          "supportsAnswerIds": [],
+          "rejectsAnswerIds": [],
+          "displayIntent": "dim",
+          "confidence": "medium"
         }
-      ],
-      "imageRole": "contextual_with_critical_detail",
-      "review": {
-        "status": "approved",
-        "reviewer": "Cabadrive solo self-audit",
-        "reviewedAt": "2026-05-09",
-        "evidenceEntryId": "usage-evidence-b-fallback-060"
-      }
+      ]
     },
     {
       "questionId": "b-fallback-063",

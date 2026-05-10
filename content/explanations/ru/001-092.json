@@ -858,412 +858,423 @@
     },
     {
       "questionId": "b-fallback-041",
-      "textRu": "Правильный вариант - \"A mayor velocidad, menor campo visual.\". Правильно по билету: a mayor velocidad, menor campo visual. Чем быстрее едете, тем меньше времени и внимания остается на боковые события. Неверные варианты: b-fallback-041-a2: A menor velocidad, menor campo visual переворачивает логику билета. Снижение скорости обычно дает больше времени на обзор и реакцию. b-fallback-041-a3: A mayor velocidad, mayor campo visual неверно: билет проверяет сужение полезного поля зрения при росте скорости.",
+      "textRu": "При увеличении скорости полезное поле зрения водителя сужается: внимание сильнее сосредоточено впереди, а боковые события замечаются хуже. Поэтому в этом билете правильна связь: выше скорость - меньше поле зрения. Варианты про уменьшение поля зрения на малой скорости или расширение обзора при высокой скорости переворачивают проверяемую зависимость.",
       "correctAnswerId": "b-fallback-041-a1",
-      "correctAnswerExplanationRu": "Правильно по билету: a mayor velocidad, menor campo visual. Чем быстрее едете, тем меньше времени и внимания остается на боковые события.",
+      "correctAnswerExplanationRu": "Правильный ответ - чем выше скорость, тем меньше поле зрения: на высокой скорости водитель хуже воспринимает боковую обстановку и имеет меньше времени на реакцию.",
       "wrongAnswerExplanations": {
-        "b-fallback-041-a2": "A menor velocidad, menor campo visual переворачивает логику билета. Снижение скорости обычно дает больше времени на обзор и реакцию.",
-        "b-fallback-041-a3": "A mayor velocidad, mayor campo visual неверно: билет проверяет сужение полезного поля зрения при росте скорости."
+        "b-fallback-041-a2": "Утверждение про меньшее поле зрения при меньшей скорости неверно: снижение скорости обычно дает больше времени на обзор и не является причиной сужения полезного обзора.",
+        "b-fallback-041-a3": "Утверждение про большее поле зрения при большей скорости неверно: билет проверяет обратную зависимость, когда высокая скорость снижает боковое восприятие."
       },
-      "explanationType": "safe-distance-and-braking",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "speed-and-visual-field",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-042",
-      "textRu": "Правильный вариант - \"Existencia de terminal de ómnibus, en las inmediaciones.\". Правильно: знак сообщает existencia de terminal de ómnibus en las inmediaciones, то есть поблизости есть автобусный терминал. Неверные варианты: b-fallback-042-a1: Prohibición de estacionar добавляет запрет, которого этот информационный знак не передает. Он не про parking restriction у входа. b-fallback-042-a3: Prohibición de detenerse тоже неверно: билет показывает информационный знак terminal, а не знак запрета остановки.",
+      "textRu": "На изображении синий информационный знак с белым полем и черным символом автобуса под навесом. Такой знак сообщает, что поблизости находится автобусный терминал. Это не запрещающий знак: на нем нет красного круга или перечеркивания, поэтому варианты про запрет стоянки или остановки у въезда к терминалу не соответствуют картинке.",
       "correctAnswerId": "b-fallback-042-a2",
-      "correctAnswerExplanationRu": "Правильно: знак сообщает existencia de terminal de ómnibus en las inmediaciones, то есть поблизости есть автобусный терминал.",
+      "correctAnswerExplanationRu": "Правильный ответ - поблизости есть автобусный терминал: видимый символ автобуса на синем информационном знаке обозначает именно этот объект.",
       "wrongAnswerExplanations": {
-        "b-fallback-042-a1": "Prohibición de estacionar добавляет запрет, которого этот информационный знак не передает. Он не про parking restriction у входа.",
-        "b-fallback-042-a3": "Prohibición de detenerse тоже неверно: билет показывает информационный знак terminal, а не знак запрета остановки."
+        "b-fallback-042-a1": "Запрет стоянки был бы показан красным запрещающим знаком или отдельным знаком про стоянку. На этой картинке виден информационный знак терминала, а не запрет.",
+        "b-fallback-042-a3": "Запрет остановки тоже не подходит: изображение не содержит знака запрета остановки, а показывает обозначение автобусного терминала поблизости."
       },
-      "explanationType": "public-transport-and-exclusive-lanes",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "public-transport-signs",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-042-critical-source-image"
+        "bus-terminal-pictogram",
+        "blue-information-sign"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-043",
-      "textRu": "Правильный вариант - \"No, salvo que se realice para estacionar, entrar o salir de un garaje (cuando no exista otra posibilidad) o salvar algún obstáculo.\". Правильно: marcha atrás запрещена как обычное движение, но допускается для estacionar, entrar o salir de un garaje, если нет другой возможности, или для обхода препятствия. Неверные варианты: b-fallback-043-a2: Sí, en cualquier ocasión слишком широко. Короткая дистанция сама по себе не делает движение задним ходом разрешенным. b-fallback-043-a3: Mitad de la cuadra - неверный критерий. Разрешение зависит от необходимости маневра, а не от половины квартала.",
+      "textRu": "Движение задним ходом не разрешено как обычный способ движения по улице. В билете названы исключения: парковка, въезд в гараж или выезд из него, когда нет другой возможности, а также объезд препятствия. Поэтому правильен вариант с запретом и конкретными исключениями; расстояние в несколько метров или положение до середины квартала сами по себе не дают разрешения.",
       "correctAnswerId": "b-fallback-043-a1",
-      "correctAnswerExplanationRu": "Правильно: marcha atrás запрещена как обычное движение, но допускается для estacionar, entrar o salir de un garaje, если нет другой возможности, или для обхода препятствия.",
+      "correctAnswerExplanationRu": "Правильный ответ - задний ход запрещен, кроме необходимых маневров для парковки, гаража или объезда препятствия, когда другого безопасного варианта нет.",
       "wrongAnswerExplanations": {
-        "b-fallback-043-a2": "Sí, en cualquier ocasión слишком широко. Короткая дистанция сама по себе не делает движение задним ходом разрешенным.",
-        "b-fallback-043-a3": "Mitad de la cuadra - неверный критерий. Разрешение зависит от необходимости маневра, а не от половины квартала."
+        "b-fallback-043-a2": "Фраза про любую ситуацию слишком широкая: даже короткий участок задним ходом не становится разрешенным без необходимости выполнить один из указанных маневров.",
+        "b-fallback-043-a3": "Критерий середины квартала неверен: разрешение зависит не от точки на квартале, а от необходимости парковки, въезда, выезда или объезда препятствия."
       },
-      "explanationType": "parking-clearances-and-corners",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "reverse-driving-limits",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-044",
-      "textRu": "Правильный вариант - \"Sí, la misma se toma como una presunción de alcoholemia positiva.\". Правильно: отказ берется как presunción de alcoholemia positiva, чтобы водитель не мог продолжить движение без проверки. Неверные варианты: b-fallback-044-a1: Sólo si participó en un siniestro слишком узко. Ley 2148 обязывает проходить контроль и при обычных operativos/circunstancias, не только после ДТП. b-fallback-044-a2: Неверно: falta возникает не только при реально выполненной positive test. Negativa a realizar la prueba сама constituye falta.",
+      "textRu": "На фотографии инспектор у открытого окна автомобиля проводит проверку водителя прибором для контроля алкоголя. Вопрос спрашивает именно об отказе от такой проверки. По смыслу билета отказ считается нарушением и рассматривается как презумпция положительной пробы на алкоголь. Это не зависит только от участия в происшествии, и нарушением может быть не только уже проведенная положительная проба.",
       "correctAnswerId": "b-fallback-044-a3",
-      "correctAnswerExplanationRu": "Правильно: отказ берется как presunción de alcoholemia positiva, чтобы водитель не мог продолжить движение без проверки.",
+      "correctAnswerExplanationRu": "Правильный ответ - отказ от показанного теста считается презумпцией положительной пробы на алкоголь и сам по себе образует нарушение в рамках билета.",
       "wrongAnswerExplanations": {
-        "b-fallback-044-a1": "Sólo si participó en un siniestro слишком узко. Ley 2148 обязывает проходить контроль и при обычных operativos/circunstancias, не только после ДТП.",
-        "b-fallback-044-a2": "Неверно: falta возникает не только при реально выполненной positive test. Negativa a realizar la prueba сама constituye falta."
+        "b-fallback-044-a1": "Ограничение только случаями дорожного происшествия неверно: билет говорит об отказе от проверки как о самостоятельной ситуации, а не только о проверке после аварии.",
+        "b-fallback-044-a2": "Неверно, что нарушение возникает только после фактически проведенной положительной проверки: отказ пройти тест в этом билете тоже имеет правовое последствие."
       },
-      "explanationType": "alcohol-drugs-and-impairment",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "alcohol-control",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-044-critical-source-image"
+        "breathalyzer-at-driver-window",
+        "traffic-officer-administering-test"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-045",
-      "textRu": "Правильный вариант - \"Sí. Sólo está prohibido estacionar pero no detenerse.\". Правильно: как norma general знак запрещает estacionar, но краткая detención для ascenso o descenso de pasajeros не запрещена самим этим знаком. Неверные варианты: b-fallback-045-a1: На картинке No estacionar, а не No estacionar ni detenerse. Поэтому формула “запрещено estacionar y detenerse” слишком строгая для этого знака. b-fallback-045-a3: Вопрос не показывает horario restriction. Ответ “зависит от часа” отвлекает от основного значения знака.",
+      "textRu": "На изображении круглый знак с красной каймой и диагональной красной полосой поверх черной буквы, обозначающей стоянку. Он запрещает стоянку, но сам по себе не равен знаку запрета остановки. Поэтому краткая остановка для посадки или высадки пассажиров как общее правило не запрещена этим знаком. Вариант про запрет и стоянки, и остановки слишком строгий, а вариант про время не подтверждается изображением.",
       "correctAnswerId": "b-fallback-045-a2",
-      "correctAnswerExplanationRu": "Правильно: как norma general знак запрещает estacionar, но краткая detención для ascenso o descenso de pasajeros не запрещена самим этим знаком.",
+      "correctAnswerExplanationRu": "Правильный ответ - да, кратко остановиться для посадки или высадки можно, потому что видимый знак запрещает стоянку, а не любую остановку.",
       "wrongAnswerExplanations": {
-        "b-fallback-045-a1": "На картинке No estacionar, а не No estacionar ni detenerse. Поэтому формула “запрещено estacionar y detenerse” слишком строгая для этого знака.",
-        "b-fallback-045-a3": "Вопрос не показывает horario restriction. Ответ “зависит от часа” отвлекает от основного значения знака."
+        "b-fallback-045-a1": "Этот вариант смешивает два разных запрета. На картинке показан знак запрета стоянки, а не знак, который одновременно запрещает стоянку и остановку.",
+        "b-fallback-045-a3": "Зависимость от времени здесь не показана: на знаке нет расписания или дополнительной таблички, поэтому вопрос проверяет общее значение знака."
       },
-      "explanationType": "right-of-way-basic-intersections",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "parking-signs",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-045-critical-source-image"
+        "no-parking-e-symbol",
+        "red-prohibition-slash"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-046",
-      "textRu": "Правильный вариант - \"Sí, porque su uso es obligatorio para todos los ocupantes.\". Правильно: todos los ocupantes должны снова пристегнуться, потому что обязательность cinturón не зависит от оставшегося расстояния. Неверные варианты: b-fallback-046-a1: Sólo asientos delanteros неверно: Ley 2148 требует ремни для conductor y demás ocupantes, а не только для переднего ряда. b-fallback-046-a2: Estar por llegar a destino не является исключением. Даже несколько километров после parada остаются обычным движением.",
+      "textRu": "Ремни безопасности должны использовать все находящиеся в автомобиле, даже если после остановки до пункта назначения осталось совсем немного. Оставшееся расстояние не отменяет обязанность пристегнуться. Поэтому правильный вариант требует ремни для всех, а не только для передних сидений и не только на длинной части поездки.",
       "correctAnswerId": "b-fallback-046-a3",
-      "correctAnswerExplanationRu": "Правильно: todos los ocupantes должны снова пристегнуться, потому что обязательность cinturón не зависит от оставшегося расстояния.",
+      "correctAnswerExplanationRu": "Правильный ответ - все пассажиры и водитель должны снова пристегнуться: обязанность пользоваться ремнем не зависит от того, сколько километров осталось до конца маршрута.",
       "wrongAnswerExplanations": {
-        "b-fallback-046-a1": "Sólo asientos delanteros неверно: Ley 2148 требует ремни для conductor y demás ocupantes, а не только для переднего ряда.",
-        "b-fallback-046-a2": "Estar por llegar a destino не является исключением. Даже несколько километров после parada остаются обычным движением."
+        "b-fallback-046-a1": "Ограничение только передними сиденьями неверно: билет проверяет обязанность для всех находящихся в автомобиле, включая задние места.",
+        "b-fallback-046-a2": "То, что поездка почти закончена, не является исключением. После остановки движение продолжается, значит ремни должны быть пристегнуты снова."
       },
       "explanationType": "occupant-protection",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-047",
-      "textRu": "Правильный вариант - \"Hecho que puede ser evitado, en el cual se produce daño a persona o cosa, en ocasión de circulación en la vía pública.\". Правильно: incidente de tránsito/incidente vial в билете - это дорожное событие с daños a persona o cosa при circulación en la vía pública. Слово puede ser evitado направляет к идее preventable incident, а не к фатальной случайности. Неверные варианты: b-fallback-047-a2: Impredecible e inevitable - это как раз ловушка слова accidente. Для этого блока GCBA учит не считать такие события неизбежными. b-fallback-047-a3: Вариант слишком широкий и смещает смысл к daños a terceros. В определении важны daños a persona o cosa и связь с circulación en la vía pública.",
+      "textRu": "В этом билете дорожный или транспортный инцидент понимается как событие, которое можно предотвратить и при котором во время движения по дороге общего пользования причиняется вред человеку или имуществу. Смысл формулировки - не считать такие события неизбежной случайностью. Поэтому варианты про непредсказуемость, неизбежность или только ущерб третьим лицам не дают полного определения.",
       "correctAnswerId": "b-fallback-047-a1",
-      "correctAnswerExplanationRu": "Правильно: incidente de tránsito/incidente vial в билете - это дорожное событие с daños a persona o cosa при circulación en la vía pública. Слово puede ser evitado направляет к идее preventable incident, а не к фатальной случайности.",
+      "correctAnswerExplanationRu": "Правильный ответ - предотвратимое событие с вредом человеку или имуществу при движении по дороге общего пользования: это полная формула из билета.",
       "wrongAnswerExplanations": {
-        "b-fallback-047-a2": "Impredecible e inevitable - это как раз ловушка слова accidente. Для этого блока GCBA учит не считать такие события неизбежными.",
-        "b-fallback-047-a3": "Вариант слишком широкий и смещает смысл к daños a terceros. В определении важны daños a persona o cosa и связь с circulación en la vía pública."
+        "b-fallback-047-a2": "Непредсказуемое и неизбежное событие - неверная идея для этого вопроса, потому что билет подчеркивает предотвратимость дорожных инцидентов.",
+        "b-fallback-047-a3": "Вариант слишком расплывчатый: он допускает непредотвратимость и сужает вред до третьих лиц, хотя в определении указаны человек или имущество."
       },
-      "explanationType": "emergency-response-and-crash-scene",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "traffic-incident-definition",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-048",
-      "textRu": "Правильный вариант - \"Fluidez y seguridad.\". Fluidez y seguridad - правильная пара: движение должно оставаться предсказуемым и безопасным, без лишнего блокирования потока. Неверные варианты: b-fallback-048-a1: Velocidad y confort звучит удобно для водителя, но система tránsito строится не вокруг комфорта или максимальной скорости. b-fallback-048-a3: Comodidad y Agilidad похожи на личные преимущества, но не являются базовыми принципами системы движения в билете.",
+      "textRu": "Базовая пара для системы дорожного движения в этом билете - плавность движения и безопасность. Поток должен двигаться предсказуемо и без лишних задержек, но безопасность остается обязательным принципом. Скорость, комфорт, удобство и оперативность могут быть желательны, однако они не являются той основной парой, которую проверяет вопрос.",
       "correctAnswerId": "b-fallback-048-a2",
-      "correctAnswerExplanationRu": "Fluidez y seguridad - правильная пара: движение должно оставаться предсказуемым и безопасным, без лишнего блокирования потока.",
+      "correctAnswerExplanationRu": "Правильный ответ - плавность движения и безопасность: эти два принципа описывают работу системы движения в целом, а не только удобство отдельного водителя.",
       "wrongAnswerExplanations": {
-        "b-fallback-048-a1": "Velocidad y confort звучит удобно для водителя, но система tránsito строится не вокруг комфорта или максимальной скорости.",
-        "b-fallback-048-a3": "Comodidad y Agilidad похожи на личные преимущества, но не являются базовыми принципами системы движения в билете."
+        "b-fallback-048-a1": "Скорость и комфорт звучат привлекательно, но не являются базовой парой принципов: высокая скорость без безопасности не может быть целью системы движения.",
+        "b-fallback-048-a3": "Удобство и оперативность описывают скорее комфорт пользования дорогой, но не заменяют принцип безопасности и упорядоченного потока."
       },
-      "explanationType": "safety-principles-and-risk",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "traffic-system-principles",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-049",
-      "textRu": "Правильный вариант - \"80 km/h.\". Для указанных calzadas centrales de Av. Gral. Paz между Autopista Ingeniero Pascual Palazzo и Av. 27 de Febrero билет проверяет 80 km/h. Неверные варианты: b-fallback-049-a1: 60 km/h не подходит: билет спрашивает конкретный tramo de Av. Gral. Paz с особым пределом. b-fallback-049-a3: 100 km/h относится к другим быстрым arterias, но не к этому указанному tramo de Av. Gral. Paz.",
+      "textRu": "Вопрос задает конкретный участок центральных полос авениды Генерал-Пас между автомагистралью Инхеньеро Паскуаль Палаццо и авенидой 27 февраля. Для этого участка в билете правильное значение - 80 км/ч. Вариант 60 км/ч слишком низкий для указанной формулировки, а 100 км/ч относится не к этому проверяемому участку.",
       "correctAnswerId": "b-fallback-049-a2",
-      "correctAnswerExplanationRu": "Для указанных calzadas centrales de Av. Gral. Paz между Autopista Ingeniero Pascual Palazzo и Av. 27 de Febrero билет проверяет 80 km/h.",
+      "correctAnswerExplanationRu": "Правильный ответ - 80 км/ч: билет специально ограничивает место центральными полосами авениды Генерал-Пас на названном участке.",
       "wrongAnswerExplanations": {
-        "b-fallback-049-a1": "60 km/h не подходит: билет спрашивает конкретный tramo de Av. Gral. Paz с особым пределом.",
-        "b-fallback-049-a3": "100 km/h относится к другим быстрым arterias, но не к этому указанному tramo de Av. Gral. Paz."
+        "b-fallback-049-a1": "60 км/ч не подходит, потому что вопрос не спрашивает общий городской предел, а называет отдельный участок с другим значением.",
+        "b-fallback-049-a3": "100 км/ч неверно для этой формулировки: в билете проверяется именно 80 км/ч на указанном участке, а не более высокий предел."
       },
       "explanationType": "speed-limits",
       "claimScope": "ticket_specific_fallback",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-050",
-      "textRu": "Правильный вариант - \"Avanzar porque el personal ferroviario está autorizado a regular el paso de vehículos.\". В этой ситуации билет ожидает следовать indicación del personal ferroviario: он регулирует paso на переезде, поэтому можно avanzar по его указанию. Неверные варианты: b-fallback-050-a2: Вариант неверно отрицает полномочие personal ferroviario и заставляет ждать barrera даже при прямом разрешающем сигнале. b-fallback-050-a3: Agente de tránsito не единственный возможный оперативный сигнал в зоне переезда; вопрос специально говорит о personal ferroviario.",
+      "textRu": "На фотографии виден городской железнодорожный переезд: рельсы, красно-белые шлагбаумы, автомобили и автобус рядом с путями. Если в такой ситуации железнодорожный работник прямо указывает продолжать движение, нужно выполнить это указание, потому что такой персонал уполномочен регулировать проезд через переезд. Просто ждать поднятия шлагбаума или считать единственным компетентным лицом только дорожного инспектора в этом билете неверно.",
       "correctAnswerId": "b-fallback-050-a1",
-      "correctAnswerExplanationRu": "В этой ситуации билет ожидает следовать indicación del personal ferroviario: он регулирует paso на переезде, поэтому можно avanzar по его указанию.",
+      "correctAnswerExplanationRu": "Правильный ответ - продолжать движение по указанию железнодорожного работника: изображение задает контекст переезда, а формулировка билета сообщает о компетентном указании.",
       "wrongAnswerExplanations": {
-        "b-fallback-050-a2": "Вариант неверно отрицает полномочие personal ferroviario и заставляет ждать barrera даже при прямом разрешающем сигнале.",
-        "b-fallback-050-a3": "Agente de tránsito не единственный возможный оперативный сигнал в зоне переезда; вопрос специально говорит о personal ferroviario."
+        "b-fallback-050-a2": "Ожидание поднятия шлагбаума было бы логичным без указания компетентного персонала, но в вопросе прямо сказано, что железнодорожный работник велит проехать.",
+        "b-fallback-050-a3": "Неверно считать, что только дорожный инспектор может дать такое указание: для переезда железнодорожный персонал тоже уполномочен регулировать проезд."
       },
-      "explanationType": "traffic-lights-and-rail-crossings",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "railway-crossing-control",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-050-critical-source-image"
+        "railway-crossing-barriers",
+        "rail-tracks-foreground"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-051",
-      "textRu": "Правильный вариант - \"Que se trate de una detención previa a la maniobra de estacionamiento.\". Правильно: detención previa a la maniobra de estacionamiento - короткая остановка как часть немедленной парковки, а не самостоятельная остановка. Неверные варианты: b-fallback-051-a1: Ascenso o descenso de pasajeros не является исключением для показанной формы detención: билет не разрешает останавливать поток ради посадки/высадки. b-fallback-051-a3: Ambas слишком широко: вариант A не подходит, поэтому A+B не может быть правильным.",
+      "textRu": "На изображении красным овалом выделен автомобиль, остановившийся в полосе рядом с припаркованными у правого края машинами. Вопрос спрашивает исключение из общего запрета такой остановки. Правильное исключение - краткая остановка перед маневром парковки. Посадка или высадка пассажиров не делает именно такую остановку допустимой, поэтому вариант «оба ответа» тоже неверен.",
       "correctAnswerId": "b-fallback-051-a2",
-      "correctAnswerExplanationRu": "Правильно: detención previa a la maniobra de estacionamiento - короткая остановка как часть немедленной парковки, а не самостоятельная остановка.",
+      "correctAnswerExplanationRu": "Правильный ответ - остановка перед маневром парковки: красный овал выделяет положение автомобиля рядом с рядом припаркованных машин.",
       "wrongAnswerExplanations": {
-        "b-fallback-051-a1": "Ascenso o descenso de pasajeros не является исключением для показанной формы detención: билет не разрешает останавливать поток ради посадки/высадки.",
-        "b-fallback-051-a3": "Ambas слишком широко: вариант A не подходит, поэтому A+B не может быть правильным."
+        "b-fallback-051-a1": "Посадка или высадка пассажиров не является правильным исключением для показанного способа остановки в этом билете; на фото нет пассажирского контекста.",
+        "b-fallback-051-a3": "Вариант «оба ответа» неверен, потому что допустимым исключением выбран только маневр парковки, а не посадка или высадка пассажиров."
       },
-      "explanationType": "right-of-way-special-situations",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "parking-maneuver-stop",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-051-critical-source-image"
+        "red-circled-stopped-car",
+        "curbside-parked-row"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-052",
-      "textRu": "Правильный вариант - \"Senda peatonal próxima a zona escolar.\". Правильно: это senda peatonal próxima a zona escolar. Ключевые слова - senda peatonal и zona escolar, а не generic crossing или health-center context. Неверные варианты: b-fallback-052-a1: Cruce peligroso por poca iluminación - не то, что показывает школьная pedestrian marking. Вопрос просит meaning of demarcación horizontal, а не оценку освещения. b-fallback-052-a2: Centros de salud звучит похоже как protected pedestrian place, но на изображении и в правильной связке билета речь о zona escolar.",
+      "textRu": "На изображении виден пешеходный переход с чередующимися белыми и оранжевыми полосами у перекрестка. Такая горизонтальная разметка в билете обозначает пешеходный переход рядом со школьной зоной. Она не сообщает о слабом освещении и не указывает на медицинское учреждение, поэтому первые два варианта не соответствуют видимой разметке.",
       "correctAnswerId": "b-fallback-052-a3",
-      "correctAnswerExplanationRu": "Правильно: это senda peatonal próxima a zona escolar. Ключевые слова - senda peatonal и zona escolar, а не generic crossing или health-center context.",
+      "correctAnswerExplanationRu": "Правильный ответ - пешеходный переход рядом со школьной зоной: ключевая видимая подсказка - оранжево-белая разметка перехода.",
       "wrongAnswerExplanations": {
-        "b-fallback-052-a1": "Cruce peligroso por poca iluminación - не то, что показывает школьная pedestrian marking. Вопрос просит meaning of demarcación horizontal, а не оценку освещения.",
-        "b-fallback-052-a2": "Centros de salud звучит похоже как protected pedestrian place, но на изображении и в правильной связке билета речь о zona escolar."
+        "b-fallback-052-a1": "Опасный переход из-за слабого освещения не подходит: на фото дневная улица, а вопрос спрашивает значение самой горизонтальной разметки.",
+        "b-fallback-052-a2": "Медицинское учреждение на изображении не обозначено. Видимая оранжево-белая разметка в этом билете связана со школьной зоной."
       },
       "explanationType": "pedestrian-and-school-road-markings",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-052-critical-source-image"
+        "orange-white-school-crosswalk",
+        "pedestrian-crossing-bands"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-053",
-      "textRu": "Правильный вариант - \"Los vehículos que circulan por la calle A.\". Правильно по изображению: calle A имеет приоритет в этом cruce de dos calles. Это ticket-specific mapping картинки; не переносите букву A на другие схемы. Неверные варианты: b-fallback-053-a2: Calle B в этой картинке не является правильным потоком с prioridad de paso; выбор B был бы ошибкой чтения порядка улиц на фото.",
+      "textRu": "На фотографии показан нерегулируемый городской перекресток с желтыми метками A и B, которые обозначают два направления движения. Для этой конкретной схемы преимущество имеют транспортные средства на улице A. Вариант B является ошибкой чтения расположения меток и направлений на изображении; переносить буквы на другие ситуации нельзя.",
       "correctAnswerId": "b-fallback-053-a1",
-      "correctAnswerExplanationRu": "Правильно по изображению: calle A имеет приоритет в этом cruce de dos calles. Это ticket-specific mapping картинки; не переносите букву A на другие схемы.",
+      "correctAnswerExplanationRu": "Правильный ответ - транспортные средства на улице A: видимая метка A обозначает направление, которому в этой схеме отдано преимущество.",
       "wrongAnswerExplanations": {
-        "b-fallback-053-a2": "Calle B в этой картинке не является правильным потоком с prioridad de paso; выбор B был бы ошибкой чтения порядка улиц на фото."
+        "b-fallback-053-a2": "Улица B на этом изображении не является направлением с преимуществом. Этот вариант возникает, если перепутать желтые метки или порядок подъезда к перекрестку."
       },
       "explanationType": "right-of-way-basic-intersections",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-053-critical-source-image"
+        "yellow-a-street-label",
+        "yellow-b-street-label"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-054",
-      "textRu": "Правильный вариант - \"Sí. Lo establece la normativa para evitar lesiones graves en la zona cervical.\". На фото cabezal/apoyacabezas. Он обязателен на местах, где установлен, и нужен вместе с ремнем, чтобы уменьшать тяжелые травмы шеи при ударе. Неверные варианты: b-fallback-054-a2: Задние места не исключение: подголовник там тоже защищает пассажира и не является декоративной деталью. b-fallback-054-a3: Подголовник относится к безопасности автомобиля; утверждение, что он не часть active/passive safety, неверно для смысла билета.",
+      "textRu": "На фотографии красным овалом выделен подголовник сиденья автомобиля. Этот элемент нужен для защиты шейного отдела, особенно при ударе сзади, и в рамках билета должен использоваться на всех сиденьях, где он предусмотрен. Поэтому правильен ответ «да». Утверждения, что на задних местах он не нужен или не относится к безопасности, противоречат назначению элемента.",
       "correctAnswerId": "b-fallback-054-a1",
-      "correctAnswerExplanationRu": "На фото cabezal/apoyacabezas. Он обязателен на местах, где установлен, и нужен вместе с ремнем, чтобы уменьшать тяжелые травмы шеи при ударе.",
+      "correctAnswerExplanationRu": "Правильный ответ - да, подголовник обязателен: видимый элемент защищает шейный отдел и относится к пассивной безопасности автомобиля.",
       "wrongAnswerExplanations": {
-        "b-fallback-054-a2": "Задние места не исключение: подголовник там тоже защищает пассажира и не является декоративной деталью.",
-        "b-fallback-054-a3": "Подголовник относится к безопасности автомобиля; утверждение, что он не часть active/passive safety, неверно для смысла билета."
+        "b-fallback-054-a2": "Задние сиденья не являются исключением по смыслу билета: подголовник там тоже помогает снизить риск травмы шеи пассажира.",
+        "b-fallback-054-a3": "Неверно, что подголовник не относится к безопасности. Он именно служит защитным элементом и не является декоративной деталью."
       },
-      "explanationType": "safety-principles-and-risk",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "occupant-protection",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-054-critical-source-image"
+        "circled-head-restraint",
+        "seat-headrest-protective-position"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-055",
-      "textRu": "Правильный вариант - \"Imagen A.\". Правильно: Imagen A показывает корректную для этого билета настройку espejo retrovisor - видна небольшая часть автомобиля как ориентир и остается полезный обзор сзади/сбоку. Неверные варианты: b-fallback-055-a2: Imagen B неверна: зеркало слишком много показывает бок автомобиля, из-за чего уменьшается полезная зона обзора дороги и пространства рядом. b-fallback-055-a3: Ambas respuestas неверно: билет ожидает выбор одной правильной картинки. B не становится правильной только потому, что в ней тоже видно часть машины.",
+      "textRu": "Изображение состоит из двух вариантов настройки бокового зеркала. В варианте A в зеркале видна широкая зона дороги позади и сбоку, а край автомобиля занимает только небольшую часть кадра. В варианте B слишком много места занимает бок автомобиля, поэтому полезный обзор дороги уменьшается. Поэтому правильна только картинка A, а не B и не оба варианта.",
       "correctAnswerId": "b-fallback-055-a1",
-      "correctAnswerExplanationRu": "Правильно: Imagen A показывает корректную для этого билета настройку espejo retrovisor - видна небольшая часть автомобиля как ориентир и остается полезный обзор сзади/сбоку.",
+      "correctAnswerExplanationRu": "Правильный ответ - изображение A: зеркало показывает полезную дорожную зону и лишь небольшой ориентир по краю автомобиля.",
       "wrongAnswerExplanations": {
-        "b-fallback-055-a2": "Imagen B неверна: зеркало слишком много показывает бок автомобиля, из-за чего уменьшается полезная зона обзора дороги и пространства рядом.",
-        "b-fallback-055-a3": "Ambas respuestas неверно: билет ожидает выбор одной правильной картинки. B не становится правильной только потому, что в ней тоже видно часть машины."
+        "b-fallback-055-a2": "Изображение B неверно, потому что в зеркале слишком заметна боковая часть автомобиля, из-за чего теряется часть обзора пространства сзади и сбоку.",
+        "b-fallback-055-a3": "Оба варианта не могут быть правильными: картинка B показывает менее удачную настройку, поэтому билет требует выбрать только A."
       },
       "explanationType": "mirrors-blind-spots-and-visibility",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-055-critical-source-image"
+        "mirror-a-wide-road-view",
+        "mirror-b-too-much-car-body"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-056",
-      "textRu": "Правильный вариант - \"Verdadero.\". Verdadero: ночью хуже видимость и больше риск не заметить опасность вовремя. В этом topic это читается как фактор риска для incidente. Неверные варианты: b-fallback-056-a2: Falso неверно: билет ожидает, что conducción nocturna повышает риск, а не оставляет его таким же.",
+      "textRu": "Ночью риск дорожного инцидента действительно возрастает: хуже видимость, сложнее оценивать расстояние и быстрее наступает усталость. Водителю нужно снижать скорость и быть внимательнее, но сам факт повышенного риска в вопросе верен. Поэтому ответ «неверно» не подходит.",
       "correctAnswerId": "b-fallback-056-a1",
-      "correctAnswerExplanationRu": "Verdadero: ночью хуже видимость и больше риск не заметить опасность вовремя. В этом topic это читается как фактор риска для incidente.",
+      "correctAnswerExplanationRu": "Правильный ответ - верно: ночное вождение ухудшает видимость и повышает вероятность поздно заметить опасность на дороге.",
       "wrongAnswerExplanations": {
-        "b-fallback-056-a2": "Falso неверно: билет ожидает, что conducción nocturna повышает риск, а не оставляет его таким же."
+        "b-fallback-056-a2": "Ответ «неверно» отрицал бы главный фактор риска. Вопрос проверяет именно то, что ночные условия делают движение менее безопасным."
       },
-      "explanationType": "emergency-response-and-crash-scene",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "night-driving-risk",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-057",
-      "textRu": "Правильный вариант - \"Ambas respuestas, A y B, son correctas.\". Правильно: ambas respuestas. Для safe passing важны и заранее настроенные espejos retrovisores, и дополнительная проверка puntos ciegos/visión periférica перед маневром. Неверные варианты: b-fallback-057-a1: Ответ A сам по себе верный как прием против puntos ciegos, но вопрос спрашивает cómo se pueden reducir в целом. Он не включает второй прием перед маневром. b-fallback-057-a2: Ответ B тоже полезен перед maniobra: снизить скорость, включить luz de giro и проверить зеркала с небольшим движением корпуса. Но он не покрывает настройку зеркал до начала движения.",
+      "textRu": "Слепые зоны уменьшают сразу несколькими приемами. Перед поездкой нужно правильно настроить зеркала, а во время движения дополнительно проверять зеркала, использовать периферическое зрение и при необходимости смотреть через плечо. Перед маневром также важно снизить скорость, включить указатель поворота и проверить обзор с небольшим движением корпуса. Поэтому правильны оба ответа.",
       "correctAnswerId": "b-fallback-057-a3",
-      "correctAnswerExplanationRu": "Правильно: ambas respuestas. Для safe passing важны и заранее настроенные espejos retrovisores, и дополнительная проверка puntos ciegos/visión periférica перед маневром.",
+      "correctAnswerExplanationRu": "Правильный ответ - оба ответа правильные: вместе они описывают настройку зеркал заранее и дополнительную проверку слепых зон перед маневром.",
       "wrongAnswerExplanations": {
-        "b-fallback-057-a1": "Ответ A сам по себе верный как прием против puntos ciegos, но вопрос спрашивает cómo se pueden reducir в целом. Он не включает второй прием перед маневром.",
-        "b-fallback-057-a2": "Ответ B тоже полезен перед maniobra: снизить скорость, включить luz de giro и проверить зеркала с небольшим движением корпуса. Но он не покрывает настройку зеркал до начала движения."
+        "b-fallback-057-a1": "Первый вариант сам по себе полезен, но неполон для вопроса: он не включает отдельные действия перед маневром, которые также уменьшают риск слепой зоны.",
+        "b-fallback-057-a2": "Второй вариант тоже полезен перед маневром, но без предварительной правильной настройки зеркал он не покрывает весь набор приемов из билета."
       },
-      "explanationType": "overtaking-and-passing",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "mirrors-blind-spots-and-visibility",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-058",
-      "textRu": "Правильный вариант - \"Sí, mientras que esté ubicado en un asiento adicional detrás del conductor.\". Правильно по fallback-билету: pasajero разрешен, если он расположен en un asiento adicional detrás del conductor. Здесь visibility - ловушка, а не полный критерий. Неверные варианты: b-fallback-058-a1: Фраза no compromete la visibilidad звучит безопасно, но в этом билете ее недостаточно. Ответ должен учитывать, где именно размещен pasajero. b-fallback-058-a3: Ambas incorrectas неверно, потому что вариант про asiento adicional detrás del conductor является правильным ответом этого билета.",
+      "textRu": "В этом билете велосипедист может перевозить пассажира, если пассажир находится на дополнительном сиденье позади велосипедиста. Одного условия про сохранение видимости недостаточно, потому что вопрос проверяет именно допустимое место пассажира. Поэтому вариант про дополнительное сиденье правильный, а вариант «оба неправильные» не подходит.",
       "correctAnswerId": "b-fallback-058-a2",
-      "correctAnswerExplanationRu": "Правильно по fallback-билету: pasajero разрешен, если он расположен en un asiento adicional detrás del conductor. Здесь visibility - ловушка, а не полный критерий.",
+      "correctAnswerExplanationRu": "Правильный ответ - да, если пассажир сидит на дополнительном сиденье позади велосипедиста: это конкретное условие, которое проверяет билет.",
       "wrongAnswerExplanations": {
-        "b-fallback-058-a1": "Фраза no compromete la visibilidad звучит безопасно, но в этом билете ее недостаточно. Ответ должен учитывать, где именно размещен pasajero.",
-        "b-fallback-058-a3": "Ambas incorrectas неверно, потому что вариант про asiento adicional detrás del conductor является правильным ответом этого билета."
+        "b-fallback-058-a1": "Сохранение видимости важно, но этот вариант не указывает обязательное размещение пассажира на дополнительном сиденье позади велосипедиста.",
+        "b-fallback-058-a3": "Нельзя считать оба ответа неправильными, потому что вариант про дополнительное сиденье позади велосипедиста является правильным условием."
       },
-      "explanationType": "mirrors-blind-spots-and-visibility",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "cyclist-passenger-rules",
+      "claimScope": "direct_ticket",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-059",
-      "textRu": "Правильный вариант - \"La opción A, ya que al tener ropa clara es más visible.\". Правильно по fallback-билету: ciclista в ropa clara заметнее, значит риск siniestro vial ниже. Это ticket-specific visibility clue по картинке, а не отдельный официальный каталог одежды. Неверные варианты: b-fallback-059-a2: Opción B неверна: ropa oscura не становится безопаснее из-за того, что supposedly no distrae. Главный критерий билета - visible vs less visible. b-fallback-059-a3: Ambas same risk неверно, потому что картинка/варианты противопоставляют светлую и темную одежду именно по видимости.",
+      "textRu": "На изображении сравниваются два велосипедиста: под меткой A велосипедист в светлой футболке, под меткой B - в темной одежде. Светлая одежда лучше заметна для других участников движения, поэтому у велосипедиста A ниже риск попасть в дорожное происшествие. Темная одежда не становится безопаснее из-за того, что якобы меньше отвлекает, и риск у двух вариантов не одинаков.",
       "correctAnswerId": "b-fallback-059-a1",
-      "correctAnswerExplanationRu": "Правильно по fallback-билету: ciclista в ropa clara заметнее, значит риск siniestro vial ниже. Это ticket-specific visibility clue по картинке, а не отдельный официальный каталог одежды.",
+      "correctAnswerExplanationRu": "Правильный ответ - вариант A: видимая светлая одежда делает велосипедиста заметнее и снижает риск по сравнению с темной одеждой на варианте B.",
       "wrongAnswerExplanations": {
-        "b-fallback-059-a2": "Opción B неверна: ropa oscura не становится безопаснее из-за того, что supposedly no distrae. Главный критерий билета - visible vs less visible.",
-        "b-fallback-059-a3": "Ambas same risk неверно, потому что картинка/варианты противопоставляют светлую и темную одежду именно по видимости."
+        "b-fallback-059-a2": "Вариант B неверен: темная одежда хуже заметна, а аргумент про отсутствие отвлечения не является критерием безопасности в этом билете.",
+        "b-fallback-059-a3": "Риск не одинаковый, потому что изображение специально противопоставляет светлую и темную одежду по заметности велосипедиста."
       },
-      "explanationType": "fatigue-distraction-and-attention",
-      "claimScope": "ticket_specific_fallback",
+      "explanationType": "cyclist-visibility",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-059-critical-source-image"
+        "cyclist-a-light-shirt",
+        "cyclist-b-dark-shirt"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
       "questionId": "b-fallback-060",
-      "textRu": "Правильный вариант - \"Verdadero.\". Верно: билет сам описывает показанный знак как señal preventiva de máximo peligro о сильном спуске, то есть pendiente descendente. Неверные варианты: b-fallback-060-a2: Неверно: вариант Falso отрицал бы текст билета, но изображение и формулировка как раз соответствуют предупреждению о крутом спуске.",
+      "textRu": "На изображении желтый ромбовидный предупреждающий знак с черным автомобилем на крутом наклонном спуске. Такой знак предупреждает об участке дороги с сильным уклоном вниз и относится к знакам повышенной опасности. Поэтому утверждение в вопросе верно, а ответ «неверно» противоречит видимому символу на знаке.",
       "correctAnswerId": "b-fallback-060-a1",
-      "correctAnswerExplanationRu": "Верно: билет сам описывает показанный знак как señal preventiva de máximo peligro о сильном спуске, то есть pendiente descendente.",
+      "correctAnswerExplanationRu": "Правильный ответ - верно: видимый знак с автомобилем на крутом спуске предупреждает о сильной нисходящей уклонной дороге.",
       "wrongAnswerExplanations": {
-        "b-fallback-060-a2": "Неверно: вариант Falso отрицал бы текст билета, но изображение и формулировка как раз соответствуют предупреждению о крутом спуске."
+        "b-fallback-060-a2": "Ответ «неверно» не подходит, потому что изображение действительно показывает предупреждающий знак о крутом спуске, а не другой тип опасности."
       },
       "explanationType": "warning-signs",
-      "claimScope": "ticket_specific_fallback",
+      "claimScope": "direct_image",
       "relatedSourceIds": [
         "bandinopla-testdeconducir-caba-b-source1-2026-05-08"
       ],
       "imageDetailReferences": [
-        "b-fallback-060-critical-source-image"
+        "descending-slope-car-symbol",
+        "yellow-warning-diamond"
       ],
-      "method": "topic_guide_reused_or_deterministic_draft",
-      "reviewer": "Cabadrive solo self-audit",
-      "reviewedAt": "2026-05-09",
+      "method": "content_agent_reviewed",
+      "reviewer": "Codex content agent 001-092",
+      "reviewedAt": "2026-05-10",
       "disclaimer": "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
     },
     {
