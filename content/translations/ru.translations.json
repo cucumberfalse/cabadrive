@@ -128,5 +128,30 @@
     "reviewer": "Cabadrive solo self-audit",
     "reviewedAt": "2026-05-08",
     "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-028",
+    "questionTextRu": "Как правило, какое расстояние нужно оставить свободным при парковке перед таким типом учреждений?",
+    "answerTranslations": {
+      "b-fallback-028-a1": "Весь фасад здания.",
+      "b-fallback-028-a2": "10 метров с каждой стороны входа.",
+      "b-fallback-028-a3": "5 метров с каждой стороны входа."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-10",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+  },
+  {
+    "questionId": "b-fallback-412",
+    "questionTextRu": "Чтобы парковаться в этой зоне, нужно оставить свободными не менее 5 метров с каждой стороны входа.",
+    "answerTranslations": {
+      "b-fallback-412-a1": "Верно.",
+      "b-fallback-412-a2": "Неверно."
+    },
+    "method": "human_reviewed_machine",
+    "reviewer": "Cabadrive solo self-audit",
+    "reviewedAt": "2026-05-10",
+    "disclaimer": "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
   }
 ]

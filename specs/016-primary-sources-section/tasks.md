@@ -304,3 +304,10 @@
   - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
 - PR #68 review follow-up on 2026-05-10:
   - Left final-head verification checklist tasks T130, T131, T135, and T136 open; Slice A command results remain historical process evidence only and do not satisfy final feature validation.
+- Main refresh pass on 2026-05-10:
+  - Fetched and merged `origin/main` at `65624107d856653e503e3f03fd1d51da83992984` into `codex/016-primary-sources-section-intake` while preserving PR #68 feature memory and open final-head verification tasks T130, T131, T135, and T136.
+  - Resolved `docs_project/project/feature-inventory.md` by keeping current main learning-content polish wording and PR #68's planned `Источники` reader inventory entry plus official-primary-source boundary note.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 88 Node tests, 88 pass, 0 fail.
+  - `pnpm run build` passed, including content validation, asset sync, Vite production build, and service-worker generation for 280 cached assets.
+  - `git diff --check` passed with no output.
