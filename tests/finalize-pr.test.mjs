@@ -728,6 +728,25 @@ test("post-effective-head non-evidence edits inside allowed memory files block f
   assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/tasks.md:`)));
 });
 
+test("post-effective-head deletions of allowed memory files block finalization", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
+  const featurePath = "specs/999-finalize-test";
+  initGitRepo(root);
+  writeMinimalFeatureMemory(root, featurePath);
+  git(root, ["add", "."]);
+  git(root, ["commit", "-qm", "effective content"]);
+  const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
+
+  git(root, ["rm", "-q", `${featurePath}/plan.md`]);
+  git(root, ["commit", "-qm", "delete allowed memory file"]);
+  const currentHead = git(root, ["rev-parse", "HEAD"]);
+
+  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+
+  assert.equal(result.postEffectiveHeadEvidenceOnly, false);
+  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/plan.md:`)));
+});
+
 test("post-effective-head final-validation and guard evidence additions pass", () => {
   const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-git-"));
   const featurePath = "specs/999-finalize-test";

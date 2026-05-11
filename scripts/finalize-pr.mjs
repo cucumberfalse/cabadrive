@@ -800,7 +800,8 @@ export function evaluatePostEffectiveHeadDiff(diffText = "", currentFiles = {}, 
   for (const rawLine of String(diffText).split(/\r?\n/)) {
     if (!rawLine) continue;
     if (rawLine.startsWith("diff --git ")) {
-      currentPath = null;
+      const match = rawLine.match(/^diff --git a\/(.+) b\/(.+)$/);
+      currentPath = match ? normalizeRepoPath(match[2]) : null;
       continue;
     }
     if (rawLine.startsWith("+++ b/")) {
@@ -808,7 +809,6 @@ export function evaluatePostEffectiveHeadDiff(diffText = "", currentFiles = {}, 
       continue;
     }
     if (rawLine.startsWith("+++ /dev/null")) {
-      currentPath = null;
       continue;
     }
     const hunk = rawLine.match(/^@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/);
@@ -978,7 +978,11 @@ export function verifyPostEffectiveHeadChanges(root, featurePath, effectiveConte
     const pathResult = evaluatePostEffectiveHeadChangedFiles(changedFiles, featurePath);
     const currentFiles = {};
     for (const filePath of changedFiles.filter((path) => isFinalValidationEvidencePath(path, featurePath))) {
-      currentFiles[filePath] = run("git", ["show", `${currentHead}:${filePath}`], { cwd: root });
+      try {
+        currentFiles[filePath] = run("git", ["show", `${currentHead}:${filePath}`], { cwd: root });
+      } catch {
+        currentFiles[filePath] = "";
+      }
     }
     const diffOutput = changedFiles.length > 0
       ? run("git", ["diff", "--unified=0", effectiveContentHead, currentHead, "--", ...changedFiles], { cwd: root })
