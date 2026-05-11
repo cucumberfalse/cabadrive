@@ -801,6 +801,12 @@
   - Targeted bad-token check found no `УДАЧА`, `ШЛИКИ`, or old continuous/discontinuous-line wording in the Anexo L learner shard outside original Spanish references.
   - `npm run validate:content`, `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content`, and `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed.
   - `git diff --check`, `npm test`, `npm run build`, and `npm run preflight` passed; preflight included `check-feature-memory`, `check:repo`, content validation, 153 node tests, build/service-worker generation, and 22 Playwright e2e tests. Vite retained the existing large-chunk warning.
+- PR #117 D6 Anexo L signal-code script follow-up on 2026-05-11:
+  - Fixed Cyrillic-lookalike official signal-code prefixes throughout the Anexo L learner document shard: `Р.`, `П.`, `Н.`, and `Т.` before digits now use Latin `R.`, `P.`, `H.`, and `T.` so source identifiers such as `R.11`, `P.3`, `H.4`, and `T.10` remain exact official codes.
+  - Checked related projections: the Anexo L search and QA shards contain no mirrored text with Cyrillic-lookalike code prefixes, so no projection file update was required.
+  - Targeted JSON/code-prefix check parsed the Anexo L document, search, and QA shards and found `0` Cyrillic-lookalike code-prefix matches in all three files.
+  - `git diff --check`, `npm run validate:content`, `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content`, and `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed.
+  - `npm run preflight` passed; it included feature-memory/repo checks, content validation, 153 node tests, build/service-worker generation, and 22 Playwright e2e tests. Vite retained the existing large-chunk warning.
 - PR #103 P2 rebase finding disposition on 2026-05-10:
   - D4/DNRPA is intentionally stacked on PR #101 by Orchestrator assignment to preserve the prerequisite content/schema stack and keep this PR diff limited to one document batch.
   - This PR should not be retargeted or rebased to latest `main` outside that assigned stacked sequence. The final merge gate remains a green stacked sequence plus human-controlled merge ordering.
