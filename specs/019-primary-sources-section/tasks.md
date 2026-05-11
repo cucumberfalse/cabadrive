@@ -1041,3 +1041,7 @@
   - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--29-marcas-especiales-037` full Russian translation so source label `H.17 DELINEADORES` is `H.17 ДЕЛИНЕАТОРЫ`, not `H.17 ПЛАНЫ`.
   - Checked the same chunk's `simpleRu`; it already names `делинеаторы`, and the Anexo L search/QA shards do not mirror the learner text fragment, so no projection update was required.
   - Targeted H.17 check confirmed `H.17 ДЕЛИНЕАТОРЫ.` is present, `H.17 ПЛАНЫ.` is absent from the learner chunk and search/QA shards, and earlier H.9/H.10 dimension fixes remain intact.
+- PR #117 D6 Anexo L official-code preservation follow-up on 2026-05-11:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--11-senales-de-prioridad-018` R.30 full Russian translation so the provisional placement reference preserves official warning sign `P.3`, not `R.3`.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--15-advertencia-sobre-caracteristicas-fisicas-de-la-via-023` P.24 variant references so `P.24(a)`, `P.24(b)`, and `P.24(c)` remain exact Latin official identifiers with original punctuation and parentheses.
+  - Focused learner-field scan found no remaining Cyrillic-lookalike or lowercase official-code shapes for `P.*`, `R.*`, `H.*`, or `T.*`; the Anexo L search/QA shards do not mirror these learner text fragments, so no projection update was required.
