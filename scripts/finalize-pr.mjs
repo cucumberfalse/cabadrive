@@ -1020,20 +1020,59 @@ function readLatestValidationCompletedAt(memory, role) {
   while ((match = marker.exec(memory)) !== null) {
     const parsed = parseIsoDate(match[1]);
     if (!parsed) continue;
-    latest = parsed;
+    if (!latest || parsed.getTime() > latest.getTime()) {
+      latest = parsed;
+    }
   }
   return latest;
 }
 
 function readLatestValidationPass(memory, role) {
-  const marker = validationPassMarkers[role];
-  marker.lastIndex = 0;
-  let latest = null;
+  const passMarker = validationPassMarkers[role];
+  passMarker.lastIndex = 0;
+  const passEntries = [];
   let match;
-  while ((match = marker.exec(memory)) !== null) {
-    latest = parseValidationPassResult(match[1]);
+  while ((match = passMarker.exec(memory)) !== null) {
+    passEntries.push({
+      index: match.index,
+      end: passMarker.lastIndex,
+      result: parseValidationPassResult(match[1])
+    });
   }
-  return latest;
+  if (passEntries.length === 0) return null;
+
+  const completedAtMarker = validationCompletedAtMarkers[role];
+  completedAtMarker.lastIndex = 0;
+  const completedAtEntries = [];
+  while ((match = completedAtMarker.exec(memory)) !== null) {
+    const completedAt = parseIsoDate(match[1]);
+    if (!completedAt) continue;
+    completedAtEntries.push({
+      index: match.index,
+      completedAt
+    });
+  }
+
+  const timestampedPassEntries = passEntries
+    .map((entry, index) => {
+      const nextPassIndex = passEntries[index + 1]?.index ?? Number.POSITIVE_INFINITY;
+      const completedAt = completedAtEntries.find((completed) =>
+        completed.index >= entry.end && completed.index < nextPassIndex
+      )?.completedAt;
+      return completedAt ? { ...entry, completedAt } : entry;
+    })
+    .filter((entry) => entry.completedAt);
+
+  if (timestampedPassEntries.length === 0) {
+    return passEntries.at(-1).result;
+  }
+
+  return timestampedPassEntries
+    .toSorted((left, right) => {
+      const timeDiff = left.completedAt.getTime() - right.completedAt.getTime();
+      return timeDiff || left.index - right.index;
+    })
+    .at(-1).result;
 }
 
 function parseValidationPassResult(value = "") {

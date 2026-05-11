@@ -19,6 +19,7 @@
 - [x] Add focused tests covering successful readiness and blocker scenarios.
 - [x] Run verification and record evidence below.
 - [x] Record implementation decisions, dead ends, known issues, and any Implementation Agent feedback in this file.
+- [x] Review-fix: choose final Architect/Analyst validation results by role-owned completion timestamp across role memory files, so older later-in-file markers cannot override newer validation evidence.
 
 ## Required Helper Scenarios
 
@@ -58,6 +59,7 @@
 - Seventeenth implementation update evidence: after `origin/main` advanced to `451d479a109aa575ef27fda6757665f408c7e4a6`, current P1 deletion-hunk Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-11 from pushed PR head `066a365b3b00dd096f9a011dcb9369b4deb71047`. The merge completed cleanly with no conflicts, producing local head `744698f94a0412967396fc3539a0aedf656e9c91` and adding the mainline content-image overlay updates while preserving this feature's auto-finalization behavior.
 - Eighteenth implementation update evidence: after `origin/main` advanced again to `139e92323403c680ac1ef7fc7850af21584347c5`, current P1 deletion-hunk Implementation Agent ran `git fetch origin --prune && git merge --autostash --no-edit origin/main` on 2026-05-11. The merge completed cleanly with no conflicts, producing local head `fb7f9f13ec0c6df6f4d0affb77ce4d27b55eb78b` and adding the mainline source-of-truth process-memory update while preserving this scoped deletion-hunk fix.
 - Nineteenth implementation update evidence: current P1 latest-validation-result Implementation Agent ran `git fetch origin` on 2026-05-11. `origin/main` remained `139e92323403c680ac1ef7fc7850af21584347c5`, and `git rev-list --left-right --count HEAD...origin/main` returned `42 0`, so the branch had no commits behind latest main and no merge/conflict resolution was required.
+- Twentieth implementation update evidence: current P2 role-timestamp Implementation Agent ran `git fetch origin --prune` on 2026-05-11. `origin/main` remained `139e92323403c680ac1ef7fc7850af21584347c5`, and `git rev-list --left-right --count HEAD...origin/main` returned `44 0`, so the branch had no commits behind latest main and no merge/conflict resolution was required.
 
 ## Decisions
 
@@ -99,6 +101,7 @@
 - Current P2 effective-head marker documentation decision: durable guidance and templates now require the role-owned markers `Architect validated effective content head: <40-hex-sha>` and `Analyst validated effective content head: <40-hex-sha>` to match `Effective content head: <40-hex-sha>` whenever final validation targets an effective content head, preserving the stricter helper behavior instead of relaxing it.
 - Current P1 deletion-hunk implementation decision: `evaluatePostEffectiveHeadDiff()` now keeps the deleted file path from the `diff --git` header when a hunk has `+++ /dev/null`, so removals from otherwise allowed feature-memory evidence files are recorded as invalid `path:oldLine` changes. `verifyPostEffectiveHeadChanges()` treats missing current-head file content for allowed paths as an empty current file instead of aborting before diff classification.
 - Current P1 latest-validation-result implementation decision: `parseProcessEvidence()` now scans all role-owned `Architect validation pass:` and `Analyst validation pass:` markers and uses only the last marker in that role's memory to set `finalArchitectValidation` or `finalAnalystValidation`. Later failed/blocked/no/false markers therefore block finalization even if earlier append-only memory contains passed evidence, while `finalValidationOrder` still requires valid latest role completion timestamps with Architect before Analyst.
+- Current P2 role-timestamp implementation decision: `readLatestValidationPass()` now pairs each role-owned validation result marker with its following valid `Final Architect validation completed at:` or `Final Analyst validation completed at:` marker before the next result marker, then chooses the result with the greatest completion timestamp. If no result has a valid timestamp, it preserves the previous text-order fallback so missing-marker and placeholder-only tests keep their established behavior; invalid placeholder timestamps remain ignored, and `readLatestValidationCompletedAt()` now also returns the greatest valid timestamp for final Architect-before-Analyst ordering.
 
 ## Dead Ends
 
@@ -109,6 +112,7 @@
 - Current review-fix focused test initially failed because the post-effective-head guard rejected newly required `Cycle PR Set` and `Final Validation Evidence` process-memory sections as non-evidence changes. Resolved by allowing only well-formed process-evidence additions in those sections while preserving blockers for arbitrary peer-section edits.
 - Current P1 placeholder-timestamp regression test first failed as expected: a real Architect/Analyst timestamp followed by a literal `<ISO 8601 timestamp>` placeholder made `finalValidationOrder` false. Resolved by skipping invalid marker matches instead of returning `null` for the whole role scan.
 - Current P1 latest-validation-result finding: unresolved PR #80 AI Review thread `PRRT_kwDOSX65IM6A8eYe` / comment `PRRC_kwDOSX65IM6_raD9` reported that append-only role memory could contain an earlier `validation pass: passed` and a later failed result, but the finalizer accepted the role by searching for any historical pass marker. The fix makes the latest role-owned result marker authoritative and adds regression coverage for both Architect and Analyst stale-pass cases.
+- Current P2 role-timestamp review fix had no dead ends; the focused cross-file regression passed on the first implementation run.
 
 ## Known Issues
 
@@ -125,6 +129,7 @@
 - Review thread `PRRT_kwDOSX65IM6A8aFt` / comment `PRRC_kwDOSX65IM6_rUc_`: addressed in `scripts/finalize-pr.mjs` and `tests/finalize-pr.test.mjs` by treating post-effective-head deletion hunks for allowed evidence files as invalid non-evidence changes. Architect disposition: routed to this Implementation Agent and addressed; final Architect validation rerun remains pending.
 - Architect disposition: addressed/resolved by commit c503bf18c2b85009ff048f05d73e67612566b14f and verified by 55-test deletion-hunk regression coverage; no unresolved Implementation Agent feedback remains for PRRT_kwDOSX65IM6A8aFt.
 - Review thread `PRRT_kwDOSX65IM6A8eYe` / comment `PRRC_kwDOSX65IM6_raD9`: addressed in `scripts/finalize-pr.mjs` and `tests/finalize-pr.test.mjs` by deriving final Architect/Analyst validation pass state from the latest role-owned validation result marker. Architect disposition: addressed/resolved by commit 16f14d34f9bd55e66d7c99d1c4bfaf35974a458a; no unresolved Implementation Agent feedback remains.
+- Review thread `PRRT_kwDOSX65IM6A8j6t` / comment `PRRC_kwDOSX65IM6_rhhH`: addressed in `scripts/finalize-pr.mjs` and `tests/finalize-pr.test.mjs` by deriving final Architect/Analyst validation pass state from role-owned completion timestamps across role memory files. Architect disposition: addressed/resolved; no unresolved Implementation Agent feedback remains.
 
 ## Verification Evidence
 
@@ -346,6 +351,12 @@
 - `pnpm run check:repo`: passed after the latest-validation-result parser fix; "Repository baseline check passed."
 - `git diff --check`: passed after the latest-validation-result parser fix; no whitespace errors reported.
 - `pnpm run preflight`: passed after the latest-validation-result parser fix; feature-memory gate, repo baseline, content validation, 209 node tests, build, service-worker generation with 280 cached assets, and 36 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BIXr1RcT.js`, and Playwright webserver reported existing `NO_COLOR`/`FORCE_COLOR` warnings, but all checks completed successfully.
+- `git fetch origin --prune`: passed during the current P2 role-timestamp review fix; `origin/main` remained `139e92323403c680ac1ef7fc7850af21584347c5`, and `git rev-list --left-right --count HEAD...origin/main` returned `44 0`, so no merge was required.
+- `node --check scripts/finalize-pr.mjs`: passed after the current P2 role-timestamp parser fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after the current P2 role-timestamp parser fix; 57 tests passed, including the regression where a newer Architect pass in `spec.md` overrides an older failed marker in `tasks.md`, while a newer failed marker in `tasks.md` still blocks.
+- `pnpm run check:repo`: passed after the current P2 role-timestamp parser fix; "Repository baseline check passed."
+- `node scripts/check-feature-memory.mjs --worktree`: passed after the current P2 role-timestamp parser fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `git diff --check`: passed after the current P2 role-timestamp parser fix; no whitespace errors reported.
 
 ## Cycle PR Set
 
@@ -363,6 +374,7 @@
 - Purpose: address failed final Architect validation and PR #80 review thread `PRRT_kwDOSX65IM6A8aFt` / comment `PRRC_kwDOSX65IM6_rUc_` for deleted allowed evidence files passing post-effective-head validation; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `066a365b3b00dd096f9a011dcb9369b4deb71047`; post-merge local head before scoped fix: `744698f94a0412967396fc3539a0aedf656e9c91`; status: implementation verification before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 - Purpose: refresh PR #80 from latest `origin/main` after main advanced again during deletion-hunk verification; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at refresh start: `744698f94a0412967396fc3539a0aedf656e9c91`; post-merge local head before final verification: `fb7f9f13ec0c6df6f4d0affb77ce4d27b55eb78b`; status: latest-main merge/process-memory refresh before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 - Purpose: address PR #80 review thread `PRRT_kwDOSX65IM6A8eYe` / comment `PRRC_kwDOSX65IM6_raD9` for stale historical validation-pass markers; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `c503bf18c2b85009ff048f05d73e67612566b14f`; status: implementation verification before final push; final-validation inclusion: pending Orchestrator final validation rerun.
+- Purpose: address PR #80 review thread `PRRT_kwDOSX65IM6A8j6t` / comment `PRRC_kwDOSX65IM6_rhhH` for cross-file role-memory validation-pass ordering; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `c2c0f6e8e492d45a3d613c6d23a855642a820466`; status: implementation verification before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 
 ## Final Validation Evidence
 
