@@ -1115,7 +1115,7 @@
         "officialLabel": "Art. 39. Cuando la agravación se deba a un hecho del tomador, la cobertura queda suspendida. El asegurador, en el término de siete días, ...",
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Art. 39. Cuando la agravación se deba a un hecho del tomador, la cobertura queda suspendida. El asegurador, en el término de siete días, deberá notificar su decisión de rescindir.\n\nEfectos: Por hecho ajeno al tomador\n",
-        "fullTranslationRu": "Ст. 39. Если обострение вызвано событием страхователь, освещение приостанавливается. страховщик в течение семи дней должен уведомить о своем решении о прекращении действия.\n\nЭффекты: Из-за факта, выходящего за рамки страхователь.",
+        "fullTranslationRu": "Ст. 39. Если повышение риска вызвано действием страхователя, страховое покрытие приостанавливается. Страховщик в течение семи дней должен уведомить о своем решении расторгнуть договор.\n\nПоследствия: из-за факта, не зависящего от страхователя.",
         "simpleRu": "Статья 39: если риск повысился из-за действий страхователя, покрытие приостанавливается. Страховщик должен в течение 7 дней сообщить, расторгает ли договор.",
         "sourceTextSha256": "affc4c22285709b9c052731494f89aeb347c62753bd04d8f862bbe1ca145313d",
         "sourceFingerprint": "sha256:affc4c22285709b9c052731494f89aeb347c62753bd04d8f862bbe1ca145313d",
