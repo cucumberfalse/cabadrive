@@ -1,0 +1,657 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+  "entries": [
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--decreto-779-95-anexo-l-001",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--decreto-779-95-anexo-l-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--anexo-al-articulo-22-002",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--anexo-al-articulo-22-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--anexo-l-003",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--anexo-l-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-i-004",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-i-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--1-concepto-el-sistema-de-senalizacion-vial-uniforme-005",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--1-concepto-el-sistema-de-senalizacion-vial-uniforme-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--2-competencia-el-senalamiento-lo-realiza-o-autoriza-006",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--2-competencia-el-senalamiento-lo-realiza-o-autoriza-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--3-obligatoriedad-el-significado-de-la-senalizacion-007",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--3-obligatoriedad-el-significado-de-la-senalizacion-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--4-construccion-los-dispositivos-regulados-por-el-008",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--4-construccion-los-dispositivos-regulados-por-el-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--5-mantenimiento-es-responsabilidad-basica-y-009",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--5-mantenimiento-es-responsabilidad-basica-y-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--6-deletabilidad-todo-elemento-constitutivo-de-la-010",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--6-deletabilidad-todo-elemento-constitutivo-de-la-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-ii-011",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-ii-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--7-concepto-son-las-senales-de-regulacion-del-012",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--7-concepto-son-las-senales-de-regulacion-del-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--1-placa-forma-debe-mantenerse-rigida-y-ser-013",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--1-placa-forma-debe-mantenerse-rigida-y-ser-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-iii-014",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-iii-014",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--8-caracteristicas-basicas-las-que-se-detallan-a-015",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--8-caracteristicas-basicas-las-que-se-detallan-a-015",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--9-senales-de-prohibicion-016",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--9-senales-de-prohibicion-016",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--10-senales-de-restriccion-017",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--10-senales-de-restriccion-017",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--11-senales-de-prioridad-018",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--11-senales-de-prioridad-018",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--12-fin-de-la-prescripcion-r-31-32-019",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--12-fin-de-la-prescripcion-r-31-32-019",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-iv-020",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-iv-020",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--13-caracteristicas-basicas-tambien-denominadas-de-021",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--13-caracteristicas-basicas-tambien-denominadas-de-021",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--14-advertencias-de-maximo-peligro-estas-senales-utilizan-022",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--14-advertencias-de-maximo-peligro-estas-senales-utilizan-022",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--15-advertencia-sobre-caracteristicas-fisicas-de-la-via-023",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--15-advertencia-sobre-caracteristicas-fisicas-de-la-via-023",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--16-posibilidad-de-riesgos-eventuales-se-utiliza-el-024",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--16-posibilidad-de-riesgos-eventuales-se-utiliza-el-024",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--17-anticipo-de-otros-dispositivos-de-control-del-025",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--17-anticipo-de-otros-dispositivos-de-control-del-025",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--18-fin-de-prevencion-026",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--18-fin-de-prevencion-026",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-v-027",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-v-027",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--19-caracteristicas-basicas-028",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--19-caracteristicas-basicas-028",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--20-nomenclatura-vial-y-urbana-destinos-y-distancias-029",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--20-nomenclatura-vial-y-urbana-destinos-y-distancias-029",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--21-caracteristicas-de-la-via-030",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--21-caracteristicas-de-la-via-030",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--24-informacion-turistica-y-de-servicios-031",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--24-informacion-turistica-y-de-servicios-031",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--25-educativas-y-anuncios-especiales-032",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--25-educativas-y-anuncios-especiales-032",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-vi-033",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-vi-033",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--26-concepto-las-marcas-viales-o-demarcacion-horizontal-034",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--26-concepto-las-marcas-viales-o-demarcacion-horizontal-034",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--27-marcas-longitudinales-son-franjas-de-un-ancho-035",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--27-marcas-longitudinales-son-franjas-de-un-ancho-035",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--28-marcas-transversales-son-franjas-de-un-ancho-036",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--28-marcas-transversales-son-franjas-de-un-ancho-036",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--29-marcas-especiales-037",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--29-marcas-especiales-037",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-vii-038",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-vii-038",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--30-concepto-senales-con-luz-propia-continua-o-039",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--30-concepto-senales-con-luz-propia-continua-o-039",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--31-conformacion-fisica-040",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--31-conformacion-fisica-040",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--32-significado-de-las-luces-ante-las-luces-041",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--32-significado-de-las-luces-ante-las-luces-041",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--33-ubicacion-el-semaforo-se-coloca-en-las-042",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--33-ubicacion-el-semaforo-se-coloca-en-las-042",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--34-flechas-direccionales-deben-apuntar-en-el-043",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--34-flechas-direccionales-deben-apuntar-en-el-043",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--35-disposicion-unidades-opticas-las-unidades-044",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--35-disposicion-unidades-opticas-las-unidades-044",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--36-semaforos-especiales-045",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--36-semaforos-especiales-045",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-viii-046",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-viii-046",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--37-concepto-047",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--37-concepto-047",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--38-senales-reglamentarias-048",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--38-senales-reglamentarias-048",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--39-senales-de-049",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--39-senales-de-049",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--40-senales-de-050",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--40-senales-de-050",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--41-vallas-051",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--41-vallas-051",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--42-conos-052",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--42-conos-052",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--43-tambores-053",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--43-tambores-053",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--44-delineadores-054",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--44-delineadores-054",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--45-marcas-horizontales-055",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--45-marcas-horizontales-055",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--46-dispositivos-luminosos-056",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--46-dispositivos-luminosos-056",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--47-barandas-canalizadoras-de-transito-057",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--47-barandas-canalizadoras-de-transito-057",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-ix-058",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-ix-058",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--48-carteles-preventivos-especiales-para-cruces-059",
+      "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--48-carteles-preventivos-especiales-para-cruces-059",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
