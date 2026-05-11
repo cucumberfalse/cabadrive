@@ -869,3 +869,14 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #105 D6 Anexo L second review-fix verification on 2026-05-10:
+  - Fixed only the F.3 full Russian translation in `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--48-carteles-preventivos-especiales-para-cruces-059`: `sin barrera` now reads as railway crossings without a barrier, and `A ...m CRUCE SIN BARRERAS` is preserved as a distance placeholder for a crossing without barriers.
+  - Kept dimensions, IRAM 3952/2017 table 4, white background, red `ATENCIÓN`, black `FERROCARRIL`, and the previously fixed 15 image paths unchanged.
+  - Targeted bad-token check `rg -n "БЕЗ ШАГОВ|ПЕРЕХОДИМ БЕЗ БАРЬЕРОВ|signalizacion|anex-l" content/primary-sources/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.ru.json` found no matches; the broader reviewer-provided `anex` token is not a safe negative check because it also matches correct `anexo` identifiers and URLs.
+  - Local structured check confirmed the F.3 text contains the corrected railway-crossing heading, IRAM/table/background/color details, the `НА ... м ПЕРЕЕЗД БЕЗ ШЛАГБАУМОВ` placeholder, and 15 translated image paths exactly matching `originalSpanish`.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
