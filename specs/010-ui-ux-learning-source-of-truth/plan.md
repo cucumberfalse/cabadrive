@@ -110,6 +110,8 @@ Implementation must not define a competing semantic metadata or relevance schema
 
 `010` may use `009` feature memory/spec as a contract while `009` is in progress. It must not consume local `009` worktree files, feature branches, draft PR artifacts, or copied unmerged content. The `009` implementation becomes usable input only after `009` is fully completed and merged into `main`; at that point `010` must sync with `main` and implement the overlay slice before claiming the feature complete.
 
+As of the 2026-05-10 current-main audit, feature `009` is already merged and the merged baseline contains 276 current image-backed question usages, 275 unique image metadata entries, and approved per-question usage/relevance for all 276 usages. The current `010` overlay manifest contains only one approved overlay. Architect decision: Slice F must now be treated as full current overlay coverage for all 276 image-backed question usages, not as a seed/sample overlay implementation. A fallback for missing overlay data remains a truthful runtime safety behavior for future, stale, or out-of-scope data, but it cannot satisfy current `010` completion while approved `009` usage/relevance exists for every current image-backed question.
+
 ## Data Ownership For Overlay Definitions
 
 Preferred overlay layout after `009` has merged:
@@ -143,6 +145,7 @@ Overlay definition requirements:
 
 Overlay validation must fail when:
 
+- the current question bank has an approved `009` image usage/relevance record for an image-backed question but lacks exactly one approved current overlay definition and evidence entry for that question;
 - referenced `009` metadata or usage mapping is missing;
 - referenced detail IDs, region IDs, or relevance IDs are missing or not assigned the required role for the current question;
 - image hash, question fingerprint, metadata fingerprint, or usage fingerprint is stale;
@@ -150,6 +153,8 @@ Overlay validation must fail when:
 - overlay references remote assets;
 - overlay claims a visible/important/irrelevant fact not represented by the current question's `009` usage/relevance;
 - overlay assigns UI-side importance, irrelevance, criticality, distractor, highlight, or dim semantics that are not present in the current question's `009` usage/relevance.
+
+For the audited current baseline, strict validation must prove 276 approved overlays for 276 current image-backed question usages. Each approved overlay must include at least one region sourced from the current question's `answer_critical_highlight` usage/relevance and enough `background_irrelevant_dim`, `supporting`, or `distractor_trap` geometry to reduce irrelevant visual load in that exact question context. The validator must reject "mark everything highlighted", shared-metadata-only geometry, and overlay records for images that are not used by the concrete question.
 
 If feature `009` has not landed, overlay implementation must be fenced:
 
@@ -288,30 +293,35 @@ Goal: implement mandatory UX fix 3 after feature `009` is fully completed, merge
 Expected approach:
 
 - Confirm feature `009` metadata and usage mappings are present in `main` after sync and validated.
+- Confirm the current coverage baseline from merged `009`: 276 image-backed question usages and 275 unique image paths.
 - Add overlay definition schema/manifest or reuse an existing suitable content validation boundary.
 - Store overlays near image-support content, not inside React-only code.
+- Populate approved overlay definitions and evidence for every current image-backed question usage covered by merged `009`; the current acceptance target is 276 approved overlays, not one seed overlay.
 - Render dimming/highlighting only when explanation support is visible and mode allows support.
 - Drive dimming/highlighting from completed `009` per-question usage/relevance for the current question, not from shared metadata alone or UI-authored importance flags.
-- Keep images fully visible or provide non-misleading fallback when overlay data is unavailable.
+- Keep images fully visible or provide non-misleading fallback only for future/stale/out-of-scope cases where validated `009` usage/relevance or overlay records are not available; current merged-009 image-backed questions must not rely on fallback for completion.
 - Use CSS/SVG/canvas only as needed; choose the simplest approach that supports responsive image-relative regions and local/offline rendering.
 
 Verification:
 
+- strict coverage validation proving every current image-backed question usage has exactly one approved overlay and evidence entry;
 - content validator tests for missing/stale metadata, missing detail IDs, malformed regions, and stale fingerprints;
 - content validator tests for missing/stale `009` usage relevance, UI-authored relevance roles, and overlays built from shared metadata without question usage;
+- content validator tests proving an approved `009` image-backed usage without overlay fails strict coverage;
+- content validator tests proving images not used by the current question are not assigned overlay importance/relevance;
 - component/e2e tests for overlay visible with explanation and hidden before answer/exam attempt;
 - visual or DOM evidence that irrelevant regions are dimmed and answer-critical regions remain prominent;
-- regression evidence for at least one image-backed question after merged 009 data is available.
+- regression evidence for representative image-backed questions across the overlay corpus, including `b-fallback-001` and at least one reused-image case.
 
 ### Slice G: Final Gate
 
-Goal: prove the complete feature is ready for review/merge, or explicitly prove that the only remaining blocker is the unmerged `009` dependency for mandatory Slice F.
+Goal: prove the complete feature is ready for review/merge.
 
 Tasks:
 
 - Ensure source-of-truth docs, consistency check, audit, task inventory, implementation decisions, and evidence are current.
 - Confirm mandatory D and E are implemented and verified.
-- Confirm mandatory F is implemented and verified after `009` merges; if `009` is still unmerged, record the waiting state and do not claim full `010` completion.
+- Confirm mandatory F is implemented and verified after merged `009`: 276 approved current overlays for 276 current image-backed question usages, with strict coverage/evidence validation.
 - Run full command matrix.
 - Run Docker smoke flow for runtime-affecting changes.
 - Confirm required checks, review findings, conflicts, and process memory.
@@ -320,6 +330,7 @@ Tasks:
 
 - Use Markdown/link checks or targeted scripts only if repository already has a suitable docs validation pattern; do not add a heavy docs framework.
 - Use content validators for overlay definitions and stale-data checks.
+- Use strict overlay coverage validation as a merge gate after merged `009` exists; the validator must fail on missing current overlays, duplicate current overlays, stale overlay evidence, or overlays that define their own importance/relevance instead of referencing current-question `009` usage roles.
 - Use unit tests for pure helpers: mode support rules, navigation collection/boundary logic, overlay validation.
 - Use Playwright for user-visible flows: auto reveal, bottom nav, exam no-support boundary, overlay visibility, keyboard/mobile.
 - Use `git diff --check` for whitespace and Markdown hygiene.
@@ -337,8 +348,12 @@ Tasks:
   - Mitigation: record anticipated-surface status and add a re-audit task.
 - Risk: 009 metadata is unavailable or low confidence.
   - Mitigation: block/fence overlay implementation and avoid invented highlights or dimming.
+- Risk: seed overlay support is mistaken for completion.
+  - Mitigation: record the audited current baseline and require strict 276-of-276 current overlay coverage after merged `009`.
 - Risk: UI overlay work accidentally treats shared image metadata as global importance.
   - Mitigation: require completed `009` usage/relevance for the current question, reject UI-authored relevance roles, and fall back to the normal image when usage/relevance is missing.
+- Risk: overlay records evaluate images outside the question context.
+  - Mitigation: validation and review require every overlay to be keyed to a concrete current question usage; images not used by the current question receive no importance/relevance evaluation.
 - Risk: overlay geometry becomes stale.
   - Mitigation: fingerprint image, question, metadata, and usage mappings; fail validation when stale.
 - Risk: automatic reveal weakens recall.
@@ -353,7 +368,7 @@ Tasks:
 - Documentation slices can merge independently if they do not alter runtime behavior and consistency checks pass.
 - Product-code slices must be reverted or fixed before merge if they reveal support during active exam attempts.
 - Overlay slice must wait if completed `009` shared metadata and per-question usage/relevance mappings are not yet merged into `main`, or if merged data is stale or too incomplete for safe highlighting.
-- Overlay tasks may remain blocked in `tasks.md` while docs/audit and the first two UX fixes proceed, but after `009` merges they must be implemented in `010` before full completion.
+- Overlay tasks may remain blocked in `tasks.md` while docs/audit and the first two UX fixes proceed, but after `009` merges they must be implemented for full current image-backed coverage in `010` before full completion.
 - If audit uncovers large unrelated improvements, record them as follow-up tasks with source-of-truth references and explicit disposition rather than bundling them into mandatory UX-fix PRs.
 
 ## Handoff To Implementation

@@ -114,6 +114,8 @@
 
 ## Required Slice F: Mandatory UX Fix 3 - Image Explanation Overlays
 
+Historical note: T092-T106 record the earlier seed overlay implementation and validation. They are superseded for final completion by T159-T178, which require full current image-backed question overlay coverage.
+
 - [x] T092 Check whether completed feature `009` metadata and question usage mappings are present in the implementation branch after syncing from `origin/main`.
 - [x] T093 Do not enable overlay implementation because completed `009` shared metadata, per-question usage/relevance mappings, and validation are not present on this synced branch.
 - [x] T094 If `009` metadata is missing, stale, or incomplete, mark overlay implementation blocked in Process Memory and do not implement invented highlights.
@@ -148,7 +150,7 @@
 - [x] T116 Confirm task inventory and final task consistency check are recorded.
 - [x] T117 Confirm mandatory UX fix 1 is implemented and verified.
 - [x] T118 Confirm mandatory UX fix 2 is implemented and verified.
-- [x] T119 Confirm mandatory UX fix 3 is no longer waiting after completed feature `009` merged into `origin/main`; Slice F is implemented and verified against merged `009` artifacts.
+- [x] T119 Historical gate closure before current-main overlay coverage audit: confirmed mandatory UX fix 3 was no longer waiting after completed feature `009` merged into `origin/main` and that seed Slice F implementation was verified against merged `009` artifacts. Superseded for final completion by T159-T178 because current `main` has only 1 approved overlay for 276 image-backed usages.
 - [x] T120 Run `pnpm run validate:content`.
 - [x] T121 Run `pnpm run test`.
 - [x] T122 Run `pnpm run build`.
@@ -198,6 +200,29 @@
 - [x] T157 Implementation Agent keyed loaded natural image dimensions to the current asset source and removed the later reset effect; stale dimensions are ignored by source mismatch, while a cached current image load is not cleared after it has populated dimensions.
 - [x] T158 Implementation Agent added Playwright coverage for cached image-path navigation from `b13.jpg` to preloaded `b173.jpg`, asserting the current image frame remains constrained by the new source natural dimensions after navigation/effect flushing rather than falling back to the generic 620px frame.
 
+## Architect Update After Current-Main Overlay Coverage Audit
+
+- [x] T159 Architect created an isolated worktree `/Users/chap/devel/cabadrive-010-overlay-architecture` from fresh `origin/main` on branch `codex/010-overlay-full-coverage-architecture`.
+- [x] T160 Architect read `AGENTS.md`, repository constitution, relevant project docs, feature `009` memory, feature `010` memory, and current overlay/source files before editing.
+- [x] T161 Architect audited current `origin/main` overlay coverage: 460 questions, 276 current image-backed question usages, 275 unique local image paths, 275 merged feature-009 image metadata entries, 276 merged feature-009 question usage/relevance records, and 1 approved feature-010 overlay.
+- [x] T162 Architect decided that Slice F scope is full current image-backed question overlay coverage because merged feature `009` already covers all current image-backed usages. A seed overlay plus fallback is not enough for `010` completion.
+- [x] T163 Architect updated `spec.md` acceptance criteria, functional requirements, negative scenarios, and validation requirements so current completion requires approved overlay coverage for all 276 current image-backed question usages.
+- [x] T164 Architect updated `plan.md` so Slice F requires strict 276-of-276 current overlay coverage, question-scoped usage/relevance, no shared-metadata global importance, and coverage/evidence/tests.
+- [x] T165 Architect updated this `tasks.md` with explicit Implementation Agent and Review Agent follow-up tasks while preserving historical implementation evidence.
+- [x] T166 Architect kept this pass limited to `specs/010-ui-ux-learning-source-of-truth/spec.md`, `plan.md`, and `tasks.md`; no product code, content, durable docs, tests, scripts, adjacent feature memory, merges, or direct `main` changes.
+- [ ] T167 Implementation Agent updates overlay manifest structure or sharding as needed to hold approved overlays for every current image-backed question usage without hand-editing generated compatibility data.
+- [ ] T168 Implementation Agent creates approved overlay definitions for all 276 current image-backed question usages covered by merged feature `009`; each current image-backed question has exactly one approved current overlay unless Architect records a controlled exception with a replacement acceptance criterion.
+- [ ] T169 Implementation Agent ensures every approved current overlay references the concrete question's `009` usage fingerprint, relevance IDs, detail IDs, and region IDs; overlays must not derive importance, irrelevance, highlight, dim, support, or distractor semantics from shared image metadata alone.
+- [ ] T170 Implementation Agent ensures every approved current overlay has at least one `answer_critical_highlight` region and enough `background_irrelevant_dim`, `supporting`, or `distractor_trap` geometry to reduce irrelevant visual load for that exact question context.
+- [ ] T171 Implementation Agent ensures reused-image cases, including the existing reused image covered by feature `009`, receive separate overlays keyed to each concrete question usage rather than copied global image importance.
+- [ ] T172 Implementation Agent updates overlay validation so strict mode fails when any current image-backed question usage with approved `009` usage/relevance lacks exactly one approved overlay and approved overlay evidence.
+- [ ] T173 Implementation Agent updates overlay validation/tests so images not used by the current question cannot receive `010` importance/relevance or overlay dim/highlight evaluation.
+- [ ] T174 Implementation Agent updates overlay evidence so every approved current overlay records reviewer, provenance, image hash, question fingerprint, `009` metadata fingerprint, `009` usage fingerprint, overlay fingerprint, role-source checks, and stale-data checks.
+- [ ] T175 Implementation Agent adds tests proving missing current overlay coverage fails, duplicate current overlay coverage fails, stale overlay evidence fails, UI-authored relevance roles fail, shared-metadata-only overlays fail, and a valid current-question overlay passes.
+- [ ] T176 Implementation Agent adds or extends representative user-facing tests for overlays after explanation reveal, hidden pre-answer state, active exam hidden state, full-coverage data loading, `b-fallback-001`, and at least one reused-image/question-specific relevance case.
+- [ ] T177 Implementation Agent runs and records `pnpm run validate:overlays`, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, `pnpm run preflight`, `git diff --check`, and Docker smoke evidence or an exact unrelated blocker.
+- [ ] T178 Review Agent verifies the full-coverage overlay slice against this updated architecture: 276 current image-backed usages, 276 approved overlays, no global shared metadata importance, question-specific `009` role consumption only, no fallback-as-completion, and validation/evidence/tests proving the coverage gate.
+
 ## Process Memory
 
 ### Architect Decisions
@@ -210,6 +235,9 @@
 - Architect update on 2026-05-10 after question-scoped relevance clarification: shared `009` image metadata is not a source of global important/unimportant areas. `010` overlay implementation must consume completed `009` per-question usage/relevance for the concrete ticket and must not invent UI-side relevance.
 - Overlay rendering is fenced when `009` shared metadata or per-question usage/relevance mappings are missing, stale, or incomplete for a concrete question.
 - After feature `009` fully completed and merged into `main`, Slice F resumed in `010` and added validated seed overlay support.
+- Architect update on 2026-05-10 after current-main overlay coverage audit: seed overlay support is not sufficient now that merged `009` covers all current image-backed usages. Slice F completion requires full current overlay coverage: 276 approved overlays for 276 current image-backed question usages, with strict validation/evidence/tests.
+- Architect update on 2026-05-10 after current-main overlay coverage audit: fallback remains allowed only for future/stale/out-of-scope cases where approved `009` usage/relevance or overlay validation is unavailable. The fallback is not a completion path for the current merged-009 bank.
+- Architect update on 2026-05-10 after current-main overlay coverage audit: images not used by the concrete current question must not receive overlay importance/relevance evaluation; `010` consumes question-specific `009` usage roles only.
 - Mandatory post-answer reveal applies to learning, mistake review, and support-mode answer attempts only; active exam attempts remain hidden.
 - Mandatory navigation fix requires bottom previous and next controls, explicit boundaries, and tested state behavior.
 - Architect did not edit product code, tests, runtime files, durable docs, `feature-request.md`, adjacent feature memories, commits, pushes, or PR state.
@@ -222,6 +250,7 @@
 - Feature `008` context shows a topic materials UI may exist under label `Материалы`; this feature must audit it if present.
 - Feature `009` context defines shared image metadata, question usage mappings, answer-critical details, and strict validation/evidence; this feature must not redefine that metadata source.
 - Current durable frontend docs say learning and mistake review start with Russian translation hidden, active exam attempts hide support, and question images are local offline assets.
+- Current-main overlay audit from `/Users/chap/devel/cabadrive-010-overlay-architecture` found `content/image-overlays/question-explanation-overlays.manifest.json` has 1 approved overlay while `content/image-metadata/question-images.manifest.json` has 276 question usage records for 276 current image-backed question usages.
 
 ### Dead Ends
 
@@ -235,6 +264,7 @@
 - The request is broad enough to generate many follow-up tasks; Orchestrator should keep implementation PRs narrow and evidence-gated.
 - Docker runtime smoke remains blocked by the shared `/cabadrive` container-name conflict; `make build` succeeded, but `make up` did not start this worktree's container.
 - As of the Analyst clarification, D/E/F are mandatory implementation slices in `010`; docs, consistency checks, audit, and task inventory are gates rather than the final deliverable.
+- As of the current-main overlay coverage audit, the existing `010` overlay implementation remains incomplete for the mandatory overlay fix because it covers only `b-fallback-001`; the current architecture now requires full current coverage across all 276 image-backed question usages.
 
 ### Review Finding Follow-Up
 
@@ -321,6 +351,7 @@
 
 - Analyst clarification received: architectural memory now states that source-of-truth docs, consistency check, product audit, and validated task inventory are required gates inside `010`, not the final deliverable by themselves.
 - Mandatory UX fixes D and E have existing Implementation Agent evidence and remain checked as implemented/verified in this process memory.
-- Mandatory UX fix F is now implemented after feature `009` fully completed and merged into `origin/main`; final completion depends on the full verification matrix, review, and PR gates.
+- Superseded disposition: earlier process memory treated mandatory UX fix F as implemented after feature `009` merged into `origin/main`; the current-main coverage audit narrows that to seed overlay support only. Final mandatory UX fix F completion now depends on T167-T178 full current overlay coverage and verification.
 - Disposition: The 2026-05-10 question-scoped relevance clarification is accepted. Slice F must treat `009` shared metadata as visible-fact/ID input only and must use `009` per-question usage/relevance as the sole source for what gets highlighted, dimmed, treated as support, or treated as a distractor.
+- Disposition: The 2026-05-10 current-main overlay coverage audit is accepted. Implementation must not claim `010` complete with the one approved overlay currently present on `main`; it must add full current image-backed overlay coverage or return to Architect with a concrete alternative scope decision and replacement acceptance criterion before product changes proceed.
 - Non-mandatory audit-derived tasks UX-010-004 through UX-010-006 may remain separate follow-ups only with explicit Orchestrator/Architect disposition; they do not replace mandatory D/E/F completion.

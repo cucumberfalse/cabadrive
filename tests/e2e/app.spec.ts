@@ -411,6 +411,10 @@ test("process guide stays local-first without external requests, remote images, 
 test("materials view renders topic guide status, list, details, canonical ticket data, and local images", async ({ page }) => {
   const firstTopic = topicGuide.topics[0];
   const firstTicket = firstTopic.tickets[0];
+  const institutionDistanceTrapNote = firstTopic.trapNotes.find(
+    (note: { textRu: string }) => note.textRu.includes("5 metros") && note.textRu.includes("10 metros")
+  ) as { textRu: string } | undefined;
+  if (!institutionDistanceTrapNote) throw new Error("Expected institution distance trap note in topic guide fixture.");
   const canonicalQuestion = canonicalQuestionById.get(firstTicket.questionId) as {
     officialTextEs: string;
     difficulty: string;
@@ -441,7 +445,10 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await expect(page.getByText(firstTopic.learningMaterialRu[0])).toBeVisible();
   await expect(page.getByText("hospital/centro de salud").first()).toBeVisible();
   await expect(page.getByText("10 metros de cada lado de la entrada").first()).toBeVisible();
-  await expect(page.locator(".trap-note").filter({ hasText: "5 metros de cada lado de la entrada" }).filter({ hasText: /trap|falso|wrong/i }).first()).toBeVisible();
+  const institutionDistanceTrap = page.locator(".trap-note").filter({ hasText: institutionDistanceTrapNote.textRu }).first();
+  await expect(institutionDistanceTrap).toBeVisible();
+  await expect(institutionDistanceTrap).toContainText("5 metros");
+  await expect(institutionDistanceTrap).toContainText(/похож|выбирайте/);
   await expect(page.getByText("en horas de clase").first()).toBeVisible();
   await expect(page.getByText("oficios/ceremonias").first()).toBeVisible();
   await expect(page.getByText("horario de atención al público").first()).toBeVisible();

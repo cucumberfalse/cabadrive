@@ -63,6 +63,14 @@ Out of scope:
 - After answer selection, both question/answer translations and the relevant learning explanation should become visible, because the learner has already completed active recall.
 - Previous/next navigation should be mode-specific and preserve learner context rather than forcing global question-bank movement.
 
+## Architect Update: Full Current Overlay Coverage
+
+Current `origin/main` audit evidence on 2026-05-10 shows feature `009` is already merged and covers all current image-backed question usages: 460 questions, 276 image-backed question records, 275 unique local image paths, 275 approved shared image metadata entries, and 276 approved question usage/relevance mappings. The current `010` overlay manifest contains only 1 approved overlay, for `b-fallback-001`.
+
+Architect decision: Slice F scope is full current image-backed question overlay coverage, not a seed overlay plus fallback. For the current question bank, `010` is incomplete until every one of the 276 current image-backed question usages has an approved explanation overlay definition, validation evidence, and test/review evidence. The fallback rule remains valid only for future or out-of-scope states where a question image lacks completed `009` usage/relevance, where an overlay is stale/invalid, or where a non-current image is displayed outside a concrete question. It is not an acceptance path for the current merged-009 bank.
+
+Overlay importance and unimportance remain strictly question-scoped. Overlay definitions may reference visible detail/region IDs from shared `009` metadata, but the decision to dim, preserve, highlight, treat as supporting, or treat as distractor must come only from the concrete question's `009` per-question usage/relevance record. Shared image metadata must never grow global important/unimportant fields, and images not used by a current question must not receive overlay importance/relevance evaluation.
+
 ## User Stories
 
 ### User Story 1
@@ -97,7 +105,7 @@ As a reviewer, I want a traceable audit from source-of-truth principle to produc
 8. Given the docs define content-status rules, `unofficial_b_fallback` remains clear and no UI implies a complete official GCBA category B question bank.
 9. Given the docs define multimedia rules, image-backed explanations require signaling question-relevant visual details, reducing visual load irrelevant to the current question, keeping labels near referenced regions, avoiding decorative study imagery, and using only local offline assets.
 10. Given image overlay rules are documented, they depend on completed feature `009` per-question image usage/relevance mappings and do not create a competing source for answer-critical, supporting, distractor, or background/irrelevant roles.
-11. Given completed feature `009` question usage/relevance is unavailable, stale, or incomplete for a question image, overlay implementation for that question is blocked or shows a non-misleading fallback; it must not invent highlight or dim regions from shared metadata alone.
+11. Given completed feature `009` question usage/relevance is unavailable, stale, or incomplete for a question image outside the current approved bank, overlay implementation for that question is blocked or shows a non-misleading fallback; it must not invent highlight or dim regions from shared metadata alone.
 12. Given documentation drafting is complete, a final documentation consistency check is recorded before product audit starts.
 13. Given the final documentation consistency check is recorded, it confirms no unresolved contradiction among the new docs, `.specify/memory/constitution.md`, `docs_project/`, `docs/specify/`, feature `008`, feature `009`, and the research basis.
 14. Given product audit begins, every source-of-truth point is checked against current product behavior or marked not applicable with a reason.
@@ -106,22 +114,23 @@ As a reviewer, I want a traceable audit from source-of-truth principle to produc
 17. Given the proposed task inventory is complete, a final task consistency check is recorded before implementation tasks are started.
 18. Given the final task consistency check is recorded, it confirms tasks do not contradict each other, the source-of-truth docs, feature `008`, feature `009`, exam-mode restrictions, or local-first constraints.
 19. Given documentation, consistency, audit, and task-inventory gates pass, they unlock implementation slices inside `010`; they do not by themselves satisfy feature completion.
-20. Given mandatory UX fixes D/E/F are in scope, `010` is not complete until D and E are implemented and F is either implemented after merged `009` input or explicitly waiting because `009` is not yet merged into `main`.
+20. Given mandatory UX fixes D/E/F are in scope and feature `009` is merged into `main`, `010` is not complete until D and E are implemented and F provides full approved overlay coverage for all 276 current image-backed question usages.
 21. Given learning or mistake review mode and the learner selects an answer, question translation, answer translations, and the learning explanation are revealed automatically after the attempt.
 22. Given active exam simulation is in progress and the user selects an answer, translation, explanation, and answer-revealing image overlay support remain hidden until exam review/completion behavior explicitly allows support.
 23. Given learning navigation is implemented, `Следующий` or equivalent next control appears at the bottom of the question flow where feedback/explanation reading ends.
 24. Given learning navigation is implemented, `Предыдущий` or equivalent previous control exists with clear boundary behavior at the first item.
 25. Given previous/next navigation is implemented, selected answers, revealed feedback, search/mode context, and current collection position are preserved or reset according to explicit mode rules documented in the source of truth and tested.
 26. Given feature `009` has not been fully completed and merged into `main`, overlay implementation remains waiting and must not consume local `009` worktree files, feature branches, draft PR artifacts, or invented metadata.
-27. Given feature `009` is fully completed and merged into `main`, `010` syncs with `main` and implements image explanation overlays rather than leaving the mandatory overlay fix as backlog.
-28. Given an image-backed explanation is shown and approved `009` shared metadata, per-question usage/relevance, and overlay definitions exist, the UI dims or de-emphasizes regions marked irrelevant/background for that concrete question while keeping details marked answer-critical for that same question prominent.
-29. Given overlay definitions are introduced, they are stored durably with clear ownership, provenance, image/question/answer linkage, and stale-data validation tied to image hash, question fingerprint, and `009` metadata/usage fingerprints.
-30. Given verification runs for implementation PRs, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, `pnpm run preflight`, and `git diff --check` pass or exact unrelated blockers are recorded.
-31. Given runtime-affecting changes are included, Docker contract evidence is recorded with `make build`, `make up`, a smoke check at `http://localhost:5173`, and `make down`, unless Orchestrator scopes the slice as documentation-only.
-32. Given review starts, Review Agent can trace changed behavior to this feature memory, source-of-truth docs, audit evidence, and task evidence.
-33. Given an overlay definition references shared image metadata but lacks the current question's completed `009` usage/relevance record, validation fails or the overlay remains disabled.
-34. Given an overlay definition or UI component assigns its own important/unimportant/relevance role not present in `009` per-question usage, review fails.
-35. Given an image is not used by the current question, `010` does not define importance/relevance or overlay dimming for that image.
+27. Given feature `009` is fully completed and merged into `main`, `010` syncs with `main` and implements image explanation overlays for every current image-backed question usage rather than leaving the mandatory overlay fix as backlog or seed coverage.
+28. Given the current merged-009 bank has 276 image-backed question usages, the overlay manifest and evidence contain exactly one approved current overlay per image-backed question usage unless Architect records a concrete controlled exception with a replacement acceptance criterion.
+29. Given an image-backed explanation is shown and approved `009` shared metadata, per-question usage/relevance, and overlay definitions exist, the UI dims or de-emphasizes regions marked irrelevant/background for that concrete question while keeping details marked answer-critical for that same question prominent.
+30. Given overlay definitions are introduced, they are stored durably with clear ownership, provenance, image/question/answer linkage, and stale-data validation tied to image hash, question fingerprint, and `009` metadata/usage fingerprints.
+31. Given verification runs for implementation PRs, `pnpm run validate:content`, `pnpm run validate:overlays`, `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, `pnpm run preflight`, and `git diff --check` pass or exact unrelated blockers are recorded.
+32. Given runtime-affecting changes are included, Docker contract evidence is recorded with `make build`, `make up`, a smoke check at `http://localhost:5173`, and `make down`, unless Orchestrator scopes the slice as documentation-only.
+33. Given review starts, Review Agent can trace changed behavior to this feature memory, source-of-truth docs, audit evidence, and task evidence.
+34. Given an overlay definition references shared image metadata but lacks the current question's completed `009` usage/relevance record, validation fails or the overlay remains disabled for non-current/future data; for the current merged-009 bank, missing overlay coverage fails strict coverage validation.
+35. Given an overlay definition or UI component assigns its own important/unimportant/relevance role not present in `009` per-question usage, review fails.
+36. Given an image is not used by the current question, `010` does not define importance/relevance or overlay dimming for that image.
 
 ## Negative Scenarios
 
@@ -136,6 +145,8 @@ As a reviewer, I want a traceable audit from source-of-truth principle to produc
 - Image dimming or highlights based on designer guesses, hard-coded arbitrary decoration, or visual inspection unlinked to `009` metadata is not acceptable.
 - Image dimming or highlights based on global shared-image important/unimportant flags are not acceptable; importance and irrelevance must come from `009` per-question usage/relevance for the current question.
 - Overlay data that is not tied to image/question/metadata fingerprints can become stale and is not acceptable for merge readiness.
+- Treating one approved overlay, sample overlays, or opportunistic overlay coverage as completion after merged feature `009` full image-usage coverage is not acceptable.
+- Allowing the current 276 image-backed question usages to rely on the no-overlay fallback is not acceptable now that `009` has approved usage/relevance for all of them.
 - A fallback that silently hides missing overlay metadata while claiming the explanation is image-highlighted is misleading.
 - Introducing runtime network calls, a backend, remote image fetches, or live AI/image analysis violates the product contract.
 
@@ -152,7 +163,7 @@ As a reviewer, I want a traceable audit from source-of-truth principle to produc
 - FR-009: Preserve hidden support during active exam attempts.
 - FR-010: Add bottom previous/next navigation for the learning flow and apply the same source-of-truth rule to mistake/support practice flows where appropriate.
 - FR-011: Define and test mode-specific previous/next boundary and state-preservation behavior.
-- FR-012: Add image explanation overlay definitions only after `009` shared metadata and per-question usage/relevance mappings are available and validated.
+- FR-012: Add image explanation overlay definitions only after `009` shared metadata and per-question usage/relevance mappings are available and validated; for the current merged-009 bank this means approved overlay definitions for all 276 current image-backed question usages.
 - FR-013: Store overlay definitions durably near learning-support/image-support content with provenance and stale-data validation.
 - FR-014: Render overlays only when explanation support is visible and the current mode allows support.
 - FR-015: Add tests for source docs/audit artifacts where practical, UI behavior, overlay gating, accessibility-critical keyboard/focus paths, and local-first constraints.
@@ -160,7 +171,8 @@ As a reviewer, I want a traceable audit from source-of-truth principle to produc
 - FR-017: Treat mandatory UX fixes D/E/F as required `010` implementation slices; non-mandatory audit findings may become follow-ups only with explicit disposition.
 - FR-018: If `009` is not merged into `main`, keep overlay implementation in an explicit waiting state; after `009` merges, sync `010` and implement overlays before claiming `010` complete.
 - FR-019: Require overlay definitions to reference `009` question-specific usage/relevance roles for the current question; overlay definitions must not assign independent importance/relevance roles from shared metadata or UI judgment.
-- FR-020: Require fallback behavior when a question lacks completed `009` usage/relevance: show the normal local image and truthful explanation text without invented highlight/dim overlays.
+- FR-020: Require fallback behavior only when a future/out-of-scope question lacks completed `009` usage/relevance or overlay validation fails: show the normal local image and truthful explanation text without invented highlight/dim overlays.
+- FR-021: Add strict overlay coverage validation that fails unless every current image-backed question usage with approved `009` usage/relevance has exactly one approved current overlay definition and evidence entry.
 
 ## Verification Requirements
 
@@ -176,10 +188,11 @@ As a reviewer, I want a traceable audit from source-of-truth principle to produc
   - tests prove bottom previous/next navigation appears and respects boundary/state rules;
   - tests prove image overlay rendering only happens when explanation is visible and approved `009` per-question usage/relevance plus overlay definitions exist.
 - Data/validation evidence:
+  - validators prove current overlay coverage count matches the current image-backed question usage count: 276 approved overlays for 276 current image-backed question usages at the audited baseline;
   - validators fail for overlay definitions whose image hash, question fingerprint, `009` metadata fingerprint, `009` usage fingerprint, relevance role references, or answer-critical detail references are stale or missing;
   - validators fail if overlay definitions reference missing images, questions, answer IDs, metadata detail IDs, usage relevance IDs, or non-local assets;
   - validators fail if overlay definitions invent important/unimportant/relevance roles instead of consuming roles from the concrete question's `009` usage/relevance record;
-  - validators block strict overlay implementation if completed `009` per-question usage/relevance is unavailable.
+  - validators fail if any current image-backed question usage lacks an approved overlay, approved overlay evidence, at least one `answer_critical_highlight` region, and at least one `background_irrelevant_dim` or explicitly justified non-critical de-emphasis region from the same question's `009` usage/relevance.
 - Command evidence:
   - `pnpm run validate:content`;
   - `pnpm run test`;
