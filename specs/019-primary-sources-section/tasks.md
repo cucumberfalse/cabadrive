@@ -826,3 +826,10 @@
   - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #104 P2 top-level article heading follow-up on 2026-05-11:
+  - Addressed the non-outdated P2 review thread for Decreto 779 chunks 23-28 by removing the stale `Anexo 2` intermediate parent from the learner document `headingPath` for `ARTICULO 2` through `ARTICULO 7`, matching archived source spans 77-88 as top-level decree articles after the Annex 2 note.
+  - Search and QA shards were inspected and not changed because they do not store `headingPath`/grouping metadata; no full-translation, simple-Russian, official archive, generated coverage, or unrelated source-reader files were changed.
+  - `git diff --check` passed with no output.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
