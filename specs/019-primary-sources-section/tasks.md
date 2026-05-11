@@ -111,47 +111,47 @@
 
 ## Slice I: Source Reader UI Shell
 
-- [ ] T075 Import learner-source corpus through the existing data boundary.
-- [ ] T076 Add typed UI-facing models for source documents, chunks, QA/status metadata, and categories.
-- [ ] T077 Add a distinct app view for primary sources.
-- [ ] T078 Add navigation label `Источники` or an explicitly justified visible equivalent.
-- [ ] T079 Preserve existing `Учить`, `Экзамен`, `Ошибки`, `Словарь`, `Материалы`, and `CABA/RF` flows.
-- [ ] T080 Keep active exam attempt behavior unchanged.
-- [ ] T081 Render source list rows with title, short label, category, jurisdiction/source type, and compact status.
-- [ ] T082 Render selected document detail with metadata and trust boundary labels.
-- [ ] T083 Render the first/opened document in simple Russian by default.
-- [ ] T084 Render source chunk headings/labels and selected chunk text.
-- [ ] T085 Render local fallback/missing-content states without crashing.
-- [ ] T086 Ensure no runtime network fetch, backend endpoint, live AI, remote asset, analytics, or PDF viewer is introduced.
+- [x] T075 Import learner-source corpus through the existing data boundary.
+- [x] T076 Add typed UI-facing models for source documents, chunks, QA/status metadata, and categories.
+- [x] T077 Add a distinct app view for primary sources.
+- [x] T078 Add navigation label `Источники` or an explicitly justified visible equivalent.
+- [x] T079 Preserve existing `Учить`, `Экзамен`, `Ошибки`, `Словарь`, `Материалы`, and `CABA/RF` flows.
+- [x] T080 Keep active exam attempt behavior unchanged.
+- [x] T081 Render source list rows with title, short label, category, jurisdiction/source type, and compact status.
+- [x] T082 Render selected document detail with metadata and trust boundary labels.
+- [x] T083 Render the first/opened document in simple Russian by default.
+- [x] T084 Render source chunk headings/labels and selected chunk text.
+- [x] T085 Render local fallback/missing-content states without crashing.
+- [x] T086 Ensure no runtime network fetch, backend endpoint, live AI, remote asset, analytics, or PDF viewer is introduced.
 
 ## Slice J: Search, Filters, Chunk Navigation, And View Controls
 
-- [ ] T087 Build local search over title/metadata, simple Russian, full Russian, and original Spanish.
-- [ ] T088 Add useful search hint text in learner language.
-- [ ] T089 Add filters for practical category.
-- [ ] T090 Add filters for jurisdiction/source type.
-- [ ] T091 Add no-results state for search/filter combinations.
-- [ ] T092 Add document table of contents or chunk navigation.
-- [ ] T093 Add view controls for `Просто`, `Полный перевод`, and `Оригинал ES`.
-- [ ] T094 Confirm `Просто` remains the default when opening a new source or resetting filters.
+- [x] T087 Build local search over title/metadata, simple Russian, full Russian, and original Spanish.
+- [x] T088 Add useful search hint text in learner language.
+- [x] T089 Add filters for practical category.
+- [x] T090 Add filters for jurisdiction/source type.
+- [x] T091 Add no-results state for search/filter combinations.
+- [x] T092 Add document table of contents or chunk navigation.
+- [x] T093 Add view controls for `Просто`, `Полный перевод`, and `Оригинал ES`.
+- [x] T094 Confirm `Просто` remains the default when opening a new source or resetting filters.
 - [ ] T095 Confirm full Russian translation can be viewed for every document and chunk.
-- [ ] T096 Confirm original Spanish can be viewed for every document and chunk.
-- [ ] T097 Confirm no simplified Spanish control, data field, route, or rendered text exists.
-- [ ] T098 Avoid rendering very long documents as one unchunked page.
-- [ ] T099 Preserve selected document/chunk/search context when switching view modes.
+- [x] T096 Confirm original Spanish can be viewed for every document and chunk.
+- [x] T097 Confirm no simplified Spanish control, data field, route, or rendered text exists.
+- [x] T098 Avoid rendering very long documents as one unchunked page.
+- [x] T099 Preserve selected document/chunk/search context when switching view modes.
 
 ## Slice K: Responsive, Accessibility, And Visual Polish
 
-- [ ] T100 Implement compact/mobile list-to-detail behavior with a clear back/list affordance.
-- [ ] T101 Implement expanded/desktop side-by-side list-detail behavior.
-- [ ] T102 Ensure long source titles and Russian/Spanish paragraphs wrap without overflow.
-- [ ] T103 Ensure controls have stable dimensions and do not shift layout unexpectedly.
-- [ ] T104 Ensure all source controls are keyboard reachable.
-- [ ] T105 Ensure focus states are visible and focus order is predictable.
-- [ ] T106 Ensure status is conveyed by text and not only color.
-- [ ] T107 Ensure touch targets and spacing are comfortable for repeated mobile use.
-- [ ] T108 Avoid nested cards, decorative hero layouts, raw JSON labels, and landing-page copy.
-- [ ] T109 Use existing UI patterns and icons where available.
+- [x] T100 Implement compact/mobile list-to-detail behavior with a clear back/list affordance.
+- [x] T101 Implement expanded/desktop side-by-side list-detail behavior.
+- [x] T102 Ensure long source titles and Russian/Spanish paragraphs wrap without overflow.
+- [x] T103 Ensure controls have stable dimensions and do not shift layout unexpectedly.
+- [x] T104 Ensure all source controls are keyboard reachable.
+- [x] T105 Ensure focus states are visible and focus order is predictable.
+- [x] T106 Ensure status is conveyed by text and not only color.
+- [x] T107 Ensure touch targets and spacing are comfortable for repeated mobile use.
+- [x] T108 Avoid nested cards, decorative hero layouts, raw JSON labels, and landing-page copy.
+- [x] T109 Use existing UI patterns and icons where available.
 
 ## Tests And Verification
 
@@ -163,25 +163,25 @@
 - [x] T115 Add validator tests for Russian learner content under `content/official-documents/`.
 - [x] T116 Add validator tests for forbidden simplified Spanish.
 - [x] T117 Add validator tests for stale source fingerprints or missing archive mappings.
-- [ ] T118 Add e2e coverage that `Источники` opens the source section.
-- [ ] T119 Add e2e coverage that existing primary flows remain reachable.
-- [ ] T120 Add e2e coverage that a source detail defaults to simple Russian.
-- [ ] T121 Add e2e coverage for switching to full Russian translation.
-- [ ] T122 Add e2e coverage for switching to original Spanish.
-- [ ] T123 Add e2e coverage that simplified Spanish is not available.
-- [ ] T124 Add e2e coverage for source search.
-- [ ] T125 Add e2e coverage for category and jurisdiction/source-type filtering.
-- [ ] T126 Add e2e coverage for a long document's chunk/table-of-contents navigation.
-- [ ] T127 Add responsive e2e coverage for compact and expanded widths.
-- [ ] T128 Add keyboard/focus e2e coverage for search, filters, source selection, chunk navigation, and view controls.
-- [ ] T129 Add request-monitoring/code-review evidence that no runtime network/PDF/backend/live-AI dependency exists.
-- [ ] T130 Run final-head `pnpm run validate:content`.
-- [ ] T131 Run final-head `pnpm run test`.
-- [ ] T132 Run `pnpm run build`.
-- [ ] T133 Run `pnpm run test:e2e`.
-- [ ] T134 Run `pnpm run preflight`.
-- [ ] T135 Run final-head `git diff --check`.
-- [ ] T136 Record final-head command output summaries and exact unrelated blockers in Process Memory.
+- [x] T118 Add e2e coverage that `Источники` opens the source section.
+- [x] T119 Add e2e coverage that existing primary flows remain reachable.
+- [x] T120 Add e2e coverage that a source detail defaults to simple Russian.
+- [x] T121 Add e2e coverage for switching to full Russian translation.
+- [x] T122 Add e2e coverage for switching to original Spanish.
+- [x] T123 Add e2e coverage that simplified Spanish is not available.
+- [x] T124 Add e2e coverage for source search.
+- [x] T125 Add e2e coverage for category and jurisdiction/source-type filtering.
+- [x] T126 Add e2e coverage for a long document's chunk/table-of-contents navigation.
+- [x] T127 Add responsive e2e coverage for compact and expanded widths.
+- [x] T128 Add keyboard/focus e2e coverage for search, filters, source selection, chunk navigation, and view controls.
+- [x] T129 Add request-monitoring/code-review evidence that no runtime network/PDF/backend/live-AI dependency exists.
+- [x] T130 Run final-head `pnpm run validate:content`.
+- [x] T131 Run final-head `pnpm run test`.
+- [x] T132 Run `pnpm run build`.
+- [x] T133 Run `pnpm run test:e2e`.
+- [x] T134 Run `pnpm run preflight`.
+- [x] T135 Run final-head `git diff --check`.
+- [x] T136 Record final-head command output summaries and exact unrelated blockers in Process Memory.
 
 ## Final Whole-Corpus Release Gate
 
@@ -252,6 +252,14 @@
 - Bundle size/performance must be measured once full Russian and Spanish chunk data are imported.
 
 ### Slice D0 Implementation Notes
+
+- PR #102 UI review follow-up ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-ui-reader` on branch `codex/019-primary-sources-ui-reader`.
+- Addressed P2 finding "Do not show a fallback document for empty results".
+- `PrimarySourcesReader` now selects the active document only from `filteredDocuments`; when search/filter combinations produce no results, the detail pane shows a truthful no-results state with reset instead of falling back to the default source.
+- Existing reset/default behavior remains: clearing filters selects the default approved document when corpus results exist and restores simple Russian mode.
+- Added Playwright e2e coverage proving no-result search hides selected source metadata, source link, chunk reader, and view tabs, then restores the default reader after reset.
+- Did not edit `src/data/primarySources.ts`; the prior total-count fix is preserved.
+- Verification on this follow-up passed: `npm run validate:content`, `npm test` (153 tests), `npm run build`, `npm run test:e2e` (32 tests across desktop/mobile), `git diff --check`, and `node scripts/check-feature-memory.mjs --worktree`.
 
 - Slice D2 vehicle-document content batch ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-content-batch-vehicle-docs` on branch `codex/019-primary-sources-content-batch-vehicle-docs`.
 - Added reviewed learner, QA, and search shards for 3 official documents and 44 chunks:
@@ -463,6 +471,22 @@
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to `0c44f655a0a8567598f50aa55fded90147a6df8c`, this worktree rebased Slice C onto the fresh base and resolved validator/test/task conflicts by keeping #74's stricter simplified-Spanish and contiguous-source-span validation while retaining #77 coverage-only inventory validation and generated inventory fixes.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to `18bc16f61a71d864d708d0ae50ac73f5b4818566`, this worktree rebased Slice C onto the fresh base and resolved validator/task conflicts by keeping #74's strict search-projection validation while retaining #77 coverage-only inventory validation and generated inventory fixes.
 - Base coordination update: after PR #74 base branch `codex/016-primary-sources-schema-validators` advanced to merge commit `957f4e21e42c93a28cfc3162e7ed06ed7abf1479`, this worktree rebased Slice C onto the fresh base with no conflicts and preserved #77's 5,223-chunk generated inventory and generator tests.
+
+### UI Reader Slice Implementation Notes
+
+- UI reader slice ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-ui-reader` on branch `codex/019-primary-sources-ui-reader`, based on `origin/codex/019-primary-sources-content-batch-vehicle-docs` at `14bf08c`.
+- Preserved the modified UI/e2e files that Orchestrator had moved into this worktree and continued from them instead of reverting.
+- The first UI reader pass imported the official manifest, primary-source coverage metadata, learner corpus root, QA root, search root, and discovered document/QA/search shards through `src/data/content.ts`. PR #102 follow-ups moved these primary-source imports out of startup data.
+- Added typed UI-facing primary-source reader models for manifest entries, coverage documents/chunks, learner documents/chunks, QA records, search entries, translation readiness, and the combined reader corpus.
+- The combined reader corpus represents every manifest entry and every coverage document honestly in aggregate counts, with `totalChunkCount` reflecting full coverage chunk inventory and `translatedChunkCount` reflecting approved readable Russian chunks. The readable document/chunk list includes only chunks with approved Russian learner content. Untranslated or draft chunks are not exposed as readable rows with fallback text.
+- `src/App.tsx` adds the `Источники` navigation item and a distinct source reader view without changing active exam translation/explanation behavior.
+- The source reader defaults to `Просто`, selects an approved translated learner batch when available, offers `Полный перевод` and `Оригинал ES` only for approved learner chunks, and does not add a simplified-Spanish mode.
+- Search/filter/detail behavior is local-only. Search covers title/metadata, simple Russian, full Russian, and original Spanish, with diacritic-insensitive matching so learner input such as `cedula` can find `Cédula`.
+- Long documents are navigated through the generated chunk inventory with a select control plus a capped quick-list rather than rendering every chunk as a monolithic page.
+- The UI shows compact currentness, exact-text, archive path, source URL, chunking strategy, and Russian coverage counts, including exact-text pending state while final source readiness remains unresolved.
+- Durable docs were updated from planned to implemented for the UI reader slice while preserving the final whole-corpus translation/exact-text blockers.
+- T095 remains open for the final whole-corpus release because many documents/chunks do not yet have approved full Russian translations. This UI slice exposes full-translation/original-Spanish mode for approved translated chunks and hides/blocks untranslated chunks from the reading list instead of showing placeholders.
+- No `content/official-documents/**`, content translation shards, coverage generator, or learner-source content shards were edited in this UI slice.
 
 ### Implementation Agent Feedback
 
@@ -720,6 +744,42 @@
   - `npm run build` passed: content validation passed, assets synced, Vite production build completed, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - `git diff --check` passed with no output.
   - No blockers remain from this sync loop.
+- UI reader slice verification on 2026-05-10:
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `npm test` passed: 153 Node tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite production build completed, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning; the built JS bundle was about 11.55 MB / 2.20 MB gzip because this UI slice bundles the local source-reader corpus/archive projection.
+  - First `npm run test:e2e` run failed in the new keyboard/focus test because Playwright `getByLabel("Фрагмент")` matched the `Фрагменты` region as well as the select. The UI was updated with explicit `aria-label="Выбор фрагмента"` and the test selector was tightened.
+  - Second `npm run test:e2e` passed: 30 Playwright tests, 30 pass, 0 fail across desktop and mobile projects.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+  - `npm run check:repo` passed. Output: `Repository baseline check passed.`
+  - `npm run preflight` passed end-to-end: feature-memory gate, repo baseline, content validation, 153 Node tests, production build, and 30 Playwright tests all passed.
+  - `git diff --check` passed with no output.
+- Known residual risk before PR #102 review follow-up: bundle size was larger after importing the local source-reader corpus/archive projection. PR #102 follow-up removes the eager raw archive import; future slices may still want local code-splitting or static asset partitioning as the approved learner corpus grows.
+- PR #102 review-blocker follow-up on 2026-05-10:
+  - Addressed P1 by changing the source reader data boundary and UI so the reading list contains only chunks with approved Russian learner content, approved translation/simplification QA, non-draft text, and learner-shard `originalSpanish`. Untranslated/draft documents and chunks are represented only through aggregate unavailable counts and are not opened as readable rows with fallback placeholder text.
+  - Addressed P2 bundle concern by removing the eager `?raw` import of `content/official-documents/documents/*.md` from `src/data/content.ts`. Available Spanish source text now comes from approved learner shards; raw official archive Markdown is no longer part of the initial source-reader bundle projection.
+  - Addressed P2 source-type filtering by adding a `Тип источника` select backed by `officialSourceType`, while preserving category and jurisdiction filters.
+  - Updated e2e coverage to prove unavailable source documents are not listed as readable buttons, placeholder source-reader text is absent, source-type filtering works, and simple/full/original modes still work for approved chunks.
+  - Updated durable docs to record the new behavior: manifest/coverage are used for counts/status, while readable source rows require approved learner content.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm test` passed: 153 Node tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Main built JS was `8,756.75 kB` / `1,416.40 kB gzip`; Vite retained the existing large-chunk warning, but the previous raw archive import size was reduced from the earlier `~11.55 MB` JS bundle.
+  - `npm run test:e2e` passed: 30 Playwright tests, 30 pass, 0 fail across desktop and mobile projects.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #102 second UI P2 follow-up on 2026-05-10:
+  - Addressed the remaining startup-load concern by moving primary-source corpus construction and eager `content/primary-sources/documents/*.json`, `qa/*.json`, and `search/*.json` glob imports from `src/data/content.ts` into lazy-loaded `src/data/primarySources.ts`.
+  - `PrimarySourcesView` now dynamic-imports the local bundled source-reader corpus only when the `Источники` view is opened, with local loading and error states. Initial `data` no longer contains `primarySources`.
+  - `totalChunkCount` now uses each document's full `coverageChunks.length`; aggregate source-reader totals now show full coverage chunks versus approved translated chunks instead of readable filtered chunks versus itself.
+  - Offline behavior remains local-first: the source corpus is still bundled and service-worker cached, but Vite now emits a separate `primarySources-*.js` chunk for the corpus module.
+  - `src/data/content.ts` no longer contains primary-source JSON imports, primary-source eager glob imports, `buildPrimarySourceReaderCorpus`, or startup `primarySourceReaderCorpus` construction.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm test` passed: 153 Node tests, 153 pass, 0 fail.
+  - `npm run build` passed: content validation passed, assets synced, Vite built `dist/`, emitted `dist/assets/primarySources-j-oHDt6a.js` as a separate lazy chunk, and service worker generation completed with 281 cached assets. Vite retained the large-chunk warning for both app and primary-source chunks.
+  - `npm run test:e2e` passed: 30 Playwright tests, 30 pass, 0 fail across desktop and mobile projects.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
 - Slice D3 VTV/Ley 6631/siniestros content batch verification on 2026-05-10:
   - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `npm run validate:content -- --coverage` passed with the current script argument wiring. `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` also passed as the actual primary-source coverage mode.
@@ -732,3 +792,16 @@
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.
+- PR #102 base sync over fresh PR #101 base on 2026-05-10:
+  - Worktree `/Users/chap/devel/cabadrive-pr102-ui-reader-conflict` used local branch `codex/019-primary-sources-ui-reader-conflict` from `origin/codex/019-primary-sources-ui-reader` to avoid touching the existing UI-reader worktree checked out elsewhere.
+  - Fetched origin and merged `origin/codex/019-primary-sources-content-batch-vehicle-docs` at `d7ed4b5` into the PR #102 head.
+  - The merge conflict was limited to `specs/019-primary-sources-section/tasks.md`; resolution preserved both PR #102 UI-reader verification notes and PR #101 D3 VTV/Ley 6631/siniestros content-batch notes.
+  - The merge brought in the approved D3 learner, QA, and search shards for `ley-6631-caba-vtv-modificatoria-ley-2265`, `gcba-vtv-tramite-current`, and `gcba-guia-practica-siniestros-viales`.
+  - First post-merge `pnpm run test:e2e` failed because PR #101 increased readable source documents from 7 to 10 and changed the default readable document by manifest order. The e2e assertions were updated to expect 10 readable documents, 9 unavailable documents, and to explicitly select the vehicle-document source before checking vehicle-specific detail content.
+  - `pnpm install --frozen-lockfile` was needed in the fresh worktree and completed with no tracked package metadata changes.
+  - `git diff --check` passed with no output.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 153 Node tests, 153 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, emitted app and `primarySources-D4ASnehl.js` chunks, and service worker generation completed with 281 cached assets. Vite retained the existing large-chunk warning for both app and primary-source chunks.
+  - Re-run `pnpm run test:e2e` passed: 32 Playwright tests, 32 pass, 0 fail across desktop and mobile projects.
+  - No unresolved merge conflicts remained locally after this sync.

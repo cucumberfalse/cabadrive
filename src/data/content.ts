@@ -195,6 +195,170 @@ export type CabaExamProcessGuide = {
   optionalImages: never[];
 };
 
+export type OfficialDocumentManifestEntry = {
+  id: string;
+  title: string;
+  officialSourceType: string;
+  sourceUrl: string;
+  retrievalDate: string;
+  localPath: string;
+  currentness: {
+    status: string;
+    validationStatus: "pending" | "passed" | "failed";
+    checkedAt?: string;
+  };
+  exactTextValidation: {
+    status: "pending" | "passed" | "failed";
+    notes?: string;
+  };
+};
+
+export type OfficialDocumentsManifest = {
+  version: number;
+  status: string;
+  schema: string;
+  entries: OfficialDocumentManifestEntry[];
+};
+
+export type PrimarySourceQaRecord = {
+  status: "draft" | "reviewed" | "approved";
+  checkedAt?: string;
+  methodNotes: string;
+  reviewerNotes?: string;
+};
+
+export type PrimarySourceSpan = {
+  startLine: number;
+  endLine: number;
+};
+
+export type PrimarySourceCoverageChunk = {
+  chunkId: string;
+  officialDocumentId: string;
+  order: number;
+  headingPath: string[];
+  officialLabel?: string;
+  chunkingStrategy: string;
+  sourceSpan: PrimarySourceSpan;
+  sourceTextSha256: string;
+  sourceFingerprint: string;
+};
+
+export type PrimarySourceCoverageDocument = {
+  officialDocumentId: string;
+  archiveLocalPath: string;
+  archiveSha256: string;
+  coverageStatus: string;
+  chunkingDecision: {
+    strategy: string;
+    note: string;
+  };
+  expectedChunkIds: string[];
+  chunks: PrimarySourceCoverageChunk[];
+};
+
+export type PrimarySourcesCoverage = {
+  version: number;
+  schema: string;
+  status: string;
+  documents: PrimarySourceCoverageDocument[];
+};
+
+export type PrimarySourceLearnerChunk = PrimarySourceCoverageChunk & {
+  originalSpanish: string;
+  fullTranslationRu: string;
+  simpleRu: string;
+};
+
+export type PrimarySourceLearnerDocument = {
+  officialDocumentId: string;
+  title: string;
+  shortTitleRu: string;
+  category: string;
+  jurisdiction: "caba" | "national" | "other";
+  officialSourceType: string;
+  sourceUrl: string;
+  archiveLocalPath: string;
+  retrievalDate: string;
+  currentnessStatus: string;
+  currentnessValidationStatus: "pending" | "passed" | "failed";
+  exactTextValidationStatus: "pending" | "passed" | "failed";
+  chunks: PrimarySourceLearnerChunk[];
+};
+
+export type PrimarySourceQaChunk = {
+  chunkId: string;
+  translationQa: PrimarySourceQaRecord;
+  simplificationQa: PrimarySourceQaRecord;
+};
+
+export type PrimarySourceQaDocument = {
+  officialDocumentId: string;
+  chunks: PrimarySourceQaChunk[];
+};
+
+export type PrimarySourceSearchEntry = {
+  entryId: string;
+  officialDocumentId: string;
+  chunkId: string;
+  textFields: string[];
+};
+
+export type PrimarySourceSearchShard = {
+  version: number;
+  schema: "primary-sources-search-shard.v1";
+  status: string;
+  officialDocumentId: string;
+  entries: PrimarySourceSearchEntry[];
+};
+
+export type PrimarySourceTranslationStatus = "approved" | "draft" | "partial" | "not_translated";
+
+export type PrimarySourceReaderChunk = PrimarySourceCoverageChunk & {
+  originalSpanish: string;
+  fullTranslationRu?: string;
+  simpleRu?: string;
+  translationQa?: PrimarySourceQaRecord;
+  simplificationQa?: PrimarySourceQaRecord;
+  hasLearnerText: boolean;
+};
+
+export type PrimarySourceReaderDocument = {
+  officialDocumentId: string;
+  title: string;
+  shortTitleRu: string;
+  category: string;
+  jurisdiction: "caba" | "national" | "other";
+  officialSourceType: string;
+  sourceUrl: string;
+  archiveLocalPath: string;
+  retrievalDate: string;
+  currentnessStatus: string;
+  currentnessValidationStatus: "pending" | "passed" | "failed";
+  exactTextValidationStatus: "pending" | "passed" | "failed";
+  coverageStatus: string;
+  chunkingStrategy: string;
+  chunkingNote: string;
+  translationStatus: PrimarySourceTranslationStatus;
+  translatedChunkCount: number;
+  totalChunkCount: number;
+  chunks: PrimarySourceReaderChunk[];
+  searchText: string;
+};
+
+export type PrimarySourceReaderCorpus = {
+  disclaimerRu: string;
+  documents: PrimarySourceReaderDocument[];
+  manifestDocumentCount: number;
+  coverageDocumentCount: number;
+  translatedDocumentCount: number;
+  unavailableDocumentCount: number;
+  approvedDocumentCount: number;
+  totalChunkCount: number;
+  translatedChunkCount: number;
+  searchProjectionCount: number;
+};
+
 export type Translation = {
   questionId: string;
   questionTextRu: string;

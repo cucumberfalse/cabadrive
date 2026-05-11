@@ -15,6 +15,7 @@ Implemented MVP stack:
 - local in-memory search index over bundled content
 - bundled topic study guide data rendered as local learning materials
 - bundled CABA exam-process guide data rendered as an unofficial Russian procedural guide
+- bundled primary-source reader data rendered as a local `Источники` section over the governed official-document manifest and current learner-source shards
 - validated four-level learner difficulty metadata for every bundled question and topic material
 - native service worker generated after production build
 - Node test runner + Playwright for testing
@@ -94,5 +95,6 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 - Repeated materials ticket blocks should not each repeat the full fallback-status chip; section/product status surfaces carry the current unofficial fallback truth.
 - `Процесс` renders the bundled CABA B1/private-car `Otorgamiento` process guide from local JSON, labels it as unofficial Russian support, shows official GCBA/ANSV source links with checked dates, and keeps volatile payments/sedes/turnos/document details behind explicit verify-on-official-source warnings.
 - `CABA/RF` remains a separate compact contrast guide.
-- A distinct `Источники` / official primary-source reader is planned by feature `019-primary-sources-section` but is not implemented in the current product yet. When implemented, it should stay separate from `Материалы`, cover every manifest entry in `content/official-documents/manifest.json`, default to simple Russian, allow switching to full Russian translation and original Spanish, omit simplified Spanish, and label Russian layers as unofficial learning support.
-- The official source archive under `content/official-documents/` remains verbatim Spanish-only source material. Future Russian translations and simple rewrites for the source reader must be stored outside that archive, preferably under `content/primary-sources/`.
+- `Источники` is implemented as a distinct official primary-source reader separate from `Материалы`. It uses the manifest/coverage inventory for corpus counts and status, but the reading list opens only chunks with approved Russian learner content from `content/primary-sources/`. It defaults available chunks to simple Russian, lets learners switch those chunks to full Russian translation or original Spanish stored in the learner shard, omits simplified Spanish, and labels Russian layers as unofficial learning support.
+- The current primary-source corpus is intentionally partial while translation batches continue: documents/chunks without approved Russian learner shards are not published as readable items and are represented only by aggregate not-yet-available status. The UI must not describe the whole corpus as release-ready until strict/final primary-source gates pass.
+- The official source archive under `content/official-documents/` remains verbatim Spanish-only source material. Russian translations and simple rewrites for the source reader are stored outside that archive under `content/primary-sources/`.
