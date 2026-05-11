@@ -501,7 +501,7 @@
         "officialLabel": "ARTICULO 15. — CONTENIDO. La licencia habilitante debe contener los siguientes datos:",
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 15. — CONTENIDO. La licencia habilitante debe contener los siguientes datos:\n\na) Número en coincidencia con el de la matrícula de identidad del titular;\n\nb) Apellido, nombre, fecha de nacimiento, domicilio, fotografía y firma del titular;\n\nc) Clase de licencia, especificando tipos de vehículos que lo habilita a conducir;\n\nd) Prótesis que debe usar o condiciones impuestas al\ntitular para conducir. A su pedido se incluirá la advertencia sobre\nalergia a medicamentos u otras similares;\n\ne) Fechas de otorgamiento y vencimiento e identificación del funcionario y organismo expedidor;\n\nf) Grupo y factor sanguíneo del titular; (Expresión \"acreditado por profesional competente\" vetada por art. 5° del Decreto N° 179/1995 B.O. 10/02/1995)\n\ng) A pedido del titular de la licencia se hará constar su voluntad de ser donante de órganos en caso de muerte.\n\nEstos datos deben ser comunicados de inmediato por\nla autoridad expedidora de la licencia al Registro Nacional de\nAntecedentes del Tránsito.\n",
-        "fullTranslationRu": "СТАТЬЯ 15. — СОДЕРЖАНИЕ. Водительское удостоверение, дающее право управления, должно содержать следующие данные:\n\nа) номер, совпадающий с номером идентификационной таблички владельца;\n\nб) Фамилия, имя, дата рождения, адрес, фотография и подпись владельца;\n\nв) класс водительского удостоверения с указанием типов транспортных средств, дающих вам право управлять;\n\nd) Протез, который должен использоваться, или условия, налагаемые на владельца для управления автомобилем. Ваш заказ будет включать предупреждение о лекарственной аллергии или аналогичные предупреждения;\n\nд) даты выдачи и истечения срока действия, а также идентификация выдавшего должностного лица и учреждения;\n\nе) группа и фактор крови владельца; (Выражение «аккредитованный компетентным профессионалом» наложено вето ст. 5 Указа N 179/1995 Boletin Oficial 10.02.1995)\n\nж) По требованию обладателя водительского удостоверения будет заявлено его желание стать донором органов в случае смерти.\n\nЭти данные должны быть немедленно переданы органом выдачи водительского удостоверения в Национальный реестр дорожных записей.",
+        "fullTranslationRu": "СТАТЬЯ 15. — СОДЕРЖАНИЕ. Водительское удостоверение, дающее право управления, должно содержать следующие данные:\n\nа) номер, совпадающий с номером идентификационной таблички владельца;\n\nб) Фамилия, имя, дата рождения, адрес, фотография и подпись владельца;\n\nв) класс водительского удостоверения с указанием типов транспортных средств, дающих вам право управлять;\n\nd) Протез, который должен использоваться, или условия, налагаемые на владельца для управления автомобилем. Соответствующая запись будет включать отметку о лекарственной аллергии или аналогичные отметки;\n\nд) даты выдачи и истечения срока действия, а также идентификация выдавшего должностного лица и учреждения;\n\nе) группа и фактор крови владельца; (Выражение «аккредитованный компетентным профессионалом» наложено вето ст. 5 Указа N 179/1995 Boletin Oficial 10.02.1995)\n\nж) По требованию обладателя водительского удостоверения будет заявлено его желание стать донором органов в случае смерти.\n\nЭти данные должны быть немедленно переданы органом выдачи водительского удостоверения в Национальный реестр дорожных записей.",
         "simpleRu": "Статья 15 перечисляет данные в водительском удостоверении.\n\nВ правах должны быть номер, фамилия и имя, дата рождения, адрес, фото, подпись, категория, разрешенные типы транспорта, особые условия или протезы для вождения, даты выдачи и окончания срока, данные органа и чиновника, группа крови и резус-фактор.\n\nПо просьбе владельца можно указать желание быть донором органов после смерти.\n\nОрган, который выдал права, должен сразу передать эти данные в Национальный реестр дорожных данных. Часть текста о подтверждении группы крови была ветирована Декретом 179/1995 от 10.02.1995.",
         "sourceTextSha256": "b2ab259df16a037d041d1d7e1e6b504ecb859243e2024784bce2c0d707159f14",
         "sourceFingerprint": "sha256:b2ab259df16a037d041d1d7e1e6b504ecb859243e2024784bce2c0d707159f14",
@@ -2481,7 +2481,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 83. — CLASES. Las sanciones\npor infracciones a esta ley son de cumplimiento efectivo, no pueden ser\naplicadas con carácter condicional ni en suspenso y consisten en:\n\na) Arresto;\n\nb) Inhabilitación para conducir vehículos o determinada categoría de ellos en cuyo caso se debe retener la licencia habilitante;\n\nc) Multa;\n\nd) Concurrencia a cursos especiales de educación y\ncapacitación para el correcto uso de la vía pública. Esta sanción puede\nser aplicada como alternativa de la multa.\n\nEn tal caso la aprobación del curso redime de ella, en cambio su incumplimiento triplicará la sanción de multa;\n\ne) Decomiso de los elementos cuya comercialización, uso o transporte en los vehículos esté expresamente prohibido.\n\nLa reglamentación establecerá las sanciones para cada infracción, dentro de los límites impuestos por los artículos siguientes.\n",
         "fullTranslationRu": "СТАТЬЯ 83. — ВИДЫ. Санкции за нарушения настоящего Закона эффективны, не могут применяться условно или приостановлено и состоят из:\n\nа) арест;\n\nб) лишение права управления транспортными средствами или определенной их категорией, при этом соответствующее удостоверение должно быть сохранено;\n\nв) Штраф;\n\nг) Посещение специальных курсов обучения и подготовки по правильному использованию дорог общего пользования. Данная санкция может быть применена как альтернатива штрафу.\n\nВ этом случае одобрение курса его искупает, однако невыполнение приведет к тройному штрафу;\n\nд) Конфискация элементов, коммерциализация, использование или перевозка которых на транспортных средствах категорически запрещены.\n\nПоложения установят санкции за каждое нарушение в пределах, установленных следующими статьями.",
-        "simpleRu": "Статья 83 перечисляет виды санкций.\n\nВозможны предупреждение, штраф, лишение права управления, арест, посещение специальных курсов и другие меры, которые закон связывает с нарушениями.\n\nСанкции могут применяться отдельно или вместе, если это разрешено.",
+        "simpleRu": "Статья 83 перечисляет санкции за нарушения этого закона.\n\nВозможны арест, лишение права управления всеми транспортными средствами или отдельной категорией с удержанием водительского удостоверения, штраф, специальные курсы по правильному использованию дороги и конфискация запрещенных предметов.\n\nКурс могут назначить как замену штрафу. Если человек успешно проходит курс, штрафная замена считается выполненной. Если курс не пройти, штраф увеличивается втрое.\n\nПравила должны установить санкцию для каждого нарушения в пределах следующих статей.",
         "sourceTextSha256": "182c916eb0f5622f2d32bda5af7de0e0dd414fdad42ffc8d6454a8fcdd05e355",
         "sourceFingerprint": "sha256:182c916eb0f5622f2d32bda5af7de0e0dd414fdad42ffc8d6454a8fcdd05e355",
         "sourceSpan": {
@@ -2524,8 +2524,8 @@
         "officialLabel": "ARTICULO 85. — PAGO DE MULTAS. La sanción de multa puede:",
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 85. — PAGO DE MULTAS. La sanción de multa puede:\n\na) Abonarse con una reducción del CINCUENTA POR\nCIENTO (50%) cuando corresponda a normas de circulación en la vía\npública y exista reconocimiento voluntario de la infracción. En todos\nlos casos tendrá los efectos de una sanción firme;\n\nb) Ser exigida mediante un sistema de cobro por vía\nejecutiva cuando no se hubiera abonado en término, para lo cual será",
-        "fullTranslationRu": "СТАТЬЯ 85. УПЛАТА ШТРАФОВ. Штрафная санкция может:\n\nа) Плата со снижением на ПЯТЬДЕСЯТ ПРОЦЕНТОВ (50%) при соответствии правилам дорожного движения на дорогах общего пользования и добровольном признании нарушения. Во всех случаях это будет иметь последствия твердых санкций;\n\nб) требоваться через систему взыскания в исполнительных мерах, если оплата не произведена вовремя, за что она будет",
-        "simpleRu": "Статья 85 говорит об оплате штрафов.\n\nШтраф можно оплатить добровольно, если закон это допускает. В некоторых случаях быстрая оплата может давать уменьшение суммы.\n\nЕсли штраф не платят, его могут взыскать принудительно. Сертификат органа, который назначил штраф, служит достаточным основанием для взыскания.",
+        "fullTranslationRu": "СТАТЬЯ 85. — УПЛАТА ШТРАФОВ. Штрафная санкция может:\n\nа) быть оплачена со снижением на ПЯТЬДЕСЯТ ПРОЦЕНТОВ (50%), когда она относится к правилам движения по дорогам общего пользования и нарушитель добровольно признает нарушение. Во всех случаях такая оплата имеет последствия окончательной санкции;\n\nб) взыскиваться через систему исполнительного взыскания, если штраф не был оплачен в срок. Для такого взыскания используется достаточный документ, правило о котором продолжается в следующем фрагменте статьи 85.",
+        "simpleRu": "Статья 85 говорит об оплате штрафов.\n\nЕсли нарушение связано с правилами движения по дороге и человек добровольно признает его, штраф можно оплатить со скидкой 50%. Такая оплата считается окончательной санкцией.\n\nЕсли штраф не оплатили вовремя, его могут взыскивать принудительно. Правило о документе, достаточном для такого взыскания, продолжается в следующем фрагменте статьи 85.",
         "sourceTextSha256": "644ef9d29d24db3721430e88d2fc4aaa4734e95e37cb9d2c56035a68731aa217",
         "sourceFingerprint": "sha256:644ef9d29d24db3721430e88d2fc4aaa4734e95e37cb9d2c56035a68731aa217",
         "sourceSpan": {
@@ -2539,13 +2539,15 @@
         "order": 117,
         "headingPath": [
           "Ley 24449",
-          "título suficiente el certificado expedido por la autoridad de"
+          "TITULO VIII",
+          "CAPITULO II",
+          "ARTICULO 85. — PAGO DE MULTAS. Continuación"
         ],
-        "officialLabel": "título suficiente el certificado expedido por la autoridad de",
+        "officialLabel": "ARTICULO 85. — PAGO DE MULTAS. Continuación",
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "título suficiente el certificado expedido por la autoridad de\njuzgamiento;\n\nc) Abonarse en cuotas en caso de infractores de\nescasos recursos, la cantidad de cuotas será determinada por la\nautoridad de juzgamiento.\n\nLa recaudación por el pago de multas se aplicará\npara costear programas y acciones destinados a cumplir con los fines de\nesta Ley. Sobre los montos provenientes de infracciones realizadas en\njurisdicción nacional se podrá afectar un porcentaje al Sistema\nNacional de Seguridad Vial, conforme lo determine la reglamentación, o\nen su caso a la jurisdicción provincial, de la Ciudad Autónoma de\nBuenos Aires, o local que haya intervenido en el juzgamiento en el\nsupuesto contemplado en el último párrafo del artículo 71. La Agencia\nNacional de Seguridad Vial celebrará los convenios respectivos con las\nautoridades provinciales.\n\n(Artículo sustituido por art. 35 de la Ley N° 26.363 B.O. 30/4/2008. Vigencia: a partir de su publicación en el Boletín Oficial)\n",
-        "fullTranslationRu": "достаточный титул — сертификат, выданный судейским органом;\n\nв) выплачиваться в рассрочку, в случае правонарушителей с низким доходом, размер взносов будет определяться судебным органом.\n\nСборы от уплаты штрафов будут применяться для финансирования программ и мероприятий, направленных на достижение целей настоящего Закона. Процент сумм, возникающих в результате нарушений, совершенных в национальной юрисдикции, может быть передан Национальной системе безопасности дорожного движения, как это определено правилами, или, в соответствующих случаях, провинциальной юрисдикции автономного города Буэнос-Айрес или местному органу, который вмешался в судебное разбирательство по делу, предусмотренному в последнем абзаце статьи 71. Национальное агентство по безопасности дорожного движения заключит соответствующие соглашения с властями провинции.\n\n(Статья заменена статьей 35 Закона N 26,363 Boletin Oficial 30 апреля 2008 г. Срок действия: с момента публикации в Официальном вестнике)",
-        "simpleRu": "Этот фрагмент продолжает статью 85.\n\nОн говорит, что официальный сертификат органа, применившего штраф, может быть достаточным документом для принудительного взыскания долга.",
+        "fullTranslationRu": "Продолжение статьи 85 о платеже штрафов. Для исполнительного взыскания штрафа достаточным документом является сертификат, выданный органом, который рассматривал дело.\n\nв) Штраф может оплачиваться в рассрочку, если у нарушителя мало средств. Количество взносов определяет орган, рассматривающий дело.\n\nДеньги от штрафов используются для оплаты программ и действий, связанных с целями этого закона. Из сумм за нарушения в национальной юрисдикции часть может направляться в Национальную систему безопасности дорожного движения в порядке, установленном правилами, либо, когда применимо, в провинцию, автономный город Буэнос-Айрес или местный орган, участвовавший в рассмотрении дела по последнему абзацу статьи 71. Национальное агентство безопасности дорожного движения заключает соответствующие соглашения с провинциальными органами.\n\n(Статья заменена статьей 35 Закона N 26.363, Boletin Oficial 30 апреля 2008 г. Действует с момента публикации в Официальном вестнике.)",
+        "simpleRu": "Продолжение статьи 85 о платеже штрафов.\n\nЕсли штраф взыскивают принудительно, сертификата от органа, который рассматривал дело, достаточно как документа для взыскания.\n\nЕсли у нарушителя мало денег, штраф можно платить частями. Количество платежей определяет орган рассмотрения.\n\nСобранные штрафы должны идти на программы и действия для целей этого закона. Часть денег от нарушений в национальной юрисдикции может направляться в Национальную систему безопасности дорожного движения или в соответствующую местную юрисдикцию. Редакция статьи действует после Закона 26.363 от 30.04.2008.",
         "sourceTextSha256": "d71a08666f1a9e192359932f23b945b2d8e03ba0cd1889d52537d6df4ecc9947",
         "sourceFingerprint": "sha256:d71a08666f1a9e192359932f23b945b2d8e03ba0cd1889d52537d6df4ecc9947",
         "sourceSpan": {
@@ -2559,7 +2561,6 @@
         "order": 118,
         "headingPath": [
           "Ley 24449",
-          "título suficiente el certificado expedido por la autoridad de",
           "ARTICULO 86. — ARRESTO. El arresto procede sólo en los siguientes casos:"
         ],
         "officialLabel": "ARTICULO 86. — ARRESTO. El arresto procede sólo en los siguientes casos:",
@@ -2580,7 +2581,6 @@
         "order": 119,
         "headingPath": [
           "Ley 24449",
-          "título suficiente el certificado expedido por la autoridad de",
           "ARTICULO 87. — APLICACIONES DEL ARRESTO. La sanción de arresto se ajustará a las siguientes reglas:"
         ],
         "officialLabel": "ARTICULO 87. — APLICACIONES DEL ARRESTO. La sanción de arresto se ajustará a las siguientes reglas:",
@@ -2601,7 +2601,6 @@
         "order": 120,
         "headingPath": [
           "Ley 24449",
-          "título suficiente el certificado expedido por la autoridad de",
           "CAPITULO III"
         ],
         "officialLabel": "CAPITULO III",
@@ -2622,7 +2621,6 @@
         "order": 121,
         "headingPath": [
           "Ley 24449",
-          "título suficiente el certificado expedido por la autoridad de",
           "CAPITULO III",
           "ARTICULO 88. — CAUSAS. La extinción de acciones y sanciones se opera:"
         ],
@@ -2644,7 +2642,6 @@
         "order": 122,
         "headingPath": [
           "Ley 24449",
-          "título suficiente el certificado expedido por la autoridad de",
           "CAPITULO III",
           "ARTICULO 89. — PRESCRIPCION. La prescripción se opera:"
         ],
@@ -2666,7 +2663,6 @@
         "order": 123,
         "headingPath": [
           "Ley 24449",
-          "título suficiente el certificado expedido por la autoridad de",
           "CAPITULO III",
           "ARTICULO 90. — LEGISLACION SUPLETORIA."
         ],
