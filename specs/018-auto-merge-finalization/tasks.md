@@ -9,6 +9,9 @@
 - [x] Update `.github/pull_request_template.md` so the SENAR and merge-readiness checklists no longer require routine human merge-owner acceptance after objective gates pass.
 - [x] Follow-up: align `CLAUDE.md` with the standing automatic Orchestrator finalization model after failed Architect validation.
 - [x] Review-fix sweep: align `.specify/templates/*`, `specs/README.md`, and remaining active `CLAUDE.md` wording with standing Orchestrator finalization after review thread `PRRT_kwDOSX65IM6A7zpT`.
+- [x] Review-fix: normalize Claude review outcome lookup by lowercasing the current PR head SHA before `collectBlockingFindings()` checks current-head Claude block comments.
+- [x] Review-fix: align durable guidance/templates so final Architect and Analyst validation explicitly record role-owned validated effective-content-head markers.
+- [x] Latest-main refresh: merge current `origin/main` into PR #80 branch before final verification.
 - [x] Implement `scripts/finalize-pr.mjs` with pure gate evaluation separated from GitHub mutation.
 - [x] Add a package script for the finalization helper.
 - [x] Add focused tests covering successful readiness and blocker scenarios.
@@ -48,6 +51,7 @@
 - Twelfth implementation update evidence: current P2 final-validation-heading review-fix Implementation Agent ran `git fetch origin --prune` on 2026-05-10. `origin/main` remained `6f34c64a9ee2020c59aa25298c6396575c0e22f5`, and `git rev-list --left-right --count HEAD...origin/main` returned `23 0`, so no additional merge was required.
 - Thirteenth implementation update evidence: current latest-main refresh Implementation Agent ran `git fetch origin --prune` and `git merge --no-edit origin/main` on 2026-05-10 after PR #80 became conflicting. `origin/main` was `5170ec652e1c026b19319fe808824f4eb316d49f`; the merge conflicted in `.specify/templates/plan-template.md`, `.specify/templates/spec-template.md`, `.specify/templates/tasks-template.md`, `AGENTS.md`, `CLAUDE.md`, `docs_project/project/devops/ai-pr-workflow.md`, and `docs_project/project/devops/review-contract.md`. Conflicts were resolved by preserving the latest main cleanup governance and this feature's standing Orchestrator finalization model.
 - Fourteenth implementation update evidence: after `origin/main` advanced again to `d4f6dd791070a6d334ffbc27b6bb15150949cca4`, Implementation Agent ran `git fetch origin --prune && git merge --no-edit origin/main` on 2026-05-10. The branch merged latest main cleanly with no conflicts, preserving this feature's latest-main refresh and adding the mainline primary-sources content plus cleanup-governance closure.
+- Fifteenth implementation update evidence: after `origin/main` advanced to `185a153d957dc8525f11b9ec756cf1782a98f711`, current review-fix Implementation Agent ran `git fetch origin --prune` and `git merge origin/main` on 2026-05-10 from branch head `77ea7a20d8d6e052dc0f1826683bd006128382a8`. The merge produced head `c36556ee104bb71d476a18d2f38d34ed350a7657` with parents `77ea7a20d8d6e052dc0f1826683bd006128382a8` and `185a153d957dc8525f11b9ec756cf1782a98f711`, completed cleanly with no conflict files, and preserved this feature's auto-finalization behavior plus the latest main study-guide language-review and memory-consistency closures.
 
 ## Decisions
 
@@ -84,6 +88,8 @@
 - Current review-fix implementation decision: trusted Codex/Gemini review-body blockers are now computed from the latest current-head review per trusted reviewer after commit filtering. Later same-reviewer `APPROVED` or `DISMISSED` reviews clear stale body-severity blockers, later non-severity `COMMENTED` reviews clear stale body-severity blockers only for the body-finding path, and native `CHANGES_REQUESTED` state remains governed separately by `applyNativeReviewState()`.
 - Current template-sweep implementation decision: review thread `PRRT_kwDOSX65IM6A7zpT` identified stale active merge-owner wording in durable templates and guidance. This slice replaces routine human merge-owner and authorized-merge-mechanics gates with standing Orchestrator finalization/merge after objective gates pass, while preserving final Architect-before-Analyst validation, effective/current-head guards, required checks, review/conflict gates, process memory, feedback disposition, branch protection, PR-only delivery, role boundaries, and narrow exceptional human blockers.
 - Current known-issue/evidence review-fix implementation decision: `readProcessEvidence()` now strips template placeholder lines before accepting `Verification Evidence`, and treats any substantive `Known Issues` item as blocking unless it is a no-known/not-applicable marker or carries final disposition wording such as `Owner decision: accepted` or `Architect disposition: accepted/resolved/disposed`. Generic bullets such as `- Search index is stale` now block with the existing `human-known-issue-decision` finalizer blocker.
+- Current P1 Claude SHA normalization decision: `collectBlockingFindings()` now lowercases the supplied current `headSha` before filtering current-head reviews and before looking up latest Claude outcomes keyed by `extractMarkerSha()`, so uppercase or mixed-case current head OIDs cannot hide a trusted current-head Claude `AI_REVIEW_OUTCOME: block`.
+- Current P2 effective-head marker documentation decision: durable guidance and templates now require the role-owned markers `Architect validated effective content head: <40-hex-sha>` and `Analyst validated effective content head: <40-hex-sha>` to match `Effective content head: <40-hex-sha>` whenever final validation targets an effective content head, preserving the stricter helper behavior instead of relaxing it.
 
 ## Dead Ends
 
@@ -283,6 +289,13 @@
 - `node --check scripts/finalize-pr.mjs`: passed after merging `origin/main` `d4f6dd791070a6d334ffbc27b6bb15150949cca4`.
 - `node --test tests/finalize-pr.test.mjs`: passed after merging `origin/main` `d4f6dd791070a6d334ffbc27b6bb15150949cca4`; 52 tests passed.
 - `pnpm run preflight`: passed after merging `origin/main` `d4f6dd791070a6d334ffbc27b6bb15150949cca4`; feature-memory gate, repo baseline, content validation, 199 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-Sifs2Ba7.js` but completed successfully.
+- `node --check scripts/finalize-pr.mjs`: passed after the Claude SHA normalization and effective-head marker documentation review fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after the Claude SHA normalization and effective-head marker documentation review fix; 53 tests passed, including `Claude current-head outcome lookup is case-insensitive for head SHA`.
+- `rg -n "Architect validated effective content head|Analyst validated effective content head|Effective content head" AGENTS.md CLAUDE.md .github/pull_request_template.md .specify/templates specs/README.md docs_project/project/devops`: passed after the documentation/template alignment; matches show `Effective content head`, `Architect validated effective content head`, and `Analyst validated effective content head` in `AGENTS.md`, `CLAUDE.md`, `.github/pull_request_template.md`, `.specify/templates/spec-template.md`, `.specify/templates/plan-template.md`, `.specify/templates/tasks-template.md`, `specs/README.md`, `docs_project/project/devops/ai-pr-workflow.md`, and `docs_project/project/devops/review-contract.md`.
+- `git diff --check`: passed after the Claude SHA normalization and effective-head marker documentation review fix; no whitespace errors reported.
+- `node scripts/check-feature-memory.mjs --worktree`: passed after the Claude SHA normalization and effective-head marker documentation review fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `pnpm run check:repo`: passed after the Claude SHA normalization and effective-head marker documentation review fix; "Repository baseline check passed."
+- `pnpm run preflight`: passed after the Claude SHA normalization and effective-head marker documentation review fix; feature-memory gate, repo baseline, content validation, 200 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BT8wgMOv.js` but completed successfully.
 
 ## Cycle PR Set
 
@@ -294,6 +307,7 @@
 - Purpose: address PR #80 review threads `PRRT_kwDOSX65IM6A7072` and `PRRT_kwDOSX65IM6A72Xq` for undisposed known-issue blocking and placeholder verification evidence; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `5d16a329e32c39d1bc03e1ad7b5b0c39d901ab71`; status: implementation follow-up before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 - Purpose: refresh PR #80 from latest `origin/main` after GitHub reported conflicts; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `ab0fc507a8a2dab00e9547ffaa34be20d2c52789`; status: latest-main merge/process-memory refresh before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 - Purpose: refresh PR #80 from latest `origin/main` after main advanced again during handoff; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `6a5f1269499c6a96e8d053b8f59b8b5ac96ffec6`; status: latest-main merge/process-memory refresh before final push; final-validation inclusion: pending Orchestrator final validation rerun.
+- Purpose: address PR #80 review threads `PRRT_kwDOSX65IM6A8IgS` and `PRRT_kwDOSX65IM6A8JeQ` plus refresh from latest `origin/main`; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `77ea7a20d8d6e052dc0f1826683bd006128382a8`; post-merge local head before scoped fix: `c36556ee104bb71d476a18d2f38d34ed350a7657`; status: implementation verification before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 
 ## Final Validation Evidence
 
@@ -302,6 +316,8 @@
 - Analyst validation: not yet invoked.
 - Analyst return count: 0.
 - Effective content head: not yet validated.
+- Architect validated effective content head: not yet validated.
+- Analyst validated effective content head: not yet validated.
 - Final-validation evidence-only commit: none for this Implementation Agent task slice.
 - Current-PR-head read-only guard: pending finalization.
 - Analyst feedback Architect disposition: none.

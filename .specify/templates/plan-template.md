@@ -66,7 +66,7 @@
 | Cycle PR set | `[Evidence that purpose, branch, PR metadata, head SHA, status, and validation inclusion are recorded]` |
 | Final Architect validation | `[Evidence Architect validation ran before Analyst and covered all PR slices, Architect-assigned tasks/dispositions, architectural guidance, open task state, process memory, and customer intent in spirit]` |
 | Final Analyst validation | `[Evidence Analyst validation ran after Architect and checked customer intent in spirit and letter]` |
-| Effective content head and current-head guard | `[Validated effective content head, final-validation evidence-only commit evidence if any, current PR head, read-only guard result, and stale-validation routing if any non-evidence post-validation content changed]` |
+| Effective content head and current-head guard | `[Effective content head: <40-hex-sha>, matching Architect validated effective content head: <40-hex-sha>, matching Analyst validated effective content head: <40-hex-sha>, final-validation evidence-only commit evidence if any, current PR head, read-only guard result, and stale-validation routing if any non-evidence post-validation content changed]` |
 | Cleanup applicability and evidence/refusal | `[Not applicable rationale, or Cleanup Agent dry-run inventory, validation, action/refusal, post-cleanup confirmation, and active-work preservation evidence]` |
 | Cleanup review expectations | `[Review evidence that cleanup wording preserves role boundaries, blocks unsafe deletion, requires positive proof, and refuses ambiguous/current/active/user-owned targets]` |
 | Return limits | `[Architect return count <= 10, Analyst return count <= 5, or new-feature-request escalation evidence]` |

@@ -337,6 +337,10 @@ role-owned validation evidence or process memory, such as Analyst-owned
 validation notes in `feature-request.md` or final-validation evidence in
 `tasks.md`. Role/process evidence must record the marker
 `Effective content head: <40-hex-sha>` for the head that was validated.
+Architect-owned passing notes must also record
+`Architect validated effective content head: <40-hex-sha>`, and
+Analyst-owned passing notes must record
+`Analyst validated effective content head: <40-hex-sha>` for the same SHA.
 
 Before declaring completion or performing finalization/merge after such
 a commit, Orchestrator must run a read-only current-PR-head guard. The guard
@@ -373,9 +377,12 @@ terminal state. Orchestrator should run the finalization helper, for example
 after final validation and current-head guards are recorded. The helper reads
 required checks from `.unicorn-hub/config.json`, verifies the current head,
 review resolution, blocking findings, mergeability, process evidence, and then
-uses GitHub squash merge. Process evidence must include `Effective content
-head: <40-hex-sha>`, and the current-head guard evidence must explicitly
-reference that effective content head by full SHA or unambiguous short prefix.
+uses GitHub squash merge. Process evidence must include
+`Effective content head: <40-hex-sha>`,
+`Architect validated effective content head: <40-hex-sha>`, and
+`Analyst validated effective content head: <40-hex-sha>` for the same SHA, and
+the current-head guard evidence must explicitly reference that effective content
+head by full SHA or unambiguous short prefix.
 When the current PR head differs from the effective content head, the helper
 uses local git to verify that every changed file after the effective head is one
 of the active feature memory files: `feature-request.md`, `spec.md`, `plan.md`,
@@ -434,10 +441,12 @@ Before merge, the author should also confirm the SENAR done gate:
   development
 - if the current PR head is after the effective content head validated by
   Architect and Analyst, Orchestrator's read-only current-PR-head guard confirms
-  the recorded `Effective content head: <40-hex-sha>`, explicitly references
-  that effective content head, verifies every later commit is final-validation
-  evidence-only, and confirms all merge-readiness gates still apply to the
-  current head
+  the recorded `Effective content head: <40-hex-sha>`, matching
+  `Architect validated effective content head: <40-hex-sha>`, and matching
+  `Analyst validated effective content head: <40-hex-sha>`, explicitly
+  references that effective content head, verifies every later commit is
+  final-validation evidence-only, and confirms all merge-readiness gates still
+  apply to the current head
 - any remaining known issue is resolved or has an explicit owner decision; if
   that decision is still pending, Orchestrator records it as an exceptional
   human blocker instead of merging

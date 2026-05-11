@@ -86,18 +86,24 @@ Reviewers check role boundaries in addition to code behavior:
   counts must stay within the limit of 5, and Analyst feedback must receive
   Architect accept/task/ticket/dispose disposition before follow-up development.
 - Passing final validation must include explicit role-owned completion markers:
-  `Final Architect validation completed at: <ISO 8601 timestamp>` in
-  Architect-owned memory and `Final Analyst validation completed at:
-  <ISO 8601 timestamp>` in `feature-request.md`. The Analyst timestamp must be
-  later than the Architect timestamp; file concatenation order is not valid
-  chronology evidence.
+  `Final Architect validation completed at: <ISO 8601 timestamp>` and
+  `Architect validated effective content head: <40-hex-sha>` in
+  Architect-owned memory, plus
+  `Final Analyst validation completed at: <ISO 8601 timestamp>` and
+  `Analyst validated effective content head: <40-hex-sha>` in
+  `feature-request.md`. The Analyst timestamp must be later than the Architect
+  timestamp; file concatenation order is not valid chronology evidence. The
+  role-owned effective-head markers must match the recorded
+  `Effective content head: <40-hex-sha>`.
 - Architect gap returns must stay within the limit of 10 per work cycle. If the
   limit is exceeded, reviewers should expect a recorded Architect breach and
   Orchestrator request for Analyst to create a new feature request; if the
   Analyst limit is exceeded, reviewers should expect a new feature request in a
   separate latest-main branch/worktree.
 - When final Architect and Analyst validation target an effective content head,
-  role/process evidence must record `Effective content head: <40-hex-sha>`.
+  role/process evidence must record `Effective content head: <40-hex-sha>`,
+  `Architect validated effective content head: <40-hex-sha>`, and
+  `Analyst validated effective content head: <40-hex-sha>` for the same SHA.
   Any later commit may be treated as valid only if it is final-validation
   evidence-only process memory and Orchestrator's read-only current-PR-head
   guard explicitly references that effective content head by full SHA or

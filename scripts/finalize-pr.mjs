@@ -242,6 +242,7 @@ export function normalizeStatusChecks(nodes = []) {
 
 export function collectBlockingFindings({ reviews = [], reviewThreads = [], issueComments = [], headSha, config = {} } = {}) {
   const findings = [];
+  const normalizedHeadSha = headSha ? String(headSha).toLowerCase() : "";
 
   for (const thread of reviewThreads) {
     if (thread.isResolved) continue;
@@ -263,7 +264,7 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
   };
   for (const [index, review] of reviews.entries()) {
     const commitSha = review.commit?.oid || review.commit_id;
-    if (commitSha && headSha && commitSha !== headSha) continue;
+    if (commitSha && normalizedHeadSha && String(commitSha).toLowerCase() !== normalizedHeadSha) continue;
     const login = normalizeLogin(review.author?.login || review.user?.login);
     const reviewerKey = login || `unknown-reviewer-${index}`;
     const submittedAtTime = Date.parse(review.submittedAt || review.submitted_at || review.createdAt || review.created_at || "");
@@ -297,7 +298,7 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
     if (!sha || !outcome || !isTrustedReviewLogin(login, "claude", config)) continue;
     latestClaudeBySha.set(sha, outcome);
   }
-  if (headSha && latestClaudeBySha.get(headSha) === "block") {
+  if (normalizedHeadSha && latestClaudeBySha.get(normalizedHeadSha) === "block") {
     findings.push({ source: "claude-comment", message: "Latest current-head Claude review outcome is block." });
   }
 

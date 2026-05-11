@@ -119,12 +119,16 @@ Architect and Analyst final validation apply to the effective content head: the
 PR head containing implementation, workflow docs/templates, feature memory,
 review fixes, and other behaviorally meaningful content. A later
 final-validation evidence-only commit may record role-owned validation evidence
-or process memory without recursive role validation only when Orchestrator's
-read-only current-PR-head guard names the current head, compares it with the
-effective content head, proves the later commit is evidence-only, and confirms
-merge-readiness gates still apply. Any post-validation change to product
-behavior, durable workflow rules, templates, scoped implementation docs, code,
-tests, runtime files, CI, branch protection, review dispositions, or other
+or process memory without recursive role validation only when process evidence
+records `Effective content head: <40-hex-sha>`, Architect-owned passing notes
+record `Architect validated effective content head: <40-hex-sha>`,
+Analyst-owned passing notes record
+`Analyst validated effective content head: <40-hex-sha>` for the same SHA, and
+Orchestrator's read-only current-PR-head guard names the current head, compares
+it with the effective content head, proves the later commit is evidence-only,
+and confirms merge-readiness gates still apply. Any post-validation change to
+product behavior, durable workflow rules, templates, scoped implementation docs,
+code, tests, runtime files, CI, branch protection, review dispositions, or other
 non-evidence content makes prior validation stale and must be routed back
 through role-appropriate follow-up or final validation.
 

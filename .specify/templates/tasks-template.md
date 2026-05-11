@@ -33,7 +33,7 @@
 - [ ] T020 Update cycle PR set with this slice's purpose, branch, PR metadata, head SHA, status, and final-validation inclusion.
 - [ ] T021 Record final Architect validation evidence, return count, and gap dispositions when Orchestrator invokes it.
 - [ ] T022 Record final Analyst validation evidence, Analyst return count, and Architect disposition for any Analyst feedback when Orchestrator invokes it.
-- [ ] T023 If any commit lands after final Architect or Analyst validation, record the effective content head and confirm whether the later commit is final-validation evidence-only or makes prior validation stale.
+- [ ] T023 If any commit lands after final Architect or Analyst validation, record `Effective content head: <40-hex-sha>`, `Architect validated effective content head: <40-hex-sha>`, and `Analyst validated effective content head: <40-hex-sha>` for the same SHA, then confirm whether the later commit is final-validation evidence-only or makes prior validation stale.
 - [ ] T024 Confirm merge-readiness gates remain satisfied after final validation on the current PR head: required checks, blocking review status, conflicts, acceptance evidence, process memory, feedback disposition, current-PR-head read-only guard, final guards, cleanup evidence/refusal when relevant, branch-protection readiness, and absence of exceptional human blockers.
 
 ## Process Memory
@@ -66,6 +66,8 @@
 - Analyst validation: `[not yet invoked, pass details, or Analyst-owned validation-note reference]`
 - Analyst return count: `[0-5]`
 - Effective content head: `[SHA validated by Architect and Analyst, or not yet validated]`
+- Architect validated effective content head: `[same 40-hex SHA, or not yet validated]`
+- Analyst validated effective content head: `[same 40-hex SHA, or not yet validated]`
 - Final-validation evidence-only commit: `[none, current-head SHA and evidence-only scope, or stale because non-evidence content changed]`
 - Current-PR-head read-only guard: `[pending, pass with current head and gate evidence, or failed and routed back through role-appropriate follow-up/final validation]`
 - Analyst feedback Architect disposition: `[none, accepted task/ticket, explicit dispose, or pending blocker]`
