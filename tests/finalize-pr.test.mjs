@@ -1449,6 +1449,71 @@ test("process evidence orders final validation by explicit role-owned timestamps
   assert.equal(missingMarkers.finalValidationOrder, false);
 });
 
+test("process evidence uses the latest role-owned validation result marker", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
+  const featurePath = "specs/999-finalize-test";
+  const featureRoot = join(root, featurePath);
+  mkdirSync(featureRoot, { recursive: true });
+
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-10T13:00:01Z
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-10T13:00:00Z
+- Architect validation pass: failed
+- Final Architect validation completed at: 2026-05-10T13:00:02Z
+`);
+  writeFileSync(join(featureRoot, "plan.md"), "");
+  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+
+## Decisions
+- Decision recorded.
+
+## Dead Ends
+- None.
+
+## Known Issues
+- None.
+
+## Implementation Agent Feedback
+- None yet.
+
+## Verification Evidence
+- Existing evidence.
+`);
+
+  const architectFailed = readProcessEvidence(root, featurePath, "abc123def456");
+  assert.equal(architectFailed.finalArchitectValidation, false);
+  assert.equal(architectFailed.finalAnalystValidation, true);
+  assert.equal(architectFailed.finalValidationOrder, false);
+
+  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+
+## Final Analyst Validation Notes
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-10T13:00:01Z
+- Analyst validation pass: failed
+- Final Analyst validation completed at: 2026-05-10T13:00:03Z
+`);
+  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+
+## Final Architect Validation Notes
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-10T13:00:00Z
+`);
+
+  const analystFailed = readProcessEvidence(root, featurePath, "abc123def456");
+  assert.equal(analystFailed.finalArchitectValidation, true);
+  assert.equal(analystFailed.finalAnalystValidation, false);
+  assert.equal(analystFailed.finalValidationOrder, false);
+});
+
 test("process evidence rejects generic current-head guard marker without effective head reference", () => {
   const root = mkdtempSync(join(tmpdir(), "cabadrive-finalize-"));
   const featurePath = "specs/999-finalize-test";

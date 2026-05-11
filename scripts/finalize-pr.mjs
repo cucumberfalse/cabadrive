@@ -29,6 +29,10 @@ const validationCompletedAtMarkers = {
   architect: /Final\s+Architect\s+validation\s+completed\s+at:\s*([^\r\n]+)/ig,
   analyst: /Final\s+Analyst\s+validation\s+completed\s+at:\s*([^\r\n]+)/ig
 };
+const validationPassMarkers = {
+  architect: /Architect\s+validation\s+pass:\s*([^\r\n]+)/ig,
+  analyst: /Analyst\s+validation\s+pass:\s*([^\r\n]+)/ig
+};
 const validatedEffectiveContentHeadMarkers = {
   architect: /^\s*(?:[-*]\s*)?Architect\s+validated\s+effective\s+content\s+head:\s*([0-9a-f]{40})\s*\.?\s*$/gim,
   analyst: /^\s*(?:[-*]\s*)?Analyst\s+validated\s+effective\s+content\s+head:\s*([0-9a-f]{40})\s*\.?\s*$/gim
@@ -398,8 +402,8 @@ function parseProcessEvidence(files = {}, currentHead = "") {
   const analystMemory = featureRequest;
   const allMemory = [featureRequest, spec, plan, tasks].join("\n");
 
-  const hasArchitectPass = /Architect validation pass:\s*(pass|passed|yes|true)/i.test(architectMemory);
-  const hasAnalystPass = /Analyst validation pass:\s*(pass|passed|yes|true)/i.test(analystMemory);
+  const hasArchitectPass = readLatestValidationPass(architectMemory, "architect") === true;
+  const hasAnalystPass = readLatestValidationPass(analystMemory, "analyst") === true;
   const architectCompletedAt = readLatestValidationCompletedAt(architectMemory, "architect");
   const analystCompletedAt = readLatestValidationCompletedAt(analystMemory, "analyst");
   const verificationSection = readMarkdownSection(tasks, "Verification Evidence") || "";
@@ -1019,6 +1023,25 @@ function readLatestValidationCompletedAt(memory, role) {
     latest = parsed;
   }
   return latest;
+}
+
+function readLatestValidationPass(memory, role) {
+  const marker = validationPassMarkers[role];
+  marker.lastIndex = 0;
+  let latest = null;
+  let match;
+  while ((match = marker.exec(memory)) !== null) {
+    latest = parseValidationPassResult(match[1]);
+  }
+  return latest;
+}
+
+function parseValidationPassResult(value = "") {
+  const candidate = value.trim().replace(/^`|`$/g, "").toLowerCase();
+  const result = candidate.match(/^[a-z-]+/i)?.[0] || "";
+  if (["pass", "passed", "yes", "true"].includes(result)) return true;
+  if (["fail", "failed", "no", "false", "block", "blocked"].includes(result)) return false;
+  return false;
 }
 
 function parseIsoDate(value = "") {
