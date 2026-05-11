@@ -977,3 +977,13 @@
   - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--10-senales-de-restriccion-017` full Russian translation so R.11 weight-limit scope uses engineering-structure/bridge and low-load-bearing road-surface terminology, not artwork/sidewalk wording.
   - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--25-educativas-y-anuncios-especiales-032` full Russian translation so recommended educational sign messages preserve road-safety meanings such as not dazzling, warning before overtaking, staying in lane, overtaking on the left, and parking away from the carriageway.
   - Confirmed the Anexo L search shard stores field references only (`title`, `fullTranslationRu`, `simpleRu`, `originalSpanish`) and does not mirror chunk text, so no search-shard text update was required.
+- PR #105 D6 Anexo L tenth review-fix verification on 2026-05-11:
+  - Synced the worktree to current remote branch tip `383d3433ce27da65d1443b675d5601c24f444825` before checking the remaining `DELINEADORES` review fix.
+  - Verified `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--44-delineadores-054` full Russian translation on the remote-based head: the physical devices are `делинеаторы` / vertical guiding plates, not road lines, and the local `ФИЗИЧЕСКОЕ ОФОРМЛЕНИЕЛЕНИЕ` typo is absent from that chunk.
+  - Kept `simpleRu` consistent with the corrected full translation; it already describes delineators as small vertical reflective plates marking the roadway direction and used-lane boundaries.
+  - Targeted chunk check passed: required `44. ДЕЛИНЕАТОРЫ.`, `Вертикальная направляющая пластина`, `ФИЗИЧЕСКОЕ ОФОРМЛЕНИЕ`, and used-lane wording were present, while `44. ЛИНИИ.` and `ОФОРМЛЕНИЕЛЕНИЕ` were absent from the chunk.
+  - Targeted bad-token check `rg -n "44\\. ЛИНИИ|ОФОРМЛЕНИЕЛЕНИЕ: Вертикальная" content/primary-sources/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.ru.json` found no matches.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
