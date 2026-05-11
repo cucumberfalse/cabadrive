@@ -819,3 +819,10 @@
   - Re-run `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
   - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
   - No merge-conflict blocker remains for PR #104 after this sync. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.
+- PR #104 P2 ministry-authorization follow-up on 2026-05-11:
+  - Addressed unresolved review thread `PRRT_kwDOSX65IM6A83PU` by minimally updating the Annex 2 `simpleRu` exception so the default learner view says the experimental-test exemption requires prior authorization from the Ministry of Transport.
+  - No full-translation, QA, search, coverage, official archive, or unrelated source-reader files were changed.
+  - `git diff --check` passed with no output.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
