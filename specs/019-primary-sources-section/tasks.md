@@ -807,6 +807,13 @@
   - Targeted JSON/code-prefix check parsed the Anexo L document, search, and QA shards and found `0` Cyrillic-lookalike code-prefix matches in all three files.
   - `git diff --check`, `npm run validate:content`, `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content`, and `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed.
   - `npm run preflight` passed; it included feature-memory/repo checks, content validation, 153 node tests, build/service-worker generation, and 22 Playwright e2e tests. Vite retained the existing large-chunk warning.
+- PR #117 D6 Anexo L H.9/H.10 dimension wording follow-up on 2026-05-11:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--29-marcas-especiales-037` full Russian translation so H.9 curved-arrow length `DOS CON DOS DÉCIMAS DE METRO (2,2 m)` reads `ДВА И ДВЕ ДЕСЯТЫЕ МЕТРА (2,2 м)`, not `ДВА ТЫСЯЧИ МЕТРА`.
+  - Fixed the same chunk's H.10 PARE letter-line thickness so `QUINCE CENTÉSIMAS DE METRO (0,15 m)` reads `ПЯТНАДЦАТЬ СОТЫХ МЕТРА (0,15 м)`, not `ПЯТЬ СОТЫХ МЕТРА`.
+  - Confirmed the prior Latin official-code fix remains intact, and the Anexo L search/QA shards do not mirror learner text for these H.9/H.10 dimensions, so no projection update was required.
+  - Targeted JSON check confirmed the corrected H.9/H.10 Russian dimension phrases are present, the old wrong phrases are absent, `R.29` remains Latin, no Cyrillic-lookalike signal-code prefixes remain in the Anexo L document/search/QA shards, and search does not mirror the fixed learner text.
+  - `git diff --check`, `npm run validate:content`, `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content`, and `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed.
+  - `npm run preflight` passed; it included feature-memory/repo checks, content validation, 153 node tests, build/service-worker generation, and 22 Playwright e2e tests. Vite retained the existing large-chunk warning.
 - PR #103 P2 rebase finding disposition on 2026-05-10:
   - D4/DNRPA is intentionally stacked on PR #101 by Orchestrator assignment to preserve the prerequisite content/schema stack and keep this PR diff limited to one document batch.
   - This PR should not be retargeted or rebased to latest `main` outside that assigned stacked sequence. The final merge gate remains a green stacked sequence plus human-controlled merge ordering.
