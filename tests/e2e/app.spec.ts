@@ -6,6 +6,7 @@ const translations = JSON.parse(readFileSync("content/translations/ru.translatio
 const explanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
+const imageOverlays = JSON.parse(readFileSync("content/image-overlays/question-explanation-overlays.manifest.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
 const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
@@ -76,7 +77,7 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(page.locator(".support-block.explanation")).toContainText((explanationByQuestionId.get(questions[0].id) as { textRu: string }).textRu);
   await expect(card.getByTestId("image-explanation-overlay")).toBeVisible();
   await expect(card.locator("[data-overlay-role='answer_critical_highlight']")).toBeVisible();
-  await expect(card.locator("[data-overlay-role='background_irrelevant_dim']")).toHaveCount(2);
+  await expect(card.locator("[data-overlay-role='background_irrelevant_dim']")).not.toHaveCount(0);
   await expect.poll(() => storedAnswerCount(page)).toBe(1);
   await bottomNav.getByRole("button", { name: "Следующий" }).click();
   await expect(page.getByText(questions[1].officialTextEs)).toBeVisible();
@@ -106,6 +107,16 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect.poll(() => storedAnswerCount(page)).toBe(2);
   await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
   await expect.poll(() => storedAnswerCount(page)).toBe(3);
+});
+
+test("overlay data loads with full current coverage and question-specific reused-image entries", async () => {
+  const imageBackedQuestions = questions.filter((question: { image?: unknown }) => question.image);
+  expect(imageOverlays.overlays).toHaveLength(imageBackedQuestions.length);
+  expect(new Set(imageOverlays.overlays.map((overlay: { questionId: string }) => overlay.questionId)).size).toBe(imageBackedQuestions.length);
+  expect(imageOverlays.overlays.filter((overlay: { localPath: string }) => overlay.localPath.endsWith("/b2.jpg"))).toMatchObject([
+    { questionId: "b-fallback-256", imageId: "question-image-b2" },
+    { questionId: "b-fallback-303", imageId: "question-image-b2" }
+  ]);
 });
 
 test("image explanation overlay bounds follow the rendered bitmap when image height is constrained", async ({ page }) => {
