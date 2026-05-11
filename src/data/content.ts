@@ -223,6 +223,7 @@ export type ImageExplanationOverlayRegion = {
   sourceRole: OverlaySourceRole;
   relevanceId: string;
   detailIds: string[];
+  objectIds?: string[];
   regionIds: string[];
   rect: {
     x: number;
@@ -245,6 +246,7 @@ export type ImageExplanationOverlay = {
   usageFingerprint: string;
   relevanceIds: string[];
   referencedDetailIds: string[];
+  referencedObjectIds?: string[];
   referencedRegionIds: string[];
   regions: ImageExplanationOverlayRegion[];
 };
