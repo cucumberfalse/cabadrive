@@ -320,6 +320,7 @@
 - Full Russian and simple Russian text were reviewed against the Spanish archive spans and `content/primary-sources/terminology.ru.md`; QA shards mark translation and simplification QA as `approved` with `checkedAt: "2026-05-10"`.
 - D6 search shard adds one entry per translated chunk with `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish` text fields.
 - D6 terminology preserves Anexo L, Decreto 196/2025, Señalización Vial Uniforme, signal codes R/P/I/H/T/F, calzada as `проезжая часть`, banquina as `обочина`, senda peatonal as `пешеходный переход`, semáforo as `светофор`, dimensions, colors, reflectivity standards, railway-crossing rules, temporary-work-zone devices, and the 15 archived Anexo image references.
+- PR #105 review follow-up corrected Anexo L chunks 24 and 25 full Russian text: warning sign identifiers now preserve official `P.25` through `P.33` codes, and the `P.31`/`P.33` text no longer mistranslates `circulación` as blood circulation, `cambio de dirección` as address change, or `CEDA EL PASO` as income.
 - Completing D6 covers the Anexo L part of the signage/study-material grouping in T070. The GCBA four-wheel manual and any remaining study-material source batches still require later content slices before T070 can close.
 - D6 does not edit `content/official-documents/**`, UI files, coverage generator files, root primary-source manifests, or official archive files.
 
@@ -915,3 +916,64 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #105 D6 Anexo L sixth review-fix verification on 2026-05-10:
+  - Fixed chunks 24 and 25 in `content/primary-sources/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.ru.json`.
+  - Chunk 24 full Russian translation now preserves official warning-sign identifiers `P.25`, `P.26`, `P.27`, `P.28`, `P.29`, and `P.30` instead of Russian `С.xx` or `стр.xx` labels.
+  - Chunk 25 full Russian translation now preserves `P.31`, `P.32`, and `P.33`; translates `circulación` as traffic/movement, `cambio de dirección` as change of direction, and `CEDA EL PASO` as `Уступите дорогу`.
+  - Confirmed the Anexo L search shard stores field references only (`title`, `fullTranslationRu`, `simpleRu`, `originalSpanish`) and does not mirror chunk text, so no search-shard text update was required.
+  - `git diff --check` passed with no output.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test -- tests/primary-sources-validation.test.mjs` is not supported by the current package script because the appended `--` is treated as a test file path.
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 37 tests, 37 pass, 0 fail.
+  - `pnpm install --frozen-lockfile` completed after the first full test attempt found no `node_modules` in the fresh worktree; no package metadata files changed.
+  - Re-run `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #105 rebase onto updated PR #104 base on 2026-05-10/2026-05-11:
+  - Fetched origin after PR #104 base branch advanced to `495f09afce6ebbe4472739ba83534859edbec6ca`.
+  - Rebasing PR #105 onto `origin/codex/019-primary-sources-content-batch-core-traffic-law` produced one process-memory conflict in `specs/019-primary-sources-section/tasks.md`; it was resolved by preserving both the PR #104 DNRPA base-branch merge-conflict evidence and the PR #105 Anexo L D6/review-fix evidence.
+  - No learner-source document, QA, or search shard conflicts occurred during the rebase.
+  - Post-rebase `git diff --check` passed with no output.
+  - Post-rebase `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - Post-rebase `node --test tests/primary-sources-validation.test.mjs` passed: 37 tests, 37 pass, 0 fail.
+  - Post-rebase `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #105 second rebase onto updated PR #104 P2-fix base on 2026-05-10/2026-05-11:
+  - Fetched origin after PR #104 base branch advanced again to `39b0d1b9dc6f682a5b31c1102803adffe89c6b0a`.
+  - Rebasing PR #105 onto the new `origin/codex/019-primary-sources-content-batch-core-traffic-law` again produced one process-memory conflict in `specs/019-primary-sources-section/tasks.md`; it was resolved by preserving both the PR #104 P2 ministry-authorization follow-up evidence and the PR #105 Anexo L D6/review-fix evidence.
+  - No learner-source document, QA, or search shard conflicts occurred during the second rebase.
+  - Post-second-rebase `git diff --check` passed with no output.
+  - Post-second-rebase `node scripts/check-feature-memory.mjs --worktree` passed. Output: `No configured product paths changed; feature-memory gate passes.`
+  - Post-second-rebase `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - Post-second-rebase `node --test tests/primary-sources-validation.test.mjs` passed: 37 tests, 37 pass, 0 fail.
+  - Post-second-rebase `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
+  - Post-second-rebase `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #105 D6 Anexo L seventh review-fix verification on 2026-05-10/2026-05-11:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--18-fin-de-prevencion-026` full Russian translation so `P.34 FIN DE PREVENCIÓN` preserves the official `P.34` code and means end of warning/prevention, not page 34 or medical prevention.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--39-senales-de-049` full Russian translation so `T.8 TRABAJOS EN LA BANQUINA` is `T.8 РАБОТЫ НА ОБОЧИНЕ`, with `banquina` translated as `обочина` in the heading and sign legend.
+  - Confirmed the Anexo L search shard stores field references only (`title`, `fullTranslationRu`, `simpleRu`, `originalSpanish`) and does not mirror chunk text, so no search-shard text update was required.
+  - Targeted bad-token check found no `стр.34`, `ОКОНЧАНИЕ ПРОФИЛАКТИКИ`, `СКАМЬ`, `скамь`, `НА БАНКИНЕ`, `ПРОФИЛАКТИК`, or `профилактик` in the Anexo L learner shard.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 37 tests, 37 pass, 0 fail.
+  - `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #105 D6 Anexo L eighth review-fix verification on 2026-05-10/2026-05-11:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--11-senales-de-prioridad-018` full Russian translation so R.28 `CEDA EL PASO` uses the yield-sign inscription `УСТУПИТЕ ДОРОГУ`, not profitability/income wording.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--6-deletabilidad-todo-elemento-constitutivo-de-la-010` full Russian translation so `deletabilidad/deletabilizar` preserves the road-safety meaning of making a device less dangerous or harmless, not removability/destabilization.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--46-dispositivos-luminosos-056` full Russian translation so `Reflectores` are `Прожекторы` and `banderilleros` are `регулировщики с флагом`, not reflectors/flagships.
+  - Confirmed the Anexo L search shard stores field references only (`title`, `fullTranslationRu`, `simpleRu`, `originalSpanish`) and does not mirror chunk text, so no search-shard text update was required.
+  - Targeted bad-token check found no `ДОХОДНОСТЬ`, `УДАЛИМОСТЬ`, `дестабилизац`, `Отражатели`, `флагман`, `флагманов`, or `флагш` in the Anexo L learner shard.
+  - `git diff --check` passed with no output.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node --test tests/primary-sources-validation.test.mjs` passed: 37 tests, 37 pass, 0 fail.
+  - `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+- PR #105 third rebase onto updated PR #104 base on 2026-05-10/2026-05-11:
+  - Fetched origin after PR #104 base branch advanced to `19e7b0d5d200659d08319ff38c1c0fec79fdd961`.
+  - Rebasing PR #105 onto the new `origin/codex/019-primary-sources-content-batch-core-traffic-law` produced one process-memory conflict in `specs/019-primary-sources-section/tasks.md`; it was resolved by preserving both the PR #104 top-level article heading follow-up evidence and all PR #105 Anexo L D6/review-fix evidence.
+  - No learner-source document, QA, or search shard conflicts occurred during the third rebase.
+  - Post-third-rebase targeted check confirmed no `ДОХОДНОСТЬ`, `УДАЛИМОСТЬ`, `дестабилизац`, `Отражатели`, `флагман`, or `флагш` regressions in the Anexo L learner shard.
+- PR #105 D6 Anexo L ninth review-fix verification on 2026-05-10/2026-05-11:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--10-senales-de-restriccion-017` full Russian translation so R.11 weight-limit scope uses engineering-structure/bridge and low-load-bearing road-surface terminology, not artwork/sidewalk wording.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--25-educativas-y-anuncios-especiales-032` full Russian translation so recommended educational sign messages preserve road-safety meanings such as not dazzling, warning before overtaking, staying in lane, overtaking on the left, and parking away from the carriageway.
+  - Confirmed the Anexo L search shard stores field references only (`title`, `fullTranslationRu`, `simpleRu`, `originalSpanish`) and does not mirror chunk text, so no search-shard text update was required.
