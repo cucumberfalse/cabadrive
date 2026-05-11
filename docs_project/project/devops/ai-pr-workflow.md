@@ -66,9 +66,9 @@ A work cycle is one repository-changing user request represented by one
 `specs/<feature-id>/` folder. It starts when Orchestrator accepts the request and
 creates or requires the latest-main isolated intake environment. It ends only
 when final Architect validation and final Analyst validation pass, every
-merge-readiness gate is satisfied, and completion or authorized merge mechanics
-are the only remaining step; or when return-limit escalation creates a new
-feature request.
+merge-readiness gate is satisfied, and Orchestrator has completed conservative
+finalization and merge; or when return-limit escalation creates a new feature
+request or a narrow exceptional human blocker is recorded.
 
 The cycle PR set is the durable list of every PR slice that contributes to that
 work cycle, including open, merged, closed, replacement, and follow-up slices.
@@ -77,6 +77,30 @@ PR number or reliable discovery metadata, current or final head SHA, status, and
 whether it is included in final validation. Replacement-agent or rerouted-slice
 work preserves and documents the prior slice state instead of hiding it from
 final validation.
+
+## Finalization Model
+
+Earlier Cabadrive workflow text made "human final merge owner" the default
+terminal state and allowed Orchestrator merge only when the current user had
+already granted explicit authorization. That wording caused Orchestrators to
+stop after reporting that only final human approval or merge mechanics remained,
+even when checks, review, conflicts, process memory, and final validation were
+already satisfied. The repository now treats Orchestrator-managed PRs as having
+standing authorization for conservative finalization after objective gates pass.
+
+Orchestrator finalization is a GitHub-level coordination action, not direct
+repository editing and not CI-driven unattended merging. Orchestrator must verify
+the current PR head from GitHub state plus local read-only guards, then squash
+merge through GitHub only when all gates are satisfied. Red, missing, queued,
+pending, running, skipped, or ambiguous required checks are blockers. Pending
+required checks may only lead to GitHub protected auto-merge when Orchestrator
+explicitly asks for that behavior with the finalization helper.
+
+Human intervention remains exceptional: missing credentials or permissions,
+explicit user instruction not to merge, ambiguous repository or PR state that
+could risk data loss or the wrong PR, unresolved accepted-known-issue owner
+decisions, or protected-branch/ruleset policy blockers that prevent GitHub merge
+despite satisfied workflow gates.
 
 ## Fresh Latest-Main Startup
 
@@ -125,13 +149,13 @@ new or existing subagent with the correct role.
 - If asked to implement while acting as Architect, Architect stops and routes
   the request back to Orchestrator.
 - Architect final validation, when invoked before Analyst validation,
-  completion, or authorized merge mechanics, covers all PR slices in the cycle
+  completion, or finalization/merge, covers all PR slices in the cycle
   PR set, all Architect-assigned tasks and dispositions, architectural guidance,
   open task state, current process memory, and customer intent in spirit.
 - Orchestrator may coordinate GitHub state, rerun checks, route reviews, inspect
   merge readiness, track the work cycle and cycle PR set, invoke final
-  validation, and perform authorized merge actions, but must not directly edit
-  repository files.
+  validation, and perform conservative finalization/merge actions, but must not
+  directly edit repository files.
 - Orchestrator coordinates completion-time cleanup through Cleanup Agent when
   completed agent-created environments should be removed. Orchestrator must not
   directly delete local repository environments.
@@ -140,7 +164,8 @@ new or existing subagent with the correct role.
   user. Later roles use recorded assumptions, record Implementation Agent
   feedback for Architect disposition, or stop only for blocker exceptions such
   as safety, permissions, credentials, data-loss risk, repository conflicts or
-  status ambiguity, or an unapproved human merge-owner decision.
+  status ambiguity, explicit no-merge instruction, or an accepted-known-issue
+  owner decision.
 - Implementation Agent works in the assigned isolated worktree, branch, and PR
   slice only after complete feature memory exists: `feature-request.md`,
   `spec.md`, `plan.md`, and `tasks.md`, except documented legacy/no-intake
@@ -172,8 +197,8 @@ Expected routing:
   recorded memory and assumptions provide enough context;
 - ask the human only when requirements conflict, credentials or permissions are
   missing, repository state is ambiguous enough to risk data loss or scope
-  expansion, conflicts or status ambiguity block progress, or the decision
-  belongs to the human merge owner.
+  expansion, conflicts or status ambiguity block progress, explicit instructions
+  forbid merge, or an accepted known issue still needs an owner decision.
 
 If a subagent is stuck or does not provide a final report, Orchestrator inspects
 the assigned worktree, branch, dirty diff, local commits, open or discoverable
@@ -257,7 +282,7 @@ found by final guards.
 ## Final Validation Loop
 
 After implementation, review, checks, and follow-up development appear complete,
-but before declaring completion or performing authorized merge mechanics,
+but before declaring completion or performing finalization/merge,
 Orchestrator verifies the cycle PR set and invokes final Architect validation.
 Architect must validate every PR slice in the cycle PR set, all
 Architect-assigned tasks and dispositions, architectural guidance, open task
@@ -271,10 +296,24 @@ work at most 10 times per work cycle. If another Architect gap would exceed
 that limit, Architect records the breach and tells Orchestrator to ask Analyst
 for a new feature request.
 
+When Architect passes final validation, Architect records the pass in
+Architect-owned memory with both `Architect validation pass: passed` and
+`Final Architect validation completed at: <ISO 8601 timestamp>`. The timestamp
+must be a parseable ISO 8601 timestamp with timezone, such as
+`2026-05-10T13:00:00Z`.
+
 Only after final Architect validation passes does Orchestrator invoke final
 Analyst validation. Analyst checks whether the final result matches the
 customer's desired outcome in spirit and letter using the original request,
 clarified answers, assumptions, open questions, and acceptance expectations.
+
+When Analyst passes final validation, Analyst records the pass in
+Analyst-owned `feature-request.md` memory with both
+`Analyst validation pass: passed` and
+`Final Analyst validation completed at: <ISO 8601 timestamp>`. The Analyst
+timestamp must be later than the Architect timestamp. The finalization helper
+treats missing, invalid, equal, or reversed completion markers as a validation
+order blocker, even when both legacy pass lines are present.
 
 If Analyst finds gaps within the return limit, Analyst updates only
 Analyst-owned validation notes in `feature-request.md`, increments the Analyst
@@ -296,15 +335,21 @@ may avoid recursive Architect and Analyst validation only when it is strictly a
 final-validation evidence-only commit. Evidence-only means it changes only
 role-owned validation evidence or process memory, such as Analyst-owned
 validation notes in `feature-request.md` or final-validation evidence in
-`tasks.md`.
+`tasks.md`. Role/process evidence must record the marker
+`Effective content head: <40-hex-sha>` for the head that was validated.
+Architect-owned passing notes must also record
+`Architect validated effective content head: <40-hex-sha>`, and
+Analyst-owned passing notes must record
+`Analyst validated effective content head: <40-hex-sha>` for the same SHA.
 
-Before declaring completion or performing authorized merge mechanics after such
+Before declaring completion or performing finalization/merge after such
 a commit, Orchestrator must run a read-only current-PR-head guard. The guard
 names the current PR head, compares it with the validated effective content
-head, confirms any intervening commit is evidence-only, verifies process memory
-is current, and rechecks required checks, blocking review findings, conflicts,
-acceptance evidence, feedback disposition, final guards, and human merge-owner
-rules. If any post-validation commit changes product behavior, durable workflow
+head, explicitly references the effective content head by full SHA or
+unambiguous short prefix, confirms any intervening commit is evidence-only,
+verifies process memory is current, and rechecks required checks, blocking
+review findings, conflicts, acceptance evidence, feedback disposition, final
+guards, and exceptional human-blocker rules. If any post-validation commit changes product behavior, durable workflow
 rules, templates, scoped implementation docs, code, tests, runtime files, CI,
 branch protection, review dispositions, or other non-evidence content, prior
 Architect and Analyst validation is stale and Orchestrator must route the work
@@ -313,22 +358,42 @@ back through role-appropriate follow-up or final validation.
 The active required-check list is `.unicorn-hub/config.json` (`requiredChecks`); installed defaults reflect the active profile. Stack-specific profiles that preserve existing target CI ship only `guard` and `AI Review` and expect the team to add the repository's real CI job names before applying branch protection.
 
 PRs are merge-ready only when every required check is green on the current head,
-blocking review findings are resolved or outdated, docs/specs are updated,
-feature-memory feedback has Architect disposition, acceptance evidence is
-recorded, final guards have evidence, final Architect validation and final
-Analyst validation have passed, return-limit state is recorded, and no conflicts
-remain. Red, missing,
+blocking review findings are resolved or outdated, required review conversations
+are resolved, docs/specs are updated, feature-memory feedback has Architect
+disposition, acceptance evidence is recorded, final guards have evidence, final
+Architect validation and final Analyst validation have passed in order,
+with explicit ISO completion markers proving Architect completed before Analyst,
+return-limit state is recorded, the current-PR-head guard is current when
+required, and no conflicts remain. Red, missing,
 queued, or running required checks; unresolved blocking review findings;
 conflicts; stale process memory; missing evidence; or unresolved Implementation
 Agent feedback block merge and completion. Analyst feedback also blocks
 follow-up development and completion until Architect accepts, tasks, tickets, or
 explicitly disposes it.
 
-Auto-merge is not a CI automation feature in this repository guidance. It means
-Orchestrator may merge without asking again only when the current user
-instructions already authorize merge behavior and Orchestrator has verified the
-merge-ready preconditions through GitHub state plus local read-only guards. A
-human remains the default merge owner when no such authorization exists.
+For Orchestrator-managed PRs, merge readiness is not a "ready for human merge"
+terminal state. Orchestrator should run the finalization helper, for example
+`pnpm run pr:finalize -- --pr <number> --expected-head <sha> --feature specs/<feature-id>`,
+after final validation and current-head guards are recorded. The helper reads
+required checks from `.unicorn-hub/config.json`, verifies the current head,
+review resolution, blocking findings, mergeability, process evidence, and then
+uses GitHub squash merge. Process evidence must include
+`Effective content head: <40-hex-sha>`,
+`Architect validated effective content head: <40-hex-sha>`, and
+`Analyst validated effective content head: <40-hex-sha>` for the same SHA, and
+the current-head guard evidence must explicitly reference that effective content
+head by full SHA or unambiguous short prefix.
+When the current PR head differs from the effective content head, the helper
+uses local git to verify that every changed file after the effective head is one
+of the active feature memory files: `feature-request.md`, `spec.md`, `plan.md`,
+or `tasks.md`. It blocks if local git cannot verify the comparison or if any
+other file changed. Mutating finalization and auto-merge require
+`--expected-head` or `--head-sha` for the reviewed and validated PR head; the
+helper blocks if the explicit expected head is absent or differs from the
+current PR head returned by GitHub. Dry-run inspection may omit the expected
+head. The helper provides no direct-push, force, or admin-bypass path. With
+`--auto-merge-pending`, pending required checks may enable GitHub protected
+auto-merge instead of immediate merge; without that flag they remain blockers.
 
 Current executable feature-memory checks, including local preflight and the CI
 guard script, still validate the existing `spec.md`, `plan.md`, and `tasks.md`
@@ -376,9 +441,15 @@ Before merge, the author should also confirm the SENAR done gate:
   development
 - if the current PR head is after the effective content head validated by
   Architect and Analyst, Orchestrator's read-only current-PR-head guard confirms
-  every later commit is final-validation evidence-only and all merge-readiness
-  gates still apply to the current head
-- any remaining known issue is accepted by the human merge owner
+  the recorded `Effective content head: <40-hex-sha>`, matching
+  `Architect validated effective content head: <40-hex-sha>`, and matching
+  `Analyst validated effective content head: <40-hex-sha>`, explicitly
+  references that effective content head, verifies every later commit is
+  final-validation evidence-only, and confirms all merge-readiness gates still
+  apply to the current head
+- any remaining known issue is resolved or has an explicit owner decision; if
+  that decision is still pending, Orchestrator records it as an exceptional
+  human blocker instead of merging
 
 Completion cannot rely only on an Implementation Agent summary, Review Agent
 summary, or other AI-written summary. Orchestrator completion evidence must name

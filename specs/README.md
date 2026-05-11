@@ -84,14 +84,15 @@ validation. The set records every contributing PR slice by purpose, branch, PR
 number or reliable discovery metadata, current or final head SHA, status, and
 whether it is included in final validation.
 
-Before completion or authorized merge mechanics, Orchestrator invokes final
-Architect validation first. Architect validates all PR slices, Architect-assigned
-tasks and dispositions, architectural guidance, open task state, process memory,
-and customer intent in spirit. Architect gaps update only Architect-owned
-artifacts/dispositions, increment the Architect return count, and return control
-to Orchestrator. Architect may return work at most 10 times per work cycle; if
-another Architect gap would exceed that limit, Architect reports the breach and
-Orchestrator asks Analyst for a new feature request.
+Before completion, conservative Orchestrator finalization, or merge,
+Orchestrator invokes final Architect validation first. Architect validates all PR
+slices, Architect-assigned tasks and dispositions, architectural guidance, open
+task state, process memory, and customer intent in spirit. Architect gaps update
+only Architect-owned artifacts/dispositions, increment the Architect return
+count, and return control to Orchestrator. Architect may return work at most 10
+times per work cycle; if another Architect gap would exceed that limit,
+Architect reports the breach and Orchestrator asks Analyst for a new feature
+request.
 
 After Architect passes, Orchestrator invokes final Analyst validation. Analyst
 validates the final result against the customer's desired outcome in spirit and
@@ -106,18 +107,28 @@ separate latest-main branch/worktree.
 Final validation adds gates but does not replace merge readiness. Required
 checks, blocking review status, conflict status, acceptance evidence, current
 process memory, Implementation Agent feedback disposition, final guard evidence,
-and human merge-owner rules remain required.
+branch-protection readiness, and PR-only delivery remain required. For
+Orchestrator-managed PRs, those gates lead to conservative Orchestrator
+finalization and merge instead of routine human approval. Human
+involvement remains a narrow blocker only for explicit no-merge instructions,
+missing credentials or permissions, ambiguous repository or PR state risking the
+wrong PR, data loss, conflicts or status ambiguity, protected-branch policy
+blockers, or an unresolved owner decision for an accepted known issue.
 
 Architect and Analyst final validation apply to the effective content head: the
 PR head containing implementation, workflow docs/templates, feature memory,
 review fixes, and other behaviorally meaningful content. A later
 final-validation evidence-only commit may record role-owned validation evidence
-or process memory without recursive role validation only when Orchestrator's
-read-only current-PR-head guard names the current head, compares it with the
-effective content head, proves the later commit is evidence-only, and confirms
-merge-readiness gates still apply. Any post-validation change to product
-behavior, durable workflow rules, templates, scoped implementation docs, code,
-tests, runtime files, CI, branch protection, review dispositions, or other
+or process memory without recursive role validation only when process evidence
+records `Effective content head: <40-hex-sha>`, Architect-owned passing notes
+record `Architect validated effective content head: <40-hex-sha>`,
+Analyst-owned passing notes record
+`Analyst validated effective content head: <40-hex-sha>` for the same SHA, and
+Orchestrator's read-only current-PR-head guard names the current head, compares
+it with the effective content head, proves the later commit is evidence-only,
+and confirms merge-readiness gates still apply. Any post-validation change to
+product behavior, durable workflow rules, templates, scoped implementation docs,
+code, tests, runtime files, CI, branch protection, review dispositions, or other
 non-evidence content makes prior validation stale and must be routed back
 through role-appropriate follow-up or final validation.
 
