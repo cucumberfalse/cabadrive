@@ -177,9 +177,10 @@ test("primary sources reader opens in simple Russian and switches to full Russia
 
   await expect(page.getByRole("heading", { name: "Официальные источники" })).toBeVisible();
   await expect(page.getByText("19 документов manifest")).toBeVisible();
-  await expect(page.getByText("7 документов доступно для чтения")).toBeVisible();
-  await expect(page.getByText("12 документов ждут одобренный русский слой")).toBeVisible();
+  await expect(page.getByText("10 документов доступно для чтения")).toBeVisible();
+  await expect(page.getByText("9 документов ждут одобренный русский слой")).toBeVisible();
   await expect(page.getByText(primarySourceVehicleDocuments.shortTitleRu).first()).toBeVisible();
+  await page.getByRole("button", { name: new RegExp(primarySourceVehicleDocuments.shortTitleRu) }).click();
   await expect(page.getByRole("heading", { name: primarySourceVehicleDocuments.shortTitleRu })).toBeVisible();
   await expect(page.getByRole("button", { name: /Ley 24449/ })).toHaveCount(0);
   await expect(page.getByText(/еще не подготовлен/)).toHaveCount(0);
@@ -220,6 +221,7 @@ test("primary sources search, filters, and chunk navigation stay local and chunk
 test("primary sources no-result search leaves detail in empty filter state", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Источники/ }).click();
+  await page.getByRole("button", { name: new RegExp(primarySourceVehicleDocuments.shortTitleRu) }).click();
   await expect(page.getByRole("heading", { name: primarySourceVehicleDocuments.shortTitleRu })).toBeVisible();
 
   await page.getByPlaceholder(/Искать по источникам/).fill("zz-no-local-primary-source-match");
@@ -235,7 +237,6 @@ test("primary sources no-result search leaves detail in empty filter state", asy
   await expect(page.getByRole("tab", { name: "Просто" })).toHaveCount(0);
 
   await page.getByRole("button", { name: "Сбросить фильтры" }).first().click();
-  await expect(page.getByRole("heading", { name: primarySourceVehicleDocuments.shortTitleRu })).toBeVisible();
   await expect(page.getByTestId("primary-source-reader")).toBeVisible();
   await expect(page.getByRole("tab", { name: "Просто" })).toHaveAttribute("aria-selected", "true");
 });

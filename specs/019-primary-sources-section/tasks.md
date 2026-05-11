@@ -792,3 +792,16 @@
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.
+- PR #102 base sync over fresh PR #101 base on 2026-05-10:
+  - Worktree `/Users/chap/devel/cabadrive-pr102-ui-reader-conflict` used local branch `codex/019-primary-sources-ui-reader-conflict` from `origin/codex/019-primary-sources-ui-reader` to avoid touching the existing UI-reader worktree checked out elsewhere.
+  - Fetched origin and merged `origin/codex/019-primary-sources-content-batch-vehicle-docs` at `d7ed4b5` into the PR #102 head.
+  - The merge conflict was limited to `specs/019-primary-sources-section/tasks.md`; resolution preserved both PR #102 UI-reader verification notes and PR #101 D3 VTV/Ley 6631/siniestros content-batch notes.
+  - The merge brought in the approved D3 learner, QA, and search shards for `ley-6631-caba-vtv-modificatoria-ley-2265`, `gcba-vtv-tramite-current`, and `gcba-guia-practica-siniestros-viales`.
+  - First post-merge `pnpm run test:e2e` failed because PR #101 increased readable source documents from 7 to 10 and changed the default readable document by manifest order. The e2e assertions were updated to expect 10 readable documents, 9 unavailable documents, and to explicitly select the vehicle-document source before checking vehicle-specific detail content.
+  - `pnpm install --frozen-lockfile` was needed in the fresh worktree and completed with no tracked package metadata changes.
+  - `git diff --check` passed with no output.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 153 Node tests, 153 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, emitted app and `primarySources-D4ASnehl.js` chunks, and service worker generation completed with 281 cached assets. Vite retained the existing large-chunk warning for both app and primary-source chunks.
+  - Re-run `pnpm run test:e2e` passed: 32 Playwright tests, 32 pass, 0 fail across desktop and mobile projects.
+  - No unresolved merge conflicts remained locally after this sync.
