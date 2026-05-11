@@ -18,9 +18,72 @@ const difficultyAria: Record<string, string> = {
   red: "Сложность: красный, целевой повтор"
 };
 
+async function forceRandom(page: Page, randomValue: number) {
+  await page.addInitScript((value) => {
+    Math.random = () => value;
+  }, randomValue);
+}
+
 async function storedAnswerCount(page: Page) {
   return page.evaluate(() => JSON.parse(localStorage.getItem("cabadrive.progress.v1") || "{\"answers\":[]}").answers.length);
 }
+
+async function visibleTicketId(page: Page) {
+  const metaText = await page.getByTestId("question-card").locator(".question-meta").textContent();
+  const match = metaText?.match(/Билет\s+(b-fallback-\d+)/);
+  if (!match) throw new Error(`Could not find visible ticket id in ${metaText}`);
+  return match[1];
+}
+
+async function firstVisibleTicketIds(page: Page, count: number) {
+  const ids = [];
+  const nav = page.getByTestId("question-card").locator(".question-flow-nav");
+  for (let index = 0; index < count; index += 1) {
+    ids.push(await visibleTicketId(page));
+    if (index < count - 1) {
+      await nav.getByRole("button", { name: "Следующий" }).click();
+    }
+  }
+  return ids;
+}
+
+test.beforeEach(async ({ page }, testInfo) => {
+  if (testInfo.title.includes("default Learn exposes all questions")) return;
+  await forceRandom(page, 0.999999);
+});
+
+test("default Learn exposes all questions and uses session-stable controlled shuffle", async ({ browser }) => {
+  const canonicalPage = await browser.newPage();
+  await forceRandom(canonicalPage, 0.999999);
+  await canonicalPage.goto("/");
+  const canonicalNav = canonicalPage.getByTestId("question-card").locator(".question-flow-nav");
+  await expect(canonicalNav.getByText("1 / 460")).toBeVisible();
+  const canonicalOrder = await firstVisibleTicketIds(canonicalPage, 3);
+  expect(canonicalOrder).toEqual(questions.slice(0, 3).map((question: { id: string }) => question.id));
+
+  await canonicalNav.getByRole("button", { name: "Предыдущий" }).click();
+  await canonicalNav.getByRole("button", { name: "Предыдущий" }).click();
+  await expect(canonicalPage.getByText(questions[0].officialTextEs)).toBeVisible();
+  await canonicalPage.getByRole("button", { name: /Сложный/ }).click();
+  await canonicalPage.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect(canonicalPage.locator(".result")).toBeVisible();
+  const search = canonicalPage.getByPlaceholder("Поиск по испанскому, русскому, теме");
+  await search.fill("b-fallback-004");
+  await expect(canonicalNav.getByText("1 / 1")).toBeVisible();
+  await expect(canonicalPage.getByText(questions[3].officialTextEs)).toBeVisible();
+  await search.fill("");
+  await expect(canonicalNav.getByText("1 / 460")).toBeVisible();
+  expect(await firstVisibleTicketIds(canonicalPage, 3)).toEqual(canonicalOrder);
+  await canonicalPage.close();
+
+  const reshuffledPage = await browser.newPage();
+  await forceRandom(reshuffledPage, 0);
+  await reshuffledPage.goto("/");
+  await expect(reshuffledPage.getByTestId("question-card").locator(".question-flow-nav").getByText("1 / 460")).toBeVisible();
+  const reshuffledOrder = await firstVisibleTicketIds(reshuffledPage, 3);
+  expect(reshuffledOrder).not.toEqual(canonicalOrder);
+  await reshuffledPage.close();
+});
 
 test("learning flow renders category B image and records a mistake", async ({ page }) => {
   await page.goto("/");
@@ -33,6 +96,7 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect(page.locator(".toolbar").getByRole("button", { name: "Следующий" })).toHaveCount(0);
   const bottomNav = card.locator(".question-flow-nav");
   await expect(bottomNav).toBeVisible();
+  await expect(bottomNav.getByText("1 / 460")).toBeVisible();
   await expect(bottomNav.getByRole("button", { name: "Предыдущий" })).toBeDisabled();
   await expect(bottomNav.getByRole("button", { name: "Следующий" })).toBeEnabled();
   const questionToggle = card.getByRole("button", { name: /¿Qué indica esta seña/ });

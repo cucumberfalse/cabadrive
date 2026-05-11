@@ -14,7 +14,7 @@ const domainJavaScript = ts.transpileModule(domainSource, {
   fileName: "src/domain.ts"
 }).outputText;
 const domain = await import(`data:text/javascript;base64,${Buffer.from(domainJavaScript).toString("base64")}`);
-const { formatDuration, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet } = domain;
+const { formatDuration, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } = domain;
 
 test("scoring floors percentage for official exam threshold comparison", () => {
   assert.equal(scorePercent(34, 40), 85);
@@ -44,6 +44,40 @@ test("exam selection honors random order rule from the configured pool", () => {
   assert.equal(new Set(lowShuffle).size, 3);
   assert.equal(new Set(highShuffle).size, 3);
 });
+
+test("learning shuffle returns every question once without mutating input", () => {
+  const questions = ["q1", "q2", "q3", "q4", "q5"].map((id) => ({ id }));
+  const originalOrder = questions.map((question) => question.id);
+  const shuffled = shuffleQuestions(questions, () => 0).map((question) => question.id);
+
+  assert.deepEqual(questions.map((question) => question.id), originalOrder);
+  assert.deepEqual([...shuffled].sort(), [...originalOrder].sort());
+  assert.equal(new Set(shuffled).size, questions.length);
+});
+
+test("learning shuffle supports deterministic random streams", () => {
+  const questions = ["q1", "q2", "q3", "q4", "q5"].map((id) => ({ id }));
+  const lowShuffle = shuffleQuestions(questions, () => 0).map((question) => question.id);
+  const highShuffle = shuffleQuestions(questions, () => 0.999999).map((question) => question.id);
+  const streamedShuffle = shuffleQuestions(questions, sequenceRandom([0.2, 0.7, 0.1, 0.9])).map((question) => question.id);
+
+  assert.notDeepEqual(lowShuffle, highShuffle);
+  assert.notDeepEqual(streamedShuffle, highShuffle);
+  assert.deepEqual(highShuffle, questions.map((question) => question.id));
+});
+
+test("learning shuffle handles an empty input", () => {
+  assert.deepEqual(shuffleQuestions([], () => 0.5), []);
+});
+
+function sequenceRandom(values) {
+  let index = 0;
+  return () => {
+    const value = values[index] ?? values.at(-1) ?? 0;
+    index += 1;
+    return value;
+  };
+}
 
 test("exam config uses current 2025 CABA format", () => {
   const exam = JSON.parse(readFileSync("content/config/caba-exam-format.json", "utf8"));

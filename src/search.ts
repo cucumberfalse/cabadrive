@@ -19,7 +19,7 @@ function haystackFor(question: Question) {
 
 export function searchQuestions(query: string, questions = data.questions) {
   const normalized = query.trim().toLowerCase();
-  if (!normalized) return questions.slice(0, 25);
+  if (!normalized) return questions.slice();
   const terms = normalized.split(/\s+/);
   return questions.filter((question) => {
     const haystack = haystackFor(question);
