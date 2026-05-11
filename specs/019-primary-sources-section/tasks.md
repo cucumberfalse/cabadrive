@@ -880,3 +880,15 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #105 D6 Anexo L third review-fix verification on 2026-05-10:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--47-barandas-canalizadoras-de-transito-057` full Russian translation terminology: traffic channelizing barriers are now `дорожные направляющие барьеры`, `dársenas` are `карманы`, `isletas/islas` are `островки`, `canalizadores` are `направляющие элементы`, and inert safety-treated fill material is no longer described as a detailed element.
+  - Preserved the barrier legal requirements in the full translation: 70-90 cm height, 40 cm base width, 1 m length, at least 10 cm embedding when needed, and white/orange temporary versus white/red permanent color rules.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-ix-058` full Russian translation from prophylactic posters to special warning boards/ щиты, matching the already warning-oriented simple Russian rewrite.
+  - Cleaned the same bad `детализирован` learner-facing term from an earlier Anexo L support-material sentence so the requested targeted bad-token check is clean without touching official Spanish archive text.
+  - Targeted check `rg -n "доки|канальные каналы|детализирован|профилактические плакаты|ПЕРИЛА" content/primary-sources/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.ru.json` found no matches.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
