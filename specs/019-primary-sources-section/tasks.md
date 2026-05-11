@@ -109,7 +109,7 @@
 - [x] D8-001 Translate and simplify all 202 chunks in the insurance content batch for `ley-17418-seguros`.
 - [x] D8-002 Add per-document learner, QA, and search shards for `ley-17418-seguros`.
 - [x] D8-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
-- [ ] D9-001 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 001-086 inclusive.
+- [x] D9-001 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 001-086 inclusive.
 - [ ] D9-002 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 087-172 inclusive.
 - [ ] D9-003 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 173-258 inclusive.
 - [ ] D9-004 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 259-344 inclusive.
@@ -921,6 +921,24 @@
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because the GCBA manual, remaining core traffic/CABA code, and large legal-duty sources still require later approved learner-source content and exact-text validation remains pending.
+- Slice D9-001 Penal Code content batch ran in assigned fresh worktree `/Users/chap/devel/cabadrive-019-primary-sources-penal-001-086-v2` on local branch `codex/019-primary-sources-penal-001-086-v2`, stacked on `origin/codex/019-primary-sources-content-batch-insurance` at `1d5094c`.
+- The originally requested worktree `/Users/chap/devel/cabadrive-019-primary-sources-penal-001-086` was clean but already held local branch `codex/019-primary-sources-penal-001-086` with divergent upstream state and one local commit; this slice used the `-v2` worktree to avoid overwriting or rebasing another worker's branch state. Final push target remains `origin/codex/019-primary-sources-penal-001-086`.
+- Added reviewed range shards for generated coverage orders 001-086 of `ley-11179-codigo-penal`:
+  - `content/primary-sources/documents/ley-11179-codigo-penal--001-086.ru.json`
+  - `content/primary-sources/qa/ley-11179-codigo-penal--001-086.qa.json`
+  - `content/primary-sources/search/ley-11179-codigo-penal--001-086.search.json`
+- The learner shard copies chunk IDs, `officialDocumentId`, order, heading path, official label, chunking strategy, source span, source text hash, source fingerprint, and exact archive-derived `originalSpanish` for all 86 assigned chunks from `content/primary-sources/primary-sources.coverage.json` and `content/official-documents/documents/ley-11179-codigo-penal.md`.
+- Full Russian translation and simple Russian rewrites cover the Penal Code thematic index, general provisions, application of criminal law, penalties, conditional release/conditional sentence rules, reparation rules, imputability defenses, aggravating/reduction rules, terrorism aggravation, and the first attempted-crime article. Terminology preserves `Código Penal`, `reclusión`, `prisión`, `inhabilitación`, article numbers, penalty ranges, legal exceptions, amendment notes, and manifest exact-text caveats.
+- QA shard marks all 86 translation and simplification records `approved` with `checkedAt: "2026-05-10"` and chunk-specific notes naming the archive span, coverage fingerprint, generated order, method, and exact-text pending limitation. No D9-001 QA note is intended to resolve final exact-text validation.
+- Search shard has 86 entries, one per assigned chunk, with `entryId` equal to `chunkId` and projected text fields `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish`.
+- Custom D9-001 batch check passed before final verification: document, QA, and search shards have exactly 86 records; chunk IDs and orders match coverage orders 001-086; `sourceSpan`, `sourceTextSha256`, `sourceFingerprint`, and `originalSpanish` match the official archive spans; Russian fields are nonempty and free of draft/placeholder markers; QA status and checked date are correct; search references match; no simplified-Spanish keys are present.
+- Required D9-001 verification passed on 2026-05-10:
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 47 tests, 47 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- D9-001 does not edit `content/official-documents/**`, Ley 24.449, Anexo L, insurance shards, UI files, validation scripts, or unrelated durable docs. Whole Penal Code release remains blocked by D9-002 through D9-006 and D9-900 recomposition, and whole-feature release remains blocked by remaining large-document batches plus pending exact-text validation.
 - Rebase sync of D6 Anexo L signage batch onto PR #104 green base on 2026-05-10:
   - `git fetch origin` completed, then `git rebase origin/codex/019-primary-sources-content-batch-core-traffic-law` replayed the Anexo L batch above `2d49d44bab76cb1fc9eb1275a94bbfbe3fcad158`.
   - Conflict resolution in this file preserved DNRPA D4 evidence, Decreto D5 evidence from PR #104, and Anexo L evidence as D6. No learner-source shard conflict occurred.
