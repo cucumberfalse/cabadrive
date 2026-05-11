@@ -1,0 +1,404 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-vtv-tramite-current",
+  "entries": [
+    {
+      "entryId": "gcba-vtv-tramite-current--verificacion-tecnica-vehicular-obligatoria-001",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--verificacion-tecnica-vehicular-obligatoria-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--cuales-son-los-requisitos-002",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--cuales-son-los-requisitos-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--requisitos-obligatorios-003",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--requisitos-obligatorios-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--requisitos-obligatorios-al-momento-de-presentarte-al-turno-004",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--requisitos-obligatorios-al-momento-de-presentarte-al-turno-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--para-vehiculos-en-condicion-de-clasico-o-de-005",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--para-vehiculos-en-condicion-de-clasico-o-de-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--exentos-de-pago-006",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--exentos-de-pago-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-jubilados-pensionados-007",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-jubilados-pensionados-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-personas-con-008",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-personas-con-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-personas-con-009",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--para-solicitar-la-exencion-de-pago-personas-con-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--padres-010",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--padres-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--tutores-011",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--tutores-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--descendientes-012",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--descendientes-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--conyuges-013",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--conyuges-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--convivientes-014",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--convivientes-014",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--como-solicitar-la-exencion-de-pago-015",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--como-solicitar-la-exencion-de-pago-015",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--cuando-son-aplicables-las-bonificaciones-016",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--cuando-son-aplicables-las-bonificaciones-016",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--pasos-para-realizar-el-tramite-017",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--pasos-para-realizar-el-tramite-017",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--reserva-tu-turno-018",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--reserva-tu-turno-018",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--completa-el-formulario-web-019",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--completa-el-formulario-web-019",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--selecciona-alguna-de-las-7-plantas-la-fecha-020",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--selecciona-alguna-de-las-7-plantas-la-fecha-020",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--completa-los-datos-del-pago-que-se-te-021",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--completa-los-datos-del-pago-que-se-te-021",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--abona-la-reserva-del-turno-022",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--abona-la-reserva-del-turno-022",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--costos-del-tramite-023",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--costos-del-tramite-023",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--nuevas-medidas-en-el-tramite-de-la-vtv-024",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--nuevas-medidas-en-el-tramite-de-la-vtv-024",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--resultados-de-la-vtv-025",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--resultados-de-la-vtv-025",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--exentos-de-pago-026",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--exentos-de-pago-026",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--mas-informacion-027",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--mas-informacion-027",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--descargas-028",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--descargas-028",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--normativa-029",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--normativa-029",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--inicia-el-tramite-y-completa-todos-los-pasos-030",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--inicia-el-tramite-y-completa-todos-los-pasos-030",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--encontra-la-oficina-mas-cercana-031",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--encontra-la-oficina-mas-cercana-031",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--organismo-responsable-032",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--organismo-responsable-032",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--gerencia-operativa-transporte-de-pasajeros-no-colectivo-y-033",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--gerencia-operativa-transporte-de-pasajeros-no-colectivo-y-033",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--ubicacion-034",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--ubicacion-034",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--dias-de-atencion-035",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--dias-de-atencion-035",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-vtv-tramite-current--horarios-de-atencion-036",
+      "officialDocumentId": "gcba-vtv-tramite-current",
+      "chunkId": "gcba-vtv-tramite-current--horarios-de-atencion-036",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
