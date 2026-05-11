@@ -837,6 +837,13 @@
   - Targeted `rg` and JSON checks confirmed stale Russian arrest wording is absent from the R.9 learner text, while expected Spanish `detención` remains only in source/coverage/terminology contexts.
   - `git diff --check`, `pnpm run validate:content`, `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content`, `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs`, and `node scripts/check-feature-memory.mjs --worktree` passed.
   - `pnpm run preflight` passed; it included feature-memory/repo checks, content validation, 153 node tests, build/service-worker generation, and 22 Playwright e2e tests. Vite retained the existing large-chunk warning.
+- PR #117 D6 Anexo L R.25/service-stop wording follow-up on 2026-05-11:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--10-senales-de-restriccion-017` full Russian translation so R.25 control-point `detención` means a mandatory stop at police/customs/inspection/toll controls, not detention or arrest.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--24-informacion-turistica-y-de-servicios-031` full Russian translation so the service sign `PLAZA` is `ПЛОЩАДЬ`, and the public passenger transport area is a stop zone, not detention.
+  - Checked Anexo L search/QA shards: they reference `fullTranslationRu`, `simpleRu`, and `originalSpanish` fields by name and do not mirror the corrected learner text, so no projection file update was required.
+  - Targeted `rg` and JSON checks confirmed stale Russian detention wording is absent from the affected R.25/service learner text, while expected Spanish `detención` remains only in source/coverage/terminology contexts.
+  - `git diff --check`, `pnpm run validate:content`, `PRIMARY_SOURCES_VALIDATION_MODE=coverage pnpm run validate:content`, `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs`, and `node scripts/check-feature-memory.mjs --worktree` passed.
+  - `pnpm run preflight` passed; it included feature-memory/repo checks, content validation, 153 node tests, build/service-worker generation, and 22 Playwright e2e tests. Vite retained the existing large-chunk warning.
 - PR #103 P2 rebase finding disposition on 2026-05-10:
   - D4/DNRPA is intentionally stacked on PR #101 by Orchestrator assignment to preserve the prerequisite content/schema stack and keep this PR diff limited to one document batch.
   - This PR should not be retargeted or rebased to latest `main` outside that assigned stacked sequence. The final merge gate remains a green stacked sequence plus human-controlled merge ordering.
