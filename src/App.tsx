@@ -15,7 +15,7 @@ import {
   type TopicGuideTicket
 } from "./data/content";
 import { DifficultyIndicator } from "./difficulty";
-import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
+import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
@@ -472,8 +472,10 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   const [index, setIndex] = useState(0);
   const [timerStates, setTimerStates] = useState<Record<string, LearningTicketTimerState>>({});
   const [attemptsByQuestion, setAttemptsByQuestion] = useState<Record<string, QuestionAttemptState>>({});
-  const results = useMemo(() => searchQuestions(query), [query]);
-  const hasActiveSearch = query.trim().length > 0;
+  const [sessionQuestions] = useState(() => shuffleQuestions(data.questions));
+  const normalizedQuery = query.trim();
+  const hasActiveSearch = normalizedQuery.length > 0;
+  const results = useMemo(() => hasActiveSearch ? searchQuestions(normalizedQuery) : sessionQuestions, [hasActiveSearch, normalizedQuery, sessionQuestions]);
   const hasResults = results.length > 0;
   const currentIndex = results.length ? Math.min(index, results.length - 1) : 0;
   const question = results[currentIndex];
