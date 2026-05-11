@@ -781,6 +781,9 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #103 P2 rebase finding disposition on 2026-05-10:
+  - D4/DNRPA is intentionally stacked on PR #101 by Orchestrator assignment to preserve the prerequisite content/schema stack and keep this PR diff limited to one document batch.
+  - This PR should not be retargeted or rebased to latest `main` outside that assigned stacked sequence. The final merge gate remains a green stacked sequence plus human-controlled merge ordering.
 - PR #104 stack decision on 2026-05-10:
   - This content slice is intentionally stacked on PR #103 by Orchestrator to preserve schema/content prerequisites and keep the PR diff to one document batch; final merge gate remains human-controlled after the stack is green.
 - PR #104 review-finding follow-up on 2026-05-10:
@@ -806,3 +809,13 @@
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
   - No blockers remain for this content-batch slice. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.
+- PR #104 DNRPA base-branch merge conflict resolution on 2026-05-11:
+  - Used isolated worktree `/Users/chap/devel/cabadrive-pr104-decreto-conflict`, fetched origin, checked out detached `origin/codex/019-primary-sources-content-batch-core-traffic-law`, and merged `origin/codex/019-primary-sources-content-batch-dnrpa` into the PR #104 head.
+  - The only merge conflict was `specs/019-primary-sources-section/tasks.md`; it was resolved by preserving both the DNRPA PR #103 stack-disposition note and the Decreto PR #104 stack/review/D5 process-memory notes.
+  - No content-shard conflicts occurred. The PR diff against the updated DNRPA base remains limited to the Decreto 779 learner, QA, and search shards plus this process-memory file.
+  - `git diff --check` passed with no output before and after build.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - First `pnpm run test` failed because the fresh worktree had no installed `node_modules` and `typescript` was unavailable to `tests/domain.test.mjs`. `pnpm install --frozen-lockfile` then completed using the existing lockfile with no package metadata changes.
+  - Re-run `pnpm run test` passed: 153 tests, 153 pass, 0 fail.
+  - `pnpm run build` passed: content validation passed, assets synced, Vite built `dist/`, and service worker generation completed with 280 cached assets. Vite retained the existing large-chunk warning for the app bundle.
+  - No merge-conflict blocker remains for PR #104 after this sync. Whole-corpus final release gates remain open because other official-source documents still lack approved learner-source content and exact-text validation remains pending.
