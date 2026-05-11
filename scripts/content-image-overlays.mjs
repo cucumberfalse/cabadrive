@@ -174,7 +174,9 @@ function collectUsageRegionIds(usage) {
 }
 
 function inferredRegionIdsForRelevance(relevance, image) {
-  const regionIds = new Set(relevance?.regionIds || []);
+  const explicitRegionIds = (relevance?.regionIds || []).filter(isNonEmptyString);
+  if (explicitRegionIds.length) return [...new Set(explicitRegionIds)].sort();
+  const regionIds = new Set();
   const { detailToRegionIds, objectToRegionIds } = collectImageRegionMappings(image);
   for (const detailId of relevance?.detailIds || []) {
     for (const regionId of detailToRegionIds.get(detailId) || []) regionIds.add(regionId);

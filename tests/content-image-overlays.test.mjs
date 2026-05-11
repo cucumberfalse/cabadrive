@@ -344,6 +344,54 @@ test("non-critical overlay geometry cannot fully mask answer-critical regions", 
   }
 });
 
+test("explicit 009 regionIds stay authoritative over detail and object inference", () => {
+  const image = baseImage();
+  image.regions = [
+    {
+      regionId: "key-region",
+      label: "small hand signal cue",
+      semanticLocation: "center",
+      localizationConfidence: "high",
+      approximateBoundingBox: { coordinateSpace: "percent", x: 44, y: 40, width: 12, height: 18 }
+    },
+    {
+      regionId: "foreground-cyclist-region",
+      label: "foreground cyclist body",
+      semanticLocation: "foreground",
+      localizationConfidence: "medium",
+      includesObjectIds: ["sign"],
+      includesDetailIds: ["key-symbol"],
+      approximateBoundingBox: { coordinateSpace: "percent", x: 5, y: 5, width: 65, height: 83 }
+    },
+    { regionId: "background-region", label: "background region", semanticLocation: "edges", localizationConfidence: "medium" }
+  ];
+  const usage = baseUsage();
+  const generated = buildCurrentOverlayBundle({
+    questions: [baseQuestion],
+    metadataManifest: { version: 1, images: [image], questionUsages: [usage] },
+    reviewer,
+    reviewedAt
+  });
+  const criticalRegion = generated.overlayManifest.overlays[0].regions.find(
+    (region) => region.sourceRole === "answer_critical_highlight"
+  );
+  assert.deepEqual(criticalRegion.regionIds, ["key-region"]);
+  assert.deepEqual(criticalRegion.rect, { x: 44, y: 40, width: 12, height: 18 });
+
+  const widenedOverlay = baseOverlay({ image, usage });
+  widenedOverlay.referencedRegionIds = [...widenedOverlay.referencedRegionIds, "foreground-cyclist-region"];
+  widenedOverlay.regions[1] = {
+    ...widenedOverlay.regions[1],
+    regionIds: ["key-region", "foreground-cyclist-region"],
+    rect: { x: 5, y: 5, width: 65, height: 83 }
+  };
+  assert(
+    validateSynthetic({ image, usage, overlay: widenedOverlay }).some((error) =>
+      error.includes("region foreground-cyclist-region not used by current question usage")
+    )
+  );
+});
+
 test("missing and duplicate current overlay coverage fail strict validation", () => {
   const bundle = manifestAndEvidence();
   const missing = validateImageExplanationOverlays({

@@ -19,7 +19,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "dbbf42739a4b7a9c59495dc9c808a75076fc4f8d3faf8b441566f37b82c8d1a1",
+      "overlaySha256": "cb739dc3d85cd318d7e6e309ad7c5bfe6f7881c1c6862cc440ac7bb6fe9aaa5a",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -154,7 +154,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "bfe81764ce44078fd72225b04e33a90641ed8d25855c488c001afc172b2a72ba",
+      "overlaySha256": "19c683e87bd9c42c38a50232232e3c4b6bf47fee800209a1a7f3a5663164c834",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -505,7 +505,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "38036cf49b7871d4ac387d3955ec15270bb98744e3eb533a6d81a0b27dd005e9",
+      "overlaySha256": "7ef0843c3f57ad1fa76bec1b08f7abe6de6a5bbfe2e6462163174b7e75175fe3",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -640,7 +640,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "299a35aebf970ede1aebfeef1b174efafb5c611e79be20b5ce1fa08b134a3748",
+      "overlaySha256": "16d872c0a1ad21795b4708a07450f738cd89366898789bbb7844a10bbace8ebd",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -667,7 +667,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "64626a25e22a3cc9df76300faf2c622c83e1aca643b61a91c453dd2961cabbd6",
+      "overlaySha256": "2f2367df265b38cf422ba49268021ae14c0b5cc941477fbf21f2e43e86ef34bf",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -721,7 +721,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "bdb9b0f45f9a2c8164adb082a6b983261abab366581b17faaf615139b2b76128",
+      "overlaySha256": "a86b2a1822e7f119e0a12369568b9f3503c4be65195a916f97983c619dcff1d4",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -775,7 +775,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "c234acd3d391cda3df0289b7051ef323821b26cfdd7979901783602e03db3fd9",
+      "overlaySha256": "6d11dbf1c0ae8d2e60469e2ff9f5f5b34e5d532504e4ddd57c74d6829a3e1a13",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -802,7 +802,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "8eae8b0d20392d042e8ac79ae278a596ace1af301dbadaf14b930ec99d1b73c1",
+      "overlaySha256": "2c032fde2c34a0df3a4b468006c19d9e40d92538916a4f6d44a831a41a2051c1",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -829,7 +829,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "92e729fcc6bf2c947f73279e6c205e760e72b4a943fc0341b4bf591fa6459947",
+      "overlaySha256": "9baa69f6fd8764c99e00bdc736dab8dea574fc782a9b24d2728a8b382dfe8b7e",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1018,7 +1018,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "8a0fe7f51a73dfa06ae40a52c3a218b84e63ddd5b53b6dc6e5bf051b101de775",
+      "overlaySha256": "099367a3f0d053cc62b3f22b144820ce0250f4fc03a056115316f6588014ea42",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1045,7 +1045,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "1f65eb190aa08651532a883d5aa3ef091734ae8a7cee427bcf190a8c22d40e5f",
+      "overlaySha256": "356058b3b6b3599962ff55e88e17947f96422a3feb491ba5fc194d25c559898d",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1234,7 +1234,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "56357167bb18f85ffa639f918ce16b71f8b1932b7db0e62fa77317b83f0657bd",
+      "overlaySha256": "87e2564cd06adc875639ab10a37cde6317f0496745f9e1c95d8e79135f58547d",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1315,7 +1315,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "077434e8684d7cad5cc45842c29ee526c4b5be07871e80ef82f912b4b76ed0c5",
+      "overlaySha256": "a67cf3d42bd7bf38e73321ce256e4b8e8a755c47b6aea53c1c3eab0727dea3ab",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1450,7 +1450,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "5878115ff6a3a52c97143dddc8cd98f90f5640b0e7e5b6dd19e9abc2937b9ac6",
+      "overlaySha256": "e488d2965a9134f023e982f0f7b08d02b7029b5a31d2d0d3926cae260f8622ab",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1477,7 +1477,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "c51d8db199c9b14f941d50032105ee9879b25aa10b00eb3e11839b90aebcbec6",
+      "overlaySha256": "1a118f05dad200786d4f3086143749923b62ebb8abab5210fc0374c726395c8b",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1666,7 +1666,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "d698572c665d309ba1a6ef0a79a3b18e8a6e86d2d55865ea61699130b1fbccdb",
+      "overlaySha256": "78bb4fbdb85f76b6c8b2de6ce4860b848849d649377121766a27378e94fcfd23",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1747,7 +1747,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "5ddf0a42f454dd0f7547816e727350b70280f9ea71d21f199f05fd1e129b74f9",
+      "overlaySha256": "b8028870203c3947472c1ae7929fd4c8201a26d6b0008f22595def1fa3a40685",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1855,7 +1855,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "1a24b795546d4420cfbb81958147c8c5baf46e1cb5047fb6250e65b6784406a7",
+      "overlaySha256": "d91fb8666de0dc344c86b88d634b0109273cb88954236252ea99cfa0467ddfeb",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1882,7 +1882,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "73eec667b7cc9633fdbff27e9ee4c179adc263ba8a264431480092170f49d455",
+      "overlaySha256": "dfdf57b000181b20cf9aae088b937c7361424a7e2e57907516ffbca0d3b3299e",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -1963,7 +1963,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "2fd4fb1c34b1af4ae33fed5014bd97c4cf6d328e7896aa0ec1120941a8b72400",
+      "overlaySha256": "df9c010c0617505d5cd1c073f3e18bb7de94ab6b477de3cd7d407ea8e4340a8d",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2071,7 +2071,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "7a46b94b8149a0ce60dd69fdf59c0fd5055a209662233f3d16e575f78d94e7a4",
+      "overlaySha256": "8a6960506191df3a271e19902ebd8d89acc7ca53ea24cff666642825f91db6d0",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2125,7 +2125,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "cd4bd4aa85285fb6c29f127cf61e7aa1960c7db240c5d4cd5afd4c992dc4f16c",
+      "overlaySha256": "0d00c28ff6edf0eaf54aae971227c59c4200ecaae4cc8394de71651cb51c3241",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2206,7 +2206,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "ed9ac9a4367f1ce7916b6156f893071b6f8c495aae88cdfd3125164b38660e45",
+      "overlaySha256": "387403a216a3f9de4a4609be0bb3766be612f935eb99c112b8079f2fa178b9bc",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2233,7 +2233,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "585ef3e0b2fb0c260b7d03032c8211e5e0d5f6791ce1276536a947f8f4f6d694",
+      "overlaySha256": "7c6369c2adbcab430f6fdc17bdfc30439eb1df429799baf242aa94a61a670e7d",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2368,7 +2368,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "70acca083a7feded5a697af7ef8e5efc2f538cdf981fcae9a55be1be8025ce31",
+      "overlaySha256": "b097de5b112e50498ee65db44064f99bc40b310346eb5cb104c144a6a6466bcd",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2395,7 +2395,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "2f0e4ae44f8d86ea4411db6d5021598b63148ae99bdb30440361b9b32aa41ba8",
+      "overlaySha256": "27fe418c423f0419d4e785008de571bfdcef9601f09e05259b853a7164a4682b",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2422,7 +2422,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "667a6b2614c4b662fe0db9e41c0268065529840bc2502ef830e8b469900a28d7",
+      "overlaySha256": "2426746b13bc90b1ea49765467bc8d9407ed47632016a85ca7bbe99df28d63ac",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2449,7 +2449,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "6323513dcde7586faee27bf9eb158a85fff0785dbffc6ce9fac3ff2dee658d24",
+      "overlaySha256": "1db885bcf2b71a99af9ee0277ef52b32cc4e955a8447c686ad4e8927405600ec",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2476,7 +2476,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "b2091246f3c2b96e0820e7acbd4e5e6565aaa98d9226fe51e94231d329a5b1da",
+      "overlaySha256": "2b0332ed3ebe5df2f8d0427311cc7729ac67b3c550995a5b3b44e6775add31fb",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2503,7 +2503,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "14c0692a7fd73aa463ce12338188cd6be90bd584a05a46dda6b2dc7375446aee",
+      "overlaySha256": "01d5b5eec68c8abf1f710a91c84533495138ced11c27c7f03fbd8bcacaee06bd",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2692,7 +2692,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "15deadc87f8c204b1318ee15fda6b628e5e944540bb4dd7627fcd5daa678e34f",
+      "overlaySha256": "60c40e77e462f794b7f48d4cee121d93d8ba17e01ca2675f290f82dd831325d8",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2773,7 +2773,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "3d2810bfad35c3fcc23aec9d67fdefeeb906dd4a76593cfb4ef39f82e1a722f6",
+      "overlaySha256": "e8171e3f6b1f49c5593311e6dac23a82f6ae56c9a6a515a4dfdbaf758162a456",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2800,7 +2800,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "0e12e3b571d4746423575303becef3450e2ba864b542a04c57fcde978e14756f",
+      "overlaySha256": "e0d3ee77383a7c45419eca7db8eb2a4bb29e72e109a747668b0142408b240a89",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2827,7 +2827,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "803996e19ed99ca885acc2ac4448a8aed74f57159e0ca1efbe26bb137b3316f7",
+      "overlaySha256": "544939085be25ecc525a2531bd31ca7b369d839b19f977fe5088b37118b714a5",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2854,7 +2854,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "106cbac01f26164de2433fa3f1e5b2c02c63a9b5de20dfb82adbb5d9f06de7ff",
+      "overlaySha256": "1fe399a26dd571a2a234f47f5d230b90c5b888f99bf652252e590b82c8f01ff9",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2881,7 +2881,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "14252a299b7e387210fe9491334546d1e9086fbe9f040d965786b698322d561d",
+      "overlaySha256": "19cd222aba78933a5ffce876d18dfcc0b728b3b7ee01229973be5df6b8cb7e52",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2908,7 +2908,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "93dc7b2f0596b14c18df5a20eb01635a3f2f1a53f98ac9b3f3384bf64b56b09d",
+      "overlaySha256": "48168b03085ea7ed303e229eaf2cd02cf45fb4a0ce86ca859e04ce787e7e9978",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2935,7 +2935,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "c011534008eab6782af6326685cccfacc9482b05fc35f671c87d7a2ff586d183",
+      "overlaySha256": "1de5521fa237d977ee3af133bf7765a5e5b161d06ef5076a996b647fd500d322",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2962,7 +2962,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "2f0c7cba4890aaf761a3f27d8b6915f2fe1aafbf8654ea65ed30508abcb50b09",
+      "overlaySha256": "580980307fcbfd066bb5886a49eef8a353625c2b86e4da64d5a2064ca78d5bbc",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -2989,7 +2989,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "6c36c0e1cd8723152a055c273721255842ba7140f533dd82a09eedc179df2d1e",
+      "overlaySha256": "a4e697c03ffa6a85b71451450e3effc36769563368ea021f8faedb463d2c5055",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3016,7 +3016,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "45213c6dcbc19280dbda0898b8ff889f92d2f00ef0e635d1ead3b3c3868da923",
+      "overlaySha256": "494defa27428aff0da6a422eef56168265787d0a74abaec83fb76ff0be0fdc38",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3043,7 +3043,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "4a261e8361b7921fb831ca91f0f1fc79f3b8d42c70b4308267ae83b3f1ad0198",
+      "overlaySha256": "46e0feeea785bc027d74c6dc6ec19684c6a67466cdb9a615b0dd63ea0d72ed95",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3070,7 +3070,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "d6254f822fbc734d708ff7ff83f6342fb8c717af8c05bfda70423cdd6fb52a18",
+      "overlaySha256": "c0240a53654e010d182a9f547d53ebcc954cc32a6386e589dd26472bff8e434a",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3097,7 +3097,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "ed887054127a6595471d763219607a7f056fdcab8e2f612a89bb33075a67562e",
+      "overlaySha256": "28332f2b8896cf62b71349f148afabcdca67ec805fb336303fdce65a4b43f7f9",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3124,7 +3124,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "43b535c1da4ffc2dc60eff756525fdc0d8a9f8ba0863d3681200fd8e7e2e4d84",
+      "overlaySha256": "f47cf60fdddb136e2c1f03a353164ae3a7c3eef25a69731d41280a30a4a1e8ab",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3151,7 +3151,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "c949a8f687aadc19ddc5bb799b6ebb62bbc748021b06428bf8639f76a2bc18b4",
+      "overlaySha256": "ca9c4c4271e91669371fc62b2aa676287dd2bbb7459ca3ff0c17c39f0a28ba90",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3178,7 +3178,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "a31706fd6ae677b05b8116ab4c7e17c3f7634de458f1dd07dd58fee08f145695",
+      "overlaySha256": "dfedef32bae73c4dd01a7bdc1605cc9af6138a23d373b22027885fb103a64183",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3205,7 +3205,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "fee1bcea20bd7e6ec2f05b0e46a1d33e53f9c4142505349e1e8e9dfa685b190c",
+      "overlaySha256": "6241754c7ba62fb2c0813aa99a2ba1dfe754d1427c3df0e007e47e840245970a",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3232,7 +3232,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "cdfa8241746077b352664cdf9b3196803db95e24f8b32229f2111a27e033e56e",
+      "overlaySha256": "efd674736fff37476bfa3318933998bea15278c93296a941160dd474adce242b",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3259,7 +3259,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "0157e84f93b0bf90655d4ecefd80cb18ccaff7fa5fb7c28d61982562b15b1758",
+      "overlaySha256": "65938fbbc49786d007f5a1f4a936d9c98bde59524a02a05e434c0e6a0e2ce2d6",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3286,7 +3286,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "a15cdec9c2448b09eec791397b67a95e084bf4b628d09bbe70ec7dda7a58e6b9",
+      "overlaySha256": "dc73c13775f82f823411d4d24b09c6153800119004e1c428954d2db90b9f5a2b",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3313,7 +3313,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "30672dfa14d2e924bc231aa7056aa726a57b661cc1a907f91bd59f01c60c83a3",
+      "overlaySha256": "20acecc88353507d1824cc1e887e6b914a898ca625cfbc4f4b5ef09b2adb024c",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3340,7 +3340,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "1685dd6c60f003ef61d28a491dca68555bf543f193d1e6a1487f56a84115d496",
+      "overlaySha256": "b30b6f741c25e0b0f1282820b1656e2d13031eccff39bc04df8b5b893dc03b91",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3367,7 +3367,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "df2a15634b248732da79dc3205a66be214a71a58f7e65438d7977a6873d1c566",
+      "overlaySha256": "6c03f543f1f714cd9032e8405c4ec1002fbe3425269a4424be5c3df6dbb40dff",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3394,7 +3394,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "92885e3e4b6c4788f2aad94da27c8999a914f387f2712596359c074bdd00ec04",
+      "overlaySha256": "c3328f0c0ffd66ad5bd3923f0fdbc04f9de08ba7e1f78c7870b61a0c543b3e72",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3421,7 +3421,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "cf62971947f984a1cbb7a4becb726919b64e5480a1e84b7b8bae6719c06ac143",
+      "overlaySha256": "fcc7ed0a906e34cf5f4c650499ef94aa575659df728a726fa02e718ec6255286",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3448,7 +3448,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "5121c30ff065594eda8a0388c1bca9584bdb0a8eb528a9a9a1bd0f7f42a075e8",
+      "overlaySha256": "2eb7832662dea2b674133d855725e72812aaf1213ace944c336be77415a1b18b",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3475,7 +3475,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "40ba8ce084fce3ffa6d5779dcab2ae864a183b79baac2920f0acbcbb59a7e57a",
+      "overlaySha256": "aa59e956fa646e8f692582e7661ad046519522f9ccd048a6f922fda0f117ec64",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3502,7 +3502,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "17919206a071707712b159a07587745e2bf5f138a7c270c0f0c87de4da53e11c",
+      "overlaySha256": "2b037e7b6af86bdd37d4c6f683c5fd60f865b686994146189d51ed2b501673a1",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3529,7 +3529,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "0dfdc8612c2aa83bdf5286603aa44f53107e92f9059ec9320b8ffb057382d753",
+      "overlaySha256": "033d3503452236d1005fd3ca3843e44420a907d13df261be057ba7355eb88bcc",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3556,7 +3556,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "16dd4c828532445147915d5a8edaa1039eaad63e296a9d5aa6e1e06fe6fd9031",
+      "overlaySha256": "fe2dd6e04f00b3f9532defb056f76e2a37e2b44b3079836970aee4d8743e2d42",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3583,7 +3583,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "35eba8b805091819fc50483335c434e55d44adf635e7286c2f413145ea07e154",
+      "overlaySha256": "66aab1b9cf239d70ff9e6c21c0eab89a14b2d6c560e18020de9a973223b75d49",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3664,7 +3664,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "3eab478b13fd18e933dfd11f31d58871209bed011bb01bb24845eca9a631423b",
+      "overlaySha256": "7810f69d9a4db8fa67def4ecf1d5bdff799f45bf0ec1d8d64cf94157257958dc",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3691,7 +3691,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "e142bf7e77bf81bbcf1da72eb5d811cf924800ffd920bbdae59e8a8ab518ba0a",
+      "overlaySha256": "5afea45eb956bb5d644afc84a9833f16380a7a12e9cddc021562e17ee5e5966a",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3718,7 +3718,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "819ea95beaa6b846f22d7f13bb207aeed81237652368dde251a8829d2635ecdd",
+      "overlaySha256": "852f821ab4784ffacfa268712a7da3979aee0da773d7f67dfc154ca417e22355",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3745,7 +3745,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "762ab4c0f7575ddf54cac5c27589bd10271149221b99aefc2bfd7b3080f57817",
+      "overlaySha256": "5c528ac6d51690930e8281d3f9fed60ac2d8d4c8309dac9d0aebdeaf112d1ddc",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3826,7 +3826,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "7d31d1b6f78e2062ab2bd16f93c21a67509591c9306c5bbfce7bdd9b9f781f5d",
+      "overlaySha256": "c2b269ec46ba0f57ba8874b4b0837287c20b0f21469459d40dea17e5f5e2df75",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3853,7 +3853,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "cb45e7fa5254f8096214293c1e55cced90b072328d4513d6f8ef1ea3c1cd05e1",
+      "overlaySha256": "45a3f579a9c3cb6f5f8b5de0348c02cb33e1de0de065fd8c4b9f64a669528421",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3880,7 +3880,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "a91d7f6655ed25d1ac413aec0f6b5b5902f7dad77f41ff3aa66874678e292e77",
+      "overlaySha256": "2de14b9a8823de9054a66bef3811566423391d9244a7fb84a9da4dd6d31bc714",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3907,7 +3907,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "507027e5cb11b9743027239aad605c0001d2454845a5ca0a42642675015e70a5",
+      "overlaySha256": "cf86228daa1e7786efc2473902f6eddb190cac156034b318a4ccd256d2ca70b3",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3934,7 +3934,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "5472604c23329ff0d106bdf005519e6e9400a3a1d32e1e8ca3d45980649c2f8c",
+      "overlaySha256": "7402cfbf144e953ca421b6cf12232e5c57fdca39fd807e41184b1807757763cd",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3961,7 +3961,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "888348a26486ec00d52da93452e6c8946cf4117cdaba29f62f5ffb36910895b0",
+      "overlaySha256": "ef8a417bf41ce38f988ddb090d6afd007b66e86783017d1f68b1f9b2468f54f1",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -3988,7 +3988,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "ee2a18d32936e79ccdf5bf3cbc847031d3a0c1c09c9bc29817a47ff719e22d0a",
+      "overlaySha256": "38c9c21dcfdad3bf2ba91d330c33af0444fc655a8759d787e5211d318f67f0c5",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4015,7 +4015,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "36a85eeca7b9570ebd0a4a4fca8852d7836da9f3b61a46f3f58fea5e19683486",
+      "overlaySha256": "79eafbdc2acd336fca8c5c607c05cac53817ca8b675ce2c5933463fe5aa4714c",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4042,7 +4042,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "421b6a29ffefebf1d32823efa8ffa366bf7421451f487bf015be071cf780a4b2",
+      "overlaySha256": "09013ee8c7d3fec42daa926dfad7963d966a1b4feeff472e791bd24d5190ceb3",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4069,7 +4069,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "ae687f6fd44e51d920047d0bc0cff3debe31454e03be65443d802309c5a0a507",
+      "overlaySha256": "cf77bcacaf67e3b2afd23b9d31e4187d116e1cc12da40295005e905dfad76c61",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4096,7 +4096,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "8a72b785a40b3d94ef865a62aca694ce3e1746e9bd4be763901e1a48c4642d7c",
+      "overlaySha256": "e6a256c164138b8215130f4bc99d6cf1dd7899dd053eb3d934d5aed390898610",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4150,7 +4150,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "0398d8eb1961e5784798ea08b1f5d3e6ec7df020ef8951284439033851ef491a",
+      "overlaySha256": "8c74573fa44c3794ac9a255fc7ffb7cf80e05697528ccd596b67fa59a6dc993f",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4177,7 +4177,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "20a4b2ab22787b9d63204e09daf534270b340419caa46aff03084aca70c7cf08",
+      "overlaySha256": "b3faf9ff2df77f3796af4987e9103844ac087a8f12bc92f47498f6ee968176d6",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4204,7 +4204,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "310a3e2aae3fc6b5c66055000f13663b725d5c27daf4935cdac3ad1f4a44a9ba",
+      "overlaySha256": "87a0c44be8c05197bc47e8290a2e2f37802d422416ad97c53d8b0ee4a06223f2",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4231,7 +4231,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "d31ae1b8077ec05ba4b1d891df1c99c91ac158e88c05247f565c875ea477fe6a",
+      "overlaySha256": "1265fbcf3f7f9d2ba5b4066cdbaf3e5339a93c021b502c25c19033f16252a245",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4258,7 +4258,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "cd17b8375c9bea672c3e1a7ed34173105400084fccc59c55415640fac33d423b",
+      "overlaySha256": "9fbcf7c1d30aa7e552776998fe923a75c285da3ce8b3f31c8d0eb5a98ea03b28",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4285,7 +4285,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "3a90a4aecc53695a87afab1938178fe433dc1c0be096411a5f723d66c32c7a5b",
+      "overlaySha256": "d6e31460586d574986f2f079ad45276ced428f3a65756f2c14629a1e16fddb2c",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4474,7 +4474,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "8398628439e3bb80327da6fe0a7f84effbe4b473ddef3e3b3ae1baa35f2f709a",
+      "overlaySha256": "41d094e547a746fad15999d419e1b9c786e4b2a43572fb8d432b8f6ea24f9cb7",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4501,7 +4501,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "81e3304d1715ee0a9fc5cfcfff075919b129628b1889f252f3b04a37703e373f",
+      "overlaySha256": "68dbda6d3c0e476e80e4b53c9ac7a2f0ef2bc82e6369ec56774c2216351efa63",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4636,7 +4636,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "67a3466a6f2f285918eab52a77ec703f18b3c2933942315ce3966f84c9e023c2",
+      "overlaySha256": "4643a8267f7983579ac34a673bd5a1d91b8f0af7dd1b8d868dcb47a6e93f9b1e",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4663,7 +4663,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "fc2b953c441769345ec52709d9c4010c1434b7b6fd069b8b8218b8c7ea415211",
+      "overlaySha256": "6679fc3b1e8e6dffb184008fdcb8594424e6349acfd0cc8f35993acb48531531",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4771,7 +4771,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "7cb1f92a7fd74cbe90e21a5110d5bfbe7620ac0ca644dc84e4801178dddbba4d",
+      "overlaySha256": "544952a91465432deb64a461cd29dedba50eeaf52e7647bc85429ec4328de030",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4798,7 +4798,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "6eef9c721aed20f6bf69520ac4d0349fc21b9cd69416866f889cead425109462",
+      "overlaySha256": "091280f649972a67b739f8cec4c444b4af261b3733ada11690bfc392362e20b8",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4879,7 +4879,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "4a0a645a10601acf95733c605bb9d5bb0d1d22bb5ed9c965c3e7cff6cfdfcaae",
+      "overlaySha256": "b66e8ab5b2a0f3488349706f9c49e030b37c0aa7d98faa4efe5a64b202395b08",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4906,7 +4906,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "5fc235002a8ca2a2ab639f1083ae1e1cf12d3dd4e7d3aede8f3a7c22dea81d3f",
+      "overlaySha256": "c2e6e1a1890165237a7885b31c456d40a9daf451154be33d8a2a71455211b462",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4960,7 +4960,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "89ebf3d44673a84dcc7994298580d2829af1dc40c0593300b54937e98b465b28",
+      "overlaySha256": "b2d05899235dd777fc101c03d8c92f1f5a9ff1cd1f180cf04ff32872d35d8861",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -4987,7 +4987,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "afe75406e41c19706ac9687138dd1a64b9a3d375ce6163d957571139a7aa9b3b",
+      "overlaySha256": "601e37b084a783681787f64d5e57e6ba798182f7e4da9eeec5dbd91bdc413456",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -5203,7 +5203,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "b04f7adfdfb16549a3605710a3372c043e9dedaa26a36e18dbfbe9ece5a10efc",
+      "overlaySha256": "5ce9dc69273067ccfbc625bb93133cf9b3da09ac2e45afcb1fd6e5fd910c91f4",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -5257,7 +5257,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "cc9d84d404564d611e33057a2921b5853bcc66ac4fd1be797e4959b0da249f9f",
+      "overlaySha256": "a0f8ad3066a9f5d500cd216be9d97925ef595d070d5912b1b3494f5b7d1972e2",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -5446,7 +5446,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "2b9a6887e6d6453a83b1631da113f1f1f6c09aedf785866fb0f7295dcc23e1fd",
+      "overlaySha256": "134749056b1e6b6bc2d4d0f288eda0d86bdcaa3bf6a10abf6311e4d80e8340da",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,
@@ -5689,7 +5689,7 @@
       "status": "approved",
       "reviewer": "Codex Implementation Agent 010 full overlay coverage",
       "reviewedAt": "2026-05-10",
-      "overlaySha256": "d147c39fdb2800e816436d35f210294ca0ffb1ab5251b1e906d6956d7103f360",
+      "overlaySha256": "900a8a4eaf08bb0fca6f653a5151f8c5a54ebb5e9ee0c6733eb041052f8d5ca2",
       "checks": {
         "questionUsageCurrent": true,
         "metadataCurrent": true,

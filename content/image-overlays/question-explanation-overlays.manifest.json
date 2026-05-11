@@ -45,7 +45,6 @@
       ],
       "referencedRegionIds": [
         "region-background-road",
-        "region-foreground-cyclist",
         "region-highlighted-arm"
       ],
       "regions": [
@@ -61,14 +60,13 @@
             "cyclist-foreground"
           ],
           "regionIds": [
-            "region-foreground-cyclist",
             "region-highlighted-arm"
           ],
           "rect": {
             "x": 5,
             "y": 5,
-            "width": 65,
-            "height": 83
+            "width": 38,
+            "height": 35
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -85,7 +83,6 @@
             "red-oval-arm-highlight"
           ],
           "regionIds": [
-            "region-foreground-cyclist",
             "region-highlighted-arm"
           ],
           "rect": {
@@ -725,22 +722,20 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b008-highlight-green-crossing",
           "detailIds": [
-            "green-bike-crossing",
-            "zebra-crosswalk"
+            "green-bike-crossing"
           ],
           "objectIds": [
             "green-bike-crossing",
             "roadway"
           ],
           "regionIds": [
-            "region-green-crossing",
-            "region-zebra-crosswalk"
+            "region-green-crossing"
           ],
           "rect": {
             "x": 18,
             "y": 18,
             "width": 64,
-            "height": 70
+            "height": 64
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -749,7 +744,6 @@
           "sourceRole": "supporting",
           "relevanceId": "b008-support-zebra",
           "detailIds": [
-            "green-bike-crossing",
             "zebra-crosswalk"
           ],
           "objectIds": [
@@ -757,14 +751,13 @@
             "zebra-crosswalk"
           ],
           "regionIds": [
-            "region-green-crossing",
             "region-zebra-crosswalk"
           ],
           "rect": {
-            "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 18,
+            "y": 42,
+            "width": 64,
+            "height": 46
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -2430,28 +2423,20 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b034-highlight-option-c",
           "detailIds": [
-            "option-a-national-route-sign",
-            "option-b-shield-route-sign",
             "option-c-square-route-sign",
-            "option-label-a",
-            "option-label-b",
             "option-label-c"
           ],
           "objectIds": [
-            "option-a-national-route-sign-object",
-            "option-b-shield-route-sign-object",
             "option-c-square-route-sign-object",
             "yellow-option-labels"
           ],
           "regionIds": [
-            "region-option-a",
-            "region-option-b",
             "region-option-c"
           ],
           "rect": {
-            "x": 5,
+            "x": 57,
             "y": 18,
-            "width": 90,
+            "width": 38,
             "height": 64
           },
           "labelRu": "Ключевая область для ответа"
@@ -3159,29 +3144,22 @@
           "sourceRole": "supporting",
           "relevanceId": "b044-support-driver-context",
           "detailIds": [
-            "breathalyzer-at-driver-window",
             "driver-seated-for-test",
-            "night-roadside-control-context",
-            "open-window-checkpoint",
-            "traffic-officer-administering-test"
+            "open-window-checkpoint"
           ],
           "objectIds": [
-            "breathalyzer-device",
             "driver-inside-car",
             "open-driver-window",
-            "silver-car-driver-side",
-            "traffic-control-officer"
+            "silver-car-driver-side"
           ],
           "regionIds": [
-            "region-driver-window",
-            "region-night-background",
-            "region-officer-and-device"
+            "region-driver-window"
           ],
           "rect": {
-            "x": 66,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 57,
+            "y": 30,
+            "width": 38,
+            "height": 40
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -3190,29 +3168,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b044-trap-crash-not-visible",
           "detailIds": [
-            "breathalyzer-at-driver-window",
-            "driver-seated-for-test",
-            "night-roadside-control-context",
-            "open-window-checkpoint",
-            "traffic-officer-administering-test"
+            "night-roadside-control-context"
           ],
           "objectIds": [
-            "breathalyzer-device",
-            "driver-inside-car",
-            "open-driver-window",
-            "silver-car-driver-side",
-            "traffic-control-officer"
+            "silver-car-driver-side"
           ],
           "regionIds": [
-            "region-driver-window",
-            "region-night-background",
-            "region-officer-and-device"
+            "region-night-background"
           ],
           "rect": {
-            "x": 0,
+            "x": 18,
             "y": 0,
-            "width": 100,
-            "height": 22
+            "width": 64,
+            "height": 45
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -3221,29 +3189,19 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b044-background-night-lights",
           "detailIds": [
-            "breathalyzer-at-driver-window",
-            "driver-seated-for-test",
-            "night-roadside-control-context",
-            "open-window-checkpoint",
-            "traffic-officer-administering-test"
+            "night-roadside-control-context"
           ],
           "objectIds": [
-            "breathalyzer-device",
-            "driver-inside-car",
-            "open-driver-window",
-            "silver-car-driver-side",
-            "traffic-control-officer"
+            "silver-car-driver-side"
           ],
           "regionIds": [
-            "region-driver-window",
-            "region-night-background",
-            "region-officer-and-device"
+            "region-night-background"
           ],
           "rect": {
-            "x": 0,
+            "x": 18,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 64,
+            "height": 45
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -3316,25 +3274,20 @@
           "sourceRole": "supporting",
           "relevanceId": "b045-support-no-time-plate",
           "detailIds": [
-            "no-parking-e-symbol",
             "no-stopping-symbol-absent",
-            "no-time-plate-visible",
-            "red-prohibition-slash"
+            "no-time-plate-visible"
           ],
           "objectIds": [
-            "black-parking-e-symbol",
-            "red-prohibition-slash-object",
             "round-no-parking-sign-panel"
           ],
           "regionIds": [
-            "region-no-parking-sign",
             "region-sign-background"
           ],
           "rect": {
-            "x": 66,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 18,
+            "y": 0,
+            "width": 64,
+            "height": 45
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -3343,25 +3296,20 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b045-trap-no-stopping-absent",
           "detailIds": [
-            "no-parking-e-symbol",
             "no-stopping-symbol-absent",
-            "no-time-plate-visible",
-            "red-prohibition-slash"
+            "no-time-plate-visible"
           ],
           "objectIds": [
-            "black-parking-e-symbol",
-            "red-prohibition-slash-object",
             "round-no-parking-sign-panel"
           ],
           "regionIds": [
-            "region-no-parking-sign",
             "region-sign-background"
           ],
           "rect": {
-            "x": 78,
+            "x": 18,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 64,
+            "height": 45
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -3370,25 +3318,20 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b045-background-white-field",
           "detailIds": [
-            "no-parking-e-symbol",
             "no-stopping-symbol-absent",
-            "no-time-plate-visible",
-            "red-prohibition-slash"
+            "no-time-plate-visible"
           ],
           "objectIds": [
-            "black-parking-e-symbol",
-            "red-prohibition-slash-object",
             "round-no-parking-sign-panel"
           ],
           "regionIds": [
-            "region-no-parking-sign",
             "region-sign-background"
           ],
           "rect": {
-            "x": 66,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 18,
+            "y": 0,
+            "width": 64,
+            "height": 45
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -3586,29 +3529,23 @@
           "relevanceId": "b051-highlight-parking-stop",
           "detailIds": [
             "curbside-parked-row",
-            "no-passenger-boarding-visible",
             "red-circled-stopped-car",
-            "red-oval-vehicle-highlight",
-            "urban-street-parking-context"
+            "red-oval-vehicle-highlight"
           ],
           "objectIds": [
-            "left-curb-parked-cars",
             "red-circled-dark-car",
             "red-oval-stopped-car",
-            "right-curb-parked-cars",
-            "sidewalk-pedestrians",
-            "urban-street-surface"
+            "right-curb-parked-cars"
           ],
           "regionIds": [
             "region-circled-car",
-            "region-right-parking-row",
-            "region-street-background"
+            "region-right-parking-row"
           ],
           "rect": {
-            "x": 18,
-            "y": 0,
-            "width": 77,
-            "height": 82
+            "x": 30,
+            "y": 5,
+            "width": 65,
+            "height": 77
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -3641,19 +3578,15 @@
           "relevanceId": "b051-trap-passenger-stop",
           "detailIds": [
             "no-passenger-boarding-visible",
-            "red-circled-stopped-car",
-            "red-oval-vehicle-highlight",
             "urban-street-parking-context"
           ],
           "objectIds": [
             "left-curb-parked-cars",
             "red-circled-dark-car",
-            "red-oval-stopped-car",
             "sidewalk-pedestrians",
             "urban-street-surface"
           ],
           "regionIds": [
-            "region-circled-car",
             "region-street-background"
           ],
           "rect": {
@@ -3880,31 +3813,22 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b053-highlight-street-a",
           "detailIds": [
-            "corner-building-context",
-            "partial-crosswalk-context",
             "street-a-approach",
-            "street-b-approach",
-            "yellow-a-street-label",
-            "yellow-b-street-label"
+            "yellow-a-street-label"
           ],
           "objectIds": [
-            "corner-building-storefront",
             "intersection-roadway",
             "left-approach-truck",
-            "right-approach-cars",
-            "yellow-a-label-object",
-            "yellow-b-label-object"
+            "yellow-a-label-object"
           ],
           "regionIds": [
-            "region-intersection-background",
-            "region-street-a-left",
-            "region-street-b-right"
+            "region-street-a-left"
           ],
           "rect": {
             "x": 5,
-            "y": 5,
-            "width": 90,
-            "height": 90
+            "y": 60,
+            "width": 38,
+            "height": 35
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -3913,31 +3837,22 @@
           "sourceRole": "supporting",
           "relevanceId": "b053-support-intersection-layout",
           "detailIds": [
-            "corner-building-context",
-            "partial-crosswalk-context",
-            "street-a-approach",
             "street-b-approach",
-            "yellow-a-street-label",
             "yellow-b-street-label"
           ],
           "objectIds": [
-            "corner-building-storefront",
             "intersection-roadway",
-            "left-approach-truck",
             "right-approach-cars",
-            "yellow-a-label-object",
             "yellow-b-label-object"
           ],
           "regionIds": [
-            "region-intersection-background",
-            "region-street-a-left",
             "region-street-b-right"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 22
+            "x": 57,
+            "y": 60,
+            "width": 38,
+            "height": 35
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -3971,30 +3886,20 @@
           "relevanceId": "b053-background-corner",
           "detailIds": [
             "corner-building-context",
-            "partial-crosswalk-context",
-            "street-a-approach",
-            "street-b-approach",
-            "yellow-a-street-label",
-            "yellow-b-street-label"
+            "partial-crosswalk-context"
           ],
           "objectIds": [
             "corner-building-storefront",
-            "intersection-roadway",
-            "left-approach-truck",
-            "right-approach-cars",
-            "yellow-a-label-object",
-            "yellow-b-label-object"
+            "intersection-roadway"
           ],
           "regionIds": [
-            "region-intersection-background",
-            "region-street-a-left",
-            "region-street-b-right"
+            "region-intersection-background"
           ],
           "rect": {
-            "x": 66,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 30,
+            "y": 5,
+            "width": 40,
+            "height": 35
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -4045,25 +3950,21 @@
           "relevanceId": "b054-highlight-headrest",
           "detailIds": [
             "circled-head-restraint",
-            "seat-headrest-protective-position",
-            "seatback-context",
-            "vehicle-interior-background"
+            "seat-headrest-protective-position"
           ],
           "objectIds": [
-            "rear-side-window-pillar",
             "red-oval-headrest-highlight",
             "seat-headrest-object",
             "seatback-object"
           ],
           "regionIds": [
-            "region-circled-headrest",
-            "region-seat-interior-context"
+            "region-circled-headrest"
           ],
           "rect": {
             "x": 30,
             "y": 30,
-            "width": 65,
-            "height": 65
+            "width": 40,
+            "height": 40
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -4072,26 +3973,21 @@
           "sourceRole": "supporting",
           "relevanceId": "b054-support-seatback",
           "detailIds": [
-            "circled-head-restraint",
-            "seat-headrest-protective-position",
             "seatback-context",
             "vehicle-interior-background"
           ],
           "objectIds": [
             "rear-side-window-pillar",
-            "red-oval-headrest-highlight",
-            "seat-headrest-object",
             "seatback-object"
           ],
           "regionIds": [
-            "region-circled-headrest",
             "region-seat-interior-context"
           ],
           "rect": {
-            "x": 66,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 57,
+            "y": 60,
+            "width": 38,
+            "height": 35
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -4101,19 +3997,14 @@
           "relevanceId": "b054-trap-not-decorative",
           "detailIds": [
             "circled-head-restraint",
-            "seat-headrest-protective-position",
-            "seatback-context",
-            "vehicle-interior-background"
+            "seat-headrest-protective-position"
           ],
           "objectIds": [
-            "rear-side-window-pillar",
             "red-oval-headrest-highlight",
-            "seat-headrest-object",
-            "seatback-object"
+            "seat-headrest-object"
           ],
           "regionIds": [
-            "region-circled-headrest",
-            "region-seat-interior-context"
+            "region-circled-headrest"
           ],
           "rect": {
             "x": 0,
@@ -4200,26 +4091,22 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b055-highlight-option-a",
           "detailIds": [
-            "interior-door-frame-context",
             "mirror-a-small-car-edge",
             "mirror-a-wide-road-view",
             "yellow-a-option-label"
           ],
           "objectIds": [
-            "car-interior-a",
-            "car-interior-b",
             "panel-a-side-mirror",
             "reflected-road-traffic-a",
             "yellow-a-mirror-label"
           ],
           "regionIds": [
-            "region-car-interior-context",
             "region-mirror-option-a"
           ],
           "rect": {
             "x": 0,
             "y": 18,
-            "width": 82,
+            "width": 50,
             "height": 64
           },
           "labelRu": "Ключевая область для ответа"
@@ -4286,27 +4173,20 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b055-background-interior",
           "detailIds": [
-            "interior-door-frame-context",
-            "mirror-a-small-car-edge",
-            "mirror-a-wide-road-view",
-            "yellow-a-option-label"
+            "interior-door-frame-context"
           ],
           "objectIds": [
             "car-interior-a",
-            "car-interior-b",
-            "panel-a-side-mirror",
-            "reflected-road-traffic-a",
-            "yellow-a-mirror-label"
+            "car-interior-b"
           ],
           "regionIds": [
-            "region-car-interior-context",
-            "region-mirror-option-a"
+            "region-car-interior-context"
           ],
           "rect": {
-            "x": 78,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 18,
+            "y": 18,
+            "width": 64,
+            "height": 64
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -5200,21 +5080,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b069-trap-rejection",
           "detailIds": [
-            "cyclist-headphone-use",
-            "helmeted-cyclist-riding"
+            "cyclist-headphone-use"
           ],
           "objectIds": [
             "helmeted-cyclist"
           ],
           "regionIds": [
-            "region-cyclist-upper-body",
             "region-headphone-cue"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 22
+            "x": 18,
+            "y": 18,
+            "width": 64,
+            "height": 64
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -5359,22 +5237,19 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b070-background-dim",
           "detailIds": [
-            "circled-car-beside-obstruction",
             "right-side-road-obstruction"
           ],
           "objectIds": [
-            "circled-silver-car",
             "right-side-parked-vehicles"
           ],
           "regionIds": [
-            "region-circled-car",
             "region-right-obstruction"
           ],
           "rect": {
             "x": 57,
             "y": 18,
             "width": 38,
-            "height": 70
+            "height": 64
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -6221,7 +6096,6 @@
           "sourceRole": "supporting",
           "relevanceId": "b080-support-context",
           "detailIds": [
-            "sign-b-red-stop-octagon",
             "three-labeled-signs"
           ],
           "objectIds": [
@@ -6230,14 +6104,13 @@
             "option-c-pedestrian-warning"
           ],
           "regionIds": [
-            "region-sign-b",
             "region-three-signs"
           ],
           "rect": {
-            "x": 78,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 18,
+            "y": 18,
+            "width": 64,
+            "height": 64
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -6246,23 +6119,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b080-trap-rejection",
           "detailIds": [
-            "sign-b-red-stop-octagon",
-            "three-labeled-signs"
+            "sign-b-red-stop-octagon"
           ],
           "objectIds": [
-            "option-a-blue-sign",
-            "option-b-stop-sign",
-            "option-c-pedestrian-warning"
+            "option-b-stop-sign"
           ],
           "regionIds": [
-            "region-sign-b",
-            "region-three-signs"
+            "region-sign-b"
           ],
           "rect": {
-            "x": 66,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 30,
+            "y": 5,
+            "width": 40,
+            "height": 35
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -6271,7 +6140,6 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b080-background-dim",
           "detailIds": [
-            "sign-b-red-stop-octagon",
             "three-labeled-signs"
           ],
           "objectIds": [
@@ -6280,14 +6148,13 @@
             "option-c-pedestrian-warning"
           ],
           "regionIds": [
-            "region-sign-b",
             "region-three-signs"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 18,
+            "y": 18,
+            "width": 64,
+            "height": 64
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -6621,21 +6488,18 @@
           "sourceRole": "supporting",
           "relevanceId": "b087-support-context",
           "detailIds": [
-            "curbside-lane-background",
-            "red-car-in-stop-area"
+            "curbside-lane-background"
           ],
           "objectIds": [
-            "curbside-stop-lane",
-            "red-car-in-stop-area"
+            "curbside-stop-lane"
           ],
           "regionIds": [
-            "region-red-car-stop-area",
             "region-road-background"
           ],
           "rect": {
-            "x": 30,
+            "x": 57,
             "y": 0,
-            "width": 65,
+            "width": 38,
             "height": 45
           },
           "labelRu": "Поддерживающая визуальная деталь"
@@ -6666,21 +6530,18 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b087-background-dim",
           "detailIds": [
-            "curbside-lane-background",
-            "red-car-in-stop-area"
+            "curbside-lane-background"
           ],
           "objectIds": [
-            "curbside-stop-lane",
-            "red-car-in-stop-area"
+            "curbside-stop-lane"
           ],
           "regionIds": [
-            "region-red-car-stop-area",
             "region-road-background"
           ],
           "rect": {
-            "x": 30,
+            "x": 57,
             "y": 0,
-            "width": 65,
+            "width": 38,
             "height": 45
           },
           "labelRu": "Второстепенный фон для этого вопроса"
@@ -7265,23 +7126,20 @@
           "relevanceId": "b092-support-context",
           "detailIds": [
             "bus-at-dedicated-platform",
-            "exclusive-metrobus-lane",
             "passengers-waiting-platform"
           ],
           "objectIds": [
             "bus-at-dedicated-platform",
-            "metrobus-platform",
-            "yellow-bus-lane-curbs"
+            "metrobus-platform"
           ],
           "regionIds": [
-            "region-bus-platform",
-            "region-exclusive-bus-lane"
+            "region-bus-platform"
           ],
           "rect": {
-            "x": 66,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 5,
+            "y": 18,
+            "width": 38,
+            "height": 64
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -7314,23 +7172,20 @@
           "relevanceId": "b092-background-dim",
           "detailIds": [
             "bus-at-dedicated-platform",
-            "exclusive-metrobus-lane",
             "passengers-waiting-platform"
           ],
           "objectIds": [
             "bus-at-dedicated-platform",
-            "metrobus-platform",
-            "yellow-bus-lane-curbs"
+            "metrobus-platform"
           ],
           "regionIds": [
-            "region-bus-platform",
-            "region-exclusive-bus-lane"
+            "region-bus-platform"
           ],
           "rect": {
-            "x": 78,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 5,
+            "y": 18,
+            "width": 38,
+            "height": 64
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -7369,8 +7224,7 @@
       ],
       "referencedRegionIds": [
         "b94-r-background",
-        "b94-r-cloth",
-        "b94-r-main-car"
+        "b94-r-cloth"
       ],
       "regions": [
         {
@@ -7385,14 +7239,13 @@
             "b94-white-cloth"
           ],
           "regionIds": [
-            "b94-r-cloth",
-            "b94-r-main-car"
+            "b94-r-cloth"
           ],
           "rect": {
-            "x": 20,
-            "y": 22,
-            "width": 64,
-            "height": 67
+            "x": 62,
+            "y": 25,
+            "width": 22,
+            "height": 24
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -8168,14 +8021,13 @@
             "b224-tree-symbol"
           ],
           "regionIds": [
-            "b224-r-sign",
             "b224-r-symbol"
           ],
           "rect": {
-            "x": 5,
-            "y": 3,
-            "width": 90,
-            "height": 92
+            "x": 30,
+            "y": 20,
+            "width": 45,
+            "height": 55
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -8457,14 +8309,13 @@
             "b249-main-sign"
           ],
           "regionIds": [
-            "b249-r-arrow",
-            "b249-r-sign"
+            "b249-r-arrow"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 28,
+            "y": 28,
+            "width": 52,
+            "height": 45
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -8866,14 +8717,13 @@
             "b240-symbol"
           ],
           "regionIds": [
-            "b240-r-sign",
             "b240-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -8965,14 +8815,13 @@
             "b241-symbol"
           ],
           "regionIds": [
-            "b241-r-sign",
             "b241-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -9277,14 +9126,13 @@
             "b255-symbol"
           ],
           "regionIds": [
-            "b255-r-sign",
             "b255-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -9727,14 +9575,13 @@
           ],
           "regionIds": [
             "b26-r-bus",
-            "b26-r-bus-lane",
-            "b26-r-platform"
+            "b26-r-bus-lane"
           ],
           "rect": {
-            "x": 0,
-            "y": 8,
-            "width": 93,
-            "height": 85
+            "x": 22,
+            "y": 10,
+            "width": 71,
+            "height": 83
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -9942,14 +9789,13 @@
             "b11-roadway"
           ],
           "regionIds": [
-            "b11-r-right-edge",
-            "b11-r-roadway"
+            "b11-r-right-edge"
           ],
           "rect": {
-            "x": 20,
-            "y": 38,
-            "width": 70,
-            "height": 55
+            "x": 68,
+            "y": 42,
+            "width": 22,
+            "height": 50
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -10272,14 +10118,13 @@
             "b254-walking-bike-symbol"
           ],
           "regionIds": [
-            "b254-r-sign",
             "b254-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 26,
+            "y": 22,
+            "width": 48,
+            "height": 58
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -10374,14 +10219,13 @@
             "b114-lane-lines"
           ],
           "regionIds": [
-            "b114-r-lane-markings",
             "b114-r-target-lane-cars"
           ],
           "rect": {
-            "x": 15,
+            "x": 45,
             "y": 30,
-            "width": 70,
-            "height": 60
+            "width": 35,
+            "height": 35
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -10961,14 +10805,13 @@
             "b237-symbol"
           ],
           "regionIds": [
-            "b237-r-sign",
             "b237-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -11060,14 +10903,13 @@
             "b271-symbol"
           ],
           "regionIds": [
-            "b271-r-sign",
             "b271-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -11159,14 +11001,13 @@
             "b235-symbol"
           ],
           "regionIds": [
-            "b235-r-sign",
             "b235-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -11258,14 +11099,13 @@
             "b257-symbol"
           ],
           "regionIds": [
-            "b257-r-sign",
             "b257-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -11357,14 +11197,13 @@
             "b253-symbol"
           ],
           "regionIds": [
-            "b253-r-sign",
             "b253-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -11456,14 +11295,13 @@
             "b250-symbol"
           ],
           "regionIds": [
-            "b250-r-sign",
             "b250-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -12241,14 +12079,13 @@
             "b222-symbol"
           ],
           "regionIds": [
-            "b222-r-sign",
             "b222-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -12557,14 +12394,13 @@
             "b265-symbol"
           ],
           "regionIds": [
-            "b265-r-sign",
             "b265-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -12656,14 +12492,13 @@
             "b231-symbol"
           ],
           "regionIds": [
-            "b231-r-sign",
             "b231-r-symbol"
           ],
           "rect": {
-            "x": 4,
-            "y": 4,
-            "width": 92,
-            "height": 92
+            "x": 25,
+            "y": 20,
+            "width": 55,
+            "height": 60
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -12762,14 +12597,13 @@
             "b170-right-light"
           ],
           "regionIds": [
-            "b170-r-rear-lights",
-            "b170-r-red-car"
+            "b170-r-rear-lights"
           ],
           "rect": {
-            "x": 28,
-            "y": 30,
-            "width": 55,
-            "height": 62
+            "x": 32,
+            "y": 43,
+            "width": 50,
+            "height": 25
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -12863,8 +12697,7 @@
       ],
       "referencedRegionIds": [
         "b245-background-region",
-        "b245-chevron-region",
-        "b245-sign-region"
+        "b245-chevron-region"
       ],
       "regions": [
         {
@@ -12872,22 +12705,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-185-relevance-1",
           "detailIds": [
-            "b245-red-chevron-panel",
-            "b245-white-sign-background"
+            "b245-red-chevron-panel"
           ],
           "objectIds": [
             "b245-chevron-panel"
           ],
           "regionIds": [
-            "b245-background-region",
-            "b245-chevron-region",
-            "b245-sign-region"
+            "b245-chevron-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 2,
+            "y": 2,
+            "width": 95,
+            "height": 94
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -12896,16 +12726,13 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-185-relevance-2",
           "detailIds": [
-            "b245-red-chevron-panel",
             "b245-white-sign-background"
           ],
           "objectIds": [
             "b245-chevron-panel"
           ],
           "regionIds": [
-            "b245-background-region",
-            "b245-chevron-region",
-            "b245-sign-region"
+            "b245-background-region"
           ],
           "rect": {
             "x": 0,
@@ -12962,24 +12789,20 @@
           "relevanceId": "b-fallback-186-relevance-1",
           "detailIds": [
             "b95-cyclist-on-bike-lane",
-            "b95-green-bike-lane",
-            "b95-turning-car",
-            "b95-turning-car-path"
+            "b95-green-bike-lane"
           ],
           "objectIds": [
             "b95-cyclist",
-            "b95-green-bike-lane-object",
-            "b95-turning-car"
+            "b95-green-bike-lane-object"
           ],
           "regionIds": [
-            "b95-bike-lane-region",
-            "b95-car-region"
+            "b95-bike-lane-region"
           ],
           "rect": {
-            "x": 12,
+            "x": 54,
             "y": 42,
-            "width": 82,
-            "height": 40
+            "width": 40,
+            "height": 23
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -12988,27 +12811,20 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-186-relevance-2",
           "detailIds": [
-            "b95-cyclist-on-bike-lane",
-            "b95-green-bike-lane",
             "b95-turning-car",
-            "b95-turning-car-path",
-            "b95-urban-background"
+            "b95-turning-car-path"
           ],
           "objectIds": [
-            "b95-cyclist",
-            "b95-green-bike-lane-object",
             "b95-turning-car"
           ],
           "regionIds": [
-            "b95-background-region",
-            "b95-bike-lane-region",
             "b95-car-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 82
+            "x": 12,
+            "y": 42,
+            "width": 36,
+            "height": 40
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -13017,27 +12833,17 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-186-relevance-3",
           "detailIds": [
-            "b95-cyclist-on-bike-lane",
-            "b95-green-bike-lane",
-            "b95-turning-car",
-            "b95-turning-car-path",
             "b95-urban-background"
           ],
-          "objectIds": [
-            "b95-cyclist",
-            "b95-green-bike-lane-object",
-            "b95-turning-car"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b95-background-region",
-            "b95-bike-lane-region",
-            "b95-car-region"
+            "b95-background-region"
           ],
           "rect": {
-            "x": 78,
+            "x": 0,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 100,
+            "height": 45
           },
           "labelRu": "Поддерживающая визуальная деталь"
         }
@@ -13084,7 +12890,6 @@
           "relevanceId": "b-fallback-188-relevance-1",
           "detailIds": [
             "b76-red-oval",
-            "b76-road-and-bridge-background",
             "b76-yellow-hatched-area"
           ],
           "objectIds": [
@@ -13092,14 +12897,13 @@
             "b76-yellow-hatched-area-object"
           ],
           "regionIds": [
-            "b76-background-region",
             "b76-hatched-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 77
+            "x": 38,
+            "y": 42,
+            "width": 56,
+            "height": 35
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -13119,10 +12923,10 @@
             "b76-hatched-region"
           ],
           "rect": {
-            "x": 38,
-            "y": 42,
-            "width": 56,
-            "height": 35
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 22
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -13131,23 +12935,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-188-relevance-3",
           "detailIds": [
-            "b76-red-oval",
-            "b76-road-and-bridge-background",
-            "b76-yellow-hatched-area"
+            "b76-road-and-bridge-background"
           ],
-          "objectIds": [
-            "b76-red-oval-annotation",
-            "b76-yellow-hatched-area-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b76-background-region",
-            "b76-hatched-region"
+            "b76-background-region"
           ],
           "rect": {
             "x": 0,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 100,
+            "height": 55
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -13194,7 +12992,6 @@
           "relevanceId": "b-fallback-189-relevance-1",
           "detailIds": [
             "b179-car-splash",
-            "b179-city-buildings",
             "b179-flooded-road-surface"
           ],
           "objectIds": [
@@ -13202,15 +12999,14 @@
             "b179-flooded-road"
           ],
           "regionIds": [
-            "b179-background-region",
             "b179-car-region",
             "b179-water-region"
           ],
           "rect": {
             "x": 0,
-            "y": 0,
+            "y": 30,
             "width": 100,
-            "height": 98
+            "height": 68
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -13219,24 +13015,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-189-relevance-2",
           "detailIds": [
-            "b179-car-splash",
-            "b179-city-buildings",
-            "b179-flooded-road-surface"
+            "b179-city-buildings"
           ],
-          "objectIds": [
-            "b179-black-car",
-            "b179-flooded-road"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b179-background-region",
-            "b179-car-region",
-            "b179-water-region"
+            "b179-background-region"
           ],
           "rect": {
-            "x": 78,
+            "x": 0,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 100,
+            "height": 45
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -13304,21 +13093,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-190-relevance-2",
           "detailIds": [
-            "b147-grass-background",
             "b147-straight-road-context"
           ],
           "objectIds": [
             "b147-straight-road"
           ],
           "regionIds": [
-            "b147-background-region",
             "b147-road-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 20,
+            "y": 45,
+            "width": 55,
+            "height": 52
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -13327,15 +13114,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-190-relevance-3",
           "detailIds": [
-            "b147-grass-background",
-            "b147-straight-road-context"
+            "b147-grass-background"
           ],
-          "objectIds": [
-            "b147-straight-road"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b147-background-region",
-            "b147-road-region"
+            "b147-background-region"
           ],
           "rect": {
             "x": 0,
@@ -13370,19 +13153,16 @@
       ],
       "referencedDetailIds": [
         "b128-background-traffic",
-        "b128-circled-car-position",
         "b128-green-traffic-light",
         "b128-no-turn-indication",
         "b128-straight-lane-arrows"
       ],
       "referencedObjectIds": [
-        "b128-circled-car",
         "b128-green-traffic-light-object",
         "b128-straight-lane-arrows-object"
       ],
       "referencedRegionIds": [
         "b128-background-region",
-        "b128-car-region",
         "b128-lane-region",
         "b128-signal-region"
       ],
@@ -13417,23 +13197,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-191-relevance-2",
           "detailIds": [
-            "b128-green-traffic-light",
-            "b128-no-turn-indication",
-            "b128-straight-lane-arrows"
+            "b128-green-traffic-light"
           ],
           "objectIds": [
-            "b128-green-traffic-light-object",
-            "b128-straight-lane-arrows-object"
+            "b128-green-traffic-light-object"
           ],
           "regionIds": [
-            "b128-lane-region",
             "b128-signal-region"
           ],
           "rect": {
-            "x": 78,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 5,
+            "y": 2,
+            "width": 46,
+            "height": 20
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -13442,21 +13218,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-191-relevance-3",
           "detailIds": [
-            "b128-background-traffic",
-            "b128-circled-car-position"
+            "b128-background-traffic"
           ],
-          "objectIds": [
-            "b128-circled-car"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b128-background-region",
-            "b128-car-region"
+            "b128-background-region"
           ],
           "rect": {
             "x": 0,
             "y": 0,
             "width": 100,
-            "height": 65
+            "height": 55
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -13504,22 +13276,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-192-relevance-1",
           "detailIds": [
-            "b169-hazard-lights",
-            "b169-red-car-position"
+            "b169-hazard-lights"
           ],
           "objectIds": [
-            "b169-hazard-lights-object",
-            "b169-red-car"
+            "b169-hazard-lights-object"
           ],
           "regionIds": [
-            "b169-car-region",
             "b169-light-region"
           ],
           "rect": {
             "x": 31,
-            "y": 42,
+            "y": 52,
             "width": 40,
-            "height": 35
+            "height": 16
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -13549,22 +13318,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-192-relevance-3",
           "detailIds": [
-            "b169-hazard-lights",
             "b169-red-car-position"
           ],
           "objectIds": [
-            "b169-hazard-lights-object",
             "b169-red-car"
           ],
           "regionIds": [
-            "b169-car-region",
-            "b169-light-region"
+            "b169-car-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 22
+            "x": 36,
+            "y": 42,
+            "width": 34,
+            "height": 35
           },
           "labelRu": "Поддерживающая визуальная деталь"
         }
@@ -13634,7 +13400,6 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-193-relevance-2",
           "detailIds": [
-            "b217-car-cabin-background",
             "b217-driver-seatbelt",
             "b217-front-passenger-seatbelt"
           ],
@@ -13643,7 +13408,6 @@
             "b217-front-passenger-belted"
           ],
           "regionIds": [
-            "b217-background-region",
             "b217-front-region"
           ],
           "rect": {
@@ -13659,17 +13423,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-193-relevance-3",
           "detailIds": [
-            "b217-car-cabin-background",
-            "b217-driver-seatbelt",
-            "b217-front-passenger-seatbelt"
+            "b217-car-cabin-background"
           ],
-          "objectIds": [
-            "b217-driver-belted",
-            "b217-front-passenger-belted"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b217-background-region",
-            "b217-front-region"
+            "b217-background-region"
           ],
           "rect": {
             "x": 0,
@@ -13746,22 +13504,19 @@
           "relevanceId": "b-fallback-194-relevance-2",
           "detailIds": [
             "b191-dense-fog-road",
-            "b191-distant-lights",
-            "b191-road-edge-and-shoulder"
+            "b191-distant-lights"
           ],
           "objectIds": [
-            "b191-fog-bank",
-            "b191-roadway"
+            "b191-fog-bank"
           ],
           "regionIds": [
-            "b191-fog-region",
-            "b191-road-region"
+            "b191-fog-region"
           ],
           "rect": {
             "x": 0,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 100,
+            "height": 62
           },
           "labelRu": "Поддерживающая визуальная деталь"
         }
@@ -13790,17 +13545,14 @@
       "referencedDetailIds": [
         "b200-black-straps",
         "b200-highway-background",
-        "b200-roof-cargo",
-        "b200-suv-body"
+        "b200-roof-cargo"
       ],
       "referencedObjectIds": [
-        "b200-roof-cargo-object",
-        "b200-suv"
+        "b200-roof-cargo-object"
       ],
       "referencedRegionIds": [
         "b200-background-region",
-        "b200-cargo-region",
-        "b200-suv-region"
+        "b200-cargo-region"
       ],
       "regions": [
         {
@@ -13809,22 +13561,19 @@
           "relevanceId": "b-fallback-195-relevance-1",
           "detailIds": [
             "b200-black-straps",
-            "b200-roof-cargo",
-            "b200-suv-body"
+            "b200-roof-cargo"
           ],
           "objectIds": [
-            "b200-roof-cargo-object",
-            "b200-suv"
+            "b200-roof-cargo-object"
           ],
           "regionIds": [
-            "b200-cargo-region",
-            "b200-suv-region"
+            "b200-cargo-region"
           ],
           "rect": {
-            "x": 34,
+            "x": 37,
             "y": 10,
-            "width": 39,
-            "height": 73
+            "width": 36,
+            "height": 30
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -13833,19 +13582,11 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-195-relevance-2",
           "detailIds": [
-            "b200-black-straps",
-            "b200-highway-background",
-            "b200-roof-cargo",
-            "b200-suv-body"
+            "b200-highway-background"
           ],
-          "objectIds": [
-            "b200-roof-cargo-object",
-            "b200-suv"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b200-background-region",
-            "b200-cargo-region",
-            "b200-suv-region"
+            "b200-background-region"
           ],
           "rect": {
             "x": 0,
@@ -13898,7 +13639,6 @@
           "relevanceId": "b-fallback-197-relevance-1",
           "detailIds": [
             "b124-circled-car-on-shoulder",
-            "b124-normal-traffic-lanes",
             "b124-shoulder-area"
           ],
           "objectIds": [
@@ -13907,13 +13647,12 @@
           ],
           "regionIds": [
             "b124-car-region",
-            "b124-road-region",
             "b124-shoulder-region"
           ],
           "rect": {
-            "x": 0,
+            "x": 48,
             "y": 35,
-            "width": 80,
+            "width": 32,
             "height": 55
           },
           "labelRu": "Ключевая область для ответа"
@@ -13923,24 +13662,17 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-197-relevance-2",
           "detailIds": [
-            "b124-circled-car-on-shoulder",
-            "b124-normal-traffic-lanes",
-            "b124-shoulder-area"
+            "b124-normal-traffic-lanes"
           ],
-          "objectIds": [
-            "b124-circled-car",
-            "b124-shoulder"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b124-car-region",
-            "b124-road-region",
-            "b124-shoulder-region"
+            "b124-road-region"
           ],
           "rect": {
             "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 22
+            "y": 35,
+            "width": 65,
+            "height": 55
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         }
@@ -13983,21 +13715,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-202-relevance-1",
           "detailIds": [
-            "b242-double-crossbuck",
-            "b242-white-background"
+            "b242-double-crossbuck"
           ],
           "objectIds": [
             "b242-double-crossbuck-object"
           ],
           "regionIds": [
-            "b242-background-region",
             "b242-crossbuck-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 3,
+            "y": 8,
+            "width": 94,
+            "height": 82
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -14006,15 +13736,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-202-relevance-2",
           "detailIds": [
-            "b242-double-crossbuck",
             "b242-white-background"
           ],
-          "objectIds": [
-            "b242-double-crossbuck-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b242-background-region",
-            "b242-crossbuck-region"
+            "b242-background-region"
           ],
           "rect": {
             "x": 66,
@@ -14063,21 +13789,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-203-relevance-1",
           "detailIds": [
-            "b56-private-passenger-car",
-            "b56-urban-street-context"
+            "b56-private-passenger-car"
           ],
           "objectIds": [
             "b56-private-passenger-car-object"
           ],
           "regionIds": [
-            "b56-background-region",
             "b56-car-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 32,
+            "y": 24,
+            "width": 40,
+            "height": 55
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -14086,15 +13810,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-203-relevance-2",
           "detailIds": [
-            "b56-private-passenger-car",
             "b56-urban-street-context"
           ],
-          "objectIds": [
-            "b56-private-passenger-car-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b56-background-region",
-            "b56-car-region"
+            "b56-background-region"
           ],
           "rect": {
             "x": 0,
@@ -14143,21 +13863,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-205-relevance-1",
           "detailIds": [
-            "b266-plain-sign-background",
             "b266-yellow-fatality-star"
           ],
           "objectIds": [
             "b266-yellow-star-object"
           ],
           "regionIds": [
-            "b266-background-region",
             "b266-star-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 16,
+            "y": 13,
+            "width": 68,
+            "height": 72
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -14166,15 +13884,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-205-relevance-2",
           "detailIds": [
-            "b266-plain-sign-background",
-            "b266-yellow-fatality-star"
+            "b266-plain-sign-background"
           ],
-          "objectIds": [
-            "b266-yellow-star-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b266-background-region",
-            "b266-star-region"
+            "b266-background-region"
           ],
           "rect": {
             "x": 66,
@@ -14226,7 +13940,6 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-210-relevance-1",
           "detailIds": [
-            "b213-car-interior-context",
             "b213-child-restraint",
             "b213-child-without-harness"
           ],
@@ -14235,14 +13948,13 @@
             "b213-child-seat"
           ],
           "regionIds": [
-            "b213-background-region",
             "b213-child-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 47,
+            "y": 18,
+            "width": 34,
+            "height": 68
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -14251,7 +13963,6 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-210-relevance-2",
           "detailIds": [
-            "b213-car-interior-context",
             "b213-child-restraint",
             "b213-child-without-harness"
           ],
@@ -14260,7 +13971,6 @@
             "b213-child-seat"
           ],
           "regionIds": [
-            "b213-background-region",
             "b213-child-region"
           ],
           "rect": {
@@ -14276,17 +13986,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-210-relevance-3",
           "detailIds": [
-            "b213-car-interior-context",
-            "b213-child-restraint",
-            "b213-child-without-harness"
+            "b213-car-interior-context"
           ],
-          "objectIds": [
-            "b213-child",
-            "b213-child-seat"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b213-background-region",
-            "b213-child-region"
+            "b213-background-region"
           ],
           "rect": {
             "x": 0,
@@ -14339,21 +14043,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-211-relevance-1",
           "detailIds": [
-            "b168-sidewalk-walls-background",
             "b168-underpass-roadway"
           ],
           "objectIds": [
             "b168-underpass"
           ],
           "regionIds": [
-            "b168-background-region",
             "b168-underpass-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 12,
+            "y": 12,
+            "width": 76,
+            "height": 80
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -14383,15 +14085,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-211-relevance-3",
           "detailIds": [
-            "b168-sidewalk-walls-background",
-            "b168-underpass-roadway"
+            "b168-sidewalk-walls-background"
           ],
-          "objectIds": [
-            "b168-underpass"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b168-background-region",
-            "b168-underpass-region"
+            "b168-background-region"
           ],
           "rect": {
             "x": 66,
@@ -14465,21 +14163,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-212-relevance-2",
           "detailIds": [
-            "b221-cabin-background",
             "b221-driver-at-wheel"
           ],
           "objectIds": [
             "b221-driver"
           ],
           "regionIds": [
-            "b221-background-region",
             "b221-driver-region"
           ],
           "rect": {
-            "x": 78,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 0,
+            "y": 35,
+            "width": 55,
+            "height": 55
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -14488,15 +14184,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-212-relevance-3",
           "detailIds": [
-            "b221-cabin-background",
-            "b221-driver-at-wheel"
+            "b221-cabin-background"
           ],
-          "objectIds": [
-            "b221-driver"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b221-background-region",
-            "b221-driver-region"
+            "b221-background-region"
           ],
           "rect": {
             "x": 0,
@@ -14546,7 +14238,6 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-214-relevance-1",
           "detailIds": [
-            "b51-dark-grille-background",
             "b51-license-plate-ending-7",
             "b51-license-text"
           ],
@@ -14554,14 +14245,13 @@
             "b51-license-plate-object"
           ],
           "regionIds": [
-            "b51-background-region",
             "b51-plate-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 8,
+            "y": 19,
+            "width": 84,
+            "height": 55
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -14570,16 +14260,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-214-relevance-2",
           "detailIds": [
-            "b51-dark-grille-background",
-            "b51-license-plate-ending-7",
-            "b51-license-text"
+            "b51-dark-grille-background"
           ],
-          "objectIds": [
-            "b51-license-plate-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b51-background-region",
-            "b51-plate-region"
+            "b51-background-region"
           ],
           "rect": {
             "x": 0,
@@ -14628,21 +14313,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-216-relevance-1",
           "detailIds": [
-            "b90-emergency-lane-symbol",
-            "b90-grey-background"
+            "b90-emergency-lane-symbol"
           ],
           "objectIds": [
             "b90-emergency-symbol-object"
           ],
           "regionIds": [
-            "b90-background-region",
             "b90-symbol-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 12,
+            "y": 10,
+            "width": 76,
+            "height": 78
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -14651,15 +14334,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-216-relevance-2",
           "detailIds": [
-            "b90-emergency-lane-symbol",
             "b90-grey-background"
           ],
-          "objectIds": [
-            "b90-emergency-symbol-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b90-background-region",
-            "b90-symbol-region"
+            "b90-background-region"
           ],
           "rect": {
             "x": 0,
@@ -14737,21 +14416,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-217-relevance-2",
           "detailIds": [
-            "b61-dashboard-background",
             "b61-driver-not-circled"
           ],
           "objectIds": [
             "b61-driver"
           ],
           "regionIds": [
-            "b61-background-region",
             "b61-driver-region"
           ],
           "rect": {
-            "x": 66,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 65,
+            "y": 15,
+            "width": 32,
+            "height": 68
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -14760,15 +14437,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-217-relevance-3",
           "detailIds": [
-            "b61-dashboard-background",
-            "b61-driver-not-circled"
+            "b61-dashboard-background"
           ],
-          "objectIds": [
-            "b61-driver"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b61-background-region",
-            "b61-driver-region"
+            "b61-background-region"
           ],
           "rect": {
             "x": 0,
@@ -14825,27 +14498,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-220-relevance-1",
           "detailIds": [
-            "b88-figure-a-blue-sign-detail",
-            "b88-figure-b-orange-work-sign",
-            "b88-figure-c-red-circle-detail",
-            "b88-option-labels"
+            "b88-figure-b-orange-work-sign"
           ],
           "objectIds": [
-            "b88-figure-a-blue-sign",
-            "b88-figure-b-orange-work-sign-object",
-            "b88-figure-c-red-circle"
+            "b88-figure-b-orange-work-sign-object"
           ],
           "regionIds": [
-            "b88-figure-a-region",
-            "b88-figure-b-region",
-            "b88-figure-c-region",
-            "b88-label-region"
+            "b88-figure-b-region"
           ],
           "rect": {
-            "x": 2,
-            "y": 8,
-            "width": 96,
-            "height": 87
+            "x": 34,
+            "y": 10,
+            "width": 32,
+            "height": 58
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -14854,27 +14519,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-220-relevance-2",
           "detailIds": [
-            "b88-figure-a-blue-sign-detail",
-            "b88-figure-b-orange-work-sign",
-            "b88-figure-c-red-circle-detail",
-            "b88-option-labels"
+            "b88-figure-a-blue-sign-detail"
           ],
           "objectIds": [
-            "b88-figure-a-blue-sign",
-            "b88-figure-b-orange-work-sign-object",
-            "b88-figure-c-red-circle"
+            "b88-figure-a-blue-sign"
           ],
           "regionIds": [
-            "b88-figure-a-region",
-            "b88-figure-b-region",
-            "b88-figure-c-region",
-            "b88-label-region"
+            "b88-figure-a-region"
           ],
           "rect": {
-            "x": 66,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 2,
+            "y": 8,
+            "width": 24,
+            "height": 60
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -14883,27 +14540,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-220-relevance-3",
           "detailIds": [
-            "b88-figure-a-blue-sign-detail",
-            "b88-figure-b-orange-work-sign",
-            "b88-figure-c-red-circle-detail",
-            "b88-option-labels"
+            "b88-figure-c-red-circle-detail"
           ],
           "objectIds": [
-            "b88-figure-a-blue-sign",
-            "b88-figure-b-orange-work-sign-object",
             "b88-figure-c-red-circle"
           ],
           "regionIds": [
-            "b88-figure-a-region",
-            "b88-figure-b-region",
-            "b88-figure-c-region",
-            "b88-label-region"
+            "b88-figure-c-region"
           ],
           "rect": {
-            "x": 66,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 74,
+            "y": 8,
+            "width": 24,
+            "height": 60
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -14912,27 +14561,17 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-220-relevance-4",
           "detailIds": [
-            "b88-figure-a-blue-sign-detail",
-            "b88-figure-b-orange-work-sign",
-            "b88-figure-c-red-circle-detail",
             "b88-option-labels"
           ],
-          "objectIds": [
-            "b88-figure-a-blue-sign",
-            "b88-figure-b-orange-work-sign-object",
-            "b88-figure-c-red-circle"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b88-figure-a-region",
-            "b88-figure-b-region",
-            "b88-figure-c-region",
             "b88-label-region"
           ],
           "rect": {
-            "x": 66,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 8,
+            "y": 70,
+            "width": 84,
+            "height": 25
           },
           "labelRu": "Поддерживающая визуальная деталь"
         }
@@ -14977,7 +14616,6 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-222-relevance-1",
           "detailIds": [
-            "b122-open-road-background",
             "b122-red-oval-centerline",
             "b122-solid-and-broken-center-lines"
           ],
@@ -14986,14 +14624,13 @@
             "b122-red-oval"
           ],
           "regionIds": [
-            "b122-background-region",
             "b122-line-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 37,
+            "y": 48,
+            "width": 22,
+            "height": 50
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -15002,17 +14639,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-222-relevance-2",
           "detailIds": [
-            "b122-open-road-background",
-            "b122-red-oval-centerline",
-            "b122-solid-and-broken-center-lines"
+            "b122-open-road-background"
           ],
-          "objectIds": [
-            "b122-center-lines-object",
-            "b122-red-oval"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b122-background-region",
-            "b122-line-region"
+            "b122-background-region"
           ],
           "rect": {
             "x": 0,
@@ -15069,22 +14700,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-223-relevance-1",
           "detailIds": [
-            "b30-bus-lane-time-sign",
-            "b30-exclusive-lane-context"
+            "b30-bus-lane-time-sign"
           ],
           "objectIds": [
-            "b30-bus-lane-sign-object",
-            "b30-exclusive-lane-marking"
+            "b30-bus-lane-sign-object"
           ],
           "regionIds": [
-            "b30-road-region",
             "b30-sign-region"
           ],
           "rect": {
-            "x": 0,
+            "x": 78,
             "y": 4,
-            "width": 100,
-            "height": 90
+            "width": 18,
+            "height": 37
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -15093,21 +14721,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-223-relevance-2",
           "detailIds": [
-            "b30-circled-car-near-bus-lane",
-            "b30-tree-buildings-background"
+            "b30-circled-car-near-bus-lane"
           ],
           "objectIds": [
             "b30-circled-car"
           ],
           "regionIds": [
-            "b30-background-region",
             "b30-car-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 70
+            "x": 3,
+            "y": 46,
+            "width": 24,
+            "height": 24
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -15116,22 +14742,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-223-relevance-3",
           "detailIds": [
-            "b30-bus-lane-time-sign",
             "b30-exclusive-lane-context"
           ],
           "objectIds": [
-            "b30-bus-lane-sign-object",
             "b30-exclusive-lane-marking"
           ],
           "regionIds": [
-            "b30-road-region",
-            "b30-sign-region"
+            "b30-road-region"
           ],
           "rect": {
             "x": 0,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "y": 52,
+            "width": 100,
+            "height": 42
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -15140,21 +14763,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-223-relevance-4",
           "detailIds": [
-            "b30-circled-car-near-bus-lane",
             "b30-tree-buildings-background"
           ],
-          "objectIds": [
-            "b30-circled-car"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b30-background-region",
-            "b30-car-region"
+            "b30-background-region"
           ],
           "rect": {
-            "x": 78,
+            "x": 0,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 34,
+            "height": 34
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -15184,8 +14803,7 @@
       "referencedDetailIds": [
         "b84-figure-a-blue-left-detail",
         "b84-figure-b-yellow-curve-detail",
-        "b84-figure-c-regulatory-sign",
-        "b84-option-labels"
+        "b84-figure-c-regulatory-sign"
       ],
       "referencedObjectIds": [
         "b84-figure-a-blue-left",
@@ -15195,8 +14813,7 @@
       "referencedRegionIds": [
         "b84-figure-a-region",
         "b84-figure-b-region",
-        "b84-figure-c-region",
-        "b84-label-region"
+        "b84-figure-c-region"
       ],
       "regions": [
         {
@@ -15204,27 +14821,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-225-relevance-1",
           "detailIds": [
-            "b84-figure-a-blue-left-detail",
-            "b84-figure-b-yellow-curve-detail",
-            "b84-figure-c-regulatory-sign",
-            "b84-option-labels"
+            "b84-figure-c-regulatory-sign"
           ],
           "objectIds": [
-            "b84-figure-a-blue-left",
-            "b84-figure-b-yellow-curve",
             "b84-figure-c-regulatory-sign-object"
           ],
           "regionIds": [
-            "b84-figure-a-region",
-            "b84-figure-b-region",
-            "b84-figure-c-region",
-            "b84-label-region"
+            "b84-figure-c-region"
           ],
           "rect": {
-            "x": 1,
+            "x": 69,
             "y": 4,
-            "width": 98,
-            "height": 90
+            "width": 30,
+            "height": 67
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -15233,27 +14842,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-225-relevance-2",
           "detailIds": [
-            "b84-figure-a-blue-left-detail",
-            "b84-figure-b-yellow-curve-detail",
-            "b84-figure-c-regulatory-sign",
-            "b84-option-labels"
+            "b84-figure-a-blue-left-detail"
           ],
           "objectIds": [
-            "b84-figure-a-blue-left",
-            "b84-figure-b-yellow-curve",
-            "b84-figure-c-regulatory-sign-object"
+            "b84-figure-a-blue-left"
           ],
           "regionIds": [
-            "b84-figure-a-region",
-            "b84-figure-b-region",
-            "b84-figure-c-region",
-            "b84-label-region"
+            "b84-figure-a-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 1,
+            "y": 4,
+            "width": 29,
+            "height": 67
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -15262,27 +14863,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-225-relevance-3",
           "detailIds": [
-            "b84-figure-a-blue-left-detail",
-            "b84-figure-b-yellow-curve-detail",
-            "b84-figure-c-regulatory-sign",
-            "b84-option-labels"
+            "b84-figure-b-yellow-curve-detail"
           ],
           "objectIds": [
-            "b84-figure-a-blue-left",
-            "b84-figure-b-yellow-curve",
-            "b84-figure-c-regulatory-sign-object"
+            "b84-figure-b-yellow-curve"
           ],
           "regionIds": [
-            "b84-figure-a-region",
-            "b84-figure-b-region",
-            "b84-figure-c-region",
-            "b84-label-region"
+            "b84-figure-b-region"
           ],
           "rect": {
-            "x": 78,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 34,
+            "y": 5,
+            "width": 28,
+            "height": 66
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         }
@@ -15325,20 +14918,18 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-227-relevance-1",
           "detailIds": [
-            "b120-asphalt-background",
             "b120-broken-white-lane-line"
           ],
           "objectIds": [
             "b120-broken-line-object"
           ],
           "regionIds": [
-            "b120-background-region",
             "b120-line-region"
           ],
           "rect": {
-            "x": 0,
+            "x": 48,
             "y": 0,
-            "width": 100,
+            "width": 8,
             "height": 100
           },
           "labelRu": "Ключевая область для ответа"
@@ -15348,15 +14939,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-227-relevance-2",
           "detailIds": [
-            "b120-asphalt-background",
-            "b120-broken-white-lane-line"
+            "b120-asphalt-background"
           ],
-          "objectIds": [
-            "b120-broken-line-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b120-background-region",
-            "b120-line-region"
+            "b120-background-region"
           ],
           "rect": {
             "x": 78,
@@ -15409,14 +14996,12 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-228-relevance-1",
           "detailIds": [
-            "b9-empty-central-aisle",
             "b9-parking-garage-interior"
           ],
           "objectIds": [
             "b9-parking-garage"
           ],
           "regionIds": [
-            "b9-aisle-region",
             "b9-garage-region"
           ],
           "rect": {
@@ -15453,21 +15038,17 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-228-relevance-3",
           "detailIds": [
-            "b9-empty-central-aisle",
-            "b9-parking-garage-interior"
+            "b9-empty-central-aisle"
           ],
-          "objectIds": [
-            "b9-parking-garage"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b9-aisle-region",
-            "b9-garage-region"
+            "b9-aisle-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 22
+            "x": 32,
+            "y": 42,
+            "width": 36,
+            "height": 55
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         }
@@ -15518,26 +15099,18 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-229-relevance-1",
           "detailIds": [
-            "b65-driver-drinking",
-            "b65-driver-eating",
-            "b65-driver-smoking",
-            "b65-option-labels"
+            "b65-driver-smoking"
           ],
           "objectIds": [
-            "b65-driver-drinking-object",
-            "b65-driver-eating-object",
             "b65-driver-smoking-object"
           ],
           "regionIds": [
-            "b65-label-region",
-            "b65-panel-a-region",
-            "b65-panel-b-region",
-            "b65-panel-c-region"
+            "b65-panel-a-region"
           ],
           "rect": {
             "x": 0,
             "y": 0,
-            "width": 100,
+            "width": 33,
             "height": 100
           },
           "labelRu": "Ключевая область для ответа"
@@ -15547,26 +15120,18 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-229-relevance-2",
           "detailIds": [
-            "b65-driver-drinking",
-            "b65-driver-eating",
-            "b65-driver-smoking",
-            "b65-option-labels"
+            "b65-driver-drinking"
           ],
           "objectIds": [
-            "b65-driver-drinking-object",
-            "b65-driver-eating-object",
-            "b65-driver-smoking-object"
+            "b65-driver-drinking-object"
           ],
           "regionIds": [
-            "b65-label-region",
-            "b65-panel-a-region",
-            "b65-panel-b-region",
-            "b65-panel-c-region"
+            "b65-panel-b-region"
           ],
           "rect": {
-            "x": 0,
+            "x": 33,
             "y": 0,
-            "width": 100,
+            "width": 34,
             "height": 100
           },
           "labelRu": "Ключевая область для ответа"
@@ -15576,26 +15141,18 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-229-relevance-3",
           "detailIds": [
-            "b65-driver-drinking",
-            "b65-driver-eating",
-            "b65-driver-smoking",
-            "b65-option-labels"
+            "b65-driver-eating"
           ],
           "objectIds": [
-            "b65-driver-drinking-object",
-            "b65-driver-eating-object",
-            "b65-driver-smoking-object"
+            "b65-driver-eating-object"
           ],
           "regionIds": [
-            "b65-label-region",
-            "b65-panel-a-region",
-            "b65-panel-b-region",
             "b65-panel-c-region"
           ],
           "rect": {
-            "x": 0,
+            "x": 67,
             "y": 0,
-            "width": 100,
+            "width": 33,
             "height": 100
           },
           "labelRu": "Ключевая область для ответа"
@@ -15605,27 +15162,17 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-229-relevance-4",
           "detailIds": [
-            "b65-driver-drinking",
-            "b65-driver-eating",
-            "b65-driver-smoking",
             "b65-option-labels"
           ],
-          "objectIds": [
-            "b65-driver-drinking-object",
-            "b65-driver-eating-object",
-            "b65-driver-smoking-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b65-label-region",
-            "b65-panel-a-region",
-            "b65-panel-b-region",
-            "b65-panel-c-region"
+            "b65-label-region"
           ],
           "rect": {
             "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "y": 0,
+            "width": 100,
+            "height": 22
           },
           "labelRu": "Поддерживающая визуальная деталь"
         }
@@ -15693,21 +15240,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-230-relevance-2",
           "detailIds": [
-            "b32-curb-lane-context",
-            "b32-distant-cars-background"
+            "b32-curb-lane-context"
           ],
           "objectIds": [
             "b32-curb-lane"
           ],
           "regionIds": [
-            "b32-background-region",
             "b32-lane-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "x": 5,
+            "y": 20,
+            "width": 52,
+            "height": 75
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -15716,21 +15261,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-230-relevance-3",
           "detailIds": [
-            "b32-curb-lane-context",
             "b32-distant-cars-background"
           ],
-          "objectIds": [
-            "b32-curb-lane"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b32-background-region",
-            "b32-lane-region"
+            "b32-background-region"
           ],
           "rect": {
             "x": 0,
             "y": 0,
-            "width": 34,
-            "height": 34
+            "width": 100,
+            "height": 35
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -15962,21 +15503,18 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-237-relevance-1",
           "detailIds": [
-            "b64-driver-drinking-mate",
-            "b64-steering-context"
+            "b64-driver-drinking-mate"
           ],
           "objectIds": [
-            "b64-driver",
-            "b64-steering-wheel"
+            "b64-driver"
           ],
           "regionIds": [
-            "b64-driver-region",
-            "b64-wheel-region"
+            "b64-driver-region"
           ],
           "rect": {
             "x": 20,
             "y": 10,
-            "width": 69,
+            "width": 46,
             "height": 68
           },
           "labelRu": "Ключевая область для ответа"
@@ -15986,24 +15524,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-237-relevance-2",
           "detailIds": [
-            "b64-dashboard-background",
-            "b64-driver-drinking-mate",
             "b64-steering-context"
           ],
           "objectIds": [
-            "b64-driver",
             "b64-steering-wheel"
           ],
           "regionIds": [
-            "b64-background-region",
-            "b64-driver-region",
             "b64-wheel-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 66,
+            "x": 55,
+            "y": 38,
             "width": 34,
-            "height": 34
+            "height": 32
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -16012,18 +15545,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-237-relevance-3",
           "detailIds": [
-            "b64-dashboard-background",
-            "b64-driver-drinking-mate",
-            "b64-steering-context"
+            "b64-dashboard-background"
           ],
-          "objectIds": [
-            "b64-driver",
-            "b64-steering-wheel"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b64-background-region",
-            "b64-driver-region",
-            "b64-wheel-region"
+            "b64-background-region"
           ],
           "rect": {
             "x": 0,
@@ -16072,21 +15598,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-238-relevance-1",
           "detailIds": [
-            "b227-drawbridge-symbol",
-            "b227-yellow-diamond-background"
+            "b227-drawbridge-symbol"
           ],
           "objectIds": [
             "b227-drawbridge-sign-object"
           ],
           "regionIds": [
-            "b227-background-region",
             "b227-sign-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 10,
+            "y": 10,
+            "width": 80,
+            "height": 80
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -16095,15 +15619,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-238-relevance-2",
           "detailIds": [
-            "b227-drawbridge-symbol",
             "b227-yellow-diamond-background"
           ],
-          "objectIds": [
-            "b227-drawbridge-sign-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b227-background-region",
-            "b227-sign-region"
+            "b227-background-region"
           ],
           "rect": {
             "x": 66,
@@ -16152,21 +15672,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-239-relevance-1",
           "detailIds": [
-            "b234-falling-rocks-symbol",
-            "b234-yellow-warning-diamond"
+            "b234-falling-rocks-symbol"
           ],
           "objectIds": [
             "b234-falling-rocks-sign-object"
           ],
           "regionIds": [
-            "b234-background-region",
             "b234-sign-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 12,
+            "y": 10,
+            "width": 76,
+            "height": 78
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -16175,15 +15693,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-239-relevance-2",
           "detailIds": [
-            "b234-falling-rocks-symbol",
             "b234-yellow-warning-diamond"
           ],
-          "objectIds": [
-            "b234-falling-rocks-sign-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b234-background-region",
-            "b234-sign-region"
+            "b234-background-region"
           ],
           "rect": {
             "x": 66,
@@ -16224,7 +15738,6 @@
         "b204-red-car"
       ],
       "referencedRegionIds": [
-        "b204-background-region",
         "b204-car-region",
         "b204-tire-region"
       ],
@@ -16240,14 +15753,13 @@
             "b204-flat-tire-object"
           ],
           "regionIds": [
-            "b204-background-region",
             "b204-tire-region"
           ],
           "rect": {
             "x": 34,
-            "y": 0,
-            "width": 66,
-            "height": 100
+            "y": 18,
+            "width": 28,
+            "height": 66
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -16519,7 +16031,6 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-248-relevance-1",
           "detailIds": [
-            "b167-building-background",
             "b167-curb-context",
             "b167-parked-car-on-slope",
             "b167-wheels-toward-curb"
@@ -16529,15 +16040,14 @@
             "b167-parked-red-car"
           ],
           "regionIds": [
-            "b167-background-region",
             "b167-car-region",
             "b167-curb-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 79
+            "x": 12,
+            "y": 24,
+            "width": 75,
+            "height": 55
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -16546,25 +16056,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-248-relevance-2",
           "detailIds": [
-            "b167-building-background",
-            "b167-curb-context",
-            "b167-parked-car-on-slope",
-            "b167-wheels-toward-curb"
+            "b167-building-background"
           ],
-          "objectIds": [
-            "b167-curb",
-            "b167-parked-red-car"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b167-background-region",
-            "b167-car-region",
-            "b167-curb-region"
+            "b167-background-region"
           ],
           "rect": {
-            "x": 78,
+            "x": 0,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 100,
+            "height": 50
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -16610,7 +16112,6 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-249-relevance-1",
           "detailIds": [
-            "b165-car-body-background",
             "b165-curb-edge",
             "b165-wheel-too-close-curb"
           ],
@@ -16619,15 +16120,14 @@
             "b165-curb"
           ],
           "regionIds": [
-            "b165-background-region",
             "b165-curb-region",
             "b165-wheel-region"
           ],
           "rect": {
             "x": 2,
-            "y": 0,
-            "width": 98,
-            "height": 100
+            "y": 10,
+            "width": 51,
+            "height": 76
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -16636,23 +16136,16 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-249-relevance-2",
           "detailIds": [
-            "b165-car-body-background",
-            "b165-curb-edge",
-            "b165-wheel-too-close-curb"
+            "b165-car-body-background"
           ],
-          "objectIds": [
-            "b165-car-wheel",
-            "b165-curb"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b165-background-region",
-            "b165-curb-region",
-            "b165-wheel-region"
+            "b165-background-region"
           ],
           "rect": {
-            "x": 0,
+            "x": 35,
             "y": 0,
-            "width": 22,
+            "width": 65,
             "height": 100
           },
           "labelRu": "Второстепенный фон для этого вопроса"
@@ -16700,8 +16193,6 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-251-relevance-1",
           "detailIds": [
-            "b180-car-through-water",
-            "b180-rainy-street-background",
             "b180-wet-road-water-spray"
           ],
           "objectIds": [
@@ -16709,15 +16200,13 @@
             "b180-water"
           ],
           "regionIds": [
-            "b180-background-region",
-            "b180-car-region",
             "b180-water-region"
           ],
           "rect": {
             "x": 0,
-            "y": 0,
+            "y": 52,
             "width": 100,
-            "height": 98
+            "height": 46
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -16726,22 +16215,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-251-relevance-2",
           "detailIds": [
-            "b180-car-through-water",
-            "b180-wet-road-water-spray"
+            "b180-car-through-water"
           ],
           "objectIds": [
-            "b180-red-car",
-            "b180-water"
+            "b180-red-car"
           ],
           "regionIds": [
-            "b180-car-region",
-            "b180-water-region"
+            "b180-car-region"
           ],
           "rect": {
-            "x": 0,
+            "x": 26,
             "y": 18,
-            "width": 100,
-            "height": 80
+            "width": 45,
+            "height": 53
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -16750,24 +16236,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-251-relevance-3",
           "detailIds": [
-            "b180-car-through-water",
-            "b180-rainy-street-background",
-            "b180-wet-road-water-spray"
+            "b180-rainy-street-background"
           ],
-          "objectIds": [
-            "b180-red-car",
-            "b180-water"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b180-background-region",
-            "b180-car-region",
-            "b180-water-region"
+            "b180-background-region"
           ],
           "rect": {
             "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "y": 0,
+            "width": 100,
+            "height": 50
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -16835,21 +16314,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-252-relevance-2",
           "detailIds": [
-            "b140-road-context",
-            "b140-tree-background"
+            "b140-road-context"
           ],
           "objectIds": [
             "b140-road"
           ],
           "regionIds": [
-            "b140-background-region",
             "b140-road-region"
           ],
           "rect": {
-            "x": 66,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 0,
+            "y": 38,
+            "width": 78,
+            "height": 58
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -16858,15 +16335,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-252-relevance-3",
           "detailIds": [
-            "b140-road-context",
             "b140-tree-background"
           ],
-          "objectIds": [
-            "b140-road"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b140-background-region",
-            "b140-road-region"
+            "b140-background-region"
           ],
           "rect": {
             "x": 66,
@@ -16919,23 +16392,21 @@
           "relevanceId": "b-fallback-255-relevance-1",
           "detailIds": [
             "b184-headlights-reflections",
-            "b184-rain-night-wet-road",
-            "b184-tree-street-background"
+            "b184-rain-night-wet-road"
           ],
           "objectIds": [
             "b184-traffic",
             "b184-wet-road"
           ],
           "regionIds": [
-            "b184-background-region",
             "b184-road-region",
             "b184-traffic-region"
           ],
           "rect": {
             "x": 0,
-            "y": 0,
+            "y": 20,
             "width": 100,
-            "height": 100
+            "height": 80
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -16944,24 +16415,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-255-relevance-2",
           "detailIds": [
-            "b184-headlights-reflections",
-            "b184-rain-night-wet-road",
             "b184-tree-street-background"
           ],
-          "objectIds": [
-            "b184-traffic",
-            "b184-wet-road"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b184-background-region",
-            "b184-road-region",
-            "b184-traffic-region"
+            "b184-background-region"
           ],
           "rect": {
             "x": 0,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 100,
+            "height": 45
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -17012,26 +16476,18 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-256-relevance-1",
           "detailIds": [
-            "b2-option-a-car-detail",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist-detail",
-            "b2-option-labels"
+            "b2-option-b-motorcycle"
           ],
           "objectIds": [
-            "b2-option-a-car",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist"
+            "b2-option-b-motorcycle"
           ],
           "regionIds": [
-            "b2-label-region",
-            "b2-option-a-region",
-            "b2-option-b-region",
-            "b2-option-c-region"
+            "b2-option-b-region"
           ],
           "rect": {
-            "x": 0,
+            "x": 34,
             "y": 0,
-            "width": 100,
+            "width": 32,
             "height": 100
           },
           "labelRu": "Ключевая область для ответа"
@@ -17041,27 +16497,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-256-relevance-2",
           "detailIds": [
-            "b2-option-a-car-detail",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist-detail",
-            "b2-option-labels"
+            "b2-option-a-car-detail"
           ],
           "objectIds": [
-            "b2-option-a-car",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist"
+            "b2-option-a-car"
           ],
           "regionIds": [
-            "b2-label-region",
-            "b2-option-a-region",
-            "b2-option-b-region",
-            "b2-option-c-region"
+            "b2-option-a-region"
           ],
           "rect": {
             "x": 0,
-            "y": 66,
+            "y": 0,
             "width": 34,
-            "height": 34
+            "height": 100
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -17070,27 +16518,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-256-relevance-3",
           "detailIds": [
-            "b2-option-a-car-detail",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist-detail",
-            "b2-option-labels"
+            "b2-option-c-cyclist-detail"
           ],
           "objectIds": [
-            "b2-option-a-car",
-            "b2-option-b-motorcycle",
             "b2-option-c-cyclist"
           ],
           "regionIds": [
-            "b2-label-region",
-            "b2-option-a-region",
-            "b2-option-b-region",
             "b2-option-c-region"
           ],
           "rect": {
             "x": 66,
             "y": 0,
             "width": 34,
-            "height": 34
+            "height": 100
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -17099,27 +16539,17 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-256-relevance-4",
           "detailIds": [
-            "b2-option-a-car-detail",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist-detail",
             "b2-option-labels"
           ],
-          "objectIds": [
-            "b2-option-a-car",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b2-label-region",
-            "b2-option-a-region",
-            "b2-option-b-region",
-            "b2-option-c-region"
+            "b2-label-region"
           ],
           "rect": {
             "x": 0,
             "y": 0,
-            "width": 34,
-            "height": 34
+            "width": 100,
+            "height": 22
           },
           "labelRu": "Поддерживающая визуальная деталь"
         }
@@ -17166,21 +16596,18 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-258-relevance-1",
           "detailIds": [
-            "b63-driver-distracted-hand-to-face",
-            "b63-driving-context"
+            "b63-driver-distracted-hand-to-face"
           ],
           "objectIds": [
-            "b63-driver",
-            "b63-steering-wheel"
+            "b63-driver"
           ],
           "regionIds": [
-            "b63-driver-region",
-            "b63-wheel-region"
+            "b63-driver-region"
           ],
           "rect": {
             "x": 6,
             "y": 5,
-            "width": 69,
+            "width": 55,
             "height": 75
           },
           "labelRu": "Ключевая область для ответа"
@@ -17190,8 +16617,6 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-258-relevance-2",
           "detailIds": [
-            "b63-car-interior-background",
-            "b63-driver-distracted-hand-to-face",
             "b63-driving-context"
           ],
           "objectIds": [
@@ -17199,15 +16624,13 @@
             "b63-steering-wheel"
           ],
           "regionIds": [
-            "b63-background-region",
-            "b63-driver-region",
             "b63-wheel-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 45,
+            "y": 42,
+            "width": 30,
+            "height": 32
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -17216,18 +16639,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-258-relevance-3",
           "detailIds": [
-            "b63-car-interior-background",
-            "b63-driver-distracted-hand-to-face",
-            "b63-driving-context"
+            "b63-car-interior-background"
           ],
-          "objectIds": [
-            "b63-driver",
-            "b63-steering-wheel"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b63-background-region",
-            "b63-driver-region",
-            "b63-wheel-region"
+            "b63-background-region"
           ],
           "rect": {
             "x": 0,
@@ -17277,7 +16693,6 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-259-relevance-1",
           "detailIds": [
-            "b50-blue-header",
             "b50-license-plate-ending-3",
             "b50-license-text"
           ],
@@ -17285,14 +16700,13 @@
             "b50-license-plate-object"
           ],
           "regionIds": [
-            "b50-header-region",
             "b50-plate-region"
           ],
           "rect": {
             "x": 3,
-            "y": 11,
+            "y": 12,
             "width": 94,
-            "height": 77
+            "height": 76
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -17301,22 +16715,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-259-relevance-2",
           "detailIds": [
-            "b50-blue-header",
-            "b50-license-plate-ending-3",
-            "b50-license-text"
+            "b50-blue-header"
           ],
           "objectIds": [
             "b50-license-plate-object"
           ],
           "regionIds": [
-            "b50-header-region",
-            "b50-plate-region"
+            "b50-header-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 3,
+            "y": 11,
+            "width": 94,
+            "height": 22
           },
           "labelRu": "Поддерживающая визуальная деталь"
         }
@@ -17359,21 +16770,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-260-relevance-1",
           "detailIds": [
-            "b269-blue-info-background",
             "b269-theater-information-sign"
           ],
           "objectIds": [
             "b269-theater-sign-object"
           ],
           "regionIds": [
-            "b269-background-region",
             "b269-sign-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 10,
+            "y": 3,
+            "width": 80,
+            "height": 93
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -17382,15 +16791,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-260-relevance-2",
           "detailIds": [
-            "b269-blue-info-background",
-            "b269-theater-information-sign"
+            "b269-blue-info-background"
           ],
-          "objectIds": [
-            "b269-theater-sign-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b269-background-region",
-            "b269-sign-region"
+            "b269-background-region"
           ],
           "rect": {
             "x": 0,
@@ -17439,21 +16844,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-262-relevance-1",
           "detailIds": [
-            "b229-t-intersection-symbol",
-            "b229-yellow-warning-background"
+            "b229-t-intersection-symbol"
           ],
           "objectIds": [
             "b229-t-intersection-sign-object"
           ],
           "regionIds": [
-            "b229-background-region",
             "b229-sign-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 12,
+            "y": 10,
+            "width": 76,
+            "height": 78
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -17462,15 +16865,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-262-relevance-2",
           "detailIds": [
-            "b229-t-intersection-symbol",
             "b229-yellow-warning-background"
           ],
-          "objectIds": [
-            "b229-t-intersection-sign-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b229-background-region",
-            "b229-sign-region"
+            "b229-background-region"
           ],
           "rect": {
             "x": 66,
@@ -17544,14 +16943,12 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-263-relevance-2",
           "detailIds": [
-            "b44-moving-traffic-context",
-            "b44-overpass-background"
+            "b44-moving-traffic-context"
           ],
           "objectIds": [
             "b44-moving-traffic"
           ],
           "regionIds": [
-            "b44-background-region",
             "b44-road-region"
           ],
           "rect": {
@@ -17567,21 +16964,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-263-relevance-3",
           "detailIds": [
-            "b44-moving-traffic-context",
             "b44-overpass-background"
           ],
-          "objectIds": [
-            "b44-moving-traffic"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b44-background-region",
-            "b44-road-region"
+            "b44-background-region"
           ],
           "rect": {
             "x": 0,
             "y": 0,
-            "width": 22,
-            "height": 100
+            "width": 100,
+            "height": 24
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -17730,21 +17123,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-265-relevance-1",
           "detailIds": [
-            "b261-blue-circle-background",
             "b261-two-white-arrows"
           ],
           "objectIds": [
             "b261-two-arrows-sign-object"
           ],
           "regionIds": [
-            "b261-background-region",
             "b261-sign-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 5,
+            "y": 4,
+            "width": 90,
+            "height": 90
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -17753,15 +17144,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-265-relevance-2",
           "detailIds": [
-            "b261-blue-circle-background",
-            "b261-two-white-arrows"
+            "b261-blue-circle-background"
           ],
-          "objectIds": [
-            "b261-two-arrows-sign-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b261-background-region",
-            "b261-sign-region"
+            "b261-background-region"
           ],
           "rect": {
             "x": 66,
@@ -17814,23 +17201,21 @@
           "relevanceId": "b-fallback-267-relevance-1",
           "detailIds": [
             "b138-speed-limit-20-marking",
-            "b138-speed-limit-20-sign",
-            "b138-street-background"
+            "b138-speed-limit-20-sign"
           ],
           "objectIds": [
             "b138-road-marking-20",
             "b138-speed-sign-20"
           ],
           "regionIds": [
-            "b138-background-region",
             "b138-marking-region",
             "b138-sign-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 42,
+            "y": 24,
+            "width": 51,
+            "height": 63
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -17839,15 +17224,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-267-relevance-2",
           "detailIds": [
-            "b138-speed-limit-20-sign",
             "b138-street-background"
           ],
-          "objectIds": [
-            "b138-speed-sign-20"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b138-background-region",
-            "b138-sign-region"
+            "b138-background-region"
           ],
           "rect": {
             "x": 0,
@@ -17931,24 +17312,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-268-relevance-2",
           "detailIds": [
-            "b91-car-1",
-            "b91-car-2",
-            "b91-direction-arrows"
+            "b91-car-1"
           ],
           "objectIds": [
-            "b91-car-1-object",
-            "b91-car-2-object"
+            "b91-car-1-object"
           ],
           "regionIds": [
-            "b91-arrow-region",
-            "b91-car1-region",
-            "b91-car2-region"
+            "b91-car1-region"
           ],
           "rect": {
             "x": 47,
-            "y": 18,
-            "width": 51,
-            "height": 65
+            "y": 20,
+            "width": 22,
+            "height": 25
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -17957,24 +17333,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-268-relevance-3",
           "detailIds": [
-            "b91-car-1",
-            "b91-car-2",
-            "b91-direction-arrows"
+            "b91-car-2"
           ],
           "objectIds": [
-            "b91-car-1-object",
             "b91-car-2-object"
           ],
           "regionIds": [
-            "b91-arrow-region",
-            "b91-car1-region",
             "b91-car2-region"
           ],
           "rect": {
-            "x": 47,
-            "y": 18,
-            "width": 51,
-            "height": 65
+            "x": 48,
+            "y": 58,
+            "width": 22,
+            "height": 25
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -17983,24 +17354,17 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "b-fallback-268-relevance-4",
           "detailIds": [
-            "b91-car-1",
-            "b91-car-2",
             "b91-direction-arrows"
           ],
-          "objectIds": [
-            "b91-car-1-object",
-            "b91-car-2-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b91-arrow-region",
-            "b91-car1-region",
-            "b91-car2-region"
+            "b91-arrow-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 78,
+            "y": 18,
+            "width": 20,
+            "height": 65
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         }
@@ -18050,22 +17414,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-272-relevance-1",
           "detailIds": [
-            "b17-crosswalk-stripes",
             "b17-pedestrians-on-crosswalk"
           ],
           "objectIds": [
-            "b17-crosswalk",
             "b17-pedestrians"
           ],
           "regionIds": [
-            "b17-crosswalk-region",
             "b17-pedestrian-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 38,
-            "width": 86,
-            "height": 54
+            "x": 8,
+            "y": 50,
+            "width": 45,
+            "height": 42
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -18074,20 +17435,15 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-272-relevance-2",
           "detailIds": [
-            "b17-background-vehicles",
             "b17-crosswalk-stripes",
-            "b17-pedestrians-on-crosswalk",
             "b17-taxi-near-crosswalk"
           ],
           "objectIds": [
             "b17-crosswalk",
-            "b17-pedestrians",
             "b17-taxi"
           ],
           "regionIds": [
-            "b17-background-region",
             "b17-crosswalk-region",
-            "b17-pedestrian-region",
             "b17-taxi-region"
           ],
           "rect": {
@@ -18103,24 +17459,17 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-272-relevance-3",
           "detailIds": [
-            "b17-background-vehicles",
-            "b17-crosswalk-stripes",
-            "b17-pedestrians-on-crosswalk"
+            "b17-background-vehicles"
           ],
-          "objectIds": [
-            "b17-crosswalk",
-            "b17-pedestrians"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b17-background-region",
-            "b17-crosswalk-region",
-            "b17-pedestrian-region"
+            "b17-background-region"
           ],
           "rect": {
-            "x": 66,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 46
           },
           "labelRu": "Второстепенный фон для этого вопроса"
         }
@@ -18163,21 +17512,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "b-fallback-273-relevance-1",
           "detailIds": [
-            "b236-divided-road-symbol",
-            "b236-yellow-warning-background"
+            "b236-divided-road-symbol"
           ],
           "objectIds": [
             "b236-divided-road-sign-object"
           ],
           "regionIds": [
-            "b236-background-region",
             "b236-sign-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 100
+            "x": 12,
+            "y": 10,
+            "width": 76,
+            "height": 80
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -18186,15 +17533,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-273-relevance-2",
           "detailIds": [
-            "b236-divided-road-symbol",
             "b236-yellow-warning-background"
           ],
-          "objectIds": [
-            "b236-divided-road-sign-object"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b236-background-region",
-            "b236-sign-region"
+            "b236-background-region"
           ],
           "rect": {
             "x": 78,
@@ -18268,21 +17611,19 @@
           "sourceRole": "supporting",
           "relevanceId": "b-fallback-274-relevance-2",
           "detailIds": [
-            "b37-building-background",
             "b37-lamp-pole-context"
           ],
           "objectIds": [
             "b37-lamp-pole"
           ],
           "regionIds": [
-            "b37-background-region",
             "b37-pole-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 43,
+            "y": 5,
+            "width": 18,
+            "height": 90
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -18291,15 +17632,11 @@
           "sourceRole": "background_irrelevant_dim",
           "relevanceId": "b-fallback-274-relevance-3",
           "detailIds": [
-            "b37-building-background",
-            "b37-lamp-pole-context"
+            "b37-building-background"
           ],
-          "objectIds": [
-            "b37-lamp-pole"
-          ],
+          "objectIds": [],
           "regionIds": [
-            "b37-background-region",
-            "b37-pole-region"
+            "b37-background-region"
           ],
           "rect": {
             "x": 0,
@@ -19129,26 +18466,20 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "q285-highlight-panel-b",
           "detailIds": [
-            "b3-option-a-cycling-scene",
-            "b3-yellow-comparison-labels",
             "q285-option-b-congested-motor-traffic"
           ],
           "objectIds": [
-            "b3-label-a",
             "b3-label-b",
-            "b3-panel-a-cyclists",
             "b3-panel-b-congestion"
           ],
           "regionIds": [
-            "b3-labels-region",
-            "b3-panel-a-region",
             "b3-panel-b-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 5,
-            "width": 100,
-            "height": 68
+            "x": 50,
+            "y": 18,
+            "width": 48,
+            "height": 55
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -19157,26 +18488,20 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "q285-trap-panel-a",
           "detailIds": [
-            "b3-option-a-cycling-scene",
-            "b3-yellow-comparison-labels",
-            "q285-option-b-congested-motor-traffic"
+            "b3-option-a-cycling-scene"
           ],
           "objectIds": [
             "b3-label-a",
-            "b3-label-b",
-            "b3-panel-a-cyclists",
-            "b3-panel-b-congestion"
+            "b3-panel-a-cyclists"
           ],
           "regionIds": [
-            "b3-labels-region",
-            "b3-panel-a-region",
-            "b3-panel-b-region"
+            "b3-panel-a-region"
           ],
           "rect": {
             "x": 0,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "y": 18,
+            "width": 48,
+            "height": 55
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -19185,26 +18510,20 @@
           "sourceRole": "supporting",
           "relevanceId": "q285-support-labels",
           "detailIds": [
-            "b3-option-a-cycling-scene",
-            "b3-yellow-comparison-labels",
-            "q285-option-b-congested-motor-traffic"
+            "b3-yellow-comparison-labels"
           ],
           "objectIds": [
             "b3-label-a",
-            "b3-label-b",
-            "b3-panel-a-cyclists",
-            "b3-panel-b-congestion"
+            "b3-label-b"
           ],
           "regionIds": [
-            "b3-labels-region",
-            "b3-panel-a-region",
-            "b3-panel-b-region"
+            "b3-labels-region"
           ],
           "rect": {
-            "x": 66,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 0,
+            "y": 5,
+            "width": 100,
+            "height": 20
           },
           "labelRu": "Поддерживающая визуальная деталь"
         }
@@ -19278,17 +18597,13 @@
           "sourceRole": "supporting",
           "relevanceId": "q287-support-blue-service-panel",
           "detailIds": [
-            "b268-blue-service-sign-shape",
-            "q287-tire-service-sign"
+            "b268-blue-service-sign-shape"
           ],
           "objectIds": [
-            "b268-black-tire-pictogram",
-            "b268-blue-service-panel",
-            "b268-white-inset"
+            "b268-blue-service-panel"
           ],
           "regionIds": [
-            "b268-sign-panel-region",
-            "b268-tire-pictogram-region"
+            "b268-sign-panel-region"
           ],
           "rect": {
             "x": 66,
@@ -19817,23 +19132,20 @@
           "sourceRole": "supporting",
           "relevanceId": "q292-support-route-markings",
           "detailIds": [
-            "b177-route-roadway-context",
-            "q292-road-shoulder-on-route"
+            "b177-route-roadway-context"
           ],
           "objectIds": [
             "b177-lane-lines",
-            "b177-right-shoulder",
             "b177-rural-route"
           ],
           "regionIds": [
-            "b177-roadway-region",
-            "b177-shoulder-region"
+            "b177-roadway-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 18,
+            "y": 45,
+            "width": 62,
+            "height": 45
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -19951,24 +19263,20 @@
           "sourceRole": "supporting",
           "relevanceId": "q293-support-fuel-pump",
           "detailIds": [
-            "b198-fuel-pump-context",
-            "q293-refueling-car-lights-on"
+            "b198-fuel-pump-context"
           ],
           "objectIds": [
-            "b198-front-lamps",
             "b198-fuel-hose-area",
-            "b198-fuel-pump",
-            "b198-red-car"
+            "b198-fuel-pump"
           ],
           "regionIds": [
-            "b198-car-front-region",
             "b198-fuel-pump-region"
           ],
           "rect": {
             "x": 0,
-            "y": 78,
-            "width": 100,
-            "height": 22
+            "y": 5,
+            "width": 30,
+            "height": 86
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -20328,23 +19636,20 @@
           "relevanceId": "q297-highlight-rear-facing-seat",
           "detailIds": [
             "b212-child-in-seat-detail",
-            "b212-rear-seat-detail",
             "q297-rear-facing-child-restraint"
           ],
           "objectIds": [
             "b212-child-passenger",
-            "b212-child-restraint",
-            "b212-rear-bench"
+            "b212-child-restraint"
           ],
           "regionIds": [
-            "b212-child-seat-region",
-            "b212-rear-seat-region"
+            "b212-child-seat-region"
           ],
           "rect": {
             "x": 25,
             "y": 5,
-            "width": 73,
-            "height": 75
+            "width": 46,
+            "height": 68
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -20390,10 +19695,10 @@
             "b212-child-seat-region"
           ],
           "rect": {
-            "x": 25,
-            "y": 5,
-            "width": 46,
-            "height": 68
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 100
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -20453,12 +19758,10 @@
         "b29-bus-lane-marking",
         "b29-moving-cars",
         "b29-parked-cars",
-        "b29-roadway",
         "b29-yellow-lane-markers"
       ],
       "referencedRegionIds": [
         "b29-bus-marking-region",
-        "b29-roadway-region",
         "b29-traffic-region",
         "b29-yellow-markings-region"
       ],
@@ -20515,18 +19818,16 @@
             "b29-yellow-marking-detail"
           ],
           "objectIds": [
-            "b29-roadway",
             "b29-yellow-lane-markers"
           ],
           "regionIds": [
-            "b29-roadway-region",
             "b29-yellow-markings-region"
           ],
           "rect": {
             "x": 0,
-            "y": 0,
-            "width": 34,
-            "height": 34
+            "y": 36,
+            "width": 47,
+            "height": 64
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -20854,8 +20155,7 @@
           "detailIds": [
             "b2-option-a-car-detail",
             "b2-option-b-motorcycle",
-            "b2-option-c-cyclist-detail",
-            "b2-option-labels"
+            "b2-option-c-cyclist-detail"
           ],
           "objectIds": [
             "b2-option-a-car",
@@ -20863,7 +20163,6 @@
             "b2-option-c-cyclist"
           ],
           "regionIds": [
-            "b2-label-region",
             "b2-option-a-region",
             "b2-option-b-region",
             "b2-option-c-region"
@@ -20882,25 +20181,20 @@
           "relevanceId": "q303-trap-vehicle-only-reading",
           "detailIds": [
             "b2-option-a-car-detail",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist-detail",
-            "b2-option-labels"
+            "b2-option-b-motorcycle"
           ],
           "objectIds": [
             "b2-option-a-car",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist"
+            "b2-option-b-motorcycle"
           ],
           "regionIds": [
-            "b2-label-region",
             "b2-option-a-region",
-            "b2-option-b-region",
-            "b2-option-c-region"
+            "b2-option-b-region"
           ],
           "rect": {
-            "x": 78,
+            "x": 0,
             "y": 0,
-            "width": 22,
+            "width": 66,
             "height": 100
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
@@ -20910,9 +20204,6 @@
           "sourceRole": "supporting",
           "relevanceId": "q303-support-option-labels",
           "detailIds": [
-            "b2-option-a-car-detail",
-            "b2-option-b-motorcycle",
-            "b2-option-c-cyclist-detail",
             "b2-option-labels"
           ],
           "objectIds": [
@@ -20921,14 +20212,11 @@
             "b2-option-c-cyclist"
           ],
           "regionIds": [
-            "b2-label-region",
-            "b2-option-a-region",
-            "b2-option-b-region",
-            "b2-option-c-region"
+            "b2-label-region"
           ],
           "rect": {
             "x": 0,
-            "y": 78,
+            "y": 0,
             "width": 100,
             "height": 22
           },
@@ -21035,18 +20323,16 @@
           ],
           "objectIds": [
             "b178-red-circle-annotations",
-            "b178-silver-hatchback",
             "b178-white-reverse-lights"
           ],
           "regionIds": [
-            "b178-reverse-lights-region",
-            "b178-silver-car-region"
+            "b178-reverse-lights-region"
           ],
           "rect": {
-            "x": 78,
-            "y": 0,
-            "width": 22,
-            "height": 100
+            "x": 35,
+            "y": 35,
+            "width": 36,
+            "height": 20
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -21260,17 +20546,14 @@
           "detailIds": [
             "b150-bus-stop-sign-detail",
             "b150-curbside-parking-detail",
-            "b150-disability-oblea-detail",
             "q308-vehicle-parked-at-bus-stop"
           ],
           "objectIds": [
             "b150-bus-stop-sign",
-            "b150-disability-oblea",
             "b150-gray-van"
           ],
           "regionIds": [
             "b150-bus-stop-region",
-            "b150-oblea-region",
             "b150-van-region"
           ],
           "rect": {
@@ -21286,26 +20569,20 @@
           "sourceRole": "supporting",
           "relevanceId": "q308-support-curbside-position",
           "detailIds": [
-            "b150-bus-stop-sign-detail",
             "b150-curbside-parking-detail",
-            "b150-disability-oblea-detail",
             "q308-vehicle-parked-at-bus-stop"
           ],
           "objectIds": [
-            "b150-bus-stop-sign",
-            "b150-disability-oblea",
             "b150-gray-van"
           ],
           "regionIds": [
-            "b150-bus-stop-region",
-            "b150-oblea-region",
             "b150-van-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 22
+            "x": 4,
+            "y": 37,
+            "width": 34,
+            "height": 45
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -21314,26 +20591,19 @@
           "sourceRole": "distractor_trap",
           "relevanceId": "q308-trap-disability-sticker",
           "detailIds": [
-            "b150-bus-stop-sign-detail",
-            "b150-curbside-parking-detail",
-            "b150-disability-oblea-detail",
-            "q308-vehicle-parked-at-bus-stop"
+            "b150-disability-oblea-detail"
           ],
           "objectIds": [
-            "b150-bus-stop-sign",
-            "b150-disability-oblea",
-            "b150-gray-van"
+            "b150-disability-oblea"
           ],
           "regionIds": [
-            "b150-bus-stop-region",
-            "b150-oblea-region",
-            "b150-van-region"
+            "b150-oblea-region"
           ],
           "rect": {
-            "x": 66,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 20,
+            "y": 47,
+            "width": 8,
+            "height": 6
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -21407,25 +20677,19 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "q311-highlight-traffic-agent",
           "detailIds": [
-            "b66-pare-sign-detail",
-            "b66-red-signal-detail",
             "q311-traffic-agent-priority"
           ],
           "objectIds": [
-            "b66-red-traffic-light",
-            "b66-stop-sign",
             "b66-traffic-agent"
           ],
           "regionIds": [
-            "b66-agent-region",
-            "b66-stop-sign-region",
-            "b66-traffic-light-region"
+            "b66-agent-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 12,
-            "width": 98,
-            "height": 85
+            "x": 68,
+            "y": 17,
+            "width": 30,
+            "height": 80
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -21456,24 +20720,21 @@
           "relevanceId": "q311-trap-light-and-sign",
           "detailIds": [
             "b66-pare-sign-detail",
-            "b66-red-signal-detail",
-            "q311-traffic-agent-priority"
+            "b66-red-signal-detail"
           ],
           "objectIds": [
             "b66-red-traffic-light",
-            "b66-stop-sign",
-            "b66-traffic-agent"
+            "b66-stop-sign"
           ],
           "regionIds": [
-            "b66-agent-region",
             "b66-stop-sign-region",
             "b66-traffic-light-region"
           ],
           "rect": {
             "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "y": 12,
+            "width": 65,
+            "height": 80
           },
           "labelRu": "Отвлекающая деталь в этом вопросе"
         },
@@ -22531,12 +21792,10 @@
             "b216-car-interior-context"
           ],
           "objectIds": [
-            "b216-car-roof-window",
-            "b216-steering-wheel-dashboard"
+            "b216-car-roof-window"
           ],
           "regionIds": [
-            "b216-cabin-region",
-            "b216-dashboard-region"
+            "b216-cabin-region"
           ],
           "rect": {
             "x": 0,
@@ -22741,22 +22000,19 @@
           "sourceRole": "supporting",
           "relevanceId": "q326-support-side-crosswalk",
           "detailIds": [
-            "b126-centerline-and-cross-street",
             "b126-side-crosswalk-detail"
           ],
           "objectIds": [
-            "b126-centerline-markings",
             "b126-side-crosswalk"
           ],
           "regionIds": [
-            "b126-road-markings-region",
             "b126-side-street-region"
           ],
           "rect": {
-            "x": 12,
+            "x": 67,
             "y": 43,
-            "width": 81,
-            "height": 54
+            "width": 26,
+            "height": 28
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -23530,25 +22786,22 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "q339-highlight-crash-scene",
           "detailIds": [
-            "b1-crosswalk-detail",
             "b1-damaged-car-crosswalk",
             "b1-fallen-motorcycle",
             "q339-crash-scene-motorcycle-car"
           ],
           "objectIds": [
             "b1-damaged-car",
-            "b1-fallen-motorcycle",
-            "b1-zebra-crosswalk"
+            "b1-fallen-motorcycle"
           ],
           "regionIds": [
-            "b1-crosswalk-region",
             "b1-damaged-car-region",
             "b1-motorcycle-region"
           ],
           "rect": {
-            "x": 10,
+            "x": 22,
             "y": 18,
-            "width": 80,
+            "width": 62,
             "height": 74
           },
           "labelRu": "Ключевая область для ответа"
@@ -23559,28 +22812,21 @@
           "relevanceId": "q339-support-debris-crosswalk",
           "detailIds": [
             "b1-crosswalk-detail",
-            "b1-damaged-car-crosswalk",
-            "b1-fallen-motorcycle",
-            "b1-road-debris-detail",
-            "q339-crash-scene-motorcycle-car"
+            "b1-road-debris-detail"
           ],
           "objectIds": [
-            "b1-damaged-car",
             "b1-debris",
-            "b1-fallen-motorcycle",
             "b1-zebra-crosswalk"
           ],
           "regionIds": [
             "b1-crosswalk-region",
-            "b1-damaged-car-region",
-            "b1-motorcycle-region",
             "b1-road-debris-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 78,
-            "width": 100,
-            "height": 22
+            "x": 10,
+            "y": 21,
+            "width": 80,
+            "height": 63
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
@@ -24473,23 +23719,20 @@
           "sourceRole": "answer_critical_highlight",
           "relevanceId": "q350-highlight-raised-arm-stop",
           "detailIds": [
-            "b14-bicycle-context",
             "q350-cyclist-raised-arm-stop"
           ],
           "objectIds": [
-            "b14-bicycle",
             "b14-cyclist",
             "b14-red-circle-arm"
           ],
           "regionIds": [
-            "b14-arm-region",
-            "b14-cyclist-region"
+            "b14-arm-region"
           ],
           "rect": {
             "x": 31,
             "y": 16,
-            "width": 23,
-            "height": 74
+            "width": 20,
+            "height": 25
           },
           "labelRu": "Ключевая область для ответа"
         },
@@ -24503,18 +23746,16 @@
           ],
           "objectIds": [
             "b14-bicycle",
-            "b14-cyclist",
-            "b14-red-circle-arm"
+            "b14-cyclist"
           ],
           "regionIds": [
-            "b14-arm-region",
             "b14-cyclist-region"
           ],
           "rect": {
-            "x": 0,
-            "y": 66,
-            "width": 34,
-            "height": 34
+            "x": 34,
+            "y": 28,
+            "width": 20,
+            "height": 62
           },
           "labelRu": "Поддерживающая визуальная деталь"
         },
