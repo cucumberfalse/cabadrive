@@ -1,0 +1,375 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+  "document": {
+    "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+    "chunks": [
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--decreto-reglamentario-779-1995-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-30, coverage fingerprint sha256:f4d310a59c113125d836fbcf20c9140ae7b9aa84e0a047d4e405a74118c803de, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 1-30, the full Russian translation, coverage fingerprint sha256:f4d310a59c113125d836fbcf20c9140ae7b9aa84e0a047d4e405a74118c803de, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-1o-apruebase-la-reglamentacion-de-la-ley-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 31-32, coverage fingerprint sha256:f5b164eaf42ae41d9ec9232237ded26d6a5bd24a604d5848336af9b51fbee0fe, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 31-32, the full Russian translation, coverage fingerprint sha256:f5b164eaf42ae41d9ec9232237ded26d6a5bd24a604d5848336af9b51fbee0fe, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-1-reglamentacion-general-de-la-ley-no-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 33-34, coverage fingerprint sha256:13b677bf91eace525af54273f816d42b5100549102142c4e1081ba53d0caf77c, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 33-34, the full Russian translation, coverage fingerprint sha256:13b677bf91eace525af54273f816d42b5100549102142c4e1081ba53d0caf77c, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-a-sobre-definicion-denominacion-clasificacion-y-modelos-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 35-36, coverage fingerprint sha256:5bb74b13e98a35ffd28cab9c10b64add723c24a7c3a9c9838d0fd4dfec0fc510, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 35-36, the full Russian translation, coverage fingerprint sha256:5bb74b13e98a35ffd28cab9c10b64add723c24a7c3a9c9838d0fd4dfec0fc510, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-b-especificaciones-tecnicas-y-procesos-de-ensayos-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 37-38, coverage fingerprint sha256:af8f4f8a3cb103c6f9588c9621d268f717fbbf02bc5726881174f718406e89d1, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 37-38, the full Russian translation, coverage fingerprint sha256:af8f4f8a3cb103c6f9588c9621d268f717fbbf02bc5726881174f718406e89d1, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-c-autopartes-y-o-elementos-de-seguridad-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 39-40, coverage fingerprint sha256:fd2b2e9c1ca8e80890ffcda11555c40565e279f826c164ae96db9c1f22fd7f96, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 39-40, the full Russian translation, coverage fingerprint sha256:fd2b2e9c1ca8e80890ffcda11555c40565e279f826c164ae96db9c1f22fd7f96, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-g-proteccion-contra-encandilamiento-solar-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 41-42, coverage fingerprint sha256:e753d917ec1567e6fbfc104aec2a6cb0cca5b233c1259862c83f801ae6deef43, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 41-42, the full Russian translation, coverage fingerprint sha256:e753d917ec1567e6fbfc104aec2a6cb0cca5b233c1259862c83f801ae6deef43, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-i-sistema-de-iluminacion-y-senalizacion-para-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 43-44, coverage fingerprint sha256:efd5e6262f4ba01f406eff350825eb7be46f532f3783750f6249457563d3f0ba, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 43-44, the full Russian translation, coverage fingerprint sha256:efd5e6262f4ba01f406eff350825eb7be46f532f3783750f6249457563d3f0ba, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-j-guias-para-la-revision-tecnica-categorias-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 45-46, coverage fingerprint sha256:d3182c6ee196af06cb384165d4bb1ef73b746169c0337c7036cbe87ac2ffcc21, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 45-46, the full Russian translation, coverage fingerprint sha256:d3182c6ee196af06cb384165d4bb1ef73b746169c0337c7036cbe87ac2ffcc21, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-k-clasificacion-de-talleres-y-servicios-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 47-48, coverage fingerprint sha256:c981268f1487b727c21f0a8e6a5a6f750b2bc3c90bd10d5b007f61b6da160102, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 47-48, the full Russian translation, coverage fingerprint sha256:c981268f1487b727c21f0a8e6a5a6f750b2bc3c90bd10d5b007f61b6da160102, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-l-sistema-de-senalizacion-vial-uniforme-anexo-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 49-50, coverage fingerprint sha256:acccd19ebc4d783cc12ab7303fb7b6bb392d60150ec6d6f3d2e94262b0353475, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 49-50, the full Russian translation, coverage fingerprint sha256:acccd19ebc4d783cc12ab7303fb7b6bb392d60150ec6d6f3d2e94262b0353475, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-ll-normas-para-la-circulacion-de-maquinaria-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 51-52, coverage fingerprint sha256:19be4b0ceaffede83345e7dc5d66f8d21d8fef8f3478b3ce01eee7c6ed815a4e, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 51-52, the full Russian translation, coverage fingerprint sha256:19be4b0ceaffede83345e7dc5d66f8d21d8fef8f3478b3ce01eee7c6ed815a4e, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-m-definiciones-del-articulo-33-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 53-54, coverage fingerprint sha256:cdbb944b5599d034368f746a2c96bfc7b90d38166c0158043b4f4a0646035dff, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 53-54, the full Russian translation, coverage fingerprint sha256:cdbb944b5599d034368f746a2c96bfc7b90d38166c0158043b4f4a0646035dff, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-n-medicion-de-emisiones-en-vehiculos-livianos-014",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 55-56, coverage fingerprint sha256:e9c24db0223121854e22ddd7a6a418ed38ce7d5c95b9afa0ca690d730418fb9f, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 55-56, the full Russian translation, coverage fingerprint sha256:e9c24db0223121854e22ddd7a6a418ed38ce7d5c95b9afa0ca690d730418fb9f, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-n-medicion-de-emisiones-de-particulas-visibles-015",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 57-58, coverage fingerprint sha256:875edb4a40e16bf5549c8d114eed62929e190cfde2663fa911498d1180c74eb5, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 57-58, the full Russian translation, coverage fingerprint sha256:875edb4a40e16bf5549c8d114eed62929e190cfde2663fa911498d1180c74eb5, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-o-protocolo-de-caracteristicas-del-vehiculo-motor-016",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 59-60, coverage fingerprint sha256:3c90dff9a36885c1438f1978b3acad2876a62b4ee2a30c4b729abcfa06da9a3a, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 59-60, the full Russian translation, coverage fingerprint sha256:3c90dff9a36885c1438f1978b3acad2876a62b4ee2a30c4b729abcfa06da9a3a, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-p-procedimiento-para-otorgar-la-licencia-de-017",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 61-62, coverage fingerprint sha256:d3bb861e2728da69ef09e9409b4989cd3baa006f9cb46e77e3dedcd62ec2ac39, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 61-62, the full Russian translation, coverage fingerprint sha256:d3bb861e2728da69ef09e9409b4989cd3baa006f9cb46e77e3dedcd62ec2ac39, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-r-pesos-y-dimensiones-anexo-sustituido-por-018",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 63-64, coverage fingerprint sha256:e9964e74488ace2a51d7162b30725c45b4ea9ea62fd1fd9020272ac5a63a7fcd, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 63-64, the full Russian translation, coverage fingerprint sha256:e9964e74488ace2a51d7162b30725c45b4ea9ea62fd1fd9020272ac5a63a7fcd, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-s-reglamento-general-para-el-transporte-de-019",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 65-66, coverage fingerprint sha256:8a5aba9c6de0ffd24724929e405107f7a8662d0ddf45965b186c54a75bd15739, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 65-66, the full Russian translation, coverage fingerprint sha256:8a5aba9c6de0ffd24724929e405107f7a8662d0ddf45965b186c54a75bd15739, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-t-sistema-nacional-de-seguridad-vial-anexo-020",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 67-68, coverage fingerprint sha256:c4786a4ef52018c6f414da66bc1d41b1dd0011fcf119734ef39d66cb02bb9833, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 67-68, the full Russian translation, coverage fingerprint sha256:c4786a4ef52018c6f414da66bc1d41b1dd0011fcf119734ef39d66cb02bb9833, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-u-unificacion-acta-de-choque-denuncia-de-021",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 69-70, coverage fingerprint sha256:8438b80169d3b3b45c39d4b05231c4c26f575cef2b6961697de237a5a0f0d3b8, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 69-70, the full Russian translation, coverage fingerprint sha256:8438b80169d3b3b45c39d4b05231c4c26f575cef2b6961697de237a5a0f0d3b8, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-2-regimen-de-contravenciones-y-sanciones-por-022",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 71-76, coverage fingerprint sha256:4be68e44594f021eca2d852614c5c92a75a8b1af582b552f1ab305e0c78b3351, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 71-76, the full Russian translation, coverage fingerprint sha256:4be68e44594f021eca2d852614c5c92a75a8b1af582b552f1ab305e0c78b3351, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-2o-conforme-a-las-previsiones-del-articulo-023",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 77-78, coverage fingerprint sha256:8503d5ec70665aebbb7b6905d6f59beab095f9a2da6b413777b0cb9701c9338a, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 77-78, the full Russian translation, coverage fingerprint sha256:8503d5ec70665aebbb7b6905d6f59beab095f9a2da6b413777b0cb9701c9338a, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-3o-invitase-a-las-provincias-a-adherir-024",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 79-80, coverage fingerprint sha256:88cf1ab5d3b41c457c594cb819a2b2d5e2b668556e3fa2c02fb5dc99e36851e3, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 79-80, the full Russian translation, coverage fingerprint sha256:88cf1ab5d3b41c457c594cb819a2b2d5e2b668556e3fa2c02fb5dc99e36851e3, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-4o-las-funciones-y-facultades-del-consejo-025",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 81-82, coverage fingerprint sha256:00610b089de60735cc6de40a707d5cac1bd4a85a5762fd84d37f43ce4b5ef762, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 81-82, the full Russian translation, coverage fingerprint sha256:00610b089de60735cc6de40a707d5cac1bd4a85a5762fd84d37f43ce4b5ef762, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-5o-establecese-que-los-organismos-integrantes-del-026",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 83-84, coverage fingerprint sha256:2cbf86fd9fcac395c9c680e52dc9c5f7a9e10db5f710b8be57451015e6f4288b, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 83-84, the full Russian translation, coverage fingerprint sha256:2cbf86fd9fcac395c9c680e52dc9c5f7a9e10db5f710b8be57451015e6f4288b, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-6o-invitase-a-las-jurisdicciones-que-adhieren-027",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 85-86, coverage fingerprint sha256:de44864908f02ea8a34980b9fd1d713e179c88e8650235e0109f3817cacfee7a, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 85-86, the full Russian translation, coverage fingerprint sha256:de44864908f02ea8a34980b9fd1d713e179c88e8650235e0109f3817cacfee7a, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-7o-comuniquese-publiquese-dese-a-la-direccion-028",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 87-88, coverage fingerprint sha256:1586dce0e0b357f2b55cf1f2e937aa7d365dd6295b0cbd394d9870866112509c, and content/primary-sources/terminology.ru.md. Core traffic-law Decreto 779/1995 batch self-review preserved decree/article/annex labels, dates, amendment notes, authorities, effective-date language, exceptions, and source-page notes. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 87-88, the full Russian translation, coverage fingerprint sha256:1586dce0e0b357f2b55cf1f2e937aa7d365dd6295b0cbd394d9870866112509c, and content/primary-sources/terminology.ru.md. Simple Russian keeps obligations, dates, authority roles, exceptions, annex scope, and release-status notes while removing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by this content QA."
+        }
+      }
+    ]
+  }
+}
