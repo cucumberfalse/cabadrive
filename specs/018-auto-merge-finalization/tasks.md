@@ -342,6 +342,12 @@
 - Current-PR-head read-only guard: pending finalization.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
+- Architect validation: failed at 2026-05-11T00:39:49Z for effective content head 3b77f7436afbdaf2ca8dc459e55f181a703ece4c because PR #80 has an unresolved current P1 review thread on `scripts/finalize-pr.mjs`.
+- Architect return count: 2.
+- Effective content head: 3b77f7436afbdaf2ca8dc459e55f181a703ece4c.
+- Architect validated effective content head: not validated because the current PR head still has an unresolved P1 finalization-helper gap.
+- Current-PR-head read-only guard: GitHub state at 2026-05-11T00:39:49Z showed PR #80 head 3b77f7436afbdaf2ca8dc459e55f181a703ece4c, required checks green, mergeable MERGEABLE, mergeStateStatus BLOCKED, and one unresolved non-outdated P1 review thread.
+- Limit escalation: none.
 
 ## Final Architect Validation Notes
 
@@ -354,3 +360,10 @@ Append-only Architect-owned section used only when Orchestrator invokes final Ar
 - Architect return count for this work cycle: 1.
 - Architect gaps: Align `CLAUDE.md` Orchestrator Autonomy and role-boundary wording with standing automatic Orchestrator finalization after objective gates pass, preserving exceptional human blockers, PR-only delivery, required checks, review resolution, effective-head/current-head guard evidence, feedback disposition, and final Architect-before-Analyst validation.
 - Open Architect dispositions: addressed/disposed by follow-up Implementation Agent alignment of `CLAUDE.md`; final Architect validation rerun remains pending.
+- Architect validation pass: failed.
+- Final Architect validation completed at: 2026-05-11T00:39:49Z
+- Architect validated effective content head: not validated; PR #80 head 3b77f7436afbdaf2ca8dc459e55f181a703ece4c still has an unresolved current P1 review thread.
+- Architect return count for this work cycle: 2.
+- Architect validation evidence: failed for PR #80 at head 3b77f7436afbdaf2ca8dc459e55f181a703ece4c after reviewing feature memory, durable docs/templates, `scripts/finalize-pr.mjs`, focused tests, GitHub checks, review threads, and latest-main evidence; required checks were green and latest main 75491074c7d198b1b4f59dfe1eec35376ac913a4 was merged, but GitHub GraphQL reported one unresolved non-outdated P1 thread requiring deleted process-evidence files to be invalid post-effective-head changes.
+- Open Architect dispositions: route the unresolved P1 deletion-handling gap to Implementation Agent before rerunning final Architect validation.
+- Architect gaps: `verifyPostEffectiveHeadChanges()` must treat post-effective-head deletion hunks for allowed feature-memory evidence files as invalid non-evidence changes and add focused regression coverage; resolve the PR #80 review thread after the fix.
