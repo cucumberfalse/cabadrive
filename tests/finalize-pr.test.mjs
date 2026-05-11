@@ -1061,6 +1061,20 @@ test("Claude current-head outcome lookup is case-insensitive for head SHA", () =
   assert.equal(findings.filter((finding) => finding.source === "claude-comment").length, 1);
 });
 
+test("Claude current-head outcome lookup accepts abbreviated head SHA prefixes", () => {
+  const headSha = "abcdef1234567890abcdef1234567890abcdef12";
+  const findings = collectBlockingFindings({
+    headSha,
+    config: { trustedReviewLoginsByAgent: { claude: ["claude-bot"] } },
+    issueComments: [{
+      body: "AI_REVIEW_AGENT: claude\nAI_REVIEW_SHA: abcdef123456\nAI_REVIEW_OUTCOME: block",
+      author: { login: "claude-bot" }
+    }]
+  });
+
+  assert.equal(findings.filter((finding) => finding.source === "claude-comment").length, 1);
+});
+
 test("later trusted Codex approval clears stale current-head review-body blockers", () => {
   const headSha = "abc1234";
   const findings = collectBlockingFindings({

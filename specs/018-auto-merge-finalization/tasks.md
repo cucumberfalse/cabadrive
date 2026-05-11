@@ -10,6 +10,7 @@
 - [x] Follow-up: align `CLAUDE.md` with the standing automatic Orchestrator finalization model after failed Architect validation.
 - [x] Review-fix sweep: align `.specify/templates/*`, `specs/README.md`, and remaining active `CLAUDE.md` wording with standing Orchestrator finalization after review thread `PRRT_kwDOSX65IM6A7zpT`.
 - [x] Review-fix: normalize Claude review outcome lookup by lowercasing the current PR head SHA before `collectBlockingFindings()` checks current-head Claude block comments.
+- [x] Review-fix: match abbreviated trusted Claude `AI_REVIEW_SHA` prefixes against the full current PR head before finalization.
 - [x] Review-fix: align durable guidance/templates so final Architect and Analyst validation explicitly record role-owned validated effective-content-head markers.
 - [x] Latest-main refresh: merge current `origin/main` into PR #80 branch before final verification.
 - [x] Implement `scripts/finalize-pr.mjs` with pure gate evaluation separated from GitHub mutation.
@@ -89,6 +90,7 @@
 - Current template-sweep implementation decision: review thread `PRRT_kwDOSX65IM6A7zpT` identified stale active merge-owner wording in durable templates and guidance. This slice replaces routine human merge-owner and authorized-merge-mechanics gates with standing Orchestrator finalization/merge after objective gates pass, while preserving final Architect-before-Analyst validation, effective/current-head guards, required checks, review/conflict gates, process memory, feedback disposition, branch protection, PR-only delivery, role boundaries, and narrow exceptional human blockers.
 - Current known-issue/evidence review-fix implementation decision: `readProcessEvidence()` now strips template placeholder lines before accepting `Verification Evidence`, and treats any substantive `Known Issues` item as blocking unless it is a no-known/not-applicable marker or carries final disposition wording such as `Owner decision: accepted` or `Architect disposition: accepted/resolved/disposed`. Generic bullets such as `- Search index is stale` now block with the existing `human-known-issue-decision` finalizer blocker.
 - Current P1 Claude SHA normalization decision: `collectBlockingFindings()` now lowercases the supplied current `headSha` before filtering current-head reviews and before looking up latest Claude outcomes keyed by `extractMarkerSha()`, so uppercase or mixed-case current head OIDs cannot hide a trusted current-head Claude `AI_REVIEW_OUTCOME: block`.
+- Current P1 Claude abbreviated-SHA decision: `collectBlockingFindings()` now treats a trusted Claude `AI_REVIEW_SHA` as current-head evidence when the normalized full current PR head starts with that 7-40 hex marker. The latest matching trusted Claude outcome in the fetched PR conversation comments controls whether a `claude-comment` blocker is emitted, so a current-head `AI_REVIEW_OUTCOME: block` using an abbreviated SHA cannot be ignored.
 - Current P2 effective-head marker documentation decision: durable guidance and templates now require the role-owned markers `Architect validated effective content head: <40-hex-sha>` and `Analyst validated effective content head: <40-hex-sha>` to match `Effective content head: <40-hex-sha>` whenever final validation targets an effective content head, preserving the stricter helper behavior instead of relaxing it.
 
 ## Dead Ends
@@ -296,6 +298,12 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed after the Claude SHA normalization and effective-head marker documentation review fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
 - `pnpm run check:repo`: passed after the Claude SHA normalization and effective-head marker documentation review fix; "Repository baseline check passed."
 - `pnpm run preflight`: passed after the Claude SHA normalization and effective-head marker documentation review fix; feature-memory gate, repo baseline, content validation, 200 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BT8wgMOv.js` but completed successfully.
+- `node --check scripts/finalize-pr.mjs`: passed after the Claude abbreviated-SHA prefix review fix.
+- `node --test tests/finalize-pr.test.mjs`: passed after the Claude abbreviated-SHA prefix review fix; 54 tests passed, including `Claude current-head outcome lookup accepts abbreviated head SHA prefixes`.
+- `git diff --check`: passed after the Claude abbreviated-SHA prefix review fix; no whitespace errors reported.
+- `node scripts/check-feature-memory.mjs --worktree`: passed after the Claude abbreviated-SHA prefix review fix; feature-memory gate passed via `specs/018-auto-merge-finalization/{spec,plan,tasks}.md`.
+- `pnpm run check:repo`: passed after the Claude abbreviated-SHA prefix review fix; "Repository baseline check passed."
+- `pnpm run preflight`: passed after the Claude abbreviated-SHA prefix review fix; feature-memory gate, repo baseline, content validation, 201 node tests, build, service-worker generation with 280 cached assets, and 34 Playwright e2e tests passed. Vite reported the existing large chunk warning for `dist/assets/index-BT8wgMOv.js` but completed successfully.
 
 ## Cycle PR Set
 
@@ -308,6 +316,7 @@
 - Purpose: refresh PR #80 from latest `origin/main` after GitHub reported conflicts; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `ab0fc507a8a2dab00e9547ffaa34be20d2c52789`; status: latest-main merge/process-memory refresh before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 - Purpose: refresh PR #80 from latest `origin/main` after main advanced again during handoff; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `6a5f1269499c6a96e8d053b8f59b8b5ac96ffec6`; status: latest-main merge/process-memory refresh before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 - Purpose: address PR #80 review threads `PRRT_kwDOSX65IM6A8IgS` and `PRRT_kwDOSX65IM6A8JeQ` plus refresh from latest `origin/main`; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `77ea7a20d8d6e052dc0f1826683bd006128382a8`; post-merge local head before scoped fix: `c36556ee104bb71d476a18d2f38d34ed350a7657`; status: implementation verification before final push; final-validation inclusion: pending Orchestrator final validation rerun.
+- Purpose: address PR #80 review thread `PRRT_kwDOSX65IM6A8R_R` / comment `PRRC_kwDOSX65IM6_rJiE` for abbreviated trusted Claude `AI_REVIEW_SHA` prefixes; branch: `codex/018-auto-merge-finalization`; PR: #80; head SHA at task start: `b7f368cdc283c636dc55f30e6a53a32028b1cf3a`; status: implementation verification before final push; final-validation inclusion: pending Orchestrator final validation rerun.
 
 ## Final Validation Evidence
 

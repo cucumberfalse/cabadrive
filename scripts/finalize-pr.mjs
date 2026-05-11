@@ -289,16 +289,18 @@ export function collectBlockingFindings({ reviews = [], reviewThreads = [], issu
     }
   }
 
-  const latestClaudeBySha = new Map();
+  let latestClaudeOutcomeForHead = null;
   for (const comment of issueComments) {
     const body = comment.body || "";
     const sha = extractMarkerSha(body);
     const outcome = extractClaudeOutcome(body);
     const login = normalizeLogin(comment.author?.login || comment.user?.login);
     if (!sha || !outcome || !isTrustedReviewLogin(login, "claude", config)) continue;
-    latestClaudeBySha.set(sha, outcome);
+    if (normalizedHeadSha && normalizedHeadSha.startsWith(sha)) {
+      latestClaudeOutcomeForHead = outcome;
+    }
   }
-  if (normalizedHeadSha && latestClaudeBySha.get(normalizedHeadSha) === "block") {
+  if (latestClaudeOutcomeForHead === "block") {
     findings.push({ source: "claude-comment", message: "Latest current-head Claude review outcome is block." });
   }
 
