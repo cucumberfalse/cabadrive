@@ -123,6 +123,8 @@
 - Review thread `PRRT_kwDOSX65IM6A7zpT` template-sweep finding: addressed in `.specify/templates/tasks-template.md`, `.specify/templates/plan-template.md`, `.specify/templates/spec-template.md`, `specs/README.md`, and `CLAUDE.md`. Architect disposition: addressed/resolved by this assigned review-fix slice; no unresolved Implementation Agent feedback remains.
 - Review threads `PRRT_kwDOSX65IM6A7072` and `PRRT_kwDOSX65IM6A72Xq`: addressed in `scripts/finalize-pr.mjs` and `tests/finalize-pr.test.mjs` by blocking undisposed known issues and rejecting placeholder-only verification evidence. Architect disposition: addressed/resolved by this assigned review-fix slice; no unresolved Implementation Agent feedback remains.
 - Review thread `PRRT_kwDOSX65IM6A8aFt` / comment `PRRC_kwDOSX65IM6_rUc_`: addressed in `scripts/finalize-pr.mjs` and `tests/finalize-pr.test.mjs` by treating post-effective-head deletion hunks for allowed evidence files as invalid non-evidence changes. Architect disposition: routed to this Implementation Agent and addressed; final Architect validation rerun remains pending.
+- Architect disposition: addressed/resolved by commit c503bf18c2b85009ff048f05d73e67612566b14f and verified by 55-test deletion-hunk regression coverage; no unresolved Implementation Agent feedback remains for PRRT_kwDOSX65IM6A8aFt.
+- Review thread `PRRT_kwDOSX65IM6A8eYe` / comment `PRRC_kwDOSX65IM6_raD9`: addressed in `scripts/finalize-pr.mjs` and `tests/finalize-pr.test.mjs` by deriving final Architect/Analyst validation pass state from the latest role-owned validation result marker. Architect disposition: addressed/resolved by commit 16f14d34f9bd55e66d7c99d1c4bfaf35974a458a; no unresolved Implementation Agent feedback remains.
 
 ## Verification Evidence
 
