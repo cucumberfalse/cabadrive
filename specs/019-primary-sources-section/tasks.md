@@ -1036,3 +1036,8 @@
   - `npm run validate:content -- --coverage` passed with the same content-validation summary.
   - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+- PR #117 D6 Anexo L H.17 delineators follow-up on 2026-05-11:
+  - Synced the isolated PR #117 worktree to current remote branch tip `481b7a06a0f10252617ee4e7e9b6b8c802def180` before applying the new active P2 review fix.
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--29-marcas-especiales-037` full Russian translation so source label `H.17 DELINEADORES` is `H.17 ДЕЛИНЕАТОРЫ`, not `H.17 ПЛАНЫ`.
+  - Checked the same chunk's `simpleRu`; it already names `делинеаторы`, and the Anexo L search/QA shards do not mirror the learner text fragment, so no projection update was required.
+  - Targeted H.17 check confirmed `H.17 ДЕЛИНЕАТОРЫ.` is present, `H.17 ПЛАНЫ.` is absent from the learner chunk and search/QA shards, and earlier H.9/H.10 dimension fixes remain intact.
