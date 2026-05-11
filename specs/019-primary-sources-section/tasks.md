@@ -795,6 +795,12 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #117 D6 Anexo L review-fix verification on 2026-05-11:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--26-concepto-las-marcas-viales-o-demarcacion-horizontal-034` full Russian translation so reflective-material requirements name the `УСТУПИТЕ ДОРОГУ` and `СТОП` legends correctly, not `УДАЧА`, and so `TRAZOS CONTINUOS Y DISCONTINUOS` is rendered as continuous/discontinuous road-marking lines, not `ШЛИКИ`.
+  - Checked related projections: the Anexo L search shard stores field references only (`title`, `fullTranslationRu`, `simpleRu`, `originalSpanish`) and does not mirror chunk text, while the existing `simpleRu` already uses correct continuous/discontinuous line wording.
+  - Targeted bad-token check found no `УДАЧА`, `ШЛИКИ`, or old continuous/discontinuous-line wording in the Anexo L learner shard outside original Spanish references.
+  - `npm run validate:content`, `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content`, and `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed.
+  - `git diff --check`, `npm test`, `npm run build`, and `npm run preflight` passed; preflight included `check-feature-memory`, `check:repo`, content validation, 153 node tests, build/service-worker generation, and 22 Playwright e2e tests. Vite retained the existing large-chunk warning.
 - PR #103 P2 rebase finding disposition on 2026-05-10:
   - D4/DNRPA is intentionally stacked on PR #101 by Orchestrator assignment to preserve the prerequisite content/schema stack and keep this PR diff limited to one document batch.
   - This PR should not be retargeted or rebased to latest `main` outside that assigned stacked sequence. The final merge gate remains a green stacked sequence plus human-controlled merge ordering.
