@@ -892,3 +892,14 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #105 D6 Anexo L fourth review-fix verification on 2026-05-10:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--1-placa-forma-debe-mantenerse-rigida-y-ser-013` full Russian translation intro so `PLACA` is rendered as `ПАНЕЛЬ ЗНАКА`, with a coherent feminine-form sentence aligned with the simple Russian `табличка знака` meaning.
+  - Reworked the F.2/F.3 full Russian translation inside `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--48-carteles-preventivos-especiales-para-cruces-059`: `sobre pórtico` is now `на портале`, mounting is `установленный`, dimensions are clear numeric forms such as `3,00 м`, `0,40 м`, `2,40 м`, `1,20 м`, and the prior `SIN BARRERA`/distance-placeholder fixes remain preserved.
+  - Local structured check confirmed all 15 translated image paths still exactly match the 15 `originalSpanish` image paths.
+  - Targeted check `rg -n "ТАРЕЛКА|крыльце|имплантируется|ДВЕ СОРОК ДЕСЯТЫХ" content/primary-sources/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.ru.json` found no matches.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
