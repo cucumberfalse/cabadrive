@@ -903,3 +903,15 @@
   - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
   - `git diff --check` passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
+- PR #105 D6 Anexo L fifth review-fix verification on 2026-05-10:
+  - Fixed `decreto-779-1995-anexo-l-senalizacion-vial-uniforme--2-competencia-el-senalamiento-lo-realiza-o-autoriza-006` full Russian translation so legal `COMPETENCIA` is rendered as `ПОЛНОМОЧИЯ`/`компетенция`, not competition.
+  - Reworded the same chunk to say signage is performed or authorized by the national, provincial, or municipal body responsible for road infrastructure; that body's competence also includes placing or requiring warning signs for more or less permanent risks.
+  - Preserved the temporary-risk handling rule and the exclusion for R.30 barriers and the special railway-crossing traffic light, where competence remains with the authority that admits and controls the railway service under its special legislation.
+  - Cleaned learner-facing wording from `орган транзита` and `Установка знака устанавливается` to `орган дорожного движения` and ordinary installation/authorization phrasing.
+  - Targeted check `rg -n "КОНКУРЕНЦ|Конкуренц|орган транзита|Установка знака устанавливается" content/primary-sources/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.ru.json` found no matches.
+  - `npm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `npm run validate:content -- --coverage` passed with the same content-validation summary.
+  - `PRIMARY_SOURCES_VALIDATION_MODE=coverage npm run validate:content` passed with the same content-validation summary.
+  - `node --test tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs` passed: 41 tests, 41 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree` passed. Output: `Feature-memory gate passed via specs/019-primary-sources-section/{spec,plan,tasks}.md`
