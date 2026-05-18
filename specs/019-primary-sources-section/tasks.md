@@ -309,6 +309,15 @@
 - Navigation may become crowded; any grouping must keep the source reader visibly distinct from topic `Материалы`.
 - Bundle size/performance must be measured once full Russian and Spanish chunk data are imported.
 
+### Slice D10-001 Civil Code Quality Repair Notes
+
+- Quality repair ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-civil-0001-0182-current` on branch `codex/019-primary-sources-civil-0001-0182-current`, starting from PR #126 head `ce7c1fd09b91fda098e765b4167c0e68ae10a356`.
+- Orchestrator reported 92 near-verbatim `simpleRu` entries in `content/primary-sources/documents/ley-26994-codigo-civil-comercial--0001-0182.ru.json`. The local temporary Node scan used for this repair intentionally used a broad threshold over `root.document.chunks` and flagged 105 article-prefixed high-overlap entries before repair.
+- Rewrote the flagged D10-001 `simpleRu` text as independent learner-facing Russian explanations while preserving article numbers, dates, conditions, exceptions, authority roles, court duties, registry duties, capacity/minor-age thresholds, medical-consent thresholds, absence/presumed-death deadlines, and article references.
+- Corrected the bad heading term `Узаконено` in D10-001 full Russian translations for Articles 80 and 87 to `Кто вправе обратиться`; the corresponding simple Russian entries now explain who may apply in context.
+- Checked `content/primary-sources/search/ley-26994-codigo-civil-comercial--0001-0182.search.json`; it contains `chunkId` references and `textFields` only, with no duplicated `simpleRu` text, so the search shard was intentionally left unchanged.
+- Post-repair temporary Node scan result with the same broad heuristic: 0 flagged near-verbatim article-prefixed `simpleRu` entries.
+
 ### Partial Range Shard Infrastructure Notes
 
 - Slice ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-partial-shards` on branch `codex/019-primary-sources-partial-shards`, stacked on `origin/codex/019-primary-sources-content-batch-penal-code` at `ae8f6dd`.
