@@ -1127,7 +1127,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 138.- Normas aplicables. La curatela se rige por las reglas de la tutela no modificadas en esta Sección.\n\nLa principal función del curador es la de cuidar a la persona y los bienes de la persona incapaz, y tratar de que recupere su salud. Las rentas de los bienes de la persona protegida deben ser destinadas preferentemente a ese fin.\n",
         "fullTranslationRu": "СТАТЬЯ 138. Применимые правила. В отношении опеки применяются правила опеки, не измененные настоящей статьей.\n\nОсновная функция опекуна – заботиться о личности и имуществе недееспособного лица, стараться восстановить его здоровье. Доход от имущества защищаемого лица должен предпочтительно использоваться для этой цели.",
-        "simpleRu": "Статья 138 простыми словами: Основная функция опекуна – заботиться о личности и имуществе недееспособного лица, стараться восстановить его здоровье. Доход от имущества защищаемого лица должен предпочтительно использоваться для этой цели.",
+        "simpleRu": "Статья 138 простыми словами: для кураторства обычно берут правила об опеке, если эта статья не устанавливает другое. Куратор помогает защищенному человеку: следит за его личными делами, имуществом и здоровьем, а доходы от имущества прежде всего идут на такую помощь.",
         "sourceTextSha256": "bf993d54157c3ea65646596ea38d0ef06ac9a8fb0a05f6ba7f539a361b7cc1be",
         "sourceFingerprint": "sha256:bf993d54157c3ea65646596ea38d0ef06ac9a8fb0a05f6ba7f539a361b7cc1be",
         "sourceSpan": {
@@ -1321,7 +1321,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 143.- Personalidad diferenciada. La persona jurídica tiene una personalidad distinta de la de sus miembros.\n\nLos miembros no responden por las obligaciones de la persona jurídica, excepto en los supuestos que expresamente se prevén en este Título y lo que disponga la ley especial.\n",
         "fullTranslationRu": "СТАТЬЯ 143. Дифференцированная личность. Юридическое лицо обладает индивидуальностью, отличной от личности его членов.\n\nУчастники не отвечают по обязательствам юридического лица, за исключением случаев, прямо предусмотренных настоящим разделом и предусмотренных специальным законом.",
-        "simpleRu": "Статья 143 простыми словами: Участники не отвечают по обязательствам юридического лица, за исключением случаев, прямо предусмотренных настоящим разделом и предусмотренных специальным законом.",
+        "simpleRu": "Статья 143 простыми словами: юридическое лицо считается отдельным от своих участников. Поэтому долги организации обычно остаются долгами самой организации, а участники отвечают по ним только в случаях, прямо названных в этом разделе или в специальном законе.",
         "sourceTextSha256": "0d6dfdcf884bddbd76f7f8389308944af69f6879a1963734f958435c084eb41b",
         "sourceFingerprint": "sha256:0d6dfdcf884bddbd76f7f8389308944af69f6879a1963734f958435c084eb41b",
         "sourceSpan": {
@@ -1644,7 +1644,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 154.- Patrimonio. La persona jurídica debe tener un patrimonio.\n\nLa persona jurídica en formación puede inscribir preventivamente a su nombre los bienes registrables.\n",
         "fullTranslationRu": "СТАТЬЯ 154. Наследие. Юридическое лицо должно иметь имущество.\n\nСоздаваемое юридическое лицо может превентивно зарегистрировать на свое имя регистрируемые имущество.",
-        "simpleRu": "Статья 154 простыми словами: Создаваемое юридическое лицо может превентивно зарегистрировать на свое имя регистрируемые имущество.",
+        "simpleRu": "Статья 154 простыми словами: у юридического лица должно быть собственное имущество или активы. Пока организация еще создается, имущество, которое подлежит регистрации, можно заранее записать на ее имя.",
         "sourceTextSha256": "5d78a2a41b355453c4e696471f5040d83bea4535b7f4ba4095ea8ea5ba1c2292",
         "sourceFingerprint": "sha256:5d78a2a41b355453c4e696471f5040d83bea4535b7f4ba4095ea8ea5ba1c2292",
         "sourceSpan": {
@@ -1719,7 +1719,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 157.- Modificación del estatuto. El estatuto de las personas jurídicas puede ser modificado en la forma que el mismo o la ley establezcan.\n\nLa modificación del estatuto produce efectos desde su otorgamiento. Si requiere inscripción es oponible a terceros a partir de ésta, excepto que el tercero la conozca.\n",
         "fullTranslationRu": "СТАТЬЯ 157. Изменение статута. Устав юридического лица может быть изменен в порядке, установленном им или законом.\n\nИзменение закона вступает в силу с момента его принятия. Если он требует регистрации, он может быть применен к третьим лицам после регистрации, если только третье лицо не знает об этом.",
-        "simpleRu": "Статья 157 простыми словами: Изменение закона вступает в силу с момента его принятия. Если он требует регистрации, он может быть применен к третьим лицам после регистрации, если только третье лицо не знает об этом.",
+        "simpleRu": "Статья 157 простыми словами: устав юридического лица меняют так, как написано в самом уставе или в законе. Для самой организации изменение действует с момента утверждения; если нужна регистрация, для третьих лиц оно обычно важно после регистрации, кроме случая, когда такой человек уже знал об изменении.",
         "sourceTextSha256": "a4f19d26d0924bcce11e757b936047e4b75f3fc52968fb8973ba63aa26bb72b3",
         "sourceFingerprint": "sha256:a4f19d26d0924bcce11e757b936047e4b75f3fc52968fb8973ba63aa26bb72b3",
         "sourceSpan": {
@@ -1919,7 +1919,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 165.- Prórroga. El plazo determinado de duración de las personas jurídicas puede ser prorrogado. Se requiere:\n\na) decisión de sus miembros, adoptada de acuerdo con la previsión legal o estatutaria;\n\nb) presentación ante la autoridad de contralor que corresponda, antes del vencimiento del plazo.\n",
         "fullTranslationRu": "СТАТЬЯ 165. Продление. Установленный срок деятельности юридических лиц может быть продлен. Требуется:\n\nа) решение его членов, принятое в соответствии с правовыми или законодательными положениями;\n\nб) представление в соответствующий надзорный орган до истечения установленного срока.",
-        "simpleRu": "Статья 165 простыми словами: а) решение его членов, принятое в соответствии с правовыми или законодательными положениями; б) представление в соответствующий надзорный орган до истечения установленного срока.",
+        "simpleRu": "Статья 165 простыми словами: если у юридического лица есть установленный срок существования, его можно продлить. Для этого участники должны принять решение по правилам закона или устава и подать его в нужный контролирующий орган до того, как срок закончится.",
         "sourceTextSha256": "11e73a241a74e05a56b82eccd8e095ccd784c4307d8e871b353b9b4ed89b9a1a",
         "sourceFingerprint": "sha256:11e73a241a74e05a56b82eccd8e095ccd784c4307d8e871b353b9b4ed89b9a1a",
         "sourceSpan": {
@@ -4340,7 +4340,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 246.- Beneficiarios. Son beneficiarios de la afectación:\n\na) el propietario constituyente, su cónyuge, su conviviente, sus ascendientes o descendientes;\n\nb) en defecto de ellos, sus parientes colaterales dentro del tercer grado que convivan con el constituyente.\n",
         "fullTranslationRu": "СТАТЬЯ 246. Бенефициары. Выгодоприобретателями от воздействия являются:\n\nа) учредитель, его супруга, его сожитель, его родственники по восходящей или нисходящей линии;\n\nб) при их отсутствии - их боковые родственники третьей степени родства, проживающие с субъектом.",
-        "simpleRu": "Статья 246 простыми словами: а) учредитель, его супруга, его сожитель, его родственники по восходящей или нисходящей линии; б) при их отсутствии - их боковые родственники третьей степени родства, проживающие с субъектом.",
+        "simpleRu": "Статья 246 простыми словами: защитой жилья могут пользоваться сам учредитель режима, его супруг или супруга, сожитель, родители, другие предки, дети и другие потомки. Если таких людей нет, бенефициарами могут быть боковые родственники до третьей степени, но только если они живут вместе с учредителем.",
         "sourceTextSha256": "56a2fdbb85d291e516aa7fcb09d98e0652d0168ba743058220acaec821d060f7",
         "sourceFingerprint": "sha256:56a2fdbb85d291e516aa7fcb09d98e0652d0168ba743058220acaec821d060f7",
         "sourceSpan": {
