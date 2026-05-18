@@ -1,0 +1,954 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "entries": [
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-210-bis-se-impondra-reclusion-o-prision-345",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-210-bis-se-impondra-reclusion-o-prision-345",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-210-ter-sera-reprimido-con-reclusion-o-346",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-210-ter-sera-reprimido-con-reclusion-o-346",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-210-quater-sera-reprimido-con-la-pena-347",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-210-quater-sera-reprimido-con-la-pena-347",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iii-348",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iii-348",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-211-sera-reprimido-con-prision-de-dos-349",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-211-sera-reprimido-con-prision-de-dos-349",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-212-sera-reprimido-con-prision-de-tres-350",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-212-sera-reprimido-con-prision-de-tres-350",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iv-351",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iv-351",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-213-sera-reprimido-con-prision-de-un-352",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-213-sera-reprimido-con-prision-de-un-352",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-v-353",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-v-353",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-213-bis-sera-reprimido-con-reclusion-o-354",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-213-bis-sera-reprimido-con-reclusion-o-354",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-vi-asociaciones-ilicitas-terroristas-y-financiacion-del-355",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-vi-asociaciones-ilicitas-terroristas-y-financiacion-del-355",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-213-ter-articulo-derogado-por-art-1o-356",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-213-ter-articulo-derogado-por-art-1o-356",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-213-quater-articulo-derogado-por-art-2o-357",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-213-quater-articulo-derogado-por-art-2o-357",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-ix-358",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-ix-358",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-i-359",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-i-359",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-214-sera-reprimido-con-reclusion-o-prision-360",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-214-sera-reprimido-con-reclusion-o-prision-360",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-215-sera-reprimido-con-reclusion-o-prision-361",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-215-sera-reprimido-con-reclusion-o-prision-361",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-216-sera-reprimido-con-reclusion-o-prision-362",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-216-sera-reprimido-con-reclusion-o-prision-362",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-217-quedara-eximido-de-pena-el-que-363",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-217-quedara-eximido-de-pena-el-que-363",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-218-las-penas-establecidas-en-los-articulos-364",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-218-las-penas-establecidas-en-los-articulos-364",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-ii-365",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-ii-365",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-219-sera-reprimido-con-prision-de-uno-366",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-219-sera-reprimido-con-prision-de-uno-366",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-220-se-impondra-prision-de-seis-6-367",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-220-se-impondra-prision-de-seis-6-367",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-221-sera-reprimido-con-prision-de-seis-368",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-221-sera-reprimido-con-prision-de-seis-368",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-222-sera-reprimido-con-reclusion-o-prision-369",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-222-sera-reprimido-con-reclusion-o-prision-369",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-223-sera-reprimido-con-prision-de-un-370",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-223-sera-reprimido-con-prision-de-un-370",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-224-sera-reprimido-con-prision-de-seis-371",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-224-sera-reprimido-con-prision-de-seis-371",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-225-sera-reprimido-con-reclusion-o-prision-372",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-225-sera-reprimido-con-reclusion-o-prision-372",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-i-373",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-i-373",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-226-seran-reprimidos-con-prision-de-cinco-374",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-226-seran-reprimidos-con-prision-de-cinco-374",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-226-bis-el-que-amenazare-publica-e-375",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-226-bis-el-que-amenazare-publica-e-375",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-227-seran-reprimidos-con-las-penas-establecidas-376",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-227-seran-reprimidos-con-las-penas-establecidas-376",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-227-bis-seran-reprimidos-con-las-penas-377",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-227-bis-seran-reprimidos-con-las-penas-377",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-227-ter-el-maximo-de-la-pena-378",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-227-ter-el-maximo-de-la-pena-378",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-228-se-impondra-prision-de-seis-meses-379",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-228-se-impondra-prision-de-seis-meses-379",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-ii-380",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-ii-380",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-229-seran-reprimidos-con-prision-de-uno-381",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-229-seran-reprimidos-con-prision-de-uno-381",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-230-seran-reprimidos-con-prision-de-uno-382",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-230-seran-reprimidos-con-prision-de-uno-382",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iii-383",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iii-383",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-231-luego-que-se-manifieste-la-rebelion-384",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-231-luego-que-se-manifieste-la-rebelion-384",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-232-en-caso-de-disolverse-el-tumulto-385",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-232-en-caso-de-disolverse-el-tumulto-385",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-233-el-que-tomare-parte-como-promotor-386",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-233-el-que-tomare-parte-como-promotor-386",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-234-el-que-sedujere-tropas-o-usurpare-387",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-234-el-que-sedujere-tropas-o-usurpare-387",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-235-los-funcionarios-publicos-que-hubieren-promovido-388",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-235-los-funcionarios-publicos-que-hubieren-promovido-388",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-236-cuando-al-ejecutar-los-delitos-previstos-389",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-236-cuando-al-ejecutar-los-delitos-previstos-389",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xi-390",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xi-390",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-i-391",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-i-391",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-237-sera-reprimido-con-prision-de-un-392",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-237-sera-reprimido-con-prision-de-un-392",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-238-la-prision-sera-de-seis-meses-393",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-238-la-prision-sera-de-seis-meses-393",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-238-bis-el-militar-que-pusiere-manos-394",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-238-bis-el-militar-que-pusiere-manos-394",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-238-ter-el-militar-que-resistiere-o-395",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-238-ter-el-militar-que-resistiere-o-395",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-239-sera-reprimido-con-prision-de-quince-396",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-239-sera-reprimido-con-prision-de-quince-396",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-240-para-los-efectos-de-los-dos-397",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-240-para-los-efectos-de-los-dos-397",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-240-bis-el-que-violare-las-normas-398",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-240-bis-el-que-violare-las-normas-398",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-241-sera-reprimido-con-prision-de-quince-399",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-241-sera-reprimido-con-prision-de-quince-399",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-241-bis-se-impondra-prision-de-tres-400",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-241-bis-se-impondra-prision-de-tres-400",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-242-sera-reprimido-con-multa-de-pesos-401",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-242-sera-reprimido-con-multa-de-pesos-401",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-243-sera-reprimido-con-prision-de-quince-402",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-243-sera-reprimido-con-prision-de-quince-402",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-ii-403",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-ii-403",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-244-articulo-derogado-por-art-2o-de-404",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-244-articulo-derogado-por-art-2o-de-404",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-245-se-impondra-prision-de-dos-meses-405",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-245-se-impondra-prision-de-dos-meses-405",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iii-406",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iii-406",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-246-sera-reprimido-con-prision-de-un-407",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-246-sera-reprimido-con-prision-de-un-407",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-247-sera-reprimido-con-prision-de-quince-408",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-247-sera-reprimido-con-prision-de-quince-408",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iv-409",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iv-409",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-248-sera-reprimido-con-prision-de-un-410",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-248-sera-reprimido-con-prision-de-un-410",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-248-bis-sera-reprimido-con-inhabilitacion-absoluta-411",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-248-bis-sera-reprimido-con-inhabilitacion-absoluta-411",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-249-sera-reprimido-con-multa-de-pesos-412",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-249-sera-reprimido-con-multa-de-pesos-412",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-249-bis-el-militar-que-en-sus-413",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-249-bis-el-militar-que-en-sus-413",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-250-sera-reprimido-con-prision-de-un-414",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-250-sera-reprimido-con-prision-de-un-414",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-250-bis-sera-penado-con-prision-de-415",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-250-bis-sera-penado-con-prision-de-415",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-251-sera-reprimido-con-prision-de-un-416",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-251-sera-reprimido-con-prision-de-un-416",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-252-sera-reprimido-con-multa-de-pesos-417",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-252-sera-reprimido-con-multa-de-pesos-417",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-253-sera-reprimido-con-multa-de-pesos-418",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-253-sera-reprimido-con-multa-de-pesos-418",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-253-bis-el-militar-que-sin-orden-419",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-253-bis-el-militar-que-sin-orden-419",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-253-ter-sera-penado-con-prision-de-420",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-253-ter-sera-penado-con-prision-de-420",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-v-421",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-v-421",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-254-sera-reprimido-con-prision-de-seis-422",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-254-sera-reprimido-con-prision-de-seis-422",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-255-sera-reprimido-con-prision-de-un-423",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-255-sera-reprimido-con-prision-de-un-423",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-vi-424",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-vi-424",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-256-sera-reprimido-con-reclusion-o-prision-425",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-256-sera-reprimido-con-reclusion-o-prision-425",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-256-bis-sera-reprimido-con-reclusion-o-426",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-256-bis-sera-reprimido-con-reclusion-o-426",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-257-sera-reprimido-con-prision-o-reclusion-427",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-257-sera-reprimido-con-prision-o-reclusion-427",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-258-sera-reprimido-con-prision-de-uno-428",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-258-sera-reprimido-con-prision-de-uno-428",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-258-bis-sera-reprimido-con-prision-de-429",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-258-bis-sera-reprimido-con-prision-de-429",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-259-sera-reprimido-con-prision-de-un-430",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-259-sera-reprimido-con-prision-de-un-430",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

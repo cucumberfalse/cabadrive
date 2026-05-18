@@ -1,0 +1,1981 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "document": {
+    "officialDocumentId": "ley-11179-codigo-penal",
+    "title": "CODIGO PENAL DE LA NACION ARGENTINA",
+    "shortTitleRu": "Уголовный кодекс Аргентины",
+    "category": "criminal-law",
+    "jurisdiction": "national",
+    "officialSourceType": "national_law_updated_text",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+    "archiveLocalPath": "content/official-documents/documents/ley-11179-codigo-penal.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "current",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-210-bis-se-impondra-reclusion-o-prision-345",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 345,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo II",
+          "ARTICULO 210 bis. - Se impondrá reclusión o prisión de cinco a veinte años al que tomare parte, cooperare o ayudare a la formación o al m..."
+        ],
+        "officialLabel": "ARTICULO 210 bis. - Se impondrá reclusión o prisión de cinco a veinte años al que tomare parte, cooperare o ayudare a la formación o al m...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 210 bis. - Se impondrá reclusión o prisión de cinco a veinte años al que tomare parte, cooperare o ayudare a la formación o al mantenimiento de una asociación ilícita destinada a cometer delitos cuando la acción contribuya a poner en peligro la vigencia de la Constitución Nacional, siempre que ella reúna por lo menos dos de las siguientes características:\n\na) Estar integrada por diez o más individuos;\n\nb) Poseer una organización militar o de tipo militar;\n\nc) Tener estructura celular;\n\nd) Disponer de armas de guerra o explosivos de gran poder ofensivo;\n\ne) Operar en más de una de las jurisdicciones políticas del país;\n\nf) Estar compuesta por uno o más oficiales o suboficiales de las fuerzas armadas o de seguridad;\n\ng) Tener notorias conexiones con otras organizaciones similares existentes en el país o en el exterior;\n\nh) Recibir algún apoyo, ayuda o dirección de funcionarios públicos.\n",
+        "fullTranslationRu": "СТАТЬЯ 210 bis. Каторжное заключение или лишение свободы на срок от пяти до двадцати лет назначается тому, кто участвует, сотрудничает или помогает в создании либо поддержании незаконного объединения, предназначенного для совершения преступлений, когда это действие способствует созданию опасности для действия Национальной конституции, при условии что объединение имеет по меньшей мере две из следующих характеристик: a) состоит из десяти или более лиц; b) имеет военную организацию или организацию военного типа; c) имеет ячеистую структуру; d) располагает боевым оружием или взрывчатыми веществами большой наступательной силы; e) действует более чем в одной политической юрисдикции страны; f) состоит из одного или нескольких офицеров или унтер-офицеров вооруженных сил или сил безопасности; g) имеет очевидные связи с другими подобными организациями в стране или за рубежом; h) получает поддержку, помощь или руководство от публичных должностных лиц.",
+        "simpleRu": "Статья 210 bis наказывает участие или помощь опасной преступной организации, если она угрожает действию Конституции. Наказание - от 5 до 20 лет лишения свободы или каторжного заключения. Нужно, чтобы у организации было хотя бы 2 признака из списка: 10 или больше участников, военный тип, ячейки, боевое оружие или мощная взрывчатка, работа в разных юрисдикциях, военные или силовики в составе, связи с похожими группами, поддержка чиновников.",
+        "sourceTextSha256": "6fc7be71c41ee94a7b597b989b96c85c26ca5f796cb1c5973d428ed42d81e1c1",
+        "sourceFingerprint": "sha256:6fc7be71c41ee94a7b597b989b96c85c26ca5f796cb1c5973d428ed42d81e1c1",
+        "sourceSpan": {
+          "startLine": 2142,
+          "endLine": 2159
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-210-ter-sera-reprimido-con-reclusion-o-346",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 346,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo II",
+          "ARTICULO 210 ter. - Será reprimido con reclusión o prisión de ocho (8) a veinte (20) años el que tomare parte, cooperare o ayudare a la f..."
+        ],
+        "officialLabel": "ARTICULO 210 ter. - Será reprimido con reclusión o prisión de ocho (8) a veinte (20) años el que tomare parte, cooperare o ayudare a la f...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 210 ter. - Será reprimido con reclusión o prisión de ocho (8) a veinte (20) años el que tomare parte, cooperare o ayudare a la formación o al mantenimiento de una asociación ilícita dedicada a cometer cualquiera de los delitos tipificados en las leyes 23.737, 25.188, 25.246, 26.683 y 27.447, y sus respectivas modificatorias, y en los artículos 79, 80, 89, 90, 91, 92, 125, 126, 127, 128, 140, 141, 142, 142 bis, 145 bis, 145 ter, 146, 147, 164, 165, 166, 167, 167 bis, 168, 170, 189 bis, 259, 261, 265, 266, 267, 268, 268 (1), 268 (2), 277 y 279 de este Código, pese a que la organización no reúna las características del artículo 210 bis, y en concurso real con las penas previstas para los delitos cometidos individualmente como miembro de la organización, las que se agravarán en el doble del mínimo y del máximo.\n\nLas condiciones especiales de participación establecidas en los artículos 46 y 47 de este Código no serán aplicables a los efectos de lo dispuesto en este artículo.\n\n(Artículo incorporado por art. 7° de la Ley N° 27.786 [https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=410436] B.O. 10/3/2025. Vigencia: a partir del día siguiente al de su publicación en el Boletín Oficial de la República Argentina.)\n",
+        "fullTranslationRu": "СТАТЬЯ 210 ter. Каторжное заключение или лишение свободы на срок от восьми (8) до двадцати (20) лет назначается тому, кто участвует, сотрудничает или помогает в создании либо поддержании незаконного объединения, посвященного совершению любого из преступлений, предусмотренных законами 23.737, 25.188, 25.246, 26.683 и 27.447 и их изменениями, а также статьями 79, 80, 89, 90, 91, 92, 125, 126, 127, 128, 140, 141, 142, 142 bis, 145 bis, 145 ter, 146, 147, 164, 165, 166, 167, 167 bis, 168, 170, 189 bis, 259, 261, 265, 266, 267, 268, 268 (1), 268 (2), 277 и 279 этого Кодекса, даже если организация не имеет признаков статьи 210 bis. Это применяется в реальной совокупности с наказаниями за преступления, совершенные индивидуально как членом организации, причем эти наказания отягчаются вдвое по минимуму и максимуму. Специальные условия участия, установленные статьями 46 и 47 этого Кодекса, не применяются для целей этой статьи. Статья включена Законом N 27.786, опубликованным 10/3/2025, и действует со дня, следующего за публикацией в Официальном бюллетене Аргентинской Республики.",
+        "simpleRu": "Статья 210 ter вводит 8-20 лет за участие или помощь преступной организации, которая совершает перечисленные тяжкие преступления, даже если у нее нет признаков из статьи 210 bis. Кроме этого считают наказания за отдельные преступления участника, и их минимум и максимум удваиваются. Правила статей 46 и 47 о специальных формах участия здесь не применяются.",
+        "sourceTextSha256": "fb08de871915c016ccfb123eb897d02c75458af175f1989435e54e8ff020bd2b",
+        "sourceFingerprint": "sha256:fb08de871915c016ccfb123eb897d02c75458af175f1989435e54e8ff020bd2b",
+        "sourceSpan": {
+          "startLine": 2160,
+          "endLine": 2165
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-210-quater-sera-reprimido-con-la-pena-347",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 347,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo II",
+          "ARTICULO 210 quáter. - Será reprimido con la pena que correspondiera al delito más grave cometido por la organización a la que se refiere..."
+        ],
+        "officialLabel": "ARTICULO 210 quáter. - Será reprimido con la pena que correspondiera al delito más grave cometido por la organización a la que se refiere...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 210 quáter. - Será reprimido con la pena que correspondiera al delito más grave cometido por la organización a la que se refiere el artículo 210 ter, cualquiera de los miembros de dicha organización, cuando la misma reuniera alguna de las siguientes condiciones:\n\na) Se valiera de la violencia física o de amenazas para el cumplimiento de sus fines;\n\nb) Los hechos se produjeran de manera reiterada y ostensible en beneficio de la organización;\n\nc) Los hechos se cometieren para el desplazamiento o aniquilación de otra organización;\n\nd) Los hechos se produjeran para amedrentar a la población en general o a ciertos sectores de la población, o para intimidar a las autoridades ejecutivas, legislativas y judiciales, o a las fuerzas armadas, fuerzas policiales y de seguridad;\n\ne) Resultare evidente que se busca asegurar el control de un territorio para la comisión de nuevos ilícitos, para continuar ejecutando los que ya se estuvieren cometiendo, o para la sustracción de ese territorio del control de las autoridades nacionales, provinciales, municipales y de la Ciudad Autónoma de Buenos Aires.\n\nLas condiciones especiales de participación establecidas en los artículos 46 y 47 de este Código no serán aplicables a los efectos de lo dispuesto en este artículo.\n\nSe considerará “delito más grave cometido por la organización criminal” al que hubiera sido perpetrado por cualquiera de sus miembros y que tenga la pena más alta.\n\n(Artículo incorporado por art. 8° de la Ley N° 27.786 [https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=410436] B.O. 10/3/2025. Vigencia: a partir del día siguiente al de su publicación en el Boletín Oficial de la República Argentina.)\n",
+        "fullTranslationRu": "СТАТЬЯ 210 quater. Любой член организации, указанной в статье 210 ter, наказывается наказанием, соответствующим самому тяжкому преступлению, совершенному этой организацией, когда организация имеет одно из следующих условий: a) использует физическое насилие или угрозы для достижения своих целей; b) деяния совершаются повторно и явно в пользу организации; c) деяния совершаются для вытеснения или уничтожения другой организации; d) деяния совершаются для запугивания населения в целом или отдельных его секторов либо для устрашения исполнительных, законодательных и судебных властей, вооруженных сил, полиции и сил безопасности; e) очевидно стремление обеспечить контроль над территорией для совершения новых незаконных деяний, продолжения уже совершаемых деяний или изъятия этой территории из-под контроля национальных, провинциальных, муниципальных властей и властей Автономного города Буэнос-Айрес. Специальные условия участия из статей 46 и 47 этого Кодекса для этой статьи не применяются. Самым тяжким преступлением, совершенным преступной организацией, считается преступление, совершенное любым ее членом и имеющее наиболее высокое наказание. Статья включена Законом N 27.786, опубликованным 10/3/2025, и действует со дня, следующего за публикацией в Официальном бюллетене Аргентинской Республики.",
+        "simpleRu": "Статья 210 quater говорит: если организация из статьи 210 ter использует насилие, повторно действует в свою пользу, вытесняет другую группу, запугивает людей или власти либо пытается контролировать территорию, ее участника наказывают по самому тяжкому преступлению организации. Самым тяжким считается преступление с самым высоким наказанием. Статьи 46 и 47 здесь не применяются.",
+        "sourceTextSha256": "e3e38d7967c9ec30fcfef1b15129c74155459eee589b60be1ab12fb195976d63",
+        "sourceFingerprint": "sha256:e3e38d7967c9ec30fcfef1b15129c74155459eee589b60be1ab12fb195976d63",
+        "sourceSpan": {
+          "startLine": 2166,
+          "endLine": 2183
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iii-348",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 348,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo III"
+        ],
+        "officialLabel": "Capítulo III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo III\n\nIntimidación pública\n",
+        "fullTranslationRu": "ГЛАВА III\n\nПубличное устрашение",
+        "simpleRu": "Начинается глава III о публичном устрашении.",
+        "sourceTextSha256": "faa8fabe3624ae15a2ba963b9f10c804d11da20a0ceff30b31f735e56c02a62a",
+        "sourceFingerprint": "sha256:faa8fabe3624ae15a2ba963b9f10c804d11da20a0ceff30b31f735e56c02a62a",
+        "sourceSpan": {
+          "startLine": 2184,
+          "endLine": 2187
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-211-sera-reprimido-con-prision-de-dos-349",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 349,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo III",
+          "ARTICULO 211. - Será reprimido con prisión de dos a seis años, el que, para infundir un temor público o suscitar tumultos o desórdenes, h..."
+        ],
+        "officialLabel": "ARTICULO 211. - Será reprimido con prisión de dos a seis años, el que, para infundir un temor público o suscitar tumultos o desórdenes, h...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 211. - Será reprimido con prisión de dos a seis años, el que, para infundir un temor público o suscitar tumultos o desórdenes, hiciere señales, diere voces de alarma, amenazare con la comisión de un delito de peligro común, o empleare otros medios materiales normalmente idóneos para producir tales efectos.\n\nCuando para ello se empleare explosivos, agresivos químicos o materias afines, siempre que el hecho no constituya delito contra la seguridad pública, la pena será de prisión de tres a diez años.\n",
+        "fullTranslationRu": "СТАТЬЯ 211. Лишением свободы на срок от двух до шести лет наказывается тот, кто, чтобы внушить общественный страх или вызвать беспорядки либо волнения, подает сигналы, издает тревожные возгласы, угрожает совершением преступления общей опасности или использует другие материальные средства, обычно пригодные для такого результата. Если для этого применяются взрывчатые вещества, химические агрессивные средства или сходные материалы, и деяние не является преступлением против общественной безопасности, наказание составляет лишение свободы от трех до десяти лет.",
+        "simpleRu": "Статья 211 наказывает ложные или опасные действия, сделанные для массового страха или беспорядков: сигналы тревоги, угрозы общему опасному преступлению и похожие средства. Обычно наказание 2-6 лет, а если использованы взрывчатка, химические вещества или похожие материалы, но это не отдельное преступление против безопасности, наказание 3-10 лет.",
+        "sourceTextSha256": "9ee48873fb328fc2737628504686a5d73d065b82acfc98e691f5938c464e7262",
+        "sourceFingerprint": "sha256:9ee48873fb328fc2737628504686a5d73d065b82acfc98e691f5938c464e7262",
+        "sourceSpan": {
+          "startLine": 2188,
+          "endLine": 2191
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-212-sera-reprimido-con-prision-de-tres-350",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 350,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo III",
+          "ARTICULO 212. - Será reprimido con prisión de tres a seis años el que públicamente incitare a la violencia colectiva contra grupos de per..."
+        ],
+        "officialLabel": "ARTICULO 212. - Será reprimido con prisión de tres a seis años el que públicamente incitare a la violencia colectiva contra grupos de per...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 212. - Será reprimido con prisión de tres a seis años el que públicamente incitare a la violencia colectiva contra grupos de personas o instituciones, por la sola incitación.\n",
+        "fullTranslationRu": "СТАТЬЯ 212. Лишением свободы на срок от трех до шести лет наказывается тот, кто публично подстрекает к коллективному насилию против групп людей или учреждений, уже за одно лишь подстрекательство.",
+        "simpleRu": "Статья 212: публичный призыв к групповому насилию против людей или учреждений сам по себе наказывается 3-6 годами лишения свободы.",
+        "sourceTextSha256": "97ca668cd01c20572023dbfe7654132ae49bfbefcd12b7806a432cc788776139",
+        "sourceFingerprint": "sha256:97ca668cd01c20572023dbfe7654132ae49bfbefcd12b7806a432cc788776139",
+        "sourceSpan": {
+          "startLine": 2192,
+          "endLine": 2193
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iv-351",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 351,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo IV"
+        ],
+        "officialLabel": "Capítulo IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo IV\n\nApología del crimen\n",
+        "fullTranslationRu": "ГЛАВА IV\n\nОправдание преступления",
+        "simpleRu": "Начинается глава IV об публичном одобрении или оправдании преступления.",
+        "sourceTextSha256": "a2a197fca5b9907a126e57afff3a110a37e5b0a95ed11a7f1f875eaffd864402",
+        "sourceFingerprint": "sha256:a2a197fca5b9907a126e57afff3a110a37e5b0a95ed11a7f1f875eaffd864402",
+        "sourceSpan": {
+          "startLine": 2194,
+          "endLine": 2197
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-213-sera-reprimido-con-prision-de-un-352",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 352,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo IV",
+          "ARTICULO 213. - Será reprimido con prisión de un mes a un año, el que hiciere públicamente y por cualquier medio la apología de un delito..."
+        ],
+        "officialLabel": "ARTICULO 213. - Será reprimido con prisión de un mes a un año, el que hiciere públicamente y por cualquier medio la apología de un delito...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 213. - Será reprimido con prisión de un mes a un año, el que hiciere públicamente y por cualquier medio la apología de un delito o de un condenado por delito.\n",
+        "fullTranslationRu": "СТАТЬЯ 213. Лишением свободы на срок от одного месяца до одного года наказывается тот, кто публично и любым способом совершает апологию преступления или лица, осужденного за преступление.",
+        "simpleRu": "Статья 213 наказывает публичное восхваление преступления или осужденного преступника. Наказание - от 1 месяца до 1 года.",
+        "sourceTextSha256": "b571061b2382304952feb7e85ddd6f266d27243f6d36655058113c5f6b79180a",
+        "sourceFingerprint": "sha256:b571061b2382304952feb7e85ddd6f266d27243f6d36655058113c5f6b79180a",
+        "sourceSpan": {
+          "startLine": 2198,
+          "endLine": 2199
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-v-353",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 353,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo V"
+        ],
+        "officialLabel": "Capítulo V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo V\n\nOtros atentados contra el orden público\n",
+        "fullTranslationRu": "ГЛАВА V\n\nИные посягательства против общественного порядка",
+        "simpleRu": "Начинается глава V о других посягательствах против общественного порядка.",
+        "sourceTextSha256": "e0dc8d199b30fcd6bf178931cc0b12f160a9c7aca8626f09dd52bc088ef54320",
+        "sourceFingerprint": "sha256:e0dc8d199b30fcd6bf178931cc0b12f160a9c7aca8626f09dd52bc088ef54320",
+        "sourceSpan": {
+          "startLine": 2200,
+          "endLine": 2203
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-213-bis-sera-reprimido-con-reclusion-o-354",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 354,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo V",
+          "ARTICULO 213 bis. - Será reprimido con reclusión o prisión de tres a ocho años el que organizare o tomare parte en agrupaciones permanent..."
+        ],
+        "officialLabel": "ARTICULO 213 bis. - Será reprimido con reclusión o prisión de tres a ocho años el que organizare o tomare parte en agrupaciones permanent...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 213 bis. - Será reprimido con reclusión o prisión de tres a ocho años el que organizare o tomare parte en agrupaciones permanentes o transitorias que, sin estar comprendidas en el artículo 210 de este código, tuvieren por objeto principal o accesorios imponer sus ideas o combatir las ajenas por la fuerza o el temor, por el solo hecho de ser miembro de la asociación.\n",
+        "fullTranslationRu": "СТАТЬЯ 213 bis. Каторжным заключением или лишением свободы на срок от трех до восьми лет наказывается тот, кто организует или участвует в постоянных или временных группах, которые не подпадают под статью 210 этого Кодекса, но имеют главной или дополнительной целью навязывать свои идеи или бороться с чужими идеями силой или страхом; наказание применяется уже за сам факт членства в объединении.",
+        "simpleRu": "Статья 213 bis касается групп, которые не являются объединением из статьи 210, но хотят навязывать свои идеи или бороться с чужими силой или страхом. За организацию или участие дают 3-8 лет.",
+        "sourceTextSha256": "0eeb329e1d7a63dc6a2111886aeb063fb9ab29406a86a3619655c7890aff2278",
+        "sourceFingerprint": "sha256:0eeb329e1d7a63dc6a2111886aeb063fb9ab29406a86a3619655c7890aff2278",
+        "sourceSpan": {
+          "startLine": 2204,
+          "endLine": 2205
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-vi-asociaciones-ilicitas-terroristas-y-financiacion-del-355",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 355,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo VI. Asociaciones ilícitas terroristas y financiación del terrorismo"
+        ],
+        "officialLabel": "Capítulo VI. Asociaciones ilícitas terroristas y financiación del terrorismo",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo VI. Asociaciones ilícitas terroristas y financiación del terrorismo\n\n(Capítulo incorporado por art. 1° de la Ley N° 26.268 [/infolegInternet/verNorma.do?id=129803] B.O. 5/7/2007)\n",
+        "fullTranslationRu": "ГЛАВА VI. Террористические незаконные объединения и финансирование терроризма\n\nГлава включена статьей 1 Закона N 26.268, опубликованного 5/7/2007.",
+        "simpleRu": "Начинается глава VI о террористических незаконных объединениях и финансировании терроризма. Она была добавлена Законом 26.268.",
+        "sourceTextSha256": "890d03684b144e7254af1814828573d61f31856a4fc37af3067f85e975ff7b41",
+        "sourceFingerprint": "sha256:890d03684b144e7254af1814828573d61f31856a4fc37af3067f85e975ff7b41",
+        "sourceSpan": {
+          "startLine": 2206,
+          "endLine": 2209
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-213-ter-articulo-derogado-por-art-1o-356",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 356,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo VI. Asociaciones ilícitas terroristas y financiación del terrorismo",
+          "Artículo 213 ter.- (Artículo derogado por art. 1° de la Ley N° 26.734 [/infolegInternet/verNorma.do?id=192137] B.O. 28/12/2011)"
+        ],
+        "officialLabel": "Artículo 213 ter.- (Artículo derogado por art. 1° de la Ley N° 26.734 [/infolegInternet/verNorma.do?id=192137] B.O. 28/12/2011)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Artículo 213 ter.- (Artículo derogado por art. 1° de la Ley N° 26.734 [/infolegInternet/verNorma.do?id=192137] B.O. 28/12/2011)\n",
+        "fullTranslationRu": "СТАТЬЯ 213 ter. Статья отменена статьей 1 Закона N 26.734, опубликованного 28/12/2011.",
+        "simpleRu": "Статья 213 ter больше не действует: ее отменил Закон 26.734.",
+        "sourceTextSha256": "39283435ec4c244243f970dcbb0afc0edc443dd29cf22926bfbb1c8e88dcf11d",
+        "sourceFingerprint": "sha256:39283435ec4c244243f970dcbb0afc0edc443dd29cf22926bfbb1c8e88dcf11d",
+        "sourceSpan": {
+          "startLine": 2210,
+          "endLine": 2211
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-213-quater-articulo-derogado-por-art-2o-357",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 357,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo VI. Asociaciones ilícitas terroristas y financiación del terrorismo",
+          "Artículo 213 quáter.- (Artículo derogado por art. 2° de la Ley N° 26.734 [/infolegInternet/verNorma.do?id=192137] B.O. 28/12/2011)"
+        ],
+        "officialLabel": "Artículo 213 quáter.- (Artículo derogado por art. 2° de la Ley N° 26.734 [/infolegInternet/verNorma.do?id=192137] B.O. 28/12/2011)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Artículo 213 quáter.- (Artículo derogado por art. 2° de la Ley N° 26.734 [/infolegInternet/verNorma.do?id=192137] B.O. 28/12/2011)\n",
+        "fullTranslationRu": "СТАТЬЯ 213 quater. Статья отменена статьей 2 Закона N 26.734, опубликованного 28/12/2011.",
+        "simpleRu": "Статья 213 quater больше не действует: ее отменил Закон 26.734.",
+        "sourceTextSha256": "dc070a49c72d5ce41502116e4c99c5184341934e4c266c4137bd4772f2b64dc5",
+        "sourceFingerprint": "sha256:dc070a49c72d5ce41502116e4c99c5184341934e4c266c4137bd4772f2b64dc5",
+        "sourceSpan": {
+          "startLine": 2212,
+          "endLine": 2213
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ix-358",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 358,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX"
+        ],
+        "officialLabel": "TITULO IX",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO IX\n\nDELITOS CONTRA LA SEGURIDAD DE LA NACION\n",
+        "fullTranslationRu": "РАЗДЕЛ IX\n\nПРЕСТУПЛЕНИЯ ПРОТИВ БЕЗОПАСНОСТИ НАЦИИ",
+        "simpleRu": "Начинается раздел IX о преступлениях против безопасности страны.",
+        "sourceTextSha256": "99f1d1276a4bb370995a1a3b30f28b05f6a962029e402205c71831f161e9445f",
+        "sourceFingerprint": "sha256:99f1d1276a4bb370995a1a3b30f28b05f6a962029e402205c71831f161e9445f",
+        "sourceSpan": {
+          "startLine": 2214,
+          "endLine": 2217
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-359",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 359,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nTraición\n",
+        "fullTranslationRu": "ГЛАВА I\n\nИзмена",
+        "simpleRu": "Начинается глава I об измене.",
+        "sourceTextSha256": "89df269daea1e87dbeb8d201b91231c13fadc914a0f052a639720d6ca099860b",
+        "sourceFingerprint": "sha256:89df269daea1e87dbeb8d201b91231c13fadc914a0f052a639720d6ca099860b",
+        "sourceSpan": {
+          "startLine": 2218,
+          "endLine": 2221
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-214-sera-reprimido-con-reclusion-o-prision-360",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 360,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 214. - Será reprimido con reclusión o prisión de diez a veinticinco años o reclusión o prisión perpetua y en uno u otro caso, in..."
+        ],
+        "officialLabel": "ARTICULO 214. - Será reprimido con reclusión o prisión de diez a veinticinco años o reclusión o prisión perpetua y en uno u otro caso, in...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 214. - Será reprimido con reclusión o prisión de diez a veinticinco años o reclusión o prisión perpetua y en uno u otro caso, inhabilitación absoluta perpetua, siempre que el hecho no se halle comprendido en otra disposición de este código, todo argentino o toda persona que deba obediencia a la Nación por razón de su empleo o función pública, que tomare las armas contra ésta, se uniere a sus enemigos o les prestare cualquier ayuda o socorro.\n",
+        "fullTranslationRu": "СТАТЬЯ 214. Каторжным заключением или лишением свободы на срок от десяти до двадцати пяти лет либо пожизненным каторжным заключением или пожизненным лишением свободы, и в любом случае пожизненным абсолютным лишением прав, наказывается каждый аргентинец или любое лицо, обязанное повиноваться Нации по причине своей службы или публичной функции, если оно берется за оружие против Нации, присоединяется к ее врагам или оказывает им любую помощь или поддержку, при условии что деяние не подпадает под другое положение этого Кодекса.",
+        "simpleRu": "Статья 214 наказывает измену: когда аргентинец или человек, обязанный служить Нации, воюет против нее, присоединяется к врагам или помогает им. Наказание очень строгое: 10-25 лет или пожизненно, плюс пожизненное абсолютное лишение прав, если нет другой специальной статьи.",
+        "sourceTextSha256": "1ac926a979a62cfa86e679d29628f4b87dc265ee32a78224ec37eefe8dced5d3",
+        "sourceFingerprint": "sha256:1ac926a979a62cfa86e679d29628f4b87dc265ee32a78224ec37eefe8dced5d3",
+        "sourceSpan": {
+          "startLine": 2222,
+          "endLine": 2223
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-215-sera-reprimido-con-reclusion-o-prision-361",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 361,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 215. - Será reprimido con reclusión o prisión perpetua, el que cometiere el delito previsto en el artículo precedente, en los ca..."
+        ],
+        "officialLabel": "ARTICULO 215. - Será reprimido con reclusión o prisión perpetua, el que cometiere el delito previsto en el artículo precedente, en los ca...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 215. - Será reprimido con reclusión o prisión perpetua, el que cometiere el delito previsto en el artículo precedente, en los casos siguientes:\n\n1º Si ejecutare un hecho dirigido a someter total o parcialmente la Nación al dominio extranjero o a menoscabar su independencia o integridad;\n\n2º Si indujere o decidiere a una potencia extranjera a hacer la guerra contra la República.\n\n3° Si perteneciere a las fuerzas armadas. (Inciso incorporado por art. 5° del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 215. Пожизненным каторжным заключением или пожизненным лишением свободы наказывается тот, кто совершает преступление из предыдущей статьи в следующих случаях: 1) если совершает действие, направленное на полное или частичное подчинение Нации иностранному господству либо на подрыв ее независимости или целостности; 2) если склоняет или побуждает иностранную державу начать войну против Республики; 3) если принадлежит к вооруженным силам. Пункт 3 включен Законом N 26.394, опубликованным 29/8/2008; его действие начиналось через шесть (6) месяцев после промульгации, с предусмотренной программой распространения и обучения.",
+        "simpleRu": "Статья 215 усиливает наказание за измену до пожизненного. Это касается попытки подчинить страну иностранной власти, подорвать независимость или целостность, подтолкнуть иностранную державу к войне против Аргентины, а также случая, когда виновный служит в вооруженных силах.",
+        "sourceTextSha256": "e66f980cff2e094ca141cfa35b0b14be121719a64f34752481cf219e80ebd5f9",
+        "sourceFingerprint": "sha256:e66f980cff2e094ca141cfa35b0b14be121719a64f34752481cf219e80ebd5f9",
+        "sourceSpan": {
+          "startLine": 2224,
+          "endLine": 2231
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-216-sera-reprimido-con-reclusion-o-prision-362",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 362,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 216. - Será reprimido con reclusión o prisión de uno a ocho años, el que tomare parte en una conspiración de dos o más personas,..."
+        ],
+        "officialLabel": "ARTICULO 216. - Será reprimido con reclusión o prisión de uno a ocho años, el que tomare parte en una conspiración de dos o más personas,...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 216. - Será reprimido con reclusión o prisión de uno a ocho años, el que tomare parte en una conspiración de dos o más personas, para cometer el delito de traición, en cualquiera de los casos comprendidos en los artículos precedentes, si la conspiración fuere descubierta antes de empezar su ejecución.\n",
+        "fullTranslationRu": "СТАТЬЯ 216. Каторжным заключением или лишением свободы на срок от одного до восьми лет наказывается тот, кто участвует в заговоре двух или более лиц для совершения измены в любом из случаев предыдущих статей, если заговор обнаружен до начала его исполнения.",
+        "simpleRu": "Статья 216 наказывает заговор двух или более людей для измены, если его раскрыли до начала действий. Наказание - 1-8 лет.",
+        "sourceTextSha256": "000e517c1019ac167c506e8d3fddce7520c4ddfa1c0b30e7312424f9faad9eee",
+        "sourceFingerprint": "sha256:000e517c1019ac167c506e8d3fddce7520c4ddfa1c0b30e7312424f9faad9eee",
+        "sourceSpan": {
+          "startLine": 2232,
+          "endLine": 2233
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-217-quedara-eximido-de-pena-el-que-363",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 363,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 217. - Quedará eximido de pena el que revelare la conspiración a la autoridad, antes de haberse comenzado el procedimiento."
+        ],
+        "officialLabel": "ARTICULO 217. - Quedará eximido de pena el que revelare la conspiración a la autoridad, antes de haberse comenzado el procedimiento.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 217. - Quedará eximido de pena el que revelare la conspiración a la autoridad, antes de haberse comenzado el procedimiento.\n",
+        "fullTranslationRu": "СТАТЬЯ 217. От наказания освобождается тот, кто раскрывает заговор властям до начала процедуры.",
+        "simpleRu": "Статья 217: если участник заранее сообщил властям о заговоре, до начала процедуры, его освобождают от наказания.",
+        "sourceTextSha256": "3d0a3943841f2c5bd82fbbf52fe02bd4895926d0a77b611ee45f9a347b037d72",
+        "sourceFingerprint": "sha256:3d0a3943841f2c5bd82fbbf52fe02bd4895926d0a77b611ee45f9a347b037d72",
+        "sourceSpan": {
+          "startLine": 2234,
+          "endLine": 2235
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-218-las-penas-establecidas-en-los-articulos-364",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 364,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 218. - Las penas establecidas en los artículos anteriores se aplicarán, también, cuando los hechos previstos en ellos fueren com..."
+        ],
+        "officialLabel": "ARTICULO 218. - Las penas establecidas en los artículos anteriores se aplicarán, también, cuando los hechos previstos en ellos fueren com...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 218. - Las penas establecidas en los artículos anteriores se aplicarán, también, cuando los hechos previstos en ellos fueren cometidos contra una potencia aliada de la República, en guerra contra un enemigo común.\n\nSe aplicarán asimismo a los extranjeros residentes en territorio argentino, salvo lo establecido por los tratados o por el derecho de gentes, acerca de los funcionarios diplomáticos y de los nacionales de los países en conflicto. En este caso se aplicará la pena disminuida conforme a lo dispuesto por el artículo 44.\n",
+        "fullTranslationRu": "СТАТЬЯ 218. Наказания, установленные в предыдущих статьях, применяются также, когда предусмотренные в них деяния совершены против союзной с Республикой державы, находящейся в войне против общего врага. Они также применяются к иностранцам, проживающим на территории Аргентины, кроме правил договоров или права народов о дипломатических должностных лицах и гражданах стран, участвующих в конфликте. В этом случае применяется наказание, уменьшенное согласно статье 44.",
+        "simpleRu": "Статья 218 распространяет правила об измене на действия против союзника Аргентины в войне с общим врагом. Они могут применяться и к иностранцам, живущим в Аргентине, но с учетом договоров и международных правил о дипломатах и гражданах стран конфликта. Тогда наказание уменьшают по статье 44.",
+        "sourceTextSha256": "668cec5e949557060bd18be1838f00d2391a32bcc546e37f01489aa574c2818d",
+        "sourceFingerprint": "sha256:668cec5e949557060bd18be1838f00d2391a32bcc546e37f01489aa574c2818d",
+        "sourceSpan": {
+          "startLine": 2236,
+          "endLine": 2239
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-365",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 365,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nDelitos que comprometen la paz y la dignidad de la Nación\n",
+        "fullTranslationRu": "ГЛАВА II\n\nПреступления, ставящие под угрозу мир и достоинство Нации",
+        "simpleRu": "Начинается глава II о преступлениях, которые вредят миру и достоинству страны.",
+        "sourceTextSha256": "3c9a1b06dd2c2c3636e2cc5c107f0adfc87f4f6c9b46fe611c035e52f3bdbcd5",
+        "sourceFingerprint": "sha256:3c9a1b06dd2c2c3636e2cc5c107f0adfc87f4f6c9b46fe611c035e52f3bdbcd5",
+        "sourceSpan": {
+          "startLine": 2240,
+          "endLine": 2243
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-219-sera-reprimido-con-prision-de-uno-366",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 366,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 219. - Será reprimido con prisión de uno a seis años, el que por actos materiales hostiles no aprobados por el gobierno nacional..."
+        ],
+        "officialLabel": "ARTICULO 219. - Será reprimido con prisión de uno a seis años, el que por actos materiales hostiles no aprobados por el gobierno nacional...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 219. - Será reprimido con prisión de uno a seis años, el que por actos materiales hostiles no aprobados por el gobierno nacional, diere motivos al peligro de una declaración de guerra contra la Nación, expusiere a sus habitantes a experimentar vejaciones o represalias en sus personas o en sus bienes o alterare las relaciones amistosas del gobierno argentino con un gobierno extranjero. Si de dichos actos resultaren hostilidades o la guerra, la pena será de tres a quince años de reclusión o prisión.\n\nCuando los actos precedentes fuesen cometidos por un militar, los mínimos de las penas previstas en este artículo se elevarán a tres (3) y diez (10) años respectivamente. Asimismo, los máximos de las penas previstas en este artículo se elevarán respectivamente a diez (10) y veinte (20) años. (Párrafo incorporado por art. 6° del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 219. Лишением свободы на срок от одного до шести лет наказывается тот, кто материальными враждебными действиями, не одобренными национальным правительством, создает опасность объявления войны против Нации, подвергает ее жителей унижениям или репрессалиям в отношении личности или имущества либо нарушает дружественные отношения аргентинского правительства с иностранным правительством. Если из этих действий возникли враждебные действия или война, наказание составляет от трех до пятнадцати лет каторжного заключения или лишения свободы. Если такие действия совершает военнослужащий, минимумы наказаний повышаются соответственно до трех (3) и десяти (10) лет, а максимумы - до десяти (10) и двадцати (20) лет. Этот абзац включен Законом N 26.394, опубликованным 29/8/2008, с началом действия через шесть (6) месяцев после промульгации.",
+        "simpleRu": "Статья 219 запрещает самовольные враждебные действия, которые могут привести к войне, репрессалиям против жителей или ухудшению отношений Аргентины с другой страной. Базовое наказание 1-6 лет; если начались враждебные действия или война, 3-15 лет. Для военных минимумы и максимумы выше.",
+        "sourceTextSha256": "2384e1d83291c9c535f95b0c0acaad5297b5936d1e2221272f906b5ba21d3415",
+        "sourceFingerprint": "sha256:2384e1d83291c9c535f95b0c0acaad5297b5936d1e2221272f906b5ba21d3415",
+        "sourceSpan": {
+          "startLine": 2244,
+          "endLine": 2247
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-220-se-impondra-prision-de-seis-6-367",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 367,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 220. Se impondrá prisión de seis (6) meses a dos (2) años, al que violare los tratados concluidos con naciones extranjeras, las ..."
+        ],
+        "officialLabel": "ARTICULO 220. Se impondrá prisión de seis (6) meses a dos (2) años, al que violare los tratados concluidos con naciones extranjeras, las ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 220. Se impondrá prisión de seis (6) meses a dos (2) años, al que violare los tratados concluidos con naciones extranjeras, las treguas y armisticios acordados entre la República y una potencia enemiga o entre sus fuerzas beligerantes o los salvoconductos debidamente expedidos.\n\nSi el hecho fuese cometido por un militar el mínimo de la pena se elevará a un (1) año y el máximo de la pena se elevará a cinco (5) años.\n\n(Artículo sustituido por art. 7° del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 220. Лишение свободы на срок от шести (6) месяцев до двух (2) лет назначается тому, кто нарушает договоры, заключенные с иностранными нациями, перемирия и соглашения о прекращении огня между Республикой и вражеской державой или между воюющими силами, либо надлежаще выданные пропуска. Если деяние совершено военнослужащим, минимум наказания повышается до одного (1) года, а максимум - до пяти (5) лет. Статья заменена Законом N 26.394, опубликованным 29/8/2008, с началом действия через шесть (6) месяцев после промульгации.",
+        "simpleRu": "Статья 220 наказывает нарушение международных договоров, перемирий, armisticios или специальных пропусков. Обычно наказание 6 месяцев-2 года. Если это сделал военный, наказание становится 1-5 лет.",
+        "sourceTextSha256": "b1e7d34998de764a168cdb3d20fa1deeb813614fc85ed3600b51feca7dc10d6a",
+        "sourceFingerprint": "sha256:b1e7d34998de764a168cdb3d20fa1deeb813614fc85ed3600b51feca7dc10d6a",
+        "sourceSpan": {
+          "startLine": 2248,
+          "endLine": 2253
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-221-sera-reprimido-con-prision-de-seis-368",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 368,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 221. - Será reprimido con prisión de seis meses a dos años, el que violare las inmunidades del jefe de un Estado o del represent..."
+        ],
+        "officialLabel": "ARTICULO 221. - Será reprimido con prisión de seis meses a dos años, el que violare las inmunidades del jefe de un Estado o del represent...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 221. - Será reprimido con prisión de seis meses a dos años, el que violare las inmunidades del jefe de un Estado o del representante de una potencia extranjera.\n",
+        "fullTranslationRu": "СТАТЬЯ 221. Лишением свободы на срок от шести месяцев до двух лет наказывается тот, кто нарушает иммунитеты главы государства или представителя иностранной державы.",
+        "simpleRu": "Статья 221 защищает иммунитеты главы другого государства или иностранного представителя. За нарушение - 6 месяцев-2 года.",
+        "sourceTextSha256": "7f98d5c52279f46034fadb58713d8bca07fb03e5a36d8d4401dc0c802db1e8f3",
+        "sourceFingerprint": "sha256:7f98d5c52279f46034fadb58713d8bca07fb03e5a36d8d4401dc0c802db1e8f3",
+        "sourceSpan": {
+          "startLine": 2254,
+          "endLine": 2255
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-222-sera-reprimido-con-reclusion-o-prision-369",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 369,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 222. - Será reprimido con reclusión o prisión de uno (1) a seis (6) años, el que revelare secretos políticos, industriales, tecn..."
+        ],
+        "officialLabel": "ARTICULO 222. - Será reprimido con reclusión o prisión de uno (1) a seis (6) años, el que revelare secretos políticos, industriales, tecn...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 222. - Será reprimido con reclusión o prisión de uno (1) a seis (6) años, el que revelare secretos políticos, industriales, tecnológicos o militares concernientes a la seguridad, a los medios de defensa o a las relaciones exteriores de la Nación. (Párrafo sustituido por art. 8° del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n\nEn la misma pena incurrirá el que obtuviere la revelación del secreto. Será reprimido con prisión de uno a cuatro años el que públicamente ultrajare la bandera, el escudo o el himno de la Nación o los emblemas de una provincia argentina.\n\nSi la revelación u obtención fuese cometida por un militar, en el ejercicio de sus funciones el mínimo de la pena se elevará a tres (3) años y el máximo de la pena se elevará a diez (10) años. (Párrafo incorporado por art. 9° del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 222. Каторжным заключением или лишением свободы на срок от одного (1) до шести (6) лет наказывается тот, кто раскрывает политические, промышленные, технологические или военные секреты, касающиеся безопасности, средств обороны или внешних отношений Нации. Такое же наказание несет тот, кто добивается раскрытия тайны. Лишением свободы от одного до четырех лет наказывается тот, кто публично оскорбляет флаг, герб или гимн Нации либо эмблемы аргентинской провинции. Если раскрытие или получение тайны совершено военнослужащим при исполнении функций, минимум наказания повышается до трех (3) лет, а максимум - до десяти (10) лет. Указанные изменения внесены Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 222 наказывает раскрытие или получение государственных секретов о безопасности, обороне или внешних отношениях: 1-6 лет, а для военного при службе 3-10 лет. Также 1-4 года дают за публичное оскорбление флага, герба, гимна Аргентины или эмблем провинции.",
+        "sourceTextSha256": "2c3891a3424532cc92cf9ad43cdd8b087adc1536350a2aff09d39d70a89b6ea7",
+        "sourceFingerprint": "sha256:2c3891a3424532cc92cf9ad43cdd8b087adc1536350a2aff09d39d70a89b6ea7",
+        "sourceSpan": {
+          "startLine": 2256,
+          "endLine": 2261
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-223-sera-reprimido-con-prision-de-un-370",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 370,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 223. - Será reprimido con prisión de un mes a un año e inhabilitación especial por doble tiempo, el que por imprudencia o neglig..."
+        ],
+        "officialLabel": "ARTICULO 223. - Será reprimido con prisión de un mes a un año e inhabilitación especial por doble tiempo, el que por imprudencia o neglig...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 223. - Será reprimido con prisión de un mes a un año e inhabilitación especial por doble tiempo, el que por imprudencia o negligencia diere a conocer los secretos mencionados en el artículo precedente, de los que se hallare en posesión en virtud de su empleo u oficio.\n",
+        "fullTranslationRu": "СТАТЬЯ 223. Лишением свободы на срок от одного месяца до одного года и специальным лишением прав на двойной срок наказывается тот, кто по неосторожности или небрежности раскрывает тайны, указанные в предыдущей статье, если владел ими по своей работе или профессии.",
+        "simpleRu": "Статья 223 касается случайного или небрежного раскрытия секретов из статьи 222 человеком, который знал их из-за работы. Наказание - 1 месяц-1 год и специальный запрет на двойной срок.",
+        "sourceTextSha256": "70ce39927895e73422080d9dd9af9fab931ea85aa970dd7c162edb86247aaee3",
+        "sourceFingerprint": "sha256:70ce39927895e73422080d9dd9af9fab931ea85aa970dd7c162edb86247aaee3",
+        "sourceSpan": {
+          "startLine": 2262,
+          "endLine": 2263
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-224-sera-reprimido-con-prision-de-seis-371",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 371,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 224. - Será reprimido con prisión de seis meses a dos años, el que indebidamente levantare planos de fortificaciones, buques, es..."
+        ],
+        "officialLabel": "ARTICULO 224. - Será reprimido con prisión de seis meses a dos años, el que indebidamente levantare planos de fortificaciones, buques, es...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 224. - Será reprimido con prisión de seis meses a dos años, el que indebidamente levantare planos de fortificaciones, buques, establecimientos, vías u otras obras militares o se introdujere con tal fin, clandestina o engañosamente en dichos lugares, cuando su acceso estuviere prohibido al público.\n",
+        "fullTranslationRu": "СТАТЬЯ 224. Лишением свободы на срок от шести месяцев до двух лет наказывается тот, кто неправомерно составляет планы укреплений, кораблей, объектов, путей или других военных сооружений либо тайно или обманом проникает туда с такой целью, когда доступ публике запрещен.",
+        "simpleRu": "Статья 224 запрещает незаконно делать планы военных объектов или тайно проникать туда ради этого, если доступ закрыт. Наказание - 6 месяцев-2 года.",
+        "sourceTextSha256": "393f28791f461509a1f7ef3fd93480fbe1256369f4ed9227b2645ec930e27ee7",
+        "sourceFingerprint": "sha256:393f28791f461509a1f7ef3fd93480fbe1256369f4ed9227b2645ec930e27ee7",
+        "sourceSpan": {
+          "startLine": 2264,
+          "endLine": 2265
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-225-sera-reprimido-con-reclusion-o-prision-372",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 372,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 225. - Será reprimido con reclusión o prisión de tres a diez años, el que, encargado por el gobierno argentino de una negociació..."
+        ],
+        "officialLabel": "ARTICULO 225. - Será reprimido con reclusión o prisión de tres a diez años, el que, encargado por el gobierno argentino de una negociació...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 225. - Será reprimido con reclusión o prisión de tres a diez años, el que, encargado por el gobierno argentino de una negociación con un estado extranjero, la condujere de un modo perjudicial a la Nación, apartándose de sus instrucciones.\n\nDELITOS CONTRA LOS PODERES PUBLICOS Y EL ORDEN CONSTITUCIONAL\n",
+        "fullTranslationRu": "СТАТЬЯ 225. Каторжным заключением или лишением свободы на срок от трех до десяти лет наказывается тот, кто, будучи уполномочен аргентинским правительством вести переговоры с иностранным государством, ведет их вредным для Нации образом, отступая от своих инструкций.\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ПУБЛИЧНЫХ ВЛАСТЕЙ И КОНСТИТУЦИОННОГО ПОРЯДКА",
+        "simpleRu": "Статья 225 наказывает представителя Аргентины, который ведет переговоры с иностранным государством против интересов страны и не по инструкциям. Наказание - 3-10 лет. После статьи начинается блок о преступлениях против публичных властей и конституционного порядка.",
+        "sourceTextSha256": "cd50b32ce0d0007afe6898f94e1c59d725fd0d28c5b09042e2430386e6600238",
+        "sourceFingerprint": "sha256:cd50b32ce0d0007afe6898f94e1c59d725fd0d28c5b09042e2430386e6600238",
+        "sourceSpan": {
+          "startLine": 2266,
+          "endLine": 2269
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-373",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 373,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nAtentados al orden constitucional y a la vida democrática\n",
+        "fullTranslationRu": "ГЛАВА I\n\nПосягательства на конституционный порядок и демократическую жизнь",
+        "simpleRu": "Начинается глава I о посягательствах на Конституцию и демократическую жизнь.",
+        "sourceTextSha256": "c2af925d092a2f328f7529aa50e0abda5f67477a636575607c14a51aab69bd4e",
+        "sourceFingerprint": "sha256:c2af925d092a2f328f7529aa50e0abda5f67477a636575607c14a51aab69bd4e",
+        "sourceSpan": {
+          "startLine": 2270,
+          "endLine": 2273
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-226-seran-reprimidos-con-prision-de-cinco-374",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 374,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 226. - Serán reprimidos con prisión de cinco a quince años los que se alzaren en armas para cambiar la Constitución, deponer alg..."
+        ],
+        "officialLabel": "ARTICULO 226. - Serán reprimidos con prisión de cinco a quince años los que se alzaren en armas para cambiar la Constitución, deponer alg...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 226. - Serán reprimidos con prisión de cinco a quince años los que se alzaren en armas para cambiar la Constitución, deponer alguno de los poderes públicos del gobierno nacional, arrancarle alguna medida o concesión o impedir, aunque sea temporariamente, el libre ejercicio de sus facultades constitucionales o su formación o renovación en los términos y formas legales. Si el hecho descripto en el párrafo anterior fuese perpetrado con el fin de cambiar de modo permanente el sistema democrático de gobierno, suprimir la organización federal, eliminar la división de poderes, abrogar los derechos fundamentales de la persona humana o suprimir o menoscabar, aunque sea temporariamente, la independencia económica de la Nación, la pena será de ocho a veinticinco años de prisión. Cuando el hecho fuere perpetrado por personas que tuvieren estado, empleo o asimilación militar, el mínimo de las penas se incrementará en un tercio.\n",
+        "fullTranslationRu": "СТАТЬЯ 226. Лишением свободы на срок от пяти до пятнадцати лет наказываются те, кто поднимает оружие, чтобы изменить Конституцию, свергнуть какую-либо публичную власть национального правительства, вырвать у нее меру или уступку либо воспрепятствовать, даже временно, свободному осуществлению ее конституционных полномочий или ее формированию либо обновлению в установленных законом сроках и формах. Если деяние совершено с целью навсегда изменить демократическую систему правления, уничтожить федеральную организацию, устранить разделение властей, отменить основные права человека или подавить либо уменьшить, даже временно, экономическую независимость Нации, наказание составляет от восьми до двадцати пяти лет лишения свободы. Когда деяние совершено лицами, имеющими военный статус, службу или приравненное положение, минимум наказания увеличивается на одну треть.",
+        "simpleRu": "Статья 226 наказывает вооруженное восстание против Конституции или властей. Обычно наказание 5-15 лет. Если цель - надолго уничтожить демократию, федерализм, разделение властей, основные права или экономическую независимость страны, наказание 8-25 лет. Для людей с военным статусом минимум увеличивают на треть.",
+        "sourceTextSha256": "8e5eca42114d0657c4734c08e084b1d0139866c9716b85ae5c8faa44fea5d17e",
+        "sourceFingerprint": "sha256:8e5eca42114d0657c4734c08e084b1d0139866c9716b85ae5c8faa44fea5d17e",
+        "sourceSpan": {
+          "startLine": 2274,
+          "endLine": 2275
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-226-bis-el-que-amenazare-publica-e-375",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 375,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 226 bis. - El que amenazare pública e idóneamente con la comisión de alguna de las conductas previstas en el artículo 226, será ..."
+        ],
+        "officialLabel": "ARTICULO 226 bis. - El que amenazare pública e idóneamente con la comisión de alguna de las conductas previstas en el artículo 226, será ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 226 bis. - El que amenazare pública e idóneamente con la comisión de alguna de las conductas previstas en el artículo 226, será reprimido con prisión de uno a cuatro años.\n",
+        "fullTranslationRu": "СТАТЬЯ 226 bis. Тот, кто публично и пригодным способом угрожает совершить какое-либо из деяний, предусмотренных статьей 226, наказывается лишением свободы на срок от одного до четырех лет.",
+        "simpleRu": "Статья 226 bis: публичная серьезная угроза сделать действия из статьи 226 наказывается 1-4 годами.",
+        "sourceTextSha256": "bf2ab3924fb6c296eca6259e084785b57ecef95025a68c7b8b4a2320d6953371",
+        "sourceFingerprint": "sha256:bf2ab3924fb6c296eca6259e084785b57ecef95025a68c7b8b4a2320d6953371",
+        "sourceSpan": {
+          "startLine": 2276,
+          "endLine": 2277
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-227-seran-reprimidos-con-las-penas-establecidas-376",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 376,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 227. - Serán reprimidos con las penas establecidas en el artículo 215 para los traidores a la patria, los miembros del Congreso ..."
+        ],
+        "officialLabel": "ARTICULO 227. - Serán reprimidos con las penas establecidas en el artículo 215 para los traidores a la patria, los miembros del Congreso ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 227. - Serán reprimidos con las penas establecidas en el artículo 215 para los traidores a la patria, los miembros del Congreso que concedieren al Poder Ejecutivo Nacional y los miembros de las legislaturas provinciales que concedieren a los Gobernadores de provincia, facultades extraordinarias, la suma del poder público o sumisiones o supremacías, por las que la vida, el honor o la fortuna de los argentinos queden a merced de algún gobierno o de alguna persona (artículo 29 de la Constitución Nacional).\n",
+        "fullTranslationRu": "СТАТЬЯ 227. Наказаниями, установленными статьей 215 для изменников родине, наказываются члены Конгресса, предоставившие Национальной исполнительной власти, и члены провинциальных законодательных органов, предоставившие губернаторам провинций чрезвычайные полномочия, всю полноту публичной власти либо подчинения или превосходства, из-за которых жизнь, честь или имущество аргентинцев оказываются во власти какого-либо правительства или лица (статья 29 Национальной конституции).",
+        "simpleRu": "Статья 227 наказывает законодателей, которые передают исполнительной власти или губернаторам всю власть или чрезвычайные полномочия так, что жизнь, честь или имущество людей зависят от одного правительства или человека. Наказание такое же, как для изменников по статье 215.",
+        "sourceTextSha256": "af5582826950ca8190841d4179904be86321dea934871c158e56475687e1f460",
+        "sourceFingerprint": "sha256:af5582826950ca8190841d4179904be86321dea934871c158e56475687e1f460",
+        "sourceSpan": {
+          "startLine": 2278,
+          "endLine": 2279
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-227-bis-seran-reprimidos-con-las-penas-377",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 377,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 227 bis. - Serán reprimidos con las penas establecidas en el artículo 215 para los traidores a la patria, con la disminución del..."
+        ],
+        "officialLabel": "ARTICULO 227 bis. - Serán reprimidos con las penas establecidas en el artículo 215 para los traidores a la patria, con la disminución del...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 227 bis. - Serán reprimidos con las penas establecidas en el artículo 215 para los traidores a la patria, con la disminución del artículo 46, los miembros de alguno de los tres poderes del Estado nacional o de las provincias que consintieran la consumación de los hechos descriptos en el artículo 226, continuando en sus funciones o asumiéndolas luego de modificada por la fuerza la Constitución o depuesto alguno de los poderes públicos, o haciendo cumplir las medidas dispuestas por quienes usurpen tales poderes. Se aplicará de uno a ocho años de prisión o reclusión e inhabilitación absoluta por el doble de la condena, a quienes, en los casos previstos en el párrafo anterior, aceptaren colaborar continuando en funciones o asumiéndolas, con las autoridades de facto, en algunos de los siguientes cargos: ministros, secretarios de Estado, subsecretarios, directores generales o nacionales o de jerarquía equivalente en el orden nacional, provincial o municipal, presidente, vicepresidente, vocales o miembros de directorios de organismos descentralizados o autárquicos o de bancos oficiales o de empresas del Estado; sociedades del Estado, sociedades de economía mixta, o de sociedades anónimas con participación estatal mayoritaria, o de entes públicos equivalentes a los enumerados en el orden nacional, provincial o municipal, embajadores, rectores o decanos de universidades nacionales o provinciales, miembros de las fuerzas armadas o de policía o de organismos de seguridad en grados de jefes o equivalentes, intendentes municipales, o miembros del ministerio público fiscal de cualquier jerarquía o fuero, personal jerárquico del Parlamento Nacional y de las legislaturas provinciales. Si las autoridades de facto crearen diferentes jerarquías administrativas o cambiaren las denominaciones de las funciones señaladas en el párrafo anterior, la pena se aplicará a quienes las desempeñen, atendiendo a la análoga naturaleza y contenido de los cargos con relación a los actuales.\n",
+        "fullTranslationRu": "СТАТЬЯ 227 bis. Наказаниями из статьи 215 для изменников родине, с уменьшением по статье 46, наказываются члены любого из трех властных органов национального государства или провинций, которые соглашаются на доведение до конца деяний из статьи 226, продолжая исполнять функции или принимая их после насильственного изменения Конституции или свержения какой-либо публичной власти, либо исполняя меры, принятые узурпаторами этих властей. Лишение свободы или каторжное заключение от одного до восьми лет и абсолютное лишение прав на двойной срок назначается тем, кто в таких случаях соглашается сотрудничать с фактическими властями, продолжая или принимая функции в перечисленных должностях: министры, государственные секретари, заместители секретарей, генеральные или национальные директора или равные им должности национального, провинциального или муниципального уровня; руководители и члены правлений децентрализованных или автономных органов, официальных банков, государственных предприятий, государственных обществ, обществ смешанной экономики, акционерных обществ с большинством государственного участия или равных публичных образований; послы, ректоры или деканы национальных или провинциальных университетов; руководящие чины вооруженных сил, полиции или органов безопасности; муниципальные intendentes; члены прокуратуры любого уровня или юрисдикции; руководящий персонал Национального парламента и провинциальных законодательных органов. Если фактические власти создают другие административные иерархии или меняют названия функций, наказание применяется к тем, кто их выполняет, с учетом аналогичной природы и содержания должностей.",
+        "simpleRu": "Статья 227 bis наказывает чиновников и должностных лиц, которые соглашаются работать с властью, захватившей государственные полномочия силой, или исполняют ее меры. Для членов трех ветвей власти наказание связывается со статьей 215 с уменьшением по статье 46. Для большого списка руководящих должностей наказание 1-8 лет и абсолютный запрет занимать должности на двойной срок. Смена названий должностей не помогает избежать наказания.",
+        "sourceTextSha256": "45a59b299719c885d7fb5dc113817dd479c47e7ea598184c9690b00b7698a75e",
+        "sourceFingerprint": "sha256:45a59b299719c885d7fb5dc113817dd479c47e7ea598184c9690b00b7698a75e",
+        "sourceSpan": {
+          "startLine": 2280,
+          "endLine": 2281
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-227-ter-el-maximo-de-la-pena-378",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 378,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 227 ter. - El máximo de la pena establecida para cualquier delito será aumentado en un medio, cuando la acción contribuya a pone..."
+        ],
+        "officialLabel": "ARTICULO 227 ter. - El máximo de la pena establecida para cualquier delito será aumentado en un medio, cuando la acción contribuya a pone...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 227 ter. - El máximo de la pena establecida para cualquier delito será aumentado en un medio, cuando la acción contribuya a poner en peligro la vigencia de la Constitución Nacional. Esta disposición no será aplicable cuando las circunstancias mencionadas en ella se encuentren contempladas como elemento constitutivo o calificante del delito de que se trate.\n",
+        "fullTranslationRu": "СТАТЬЯ 227 ter. Максимум наказания, установленного для любого преступления, увеличивается наполовину, когда действие способствует созданию опасности для действия Национальной конституции. Это правило не применяется, если такие обстоятельства уже входят как составной или квалифицирующий элемент соответствующего преступления.",
+        "simpleRu": "Статья 227 ter повышает максимум наказания на половину, если действие ставит под угрозу действие Конституции. Но это не применяют, если такая угроза уже входит в сам состав или отягчающий признак преступления.",
+        "sourceTextSha256": "9caeda4e69be16582e503f7a8ede27605de7c76315a15d093718b8606e73c397",
+        "sourceFingerprint": "sha256:9caeda4e69be16582e503f7a8ede27605de7c76315a15d093718b8606e73c397",
+        "sourceSpan": {
+          "startLine": 2282,
+          "endLine": 2283
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-228-se-impondra-prision-de-seis-meses-379",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 379,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo I",
+          "ARTICULO 228. - Se impondrá prisión de seis meses a dos años al que ejecutare o mandare ejecutar decretos de los concilios, bulas, breves..."
+        ],
+        "officialLabel": "ARTICULO 228. - Se impondrá prisión de seis meses a dos años al que ejecutare o mandare ejecutar decretos de los concilios, bulas, breves...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 228. - Se impondrá prisión de seis meses a dos años al que ejecutare o mandare ejecutar decretos de los concilios, bulas, breves y rescriptos del Papa que, para su cumplimiento, necesiten del pase del gobierno, sin haberlo obtenido; y de uno a seis años de la misma pena, al que los ejecutare o mandare ejecutar, a pesar de haber sido denegado dicho pase.\n",
+        "fullTranslationRu": "СТАТЬЯ 228. Лишение свободы от шести месяцев до двух лет назначается тому, кто исполняет или велит исполнить постановления соборов, буллы, бреве и рескрипты Папы, которые для исполнения требуют разрешения правительства, не получив его; и от одного до шести лет того же наказания - тому, кто исполняет или велит исполнить их несмотря на отказ в таком разрешении.",
+        "simpleRu": "Статья 228 касается папских актов, которым нужно разрешение правительства для исполнения. Без разрешения наказание 6 месяцев-2 года; если разрешение было отказано, но акт все равно исполнили, 1-6 лет.",
+        "sourceTextSha256": "905ee234eeefcb8f1d7522870b132ee1c6f52e1131a6cfeeb18964498439efdd",
+        "sourceFingerprint": "sha256:905ee234eeefcb8f1d7522870b132ee1c6f52e1131a6cfeeb18964498439efdd",
+        "sourceSpan": {
+          "startLine": 2284,
+          "endLine": 2285
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-380",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 380,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nSedición\n",
+        "fullTranslationRu": "ГЛАВА II\n\nМятеж",
+        "simpleRu": "Начинается глава II о мятеже.",
+        "sourceTextSha256": "f117b9a5a6450737bddebef22b17e5741fda3a7d6065e9c3bb81afd1eda5fed9",
+        "sourceFingerprint": "sha256:f117b9a5a6450737bddebef22b17e5741fda3a7d6065e9c3bb81afd1eda5fed9",
+        "sourceSpan": {
+          "startLine": 2286,
+          "endLine": 2289
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-229-seran-reprimidos-con-prision-de-uno-381",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 381,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 229. - Serán reprimidos con prisión de uno a seis años, los que, sin rebelarse contra el gobierno nacional, armaren una provinci..."
+        ],
+        "officialLabel": "ARTICULO 229. - Serán reprimidos con prisión de uno a seis años, los que, sin rebelarse contra el gobierno nacional, armaren una provinci...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 229. - Serán reprimidos con prisión de uno a seis años, los que, sin rebelarse contra el gobierno nacional, armaren una provincia contra otra, se alzaren en armas para cambiar la Constitución local, deponer alguno de los poderes públicos de una provincia o territorio federal, arrancarle alguna medida o concesión o impedir, aunque sea temporalmente, el libre ejercicio de sus facultades legales o su formación o renovación en los términos y formas establecidas en la ley.\n",
+        "fullTranslationRu": "СТАТЬЯ 229. Лишением свободы на срок от одного до шести лет наказываются те, кто, не восставая против национального правительства, вооружает одну провинцию против другой, поднимает оружие, чтобы изменить местную Конституцию, свергнуть какую-либо публичную власть провинции или федеральной территории, вырвать у нее меру или уступку либо воспрепятствовать, даже временно, свободному осуществлению ее законных полномочий или ее формированию либо обновлению в сроках и формах, установленных законом.",
+        "simpleRu": "Статья 229 наказывает вооруженные действия на уровне провинции или территории: вооружить одну провинцию против другой, менять местную Конституцию силой, свергать власть или мешать ей работать. Наказание - 1-6 лет.",
+        "sourceTextSha256": "aabc8c1904fdc388437fa0af1a5ec3ca0c81ca61272eafc8238cf4a6b8e3d2f5",
+        "sourceFingerprint": "sha256:aabc8c1904fdc388437fa0af1a5ec3ca0c81ca61272eafc8238cf4a6b8e3d2f5",
+        "sourceSpan": {
+          "startLine": 2290,
+          "endLine": 2291
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-230-seran-reprimidos-con-prision-de-uno-382",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 382,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo II",
+          "ARTICULO 230. - Serán reprimidos con prisión de uno a cuatro años:"
+        ],
+        "officialLabel": "ARTICULO 230. - Serán reprimidos con prisión de uno a cuatro años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 230. - Serán reprimidos con prisión de uno a cuatro años:\n\n1. Los individuos de una fuerza armada o reunión de personas, que se atribuyeren los derechos del pueblo y peticionaren a nombre de éste (art. 22 de la Constitución Nacional);\n\n2. Los que se alzaren públicamente para impedir la ejecución de las leyes nacionales o provinciales o de las resoluciones de los funcionarios públicos nacionales o provinciales, cuando el hecho no constituya delito más severamente penado por este código.\n",
+        "fullTranslationRu": "СТАТЬЯ 230. Лишением свободы на срок от одного до четырех лет наказываются: 1) лица из вооруженной силы или собрания людей, которые присваивают себе права народа и подают прошения от его имени (статья 22 Национальной конституции); 2) те, кто публично восстает, чтобы помешать исполнению национальных или провинциальных законов либо решений национальных или провинциальных публичных должностных лиц, если деяние не является преступлением, наказываемым этим Кодексом строже.",
+        "simpleRu": "Статья 230 дает 1-4 года за две ситуации: группа или вооруженная сила говорит от имени народа, как будто имеет его права; либо люди публично поднимаются, чтобы мешать исполнению законов или решений чиновников. Если другое преступление наказывается строже, применяют его.",
+        "sourceTextSha256": "1ed06693f547f5aa43b16071d9ff649f4e089cefc46539a78982735b6ee93503",
+        "sourceFingerprint": "sha256:1ed06693f547f5aa43b16071d9ff649f4e089cefc46539a78982735b6ee93503",
+        "sourceSpan": {
+          "startLine": 2292,
+          "endLine": 2297
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iii-383",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 383,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo III"
+        ],
+        "officialLabel": "Capítulo III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo III\n\nDisposiciones comunes a los Capítulos precedentes\n",
+        "fullTranslationRu": "ГЛАВА III\n\nОбщие положения к предыдущим главам",
+        "simpleRu": "Начинается глава III с общими правилами для предыдущих глав.",
+        "sourceTextSha256": "7814d9f7a011adf29b00570e7b2efecf7b4cbef895890990bf5647e81703d34d",
+        "sourceFingerprint": "sha256:7814d9f7a011adf29b00570e7b2efecf7b4cbef895890990bf5647e81703d34d",
+        "sourceSpan": {
+          "startLine": 2298,
+          "endLine": 2301
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-231-luego-que-se-manifieste-la-rebelion-384",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 384,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo III",
+          "ARTICULO 231. - Luego que se manifieste la rebelión o sedición, la autoridad nacional más próxima intimará hasta dos veces a los sublevad..."
+        ],
+        "officialLabel": "ARTICULO 231. - Luego que se manifieste la rebelión o sedición, la autoridad nacional más próxima intimará hasta dos veces a los sublevad...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 231. - Luego que se manifieste la rebelión o sedición, la autoridad nacional más próxima intimará hasta dos veces a los sublevados que inmediatamente se disuelvan o retiren, dejando pasar entre una y otra intimación el tiempo necesario para ello. Si los sublevados no se retiraren inmediatamente después de la segunda intimación, la autoridad hará uso de la fuerza para disolverlos. No serán necesarias, respectivamente, la primera y segunda intimación, desde que los sublevados hicieren uso de las armas.\n",
+        "fullTranslationRu": "СТАТЬЯ 231. После проявления восстания или мятежа ближайшая национальная власть до двух раз предписывает восставшим немедленно разойтись или удалиться, оставляя между первым и вторым предписанием время, необходимое для этого. Если восставшие не удаляются сразу после второго предписания, власть применяет силу для их разгона. Соответственно первое и второе предписания не требуются с момента, когда восставшие применяют оружие.",
+        "simpleRu": "Статья 231 говорит, что власть обычно должна до двух раз приказать восставшим разойтись и дать время между приказами. Если после второго приказа они не уходят, можно применять силу. Если они уже используют оружие, эти предупреждения не нужны.",
+        "sourceTextSha256": "21212a2e3a75e29e32c3655fa3ca80246dc373ea46eca023f11dc0018b821e9e",
+        "sourceFingerprint": "sha256:21212a2e3a75e29e32c3655fa3ca80246dc373ea46eca023f11dc0018b821e9e",
+        "sourceSpan": {
+          "startLine": 2302,
+          "endLine": 2303
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-232-en-caso-de-disolverse-el-tumulto-385",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 385,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo III",
+          "ARTICULO 232. - En caso de disolverse el tumulto sin haber causado otro mal que la perturbación momentánea del orden, sólo serán enjuicia..."
+        ],
+        "officialLabel": "ARTICULO 232. - En caso de disolverse el tumulto sin haber causado otro mal que la perturbación momentánea del orden, sólo serán enjuicia...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 232. - En caso de disolverse el tumulto sin haber causado otro mal que la perturbación momentánea del orden, sólo serán enjuiciados los promotores o directores, a quienes se reprimirá con la mitad de la pena señalada para el delito.\n",
+        "fullTranslationRu": "СТАТЬЯ 232. Если толпа распалась, не причинив другого вреда, кроме кратковременного нарушения порядка, судят только подстрекателей или руководителей; им назначается половина наказания, указанного для преступления.",
+        "simpleRu": "Статья 232: если беспорядочная толпа разошлась и вред был только временным нарушением порядка, судят только организаторов или руководителей. Им дают половину обычного наказания.",
+        "sourceTextSha256": "776cb8bb23cc234a473bb246d5f6896282b1975361e8c9719b17adc45a56c12d",
+        "sourceFingerprint": "sha256:776cb8bb23cc234a473bb246d5f6896282b1975361e8c9719b17adc45a56c12d",
+        "sourceSpan": {
+          "startLine": 2304,
+          "endLine": 2305
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-233-el-que-tomare-parte-como-promotor-386",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 386,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo III",
+          "ARTICULO 233. - El que tomare parte como promotor o director, en una conspiración de dos o más personas para cometer los delitos de rebel..."
+        ],
+        "officialLabel": "ARTICULO 233. - El que tomare parte como promotor o director, en una conspiración de dos o más personas para cometer los delitos de rebel...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 233. - El que tomare parte como promotor o director, en una conspiración de dos o más personas para cometer los delitos de rebelión o sedición, será reprimido, si la conspiración fuere descubierta antes de ponerse en ejecución, con la cuarta parte de la pena correspondiente al delito que se trataba de perpetrar.\n",
+        "fullTranslationRu": "СТАТЬЯ 233. Тот, кто участвует как подстрекатель или руководитель в заговоре двух или более лиц для совершения преступлений восстания или мятежа, наказывается, если заговор обнаружен до начала исполнения, четвертой частью наказания, соответствующего преступлению, которое пытались совершить.",
+        "simpleRu": "Статья 233 наказывает руководителя или организатора заговора для восстания или мятежа, если его раскрыли до начала действий. Наказание - четверть от наказания за задуманное преступление.",
+        "sourceTextSha256": "1309c64368b336776c0623b0a6fd3ec940227e274e34f5232791e97203c1d4a3",
+        "sourceFingerprint": "sha256:1309c64368b336776c0623b0a6fd3ec940227e274e34f5232791e97203c1d4a3",
+        "sourceSpan": {
+          "startLine": 2306,
+          "endLine": 2307
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-234-el-que-sedujere-tropas-o-usurpare-387",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 387,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo III",
+          "ARTICULO 234. - El que sedujere tropas o usurpare el mando de ellas, de un buque de guerra, de una plaza fuerte o de un puesto de guardia..."
+        ],
+        "officialLabel": "ARTICULO 234. - El que sedujere tropas o usurpare el mando de ellas, de un buque de guerra, de una plaza fuerte o de un puesto de guardia...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 234. - El que sedujere tropas o usurpare el mando de ellas, de un buque de guerra, de una plaza fuerte o de un puesto de guardia o retuviere ilegalmente un mando político o militar para cometer una rebelión o una sedición, será reprimido con la mitad de la pena correspondiente al delito que trataba de perpetrar. Si llegare a tener efecto la rebelión o la sedición, la pena será la establecida para los autores de la rebelión o de la sedición en los casos respectivos.\n",
+        "fullTranslationRu": "СТАТЬЯ 234. Тот, кто склоняет войска или узурпирует командование ими, военным кораблем, крепостью или караульным постом либо незаконно удерживает политическое или военное командование для совершения восстания или мятежа, наказывается половиной наказания за преступление, которое пытался совершить. Если восстание или мятеж действительно произошли, применяется наказание, установленное для их исполнителей в соответствующих случаях.",
+        "simpleRu": "Статья 234 касается захвата или удержания военного либо политического командования для восстания или мятежа. Если дело не дошло до самого восстания, наказание половинное. Если дошло, наказывают как исполнителей восстания или мятежа.",
+        "sourceTextSha256": "188981e292f510c4c444e79183626fbfd6ffd4434ccc82486088d63c7b339ef5",
+        "sourceFingerprint": "sha256:188981e292f510c4c444e79183626fbfd6ffd4434ccc82486088d63c7b339ef5",
+        "sourceSpan": {
+          "startLine": 2308,
+          "endLine": 2309
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-235-los-funcionarios-publicos-que-hubieren-promovido-388",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 388,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo III",
+          "ARTICULO 235. - Los funcionarios públicos que hubieren promovido o ejecutado alguno de los delitos previstos en este Título, sufrirán ade..."
+        ],
+        "officialLabel": "ARTICULO 235. - Los funcionarios públicos que hubieren promovido o ejecutado alguno de los delitos previstos en este Título, sufrirán ade...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 235. - Los funcionarios públicos que hubieren promovido o ejecutado alguno de los delitos previstos en este Título, sufrirán además inhabilitación especial por un tiempo doble del de la condena.- Los funcionarios que no hubieren resistido una rebelión o sedición por todos los medios a su alcance, sufrirán inhabilitación especial de uno a seis años.- Auméntase al doble el máximo de la pena establecida para los delitos previstos en este Título, para los jefes y agentes de la fuerza pública que incurran en ellos usando u ostentando las armas y demás materiales ofensivos que se les hayan confiado en tal calidad.\n",
+        "fullTranslationRu": "СТАТЬЯ 235. Публичные должностные лица, которые продвигали или совершали какое-либо преступление из этого Раздела, дополнительно несут специальное лишение прав на срок, вдвое превышающий срок приговора. Должностные лица, которые не сопротивлялись восстанию или мятежу всеми доступными средствами, несут специальное лишение прав от одного до шести лет. Максимум наказания за преступления этого Раздела удваивается для начальников и сотрудников публичной силы, которые совершают их, используя или демонстрируя оружие и другие наступательные средства, доверенные им в этом качестве.",
+        "simpleRu": "Статья 235 усиливает ответственность чиновников. Если они участвовали в преступлениях этого раздела, добавляют запрет на должности на двойной срок. Если не сопротивлялись восстанию или мятежу всеми возможными средствами, запрет 1-6 лет. Для начальников и сотрудников силовых органов максимум удваивается, если они использовали доверенное им оружие или средства.",
+        "sourceTextSha256": "be880e7fecd7248285191bbbecd36bf207d4471aeb88e4e5d8c67e21af2fefa5",
+        "sourceFingerprint": "sha256:be880e7fecd7248285191bbbecd36bf207d4471aeb88e4e5d8c67e21af2fefa5",
+        "sourceSpan": {
+          "startLine": 2310,
+          "endLine": 2311
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-236-cuando-al-ejecutar-los-delitos-previstos-389",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 389,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX",
+          "Capítulo III",
+          "ARTICULO 236. - Cuando al ejecutar los delitos previstos en este Título, el culpable cometiere algún otro, se observarán las reglas estab..."
+        ],
+        "officialLabel": "ARTICULO 236. - Cuando al ejecutar los delitos previstos en este Título, el culpable cometiere algún otro, se observarán las reglas estab...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 236. - Cuando al ejecutar los delitos previstos en este Título, el culpable cometiere algún otro, se observarán las reglas establecidas para el concurso de hechos punibles.\n",
+        "fullTranslationRu": "СТАТЬЯ 236. Когда при исполнении преступлений, предусмотренных этим Разделом, виновный совершает еще какое-либо преступление, применяются правила о совокупности наказуемых деяний.",
+        "simpleRu": "Статья 236: если во время преступлений этого раздела человек совершил еще другое преступление, применяют правила о совокупности преступлений.",
+        "sourceTextSha256": "eb73f031865bc9744f220203c5014f5598072421ec24011e23ad8b1ac0b94275",
+        "sourceFingerprint": "sha256:eb73f031865bc9744f220203c5014f5598072421ec24011e23ad8b1ac0b94275",
+        "sourceSpan": {
+          "startLine": 2312,
+          "endLine": 2313
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xi-390",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 390,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI"
+        ],
+        "officialLabel": "TITULO XI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XI\n\nDELITOS CONTRA LA ADMINISTRACION PUBLICA\n",
+        "fullTranslationRu": "РАЗДЕЛ XI\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ПУБЛИЧНОЙ АДМИНИСТРАЦИИ",
+        "simpleRu": "Начинается раздел XI о преступлениях против государственной администрации.",
+        "sourceTextSha256": "ac51051831c594225d81b77e4a75af83cb5409a4015a2b4c9127958df33c12d8",
+        "sourceFingerprint": "sha256:ac51051831c594225d81b77e4a75af83cb5409a4015a2b4c9127958df33c12d8",
+        "sourceSpan": {
+          "startLine": 2314,
+          "endLine": 2317
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-391",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 391,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nAtentado y resistencia contra la autoridad\n",
+        "fullTranslationRu": "ГЛАВА I\n\nПосягательство и сопротивление власти",
+        "simpleRu": "Начинается глава I о нападении на власть и сопротивлении ей.",
+        "sourceTextSha256": "936b749bef8277a83e43c3ec51b7772c18097ea32b039d7fbd97e90cb8392e58",
+        "sourceFingerprint": "sha256:936b749bef8277a83e43c3ec51b7772c18097ea32b039d7fbd97e90cb8392e58",
+        "sourceSpan": {
+          "startLine": 2318,
+          "endLine": 2321
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-237-sera-reprimido-con-prision-de-un-392",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 392,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 237. - Será reprimido con prisión de un mes a un año, el que empleare intimidación o fuerza contra un funcionario público o cont..."
+        ],
+        "officialLabel": "ARTICULO 237. - Será reprimido con prisión de un mes a un año, el que empleare intimidación o fuerza contra un funcionario público o cont...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 237. - Será reprimido con prisión de un mes a un año, el que empleare intimidación o fuerza contra un funcionario público o contra la persona que le prestare asistencia a requerimiento de aquél o en virtud de un deber legal, para exigirle la ejecución u omisión de un acto propio de sus funciones.\n",
+        "fullTranslationRu": "СТАТЬЯ 237. Лишением свободы на срок от одного месяца до одного года наказывается тот, кто применяет запугивание или силу против публичного должностного лица либо против лица, оказывающего ему помощь по его требованию или в силу законной обязанности, чтобы потребовать от него совершить или не совершить действие, относящееся к его функциям.",
+        "simpleRu": "Статья 237 наказывает давление силой или угрозой на чиновника или помощника чиновника, чтобы заставить его сделать или не сделать служебное действие. Наказание - 1 месяц-1 год.",
+        "sourceTextSha256": "b9e4991a5162446a94ee7045c1ee029e77cb2308628d0059a82ffb8e3bfe04ea",
+        "sourceFingerprint": "sha256:b9e4991a5162446a94ee7045c1ee029e77cb2308628d0059a82ffb8e3bfe04ea",
+        "sourceSpan": {
+          "startLine": 2322,
+          "endLine": 2323
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-238-la-prision-sera-de-seis-meses-393",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 393,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 238. - La prisión será de seis meses a dos años:"
+        ],
+        "officialLabel": "ARTICULO 238. - La prisión será de seis meses a dos años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 238. - La prisión será de seis meses a dos años:\n\n1 Si el hecho se cometiere a mano armada;\n\n2 Si el hecho se cometiere por una reunión de más de tres personas;\n\n3 Si el culpable fuere funcionario público;\n\n4 Si el delincuente pusiere manos en la autoridad.\n\nEn el caso de ser funcionario público, el reo sufrirá además inhabilitación especial por doble tiempo del de la condena.\n",
+        "fullTranslationRu": "СТАТЬЯ 238. Лишение свободы составляет от шести месяцев до двух лет: 1) если деяние совершено с оружием в руках; 2) если деяние совершено собранием более трех лиц; 3) если виновный является публичным должностным лицом; 4) если преступник поднимает руку на власть. Если виновный является публичным должностным лицом, он дополнительно несет специальное лишение прав на двойной срок приговора.",
+        "simpleRu": "Статья 238 повышает наказание до 6 месяцев-2 лет, если сопротивление власти было с оружием, группой больше 3 человек, чиновником или с физическим нападением на власть. Чиновнику дополнительно дают запрет на должности на двойной срок.",
+        "sourceTextSha256": "537985110c7e5b7204c3cd8ebb2b03e87aff4c1b8c274f260a01ef07b1da2128",
+        "sourceFingerprint": "sha256:537985110c7e5b7204c3cd8ebb2b03e87aff4c1b8c274f260a01ef07b1da2128",
+        "sourceSpan": {
+          "startLine": 2324,
+          "endLine": 2335
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-238-bis-el-militar-que-pusiere-manos-394",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 394,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 238 bis - El militar que pusiere manos en el superior, sin lesionarlo o causándole lesiones leves, será penado con prisión de un..."
+        ],
+        "officialLabel": "ARTICULO 238 bis - El militar que pusiere manos en el superior, sin lesionarlo o causándole lesiones leves, será penado con prisión de un...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 238 bis - El militar que pusiere manos en el superior, sin lesionarlo o causándole lesiones leves, será penado con prisión de uno (1) a tres (3) años.\n\nSi el hecho tuviere lugar frente al enemigo o a tropa formada con armas, o si se cometiere en número de seis (6) o más, el máximo de la pena será de seis (6) años.\n\n(Artículo incorporado por art. 10 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 238 bis. Военнослужащий, который поднимает руку на начальника, не причиняя ему повреждений или причиняя легкие повреждения, наказывается лишением свободы от одного (1) до трех (3) лет. Если это произошло перед лицом врага или перед строем вооруженных войск, либо если деяние совершено шестью (6) или более лицами, максимум наказания составляет шесть (6) лет. Статья включена Законом N 26.394, опубликованным 29/8/2008, с началом действия через шесть (6) месяцев после промульгации.",
+        "simpleRu": "Статья 238 bis наказывает военного, который применил физическую силу к начальнику без травм или с легкими травмами: 1-3 года. Если это перед врагом, перед вооруженным строем или группой из 6 и более, максимум 6 лет.",
+        "sourceTextSha256": "90d3ab53741b460ea6738e217160a0bd64f830c88d687b7e2d4117066e49ac62",
+        "sourceFingerprint": "sha256:90d3ab53741b460ea6738e217160a0bd64f830c88d687b7e2d4117066e49ac62",
+        "sourceSpan": {
+          "startLine": 2336,
+          "endLine": 2341
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-238-ter-el-militar-que-resistiere-o-395",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 395,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 238 ter - El militar que resistiere o desobedeciere una orden de servicio legalmente impartida por el superior, frente al enemig..."
+        ],
+        "officialLabel": "ARTICULO 238 ter - El militar que resistiere o desobedeciere una orden de servicio legalmente impartida por el superior, frente al enemig...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 238 ter - El militar que resistiere o desobedeciere una orden de servicio legalmente impartida por el superior, frente al enemigo o en situación de peligro inminente de naufragio, incendio u otro estrago, será penado con prisión de uno (1) a cinco (5) años. La misma pena se impondrá si resistiere a una patrulla que proceda en cumplimiento de una consigna en zona de conflicto armado u operaciones o de catástrofe. Si en razón de la resistencia o de la desobediencia se sufrieren pérdidas militares o se impidiese o dificultase la salvación de vidas en supuesto de catástrofe el mínimo de la pena se elevará a cuatro (4) años y el máximo de la pena se elevará a doce (12) años. En cualquier caso se impondrán las penas aquí previstas siempre que no resultare un delito más severamente penado.\n\n(Artículo incorporado por art. 11 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 238 ter. Военнослужащий, который сопротивляется или не повинуется законно отданному начальником служебному приказу перед лицом врага или при непосредственной опасности кораблекрушения, пожара или иного бедствия, наказывается лишением свободы от одного (1) до пяти (5) лет. Такое же наказание назначается, если он сопротивляется патрулю, действующему по приказу в зоне вооруженного конфликта, операций или катастрофы. Если из-за сопротивления или неповиновения возникли военные потери либо была предотвращена или затруднена спасательная помощь при катастрофе, минимум повышается до четырех (4) лет, а максимум - до двенадцати (12) лет. Во всех случаях применяются эти наказания, если нет преступления, наказываемого строже. Статья включена Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 238 ter касается военного неповиновения в опасной ситуации: перед врагом, при кораблекрушении, пожаре, бедствии или в зоне конфликта/катастрофы. Обычно наказание 1-5 лет. Если из-за этого есть военные потери или мешают спасению людей, наказание 4-12 лет. Более строгое преступление имеет приоритет.",
+        "sourceTextSha256": "fa3564c8e6c99cb86510e7a4b53b82f27dd16c3364789975877957362329c719",
+        "sourceFingerprint": "sha256:fa3564c8e6c99cb86510e7a4b53b82f27dd16c3364789975877957362329c719",
+        "sourceSpan": {
+          "startLine": 2342,
+          "endLine": 2345
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-239-sera-reprimido-con-prision-de-quince-396",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 396,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 239. - Será reprimido con prisión de quince días a un año, el que resistiere o desobedeciere a un funcionario público en el ejer..."
+        ],
+        "officialLabel": "ARTICULO 239. - Será reprimido con prisión de quince días a un año, el que resistiere o desobedeciere a un funcionario público en el ejer...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 239. - Será reprimido con prisión de quince días a un año, el que resistiere o desobedeciere a un funcionario público en el ejercicio legítimo de sus funciones o a la persona que le prestare asistencia a requerimiento de aquél o en virtud de una obligación legal.\n",
+        "fullTranslationRu": "СТАТЬЯ 239. Лишением свободы на срок от пятнадцати дней до одного года наказывается тот, кто сопротивляется публичному должностному лицу или не повинуется ему при законном исполнении его функций, либо лицу, оказывающему ему помощь по его требованию или в силу законной обязанности.",
+        "simpleRu": "Статья 239 наказывает сопротивление или неповиновение чиновнику, который законно выполняет работу, а также человеку, который законно помогает чиновнику. Наказание - 15 дней-1 год.",
+        "sourceTextSha256": "34984b189cec6bc2a170ad62626f12b37a597345d8f2de2181475a8af2b6ecbd",
+        "sourceFingerprint": "sha256:34984b189cec6bc2a170ad62626f12b37a597345d8f2de2181475a8af2b6ecbd",
+        "sourceSpan": {
+          "startLine": 2346,
+          "endLine": 2347
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-240-para-los-efectos-de-los-dos-397",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 397,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 240. - Para los efectos de los dos artículos precedentes, se reputará funcionario público al particular que tratare de aprehende..."
+        ],
+        "officialLabel": "ARTICULO 240. - Para los efectos de los dos artículos precedentes, se reputará funcionario público al particular que tratare de aprehende...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 240. - Para los efectos de los dos artículos precedentes, se reputará funcionario público al particular que tratare de aprehender o hubiere aprehendido a un delincuente en flagrante delito.\n",
+        "fullTranslationRu": "СТАТЬЯ 240. Для целей двух предыдущих статей публичным должностным лицом считается частное лицо, которое пытается задержать или задержало преступника, застигнутого на месте преступления.",
+        "simpleRu": "Статья 240 объясняет: для статей 238 и 239 обычный человек считается как чиновник, если он задерживает или уже задержал преступника с поличным.",
+        "sourceTextSha256": "88f76facaaaf691f6bc5135ebea039e89aa16451c7d25873a1724f32e6158797",
+        "sourceFingerprint": "sha256:88f76facaaaf691f6bc5135ebea039e89aa16451c7d25873a1724f32e6158797",
+        "sourceSpan": {
+          "startLine": 2348,
+          "endLine": 2349
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-240-bis-el-que-violare-las-normas-398",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 398,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 240 bis - El que violare las normas instrucciones a la población emitidas por la autoridad militar competente en tiempo de confl..."
+        ],
+        "officialLabel": "ARTICULO 240 bis - El que violare las normas instrucciones a la población emitidas por la autoridad militar competente en tiempo de confl...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 240 bis - El que violare las normas instrucciones a la población emitidas por la autoridad militar competente en tiempo de conflicto armado para las zonas de combate, será penado con prisión de uno (1) a cuatro (4) años si no resultare un delito más severamente penado.\n\n(Artículo incorporado por art. 12 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 240 bis. Тот, кто нарушает нормы или инструкции населению, изданные компетентной военной властью в период вооруженного конфликта для районов боевых действий, наказывается лишением свободы от одного (1) до четырех (4) лет, если нет преступления, наказываемого строже. Статья включена Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 240 bis наказывает нарушение инструкций военной власти для населения в зоне боевых действий во время вооруженного конфликта. Наказание 1-4 года, если нет более тяжкой статьи.",
+        "sourceTextSha256": "d1921ebdd2c20c4f06ec66fdb707b6dedbe4fc1dc77555ca39d82c958a2e4208",
+        "sourceFingerprint": "sha256:d1921ebdd2c20c4f06ec66fdb707b6dedbe4fc1dc77555ca39d82c958a2e4208",
+        "sourceSpan": {
+          "startLine": 2350,
+          "endLine": 2353
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-241-sera-reprimido-con-prision-de-quince-399",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 399,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 241. - Será reprimido con prisión de quince días a seis meses:"
+        ],
+        "officialLabel": "ARTICULO 241. - Será reprimido con prisión de quince días a seis meses:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 241. - Será reprimido con prisión de quince días a seis meses:\n\n1 El que perturbare el orden en las sesiones de los cuerpos legislativos nacionales o provinciales, en las audiencias de los tribunales de justicia o dondequiera que una autoridad esté ejerciendo sus funciones;\n\n2 El que sin estar comprendido en el artículo 237, impidiere o estorbare a un funcionario público cumplir un acto propio de sus funciones.\n",
+        "fullTranslationRu": "СТАТЬЯ 241. Лишением свободы на срок от пятнадцати дней до шести месяцев наказывается: 1) тот, кто нарушает порядок на заседаниях национальных или провинциальных законодательных органов, в судебных заседаниях или в любом месте, где власть исполняет свои функции; 2) тот, кто, не подпадая под статью 237, препятствует или мешает публичному должностному лицу выполнить действие, относящееся к его функциям.",
+        "simpleRu": "Статья 241 наказывает нарушение порядка там, где работают законодатели, суды или другие власти, а также помехи чиновнику в служебном действии, если это не статья 237. Наказание - 15 дней-6 месяцев.",
+        "sourceTextSha256": "e6cdb695f5397a1d62ab269912740192cce5d062739612b5d04837e8bcda282f",
+        "sourceFingerprint": "sha256:e6cdb695f5397a1d62ab269912740192cce5d062739612b5d04837e8bcda282f",
+        "sourceSpan": {
+          "startLine": 2354,
+          "endLine": 2359
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-241-bis-se-impondra-prision-de-tres-400",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 400,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 241 bis - Se impondrá prisión de tres (3) a diez (10) años a los militares que:"
+        ],
+        "officialLabel": "ARTICULO 241 bis - Se impondrá prisión de tres (3) a diez (10) años a los militares que:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 241 bis - Se impondrá prisión de tres (3) a diez (10) años a los militares que:\n\n1. Tumultuosamente peticionaren o se atribuyeren la representación de una fuerza armada.\n\n2. Tomaren armas o hicieren uso de éstas, de naves o aeronaves o extrajeren fuerzas armadas de sus asientos naturales, contra las órdenes de sus superiores.\n\n3. Hicieren uso del personal de la fuerza, de la nave o de la aeronave bajo su mando contra sus superiores u omitieren resistir o contener a éstas, estando en condiciones de hacerlo.\n\n4. Será penado con prisión de uno (1) a cinco (5) años la conspiración para cometer los delitos de este artículo. No será penado por conspiración quien la denunciare en tiempo para evitar la comisión del hecho.\n\n5. Si en razón de los hechos previstos en este artículo resultare la muerte de una o más personas, se sufrieren pérdidas militares o se impidiere o dificultare la salvación de vidas en supuesto de catástrofe, el máximo de la pena se elevará a veinticinco (25) años. En cualquier caso se impondrán las penas aquí previstas siempre que no resultare un delito más severamente penado. (Artículo incorporado por art. 12 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 241 bis. Лишение свободы от трех (3) до десяти (10) лет назначается военнослужащим, которые: 1) беспорядочно подают требования или присваивают себе представительство вооруженной силы; 2) берут оружие или используют его, суда или воздушные суда, либо выводят вооруженные силы из их обычных мест вопреки приказам начальников; 3) используют личный состав силы, судна или воздушного судна под своим командованием против начальников либо не сопротивляются таким действиям и не сдерживают их, имея возможность это сделать; 4) за заговор для совершения преступлений этой статьи назначается лишение свободы от одного (1) до пяти (5) лет; за заговор не наказывается тот, кто своевременно сообщает о нем, чтобы предотвратить деяние; 5) если из-за предусмотренных здесь фактов наступила смерть одного или нескольких лиц, произошли военные потери или было предотвращено либо затруднено спасение людей при катастрофе, максимум наказания повышается до двадцати пяти (25) лет. Во всех случаях эти наказания применяются, если нет преступления, наказываемого строже. Статья включена Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 241 bis наказывает военных за опасные коллективные действия против порядка службы: самовольные требования, использование оружия, судов или авиации вопреки приказам, вывод войск, действия подчиненных против начальников и заговор. Обычно 3-10 лет; заговор 1-5 лет, но сообщивший вовремя не наказывается. Если есть смерть, военные потери или помеха спасению, максимум 25 лет.",
+        "sourceTextSha256": "1d0ff72827f0c673c4c485c3506854d2a92717e43c261f9875e57c9830f1f257",
+        "sourceFingerprint": "sha256:1d0ff72827f0c673c4c485c3506854d2a92717e43c261f9875e57c9830f1f257",
+        "sourceSpan": {
+          "startLine": 2360,
+          "endLine": 2371
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-242-sera-reprimido-con-multa-de-pesos-401",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 401,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 242. - Será reprimido con multa de pesos setecientos cincuenta a pesos diez mil e inhabilitación especial de uno a cinco años, e..."
+        ],
+        "officialLabel": "ARTICULO 242. - Será reprimido con multa de pesos setecientos cincuenta a pesos diez mil e inhabilitación especial de uno a cinco años, e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 242. - Será reprimido con multa de pesos setecientos cincuenta a pesos diez mil e inhabilitación especial de uno a cinco años, el funcionario público que, en el arresto o formación de causa contra un miembro de los poderes públicos nacionales o provinciales, de una convención constituyente o de un colegio electoral, no guardare la forma prescripta en las constituciones o leyes respectivas.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 242. Штрафом от семисот пятидесяти до десяти тысяч песо и специальным лишением прав от одного до пяти лет наказывается публичное должностное лицо, которое при аресте или возбуждении дела против члена национальных или провинциальных публичных властей, конституционного собрания или коллегии выборщиков не соблюдает форму, предписанную соответствующими конституциями или законами. Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, опубликованного 29/12/1993.",
+        "simpleRu": "Статья 242 требует соблюдать специальные формы при аресте или деле против членов властей, конституционного собрания или коллегии выборщиков. Чиновнику за нарушение грозит штраф 750-10 000 песо и специальный запрет 1-5 лет.",
+        "sourceTextSha256": "632a7cb6bd9920f082d316f4bab896bf4ec960fff426386d001988131b44c716",
+        "sourceFingerprint": "sha256:632a7cb6bd9920f082d316f4bab896bf4ec960fff426386d001988131b44c716",
+        "sourceSpan": {
+          "startLine": 2372,
+          "endLine": 2375
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-243-sera-reprimido-con-prision-de-quince-402",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 402,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo I",
+          "ARTICULO 243. - Será reprimido con prisión de quince días a un mes, el que siendo legalmente citado como testigo, perito o intérprete, se..."
+        ],
+        "officialLabel": "ARTICULO 243. - Será reprimido con prisión de quince días a un mes, el que siendo legalmente citado como testigo, perito o intérprete, se...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 243. - Será reprimido con prisión de quince días a un mes, el que siendo legalmente citado como testigo, perito o intérprete, se abstuviere de comparecer o de prestar la declaración o exposición respectiva. En el caso del perito o intérprete, se impondrá, además, al reo, inhabilitación especial de un mes a un año.\n",
+        "fullTranslationRu": "СТАТЬЯ 243. Лишением свободы на срок от пятнадцати дней до одного месяца наказывается тот, кто, будучи законно вызван как свидетель, эксперт или переводчик, не является или не дает соответствующие показания либо объяснение. Для эксперта или переводчика дополнительно назначается специальное лишение прав от одного месяца до одного года.",
+        "simpleRu": "Статья 243 наказывает свидетеля, эксперта или переводчика, который законно вызван, но не пришел или не дал показания/объяснение. Наказание 15 дней-1 месяц; эксперту или переводчику еще дают запрет 1 месяц-1 год.",
+        "sourceTextSha256": "73d454323b73563c9e4b9f90199affbcb2d6086c10bba57b3cda111cf972bf9d",
+        "sourceFingerprint": "sha256:73d454323b73563c9e4b9f90199affbcb2d6086c10bba57b3cda111cf972bf9d",
+        "sourceSpan": {
+          "startLine": 2376,
+          "endLine": 2377
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-403",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 403,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nFalsa Denuncia\n",
+        "fullTranslationRu": "ГЛАВА II\n\nЛожный донос",
+        "simpleRu": "Начинается глава II о ложном доносе.",
+        "sourceTextSha256": "b103716eab90942e6987455231ba9cad1128660d76650b2e931ebc7dae0a97ec",
+        "sourceFingerprint": "sha256:b103716eab90942e6987455231ba9cad1128660d76650b2e931ebc7dae0a97ec",
+        "sourceSpan": {
+          "startLine": 2378,
+          "endLine": 2381
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-244-articulo-derogado-por-art-2o-de-404",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 404,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo II",
+          "ARTICULO 244. -(Artículo derogado por art. 2° de la Ley N° 24.198 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=596] B.O. 3/..."
+        ],
+        "officialLabel": "ARTICULO 244. -(Artículo derogado por art. 2° de la Ley N° 24.198 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=596] B.O. 3/...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 244. -(Artículo derogado por art. 2° de la Ley N° 24.198 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=596] B.O. 3/6/1993).\n",
+        "fullTranslationRu": "СТАТЬЯ 244. Статья отменена статьей 2 Закона N 24.198, опубликованного 3/6/1993.",
+        "simpleRu": "Статья 244 больше не действует: ее отменил Закон 24.198.",
+        "sourceTextSha256": "03a115aa1cb4771dba84bd9442c2d62c1d5aaa4943a486fb684bdbe6319d6286",
+        "sourceFingerprint": "sha256:03a115aa1cb4771dba84bd9442c2d62c1d5aaa4943a486fb684bdbe6319d6286",
+        "sourceSpan": {
+          "startLine": 2382,
+          "endLine": 2383
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-245-se-impondra-prision-de-dos-meses-405",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 405,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo II",
+          "ARTICULO 245. - Se impondrá prisión de dos meses a un año o multa de pesos setecientos cincuenta a pesos doce mil quinientos al que denun..."
+        ],
+        "officialLabel": "ARTICULO 245. - Se impondrá prisión de dos meses a un año o multa de pesos setecientos cincuenta a pesos doce mil quinientos al que denun...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 245. - Se impondrá prisión de dos meses a un año o multa de pesos setecientos cincuenta a pesos doce mil quinientos al que denunciare falsamente un delito ante la autoridad.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 245. Лишение свободы от двух месяцев до одного года или штраф от семисот пятидесяти до двенадцати тысяч пятисот песо назначается тому, кто ложно заявляет о преступлении перед властью. Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, опубликованного 29/12/1993.",
+        "simpleRu": "Статья 245 наказывает ложное сообщение властям о преступлении. Наказание - 2 месяца-1 год или штраф 750-12 500 песо.",
+        "sourceTextSha256": "ee81b371c656f5dfacd79b83e9fa7e3e4632f6ba095b92d981e0a5413467b91b",
+        "sourceFingerprint": "sha256:ee81b371c656f5dfacd79b83e9fa7e3e4632f6ba095b92d981e0a5413467b91b",
+        "sourceSpan": {
+          "startLine": 2384,
+          "endLine": 2387
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iii-406",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 406,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo III"
+        ],
+        "officialLabel": "Capítulo III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo III\n\nUsurpación de autoridad, títulos u honores\n",
+        "fullTranslationRu": "ГЛАВА III\n\nУзурпация власти, званий или почестей",
+        "simpleRu": "Начинается глава III о незаконном присвоении власти, званий или почестей.",
+        "sourceTextSha256": "fc6023fae94cd98abcf10bc211f8f13b83a210c32691b7dcd22b3504ef38c34e",
+        "sourceFingerprint": "sha256:fc6023fae94cd98abcf10bc211f8f13b83a210c32691b7dcd22b3504ef38c34e",
+        "sourceSpan": {
+          "startLine": 2388,
+          "endLine": 2391
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-246-sera-reprimido-con-prision-de-un-407",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 407,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo III",
+          "ARTICULO 246. - Será reprimido con prisión de un mes a un año e inhabilitación especial por doble tiempo:"
+        ],
+        "officialLabel": "ARTICULO 246. - Será reprimido con prisión de un mes a un año e inhabilitación especial por doble tiempo:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 246. - Será reprimido con prisión de un mes a un año e inhabilitación especial por doble tiempo:\n\n1 El que asumiere o ejerciere funciones públicas, sin título o nombramiento expedido por autoridad competente;\n\n2 El que después de haber cesado por ministerio de la ley en el desempeño de un cargo público o después de haber recibido de la autoridad competente comunicación oficial de la resolución que ordenó la cesantía o suspensión de sus funciones, continuare ejerciéndolas;\n\n3 El funcionario público que ejerciere funciones correspondientes a otro cargo.\n\nEl militar que ejerciere o retuviere un mando sin autorización será penado con prisión de uno (1) a cuatro (4) años y, en tiempo de conflicto armado de dos (2) a seis (6) años, siempre que no resultare un delito más severamente penado. (Párrafo incorporado por art. 14 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 246. Лишением свободы на срок от одного месяца до одного года и специальным лишением прав на двойной срок наказываются: 1) тот, кто принимает на себя или исполняет публичные функции без титула или назначения, выданного компетентной властью; 2) тот, кто после прекращения должности по закону или после получения официального сообщения компетентной власти о решении об увольнении или приостановлении функций продолжает их исполнять; 3) публичное должностное лицо, исполняющее функции, соответствующие другой должности. Военнослужащий, который осуществляет или удерживает командование без разрешения, наказывается лишением свободы от одного (1) до четырех (4) лет, а во время вооруженного конфликта - от двух (2) до шести (6) лет, если нет преступления, наказываемого строже. Последний абзац включен Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 246 наказывает незаконное выполнение публичных функций: без назначения, после увольнения/отстранения или вместо другой должности. Обычно 1 месяц-1 год и запрет на двойной срок. Военный, который без разрешения командует или удерживает командование, получает 1-4 года, а во время вооруженного конфликта 2-6 лет, если нет более тяжкой статьи.",
+        "sourceTextSha256": "a4949b4bb39d2b1c635efcb529bc13d5645385ff45ab9f91fef034c1e6abd37b",
+        "sourceFingerprint": "sha256:a4949b4bb39d2b1c635efcb529bc13d5645385ff45ab9f91fef034c1e6abd37b",
+        "sourceSpan": {
+          "startLine": 2392,
+          "endLine": 2401
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-247-sera-reprimido-con-prision-de-quince-408",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 408,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo III",
+          "ARTICULO 247. - Será reprimido con prisión de quince días a un año el que ejerciere actos propios de una profesión para la que se requier..."
+        ],
+        "officialLabel": "ARTICULO 247. - Será reprimido con prisión de quince días a un año el que ejerciere actos propios de una profesión para la que se requier...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 247. - Será reprimido con prisión de quince días a un año el que ejerciere actos propios de una profesión para la que se requiere una habilitación especial, sin poseer el título o la autorización correspondiente.\n\nSerá reprimido con multa de setecientos cincuenta a doce mil quinientos pesos, el que públicamente llevare insignias o distintivos de un cargo que no ejerciere o se arrogare grados académicos, títulos profesionales u honores que no le correspondieren. (Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n\n(Artículo sustituido por Ley N° 24.527 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=26777] B.O.8/9/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 247. Лишением свободы на срок от пятнадцати дней до одного года наказывается тот, кто совершает действия, свойственные профессии, требующей специального допуска, не имея соответствующего диплома или разрешения. Штрафом от семисот пятидесяти до двенадцати тысяч пятисот песо наказывается тот, кто публично носит знаки или отличия должности, которую не занимает, либо присваивает себе академические степени, профессиональные звания или почести, которые ему не принадлежат. Примечание Infoleg: штраф обновлен Законом N 24.286, опубликованным 29/12/1993. Статья заменена Законом N 24.527, опубликованным 8/9/1995.",
+        "simpleRu": "Статья 247 наказывает работу в профессии без нужного диплома или разрешения: 15 дней-1 год. Также штраф 750-12 500 песо за публичное ношение знаков чужой должности или присвоение чужих степеней, званий или почестей.",
+        "sourceTextSha256": "315ac9f46c8292bc31760fcdf2d9702877cca7dbe8b05eb265422699b49c28be",
+        "sourceFingerprint": "sha256:315ac9f46c8292bc31760fcdf2d9702877cca7dbe8b05eb265422699b49c28be",
+        "sourceSpan": {
+          "startLine": 2402,
+          "endLine": 2407
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iv-409",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 409,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV"
+        ],
+        "officialLabel": "Capítulo IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo IV\n\nAbuso de autoridad y violación de los deberes de los funcionarios públicos\n",
+        "fullTranslationRu": "ГЛАВА IV\n\nЗлоупотребление властью и нарушение обязанностей публичных должностных лиц",
+        "simpleRu": "Начинается глава IV о злоупотреблении властью и нарушении обязанностей чиновниками.",
+        "sourceTextSha256": "d01442fa0932875ef75952cd44e23241fe5ca986fef64b8bbce8a45b4b4e70c6",
+        "sourceFingerprint": "sha256:d01442fa0932875ef75952cd44e23241fe5ca986fef64b8bbce8a45b4b4e70c6",
+        "sourceSpan": {
+          "startLine": 2408,
+          "endLine": 2411
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-248-sera-reprimido-con-prision-de-un-410",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 410,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 248. - Será reprimido con prisión de un mes a dos años e inhabilitación especial por doble tiempo, el funcionario público que di..."
+        ],
+        "officialLabel": "ARTICULO 248. - Será reprimido con prisión de un mes a dos años e inhabilitación especial por doble tiempo, el funcionario público que di...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 248. - Será reprimido con prisión de un mes a dos años e inhabilitación especial por doble tiempo, el funcionario público que dictare resoluciones u órdenes contrarias a las constituciones o leyes nacionales o provinciales o ejecutare las órdenes o resoluciones de esta clase existentes o no ejecutare las leyes cuyo cumplimiento le incumbiere.\n",
+        "fullTranslationRu": "СТАТЬЯ 248. Лишением свободы на срок от одного месяца до двух лет и специальным лишением прав на двойной срок наказывается публичное должностное лицо, которое издает постановления или приказы, противоречащие национальным или провинциальным конституциям либо законам, исполняет такие существующие приказы или постановления либо не исполняет законы, исполнение которых входит в его обязанности.",
+        "simpleRu": "Статья 248 наказывает чиновника, который издает или выполняет незаконные приказы либо не исполняет закон, который обязан исполнять. Наказание - 1 месяц-2 года и запрет на двойной срок.",
+        "sourceTextSha256": "0ef8b5fe0c5a429b03cca84cdbe7bbddccdb581a4e07d77772c864845f1e9e61",
+        "sourceFingerprint": "sha256:0ef8b5fe0c5a429b03cca84cdbe7bbddccdb581a4e07d77772c864845f1e9e61",
+        "sourceSpan": {
+          "startLine": 2412,
+          "endLine": 2413
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-248-bis-sera-reprimido-con-inhabilitacion-absoluta-411",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 411,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 248 bis.- Será reprimido con inhabilitación absoluta de SEIS (6) meses a DOS (2) años el funcionario público que, debiendo fisca..."
+        ],
+        "officialLabel": "ARTICULO 248 bis.- Será reprimido con inhabilitación absoluta de SEIS (6) meses a DOS (2) años el funcionario público que, debiendo fisca...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 248 bis.- Será reprimido con inhabilitación absoluta de SEIS (6) meses a DOS (2) años el funcionario público que, debiendo fiscalizar el cumplimiento de las normas de comercialización de ganado, productos y subproductos de origen animal, omitiere inspeccionar conforme los reglamentos a su cargo, establecimientos tales como mercados de hacienda, ferias y remates de animales, mataderos, frigoríficos, saladeros, barracas, graserías, tambos u otros establecimientos o locales afines con la elaboración, manipulación, transformación o comercialización de productos de origen animal y vehículos de transporte de hacienda, productos o subproductos de ese origen.\n\n(Artículo incorporado por art. 5° de la Ley N° 25.890 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95203] B.O. 21/5/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 248 bis. Абсолютным лишением прав от шести (6) месяцев до двух (2) лет наказывается публичное должностное лицо, которое обязано контролировать соблюдение норм торговли скотом, продуктами и субпродуктами животного происхождения, но не проверяет согласно своим регламентам такие учреждения, как рынки скота, ярмарки и аукционы животных, бойни, холодильные предприятия, солильни, склады, жиротопни, молочные фермы или другие учреждения либо места, связанные с изготовлением, обработкой, преобразованием или торговлей продуктами животного происхождения, а также транспортные средства для перевозки скота, продуктов или субпродуктов такого происхождения. Статья включена Законом N 25.890, опубликованным 21/5/2004.",
+        "simpleRu": "Статья 248 bis касается чиновника, который должен проверять торговлю скотом и животными продуктами, но не делает обязательные инспекции рынков, боен, холодильников, ферм, транспорта и похожих мест. Наказание - абсолютный запрет 6 месяцев-2 года.",
+        "sourceTextSha256": "458d9748a40658f4235140f99b27adb6c69fe42b9ce0252492e78d47b12e9737",
+        "sourceFingerprint": "sha256:458d9748a40658f4235140f99b27adb6c69fe42b9ce0252492e78d47b12e9737",
+        "sourceSpan": {
+          "startLine": 2414,
+          "endLine": 2417
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-249-sera-reprimido-con-multa-de-pesos-412",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 412,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 249. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos e inhabilitación especial de un mes a..."
+        ],
+        "officialLabel": "ARTICULO 249. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos e inhabilitación especial de un mes a...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 249. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos e inhabilitación especial de un mes a un año, el funcionario público que ilegalmente omitiere, rehusare hacer o retardare algún acto de su oficio.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 249. Штрафом от семисот пятидесяти до двенадцати тысяч пятисот песо и специальным лишением прав от одного месяца до одного года наказывается публичное должностное лицо, которое незаконно пропускает, отказывается совершить или задерживает какой-либо акт своей службы. Примечание Infoleg: штраф обновлен Законом N 24.286, опубликованным 29/12/1993.",
+        "simpleRu": "Статья 249 наказывает чиновника, который незаконно не делает, отказывается сделать или задерживает служебное действие. Наказание - штраф 750-12 500 песо и запрет 1 месяц-1 год.",
+        "sourceTextSha256": "2e29b60e6f6d4d75f1d6e777b4c2666cc6140abf9c1aa298f4f1a3253d84759b",
+        "sourceFingerprint": "sha256:2e29b60e6f6d4d75f1d6e777b4c2666cc6140abf9c1aa298f4f1a3253d84759b",
+        "sourceSpan": {
+          "startLine": 2418,
+          "endLine": 2421
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-249-bis-el-militar-que-en-sus-413",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 413,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 249 bis - El militar que en sus funciones y prevalido de su autoridad, arbitrariamente perjudicare o maltratare de cualquier for..."
+        ],
+        "officialLabel": "ARTICULO 249 bis - El militar que en sus funciones y prevalido de su autoridad, arbitrariamente perjudicare o maltratare de cualquier for...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 249 bis - El militar que en sus funciones y prevalido de su autoridad, arbitrariamente perjudicare o maltratare de cualquier forma a un inferior, será penado con prisión de seis (6) meses a dos (2) años, si no resultare un delito más severamente penado.\n\n(Artículo incorporado por art. 15 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 249 bis. Военнослужащий, который при исполнении функций и пользуясь своей властью произвольно причиняет вред или каким-либо образом плохо обращается с нижестоящим, наказывается лишением свободы от шести (6) месяцев до двух (2) лет, если нет преступления, наказываемого строже. Статья включена Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 249 bis наказывает военного, который, пользуясь властью, произвольно вредит подчиненному или плохо с ним обращается. Наказание 6 месяцев-2 года, если нет более тяжкой статьи.",
+        "sourceTextSha256": "7d3a5fadfbd7b35e6b7cf0cd62a3f769c68899df4125045dd9008cb7c614e7f5",
+        "sourceFingerprint": "sha256:7d3a5fadfbd7b35e6b7cf0cd62a3f769c68899df4125045dd9008cb7c614e7f5",
+        "sourceSpan": {
+          "startLine": 2422,
+          "endLine": 2425
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-250-sera-reprimido-con-prision-de-un-414",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 414,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 250. - Será reprimido con prisión de un mes a dos años e inhabilitación especial por doble tiempo, el jefe o agente de la fuerza..."
+        ],
+        "officialLabel": "ARTICULO 250. - Será reprimido con prisión de un mes a dos años e inhabilitación especial por doble tiempo, el jefe o agente de la fuerza...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 250. - Será reprimido con prisión de un mes a dos años e inhabilitación especial por doble tiempo, el jefe o agente de la fuerza pública, que rehusare, omitiere o retardare, sin causa justificada, la prestación de un auxilio legalmente requerido por la autoridad civil competente.\n",
+        "fullTranslationRu": "СТАТЬЯ 250. Лишением свободы на срок от одного месяца до двух лет и специальным лишением прав на двойной срок наказывается начальник или сотрудник публичной силы, который без обоснованной причины отказывается, пропускает или задерживает оказание помощи, законно запрошенной компетентной гражданской властью.",
+        "simpleRu": "Статья 250 наказывает начальника или сотрудника силового органа, который без уважительной причины не оказывает законно запрошенную помощь гражданской власти. Наказание - 1 месяц-2 года и запрет на двойной срок.",
+        "sourceTextSha256": "ad3f8449cb1527cfe91fd3c8cd89c6e1700267dcf192125a8cfb0167c969fce0",
+        "sourceFingerprint": "sha256:ad3f8449cb1527cfe91fd3c8cd89c6e1700267dcf192125a8cfb0167c969fce0",
+        "sourceSpan": {
+          "startLine": 2426,
+          "endLine": 2427
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-250-bis-sera-penado-con-prision-de-415",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 415,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 250 bis - Será penado con prisión de cuatro (4) a diez (10) años, siempre que no resultare otro delito más severamente penado, e..."
+        ],
+        "officialLabel": "ARTICULO 250 bis - Será penado con prisión de cuatro (4) a diez (10) años, siempre que no resultare otro delito más severamente penado, e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 250 bis - Será penado con prisión de cuatro (4) a diez (10) años, siempre que no resultare otro delito más severamente penado, el militar que en tiempo de conflicto armado:\n\n1. Abandonare sus funciones de control, vigilancia, comunicaciones o la atención de los instrumentos que tuviese a su cargo para esos fines, las descuidase o se incapacitase para su cumplimiento.\n\n2. Observare cualquier dato significativo para la defensa y no lo informase o tomase las medidas del caso.\n\n(Artículo incorporado por art. 16 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 250 bis. Лишением свободы от четырех (4) до десяти (10) лет, если нет преступления, наказываемого строже, наказывается военнослужащий, который во время вооруженного конфликта: 1) оставляет функции контроля, наблюдения, связи или обслуживание доверенных ему для этого приборов, пренебрегает ими или делает себя неспособным их выполнять; 2) замечает важные для обороны сведения и не сообщает о них или не принимает необходимых мер. Статья включена Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 250 bis наказывает военного во время вооруженного конфликта, если он бросает или портит важные функции контроля, наблюдения, связи или приборы, либо видит важные для обороны данные и не сообщает/не действует. Наказание 4-10 лет, если нет более тяжкой статьи.",
+        "sourceTextSha256": "c744616b11d85797c832f84230ce0107a720fcdd9288e537a62da3e0da8413c4",
+        "sourceFingerprint": "sha256:c744616b11d85797c832f84230ce0107a720fcdd9288e537a62da3e0da8413c4",
+        "sourceSpan": {
+          "startLine": 2428,
+          "endLine": 2435
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-251-sera-reprimido-con-prision-de-un-416",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 416,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 251. - Será reprimido con prisión de un mes a cuatro años e inhabilitación especial por doble tiempo, el funcionario público que..."
+        ],
+        "officialLabel": "ARTICULO 251. - Será reprimido con prisión de un mes a cuatro años e inhabilitación especial por doble tiempo, el funcionario público que...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 251. - Será reprimido con prisión de un mes a cuatro años e inhabilitación especial por doble tiempo, el funcionario público que requiriere la asistencia de la fuerza pública contra la ejecución de disposiciones u órdenes legales de la autoridad o de sentencias o de mandatos judiciales.\n",
+        "fullTranslationRu": "СТАТЬЯ 251. Лишением свободы на срок от одного месяца до четырех лет и специальным лишением прав на двойной срок наказывается публичное должностное лицо, которое требует помощи публичной силы против исполнения законных распоряжений или приказов власти либо судебных решений или предписаний.",
+        "simpleRu": "Статья 251 наказывает чиновника, который зовет силовой орган, чтобы мешать исполнению законных приказов власти или судебных решений. Наказание - 1 месяц-4 года и запрет на двойной срок.",
+        "sourceTextSha256": "073ea5dfa6bd4234b68c43c9a7324c5bb2469dd39c9310982a9a3ff63925206d",
+        "sourceFingerprint": "sha256:073ea5dfa6bd4234b68c43c9a7324c5bb2469dd39c9310982a9a3ff63925206d",
+        "sourceSpan": {
+          "startLine": 2436,
+          "endLine": 2437
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-252-sera-reprimido-con-multa-de-pesos-417",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 417,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 252. - Será reprimido con multa de pesos setecientos cincuenta ($ 750) a pesos doce mil quinientos ($ 12.500) e inhabilitación e..."
+        ],
+        "officialLabel": "ARTICULO 252. - Será reprimido con multa de pesos setecientos cincuenta ($ 750) a pesos doce mil quinientos ($ 12.500) e inhabilitación e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 252. - Será reprimido con multa de pesos setecientos cincuenta ($ 750) a pesos doce mil quinientos ($ 12.500) e inhabilitación especial de un (1) mes a un (1) año, el funcionario público que, sin habérsele admitido la renuncia de su destino, lo abandonare con daño del servicio público.\n\nEl miembro de una fuerza de seguridad nacional, provincial o de la Ciudad Autónoma de Buenos Aires, o agencia estatal armada que por su naturaleza tenga a cargo el cuidado de personas, que a sabiendas abandonare injustificadamente actos de servicio o maliciosamente omitiere la prestación regular de la función o misión a la que reglamentariamente se encuentra obligado, será reprimido con pena de prisión de uno (1) a tres (3) años e inhabilitación especial para ejercer cargos públicos por el doble tiempo de la condena.\n\nSi, como consecuencia del abandono u omisión tipificado en el párrafo precedente, se produjeren daños a bienes de la fuerza, bienes de terceros, lesiones o muerte de sus camaradas o terceros, se aplicará una pena de prisión de dos (2) a ocho (8) años e inhabilitación absoluta para desempeñar cargos públicos.\n\nEl militar que abandonare su servicio, su destino o que desertare en tiempo de conflicto armado o zona de catástrofe, será penado con prisión de uno (1) a seis (6) años. Si como consecuencia de su conducta resultare la muerte de una o más personas, se sufrieren pérdidas militares o se impidiese, o dificultase la salvación de vidas en supuesto de catástrofe, el máximo de la pena se elevará a doce (12) años. En cualquier caso se impondrán las penas aquí previstas siempre que no resultare un delito con pena más grave.\n\n(Artículo sustituido por art. 1° de la Ley N° 27.079 [/infolegInternet/verNorma.do?id=239775] B.O. 19/12/2014)\n",
+        "fullTranslationRu": "СТАТЬЯ 252. Штрафом от семисот пятидесяти песо ($ 750) до двенадцати тысяч пятисот песо ($ 12.500) и специальным лишением прав от одного (1) месяца до одного (1) года наказывается публичное должностное лицо, которое оставляет свою должность с вредом для публичной службы, когда его отставка еще не принята. Член национальной, провинциальной или городской силы безопасности, либо вооруженного государственного органа, который по своей природе отвечает за заботу о людях, если он сознательно и необоснованно оставляет служебные действия или злонамеренно не оказывает регулярную функцию или миссию, к которой обязан по регламенту, наказывается лишением свободы от одного (1) до трех (3) лет и специальным лишением права занимать публичные должности на двойной срок приговора. Если вследствие такого оставления или бездействия причинен вред имуществу силы, имуществу третьих лиц, телесные повреждения или смерть сослуживцев либо третьих лиц, применяется лишение свободы от двух (2) до восьми (8) лет и абсолютное лишение права занимать публичные должности. Военнослужащий, который оставляет службу, назначение или дезертирует во время вооруженного конфликта или в зоне катастрофы, наказывается лишением свободы от одного (1) до шести (6) лет. Если из-за его поведения наступила смерть одного или нескольких лиц, произошли военные потери или было предотвращено либо затруднено спасение жизней при катастрофе, максимум повышается до двенадцати (12) лет. Во всех случаях применяются эти наказания, если нет преступления с более тяжким наказанием. Статья заменена Законом N 27.079, опубликованным 19/12/2014.",
+        "simpleRu": "Статья 252 наказывает оставление службы. Чиновник не может уйти с должности с вредом для службы, пока отставку не приняли: штраф 750-12 500 песо и запрет 1 месяц-1 год. Силовик или вооруженный госслужащий, который сознательно бросает службу или миссию, получает 1-3 года и запрет на двойной срок. Если есть ущерб, ранения или смерть, 2-8 лет и абсолютный запрет. Военный, бросивший службу или дезертировавший при конфликте или катастрофе, получает 1-6 лет, а при смерти, потерях или помехе спасению максимум 12 лет.",
+        "sourceTextSha256": "f131f0461335f4407123b26d342de3a95909e9f1aefc78f118ee72a6e2fdae90",
+        "sourceFingerprint": "sha256:f131f0461335f4407123b26d342de3a95909e9f1aefc78f118ee72a6e2fdae90",
+        "sourceSpan": {
+          "startLine": 2438,
+          "endLine": 2447
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-253-sera-reprimido-con-multa-de-pesos-418",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 418,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 253. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos e inhabilitación especial de seis mes..."
+        ],
+        "officialLabel": "ARTICULO 253. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos e inhabilitación especial de seis mes...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 253. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos e inhabilitación especial de seis meses a dos años, el funcionario público que propusiere o nombrare para cargo público, a persona en quien no concurrieren los requisitos legales. En la misma pena incurrirá el que aceptare un cargo para el cual no tenga los requisitos legales.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 253. Штрафом от семисот пятидесяти до двенадцати тысяч пятисот песо и специальным лишением прав от шести месяцев до двух лет наказывается публичное должностное лицо, которое предлагает или назначает на публичную должность лицо, не имеющее законных требований. Такое же наказание несет тот, кто принимает должность, для которой не имеет законных требований. Примечание Infoleg: штраф обновлен Законом N 24.286, опубликованным 29/12/1993.",
+        "simpleRu": "Статья 253 запрещает назначать или предлагать на госдолжность человека без законных требований. Также наказывают того, кто такую должность принимает. Наказание - штраф 750-12 500 песо и запрет 6 месяцев-2 года.",
+        "sourceTextSha256": "66d2e492e4b22100f507d6d6bf03bc1cdef5a1a33cd7e5d3cda657facfff2a7b",
+        "sourceFingerprint": "sha256:66d2e492e4b22100f507d6d6bf03bc1cdef5a1a33cd7e5d3cda657facfff2a7b",
+        "sourceSpan": {
+          "startLine": 2448,
+          "endLine": 2451
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-253-bis-el-militar-que-sin-orden-419",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 419,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 253 bis - El militar que sin orden ni necesidad emprendiere una operación militar, o en sus funciones usare armas sin las formal..."
+        ],
+        "officialLabel": "ARTICULO 253 bis - El militar que sin orden ni necesidad emprendiere una operación militar, o en sus funciones usare armas sin las formal...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 253 bis - El militar que sin orden ni necesidad emprendiere una operación militar, o en sus funciones usare armas sin las formalidades y requerimientos del caso, sometiere a la población civil a restricciones arbitrarias u ordenare o ejerciere cualquier tipo de violencia innecesaria contra cualquier persona, será penado con prisión de uno (1) a cuatro (4) años si no resultare un delito más severamente penado.\n\n(Artículo incorporado por art. 18 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 253 bis. Военнослужащий, который без приказа и необходимости начинает военную операцию, либо при исполнении функций применяет оружие без требуемых формальностей и условий, подвергает гражданское население произвольным ограничениям или приказывает либо совершает любой вид ненужного насилия против любого лица, наказывается лишением свободы от одного (1) до четырех (4) лет, если нет преступления, наказываемого строже. Статья включена Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 253 bis наказывает военного за самовольную операцию, неправильное применение оружия, произвольные ограничения для гражданских или ненужное насилие. Наказание 1-4 года, если нет более тяжкой статьи.",
+        "sourceTextSha256": "f457ec7809e36e8ead57d5cf00d7fddff6677cb96ccd1814def88d5c3ed1f225",
+        "sourceFingerprint": "sha256:f457ec7809e36e8ead57d5cf00d7fddff6677cb96ccd1814def88d5c3ed1f225",
+        "sourceSpan": {
+          "startLine": 2452,
+          "endLine": 2455
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-253-ter-sera-penado-con-prision-de-420",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 420,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo IV",
+          "ARTICULO 253 ter - Será penado con prisión de dos (2) a ocho (8) años el militar que por imprudencia o negligencia, impericia en el arte ..."
+        ],
+        "officialLabel": "ARTICULO 253 ter - Será penado con prisión de dos (2) a ocho (8) años el militar que por imprudencia o negligencia, impericia en el arte ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 253 ter - Será penado con prisión de dos (2) a ocho (8) años el militar que por imprudencia o negligencia, impericia en el arte militar o inobservancia de los reglamentos o deberes a su cargo, en el curso de conflicto armado o de asistencia o salvación en situación de catástrofe, causare o no impidiere, la muerte de una o más personas o pérdidas militares, si no resultare un delito más severamente penado.\n\n(Artículo incorporado por art. 19 del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 253 ter. Лишением свободы от двух (2) до восьми (8) лет наказывается военнослужащий, который по неосторожности или небрежности, неумению в военном деле либо несоблюдению регламентов или своих обязанностей во время вооруженного конфликта либо помощи или спасения при катастрофе причиняет смерть одного или нескольких лиц или военные потери либо не предотвращает их, если нет преступления, наказываемого строже. Статья включена Законом N 26.394, опубликованным 29/8/2008.",
+        "simpleRu": "Статья 253 ter касается военного, который из-за небрежности, неумения или нарушения правил во время конфликта или спасения при катастрофе вызвал или не предотвратил смерть людей либо военные потери. Наказание 2-8 лет, если нет более тяжкой статьи.",
+        "sourceTextSha256": "5f4a3d1647a3dea50f4bce6566e452128970440ca156bfc927149f15fa7d1065",
+        "sourceFingerprint": "sha256:5f4a3d1647a3dea50f4bce6566e452128970440ca156bfc927149f15fa7d1065",
+        "sourceSpan": {
+          "startLine": 2456,
+          "endLine": 2459
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-v-421",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 421,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo V"
+        ],
+        "officialLabel": "Capítulo V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo V\n\nViolación de sellos y documentos\n",
+        "fullTranslationRu": "ГЛАВА V\n\nНарушение печатей и документов",
+        "simpleRu": "Начинается глава V о нарушении печатей и документов.",
+        "sourceTextSha256": "49d45bd764f91e18603b2748afb9fab8a985eb57b6b62ead2521d700c6b61682",
+        "sourceFingerprint": "sha256:49d45bd764f91e18603b2748afb9fab8a985eb57b6b62ead2521d700c6b61682",
+        "sourceSpan": {
+          "startLine": 2460,
+          "endLine": 2463
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-254-sera-reprimido-con-prision-de-seis-422",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 422,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo V",
+          "ARTICULO 254. - Será reprimido con prisión de seis meses a dos años, el que violare los sellos puestos por la autoridad para asegurar la ..."
+        ],
+        "officialLabel": "ARTICULO 254. - Será reprimido con prisión de seis meses a dos años, el que violare los sellos puestos por la autoridad para asegurar la ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 254. - Será reprimido con prisión de seis meses a dos años, el que violare los sellos puestos por la autoridad para asegurar la conservación o la identidad de una cosa. Si el culpable fuere funcionario público y hubiere cometido el hecho con abuso de su cargo, sufrirá además inhabilitación especial por doble tiempo. Si el hecho se hubiere cometido por imprudencia o negligencia del funcionario público, la pena será de multa de pesos setecientos cincuenta a pesos doce mil quinientos.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 254. Лишением свободы на срок от шести месяцев до двух лет наказывается тот, кто нарушает печати, поставленные властью для обеспечения сохранности или идентичности вещи. Если виновный является публичным должностным лицом и совершил деяние со злоупотреблением должностью, он дополнительно несет специальное лишение прав на двойной срок. Если деяние совершено по неосторожности или небрежности публичного должностного лица, наказание составляет штраф от семисот пятидесяти до двенадцати тысяч пятисот песо. Примечание Infoleg: штраф обновлен Законом N 24.286, опубликованным 29/12/1993.",
+        "simpleRu": "Статья 254 наказывает нарушение официальных печатей, которые власть поставила для сохранности или идентификации вещи. Обычно 6 месяцев-2 года. Чиновнику за злоупотребление добавляют запрет на двойной срок. Если чиновник сделал это по небрежности, штраф 750-12 500 песо.",
+        "sourceTextSha256": "b7628a10910de2f045e004f6636d0b6a8807a164544b3db55677ca7423a61aff",
+        "sourceFingerprint": "sha256:b7628a10910de2f045e004f6636d0b6a8807a164544b3db55677ca7423a61aff",
+        "sourceSpan": {
+          "startLine": 2464,
+          "endLine": 2467
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-255-sera-reprimido-con-prision-de-un-423",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 423,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo V",
+          "ARTICULO 255. - Será reprimido con prisión de un (1) mes a cuatro (4) años, el que sustrajere, alterare, ocultare, destruyere o inutiliza..."
+        ],
+        "officialLabel": "ARTICULO 255. - Será reprimido con prisión de un (1) mes a cuatro (4) años, el que sustrajere, alterare, ocultare, destruyere o inutiliza...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 255. - Será reprimido con prisión de un (1) mes a cuatro (4) años, el que sustrajere, alterare, ocultare, destruyere o inutilizare en todo o en parte objetos destinados a servir de prueba ante la autoridad competente, registros o documentos confiados a la custodia de un funcionario público o de otra persona en el interés del servicio público. Si el autor fuere el mismo depositario, sufrirá además inhabilitación especial por doble tiempo.\n\nSi el hecho se cometiere por imprudencia o negligencia del depositario, éste será reprimido con multa de pesos setecientos cincuenta ($ 750) a pesos doce mil quinientos ($ 12.500).\n\n(Artículo sustituido por art. 13 de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 255. Лишением свободы от одного (1) месяца до четырех (4) лет наказывается тот, кто полностью или частично похищает, изменяет, скрывает, уничтожает или делает непригодными предметы, предназначенные служить доказательством перед компетентной властью, либо реестры или документы, доверенные хранению публичного должностного лица или другого лица в интересах публичной службы. Если автор является самим хранителем, он дополнительно несет специальное лишение прав на двойной срок. Если деяние совершено по неосторожности или небрежности хранителя, он наказывается штрафом от семисот пятидесяти песо ($ 750) до двенадцати тысяч пятисот песо ($ 12.500). Статья заменена Законом N 26.388, опубликованным 25/6/2008.",
+        "simpleRu": "Статья 255 защищает доказательства, реестры и документы, переданные на хранение для публичной службы. За похищение, изменение, скрытие, уничтожение или порчу - 1 месяц-4 года. Если виноват хранитель, добавляют запрет на двойной срок; при небрежности хранителя - штраф 750-12 500 песо.",
+        "sourceTextSha256": "279c9d1226704d3567b317680f6a6e7a2fae1b5a615e0047cb970a73dc484058",
+        "sourceFingerprint": "sha256:279c9d1226704d3567b317680f6a6e7a2fae1b5a615e0047cb970a73dc484058",
+        "sourceSpan": {
+          "startLine": 2468,
+          "endLine": 2473
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-vi-424",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 424,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo VI"
+        ],
+        "officialLabel": "Capítulo VI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo VI\n\nCohecho y tráfico de influencias\n\n(Título del capítulo sustituido por art. 30 de la Ley N° 25.188 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60847] B.O. 1/11/1999. Vigencia: a los ocho días desde su publicación.)\n",
+        "fullTranslationRu": "ГЛАВА VI\n\nВзяточничество и торговля влиянием\n\nНазвание главы заменено Законом N 25.188, опубликованным 1/11/1999, с действием через восемь дней после публикации.",
+        "simpleRu": "Начинается глава VI о взятках и торговле влиянием. Ее название обновил Закон 25.188.",
+        "sourceTextSha256": "dd053025972cbac2ec9dc05cbb009033aaef3c93accfe1947428280039c1cdc8",
+        "sourceFingerprint": "sha256:dd053025972cbac2ec9dc05cbb009033aaef3c93accfe1947428280039c1cdc8",
+        "sourceSpan": {
+          "startLine": 2474,
+          "endLine": 2479
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-256-sera-reprimido-con-reclusion-o-prision-425",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 425,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo VI",
+          "ARTICULO 256. - Será reprimido con reclusión o prisión de uno a seis años e inhabilitación especial perpetua, el funcionario público que ..."
+        ],
+        "officialLabel": "ARTICULO 256. - Será reprimido con reclusión o prisión de uno a seis años e inhabilitación especial perpetua, el funcionario público que ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 256. - Será reprimido con reclusión o prisión de uno a seis años e inhabilitación especial perpetua, el funcionario público que por sí o por persona interpuesta, recibiere dinero o cualquier otra dádiva o aceptare una promesa directa o indirecta, para hacer, retardar o dejar de hacer algo relativo a sus funciones\n\n(Artículo sustituido por art. 31 de la Ley N° 25.188 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60847] B.O. 1/11/1999. Vigencia: a los ocho días desde su publicación.)\n",
+        "fullTranslationRu": "СТАТЬЯ 256. Каторжным заключением или лишением свободы на срок от одного до шести лет и пожизненным специальным лишением прав наказывается публичное должностное лицо, которое лично или через посредника получает деньги или любую другую выгоду либо принимает прямое или косвенное обещание, чтобы сделать, задержать или не сделать что-либо, относящееся к его функциям. Статья заменена Законом N 25.188, опубликованным 1/11/1999, с действием через восемь дней после публикации.",
+        "simpleRu": "Статья 256 наказывает чиновника за взятку: если он сам или через посредника получает деньги, подарок или обещание за действие, задержку или бездействие по службе. Наказание 1-6 лет и пожизненный специальный запрет.",
+        "sourceTextSha256": "c608eea27aa270497a5614286fb58c1df446e2c7b7f3465307a0aa3b051b0008",
+        "sourceFingerprint": "sha256:c608eea27aa270497a5614286fb58c1df446e2c7b7f3465307a0aa3b051b0008",
+        "sourceSpan": {
+          "startLine": 2480,
+          "endLine": 2483
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-256-bis-sera-reprimido-con-reclusion-o-426",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 426,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo VI",
+          "ARTICULO 256 bis — Será reprimido con reclusión o prisión de uno a seis años e inhabilitación especial perpetua para ejercer la función p..."
+        ],
+        "officialLabel": "ARTICULO 256 bis — Será reprimido con reclusión o prisión de uno a seis años e inhabilitación especial perpetua para ejercer la función p...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 256 bis — Será reprimido con reclusión o prisión de uno a seis años e inhabilitación especial perpetua para ejercer la función pública, el que por sí o por persona interpuesta solicitare o recibiere dinero o cualquier otra dádiva o aceptare una promesa directa o indirecta, para hacer valer indebidamente su influencia ante un funcionario público, a fin de que éste haga, retarde o deje de hacer algo relativo a sus funciones.\n\nSi aquella conducta estuviera destinada a hacer valer indebidamente una influencia ante un magistrado del Poder Judicial o del Ministerio Público, a fin de obtener la emisión, dictado, demora u omisión de un dictamen, resolución o fallo en asuntos sometidos a su competencia, el máximo de la pena de prisión o reclusión se elevará a doce años.\n\n(Artículo incorporado por art. 32 de la Ley N° 25.188 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60847] B.O. 1/11/1999. Vigencia: a los ocho días desde su publicación.)\n",
+        "fullTranslationRu": "СТАТЬЯ 256 bis. Каторжным заключением или лишением свободы на срок от одного до шести лет и пожизненным специальным лишением права исполнять публичную функцию наказывается тот, кто лично или через посредника просит или получает деньги либо любую другую выгоду, или принимает прямое либо косвенное обещание, чтобы неправомерно использовать свое влияние перед публичным должностным лицом, с целью чтобы оно сделало, задержало или не сделало что-либо, относящееся к его функциям. Если такое поведение направлено на неправомерное использование влияния перед магистратом Судебной власти или прокуратуры, чтобы добиться вынесения, постановления, задержки или невынесения заключения, решения или приговора по делам его компетенции, максимум лишения свободы или каторжного заключения повышается до двенадцати лет. Статья включена Законом N 25.188, опубликованным 1/11/1999, с действием через восемь дней после публикации.",
+        "simpleRu": "Статья 256 bis наказывает торговлю влиянием: человек берет или просит деньги/выгоду, чтобы неправомерно повлиять на чиновника. Обычно 1-6 лет и пожизненный запрет на госфункцию. Если влияние направлено на судью или прокурора ради решения, заключения или приговора, максимум повышают до 12 лет.",
+        "sourceTextSha256": "41cfc086cedb322775daa3fa8e4e7c42f12dbbf4e6fe799603d107f818bf705d",
+        "sourceFingerprint": "sha256:41cfc086cedb322775daa3fa8e4e7c42f12dbbf4e6fe799603d107f818bf705d",
+        "sourceSpan": {
+          "startLine": 2484,
+          "endLine": 2489
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-257-sera-reprimido-con-prision-o-reclusion-427",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 427,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo VI",
+          "ARTICULO 257. - Será reprimido con prisión o reclusión de cuatro a doce años e inhabilitación especial perpetua, el magistrado del Poder ..."
+        ],
+        "officialLabel": "ARTICULO 257. - Será reprimido con prisión o reclusión de cuatro a doce años e inhabilitación especial perpetua, el magistrado del Poder ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 257. - Será reprimido con prisión o reclusión de cuatro a doce años e inhabilitación especial perpetua, el magistrado del Poder Judicial o del Ministerio Público que por sí o por persona interpuesta, recibiere dinero o cualquier otra dádiva o aceptare una promesa directa o indirecta para emitir, dictar, retardar u omitir dictar una resolución, fallo o dictamen, en asuntos sometidos a su competencia\n\n(Artículo sustituido por art. 33 de la Ley N° 25.188 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60847] B.O. 1/11/1999. Vigencia: a los ocho días desde su publicación.)\n",
+        "fullTranslationRu": "СТАТЬЯ 257. Лишением свободы или каторжным заключением на срок от четырех до двенадцати лет и пожизненным специальным лишением прав наказывается магистрат Судебной власти или прокуратуры, который лично или через посредника получает деньги или любую другую выгоду либо принимает прямое или косвенное обещание, чтобы вынести, постановить, задержать или не вынести решение, приговор или заключение по делам своей компетенции. Статья заменена Законом N 25.188, опубликованным 1/11/1999, с действием через восемь дней после публикации.",
+        "simpleRu": "Статья 257 наказывает судью или прокурора за получение денег, подарка или обещания за решение, приговор или заключение по делу. Наказание 4-12 лет и пожизненный специальный запрет.",
+        "sourceTextSha256": "73c01361bf51063d732a49d09629ddc85b6a84dd6f1349564271e5474742e8a9",
+        "sourceFingerprint": "sha256:73c01361bf51063d732a49d09629ddc85b6a84dd6f1349564271e5474742e8a9",
+        "sourceSpan": {
+          "startLine": 2490,
+          "endLine": 2493
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-258-sera-reprimido-con-prision-de-uno-428",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 428,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo VI",
+          "ARTICULO 258. - Será reprimido con prisión de uno a seis años, el que directa o indirectamente diere u ofreciere dádivas en procura de al..."
+        ],
+        "officialLabel": "ARTICULO 258. - Será reprimido con prisión de uno a seis años, el que directa o indirectamente diere u ofreciere dádivas en procura de al...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 258. - Será reprimido con prisión de uno a seis años, el que directa o indirectamente diere u ofreciere dádivas en procura de alguna de las conductas reprimidas por los artículos 256 y 256 bis, primer párrafo. Si la dádiva se hiciere u ofreciere con el fin de obtener alguna de las conductas tipificadas en los artículos 256 bis, segundo párrafo y 257, la pena será de reclusión o prisión de dos a seis años. Si el culpable fuere funcionario público, sufrirá además inhabilitación especial de dos a seis años en el primer caso y de tres a diez años en el segundo.\n\n(Artículo sustituido por art. 34 de la Ley N° 25.188 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60847] B.O. 1/11/1999. Vigencia: a los ocho días desde su publicación.)\n",
+        "fullTranslationRu": "СТАТЬЯ 258. Лишением свободы на срок от одного до шести лет наказывается тот, кто прямо или косвенно дает или предлагает выгоды, чтобы добиться какого-либо поведения, наказуемого статьями 256 и 256 bis, первый абзац. Если выгода дается или предлагается с целью получить поведение, описанное в статьях 256 bis, второй абзац, и 257, наказание составляет каторжное заключение или лишение свободы от двух до шести лет. Если виновный является публичным должностным лицом, он дополнительно несет специальное лишение прав от двух до шести лет в первом случае и от трех до десяти лет во втором. Статья заменена Законом N 25.188, опубликованным 1/11/1999, с действием через восемь дней после публикации.",
+        "simpleRu": "Статья 258 наказывает того, кто дает или предлагает взятку для действий из статей 256 и 256 bis. Обычно 1-6 лет. Если взятка связана с влиянием на судью/прокурора или статьей 257, наказание 2-6 лет. Чиновнику дополнительно дают специальный запрет: 2-6 или 3-10 лет.",
+        "sourceTextSha256": "16948f8c28b5409c8df5fc8e2e32a12fd176c263de0046e2981cef6cb8e63d0e",
+        "sourceFingerprint": "sha256:16948f8c28b5409c8df5fc8e2e32a12fd176c263de0046e2981cef6cb8e63d0e",
+        "sourceSpan": {
+          "startLine": 2494,
+          "endLine": 2497
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-258-bis-sera-reprimido-con-prision-de-429",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 429,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo VI",
+          "ARTICULO 258 bis — Será reprimido con prisión de un (1) a seis (6) años e inhabilitación especial perpetua para ejercer la función públic..."
+        ],
+        "officialLabel": "ARTICULO 258 bis — Será reprimido con prisión de un (1) a seis (6) años e inhabilitación especial perpetua para ejercer la función públic...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 258 bis — Será reprimido con prisión de un (1) a seis (6) años e inhabilitación especial perpetua para ejercer la función pública el que, directa o indirectamente, ofreciere, prometiere u otorgare, indebidamente, a un funcionario público de otro Estado o de una organización pública internacional, ya sea en su beneficio o de un tercero, sumas de dinero o cualquier otro objeto de valor pecuniario u otras compensaciones tales como dádivas, favores, promesas o ventajas, a cambio de que dicho funcionario realice u omita realizar un acto relacionado con el ejercicio de sus funciones públicas, o para que haga valer la influencia derivada de su cargo en un asunto vinculado a una transacción de naturaleza económica, financiera o comercial.\n\nSe entenderá por funcionario público de otro Estado, o de cualquier entidad territorial reconocida por la Nación Argentina, a toda persona que haya sido designada o electa para cumplir una función pública, en cualquiera de sus niveles o divisiones territoriales de gobierno, o en toda clase de organismo, agencia o empresa pública en donde dicho Estado ejerza una influencia directa o indirecta.\n\n(Artículo sustituido por art. 30 de la Ley N° 27.401 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=296846] B.O. 1/12/2017. Vigencia: a los noventa (90) días de su publicación en el Boletín Oficial de la República Argentina)\n",
+        "fullTranslationRu": "СТАТЬЯ 258 bis. Лишением свободы от одного (1) до шести (6) лет и пожизненным специальным лишением права исполнять публичную функцию наказывается тот, кто прямо или косвенно неправомерно предлагает, обещает или предоставляет публичному должностному лицу другого государства или публичной международной организации, в его пользу или в пользу третьего лица, денежные суммы или любой иной предмет денежной ценности либо другие компенсации, такие как выгоды, услуги, обещания или преимущества, в обмен на то, чтобы такое должностное лицо совершило или не совершило действие, связанное с осуществлением публичных функций, либо использовало влияние, вытекающее из его должности, в деле, связанном с экономической, финансовой или коммерческой сделкой. Публичным должностным лицом другого государства или любой территориальной единицы, признанной Аргентинской Нацией, считается всякое лицо, назначенное или избранное для выполнения публичной функции на любом уровне или территориальном подразделении власти, либо в любом органе, агентстве или публичном предприятии, где это государство осуществляет прямое или косвенное влияние. Статья заменена Законом N 27.401, опубликованным 1/12/2017, с действием через девяносто (90) дней после публикации в Официальном бюллетене Аргентинской Республики.",
+        "simpleRu": "Статья 258 bis наказывает подкуп иностранного чиновника или представителя международной публичной организации. Нельзя предлагать, обещать или давать деньги, ценности, подарки, услуги или преимущества, чтобы он сделал или не сделал служебное действие либо использовал влияние в экономической, финансовой или коммерческой сделке. Наказание 1-6 лет и пожизненный запрет на публичную функцию.",
+        "sourceTextSha256": "b1d4a3f54ab941ba8bc6ec473fe74d1e6c3a88611aa77bc4683374d1b563244d",
+        "sourceFingerprint": "sha256:b1d4a3f54ab941ba8bc6ec473fe74d1e6c3a88611aa77bc4683374d1b563244d",
+        "sourceSpan": {
+          "startLine": 2498,
+          "endLine": 2503
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-259-sera-reprimido-con-prision-de-un-430",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 430,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI",
+          "Capítulo VI",
+          "ARTICULO 259. - Será reprimido con prisión de un mes a dos años e inhabilitación absoluta de uno a seis años, el funcionario público que ..."
+        ],
+        "officialLabel": "ARTICULO 259. - Será reprimido con prisión de un mes a dos años e inhabilitación absoluta de uno a seis años, el funcionario público que ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 259. - Será reprimido con prisión de un mes a dos años e inhabilitación absoluta de uno a seis años, el funcionario público que admitiere dádivas, que fueran entregadas en consideración a su oficio, mientras permanezca en el ejercicio del cargo. El que presentare u ofreciere la dádiva será reprimido con prisión de un mes a un año.\n",
+        "fullTranslationRu": "СТАТЬЯ 259. Лишением свободы на срок от одного месяца до двух лет и абсолютным лишением прав от одного до шести лет наказывается публичное должностное лицо, которое принимает подарки, переданные в связи с его должностью, пока оно остается в этой должности. Тот, кто вручает или предлагает подарок, наказывается лишением свободы от одного месяца до одного года.",
+        "simpleRu": "Статья 259 запрещает чиновнику принимать подарки из-за своей должности, пока он занимает пост. Чиновнику грозит 1 месяц-2 года и абсолютный запрет 1-6 лет. Тому, кто дал или предложил подарок, грозит 1 месяц-1 год.",
+        "sourceTextSha256": "7f98c82d2cc542abc17cbd8188dbfa05c3ef8dc7279d2cb3f96fce834aa074fe",
+        "sourceFingerprint": "sha256:7f98c82d2cc542abc17cbd8188dbfa05c3ef8dc7279d2cb3f96fce834aa074fe",
+        "sourceSpan": {
+          "startLine": 2504,
+          "endLine": 2505
+        }
+      }
+    ]
+  }
+}
