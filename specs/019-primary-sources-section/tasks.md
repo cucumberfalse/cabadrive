@@ -110,7 +110,7 @@
 - [x] D8-002 Add per-document learner, QA, and search shards for `ley-17418-seguros`.
 - [x] D8-003 Review this batch against archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; mark batch QA entries approved with `checkedAt: "2026-05-10"`.
 - [x] D9-001 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 001-086 inclusive.
-- [ ] D9-002 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 087-172 inclusive.
+- [x] D9-002 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 087-172 inclusive. Evidence: added reviewed range shards `content/primary-sources/documents/ley-11179-codigo-penal--087-172.ru.json`, `content/primary-sources/qa/ley-11179-codigo-penal--087-172.qa.json`, and `content/primary-sources/search/ley-11179-codigo-penal--087-172.search.json` with 86 generated chunks, approved translation/simplification QA, and one search projection per chunk.
 - [ ] D9-003 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 173-258 inclusive.
 - [ ] D9-004 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 259-344 inclusive.
 - [ ] D9-005 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 345-430 inclusive.
@@ -589,6 +589,18 @@
 - The same quality-safe slicing rule now applies to other very large documents: Civil/Commercial Code D10-001 through D10-018 plus D10-900, CABA Transit Code D11-001 through D11-007 plus D11-900, and GCBA four-wheel manual D12-001 through D12-004 plus D12-900.
 - D13-900 is the cross-document final recomposition gate. It blocks final release if any sub-batch is missing, any document-level recomposition gate is incomplete, any approved QA looks mechanical or lacks notes, or any partial sub-batch is presented as release-complete.
 - Ranges are inclusive generated coverage order ranges. Implementation Agents may align a range edge to the nearest official title/chapter/page boundary only if the resulting changed ranges remain non-overlapping, cover the full document exactly once, and this task list is updated in the same feature-memory PR before content is authored.
+
+### D9-002 Penal Code Range Notes
+
+- D9-002 ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-penal-087-172-current` on branch `codex/019-primary-sources-penal-087-172-current`, based on `origin/codex/019-primary-sources-content-batch-insurance` at `c45a00d69ea3ae1e318206b42ba142487b3e8070`.
+- Added reviewed learner, QA, and search shards for `ley-11179-codigo-penal` generated coverage chunks 087-172 inclusive: 86 learner chunks, 86 approved translation QA records, 86 approved simplification QA records, and 86 search entries.
+- For every D9-002 chunk, the learner shard copies `chunkId`, `officialDocumentId`, order, heading path, official label, chunking strategy, source span, source text hash, source fingerprint, and `originalSpanish` from the current coverage inventory and archived Spanish Markdown.
+- Full Russian and simple Russian text were reviewed against the archive spans, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; QA shards mark translation and simplification QA as `approved` with `checkedAt: "2026-05-18"`.
+- D9-002 terminology preserves Penal Code article references, reclusión/prisión distinctions where legally relevant, penalty ranges, recurrence/prescription rules, action-type distinctions, probationary trial suspension, homicide/traffic-homicide and injury thresholds, amendment notes, and Infoleg references.
+- No official archive files were edited. D9-002 is a partial Penal Code sub-batch only; `ley-11179-codigo-penal` remains not release-complete until D9-001 through D9-006 and D9-900 recomposition pass.
+- Orchestration update on 2026-05-18: PR #107 base will move again. This D9-002 branch must not be pushed or opened as a PR until Orchestrator separately commands it, and final readiness must be rechecked after fetching and rebasing onto the latest `origin/codex/019-primary-sources-content-batch-insurance` once #107 is green.
+- Final local validation after #107 green: fetched and rebased onto `origin/codex/019-primary-sources-content-batch-insurance` at `1a39d3539e12af97dea422415328e287454f4d6f`; D9-002 self-check passed for 86 archive-aligned chunks/search entries with approved QA and no simplified Spanish fields; `pnpm run validate:content` passed; `pnpm run test` passed with 163 tests; `git diff --check` passed.
+- Stacked PR preparation after #119 green: fetched and rebased onto `origin/codex/019-primary-sources-penal-001-086-current` at `456f567cd6a722ae750e90bad0c9ea29c3e31f6c`; resolved the `tasks.md` conflict by preserving D9-001 completed status/process memory and marking D9-002 complete with its range-shard evidence. The earlier no-push hold is superseded by the Orchestrator command to push/open D9-002 after D9-001.
 
 ### Verification Evidence
 

@@ -1,0 +1,954 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "entries": [
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-43-el-autor-de-tentativa-no-estara-087",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-43-el-autor-de-tentativa-no-estara-087",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-44-la-pena-que-corresponderia-al-agente-088",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-44-la-pena-que-corresponderia-al-agente-088",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-vii-089",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-vii-089",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-45-los-que-tomasen-parte-en-la-090",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-45-los-que-tomasen-parte-en-la-090",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-46-los-que-cooperen-de-cualquier-otro-091",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-46-los-que-cooperen-de-cualquier-otro-091",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-47-si-de-las-circunstancias-particulares-de-092",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-47-si-de-las-circunstancias-particulares-de-092",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-48-las-relaciones-circunstancias-y-calidades-personales-093",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-48-las-relaciones-circunstancias-y-calidades-personales-093",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-49-no-se-consideraran-participes-de-los-094",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-49-no-se-consideraran-participes-de-los-094",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-viii-095",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-viii-095",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-50-se-considerara-reincidente-a-toda-persona-096",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-50-se-considerara-reincidente-a-toda-persona-096",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-51-todo-ente-oficial-que-lleve-registros-097",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-51-todo-ente-oficial-que-lleve-registros-097",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-52-se-impondra-reclusion-por-tiempo-indeterminado-098",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-52-se-impondra-reclusion-por-tiempo-indeterminado-098",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-53-en-los-casos-del-articulo-anterior-099",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-53-en-los-casos-del-articulo-anterior-099",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-ix-100",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-ix-100",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-54-cuando-un-hecho-cayere-bajo-mas-101",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-54-cuando-un-hecho-cayere-bajo-mas-101",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-55-cuando-concurrieren-varios-hechos-independientes-reprimidos-102",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-55-cuando-concurrieren-varios-hechos-independientes-reprimidos-102",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-56-cuando-concurrieren-varios-hechos-independientes-reprimidos-103",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-56-cuando-concurrieren-varios-hechos-independientes-reprimidos-103",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-57-a-los-efectos-del-articulo-anterior-104",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-57-a-los-efectos-del-articulo-anterior-104",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-58-las-reglas-precedentes-se-aplicaran-tambien-105",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-58-las-reglas-precedentes-se-aplicaran-tambien-105",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-x-106",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-x-106",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-59-la-accion-penal-se-extinguira-107",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-59-la-accion-penal-se-extinguira-107",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-60-la-renuncia-de-la-persona-ofendida-108",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-60-la-renuncia-de-la-persona-ofendida-108",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-61-la-amnistia-extinguira-la-accion-penal-109",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-61-la-amnistia-extinguira-la-accion-penal-109",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-62-la-accion-penal-se-prescribira-durante-110",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-62-la-accion-penal-se-prescribira-durante-110",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-63-la-prescripcion-de-la-accion-empezara-111",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-63-la-prescripcion-de-la-accion-empezara-111",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-64-la-accion-penal-por-delito-reprimido-112",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-64-la-accion-penal-por-delito-reprimido-112",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-65-las-penas-se-prescriben-en-los-113",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-65-las-penas-se-prescriben-en-los-113",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-66-la-prescripcion-de-la-pena-empezara-114",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-66-la-prescripcion-de-la-pena-empezara-114",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-67-la-prescripcion-se-suspende-en-los-115",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-67-la-prescripcion-se-suspende-en-los-115",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-68-el-indulto-del-reo-extinguira-la-116",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-68-el-indulto-del-reo-extinguira-la-116",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-69-el-perdon-de-la-parte-ofendida-117",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-69-el-perdon-de-la-parte-ofendida-117",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-70-las-indemnizaciones-pecuniarias-inherentes-a-las-118",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-70-las-indemnizaciones-pecuniarias-inherentes-a-las-118",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xi-119",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xi-119",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-71-sin-perjuicio-de-las-reglas-de-120",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-71-sin-perjuicio-de-las-reglas-de-120",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-72-son-acciones-dependientes-de-instancia-privada-121",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-72-son-acciones-dependientes-de-instancia-privada-121",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-73-son-acciones-privadas-las-que-nacen-122",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-73-son-acciones-privadas-las-que-nacen-122",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-74-articulo-derogado-por-art-2o-de-123",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-74-articulo-derogado-por-art-2o-de-123",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-75-articulo-derogado-por-art-5o-de-124",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-75-articulo-derogado-por-art-5o-de-124",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xii-125",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xii-125",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-76-la-suspension-del-juicio-a-prueba-126",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-76-la-suspension-del-juicio-a-prueba-126",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-76-bis-el-imputado-de-un-delito-127",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-76-bis-el-imputado-de-un-delito-127",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-76-ter-el-tiempo-de-la-suspension-128",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-76-ter-el-tiempo-de-la-suspension-128",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-76-quater-la-suspension-del-juicio-a-129",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-76-quater-la-suspension-del-juicio-a-129",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xiii-130",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xiii-130",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-77-para-la-inteligencia-del-texto-de-131",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-77-para-la-inteligencia-del-texto-de-131",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-78-queda-comprendido-en-el-concepto-de-132",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-78-queda-comprendido-en-el-concepto-de-132",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-78-bis-articulo-derogado-por-art-14-133",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-78-bis-articulo-derogado-por-art-14-133",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--libro-segundo-134",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--libro-segundo-134",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-i-135",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-i-135",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-i-136",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-i-136",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-79-se-aplicara-reclusion-o-prision-de-137",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-79-se-aplicara-reclusion-o-prision-de-137",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-80-se-impondra-reclusion-perpetua-o-prision-138",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-80-se-impondra-reclusion-perpetua-o-prision-138",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-81-1o-se-impondra-reclusion-de-tres-139",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-81-1o-se-impondra-reclusion-de-tres-139",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-82-cuando-en-el-caso-del-inciso-140",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-82-cuando-en-el-caso-del-inciso-140",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-83-sera-reprimido-con-prision-de-uno-141",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-83-sera-reprimido-con-prision-de-uno-141",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-84-sera-reprimido-con-prision-de-uno-142",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-84-sera-reprimido-con-prision-de-uno-142",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-84-bis-sera-reprimido-con-prision-de-143",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-84-bis-sera-reprimido-con-prision-de-143",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-85-el-o-la-que-causare-un-144",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-85-el-o-la-que-causare-un-144",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-85-bis-sera-reprimido-o-reprimida-con-145",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-85-bis-sera-reprimido-o-reprimida-con-145",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-86-no-es-delito-el-aborto-realizado-146",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-86-no-es-delito-el-aborto-realizado-146",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-87-sera-reprimido-o-reprimida-con-prision-147",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-87-sera-reprimido-o-reprimida-con-prision-147",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-88-sera-reprimida-con-prision-de-tres-148",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-88-sera-reprimida-con-prision-de-tres-148",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-ii-149",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-ii-149",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-89-se-impondra-prision-de-un-mes-150",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-89-se-impondra-prision-de-un-mes-150",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-90-se-impondra-reclusion-o-prision-de-151",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-90-se-impondra-reclusion-o-prision-de-151",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-91-se-impondra-reclusion-o-prision-de-152",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-91-se-impondra-reclusion-o-prision-de-152",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-92-si-concurriere-alguna-de-las-circunstancias-153",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-92-si-concurriere-alguna-de-las-circunstancias-153",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-93-si-concurriere-la-circunstancia-enunciada-en-154",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-93-si-concurriere-la-circunstancia-enunciada-en-154",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-94-se-impondra-prision-de-un-1-155",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-94-se-impondra-prision-de-un-1-155",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-94-bis-sera-reprimido-con-prision-de-156",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-94-bis-sera-reprimido-con-prision-de-156",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iii-157",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iii-157",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-95-cuando-en-rina-o-agresion-en-158",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-95-cuando-en-rina-o-agresion-en-158",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-96-si-las-lesiones-fueren-las-previstas-159",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-96-si-las-lesiones-fueren-las-previstas-159",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iv-160",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iv-160",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-97-los-que-se-batieren-en-duelo-161",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-97-los-que-se-batieren-en-duelo-161",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-98-los-que-se-batieren-sin-la-162",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-98-los-que-se-batieren-sin-la-162",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-99-el-que-instigare-a-otro-a-163",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-99-el-que-instigare-a-otro-a-163",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-100-el-que-provocare-o-diere-causa-164",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-100-el-que-provocare-o-diere-causa-164",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-101-el-combatiente-que-faltare-en-dano-165",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-101-el-combatiente-que-faltare-en-dano-165",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-102-los-padrinos-de-un-duelo-que-166",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-102-los-padrinos-de-un-duelo-que-166",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-103-cuando-los-padrinos-concertaren-un-duelo-167",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-103-cuando-los-padrinos-concertaren-un-duelo-167",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-v-168",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-v-168",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-104-sera-reprimido-con-uno-a-tres-169",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-104-sera-reprimido-con-uno-a-tres-169",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-105-si-concurriera-alguna-de-las-circunstancias-170",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-105-si-concurriera-alguna-de-las-circunstancias-170",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-vi-171",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-vi-171",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-106-el-que-pusiere-en-peligro-la-172",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-106-el-que-pusiere-en-peligro-la-172",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
