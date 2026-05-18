@@ -318,6 +318,7 @@
 - Checked `content/primary-sources/search/ley-26994-codigo-civil-comercial--0001-0182.search.json`; it contains `chunkId` references and `textFields` only, with no duplicated `simpleRu` text, so the search shard was intentionally left unchanged.
 - Post-repair temporary Node scan result with the same broad heuristic: 0 flagged near-verbatim article-prefixed `simpleRu` entries.
 - PR #126 legal-terminology review follow-up on 2026-05-18, starting from head `cb10051839527d05ac391ca4e5fa78acab6005d7`: resolved comment `3262593020` by changing Articles 23 and 24 from physical-ability wording to legal capacity/дееспособность wording; resolved comment `3262593025` by changing Article 48 from `Блудные дети`/`дисквалифицированы` to `расточители` and limitation of legal capacity. Also corrected adjacent Article 49 `inhabilitación` wording from `дисквалификация` to legal-capacity restriction/support terminology. Search shard inspection confirmed the D10-001 search file has only chunk references/text field names, not duplicated Russian text.
+- PR #126 proper-name review follow-up on 2026-05-18, starting from head `c22dc4572b51ee9be3e5dcedd3d49fd3d53fa560`: resolved comment `3262602629` by correcting the Article 10 signatory `AMADO BOUDOU` from semantic Russian `ЛЮБИМЫЙ БУДУ` to transliterated all-caps `АМАДО БУДУ`, consistent with nearby all-caps signatory transliterations. `simpleRu` did not name the signatories, and the D10-001 search shard stores only chunk references/text field names, so no search shard edit was needed.
 
 ### Partial Range Shard Infrastructure Notes
 
@@ -648,6 +649,13 @@
 
 - PR #126 legal-terminology review follow-up on 2026-05-18:
   - Targeted grep passed with zero matches in `content/primary-sources/documents/ley-26994-codigo-civil-comercial--0001-0182.ru.json` and the matching D10-001 search shard for `физической нагруз`, `Блудные дети`, and `дисквалифицирован`.
+  - Near-verbatim article-prefixed high-overlap `simpleRu` scan remained 0 for the D10-001 document shard.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 163 tests, 163 pass, 0 fail.
+  - `git diff --check` passed with no output.
+- PR #126 proper-name review follow-up on 2026-05-18:
+  - Targeted grep passed with zero stale semantic-name matches for `ЛЮБИМЫЙ БУДУ`, `ЛЮБИМ`, `любим.*буд`, and lowercase/semantic variants in the D10-001 document shard and matching search shard; only the official Spanish `AMADO BOUDOU` source text and corrected Russian `АМАДО БУДУ` remain.
+  - Targeted signatory chunk inspection passed for `ley-26994-codigo-civil-comercial--articulo-10-comuniquese-al-poder-ejecutivo-nacional-065`: `AMADO BOUDOU` now maps to `АМАДО БУДУ`; `JULIAN A. DOMINGUEZ`, Lucas Chedrese, and Juan H. Estrada remain proper-name transliterations.
   - Near-verbatim article-prefixed high-overlap `simpleRu` scan remained 0 for the D10-001 document shard.
   - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run test` passed: 163 tests, 163 pass, 0 fail.
