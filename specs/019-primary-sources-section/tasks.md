@@ -114,7 +114,7 @@
 - [x] D9-003 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 173-258 inclusive. Evidence: added reviewed range shards `content/primary-sources/documents/ley-11179-codigo-penal--173-258.ru.json`, `content/primary-sources/qa/ley-11179-codigo-penal--173-258.qa.json`, and `content/primary-sources/search/ley-11179-codigo-penal--173-258.search.json` with 86 generated chunks, approved translation/simplification QA checked 2026-05-18, Spanish span/fingerprint alignment verified against `primary-sources.coverage.json`, and one search projection per chunk.
 - [x] D9-004 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 259-344 inclusive. Evidence: added reviewed range shards `content/primary-sources/documents/ley-11179-codigo-penal--259-344.ru.json`, `content/primary-sources/qa/ley-11179-codigo-penal--259-344.qa.json`, and `content/primary-sources/search/ley-11179-codigo-penal--259-344.search.json` with 86 generated chunks, approved translation/simplification QA checked 2026-05-18, Spanish span/fingerprint alignment verified against `primary-sources.coverage.json`, and one search projection per chunk.
 - [x] D9-005 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 345-430 inclusive. Evidence: added reviewed range shards `content/primary-sources/documents/ley-11179-codigo-penal--345-430.ru.json`, `content/primary-sources/qa/ley-11179-codigo-penal--345-430.qa.json`, and `content/primary-sources/search/ley-11179-codigo-penal--345-430.search.json` with 86 generated chunks, approved translation/simplification QA checked 2026-05-18, Spanish span/fingerprint alignment verified against `primary-sources.coverage.json`, and one search projection per chunk.
-- [ ] D9-006 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 431-516 inclusive.
+- [x] D9-006 Translate, simplify, QA, and search-project `ley-11179-codigo-penal` generated coverage chunks 431-516 inclusive. Evidence: added reviewed range shards `content/primary-sources/documents/ley-11179-codigo-penal--431-516.ru.json`, `content/primary-sources/qa/ley-11179-codigo-penal--431-516.qa.json`, and `content/primary-sources/search/ley-11179-codigo-penal--431-516.search.json` with 86 generated chunks, approved translation/simplification QA checked 2026-05-18, Spanish span/fingerprint alignment verified against `primary-sources.coverage.json`, and one search projection per chunk.
 - [ ] D9-900 Recompose `ley-11179-codigo-penal` after D9-001 through D9-006: verify all 516 generated chunks are present exactly once, archive-aligned, searchable, terminology-consistent, and approved with non-mechanical QA notes before marking the document complete.
 - [ ] D10-001 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 0001-0182 inclusive.
 - [ ] D10-002 Translate, simplify, QA, and search-project `ley-26994-codigo-civil-comercial` generated coverage chunks 0183-0364 inclusive.
@@ -329,6 +329,29 @@
   - `npm run build` passed; Vite emitted the pre-existing large chunk size warning and generated a service worker with 280 cached assets.
   - `git diff --check` passed.
   - `node scripts/check-feature-memory.mjs --worktree` passed.
+
+### Slice D9-006 Penal Code Range Notes
+
+- Slice D9-006 ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-penal-431-516-current` on branch `codex/019-primary-sources-penal-431-516-current`.
+- After PR #107 was announced green, the worktree fetched and rebased cleanly onto `origin/codex/019-primary-sources-content-batch-insurance` at `1a39d3539e12af97dea422415328e287454f4d6f` before final validation.
+- Added reviewed learner, QA, and search range shards for `ley-11179-codigo-penal` generated coverage chunks 431-516 inclusive:
+  - `content/primary-sources/documents/ley-11179-codigo-penal--431-516.ru.json`
+  - `content/primary-sources/qa/ley-11179-codigo-penal--431-516.qa.json`
+  - `content/primary-sources/search/ley-11179-codigo-penal--431-516.search.json`
+- For every D9-006 chunk, the learner shard copies `chunkId`, `officialDocumentId`, order, heading path, official label, chunking strategy, source span, source text hash, source fingerprint, and exact `originalSpanish` from the current archive/coverage inventory.
+- Full Russian and simple Russian text were reviewed against archive spans 2506-3151, coverage fingerprints, and `content/primary-sources/terminology.ru.md`; QA shards mark translation and simplification QA as `approved` with `checkedAt: "2026-05-18"`.
+- D9-006 terminology preserves Código Penal article references, public-office penalties, inhabilitación, exacciones, malversación, encubrimiento, false testimony, document/financial-market crimes, money-laundering and terrorism-financing thresholds, corporate sanctions, confiscation rules, and amendment/history notes.
+- D9-006 search shard adds one entry for each of the 86 translated chunks with `title`, `fullTranslationRu`, `simpleRu`, and `originalSpanish` text fields.
+- This sub-batch does not mark the Penal Code release-complete. D9-900 remains the required recomposition gate after D9-001 through D9-006 are integrated.
+- D9-006 does not edit `content/official-documents/**`, UI files, validators, coverage generator files, or root primary-source manifests.
+- D9-006 verification evidence before local commit:
+  - Custom shard self-check passed: 86 chunks, generated coverage orders 431-516, exact archive-derived `originalSpanish`, approved QA, and one search entry per chunk.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - Initial `pnpm run test` failed because the fresh worktree had no `node_modules` and `tests/domain.test.mjs` could not resolve `typescript`; resolved with `pnpm install --frozen-lockfile`.
+  - Re-run `pnpm run test` passed: 163 tests, 163 pass, 0 fail.
+  - `git diff --check` passed with no output.
+  - Diff scope against `origin/codex/019-primary-sources-content-batch-insurance` contains only the three D9-006 shard files and this `tasks.md` process-memory update.
+- Stacked PR preparation after #123 green: fetched and rebased onto `origin/codex/019-primary-sources-penal-345-430-current` at `c3c0a939e34e735d9ee36ae8378d537fe1a4406c`; resolved the `tasks.md` conflict by preserving D9-001, D9-002, D9-003, D9-004, and D9-005 completed statuses/evidence and marking D9-006 complete with its range-shard evidence. Stacked validation after the #123 rebase: `pnpm run validate:content` passed; `pnpm run test` passed with 163 tests; `git diff --check` passed; diff scope against `origin/codex/019-primary-sources-penal-345-430-current...HEAD` remained limited to the three D9-006 shard files plus this D9-006 evidence update in `tasks.md`.
 
 ### Slice D0 Implementation Notes
 
