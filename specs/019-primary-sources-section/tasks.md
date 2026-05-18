@@ -317,6 +317,7 @@
 - Corrected the bad heading term `Узаконено` in D10-001 full Russian translations for Articles 80 and 87 to `Кто вправе обратиться`; the corresponding simple Russian entries now explain who may apply in context.
 - Checked `content/primary-sources/search/ley-26994-codigo-civil-comercial--0001-0182.search.json`; it contains `chunkId` references and `textFields` only, with no duplicated `simpleRu` text, so the search shard was intentionally left unchanged.
 - Post-repair temporary Node scan result with the same broad heuristic: 0 flagged near-verbatim article-prefixed `simpleRu` entries.
+- PR #126 legal-terminology review follow-up on 2026-05-18, starting from head `cb10051839527d05ac391ca4e5fa78acab6005d7`: resolved comment `3262593020` by changing Articles 23 and 24 from physical-ability wording to legal capacity/дееспособность wording; resolved comment `3262593025` by changing Article 48 from `Блудные дети`/`дисквалифицированы` to `расточители` and limitation of legal capacity. Also corrected adjacent Article 49 `inhabilitación` wording from `дисквалификация` to legal-capacity restriction/support terminology. Search shard inspection confirmed the D10-001 search file has only chunk references/text field names, not duplicated Russian text.
 
 ### Partial Range Shard Infrastructure Notes
 
@@ -644,6 +645,13 @@
 - Stacked PR preparation after #119 green: fetched and rebased onto `origin/codex/019-primary-sources-penal-001-086-current` at `456f567cd6a722ae750e90bad0c9ea29c3e31f6c`; resolved the `tasks.md` conflict by preserving D9-001 completed status/process memory and marking D9-002 complete with its range-shard evidence. The earlier no-push hold is superseded by the Orchestrator command to push/open D9-002 after D9-001.
 
 ### Verification Evidence
+
+- PR #126 legal-terminology review follow-up on 2026-05-18:
+  - Targeted grep passed with zero matches in `content/primary-sources/documents/ley-26994-codigo-civil-comercial--0001-0182.ru.json` and the matching D10-001 search shard for `физической нагруз`, `Блудные дети`, and `дисквалифицирован`.
+  - Near-verbatim article-prefixed high-overlap `simpleRu` scan remained 0 for the D10-001 document shard.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 163 tests, 163 pass, 0 fail.
+  - `git diff --check` passed with no output.
 
 - D9-005 local preparation on 2026-05-18:
   - Assigned worktree: `/Users/chap/devel/cabadrive-019-primary-sources-penal-345-430-current`; branch: `codex/019-primary-sources-penal-345-430-current`; base: `origin/codex/019-primary-sources-content-batch-insurance` at `c45a00d69ea3ae1e318206b42ba142487b3e8070`.
