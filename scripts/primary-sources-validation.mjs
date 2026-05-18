@@ -368,6 +368,15 @@ function recombineDocumentsByOfficialDocumentId(documents, { label, chunkLabel }
   };
 }
 
+function validateUniqueDocumentsBeforeRecomposition(errors, documents, label) {
+  const seenIds = new Set();
+  for (const document of asArray(documents)) {
+    if (!isPlainObject(document) || !isNonEmptyString(document.officialDocumentId)) continue;
+    if (seenIds.has(document.officialDocumentId)) errors.push(`${document.officialDocumentId}: duplicate ${label}.`);
+    seenIds.add(document.officialDocumentId);
+  }
+}
+
 export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, searchIndex, shardFiles } = {}) {
   const errors = [];
   const learnerContentPaths = [
@@ -658,6 +667,10 @@ export function validatePrimarySources({
     manifestEntryById.set(entry.id, entry);
     manifestIds.push(entry.id);
     if (strictMode) validateManifestReleaseReadiness(errors, entry, entry.id);
+  }
+
+  if (!coverageOnlyMode) {
+    validateUniqueDocumentsBeforeRecomposition(errors, corpus?.documents, "primary sources corpus document");
   }
 
   const normalizedCorpusDocuments = coverageOnlyMode

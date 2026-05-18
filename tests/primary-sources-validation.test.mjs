@@ -301,6 +301,22 @@ test("document range shards with the same officialDocumentId recombine and pass"
   assert.deepEqual(validate({ corpus: combined.corpus, learnerContentPaths: combined.learnerContentPaths }), []);
 });
 
+test("rejects duplicate root corpus documents before range-shard recomposition", () => {
+  const [firstChunk, secondChunk] = corpus().documents[0].chunks;
+  const baseDocument = { ...corpus().documents[0], chunks: [] };
+  const errors = validate({
+    corpus: {
+      ...corpus(),
+      documents: [
+        { ...baseDocument, chunks: [firstChunk] },
+        { ...baseDocument, chunks: [secondChunk] }
+      ]
+    }
+  });
+
+  assert(errors.includes("doc-1: duplicate primary sources corpus document."));
+});
+
 test("document range shards with mismatched metadata fail recomposition", () => {
   const [firstChunk, secondChunk] = corpus().documents[0].chunks;
   const baseDocument = { ...corpus().documents[0], chunks: [] };
