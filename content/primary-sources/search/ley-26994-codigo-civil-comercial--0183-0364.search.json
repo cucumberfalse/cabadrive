@@ -1,0 +1,2010 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-26994-codigo-civil-comercial",
+  "entries": [
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-98-falta-de-registro-o-nulidad-del-183",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-98-falta-de-registro-o-nulidad-del-183",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-99-determinacion-de-la-edad-si-no-184",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-99-determinacion-de-la-edad-si-no-184",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-10-185",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-10-185",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-186",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-186",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-100-regla-general-las-personas-incapaces-ejercen-187",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-100-regla-general-las-personas-incapaces-ejercen-187",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-101-enumeracion-son-representantes-188",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-101-enumeracion-son-representantes-188",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-102-asistencia-las-personas-con-capacidad-restringida-189",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-102-asistencia-las-personas-con-capacidad-restringida-189",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-103-actuacion-del-ministerio-publico-la-actuacion-190",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-103-actuacion-del-ministerio-publico-la-actuacion-190",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-191",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-191",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-104-concepto-y-principios-generales-la-tutela-192",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-104-concepto-y-principios-generales-la-tutela-192",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-105-caracteres-la-tutela-puede-ser-ejercida-193",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-105-caracteres-la-tutela-puede-ser-ejercida-193",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-106-tutor-designado-por-los-padres-cualquiera-194",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-106-tutor-designado-por-los-padres-cualquiera-194",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-107-tutela-dativa-ante-la-ausencia-de-195",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-107-tutela-dativa-ante-la-ausencia-de-195",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-108-prohibiciones-para-ser-tutor-dativo-el-196",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-108-prohibiciones-para-ser-tutor-dativo-el-196",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-109-tutela-especial-corresponde-la-designacion-judicial-197",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-109-tutela-especial-corresponde-la-designacion-judicial-197",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-110-personas-excluidas-no-pueden-ser-tutores-198",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-110-personas-excluidas-no-pueden-ser-tutores-198",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-111-obligados-a-denunciar-los-parientes-obligados-199",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-111-obligados-a-denunciar-los-parientes-obligados-199",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-112-discernimiento-judicial-competencia-la-tutela-es-200",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-112-discernimiento-judicial-competencia-la-tutela-es-200",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-113-audiencia-con-la-persona-menor-de-201",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-113-audiencia-con-la-persona-menor-de-201",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-114-actos-anteriores-al-discernimiento-de-la-202",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-114-actos-anteriores-al-discernimiento-de-la-202",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-115-inventario-y-avaluo-discernida-la-tutela-203",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-115-inventario-y-avaluo-discernida-la-tutela-203",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-116-rendicion-de-cuentas-si-el-tutor-204",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-116-rendicion-de-cuentas-si-el-tutor-204",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-117-ejercicio-quien-ejerce-la-tutela-es-205",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-117-ejercicio-quien-ejerce-la-tutela-es-205",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-118-responsabilidad-el-tutor-es-responsable-del-206",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-118-responsabilidad-el-tutor-es-responsable-del-206",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-119-educacion-y-alimentos-el-juez-debe-207",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-119-educacion-y-alimentos-el-juez-debe-207",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-120-actos-prohibidos-quien-ejerce-la-tutela-208",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-120-actos-prohibidos-quien-ejerce-la-tutela-208",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-121-actos-que-requieren-autorizacion-judicial-ademas-209",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-121-actos-que-requieren-autorizacion-judicial-ademas-209",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-122-derechos-reales-sobre-bienes-del-tutelado-210",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-122-derechos-reales-sobre-bienes-del-tutelado-210",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-123-forma-de-la-venta-la-venta-211",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-123-forma-de-la-venta-la-venta-211",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-124-dinero-luego-de-ser-cubiertos-los-212",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-124-dinero-luego-de-ser-cubiertos-los-212",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-125-fideicomiso-y-otras-inversiones-seguras-el-213",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-125-fideicomiso-y-otras-inversiones-seguras-el-213",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-126-sociedad-si-el-tutelado-tiene-parte-214",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-126-sociedad-si-el-tutelado-tiene-parte-214",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-127-fondo-de-comercio-si-el-tutelado-215",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-127-fondo-de-comercio-si-el-tutelado-215",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-128-retribucion-del-tutor-el-tutor-tiene-216",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-128-retribucion-del-tutor-el-tutor-tiene-216",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-129-cese-del-derecho-a-la-retribucion-217",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-129-cese-del-derecho-a-la-retribucion-217",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-130-deber-de-rendir-cuentas-periodicidad-quien-218",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-130-deber-de-rendir-cuentas-periodicidad-quien-218",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-131-rendicion-final-terminada-la-tutela-quien-219",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-131-rendicion-final-terminada-la-tutela-quien-219",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-132-gastos-de-la-rendicion-los-gastos-220",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-132-gastos-de-la-rendicion-los-gastos-220",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-133-gastos-de-la-gestion-quien-ejerce-221",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-133-gastos-de-la-gestion-quien-ejerce-221",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-134-danos-si-el-tutor-no-rinde-222",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-134-danos-si-el-tutor-no-rinde-222",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-135-causas-de-terminacion-de-la-tutela-223",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-135-causas-de-terminacion-de-la-tutela-223",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-136-remocion-del-tutor-son-causas-de-224",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-136-remocion-del-tutor-son-causas-de-224",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-137-suspension-provisoria-durante-la-tramitacion-del-225",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-137-suspension-provisoria-durante-la-tramitacion-del-225",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-226",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-226",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-138-normas-aplicables-la-curatela-se-rige-227",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-138-normas-aplicables-la-curatela-se-rige-227",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-139-personas-que-pueden-ser-curadores-la-228",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-139-personas-que-pueden-ser-curadores-la-228",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-140-persona-protegida-con-hijos-el-curador-229",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-140-persona-protegida-con-hijos-el-curador-229",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--titulo-ii-230",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--titulo-ii-230",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-1-231",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-1-231",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-232",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-232",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-141-definicion-son-personas-juridicas-todos-los-233",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-141-definicion-son-personas-juridicas-todos-los-233",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-142-comienzo-de-la-existencia-la-existencia-234",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-142-comienzo-de-la-existencia-la-existencia-234",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-143-personalidad-diferenciada-la-persona-juridica-tiene-235",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-143-personalidad-diferenciada-la-persona-juridica-tiene-235",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-144-inoponibilidad-de-la-personalidad-juridica-la-236",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-144-inoponibilidad-de-la-personalidad-juridica-la-236",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-237",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-237",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-145-clases-las-personas-juridicas-son-publicas-238",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-145-clases-las-personas-juridicas-son-publicas-238",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-146-personas-juridicas-publicas-son-personas-juridicas-239",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-146-personas-juridicas-publicas-son-personas-juridicas-239",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-147-ley-aplicable-las-personas-juridicas-publicas-240",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-147-ley-aplicable-las-personas-juridicas-publicas-240",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-148-personas-juridicas-privadas-son-personas-juridicas-241",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-148-personas-juridicas-privadas-son-personas-juridicas-241",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-149-participacion-del-estado-la-participacion-del-242",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-149-participacion-del-estado-la-participacion-del-242",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-150-leyes-aplicables-las-personas-juridicas-privadas-243",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-150-leyes-aplicables-las-personas-juridicas-privadas-243",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-244",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-244",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-151-nombre-la-persona-juridica-debe-tener-245",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-151-nombre-la-persona-juridica-debe-tener-245",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-152-domicilio-y-sede-social-el-domicilio-246",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-152-domicilio-y-sede-social-el-domicilio-246",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-153-alcance-del-domicilio-notificaciones-se-tienen-247",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-153-alcance-del-domicilio-notificaciones-se-tienen-247",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-154-patrimonio-la-persona-juridica-debe-tener-248",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-154-patrimonio-la-persona-juridica-debe-tener-248",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-155-duracion-la-duracion-de-la-persona-249",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-155-duracion-la-duracion-de-la-persona-249",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-156-objeto-el-objeto-de-la-persona-250",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-156-objeto-el-objeto-de-la-persona-250",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-157-modificacion-del-estatuto-el-estatuto-de-251",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-157-modificacion-del-estatuto-el-estatuto-de-251",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-158-gobierno-administracion-y-fiscalizacion-el-estatuto-252",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-158-gobierno-administracion-y-fiscalizacion-el-estatuto-252",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-159-deber-de-lealtad-y-diligencia-interes-253",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-159-deber-de-lealtad-y-diligencia-interes-253",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-160-responsabilidad-de-los-administradores-los-administradores-254",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-160-responsabilidad-de-los-administradores-los-administradores-254",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-161-obstaculos-que-impiden-adoptar-decisiones-si-255",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-161-obstaculos-que-impiden-adoptar-decisiones-si-255",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-162-transformacion-fusion-escision-las-personas-juridicas-256",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-162-transformacion-fusion-escision-las-personas-juridicas-256",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-163-causales-la-persona-juridica-se-disuelve-257",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-163-causales-la-persona-juridica-se-disuelve-257",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-164-revocacion-de-la-autorizacion-estatal-la-258",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-164-revocacion-de-la-autorizacion-estatal-la-258",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-165-prorroga-el-plazo-determinado-de-duracion-259",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-165-prorroga-el-plazo-determinado-de-duracion-259",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-166-reconduccion-la-persona-juridica-puede-ser-260",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-166-reconduccion-la-persona-juridica-puede-ser-260",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-167-liquidacion-y-responsabilidades-vencido-el-plazo-261",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-167-liquidacion-y-responsabilidades-vencido-el-plazo-261",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-2-262",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-2-262",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-263",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-263",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-168-objeto-la-asociacion-civil-debe-tener-264",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-168-objeto-la-asociacion-civil-debe-tener-264",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-169-forma-del-acto-constitutivo-el-acto-265",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-169-forma-del-acto-constitutivo-el-acto-265",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-170-contenido-el-acto-constitutivo-debe-contener-266",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-170-contenido-el-acto-constitutivo-debe-contener-266",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-171-administradores-los-integrantes-de-la-comision-267",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-171-administradores-los-integrantes-de-la-comision-267",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-172-fiscalizacion-el-estatuto-puede-prever-que-268",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-172-fiscalizacion-el-estatuto-puede-prever-que-268",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-173-integrantes-del-organo-de-fiscalizacion-los-269",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-173-integrantes-del-organo-de-fiscalizacion-los-269",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-174-contralor-estatal-las-asociaciones-civiles-requieren-270",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-174-contralor-estatal-las-asociaciones-civiles-requieren-270",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-175-participacion-en-los-actos-de-gobierno-271",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-175-participacion-en-los-actos-de-gobierno-271",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-176-cesacion-en-el-cargo-los-directivos-272",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-176-cesacion-en-el-cargo-los-directivos-272",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-177-extincion-de-la-responsabilidad-la-responsabilidad-273",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-177-extincion-de-la-responsabilidad-la-responsabilidad-273",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-178-participacion-en-las-asambleas-el-pago-274",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-178-participacion-en-las-asambleas-el-pago-274",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-179-renuncia-el-derecho-de-renunciar-a-275",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-179-renuncia-el-derecho-de-renunciar-a-275",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-180-exclusion-los-asociados-solo-pueden-ser-276",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-180-exclusion-los-asociados-solo-pueden-ser-276",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-181-responsabilidad-los-asociados-no-responden-en-277",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-181-responsabilidad-los-asociados-no-responden-en-277",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-182-intransmisibilidad-la-calidad-de-asociado-es-278",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-182-intransmisibilidad-la-calidad-de-asociado-es-278",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-183-disolucion-las-asociaciones-civiles-se-disuelven-279",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-183-disolucion-las-asociaciones-civiles-se-disuelven-279",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-184-liquidador-el-liquidador-debe-ser-designado-280",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-184-liquidador-el-liquidador-debe-ser-designado-280",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-185-procedimiento-de-liquidacion-el-procedimiento-de-281",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-185-procedimiento-de-liquidacion-el-procedimiento-de-281",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-186-normas-supletorias-se-aplican-supletoriamente-las-282",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-186-normas-supletorias-se-aplican-supletoriamente-las-282",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-283",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-283",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-187-forma-del-acto-constitutivo-el-acto-284",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-187-forma-del-acto-constitutivo-el-acto-284",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-188-ley-aplicable-reenvio-las-simples-asociaciones-285",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-188-ley-aplicable-reenvio-las-simples-asociaciones-285",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-189-existencia-la-simple-asociacion-comienza-su-286",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-189-existencia-la-simple-asociacion-comienza-su-286",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-190-prescindencia-de-organo-de-fiscalizacion-las-287",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-190-prescindencia-de-organo-de-fiscalizacion-las-287",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-191-insolvencia-en-caso-de-insuficiencia-de-288",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-191-insolvencia-en-caso-de-insuficiencia-de-288",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-192-responsabilidad-de-los-miembros-el-fundador-289",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-192-responsabilidad-de-los-miembros-el-fundador-289",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-3-290",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-3-290",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-291",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-291",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-193-concepto-las-fundaciones-son-personas-juridicas-292",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-193-concepto-las-fundaciones-son-personas-juridicas-292",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-194-patrimonio-inicial-un-patrimonio-inicial-que-293",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-194-patrimonio-inicial-un-patrimonio-inicial-que-293",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-294",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-294",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-195-acto-constitutivo-estatuto-el-acto-constitutivo-295",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-195-acto-constitutivo-estatuto-el-acto-constitutivo-295",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-196-aportes-el-dinero-en-efectivo-o-296",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-196-aportes-el-dinero-en-efectivo-o-296",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-197-promesas-de-donacion-las-promesas-de-297",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-197-promesas-de-donacion-las-promesas-de-297",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-198-cumplimiento-de-las-promesas-la-fundacion-298",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-198-cumplimiento-de-las-promesas-la-fundacion-298",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-199-planes-de-accion-con-la-solicitud-299",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-199-planes-de-accion-con-la-solicitud-299",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-200-responsabilidad-de-los-fundadores-y-administradores-300",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-200-responsabilidad-de-los-fundadores-y-administradores-300",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-201-consejo-de-administracion-el-gobierno-y-301",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-201-consejo-de-administracion-el-gobierno-y-301",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-202-derecho-de-los-fundadores-los-fundadores-302",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-202-derecho-de-los-fundadores-los-fundadores-302",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-203-designacion-de-los-consejeros-la-designacion-303",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-203-designacion-de-los-consejeros-la-designacion-303",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-204-caracter-de-los-consejeros-los-miembros-304",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-204-caracter-de-los-consejeros-los-miembros-304",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-205-comite-ejecutivo-el-estatuto-puede-prever-305",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-205-comite-ejecutivo-el-estatuto-puede-prever-305",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-206-caracter-honorario-del-cargo-los-miembros-306",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-206-caracter-honorario-del-cargo-los-miembros-306",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-207-reuniones-convocatorias-mayorias-decisiones-y-actas-307",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-207-reuniones-convocatorias-mayorias-decisiones-y-actas-307",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-208-quorum-especial-las-mayorias-establecidas-en-308",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-208-quorum-especial-las-mayorias-establecidas-en-308",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-209-remocion-del-consejo-de-administracion-los-309",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-209-remocion-del-consejo-de-administracion-los-309",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-210-acefalia-del-consejo-de-administracion-cuando-310",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-210-acefalia-del-consejo-de-administracion-cuando-310",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-211-derechos-y-obligaciones-de-los-integrantes-311",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-211-derechos-y-obligaciones-de-los-integrantes-311",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-212-contrato-con-el-fundador-o-sus-312",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-212-contrato-con-el-fundador-o-sus-312",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-213-destino-de-los-ingresos-las-fundaciones-313",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-213-destino-de-los-ingresos-las-fundaciones-313",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-4a-314",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-4a-314",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-214-deber-de-informacion-las-fundaciones-deben-315",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-214-deber-de-informacion-las-fundaciones-deben-315",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-215-colaboracion-de-las-reparticiones-oficiales-las-316",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-215-colaboracion-de-las-reparticiones-oficiales-las-316",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-5a-317",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-5a-317",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-216-mayoria-necesaria-cambio-de-objeto-excepto-318",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-216-mayoria-necesaria-cambio-de-objeto-excepto-318",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-217-destino-de-los-bienes-en-caso-319",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-217-destino-de-los-bienes-en-caso-319",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-218-revocacion-de-las-donaciones-la-reforma-320",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-218-revocacion-de-las-donaciones-la-reforma-320",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-6a-321",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-6a-321",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-219-intervencion-del-ministerio-publico-si-el-322",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-219-intervencion-del-ministerio-publico-si-el-322",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-220-facultades-del-juez-si-los-herederos-323",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-220-facultades-del-juez-si-los-herederos-323",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-7a-324",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-7a-324",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-221-atribuciones-la-autoridad-de-contralor-aprueba-325",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-221-atribuciones-la-autoridad-de-contralor-aprueba-325",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-222-otras-facultades-ademas-de-las-atribuciones-326",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-222-otras-facultades-ademas-de-las-atribuciones-326",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-223-cambio-de-objeto-fusion-y-coordinacion-327",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-223-cambio-de-objeto-fusion-y-coordinacion-327",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-224-recursos-las-decisiones-administrativas-que-denieguen-328",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-224-recursos-las-decisiones-administrativas-que-denieguen-328",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--titulo-iii-329",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--titulo-iii-329",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-1-330",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-1-330",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-331",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-331",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-225-inmuebles-por-su-naturaleza-son-inmuebles-332",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-225-inmuebles-por-su-naturaleza-son-inmuebles-332",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-226-inmuebles-por-accesion-son-inmuebles-por-333",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-226-inmuebles-por-accesion-son-inmuebles-por-333",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-227-cosas-muebles-son-cosas-muebles-las-334",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-227-cosas-muebles-son-cosas-muebles-las-334",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-228-cosas-divisibles-son-cosas-divisibles-las-335",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-228-cosas-divisibles-son-cosas-divisibles-las-335",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-229-cosas-principales-son-cosas-principales-las-336",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-229-cosas-principales-son-cosas-principales-las-336",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-230-cosas-accesorias-son-cosas-accesorias-aquellas-337",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-230-cosas-accesorias-son-cosas-accesorias-aquellas-337",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-231-cosas-consumibles-son-cosas-consumibles-aquellas-338",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-231-cosas-consumibles-son-cosas-consumibles-aquellas-338",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-232-cosas-fungibles-son-cosas-fungibles-aquellas-339",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-232-cosas-fungibles-son-cosas-fungibles-aquellas-339",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-233-frutos-y-productos-frutos-son-los-340",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-233-frutos-y-productos-frutos-son-los-340",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-234-bienes-fuera-del-comercio-estan-fuera-341",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-234-bienes-fuera-del-comercio-estan-fuera-341",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-342",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-342",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-235-bienes-pertenecientes-al-dominio-publico-son-343",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-235-bienes-pertenecientes-al-dominio-publico-son-343",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-236-bienes-del-dominio-privado-del-estado-344",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-236-bienes-del-dominio-privado-del-estado-344",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-237-determinacion-y-caracteres-de-las-cosas-345",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-237-determinacion-y-caracteres-de-las-cosas-345",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-238-bienes-de-los-particulares-los-bienes-346",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-238-bienes-de-los-particulares-los-bienes-346",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-239-aguas-de-los-particulares-las-aguas-347",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-239-aguas-de-los-particulares-las-aguas-347",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-348",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-348",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-240-limites-al-ejercicio-de-los-derechos-349",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-240-limites-al-ejercicio-de-los-derechos-349",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-241-jurisdiccion-cualquiera-sea-la-jurisdiccion-en-350",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-241-jurisdiccion-cualquiera-sea-la-jurisdiccion-en-350",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-2-351",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-2-351",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-242-garantia-comun-todos-los-bienes-del-352",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-242-garantia-comun-todos-los-bienes-del-352",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-243-bienes-afectados-directamente-a-un-servicio-353",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-243-bienes-afectados-directamente-a-un-servicio-353",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-3-354",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-3-354",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-244-afectacion-puede-afectarse-al-regimen-previsto-355",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-244-afectacion-puede-afectarse-al-regimen-previsto-355",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-245-legitimados-la-afectacion-puede-ser-solicitada-356",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-245-legitimados-la-afectacion-puede-ser-solicitada-356",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-246-beneficiarios-son-beneficiarios-de-la-afectacion-357",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-246-beneficiarios-son-beneficiarios-de-la-afectacion-357",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-247-habitacion-efectiva-si-la-afectacion-es-358",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-247-habitacion-efectiva-si-la-afectacion-es-358",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-248-subrogacion-real-la-afectacion-se-transmite-359",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-248-subrogacion-real-la-afectacion-se-transmite-359",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-249-efecto-principal-de-la-afectacion-la-360",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-249-efecto-principal-de-la-afectacion-la-360",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-250-transmision-de-la-vivienda-afectada-el-361",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-250-transmision-de-la-vivienda-afectada-el-361",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-251-frutos-son-embargables-y-ejecutables-los-362",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-251-frutos-son-embargables-y-ejecutables-los-362",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-252-creditos-fiscales-la-vivienda-afectada-esta-363",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-252-creditos-fiscales-la-vivienda-afectada-esta-363",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-253-deberes-de-la-autoridad-de-aplicacion-364",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-253-deberes-de-la-autoridad-de-aplicacion-364",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
