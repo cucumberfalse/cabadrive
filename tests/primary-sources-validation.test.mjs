@@ -400,6 +400,21 @@ test("QA range shards with the same officialDocumentId recombine and pass", () =
   assert.deepEqual(validate({ qa: combined.qa, learnerContentPaths: combined.learnerContentPaths }), []);
 });
 
+test("rejects duplicate root QA documents before range-shard recomposition", () => {
+  const [firstQaChunk, secondQaChunk] = qa().documents[0].chunks;
+  const errors = validate({
+    qa: {
+      ...qa(),
+      documents: [
+        { officialDocumentId: "doc-1", chunks: [firstQaChunk] },
+        { officialDocumentId: "doc-1", chunks: [secondQaChunk] }
+      ]
+    }
+  });
+
+  assert(errors.includes("doc-1: duplicate primary sources QA document."));
+});
+
 test("range-shard recomposition does not mutate reusable in-memory shard objects", () => {
   const [firstChunk, secondChunk] = corpus().documents[0].chunks;
   const [firstQaChunk, secondQaChunk] = qa().documents[0].chunks;

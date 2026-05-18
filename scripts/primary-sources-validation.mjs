@@ -671,6 +671,7 @@ export function validatePrimarySources({
 
   if (!coverageOnlyMode) {
     validateUniqueDocumentsBeforeRecomposition(errors, corpus?.documents, "primary sources corpus document");
+    validateUniqueDocumentsBeforeRecomposition(errors, qa?.documents, "primary sources QA document");
   }
 
   const normalizedCorpusDocuments = coverageOnlyMode
