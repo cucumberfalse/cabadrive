@@ -1,0 +1,1873 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "document": {
+    "officialDocumentId": "ley-11179-codigo-penal",
+    "title": "CODIGO PENAL DE LA NACION ARGENTINA",
+    "shortTitleRu": "Уголовный кодекс Аргентины",
+    "category": "criminal-law",
+    "jurisdiction": "national",
+    "officialSourceType": "national_law_updated_text",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+    "archiveLocalPath": "content/official-documents/documents/ley-11179-codigo-penal.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "current",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "ley-11179-codigo-penal--codigo-penal-de-la-nacion-argentina-001",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 1,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA"
+        ],
+        "officialLabel": "CODIGO PENAL DE LA NACION ARGENTINA",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "# CODIGO PENAL DE LA NACION ARGENTINA\n\nCODIGO PENAL DE LA NACION ARGENTINA\n\nLEY 11.179 (T.O. 1984 actualizado)\n\nIndice Temático\n",
+        "fullTranslationRu": "# УГОЛОВНЫЙ КОДЕКС АРГЕНТИНСКОЙ НАЦИИ\n\nУГОЛОВНЫЙ КОДЕКС АРГЕНТИНСКОЙ НАЦИИ\n\nЗАКОН 11.179 (сводный текст 1984 года, обновленный)\n\nТематический указатель",
+        "simpleRu": "Это начало Уголовного кодекса Аргентины. Здесь указан Закон 11.179 и сказано, что это обновленный сводный текст 1984 года. Дальше идет тематический указатель.",
+        "sourceTextSha256": "60c1536117c04a2459755c29f7226b61004c24f09263b16a937e33207f6f11e5",
+        "sourceFingerprint": "sha256:60c1536117c04a2459755c29f7226b61004c24f09263b16a937e33207f6f11e5",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 8
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--libro-primero-002",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 2,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO"
+        ],
+        "officialLabel": "LIBRO PRIMERO",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "LIBRO PRIMERO\n\nDISPOSICIONES GENERALES\n",
+        "fullTranslationRu": "КНИГА ПЕРВАЯ\n\nОБЩИЕ ПОЛОЖЕНИЯ",
+        "simpleRu": "Книга первая содержит общие правила. Они объясняют, как применяется уголовный закон и какие бывают наказания.",
+        "sourceTextSha256": "3fb325e90fbfde1c5b467f5e3428ae50f7ff06fdd19b36c54a7c347f76d5f1ca",
+        "sourceFingerprint": "sha256:3fb325e90fbfde1c5b467f5e3428ae50f7ff06fdd19b36c54a7c347f76d5f1ca",
+        "sourceSpan": {
+          "startLine": 9,
+          "endLine": 12
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-i-003",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 3,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO I"
+        ],
+        "officialLabel": "TITULO I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO I\n\nAPLICACION DE LA LEY PENAL\n\nArts.1 a 4\n",
+        "fullTranslationRu": "РАЗДЕЛ I\n\nПРИМЕНЕНИЕ УГОЛОВНОГО ЗАКОНА\n\nСтатьи 1-4",
+        "simpleRu": "Раздел I говорит, когда применяется Уголовный кодекс. Это статьи 1-4.",
+        "sourceTextSha256": "6bdf2c49d45a6df5ee27502bd670caea91805d15fb761aa97c069e422e1d3ede",
+        "sourceFingerprint": "sha256:6bdf2c49d45a6df5ee27502bd670caea91805d15fb761aa97c069e422e1d3ede",
+        "sourceSpan": {
+          "startLine": 13,
+          "endLine": 18
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ii-004",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 4,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II"
+        ],
+        "officialLabel": "TITULO II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO II\n\nDE LAS PENAS\n\nArts. 5 a 25\n",
+        "fullTranslationRu": "РАЗДЕЛ II\n\nО НАКАЗАНИЯХ\n\nСтатьи 5-25",
+        "simpleRu": "Раздел II перечисляет наказания и основные правила их исполнения. Это статьи 5-25.",
+        "sourceTextSha256": "78b40d27110cef8af29a1e30e82e826182fc95b10151519724bf5e1b3b2548f9",
+        "sourceFingerprint": "sha256:78b40d27110cef8af29a1e30e82e826182fc95b10151519724bf5e1b3b2548f9",
+        "sourceSpan": {
+          "startLine": 19,
+          "endLine": 24
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iii-005",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 5,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO III"
+        ],
+        "officialLabel": "TITULO III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO III\n\nCONDENACION CONDICIONAL\n\nArts. 26 a 29\n",
+        "fullTranslationRu": "РАЗДЕЛ III\n\nУСЛОВНОЕ ОСУЖДЕНИЕ\n\nСтатьи 26-29",
+        "simpleRu": "Раздел III объясняет, когда наказание в виде лишения свободы можно не исполнять сразу. Это статьи 26-29.",
+        "sourceTextSha256": "9c9d1d6ad3744ec7d237a66f95e7aaa8a3cae8fa286f288b7984fef2568d188d",
+        "sourceFingerprint": "sha256:9c9d1d6ad3744ec7d237a66f95e7aaa8a3cae8fa286f288b7984fef2568d188d",
+        "sourceSpan": {
+          "startLine": 25,
+          "endLine": 30
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iv-006",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 6,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IV"
+        ],
+        "officialLabel": "TITULO IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO IV\n\nREPARACION DE PERJUICIOS\n\nArts. 30 a 33\n",
+        "fullTranslationRu": "РАЗДЕЛ IV\n\nВОЗМЕЩЕНИЕ ВРЕДА\n\nСтатьи 30-33",
+        "simpleRu": "Раздел IV говорит, как возмещается вред от преступления. Это статьи 30-33.",
+        "sourceTextSha256": "215bcdc777997fd5ec9caa3dcac0644378970ac57801d1cbf8191601096408d5",
+        "sourceFingerprint": "sha256:215bcdc777997fd5ec9caa3dcac0644378970ac57801d1cbf8191601096408d5",
+        "sourceSpan": {
+          "startLine": 31,
+          "endLine": 36
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-v-007",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 7,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V"
+        ],
+        "officialLabel": "TITULO V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO V\n\nIMPUTABILIDAD\n\nArts. 34 a 41\n",
+        "fullTranslationRu": "РАЗДЕЛ V\n\nВМЕНЯЕМОСТЬ\n\nСтатьи 34-41",
+        "simpleRu": "Раздел V объясняет, когда человек отвечает или не отвечает уголовно. Это статьи 34-41.",
+        "sourceTextSha256": "cc189e37e05d481931bec6db6812967dbef5410338817e81684b666055004d35",
+        "sourceFingerprint": "sha256:cc189e37e05d481931bec6db6812967dbef5410338817e81684b666055004d35",
+        "sourceSpan": {
+          "startLine": 37,
+          "endLine": 42
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vi-008",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 8,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VI"
+        ],
+        "officialLabel": "TITULO VI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VI\n\nTENTATIVA\n\nArts. 42 a 44\n",
+        "fullTranslationRu": "РАЗДЕЛ VI\n\nПОКУШЕНИЕ\n\nСтатьи 42-44",
+        "simpleRu": "Раздел VI говорит о покушении на преступление. Это статьи 42-44.",
+        "sourceTextSha256": "464739f0202b8c34d324853d6f4b12071c0a72d95d1ea87337ca0f7e279aa57f",
+        "sourceFingerprint": "sha256:464739f0202b8c34d324853d6f4b12071c0a72d95d1ea87337ca0f7e279aa57f",
+        "sourceSpan": {
+          "startLine": 43,
+          "endLine": 48
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vii-009",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 9,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VII"
+        ],
+        "officialLabel": "TITULO VII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VII\n\nPARTICIPACION CRIMINAL\n\nArts. 45 a 49\n",
+        "fullTranslationRu": "РАЗДЕЛ VII\n\nУЧАСТИЕ В ПРЕСТУПЛЕНИИ\n\nСтатьи 45-49",
+        "simpleRu": "Раздел VII объясняет ответственность участников преступления. Это статьи 45-49.",
+        "sourceTextSha256": "2ddc9abdf096e888497d97f9e9e9e2ee84fe239a8140cdeffff078076f592f7c",
+        "sourceFingerprint": "sha256:2ddc9abdf096e888497d97f9e9e9e2ee84fe239a8140cdeffff078076f592f7c",
+        "sourceSpan": {
+          "startLine": 49,
+          "endLine": 54
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-viii-010",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 10,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VIII"
+        ],
+        "officialLabel": "TITULO VIII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VIII\n\nREINCIDENCIA\n\nArts. 50 a 53\n",
+        "fullTranslationRu": "РАЗДЕЛ VIII\n\nРЕЦИДИВ\n\nСтатьи 50-53",
+        "simpleRu": "Раздел VIII говорит о повторном совершении преступлений. Это статьи 50-53.",
+        "sourceTextSha256": "a2aff8fbcdb29fca1311a0486d4dacda958520451e23cec3b0babc30d3e470af",
+        "sourceFingerprint": "sha256:a2aff8fbcdb29fca1311a0486d4dacda958520451e23cec3b0babc30d3e470af",
+        "sourceSpan": {
+          "startLine": 55,
+          "endLine": 60
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ix-011",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 11,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IX"
+        ],
+        "officialLabel": "TITULO IX",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO IX\n\nCONCURSO DE DELITOS\n\nArts. 54 a 58\n",
+        "fullTranslationRu": "РАЗДЕЛ IX\n\nСОВОКУПНОСТЬ ПРЕСТУПЛЕНИЙ\n\nСтатьи 54-58",
+        "simpleRu": "Раздел IX объясняет, что делать, если есть несколько преступлений. Это статьи 54-58.",
+        "sourceTextSha256": "283dcaaf2a1530bb02aa02db7c065dcfd75d7b36e4ae1552bf8de028ff96841c",
+        "sourceFingerprint": "sha256:283dcaaf2a1530bb02aa02db7c065dcfd75d7b36e4ae1552bf8de028ff96841c",
+        "sourceSpan": {
+          "startLine": 61,
+          "endLine": 66
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-x-012",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 12,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X"
+        ],
+        "officialLabel": "TITULO X",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO X\n\nEXTINCION DE ACCIONES Y DE PENAS\n\nArts. 59 a 70\n",
+        "fullTranslationRu": "РАЗДЕЛ X\n\nПРЕКРАЩЕНИЕ УГОЛОВНОГО ПРЕСЛЕДОВАНИЯ И НАКАЗАНИЙ\n\nСтатьи 59-70",
+        "simpleRu": "Раздел X говорит, когда дело или наказание прекращается. Это статьи 59-70.",
+        "sourceTextSha256": "c9f7292e7f3be2b9ee9213d0aef0273a2fd961288db4c7dda2369926a881ac76",
+        "sourceFingerprint": "sha256:c9f7292e7f3be2b9ee9213d0aef0273a2fd961288db4c7dda2369926a881ac76",
+        "sourceSpan": {
+          "startLine": 67,
+          "endLine": 72
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xi-013",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 13,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XI"
+        ],
+        "officialLabel": "TITULO XI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XI\n\nDEL EJERCICIO DE LAS ACCIONES\n\nArts. 71 a 76\n",
+        "fullTranslationRu": "РАЗДЕЛ XI\n\nОБ ОСУЩЕСТВЛЕНИИ УГОЛОВНЫХ ДЕЙСТВИЙ\n\nСтатьи 71-76",
+        "simpleRu": "Раздел XI объясняет, как начинается и ведется уголовное преследование. Это статьи 71-76.",
+        "sourceTextSha256": "f70da2d4752491598f741d2872367643b089889f126fa65a23bef4e186088894",
+        "sourceFingerprint": "sha256:f70da2d4752491598f741d2872367643b089889f126fa65a23bef4e186088894",
+        "sourceSpan": {
+          "startLine": 73,
+          "endLine": 78
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xii-014",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 14,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XII"
+        ],
+        "officialLabel": "TITULO XII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XII\n\nDE LA SUSPENSIÓN DEL JUICIO A PRUEBA\n\nArts. 76 bis a 76 quater\n",
+        "fullTranslationRu": "РАЗДЕЛ XII\n\nО ПРИОСТАНОВЛЕНИИ СУДЕБНОГО РАЗБИРАТЕЛЬСТВА С ИСПЫТАНИЕМ\n\nСтатьи 76 bis - 76 quater",
+        "simpleRu": "Раздел XII говорит о возможности приостановить суд с испытательными условиями. Это статьи 76 bis - 76 quater.",
+        "sourceTextSha256": "7687da35d568a6b590f6bbb02c868481365c872d9e18f3b8f12dfbfb6b3ffae2",
+        "sourceFingerprint": "sha256:7687da35d568a6b590f6bbb02c868481365c872d9e18f3b8f12dfbfb6b3ffae2",
+        "sourceSpan": {
+          "startLine": 79,
+          "endLine": 84
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xiii-015",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 15,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XIII"
+        ],
+        "officialLabel": "TITULO XIII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XIII\n\nSIGNIFICACION DE CONCEPTOS EMPLEADOS EN EL CODIGO\n\nArts. 77 a 78 bis\n",
+        "fullTranslationRu": "РАЗДЕЛ XIII\n\nЗНАЧЕНИЕ ПОНЯТИЙ, ИСПОЛЬЗУЕМЫХ В КОДЕКСЕ\n\nСтатьи 77 - 78 bis",
+        "simpleRu": "Раздел XIII объясняет значения некоторых слов, которые использует Кодекс. Это статьи 77 - 78 bis.",
+        "sourceTextSha256": "b7fa4a717f1dd0fde7d6feed1f25cff1cb4d79356ea2dd5c50b628ec40d0b6f6",
+        "sourceFingerprint": "sha256:b7fa4a717f1dd0fde7d6feed1f25cff1cb4d79356ea2dd5c50b628ec40d0b6f6",
+        "sourceSpan": {
+          "startLine": 85,
+          "endLine": 90
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--libro-segundo-016",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 16,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO"
+        ],
+        "officialLabel": "LIBRO SEGUNDO",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "LIBRO SEGUNDO\n\nDE LOS DELITOS\n",
+        "fullTranslationRu": "КНИГА ВТОРАЯ\n\nО ПРЕСТУПЛЕНИЯХ",
+        "simpleRu": "Книга вторая перечисляет конкретные преступления.",
+        "sourceTextSha256": "46ad5b1798e474843d3375ca62fce772ced0890289d0f472e64ca12dfbf9be83",
+        "sourceFingerprint": "sha256:46ad5b1798e474843d3375ca62fce772ced0890289d0f472e64ca12dfbf9be83",
+        "sourceSpan": {
+          "startLine": 91,
+          "endLine": 94
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-i-017",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 17,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I"
+        ],
+        "officialLabel": "TITULO I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO I\n\nDELITOS CONTRA LAS PERSONAS\n\nArts. 79 a 108\n",
+        "fullTranslationRu": "РАЗДЕЛ I\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ЛИЧНОСТИ\n\nСтатьи 79-108",
+        "simpleRu": "В этом разделе собраны преступления против людей. Это статьи 79-108.",
+        "sourceTextSha256": "2ce18d8b8b7562719a3dc73a0cbd63b53fbd5357cec102c54ae5db8218e05b1e",
+        "sourceFingerprint": "sha256:2ce18d8b8b7562719a3dc73a0cbd63b53fbd5357cec102c54ae5db8218e05b1e",
+        "sourceSpan": {
+          "startLine": 95,
+          "endLine": 100
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ii-018",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 18,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II"
+        ],
+        "officialLabel": "TITULO II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO II\n\nDELITOS CONTRA EL HONOR\n\nArts. 109 a 117 bis\n",
+        "fullTranslationRu": "РАЗДЕЛ II\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ЧЕСТИ\n\nСтатьи 109 - 117 bis",
+        "simpleRu": "Этот раздел касается преступлений против чести. Это статьи 109 - 117 bis.",
+        "sourceTextSha256": "4631b31e2342f4a67c6ef6d668bac957fe7bb1d7c741ea8ada1e5ccdea0c2ae3",
+        "sourceFingerprint": "sha256:4631b31e2342f4a67c6ef6d668bac957fe7bb1d7c741ea8ada1e5ccdea0c2ae3",
+        "sourceSpan": {
+          "startLine": 101,
+          "endLine": 106
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iii-019",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 19,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III"
+        ],
+        "officialLabel": "TITULO III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO III\n\nDELITOS CONTRA LA INTEGRIDAD SEXUAL\n\nArts. 118 a 133\n",
+        "fullTranslationRu": "РАЗДЕЛ III\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ПОЛОВОЙ НЕПРИКОСНОВЕННОСТИ\n\nСтатьи 118-133",
+        "simpleRu": "Этот раздел касается преступлений против половой неприкосновенности. Это статьи 118-133.",
+        "sourceTextSha256": "80bb490a6becf4db41cc5d529e4a508f04bb6b9a42229ffabe575b25671d9899",
+        "sourceFingerprint": "sha256:80bb490a6becf4db41cc5d529e4a508f04bb6b9a42229ffabe575b25671d9899",
+        "sourceSpan": {
+          "startLine": 107,
+          "endLine": 112
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iv-020",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 20,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV"
+        ],
+        "officialLabel": "TITULO IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO IV\n\nDELITOS CONTRA EL ESTADO CIVIL\n\nArts. 134 a 139 bis\n",
+        "fullTranslationRu": "РАЗДЕЛ IV\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ГРАЖДАНСКОГО СОСТОЯНИЯ\n\nСтатьи 134 - 139 bis",
+        "simpleRu": "Этот раздел касается преступлений, связанных с гражданским состоянием людей. Это статьи 134 - 139 bis.",
+        "sourceTextSha256": "4141e9b0bc6a82f25e165275881d58d5667d37373f2bd71ed1f605385007e581",
+        "sourceFingerprint": "sha256:4141e9b0bc6a82f25e165275881d58d5667d37373f2bd71ed1f605385007e581",
+        "sourceSpan": {
+          "startLine": 113,
+          "endLine": 118
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-v-021",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 21,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V"
+        ],
+        "officialLabel": "TITULO V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO V\n\nDELITOS CONTRA LA LIBERTAD\n\nArts. 140 a 161\n",
+        "fullTranslationRu": "РАЗДЕЛ V\n\nПРЕСТУПЛЕНИЯ ПРОТИВ СВОБОДЫ\n\nСтатьи 140-161",
+        "simpleRu": "Этот раздел касается преступлений против свободы человека. Это статьи 140-161.",
+        "sourceTextSha256": "34237b84f62d9a56fbc97ff182012df7babc84df765caa4a952cf7fb69522267",
+        "sourceFingerprint": "sha256:34237b84f62d9a56fbc97ff182012df7babc84df765caa4a952cf7fb69522267",
+        "sourceSpan": {
+          "startLine": 119,
+          "endLine": 124
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vi-022",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 22,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI"
+        ],
+        "officialLabel": "TITULO VI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VI\n\nDELITOS CONTRA LA PROPIEDAD\n\nArts. 162 a 185\n",
+        "fullTranslationRu": "РАЗДЕЛ VI\n\nПРЕСТУПЛЕНИЯ ПРОТИВ СОБСТВЕННОСТИ\n\nСтатьи 162-185",
+        "simpleRu": "Этот раздел касается преступлений против имущества. Это статьи 162-185.",
+        "sourceTextSha256": "e917f9f2903f5276feb027b7f55107050ba7086e4c164bd9f435108248a1f586",
+        "sourceFingerprint": "sha256:e917f9f2903f5276feb027b7f55107050ba7086e4c164bd9f435108248a1f586",
+        "sourceSpan": {
+          "startLine": 125,
+          "endLine": 130
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vii-023",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 23,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII"
+        ],
+        "officialLabel": "TITULO VII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VII\n\nDELITOS CONTRA LA SEGURIDAD PUBLICA\n\nArts. 186 a 208\n",
+        "fullTranslationRu": "РАЗДЕЛ VII\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ОБЩЕСТВЕННОЙ БЕЗОПАСНОСТИ\n\nСтатьи 186-208",
+        "simpleRu": "Этот раздел касается опасности для общества: например пожаров, транспорта или здоровья. Это статьи 186-208.",
+        "sourceTextSha256": "696d75c4aca77235fb9b1940822cf6143f887747c3a4e120245ca8a96d94509e",
+        "sourceFingerprint": "sha256:696d75c4aca77235fb9b1940822cf6143f887747c3a4e120245ca8a96d94509e",
+        "sourceSpan": {
+          "startLine": 131,
+          "endLine": 136
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-viii-024",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 24,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII"
+        ],
+        "officialLabel": "TITULO VIII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VIII\n\nDELITOS CONTRA EL ORDEN PUBLICO\n\nArts. 209 a 213 bis\n",
+        "fullTranslationRu": "РАЗДЕЛ VIII\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ОБЩЕСТВЕННОГО ПОРЯДКА\n\nСтатьи 209 - 213 bis",
+        "simpleRu": "Этот раздел касается преступлений против общественного порядка. Это статьи 209 - 213 bis.",
+        "sourceTextSha256": "26bb44d365373aaf9a39147798e73e78ac43f0a66d54813f3ce2365e09cfabc9",
+        "sourceFingerprint": "sha256:26bb44d365373aaf9a39147798e73e78ac43f0a66d54813f3ce2365e09cfabc9",
+        "sourceSpan": {
+          "startLine": 137,
+          "endLine": 142
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ix-025",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 25,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IX"
+        ],
+        "officialLabel": "TITULO IX",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO IX\n\nDELITOS CONTRA LA SEGURIDAD DE LA NACION\n\nArts. 214 a 225\n",
+        "fullTranslationRu": "РАЗДЕЛ IX\n\nПРЕСТУПЛЕНИЯ ПРОТИВ БЕЗОПАСНОСТИ НАЦИИ\n\nСтатьи 214-225",
+        "simpleRu": "Этот раздел касается преступлений против безопасности страны. Это статьи 214-225.",
+        "sourceTextSha256": "72f706f18119bd46dcef7d8fa0f081380f81082646f89b2462e0ac4d20e8d173",
+        "sourceFingerprint": "sha256:72f706f18119bd46dcef7d8fa0f081380f81082646f89b2462e0ac4d20e8d173",
+        "sourceSpan": {
+          "startLine": 143,
+          "endLine": 148
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-x-026",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 26,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO X"
+        ],
+        "officialLabel": "TITULO X",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO X\n\nDELITOS CONTRA LOS PODERES PUBLICOS Y EL ORDEN CONSTITUCIONAL\n\nArts. 226 a 236\n",
+        "fullTranslationRu": "РАЗДЕЛ X\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ И КОНСТИТУЦИОННОГО ПОРЯДКА\n\nСтатьи 226-236",
+        "simpleRu": "Этот раздел касается преступлений против государственных властей и Конституции. Это статьи 226-236.",
+        "sourceTextSha256": "bb9052f1a5295103b354c74cb724d91bcd1bb3014de572ee3de4bedcc618bb4f",
+        "sourceFingerprint": "sha256:bb9052f1a5295103b354c74cb724d91bcd1bb3014de572ee3de4bedcc618bb4f",
+        "sourceSpan": {
+          "startLine": 149,
+          "endLine": 154
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xi-027",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 27,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XI"
+        ],
+        "officialLabel": "TITULO XI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XI\n\nDELITOS CONTRA LA ADMINISTRACION PUBLICA\n\nArts. 237 a 281 bis\n",
+        "fullTranslationRu": "РАЗДЕЛ XI\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ГОСУДАРСТВЕННОЙ АДМИНИСТРАЦИИ\n\nСтатьи 237 - 281 bis",
+        "simpleRu": "Этот раздел касается преступлений против работы государства и его органов. Это статьи 237 - 281 bis.",
+        "sourceTextSha256": "50b5f93a142a91e2e2b2a8c862008f728212ecb263786d21cd361daa8c5f7408",
+        "sourceFingerprint": "sha256:50b5f93a142a91e2e2b2a8c862008f728212ecb263786d21cd361daa8c5f7408",
+        "sourceSpan": {
+          "startLine": 155,
+          "endLine": 160
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xii-028",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 28,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XII"
+        ],
+        "officialLabel": "TITULO XII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XII\n\nDELITOS CONTRA LA FE PUBLICA\n\nArts. 282 a 302\n",
+        "fullTranslationRu": "РАЗДЕЛ XII\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ПУБЛИЧНОГО ДОВЕРИЯ\n\nСтатьи 282-302",
+        "simpleRu": "Этот раздел касается подделок и других действий, которые вредят доверию к официальным документам и деньгам. Это статьи 282-302.",
+        "sourceTextSha256": "69be03fccd435ce12aaaf6b3ca37f4494861809160b3064b0732282639f4c567",
+        "sourceFingerprint": "sha256:69be03fccd435ce12aaaf6b3ca37f4494861809160b3064b0732282639f4c567",
+        "sourceSpan": {
+          "startLine": 161,
+          "endLine": 166
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xiii-029",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 29,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO XIII"
+        ],
+        "officialLabel": "TITULO XIII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XIII\n\nDELITOS CONTRA EL ORDEN ECONOMICO Y FINANCIERO\n\nArts. 303 a 313\n\nDISPOSICIONES COMPLEMENTARIAS\n\nArts. 314 a 316\n\nLEY 11.179\n\n(T.O. 1984 actualizado)\n\nCODIGO PENAL DE LA NACION ARGENTINA\n\nVer Antecedentes Normativos\n",
+        "fullTranslationRu": "РАЗДЕЛ XIII\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ЭКОНОМИЧЕСКОГО И ФИНАНСОВОГО ПОРЯДКА\n\nСтатьи 303-313\n\nДОПОЛНИТЕЛЬНЫЕ ПОЛОЖЕНИЯ\n\nСтатьи 314-316\n\nЗАКОН 11.179\n\n(сводный текст 1984 года, обновленный)\n\nУГОЛОВНЫЙ КОДЕКС АРГЕНТИНСКОЙ НАЦИИ\n\nСм. нормативную историю",
+        "simpleRu": "Здесь заканчивается тематический указатель. Он показывает раздел об экономических и финансовых преступлениях, дополнительные положения и снова называет Закон 11.179.",
+        "sourceTextSha256": "1760fd646849b66a9da0766b06cd69537438a226cc63bad179a5f8a77b583dbd",
+        "sourceFingerprint": "sha256:1760fd646849b66a9da0766b06cd69537438a226cc63bad179a5f8a77b583dbd",
+        "sourceSpan": {
+          "startLine": 167,
+          "endLine": 184
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--libro-primero-030",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 30,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO"
+        ],
+        "officialLabel": "LIBRO PRIMERO",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "LIBRO PRIMERO\n\nDISPOSICIONES GENERALES\n",
+        "fullTranslationRu": "КНИГА ПЕРВАЯ\n\nОБЩИЕ ПОЛОЖЕНИЯ",
+        "simpleRu": "С этого места начинается сам текст Книги первой с общими правилами.",
+        "sourceTextSha256": "3fb325e90fbfde1c5b467f5e3428ae50f7ff06fdd19b36c54a7c347f76d5f1ca",
+        "sourceFingerprint": "sha256:3fb325e90fbfde1c5b467f5e3428ae50f7ff06fdd19b36c54a7c347f76d5f1ca",
+        "sourceSpan": {
+          "startLine": 185,
+          "endLine": 188
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-i-031",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 31,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO I"
+        ],
+        "officialLabel": "TITULO I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO I\n\nAPLICACION DE LA LEY PENAL\n",
+        "fullTranslationRu": "РАЗДЕЛ I\n\nПРИМЕНЕНИЕ УГОЛОВНОГО ЗАКОНА",
+        "simpleRu": "Это начало раздела о том, когда действует уголовный закон.",
+        "sourceTextSha256": "55ef6113c0bddebe9480eac0e0421527bf16d125261baf0a5e654943124ea3f6",
+        "sourceFingerprint": "sha256:55ef6113c0bddebe9480eac0e0421527bf16d125261baf0a5e654943124ea3f6",
+        "sourceSpan": {
+          "startLine": 189,
+          "endLine": 192
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-1o-este-codigo-se-aplicara-032",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 32,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO I",
+          "ARTICULO 1º.- Este Código se aplicará:"
+        ],
+        "officialLabel": "ARTICULO 1º.- Este Código se aplicará:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 1º.- Este Código se aplicará:\n\n1) Por delitos cometidos o cuyos efectos deban producirse en el territorio de la Nación Argentina, o en los lugares sometidos a su jurisdicción.\n\n2) Por delitos cometidos en el extranjero por agentes o empleados de autoridades argentinas en desempeño de su cargo.\n\n3) Por el delito previsto en el artículo 258 bis cometido en el extranjero, por ciudadanos argentinos o personas jurídicas con domicilio en la República Argentina, ya sea aquel fijado en sus estatutos o el correspondiente a los establecimientos o sucursales que posea en el territorio argentino.\n\n(Artículo sustituido por art. 29 de la Ley N° 27.401 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=296846] B.O. 1/12/2017. Vigencia: a los noventa (90) días de su publicación en el Boletín Oficial de la República Argentina)\n",
+        "fullTranslationRu": "СТАТЬЯ 1. Настоящий Кодекс применяется:\n\n1) к преступлениям, совершенным на территории Аргентинской Нации или в местах, находящихся под ее юрисдикцией, а также к преступлениям, последствия которых должны наступить там;\n\n2) к преступлениям, совершенным за границей агентами или служащими аргентинских властей при исполнении их должности;\n\n3) к преступлению, предусмотренному статьей 258 bis, совершенному за границей гражданами Аргентины или юридическими лицами с местом нахождения в Аргентинской Республике, как указанным в их уставах, так и соответствующим учреждениям или филиалам на территории Аргентины.\n\nСтатья заменена статьей 29 Закона N 27.401, опубликованного в Официальном вестнике 1/12/2017; вступление в силу: через девяносто (90) дней после публикации в Официальном вестнике Аргентинской Республики.",
+        "simpleRu": "Кодекс действует для преступлений в Аргентине и в местах под ее властью. Он также действует для некоторых преступлений аргентинских чиновников за границей. Еще он действует для преступления из статьи 258 bis, если его за границей совершили граждане Аргентины или аргентинские юридические лица. Статья обновлена Законом 27.401.",
+        "sourceTextSha256": "649e88397064a7760d462fd36b4a88097a25ceff2932886c3a272715f70608d0",
+        "sourceFingerprint": "sha256:649e88397064a7760d462fd36b4a88097a25ceff2932886c3a272715f70608d0",
+        "sourceSpan": {
+          "startLine": 193,
+          "endLine": 202
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-2o-si-la-ley-vigente-al-tiempo-033",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 33,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO I",
+          "ARTICULO 2º.- Si la ley vigente al tiempo de cometerse el delito fuere distinta de la que exista al pronunciarse el fallo o en el tiempo ..."
+        ],
+        "officialLabel": "ARTICULO 2º.- Si la ley vigente al tiempo de cometerse el delito fuere distinta de la que exista al pronunciarse el fallo o en el tiempo ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 2º.- Si la ley vigente al tiempo de cometerse el delito fuere distinta de la que exista al pronunciarse el fallo o en el tiempo intermedio, se aplicará siempre la más benigna.\n\nSi durante la condena se dictare una ley más benigna, la pena se limitará a la establecida por esa ley. En todos los casos del presente artículo, los efectos de la nueva ley se operarán de pleno derecho.\n",
+        "fullTranslationRu": "СТАТЬЯ 2. Если закон, действовавший во время совершения преступления, отличается от закона на момент вынесения решения или в промежутке между ними, всегда применяется более мягкий закон.\n\nЕсли во время отбывания наказания будет принят более мягкий закон, наказание ограничивается тем, что установлено этим законом. Во всех случаях этой статьи действие нового закона наступает в силу самого права.",
+        "simpleRu": "Если законы изменились, выбирают тот, который мягче для обвиняемого или осужденного. Если более мягкий закон появился уже во время наказания, наказание уменьшают до уровня нового закона автоматически.",
+        "sourceTextSha256": "65204ce8f4d2f04ac8144a09cffa01cd4c567557831f958e31c80fd318bd6767",
+        "sourceFingerprint": "sha256:65204ce8f4d2f04ac8144a09cffa01cd4c567557831f958e31c80fd318bd6767",
+        "sourceSpan": {
+          "startLine": 203,
+          "endLine": 206
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-3o-en-el-computo-de-la-prision-034",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 34,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO I",
+          "ARTICULO 3º.- En el cómputo de la prisión preventiva se observará separadamente la ley más favorable al procesado."
+        ],
+        "officialLabel": "ARTICULO 3º.- En el cómputo de la prisión preventiva se observará separadamente la ley más favorable al procesado.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 3º.- En el cómputo de la prisión preventiva se observará separadamente la ley más favorable al procesado.\n",
+        "fullTranslationRu": "СТАТЬЯ 3. При зачете предварительного заключения отдельно применяется закон, наиболее благоприятный для обвиняемого.",
+        "simpleRu": "Когда считают срок предварительного заключения, используют правило, которое лучше для обвиняемого.",
+        "sourceTextSha256": "6f4905e5b74374081e7ed93339c3c62f80199c6b3d6a313079f89c93aa74f042",
+        "sourceFingerprint": "sha256:6f4905e5b74374081e7ed93339c3c62f80199c6b3d6a313079f89c93aa74f042",
+        "sourceSpan": {
+          "startLine": 207,
+          "endLine": 208
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-4o-las-disposiciones-generales-del-presente-codigo-035",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 35,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO I",
+          "ARTICULO 4º.- Las disposiciones generales del presente código se aplicarán a todos los delitos previstos por leyes especiales, en cuanto ..."
+        ],
+        "officialLabel": "ARTICULO 4º.- Las disposiciones generales del presente código se aplicarán a todos los delitos previstos por leyes especiales, en cuanto ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 4º.- Las disposiciones generales del presente código se aplicarán a todos los delitos previstos por leyes especiales, en cuanto éstas no dispusieran lo contrario.\n",
+        "fullTranslationRu": "СТАТЬЯ 4. Общие положения настоящего Кодекса применяются ко всем преступлениям, предусмотренным специальными законами, если эти законы не устанавливают иное.",
+        "simpleRu": "Общие правила Уголовного кодекса действуют и для преступлений из специальных законов. Но если специальный закон говорит иначе, действует он.",
+        "sourceTextSha256": "cea27bf65aa80c1e5f701c9b8fdb548dda5435b278ea8031361c9b449083c2d3",
+        "sourceFingerprint": "sha256:cea27bf65aa80c1e5f701c9b8fdb548dda5435b278ea8031361c9b449083c2d3",
+        "sourceSpan": {
+          "startLine": 209,
+          "endLine": 210
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ii-036",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 36,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II"
+        ],
+        "officialLabel": "TITULO II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO II\n\nDE LAS PENAS\n",
+        "fullTranslationRu": "РАЗДЕЛ II\n\nО НАКАЗАНИЯХ",
+        "simpleRu": "Дальше идут правила о видах наказаний.",
+        "sourceTextSha256": "e27b9554ba321bb2adca350b8690e3887cb9b51e7a32ba8ba1156c8eff726ccb",
+        "sourceFingerprint": "sha256:e27b9554ba321bb2adca350b8690e3887cb9b51e7a32ba8ba1156c8eff726ccb",
+        "sourceSpan": {
+          "startLine": 211,
+          "endLine": 214
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-5o-las-penas-que-este-codigo-establece-037",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 37,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 5º.- Las penas que este Código establece son las siguientes: reclusión, prisión, multa e inhabilitación."
+        ],
+        "officialLabel": "ARTICULO 5º.- Las penas que este Código establece son las siguientes: reclusión, prisión, multa e inhabilitación.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 5º.- Las penas que este Código establece son las siguientes: reclusión, prisión, multa e inhabilitación.\n",
+        "fullTranslationRu": "СТАТЬЯ 5. Наказания, устанавливаемые настоящим Кодексом, следующие: reclusión, prisión, штраф и лишение прав.",
+        "simpleRu": "В Кодексе есть четыре вида наказаний: reclusión, prisión, штраф и лишение прав. Reclusión и prisión являются видами лишения свободы.",
+        "sourceTextSha256": "9d218cf2aa780613566b66965dfd2222a0ceedac88cf9f4137a66b2622ca8790",
+        "sourceFingerprint": "sha256:9d218cf2aa780613566b66965dfd2222a0ceedac88cf9f4137a66b2622ca8790",
+        "sourceSpan": {
+          "startLine": 215,
+          "endLine": 216
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-6o-la-pena-de-reclusion-perpetua-o-038",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 38,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 6º.- La pena de reclusión, perpetua o temporal, se cumplirá con trabajo obligatorio en los establecimientos destinados al efecto..."
+        ],
+        "officialLabel": "ARTICULO 6º.- La pena de reclusión, perpetua o temporal, se cumplirá con trabajo obligatorio en los establecimientos destinados al efecto...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 6º.- La pena de reclusión, perpetua o temporal, se cumplirá con trabajo obligatorio en los establecimientos destinados al efecto. Los recluidos podrán ser empleados en obras públicas de cualquier clase con tal que no fueren contratadas por particulares.\n",
+        "fullTranslationRu": "СТАТЬЯ 6. Наказание в виде reclusión, пожизненное или срочное, отбывается с обязательным трудом в учреждениях, предназначенных для этого. Заключенных могут использовать на любых общественных работах при условии, что эти работы не выполняются по договору с частными лицами.",
+        "simpleRu": "При reclusión человек сидит в специальном учреждении и обязан работать. Его можно направлять на общественные работы, но не на работы по частным договорам.",
+        "sourceTextSha256": "9ffc20f072fb4e3f44ed8a8b91061c60e8fb09fac81c5cd6b38e6bd871fbc072",
+        "sourceFingerprint": "sha256:9ffc20f072fb4e3f44ed8a8b91061c60e8fb09fac81c5cd6b38e6bd871fbc072",
+        "sourceSpan": {
+          "startLine": 217,
+          "endLine": 218
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-7o-los-hombres-debiles-o-enfermos-y-039",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 39,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 7º.- Los hombres débiles o enfermos y los mayores de sesenta años que merecieren reclusión, sufrirán la condena en prisión, no d..."
+        ],
+        "officialLabel": "ARTICULO 7º.- Los hombres débiles o enfermos y los mayores de sesenta años que merecieren reclusión, sufrirán la condena en prisión, no d...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 7º.- Los hombres débiles o enfermos y los mayores de sesenta años que merecieren reclusión, sufrirán la condena en prisión, no debiendo ser sometidos sino a la clase de trabajo especial que determine la dirección del establecimiento.\n",
+        "fullTranslationRu": "СТАТЬЯ 7. Слабые или больные мужчины и лица старше шестидесяти лет, которым назначена reclusión, отбывают наказание в prisión и должны выполнять только такой специальный труд, который определит администрация учреждения.",
+        "simpleRu": "Если человеку назначена reclusión, но он болен, слаб или старше 60 лет, наказание отбывается как prisión. Работу для него подбирает учреждение.",
+        "sourceTextSha256": "d3425d661fd5a7170d24465bc22dcbb8b77ebe984fd0a786e4f23fab66517727",
+        "sourceFingerprint": "sha256:d3425d661fd5a7170d24465bc22dcbb8b77ebe984fd0a786e4f23fab66517727",
+        "sourceSpan": {
+          "startLine": 219,
+          "endLine": 220
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-8o-los-menores-de-edad-y-las-040",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 40,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 8º.- Los menores de edad y las mujeres sufrirán las condenas en establecimientos especiales."
+        ],
+        "officialLabel": "ARTICULO 8º.- Los menores de edad y las mujeres sufrirán las condenas en establecimientos especiales.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 8º.- Los menores de edad y las mujeres sufrirán las condenas en establecimientos especiales.\n",
+        "fullTranslationRu": "СТАТЬЯ 8. Несовершеннолетние и женщины отбывают наказания в специальных учреждениях.",
+        "simpleRu": "Несовершеннолетних и женщин должны помещать в специальные учреждения.",
+        "sourceTextSha256": "68a9b50751d7fbe143980e818299040f77cea9e59e5abf490cbd51b4522a49ff",
+        "sourceFingerprint": "sha256:68a9b50751d7fbe143980e818299040f77cea9e59e5abf490cbd51b4522a49ff",
+        "sourceSpan": {
+          "startLine": 221,
+          "endLine": 222
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-9o-la-pena-de-prision-perpetua-o-041",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 41,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 9º.- La pena de prisión, perpetua o temporal, se cumplirá con trabajo obligatorio, en establecimientos distintos de los destinad..."
+        ],
+        "officialLabel": "ARTICULO 9º.- La pena de prisión, perpetua o temporal, se cumplirá con trabajo obligatorio, en establecimientos distintos de los destinad...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 9º.- La pena de prisión, perpetua o temporal, se cumplirá con trabajo obligatorio, en establecimientos distintos de los destinados a los recluidos.\n",
+        "fullTranslationRu": "СТАТЬЯ 9. Наказание prisión, пожизненное или срочное, отбывается с обязательным трудом в учреждениях, отличных от предназначенных для лиц, приговоренных к reclusión.",
+        "simpleRu": "При prisión человек тоже обязан работать, но учреждение должно быть другим, чем для reclusión.",
+        "sourceTextSha256": "7efdfe1b4b6106d8fd58d831a968e6ba30dea146333931175d259cc1eee194ff",
+        "sourceFingerprint": "sha256:7efdfe1b4b6106d8fd58d831a968e6ba30dea146333931175d259cc1eee194ff",
+        "sourceSpan": {
+          "startLine": 223,
+          "endLine": 224
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-10-podran-a-criterio-del-juez-competente-042",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 42,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 10.- Podrán, a criterio del juez competente, cumplir la pena de reclusión o prisión en detención domiciliaria:"
+        ],
+        "officialLabel": "ARTICULO 10.- Podrán, a criterio del juez competente, cumplir la pena de reclusión o prisión en detención domiciliaria:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 10.- Podrán, a criterio del juez competente, cumplir la pena de reclusión o prisión en detención domiciliaria:\n\na) El interno enfermo cuando la privación de la libertad en el establecimiento carcelario le impide recuperarse o tratar adecuadamente su dolencia y no correspondiere su alojamiento en un establecimiento hospitalario;\n\nb) El interno que padezca una enfermedad incurable en período terminal;\n\nc) El interno díscapacitado cuando la privación de la libertad en el establecimiento carcelario es inadecuada por su condición implicándole un trato indigno, inhumano o cruel;\n\nd) El interno mayor de setenta (70) años;\n\ne) La mujer embarazada;\n\nf) La madre de un niño menor de cinco (5) años o de una persona con discapacidad a su cargo.\n\n(Artículo sustituido por art. 4° de la Ley N° 26.472 [/infolegInternet/verNorma.do?id=149566], B.O. 20/1/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 10. По усмотрению компетентного судьи наказание reclusión или prisión может отбываться под домашним арестом:\n\na) больным заключенным, если лишение свободы в тюремном учреждении мешает его выздоровлению или надлежащему лечению болезни и его не следует помещать в больничное учреждение;\n\nb) заключенным с неизлечимой болезнью в терминальной стадии;\n\nc) заключенным с инвалидностью, когда содержание в тюремном учреждении из-за его состояния является неподходящим и влечет недостойное, бесчеловечное или жестокое обращение;\n\nd) заключенным старше семидесяти (70) лет;\n\ne) беременной женщине;\n\nf) матери ребенка младше пяти (5) лет или лица с инвалидностью, находящегося на ее попечении.\n\nСтатья заменена статьей 4 Закона N 26.472, опубликованного в Официальном вестнике 20/1/2009.",
+        "simpleRu": "Судья может разрешить домашний арест вместо тюрьмы. Это возможно для тяжелобольных, людей с терминальной болезнью, людей с инвалидностью, пожилых старше 70 лет, беременных женщин и матерей ребенка до 5 лет или человека с инвалидностью на их попечении.",
+        "sourceTextSha256": "40633c3cc0650966d2cd0a19903fca8a2e680444cb7b180ffa2bb6a6cb973f62",
+        "sourceFingerprint": "sha256:40633c3cc0650966d2cd0a19903fca8a2e680444cb7b180ffa2bb6a6cb973f62",
+        "sourceSpan": {
+          "startLine": 225,
+          "endLine": 240
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-11-el-producto-del-trabajo-del-condenado-043",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 43,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 11.- El producto del trabajo del condenado a reclusión o prisión se aplicará simultáneamente:"
+        ],
+        "officialLabel": "ARTICULO 11.- El producto del trabajo del condenado a reclusión o prisión se aplicará simultáneamente:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 11.- El producto del trabajo del condenado a reclusión o prisión se aplicará simultáneamente:\n\n1º. A indemnizar los daños y perjuicios causados por el delito que no satisfaciera con otros recursos;\n\n2º. A la prestación de alimentos según el Código Civil;\n\n3º. A costear los gastos que causare en el establecimiento;\n\n4º. A formar un fondo propio, que se le entregará a su salida.\n",
+        "fullTranslationRu": "СТАТЬЯ 11. Доход от труда осужденного к reclusión или prisión одновременно направляется:\n\n1. на возмещение вреда и убытков, причиненных преступлением, если они не покрыты другими средствами;\n\n2. на выплату алиментов по Гражданскому кодексу;\n\n3. на оплату расходов, которые он вызывает в учреждении;\n\n4. на формирование собственного фонда, который будет выдан ему при освобождении.",
+        "simpleRu": "Деньги, заработанные заключенным, распределяют на несколько целей: возместить вред, платить алименты, покрыть расходы учреждения и накопить фонд для выхода на свободу.",
+        "sourceTextSha256": "87228bc17a7d9524db0a6032a01e50751be1eb32d45accb08a28bf1bde224780",
+        "sourceFingerprint": "sha256:87228bc17a7d9524db0a6032a01e50751be1eb32d45accb08a28bf1bde224780",
+        "sourceSpan": {
+          "startLine": 241,
+          "endLine": 250
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-12-la-reclusion-y-la-prision-por-044",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 44,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 12.- La reclusión y la prisión por más de tres años llevan como inherente la inhabilitación absoluta, por el tiempo de la conden..."
+        ],
+        "officialLabel": "ARTICULO 12.- La reclusión y la prisión por más de tres años llevan como inherente la inhabilitación absoluta, por el tiempo de la conden...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 12.- La reclusión y la prisión por más de tres años llevan como inherente la inhabilitación absoluta, por el tiempo de la condena, la que podrá durar hasta tres años más, si así lo resuelve el tribunal, de acuerdo con la índole del delito. Importan además la privación, mientras dure la pena, de la patria potestad, de la administración de los bienes y del derecho de disponer de ellos por actos entre vivos. El penado quedará sujeto a la curatela establecida por el Código Civil para los incapaces.\n",
+        "fullTranslationRu": "СТАТЬЯ 12. Reclusión и prisión на срок более трех лет влекут как неотъемлемое последствие абсолютное лишение прав на срок наказания; оно может продолжаться еще до трех лет, если так решит суд с учетом характера преступления. Кроме того, на время наказания они означают лишение родительской власти, управления имуществом и права распоряжаться им сделками между живыми лицами. Осужденный подлежит попечительству, установленному Гражданским кодексом для недееспособных.",
+        "simpleRu": "Если лишение свободы больше трех лет, человек автоматически получает абсолютное лишение прав. Суд может продлить его еще до 3 лет. На время наказания человек теряет родительскую власть, управление имуществом и право распоряжаться им.",
+        "sourceTextSha256": "e759ecfb67b49d607341fdd69b8a7e4342be6bf51a131ddaea8aa186607b495e",
+        "sourceFingerprint": "sha256:e759ecfb67b49d607341fdd69b8a7e4342be6bf51a131ddaea8aa186607b495e",
+        "sourceSpan": {
+          "startLine": 251,
+          "endLine": 252
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-13-el-condenado-a-reclusion-o-prision-045",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 45,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 13.- El condenado a reclusión o prisión perpetua que hubiere cumplido treinta y cinco (35) años de condena, el condenado a reclu..."
+        ],
+        "officialLabel": "ARTICULO 13.- El condenado a reclusión o prisión perpetua que hubiere cumplido treinta y cinco (35) años de condena, el condenado a reclu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 13.- El condenado a reclusión o prisión perpetua que hubiere cumplido treinta y cinco (35) años de condena, el condenado a reclusión o a prisión por más de tres (3) años que hubiere cumplido los dos tercios, y el condenado a reclusión o prisión, por tres (3) años o menos, que hubiere cumplido un (1) año de reclusión u ocho (8) meses de prisión, observando con regularidad los reglamentos carcelarios, podrán obtener la libertad por resolución judicial, previo informe de la dirección del establecimiento e informe de peritos que pronostique en forma individualizada y favorable su reinserción social, bajo las siguientes condiciones:\n\n1º.- Residir en el lugar que determine el auto de soltura;\n\n2º.- Observar las reglas de inspección que fije el mismo auto, especialmente la obligación de abstenerse de consumir bebidas alcohólicas o utilizar sustancias estupefacientes;\n\n3º.- Adoptar en el plazo que el auto determine, oficio, arte, industria o profesión, si no tuviere medios propios de subsistencia;\n\n4º.- No cometer nuevos delitos;\n\n5º.- Someterse al cuidado de un patronato, indicado por las autoridades competentes;\n\n6º.- Someterse a tratamiento médico, psiquiátrico o psicológico, que acrediten su necesidad y eficacia de acuerdo al consejo de peritos.\n\nEstas condiciones, a las que el juez podrá añadir cualquiera de las reglas de conducta contempladas en el artículo 27 bis, regirán hasta el vencimiento de los términos de las penas temporales y hasta diez (10) años más en las perpetuas, a contar desde el día del otorgamiento de la libertad condicional.\n\n(Artículo sustituido por art. 1° de la Ley N° 25.892 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95268] B.O.26/5/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 13. Осужденный к пожизненной reclusión или prisión после тридцати пяти (35) лет наказания; осужденный к reclusión или prisión на срок более трех (3) лет после отбытия двух третей срока; и осужденный к reclusión или prisión на срок три (3) года или менее после одного (1) года reclusión или восьми (8) месяцев prisión, если он регулярно соблюдал тюремные правила, могут получить освобождение по судебному решению. Для этого нужны предварительный отчет администрации учреждения и заключение экспертов с индивидуальным и благоприятным прогнозом социальной реинтеграции. Условия следующие:\n\n1. проживать в месте, указанном в постановлении об освобождении;\n\n2. соблюдать правила надзора, установленные тем же постановлением, особенно обязанность не употреблять алкогольные напитки и не использовать наркотические вещества;\n\n3. в срок, установленный постановлением, заняться ремеслом, искусством, индустрией или профессией, если у лица нет собственных средств к существованию;\n\n4. не совершать новых преступлений;\n\n5. находиться под попечением патроната, указанного компетентными органами;\n\n6. проходить медицинское, психиатрическое или психологическое лечение, если эксперты подтвердят его необходимость и эффективность.\n\nЭти условия, к которым судья может добавить любые правила поведения из статьи 27 bis, действуют до окончания сроков временных наказаний, а при пожизненных наказаниях - еще до десяти (10) лет, считая со дня предоставления условно-досрочного освобождения.\n\nСтатья заменена статьей 1 Закона N 25.892, опубликованного в Официальном вестнике 26/5/2004.",
+        "simpleRu": "Статья 13 описывает условно-досрочное освобождение. Для пожизненного срока нужно отбыть 35 лет. Для срока больше 3 лет - две трети. Для срока до 3 лет - 1 год reclusión или 8 месяцев prisión. Нужны хорошее поведение, решение суда и положительный прогноз экспертов. После освобождения надо жить по указанному адресу, соблюдать надзор, не пить алкоголь и не употреблять наркотики, работать или учиться ремеслу при необходимости, не совершать новых преступлений и проходить назначенное лечение.",
+        "sourceTextSha256": "7fc11ab35f6ffc63302dcfb05bf8258648ff81906475147a921afccce7d95dbd",
+        "sourceFingerprint": "sha256:7fc11ab35f6ffc63302dcfb05bf8258648ff81906475147a921afccce7d95dbd",
+        "sourceSpan": {
+          "startLine": 253,
+          "endLine": 270
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-14-la-libertad-condicional-no-se-concedera-046",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 46,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 14 — La libertad condicional no se concederá a los reincidentes. Tampoco se concederá cuando la condena fuera por:"
+        ],
+        "officialLabel": "ARTICULO 14 — La libertad condicional no se concederá a los reincidentes. Tampoco se concederá cuando la condena fuera por:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 14 — La libertad condicional no se concederá a los reincidentes. Tampoco se concederá cuando la condena fuera por:\n\n1) Homicidios agravados previstos en el artículo 80 del Código Penal.\n\n2) Delitos contra la integridad sexual, previstos en los arts. 119, 120, 124, 125, 125 bis, 126, 127, 128 primer y segundo párrafos, y 130 del Código Penal.\n\n3) Privación ilegal de la libertad coactiva, si se causare intencionalmente la muerte de la persona ofendida, previsto en el artículo 142 bis, anteúltimo párrafo, del Código Penal.\n\n4) Tortura seguida de muerte, artículo 144 ter, inciso 2, del Código Penal.\n\n5) Delitos previstos en los artículos 165 y 166, inciso 2, segundo párrafo, del Código Penal.\n\n6) Secuestro extorsivo, si se causare la muerte de la persona ofendida, conforme a los supuestos previstos en el artículo 170, antepenúltimo y anteúltimo párrafos, del Código Penal.\n\n7) Delitos previstos en los artículos 145 bis y ter del Código Penal.\n\n8) Casos en que sea aplicable el artículo 41 quinquies del Código Penal.\n\n9) Financiamiento del terrorismo previsto en el artículo 306 del Código Penal.\n\n10) Delitos previstos en los artículos 5°, 6° y 7° de la ley 23.737 o la que en el futuro la reemplace.\n\n11) Delitos previstos en los artículos 865, 866 y 867 del Código Aduanero.\n\n(Artículo sustituido por art. 38 de la Ley N° 27.375 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=277449] B.O.28/07/2017)\n",
+        "fullTranslationRu": "СТАТЬЯ 14. Условно-досрочное освобождение не предоставляется рецидивистам. Оно также не предоставляется, если осуждение было за квалифицированные убийства по статье 80; преступления против половой неприкосновенности по статьям 119, 120, 124, 125, 125 bis, 126, 127, 128, первому и второму абзацам, и 130; незаконное лишение свободы с принуждением со смертью потерпевшего по статье 142 bis; пытку со смертью по статье 144 ter, пункт 2; преступления по статьям 165 и 166, пункт 2, второй абзац; похищение с целью вымогательства со смертью потерпевшего по статье 170; преступления по статьям 145 bis и ter; случаи статьи 41 quinquies; финансирование терроризма по статье 306; преступления по статьям 5, 6 и 7 Закона 23.737 или будущего заменяющего закона; и преступления по статьям 865, 866 и 867 Таможенного кодекса. Статья заменена статьей 38 Закона N 27.375, опубликованного 28/07/2017.",
+        "simpleRu": "Некоторым осужденным условно-досрочное освобождение не дают. Это рецидивисты и люди, осужденные за перечисленные тяжкие преступления: квалифицированные убийства, многие сексуальные преступления, похищения и незаконное лишение свободы со смертью, пытку со смертью, часть тяжких имущественных преступлений, торговлю людьми, терроризм, наркопреступления и отдельные таможенные преступления.",
+        "sourceTextSha256": "ffc87180ae9264ddcb008ee612e64561559bb8268d045e6458eb16a684e2fd5e",
+        "sourceFingerprint": "sha256:ffc87180ae9264ddcb008ee612e64561559bb8268d045e6458eb16a684e2fd5e",
+        "sourceSpan": {
+          "startLine": 271,
+          "endLine": 296
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-15-la-libertad-condicional-sera-revocada-cuando-047",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 47,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 15.- La libertad condicional será revocada cuando el penado cometiere un nuevo delito o violare la obligación de residencia. En ..."
+        ],
+        "officialLabel": "ARTICULO 15.- La libertad condicional será revocada cuando el penado cometiere un nuevo delito o violare la obligación de residencia. En ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 15.- La libertad condicional será revocada cuando el penado cometiere un nuevo delito o violare la obligación de residencia. En estos casos no se computará, en el término de la pena, el tiempo que haya durado la libertad.\n\nEn los casos de los incisos 2º, 3º, 5º y 6º del artículo 13, el Tribunal podrá disponer que no se compute en el término de la condena todo o parte del tiempo que hubiere durado la libertad, hasta que el condenado cumpliese con lo dispuesto en dichos incisos. (Párrafo sustituido por art. 3° de la Ley N° 25.892 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95268] B.O.26/5/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 15. Условно-досрочное освобождение отменяется, если осужденный совершит новое преступление или нарушит обязанность проживать в указанном месте. В этих случаях время, проведенное на свободе, не засчитывается в срок наказания.\n\nВ случаях пунктов 2, 3, 5 и 6 статьи 13 суд может постановить, что весь срок свободы или его часть не засчитывается в срок наказания, пока осужденный не выполнит требования этих пунктов. Абзац заменен статьей 3 Закона N 25.892, опубликованного в Официальном вестнике 26/5/2004.",
+        "simpleRu": "Условно-досрочное освобождение отменят, если человек совершит новое преступление или нарушит правило о месте проживания. Тогда время на свободе обычно не засчитывается в срок. Суд также может не засчитать время, если человек не выполнил некоторые условия статьи 13.",
+        "sourceTextSha256": "923f4ec003b542630d36be5c8e50a7234e604605adae069de27a837ec50cde32",
+        "sourceFingerprint": "sha256:923f4ec003b542630d36be5c8e50a7234e604605adae069de27a837ec50cde32",
+        "sourceSpan": {
+          "startLine": 297,
+          "endLine": 300
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-16-transcurrido-el-termino-de-la-condena-048",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 48,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 16.- Transcurrido el término de la condena, o el plazo de cinco años señalado en el artículo 13 sin que la libertad condicional ..."
+        ],
+        "officialLabel": "ARTICULO 16.- Transcurrido el término de la condena, o el plazo de cinco años señalado en el artículo 13 sin que la libertad condicional ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 16.- Transcurrido el término de la condena, o el plazo de cinco años señalado en el artículo 13 sin que la libertad condicional haya sido revocada, la pena quedará extinguida, lo mismo que la inhabilitación absoluta del artículo 12.\n",
+        "fullTranslationRu": "СТАТЬЯ 16. По истечении срока наказания или пятилетнего срока, указанного в статье 13, если условно-досрочное освобождение не было отменено, наказание прекращается, как и абсолютное лишение прав по статье 12.",
+        "simpleRu": "Если срок закончился и условно-досрочное освобождение не отменили, наказание считается прекращенным. Абсолютное лишение прав по статье 12 тоже прекращается.",
+        "sourceTextSha256": "e734c866b4be7f743f6631e33cd5f4c59f01e4398374fc9ffad2ae22003fd932",
+        "sourceFingerprint": "sha256:e734c866b4be7f743f6631e33cd5f4c59f01e4398374fc9ffad2ae22003fd932",
+        "sourceSpan": {
+          "startLine": 301,
+          "endLine": 302
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-17-ningun-penado-cuya-libertad-condicional-haya-049",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 49,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 17.- Ningún penado cuya libertad condicional haya sido revocada, podrá obtenerla nuevamente."
+        ],
+        "officialLabel": "ARTICULO 17.- Ningún penado cuya libertad condicional haya sido revocada, podrá obtenerla nuevamente.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 17.- Ningún penado cuya libertad condicional haya sido revocada, podrá obtenerla nuevamente.\n",
+        "fullTranslationRu": "СТАТЬЯ 17. Ни один осужденный, чье условно-досрочное освобождение было отменено, не может получить его снова.",
+        "simpleRu": "Если условно-досрочное освобождение уже отменили, второй раз его не дадут.",
+        "sourceTextSha256": "69af589361689a43204110a506626043492a29c3325149a85fae39085bff55a3",
+        "sourceFingerprint": "sha256:69af589361689a43204110a506626043492a29c3325149a85fae39085bff55a3",
+        "sourceSpan": {
+          "startLine": 303,
+          "endLine": 304
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-18-los-condenados-por-tribunales-provinciales-a-050",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 50,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 18.- Los condenados por tribunales provinciales a reclusión o prisión por más de cinco años serán admitidos en los respectivos e..."
+        ],
+        "officialLabel": "ARTICULO 18.- Los condenados por tribunales provinciales a reclusión o prisión por más de cinco años serán admitidos en los respectivos e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 18.- Los condenados por tribunales provinciales a reclusión o prisión por más de cinco años serán admitidos en los respectivos establecimientos nacionales. Las provincias podrán mandarlos siempre que no tuvieren establecimientos adecuados.\n",
+        "fullTranslationRu": "СТАТЬЯ 18. Осужденные провинциальными судами к reclusión или prisión на срок более пяти лет принимаются в соответствующие национальные учреждения. Провинции могут направлять их туда, если у них нет подходящих учреждений.",
+        "simpleRu": "Если провинциальный суд назначил больше 5 лет лишения свободы, осужденного можно направить в национальное учреждение. Это особенно важно, если у провинции нет подходящего места.",
+        "sourceTextSha256": "24a433d9628f10b488768b9c72035b773d477a4217e658577aaff6984a99eccb",
+        "sourceFingerprint": "sha256:24a433d9628f10b488768b9c72035b773d477a4217e658577aaff6984a99eccb",
+        "sourceSpan": {
+          "startLine": 305,
+          "endLine": 306
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-19-la-inhabilitacion-absoluta-importa-051",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 51,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 19.- La inhabilitación absoluta importa:"
+        ],
+        "officialLabel": "ARTICULO 19.- La inhabilitación absoluta importa:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 19.- La inhabilitación absoluta importa:\n\n1º. La privación del empleo o cargo público que ejercía el penado aunque provenga de elección popular;\n\n2º. La privación del derecho electoral;\n\n3º. La incapacidad para obtener cargos, empleos y comisiones públicas;\n\n4º. La suspensión del goce de toda jubilación, pensión o retiro, civil o militar, cuyo importe será percibido por los parientes que tengan derecho a pensión.\n\nEl tribunal podrá disponer, por razones de carácter asistencial, que la víctima o los deudos que estaban a su cargo concurran hasta la mitad de dicho importe, o que lo perciban en su totalidad, cuando el penado no tuviere parientes con derecho a pensión, en ambos casos hasta integrar el monto de las indemnizaciones fijadas.\n",
+        "fullTranslationRu": "СТАТЬЯ 19. Абсолютное лишение прав означает: лишение государственной должности или публичного поста, который занимал осужденный, даже если он был получен путем народных выборов; лишение избирательного права; неспособность получать государственные должности, работу и поручения; приостановление пользования любой гражданской или военной пенсией, пособием или отставным содержанием, сумма которого выплачивается родственникам с правом на пенсию. Суд может по социальным причинам постановить, чтобы потерпевший или иждивенцы умершего получали до половины этой суммы либо всю сумму, если у осужденного нет родственников с правом на пенсию, до покрытия назначенных компенсаций.",
+        "simpleRu": "Абсолютное лишение прав забирает государственную должность, право голосовать и возможность занимать государственные должности. Пенсия или выплаты могут быть направлены родственникам, а суд может передать часть или все деньги потерпевшему или иждивенцам для компенсации.",
+        "sourceTextSha256": "1e1d5bc1e195f5bbe6821f992bac655a9390b8f8e658007555b536812a21cf62",
+        "sourceFingerprint": "sha256:1e1d5bc1e195f5bbe6821f992bac655a9390b8f8e658007555b536812a21cf62",
+        "sourceSpan": {
+          "startLine": 307,
+          "endLine": 318
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-20-la-inhabilitacion-especial-producira-la-privacion-052",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 52,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 20.- La inhabilitación especial producirá la privación del empleo, cargo, profesión o derecho sobre que recayere y la incapacida..."
+        ],
+        "officialLabel": "ARTICULO 20.- La inhabilitación especial producirá la privación del empleo, cargo, profesión o derecho sobre que recayere y la incapacida...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 20.- La inhabilitación especial producirá la privación del empleo, cargo, profesión o derecho sobre que recayere y la incapacidad para obtener otro del mismo género durante la condena. La inhabilitación especial para derechos políticos producirá la incapacidad de ejercer durante la condena aquellos sobre que recayere.\n",
+        "fullTranslationRu": "СТАТЬЯ 20. Специальное лишение прав влечет лишение той работы, должности, профессии или права, на которые оно направлено, и неспособность получить другое того же рода во время наказания. Специальное лишение политических прав влечет невозможность осуществлять во время наказания те права, на которые оно направлено.",
+        "simpleRu": "Специальное лишение прав касается конкретной должности, профессии или права. На время наказания человек теряет это право и не может получить такое же.",
+        "sourceTextSha256": "351d5d2f7932e75cc53d586b5fb83c39da926b3b071099674e71b58740833cbe",
+        "sourceFingerprint": "sha256:351d5d2f7932e75cc53d586b5fb83c39da926b3b071099674e71b58740833cbe",
+        "sourceSpan": {
+          "startLine": 319,
+          "endLine": 320
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-20-bis-podra-imponerse-inhabilitacion-especial-de-053",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 53,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 20 bis.- Podrá imponerse inhabilitación especial de seis meses a diez años, aunque esa pena no esté expresamente prevista, cuand..."
+        ],
+        "officialLabel": "ARTICULO 20 bis.- Podrá imponerse inhabilitación especial de seis meses a diez años, aunque esa pena no esté expresamente prevista, cuand...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 20 bis.- Podrá imponerse inhabilitación especial de seis meses a diez años, aunque esa pena no esté expresamente prevista, cuando el delito cometido importe:\n\n1º. Incompetencia o abuso en el ejercicio de un empleo o cargo público;\n\n2º. Abuso en el ejercicio de la patria potestad, adopción, tutela o curatela;\n\n3º. Incompetencia o abuso en el desempeño de una profesión o actividad cuyo ejercicio dependa de una autorización, licencia o habilitación del poder público.\n\nEn caso de los delitos previstos en los artículos 119, 120, 124, 125, 125 bis, 128, 129 —in fine—, 130 —párrafos segundo y tercero—, 145 bis y 145 ter del Código Penal, la inhabilitación especial será perpetua cuando el autor se hubiere valido de su empleo, cargo, profesión o derecho para la comisión. (Último párrafo incorporado por art. 1° de la Ley N° 27.206 [/infolegInternet/verNorma.do?id=254759] B.O. 10/11/2015)\n",
+        "fullTranslationRu": "СТАТЬЯ 20 bis. Специальное лишение прав от шести месяцев до десяти лет может быть назначено, даже если такое наказание прямо не предусмотрено, когда преступление означает некомпетентность или злоупотребление при исполнении государственной работы или должности; злоупотребление родительской властью, усыновлением, опекой или попечительством; либо некомпетентность или злоупотребление при выполнении профессии или деятельности, для которой нужно разрешение, лицензия или допуск государственной власти. По преступлениям статей 119, 120, 124, 125, 125 bis, 128, 129 in fine, 130, второму и третьему абзацам, 145 bis и 145 ter, специальное лишение прав является пожизненным, если автор использовал свою работу, должность, профессию или право для совершения преступления.",
+        "simpleRu": "Суд может назначить специальное лишение прав на 6 месяцев - 10 лет, даже если оно не указано отдельно. Это возможно при злоупотреблении госдолжностью, родительскими или опекунскими правами, профессией или лицензированной деятельностью. Для некоторых сексуальных преступлений и торговли людьми лишение прав пожизненное, если виновный использовал свою должность или профессию.",
+        "sourceTextSha256": "e9bcb0b5906874eecc4b4917bc1095012b7634b56a05c7b1637c71b2e4d71324",
+        "sourceFingerprint": "sha256:e9bcb0b5906874eecc4b4917bc1095012b7634b56a05c7b1637c71b2e4d71324",
+        "sourceSpan": {
+          "startLine": 321,
+          "endLine": 330
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-20-ter-el-condenado-a-inhabilitacion-absoluta-054",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 54,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 20 ter.- El condenado a inhabilitación absoluta puede ser restituido al uso y goce de los derechos y capacidades de que fue priv..."
+        ],
+        "officialLabel": "ARTICULO 20 ter.- El condenado a inhabilitación absoluta puede ser restituido al uso y goce de los derechos y capacidades de que fue priv...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 20 ter.- El condenado a inhabilitación absoluta puede ser restituido al uso y goce de los derechos y capacidades de que fue privado, si se ha comportado correctamente durante la mitad del plazo de aquélla, o durante diez años cuando la pena fuera perpetua, y ha reparado los daños en la medida de lo posible.\n\nEl condenado a inhabilitación especial puede ser rehabilitado, transcurrida la mitad del plazo de ella, o cinco años cuando la pena fuere perpetua, si se ha comportado correctamente, ha remediado su incompetencia o no es de temer que incurra en nuevos abusos y, además, ha reparado los daños en la medida de lo posible.\n\nCuando la inhabilitación importó la pérdida de un cargo público o de una tutela o curatela, la rehabilitación no comportará la reposición en los mismos cargos.\n\nPara todos los efectos, en los plazos de inhabilitación no se computará el tiempo en que el inhabilitado haya estado prófugo, internado o privado de su libertad.\n",
+        "fullTranslationRu": "СТАТЬЯ 20 ter. Осужденный к абсолютному лишению прав может быть восстановлен в правах, если вел себя правильно половину срока или десять лет при пожизненном наказании и возместил вред насколько возможно. Осужденный к специальному лишению прав может быть реабилитирован после половины срока или пяти лет при пожизненном наказании, если вел себя правильно, устранил некомпетентность или нет опасения новых злоупотреблений и возместил вред насколько возможно. Если лишение прав означало потерю государственной должности, опеки или попечительства, реабилитация не возвращает эти же должности. В срок лишения прав не засчитывается время побега, интернирования или лишения свободы.",
+        "simpleRu": "Права можно вернуть после части срока, если человек вел себя правильно и возместил вред насколько смог. Но потерянную госдолжность, опеку или попечительство автоматически не возвращают. Время побега, интернирования или лишения свободы в срок не считается.",
+        "sourceTextSha256": "9fb1bb0c7ab82660eff7cdd3500f3cb161b55df2111d37ae16d5518b94fdced0",
+        "sourceFingerprint": "sha256:9fb1bb0c7ab82660eff7cdd3500f3cb161b55df2111d37ae16d5518b94fdced0",
+        "sourceSpan": {
+          "startLine": 331,
+          "endLine": 338
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-21-la-multa-obligara-al-reo-a-055",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 55,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 21.- La multa obligará al reo a pagar la cantidad de dinero que determinare la sentencia, teniendo en cuenta además de las causa..."
+        ],
+        "officialLabel": "ARTICULO 21.- La multa obligará al reo a pagar la cantidad de dinero que determinare la sentencia, teniendo en cuenta además de las causa...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 21.- La multa obligará al reo a pagar la cantidad de dinero que determinare la sentencia, teniendo en cuenta además de las causas generales del artículo 40, la situación económica del penado.\n\nSi el reo no pagare la multa en el término que fije la sentencia, sufrirá prisión que no excederá de año y medio.\n\nEl tribunal, antes de transformar la multa en la prisión correspondiente, procurará la satisfacción de la primera, haciéndola efectiva sobre los bienes, sueldos u otras entradas del condenado. Podrá autorizarse al condenado a amortizar la pena pecuniaria, mediante el trabajo libre, siempre que se presente ocasión para ello.\n\nTambién se podrá autorizar al condenado a pagar la multa por cuotas. El tribunal fijará el monto y la fecha de los pagos, según la condición económica del condenado.\n",
+        "fullTranslationRu": "СТАТЬЯ 21. Штраф обязывает виновного уплатить сумму, определенную приговором, с учетом общих оснований статьи 40 и экономического положения осужденного. Если штраф не уплачен в срок, установленный приговором, виновный отбывает prisión сроком не более полутора лет. До замены штрафа лишением свободы суд должен попытаться взыскать штраф из имущества, зарплаты или иных доходов осужденного. Можно разрешить погашать денежное наказание свободным трудом, если есть такая возможность. Также можно разрешить оплату штрафа частями; суд устанавливает сумму и дату платежей по экономическому положению осужденного.",
+        "simpleRu": "Штраф назначается с учетом денег и положения осужденного. Если штраф не заплатить вовремя, его могут заменить prisión до 1,5 лет. Но сначала суд должен попытаться взыскать деньги. Суд может разрешить оплату трудом или частями.",
+        "sourceTextSha256": "df008fe46e04baba0bfb2f45b28d3d6c6b30ceb9528f9cae02588d0dce63f787",
+        "sourceFingerprint": "sha256:df008fe46e04baba0bfb2f45b28d3d6c6b30ceb9528f9cae02588d0dce63f787",
+        "sourceSpan": {
+          "startLine": 339,
+          "endLine": 346
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-22-en-cualquier-tiempo-que-se-satisfaciera-056",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 56,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 22.- En cualquier tiempo que se satisfaciera la multa, el reo quedará en libertad."
+        ],
+        "officialLabel": "ARTICULO 22.- En cualquier tiempo que se satisfaciera la multa, el reo quedará en libertad.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 22.- En cualquier tiempo que se satisfaciera la multa, el reo quedará en libertad.\n\nDel importe se descontará, de acuerdo con las reglas establecidas para el cómputo de la prisión preventiva, la parte proporcional al tiempo de detención que hubiere sufrido.\n",
+        "fullTranslationRu": "СТАТЬЯ 22. В любое время, когда штраф будет уплачен, виновный выходит на свободу. Из суммы вычитается, по правилам зачета предварительного заключения, пропорциональная часть за время уже перенесенного содержания под стражей.",
+        "simpleRu": "Если штраф заплатили, человека освобождают. Из суммы учитывают часть, соответствующую времени, которое человек уже провел под стражей.",
+        "sourceTextSha256": "214fc25cb8dc91f1f73392518198cae32e875fe74c76df8002285d5237ab876d",
+        "sourceFingerprint": "sha256:214fc25cb8dc91f1f73392518198cae32e875fe74c76df8002285d5237ab876d",
+        "sourceSpan": {
+          "startLine": 347,
+          "endLine": 350
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-22-bis-si-el-hecho-ha-sido-057",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 57,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 22 bis.- Si el hecho ha sido cometido con ánimo de lucro, podrá agregarse a la pena privativa de libertad una multa, aun cuando ..."
+        ],
+        "officialLabel": "ARTICULO 22 bis.- Si el hecho ha sido cometido con ánimo de lucro, podrá agregarse a la pena privativa de libertad una multa, aun cuando ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 22 bis.- Si el hecho ha sido cometido con ánimo de lucro, podrá agregarse a la pena privativa de libertad una multa, aun cuando no esté especialmente prevista o lo esté sólo en forma alternativa con aquélla. Cuando no esté prevista, la multa no podrá exceder de noventa mil pesos.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 22 bis. Если деяние совершено с целью получения прибыли, к наказанию, связанному с лишением свободы, может быть добавлен штраф, даже если он специально не предусмотрен или предусмотрен только как альтернатива. Если штраф не предусмотрен, он не может превышать девяноста тысяч песо. Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, опубликованного 29/12/1993.",
+        "simpleRu": "Если преступление совершили ради выгоды, суд может добавить штраф к лишению свободы. Это возможно даже когда штраф прямо не указан. Если суммы в законе нет, предел - 90 000 песо.",
+        "sourceTextSha256": "3043bdf8788d79845c16c1f407af745f9667d5f04df4a14df06ffe1135b3ec52",
+        "sourceFingerprint": "sha256:3043bdf8788d79845c16c1f407af745f9667d5f04df4a14df06ffe1135b3ec52",
+        "sourceSpan": {
+          "startLine": 351,
+          "endLine": 354
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-23-en-todos-los-casos-en-que-058",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 58,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 23.- En todos los casos en que recayese condena por delitos previstos en este Código o en leyes penales especiales, la misma dec..."
+        ],
+        "officialLabel": "ARTICULO 23.- En todos los casos en que recayese condena por delitos previstos en este Código o en leyes penales especiales, la misma dec...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 23.- En todos los casos en que recayese condena por delitos previstos en este Código o en leyes penales especiales, la misma decidirá el decomiso de las cosas que han servido para cometer el hecho y de las cosas o ganancias que son el producto o el provecho del delito, en favor del Estado nacional, de las provincias o de los municipios, salvo los derechos de restitución o indemnización del damnificado y de terceros.\n\nSi las cosas son peligrosas para la seguridad común, el comiso puede ordenarse aunque afecte a terceros, salvo el derecho de éstos, si fueren de buena fe, a ser indemnizados.\n\nCuando el autor o los partícipes han actuado como mandatarios de alguien o como órganos, miembros o administradores de una persona de existencia ideal, y el producto o el provecho del delito ha beneficiado al mandante o a la persona de existencia ideal, el comiso se pronunciará contra éstos.\n\nCuando con el producto o el provecho del delito se hubiese beneficiado un tercero a título gratuito, el comiso se pronunciará contra éste.\n\nSi el bien decomisado tuviere valor de uso o cultural para algún establecimiento oficial o de bien público, la autoridad nacional, provincial o municipal respectiva podrá disponer su entrega a esas entidades. Si así no fuere y tuviera valor comercial, aquélla dispondrá su enajenación. Si no tuviera valor lícito alguno, se lo destruirá.\n\nEn el caso de condena impuesta por alguno de los delitos previstos por los artículos 125, 125 bis, 127, 140, 142 bis, 145 bis, 145 ter y 170 de este Código, queda comprendido entre los bienes a decomisar la cosa mueble o inmueble donde se mantuviera a la víctima privada de su libelad u objeto de explotación. Los bienes decomisados con motivo de tales delitos, según los términos del presente artículo, y el producido de las multas que se impongan, serán afectados a programas de asistencia a la víctima. (Párrafo sustituido por art. 20 de la Ley N° 26.842 [/infolegInternet/verNorma.do?id=206554] B.O. 27/12/2012)\n\nEn caso de los delitos previstos en el artículo 213 ter y quáter y en el Título XIII del libro Segundo de éste Código, serán decomisados de modo definitivo, sin necesidad de condena penal, cuando se hubiere podido comprobar la ilicitud de su origen, o del hecho material al que estuvieren vinculados, y el imputado no pudiere ser enjuiciado por motivo de fallecimiento, fuga, prescripción o cualquier otro motivo de suspensión o extinción de la acción penal, o cuando el imputado hubiere reconocido la procedencia o uso ilícito de los bienes. (Párrafo incorporado por art. 6º de la Ley Nº 26.683 [/infolegInternet/verNorma.do?id=183497] B.O. 21/06/2011)\n\nTodo reclamo o litigio sobre el origen, naturaleza o propiedad de los bienes se realizará a través de una acción administrativa o civil de restitución. Cuando el bien hubiere sido subastado sólo se podrá reclamar su valor monetario. (Párrafo incorporado por art. 6º de la Ley Nº 26.683 [/infolegInternet/verNorma.do?id=183497] B.O. 21/06/2011)\n\nEl juez podrá adoptar desde el inicio de las actuaciones judiciales las medidas cautelares suficientes para asegurar el decomiso del o de los inmuebles, fondos de comercio, depósitos, transportes, elementos informáticos, técnicos y de comunicación, y todo otro bien o derecho patrimonial sobre los que, por tratarse de instrumentos o efectos relacionados con el o los delitos que se investigan, el decomiso presumiblemente pueda recaer.\n\nEl mismo alcance podrán tener las medidas cautelares destinadas a hacer cesar la comisión del delito o sus efectos, o a evitar que se consolide su provecho o a obtaculizar la impunidad de sus partícipes. En todos los casos se deberá dejar a salvo los derechos de restitución o indemnización del damnificado y de terceros\n\n(Artículo sustituido por art. 1° de la Ley N° 25.815 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=90635] B.O.1/12/2003)\n",
+        "fullTranslationRu": "СТАТЬЯ 23. При осуждении за преступления из этого Кодекса или специальных уголовных законов приговор решает вопрос о конфискации в пользу национального государства, провинций или муниципалитетов вещей, служивших для совершения деяния, и вещей или доходов, являющихся продуктом или выгодой преступления, с сохранением прав потерпевшего и третьих лиц на возврат или компенсацию. Опасные для общей безопасности вещи могут быть конфискованы даже у третьих лиц, с правом добросовестных лиц на компенсацию. Если автор или участники действовали как представители или как органы, члены либо администраторы юридического лица, а выгода досталась доверителю или юридическому лицу, конфискация обращается против них. Если выгоду бесплатно получило третье лицо, конфискация обращается против него. Имущество с полезной или культурной ценностью могут передать официальному или общественно полезному учреждению; коммерчески ценное имущество продают; имущество без законной ценности уничтожают. При осуждении за преступления статей 125, 125 bis, 127, 140, 142 bis, 145 bis, 145 ter и 170 конфискуется также движимое или недвижимое имущество, где потерпевший удерживался лишенным свободы или был объектом эксплуатации; такие вещи и штрафы направляются на программы помощи потерпевшим. По преступлениям статьи 213 ter и quater и Раздела XIII Книги второй возможна окончательная конфискация без уголовного приговора, если доказана незаконность происхождения или связанного факта, а обвиняемого нельзя судить из-за смерти, бегства, давности или другой причины приостановления либо прекращения дела, либо если он признал незаконное происхождение или использование имущества. Споры о происхождении, природе или собственности имущества решаются через административный или гражданский иск о возврате; после продажи с торгов можно требовать только денежную стоимость. Судья с начала дела может принять обеспечительные меры для будущей конфискации недвижимости, предприятий, вкладов, транспорта, компьютерных, технических и коммуникационных средств и другого имущества или имущественных прав, связанных с расследуемыми преступлениями. Такие меры могут также прекращать преступление или его последствия, мешать закреплению выгоды или безнаказанности участников, сохраняя права потерпевшего и третьих лиц на возврат или компенсацию.",
+        "simpleRu": "Приговор обычно решает, что делать с вещами и деньгами, связанными с преступлением. Их могут конфисковать в пользу государства, провинции или муниципалитета. Права потерпевших и добросовестных третьих лиц должны сохраняться. Опасные вещи можно конфисковать даже у третьих лиц. Если преступная выгода досталась доверителю, юридическому лицу или третьему лицу бесплатно, конфискация может коснуться их. Имущество могут передать полезному учреждению, продать или уничтожить. Для перечисленных тяжких преступлений имущество и штрафы идут на помощь потерпевшим. В некоторых делах возможна окончательная конфискация без приговора. Суд может заранее принять меры, чтобы имущество не исчезло.",
+        "sourceTextSha256": "bd9486f8bf6d4bf8502871989df25fb980d0ed88f50344e72562f2cce3965d36",
+        "sourceFingerprint": "sha256:bd9486f8bf6d4bf8502871989df25fb980d0ed88f50344e72562f2cce3965d36",
+        "sourceSpan": {
+          "startLine": 355,
+          "endLine": 376
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-24-la-prision-preventiva-se-computara-asi-059",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 59,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 24.- La prisión preventiva se computará así: por dos días de prisión preventiva, uno de reclusión; por un día de prisión prevent..."
+        ],
+        "officialLabel": "ARTICULO 24.- La prisión preventiva se computará así: por dos días de prisión preventiva, uno de reclusión; por un día de prisión prevent...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 24.- La prisión preventiva se computará así: por dos días de prisión preventiva, uno de reclusión; por un día de prisión preventiva, uno de prisión o dos de inhabilitación o la cantidad de multa que el tribunal fijase entre pesos treinta y cinco y pesos ciento setenta y cinco.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 24. Предварительное заключение засчитывается так: два дня предварительного заключения равны одному дню reclusión; один день предварительного заключения равен одному дню prisión, двум дням лишения прав или сумме штрафа, которую суд установит между тридцатью пятью песо и ста семьюдесятью пятью песо. Примечание Infoleg: штраф обновлен Законом N 24.286.",
+        "simpleRu": "Время в предварительном заключении засчитывается по правилам. 2 дня предварительного заключения = 1 день reclusión. 1 день = 1 день prisión, 2 дня лишения прав или часть штрафа от 35 до 175 песо по решению суда.",
+        "sourceTextSha256": "9680cedbd103523d0f6f9ec01192a4f27fb1b6c842303d5f5d2e195f7e29fc4f",
+        "sourceFingerprint": "sha256:9680cedbd103523d0f6f9ec01192a4f27fb1b6c842303d5f5d2e195f7e29fc4f",
+        "sourceSpan": {
+          "startLine": 377,
+          "endLine": 380
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-25-si-durante-la-condena-el-penado-060",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 60,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO II",
+          "ARTICULO 25.- Si durante la condena el penado se volviere loco, el tiempo de la locura se computará para el cumplimiento de la pena, sin ..."
+        ],
+        "officialLabel": "ARTICULO 25.- Si durante la condena el penado se volviere loco, el tiempo de la locura se computará para el cumplimiento de la pena, sin ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 25.- Si durante la condena el penado se volviere loco, el tiempo de la locura se computará para el cumplimiento de la pena, sin que ello obste a lo dispuesto en el apartado tercero del inciso 1º del artículo 34.\n",
+        "fullTranslationRu": "СТАТЬЯ 25. Если во время наказания осужденный сойдет с ума, время безумия засчитывается в исполнение наказания, без ущерба для положений третьего абзаца пункта 1 статьи 34.",
+        "simpleRu": "Если осужденный стал психически больным во время наказания, это время все равно считается частью срока. Но отдельно действует правило статьи 34, пункт 1.",
+        "sourceTextSha256": "2d8d56b68fb9084f1ca515583e9d43903d9bcf3e7b6c12d78f7b012fac06d476",
+        "sourceFingerprint": "sha256:2d8d56b68fb9084f1ca515583e9d43903d9bcf3e7b6c12d78f7b012fac06d476",
+        "sourceSpan": {
+          "startLine": 381,
+          "endLine": 382
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iii-061",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 61,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO III"
+        ],
+        "officialLabel": "TITULO III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO III\n\nCONDENACION CONDICIONAL\n",
+        "fullTranslationRu": "РАЗДЕЛ III\n\nУСЛОВНОЕ ОСУЖДЕНИЕ",
+        "simpleRu": "Дальше идут правила об условном осуждении.",
+        "sourceTextSha256": "e2b268d7b065ba809e535710d28a2e8fc2afa349fd68fdedc6a80831f45ab8fb",
+        "sourceFingerprint": "sha256:e2b268d7b065ba809e535710d28a2e8fc2afa349fd68fdedc6a80831f45ab8fb",
+        "sourceSpan": {
+          "startLine": 383,
+          "endLine": 386
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-26-en-los-casos-de-primera-condena-062",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 62,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO III",
+          "ARTICULO 26.- En los casos de primera condena a pena de prisión que no exceda de tres años, será facultad de los tribunales disponer en e..."
+        ],
+        "officialLabel": "ARTICULO 26.- En los casos de primera condena a pena de prisión que no exceda de tres años, será facultad de los tribunales disponer en e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 26.- En los casos de primera condena a pena de prisión que no exceda de tres años, será facultad de los tribunales disponer en el mismo pronunciamiento que se deje en suspenso el cumplimiento de la pena. Esta decisión deberá ser fundada, bajo sanción de nulidad, en la personalidad moral del condenado, su actitud posterior al delito, los motivos que lo impulsaron a delinquir, la naturaleza del hecho y las demás circunstancias que demuestren la inconveniencia de aplicar efectivamente la privación de libertad. El tribunal requerirá las informaciones pertinentes para formar criterio, pudiendo las partes aportar también la prueba útil a tal efecto.\n\nIgual facultad tendrán los tribunales en los casos de concurso de delitos si la pena impuesta al reo no excediese los tres años de prisión.\n\nNo procederá la condenación condicional respecto de las penas de multa o inhabilitación.\n",
+        "fullTranslationRu": "СТАТЬЯ 26. При первом осуждении к prisión на срок не более трех лет суды вправе в том же решении постановить, что исполнение наказания приостанавливается. Решение должно быть обосновано под угрозой ничтожности с учетом моральной личности осужденного, его поведения после преступления, мотивов, характера деяния и иных обстоятельств, показывающих нецелесообразность реального лишения свободы. Суд запрашивает нужные сведения, а стороны могут представить полезные доказательства. То же возможно при совокупности преступлений, если наказание не превышает трех лет prisión. Условное осуждение не применяется к штрафу или лишению прав.",
+        "simpleRu": "Если это первое осуждение и prisión не больше 3 лет, суд может оставить исполнение наказания условным. Решение нужно подробно обосновать. При нескольких преступлениях это тоже возможно, если общий срок не больше 3 лет. Штраф и лишение прав условными не становятся.",
+        "sourceTextSha256": "4328f2231b53795855d0859cc8da2a03ccf9b856fa2581e22262aa3444423322",
+        "sourceFingerprint": "sha256:4328f2231b53795855d0859cc8da2a03ccf9b856fa2581e22262aa3444423322",
+        "sourceSpan": {
+          "startLine": 387,
+          "endLine": 392
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-27-la-condenacion-se-tendra-como-no-063",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 63,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO III",
+          "ARTICULO 27.- La condenación se tendrá como no pronunciada si dentro del término de cuatro años, contados a partir de la fecha de la sent..."
+        ],
+        "officialLabel": "ARTICULO 27.- La condenación se tendrá como no pronunciada si dentro del término de cuatro años, contados a partir de la fecha de la sent...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 27.- La condenación se tendrá como no pronunciada si dentro del término de cuatro años, contados a partir de la fecha de la sentencia firme, el condenado no cometiere un nuevo delito. Si cometiere un nuevo delito, sufrirá la pena impuesta en la primera condenación y la que le correspondiere por el segundo delito, conforme con lo dispuesto sobre acumulación de penas.\n\nLa suspensión podrá ser acordada por segunda vez si el nuevo delito ha sido cometido después de haber transcurrido ocho años a partir de la fecha de la primera condena firme. Este plazo se elevará a diez años, si ambos delitos fueran dolosos.\n\nEn los casos de sentencias recurridas y confirmadas, en cuanto al carácter condicional de la condena, los plazos se computarán desde la fecha del pronunciamiento originario.\n",
+        "fullTranslationRu": "СТАТЬЯ 27. Осуждение считается как бы не вынесенным, если в течение четырех лет со дня вступления приговора в силу осужденный не совершит нового преступления. Если он совершит новое преступление, он отбывает наказание по первому осуждению и наказание за второе преступление по правилам сложения наказаний. Приостановление может быть предоставлено во второй раз, если новое преступление совершено после восьми лет с первого окончательного приговора; срок повышается до десяти лет, если оба преступления умышленные. При обжалованных и подтвержденных приговорах сроки считаются с даты первоначального решения.",
+        "simpleRu": "Если человек 4 года после окончательного приговора не совершает новое преступление, условное осуждение считается не вынесенным. Если совершит новое преступление, придется отвечать и за первый приговор, и за новый. Второй раз условное осуждение возможно только после 8 лет, а если оба преступления умышленные - после 10 лет.",
+        "sourceTextSha256": "5e9675167f8f274f6de526148c1e5e3425b62f92a703ca077da05428407bc06a",
+        "sourceFingerprint": "sha256:5e9675167f8f274f6de526148c1e5e3425b62f92a703ca077da05428407bc06a",
+        "sourceSpan": {
+          "startLine": 393,
+          "endLine": 398
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-27-bis-al-suspender-condicionalmente-la-ejecucion-064",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 64,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO III",
+          "ARTICULO 27 bis.- Al suspender condicionalmente la ejecución de la pena, el Tribunal deberá disponer que, durante un plazo que fijará ent..."
+        ],
+        "officialLabel": "ARTICULO 27 bis.- Al suspender condicionalmente la ejecución de la pena, el Tribunal deberá disponer que, durante un plazo que fijará ent...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 27 bis.- Al suspender condicionalmente la ejecución de la pena, el Tribunal deberá disponer que, durante un plazo que fijará entre dos y cuatro años según la gravedad del delito, el condenado cumpla todas o alguna de las siguientes reglas de conducta, en tanto resulten adecuadas para prevenir la comisión de nuevos delitos:\n\n1. Fijar residencia y someterse al cuidado de un patronato.\n\n2. Abstenerse de concurrir a determinados lugares o de relacionarse con determinadas personas.\n\n3. Abstenerse de usar estupefacientes o de abusar de bebidas alcohólicas.\n\n4. Asistir a la escolaridad primaria, si no la tuviere cumplida.\n\n5. Realizar estudios o prácticas necesarios para su capacitación laboral o profesional.\n\n6. Someterse a un tratamiento médico o psicológico, previo informe que acredite su necesidad y eficacia.\n\n7. Adoptar oficio, arte, industria o profesión, adecuado a su capacidad.\n\n8. Realizar trabajos no remunerados en favor del estado o de instituciones de bien público, fuera de sus horarios habituales de trabajo.\n\nLas reglas podrán ser modificadas por el Tribunal según resulte conveniente al caso.\n\nSi el condenado no cumpliere con alguna regla, el Tribunal podrá disponer que no se compute como plazo de cumplimiento todo o parte del tiempo transcurrido hasta ese momento. Si el condenado persistiere o reiterare el incumplimiento, el Tribunal podrá revocar la condicionalidad de la condena. El condenado deberá entonces cumplir la totalidad de la pena de prisión impuesta en la sentencia.\n\n(Artículo incorporado por art. 1° de la Ley N° 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715] B.O. 19/5/1994)\n",
+        "fullTranslationRu": "СТАТЬЯ 27 bis. При условном приостановлении исполнения наказания суд должен назначить на срок от двух до четырех лет, по тяжести преступления, все или некоторые правила поведения, если они подходят для предупреждения новых преступлений: установить место жительства и находиться под попечением патроната; не посещать определенные места и не общаться с определенными лицами; не употреблять наркотики и не злоупотреблять алкоголем; посещать начальную школу, если она не окончена; проходить учебу или практику для трудовой или профессиональной подготовки; проходить медицинское или психологическое лечение при подтвержденной необходимости и эффективности; заняться подходящим ремеслом, искусством, индустрией или профессией; выполнять неоплачиваемые работы в пользу государства или общественно полезных учреждений вне обычного рабочего времени. Суд может менять правила. При нарушении правила суд может не засчитать весь прошедший срок или его часть; при продолжении или повторении нарушения суд может отменить условность, и тогда осужденный исполняет весь срок prisión.",
+        "simpleRu": "При условном наказании суд назначает правила на 2-4 года. Это может быть адрес проживания, надзор, запрет ходить в некоторые места или общаться с некоторыми людьми, запрет наркотиков и злоупотребления алкоголем, учеба, лечение, работа или неоплачиваемая общественная работа. Суд может менять правила. При нарушениях время могут не засчитать, а условность отменить.",
+        "sourceTextSha256": "35d1380f414758f0de30ae1a02dadf3e088765d4006b3e1022e4b567ed850d83",
+        "sourceFingerprint": "sha256:35d1380f414758f0de30ae1a02dadf3e088765d4006b3e1022e4b567ed850d83",
+        "sourceSpan": {
+          "startLine": 399,
+          "endLine": 422
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-28-la-suspension-de-la-pena-no-065",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 65,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO III",
+          "ARTICULO 28.- La suspensión de la pena no comprenderá la reparación de los daños causados por el delito y el pago de los gastos del juicio."
+        ],
+        "officialLabel": "ARTICULO 28.- La suspensión de la pena no comprenderá la reparación de los daños causados por el delito y el pago de los gastos del juicio.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 28.- La suspensión de la pena no comprenderá la reparación de los daños causados por el delito y el pago de los gastos del juicio.\n",
+        "fullTranslationRu": "СТАТЬЯ 28. Приостановление наказания не включает возмещение вреда, причиненного преступлением, и оплату судебных расходов.",
+        "simpleRu": "Даже если наказание условное, вред от преступления и судебные расходы все равно нужно возмещать и платить.",
+        "sourceTextSha256": "c54026fd812858113e1cee1688262ff0f4f8a49a49a7d87ec93828703ff8e6d3",
+        "sourceFingerprint": "sha256:c54026fd812858113e1cee1688262ff0f4f8a49a49a7d87ec93828703ff8e6d3",
+        "sourceSpan": {
+          "startLine": 423,
+          "endLine": 424
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iv-066",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 66,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IV"
+        ],
+        "officialLabel": "TITULO IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO IV\n\nREPARACION DE PERJUICIOS\n",
+        "fullTranslationRu": "РАЗДЕЛ IV\n\nВОЗМЕЩЕНИЕ ВРЕДА",
+        "simpleRu": "Дальше идут правила о возмещении вреда от преступления.",
+        "sourceTextSha256": "828da832db6d1084a3eaf4491518ce823b7ccfe4e5afe0fdc7100eb4c1ccf46f",
+        "sourceFingerprint": "sha256:828da832db6d1084a3eaf4491518ce823b7ccfe4e5afe0fdc7100eb4c1ccf46f",
+        "sourceSpan": {
+          "startLine": 425,
+          "endLine": 428
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-29-la-sentencia-condenatoria-podra-ordenar-067",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 67,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IV",
+          "ARTICULO 29.- La sentencia condenatoria podrá ordenar:"
+        ],
+        "officialLabel": "ARTICULO 29.- La sentencia condenatoria podrá ordenar:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 29.- La sentencia condenatoria podrá ordenar:\n\n1. La reposición al estado anterior a la comisión del delito, en cuanto sea posible, disponiendo a ese fin las restituciones y demás medidas necesarias.\n\n2. La indemnización del daño material y moral causado a la víctima, a su familia o a un tercero, fijándose el monto prudencialmente por el juez en defecto de plena prueba.\n\n3. El pago de las costas.\n\n(Artículo sustituido por art. 27 de la Ley N° 25.188 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60847] B.O. 1/11/1999.)\n",
+        "fullTranslationRu": "СТАТЬЯ 29. Обвинительный приговор может постановить: восстановление прежнего состояния до преступления насколько возможно, с возвратом имущества и другими нужными мерами; возмещение материального и морального вреда потерпевшему, его семье или третьему лицу, причем сумму осторожно определяет судья при отсутствии полного доказательства; оплату судебных издержек. Статья заменена Законом N 25.188.",
+        "simpleRu": "В приговоре суд может приказать вернуть ситуацию как было до преступления, если это возможно. Также он может назначить компенсацию материального и морального вреда потерпевшему, семье или третьему лицу и оплату судебных расходов.",
+        "sourceTextSha256": "7a899b6f9fbe1b69d89f121f11d10963a40c0928c9f0be29c13122da9f41276e",
+        "sourceFingerprint": "sha256:7a899b6f9fbe1b69d89f121f11d10963a40c0928c9f0be29c13122da9f41276e",
+        "sourceSpan": {
+          "startLine": 429,
+          "endLine": 438
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-30-la-obligacion-de-indemnizar-es-preferente-068",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 68,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IV",
+          "ARTICULO 30.- La obligación de indemnizar es preferente a todas las que contrajere el responsable después de cometido el delito, a la eje..."
+        ],
+        "officialLabel": "ARTICULO 30.- La obligación de indemnizar es preferente a todas las que contrajere el responsable después de cometido el delito, a la eje...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 30.- La obligación de indemnizar es preferente a todas las que contrajere el responsable después de cometido el delito, a la ejecución de la pena de decomiso del producto o el provecho del delito y al pago de la multa. Si los bienes del condenado no fueren suficientes para cubrir todas sus responsabilidades pecuniarias, éstas se satisfarán en el orden siguiente:\n\n1. La indemnización de los daños y perjuicios.\n\n2. El resarcimiento de los gastos del juicio.\n\n3. El decomiso del producto o el provecho del delito.\n\n4. El pago de la multa.\n\n(Artículo sustituido por art. 28 de la Ley N° 25.188 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60847] B.O. 1/11/1999.)\n",
+        "fullTranslationRu": "СТАТЬЯ 30. Обязанность возместить вред имеет преимущество перед всеми обязанностями, которые ответственный взял после преступления, перед конфискацией продукта или выгоды преступления и перед оплатой штрафа. Если имущества осужденного недостаточно, денежные обязанности удовлетворяются так: возмещение вреда и убытков; возмещение судебных расходов; конфискация продукта или выгоды преступления; оплата штрафа.",
+        "simpleRu": "Если денег осужденного не хватает на все, сначала платят компенсацию вреда. Потом судебные расходы. Потом идет конфискация продукта или выгоды преступления. Штраф платится после этого.",
+        "sourceTextSha256": "7c233f8e5652fdace31a1dec1c544fc37c58568cbc712c98ddb6c1af5b9b8a5e",
+        "sourceFingerprint": "sha256:7c233f8e5652fdace31a1dec1c544fc37c58568cbc712c98ddb6c1af5b9b8a5e",
+        "sourceSpan": {
+          "startLine": 439,
+          "endLine": 450
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-31-la-obligacion-de-reparar-el-dano-069",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 69,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IV",
+          "ARTICULO 31.- La obligación de reparar el daño es solidaria entre todos los responsables del delito."
+        ],
+        "officialLabel": "ARTICULO 31.- La obligación de reparar el daño es solidaria entre todos los responsables del delito.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 31.- La obligación de reparar el daño es solidaria entre todos los responsables del delito.\n",
+        "fullTranslationRu": "СТАТЬЯ 31. Обязанность возместить вред является солидарной между всеми ответственными за преступление.",
+        "simpleRu": "Все ответственные за преступление отвечают за возмещение вреда вместе.",
+        "sourceTextSha256": "6695d5897e89236454b8eaf79c7a7a6cdedf1c5a9e5b6ba98f0a563eefc4f0cc",
+        "sourceFingerprint": "sha256:6695d5897e89236454b8eaf79c7a7a6cdedf1c5a9e5b6ba98f0a563eefc4f0cc",
+        "sourceSpan": {
+          "startLine": 451,
+          "endLine": 452
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-32-el-que-por-titulo-lucrativo-participare-070",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 70,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IV",
+          "ARTICULO 32.- El que por título lucrativo participare de los efectos de un delito, estará obligado a la reparación hasta la cuantía en qu..."
+        ],
+        "officialLabel": "ARTICULO 32.- El que por título lucrativo participare de los efectos de un delito, estará obligado a la reparación hasta la cuantía en qu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 32.- El que por título lucrativo participare de los efectos de un delito, estará obligado a la reparación hasta la cuantía en que hubiere participado.\n",
+        "fullTranslationRu": "СТАТЬЯ 32. Тот, кто с выгодой участвовал в последствиях преступления, обязан возместить вред в пределах того, в чем он участвовал.",
+        "simpleRu": "Если человек получил выгоду от результатов преступления, он должен возместить вред в пределах этой выгоды.",
+        "sourceTextSha256": "b38586d7c6be00d9bd4f332d53ed94e5b7b65cd90b57411f6a1677c75ab2ded1",
+        "sourceFingerprint": "sha256:b38586d7c6be00d9bd4f332d53ed94e5b7b65cd90b57411f6a1677c75ab2ded1",
+        "sourceSpan": {
+          "startLine": 453,
+          "endLine": 454
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-33-en-caso-de-insolvencia-total-o-071",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 71,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IV",
+          "ARTICULO 33.- En caso de insolvencia total o parcial, se observarán las reglas siguientes:"
+        ],
+        "officialLabel": "ARTICULO 33.- En caso de insolvencia total o parcial, se observarán las reglas siguientes:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 33.- En caso de insolvencia total o parcial, se observarán las reglas siguientes:\n\n1º. Tratándose de condenados a reclusión o prisión, la reparación se hará en la forma determinada en el artículo 11;\n\n2º. Tratándose de condenados a otras penas, el tribunal señalará la parte de sus entradas o emolumentos que deban depositar periódicamente hasta el pago total.\n",
+        "fullTranslationRu": "СТАТЬЯ 33. При полной или частичной неплатежеспособности соблюдаются правила: для осужденных к reclusión или prisión возмещение производится способом статьи 11; для осужденных к другим наказаниям суд указывает часть их доходов или выплат, которую они должны периодически вносить до полной оплаты.",
+        "simpleRu": "Если у осужденного нет денег полностью или частично, действуют специальные правила. При reclusión или prisión используют порядок статьи 11. При других наказаниях суд назначает часть дохода, которую нужно регулярно платить.",
+        "sourceTextSha256": "6935c20dbd0a6e5894263a757525480367fc198ec458df0addb2459f2d45a05d",
+        "sourceFingerprint": "sha256:6935c20dbd0a6e5894263a757525480367fc198ec458df0addb2459f2d45a05d",
+        "sourceSpan": {
+          "startLine": 455,
+          "endLine": 460
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-v-072",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 72,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V"
+        ],
+        "officialLabel": "TITULO V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO V\n\nIMPUTABILIDAD\n",
+        "fullTranslationRu": "РАЗДЕЛ V\n\nВМЕНЯЕМОСТЬ",
+        "simpleRu": "Дальше идут правила о том, когда человек может не подлежать наказанию.",
+        "sourceTextSha256": "25d8e82bc4907f45485391997dc8b86317a180a4a2d4bd0cdbbb617c5ee119f7",
+        "sourceFingerprint": "sha256:25d8e82bc4907f45485391997dc8b86317a180a4a2d4bd0cdbbb617c5ee119f7",
+        "sourceSpan": {
+          "startLine": 461,
+          "endLine": 464
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-34-no-son-punibles-073",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 73,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 34.- No son punibles:"
+        ],
+        "officialLabel": "ARTICULO 34.- No son punibles:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 34.- No son punibles:\n\n1º. El que no haya podido en el momento del hecho, ya sea por insuficiencia de sus facultades, por alteraciones morbosas de las mismas o por su estado de inconciencia, error o ignorancia de hecho no imputables, comprender la criminalidad del acto o dirigir sus acciones.\n\nEn caso de enajenación, el tribunal podrá ordenar la reclusión del agente en un manicomio, del que no saldrá sino por resolución judicial, con audiencia del ministerio público y previo dictamen de peritos que declaren desaparecido el peligro de que el enfermo se dañe a sí mismo o a los demás.\n\nEn los demás casos en que se absolviere a un procesado por las causales del presente inciso, el tribunal ordenará la reclusión del mismo en un establecimiento adecuado hasta que se comprobase la desaparición de las condiciones que le hicieren peligroso;\n\n2º. El que obrare violentado por fuerza física irresistible o amenazas de sufrir un mal grave e inminente;\n\n3º. El que causare un mal por evitar otro mayor inminente a que ha sido extraño;\n\n4º. El que obrare en cumplimiento de un deber o en el legítimo ejercicio de su derecho, autoridad o cargo;\n\n5º. El que obrare en virtud de obediencia debida;\n\n6º. El que obrare en defensa propia o de sus derechos, siempre que concurrieren las siguientes circunstancias:\n\na) Agresión ilegítima;\n\nb) Necesidad racional del medio empleado para impedirla o repelerla;\n\nc) Falta de provocación suficiente por parte del que se defiende.\n\nSe entenderá que concurren estas circunstancias respecto de aquel que durante la noche rechazare el escalamiento o fractura de los cercados, paredes o entradas de su casa, o departamento habitado o de sus dependencias, cualquiera que sea el daño ocasionado al agresor.\n\nIgualmente respecto de aquél que encontrare a un extraño dentro de su hogar, siempre que haya resistencia;\n\n7º. El que obrare en defensa de la persona o derechos de otro, siempre que concurran las circunstancias a) y b) del inciso anterior y caso de haber precedido provocación suficiente por parte del agredido, la de que no haya participado en ella el tercero defensor.\n",
+        "fullTranslationRu": "СТАТЬЯ 34. Не подлежат наказанию: тот, кто в момент деяния не мог из-за недостаточности способностей, болезненных нарушений, бессознательности, невменяемой ошибки или незнания факта понимать преступность действия или руководить действиями; тот, кто действовал под непреодолимой физической силой или угрозой неминуемого тяжкого вреда; тот, кто причинил вред, чтобы избежать большего неминуемого вреда, к которому он непричастен; тот, кто действовал во исполнение обязанности или законно осуществлял право, власть или должность; тот, кто действовал по должному повиновению; тот, кто защищал себя или свои права при незаконном нападении, разумной необходимости средства защиты и отсутствии достаточной провокации; и тот, кто защищал другого при условиях закона. При психическом отчуждении или иных основаниях суд может назначить помещение в психиатрическое или подходящее учреждение до исчезновения опасности. Закон отдельно предполагает самооборону при ночном отражении перелезания или взлома дома, обитаемой квартиры или их зависимых помещений, а также при обнаружении постороннего в доме при сопротивлении.",
+        "simpleRu": "Статья 34 перечисляет случаи, когда человека не наказывают. Это невменяемость, непреодолимая сила, серьезная неминуемая угроза, крайняя необходимость, исполнение обязанности, законное право или приказ. Самооборона возможна при незаконном нападении, разумной необходимости защиты и отсутствии достаточной провокации. Особые правила есть для ночного взлома дома и для защиты другого человека.",
+        "sourceTextSha256": "88487305ed949ff184d85a51e9f6c761860e08ee9580c31a4657364f6e793026",
+        "sourceFingerprint": "sha256:88487305ed949ff184d85a51e9f6c761860e08ee9580c31a4657364f6e793026",
+        "sourceSpan": {
+          "startLine": 465,
+          "endLine": 494
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-35-el-que-hubiere-excedido-los-limites-074",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 74,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 35.- El que hubiere excedido los límites impuestos por la Ley, por la autoridad o por la necesidad, será castigado con la pena f..."
+        ],
+        "officialLabel": "ARTICULO 35.- El que hubiere excedido los límites impuestos por la Ley, por la autoridad o por la necesidad, será castigado con la pena f...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 35.- El que hubiere excedido los límites impuestos por la Ley, por la autoridad o por la necesidad, será castigado con la pena fijada para el delito por culpa o imprudencia.\n",
+        "fullTranslationRu": "СТАТЬЯ 35. Тот, кто превысил пределы, установленные законом, властью или необходимостью, наказывается наказанием, установленным за преступление по вине или неосторожности.",
+        "simpleRu": "Если человек имел право действовать, но перешел пределы закона, полномочий или необходимости, его наказывают как за неосторожное преступление.",
+        "sourceTextSha256": "2c2877f519cb53d61c6e68cfcf26ba1c2fbcade7289573f38e130b5f9c7eadff",
+        "sourceFingerprint": "sha256:2c2877f519cb53d61c6e68cfcf26ba1c2fbcade7289573f38e130b5f9c7eadff",
+        "sourceSpan": {
+          "startLine": 495,
+          "endLine": 496
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-36-derogado-075",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 75,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 36.- Derogado."
+        ],
+        "officialLabel": "ARTICULO 36.- Derogado.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 36.- Derogado.\n",
+        "fullTranslationRu": "СТАТЬЯ 36. Отменена.",
+        "simpleRu": "Статья 36 отменена и больше не содержит действующего правила.",
+        "sourceTextSha256": "cea567f6ffc890fc4c1f85a2715694f55c718c31af4bf9e794ea247262411105",
+        "sourceFingerprint": "sha256:cea567f6ffc890fc4c1f85a2715694f55c718c31af4bf9e794ea247262411105",
+        "sourceSpan": {
+          "startLine": 497,
+          "endLine": 498
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-37-derogado-076",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 76,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 37.- Derogado."
+        ],
+        "officialLabel": "ARTICULO 37.- Derogado.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 37.- Derogado.\n",
+        "fullTranslationRu": "СТАТЬЯ 37. Отменена.",
+        "simpleRu": "Статья 37 отменена и больше не содержит действующего правила.",
+        "sourceTextSha256": "21e20b71ff86f0a7ca882d186e6e131aa12a4cb8c13143f98e4a2f585e25ab53",
+        "sourceFingerprint": "sha256:21e20b71ff86f0a7ca882d186e6e131aa12a4cb8c13143f98e4a2f585e25ab53",
+        "sourceSpan": {
+          "startLine": 499,
+          "endLine": 500
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-38-derogado-077",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 77,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 38.- Derogado."
+        ],
+        "officialLabel": "ARTICULO 38.- Derogado.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 38.- Derogado.\n",
+        "fullTranslationRu": "СТАТЬЯ 38. Отменена.",
+        "simpleRu": "Статья 38 отменена и больше не содержит действующего правила.",
+        "sourceTextSha256": "6e74d342bef5f85c538e5f39ce4feb9ea903ed1cc3e40a77731bc7cca2325a72",
+        "sourceFingerprint": "sha256:6e74d342bef5f85c538e5f39ce4feb9ea903ed1cc3e40a77731bc7cca2325a72",
+        "sourceSpan": {
+          "startLine": 501,
+          "endLine": 502
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-39-derogado-078",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 78,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 39.- Derogado."
+        ],
+        "officialLabel": "ARTICULO 39.- Derogado.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 39.- Derogado.\n",
+        "fullTranslationRu": "СТАТЬЯ 39. Отменена.",
+        "simpleRu": "Статья 39 отменена и больше не содержит действующего правила.",
+        "sourceTextSha256": "36125fc84cc7f2dce127b4044ace678e5a37a87b33435ebc0d04fa8aff470ed6",
+        "sourceFingerprint": "sha256:36125fc84cc7f2dce127b4044ace678e5a37a87b33435ebc0d04fa8aff470ed6",
+        "sourceSpan": {
+          "startLine": 503,
+          "endLine": 504
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-40-en-las-penas-divisibles-por-razon-079",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 79,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 40.- En las penas divisibles por razón de tiempo o de cantidad, los tribunales fijarán la condenación de acuerdo con las circuns..."
+        ],
+        "officialLabel": "ARTICULO 40.- En las penas divisibles por razón de tiempo o de cantidad, los tribunales fijarán la condenación de acuerdo con las circuns...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 40.- En las penas divisibles por razón de tiempo o de cantidad, los tribunales fijarán la condenación de acuerdo con las circunstancias atenuantes o agravantes particulares a cada caso y de conformidad a las reglas del artículo siguiente.\n",
+        "fullTranslationRu": "СТАТЬЯ 40. В наказаниях, делимых по времени или по количеству, суды устанавливают осуждение с учетом смягчающих или отягчающих обстоятельств каждого случая и по правилам следующей статьи.",
+        "simpleRu": "Если наказание можно измерить сроком или суммой, суд выбирает размер по обстоятельствам дела и применяет статью 41.",
+        "sourceTextSha256": "c707ae25680f1b089899af11c1c9c78de8bdbc83e434e3ec755d7487b8509f67",
+        "sourceFingerprint": "sha256:c707ae25680f1b089899af11c1c9c78de8bdbc83e434e3ec755d7487b8509f67",
+        "sourceSpan": {
+          "startLine": 505,
+          "endLine": 506
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-a-los-efectos-del-articulo-anterior-080",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 80,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 41.- A los efectos del artículo anterior, se tendrá en cuenta:"
+        ],
+        "officialLabel": "ARTICULO 41.- A los efectos del artículo anterior, se tendrá en cuenta:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 41.- A los efectos del artículo anterior, se tendrá en cuenta:\n\n1º. La naturaleza de la acción y de los medios empleados para ejecutarla y la extensión del daño y del peligro causados;\n\n2º. La edad, la educación, las costumbres y la conducta precedente del sujeto, la calidad de los motivos que lo determinaron a delinquir, especialmente la miseria o la dificultad de ganarse el sustento propio necesario y el de los suyos, la participación que haya tomado en el hecho, las reincidencias en que hubiera incurrido y los demás antecedentes y condiciones personales, así como los vínculos personales, la calidad de las personas y las circunstancias de tiempo, lugar, modo y ocasión que demuestren su mayor o menor peligrosidad. El juez deberá tomar conocimiento directo y de visu del sujeto, de la víctima y de las circunstancias del hecho en la medida requerida para cada caso.\n",
+        "fullTranslationRu": "СТАТЬЯ 41. Для предыдущей статьи учитываются характер действия и средств, использованных для его совершения, размер вреда и опасности; возраст, образование, привычки и предыдущее поведение лица; мотивы, особенно нужда или трудность добывать содержание для себя и близких; участие в деянии; рецидивы; другие личные сведения и условия; личные связи; качество лиц; обстоятельства времени, места, способа и случая, показывающие большую или меньшую опасность. Судья должен непосредственно и лично ознакомиться с лицом, потерпевшим и обстоятельствами деяния насколько нужно для дела.",
+        "simpleRu": "При выборе размера наказания суд смотрит на само действие, способ, вред и опасность. Также смотрит на возраст, образование, поведение, мотивы, бедность или трудности заработка, роль в преступлении, рецидивы и обстоятельства дела. Судья должен лично узнать человека, потерпевшего и обстоятельства настолько, насколько нужно.",
+        "sourceTextSha256": "87cc56a866169ebed4ef565a53824c2f8a4231d8cc13802cfe101c314869a3d4",
+        "sourceFingerprint": "sha256:87cc56a866169ebed4ef565a53824c2f8a4231d8cc13802cfe101c314869a3d4",
+        "sourceSpan": {
+          "startLine": 507,
+          "endLine": 512
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-bis-cuando-alguno-de-los-delitos-081",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 81,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 41 bis — Cuando alguno de los delitos previstos en este Código se cometiera con violencia o intimidación contra las personas med..."
+        ],
+        "officialLabel": "ARTICULO 41 bis — Cuando alguno de los delitos previstos en este Código se cometiera con violencia o intimidación contra las personas med...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 41 bis — Cuando alguno de los delitos previstos en este Código se cometiera con violencia o intimidación contra las personas mediante el empleo de un arma de fuego la escala penal prevista para el delito de que se trate se elevará en un tercio en su mínimo y en su máximo, sin que ésta pueda exceder el máximo legal de la especie de pena que corresponda.\n\nEste agravante no será aplicable cuando la circunstancia mencionada en ella ya se encuentre contemplada como elemento constitutivo o calificante del delito de que se trate.\n\n(Artículo incorporado por art. 1° de la Ley N° 25.297 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=64368] B.O. 22/9/2000)\n",
+        "fullTranslationRu": "СТАТЬЯ 41 bis. Когда преступление из этого Кодекса совершается с насилием или запугиванием людей с применением огнестрельного оружия, шкала наказания повышается на одну треть по минимуму и максимуму, но не может превысить законный максимум соответствующего вида наказания. Отягчение не применяется, если это обстоятельство уже является элементом состава или квалифицирующим признаком преступления.",
+        "simpleRu": "Если преступление совершено с насилием или угрозой и с огнестрельным оружием, минимум и максимум наказания увеличиваются на треть. Это правило не применяется, если оружие уже является частью состава или квалификации преступления.",
+        "sourceTextSha256": "595cd11d1e1ed9bc5e8c5efe425813b8c65f555f4b4de1bef6ead23d8d55cefb",
+        "sourceFingerprint": "sha256:595cd11d1e1ed9bc5e8c5efe425813b8c65f555f4b4de1bef6ead23d8d55cefb",
+        "sourceSpan": {
+          "startLine": 513,
+          "endLine": 518
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-ter-las-escalas-penales-podran-reducirse-082",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 82,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 41 ter — Las escalas penales podrán reducirse a las de la tentativa respecto de los partícipes o autores por algún delito de los..."
+        ],
+        "officialLabel": "ARTICULO 41 ter — Las escalas penales podrán reducirse a las de la tentativa respecto de los partícipes o autores por algún delito de los...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 41 ter — Las escalas penales podrán reducirse a las de la tentativa respecto de los partícipes o autores por algún delito de los detallados a continuación en este artículo, cuando durante la sustanciación del proceso del que sean parte, brinden información o datos precisos, comprobables y verosímiles.\n\nEl proceso sobre el cual se aporten datos o información deberá estar vinculado con alguno de los siguientes delitos:\n\na) Delitos de producción, tráfico, transporte, siembra, almacenamiento y comercialización de estupefacientes, precursores químicos o cualquier otra materia prima para su producción o fabricación previstos en la ley 23.737 o la que en el futuro la reemplace, y la organización y financiación de dichos delitos;\n\nb) Delitos previstos en la sección XII, título I del Código Aduanero;\n\nc) Todos los casos en los que sea aplicable el artículo 41 quinquies del Código Penal;\n\nd) Delitos previstos en los artículos 125, 125 bis, 126, 127 y 128 del Código Penal;\n\ne) Delitos previstos en los artículos 142 bis, 142 ter y 170 del Código Penal;\n\nf) Delitos previstos en los artículos 145 bis y 145 ter del Código Penal;\n\ng) Delitos cometidos en los términos de los artículos 210 y 210 bis del Código Penal;\n\nh) Delitos previstos en los capítulos VI, VII, VIII, IX, IX bis y X del título XI y en el inciso 5 del artículo 174, del Código Penal;\n\ni) Delitos previstos en el título XIII, del libro segundo, del Código Penal.\n\nPara la procedencia de este beneficio será necesario que los datos o información aportada contribuyan a evitar o impedir el comienzo, la permanencia o consumación de un delito; esclarecer el hecho objeto de investigación u otros conexos; revelar la identidad o el paradero de autores, coautores, instigadores o partícipes de estos hechos investigados o de otros conexos; proporcionar datos suficientes que permitan un significativo avance de la investigación o el paradero de víctimas privadas de su libertad; averiguar el destino de los instrumentos, bienes, efectos, productos o ganancias del delito; o indicar las fuentes de financiamiento de organizaciones criminales involucradas en la comisión de los delitos previstos en el presente artículo.\n\nCuando el delito atribuido al imputado estuviere reprimido con prisión y/o reclusión perpetua, la pena sólo podrá reducirse hasta los quince (15) años de prisión.\n\nLa reducción de pena no procederá respecto de las penas de inhabilitación o multa.\n\n(Artículo sustituido por art. 1° de la Ley N° 27.304 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=267115] B.O. 2/11/2016)\n",
+        "fullTranslationRu": "СТАТЬЯ 41 ter. Шкалы наказаний могут быть снижены до шкал покушения для участников или авторов перечисленных преступлений, если во время процесса они предоставят точную, проверяемую и правдоподобную информацию. Дело должно быть связано с наркотиками и прекурсорами по Закону 23.737, таможенными преступлениями, случаями статьи 41 quinquies, преступлениями статей 125, 125 bis, 126, 127, 128, 142 bis, 142 ter, 145 bis, 145 ter, 170, 210, 210 bis, преступлениями глав VI-X раздела XI, пунктом 5 статьи 174 или разделом XIII Книги второй. Информация должна помогать предотвратить или остановить преступление, раскрыть расследуемое или связанное деяние, установить участников, найти лишенных свободы потерпевших, найти инструменты, имущество, продукты или доходы преступления либо источники финансирования преступных организаций. Если вменяемое преступление наказывается пожизненной prisión и/или reclusión, наказание можно снизить только до пятнадцати (15) лет prisión. Снижение не применяется к лишению прав или штрафу.",
+        "simpleRu": "Статья 41 ter дает возможное снижение наказания для обвиняемого или участника, который дает точную и проверяемую информацию по очень серьезным преступлениям. Информация должна реально помогать расследованию или предотвращению преступления. Если исходное наказание пожизненное, снизить можно только до 15 лет prisión. Штрафы и лишение прав так не уменьшаются.",
+        "sourceTextSha256": "97a016267a880d81b6d9e3f6a6e5902a12dfb17a7288eb40c8ff6d9526a79237",
+        "sourceFingerprint": "sha256:97a016267a880d81b6d9e3f6a6e5902a12dfb17a7288eb40c8ff6d9526a79237",
+        "sourceSpan": {
+          "startLine": 519,
+          "endLine": 548
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-quater-cuando-alguno-de-los-delitos-083",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 83,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 41 quater — Cuando alguno de los delitos previstos en este Código sea cometido con la intervención de menores de dieciocho años ..."
+        ],
+        "officialLabel": "ARTICULO 41 quater — Cuando alguno de los delitos previstos en este Código sea cometido con la intervención de menores de dieciocho años ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 41 quater — Cuando alguno de los delitos previstos en este Código sea cometido con la intervención de menores de dieciocho años de edad, la escala penal correspondiente se incrementará en un tercio del mínimo y del máximo, respecto de los mayores que hubieren participado en el mismo.\n\n(Artículo incorporado por art. 1° de la Ley N° 25.767 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=88075] B.O. 1/9/2003)\n",
+        "fullTranslationRu": "СТАТЬЯ 41 quater. Когда преступление из этого Кодекса совершено с участием несовершеннолетних младше восемнадцати лет, соответствующая шкала наказания повышается на одну треть минимума и максимума для совершеннолетних участников.",
+        "simpleRu": "Если взрослые совершили преступление с участием детей младше 18 лет, наказание для взрослых увеличивается на треть по минимуму и максимуму.",
+        "sourceTextSha256": "c34e709f5e8b5761b532d7d7cee6c724399582c264b05d7738d254dda80d5de8",
+        "sourceFingerprint": "sha256:c34e709f5e8b5761b532d7d7cee6c724399582c264b05d7738d254dda80d5de8",
+        "sourceSpan": {
+          "startLine": 549,
+          "endLine": 552
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-quinquies-cuando-alguno-de-los-delitos-084",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 84,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO V",
+          "ARTICULO 41 quinquies — Cuando alguno de los delitos previstos en este Código, en leyes especiales o en las leyes que incorporen al derec..."
+        ],
+        "officialLabel": "ARTICULO 41 quinquies — Cuando alguno de los delitos previstos en este Código, en leyes especiales o en las leyes que incorporen al derec...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 41 quinquies — Cuando alguno de los delitos previstos en este Código, en leyes especiales o en las leyes que incorporen al derecho interno tipos penales previstos en convenciones internacionales vigentes ratificadas en la República Argentina, hubiere sido cometido con la finalidad de aterrorizar a la población u obligar a las autoridades públicas nacionales o gobiernos extranjeros o agentes de una organización internacional a realizar un acto o abstenerse de hacerlo, la escala se incrementará en el doble del mínimo y el máximo.\n\nLas agravantes previstas en este artículo no se aplicarán cuando el o los hechos de que se traten tuvieren lugar en ocasión del ejercicio de derechos humanos y/o sociales o de cualquier otro derecho constitucional.\n\n(Artículo sustituido por art. 1° de la Ley N° 27.739 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=397355] B.O. 15/3/2024.)\n",
+        "fullTranslationRu": "СТАТЬЯ 41 quinquies. Когда преступление из этого Кодекса, специальных законов или законов, включающих во внутреннее право составы из действующих международных конвенций, ратифицированных Аргентиной, совершено с целью терроризировать население либо заставить национальные публичные власти, иностранные правительства или представителей международной организации совершить действие или воздержаться от него, шкала наказания увеличивается вдвое по минимуму и максимуму. Эти отягчения не применяются, когда деяния произошли при осуществлении прав человека, социальных прав или любого другого конституционного права. Статья заменена Законом N 27.739, опубликованным 15/3/2024.",
+        "simpleRu": "Если преступление совершено с террористической целью - запугать население или заставить власти, иностранное правительство или международную организацию что-то сделать или не делать, минимум и максимум наказания удваиваются. Но это не применяют к действиям при осуществлении прав человека, социальных или других конституционных прав.",
+        "sourceTextSha256": "ad9dc10760ce60ccb122ce9e412dcc4699b1ac06c793c5c3edaf8952df9c0af9",
+        "sourceFingerprint": "sha256:ad9dc10760ce60ccb122ce9e412dcc4699b1ac06c793c5c3edaf8952df9c0af9",
+        "sourceSpan": {
+          "startLine": 553,
+          "endLine": 558
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vi-085",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 85,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VI"
+        ],
+        "officialLabel": "TITULO VI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VI\n\nTENTATIVA\n",
+        "fullTranslationRu": "РАЗДЕЛ VI\n\nПОКУШЕНИЕ",
+        "simpleRu": "Дальше начинается раздел о покушении на преступление.",
+        "sourceTextSha256": "978b90de55877d71792e4515c2f35a53b5fb9c6188bb0cce3f20e2581b5ff9d8",
+        "sourceFingerprint": "sha256:978b90de55877d71792e4515c2f35a53b5fb9c6188bb0cce3f20e2581b5ff9d8",
+        "sourceSpan": {
+          "startLine": 559,
+          "endLine": 562
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-42-el-que-con-el-fin-de-086",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 86,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VI",
+          "ARTICULO 42.- El que con el fin de cometer un delito determinado comienza su ejecución, pero no lo consuma por circunstancias ajenas a su..."
+        ],
+        "officialLabel": "ARTICULO 42.- El que con el fin de cometer un delito determinado comienza su ejecución, pero no lo consuma por circunstancias ajenas a su...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 42.- El que con el fin de cometer un delito determinado comienza su ejecución, pero no lo consuma por circunstancias ajenas a su voluntad, sufrirá las penas determinadas en el artículo 44.\n",
+        "fullTranslationRu": "СТАТЬЯ 42. Тот, кто с целью совершить определенное преступление начинает его исполнение, но не доводит его до конца по обстоятельствам, не зависящим от его воли, несет наказания, определенные в статье 44.",
+        "simpleRu": "Покушение есть, когда человек уже начал совершать конкретное преступление, но не закончил его по причинам, которые от него не зависели. Наказание смотрят по статье 44.",
+        "sourceTextSha256": "d53f9883115cea9dbc2947057a2fd7e389e5784fe864ed563247e02e26ac5d87",
+        "sourceFingerprint": "sha256:d53f9883115cea9dbc2947057a2fd7e389e5784fe864ed563247e02e26ac5d87",
+        "sourceSpan": {
+          "startLine": 563,
+          "endLine": 564
+        }
+      }
+    ]
+  }
+}
