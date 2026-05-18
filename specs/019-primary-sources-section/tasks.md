@@ -318,6 +318,7 @@
 - Checked `content/primary-sources/search/ley-26994-codigo-civil-comercial--0001-0182.search.json`; it contains `chunkId` references and `textFields` only, with no duplicated `simpleRu` text, so the search shard was intentionally left unchanged.
 - Post-repair temporary Node scan result with the same broad heuristic: 0 flagged near-verbatim article-prefixed `simpleRu` entries.
 - PR #126 legal-terminology review follow-up on 2026-05-18, starting from head `cb10051839527d05ac391ca4e5fa78acab6005d7`: resolved comment `3262593020` by changing Articles 23 and 24 from physical-ability wording to legal capacity/дееспособность wording; resolved comment `3262593025` by changing Article 48 from `Блудные дети`/`дисквалифицированы` to `расточители` and limitation of legal capacity. Also corrected adjacent Article 49 `inhabilitación` wording from `дисквалификация` to legal-capacity restriction/support terminology. Search shard inspection confirmed the D10-001 search file has only chunk references/text field names, not duplicated Russian text.
+- PR #126 legal-terminology review follow-up on 2026-05-18, starting from head `77c910a2d4755f55c01df2ee6bc82922a5979c19`: resolved comment `3262742309` by changing Article 10 from crime/insult wording to abuse-of-right wording; resolved comment `3262777018` by changing Article 47 from contract/disability/disabled wording and unsupported Ministerio Público language to cessation of incapacity or legal-capacity restriction after interdisciplinary evaluation; resolved comment `3262777022` by changing Article 50 from disqualification/restoration-of-personality/Spanish-term wording and unsupported requester language to cessation of the legal-capacity restriction/support regime by the same judge after interdisciplinary examination.
 - PR #126 proper-name review follow-up on 2026-05-18, starting from head `c22dc4572b51ee9be3e5dcedd3d49fd3d53fa560`: resolved comment `3262602629` by correcting the Article 10 signatory `AMADO BOUDOU` from semantic Russian `ЛЮБИМЫЙ БУДУ` to transliterated all-caps `АМАДО БУДУ`, consistent with nearby all-caps signatory transliterations. `simpleRu` did not name the signatories, and the D10-001 search shard stores only chunk references/text field names, so no search shard edit was needed.
 - PR #126 Article 42 source-support review follow-up on 2026-05-18, starting from head `0fb32d70ee16c26537a6c4e0e21349c01f982eea`: resolved comment `3262653810` by removing unsupported `48 часов`, medical-psychosocial check, and release-or-intern outcome wording from Article 42 `simpleRu`; the revised explanation now preserves only the source-backed rules on public-authority transfer to a health center for evaluation, internment deadlines/modalities under special legislation, and immediate aid by security/public-health services. Also tightened the same chunk's `fullTranslationRu` wording for transfer/evaluation/internment and the paragraph heading on support systems for exercising legal capacity.
 
@@ -648,6 +649,13 @@
 
 ### Verification Evidence
 
+- PR #126 Civil D10-001 legal-terminology follow-up on 2026-05-18:
+  - Targeted JSON check over Russian fields passed with zero matches for `преступление`, `оскорбительной правовой`, `Отключено`, `дисквалификац`, `восстановление личности`, and unsupported Spanish `inhabilitación`.
+  - Search shard check passed with zero duplicated stale text matches; `content/primary-sources/search/ley-26994-codigo-civil-comercial--0001-0182.search.json` stores field references rather than mirrored Russian chunk text.
+  - Near-verbatim article-prefixed/high-overlap `simpleRu` scan remained 0 for the D10-001 document shard.
+  - `pnpm run validate:content` passed. Output summary: `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test` passed: 163 tests, 163 pass, 0 fail.
+  - `git diff --check` passed with no output.
 - PR #126 legal-terminology review follow-up on 2026-05-18:
   - Targeted grep passed with zero matches in `content/primary-sources/documents/ley-26994-codigo-civil-comercial--0001-0182.ru.json` and the matching D10-001 search shard for `физической нагруз`, `Блудные дети`, and `дисквалифицирован`.
   - Near-verbatim article-prefixed high-overlap `simpleRu` scan remained 0 for the D10-001 document shard.
