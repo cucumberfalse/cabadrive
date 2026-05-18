@@ -438,6 +438,9 @@ export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, sea
   errors.push(...searchShardResult.errors);
   learnerContentPaths.push(...searchShardResult.learnerContentPaths);
 
+  validateUniqueDocumentsBeforeRecomposition(errors, corpus?.documents, "primary sources corpus document");
+  validateUniqueDocumentsBeforeRecomposition(errors, qa?.documents, "primary sources QA document");
+
   const corpusRecomposition = recombineDocumentsByOfficialDocumentId(
     [...asArray(corpus?.documents), ...corpusShardResult.items],
     {

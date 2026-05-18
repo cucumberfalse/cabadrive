@@ -317,6 +317,24 @@ test("rejects duplicate root corpus documents before range-shard recomposition",
   assert(errors.includes("doc-1: duplicate primary sources corpus document."));
 });
 
+test("shard combining reports duplicate root corpus documents before range-shard recomposition", () => {
+  const [firstChunk, secondChunk] = corpus().documents[0].chunks;
+  const baseDocument = { ...corpus().documents[0], chunks: [] };
+  const combined = combinePrimarySourceShards({
+    corpus: {
+      ...corpus(),
+      documents: [
+        { ...baseDocument, chunks: [firstChunk] },
+        { ...baseDocument, chunks: [secondChunk] }
+      ]
+    },
+    qa: qa(),
+    searchIndex: searchIndex()
+  });
+
+  assert(combined.errors.includes("doc-1: duplicate primary sources corpus document."));
+});
+
 test("document range shards with mismatched metadata fail recomposition", () => {
   const [firstChunk, secondChunk] = corpus().documents[0].chunks;
   const baseDocument = { ...corpus().documents[0], chunks: [] };
@@ -413,6 +431,23 @@ test("rejects duplicate root QA documents before range-shard recomposition", () 
   });
 
   assert(errors.includes("doc-1: duplicate primary sources QA document."));
+});
+
+test("shard combining reports duplicate root QA documents before range-shard recomposition", () => {
+  const [firstQaChunk, secondQaChunk] = qa().documents[0].chunks;
+  const combined = combinePrimarySourceShards({
+    corpus: corpus(),
+    qa: {
+      ...qa(),
+      documents: [
+        { officialDocumentId: "doc-1", chunks: [firstQaChunk] },
+        { officialDocumentId: "doc-1", chunks: [secondQaChunk] }
+      ]
+    },
+    searchIndex: searchIndex()
+  });
+
+  assert(combined.errors.includes("doc-1: duplicate primary sources QA document."));
 });
 
 test("range-shard recomposition does not mutate reusable in-memory shard objects", () => {
