@@ -757,8 +757,8 @@
         "officialLabel": "Título XI",
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título XI\nServidumbre\narts. 2162 a 2183",
-        "fullTranslationRu": "Раздел XI\nБондаж\nст. 2162 по 2183",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел XI\nБондаж\nст. 2162 по 2183",
+        "fullTranslationRu": "Раздел XI\nСервитут\nст. 2162 по 2183",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел XI\nСервитут\nст. 2162 по 2183",
         "sourceTextSha256": "4c6a319d9a3bcfd2ebc9b06ca7fd0a2f1bf8bb9d6a794711ab19b872e7ab1aaf",
         "sourceFingerprint": "sha256:4c6a319d9a3bcfd2ebc9b06ca7fd0a2f1bf8bb9d6a794711ab19b872e7ab1aaf",
         "sourceSpan": {
@@ -3712,7 +3712,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 81.- Juez competente. Es competente el juez del domicilio del ausente. Si éste no lo tuvo en el país, o no es conocido, es competente el juez del lugar en donde existan bienes cuyo cuidado es necesario; si existen bienes en distintas jurisdicciones, el que haya prevenido.\n",
         "fullTranslationRu": "СТАТЬЯ 81. Компетентный судья. Судья по месту жительства отсутствующего является компетентным. Если у него его не было в стране или оно не известно, компетентным является судья того места, где находится имущество, требующее охраны; Если есть имущество в разных юрисдикциях, то тот судья, который первым принял дело к производству.",
-        "simpleRu": "Проще: дело ведет судья по domicilio отсутствующего. Если такого domicilio в стране не было или он неизвестен, берут судью по месту жительства; если и оно неизвестно - по месту нахождения имущества. Когда имущество в разных местах, компетентен суд, который первым начал дело.",
+        "simpleRu": "Проще: дело ведет судья по domicilio отсутствующего. Если такого domicilio в Аргентине не было или оно неизвестно, компетентен судья места, где находится имущество, которое нужно сохранить. Когда имущество в разных юрисдикциях, компетентен суд, который первым начал дело.",
         "sourceTextSha256": "98a27d1f895b77a655af294509f5063467fab5ddd5b9ca1543eee2f823075a71",
         "sourceFingerprint": "sha256:98a27d1f895b77a655af294509f5063467fab5ddd5b9ca1543eee2f823075a71",
         "sourceSpan": {
@@ -3975,7 +3975,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 91.- Entrega de los bienes. Inventario. Los herederos y los legatarios deben recibir los bienes del declarado presuntamente fallecido, previa formación de inventario. El dominio debe inscribirse en el registro correspondiente con la prenotación del caso; puede hacerse la partición de los bienes, pero no enajenarlos ni gravarlos sin autorización judicial.\n\nSi entregados los bienes se presenta el ausente o se tiene noticia cierta de su existencia, queda sin efecto la declaración de fallecimiento, procediéndose a la devolución de aquéllos a petición del interesado.\n",
         "fullTranslationRu": "СТАТЬЯ 91. Доставка товаров. Опись. Наследники и отказополучатели должны получить имущество лица, объявленного предположительно умершим, после составления описи. Право собственности должно быть зарегистрировано в соответствующем реестре с соответствующей пометкой; Имущество могут быть разделены, но не могут быть отчуждены или обременены без разрешения суда.\n\nВ случае доставки активов, появления отсутствующего или появления достоверных сведений о его существовании заявление о смерти считается недействительным, и имущество будут возвращены по требованию заинтересованного лица.",
-        "simpleRu": "Проще: наследники и легатарии получают имущество человека, объявленного предположительно умершим, только после описи. В реестр вносится prenotación, и пока она действует, нельзя продавать или обременять регистрируемые вещи без разрешения суда.",
+        "simpleRu": "Проще: наследники и легатарии получают имущество человека, объявленного предположительно умершим, только после описи. В реестр вносится prenotación, и пока она действует, нельзя продавать или обременять регистрируемые вещи без разрешения суда. Если отсутствующий появится или придет надежная новость, что он жив, объявление предполагаемой смерти теряет силу, а имущество возвращают по просьбе заинтересованного лица.",
         "sourceTextSha256": "7eb97e67356a9e94aa57d4d07191a4e46d7b9420c2cd08ba04dd2e7e939adeaa",
         "sourceFingerprint": "sha256:7eb97e67356a9e94aa57d4d07191a4e46d7b9420c2cd08ba04dd2e7e939adeaa",
         "sourceSpan": {
@@ -4140,8 +4140,8 @@
         "officialLabel": "ARTICULO 96.- Medio de prueba. El nacimiento ocurrido en la República, sus circunstancias de tiempo y lugar, el sexo, el nombre y la fili...",
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 96.- Medio de prueba. El nacimiento ocurrido en la República, sus circunstancias de tiempo y lugar, el sexo, el nombre y la filiación de las personas nacidas, se prueba con las partidas del Registro Civil.\n\nDel mismo modo se prueba la muerte de las personas fallecidas en la República.\n\nLa rectificación de las partidas se hace conforme a lo dispuesto en la legislación especial.\n",
-        "fullTranslationRu": "СТАТЬЯ 96. Средства доказывания. Рождение, произошедшее в Республике, его обстоятельства времени и места, пол, имя и принадлежность родившихся подтверждаются записями ЗАГС.\n\nТаким же образом доказывается смерть погибших в Республике.\n\nИсправление предметов производится в соответствии с положениями специального законодательства.",
-        "simpleRu": "Проще: рождение в Аргентине, его время и место, пол, имя и происхождение доказываются свидетельством из Реестра актов гражданского состояния и правоспособности лиц.",
+        "fullTranslationRu": "СТАТЬЯ 96. Средства доказывания. Рождение, произошедшее в Республике, его обстоятельства времени и места, пол, имя и происхождение родившихся подтверждаются записями Registro Civil.\n\nТаким же образом доказывается смерть лиц, умерших в Республике.\n\nИсправление записей производится в соответствии с положениями специального законодательства.",
+        "simpleRu": "Проще: рождение в Аргентине, его время и место, пол, имя и происхождение доказываются записями Registro Civil. Смерть человека, умершего в Аргентине, доказывается так же. Если запись нужно исправить, это делают по специальному законодательству.",
         "sourceTextSha256": "86a82d77eab71a589c06c8fc4f7fc92f774387d62cd706594e79d4c37ef1af11",
         "sourceFingerprint": "sha256:86a82d77eab71a589c06c8fc4f7fc92f774387d62cd706594e79d4c37ef1af11",
         "sourceSpan": {
@@ -4165,7 +4165,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 97.- Nacimiento o muerte ocurridos en el extranjero. El nacimiento o la muerte ocurridos en el extranjero se prueban con los instrumentos otorgados según las leyes del lugar donde se producen, legalizados o autenticados del modo que disponen las convenciones internacionales, y a falta de convenciones, por las disposiciones consulares de la República.\n\nLos certificados de los asientos practicados en los registros consulares argentinos son suficientes para probar el nacimiento de los hijos de argentinos y para acreditar la muerte de los ciudadanos argentinos.\n",
         "fullTranslationRu": "СТАТЬЯ 97. Рождение или смерть, произошедшие за границей. Рождение или смерть, произошедшие за границей, доказываются документами, выданными по законам места их наступления, легализованными или удостоверенными в порядке, предусмотренном международными конвенциями, а при отсутствии конвенций - консульскими положениями Республики.\n\nСвидетельств о записях, внесенных в аргентинские консульские реестры, достаточно для подтверждения рождения детей аргентинцев и смерти аргентинских граждан.",
-        "simpleRu": "Проще: рождение или смерть за границей доказываются документами местного реестра или другими местными доказательствами, если они легализованы или апостилированы. Также подходят документы аргентинских консульств, если закон это допускает.",
+        "simpleRu": "Проще: рождение или смерть за границей доказываются документами, выданными по законам места, где это произошло. Эти документы должны быть легализованы или удостоверены так, как требуют международные конвенции, а если конвенции нет - по консульским правилам Аргентины. Сертификатов записей аргентинских консульских реестров достаточно, чтобы подтвердить рождение детей аргентинцев и смерть граждан Аргентины.",
         "sourceTextSha256": "2b32af26b07dc819e80a18acb913ed712b93bc5f271c5885ca935f7b79bf6f61",
         "sourceFingerprint": "sha256:2b32af26b07dc819e80a18acb913ed712b93bc5f271c5885ca935f7b79bf6f61",
         "sourceSpan": {
