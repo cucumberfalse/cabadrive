@@ -948,7 +948,7 @@
         "chunkingStrategy": "dotted-code-sections",
         "originalSpanish": "2.3.8 Idioma de las señales Las leyendas de las señales se expresan en idioma español, pudiendo adicionalmente estar expresadas en otro idioma aquellas de información ubicadas en lugares de afluencia turística.\n",
         "fullTranslationRu": "2.3.8 Язык знаков. Надписи на знаках выражены на испанском языке, а информация, расположенная в местах наплыва туристов, может дополнительно быть выражена на другом языке.",
-        "simpleRu": "Пункт 2.3.8 простыми словами: Язык знаков. Главное: это правило нужно применять по указанным в нем условиям и ограничениям.",
+        "simpleRu": "Пункт 2.3.8 простыми словами: надписи на дорожных знаках должны быть на испанском языке. Дополнительный язык можно добавить только у информационных знаков в местах, где много туристов.",
         "sourceTextSha256": "b91325c4d74805978e442ab5a7eb0a7dfd1f5382e0e7ecb4ac713738c8695ef0",
         "sourceFingerprint": "sha256:b91325c4d74805978e442ab5a7eb0a7dfd1f5382e0e7ecb4ac713738c8695ef0",
         "sourceSpan": {
@@ -1109,7 +1109,7 @@
         "chunkingStrategy": "dotted-code-sections",
         "originalSpanish": "2.3.15 Señalización Complementaria en Túneles y Puentes En los cruces ferroviarios a distinto nivel con dos (2) sentidos de circulación y que no cuenten con división física, se instalarán sobre la línea divisoria de los distintos sentidos de circulación delineadores, balizas o corrugados que adviertan al conductor de esta circunstancia.\n",
         "fullTranslationRu": "2.3.15 Дополнительные указатели в туннелях и мостах На железнодорожных переездах разных уровней с двумя (2) направлениями движения и не имеющих физического разделения, на линии раздела различных направлений движения устанавливаются разграничители, маяки или гофры для предупреждения водителя об этом обстоятельстве.",
-        "simpleRu": "Пункт 2.3.15 простыми словами: Дополнительные указатели в туннелях и мостах На железнодорожных переездах разных уровней с двумя (2) направлен. Главное: это правило нужно применять по указанным в нем условиям и ограничениям.",
+        "simpleRu": "Пункт 2.3.15 простыми словами: если на железнодорожном пересечении разных уровней есть два направления движения и между ними нет физического разделителя, по линии между направлениями должны поставить направляющие, маячки или рифленые элементы. Они предупреждают водителя, что встречные потоки не отделены.",
         "sourceTextSha256": "37e6f100179a1ebe44a780c4c03fcd1f7dd4499a8d0d10603ada9d0b0cd909e2",
         "sourceFingerprint": "sha256:37e6f100179a1ebe44a780c4c03fcd1f7dd4499a8d0d10603ada9d0b0cd909e2",
         "sourceSpan": {
@@ -1132,7 +1132,7 @@
         "chunkingStrategy": "dotted-code-sections",
         "originalSpanish": "2.3.16 Excepción para semáforos Se exceptúa de lo establecido en el Sistema de Señalización Vial Uniforme # al color de las cabezas, soportes y viseras de los semáforos, las que serán de color gris grafito (RAL 7024, según catálogo RAL K7 CLASSIC).\n",
         "fullTranslationRu": "2.3.16 Исключение для светофоров. Цвет головок, опор и козырьков светофоров исключен из установленного в Единой системе дорожных знаков № и будет графитово-серым (RAL 7024 по каталогу каталогу RAL).",
-        "simpleRu": "Пункт 2.3.16 простыми словами: Исключение для светофоров. Главное: это правило нужно применять по указанным в нем условиям и ограничениям.",
+        "simpleRu": "Пункт 2.3.16 простыми словами: для светофоров есть исключение из единой системы дорожных знаков. Корпуса, опоры и козырьки светофоров должны быть графитово-серыми: цвет RAL 7024 по каталогу RAL K7 CLASSIC.",
         "sourceTextSha256": "98d3a198fc36031d6fe4a91f77e5d2a1b00dcec512da49caab206ab8316253bc",
         "sourceFingerprint": "sha256:98d3a198fc36031d6fe4a91f77e5d2a1b00dcec512da49caab206ab8316253bc",
         "sourceSpan": {
