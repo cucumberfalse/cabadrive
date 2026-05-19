@@ -1848,7 +1848,7 @@
         "officialLabel": "ARTICULO 15.- Titularidad de derechos. Las personas son titulares de los derechos individuales sobre los bienes que integran su patrimoni...",
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 15.- Titularidad de derechos. Las personas son titulares de los derechos individuales sobre los bienes que integran su patrimonio conforme con lo que se establece en este Código.\n",
-        "fullTranslationRu": "СТАТЬЯ 15. Право собственности. Люди являются обладателями индивидуальных прав на имущество, составляющее их имущество, в соответствии с тем, что установлено настоящим Кодексом.",
+        "fullTranslationRu": "СТАТЬЯ 15. Правообладание. Лица являются правообладателями индивидуальных прав на имущество, входящее в их имущественную массу, в соответствии с положениями настоящего Кодекса.",
         "simpleRu": "Проще: люди могут иметь индивидуальные права на вещи и другое имущество, входящее в их имущественную массу, в пределах правил Кодекса.",
         "sourceTextSha256": "e5f708b941ba4573ef8d0f2b8ad7811fede38fa3b77b68d642ec173306e8b532",
         "sourceFingerprint": "sha256:e5f708b941ba4573ef8d0f2b8ad7811fede38fa3b77b68d642ec173306e8b532",
@@ -2008,7 +2008,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 19.- Comienzo de la existencia. La existencia de la persona humana comienza con la concepción.\n",
         "fullTranslationRu": "СТАТЬЯ 19.- Начало существования. Существование физического лица начинается с зачатия.",
-        "simpleRu": "Статья 19 простыми словами: речь идет о человеке как участнике права. - Начало существования. Существование физического лица начинается с зачатия.",
+        "simpleRu": "Проще: по этому Кодексу человек считается существующим с момента зачатия.",
         "sourceTextSha256": "7851f80b289ef8c12e7f7118ea80d4515fea63fd3471927d19318529a1d146ac",
         "sourceFingerprint": "sha256:7851f80b289ef8c12e7f7118ea80d4515fea63fd3471927d19318529a1d146ac",
         "sourceSpan": {
@@ -2947,7 +2947,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 52.- Afectaciones a la dignidad. La persona humana lesionada en su intimidad personal o familiar, honra o reputación, imagen o identidad, o que de cualquier modo resulte menoscabada en su dignidad personal, puede reclamar la prevención y reparación de los daños sufridos, conforme a lo dispuesto en el Libro Tercero, Título V, Capítulo 1.\n",
         "fullTranslationRu": "СТАТЬЯ 52. Ущемление достоинства. Человек, которому причинен вред его личной или семейной тайне, чести или репутации, имиджу или личности, или чье личное достоинство каким-либо образом ущемлено, может требовать предотвращения и возмещения понесенного ущерба в соответствии с положениями Третьей книги, Раздела V, Главы 1.",
-        "simpleRu": "Проще: если затронуты личная или семейная тайна, честь, репутация, образ, личность или достоинство человека, он может требовать предотвращения вреда, возмещения и публикации решения.",
+        "simpleRu": "Проще: если затронуты личная или семейная тайна, честь, репутация, образ, личность или достоинство человека, он может требовать предотвращения вреда и возмещения понесенного ущерба.",
         "sourceTextSha256": "3e76308d6451559d7a69252f7b5c809a1c9f7c689834aec18156f3152a5ac0b9",
         "sourceFingerprint": "sha256:3e76308d6451559d7a69252f7b5c809a1c9f7c689834aec18156f3152a5ac0b9",
         "sourceSpan": {
@@ -3281,8 +3281,8 @@
         "officialLabel": "ARTICULO 65.- Apellido de persona menor de edad sin filiación determinada. La persona menor de edad sin filiación determinada debe ser an...",
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 65.- Apellido de persona menor de edad sin filiación determinada. La persona menor de edad sin filiación determinada debe ser anotada por el oficial del Registro del Estado Civil y Capacidad de las Personas con el apellido que está usando, o en su defecto, con un apellido común.\n",
-        "fullTranslationRu": "СТАТЬЯ 65. Фамилия несовершеннолетнего без конкретной принадлежности. Несовершеннолетнее лицо без определенной принадлежности должно быть зарегистрировано должностным лицом ЗАГСа по используемой им фамилии, а при отсутствии таковой - по общей фамилии.",
-        "simpleRu": "Проще: несовершеннолетнему без установленного происхождения дают фамилию, которую он обычно использует. Если такой фамилии нет, реестр назначает распространенную фамилию. Позже, при достаточной зрелости, человек может попросить оставить зарегистрированную или используемую фамилию.",
+        "fullTranslationRu": "СТАТЬЯ 65. Фамилия несовершеннолетнего без установленного происхождения. Несовершеннолетнее лицо без установленного происхождения должно быть зарегистрировано должностным лицом ЗАГСа с фамилией, которую оно использует, а при ее отсутствии - с распространенной фамилией.",
+        "simpleRu": "Проще: несовершеннолетнего без установленного происхождения записывают с фамилией, которую он обычно использует. Если такой фамилии нет, реестр записывает распространенную фамилию.",
         "sourceTextSha256": "406453cf50d3aed16053269688740254db89ffa6c64354c0daaa38df1326b929",
         "sourceFingerprint": "sha256:406453cf50d3aed16053269688740254db89ffa6c64354c0daaa38df1326b929",
         "sourceSpan": {
@@ -3450,7 +3450,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 72.- Seudónimo. El seudónimo notorio goza de la tutela del nombre.\n",
         "fullTranslationRu": "СТАТЬЯ 72. Псевдоним. Известный псевдоним пользуется защитой имени.",
-        "simpleRu": "Статья 72 простыми словами: речь идет об имени, фамилии или псевдониме. Псевдоним. Известный псевдоним пользуется защитой имени.",
+        "simpleRu": "Проще: если псевдоним человека широко известен, его защищают по правилам об имени.",
         "sourceTextSha256": "d43fa3f87cbe38f47f1e6e990ed3e150e4e6f823b93e0db7011d77222e32f593",
         "sourceFingerprint": "sha256:d43fa3f87cbe38f47f1e6e990ed3e150e4e6f823b93e0db7011d77222e32f593",
         "sourceSpan": {
