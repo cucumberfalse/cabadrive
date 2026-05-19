@@ -3163,7 +3163,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 61.- Exequias. La persona plenamente capaz puede disponer, por cualquier forma, el modo y circunstancias de sus exequias e inhumación, así como la dación de todo o parte del cadáver con fines terapéuticos, científicos, pedagógicos o de índole similar. Si la voluntad del fallecido no ha sido expresada, o ésta no es presumida, la decisión corresponde al cónyuge, al conviviente y en su defecto a los parientes según el orden sucesorio, quienes no pueden dar al cadáver un destino diferente al que habría dado el difunto de haber podido expresar su voluntad.\n",
         "fullTranslationRu": "СТАТЬЯ 61. Похороны. Полностью дееспособное лицо может любыми способами определить способ и обстоятельства своих похорон и погребения, а также передачу всего или части трупа в терапевтические, научные, педагогические или аналогичные цели. Если воля умершего не выражена или она не предполагается, решение принадлежит супругу, сожителю, а при отсутствии такового - родственникам в порядке наследования, которые не могут придать трупу иную судьбу, чем та, которую уготовил бы умерший, если бы он имел возможность изъявить свою волю.",
-        "simpleRu": "Проще: полностью дееспособный человек может заранее решить, как проводить похороны и что делать с телом после смерти. Если указаний нет, решают супруг, сожитель или родственники по порядку наследования.",
+        "simpleRu": "Проще: полностью дееспособный человек может заранее решить, как проводить похороны и погребение. Он также может распорядиться, чтобы все тело или его часть после смерти передали для лечения, науки, обучения или похожих целей. Если умерший не оставил ясных указаний и нельзя предположить его волю, решают супруг, сожитель или родственники по порядку наследования. Но они не могут выбрать для тела другое назначение, чем выбрал бы сам умерший, если бы мог сказать свою волю.",
         "sourceTextSha256": "e73c1048cc4c31768221435a778d1a0395d87002ae6d33350a6faee52eb03cf9",
         "sourceFingerprint": "sha256:e73c1048cc4c31768221435a778d1a0395d87002ae6d33350a6faee52eb03cf9",
         "sourceSpan": {
@@ -4070,7 +4070,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 94.- Comprobación de la muerte. La comprobación de la muerte queda sujeta a los estándares médicos aceptados, aplicándose la legislación especial en el caso de ablación de órganos del cadáver.\n",
         "fullTranslationRu": "СТАТЬЯ 94. Подтверждение смерти. Доказательство смерти регулируется общепринятыми медицинскими стандартами, при этом в случае удаления органов из трупа применяется специальное законодательство.",
-        "simpleRu": "Проще: смерть устанавливают по принятым медицинским стандартам и по специальному законодательству.",
+        "simpleRu": "Проще: смерть подтверждают по принятым медицинским стандартам. Специальное законодательство применяется только тогда, когда из тела умершего изымают органы.",
         "sourceTextSha256": "e37f9a40ae8e9338ce3706bd5bfc63cbabe8d6ec6bc4ea94e49a03600d6a8c06",
         "sourceFingerprint": "sha256:e37f9a40ae8e9338ce3706bd5bfc63cbabe8d6ec6bc4ea94e49a03600d6a8c06",
         "sourceSpan": {
