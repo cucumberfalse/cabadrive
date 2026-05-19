@@ -1,0 +1,2010 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-26994-codigo-civil-comercial",
+  "entries": [
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-856-definicion-obligaciones-principales-son-aquellas-cuya-1093",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-856-definicion-obligaciones-principales-son-aquellas-cuya-1093",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-857-efectos-la-extincion-nulidad-o-ineficacia-1094",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-857-efectos-la-extincion-nulidad-o-ineficacia-1094",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-11a-1095",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-11a-1095",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-858-definiciones-se-entiende-por-cuenta-la-1096",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-858-definiciones-se-entiende-por-cuenta-la-1096",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-859-requisitos-la-rendicion-de-cuentas-debe-1097",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-859-requisitos-la-rendicion-de-cuentas-debe-1097",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-860-obligacion-de-rendir-cuentas-estan-obligados-1098",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-860-obligacion-de-rendir-cuentas-estan-obligados-1098",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-861-oportunidad-las-cuentas-deben-ser-rendidas-1099",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-861-oportunidad-las-cuentas-deben-ser-rendidas-1099",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-862-aprobacion-la-rendicion-de-cuentas-puede-1100",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-862-aprobacion-la-rendicion-de-cuentas-puede-1100",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-863-relaciones-de-ejecucion-continuada-en-relaciones-1101",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-863-relaciones-de-ejecucion-continuada-en-relaciones-1101",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-864-saldos-y-documentos-del-interesado-una-1102",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-864-saldos-y-documentos-del-interesado-una-1102",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-4-1103",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-4-1103",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-1104",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-1104",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-865-definicion-pago-es-el-cumplimiento-de-1105",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-865-definicion-pago-es-el-cumplimiento-de-1105",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-866-reglas-aplicables-las-reglas-de-los-1106",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-866-reglas-aplicables-las-reglas-de-los-1106",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-867-objeto-del-pago-el-objeto-del-1107",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-867-objeto-del-pago-el-objeto-del-1107",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-868-identidad-el-acreedor-no-esta-obligado-1108",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-868-identidad-el-acreedor-no-esta-obligado-1108",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-869-integridad-el-acreedor-no-esta-obligado-1109",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-869-integridad-el-acreedor-no-esta-obligado-1109",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-870-obligacion-con-intereses-si-la-obligacion-1110",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-870-obligacion-con-intereses-si-la-obligacion-1110",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-871-tiempo-del-pago-el-pago-debe-1111",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-871-tiempo-del-pago-el-pago-debe-1111",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-872-pago-anticipado-el-pago-anterior-al-1112",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-872-pago-anticipado-el-pago-anterior-al-1112",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-873-lugar-de-pago-designado-el-lugar-1113",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-873-lugar-de-pago-designado-el-lugar-1113",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-874-lugar-de-pago-no-designado-si-1114",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-874-lugar-de-pago-no-designado-si-1114",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-875-validez-el-pago-debe-ser-realizado-1115",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-875-validez-el-pago-debe-ser-realizado-1115",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-876-pago-en-fraude-a-los-acreedores-1116",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-876-pago-en-fraude-a-los-acreedores-1116",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-877-pago-de-creditos-embargados-o-prendados-1117",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-877-pago-de-creditos-embargados-o-prendados-1117",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-878-propiedad-de-la-cosa-el-cumplimiento-1118",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-878-propiedad-de-la-cosa-el-cumplimiento-1118",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-879-legitimacion-activa-el-deudor-tiene-el-1119",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-879-legitimacion-activa-el-deudor-tiene-el-1119",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-880-efectos-del-pago-por-el-deudor-1120",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-880-efectos-del-pago-por-el-deudor-1120",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-881-ejecucion-de-la-prestacion-por-un-1121",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-881-ejecucion-de-la-prestacion-por-un-1121",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-882-efectos-que-produce-la-ejecucion-de-1122",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-882-efectos-que-produce-la-ejecucion-de-1122",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-883-legitimacion-para-recibir-pagos-tiene-efecto-1123",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-883-legitimacion-para-recibir-pagos-tiene-efecto-1123",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-884-derechos-del-acreedor-contra-el-tercero-1124",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-884-derechos-del-acreedor-contra-el-tercero-1124",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-885-pago-a-persona-incapaz-o-con-1125",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-885-pago-a-persona-incapaz-o-con-1125",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-1126",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-1126",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-886-mora-del-deudor-principio-mora-automatica-1127",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-886-mora-del-deudor-principio-mora-automatica-1127",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-887-excepciones-al-principio-de-la-mora-1128",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-887-excepciones-al-principio-de-la-mora-1128",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-888-eximicion-para-eximirse-de-las-consecuencias-1129",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-888-eximicion-para-eximirse-de-las-consecuencias-1129",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-1130",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-1130",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-889-principio-las-partes-pueden-acordar-que-1131",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-889-principio-las-partes-pueden-acordar-que-1131",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-890-carga-de-la-prueba-el-acreedor-1132",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-890-carga-de-la-prueba-el-acreedor-1132",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-891-muerte-del-deudor-se-presume-que-1133",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-891-muerte-del-deudor-se-presume-que-1133",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-4a-1134",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-4a-1134",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-892-definicion-el-beneficio-de-competencia-es-1135",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-892-definicion-el-beneficio-de-competencia-es-1135",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-893-personas-incluidas-el-acreedor-debe-conceder-1136",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-893-personas-incluidas-el-acreedor-debe-conceder-1136",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-5a-1137",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-5a-1137",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-894-carga-de-la-prueba-la-carga-1138",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-894-carga-de-la-prueba-la-carga-1138",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-895-medios-de-prueba-el-pago-puede-1139",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-895-medios-de-prueba-el-pago-puede-1139",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-896-recibo-el-recibo-es-un-instrumento-1140",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-896-recibo-el-recibo-es-un-instrumento-1140",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-897-derecho-de-exigir-el-recibo-el-1141",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-897-derecho-de-exigir-el-recibo-el-1141",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-898-inclusion-de-reservas-el-deudor-puede-1142",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-898-inclusion-de-reservas-el-deudor-puede-1142",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-899-presunciones-relativas-al-pago-se-presume-1143",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-899-presunciones-relativas-al-pago-se-presume-1143",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-6a-1144",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-6a-1144",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-900-imputacion-por-el-deudor-si-las-1145",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-900-imputacion-por-el-deudor-si-las-1145",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-901-imputacion-por-el-acreedor-si-el-1146",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-901-imputacion-por-el-acreedor-si-el-1146",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-902-imputacion-legal-si-el-deudor-o-1147",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-902-imputacion-legal-si-el-deudor-o-1147",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-903-pago-a-cuenta-de-capital-e-1148",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-903-pago-a-cuenta-de-capital-e-1148",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-7a-1149",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-7a-1149",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-904-casos-en-que-procede-el-pago-1150",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-904-casos-en-que-procede-el-pago-1150",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-905-requisitos-el-pago-por-consignacion-esta-1151",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-905-requisitos-el-pago-por-consignacion-esta-1151",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-906-forma-el-pago-por-consignacion-se-1152",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-906-forma-el-pago-por-consignacion-se-1152",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-907-efectos-la-consignacion-judicial-no-impugnada-1153",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-907-efectos-la-consignacion-judicial-no-impugnada-1153",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-908-deudor-moroso-el-deudor-moroso-puede-1154",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-908-deudor-moroso-el-deudor-moroso-puede-1154",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-909-desistimiento-el-deudor-tiene-derecho-a-1155",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-909-desistimiento-el-deudor-tiene-derecho-a-1155",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-910-procedencia-y-tramite-sin-perjuicio-de-1156",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-910-procedencia-y-tramite-sin-perjuicio-de-1156",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-911-derechos-del-acreedor-una-vez-notificado-1157",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-911-derechos-del-acreedor-una-vez-notificado-1157",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-912-derechos-del-acreedor-que-retira-el-1158",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-912-derechos-del-acreedor-que-retira-el-1158",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-913-impedimentos-no-se-puede-acudir-al-1159",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-913-impedimentos-no-se-puede-acudir-al-1159",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-8a-1160",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-8a-1160",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-914-pago-por-subrogacion-el-pago-por-1161",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-914-pago-por-subrogacion-el-pago-por-1161",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-915-subrogacion-legal-la-subrogacion-legal-tiene-1162",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-915-subrogacion-legal-la-subrogacion-legal-tiene-1162",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-916-subrogacion-convencional-por-el-acreedor-el-1163",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-916-subrogacion-convencional-por-el-acreedor-el-1163",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-917-subrogacion-convencional-por-el-deudor-el-1164",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-917-subrogacion-convencional-por-el-deudor-el-1164",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-918-efectos-el-pago-por-subrogacion-transmite-1165",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-918-efectos-el-pago-por-subrogacion-transmite-1165",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-919-limites-la-transmision-del-credito-tiene-1166",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-919-limites-la-transmision-del-credito-tiene-1166",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-920-subrogacion-parcial-si-el-pago-es-1167",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-920-subrogacion-parcial-si-el-pago-es-1167",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-5-1168",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-5-1168",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-1169",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-1169",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-921-definicion-la-compensacion-de-las-obligaciones-1170",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-921-definicion-la-compensacion-de-las-obligaciones-1170",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-922-especies-la-compensacion-puede-ser-legal-1171",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-922-especies-la-compensacion-puede-ser-legal-1171",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-923-requisitos-de-la-compensacion-legal-para-1172",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-923-requisitos-de-la-compensacion-legal-para-1172",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-924-efectos-una-vez-opuesta-la-compensacion-1173",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-924-efectos-una-vez-opuesta-la-compensacion-1173",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-925-fianza-el-fiador-puede-oponer-la-1174",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-925-fianza-el-fiador-puede-oponer-la-1174",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-926-pluralidad-de-deudas-del-mismo-deudor-1175",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-926-pluralidad-de-deudas-del-mismo-deudor-1175",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-927-compensacion-facultativa-la-compensacion-facultativa-actua-1176",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-927-compensacion-facultativa-la-compensacion-facultativa-actua-1176",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-928-compensacion-judicial-cualquiera-de-las-partes-1177",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-928-compensacion-judicial-cualquiera-de-las-partes-1177",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-929-exclusion-convencional-la-compensacion-puede-ser-1178",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-929-exclusion-convencional-la-compensacion-puede-ser-1178",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-930-obligaciones-no-compensables-no-son-compensables-1179",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-930-obligaciones-no-compensables-no-son-compensables-1179",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-1180",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-1180",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-931-definicion-la-obligacion-se-extingue-por-1181",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-931-definicion-la-obligacion-se-extingue-por-1181",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-932-efectos-la-obligacion-queda-extinguida-total-1182",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-932-efectos-la-obligacion-queda-extinguida-total-1182",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-1183",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-1183",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-933-definicion-la-novacion-es-la-extincion-1184",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-933-definicion-la-novacion-es-la-extincion-1184",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-934-voluntad-de-novar-la-voluntad-de-1185",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-934-voluntad-de-novar-la-voluntad-de-1185",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-935-modificaciones-que-no-importan-novacion-la-1186",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-935-modificaciones-que-no-importan-novacion-la-1186",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-936-novacion-por-cambio-de-deudor-la-1187",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-936-novacion-por-cambio-de-deudor-la-1187",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-937-novacion-por-cambio-de-acreedor-la-1188",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-937-novacion-por-cambio-de-acreedor-la-1188",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-938-circunstancias-de-la-obligacion-anterior-no-1189",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-938-circunstancias-de-la-obligacion-anterior-no-1189",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-939-circunstancias-de-la-nueva-obligacion-no-1190",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-939-circunstancias-de-la-nueva-obligacion-no-1190",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-940-efectos-la-novacion-extingue-la-obligacion-1191",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-940-efectos-la-novacion-extingue-la-obligacion-1191",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-941-novacion-legal-las-disposiciones-de-esta-1192",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-941-novacion-legal-las-disposiciones-de-esta-1192",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-4a-1193",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-4a-1193",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-942-definicion-la-obligacion-se-extingue-cuando-1194",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-942-definicion-la-obligacion-se-extingue-cuando-1194",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-943-reglas-aplicables-la-dacion-en-pago-1195",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-943-reglas-aplicables-la-dacion-en-pago-1195",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-5a-1196",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-5a-1196",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-944-caracteres-toda-persona-puede-renunciar-a-1197",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-944-caracteres-toda-persona-puede-renunciar-a-1197",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-945-renuncia-onerosa-y-gratuita-si-la-1198",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-945-renuncia-onerosa-y-gratuita-si-la-1198",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-946-aceptacion-la-aceptacion-de-la-renuncia-1199",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-946-aceptacion-la-aceptacion-de-la-renuncia-1199",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-947-retractacion-la-renuncia-puede-ser-retractada-1200",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-947-retractacion-la-renuncia-puede-ser-retractada-1200",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-948-prueba-la-voluntad-de-renunciar-no-1201",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-948-prueba-la-voluntad-de-renunciar-no-1201",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-949-forma-la-renuncia-no-esta-sujeta-1202",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-949-forma-la-renuncia-no-esta-sujeta-1202",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-950-remision-se-considera-remitida-la-deuda-1203",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-950-remision-se-considera-remitida-la-deuda-1203",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-951-normas-aplicables-las-disposiciones-sobre-la-1204",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-951-normas-aplicables-las-disposiciones-sobre-la-1204",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-952-efectos-la-remision-de-la-deuda-1205",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-952-efectos-la-remision-de-la-deuda-1205",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-953-pago-parcial-del-fiador-el-fiador-1206",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-953-pago-parcial-del-fiador-el-fiador-1206",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-954-entrega-de-la-cosa-dada-en-1207",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-954-entrega-de-la-cosa-dada-en-1207",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-6a-1208",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-6a-1208",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-955-definicion-la-imposibilidad-sobrevenida-objetiva-absoluta-1209",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-955-definicion-la-imposibilidad-sobrevenida-objetiva-absoluta-1209",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-956-imposibilidad-temporaria-la-imposibilidad-sobrevenida-objetiva-1210",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-956-imposibilidad-temporaria-la-imposibilidad-sobrevenida-objetiva-1210",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--titulo-ii-1211",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--titulo-ii-1211",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-1-1212",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-1-1212",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-957-definicion-contrato-es-el-acto-juridico-1213",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-957-definicion-contrato-es-el-acto-juridico-1213",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-958-libertad-de-contratacion-las-partes-son-1214",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-958-libertad-de-contratacion-las-partes-son-1214",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-959-efecto-vinculante-todo-contrato-validamente-celebrado-1215",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-959-efecto-vinculante-todo-contrato-validamente-celebrado-1215",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-960-facultades-de-los-jueces-los-jueces-1216",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-960-facultades-de-los-jueces-los-jueces-1216",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-961-buena-fe-los-contratos-deben-celebrarse-1217",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-961-buena-fe-los-contratos-deben-celebrarse-1217",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-962-caracter-de-las-normas-legales-las-1218",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-962-caracter-de-las-normas-legales-las-1218",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-963-prelacion-normativa-cuando-concurren-disposiciones-de-1219",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-963-prelacion-normativa-cuando-concurren-disposiciones-de-1219",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-964-integracion-del-contrato-el-contenido-del-1220",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-964-integracion-del-contrato-el-contenido-del-1220",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-965-derecho-de-propiedad-los-derechos-resultantes-1221",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-965-derecho-de-propiedad-los-derechos-resultantes-1221",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-2-1222",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-2-1222",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-966-contratos-unilaterales-y-bilaterales-los-contratos-1223",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-966-contratos-unilaterales-y-bilaterales-los-contratos-1223",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-967-contratos-a-titulo-oneroso-y-a-1224",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-967-contratos-a-titulo-oneroso-y-a-1224",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-968-contratos-conmutativos-y-aleatorios-los-contratos-1225",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-968-contratos-conmutativos-y-aleatorios-los-contratos-1225",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-969-contratos-formales-los-contratos-para-los-1226",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-969-contratos-formales-los-contratos-para-los-1226",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-970-contratos-nominados-e-innominados-los-contratos-1227",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-970-contratos-nominados-e-innominados-los-contratos-1227",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-3-1228",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-3-1228",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-1229",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-1229",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-971-formacion-del-consentimiento-los-contratos-se-1230",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-971-formacion-del-consentimiento-los-contratos-se-1230",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-972-oferta-la-oferta-es-la-manifestacion-1231",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-972-oferta-la-oferta-es-la-manifestacion-1231",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-973-invitacion-a-ofertar-la-oferta-dirigida-1232",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-973-invitacion-a-ofertar-la-oferta-dirigida-1232",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-974-fuerza-obligatoria-de-la-oferta-la-1233",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-974-fuerza-obligatoria-de-la-oferta-la-1233",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-975-retractacion-de-la-oferta-la-oferta-1234",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-975-retractacion-de-la-oferta-la-oferta-1234",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-976-muerte-o-incapacidad-de-las-partes-1235",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-976-muerte-o-incapacidad-de-las-partes-1235",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-977-contrato-plurilateral-si-el-contrato-ha-1236",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-977-contrato-plurilateral-si-el-contrato-ha-1236",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-978-aceptacion-para-que-el-contrato-se-1237",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-978-aceptacion-para-que-el-contrato-se-1237",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-979-modos-de-aceptacion-toda-declaracion-o-1238",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-979-modos-de-aceptacion-toda-declaracion-o-1238",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-980-perfeccionamiento-la-aceptacion-perfecciona-el-contrato-1239",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-980-perfeccionamiento-la-aceptacion-perfecciona-el-contrato-1239",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-981-retractacion-de-la-aceptacion-la-aceptacion-1240",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-981-retractacion-de-la-aceptacion-la-aceptacion-1240",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-982-acuerdo-parcial-los-acuerdos-parciales-de-1241",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-982-acuerdo-parcial-los-acuerdos-parciales-de-1241",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-983-recepcion-de-la-manifestacion-de-la-1242",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-983-recepcion-de-la-manifestacion-de-la-1242",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-1243",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-1243",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-984-definicion-el-contrato-por-adhesion-es-1244",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-984-definicion-el-contrato-por-adhesion-es-1244",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-985-requisitos-las-clausulas-generales-predispuestas-deben-1245",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-985-requisitos-las-clausulas-generales-predispuestas-deben-1245",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-986-clausulas-particulares-las-clausulas-particulares-son-1246",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-986-clausulas-particulares-las-clausulas-particulares-son-1246",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-987-interpretacion-las-clausulas-ambiguas-predispuestas-por-1247",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-987-interpretacion-las-clausulas-ambiguas-predispuestas-por-1247",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-988-clausulas-abusivas-en-los-contratos-previstos-1248",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-988-clausulas-abusivas-en-los-contratos-previstos-1248",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-989-control-judicial-de-las-clausulas-abusivas-1249",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-989-control-judicial-de-las-clausulas-abusivas-1249",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-1250",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-1250",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-990-libertad-de-negociacion-las-partes-son-1251",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-990-libertad-de-negociacion-las-partes-son-1251",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-991-deber-de-buena-fe-durante-las-1252",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-991-deber-de-buena-fe-durante-las-1252",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-992-deber-de-confidencialidad-si-durante-las-1253",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-992-deber-de-confidencialidad-si-durante-las-1253",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-993-cartas-de-intencion-los-instrumentos-mediante-1254",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-993-cartas-de-intencion-los-instrumentos-mediante-1254",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-4a-1255",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-4a-1255",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-994-disposiciones-generales-los-contratos-preliminares-deben-1256",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-994-disposiciones-generales-los-contratos-preliminares-deben-1256",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-995-promesa-de-celebrar-un-contrato-las-1257",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-995-promesa-de-celebrar-un-contrato-las-1257",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-996-contrato-de-opcion-el-contrato-que-1258",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-996-contrato-de-opcion-el-contrato-que-1258",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-5a-1259",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-5a-1259",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-997-pacto-de-preferencia-el-pacto-de-1260",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-997-pacto-de-preferencia-el-pacto-de-1260",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-998-efectos-el-otorgante-de-la-preferencia-1261",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-998-efectos-el-otorgante-de-la-preferencia-1261",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-999-contrato-sujeto-a-conformidad-el-contrato-1262",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-999-contrato-sujeto-a-conformidad-el-contrato-1262",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-4-1263",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-4-1263",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1000-efectos-de-la-nulidad-del-contrato-1264",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1000-efectos-de-la-nulidad-del-contrato-1264",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1001-inhabilidades-para-contratar-no-pueden-contratar-1265",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1001-inhabilidades-para-contratar-no-pueden-contratar-1265",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1002-inhabilidades-especiales-no-pueden-contratar-en-1266",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1002-inhabilidades-especiales-no-pueden-contratar-en-1266",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-5-1267",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-5-1267",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1003-disposiciones-generales-se-aplican-al-objeto-1268",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1003-disposiciones-generales-se-aplican-al-objeto-1268",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1004-objetos-prohibidos-no-pueden-ser-objeto-1269",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1004-objetos-prohibidos-no-pueden-ser-objeto-1269",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1005-determinacion-cuando-el-objeto-se-refiere-1270",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1005-determinacion-cuando-el-objeto-se-refiere-1270",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1006-determinacion-por-un-tercero-las-partes-1271",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1006-determinacion-por-un-tercero-las-partes-1271",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1007-bienes-existentes-y-futuros-los-bienes-1272",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1007-bienes-existentes-y-futuros-los-bienes-1272",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1008-bienes-ajenos-los-bienes-ajenos-pueden-1273",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1008-bienes-ajenos-los-bienes-ajenos-pueden-1273",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1009-bienes-litigiosos-gravados-o-sujetos-a-1274",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1009-bienes-litigiosos-gravados-o-sujetos-a-1274",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
