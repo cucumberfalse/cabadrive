@@ -28,7 +28,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "# CODIGO CIVIL Y COMERCIAL DE LA NACION\n\nCODIGO CIVIL Y COMERCIAL DE LA NACION\n\nLey 26.994\n\nVer Antecedentes Normativos\n\nAprobación\n\n                                                         INDICE TEMATICO\n",
         "fullTranslationRu": "# ГРАЖДАНСКИЙ И ТОРГОВЫЙ КОДЕКС АРГЕНТИНЫ\n\nГРАЖДАНСКИЙ И ТОРГОВЫЙ КОДЕКС АРГЕНТИНЫ\n\nЗакон 26.994\n\nСм. нормативную базу\n\nОдобрение\n\n                                                         ТЕМАТИЧЕСКИЙ УКАЗАТЕЛЬ",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. ГРАЖДАНСКИЙ И ТОРГОВЫЙ КОДЕКС АРГЕНТИНЫ\n\nГРАЖДАНСКИЙ И ТОРГОВЫЙ КОДЕКС АРГЕНТИНЫ\n\nЗакон 26.994\n\nСм. нормативную базу\n\nОдобрение\n\n                                                         ТЕМАТИЧЕСКИЙ УКАЗАТЕЛЬ",
+        "simpleRu": "Служебная начальная часть: здесь названы сам кодекс, закон 26.994, сведения о принятии и тематический указатель.",
         "sourceTextSha256": "8b148b7ce820fa2883e8c771736ab9bc33b7bea1aeb1a51eb6db707864d4cfc3",
         "sourceFingerprint": "sha256:8b148b7ce820fa2883e8c771736ab9bc33b7bea1aeb1a51eb6db707864d4cfc3",
         "sourceSpan": {
@@ -69,7 +69,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Capítulo 1 Derecho arts. 1° a 3° Capítulo 2 Ley arts. 4° a 8° Capítulo 3 Ejercicio de los derechos arts. 9° a 14 Capítulo 4\nDerechos y bienes\narts. 15 a 18\n",
         "fullTranslationRu": "Глава 1. Право. ст. 1-3; Глава 2. Закон. ст. 4-8; Глава 3. Осуществление прав. ст. 9-14; Глава 4\nПрава и имущество\nст. 15-18",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Глава 1. Право. ст. 1-3; Глава 2. Закон. ст. 4-8; Глава 3. Осуществление прав. ст. 9-14; Глава 4\nПрава и имущество\nст. 15-18",
+        "simpleRu": "Служебный указатель: вводный титул охватывает главы о праве, законе, осуществлении прав, правах и имуществе; рядом указаны статьи 1-18.",
         "sourceTextSha256": "d9f308d6ebfdf5fc31f8ca721eb309e18c4940719f2f71f0ad1af771f7e03f15",
         "sourceFingerprint": "sha256:d9f308d6ebfdf5fc31f8ca721eb309e18c4940719f2f71f0ad1af771f7e03f15",
         "sourceSpan": {
@@ -152,7 +152,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título III\nBienes\narts. 225 a 256",
         "fullTranslationRu": "Раздел III\nИмущество\nст. 225 по 256",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел III\nИмущество\nст. 225 по 256",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 3\nИмущество\nст. 225 по 256",
         "sourceTextSha256": "6d4fa716263c163743d386a32234381f81519791d12e36ad1bc9429dfe97df73",
         "sourceFingerprint": "sha256:6d4fa716263c163743d386a32234381f81519791d12e36ad1bc9429dfe97df73",
         "sourceSpan": {
@@ -277,7 +277,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título III\nUniones convivenciales\narts. 509 a 528",
         "fullTranslationRu": "Раздел III\nСожительствующие союзы\nст. 509 по 528",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел III\nСожительствующие союзы\nст. 509 по 528",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 3\nСожительствующие союзы\nст. 509 по 528",
         "sourceTextSha256": "4ab273230e8214c006352f9b4a694ae27790d23046fe05b372b65a3ed51fc841",
         "sourceFingerprint": "sha256:4ab273230e8214c006352f9b4a694ae27790d23046fe05b372b65a3ed51fc841",
         "sourceSpan": {
@@ -361,7 +361,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título VII\nResponsabilidad parental\narts. 638 a 704",
         "fullTranslationRu": "Раздел VII\nРодительская ответственность\nст. 638 по 704",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел VII\nРодительская ответственность\nст. 638 по 704",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 7\nРодительская ответственность\nст. 638 по 704",
         "sourceTextSha256": "699e407b28059edf52012c5a8f4d963999980a9fe070e2e06f136a1b28e2c0d7",
         "sourceFingerprint": "sha256:699e407b28059edf52012c5a8f4d963999980a9fe070e2e06f136a1b28e2c0d7",
         "sourceSpan": {
@@ -465,7 +465,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título III\nContratos de consumo\narts. 1092 a 1122",
         "fullTranslationRu": "Раздел III\nПотребительские договоры\nст. 1092 по 1122",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел III\nПотребительские договоры\nст. 1092 по 1122",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 3\nПотребительские договоры\nст. 1092 по 1122",
         "sourceTextSha256": "32974424086923144c0639ca4637577f896b32bf7418819a383f1cbc234f4c35",
         "sourceFingerprint": "sha256:32974424086923144c0639ca4637577f896b32bf7418819a383f1cbc234f4c35",
         "sourceSpan": {
@@ -590,7 +590,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título III\nDominio\narts. 1941 a 1982",
         "fullTranslationRu": "Раздел III\nПраво собственности\nст. 1941-1982",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел III\nПраво собственности\nст. 1941-1982",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 3\nПраво собственности\nст. 1941-1982",
         "sourceTextSha256": "7162f10eb331172b6daf5987ab227cf2f08fa56d77da95d7829b8d93e5c068b0",
         "sourceFingerprint": "sha256:7162f10eb331172b6daf5987ab227cf2f08fa56d77da95d7829b8d93e5c068b0",
         "sourceSpan": {
@@ -674,7 +674,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título VII\nSuperficie\narts. 2114 a 2128",
         "fullTranslationRu": "Раздел VII\nПоверхность\nст. 2114 по 2128 год",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел VII\nПоверхность\nст. 2114 по 2128 год",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 7\nПоверхность\nст. 2114 по 2128 год",
         "sourceTextSha256": "029a6b4860686e9c551373e8b15dca95f7011bd1e404a7ecae3600d96f2ce2c1",
         "sourceFingerprint": "sha256:029a6b4860686e9c551373e8b15dca95f7011bd1e404a7ecae3600d96f2ce2c1",
         "sourceSpan": {
@@ -737,7 +737,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título X\nHabitación\narts. 2158 a 2161",
         "fullTranslationRu": "Раздел X\nПраво проживания\nст. 2158–2161",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей о праве проживания, чтобы было легче найти нужную тему. Раздел X\nПраво проживания\nст. 2158–2161",
+        "simpleRu": "Служебный указатель: этот раздел ведет к статьям 2158-2161 о праве проживания.",
         "sourceTextSha256": "b1ec3edd37aeeec2d155a75d9f386780442c795d68a30c950149f9bde73d6d5b",
         "sourceFingerprint": "sha256:b1ec3edd37aeeec2d155a75d9f386780442c795d68a30c950149f9bde73d6d5b",
         "sourceSpan": {
@@ -779,7 +779,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título XII\nDerechos reales de garantía\narts. 2184 a 2237",
         "fullTranslationRu": "Раздел XII\nВещные права гарантии\nст. 2184 по 2237",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел XII\nВещные права гарантии\nст. 2184 по 2237",
+        "simpleRu": "Служебный указатель: этот раздел ведет к статьям 2184-2237 о гарантийных вещных правах.",
         "sourceTextSha256": "93b36dc3739bfd512f6173506055c919a50782b144df0061f80c48d69fcd2395",
         "sourceFingerprint": "sha256:93b36dc3739bfd512f6173506055c919a50782b144df0061f80c48d69fcd2395",
         "sourceSpan": {
@@ -800,7 +800,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título XIII\nAcciones posesorias y acciones reales arts. 2238 a 2276\n",
         "fullTranslationRu": "Раздел XIII\nВладельческие и вещные иски\nст. 2238-2276",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел XIII\nВладельческие и вещные иски\nст. 2238-2276",
+        "simpleRu": "Служебный указатель: этот раздел ведет к статьям 2238-2276 о владельческих и вещных исках.",
         "sourceTextSha256": "5297bd4208d4470b86f4b5656e42cd821664e50e9d23156e45cfb0a9767da5a8",
         "sourceFingerprint": "sha256:5297bd4208d4470b86f4b5656e42cd821664e50e9d23156e45cfb0a9767da5a8",
         "sourceSpan": {
@@ -883,7 +883,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título III\nCesión de herencia\narts. 2302 a 2309",
         "fullTranslationRu": "Раздел III\nПередача наследства\nст. 2302 по 2309",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел III\nПередача наследства\nст. 2302 по 2309",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 3\nПередача наследства\nст. 2302 по 2309",
         "sourceTextSha256": "0b61081fd4d8979b1a8809d6dec134f4028c73f14d713b0efc73057a2920bddc",
         "sourceFingerprint": "sha256:0b61081fd4d8979b1a8809d6dec134f4028c73f14d713b0efc73057a2920bddc",
         "sourceSpan": {
@@ -925,7 +925,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título V\nResponsabilidad de los herederos y legatarios. Liquidación del pasivo arts. 2316 a 2322",
         "fullTranslationRu": "Раздел V\nОтветственность наследников и отказополучателей. Ликвидация обязательств ст. с 2316 по 2322",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел V\nОтветственность наследников и отказополучателей. Ликвидация обязательств ст. с 2316 по 2322",
+        "simpleRu": "Служебный указатель: этот раздел ведет к статьям 2316-2322 о том, как наследники и легатарии отвечают по долгам наследства.",
         "sourceTextSha256": "7032987c03a5afe1724ea5f29d3502122b6ff4dfc2596aa2c5b16531df5d9de8",
         "sourceFingerprint": "sha256:7032987c03a5afe1724ea5f29d3502122b6ff4dfc2596aa2c5b16531df5d9de8",
         "sourceSpan": {
@@ -967,7 +967,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título VII\nProceso sucesorio\narts. 2335 a 2362",
         "fullTranslationRu": "Раздел VII\nПроцесс преемственности\nст. 2335 по 2362",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел VII\nПроцесс преемственности\nст. 2335 по 2362",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 7\nПроцесс преемственности\nст. 2335 по 2362",
         "sourceTextSha256": "f6d91712599c63adffb56124dc8533233632bf9804892e1e599b187b1428e925",
         "sourceFingerprint": "sha256:f6d91712599c63adffb56124dc8533233632bf9804892e1e599b187b1428e925",
         "sourceSpan": {
@@ -1134,7 +1134,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "Título III\nDerecho de retención\narts. 2587 a 2593",
         "fullTranslationRu": "Раздел III\nПраво удержания\nст. 2587 по 2593",
-        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. Раздел III\nПраво удержания\nст. 2587 по 2593",
+        "simpleRu": "Это служебная часть Кодекса: она показывает разделы и номера статей, чтобы было легче найти нужную тему. раздел 3\nПраво удержания\nст. 2587 по 2593",
         "sourceTextSha256": "e6d23b2c1f1d85641512465cb316f44067e19d0cc0100b41d634c6de514d9275",
         "sourceFingerprint": "sha256:e6d23b2c1f1d85641512465cb316f44067e19d0cc0100b41d634c6de514d9275",
         "sourceSpan": {
@@ -1221,7 +1221,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 3° — Deróganse las siguientes normas:\n\na) Las leyes Nros. 11.357, 13.512, 14.394, 18.248, 19.724, 19.836, 20.276, 21.342 —con excepción de su artículo 6°—, 23.091, 25.509 y 26.005;\n\nb) La Sección IX del Capítulo II —artículos 361 a 366— y el Capítulo III de la ley 19.550, t.o. 1984;\n\nc) Los artículos 36, 37 y 38 de la ley 20.266 y sus modificatorias;\n\nd) El artículo 37 del decreto 1798 del 13 de octubre de 1994;\n\ne) Los artículos 1° a 26 de la ley 24.441;\n\nf) Los Capítulos I —con excepción del segundo y tercer párrafos del artículo 11— y III —con excepción de los párrafos segundo y tercero del artículo 28— de la ley 25.248;\n\ng) Los Capítulos III, IV, V y IX de la ley 26.356.\n",
         "fullTranslationRu": "СТАТЬЯ 3 — Следующие правила отменяются:\n\nа) Законы №№ 11357, 13512, 14394, 18248, 19724, 19836, 20276, 21342 (кроме статьи 6 этого закона), 23091, 25509 и 26005;\n\nб) раздел IX главы II - статьи 361 - 366 - и главу III Закона 19 550, т.о. 1984 год;\n\nв) статьи 36, 37 и 38 Закона № 20266 и поправки к нему;\n\nг) статья 37 указа 1798 от 13 октября 1994 года;\n\nд) статьи с 1 по 26 Закона № 24441;\n\nе) главы I - за исключением абзацев второго и третьего статьи 11 - и III - за исключением абзацев второго и третьего статьи 28 - закона 25248;\n\nж) главы III, IV, V и IX Закона № 26356.",
-        "simpleRu": "Проще: эта статья перечисляет нормы, которые больше не действуют. В список входят законы 11357, 13512, 14394, 18248, 19724, 19836, 20276, 21342 (кроме статьи 6), 23091, 25509 и 26005; раздел IX главы II (статьи 361-366) и глава III закона 19.550; статьи 36, 37 и 38 закона 20.266; статья 37 декрета 1798 от 13.10.1994; статьи 1-26 закона 24.441; часть глав I и III закона 25.248 с указанными исключениями; главы III, IV, V и IX закона 26.356.",
+        "simpleRu": "Ст. 3: отменяются законы 11357, 13512, 14394, 18248, 19724, 19836, 20276, 21342 (кроме статьи 6), 23091, 25509 и 26005; раздел IX главы II (статьи 361-366) и глава III закона 19.550; статьи 36, 37 и 38 закона 20.266; статья 37 декрета 1798 от 13.10.1994; статьи 1-26 закона 24.441; главы I и III закона 25.248, но без второго и третьего абзацев статьи 11 и второго и третьего абзацев статьи 28; главы III, IV, V и IX закона 26.356.",
         "sourceTextSha256": "131bcd326ade45375ac985c5bb10c00ad288d1bc65a70e6702e0f33d17ae5c12",
         "sourceFingerprint": "sha256:131bcd326ade45375ac985c5bb10c00ad288d1bc65a70e6702e0f33d17ae5c12",
         "sourceSpan": {
@@ -1243,7 +1243,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 4° — Deróganse el Código Civil, aprobado por la ley 340, y el Código de Comercio, aprobado por las leyes Nros. 15 y 2.637, excepto los artículos 891, 892, 907, 919, 926, 984 a 996, 999 a 1003 y 1006 a 1017/5, que se incorporan como artículos 631 a 678 de la ley 20.094, facultándose al Poder Ejecutivo nacional a renumerar los artículos de la citada ley en virtud de la incorporación de las normas precedentes.\n",
         "fullTranslationRu": "СТАТЬЯ 4 — Отменяются Гражданский кодекс, утвержденный Законом № 340, и Торговый кодекс, утвержденный Законами № 15 и 2.637, за исключением статей 891, 892, 907, 919, 926, 984–996, 999–1003 и 1006–1017/5, которые включаются как статьи 631–678 Закона 20.094; национальная исполнительная власть уполномочивается перенумеровать статьи указанного закона в связи с включением предыдущих норм.",
-        "simpleRu": "Проще: прежний Гражданский кодекс по Закону № 340 и прежний Торговый кодекс по Законам № 15 и 2.637 отменяются. Но статьи 891, 892, 907, 919, 926, 984–996, 999–1003 и 1006–1017/5 не отменяются: их переносят в Закон 20.094 как статьи 631–678. Из-за этого национальная исполнительная власть может перенумеровать статьи Закона 20.094.",
+        "simpleRu": "Ст. 4: старый Гражданский кодекс по Закону № 340 и старый Торговый кодекс по Законам № 15 и 2.637 отменяются. Но статьи 891, 892, 907, 919, 926, 984-996, 999-1003 и 1006-1017/5 сохраняются: их переносят в Закон 20.094 как статьи 631-678. Из-за этого исполнительная власть может перенумеровать Закон 20.094.",
         "sourceTextSha256": "1b92072826cfba656a8cc7ec93e19ad417d09e2ec408e11b0050dd85eb13e41d",
         "sourceFingerprint": "sha256:1b92072826cfba656a8cc7ec93e19ad417d09e2ec408e11b0050dd85eb13e41d",
         "sourceSpan": {
@@ -1918,7 +1918,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 18.- Derechos de las comunidades indígenas. Las comunidades indígenas reconocidas tienen derecho a la posesión y propiedad comunitaria de las tierras que tradicionalmente ocupan y de aquellas otras aptas y suficientes para el desarrollo humano según lo establezca la ley, de conformidad con lo dispuesto por el artículo 75 inciso 17 de la Constitución Nacional.\n",
         "fullTranslationRu": "СТАТЬЯ 18. Права коренных общин. Признанные коренные общины имеют право на владение и общинную собственность на земли, которые они традиционно занимают, а также на другие земли, пригодные и достаточные для человеческого развития, как это установлено законом, в соответствии с положениями пункта 17 статьи 75 Национальной конституции.",
-        "simpleRu": "Проще: признанные коренные общины имеют право владеть и иметь общинную собственность на земли, которые они традиционно занимают, а также на другие земли, нужные и пригодные для развития людей. Это связано с пунктом 17 статьи 75 Конституции.",
+        "simpleRu": "Ст. 18: признанные коренные общины имеют право владеть и коллективно иметь традиционные земли, а также другие подходящие земли для развития, как говорит закон и статья 75 пункт 17 Конституции.",
         "sourceTextSha256": "c81fcd3685eae6ae0c7be8ec66843117b8cbbb917974a983fcde3db1834bc6ee",
         "sourceFingerprint": "sha256:c81fcd3685eae6ae0c7be8ec66843117b8cbbb917974a983fcde3db1834bc6ee",
         "sourceSpan": {
@@ -2056,7 +2056,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 21.- Nacimiento con vida. Los derechos y obligaciones del concebido o implantado en la mujer quedan irrevocablemente adquiridos si nace con vida.\n\nSi no nace con vida, se considera que la persona nunca existió. El nacimiento con vida se presume.\n",
         "fullTranslationRu": "СТАТЬЯ 21. Живорождение. Права и обязанности ребенка, зачатого или имплантированного в организме женщины, приобретаются безвозвратно, если ребенок рождается живым.\n\nЕсли человек не рождается живым, считается, что человека никогда не существовало. Предполагается живорождение.",
-        "simpleRu": "Проще: права и обязанности зачатого ребенка или ребенка, имплантированного в организме женщины, окончательно закрепляются, только если ребенок рождается живым. Если живого рождения не было, для права считается, что человека не существовало; живорождение предполагается.",
+        "simpleRu": "Ст. 21: права и обязанности зачатого или имплантированного ребенка окончательно сохраняются, если он рождается живым. Если живого рождения нет, считается, что человека не существовало; живорождение предполагается.",
         "sourceTextSha256": "13d78140706b29f150010491b3efda315313f3d4a48278740b42d3f14730db1a",
         "sourceFingerprint": "sha256:13d78140706b29f150010491b3efda315313f3d4a48278740b42d3f14730db1a",
         "sourceSpan": {
@@ -2302,7 +2302,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 28.- Actos prohibidos a la persona emancipada. La persona emancipada no puede, ni con autorización judicial:\n\na) aprobar las cuentas de sus tutores y darles finiquito;\n\nb) hacer donación de bienes que hubiese recibido a título gratuito;\n\nc) afianzar obligaciones.\n",
         "fullTranslationRu": "СТАТЬЯ 28. Действия, запрещенные эмансипированному лицу. Эмансипированное лицо не может, даже с разрешения суда:\n\nа) утверждать счета своих опекунов и выдавать им окончательную расписку;\n\nб) дарить имущество, полученное безвозмездно;\n\nв) выступать поручителем по обязательствам.",
-        "simpleRu": "Проще: эмансипированный несовершеннолетний не может даже с разрешения суда утверждать счета опекунов, дарить полученное бесплатно имущество или выступать поручителем по чужим обязательствам.",
+        "simpleRu": "Ст. 28: эмансипированный человек даже с разрешением суда не может утверждать счета опекунов и давать им окончательную расписку, дарить бесплатно полученное имущество или быть поручителем.",
         "sourceTextSha256": "57df6ca09af0daf02850dd8f1cac196a16ad6d60f743826f6ed5b58e86a03b97",
         "sourceFingerprint": "sha256:57df6ca09af0daf02850dd8f1cac196a16ad6d60f743826f6ed5b58e86a03b97",
         "sourceSpan": {
@@ -3378,7 +3378,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 69.- Cambio de nombre. El cambio de prenombre o apellido sólo procede si existen justos motivos a criterio del juez.\n\nSe considera justo motivo, de acuerdo a las particularidades del caso, entre otros, a:\n\na) el seudónimo, cuando hubiese adquirido notoriedad;\n\nb) la raigambre cultural, étnica o religiosa;\n\nc) la afectación de la personalidad de la persona interesada, cualquiera sea su causa, siempre que se encuentre acreditada.\n\nSe consideran justos motivos, y no requieren intervención judicial, el cambio de prenombre por razón de identidad de género y el cambio de prenombre y apellido por haber sido víctima de desaparición forzada, apropiación ilegal o alteración o supresión del estado civil o de la identidad.\n",
         "fullTranslationRu": "СТАТЬЯ 69. – Изменение имени. Изменение имени или фамилии происходит только при наличии уважительных причин по усмотрению судьи.\n\nУважительной причиной считается, в зависимости от особенностей дела, в том числе:\n\nа) псевдоним, если он приобрел известность;\n\nб) культурные, этнические или религиозные корни;\n\nв) воздействие на личность заинтересованного лица, какова бы ни была его причина, если она доказана.\n\nИзменение имени по причине гендерной идентичности, а также изменение имени и фамилии в связи с тем, что лицо стало жертвой насильственного исчезновения, незаконного присвоения, изменения или подавления гражданского состояния либо идентичности, считается уважительной причиной и не требует судебного вмешательства.",
-        "simpleRu": "Проще: имя или фамилию можно поменять только по уважительным причинам, которые оценивает судья. Примеры: известный псевдоним, культурная, этническая или религиозная связь либо доказанное влияние имени на личность. Без суда уважительными причинами считаются смена имени из-за гендерной идентичности, а также смена имени и фамилии у жертв насильственного исчезновения, незаконного присвоения, изменения или подавления гражданского состояния либо идентичности.",
+        "simpleRu": "Ст. 69: имя или фамилию меняют только при уважительной причине. Суд оценивает большинство случаев; без суда прямо признаются гендерная идентичность и ситуации жертв исчезновения, незаконного присвоения или подмены гражданского состояния.",
         "sourceTextSha256": "6b108aa922f36b20e1d11fc00383e539c6d82251ca0e0ee5974b25cfeaf46003",
         "sourceFingerprint": "sha256:6b108aa922f36b20e1d11fc00383e539c6d82251ca0e0ee5974b25cfeaf46003",
         "sourceSpan": {
@@ -3426,7 +3426,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 71.- Acciones de protección del nombre. Puede ejercer acciones en defensa de su nombre:\n\na) aquel a quien le es desconocido el uso de su nombre, para que le sea reconocido y se prohíba toda futura impugnación por quien lo niega; se debe ordenar la publicación de la sentencia a costa del demandado;\n\nb) aquel cuyo nombre es indebidamente usado por otro, para que cese en ese uso;\n\nc) aquel cuyo nombre es usado para la designación de cosas o personajes de fantasía, si ello le causa perjuicio material o moral, para que cese el uso.\n\nEn todos los casos puede demandarse la reparación de los daños y el juez puede disponer la publicación de la sentencia.\n\nLas acciones pueden ser ejercidas exclusivamente por el interesado; si ha fallecido, por sus descendientes, cónyuge o conviviente, y a falta de éstos, por los ascendientes o hermanos.\n",
         "fullTranslationRu": "СТАТЬЯ 71. Действия по защите имени. Лицо может подать иски в защиту своего имени:\n\nа) тот, чье имя не признается, чтобы имя было признано и чтобы тот, кто его отрицает, не мог оспаривать его в будущем; суд должен распорядиться публикацией решения за счет ответчика;\n\nб) тому, чье имя неправомерно используется другим, прекратить такое использование;\n\nв) того, имя которого используется для обозначения вымышленных вещей или персонажей, если это причиняет материальный или моральный ущерб, с тем чтобы использование прекратилось.\n\nВо всех случаях можно потребовать возмещения ущерба, а судья может распорядиться о публикации решения.\n\nИски может предъявлять исключительно заинтересованное лицо; Если это лицо умерло, его потомками, супругом или сожителем, а при отсутствии таковых - его родственниками по восходящей линии или братьями и сестрами.",
-        "simpleRu": "Проще: имя можно защищать через суд. Если человеку не признают право пользоваться своим именем, суд может признать это имя, запретить тому же ответчику спорить с ним дальше и должен распорядиться публикацией решения за счет ответчика. Если чужое имя неправомерно используют, или им называют вещь либо вымышленного персонажа и это причиняет материальный или моральный вред, можно требовать прекращения такого использования. Во всех случаях можно требовать возмещения ущерба, а судья может распорядиться опубликовать решение. Подать такой иск может только сам заинтересованный человек; после его смерти - его потомки, супруг или сожитель, а если их нет - родители, другие предки, братья или сестры.",
+        "simpleRu": "Проще: имя можно защищать через суд. Если человеку не признают право пользоваться своим именем, суд может признать это имя, запретить тому же ответчику спорить с ним дальше и должен распорядиться публикацией решения за счет ответчика. Если чужое имя неправомерно используют, или им называют вещь либо вымышленного героя и это причиняет материальный или моральный вред, можно требовать прекращения такого использования. Во всех случаях можно требовать возмещения ущерба, а судья может распорядиться опубликовать решение. Подать такой иск может только сам заинтересованный человек; после его смерти - его потомки, супруг или сожитель, а если их нет - родители, другие предки, братья или сестры.",
         "sourceTextSha256": "333f60d62e226c5db8bd07b48be8958b3feaa8d1e6ca09cc965f868d894823d5",
         "sourceFingerprint": "sha256:333f60d62e226c5db8bd07b48be8958b3feaa8d1e6ca09cc965f868d894823d5",
         "sourceSpan": {

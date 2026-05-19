@@ -736,7 +736,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 1187.- Definición. Hay contrato de locación si una parte se obliga a otorgar a otra el uso y goce temporario de una cosa, a cambio del pago de un precio en dinero.\n\nAl contrato de locación se aplica en subsidio lo dispuesto con respecto al consentimiento, precio y objeto del contrato de compraventa.\n",
         "fullTranslationRu": "СТАТЬЯ 1187. Определение. Договор найма есть тогда, когда одна сторона обязуется предоставить другой стороне временное пользование вещью за денежную плату.\n\nК договору найма дополнительно применяются правила о согласии, цене и предмете договора купли-продажи, если они совместимы.",
-        "simpleRu": "Статья 1187: договор найма дает временное пользование вещью за денежную плату; если глава о найме молчит, дополнительно смотрят правила купли-продажи о согласии, цене и предмете.",
+        "simpleRu": "Ст. 1187: договор найма возникает, когда одна сторона дает другой временно пользоваться вещью за деньги. Дополнительно применяются совместимые правила купли-продажи о согласии, цене и предмете.",
         "sourceTextSha256": "25baad1146690ee75a09e194366a5130a415e32fad97ebce51a32a2fa12d326a",
         "sourceFingerprint": "sha256:25baad1146690ee75a09e194366a5130a415e32fad97ebce51a32a2fa12d326a",
         "sourceSpan": {
@@ -1258,7 +1258,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 1204 bis.- (Artículo derogado por art. 259 del Decreto N° 70/2023 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=395521] B.O. 21/12/2023)\n\nParágrafo 2°\n\nObligaciones del locatario\n",
         "fullTranslationRu": "СТАТЬЯ 1204 bis. Статья отменена статьей 259 Декрета N 70/2023, Официальный вестник 21.12.2023.\nПараграф 2\nОбязанности нанимателя",
-        "simpleRu": "Статья 1204 bis: эта статья отменена Декретом N 70/2023, поэтому самостоятельное правило больше не действует.",
+        "simpleRu": "Дополнительная статья 1204 bis отменена Декретом N 70/2023, поэтому самостоятельное правило больше не действует.",
         "sourceTextSha256": "3fc6a5b7205a29ac09847537f23e4c7975d6b327a7793256f7ab26e0a384e490",
         "sourceFingerprint": "sha256:3fc6a5b7205a29ac09847537f23e4c7975d6b327a7793256f7ab26e0a384e490",
         "sourceSpan": {
@@ -1756,7 +1756,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 1221 bis.- (Artículo derogado por art. 263 del Decreto N° 70/2023 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=395521] B.O. 21/12/2023)\n",
         "fullTranslationRu": "СТАТЬЯ 1221 bis. Статья отменена статьей 263 Декрета N 70/2023, Официальный вестник 21.12.2023.",
-        "simpleRu": "Статья 1221 bis: эта статья отменена Декретом N 70/2023, поэтому самостоятельное правило больше не действует.",
+        "simpleRu": "Статья 1221 bis отменена Декретом N 70/2023, поэтому самостоятельное правило больше не действует.",
         "sourceTextSha256": "74f100a72e7833f5f81fff8a75e289b479167f812ad40981ee4f484ff635e893",
         "sourceFingerprint": "sha256:74f100a72e7833f5f81fff8a75e289b479167f812ad40981ee4f484ff635e893",
         "sourceSpan": {

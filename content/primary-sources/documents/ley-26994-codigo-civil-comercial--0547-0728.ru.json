@@ -970,7 +970,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 432.- Alimentos. Los cónyuges se deben alimentos entre sí durante la vida en común y la separación de hecho. Con posterioridad al divorcio, la prestación alimentaria sólo se debe en los supuestos previstos en este Código, o por convención de las partes.\n\nEsta obligación se rige por las reglas relativas a los alimentos entre parientes en cuanto sean compatibles.\n",
         "fullTranslationRu": "СТАТЬЯ 432.- Алименты. Супруги обязаны предоставлять алименты друг другу во время совместной жизни и фактического раздельного проживания. После развода алименты подлежат уплате только в случаях, предусмотренных настоящим Кодексом, или по соглашению сторон.\nЭто обязательство регулируется правилами об алиментах между родственниками, если они совместимы.",
-        "simpleRu": "Супруги обязаны содержать друг друга во время совместной жизни и фактического раздельного проживания. После развода алименты нужны только в случаях Кодекса или по соглашению сторон. Эти правила применяются вместе с правилами об алиментах между родственниками, если они подходят.",
+        "simpleRu": "Ст. 432: супруги должны поддерживать друг друга алиментами во время совместной жизни и фактического раздельного проживания. После развода алименты бывают только по Кодексу или соглашению сторон.",
         "sourceTextSha256": "37ee84c355b7973f1da8002652a3263efb97d6e58c3bf81e1a2d2c2fed7b8a54",
         "sourceFingerprint": "sha256:37ee84c355b7973f1da8002652a3263efb97d6e58c3bf81e1a2d2c2fed7b8a54",
         "sourceSpan": {
@@ -3314,7 +3314,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 508.- Disolución del matrimonio. Disuelto el matrimonio, a falta de acuerdo entre los cónyuges separados de bienes o sus herederos, la partición de los bienes indivisos se hace en la forma prescripta para la partición de las herencias.\n",
         "fullTranslationRu": "СТАТЬЯ 508.- Расторжение брака. При расторжении брака при отсутствии соглашения между разделяющимися супругами или их наследниками раздел неделимого имущества производится в порядке, установленном для раздела наследства.",
-        "simpleRu": "Главное (Расторжение брака): При расторжении брака если нет соглашения между разделяющимися супругами или их наследниками раздел неделимого имущества делается в порядке, установленном для раздела наследства.",
+        "simpleRu": "Ст. 508: если брак расторгнут и нет соглашения между супругами с раздельным имуществом или их наследниками, неделимое имущество делят по правилам раздела наследства.",
         "sourceTextSha256": "f0d67b47bc3977e196adf386d5ac15f5c3e3c4c13f456530f139b74a03a4e51a",
         "sourceFingerprint": "sha256:f0d67b47bc3977e196adf386d5ac15f5c3e3c4c13f456530f139b74a03a4e51a",
         "sourceSpan": {
@@ -3336,7 +3336,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "TITULO III\n\nUniones convivenciales\n",
         "fullTranslationRu": "РАЗДЕЛ III\nСожительствующие союзы",
-        "simpleRu": "Это заголовок: РАЗДЕЛ III Сожительствующие союзы.",
+        "simpleRu": "Это заголовок: раздел 3 Сожительствующие союзы.",
         "sourceTextSha256": "2c4b20ac323177977e5d669fe6df0b0d8b69b1db75d7b9fe1a3d526dfce94059",
         "sourceFingerprint": "sha256:2c4b20ac323177977e5d669fe6df0b0d8b69b1db75d7b9fe1a3d526dfce94059",
         "sourceSpan": {

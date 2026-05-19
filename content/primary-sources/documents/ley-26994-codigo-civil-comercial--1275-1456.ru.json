@@ -1111,7 +1111,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 1046.- Citación por evicción. Si un tercero demanda al adquirente en un proceso del que pueda resultar la evicción de la cosa, el garante citado a juicio debe comparecer en los términos de la ley de procedimientos. El adquirente puede seguir actuando en el proceso.\n",
         "fullTranslationRu": "СТАТЬЯ 1046. Вызов гаранта по эвикции. Если третье лицо предъявляет иск к приобретателю в процессе, который может привести к эвикции вещи, гарант, вызванный в суд, должен явиться в сроки, установленные процессуальным законом. Приобретатель может продолжать участвовать в процессе.",
-        "simpleRu": "Статья 1046 простыми словами: Если третье лицо подает иск, который может привести к эвикции вещи, гарант должен явиться в суд в процессуальные сроки. Приобретатель может продолжать защищаться в деле.",
+        "simpleRu": "Ст. 1046: если третье лицо судится с приобретателем и из-за этого вещь могут отобрать, вызванный гарант по эвикции должен явиться в процесс в установленный срок. Приобретатель тоже может продолжать участвовать.",
         "sourceTextSha256": "4c736c2aff8af94b04bd8e14ea7cec363318f32f88cb8c18af126df5df6c26e6",
         "sourceFingerprint": "sha256:4c736c2aff8af94b04bd8e14ea7cec363318f32f88cb8c18af126df5df6c26e6",
         "sourceSpan": {
@@ -2343,7 +2343,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "TITULO III\n\nContratos de consumo\n",
         "fullTranslationRu": "Раздел III\n\nПотребительские договоры",
-        "simpleRu": "Раздел: Раздел III Потребительские договоры. Дальше идут правила этой части Кодекса.",
+        "simpleRu": "Раздел: раздел 3 Потребительские договоры. Дальше идут правила этой части Кодекса.",
         "sourceTextSha256": "15efe296edcd0d7a54a415662d9772d02731a2f74be12f1c058c35a71a8e26ba",
         "sourceFingerprint": "sha256:15efe296edcd0d7a54a415662d9772d02731a2f74be12f1c058c35a71a8e26ba",
         "sourceSpan": {
