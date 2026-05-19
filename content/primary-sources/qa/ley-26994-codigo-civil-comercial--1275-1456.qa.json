@@ -75,13 +75,13 @@
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-1014-causa-ilicita-el-contrato-es-nulo-1280",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5657-5662, coverage fingerprint sha256:7db6f8490d8dd2853783b15f078cc9449c0037d6233cbd0df0dbf494898df47e, and content/primary-sources/terminology.ru.md. D10-008 translation QA preserved generated order 1280, contract-law article labels, rights and duties of parties and third parties, proof/form rules, sanitation/eviction/hidden-defect terminology, warranty and consumer-contract rules, numbers, deadlines, exceptions, and authority references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Re-reviewed after the 2026-05-19 post-review correction for D10-008 order 1280 against Código Civil y Comercial archive span 5657-5662, coverage fingerprint sha256:7db6f8490d8dd2853783b15f078cc9449c0037d6233cbd0df0dbf494898df47e, and content/primary-sources/terminology.ru.md. Article 1014(b) now preserves the singular actor rule: only the party that acted with an illicit or immoral motive cannot invoke the contract against the other party, while the other party may recover what it gave without performing what it promised or offered. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against the Spanish source span 5657-5662, the full Russian translation, coverage fingerprint sha256:7db6f8490d8dd2853783b15f078cc9449c0037d6233cbd0df0dbf494898df47e, and content/primary-sources/terminology.ru.md. Simple Russian for D10-008 order 1280 keeps article references, contract effects, duties, exclusions, warranty deadlines, consumer protections, and scope limits while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Re-reviewed after the 2026-05-19 post-review correction for D10-008 order 1280 against the Spanish source span 5657-5662, the full Russian translation, coverage fingerprint sha256:7db6f8490d8dd2853783b15f078cc9449c0037d6233cbd0df0dbf494898df47e, and content/primary-sources/terminology.ru.md. Simple Russian now preserves the core Article 1014(b) actor distinction, restitution rule, and no-performance rule: the illicit-motive party cannot invoke the contract, and the other party may recover what it gave without performing what it promised or offered. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
