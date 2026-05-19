@@ -4094,7 +4094,7 @@
         "chunkingStrategy": "legal-articles",
         "originalSpanish": "ARTICULO 95.- Conmoriencia. Se presume que mueren al mismo tiempo las personas que perecen en un desastre común o en cualquier otra circunstancia, si no puede determinarse lo contrario.\n",
         "fullTranslationRu": "СТАТЬЯ 95. Одновременная смерть. Люди, погибшие в результате общего бедствия или при каких-либо иных обстоятельствах, считаются погибшими одновременно, если не может быть установлено обратное.",
-        "simpleRu": "Проще: если несколько людей погибли в одной катастрофе или в обстоятельствах, где нельзя понять порядок смерти, считается, что они умерли одновременно. Тогда права не переходят от одного погибшего к другому.",
+        "simpleRu": "Проще: если несколько людей погибли в одной катастрофе или в другой ситуации, и нельзя установить, кто умер раньше, закон считает, что они умерли одновременно.",
         "sourceTextSha256": "4822b71521b60ebde1cc2ff367f607e290be908623cd00409ffb6373a9f82621",
         "sourceFingerprint": "sha256:4822b71521b60ebde1cc2ff367f607e290be908623cd00409ffb6373a9f82621",
         "sourceSpan": {
