@@ -23,91 +23,91 @@
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-857-efectos-la-extincion-nulidad-o-ineficacia-1094",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4967-4968, coverage fingerprint sha256:a6bad37471c3eeaa470fb4babc9980099233bdf9d852be17bbd5d976147ecb21, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 857, generated order 1094, preserving official labels, numbers, legal conditions, exceptions, duties, and consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4967-4968, coverage fingerprint sha256:a6bad37471c3eeaa470fb4babc9980099233bdf9d852be17bbd5d976147ecb21, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 857, generated order 1094; principal-claim terminology was re-reviewed: `crédito principal` is the main/principal claim or receivable, not a letter of credit, and the exception is legal or contractual/conventional agreement. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4967-4968, coverage fingerprint sha256:a6bad37471c3eeaa470fb4babc9980099233bdf9d852be17bbd5d976147ecb21, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 857, generated order 1094, preserving official labels, numbers, legal conditions, exceptions, duties, and consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4967-4968, coverage fingerprint sha256:a6bad37471c3eeaa470fb4babc9980099233bdf9d852be17bbd5d976147ecb21, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 857, generated order 1094; principal-claim terminology was re-reviewed: `crédito principal` is the main/principal claim or receivable, not a letter of credit, and the exception is legal or contractual/conventional agreement. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
         "chunkId": "ley-26994-codigo-civil-comercial--seccion-11a-1095",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4969-4972, coverage fingerprint sha256:e495c6f67bb36cd51e34abcbfafc387312b18284e5751e7716c6057903b9f654, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked SECCION 11ª, generated order 1095, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4969-4972, coverage fingerprint sha256:e495c6f67bb36cd51e34abcbfafc387312b18284e5751e7716c6057903b9f654, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Section 11 heading, generated order 1095; the section heading was re-reviewed after the account-rendering repair: `Rendición de cuentas` is presenting/rendering accounts or reports, not liability/accountability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4969-4972, coverage fingerprint sha256:e495c6f67bb36cd51e34abcbfafc387312b18284e5751e7716c6057903b9f654, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked SECCION 11ª, generated order 1095, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4969-4972, coverage fingerprint sha256:e495c6f67bb36cd51e34abcbfafc387312b18284e5751e7716c6057903b9f654, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Section 11 heading, generated order 1095; the section heading was re-reviewed after the account-rendering repair: `Rendición de cuentas` is presenting/rendering accounts or reports, not liability/accountability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-858-definiciones-se-entiende-por-cuenta-la-1096",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4973-4976, coverage fingerprint sha256:02c5e31245a86b129e57c7f19fb5edcf9c42f8171998eb6aee366de115c012ce, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 858, generated order 1096, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4973-4976, coverage fingerprint sha256:02c5e31245a86b129e57c7f19fb5edcf9c42f8171998eb6aee366de115c012ce, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 858, generated order 1096; `cuenta` and `rendición de cuentas` were re-reviewed as an account/report describing antecedents, facts, and monetary results and then being made known to the interested person, not liability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4973-4976, coverage fingerprint sha256:02c5e31245a86b129e57c7f19fb5edcf9c42f8171998eb6aee366de115c012ce, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 858, generated order 1096, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4973-4976, coverage fingerprint sha256:02c5e31245a86b129e57c7f19fb5edcf9c42f8171998eb6aee366de115c012ce, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 858, generated order 1096; `cuenta` and `rendición de cuentas` were re-reviewed as an account/report describing antecedents, facts, and monetary results and then being made known to the interested person, not liability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-859-requisitos-la-rendicion-de-cuentas-debe-1097",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4977-4986, coverage fingerprint sha256:05fb611e6095d0f9c388559cd0bf5988317f804620ae163f1e8b6c6eff00f77c, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 859, generated order 1097, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4977-4986, coverage fingerprint sha256:05fb611e6095d0f9c388559cd0bf5988317f804620ae163f1e8b6c6eff00f77c, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 859, generated order 1097; account-rendering requirements were re-reviewed: descriptive/documented account, reasonable references and explanations, supporting vouchers for income and expenses unless not customarily issued, and consistency with the presenter's books/records. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4977-4986, coverage fingerprint sha256:05fb611e6095d0f9c388559cd0bf5988317f804620ae163f1e8b6c6eff00f77c, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 859, generated order 1097, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4977-4986, coverage fingerprint sha256:05fb611e6095d0f9c388559cd0bf5988317f804620ae163f1e8b6c6eff00f77c, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 859, generated order 1097; account-rendering requirements were re-reviewed: descriptive/documented account, reasonable references and explanations, supporting vouchers for income and expenses unless not customarily issued, and consistency with the presenter's books/records. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-860-obligacion-de-rendir-cuentas-estan-obligados-1098",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4987-4996, coverage fingerprint sha256:5f509fddbe90bb199c3a511c96e059314cf98999bee0e4928fbe0f9d273a6c62, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 860, generated order 1098, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4987-4996, coverage fingerprint sha256:5f509fddbe90bb199c3a511c96e059314cf98999bee0e4928fbe0f9d273a6c62, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 860, generated order 1098; account-rendering duty rules were re-reviewed: acting in another's interest even in one's own name, continuing-performance relationships where reporting fits the business, legal-duty cases, interested-person waiver, and private versus judge-presented reporting. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4987-4996, coverage fingerprint sha256:5f509fddbe90bb199c3a511c96e059314cf98999bee0e4928fbe0f9d273a6c62, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 860, generated order 1098, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4987-4996, coverage fingerprint sha256:5f509fddbe90bb199c3a511c96e059314cf98999bee0e4928fbe0f9d273a6c62, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 860, generated order 1098; account-rendering duty rules were re-reviewed: acting in another's interest even in one's own name, continuing-performance relationships where reporting fits the business, legal-duty cases, interested-person waiver, and private versus judge-presented reporting. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-861-oportunidad-las-cuentas-deben-ser-rendidas-1099",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4997-5002, coverage fingerprint sha256:e991345de3c86e9e00b52eeed089ee0a920c6373c0d3ddc73b75d1fa0da70e50, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 861, generated order 1099, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4997-5002, coverage fingerprint sha256:e991345de3c86e9e00b52eeed089ee0a920c6373c0d3ddc73b75d1fa0da70e50, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 861, generated order 1099; timing rules for rendering accounts were re-reviewed: party/legal deadlines, completion of the business, and continuing-performance periods or calendar-year closing. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4997-5002, coverage fingerprint sha256:e991345de3c86e9e00b52eeed089ee0a920c6373c0d3ddc73b75d1fa0da70e50, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 861, generated order 1099, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 4997-5002, coverage fingerprint sha256:e991345de3c86e9e00b52eeed089ee0a920c6373c0d3ddc73b75d1fa0da70e50, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 861, generated order 1099; timing rules for rendering accounts were re-reviewed: party/legal deadlines, completion of the business, and continuing-performance periods or calendar-year closing. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-862-aprobacion-la-rendicion-de-cuentas-puede-1100",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5003-5004, coverage fingerprint sha256:62beef1804bc462f0b7f8f180f56fb65816fabc09a77a94910d82168980156dc, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 862, generated order 1100, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5003-5004, coverage fingerprint sha256:62beef1804bc462f0b7f8f180f56fb65816fabc09a77a94910d82168980156dc, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 862, generated order 1100; approval rules were re-reviewed: express or tacit approval, timely objections/observations, the thirty-day default after proper presentation, and one-year challenges for calculation or record-entry errors. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5003-5004, coverage fingerprint sha256:62beef1804bc462f0b7f8f180f56fb65816fabc09a77a94910d82168980156dc, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 862, generated order 1100, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5003-5004, coverage fingerprint sha256:62beef1804bc462f0b7f8f180f56fb65816fabc09a77a94910d82168980156dc, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 862, generated order 1100; approval rules were re-reviewed: express or tacit approval, timely objections/observations, the thirty-day default after proper presentation, and one-year challenges for calculation or record-entry errors. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
@@ -127,13 +127,13 @@
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-864-saldos-y-documentos-del-interesado-una-1102",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5007-5012, coverage fingerprint sha256:35a42e30c3f885d441dad500f6d820468e0778d41e5ee9dc6385b0acfc9dc968, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 864, generated order 1102, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5007-5012, coverage fingerprint sha256:35a42e30c3f885d441dad500f6d820468e0778d41e5ee9dc6385b0acfc9dc968, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 864, generated order 1102; post-approval balance and document-return rules were re-reviewed: payable balance deadline, ten-day default, returning titles/documents to the interested person, and excluding personal instructions. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5007-5012, coverage fingerprint sha256:35a42e30c3f885d441dad500f6d820468e0778d41e5ee9dc6385b0acfc9dc968, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 864, generated order 1102, preserving account-rendering duties, timing, approval, balances, and receipt/document-return consequences. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5007-5012, coverage fingerprint sha256:35a42e30c3f885d441dad500f6d820468e0778d41e5ee9dc6385b0acfc9dc968, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 864, generated order 1102; post-approval balance and document-return rules were re-reviewed: payable balance deadline, ten-day default, returning titles/documents to the interested person, and excluding personal instructions. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
@@ -322,13 +322,13 @@
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-877-pago-de-creditos-embargados-o-prendados-1117",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5059-5060, coverage fingerprint sha256:6b27ad04aea82d1f7d7b9135cc1a43f0362b918308abdec323f979301f65e1bf, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 877, generated order 1117, preserving payment requirements, creditor/debtor roles, timing, place, proof, mora, consignation, and subrogation effects. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5059-5060, coverage fingerprint sha256:6b27ad04aea82d1f7d7b9135cc1a43f0362b918308abdec323f979301f65e1bf, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 877, generated order 1117; payment terminology was re-reviewed: `crédito` is a claim/receivable that must be expedito/unencumbered for payment, and payment of an attached or pledged claim is inopposable to the pledge creditor or attaching creditor. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5059-5060, coverage fingerprint sha256:6b27ad04aea82d1f7d7b9135cc1a43f0362b918308abdec323f979301f65e1bf, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 877, generated order 1117, preserving payment requirements, creditor/debtor roles, timing, place, proof, mora, consignation, and subrogation effects. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5059-5060, coverage fingerprint sha256:6b27ad04aea82d1f7d7b9135cc1a43f0362b918308abdec323f979301f65e1bf, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 877, generated order 1117; payment terminology was re-reviewed: `crédito` is a claim/receivable that must be expedito/unencumbered for payment, and payment of an attached or pledged claim is inopposable to the pledge creditor or attaching creditor. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
@@ -2181,13 +2181,13 @@
         "chunkId": "ley-26994-codigo-civil-comercial--articulo-997-pacto-de-preferencia-el-pacto-de-1260",
         "translationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5591-5592, coverage fingerprint sha256:6bf40bc17d005249a8121a878fa5901e91aeef99c7764f06e9b4aa5a5e6127f7, and content/primary-sources/terminology.ru.md. D10-007 translation QA checked Article 997, generated order 1260, preserving contract formation, offer/acceptance, adhesion terms, negotiation duties, and consent rules. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5591-5592, coverage fingerprint sha256:6bf40bc17d005249a8121a878fa5901e91aeef99c7764f06e9b4aa5a5e6127f7, and content/primary-sources/terminology.ru.md. D10-007 translation QA re-reviewed after the 2026-05-19 repair for Article 997, generated order 1260; preference-pact terms were re-reviewed: obligation to do if a future contract is chosen, company/share interests and association-contract shares rather than public life, reciprocal preference, and transmissible rights/obligations. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         },
         "simplificationQa": {
           "status": "approved",
-          "checkedAt": "2026-05-18",
-          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5591-5592, coverage fingerprint sha256:6bf40bc17d005249a8121a878fa5901e91aeef99c7764f06e9b4aa5a5e6127f7, and content/primary-sources/terminology.ru.md. D10-007 simplification QA checked Article 997, generated order 1260, preserving contract formation, offer/acceptance, adhesion terms, negotiation duties, and consent rules. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed against Código Civil y Comercial archive span 5591-5592, coverage fingerprint sha256:6bf40bc17d005249a8121a878fa5901e91aeef99c7764f06e9b4aa5a5e6127f7, and content/primary-sources/terminology.ru.md. D10-007 simplification QA re-reviewed after the 2026-05-19 repair for Article 997, generated order 1260; preference-pact terms were re-reviewed: obligation to do if a future contract is chosen, company/share interests and association-contract shares rather than public life, reciprocal preference, and transmissible rights/obligations. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
         }
       },
       {
