@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url);
 const pdfParse = require("pdf-parse/lib/pdf-parse.js");
 
 const DEFAULT_MANIFEST_PATH = "content/official-documents/manifest.json";
-const DEFAULT_EVIDENCE_PATH = "content/official-documents/validation/exact-text-validation-2026-05-20.json";
+const DEFAULT_EVIDENCE_DIR = "content/official-documents/validation";
 const FETCH_TIMEOUT_MS = 45000;
 const USER_AGENT = "Cabadrive exact-text validation/1.0 (source archive verification)";
 const MAX_WRAPPER_CHARS = 240;
@@ -23,10 +23,15 @@ function currentLocalIsoDate(date = new Date()) {
   return `${values.year}-${values.month}-${values.day}`;
 }
 
-function parseArgs(argv) {
+function defaultEvidencePathForDate(checkedAt) {
+  return `${DEFAULT_EVIDENCE_DIR}/exact-text-validation-${checkedAt}.json`;
+}
+
+function parseArgs(argv, checkedAt) {
+  const defaultEvidencePath = defaultEvidencePathForDate(checkedAt);
   const args = {
     manifestPath: DEFAULT_MANIFEST_PATH,
-    evidencePath: DEFAULT_EVIDENCE_PATH,
+    evidencePath: defaultEvidencePath,
     ids: undefined,
     write: false
   };
@@ -43,14 +48,16 @@ function parseArgs(argv) {
       console.log(`Usage: node scripts/official-documents-exact-text-validation.mjs [--ids id1,id2] [--write]
 
 Downloads official source inputs from manifest sourceUrl/currentness.evidenceUrls, extracts meaningful source text,
-normalizes Markdown/HTML/PDF layout noise, and writes exact-text validation evidence.`);
+normalizes Markdown/HTML/PDF layout noise, and writes exact-text validation evidence.
+
+By default, --write uses ${DEFAULT_EVIDENCE_DIR}/exact-text-validation-<current-date>.json.`);
       process.exit(0);
     } else {
       throw new Error(`Unknown argument: ${arg}`);
     }
   }
 
-  const writesCanonicalEvidence = resolve(args.evidencePath) === resolve(DEFAULT_EVIDENCE_PATH);
+  const writesCanonicalEvidence = resolve(args.evidencePath) === resolve(defaultEvidencePath);
   if (args.write && args.ids && writesCanonicalEvidence) {
     throw new Error(
       "--ids with --write requires a custom noncanonical --evidence path so partial validation cannot overwrite the canonical whole-manifest evidence file."
@@ -604,7 +611,8 @@ async function validateEntry(entry) {
 }
 
 async function main() {
-  const args = parseArgs(process.argv.slice(2));
+  const checkedAt = currentLocalIsoDate();
+  const args = parseArgs(process.argv.slice(2), checkedAt);
   const manifest = readJson(args.manifestPath);
   const selectedIds = new Set(args.ids ?? manifest.entries.map((entry) => entry.id));
   const entries = manifest.entries.filter((entry) => selectedIds.has(entry.id));
@@ -627,7 +635,7 @@ async function main() {
   const evidence = {
     schema: "official-documents-exact-text-validation-evidence.v1",
     featureId: "019-primary-sources-section",
-    checkedAt: currentLocalIsoDate(),
+    checkedAt,
     manifestPath: args.manifestPath,
     command: `node scripts/official-documents-exact-text-validation.mjs${args.ids ? ` --ids ${args.ids.join(",")}` : ""} --write`,
     summary,
