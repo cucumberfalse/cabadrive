@@ -39,8 +39,8 @@
 - [x] T026 Record currentness/effective-status validation state for every manifest entry.
 - [x] T027 Record exact-text validation state for every manifest entry.
 - [x] T028 Decide whether exact-text validation is completed before UI exposure or before final release; record the decision and rationale.
-- [ ] T029 Complete whole-archive exact-text validation for every manifest entry before final release, or record an explicit Architect/user blocker disposition.
-- [ ] T030 Confirm every final-release manifest entry has currentness/effective-status validation passed or an explicit blocker disposition.
+- [ ] T029 Complete whole-archive exact-text validation for every manifest entry before final release, or record an explicit Architect/user blocker disposition. Disposition on 2026-05-20: exact-text remains a final-release blocker and is not passed for all 19 manifest entries because `exactTextValidation.status` is still `pending`; local originals plus Markdown hashes do not provide a reproducible independent whole-archive exact-text comparison against official sources.
+- [x] T030 Confirm every final-release manifest entry has currentness/effective-status validation passed or an explicit blocker disposition. Evidence on 2026-05-20: manifest-only currentness check shows all 19 entries have release-usable status with `currentness.validationStatus: "passed"`: 6 `current`, 4 `in_force`, and 9 `valid_current_material`.
 - [x] T031 Refresh `docs_project/project/content-sources.md` so it no longer describes the archive as only a small three-source seed.
 - [x] T032 Refresh frontend/feature-inventory/learning-flow docs to describe the new `Источники` source reader and its relationship to `Материалы`.
 - [x] T033 Document that learner Russian translation/simplification lives outside `content/official-documents/`.
@@ -302,6 +302,7 @@
 ### Known Issues
 
 - Exact-text validation is pending for all observed manifest entries; final feature release should block until resolved or explicitly disposed.
+- Source-readiness disposition on 2026-05-20: the final primary-source section can proceed to UI integration based on the current manifest's currentness/effective-status readiness, but it cannot be declared merge-ready or final-release complete until T029 is resolved with reproducible whole-archive exact-text comparison evidence, or until Architect/user explicitly accepts a narrowed non-final release status. T142 and T143 remain open final whole-corpus release gates.
 - The corpus is large enough that translation/simplification should be batched across multiple PRs.
 - Very large legal/manual documents are too large for quality-safe single-pass translation/simplification/QA. Partial sub-batches may be useful implementation slices, but they are not learner-release-complete documents.
 - Translation quality and simplification fidelity are the highest content risks; validators alone cannot prove semantic quality.
@@ -309,6 +310,15 @@
 - Navigation may become crowded; any grouping must keep the source reader visibly distinct from topic `Материалы`.
 - Bundle size/performance must be measured once full Russian and Spanish chunk data are imported.
 - D13-900 closes only large-document recomposition for the four large documents and does not close umbrella batch/release tasks T061-T074 or the final exact-text, currentness, UI, e2e, and release gates.
+
+### Source Readiness T029/T030 Disposition Notes
+
+- Source-readiness slice rerun on 2026-05-20 in `/Users/chap/devel/cabadrive-019-primary-sources-readiness-current` on branch `codex/019-primary-sources-readiness-current`.
+- Inline Node manifest check passed with 19 manifest entries, 19 `currentness.validationStatus: "passed"`, 19 release-usable currentness statuses, and 19 `exactTextValidation.status: "pending"`. Status counts: 6 `current`, 4 `in_force`, 9 `valid_current_material`.
+- T030 is closed for the current manifest because every included entry has passed currentness/effective-status validation. T143 remains open as a final whole-corpus release gate because future final-head manifest state still needs final confirmation.
+- T029 remains open and blocks final release because no dedicated reproducible official-source exact-text comparison was performed for the 19 entries. T142 remains open as the final exact-text release gate.
+- The source-reader UI integration can continue from this source-readiness state, but final release/merge-ready completion cannot be claimed until T029 is resolved or Architect/user explicitly accepts a narrowed non-final release status.
+- Verification for this slice: `pnpm run validate:content` passed; `pnpm run test` passed with 163 tests after installing missing worktree dependencies with `pnpm install --frozen-lockfile`; `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree` passed.
 
 ### Slice D10-001 Civil Code Quality Repair Notes
 
