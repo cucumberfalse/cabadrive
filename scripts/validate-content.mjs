@@ -7,6 +7,7 @@ import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs"
 import { validateCabaExamProcessGuide } from "./content-caba-exam-process.mjs";
 import { validateDifficultyContent } from "./content-difficulty.mjs";
 import { validateExplanationAlignment } from "./content-explanation-alignment.mjs";
+import { validateImageExplanationOverlays } from "./content-image-overlays.mjs";
 import { validateQuestionImageMetadata } from "./content-image-metadata.mjs";
 import { assertGeneratedContentIndexesFresh, combinedContentFromShards } from "./content-shards.mjs";
 import { validateTopicGuide } from "./content-topic-guide.mjs";
@@ -65,6 +66,8 @@ const translationAlignmentEvidence = readJson("content/validation/ru-translation
 const explanations = shardedContent.explanations || [];
 const questionImageMetadata = shardedContent.imageMetadataManifest;
 const questionImageMetadataEvidence = readJson("content/validation/question-image-metadata.evidence.json");
+const imageOverlayManifest = readJson("content/image-overlays/question-explanation-overlays.manifest.json");
+const imageOverlayEvidence = readJson("content/validation/question-image-overlays.evidence.json");
 const explanationAlignmentEvidence = readJson("content/validation/ru-explanation-alignment.evidence.json");
 const vocabulary = readJson("content/vocabulary/ru.vocabulary.json") || [];
 const guide = readJson("content/guide/ru.condensed-guide.json") || [];
@@ -191,6 +194,16 @@ errors.push(
     manifest: questionImageMetadata,
     evidence: questionImageMetadataEvidence,
     requireFullQuality: qualityGate
+  })
+);
+errors.push(
+  ...validateImageExplanationOverlays({
+    questions,
+    metadataManifest: questionImageMetadata,
+    metadataEvidence: questionImageMetadataEvidence,
+    overlayManifest: imageOverlayManifest,
+    overlayEvidence: imageOverlayEvidence,
+    fileExists: (relativePath) => existsSync(path(relativePath))
   })
 );
 

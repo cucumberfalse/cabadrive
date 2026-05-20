@@ -22,9 +22,11 @@ planning starts. When Orchestrator later invokes final Analyst validation after
 Architect passes, the same artifact may receive append-only Analyst-owned final
 validation notes.
 
-Repository-changing requests default to Orchestrator entry. Orchestrator
-fetches or otherwise verifies latest `origin/main`, creates or requires a fresh
-isolated intake worktree/branch, invokes Analyst first when no current
+Repository-changing requests default to Orchestrator entry. Orchestrator starts
+from latest verified `main`, normally `origin/main` after fetch; if fetch/base
+verification is unavailable, it records a blocker or explicit fallback and must
+not silently reuse stale base state. It records the base, creates or requires a
+fresh isolated intake worktree/branch, invokes Analyst first when no current
 `feature-request.md` exists, relays any Analyst clarification questions to the
 user, returns answers to Analyst, and takes the Analyst-created latest-main
 intake branch/worktree context forward after Analyst handoff. Analyst shuts down
@@ -35,8 +37,10 @@ requirement clarification.
 The Analyst-created latest-main handoff context may continue through Architect
 planning. It may become the single implementation PR slice only when
 Orchestrator explicitly assigns it that way. Additional task slices must start
-from latest `origin/main` in separate isolated worktrees, branches, and PRs, and
-parallel dirty diffs, branches, commits, PRs, and process memory must be
+from latest verified `main`, normally `origin/main` after fetch, in separate
+isolated worktrees, branches, and PRs. Fetch/base verification failure requires
+a documented fallback or blocker; stale base state must not be silently reused,
+and parallel dirty diffs, branches, commits, PRs, and process memory must be
 preserved.
 
 A non-Orchestrator active model that receives a new repository-changing request
@@ -80,14 +84,15 @@ validation. The set records every contributing PR slice by purpose, branch, PR
 number or reliable discovery metadata, current or final head SHA, status, and
 whether it is included in final validation.
 
-Before completion or authorized merge mechanics, Orchestrator invokes final
-Architect validation first. Architect validates all PR slices, Architect-assigned
-tasks and dispositions, architectural guidance, open task state, process memory,
-and customer intent in spirit. Architect gaps update only Architect-owned
-artifacts/dispositions, increment the Architect return count, and return control
-to Orchestrator. Architect may return work at most 10 times per work cycle; if
-another Architect gap would exceed that limit, Architect reports the breach and
-Orchestrator asks Analyst for a new feature request.
+Before completion, conservative Orchestrator finalization, or merge,
+Orchestrator invokes final Architect validation first. Architect validates all PR
+slices, Architect-assigned tasks and dispositions, architectural guidance, open
+task state, process memory, and customer intent in spirit. Architect gaps update
+only Architect-owned artifacts/dispositions, increment the Architect return
+count, and return control to Orchestrator. Architect may return work at most 10
+times per work cycle; if another Architect gap would exceed that limit,
+Architect reports the breach and Orchestrator asks Analyst for a new feature
+request.
 
 After Architect passes, Orchestrator invokes final Analyst validation. Analyst
 validates the final result against the customer's desired outcome in spirit and
@@ -102,20 +107,38 @@ separate latest-main branch/worktree.
 Final validation adds gates but does not replace merge readiness. Required
 checks, blocking review status, conflict status, acceptance evidence, current
 process memory, Implementation Agent feedback disposition, final guard evidence,
-and human merge-owner rules remain required.
+branch-protection readiness, and PR-only delivery remain required. For
+Orchestrator-managed PRs, those gates lead to conservative Orchestrator
+finalization and merge instead of routine human approval. Human
+involvement remains a narrow blocker only for explicit no-merge instructions,
+missing credentials or permissions, ambiguous repository or PR state risking the
+wrong PR, data loss, conflicts or status ambiguity, protected-branch policy
+blockers, or an unresolved owner decision for an accepted known issue.
 
 Architect and Analyst final validation apply to the effective content head: the
 PR head containing implementation, workflow docs/templates, feature memory,
 review fixes, and other behaviorally meaningful content. A later
 final-validation evidence-only commit may record role-owned validation evidence
-or process memory without recursive role validation only when Orchestrator's
-read-only current-PR-head guard names the current head, compares it with the
-effective content head, proves the later commit is evidence-only, and confirms
-merge-readiness gates still apply. Any post-validation change to product
-behavior, durable workflow rules, templates, scoped implementation docs, code,
-tests, runtime files, CI, branch protection, review dispositions, or other
+or process memory without recursive role validation only when process evidence
+records `Effective content head: <40-hex-sha>`, Architect-owned passing notes
+record `Architect validated effective content head: <40-hex-sha>`,
+Analyst-owned passing notes record
+`Analyst validated effective content head: <40-hex-sha>` for the same SHA, and
+Orchestrator's read-only current-PR-head guard names the current head, compares
+it with the effective content head, proves the later commit is evidence-only,
+and confirms merge-readiness gates still apply. Any post-validation change to
+product behavior, durable workflow rules, templates, scoped implementation docs,
+code, tests, runtime files, CI, branch protection, review dispositions, or other
 non-evidence content makes prior validation stale and must be routed back
 through role-appropriate follow-up or final validation.
+
+Feature memory should also record the startup base for repository-changing work:
+latest verified `main`, normally `origin/main` after fetch, or a documented
+fallback/blocker when verification is unavailable. When cleanup is in scope,
+feature memory must record approved cleanup roots, active/current exclusions,
+candidate inventory, validation, action/refusal reason, and post-cleanup
+confirmation for each candidate. Name patterns, timestamps, and memory are only
+candidate discovery hints; positive proof is required before deletion.
 
 ## Numbering
 
@@ -129,9 +152,12 @@ a clearer slug, or ask the Orchestrator to coordinate before writing. When
 parallel Orchestrators or agents may be active, Orchestrator must account for
 observed sibling worktrees, branches, and unmerged feature folders before
 assigning work, and must warn subagents to preserve existing dirty diffs,
-branches, commits, PRs, and process memory. If one request contains independent
-goals, split them into separate folders or record a split decision before
-handoff.
+branches, commits, PRs, process memory, active worktrees, and ambiguous local
+paths. Cleanup of completed agent-created environments is coordinated through
+Cleanup Agent and must preserve current, active, dirty, untracked, unpushed,
+open-PR, locked, running-process, ambiguous, user-owned, out-of-root, or
+process-memory-referenced targets. If one request contains independent goals,
+split them into separate folders or record a split decision before handoff.
 
 Do not edit, delete, move, stage, or otherwise mutate sibling feature folders or
 process memory while working on an assigned feature unless Orchestrator

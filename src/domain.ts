@@ -47,13 +47,17 @@ function sortedExamSet(questions: Question[], count: number) {
   }).slice(0, Math.min(count, questions.length));
 }
 
-function randomExamSet(questions: Question[], count: number, random: () => number) {
+export function shuffleQuestions(questions: Question[], random = Math.random) {
   const shuffled = [...questions];
   for (let index = shuffled.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(random() * (index + 1));
+    const swapIndex = Math.min(Math.max(Math.floor(random() * (index + 1)), 0), index);
     [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
   }
-  return shuffled.slice(0, Math.min(count, shuffled.length));
+  return shuffled;
+}
+
+function randomExamSet(questions: Question[], count: number, random: () => number) {
+  return shuffleQuestions(questions, random).slice(0, Math.min(count, questions.length));
 }
 
 export function selectExamSet(questions: Question[], count: number, questionOrderRule: string, random = Math.random) {
