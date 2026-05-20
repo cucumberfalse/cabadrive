@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { generateDocumentCoverageFromText, isArticleLine } from "../scripts/primary-sources-generate-coverage.mjs";
+import { currentIsoDate, generateDocumentCoverageFromText, isArticleLine } from "../scripts/primary-sources-generate-coverage.mjs";
+
+test("coverage generator computes snapshot dates from runtime date", () => {
+  assert.equal(currentIsoDate(new Date("2026-05-20T14:15:00Z")), "2026-05-20");
+  assert.equal(currentIsoDate(new Date("2027-02-03T09:30:00Z")), "2027-02-03");
+});
 
 test("article boundary detection accepts official article heading formats", () => {
   assert.equal(isArticleLine("ARTICULO 1º — AMBITO DE LA APLICACION."), true);

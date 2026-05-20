@@ -8,7 +8,11 @@ const currentFilePath = fileURLToPath(import.meta.url);
 const root = resolve(dirname(currentFilePath), "..");
 const coveragePath = "content/primary-sources/primary-sources.coverage.json";
 const manifestPath = "content/official-documents/manifest.json";
-const today = "2026-05-10";
+
+export function currentIsoDate(date = new Date()) {
+  const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60_000);
+  return localDate.toISOString().slice(0, 10);
+}
 
 function readJson(relativePath) {
   return JSON.parse(readFileSync(join(root, relativePath), "utf8"));
@@ -283,18 +287,19 @@ function generateDocumentCoverage(entry) {
 
 function generateCoverage() {
   const manifest = readJson(manifestPath);
+  const generatedDate = currentIsoDate();
   return {
     version: 1,
     schema: "primary-sources-coverage.v1",
     status: "draft",
     manifestSnapshot: {
-      capturedAt: today,
+      capturedAt: generatedDate,
       manifestPath,
       officialDocumentCount: manifest.entries.length,
       officialDocumentIds: manifest.entries.map((entry) => entry.id)
     },
     generation: {
-      generatedAt: today,
+      generatedAt: generatedDate,
       generator: "scripts/primary-sources-generate-coverage.mjs",
       source: "content/official-documents/manifest.json",
       note:

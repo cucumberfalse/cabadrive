@@ -3,7 +3,7 @@
   "schema": "primary-sources-coverage.v1",
   "status": "draft",
   "manifestSnapshot": {
-    "capturedAt": "2026-05-10",
+    "capturedAt": "2026-05-20",
     "manifestPath": "content/official-documents/manifest.json",
     "officialDocumentCount": 19,
     "officialDocumentIds": [
@@ -29,7 +29,7 @@
     ]
   },
   "generation": {
-    "generatedAt": "2026-05-10",
+    "generatedAt": "2026-05-20",
     "generator": "scripts/primary-sources-generate-coverage.mjs",
     "source": "content/official-documents/manifest.json",
     "note": "Generated inventory only. Russian translation, simplification, and QA approval are intentionally reserved for later slices."
