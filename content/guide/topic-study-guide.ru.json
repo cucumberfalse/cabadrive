@@ -456,7 +456,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "c171ea7e3b9189bb72c77d931b523d956d61553480daee17ffdc3c6f00bb5c3c",
+        "sourceFingerprint": "a6df1599494058fc1dbc4e2fec3e46c26b8eb2dc55b78baf35dcab3d07dd5d7f",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -806,7 +806,7 @@
         },
         {
           "id": "claim-parking-signs-and-colored-curbs",
-          "textRu": "Anexo L различает No estacionar, No estacionar ni detenerse, Estacionamiento exclusivo и cordones pintados: R.8 запрещает estacionamiento, R.9 запрещает и estacionar, и detenerse, R.17 использует синий знак для Estacionamiento exclusivo, red cordón запрещает остановку/стоянку, yellow cordón запрещает только estacionar.",
+          "textRu": "Anexo L различает No estacionar, No estacionar ni detenerse, Estacionamiento exclusivo и cordones pintados: R.8 запрещает estacionamiento, R.9 запрещает и estacionar, и detenerse, R.17 использует синий знак для Estacionamiento exclusivo, cordón rojo запрещает остановку/стоянку, cordón amarillo запрещает только estacionar.",
           "requiresOfficialSource": true,
           "sourceTraceId": "parking-prohibitions-signs-and-curbs"
         },
@@ -1105,7 +1105,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "0110f2e25da2564f2a3171d3916ca030302c216ca4f10bcb78ea01d8c6dfe0a4",
+        "sourceFingerprint": "511dbc192f43890efad350f8490058e6e3e758b147ebccf8f47480306ec904db",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -1796,7 +1796,7 @@
       "claims": [
         {
           "id": "claim-vehicle-light-system-and-additional-lights",
-          "textRu": "Архивные законы CABA и Nación задают обязательные системы освещения автомобиля, включая giro/intermitentes de emergencia, а CABA допускает только ограниченные дополнительные огни для частного автомобиля: два faros rompeniebla и до двух elevated brake lights.",
+          "textRu": "Архивные законы CABA и Nación задают обязательные системы освещения автомобиля, включая giro/intermitentes de emergencia, а CABA допускает только ограниченные дополнительные огни для частного автомобиля: два faros rompeniebla и до двух faros elevados de freno.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-lights-system-and-additional-lights"
         },
@@ -1808,7 +1808,7 @@
         },
         {
           "id": "claim-adverse-visibility-light-use",
-          "textRu": "Когда естественного света недостаточно или условия видимости/движения этого требуют, используются luces bajas, de posición и de placa; rompeniebla lights ограничены собственным назначением.",
+          "textRu": "Когда естественного света недостаточно или условия видимости/движения этого требуют, используются luces bajas, de posición и de placa; luces rompeniebla ограничены собственным назначением.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-lights-adverse-visibility-use"
         },
@@ -1846,7 +1846,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "7a0372d20658bec75f70d2ddb298d42618d9e3f415d6ad0916c93fec5f62446d",
+        "sourceFingerprint": "be034b1319de2458fce80836374e07e212215cdad24056f47dbbd0ecfd2af87b",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -1868,7 +1868,7 @@
       "learningMaterialRu": [
         "Этот блок - неофициальная подсказка Cabadrive. В билетах про состояние автомобиля сначала разделите три темы: исправность машины, безопасное размещение груза/предметов и действия при остановке, поломке или заправке.",
         "База знакома и по РФ: frenos, dirección, suspensión, neumáticos, luces, cristales и retrovisores должны помогать держать control del vehículo и видеть дорогу. Плохие амортизаторы, закрытый обзор, грязные/неподходящие стекла или неправильная carga - это риск, а не мелкая формальность.",
-        "Carga/equipaje не должны мешать visibility, управлению, аэродинамике, luces или выходить за разрешенные пределы. Внутри habitáculo objetos sueltos тоже опасны: при резком маневре или siniestro они летят по инерции.",
+        "Carga/equipaje не должны мешать visibilidad, управлению, аэродинамике, luces или выходить за разрешенные пределы. Внутри habitáculo objetos sueltos тоже опасны: при резком маневре или siniestro они летят по инерции.",
         "Про aceite и varilla отвечайте буквально по картинке: varilla metálica проверяет nivel del aceite, а двигатель смазывается aceite. Это не курс механики, а распознавание простого экзаменационного образа.",
         "Про neumáticos в этих билетах нет универсального числа. Presión de los neumáticos берется из manual del usuario конкретного автомобиля, а проверка давления делается на neumáticos fríos.",
         "На заправке ловушка в том, что телефон не единственный риск. Ley 2148 прямо запрещает cargar combustible con luces encendidas y motor en marcha; похожий билет спрашивает ту же пару motor + luces.",
@@ -2215,7 +2215,7 @@
             {
               "answerId": "b-fallback-040-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: груз или любой предмет должен лежать так, чтобы не закрывать visibility, не ухудшать опасно condiciones aerodinámicas, не ocultar luces и не sobresalir за разрешенные пределы."
+              "explanationRu": "Verdadero: груз или любой предмет должен лежать так, чтобы не закрывать visibilidad, не ухудшать опасно condiciones aerodinámicas, не ocultar luces и не sobresalir за разрешенные пределы."
             },
             {
               "answerId": "b-fallback-040-a2",
@@ -2230,7 +2230,7 @@
             {
               "answerId": "b-fallback-101-a1",
               "verdict": "incorrect",
-              "explanationRu": "No неверно: передняя амортизация влияет на contact, stability и реакцию dirección; defect спереди нельзя игнорировать."
+              "explanationRu": "No неверно: передняя амортизация влияет на contacto, estabilidad и реакцию dirección; defecto спереди нельзя игнорировать."
             },
             {
               "answerId": "b-fallback-101-a2",
@@ -2303,7 +2303,7 @@
             {
               "answerId": "b-fallback-175-a3",
               "verdict": "incorrect",
-              "explanationRu": "То, что vehicle no está en movimiento, не устраняет риск, если он стоит на проезжей части. Риск в том, что внимание уходит от контекста."
+              "explanationRu": "То, что vehículo no está en movimiento, не устраняет риск, если он стоит на проезжей части. Риск в том, что внимание уходит от контекста."
             }
           ]
         },
@@ -2419,7 +2419,7 @@
             {
               "answerId": "b-fallback-276-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: apagar el motor, colocar balizas portátiles, оставить включенными luces de posición e intermitentes и llamar al número de asistencia. Так уменьшается пожарный риск и сохраняется visibility."
+              "explanationRu": "Правильно: apagar el motor, colocar balizas portátiles, оставить включенными luces de posición e intermitentes и llamar al número de asistencia. Так уменьшается пожарный риск и сохраняется visibilidad."
             }
           ]
         },
@@ -2480,17 +2480,17 @@
             {
               "answerId": "b-fallback-329-a1",
               "verdict": "incorrect",
-              "explanationRu": "Только visibility из салона наружу недостаточна. Билет спрашивает обо всех cristales и ожидает видимость в обе стороны."
+              "explanationRu": "Только visibilidad из салона наружу недостаточна. Билет спрашивает обо всех cristales и ожидает видимость в обе стороны."
             },
             {
               "answerId": "b-fallback-329-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: cristales должны обеспечивать visibility изнутри наружу и снаружи внутрь. Это совпадает с логикой CABA про vidrios de seguridad и контроль видимости."
+              "explanationRu": "Правильно: cristales должны обеспечивать visibilidad изнутри наружу и снаружи внутрь. Это совпадает с логикой CABA про vidrios de seguridad и контроль видимости."
             },
             {
               "answerId": "b-fallback-329-a3",
               "verdict": "incorrect",
-              "explanationRu": "Parabrisas критически важен, но в этом билете это не единственное стекло, связанное с visibility."
+              "explanationRu": "Parabrisas критически важен, но в этом билете это не единственное стекло, связанное с visibilidad."
             }
           ]
         },
@@ -2600,13 +2600,13 @@
       "claims": [
         {
           "id": "claim-vehicle-condition-minimum-safety-systems",
-          "textRu": "Архивные источники CABA и Nación поддерживают компактную рамку safety systems для этого блока: frenos, steering/dirección, suspension, tyres/neumáticos, lighting/luces, transparent glass/cristales и другие системы автомобиля должны поддерживать control, stability и visibility.",
+          "textRu": "Архивные источники CABA и Nación поддерживают компактную рамку sistemas de seguridad для этого блока: frenos, dirección, suspensión, neumáticos, iluminación/luces, cristales transparentes и другие системы автомобиля должны поддерживать control, estabilidad и visibilidad.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-condition-minimum-safety-systems"
         },
         {
           "id": "claim-load-visibility-aerodynamics-lights-limits",
-          "textRu": "Carga или любой перевозимый элемент не должны мешать visibility, опасно влиять на aerodynamics, закрывать lights/indicators, выходить за allowed limits или ухудшать vision/control водителя.",
+          "textRu": "Carga или любой перевозимый элемент не должны мешать visibilidad, опасно влиять на aerodinámica, закрывать luces/indicadores, выходить за límites permitidos или ухудшать visión/control водителя.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-condition-load-visibility-aerodynamics-lights-limits"
         },
@@ -2710,7 +2710,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "d6ded03576ad3328a702e0d699b7bb67a001635cfe87fdbe3af3d65060cbbfef",
+        "sourceFingerprint": "eefc50511da78dce3ed2b06b48c55b9677e3b8ae13a1c214806c2739a3929d8d",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -3062,7 +3062,7 @@
         },
         {
           "id": "claim-stop-line-before-crosswalk",
-          "textRu": "Línea de detención и H.5 senda peatonal объясняют экзаменационную реакцию “остановиться перед переходом”: stop line ставится перед и параллельно senda, а vehicles не должны detenerse/estacionar sobre ella.",
+          "textRu": "Línea de detención и H.5 senda peatonal объясняют экзаменационную реакцию “остановиться перед переходом”: линия остановки ставится перед и параллельно senda, а vehículos не должны detenerse/estacionar sobre ella.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-road-markings-stop-line-before-senda"
         },
@@ -3153,7 +3153,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "8acac7f652610900e599b3a9fe0cf148a26e3f235a1987dc727aa871f8e07b9f",
+        "sourceFingerprint": "949e3100ce6b6737dcffe277a833e85f949b2ca545fd0b89fdf9dda0c63c341e",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -3180,12 +3180,12 @@
         "Зеленое пересечение и зеленая горизонтальная разметка в этих билетах решаются узко: это cruce/punto de ciclovía o bicisenda, а не школьный переход, плохое освещение, железнодорожный переезд или чисто пешеходный переход. Не расширяйте это в общий официальный каталог зеленой разметки.",
         "Bicisenda, ciclovía и ciclocarril часто путают. В этих билетах bicisenda связана с vereda/aceras/espacios verdes, ciclovía - с calzada и отдельным движением, а на calle sin demarcación велосипедист держится не в центре, а cerca del borde derecho / evitando la zona central.",
         "Calle Prioridad Peatón, Intervención Peatonal и Calle con Bicisenda выглядят похоже, но ответы разные. Для `b-fallback-167` правильная картинка - Calle Prioridad Peatón; для `b-fallback-408` желтая зона называется Intervención Peatonal.",
-        "Вопросы рядом с парковкой оставлены узко: ochava нужна для обзора на esquina, yellow cordon разрешает detención, но не estacionamiento, а картинки с уклоном проверяют направление ruedas и передачу, не общее правило школьной зоны."
+        "Вопросы рядом с парковкой оставлены узко: ochava нужна для обзора на esquina, cordón amarillo разрешает detención, но не estacionamiento, а картинки с уклоном проверяют направление ruedas и передачу, не общее правило школьной зоны."
       ],
       "practicalReasoningRu": [
         "Пешеходные и школьные зоны делают конфликт предсказуемым: водитель заранее понимает, где ждать пешеходов, детей, велосипедный переход или место остановки перед senda.",
         "У школьной и пешеходной разметки часто похожая визуальная логика. Экзамен проверяет не “красивую картинку”, а точное назначение: школьное предупреждение, пешеходный переход, велосипедное пересечение, intervención или граница парковки.",
-        "Правило про ochava и запрет стоять на sendas/stop lines защищает обзор: пешеход, велосипедист и водитель должны увидеть друг друга до маневра, а не уже в конфликтной точке."
+        "Правило про ochava и запрет стоять на sendas/líneas de detención защищает обзор: пешеход, велосипедист и водитель должны увидеть друг друга до маневра, а не уже в конфликтной точке."
       ],
       "spanishTerms": [
         {
@@ -4089,7 +4089,7 @@
         },
         {
           "id": "claim-ochava-yellow-cordon-and-school-detention-boundaries",
-          "textRu": "Ley 2148 и Anexo L поддерживают границы парковки около ochava/esquina, запрет detenerse/estacionar на sendas или líneas de detención, yellow cordón как запрет estacionar и узкий школьный контекст ascenso/descenso.",
+          "textRu": "Ley 2148 и Anexo L поддерживают границы парковки около ochava/esquina, запрет detenerse/estacionar на sendas или líneas de detención, cordón amarillo как запрет estacionar и узкий школьный контекст ascenso/descenso.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-school-ochava-yellow-cordon-school-detention"
         }
@@ -5390,7 +5390,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "2f6d284bd7722362ab4e5347f65ac64c84b2a5fcc888806de0c98caaf43481cf",
+        "sourceFingerprint": "4f543c425f946253504be8ade79d1167f61fa75eef8f71a14dbb59f53286bb41",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -5648,7 +5648,7 @@
             {
               "answerId": "b-fallback-067-a2",
               "verdict": "correct",
-              "explanationRu": "Falso: illegal drugs запрещены в этой логике, но фраза про que las drogas legales nunca afectan negativamente тоже неверна."
+              "explanationRu": "Falso: drogas ilegales запрещены в этой логике, но фраза про que las drogas legales nunca afectan negativamente тоже неверна."
             }
           ]
         },
@@ -5805,7 +5805,7 @@
             {
               "answerId": "b-fallback-257-a2",
               "verdict": "incorrect",
-              "explanationRu": "No, solamente motora слишком узко: билет проверяет, что алкоголь влияет не только на motor capacity, но и на vision."
+              "explanationRu": "No, solamente motora слишком узко: билет проверяет, что алкоголь влияет не только на capacidad motora, но и на visión."
             },
             {
               "answerId": "b-fallback-257-a3",
@@ -5850,7 +5850,7 @@
             {
               "answerId": "b-fallback-286-a3",
               "verdict": "incorrect",
-              "explanationRu": "Descanso sí importa: билет прямо связывает falta de descanso с slower reaction, поэтому “no tiene nada que ver” неверно."
+              "explanationRu": "Descanso sí importa: билет прямо связывает falta de descanso с reacción más lenta, поэтому “no tiene nada que ver” неверно."
             }
           ]
         },
@@ -6054,7 +6054,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "a717730b0735396bca42f3722f42b8a26922644fab97ac30e199be3d7bbb17fc",
+        "sourceFingerprint": "7832aa82d4b8b1b5a1da96dde35ffd447669331ee40c9d3225cb7bc59bd2022e",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -6086,7 +6086,7 @@
       "practicalReasoningRu": [
         "Плохая погода съедает запас сразу с нескольких сторон: меньше сцепления, хуже видимость, длиннее торможение и ниже устойчивость. Чем раньше снижена скорость, тем спокойнее остается машина.",
         "У luces и balizas разные задачи. Фары и rompeniebla помогают видеть и быть видимым; balizas показывают остановку, аварийную ситуацию или нестандартный маневр. Как обычный режим движения в тумане они сбивают других.",
-        "Aquaplaning опасен тем, что steering и braking хуже передаются на дорогу. Меньшая скорость дает протектору больше времени вытеснить воду."
+        "Aquaplaning опасен тем, что dirección и frenado хуже передаются на дорогу. Меньшая скорость дает протектору больше времени вытеснить воду."
       ],
       "spanishTerms": [
         {
@@ -6428,7 +6428,7 @@
             {
               "answerId": "b-fallback-283-a3",
               "verdict": "incorrect",
-              "explanationRu": "Balizas добавлять не надо для обычного движения в тумане. Они предупреждают emergency/stopped/unusual maneuver, а не штатную fog circulation."
+              "explanationRu": "Balizas добавлять не надо для обычного движения в тумане. Они предупреждают emergencia, vehículo detenido или maniobra inusual, а не штатное движение с niebla."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b189.jpg"
@@ -6512,7 +6512,7 @@
             {
               "answerId": "b-fallback-335-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: когда hay agua en el camino, lowering speed helps avoid aquaplaning."
+              "explanationRu": "Правильно: когда hay agua en el camino, снижение скорости помогает избежать aquaplaning."
             }
           ]
         },
@@ -6582,7 +6582,7 @@
             {
               "answerId": "b-fallback-390-a2",
               "verdict": "incorrect",
-              "explanationRu": "Sólo por la noche неверно. Сниженная visibility днем тоже требует фар."
+              "explanationRu": "Sólo por la noche неверно. Сниженная visibilidad днем тоже требует фар."
             },
             {
               "answerId": "b-fallback-390-a3",
@@ -6690,13 +6690,13 @@
       "claims": [
         {
           "id": "claim-weather-precautionary-speed-and-control",
-          "textRu": "Ley 2148 и Ley 24.449 поддерживают velocidad precautoria: скорость должна адаптироваться к visibility, состоянию дороги, weather, traffic, состоянию водителя/автомобиля/груза и при этом сохранять полный контроль.",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают velocidad precautoria: скорость должна адаптироваться к visibilidad, состоянию дороги, clima, tránsito, состоянию водителя/автомобиля/груза и при этом сохранять полный контроль.",
           "requiresOfficialSource": true,
           "sourceTraceId": "adverse-weather-precautionary-speed-and-control"
         },
         {
           "id": "claim-weather-vehicle-safety-and-traction",
-          "textRu": "Ley 2148 поддерживает системы автомобиля, важные при плохой погоде: эффективные frenos, dirección, suspensión для adherencia/estabilidad, neumáticos, lights и очистку/обдув windshield.",
+          "textRu": "Ley 2148 поддерживает системы автомобиля, важные при плохой погоде: эффективные frenos, dirección, suspensión для adherencia/estabilidad, neumáticos, luces и очистку/обдув parabrisas.",
           "requiresOfficialSource": true,
           "sourceTraceId": "adverse-weather-vehicle-safety-and-traction"
         },
@@ -10431,7 +10431,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "f523e1bc7c500d561707a9f285d3e5b67d7ded084b41a29b801f59283534b506",
+        "sourceFingerprint": "e57e1af0c2e2fd876afb623112822007e75c05f6f32742029080a99b1587c0a4",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -11318,7 +11318,7 @@
         },
         {
           "id": "claim-rail-and-warning-sign-meanings",
-          "textRu": "Anexo L поддерживает значения assigned señales: cruce ferroviario, Cruz de San Andrés/más de dos vías, barreras ferroviales, panel de prevención curva и puente móvil.",
+          "textRu": "Anexo L поддерживает значения señales asignadas: cruce ferroviario, Cruz de San Andrés/más de dos vías, barreras ferroviales, panel de prevención curva и puente móvil.",
           "requiresOfficialSource": true,
           "sourceTraceId": "traffic-lights-rail-and-warning-sign-meanings"
         },
@@ -13412,7 +13412,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "e81d7f718c43844398cbd82250a7b6d98c8799b776924d0eda6b5d6de97ae64d",
+        "sourceFingerprint": "384712d699c2b8d3d6bd6a4440c3f2910840f5b9fb073fa9a3ff1793489d7270",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -13910,7 +13910,7 @@
             {
               "answerId": "b-fallback-199-a3",
               "verdict": "incorrect",
-              "explanationRu": "Разрешить пользоваться конкретным vehículo - не то же самое, что подписать authorization para obtener la licencia несовершеннолетнему."
+              "explanationRu": "Разрешить пользоваться конкретным vehículo - не то же самое, что подписать autorización para obtener la licencia несовершеннолетнему."
             }
           ]
         },
@@ -14410,7 +14410,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "144f7d4dd786e359e20d4ee7ea8be38808ecfba8788355fbd041be306248553b",
+        "sourceFingerprint": "483ac635feb02d3edc50114b1231d471598eb3873fac44d509316efa5ba61af4",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -14929,7 +14929,7 @@
         },
         {
           "id": "claim-beginner-and-alcohol-thresholds",
-          "textRu": "Conductor principiante в CABA сохраняет эту condición 2 años; alcohol thresholds Ley 2148 для assigned fallback context: automóvil común 0,5, motovehículo 0,2, principiante/passenger/minors/cargo 0,0.",
+          "textRu": "Conductor principiante в CABA сохраняет эту condición 2 años; пороги alcohol Ley 2148 для этого экзаменационного контекста: automóvil común 0,5, motovehículo 0,2, principiante/pasajeros/menores/carga 0,0.",
           "requiresOfficialSource": true,
           "sourceTraceId": "authorities-controls-beginner-and-alcohol-thresholds"
         },
@@ -14961,7 +14961,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "ae28d8daa6a3b5b3d5ba12a65a9cccf618f7df4e79d2a03ba62d71311723182b",
+        "sourceFingerprint": "6a508a46d8b7ee44a3d680c6193c3847a99f990a79a3cb7c89a634c797b7d22d",
         "basis": {
           "questionLevelCounts": {
             "green": 4,
@@ -15823,7 +15823,7 @@
         },
         {
           "id": "claim-passengers-beginner-removal-and-jurisdiction",
-          "textRu": "Нормы CABA подтверждают порог 12 лет для переднего сиденья, двухлетний статус beginner driver, возможное removal/retención автомобиля в перечисленных случаях и движение в CABA по местным и национальным правилам tránsito.",
+          "textRu": "Нормы CABA подтверждают порог 12 лет для переднего сиденья, двухлетний статус conductor principiante, возможную remoción/retención автомобиля в перечисленных случаях и движение в CABA по местным и национальным правилам tránsito.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safety-principles-passengers-beginner-removal-jurisdiction"
         },
@@ -17061,7 +17061,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "4dc524188e14f6cbe93b50f36b29cccd2880e75c152f4027a41f3a241810318d",
+        "sourceFingerprint": "3f814a030c0c36759f70fc770bc747e25f49337d260bc1d1537289103100b00c",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -17691,13 +17691,13 @@
         },
         {
           "id": "claim-isletas-channelizing-marks",
-          "textRu": "H.8 isletas/marcas canalizadoras no deben trasponerse ni circularse sobre ellas; they guide traffic laterally around obstacles or ingress/egress areas.",
+          "textRu": "H.8 isletas/marcas canalizadoras no deben trasponerse ni circularse sobre ellas; они направляют tránsito в сторону от препятствий или зон ingreso/egreso.",
           "requiresOfficialSource": true,
           "sourceTraceId": "lane-channelization-isletas-channelizing-marks"
         },
         {
           "id": "claim-r10-temporary-channelization-and-yellow-cordon",
-          "textRu": "R.10 требует сохранять тот же carril в зоне запрета смены полосы; временные orange devices направляют поток в зоне работ/опасности; H.15 yellow cordon запрещает parking, но допускает ограниченные detenciones.",
+          "textRu": "R.10 требует сохранять тот же carril в зоне запрета смены полосы; временные dispositivos anaranjados направляют поток в зоне работ/опасности; H.15 cordón amarillo запрещает estacionamiento, но допускает ограниченные detenciones.",
           "requiresOfficialSource": true,
           "sourceTraceId": "lane-channelization-r10-temporary-and-cordon"
         }
@@ -18071,7 +18071,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "f24d34416716675889f07da0c8473fefe3b21cad2c15eb03d920c3fa1032a323",
+        "sourceFingerprint": "ef40f142e926808ea1adbee23143014d58e9e1ef7a608b538a282eeac416e65e",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -18347,7 +18347,7 @@
         },
         {
           "id": "claim-exclusive-lane-reserved-use",
-          "textRu": "Carril exclusivo обозначается вертикальной/горизонтальной сигнализацией и резервирует одну или несколько полос для определенного типа vehicles; движение по carril exclusivo del Metrobús без authorization запрещено.",
+          "textRu": "Carril exclusivo обозначается вертикальной/горизонтальной сигнализацией и резервирует одну или несколько полос для определенного типа vehículos; движение по carril exclusivo del Metrobús без autorización запрещено.",
           "requiresOfficialSource": true,
           "sourceTraceId": "public-transport-exclusive-lane-reserved-use"
         },
@@ -19162,7 +19162,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "2d8b1b6add94db940eaf8081c597242211f817322c83aa3c902030158dd7a054",
+        "sourceFingerprint": "f990cdf44b19d0b97b9fa5db0f88ce9282db5ac05925147eeefc5d9050e5ded5",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -19936,7 +19936,7 @@
       "claims": [
         {
           "id": "claim-bike-definitions-and-spaces",
-          "textRu": "Ley 2148 определяет bicicleta, bicisenda, ciclocarril, ciclorrodado, ciclorrodado con pedaleo asistido, ciclovía и DMP; Anexo L поддерживает широкий контекст crossing/sign/marking для велосипедистов, но не доказывает каждую точную подпись на fallback-изображениях.",
+          "textRu": "Ley 2148 определяет bicicleta, bicisenda, ciclocarril, ciclorrodado, ciclorrodado con pedaleo asistido, ciclovía и DMP; Anexo L поддерживает широкий контекст cruces, señales и demarcación для велосипедистов, но не доказывает каждую точную подпись на изображениях старых билетов.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-definitions-and-spaces"
         },
@@ -19954,19 +19954,19 @@
         },
         {
           "id": "claim-bike-safety-load-and-distraction",
-          "textRu": "Ley 2148 и Ley 24.449 поддерживают safety framing про устойчивость carga, видимость/контроль и запрет auriculares или sistemas de comunicación continua manual; точная формулировка про одежду остается wording конкретного fallback-билета.",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают рамку seguridad про устойчивость carga, видимость/контроль и запрет auriculares или sistemas de comunicación continua manual; точная формулировка про одежду остается особенностью конкретного старого билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-safety-load-distraction"
         },
         {
           "id": "claim-bike-parking-and-curb-color",
-          "textRu": "Ley 2148 поддерживает orange curbs для парковки ciclorodado/motovehicle, designed parking spaces на vereda/free spaces для ciclorodados и DMP, а также городскую сеть estacionamiento; точная обязанность playa de estacionamiento из b-fallback-228 остается особенностью конкретного билета.",
+          "textRu": "Ley 2148 поддерживает cordones anaranjados для парковки ciclorodados/motovehículos, espacios diseñados на vereda/espacios libres для ciclorodados и DMP, а также городскую сеть estacionamiento; точная обязанность playa de estacionamiento из b-fallback-228 остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-parking-curb-color"
         },
         {
           "id": "claim-bike-sustainable-risk-framing",
-          "textRu": "Ley 2148 поддерживает framing про transporte público de bicicletas, safe bicycle-lane network и education, который объясняет movilidad sustentable и ловушки про riesgo del tránsito motorizado, не превращая b-fallback-352 в широкое статистическое утверждение.",
+          "textRu": "Ley 2148 поддерживает рамку про transporte público de bicicletas, red segura de ciclovías/bicisendas и educación, которая объясняет movilidad sustentable и ловушки про riesgo del tránsito motorizado, не превращая b-fallback-352 в широкое статистическое утверждение.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-sustainable-risk-framing"
         }
@@ -20061,7 +20061,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "50a96df15537a524e96fc07da5b014f22c780312e104fbddf26481de43ac72a0",
+        "sourceFingerprint": "e2f657d9fb0f5e3442de38e527761cd4001ca1dad49cde4982ca998e1087bdad",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -20265,7 +20265,7 @@
             {
               "answerId": "b-fallback-058-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно по этому старому билету: pasajero разрешен, если он расположен en un asiento adicional detrás del conductor. Здесь visibility - ловушка, а не полный критерий."
+              "explanationRu": "Правильно по этому старому билету: pasajero разрешен, если он расположен en un asiento adicional detrás del conductor. Здесь visibilidad - ловушка, а не полный критерий."
             },
             {
               "answerId": "b-fallback-058-a3",
@@ -21004,7 +21004,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "b0fdffe93fd4749704d4057020be3a7ec7883e842d52b9f70e17ec89600ac0d5",
+        "sourceFingerprint": "ed1b53cc71c6d46c3cdb6d2820666d4c0b253fc391c4242030450c7512f899a5",
         "basis": {
           "questionLevelCounts": {
             "green": 3,
@@ -21673,13 +21673,13 @@
         },
         {
           "id": "claim-pas-and-scene-protection",
-          "textRu": "Рекомендуемая первая реакция - Proteger - Alertar - Socorrer: защитить и обозначить место, сообщить emergency services точное место/детали/пострадавших, затем помогать раненым, не перемещая их, кроме ситуации непосредственного grave risk.",
+          "textRu": "Рекомендуемая первая реакция - Proteger - Alertar - Socorrer: защитить и обозначить место, сообщить servicios de emergencia точное место/детали/пострадавших, затем помогать раненым, не перемещая их, кроме ситуации непосредственного riesgo grave.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-pas-and-scene-protection"
         },
         {
           "id": "claim-scene-signaling-balizas",
-          "textRu": "Для immobilized vehicle after a siniestro используются balizas/reflective warning и portable warning devices со стороны, откуда приближаются vehicles; дистанция связана со скоростью и дорожным контекстом.",
+          "textRu": "Для vehículo inmovilizado после siniestro используются balizas/advertencia reflectiva и dispositivos portátiles de advertencia со стороны, откуда приближаются vehículos; дистанция связана со скоростью и дорожным контекстом.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-scene-signaling-balizas"
         },
@@ -22087,7 +22087,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "9c13a8cab2e62a52d6934206b385243c0f776586a139c6408dea2c69ae2fd422",
+        "sourceFingerprint": "d1f5637e5d414b92563f6a895bdbeb45432d7affd279bc3f24f918faba350b98",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -22593,7 +22593,7 @@
       "claims": [
         {
           "id": "claim-pedestrian-crossing-priority",
-          "textRu": "Водитель обязан ceder el paso пешеходам и людям в silla de ruedas, которые пересекают calzada по senda peatonal или в предназначенной для этого зоне; H.5 описывает senda peatonal как разрешенную зону перехода с приоритетом пешеходов перед vehicles, кроме случаев semáforo/autoridad.",
+          "textRu": "Водитель обязан ceder el paso пешеходам и людям в silla de ruedas, которые пересекают calzada по senda peatonal или в предназначенной для этого зоне; H.5 описывает senda peatonal как разрешенную зону перехода с приоритетом пешеходов перед vehículos, кроме случаев semáforo/autoridad.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-crossings-priority-senda-priority"
         },
@@ -22611,13 +22611,13 @@
         },
         {
           "id": "claim-pedestrian-warning-and-regulatory-signs",
-          "textRu": "Anexo L поддерживает различение P.5 Cruce de peatones как señal preventiva de proximidad и R.24 как regulatory instruction для пешехода; точная формулировка стороны в `b-fallback-399` остается особенностью конкретного билета.",
+          "textRu": "Anexo L поддерживает различение P.5 Cruce de peatones как señal preventiva de proximidad и R.24 как instrucción reglamentaria для пешехода; точная формулировка стороны в `b-fallback-399` остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-crossings-pedestrian-signs"
         },
         {
           "id": "claim-no-stopping-on-crosswalk-stop-lines",
-          "textRu": "CABA and Anexo L prohibit estacionar/detenerse on horizontal demarcation of sendas peatonales or líneas de pare; H.5 also says vehicles must not park or stop on the crosswalk even due to traffic circumstances.",
+          "textRu": "CABA и Anexo L запрещают estacionar/detenerse на demarcación horizontal sendas peatonales или líneas de pare; H.5 также говорит, что vehículos не должны estacionar или detenerse на senda peatonal даже из-за обстоятельств tránsito.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-crossings-no-stopping-on-markings"
         }
@@ -22688,7 +22688,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "6c0fe2461d1c45960d1f635a182ab5586c90cc3a79b4ca30c56a06a2f4887e1b",
+        "sourceFingerprint": "578b52d74c3e612f74d7ac6f153e320362d325fc965352bab31816b726522d6d",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -23244,7 +23244,7 @@
         },
         {
           "id": "claim-direction-and-curve-signs",
-          "textRu": "Anexo L поддерживает различение giro obligatorio, sentido/direcciones permitidas, curva cerrada, calzada dividida, comienzo de doble mano/sentido único and desvío/cambio de sentido entries used by this topic.",
+          "textRu": "Anexo L поддерживает различение giro obligatorio, sentido/direcciones permitidas, curva cerrada, calzada dividida, comienzo de doble mano/sentido único и entradas de desvío/cambio de sentido, которые использует эта тема.",
           "requiresOfficialSource": true,
           "sourceTraceId": "turns-direction-and-curve-signs"
         },

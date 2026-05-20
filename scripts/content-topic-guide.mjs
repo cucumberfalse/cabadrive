@@ -88,6 +88,22 @@ const PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_PATTERNS = [
   /\bfollowing vehicle should line up\b/i,
   /\bdouble fila\b/i
 ];
+const PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_ENGLISH_PROSE_PATTERNS = [
+  /\b(?:and|they|them|their|must|should|could|would|because|where|when|while)\b/i,
+  /\b(?:on the|of the|due to|by this|used by|entries used|at least)\b/i,
+  /\b(?:red|yellow)\s+cord[oó]n\b/i,
+  /\b(?:traffic|lowering|helps|avoid|visibility|weather|windshield|lights?|indicators?)\b/i,
+  /\b(?:allowed limits?|aerodynamics|illegal drugs?|slower reaction|motor capacity)\b/i,
+  /\b(?:road surface|support adapting|pressure depends|manual signals|stopped vehicle|public road)\b/i,
+  /\b(?:assigned|beginner driver|removal|guidance|image tickets|progressive power)\b/i,
+  /\b(?:parking|parking network|motorized|breakdowns|animals|road incidents|medical emergencies|police|routing)\b/i,
+  /\b(?:human-error|damage|repair|indemnification|vehicle-only|side wording|route-curve)\b/i,
+  /\b(?:left lane|overtake|occupants|provisional|speed\/severity|safety systems?|markings)\b/i,
+  /\b(?:wording|vehicles?|authorization|steering|braking|contact|stability|defect)\b/i,
+  /\b(?:orange devices|designed parking spaces|free spaces|safe bicycle-lane|education)\b/i,
+  /\b(?:reflective warning|portable warning devices|emergency services|grave risk)\b/i,
+  /\b(?:regulatory instruction|crosswalk|stop line|fog circulation|elevated brake lights|rompeniebla lights)\b/i
+];
 
 function isPlainObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -167,6 +183,10 @@ function shouldCheckPublishedRussianProse(path) {
   return key === "disclaimer" || (typeof key === "string" && key.endsWith("Ru"));
 }
 
+function codeSpansRemoved(value) {
+  return value.replace(/`[^`]*`/g, "");
+}
+
 function validatePublishedRussianProse(errors, value, path = []) {
   if (Array.isArray(value)) {
     value.forEach((item, index) => validatePublishedRussianProse(errors, item, [...path, index]));
@@ -179,6 +199,15 @@ function validatePublishedRussianProse(errors, value, path = []) {
   if (!isNonEmptyString(value) || !shouldCheckPublishedRussianProse(path)) return;
   for (const pattern of PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_PATTERNS) {
     const match = value.match(pattern);
+    if (!match) continue;
+    errors.push(
+      `${path.join(".")}: published topic guide Russian learner prose must not contain English scaffold residue "${match[0]}".`
+    );
+    return;
+  }
+  const proseValue = codeSpansRemoved(value);
+  for (const pattern of PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_ENGLISH_PROSE_PATTERNS) {
+    const match = proseValue.match(pattern);
     if (!match) continue;
     errors.push(
       `${path.join(".")}: published topic guide Russian learner prose must not contain English scaffold residue "${match[0]}".`

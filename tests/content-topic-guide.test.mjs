@@ -416,6 +416,57 @@ test("published mode rejects English scaffold residue inside Russian prose array
   );
 });
 
+test("published mode rejects review-cited English scaffold classes in Russian learner prose", () => {
+  const cases = [
+    {
+      mutate(topic) {
+        topic.learningMaterialRu[0] = "Правильно: lowering speed helps avoid aquaplaning.";
+      },
+      expected:
+        'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "lowering".'
+    },
+    {
+      mutate(topic) {
+        topic.practicalReasoningRu = ["H.8 isletas: they guide traffic around obstacles."];
+      },
+      expected:
+        'topics.0.practicalReasoningRu.0: published topic guide Russian learner prose must not contain English scaffold residue "they".'
+    },
+    {
+      mutate(topic) {
+        topic.summaryRu = "Red cordón; yellow cordón.";
+      },
+      expected:
+        'topics.0.summaryRu: published topic guide Russian learner prose must not contain English scaffold residue "Red cordón".'
+    },
+    {
+      mutate(topic) {
+        topic.claims = [
+          {
+            id: "claim-crosswalk",
+            textRu:
+              "CABA and Anexo L prohibit estacionar/detenerse on horizontal demarcation of sendas peatonales.",
+            requiresOfficialSource: false
+          }
+        ];
+      },
+      expected:
+        'topics.0.claims.0.textRu: published topic guide Russian learner prose must not contain English scaffold residue "and".'
+    }
+  ];
+
+  for (const testCase of cases) {
+    const guideContent = publishedGuide();
+    testCase.mutate(guideContent.topics[0]);
+    const errors = validate({
+      guideContent,
+      coverageManifest: publishedCoverage(),
+      trace: sourceTrace({ status: "published" })
+    });
+    assert(errors.includes(testCase.expected), `expected error ${testCase.expected}; got ${errors.join("\n")}`);
+  }
+});
+
 test("rejects missing current question IDs even in draft planned coverage", () => {
   const coverageManifest = coverage({
     topics: [{ topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" }],
