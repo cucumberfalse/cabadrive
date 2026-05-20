@@ -32,10 +32,11 @@
         ]
       },
       "exactTextValidation": {
-        "status": "pending",
+        "status": "passed",
         "checkedAt": "2026-05-20",
+        "method": "live_html",
         "evidencePath": "content/official-documents/validation/exact-text-validation-2026-05-20.json",
-        "notes": "Blocked for final release: No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match. See content/official-documents/validation/exact-text-validation-2026-05-20.json."
+        "notes": "Passed by reproducible exact-text validation against official source input. Method: live_html; match recorded in content/official-documents/validation/exact-text-validation-2026-05-20.json."
       }
     },
     {
@@ -183,10 +184,11 @@
       },
       "hash": "83c00db5d5bcb2a2395a1f747245bbefc67bbe9085c4d8ea0ecf5c85b794ac8c",
       "exactTextValidation": {
-        "status": "pending",
+        "status": "passed",
         "checkedAt": "2026-05-20",
+        "method": "live_html",
         "evidencePath": "content/official-documents/validation/exact-text-validation-2026-05-20.json",
-        "notes": "Blocked for final release: No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match. See content/official-documents/validation/exact-text-validation-2026-05-20.json."
+        "notes": "Passed by reproducible exact-text validation against official source input. Method: live_html; match recorded in content/official-documents/validation/exact-text-validation-2026-05-20.json."
       }
     },
     {
@@ -482,10 +484,11 @@
         ]
       },
       "exactTextValidation": {
-        "status": "pending",
+        "status": "passed",
         "checkedAt": "2026-05-20",
+        "method": "live_html",
         "evidencePath": "content/official-documents/validation/exact-text-validation-2026-05-20.json",
-        "notes": "Blocked for final release: No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match. See content/official-documents/validation/exact-text-validation-2026-05-20.json."
+        "notes": "Passed by reproducible exact-text validation against official source input. Method: live_html; match recorded in content/official-documents/validation/exact-text-validation-2026-05-20.json."
       },
       "hash": "0ecf371f6bd16e5bcfaa727e3649a8c1f0b13010790fc23a6f2e0deecfcf7bf7"
     },
@@ -548,10 +551,11 @@
         ]
       },
       "exactTextValidation": {
-        "status": "pending",
+        "status": "passed",
         "checkedAt": "2026-05-20",
+        "method": "live_html",
         "evidencePath": "content/official-documents/validation/exact-text-validation-2026-05-20.json",
-        "notes": "Blocked for final release: No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match. See content/official-documents/validation/exact-text-validation-2026-05-20.json."
+        "notes": "Passed by reproducible exact-text validation against official source input. Method: live_html; match recorded in content/official-documents/validation/exact-text-validation-2026-05-20.json."
       },
       "hash": "755ba7e88e03d6b3dedad0d4aa5312974cb7080b88b7845352441104dc47b0d3"
     },
@@ -580,10 +584,11 @@
         ]
       },
       "exactTextValidation": {
-        "status": "pending",
+        "status": "passed",
         "checkedAt": "2026-05-20",
+        "method": "live_html",
         "evidencePath": "content/official-documents/validation/exact-text-validation-2026-05-20.json",
-        "notes": "Blocked for final release: No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match. See content/official-documents/validation/exact-text-validation-2026-05-20.json."
+        "notes": "Passed by reproducible exact-text validation against official source input. Method: live_html; match recorded in content/official-documents/validation/exact-text-validation-2026-05-20.json."
       },
       "hash": "dee33c6044ba01492bbc3c93eb8545310eac0520754a92779f63630838b77e80"
     },

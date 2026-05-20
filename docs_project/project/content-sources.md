@@ -46,7 +46,7 @@ When materially changing ticket text, answer IDs/text, correct answer, image pat
 
 When deleting a ticket, remove or refresh linked translations, explanations, question image usages, overlay/relevance mappings, translation evidence, explanation evidence, image usage evidence, generated indexes, and validation records. Remove shared image metadata only when no remaining question usage references that image; if another ticket still uses the image, keep the shared metadata and remove only the deleted ticket's usage/evidence.
 
-The current archive stores one Markdown document for each manifest entry under `content/official-documents/documents/`, raw/original evidence under `content/official-documents/originals/` where required, SHA-256 metadata for the Markdown, and currentness/effective-status evidence. Currentness validation is recorded as passed for all 19 entries, but `exactTextValidation.status` remains pending for all 19 entries until a dedicated whole-archive exact-text validation slice completes.
+The current archive stores one Markdown document for each manifest entry under `content/official-documents/documents/`, raw/original evidence under `content/official-documents/originals/` where required, SHA-256 metadata for the Markdown, and currentness/effective-status evidence. Currentness validation and whole-archive exact-text validation are recorded as passed for all 19 entries.
 
 Each future manifest entry must record:
 
@@ -81,7 +81,7 @@ Feature `019-primary-sources-section` adds a learner-facing `Источники`
 
 The original Spanish archive remains the official/verbatim source layer. Russian translation, simplification, summaries, and learner notes are unofficial support layers and must be stored and validated outside `content/official-documents/`.
 
-Release status: the reader UI and full learner corpus are implemented, but the final finished-section release gate remains open while every manifest entry has `exactTextValidation.status: "pending"`. Currentness validation is passed for all 19 entries.
+Release status: the reader UI, full learner corpus, currentness gate, and exact-text gate are implemented and passed for all 19 manifest entries. Remaining merge readiness still depends on the active PR checks, review, conflict state, and human merge authority.
 
 ## Currentness Rules
 
@@ -99,7 +99,7 @@ Allowed `currentness.validationStatus` and `exactTextValidation.status` values a
 
 `scripts/validate-content.mjs` integrates the official-documents manifest validator with real local file existence and SHA-256 checks. An empty draft manifest passes validation. Entries, when present, must have required metadata, local paths inside the archive section, SHA-256 hash metadata that matches the local archived Markdown file, conversion notes, currentness fields, exact-text validation status, and raw/original evidence for lossy formats.
 
-The final topic-study-guide release and the final primary-source reader release still require later dedicated whole-archive exact-text and currentness validation evidence. The current manifest records currentness validation as passed, but exact-text validation remains pending and must not be described as release-ready until the dedicated validation is performed or an explicit Architect/user disposition narrows the release status.
+The final topic-study-guide release and the final primary-source reader release require dedicated whole-archive exact-text and currentness validation evidence. The current manifest records both currentness validation and exact-text validation as passed for all 19 entries; future manifest additions or source changes must refresh that evidence before a finished release claim.
 
 ## Related Guide Files
 

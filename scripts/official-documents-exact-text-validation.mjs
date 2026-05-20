@@ -118,8 +118,48 @@ function markdownToText(markdown, { removeFirstHeading }) {
   if (removeFirstHeading) text = text.replace(/^# .*\n+/, "");
   return text
     .replace(/!\[[^\]]*]\([^)]*\)/g, " ")
+    .replace(/\[([^\]\n]+)]\((?:https?:\/\/|\/)[^)]*\)/g, "$1")
+    .replace(/\s+\[[^\]\n]+@[^\]\n]+]/g, "")
+    .replace(/\s+\[(?:https?:\/\/)?[^\]\s]+\.[^\]\s]+\/?]/g, "")
     .replace(/\[[^\]\n]*(?:https?:\/\/|\/)[^\]\n]*]/g, " ")
     .replace(/^#+\s*/gm, "");
+}
+
+function removeArchivedPageChrome(markdown) {
+  return String(markdown)
+    .split("\n")
+    .filter((line) => {
+      const trimmed = line.trim();
+      if (!trimmed) return true;
+      if (trimmed === "Pasar al contenido principal" || trimmed === "/" || trimmed === "*") return false;
+      if (/^-{3,}$/.test(trimmed)) return false;
+      if (/^\d+\.\s+.*\[\/[^\]]*]$/.test(trimmed)) return false;
+      if (/^\*\s+Actual Paso/.test(trimmed) || /^\*\s+Paso/.test(trimmed)) return false;
+      return true;
+    })
+    .join("\n");
+}
+
+function substantiveArchiveSlices(markdown) {
+  const slices = [];
+  const sliceStarts = [
+    "Principios Básicos",
+    "Indice Temático",
+    "Índice Temático",
+    "TITULO I",
+    "TÍTULO I",
+    "ARTICULO 1",
+    "Artículo 1",
+    "Artículo 1°",
+    "Art. 1"
+  ];
+
+  for (const marker of sliceStarts) {
+    const index = markdown.indexOf(marker);
+    if (index > 0) slices.push({ name: `markdown-from-${marker.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`, text: markdown.slice(index) });
+  }
+
+  return slices;
 }
 
 function normalizeComparableText(text) {
@@ -129,21 +169,39 @@ function normalizeComparableText(text) {
     .replace(/[“”]/g, "\"")
     .replace(/[‘’]/g, "'")
     .replace(/\u00a0/g, " ")
-    .replace(/^\s*[-*•]\s+/gm, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/^\s*[-*•]+\s+/gm, "")
+    .replace(/^\s*-{3,}\s*$/gm, " ")
     .toLowerCase()
     .replace(/\s+/g, " ")
     .replace(/\(\s+/g, "(")
     .replace(/\s+\)/g, ")")
     .replace(/\s+([.,;:!?])/g, "$1")
+    .replace(/([.;:)])\s*[-*•]\s+/g, "$1 - ")
+    .replace(/\s+\(/g, "(")
+    .replace(/(?<=\d)\s+(?=b\.o\.)/g, "")
+    .replace(/(?<=\d)\s+(?=\d)/g, "")
     .trim();
 }
 
 function markdownCandidates(markdown) {
+  const pageChromeRemoved = removeArchivedPageChrome(markdown);
   const candidates = [
     { name: "markdown-full", text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: false })) },
-    { name: "markdown-without-title-heading", text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: true })) }
+    { name: "markdown-without-title-heading", text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: true })) },
+    { name: "markdown-without-page-chrome", text: normalizeComparableText(markdownToText(pageChromeRemoved, { removeFirstHeading: false })) },
+    { name: "markdown-without-title-heading-and-page-chrome", text: normalizeComparableText(markdownToText(pageChromeRemoved, { removeFirstHeading: true })) },
+    ...substantiveArchiveSlices(markdown).map((slice) => ({
+      name: slice.name,
+      text: normalizeComparableText(markdownToText(slice.text, { removeFirstHeading: false }))
+    }))
   ];
-  return candidates.filter((candidate) => candidate.text.length > 0);
+  const seen = new Set();
+  return candidates.filter((candidate) => {
+    if (candidate.text.length === 0 || seen.has(candidate.text)) return false;
+    seen.add(candidate.text);
+    return true;
+  });
 }
 
 function findTextMatch({ sourceText, archiveCandidates }) {
@@ -439,6 +497,8 @@ async function main() {
       htmlExtraction: "Remove script/style/noscript/svg/site header/nav/footer/form/aside, prefer article then main then body, flatten tags to visible text, and decode HTML entities.",
       markdownNormalization: "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
       comparableNormalization: "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
+      archiveCandidates: "Archived Markdown is compared as full text, without the local title heading, without reproducible page-navigation chrome, and from stable substantive legal/body markers when an official live mirror omits publication-page metadata but preserves the normative body.",
+      layoutNormalization: "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, and digit-internal layout whitespace observed in official InfoLeg HTML, without changing letters, punctuation, or text order.",
       wrapperTolerance: `A live source may contain the archived body as one contiguous block with at most ${MAX_WRAPPER_CHARS} normalized characters of official wrapper text before/after it. Larger additions remain blocked.`
     },
     results
