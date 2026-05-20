@@ -163,3 +163,20 @@ Exhaustive PDF extraction, ticket-by-ticket comparison, currentness/legal valida
 - Review-fix fit: passed. Committed candidate-disposition evidence now uses candidate IDs, source/page metadata, match/disposition metadata, existing IDs, counts, answer labels/counts, and SHA-256 fingerprints instead of verbatim ticket question/answer/correct-answer text from user-supplied PDFs. Committed feature memory/evidence uses stable logical identifiers such as `<worktree>`, `<user-downloads>/...`, and `<codex-runtime>/...` rather than machine-specific absolute paths.
 - Remaining user-intent work intentionally deferred by Architect disposition: process-guide refresh remains the recommended next separate slice, using `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model with every retained acquisition/renewal claim independently verified against current official GCBA/ANSV sources. Later ticket work, if assigned, should start with the 9 ambiguous `categoriab.pdf` candidates and require full currentness/support/image evidence before any import.
 - Not reopened for this PR: no Analyst gap found in the first evidence/intake slice against the recorded acceptance expectations, review-fix requirements, and Architect dispositions for effective content head `a0f91af32d10f94f9a6417a49944a327b5b831cf`.
+
+## Final Analyst Validation Notes
+
+- Analyst validation pass: passed
+- Analyst return count: 0
+- Final Analyst validation completed at: 2026-05-20T20:35:13-03:00
+- Analyst validated effective content head: 4b051ec09153d0ac79cdf9b174ba3452f0c04d34
+- Customer intent check: this Slice 1 evidence/intake PR fits the user intent by safely inventorying all seven supplied PDFs, comparing ticket candidates where feasible, importing zero unsupported tickets, and deferring process-guide and ticket-import work as Architect-scoped future slices.
+- Gaps, if any: none
+- Architect disposition routing: not applicable; no Analyst final-validation gap requires Architect disposition.
+- Analyst limit escalation: none
+- Analyst validation evidence: final Architect validation for effective content head `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` is recorded in `specs/025-source-material-refresh/tasks.md` before this Analyst validation.
+- Analyst validation evidence: PR #167 is validated only as Slice 1 evidence/intake; it records PDF inventory, extraction feasibility, ticket-candidate comparison and dispositions, and follow-up recommendations without production content changes.
+- Analyst validation evidence: evidence records all seven supplied PDFs as inventoried, 642 structured Spanish ticket candidates compared/dispositioned, 0 accepted-current imports, and no new ticket content imported.
+- Analyst validation evidence: review feedback about committed `firstPageTextSample` evidence was addressed at the effective content head, and the latest Codex review thread was reported resolved as outdated/fixed.
+- Analyst validation evidence: Orchestrator-provided check context for `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` is green for baseline-checks, docker-validation, guard/PR Guard, AI Review, and OSV Scan.
+- Analyst validation evidence: local review-fix verification was reported passed for sanitation `rg` checks, `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and `pnpm run validate:content`.
