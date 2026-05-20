@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+  "entries": [
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--vehiculos-001",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--vehiculos-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--vehiculos-002",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--vehiculos-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--en-esta-pagina-003",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--en-esta-pagina-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--cedulas-004",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--cedulas-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--tu-cedula-automotor-digital-005",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--tu-cedula-automotor-digital-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--titularidad-y-dominio-006",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--titularidad-y-dominio-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--compra-venta-007",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--compra-venta-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--discapacidad-008",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--discapacidad-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--cambios-en-el-vehiculo-009",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--cambios-en-el-vehiculo-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--robo-010",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--robo-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--seguros-011",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--seguros-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--poliza-de-seguro-digital-012",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--poliza-de-seguro-digital-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "argentina-vehiculos-automotor-cedulas--consultas-013",
+      "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+      "chunkId": "argentina-vehiculos-automotor-cedulas--consultas-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

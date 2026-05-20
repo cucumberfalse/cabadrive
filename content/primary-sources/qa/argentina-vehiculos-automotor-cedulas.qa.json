@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+  "document": {
+    "officialDocumentId": "argentina-vehiculos-automotor-cedulas",
+    "chunks": [
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--vehiculos-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-8, coverage fingerprint sha256:ac6084d46bb023ef74649f4bd4d5b663e95944fa9a099a0bc800ddd1b32552ca, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 1-8, the full Russian translation, coverage fingerprint sha256:ac6084d46bb023ef74649f4bd4d5b663e95944fa9a099a0bc800ddd1b32552ca, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--vehiculos-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 9-25, coverage fingerprint sha256:d2436a05d3c638290868b8e28897772acd678ade59e09ef3b5621f1b5ba2800d, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 9-25, the full Russian translation, coverage fingerprint sha256:d2436a05d3c638290868b8e28897772acd678ade59e09ef3b5621f1b5ba2800d, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--en-esta-pagina-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 26-43, coverage fingerprint sha256:9d6de100d5b10cce1b2b580c027e217409ece68744854006be3555e5f039578a, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 26-43, the full Russian translation, coverage fingerprint sha256:9d6de100d5b10cce1b2b580c027e217409ece68744854006be3555e5f039578a, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--cedulas-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 44-47, coverage fingerprint sha256:20beeda8b8a65290191e615106ec76bebf9a213ea292d71bd2e73b280ea4a7b8, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 44-47, the full Russian translation, coverage fingerprint sha256:20beeda8b8a65290191e615106ec76bebf9a213ea292d71bd2e73b280ea4a7b8, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--tu-cedula-automotor-digital-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 48-64, coverage fingerprint sha256:9811669b7b4fbf2659e9906d2dd89535684c667d89bab45afc55aad43fc842be, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 48-64, the full Russian translation, coverage fingerprint sha256:9811669b7b4fbf2659e9906d2dd89535684c667d89bab45afc55aad43fc842be, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--titularidad-y-dominio-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 65-92, coverage fingerprint sha256:eeaf542ff6b52bd61e82f27a1e8120c980f0483b788cf56d286465101802f0ca, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 65-92, the full Russian translation, coverage fingerprint sha256:eeaf542ff6b52bd61e82f27a1e8120c980f0483b788cf56d286465101802f0ca, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--compra-venta-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 93-108, coverage fingerprint sha256:56e38ec5084786c3ad2f55f3e549f151d6e2e0888b544a9605362c0056e3b39b, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 93-108, the full Russian translation, coverage fingerprint sha256:56e38ec5084786c3ad2f55f3e549f151d6e2e0888b544a9605362c0056e3b39b, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--discapacidad-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 109-122, coverage fingerprint sha256:e2b79cb17d69985600729cb2d96c1d3ac626ea9c6bfa1e73363e0e6dbe8dc0ae, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 109-122, the full Russian translation, coverage fingerprint sha256:e2b79cb17d69985600729cb2d96c1d3ac626ea9c6bfa1e73363e0e6dbe8dc0ae, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--cambios-en-el-vehiculo-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 123-132, coverage fingerprint sha256:6740ac6fa4a4fd317cd46ae0e34c31c00248831d4b383fa1a622f4d12bacc406, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 123-132, the full Russian translation, coverage fingerprint sha256:6740ac6fa4a4fd317cd46ae0e34c31c00248831d4b383fa1a622f4d12bacc406, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--robo-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 133-142, coverage fingerprint sha256:1c9418ef9b82e66436f900560c5ff4a15d32d74a638ebac9f1755a6ad4833a14, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 133-142, the full Russian translation, coverage fingerprint sha256:1c9418ef9b82e66436f900560c5ff4a15d32d74a638ebac9f1755a6ad4833a14, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--seguros-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 143-152, coverage fingerprint sha256:4461230b88f173ca76ba1cb550e1e1710550d7668f0aa6bd71aafd13913d7f50, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 143-152, the full Russian translation, coverage fingerprint sha256:4461230b88f173ca76ba1cb550e1e1710550d7668f0aa6bd71aafd13913d7f50, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--poliza-de-seguro-digital-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 153-158, coverage fingerprint sha256:b6955ff664a72ddd53ca5075b8bd06ba21957433ae3a95ed75699db1f4499b49, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 153-158, the full Russian translation, coverage fingerprint sha256:b6955ff664a72ddd53ca5075b8bd06ba21957433ae3a95ed75699db1f4499b49, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "argentina-vehiculos-automotor-cedulas--consultas-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 159-174, coverage fingerprint sha256:55dc923c900616a4026ccbea80d8fa0a0812471e17e5dd7c114654343c44cef0, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish service/source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Vehicle-document terminology, DNRPA/Register references, procedure steps, required documents, dates, costs, deadlines, and scope limits were preserved; page chrome/list links are translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 159-174, the full Russian translation, coverage fingerprint sha256:55dc923c900616a4026ccbea80d8fa0a0812471e17e5dd7c114654343c44cef0, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      }
+    ]
+  }
+}

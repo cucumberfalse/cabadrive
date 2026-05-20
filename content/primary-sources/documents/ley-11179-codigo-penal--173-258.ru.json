@@ -1,0 +1,1970 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "document": {
+    "officialDocumentId": "ley-11179-codigo-penal",
+    "title": "CODIGO PENAL DE LA NACION ARGENTINA",
+    "shortTitleRu": "Уголовный кодекс Аргентины",
+    "category": "criminal-law",
+    "jurisdiction": "national",
+    "officialSourceType": "national_law_updated_text",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+    "archiveLocalPath": "content/official-documents/documents/ley-11179-codigo-penal.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "current",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-107-el-maximum-y-el-minimum-de-173",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 173,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo VI",
+          "ARTICULO 107.- El máximum y el mínimum de las penas establecidas en el artículo precedente, serán aumentados en un tercio cuando el delit..."
+        ],
+        "officialLabel": "ARTICULO 107.- El máximum y el mínimum de las penas establecidas en el artículo precedente, serán aumentados en un tercio cuando el delit...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 107.- El máximum y el mínimum de las penas establecidas en el artículo precedente, serán aumentados en un tercio cuando el delito fuera cometido por los padres contra sus hijos y por éstos contra aquéllos o por el cónyuge..\n\n(Artículo sustituido por art. 1° de la Ley N° 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791] B.O. 2/1/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 107.- Максимум и минимум наказаний, установленных в предыдущей статье, увеличиваются на одну треть, когда преступление совершено родителями против своих детей, детьми против родителей или супругом.\n\n(Статья заменена статьей 1 Закона N 24.410, B.O. 2/1/1995)",
+        "simpleRu": "Если преступление из предыдущей статьи совершено внутри близкой семьи: родителями против детей, детьми против родителей или супругом, минимальное и максимальное наказание увеличиваются на одну треть.",
+        "sourceTextSha256": "89583155c8891cd19509fffa7c86b512ece5da5f135702cb8f2b7f984a5b1abf",
+        "sourceFingerprint": "sha256:89583155c8891cd19509fffa7c86b512ece5da5f135702cb8f2b7f984a5b1abf",
+        "sourceSpan": {
+          "startLine": 1107,
+          "endLine": 1110
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-108-sera-reprimido-con-multa-de-pesos-174",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 174,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo VI",
+          "ARTICULO 108. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos el que encontrando perdido o desampar..."
+        ],
+        "officialLabel": "ARTICULO 108. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos el que encontrando perdido o desampar...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 108. - Será reprimido con multa de pesos setecientos cincuenta a pesos doce mil quinientos el que encontrando perdido o desamparado a un menor de diez años o a una persona herida o inválida o amenazada de un peligro cualquiera; omitiere prestarle el auxilio necesario, cuando pudiere hacerlo sin riesgo personal o no diere aviso inmediatamente a la autoridad.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 108. - Штрафом от семисот пятидесяти песо до двенадцати тысяч пятисот песо наказывается тот, кто, найдя потерявшегося или оставленного без помощи ребенка младше десяти лет, либо раненого, инвалида или человека, которому угрожает какая-либо опасность, не окажет ему необходимую помощь, когда может сделать это без личного риска, или немедленно не сообщит властям.\n\n(Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, B.O. 29/12/1993)",
+        "simpleRu": "Если человек видит потерявшегося ребенка младше 10 лет, раненого, инвалида или человека в опасности, он должен помочь, если это не опасно для него самого, или сразу сообщить властям. За бездействие установлен штраф от 750 до 12 500 песо.",
+        "sourceTextSha256": "b829144c239ae59c944f75c58285aec9152de750bffa87f4834e185384704292",
+        "sourceFingerprint": "sha256:b829144c239ae59c944f75c58285aec9152de750bffa87f4834e185384704292",
+        "sourceSpan": {
+          "startLine": 1111,
+          "endLine": 1114
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ii-175",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 175,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II"
+        ],
+        "officialLabel": "TITULO II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO II\n\nDELITOS CONTRA EL HONOR\n",
+        "fullTranslationRu": "РАЗДЕЛ II\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ЧЕСТИ",
+        "simpleRu": "Раздел II говорит о преступлениях против чести человека, например о клевете и оскорблениях.",
+        "sourceTextSha256": "5f059ed76ea977d58ffc95d2127fd12aa56f17db8dc829a9a0959fded1cad3c0",
+        "sourceFingerprint": "sha256:5f059ed76ea977d58ffc95d2127fd12aa56f17db8dc829a9a0959fded1cad3c0",
+        "sourceSpan": {
+          "startLine": 1115,
+          "endLine": 1118
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-109-la-calumnia-o-falsa-imputacion-a-176",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 176,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 109. - La calumnia o falsa imputación a una persona física determinada de la comisión de un delito concreto y circunstanciado qu..."
+        ],
+        "officialLabel": "ARTICULO 109. - La calumnia o falsa imputación a una persona física determinada de la comisión de un delito concreto y circunstanciado qu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 109. - La calumnia o falsa imputación a una persona física determinada de la comisión de un delito concreto y circunstanciado que dé lugar a la acción pública, será reprimida con multa de pesos tres mil ($ 3.000.-) a pesos treinta mil ($ 30.000.-). En ningún caso configurarán delito de calumnia las expresiones referidas a asuntos de interés público o las que no sean asertivas.\n\n(Artículo sustituido por art. 1° de la Ley N° 26.551 [/infolegInternet/verNorma.do?id=160774] B.O. 27/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 109. - Клевета, то есть ложное обвинение определенного физического лица в совершении конкретного и обстоятельно описанного преступления, по которому возможно публичное уголовное преследование, наказывается штрафом от трех тысяч песо ($ 3.000.-) до тридцати тысяч песо ($ 30.000.-). Ни при каких обстоятельствах не образуют преступление клеветы высказывания по вопросам общественного интереса или высказывания, не имеющие утвердительного характера.\n\n(Статья заменена статьей 1 Закона N 26.551, B.O. 27/11/2009)",
+        "simpleRu": "Клевета - это ложное обвинение конкретного человека в конкретном преступлении. За это штраф от 3 000 до 30 000 песо. Высказывания об общественно важных вопросах или неутвердительные высказывания клеветой не считаются.",
+        "sourceTextSha256": "63d29f4b9a000c9e3bd88459a663a77c4730884a291b1f6f445c4b31cc80bada",
+        "sourceFingerprint": "sha256:63d29f4b9a000c9e3bd88459a663a77c4730884a291b1f6f445c4b31cc80bada",
+        "sourceSpan": {
+          "startLine": 1119,
+          "endLine": 1122
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-110-el-que-intencionalmente-deshonrare-o-desacreditare-177",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 177,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 110. - El que intencionalmente deshonrare o desacreditare a una persona física determinada será reprimido con multa de pesos mil..."
+        ],
+        "officialLabel": "ARTICULO 110. - El que intencionalmente deshonrare o desacreditare a una persona física determinada será reprimido con multa de pesos mil...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 110. - El que intencionalmente deshonrare o desacreditare a una persona física determinada será reprimido con multa de pesos mil quinientos ($ 1.500.-) a pesos veinte mil ($ 20.000.-). En ningún caso configurarán delito de injurias las expresiones referidas a asuntos de interés público o las que no sean asertivas. Tampoco configurarán delito de injurias los calificativos lesivos del honor cuando guardasen relación con un asunto de interés público.\n\n(Artículo sustituido por art. 2° de la Ley N° 26.551 [/infolegInternet/verNorma.do?id=160774] B.O. 27/11/2009)\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 110. - Тот, кто умышленно бесчестит или дискредитирует определенное физическое лицо, наказывается штрафом от одной тысячи пятисот песо ($ 1.500.-) до двадцати тысяч песо ($ 20.000.-). Ни при каких обстоятельствах не образуют преступление оскорбления высказывания по вопросам общественного интереса или высказывания, не имеющие утвердительного характера. Также не образуют преступление оскорбления характеристики, задевающие честь, когда они связаны с вопросом общественного интереса.\n\n(Статья заменена статьей 2 Закона N 26.551, B.O. 27/11/2009)\n\n(Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, B.O. 29/12/1993)",
+        "simpleRu": "За намеренное унижение или подрыв репутации конкретного человека установлен штраф от 1 500 до 20 000 песо. Но слова об общественно важных вопросах, неутвердительные слова и оценки, связанные с таким вопросом, не считаются этим преступлением.",
+        "sourceTextSha256": "dd5b53c91055de14aea6f6a9ae125e2916060090298a925b23da86ff2f96093f",
+        "sourceFingerprint": "sha256:dd5b53c91055de14aea6f6a9ae125e2916060090298a925b23da86ff2f96093f",
+        "sourceSpan": {
+          "startLine": 1123,
+          "endLine": 1128
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-111-el-acusado-de-injuria-en-los-178",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 178,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 111. - El acusado de injuria, en los casos en los que las expresiones de ningún modo estén vinculadas con asuntos de interés púb..."
+        ],
+        "officialLabel": "ARTICULO 111. - El acusado de injuria, en los casos en los que las expresiones de ningún modo estén vinculadas con asuntos de interés púb...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 111. - El acusado de injuria, en los casos en los que las expresiones de ningún modo estén vinculadas con asuntos de interés público, no podrá probar la verdad de la imputación salvo en los casos siguientes:\n\n1) Si el hecho atribuido a la persona ofendida, hubiere dado lugar a un proceso penal.\n\n2) Si el querellante pidiera la prueba de la imputación dirigida contra él.\n\nEn estos casos, si se probare la verdad de las imputaciones, el acusado quedará exento de pena.\n\n(Artículo sustituido por art. 3° de la Ley N° 26.551 [/infolegInternet/verNorma.do?id=160774] B.O. 27/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 111. - Обвиняемый в оскорблении, когда выражения никак не связаны с вопросами общественного интереса, не может доказывать истинность вмененного, кроме следующих случаев:\n\n1) если факт, приписанный потерпевшему, стал основанием для уголовного процесса;\n\n2) если частный обвинитель попросил доказать утверждение, направленное против него.\n\nВ этих случаях, если истинность утверждений будет доказана, обвиняемый освобождается от наказания.\n\n(Статья заменена статьей 3 Закона N 26.551, B.O. 27/11/2009)",
+        "simpleRu": "Обычно по делу об оскорблении нельзя оправдываться тем, что сказанное было правдой, если это не связано с общественным интересом. Исключения: из-за этого факта было уголовное дело, или сам заявитель просит проверить правду. Если правда доказана, наказания нет.",
+        "sourceTextSha256": "9c9f36c9630cef9d7b305bb1dd64c0d0ff1b8bb5b87153890fc8fe9ccb21380d",
+        "sourceFingerprint": "sha256:9c9f36c9630cef9d7b305bb1dd64c0d0ff1b8bb5b87153890fc8fe9ccb21380d",
+        "sourceSpan": {
+          "startLine": 1129,
+          "endLine": 1138
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-112-articulo-derogado-por-art-4o-de-179",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 179,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 112. - (Artículo derogado por art. 4° de la Ley N° 26.551 [/infolegInternet/verNorma.do?id=160774] B.O. 27/11/2009)"
+        ],
+        "officialLabel": "ARTICULO 112. - (Artículo derogado por art. 4° de la Ley N° 26.551 [/infolegInternet/verNorma.do?id=160774] B.O. 27/11/2009)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 112. - (Artículo derogado por art. 4° de la Ley N° 26.551 [/infolegInternet/verNorma.do?id=160774] B.O. 27/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 112. - (Статья отменена статьей 4 Закона N 26.551, B.O. 27/11/2009)",
+        "simpleRu": "Статья 112 больше не действует: она отменена Законом N 26.551 с публикацией 27/11/2009.",
+        "sourceTextSha256": "b13cb9ac32c8439023fb6f827d4b926a8e23dfcde920d7a401cce516707ba828",
+        "sourceFingerprint": "sha256:b13cb9ac32c8439023fb6f827d4b926a8e23dfcde920d7a401cce516707ba828",
+        "sourceSpan": {
+          "startLine": 1139,
+          "endLine": 1140
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-113-el-que-publicare-o-reprodujere-por-180",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 180,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 113. - El que publicare o reprodujere, por cualquier medio, injurias o calumnias inferidas por otro, será reprimido como autor d..."
+        ],
+        "officialLabel": "ARTICULO 113. - El que publicare o reprodujere, por cualquier medio, injurias o calumnias inferidas por otro, será reprimido como autor d...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 113. - El que publicare o reprodujere, por cualquier medio, injurias o calumnias inferidas por otro, será reprimido como autor de las injurias o calumnias de que se trate, siempre que su contenido no fuera atribuido en forma sustancialmente fiel a la fuente pertinente. En ningún caso configurarán delito de calumnia las expresiones referidas a asuntos de interés público o las que no sean asertivas.\n\n(Artículo sustituido por art. 5° de la Ley N° 26.551 [/infolegInternet/verNorma.do?id=160774] B.O. 27/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 113. - Тот, кто любым способом публикует или воспроизводит оскорбления или клевету, высказанные другим лицом, наказывается как автор соответствующего оскорбления или клеветы, если содержание не было существенно верно отнесено к надлежащему источнику. Ни при каких обстоятельствах не образуют преступление клеветы высказывания по вопросам общественного интереса или высказывания, не имеющие утвердительного характера.\n\n(Статья заменена статьей 5 Закона N 26.551, B.O. 27/11/2009)",
+        "simpleRu": "Если человек публикует чужую клевету или оскорбление, он может отвечать как автор, если не указал источник достаточно верно. Но высказывания об общественном интересе или неутвердительные высказывания не считаются клеветой.",
+        "sourceTextSha256": "57cc4c64b101865b9ad998e1c484fb5826eaffb7b120fdac0799ecb96a388bc9",
+        "sourceFingerprint": "sha256:57cc4c64b101865b9ad998e1c484fb5826eaffb7b120fdac0799ecb96a388bc9",
+        "sourceSpan": {
+          "startLine": 1141,
+          "endLine": 1144
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-114-cuando-la-injuria-o-calumnia-se-181",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 181,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 114. - Cuando la injuria o calumnia se hubiere propagado por medio de la prensa, en la capital y territorios nacionales, sus aut..."
+        ],
+        "officialLabel": "ARTICULO 114. - Cuando la injuria o calumnia se hubiere propagado por medio de la prensa, en la capital y territorios nacionales, sus aut...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 114. - Cuando la injuria o calumnia se hubiere propagado por medio de la prensa, en la capital y territorios nacionales, sus autores quedarán sometidos a las sanciones del presente código y el juez o tribunal ordenará, si lo pidiere el ofendido, que los editores inserten en los respectivos impresos o periódicos, a costa del culpable, la sentencia o satisfacción.\n",
+        "fullTranslationRu": "СТАТЬЯ 114. - Когда оскорбление или клевета распространены через прессу в столице и национальных территориях, их авторы подчиняются санкциям настоящего кодекса, а судья или суд, если потерпевший попросит, распорядится, чтобы редакторы напечатали в соответствующих изданиях или газетах за счет виновного приговор или удовлетворение.",
+        "simpleRu": "Если клевету или оскорбление распространили через прессу, применяются наказания Кодекса. По просьбе потерпевшего суд может обязать редакцию напечатать решение или опровержение за счет виновного.",
+        "sourceTextSha256": "c939f70d4c09e528262cca9fec2963c58e66a4fae2e387ac012fc25e9436990b",
+        "sourceFingerprint": "sha256:c939f70d4c09e528262cca9fec2963c58e66a4fae2e387ac012fc25e9436990b",
+        "sourceSpan": {
+          "startLine": 1145,
+          "endLine": 1146
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-115-las-injurias-proferidas-por-los-litigantes-182",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 182,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 115. - Las injurias proferidas por los litigantes, apoderados o defensores, en los escritos, discursos o informes producidos ant..."
+        ],
+        "officialLabel": "ARTICULO 115. - Las injurias proferidas por los litigantes, apoderados o defensores, en los escritos, discursos o informes producidos ant...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 115. - Las injurias proferidas por los litigantes, apoderados o defensores, en los escritos, discursos o informes producidos ante los tribunales y no dados a publicidad, quedarán sujetas únicamente a las correcciones disciplinarias correspondientes.\n",
+        "fullTranslationRu": "СТАТЬЯ 115. - Оскорбления, высказанные сторонами процесса, представителями или защитниками в письменных документах, речах или докладах перед судами и не переданные публичности, подлежат только соответствующим дисциплинарным мерам.",
+        "simpleRu": "Если участники суда, их представители или защитники оскорбили кого-то в судебных материалах или выступлениях, и это не стало публичным, применяются только дисциплинарные меры.",
+        "sourceTextSha256": "d9a059dbfcca63ecf0f0ec22017f05ac99f497b554192b6c216e872dba380509",
+        "sourceFingerprint": "sha256:d9a059dbfcca63ecf0f0ec22017f05ac99f497b554192b6c216e872dba380509",
+        "sourceSpan": {
+          "startLine": 1147,
+          "endLine": 1148
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-116-cuando-las-injurias-fueren-reciprocas-el-183",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 183,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 116. - Cuando las injurias fueren recíprocas, el tribunal podrá, según las circunstancias, declarar exentas de pena a las dos pa..."
+        ],
+        "officialLabel": "ARTICULO 116. - Cuando las injurias fueren recíprocas, el tribunal podrá, según las circunstancias, declarar exentas de pena a las dos pa...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 116. - Cuando las injurias fueren recíprocas, el tribunal podrá, según las circunstancias, declarar exentas de pena a las dos partes o a alguna de ellas.\n",
+        "fullTranslationRu": "СТАТЬЯ 116. - Когда оскорбления были взаимными, суд, с учетом обстоятельств, может признать обе стороны или одну из них освобожденными от наказания.",
+        "simpleRu": "Если стороны взаимно оскорбляли друг друга, суд может освободить от наказания обе стороны или одну из них.",
+        "sourceTextSha256": "248937f0acf700031bd3118cd390113ea15222bef419aef34bf906142e8b7791",
+        "sourceFingerprint": "sha256:248937f0acf700031bd3118cd390113ea15222bef419aef34bf906142e8b7791",
+        "sourceSpan": {
+          "startLine": 1149,
+          "endLine": 1150
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-117-el-acusado-de-injuria-o-calumnia-184",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 184,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 117. - El acusado de injuria o calumnia quedará exento de pena si se retractare públicamente, antes de contestar la querella o e..."
+        ],
+        "officialLabel": "ARTICULO 117. - El acusado de injuria o calumnia quedará exento de pena si se retractare públicamente, antes de contestar la querella o e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 117. - El acusado de injuria o calumnia quedará exento de pena si se retractare públicamente, antes de contestar la querella o en el acto de hacerlo. La retractación no importará para el acusado la aceptación de su culpabilidad.\n\n(Artículo sustituido por art. 6° de la Ley N° 26.551 [/infolegInternet/verNorma.do?id=160774] B.O. 27/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 117. - Обвиняемый в оскорблении или клевете освобождается от наказания, если публично откажется от своих слов до ответа на частную жалобу или в момент такого ответа. Отказ от слов не означает для обвиняемого признания своей виновности.\n\n(Статья заменена статьей 6 Закона N 26.551, B.O. 27/11/2009)",
+        "simpleRu": "По делу о клевете или оскорблении человек может избежать наказания, если публично откажется от своих слов до ответа на жалобу или прямо при ответе. Это не считается признанием вины.",
+        "sourceTextSha256": "9168bc9c1c31a7923f0cf18305f3e7b08067c96d1f0fb88af47102300a467c2a",
+        "sourceFingerprint": "sha256:9168bc9c1c31a7923f0cf18305f3e7b08067c96d1f0fb88af47102300a467c2a",
+        "sourceSpan": {
+          "startLine": 1151,
+          "endLine": 1154
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-117-bis-185",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 185,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO II",
+          "ARTICULO 117 bis."
+        ],
+        "officialLabel": "ARTICULO 117 bis.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 117 bis.\n\n1°. (Inciso derogado por art. 14 de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n\n2°. La pena será de seis meses a tres años, al que proporcionara a un tercero a sabiendas información falsa contenida en un archivo de datos personales.\n\n3°. La escala penal se aumentará en la mitad del mínimo y del máximo, cuando del hecho se derive perjuicio a alguna persona.\n\n4°. Cuando el autor o responsable del ilícito sea funcionario público en ejercicio de sus funciones, se le aplicará la accesoria de inhabilitación para el desempeño de cargos públicos por el doble del tiempo que el de la condena.\n\n(Artículo incorporado por art. 32 de la Ley N° 25.326 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=64790] B.O. 2/11/2000)\n",
+        "fullTranslationRu": "СТАТЬЯ 117 bis.\n\n1. (Пункт отменен статьей 14 Закона N 26.388, B.O. 25/6/2008)\n\n2. Наказание от шести месяцев до трех лет применяется к тому, кто сознательно передает третьему лицу ложную информацию, содержащуюся в файле персональных данных.\n\n3. Шкала наказания увеличивается на половину минимума и максимума, когда из деяния возникает вред для какого-либо лица.\n\n4. Когда автор или ответственный за незаконное деяние является государственным служащим при исполнении своих функций, дополнительно применяется лишение права занимать государственные должности на срок, вдвое превышающий срок приговора.\n\n(Статья включена статьей 32 Закона N 25.326, B.O. 2/11/2000)",
+        "simpleRu": "Статья 117 bis касается ложной информации в файлах персональных данных. За сознательную передачу такой ложной информации третьему лицу - от 6 месяцев до 3 лет. Если кому-то причинен вред, наказание увеличивается. Для госслужащего добавляется запрет занимать госдолжности на двойной срок.",
+        "sourceTextSha256": "e9d09e5788700c3f25251d645270db570c4e1e0f45a262679f20b42afae83eaf",
+        "sourceFingerprint": "sha256:e9d09e5788700c3f25251d645270db570c4e1e0f45a262679f20b42afae83eaf",
+        "sourceSpan": {
+          "startLine": 1155,
+          "endLine": 1166
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iii-186",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 186,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III"
+        ],
+        "officialLabel": "TITULO III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO III\n\nDELITOS CONTRA LA INTEGRIDAD SEXUAL\n\n(Rúbrica del Título sustituida por art. 1° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O. 14/5/1999)\n\n(Nota Infoleg: Capítulo I y su rúbrica: Adulterio, derogados por art. 3° de la Ley N° 24.453 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14900] B.O. 7/3/1995)\n",
+        "fullTranslationRu": "РАЗДЕЛ III\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ПОЛОВОЙ НЕПРИКОСНОВЕННОСТИ\n\n(Название раздела заменено статьей 1 Закона N 25.087, B.O. 14/5/1999)\n\n(Примечание Infoleg: Глава I и ее название: Супружеская неверность, отменены статьей 3 Закона N 24.453, B.O. 7/3/1995)",
+        "simpleRu": "Раздел III посвящен преступлениям против половой неприкосновенности. Название раздела было изменено Законом N 25.087. Старая Глава I о супружеской неверности отменена.",
+        "sourceTextSha256": "fa9fdd510858896e6e56797fed25e8a278bca929379bcd023bc898823a5bb401",
+        "sourceFingerprint": "sha256:fa9fdd510858896e6e56797fed25e8a278bca929379bcd023bc898823a5bb401",
+        "sourceSpan": {
+          "startLine": 1167,
+          "endLine": 1174
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-118-articulo-derogado-por-art-4o-de-187",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 187,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "ARTICULO 118.- (Artículo derogado por art. 4° de la Ley N° 24.453 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14900] B.O. ..."
+        ],
+        "officialLabel": "ARTICULO 118.- (Artículo derogado por art. 4° de la Ley N° 24.453 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14900] B.O. ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 118.- (Artículo derogado por art. 4° de la Ley N° 24.453 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14900] B.O. 7/3/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 118.- (Статья отменена статьей 4 Закона N 24.453, B.O. 7/3/1995)",
+        "simpleRu": "Статья 118 больше не действует: она отменена Законом N 24.453 с публикацией 7/3/1995.",
+        "sourceTextSha256": "b634f88660ae3fde34c4c0aae08072e1db920ef64b6481da6fe2ad039a206d25",
+        "sourceFingerprint": "sha256:b634f88660ae3fde34c4c0aae08072e1db920ef64b6481da6fe2ad039a206d25",
+        "sourceSpan": {
+          "startLine": 1175,
+          "endLine": 1176
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-188",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 188,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n",
+        "fullTranslationRu": "Глава II",
+        "simpleRu": "Начинается Глава II раздела о преступлениях против половой неприкосновенности.",
+        "sourceTextSha256": "2321fca4c589bc4bac9d484e0fd2304ebf813489629f92d6887b2b2349322d4f",
+        "sourceFingerprint": "sha256:2321fca4c589bc4bac9d484e0fd2304ebf813489629f92d6887b2b2349322d4f",
+        "sourceSpan": {
+          "startLine": 1177,
+          "endLine": 1178
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-119-sera-reprimido-con-reclusion-o-prision-189",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 189,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo II",
+          "ARTICULO 119. - Será reprimido con reclusión o prisión de seis (6) meses a cuatro (4) años el que abusare sexualmente de una persona cuan..."
+        ],
+        "officialLabel": "ARTICULO 119. - Será reprimido con reclusión o prisión de seis (6) meses a cuatro (4) años el que abusare sexualmente de una persona cuan...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 119. - Será reprimido con reclusión o prisión de seis (6) meses a cuatro (4) años el que abusare sexualmente de una persona cuando ésta fuera menor de trece (13) años o cuando mediare violencia, amenaza, abuso coactivo o intimidatorio de una relación de dependencia, de autoridad, o de poder, o aprovechándose de que la víctima por cualquier causa no haya podido consentir libremente la acción.\n\nLa pena será de cuatro (4) a diez (10) años de reclusión o prisión cuando el abuso por su duración o circunstancias de su realización, hubiere configurado un sometimiento sexual gravemente ultrajante para la víctima.\n\nLa pena será de seis (6) a quince (15) años de reclusión o prisión cuando mediando las circunstancias del primer párrafo hubiere acceso carnal por vía anal, vaginal u oral o realizare otros actos análogos introduciendo objetos o partes del cuerpo por alguna de las dos primeras vías.\n\nEn los supuestos de los dos párrafos anteriores, la pena será de ocho (8) a veinte (20) años de reclusión o prisión si:\n\na) Resultare un grave daño en la salud física o mental de la víctima;\n\nb) El hecho fuere cometido por ascendiente, descendiente, afín en línea recta, hermano, tutor, curador, ministro de algún culto reconocido o no, encargado de la educación o de la guarda;\n\nc) El autor tuviere conocimiento de ser portador de una enfermedad de transmisión sexual grave, y hubiere existido peligro de contagio;\n\nd) El hecho fuere cometido por dos o más personas, o con armas;\n\ne) El hecho fuere cometido por personal perteneciente a las fuerzas policiales o de seguridad, en ocasión de sus funciones;\n\nf) El hecho fuere cometido contra un menor de dieciocho (18) años, aprovechando la situación de convivencia preexistente con el mismo.\n\nEn el supuesto del primer párrafo, la pena será de tres (3) a diez (10) años de reclusión o prisión si concurren las circunstancias de los incisos a), b), d), e) o f).\n\n(Artículo sustituido por art. 1° de la Ley N° 27.352 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=274739] B.O. 17/5/2017)\n",
+        "fullTranslationRu": "СТАТЬЯ 119. - Лишением свободы или тюремным заключением от шести (6) месяцев до четырех (4) лет наказывается тот, кто совершит сексуальное насилие над лицом, когда это лицо младше тринадцати (13) лет, либо когда имели место насилие, угроза, принудительное или запугивающее злоупотребление отношениями зависимости, власти или силы, либо использование того, что потерпевший по любой причине не мог свободно согласиться на действие.\n\nНаказание составляет от четырех (4) до десяти (10) лет лишения свободы или тюремного заключения, когда насилие по длительности или обстоятельствам совершения образовало для потерпевшего тяжко унизительное сексуальное подчинение.\n\nНаказание составляет от шести (6) до пятнадцати (15) лет лишения свободы или тюремного заключения, когда при обстоятельствах первого абзаца имело место половое проникновение анальным, вагинальным или оральным путем либо совершались аналогичные действия с введением предметов или частей тела одним из первых двух путей.\n\nВ случаях двух предыдущих абзацев наказание составляет от восьми (8) до двадцати (20) лет лишения свободы или тюремного заключения, если:\n\na) причинен тяжкий вред физическому или психическому здоровью потерпевшего;\n\nb) деяние совершено восходящим родственником, нисходящим родственником, свойственником по прямой линии, братом или сестрой, опекуном, попечителем, служителем признанного или непризнанного культа, лицом, ответственным за образование или присмотр;\n\nc) автор знал, что является носителем серьезного заболевания, передаваемого половым путем, и существовала опасность заражения;\n\nd) деяние совершено двумя или более лицами либо с оружием;\n\ne) деяние совершено сотрудником полиции или сил безопасности при исполнении функций;\n\nf) деяние совершено против лица младше восемнадцати (18) лет с использованием ранее существовавшего совместного проживания с ним.\n\nВ случае первого абзаца наказание составляет от трех (3) до десяти (10) лет лишения свободы или тюремного заключения, если имеются обстоятельства пунктов a), b), d), e) или f).\n\n(Статья заменена статьей 1 Закона N 27.352, B.O. 17/5/2017)",
+        "simpleRu": "Статья 119 устанавливает наказания за сексуальное насилие. Базовое наказание - от 6 месяцев до 4 лет, если потерпевшему меньше 13 лет, применялись насилие, угрозы, злоупотребление властью или человек не мог свободно согласиться. Более тяжкие случаи имеют сроки от 4 до 10 лет, от 6 до 15 лет, от 8 до 20 лет или от 3 до 10 лет в зависимости от обстоятельств: тяжкий вред, близкий родственник или опекун, риск заражения, группа, оружие, сотрудник сил безопасности или несовершеннолетний при совместном проживании.",
+        "sourceTextSha256": "a90ff7ab84b50294c5832ed2f08b516bc0e002d90b9c362c53640e1ab4da0b1a",
+        "sourceFingerprint": "sha256:a90ff7ab84b50294c5832ed2f08b516bc0e002d90b9c362c53640e1ab4da0b1a",
+        "sourceSpan": {
+          "startLine": 1179,
+          "endLine": 1202
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-120-sera-reprimido-con-prision-o-reclusion-190",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 190,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo II",
+          "ARTICULO 120 — Será reprimido con prisión o reclusión de tres a seis años el que realizare algunas de las acciones previstas en el segund..."
+        ],
+        "officialLabel": "ARTICULO 120 — Será reprimido con prisión o reclusión de tres a seis años el que realizare algunas de las acciones previstas en el segund...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 120 — Será reprimido con prisión o reclusión de tres a seis años el que realizare algunas de las acciones previstas en el segundo o en el tercer párrafo del artículo 119 con una persona menor de dieciséis años, aprovechándose de su inmadurez sexual, en razón de la mayoría de edad del autor, su relación de preeminencia respecto de la víctima, u otra circunstancia equivalente, siempre que no resultare un delito más severamente penado.\n\nLa pena será de prisión o reclusión de seis a diez años si mediare alguna de las circunstancias previstas en los incisos a), b), c), e) o f) del cuarto párrafo del artículo 119\n\n(Artículo sustituido por art. 3° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O. 14/5/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 120 — Тюремным заключением или лишением свободы от трех до шести лет наказывается тот, кто совершит некоторые действия, предусмотренные во втором или третьем абзаце статьи 119, с лицом младше шестнадцати лет, используя его сексуальную незрелость из-за совершеннолетия автора, его превосходящего положения по отношению к потерпевшему или иного равнозначного обстоятельства, если это не образует преступление, наказуемое строже.\n\nНаказание составляет тюремное заключение или лишение свободы от шести до десяти лет, если имеется какое-либо обстоятельство из пунктов a), b), c), e) или f) четвертого абзаца статьи 119.\n\n(Статья заменена статьей 3 Закона N 25.087, B.O. 14/5/1999)",
+        "simpleRu": "Если взрослый использует сексуальную незрелость лица младше 16 лет и совершает действия из статьи 119, наказание - от 3 до 6 лет, если нет более тяжкого преступления. При отягчающих обстоятельствах из статьи 119 срок - от 6 до 10 лет.",
+        "sourceTextSha256": "6f15a29692cc35296a83ad5acb6c808a0fd526a57748e53c0e51459bc4f43e9d",
+        "sourceFingerprint": "sha256:6f15a29692cc35296a83ad5acb6c808a0fd526a57748e53c0e51459bc4f43e9d",
+        "sourceSpan": {
+          "startLine": 1203,
+          "endLine": 1208
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-121-articulo-derogado-por-art-4o-de-191",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 191,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo II",
+          "ARTICULO 121. -.(Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O...."
+        ],
+        "officialLabel": "ARTICULO 121. -.(Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O....",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 121. -.(Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O. 14/5/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 121. - (Статья отменена статьей 4 Закона N 25.087, B.O. 14/5/1999)",
+        "simpleRu": "Статья 121 отменена Законом N 25.087 с публикацией 14/5/1999.",
+        "sourceTextSha256": "101427fd32a9c952acec7a9b0db0ba2b6f7a7b0eea07716f2d0a9cf2e18971f4",
+        "sourceFingerprint": "sha256:101427fd32a9c952acec7a9b0db0ba2b6f7a7b0eea07716f2d0a9cf2e18971f4",
+        "sourceSpan": {
+          "startLine": 1209,
+          "endLine": 1210
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-122-articulo-derogado-por-art-4o-de-192",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 192,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo II",
+          "ARTICULO 122. - (Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O...."
+        ],
+        "officialLabel": "ARTICULO 122. - (Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O....",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 122. - (Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O. 14/5/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 122. - (Статья отменена статьей 4 Закона N 25.087, B.O. 14/5/1999)",
+        "simpleRu": "Статья 122 отменена Законом N 25.087 с публикацией 14/5/1999.",
+        "sourceTextSha256": "080257ecdb2b49c095e9c195d5904b0ebc45273316fe5e8cf1e180719da60fb4",
+        "sourceFingerprint": "sha256:080257ecdb2b49c095e9c195d5904b0ebc45273316fe5e8cf1e180719da60fb4",
+        "sourceSpan": {
+          "startLine": 1211,
+          "endLine": 1212
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-123-articulo-derogado-por-art-4o-de-193",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 193,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo II",
+          "ARTICULO 123. - (Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O...."
+        ],
+        "officialLabel": "ARTICULO 123. - (Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O....",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 123. - (Artículo derogado por art. 4° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O. 14/5/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 123. - (Статья отменена статьей 4 Закона N 25.087, B.O. 14/5/1999)",
+        "simpleRu": "Статья 123 отменена Законом N 25.087 с публикацией 14/5/1999.",
+        "sourceTextSha256": "770cba6a5ff1810a50ebe425103ef77be84d9b441a1af825159860d4f2c1b6f1",
+        "sourceFingerprint": "sha256:770cba6a5ff1810a50ebe425103ef77be84d9b441a1af825159860d4f2c1b6f1",
+        "sourceSpan": {
+          "startLine": 1213,
+          "endLine": 1214
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-124-se-impondra-reclusion-o-prision-perpetua-194",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 194,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo II",
+          "ARTICULO 124. - Se impondrá reclusión o prisión perpetua, cuando en los casos de los artículos 119 y 120 resultare la muerte de la person..."
+        ],
+        "officialLabel": "ARTICULO 124. - Se impondrá reclusión o prisión perpetua, cuando en los casos de los artículos 119 y 120 resultare la muerte de la person...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 124. - Se impondrá reclusión o prisión perpetua, cuando en los casos de los artículos 119 y 120 resultare la muerte de la persona ofendida.\n\n(Artículo sustituido por art. 1° de la Ley N° 25.893 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95269] B.O. 26/5/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 124. - Назначается пожизненное лишение свободы или пожизненное тюремное заключение, когда в случаях статей 119 и 120 наступила смерть потерпевшего лица.\n\n(Статья заменена статьей 1 Закона N 25.893, B.O. 26/5/2004)",
+        "simpleRu": "Если при преступлениях из статей 119 или 120 потерпевший умер, назначается пожизненное лишение свободы или пожизненное тюремное заключение.",
+        "sourceTextSha256": "4568f027fbc72a0b747a943915f6f3677f945db6e35601602814326cbcedcac5",
+        "sourceFingerprint": "sha256:4568f027fbc72a0b747a943915f6f3677f945db6e35601602814326cbcedcac5",
+        "sourceSpan": {
+          "startLine": 1215,
+          "endLine": 1218
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iii-195",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 195,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III"
+        ],
+        "officialLabel": "Capítulo III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo III\n",
+        "fullTranslationRu": "Глава III",
+        "simpleRu": "Начинается Глава III раздела о преступлениях против половой неприкосновенности.",
+        "sourceTextSha256": "77885fc21c239e8e3550524fe76909cf072eed43fbe1350e5bf54ef02cb29d45",
+        "sourceFingerprint": "sha256:77885fc21c239e8e3550524fe76909cf072eed43fbe1350e5bf54ef02cb29d45",
+        "sourceSpan": {
+          "startLine": 1219,
+          "endLine": 1220
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-125-el-que-promoviere-o-facilitare-la-196",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 196,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III",
+          "ARTICULO 125. - El que promoviere o facilitare la corrupción de menores de dieciocho años, aunque mediare el consentimiento de la víctima..."
+        ],
+        "officialLabel": "ARTICULO 125. - El que promoviere o facilitare la corrupción de menores de dieciocho años, aunque mediare el consentimiento de la víctima...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 125. - El que promoviere o facilitare la corrupción de menores de dieciocho años, aunque mediare el consentimiento de la víctima será reprimido con reclusión o prisión de tres a diez años.\n\nLa pena será de seis a quince años de reclusión o prisión cuando la víctima fuera menor de trece años.\n\nCualquiera que fuese la edad de la víctima, la pena será de reclusión o prisión de diez a quince años, cuando mediare engaño, violencia, amenaza, abuso de autoridad o cualquier otro medio de intimidación o coerción, como también si el autor fuera ascendiente, cónyuge, hermano, tutor o persona conviviente o encargada de su educación o guarda.\n\n(Artículo sustituido por art. 5° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O. 14/5/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 125. - Тот, кто поощряет или облегчает развращение лиц младше восемнадцати лет, даже при согласии потерпевшего, наказывается лишением свободы или тюремным заключением от трех до десяти лет.\n\nНаказание составляет от шести до пятнадцати лет лишения свободы или тюремного заключения, когда потерпевший младше тринадцати лет.\n\nКаков бы ни был возраст потерпевшего, наказание составляет лишение свободы или тюремное заключение от десяти до пятнадцати лет, когда имели место обман, насилие, угроза, злоупотребление властью или любой другой способ запугивания или принуждения, а также если автор является восходящим родственником, супругом, братом или сестрой, опекуном либо лицом, совместно проживающим с потерпевшим или отвечающим за его образование или присмотр.\n\n(Статья заменена статьей 5 Закона N 25.087, B.O. 14/5/1999)",
+        "simpleRu": "За содействие развращению несовершеннолетнего до 18 лет - от 3 до 10 лет, даже если потерпевший согласился. Если потерпевшему меньше 13 лет - от 6 до 15 лет. Если есть обман, насилие, угрозы, злоупотребление властью или автор близкий родственник, опекун, сожитель либо отвечает за воспитание или присмотр, срок - от 10 до 15 лет.",
+        "sourceTextSha256": "00bc97254923a182fd69c4371b5790f42d9970888b0f018f426a92bb0c3850a8",
+        "sourceFingerprint": "sha256:00bc97254923a182fd69c4371b5790f42d9970888b0f018f426a92bb0c3850a8",
+        "sourceSpan": {
+          "startLine": 1221,
+          "endLine": 1228
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-125-bis-el-que-promoviere-o-facilitare-197",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 197,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III",
+          "ARTICULO 125 bis — El que promoviere o facilitare la prostitución de una persona será penado con prisión de cuatro (4) a seis (6) años de..."
+        ],
+        "officialLabel": "ARTICULO 125 bis — El que promoviere o facilitare la prostitución de una persona será penado con prisión de cuatro (4) a seis (6) años de...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 125 bis — El que promoviere o facilitare la prostitución de una persona será penado con prisión de cuatro (4) a seis (6) años de prisión, aunque mediare el consentimiento de la víctima.\n\n(Artículo sustituido por art. 21 de la Ley N° 26.842 [/infolegInternet/verNorma.do?id=206554] B.O. 27/12/2012)\n",
+        "fullTranslationRu": "СТАТЬЯ 125 bis — Тот, кто поощряет или облегчает проституцию лица, наказывается тюремным заключением от четырех (4) до шести (6) лет, даже при согласии потерпевшего.\n\n(Статья заменена статьей 21 Закона N 26.842, B.O. 27/12/2012)",
+        "simpleRu": "За поощрение или облегчение проституции другого человека наказание - от 4 до 6 лет тюрьмы, даже если потерпевший согласился.",
+        "sourceTextSha256": "b9977dc6433f9819745261db2234f9afdef1e257a004419a09d319417f11f715",
+        "sourceFingerprint": "sha256:b9977dc6433f9819745261db2234f9afdef1e257a004419a09d319417f11f715",
+        "sourceSpan": {
+          "startLine": 1229,
+          "endLine": 1232
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-126-en-el-caso-del-articulo-anterior-198",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 198,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III",
+          "ARTICULO 126 — En el caso del artículo anterior, la pena será de cinco (5) a diez (10) años de prisión, si concurriere alguna de las sigu..."
+        ],
+        "officialLabel": "ARTICULO 126 — En el caso del artículo anterior, la pena será de cinco (5) a diez (10) años de prisión, si concurriere alguna de las sigu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 126 — En el caso del artículo anterior, la pena será de cinco (5) a diez (10) años de prisión, si concurriere alguna de las siguientes circunstancias:\n\n1. Mediare engaño, fraude, violencia, amenaza o cualquier otro medio de intimidación o coerción, abuso de autoridad o de una situación de vulnerabilidad, o concesión o recepción de pagos o beneficios para obtener el consentimiento de una persona que tenga autoridad sobre la víctima.\n\n2. El autor fuere ascendiente, descendiente, cónyuge, afín en línea recta, colateral o conviviente, tutor, curador, autoridad o ministro de cualquier culto reconocido o no, o encargado de la educación o de la guarda de la víctima.\n\n3. El autor fuere funcionario público o miembro de una fuerza de seguridad, policial o penitenciaria.\n\nCuando la víctima fuere menor de dieciocho (18) años la pena será de diez (10) a quince (15) años de prisión.\n\n(Artículo sustituido por art. 22 de la Ley N° 26.842 [/infolegInternet/verNorma.do?id=206554] B.O. 27/12/2012)\n",
+        "fullTranslationRu": "СТАТЬЯ 126 — В случае предыдущей статьи наказание составляет от пяти (5) до десяти (10) лет тюремного заключения, если имеется какое-либо из следующих обстоятельств:\n\n1. Имели место обман, мошенничество, насилие, угроза или любой другой способ запугивания или принуждения, злоупотребление властью или уязвимым положением, либо предоставление или получение платежей или выгод для получения согласия лица, имеющего власть над потерпевшим.\n\n2. Автор является восходящим родственником, нисходящим родственником, супругом, свойственником по прямой линии, боковым родственником или сожителем, опекуном, попечителем, представителем власти или служителем любого признанного или непризнанного культа, либо лицом, ответственным за образование или присмотр за потерпевшим.\n\n3. Автор является государственным служащим или членом сил безопасности, полиции либо пенитенциарной службы.\n\nКогда потерпевший младше восемнадцати (18) лет, наказание составляет от десяти (10) до пятнадцати (15) лет тюремного заключения.\n\n(Статья заменена статьей 22 Закона N 26.842, B.O. 27/12/2012)",
+        "simpleRu": "Для преступления из статьи 125 bis наказание становится от 5 до 10 лет, если есть обман, насилие, угрозы, злоупотребление властью или уязвимостью, платежи за согласие, близкая связь автора с потерпевшим, роль опекуна, власти, религиозного служителя, госслужащего или сил безопасности. Если потерпевшему меньше 18 лет, срок - от 10 до 15 лет.",
+        "sourceTextSha256": "f9bf880f52dbba1a83ee0c6186d0ff86e3a6eb30ff757dac5c1ec25b8394ed88",
+        "sourceFingerprint": "sha256:f9bf880f52dbba1a83ee0c6186d0ff86e3a6eb30ff757dac5c1ec25b8394ed88",
+        "sourceSpan": {
+          "startLine": 1233,
+          "endLine": 1244
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-127-sera-reprimido-con-prision-de-cuatro-199",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 199,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III",
+          "ARTICULO 127 — Será reprimido con prisión de cuatro (4) a seis (6) años, el que explotare económicamente el ejercicio de la prostitución ..."
+        ],
+        "officialLabel": "ARTICULO 127 — Será reprimido con prisión de cuatro (4) a seis (6) años, el que explotare económicamente el ejercicio de la prostitución ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 127 — Será reprimido con prisión de cuatro (4) a seis (6) años, el que explotare económicamente el ejercicio de la prostitución de una persona, aunque mediare el consentimiento de la víctima.\n\nLa pena será de cinco (5) a diez (10) años de prisión, si concurriere alguna de las siguientes circunstancias:\n\n1. Mediare engaño, fraude, violencia, amenaza o cualquier otro medio de intimidación o coerción, abuso de autoridad o de una situación de vulnerabilidad, o concesión o recepción de pagos o beneficios para obtener el consentimiento de una persona que tenga autoridad sobre la víctima.\n\n2. El autor fuere ascendiente, descendiente, cónyuge, afín en línea recta, colateral o conviviente, tutor, curador, autoridad o ministro de cualquier culto reconocido o no, o encargado de la educación o de la guarda de la víctima.\n\n3. El autor fuere funcionario público o miembro de una fuerza de seguridad, policial o penitenciaria.\n\nCuando la víctima fuere menor de dieciocho (18) años la pena será de diez (10) a quince (15) años de prisión.\n\n(Artículo sustituido por art. 23 de la Ley N° 26.842 [/infolegInternet/verNorma.do?id=206554] B.O. 27/12/2012)\n",
+        "fullTranslationRu": "СТАТЬЯ 127 — Тюремным заключением от четырех (4) до шести (6) лет наказывается тот, кто экономически эксплуатирует занятие проституцией другого лица, даже при согласии потерпевшего.\n\nНаказание составляет от пяти (5) до десяти (10) лет тюремного заключения, если имеется какое-либо из следующих обстоятельств:\n\n1. Имели место обман, мошенничество, насилие, угроза или любой другой способ запугивания или принуждения, злоупотребление властью или уязвимым положением, либо предоставление или получение платежей или выгод для получения согласия лица, имеющего власть над потерпевшим.\n\n2. Автор является восходящим родственником, нисходящим родственником, супругом, свойственником по прямой линии, боковым родственником или сожителем, опекуном, попечителем, представителем власти или служителем любого признанного или непризнанного культа, либо лицом, ответственным за образование или присмотр за потерпевшим.\n\n3. Автор является государственным служащим или членом сил безопасности, полиции либо пенитенциарной службы.\n\nКогда потерпевший младше восемнадцати (18) лет, наказание составляет от десяти (10) до пятнадцати (15) лет тюремного заключения.\n\n(Статья заменена статьей 23 Закона N 26.842, B.O. 27/12/2012)",
+        "simpleRu": "За получение экономической выгоды от проституции другого человека - от 4 до 6 лет, даже при согласии потерпевшего. При обмане, насилии, угрозах, злоупотреблении властью или уязвимостью, близкой связи автора, опеке, религиозной или государственной роли срок - от 5 до 10 лет. Если потерпевшему меньше 18 лет, срок - от 10 до 15 лет.",
+        "sourceTextSha256": "497109f9028b86ee3083e65559f17d8c80ef79e10226f0634b653777e2336362",
+        "sourceFingerprint": "sha256:497109f9028b86ee3083e65559f17d8c80ef79e10226f0634b653777e2336362",
+        "sourceSpan": {
+          "startLine": 1245,
+          "endLine": 1258
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-127-bis-articulo-derogado-por-art-17-200",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 200,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III",
+          "ARTICULO 127 bis. - (Artículo derogado por art. 17 de la Ley N° 26.364 [/infolegInternet/verNorma.do?id=140100], B.O. 30/4/2008)"
+        ],
+        "officialLabel": "ARTICULO 127 bis. - (Artículo derogado por art. 17 de la Ley N° 26.364 [/infolegInternet/verNorma.do?id=140100], B.O. 30/4/2008)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 127 bis. - (Artículo derogado por art. 17 de la Ley N° 26.364 [/infolegInternet/verNorma.do?id=140100], B.O. 30/4/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 127 bis. - (Статья отменена статьей 17 Закона N 26.364, B.O. 30/4/2008)",
+        "simpleRu": "Статья 127 bis отменена Законом N 26.364 с публикацией 30/4/2008.",
+        "sourceTextSha256": "6188abc6260715794e7d7db17518dbe9bb925ab9d5704953eeb9d7934fffdec1",
+        "sourceFingerprint": "sha256:6188abc6260715794e7d7db17518dbe9bb925ab9d5704953eeb9d7934fffdec1",
+        "sourceSpan": {
+          "startLine": 1259,
+          "endLine": 1260
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-127-ter-articulo-derogado-por-art-17-201",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 201,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III",
+          "ARTICULO 127 ter. - (Artículo derogado por art. 17 de la Ley N° 26.364 [/infolegInternet/verNorma.do?id=140100], B.O. 30/4/2008)"
+        ],
+        "officialLabel": "ARTICULO 127 ter. - (Artículo derogado por art. 17 de la Ley N° 26.364 [/infolegInternet/verNorma.do?id=140100], B.O. 30/4/2008)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 127 ter. - (Artículo derogado por art. 17 de la Ley N° 26.364 [/infolegInternet/verNorma.do?id=140100], B.O. 30/4/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 127 ter. - (Статья отменена статьей 17 Закона N 26.364, B.O. 30/4/2008)",
+        "simpleRu": "Статья 127 ter отменена Законом N 26.364 с публикацией 30/4/2008.",
+        "sourceTextSha256": "8f12516dc45a8c72de34deedf5376050e9913725a944488880d30ff2d8544360",
+        "sourceFingerprint": "sha256:8f12516dc45a8c72de34deedf5376050e9913725a944488880d30ff2d8544360",
+        "sourceSpan": {
+          "startLine": 1261,
+          "endLine": 1262
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-128-sera-reprimido-con-prision-de-tres-202",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 202,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III",
+          "ARTICULO 128 — Será reprimido con prisión de tres (3) a seis (6) años el que produjere, financiare, ofreciere, comerciare, publicare, fac..."
+        ],
+        "officialLabel": "ARTICULO 128 — Será reprimido con prisión de tres (3) a seis (6) años el que produjere, financiare, ofreciere, comerciare, publicare, fac...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 128 — Será reprimido con prisión de tres (3) a seis (6) años el que produjere, financiare, ofreciere, comerciare, publicare, facilitare, divulgare o distribuyere, por cualquier medio, toda representación de un menor de dieciocho (18) años dedicado a actividades sexuales explícitas o toda representación de sus partes genitales con fines predominantemente sexuales, al igual que el que organizare espectáculos en vivo de representaciones sexuales explícitas en que participaren dichos menores.\n\nSerá reprimido con prisión de cuatro (4) meses a un (1) año el que a sabiendas tuviere en su poder representaciones de las descriptas en el párrafo anterior.\n\nSerá reprimido con prisión de seis (6) meses a dos (2) años el que tuviere en su poder representaciones de las descriptas en el primer párrafo con fines inequívocos de distribución o comercialización.\n\nSerá reprimido con prisión de un (1) mes a tres (3) años el que facilitare el acceso a espectáculos pornográficos o suministrare material pornográfico a menores de catorce (14) años.\n\nTodas las escalas penales previstas en este artículo se elevarán en un tercio en su mínimo y en su máximo cuando la víctima fuere menor de trece (13) años.\n\n(Artículo sustituido por art. 1° de la Ley N° 27.436 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=309201] B.O. 23/4/2018)\n",
+        "fullTranslationRu": "СТАТЬЯ 128 — Тюремным заключением от трех (3) до шести (6) лет наказывается тот, кто производит, финансирует, предлагает, продает, публикует, облегчает, распространяет или распределяет любым способом любое изображение лица младше восемнадцати (18) лет, занятого явными сексуальными действиями, либо любое изображение его гениталий с преимущественно сексуальной целью, а также тот, кто организует живые представления явного сексуального характера с участием таких несовершеннолетних.\n\nТюремным заключением от четырех (4) месяцев до одного (1) года наказывается тот, кто сознательно имеет у себя изображения, описанные в предыдущем абзаце.\n\nТюремным заключением от шести (6) месяцев до двух (2) лет наказывается тот, кто имеет у себя изображения, описанные в первом абзаце, с недвусмысленной целью распространения или продажи.\n\nТюремным заключением от одного (1) месяца до трех (3) лет наказывается тот, кто облегчает доступ к порнографическим представлениям или предоставляет порнографический материал лицам младше четырнадцати (14) лет.\n\nВсе шкалы наказаний, предусмотренные этой статьей, повышаются на одну треть в минимуме и максимуме, когда потерпевший младше тринадцати (13) лет.\n\n(Статья заменена статьей 1 Закона N 27.436, B.O. 23/4/2018)",
+        "simpleRu": "Статья 128 запрещает создание, финансирование, продажу, публикацию, распространение или организацию сексуальных изображений и представлений с участием лиц младше 18 лет. За это - от 3 до 6 лет. За хранение таких материалов - от 4 месяцев до 1 года, а за хранение для распространения или продажи - от 6 месяцев до 2 лет. За доступ или материалы для детей младше 14 лет - от 1 месяца до 3 лет. Если потерпевшему меньше 13 лет, все сроки увеличиваются на одну треть.",
+        "sourceTextSha256": "4bb2312f438cae1934929da6d7b2d857177c87a2427e75bcdb1412b4b061b5ce",
+        "sourceFingerprint": "sha256:4bb2312f438cae1934929da6d7b2d857177c87a2427e75bcdb1412b4b061b5ce",
+        "sourceSpan": {
+          "startLine": 1263,
+          "endLine": 1274
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-129-sera-reprimido-con-multa-de-mil-203",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 203,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo III",
+          "ARTICULO 129 — Será reprimido con multa de mil a quince mil pesos el que ejecutare o hiciese ejecutar por otros actos de exhibiciones obs..."
+        ],
+        "officialLabel": "ARTICULO 129 — Será reprimido con multa de mil a quince mil pesos el que ejecutare o hiciese ejecutar por otros actos de exhibiciones obs...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 129 — Será reprimido con multa de mil a quince mil pesos el que ejecutare o hiciese ejecutar por otros actos de exhibiciones obscenas expuestas a ser vistas involuntariamente por terceros.\n\nSi los afectados fueren menores de dieciocho años la pena será de prisión de seis meses a cuatro años. Lo mismo valdrá, con independencia de la voluntad del afectado, cuando se tratare de un menor de trece años.\n\n(Artículo sustituido por art. 10° de la Ley N° 25.087 [/infolegInternet/verNorma.do?id=57556], B.O. 14/5/1999)\n\n(Nota Infoleg: multa actualizada anteriormente por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 129 — Штрафом от одной тысячи до пятнадцати тысяч песо наказывается тот, кто совершает сам или заставляет других совершать непристойные действия, выставленные так, что третьи лица могут увидеть их против своей воли.\n\nЕсли затронутые лица младше восемнадцати лет, наказание составляет тюремное заключение от шести месяцев до четырех лет. То же применяется независимо от воли затронутого лица, когда речь идет о лице младше тринадцати лет.\n\n(Статья заменена статьей 10 Закона N 25.087, B.O. 14/5/1999)\n\n(Примечание Infoleg: штраф ранее обновлен статьей 1 Закона N 24.286, B.O. 29/12/1993)",
+        "simpleRu": "За непристойные действия, которые другие люди могут увидеть против своей воли, установлен штраф от 1 000 до 15 000 песо. Если затронуты лица младше 18 лет, наказание - от 6 месяцев до 4 лет. Для лица младше 13 лет это применяется независимо от его воли.",
+        "sourceTextSha256": "5b4f99b5042c95cd35971a0861f93f23a1f50d849eecd0d95e3f478d32930da3",
+        "sourceFingerprint": "sha256:5b4f99b5042c95cd35971a0861f93f23a1f50d849eecd0d95e3f478d32930da3",
+        "sourceSpan": {
+          "startLine": 1275,
+          "endLine": 1282
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iv-204",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 204,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo IV"
+        ],
+        "officialLabel": "Capítulo IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo IV\n",
+        "fullTranslationRu": "Глава IV",
+        "simpleRu": "Начинается Глава IV раздела о преступлениях против половой неприкосновенности.",
+        "sourceTextSha256": "72501eb8ff98a8aadfa50cbcb5b54e7f1997beb6258707a648e35b7f030981ab",
+        "sourceFingerprint": "sha256:72501eb8ff98a8aadfa50cbcb5b54e7f1997beb6258707a648e35b7f030981ab",
+        "sourceSpan": {
+          "startLine": 1283,
+          "endLine": 1284
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-130-sera-reprimido-con-prision-de-uno-205",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 205,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo IV",
+          "ARTICULO 130 — Será reprimido con prisión de uno a cuatro años, el que sustrajere o retuviere a una persona por medio de la fuerza, intim..."
+        ],
+        "officialLabel": "ARTICULO 130 — Será reprimido con prisión de uno a cuatro años, el que sustrajere o retuviere a una persona por medio de la fuerza, intim...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 130 — Será reprimido con prisión de uno a cuatro años, el que sustrajere o retuviere a una persona por medio de la fuerza, intimidación o fraude, con la intención de menoscabar su integridad sexual.\n\nLa pena será de seis meses a dos años, si se tratare de una persona menor de dieciséis años, con su consentimiento.\n\nLa pena será de dos a seis años si se sustrajere o retuviere mediante fuerza, intimidación o fraude a una persona menor de trece años, con el mismo fin.\n\n(Artículo sustituido por art. 11° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O. 14/5/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 130 — Тюремным заключением от одного до четырех лет наказывается тот, кто силой, запугиванием или обманом увозит или удерживает лицо с намерением причинить вред его половой неприкосновенности.\n\nНаказание составляет от шести месяцев до двух лет, если речь идет о лице младше шестнадцати лет и с его согласия.\n\nНаказание составляет от двух до шести лет, если лицо младше тринадцати лет увозят или удерживают силой, запугиванием или обманом с той же целью.\n\n(Статья заменена статьей 11 Закона N 25.087, B.O. 14/5/1999)",
+        "simpleRu": "За увоз или удержание человека силой, угрозой или обманом с целью нарушить его половую неприкосновенность - от 1 до 4 лет. Если лицу меньше 16 лет и оно согласилось, срок - от 6 месяцев до 2 лет. Если лицу меньше 13 лет и применены сила, запугивание или обман, срок - от 2 до 6 лет.",
+        "sourceTextSha256": "0f98efb982dc2d95d83cae76b6fb45125ad5cecbccf6b80c8d29788b6fe220d6",
+        "sourceFingerprint": "sha256:0f98efb982dc2d95d83cae76b6fb45125ad5cecbccf6b80c8d29788b6fe220d6",
+        "sourceSpan": {
+          "startLine": 1285,
+          "endLine": 1292
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-131-sera-penado-con-prision-de-seis-206",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 206,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo IV",
+          "ARTICULO 131. - Será penado con prisión de seis (6) meses a cuatro (4) años el que, por medio de comunicaciones electrónicas, telecomunic..."
+        ],
+        "officialLabel": "ARTICULO 131. - Será penado con prisión de seis (6) meses a cuatro (4) años el que, por medio de comunicaciones electrónicas, telecomunic...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 131. - Será penado con prisión de seis (6) meses a cuatro (4) años el que, por medio de comunicaciones electrónicas, telecomunicaciones o cualquier otra tecnología de transmisión de datos, contactare a una persona menor de edad, con el propósito de cometer cualquier delito contra la integridad sexual de la misma.\n\n(Artículo incorporado por art. 1° de la Ley N° 26.904 [/infolegInternet/verNorma.do?id=223586] B.O. 11/12/2013)\n",
+        "fullTranslationRu": "СТАТЬЯ 131. - Тюремным заключением от шести (6) месяцев до четырех (4) лет наказывается тот, кто через электронные сообщения, телекоммуникации или любую другую технологию передачи данных связывается с несовершеннолетним лицом с целью совершить против него любое преступление против половой неприкосновенности.\n\n(Статья включена статьей 1 Закона N 26.904, B.O. 11/12/2013)",
+        "simpleRu": "Если человек через интернет, телефон или другую технологию связывается с несовершеннолетним, чтобы совершить преступление против его половой неприкосновенности, наказание - от 6 месяцев до 4 лет.",
+        "sourceTextSha256": "308c293120dae38aa0fcc90f6c1bb41cd86354cba46a4af8eaefc53571a12083",
+        "sourceFingerprint": "sha256:308c293120dae38aa0fcc90f6c1bb41cd86354cba46a4af8eaefc53571a12083",
+        "sourceSpan": {
+          "startLine": 1293,
+          "endLine": 1296
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-v-207",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 207,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo V"
+        ],
+        "officialLabel": "Capítulo V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo V\n",
+        "fullTranslationRu": "Глава V",
+        "simpleRu": "Начинается Глава V раздела о преступлениях против половой неприкосновенности.",
+        "sourceTextSha256": "12b596cf35f0ba3b6744ff95e93473cfeaf7166230db0eac432cd8e4dc2415a7",
+        "sourceFingerprint": "sha256:12b596cf35f0ba3b6744ff95e93473cfeaf7166230db0eac432cd8e4dc2415a7",
+        "sourceSpan": {
+          "startLine": 1297,
+          "endLine": 1298
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-132-en-los-delitos-previstos-en-los-208",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 208,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo V",
+          "ARTICULO 132. - En los delitos previstos en los artículos 119: 1°, 2°, 3° párrafos, 120: 1° párrafo, y 130 la víctima podrá instar el eje..."
+        ],
+        "officialLabel": "ARTICULO 132. - En los delitos previstos en los artículos 119: 1°, 2°, 3° párrafos, 120: 1° párrafo, y 130 la víctima podrá instar el eje...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 132. - En los delitos previstos en los artículos 119: 1°, 2°, 3° párrafos, 120: 1° párrafo, y 130 la víctima podrá instar el ejercicio de la acción penal pública con el asesoramiento o representación de instituciones oficiales o privadas sin fines de lucro de protección o ayuda a las víctimas.\n\n(Artículo sustituido por art. 1° de la Ley N° 26.738 [/infolegInternet/verNorma.do?id=195896] B.O. 7/4/2012)\n",
+        "fullTranslationRu": "СТАТЬЯ 132. - В преступлениях, предусмотренных статьями 119: 1-й, 2-й и 3-й абзацы, 120: 1-й абзац, и 130, потерпевший может побудить осуществление публичного уголовного преследования при консультационной помощи или представительстве официальных либо частных некоммерческих учреждений защиты или помощи потерпевшим.\n\n(Статья заменена статьей 1 Закона N 26.738, B.O. 7/4/2012)",
+        "simpleRu": "По преступлениям из указанных частей статей 119, 120 и 130 потерпевший может добиваться публичного уголовного дела с помощью государственных или частных некоммерческих организаций, которые защищают или поддерживают потерпевших.",
+        "sourceTextSha256": "6727a8a381cfb6a8359437b59a705243a3cb0cbc5eafc33f549829069aab33f2",
+        "sourceFingerprint": "sha256:6727a8a381cfb6a8359437b59a705243a3cb0cbc5eafc33f549829069aab33f2",
+        "sourceSpan": {
+          "startLine": 1299,
+          "endLine": 1302
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-133-los-ascendientes-descendientes-conyuges-convivientes-afines-209",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 209,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO III",
+          "Capítulo V",
+          "ARTICULO 133. - Los ascendientes, descendientes, cónyuges, convivientes, afines en línea recta, hermanos, tutores, curadores y cualesquie..."
+        ],
+        "officialLabel": "ARTICULO 133. - Los ascendientes, descendientes, cónyuges, convivientes, afines en línea recta, hermanos, tutores, curadores y cualesquie...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 133. - Los ascendientes, descendientes, cónyuges, convivientes, afines en línea recta, hermanos, tutores, curadores y cualesquiera persona que, con abuso de una relación de dependencia, de autoridad, de poder, de confianza o encargo, cooperaren a la perpetración de los delitos comprendidos en este título serán reprimidos con la pena de los autores.\n\n(Artículo sustituido por art. 13 de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O.14/5/1999)\n\n(Nota Infoleg: Rúbricas de los Capítulos II, III, IV y V derogadas por art. 1° de la Ley N° 25.087 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=57556] B.O.14/5/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 133. - Восходящие родственники, нисходящие родственники, супруги, сожители, свойственники по прямой линии, братья и сестры, опекуны, попечители и любое лицо, которое, злоупотребляя отношениями зависимости, власти, силы, доверия или поручения, содействует совершению преступлений, включенных в этот раздел, наказываются наказанием авторов.\n\n(Статья заменена статьей 13 Закона N 25.087, B.O. 14/5/1999)\n\n(Примечание Infoleg: Названия Глав II, III, IV и V отменены статьей 1 Закона N 25.087, B.O. 14/5/1999)",
+        "simpleRu": "Если близкие родственники, супруги, сожители, опекуны или другие люди, имеющие власть, доверие или поручение, помогают совершить преступления этого раздела, они наказываются как авторы преступления.",
+        "sourceTextSha256": "05ead20c3387d62c3b1d8b7befd34f65d2966dd8a79cf497bce4449a923f8742",
+        "sourceFingerprint": "sha256:05ead20c3387d62c3b1d8b7befd34f65d2966dd8a79cf497bce4449a923f8742",
+        "sourceSpan": {
+          "startLine": 1303,
+          "endLine": 1308
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iv-210",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 210,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV"
+        ],
+        "officialLabel": "TITULO IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO IV\n\nDELITOS CONTRA EL ESTADO CIVIL\n",
+        "fullTranslationRu": "РАЗДЕЛ IV\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ГРАЖДАНСКОГО СОСТОЯНИЯ",
+        "simpleRu": "Раздел IV говорит о преступлениях против гражданского состояния, например о незаконных браках и изменении личности.",
+        "sourceTextSha256": "9260324e62e86330d18692ae746b90b645d816340b2608b494d7bd752252445b",
+        "sourceFingerprint": "sha256:9260324e62e86330d18692ae746b90b645d816340b2608b494d7bd752252445b",
+        "sourceSpan": {
+          "startLine": 1309,
+          "endLine": 1312
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-211",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 211,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nMatrimonios ilegales\n",
+        "fullTranslationRu": "Глава I\n\nНезаконные браки",
+        "simpleRu": "Глава I касается незаконных браков.",
+        "sourceTextSha256": "c8a0ebc6b30a6e7717780f1f3c45b439e532b9770a12a4348e959f7ec05f7b97",
+        "sourceFingerprint": "sha256:c8a0ebc6b30a6e7717780f1f3c45b439e532b9770a12a4348e959f7ec05f7b97",
+        "sourceSpan": {
+          "startLine": 1313,
+          "endLine": 1316
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-134-seran-reprimidos-con-prision-de-uno-212",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 212,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo I",
+          "ARTICULO 134. - Serán reprimidos con prisión de uno a cuatro años, los que contrajeren matrimonio sabiendo ambos que existe impedimento q..."
+        ],
+        "officialLabel": "ARTICULO 134. - Serán reprimidos con prisión de uno a cuatro años, los que contrajeren matrimonio sabiendo ambos que existe impedimento q...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 134. - Serán reprimidos con prisión de uno a cuatro años, los que contrajeren matrimonio sabiendo ambos que existe impedimento que cause su nulidad absoluta.\n",
+        "fullTranslationRu": "СТАТЬЯ 134. - Тюремным заключением от одного до четырех лет наказываются лица, вступившие в брак, когда оба знали, что существует препятствие, вызывающее его абсолютную недействительность.",
+        "simpleRu": "Если оба человека вступают в брак, зная о препятствии, из-за которого брак абсолютно недействителен, наказание - от 1 до 4 лет.",
+        "sourceTextSha256": "20be7e8d4eb19b66f1b5a40f5561917c8b9998eb41c4d635f4b58adfea4ef649",
+        "sourceFingerprint": "sha256:20be7e8d4eb19b66f1b5a40f5561917c8b9998eb41c4d635f4b58adfea4ef649",
+        "sourceSpan": {
+          "startLine": 1317,
+          "endLine": 1318
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-135-seran-reprimidos-con-prision-de-dos-213",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 213,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo I",
+          "ARTICULO 135. - Serán reprimidos con prisión de dos a seis años:"
+        ],
+        "officialLabel": "ARTICULO 135. - Serán reprimidos con prisión de dos a seis años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 135. - Serán reprimidos con prisión de dos a seis años:\n\n1º. El que contrajere matrimonio cuando, sabiendo que existe impedimento que cause su nulidad absoluta, ocultare esta circunstancia al otro contrayente;\n\n2º. El que engañando a una persona, simulare matrimonio con ella.\n",
+        "fullTranslationRu": "СТАТЬЯ 135. - Тюремным заключением от двух до шести лет наказываются:\n\n1. тот, кто вступает в брак, зная о препятствии, вызывающем его абсолютную недействительность, и скрывает это обстоятельство от другого вступающего в брак;\n\n2. тот, кто, обманывая человека, имитирует с ним брак.",
+        "simpleRu": "Наказание от 2 до 6 лет применяется, если человек скрывает от другого препятствие, делающее брак недействительным, или обманом изображает, что заключает с ним брак.",
+        "sourceTextSha256": "e490ae44263bda4dacfd255b4f391fc9e3c1ab16e44f81890ca6720d3d8fba3b",
+        "sourceFingerprint": "sha256:e490ae44263bda4dacfd255b4f391fc9e3c1ab16e44f81890ca6720d3d8fba3b",
+        "sourceSpan": {
+          "startLine": 1319,
+          "endLine": 1324
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-136-el-oficial-publico-que-a-sabiendas-214",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 214,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo I",
+          "ARTICULO 136. - El oficial público que a sabiendas autorizare un matrimonio de los comprendidos en los artículos anteriores, sufrirá, en ..."
+        ],
+        "officialLabel": "ARTICULO 136. - El oficial público que a sabiendas autorizare un matrimonio de los comprendidos en los artículos anteriores, sufrirá, en ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 136. - El oficial público que a sabiendas autorizare un matrimonio de los comprendidos en los artículos anteriores, sufrirá, en su caso, la pena que en ellos se determina.\n\nSi lo autorizare sin saberlo, cuando su ignorancia provenga de no haber llenado los requisitos que la ley prescribe para la celebración del matrimonio, la pena será de multa de setecientos cincuenta a pesos doce mil quinientos e inhabilitación especial por seis meses a dos años.\n\nSufrirá multa de pesos setecientos cincuenta a pesos doce mil quinientos el oficial público que, fuera de los demás casos de este artículo, procediere a la celebración de un matrimonio sin haber observado todas las formalidades exigidas por la ley.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 136. - Государственный должностной регистратор, который сознательно разрешит брак из числа указанных в предыдущих статьях, несет, в соответствующем случае, наказание, определенное в этих статьях.\n\nЕсли он разрешит его, не зная об этом, но его незнание произошло из-за невыполнения требований, которые закон предписывает для заключения брака, наказание составляет штраф от семисот пятидесяти до двенадцати тысяч пятисот песо и специальное лишение прав от шести месяцев до двух лет.\n\nШтрафом от семисот пятидесяти до двенадцати тысяч пятисот песо наказывается государственный должностной регистратор, который, вне других случаев этой статьи, проводит заключение брака без соблюдения всех формальностей, требуемых законом.\n\n(Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, B.O. 29/12/1993)",
+        "simpleRu": "Если должностное лицо сознательно разрешает незаконный брак, оно отвечает по тем же правилам. Если оно не знало из-за того, что не проверило требования закона, штраф - от 750 до 12 500 песо и специальное лишение прав от 6 месяцев до 2 лет. За оформление брака без всех формальностей тоже штраф от 750 до 12 500 песо.",
+        "sourceTextSha256": "6857563edd71886619fe9b048b5c515f3560e24fb45c9d714127f8a3832f9c23",
+        "sourceFingerprint": "sha256:6857563edd71886619fe9b048b5c515f3560e24fb45c9d714127f8a3832f9c23",
+        "sourceSpan": {
+          "startLine": 1325,
+          "endLine": 1332
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-137-en-la-misma-pena-incurrira-el-215",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 215,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo I",
+          "ARTICULO 137. - En la misma pena incurrirá el representante legítimo de un menor impúber que diere el consentimiento para el matrimonio d..."
+        ],
+        "officialLabel": "ARTICULO 137. - En la misma pena incurrirá el representante legítimo de un menor impúber que diere el consentimiento para el matrimonio d...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 137. - En la misma pena incurrirá el representante legítimo de un menor impúber que diere el consentimiento para el matrimonio del mismo.\n",
+        "fullTranslationRu": "СТАТЬЯ 137. - Такое же наказание несет законный представитель несовершеннолетнего, не достигшего брачного возраста, который дает согласие на его брак.",
+        "simpleRu": "Если законный представитель дает согласие на брак несовершеннолетнего, который еще не может вступать в брак, применяется то же наказание.",
+        "sourceTextSha256": "8f70e72b5d46dac3120f8e3cb3a388a4cb4484b3f8c2435945d9fd972f4a7595",
+        "sourceFingerprint": "sha256:8f70e72b5d46dac3120f8e3cb3a388a4cb4484b3f8c2435945d9fd972f4a7595",
+        "sourceSpan": {
+          "startLine": 1333,
+          "endLine": 1334
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-216",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 216,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nSupresión y suposición del estado civil y de la Identidad\n",
+        "fullTranslationRu": "Глава II\n\nСокрытие и подмена гражданского состояния и личности",
+        "simpleRu": "Глава II касается сокрытия, изменения или подмены гражданского состояния и личности.",
+        "sourceTextSha256": "0a154e214aa727d9a96e89c218fbced4e5397cbe03827763d72e49c7e38824aa",
+        "sourceFingerprint": "sha256:0a154e214aa727d9a96e89c218fbced4e5397cbe03827763d72e49c7e38824aa",
+        "sourceSpan": {
+          "startLine": 1335,
+          "endLine": 1338
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-138-se-aplicara-prision-de-1-a-217",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 217,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo II",
+          "ARTICULO 138.- Se aplicará prisión de 1 a 4 años al que, por un acto cualquiera, hiciere incierto, alterare o suprimiere el estado civil ..."
+        ],
+        "officialLabel": "ARTICULO 138.- Se aplicará prisión de 1 a 4 años al que, por un acto cualquiera, hiciere incierto, alterare o suprimiere el estado civil ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 138.- Se aplicará prisión de 1 a 4 años al que, por un acto cualquiera, hiciere incierto, alterare o suprimiere el estado civil de otro.\n\n(Artículo sustituido por art. 5° de la Ley N° 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791] B.O. 2/1/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 138.- Тюремное заключение от 1 до 4 лет применяется к тому, кто любым действием делает гражданское состояние другого лица неопределенным, изменяет его или уничтожает.\n\n(Статья заменена статьей 5 Закона N 24.410, B.O. 2/1/1995)",
+        "simpleRu": "Если человек любым действием делает гражданское состояние другого человека неясным, изменяет или устраняет его, наказание - от 1 до 4 лет.",
+        "sourceTextSha256": "cf3faa8183c836ec73812138c51f12d29292cb15d4b3756a5149d059fa8cd4a1",
+        "sourceFingerprint": "sha256:cf3faa8183c836ec73812138c51f12d29292cb15d4b3756a5149d059fa8cd4a1",
+        "sourceSpan": {
+          "startLine": 1339,
+          "endLine": 1342
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-139-se-impondra-prision-de-2-a-218",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 218,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo II",
+          "ARTICULO 139.- Se impondrá prisión de 2 a 6 años:"
+        ],
+        "officialLabel": "ARTICULO 139.- Se impondrá prisión de 2 a 6 años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 139.- Se impondrá prisión de 2 a 6 años:\n\n1. A la mujer que fingiere preñez o parto para dar a su supuesto hijo derechos que no le correspondan.\n\n2. Al que, por un acto cualquiera, hiciere incierto, alterare o suprimiere la identidad de un menor de 10 años, y el que lo retuviere u ocultare.\n\n(Artículo sustituido por art. 6° de la Ley N° 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791] B.O. 2/1/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 139.- Назначается тюремное заключение от 2 до 6 лет:\n\n1. женщине, которая притворяется беременной или родившей, чтобы дать предполагаемому ребенку права, которые ему не принадлежат;\n\n2. тому, кто любым действием делает неопределенной, изменяет или уничтожает личность ребенка младше 10 лет, а также тому, кто удерживает или скрывает его.\n\n(Статья заменена статьей 6 Закона N 24.410, B.O. 2/1/1995)",
+        "simpleRu": "От 2 до 6 лет назначается за ложную беременность или роды, чтобы дать ребенку чужие права, а также за изменение, сокрытие или уничтожение личности ребенка младше 10 лет, его удержание или скрытие.",
+        "sourceTextSha256": "dc57fade3b287c144e9758cf282a70ddb19016a2f136e9e592b36d48f40cb788",
+        "sourceFingerprint": "sha256:dc57fade3b287c144e9758cf282a70ddb19016a2f136e9e592b36d48f40cb788",
+        "sourceSpan": {
+          "startLine": 1343,
+          "endLine": 1350
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-139-bis-sera-reprimido-con-reclusion-o-219",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 219,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO IV",
+          "Capítulo II",
+          "ARTICULO 139 bis - Será reprimido con reclusión o prisión de 3 a 10 años, el que facilitare, promoviere o de cualquier modo intermediare ..."
+        ],
+        "officialLabel": "ARTICULO 139 bis - Será reprimido con reclusión o prisión de 3 a 10 años, el que facilitare, promoviere o de cualquier modo intermediare ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 139 bis - Será reprimido con reclusión o prisión de 3 a 10 años, el que facilitare, promoviere o de cualquier modo intermediare en la perpetración de los delitos comprendidos en este Capítulo, haya mediado o no precio o promesa remuneratoria o ejercido amenaza o abuso de autoridad.\n\nIncurrirán en las penas establecidas en el párrafo anterior y sufrirán, además, inhabilitación especial por doble tiempo que el de la condena, el funcionario público o profesional de la salud que cometa alguna de las conductas previstas en este Capítulo.\n\n(Artículo incorporado por art. 7° de la Ley N° 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791] B.O. 2/1/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 139 bis - Лишением свободы или тюремным заключением от 3 до 10 лет наказывается тот, кто облегчает, поощряет или любым образом посредничает в совершении преступлений этой главы, независимо от того, была ли цена, обещание вознаграждения, угроза или злоупотребление властью.\n\nВ наказания, установленные в предыдущем абзаце, попадают и дополнительно несут специальное лишение прав на срок, вдвое превышающий срок приговора, государственный служащий или медицинский работник, который совершит какое-либо из действий, предусмотренных этой главой.\n\n(Статья включена статьей 7 Закона N 24.410, B.O. 2/1/1995)",
+        "simpleRu": "За помощь, продвижение или посредничество в преступлениях этой главы - от 3 до 10 лет, даже без оплаты, обещания, угрозы или злоупотребления властью. Если это делает госслужащий или медработник, добавляется специальное лишение прав на двойной срок.",
+        "sourceTextSha256": "da6e654ae5195275e7be0026bb0e5ce22583840967a8860004a22747eba42342",
+        "sourceFingerprint": "sha256:da6e654ae5195275e7be0026bb0e5ce22583840967a8860004a22747eba42342",
+        "sourceSpan": {
+          "startLine": 1351,
+          "endLine": 1356
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-v-220",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 220,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V"
+        ],
+        "officialLabel": "TITULO V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO V\n\nDELITOS CONTRA LA LIBERTAD\n",
+        "fullTranslationRu": "РАЗДЕЛ V\n\nПРЕСТУПЛЕНИЯ ПРОТИВ СВОБОДЫ",
+        "simpleRu": "Раздел V говорит о преступлениях против свободы человека.",
+        "sourceTextSha256": "01efd9a007bcc752f018a142eb15342182cd9adbad0818531ce2744a69201cd4",
+        "sourceFingerprint": "sha256:01efd9a007bcc752f018a142eb15342182cd9adbad0818531ce2744a69201cd4",
+        "sourceSpan": {
+          "startLine": 1357,
+          "endLine": 1360
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-221",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 221,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nDelitos contra la libertad individual\n",
+        "fullTranslationRu": "Глава I\n\nПреступления против индивидуальной свободы",
+        "simpleRu": "Глава I касается преступлений против личной свободы.",
+        "sourceTextSha256": "1b676adcfac2aba28c81f2a74741178471b66514cda67b3cab6cf4cc6bb283b1",
+        "sourceFingerprint": "sha256:1b676adcfac2aba28c81f2a74741178471b66514cda67b3cab6cf4cc6bb283b1",
+        "sourceSpan": {
+          "startLine": 1361,
+          "endLine": 1364
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-140-seran-reprimidos-con-reclusion-o-prision-222",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 222,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 140. - Serán reprimidos con reclusión o prisión de cuatro (4) a quince (15) años el que redujere a una persona a esclavitud o se..."
+        ],
+        "officialLabel": "ARTICULO 140. - Serán reprimidos con reclusión o prisión de cuatro (4) a quince (15) años el que redujere a una persona a esclavitud o se...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 140. - Serán reprimidos con reclusión o prisión de cuatro (4) a quince (15) años el que redujere a una persona a esclavitud o servidumbre, bajo cualquier modalidad, y el que la recibiere en tal condición para mantenerla en ella. En la misma pena incurrirá el que obligare a una persona a realizar trabajos o servicios forzados o a contraer matrimonio servil.\n\n(Artículo sustituido por art. 24 de la Ley N° 26.842 [/infolegInternet/verNorma.do?id=206554] B.O. 27/12/2012)\n",
+        "fullTranslationRu": "СТАТЬЯ 140. - Лишением свободы или тюремным заключением от четырех (4) до пятнадцати (15) лет наказывается тот, кто обращает человека в рабство или зависимое служение в любой форме, а также тот, кто принимает человека в таком состоянии, чтобы удерживать его в нем. Такое же наказание несет тот, кто заставляет человека выполнять принудительные работы или услуги либо вступать в рабский брак.\n\n(Статья заменена статьей 24 Закона N 26.842, B.O. 27/12/2012)",
+        "simpleRu": "За обращение человека в рабство или зависимое служение, удержание его в таком положении, принудительный труд или рабский брак наказание - от 4 до 15 лет.",
+        "sourceTextSha256": "ffbcf8c77b43000f9795219a52f7c3523435ab23b50c3b5b00546b263382d653",
+        "sourceFingerprint": "sha256:ffbcf8c77b43000f9795219a52f7c3523435ab23b50c3b5b00546b263382d653",
+        "sourceSpan": {
+          "startLine": 1365,
+          "endLine": 1368
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-141-sera-reprimido-con-prision-o-reclusion-223",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 223,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 141. - Será reprimido con prisión o reclusión de seis meses a tres años; el que ilegalmente privare a otro de su libertad personal."
+        ],
+        "officialLabel": "ARTICULO 141. - Será reprimido con prisión o reclusión de seis meses a tres años; el que ilegalmente privare a otro de su libertad personal.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 141. - Será reprimido con prisión o reclusión de seis meses a tres años; el que ilegalmente privare a otro de su libertad personal.\n",
+        "fullTranslationRu": "СТАТЬЯ 141. - Тюремным заключением или лишением свободы от шести месяцев до трех лет наказывается тот, кто незаконно лишает другого личной свободы.",
+        "simpleRu": "За незаконное лишение человека свободы наказание - от 6 месяцев до 3 лет.",
+        "sourceTextSha256": "de89d00f93eb0811a3af12b1c1503e6a661e230f68a82a64bc880f6c01f35dd5",
+        "sourceFingerprint": "sha256:de89d00f93eb0811a3af12b1c1503e6a661e230f68a82a64bc880f6c01f35dd5",
+        "sourceSpan": {
+          "startLine": 1369,
+          "endLine": 1370
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-142-se-aplicara-prision-o-reclusion-de-224",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 224,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 142. - Se aplicará prisión o reclusión de dos a seis años, al que privare a otro de su libertad personal, cuando concurra alguna..."
+        ],
+        "officialLabel": "ARTICULO 142. - Se aplicará prisión o reclusión de dos a seis años, al que privare a otro de su libertad personal, cuando concurra alguna...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 142. - Se aplicará prisión o reclusión de dos a seis años, al que privare a otro de su libertad personal, cuando concurra alguna de las circunstancias siguientes:\n\n1. Si el hecho se cometiere con violencias o amenazas o con fines religiosos o de venganza;\n\n2. Si el hecho se cometiere en la persona de un ascendiente, de un hermano, del cónyuge o de otro individuo a quien se deba respeto particular;\n\n3. Si resultare grave daño a la persona, a la salud o a los negocios del ofendido, siempre que el hecho no importare otro delito por el cual la ley imponga pena mayor;\n\n4. Si el hecho se cometiere simulando autoridad pública u orden de autoridad pública;\n\n5. Si la privación de la libertad durare más de un mes.\n",
+        "fullTranslationRu": "СТАТЬЯ 142. - Тюремное заключение или лишение свободы от двух до шести лет применяется к тому, кто лишает другого личной свободы, когда имеется одно из следующих обстоятельств:\n\n1. деяние совершено с насилием или угрозами либо с религиозными целями или из мести;\n\n2. деяние совершено против восходящего родственника, брата или сестры, супруга либо другого лица, которому должен оказываться особый почет;\n\n3. потерпевшему причинен серьезный вред личности, здоровью или делам, если деяние не образует другое преступление, за которое закон назначает более строгое наказание;\n\n4. деяние совершено с имитацией публичной власти или приказа публичной власти;\n\n5. лишение свободы длилось более одного месяца.",
+        "simpleRu": "Если незаконное лишение свободы сопровождается отягчающими обстоятельствами, срок - от 2 до 6 лет. К ним относятся насилие или угрозы, религиозная цель или месть, близкая связь с потерпевшим, серьезный вред, притворство властью или приказом власти, а также срок больше одного месяца.",
+        "sourceTextSha256": "3d0d363422436bc0bc06552972dac9a7546c0da26b269dee3751297662dde3b8",
+        "sourceFingerprint": "sha256:3d0d363422436bc0bc06552972dac9a7546c0da26b269dee3751297662dde3b8",
+        "sourceSpan": {
+          "startLine": 1371,
+          "endLine": 1382
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-142-bis-se-impondra-prision-o-reclusion-225",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 225,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 142 bis. - Se impondrá prisión o reclusión de cinco (5) a quince (15) años, al que sustrajere, retuviere u ocultare a una person..."
+        ],
+        "officialLabel": "ARTICULO 142 bis. - Se impondrá prisión o reclusión de cinco (5) a quince (15) años, al que sustrajere, retuviere u ocultare a una person...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 142 bis. - Se impondrá prisión o reclusión de cinco (5) a quince (15) años, al que sustrajere, retuviere u ocultare a una persona con el fin de obligar a la víctima o a un tercero, a hacer, no hacer, o tolerar algo contra su voluntad. Si el autor lograre su propósito, el mínimo de la pena se elevará a ocho (8) años.\n\nLa pena será de diez (10) a veinticinco (25) años de prisión o reclusión:\n\n1. Si la víctima fuese una mujer embarazada; un menor de dieciocho (18) años de edad; o un mayor de setenta (70) años de edad.\n\n2. Si el hecho se cometiere en la persona de un ascendiente; de un hermano; del cónyuge o conviviente; o de otro individuo a quien se deba respeto particular.\n\n3. Si se causare a la víctima lesiones graves o gravísimas.\n\n4. Cuando la víctima sea una persona discapacitada, enferma o que no pueda valerse por sí misma.\n\n5. Cuando el agente sea funcionario o empleado público o pertenezca o haya pertenecido al momento de comisión del hecho a una fuerza armada, de seguridad u organismo de inteligencia del Estado. (Inciso sustituido por art. 3° del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n\n6. Cuando participaran en el hecho tres (3) o más personas.\n\nLa pena será de quince (15) a veinticinco (25) años de prisión a reclusión si del hecho resultara la muerte de la persona ofendida, como consecuencia no querida por el autor.\n\nLa pena será de prisión o reclusión perpetua si se causare intencionalmente la muerte de la persona ofendida.\n\nLa pena del partícipe que, desvinculándose de los otros, se esforzare de modo que la víctima recupere la libertad, sin que tal resultado fuese la consecuencia del logro del propósito del autor, se reducirá de un tercio a la mitad.\n\n(Artículo sustituido por art. 3° de la Ley N° 25.742 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=86244] B.O. 20/6/2003)\n",
+        "fullTranslationRu": "СТАТЬЯ 142 bis. - Тюремное заключение или лишение свободы от пяти (5) до пятнадцати (15) лет назначается тому, кто похищает, удерживает или скрывает человека с целью заставить потерпевшего или третье лицо сделать, не сделать или терпеть что-либо против своей воли. Если автор достигает своей цели, минимум наказания повышается до восьми (8) лет.\n\nНаказание составляет от десяти (10) до двадцати пяти (25) лет тюремного заключения или лишения свободы:\n\n1. если потерпевшая беременна; потерпевший младше восемнадцати (18) лет; или потерпевший старше семидесяти (70) лет;\n\n2. если деяние совершено против восходящего родственника, брата или сестры, супруга или сожителя либо другого лица, которому должен оказываться особый почет;\n\n3. если потерпевшему причинены тяжкие или особо тяжкие телесные повреждения;\n\n4. когда потерпевший является инвалидом, больным или не может заботиться о себе;\n\n5. когда действующее лицо является государственным служащим или работником либо принадлежит или принадлежало на момент совершения деяния к вооруженным силам, силам безопасности или разведывательному органу государства. (Пункт заменен статьей 3 Приложения I Закона N 26.394, B.O. 29/8/2008. Вступление в силу: через шесть (6) месяцев после промульгации. В этот период в соответствующих областях проводится программа распространения информации и обучения по содержанию и применению закона)\n\n6. когда в деянии участвовали три (3) или более лица.\n\nНаказание составляет от пятнадцати (15) до двадцати пяти (25) лет тюремного заключения или лишения свободы, если из деяния наступила смерть потерпевшего как последствие, которого автор не желал.\n\nНаказание составляет пожизненное тюремное заключение или пожизненное лишение свободы, если смерть потерпевшего причинена умышленно.\n\nНаказание соучастника, который, отделившись от остальных, приложит усилия, чтобы потерпевший получил свободу, и это не будет следствием достижения цели автора, уменьшается от одной трети до половины.\n\n(Статья заменена статьей 3 Закона N 25.742, B.O. 20/6/2003)",
+        "simpleRu": "Похищение, удержание или скрытие человека, чтобы заставить его или другого человека что-то сделать, не делать или терпеть, наказывается сроком от 5 до 15 лет; если цель достигнута, минимум становится 8 лет. При беременной потерпевшей, несовершеннолетнем, человеке старше 70 лет, близком родственнике, тяжких повреждениях, инвалидности или болезни, участии госслужащего, сил безопасности, разведки либо группы из 3 и более человек срок - от 10 до 25 лет. Если потерпевший умер без умысла автора, срок - от 15 до 25 лет; если смерть причинена умышленно, наказание пожизненное. Соучастнику могут снизить наказание, если он реально помог освободить потерпевшего.",
+        "sourceTextSha256": "f91e67f3c5bf40f61cda47f0f9e95c9b30bb1bde692f33de6706b36d36a37f21",
+        "sourceFingerprint": "sha256:f91e67f3c5bf40f61cda47f0f9e95c9b30bb1bde692f33de6706b36d36a37f21",
+        "sourceSpan": {
+          "startLine": 1383,
+          "endLine": 1406
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-142-ter-se-impondra-prision-de-diez-226",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 226,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 142 ter. - Se impondrá prisión de DIEZ (10) a VEINTICINCO (25) años e inhabilitación absoluta y perpetua para el ejercicio de cu..."
+        ],
+        "officialLabel": "ARTICULO 142 ter. - Se impondrá prisión de DIEZ (10) a VEINTICINCO (25) años e inhabilitación absoluta y perpetua para el ejercicio de cu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 142 ter. - Se impondrá prisión de DIEZ (10) a VEINTICINCO (25) años e inhabilitación absoluta y perpetua para el ejercicio de cualquier función pública y para tareas de seguridad privada, al funcionario público o a la persona o miembro de un grupo de personas que, actuando con la autorización, el apoyo o la aquiescencia del Estado, de cualquier forma, privare de la libertad a una o más personas, cuando este accionar fuera seguido de la falta de información o de la negativa a reconocer dicha privación de libertad o de informar sobre el paradero de la persona.\n\nLa pena será de prisión perpetua si resultare la muerte o si la víctima fuere una mujer embarazada, una persona menor de DIECIOCHO (18) años, una persona mayor de SETENTA (70) años o una persona con discapacidad. La misma pena se impondrá cuando la víctima sea una persona nacida durante la desaparición forzada de su madre.\n\nLa escala penal prevista en el presente artículo podrá reducirse en un tercio del máximo y en la mitad del mínimo respecto de los autores o partícipes que liberen con vida a la víctima o proporcionen información que permita su efectiva aparición con vida.\n\n(Artículo incorporado por art. 1º de la Ley Nº 26.679 [/infolegInternet/verNorma.do?id=181888] B.O. 09/05/2011)\n",
+        "fullTranslationRu": "СТАТЬЯ 142 ter. - Тюремное заключение от ДЕСЯТИ (10) до ДВАДЦАТИ ПЯТИ (25) лет и абсолютное пожизненное лишение права занимать любую государственную должность и выполнять задачи частной безопасности назначаются государственному служащему либо лицу или члену группы лиц, которые, действуя с разрешения, поддержки или согласия государства, любым способом лишают свободы одно или несколько лиц, когда за этим действием следует отсутствие информации, отказ признать такое лишение свободы или отказ сообщить о местонахождении лица.\n\nНаказание составляет пожизненное тюремное заключение, если наступила смерть, либо если потерпевшая является беременной женщиной, лицом младше ВОСЕМНАДЦАТИ (18) лет, лицом старше СЕМИДЕСЯТИ (70) лет или лицом с инвалидностью. Такое же наказание назначается, когда потерпевшим является лицо, родившееся во время насильственного исчезновения своей матери.\n\nПредусмотренная этой статьей шкала наказания может быть снижена на одну треть максимума и на половину минимума для авторов или соучастников, которые освобождают потерпевшего живым или предоставляют информацию, позволяющую эффективно найти его живым.\n\n(Статья включена статьей 1 Закона N 26.679, B.O. 09/05/2011)",
+        "simpleRu": "Статья 142 ter описывает насильственное исчезновение при участии, поддержке или согласии государства. За лишение свободы с последующим отказом сообщить правду или местонахождение человека - от 10 до 25 лет и пожизненный запрет на госслужбу и частную безопасность. Если человек умер или потерпевший относится к особо защищенным группам, наказание пожизненное. Тем, кто освободит потерпевшего живым или даст информацию для его нахождения живым, срок может быть снижен.",
+        "sourceTextSha256": "09a5d76bdc4c293edb7ddc41a78a25ddebdcec2140b7efdfabebe7e816a824f2",
+        "sourceFingerprint": "sha256:09a5d76bdc4c293edb7ddc41a78a25ddebdcec2140b7efdfabebe7e816a824f2",
+        "sourceSpan": {
+          "startLine": 1407,
+          "endLine": 1414
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-143-sera-reprimido-con-reclusion-o-prision-227",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 227,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 143. - Será reprimido con reclusión o prisión de uno a tres años e inhabilitación especial por doble tiempo:"
+        ],
+        "officialLabel": "ARTICULO 143. - Será reprimido con reclusión o prisión de uno a tres años e inhabilitación especial por doble tiempo:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 143. - Será reprimido con reclusión o prisión de uno a tres años e inhabilitación especial por doble tiempo:\n\n1º. El funcionario que retuviera a un detenido o preso, cuya soltura haya debido decretar o ejecutar;\n\n2º. El funcionario que prolongare indebidamente la detención de una persona, sin ponerla a disposición del juez competente;\n\n3º. El funcionario que incomunicare indebidamente a un detenido;\n\n4º. El jefe de prisión u otro establecimiento penal, o el que lo reemplace, que recibiera algún reo sin testimonio de la sentencia firme en que se le hubiere impuesto la pena o lo colocare en lugares del establecimiento que no sean los señalados al efecto;\n\n5º. El alcaide o empleado de las cárceles de detenidos y seguridad que recibiere un preso sin orden de autoridad competente, salvo el caso de flagrante delito;\n\n6º. El funcionario competente que teniendo noticias de una detención ilegal omitiere, retardare o rehusare hacerla cesar o dar cuenta a la autoridad que deba resolver.\n",
+        "fullTranslationRu": "СТАТЬЯ 143. - Лишением свободы или тюремным заключением от одного до трех лет и специальным лишением прав на двойной срок наказывается:\n\n1. должностное лицо, которое удерживает задержанного или заключенного, освобождение которого должно было быть постановлено или исполнено;\n\n2. должностное лицо, которое неправомерно продлевает задержание человека, не передавая его компетентному судье;\n\n3. должностное лицо, которое неправомерно держит задержанного без связи;\n\n4. начальник тюрьмы или другого пенитенциарного учреждения либо заменяющее его лицо, которое принимает заключенного без копии вступившего в силу приговора, которым ему назначено наказание, или помещает его в места учреждения, не предназначенные для этого;\n\n5. начальник или сотрудник тюрем для задержанных и безопасности, который принимает заключенного без распоряжения компетентного органа, кроме случая задержания с поличным;\n\n6. компетентное должностное лицо, которое, зная о незаконном задержании, не прекращает его, задерживает прекращение или отказывается сделать это либо сообщить органу, который должен решить вопрос.",
+        "simpleRu": "Статья 143 наказывает должностных лиц за незаконное удержание людей: не освобождают того, кого должны освободить, слишком долго держат без судьи, незаконно изолируют, принимают заключенного без нужных документов или приказа, либо знают о незаконном задержании и не прекращают его. Наказание - от 1 до 3 лет и специальное лишение прав на двойной срок.",
+        "sourceTextSha256": "030e2bcaae202e084e9a2f448218885a5602acd8b27d308794829319ddbc8022",
+        "sourceFingerprint": "sha256:030e2bcaae202e084e9a2f448218885a5602acd8b27d308794829319ddbc8022",
+        "sourceSpan": {
+          "startLine": 1415,
+          "endLine": 1428
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-144-cuando-en-los-casos-del-articulo-228",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 228,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 144. - Cuando en los casos del artículo anterior concurriere alguna de las circunstancias enumeradas en los incisos 1, 2, 3 y 5 ..."
+        ],
+        "officialLabel": "ARTICULO 144. - Cuando en los casos del artículo anterior concurriere alguna de las circunstancias enumeradas en los incisos 1, 2, 3 y 5 ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 144. - Cuando en los casos del artículo anterior concurriere alguna de las circunstancias enumeradas en los incisos 1, 2, 3 y 5 del artículo 142, el máximo de la pena privativa de la libertad se elevará a cinco años.\n",
+        "fullTranslationRu": "СТАТЬЯ 144. - Когда в случаях предыдущей статьи имеется какое-либо из обстоятельств, перечисленных в пунктах 1, 2, 3 и 5 статьи 142, максимум наказания, связанного с лишением свободы, повышается до пяти лет.",
+        "simpleRu": "Если нарушения из статьи 143 совершены с обстоятельствами из пунктов 1, 2, 3 или 5 статьи 142, максимальный срок лишения свободы повышается до 5 лет.",
+        "sourceTextSha256": "6b05cff160b9eec9c11978c73106542bd9399153e8856b082860df37bdba96e8",
+        "sourceFingerprint": "sha256:6b05cff160b9eec9c11978c73106542bd9399153e8856b082860df37bdba96e8",
+        "sourceSpan": {
+          "startLine": 1429,
+          "endLine": 1430
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-144-bis-sera-reprimido-con-prision-o-229",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 229,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 144 bis. - Será reprimido con prisión o reclusión de uno a cinco años e inhabilitación especial por doble tiempo:"
+        ],
+        "officialLabel": "ARTICULO 144 bis. - Será reprimido con prisión o reclusión de uno a cinco años e inhabilitación especial por doble tiempo:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 144 bis. - Será reprimido con prisión o reclusión de uno a cinco años e inhabilitación especial por doble tiempo:\n\n1. El funcionario público que, con abuso de sus funciones o sin las formalidades prescriptas por la ley, privase a alguno de su libertad personal;\n\n2. El funcionario que desempeñando un acto de servicio cometiera cualquier vejación contra las personas o les aplicare apremios ilegales;\n\n3. El funcionario público que impusiere a los presos que guarde, severidades, vejaciones, o apremios ilegales.\n\nSi concurriere alguna de las circunstancias enumeradas en los incisos 1, 2, 3 y 5 del artículo 142, la pena privativa de la libertad será de reclusión o prisión de dos a seis años.\n",
+        "fullTranslationRu": "СТАТЬЯ 144 bis. - Тюремным заключением или лишением свободы от одного до пяти лет и специальным лишением прав на двойной срок наказывается:\n\n1. государственный служащий, который с злоупотреблением своими функциями или без формальностей, предписанных законом, лишает кого-либо личной свободы;\n\n2. должностное лицо, которое при совершении служебного действия допускает любое унижение людей или применяет к ним незаконное принуждение;\n\n3. государственный служащий, который навязывает содержащимся у него заключенным чрезмерную строгость, унижения или незаконное принуждение.\n\nЕсли имеется какое-либо из обстоятельств, перечисленных в пунктах 1, 2, 3 и 5 статьи 142, наказание, связанное с лишением свободы, составляет лишение свободы или тюремное заключение от двух до шести лет.",
+        "simpleRu": "Статья 144 bis касается злоупотреблений должностных лиц: незаконное лишение свободы, унижения, незаконное принуждение или жестокое обращение с заключенными. Базовое наказание - от 1 до 5 лет и лишение прав на двойной срок; при обстоятельствах из статьи 142 - от 2 до 6 лет.",
+        "sourceTextSha256": "e7c087df7a1ab44a7832d76c3c5154ec33075cf4efd4c24999b7fb44f0f367de",
+        "sourceFingerprint": "sha256:e7c087df7a1ab44a7832d76c3c5154ec33075cf4efd4c24999b7fb44f0f367de",
+        "sourceSpan": {
+          "startLine": 1431,
+          "endLine": 1440
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-144-ter-1-sera-reprimido-con-reclusion-230",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 230,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 144 ter.- 1. Será reprimido con reclusión o prisión de ocho a veinticinco años e inhabilitación absoluta y perpetua el funcionar..."
+        ],
+        "officialLabel": "ARTICULO 144 ter.- 1. Será reprimido con reclusión o prisión de ocho a veinticinco años e inhabilitación absoluta y perpetua el funcionar...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 144 ter.- 1. Será reprimido con reclusión o prisión de ocho a veinticinco años e inhabilitación absoluta y perpetua el funcionario público que impusiere a personas, legítima o ilegítimamente privadas de su libertad, cualquier clase de tortura.\n\nEs indiferente que la víctima se encuentre jurídicamente a cargo del funcionario, bastando que éste tenga sobre aquélla poder de hecho.\n\nIgual pena se impondrá a particulares que ejecutaren los hechos descritos.\n\n2. Si con motivo u ocasión de la tortura resultare la muerte de la víctima, la pena privativa de libertad será de reclusión o prisión perpetua. Si se causare alguna de las lesiones previstas en el artículo 91, la pena privativa de libertad será de reclusión o prisión de diez a veinticinco años.\n\n3. Por tortura se entenderá no solamente los tormentos físicos, sino también la imposición de sufrimientos psíquicos, cuando éstos tengan gravedad suficiente.\n",
+        "fullTranslationRu": "СТАТЬЯ 144 ter.- 1. Лишением свободы или тюремным заключением от восьми до двадцати пяти лет и абсолютным пожизненным лишением прав наказывается государственный служащий, который применяет к лицам, законно или незаконно лишенным свободы, любой вид пытки.\n\nНе имеет значения, находится ли потерпевший юридически под ответственностью должностного лица; достаточно, чтобы это лицо имело над потерпевшим фактическую власть.\n\nТакое же наказание назначается частным лицам, которые совершают описанные деяния.\n\n2. Если вследствие пытки или по ее поводу наступила смерть потерпевшего, наказание, связанное с лишением свободы, является пожизненным лишением свободы или тюремным заключением. Если причинено какое-либо повреждение, предусмотренное статьей 91, наказание, связанное с лишением свободы, составляет лишение свободы или тюремное заключение от десяти до двадцати пяти лет.\n\n3. Под пыткой понимаются не только физические мучения, но и причинение психических страданий, когда они имеют достаточную тяжесть.",
+        "simpleRu": "За пытки людей, лишенных свободы, госслужащий получает от 8 до 25 лет и пожизненное абсолютное лишение прав. То же наказание применяется к частным лицам, которые делают это. Если из-за пытки человек умер, наказание пожизненное; если причинены повреждения из статьи 91, срок от 10 до 25 лет. Пытка включает и тяжелые психические страдания.",
+        "sourceTextSha256": "ec455f52c7acd185732bf6eb81e977c7878ed11db662acf076ab54834d68c91e",
+        "sourceFingerprint": "sha256:ec455f52c7acd185732bf6eb81e977c7878ed11db662acf076ab54834d68c91e",
+        "sourceSpan": {
+          "startLine": 1441,
+          "endLine": 1450
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-144-quater-1o-se-impondra-prision-de-231",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 231,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 144 quater. - 1º. Se impondrá prisión de tres a diez años al funcionario que omitiese evitar la comisión de alguno de los hechos..."
+        ],
+        "officialLabel": "ARTICULO 144 quater. - 1º. Se impondrá prisión de tres a diez años al funcionario que omitiese evitar la comisión de alguno de los hechos...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 144 quater. - 1º. Se impondrá prisión de tres a diez años al funcionario que omitiese evitar la comisión de alguno de los hechos del artículo anterior, cuando tuviese competencia para ello.\n\n2º. La pena será de uno a cinco años de prisión para el funcionario que en razón de sus funciones tomase conocimiento de la comisión de alguno de los hechos del artículo anterior y, careciendo de la competencia a que alude el inciso precedente, omitiese denunciar dentro de las veinticuatro horas el hecho ante el funcionario, ministerio público o juez competente. Si el funcionario fuera médico se le impondrá, además, inhabilitación especial para el ejercicio de su profesión por doble tiempo de la pena de prisión.\n\n3º. Sufrirá la pena prevista en el inciso 1º de este artículo el juez que, tomando conocimiento en razón de su función de alguno de los hechos a que se refiere el artículo anterior, no instruyere sumario o no denunciare el hecho al juez competente dentro de las veinticuatro horas.\n\n4º. En los casos previstos en este artículo, se impondrá, además, inhabilitación especial perpetua para desempeñarse en cargos públicos. La inhabilitación comprenderá la de tener o portar armas de todo tipo.\n",
+        "fullTranslationRu": "СТАТЬЯ 144 quater. - 1. Тюремное заключение от трех до десяти лет назначается должностному лицу, которое не предотвратило совершение какого-либо деяния из предыдущей статьи, когда имело для этого компетенцию.\n\n2. Тюремное заключение от одного до пяти лет назначается должностному лицу, которое по своим функциям узнало о совершении какого-либо деяния из предыдущей статьи и, не имея компетенции, указанной в предыдущем пункте, не сообщило о факте в течение двадцати четырех часов компетентному должностному лицу, прокуратуре или судье. Если должностное лицо является врачом, дополнительно назначается специальное лишение права заниматься профессией на срок, вдвое превышающий срок тюремного заключения.\n\n3. Наказание, предусмотренное пунктом 1 этой статьи, несет судья, который, узнав по своей функции о каком-либо деянии из предыдущей статьи, не возбуждает служебное расследование или не сообщает о факте компетентному судье в течение двадцати четырех часов.\n\n4. В случаях, предусмотренных этой статьей, дополнительно назначается пожизненное специальное лишение права занимать государственные должности. Лишение прав включает право иметь или носить оружие любого вида.",
+        "simpleRu": "Если должностное лицо могло предотвратить пытки и не сделало этого, срок - от 3 до 10 лет. Если оно узнало о пытках и должно было сообщить в течение 24 часов, но не сообщило, срок - от 1 до 5 лет; врачу добавляют запрет работать по профессии на двойной срок. Судья, который не начинает расследование или не сообщает в течение 24 часов, отвечает строже. Дополнительно назначается пожизненный запрет на госдолжности и на владение или ношение оружия.",
+        "sourceTextSha256": "99cbdd89e5f1bd7a70393d1a1f79a643194c4a20bfb712374c65ec89b4ca6418",
+        "sourceFingerprint": "sha256:99cbdd89e5f1bd7a70393d1a1f79a643194c4a20bfb712374c65ec89b4ca6418",
+        "sourceSpan": {
+          "startLine": 1451,
+          "endLine": 1458
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-144-quinto-si-se-ejecutase-el-hecho-232",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 232,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 144 quinto.- Si se ejecutase el hecho previsto en el artículo 144 tercero, se impondrá prisión de seis meses a dos años e inhabi..."
+        ],
+        "officialLabel": "ARTICULO 144 quinto.- Si se ejecutase el hecho previsto en el artículo 144 tercero, se impondrá prisión de seis meses a dos años e inhabi...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 144 quinto.- Si se ejecutase el hecho previsto en el artículo 144 tercero, se impondrá prisión de seis meses a dos años e inhabilitación especial de tres a seis años al funcionario a cargo de la repartición, establecimiento, departamento, dependencia o cualquier otro organismo, si las circunstancias del caso permiten establecer que el hecho no se hubiese cometido de haber mediado la debida vigilancia o adoptado los recaudos necesarios por dicho funcionario.\n",
+        "fullTranslationRu": "СТАТЬЯ 144 quinto.- Если совершено деяние, предусмотренное статьей 144 ter, должностному лицу, возглавляющему подразделение, учреждение, отдел, зависимость или любой другой орган, назначается тюремное заключение от шести месяцев до двух лет и специальное лишение прав от трех до шести лет, если обстоятельства дела позволяют установить, что деяние не было бы совершено при надлежащем надзоре или принятии необходимых мер этим должностным лицом.",
+        "simpleRu": "Если пытки произошли из-за того, что руководитель учреждения или подразделения не обеспечил нужный контроль или меры, ему назначается от 6 месяцев до 2 лет и специальное лишение прав от 3 до 6 лет.",
+        "sourceTextSha256": "3e021f127f6424a5ef8ac1b8a0673cf00582188811231fb6c07a9fccd09824c7",
+        "sourceFingerprint": "sha256:3e021f127f6424a5ef8ac1b8a0673cf00582188811231fb6c07a9fccd09824c7",
+        "sourceSpan": {
+          "startLine": 1459,
+          "endLine": 1460
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-145-sera-reprimido-con-prision-de-dos-233",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 233,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 145. - Será reprimido con prisión de dos a seis años, el que condujere a una persona fuera de las fronteras de la República, con..."
+        ],
+        "officialLabel": "ARTICULO 145. - Será reprimido con prisión de dos a seis años, el que condujere a una persona fuera de las fronteras de la República, con...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 145. - Será reprimido con prisión de dos a seis años, el que condujere a una persona fuera de las fronteras de la República, con el propósito de someterla ilegalmente al poder de otro o de alistarla en un ejército extranjero.\n",
+        "fullTranslationRu": "СТАТЬЯ 145. - Тюремным заключением от двух до шести лет наказывается тот, кто выводит человека за пределы Республики с целью незаконно подчинить его власти другого лица или зачислить его в иностранную армию.",
+        "simpleRu": "За вывоз человека из Аргентины, чтобы незаконно передать его под власть другого или записать в иностранную армию, наказание - от 2 до 6 лет.",
+        "sourceTextSha256": "769cc5e90f82667e6427281932f0e65dbe0a4a1fda74d7160ce96d94fb088be0",
+        "sourceFingerprint": "sha256:769cc5e90f82667e6427281932f0e65dbe0a4a1fda74d7160ce96d94fb088be0",
+        "sourceSpan": {
+          "startLine": 1461,
+          "endLine": 1462
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-145-bis-sera-reprimido-con-prision-de-234",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 234,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 145 bis. - Será reprimido con prisión de cuatro (4) a ocho (8) años, el que ofreciere, captare, trasladare, recibiere o acogiere..."
+        ],
+        "officialLabel": "ARTICULO 145 bis. - Será reprimido con prisión de cuatro (4) a ocho (8) años, el que ofreciere, captare, trasladare, recibiere o acogiere...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 145 bis. - Será reprimido con prisión de cuatro (4) a ocho (8) años, el que ofreciere, captare, trasladare, recibiere o acogiere personas con fines de explotación, ya sea dentro del territorio nacional, como desde o hacia otros países, aunque mediare el consentimiento de la víctima.\n\n(Artículo sustituido por art. 25 de la Ley N° 26.842 [/infolegInternet/verNorma.do?id=206554] B.O. 27/12/2012)\n",
+        "fullTranslationRu": "СТАТЬЯ 145 bis. - Тюремным заключением от четырех (4) до восьми (8) лет наказывается тот, кто предлагает, вербует, перевозит, принимает или размещает людей с целью эксплуатации, как внутри национальной территории, так и из других стран или в другие страны, даже при согласии потерпевшего.\n\n(Статья заменена статьей 25 Закона N 26.842, B.O. 27/12/2012)",
+        "simpleRu": "За торговлю людьми с целью эксплуатации - предложение, вербовку, перевозку, прием или размещение людей внутри страны, из страны или в страну - наказание от 4 до 8 лет, даже если потерпевший согласился.",
+        "sourceTextSha256": "5010e4db1908c9ad862a0279254f19d319a53a77f91d3e3544a5d68eb5842a60",
+        "sourceFingerprint": "sha256:5010e4db1908c9ad862a0279254f19d319a53a77f91d3e3544a5d68eb5842a60",
+        "sourceSpan": {
+          "startLine": 1463,
+          "endLine": 1466
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-145-ter-en-los-supuestos-del-articulo-235",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 235,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 145 ter. - En los supuestos del artículo 145 bis la pena será de cinco (5) a diez (10) años de prisión, cuando:"
+        ],
+        "officialLabel": "ARTICULO 145 ter. - En los supuestos del artículo 145 bis la pena será de cinco (5) a diez (10) años de prisión, cuando:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 145 ter. - En los supuestos del artículo 145 bis la pena será de cinco (5) a diez (10) años de prisión, cuando:\n\n1. Mediare engaño, fraude, violencia, amenaza o cualquier otro medio de intimidación o coerción, abuso de autoridad o de una situación de vulnerabilidad, o concesión o recepción de pagos o beneficios para obtener el consentimiento de una persona que tenga autoridad sobre la víctima.\n\n2. La víctima estuviere embarazada, o fuere mayor de setenta (70) años.\n\n3. La víctima fuera una persona discapacitada, enferma o que no pueda valerse por sí misma.\n\n4. Las víctimas fueren tres (3) o más.\n\n5. En la comisión del delito participaren tres (3) o más personas.\n\n6. El autor fuere ascendiente, descendiente, cónyuge, afín en línea recta, colateral o conviviente, tutor, curador, autoridad o ministro de cualquier\nculto reconocido o no, o encargado de la educación o de la guarda de la víctima.\n\n7. El autor fuere funcionario público o miembro de una fuerza de seguridad, policial o penitenciaria.\n\nCuando se lograra consumar la explotación de la víctima objeto del delito de trata de personas la pena será de ocho (8) a doce (12) años de prisión.\n\nCuando la víctima fuere menor de dieciocho (18) años la pena será de diez (10) a quince (15) años de prisión.\n\n(Artículo sustituido por art. 26 de la Ley N° 26.842 [/infolegInternet/verNorma.do?id=206554] B.O. 27/12/2012)\n",
+        "fullTranslationRu": "СТАТЬЯ 145 ter. - В случаях статьи 145 bis наказание составляет от пяти (5) до десяти (10) лет тюремного заключения, когда:\n\n1. имели место обман, мошенничество, насилие, угроза или любой другой способ запугивания или принуждения, злоупотребление властью или уязвимым положением, либо предоставление или получение платежей или выгод для получения согласия лица, имеющего власть над потерпевшим;\n\n2. потерпевшая была беременна или потерпевший был старше семидесяти (70) лет;\n\n3. потерпевший был лицом с инвалидностью, больным или не мог заботиться о себе;\n\n4. потерпевших было три (3) или более;\n\n5. в совершении преступления участвовали три (3) или более лица;\n\n6. автор был восходящим родственником, нисходящим родственником, супругом, свойственником по прямой линии, боковым родственником или сожителем, опекуном, попечителем, представителем власти или служителем любого признанного или непризнанного культа, либо лицом, ответственным за образование или присмотр за потерпевшим;\n\n7. автор был государственным служащим или членом сил безопасности, полиции либо пенитенциарной службы.\n\nКогда эксплуатация потерпевшего, являющегося объектом преступления торговли людьми, была фактически осуществлена, наказание составляет от восьми (8) до двенадцати (12) лет тюремного заключения.\n\nКогда потерпевший младше восемнадцати (18) лет, наказание составляет от десяти (10) до пятнадцати (15) лет тюремного заключения.\n\n(Статья заменена статьей 26 Закона N 26.842, B.O. 27/12/2012)",
+        "simpleRu": "Для торговли людьми наказание повышается до 5-10 лет при обмане, насилии, угрозах, злоупотреблении властью или уязвимостью, платежах за согласие, беременности, возрасте старше 70 лет, инвалидности, болезни, трех и более потерпевших, трех и более участниках, близкой связи автора с потерпевшим, роли опекуна, власти, религиозного служителя, госслужащего или сил безопасности. Если эксплуатация уже совершена, срок - 8-12 лет. Если потерпевшему меньше 18 лет, срок - 10-15 лет.",
+        "sourceTextSha256": "2e941bded8c251da97f2baf0ad4a718b5520621b6f8190323a4458b9641ae04f",
+        "sourceFingerprint": "sha256:2e941bded8c251da97f2baf0ad4a718b5520621b6f8190323a4458b9641ae04f",
+        "sourceSpan": {
+          "startLine": 1467,
+          "endLine": 1489
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-146-sera-reprimido-con-prision-o-reclusion-236",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 236,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 146.- Será reprimido con prisión o reclusión de 5 a 15 años, el que sustrajere a un menor de 10 años del poder de sus padres, tu..."
+        ],
+        "officialLabel": "ARTICULO 146.- Será reprimido con prisión o reclusión de 5 a 15 años, el que sustrajere a un menor de 10 años del poder de sus padres, tu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 146.- Será reprimido con prisión o reclusión de 5 a 15 años, el que sustrajere a un menor de 10 años del poder de sus padres, tutor o persona encargada de él, y el que lo retuviere u ocultare.\n\n(Artículo sustituido por art. 8° de la Ley N° 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791] B.O. 2/1/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 146.- Тюремным заключением или лишением свободы от 5 до 15 лет наказывается тот, кто похищает ребенка младше 10 лет из-под власти его родителей, опекуна или лица, ответственного за него, а также тот, кто удерживает или скрывает его.\n\n(Статья заменена статьей 8 Закона N 24.410, B.O. 2/1/1995)",
+        "simpleRu": "За похищение ребенка младше 10 лет у родителей, опекуна или ответственного лица, а также за его удержание или скрытие наказание - от 5 до 15 лет.",
+        "sourceTextSha256": "df91d47a86cf3e7fc35add368bc63d8b36f2fc677f99c894dce5ede1d500b056",
+        "sourceFingerprint": "sha256:df91d47a86cf3e7fc35add368bc63d8b36f2fc677f99c894dce5ede1d500b056",
+        "sourceSpan": {
+          "startLine": 1490,
+          "endLine": 1493
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-147-en-la-misma-pena-incurrira-el-237",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 237,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 147. - En la misma pena incurrirá el que, hallándose encargado de la persona de un menor de diez años, no lo presentara a los pa..."
+        ],
+        "officialLabel": "ARTICULO 147. - En la misma pena incurrirá el que, hallándose encargado de la persona de un menor de diez años, no lo presentara a los pa...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 147. - En la misma pena incurrirá el que, hallándose encargado de la persona de un menor de diez años, no lo presentara a los padres o guardadores que lo solicitaren o no diere razón satisfactoria de su desaparición.\n",
+        "fullTranslationRu": "СТАТЬЯ 147. - Такое же наказание несет тот, кто, будучи ответственным за ребенка младше десяти лет, не представляет его родителям или попечителям, которые требуют его предъявления, либо не дает удовлетворительного объяснения его исчезновения.",
+        "simpleRu": "Если человек отвечает за ребенка младше 10 лет, но не показывает его родителям или попечителям по их требованию и не объясняет исчезновение, применяется то же наказание.",
+        "sourceTextSha256": "bd3006e608bc4adf3f9bf853efaad43758533d08156d561ab86c714516f89b73",
+        "sourceFingerprint": "sha256:bd3006e608bc4adf3f9bf853efaad43758533d08156d561ab86c714516f89b73",
+        "sourceSpan": {
+          "startLine": 1494,
+          "endLine": 1495
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-148-sera-reprimido-con-prision-de-un-238",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 238,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 148. - Será reprimido con prisión de un mes a un año, el que indujere a un mayor de diez años y menor de quince, a fugar de casa..."
+        ],
+        "officialLabel": "ARTICULO 148. - Será reprimido con prisión de un mes a un año, el que indujere a un mayor de diez años y menor de quince, a fugar de casa...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 148. - Será reprimido con prisión de un mes a un año, el que indujere a un mayor de diez años y menor de quince, a fugar de casa de sus padres, guardadores o encargados de su persona.\n",
+        "fullTranslationRu": "СТАТЬЯ 148. - Тюремным заключением от одного месяца до одного года наказывается тот, кто склоняет лицо старше десяти и младше пятнадцати лет к побегу из дома родителей, попечителей или лиц, ответственных за него.",
+        "simpleRu": "За склонение ребенка старше 10 и младше 15 лет сбежать из дома родителей или опекунов наказание - от 1 месяца до 1 года.",
+        "sourceTextSha256": "35b7ecf0046a2c176db2298ea83f364c16d93f82bea3fb71ff023f033acd304b",
+        "sourceFingerprint": "sha256:35b7ecf0046a2c176db2298ea83f364c16d93f82bea3fb71ff023f033acd304b",
+        "sourceSpan": {
+          "startLine": 1496,
+          "endLine": 1497
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-148-bis-sera-reprimido-con-prision-de-239",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 239,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 148: bis: Será reprimido con prisión de 1 (uno) a (cuatro) años el que aprovechare económicamente el trabajo de un niño o niña e..."
+        ],
+        "officialLabel": "ARTICULO 148: bis: Será reprimido con prisión de 1 (uno) a (cuatro) años el que aprovechare económicamente el trabajo de un niño o niña e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 148: bis: Será reprimido con prisión de 1 (uno) a (cuatro) años el que aprovechare económicamente el trabajo de un niño o niña en violación de las normas nacionales que prohíben el trabajo infantil, siempre que el hecho no importare un delito más grave.\n\nQuedan exceptuadas las tareas que tuvieren fines pedagógicos o de capacitación exclusivamente.\n\nNo será punible el padre, madre, tutor o guardador del niño o niña que incurriere en la conducta descripta.\n\n(Artículo incorporado por art. 1° de la Ley N° 26.847 [/infolegInternet/verNorma.do?id=210491] B.O. 12/4/2013)\n",
+        "fullTranslationRu": "СТАТЬЯ 148 bis: Тюремным заключением от 1 (одного) до (четырех) лет наказывается тот, кто экономически использует труд мальчика или девочки с нарушением национальных норм, запрещающих детский труд, если деяние не образует более тяжкое преступление.\n\nИсключаются задачи, имеющие исключительно педагогические или обучающие цели.\n\nНе подлежит наказанию отец, мать, опекун или попечитель ребенка, совершивший описанное поведение.\n\n(Статья включена статьей 1 Закона N 26.847, B.O. 12/4/2013)",
+        "simpleRu": "За заработок на труде ребенка с нарушением запрета детского труда - от 1 до 4 лет, если это не более тяжкое преступление. Учебные или обучающие задачи исключены. Отец, мать, опекун или попечитель ребенка по этой статье не наказываются.",
+        "sourceTextSha256": "76dc3a4bb8392bfcd29f1e447416671f2fc97e09fd60c7207c0ad26f6e2e458f",
+        "sourceFingerprint": "sha256:76dc3a4bb8392bfcd29f1e447416671f2fc97e09fd60c7207c0ad26f6e2e458f",
+        "sourceSpan": {
+          "startLine": 1498,
+          "endLine": 1505
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-149-sera-reprimido-con-prision-de-un-240",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 240,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 149. - Será reprimido con prisión de un mes a un año, el que ocultare a las investigaciones de la justicia o de la policía, a un..."
+        ],
+        "officialLabel": "ARTICULO 149. - Será reprimido con prisión de un mes a un año, el que ocultare a las investigaciones de la justicia o de la policía, a un...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 149. - Será reprimido con prisión de un mes a un año, el que ocultare a las investigaciones de la justicia o de la policía, a un menor de quince años que se hubiere substraído a la potestad o guarda a que estaba legalmente sometido.\n\nLa pena será de seis meses a dos años, si el menor no tuviera diez años.\n",
+        "fullTranslationRu": "СТАТЬЯ 149. - Тюремным заключением от одного месяца до одного года наказывается тот, кто скрывает от расследований правосудия или полиции ребенка младше пятнадцати лет, который ушел из-под власти или опеки, которой был законно подчинен.\n\nНаказание составляет от шести месяцев до двух лет, если ребенку нет десяти лет.",
+        "simpleRu": "Если человек прячет от суда или полиции ребенка младше 15 лет, который ушел из-под законной власти или опеки, наказание - от 1 месяца до 1 года. Если ребенку меньше 10 лет, срок - от 6 месяцев до 2 лет.",
+        "sourceTextSha256": "88049104fe79053154ba939951753a76a60ca734db8d9b0ca0d45286c2edc997",
+        "sourceFingerprint": "sha256:88049104fe79053154ba939951753a76a60ca734db8d9b0ca0d45286c2edc997",
+        "sourceSpan": {
+          "startLine": 1506,
+          "endLine": 1509
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-149-bis-sera-reprimido-con-prision-de-241",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 241,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 149 bis. - Será reprimido con prisión de seis meses a dos años el que hiciere uso de amenazas para alarmar o amedrentar a una o ..."
+        ],
+        "officialLabel": "ARTICULO 149 bis. - Será reprimido con prisión de seis meses a dos años el que hiciere uso de amenazas para alarmar o amedrentar a una o ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 149 bis. - Será reprimido con prisión de seis meses a dos años el que hiciere uso de amenazas para alarmar o amedrentar a una o más personas. En este caso la pena será de uno a tres años de prisión si se emplearen armas o si las amenazas fueren anónimas.\n\nSerá reprimido con prisión o reclusión de dos a cuatro años el que hiciere uso de amenazas con el propósito de obligar a otro a hacer, no hacer o tolerar algo contra su voluntad.\n",
+        "fullTranslationRu": "СТАТЬЯ 149 bis. - Тюремным заключением от шести месяцев до двух лет наказывается тот, кто использует угрозы, чтобы встревожить или запугать одного или нескольких людей. В этом случае наказание составляет от одного до трех лет тюремного заключения, если использовалось оружие или угрозы были анонимными.\n\nТюремным заключением или лишением свободы от двух до четырех лет наказывается тот, кто использует угрозы с целью заставить другого сделать, не сделать или терпеть что-либо против своей воли.",
+        "simpleRu": "За угрозы, чтобы напугать людей, наказание - от 6 месяцев до 2 лет; если было оружие или анонимные угрозы, от 1 до 3 лет. Если угрозами заставляют человека что-то сделать, не делать или терпеть против воли, срок - от 2 до 4 лет.",
+        "sourceTextSha256": "ade0616659c064490e99b187cdbd2e26f957ec807de1af600b982e95be06dc14",
+        "sourceFingerprint": "sha256:ade0616659c064490e99b187cdbd2e26f957ec807de1af600b982e95be06dc14",
+        "sourceSpan": {
+          "startLine": 1510,
+          "endLine": 1513
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-149-ter-en-el-caso-del-ultimo-242",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 242,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo I",
+          "ARTICULO 149 ter. - En el caso del último apartado del artículo anterior, la pena será:"
+        ],
+        "officialLabel": "ARTICULO 149 ter. - En el caso del último apartado del artículo anterior, la pena será:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 149 ter. - En el caso del último apartado del artículo anterior, la pena será:\n\n1) De tres a seis años de prisión o reclusión si se emplearen armas o si las amenazas fueren anónimas; 2) De cinco a diez años de prisión o reclusión en los siguientes casos:\n\na) Si las amenazas tuvieren como propósito la obtención de alguna medida o concesión por parte de cualquier miembro de los poderes públicos;\n\nb) Si las amenazas tuvieren como propósito el de compeler a una persona a hacer abandono del país, de una provincia o de los lugares de su residencia habitual o de trabajo.\n",
+        "fullTranslationRu": "СТАТЬЯ 149 ter. - В случае последнего абзаца предыдущей статьи наказание составляет:\n\n1) от трех до шести лет тюремного заключения или лишения свободы, если использовалось оружие или угрозы были анонимными; 2) от пяти до десяти лет тюремного заключения или лишения свободы в следующих случаях:\n\na) если угрозы имели целью получить какую-либо меру или уступку от любого члена публичной власти;\n\nb) если угрозы имели целью заставить человека покинуть страну, провинцию либо места его обычного проживания или работы.",
+        "simpleRu": "Если угрозы использовались, чтобы заставить человека действовать против воли, наказание повышается: 3-6 лет при оружии или анонимности; 5-10 лет, если цель - добиться решения или уступки от власти либо заставить человека покинуть страну, провинцию, место проживания или работы.",
+        "sourceTextSha256": "8b5a430b49356069bd22d0b4dad59904bdc65e539e2a93c0723702fdc5f9a569",
+        "sourceFingerprint": "sha256:8b5a430b49356069bd22d0b4dad59904bdc65e539e2a93c0723702fdc5f9a569",
+        "sourceSpan": {
+          "startLine": 1514,
+          "endLine": 1521
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-243",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 243,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nViolación de domicilio\n",
+        "fullTranslationRu": "Глава II\n\nНарушение неприкосновенности жилища",
+        "simpleRu": "Глава II касается незаконного входа в чужое жилище или помещение.",
+        "sourceTextSha256": "1f7f8bacb6c7f02f8ae7780e15bbaf8a5574c31d1b8c23fca81b46068384aff5",
+        "sourceFingerprint": "sha256:1f7f8bacb6c7f02f8ae7780e15bbaf8a5574c31d1b8c23fca81b46068384aff5",
+        "sourceSpan": {
+          "startLine": 1522,
+          "endLine": 1525
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-150-sera-reprimido-con-prision-de-seis-244",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 244,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo II",
+          "ARTICULO 150. - Será reprimido con prisión de seis meses a dos años, si no resultare otro delito más severamente penado, el que entrare e..."
+        ],
+        "officialLabel": "ARTICULO 150. - Será reprimido con prisión de seis meses a dos años, si no resultare otro delito más severamente penado, el que entrare e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 150. - Será reprimido con prisión de seis meses a dos años, si no resultare otro delito más severamente penado, el que entrare en morada o casa de negocio ajena, en sus dependencias o en el recinto habitado por otro, contra la voluntad expresa o presunta de quien tenga derecho de excluirlo.\n",
+        "fullTranslationRu": "СТАТЬЯ 150. - Тюремным заключением от шести месяцев до двух лет, если не образуется другое преступление, наказуемое строже, наказывается тот, кто входит в чужое жилище или дом коммерческой деятельности, в их помещения или в место, где живет другой человек, против явно выраженной или предполагаемой воли лица, имеющего право его не допустить.",
+        "simpleRu": "За вход в чужое жилье, помещение бизнеса или место проживания другого человека против воли того, кто имеет право не пустить, наказание - от 6 месяцев до 2 лет, если нет более тяжкого преступления.",
+        "sourceTextSha256": "944d0f6af608fb21ac8926ca53b2015cc1757cf8904d5721e2c17662344b7bc4",
+        "sourceFingerprint": "sha256:944d0f6af608fb21ac8926ca53b2015cc1757cf8904d5721e2c17662344b7bc4",
+        "sourceSpan": {
+          "startLine": 1526,
+          "endLine": 1527
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-151-se-impondra-la-misma-pena-e-245",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 245,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo II",
+          "ARTICULO 151. - Se impondrá la misma pena e inhabilitación especial de seis meses a dos años, al funcionario público o agente de la autor..."
+        ],
+        "officialLabel": "ARTICULO 151. - Se impondrá la misma pena e inhabilitación especial de seis meses a dos años, al funcionario público o agente de la autor...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 151. - Se impondrá la misma pena e inhabilitación especial de seis meses a dos años, al funcionario público o agente de la autoridad que allanare un domicilio sin las formalidades prescriptas por la ley o fuera de los casos que ella determina.\n",
+        "fullTranslationRu": "СТАТЬЯ 151. - Такое же наказание и специальное лишение прав от шести месяцев до двух лет назначаются государственному служащему или представителю власти, который обыскивает жилище без формальностей, предписанных законом, или вне случаев, которые закон определяет.",
+        "simpleRu": "Если госслужащий или представитель власти проводит обыск жилища без законных формальностей или вне разрешенных законом случаев, применяется то же наказание и специальное лишение прав от 6 месяцев до 2 лет.",
+        "sourceTextSha256": "fea48e1476fdf82661586d416068f158dc3aa492b7a1131b20c3076a228a92d6",
+        "sourceFingerprint": "sha256:fea48e1476fdf82661586d416068f158dc3aa492b7a1131b20c3076a228a92d6",
+        "sourceSpan": {
+          "startLine": 1528,
+          "endLine": 1529
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-152-las-disposiciones-de-los-articulos-anteriores-246",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 246,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo II",
+          "ARTICULO 152. - Las disposiciones de los artículos anteriores no se aplicarán al que entrare en los sitios expresados, para evitar un mal..."
+        ],
+        "officialLabel": "ARTICULO 152. - Las disposiciones de los artículos anteriores no se aplicarán al que entrare en los sitios expresados, para evitar un mal...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 152. - Las disposiciones de los artículos anteriores no se aplicarán al que entrare en los sitios expresados, para evitar un mal grave a sí mismo, a los moradores o a un tercero, ni al que lo hiciere para cumplir un deber de humanidad o prestar auxilio a la justicia.\n",
+        "fullTranslationRu": "СТАТЬЯ 152. - Положения предыдущих статей не применяются к тому, кто входит в указанные места, чтобы предотвратить тяжкий вред себе, жильцам или третьему лицу, а также к тому, кто делает это для исполнения обязанности человечности или оказания помощи правосудию.",
+        "simpleRu": "Правила о незаконном входе не применяются, если человек вошел, чтобы предотвратить серьезный вред себе, жильцам или третьему лицу, выполнить гуманную обязанность или помочь правосудию.",
+        "sourceTextSha256": "8b9f98841c60f251b02532762563fe2e3a9eed3c500923d39d9e98d55e931998",
+        "sourceFingerprint": "sha256:8b9f98841c60f251b02532762563fe2e3a9eed3c500923d39d9e98d55e931998",
+        "sourceSpan": {
+          "startLine": 1530,
+          "endLine": 1531
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iii-247",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 247,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo III"
+        ],
+        "officialLabel": "Capítulo III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo III\n\nViolación de Secretos y de la Privacidad\n\n(Epígrafe sustituido por art. 3° de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "Глава III\n\nНарушение тайны и приватности\n\n(Заголовок заменен статьей 3 Закона N 26.388, B.O. 25/6/2008)",
+        "simpleRu": "Глава III касается нарушения тайны и приватности. Ее заголовок изменен Законом N 26.388.",
+        "sourceTextSha256": "33f9f73caa98faf7b2aa12b3b1ac577fff22514cd00601f71cf278a8a9fe88c1",
+        "sourceFingerprint": "sha256:33f9f73caa98faf7b2aa12b3b1ac577fff22514cd00601f71cf278a8a9fe88c1",
+        "sourceSpan": {
+          "startLine": 1532,
+          "endLine": 1537
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-153-sera-reprimido-con-prision-de-quince-248",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 248,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo III",
+          "ARTICULO 153. - Será reprimido con prisión de quince (15) días a seis (6) meses el que abriere o accediere indebidamente a una comunicaci..."
+        ],
+        "officialLabel": "ARTICULO 153. - Será reprimido con prisión de quince (15) días a seis (6) meses el que abriere o accediere indebidamente a una comunicaci...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 153. - Será reprimido con prisión de quince (15) días a seis (6) meses el que abriere o accediere indebidamente a una comunicación electrónica, una carta, un pliego cerrado, un despacho telegráfico, telefónico o de otra naturaleza, que no le esté dirigido; o se apoderare indebidamente de una comunicación electrónica, una carta, un pliego, un despacho u otro papel privado, aunque no esté cerrado; o indebidamente suprimiere o desviare de su destino una correspondencia o una comunicación electrónica que no le esté dirigida.\n\nEn la misma pena incurrirá el que indebidamente interceptare o captare comunicaciones electrónicas o telecomunicaciones provenientes de cualquier sistema de carácter privado o de acceso restringido.\n\nLa pena será de prisión de un (1) mes a un (1) año, si el autor además comunicare a otro o publicare el contenido de la carta, escrito, despacho o comunicación electrónica.\n\nSi el hecho lo cometiere un funcionario público que abusare de sus funciones, sufrirá además, inhabilitación especial por el doble del tiempo de la condena.\n\n(Artículo sustituido por art. 4° de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 153. - Тюремным заключением от пятнадцати (15) дней до шести (6) месяцев наказывается тот, кто неправомерно открывает или получает доступ к электронной коммуникации, письму, закрытому пакету, телеграфному, телефонному или иному сообщению, которое не адресовано ему; либо неправомерно завладевает электронной коммуникацией, письмом, пакетом, сообщением или другой частной бумагой, даже если она не закрыта; либо неправомерно уничтожает или отклоняет от назначения корреспонденцию или электронную коммуникацию, которая не адресована ему.\n\nТакое же наказание несет тот, кто неправомерно перехватывает или улавливает электронные коммуникации или телекоммуникации из любой системы частного характера или ограниченного доступа.\n\nНаказание составляет тюремное заключение от одного (1) месяца до одного (1) года, если автор также сообщает другому или публикует содержание письма, письменного документа, сообщения или электронной коммуникации.\n\nЕсли деяние совершено государственным служащим, злоупотребившим своими функциями, он дополнительно несет специальное лишение прав на срок, вдвое превышающий срок приговора.\n\n(Статья заменена статьей 4 Закона N 26.388, B.O. 25/6/2008)",
+        "simpleRu": "Нельзя открывать, читать, забирать, уничтожать, перенаправлять или перехватывать чужие письма, электронные сообщения, частные документы или закрытые коммуникации. Базовое наказание - от 15 дней до 6 месяцев. Если содержание еще передали или опубликовали, срок - от 1 месяца до 1 года. Для госслужащего, злоупотребившего должностью, добавляется лишение прав на двойной срок.",
+        "sourceTextSha256": "da42788343c88ee72fb26f246eee42292e7659d1b954968f4cd64532286684ef",
+        "sourceFingerprint": "sha256:da42788343c88ee72fb26f246eee42292e7659d1b954968f4cd64532286684ef",
+        "sourceSpan": {
+          "startLine": 1538,
+          "endLine": 1547
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-153-bis-sera-reprimido-con-prision-de-249",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 249,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo III",
+          "ARTICULO 153 BIS. - Será reprimido con prisión de quince (15) días a seis (6) meses, si no resultare un delito más severamente penado, el..."
+        ],
+        "officialLabel": "ARTICULO 153 BIS. - Será reprimido con prisión de quince (15) días a seis (6) meses, si no resultare un delito más severamente penado, el...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 153 BIS. - Será reprimido con prisión de quince (15) días a seis (6) meses, si no resultare un delito más severamente penado, el que a sabiendas accediere por cualquier medio, sin la debida autorización o excediendo la que posea, a un sistema o dato informático de acceso restringido.\n\nLa pena será de un (1) mes a un (1) año de prisión cuando el acceso fuese en perjuicio de un sistema o dato informático de un organismo público estatal o de un proveedor de servicios públicos o de servicios financieros.\n\n(Artículo incorporado por art. 5° de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 153 BIS. - Тюремным заключением от пятнадцати (15) дней до шести (6) месяцев, если не образуется преступление, наказуемое строже, наказывается тот, кто сознательно получает доступ любым способом, без надлежащего разрешения или превышая имеющееся разрешение, к системе или компьютерным данным ограниченного доступа.\n\nНаказание составляет от одного (1) месяца до одного (1) года тюремного заключения, когда доступ был во вред системе или компьютерным данным государственного органа, поставщика публичных услуг или финансовых услуг.\n\n(Статья включена статьей 5 Закона N 26.388, B.O. 25/6/2008)",
+        "simpleRu": "За сознательный доступ без разрешения или сверх разрешения к закрытой компьютерной системе или данным наказание - от 15 дней до 6 месяцев, если нет более тяжкого преступления. Если вред касается госоргана, поставщика публичных или финансовых услуг, срок - от 1 месяца до 1 года.",
+        "sourceTextSha256": "c48653d82cabe19690523a5cb7a749f78a7cd1931715a40b59bb83237e98d93a",
+        "sourceFingerprint": "sha256:c48653d82cabe19690523a5cb7a749f78a7cd1931715a40b59bb83237e98d93a",
+        "sourceSpan": {
+          "startLine": 1548,
+          "endLine": 1553
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-154-sera-reprimido-con-prision-de-uno-250",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 250,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo III",
+          "ARTICULO 154. - Será reprimido con prisión de uno a cuatro años, el empleado de correos o telégrafos que, abusando de su empleo, se apode..."
+        ],
+        "officialLabel": "ARTICULO 154. - Será reprimido con prisión de uno a cuatro años, el empleado de correos o telégrafos que, abusando de su empleo, se apode...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 154. - Será reprimido con prisión de uno a cuatro años, el empleado de correos o telégrafos que, abusando de su empleo, se apoderare de una carta, de un pliego, de un telegrama o de otra pieza de correspondencia, se impusiere de su contenido, la entregare o comunicare a otro que no sea el destinatario, la suprimiere, la ocultare o cambiare su texto.\n",
+        "fullTranslationRu": "СТАТЬЯ 154. - Тюремным заключением от одного до четырех лет наказывается сотрудник почты или телеграфа, который, злоупотребляя своей работой, завладевает письмом, пакетом, телеграммой или другим почтовым отправлением, знакомится с его содержанием, передает или сообщает его лицу, не являющемуся адресатом, уничтожает, скрывает или изменяет его текст.",
+        "simpleRu": "Если работник почты или телеграфа злоупотребляет работой и берет чужое отправление, читает его, передает не адресату, уничтожает, скрывает или меняет текст, наказание - от 1 до 4 лет.",
+        "sourceTextSha256": "60498bf7e81e424bbc8b1fa54361bbd0eb1d33150da14bba9fa1135ed5265bfd",
+        "sourceFingerprint": "sha256:60498bf7e81e424bbc8b1fa54361bbd0eb1d33150da14bba9fa1135ed5265bfd",
+        "sourceSpan": {
+          "startLine": 1554,
+          "endLine": 1555
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-155-sera-reprimido-con-multa-de-pesos-251",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 251,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo III",
+          "ARTICULO 155. - Será reprimido con multa de pesos un mil quinientos ($ 1.500) a pesos cien mil ($ 100.000), el que hallándose en posesión..."
+        ],
+        "officialLabel": "ARTICULO 155. - Será reprimido con multa de pesos un mil quinientos ($ 1.500) a pesos cien mil ($ 100.000), el que hallándose en posesión...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 155. - Será reprimido con multa de pesos un mil quinientos ($ 1.500) a pesos cien mil ($ 100.000), el que hallándose en posesión de una correspondencia, una comunicación electrónica, un pliego cerrado, un despacho telegráfico, telefónico o de otra naturaleza, no destinados a la publicidad, los hiciere publicar indebidamente, si el hecho causare o pudiere causar perjuicios a terceros.\n\nEstá exento de responsabilidad penal el que hubiere obrado con el propósito inequívoco de proteger un interés público.\n\n(Artículo sustituido por art. 6° de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 155. - Штрафом от одной тысячи пятисот песо ($ 1.500) до ста тысяч песо ($ 100.000) наказывается тот, кто, имея у себя корреспонденцию, электронную коммуникацию, закрытый пакет, телеграфное, телефонное или иное сообщение, не предназначенное для публикации, неправомерно делает его опубликованным, если деяние причинило или могло причинить вред третьим лицам.\n\nОсвобождается от уголовной ответственности тот, кто действовал с недвусмысленной целью защитить общественный интерес.\n\n(Статья заменена статьей 6 Закона N 26.388, B.O. 25/6/2008)",
+        "simpleRu": "Если человек неправомерно публикует чужую непубличную переписку или сообщение и это причинило или могло причинить вред другим, штраф - от 1 500 до 100 000 песо. Ответственности нет, если он ясно действовал для защиты общественного интереса.",
+        "sourceTextSha256": "1f24cc52214491239fe6a54c432c3e20729a4cf38837cb75a5ba17062874b43d",
+        "sourceFingerprint": "sha256:1f24cc52214491239fe6a54c432c3e20729a4cf38837cb75a5ba17062874b43d",
+        "sourceSpan": {
+          "startLine": 1556,
+          "endLine": 1561
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-156-sera-reprimido-con-multa-de-pesos-252",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 252,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo III",
+          "ARTICULO 156. - Será reprimido con multa de pesos mil quinientos a pesos noventa mil e inhabilitación especial, en su caso, por seis mese..."
+        ],
+        "officialLabel": "ARTICULO 156. - Será reprimido con multa de pesos mil quinientos a pesos noventa mil e inhabilitación especial, en su caso, por seis mese...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 156. - Será reprimido con multa de pesos mil quinientos a pesos noventa mil e inhabilitación especial, en su caso, por seis meses a tres años, el que teniendo noticia, por razón de su estado, oficio, empleo, profesión o arte, de un secreto cuya divulgación pueda causar daño, lo revelare sin justa causa.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 156. - Штрафом от одной тысячи пятисот песо до девяноста тысяч песо и, при необходимости, специальным лишением прав от шести месяцев до трех лет наказывается тот, кто по своему состоянию, ремеслу, работе, профессии или искусству узнал тайну, разглашение которой может причинить вред, и раскрыл ее без уважительной причины.\n\n(Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, B.O. 29/12/1993)",
+        "simpleRu": "Если человек узнал тайну из-за своего положения, работы или профессии и без уважительной причины раскрыл ее, хотя это может причинить вред, штраф - от 1 500 до 90 000 песо. При необходимости добавляется специальное лишение прав на 6 месяцев - 3 года.",
+        "sourceTextSha256": "3bc12fb789ed10549ea50f2ae95877f21484e719d3fae686ea6bb0066ce7570c",
+        "sourceFingerprint": "sha256:3bc12fb789ed10549ea50f2ae95877f21484e719d3fae686ea6bb0066ce7570c",
+        "sourceSpan": {
+          "startLine": 1562,
+          "endLine": 1565
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-157-sera-reprimido-con-prision-de-un-253",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 253,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo III",
+          "ARTICULO 157. - Será reprimido con prisión de un (1) mes a dos (2) años e inhabilitación especial de un (1) a cuatro (4) años, el funcion..."
+        ],
+        "officialLabel": "ARTICULO 157. - Será reprimido con prisión de un (1) mes a dos (2) años e inhabilitación especial de un (1) a cuatro (4) años, el funcion...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 157. - Será reprimido con prisión de un (1) mes a dos (2) años e inhabilitación especial de un (1) a cuatro (4) años, el funcionario público que revelare hechos, actuaciones, documentos o datos, que por ley deben ser secretos.\n\n(Artículo sustituido por art. 7° de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 157. - Тюремным заключением от одного (1) месяца до двух (2) лет и специальным лишением прав от одного (1) до четырех (4) лет наказывается государственный служащий, который раскрывает факты, действия, документы или данные, которые по закону должны быть секретными.\n\n(Статья заменена статьей 7 Закона N 26.388, B.O. 25/6/2008)",
+        "simpleRu": "Госслужащий, который раскрывает сведения, документы или данные, которые закон требует держать в тайне, получает от 1 месяца до 2 лет и специальное лишение прав от 1 до 4 лет.",
+        "sourceTextSha256": "7722d08a1bbd424f1eb27508431282324755c5766cd1e9506e42ca6d36387da0",
+        "sourceFingerprint": "sha256:7722d08a1bbd424f1eb27508431282324755c5766cd1e9506e42ca6d36387da0",
+        "sourceSpan": {
+          "startLine": 1566,
+          "endLine": 1569
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-157-bis-sera-reprimido-con-la-pena-254",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 254,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo III",
+          "ARTICULO 157 bis. -Será reprimido con la pena de prisión de un (1) mes a dos (2) años el que:"
+        ],
+        "officialLabel": "ARTICULO 157 bis. -Será reprimido con la pena de prisión de un (1) mes a dos (2) años el que:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 157 bis. -Será reprimido con la pena de prisión de un (1) mes a dos (2) años el que:\n\n1. A sabiendas e ilegítimamente, o violando sistemas de confidencialidad y seguridad de datos, accediere, de cualquier forma, a un banco de datos personales.\n\n2. Ilegítimamente proporcionare o revelare a otro información registrada en un archivo o en un banco de datos personales cuyo secreto estuviere obligado a preservar por disposición de la ley.\n\n3. Ilegítimamente insertare o hiciere insertar datos en un archivo de datos personales.\n\nCuando el autor sea funcionario público sufrirá, además, pena de inhabilitación especial de un (1) a cuatro (4) años.\n\nCuando las conductas reprimidas se hicieran para acceder, revelar, insertar o suprimir datos que afectaren a un banco de datos genéticos, registros, exámenes o muestras de ADN, la pena será de prisión de seis (6) meses a cuatro (4) años, con más inhabilitación especial para ejercer la profesión de dos (2) a cinco (5) años.\n\n(Artículo sustituido por art. 17 de la Ley N° 27.759 [https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=405186] B.O. 14/10/2024. Vigencia: a partir del día siguiente al de su publicación en el Boletín Oficial de la República Argentina.)\n",
+        "fullTranslationRu": "СТАТЬЯ 157 bis. - Тюремным заключением от одного (1) месяца до двух (2) лет наказывается тот, кто:\n\n1. сознательно и незаконно либо с нарушением систем конфиденциальности и безопасности данных любым способом получает доступ к банку персональных данных;\n\n2. незаконно предоставляет или раскрывает другому лицу информацию, зарегистрированную в файле или банке персональных данных, тайну которой он обязан сохранять по закону;\n\n3. незаконно вносит или заставляет внести данные в файл персональных данных.\n\nКогда автор является государственным служащим, он дополнительно несет специальное лишение прав от одного (1) до четырех (4) лет.\n\nКогда наказуемые действия совершены для доступа, раскрытия, внесения или удаления данных, затрагивающих банк генетических данных, записи, исследования или образцы ДНК, наказание составляет тюремное заключение от шести (6) месяцев до четырех (4) лет, плюс специальное лишение права заниматься профессией от двух (2) до пяти (5) лет.\n\n(Статья заменена статьей 17 Закона N 27.759, B.O. 14/10/2024. Вступление в силу: со дня, следующего за публикацией в Официальном бюллетене Аргентинской Республики.)",
+        "simpleRu": "Статья 157 bis наказывает незаконный доступ к банку персональных данных, раскрытие таких данных, если человек обязан хранить тайну, или незаконное внесение данных. Базовый срок - от 1 месяца до 2 лет. Для госслужащего добавляется лишение прав от 1 до 4 лет. Если речь о генетических данных, ДНК-записях, исследованиях или образцах, срок - от 6 месяцев до 4 лет и запрет работать по профессии от 2 до 5 лет.",
+        "sourceTextSha256": "bdaab62985a638162be7e954de28a81e9ef046ca52ad62340e3da202a4efc27b",
+        "sourceFingerprint": "sha256:bdaab62985a638162be7e954de28a81e9ef046ca52ad62340e3da202a4efc27b",
+        "sourceSpan": {
+          "startLine": 1570,
+          "endLine": 1583
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iv-255",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 255,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo IV"
+        ],
+        "officialLabel": "Capítulo IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo IV\n\nDelitos contra la libertad de trabajo y asociación\n",
+        "fullTranslationRu": "Глава IV\n\nПреступления против свободы труда и объединения",
+        "simpleRu": "Глава IV касается свободы труда и права объединяться.",
+        "sourceTextSha256": "ba1e17aeb33372ebd151270a36bd261727041d4cf09a59542e982ec157d75448",
+        "sourceFingerprint": "sha256:ba1e17aeb33372ebd151270a36bd261727041d4cf09a59542e982ec157d75448",
+        "sourceSpan": {
+          "startLine": 1584,
+          "endLine": 1587
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-158-sera-reprimido-con-prision-de-un-256",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 256,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo IV",
+          "ARTICULO 158. - Será reprimido con prisión de un mes a un año; el obrero que ejerciere violencia sobre otro para compelerlo a tomar parte..."
+        ],
+        "officialLabel": "ARTICULO 158. - Será reprimido con prisión de un mes a un año; el obrero que ejerciere violencia sobre otro para compelerlo a tomar parte...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 158. - Será reprimido con prisión de un mes a un año; el obrero que ejerciere violencia sobre otro para compelerlo a tomar parte en una huelga o boycott. La misma pena sufrirá el patrón, empresario o empleado que, por sí o por cuenta de alguien, ejerciere coacción para obligar a otro a tomar parte en un lock-out y a abandonar o ingresar a una sociedad obrera o patronal determinada.\n",
+        "fullTranslationRu": "СТАТЬЯ 158. - Тюремным заключением от одного месяца до одного года наказывается рабочий, который применяет насилие к другому, чтобы принудить его участвовать в забастовке или бойкоте. Такое же наказание несет работодатель, предприниматель или работник, который сам или за чей-либо счет применяет принуждение, чтобы обязать другого участвовать в локауте и покинуть или вступить в определенное рабочее или предпринимательское объединение.",
+        "simpleRu": "Нельзя насилием заставлять другого участвовать в забастовке или бойкоте. Также нельзя принуждать к участию в локауте или к выходу либо вступлению в рабочее или предпринимательское объединение. Наказание - от 1 месяца до 1 года.",
+        "sourceTextSha256": "ca48d4ccdc66c780a3750c26951599e946c641fc983f73d7335a3bf77935ff9c",
+        "sourceFingerprint": "sha256:ca48d4ccdc66c780a3750c26951599e946c641fc983f73d7335a3bf77935ff9c",
+        "sourceSpan": {
+          "startLine": 1588,
+          "endLine": 1589
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-159-sera-reprimido-con-multa-de-pesos-257",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 257,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo IV",
+          "ARTICULO 159. - Será reprimido con multa de pesos dos mil quinientos a pesos treinta mil, el que, por maquinaciones fraudulentas, sospech..."
+        ],
+        "officialLabel": "ARTICULO 159. - Será reprimido con multa de pesos dos mil quinientos a pesos treinta mil, el que, por maquinaciones fraudulentas, sospech...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 159. - Será reprimido con multa de pesos dos mil quinientos a pesos treinta mil, el que, por maquinaciones fraudulentas, sospechas malévolas o cualquier medio de propaganda desleal, tratare de desviar, en su provecho, la clientela de un establecimiento comercial o industrial.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 159. - Штрафом от двух тысяч пятисот песо до тридцати тысяч песо наказывается тот, кто с помощью мошеннических маневров, злонамеренных подозрений или любого средства недобросовестной пропаганды пытается отвлечь в свою пользу клиентуру коммерческого или промышленного заведения.\n\n(Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, B.O. 29/12/1993)",
+        "simpleRu": "За недобросовестные способы переманить клиентов магазина, фирмы или промышленного предприятия в свою пользу - например обманные схемы, злонамеренные подозрения или нечестная реклама - штраф от 2 500 до 30 000 песо.",
+        "sourceTextSha256": "617c175e694a9acd9d8efbb37c9693f5ca23a87eed5aea66dc53220d2ff67776",
+        "sourceFingerprint": "sha256:617c175e694a9acd9d8efbb37c9693f5ca23a87eed5aea66dc53220d2ff67776",
+        "sourceSpan": {
+          "startLine": 1590,
+          "endLine": 1593
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-v-258",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 258,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo V"
+        ],
+        "officialLabel": "Capítulo V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo V\n\nDelitos contra la libertad de reunión\n",
+        "fullTranslationRu": "Глава V\n\nПреступления против свободы собраний",
+        "simpleRu": "Глава V касается преступлений против свободы собраний.",
+        "sourceTextSha256": "8e2c6bfa27549a91425a936fe5c58b679e860b70235bf1b06147d3d66943cd6e",
+        "sourceFingerprint": "sha256:8e2c6bfa27549a91425a936fe5c58b679e860b70235bf1b06147d3d66943cd6e",
+        "sourceSpan": {
+          "startLine": 1594,
+          "endLine": 1597
+        }
+      }
+    ]
+  }
+}

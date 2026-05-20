@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+  "document": {
+    "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+    "title": "Disposición 343 / 2024",
+    "shortTitleRu": "Распоряжение 343/2024 о цифровой cédula",
+    "category": "vehicle-documents",
+    "jurisdiction": "national",
+    "officialSourceType": "dnrpa_disposition_original_text",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto",
+    "archiveLocalPath": "content/official-documents/documents/disposicion-343-2024-autorizacion-cedula-digital.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "in_force",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--disposicion-343-2024-001",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 1,
+        "headingPath": [
+          "Disposición 343 / 2024"
+        ],
+        "officialLabel": "Disposición 343 / 2024",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "# Disposición 343 / 2024\n\n- Inicio\n\n- Ministerio de Justicia\n\n- Normativa\n\n- Disposición 343/2024\n\n- TEXTO ORIGINAL - DISPOSICIÓN 343 / 2024 - MINISTERIO DE JUSTICIA\n",
+        "fullTranslationRu": "# Распоряжение 343 / 2024\n\n- Главная\n\n- Министерство юстиции\n\n- Нормативные акты\n\n- Распоряжение 343/2024\n\n- ИСХОДНЫЙ ТЕКСТ - РАСПОРЯЖЕНИЕ 343 / 2024 - МИНИСТЕРСТВО ЮСТИЦИИ",
+        "simpleRu": "Это заголовок и навигация официальной страницы Распоряжения 343/2024 Министерства юстиции. Документ относится к исходному тексту нормы.",
+        "sourceTextSha256": "b1229bcacfbcae9c4990007c6db3711b78acf1784b0597a2251dc0de1b8acdf7",
+        "sourceFingerprint": "sha256:b1229bcacfbcae9c4990007c6db3711b78acf1784b0597a2251dc0de1b8acdf7",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 12
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--disposicion-343-2024-002",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 2,
+        "headingPath": [
+          "Disposición 343 / 2024"
+        ],
+        "officialLabel": "Disposición 343 / 2024",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "# Disposición 343 / 2024\n\nDIRECCION NAC.REG.NAC.PROP.AUTO. Y CRED.PRENDARIOS\n",
+        "fullTranslationRu": "# Распоряжение 343 / 2024\n\nНАЦИОНАЛЬНАЯ ДИРЕКЦИЯ НАЦИОНАЛЬНЫХ РЕЕСТРОВ СОБСТВЕННОСТИ НА АВТОМОБИЛИ И ЗАЛОГОВЫХ КРЕДИТОВ",
+        "simpleRu": "Распоряжение 343/2024 относится к DNRPA: органу, который ведет национальные реестры автомобилей и залоговых кредитов.",
+        "sourceTextSha256": "e8fb30029e4dfc13165b83b7ee1abe23f8c5aeabd67ff3de330992f05e194258",
+        "sourceFingerprint": "sha256:e8fb30029e4dfc13165b83b7ee1abe23f8c5aeabd67ff3de330992f05e194258",
+        "sourceSpan": {
+          "startLine": 13,
+          "endLine": 16
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--ministerio-de-justicia-003",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 3,
+        "headingPath": [
+          "Disposición 343 / 2024",
+          "MINISTERIO DE JUSTICIA"
+        ],
+        "officialLabel": "MINISTERIO DE JUSTICIA",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "## MINISTERIO DE JUSTICIA\n\nCEDULA DE IDENTIFICACION DEL AUTOMOTOR - ENTRADA EN VIGENCIA PREVISIONES\n\nSanción:\n\n26-11-2024\n\nPublicada en el Boletín Oficial:\n\nFecha:\n27-11-2024\n\nNúmero:\n\nBoletín Oficial número:\n35555\n\nPágina:\n14\n\nTexto original de la norma\n",
+        "fullTranslationRu": "## МИНИСТЕРСТВО ЮСТИЦИИ\n\nИДЕНТИФИКАЦИОННАЯ CÉDULA АВТОМОБИЛЯ - ВСТУПЛЕНИЕ ПОЛОЖЕНИЙ В СИЛУ\n\nПринятие:\n\n26-11-2024\n\nОпубликовано в Официальном бюллетене:\n\nДата:\n27-11-2024\n\nНомер:\n\nНомер Официального бюллетеня:\n35555\n\nСтраница:\n14\n\nИсходный текст нормы",
+        "simpleRu": "Это официальные данные нормы: Министерство юстиции, тема - идентификационная cédula автомобиля, принятие 26-11-2024, публикация в Официальном бюллетене 27-11-2024, бюллетень N 35555, страница 14.",
+        "sourceTextSha256": "015a0f2fa93d5aa9c75769a68f56e4e32122d2121ca6f6abdfa7d5e925f7798e",
+        "sourceFingerprint": "sha256:015a0f2fa93d5aa9c75769a68f56e4e32122d2121ca6f6abdfa7d5e925f7798e",
+        "sourceSpan": {
+          "startLine": 17,
+          "endLine": 39
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--normativa-004",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 4,
+        "headingPath": [
+          "Disposición 343 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa"
+        ],
+        "officialLabel": "Normativa",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "### Normativa\n\nDI-2024-343-APN-DNRNPACP#MJ Ciudad de Buenos Aires, 26/11/2024\nVISTO el Expediente N° EX-2024-129179294-APN-DNRNPACP#MJ y la Disposición N° DI-2024-29-APN-DNRNPACP#MJ del 10 de mayo de 2024, y\n\nCONSIDERANDO:\n\nQue a través de la Disposición N° DI-2024-29-APN-DNRNPACP#MJ se efectuaron varias adecuaciones al Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, incluyendo la emisión de la Cédula de Identificación del Automotor Digital con vigencia indefinida y la derogación de la “Cédula de Identificación para autorizado a conducir”.\n\nQue dicha Disposición también introdujo una modificación en el artículo 5°, Sección 1ª, del citado Capítulo IX, el cual prevé un mecanismo especial y remoto para que el titular registral pueda habilitar a un tercero a que visualice la Cédula de Identificación Digital a través la aplicación “Mi Argentina” y, de este modo, cuente con un documento habilitante para utilizar el vehículo de que se trate.\n\nQue, no obstante ello, mediante el artículo 7° de la Disposición N° DI-2024-29-APN-DNRNPACP#MJ se dispuso que la entrada en vigencia de la modificación introducida en el artículo 5° de la Sección 1ª, Capítulo IX, Título II, del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor quedara supeditada a una nueva Disposición.\n\nQue, en la actualidad, tanto el DEPARTAMENTO DE SERVICIOS INFORMÁTICOS de esta Dirección Nacional como la SUBSECRETARÍA DE TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES, han informado que se han efectuado las adecuaciones de los sistemas operativos para poner a disposición de los ciudadanos la habilitación de las Cédulas de Identificación Digital desde el Perfil del Digital de la aplicación Mi Argentina del titular registral a favor de un tercero.\n\nQue, así las cosas, están dadas en condiciones para poner en vigencia las previsiones del artículo 5° con algunas adecuaciones al texto original que permitirán efectuar la habilitación allí prevista de un modo más ágil y simple para el ciudadano, directamente desde la aplicación.\n\nQue la Subsecretaría de Tecnologías de la Información y las Comunicaciones ha informado mediante Nota N° NO-2024-128985006-APN-SSTIYC#JGM que se ha implementado el Sistema de Autorización de Personas Físicas para conducir vehículos a través de la aplicación móvil Mi Argentina y que, habiéndose cumplido de manera satisfactoria con las instancias de prueba requeridas, se procederá a habilitar dicho sistema en el entorno de producción de la aplicación Mi Argentina.\n\nQue la autorización del titular registral al tercero mediante la habilitación de la Cédula de Identificación digital en la aplicación móvil Mi Argentina, permitirá al tercero la circulación con el vehículo dentro del país, así como el egreso temporario con el mismo.\n\nQue ha tomado intervención el DEPARTAMENTO DE ASUNTOS NORMATIVOS Y JUDICIALES.\n\nQue la presente se dicta en virtud de las facultades conferidas por el artículo 2°, inciso c), del Decreto N° 335/88.\n\nPor ello,\n\nEL SUBDIRECTOR NACIONAL DE LOS REGISTROS NACIONALES DE LA PROPIEDAD DEL AUTOMOTOR Y DE CRÉDITOS PRENDARIOS\n\nDISPONE:\n",
+        "fullTranslationRu": "### Нормативный текст\n\nDI-2024-343-APN-DNRNPACP#MJ, город Буэнос-Айрес, 26/11/2024\nУЧИТЫВАЯ дело N EX-2024-129179294-APN-DNRNPACP#MJ и Распоряжение N DI-2024-29-APN-DNRNPACP#MJ от 10 мая 2024 года, и\n\nПРИНИМАЯ ВО ВНИМАНИЕ:\n\nЧто Распоряжением N DI-2024-29-APN-DNRNPACP#MJ были внесены различные изменения в Главу IX, Титул II Свода техническо-регистрационных норм Национального реестра собственности на автомобили, включая выдачу цифровой идентификационной cédula автомобиля с неопределенным сроком действия и отмену “Cédula de Identificación para autorizado a conducir”.\n\nЧто это Распоряжение также внесло изменение в статью 5, Раздел 1, указанной Главы IX, предусматривающую специальный дистанционный механизм, чтобы зарегистрированный владелец мог разрешить третьему лицу видеть цифровую идентификационную cédula через приложение Mi Argentina и тем самым иметь документ, дающий право пользоваться соответствующим транспортным средством.\n\nЧто, несмотря на это, статьей 7 Распоряжения N DI-2024-29-APN-DNRNPACP#MJ было установлено, что вступление в силу изменения, внесенного в статью 5 Раздела 1, Главы IX, Титула II Свода техническо-регистрационных норм Национального реестра собственности на автомобили, будет зависеть от нового Распоряжения.\n\nЧто в настоящее время как ДЕПАРТАМЕНТ ИНФОРМАТИЧЕСКИХ УСЛУГ этой Национальной дирекции, так и ПОДСЕКРЕТАРИАТ ИНФОРМАЦИОННЫХ И КОММУНИКАЦИОННЫХ ТЕХНОЛОГИЙ сообщили, что были выполнены настройки операционных систем, чтобы гражданам стала доступна habilitación цифровых идентификационных cédulas из цифрового профиля приложения Mi Argentina зарегистрированного владельца в пользу третьего лица.\n\nЧто при таком положении имеются условия для введения в силу положений статьи 5 с некоторыми корректировками исходного текста, которые позволят выполнять предусмотренное там разрешение более быстро и просто для гражданина, непосредственно из приложения.\n\nЧто Подсекретариат информационных и коммуникационных технологий сообщил Нотой N NO-2024-128985006-APN-SSTIYC#JGM, что через мобильное приложение Mi Argentina внедрена система разрешения физических лиц на управление транспортными средствами и что, после удовлетворительного выполнения требуемых этапов тестирования, эта система будет включена в производственной среде приложения Mi Argentina.\n\nЧто разрешение зарегистрированного владельца третьему лицу через включение цифровой идентификационной cédula в мобильном приложении Mi Argentina позволит третьему лицу передвигаться на транспортном средстве внутри страны, а также временно выезжать на нем из страны.\n\nЧто участвовал ДЕПАРТАМЕНТ НОРМАТИВНЫХ И СУДЕБНЫХ ВОПРОСОВ.\n\nЧто настоящее распоряжение издается на основании полномочий, предоставленных статьей 2, пунктом c), Декрета N 335/88.\n\nПоэтому\n\nЗАМЕСТИТЕЛЬ НАЦИОНАЛЬНОГО ДИРЕКТОРА НАЦИОНАЛЬНЫХ РЕЕСТРОВ СОБСТВЕННОСТИ НА АВТОМОБИЛИ И ЗАЛОГОВЫХ КРЕДИТОВ\n\nПОСТАНОВЛЯЕТ:",
+        "simpleRu": "Распоряжение объясняет, почему запускается цифровое разрешение через Mi Argentina. Раньше изменение статьи 5 зависело от нового распоряжения. Теперь системы готовы: владелец автомобиля может через свой цифровой профиль разрешить конкретному третьему лицу видеть цифровую cédula. Это дает этому лицу документ для движения по стране и временного выезда на этом автомобиле. Основание полномочий - статья 2, пункт c), Декрета N 335/88.",
+        "sourceTextSha256": "141d71f580db5889e9fb4ee483d936d5b3a877d289748a8f188373271c51eb0f",
+        "sourceFingerprint": "sha256:141d71f580db5889e9fb4ee483d936d5b3a877d289748a8f188373271c51eb0f",
+        "sourceSpan": {
+          "startLine": 40,
+          "endLine": 70
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-1o-establecese-la-entrada-en-vigencia-de-005",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 5,
+        "headingPath": [
+          "Disposición 343 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 1°.- Establécese la entrada en vigencia de las previsiones contenidas en el artículo 5°, Sección 1ª, Capítulo IX, Título II del ..."
+        ],
+        "officialLabel": "ARTÍCULO 1°.- Establécese la entrada en vigencia de las previsiones contenidas en el artículo 5°, Sección 1ª, Capítulo IX, Título II del ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 1°.- Establécese la entrada en vigencia de las previsiones contenidas en el artículo 5°, Sección 1ª, Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor.\n",
+        "fullTranslationRu": "СТАТЬЯ 1.- Устанавливается вступление в силу положений, содержащихся в статье 5, Разделе 1, Главе IX, Титуле II Свода техническо-регистрационных норм Национального реестра собственности на автомобили.",
+        "simpleRu": "Статья 1 вводит в силу правила статьи 5, Раздела 1, Главы IX, Титула II Свода техническо-регистрационных норм Национального реестра собственности на автомобили.",
+        "sourceTextSha256": "f55c406a5e6b2723d7833eb88c75300ab923ed022af8b5a9edf2854c352cb133",
+        "sourceFingerprint": "sha256:f55c406a5e6b2723d7833eb88c75300ab923ed022af8b5a9edf2854c352cb133",
+        "sourceSpan": {
+          "startLine": 71,
+          "endLine": 72
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-2o-sustituyese-el-texto-del-articulo-5o-006",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 6,
+        "headingPath": [
+          "Disposición 343 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 2°.- Sustitúyese el texto del artículo 5°, Sección 1ª, Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Regi..."
+        ],
+        "officialLabel": "ARTÍCULO 2°.- Sustitúyese el texto del artículo 5°, Sección 1ª, Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Regi...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 2°.- Sustitúyese el texto del artículo 5°, Sección 1ª, Capítulo IX, Título II del Digesto de Normas Técnico-Registrales del Registro Nacional de la Propiedad del Automotor, por el que a continuación se indica:\n\n“Artículo 5°.- El titular registral podrá solicitar que la Cédula de Identificación Digital de su automotor sea visualizada en el Perfil Digital del Ciudadano de la aplicación “Mi Argentina” de uno o más terceros determinados. A tal efecto, deberá:\n\na. Ingresar en la aplicación Mi Argentina, apartado “Mis vehículos”:\n\nb. Desde la opción “Vehículos a mi nombre”, seleccionar un dominio sobre el cual es titular registral;\n\nc. Cuando se visualice la Cédula de Identificación vigente, seleccionar la opción “Habilitar a conducir”;\n\nd. Identificar al tercero habilitado mediante su nombre y apellido, y número de CUIT, CUIL o CDI.\n\nEn estos casos, no se emitirá Cédula adicional.\n\nIgual procedimiento deberá realizar el titular registral si pretendiera desafectar la Cédula del Perfil Digital de la persona oportunamente informada.\n\nEl procedimiento previsto en este artículo importará para el titular registral la aceptación de que dicha habilitación no modifica su responsabilidad civil por los daños y perjuicios que se produzcan con el automotor en su carácter de dueño de la cosa. Asimismo, el titular conoce y acepta que esta Cédula confiere el mismo tratamiento que el asignado a la Cédula de Identificación del Automotor en soporte papel a los efectos de permitir la circulación del vehículo dentro del país, así como el egreso temporario del mismo.”\n",
+        "fullTranslationRu": "СТАТЬЯ 2.- Текст статьи 5, Раздела 1, Главы IX, Титула II Свода техническо-регистрационных норм Национального реестра собственности на автомобили заменяется следующим текстом:\n\n“Статья 5.- Зарегистрированный владелец может запросить, чтобы цифровая идентификационная cédula его автомобиля отображалась в цифровом профиле гражданина в приложении Mi Argentina у одного или нескольких определенных третьих лиц. Для этого он должен:\n\na. Войти в приложение Mi Argentina, раздел “Mis vehículos”;\n\nb. В опции “Vehículos a mi nombre” выбрать регистрационный номер, по которому он является зарегистрированным владельцем;\n\nc. Когда отображается действующая идентификационная cédula, выбрать опцию “Habilitar a conducir”;\n\nd. Идентифицировать уполномоченное третье лицо по имени и фамилии, а также номеру CUIT, CUIL или CDI.\n\nВ этих случаях дополнительная cédula не выдается.\n\nТакую же процедуру зарегистрированный владелец должен выполнить, если он намерен удалить cédula из цифрового профиля ранее указанного лица.\n\nПроцедура, предусмотренная этой статьей, означает для зарегистрированного владельца принятие того, что такое разрешение не изменяет его гражданскую ответственность за вред и убытки, причиненные автомобилем в его качестве владельца вещи. Кроме того, владелец знает и принимает, что эта cédula получает такой же режим, как идентификационная cédula автомобиля на бумажном носителе, для целей разрешения движения транспортного средства внутри страны, а также его временного выезда из страны.”",
+        "simpleRu": "Статья 2 заменяет текст статьи 5. Владелец автомобиля может через Mi Argentina разрешить одному или нескольким конкретным людям видеть цифровую cédula. Нужно войти в “Mis vehículos”, выбрать машину в “Vehículos a mi nombre”, открыть действующую cédula, нажать “Habilitar a conducir” и указать имя, фамилию и CUIT, CUIL или CDI человека. Дополнительная cédula не выдается. Чтобы убрать разрешение, владелец делает такую же процедуру. Важно: разрешение не снимает с владельца гражданскую ответственность за вред от автомобиля. Такая цифровая cédula действует как бумажная для движения по стране и временного выезда.",
+        "sourceTextSha256": "1b06f67945bb0bdd1b31c980b2d2ab666d47c9d92639ebd9befbba88d97e5d9e",
+        "sourceFingerprint": "sha256:1b06f67945bb0bdd1b31c980b2d2ab666d47c9d92639ebd9befbba88d97e5d9e",
+        "sourceSpan": {
+          "startLine": 73,
+          "endLine": 90
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-3o-notifiquese-la-presente-medida-a-la-007",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 7,
+        "headingPath": [
+          "Disposición 343 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 3°.- Notifíquese la presente medida a la Dirección Nacional de Migraciones dependiente de la Vicejefatura de Gabinete de Ministr..."
+        ],
+        "officialLabel": "ARTÍCULO 3°.- Notifíquese la presente medida a la Dirección Nacional de Migraciones dependiente de la Vicejefatura de Gabinete de Ministr...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 3°.- Notifíquese la presente medida a la Dirección Nacional de Migraciones dependiente de la Vicejefatura de Gabinete de Ministros, al Ministerio de Seguridad, a la Dirección General de Aduanas dependiente de la Agencia de Recaudación y Control Aduanero, al Ministerio de Relaciones Exteriores, Comercio Internacional y Culto, y a la Agencia Nacional de Seguridad Vial.\n",
+        "fullTranslationRu": "СТАТЬЯ 3.- Настоящая мера должна быть уведомлена Национальной дирекции миграции, зависящей от Заместительства главы Кабинета министров, Министерству безопасности, Главному таможенному управлению, зависящему от Agencia de Recaudación y Control Aduanero, Министерству иностранных дел, международной торговли и культа, а также Национальному агентству безопасности дорожного движения.",
+        "simpleRu": "Статья 3 говорит, какие органы нужно уведомить о мере: миграционную службу, Министерство безопасности, таможню, Министерство иностранных дел и ANSV.",
+        "sourceTextSha256": "b6316707cb1af623554615a4d755bd0e9f584e72af4bc4adae4bed81bda6a17b",
+        "sourceFingerprint": "sha256:b6316707cb1af623554615a4d755bd0e9f584e72af4bc4adae4bed81bda6a17b",
+        "sourceSpan": {
+          "startLine": 91,
+          "endLine": 92
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-4o-la-presente-medida-entrara-en-vigencia-008",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 8,
+        "headingPath": [
+          "Disposición 343 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 4°.- La presente medida entrará en vigencia a partir del día de su publicación."
+        ],
+        "officialLabel": "ARTÍCULO 4°.- La presente medida entrará en vigencia a partir del día de su publicación.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 4°.- La presente medida entrará en vigencia a partir del día de su publicación.\n",
+        "fullTranslationRu": "СТАТЬЯ 4.- Настоящая мера вступает в силу со дня ее публикации.",
+        "simpleRu": "Статья 4: мера начинает действовать в день публикации.",
+        "sourceTextSha256": "0f42c8f4b25a6ce83440a9f1c674d199c748be99825b72fb470ba7ee2a68e28e",
+        "sourceFingerprint": "sha256:0f42c8f4b25a6ce83440a9f1c674d199c748be99825b72fb470ba7ee2a68e28e",
+        "sourceSpan": {
+          "startLine": 93,
+          "endLine": 94
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-5o-comuniquese-publiquese-dese-a-la-direccion-009",
+        "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+        "order": 9,
+        "headingPath": [
+          "Disposición 343 / 2024",
+          "MINISTERIO DE JUSTICIA",
+          "Normativa",
+          "ARTÍCULO 5°.- Comuníquese, publíquese, dése a la Dirección Nacional del Registro Oficial y archívese."
+        ],
+        "officialLabel": "ARTÍCULO 5°.- Comuníquese, publíquese, dése a la Dirección Nacional del Registro Oficial y archívese.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTÍCULO 5°.- Comuníquese, publíquese, dése a la Dirección Nacional del Registro Oficial y archívese.\n\nFernando Javier Garcia\n\ne. 27/11/2024 N° 84938/24 v. 27/11/2024\n\nVolver\n\nAcerca de esta norma\n",
+        "fullTranslationRu": "СТАТЬЯ 5.- Сообщить, опубликовать, передать в Национальную дирекцию Официального реестра и отправить в архив.\n\nFernando Javier Garcia\n\ne. 27/11/2024 N 84938/24 v. 27/11/2024\n\nВернуться\n\nОб этой норме",
+        "simpleRu": "Статья 5 - служебная формула: сообщить, опубликовать, передать в Национальную дирекцию Официального реестра и архивировать. Указаны Fernando Javier Garcia и данные публикации 27/11/2024.",
+        "sourceTextSha256": "7280681058fd0043fa9ad017b2c4a47fbde655ae4581a81c55b301d4cad20a23",
+        "sourceFingerprint": "sha256:7280681058fd0043fa9ad017b2c4a47fbde655ae4581a81c55b301d4cad20a23",
+        "sourceSpan": {
+          "startLine": 95,
+          "endLine": 104
+        }
+      }
+    ]
+  }
+}

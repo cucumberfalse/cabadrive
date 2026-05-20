@@ -1,0 +1,2010 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-26994-codigo-civil-comercial",
+  "entries": [
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-254-honorarios-si-a-solicitud-de-los-365",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-254-honorarios-si-a-solicitud-de-los-365",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-255-desafectacion-y-cancelacion-de-la-inscripcion-366",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-255-desafectacion-y-cancelacion-de-la-inscripcion-366",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-256-inmueble-rural-las-disposiciones-de-este-367",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-256-inmueble-rural-las-disposiciones-de-este-367",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--titulo-iv-368",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--titulo-iv-368",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-1-369",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-1-369",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-257-hecho-juridico-el-hecho-juridico-es-370",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-257-hecho-juridico-el-hecho-juridico-es-370",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-258-simple-acto-licito-el-simple-acto-371",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-258-simple-acto-licito-el-simple-acto-371",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-259-acto-juridico-el-acto-juridico-es-372",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-259-acto-juridico-el-acto-juridico-es-372",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-260-acto-voluntario-el-acto-voluntario-es-373",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-260-acto-voluntario-el-acto-voluntario-es-373",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-261-acto-involuntario-es-involuntario-por-falta-374",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-261-acto-involuntario-es-involuntario-por-falta-374",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-262-manifestacion-de-la-voluntad-los-actos-375",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-262-manifestacion-de-la-voluntad-los-actos-375",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-263-silencio-como-manifestacion-de-la-voluntad-376",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-263-silencio-como-manifestacion-de-la-voluntad-376",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-264-manifestacion-tacita-de-voluntad-la-manifestacion-377",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-264-manifestacion-tacita-de-voluntad-la-manifestacion-377",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-2-378",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-2-378",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-265-error-de-hecho-el-error-de-379",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-265-error-de-hecho-el-error-de-379",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-266-error-reconocible-el-error-es-reconocible-380",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-266-error-reconocible-el-error-es-reconocible-380",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-267-supuestos-de-error-esencial-el-error-381",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-267-supuestos-de-error-esencial-el-error-381",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-268-error-de-calculo-el-error-de-382",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-268-error-de-calculo-el-error-de-382",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-269-subsistencia-del-acto-la-parte-que-383",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-269-subsistencia-del-acto-la-parte-que-383",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-270-error-en-la-declaracion-las-disposiciones-384",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-270-error-en-la-declaracion-las-disposiciones-384",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-3-385",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-3-385",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-271-accion-y-omision-dolosa-accion-dolosa-386",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-271-accion-y-omision-dolosa-accion-dolosa-386",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-272-dolo-esencial-el-dolo-es-esencial-387",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-272-dolo-esencial-el-dolo-es-esencial-387",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-273-dolo-incidental-el-dolo-incidental-no-388",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-273-dolo-incidental-el-dolo-incidental-no-388",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-274-sujetos-el-autor-del-dolo-esencial-389",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-274-sujetos-el-autor-del-dolo-esencial-389",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-275-responsabilidad-por-los-danos-causados-el-390",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-275-responsabilidad-por-los-danos-causados-el-390",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-4-391",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-4-391",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-276-fuerza-e-intimidacion-la-fuerza-irresistible-392",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-276-fuerza-e-intimidacion-la-fuerza-irresistible-392",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-277-sujetos-el-autor-de-la-fuerza-393",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-277-sujetos-el-autor-de-la-fuerza-393",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-278-responsabilidad-por-los-danos-causados-el-394",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-278-responsabilidad-por-los-danos-causados-el-394",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-5-395",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-5-395",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-396",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-396",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-279-objeto-el-objeto-del-acto-juridico-397",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-279-objeto-el-objeto-del-acto-juridico-397",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-280-convalidacion-el-acto-juridico-sujeto-a-398",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-280-convalidacion-el-acto-juridico-sujeto-a-398",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-399",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-399",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-281-causa-la-causa-es-el-fin-400",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-281-causa-la-causa-es-el-fin-400",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-282-presuncion-de-causa-aunque-la-causa-401",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-282-presuncion-de-causa-aunque-la-causa-401",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-283-acto-abstracto-la-inexistencia-falsedad-o-402",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-283-acto-abstracto-la-inexistencia-falsedad-o-402",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-403",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-403",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-284-libertad-de-formas-si-la-ley-404",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-284-libertad-de-formas-si-la-ley-404",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-285-forma-impuesta-el-acto-que-no-405",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-285-forma-impuesta-el-acto-que-no-405",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-286-expresion-escrita-la-expresion-escrita-puede-406",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-286-expresion-escrita-la-expresion-escrita-puede-406",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-287-instrumentos-privados-y-particulares-no-firmados-407",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-287-instrumentos-privados-y-particulares-no-firmados-407",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-288-firma-la-firma-prueba-la-autoria-408",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-288-firma-la-firma-prueba-la-autoria-408",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-4a-409",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-4a-409",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-289-enunciacion-son-instrumentos-publicos-410",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-289-enunciacion-son-instrumentos-publicos-410",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-290-requisitos-del-instrumento-publico-son-requisitos-411",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-290-requisitos-del-instrumento-publico-son-requisitos-411",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-291-prohibiciones-es-de-ningun-valor-el-412",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-291-prohibiciones-es-de-ningun-valor-el-412",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-292-presupuestos-es-presupuesto-para-la-validez-413",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-292-presupuestos-es-presupuesto-para-la-validez-413",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-293-competencia-los-instrumentos-publicos-extendidos-de-414",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-293-competencia-los-instrumentos-publicos-extendidos-de-414",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-294-defectos-de-forma-carece-de-validez-415",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-294-defectos-de-forma-carece-de-validez-415",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-295-testigos-inhabiles-no-pueden-ser-testigos-416",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-295-testigos-inhabiles-no-pueden-ser-testigos-416",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-296-eficacia-probatoria-el-instrumento-publico-hace-417",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-296-eficacia-probatoria-el-instrumento-publico-hace-417",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-297-incolumidad-formal-los-testigos-de-un-418",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-297-incolumidad-formal-los-testigos-de-un-418",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-298-contradocumento-el-contradocumento-particular-que-altera-419",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-298-contradocumento-el-contradocumento-particular-que-altera-419",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-5a-420",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-5a-420",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-299-escritura-publica-definicion-la-escritura-publica-421",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-299-escritura-publica-definicion-la-escritura-publica-421",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-300-protocolo-el-protocolo-se-forma-con-422",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-300-protocolo-el-protocolo-se-forma-con-422",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-301-requisitos-el-escribano-debe-recibir-por-423",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-301-requisitos-el-escribano-debe-recibir-por-423",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-302-idioma-la-escritura-publica-debe-hacerse-424",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-302-idioma-la-escritura-publica-debe-hacerse-424",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-303-abreviaturas-y-numeros-no-se-deben-425",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-303-abreviaturas-y-numeros-no-se-deben-425",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-304-otorgante-con-discapacidad-auditiva-si-alguna-426",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-304-otorgante-con-discapacidad-auditiva-si-alguna-426",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-305-contenido-la-escritura-debe-contener-427",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-305-contenido-la-escritura-debe-contener-427",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-306-justificacion-de-identidad-la-identidad-de-428",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-306-justificacion-de-identidad-la-identidad-de-428",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-307-documentos-habilitantes-si-el-otorgante-de-429",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-307-documentos-habilitantes-si-el-otorgante-de-429",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-308-copias-o-testimonios-el-escribano-debe-430",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-308-copias-o-testimonios-el-escribano-debe-430",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-309-nulidad-son-nulas-las-escrituras-que-431",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-309-nulidad-son-nulas-las-escrituras-que-431",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-310-actas-se-denominan-actas-los-documentos-432",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-310-actas-se-denominan-actas-los-documentos-432",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-311-requisitos-de-las-actas-notariales-las-433",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-311-requisitos-de-las-actas-notariales-las-433",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-312-valor-probatorio-el-valor-probatorio-de-434",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-312-valor-probatorio-el-valor-probatorio-de-434",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-6a-435",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-6a-435",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-313-firma-de-los-instrumentos-privados-si-436",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-313-firma-de-los-instrumentos-privados-si-436",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-314-reconocimiento-de-la-firma-todo-aquel-437",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-314-reconocimiento-de-la-firma-todo-aquel-437",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-315-documento-firmado-en-blanco-el-firmante-438",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-315-documento-firmado-en-blanco-el-firmante-438",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-316-enmiendas-las-raspaduras-enmiendas-o-entrelineas-439",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-316-enmiendas-las-raspaduras-enmiendas-o-entrelineas-439",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-317-fecha-cierta-la-eficacia-probatoria-de-440",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-317-fecha-cierta-la-eficacia-probatoria-de-440",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-318-correspondencia-la-correspondencia-cualquiera-sea-el-441",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-318-correspondencia-la-correspondencia-cualquiera-sea-el-441",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-319-valor-probatorio-el-valor-probatorio-de-442",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-319-valor-probatorio-el-valor-probatorio-de-442",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-7a-443",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-7a-443",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-320-obligados-excepciones-estan-obligadas-a-llevar-444",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-320-obligados-excepciones-estan-obligadas-a-llevar-444",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-321-modo-de-llevar-la-contabilidad-la-445",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-321-modo-de-llevar-la-contabilidad-la-445",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-322-registros-indispensables-son-registros-indispensables-los-446",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-322-registros-indispensables-son-registros-indispensables-los-446",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-323-libros-el-interesado-debe-llevar-su-447",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-323-libros-el-interesado-debe-llevar-su-447",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-324-prohibiciones-se-prohibe-448",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-324-prohibiciones-se-prohibe-448",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-325-forma-de-llevar-los-registros-los-449",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-325-forma-de-llevar-los-registros-los-449",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-326-estados-contables-al-cierre-del-ejercicio-450",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-326-estados-contables-al-cierre-del-ejercicio-450",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-327-diario-en-el-diario-se-deben-451",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-327-diario-en-el-diario-se-deben-451",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-328-conservacion-excepto-que-leyes-especiales-establezcan-452",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-328-conservacion-excepto-que-leyes-especiales-establezcan-452",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-329-actos-sujetos-a-autorizacion-el-titular-453",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-329-actos-sujetos-a-autorizacion-el-titular-453",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-330-eficacia-probatoria-la-contabilidad-obligada-o-454",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-330-eficacia-probatoria-la-contabilidad-obligada-o-454",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-331-investigaciones-excepto-los-supuestos-previstos-en-455",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-331-investigaciones-excepto-los-supuestos-previstos-en-455",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-6-456",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-6-456",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-457",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-457",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-332-lesion-puede-demandarse-la-nulidad-o-458",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-332-lesion-puede-demandarse-la-nulidad-o-458",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-459",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-459",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-333-caracterizacion-la-simulacion-tiene-lugar-cuando-460",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-333-caracterizacion-la-simulacion-tiene-lugar-cuando-460",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-334-simulacion-licita-e-ilicita-la-simulacion-461",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-334-simulacion-licita-e-ilicita-la-simulacion-461",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-335-accion-entre-las-partes-contradocumento-los-462",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-335-accion-entre-las-partes-contradocumento-los-462",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-336-accion-de-terceros-los-terceros-cuyos-463",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-336-accion-de-terceros-los-terceros-cuyos-463",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-337-efectos-frente-a-terceros-deber-de-464",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-337-efectos-frente-a-terceros-deber-de-464",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-465",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-465",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-338-declaracion-de-inoponibilidad-todo-acreedor-puede-466",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-338-declaracion-de-inoponibilidad-todo-acreedor-puede-466",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-339-requisitos-son-requisitos-de-procedencia-de-467",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-339-requisitos-son-requisitos-de-procedencia-de-467",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-340-efectos-frente-a-terceros-deber-de-468",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-340-efectos-frente-a-terceros-deber-de-468",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-341-extincion-de-la-accion-cesa-la-469",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-341-extincion-de-la-accion-cesa-la-469",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-342-extension-de-la-inoponibilidad-la-declaracion-470",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-342-extension-de-la-inoponibilidad-la-declaracion-470",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-7-471",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-7-471",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-472",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-472",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-343-alcance-y-especies-se-denomina-condicion-473",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-343-alcance-y-especies-se-denomina-condicion-473",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-344-condiciones-prohibidas-es-nulo-el-acto-474",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-344-condiciones-prohibidas-es-nulo-el-acto-474",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-345-inejecucion-de-la-condicion-el-incumplimiento-475",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-345-inejecucion-de-la-condicion-el-incumplimiento-475",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-346-efecto-la-condicion-no-opera-retroactivamente-476",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-346-efecto-la-condicion-no-opera-retroactivamente-476",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-347-condicion-pendiente-el-titular-de-un-477",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-347-condicion-pendiente-el-titular-de-un-477",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-348-cumplimiento-de-la-condicion-suspensiva-y-478",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-348-cumplimiento-de-la-condicion-suspensiva-y-478",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-349-no-cumplimiento-de-la-condicion-suspensiva-479",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-349-no-cumplimiento-de-la-condicion-suspensiva-479",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-480",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-480",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-350-especies-la-exigibilidad-o-la-extincion-481",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-350-especies-la-exigibilidad-o-la-extincion-481",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-351-beneficiario-del-plazo-el-plazo-se-482",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-351-beneficiario-del-plazo-el-plazo-se-482",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-352-pago-anticipado-el-obligado-que-cumple-483",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-352-pago-anticipado-el-obligado-que-cumple-483",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-353-caducidad-del-plazo-el-obligado-a-484",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-353-caducidad-del-plazo-el-obligado-a-484",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-485",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-485",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-354-cargo-especies-presuncion-el-cargo-es-486",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-354-cargo-especies-presuncion-el-cargo-es-486",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-355-tiempo-de-cumplimiento-prescripcion-al-plazo-487",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-355-tiempo-de-cumplimiento-prescripcion-al-plazo-487",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-356-transmisibilidad-el-derecho-adquirido-es-transmisible-488",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-356-transmisibilidad-el-derecho-adquirido-es-transmisible-488",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-357-cargo-prohibido-la-estipulacion-como-cargo-489",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-357-cargo-prohibido-la-estipulacion-como-cargo-489",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-8-490",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-8-490",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-491",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-491",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-358-principio-fuentes-los-actos-juridicos-entre-492",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-358-principio-fuentes-los-actos-juridicos-entre-492",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-359-efectos-los-actos-celebrados-por-el-493",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-359-efectos-los-actos-celebrados-por-el-493",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-360-extension-la-representacion-alcanza-a-los-494",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-360-extension-la-representacion-alcanza-a-los-494",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-361-limitaciones-la-existencia-de-supuestos-no-495",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-361-limitaciones-la-existencia-de-supuestos-no-495",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-496",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-496",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-362-caracteres-la-representacion-voluntaria-comprende-solo-497",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-362-caracteres-la-representacion-voluntaria-comprende-solo-497",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-363-forma-el-apoderamiento-debe-ser-otorgado-498",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-363-forma-el-apoderamiento-debe-ser-otorgado-498",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-364-capacidad-en-la-representacion-voluntaria-el-499",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-364-capacidad-en-la-representacion-voluntaria-el-499",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-365-vicios-el-acto-otorgado-por-el-500",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-365-vicios-el-acto-otorgado-por-el-500",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-366-actuacion-en-ejercicio-del-poder-cuando-501",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-366-actuacion-en-ejercicio-del-poder-cuando-501",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-367-representacion-aparente-cuando-alguien-ha-obrado-502",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-367-representacion-aparente-cuando-alguien-ha-obrado-502",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-368-acto-consigo-mismo-nadie-puede-en-503",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-368-acto-consigo-mismo-nadie-puede-en-503",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-369-ratificacion-la-ratificacion-suple-el-defecto-504",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-369-ratificacion-la-ratificacion-suple-el-defecto-504",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-370-tiempo-de-la-ratificacion-la-ratificacion-505",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-370-tiempo-de-la-ratificacion-la-ratificacion-505",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-371-manifestacion-de-la-ratificacion-la-ratificacion-506",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-371-manifestacion-de-la-ratificacion-la-ratificacion-506",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-372-obligaciones-y-deberes-del-representante-el-507",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-372-obligaciones-y-deberes-del-representante-el-507",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-373-obligaciones-y-deberes-del-representado-el-508",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-373-obligaciones-y-deberes-del-representado-el-508",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-374-copia-los-terceros-pueden-exigir-que-509",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-374-copia-los-terceros-pueden-exigir-que-509",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-375-poder-conferido-en-terminos-generales-y-510",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-375-poder-conferido-en-terminos-generales-y-510",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-376-responsabilidad-por-inexistencia-o-exceso-en-511",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-376-responsabilidad-por-inexistencia-o-exceso-en-511",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-377-sustitucion-el-representante-puede-sustituir-el-512",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-377-sustitucion-el-representante-puede-sustituir-el-512",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-378-pluralidad-de-representantes-la-designacion-de-513",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-378-pluralidad-de-representantes-la-designacion-de-513",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-379-apoderamiento-plural-el-poder-otorgado-por-514",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-379-apoderamiento-plural-el-poder-otorgado-por-514",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-380-extincion-el-poder-se-extingue-515",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-380-extincion-el-poder-se-extingue-515",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-381-oponibilidad-a-terceros-las-modificaciones-la-516",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-381-oponibilidad-a-terceros-las-modificaciones-la-516",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-9-517",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-9-517",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-518",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-518",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-382-categorias-de-ineficacia-los-actos-juridicos-519",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-382-categorias-de-ineficacia-los-actos-juridicos-519",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-383-articulacion-la-nulidad-puede-arguirse-por-520",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-383-articulacion-la-nulidad-puede-arguirse-por-520",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-384-conversion-el-acto-nulo-puede-convertirse-521",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-384-conversion-el-acto-nulo-puede-convertirse-521",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-385-acto-indirecto-un-acto-juridico-celebrado-522",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-385-acto-indirecto-un-acto-juridico-celebrado-522",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-523",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-523",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-386-criterio-de-distincion-son-de-nulidad-524",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-386-criterio-de-distincion-son-de-nulidad-524",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-387-nulidad-absoluta-consecuencias-la-nulidad-absoluta-525",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-387-nulidad-absoluta-consecuencias-la-nulidad-absoluta-525",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-388-nulidad-relativa-consecuencias-la-nulidad-relativa-526",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-388-nulidad-relativa-consecuencias-la-nulidad-relativa-526",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-527",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-527",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-389-principio-integracion-nulidad-total-es-la-528",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-389-principio-integracion-nulidad-total-es-la-528",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-4a-529",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-4a-529",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-390-restitucion-la-nulidad-pronunciada-por-los-530",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-390-restitucion-la-nulidad-pronunciada-por-los-530",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-391-hechos-simples-los-actos-juridicos-nulos-531",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-391-hechos-simples-los-actos-juridicos-nulos-531",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-392-efectos-respecto-de-terceros-en-cosas-532",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-392-efectos-respecto-de-terceros-en-cosas-532",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-5a-533",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-5a-533",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-393-requisitos-hay-confirmacion-cuando-la-parte-534",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-393-requisitos-hay-confirmacion-cuando-la-parte-534",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-394-forma-si-la-confirmacion-es-expresa-535",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-394-forma-si-la-confirmacion-es-expresa-535",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-395-efecto-retroactivo-la-confirmacion-del-acto-536",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-395-efecto-retroactivo-la-confirmacion-del-acto-536",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-6a-537",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-6a-537",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-396-efectos-del-acto-inoponible-frente-a-538",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-396-efectos-del-acto-inoponible-frente-a-538",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-397-oportunidad-para-invocarla-la-inoponibilidad-puede-539",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-397-oportunidad-para-invocarla-la-inoponibilidad-puede-539",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--titulo-v-540",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--titulo-v-540",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-398-transmisibilidad-todos-los-derechos-son-transmisibles-541",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-398-transmisibilidad-todos-los-derechos-son-transmisibles-541",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-399-regla-general-nadie-puede-transmitir-a-542",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-399-regla-general-nadie-puede-transmitir-a-542",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-400-sucesores-sucesor-universal-es-el-que-543",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-400-sucesores-sucesor-universal-es-el-que-543",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--libro-segundo-544",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--libro-segundo-544",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--titulo-i-545",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--titulo-i-545",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-1-546",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-1-546",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

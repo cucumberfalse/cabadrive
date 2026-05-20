@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+  "entries": [
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--disposicion-343-2024-001",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--disposicion-343-2024-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--disposicion-343-2024-002",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--disposicion-343-2024-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--ministerio-de-justicia-003",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--ministerio-de-justicia-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--normativa-004",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--normativa-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-1o-establecese-la-entrada-en-vigencia-de-005",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-1o-establecese-la-entrada-en-vigencia-de-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-2o-sustituyese-el-texto-del-articulo-5o-006",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-2o-sustituyese-el-texto-del-articulo-5o-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-3o-notifiquese-la-presente-medida-a-la-007",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-3o-notifiquese-la-presente-medida-a-la-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-4o-la-presente-medida-entrara-en-vigencia-008",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-4o-la-presente-medida-entrara-en-vigencia-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-5o-comuniquese-publiquese-dese-a-la-direccion-009",
+      "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+      "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-5o-comuniquese-publiquese-dese-a-la-direccion-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

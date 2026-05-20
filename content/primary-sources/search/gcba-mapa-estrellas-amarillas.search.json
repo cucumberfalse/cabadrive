@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+  "entries": [
+    {
+      "entryId": "gcba-mapa-estrellas-amarillas--mapa-de-estrellas-amarillas-en-la-ciudad-001",
+      "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+      "chunkId": "gcba-mapa-estrellas-amarillas--mapa-de-estrellas-amarillas-en-la-ciudad-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-mapa-estrellas-amarillas--grupo-de-parrafos-linea-38-002",
+      "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+      "chunkId": "gcba-mapa-estrellas-amarillas--grupo-de-parrafos-linea-38-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-mapa-estrellas-amarillas--grupo-de-parrafos-linea-82-003",
+      "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+      "chunkId": "gcba-mapa-estrellas-amarillas--grupo-de-parrafos-linea-82-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

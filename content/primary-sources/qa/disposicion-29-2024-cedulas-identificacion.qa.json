@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+  "document": {
+    "officialDocumentId": "disposicion-29-2024-cedulas-identificacion",
+    "chunks": [
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--disposicion-29-2024-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-12, coverage fingerprint sha256:8f08c4557e7b30b5d2ba2e71d25af04950852919190c7d09b4e3bef30b72c855, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 1-12, the full Russian translation, coverage fingerprint sha256:8f08c4557e7b30b5d2ba2e71d25af04950852919190c7d09b4e3bef30b72c855, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--disposicion-29-2024-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 13-16, coverage fingerprint sha256:110da381c1aa07e2d738d0f859261ab516f9fed3bb95cb14be4053db9867756c, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 13-16, the full Russian translation, coverage fingerprint sha256:110da381c1aa07e2d738d0f859261ab516f9fed3bb95cb14be4053db9867756c, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--ministerio-de-justicia-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 17-39, coverage fingerprint sha256:ba70e1fb438b21165b302b7d51d381813935e9cf5a918f4bc1f9aa19a1eb07e6, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 17-39, the full Russian translation, coverage fingerprint sha256:ba70e1fb438b21165b302b7d51d381813935e9cf5a918f4bc1f9aa19a1eb07e6, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--normativa-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 40-81, coverage fingerprint sha256:37f1b9e348c9174031e9797eba30d045541ce02e3ea8f5e280d2681ceb829531, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 40-81, the full Russian translation, coverage fingerprint sha256:37f1b9e348c9174031e9797eba30d045541ce02e3ea8f5e280d2681ceb829531, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-1o-sustituyense-los-articulos-1o-3o-4o-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 82-137, coverage fingerprint sha256:70953c3d1fa1a94c768ff034e47f00df31225f64e80cd156b94ae039c3698c4c, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 82-137, the full Russian translation, coverage fingerprint sha256:70953c3d1fa1a94c768ff034e47f00df31225f64e80cd156b94ae039c3698c4c, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-4o-salvo-en-los-casos-en-que-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 138-139, coverage fingerprint sha256:15838ed519bf165c898d6cdae3a5aeb51ba6c6f195c67d2173943d188c77e724, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 138-139, the full Russian translation, coverage fingerprint sha256:15838ed519bf165c898d6cdae3a5aeb51ba6c6f195c67d2173943d188c77e724, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-5o-el-titular-registral-podra-solicitar-que-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 140-153, coverage fingerprint sha256:da5adfb88406def4b28fa2db61362de67e297d512d83626c45582745f4c9713d, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 140-153, the full Russian translation, coverage fingerprint sha256:da5adfb88406def4b28fa2db61362de67e297d512d83626c45582745f4c9713d, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-2o-incorporanse-como-articulos-10-11-y-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 154-169, coverage fingerprint sha256:4e28baa57653c9ce94d33fe43a666488ba878210fbd7880f84852e3541c6f1f9, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 154-169, the full Russian translation, coverage fingerprint sha256:4e28baa57653c9ce94d33fe43a666488ba878210fbd7880f84852e3541c6f1f9, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-11-una-vez-que-el-requerimiento-se-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 170-173, coverage fingerprint sha256:b558713e4f8b85c56b2b187f98e758ec10927c456a6c4461646d3a40ab119982, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 170-173, the full Russian translation, coverage fingerprint sha256:b558713e4f8b85c56b2b187f98e758ec10927c456a6c4461646d3a40ab119982, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-12-el-peticionante-podra-realizar-el-seguimiento-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 174-175, coverage fingerprint sha256:84e66784222dd1b983b65f216b7a29324d6c7e057c146585b005744f8ce68045, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 174-175, the full Russian translation, coverage fingerprint sha256:84e66784222dd1b983b65f216b7a29324d6c7e057c146585b005744f8ce68045, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-3o-sustituyense-los-articulos-2o-3o-y-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 176-179, coverage fingerprint sha256:13e9a7b0ceddadb1f06d1b7af57078d2d85dc58ea3d20acece94d81ccd6330d0, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 176-179, the full Russian translation, coverage fingerprint sha256:13e9a7b0ceddadb1f06d1b7af57078d2d85dc58ea3d20acece94d81ccd6330d0, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-3o-en-el-supuesto-del-inciso-b-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 180-181, coverage fingerprint sha256:98588fe7b0d68c6ca44c4719d8a1f4d8c6707802c9754247c2a01a56a9dfdc46, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 180-181, the full Russian translation, coverage fingerprint sha256:98588fe7b0d68c6ca44c4719d8a1f4d8c6707802c9754247c2a01a56a9dfdc46, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-4o-los-duplicados-de-cedula-se-extenderan-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 182-183, coverage fingerprint sha256:ba0a062e1d4b97f60d2154c1f6a79d2447c8ab41a4cd2abcedbd00766aa28ba7, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 182-183, the full Russian translation, coverage fingerprint sha256:ba0a062e1d4b97f60d2154c1f6a79d2447c8ab41a4cd2abcedbd00766aa28ba7, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-4o-derogase-la-seccion-3a-capitulo-ix-014",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 184-185, coverage fingerprint sha256:451c15f8bc96fbd53410be1de1006d742b17280cefb1eb4a00c1dc16dcb0cbc8, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 184-185, the full Russian translation, coverage fingerprint sha256:451c15f8bc96fbd53410be1de1006d742b17280cefb1eb4a00c1dc16dcb0cbc8, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-5o-las-cedulas-de-identificacion-emitidas-con-015",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 186-187, coverage fingerprint sha256:15da0ac7cee63e92c0d9815753bbe414cede6cda7e673f71ad5163f453005d6a, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 186-187, the full Russian translation, coverage fingerprint sha256:15da0ac7cee63e92c0d9815753bbe414cede6cda7e673f71ad5163f453005d6a, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-6o-las-cedulas-de-identificacion-para-autorizados-016",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 188-195, coverage fingerprint sha256:eae3074474e7d83da8940552db2983dbe22596c2bebfecdedffa14f72f933424, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 188-195, the full Russian translation, coverage fingerprint sha256:eae3074474e7d83da8940552db2983dbe22596c2bebfecdedffa14f72f933424, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-7o-la-presente-medida-entrara-en-vigencia-017",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 196-197, coverage fingerprint sha256:954708562775324cd153c96e7880b89e4866c202e86cd2fd9fea193a209b32a1, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 196-197, the full Russian translation, coverage fingerprint sha256:954708562775324cd153c96e7880b89e4866c202e86cd2fd9fea193a209b32a1, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "disposicion-29-2024-cedulas-identificacion--articulo-8o-comuniquese-publiquese-dese-a-la-direccion-018",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 198-207, coverage fingerprint sha256:359a43b5d9c141847ced6b5ad694f7601fd4a2cf3d98050914e69b7aad6e241a, and content/primary-sources/terminology.ru.md. Reviewed against the official Spanish legal source span, coverage fingerprint, and content/primary-sources/terminology.ru.md. Legal terms, article numbers, citations, dates, DNRPA/Digesto references, electronic procedure requirements, revocation rules, and effective-date exceptions were preserved; this is learner support, not a certified legal translation."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 198-207, the full Russian translation, coverage fingerprint sha256:359a43b5d9c141847ced6b5ad694f7601fd4a2cf3d98050914e69b7aad6e241a, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same obligations, exceptions, dates, procedure scope, document names, and institutional references while shortening learner-facing wording."
+        }
+      }
+    ]
+  }
+}

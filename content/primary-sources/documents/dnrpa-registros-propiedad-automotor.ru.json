@@ -1,0 +1,653 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+  "document": {
+    "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+    "title": "Registros de la Propiedad Automotor",
+    "shortTitleRu": "DNRPA и реестры автотранспорта",
+    "category": "vehicle-documents",
+    "jurisdiction": "national",
+    "officialSourceType": "dnrpa_current_material",
+    "sourceUrl": "https://www.argentina.gob.ar/propiedadautomotor",
+    "archiveLocalPath": "content/official-documents/documents/dnrpa-registros-propiedad-automotor.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--registros-de-la-propiedad-automotor-001",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 1,
+        "headingPath": [
+          "Registros de la Propiedad Automotor"
+        ],
+        "officialLabel": "Registros de la Propiedad Automotor",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "# Registros de la Propiedad Automotor\n\n- Inicio\n\n- Ministerio de Justicia\n\n- Registros de la Propiedad Automotor\n",
+        "fullTranslationRu": "# Реестры собственности на автотранспортные средства\n\n- Главная\n\n- Министерство юстиции\n\n- Реестры собственности на автотранспортные средства",
+        "simpleRu": "Это начало официальной страницы DNRPA: раздел Министерства юстиции о реестрах собственности на автотранспортные средства.",
+        "sourceTextSha256": "9959a220d20861ac8e72afad81097edd137594c1e271a62b96ec1e4d5ceda94f",
+        "sourceFingerprint": "sha256:9959a220d20861ac8e72afad81097edd137594c1e271a62b96ec1e4d5ceda94f",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 8
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--registros-de-la-propiedad-automotor-002",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 2,
+        "headingPath": [
+          "Registros de la Propiedad Automotor"
+        ],
+        "officialLabel": "Registros de la Propiedad Automotor",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "# Registros de la Propiedad Automotor\n\nRegulamos todo lo relacionado con la propiedad del automotor y los créditos prendarios, y organizamos el funcionamiento de los Registros Seccionales de todo el País.\n",
+        "fullTranslationRu": "# Реестры собственности на автотранспортные средства\n\nМы регулируем все, что связано с собственностью на автотранспортные средства и залоговыми кредитами, а также организуем работу секционных реестров по всей стране.",
+        "simpleRu": "DNRPA отвечает за учет собственности на транспортные средства, залоговые записи и работу секционных реестров во всей Аргентине.",
+        "sourceTextSha256": "2fad6f77d3cf7e8792c29ca85442872161384c6e54fa67287fce1504557e2b82",
+        "sourceFingerprint": "sha256:2fad6f77d3cf7e8792c29ca85442872161384c6e54fa67287fce1504557e2b82",
+        "sourceSpan": {
+          "startLine": 9,
+          "endLine": 12
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--nuevo-sistema-runa-003",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 3,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "NUEVO SISTEMA RUNA"
+        ],
+        "officialLabel": "NUEVO SISTEMA RUNA",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### NUEVO SISTEMA RUNA\n\nYa se encuentra operativo el RUNA para la inscripción de automóviles y motovehículos 0KM en las concesionarias.\n\nAmpliar\n",
+        "fullTranslationRu": "##### НОВАЯ СИСТЕМА RUNA\n\nRUNA уже работает для регистрации новых автомобилей и мототранспортных средств 0 км в дилерских центрах.\n\nПодробнее",
+        "simpleRu": "RUNA позволяет дилерским центрам регистрировать новые автомобили и мототранспортные средства 0 км. Это указано как уже действующая система.",
+        "sourceTextSha256": "c645828051bf682d3c50c3707c8b03d97b8a9d7e75a9b4653e4a95c3bfc28b49",
+        "sourceFingerprint": "sha256:c645828051bf682d3c50c3707c8b03d97b8a9d7e75a9b4653e4a95c3bfc28b49",
+        "sourceSpan": {
+          "startLine": 13,
+          "endLine": 18
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--nuevo-servicio-digital-para-consultar-el-estado-de-004",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 4,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "NUEVO SERVICIO DIGITAL PARA CONSULTAR EL ESTADO DE NORMALIZACIÓN DE ENTREGA DE PATENTES"
+        ],
+        "officialLabel": "NUEVO SERVICIO DIGITAL PARA CONSULTAR EL ESTADO DE NORMALIZACIÓN DE ENTREGA DE PATENTES",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### NUEVO SERVICIO DIGITAL PARA CONSULTAR EL ESTADO DE NORMALIZACIÓN DE ENTREGA DE PATENTES\n\nEl Ministerio de Justicia informa que, en el marco de la normalización de entrega de patentes al 1° de Septiembre en todo el país, ya se encuentra habilitado un nuevo servicio digital en el sitio web de la Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios, a través del cual los ciudadanos pueden consultar el estado de su trámite de asignación de chapa patente ingresando a la sección \"Disponibilidad de Chapas\" en el sitio oficial de la DNRPA (www.dnrpa.gov.ar).\n\nDisponibilidad de Chapas\n",
+        "fullTranslationRu": "##### НОВЫЙ ЦИФРОВОЙ СЕРВИС ДЛЯ ПРОВЕРКИ СОСТОЯНИЯ НОРМАЛИЗАЦИИ ВЫДАЧИ НОМЕРНЫХ ЗНАКОВ\n\nМинистерство юстиции сообщает, что в рамках нормализации выдачи номерных знаков по всей стране к 1° de Septiembre уже включен новый цифровой сервис на сайте Национальной дирекции национальных реестров собственности на автотранспортные средства и залоговых кредитов. Через него граждане могут проверить состояние своей процедуры назначения номерного знака, войдя в раздел \"Disponibilidad de Chapas\" на официальном сайте DNRPA (www.dnrpa.gov.ar).\n\nНаличие номерных знаков",
+        "simpleRu": "На сайте DNRPA появился сервис для проверки, как идет выдача номерного знака. Он связан с нормализацией выдачи номерных знаков по стране к 1° de Septiembre. Проверка делается через раздел \"Disponibilidad de Chapas\" на www.dnrpa.gov.ar.",
+        "sourceTextSha256": "7cee588e6a7841ff78bb91d027726da6aaba15e3acc96e45f7599d8b45594e5b",
+        "sourceFingerprint": "sha256:7cee588e6a7841ff78bb91d027726da6aaba15e3acc96e45f7599d8b45594e5b",
+        "sourceSpan": {
+          "startLine": 19,
+          "endLine": 24
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--sistema-rudac-005",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 5,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "SISTEMA RUDAC"
+        ],
+        "officialLabel": "SISTEMA RUDAC",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### SISTEMA RUDAC\n\nLa DNRPA actualizó el catálogo de autopartes recuperables\n",
+        "fullTranslationRu": "##### СИСТЕМА RUDAC\n\nDNRPA обновила каталог восстанавливаемых автозапчастей.",
+        "simpleRu": "В системе RUDAC DNRPA обновила каталог автозапчастей, которые могут быть восстановлены и учтены.",
+        "sourceTextSha256": "8e397037ef8194da63f7058c3e2a757e9e70f9f5ad83d43898c43b63ec997ea1",
+        "sourceFingerprint": "sha256:8e397037ef8194da63f7058c3e2a757e9e70f9f5ad83d43898c43b63ec997ea1",
+        "sourceSpan": {
+          "startLine": 25,
+          "endLine": 28
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--el-sistema-rac-registro-de-autorizados-a-conducir-006",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 6,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "EL SISTEMA RAC (Registro de Autorizados a Conducir) ya se encuentra Operativo"
+        ],
+        "officialLabel": "EL SISTEMA RAC (Registro de Autorizados a Conducir) ya se encuentra Operativo",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### EL SISTEMA RAC (Registro de Autorizados a Conducir) ya se encuentra Operativo\n\nEl nuevo sistema permite gestionar altas y bajas de Conductores de manera simple, rápida y en línea.\n\nConsultas a: [email protected]\n\nAmpliar\n",
+        "fullTranslationRu": "##### СИСТЕМА RAC (Registro de Autorizados a Conducir) уже работает\n\nНовая система позволяет просто, быстро и онлайн оформлять постановку и снятие водителей из списка.\n\nЗапросы: [email protected]\n\nПодробнее",
+        "simpleRu": "RAC - это реестр лиц, которым разрешено управлять. Через новую систему можно онлайн добавлять и удалять водителей. Для вопросов указан адрес [email protected].",
+        "sourceTextSha256": "9851470dc3920be595fa5dd5793aadf3d8e60aa4099782337462563d0ddc1de5",
+        "sourceFingerprint": "sha256:9851470dc3920be595fa5dd5793aadf3d8e60aa4099782337462563d0ddc1de5",
+        "sourceSpan": {
+          "startLine": 29,
+          "endLine": 36
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--transferencia-digital-007",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 7,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Transferencia Digital"
+        ],
+        "officialLabel": "Transferencia Digital",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Transferencia Digital\n\nIniciá online la transferencia de tu auto o moto\n",
+        "fullTranslationRu": "### Цифровая передача\n\nНачните онлайн передачу права на свой автомобиль или мотоцикл.",
+        "simpleRu": "Передачу автомобиля или мотоцикла можно начать онлайн.",
+        "sourceTextSha256": "f4c139022dbe749de43c63922a974c7d0fb57db37bba24a087f0d1721a42d50f",
+        "sourceFingerprint": "sha256:f4c139022dbe749de43c63922a974c7d0fb57db37bba24a087f0d1721a42d50f",
+        "sourceSpan": {
+          "startLine": 37,
+          "endLine": 40
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--turnos-e-inicio-de-tramites-008",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 8,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Turnos e Inicio de Trámites"
+        ],
+        "officialLabel": "Turnos e Inicio de Trámites",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Turnos e Inicio de Trámites\n\nElegí el día y horario para ser atendido en el Registro o iniciá tu trámite online\n",
+        "fullTranslationRu": "### Записи на прием и начало процедур\n\nВыберите день и время, чтобы вас приняли в реестре, или начните свою процедуру онлайн.",
+        "simpleRu": "Можно выбрать день и время для визита в реестр или начать процедуру онлайн.",
+        "sourceTextSha256": "fb21da137a71b5fe0488f60d99b83cef4113ec054088b9edfdd19dc6e0fec9d6",
+        "sourceFingerprint": "sha256:fb21da137a71b5fe0488f60d99b83cef4113ec054088b9edfdd19dc6e0fec9d6",
+        "sourceSpan": {
+          "startLine": 41,
+          "endLine": 44
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--retiro-de-tramites-009",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 9,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Retiro de Trámites"
+        ],
+        "officialLabel": "Retiro de Trámites",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Retiro de Trámites\n\nVerificá el Estado de tu Trámite y solicitá un Turno para retirarlo.\n",
+        "fullTranslationRu": "### Получение оформленных процедур\n\nПроверьте состояние своей процедуры и запросите запись, чтобы ее забрать.",
+        "simpleRu": "Чтобы забрать результат процедуры, сначала проверьте ее статус и запросите запись на получение.",
+        "sourceTextSha256": "659d51c74700d957a039773c7529d3a000811f4d65d14e092f2535fa5ec48ae5",
+        "sourceFingerprint": "sha256:659d51c74700d957a039773c7529d3a000811f4d65d14e092f2535fa5ec48ae5",
+        "sourceSpan": {
+          "startLine": 45,
+          "endLine": 48
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cedula-digital-010",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 10,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Cédula Digital"
+        ],
+        "officialLabel": "Cédula Digital",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Cédula Digital\n\nLa versión digital de las cédulas (ex verde y azul) de tu auto y de tu moto disponibles en Mi Argentina.\n",
+        "fullTranslationRu": "### Цифровая cédula\n\nЦифровая версия cédulas вашего автомобиля и мотоцикла, ранее зеленой и синей, доступна в Mi Argentina.",
+        "simpleRu": "В Mi Argentina доступны цифровые cédulas для автомобиля и мотоцикла. Речь идет о бывших зеленой и синей cédula.",
+        "sourceTextSha256": "70392a7dd6849fb9562eb81d7e3e42f76de0ebe948132d2c6fb9ca7cfba3eb19",
+        "sourceFingerprint": "sha256:70392a7dd6849fb9562eb81d7e3e42f76de0ebe948132d2c6fb9ca7cfba3eb19",
+        "sourceSpan": {
+          "startLine": 49,
+          "endLine": 52
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--requisitos-para-transferencia-digital-011",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 11,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Requisitos para Transferencia Digital"
+        ],
+        "officialLabel": "Requisitos para Transferencia Digital",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Requisitos para Transferencia Digital\n\nConocé más sobre los requisitos para Transferencia Digital\n",
+        "fullTranslationRu": "### Требования для цифровой передачи\n\nУзнайте больше о требованиях для цифровой передачи.",
+        "simpleRu": "Этот раздел ведет к требованиям, которые нужны для цифровой передачи транспортного средства.",
+        "sourceTextSha256": "4db45474187e8c81212deed503a76ba9b3621eeb303af967955d2bc515bc1ff9",
+        "sourceFingerprint": "sha256:4db45474187e8c81212deed503a76ba9b3621eeb303af967955d2bc515bc1ff9",
+        "sourceSpan": {
+          "startLine": 53,
+          "endLine": 56
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--descarga-de-documentacion-012",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 12,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Descarga de documentación"
+        ],
+        "officialLabel": "Descarga de documentación",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Descarga de documentación\n\nDescargá y validá tus documentos.\n",
+        "fullTranslationRu": "### Скачивание документации\n\nСкачайте и проверьте действительность своих документов.",
+        "simpleRu": "Здесь можно скачать документы и проверить, что они действительны.",
+        "sourceTextSha256": "a9f36d39489ca2e15900846f88c5d0e7280a600bf232dee21f7329e2d960e0c6",
+        "sourceFingerprint": "sha256:a9f36d39489ca2e15900846f88c5d0e7280a600bf232dee21f7329e2d960e0c6",
+        "sourceSpan": {
+          "startLine": 57,
+          "endLine": 60
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--reclamos-y-sugerencias-013",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 13,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Reclamos y sugerencias"
+        ],
+        "officialLabel": "Reclamos y sugerencias",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Reclamos y sugerencias\n",
+        "fullTranslationRu": "### Жалобы и предложения",
+        "simpleRu": "Раздел для подачи жалоб и предложений.",
+        "sourceTextSha256": "a2f21238a91049eaed28b72ec56a415d144223f404aa2ef0f1dbeb8f8f32e9a4",
+        "sourceFingerprint": "sha256:a2f21238a91049eaed28b72ec56a415d144223f404aa2ef0f1dbeb8f8f32e9a4",
+        "sourceSpan": {
+          "startLine": 61,
+          "endLine": 62
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--asesoramiento-014",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 14,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Asesoramiento"
+        ],
+        "officialLabel": "Asesoramiento",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Asesoramiento\n",
+        "fullTranslationRu": "### Консультации и помощь",
+        "simpleRu": "Раздел для получения консультации по процедурам.",
+        "sourceTextSha256": "f0bdc8cf188b87ec067fe75211a5eaa51281063646ee5dd0314cb3f4a4f3b7e2",
+        "sourceFingerprint": "sha256:f0bdc8cf188b87ec067fe75211a5eaa51281063646ee5dd0314cb3f4a4f3b7e2",
+        "sourceSpan": {
+          "startLine": 63,
+          "endLine": 64
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--estima-los-costos-de-tu-tramite-015",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 15,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Asesoramiento",
+          "Estimá los costos de tu trámite"
+        ],
+        "officialLabel": "Estimá los costos de tu trámite",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "##### Estimá los costos de tu trámite\n\nTe ofrecemos una herramienta en línea para que conozcas el costo aproximado de la inscripción de un vehículo 0 km o la transferencia de un vehículo usado.\n\nCalculá\n",
+        "fullTranslationRu": "##### Оцените расходы на свою процедуру\n\nМы предлагаем онлайн-инструмент, чтобы вы узнали приблизительную стоимость регистрации транспортного средства 0 км или передачи подержанного транспортного средства.\n\nРассчитать",
+        "simpleRu": "Онлайн-калькулятор помогает заранее оценить примерную стоимость регистрации нового транспортного средства 0 км или передачи подержанного транспорта.",
+        "sourceTextSha256": "e929efa8e195b0cc823586a54171a0656926470bef1bc3cd1905aa24713e0565",
+        "sourceFingerprint": "sha256:e929efa8e195b0cc823586a54171a0656926470bef1bc3cd1905aa24713e0565",
+        "sourceSpan": {
+          "startLine": 65,
+          "endLine": 70
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--tramites-frecuentes-016",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 16,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Trámites frecuentes"
+        ],
+        "officialLabel": "Trámites frecuentes",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Trámites frecuentes\n",
+        "fullTranslationRu": "## Частые процедуры",
+        "simpleRu": "Здесь перечислены процедуры, которые пользователи чаще всего ищут в DNRPA.",
+        "sourceTextSha256": "78978102d641570dcae6fc53e99f76ad9c60e56bf97c641fe78f53157c1d7ffa",
+        "sourceFingerprint": "sha256:78978102d641570dcae6fc53e99f76ad9c60e56bf97c641fe78f53157c1d7ffa",
+        "sourceSpan": {
+          "startLine": 71,
+          "endLine": 72
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--informe-de-estado-de-dominio-017",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 17,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Trámites frecuentes",
+          "Informe de Estado de Dominio"
+        ],
+        "officialLabel": "Informe de Estado de Dominio",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Informe de Estado de Dominio\n",
+        "fullTranslationRu": "### Отчет о состоянии dominio",
+        "simpleRu": "Informe de Estado de Dominio - это отчет о текущем состоянии регистрационных данных транспортного средства.",
+        "sourceTextSha256": "1c4bc528cbbd3fdc3c5295fb72a1d2f1cdc95d19fd8c02d841014f59d34a3f38",
+        "sourceFingerprint": "sha256:1c4bc528cbbd3fdc3c5295fb72a1d2f1cdc95d19fd8c02d841014f59d34a3f38",
+        "sourceSpan": {
+          "startLine": 73,
+          "endLine": 74
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--informe-historico-018",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 18,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Trámites frecuentes",
+          "Informe Histórico"
+        ],
+        "officialLabel": "Informe Histórico",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Informe Histórico\n",
+        "fullTranslationRu": "### Исторический отчет",
+        "simpleRu": "Informe Histórico - это запрос исторических сведений по транспортному средству.",
+        "sourceTextSha256": "850c2b4f8c7c99892b10a1b8a0c387b988d1fefde8d874e8cf8f03c32863c548",
+        "sourceFingerprint": "sha256:850c2b4f8c7c99892b10a1b8a0c387b988d1fefde8d874e8cf8f03c32863c548",
+        "sourceSpan": {
+          "startLine": 75,
+          "endLine": 76
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--denuncia-de-venta-019",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 19,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Trámites frecuentes",
+          "Denuncia de Venta"
+        ],
+        "officialLabel": "Denuncia de Venta",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Denuncia de Venta\n",
+        "fullTranslationRu": "### Сообщение о продаже",
+        "simpleRu": "Denuncia de Venta - процедура, через которую сообщают о продаже транспортного средства.",
+        "sourceTextSha256": "303c4e9fa2b274fa4ec9e7ad107134550001d4fefbb0c2b4ac9577e5b3b3a2b8",
+        "sourceFingerprint": "sha256:303c4e9fa2b274fa4ec9e7ad107134550001d4fefbb0c2b4ac9577e5b3b3a2b8",
+        "sourceSpan": {
+          "startLine": 77,
+          "endLine": 78
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--renovacion-de-cedula-020",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 20,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Trámites frecuentes",
+          "Renovación de Cédula"
+        ],
+        "officialLabel": "Renovación de Cédula",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Renovación de Cédula\n",
+        "fullTranslationRu": "### Обновление cédula",
+        "simpleRu": "Renovación de Cédula - процедура обновления cédula транспортного средства.",
+        "sourceTextSha256": "c9efd4dd693283de408049aec88e1604d493d26c52a369901d1039c586e6aa2e",
+        "sourceFingerprint": "sha256:c9efd4dd693283de408049aec88e1604d493d26c52a369901d1039c586e6aa2e",
+        "sourceSpan": {
+          "startLine": 79,
+          "endLine": 80
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--consultas-021",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 21,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas"
+        ],
+        "officialLabel": "Consultas",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Consultas\n",
+        "fullTranslationRu": "## Запросы и консультации",
+        "simpleRu": "В этом блоке собраны консультационные сервисы DNRPA.",
+        "sourceTextSha256": "d4c97e9c022df0b97d85df64672a693c147b2c3f0632f21ff0d6335c14b7144b",
+        "sourceFingerprint": "sha256:d4c97e9c022df0b97d85df64672a693c147b2c3f0632f21ff0d6335c14b7144b",
+        "sourceSpan": {
+          "startLine": 81,
+          "endLine": 82
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--donde-esta-radicado-un-vehiculo-segun-su-patente-022",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 22,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas",
+          "Dónde está radicado un vehículo según su patente"
+        ],
+        "officialLabel": "Dónde está radicado un vehículo según su patente",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Dónde está radicado un vehículo según su patente\n",
+        "fullTranslationRu": "### Где зарегистрировано транспортное средство по его номерному знаку",
+        "simpleRu": "По номерному знаку можно узнать, в каком реестре зарегистрировано транспортное средство.",
+        "sourceTextSha256": "1dd14c1aecbc13ce4a4b3e0931b7f07a901542a498a3226cf3c1bacbab63a2f1",
+        "sourceFingerprint": "sha256:1dd14c1aecbc13ce4a4b3e0931b7f07a901542a498a3226cf3c1bacbab63a2f1",
+        "sourceSpan": {
+          "startLine": 83,
+          "endLine": 84
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--donde-radicar-un-vehiculo-segun-domicilio-023",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 23,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas",
+          "Dónde radicar un vehículo según domicilio"
+        ],
+        "officialLabel": "Dónde radicar un vehículo según domicilio",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Dónde radicar un vehículo según domicilio\n",
+        "fullTranslationRu": "### Где зарегистрировать транспортное средство по адресу места жительства",
+        "simpleRu": "По адресу проживания можно определить, где нужно регистрировать транспортное средство.",
+        "sourceTextSha256": "fbca020777750da4b974339c2fb1fd3683c7ea5f1fd5831f4b1ac74b1908a17e",
+        "sourceFingerprint": "sha256:fbca020777750da4b974339c2fb1fd3683c7ea5f1fd5831f4b1ac74b1908a17e",
+        "sourceSpan": {
+          "startLine": 85,
+          "endLine": 86
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-registros-seccionales-de-todo-el-024",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 24,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas",
+          "Cuáles son los Registros Seccionales de todo el país"
+        ],
+        "officialLabel": "Cuáles son los Registros Seccionales de todo el país",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Cuáles son los Registros Seccionales de todo el país\n",
+        "fullTranslationRu": "### Какие секционные реестры есть по всей стране",
+        "simpleRu": "Этот сервис помогает найти секционные реестры DNRPA по всей Аргентине.",
+        "sourceTextSha256": "496204d7442fa6f897444c200ca085adaae088cda79a6cdd841ca0166978ec85",
+        "sourceFingerprint": "sha256:496204d7442fa6f897444c200ca085adaae088cda79a6cdd841ca0166978ec85",
+        "sourceSpan": {
+          "startLine": 87,
+          "endLine": 88
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-las-plantas-verificadoras-de-cada-provincia-025",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 25,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas",
+          "Cuáles son las plantas verificadoras de cada provincia"
+        ],
+        "officialLabel": "Cuáles son las plantas verificadoras de cada provincia",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Cuáles son las plantas verificadoras de cada provincia\n",
+        "fullTranslationRu": "### Какие проверочные станции есть в каждой провинции",
+        "simpleRu": "Этот сервис показывает проверочные станции по провинциям.",
+        "sourceTextSha256": "a50ac35e563a740b31de29dd74fa32cde3fef704bb217f6913c481b84e80c9e1",
+        "sourceFingerprint": "sha256:a50ac35e563a740b31de29dd74fa32cde3fef704bb217f6913c481b84e80c9e1",
+        "sourceSpan": {
+          "startLine": 89,
+          "endLine": 90
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-desarmaderos-de-automotores-autorizados-026",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 26,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas",
+          "Cuáles son los desarmaderos de automotores autorizados"
+        ],
+        "officialLabel": "Cuáles son los desarmaderos de automotores autorizados",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Cuáles son los desarmaderos de automotores autorizados\n",
+        "fullTranslationRu": "### Какие авторизованные пункты разборки автотранспортных средств существуют",
+        "simpleRu": "Здесь можно проверить, какие авторазборки имеют разрешение работать с автотранспортными средствами.",
+        "sourceTextSha256": "85fe390bdb6e7187b07e22580c799bb81b6e87e21f4589e2dd46583c781fe9e9",
+        "sourceFingerprint": "sha256:85fe390bdb6e7187b07e22580c799bb81b6e87e21f4589e2dd46583c781fe9e9",
+        "sourceSpan": {
+          "startLine": 91,
+          "endLine": 92
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-aranceles-de-los-tramites-y-027",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 27,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas",
+          "Cuáles son los aranceles de los trámites y formularios"
+        ],
+        "officialLabel": "Cuáles son los aranceles de los trámites y formularios",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Cuáles son los aranceles de los trámites y formularios\n",
+        "fullTranslationRu": "### Какие тарифы действуют для процедур и формуляров",
+        "simpleRu": "Этот сервис нужен, чтобы посмотреть тарифы на процедуры и формуляры DNRPA.",
+        "sourceTextSha256": "04ef3f8444b1e2bfa7fca125cd09d21f586ccd94d9149c18983853dabb2ed36a",
+        "sourceFingerprint": "sha256:04ef3f8444b1e2bfa7fca125cd09d21f586ccd94d9149c18983853dabb2ed36a",
+        "sourceSpan": {
+          "startLine": 93,
+          "endLine": 94
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cual-es-la-valuacion-de-un-automotor-028",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 28,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas",
+          "Cuál es la valuación de un automotor"
+        ],
+        "officialLabel": "Cuál es la valuación de un automotor",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Cuál es la valuación de un automotor\n",
+        "fullTranslationRu": "### Какова оценочная стоимость автотранспортного средства",
+        "simpleRu": "Этот сервис помогает узнать оценочную стоимость автотранспортного средства.",
+        "sourceTextSha256": "2b7a51b4be2038e138fb1b70e0a03c60cfdc0136292ea7154e0655a275bf7b6a",
+        "sourceFingerprint": "sha256:2b7a51b4be2038e138fb1b70e0a03c60cfdc0136292ea7154e0655a275bf7b6a",
+        "sourceSpan": {
+          "startLine": 95,
+          "endLine": 96
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--normativa-vigente-029",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 29,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Consultas",
+          "Normativa Vigente"
+        ],
+        "officialLabel": "Normativa Vigente",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "### Normativa Vigente\n\nDigestos, Circulares, Régimen Juridico.\n",
+        "fullTranslationRu": "### Действующие нормативные акты\n\nДигесты, циркуляры, правовой режим.",
+        "simpleRu": "В разделе действующих норм собраны дигесты, циркуляры и правовой режим, которые относятся к процедурам DNRPA.",
+        "sourceTextSha256": "c31abd900efe029eaf900e0e140c8dbec02f9e9b044881e97026b8cbcf89f57b",
+        "sourceFingerprint": "sha256:c31abd900efe029eaf900e0e140c8dbec02f9e9b044881e97026b8cbcf89f57b",
+        "sourceSpan": {
+          "startLine": 97,
+          "endLine": 100
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--institucional-030",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 30,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Institucional"
+        ],
+        "officialLabel": "Institucional",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Institucional\n\n- Concursos\n\n- Institucional\n",
+        "fullTranslationRu": "## Институциональный раздел\n\n- Конкурсы\n\n- Институциональная информация",
+        "simpleRu": "Институциональный раздел содержит ссылки на конкурсы и информацию самой организации.",
+        "sourceTextSha256": "4e089989f980482561bc4bf2d5ffb68f1b882a85e81141025f6e502d829f1787",
+        "sourceFingerprint": "sha256:4e089989f980482561bc4bf2d5ffb68f1b882a85e81141025f6e502d829f1787",
+        "sourceSpan": {
+          "startLine": 101,
+          "endLine": 106
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--contacto-031",
+        "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+        "order": 31,
+        "headingPath": [
+          "Registros de la Propiedad Automotor",
+          "Contacto"
+        ],
+        "officialLabel": "Contacto",
+        "chunkingStrategy": "markdown-heading-sections",
+        "originalSpanish": "## Contacto\n\nDirección: Av. Corrientes 5666 | Ciudad Autónoma de Buenos Aires\nCódigo postal: C1414AJW\nCorreo electrónico: [email protected]\n\nFormulario de sugerencias y quejas\n",
+        "fullTranslationRu": "## Контакт\n\nАдрес: Av. Corrientes 5666 | Ciudad Autónoma de Buenos Aires\nПочтовый индекс: C1414AJW\nЭлектронная почта: [email protected]\n\nФорма предложений и жалоб",
+        "simpleRu": "Контакты DNRPA: Av. Corrientes 5666, Ciudad Autónoma de Buenos Aires, почтовый индекс C1414AJW, электронная почта [email protected]. Также указан формуляр для предложений и жалоб.",
+        "sourceTextSha256": "dc0a41ce2c85b9bc2f3a024f03546c05b776208d82e368b2925ffa441e57842e",
+        "sourceFingerprint": "sha256:dc0a41ce2c85b9bc2f3a024f03546c05b776208d82e368b2925ffa441e57842e",
+        "sourceSpan": {
+          "startLine": 107,
+          "endLine": 114
+        }
+      }
+    ]
+  }
+}

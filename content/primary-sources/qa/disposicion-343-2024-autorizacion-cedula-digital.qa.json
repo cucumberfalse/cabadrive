@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+  "document": {
+    "officialDocumentId": "disposicion-343-2024-autorizacion-cedula-digital",
+    "chunks": [
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--disposicion-343-2024-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-12, coverage fingerprint sha256:b1229bcacfbcae9c4990007c6db3711b78acf1784b0597a2251dc0de1b8acdf7, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--disposicion-343-2024-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 13-16, coverage fingerprint sha256:e8fb30029e4dfc13165b83b7ee1abe23f8c5aeabd67ff3de330992f05e194258, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--ministerio-de-justicia-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 17-39, coverage fingerprint sha256:015a0f2fa93d5aa9c75769a68f56e4e32122d2121ca6f6abdfa7d5e925f7798e, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--normativa-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 40-70, coverage fingerprint sha256:141d71f580db5889e9fb4ee483d936d5b3a877d289748a8f188373271c51eb0f, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-1o-establecese-la-entrada-en-vigencia-de-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 71-72, coverage fingerprint sha256:f55c406a5e6b2723d7833eb88c75300ab923ed022af8b5a9edf2854c352cb133, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-2o-sustituyese-el-texto-del-articulo-5o-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 73-90, coverage fingerprint sha256:1b06f67945bb0bdd1b31c980b2d2ab666d47c9d92639ebd9befbba88d97e5d9e, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-3o-notifiquese-la-presente-medida-a-la-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 91-92, coverage fingerprint sha256:b6316707cb1af623554615a4d755bd0e9f584e72af4bc4adae4bed81bda6a17b, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-4o-la-presente-medida-entrara-en-vigencia-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 93-94, coverage fingerprint sha256:0f42c8f4b25a6ce83440a9f1c674d199c748be99825b72fb470ba7ee2a68e28e, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      },
+      {
+        "chunkId": "disposicion-343-2024-autorizacion-cedula-digital--articulo-5o-comuniquese-publiquese-dese-a-la-direccion-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 95-104, coverage fingerprint sha256:7280681058fd0043fa9ad017b2c4a47fbde655ae4581a81c55b301d4cad20a23, and content/primary-sources/terminology.ru.md. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span and full Russian translation for learner clarity while preserving dates, document duties, exceptions, authorities, and scope. Legal-administrative terms follow terminology.ru.md; Mi Argentina UI labels and cédula names are preserved where they are official labels."
+        }
+      }
+    ]
+  }
+}

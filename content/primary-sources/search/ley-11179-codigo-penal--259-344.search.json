@@ -1,0 +1,954 @@
+{
+  "schema": "primary-sources-search-shard.v1",
+  "version": 1,
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "entries": [
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-160-sera-reprimido-con-prision-de-quince-259",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-160-sera-reprimido-con-prision-de-quince-259",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-vi-260",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-vi-260",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-161-sufrira-prision-de-uno-a-seis-261",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-161-sufrira-prision-de-uno-a-seis-261",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-vi-262",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-vi-262",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-i-263",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-i-263",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-162-sera-reprimido-con-prision-de-un-264",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-162-sera-reprimido-con-prision-de-un-264",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-163-se-aplicara-prision-de-uno-a-265",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-163-se-aplicara-prision-de-uno-a-265",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-163-bis-en-los-casos-enunciados-en-266",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-163-bis-en-los-casos-enunciados-en-266",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-ii-267",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-ii-267",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-164-sera-reprimido-con-prision-de-un-268",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-164-sera-reprimido-con-prision-de-un-268",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-165-se-impondra-reclusion-o-prision-de-269",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-165-se-impondra-reclusion-o-prision-de-269",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-166-se-aplicara-reclusion-o-prision-de-270",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-166-se-aplicara-reclusion-o-prision-de-270",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-167-se-aplicara-reclusion-o-prision-de-271",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-167-se-aplicara-reclusion-o-prision-de-271",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-167-bis-en-los-casos-enunciados-en-272",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-167-bis-en-los-casos-enunciados-en-272",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-2-bis-abigeato-273",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-2-bis-abigeato-273",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-167-ter-sera-reprimido-con-prision-de-274",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-167-ter-sera-reprimido-con-prision-de-274",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-167-quater-se-aplicara-reclusion-o-prision-275",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-167-quater-se-aplicara-reclusion-o-prision-275",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-167-quinque-en-caso-de-condena-por-276",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-167-quinque-en-caso-de-condena-por-276",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iii-277",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iii-277",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-168-sera-reprimido-con-reclusion-o-prision-278",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-168-sera-reprimido-con-reclusion-o-prision-278",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-169-sera-reprimido-con-prision-o-reclusion-279",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-169-sera-reprimido-con-prision-o-reclusion-279",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-170-se-impondra-reclusion-o-prision-de-280",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-170-se-impondra-reclusion-o-prision-de-280",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-171-sufrira-prision-de-dos-a-seis-281",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-171-sufrira-prision-de-dos-a-seis-281",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iv-282",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iv-282",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-172-sera-reprimido-con-prision-de-un-283",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-172-sera-reprimido-con-prision-de-un-283",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-173-sin-perjuicio-de-la-disposicion-general-284",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-173-sin-perjuicio-de-la-disposicion-general-284",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-174-sufrira-prision-de-dos-a-seis-285",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-174-sufrira-prision-de-dos-a-seis-285",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-175-sera-reprimido-con-multa-de-mil-286",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-175-sera-reprimido-con-multa-de-mil-286",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iv-bis-287",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iv-bis-287",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-175-bis-el-que-aprovechando-la-necesidad-288",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-175-bis-el-que-aprovechando-la-necesidad-288",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-v-289",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-v-289",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-176-sera-reprimido-como-quebrado-fraudulento-con-290",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-176-sera-reprimido-como-quebrado-fraudulento-con-290",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-177-sera-reprimido-como-quebrado-culpable-con-291",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-177-sera-reprimido-como-quebrado-culpable-con-291",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-178-cuando-se-tratare-de-la-quiebra-292",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-178-cuando-se-tratare-de-la-quiebra-292",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-179-sera-reprimido-con-prision-de-uno-293",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-179-sera-reprimido-con-prision-de-uno-293",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-180-sera-reprimido-con-prision-de-un-294",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-180-sera-reprimido-con-prision-de-un-294",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-vi-295",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-vi-295",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-181-sera-reprimido-con-prision-de-seis-296",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-181-sera-reprimido-con-prision-de-seis-296",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-182-sera-reprimido-con-prision-de-quince-297",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-182-sera-reprimido-con-prision-de-quince-297",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-vii-298",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-vii-298",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-183-sera-reprimido-con-prision-de-quince-299",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-183-sera-reprimido-con-prision-de-quince-299",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-184-la-pena-sera-de-tres-3-300",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-184-la-pena-sera-de-tres-3-300",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-viii-301",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-viii-301",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-185-estan-exentos-de-responsabilidad-criminal-sin-302",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-185-estan-exentos-de-responsabilidad-criminal-sin-302",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-vii-303",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-vii-303",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-i-304",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-i-304",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-186-el-que-causare-incendio-explosion-o-305",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-186-el-que-causare-incendio-explosion-o-305",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-187-incurrira-segun-los-casos-en-las-306",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-187-incurrira-segun-los-casos-en-las-306",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-188-sera-reprimido-con-prision-de-uno-307",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-188-sera-reprimido-con-prision-de-uno-307",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-189-sera-reprimido-con-prision-de-un-308",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-189-sera-reprimido-con-prision-de-un-308",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-189-bis-1-el-que-con-el-309",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-189-bis-1-el-que-con-el-309",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-189-ter-articulo-derogado-por-art-2o-310",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-189-ter-articulo-derogado-por-art-2o-310",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-ii-311",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-ii-311",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-190-sera-reprimido-con-prision-de-dos-312",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-190-sera-reprimido-con-prision-de-dos-312",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-191-el-que-empleare-cualquier-medio-para-313",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-191-el-que-empleare-cualquier-medio-para-313",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-192-sera-reprimido-con-las-penas-establecidas-314",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-192-sera-reprimido-con-las-penas-establecidas-314",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-193-sera-reprimido-con-prision-de-un-315",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-193-sera-reprimido-con-prision-de-un-315",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-193-bis-sera-reprimido-con-prision-de-316",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-193-bis-sera-reprimido-con-prision-de-316",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-194-el-que-sin-crear-una-situacion-317",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-194-el-que-sin-crear-una-situacion-317",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-195-seran-reprimidos-con-prision-de-un-318",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-195-seran-reprimidos-con-prision-de-un-318",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-196-sera-reprimido-con-prision-de-seis-319",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-196-sera-reprimido-con-prision-de-seis-319",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-197-sera-reprimido-con-prision-de-seis-320",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-197-sera-reprimido-con-prision-de-seis-320",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iii-321",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iii-321",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-198-sera-reprimido-con-reclusion-o-prision-322",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-198-sera-reprimido-con-reclusion-o-prision-322",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-199-si-los-actos-de-violencia-u-323",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-199-si-los-actos-de-violencia-u-323",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-iv-324",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-iv-324",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-200-sera-reprimido-con-reclusion-o-prision-325",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-200-sera-reprimido-con-reclusion-o-prision-325",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-201-las-penas-del-articulo-precedente-se-326",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-201-las-penas-del-articulo-precedente-se-326",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-201-bis-si-como-consecuencia-del-envenenamiento-327",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-201-bis-si-como-consecuencia-del-envenenamiento-327",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-202-sera-reprimido-con-reclusion-o-prision-328",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-202-sera-reprimido-con-reclusion-o-prision-328",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-203-cuando-alguno-de-los-hechos-previstos-329",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-203-cuando-alguno-de-los-hechos-previstos-329",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-204-sera-reprimido-con-prision-de-seis-330",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-204-sera-reprimido-con-prision-de-seis-330",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-204-bis-cuando-el-delito-previsto-en-331",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-204-bis-cuando-el-delito-previsto-en-331",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-204-ter-sera-reprimido-con-prision-de-332",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-204-ter-sera-reprimido-con-prision-de-332",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-204-quater-sera-reprimido-con-multa-de-333",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-204-quater-sera-reprimido-con-multa-de-333",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-204-quinquies-sera-reprimido-con-prision-de-334",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-204-quinquies-sera-reprimido-con-prision-de-334",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-205-sera-reprimido-con-prision-de-seis-335",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-205-sera-reprimido-con-prision-de-seis-335",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-206-sera-reprimido-con-prision-de-uno-336",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-206-sera-reprimido-con-prision-de-uno-336",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-207-en-el-caso-de-condenacion-por-337",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-207-en-el-caso-de-condenacion-por-337",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-208-sera-reprimido-con-prision-de-quince-338",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-208-sera-reprimido-con-prision-de-quince-338",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-viii-339",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-viii-339",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-i-340",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-i-340",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-209-el-que-publicamente-instigare-a-cometer-341",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-209-el-que-publicamente-instigare-a-cometer-341",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-209-bis-en-igual-pena-incurrira-quien-342",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-209-bis-en-igual-pena-incurrira-quien-342",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--capitulo-ii-343",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--capitulo-ii-343",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-210-sera-reprimido-con-prision-o-reclusion-344",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-210-sera-reprimido-con-prision-o-reclusion-344",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

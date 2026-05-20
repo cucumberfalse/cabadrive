@@ -88,20 +88,15 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 
 ## UI Rules
 
-- Durable UI/UX rules live in `docs_project/project/frontend/ui-ux-source-of-truth.md`.
-- Durable learning-experience rules live in `docs_project/project/learning/learning-experience-source-of-truth.md`.
-- Image explanation overlay rules live in `docs_project/project/frontend/image-explanation-overlays.md`; current approved overlay records live under `content/image-overlays/` and validate against merged feature 009 metadata/usage fingerprints.
 - Official Spanish text stays primary.
 - Russian translations and explanations are unofficial learning aids; product-level onboarding, content-mode/status surfaces, and source/status footers carry that clarity instead of repeating long disclaimer paragraphs inside every question card.
 - Learning and mistake review start with Russian translation hidden.
 - Learn question cards show the ticket ID in the metadata row for reporting and cross-reference.
 - Learning, mistake review, and materials surfaces show a compact static difficulty indicator (`green`, `blue`, `yellow`, `red`) as unofficial study-planning metadata. Difficulty is not correctness, source confidence, progress, or the user-controlled `Сложный` mark.
-- After answer selection in learning and mistake review, question translation, answer translations, and learning explanation reveal automatically.
-- Bottom previous/next navigation belongs where feedback and explanation reading ends; learning navigation follows the active search collection, and mistake review navigation follows the current mistake collection.
 - The Spanish question text area reveals or hides the question translation and answer-choice translations with the same shared state; the revealed question translation appears directly under the Spanish question text before images and answer choices.
 - The current 460-question fallback bank has complete question-card Russian translation and explanation records. These records remain unofficial learning aids and are guarded by deterministic local fingerprint evidence.
 - Image-backed questions are guarded by `content/image-metadata/question-images.manifest.json` and related validation evidence. The metadata is not rendered in the MVP UI; it exists to prevent learning explanations from contradicting local images and to keep image-critical details reviewable.
-- Image highlight/dim overlays consume question-specific usage relevance from feature `009`; frontend overlay rendering must not infer importance from shared image metadata alone and must fall back truthfully when no approved overlay exists.
+- Future image highlight/dim overlays consume question-specific usage relevance from feature `009`; frontend overlay rendering must not infer importance from shared image metadata alone.
 - Active exam attempts hide translation and explanation support.
 - Active exam attempts do not show difficulty rationale, dimensions, or study hints; current UI omits difficulty chips during active attempts.
 - Support mobile-first interaction and exam-focused speed.
@@ -111,5 +106,6 @@ The current MVP question set is `unofficial_b_fallback`, not an official GCBA qu
 - Repeated materials ticket blocks should not each repeat the full fallback-status chip; section/product status surfaces carry the current unofficial fallback truth.
 - `Процесс` renders the bundled CABA B1/private-car `Otorgamiento` process guide from local JSON, labels it as unofficial Russian support, shows official GCBA/ANSV source links with checked dates, and keeps volatile payments/sedes/turnos/document details behind explicit verify-on-official-source warnings.
 - `CABA/RF` remains a separate compact contrast guide.
-- A distinct `Источники` / official primary-source reader is planned by feature `019-primary-sources-section` but is not implemented in the current product yet. When implemented, it should stay separate from `Материалы`, cover every manifest entry in `content/official-documents/manifest.json`, default to simple Russian, allow switching to full Russian translation and original Spanish, omit simplified Spanish, and label Russian layers as unofficial learning support.
-- The official source archive under `content/official-documents/` remains verbatim Spanish-only source material. Future Russian translations and simple rewrites for the source reader must be stored outside that archive, preferably under `content/primary-sources/`.
+- `Источники` renders the official primary-source reader from bundled `content/primary-sources/` shards. It stays separate from `Материалы`, covers every current entry in `content/official-documents/manifest.json`, defaults to simple Russian, allows switching to full Russian translation and original Spanish, omits simplified Spanish, and labels Russian layers as unofficial learning support.
+- The official source archive under `content/official-documents/` remains verbatim Spanish-only source material. Russian translations and simple rewrites for the source reader are stored outside that archive under `content/primary-sources/`.
+- Release status: the reader UI is implemented and locally tested, and the official archive currentness/exact-text gates are passed for all 19 manifest entries. Final completion still depends on active PR checks, review, conflict state, and human merge authority.

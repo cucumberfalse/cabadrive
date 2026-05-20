@@ -1,0 +1,954 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "entries": [
+    {
+      "entryId": "ley-11179-codigo-penal--codigo-penal-de-la-nacion-argentina-001",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--codigo-penal-de-la-nacion-argentina-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--libro-primero-002",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--libro-primero-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-i-003",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-i-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-ii-004",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-ii-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-iii-005",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-iii-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-iv-006",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-iv-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-v-007",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-v-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-vi-008",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-vi-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-vii-009",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-vii-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-viii-010",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-viii-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-ix-011",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-ix-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-x-012",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-x-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xi-013",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xi-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xii-014",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xii-014",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xiii-015",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xiii-015",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--libro-segundo-016",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--libro-segundo-016",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-i-017",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-i-017",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-ii-018",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-ii-018",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-iii-019",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-iii-019",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-iv-020",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-iv-020",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-v-021",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-v-021",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-vi-022",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-vi-022",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-vii-023",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-vii-023",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-viii-024",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-viii-024",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-ix-025",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-ix-025",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-x-026",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-x-026",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xi-027",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xi-027",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xii-028",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xii-028",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-xiii-029",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-xiii-029",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--libro-primero-030",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--libro-primero-030",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-i-031",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-i-031",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-1o-este-codigo-se-aplicara-032",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-1o-este-codigo-se-aplicara-032",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-2o-si-la-ley-vigente-al-tiempo-033",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-2o-si-la-ley-vigente-al-tiempo-033",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-3o-en-el-computo-de-la-prision-034",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-3o-en-el-computo-de-la-prision-034",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-4o-las-disposiciones-generales-del-presente-codigo-035",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-4o-las-disposiciones-generales-del-presente-codigo-035",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-ii-036",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-ii-036",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-5o-las-penas-que-este-codigo-establece-037",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-5o-las-penas-que-este-codigo-establece-037",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-6o-la-pena-de-reclusion-perpetua-o-038",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-6o-la-pena-de-reclusion-perpetua-o-038",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-7o-los-hombres-debiles-o-enfermos-y-039",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-7o-los-hombres-debiles-o-enfermos-y-039",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-8o-los-menores-de-edad-y-las-040",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-8o-los-menores-de-edad-y-las-040",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-9o-la-pena-de-prision-perpetua-o-041",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-9o-la-pena-de-prision-perpetua-o-041",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-10-podran-a-criterio-del-juez-competente-042",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-10-podran-a-criterio-del-juez-competente-042",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-11-el-producto-del-trabajo-del-condenado-043",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-11-el-producto-del-trabajo-del-condenado-043",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-12-la-reclusion-y-la-prision-por-044",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-12-la-reclusion-y-la-prision-por-044",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-13-el-condenado-a-reclusion-o-prision-045",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-13-el-condenado-a-reclusion-o-prision-045",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-14-la-libertad-condicional-no-se-concedera-046",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-14-la-libertad-condicional-no-se-concedera-046",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-15-la-libertad-condicional-sera-revocada-cuando-047",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-15-la-libertad-condicional-sera-revocada-cuando-047",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-16-transcurrido-el-termino-de-la-condena-048",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-16-transcurrido-el-termino-de-la-condena-048",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-17-ningun-penado-cuya-libertad-condicional-haya-049",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-17-ningun-penado-cuya-libertad-condicional-haya-049",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-18-los-condenados-por-tribunales-provinciales-a-050",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-18-los-condenados-por-tribunales-provinciales-a-050",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-19-la-inhabilitacion-absoluta-importa-051",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-19-la-inhabilitacion-absoluta-importa-051",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-20-la-inhabilitacion-especial-producira-la-privacion-052",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-20-la-inhabilitacion-especial-producira-la-privacion-052",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-20-bis-podra-imponerse-inhabilitacion-especial-de-053",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-20-bis-podra-imponerse-inhabilitacion-especial-de-053",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-20-ter-el-condenado-a-inhabilitacion-absoluta-054",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-20-ter-el-condenado-a-inhabilitacion-absoluta-054",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-21-la-multa-obligara-al-reo-a-055",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-21-la-multa-obligara-al-reo-a-055",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-22-en-cualquier-tiempo-que-se-satisfaciera-056",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-22-en-cualquier-tiempo-que-se-satisfaciera-056",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-22-bis-si-el-hecho-ha-sido-057",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-22-bis-si-el-hecho-ha-sido-057",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-23-en-todos-los-casos-en-que-058",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-23-en-todos-los-casos-en-que-058",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-24-la-prision-preventiva-se-computara-asi-059",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-24-la-prision-preventiva-se-computara-asi-059",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-25-si-durante-la-condena-el-penado-060",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-25-si-durante-la-condena-el-penado-060",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-iii-061",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-iii-061",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-26-en-los-casos-de-primera-condena-062",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-26-en-los-casos-de-primera-condena-062",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-27-la-condenacion-se-tendra-como-no-063",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-27-la-condenacion-se-tendra-como-no-063",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-27-bis-al-suspender-condicionalmente-la-ejecucion-064",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-27-bis-al-suspender-condicionalmente-la-ejecucion-064",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-28-la-suspension-de-la-pena-no-065",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-28-la-suspension-de-la-pena-no-065",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-iv-066",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-iv-066",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-29-la-sentencia-condenatoria-podra-ordenar-067",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-29-la-sentencia-condenatoria-podra-ordenar-067",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-30-la-obligacion-de-indemnizar-es-preferente-068",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-30-la-obligacion-de-indemnizar-es-preferente-068",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-31-la-obligacion-de-reparar-el-dano-069",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-31-la-obligacion-de-reparar-el-dano-069",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-32-el-que-por-titulo-lucrativo-participare-070",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-32-el-que-por-titulo-lucrativo-participare-070",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-33-en-caso-de-insolvencia-total-o-071",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-33-en-caso-de-insolvencia-total-o-071",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-v-072",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-v-072",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-34-no-son-punibles-073",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-34-no-son-punibles-073",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-35-el-que-hubiere-excedido-los-limites-074",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-35-el-que-hubiere-excedido-los-limites-074",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-36-derogado-075",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-36-derogado-075",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-37-derogado-076",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-37-derogado-076",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-38-derogado-077",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-38-derogado-077",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-39-derogado-078",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-39-derogado-078",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-40-en-las-penas-divisibles-por-razon-079",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-40-en-las-penas-divisibles-por-razon-079",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-41-a-los-efectos-del-articulo-anterior-080",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-41-a-los-efectos-del-articulo-anterior-080",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-41-bis-cuando-alguno-de-los-delitos-081",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-41-bis-cuando-alguno-de-los-delitos-081",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-41-ter-las-escalas-penales-podran-reducirse-082",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-41-ter-las-escalas-penales-podran-reducirse-082",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-41-quater-cuando-alguno-de-los-delitos-083",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-41-quater-cuando-alguno-de-los-delitos-083",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-41-quinquies-cuando-alguno-de-los-delitos-084",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-41-quinquies-cuando-alguno-de-los-delitos-084",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--titulo-vi-085",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--titulo-vi-085",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-11179-codigo-penal--articulo-42-el-que-con-el-fin-de-086",
+      "officialDocumentId": "ley-11179-codigo-penal",
+      "chunkId": "ley-11179-codigo-penal--articulo-42-el-que-con-el-fin-de-086",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

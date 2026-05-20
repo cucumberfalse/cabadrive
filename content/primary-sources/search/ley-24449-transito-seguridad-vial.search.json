@@ -1,0 +1,1449 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-24449-transito-seguridad-vial",
+  "entries": [
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--ley-24449-001",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--ley-24449-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-i-002",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-i-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-unico-003",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-unico-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-1o-ambito-de-la-aplicacion-004",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-1o-ambito-de-la-aplicacion-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-2o-competencia-son-autoridades-de-005",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-2o-competencia-son-autoridades-de-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-3o-garantia-de-libertad-de-006",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-3o-garantia-de-libertad-de-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-4o-convenios-007",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-4o-convenios-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-5o-definiciones-a-los-efectos-de-esta-008",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-5o-definiciones-a-los-efectos-de-esta-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-ii-009",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-ii-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-unico-010",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-unico-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-6o-consejo-federal-de-011",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-6o-consejo-federal-de-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-7o-funciones-el-consejo-tendra-por-funciones-012",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-7o-funciones-el-consejo-tendra-por-funciones-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-8o-registro-nacional-de-013",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-8o-registro-nacional-de-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-iii-014",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-iii-014",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-i-015",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-i-015",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-9o-educacion-vial-amplianse-los-alcances-de-016",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-9o-educacion-vial-amplianse-los-alcances-de-016",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-10-cursos-de-capacitacion-017",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-10-cursos-de-capacitacion-017",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-11-edades-minimas-para-018",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-11-edades-minimas-para-018",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-12-escuela-de-conductores-019",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-12-escuela-de-conductores-019",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-ii-020",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-ii-020",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-13-caracteristicas-todo-conductor-sera-titular-de-021",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-13-caracteristicas-todo-conductor-sera-titular-de-021",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-14-requisitos-022",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-14-requisitos-022",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-15-contenido-la-licencia-habilitante-debe-contener-023",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-15-contenido-la-licencia-habilitante-debe-contener-023",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-16-clases-las-clases-de-licencias-para-024",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-16-clases-las-clases-de-licencias-para-024",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-17-menores-los-menores-de-025",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-17-menores-los-menores-de-025",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-18-modificacion-de-datos-026",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-18-modificacion-de-datos-026",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-19-suspension-por-027",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-19-suspension-por-027",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-20-conductor-profesional-028",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-20-conductor-profesional-028",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-iv-029",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-iv-029",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-unico-030",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-unico-030",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-21-estructura-vial-toda-031",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-21-estructura-vial-toda-031",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-21-bis-estructura-032",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-21-bis-estructura-032",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-22-sistema-uniforme-de-033",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-22-sistema-uniforme-de-033",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-23-obstaculos-cuando-la-034",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-23-obstaculos-cuando-la-034",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-24-planificacion-urbana-la-035",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-24-planificacion-urbana-la-035",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-25-restricciones-al-dominio-es-obligatorio-para-036",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-25-restricciones-al-dominio-es-obligatorio-para-036",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-26-publicidad-en-la-via-037",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-26-publicidad-en-la-via-037",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-26-bis-venta-de-038",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-26-bis-venta-de-038",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-27-construcciones-039",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-27-construcciones-039",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-v-040",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-v-040",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-i-041",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-i-041",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-28-responsabilidad-sobre-042",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-28-responsabilidad-sobre-042",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-29-condiciones-de-seguridad-los-vehiculos-cumpliran-043",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-29-condiciones-de-seguridad-los-vehiculos-cumpliran-043",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-30-requisitos-para-automotores-los-automotores-deben-044",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-30-requisitos-para-automotores-los-automotores-deben-044",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-31-sistema-de-iluminacion-los-automotores-para-045",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-31-sistema-de-iluminacion-los-automotores-para-045",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-32-luces-adicionales-los-vehiculos-que-se-046",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-32-luces-adicionales-los-vehiculos-que-se-046",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-33-otros-requerimientos-respecto-a-los-vehiculos-047",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-33-otros-requerimientos-respecto-a-los-vehiculos-047",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-ii-048",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-ii-048",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-34-revision-tecnica-049",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-34-revision-tecnica-049",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-35-talleres-de-reparacion-050",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-35-talleres-de-reparacion-050",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-vi-051",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-vi-051",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-i-052",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-i-052",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-36-prioridad-normativa-en-053",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-36-prioridad-normativa-en-053",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-37-exhibicion-de-054",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-37-exhibicion-de-054",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-38-peatones-y-dicapacitados-los-peatones-transitaran-055",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-38-peatones-y-dicapacitados-los-peatones-transitaran-055",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-39-condiciones-para-conducir-los-conductores-deben-056",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-39-condiciones-para-conducir-los-conductores-deben-056",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-40-requisitos-para-circular-para-poder-circular-057",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-40-requisitos-para-circular-para-poder-circular-057",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-40-bis-requisitos-para-circular-con-bicicletas-058",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-40-bis-requisitos-para-circular-con-bicicletas-058",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-41-prioridades-todo-059",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-41-prioridades-todo-059",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-42-adelantamiento-el-adelantamiento-a-otro-vehiculo-060",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-42-adelantamiento-el-adelantamiento-a-otro-vehiculo-060",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-43-giros-y-rotondas-para-realizar-un-061",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-43-giros-y-rotondas-para-realizar-un-061",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-44-vias-semaforizadas-en-las-vias-reguladas-062",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-44-vias-semaforizadas-en-las-vias-reguladas-062",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-45-via-multicarriles-en-063",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-45-via-multicarriles-en-063",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-46-autopistas-en-las-autopistas-ademas-de-064",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-46-autopistas-en-las-autopistas-ademas-de-064",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-46-bis-ciclovias-las-065",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-46-bis-ciclovias-las-065",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-47-uso-de-las-luces-en-la-066",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-47-uso-de-las-luces-en-la-066",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-48-prohibiciones-esta-prohibido-en-la-via-067",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-48-prohibiciones-esta-prohibido-en-la-via-067",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-49-estacionamiento-en-zona-urbana-deben-observarse-068",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-49-estacionamiento-en-zona-urbana-deben-observarse-068",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-ii-069",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-ii-069",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-50-velocidad-precautoria-070",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-50-velocidad-precautoria-070",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-51-velocidad-maxima-los-limites-maximos-de-071",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-51-velocidad-maxima-los-limites-maximos-de-071",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-52-limites-especiales-se-respetaran-ademas-los-072",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-52-limites-especiales-se-respetaran-ademas-los-072",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-iii-073",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-iii-073",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-53-exigencias-comunes-los-propietarios-de-vehiculos-074",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-53-exigencias-comunes-los-propietarios-de-vehiculos-074",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-54-transporte-publico-en-075",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-54-transporte-publico-en-075",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-55-transporte-de-076",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-55-transporte-de-076",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-56-transporte-de-carga-077",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-56-transporte-de-carga-077",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-57-exceso-de-carga-es-078",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-57-exceso-de-carga-es-078",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-58-revisores-de-carga-los-079",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-58-revisores-de-carga-los-079",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-iv-080",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-iv-080",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-59-obstaculos-la-081",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-59-obstaculos-la-081",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-60-uso-especial-de-la-via-082",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-60-uso-especial-de-la-via-082",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-61-vehiculos-de-083",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-61-vehiculos-de-083",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-62-maquinaria-especial-la-084",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-62-maquinaria-especial-la-084",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-63-franquicias-especiales-085",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-63-franquicias-especiales-085",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-v-086",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-v-086",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-64-presunciones-se-087",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-64-presunciones-se-087",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-65-obligaciones-es-obligatorio-para-participes-de-088",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-65-obligaciones-es-obligatorio-para-participes-de-088",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-66-investigacion-089",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-66-investigacion-089",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-67-sistema-de-evacuacion-y-090",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-67-sistema-de-evacuacion-y-090",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-68-seguro-obligatorio-091",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-68-seguro-obligatorio-091",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-vii-092",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-vii-092",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-i-093",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-i-093",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-69-principios-basicos-el-094",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-69-principios-basicos-el-094",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-70-deberes-de-las-autoridades-las-autoridades-095",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-70-deberes-de-las-autoridades-las-autoridades-095",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-71-096",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-71-096",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-ii-097",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-ii-097",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-72-retencion-preventiva-098",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-72-retencion-preventiva-098",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-72-bis-retencion-099",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-72-bis-retencion-099",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-73-control-preventivo-100",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-73-control-preventivo-100",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-iii-101",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-iii-101",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-74-clases-sin-perjuicio-102",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-74-clases-sin-perjuicio-102",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-viii-103",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-viii-103",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-i-104",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-i-104",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-75-responsabilidad-son-responsables-para-esta-ley-105",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-75-responsabilidad-son-responsables-para-esta-ley-105",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-76-entes-tambien-son-106",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-76-entes-tambien-son-106",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-77-clasificacion-constituyen-faltas-graves-las-siguientes-107",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-77-clasificacion-constituyen-faltas-graves-las-siguientes-107",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-78-eximentes-la-autoridad-de-juzgamiento-podra-108",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-78-eximentes-la-autoridad-de-juzgamiento-podra-108",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-79-atenuantes-la-sancion-109",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-79-atenuantes-la-sancion-109",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-80-agravantes-la-sancion-podra-aumentarse-hasta-110",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-80-agravantes-la-sancion-podra-aumentarse-hasta-110",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-81-concurso-de-faltas-en-111",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-81-concurso-de-faltas-en-111",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-82-reincidencia-hay-112",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-82-reincidencia-hay-112",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-ii-113",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-ii-113",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-83-clases-las-sanciones-114",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-83-clases-las-sanciones-114",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-84-multas-el-valor-de-la-115",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-84-multas-el-valor-de-la-115",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-85-pago-de-multas-la-sancion-de-116",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-85-pago-de-multas-la-sancion-de-116",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-suficiente-el-certificado-expedido-por-la-autoridad-117",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-suficiente-el-certificado-expedido-por-la-autoridad-117",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-86-arresto-el-arresto-procede-solo-en-118",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-86-arresto-el-arresto-procede-solo-en-118",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-87-aplicaciones-del-arresto-la-sancion-de-119",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-87-aplicaciones-del-arresto-la-sancion-de-119",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--capitulo-iii-120",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--capitulo-iii-120",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-88-causas-la-extincion-de-acciones-y-121",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-88-causas-la-extincion-de-acciones-y-121",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-89-prescripcion-la-prescripcion-se-opera-122",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-89-prescripcion-la-prescripcion-se-opera-122",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-90-legislacion-supletoria-123",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-90-legislacion-supletoria-123",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--titulo-ix-124",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--titulo-ix-124",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-91-adhesion-se-invita-a-las-provincias-125",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-91-adhesion-se-invita-a-las-provincias-125",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-92-asignacion-de-cometido-se-encomienda-al-126",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-92-asignacion-de-cometido-se-encomienda-al-126",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-93-agregado-al-codigo-procesal-penal-agreguese-127",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-93-agregado-al-codigo-procesal-penal-agreguese-127",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-94-vigencia-esta-ley-128",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-94-vigencia-esta-ley-128",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-95-derogaciones-deroganse-129",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-95-derogaciones-deroganse-129",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-96-comision-nacional-de-130",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-96-comision-nacional-de-130",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-24449-transito-seguridad-vial--articulo-97-comuniquese-al-poder-ejecutivo-alberto-pierri-131",
+      "officialDocumentId": "ley-24449-transito-seguridad-vial",
+      "chunkId": "ley-24449-transito-seguridad-vial--articulo-97-comuniquese-al-poder-ejecutivo-alberto-pierri-131",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

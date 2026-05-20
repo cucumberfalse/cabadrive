@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+  "document": {
+    "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+    "title": "Mapa de Estrellas Amarillas en la Ciudad",
+    "shortTitleRu": "Карта желтых звезд в городе",
+    "category": "road-safety",
+    "jurisdiction": "caba",
+    "officialSourceType": "gcba_road_safety_page",
+    "sourceUrl": "https://buenosaires.gob.ar/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+    "archiveLocalPath": "content/official-documents/documents/gcba-mapa-estrellas-amarillas.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "gcba-mapa-estrellas-amarillas--mapa-de-estrellas-amarillas-en-la-ciudad-001",
+        "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+        "order": 1,
+        "headingPath": [
+          "Mapa de Estrellas Amarillas en la Ciudad"
+        ],
+        "officialLabel": "Mapa de Estrellas Amarillas en la Ciudad",
+        "chunkingStrategy": "bounded-paragraph-groups",
+        "originalSpanish": "# Mapa de Estrellas Amarillas en la Ciudad\n\n1. Buenos Aires [/]\n 2. Movilidad e Infraestructura [/gcaba_historico/movilidad-e-infraestructura]\n\nMAPA DE ESTRELLAS AMARILLAS EN LA CIUDAD\n\nEl mapa de Estrellas Amarillas referencia en forma permanente el lugar de fallecimiento de una víctima de tránsito. Realizado en conjunto con ONGs y familiares de las víctimas.\n\nCompartir en redes\n *\n *\n *\n\n----------------------------------------\n\nEn la Ciudad de Buenos Aires la iniciativa es promovida por la Red Nacional Familiares Víctimas de Tránsito, A.C.T.I.V.V.A.S. y la Asociación Madres del Dolor. Las tres organizaciones tienen como objetivo crear conciencia y un llamado a la reflexión que nos convoca a respetar la vida: la propia y la de los demás.\n\nCada estrella tiene cinco puntas que simbolizan valores clave: Memoria, Prevención, Ley, Justicia y Educación.\n\nLa Ciudad acompaña la Campaña Estrellas Amarillas con la instalación de carteles en la vía pública y un mapa interactivo donde se visualizan todas las estrellas colocadas hasta la fecha.\n\n¿Qué hacer ante un siniestro vial?\n\nCuando ocurre un siniestro vial hay ciertas acciones que pueden tomarse para minimizar los riesgos y proteger la vida de las personas involucradas. Conocé todos los pasos con la Guía Práctica de Actuación ante Siniestros Viales.\n\nSi un ser querido o alguien conocido sufrió un siniestro vial podés solicitar de forma gratuita la colocación del cartel y verlo reflejado en el mapa. Para más información, comunicate con:\nA.C.T.I.V.V.A.S. - Asociación Civil Trabajar contra la Inseguridad Vial y la Violencia con Acciones Sustentables\nEma Cibotti-Lischinsky\nCorreo: emacibotti@activvas.org\nCorreo: emacibotti@gmail.com\nCelular: (+54) 11 5812-5022\n\nWeb: www.activvas.org\nInstagram: @a.c.t.i.v.v.a.s\nTwitter/X: @emacibotti\n",
+        "fullTranslationRu": "# Карта желтых звезд в городе\n\n1. Buenos Aires [/]\n 2. Мобильность и инфраструктура [/gcaba_historico/movilidad-e-infraestructura]\n\nКАРТА ЖЕЛТЫХ ЗВЕЗД В ГОРОДЕ\n\nКарта Estrellas Amarillas постоянно указывает место гибели жертвы дорожного происшествия. Она создана совместно с НКО и родственниками жертв.\n\nПоделиться в социальных сетях\n *\n *\n *\n\n----------------------------------------\n\nВ городе Буэнос-Айрес эту инициативу продвигают Red Nacional Familiares Víctimas de Tránsito, A.C.T.I.V.V.A.S. и Asociación Madres del Dolor. Цель трех организаций - создавать осознанность и призыв к размышлению, который побуждает нас уважать жизнь: свою и чужую.\n\nУ каждой звезды пять лучей, символизирующих ключевые ценности: память, профилактику, закон, справедливость и образование.\n\nГород поддерживает кампанию Estrellas Amarillas установкой знаков на общественных дорогах и интерактивной картой, где видны все звезды, размещенные на данный момент.\n\nЧто делать при дорожно-транспортном происшествии?\n\nКогда происходит дорожное происшествие, можно выполнить определенные действия, чтобы уменьшить риски и защитить жизнь вовлеченных людей. Все шаги приведены в Практическом руководстве действий при дорожных происшествиях.\n\nЕсли близкий человек или знакомый пострадал в дорожном происшествии, можно бесплатно запросить установку знака и увидеть его отражение на карте. Для дополнительной информации свяжитесь с:\nA.C.T.I.V.V.A.S. - Гражданская ассоциация Trabajar contra la Inseguridad Vial y la Violencia con Acciones Sustentables\nEma Cibotti-Lischinsky\nЭл. почта: emacibotti@activvas.org\nЭл. почта: emacibotti@gmail.com\nМобильный: (+54) 11 5812-5022\n\nСайт: www.activvas.org\nInstagram: @a.c.t.i.v.v.a.s\nTwitter/X: @emacibotti",
+        "simpleRu": "Желтая звезда отмечает место, где человек погиб в дорожном происшествии. В Буэнос-Айресе эту кампанию поддерживают организации родственников жертв. Звезды напоминают о памяти, профилактике, законе, справедливости и образовании. Если близкий человек пострадал, можно бесплатно запросить знак через указанные организации.",
+        "sourceTextSha256": "828d7b094cac51a9c9ee97ab50b8977510939f632021ebf9fbd02ae874a4f528",
+        "sourceFingerprint": "sha256:828d7b094cac51a9c9ee97ab50b8977510939f632021ebf9fbd02ae874a4f528",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 37
+        }
+      },
+      {
+        "chunkId": "gcba-mapa-estrellas-amarillas--grupo-de-parrafos-linea-38-002",
+        "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+        "order": 2,
+        "headingPath": [
+          "Mapa de Estrellas Amarillas en la Ciudad",
+          "Grupo de párrafos línea 38"
+        ],
+        "officialLabel": "Grupo de párrafos línea 38",
+        "chunkingStrategy": "bounded-paragraph-groups",
+        "originalSpanish": "Asociación Civil Madres del Dolor\nViviam Perrone\nCorreo: kevinsedano@yahoo.com.ar\nTeléfono: (+54) 11 4400-4772\nSilvia Fredes\nCorreo: silfredes16@gmail.com\nCelular: (+54) 11 6351-7312\n\nWeb: www.madresdeldolor.org.ar\nFacebook: Asociación Madres del Dolor\nInstagram: @madresdeldolor\nTwitter/X: @madresdeldolor\n\nRed Nacional Familiares de Víctimas de Tránsito\nTeresa Mellano\nCorreo: transitoporlavida@yahoo.com.ar\nCorreo: teresamellano@yahoo.com.ar\nCelular: (+54) 11 4960-4117\n\nGUÍA PRÁCTICA DE ACTUACIÓN ANTE SINIESTROS VIALES\n\nGUÍA PRÁCTICA DE ACTUACIÓN ANTE SINIESTROS VIALES\n\nDescargar [https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf]\n\nNuestros actos pueden definir nuestro destino o el de alguien más. Por eso, es importante que todos entendamos la responsabilidad que asumimos cuando nos subimos a un vehículo, cualquiera que este sea, que aprendamos (de nuevo) ciertos hábitos y respetemos la norma, que no es otra cosa que respetar las consignas que fueron diseñadas para que movernos por Buenos Aires sea más seguro para todos.\n\nLas 5 puntas de cada estrella representan los siguientes valores: memoria, prevención, ley, justicia y educación.\n\nLa Ciudad acompaña esta iniciativa con la publicación del mapa interactivo de Estrellas Amarillas y la colocación de sus respectivos carteles en la vía pública para dar a conocer su significado e importancia. Tanto la solicitud como la colocación de las estrellas se realiza de forma gratuita. De esta manera, nos comprometemos una vez más a trabajar en conjunto para seguir mejorando la seguridad vial.\n\n \n\nSi algún conocido tuyo sufrió un siniestro vial y querés ayudarnos a construir este mapa podés contactarte con:\n\nA.C.T.I.V.V.A.S.\nAsociación Civil Trabajar contra la Inseguridad Vial y la Violencia con Acciones Sustentables\nEma Cibotti-Lischinsky\nCelular: 011 1558125022\nCorreo: emacibotti@activvas.org [emacibotti@activvas.org]\nCorreo: emacibotti@gmail.com [emacibotti@gmail.com]\nWeb: www.activvas.org [https://activvas.org/]\nInstagram: @a.c.t.i.v.v.a.s [https://www.instagram.com/a.c.t.i.v.v.a.s/]\n",
+        "fullTranslationRu": "Гражданская ассоциация Madres del Dolor\nViviam Perrone\nЭл. почта: kevinsedano@yahoo.com.ar\nТелефон: (+54) 11 4400-4772\nSilvia Fredes\nЭл. почта: silfredes16@gmail.com\nМобильный: (+54) 11 6351-7312\n\nСайт: www.madresdeldolor.org.ar\nFacebook: Asociación Madres del Dolor\nInstagram: @madresdeldolor\nTwitter/X: @madresdeldolor\n\nRed Nacional Familiares de Víctimas de Tránsito\nTeresa Mellano\nЭл. почта: transitoporlavida@yahoo.com.ar\nЭл. почта: teresamellano@yahoo.com.ar\nМобильный: (+54) 11 4960-4117\n\nПРАКТИЧЕСКОЕ РУКОВОДСТВО ДЕЙСТВИЙ ПРИ ДОРОЖНЫХ ПРОИСШЕСТВИЯХ\n\nПРАКТИЧЕСКОЕ РУКОВОДСТВО ДЕЙСТВИЙ ПРИ ДОРОЖНЫХ ПРОИСШЕСТВИЯХ\n\nСкачать [https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf]\n\nНаши действия могут определить нашу судьбу или судьбу другого человека. Поэтому важно, чтобы все понимали ответственность, которую принимают на себя, когда садятся в любое транспортное средство; чтобы мы заново учились определенным привычкам и соблюдали норму, то есть уважали правила, созданные для того, чтобы передвижение по Буэнос-Айресу было безопаснее для всех.\n\nПять лучей каждой звезды представляют следующие ценности: память, профилактика, закон, справедливость и образование.\n\nГород поддерживает эту инициативу публикацией интерактивной карты Estrellas Amarillas и установкой соответствующих знаков на общественных дорогах, чтобы объяснить их значение и важность. И запрос, и установка звезд выполняются бесплатно. Так город снова берет на себя обязательство работать совместно, чтобы продолжать улучшать безопасность дорожного движения.\n\n\n\nЕсли кто-то из ваших знакомых пострадал в дорожном происшествии и вы хотите помочь нам строить эту карту, можно связаться с:\n\nA.C.T.I.V.V.A.S.\nГражданская ассоциация Trabajar contra la Inseguridad Vial y la Violencia con Acciones Sustentables\nEma Cibotti-Lischinsky\nМобильный: 011 1558125022\nЭл. почта: emacibotti@activvas.org [emacibotti@activvas.org]\nЭл. почта: emacibotti@gmail.com [emacibotti@gmail.com]\nСайт: www.activvas.org [https://activvas.org/]\nInstagram: @a.c.t.i.v.v.a.s [https://www.instagram.com/a.c.t.i.v.v.a.s/]",
+        "simpleRu": "Здесь указаны контакты организаций, связанных с картой желтых звезд, и ссылка на руководство действий при ДТП. Главная идея: водитель несет ответственность, когда садится в транспортное средство, а соблюдение правил делает движение по Буэнос-Айресу безопаснее. Запрос и установка желтой звезды бесплатны.",
+        "sourceTextSha256": "87e1a6893bed5e3b28d47f1310ab0c8910a31156eaf4721dd27f2e4d04ad2617",
+        "sourceFingerprint": "sha256:87e1a6893bed5e3b28d47f1310ab0c8910a31156eaf4721dd27f2e4d04ad2617",
+        "sourceSpan": {
+          "startLine": 38,
+          "endLine": 81
+        }
+      },
+      {
+        "chunkId": "gcba-mapa-estrellas-amarillas--grupo-de-parrafos-linea-82-003",
+        "officialDocumentId": "gcba-mapa-estrellas-amarillas",
+        "order": 3,
+        "headingPath": [
+          "Mapa de Estrellas Amarillas en la Ciudad",
+          "Grupo de párrafos línea 82"
+        ],
+        "officialLabel": "Grupo de párrafos línea 82",
+        "chunkingStrategy": "bounded-paragraph-groups",
+        "originalSpanish": "Red Nacional de Familiares de Víctimas de Tránsito\nTeresa Mellano\nCorreo: transitoporlavida@yahoo.com.ar [transitoporlavida@yahoo.com.ar]\nCorreo: teresamellano@yahoo.com.ar [teresamellano@yahoo.com.ar]\nCelular: 1649604117\n\nRed Nacional de Familiares de Víctimas de Tránsito\nPatricia Pistarini\nCorreo: pistarinipatricia@yahoo.com.ar [pistarinipatricia@yahoo.com.ar]\nCelular: (15)5499-7752\nTeléfono: 4301.3542\nFacebook: Patricia Pistarini [https://www.facebook.com/patriciavirginiapistarini?fref=ts]\n\nAsociación Civil Madres del Dolor\nViviam Perrone\nCorreo: kevinsedano@yahoo.com.ar [kevinsedano@yahoo.com.ar]\nTeléfono: 3968 4082\nTeléfono: 353 575 69\nSilvia Fredes\nCorreo: silfredes16@gmail.com [silfredes16@gmail.com]\nTeléfono: 11 6351-7312\nWeb: www.madresdeldolor.org.ar [www.madresdeldolor.org.ar]\nFacebook: Asociación Madres del Dolor [https://es-la.facebook.com/Madresdeldolor/]\nTwitter: @madresdeldolor [https://twitter.com/madresdeldolor]\nInstagram: @madresdeldolor [https://www.instagram.com/madresdeldolor/?hl=es]\n",
+        "fullTranslationRu": "Red Nacional de Familiares de Víctimas de Tránsito\nTeresa Mellano\nЭл. почта: transitoporlavida@yahoo.com.ar [transitoporlavida@yahoo.com.ar]\nЭл. почта: teresamellano@yahoo.com.ar [teresamellano@yahoo.com.ar]\nМобильный: 1649604117\n\nRed Nacional de Familiares de Víctimas de Tránsito\nPatricia Pistarini\nЭл. почта: pistarinipatricia@yahoo.com.ar [pistarinipatricia@yahoo.com.ar]\nМобильный: (15)5499-7752\nТелефон: 4301.3542\nFacebook: Patricia Pistarini [https://www.facebook.com/patriciavirginiapistarini?fref=ts]\n\nГражданская ассоциация Madres del Dolor\nViviam Perrone\nЭл. почта: kevinsedano@yahoo.com.ar [kevinsedano@yahoo.com.ar]\nТелефон: 3968 4082\nТелефон: 353 575 69\nSilvia Fredes\nЭл. почта: silfredes16@gmail.com [silfredes16@gmail.com]\nТелефон: 11 6351-7312\nСайт: www.madresdeldolor.org.ar [www.madresdeldolor.org.ar]\nFacebook: Asociación Madres del Dolor [https://es-la.facebook.com/Madresdeldolor/]\nTwitter: @madresdeldolor [https://twitter.com/madresdeldolor]\nInstagram: @madresdeldolor [https://www.instagram.com/madresdeldolor/?hl=es]",
+        "simpleRu": "Это контактный список организаций и людей, к которым можно обратиться по теме желтых звезд и помощи семьям жертв дорожных происшествий. Важно сохранить телефоны, электронную почту и ссылки как справочную информацию.",
+        "sourceTextSha256": "9bc4a743a8963c1fc32445b84ccf4ff5ea71ec3220be7a6f31289fd4dd3cec20",
+        "sourceFingerprint": "sha256:9bc4a743a8963c1fc32445b84ccf4ff5ea71ec3220be7a6f31289fd4dd3cec20",
+        "sourceSpan": {
+          "startLine": 82,
+          "endLine": 107
+        }
+      }
+    ]
+  }
+}

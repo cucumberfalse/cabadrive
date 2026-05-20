@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ansv-cedula-azul-no-exigible",
+  "entries": [
+    {
+      "entryId": "ansv-cedula-azul-no-exigible--la-cedula-azul-ya-no-es-documento-exigible-001",
+      "officialDocumentId": "ansv-cedula-azul-no-exigible",
+      "chunkId": "ansv-cedula-azul-no-exigible--la-cedula-azul-ya-no-es-documento-exigible-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ansv-cedula-azul-no-exigible--noticias-relacionadas-002",
+      "officialDocumentId": "ansv-cedula-azul-no-exigible",
+      "chunkId": "ansv-cedula-azul-no-exigible--noticias-relacionadas-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ansv-cedula-azul-no-exigible--recomendaciones-para-manejar-en-rutas-y-caminos-con-003",
+      "officialDocumentId": "ansv-cedula-azul-no-exigible",
+      "chunkId": "ansv-cedula-azul-no-exigible--recomendaciones-para-manejar-en-rutas-y-caminos-con-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ansv-cedula-azul-no-exigible--elegi-llegar-conoce-la-campana-de-concientizacion-de-004",
+      "officialDocumentId": "ansv-cedula-azul-no-exigible",
+      "chunkId": "ansv-cedula-azul-no-exigible--elegi-llegar-conoce-la-campana-de-concientizacion-de-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ansv-cedula-azul-no-exigible--verano-2026-la-ansv-controlo-a-mas-de-005",
+      "officialDocumentId": "ansv-cedula-azul-no-exigible",
+      "chunkId": "ansv-cedula-azul-no-exigible--verano-2026-la-ansv-controlo-a-mas-de-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

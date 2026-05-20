@@ -6,37 +6,8 @@
   "sectionPath": "content/primary-sources",
   "contentStatus": "draft_placeholder",
   "disclaimerRu": "Неофициальный учебный слой Cabadrive. Официальным источником остается испанский текст из архива.",
-  "documents": [
-    {
-      "officialDocumentId": "ley-24449-transito-seguridad-vial",
-      "title": "Ley 24449",
-      "shortTitleRu": "Закон 24449",
-      "category": "traffic-law",
-      "jurisdiction": "national",
-      "officialSourceType": "national_law_updated_text",
-      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/actualizacion",
-      "archiveLocalPath": "content/official-documents/documents/ley-24449-transito-seguridad-vial.md",
-      "retrievalDate": "2026-05-09",
-      "currentnessStatus": "current",
-      "currentnessValidationStatus": "passed",
-      "exactTextValidationStatus": "pending",
-      "chunks": [
-        {
-          "chunkId": "ley-24449-transito-seguridad-vial--draft-001",
-          "officialDocumentId": "ley-24449-transito-seguridad-vial",
-          "order": 1,
-          "headingPath": ["Ley 24449"],
-          "officialLabel": "Titulo",
-          "originalSpanish": "# Ley 24449\n\nHONORABLE CONGRESO DE LA NACION ARGENTINA\n\nLEY DE TRANSITO",
-          "fullTranslationRu": "Черновой подготовительный перевод: Закон 24449, Национальный конгресс Аргентинской Республики, закон о дорожном движении.",
-          "simpleRu": "Черновой подготовительный текст: это начало закона Аргентины о дорожном движении.",
-          "sourceFingerprint": "sha256:b8957a98c87f7cfb174d01df3164416f1e95c621966c8daec6c47bb4248a9c97",
-          "sourceSpan": {
-            "startLine": 1,
-            "endLine": 5
-          }
-        }
-      ]
-    }
+  "documents": [],
+  "documentShardDirectories": [
+    "content/primary-sources/documents"
   ]
 }

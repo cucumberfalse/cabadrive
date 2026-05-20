@@ -1,0 +1,1053 @@
+{
+  "version": 1,
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+  "schema": "primary-sources-search-shard.v1",
+  "entries": [
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-10-3-requisitos-para-conductores-de-motovehiculos-191",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-10-3-requisitos-para-conductores-de-motovehiculos-191",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-10-4-circulacion-de-motovehiculos-la-circulacion-192",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-10-4-circulacion-de-motovehiculos-la-circulacion-192",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-10-5-arterias-libradas-a-la-circulacion-193",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-10-5-arterias-libradas-a-la-circulacion-193",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-10-6-requisitos-para-conductores-de-ciclorrodados-194",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-10-6-requisitos-para-conductores-de-ciclorrodados-194",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-10-7-uso-de-casco-en-ciclorrodados-195",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-10-7-uso-de-casco-en-ciclorrodados-195",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-10-8-circulacion-de-ciclorrodados-la-circulacion-196",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-10-8-circulacion-de-ciclorrodados-la-circulacion-196",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-10-9-prioridad-de-paso-los-ciclorrodados-197",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-10-9-prioridad-de-paso-los-ciclorrodados-197",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-10-10-circulacion-de-dispositivos-de-movilidad-198",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-10-10-circulacion-de-dispositivos-de-movilidad-198",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-6-11-vehiculos-de-traccion-animal-y-199",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-6-11-vehiculos-de-traccion-animal-y-199",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-11-2-circulacion-general-de-vehiculos-de-200",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-11-2-circulacion-general-de-vehiculos-de-200",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-11-3-circulacion-y-estacionamiento-de-mateos-201",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-11-3-circulacion-y-estacionamiento-de-mateos-201",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-11-4-animales-de-tiro-a-los-202",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-11-4-animales-de-tiro-a-los-202",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-11-5-velocidad-de-los-vehiculos-de-203",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-11-5-velocidad-de-los-vehiculos-de-203",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-11-6-velocidad-limite-para-jinetes-la-204",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-11-6-velocidad-limite-para-jinetes-la-204",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-11-7-obligacion-de-los-conductores-o-205",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-11-7-obligacion-de-los-conductores-o-205",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-11-8-documentacion-para-conducir-cabalgaduras-o-206",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-11-8-documentacion-para-conducir-cabalgaduras-o-206",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-6-12-circulacion-peatonal-6-12-1-207",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-6-12-circulacion-peatonal-6-12-1-207",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-12-2-utilizacion-de-la-calzada-excepcionalmente-208",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-12-2-utilizacion-de-la-calzada-excepcionalmente-208",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-12-3-previsiones-para-peatones-el-cruce-209",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-12-3-previsiones-para-peatones-el-cruce-209",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-6-13-normas-particulares-de-circulacion-en-210",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-6-13-normas-particulares-de-circulacion-en-210",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-13-2-circulacion-de-transporte-de-carga-211",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-13-2-circulacion-de-transporte-de-carga-211",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--6-13-3-circulacion-de-transporte-publico-de-212",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--6-13-3-circulacion-de-transporte-publico-de-212",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--titulo-septimo-estacionamiento-y-detencion-capitulo-7-1-213",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--titulo-septimo-estacionamiento-y-detencion-capitulo-7-1-213",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-2-normas-generales-establecense-con-caracter-214",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-2-normas-generales-establecense-con-caracter-214",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-4-vehiculos-pesados-se-prohibe-el-215",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-4-vehiculos-pesados-se-prohibe-el-215",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-5-deposito-de-vehiculos-se-prohibe-216",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-5-deposito-de-vehiculos-se-prohibe-216",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-6-vehiculos-abandonados-es-de-aplicacion-217",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-6-vehiculos-abandonados-es-de-aplicacion-217",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-7-detencion-de-vehiculos-tendra-la-218",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-7-detencion-de-vehiculos-tendra-la-218",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-8-prohibiciones-especiales-queda-prohibido-estacionar-219",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-8-prohibiciones-especiales-queda-prohibido-estacionar-219",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-9-prohibiciones-generales-queda-prohibido-estacionar-220",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-9-prohibiciones-generales-queda-prohibido-estacionar-220",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-10-carga-y-descarga-la-operacion-221",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-10-carga-y-descarga-la-operacion-221",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-12-senalizacion-obligatoria-222",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-12-senalizacion-obligatoria-222",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-14-modos-de-normas-particulares-las-223",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-14-modos-de-normas-particulares-las-223",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-15-precauciones-al-estacionar-un-vehiculo-224",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-15-precauciones-al-estacionar-un-vehiculo-224",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-16-regimenes-especiales-225",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-16-regimenes-especiales-225",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-18-franquicia-para-personas-con-discapacidad-226",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-18-franquicia-para-personas-con-discapacidad-226",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-19-prohibicion-de-remocion-queda-prohibida-227",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-19-prohibicion-de-remocion-queda-prohibida-227",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-20-permisos-especiales-queda-autorizado-el-228",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-20-permisos-especiales-queda-autorizado-el-228",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-21-estacionamiento-de-motocicletas-y-ciclomotores-229",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-21-estacionamiento-de-motocicletas-y-ciclomotores-229",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-23-ascenso-y-descenso-de-escolares-230",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-23-ascenso-y-descenso-de-escolares-230",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-1-24-estacionamiento-en-ocasion-de-eventos-231",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-1-24-estacionamiento-en-ocasion-de-eventos-231",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-7-2-reserva-de-lugares-para-estacionamiento-232",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-7-2-reserva-de-lugares-para-estacionamiento-232",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-2-2-excepciones-se-exceptuan-de-la-233",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-2-2-excepciones-se-exceptuan-de-la-233",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-2-3-requisitos-las-reservas-citadas-en-234",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-2-3-requisitos-las-reservas-citadas-en-234",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-2-4-senalizacion-los-espacios-seran-determinados-235",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-2-4-senalizacion-los-espacios-seran-determinados-235",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-7-3-reserva-de-espacios-en-la-236",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-7-3-reserva-de-espacios-en-la-236",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-2-titulares-de-las-reservas-los-237",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-2-titulares-de-las-reservas-los-237",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-3-otras-condiciones-a-los-solicitantes-238",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-3-otras-condiciones-a-los-solicitantes-238",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-4-sectores-la-reserva-se-otorga-239",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-4-sectores-la-reserva-se-otorga-239",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-5-reclamos-las-reservas-que-se-240",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-5-reclamos-las-reservas-que-se-240",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-6-documentacion-exigible-la-autoridad-de-241",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-6-documentacion-exigible-la-autoridad-de-241",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-7-alteracion-de-las-condiciones-los-242",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-7-alteracion-de-las-condiciones-los-242",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-8-infraccion-el-estacionamiento-en-los-243",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-8-infraccion-el-estacionamiento-en-los-243",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-9-senalizacion-la-zona-de-reserva-244",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-9-senalizacion-la-zona-de-reserva-244",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-10-publicacion-obligatoria-la-autoridad-de-245",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-10-publicacion-obligatoria-la-autoridad-de-245",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-3-11-reserva-especial-en-lugares-de-246",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-3-11-reserva-especial-en-lugares-de-246",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-7-4-sistema-de-estacionamiento-regulado-7-247",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-7-4-sistema-de-estacionamiento-regulado-7-247",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-2-titularidad-el-sistema-de-estacionamiento-248",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-2-titularidad-el-sistema-de-estacionamiento-248",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-3-autoridad-de-aplicacion-la-autoridad-249",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-3-autoridad-de-aplicacion-la-autoridad-249",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-4-categorias-de-usuarios-7-4-250",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-4-categorias-de-usuarios-7-4-250",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-4-2-no-residentes-el-resto-251",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-4-2-no-residentes-el-resto-251",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-4-3-exentos-se-encuentran-exentos-252",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-4-3-exentos-se-encuentran-exentos-252",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-5-zona-de-residencia-los-residentes-253",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-5-zona-de-residencia-los-residentes-253",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-6-prioridad-a-residentes-en-aquellas-254",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-6-prioridad-a-residentes-en-aquellas-254",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-7-horarios-el-horario-en-que-255",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-7-horarios-el-horario-en-que-255",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-8-tarifa-es-el-monto-que-256",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-8-tarifa-es-el-monto-que-256",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-8-1-modalidades-tarifarias-se-establecen-257",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-8-1-modalidades-tarifarias-se-establecen-257",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-9-medios-de-pago-el-sistema-258",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-9-medios-de-pago-el-sistema-258",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-10-ingresos-los-ingresos-producidos-como-259",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-10-ingresos-los-ingresos-producidos-como-259",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-11-asignacion-de-modalidades-tarifarias-la-260",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-11-asignacion-de-modalidades-tarifarias-la-260",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-12-establecimiento-de-las-tarifas-el-261",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-12-establecimiento-de-las-tarifas-el-261",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-4-13-infracciones-al-sistema-seran-consideradas-262",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-4-13-infracciones-al-sistema-seran-consideradas-262",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-7-5-red-de-estacionamiento-de-ciclorodados-263",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-7-5-red-de-estacionamiento-de-ciclorodados-263",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-5-2-administracion-264",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-5-2-administracion-264",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--7-5-3-categoria-de-estaciones-265",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--7-5-3-categoria-de-estaciones-265",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--titulo-octavo-del-transporte-de-escolares-y-similares-266",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--titulo-octavo-del-transporte-de-escolares-y-similares-266",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-1-2-alcance-el-traslado-fuera-de-267",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-1-2-alcance-el-traslado-fuera-de-267",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-1-3-aplicacion-y-control-la-autoridad-268",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-1-3-aplicacion-y-control-la-autoridad-268",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-8-2-requisitos-tecnicos-8-2-1-269",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-8-2-requisitos-tecnicos-8-2-1-269",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-2-2-antiguedad-los-vehiculos-no-pueden-270",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-2-2-antiguedad-los-vehiculos-no-pueden-270",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-2-4-requisitos-tecnicos-especificos-los-vehiculos-271",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-2-4-requisitos-tecnicos-especificos-los-vehiculos-271",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-2-5-escolares-con-movilidad-reducida-a-272",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-2-5-escolares-con-movilidad-reducida-a-272",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-2-6-verificacion-tecnica-para-la-prestacion-273",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-2-6-verificacion-tecnica-para-la-prestacion-273",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-2-7-habilitacion-comercial-para-la-prestacion-274",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-2-7-habilitacion-comercial-para-la-prestacion-274",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-8-3-titulares-de-los-permisos-8-275",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-8-3-titulares-de-los-permisos-8-275",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-3-2-requisitos-para-los-titulares-de-276",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-3-2-requisitos-para-los-titulares-de-276",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-3-3-registro-la-autoridad-de-aplicacion-277",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-3-3-registro-la-autoridad-de-aplicacion-277",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-3-4-difusion-la-autoridad-de-aplicacion-278",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-3-4-difusion-la-autoridad-de-aplicacion-278",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-8-4-conductores-y-acompanantes-8-4-279",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-8-4-conductores-y-acompanantes-8-4-279",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-4-3-requisitos-de-los-acompanantes-las-280",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-4-3-requisitos-de-los-acompanantes-las-280",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-4-4-funciones-de-los-acompanantes-el-281",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-4-4-funciones-de-los-acompanantes-el-281",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-8-5-otras-disposiciones-8-5-1-282",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-8-5-otras-disposiciones-8-5-1-282",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-5-2-cinturones-de-seguridad-es-obligatorio-283",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-5-2-cinturones-de-seguridad-es-obligatorio-283",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-5-3-pasajeros-mayores-de-edad-las-284",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-5-3-pasajeros-mayores-de-edad-las-284",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--8-5-4-plan-de-contingencia-la-autoridad-285",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--8-5-4-plan-de-contingencia-la-autoridad-285",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

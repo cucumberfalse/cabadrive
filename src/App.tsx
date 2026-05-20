@@ -1,5 +1,5 @@
-import { BookMarked, BookOpen, CheckCircle2, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useEffect, useMemo, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
+import { BookMarked, BookOpen, CheckCircle2, ChevronLeft, ChevronRight, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, ListTree, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
 import {
   data,
   assetUrl,
@@ -14,12 +14,25 @@ import {
   type Question,
   type TopicGuideTicket
 } from "./data/content";
+import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
+import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources";
+type SourceViewMode = "simple" | "full" | "spanish";
+type SourceFilterOption = {
+  value: string;
+  label: string;
+};
+type PrimarySourceDocumentMatch = {
+  document: PrimarySourceDocument;
+  matchingChunks: PrimarySourceChunk[];
+  matchCount: number;
+  isVisible: boolean;
+};
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
 type LearningTicketTimerState = {
   remainingSeconds: number;
@@ -92,6 +105,85 @@ function processCalloutLabel(section: ProcessGuideSection) {
   if (section.calloutType === "optional_preparation") return "Опциональная подготовка";
   if (section.calloutType === "adjacent_path") return "Соседний путь";
   return "Предупреждение";
+}
+
+function primarySourceCategoryLabel(category: string) {
+  const labels: Record<string, string> = {
+    "civil-commercial-law": "Гражданское право",
+    "criminal-law": "Уголовное право",
+    "traffic-law": "ПДД и закон",
+    "traffic-code": "Кодекс CABA",
+    "traffic-signage": "Знаки",
+    "signage-and-road-marking": "Знаки и разметка",
+    "exam-study-material": "Подготовка",
+    "study-material": "Учебные материалы",
+    "vehicle-documents": "Документы ТС",
+    "vehicle-inspection": "VTV",
+    "road-safety": "Безопасность",
+    insurance: "Страхование",
+    "insurance-legal-duties": "Страхование и обязанности",
+    "legal-duties": "Правовые обязанности"
+  };
+  return labels[category] || category;
+}
+
+function primarySourceTypeLabel(sourceType: string) {
+  const labels: Record<string, string> = {
+    caba_law_original_text: "Закон CABA, исходный текст",
+    caba_law_updated_text: "Закон CABA, актуализированный текст",
+    caba_service_current_material: "Текущий материал сервиса CABA",
+    dnrpa_current_material: "Текущий материал DNRPA",
+    dnrpa_disposition_original_text: "Распоряжение DNRPA, исходный текст",
+    gcba_road_safety_guide_pdf: "Руководство GCBA по безопасности",
+    gcba_road_safety_page: "Страница GCBA по безопасности",
+    gcba_study_material_page: "Учебная страница GCBA",
+    gcba_theoretical_exam_manual_pdf: "Учебный manual GCBA",
+    national_decree_annex_updated_text: "Национальный декрет, приложение",
+    national_decree_updated_text: "Национальный декрет",
+    national_law_updated_text: "Национальный закон",
+    national_road_safety_official_note: "Официальная заметка ANSV",
+    national_service_current_material: "Текущий национальный сервис",
+    national_service_topic_current_material: "Текущий национальный справочный материал"
+  };
+  if (labels[sourceType]) return labels[sourceType];
+  if (sourceType.includes("gcba")) return "GCBA";
+  if (sourceType.includes("national")) return "Национальный источник";
+  if (sourceType.includes("law")) return "Закон";
+  if (sourceType.includes("decree")) return "Декрет";
+  return sourceType.replaceAll("_", " ");
+}
+
+function primarySourceJurisdictionLabel(jurisdiction: string) {
+  if (jurisdiction === "caba") return "CABA";
+  if (jurisdiction === "national") return "Аргентина";
+  return jurisdiction.replaceAll("_", " ");
+}
+
+function exactTextLabel(status: string) {
+  if (status === "passed") return "точный текст проверен";
+  if (status === "failed") return "точный текст требует исправления";
+  return "точный текст: проверка ожидается";
+}
+
+function primarySourceCurrentnessLabel(status: string) {
+  if (status === "current") return "актуальный источник";
+  if (status === "in_force") return "действует";
+  if (status === "valid_current_material") return "действующий справочный материал";
+  if (status === "stale") return "нужна актуализация";
+  return "статус актуальности требует проверки";
+}
+
+function primarySourceValidationLabel(status: string) {
+  if (status === "passed") return "проверка пройдена";
+  if (status === "failed") return "проверка не пройдена";
+  return "проверка ожидается";
+}
+
+function normalizeSearchText(value: string) {
+  return value
+    .toLocaleLowerCase("ru")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 }
 
 function learningTimerStatusText(timer: LearningTicketTimerState) {
@@ -1174,6 +1266,369 @@ function ProcessGuideView() {
   );
 }
 
+function PrimarySourcesView() {
+  const [corpus, setCorpus] = useState<PrimarySourceCorpus | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [selectedDocumentId, setSelectedDocumentId] = useState<string | undefined>();
+  const [selectedChunkId, setSelectedChunkId] = useState<string | undefined>();
+  const [viewMode, setViewMode] = useState<SourceViewMode>("simple");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+  const [sourceFilter, setSourceFilter] = useState("all");
+  const previousEffectiveDocumentId = useRef<string | undefined>();
+  const [isSourceListOpen, setIsSourceListOpen] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    loadPrimarySources()
+      .then((nextCorpus) => {
+        if (!isMounted) return;
+        setCorpus(nextCorpus);
+        setSelectedDocumentId((current) => current ?? nextCorpus.documents[0]?.officialDocumentId);
+        setSelectedChunkId((current) => current ?? nextCorpus.documents[0]?.chunks[0]?.chunkId);
+      })
+      .catch((error: unknown) => {
+        if (!isMounted) return;
+        setLoadError(error instanceof Error ? error.message : "Не удалось загрузить локальный корпус источников.");
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const documents = corpus?.documents ?? [];
+  const categoryOptions: SourceFilterOption[] = Array.from(new Set(documents.map((document) => document.category)))
+    .sort((a, b) => primarySourceCategoryLabel(a).localeCompare(primarySourceCategoryLabel(b), "ru"))
+    .map((category) => ({ value: category, label: primarySourceCategoryLabel(category) }));
+  const sourceOptions: SourceFilterOption[] = [
+    ...Array.from(new Set(documents.map((document) => document.jurisdiction)))
+      .sort((a, b) => primarySourceJurisdictionLabel(a).localeCompare(primarySourceJurisdictionLabel(b), "ru"))
+      .map((jurisdiction) => ({ value: `jurisdiction:${jurisdiction}`, label: `Юрисдикция: ${primarySourceJurisdictionLabel(jurisdiction)}` })),
+    ...Array.from(new Set(documents.map((document) => document.officialSourceType)))
+      .sort((a, b) => primarySourceTypeLabel(a).localeCompare(primarySourceTypeLabel(b), "ru"))
+      .map((sourceType) => ({ value: `type:${sourceType}`, label: `Тип: ${primarySourceTypeLabel(sourceType)}` }))
+  ];
+  const query = normalizeSearchText(searchQuery.trim());
+  const documentMatches: PrimarySourceDocumentMatch[] = documents
+    .map((document) => {
+      const metadataText = normalizeSearchText(
+        [
+          document.title,
+          document.shortTitleRu,
+          primarySourceCategoryLabel(document.category),
+          primarySourceJurisdictionLabel(document.jurisdiction),
+          primarySourceTypeLabel(document.officialSourceType),
+          document.officialSourceType,
+          document.officialDocumentId,
+          document.currentnessStatus,
+          document.currentnessValidationStatus,
+          document.exactTextValidationStatus,
+          document.retrievalDate
+        ].join(" ")
+      );
+      const matchingChunks = query
+        ? document.chunks.filter((chunk) =>
+            normalizeSearchText(
+              [
+                chunk.officialLabel ?? "",
+                chunk.headingPath.join(" "),
+                chunk.simpleRu,
+                chunk.fullTranslationRu,
+                chunk.originalSpanish
+              ].join(" ")
+            ).includes(query)
+          )
+        : document.chunks;
+      const metadataMatches = !query || metadataText.includes(query);
+      const categoryMatches = categoryFilter === "all" || document.category === categoryFilter;
+      const sourceMatches =
+        sourceFilter === "all" ||
+        sourceFilter === `jurisdiction:${document.jurisdiction}` ||
+        sourceFilter === `type:${document.officialSourceType}`;
+      return {
+        document,
+        matchingChunks,
+        matchCount: query ? (metadataMatches ? 1 : 0) + matchingChunks.length : document.chunks.length,
+        isVisible: categoryMatches && sourceMatches && (!query || metadataMatches || matchingChunks.length > 0)
+      };
+    })
+    .filter((entry) => entry.isVisible);
+  const selectedDocument =
+    documentMatches.find((entry) => entry.document.officialDocumentId === selectedDocumentId)?.document ??
+    documentMatches[0]?.document;
+  const selectedMatch = documentMatches.find((entry) => entry.document.officialDocumentId === selectedDocument?.officialDocumentId);
+  const tocChunks = query && selectedMatch?.matchingChunks.length ? selectedMatch.matchingChunks : selectedDocument?.chunks ?? [];
+  const navigationChunks = tocChunks;
+  const selectedChunk =
+    navigationChunks.find((chunk) => chunk.chunkId === selectedChunkId) ??
+    navigationChunks[0] ??
+    selectedDocument?.chunks[0];
+  const selectedChunkIndex = navigationChunks.findIndex((chunk) => chunk.chunkId === selectedChunk?.chunkId);
+  const effectiveSelectedDocumentId = selectedDocument?.officialDocumentId;
+  const firstNavigationChunkId = navigationChunks[0]?.chunkId ?? selectedDocument?.chunks[0]?.chunkId;
+  const selectedExactTextStatusKind = selectedDocument ? exactTextStatusKind(selectedDocument.exactTextValidationStatus) : "pending";
+  const selectedExactTextStatusNote = selectedDocument ? exactTextStatusNote(selectedDocument.exactTextValidationStatus) : undefined;
+
+  useEffect(() => {
+    if (!effectiveSelectedDocumentId) {
+      previousEffectiveDocumentId.current = undefined;
+      return;
+    }
+    if (previousEffectiveDocumentId.current === effectiveSelectedDocumentId) return;
+
+    previousEffectiveDocumentId.current = effectiveSelectedDocumentId;
+    setViewMode("simple");
+    setSelectedChunkId(firstNavigationChunkId);
+  }, [effectiveSelectedDocumentId, firstNavigationChunkId]);
+
+  if (loadError) {
+    return (
+      <section className="workspace source-reader">
+        <h2>Источники</h2>
+        <p>Локальный корпус источников не загрузился.</p>
+        <p className="muted">{loadError}</p>
+      </section>
+    );
+  }
+
+  if (!corpus) {
+    return (
+      <section className="workspace source-reader">
+        <h2>Источники</h2>
+        <p>Загружаю локальный корпус официальных источников...</p>
+      </section>
+    );
+  }
+
+  function selectDocument(document: PrimarySourceDocument) {
+    const match = documentMatches.find((entry) => entry.document.officialDocumentId === document.officialDocumentId);
+    setSelectedDocumentId(document.officialDocumentId);
+    setSelectedChunkId((match?.matchingChunks[0] ?? document.chunks[0])?.chunkId);
+    setIsSourceListOpen(false);
+  }
+
+  function selectChunk(chunkId: string) {
+    setSelectedChunkId(chunkId);
+  }
+
+  function updateSearchQuery(nextQuery: string) {
+    setSearchQuery(nextQuery);
+    setIsSourceListOpen(true);
+  }
+
+  function goToRelativeChunk(offset: number) {
+    if (selectedChunkIndex < 0) return;
+    const nextChunk = navigationChunks[selectedChunkIndex + offset];
+    if (nextChunk) setSelectedChunkId(nextChunk.chunkId);
+  }
+
+  function chunkText(chunk: PrimarySourceDocument["chunks"][number]) {
+    if (viewMode === "full") return chunk.fullTranslationRu;
+    if (viewMode === "spanish") return chunk.originalSpanish;
+    return chunk.simpleRu;
+  }
+
+  function resetSourceControls() {
+    setSearchQuery("");
+    setCategoryFilter("all");
+    setSourceFilter("all");
+    setSelectedDocumentId(corpus.documents[0]?.officialDocumentId);
+    setSelectedChunkId(corpus.documents[0]?.chunks[0]?.chunkId);
+    setViewMode("simple");
+    setIsSourceListOpen(true);
+  }
+
+  return (
+    <section className="source-reader" aria-labelledby="sources-title">
+      <header className="sources-header">
+        <div>
+          <p className="eyebrow">Источники</p>
+          <h2 id="sources-title">Официальные первоисточники</h2>
+          <p>Испанский архив - официальный слой. Русский текст здесь - неофициальная учебная поддержка Cabadrive.</p>
+        </div>
+        <div className="sources-status" aria-label="Покрытие корпуса источников">
+          <span>{corpus.manifestEntryCount} документов</span>
+          <span>{corpus.chunkCount} фрагментов</span>
+          <span>без сетевых запросов во время работы</span>
+        </div>
+      </header>
+
+      <div className={`sources-layout ${isSourceListOpen ? "compact-list-open" : "compact-detail-open"}`} data-testid="source-reader-layout">
+        <aside className="source-list-pane" aria-label="Поиск и список источников" data-testid="source-list-pane">
+          <div className="source-controls" aria-label="Поиск и фильтры источников">
+            <label className="search-box source-search">
+              <Search size={18} aria-hidden="true" />
+              <span className="sr-only">Поиск по источникам</span>
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(event) => updateSearchQuery(event.target.value)}
+                placeholder="Искать правило, статью, документ или испанский термин"
+                aria-label="Поиск по источникам, русскому и испанскому тексту"
+                data-testid="source-search-input"
+              />
+            </label>
+            <div className="source-filter-row">
+              <label>
+                <span>Категория</span>
+                <select
+                  value={categoryFilter}
+                  onChange={(event) => {
+                    setCategoryFilter(event.target.value);
+                    setIsSourceListOpen(true);
+                  }}
+                  aria-label="Фильтр источников по практической категории"
+                >
+                  <option value="all">Все категории</option>
+                  {categoryOptions.map((option) => (
+                    <option value={option.value} key={option.value}>{option.label}</option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span>Юрисдикция / тип</span>
+                <select
+                  value={sourceFilter}
+                  onChange={(event) => {
+                    setSourceFilter(event.target.value);
+                    setIsSourceListOpen(true);
+                  }}
+                  aria-label="Фильтр источников по юрисдикции или типу"
+                >
+                  <option value="all">Все юрисдикции и типы</option>
+                  {sourceOptions.map((option) => (
+                    <option value={option.value} key={option.value}>{option.label}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <div className="source-results-summary" aria-live="polite">
+              Найдено: {documentMatches.length} документов
+              {query ? `, ${documentMatches.reduce((sum, entry) => sum + entry.matchCount, 0)} совпадений` : ""}
+            </div>
+          </div>
+
+          {documentMatches.length ? (
+            <div className="source-list" aria-label="Список источников">
+              {documentMatches.map(({ document, matchCount }) => (
+                <button
+                  type="button"
+                  key={document.officialDocumentId}
+                  className={document.officialDocumentId === selectedDocument?.officialDocumentId ? "active" : ""}
+                  onClick={() => selectDocument(document)}
+                  aria-label={`${document.shortTitleRu}. ${primarySourceCategoryLabel(document.category)}. ${primarySourceJurisdictionLabel(document.jurisdiction)}. Открыть источник`}
+                >
+                  <strong>{document.shortTitleRu}</strong>
+                  <span>{document.title}</span>
+                  <small>
+                    {primarySourceCategoryLabel(document.category)} · {primarySourceJurisdictionLabel(document.jurisdiction)} · {primarySourceTypeLabel(document.officialSourceType)}
+                  </small>
+                  <small>{query ? `${matchCount} совпадений` : `${document.chunks.length} фрагментов`}</small>
+                  <small>{exactTextLabel(document.exactTextValidationStatus)}</small>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="source-empty-state" role="status">
+              <strong>Ничего не найдено</strong>
+              <p>В локальном корпусе нет источников под такой поиск и фильтры. Интернет здесь не нужен: попробуйте убрать фильтр или ввести другое слово.</p>
+              <button type="button" className="tool-button" onClick={resetSourceControls}>Сбросить поиск и фильтры</button>
+            </div>
+          )}
+        </aside>
+
+        {selectedDocument ? (
+          <article className="source-detail" data-testid="source-detail-pane">
+            <button type="button" className="tool-button source-mobile-back" onClick={() => setIsSourceListOpen(true)}>
+              <ChevronLeft size={18} aria-hidden="true" /> К списку источников
+            </button>
+            <div className="source-detail-heading">
+              <div>
+                <span className="block-label">{selectedDocument.officialDocumentId}</span>
+                <h2>{selectedDocument.shortTitleRu}</h2>
+                <p>{selectedDocument.title}</p>
+              </div>
+              <div className="source-mode-controls" role="group" aria-label="Режим текста источника">
+                <button type="button" className={viewMode === "simple" ? "active" : ""} onClick={() => setViewMode("simple")} aria-pressed={viewMode === "simple"} data-testid="source-mode-simple">
+                  Просто
+                </button>
+                <button type="button" className={viewMode === "full" ? "active" : ""} onClick={() => setViewMode("full")} aria-pressed={viewMode === "full"} data-testid="source-mode-full">
+                  Полный перевод
+                </button>
+                <button type="button" className={viewMode === "spanish" ? "active" : ""} onClick={() => setViewMode("spanish")} aria-pressed={viewMode === "spanish"} data-testid="source-mode-spanish">
+                  Оригинал ES
+                </button>
+              </div>
+            </div>
+
+            <div className="source-meta-row" aria-label="Метаданные источника">
+              <span>{primarySourceCategoryLabel(selectedDocument.category)}</span>
+              <span>{primarySourceJurisdictionLabel(selectedDocument.jurisdiction)}</span>
+              <span>{primarySourceTypeLabel(selectedDocument.officialSourceType)}</span>
+              <span>{primarySourceCurrentnessLabel(selectedDocument.currentnessStatus)}: {primarySourceValidationLabel(selectedDocument.currentnessValidationStatus)}</span>
+              <span className={selectedExactTextStatusKind === "passed" ? "" : selectedExactTextStatusKind}>{exactTextLabel(selectedDocument.exactTextValidationStatus)}</span>
+            </div>
+
+            <div className={`source-status-note ${selectedExactTextStatusKind}`} role="status">
+              <strong>{selectedExactTextStatusNote?.title}</strong>
+              <span>{selectedExactTextStatusNote?.description}</span>
+            </div>
+
+            <div className="source-reader-grid">
+              <nav className="source-toc" aria-label="Оглавление фрагментов источника">
+                <div className="source-toc-title">
+                  <ListTree size={18} aria-hidden="true" />
+                  <strong>Фрагменты</strong>
+                </div>
+                <div className="source-toc-list">
+                  {tocChunks.map((chunk) => (
+                    <button
+                      type="button"
+                      key={chunk.chunkId}
+                      className={chunk.chunkId === selectedChunk?.chunkId ? "active" : ""}
+                      onClick={() => selectChunk(chunk.chunkId)}
+                      aria-label={`${chunk.officialLabel || `Фрагмент ${chunk.order}`}. Открыть фрагмент`}
+                    >
+                      <span>{chunk.officialLabel || `Фрагмент ${chunk.order}`}</span>
+                      <small>{chunk.headingPath.at(-1) || selectedDocument.shortTitleRu}</small>
+                    </button>
+                  ))}
+                </div>
+              </nav>
+
+              {selectedChunk ? (
+                <section className="source-chunk" key={selectedChunk.chunkId} data-testid="source-chunk-reader">
+                  <div className="source-chunk-heading">
+                    <span>{selectedChunk.officialLabel || `Фрагмент ${selectedChunk.order}`}</span>
+                    <small>{selectedChunk.headingPath.join(" / ")}</small>
+                  </div>
+                  <p>{chunkText(selectedChunk)}</p>
+                  <div className="source-chunk-actions">
+                    <button type="button" className="tool-button" onClick={() => goToRelativeChunk(-1)} disabled={selectedChunkIndex <= 0}>
+                      <ChevronLeft size={18} aria-hidden="true" /> Предыдущий
+                    </button>
+                    <span>{selectedChunkIndex + 1} / {navigationChunks.length}</span>
+                    <button type="button" className="tool-button" onClick={() => goToRelativeChunk(1)} disabled={selectedChunkIndex < 0 || selectedChunkIndex >= navigationChunks.length - 1}>
+                      Следующий <ChevronRight size={18} aria-hidden="true" />
+                    </button>
+                  </div>
+                </section>
+              ) : (
+                <p>Фрагменты для этого источника не найдены. Корпус требует проверки.</p>
+              )}
+            </div>
+          </article>
+        ) : (
+          <article className="source-detail">
+            <h2>Источник не выбран</h2>
+            <p>Локальный корпус загружен, но список документов пуст.</p>
+          </article>
+        )}
+      </div>
+    </section>
+  );
+}
+
 export function App() {
   const [view, setView] = useState<View>("learn");
   const [progress, setProgress] = useState(loadProgress);
@@ -1203,6 +1658,7 @@ export function App() {
         <button className={view === "mistakes" ? "active" : ""} onClick={() => setView("mistakes")}><XCircle size={18} /> Ошибки</button>
         <button className={view === "vocabulary" ? "active" : ""} onClick={() => setView("vocabulary")}><Search size={18} /> Словарь</button>
         <button className={view === "materials" ? "active" : ""} onClick={() => setView("materials")}><BookMarked size={18} /> Материалы</button>
+        <button className={view === "sources" ? "active" : ""} onClick={() => setView("sources")}><FileText size={18} /> Источники</button>
         <button className={view === "process" ? "active" : ""} onClick={() => setView("process")}><MapPinned size={18} /> Процесс</button>
         <button className={view === "guide" ? "active" : ""} onClick={() => setView("guide")}><Flag size={18} /> CABA/RF</button>
       </nav>
@@ -1212,6 +1668,7 @@ export function App() {
       {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}
+      {view === "sources" && <PrimarySourcesView />}
       {view === "process" && <ProcessGuideView />}
       {view === "guide" && <GuideView />}
     </main>

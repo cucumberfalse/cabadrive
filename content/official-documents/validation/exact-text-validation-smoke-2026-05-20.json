@@ -1,0 +1,157 @@
+{
+  "schema": "official-documents-exact-text-validation-evidence.v1",
+  "featureId": "019-primary-sources-section",
+  "checkedAt": "2026-05-20",
+  "manifestPath": "content/official-documents/manifest.json",
+  "command": "node scripts/official-documents-exact-text-validation.mjs --ids ley-17418-seguros,decreto-779-1995-anexo-l-senalizacion-vial-uniforme,gcba-guia-practica-siniestros-viales --evidence content/official-documents/validation/exact-text-validation-smoke-2026-05-20.json --write",
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "blocked": 0,
+    "failed": 0
+  },
+  "method": {
+    "officialInputs": "For each manifest entry, the validator tries sourceUrl followed by currentness.evidenceUrls. HTML entries must match a live official HTML input. PDF entries must first prove live official PDF bytes match rawOriginalPath, then prove pdf-parse 1.1.1 text extraction matches archived Markdown.",
+    "htmlExtraction": "Remove script/style/noscript/svg noise, build audited live-source candidates from main/article/body/full document with and without removable site shell, flatten tags to visible text, and decode HTML entities.",
+    "markdownNormalization": "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
+    "comparableNormalization": "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
+    "archiveCandidates": "Archived Markdown is compared as full text, without the local title heading, without reproducible page-navigation/related-content/feedback/footer chrome, without date-only page metadata, and from stable substantive legal/body markers when an official live mirror omits publication-page metadata but preserves the normative body.",
+    "layoutNormalization": "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, whitespace before official B.O. markers, and the audited InfoLeg layout break `ley n° NN.NN D B.O.` before B.O. markers, without changing letters, punctuation, unrelated numbers, or text order.",
+    "wrapperTolerance": "A live source may contain the archived body as one contiguous block with at most 240 normalized characters of official wrapper text before/after it. Larger additions remain blocked; live-source-as-subset-of-archive matches are recorded as rejected diagnostics, never as pass evidence."
+  },
+  "results": [
+    {
+      "id": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "title": "DECRETO 779-95 ANEXO L - SISTEMA DE SEÑALIZACION VIAL UNIFORME",
+      "sourceFormat": "html",
+      "sourceUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+      "localPath": "content/official-documents/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.md",
+      "rawOriginalPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.html",
+      "archiveMarkdownSha256": "213a662a29d47120b445d0d97a4e17120aef68a1c9de00523aa652d98f4c7a64",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+      "sourceCandidate": "html-body-without-site-shell",
+      "normalizedArchiveTextSha256": "e6023af360ee76485688c9ada5df5923016f520f57f3821d722a6789e086fc3a",
+      "normalizedArchiveLength": 121970,
+      "attempts": [
+        {
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+          "finalUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "sourceBytesSha256": "9a1ebce0b544553c6d8f051bf8b3454b39d01f1afd02801fa8b44a8414bb4bda",
+          "sourceCandidate": "html-body-without-site-shell",
+          "normalizedSourceTextSha256": "e6023af360ee76485688c9ada5df5923016f520f57f3821d722a6789e086fc3a",
+          "normalizedSourceLength": 121970,
+          "passed": true,
+          "matchKind": "normalized_equality",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 0,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    },
+    {
+      "id": "gcba-guia-practica-siniestros-viales",
+      "title": "Guía práctica de actuación ante siniestros viales",
+      "sourceFormat": "pdf",
+      "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+      "localPath": "content/official-documents/documents/gcba-guia-practica-siniestros-viales.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-guia-practica-siniestros-viales.pdf",
+      "archiveMarkdownSha256": "66a381c64374d6473feb3a0e50c765f1211a2340e467ffb5707e4c116a7b04dc",
+      "outcome": "passed",
+      "officialInputKind": "live_pdf_plus_local_pdf_parse",
+      "officialInputUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+      "localRawOriginalSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+      "pdfParseVersion": "1.1.1",
+      "pdfPages": 31,
+      "normalizedPdfTextSha256": "e70474a6db1ee758fbe96a9f359a505b99276791132eb7f5a4f3da2122c17559",
+      "normalizedPdfTextLength": 25063,
+      "normalizedArchiveTextSha256": "e70474a6db1ee758fbe96a9f359a505b99276791132eb7f5a4f3da2122c17559",
+      "normalizedArchiveLength": 25063,
+      "pdfTextMatch": {
+        "passed": true,
+        "matchKind": "normalized_equality",
+        "archiveCandidate": "markdown-without-title-heading",
+        "sourcePrefixExtraChars": 0,
+        "sourceSuffixExtraChars": 0
+      },
+      "attempts": [
+        {
+          "url": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+          "finalUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+          "httpStatus": 200,
+          "contentType": "application/pdf",
+          "sourceBytesSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+          "localRawOriginalSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+          "liveBytesMatchLocalRawOriginal": true
+        }
+      ]
+    },
+    {
+      "id": "ley-17418-seguros",
+      "title": "LEY Nº 17.418 - LEY DE SEGUROS",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+      "localPath": "content/official-documents/documents/ley-17418-seguros.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-17418-seguros.html",
+      "archiveMarkdownSha256": "2f18cba3d4250feb20e2acfc59dba0b97bc37a75722ace6f83fbf8df68ab54d7",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+      "sourceCandidate": "html-article-without-site-shell",
+      "normalizedArchiveTextSha256": "e67904f45cdbc5bf1d7820288ce4303d89950020a3be802f22fbd0fbf520317d",
+      "normalizedArchiveLength": 63062,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "3dcb29fdf22e98876c3ae447aec90f4fe795c68b5dd729dafb0b0fa69091dc24",
+          "sourceCandidate": "html-main-without-site-shell",
+          "normalizedSourceTextSha256": "89f22d6b0084332c1a89890196d148740082ba829918012f32673069ba07e711",
+          "normalizedSourceLength": 63343,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 0,
+          "archivePreviewAtMismatch": "ley no 17.418 - ley de seguros normativa ley no 17.418 buenos aires, 30 de agosto de 1967. ver antecedentes normativos en uso de las atribuciones conferidas por el artículo 59 del estatuto de la revolución argentina, el presidente de la nac",
+          "sourcePreviewAtMismatch": "inicio ministerio de justicia normativa ley 17418 texto actualizado - ley 17418 - seguros ley 17418 poder ejecutivo nacional(p.e.n.) seguros ley de seguros sanción: \" class=\"fw-semibold\">30-08-1967 publicada en el boletín oficial: \">06-09-1"
+        },
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "3dcb29fdf22e98876c3ae447aec90f4fe795c68b5dd729dafb0b0fa69091dc24",
+          "sourceCandidate": "html-main-with-site-shell",
+          "normalizedSourceTextSha256": "ff5b72ea1c3a153015913900b1bea9134cc71bbf710dd9b15231e93218635254",
+          "normalizedSourceLength": 63568,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 0,
+          "archivePreviewAtMismatch": "ley no 17.418 - ley de seguros normativa ley no 17.418 buenos aires, 30 de agosto de 1967. ver antecedentes normativos en uso de las atribuciones conferidas por el artículo 59 del estatuto de la revolución argentina, el presidente de la nac",
+          "sourcePreviewAtMismatch": "inicio ministerio de justicia normativa ley 17418 texto actualizado - ley 17418 - seguros ley 17418 poder ejecutivo nacional(p.e.n.) seguros ley de seguros sanción: \" class=\"fw-semibold\">30-08-1967 publicada en el boletín oficial: \">06-09-1"
+        },
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "3dcb29fdf22e98876c3ae447aec90f4fe795c68b5dd729dafb0b0fa69091dc24",
+          "sourceCandidate": "html-article-without-site-shell",
+          "normalizedSourceTextSha256": "e67904f45cdbc5bf1d7820288ce4303d89950020a3be802f22fbd0fbf520317d",
+          "normalizedSourceLength": 63062,
+          "passed": true,
+          "matchKind": "normalized_equality",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 0,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,414 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+  "document": {
+    "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+    "chunks": [
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--registros-de-la-propiedad-automotor-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 1-8, coverage fingerprint sha256:9959a220d20861ac8e72afad81097edd137594c1e271a62b96ec1e4d5ceda94f, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 1-8, the full Russian translation, coverage fingerprint sha256:9959a220d20861ac8e72afad81097edd137594c1e271a62b96ec1e4d5ceda94f, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--registros-de-la-propiedad-automotor-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 9-12, coverage fingerprint sha256:2fad6f77d3cf7e8792c29ca85442872161384c6e54fa67287fce1504557e2b82, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 9-12, the full Russian translation, coverage fingerprint sha256:2fad6f77d3cf7e8792c29ca85442872161384c6e54fa67287fce1504557e2b82, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--nuevo-sistema-runa-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 13-18, coverage fingerprint sha256:c645828051bf682d3c50c3707c8b03d97b8a9d7e75a9b4653e4a95c3bfc28b49, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 13-18, the full Russian translation, coverage fingerprint sha256:c645828051bf682d3c50c3707c8b03d97b8a9d7e75a9b4653e4a95c3bfc28b49, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--nuevo-servicio-digital-para-consultar-el-estado-de-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 19-24, coverage fingerprint sha256:7cee588e6a7841ff78bb91d027726da6aaba15e3acc96e45f7599d8b45594e5b, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 19-24, the full Russian translation, coverage fingerprint sha256:7cee588e6a7841ff78bb91d027726da6aaba15e3acc96e45f7599d8b45594e5b, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--sistema-rudac-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 25-28, coverage fingerprint sha256:8e397037ef8194da63f7058c3e2a757e9e70f9f5ad83d43898c43b63ec997ea1, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 25-28, the full Russian translation, coverage fingerprint sha256:8e397037ef8194da63f7058c3e2a757e9e70f9f5ad83d43898c43b63ec997ea1, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--el-sistema-rac-registro-de-autorizados-a-conducir-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 29-36, coverage fingerprint sha256:9851470dc3920be595fa5dd5793aadf3d8e60aa4099782337462563d0ddc1de5, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 29-36, the full Russian translation, coverage fingerprint sha256:9851470dc3920be595fa5dd5793aadf3d8e60aa4099782337462563d0ddc1de5, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--transferencia-digital-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 37-40, coverage fingerprint sha256:f4c139022dbe749de43c63922a974c7d0fb57db37bba24a087f0d1721a42d50f, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 37-40, the full Russian translation, coverage fingerprint sha256:f4c139022dbe749de43c63922a974c7d0fb57db37bba24a087f0d1721a42d50f, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--turnos-e-inicio-de-tramites-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 41-44, coverage fingerprint sha256:fb21da137a71b5fe0488f60d99b83cef4113ec054088b9edfdd19dc6e0fec9d6, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 41-44, the full Russian translation, coverage fingerprint sha256:fb21da137a71b5fe0488f60d99b83cef4113ec054088b9edfdd19dc6e0fec9d6, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--retiro-de-tramites-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 45-48, coverage fingerprint sha256:659d51c74700d957a039773c7529d3a000811f4d65d14e092f2535fa5ec48ae5, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 45-48, the full Russian translation, coverage fingerprint sha256:659d51c74700d957a039773c7529d3a000811f4d65d14e092f2535fa5ec48ae5, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cedula-digital-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 49-52, coverage fingerprint sha256:70392a7dd6849fb9562eb81d7e3e42f76de0ebe948132d2c6fb9ca7cfba3eb19, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 49-52, the full Russian translation, coverage fingerprint sha256:70392a7dd6849fb9562eb81d7e3e42f76de0ebe948132d2c6fb9ca7cfba3eb19, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--requisitos-para-transferencia-digital-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 53-56, coverage fingerprint sha256:4db45474187e8c81212deed503a76ba9b3621eeb303af967955d2bc515bc1ff9, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 53-56, the full Russian translation, coverage fingerprint sha256:4db45474187e8c81212deed503a76ba9b3621eeb303af967955d2bc515bc1ff9, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--descarga-de-documentacion-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 57-60, coverage fingerprint sha256:a9f36d39489ca2e15900846f88c5d0e7280a600bf232dee21f7329e2d960e0c6, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 57-60, the full Russian translation, coverage fingerprint sha256:a9f36d39489ca2e15900846f88c5d0e7280a600bf232dee21f7329e2d960e0c6, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--reclamos-y-sugerencias-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 61-62, coverage fingerprint sha256:a2f21238a91049eaed28b72ec56a415d144223f404aa2ef0f1dbeb8f8f32e9a4, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 61-62, the full Russian translation, coverage fingerprint sha256:a2f21238a91049eaed28b72ec56a415d144223f404aa2ef0f1dbeb8f8f32e9a4, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--asesoramiento-014",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 63-64, coverage fingerprint sha256:f0bdc8cf188b87ec067fe75211a5eaa51281063646ee5dd0314cb3f4a4f3b7e2, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 63-64, the full Russian translation, coverage fingerprint sha256:f0bdc8cf188b87ec067fe75211a5eaa51281063646ee5dd0314cb3f4a4f3b7e2, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--estima-los-costos-de-tu-tramite-015",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 65-70, coverage fingerprint sha256:e929efa8e195b0cc823586a54171a0656926470bef1bc3cd1905aa24713e0565, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 65-70, the full Russian translation, coverage fingerprint sha256:e929efa8e195b0cc823586a54171a0656926470bef1bc3cd1905aa24713e0565, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--tramites-frecuentes-016",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 71-72, coverage fingerprint sha256:78978102d641570dcae6fc53e99f76ad9c60e56bf97c641fe78f53157c1d7ffa, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 71-72, the full Russian translation, coverage fingerprint sha256:78978102d641570dcae6fc53e99f76ad9c60e56bf97c641fe78f53157c1d7ffa, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--informe-de-estado-de-dominio-017",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 73-74, coverage fingerprint sha256:1c4bc528cbbd3fdc3c5295fb72a1d2f1cdc95d19fd8c02d841014f59d34a3f38, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 73-74, the full Russian translation, coverage fingerprint sha256:1c4bc528cbbd3fdc3c5295fb72a1d2f1cdc95d19fd8c02d841014f59d34a3f38, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--informe-historico-018",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 75-76, coverage fingerprint sha256:850c2b4f8c7c99892b10a1b8a0c387b988d1fefde8d874e8cf8f03c32863c548, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 75-76, the full Russian translation, coverage fingerprint sha256:850c2b4f8c7c99892b10a1b8a0c387b988d1fefde8d874e8cf8f03c32863c548, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--denuncia-de-venta-019",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 77-78, coverage fingerprint sha256:303c4e9fa2b274fa4ec9e7ad107134550001d4fefbb0c2b4ac9577e5b3b3a2b8, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 77-78, the full Russian translation, coverage fingerprint sha256:303c4e9fa2b274fa4ec9e7ad107134550001d4fefbb0c2b4ac9577e5b3b3a2b8, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--renovacion-de-cedula-020",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 79-80, coverage fingerprint sha256:c9efd4dd693283de408049aec88e1604d493d26c52a369901d1039c586e6aa2e, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 79-80, the full Russian translation, coverage fingerprint sha256:c9efd4dd693283de408049aec88e1604d493d26c52a369901d1039c586e6aa2e, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--consultas-021",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 81-82, coverage fingerprint sha256:d4c97e9c022df0b97d85df64672a693c147b2c3f0632f21ff0d6335c14b7144b, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 81-82, the full Russian translation, coverage fingerprint sha256:d4c97e9c022df0b97d85df64672a693c147b2c3f0632f21ff0d6335c14b7144b, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--donde-esta-radicado-un-vehiculo-segun-su-patente-022",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 83-84, coverage fingerprint sha256:1dd14c1aecbc13ce4a4b3e0931b7f07a901542a498a3226cf3c1bacbab63a2f1, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 83-84, the full Russian translation, coverage fingerprint sha256:1dd14c1aecbc13ce4a4b3e0931b7f07a901542a498a3226cf3c1bacbab63a2f1, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--donde-radicar-un-vehiculo-segun-domicilio-023",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 85-86, coverage fingerprint sha256:fbca020777750da4b974339c2fb1fd3683c7ea5f1fd5831f4b1ac74b1908a17e, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 85-86, the full Russian translation, coverage fingerprint sha256:fbca020777750da4b974339c2fb1fd3683c7ea5f1fd5831f4b1ac74b1908a17e, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-registros-seccionales-de-todo-el-024",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 87-88, coverage fingerprint sha256:496204d7442fa6f897444c200ca085adaae088cda79a6cdd841ca0166978ec85, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 87-88, the full Russian translation, coverage fingerprint sha256:496204d7442fa6f897444c200ca085adaae088cda79a6cdd841ca0166978ec85, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-las-plantas-verificadoras-de-cada-provincia-025",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 89-90, coverage fingerprint sha256:a50ac35e563a740b31de29dd74fa32cde3fef704bb217f6913c481b84e80c9e1, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 89-90, the full Russian translation, coverage fingerprint sha256:a50ac35e563a740b31de29dd74fa32cde3fef704bb217f6913c481b84e80c9e1, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-desarmaderos-de-automotores-autorizados-026",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 91-92, coverage fingerprint sha256:85fe390bdb6e7187b07e22580c799bb81b6e87e21f4589e2dd46583c781fe9e9, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 91-92, the full Russian translation, coverage fingerprint sha256:85fe390bdb6e7187b07e22580c799bb81b6e87e21f4589e2dd46583c781fe9e9, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-aranceles-de-los-tramites-y-027",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 93-94, coverage fingerprint sha256:04ef3f8444b1e2bfa7fca125cd09d21f586ccd94d9149c18983853dabb2ed36a, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 93-94, the full Russian translation, coverage fingerprint sha256:04ef3f8444b1e2bfa7fca125cd09d21f586ccd94d9149c18983853dabb2ed36a, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--cual-es-la-valuacion-de-un-automotor-028",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 95-96, coverage fingerprint sha256:2b7a51b4be2038e138fb1b70e0a03c60cfdc0136292ea7154e0655a275bf7b6a, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 95-96, the full Russian translation, coverage fingerprint sha256:2b7a51b4be2038e138fb1b70e0a03c60cfdc0136292ea7154e0655a275bf7b6a, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--normativa-vigente-029",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 97-100, coverage fingerprint sha256:c31abd900efe029eaf900e0e140c8dbec02f9e9b044881e97026b8cbcf89f57b, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 97-100, the full Russian translation, coverage fingerprint sha256:c31abd900efe029eaf900e0e140c8dbec02f9e9b044881e97026b8cbcf89f57b, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--institucional-030",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 101-106, coverage fingerprint sha256:4e089989f980482561bc4bf2d5ffb68f1b882a85e81141025f6e502d829f1787, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 101-106, the full Russian translation, coverage fingerprint sha256:4e089989f980482561bc4bf2d5ffb68f1b882a85e81141025f6e502d829f1787, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      },
+      {
+        "chunkId": "dnrpa-registros-propiedad-automotor--contacto-031",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against archive span 107-114, coverage fingerprint sha256:dc0a41ce2c85b9bc2f3a024f03546c05b776208d82e368b2925ffa441e57842e, and content/primary-sources/terminology.ru.md. DNRPA portal/service terminology, RUNA/RUDAC/RAC system names, cédula/dominio/patente wording, procedure labels, contact details, dates, institutional names, and scope limits were preserved; portal navigation labels were translated as visible page text, not as standalone legal duties."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 107-114, the full Russian translation, coverage fingerprint sha256:dc0a41ce2c85b9bc2f3a024f03546c05b776208d82e368b2925ffa441e57842e, and content/primary-sources/terminology.ru.md. Simple Russian keeps the same procedure scope, document names, institutional references, contact details, dates, and service limitations while shortening learner-facing wording."
+        }
+      }
+    ]
+  }
+}

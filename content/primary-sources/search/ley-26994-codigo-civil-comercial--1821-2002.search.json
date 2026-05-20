@@ -1,0 +1,2010 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-26994-codigo-civil-comercial",
+  "entries": [
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1484-obligaciones-del-empresario-son-obligaciones-del-1821",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1484-obligaciones-del-empresario-son-obligaciones-del-1821",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1485-representacion-del-agente-el-agente-no-1822",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1485-representacion-del-agente-el-agente-no-1822",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1486-remuneracion-si-no-hay-un-pacto-1823",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1486-remuneracion-si-no-hay-un-pacto-1823",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1487-base-para-el-calculo-cualquiera-sea-1824",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1487-base-para-el-calculo-cualquiera-sea-1824",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1488-devengamiento-de-la-comision-el-derecho-1825",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1488-devengamiento-de-la-comision-el-derecho-1825",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1489-remuneracion-sujeta-a-ejecucion-del-contrato-1826",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1489-remuneracion-sujeta-a-ejecucion-del-contrato-1826",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1490-gastos-excepto-pacto-en-contrario-el-1827",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1490-gastos-excepto-pacto-en-contrario-el-1827",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1491-plazo-excepto-pacto-en-contrario-se-1828",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1491-plazo-excepto-pacto-en-contrario-se-1828",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1492-preaviso-en-los-contratos-de-agencia-1829",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1492-preaviso-en-los-contratos-de-agencia-1829",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1493-omision-de-preaviso-en-los-casos-1830",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1493-omision-de-preaviso-en-los-casos-1830",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1494-resolucion-otras-causales-el-contrato-de-1831",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1494-resolucion-otras-causales-el-contrato-de-1831",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1495-manera-en-que-opera-la-resolucion-1832",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1495-manera-en-que-opera-la-resolucion-1832",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1496-fusion-o-escision-el-contrato-se-1833",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1496-fusion-o-escision-el-contrato-se-1833",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1497-compensacion-por-clientela-extinguido-el-contrato-1834",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1497-compensacion-por-clientela-extinguido-el-contrato-1834",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1498-compensacion-por-clientela-excepciones-no-hay-1835",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1498-compensacion-por-clientela-excepciones-no-hay-1835",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1499-clausula-de-no-competencia-las-partes-1836",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1499-clausula-de-no-competencia-las-partes-1836",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1500-subagencia-el-agente-no-puede-excepto-1837",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1500-subagencia-el-agente-no-puede-excepto-1837",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1501-casos-excluidos-las-normas-de-este-1838",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1501-casos-excluidos-las-normas-de-este-1838",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-18-1839",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-18-1839",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1502-definicion-hay-contrato-de-concesion-cuando-1840",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1502-definicion-hay-contrato-de-concesion-cuando-1840",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1503-exclusividad-mercaderias-excepto-pacto-en-contrario-1841",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1503-exclusividad-mercaderias-excepto-pacto-en-contrario-1841",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1504-obligaciones-del-concedente-son-obligaciones-del-1842",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1504-obligaciones-del-concedente-son-obligaciones-del-1842",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1505-obligaciones-del-concesionario-son-obligaciones-del-1843",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1505-obligaciones-del-concesionario-son-obligaciones-del-1843",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1506-plazos-el-plazo-del-contrato-de-1844",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1506-plazos-el-plazo-del-contrato-de-1844",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1507-retribucion-gastos-el-concesionario-tiene-derecho-1845",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1507-retribucion-gastos-el-concesionario-tiene-derecho-1845",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1508-rescision-de-contratos-por-tiempo-indeterminado-1846",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1508-rescision-de-contratos-por-tiempo-indeterminado-1846",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1509-resolucion-del-contrato-de-concesion-causales-1847",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1509-resolucion-del-contrato-de-concesion-causales-1847",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1510-subconcesionarios-cesion-del-contrato-excepto-pacto-1848",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1510-subconcesionarios-cesion-del-contrato-excepto-pacto-1848",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1511-aplicacion-a-otros-contratos-las-normas-1849",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1511-aplicacion-a-otros-contratos-las-normas-1849",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-19-1850",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-19-1850",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1512-concepto-hay-franquicia-comercial-cuando-una-1851",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1512-concepto-hay-franquicia-comercial-cuando-una-1851",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1513-definiciones-a-los-fines-de-la-1852",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1513-definiciones-a-los-fines-de-la-1852",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1514-obligaciones-del-franquiciante-son-obligaciones-del-1853",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1514-obligaciones-del-franquiciante-son-obligaciones-del-1853",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1515-obligaciones-del-franquiciado-son-obligaciones-minimas-1854",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1515-obligaciones-del-franquiciado-son-obligaciones-minimas-1854",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1516-plazo-es-aplicable-el-articulo-1506-1855",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1516-plazo-es-aplicable-el-articulo-1506-1855",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1517-clausulas-de-exclusividad-las-franquicias-son-1856",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1517-clausulas-de-exclusividad-las-franquicias-son-1856",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1518-otras-clausulas-excepto-pacto-en-contrario-1857",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1518-otras-clausulas-excepto-pacto-en-contrario-1857",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1519-clausulas-nulas-no-son-validas-las-1858",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1519-clausulas-nulas-no-son-validas-las-1858",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1520-responsabilidad-las-partes-del-contrato-son-1859",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1520-responsabilidad-las-partes-del-contrato-son-1859",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1521-responsabilidad-por-defectos-en-el-sistema-1860",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1521-responsabilidad-por-defectos-en-el-sistema-1860",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1522-extincion-del-contrato-la-extincion-del-1861",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1522-extincion-del-contrato-la-extincion-del-1861",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1523-derecho-de-la-competencia-el-contrato-1862",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1523-derecho-de-la-competencia-el-contrato-1862",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1524-casos-comprendidos-las-disposiciones-de-este-1863",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1524-casos-comprendidos-las-disposiciones-de-este-1863",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-20-1864",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-20-1864",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1525-concepto-hay-contrato-de-mutuo-cuando-1865",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1525-concepto-hay-contrato-de-mutuo-cuando-1865",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1526-obligacion-del-mutuante-el-mutuante-puede-1866",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1526-obligacion-del-mutuante-el-mutuante-puede-1866",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1527-onerosidad-el-mutuo-es-oneroso-excepto-1867",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1527-onerosidad-el-mutuo-es-oneroso-excepto-1867",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1528-plazo-y-lugar-de-restitucion-si-1868",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1528-plazo-y-lugar-de-restitucion-si-1868",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1529-incumplimiento-del-mutuario-la-falta-de-1869",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1529-incumplimiento-del-mutuario-la-falta-de-1869",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1530-mala-calidad-o-vicio-de-la-1870",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1530-mala-calidad-o-vicio-de-la-1870",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1531-aplicacion-de-las-reglas-de-este-1871",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1531-aplicacion-de-las-reglas-de-este-1871",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1532-normas-supletorias-se-aplican-al-mutuo-1872",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1532-normas-supletorias-se-aplican-al-mutuo-1872",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-21-1873",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-21-1873",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1533-concepto-hay-comodato-si-una-parte-1874",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1533-concepto-hay-comodato-si-una-parte-1874",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1534-prestamo-de-cosas-fungibles-el-prestamo-1875",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1534-prestamo-de-cosas-fungibles-el-prestamo-1875",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1535-prohibiciones-no-pueden-celebrar-contrato-de-1876",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1535-prohibiciones-no-pueden-celebrar-contrato-de-1876",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1536-obligaciones-del-comodatario-son-obligaciones-del-1877",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1536-obligaciones-del-comodatario-son-obligaciones-del-1877",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1537-cosa-hurtada-o-perdida-el-comodatario-1878",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1537-cosa-hurtada-o-perdida-el-comodatario-1878",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1538-gastos-el-comodatario-no-puede-solicitar-1879",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1538-gastos-el-comodatario-no-puede-solicitar-1879",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1539-restitucion-anticipada-el-comodante-puede-exigir-1880",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1539-restitucion-anticipada-el-comodante-puede-exigir-1880",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1540-obligaciones-del-comodante-son-obligaciones-del-1881",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1540-obligaciones-del-comodante-son-obligaciones-del-1881",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1541-extincion-del-comodato-el-comodato-se-1882",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1541-extincion-del-comodato-el-comodato-se-1882",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-22-1883",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-22-1883",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-1884",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-1884",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1542-concepto-hay-donacion-cuando-una-parte-1885",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1542-concepto-hay-donacion-cuando-una-parte-1885",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1543-aplicacion-subsidiaria-las-normas-de-este-1886",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1543-aplicacion-subsidiaria-las-normas-de-este-1886",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1544-actos-mixtos-los-actos-mixtos-en-1887",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1544-actos-mixtos-los-actos-mixtos-en-1887",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1545-aceptacion-la-aceptacion-puede-ser-expresa-1888",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1545-aceptacion-la-aceptacion-puede-ser-expresa-1888",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1546-donacion-bajo-condicion-estan-prohibidas-las-1889",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1546-donacion-bajo-condicion-estan-prohibidas-las-1889",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1547-oferta-conjunta-si-la-donacion-es-1890",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1547-oferta-conjunta-si-la-donacion-es-1890",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1548-capacidad-para-donar-pueden-donar-solamente-1891",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1548-capacidad-para-donar-pueden-donar-solamente-1891",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1549-capacidad-para-aceptar-donaciones-para-aceptar-1892",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1549-capacidad-para-aceptar-donaciones-para-aceptar-1892",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1550-tutores-y-curadores-los-tutores-y-1893",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1550-tutores-y-curadores-los-tutores-y-1893",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1551-objeto-la-donacion-no-puede-tener-1894",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1551-objeto-la-donacion-no-puede-tener-1894",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1552-forma-deben-ser-hechas-en-escritura-1895",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1552-forma-deben-ser-hechas-en-escritura-1895",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1553-donaciones-al-estado-las-donaciones-al-1896",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1553-donaciones-al-estado-las-donaciones-al-1896",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1554-donacion-manual-las-donaciones-de-cosas-1897",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1554-donacion-manual-las-donaciones-de-cosas-1897",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-1898",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-1898",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1555-entrega-el-donante-debe-entregar-la-1899",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1555-entrega-el-donante-debe-entregar-la-1899",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1556-garantia-por-eviccion-el-donante-solo-1900",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1556-garantia-por-eviccion-el-donante-solo-1900",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1557-alcance-de-la-garantia-la-responsabilidad-1901",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1557-alcance-de-la-garantia-la-responsabilidad-1901",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1558-vicios-ocultos-el-donante-solo-responde-1902",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1558-vicios-ocultos-el-donante-solo-responde-1902",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1559-obligacion-de-alimentos-excepto-que-la-1903",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1559-obligacion-de-alimentos-excepto-que-la-1903",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-1904",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-1904",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1560-donaciones-mutuas-en-las-donaciones-mutuas-1905",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1560-donaciones-mutuas-en-las-donaciones-mutuas-1905",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1561-donaciones-remuneratorias-son-donaciones-remuneratorias-las-1906",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1561-donaciones-remuneratorias-son-donaciones-remuneratorias-las-1906",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1562-donaciones-con-cargos-en-las-donaciones-1907",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1562-donaciones-con-cargos-en-las-donaciones-1907",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1563-responsabilidad-del-donatario-por-los-cargos-1908",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1563-responsabilidad-del-donatario-por-los-cargos-1908",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1564-alcance-de-la-onerosidad-las-donaciones-1909",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1564-alcance-de-la-onerosidad-las-donaciones-1909",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1565-donaciones-inoficiosas-se-considera-inoficiosa-la-1910",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1565-donaciones-inoficiosas-se-considera-inoficiosa-la-1910",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-4a-1911",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-4a-1911",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1566-pacto-de-reversion-en-la-donacion-1912",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1566-pacto-de-reversion-en-la-donacion-1912",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1567-efectos-cumplida-la-condicion-prevista-para-1913",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1567-efectos-cumplida-la-condicion-prevista-para-1913",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1568-renuncia-la-conformidad-del-donante-para-1914",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1568-renuncia-la-conformidad-del-donante-para-1914",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1569-revocacion-la-donacion-aceptada-solo-puede-1915",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1569-revocacion-la-donacion-aceptada-solo-puede-1915",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1570-incumplimiento-de-los-cargos-la-donacion-1916",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1570-incumplimiento-de-los-cargos-la-donacion-1916",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1571-ingratitud-las-donaciones-pueden-ser-revocadas-1917",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1571-ingratitud-las-donaciones-pueden-ser-revocadas-1917",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1572-negacion-de-alimentos-la-revocacion-de-1918",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1572-negacion-de-alimentos-la-revocacion-de-1918",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1573-legitimacion-activa-la-revocacion-de-la-1919",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1573-legitimacion-activa-la-revocacion-de-la-1919",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-23-1920",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-23-1920",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-1921",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-1921",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1574-concepto-hay-contrato-de-fianza-cuando-1922",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1574-concepto-hay-contrato-de-fianza-cuando-1922",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1575-extension-de-las-obligaciones-del-fiador-1923",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1575-extension-de-las-obligaciones-del-fiador-1923",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1576-incapacidad-del-deudor-el-fiador-no-1924",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1576-incapacidad-del-deudor-el-fiador-no-1924",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1577-obligaciones-que-pueden-ser-afianzadas-puede-1925",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1577-obligaciones-que-pueden-ser-afianzadas-puede-1925",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1578-fianza-general-es-valida-la-fianza-1926",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1578-fianza-general-es-valida-la-fianza-1926",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1579-forma-la-fianza-debe-convenirse-por-1927",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1579-forma-la-fianza-debe-convenirse-por-1927",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1580-extension-de-la-fianza-excepto-pacto-1928",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1580-extension-de-la-fianza-excepto-pacto-1928",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1581-cartas-de-recomendacion-o-patrocinio-las-1929",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1581-cartas-de-recomendacion-o-patrocinio-las-1929",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1582-compromiso-de-mantener-una-determinada-situacion-1930",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1582-compromiso-de-mantener-una-determinada-situacion-1930",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-1931",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-1931",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1583-beneficio-de-excusion-el-acreedor-solo-1932",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1583-beneficio-de-excusion-el-acreedor-solo-1932",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1584-excepciones-al-beneficio-de-excusion-el-1933",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1584-excepciones-al-beneficio-de-excusion-el-1933",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1585-beneficio-de-excusion-en-caso-de-1934",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1585-beneficio-de-excusion-en-caso-de-1934",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1586-subsistencia-del-plazo-no-puede-ser-1935",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1586-subsistencia-del-plazo-no-puede-ser-1935",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1587-defensas-el-fiador-puede-oponer-todas-1936",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1587-defensas-el-fiador-puede-oponer-todas-1936",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1588-efectos-de-la-sentencia-no-es-1937",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1588-efectos-de-la-sentencia-no-es-1937",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1589-beneficio-de-division-si-hay-mas-1938",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1589-beneficio-de-division-si-hay-mas-1938",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1590-fianza-solidaria-la-responsabilidad-del-fiador-1939",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1590-fianza-solidaria-la-responsabilidad-del-fiador-1939",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1591-principal-pagador-quien-se-obliga-como-1940",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1591-principal-pagador-quien-se-obliga-como-1940",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-3a-1941",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-3a-1941",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1592-subrogacion-el-fiador-que-cumple-con-1942",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1592-subrogacion-el-fiador-que-cumple-con-1942",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1593-aviso-defensas-el-fiador-debe-dar-1943",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1593-aviso-defensas-el-fiador-debe-dar-1943",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1594-derechos-del-fiador-el-fiador-tiene-1944",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1594-derechos-del-fiador-el-fiador-tiene-1944",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-4a-1945",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-4a-1945",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1595-subrogacion-el-cofiador-que-cumple-la-1946",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1595-subrogacion-el-cofiador-que-cumple-la-1946",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-5a-1947",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-5a-1947",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1596-causales-de-extincion-la-fianza-se-1948",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1596-causales-de-extincion-la-fianza-se-1948",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1597-novacion-la-fianza-se-extingue-por-1949",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1597-novacion-la-fianza-se-extingue-por-1949",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1598-eviccion-la-eviccion-de-lo-que-1950",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1598-eviccion-la-eviccion-de-lo-que-1950",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-24-1951",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-24-1951",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1599-concepto-contrato-oneroso-de-renta-vitalicia-1952",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1599-concepto-contrato-oneroso-de-renta-vitalicia-1952",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1600-reglas-subsidiarias-si-el-contrato-es-1953",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1600-reglas-subsidiarias-si-el-contrato-es-1953",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1601-forma-el-contrato-oneroso-de-renta-1954",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1601-forma-el-contrato-oneroso-de-renta-1954",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1602-renta-periodicidad-del-pago-la-renta-1955",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1602-renta-periodicidad-del-pago-la-renta-1955",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1603-pluralidad-de-beneficiarios-la-renta-puede-1956",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1603-pluralidad-de-beneficiarios-la-renta-puede-1956",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1604-accion-del-constituyente-o-sus-herederos-1957",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1604-accion-del-constituyente-o-sus-herederos-1957",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1605-accion-del-tercero-beneficiario-el-tercero-1958",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1605-accion-del-tercero-beneficiario-el-tercero-1958",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1606-extincion-de-la-renta-el-derecho-1959",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1606-extincion-de-la-renta-el-derecho-1959",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1607-resolucion-por-falta-de-garantia-si-1960",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1607-resolucion-por-falta-de-garantia-si-1960",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1608-resolucion-por-enfermedad-coetanea-a-la-1961",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1608-resolucion-por-enfermedad-coetanea-a-la-1961",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-25-1962",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-25-1962",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1609-concepto-hay-contrato-de-juego-si-1963",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1609-concepto-hay-contrato-de-juego-si-1963",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1610-facultades-del-juez-el-juez-puede-1964",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1610-facultades-del-juez-el-juez-puede-1964",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1611-juego-y-apuesta-de-puro-azar-1965",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1611-juego-y-apuesta-de-puro-azar-1965",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1612-oferta-publica-las-apuestas-y-sorteos-1966",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1612-oferta-publica-las-apuestas-y-sorteos-1966",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1613-juegos-y-apuestas-regulados-por-el-1967",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1613-juegos-y-apuestas-regulados-por-el-1967",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-26-1968",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-26-1968",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-1a-1969",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-1a-1969",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1614-definicion-hay-contrato-de-cesion-cuando-1970",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1614-definicion-hay-contrato-de-cesion-cuando-1970",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1615-cesion-en-garantia-si-la-cesion-1971",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1615-cesion-en-garantia-si-la-cesion-1971",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1616-derechos-que-pueden-ser-cedidos-todo-1972",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1616-derechos-que-pueden-ser-cedidos-todo-1972",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1617-prohibicion-no-pueden-cederse-los-derechos-1973",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1617-prohibicion-no-pueden-cederse-los-derechos-1973",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1618-forma-la-cesion-debe-hacerse-por-1974",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1618-forma-la-cesion-debe-hacerse-por-1974",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1619-obligaciones-del-cedente-el-cedente-debe-1975",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1619-obligaciones-del-cedente-el-cedente-debe-1975",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1620-efectos-respecto-de-terceros-la-cesion-1976",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1620-efectos-respecto-de-terceros-la-cesion-1976",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1621-actos-anteriores-a-la-notificacion-de-1977",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1621-actos-anteriores-a-la-notificacion-de-1977",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1622-concurrencia-de-cesionarios-en-la-concurrencia-1978",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1622-concurrencia-de-cesionarios-en-la-concurrencia-1978",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1623-concurso-o-quiebra-del-cedente-en-1979",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1623-concurso-o-quiebra-del-cedente-en-1979",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1624-actos-conservatorios-antes-de-la-notificacion-1980",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1624-actos-conservatorios-antes-de-la-notificacion-1980",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1625-cesion-de-credito-prendario-la-cesion-1981",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1625-cesion-de-credito-prendario-la-cesion-1981",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1626-cesiones-realizadas-el-mismo-dia-si-1982",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1626-cesiones-realizadas-el-mismo-dia-si-1982",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1627-cesion-parcial-el-cesionario-parcial-de-1983",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1627-cesion-parcial-el-cesionario-parcial-de-1983",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1628-garantia-por-eviccion-si-la-cesion-1984",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1628-garantia-por-eviccion-si-la-cesion-1984",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1629-cesion-de-derecho-inexistente-si-el-1985",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1629-cesion-de-derecho-inexistente-si-el-1985",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1630-garantia-de-la-solvencia-del-deudor-1986",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1630-garantia-de-la-solvencia-del-deudor-1986",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1631-reglas-subsidiarias-en-lo-no-previsto-1987",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1631-reglas-subsidiarias-en-lo-no-previsto-1987",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--seccion-2a-1988",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--seccion-2a-1988",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1632-cesion-de-deuda-hay-cesion-de-1989",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1632-cesion-de-deuda-hay-cesion-de-1989",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1633-asuncion-de-deuda-hay-asuncion-de-1990",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1633-asuncion-de-deuda-hay-asuncion-de-1990",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1634-conformidad-para-la-liberacion-del-deudor-1991",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1634-conformidad-para-la-liberacion-del-deudor-1991",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1635-promesa-de-liberacion-hay-promesa-de-1992",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1635-promesa-de-liberacion-hay-promesa-de-1992",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-27-1993",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-27-1993",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1636-transmision-en-los-contratos-con-prestaciones-1994",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1636-transmision-en-los-contratos-con-prestaciones-1994",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1637-efectos-desde-la-cesion-o-en-1995",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1637-efectos-desde-la-cesion-o-en-1995",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1638-defensas-los-contratantes-pueden-oponer-al-1996",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1638-defensas-los-contratantes-pueden-oponer-al-1996",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1639-garantia-el-cedente-garantiza-al-cesionario-1997",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1639-garantia-el-cedente-garantiza-al-cesionario-1997",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1640-garantias-de-terceros-las-garantias-constituidas-1998",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1640-garantias-de-terceros-las-garantias-constituidas-1998",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--capitulo-28-1999",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--capitulo-28-1999",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1641-concepto-la-transaccion-es-un-contrato-2000",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1641-concepto-la-transaccion-es-un-contrato-2000",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1642-caracteres-y-efectos-la-transaccion-produce-2001",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1642-caracteres-y-efectos-la-transaccion-produce-2001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-26994-codigo-civil-comercial--articulo-1643-forma-la-transaccion-debe-hacerse-por-2002",
+      "officialDocumentId": "ley-26994-codigo-civil-comercial",
+      "chunkId": "ley-26994-codigo-civil-comercial--articulo-1643-forma-la-transaccion-debe-hacerse-por-2002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

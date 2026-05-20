@@ -1,0 +1,1436 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+  "document": {
+    "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+    "chunks": [
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--ley-2148-codigo-de-transito-y-transporte-de-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1-14, generated coverage order 001, fingerprint sha256:cb7419ffda5bf7c7ff2a7e6e753c2380293a539d243c78e564a957ec4630ab8f, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 001; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1-14, generated coverage order 001, fingerprint sha256:cb7419ffda5bf7c7ff2a7e6e753c2380293a539d243c78e564a957ec4630ab8f, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 001; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--articulo-1o-se-aprueba-el-codigo-de-transito-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 15-16, generated coverage order 002, fingerprint sha256:5f67fa1653902fd52308e921016e354f7f6de216cc1bfd8fa23fce70b3368037, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 002; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 15-16, generated coverage order 002, fingerprint sha256:5f67fa1653902fd52308e921016e354f7f6de216cc1bfd8fa23fce70b3368037, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 002; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--articulo-2o-la-ciudad-autonoma-de-buenos-aires-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 17-18, generated coverage order 003, fingerprint sha256:598d91082d456aa62bd8cf80db86212553bf564fbe1bbe57f8fa93a653536a27, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 003; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 17-18, generated coverage order 003, fingerprint sha256:598d91082d456aa62bd8cf80db86212553bf564fbe1bbe57f8fa93a653536a27, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 003; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--articulo-3o-las-sanciones-por-las-conductas-contrarias-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 19-20, generated coverage order 004, fingerprint sha256:98fa82d57cc7b9caea52a58cb5ab38ed02539b1bc6ad85cf354dc594a6eb65e0, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 004; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 19-20, generated coverage order 004, fingerprint sha256:98fa82d57cc7b9caea52a58cb5ab38ed02539b1bc6ad85cf354dc594a6eb65e0, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 004; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--articulo-4o-la-autoridad-de-control-del-transito-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 21-22, generated coverage order 005, fingerprint sha256:30137bbcb7df11cba37a991ddfc4ebfb4e645e29774e52d6a7b482e8e492a05d, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 005; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 21-22, generated coverage order 005, fingerprint sha256:30137bbcb7df11cba37a991ddfc4ebfb4e645e29774e52d6a7b482e8e492a05d, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 005; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--articulo-5o-la-presente-ley-entra-en-vigencia-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 23-34, generated coverage order 006, fingerprint sha256:5505bc03d50ba29d885515f3b9138f088090b8dfe01f4683e9ddfad2aa8537ed, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 006; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 23-34, generated coverage order 006, fingerprint sha256:5505bc03d50ba29d885515f3b9138f088090b8dfe01f4683e9ddfad2aa8537ed, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 006; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--anexo-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 35-36, generated coverage order 007, fingerprint sha256:f99fc227ef0833369c83f72c23f0b3026ed7fab185ee090a306afaca8f262d82, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 007; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 35-36, generated coverage order 007, fingerprint sha256:f99fc227ef0833369c83f72c23f0b3026ed7fab185ee090a306afaca8f262d82, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 007; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--anexo-a-codigo-de-transito-y-transporte-de-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 37-300, generated coverage order 008, fingerprint sha256:c10ffea80433e283c69b69ee268bf92acfd2a8f467f132bd3caf2c7f976049e0, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 008; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 37-300, generated coverage order 008, fingerprint sha256:c10ffea80433e283c69b69ee268bf92acfd2a8f467f132bd3caf2c7f976049e0, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 008; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--titulo-primero-principios-basicos-capitulo-1-1-disposiciones-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 301-302, generated coverage order 009, fingerprint sha256:1477881167ce7d8136a8f1036d3b24aee266f74f35b1a6bbbedd1590b1edc941, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 009; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 301-302, generated coverage order 009, fingerprint sha256:1477881167ce7d8136a8f1036d3b24aee266f74f35b1a6bbbedd1590b1edc941, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 009; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-1-2-ambito-de-aplicacion-el-presente-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 303-304, generated coverage order 010, fingerprint sha256:add5dfa7ae7af7831cae65ac2e62ded75d24f9e252d4207fe441ecb530db9196, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 010; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 303-304, generated coverage order 010, fingerprint sha256:add5dfa7ae7af7831cae65ac2e62ded75d24f9e252d4207fe441ecb530db9196, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 010; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-1-3-autoridad-de-aplicacion-y-de-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 305-306, generated coverage order 011, fingerprint sha256:864bd2a7979cd0488b672741f528c2eac500bd6fe2397e83f54a48dc74906e4b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 011; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 305-306, generated coverage order 011, fingerprint sha256:864bd2a7979cd0488b672741f528c2eac500bd6fe2397e83f54a48dc74906e4b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 011; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-1-4-atribuciones-de-la-autoridad-de-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 307-368, generated coverage order 012, fingerprint sha256:d87943d70fdbdd6ceab769c73b12f4acc247d3a8e89ecf92164b0671e581728c, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 012; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 307-368, generated coverage order 012, fingerprint sha256:d87943d70fdbdd6ceab769c73b12f4acc247d3a8e89ecf92164b0671e581728c, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 012; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-1-6-garantia-de-libertad-de-transito-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 369-370, generated coverage order 013, fingerprint sha256:6e128d92c7f82a624777704c269fcb4720f31df2a1853491d408afab1397d7b6, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 013; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 369-370, generated coverage order 013, fingerprint sha256:6e128d92c7f82a624777704c269fcb4720f31df2a1853491d408afab1397d7b6, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 013; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-1-7-convenios-internacionales-las-convenciones-internacionales-014",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 371-372, generated coverage order 014, fingerprint sha256:e3ebaec1f1ec78bbed559a7f3e3c2418971fb51240002d43630c6cbaf9c7a9d3, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 014; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 371-372, generated coverage order 014, fingerprint sha256:e3ebaec1f1ec78bbed559a7f3e3c2418971fb51240002d43630c6cbaf9c7a9d3, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 014; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-1-2-normas-transitorias-y-experimentales-1-015",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 373-378, generated coverage order 015, fingerprint sha256:4963242efd65a435974da1ea6725747e33d8c2dcff4c1cdfa8ab7d7d7b257ed7, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 015; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 373-378, generated coverage order 015, fingerprint sha256:4963242efd65a435974da1ea6725747e33d8c2dcff4c1cdfa8ab7d7d7b257ed7, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 015; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-2-2-facultad-la-autoridad-de-aplicacion-016",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 379-390, generated coverage order 016, fingerprint sha256:5724e084079c2e8fadbc1fb6084d50164d1cec1d6572fb01134d97855e872ddb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 016; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 379-390, generated coverage order 016, fingerprint sha256:5724e084079c2e8fadbc1fb6084d50164d1cec1d6572fb01134d97855e872ddb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 016; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-2-3-limitaciones-las-medidas-dispuestas-en-017",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 391-412, generated coverage order 017, fingerprint sha256:c5198d04f8d858b7403210fc38639d53c150981809e414f93d2444478534bf2a, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 017; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 391-412, generated coverage order 017, fingerprint sha256:c5198d04f8d858b7403210fc38639d53c150981809e414f93d2444478534bf2a, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 017; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-1-3-pruebas-piloto-1-3-1-018",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 413-416, generated coverage order 018, fingerprint sha256:eff8efe401db4348c97ba27e5dfa24d5bdbbb781b751ffeb8eca7d4f717e7805, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 018; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 413-416, generated coverage order 018, fingerprint sha256:eff8efe401db4348c97ba27e5dfa24d5bdbbb781b751ffeb8eca7d4f717e7805, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 018; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-3-2-condiciones-019",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 417-430, generated coverage order 019, fingerprint sha256:534868096444543db01097db1d48d93b50c1aa1f103ec5c3462ef0d12968d11f, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 019; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 417-430, generated coverage order 019, fingerprint sha256:534868096444543db01097db1d48d93b50c1aa1f103ec5c3462ef0d12968d11f, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 019; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-3-3-caracter-permanente-de-lo-experimentado-020",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 431-436, generated coverage order 020, fingerprint sha256:994b22167ca4f0f6162f2042b2e8a72587839ab11ca113dffcda37dcc28db64d, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 020; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 431-436, generated coverage order 020, fingerprint sha256:994b22167ca4f0f6162f2042b2e8a72587839ab11ca113dffcda37dcc28db64d, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 020; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--1-3-4-archivo-de-las-actuaciones-021",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 437-442, generated coverage order 021, fingerprint sha256:3edb7f5d3ba9a9e419a891c9b9656c4f34f69bae2b3def5e4407ef5da7e96dc5, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 021; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 437-442, generated coverage order 021, fingerprint sha256:3edb7f5d3ba9a9e419a891c9b9656c4f34f69bae2b3def5e4407ef5da7e96dc5, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 021; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--titulo-segundo-de-la-via-publica-capitulo-2-022",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 443-450, generated coverage order 022, fingerprint sha256:3f8532c8edae5712f93a90116799b087844906caee8bada1994b0a1dd545ceff, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 022; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 443-450, generated coverage order 022, fingerprint sha256:3f8532c8edae5712f93a90116799b087844906caee8bada1994b0a1dd545ceff, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 022; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-2-planificacion-urbana-a-fin-de-023",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 451-462, generated coverage order 023, fingerprint sha256:437c0ea8dc077e9c47465baee60fb8c354316d106da2b92df9164c286b887a89, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 023; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 451-462, generated coverage order 023, fingerprint sha256:437c0ea8dc077e9c47465baee60fb8c354316d106da2b92df9164c286b887a89, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 023; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-3-obligaciones-para-los-propietarios-de-024",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 463-484, generated coverage order 024, fingerprint sha256:23221699a433f804fe64a1805f8cdbd47e61df3ca0d013dfdfd164edf979ac8d, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 024; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 463-484, generated coverage order 024, fingerprint sha256:23221699a433f804fe64a1805f8cdbd47e61df3ca0d013dfdfd164edf979ac8d, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 024; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-4-publicidad-en-la-via-publica-025",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 485-494, generated coverage order 025, fingerprint sha256:0aaac3dd13f32b130907c0d613d4a03fb8a83f5ef00cbbbfbb467a6a1ab40c4a, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 025; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 485-494, generated coverage order 025, fingerprint sha256:0aaac3dd13f32b130907c0d613d4a03fb8a83f5ef00cbbbfbb467a6a1ab40c4a, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 025; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-5-servicio-de-gruas-la-autoridad-026",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 495-520, generated coverage order 026, fingerprint sha256:965d4e5783e85e95f007780bebdc25b51474db9ac1ad8dcf3a6b9388bd137533, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 026; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 495-520, generated coverage order 026, fingerprint sha256:965d4e5783e85e95f007780bebdc25b51474db9ac1ad8dcf3a6b9388bd137533, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 026; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-5-2-procedimiento-para-disposicion-de-027",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 521-530, generated coverage order 027, fingerprint sha256:3d8568e7bae9ac7fd7e94f8a8e8a1bceb8e59f119e22f51f091f92b05bf9bd7b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 027; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 521-530, generated coverage order 027, fingerprint sha256:3d8568e7bae9ac7fd7e94f8a8e8a1bceb8e59f119e22f51f091f92b05bf9bd7b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 027; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-5-4-comunicacion-de-la-remocion-028",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 531-532, generated coverage order 028, fingerprint sha256:dbd1cc77b2b687feef09bbd02030c60d24f953699a6405881169281369c1fdee, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 028; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 531-532, generated coverage order 028, fingerprint sha256:dbd1cc77b2b687feef09bbd02030c60d24f953699a6405881169281369c1fdee, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 028; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-6-reductores-de-velocidad-en-los-029",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 533-542, generated coverage order 029, fingerprint sha256:34d4ec09be8e1c089e3896ad2e753b401943697dccd0f89f327c8a014841755b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 029; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 533-542, generated coverage order 029, fingerprint sha256:34d4ec09be8e1c089e3896ad2e753b401943697dccd0f89f327c8a014841755b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 029; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-7-obligaciones-para-la-eliminacion-de-030",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 543-552, generated coverage order 030, fingerprint sha256:e6f4d64d8cb71f3542dcbc4b59073e09b97d4bd62a7830f19e3c7faeee693188, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 030; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 543-552, generated coverage order 030, fingerprint sha256:e6f4d64d8cb71f3542dcbc4b59073e09b97d4bd62a7830f19e3c7faeee693188, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 030; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-8-cierre-apertura-y-o-rotura-031",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 553-560, generated coverage order 031, fingerprint sha256:dc1cf694f373bffd93358f4e2123283c2b657f82d749161d1e5deb65ab079fe5, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 031; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 553-560, generated coverage order 031, fingerprint sha256:dc1cf694f373bffd93358f4e2123283c2b657f82d749161d1e5deb65ab079fe5, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 031; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-9-construcciones-permanentes-o-transitorias-en-032",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 561-570, generated coverage order 032, fingerprint sha256:754c344bf00078d52fadd23670be879ff0b6d151a5ee8ce02398bb97928cd2ff, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 032; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 561-570, generated coverage order 032, fingerprint sha256:754c344bf00078d52fadd23670be879ff0b6d151a5ee8ce02398bb97928cd2ff, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 032; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-10-uso-especial-de-la-via-033",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 571-578, generated coverage order 033, fingerprint sha256:8069ce299cd9700048bc660af1d93f88ffc6e2698117fd9b3fb098e4f481844e, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 033; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 571-578, generated coverage order 033, fingerprint sha256:8069ce299cd9700048bc660af1d93f88ffc6e2698117fd9b3fb098e4f481844e, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 033; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-11-volquetes-el-uso-de-volquetes-034",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 579-580, generated coverage order 034, fingerprint sha256:7d2500ac2b3a66de6ea4d62b09e46e23b73b89006e253dcc5554ea62b0dd53c2, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 034; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 579-580, generated coverage order 034, fingerprint sha256:7d2500ac2b3a66de6ea4d62b09e46e23b73b89006e253dcc5554ea62b0dd53c2, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 034; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-1-12-intervenciones-peatonales-035",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 581-634, generated coverage order 035, fingerprint sha256:96f92eb8a7bc7da6db0f6c5461cf9dcff546055be6c8982cdd4da11bddb369bc, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 035; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 581-634, generated coverage order 035, fingerprint sha256:96f92eb8a7bc7da6db0f6c5461cf9dcff546055be6c8982cdd4da11bddb369bc, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 035; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-2-3-de-la-senalizacion-2-3-036",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 635-646, generated coverage order 036, fingerprint sha256:883a6f4a8cbff822a9e7eaf25daeb2a88b04d23afbc41d3605abf9821360ad9f, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 036; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 635-646, generated coverage order 036, fingerprint sha256:883a6f4a8cbff822a9e7eaf25daeb2a88b04d23afbc41d3605abf9821360ad9f, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 036; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-2-calidad-minima-037",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 647-650, generated coverage order 037, fingerprint sha256:9dbd387b9873bdd6d86119b9407f6f114e52659df46f75d26589c5b295c47a04, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 037; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 647-650, generated coverage order 037, fingerprint sha256:9dbd387b9873bdd6d86119b9407f6f114e52659df46f75d26589c5b295c47a04, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 037; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-3-obediencia-a-la-senalizacion-038",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 651-656, generated coverage order 038, fingerprint sha256:b1ad4d0420bc61b1303bbc988c5324f37785b2d349d01f966bc53329ff534d5d, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 038; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 651-656, generated coverage order 038, fingerprint sha256:b1ad4d0420bc61b1303bbc988c5324f37785b2d349d01f966bc53329ff534d5d, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 038; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-4-prioridades-el-orden-de-prioridad-039",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 657-662, generated coverage order 039, fingerprint sha256:3cab3b9f8b7015dd463717107b15f90b565c34cf143bc967c61fdc2bacd88505, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 039; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 657-662, generated coverage order 039, fingerprint sha256:3cab3b9f8b7015dd463717107b15f90b565c34cf143bc967c61fdc2bacd88505, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 039; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-5-visibilidad-las-senales-viales-deben-040",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 663-664, generated coverage order 040, fingerprint sha256:10ba7113903d709f232563ca5ec06b8c43e44683fa35b0b89300551f9b0ab472, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 040; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 663-664, generated coverage order 040, fingerprint sha256:10ba7113903d709f232563ca5ec06b8c43e44683fa35b0b89300551f9b0ab472, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 040; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-6-inocuidad-los-elementos-constitutivos-y-041",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 665-666, generated coverage order 041, fingerprint sha256:74c55f14e2f14802a9dfd680c14389c1abf5c1a4f7dc1dd945c54f3ded4ad0f2, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 041; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 665-666, generated coverage order 041, fingerprint sha256:74c55f14e2f14802a9dfd680c14389c1abf5c1a4f7dc1dd945c54f3ded4ad0f2, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 041; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-7-inscripciones-la-autoridad-de-aplicacion-042",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 667-668, generated coverage order 042, fingerprint sha256:174a5d700375adfe15a5616118fae4a157bd028ee79b003ccd01759a81400968, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 042; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 667-668, generated coverage order 042, fingerprint sha256:174a5d700375adfe15a5616118fae4a157bd028ee79b003ccd01759a81400968, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 042; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-8-idioma-de-las-senales-las-043",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 669-670, generated coverage order 043, fingerprint sha256:b91325c4d74805978e442ab5a7eb0a7dfd1f5382e0e7ecb4ac713738c8695ef0, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 043; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 669-670, generated coverage order 043, fingerprint sha256:b91325c4d74805978e442ab5a7eb0a7dfd1f5382e0e7ecb4ac713738c8695ef0, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 043; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-9-responsabilidad-por-la-senalizacion-044",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 671-678, generated coverage order 044, fingerprint sha256:1197fa2e87daff5c992cdab561620123aa29b93c2da61a5523c9c7b2344c5104, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 044; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 671-678, generated coverage order 044, fingerprint sha256:1197fa2e87daff5c992cdab561620123aa29b93c2da61a5523c9c7b2344c5104, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 044; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-10-senalizacion-de-las-obras-las-045",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 679-680, generated coverage order 045, fingerprint sha256:9d27ffc08814adf7630facb9cc3176a35d26dedfabc4a2a72d551838f31679de, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 045; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 679-680, generated coverage order 045, fingerprint sha256:9d27ffc08814adf7630facb9cc3176a35d26dedfabc4a2a72d551838f31679de, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 045; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-11-senalamiento-de-desvios-provisorios-046",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 681-686, generated coverage order 046, fingerprint sha256:98f7dde4cf1022d2e2f4c8fc19068d1c4dafbd4ff66a25612a46272dd3e99dfb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 046; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 681-686, generated coverage order 046, fingerprint sha256:98f7dde4cf1022d2e2f4c8fc19068d1c4dafbd4ff66a25612a46272dd3e99dfb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 046; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-12-objeto-y-tipo-de-senales-047",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 687-690, generated coverage order 047, fingerprint sha256:70070e75f2bc93e873fea3dbc95b24e20156ea60034ffd74778a091efc897273, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 047; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 687-690, generated coverage order 047, fingerprint sha256:70070e75f2bc93e873fea3dbc95b24e20156ea60034ffd74778a091efc897273, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 047; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-13-obligacion-de-la-autoridad-la-048",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 691-692, generated coverage order 048, fingerprint sha256:9640458ed1558dbe9f3e7274c2993c2ed105c79944e682af4134e1929e1a4dfb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 048; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 691-692, generated coverage order 048, fingerprint sha256:9640458ed1558dbe9f3e7274c2993c2ed105c79944e682af4134e1929e1a4dfb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 048; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-14-prohibiciones-a-se-prohibe-instalar-049",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 693-696, generated coverage order 049, fingerprint sha256:862a5b8e1faec7f01a4df93a0e58fcc6e2dffe9ef10bbfa7ca00414c997b6f34, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 049; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 693-696, generated coverage order 049, fingerprint sha256:862a5b8e1faec7f01a4df93a0e58fcc6e2dffe9ef10bbfa7ca00414c997b6f34, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 049; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-15-senalizacion-complementaria-en-tuneles-y-050",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 697-698, generated coverage order 050, fingerprint sha256:37e6f100179a1ebe44a780c4c03fcd1f7dd4499a8d0d10603ada9d0b0cd909e2, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 050; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 697-698, generated coverage order 050, fingerprint sha256:37e6f100179a1ebe44a780c4c03fcd1f7dd4499a8d0d10603ada9d0b0cd909e2, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 050; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-16-excepcion-para-semaforos-se-exceptua-051",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 699-700, generated coverage order 051, fingerprint sha256:98d3a198fc36031d6fe4a91f77e5d2a1b00dcec512da49caab206ab8316253bc, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 051; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 699-700, generated coverage order 051, fingerprint sha256:98d3a198fc36031d6fe4a91f77e5d2a1b00dcec512da49caab206ab8316253bc, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 051; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-3-17-plan-de-contingencia-vial-para-052",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 701-710, generated coverage order 052, fingerprint sha256:0def5cc54fc6de71d235a82d461d5e16126fb1b5e27bc3da2d9a86a70fb7e700, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 052; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 701-710, generated coverage order 052, fingerprint sha256:0def5cc54fc6de71d235a82d461d5e16126fb1b5e27bc3da2d9a86a70fb7e700, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 052; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-2-4-demarcacion-horizontal-complementaria-2-4-053",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 711-712, generated coverage order 053, fingerprint sha256:5ba3c5c4ff176e0229f0f66fb6df4c70ea5be742817e11b52c32cba79d17d947, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 053; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 711-712, generated coverage order 053, fingerprint sha256:5ba3c5c4ff176e0229f0f66fb6df4c70ea5be742817e11b52c32cba79d17d947, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 053; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-4-2-demarcacion-en-la-calzada-de-054",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 713-720, generated coverage order 054, fingerprint sha256:8b9c5e608a1961a488097b4f38874ecc4cb535878091b76411d0ac1693d62843, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 054; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 713-720, generated coverage order 054, fingerprint sha256:8b9c5e608a1961a488097b4f38874ecc4cb535878091b76411d0ac1693d62843, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 054; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-4-4-cordones-2-4-4-1-055",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 721-728, generated coverage order 055, fingerprint sha256:ee84f3a8e9a6d224a816919f858251756f672afc11010128778efaeea19f1882, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 055; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 721-728, generated coverage order 055, fingerprint sha256:ee84f3a8e9a6d224a816919f858251756f672afc11010128778efaeea19f1882, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 055; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-4-6-ancho-de-carriles-los-carriles-056",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 729-734, generated coverage order 056, fingerprint sha256:8b57d527813ad1c28a5bdf527f551dc9adbdcfec3dc8c5a1f57cab01ddb7987c, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 056; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 729-734, generated coverage order 056, fingerprint sha256:8b57d527813ad1c28a5bdf527f551dc9adbdcfec3dc8c5a1f57cab01ddb7987c, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 056; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-4-7-demarcacion-del-sector-destinado-a-057",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 735-738, generated coverage order 057, fingerprint sha256:558e8b783ae8d5bc5064ed2909d3873d4d74727826f201c0eb4b94a04481fe34, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 057; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 735-738, generated coverage order 057, fingerprint sha256:558e8b783ae8d5bc5064ed2909d3873d4d74727826f201c0eb4b94a04481fe34, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 057; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-4-8-prohibicion-058",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 739-742, generated coverage order 058, fingerprint sha256:d2df628a5abe40b4b2e5902b17c378fe49edd0c47f1463bdd5192e22a67f3db3, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 058; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 739-742, generated coverage order 058, fingerprint sha256:d2df628a5abe40b4b2e5902b17c378fe49edd0c47f1463bdd5192e22a67f3db3, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 058; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--2-4-9-arterias-adoquinadas-en-las-arterias-059",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 743-744, generated coverage order 059, fingerprint sha256:95ae3ea16670a5f10b289ba3d1dc5ad6bd6501d32497d3179c2f9cc32b48d168, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 059; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 743-744, generated coverage order 059, fingerprint sha256:95ae3ea16670a5f10b289ba3d1dc5ad6bd6501d32497d3179c2f9cc32b48d168, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 059; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--titulo-tercero-de-los-usuarios-de-la-via-060",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 745-750, generated coverage order 060, fingerprint sha256:25bb3fdccce3b253d3d8f29878d22c20c46cb157f17dc7f108400ba0a823faac, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 060; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 745-750, generated coverage order 060, fingerprint sha256:25bb3fdccce3b253d3d8f29878d22c20c46cb157f17dc7f108400ba0a823faac, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 060; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-3-2-licencias-de-conducir-3-2-061",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 751-752, generated coverage order 061, fingerprint sha256:77d2530515b996a5743f8d74caa30dcfc6926a15eebf55c4e6d1e03651ef729e, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 061; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 751-752, generated coverage order 061, fingerprint sha256:77d2530515b996a5743f8d74caa30dcfc6926a15eebf55c4e6d1e03651ef729e, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 061; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-2-clases-de-licencias-las-licencias-062",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 753-768, generated coverage order 062, fingerprint sha256:8c52a368157372208fbcae860684a479d37d577e13504acdcec112aafd229bb1, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 062; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 753-768, generated coverage order 062, fingerprint sha256:8c52a368157372208fbcae860684a479d37d577e13504acdcec112aafd229bb1, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 062; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-3-habilitaciones-especiales-en-los-casos-063",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 769-770, generated coverage order 063, fingerprint sha256:64d06cb3f384dbc392f86c708ed53faea99aeab77b0e2f21df75685eaac468de, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 063; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 769-770, generated coverage order 063, fingerprint sha256:64d06cb3f384dbc392f86c708ed53faea99aeab77b0e2f21df75685eaac468de, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 063; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-4-edades-minimas-para-conducir-para-064",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 771-780, generated coverage order 064, fingerprint sha256:a5475df9f6b2ef4ea98de5f59a835760466f707af87275675b7401636f7cb1ab, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 064; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 771-780, generated coverage order 064, fingerprint sha256:a5475df9f6b2ef4ea98de5f59a835760466f707af87275675b7401636f7cb1ab, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 064; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-5-licencias-otorgadas-en-otros-distritos-065",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 781-784, generated coverage order 065, fingerprint sha256:e0e1626b2069ccff714186b82b4c0fe9d741d6e0c57d9fee8c1d373e19188deb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 065; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 781-784, generated coverage order 065, fingerprint sha256:e0e1626b2069ccff714186b82b4c0fe9d741d6e0c57d9fee8c1d373e19188deb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 065; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-6-plazos-de-validez-la-fecha-066",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 785-796, generated coverage order 066, fingerprint sha256:1ac84986ccf25d2ccf965a167f36ac646de6d2de99703126a66e5f334b84951b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 066; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 785-796, generated coverage order 066, fingerprint sha256:1ac84986ccf25d2ccf965a167f36ac646de6d2de99703126a66e5f334b84951b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 066; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-7-conductores-principiantes-el-conductor-que-067",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 797-804, generated coverage order 067, fingerprint sha256:3feab68786c550c7fc0c6a7f50108b47f1005ddeab67293f8b3cb299ac917399, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 067; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 797-804, generated coverage order 067, fingerprint sha256:3feab68786c550c7fc0c6a7f50108b47f1005ddeab67293f8b3cb299ac917399, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 067; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-8-requisitos-para-la-obtencion-por-068",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 805-830, generated coverage order 068, fingerprint sha256:9abe8927c02bcf2bbe9c2834d300867ec04d47137556d3dc4c0ce0debaaba0bd, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 068; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 805-830, generated coverage order 068, fingerprint sha256:9abe8927c02bcf2bbe9c2834d300867ec04d47137556d3dc4c0ce0debaaba0bd, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 068; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-9-requisitos-para-la-renovacion-son-069",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 831-844, generated coverage order 069, fingerprint sha256:ecbf087d72fb5333ac53d2951da6c0513b18a36960c50da8e9d2b1535b6f7cc4, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 069; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 831-844, generated coverage order 069, fingerprint sha256:ecbf087d72fb5333ac53d2951da6c0513b18a36960c50da8e9d2b1535b6f7cc4, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 069; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-10-desaprobacion-de-examenes-los-examenes-070",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 845-846, generated coverage order 070, fingerprint sha256:8c07ad675b45b3f9c02039c1bdab78189686c9a9f7165b08bc009057c613367a, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 070; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 845-846, generated coverage order 070, fingerprint sha256:8c07ad675b45b3f9c02039c1bdab78189686c9a9f7165b08bc009057c613367a, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 070; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-11-contenido-de-las-licencias-la-071",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 847-862, generated coverage order 071, fingerprint sha256:5a5888bc921bcf0d858c941f039d919d522bc5f1d4e2ba28efcab823be86b3e0, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 071; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 847-862, generated coverage order 071, fingerprint sha256:5a5888bc921bcf0d858c941f039d919d522bc5f1d4e2ba28efcab823be86b3e0, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 071; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-12-suspension-por-ineptitud-la-autoridad-072",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 863-864, generated coverage order 072, fingerprint sha256:350c9e2bcd01aecf391d6eb56e86bbdec566bfb697172e6cafa0d0f1d0a6c1aa, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 072; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 863-864, generated coverage order 072, fingerprint sha256:350c9e2bcd01aecf391d6eb56e86bbdec566bfb697172e6cafa0d0f1d0a6c1aa, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 072; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-13-conductor-profesional-a-el-titular-073",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 865-878, generated coverage order 073, fingerprint sha256:dcd7cd8c25b5adb1ed11672124c30b2e9c192b373d8e5b25b39097af0028b18b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 073; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 865-878, generated coverage order 073, fingerprint sha256:dcd7cd8c25b5adb1ed11672124c30b2e9c192b373d8e5b25b39097af0028b18b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 073; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-14-denegacion-por-antecedentes-penales-se-074",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 879-884, generated coverage order 074, fingerprint sha256:58fcc44cc193fa156b99928ea2e836948f6595ffe234c9d18bc7c07b4821a6eb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 074; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 879-884, generated coverage order 074, fingerprint sha256:58fcc44cc193fa156b99928ea2e836948f6595ffe234c9d18bc7c07b4821a6eb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 074; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-15-veteranos-de-malvinas-se-exceptua-075",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 885-886, generated coverage order 075, fingerprint sha256:480676158239ff36365261b2466a1585ee9766a3331c7751f0eb8ca731aaaf03, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 075; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 885-886, generated coverage order 075, fingerprint sha256:480676158239ff36365261b2466a1585ee9766a3331c7751f0eb8ca731aaaf03, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 075; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-16-requisitos-para-personas-con-discapacidad-076",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 887-892, generated coverage order 076, fingerprint sha256:976edd9ded9781c05f417641a61219ff5515b8506ba64afc8aefd88a946d1dbc, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 076; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 887-892, generated coverage order 076, fingerprint sha256:976edd9ded9781c05f417641a61219ff5515b8506ba64afc8aefd88a946d1dbc, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 076; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-17-solicitud-de-duplicados-en-cualquier-077",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 893-904, generated coverage order 077, fingerprint sha256:73c7db2343fd268381498665cee43b6b7168e1378cab33742a9ba4b70e6ac95e, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 077; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 893-904, generated coverage order 077, fingerprint sha256:73c7db2343fd268381498665cee43b6b7168e1378cab33742a9ba4b70e6ac95e, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 077; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-2-18-certificado-de-legalidad-078",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 905-920, generated coverage order 078, fingerprint sha256:225b7ace1421365a67ea251307cb911777a0c01d6551b07d82124d383f7c78dd, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 078; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 905-920, generated coverage order 078, fingerprint sha256:225b7ace1421365a67ea251307cb911777a0c01d6551b07d82124d383f7c78dd, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 078; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-3-3-escuelas-de-conductores-3-3-079",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 921-924, generated coverage order 079, fingerprint sha256:4b8572b1088a38b7624cd96852a2651e73c55c6444b28350937633c0fcb55a0c, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 079; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 921-924, generated coverage order 079, fingerprint sha256:4b8572b1088a38b7624cd96852a2651e73c55c6444b28350937633c0fcb55a0c, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 079; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-2-requisitos-de-los-locales-los-080",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 925-926, generated coverage order 080, fingerprint sha256:dbf690ce8db52a80ae71552b6c12bcc85de0258fb425cda44b1c9984c74d3669, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 080; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 925-926, generated coverage order 080, fingerprint sha256:dbf690ce8db52a80ae71552b6c12bcc85de0258fb425cda44b1c9984c74d3669, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 080; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-3-exigencias-a-los-propietarios-los-081",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 927-936, generated coverage order 081, fingerprint sha256:a428776d08fc0c8a20061255cacf8d260bf088b2f9bbf72bdc45c4cc8c0e6628, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 081; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 927-936, generated coverage order 081, fingerprint sha256:a428776d08fc0c8a20061255cacf8d260bf088b2f9bbf72bdc45c4cc8c0e6628, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 081; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-4-exigencias-a-los-instructores-la-082",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 937-954, generated coverage order 082, fingerprint sha256:a6a849a553d922da760370176831ae944d6d8c9b529486f90d143875b2cd0bce, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 082; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 937-954, generated coverage order 082, fingerprint sha256:a6a849a553d922da760370176831ae944d6d8c9b529486f90d143875b2cd0bce, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 082; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-5-exigencias-a-los-vehiculos-los-083",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 955-972, generated coverage order 083, fingerprint sha256:42ce513b974390e44ac28770b1a578ff5520eadd6a68cf9e155b0042360ecfb1, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 083; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 955-972, generated coverage order 083, fingerprint sha256:42ce513b974390e44ac28770b1a578ff5520eadd6a68cf9e155b0042360ecfb1, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 083; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-6-exigencias-a-los-alumnos-para-084",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 973-974, generated coverage order 084, fingerprint sha256:ec482607817bf7c36799693d1114aeaf2a37b5f09bf4e8ad035770e703171268, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 084; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 973-974, generated coverage order 084, fingerprint sha256:ec482607817bf7c36799693d1114aeaf2a37b5f09bf4e8ad035770e703171268, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 084; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-7-caracteristicas-de-los-cursos-el-085",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 975-978, generated coverage order 085, fingerprint sha256:44887d2d9ae1d49e479d6e218dd974f5650fe4ed5d329c796f5b8336699054ca, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 085; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 975-978, generated coverage order 085, fingerprint sha256:44887d2d9ae1d49e479d6e218dd974f5650fe4ed5d329c796f5b8336699054ca, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 085; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-8-otras-obligaciones-a-las-escuelas-086",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 979-984, generated coverage order 086, fingerprint sha256:aca1339b08730493494d6e265c7d8f03ff899baea86b767c18a094d70a027ead, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 086; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 979-984, generated coverage order 086, fingerprint sha256:aca1339b08730493494d6e265c7d8f03ff899baea86b767c18a094d70a027ead, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 086; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-9-prohibiciones-queda-prohibido-a-las-087",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 985-996, generated coverage order 087, fingerprint sha256:26fb4a9fec8f4799f89de4d61fc0c40fb53b899f2abae7e0ec2a4dcc096740bb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 087; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 985-996, generated coverage order 087, fingerprint sha256:26fb4a9fec8f4799f89de4d61fc0c40fb53b899f2abae7e0ec2a4dcc096740bb, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 087; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-10-sanciones-la-autoridad-otorgante-de-088",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 997-1008, generated coverage order 088, fingerprint sha256:0ade77800d6243b1e3dcb19b6f1704cec599826d7ed12156e5306eb854b9a270, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 088; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 997-1008, generated coverage order 088, fingerprint sha256:0ade77800d6243b1e3dcb19b6f1704cec599826d7ed12156e5306eb854b9a270, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 088; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-3-11-ensenanza-no-profesional-cuando-la-089",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1009-1010, generated coverage order 089, fingerprint sha256:a2370b5c4df80b31e2261460ce8556e4821034db987d21d487537b4986c65a98, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 089; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1009-1010, generated coverage order 089, fingerprint sha256:a2370b5c4df80b31e2261460ce8556e4821034db987d21d487537b4986c65a98, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 089; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-3-4-educacion-vial-3-4-1-090",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1011-1012, generated coverage order 090, fingerprint sha256:4506d7bbf120a6050c6fd63db0da1769ac8b9f3ceef85c4d6edf3602470cfa6b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 090; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1011-1012, generated coverage order 090, fingerprint sha256:4506d7bbf120a6050c6fd63db0da1769ac8b9f3ceef85c4d6edf3602470cfa6b, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 090; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-4-2-capacitacion-de-funcionarios-los-funcionarios-091",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1013-1014, generated coverage order 091, fingerprint sha256:1e1cb7672ab6318a08650c32f790926db693a4dda3358d22210d0a5abad2f620, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 091; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1013-1014, generated coverage order 091, fingerprint sha256:1e1cb7672ab6318a08650c32f790926db693a4dda3358d22210d0a5abad2f620, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 091; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--3-4-3-manual-del-conductor-la-autoridad-092",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1015-1018, generated coverage order 092, fingerprint sha256:eaa6fea700df3d7685a1f7eb376315ff11c866b225a20de650c4448fbc4b94be, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 092; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1015-1018, generated coverage order 092, fingerprint sha256:eaa6fea700df3d7685a1f7eb376315ff11c866b225a20de650c4448fbc4b94be, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 092; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--titulo-cuarto-de-los-vehiculos-capitulo-4-1-093",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1019-1020, generated coverage order 093, fingerprint sha256:4c395a2b6ae9250baaee4037bfc4e6ee80d361314f7d516ce9eaa96121e02b16, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 093; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1019-1020, generated coverage order 093, fingerprint sha256:4c395a2b6ae9250baaee4037bfc4e6ee80d361314f7d516ce9eaa96121e02b16, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 093; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--4-1-2-condiciones-minimas-de-seguridad-los-094",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1021-1036, generated coverage order 094, fingerprint sha256:e28019b906a6169bb0c5d835396ac1621b6a3c410542126d866c76bf27eb2856, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 094; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1021-1036, generated coverage order 094, fingerprint sha256:e28019b906a6169bb0c5d835396ac1621b6a3c410542126d866c76bf27eb2856, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 094; learner text remains unofficial support."
+        }
+      },
+      {
+        "chunkId": "ley-2148-caba-codigo-transito-transporte--4-1-3-requisitos-para-automotores-los-automotores-095",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1037-1064, generated coverage order 095, fingerprint sha256:ec7d9d028b6486cbe938d5a6408f5acd6433d08b7025b545dcd25a48dff5f3c9, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was generated paragraph-by-paragraph from the official Spanish span and then terminology-normalized for Cabadrive learner-source wording.",
+          "reviewerNotes": "D11-001 translation QA approved for order 095; no archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-19",
+          "methodNotes": "Reviewed for D11-001 against Ley 2148 CABA archive span 1037-1064, generated coverage order 095, fingerprint sha256:ec7d9d028b6486cbe938d5a6408f5acd6433d08b7025b545dcd25a48dff5f3c9, and content/primary-sources/terminology.ru.md. The review preserved chunk metadata, article/section labels, legal actors, obligations/prohibitions/permissions, numbers, deadlines, exception language, and source references where present. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a learner-facing rewrite: shorter wording, no simplified Spanish, and retained practical duties, limits, references, and special numbers from the Spanish source.",
+          "reviewerNotes": "D11-001 simplification QA approved for order 095; learner text remains unofficial support."
+        }
+      }
+    ]
+  }
+}

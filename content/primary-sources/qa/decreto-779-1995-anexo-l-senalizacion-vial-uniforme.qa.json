@@ -1,0 +1,778 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+  "document": {
+    "officialDocumentId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+    "chunks": [
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--decreto-779-95-anexo-l-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1-2, coverage fingerprint sha256:d50e20519eab7cc5371aca53ae55691f4d5193370f442a15583540811d6b5414, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1-2, coverage fingerprint sha256:d50e20519eab7cc5371aca53ae55691f4d5193370f442a15583540811d6b5414, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--anexo-al-articulo-22-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3-4, coverage fingerprint sha256:9aaa26ea5edbd47cffe01837c69165c4288ce48ee99f7b06b02ead16a497711c, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3-4, coverage fingerprint sha256:9aaa26ea5edbd47cffe01837c69165c4288ce48ee99f7b06b02ead16a497711c, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--anexo-l-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 5-10, coverage fingerprint sha256:3a8f2998ce26d98a620cb6ea1eff9348ab6653d5fadaf8e7e9429fbad1fde0a2, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 5-10, coverage fingerprint sha256:3a8f2998ce26d98a620cb6ea1eff9348ab6653d5fadaf8e7e9429fbad1fde0a2, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-i-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 11-14, coverage fingerprint sha256:f5eeb0872100c08f7c2816af8e4907a5a44d693a15d4afd107ca81f2654348ca, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 11-14, coverage fingerprint sha256:f5eeb0872100c08f7c2816af8e4907a5a44d693a15d4afd107ca81f2654348ca, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--1-concepto-el-sistema-de-senalizacion-vial-uniforme-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 15-34, coverage fingerprint sha256:976255db49667abee3aae310cf1a59ed4d5ea5d2ec06320daf453309ec8d6e20, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 15-34, coverage fingerprint sha256:976255db49667abee3aae310cf1a59ed4d5ea5d2ec06320daf453309ec8d6e20, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--2-competencia-el-senalamiento-lo-realiza-o-autoriza-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 35-60, coverage fingerprint sha256:20e292f1ab8c887d8d9672bb0cc9cbf2448a52600e54e979592ee5ca04fda38e, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 35-60, coverage fingerprint sha256:20e292f1ab8c887d8d9672bb0cc9cbf2448a52600e54e979592ee5ca04fda38e, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--3-obligatoriedad-el-significado-de-la-senalizacion-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 61-76, coverage fingerprint sha256:12779b0c1e81724495a101c6be8e163c8787f91f91f6987ceab848cfebc7c8a8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 61-76, coverage fingerprint sha256:12779b0c1e81724495a101c6be8e163c8787f91f91f6987ceab848cfebc7c8a8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--4-construccion-los-dispositivos-regulados-por-el-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 77-92, coverage fingerprint sha256:c944067f4232a08bbd6df0f95898c24538dc86aa61ed76da284ac139abbdb9c6, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 77-92, coverage fingerprint sha256:c944067f4232a08bbd6df0f95898c24538dc86aa61ed76da284ac139abbdb9c6, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--5-mantenimiento-es-responsabilidad-basica-y-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 93-113, coverage fingerprint sha256:0eafa16de7dce011cd5c8aade681cfcb97cd6d5ff2681e468d23ff5a8f7c1580, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 93-113, coverage fingerprint sha256:0eafa16de7dce011cd5c8aade681cfcb97cd6d5ff2681e468d23ff5a8f7c1580, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--6-deletabilidad-todo-elemento-constitutivo-de-la-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 114-133, coverage fingerprint sha256:7d4bf4126f8573be4515cec30dfa1f88a3193dbf184587e5c9899e4538ca1f96, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 114-133, coverage fingerprint sha256:7d4bf4126f8573be4515cec30dfa1f88a3193dbf184587e5c9899e4538ca1f96, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-ii-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 134-137, coverage fingerprint sha256:b4eadb5bef5f9bf082087f93c2f1ff6af4b28eaded25dd1e31ebda5da12c3c7b, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 134-137, coverage fingerprint sha256:b4eadb5bef5f9bf082087f93c2f1ff6af4b28eaded25dd1e31ebda5da12c3c7b, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--7-concepto-son-las-senales-de-regulacion-del-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 138-144, coverage fingerprint sha256:02ce1e8b24a9edfaa1741c942800533320468a7a84bd3c41fc3243fbc29cfbd9, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 138-144, coverage fingerprint sha256:02ce1e8b24a9edfaa1741c942800533320468a7a84bd3c41fc3243fbc29cfbd9, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--1-placa-forma-debe-mantenerse-rigida-y-ser-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 145-222, coverage fingerprint sha256:83207abda36c738f361e26c1c4f897398018178bf101565298c64e7a4da9e144, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 145-222, coverage fingerprint sha256:83207abda36c738f361e26c1c4f897398018178bf101565298c64e7a4da9e144, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-iii-014",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 223-226, coverage fingerprint sha256:2437713cddd4acd6fc54f6838126d85bd9466611a01a3d30e7a6a9e5f3e52292, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 223-226, coverage fingerprint sha256:2437713cddd4acd6fc54f6838126d85bd9466611a01a3d30e7a6a9e5f3e52292, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--8-caracteristicas-basicas-las-que-se-detallan-a-015",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 227-257, coverage fingerprint sha256:e0a67ce48d1f6cd257f26f01d1a6f5299f7dd77ce27aea71fffc67418359ba27, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 227-257, coverage fingerprint sha256:e0a67ce48d1f6cd257f26f01d1a6f5299f7dd77ce27aea71fffc67418359ba27, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--9-senales-de-prohibicion-016",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 258-448, coverage fingerprint sha256:1ca2c8736cd831121c1f3d7288e91f5f3e9292e5b97bc528dd56032edb42b4c4, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 258-448, coverage fingerprint sha256:1ca2c8736cd831121c1f3d7288e91f5f3e9292e5b97bc528dd56032edb42b4c4, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--10-senales-de-restriccion-017",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 449-676, coverage fingerprint sha256:180aad94284cb9ed895f894edd28603a9c8016c143449608c0b840f85aa450c8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 449-676, coverage fingerprint sha256:180aad94284cb9ed895f894edd28603a9c8016c143449608c0b840f85aa450c8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--11-senales-de-prioridad-018",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 677-792, coverage fingerprint sha256:16368848cdbb6782f8bf7db14ca5c9a0b7fd45d1d2885930da98be08dd4d0821, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 677-792, coverage fingerprint sha256:16368848cdbb6782f8bf7db14ca5c9a0b7fd45d1d2885930da98be08dd4d0821, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--12-fin-de-la-prescripcion-r-31-32-019",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 793-806, coverage fingerprint sha256:dbc15886603821d2722cdd15eaee8dc212ff332b2b3c979e39d3b52fb51cfcc0, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 793-806, coverage fingerprint sha256:dbc15886603821d2722cdd15eaee8dc212ff332b2b3c979e39d3b52fb51cfcc0, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-iv-020",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 807-810, coverage fingerprint sha256:7fbbbac608c77622b3fee7c29f5e641223d7aa478c9d84190662fcc5f7860175, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 807-810, coverage fingerprint sha256:7fbbbac608c77622b3fee7c29f5e641223d7aa478c9d84190662fcc5f7860175, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--13-caracteristicas-basicas-tambien-denominadas-de-021",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 811-839, coverage fingerprint sha256:f9375c6a8e07bffe3a18e77b03f85beadb6fb48ab4c4aef247aa26ce60f09688, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 811-839, coverage fingerprint sha256:f9375c6a8e07bffe3a18e77b03f85beadb6fb48ab4c4aef247aa26ce60f09688, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--14-advertencias-de-maximo-peligro-estas-senales-utilizan-022",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 840-991, coverage fingerprint sha256:71384357871d4484ba9b075ec198165182afa68b4bed58ee2e7f6f3b5eb521c6, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 840-991, coverage fingerprint sha256:71384357871d4484ba9b075ec198165182afa68b4bed58ee2e7f6f3b5eb521c6, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--15-advertencia-sobre-caracteristicas-fisicas-de-la-via-023",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 992-1317, coverage fingerprint sha256:d5e6ef1bbebc7724e114e9e0ee2f8a1612230c06f30311a2d410e814bcff1aae, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 992-1317, coverage fingerprint sha256:d5e6ef1bbebc7724e114e9e0ee2f8a1612230c06f30311a2d410e814bcff1aae, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--16-posibilidad-de-riesgos-eventuales-se-utiliza-el-024",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1318-1389, coverage fingerprint sha256:f9f7abc942a898d0ce6ec2ec998fa9ef20f3b4e0cbdb0a9b8492df796e2a60f5, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1318-1389, coverage fingerprint sha256:f9f7abc942a898d0ce6ec2ec998fa9ef20f3b4e0cbdb0a9b8492df796e2a60f5, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--17-anticipo-de-otros-dispositivos-de-control-del-025",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1390-1432, coverage fingerprint sha256:919c00142b83f04889a9628d8dc64947de429f3aa2bba783875619809204c4f8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1390-1432, coverage fingerprint sha256:919c00142b83f04889a9628d8dc64947de429f3aa2bba783875619809204c4f8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--18-fin-de-prevencion-026",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1433-1449, coverage fingerprint sha256:a41874fb018175ec0bdd9cefa20a74bf664faec8a81ed9a6b12c3d45085cf2c6, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1433-1449, coverage fingerprint sha256:a41874fb018175ec0bdd9cefa20a74bf664faec8a81ed9a6b12c3d45085cf2c6, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-v-027",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1450-1453, coverage fingerprint sha256:2cf32af9d6e69cd44efce421a6472e2be007e7eb5b6c1b8ff2d6b1313c6329a1, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1450-1453, coverage fingerprint sha256:2cf32af9d6e69cd44efce421a6472e2be007e7eb5b6c1b8ff2d6b1313c6329a1, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--19-caracteristicas-basicas-028",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1454-1480, coverage fingerprint sha256:a5f959daa63a64a9821de830dec8fb617c23be5fb106e01cafaefcd775020e9f, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1454-1480, coverage fingerprint sha256:a5f959daa63a64a9821de830dec8fb617c23be5fb106e01cafaefcd775020e9f, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--20-nomenclatura-vial-y-urbana-destinos-y-distancias-029",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1481-1640, coverage fingerprint sha256:3dd0a46e7e37268d252a996610fc192278c3d65508efca67502cb860349ba5ab, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1481-1640, coverage fingerprint sha256:3dd0a46e7e37268d252a996610fc192278c3d65508efca67502cb860349ba5ab, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--21-caracteristicas-de-la-via-030",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1641-1818, coverage fingerprint sha256:04ce0a37f383ea4c9616a73f94c31a2faf2058407902ee86aa12d26ece73cefc, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1641-1818, coverage fingerprint sha256:04ce0a37f383ea4c9616a73f94c31a2faf2058407902ee86aa12d26ece73cefc, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--24-informacion-turistica-y-de-servicios-031",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 1819-2081, coverage fingerprint sha256:0f945e38081dc2b4d06dcdbab849a83f2bbca13c6356270bcfb2ba7ba0b8672c, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 1819-2081, coverage fingerprint sha256:0f945e38081dc2b4d06dcdbab849a83f2bbca13c6356270bcfb2ba7ba0b8672c, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--25-educativas-y-anuncios-especiales-032",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2082-2114, coverage fingerprint sha256:7ea3d9dd889ee1893910a0a3707a536b74415d96720facc70d7c901935d77787, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2082-2114, coverage fingerprint sha256:7ea3d9dd889ee1893910a0a3707a536b74415d96720facc70d7c901935d77787, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-vi-033",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2115-2118, coverage fingerprint sha256:cc823c1b0b8ce59495bee44191622ae7b3e929fffa7e39cff02a85822f49100e, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2115-2118, coverage fingerprint sha256:cc823c1b0b8ce59495bee44191622ae7b3e929fffa7e39cff02a85822f49100e, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--26-concepto-las-marcas-viales-o-demarcacion-horizontal-034",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2119-2219, coverage fingerprint sha256:b547522586de666957b2684685dfc53673d33ec3b0ccd351081c318dc75985ee, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2119-2219, coverage fingerprint sha256:b547522586de666957b2684685dfc53673d33ec3b0ccd351081c318dc75985ee, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--27-marcas-longitudinales-son-franjas-de-un-ancho-035",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2220-2289, coverage fingerprint sha256:efd8a4ccf5da5304b3c7226b22ecb327e44a83323ff3b3b564982ea266105732, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2220-2289, coverage fingerprint sha256:efd8a4ccf5da5304b3c7226b22ecb327e44a83323ff3b3b564982ea266105732, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--28-marcas-transversales-son-franjas-de-un-ancho-036",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2290-2381, coverage fingerprint sha256:e016cdbbb753a53209cc39c23b3363c48bd46118dd03656ac5b07a9fbe594a8a, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2290-2381, coverage fingerprint sha256:e016cdbbb753a53209cc39c23b3363c48bd46118dd03656ac5b07a9fbe594a8a, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--29-marcas-especiales-037",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2382-2647, coverage fingerprint sha256:d9a04b124ae4772f288e183818fe444858d9e8b6a53c8f9aa1767d8f709bb26f, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2382-2647, coverage fingerprint sha256:d9a04b124ae4772f288e183818fe444858d9e8b6a53c8f9aa1767d8f709bb26f, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-vii-038",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2648-2651, coverage fingerprint sha256:34dbbbd33d62d384aa306f801bcabcce8f681d5fa918603a2b2da474c500444c, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2648-2651, coverage fingerprint sha256:34dbbbd33d62d384aa306f801bcabcce8f681d5fa918603a2b2da474c500444c, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--30-concepto-senales-con-luz-propia-continua-o-039",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2652-2667, coverage fingerprint sha256:74438329c3901f28911ba4d9c152bf4b620d2b44fe04e9a184659dd866332d23, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2652-2667, coverage fingerprint sha256:74438329c3901f28911ba4d9c152bf4b620d2b44fe04e9a184659dd866332d23, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--31-conformacion-fisica-040",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2668-2726, coverage fingerprint sha256:0c6b1bb9968cd2e13884ab9a6e170b19e6f61ab024719de25d72af96d4a86b4a, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2668-2726, coverage fingerprint sha256:0c6b1bb9968cd2e13884ab9a6e170b19e6f61ab024719de25d72af96d4a86b4a, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--32-significado-de-las-luces-ante-las-luces-041",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2727-2771, coverage fingerprint sha256:1c79db93b90d66c6c54a90bbcb02bcb0af3df6fe25384e572b5efd783979e7ef, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2727-2771, coverage fingerprint sha256:1c79db93b90d66c6c54a90bbcb02bcb0af3df6fe25384e572b5efd783979e7ef, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--33-ubicacion-el-semaforo-se-coloca-en-las-042",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2772-2781, coverage fingerprint sha256:973497868abfa1bbd0447ec94ceaaadb337b64634741131a8f510b8382946f3b, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2772-2781, coverage fingerprint sha256:973497868abfa1bbd0447ec94ceaaadb337b64634741131a8f510b8382946f3b, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--34-flechas-direccionales-deben-apuntar-en-el-043",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2782-2795, coverage fingerprint sha256:16e27cdcd7ca9bf095db91b16c4f5179db2806594196b0e19bd34835eb228617, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2782-2795, coverage fingerprint sha256:16e27cdcd7ca9bf095db91b16c4f5179db2806594196b0e19bd34835eb228617, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--35-disposicion-unidades-opticas-las-unidades-044",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2796-2811, coverage fingerprint sha256:4fb04ba658a42acb0744d64a0bd6d4c942faca04fd9d88a944fa87e5c0118728, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2796-2811, coverage fingerprint sha256:4fb04ba658a42acb0744d64a0bd6d4c942faca04fd9d88a944fa87e5c0118728, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--36-semaforos-especiales-045",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2812-2918, coverage fingerprint sha256:b735f481b60895c91c7d3cfb4051e2a32d8e8c7a4db83b605ee582d32b97ebfa, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2812-2918, coverage fingerprint sha256:b735f481b60895c91c7d3cfb4051e2a32d8e8c7a4db83b605ee582d32b97ebfa, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-viii-046",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2919-2922, coverage fingerprint sha256:edee4b96b12c70503c1ad6a78626e93338e5d169aea918bb8f40676eb1f13e18, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2919-2922, coverage fingerprint sha256:edee4b96b12c70503c1ad6a78626e93338e5d169aea918bb8f40676eb1f13e18, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--37-concepto-047",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2923-2945, coverage fingerprint sha256:5311734305ff3c74f4a09c07e5ee55628c47c16b8af17109d101081b1cf018e0, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2923-2945, coverage fingerprint sha256:5311734305ff3c74f4a09c07e5ee55628c47c16b8af17109d101081b1cf018e0, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--38-senales-reglamentarias-048",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2946-2957, coverage fingerprint sha256:0e346fca95890e24033449c7bd2bf737d4a02afb688e911a318872a28cc0d9e9, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2946-2957, coverage fingerprint sha256:0e346fca95890e24033449c7bd2bf737d4a02afb688e911a318872a28cc0d9e9, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--39-senales-de-049",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 2958-3092, coverage fingerprint sha256:453a767f71f2e5fade8fe9c18f88b0125454225c2e1ea4940752454e87c392ad, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 2958-3092, coverage fingerprint sha256:453a767f71f2e5fade8fe9c18f88b0125454225c2e1ea4940752454e87c392ad, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--40-senales-de-050",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3093-3134, coverage fingerprint sha256:2ebc86477bcf416bd3b54d4063e079346627cd6d02e1d309572515af2775df59, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3093-3134, coverage fingerprint sha256:2ebc86477bcf416bd3b54d4063e079346627cd6d02e1d309572515af2775df59, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--41-vallas-051",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3135-3173, coverage fingerprint sha256:f06e7c376ba220924750f3f22add76ab5ff11b945e91df4c7548d2640e932aaa, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3135-3173, coverage fingerprint sha256:f06e7c376ba220924750f3f22add76ab5ff11b945e91df4c7548d2640e932aaa, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--42-conos-052",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3174-3190, coverage fingerprint sha256:581c975dfe8bd22ba2627e461bc6da35aabbec17aefdc8e3ff0b5eeda4228cf8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3174-3190, coverage fingerprint sha256:581c975dfe8bd22ba2627e461bc6da35aabbec17aefdc8e3ff0b5eeda4228cf8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--43-tambores-053",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3191-3205, coverage fingerprint sha256:c6d8b424ce17b67a97130d473b67702ee328eb84b0d69e650709a095e6f87ee7, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3191-3205, coverage fingerprint sha256:c6d8b424ce17b67a97130d473b67702ee328eb84b0d69e650709a095e6f87ee7, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--44-delineadores-054",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3206-3220, coverage fingerprint sha256:347be1d1d6bf51a25ae16f3aabe30a156be095ac55bf9d40413245fe13aa86a0, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3206-3220, coverage fingerprint sha256:347be1d1d6bf51a25ae16f3aabe30a156be095ac55bf9d40413245fe13aa86a0, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--45-marcas-horizontales-055",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3221-3237, coverage fingerprint sha256:991def2b4de65bb9f761ccb69f765414fe5d27b32bf34dd965851aad25944fc8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3221-3237, coverage fingerprint sha256:991def2b4de65bb9f761ccb69f765414fe5d27b32bf34dd965851aad25944fc8, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--46-dispositivos-luminosos-056",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3238-3263, coverage fingerprint sha256:99035d2f475fccad3d6777fb7c9dbe5de65e376d7b8f797bb736cdc88c52fffe, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3238-3263, coverage fingerprint sha256:99035d2f475fccad3d6777fb7c9dbe5de65e376d7b8f797bb736cdc88c52fffe, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--47-barandas-canalizadoras-de-transito-057",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3264-3289, coverage fingerprint sha256:d15aa72a947fddfd627ed5e6f7feb17d12aa6f18ad04dd309680e4672584ee5e, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3264-3289, coverage fingerprint sha256:d15aa72a947fddfd627ed5e6f7feb17d12aa6f18ad04dd309680e4672584ee5e, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--capitulo-ix-058",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3290-3293, coverage fingerprint sha256:6d99cb4f12c1e84678843a7f1bbf1559131224da4c8f9c64949de6e55f9aed07, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3290-3293, coverage fingerprint sha256:6d99cb4f12c1e84678843a7f1bbf1559131224da4c8f9c64949de6e55f9aed07, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme--48-carteles-preventivos-especiales-para-cruces-059",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Full Russian translation reviewed against archive span 3294-3397, coverage fingerprint sha256:3f4f16e4b6bac23ac08d53d28861dcf820791065fce50c9e5a0c5e8f6ba3d1a5, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Simple Russian rewrite reviewed against the Spanish source span, full Russian translation, and schoolchild-friendly fidelity expectations 3294-3397, coverage fingerprint sha256:3f4f16e4b6bac23ac08d53d28861dcf820791065fce50c9e5a0c5e8f6ba3d1a5, and content/primary-sources/terminology.ru.md. Signage terminology was checked for señalización as дорожная сигнализация/знаки и разметка by context, calzada as проезжая часть, banquina as обочина, senda peatonal as пешеходный переход, and semáforo as светофор; signal codes, dimensions, colors, obligations, exceptions, article references, image references, and source limitations were preserved."
+        }
+      }
+    ]
+  }
+}

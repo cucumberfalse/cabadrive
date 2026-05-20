@@ -1,0 +1,1935 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "document": {
+    "officialDocumentId": "ley-11179-codigo-penal",
+    "title": "CODIGO PENAL DE LA NACION ARGENTINA",
+    "shortTitleRu": "Уголовный кодекс Аргентины",
+    "category": "criminal-law",
+    "jurisdiction": "national",
+    "officialSourceType": "national_law_updated_text",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+    "archiveLocalPath": "content/official-documents/documents/ley-11179-codigo-penal.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "current",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-43-el-autor-de-tentativa-no-estara-087",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 87,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VI",
+          "ARTICULO 43.- El autor de tentativa no estará sujeto a pena cuando desistiere voluntariamente del delito."
+        ],
+        "officialLabel": "ARTICULO 43.- El autor de tentativa no estará sujeto a pena cuando desistiere voluntariamente del delito.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 43.- El autor de tentativa no estará sujeto a pena cuando desistiere voluntariamente del delito.\n",
+        "fullTranslationRu": "СТАТЬЯ 43. Автор покушения не подлежит наказанию, когда он добровольно отказался от преступления.",
+        "simpleRu": "Если человек сам добровольно остановил покушение и отказался от преступления, статья 43 говорит: за это покушение его не наказывают.",
+        "sourceTextSha256": "2ef751a5cde7079bc8be3a18b338a8b70d6e13f7ec401686057447157442c6b8",
+        "sourceFingerprint": "sha256:2ef751a5cde7079bc8be3a18b338a8b70d6e13f7ec401686057447157442c6b8",
+        "sourceSpan": {
+          "startLine": 565,
+          "endLine": 566
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-44-la-pena-que-corresponderia-al-agente-088",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 88,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VI",
+          "ARTICULO 44.- La pena que correspondería al agente, si hubiere consumado el delito, se disminuirá de un tercio a la mitad."
+        ],
+        "officialLabel": "ARTICULO 44.- La pena que correspondería al agente, si hubiere consumado el delito, se disminuirá de un tercio a la mitad.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 44.- La pena que correspondería al agente, si hubiere consumado el delito, se disminuirá de un tercio a la mitad.\n\nSi la pena fuere de reclusión perpetua, la pena de la tentativa será reclusión de quince a veinte años. Si la pena fuese de prisión perpetua, la de tentativa será prisión de diez a quince años.\n\nSi el delito fuera imposible, la pena se disminuirá en la mitad y podrá reducírsela al mínimo legal o eximirse de ella, según el grado de peligrosidad revelada por el delincuente.\n",
+        "fullTranslationRu": "СТАТЬЯ 44. Наказание, которое соответствовало бы лицу, если бы оно довело преступление до конца, уменьшается от одной трети до половины.\n\nЕсли наказанием было бы пожизненное заключение в виде reclusión perpetua, наказанием за покушение будет reclusión от пятнадцати до двадцати лет. Если наказанием было бы пожизненное лишение свободы в виде prisión perpetua, наказанием за покушение будет prisión от десяти до пятнадцати лет.\n\nЕсли преступление было невозможным, наказание уменьшается наполовину и может быть снижено до законного минимума либо лицо может быть освобождено от него, в зависимости от степени опасности, проявленной правонарушителем.",
+        "simpleRu": "За покушение наказание меньше, чем за оконченное преступление: обычно его уменьшают от одной трети до половины. Если за оконченное преступление была бы пожизненная reclusión, за покушение дают 15-20 лет reclusión; если была бы пожизненная prisión, дают 10-15 лет prisión. Если преступление было невозможным, наказание уменьшают наполовину, а с учетом опасности человека его могут снизить до минимума или не назначать.",
+        "sourceTextSha256": "42ae34d0ea14b540a4fc9fc4da59e5f85aac7ba79fe0917f908152418985f11b",
+        "sourceFingerprint": "sha256:42ae34d0ea14b540a4fc9fc4da59e5f85aac7ba79fe0917f908152418985f11b",
+        "sourceSpan": {
+          "startLine": 567,
+          "endLine": 572
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vii-089",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 89,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VII"
+        ],
+        "officialLabel": "TITULO VII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VII\n\nPARTICIPACION CRIMINAL\n",
+        "fullTranslationRu": "РАЗДЕЛ VII\n\nПРЕСТУПНОЕ УЧАСТИЕ",
+        "simpleRu": "Раздел VII объясняет, как отвечают люди, которые участвуют в преступлении вместе с исполнителем или помогают ему.",
+        "sourceTextSha256": "035ec950393d3017f1f44c8608906122d30dea598fdbb77746676269d07337b1",
+        "sourceFingerprint": "sha256:035ec950393d3017f1f44c8608906122d30dea598fdbb77746676269d07337b1",
+        "sourceSpan": {
+          "startLine": 573,
+          "endLine": 576
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-45-los-que-tomasen-parte-en-la-090",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 90,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VII",
+          "ARTICULO 45.- Los que tomasen parte en la ejecución del hecho o prestasen al autor o autores un auxilio o cooperación sin los cuales no h..."
+        ],
+        "officialLabel": "ARTICULO 45.- Los que tomasen parte en la ejecución del hecho o prestasen al autor o autores un auxilio o cooperación sin los cuales no h...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 45.- Los que tomasen parte en la ejecución del hecho o prestasen al autor o autores un auxilio o cooperación sin los cuales no habría podido cometerse, tendrán la pena establecida para el delito. En la misma pena incurrirán los que hubiesen determinado directamente a otro a cometerlo.\n",
+        "fullTranslationRu": "СТАТЬЯ 45. Те, кто участвовал в исполнении деяния или оказал автору либо авторам такую помощь или содействие, без которых преступление не могло бы быть совершено, несут наказание, установленное для преступления. Такое же наказание несут те, кто прямо склонил другого к его совершению.",
+        "simpleRu": "Если человек участвовал в совершении преступления, дал необходимую помощь, без которой преступление не получилось бы, или прямо уговорил другого его совершить, он получает такое же наказание, как за само преступление.",
+        "sourceTextSha256": "24e57156286edd8087175352eea2a7a657a60318ac09618cad47a2f8b0d81fb1",
+        "sourceFingerprint": "sha256:24e57156286edd8087175352eea2a7a657a60318ac09618cad47a2f8b0d81fb1",
+        "sourceSpan": {
+          "startLine": 577,
+          "endLine": 578
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-46-los-que-cooperen-de-cualquier-otro-091",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 91,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VII",
+          "ARTICULO 46.- Los que cooperen de cualquier otro modo a la ejecución del hecho y los que presten una ayuda posterior cumpliendo promesas ..."
+        ],
+        "officialLabel": "ARTICULO 46.- Los que cooperen de cualquier otro modo a la ejecución del hecho y los que presten una ayuda posterior cumpliendo promesas ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 46.- Los que cooperen de cualquier otro modo a la ejecución del hecho y los que presten una ayuda posterior cumpliendo promesas anteriores al mismo, serán reprimidos con la pena correspondiente al delito, disminuida de un tercio a la mitad. Si la pena fuere de reclusión perpetua, se aplicará reclusión de quince a veinte años y si fuere de prisión perpetua, se aplicará prisión de diez a quince años.\n",
+        "fullTranslationRu": "СТАТЬЯ 46. Те, кто иным образом содействует исполнению деяния, а также те, кто оказывает последующую помощь, выполняя обещания, данные до деяния, наказываются наказанием, соответствующим преступлению, уменьшенным от одной трети до половины. Если наказанием было бы пожизненное заключение reclusión perpetua, применяется reclusión от пятнадцати до двадцати лет; если наказанием было бы пожизненное лишение свободы prisión perpetua, применяется prisión от десяти до пятнадцати лет.",
+        "simpleRu": "Если помощь была не главной, но человек помогал совершить преступление или потом помог по заранее данному обещанию, наказание уменьшают от одной трети до половины. Для пожизненных наказаний статья отдельно ставит сроки: 15-20 лет reclusión или 10-15 лет prisión.",
+        "sourceTextSha256": "3baa66cf224dda5baa30e9a5dac28d00ea1f54bc910fd6b630e1327361e263b9",
+        "sourceFingerprint": "sha256:3baa66cf224dda5baa30e9a5dac28d00ea1f54bc910fd6b630e1327361e263b9",
+        "sourceSpan": {
+          "startLine": 579,
+          "endLine": 580
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-47-si-de-las-circunstancias-particulares-de-092",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 92,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VII",
+          "ARTICULO 47.- Si de las circunstancias particulares de la causa resultare que el acusado de complicidad no quiso cooperar sino en un hech..."
+        ],
+        "officialLabel": "ARTICULO 47.- Si de las circunstancias particulares de la causa resultare que el acusado de complicidad no quiso cooperar sino en un hech...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 47.- Si de las circunstancias particulares de la causa resultare que el acusado de complicidad no quiso cooperar sino en un hecho menos grave que el cometido por el autor, la pena será aplicada al cómplice solamente en razón del hecho que prometió ejecutar.\n\nSi el hecho no se consumase, la pena del cómplice se determinará conforme a los preceptos de este artículo y a los del título de la tentativa.\n",
+        "fullTranslationRu": "СТАТЬЯ 47. Если из особых обстоятельств дела следует, что обвиняемый в соучастии хотел содействовать только менее тяжкому деянию, чем то, которое совершил автор, наказание применяется к соучастнику только исходя из деяния, которое он обещал выполнить.\n\nЕсли деяние не было доведено до конца, наказание соучастника определяется по правилам этой статьи и правилам раздела о покушении.",
+        "simpleRu": "Если помощник хотел помогать только менее тяжкому поступку, а исполнитель сделал более тяжкое преступление, помощника наказывают только за то, в чем он обещал участвовать. Если преступление не завершилось, применяют еще и правила о покушении.",
+        "sourceTextSha256": "e40ec39114ffe92bfa6fb924f1e7caad333272dba80239c89cf876c79cd262ae",
+        "sourceFingerprint": "sha256:e40ec39114ffe92bfa6fb924f1e7caad333272dba80239c89cf876c79cd262ae",
+        "sourceSpan": {
+          "startLine": 581,
+          "endLine": 584
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-48-las-relaciones-circunstancias-y-calidades-personales-093",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 93,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VII",
+          "ARTICULO 48.- Las relaciones, circunstancias y calidades personales, cuyo efecto sea disminuir o excluir la penalidad, no tendrán influen..."
+        ],
+        "officialLabel": "ARTICULO 48.- Las relaciones, circunstancias y calidades personales, cuyo efecto sea disminuir o excluir la penalidad, no tendrán influen...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 48.- Las relaciones, circunstancias y calidades personales, cuyo efecto sea disminuir o excluir la penalidad, no tendrán influencia sino respecto al autor o cómplice a quienes correspondan. Tampoco tendrán influencia aquéllas cuyo efecto sea agravar la penalidad, salvo el caso en que fueren conocidas por el partícipe.\n",
+        "fullTranslationRu": "СТАТЬЯ 48. Отношения, обстоятельства и личные качества, действие которых состоит в уменьшении или исключении наказуемости, влияют только на того автора или соучастника, к которому они относятся. Обстоятельства, действие которых состоит в усилении наказуемости, также не влияют на других, кроме случая, когда они были известны участнику.",
+        "simpleRu": "Личные обстоятельства одного участника обычно относятся только к нему. То, что уменьшает или исключает наказание одного человека, не помогает другим. То, что усиливает наказание, учитывается для другого участника только если он об этом знал.",
+        "sourceTextSha256": "4a11c3740fc9bce5bcccce00ca1807f1d4a68347d5e24141bc535ab0a63825f2",
+        "sourceFingerprint": "sha256:4a11c3740fc9bce5bcccce00ca1807f1d4a68347d5e24141bc535ab0a63825f2",
+        "sourceSpan": {
+          "startLine": 585,
+          "endLine": 586
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-49-no-se-consideraran-participes-de-los-094",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 94,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VII",
+          "ARTICULO 49.- No se considerarán partícipes de los delitos cometidos por la prensa a las personas que solamente prestaren al autor del es..."
+        ],
+        "officialLabel": "ARTICULO 49.- No se considerarán partícipes de los delitos cometidos por la prensa a las personas que solamente prestaren al autor del es...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 49.- No se considerarán partícipes de los delitos cometidos por la prensa a las personas que solamente prestaren al autor del escrito o grabado la cooperación material necesaria para su publicación, difusión o venta.\n",
+        "fullTranslationRu": "СТАТЬЯ 49. Не считаются участниками преступлений, совершенных через прессу, лица, которые лишь оказали автору письменного или записанного материала материальное содействие, необходимое для его публикации, распространения или продажи.",
+        "simpleRu": "Если человек только технически помог опубликовать, распространить или продать текст или запись в прессе, он не считается соучастником преступления автора этого материала.",
+        "sourceTextSha256": "e3e09fddcf3e43fe357b68bf23f3d9335497c4b82da73c1e3cd0601740114501",
+        "sourceFingerprint": "sha256:e3e09fddcf3e43fe357b68bf23f3d9335497c4b82da73c1e3cd0601740114501",
+        "sourceSpan": {
+          "startLine": 587,
+          "endLine": 588
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-viii-095",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 95,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VIII"
+        ],
+        "officialLabel": "TITULO VIII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VIII\n\nREINCIDENCIA\n",
+        "fullTranslationRu": "РАЗДЕЛ VIII\n\nПОВТОРНОЕ НАРУШЕНИЕ (РЕЦИДИВ)",
+        "simpleRu": "Раздел VIII говорит о рецидиве: когда человека считают повторно осужденным и какие последствия это имеет.",
+        "sourceTextSha256": "0c6de63aad257d8c0ea478b8c3e449a18f49269b440cd4ca00d86e8b2245ec38",
+        "sourceFingerprint": "sha256:0c6de63aad257d8c0ea478b8c3e449a18f49269b440cd4ca00d86e8b2245ec38",
+        "sourceSpan": {
+          "startLine": 589,
+          "endLine": 592
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-50-se-considerara-reincidente-a-toda-persona-096",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 96,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VIII",
+          "ARTICULO 50.- Se considerará reincidente a toda persona que haya sido condenada dos (2) o más veces a una pena privativa de libertad, sie..."
+        ],
+        "officialLabel": "ARTICULO 50.- Se considerará reincidente a toda persona que haya sido condenada dos (2) o más veces a una pena privativa de libertad, sie...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 50.- Se considerará reincidente a toda persona que haya sido condenada dos (2) o más veces a una pena privativa de libertad, siempre que la primera condena se encuentre firme.\n\nLa condena sufrida en el extranjero se tendrá en cuenta para la reincidencia si ha sido pronunciada por razón de un delito que pueda, según la ley argentina, dar lugar a extradición.\n\nNo dará lugar a reincidencia la pena impuesta por delitos amnistiados o los cometidos por menores de dieciocho (18) años de edad. La pena sufrida no se tendrá en cuenta a los efectos de la reincidencia cuando, desde su cumplimiento, hubiera transcurrido un término igual a aquel por el que fuera impuesta, que nunca excederá de diez (10) años ni será inferior a cinco (5) años.\n\n(Artículo sustituido por art. 1º de la Ley Nº 27.785 [https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=410382] B.O. 7/3/2025. Vigencia: a partir del día siguiente al de su publicación en el Boletín Oficial de la República Argentina.)\n",
+        "fullTranslationRu": "СТАТЬЯ 50. Рецидивистом считается всякое лицо, которое было осуждено два (2) или более раза к наказанию, связанному с лишением свободы, при условии что первый приговор вступил в законную силу.\n\nПриговор, отбытый за границей, учитывается для рецидива, если он вынесен за преступление, которое по аргентинскому закону может повлечь экстрадицию.\n\nНе образует рецидив наказание, назначенное за амнистированные преступления или за преступления, совершенные лицами младше восемнадцати (18) лет. Отбытое наказание не учитывается для целей рецидива, когда с момента его исполнения прошел срок, равный сроку назначенного наказания, который никогда не может превышать десяти (10) лет и быть меньше пяти (5) лет.\n\n(Статья заменена статьей 1 Закона N 27.785 [https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=410382], B.O. 7/3/2025. Вступление в силу: со дня, следующего за днем публикации в Официальном вестнике Аргентинской Республики.)",
+        "simpleRu": "Рецидив есть, если человека два или больше раз приговорили к лишению свободы, а первый приговор уже окончательный. Иностранный приговор тоже может учитываться, если за такое преступление возможна экстрадиция по аргентинскому праву. Не учитывают амнистированные преступления и преступления, совершенные до 18 лет. Старое наказание перестает учитываться после срока, равного сроку наказания, но этот период не может быть больше 10 лет и меньше 5 лет.",
+        "sourceTextSha256": "85da9445c3ec13c39ba4440ebe49c4df55a2292fce3e8a5aad8e60f986b5ff72",
+        "sourceFingerprint": "sha256:85da9445c3ec13c39ba4440ebe49c4df55a2292fce3e8a5aad8e60f986b5ff72",
+        "sourceSpan": {
+          "startLine": 593,
+          "endLine": 600
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-51-todo-ente-oficial-que-lleve-registros-097",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 97,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VIII",
+          "ARTICULO 51.- Todo ente oficial que lleve registros penales se abstendrá de informar sobre datos de un proceso terminado por sobreseimien..."
+        ],
+        "officialLabel": "ARTICULO 51.- Todo ente oficial que lleve registros penales se abstendrá de informar sobre datos de un proceso terminado por sobreseimien...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 51.- Todo ente oficial que lleve registros penales se abstendrá de informar sobre datos de un proceso terminado por sobreseimiento o sentencia absolutoria. En ningún caso se informará la existencia de detenciones que no provengan de la formación de causa, salvo que los informes se requieran para resolver un hábeas corpus o en causas por delitos de que haya sido víctima el detenido.\n\nEl registro de las sentencias condenatorias caducará a todos sus efectos:\n\n1. Después de transcurridos diez años desde la sentencia (art. 27) para las condenas condicionales;\n\n2. Después de transcurridos diez años desde su extinción para las demás condenas a penas privativas de la libertad;\n\n3. Después de transcurridos cinco años desde su extinción para las condenas a pena de multa o inhabilitación.\n\nEn todos los casos se deberá brindar la información cuando mediare expreso consentimiento del interesado. Asimismo, los jueces podrán requerir la información, excepcionalmente, por resolución que sólo podrá fundarse en la necesidad concreta del antecedente como elemento de prueba de los hechos en un proceso judicial.\n\nLos tribunales deberán comunicar a los organismos de registro la fecha de caducidad:\n\n1. Cuando se extingan las penas perpetuas;\n\n2. Cuando se lleve a cabo el cómputo de las penas temporales, sean condicionales o de cumplimiento efectivo;\n\n3. Cuando se cumpla totalmente la pena de multa o, en caso de su sustitución por prisión (art. 21, párr. 2º), al efectuar el cómputo de la prisión impuesta;\n\n4. Cuando declaren la extinción de las penas en los casos previstos por los artículos 65, 68 y 69.\n\nLa violación de la prohibición de informar será considerada como violación de secreto en los términos del artículo 157, si el hecho no constituyere un delito más severamente penado.\n",
+        "fullTranslationRu": "СТАТЬЯ 51. Всякий официальный орган, ведущий уголовные реестры, воздерживается от сообщения данных о процессе, завершенном прекращением дела или оправдательным приговором. Ни в каком случае не сообщается о задержаниях, не связанных с возбуждением дела, кроме случаев, когда сведения требуются для решения вопроса о habeas corpus или по делам о преступлениях, потерпевшим от которых был задержанный.\n\nЗапись об обвинительных приговорах утрачивает силу во всех отношениях:\n\n1. По истечении десяти лет со дня приговора (ст. 27) для условных осуждений;\n\n2. По истечении десяти лет со дня прекращения исполнения остальных приговоров к наказаниям, связанным с лишением свободы;\n\n3. По истечении пяти лет со дня прекращения исполнения приговоров к штрафу или лишению специального права.\n\nВо всех случаях информация должна быть предоставлена при наличии прямо выраженного согласия заинтересованного лица. Также судьи могут требовать информацию в исключительном порядке постановлением, которое может быть основано только на конкретной необходимости использовать судимость как доказательство фактов в судебном процессе.\n\nСуды должны сообщать органам регистрации дату утраты силы записи:\n\n1. Когда прекращаются пожизненные наказания;\n\n2. Когда производится расчет временных наказаний, как условных, так и реально исполняемых;\n\n3. Когда полностью исполнено наказание в виде штрафа или, при его замене тюремным заключением (ст. 21, абз. 2), когда производится расчет назначенного заключения;\n\n4. Когда они объявляют прекращение наказаний в случаях, предусмотренных статьями 65, 68 и 69.\n\nНарушение запрета сообщать сведения считается разглашением тайны в смысле статьи 157, если деяние не образует преступление, наказуемое более строго.",
+        "simpleRu": "Органы с уголовными реестрами не должны сообщать о делах, которые закончились прекращением или оправданием, и обычно не сообщают о задержаниях без уголовного дела. Записи об обвинительных приговорах со временем теряют силу: для условных приговоров через 10 лет, для других лишений свободы через 10 лет после прекращения наказания, для штрафа или лишения права через 5 лет. Информацию можно дать с прямого согласия человека или по исключительному запросу судьи, если она реально нужна как доказательство. Суды должны сообщать дату, когда запись перестает действовать. Незаконное сообщение таких данных считается разглашением тайны по статье 157, если нет более тяжкого преступления.",
+        "sourceTextSha256": "33dc0338a978eba09246fe0babf4b6992f693d6d6fdcc8dbd5a200fea8fb9964",
+        "sourceFingerprint": "sha256:33dc0338a978eba09246fe0babf4b6992f693d6d6fdcc8dbd5a200fea8fb9964",
+        "sourceSpan": {
+          "startLine": 601,
+          "endLine": 624
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-52-se-impondra-reclusion-por-tiempo-indeterminado-098",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 98,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VIII",
+          "ARTICULO 52.- Se impondrá reclusión por tiempo indeterminado como accesoria de la última condena, cuando la reincidencia fuere múltiple e..."
+        ],
+        "officialLabel": "ARTICULO 52.- Se impondrá reclusión por tiempo indeterminado como accesoria de la última condena, cuando la reincidencia fuere múltiple e...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 52.- Se impondrá reclusión por tiempo indeterminado como accesoria de la última condena, cuando la reincidencia fuere múltiple en forma tal que mediaren las siguientes penas anteriores:\n\n1. Cuatro penas privativas de libertad, siendo una de ellas mayor de tres años;\n\n2. Cinco penas privativas de libertad, de tres años o menores.\n\nLos tribunales podrán, por una única vez, dejar en suspenso la aplicación de esta medida accesoria, fundando expresamente su decisión en la forma prevista en el artículo 26.\n",
+        "fullTranslationRu": "СТАТЬЯ 52. Заключение на неопределенный срок назначается как дополнительная мера к последнему приговору, когда рецидив является множественным и имеются следующие прежние наказания:\n\n1. Четыре наказания, связанные с лишением свободы, одно из которых превышает три года;\n\n2. Пять наказаний, связанных с лишением свободы, сроком три года или меньше.\n\nСуды могут один единственный раз приостановить применение этой дополнительной меры, прямо обосновав свое решение в форме, предусмотренной статьей 26.",
+        "simpleRu": "Если рецидив многократный, к последнему приговору могут добавить заключение на неопределенный срок. Это возможно при четырех прошлых лишениях свободы, если одно было больше 3 лет, или при пяти прошлых лишениях свободы до 3 лет. Суд один раз может не применять эту меру, но должен прямо объяснить решение по статье 26.",
+        "sourceTextSha256": "e0782fa0fe96a6b9d31f22d0c7ce46c15246caab210ea9c015be8d00b871c2a2",
+        "sourceFingerprint": "sha256:e0782fa0fe96a6b9d31f22d0c7ce46c15246caab210ea9c015be8d00b871c2a2",
+        "sourceSpan": {
+          "startLine": 625,
+          "endLine": 632
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-53-en-los-casos-del-articulo-anterior-099",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 99,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO VIII",
+          "ARTICULO 53.- En los casos del artículo anterior, transcurridos cinco años del cumplimiento de la reclusión accesoria, el tribunal que hu..."
+        ],
+        "officialLabel": "ARTICULO 53.- En los casos del artículo anterior, transcurridos cinco años del cumplimiento de la reclusión accesoria, el tribunal que hu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 53.- En los casos del artículo anterior, transcurridos cinco años del cumplimiento de la reclusión accesoria, el tribunal que hubiera dictado la última condena o impuesto la pena única estará facultado para otorgarle la libertad condicional, previo informe de la autoridad penitenciaria, en las condiciones compromisorias previstas en el artículo 13, y siempre que el condenado hubiera mantenido buena conducta, demostrando aptitud y hábito para el trabajo, y demás actitudes que permitan suponer verosímilmente que no constituirá un peligro para la sociedad. Transcurridos cinco años de obtenida la libertad condicional el condenado podrá solicitar su libertad definitiva al tribunal que la concedió, el que decidirá según sea el resultado obtenido en el período de prueba y previo informe del patronato, institución o persona digna de confianza, a cuyo cargo haya estado el control de la actividad del liberado. Los condenados con la reclusión accesoria por tiempo indeterminado deberán cumplirla en establecimientos federales.\n\nLa violación por parte del liberado de cualquiera de las condiciones establecidas en el artículo 13 podrá determinar la revocatoria del beneficio acordado y su reintegro al régimen carcelario anterior. Después de transcurridos cinco años de su reintegro al régimen carcelario podrá en los casos de los incisos 1º, 2º, 3º y 5º del artículo 13, solicitar nuevamente su libertad condicional.\n",
+        "fullTranslationRu": "СТАТЬЯ 53. В случаях предыдущей статьи, по истечении пяти лет исполнения дополнительного заключения суд, вынесший последний приговор или назначивший единое наказание, вправе предоставить условно-досрочное освобождение после заключения пенитенциарного органа, на условиях обязательств, предусмотренных статьей 13, и при условии что осужденный сохранял хорошее поведение, показал способность и привычку к труду и иные качества, позволяющие правдоподобно предположить, что он не будет представлять опасность для общества. По истечении пяти лет после получения условно-досрочного освобождения осужденный может просить окончательного освобождения у суда, который его предоставил; суд решает с учетом результата испытательного срока и после заключения патроната, учреждения или надежного лица, контролировавшего деятельность освобожденного. Осужденные к дополнительному заключению на неопределенный срок должны отбывать его в федеральных учреждениях.\n\nНарушение освобожденным любого из условий, установленных статьей 13, может повлечь отмену предоставленной льготы и его возвращение к прежнему тюремному режиму. По истечении пяти лет после возвращения к тюремному режиму он может в случаях пунктов 1, 2, 3 и 5 статьи 13 снова просить условно-досрочное освобождение.",
+        "simpleRu": "После 5 лет дополнительного заключения суд может дать условно-досрочное освобождение, если есть отчет тюремной службы, человек вел себя хорошо, умеет и привык работать и по нему можно ожидать, что он не опасен для общества. Еще через 5 лет такого освобождения можно просить окончательное освобождение. Если освобожденный нарушит условия статьи 13, льготу могут отменить и вернуть его в тюрьму; через 5 лет после возврата он может снова просить освобождение в указанных случаях.",
+        "sourceTextSha256": "cc3fc5e3f7cd9d4976ed807fc6f44bd57a24811c6da833d2d0af1d869bf6300c",
+        "sourceFingerprint": "sha256:cc3fc5e3f7cd9d4976ed807fc6f44bd57a24811c6da833d2d0af1d869bf6300c",
+        "sourceSpan": {
+          "startLine": 633,
+          "endLine": 636
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ix-100",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 100,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IX"
+        ],
+        "officialLabel": "TITULO IX",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO IX\n\nCONCURSO DE DELITOS\n",
+        "fullTranslationRu": "РАЗДЕЛ IX\n\nСОВОКУПНОСТЬ ПРЕСТУПЛЕНИЙ",
+        "simpleRu": "Раздел IX объясняет, как назначают наказание, когда есть несколько преступлений или одно деяние подходит под несколько наказаний.",
+        "sourceTextSha256": "ddad1a541cc55a702f7b8e4887df3d930f8598b255d746a4336eb8c8ac71b034",
+        "sourceFingerprint": "sha256:ddad1a541cc55a702f7b8e4887df3d930f8598b255d746a4336eb8c8ac71b034",
+        "sourceSpan": {
+          "startLine": 637,
+          "endLine": 640
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-54-cuando-un-hecho-cayere-bajo-mas-101",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 101,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IX",
+          "ARTICULO 54.- Cuando un hecho cayere bajo más de una sanción penal, se aplicará solamente la que fijare pena mayor."
+        ],
+        "officialLabel": "ARTICULO 54.- Cuando un hecho cayere bajo más de una sanción penal, se aplicará solamente la que fijare pena mayor.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 54.- Cuando un hecho cayere bajo más de una sanción penal, se aplicará solamente la que fijare pena mayor.\n",
+        "fullTranslationRu": "СТАТЬЯ 54. Когда одно деяние подпадает более чем под одну уголовную санкцию, применяется только та, которая устанавливает более строгое наказание.",
+        "simpleRu": "Если один поступок подходит сразу под несколько уголовных наказаний, применяют только самое строгое из них.",
+        "sourceTextSha256": "8ad6875bd3e5caed24db32c5bab11dde0c70408e79476c490d1acc8eac822329",
+        "sourceFingerprint": "sha256:8ad6875bd3e5caed24db32c5bab11dde0c70408e79476c490d1acc8eac822329",
+        "sourceSpan": {
+          "startLine": 641,
+          "endLine": 642
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-55-cuando-concurrieren-varios-hechos-independientes-reprimidos-102",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 102,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IX",
+          "ARTICULO 55.- Cuando concurrieren varios hechos independientes reprimidos con una misma especie de pena, la pena aplicable al reo tendrá ..."
+        ],
+        "officialLabel": "ARTICULO 55.- Cuando concurrieren varios hechos independientes reprimidos con una misma especie de pena, la pena aplicable al reo tendrá ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 55.- Cuando concurrieren varios hechos independientes reprimidos con una misma especie de pena, la pena aplicable al reo tendrá como mínimo, el mínimo mayor y como máximo, la suma aritmética de las penas máximas correspondientes a los diversos hechos.\n\nSin embargo, esta suma no podrá exceder de (50) cincuenta años de reclusión o prisión.\n\n(Artículo sustituido por art. 1° de la Ley N° 25.928 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=98502] B.O. 10/9/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 55. Когда одновременно имеются несколько самостоятельных деяний, наказуемых одним и тем же видом наказания, применимое к осужденному наказание имеет минимумом наибольший минимум, а максимумом - арифметическую сумму максимальных наказаний, соответствующих разным деяниям.\n\nОднако эта сумма не может превышать (50) пятьдесят лет reclusión или prisión.\n\n(Статья заменена статьей 1 Закона N 25.928 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=98502], B.O. 10/9/2004)",
+        "simpleRu": "Если человек совершил несколько отдельных преступлений с одним видом наказания, минимум берут как самый высокий минимум из этих преступлений, а максимум складывают из их максимальных сроков. Но общий срок reclusión или prisión не может быть больше 50 лет.",
+        "sourceTextSha256": "cf874682e1130ed199827ddb7627d71b942c84c79ba5bb5744117eca7371c1c3",
+        "sourceFingerprint": "sha256:cf874682e1130ed199827ddb7627d71b942c84c79ba5bb5744117eca7371c1c3",
+        "sourceSpan": {
+          "startLine": 643,
+          "endLine": 648
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-56-cuando-concurrieren-varios-hechos-independientes-reprimidos-103",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 103,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IX",
+          "ARTICULO 56.- Cuando concurrieren varios hechos independientes reprimidos con penas divisibles de reclusión o prisión se aplicará la pena..."
+        ],
+        "officialLabel": "ARTICULO 56.- Cuando concurrieren varios hechos independientes reprimidos con penas divisibles de reclusión o prisión se aplicará la pena...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 56.- Cuando concurrieren varios hechos independientes reprimidos con penas divisibles de reclusión o prisión se aplicará la pena más grave, teniendo en cuenta los delitos de pena menor.\n\nSi alguna de las penas no fuere divisible, se aplicará ésta únicamente, salvo el caso en que concurrieren la de prisión perpetua y la de reclusión temporal, en que se aplicará reclusión perpetua. La inhabilitación y la multa se aplicarán siempre, sin sujeción a lo dispuesto en el párrafo primero.\n",
+        "fullTranslationRu": "СТАТЬЯ 56. Когда одновременно имеются несколько самостоятельных деяний, наказуемых делимыми наказаниями reclusión или prisión, применяется более строгое наказание с учетом преступлений, за которые предусмотрено менее строгое наказание.\n\nЕсли какое-либо из наказаний не является делимым, применяется только оно, кроме случая, когда одновременно имеются пожизненное prisión и временное reclusión: тогда применяется пожизненное reclusión. Лишение специального права и штраф применяются всегда, без подчинения правилу первого абзаца.",
+        "simpleRu": "Если за несколько отдельных преступлений предусмотрены сроки reclusión или prisión, суд применяет более строгое наказание и учитывает менее тяжкие преступления. Если одно наказание неделимое, применяют его. Исключение: при пожизненной prisión и временной reclusión применяют пожизненную reclusión. Лишение права и штраф все равно добавляются всегда.",
+        "sourceTextSha256": "59495392778280144eceebc0cd7740c739c4ab670d3922f541affb04b7859f53",
+        "sourceFingerprint": "sha256:59495392778280144eceebc0cd7740c739c4ab670d3922f541affb04b7859f53",
+        "sourceSpan": {
+          "startLine": 649,
+          "endLine": 652
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-57-a-los-efectos-del-articulo-anterior-104",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 104,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IX",
+          "ARTICULO 57.- A los efectos del artículo anterior, la gravedad relativa de las penas de diferente naturaleza se determinará por el orden ..."
+        ],
+        "officialLabel": "ARTICULO 57.- A los efectos del artículo anterior, la gravedad relativa de las penas de diferente naturaleza se determinará por el orden ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 57.- A los efectos del artículo anterior, la gravedad relativa de las penas de diferente naturaleza se determinará por el orden en que se hallan enumeradas en el artículo 5º.\n",
+        "fullTranslationRu": "СТАТЬЯ 57. Для целей предыдущей статьи относительная тяжесть наказаний разной природы определяется порядком, в котором они перечислены в статье 5.",
+        "simpleRu": "Чтобы понять, какое наказание тяжелее по статье 56, смотрят порядок наказаний в статье 5.",
+        "sourceTextSha256": "15c3b5fb9a6718d312c69a2b34eaca6720367466e3e15237c62f6cc8cbdacdce",
+        "sourceFingerprint": "sha256:15c3b5fb9a6718d312c69a2b34eaca6720367466e3e15237c62f6cc8cbdacdce",
+        "sourceSpan": {
+          "startLine": 653,
+          "endLine": 654
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-58-las-reglas-precedentes-se-aplicaran-tambien-105",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 105,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO IX",
+          "ARTICULO 58.- Las reglas precedentes se aplicarán también en el caso en que después de una condena pronunciada por sentencia firme se deb..."
+        ],
+        "officialLabel": "ARTICULO 58.- Las reglas precedentes se aplicarán también en el caso en que después de una condena pronunciada por sentencia firme se deb...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 58.- Las reglas precedentes se aplicarán también en el caso en que después de una condena pronunciada por sentencia firme se deba juzgar a la misma persona que esté cumpliendo pena por otro hecho distinto; o cuando se hubieren dictado dos (2) o más sentencias firmes con violación de dichas reglas. Corresponderá al juez que haya aplicado la pena mayor dictar, a pedido de parte, su única sentencia, sin alterar las declaraciones de hechos contenidas en las otras.\n\nEn la unificación de condenas, la pena resultante será la suma aritmética de las penas impuestas en las sentencias consideradas para el dictado de la pena única.\n\nCuando por cualquier causa la justicia federal, en autos en que ella haya intervenido, no pueda aplicar esta regla, lo hará la justicia ordinaria nacional o provincial que conoció de la infracción penal, según sea el caso.\n\n(Artículo sustituido por art. 2º de la Ley Nº 27.785 [https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=410382] B.O. 7/3/2025. Vigencia: a partir del día siguiente al de su publicación en el Boletín Oficial de la República Argentina.)\n",
+        "fullTranslationRu": "СТАТЬЯ 58. Предыдущие правила применяются также, когда после приговора, вынесенного окончательным решением, необходимо судить то же лицо, которое отбывает наказание за другое деяние; или когда были вынесены два (2) или более окончательных приговора с нарушением этих правил. Судья, назначивший более строгое наказание, по просьбе стороны должен вынести единый приговор, не изменяя установленные факты, содержащиеся в других приговорах.\n\nПри объединении приговоров итоговое наказание является арифметической суммой наказаний, назначенных в приговорах, учитываемых для вынесения единого наказания.\n\nЕсли по какой-либо причине федеральная юстиция в делах, где она участвовала, не может применить это правило, его применяет обычная национальная или провинциальная юстиция, рассматривавшая уголовное нарушение, в зависимости от случая.\n\n(Статья заменена статьей 2 Закона N 27.785 [https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=410382], B.O. 7/3/2025. Вступление в силу: со дня, следующего за днем публикации в Официальном вестнике Аргентинской Республики.)",
+        "simpleRu": "Эти правила используют и тогда, когда человека уже окончательно осудили, но потом надо судить его за другое дело, пока он отбывает наказание, или когда несколько окончательных приговоров вынесли с нарушением правил. Судья, назначивший самое строгое наказание, по просьбе стороны выносит единый приговор, не меняя факты из других приговоров. При объединении складывают наказания из учитываемых приговоров. Если федеральный суд не может применить правило, это делает соответствующий обычный национальный или провинциальный суд.",
+        "sourceTextSha256": "9c6553eb2af2dc53ec5b2599d8ae9bc8b67cf135c283144e3b0a353124a8b40d",
+        "sourceFingerprint": "sha256:9c6553eb2af2dc53ec5b2599d8ae9bc8b67cf135c283144e3b0a353124a8b40d",
+        "sourceSpan": {
+          "startLine": 655,
+          "endLine": 662
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-x-106",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 106,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X"
+        ],
+        "officialLabel": "TITULO X",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO X\n\nEXTINCION DE ACCIONES Y DE PENAS\n",
+        "fullTranslationRu": "РАЗДЕЛ X\n\nПРЕКРАЩЕНИЕ УГОЛОВНЫХ ПРЕСЛЕДОВАНИЙ И НАКАЗАНИЙ",
+        "simpleRu": "Раздел X говорит, когда прекращается уголовное преследование и когда прекращаются наказания.",
+        "sourceTextSha256": "912056f43a924a8ce3b547a5b7614320f9de686f6ea16e295d68fd77d743b225",
+        "sourceFingerprint": "sha256:912056f43a924a8ce3b547a5b7614320f9de686f6ea16e295d68fd77d743b225",
+        "sourceSpan": {
+          "startLine": 663,
+          "endLine": 666
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-59-la-accion-penal-se-extinguira-107",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 107,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 59.- La acción penal se extinguirá:"
+        ],
+        "officialLabel": "ARTICULO 59.- La acción penal se extinguirá:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 59.- La acción penal se extinguirá:\n\n1) Por la muerte del imputado;\n\n2) Por la amnistía;\n\n3) Por la prescripción;\n\n4) Por la renuncia del agraviado, respecto de los delitos de acción privada;\n\n5) Por aplicación de un criterio de oportunidad, de conformidad con lo previsto en las leyes procesales correspondientes;\n\n6) Por conciliación o reparación integral del perjuicio, de conformidad con lo previsto en las leyes procesales correspondientes;\n\n7) Por el cumplimiento de las condiciones establecidas para la suspensión del proceso a prueba, de conformidad con lo previsto en este Código y las leyes procesales correspondientes.\n\n(Artículo sustituido por art. 1° de la Ley N° 27.147 [/infolegInternet/verNorma.do?id=248179] B.O. 18/06/2015)\n",
+        "fullTranslationRu": "СТАТЬЯ 59. Уголовное преследование прекращается:\n\n1) вследствие смерти обвиняемого;\n\n2) вследствие амнистии;\n\n3) вследствие истечения срока давности;\n\n4) вследствие отказа потерпевшего, в отношении преступлений частного обвинения;\n\n5) вследствие применения критерия целесообразности в соответствии с соответствующими процессуальными законами;\n\n6) вследствие примирения или полного возмещения вреда в соответствии с соответствующими процессуальными законами;\n\n7) вследствие выполнения условий, установленных для приостановления процесса с испытанием, в соответствии с этим Кодексом и соответствующими процессуальными законами.\n\n(Статья заменена статьей 1 Закона N 27.147 [/infolegInternet/verNorma.do?id=248179], B.O. 18/06/2015)",
+        "simpleRu": "Уголовное преследование заканчивается, если обвиняемый умер, была амнистия, прошла давность, потерпевший отказался от частного обвинения, применили критерий целесообразности, стороны примирились или вред полностью возместили, либо человек выполнил условия приостановления процесса с испытанием. Для пунктов 5-7 надо смотреть процессуальные законы и сам Кодекс.",
+        "sourceTextSha256": "dd70b6508d9213f7057c00631ff628701c548bc73c4371696d32e1ad6a2dfdab",
+        "sourceFingerprint": "sha256:dd70b6508d9213f7057c00631ff628701c548bc73c4371696d32e1ad6a2dfdab",
+        "sourceSpan": {
+          "startLine": 667,
+          "endLine": 684
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-60-la-renuncia-de-la-persona-ofendida-108",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 108,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 60.- La renuncia de la persona ofendida al ejercicio de la acción penal sólo perjudicará al renunciante y a sus herederos."
+        ],
+        "officialLabel": "ARTICULO 60.- La renuncia de la persona ofendida al ejercicio de la acción penal sólo perjudicará al renunciante y a sus herederos.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 60.- La renuncia de la persona ofendida al ejercicio de la acción penal sólo perjudicará al renunciante y a sus herederos.\n",
+        "fullTranslationRu": "СТАТЬЯ 60. Отказ потерпевшего лица от осуществления уголовного преследования вредит только отказавшемуся лицу и его наследникам.",
+        "simpleRu": "Если потерпевший отказывается от уголовного преследования, последствия такого отказа относятся только к нему и его наследникам.",
+        "sourceTextSha256": "90b5dabd77374c6060bef2ce714178cbde8ed02e397fc0d5cd1ba1c204e5ae12",
+        "sourceFingerprint": "sha256:90b5dabd77374c6060bef2ce714178cbde8ed02e397fc0d5cd1ba1c204e5ae12",
+        "sourceSpan": {
+          "startLine": 685,
+          "endLine": 686
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-61-la-amnistia-extinguira-la-accion-penal-109",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 109,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 61.- La amnistía extinguirá la acción penal y hará cesar la condena y todos sus efectos, con excepción de las indemnizaciones de..."
+        ],
+        "officialLabel": "ARTICULO 61.- La amnistía extinguirá la acción penal y hará cesar la condena y todos sus efectos, con excepción de las indemnizaciones de...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 61.- La amnistía extinguirá la acción penal y hará cesar la condena y todos sus efectos, con excepción de las indemnizaciones debidas a particulares.\n",
+        "fullTranslationRu": "СТАТЬЯ 61. Амнистия прекращает уголовное преследование и прекращает приговор и все его последствия, за исключением возмещений, причитающихся частным лицам.",
+        "simpleRu": "Амнистия останавливает уголовное дело и прекращает приговор с его последствиями, но не отменяет обязанность выплатить компенсации частным лицам.",
+        "sourceTextSha256": "b563930be52f6a2cdcd3737624a9617b6a27172ed6845ea83a2bfa35d106311e",
+        "sourceFingerprint": "sha256:b563930be52f6a2cdcd3737624a9617b6a27172ed6845ea83a2bfa35d106311e",
+        "sourceSpan": {
+          "startLine": 687,
+          "endLine": 688
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-62-la-accion-penal-se-prescribira-durante-110",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 110,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 62.- La acción penal se prescribirá durante el tiempo fijado a continuación:"
+        ],
+        "officialLabel": "ARTICULO 62.- La acción penal se prescribirá durante el tiempo fijado a continuación:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 62.- La acción penal se prescribirá durante el tiempo fijado a continuación:\n\n1º. A los quince años, cuando se tratare de delitos cuya pena fuere la de reclusión o prisión perpetua;\n\n2º. Después de transcurrido el máximo de duración de la pena señalada para el delito, si se tratare de hechos reprimidos con reclusión o prisión, no pudiendo, en ningún caso, el término de la prescripción exceder de doce años ni bajar de dos años;\n\n3º. A los cinco años, cuando se tratare de un hecho reprimido únicamente con inhabilitación perpetua;\n\n4º. Al año, cuando se tratare de un hecho reprimido únicamente con inhabilitación temporal;\n\n5º. A los dos años, cuando se tratare de hechos reprimidos con multa.\n",
+        "fullTranslationRu": "СТАТЬЯ 62. Уголовное преследование погашается давностью в следующие сроки:\n\n1. через пятнадцать лет, когда речь идет о преступлениях, наказанием за которые является пожизненное reclusión или prisión;\n\n2. после истечения максимального срока наказания, установленного за преступление, если речь идет о деяниях, наказуемых reclusión или prisión, причем срок давности ни в каком случае не может превышать двенадцати лет и быть меньше двух лет;\n\n3. через пять лет, когда речь идет о деянии, наказуемом только пожизненным лишением специального права;\n\n4. через один год, когда речь идет о деянии, наказуемом только временным лишением специального права;\n\n5. через два года, когда речь идет о деяниях, наказуемых штрафом.",
+        "simpleRu": "Статья 62 задает сроки давности для уголовного преследования. Для преступлений с пожизненной reclusión или prisión срок 15 лет. Для преступлений со сроком reclusión или prisión срок равен максимальному наказанию, но не больше 12 лет и не меньше 2 лет. Для пожизннего лишения права - 5 лет, для временного лишения права - 1 год, для штрафа - 2 года.",
+        "sourceTextSha256": "18eb91fa38808033e22d7d338529416d71d64bf5be0b22c00d4c8722bd2a0196",
+        "sourceFingerprint": "sha256:18eb91fa38808033e22d7d338529416d71d64bf5be0b22c00d4c8722bd2a0196",
+        "sourceSpan": {
+          "startLine": 689,
+          "endLine": 700
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-63-la-prescripcion-de-la-accion-empezara-111",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 111,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 63.- La prescripción de la acción empezará a correr desde la medianoche del día en que se cometió el delito o, si éste fuese con..."
+        ],
+        "officialLabel": "ARTICULO 63.- La prescripción de la acción empezará a correr desde la medianoche del día en que se cometió el delito o, si éste fuese con...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 63.- La prescripción de la acción empezará a correr desde la medianoche del día en que se cometió el delito o, si éste fuese continuo, en que cesó de cometerse.\n\n(Segundo y tercer párrafos derogados por art. 3° de la Ley N° 27.206 [/infolegInternet/verNorma.do?id=254759] B.O. 10/11/2015)\n",
+        "fullTranslationRu": "СТАТЬЯ 63. Давность уголовного преследования начинает течь с полуночи дня, когда было совершено преступление, или, если оно было продолжаемым, когда оно перестало совершаться.\n\n(Второй и третий абзацы отменены статьей 3 Закона N 27.206 [/infolegInternet/verNorma.do?id=254759], B.O. 10/11/2015)",
+        "simpleRu": "Срок давности начинается с полуночи дня преступления. Если преступление продолжалось, срок начинается с полуночи дня, когда оно закончилось. Второй и третий абзацы этой статьи отменены.",
+        "sourceTextSha256": "80ac0b6528f34e920fdb1a41d43ef26f44423f02766d5e269627a3ed0e92c3b5",
+        "sourceFingerprint": "sha256:80ac0b6528f34e920fdb1a41d43ef26f44423f02766d5e269627a3ed0e92c3b5",
+        "sourceSpan": {
+          "startLine": 701,
+          "endLine": 704
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-64-la-accion-penal-por-delito-reprimido-112",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 112,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 64.- La acción penal por delito reprimido con multa se extinguirá en cualquier estado de la instrucción y mientras no se haya in..."
+        ],
+        "officialLabel": "ARTICULO 64.- La acción penal por delito reprimido con multa se extinguirá en cualquier estado de la instrucción y mientras no se haya in...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 64.- La acción penal por delito reprimido con multa se extinguirá en cualquier estado de la instrucción y mientras no se haya iniciado el juicio, por el pago voluntario del mínimo de la multa correspondiente y la reparación de los daños causados por el delito.\n\nSi se hubiese iniciado el juicio deberá pagarse el máximo de la multa correspondiente, además de repararse los daños causados por el delito.\n\nEn ambos casos el imputado deberá abandonar en favor del estado, los objetos que presumiblemente resultarían decomisados en caso que recayera condena.\n\nEl modo de extinción de la acción penal previsto en este artículo podrá ser admitido por segunda vez si el nuevo delito ha sido cometido después de haber transcurrido ocho años a partir de la fecha de la resolución que hubiese declarado la extinción de la acción penal en la causa anterior.\n\n(Artículo sustituido por art. 6° de la Ley Nº 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715] B.O. 19/5/1994)\n",
+        "fullTranslationRu": "СТАТЬЯ 64. Уголовное преследование за преступление, наказуемое штрафом, прекращается на любой стадии предварительного расследования и пока суд не начался, путем добровольной уплаты минимального соответствующего штрафа и возмещения вреда, причиненного преступлением.\n\nЕсли суд уже начался, должен быть уплачен максимальный соответствующий штраф, кроме возмещения вреда, причиненного преступлением.\n\nВ обоих случаях обвиняемый должен отказаться в пользу государства от предметов, которые предположительно подлежали бы конфискации в случае обвинительного приговора.\n\nСпособ прекращения уголовного преследования, предусмотренный этой статьей, может быть допущен второй раз, если новое преступление совершено после истечения восьми лет с даты решения, которым было объявлено прекращение уголовного преследования в предыдущем деле.\n\n(Статья заменена статьей 6 Закона N 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715], B.O. 19/5/1994)",
+        "simpleRu": "Если преступление наказывается штрафом, дело можно прекратить до суда, добровольно заплатив минимальный штраф и возместив вред. Если суд уже начался, надо заплатить максимальный штраф и тоже возместить вред. В обоих случаях обвиняемый отдает государству вещи, которые могли бы конфисковать. Второй раз так можно сделать только если новое преступление совершено через 8 лет после решения о прекращении предыдущего дела.",
+        "sourceTextSha256": "450375f8fe19f238df59b49de797be0d6051a9db01caf38342e038d02212b23b",
+        "sourceFingerprint": "sha256:450375f8fe19f238df59b49de797be0d6051a9db01caf38342e038d02212b23b",
+        "sourceSpan": {
+          "startLine": 705,
+          "endLine": 714
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-65-las-penas-se-prescriben-en-los-113",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 113,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 65.- Las penas se prescriben en los términos siguientes:"
+        ],
+        "officialLabel": "ARTICULO 65.- Las penas se prescriben en los términos siguientes:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 65.- Las penas se prescriben en los términos siguientes:\n\n1º. La de reclusión perpetua, a los veinte años;\n\n2º. La de prisión perpetua, a los veinte años;\n\n3º. La de reclusión o prisión temporal, en un tiempo igual al de la condena;\n\n4º. La de multa, a los dos años.\n",
+        "fullTranslationRu": "СТАТЬЯ 65. Наказания погашаются давностью в следующие сроки:\n\n1. пожизненное reclusión - через двадцать лет;\n\n2. пожизненное prisión - через двадцать лет;\n\n3. временное reclusión или prisión - за срок, равный сроку приговора;\n\n4. штраф - через два года.",
+        "simpleRu": "Сроки давности для наказаний такие: пожизненная reclusión и пожизненная prisión - 20 лет; временная reclusión или prisión - срок, равный сроку наказания; штраф - 2 года.",
+        "sourceTextSha256": "f5b927149316a3e025a9a61512124d4ca82fe2724cdb6ed473a8b1e9db2d7b62",
+        "sourceFingerprint": "sha256:f5b927149316a3e025a9a61512124d4ca82fe2724cdb6ed473a8b1e9db2d7b62",
+        "sourceSpan": {
+          "startLine": 715,
+          "endLine": 724
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-66-la-prescripcion-de-la-pena-empezara-114",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 114,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 66.- La prescripción de la pena empezará a correr desde la medianoche del día en que se notificare al reo la sentencia firme o d..."
+        ],
+        "officialLabel": "ARTICULO 66.- La prescripción de la pena empezará a correr desde la medianoche del día en que se notificare al reo la sentencia firme o d...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 66.- La prescripción de la pena empezará a correr desde la medianoche del día en que se notificare al reo la sentencia firme o desde el quebrantamiento de la condena, si ésta hubiese empezado a cumplirse.\n",
+        "fullTranslationRu": "СТАТЬЯ 66. Давность наказания начинает течь с полуночи дня, когда осужденному сообщили об окончательном приговоре, или с момента нарушения исполнения приговора, если его уже начали исполнять.",
+        "simpleRu": "Срок давности наказания начинается с полуночи дня уведомления об окончательном приговоре. Если наказание уже начали исполнять, но исполнение было нарушено, срок считают с этого нарушения.",
+        "sourceTextSha256": "3de19ec7b8004ad1549c182457284bf29706d85bbc715308603f76cecc9cfa9d",
+        "sourceFingerprint": "sha256:3de19ec7b8004ad1549c182457284bf29706d85bbc715308603f76cecc9cfa9d",
+        "sourceSpan": {
+          "startLine": 725,
+          "endLine": 726
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-67-la-prescripcion-se-suspende-en-los-115",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 115,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 67.- La prescripción se suspende en los casos de los delitos para cuyo juzgamiento sea necesaria la resolución de cuestiones pre..."
+        ],
+        "officialLabel": "ARTICULO 67.- La prescripción se suspende en los casos de los delitos para cuyo juzgamiento sea necesaria la resolución de cuestiones pre...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 67.- La prescripción se suspende en los casos de los delitos para cuyo juzgamiento sea necesaria la resolución de cuestiones previas o prejudiciales, que deban ser resueltas en otro juicio. Terminada la causa de la suspensión, la prescripción sigue su curso.\n\nLa prescripción también se suspende en los casos de delitos cometidos en el ejercicio de la función pública, para todos los que hubiesen participado, mientras cualquiera de ellos se encuentre desempeñando un cargo público.\n\nEl curso de la prescripción de la acción penal correspondiente a los delitos previstos en los artículos 226 y 227 bis, se suspenderá hasta el restablecimiento del orden constitucional.\n\nEn los delitos previstos en los artículos 119, 120, 125, 125 bis, 128, 129 —in fine—, 130 —párrafos segundo y tercero—, 145 bis y 145 ter del Código Penal, se suspende la prescripción mientras la víctima sea menor de edad y hasta que habiendo cumplido la mayoría de edad formule por sí la denuncia o ratifique la formulada por sus representantes legales durante su minoría de edad.\n\nSi como consecuencia de cualquiera de los delitos indicados hubiera ocurrido la muerte del menor de edad, comenzará a correr desde la medianoche del día en que aquél hubiera alcanzado la mayoría de edad.\n\nLa prescripción se interrumpe solamente por:\n\na) La comisión de otro delito;\n\nb) El primer llamado efectuado a una persona, en el marco de un proceso judicial, con el objeto de recibirle declaración indagatoria por el delito investigado;\n\nc) El requerimiento acusatorio de apertura o elevación a juicio, efectuado en la forma que lo establezca la legislación procesal correspondiente;\n\nd) El auto de citación a juicio o acto procesal equivalente; y\n\ne) El dictado de sentencia condenatoria, aunque la misma no se encuentre firme.\n\nLa prescripción corre, se suspende o se interrumpe separadamente para cada delito y para cada uno de sus partícipes, con la excepción prevista en el segundo párrafo de este artículo.\n\n(Artículo sustituido por art. 2° de la Ley N° 27.206 [/infolegInternet/verNorma.do?id=254759] B.O. 10/11/2015)\n",
+        "fullTranslationRu": "СТАТЬЯ 67. Давность приостанавливается по преступлениям, для рассмотрения которых необходимо решить предварительные или преюдициальные вопросы, подлежащие разрешению в другом процессе. После окончания причины приостановления давность продолжает течь.\n\nДавность также приостанавливается по преступлениям, совершенным при исполнении публичной функции, для всех участвовавших лиц, пока любое из них занимает публичную должность.\n\nТечение давности уголовного преследования по преступлениям, предусмотренным статьями 226 и 227 bis, приостанавливается до восстановления конституционного порядка.\n\nПо преступлениям, предусмотренным статьями 119, 120, 125, 125 bis, 128, 129 - in fine -, 130 - второй и третий абзацы -, 145 bis и 145 ter Уголовного кодекса, давность приостанавливается, пока потерпевший является несовершеннолетним, и до того момента, когда, достигнув совершеннолетия, он сам подаст заявление или подтвердит заявление, поданное его законными представителями во время несовершеннолетия.\n\nЕсли вследствие любого из указанных преступлений наступила смерть несовершеннолетнего, давность начнет течь с полуночи дня, когда он достиг бы совершеннолетия.\n\nДавность прерывается только:\n\na) совершением другого преступления;\n\nb) первым вызовом лица в рамках судебного процесса с целью получить от него следственное показание по расследуемому преступлению;\n\nc) обвинительным требованием об открытии или передаче дела в суд, совершенным в форме, установленной соответствующим процессуальным законодательством;\n\nd) постановлением о назначении дела к судебному разбирательству или равнозначным процессуальным актом; и\n\ne) вынесением обвинительного приговора, даже если он не вступил в законную силу.\n\nДавность течет, приостанавливается или прерывается отдельно для каждого преступления и каждого из его участников, за исключением случая, предусмотренного вторым абзацем этой статьи.\n\n(Статья заменена статьей 2 Закона N 27.206 [/infolegInternet/verNorma.do?id=254759], B.O. 10/11/2015)",
+        "simpleRu": "Давность может приостанавливаться, если сначала надо решить важный вопрос в другом процессе. Для преступлений публичных должностных лиц она приостанавливается, пока любой участник занимает публичную должность. Для статей 226 и 227 bis - до восстановления конституционного порядка. По указанным статьям о преступлениях против несовершеннолетних срок ждет, пока потерпевший станет взрослым и сам подаст или подтвердит заявление; если несовершеннолетний умер, срок начинается с дня, когда он достиг бы совершеннолетия. Давность прерывается только новым преступлением, первым вызовом на допрос как обвиняемого, обвинительным требованием о суде, назначением суда или обвинительным приговором. Все считается отдельно для каждого преступления и участника, кроме исключения во втором абзаце.",
+        "sourceTextSha256": "6987f18e161647a4410be63b42cd9b4e01bc7554d60ace521b01f6a577053c0b",
+        "sourceFingerprint": "sha256:6987f18e161647a4410be63b42cd9b4e01bc7554d60ace521b01f6a577053c0b",
+        "sourceSpan": {
+          "startLine": 727,
+          "endLine": 752
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-68-el-indulto-del-reo-extinguira-la-116",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 116,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 68.- El indulto del reo extinguirá la pena y sus efectos, con excepción de las indemnizaciones debidas a particulares."
+        ],
+        "officialLabel": "ARTICULO 68.- El indulto del reo extinguirá la pena y sus efectos, con excepción de las indemnizaciones debidas a particulares.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 68.- El indulto del reo extinguirá la pena y sus efectos, con excepción de las indemnizaciones debidas a particulares.\n",
+        "fullTranslationRu": "СТАТЬЯ 68. Помилование осужденного прекращает наказание и его последствия, за исключением возмещений, причитающихся частным лицам.",
+        "simpleRu": "Помилование прекращает наказание и его последствия, но не отменяет обязанность выплатить компенсации частным лицам.",
+        "sourceTextSha256": "34b4df1f7b820bdcfb83421b78c59c7aa13b99f621c8720681b36185cd5b8775",
+        "sourceFingerprint": "sha256:34b4df1f7b820bdcfb83421b78c59c7aa13b99f621c8720681b36185cd5b8775",
+        "sourceSpan": {
+          "startLine": 753,
+          "endLine": 754
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-69-el-perdon-de-la-parte-ofendida-117",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 117,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 69.- El perdón de la parte ofendida extinguirá la pena impuesta por delito de los enumerados en el artículo 73."
+        ],
+        "officialLabel": "ARTICULO 69.- El perdón de la parte ofendida extinguirá la pena impuesta por delito de los enumerados en el artículo 73.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 69.- El perdón de la parte ofendida extinguirá la pena impuesta por delito de los enumerados en el artículo 73.\n\nSi hubiere varios partícipes, el perdón en favor de uno de ellos aprovechará a los demás.\n",
+        "fullTranslationRu": "СТАТЬЯ 69. Прощение потерпевшей стороны прекращает наказание, назначенное за преступление из перечисленных в статье 73.\n\nЕсли есть несколько участников, прощение в пользу одного из них распространяется и на остальных.",
+        "simpleRu": "Если потерпевший прощает по преступлению из статьи 73, назначенное наказание прекращается. Если участников несколько, прощение одного помогает и другим.",
+        "sourceTextSha256": "eb7e400f8376f2b6201166f86960b621cfbf74a3cdc2eb1cd6b55fecfe627e9a",
+        "sourceFingerprint": "sha256:eb7e400f8376f2b6201166f86960b621cfbf74a3cdc2eb1cd6b55fecfe627e9a",
+        "sourceSpan": {
+          "startLine": 755,
+          "endLine": 758
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-70-las-indemnizaciones-pecuniarias-inherentes-a-las-118",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 118,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO X",
+          "ARTICULO 70.- Las indemnizaciones pecuniarias inherentes a las penas, podrán hacerse efectivas sobre los bienes propios del condenado, au..."
+        ],
+        "officialLabel": "ARTICULO 70.- Las indemnizaciones pecuniarias inherentes a las penas, podrán hacerse efectivas sobre los bienes propios del condenado, au...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 70.- Las indemnizaciones pecuniarias inherentes a las penas, podrán hacerse efectivas sobre los bienes propios del condenado, aun después de muerto.\n",
+        "fullTranslationRu": "СТАТЬЯ 70. Денежные возмещения, связанные с наказаниями, могут взыскиваться из собственного имущества осужденного даже после его смерти.",
+        "simpleRu": "Денежные компенсации, связанные с наказанием, можно взыскивать из имущества осужденного даже после его смерти.",
+        "sourceTextSha256": "02d6050137ca29a69f237ac1400e3d2b07e47a5d0e1474e47d71d6738842212b",
+        "sourceFingerprint": "sha256:02d6050137ca29a69f237ac1400e3d2b07e47a5d0e1474e47d71d6738842212b",
+        "sourceSpan": {
+          "startLine": 759,
+          "endLine": 760
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xi-119",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 119,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XI"
+        ],
+        "officialLabel": "TITULO XI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XI\n\nDEL EJERCICIO DE LAS ACCIONES\n",
+        "fullTranslationRu": "РАЗДЕЛ XI\n\nОБ ОСУЩЕСТВЛЕНИИ УГОЛОВНЫХ ПРЕСЛЕДОВАНИЙ",
+        "simpleRu": "Раздел XI объясняет, кто и как начинает уголовное преследование по разным видам преступлений.",
+        "sourceTextSha256": "afe3a39e098a6e0eb46db6197cc7a1f1650a4570252567a830c52da741d5a0c9",
+        "sourceFingerprint": "sha256:afe3a39e098a6e0eb46db6197cc7a1f1650a4570252567a830c52da741d5a0c9",
+        "sourceSpan": {
+          "startLine": 761,
+          "endLine": 764
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-71-sin-perjuicio-de-las-reglas-de-120",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 120,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XI",
+          "ARTICULO 71.- Sin perjuicio de las reglas de disponibilidad de la acción penal previstas en la legislación procesal, deberán iniciarse de..."
+        ],
+        "officialLabel": "ARTICULO 71.- Sin perjuicio de las reglas de disponibilidad de la acción penal previstas en la legislación procesal, deberán iniciarse de...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 71.- Sin perjuicio de las reglas de disponibilidad de la acción penal previstas en la legislación procesal, deberán iniciarse de oficio todas las acciones penales, con excepción de las siguientes:\n\n1) Las que dependieren de instancia privada;\n\n2) Las acciones privadas.\n\n(Artículo sustituido por art. 2° de la Ley N° 27.147 [/infolegInternet/verNorma.do?id=248179] B.O. 18/06/2015)\n",
+        "fullTranslationRu": "СТАТЬЯ 71. Без ущерба для правил распоряжения уголовным преследованием, предусмотренных процессуальным законодательством, все уголовные преследования должны начинаться по инициативе государства, за исключением следующих:\n\n1) тех, которые зависят от частной инициативы;\n\n2) частных преследований.\n\n(Статья заменена статьей 2 Закона N 27.147 [/infolegInternet/verNorma.do?id=248179], B.O. 18/06/2015)",
+        "simpleRu": "По общему правилу уголовные дела начинаются государством само. Исключения: дела, которые зависят от заявления потерпевшего, и частные уголовные дела. Процессуальные законы могут устанавливать правила распоряжения преследованием.",
+        "sourceTextSha256": "69bbd07a1a56fed6f52c60868d0261bf478abe39e73a0575686465d9695b2bb0",
+        "sourceFingerprint": "sha256:69bbd07a1a56fed6f52c60868d0261bf478abe39e73a0575686465d9695b2bb0",
+        "sourceSpan": {
+          "startLine": 765,
+          "endLine": 772
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-72-son-acciones-dependientes-de-instancia-privada-121",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 121,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XI",
+          "ARTICULO 72.- Son acciones dependientes de instancia privada las que nacen de los siguientes delitos:"
+        ],
+        "officialLabel": "ARTICULO 72.- Son acciones dependientes de instancia privada las que nacen de los siguientes delitos:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 72.- Son acciones dependientes de instancia privada las que nacen de los siguientes delitos:\n\n1. Los previstos en los artículos 119, 120 y 130 del Código Penal cuando no resultare la muerte de la persona ofendida o lesiones de las mencionadas en el artículo 91.\n\n2. Lesiones leves, sean dolosas o culposas.\n\n3. Impedimento de contacto de los hijos menores con sus padres no convivientes.\n\nEn los casos de este artículo, no se procederá a formar causa sino por acusación o denuncia del agraviado, de su tutor, guardador o representantes legales. Sin embargo, se procederá de oficio:\n\na) En los casos del inciso 1, cuando la víctima fuere menor de 18 años de edad o haya sido declarada incapaz;\n\nb) En los casos del inciso 2, cuando mediaren razones de seguridad o interés público;\n\nc) En los casos de los incisos 2 y 3, cuando el delito fuere cometido contra un menor que no tenga padres, tutor ni guardador, o que lo fuere por uno de sus ascendientes, tutor o guardador, o cuando existieren intereses gravemente contrapuestos entre éstos y el menor, siempre que resultare más conveniente para el interés superior de aquél.\n\n(Artículo sustituido por Ley N° 27.455 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=315663] B.O. 25/10/2018)\n",
+        "fullTranslationRu": "СТАТЬЯ 72. Преследования, зависящие от частной инициативы, возникают из следующих преступлений:\n\n1. Предусмотренные статьями 119, 120 и 130 Уголовного кодекса, когда не наступила смерть потерпевшего лица или повреждения, указанные в статье 91.\n\n2. Легкие телесные повреждения, умышленные или неосторожные.\n\n3. Воспрепятствование контакту несовершеннолетних детей с родителями, не проживающими с ними.\n\nВ случаях этой статьи дело не возбуждается иначе как по обвинению или заявлению потерпевшего, его опекуна, попечителя или законных представителей. Однако производство начинается по инициативе государства:\n\na) в случаях пункта 1, когда потерпевший младше 18 лет или признан недееспособным;\n\nb) в случаях пункта 2, когда имеются причины безопасности или общественного интереса;\n\nc) в случаях пунктов 2 и 3, когда преступление совершено против несовершеннолетнего, у которого нет родителей, опекуна или попечителя, либо совершено одним из его восходящих родственников, опекуном или попечителем, либо когда между ними и несовершеннолетним имеются серьезно противоположные интересы, если это окажется более удобным для высшего интереса несовершеннолетнего.\n\n(Статья заменена Законом N 27.455 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=315663], B.O. 25/10/2018)",
+        "simpleRu": "Некоторые дела начинаются только после заявления потерпевшего или его законных представителей. Это указанные преступления по статьям 119, 120 и 130 без смерти или повреждений из статьи 91, легкие телесные повреждения и препятствие контакту детей с отдельно живущим родителем. Но государство начинает дело само, если потерпевший младше 18 лет или недееспособен, если для легких повреждений есть безопасность или общественный интерес, либо если у несовершеннолетнего нет защиты или есть серьезный конфликт интересов и так лучше для его высшего интереса.",
+        "sourceTextSha256": "b14ab11ccc2f0a291788387a9daf6cebd6dccf4aea56043840bdafaa3e4c27f8",
+        "sourceFingerprint": "sha256:b14ab11ccc2f0a291788387a9daf6cebd6dccf4aea56043840bdafaa3e4c27f8",
+        "sourceSpan": {
+          "startLine": 773,
+          "endLine": 790
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-73-son-acciones-privadas-las-que-nacen-122",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 122,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XI",
+          "ARTICULO 73.- Son acciones privadas las que nacen de los siguientes delitos:"
+        ],
+        "officialLabel": "ARTICULO 73.- Son acciones privadas las que nacen de los siguientes delitos:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 73.- Son acciones privadas las que nacen de los siguientes delitos:\n\n1) Calumnias e injurias;\n\n2) Violación de secretos, salvo en los casos de los artículos 154 y 157;\n\n3) Concurrencia desleal, prevista en el artículo 159;\n\n4) Incumplimiento de los deberes de asistencia familiar, cuando la víctima fuere el cónyuge.\n\nAsimismo, son acciones privadas las que de conformidad con lo dispuesto por las leyes procesales correspondientes, surgen de la conversión de la acción pública en privada o de la prosecución de la acción penal por parte de la víctima.\n\nLa acción por calumnia e injuria, podrá ser ejercitada sólo por el ofendido y después de su muerte por el cónyuge, hijos, nietos o padres sobrevivientes.\n\nEn los demás casos, se procederá únicamente por querella del agraviado o de sus guardadores o representantes legales.\n\n(Artículo sustituido por art. 3° de la Ley N° 27.147 [/infolegInternet/verNorma.do?id=248179] B.O. 18/06/2015)\n",
+        "fullTranslationRu": "СТАТЬЯ 73. Частными являются преследования, возникающие из следующих преступлений:\n\n1) клевета и оскорбления;\n\n2) нарушение тайны, кроме случаев статей 154 и 157;\n\n3) недобросовестная конкуренция, предусмотренная статьей 159;\n\n4) неисполнение обязанностей семейной помощи, когда потерпевшим является супруг.\n\nТакже частными являются преследования, которые в соответствии с соответствующими процессуальными законами возникают из преобразования публичного преследования в частное или из продолжения уголовного преследования потерпевшим.\n\nИск о клевете и оскорблении может осуществляться только оскорбленным лицом, а после его смерти - пережившим супругом, детьми, внуками или родителями.\n\nВ остальных случаях производство осуществляется только по жалобе потерпевшего либо его попечителей или законных представителей.\n\n(Статья заменена статьей 3 Закона N 27.147 [/infolegInternet/verNorma.do?id=248179], B.O. 18/06/2015)",
+        "simpleRu": "Частные дела касаются клеветы и оскорблений, некоторых нарушений тайны, недобросовестной конкуренции и неисполнения семейной помощи, если потерпевший - супруг. Процессуальные законы могут превращать публичное дело в частное или позволять потерпевшему продолжать дело. По клевете и оскорблению действует сам потерпевший, а после его смерти - супруг, дети, внуки или родители. В остальных случаях нужна жалоба потерпевшего или его представителей.",
+        "sourceTextSha256": "301899e397ec2b60279db26274b071101d447404794b3576a64239cdd740d4ab",
+        "sourceFingerprint": "sha256:301899e397ec2b60279db26274b071101d447404794b3576a64239cdd740d4ab",
+        "sourceSpan": {
+          "startLine": 791,
+          "endLine": 808
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-74-articulo-derogado-por-art-2o-de-123",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 123,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XI",
+          "ARTICULO 74.- (Artículo derogado por art. 2° de la Ley N°24.453 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14900] B.O. 7/..."
+        ],
+        "officialLabel": "ARTICULO 74.- (Artículo derogado por art. 2° de la Ley N°24.453 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14900] B.O. 7/...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 74.- (Artículo derogado por art. 2° de la Ley N°24.453 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14900] B.O. 7/3/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 74. (Статья отменена статьей 2 Закона N 24.453 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14900], B.O. 7/3/1995)",
+        "simpleRu": "Статья 74 отменена Законом N 24.453. Сейчас она не устанавливает действующего правила.",
+        "sourceTextSha256": "4a057c2fee90403bbe2a72922987efa04a0726781755cd00f732a21f5105164d",
+        "sourceFingerprint": "sha256:4a057c2fee90403bbe2a72922987efa04a0726781755cd00f732a21f5105164d",
+        "sourceSpan": {
+          "startLine": 809,
+          "endLine": 810
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-75-articulo-derogado-por-art-5o-de-124",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 124,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XI",
+          "ARTICULO 75.- (Artículo derogado por art. 5° de la Ley N° 27.147 [/infolegInternet/verNorma.do?id=248179] B.O. 18/06/2015)"
+        ],
+        "officialLabel": "ARTICULO 75.- (Artículo derogado por art. 5° de la Ley N° 27.147 [/infolegInternet/verNorma.do?id=248179] B.O. 18/06/2015)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 75.- (Artículo derogado por art. 5° de la Ley N° 27.147 [/infolegInternet/verNorma.do?id=248179] B.O. 18/06/2015)\n",
+        "fullTranslationRu": "СТАТЬЯ 75. (Статья отменена статьей 5 Закона N 27.147 [/infolegInternet/verNorma.do?id=248179], B.O. 18/06/2015)",
+        "simpleRu": "Статья 75 отменена Законом N 27.147. Сейчас она не устанавливает действующего правила.",
+        "sourceTextSha256": "ab2a3df4fce293c9f54fd6a682d0bf7a314dd5550b376b6848b9a7361fe80524",
+        "sourceFingerprint": "sha256:ab2a3df4fce293c9f54fd6a682d0bf7a314dd5550b376b6848b9a7361fe80524",
+        "sourceSpan": {
+          "startLine": 811,
+          "endLine": 812
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xii-125",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 125,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XII"
+        ],
+        "officialLabel": "TITULO XII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XII\n\n(Título incorporado por art. 3° de la Ley N°24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715] B.O. 19/5/1994)\n\nDe la suspensión del juicio a prueba\n",
+        "fullTranslationRu": "РАЗДЕЛ XII\n\n(Раздел включен статьей 3 Закона N 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715], B.O. 19/5/1994)\n\nО приостановлении судебного разбирательства с испытанием",
+        "simpleRu": "Раздел XII посвящен приостановлению суда с испытанием. Это правила о ситуации, когда суд временно не проводится, а обвиняемый должен выполнить условия.",
+        "sourceTextSha256": "546ac02d4a68ad54dd51df0f1e04ed64750a102d12c8dfa2cb76ce9043fb14e0",
+        "sourceFingerprint": "sha256:546ac02d4a68ad54dd51df0f1e04ed64750a102d12c8dfa2cb76ce9043fb14e0",
+        "sourceSpan": {
+          "startLine": 813,
+          "endLine": 818
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-76-la-suspension-del-juicio-a-prueba-126",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 126,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XII",
+          "ARTICULO 76.- La suspensión del juicio a prueba se regirá de conformidad con lo previsto en las leyes procesales correspondientes. Ante l..."
+        ],
+        "officialLabel": "ARTICULO 76.- La suspensión del juicio a prueba se regirá de conformidad con lo previsto en las leyes procesales correspondientes. Ante l...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 76.- La suspensión del juicio a prueba se regirá de conformidad con lo previsto en las leyes procesales correspondientes. Ante la falta de regulación total o parcial, se aplicarán las disposiciones de este Título.\n\n(Artículo sustituido por art. 4° de la Ley N° 27.147 [/infolegInternet/verNorma.do?id=248179] B.O. 18/06/2015)\n",
+        "fullTranslationRu": "СТАТЬЯ 76. Приостановление судебного разбирательства с испытанием регулируется тем, что предусмотрено соответствующими процессуальными законами. При полном или частичном отсутствии регулирования применяются положения этого Раздела.\n\n(Статья заменена статьей 4 Закона N 27.147 [/infolegInternet/verNorma.do?id=248179], B.O. 18/06/2015)",
+        "simpleRu": "Приостановление суда с испытанием прежде всего регулируют процессуальные законы. Если там нет полного или частичного правила, применяют этот раздел Кодекса.",
+        "sourceTextSha256": "4a8dd405c25b738e98f924be469a0995363e84680d8ac6fa1b2ac0930b75a656",
+        "sourceFingerprint": "sha256:4a8dd405c25b738e98f924be469a0995363e84680d8ac6fa1b2ac0930b75a656",
+        "sourceSpan": {
+          "startLine": 819,
+          "endLine": 822
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-76-bis-el-imputado-de-un-delito-127",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 127,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XII",
+          "ARTICULO 76 bis.- El imputado de un delito de acción pública reprimido con pena de reclusión o prisión cuyo máximo no exceda de tres años..."
+        ],
+        "officialLabel": "ARTICULO 76 bis.- El imputado de un delito de acción pública reprimido con pena de reclusión o prisión cuyo máximo no exceda de tres años...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 76 bis.- El imputado de un delito de acción pública reprimido con pena de reclusión o prisión cuyo máximo no exceda de tres años, podrá solicitar la suspensión del juicio a prueba.\n\nEn casos de concurso de delitos, el imputado también podrá solicitar la suspensión del juicio a prueba si el máximo de la pena de reclusión o prisión aplicable no excediese de tres años.\n\nAl presentar la solicitud, el imputado deberá ofrecer hacerse cargo de la reparación del daño en la medida de lo posible, sin que ello implique confesión ni reconcimiento de la responsabilidad civil correspondiente. El juez decidirá sobre la razonabilidad del ofrecimiento en resolución fundada. La parte damnificada podrá aceptar o no la reparación ofrecida, y en este último caso, si la realización del juicio se suspendiere, tendrá habilitada la acción civil correspondiente.\n\nSi las circunstancias del caso permitieran dejar en suspenso el cumplimiento de la condena aplicable, y hubiese consentimiento del fiscal, el Tribunal podrá suspender la realización del juicio.\n\nSi el delito o alguno de los delitos que integran el concurso estuviera reprimido con pena de multa aplicable en forma conjunta o alternativa con la de prisión, será condición, además, que se pague el mínimo de la multa correspondiente.\n\nEl imputado deberá abandonar en favor del estado, los bienes que presumiblemente resultarían decomisados en caso que recayera condena.\n\nNo procederá la suspensión del juicio cuando un funcionario público, en el ejercicio de sus funciones, hubiese participado en el delito.\n\nTampoco procederá la suspensión del juicio a prueba respecto de los delitos reprimidos con pena de inhabilitación.\n\nTampoco procederá la suspensión del juicio a prueba respecto de los ilícitos reprimidos por las Leyes 22.415 y 24.769 y sus respectivas modificaciones. (Párrafo incorporado por art. 19 de la Ley N° 26.735 [/infolegInternet/verNorma.do?id=192148] B.O. 28/12/2011)\n\n(Artículo incorporado por art. 3° de la Ley N° 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715] B.O. 19/5/1994)\n",
+        "fullTranslationRu": "СТАТЬЯ 76 bis. Обвиняемый в преступлении публичного преследования, наказуемом reclusión или prisión, максимум которого не превышает трех лет, может просить приостановления судебного разбирательства с испытанием.\n\nВ случаях совокупности преступлений обвиняемый также может просить приостановления судебного разбирательства с испытанием, если максимум применимого наказания reclusión или prisión не превышает трех лет.\n\nПри подаче ходатайства обвиняемый должен предложить взять на себя возмещение вреда в возможной мере, без того чтобы это означало признание или признание соответствующей гражданской ответственности. Судья решает о разумности предложения мотивированным постановлением. Потерпевшая сторона может принять или не принять предложенное возмещение; в последнем случае, если проведение суда будет приостановлено, ей открыт соответствующий гражданский иск.\n\nЕсли обстоятельства дела позволяли бы приостановить исполнение применимого приговора и имеется согласие прокурора, Суд может приостановить проведение суда.\n\nЕсли преступление или одно из преступлений, входящих в совокупность, наказуемо штрафом, применимым совместно или альтернативно с prisión, дополнительным условием является уплата соответствующего минимального штрафа.\n\nОбвиняемый должен отказаться в пользу государства от имущества, которое предположительно подлежало бы конфискации в случае обвинительного приговора.\n\nПриостановление суда не допускается, когда в преступлении участвовал публичный должностной человек при исполнении своих функций.\n\nТакже приостановление судебного разбирательства с испытанием не допускается в отношении преступлений, наказуемых лишением специального права.\n\nТакже приостановление судебного разбирательства с испытанием не допускается в отношении противоправных деяний, наказуемых Законами 22.415 и 24.769 и их соответствующими изменениями. (Абзац включен статьей 19 Закона N 26.735 [/infolegInternet/verNorma.do?id=192148], B.O. 28/12/2011)\n\n(Статья включена статьей 3 Закона N 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715], B.O. 19/5/1994)",
+        "simpleRu": "Обвиняемый по публичному делу может просить приостановить суд с испытанием, если максимум reclusión или prisión не больше 3 лет. При нескольких преступлениях это тоже возможно, если общий применимый максимум не больше 3 лет. Он должен предложить посильное возмещение вреда, но это не считается признанием гражданской ответственности. Судья оценивает разумность предложения, потерпевший может согласиться или отказаться и тогда сохраняет гражданский иск. Нужны условия для условного исполнения и согласие прокурора. Если есть штраф вместе с prisión или вместо нее, надо заплатить минимальный штраф. Обвиняемый отдает государству вещи, которые могли бы конфисковать. Приостановление не допускается для преступлений публичных должностных лиц при исполнении функций, для преступлений с лишением специального права и для деяний по Законам 22.415 и 24.769 с изменениями.",
+        "sourceTextSha256": "17616f6fee3cfcd0e52f58b5a6bebbf40e3adc51fb3c85c97335d0cb95e1cf76",
+        "sourceFingerprint": "sha256:17616f6fee3cfcd0e52f58b5a6bebbf40e3adc51fb3c85c97335d0cb95e1cf76",
+        "sourceSpan": {
+          "startLine": 823,
+          "endLine": 842
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-76-ter-el-tiempo-de-la-suspension-128",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 128,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XII",
+          "ARTICULO 76 ter.- El tiempo de la suspensión del juicio será fijado por el Tribunal entre uno y tres años, según la gravedad del delito. ..."
+        ],
+        "officialLabel": "ARTICULO 76 ter.- El tiempo de la suspensión del juicio será fijado por el Tribunal entre uno y tres años, según la gravedad del delito. ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 76 ter.- El tiempo de la suspensión del juicio será fijado por el Tribunal entre uno y tres años, según la gravedad del delito. El Tribunal establecerá las reglas de conducta que deberá cumplir el imputado, conforme las previsiones del artículo 27 bis.\n\nDurante ese tiempo se suspenderá la prescripción de la acción penal.\n\nLa suspensión del juicio será dejada sin efecto si con posterioridad se conocieran circunstancias que modifiquen el máximo de la pena aplicable o la estimación acerca de la condicionalidad de la ejecución de la posible condena.\n\nSi durante el tiempo fijado por el Tribunal el imputado no comete un delito, repara los daños en la medida ofrecida y cumple con las reglas de conducta establecidas, se extinguirá la acción penal. En caso contrario, se llevará a cabo el juicio y si el imputado fuere absuelto se le devolverán los bienes abandonados en favor del Estado y la multa pagada, pero no podrá pretender el reintegro de las reparaciones cumplidas.\n\nCuando la realización del juicio fuese determinada por la comisión de un nuevo delito, la pena que se imponga no podrá ser dejada en suspenso.\n\nLa suspensión de un juicio a prueba podrá ser concedida por segunda vez si el nuevo delito ha sido cometido después de haber transcurrido ocho años a partir de la fecha de expiración del plazo por el cual hubiera sido suspendido el juicio en el proceso anterior.\n\nNo se admitirá una nueva suspensión de juicio respecto de quien hubiese incumplido las reglas impuestas en una suspensión anterior.\n\n(Artículo incorporado por art. 4° de la Ley N° 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715] B.O. 19/5/1994)\n",
+        "fullTranslationRu": "СТАТЬЯ 76 ter. Срок приостановления судебного разбирательства устанавливается Судом от одного до трех лет, в зависимости от тяжести преступления. Суд устанавливает правила поведения, которые должен соблюдать обвиняемый, согласно положениям статьи 27 bis.\n\nНа это время давность уголовного преследования приостанавливается.\n\nПриостановление судебного разбирательства отменяется, если позднее становятся известны обстоятельства, изменяющие максимум применимого наказания или оценку возможности условного исполнения возможного приговора.\n\nЕсли в течение срока, установленного Судом, обвиняемый не совершает преступления, возмещает вред в предложенной мере и соблюдает установленные правила поведения, уголовное преследование прекращается. В противном случае проводится суд, и если обвиняемый будет оправдан, ему возвращают имущество, от которого он отказался в пользу государства, и уплаченный штраф, но он не может требовать возврата выполненных возмещений.\n\nКогда проведение суда вызвано совершением нового преступления, назначенное наказание не может быть оставлено в состоянии приостановления.\n\nПриостановление судебного разбирательства с испытанием может быть предоставлено второй раз, если новое преступление совершено после истечения восьми лет с даты окончания срока, на который суд был приостановлен в предыдущем процессе.\n\nНовое приостановление суда не допускается в отношении лица, которое не выполнило правила, установленные при предыдущем приостановлении.\n\n(Статья включена статьей 4 Закона N 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715], B.O. 19/5/1994)",
+        "simpleRu": "Суд назначает испытательный срок от 1 до 3 лет и правила поведения по статье 27 bis. На это время давность приостанавливается. Если позже выяснится, что максимум наказания или возможность условного приговора оценены иначе, приостановление отменяют. Если обвиняемый за срок не совершает преступлений, выполняет правила и возмещает вред как предложил, дело прекращается. Если нет - проводится суд; при оправдании возвращают вещи и штраф, но не уже выполненное возмещение. Второй раз такую меру можно получить только если новое преступление совершено через 8 лет после окончания прошлого испытательного срока. Если человек раньше нарушил правила приостановления, новое приостановление не дают.",
+        "sourceTextSha256": "8b088dc856f5421188d5ea7d91ec36918a83af3468474682e9bc95cfbadd4e1f",
+        "sourceFingerprint": "sha256:8b088dc856f5421188d5ea7d91ec36918a83af3468474682e9bc95cfbadd4e1f",
+        "sourceSpan": {
+          "startLine": 843,
+          "endLine": 858
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-76-quater-la-suspension-del-juicio-a-129",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 129,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XII",
+          "ARTICULO 76 quater.- La suspensión del juicio a prueba hará inaplicables al caso las reglas de prejudicialidad de los artículos 1101 y 11..."
+        ],
+        "officialLabel": "ARTICULO 76 quater.- La suspensión del juicio a prueba hará inaplicables al caso las reglas de prejudicialidad de los artículos 1101 y 11...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 76 quater.- La suspensión del juicio a prueba hará inaplicables al caso las reglas de prejudicialidad de los artículos 1101 y 1102 del Código Civil, y no obstará a la aplicación de las sanciones contravencionales, disciplinarias o administrativas que pudieran corresponder.\n\n(Artículo incorporado por art. 5° de la Ley N° 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715] B.O. 19/5/1994)\n",
+        "fullTranslationRu": "СТАТЬЯ 76 quater. Приостановление судебного разбирательства с испытанием делает неприменимыми к делу правила преюдициальности статей 1101 и 1102 Гражданского кодекса и не препятствует применению контравенционных, дисциплинарных или административных санкций, которые могут соответствовать случаю.\n\n(Статья включена статьей 5 Закона N 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715], B.O. 19/5/1994)",
+        "simpleRu": "Если суд приостановлен с испытанием, к делу не применяются правила преюдициальности из статей 1101 и 1102 Гражданского кодекса. Но другие возможные меры - контравенционные, дисциплинарные или административные - все равно могут применяться.",
+        "sourceTextSha256": "66fb6f1e5846895913d9faac8d116f343747a6feca98c55be60c8f1598318def",
+        "sourceFingerprint": "sha256:66fb6f1e5846895913d9faac8d116f343747a6feca98c55be60c8f1598318def",
+        "sourceSpan": {
+          "startLine": 859,
+          "endLine": 862
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xiii-130",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 130,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XIII"
+        ],
+        "officialLabel": "TITULO XIII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO XIII\n\n(Numeración del capítulo sustituida por art. 2° de la Ley N° 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715] B.O. 19/5/1994)\n\nSIGNIFICACION DE CONCEPTOS EMPLEADOS EN EL CODIGO\n",
+        "fullTranslationRu": "РАЗДЕЛ XIII\n\n(Нумерация главы заменена статьей 2 Закона N 24.316 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=715], B.O. 19/5/1994)\n\nЗНАЧЕНИЕ ПОНЯТИЙ, ИСПОЛЬЗУЕМЫХ В КОДЕКСЕ",
+        "simpleRu": "Раздел XIII объясняет, что означают некоторые слова и понятия, которые используются в Уголовном кодексе.",
+        "sourceTextSha256": "3883dc356715abac94156b131aa8ecb95d8969f133c500481c27d21ab34c6fca",
+        "sourceFingerprint": "sha256:3883dc356715abac94156b131aa8ecb95d8969f133c500481c27d21ab34c6fca",
+        "sourceSpan": {
+          "startLine": 863,
+          "endLine": 868
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-77-para-la-inteligencia-del-texto-de-131",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 131,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XIII",
+          "ARTICULO 77.- Para la inteligencia del texto de este código se tendrán presente las siguientes reglas:"
+        ],
+        "officialLabel": "ARTICULO 77.- Para la inteligencia del texto de este código se tendrán presente las siguientes reglas:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 77.- Para la inteligencia del texto de este código se tendrán presente las siguientes reglas:\n\nLos plazos a que este código se refiere serán contados con arreglo a las disposiciones del Código Civil. Sin embargo, la liberación de los condenados a penas privativas de libertad se efectuará al mediodía del día correspondiente.\n\nLa expresión “reglamentos” u “ordenanzas”, comprende todas las disposiciones de carácter general dictadas por la autoridad competente en la materia de que traten.\n\nPor los términos “funcionario público” y “empleado público”, usados en este código, se designa a todo el que participa accidental o permanentemente del ejercicio de funciones públicas sea por elección popular o por nombramiento de autoridad competente.\n\nPor el término “militar” se designa a toda persona que revista estado militar en el momento del hecho conforme la ley orgánica para el personal militar.\n\nLos funcionarios públicos civiles que integran la cadena de mando se encuentran asimilados al personal militar con relación a los delitos que cometan en su carácter de tales, cuando produzcan actos o impartan órdenes o instrucciones como integrantes de la cadena de mando si las mismas implican comisión de delito o participación en el mismo.\n\nCon la palabra “mercadería”, se designa toda clase de efectos susceptibles de expendio.\n\nEl término “capitán” comprende a todo comandante de embarcación o al que le sustituye.\n\nEl término “tripulación” comprende a todos los que se hallan abordo como oficiales o marineros.\n\nEl término “estupefacientes” comprende los estupefacientes, psicotrópicos y demás sustancias susceptibles de producir dependencia física o psíquica, que se incluyan en las listas que se elaboren y actualicen periódicamente por decreto del Poder Ejecutivo nacional.\n\nEl término “establecimiento rural” comprende todo inmueble que se destine a la cría, mejora o engorde del ganado, actividades de tambo, granja o cultivo de la tierra, a la avicultura u otras crianzas, fomento o aprovechamiento semejante. \n\nEl término “documento” comprende toda representación de actos o hechos, con independencia del soporte utilizado para su fijación, almacenamiento, archivo o transmisión. \n\nLos términos “firma” y “suscripción” comprenden la firma digital, la creación de una firma digital o firmar digitalmente. \n\nLos términos “instrumento privado” y “certificado” comprenden el documento digital firmado digitalmente.\n\nEl término “información privilegiada” comprende toda información no disponible para el público cuya divulgación podría tener significativa influencia en el mercado de valores.\n\n(Artículo sustituido por art. 1° de la Ley N° 26.733 [/infolegInternet/verNorma.do?id=192139] B.O. 28/12/2011)\n",
+        "fullTranslationRu": "СТАТЬЯ 77. Для понимания текста этого кодекса должны учитываться следующие правила:\n\nСроки, о которых говорит этот кодекс, считаются согласно положениям Гражданского кодекса. Однако освобождение осужденных к наказаниям, связанным с лишением свободы, производится в полдень соответствующего дня.\n\nВыражение \"регламенты\" или \"ордонансы\" охватывает все положения общего характера, изданные компетентным органом по соответствующему вопросу.\n\nТерминами \"публичный должностной человек\" и \"публичный служащий\", используемыми в этом кодексе, обозначается всякий, кто случайно или постоянно участвует в осуществлении публичных функций, будь то по народным выборам или по назначению компетентного органа.\n\nТермином \"военнослужащий\" обозначается всякое лицо, имеющее военный статус на момент деяния согласно органическому закону о военном персонале.\n\nГражданские публичные должностные лица, входящие в цепочку командования, приравниваются к военному персоналу в отношении преступлений, которые они совершают в таком качестве, когда они совершают действия или отдают распоряжения либо инструкции как участники цепочки командования, если они означают совершение преступления или участие в нем.\n\nСловом \"товар\" обозначаются всякого рода вещи, пригодные для продажи.\n\nТермин \"капитан\" включает всякого командира судна или того, кто его заменяет.\n\nТермин \"экипаж\" включает всех, кто находится на борту как офицеры или матросы.\n\nТермин \"наркотические средства\" включает наркотические, психотропные и иные вещества, способные вызывать физическую или психическую зависимость, которые включаются в списки, периодически составляемые и обновляемые декретом национальной исполнительной власти.\n\nТермин \"сельское предприятие\" включает всякую недвижимость, предназначенную для разведения, улучшения или откорма скота, молочного хозяйства, фермерства или обработки земли, птицеводства или иных подобных видов разведения, развития или использования.\n\nТермин \"документ\" включает всякое представление актов или фактов независимо от носителя, использованного для его фиксации, хранения, архивации или передачи.\n\nТермины \"подпись\" и \"подписание\" включают цифровую подпись, создание цифровой подписи или подписание цифровым способом.\n\nТермины \"частный инструмент\" и \"сертификат\" включают цифровой документ, подписанный цифровой подписью.\n\nТермин \"инсайдерская информация\" включает всякую недоступную публике информацию, раскрытие которой могло бы существенно повлиять на рынок ценных бумаг.\n\n(Статья заменена статьей 1 Закона N 26.733 [/infolegInternet/verNorma.do?id=192139], B.O. 28/12/2011)",
+        "simpleRu": "Статья 77 дает словарь для Кодекса. Сроки считаются по Гражданскому кодексу, но освобождение из лишения свободы происходит в полдень нужного дня. \"Регламенты\" и \"ордонансы\" - это общие правила компетентного органа. \"Публичный должностной человек\" и \"публичный служащий\" - любой, кто выполняет публичные функции. \"Военнослужащий\" определяется военным законом, а гражданские начальники в цепочке командования могут приравниваться к военным для преступлений, связанных с их приказами. Также объясняются значения слов \"товар\", \"капитан\", \"экипаж\", \"наркотические средства\", \"сельское предприятие\", \"документ\", \"подпись\", \"частный инструмент\", \"сертификат\" и \"инсайдерская информация\".",
+        "sourceTextSha256": "83516253edb758cdfb3233977a557c0ad5d8a33176c1aac76a371abc4bef2681",
+        "sourceFingerprint": "sha256:83516253edb758cdfb3233977a557c0ad5d8a33176c1aac76a371abc4bef2681",
+        "sourceSpan": {
+          "startLine": 869,
+          "endLine": 900
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-78-queda-comprendido-en-el-concepto-de-132",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 132,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XIII",
+          "ARTICULO 78.- Queda comprendido en el concepto de \"violencia\", el uso de medios hipnóticos o narcóticos."
+        ],
+        "officialLabel": "ARTICULO 78.- Queda comprendido en el concepto de \"violencia\", el uso de medios hipnóticos o narcóticos.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 78.- Queda comprendido en el concepto de \"violencia\", el uso de medios hipnóticos o narcóticos.\n",
+        "fullTranslationRu": "СТАТЬЯ 78. В понятие \"насилие\" включается применение гипнотических или наркотических средств.",
+        "simpleRu": "Для этого Кодекса \"насилие\" включает не только физическую силу, но и использование гипноза или наркотических средств.",
+        "sourceTextSha256": "00a37059cc4983b1142763ee6196726e8c50cc352e7b648e67540a404b18fee1",
+        "sourceFingerprint": "sha256:00a37059cc4983b1142763ee6196726e8c50cc352e7b648e67540a404b18fee1",
+        "sourceSpan": {
+          "startLine": 901,
+          "endLine": 902
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-78-bis-articulo-derogado-por-art-14-133",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 133,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO PRIMERO",
+          "TITULO XIII",
+          "ARTICULO 78 bis. — (Artículo derogado por art. 14 de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)"
+        ],
+        "officialLabel": "ARTICULO 78 bis. — (Artículo derogado por art. 14 de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 78 bis. — (Artículo derogado por art. 14 de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 78 bis. (Статья отменена статьей 14 Закона N 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)",
+        "simpleRu": "Статья 78 bis отменена Законом N 26.388. Сейчас она не устанавливает действующего правила.",
+        "sourceTextSha256": "188a2338f0a1bcb3089b290678c0995209b2bf80bcfcaf65c2d18ef1ac3cdb80",
+        "sourceFingerprint": "sha256:188a2338f0a1bcb3089b290678c0995209b2bf80bcfcaf65c2d18ef1ac3cdb80",
+        "sourceSpan": {
+          "startLine": 903,
+          "endLine": 904
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--libro-segundo-134",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 134,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO"
+        ],
+        "officialLabel": "LIBRO SEGUNDO",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "LIBRO SEGUNDO\n\nDE LOS DELITOS\n",
+        "fullTranslationRu": "КНИГА ВТОРАЯ\n\nО ПРЕСТУПЛЕНИЯХ",
+        "simpleRu": "Книга вторая переходит к отдельным преступлениям и наказаниям за них.",
+        "sourceTextSha256": "46ad5b1798e474843d3375ca62fce772ced0890289d0f472e64ca12dfbf9be83",
+        "sourceFingerprint": "sha256:46ad5b1798e474843d3375ca62fce772ced0890289d0f472e64ca12dfbf9be83",
+        "sourceSpan": {
+          "startLine": 905,
+          "endLine": 908
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-i-135",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 135,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I"
+        ],
+        "officialLabel": "TITULO I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO I\n\nDELITOS CONTRA LAS PERSONAS\n",
+        "fullTranslationRu": "РАЗДЕЛ I\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ЛИЧНОСТИ",
+        "simpleRu": "Раздел I книги второй посвящен преступлениям против людей: жизни, здоровья и других важных личных благ.",
+        "sourceTextSha256": "f3658888bf216f71312f2622f4f9ab65dc7a752882fb6e76ae77684db187501a",
+        "sourceFingerprint": "sha256:f3658888bf216f71312f2622f4f9ab65dc7a752882fb6e76ae77684db187501a",
+        "sourceSpan": {
+          "startLine": 909,
+          "endLine": 912
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-136",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 136,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nDelitos contra la vida\n",
+        "fullTranslationRu": "Глава I\n\nПреступления против жизни",
+        "simpleRu": "Глава I говорит о преступлениях против жизни.",
+        "sourceTextSha256": "ccb7f4c3917b06b5784f7ec09ba7555f14befd1ef2848bb16bbd1c369d61881c",
+        "sourceFingerprint": "sha256:ccb7f4c3917b06b5784f7ec09ba7555f14befd1ef2848bb16bbd1c369d61881c",
+        "sourceSpan": {
+          "startLine": 913,
+          "endLine": 916
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-79-se-aplicara-reclusion-o-prision-de-137",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 137,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 79. - Se aplicará reclusión o prisión de ocho a veinticinco años, al que matare a otro siempre que en este código no se establec..."
+        ],
+        "officialLabel": "ARTICULO 79. - Se aplicará reclusión o prisión de ocho a veinticinco años, al que matare a otro siempre que en este código no se establec...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 79. - Se aplicará reclusión o prisión de ocho a veinticinco años, al que matare a otro siempre que en este código no se estableciere otra pena.\n",
+        "fullTranslationRu": "СТАТЬЯ 79. Reclusión или prisión от восьми до двадцати пяти лет применяется к тому, кто убьет другого, если в этом кодексе не установлено иное наказание.",
+        "simpleRu": "За убийство другого человека дают reclusión или prisión от 8 до 25 лет, если другая статья Кодекса не устанавливает другое наказание.",
+        "sourceTextSha256": "aa0b486fbc6f52cf385ed846a5a0a44aafd917955f778e8afecb2875c3940f9d",
+        "sourceFingerprint": "sha256:aa0b486fbc6f52cf385ed846a5a0a44aafd917955f778e8afecb2875c3940f9d",
+        "sourceSpan": {
+          "startLine": 917,
+          "endLine": 918
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-80-se-impondra-reclusion-perpetua-o-prision-138",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 138,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 80. - Se impondrá reclusión perpetua o prisión perpetua, pudiendo aplicarse lo dispuesto en el artículo 52, al que matare:"
+        ],
+        "officialLabel": "ARTICULO 80. - Se impondrá reclusión perpetua o prisión perpetua, pudiendo aplicarse lo dispuesto en el artículo 52, al que matare:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 80. - Se impondrá reclusión perpetua o prisión perpetua, pudiendo aplicarse lo dispuesto en el artículo 52, al que matare:\n\n1º A su ascendiente, descendiente, cónyuge, ex cónyuge, o a la persona con quien mantiene o ha mantenido una relación de pareja, mediare o no convivencia. (inciso sustituido por art. 1° de la Ley N° 26.791 [/infolegInternet/verNorma.do?id=206018] B.O. 14/12/2012)\n\n2º Con ensañamiento, alevosía, veneno u otro procedimiento insidioso.\n\n3º Por precio o promesa remuneratoria.\n\n4º Por placer, codicia, odio racial, religioso, de género o a la orientación sexual, identidad de género o su expresión. (inciso sustituido por art. 1° de la Ley N° 26.791 [/infolegInternet/verNorma.do?id=206018] B.O. 14/12/2012)\n\n5º Por un medio idóneo para crear un peligro común.\n\n6º Con el concurso premeditado de dos o más personas.\n\n7º Para preparar, facilitar, consumar u ocultar otro delito o para asegurar sus resultados o procurar la impunidad para sí o para otro o por no haber logrado el fin propuesto al intentar otro delito.\n\n8° A un miembro de las fuerzas de seguridad pública, policiales o penitenciarias, por su función, cargo o condición. (Inciso incorporado por art. 1° de la Ley N° 25.601 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=74977] B.O.11/6/2002)\n\n9° Abusando de su función o cargo, cuando fuere miembro integrante de las fuerzas de seguridad, policiales o del servicio penitenciario. (Inciso incorporado por art. 1° de la Ley N° 25.816 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=90864] B.O.9/12/2003)\n\n10 A su superior militar frente a enemigo o tropa formada con armas. (Inciso incorporado por art. 2° del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n\n11. A una mujer cuando el hecho sea perpetrado por un hombre y mediare violencia de género. (inciso incorporado por art. 2° de la Ley N° 26.791 [/infolegInternet/verNorma.do?id=206018] B.O. 14/12/2012)\n\n12. Con el propósito de causar sufrimiento a una persona con la que se mantiene o ha mantenido una relación en los términos del inciso 1°. (inciso incorporado por art. 2° de la Ley N° 26.791 [/infolegInternet/verNorma.do?id=206018] B.O. 14/12/2012)\n\nCuando en el caso del inciso 1° de este artículo, mediaren circunstancias extraordinarias de atenuación, el juez podrá aplicar prisión o reclusión de ocho (8) a veinticinco (25) años. Esto no será aplicable a quien anteriormente hubiera realizado actos de violencia contra la mujer víctima. (Párrafo sustituido por art. 3° de la Ley N° 26.791 [/infolegInternet/verNorma.do?id=206018] B.O. 14/12/2012)\n",
+        "fullTranslationRu": "СТАТЬЯ 80. Назначается пожизненное reclusión или пожизненное prisión, с возможностью применения положения статьи 52, тому, кто убьет:\n\n1. своего восходящего родственника, нисходящего родственника, супруга, бывшего супруга или лицо, с которым он состоит или состоял в отношениях пары, независимо от совместного проживания. (пункт заменен статьей 1 Закона N 26.791 [/infolegInternet/verNorma.do?id=206018], B.O. 14/12/2012)\n\n2. с особой жестокостью, вероломством, ядом или иным коварным способом.\n\n3. за плату или обещание вознаграждения.\n\n4. ради удовольствия, жадности, расовой, религиозной, гендерной ненависти или ненависти к сексуальной ориентации, гендерной идентичности либо ее выражению. (пункт заменен статьей 1 Закона N 26.791 [/infolegInternet/verNorma.do?id=206018], B.O. 14/12/2012)\n\n5. способом, пригодным для создания общей опасности.\n\n6. при заранее обдуманном участии двух или более лиц.\n\n7. для подготовки, облегчения, доведения до конца или сокрытия другого преступления, либо для обеспечения его результатов, либо для обеспечения безнаказанности себе или другому, либо из-за недостижения цели, поставленной при попытке другого преступления.\n\n8. члена сил общественной безопасности, полиции или пенитенциарных сил из-за его функции, должности или положения. (Пункт включен статьей 1 Закона N 25.601 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=74977], B.O. 11/6/2002)\n\n9. злоупотребляя своей функцией или должностью, когда он является членом сил безопасности, полиции или пенитенциарной службы. (Пункт включен статьей 1 Закона N 25.816 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=90864], B.O. 9/12/2003)\n\n10. своего военного начальника перед лицом врага или перед строем войск с оружием. (Пункт включен статьей 2 Приложения I Закона N 26.394 [/infolegInternet/verNorma.do?id=143873], B.O. 29/8/2008. Вступление в силу: начнет действовать через ШЕСТЬ (6) месяцев после промульгации. В этот период в соответствующих областях проводится программа информирования и обучения по его содержанию и применению)\n\n11. женщину, когда деяние совершено мужчиной и имеется гендерное насилие. (пункт включен статьей 2 Закона N 26.791 [/infolegInternet/verNorma.do?id=206018], B.O. 14/12/2012)\n\n12. с целью причинить страдание лицу, с которым он состоит или состоял в отношениях в смысле пункта 1. (пункт включен статьей 2 Закона N 26.791 [/infolegInternet/verNorma.do?id=206018], B.O. 14/12/2012)\n\nКогда в случае пункта 1 этой статьи имеются чрезвычайные смягчающие обстоятельства, судья может применить prisión или reclusión от восьми (8) до двадцати пяти (25) лет. Это не применяется к тому, кто ранее совершал акты насилия против женщины-потерпевшей. (Абзац заменен статьей 3 Закона N 26.791 [/infolegInternet/verNorma.do?id=206018], B.O. 14/12/2012)",
+        "simpleRu": "Статья 80 перечисляет особо тяжкие убийства, за которые назначают пожизненную reclusión или prisión. Это убийство близких родственников, супруга, бывшего супруга или партнера; убийство с жестокостью, вероломством, ядом, за плату, из ненависти, способом общей опасности, группой по заранее обдуманному плану, ради другого преступления или безнаказанности, а также убийство работников сил безопасности, военного начальника, женщины мужчиной при гендерном насилии или для причинения страдания близкому человеку. Для пункта 1 судья может снизить наказание до 8-25 лет при чрезвычайных смягчающих обстоятельствах, но не если раньше были акты насилия против женщины-потерпевшей.",
+        "sourceTextSha256": "b31c462a4cb7d20ad9fa9e7918d68085caa807ea6276c9583a9a0dae6e0b5129",
+        "sourceFingerprint": "sha256:b31c462a4cb7d20ad9fa9e7918d68085caa807ea6276c9583a9a0dae6e0b5129",
+        "sourceSpan": {
+          "startLine": 919,
+          "endLine": 946
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-81-1o-se-impondra-reclusion-de-tres-139",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 139,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 81. - 1º Se impondrá reclusión de tres a seis años, o prisión de uno a tres años:"
+        ],
+        "officialLabel": "ARTICULO 81. - 1º Se impondrá reclusión de tres a seis años, o prisión de uno a tres años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 81. - 1º Se impondrá reclusión de tres a seis años, o prisión de uno a tres años:\n\na) Al que matare a otro, encontrándose en un estado de emoción violenta y que las circunstancias hicieren excusable.\n\nb) Al que, con el propósito de causar un daño en el cuerpo o en la salud, produjere la muerte de alguna persona, cuando el medio empleado no debía razonablemente ocasionar la muerte.\n\n2º (Inciso derogado por art. 1° de la Ley N° 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791] B.O. 2/1/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 81. 1. Назначается reclusión от трех до шести лет или prisión от одного до трех лет:\n\na) тому, кто убьет другого, находясь в состоянии сильного душевного волнения, которое обстоятельства делают извинительным.\n\nb) тому, кто, имея цель причинить вред телу или здоровью, вызовет смерть какого-либо лица, когда использованный способ разумно не должен был причинить смерть.\n\n2. (Пункт отменен статьей 1 Закона N 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791], B.O. 2/1/1995)",
+        "simpleRu": "Статья 81 устанавливает меньшие сроки для двух случаев: убийство в сильном душевном волнении, если обстоятельства делают его извинительным, и причинение смерти, когда человек хотел вреда телу или здоровью, но способ разумно не должен был убить. Пункт 2 отменен.",
+        "sourceTextSha256": "e40fd1fdfa46c9dc54aaa1860afccb5d3d66392afafb126ae1e0648f10ac15f5",
+        "sourceFingerprint": "sha256:e40fd1fdfa46c9dc54aaa1860afccb5d3d66392afafb126ae1e0648f10ac15f5",
+        "sourceSpan": {
+          "startLine": 947,
+          "endLine": 954
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-82-cuando-en-el-caso-del-inciso-140",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 140,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 82. - Cuando en el caso del inciso 1º del artículo 80 concurriese alguna de las circunstancias del inciso 1º del artículo anteri..."
+        ],
+        "officialLabel": "ARTICULO 82. - Cuando en el caso del inciso 1º del artículo 80 concurriese alguna de las circunstancias del inciso 1º del artículo anteri...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 82. - Cuando en el caso del inciso 1º del artículo 80 concurriese alguna de las circunstancias del inciso 1º del artículo anterior, la pena será de reclusión o prisión de diez a veinticinco años.\n",
+        "fullTranslationRu": "СТАТЬЯ 82. Когда в случае пункта 1 статьи 80 одновременно имеется какое-либо из обстоятельств пункта 1 предыдущей статьи, наказание составляет reclusión или prisión от десяти до двадцати пяти лет.",
+        "simpleRu": "Если убийство близкого лица из статьи 80 пункт 1 одновременно подпадает под смягчающие случаи статьи 81 пункт 1, наказание становится reclusión или prisión от 10 до 25 лет.",
+        "sourceTextSha256": "8eedc20ed548d2343a0fae176bfac87b49778af617d468fe4eda04434aee2aab",
+        "sourceFingerprint": "sha256:8eedc20ed548d2343a0fae176bfac87b49778af617d468fe4eda04434aee2aab",
+        "sourceSpan": {
+          "startLine": 955,
+          "endLine": 956
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-83-sera-reprimido-con-prision-de-uno-141",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 141,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 83. - Será reprimido con prisión de uno a cuatro años, el que instigare a otro al suicidio o le ayudare a cometerlo, si el suici..."
+        ],
+        "officialLabel": "ARTICULO 83. - Será reprimido con prisión de uno a cuatro años, el que instigare a otro al suicidio o le ayudare a cometerlo, si el suici...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 83. - Será reprimido con prisión de uno a cuatro años, el que instigare a otro al suicidio o le ayudare a cometerlo, si el suicidio se hubiese tentado o consumado.\n",
+        "fullTranslationRu": "СТАТЬЯ 83. Prisión от одного до четырех лет наказывается тот, кто склоняет другого к самоубийству или помогает ему совершить его, если самоубийство было попытано или совершено.",
+        "simpleRu": "Если человек подстрекал другого к самоубийству или помогал ему, и самоубийство было совершено или была попытка, наказание - prisión от 1 до 4 лет.",
+        "sourceTextSha256": "2e03b020afefe6c1edbb4bfb096191668f08e862f8b7e43e059db8b483b6d1ce",
+        "sourceFingerprint": "sha256:2e03b020afefe6c1edbb4bfb096191668f08e862f8b7e43e059db8b483b6d1ce",
+        "sourceSpan": {
+          "startLine": 957,
+          "endLine": 958
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-84-sera-reprimido-con-prision-de-uno-142",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 142,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 84. - Será reprimido con prisión de uno (1) a cinco (5) años e inhabilitación especial, en su caso, por cinco (5) a diez (10) añ..."
+        ],
+        "officialLabel": "ARTICULO 84. - Será reprimido con prisión de uno (1) a cinco (5) años e inhabilitación especial, en su caso, por cinco (5) a diez (10) añ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 84. - Será reprimido con prisión de uno (1) a cinco (5) años e inhabilitación especial, en su caso, por cinco (5) a diez (10) años el que por imprudencia, negligencia, impericia en su arte o profesión o inobservancia de los reglamentos o de los deberes a su cargo causare a otro la muerte.\n\nEl mínimo de la pena se elevará a dos (2) años si fueren más de una las víctimas fatales.\n\n(Artículo sustituido por art. 1° de la Ley N° 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433] B.O. 6/1/2017).\n",
+        "fullTranslationRu": "СТАТЬЯ 84. Prisión от одного (1) до пяти (5) лет и, в соответствующем случае, специальное лишение права от пяти (5) до десяти (10) лет назначаются тому, кто по неосторожности, небрежности, профессиональной неумелости либо из-за несоблюдения правил или обязанностей, лежащих на нем, причинит другому смерть.\n\nМинимум наказания повышается до двух (2) лет, если погибших более одного.\n\n(Статья заменена статьей 1 Закона N 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433], B.O. 6/1/2017).",
+        "simpleRu": "Если человек по неосторожности, небрежности, профессиональной ошибке или из-за нарушения правил и обязанностей причинил смерть другому, наказание - prisión от 1 до 5 лет и, если подходит, специальное лишение права на 5-10 лет. Если погибших больше одного, минимум становится 2 года.",
+        "sourceTextSha256": "94008301b0493929e6b57e221b3e37f0752980e9221e68b439057ac80f4e41ff",
+        "sourceFingerprint": "sha256:94008301b0493929e6b57e221b3e37f0752980e9221e68b439057ac80f4e41ff",
+        "sourceSpan": {
+          "startLine": 959,
+          "endLine": 964
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-84-bis-sera-reprimido-con-prision-de-143",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 143,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 84 bis. - Será reprimido con prisión de dos (2) a cinco (5) años e inhabilitación especial, en su caso, por cinco (5) a diez (10..."
+        ],
+        "officialLabel": "ARTICULO 84 bis. - Será reprimido con prisión de dos (2) a cinco (5) años e inhabilitación especial, en su caso, por cinco (5) a diez (10...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 84 bis. - Será reprimido con prisión de dos (2) a cinco (5) años e inhabilitación especial, en su caso, por cinco (5) a diez (10) años el que por la conducción imprudente, negligente o antirreglamentaria de un vehículo con motor causare a otro la muerte.\n\nLa pena será de prisión de tres (3) a seis (6) años, si se diera alguna de las circunstancias previstas en el párrafo anterior y el conductor se diere a la fuga o no intentase socorrer a la víctima siempre y cuando no incurriere en la conducta prevista en el artículo 106, o estuviese bajo los efectos de estupefacientes o con un nivel de alcoholemia igual o superior a quinientos (500) miligramos por litro de sangre en el caso de conductores de transporte público o un (1) gramo por litro de sangre en los demás casos, o estuviese conduciendo en exceso de velocidad de más de treinta (30) kilómetros por encima de la máxima permitida en el lugar del hecho, o si condujese estando inhabilitado para hacerlo por autoridad competente, o violare la señalización del semáforo o las señales de tránsito que indican el sentido de circulación vehicular o cuando se dieren las circunstancias previstas en el artículo 193 bis, o con culpa temeraria, o cuando fueren más de una las víctimas fatales.\n\n(Artículo incorporado por art. 2° de la Ley N° 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433] B.O. 6/1/2017).\n",
+        "fullTranslationRu": "СТАТЬЯ 84 bis. Prisión от двух (2) до пяти (5) лет и, в соответствующем случае, специальное лишение права от пяти (5) до десяти (10) лет назначаются тому, кто из-за неосторожного, небрежного или противоречащего правилам управления моторным транспортным средством причинит другому смерть.\n\nНаказание составляет prisión от трех (3) до шести (6) лет, если имеется какое-либо из обстоятельств предыдущего абзаца и водитель скрылся, или не попытался помочь потерпевшему, если при этом он не совершил поведение, предусмотренное статьей 106, или находился под действием наркотических средств, или имел уровень алкоголя в крови, равный или превышающий пятьсот (500) миллиграммов на литр крови для водителей общественного транспорта либо один (1) грамм на литр крови в остальных случаях, или ехал с превышением скорости более чем на тридцать (30) километров сверх максимальной разрешенной в месте события, или вел транспорт, будучи лишенным права компетентным органом, или нарушил сигнал светофора либо дорожные знаки, указывающие направление движения транспортных средств, или когда имелись обстоятельства статьи 193 bis, или при грубой неосторожности, или когда погибших было более одного.\n\n(Статья включена статьей 2 Закона N 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433], B.O. 6/1/2017).",
+        "simpleRu": "Если водитель моторного транспорта по неосторожности, небрежности или с нарушением правил причинил смерть, наказание - prisión от 2 до 5 лет и возможное специальное лишение права на 5-10 лет. Срок становится 3-6 лет, если водитель скрылся, не помог потерпевшему, был под наркотиками, имел алкоголь не ниже 500 мг/л крови для общественного транспорта или 1 г/л для остальных, превысил скорость больше чем на 30 км/ч, вел без права, нарушил светофор или направление движения, подпал под статью 193 bis, действовал с грубой неосторожностью или погибших было больше одного.",
+        "sourceTextSha256": "b6739de213c1daa6f4011e4fc0fb7145e95ac1b4318410f5540b1438cd7c2485",
+        "sourceFingerprint": "sha256:b6739de213c1daa6f4011e4fc0fb7145e95ac1b4318410f5540b1438cd7c2485",
+        "sourceSpan": {
+          "startLine": 965,
+          "endLine": 970
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-85-el-o-la-que-causare-un-144",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 144,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 85. - El o la que causare un aborto será reprimido:"
+        ],
+        "officialLabel": "ARTICULO 85. - El o la que causare un aborto será reprimido:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 85. - El o la que causare un aborto será reprimido:\n\n1. Con prisión de tres (3) a diez (10) años, si obrare sin consentimiento de la persona gestante. Esta pena podrá elevarse hasta quince (15) años si el hecho fuere seguido de la muerte de la persona gestante.\n\n2. Con prisión de tres (3) meses a un (1) año, si obrare con consentimiento de la persona gestante, luego de la semana catorce (14) de gestación y siempre que no mediaren los supuestos previstos en el artículo 86.\n\n(Artículo sustituido por art. 14 de la Ley N° 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231] B.O. 15/01/2021)\n",
+        "fullTranslationRu": "СТАТЬЯ 85. Тот или та, кто причинит аборт, наказывается:\n\n1. prisión от трех (3) до десяти (10) лет, если действует без согласия беременного лица. Это наказание может быть повышено до пятнадцати (15) лет, если деяние повлекло смерть беременного лица.\n\n2. prisión от трех (3) месяцев до одного (1) года, если действует с согласия беременного лица после четырнадцатой (14) недели беременности и при отсутствии случаев, предусмотренных статьей 86.\n\n(Статья заменена статьей 14 Закона N 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231], B.O. 15/01/2021)",
+        "simpleRu": "За причинение аборта без согласия беременного лица наказание - prisión от 3 до 10 лет, а если беременное лицо умерло, срок могут поднять до 15 лет. Если согласие было, но это произошло после 14-й недели и не подходит под случаи статьи 86, наказание - от 3 месяцев до 1 года.",
+        "sourceTextSha256": "5e04f6643aba71747ba8c26983ebbd8fc4bf74e34735aedd936ebd9b84088122",
+        "sourceFingerprint": "sha256:5e04f6643aba71747ba8c26983ebbd8fc4bf74e34735aedd936ebd9b84088122",
+        "sourceSpan": {
+          "startLine": 971,
+          "endLine": 978
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-85-bis-sera-reprimido-o-reprimida-con-145",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 145,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 85 bis. - Será reprimido o reprimida con prisión de tres (3) meses a un (1) año e inhabilitación especial por el doble del tiemp..."
+        ],
+        "officialLabel": "ARTICULO 85 bis. - Será reprimido o reprimida con prisión de tres (3) meses a un (1) año e inhabilitación especial por el doble del tiemp...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 85 bis. - Será reprimido o reprimida con prisión de tres (3) meses a un (1) año e inhabilitación especial por el doble del tiempo de la condena, el funcionario público o la funcionaria pública o la autoridad del establecimiento de salud, profesional, efector o personal de salud que dilatare injustificadamente, obstaculizare o se negare, en contravención de la normativa vigente, a practicar un aborto en los casos legalmente autorizados.\n\n(Artículo incorporado por art. 15 de la Ley N° 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231] B.O. 15/01/2021)\n",
+        "fullTranslationRu": "СТАТЬЯ 85 bis. Prisión от трех (3) месяцев до одного (1) года и специальное лишение права на двойной срок приговора назначаются публичному должностному лицу, публичной должностной женщине, руководителю учреждения здравоохранения, профессионалу, исполнителю услуги или персоналу здравоохранения, которые без оправдания задерживают, препятствуют или отказываются, вопреки действующим нормам, выполнить аборт в законно разрешенных случаях.\n\n(Статья включена статьей 15 Закона N 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231], B.O. 15/01/2021)",
+        "simpleRu": "Если должностное лицо или работник системы здравоохранения без уважительной причины задерживает, мешает или отказывается выполнить аборт в случаях, где закон это разрешает, наказание - prisión от 3 месяцев до 1 года и специальное лишение права на двойной срок приговора.",
+        "sourceTextSha256": "775c9cffaaa12d9f8f375a8cde6f9d9d8993f3c99599ca2d89978e5fca8011d4",
+        "sourceFingerprint": "sha256:775c9cffaaa12d9f8f375a8cde6f9d9d8993f3c99599ca2d89978e5fca8011d4",
+        "sourceSpan": {
+          "startLine": 979,
+          "endLine": 982
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-86-no-es-delito-el-aborto-realizado-146",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 146,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 86. - No es delito el aborto realizado con consentimiento de la persona gestante hasta la semana catorce (14) inclusive del proc..."
+        ],
+        "officialLabel": "ARTICULO 86. - No es delito el aborto realizado con consentimiento de la persona gestante hasta la semana catorce (14) inclusive del proc...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 86. - No es delito el aborto realizado con consentimiento de la persona gestante hasta la semana catorce (14) inclusive del proceso gestacional.\n\nFuera del plazo establecido en el párrafo anterior, no será punible el aborto practicado con el consentimiento de la persona gestante:\n\n1. Si el embarazo fuere producto de una violación. En este caso, se debe garantizar la práctica con el requerimiento y la declaración jurada de la persona gestante ante el o la profesional o personal de salud interviniente.\n\nEn los casos de niñas menores de trece (13) años de edad, la declaración jurada no será requerida.\n\n2. Si estuviera en riesgo la vida o la salud integral de la persona gestante.\n\n(Artículo sustituido por art. 16 de la Ley N° 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231] B.O. 15/01/2021) (El término “...integral…” del texto del inciso 2) fue observado por art. 1º del Decreto Nº 14/2021 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346232] B.O. 15/01/2021)\n",
+        "fullTranslationRu": "СТАТЬЯ 86. Не является преступлением аборт, совершенный с согласия беременного лица до четырнадцатой (14) недели включительно процесса беременности.\n\nВне срока, установленного предыдущим абзацем, не наказывается аборт, выполненный с согласия беременного лица:\n\n1. Если беременность стала результатом изнасилования. В этом случае практика должна быть обеспечена по требованию и под присяжное заявление беременного лица перед участвующим профессионалом или персоналом здравоохранения.\n\nВ случаях девочек младше тринадцати (13) лет присяжное заявление не требуется.\n\n2. Если под угрозой жизнь или целостное здоровье беременного лица.\n\n(Статья заменена статьей 16 Закона N 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231], B.O. 15/01/2021) (Термин \"...целостное...\" в тексте пункта 2 был замечен статьей 1 Декрета N 14/2021 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346232], B.O. 15/01/2021)",
+        "simpleRu": "Аборт с согласием беременного лица до 14-й недели включительно не является преступлением. После этого срока он не наказывается, если беременность наступила из-за изнасилования или если есть риск для жизни или целостного здоровья беременного лица. При изнасиловании нужна просьба и присяжное заявление перед медработником, но для девочек младше 13 лет такое заявление не требуется. В тексте есть официальная пометка о слове \"целостное\" в пункте 2.",
+        "sourceTextSha256": "0987fd177b1434922ecbbba4429e4085c8e9691b53e292dc499f20da0bf7f8ff",
+        "sourceFingerprint": "sha256:0987fd177b1434922ecbbba4429e4085c8e9691b53e292dc499f20da0bf7f8ff",
+        "sourceSpan": {
+          "startLine": 983,
+          "endLine": 994
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-87-sera-reprimido-o-reprimida-con-prision-147",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 147,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 87. - Será reprimido o reprimida con prisión de seis (6) meses a tres (3) años, el o la que con violencia causare un aborto sin ..."
+        ],
+        "officialLabel": "ARTICULO 87. - Será reprimido o reprimida con prisión de seis (6) meses a tres (3) años, el o la que con violencia causare un aborto sin ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 87. - Será reprimido o reprimida con prisión de seis (6) meses a tres (3) años, el o la que con violencia causare un aborto sin haber tenido el propósito de causarlo, si el estado del embarazo de la persona gestante fuere notorio o le constare.\n\n(Artículo sustituido por art. 17 de la Ley N° 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231] B.O. 15/01/2021)\n",
+        "fullTranslationRu": "СТАТЬЯ 87. Prisión от шести (6) месяцев до трех (3) лет наказывается тот или та, кто с применением насилия причинит аборт, не имея цели его причинить, если состояние беременности беременного лица было очевидным или ему либо ей было известно.\n\n(Статья заменена статьей 17 Закона N 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231], B.O. 15/01/2021)",
+        "simpleRu": "Если человек применил насилие и из-за этого произошел аборт, хотя он не хотел именно аборта, наказание - prisión от 6 месяцев до 3 лет, если беременность была заметна или он знал о ней.",
+        "sourceTextSha256": "13a5a048381bb93ddf9eba4fe81fbfc73f38c6f08ed1f5f63ea2e655e2a9ed5e",
+        "sourceFingerprint": "sha256:13a5a048381bb93ddf9eba4fe81fbfc73f38c6f08ed1f5f63ea2e655e2a9ed5e",
+        "sourceSpan": {
+          "startLine": 995,
+          "endLine": 998
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-88-sera-reprimida-con-prision-de-tres-148",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 148,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo I",
+          "ARTICULO 88. - Será reprimida con prisión de tres (3) meses a un (1) año, la persona gestante que, luego de la semana catorce (14) de ges..."
+        ],
+        "officialLabel": "ARTICULO 88. - Será reprimida con prisión de tres (3) meses a un (1) año, la persona gestante que, luego de la semana catorce (14) de ges...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 88. - Será reprimida con prisión de tres (3) meses a un (1) año, la persona gestante que, luego de la semana catorce (14) de gestación y siempre que no mediaren los supuestos previstos en el artículo 86, causare su propio aborto o consintiera que otro se lo causare. Podrá eximirse la pena cuando las circunstancias hicieren excusable la conducta.\n\nLa tentativa de la persona gestante no es punible.\n\n(Artículo sustituido por art. 18 de la Ley N° 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231] B.O. 15/01/2021)\n",
+        "fullTranslationRu": "СТАТЬЯ 88. Беременное лицо, которое после четырнадцатой (14) недели беременности и при отсутствии случаев, предусмотренных статьей 86, причинит свой собственный аборт или согласится, чтобы другой его причинил, наказывается prisión от трех (3) месяцев до одного (1) года. Наказание может быть исключено, когда обстоятельства делают поведение извинительным.\n\nПокушение беременного лица не наказуемо.\n\n(Статья заменена статьей 18 Закона N 27.610 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=346231], B.O. 15/01/2021)",
+        "simpleRu": "Если беременное лицо после 14-й недели само вызывает аборт или соглашается, чтобы это сделал другой, и нет случаев статьи 86, наказание - prisión от 3 месяцев до 1 года. Суд может не назначить наказание, если обстоятельства делают поведение извинительным. Попытка самого беременного лица не наказывается.",
+        "sourceTextSha256": "db640a6f0add5b0e6e3958d8485915a0a3c2d884429c96185e13fdc52a7889ee",
+        "sourceFingerprint": "sha256:db640a6f0add5b0e6e3958d8485915a0a3c2d884429c96185e13fdc52a7889ee",
+        "sourceSpan": {
+          "startLine": 999,
+          "endLine": 1004
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-149",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 149,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nLesiones\n",
+        "fullTranslationRu": "Глава II\n\nТелесные повреждения",
+        "simpleRu": "Глава II говорит о телесных повреждениях и вреде здоровью.",
+        "sourceTextSha256": "9d0e6e897c73aa89e19bf25c3f6c220b6960e23faad373a45ab5d168b99e942f",
+        "sourceFingerprint": "sha256:9d0e6e897c73aa89e19bf25c3f6c220b6960e23faad373a45ab5d168b99e942f",
+        "sourceSpan": {
+          "startLine": 1005,
+          "endLine": 1008
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-89-se-impondra-prision-de-un-mes-150",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 150,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo II",
+          "ARTICULO 89. - Se impondrá prisión de un mes a un año, al que causare a otro, en el cuerpo o en la salud, un daño que no esté previsto en..."
+        ],
+        "officialLabel": "ARTICULO 89. - Se impondrá prisión de un mes a un año, al que causare a otro, en el cuerpo o en la salud, un daño que no esté previsto en...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 89. - Se impondrá prisión de un mes a un año, al que causare a otro, en el cuerpo o en la salud, un daño que no esté previsto en otra disposición de este código.\n",
+        "fullTranslationRu": "СТАТЬЯ 89. Prisión от одного месяца до одного года назначается тому, кто причинит другому вред телу или здоровью, не предусмотренный другим положением этого кодекса.",
+        "simpleRu": "Если человек причинил другому вред телу или здоровью, а специальной статьи для такого вреда нет, наказание - prisión от 1 месяца до 1 года.",
+        "sourceTextSha256": "67ad0066ec80a2b528a109879180d23d08b49771c594868f670ee8ebde6b4b06",
+        "sourceFingerprint": "sha256:67ad0066ec80a2b528a109879180d23d08b49771c594868f670ee8ebde6b4b06",
+        "sourceSpan": {
+          "startLine": 1009,
+          "endLine": 1010
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-90-se-impondra-reclusion-o-prision-de-151",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 151,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo II",
+          "ARTICULO 90. - Se impondrá reclusión o prisión de uno a seis años, si la lesión produjere una debilitación permanente de la salud, de un ..."
+        ],
+        "officialLabel": "ARTICULO 90. - Se impondrá reclusión o prisión de uno a seis años, si la lesión produjere una debilitación permanente de la salud, de un ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 90. - Se impondrá reclusión o prisión de uno a seis años, si la lesión produjere una debilitación permanente de la salud, de un sentido, de un órgano, de un miembro o una dificultad permanente de la palabra o si hubiere puesto en peligro la vida del ofendido, le hubiere inutilizado para el trabajo por más de un mes o le hubiere causado una deformación permanente del rostro.\n",
+        "fullTranslationRu": "СТАТЬЯ 90. Reclusión или prisión от одного до шести лет назначается, если повреждение вызвало постоянное ослабление здоровья, чувства, органа, конечности или постоянное затруднение речи, либо если оно поставило жизнь потерпевшего в опасность, сделало его неспособным к работе более чем на месяц или причинило постоянное обезображивание лица.",
+        "simpleRu": "Более тяжкое повреждение наказывается reclusión или prisión от 1 до 6 лет. Это когда вред постоянно ослабил здоровье, чувство, орган, конечность или речь, поставил жизнь под угрозу, сделал человека неспособным работать больше месяца или навсегда обезобразил лицо.",
+        "sourceTextSha256": "78744d5e23f79cdc0e38b733f2713fbfee347b88ce6d5950b11b2b2d7b33ce5b",
+        "sourceFingerprint": "sha256:78744d5e23f79cdc0e38b733f2713fbfee347b88ce6d5950b11b2b2d7b33ce5b",
+        "sourceSpan": {
+          "startLine": 1011,
+          "endLine": 1012
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-91-se-impondra-reclusion-o-prision-de-152",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 152,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo II",
+          "ARTICULO 91. - Se impondrá reclusión o prisión de tres a diez años, si la lesión produjere una enfermedad mental o corporal, cierta o pro..."
+        ],
+        "officialLabel": "ARTICULO 91. - Se impondrá reclusión o prisión de tres a diez años, si la lesión produjere una enfermedad mental o corporal, cierta o pro...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 91. - Se impondrá reclusión o prisión de tres a diez años, si la lesión produjere una enfermedad mental o corporal, cierta o probablemente incurable, la inutilidad permanente para el trabajo, la pérdida de un sentido, de un órgano, de un miembro, del uso de un órgano o miembro, de la palabra o de la capacidad de engendrar o concebir.\n",
+        "fullTranslationRu": "СТАТЬЯ 91. Reclusión или prisión от трех до десяти лет назначается, если повреждение вызвало психическую или телесную болезнь, определенно или вероятно неизлечимую, постоянную неспособность к работе, потерю чувства, органа, конечности, пользования органом или конечностью, речи либо способности производить потомство или зачать.",
+        "simpleRu": "Самые тяжкие повреждения по этой группе наказываются reclusión или prisión от 3 до 10 лет. Это неизлечимая или вероятно неизлечимая психическая или телесная болезнь, постоянная неспособность работать, потеря чувства, органа, конечности, возможности пользоваться ими, речи или способности иметь детей.",
+        "sourceTextSha256": "6586139903e4a1c7b052f78b8865ba7f097405b4aa9310cbfc3273d92cc8a720",
+        "sourceFingerprint": "sha256:6586139903e4a1c7b052f78b8865ba7f097405b4aa9310cbfc3273d92cc8a720",
+        "sourceSpan": {
+          "startLine": 1013,
+          "endLine": 1014
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-92-si-concurriere-alguna-de-las-circunstancias-153",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 153,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo II",
+          "ARTICULO 92. - Si concurriere alguna de las circunstancias enumeradas en el artículo 80, la pena será: en el caso del artículo 89, de sei..."
+        ],
+        "officialLabel": "ARTICULO 92. - Si concurriere alguna de las circunstancias enumeradas en el artículo 80, la pena será: en el caso del artículo 89, de sei...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 92. - Si concurriere alguna de las circunstancias enumeradas en el artículo 80, la pena será: en el caso del artículo 89, de seis meses a dos años; en el caso del artículo 90, de tres a diez años; y en el caso del artículo 91, de tres a quince años.\n",
+        "fullTranslationRu": "СТАТЬЯ 92. Если имеется какое-либо из обстоятельств, перечисленных в статье 80, наказание составляет: в случае статьи 89 - от шести месяцев до двух лет; в случае статьи 90 - от трех до десяти лет; и в случае статьи 91 - от трех до пятнадцати лет.",
+        "simpleRu": "Если при телесном повреждении есть отягчающее обстоятельство из статьи 80, сроки увеличиваются: для статьи 89 - 6 месяцев-2 года, для статьи 90 - 3-10 лет, для статьи 91 - 3-15 лет.",
+        "sourceTextSha256": "a54efbbd17082fc6c477c73c57105b114fba7ec0522ec56f99b2e55f0d35d778",
+        "sourceFingerprint": "sha256:a54efbbd17082fc6c477c73c57105b114fba7ec0522ec56f99b2e55f0d35d778",
+        "sourceSpan": {
+          "startLine": 1015,
+          "endLine": 1016
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-93-si-concurriere-la-circunstancia-enunciada-en-154",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 154,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo II",
+          "ARTICULO 93. - Si concurriere la circunstancia enunciada en el inciso 1º letra a) del artículo 81, la pena será: en el caso del artículo ..."
+        ],
+        "officialLabel": "ARTICULO 93. - Si concurriere la circunstancia enunciada en el inciso 1º letra a) del artículo 81, la pena será: en el caso del artículo ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 93. - Si concurriere la circunstancia enunciada en el inciso 1º letra a) del artículo 81, la pena será: en el caso del artículo 89, de quince días a seis meses; en el caso del artículo 90, de seis meses a tres años; y en el caso del artículo 91, de uno a cuatro años.\n",
+        "fullTranslationRu": "СТАТЬЯ 93. Если имеется обстоятельство, указанное в пункте 1, букве a) статьи 81, наказание составляет: в случае статьи 89 - от пятнадцати дней до шести месяцев; в случае статьи 90 - от шести месяцев до трех лет; и в случае статьи 91 - от одного до четырех лет.",
+        "simpleRu": "Если при телесном повреждении есть смягчающее обстоятельство из статьи 81 пункт 1 буква a), сроки меньше: для статьи 89 - 15 дней-6 месяцев, для статьи 90 - 6 месяцев-3 года, для статьи 91 - 1-4 года.",
+        "sourceTextSha256": "411fbd992da5cb0565d3a1a753f1ed8b603aad9b57ca3e92f38086787e6ca6da",
+        "sourceFingerprint": "sha256:411fbd992da5cb0565d3a1a753f1ed8b603aad9b57ca3e92f38086787e6ca6da",
+        "sourceSpan": {
+          "startLine": 1017,
+          "endLine": 1018
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-94-se-impondra-prision-de-un-1-155",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 155,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo II",
+          "ARTICULO 94. - Se impondrá prisión de un (1) mes a tres (3) años o multa de mil (1.000) a quince mil (15.000) pesos e inhabilitación espe..."
+        ],
+        "officialLabel": "ARTICULO 94. - Se impondrá prisión de un (1) mes a tres (3) años o multa de mil (1.000) a quince mil (15.000) pesos e inhabilitación espe...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 94. - Se impondrá prisión de un (1) mes a tres (3) años o multa de mil (1.000) a quince mil (15.000) pesos e inhabilitación especial por uno (1) a cuatro (4) años, el que por imprudencia o negligencia, por impericia en su arte o profesión, o por inobservancia de los reglamentos o deberes a su cargo, causare a otro un daño en el cuerpo o en la salud.\n\nSi las lesiones fueran de las descriptas en los artículos 90 o 91 y fueren más de una las víctimas lesionadas, el mínimo de la pena prevista en el primer párrafo, será de seis (6) meses o multa de tres mil (3.000) pesos e inhabilitación especial por dieciocho (18) meses.\n\n(Artículo sustituido por art. 3° de la Ley N° 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433] B.O. 6/1/2017).\n",
+        "fullTranslationRu": "СТАТЬЯ 94. Prisión от одного (1) месяца до трех (3) лет или штраф от одной тысячи (1.000) до пятнадцати тысяч (15.000) песо и специальное лишение права от одного (1) до четырех (4) лет назначаются тому, кто по неосторожности или небрежности, по неумелости в своем искусстве или профессии либо из-за несоблюдения правил или лежащих на нем обязанностей причинит другому вред телу или здоровью.\n\nЕсли повреждения относятся к описанным в статьях 90 или 91 и потерпевших с повреждениями более одного, минимум наказания, предусмотренного первым абзацем, составляет шесть (6) месяцев или штраф три тысячи (3.000) песо и специальное лишение права на восемнадцать (18) месяцев.\n\n(Статья заменена статьей 3 Закона N 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433], B.O. 6/1/2017).",
+        "simpleRu": "Если человек по неосторожности, небрежности, профессиональной ошибке или нарушению правил причинил вред телу или здоровью, наказание - prisión от 1 месяца до 3 лет или штраф 1.000-15.000 песо и специальное лишение права на 1-4 года. Если вред относится к статьям 90 или 91 и пострадавших больше одного, минимум становится 6 месяцев или штраф 3.000 песо и лишение права на 18 месяцев.",
+        "sourceTextSha256": "9642659ba89521440445b672a721be8b8f632c0077596e7ecadabffb1003b5d6",
+        "sourceFingerprint": "sha256:9642659ba89521440445b672a721be8b8f632c0077596e7ecadabffb1003b5d6",
+        "sourceSpan": {
+          "startLine": 1019,
+          "endLine": 1024
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-94-bis-sera-reprimido-con-prision-de-156",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 156,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo II",
+          "ARTICULO 94 bis. - Será reprimido con prisión de uno (1) a tres (3) años e inhabilitación especial por dos (2) a cuatro (4) años, si las ..."
+        ],
+        "officialLabel": "ARTICULO 94 bis. - Será reprimido con prisión de uno (1) a tres (3) años e inhabilitación especial por dos (2) a cuatro (4) años, si las ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 94 bis. - Será reprimido con prisión de uno (1) a tres (3) años e inhabilitación especial por dos (2) a cuatro (4) años, si las lesiones de los artículos 90 o 91 fueran ocasionadas por la conducción imprudente, negligente o antirreglamentaria de un vehículo con motor.\n\nLa pena será de dos (2) a cuatro (4) años de prisión si se verificase alguna de las circunstancias previstas en el párrafo anterior y el conductor se diese a la fuga, o no intentare socorrer a la víctima siempre y cuando no incurriera en la conducta prevista en el artículo 106, o estuviese bajo los efectos de estupefacientes o con un nivel de alcoholemia igual o superior a quinientos (500) miligramos por litro de sangre en el caso de conductores de transporte público o un (1) gramo por litro de sangre en los demás casos, o estuviese conduciendo en exceso de velocidad de más de treinta (30) kilómetros por encima de la máxima permitida en el lugar del hecho, o si condujese estando inhabilitado para hacerlo por autoridad competente, o violare la señalización del semáforo o las señales de tránsito que indican el sentido de circulación vehicular, o cuando se dieren las circunstancias previstas en el artículo 193 bis, o con culpa temeraria, o cuando fueren más de una las víctimas lesionadas.\n\n(Artículo incorporado por art. 4° de la Ley N° 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433] B.O. 6/1/2017).\n",
+        "fullTranslationRu": "СТАТЬЯ 94 bis. Prisión от одного (1) до трех (3) лет и специальное лишение права от двух (2) до четырех (4) лет назначаются, если повреждения статей 90 или 91 причинены неосторожным, небрежным или противоречащим правилам управлением моторным транспортным средством.\n\nНаказание составляет prisión от двух (2) до четырех (4) лет, если имеется какое-либо из обстоятельств предыдущего абзаца и водитель скрылся, или не попытался помочь потерпевшему, если при этом он не совершил поведение, предусмотренное статьей 106, или находился под действием наркотических средств, или имел уровень алкоголя в крови, равный или превышающий пятьсот (500) миллиграммов на литр крови для водителей общественного транспорта либо один (1) грамм на литр крови в остальных случаях, или ехал с превышением скорости более чем на тридцать (30) километров сверх максимальной разрешенной в месте события, или вел транспорт, будучи лишенным права компетентным органом, или нарушил сигнал светофора либо дорожные знаки, указывающие направление движения транспортных средств, или когда имелись обстоятельства статьи 193 bis, или при грубой неосторожности, или когда потерпевших с повреждениями было более одного.\n\n(Статья включена статьей 4 Закона N 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433], B.O. 6/1/2017).",
+        "simpleRu": "Если водитель моторного транспорта по неосторожности, небрежности или с нарушением правил причинил тяжкие повреждения из статей 90 или 91, наказание - prisión от 1 до 3 лет и лишение права на 2-4 года. Срок становится 2-4 года при побеге, отсутствии помощи, наркотиках, алкоголе не ниже 500 мг/л для общественного транспорта или 1 г/л для остальных, превышении больше чем на 30 км/ч, вождении без права, нарушении светофора или направления движения, обстоятельствах статьи 193 bis, грубой неосторожности или нескольких пострадавших.",
+        "sourceTextSha256": "d1657621a827d9dc27ca34a9137efad33816b809bcc5834596e241e10f4b1e15",
+        "sourceFingerprint": "sha256:d1657621a827d9dc27ca34a9137efad33816b809bcc5834596e241e10f4b1e15",
+        "sourceSpan": {
+          "startLine": 1025,
+          "endLine": 1030
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iii-157",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 157,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo III"
+        ],
+        "officialLabel": "Capítulo III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo III\n\nHomicidio o lesiones en riña\n",
+        "fullTranslationRu": "Глава III\n\nУбийство или телесные повреждения в драке",
+        "simpleRu": "Глава III говорит о случаях, когда смерть или тяжкие повреждения произошли в драке или нападении с участием нескольких людей.",
+        "sourceTextSha256": "3196614124e7c96af85e45631f70fb8e47cc77c9f86bac927ff759c08e9b5748",
+        "sourceFingerprint": "sha256:3196614124e7c96af85e45631f70fb8e47cc77c9f86bac927ff759c08e9b5748",
+        "sourceSpan": {
+          "startLine": 1031,
+          "endLine": 1034
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-95-cuando-en-rina-o-agresion-en-158",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 158,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo III",
+          "ARTICULO 95. - Cuando en riña o agresión en que tomaren parte más de dos personas, resultare muerte o lesiones de las determinadas en los..."
+        ],
+        "officialLabel": "ARTICULO 95. - Cuando en riña o agresión en que tomaren parte más de dos personas, resultare muerte o lesiones de las determinadas en los...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 95. - Cuando en riña o agresión en que tomaren parte más de dos personas, resultare muerte o lesiones de las determinadas en los artículos 90 y 91, sin que constare quiénes las causaron, se tendrá por autores a todos los que ejercieron violencia sobre la persona del ofendido y se aplicará reclusión o prisión de dos a seis años en caso de muerte y de uno a cuatro en caso de lesión.\n",
+        "fullTranslationRu": "СТАТЬЯ 95. Когда в драке или нападении, в которых участвовали более двух лиц, наступит смерть или повреждения, определенные в статьях 90 и 91, и не будет установлено, кто их причинил, авторами считаются все, кто применял насилие к потерпевшему лицу, и применяется reclusión или prisión от двух до шести лет в случае смерти и от одного до четырех лет в случае повреждения.",
+        "simpleRu": "Если в драке или нападении участвовало больше двух человек, кто-то умер или получил тяжкие повреждения из статей 90 и 91, но неизвестно, кто именно это сделал, авторами считают всех, кто применял насилие к потерпевшему. За смерть срок 2-6 лет, за повреждение 1-4 года.",
+        "sourceTextSha256": "e57dbb3d78e5b51da4725eb173e6d882c2ee17a767221c13d89951f0a5b87e23",
+        "sourceFingerprint": "sha256:e57dbb3d78e5b51da4725eb173e6d882c2ee17a767221c13d89951f0a5b87e23",
+        "sourceSpan": {
+          "startLine": 1035,
+          "endLine": 1036
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-96-si-las-lesiones-fueren-las-previstas-159",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 159,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo III",
+          "ARTICULO 96. - Si las lesiones fueren las previstas en el artículo 89, la pena aplicable será de cuatro a ciento veinte días de prisión."
+        ],
+        "officialLabel": "ARTICULO 96. - Si las lesiones fueren las previstas en el artículo 89, la pena aplicable será de cuatro a ciento veinte días de prisión.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 96. - Si las lesiones fueren las previstas en el artículo 89, la pena aplicable será de cuatro a ciento veinte días de prisión.\n",
+        "fullTranslationRu": "СТАТЬЯ 96. Если повреждения являются предусмотренными статьей 89, применимое наказание составляет от четырех до ста двадцати дней prisión.",
+        "simpleRu": "Если в такой драке повреждения только уровня статьи 89, наказание - prisión от 4 до 120 дней.",
+        "sourceTextSha256": "67ec3ec4ef1e0c16193e800c00856845bd72a12eef57560e2ed262221c204589",
+        "sourceFingerprint": "sha256:67ec3ec4ef1e0c16193e800c00856845bd72a12eef57560e2ed262221c204589",
+        "sourceSpan": {
+          "startLine": 1037,
+          "endLine": 1038
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iv-160",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 160,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo IV"
+        ],
+        "officialLabel": "Capítulo IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo IV\n\nDuelo\n",
+        "fullTranslationRu": "Глава IV\n\nДуэль",
+        "simpleRu": "Глава IV содержит правила о дуэлях.",
+        "sourceTextSha256": "28bad8c27d20632c4637f6e660a276da300657e4f1546c32899fd7b9cf96a9c1",
+        "sourceFingerprint": "sha256:28bad8c27d20632c4637f6e660a276da300657e4f1546c32899fd7b9cf96a9c1",
+        "sourceSpan": {
+          "startLine": 1039,
+          "endLine": 1042
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-97-los-que-se-batieren-en-duelo-161",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 161,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo IV",
+          "ARTICULO 97. - Los que se batieren en duelo, con intervención de dos o más padrinos, mayores de edad, que elijan las armas y arreglen las..."
+        ],
+        "officialLabel": "ARTICULO 97. - Los que se batieren en duelo, con intervención de dos o más padrinos, mayores de edad, que elijan las armas y arreglen las...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 97. - Los que se batieren en duelo, con intervención de dos o más padrinos, mayores de edad, que elijan las armas y arreglen las demás condiciones del desafío, serán reprimidos:\n\n1º Con prisión de uno a seis meses, al que no infiriere lesión a su adversario o sólo le causare una lesión de las determinadas en el artículo 89.\n\n2º Con prisión de uno a cuatro años, al que causare la muerte de su adversario o le infiriere lesión de las determinadas en los artículos 90 y 91.\n",
+        "fullTranslationRu": "СТАТЬЯ 97. Те, кто сражается на дуэли с участием двух или более секундантов, достигших совершеннолетия, которые выбирают оружие и устанавливают остальные условия вызова, наказываются:\n\n1. prisión от одного до шести месяцев - тот, кто не причинит повреждения противнику или причинит ему только повреждение, определенное в статье 89.\n\n2. prisión от одного до четырех лет - тот, кто причинит смерть противнику или нанесет ему повреждение, определенное в статьях 90 и 91.",
+        "simpleRu": "Если дуэль проходит с двумя или более совершеннолетними секундантами, которые выбирают оружие и условия, наказание зависит от результата. Без повреждений или только с легким повреждением из статьи 89 - prisión 1-6 месяцев. Если противник умер или получил повреждения из статей 90 и 91 - prisión 1-4 года.",
+        "sourceTextSha256": "9f21820389e2a2a2261feac7343f8d3e645e74774d1d9c03deac4bcd4d7fce70",
+        "sourceFingerprint": "sha256:9f21820389e2a2a2261feac7343f8d3e645e74774d1d9c03deac4bcd4d7fce70",
+        "sourceSpan": {
+          "startLine": 1043,
+          "endLine": 1048
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-98-los-que-se-batieren-sin-la-162",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 162,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo IV",
+          "ARTICULO 98. - Los que se batieren, sin la intervención de padrinos, mayores de edad, que elijan las armas y arreglen las demás condicion..."
+        ],
+        "officialLabel": "ARTICULO 98. - Los que se batieren, sin la intervención de padrinos, mayores de edad, que elijan las armas y arreglen las demás condicion...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 98. - Los que se batieren, sin la intervención de padrinos, mayores de edad, que elijan las armas y arreglen las demás condiciones del desafío, serán reprimidos:\n\n1º El que matare a su adversario, con la pena señalada para el homicida;\n\n2º El que causare lesiones, con la pena señalada para el autor de lesiones;\n\n3º El que no causare lesiones, con prisión de un mes a un año.\n",
+        "fullTranslationRu": "СТАТЬЯ 98. Те, кто сражается без участия совершеннолетних секундантов, выбирающих оружие и устанавливающих остальные условия вызова, наказываются:\n\n1. тот, кто убьет своего противника, наказанием, установленным для убийцы;\n\n2. тот, кто причинит повреждения, наказанием, установленным для автора телесных повреждений;\n\n3. тот, кто не причинит повреждений, prisión от одного месяца до одного года.",
+        "simpleRu": "Если дуэль проходит без совершеннолетних секундантов, наказание строже привязано к обычным последствиям: за смерть - как за убийство, за повреждения - как за телесные повреждения, а если повреждений нет - prisión от 1 месяца до 1 года.",
+        "sourceTextSha256": "7e2191d89b09c7bf4f26ce127b0b721bdfafe9eb99143ed007f8fce0b0c46d84",
+        "sourceFingerprint": "sha256:7e2191d89b09c7bf4f26ce127b0b721bdfafe9eb99143ed007f8fce0b0c46d84",
+        "sourceSpan": {
+          "startLine": 1049,
+          "endLine": 1056
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-99-el-que-instigare-a-otro-a-163",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 163,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo IV",
+          "ARTICULO 99. - El que instigare a otro a provocar o a aceptar un duelo y el que desacreditare públicamente a otro por no desafiar o por r..."
+        ],
+        "officialLabel": "ARTICULO 99. - El que instigare a otro a provocar o a aceptar un duelo y el que desacreditare públicamente a otro por no desafiar o por r...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 99. - El que instigare a otro a provocar o a aceptar un duelo y el que desacreditare públicamente a otro por no desafiar o por rehusar un desafío, serán reprimidos:\n\n1 Con multa de pesos mil a pesos quince mil si el duelo no se realizare o si realizándose, no se produjere muerte ni lesiones o sólo lesiones de las comprendidas en el artículo 89. (Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n\n2 Con prisión de uno a cuatro años, si se causare muerte o lesiones de las mencionadas en los artículos 90 y 91.\n",
+        "fullTranslationRu": "СТАТЬЯ 99. Тот, кто подстрекает другого вызвать на дуэль или принять дуэль, а также тот, кто публично дискредитирует другого за то, что он не вызвал на дуэль или отказался от вызова, наказываются:\n\n1. штрафом от одной тысячи песо до пятнадцати тысяч песо, если дуэль не состоялась или если, состоявшись, не повлекла смерти либо повреждений, или повлекла только повреждения, охваченные статьей 89. (Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684], B.O. 29/12/1993)\n\n2. prisión от одного до четырех лет, если причинены смерть или повреждения, указанные в статьях 90 и 91.",
+        "simpleRu": "Нельзя подстрекать к дуэли или публично унижать человека за отказ от нее. Если дуэль не состоялась или не было смерти и тяжких повреждений, штраф 1.000-15.000 песо. Если была смерть или повреждения из статей 90 и 91, наказание - prisión 1-4 года.",
+        "sourceTextSha256": "b025b4ac80638444d9af468d80d43debae87d3b9a1368bfe0474a3bc14327bd8",
+        "sourceFingerprint": "sha256:b025b4ac80638444d9af468d80d43debae87d3b9a1368bfe0474a3bc14327bd8",
+        "sourceSpan": {
+          "startLine": 1057,
+          "endLine": 1062
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-100-el-que-provocare-o-diere-causa-164",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 164,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo IV",
+          "ARTICULO 100. - El que provocare o diere causa a un desafío, proponiéndose un interés pecuniario u otro objeto inmoral, será reprimido:"
+        ],
+        "officialLabel": "ARTICULO 100. - El que provocare o diere causa a un desafío, proponiéndose un interés pecuniario u otro objeto inmoral, será reprimido:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 100. - El que provocare o diere causa a un desafío, proponiéndose un interés pecuniario u otro objeto inmoral, será reprimido:\n\n1º Con prisión de uno a cuatro años, si el duelo no se verificare o si efectuándose, no resultare muerte ni lesiones.\n\n2 Con reclusión o prisión de tres a diez años, si el duelo se realizare y resultaren lesiones;\n\n3 Con reclusión o prisión de diez a veinticinco años, si se produjere la muerte.\n",
+        "fullTranslationRu": "СТАТЬЯ 100. Тот, кто вызовет или даст повод к вызову на дуэль, преследуя денежный интерес или иную безнравственную цель, наказывается:\n\n1. prisión от одного до четырех лет, если дуэль не состоялась или если, состоявшись, не повлекла смерти или повреждений.\n\n2. reclusión или prisión от трех до десяти лет, если дуэль состоялась и наступили повреждения;\n\n3. reclusión или prisión от десяти до двадцати пяти лет, если наступила смерть.",
+        "simpleRu": "Если человек провоцирует дуэль ради денег или другой безнравственной цели, наказание зависит от результата: без дуэли, смерти и повреждений - prisión 1-4 года; при повреждениях - reclusión или prisión 3-10 лет; при смерти - 10-25 лет.",
+        "sourceTextSha256": "26ee39d594d3a113066cc3b0af6386f8bf6500f76dd1a1e948392871b2e97dac",
+        "sourceFingerprint": "sha256:26ee39d594d3a113066cc3b0af6386f8bf6500f76dd1a1e948392871b2e97dac",
+        "sourceSpan": {
+          "startLine": 1063,
+          "endLine": 1070
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-101-el-combatiente-que-faltare-en-dano-165",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 165,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo IV",
+          "ARTICULO 101. - El combatiente que faltare, en daño de su adversario, a las condiciones ajustadas por los padrinos, será reprimido:"
+        ],
+        "officialLabel": "ARTICULO 101. - El combatiente que faltare, en daño de su adversario, a las condiciones ajustadas por los padrinos, será reprimido:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 101. - El combatiente que faltare, en daño de su adversario, a las condiciones ajustadas por los padrinos, será reprimido:\n\n1º Con reclusión o prisión de tres a diez años, si causare lesiones a su adversario.\n\n2º Con reclusión o prisión de diez a veinticinco años, si le causare la muerte.\n",
+        "fullTranslationRu": "СТАТЬЯ 101. Участник дуэли, который в ущерб своему противнику нарушит условия, согласованные секундантами, наказывается:\n\n1. reclusión или prisión от трех до десяти лет, если причинит повреждения противнику.\n\n2. reclusión или prisión от десяти до двадцати пяти лет, если причинит ему смерть.",
+        "simpleRu": "Если участник дуэли нарушает согласованные секундантами условия в ущерб противнику, наказание такое: при повреждениях - reclusión или prisión 3-10 лет, при смерти - 10-25 лет.",
+        "sourceTextSha256": "1538236d58e0f9165ef94e77a473f6078ae5cec75641898f08df0b51b45722bb",
+        "sourceFingerprint": "sha256:1538236d58e0f9165ef94e77a473f6078ae5cec75641898f08df0b51b45722bb",
+        "sourceSpan": {
+          "startLine": 1071,
+          "endLine": 1076
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-102-los-padrinos-de-un-duelo-que-166",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 166,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo IV",
+          "ARTICULO 102. - Los padrinos de un duelo que usaren cualquier género de alevosía en la ejecución del mismo, serán reprimidos con las pena..."
+        ],
+        "officialLabel": "ARTICULO 102. - Los padrinos de un duelo que usaren cualquier género de alevosía en la ejecución del mismo, serán reprimidos con las pena...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 102. - Los padrinos de un duelo que usaren cualquier género de alevosía en la ejecución del mismo, serán reprimidos con las penas señaladas en el artículo anterior, según fueren las consecuencias que resultaren.\n",
+        "fullTranslationRu": "СТАТЬЯ 102. Секунданты дуэли, которые используют какой-либо вид вероломства при ее проведении, наказываются наказаниями, указанными в предыдущей статье, в зависимости от наступивших последствий.",
+        "simpleRu": "Если секунданты дуэли действуют вероломно, их наказывают по статье 101: срок зависит от того, были ли повреждения или смерть.",
+        "sourceTextSha256": "bd090d5940923962d66598abae5cf2f69adc8230a04506971f4c0c2dcc4788a4",
+        "sourceFingerprint": "sha256:bd090d5940923962d66598abae5cf2f69adc8230a04506971f4c0c2dcc4788a4",
+        "sourceSpan": {
+          "startLine": 1077,
+          "endLine": 1078
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-103-cuando-los-padrinos-concertaren-un-duelo-167",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 167,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo IV",
+          "ARTICULO 103. - Cuando los padrinos concertaren un duelo a muerte o en condiciones tales que de ellas debiere resultar la muerte, serán r..."
+        ],
+        "officialLabel": "ARTICULO 103. - Cuando los padrinos concertaren un duelo a muerte o en condiciones tales que de ellas debiere resultar la muerte, serán r...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 103. - Cuando los padrinos concertaren un duelo a muerte o en condiciones tales que de ellas debiere resultar la muerte, serán reprimidos con reclusión o prisión de uno a cuatro años, si se verificare la muerte de alguno de los combatientes. Si no se verificare la muerte de alguno de ellos, la pena será de multa de pesos mil a pesos quince mil.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N°24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 103. Когда секунданты договариваются о дуэли насмерть или на таких условиях, из которых должна наступить смерть, они наказываются reclusión или prisión от одного до четырех лет, если наступит смерть кого-либо из участников. Если смерть никого из них не наступит, наказание составляет штраф от одной тысячи песо до пятнадцати тысяч песо.\n\n(Примечание Infoleg: штраф обновлен статьей 1 Закона N 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684], B.O. 29/12/1993)",
+        "simpleRu": "Если секунданты устраивают дуэль насмерть или с условиями, которые должны привести к смерти, и кто-то из участников умирает, наказание - reclusión или prisión 1-4 года. Если никто не умер, штраф 1.000-15.000 песо.",
+        "sourceTextSha256": "bbea6056ba1f49dc64844914c33a0bbc7055c2c1b9bc11b2667c0a895fae8dda",
+        "sourceFingerprint": "sha256:bbea6056ba1f49dc64844914c33a0bbc7055c2c1b9bc11b2667c0a895fae8dda",
+        "sourceSpan": {
+          "startLine": 1079,
+          "endLine": 1082
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-v-168",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 168,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo V"
+        ],
+        "officialLabel": "Capítulo V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo V\n\nAbuso de armas\n",
+        "fullTranslationRu": "Глава V\n\nЗлоупотребление оружием",
+        "simpleRu": "Глава V говорит о незаконном или опасном применении оружия.",
+        "sourceTextSha256": "2d6e00540e0962ca0b8351277278d378488a6cc7ae666ca797c6ef413462c108",
+        "sourceFingerprint": "sha256:2d6e00540e0962ca0b8351277278d378488a6cc7ae666ca797c6ef413462c108",
+        "sourceSpan": {
+          "startLine": 1083,
+          "endLine": 1086
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-104-sera-reprimido-con-uno-a-tres-169",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 169,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo V",
+          "ARTICULO 104. - Será reprimido con uno a tres años de prisión, el que disparare un arma de fuego contra una persona sin herirla."
+        ],
+        "officialLabel": "ARTICULO 104. - Será reprimido con uno a tres años de prisión, el que disparare un arma de fuego contra una persona sin herirla.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 104. - Será reprimido con uno a tres años de prisión, el que disparare un arma de fuego contra una persona sin herirla.\n\nEsta pena se aplicará aunque se causare herida a que corresponda pena menor, siempre que el hecho no importe un delito más grave.\n\nSerá reprimida con prisión de quince días a seis meses, la agresión con toda arma, aunque no se causare herida.\n",
+        "fullTranslationRu": "СТАТЬЯ 104. Prisión от одного до трех лет наказывается тот, кто выстрелит из огнестрельного оружия в человека, не ранив его.\n\nЭто наказание применяется даже если причинено ранение, которому соответствует меньшее наказание, при условии что деяние не составляет более тяжкое преступление.\n\nPrisión от пятнадцати дней до шести месяцев наказывается нападение с любым оружием, даже если ранение не причинено.",
+        "simpleRu": "Если человек стреляет из огнестрельного оружия в другого и не ранит его, наказание - prisión 1-3 года. То же наказание действует, даже если есть ранение с меньшим наказанием, если нет более тяжкого преступления. Нападение с любым оружием без ранения наказывается prisión 15 дней-6 месяцев.",
+        "sourceTextSha256": "9860f6454a69b8b6a9f9df619c54b5274393c83d688c7d844dd0ef36dafcbcca",
+        "sourceFingerprint": "sha256:9860f6454a69b8b6a9f9df619c54b5274393c83d688c7d844dd0ef36dafcbcca",
+        "sourceSpan": {
+          "startLine": 1087,
+          "endLine": 1092
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-105-si-concurriera-alguna-de-las-circunstancias-170",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 170,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo V",
+          "ARTICULO 105. - Si concurriera alguna de las circunstancias previstas en los artículos 80 y 81, inciso 1º, letra a), la pena se aumentará..."
+        ],
+        "officialLabel": "ARTICULO 105. - Si concurriera alguna de las circunstancias previstas en los artículos 80 y 81, inciso 1º, letra a), la pena se aumentará...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 105. - Si concurriera alguna de las circunstancias previstas en los artículos 80 y 81, inciso 1º, letra a), la pena se aumentará o disminuirá en un tercio respectivamente.\n",
+        "fullTranslationRu": "СТАТЬЯ 105. Если имеется какое-либо из обстоятельств, предусмотренных статьями 80 и 81, пункт 1, буква a), наказание соответственно увеличивается или уменьшается на одну треть.",
+        "simpleRu": "Если при таком применении оружия есть обстоятельства из статьи 80, наказание увеличивают на треть. Если есть обстоятельство из статьи 81 пункт 1 буква a), наказание уменьшают на треть.",
+        "sourceTextSha256": "50918d98303d800dcf7e7038b73744016f4a502109ee65c3b73a2d3536fc4ab3",
+        "sourceFingerprint": "sha256:50918d98303d800dcf7e7038b73744016f4a502109ee65c3b73a2d3536fc4ab3",
+        "sourceSpan": {
+          "startLine": 1093,
+          "endLine": 1094
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-vi-171",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 171,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo VI"
+        ],
+        "officialLabel": "Capítulo VI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo VI\n\nAbandono de personas\n",
+        "fullTranslationRu": "Глава VI\n\nОставление людей",
+        "simpleRu": "Глава VI говорит об оставлении людей в опасности или без помощи.",
+        "sourceTextSha256": "0b4254f0d1c85775389d0a96a026a9aea26002382f09d79e96a43fa0d11535cb",
+        "sourceFingerprint": "sha256:0b4254f0d1c85775389d0a96a026a9aea26002382f09d79e96a43fa0d11535cb",
+        "sourceSpan": {
+          "startLine": 1095,
+          "endLine": 1098
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-106-el-que-pusiere-en-peligro-la-172",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 172,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO I",
+          "Capítulo VI",
+          "ARTICULO 106.- El que pusiere en peligro la vida o la salud de otro, sea colocándolo en situación de desamparo, sea abandonando a su suer..."
+        ],
+        "officialLabel": "ARTICULO 106.- El que pusiere en peligro la vida o la salud de otro, sea colocándolo en situación de desamparo, sea abandonando a su suer...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 106.- El que pusiere en peligro la vida o la salud de otro, sea colocándolo en situación de desamparo, sea abandonando a su suerte a una persona incapaz de valerse y a la que deba mantener o cuidar o a la que el mismo autor haya incapacitado, será reprimido con prisión de 2 a 6 años.\n\nLa pena será de reclusión o prisión de 3 a 10 años, si a consecuencia del abandono resultare grave daño en el cuerpo o en la salud de la víctima.\n\nSi ocurriere la muerte, la pena será de 5 a 15 años de reclusión o prisión.\n\n(Artículo sustituido por art. 2° de la Ley N° 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791] B.O. 2/1/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 106. Тот, кто поставит в опасность жизнь или здоровье другого, поместив его в ситуацию беспомощности или оставив на произвол судьбы лицо, неспособное заботиться о себе и которое он обязан содержать или о котором обязан заботиться, либо лицо, которое сам автор сделал неспособным заботиться о себе, наказывается prisión от 2 до 6 лет.\n\nНаказание составляет reclusión или prisión от 3 до 10 лет, если вследствие оставления наступил тяжкий вред телу или здоровью потерпевшего.\n\nЕсли наступила смерть, наказание составляет reclusión или prisión от 5 до 15 лет.\n\n(Статья заменена статьей 2 Закона N 24.410 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=791], B.O. 2/1/1995)",
+        "simpleRu": "Если человек ставит другого в опасность для жизни или здоровья, оставляя его беспомощным или бросая человека, который не может сам о себе позаботиться и которого он обязан содержать или защищать, наказание - prisión 2-6 лет. Если из-за оставления есть тяжкий вред телу или здоровью, срок 3-10 лет reclusión или prisión. Если человек умер, срок 5-15 лет reclusión или prisión.",
+        "sourceTextSha256": "ab53b25ef25546ec86d078a6001d91bec434b5cb7b1670c20deb0854806b4f73",
+        "sourceFingerprint": "sha256:ab53b25ef25546ec86d078a6001d91bec434b5cb7b1670c20deb0854806b4f73",
+        "sourceSpan": {
+          "startLine": 1099,
+          "endLine": 1106
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-material-estudio-examen-teorico",
+  "document": {
+    "officialDocumentId": "gcba-material-estudio-examen-teorico",
+    "title": "Material de estudio para examen teórico",
+    "shortTitleRu": "Материалы для теоретического экзамена GCBA",
+    "category": "study-material",
+    "jurisdiction": "caba",
+    "officialSourceType": "gcba_study_material_page",
+    "sourceUrl": "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+    "archiveLocalPath": "content/official-documents/documents/gcba-material-estudio-examen-teorico.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "gcba-material-estudio-examen-teorico--material-de-estudio-para-examen-teorico-001",
+        "officialDocumentId": "gcba-material-estudio-examen-teorico",
+        "order": 1,
+        "headingPath": [
+          "Material de estudio para examen teórico"
+        ],
+        "officialLabel": "Material de estudio para examen teórico",
+        "chunkingStrategy": "bounded-paragraph-groups",
+        "originalSpanish": "# Material de estudio para examen teórico\n\nPasar al contenido principal\n/\n * Inicio [/]\n *\n\n 1. Buenos Aires [/]\n 2. Movilidad e Infraestructura [/gcaba_historico/movilidad-e-infraestructura]\n 3. Movilidad [/gcaba_historico/infraestructura/movilidad]\n 4. Curso de Educación Vial para Otorgamiento de Licencia [/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia]\n\n * Curso de Educación Vial para Otorgamiento de Licencia [/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia]\n   * Material de estudio para examen teórico [/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para-examen-teorico]\n   * Escuelas de conducir autorizadas [/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/escuelas-de-conducir-autorizadas]\n\nMATERIAL DE ESTUDIO PARA EXAMEN TEÓRICO\n\nEl examen teórico consta de preguntas con opciones múltiples (multiplechoice) y cada aspirante tiene 45 minutos para realizarlo.\n\nCompartir en redes\n *\n *\n *\n\n----------------------------------------\n\nMATERIAL DE LECTURA OBLIGATORIA\n\nSi rendís el examen teórico de autos, transporte de carga y pasajeros, camiones o maquinaria especial no agrícola, tenés que estudiar el manual de conducción de vehículos urbanos de cuatro ruedas [https://buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf].\n\nSi rendís el examen teórico de motos, tenés que estudiar el manual de conducción motovehicular [https://buenosaires.gob.ar/sites/default/files/2024-11/MANUAL%20MOTO%202023%20SA.pdf]\n\nSi rendís el examen teórico de cuatriciclos, consultá el documento de la Categoría A4 [/sites/default/files/media/document/2020/03/12/3ec8d027d176fa0bf70543b78f64e8279ad2c980.pdf].\n\n \n",
+        "fullTranslationRu": "# Материал для подготовки к теоретическому экзамену\n\nПерейти к основному содержанию\n/\n * Главная [/]\n *\n\n 1. Buenos Aires [/]\n 2. Мобильность и инфраструктура [/gcaba_historico/movilidad-e-infraestructura]\n 3. Мобильность [/gcaba_historico/infraestructura/movilidad]\n 4. Курс дорожного образования для получения водительского удостоверения [/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia]\n\n * Курс дорожного образования для получения водительского удостоверения [/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia]\n   * Материал для подготовки к теоретическому экзамену [/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para-examen-teorico]\n   * Авторизованные автошколы [/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/escuelas-de-conducir-autorizadas]\n\nМАТЕРИАЛ ДЛЯ ПОДГОТОВКИ К ТЕОРЕТИЧЕСКОМУ ЭКЗАМЕНУ\n\nТеоретический экзамен состоит из вопросов с несколькими вариантами ответа (multiple choice), и каждому кандидату дается 45 минут на его выполнение.\n\nПоделиться в социальных сетях\n *\n *\n *\n\n----------------------------------------\n\nОБЯЗАТЕЛЬНЫЙ МАТЕРИАЛ ДЛЯ ЧТЕНИЯ\n\nЕсли вы сдаете теоретический экзамен для легковых автомобилей, грузового и пассажирского транспорта, грузовиков или специальной несельскохозяйственной техники, нужно изучить руководство по вождению городских четырехколесных транспортных средств [https://buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf].\n\nЕсли вы сдаете теоретический экзамен для мотоциклов, нужно изучить руководство по мототранспортному вождению [https://buenosaires.gob.ar/sites/default/files/2024-11/MANUAL%20MOTO%202023%20SA.pdf]\n\nЕсли вы сдаете теоретический экзамен для квадроциклов, смотрите документ категории A4 [/sites/default/files/media/document/2020/03/12/3ec8d027d176fa0bf70543b78f64e8279ad2c980.pdf].",
+        "simpleRu": "Для теоретического экзамена GCBA вопросы идут с вариантами ответа, на экзамен дают 45 минут. Для категории легковых и других четырехколесных транспортных средств нужно учить руководство по городским четырехколесным транспортным средствам. Для мотоциклов и квадроциклов указаны отдельные материалы.",
+        "sourceTextSha256": "d8c9304b26d6d03e7126c279fbe94d3a0d4eafbed1a5d126c5f1b1069be58fe3",
+        "sourceFingerprint": "sha256:d8c9304b26d6d03e7126c279fbe94d3a0d4eafbed1a5d126c5f1b1069be58fe3",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 37
+        }
+      },
+      {
+        "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-38-002",
+        "officialDocumentId": "gcba-material-estudio-examen-teorico",
+        "order": 2,
+        "headingPath": [
+          "Material de estudio para examen teórico",
+          "Grupo de párrafos línea 38"
+        ],
+        "officialLabel": "Grupo de párrafos línea 38",
+        "chunkingStrategy": "bounded-paragraph-groups",
+        "originalSpanish": "ACERCA DEL DISEÑO DEL EXAMEN\n\nEl proceso de evaluación fue preparado por la Gerencia de Educación y Convivencia Vial de la Dirección General de Diseño e Implementación de GCBA y validado por las siguientes instituciones vinculadas a la temática:\n\n * Federación Internacional del Automóvil, Región IV.\n * Automóvil Club Argentino.\n * Asociación Civil Carla Arduini.\n * Asociación Civil Madres del Dolor.\n * Asociación Civil Red Nacional Familiares de Víctimas de Tránsito.\n * Asociación Civil Trabajar Contra la Inseguridad Vial y la Violencia con Acciones Sustentables.\n * Asociación para la Disminución de Siniestros Viales.\n * Centro de Estudios de Movilidad Sustentable de la Universidad Tecnológica Nacional, Facultad Regional Avellaneda.\n * Creando Conciencia.\n * Espacio de Reflexión Cuidémonos entre nosotros.\n\n \n\nCÓMO PROCEDER ANTE UN SINIESTRO VIAL\n\nCuando ocurre un siniestro vial, hay ciertas acciones que pueden tomarse para minimizar los riesgos y proteger lo más posible las vidas de las personas involucradas. Conocé todos los pasos con la guía práctica de siniestros viales [https://buenosaires.gob.ar/sites/default/files/2023-02/Gu%C3%ADa%20pr%C3%A1ctica%20siniestros%20viales.pdf].\n\n \n\nMANUAL_VEHICULO_4RUEDAS_2023 SA.PDF\n\nDescargar [https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf]\n\nMANUAL MOTO 2023 SA.PDF\n\nDescargar [https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL%20MOTO%202023%20SA.pdf]\n\nORGANISMO RESPONSABLE\n\nDirección General Habilitación de Conductores\n\nDirección: Av. Roca 5252 [http://mapa.buenosaires.gob.ar/?lat=93832.4803632&lon=100748.591533&zl=7&map=default&ver=2&dir=19057%3A5252::0*19057%3A5252::0@sedes_de_comunas|8:Sede%20Comunal%208&modo=marker-menu]\n",
+        "fullTranslationRu": "О ДИЗАЙНЕ ЭКЗАМЕНА\n\nПроцесс оценки подготовила Gerencia de Educación y Convivencia Vial при Dirección General de Diseño e Implementación GCBA. Его проверили следующие учреждения, связанные с этой темой:\n\n * Международная автомобильная федерация, Регион IV.\n * Автомобильный клуб Аргентины.\n * Гражданская ассоциация Carla Arduini.\n * Гражданская ассоциация Madres del Dolor.\n * Гражданская ассоциация Red Nacional Familiares de Víctimas de Tránsito.\n * Гражданская ассоциация Trabajar Contra la Inseguridad Vial y la Violencia con Acciones Sustentables.\n * Ассоциация по снижению дорожных происшествий.\n * Центр исследований устойчивой мобильности Национального технологического университета, региональный факультет Avellaneda.\n * Creando Conciencia.\n * Пространство для размышления Cuidémonos entre nosotros.\n\n\n\nКАК ДЕЙСТВОВАТЬ ПРИ ДОРОЖНО-ТРАНСПОРТНОМ ПРОИСШЕСТВИИ\n\nКогда происходит дорожно-транспортное происшествие, можно выполнить определенные действия, чтобы уменьшить риски и максимально защитить жизни вовлеченных людей. Все шаги приведены в практическом руководстве по дорожным происшествиям [https://buenosaires.gob.ar/sites/default/files/2023-02/Gu%C3%ADa%20pr%C3%A1ctica%20siniestros%20viales.pdf].\n\n\n\nMANUAL_VEHICULO_4RUEDAS_2023 SA.PDF\n\nСкачать [https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf]\n\nMANUAL MOTO 2023 SA.PDF\n\nСкачать [https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL%20MOTO%202023%20SA.pdf]\n\nОТВЕТСТВЕННЫЙ ОРГАН\n\nDirección General Habilitación de Conductores\n\nАдрес: Av. Roca 5252 [http://mapa.buenosaires.gob.ar/?lat=93832.4803632&lon=100748.591533&zl=7&map=default&ver=2&dir=19057%3A5252::0*19057%3A5252::0@sedes_de_comunas|8:Sede%20Comunal%208&modo=marker-menu]",
+        "simpleRu": "Экзамен подготовил орган GCBA по дорожному образованию, а профильные организации его проверили. Страница также дает ссылку на практическое руководство: что делать при ДТП, чтобы снизить риск и защитить людей. Ответственный орган по водительским удостоверениям находится по адресу Av. Roca 5252.",
+        "sourceTextSha256": "6f94cc2fe882e3f10d91d35b7c715a61221f69da27de63c154d5c68df33ab7cf",
+        "sourceFingerprint": "sha256:6f94cc2fe882e3f10d91d35b7c715a61221f69da27de63c154d5c68df33ab7cf",
+        "sourceSpan": {
+          "startLine": 38,
+          "endLine": 74
+        }
+      },
+      {
+        "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-75-003",
+        "officialDocumentId": "gcba-material-estudio-examen-teorico",
+        "order": 3,
+        "headingPath": [
+          "Material de estudio para examen teórico",
+          "Grupo de párrafos línea 75"
+        ],
+        "officialLabel": "Grupo de párrafos línea 75",
+        "chunkingStrategy": "bounded-paragraph-groups",
+        "originalSpanish": "Horarios de atención: Lunes a viernes de 7.30 a 14:30 hs.\n\nTel.: 147\n\n * Actual Paso 1 de 2\n * Paso 2 de 2\n * Complete\n\nAYUDANOS A MEJORAR\n\n¿En qué aspectos esta página no es útil?\nEs difícil encontrar secciones o categorías relevantes.\nLa información en el sitio web es confusa o incompleta.\nEl diseño visual no es agradable.\nLa funcionalidad del sitio web no es intuitiva.\nOtros…\nCancelar\nSiguiente\nLeave this field blank\n¿Te fue útil esta página?\n\n¿TE FUE ÚTIL ESTA PÁGINA?\n\nNo me sirvió\nSí, me fue útil\nLeave this field blank\n\nTELÉFONOS ÚTILES\n\n * 102 - Niñez y Adolescencia [tel:102]\n * 103 - Emergencias [tel:103]\n * 107 - SAME [tel:107]\n * 911 - Policía [tel:911]\n * 144 - Violencia de género [tel:144]\n * 147 - Atención ciudadana [tel:147]\n\nVer todos los teléfonos [https://buenosaires.gob.ar/inicio/telefonos]\n",
+        "fullTranslationRu": "Часы приема: с понедельника по пятницу с 7:30 до 14:30.\n\nТел.: 147\n\n * Текущий шаг 1 из 2\n * Шаг 2 из 2\n * Завершено\n\nПОМОГИТЕ НАМ СТАТЬ ЛУЧШЕ\n\nВ каких аспектах эта страница не полезна?\nТрудно найти нужные разделы или категории.\nИнформация на сайте запутанная или неполная.\nВизуальный дизайн неприятный.\nФункциональность сайта не интуитивна.\nДругое...\nОтменить\nДалее\nОставьте это поле пустым\nБыла ли эта страница полезна?\n\nБЫЛА ЛИ ЭТА СТРАНИЦА ПОЛЕЗНА?\n\nМне не помогло\nДа, была полезна\nОставьте это поле пустым\n\nПОЛЕЗНЫЕ ТЕЛЕФОНЫ\n\n * 102 - Дети и подростки [tel:102]\n * 103 - Экстренные службы [tel:103]\n * 107 - SAME [tel:107]\n * 911 - Полиция [tel:911]\n * 144 - Гендерное насилие [tel:144]\n * 147 - Обслуживание граждан [tel:147]\n\nПосмотреть все телефоны [https://buenosaires.gob.ar/inicio/telefonos]",
+        "simpleRu": "Орган принимает с понедельника по пятницу с 7:30 до 14:30, телефон 147. На странице есть форма оценки сайта и список полезных телефонов: 102, 103, 107, 911, 144 и 147.",
+        "sourceTextSha256": "2331b7513283524d506becb5113dc4db56cccd2a4b84e04dd09ca635f8a942a8",
+        "sourceFingerprint": "sha256:2331b7513283524d506becb5113dc4db56cccd2a4b84e04dd09ca635f8a942a8",
+        "sourceSpan": {
+          "startLine": 75,
+          "endLine": 112
+        }
+      },
+      {
+        "chunkId": "gcba-material-estudio-examen-teorico--grupo-de-parrafos-linea-113-004",
+        "officialDocumentId": "gcba-material-estudio-examen-teorico",
+        "order": 4,
+        "headingPath": [
+          "Material de estudio para examen teórico",
+          "Grupo de párrafos línea 113"
+        ],
+        "officialLabel": "Grupo de párrafos línea 113",
+        "chunkingStrategy": "bounded-paragraph-groups",
+        "originalSpanish": "REDES DE LA CIUDAD\n\n * Facebook [https://www.facebook.com/GCBA]\n * Instagram [ https://www.instagram.com/gcba/]\n * Twitter [https://twitter.com/gcba]\n * YouTube [https://www.youtube.com/user/GCBA]\n * LinkedIn [https://ar.linkedin.com/company/gobierno-de-la-ciudad-de-buenos-aires]\n * TikTok [https://www.tiktok.com/@buenosaires]\n * Pinterest [https://www.pinterest.es/buenosaires/]\n\n----------------------------------------\n\n * Boletín oficial [https://boletinoficial.buenosaires.gob.ar]\n * Términos y condiciones [https://buenosaires.gob.ar/inicio/terminos-y-condiciones]\n * Política de privacidad [https://buenosaires.gob.ar/inicio/privacidad]\n * Oficios Judiciales [/jefedegobierno/legalytecnica/normativa/boletin-oficial-y-registro/oficios-judiciales]\n * Transparencia [/gobierno/transparencia ]\n\nLos contenidos de buenosaires.gob.ar están licenciados bajo Creative Commons Reconocimiento 2.5 Argentina License.\n",
+        "fullTranslationRu": "СОЦИАЛЬНЫЕ СЕТИ ГОРОДА\n\n * Facebook [https://www.facebook.com/GCBA]\n * Instagram [ https://www.instagram.com/gcba/]\n * Twitter [https://twitter.com/gcba]\n * YouTube [https://www.youtube.com/user/GCBA]\n * LinkedIn [https://ar.linkedin.com/company/gobierno-de-la-ciudad-de-buenos-aires]\n * TikTok [https://www.tiktok.com/@buenosaires]\n * Pinterest [https://www.pinterest.es/buenosaires/]\n\n----------------------------------------\n\n * Официальный бюллетень [https://boletinoficial.buenosaires.gob.ar]\n * Условия использования [https://buenosaires.gob.ar/inicio/terminos-y-condiciones]\n * Политика конфиденциальности [https://buenosaires.gob.ar/inicio/privacidad]\n * Судебные запросы [/jefedegobierno/legalytecnica/normativa/boletin-oficial-y-registro/oficios-judiciales]\n * Прозрачность [/gobierno/transparencia ]\n\nСодержимое buenosaires.gob.ar лицензировано по лицензии Creative Commons Reconocimiento 2.5 Argentina License.",
+        "simpleRu": "Это служебная часть страницы GCBA: ссылки на социальные сети, официальный бюллетень, условия, приватность, судебные запросы и прозрачность. Контент сайта указан как лицензированный по Creative Commons Reconocimiento 2.5 Argentina.",
+        "sourceTextSha256": "b10ccc0db2478729b5d64681bb00e06e9b626614428596a3106ec2c1db1c2d6a",
+        "sourceFingerprint": "sha256:b10ccc0db2478729b5d64681bb00e06e9b626614428596a3106ec2c1db1c2d6a",
+        "sourceSpan": {
+          "startLine": 113,
+          "endLine": 132
+        }
+      }
+    ]
+  }
+}

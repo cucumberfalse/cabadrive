@@ -10,7 +10,7 @@
 6. Topic Materials
 7. CABA License Process Guide
 8. CABA vs RF Guide
-9. Official Sources / `Источники` (planned; not implemented yet)
+9. Official Sources / `Источники`
 
 ## Home / Onboarding
 
@@ -18,7 +18,7 @@
 - Clarifies: translations and explanations are unofficial learning aids without requiring repeated disclaimer paragraphs on every question card.
 - Clarifies: current category B questions are an unofficial fallback practice set, not an official GCBA question bank.
 - Shows quick entry actions for the primary modes.
-- When the planned `Источники` section is implemented, home/navigation may expose it as a distinct official-source reference area without implying that the current practice questions are an official full bank.
+- `Источники` is exposed as a distinct official-source reference area without implying that the current practice questions are an official full bank.
 
 ## Learn Questions Flow
 
@@ -34,11 +34,8 @@
 10. Optional toggle for explanation.
 11. If the timer expires before answer selection, show the current ticket as unresolved in-session without recording an answer or moving to mistake review.
 12. Submit answer; answering after the timer expires remains possible and records a normal learning answer with visible after-limit status.
-13. Automatically reveal Russian question translation, answer translations, and learning explanation.
-14. When a validated question-specific image overlay exists, explanation mode dims only feature-009 `background_irrelevant_dim` regions and keeps feature-009 `answer_critical_highlight` regions prominent for the current ticket.
-15. Show correctness, key terms, and related weak-topic links.
-16. Use bottom previous/next navigation inside the active search collection; previous restores the selected answer and revealed support for questions already attempted in the current session.
-17. Optional mark as difficult.
+13. Show correctness, key terms, and related weak-topic links.
+14. Optional mark as difficult.
 
 ## Exam Simulation Flow
 
@@ -46,10 +43,9 @@
 2. Use the exam-wide timer only; do not show learning per-ticket timer controls during an active attempt.
 3. Hide translation/explanation during active attempt.
 4. Do not show difficulty rationale, dimensions, or study hints during active attempt; current active exam UI also omits compact difficulty chips.
-5. Keep translation/explanation and image overlays hidden after answer selection during the active attempt.
-6. Record timing and selected answers.
-7. Complete exam and show score.
-8. Generate weak-topic and mistake review recommendations.
+5. Record timing and selected answers.
+6. Complete exam and show score.
+7. Generate weak-topic and mistake review recommendations.
 
 ## Mistake Review Flow
 
@@ -57,10 +53,7 @@
 2. Show compact static ticket difficulty in the mistake list context and selected question card, separate from wrong-counts.
 3. Re-attempt focused set with translation hidden by default.
 4. Reveal or hide translation from the Spanish question text area, matching learning mode.
-5. After answer selection, automatically reveal Russian question translation, answer translations, and learning explanation.
-6. Use validated question-specific image overlays only when explanation support is visible; otherwise show the normal local image and truthful fallback.
-7. Use bottom previous/next navigation inside the current mistake collection.
-8. Track repeated-error reduction.
+5. Track repeated-error reduction.
 
 ## Vocabulary Flow
 
@@ -81,9 +74,9 @@
 8. Show local question images through bundled offline assets only.
 9. Keep draft/incomplete, unofficial learning aid, and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
 
-## Official Sources / `Источники` Flow (Planned)
+## Official Sources / `Источники` Flow
 
-The `Источники` reader is planned by feature `019-primary-sources-section` and is not implemented in the current product yet.
+The `Источники` reader is implemented by feature `019-primary-sources-section` as a local, learner-facing reference surface. Its UI and learner corpus are present, but final release remains blocked until official archive exact-text validation is passed or explicitly dispositioned.
 
 1. Open `Источники` as a distinct source-reference section, separate from topic-study `Материалы`.
 2. Browse or search official source documents from `content/official-documents/manifest.json`.
@@ -94,7 +87,7 @@ The `Источники` reader is planned by feature `019-primary-sources-secti
 7. Do not provide simplified Spanish.
 8. Use local bundled content only; no runtime network fetch, live AI, backend endpoint, or raw PDF viewer.
 
-Russian full translations and simple rewrites for this planned reader must live outside `content/official-documents/`, preferably under a future governed `content/primary-sources/` area. The official archive remains verbatim Spanish-only source material.
+Russian full translations and simple rewrites for this reader live outside `content/official-documents/` under governed `content/primary-sources/`. The official archive remains verbatim Spanish-only source material.
 
 ## CABA Vs RF Guide Flow
 

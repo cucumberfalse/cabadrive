@@ -125,6 +125,17 @@ Author content in reviewable batches while keeping final release blocked until e
 - Incident, road-safety, and insurance/legal duties: siniestros guide, Estrellas Amarillas, Código Penal, Código Civil y Comercial, Ley de Seguros.
 - Any new manifest entries added before final validation.
 
+Very large documents must be sliced inside their document boundary instead of assigned as one giant content batch. The split unit is generated coverage chunk order, preferably adjusted to the nearest official title/chapter/page boundary when that keeps the sub-batch reviewable. Each sub-batch may add learner, QA, and search shards for its assigned inclusive range only, but no sub-batch is release-complete by itself. A document becomes complete only after a recomposition gate verifies all of that document's generated chunks are present, approved, searchable, archive-aligned, and terminology-consistent.
+
+Quality-safe sub-batch targets:
+
+- `ley-11179-codigo-penal`: split 516 chunks into six sub-batches of about 86 chunks, followed by a Penal Code recomposition QA gate.
+- `ley-26994-codigo-civil-comercial`: split 3,261 chunks into eighteen sub-batches of about 180-182 chunks, followed by a Civil/Commercial Code recomposition QA gate.
+- `ley-2148-caba-codigo-transito-transporte`: split 665 chunks into seven sub-batches of about 95 chunks, followed by a CABA Transit Code recomposition QA gate.
+- `gcba-manual-vehiculo-4-ruedas-2023`: split 198 PDF page-group chunks into four sub-batches of about 50 chunks, followed by a manual recomposition QA gate.
+
+The recomposition gates are mandatory release blockers. They must catch missing ranges, duplicate chunk IDs, inconsistent glossary choices across sub-batches, stale source fingerprints, missing search entries, and any QA item that was approved only mechanically without review notes.
+
 Each content batch must:
 
 1. Translate every chunk in the batch into full Russian.
@@ -270,7 +281,7 @@ Accessibility behavior:
 - Risk: Exact-text validation remains pending and blocks final release.
   - Mitigation: handle source readiness as an early slice and stop final release until resolved.
 - Risk: Corpus size makes one PR unreviewable.
-  - Mitigation: batch content by source family while keeping validators aware of draft versus strict final mode.
+  - Mitigation: batch content by source family and split very large documents into explicit generated-chunk ranges while keeping validators aware of draft versus strict final mode.
 - Risk: Translation quality is uneven.
   - Mitigation: require QA metadata, terminology consistency checks, and reviewer notes before strict final mode passes.
 - Risk: Simple rewrites change legal meaning.

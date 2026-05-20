@@ -1,0 +1,1129 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "document": {
+    "officialDocumentId": "ley-11179-codigo-penal",
+    "chunks": [
+      {
+        "chunkId": "ley-11179-codigo-penal--codigo-penal-de-la-nacion-argentina-001",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 1-8, coverage fingerprint sha256:60c1536117c04a2459755c29f7226b61004c24f09263b16a937e33207f6f11e5, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 001. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 1-8, the full Russian translation, coverage fingerprint sha256:60c1536117c04a2459755c29f7226b61004c24f09263b16a937e33207f6f11e5, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 001 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--libro-primero-002",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 9-12, coverage fingerprint sha256:3fb325e90fbfde1c5b467f5e3428ae50f7ff06fdd19b36c54a7c347f76d5f1ca, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 002. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 9-12, the full Russian translation, coverage fingerprint sha256:3fb325e90fbfde1c5b467f5e3428ae50f7ff06fdd19b36c54a7c347f76d5f1ca, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 002 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-i-003",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 13-18, coverage fingerprint sha256:6bdf2c49d45a6df5ee27502bd670caea91805d15fb761aa97c069e422e1d3ede, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 003. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 13-18, the full Russian translation, coverage fingerprint sha256:6bdf2c49d45a6df5ee27502bd670caea91805d15fb761aa97c069e422e1d3ede, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 003 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ii-004",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 19-24, coverage fingerprint sha256:78b40d27110cef8af29a1e30e82e826182fc95b10151519724bf5e1b3b2548f9, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 004. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 19-24, the full Russian translation, coverage fingerprint sha256:78b40d27110cef8af29a1e30e82e826182fc95b10151519724bf5e1b3b2548f9, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 004 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iii-005",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 25-30, coverage fingerprint sha256:9c9d1d6ad3744ec7d237a66f95e7aaa8a3cae8fa286f288b7984fef2568d188d, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 005. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 25-30, the full Russian translation, coverage fingerprint sha256:9c9d1d6ad3744ec7d237a66f95e7aaa8a3cae8fa286f288b7984fef2568d188d, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 005 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iv-006",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 31-36, coverage fingerprint sha256:215bcdc777997fd5ec9caa3dcac0644378970ac57801d1cbf8191601096408d5, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 006. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 31-36, the full Russian translation, coverage fingerprint sha256:215bcdc777997fd5ec9caa3dcac0644378970ac57801d1cbf8191601096408d5, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 006 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-v-007",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 37-42, coverage fingerprint sha256:cc189e37e05d481931bec6db6812967dbef5410338817e81684b666055004d35, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 007. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 37-42, the full Russian translation, coverage fingerprint sha256:cc189e37e05d481931bec6db6812967dbef5410338817e81684b666055004d35, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 007 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vi-008",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 43-48, coverage fingerprint sha256:464739f0202b8c34d324853d6f4b12071c0a72d95d1ea87337ca0f7e279aa57f, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 008. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 43-48, the full Russian translation, coverage fingerprint sha256:464739f0202b8c34d324853d6f4b12071c0a72d95d1ea87337ca0f7e279aa57f, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 008 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vii-009",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 49-54, coverage fingerprint sha256:2ddc9abdf096e888497d97f9e9e9e2ee84fe239a8140cdeffff078076f592f7c, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 009. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 49-54, the full Russian translation, coverage fingerprint sha256:2ddc9abdf096e888497d97f9e9e9e2ee84fe239a8140cdeffff078076f592f7c, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 009 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-viii-010",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 55-60, coverage fingerprint sha256:a2aff8fbcdb29fca1311a0486d4dacda958520451e23cec3b0babc30d3e470af, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 010. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 55-60, the full Russian translation, coverage fingerprint sha256:a2aff8fbcdb29fca1311a0486d4dacda958520451e23cec3b0babc30d3e470af, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 010 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ix-011",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 61-66, coverage fingerprint sha256:283dcaaf2a1530bb02aa02db7c065dcfd75d7b36e4ae1552bf8de028ff96841c, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 011. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 61-66, the full Russian translation, coverage fingerprint sha256:283dcaaf2a1530bb02aa02db7c065dcfd75d7b36e4ae1552bf8de028ff96841c, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 011 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-x-012",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 67-72, coverage fingerprint sha256:c9f7292e7f3be2b9ee9213d0aef0273a2fd961288db4c7dda2369926a881ac76, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 012. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 67-72, the full Russian translation, coverage fingerprint sha256:c9f7292e7f3be2b9ee9213d0aef0273a2fd961288db4c7dda2369926a881ac76, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 012 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xi-013",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 73-78, coverage fingerprint sha256:f70da2d4752491598f741d2872367643b089889f126fa65a23bef4e186088894, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 013. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 73-78, the full Russian translation, coverage fingerprint sha256:f70da2d4752491598f741d2872367643b089889f126fa65a23bef4e186088894, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 013 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xii-014",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 79-84, coverage fingerprint sha256:7687da35d568a6b590f6bbb02c868481365c872d9e18f3b8f12dfbfb6b3ffae2, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 014. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 79-84, the full Russian translation, coverage fingerprint sha256:7687da35d568a6b590f6bbb02c868481365c872d9e18f3b8f12dfbfb6b3ffae2, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 014 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xiii-015",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 85-90, coverage fingerprint sha256:b7fa4a717f1dd0fde7d6feed1f25cff1cb4d79356ea2dd5c50b628ec40d0b6f6, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 015. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 85-90, the full Russian translation, coverage fingerprint sha256:b7fa4a717f1dd0fde7d6feed1f25cff1cb4d79356ea2dd5c50b628ec40d0b6f6, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 015 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--libro-segundo-016",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 91-94, coverage fingerprint sha256:46ad5b1798e474843d3375ca62fce772ced0890289d0f472e64ca12dfbf9be83, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 016. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 91-94, the full Russian translation, coverage fingerprint sha256:46ad5b1798e474843d3375ca62fce772ced0890289d0f472e64ca12dfbf9be83, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 016 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-i-017",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 95-100, coverage fingerprint sha256:2ce18d8b8b7562719a3dc73a0cbd63b53fbd5357cec102c54ae5db8218e05b1e, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 017. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 95-100, the full Russian translation, coverage fingerprint sha256:2ce18d8b8b7562719a3dc73a0cbd63b53fbd5357cec102c54ae5db8218e05b1e, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 017 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ii-018",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 101-106, coverage fingerprint sha256:4631b31e2342f4a67c6ef6d668bac957fe7bb1d7c741ea8ada1e5ccdea0c2ae3, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 018. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 101-106, the full Russian translation, coverage fingerprint sha256:4631b31e2342f4a67c6ef6d668bac957fe7bb1d7c741ea8ada1e5ccdea0c2ae3, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 018 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iii-019",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 107-112, coverage fingerprint sha256:80bb490a6becf4db41cc5d529e4a508f04bb6b9a42229ffabe575b25671d9899, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 019. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 107-112, the full Russian translation, coverage fingerprint sha256:80bb490a6becf4db41cc5d529e4a508f04bb6b9a42229ffabe575b25671d9899, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 019 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iv-020",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 113-118, coverage fingerprint sha256:4141e9b0bc6a82f25e165275881d58d5667d37373f2bd71ed1f605385007e581, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 020. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 113-118, the full Russian translation, coverage fingerprint sha256:4141e9b0bc6a82f25e165275881d58d5667d37373f2bd71ed1f605385007e581, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 020 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-v-021",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 119-124, coverage fingerprint sha256:34237b84f62d9a56fbc97ff182012df7babc84df765caa4a952cf7fb69522267, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 021. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 119-124, the full Russian translation, coverage fingerprint sha256:34237b84f62d9a56fbc97ff182012df7babc84df765caa4a952cf7fb69522267, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 021 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vi-022",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 125-130, coverage fingerprint sha256:e917f9f2903f5276feb027b7f55107050ba7086e4c164bd9f435108248a1f586, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 022. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 125-130, the full Russian translation, coverage fingerprint sha256:e917f9f2903f5276feb027b7f55107050ba7086e4c164bd9f435108248a1f586, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 022 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vii-023",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 131-136, coverage fingerprint sha256:696d75c4aca77235fb9b1940822cf6143f887747c3a4e120245ca8a96d94509e, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 023. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 131-136, the full Russian translation, coverage fingerprint sha256:696d75c4aca77235fb9b1940822cf6143f887747c3a4e120245ca8a96d94509e, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 023 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-viii-024",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 137-142, coverage fingerprint sha256:26bb44d365373aaf9a39147798e73e78ac43f0a66d54813f3ce2365e09cfabc9, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 024. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 137-142, the full Russian translation, coverage fingerprint sha256:26bb44d365373aaf9a39147798e73e78ac43f0a66d54813f3ce2365e09cfabc9, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 024 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ix-025",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 143-148, coverage fingerprint sha256:72f706f18119bd46dcef7d8fa0f081380f81082646f89b2462e0ac4d20e8d173, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 025. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 143-148, the full Russian translation, coverage fingerprint sha256:72f706f18119bd46dcef7d8fa0f081380f81082646f89b2462e0ac4d20e8d173, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 025 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-x-026",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 149-154, coverage fingerprint sha256:bb9052f1a5295103b354c74cb724d91bcd1bb3014de572ee3de4bedcc618bb4f, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 026. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 149-154, the full Russian translation, coverage fingerprint sha256:bb9052f1a5295103b354c74cb724d91bcd1bb3014de572ee3de4bedcc618bb4f, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 026 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xi-027",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 155-160, coverage fingerprint sha256:50b5f93a142a91e2e2b2a8c862008f728212ecb263786d21cd361daa8c5f7408, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 027. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 155-160, the full Russian translation, coverage fingerprint sha256:50b5f93a142a91e2e2b2a8c862008f728212ecb263786d21cd361daa8c5f7408, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 027 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xii-028",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 161-166, coverage fingerprint sha256:69be03fccd435ce12aaaf6b3ca37f4494861809160b3064b0732282639f4c567, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 028. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 161-166, the full Russian translation, coverage fingerprint sha256:69be03fccd435ce12aaaf6b3ca37f4494861809160b3064b0732282639f4c567, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 028 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-xiii-029",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 167-184, coverage fingerprint sha256:1760fd646849b66a9da0766b06cd69537438a226cc63bad179a5f8a77b583dbd, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 029. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 167-184, the full Russian translation, coverage fingerprint sha256:1760fd646849b66a9da0766b06cd69537438a226cc63bad179a5f8a77b583dbd, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 029 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--libro-primero-030",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 185-188, coverage fingerprint sha256:3fb325e90fbfde1c5b467f5e3428ae50f7ff06fdd19b36c54a7c347f76d5f1ca, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 030. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 185-188, the full Russian translation, coverage fingerprint sha256:3fb325e90fbfde1c5b467f5e3428ae50f7ff06fdd19b36c54a7c347f76d5f1ca, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 030 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-i-031",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 189-192, coverage fingerprint sha256:55ef6113c0bddebe9480eac0e0421527bf16d125261baf0a5e654943124ea3f6, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 031. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 189-192, the full Russian translation, coverage fingerprint sha256:55ef6113c0bddebe9480eac0e0421527bf16d125261baf0a5e654943124ea3f6, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 031 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-1o-este-codigo-se-aplicara-032",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 193-202, coverage fingerprint sha256:649e88397064a7760d462fd36b4a88097a25ceff2932886c3a272715f70608d0, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 032. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 193-202, the full Russian translation, coverage fingerprint sha256:649e88397064a7760d462fd36b4a88097a25ceff2932886c3a272715f70608d0, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 032 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-2o-si-la-ley-vigente-al-tiempo-033",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 203-206, coverage fingerprint sha256:65204ce8f4d2f04ac8144a09cffa01cd4c567557831f958e31c80fd318bd6767, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 033. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 203-206, the full Russian translation, coverage fingerprint sha256:65204ce8f4d2f04ac8144a09cffa01cd4c567557831f958e31c80fd318bd6767, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 033 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-3o-en-el-computo-de-la-prision-034",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 207-208, coverage fingerprint sha256:6f4905e5b74374081e7ed93339c3c62f80199c6b3d6a313079f89c93aa74f042, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 034. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 207-208, the full Russian translation, coverage fingerprint sha256:6f4905e5b74374081e7ed93339c3c62f80199c6b3d6a313079f89c93aa74f042, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 034 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-4o-las-disposiciones-generales-del-presente-codigo-035",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 209-210, coverage fingerprint sha256:cea27bf65aa80c1e5f701c9b8fdb548dda5435b278ea8031361c9b449083c2d3, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 035. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 209-210, the full Russian translation, coverage fingerprint sha256:cea27bf65aa80c1e5f701c9b8fdb548dda5435b278ea8031361c9b449083c2d3, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 035 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-ii-036",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 211-214, coverage fingerprint sha256:e27b9554ba321bb2adca350b8690e3887cb9b51e7a32ba8ba1156c8eff726ccb, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 036. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 211-214, the full Russian translation, coverage fingerprint sha256:e27b9554ba321bb2adca350b8690e3887cb9b51e7a32ba8ba1156c8eff726ccb, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 036 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-5o-las-penas-que-este-codigo-establece-037",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 215-216, coverage fingerprint sha256:9d218cf2aa780613566b66965dfd2222a0ceedac88cf9f4137a66b2622ca8790, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 037. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 215-216, the full Russian translation, coverage fingerprint sha256:9d218cf2aa780613566b66965dfd2222a0ceedac88cf9f4137a66b2622ca8790, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 037 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-6o-la-pena-de-reclusion-perpetua-o-038",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 217-218, coverage fingerprint sha256:9ffc20f072fb4e3f44ed8a8b91061c60e8fb09fac81c5cd6b38e6bd871fbc072, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 038. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 217-218, the full Russian translation, coverage fingerprint sha256:9ffc20f072fb4e3f44ed8a8b91061c60e8fb09fac81c5cd6b38e6bd871fbc072, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 038 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-7o-los-hombres-debiles-o-enfermos-y-039",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 219-220, coverage fingerprint sha256:d3425d661fd5a7170d24465bc22dcbb8b77ebe984fd0a786e4f23fab66517727, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 039. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 219-220, the full Russian translation, coverage fingerprint sha256:d3425d661fd5a7170d24465bc22dcbb8b77ebe984fd0a786e4f23fab66517727, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 039 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-8o-los-menores-de-edad-y-las-040",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 221-222, coverage fingerprint sha256:68a9b50751d7fbe143980e818299040f77cea9e59e5abf490cbd51b4522a49ff, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 040. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 221-222, the full Russian translation, coverage fingerprint sha256:68a9b50751d7fbe143980e818299040f77cea9e59e5abf490cbd51b4522a49ff, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 040 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-9o-la-pena-de-prision-perpetua-o-041",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 223-224, coverage fingerprint sha256:7efdfe1b4b6106d8fd58d831a968e6ba30dea146333931175d259cc1eee194ff, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 041. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 223-224, the full Russian translation, coverage fingerprint sha256:7efdfe1b4b6106d8fd58d831a968e6ba30dea146333931175d259cc1eee194ff, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 041 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-10-podran-a-criterio-del-juez-competente-042",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 225-240, coverage fingerprint sha256:40633c3cc0650966d2cd0a19903fca8a2e680444cb7b180ffa2bb6a6cb973f62, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 042. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 225-240, the full Russian translation, coverage fingerprint sha256:40633c3cc0650966d2cd0a19903fca8a2e680444cb7b180ffa2bb6a6cb973f62, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 042 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-11-el-producto-del-trabajo-del-condenado-043",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 241-250, coverage fingerprint sha256:87228bc17a7d9524db0a6032a01e50751be1eb32d45accb08a28bf1bde224780, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 043. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 241-250, the full Russian translation, coverage fingerprint sha256:87228bc17a7d9524db0a6032a01e50751be1eb32d45accb08a28bf1bde224780, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 043 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-12-la-reclusion-y-la-prision-por-044",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 251-252, coverage fingerprint sha256:e759ecfb67b49d607341fdd69b8a7e4342be6bf51a131ddaea8aa186607b495e, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 044. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 251-252, the full Russian translation, coverage fingerprint sha256:e759ecfb67b49d607341fdd69b8a7e4342be6bf51a131ddaea8aa186607b495e, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 044 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-13-el-condenado-a-reclusion-o-prision-045",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 253-270, coverage fingerprint sha256:7fc11ab35f6ffc63302dcfb05bf8258648ff81906475147a921afccce7d95dbd, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 045. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 253-270, the full Russian translation, coverage fingerprint sha256:7fc11ab35f6ffc63302dcfb05bf8258648ff81906475147a921afccce7d95dbd, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 045 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-14-la-libertad-condicional-no-se-concedera-046",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 271-296, coverage fingerprint sha256:ffc87180ae9264ddcb008ee612e64561559bb8268d045e6458eb16a684e2fd5e, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 046. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 271-296, the full Russian translation, coverage fingerprint sha256:ffc87180ae9264ddcb008ee612e64561559bb8268d045e6458eb16a684e2fd5e, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 046 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-15-la-libertad-condicional-sera-revocada-cuando-047",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 297-300, coverage fingerprint sha256:923f4ec003b542630d36be5c8e50a7234e604605adae069de27a837ec50cde32, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 047. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 297-300, the full Russian translation, coverage fingerprint sha256:923f4ec003b542630d36be5c8e50a7234e604605adae069de27a837ec50cde32, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 047 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-16-transcurrido-el-termino-de-la-condena-048",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 301-302, coverage fingerprint sha256:e734c866b4be7f743f6631e33cd5f4c59f01e4398374fc9ffad2ae22003fd932, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 048. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 301-302, the full Russian translation, coverage fingerprint sha256:e734c866b4be7f743f6631e33cd5f4c59f01e4398374fc9ffad2ae22003fd932, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 048 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-17-ningun-penado-cuya-libertad-condicional-haya-049",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 303-304, coverage fingerprint sha256:69af589361689a43204110a506626043492a29c3325149a85fae39085bff55a3, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 049. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 303-304, the full Russian translation, coverage fingerprint sha256:69af589361689a43204110a506626043492a29c3325149a85fae39085bff55a3, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 049 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-18-los-condenados-por-tribunales-provinciales-a-050",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 305-306, coverage fingerprint sha256:24a433d9628f10b488768b9c72035b773d477a4217e658577aaff6984a99eccb, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 050. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 305-306, the full Russian translation, coverage fingerprint sha256:24a433d9628f10b488768b9c72035b773d477a4217e658577aaff6984a99eccb, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 050 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-19-la-inhabilitacion-absoluta-importa-051",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 307-318, coverage fingerprint sha256:1e1d5bc1e195f5bbe6821f992bac655a9390b8f8e658007555b536812a21cf62, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 051. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 307-318, the full Russian translation, coverage fingerprint sha256:1e1d5bc1e195f5bbe6821f992bac655a9390b8f8e658007555b536812a21cf62, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 051 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-20-la-inhabilitacion-especial-producira-la-privacion-052",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 319-320, coverage fingerprint sha256:351d5d2f7932e75cc53d586b5fb83c39da926b3b071099674e71b58740833cbe, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 052. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 319-320, the full Russian translation, coverage fingerprint sha256:351d5d2f7932e75cc53d586b5fb83c39da926b3b071099674e71b58740833cbe, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 052 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-20-bis-podra-imponerse-inhabilitacion-especial-de-053",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 321-330, coverage fingerprint sha256:e9bcb0b5906874eecc4b4917bc1095012b7634b56a05c7b1637c71b2e4d71324, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 053. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 321-330, the full Russian translation, coverage fingerprint sha256:e9bcb0b5906874eecc4b4917bc1095012b7634b56a05c7b1637c71b2e4d71324, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 053 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-20-ter-el-condenado-a-inhabilitacion-absoluta-054",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 331-338, coverage fingerprint sha256:9fb1bb0c7ab82660eff7cdd3500f3cb161b55df2111d37ae16d5518b94fdced0, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 054. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 331-338, the full Russian translation, coverage fingerprint sha256:9fb1bb0c7ab82660eff7cdd3500f3cb161b55df2111d37ae16d5518b94fdced0, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 054 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-21-la-multa-obligara-al-reo-a-055",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 339-346, coverage fingerprint sha256:df008fe46e04baba0bfb2f45b28d3d6c6b30ceb9528f9cae02588d0dce63f787, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 055. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 339-346, the full Russian translation, coverage fingerprint sha256:df008fe46e04baba0bfb2f45b28d3d6c6b30ceb9528f9cae02588d0dce63f787, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 055 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-22-en-cualquier-tiempo-que-se-satisfaciera-056",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 347-350, coverage fingerprint sha256:214fc25cb8dc91f1f73392518198cae32e875fe74c76df8002285d5237ab876d, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 056. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 347-350, the full Russian translation, coverage fingerprint sha256:214fc25cb8dc91f1f73392518198cae32e875fe74c76df8002285d5237ab876d, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 056 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-22-bis-si-el-hecho-ha-sido-057",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 351-354, coverage fingerprint sha256:3043bdf8788d79845c16c1f407af745f9667d5f04df4a14df06ffe1135b3ec52, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 057. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 351-354, the full Russian translation, coverage fingerprint sha256:3043bdf8788d79845c16c1f407af745f9667d5f04df4a14df06ffe1135b3ec52, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 057 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-23-en-todos-los-casos-en-que-058",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 355-376, coverage fingerprint sha256:bd9486f8bf6d4bf8502871989df25fb980d0ed88f50344e72562f2cce3965d36, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 058. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 355-376, the full Russian translation, coverage fingerprint sha256:bd9486f8bf6d4bf8502871989df25fb980d0ed88f50344e72562f2cce3965d36, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 058 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-24-la-prision-preventiva-se-computara-asi-059",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 377-380, coverage fingerprint sha256:9680cedbd103523d0f6f9ec01192a4f27fb1b6c842303d5f5d2e195f7e29fc4f, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 059. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 377-380, the full Russian translation, coverage fingerprint sha256:9680cedbd103523d0f6f9ec01192a4f27fb1b6c842303d5f5d2e195f7e29fc4f, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 059 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-25-si-durante-la-condena-el-penado-060",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 381-382, coverage fingerprint sha256:2d8d56b68fb9084f1ca515583e9d43903d9bcf3e7b6c12d78f7b012fac06d476, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 060. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 381-382, the full Russian translation, coverage fingerprint sha256:2d8d56b68fb9084f1ca515583e9d43903d9bcf3e7b6c12d78f7b012fac06d476, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 060 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iii-061",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 383-386, coverage fingerprint sha256:e2b268d7b065ba809e535710d28a2e8fc2afa349fd68fdedc6a80831f45ab8fb, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 061. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 383-386, the full Russian translation, coverage fingerprint sha256:e2b268d7b065ba809e535710d28a2e8fc2afa349fd68fdedc6a80831f45ab8fb, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 061 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-26-en-los-casos-de-primera-condena-062",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 387-392, coverage fingerprint sha256:4328f2231b53795855d0859cc8da2a03ccf9b856fa2581e22262aa3444423322, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 062. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 387-392, the full Russian translation, coverage fingerprint sha256:4328f2231b53795855d0859cc8da2a03ccf9b856fa2581e22262aa3444423322, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 062 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-27-la-condenacion-se-tendra-como-no-063",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 393-398, coverage fingerprint sha256:5e9675167f8f274f6de526148c1e5e3425b62f92a703ca077da05428407bc06a, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 063. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 393-398, the full Russian translation, coverage fingerprint sha256:5e9675167f8f274f6de526148c1e5e3425b62f92a703ca077da05428407bc06a, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 063 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-27-bis-al-suspender-condicionalmente-la-ejecucion-064",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 399-422, coverage fingerprint sha256:35d1380f414758f0de30ae1a02dadf3e088765d4006b3e1022e4b567ed850d83, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 064. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 399-422, the full Russian translation, coverage fingerprint sha256:35d1380f414758f0de30ae1a02dadf3e088765d4006b3e1022e4b567ed850d83, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 064 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-28-la-suspension-de-la-pena-no-065",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 423-424, coverage fingerprint sha256:c54026fd812858113e1cee1688262ff0f4f8a49a49a7d87ec93828703ff8e6d3, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 065. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 423-424, the full Russian translation, coverage fingerprint sha256:c54026fd812858113e1cee1688262ff0f4f8a49a49a7d87ec93828703ff8e6d3, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 065 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-iv-066",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 425-428, coverage fingerprint sha256:828da832db6d1084a3eaf4491518ce823b7ccfe4e5afe0fdc7100eb4c1ccf46f, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 066. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 425-428, the full Russian translation, coverage fingerprint sha256:828da832db6d1084a3eaf4491518ce823b7ccfe4e5afe0fdc7100eb4c1ccf46f, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 066 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-29-la-sentencia-condenatoria-podra-ordenar-067",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 429-438, coverage fingerprint sha256:7a899b6f9fbe1b69d89f121f11d10963a40c0928c9f0be29c13122da9f41276e, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 067. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 429-438, the full Russian translation, coverage fingerprint sha256:7a899b6f9fbe1b69d89f121f11d10963a40c0928c9f0be29c13122da9f41276e, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 067 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-30-la-obligacion-de-indemnizar-es-preferente-068",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 439-450, coverage fingerprint sha256:7c233f8e5652fdace31a1dec1c544fc37c58568cbc712c98ddb6c1af5b9b8a5e, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 068. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 439-450, the full Russian translation, coverage fingerprint sha256:7c233f8e5652fdace31a1dec1c544fc37c58568cbc712c98ddb6c1af5b9b8a5e, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 068 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-31-la-obligacion-de-reparar-el-dano-069",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 451-452, coverage fingerprint sha256:6695d5897e89236454b8eaf79c7a7a6cdedf1c5a9e5b6ba98f0a563eefc4f0cc, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 069. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 451-452, the full Russian translation, coverage fingerprint sha256:6695d5897e89236454b8eaf79c7a7a6cdedf1c5a9e5b6ba98f0a563eefc4f0cc, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 069 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-32-el-que-por-titulo-lucrativo-participare-070",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 453-454, coverage fingerprint sha256:b38586d7c6be00d9bd4f332d53ed94e5b7b65cd90b57411f6a1677c75ab2ded1, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 070. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 453-454, the full Russian translation, coverage fingerprint sha256:b38586d7c6be00d9bd4f332d53ed94e5b7b65cd90b57411f6a1677c75ab2ded1, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 070 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-33-en-caso-de-insolvencia-total-o-071",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 455-460, coverage fingerprint sha256:6935c20dbd0a6e5894263a757525480367fc198ec458df0addb2459f2d45a05d, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 071. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 455-460, the full Russian translation, coverage fingerprint sha256:6935c20dbd0a6e5894263a757525480367fc198ec458df0addb2459f2d45a05d, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 071 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-v-072",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 461-464, coverage fingerprint sha256:25d8e82bc4907f45485391997dc8b86317a180a4a2d4bd0cdbbb617c5ee119f7, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 072. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 461-464, the full Russian translation, coverage fingerprint sha256:25d8e82bc4907f45485391997dc8b86317a180a4a2d4bd0cdbbb617c5ee119f7, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 072 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-34-no-son-punibles-073",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 465-494, coverage fingerprint sha256:88487305ed949ff184d85a51e9f6c761860e08ee9580c31a4657364f6e793026, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 073. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 465-494, the full Russian translation, coverage fingerprint sha256:88487305ed949ff184d85a51e9f6c761860e08ee9580c31a4657364f6e793026, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 073 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-35-el-que-hubiere-excedido-los-limites-074",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 495-496, coverage fingerprint sha256:2c2877f519cb53d61c6e68cfcf26ba1c2fbcade7289573f38e130b5f9c7eadff, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 074. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 495-496, the full Russian translation, coverage fingerprint sha256:2c2877f519cb53d61c6e68cfcf26ba1c2fbcade7289573f38e130b5f9c7eadff, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 074 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-36-derogado-075",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 497-498, coverage fingerprint sha256:cea567f6ffc890fc4c1f85a2715694f55c718c31af4bf9e794ea247262411105, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 075. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 497-498, the full Russian translation, coverage fingerprint sha256:cea567f6ffc890fc4c1f85a2715694f55c718c31af4bf9e794ea247262411105, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 075 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-37-derogado-076",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 499-500, coverage fingerprint sha256:21e20b71ff86f0a7ca882d186e6e131aa12a4cb8c13143f98e4a2f585e25ab53, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 076. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 499-500, the full Russian translation, coverage fingerprint sha256:21e20b71ff86f0a7ca882d186e6e131aa12a4cb8c13143f98e4a2f585e25ab53, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 076 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-38-derogado-077",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 501-502, coverage fingerprint sha256:6e74d342bef5f85c538e5f39ce4feb9ea903ed1cc3e40a77731bc7cca2325a72, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 077. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 501-502, the full Russian translation, coverage fingerprint sha256:6e74d342bef5f85c538e5f39ce4feb9ea903ed1cc3e40a77731bc7cca2325a72, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 077 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-39-derogado-078",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 503-504, coverage fingerprint sha256:36125fc84cc7f2dce127b4044ace678e5a37a87b33435ebc0d04fa8aff470ed6, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 078. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 503-504, the full Russian translation, coverage fingerprint sha256:36125fc84cc7f2dce127b4044ace678e5a37a87b33435ebc0d04fa8aff470ed6, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 078 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-40-en-las-penas-divisibles-por-razon-079",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 505-506, coverage fingerprint sha256:c707ae25680f1b089899af11c1c9c78de8bdbc83e434e3ec755d7487b8509f67, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 079. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 505-506, the full Russian translation, coverage fingerprint sha256:c707ae25680f1b089899af11c1c9c78de8bdbc83e434e3ec755d7487b8509f67, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 079 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-a-los-efectos-del-articulo-anterior-080",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 507-512, coverage fingerprint sha256:87cc56a866169ebed4ef565a53824c2f8a4231d8cc13802cfe101c314869a3d4, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 080. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 507-512, the full Russian translation, coverage fingerprint sha256:87cc56a866169ebed4ef565a53824c2f8a4231d8cc13802cfe101c314869a3d4, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 080 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-bis-cuando-alguno-de-los-delitos-081",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 513-518, coverage fingerprint sha256:595cd11d1e1ed9bc5e8c5efe425813b8c65f555f4b4de1bef6ead23d8d55cefb, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 081. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 513-518, the full Russian translation, coverage fingerprint sha256:595cd11d1e1ed9bc5e8c5efe425813b8c65f555f4b4de1bef6ead23d8d55cefb, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 081 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-ter-las-escalas-penales-podran-reducirse-082",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 519-548, coverage fingerprint sha256:97a016267a880d81b6d9e3f6a6e5902a12dfb17a7288eb40c8ff6d9526a79237, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 082. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 519-548, the full Russian translation, coverage fingerprint sha256:97a016267a880d81b6d9e3f6a6e5902a12dfb17a7288eb40c8ff6d9526a79237, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 082 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-quater-cuando-alguno-de-los-delitos-083",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 549-552, coverage fingerprint sha256:c34e709f5e8b5761b532d7d7cee6c724399582c264b05d7738d254dda80d5de8, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 083. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 549-552, the full Russian translation, coverage fingerprint sha256:c34e709f5e8b5761b532d7d7cee6c724399582c264b05d7738d254dda80d5de8, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 083 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-41-quinquies-cuando-alguno-de-los-delitos-084",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 553-558, coverage fingerprint sha256:ad9dc10760ce60ccb122ce9e412dcc4699b1ac06c793c5c3edaf8952df9c0af9, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 084. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 553-558, the full Russian translation, coverage fingerprint sha256:ad9dc10760ce60ccb122ce9e412dcc4699b1ac06c793c5c3edaf8952df9c0af9, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 084 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vi-085",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 559-562, coverage fingerprint sha256:978b90de55877d71792e4515c2f35a53b5fb9c6188bb0cce3f20e2581b5ff9d8, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 085. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 559-562, the full Russian translation, coverage fingerprint sha256:978b90de55877d71792e4515c2f35a53b5fb9c6188bb0cce3f20e2581b5ff9d8, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 085 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-42-el-que-con-el-fin-de-086",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against Penal Code archive span 563-564, coverage fingerprint sha256:d53f9883115cea9dbc2947057a2fd7e389e5784fe864ed563247e02e26ac5d87, and content/primary-sources/terminology.ru.md. D9-001 translation QA preserved article/title labels, scope rules, penalties, exception clauses, amendment notes, and Código Penal terminology for generated order 086. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-10",
+          "methodNotes": "Reviewed against the Spanish source span 563-564, the full Russian translation, coverage fingerprint sha256:d53f9883115cea9dbc2947057a2fd7e389e5784fe864ed563247e02e26ac5d87, and content/primary-sources/terminology.ru.md. Simple Russian for D9-001 order 086 keeps Penal Code article references, duties, exclusions, penalty ranges, and conditions while reducing legalistic wording for learner readability. Manifest exact-text validation remains pending and is not resolved by learner-content QA."
+        }
+      }
+    ]
+  }
+}

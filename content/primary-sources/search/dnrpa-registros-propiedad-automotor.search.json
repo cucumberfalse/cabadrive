@@ -1,0 +1,349 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+  "entries": [
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--registros-de-la-propiedad-automotor-001",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--registros-de-la-propiedad-automotor-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--registros-de-la-propiedad-automotor-002",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--registros-de-la-propiedad-automotor-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--nuevo-sistema-runa-003",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--nuevo-sistema-runa-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--nuevo-servicio-digital-para-consultar-el-estado-de-004",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--nuevo-servicio-digital-para-consultar-el-estado-de-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--sistema-rudac-005",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--sistema-rudac-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--el-sistema-rac-registro-de-autorizados-a-conducir-006",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--el-sistema-rac-registro-de-autorizados-a-conducir-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--transferencia-digital-007",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--transferencia-digital-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--turnos-e-inicio-de-tramites-008",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--turnos-e-inicio-de-tramites-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--retiro-de-tramites-009",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--retiro-de-tramites-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--cedula-digital-010",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--cedula-digital-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--requisitos-para-transferencia-digital-011",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--requisitos-para-transferencia-digital-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--descarga-de-documentacion-012",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--descarga-de-documentacion-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--reclamos-y-sugerencias-013",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--reclamos-y-sugerencias-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--asesoramiento-014",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--asesoramiento-014",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--estima-los-costos-de-tu-tramite-015",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--estima-los-costos-de-tu-tramite-015",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--tramites-frecuentes-016",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--tramites-frecuentes-016",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--informe-de-estado-de-dominio-017",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--informe-de-estado-de-dominio-017",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--informe-historico-018",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--informe-historico-018",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--denuncia-de-venta-019",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--denuncia-de-venta-019",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--renovacion-de-cedula-020",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--renovacion-de-cedula-020",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--consultas-021",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--consultas-021",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--donde-esta-radicado-un-vehiculo-segun-su-patente-022",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--donde-esta-radicado-un-vehiculo-segun-su-patente-022",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--donde-radicar-un-vehiculo-segun-domicilio-023",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--donde-radicar-un-vehiculo-segun-domicilio-023",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--cuales-son-los-registros-seccionales-de-todo-el-024",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-registros-seccionales-de-todo-el-024",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--cuales-son-las-plantas-verificadoras-de-cada-provincia-025",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-las-plantas-verificadoras-de-cada-provincia-025",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--cuales-son-los-desarmaderos-de-automotores-autorizados-026",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-desarmaderos-de-automotores-autorizados-026",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--cuales-son-los-aranceles-de-los-tramites-y-027",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--cuales-son-los-aranceles-de-los-tramites-y-027",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--cual-es-la-valuacion-de-un-automotor-028",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--cual-es-la-valuacion-de-un-automotor-028",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--normativa-vigente-029",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--normativa-vigente-029",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--institucional-030",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--institucional-030",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "dnrpa-registros-propiedad-automotor--contacto-031",
+      "officialDocumentId": "dnrpa-registros-propiedad-automotor",
+      "chunkId": "dnrpa-registros-propiedad-automotor--contacto-031",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}

@@ -46,7 +46,7 @@ When materially changing ticket text, answer IDs/text, correct answer, image pat
 
 When deleting a ticket, remove or refresh linked translations, explanations, question image usages, overlay/relevance mappings, translation evidence, explanation evidence, image usage evidence, generated indexes, and validation records. Remove shared image metadata only when no remaining question usage references that image; if another ticket still uses the image, keep the shared metadata and remove only the deleted ticket's usage/evidence.
 
-The current archive stores one Markdown document for each manifest entry under `content/official-documents/documents/`, raw/original evidence under `content/official-documents/originals/` where required, SHA-256 metadata for the Markdown, and currentness/effective-status evidence. Currentness validation is recorded as passed for all 19 entries, but `exactTextValidation.status` remains pending for all 19 entries until a dedicated whole-archive exact-text validation slice completes.
+The current archive stores one Markdown document for each manifest entry under `content/official-documents/documents/`, raw/original evidence under `content/official-documents/originals/` where required, SHA-256 metadata for the Markdown, and currentness/effective-status evidence. Currentness validation and whole-archive exact-text validation are recorded as passed for all 19 entries.
 
 Each future manifest entry must record:
 
@@ -66,20 +66,22 @@ Each future manifest entry must record:
 
 Official archive Markdown must preserve the source title, wording, numbering, headings, article/rule/section/page structure, bullet structure, and formal terminology as exactly as Markdown reasonably allows.
 
-Agents must not paraphrase, translate, simplify, summarize, or otherwise rewrite official text inside `content/official-documents/`. Any Russian learning material derived from official sources belongs outside this archive and remains unofficial learning support. For the planned primary-source reader, full Russian translations and simple Russian rewrites should live in a governed learner-content area such as `content/primary-sources/`, not in `content/official-documents/`.
+Agents must not paraphrase, translate, simplify, summarize, or otherwise rewrite official text inside `content/official-documents/`. Any Russian learning material derived from official sources belongs outside this archive and remains unofficial learning support. For the primary-source reader, full Russian translations and simple Russian rewrites live in the governed learner-content area `content/primary-sources/`, not in `content/official-documents/`.
 
-## Planned Primary-Source Reader
+## Primary-Source Reader
 
-Feature `019-primary-sources-section` plans a learner-facing `Источники` / official primary-source reader. This section is not implemented in the current product at the time of this Slice A docs refresh. When implemented, it should remain distinct from the topic-study `Материалы` guide and should:
+Feature `019-primary-sources-section` adds a learner-facing `Источники` / official primary-source reader. It remains distinct from the topic-study `Материалы` guide and:
 
-- cover every entry in the implementation-time and final manifest;
-- default to schoolchild-friendly simple Russian text;
-- let the learner switch to full Russian translation and original Spanish official text;
-- omit simplified Spanish;
-- display compact source/currentness/exact-text status;
-- preserve local-first behavior without runtime network calls, live AI, or raw PDF viewing.
+- covers every current manifest entry with learner-source corpus data;
+- defaults to schoolchild-friendly simple Russian text;
+- lets the learner switch to full Russian translation and original Spanish official text;
+- omits simplified Spanish;
+- displays compact source/currentness/exact-text status;
+- preserves local-first behavior without runtime network calls, live AI, or raw PDF viewing.
 
 The original Spanish archive remains the official/verbatim source layer. Russian translation, simplification, summaries, and learner notes are unofficial support layers and must be stored and validated outside `content/official-documents/`.
+
+Release status: the reader UI, full learner corpus, currentness gate, and exact-text gate are implemented and passed for all 19 manifest entries. Remaining merge readiness still depends on the active PR checks, review, conflict state, and human merge authority.
 
 ## Currentness Rules
 
@@ -97,7 +99,11 @@ Allowed `currentness.validationStatus` and `exactTextValidation.status` values a
 
 `scripts/validate-content.mjs` integrates the official-documents manifest validator with real local file existence and SHA-256 checks. An empty draft manifest passes validation. Entries, when present, must have required metadata, local paths inside the archive section, SHA-256 hash metadata that matches the local archived Markdown file, conversion notes, currentness fields, exact-text validation status, and raw/original evidence for lossy formats.
 
-The final topic-study-guide release and the final primary-source reader release still require later dedicated whole-archive exact-text and currentness validation evidence. The current manifest records currentness validation as passed, but exact-text validation remains pending and must not be described as release-ready until the dedicated validation is performed or an explicit Architect/user disposition narrows the release status.
+The final topic-study-guide release and the final primary-source reader release require dedicated whole-archive exact-text and currentness validation evidence. The current manifest records both currentness validation and exact-text validation as passed for all 19 entries; future manifest additions or source changes must refresh that evidence before a finished release claim.
+
+`scripts/official-documents-exact-text-validation.mjs` rejects live-source-as-subset-of-archive matches. HTML exact-text evidence may pass only when the normalized archive candidate exactly matches a live official extraction candidate, or when the live official source contains the archive candidate as one contiguous body with bounded official wrapper text. Reproducible archive candidates may remove page chrome such as navigation, sharing widgets, related-content lists, feedback forms, footers, and date-only metadata, but unmatched archive body text remains a blocker.
+
+Exact-text evidence derives `checkedAt` from the runtime local date. Numeric normalization must stay narrow and auditable: the validator does not collapse whitespace between arbitrary adjacent digits, and only repairs the observed InfoLeg layout break in `Ley N° NN.NN D B.O.` references before Boletín Oficial markers.
 
 ## Related Guide Files
 

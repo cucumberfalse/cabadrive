@@ -1,0 +1,1977 @@
+{
+  "schema": "primary-sources-document-shard.v1",
+  "version": 1,
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-11179-codigo-penal",
+  "document": {
+    "officialDocumentId": "ley-11179-codigo-penal",
+    "title": "CODIGO PENAL DE LA NACION ARGENTINA",
+    "shortTitleRu": "Уголовный кодекс Аргентины",
+    "category": "criminal-law",
+    "jurisdiction": "national",
+    "officialSourceType": "national_law_updated_text",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+    "archiveLocalPath": "content/official-documents/documents/ley-11179-codigo-penal.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "current",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-160-sera-reprimido-con-prision-de-quince-259",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 259,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo V",
+          "ARTICULO 160. - Será reprimido con prisión de quince días a tres meses, el que impidiere materialmente o turbare una reunión lícita, con ..."
+        ],
+        "officialLabel": "ARTICULO 160. - Será reprimido con prisión de quince días a tres meses, el que impidiere materialmente o turbare una reunión lícita, con ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 160. - Será reprimido con prisión de quince días a tres meses, el que impidiere materialmente o turbare una reunión lícita, con insultos o amenazas al orador o a la institución organizadora del acto.\n",
+        "fullTranslationRu": "СТАТЬЯ 160. Наказывается лишением свободы от пятнадцати дней до трех месяцев тот, кто физически воспрепятствует законному собранию или нарушит его ход оскорблениями или угрозами в адрес выступающего либо учреждения, организующего мероприятие.",
+        "simpleRu": "Нельзя срывать законное собрание. Если человек мешает ему физически, оскорбляет или угрожает выступающему либо организатору, ему грозит от 15 дней до 3 месяцев тюрьмы.",
+        "sourceTextSha256": "5e7a308d61780295a1dea5669a41514ac284e427644e37fc04b0d1fa294af49f",
+        "sourceFingerprint": "sha256:5e7a308d61780295a1dea5669a41514ac284e427644e37fc04b0d1fa294af49f",
+        "sourceSpan": {
+          "startLine": 1598,
+          "endLine": 1599
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-vi-260",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 260,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo VI"
+        ],
+        "officialLabel": "Capítulo VI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo VI\n\nDelitos contra la libertad de prensa\n",
+        "fullTranslationRu": "Глава VI\n\nПреступления против свободы печати",
+        "simpleRu": "Эта глава о преступлениях против свободного распространения книг и газет.",
+        "sourceTextSha256": "ff81f5f99b20abc8e4d09dbf73381f938f7324f1dcee802fa2523f847778d4fe",
+        "sourceFingerprint": "sha256:ff81f5f99b20abc8e4d09dbf73381f938f7324f1dcee802fa2523f847778d4fe",
+        "sourceSpan": {
+          "startLine": 1600,
+          "endLine": 1603
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-161-sufrira-prision-de-uno-a-seis-261",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 261,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO V",
+          "Capítulo VI",
+          "ARTICULO 161. - Sufrirá prisión de uno a seis meses, el que impidiere o estorbare la libre circulación de un libro o periódico."
+        ],
+        "officialLabel": "ARTICULO 161. - Sufrirá prisión de uno a seis meses, el que impidiere o estorbare la libre circulación de un libro o periódico.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 161. - Sufrirá prisión de uno a seis meses, el que impidiere o estorbare la libre circulación de un libro o periódico.\n",
+        "fullTranslationRu": "СТАТЬЯ 161. Лишением свободы от одного до шести месяцев наказывается тот, кто препятствует или мешает свободному обращению книги или газеты.",
+        "simpleRu": "Нельзя мешать свободно распространять книгу или газету. За это может быть от 1 до 6 месяцев тюрьмы.",
+        "sourceTextSha256": "c8e8c46b547a364216dc46fb5adb897c7653370707b39e28a1f6ebdc0a8885f1",
+        "sourceFingerprint": "sha256:c8e8c46b547a364216dc46fb5adb897c7653370707b39e28a1f6ebdc0a8885f1",
+        "sourceSpan": {
+          "startLine": 1604,
+          "endLine": 1605
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vi-262",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 262,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI"
+        ],
+        "officialLabel": "TITULO VI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VI\n\nDELITOS CONTRA LA PROPIEDAD\n",
+        "fullTranslationRu": "РАЗДЕЛ VI\n\nПРЕСТУПЛЕНИЯ ПРОТИВ СОБСТВЕННОСТИ",
+        "simpleRu": "Дальше начинается раздел о преступлениях против собственности.",
+        "sourceTextSha256": "7a4c76b1e86545b653419ff153fbe87e928798dfa3bafe861033c2b7077468ae",
+        "sourceFingerprint": "sha256:7a4c76b1e86545b653419ff153fbe87e928798dfa3bafe861033c2b7077468ae",
+        "sourceSpan": {
+          "startLine": 1606,
+          "endLine": 1609
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-263",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 263,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nHurto\n",
+        "fullTranslationRu": "Глава I\n\nКража",
+        "simpleRu": "Эта глава объясняет ответственность за кражу.",
+        "sourceTextSha256": "ce709c79b10a209e905ee6e9835fd56cd42868974e2e8d858b1ba79f52878563",
+        "sourceFingerprint": "sha256:ce709c79b10a209e905ee6e9835fd56cd42868974e2e8d858b1ba79f52878563",
+        "sourceSpan": {
+          "startLine": 1610,
+          "endLine": 1613
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-162-sera-reprimido-con-prision-de-un-264",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 264,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo I",
+          "ARTICULO 162. - Será reprimido con prisión de un mes a dos años, el que se apoderare ilegítimamente de una cosa mueble, total o parcialme..."
+        ],
+        "officialLabel": "ARTICULO 162. - Será reprimido con prisión de un mes a dos años, el que se apoderare ilegítimamente de una cosa mueble, total o parcialme...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 162. - Será reprimido con prisión de un mes a dos años, el que se apoderare ilegítimamente de una cosa mueble, total o parcialmente ajena.-\n",
+        "fullTranslationRu": "СТАТЬЯ 162. Лишением свободы от одного месяца до двух лет наказывается тот, кто незаконно завладевает движимой вещью, полностью или частично принадлежащей другому лицу.",
+        "simpleRu": "Кража - это когда человек незаконно берет чужую движимую вещь. За это грозит от 1 месяца до 2 лет тюрьмы.",
+        "sourceTextSha256": "0ea1ddd463ff1ad9522b8bd3e148486cece039ef21b75288af44d46d91103ccc",
+        "sourceFingerprint": "sha256:0ea1ddd463ff1ad9522b8bd3e148486cece039ef21b75288af44d46d91103ccc",
+        "sourceSpan": {
+          "startLine": 1614,
+          "endLine": 1615
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-163-se-aplicara-prision-de-uno-a-265",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 265,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo I",
+          "ARTICULO 163. - Se aplicará prisión de uno a seis años en los casos siguientes:"
+        ],
+        "officialLabel": "ARTICULO 163. - Se aplicará prisión de uno a seis años en los casos siguientes:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 163. - Se aplicará prisión de uno a seis años en los casos siguientes:\n\n1º Cuando el hurto fuere de productos separados del suelo o de máquinas, instrumentos de trabajo o de productos agroquímicos, fertilizantes u otros insumos similares, dejados en el campo, o de alambres u otros elementos de los cercos.\n\n(Inciso sustituido por art. 2° de la Ley N° 25.890 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95203] B.O.21/5/2004)\n\n2º Cuando el hurto se cometiere con ocasión de un incendio, explosión, inundación, naufragio, accidente de ferrocarril, asonada o motín o aprovechando las facilidades provenientes de cualquier otro desastre o conmoción pública o de un infortunio particular del damnificado;\n\n3º Cuando se hiciere uso de ganzúa, llave falsa u otro instrumento semejante o de llave verdadera que hubiere sido substraída, hallada o retenida; (Inciso sustituido por art. 1° de la Ley N° 24.721 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=40382] B.O. 18/11/1996)\n\n4º Cuando se perpetrare con escalamiento.\n\n5º Cuando el hurto fuese de mercaderías u otras cosas muebles transportadas por cualquier medio y se cometiere entre el momento de su carga y el de su destino o entrega, o durante las escalas que se realizaren. . (Inciso incorporado por art. 1° de la Ley N° 23.468 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=21982] B.O. 26/1/1987)\n\n6º Cuando el hurto fuere de vehículos dejados en la vía pública o en lugares de acceso público. . (Inciso incorporado por art. 1° de la Ley N° 24.721 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=40382] B.O. 18/11/1996)\n",
+        "fullTranslationRu": "СТАТЬЯ 163. Лишение свободы от одного до шести лет применяется в следующих случаях:\n\n1. Когда кража касается продуктов, отделенных от земли, машин, рабочих инструментов, агрохимикатов, удобрений или других похожих материалов, оставленных в поле, либо проволоки или иных элементов ограждений.\n\nПункт заменен статьей 2 Закона N 25.890, B.O. 21/5/2004.\n\n2. Когда кража совершена во время пожара, взрыва, наводнения, кораблекрушения, железнодорожной аварии, мятежа или бунта, либо с использованием возможностей, возникших из-за любого другого бедствия, общественного волнения или личного несчастья потерпевшего.\n\n3. Когда используется отмычка, поддельный ключ или похожий инструмент, либо настоящий ключ, который был похищен, найден или удержан. Пункт заменен статьей 1 Закона N 24.721, B.O. 18/11/1996.\n\n4. Когда кража совершена путем перелезания или проникновения через препятствие.\n\n5. Когда кража касается товаров или иных движимых вещей, перевозимых любым способом, и совершается между моментом их погрузки и местом назначения или передачи, либо во время остановок в пути. Пункт включен статьей 1 Закона N 23.468, B.O. 26/1/1987.\n\n6. Когда кража касается транспортных средств, оставленных на общественной дороге или в местах общего доступа. Пункт включен статьей 1 Закона N 24.721, B.O. 18/11/1996.",
+        "simpleRu": "За некоторые кражи наказание выше: от 1 до 6 лет. Это, например, кража сельхозпродуктов, инструментов или ограждений в поле; кража во время бедствия; кража с отмычкой или украденным ключом; проникновение через препятствие; кража груза во время перевозки; кража машины на улице или в общедоступном месте.",
+        "sourceTextSha256": "228b27aab70d93bd556471d7a18f549a32da1524521c5ed855c57f7c0d860718",
+        "sourceFingerprint": "sha256:228b27aab70d93bd556471d7a18f549a32da1524521c5ed855c57f7c0d860718",
+        "sourceSpan": {
+          "startLine": 1616,
+          "endLine": 1631
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-163-bis-en-los-casos-enunciados-en-266",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 266,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo I",
+          "ARTICULO 163 bis — En los casos enunciados en el presente Capítulo, la pena se aumentará en un tercio en su mínimo y en su máximo, cuando..."
+        ],
+        "officialLabel": "ARTICULO 163 bis — En los casos enunciados en el presente Capítulo, la pena se aumentará en un tercio en su mínimo y en su máximo, cuando...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 163 bis — En los casos enunciados en el presente Capítulo, la pena se aumentará en un tercio en su mínimo y en su máximo, cuando quien ejecutare el delito fuere miembro integrante de las fuerzas de seguridad, policiales o del servicio penitenciario.\n\n(Artículo incorporado por art. 2° de la Ley N° 25.816 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=90864] B.O.9/12/2003)\n",
+        "fullTranslationRu": "СТАТЬЯ 163 bis. В случаях, указанных в этой главе, минимальный и максимальный пределы наказания увеличиваются на одну треть, если преступление совершает лицо, входящее в силы безопасности, полицию или пенитенциарную службу.\n\nСтатья включена статьей 2 Закона N 25.816, B.O. 9/12/2003.",
+        "simpleRu": "Если кражу из этой главы совершает сотрудник сил безопасности, полиции или тюремной службы, наказание увеличивается на одну треть и по минимуму, и по максимуму.",
+        "sourceTextSha256": "23ece3a8a6fb30b03ef875d8f6c92cd15094dbbe449155e7bc2548a6727a7c20",
+        "sourceFingerprint": "sha256:23ece3a8a6fb30b03ef875d8f6c92cd15094dbbe449155e7bc2548a6727a7c20",
+        "sourceSpan": {
+          "startLine": 1632,
+          "endLine": 1635
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-267",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 267,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nRobo\n",
+        "fullTranslationRu": "Глава II\n\nГрабеж/разбой",
+        "simpleRu": "Эта глава о краже с силой или насилием.",
+        "sourceTextSha256": "b7890634a83779aee24b1126152747ea6a5e8bdcf1701b40276630a5eabbdee6",
+        "sourceFingerprint": "sha256:b7890634a83779aee24b1126152747ea6a5e8bdcf1701b40276630a5eabbdee6",
+        "sourceSpan": {
+          "startLine": 1636,
+          "endLine": 1639
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-164-sera-reprimido-con-prision-de-un-268",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 268,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo II",
+          "ARTICULO 164. - Será reprimido con prisión de un mes a seis años, el que se apoderare ilegítimamente de una cosa mueble, total o parcialm..."
+        ],
+        "officialLabel": "ARTICULO 164. - Será reprimido con prisión de un mes a seis años, el que se apoderare ilegítimamente de una cosa mueble, total o parcialm...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 164. - Será reprimido con prisión de un mes a seis años, el que se apoderare ilegítimamente de una cosa mueble, total o parcialmente ajena, con fuerza en las cosas o con violencia física en las personas, sea que la violencia tenga lugar antes del robo para facilitarlo, en el acto de cometerlo o después de cometido para procurar su impunidad.\n",
+        "fullTranslationRu": "СТАТЬЯ 164. Лишением свободы от одного месяца до шести лет наказывается тот, кто незаконно завладевает движимой вещью, полностью или частично чужой, применяя силу к вещам или физическое насилие к людям, независимо от того, происходит ли насилие до грабежа для его облегчения, во время совершения или после него для обеспечения безнаказанности.",
+        "simpleRu": "Это более тяжкая форма кражи: человек берет чужую вещь с силой против вещей или насилием против людей. Насилие считается и до, и во время, и после преступления. Наказание - от 1 месяца до 6 лет.",
+        "sourceTextSha256": "d83268d0bc2aa57025db360f372f29ef51ce8651c8f12d246131a71833689ee4",
+        "sourceFingerprint": "sha256:d83268d0bc2aa57025db360f372f29ef51ce8651c8f12d246131a71833689ee4",
+        "sourceSpan": {
+          "startLine": 1640,
+          "endLine": 1641
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-165-se-impondra-reclusion-o-prision-de-269",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 269,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo II",
+          "ARTICULO 165. - Se impondrá reclusión o prisión de diez a veinticinco años, si con motivo u ocasión del robo resultare un homicidio."
+        ],
+        "officialLabel": "ARTICULO 165. - Se impondrá reclusión o prisión de diez a veinticinco años, si con motivo u ocasión del robo resultare un homicidio.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 165. - Se impondrá reclusión o prisión de diez a veinticinco años, si con motivo u ocasión del robo resultare un homicidio.\n",
+        "fullTranslationRu": "СТАТЬЯ 165. Если по причине или во время грабежа наступает убийство, назначается каторжное заключение или лишение свободы от десяти до двадцати пяти лет.",
+        "simpleRu": "Если во время грабежа или из-за него кто-то погиб, наказание очень тяжелое: от 10 до 25 лет.",
+        "sourceTextSha256": "8a0ed509d4e5852bc3c853fb663263ecbc7e851078a264ac780b24e4ba33bbed",
+        "sourceFingerprint": "sha256:8a0ed509d4e5852bc3c853fb663263ecbc7e851078a264ac780b24e4ba33bbed",
+        "sourceSpan": {
+          "startLine": 1642,
+          "endLine": 1643
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-166-se-aplicara-reclusion-o-prision-de-270",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 270,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo II",
+          "ARTICULO 166. -Se aplicará reclusión o prisión de CINCO a QUINCE años:"
+        ],
+        "officialLabel": "ARTICULO 166. -Se aplicará reclusión o prisión de CINCO a QUINCE años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 166. -Se aplicará reclusión o prisión de CINCO a QUINCE años:\n\n1. Si por las violencias ejercidas para realizar el robo, se causare alguna de las lesiones previstas en los artículos 90 y 91.\n\n2. Si el robo se cometiere con armas, o en despoblado y en banda.\n\nSi el arma utilizada fuera de fuego, la escala penal prevista se elevará en un tercio en su mínimo y en su máximo.\n\nSi se cometiere el robo con un arma de fuego cuya aptitud para el disparo no pudiera tenerse de ningún modo por acreditada, o con un arma de utilería, la pena será de TRES a DIEZ años de reclusión o prisión.\n\n(Artículo sustituido por art. 1° de la Ley N° 25.882 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=94458] B.O. 26/4/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 166. Применяется каторжное заключение или лишение свободы от ПЯТИ до ПЯТНАДЦАТИ лет:\n\n1. Если насилие, использованное для совершения грабежа, причинило одну из травм, предусмотренных статьями 90 и 91.\n\n2. Если грабеж совершен с оружием либо в безлюдном месте и группой.\n\nЕсли использованное оружие было огнестрельным, предусмотренная шкала наказания повышается на одну треть в минимуме и максимуме.\n\nЕсли грабеж совершен с огнестрельным оружием, пригодность которого к выстрелу никак не доказана, или с муляжом оружия, наказание составляет от ТРЕХ до ДЕСЯТИ лет каторжного заключения или лишения свободы.\n\nСтатья заменена статьей 1 Закона N 25.882, B.O. 26/4/2004.",
+        "simpleRu": "Грабеж становится тяжелее, если из-за насилия есть серьезные травмы, если было оружие, или если это было в безлюдном месте группой. Обычно наказание - от 5 до 15 лет. За огнестрельное оружие пределы повышаются на треть; за недоказанное или игрушечное оружие - от 3 до 10 лет.",
+        "sourceTextSha256": "f529fdbd2902c696c1a5769b821f937b2a9ac0b982183cd26e1ad79fa3cf6f08",
+        "sourceFingerprint": "sha256:f529fdbd2902c696c1a5769b821f937b2a9ac0b982183cd26e1ad79fa3cf6f08",
+        "sourceSpan": {
+          "startLine": 1644,
+          "endLine": 1655
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-167-se-aplicara-reclusion-o-prision-de-271",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 271,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo II",
+          "ARTICULO 167. - Se aplicará reclusión o prisión de tres a diez años:"
+        ],
+        "officialLabel": "ARTICULO 167. - Se aplicará reclusión o prisión de tres a diez años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 167. - Se aplicará reclusión o prisión de tres a diez años:\n\n1º. Si se cometiere el robo en despoblado;\n\n2º. Si se cometiere en lugares poblados y en banda;\n\n3º. Si se perpetrare el robo con perforación o fractura de pared, cerco, techo o piso, puerta o ventana de un lugar habitado o sus dependencias inmediatas;\n\n4º. Si concurriere alguna de las circunstancias enumeradas en el artículo 163.\n",
+        "fullTranslationRu": "СТАТЬЯ 167. Каторжное заключение или лишение свободы от трех до десяти лет применяется:\n\n1. Если грабеж совершен в безлюдном месте.\n\n2. Если он совершен в населенном месте и группой.\n\n3. Если грабеж совершен путем пробивания или взлома стены, ограды, крыши, пола, двери или окна жилого места либо его непосредственных помещений.\n\n4. Если присутствует любое из обстоятельств, перечисленных в статье 163.",
+        "simpleRu": "За грабеж дают от 3 до 10 лет, если он совершен в безлюдном месте, группой в населенном месте, со взломом жилья или при обстоятельствах из статьи 163.",
+        "sourceTextSha256": "7e1262afc6181beb15afdb50f6577ae55b1cc5e65a15123e8c5af8d5c3d86a54",
+        "sourceFingerprint": "sha256:7e1262afc6181beb15afdb50f6577ae55b1cc5e65a15123e8c5af8d5c3d86a54",
+        "sourceSpan": {
+          "startLine": 1656,
+          "endLine": 1665
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-167-bis-en-los-casos-enunciados-en-272",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 272,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo II",
+          "ARTICULO 167 bis — En los casos enunciados en el presente Capítulo, la pena se aumentará en un tercio en su mínimo y en su máximo, cuando..."
+        ],
+        "officialLabel": "ARTICULO 167 bis — En los casos enunciados en el presente Capítulo, la pena se aumentará en un tercio en su mínimo y en su máximo, cuando...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 167 bis — En los casos enunciados en el presente Capítulo, la pena se aumentará en un tercio en su mínimo y en su máximo, cuando quien ejecutare el delito fuere miembro integrante de las fuerzas de seguridad, policiales o del servicio penitenciario.\n\n(Artículo incorporado por art. 3° de la Ley N° 25.816 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=90864] B.O.9/12/2003)\n",
+        "fullTranslationRu": "СТАТЬЯ 167 bis. В случаях, указанных в этой главе, минимальный и максимальный пределы наказания увеличиваются на одну треть, если преступление совершает лицо, входящее в силы безопасности, полицию или пенитенциарную службу.\n\nСтатья включена статьей 3 Закона N 25.816, B.O. 9/12/2003.",
+        "simpleRu": "Если грабеж из этой главы совершает сотрудник сил безопасности, полиции или тюремной службы, наказание увеличивается на одну треть.",
+        "sourceTextSha256": "e85f3d41554f61a92520f67fb95ed6c1c490dbd3473509384fcb8a31a5db9ba9",
+        "sourceFingerprint": "sha256:e85f3d41554f61a92520f67fb95ed6c1c490dbd3473509384fcb8a31a5db9ba9",
+        "sourceSpan": {
+          "startLine": 1666,
+          "endLine": 1669
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-2-bis-abigeato-273",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 273,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo 2 bis: Abigeato"
+        ],
+        "officialLabel": "Capítulo 2 bis: Abigeato",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo 2 bis: Abigeato\n\n(Capítulo incorporado por art. 3° de la Ley N° 25.890 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95203] B.O.21/5/2004)\n",
+        "fullTranslationRu": "Глава 2 bis: Кража скота\n\nГлава включена статьей 3 Закона N 25.890, B.O. 21/5/2004.",
+        "simpleRu": "Эта отдельная глава говорит о краже скота.",
+        "sourceTextSha256": "781e6324023171faa65c84d61c7a56d62ba80c0f5deb1cc95c4b76efb2b2a2c5",
+        "sourceFingerprint": "sha256:781e6324023171faa65c84d61c7a56d62ba80c0f5deb1cc95c4b76efb2b2a2c5",
+        "sourceSpan": {
+          "startLine": 1670,
+          "endLine": 1673
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-167-ter-sera-reprimido-con-prision-de-274",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 274,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo 2 bis: Abigeato",
+          "ARTICULO 167 ter.- Será reprimido con prisión de DOS (2) a SEIS (6) años el que se apoderare ilegítimamente de UNA (1) o más cabezas de g..."
+        ],
+        "officialLabel": "ARTICULO 167 ter.- Será reprimido con prisión de DOS (2) a SEIS (6) años el que se apoderare ilegítimamente de UNA (1) o más cabezas de g...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 167 ter.- Será reprimido con prisión de DOS (2) a SEIS (6) años el que se apoderare ilegítimamente de UNA (1) o más cabezas de ganado mayor o menor, total o parcialmente ajeno, que se encontrare en establecimientos rurales o, en ocasión de su transporte, desde el momento de su carga hasta el de su destino o entrega, incluyendo las escalas que se realicen durante el trayecto.\n\nLa pena será de TRES (3) a OCHO (8) años de prisión si el abigeato fuere de CINCO (5) o más cabezas de ganado mayor o menor y se utilizare un medio motorizado para su transporte.\n\n(Artículo incorporado por art. 3° de la Ley N° 25.890 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95203] B.O.21/5/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 167 ter. Лишением свободы от ДВУХ (2) до ШЕСТИ (6) лет наказывается тот, кто незаконно завладевает ОДНОЙ (1) или более головами крупного или мелкого скота, полностью или частично чужого, находящегося в сельском хозяйстве либо во время перевозки с момента погрузки до места назначения или передачи, включая остановки в пути.\n\nНаказание составляет от ТРЕХ (3) до ВОСЬМИ (8) лет лишения свободы, если кража скота касается ПЯТИ (5) или более голов крупного или мелкого скота и для перевозки используется моторизованное средство.\n\nСтатья включена статьей 3 Закона N 25.890, B.O. 21/5/2004.",
+        "simpleRu": "За кражу хотя бы одной головы скота дают от 2 до 6 лет. Если украдено 5 или больше голов и их перевозят моторным транспортом, наказание повышается до 3-8 лет.",
+        "sourceTextSha256": "69ea7f560946306d477680118bd7be8cf1b870c4add20d4a2264fdf24fb96320",
+        "sourceFingerprint": "sha256:69ea7f560946306d477680118bd7be8cf1b870c4add20d4a2264fdf24fb96320",
+        "sourceSpan": {
+          "startLine": 1674,
+          "endLine": 1679
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-167-quater-se-aplicara-reclusion-o-prision-275",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 275,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo 2 bis: Abigeato",
+          "ARTICULO 167 quater.- Se aplicará reclusión o prisión de CUATRO (4) a DIEZ (10) años cuando en el abigeato concurriere alguna de las sigu..."
+        ],
+        "officialLabel": "ARTICULO 167 quater.- Se aplicará reclusión o prisión de CUATRO (4) a DIEZ (10) años cuando en el abigeato concurriere alguna de las sigu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 167 quater.- Se aplicará reclusión o prisión de CUATRO (4) a DIEZ (10) años cuando en el abigeato concurriere alguna de las siguientes circunstancias:\n\n1.- El apoderamiento se realizare en las condiciones previstas en el artículo 164.\n\n2.- Se alteraren, suprimieren o falsificaren marcas o señales utilizadas para la identificación del animal.\n\n3.- Se falsificaren o se utilizaren certificados de adquisición, guías de tránsito, boletos de marca o señal, o documentación equivalente, falsos.\n\n4.- Participare en el hecho una persona que se dedique a la crianza, cuidado, faena, elaboración, comercialización o transporte de ganado o de productos o subproductos de origen animal.\n\n5.- Participare en el hecho un funcionario público quien, violando los deberes a su cargo o abusando de sus funciones, facilitare directa o indirectamente su comisión.\n\n6.- Participaren en el hecho TRES (3) o más personas.\n\n(Artículo incorporado por art. 3° de la Ley N° 25.890 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95203] B.O.21/5/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 167 quater. Каторжное заключение или лишение свободы от ЧЕТЫРЕХ (4) до ДЕСЯТИ (10) лет применяется, когда при краже скота есть одно из следующих обстоятельств:\n\n1. Завладение совершено в условиях, предусмотренных статьей 164.\n\n2. Изменены, удалены или подделаны клейма или знаки, используемые для идентификации животного.\n\n3. Подделаны или использованы поддельные свидетельства приобретения, дорожные накладные, документы о клейме или знаке либо равнозначные документы.\n\n4. В деянии участвует лицо, занимающееся разведением, уходом, убоем, переработкой, продажей или перевозкой скота либо продуктов или субпродуктов животного происхождения.\n\n5. В деянии участвует публичный должностной человек, который, нарушая свои обязанности или злоупотребляя функциями, прямо или косвенно облегчает его совершение.\n\n6. В деянии участвуют ТРИ (3) или более лица.\n\nСтатья включена статьей 3 Закона N 25.890, B.O. 21/5/2004.",
+        "simpleRu": "За кражу скота дают от 4 до 10 лет, если были насилие или сила, подделка клейм или документов, участие работников этой сферы, помощь должностного лица или участие трех и более человек.",
+        "sourceTextSha256": "bfc35a45af36ebbbadefd9a392938ab4ff590812622823d432591dba6cc7b3ca",
+        "sourceFingerprint": "sha256:bfc35a45af36ebbbadefd9a392938ab4ff590812622823d432591dba6cc7b3ca",
+        "sourceSpan": {
+          "startLine": 1680,
+          "endLine": 1695
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-167-quinque-en-caso-de-condena-por-276",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 276,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo 2 bis: Abigeato",
+          "ARTICULO 167 quinque.- En caso de condena por un delito previsto en este Capítulo, el culpable, si fuere funcionario público o reuniere l..."
+        ],
+        "officialLabel": "ARTICULO 167 quinque.- En caso de condena por un delito previsto en este Capítulo, el culpable, si fuere funcionario público o reuniere l...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 167 quinque.- En caso de condena por un delito previsto en este Capítulo, el culpable, si fuere funcionario público o reuniere las condiciones personales descriptas en el artículo 167 quater inciso 4, sufrirá, además, inhabilitación especial por el doble del tiempo de la condena.\n\nEn todos los casos antes previstos también se impondrá conjuntamente una multa equivalente de DOS (2) a DIEZ (10) veces del valor del ganado sustraído\".\n\n(Artículo incorporado por art. 3° de la Ley N° 25.890 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95203] B.O.21/5/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 167 quinque. При осуждении за преступление, предусмотренное этой главой, виновный, если он является публичным должностным лицом или имеет личные качества, описанные в статье 167 quater, пункт 4, дополнительно получает специальное лишение права заниматься соответствующей деятельностью на срок, вдвое превышающий срок наказания.\n\nВо всех указанных выше случаях также совместно назначается штраф, равный от ДВУХ (2) до ДЕСЯТИ (10) стоимостей похищенного скота.\n\nСтатья включена статьей 3 Закона N 25.890, B.O. 21/5/2004.",
+        "simpleRu": "Если за кражу скота осужден чиновник или человек из скотоводческой/мясной/транспортной сферы, ему дополнительно запрещают такую деятельность на двойной срок. Кроме того, назначают штраф от 2 до 10 стоимостей украденного скота.",
+        "sourceTextSha256": "38d5a6de812b56763942c4e958bc4abd664c6e87a72d1e2c0aa7725d5470d5e2",
+        "sourceFingerprint": "sha256:38d5a6de812b56763942c4e958bc4abd664c6e87a72d1e2c0aa7725d5470d5e2",
+        "sourceSpan": {
+          "startLine": 1696,
+          "endLine": 1701
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iii-277",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 277,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo III"
+        ],
+        "officialLabel": "Capítulo III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo III\n\nExtorsión\n",
+        "fullTranslationRu": "Глава III\n\nВымогательство",
+        "simpleRu": "Эта глава о вымогательстве.",
+        "sourceTextSha256": "f3965a44fc59e744adcc894d1eb4599cfa383f961b8f948e561afc1bccb76d3d",
+        "sourceFingerprint": "sha256:f3965a44fc59e744adcc894d1eb4599cfa383f961b8f948e561afc1bccb76d3d",
+        "sourceSpan": {
+          "startLine": 1702,
+          "endLine": 1705
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-168-sera-reprimido-con-reclusion-o-prision-278",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 278,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo III",
+          "ARTICULO 168. - Será reprimido con reclusión o prisión de cinco a diez años, el que con intimidación o simulando autoridad pública o fals..."
+        ],
+        "officialLabel": "ARTICULO 168. - Será reprimido con reclusión o prisión de cinco a diez años, el que con intimidación o simulando autoridad pública o fals...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 168. - Será reprimido con reclusión o prisión de cinco a diez años, el que con intimidación o simulando autoridad pública o falsa orden de la misma, obligue a otro a entregar, enviar, depositar o poner a su disposición o a la de un tercero, cosas, dinero o documentos que produzcan efectos jurídicos.\n\nIncurrirá en la misma pena el que por los mismos medios o con violencia, obligue a otro a suscribir o destruir documentos de obligación o de crédito.\n",
+        "fullTranslationRu": "СТАТЬЯ 168. Каторжным заключением или лишением свободы от пяти до десяти лет наказывается тот, кто запугиванием, выдавая себя за публичную власть или ссылаясь на ложный приказ такой власти, заставляет другого передать, отправить, внести на хранение или поставить в распоряжение виновного либо третьего лица вещи, деньги или документы, создающие юридические последствия.\n\nТакое же наказание получает тот, кто теми же средствами или насилием заставляет другого подписать или уничтожить долговые или кредитные документы.",
+        "simpleRu": "Вымогательство - это когда человека угрозами, насилием или фальшивой властью заставляют отдать деньги, вещи или важные документы, либо подписать или уничтожить долговые бумаги. Наказание - от 5 до 10 лет.",
+        "sourceTextSha256": "c951b0b637deb5826c61341dd9f7b2ab6c91cb1436a519128e330cb2403eda27",
+        "sourceFingerprint": "sha256:c951b0b637deb5826c61341dd9f7b2ab6c91cb1436a519128e330cb2403eda27",
+        "sourceSpan": {
+          "startLine": 1706,
+          "endLine": 1709
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-169-sera-reprimido-con-prision-o-reclusion-279",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 279,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo III",
+          "ARTICULO 169. - Será reprimido con prisión o reclusión de tres a ocho años, el que, por amenaza de imputaciones contra el honor o de viol..."
+        ],
+        "officialLabel": "ARTICULO 169. - Será reprimido con prisión o reclusión de tres a ocho años, el que, por amenaza de imputaciones contra el honor o de viol...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 169. - Será reprimido con prisión o reclusión de tres a ocho años, el que, por amenaza de imputaciones contra el honor o de violación de secretos, cometiere alguno de los hechos expresados en el artículo precedente.\n",
+        "fullTranslationRu": "СТАТЬЯ 169. Лишением свободы или каторжным заключением от трех до восьми лет наказывается тот, кто угрозой обвинений против чести или раскрытия тайны совершает один из фактов, указанных в предыдущей статье.",
+        "simpleRu": "Если человек вымогает, угрожая опозорить другого или раскрыть тайну, наказание - от 3 до 8 лет.",
+        "sourceTextSha256": "33a5834bdb012c1c11772dd87ca4bcaca8e95af82c9f87c49dc529af7d7dcffc",
+        "sourceFingerprint": "sha256:33a5834bdb012c1c11772dd87ca4bcaca8e95af82c9f87c49dc529af7d7dcffc",
+        "sourceSpan": {
+          "startLine": 1710,
+          "endLine": 1711
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-170-se-impondra-reclusion-o-prision-de-280",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 280,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo III",
+          "ARTICULO 170. - Se impondrá reclusión o prisión de cinco (5) a quince (15) años, al que sustrajere, retuviere u ocultare a una persona pa..."
+        ],
+        "officialLabel": "ARTICULO 170. - Se impondrá reclusión o prisión de cinco (5) a quince (15) años, al que sustrajere, retuviere u ocultare a una persona pa...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 170. - Se impondrá reclusión o prisión de cinco (5) a quince (15) años, al que sustrajere, retuviere u ocultare a una persona para sacar rescate. Si el autor lograre su propósito, el mínimo de la pena se elevará a ocho (8) años.\n\nLa pena será de diez (10) a veinticinco (25) años de prisión o reclusión:\n\n1. Si la víctima fuese una mujer embarazada; un menor de dieciocho (18) años de edad o un mayor de setenta (70) años de edad.\n\n2. Si el hecho se cometiere en la persona de un ascendiente; de un hermano; del cónyuge o conviviente; o de otro individuo a quien se deba respeto particular.\n\n3. Si se causare a la víctima lesiones graves o gravísimas.\n\n4. Cuando la víctima sea una persona discapacitada; enferma; o que no pueda valerse por sí misma.\n\n5. Cuando el agente sea funcionario o empleado público; o pertenezca o haya pertenecido a alguna fuerza de seguridad u organismo de inteligencia del Estado.\n\n6. Cuando participaran en el hecho tres (3) o más personas.\n\nLa pena será de quince (15) a veinticinco (25) años de prisión o reclusión si del hecho resultare la muerte de la persona ofendida, como consecuencia no querida por el autor.\n\nLa pena será de prisión o reclusión perpetua si se causara intencionalmente la muerte de la persona ofendida.\n\nLa pena del partícipe que, desvinculándose de los otros, se esforzare de modo que la víctima recupere la libertad, sin que tal resultado fuese la consecuencia del pago del precio de la libertad, se reducirá de un tercio a la mitad.\n\n(Artículo sustituido por art. 4° de la Ley N° 25.742 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=86244] B.O. 20/6/2003)\n",
+        "fullTranslationRu": "СТАТЬЯ 170. Каторжное заключение или лишение свободы от пяти (5) до пятнадцати (15) лет назначается тому, кто похищает, удерживает или скрывает человека, чтобы получить выкуп. Если автор достигает своей цели, минимум наказания повышается до восьми (8) лет.\n\nНаказание составляет от десяти (10) до двадцати пяти (25) лет лишения свободы или каторжного заключения:\n\n1. Если потерпевшая беременна; если потерпевший младше восемнадцати (18) лет или старше семидесяти (70) лет.\n\n2. Если деяние совершено в отношении восходящего родственника, брата или сестры, супруга или сожителя либо другого лица, к которому должен проявляться особый почет.\n\n3. Если потерпевшему причинены тяжкие или особо тяжкие телесные повреждения.\n\n4. Когда потерпевший является лицом с инвалидностью, больным или человеком, который не может сам о себе позаботиться.\n\n5. Когда виновный является публичным должностным лицом или служащим, либо принадлежит или принадлежал к какой-либо силе безопасности или государственному разведывательному органу.\n\n6. Когда в деянии участвовали три (3) или более лица.\n\nНаказание составляет от пятнадцати (15) до двадцати пяти (25) лет лишения свободы или каторжного заключения, если в результате деяния наступила смерть потерпевшего как последствие, которого автор не желал.\n\nНаказание является пожизненным лишением свободы или каторжным заключением, если смерть потерпевшего причинена умышленно.\n\nНаказание участника, который отделился от остальных и старался так, чтобы потерпевший получил свободу, причем это не было следствием уплаты цены свободы, уменьшается от одной трети до половины.\n\nСтатья заменена статьей 4 Закона N 25.742, B.O. 20/6/2003.",
+        "simpleRu": "За похищение человека ради выкупа дают от 5 до 15 лет, а если выкуп получен - минимум 8 лет. Наказание выше, если жертва беременна, ребенок, пожилой человек, родственник, больной или беспомощный человек, если есть тяжелые травмы, участвует чиновник/силовик или группа из 3 и более человек. Если жертва умерла, наказание становится еще тяжелее, вплоть до пожизненного. Участнику могут снизить наказание, если он реально помог освободить жертву без выкупа.",
+        "sourceTextSha256": "2db1f7c00118a2e5751e5c7b99130a6a06804eed33689261dee9c69d50e18ea3",
+        "sourceFingerprint": "sha256:2db1f7c00118a2e5751e5c7b99130a6a06804eed33689261dee9c69d50e18ea3",
+        "sourceSpan": {
+          "startLine": 1712,
+          "endLine": 1735
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-171-sufrira-prision-de-dos-a-seis-281",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 281,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo III",
+          "ARTICULO 171. - Sufrirá prisión de dos a seis años, el que substrajere un cadáver para hacerse pagar su devolución."
+        ],
+        "officialLabel": "ARTICULO 171. - Sufrirá prisión de dos a seis años, el que substrajere un cadáver para hacerse pagar su devolución.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 171. - Sufrirá prisión de dos a seis años, el que substrajere un cadáver para hacerse pagar su devolución.\n",
+        "fullTranslationRu": "СТАТЬЯ 171. Лишением свободы от двух до шести лет наказывается тот, кто похищает труп, чтобы получить плату за его возвращение.",
+        "simpleRu": "Если человек похищает тело умершего, чтобы получить деньги за возврат, наказание - от 2 до 6 лет.",
+        "sourceTextSha256": "881db25d6d5ef44e067c2ecc8870df9deca770ea61b43197772432c9c1b6f852",
+        "sourceFingerprint": "sha256:881db25d6d5ef44e067c2ecc8870df9deca770ea61b43197772432c9c1b6f852",
+        "sourceSpan": {
+          "startLine": 1736,
+          "endLine": 1737
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iv-282",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 282,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo IV"
+        ],
+        "officialLabel": "Capítulo IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo IV\n\nEstafas y otras defraudaciones\n",
+        "fullTranslationRu": "Глава IV\n\nМошенничества и другие обманы с причинением имущественного вреда",
+        "simpleRu": "Эта глава о мошенничестве и других способах обманом причинить имущественный вред.",
+        "sourceTextSha256": "3095df02a3058d45023230fab29d4fd6a7357f52d1ed554643b9283fb6c5e849",
+        "sourceFingerprint": "sha256:3095df02a3058d45023230fab29d4fd6a7357f52d1ed554643b9283fb6c5e849",
+        "sourceSpan": {
+          "startLine": 1738,
+          "endLine": 1741
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-172-sera-reprimido-con-prision-de-un-283",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 283,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo IV",
+          "ARTICULO 172. - Será reprimido con prisión de un mes a seis años, el que defraudare a otro con nombre supuesto, calidad simulada, falsos ..."
+        ],
+        "officialLabel": "ARTICULO 172. - Será reprimido con prisión de un mes a seis años, el que defraudare a otro con nombre supuesto, calidad simulada, falsos ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 172. - Será reprimido con prisión de un mes a seis años, el que defraudare a otro con nombre supuesto, calidad simulada, falsos títulos, influencia mentida, abuso de confianza o aparentando bienes, crédito, comisión, empresa o negociación o valiéndose de cualquier otro ardid o engaño.\n",
+        "fullTranslationRu": "СТАТЬЯ 172. Лишением свободы от одного месяца до шести лет наказывается тот, кто обманывает другого, используя вымышленное имя, притворный статус, ложные титулы, мнимое влияние, злоупотребление доверием, видимость имущества, кредита, поручения, предприятия или сделки либо любой другой трюк или обман.",
+        "simpleRu": "Мошенничество - это когда человека обманывают ради выгоды: чужим именем, фальшивым статусом, ложными документами, выдуманным влиянием, злоупотреблением доверием или другим обманом. Наказание - от 1 месяца до 6 лет.",
+        "sourceTextSha256": "eb300664c4146c4b454784a76721d6eb597800cf4973a4a4d0613a06e390182c",
+        "sourceFingerprint": "sha256:eb300664c4146c4b454784a76721d6eb597800cf4973a4a4d0613a06e390182c",
+        "sourceSpan": {
+          "startLine": 1742,
+          "endLine": 1743
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-173-sin-perjuicio-de-la-disposicion-general-284",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 284,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo IV",
+          "ARTICULO 173.- Sin perjuicio de la disposición general del artículo precedente, se considerarán casos especiales de defraudación y sufrir..."
+        ],
+        "officialLabel": "ARTICULO 173.- Sin perjuicio de la disposición general del artículo precedente, se considerarán casos especiales de defraudación y sufrir...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 173.- Sin perjuicio de la disposición general del artículo precedente, se considerarán casos especiales de defraudación y sufrirán la pena que él establece:\n\n1. El que defraudare a otro en la substancia, calidad o cantidad de las cosas que le entregue en virtud de contrato o de un título obligatorio;\n\n2. El que con perjuicio de otro se negare a restituir o no restituyere a su debido tiempo, dinero, efectos o cualquier otra cosa mueble que se le haya dado en depósito, comisión, administración u otro título que produzca obligación de entregar o devolver;\n\n3. El que defraudare, haciendo suscribir con engaño algún documento;\n\n4. El que cometiere alguna defraudación abusando de firma en blanco, extendiendo con ella algún documento en perjuicio del mismo que la dio o de tercero;\n\n5. El dueño de una cosa mueble que la sustrajere de quien la tenga legítimamente en su poder, con perjuicio del mismo o de tercero;\n\n6. El que otorgare en perjuicio de otro, un contrato simulado o falsos recibidos;\n\n7. El que, por disposición de la ley, de la autoridad o por un acto jurídico, tuviera a su cargo el manejo, la administración o el cuidado de bienes o intereses pecuniarios ajenos, y con el fin de procurar para sí o para un tercero un lucro indebido o para causar daño, violando sus deberes perjudicare los intereses confiados u obligare abusivamente al titular de éstos;\n\n8. El que cometiere defraudación, substituyendo, ocultando o mutilando algún proceso, expediente, documento u otro papel importante;\n\n9. El que vendiere o gravare como bienes libres, los que fueren litigiosos o estuvieren embargados o gravados; y el que vendiere, gravare o arrendare como propios, bienes ajenos;\n\n10. El que defraudare, con pretexto de supuesta remuneración a los jueces u otros empleados públicos;\n\n11. El que tornare imposible, incierto o litigioso el derecho sobre un bien o el cumplimiento, en las condiciones pactadas, de una obligación referente al mismo, sea mediante cualquier acto jurídico relativo al mismo bien, aunque no importe enajenación, sea removiéndolo, reteniéndolo, ocultándolo o dañándolo, siempre que el derecho o la obligación hubieran sido acordados a otro por un precio o como garantía;\n\n12. El titular fiduciario, el administrador de fondos comunes de inversión o el dador de un contrato de leasing, que en beneficio propio o de un tercero dispusiere, gravare o perjudicare los bienes y de esta manera defraudare los derechos de los cocontratantes; (Inciso incorporado por art. 82 de la Ley N° 24.441 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=812] B.O. 16/1/1995)\n\n13. El que encontrándose autorizado para ejecutar extrajudicialmente un inmueble lo ejecutara en perjuicio del deudor, a sabiendas de que el mismo no se encuentra en mora, o maliciosamente omitiera cumplimentar los recaudos establecidos para la subasta mediante dicho procedimiento especial; (Inciso incorporado por art. 82 de la Ley N° 24.441 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=812] B.O. 16/1/1995)\n\n14. El tenedor de letras hipotecarias que en perjuicio del deudor o de terceros omitiera consignar en el título los pagos recibidos. (Inciso incorporado por art. 82 de la Ley N° 24.441 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=812] B.O. 16/1/1995)\n\n15. El que defraudare mediante el uso de una tarjeta de compra, crédito o débito, cuando la misma hubiere sido falsificada, adulterada, hurtada, robada, perdida u obtenida del legítimo emisor mediante ardid o engaño, o mediante el uso no autorizado de sus datos, aunque lo hiciere por medio de una operación automática. (Inciso incorporado por art. 1° de la Ley N° 25.930 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=98807] B.O. 21/9/2004)\n\n16. El que defraudare a otro mediante cualquier técnica de manipulación informática que altere el normal funcionamiento de un sistema informático o la transmisión de datos. (Inciso incorporado por art. 9° de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 173. Помимо общего правила предыдущей статьи, особыми случаями мошенничества считаются и наказываются той же санкцией:\n\n1. Обман другого относительно вещества, качества или количества вещей, которые передаются ему по договору или обязательственному титулу.\n\n2. Отказ вернуть или несвоевременный возврат, во вред другому, денег, ценных вещей или любой иной движимой вещи, переданной на хранение, комиссию, управление или по другому основанию, создающему обязанность передать или вернуть.\n\n3. Обман, при котором человека заставляют подписать документ.\n\n4. Обман с использованием подписи на пустом бланке: заполнение документа во вред тому, кто дал подпись, или третьему лицу.\n\n5. Собственник движимой вещи, который забирает ее у того, кто законно владеет ею, во вред ему или третьему лицу.\n\n6. Заключение во вред другому притворного договора или выдача ложных расписок.\n\n7. Лицо, которое по закону, решению власти или юридическому акту управляет, администрирует или хранит чужое имущество или денежные интересы и, ради незаконной выгоды для себя или третьего лица либо для причинения вреда, нарушая обязанности, повреждает доверенные интересы или злоупотребительно обязывает их владельца.\n\n8. Обман путем замены, сокрытия или повреждения судебного процесса, дела, документа или иной важной бумаги.\n\n9. Продажа или обременение как свободного имущества того, что находится в споре, под арестом или обременением; а также продажа, обременение или аренда чужого имущества как собственного.\n\n10. Обман под предлогом предполагаемого вознаграждения судьям или другим публичным служащим.\n\n11. Создание невозможности, неопределенности или спора о праве на имущество либо об исполнении согласованного обязательства, относящегося к нему, путем любого юридического акта об этом имуществе, даже без отчуждения, либо путем его перемещения, удержания, сокрытия или повреждения, если право или обязательство были предоставлены другому за цену или как гарантия.\n\n12. Фидуциарный собственник, управляющий паевыми инвестиционными фондами или лизингодатель, который в свою пользу или в пользу третьего лица распоряжается, обременяет или повреждает имущество и таким образом обманывает права контрагентов. Пункт включен статьей 82 Закона N 24.441, B.O. 16/1/1995.\n\n13. Лицо, уполномоченное внесудебно реализовать недвижимость, которое реализует ее во вред должнику, зная, что должник не находится в просрочке, либо злонамеренно не выполняет требования, установленные для торгов по этой специальной процедуре. Пункт включен статьей 82 Закона N 24.441, B.O. 16/1/1995.\n\n14. Держатель ипотечных писем, который во вред должнику или третьим лицам не вносит в титул полученные платежи. Пункт включен статьей 82 Закона N 24.441, B.O. 16/1/1995.\n\n15. Обман другого с использованием карты покупок, кредитной или дебетовой карты, если она подделана, изменена, похищена, украдена, потеряна или получена от законного эмитента с помощью уловки или обмана, либо с использованием ее данных без разрешения, даже через автоматическую операцию. Пункт включен статьей 1 Закона N 25.930, B.O. 21/9/2004.\n\n16. Обман другого любой техникой компьютерной манипуляции, изменяющей нормальную работу информационной системы или передачу данных. Пункт включен статьей 9 Закона N 26.388, B.O. 25/6/2008.",
+        "simpleRu": "Статья 173 перечисляет особые виды мошенничества. Это обман в качестве или количестве товара, невозврат доверенных денег или вещей, подпись документа через обман, злоупотребление пустой подписью, продажа чужого или спорного имущества, обман с банковскими картами и компьютерными системами, а также вред чужому имуществу, которым человек обязан управлять честно. Наказание такое же, как в статье 172.",
+        "sourceTextSha256": "fd0d5ab411cf7feae30bd5446f9e6807185993dfde1d28b158892719efeadb54",
+        "sourceFingerprint": "sha256:fd0d5ab411cf7feae30bd5446f9e6807185993dfde1d28b158892719efeadb54",
+        "sourceSpan": {
+          "startLine": 1744,
+          "endLine": 1777
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-174-sufrira-prision-de-dos-a-seis-285",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 285,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo IV",
+          "ARTICULO 174. - Sufrirá prisión de dos a seis años:"
+        ],
+        "officialLabel": "ARTICULO 174. - Sufrirá prisión de dos a seis años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 174. - Sufrirá prisión de dos a seis años:\n\n1º. El que para procurarse a sí mismo o procurar a otro un provecho ilegal en perjuicio de un asegurador o de un dador de préstamo a la gruesa, incendiare o destruyere una cosa asegurada o una nave asegurada o cuya carga o flete estén asegurados o sobre la cual se haya efectuado un préstamo a la gruesa;\n\n2º El que abusare de las necesidades, pasiones o inexperiencia de un menor o de un incapaz, declarado o no declarado tal, para hacerle firmar un documento que importe cualquier efecto jurídico, en daño de él o de otro, aunque el acto sea civilmente nulo;\n\n3º. El que defraudare usando de pesas o medidas falsas;\n\n4º. El empresario o constructor de una obra cualquiera o el vendedor de materiales de construcción que cometiere, en la ejecución de la obra o en la entrega de los materiales, un acto fraudulento capaz de poner en peligro la seguridad de las personas, de los bienes o del Estado;\n\n5º. El que cometiere fraude en perjuicio de alguna administración pública.-\n\n6°.- El que maliciosamente afectare el normal desenvolvimiento de un establecimiento o explotación comercial, industrial, agropecuaria, minera o destinado a la prestación de servicios; destruyere, dañare, hiciere desaparecer, ocultare o fraudulentamente disminuyere el valor de materias primas, productos de cualquier naturaleza, máquinas, equipos u otros bienes de capital. (Inciso incorporado por art. 2° de la Ley N° 25.602 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=75212] B.O.20/6/2002)\n\nEn los casos de los tres incisos precedentes, el culpable, si fuere funcionario o empleado público, sufrirá además inhabilitación especial perpetua. (Párrafo sustituido por art. 3° de la Ley N° 25.602 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=75212] B.O.20/6/2002)\n\n(Nota Infoleg: Por art. 4° de la Ley N° 25.602 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=75212] B.O. 20/6/2002 se incorporó el art. 174 bis pero fue vetado por Decreto N° 1059/2002 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=75213] B.O. 20/6/2002)\n",
+        "fullTranslationRu": "СТАТЬЯ 174. Лишением свободы от двух до шести лет наказываются:\n\n1. Тот, кто ради незаконной выгоды для себя или другого во вред страховщику или кредитору по морскому займу поджигает или уничтожает застрахованную вещь, застрахованное судно, судно с застрахованным грузом или фрахтом либо судно, по которому был выдан морской заем.\n\n2. Тот, кто злоупотребляет нуждой, страстями или неопытностью несовершеннолетнего или недееспособного, признанного или не признанного таковым, чтобы заставить его подписать документ с юридическим эффектом во вред ему или другому, даже если акт гражданско-правово ничтожен.\n\n3. Тот, кто обманывает, используя ложные весы или меры.\n\n4. Предприниматель или строитель любой работы либо продавец строительных материалов, который при выполнении работы или передаче материалов совершает мошенническое действие, способное поставить под угрозу безопасность людей, имущества или государства.\n\n5. Тот, кто совершает мошенничество во вред какой-либо публичной администрации.\n\n6. Тот, кто злонамеренно нарушает нормальную деятельность торгового, промышленного, сельскохозяйственного, горнодобывающего предприятия или объекта оказания услуг; уничтожает, повреждает, заставляет исчезнуть, скрывает или мошеннически уменьшает стоимость сырья, продуктов любого вида, машин, оборудования или других капитальных благ. Пункт включен статьей 2 Закона N 25.602, B.O. 20/6/2002.\n\nВ случаях трех предыдущих пунктов виновный, если он публичное должностное лицо или служащий, дополнительно получает пожизненное специальное лишение права занимать соответствующую должность или деятельность. Абзац заменен статьей 3 Закона N 25.602, B.O. 20/6/2002.\n\nПримечание Infoleg: статьей 4 Закона N 25.602 был включен art. 174 bis, но он был ветирован Декретом N 1059/2002, B.O. 20/6/2002.",
+        "simpleRu": "Статья 174 наказывает более тяжкие виды имущественного обмана: страховое мошенничество, использование слабости несовершеннолетнего или недееспособного, фальшивые меры и весы, опасный обман при строительстве, обман государства и злонамеренное разрушение работы предприятия. Обычно наказание - от 2 до 6 лет. Для чиновника или служащего в последних случаях добавляется пожизненный специальный запрет.",
+        "sourceTextSha256": "88c701c2058e9c23b4493f399416b3be5cfebc78552937b7931e3b09433581af",
+        "sourceFingerprint": "sha256:88c701c2058e9c23b4493f399416b3be5cfebc78552937b7931e3b09433581af",
+        "sourceSpan": {
+          "startLine": 1778,
+          "endLine": 1795
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-175-sera-reprimido-con-multa-de-mil-286",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 286,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo IV",
+          "ARTICULO 175. - Será reprimido con multa de mil pesos a quince mil pesos:"
+        ],
+        "officialLabel": "ARTICULO 175. - Será reprimido con multa de mil pesos a quince mil pesos:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 175. - Será reprimido con multa de mil pesos a quince mil pesos:\n\n1º. El que encontrare perdida una cosa que no le pertenezca o un tesoro y se apropiare la cosa o la parte del tesoro correspondiente al propietario del suelo, sin observar las prescripciones del Código Civil;\n\n2º. El que se apropiare una cosa ajena, en cuya tenencia hubiere entrado a consecuencia de un error o de un caso fortuito;\n\n3º. El que vendiere la prenda sobre que prestó dinero o se la apropiare o dispusiere de ella, sin las formalidades legales;\n\n4º. El acreedor que a sabiendas exija o acepte de su deudor, a título de documento, crédito o garantía por una obligación no vencida, un cheque o giro de fecha posterior o en blanco.-\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 175. Штрафом от одной тысячи песо до пятнадцати тысяч песо наказываются:\n\n1. Тот, кто нашел потерянную чужую вещь или клад и присвоил вещь либо часть клада, причитающуюся собственнику земли, не соблюдая предписания Гражданского кодекса.\n\n2. Тот, кто присвоил чужую вещь, во владение которой вступил из-за ошибки или случайного обстоятельства.\n\n3. Тот, кто продал заложенную вещь, под которую дал деньги, присвоил ее или распорядился ею без законных формальностей.\n\n4. Кредитор, который сознательно требует или принимает от должника в качестве документа, кредита или гарантии по еще не наступившему обязательству чек или перевод с будущей датой либо без даты.\n\nПримечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, B.O. 29/12/1993.",
+        "simpleRu": "Здесь перечислены менее тяжкие случаи присвоения или злоупотребления: присвоить найденную вещь, оставить себе чужую вещь, полученную по ошибке, незаконно распорядиться залогом или взять чек с будущей датой по еще не наступившему долгу. Наказание - штраф от 1 000 до 15 000 песо.",
+        "sourceTextSha256": "acdc499cd223c6df2d4a64d82ccf83416a3f84a9a898e4e05202ef396783147a",
+        "sourceFingerprint": "sha256:acdc499cd223c6df2d4a64d82ccf83416a3f84a9a898e4e05202ef396783147a",
+        "sourceSpan": {
+          "startLine": 1796,
+          "endLine": 1807
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iv-bis-287",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 287,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo IV bis"
+        ],
+        "officialLabel": "Capítulo IV bis",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo IV bis\n\nUsura\n",
+        "fullTranslationRu": "Глава IV bis\n\nРостовщичество",
+        "simpleRu": "Эта глава о ростовщичестве: когда на чужой нужде берут явно чрезмерную денежную выгоду.",
+        "sourceTextSha256": "912f1d87c586bc51b5781bf7c98c469592252f427da4bb2072a7120ace508e7f",
+        "sourceFingerprint": "sha256:912f1d87c586bc51b5781bf7c98c469592252f427da4bb2072a7120ace508e7f",
+        "sourceSpan": {
+          "startLine": 1808,
+          "endLine": 1811
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-175-bis-el-que-aprovechando-la-necesidad-288",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 288,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo IV bis",
+          "ARTICULO 175 bis. - El que, aprovechando la necesidad, la ligereza o la inexperiencia de una persona le hiciere dar o prometer, en cualqu..."
+        ],
+        "officialLabel": "ARTICULO 175 bis. - El que, aprovechando la necesidad, la ligereza o la inexperiencia de una persona le hiciere dar o prometer, en cualqu...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 175 bis. - El que, aprovechando la necesidad, la ligereza o la inexperiencia de una persona le hiciere dar o prometer, en cualquier forma, para sí o para otro, intereses u otras ventajas pecuniarias evidentemente desproporcionadas con su prestación, u otorgar recaudos o garantías de carácter extorsivo, será reprimido con prisión de uno a tres años y con multa de pesos tres mil a pesos treinta mil.\n\nLa misma pena será aplicable al que a sabiendas adquiriere, transfiriere o hiciere valer un crédito usurario.\n\nLa pena de prisión será de tres a seis años, y la multa de pesos quince mil a pesos ciento cincuenta mil, si el autor fuere prestamista o comisionista usurario profesional o habitual.\n\n(Nota Infoleg: multa actualizada por art. 1° de la Ley N° 24.286 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=684] B.O. 29/12/1993)\n",
+        "fullTranslationRu": "СТАТЬЯ 175 bis. Тот, кто, используя нужду, легкомыслие или неопытность человека, заставляет его дать или обещать в любой форме для себя или другого проценты либо иные денежные выгоды, явно несоразмерные со своим предоставлением, либо выдать документы или гарантии вымогательского характера, наказывается лишением свободы от одного до трех лет и штрафом от трех тысяч до тридцати тысяч песо.\n\nТо же наказание применяется к тому, кто сознательно приобретает, передает или предъявляет к исполнению ростовщический кредит.\n\nЛишение свободы составляет от трех до шести лет, а штраф - от пятнадцати тысяч до ста пятидесяти тысяч песо, если автор является профессиональным или обычным ростовщическим кредитором либо комиссионером.\n\nПримечание Infoleg: штраф обновлен статьей 1 Закона N 24.286, B.O. 29/12/1993.",
+        "simpleRu": "Ростовщичество - это когда человек пользуется нуждой или неопытностью другого и требует явно чрезмерные проценты, выгоду или жесткие гарантии. Наказание - от 1 до 3 лет и штраф. Если это профессиональный или постоянный ростовщик, наказание - от 3 до 6 лет и больший штраф.",
+        "sourceTextSha256": "ed78238801c7456c49cbf72d44613b46877793f9e547d99f780530d07d22db7b",
+        "sourceFingerprint": "sha256:ed78238801c7456c49cbf72d44613b46877793f9e547d99f780530d07d22db7b",
+        "sourceSpan": {
+          "startLine": 1812,
+          "endLine": 1819
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-v-289",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 289,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo V"
+        ],
+        "officialLabel": "Capítulo V",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo V\n\nQuebrados y otros deudores punibles\n",
+        "fullTranslationRu": "Глава V\n\nБанкроты и другие наказуемые должники",
+        "simpleRu": "Эта глава о банкротстве и должниках, которые вредят кредиторам незаконными действиями.",
+        "sourceTextSha256": "1843fd97d11d56c8dd3a8fc575a36bab0fa89e9641da525fa738c0d92e82d25d",
+        "sourceFingerprint": "sha256:1843fd97d11d56c8dd3a8fc575a36bab0fa89e9641da525fa738c0d92e82d25d",
+        "sourceSpan": {
+          "startLine": 1820,
+          "endLine": 1823
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-176-sera-reprimido-como-quebrado-fraudulento-con-290",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 290,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo V",
+          "ARTICULO 176. - Será reprimido, como quebrado fraudulento, con prisión de dos a seis años e inhabilitación especial de tres a diez años, ..."
+        ],
+        "officialLabel": "ARTICULO 176. - Será reprimido, como quebrado fraudulento, con prisión de dos a seis años e inhabilitación especial de tres a diez años, ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 176. - Será reprimido, como quebrado fraudulento, con prisión de dos a seis años e inhabilitación especial de tres a diez años, el comerciante declarado en quiebra que, en fraude de sus acreedores, hubiere incurrido en algunos de los hechos siguientes:\n\n1º Simular o suponer deudas, enajenaciones, gastos o pérdidas;\n\n2º No justificar la salida o existencia de bienes que debiera tener; substraer u ocultar alguna cosa que correspondiere a la masa;\n\n3º Conceder ventajas indebidas a cualquier acreedor.\n",
+        "fullTranslationRu": "СТАТЬЯ 176. Коммерсант, признанный банкротом, который в мошенничество против своих кредиторов совершил один из следующих фактов, наказывается как мошеннический банкрот лишением свободы от двух до шести лет и специальным лишением права от трех до десяти лет:\n\n1. Имитировал или выдумывал долги, отчуждения, расходы или убытки.\n\n2. Не обосновал выбытие или наличие имущества, которое должен был иметь; похитил или скрыл вещь, входящую в конкурсную массу.\n\n3. Предоставил незаконные преимущества какому-либо кредитору.",
+        "simpleRu": "Если банкрот-коммерсант обманывает кредиторов: выдумывает долги или убытки, скрывает имущество или дает одному кредитору незаконное преимущество, ему грозит от 2 до 6 лет и специальный запрет от 3 до 10 лет.",
+        "sourceTextSha256": "16cfea5cf5b04f96c0ee0157b214d1c53faf6a8fc24566edc5b05ba17b83c3aa",
+        "sourceFingerprint": "sha256:16cfea5cf5b04f96c0ee0157b214d1c53faf6a8fc24566edc5b05ba17b83c3aa",
+        "sourceSpan": {
+          "startLine": 1824,
+          "endLine": 1831
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-177-sera-reprimido-como-quebrado-culpable-con-291",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 291,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo V",
+          "ARTICULO 177. - Será reprimido, como quebrado culpable, con prisión de un mes a un año e inhabilitación especial de dos a cinco años, el ..."
+        ],
+        "officialLabel": "ARTICULO 177. - Será reprimido, como quebrado culpable, con prisión de un mes a un año e inhabilitación especial de dos a cinco años, el ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 177. - Será reprimido, como quebrado culpable, con prisión de un mes a un año e inhabilitación especial de dos a cinco años, el comerciante que hubiere causado su propia quiebra y perjudicado a sus acreedores, por sus gastos excesivos con relación al capital y al número de personas de su familia, especulaciones ruinosas, juego, abandono de sus negocios o cualquier otro acto de negligencia o imprudencia manifiesta.\n",
+        "fullTranslationRu": "СТАТЬЯ 177. Коммерсант, который вызвал собственное банкротство и причинил вред кредиторам чрезмерными расходами относительно капитала и числа членов семьи, разорительными спекуляциями, игрой, оставлением дел или любым другим явно небрежным либо imprudent действием, наказывается как виновный банкрот лишением свободы от одного месяца до одного года и специальным лишением права от двух до пяти лет.",
+        "simpleRu": "Если коммерсант сам довел себя до банкротства явной небрежностью, азартной игрой, рискованными спекуляциями, чрезмерными расходами или забросил дела и этим навредил кредиторам, наказание - от 1 месяца до 1 года и запрет от 2 до 5 лет.",
+        "sourceTextSha256": "ea218262d1a16e02db2ac4fb90883344bc2e1c07c24780a5fbd6e41a5f93c5d2",
+        "sourceFingerprint": "sha256:ea218262d1a16e02db2ac4fb90883344bc2e1c07c24780a5fbd6e41a5f93c5d2",
+        "sourceSpan": {
+          "startLine": 1832,
+          "endLine": 1833
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-178-cuando-se-tratare-de-la-quiebra-292",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 292,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo V",
+          "ARTICULO 178. - Cuando se tratare de la quiebra de una sociedad comercial o de una persona jurídica que ejerza el comercio, o se hubiere ..."
+        ],
+        "officialLabel": "ARTICULO 178. - Cuando se tratare de la quiebra de una sociedad comercial o de una persona jurídica que ejerza el comercio, o se hubiere ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 178. - Cuando se tratare de la quiebra de una sociedad comercial o de una persona jurídica que ejerza el comercio, o se hubiere abierto el procedimiento de liquidación sin quiebra de un banco u otra entidad financiera, todo director, síndico, administrador, miembro de la comisión fiscalizadora o gerente de la sociedad o establecimiento fallido o del banco o entidad financiera en liquidación sin quiebra, o contador o tenedor de libros de los mismos, que hubiere cooperado a la ejecución de alguno de los actos a que se refieren los artículos anteriores, será reprimido con la pena de la quiebra fraudulenta o culpable, en su caso. Con la misma pena será reprimido el miembro del consejo de administración o directivo, síndico, miembro de la junta fiscalizadora o de vigilancia, o gerente, tratándose de una sociedad cooperativa o mutual.\n",
+        "fullTranslationRu": "СТАТЬЯ 178. Если речь идет о банкротстве коммерческого общества или юридического лица, ведущего торговлю, либо открыта процедура ликвидации без банкротства банка или иной финансовой организации, любой директор, синдик, администратор, член ревизионной комиссии или управляющий общества, предприятия, банка или финансовой организации в ликвидации, а также их бухгалтер или книговод, который содействовал совершению действий, указанных в предыдущих статьях, наказывается санкцией за мошенническое или виновное банкротство соответственно. Такое же наказание применяется к члену административного или руководящего совета, синдику, члену ревизионного или наблюдательного органа либо управляющему кооперативного или взаимного общества.",
+        "simpleRu": "Если незаконные действия при банкротстве совершены через компанию, банк, финансовую организацию, кооператив или общество взаимопомощи, отвечают руководители, контролеры, управляющие, бухгалтеры и другие участники, которые помогали этим действиям. Наказание такое же, как за соответствующее банкротство.",
+        "sourceTextSha256": "5277150be625f80f571d4762588a2037b0c0d7fd8b732da3960fa911b4c94b6a",
+        "sourceFingerprint": "sha256:5277150be625f80f571d4762588a2037b0c0d7fd8b732da3960fa911b4c94b6a",
+        "sourceSpan": {
+          "startLine": 1834,
+          "endLine": 1835
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-179-sera-reprimido-con-prision-de-uno-293",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 293,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo V",
+          "ARTICULO 179. - Será reprimido con prisión de uno a cuatro años, el deudor no comerciante concursado civilmente que, para defraudar a sus..."
+        ],
+        "officialLabel": "ARTICULO 179. - Será reprimido con prisión de uno a cuatro años, el deudor no comerciante concursado civilmente que, para defraudar a sus...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 179. - Será reprimido con prisión de uno a cuatro años, el deudor no comerciante concursado civilmente que, para defraudar a sus acreedores, hubiere cometido o cometiere alguno de los actos mencionados en el artículo 176.\n\nSerá reprimido con prisión de seis meses a tres años, el que durante el curso de un proceso o después de una sentencia condenatoria, maliciosamente destruyere, inutilizare, dañare, ocultare o hiciere desaparecer bienes de su patrimonio o fraudulentamente disminuyere su valor, y de esta manera frustrare, en todo o en parte, el cumplimiento de las correspondientes obligaciones civiles.\n",
+        "fullTranslationRu": "СТАТЬЯ 179. Должник, не являющийся коммерсантом и находящийся в гражданском конкурсе, который для обмана кредиторов совершил или совершает один из актов статьи 176, наказывается лишением свободы от одного до четырех лет.\n\nЛишением свободы от шести месяцев до трех лет наказывается тот, кто во время процесса или после обвинительного решения злонамеренно уничтожает, делает негодным, повреждает, скрывает или заставляет исчезнуть имущество своего состояния либо мошеннически уменьшает его стоимость и таким образом полностью или частично срывает исполнение соответствующих гражданских обязательств.",
+        "simpleRu": "Если обычный должник, не коммерсант, обманывает кредиторов действиями из статьи 176, ему грозит от 1 до 4 лет. Если человек во время суда или после приговора прячет, портит или обесценивает свое имущество, чтобы не выполнить гражданские обязанности, наказание - от 6 месяцев до 3 лет.",
+        "sourceTextSha256": "d4c0cae17b9eda908d9065bf1ddf35cfbe43cf64716a03eff993a99c34c10ddb",
+        "sourceFingerprint": "sha256:d4c0cae17b9eda908d9065bf1ddf35cfbe43cf64716a03eff993a99c34c10ddb",
+        "sourceSpan": {
+          "startLine": 1836,
+          "endLine": 1839
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-180-sera-reprimido-con-prision-de-un-294",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 294,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo V",
+          "ARTICULO 180. - Será reprimido con prisión de un mes a un año, el acreedor que consintiere en un concordato, convenio o transacción judic..."
+        ],
+        "officialLabel": "ARTICULO 180. - Será reprimido con prisión de un mes a un año, el acreedor que consintiere en un concordato, convenio o transacción judic...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 180. - Será reprimido con prisión de un mes a un año, el acreedor que consintiere en un concordato, convenio o transacción judicial, en virtud de una connivencia con el deudor o con un tercero, por la cual hubiere estipulado ventajas especiales para el caso de aceptación del concordato, convenio o transacción.\n\nLa misma pena sufrirá, en su caso, todo deudor o director, gerente o administrador de una sociedad anónima o cooperativa o de una persona jurídica de otra índole, en estado de quiebra o de concurso judicial de bienes, que concluyere un convenio de este género.\n",
+        "fullTranslationRu": "СТАТЬЯ 180. Лишением свободы от одного месяца до одного года наказывается кредитор, который соглашается на мировое соглашение, договоренность или судебную сделку из-за сговора с должником или третьим лицом, по которому для случая принятия такого соглашения были оговорены специальные преимущества.\n\nТо же наказание, когда применимо, несет любой должник, директор, управляющий или администратор акционерного или кооперативного общества либо юридического лица иного вида, находящегося в банкротстве или судебном конкурсе имущества, если он заключает соглашение такого рода.",
+        "simpleRu": "Кредитору нельзя тайно договариваться с должником о личной выгоде за согласие на соглашение в банкротстве или конкурсе. За это - от 1 месяца до 1 года. Так же отвечает должник или руководитель организации, который заключает такую сделку.",
+        "sourceTextSha256": "685db25c471b659693fd416a8351c289738bd88577cd565658c290d4aae43842",
+        "sourceFingerprint": "sha256:685db25c471b659693fd416a8351c289738bd88577cd565658c290d4aae43842",
+        "sourceSpan": {
+          "startLine": 1840,
+          "endLine": 1843
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-vi-295",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 295,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo VI"
+        ],
+        "officialLabel": "Capítulo VI",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo VI\n\nUsurpación\n",
+        "fullTranslationRu": "Глава VI\n\nСамовольное завладение недвижимостью и нарушение владения",
+        "simpleRu": "Эта глава о незаконном захвате недвижимости, границ или прав на землю и воду.",
+        "sourceTextSha256": "be22d7489bd6ea8914af990f73f73fcb96e5aec282b33ed5d881c568496d90d5",
+        "sourceFingerprint": "sha256:be22d7489bd6ea8914af990f73f73fcb96e5aec282b33ed5d881c568496d90d5",
+        "sourceSpan": {
+          "startLine": 1844,
+          "endLine": 1847
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-181-sera-reprimido-con-prision-de-seis-296",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 296,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo VI",
+          "ARTICULO 181.- Será reprimido con prisión de seis meses a tres años:"
+        ],
+        "officialLabel": "ARTICULO 181.- Será reprimido con prisión de seis meses a tres años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 181.- Será reprimido con prisión de seis meses a tres años:\n\n1º el que por violencia, amenazas, engaños, abusos de confianza o clandestinidad despojare a otro, total o parcialmente, de la posesión o tenencia de un inmueble o del ejercicio de un derecho real constituido sobre él, sea que el despojo se produzca invadiendo el inmueble, manteniéndose en él o expulsando a los ocupantes;\n\n2º el que, para apoderarse de todo o parte de un inmueble, destruyere o alterare los términos o límites del mismo;\n\n3º el que, con violencias o amenazas, turbare la posesión o tenencia de un inmueble.\n\n(Artículo sustituido por art. 2° Ley N° 24.454 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=14901] B.O. 7/3/1995)\n",
+        "fullTranslationRu": "СТАТЬЯ 181. Лишением свободы от шести месяцев до трех лет наказывается:\n\n1. Тот, кто насилием, угрозами, обманом, злоупотреблением доверием или тайно полностью или частично лишает другого владения или держания недвижимого имущества либо осуществления вещного права на него, независимо от того, происходит ли лишение путем вторжения, оставания в объекте или изгнания занимавших его лиц.\n\n2. Тот, кто для завладения всем недвижимым имуществом или его частью уничтожает или изменяет его межевые знаки или границы.\n\n3. Тот, кто насилием или угрозами нарушает владение или держание недвижимого имущества.\n\nСтатья заменена статьей 2 Закона N 24.454, B.O. 7/3/1995.",
+        "simpleRu": "Нельзя силой, угрозами, обманом или тайно захватывать чужую недвижимость, оставаться там без права, выгонять людей, менять границы участка или мешать владению. Наказание - от 6 месяцев до 3 лет.",
+        "sourceTextSha256": "9dbe30bbb1ebb3767b1a9de8e56287e08d876d3022d50622b34e8f67770a0dd3",
+        "sourceFingerprint": "sha256:9dbe30bbb1ebb3767b1a9de8e56287e08d876d3022d50622b34e8f67770a0dd3",
+        "sourceSpan": {
+          "startLine": 1848,
+          "endLine": 1857
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-182-sera-reprimido-con-prision-de-quince-297",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 297,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo VI",
+          "ARTICULO 182. - Será reprimido con prisión de quince días a un año:"
+        ],
+        "officialLabel": "ARTICULO 182. - Será reprimido con prisión de quince días a un año:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 182. - Será reprimido con prisión de quince días a un año:\n\n1º El que ilícitamente y con el propósito de causar perjuicio a otro sacare aguas de represas, estanques u otros depósitos, ríos, arroyos, fuentes, canales o acueductos o las sacare en mayor cantidad que aquella a que tenga derecho;\n\n2º El que estorbare el ejercicio de los derechos que un tercero tuviere sobre dichas aguas;\n\n3º El que ilícitamente y con el propósito de causar perjuicio a otro represare, desviare o detuviere las aguas de los ríos, arroyos, canales o fuentes o usurpare un derecho cualquiera referente al curso de ellas.\n\nLa pena se aumentará hasta dos años, si para cometer los delitos expresados en los números anteriores, se rompieren o alteraren diques, esclusas, compuertas u otras obras semejantes hechas en los ríos, arroyos, fuentes, depósitos, canales o acueductos.\n",
+        "fullTranslationRu": "СТАТЬЯ 182. Лишением свободы от пятнадцати дней до одного года наказывается:\n\n1. Тот, кто незаконно и с целью причинить вред другому отводит воду из плотин, прудов, других водоемов, рек, ручьев, источников, каналов или акведуков либо берет ее в большем количестве, чем имеет право.\n\n2. Тот, кто мешает осуществлению прав третьего лица на эти воды.\n\n3. Тот, кто незаконно и с целью причинить вред другому запруживает, отводит или задерживает воды рек, ручьев, каналов или источников либо узурпирует любое право, относящееся к их течению.\n\nНаказание увеличивается до двух лет, если для совершения указанных преступлений сломаны или изменены дамбы, шлюзы, затворы или другие похожие сооружения на реках, ручьях, источниках, водоемах, каналах или акведуках.",
+        "simpleRu": "Нельзя незаконно забирать чужую воду, брать больше разрешенного, мешать чужим правам на воду или менять течение воды, чтобы навредить. Обычно наказание - от 15 дней до 1 года, а если ломают дамбы, шлюзы или похожие сооружения, может быть до 2 лет.",
+        "sourceTextSha256": "824a15ecc7b27e896a9247523f440375dcb358cafa53d4bcf4b724ad11e8a246",
+        "sourceFingerprint": "sha256:824a15ecc7b27e896a9247523f440375dcb358cafa53d4bcf4b724ad11e8a246",
+        "sourceSpan": {
+          "startLine": 1858,
+          "endLine": 1867
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-vii-298",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 298,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo VII"
+        ],
+        "officialLabel": "Capítulo VII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo VII\n\nDaños\n",
+        "fullTranslationRu": "Глава VII\n\nПовреждения имущества",
+        "simpleRu": "Эта глава о повреждении чужого имущества, животных и компьютерных данных.",
+        "sourceTextSha256": "c6db3b45e386845be7843a06f52a63330e7512ce1b3ade8c27445afdca411c7c",
+        "sourceFingerprint": "sha256:c6db3b45e386845be7843a06f52a63330e7512ce1b3ade8c27445afdca411c7c",
+        "sourceSpan": {
+          "startLine": 1868,
+          "endLine": 1871
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-183-sera-reprimido-con-prision-de-quince-299",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 299,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo VII",
+          "ARTICULO 183. - Será reprimido con prisión de quince días a un año, el que destruyere, inutilizare, hiciere desaparecer o de cualquier mo..."
+        ],
+        "officialLabel": "ARTICULO 183. - Será reprimido con prisión de quince días a un año, el que destruyere, inutilizare, hiciere desaparecer o de cualquier mo...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 183. - Será reprimido con prisión de quince días a un año, el que destruyere, inutilizare, hiciere desaparecer o de cualquier modo dañare una cosa mueble o inmueble o un animal, total o parcialmente ajeno, siempre que el hecho no constituya otro delito más severamente penado.\n\nEn la misma pena incurrirá el que alterare, destruyere o inutilizare datos, documentos, programas o sistemas informáticos; o vendiere, distribuyere, hiciere circular o introdujere en un sistema informático, cualquier programa destinado a causar daños. (Párrafo incorporado por art. 10 de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 183. Лишением свободы от пятнадцати дней до одного года наказывается тот, кто уничтожает, делает негодной, заставляет исчезнуть или любым способом повреждает движимую или недвижимую вещь либо животное, полностью или частично чужое, если деяние не образует другое преступление с более строгим наказанием.\n\nТакое же наказание несет тот, кто изменяет, уничтожает или делает негодными данные, документы, программы или информационные системы; либо продает, распространяет, вводит в оборот или помещает в информационную систему любую программу, предназначенную причинять вред. Абзац включен статьей 10 Закона N 26.388, B.O. 25/6/2008.",
+        "simpleRu": "За порчу чужих вещей, недвижимости или животных дают от 15 дней до 1 года, если это не более тяжкое преступление. То же касается вреда компьютерным данным, документам, программам или системам и распространения вредной программы.",
+        "sourceTextSha256": "fe3c9de1cc2c4d7170895624d18852243fe87b9fd301cd1ff306f4569b3b2e65",
+        "sourceFingerprint": "sha256:fe3c9de1cc2c4d7170895624d18852243fe87b9fd301cd1ff306f4569b3b2e65",
+        "sourceSpan": {
+          "startLine": 1872,
+          "endLine": 1875
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-184-la-pena-sera-de-tres-3-300",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 300,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo VII",
+          "ARTICULO 184. - La pena será de tres (3) meses a cuatro (4) años de prisión, si mediare cualquiera de las circunstancias siguientes:"
+        ],
+        "officialLabel": "ARTICULO 184. - La pena será de tres (3) meses a cuatro (4) años de prisión, si mediare cualquiera de las circunstancias siguientes:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 184. - La pena será de tres (3) meses a cuatro (4) años de prisión, si mediare cualquiera de las circunstancias siguientes:\n\n1. Ejecutar el hecho con el fin de impedir el libre ejercicio de la autoridad o en venganza de sus determinaciones;\n\n2. Producir infección o contagio en aves u otros animales domésticos;\n\n3. Emplear substancias venenosas o corrosivas;\n\n4. Cometer el delito en despoblado y en banda;\n\n5. Ejecutarlo en archivos, registros, bibliotecas, museos o en puentes, caminos, paseos u otros bienes de uso público; o en tumbas, signos conmemorativos, monumentos, estatuas, cuadros u otros objetos de arte colocados en edificios o lugares públicos; o en datos, documentos, programas o sistemas informáticos públicos;\n\n6. Ejecutarlo en sistemas informáticos destinados a la prestación de servicios de salud, de comunicaciones, de provisión o transporte de energía, de medios de transporte u otro servicio público.\n\n(Artículo sustituido por art. 11 de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 184. Наказание составляет от трех (3) месяцев до четырех (4) лет лишения свободы, если есть любое из следующих обстоятельств:\n\n1. Деяние совершено, чтобы помешать свободному осуществлению власти или из мести за ее решения.\n\n2. Вызвано заражение или заболевание птиц либо других домашних животных.\n\n3. Использованы ядовитые или едкие вещества.\n\n4. Преступление совершено в безлюдном месте и группой.\n\n5. Деяние совершено в архивах, реестрах, библиотеках, музеях, на мостах, дорогах, прогулочных местах или других объектах общественного пользования; либо на могилах, памятных знаках, монументах, статуях, картинах или других предметах искусства, находящихся в общественных зданиях или местах; либо в публичных данных, документах, программах или информационных системах.\n\n6. Деяние совершено в информационных системах, предназначенных для оказания услуг здравоохранения, связи, снабжения или транспорта энергии, транспорта либо другого публичного сервиса.\n\nСтатья заменена статьей 11 Закона N 26.388, B.O. 25/6/2008.",
+        "simpleRu": "За повреждение имущества наказание выше - от 3 месяцев до 4 лет, если вредят власти из мести, заражают животных, используют яд или едкие вещества, действуют группой в безлюдном месте, портят общественные объекты, памятники, архивы, музеи или важные компьютерные системы, например для здоровья, связи, энергии или транспорта.",
+        "sourceTextSha256": "999ea288f160b5053a77381c834a6e58437e4b5f2a1bcd10cab9e36e6a77373f",
+        "sourceFingerprint": "sha256:999ea288f160b5053a77381c834a6e58437e4b5f2a1bcd10cab9e36e6a77373f",
+        "sourceSpan": {
+          "startLine": 1876,
+          "endLine": 1891
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-viii-301",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 301,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo VIII"
+        ],
+        "officialLabel": "Capítulo VIII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo VIII\n\nDisposiciones generales\n",
+        "fullTranslationRu": "Глава VIII\n\nОбщие положения",
+        "simpleRu": "Это общие правила для некоторых преступлений против собственности.",
+        "sourceTextSha256": "85ee54f3775b59ba4de9e7ebf7e1af17da5f42df7d65f6491a104cc3a8aed448",
+        "sourceFingerprint": "sha256:85ee54f3775b59ba4de9e7ebf7e1af17da5f42df7d65f6491a104cc3a8aed448",
+        "sourceSpan": {
+          "startLine": 1892,
+          "endLine": 1895
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-185-estan-exentos-de-responsabilidad-criminal-sin-302",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 302,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VI",
+          "Capítulo VIII",
+          "ARTICULO 185. - Están exentos de responsabilidad criminal, sin perjuicio de la civil, por los hurtos, defraudaciones o daños que recíproc..."
+        ],
+        "officialLabel": "ARTICULO 185. - Están exentos de responsabilidad criminal, sin perjuicio de la civil, por los hurtos, defraudaciones o daños que recíproc...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 185. - Están exentos de responsabilidad criminal, sin perjuicio de la civil, por los hurtos, defraudaciones o daños que recíprocamente se causaren:\n\n1. Los cónyuges, ascendientes, descendientes y afines en la línea recta;\n\n2. El consorte viudo, respecto de las cosas de la pertenencia de su difunto cónyuge, mientras no hayan pasado a poder de otro;\n\n3. Los hermanos y cuñados, si viviesen juntos.\n\nLa excepción establecida en el párrafo anterior, no es aplicable a los extraños que participen del delito.\n",
+        "fullTranslationRu": "СТАТЬЯ 185. От уголовной ответственности, без ущерба для гражданской ответственности, освобождаются за кражи, мошенничества или повреждения, которые взаимно причиняют:\n\n1. Супруги, восходящие родственники, нисходящие родственники и родственники по свойству по прямой линии.\n\n2. Овдовевший супруг в отношении вещей, принадлежавших умершему супругу, пока они не перешли во владение другого лица.\n\n3. Братья, сестры, шурины и золовки/свояки, если они жили вместе.\n\nИсключение, установленное в предыдущем абзаце, не применяется к посторонним лицам, участвующим в преступлении.",
+        "simpleRu": "Для некоторых близких родственников закон убирает уголовную ответственность за взаимные кражи, обманы или повреждения, но гражданская ответственность остается. Это не защищает посторонних участников преступления.",
+        "sourceTextSha256": "2024310b4ef235ca8b86c9cf94236b4c3c4352e736942b4474db518092963619",
+        "sourceFingerprint": "sha256:2024310b4ef235ca8b86c9cf94236b4c3c4352e736942b4474db518092963619",
+        "sourceSpan": {
+          "startLine": 1896,
+          "endLine": 1905
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-vii-303",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 303,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII"
+        ],
+        "officialLabel": "TITULO VII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VII\n\nDELITOS CONTRA LA SEGURIDAD PUBLICA\n",
+        "fullTranslationRu": "РАЗДЕЛ VII\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ОБЩЕСТВЕННОЙ БЕЗОПАСНОСТИ",
+        "simpleRu": "Дальше начинается раздел о преступлениях, которые опасны для общественной безопасности.",
+        "sourceTextSha256": "72a798002601f57f20d15cb1d7a1047552a2c3cf407672ed80b6bb184ac70b87",
+        "sourceFingerprint": "sha256:72a798002601f57f20d15cb1d7a1047552a2c3cf407672ed80b6bb184ac70b87",
+        "sourceSpan": {
+          "startLine": 1906,
+          "endLine": 1909
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-304",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 304,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nIncendios y otros estragos\n",
+        "fullTranslationRu": "Глава I\n\nПожары и другие бедствия",
+        "simpleRu": "Эта глава о поджогах, взрывах, наводнениях и других опасных разрушениях.",
+        "sourceTextSha256": "5b066092f80e40d2016f04253e5d6abf0919661a158ec6fe9382b278fb694da4",
+        "sourceFingerprint": "sha256:5b066092f80e40d2016f04253e5d6abf0919661a158ec6fe9382b278fb694da4",
+        "sourceSpan": {
+          "startLine": 1910,
+          "endLine": 1913
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-186-el-que-causare-incendio-explosion-o-305",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 305,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo I",
+          "ARTICULO 186. - El que causare incendio, explosión o inundación, será reprimido:"
+        ],
+        "officialLabel": "ARTICULO 186. - El que causare incendio, explosión o inundación, será reprimido:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 186. - El que causare incendio, explosión o inundación, será reprimido:\n\n1º Con reclusión o prisión de tres a diez años, si hubiere peligro común para los bienes;\n\n2º Con reclusión o prisión de tres a diez años el que causare incendio o destrucción por cualquier otro medio:\n\na) De cereales en parva, gavillas o bolsas, o de los mismos todavía no cosechados;\n\nb) De bosques, viñas, olivares, cañaverales, algodonales, yerbatales o cualquiera otra plantación de árboles o arbustos en explotación, ya sea con sus frutos en pie o cosechados;\n\nc) De ganado en los campos o de sus productos amontonados en el campo o depositados;\n\nd) De la leña o carbón de leña, apilados o amontonados en los campos de su explotación y destinados al comercio;\n\ne) De alfalfares o cualquier otro cultivo de forrajes, ya sea en pie o emparvados, engavillados, ensilados o enfardados;\n\nf) De los mismos productos mencionados en los párrafos anteriores, cargados, parados o en movimiento;\n\n3º Con reclusión o prisión de tres a quince años, si hubiere peligro para un archivo público, biblioteca, museo, arsenal, astillero, fábrica de pólvora o de pirotecnia militar o parque de artillería;\n\n4º Con reclusión o prisión de tres a quince años, si hubiere peligro de muerte para alguna persona;\n\n5º Con reclusión o prisión de ocho a veinte años, si el hecho fuere causa inmediata de la muerte de alguna persona.\n",
+        "fullTranslationRu": "СТАТЬЯ 186. Тот, кто вызывает пожар, взрыв или наводнение, наказывается:\n\n1. Каторжным заключением или лишением свободы от трех до десяти лет, если была общая опасность для имущества.\n\n2. Каторжным заключением или лишением свободы от трех до десяти лет, если он вызывает пожар или уничтожение любым другим способом:\n\na) зерновых в стогах, снопах или мешках либо еще не собранных зерновых;\n\nb) лесов, виноградников, оливковых рощ, тростниковых, хлопковых, мате-плантаций или любых других эксплуатируемых посадок деревьев или кустарников, как с плодами на корню, так и после сбора;\n\nc) скота в полях или его продуктов, сложенных в поле либо помещенных на хранение;\n\nd) дров или древесного угля, сложенных в полях их эксплуатации и предназначенных для торговли;\n\ne) люцерновых полей или любых других кормовых культур, на корню либо сложенных в стога, снопы, силос или тюки;\n\nf) тех же продуктов, упомянутых выше, когда они погружены, стоят или находятся в движении.\n\n3. Каторжным заключением или лишением свободы от трех до пятнадцати лет, если была опасность для публичного архива, библиотеки, музея, арсенала, верфи, порохового или военного пиротехнического завода либо артиллерийского парка.\n\n4. Каторжным заключением или лишением свободы от трех до пятнадцати лет, если была опасность смерти для какого-либо человека.\n\n5. Каторжным заключением или лишением свободы от восьми до двадцати лет, если деяние стало непосредственной причиной смерти какого-либо человека.",
+        "simpleRu": "За пожар, взрыв или наводнение наказание зависит от опасности. Если был риск для имущества - от 3 до 10 лет. За уничтожение сельхозпродукции, скота, лесов и похожих объектов - тоже 3-10 лет. Если под угрозой архив, музей, завод оружия или жизнь человека - 3-15 лет. Если кто-то погиб прямо из-за этого, наказание - от 8 до 20 лет.",
+        "sourceTextSha256": "1022d5b156eb3f244b9534a8bc0155aaa89aad33beec2c6d3ff56bf161229ec6",
+        "sourceFingerprint": "sha256:1022d5b156eb3f244b9534a8bc0155aaa89aad33beec2c6d3ff56bf161229ec6",
+        "sourceSpan": {
+          "startLine": 1914,
+          "endLine": 1937
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-187-incurrira-segun-los-casos-en-las-306",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 306,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo I",
+          "ARTICULO 187. - Incurrirá, según los casos, en las penas señaladas en el artículo precedente, el que causare estrago por medio de sumersi..."
+        ],
+        "officialLabel": "ARTICULO 187. - Incurrirá, según los casos, en las penas señaladas en el artículo precedente, el que causare estrago por medio de sumersi...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 187. - Incurrirá, según los casos, en las penas señaladas en el artículo precedente, el que causare estrago por medio de sumersión o varamiento de nave, derrumbe de un edificio, inundación, de una mina o cualquier otro medio poderoso de destrucción.\n",
+        "fullTranslationRu": "СТАТЬЯ 187. В зависимости от случая наказания из предыдущей статьи применяются к тому, кто вызывает бедствие путем затопления или посадки судна на мель, обрушения здания, затопления шахты или любым другим мощным средством разрушения.",
+        "simpleRu": "Такие же наказания применяются к другим крупным бедствиям: потопить или посадить судно на мель, обрушить здание, затопить шахту или разрушить что-то другим мощным способом.",
+        "sourceTextSha256": "887413695d3aa3eb80204c855ecd9664c90824b36957927a5f4a8f5602f58dc3",
+        "sourceFingerprint": "sha256:887413695d3aa3eb80204c855ecd9664c90824b36957927a5f4a8f5602f58dc3",
+        "sourceSpan": {
+          "startLine": 1938,
+          "endLine": 1939
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-188-sera-reprimido-con-prision-de-uno-307",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 307,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo I",
+          "ARTICULO 188. - Será reprimido con prisión de uno a seis años el que, destruyendo o inutilizando diques u otras obras destinadas a la def..."
+        ],
+        "officialLabel": "ARTICULO 188. - Será reprimido con prisión de uno a seis años el que, destruyendo o inutilizando diques u otras obras destinadas a la def...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 188. - Será reprimido con prisión de uno a seis años el que, destruyendo o inutilizando diques u otras obras destinadas a la defensa común contra las inundaciones u otros desastres, hiciere surgir el peligro de que éstos se produzcan.\n\nLa misma pena se aplicará al que, para impedir la extinción de un incendio o las obras de defensa contra una inundación, sumersión, naufragio u otro desastre, substrajere, ocultare o hiciere inservibles, materiales, instrumentos u otros medios destinados a la extinción o a la defensa referida.\n",
+        "fullTranslationRu": "СТАТЬЯ 188. Лишением свободы от одного до шести лет наказывается тот, кто, уничтожая или выводя из строя дамбы или другие сооружения, предназначенные для общей защиты от наводнений или иных бедствий, создает опасность их наступления.\n\nТо же наказание применяется к тому, кто, чтобы помешать тушению пожара или работам по защите от наводнения, затопления, кораблекрушения или другого бедствия, похищает, скрывает или делает непригодными материалы, инструменты или иные средства, предназначенные для тушения или указанной защиты.",
+        "simpleRu": "Нельзя ломать дамбы и защитные сооружения так, что возникает риск бедствия. Нельзя также красть или прятать инструменты и материалы, нужные для тушения пожара или защиты от бедствия. Наказание - от 1 до 6 лет.",
+        "sourceTextSha256": "a9c46730d193f444cc400d4afde21e9afde8ab2b65dfa93e6878df44af963767",
+        "sourceFingerprint": "sha256:a9c46730d193f444cc400d4afde21e9afde8ab2b65dfa93e6878df44af963767",
+        "sourceSpan": {
+          "startLine": 1940,
+          "endLine": 1943
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-189-sera-reprimido-con-prision-de-un-308",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 308,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo I",
+          "ARTICULO 189. - Será reprimido con prisión de un mes a un año, el que, por imprudencia o negligencia, por impericia en su arte o profesió..."
+        ],
+        "officialLabel": "ARTICULO 189. - Será reprimido con prisión de un mes a un año, el que, por imprudencia o negligencia, por impericia en su arte o profesió...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 189. - Será reprimido con prisión de un mes a un año, el que, por imprudencia o negligencia, por impericia en su arte o profesión o por inobservancia de los reglamentos u ordenanzas, causare un incendio u otros estragos.\n\nSi el hecho u omisión culpable pusiere en peligro de muerte a alguna persona o causare la muerte de alguna persona, el máximo de la pena podrá elevarse hasta cinco años.\n\n(Artículo sustituido por art. 3° de la Ley N° 25.189 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60801] B.O. 28/10/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 189. Лишением свободы от одного месяца до одного года наказывается тот, кто по неосторожности, небрежности, профессиональной неумелости или несоблюдению правил либо постановлений вызывает пожар или другие бедствия.\n\nЕсли виновное действие или бездействие поставило какого-либо человека под угрозу смерти или причинило смерть, максимальный срок наказания может быть повышен до пяти лет.\n\nСтатья заменена статьей 3 Закона N 25.189, B.O. 28/10/1999.",
+        "simpleRu": "Если пожар или другое бедствие случились из-за неосторожности, небрежности, непрофессиональности или нарушения правил, наказание - от 1 месяца до 1 года. Если была опасность смерти или кто-то умер, максимум может быть до 5 лет.",
+        "sourceTextSha256": "5ba8aef347d01205e08e119ed178f90acfa84cc8e6f9fe2f4db9411a33a70b4a",
+        "sourceFingerprint": "sha256:5ba8aef347d01205e08e119ed178f90acfa84cc8e6f9fe2f4db9411a33a70b4a",
+        "sourceSpan": {
+          "startLine": 1944,
+          "endLine": 1949
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-189-bis-1-el-que-con-el-309",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 309,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo I",
+          "ARTICULO 189 bis . - (1) El que, con el fin de contribuir a la comisión de delitos contra la seguridad común o causar daños en las máquin..."
+        ],
+        "officialLabel": "ARTICULO 189 bis . - (1) El que, con el fin de contribuir a la comisión de delitos contra la seguridad común o causar daños en las máquin...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 189 bis . - (1) El que, con el fin de contribuir a la comisión de delitos contra la seguridad común o causar daños en las máquinas o en la elaboración de productos, adquiriere, fabricare, suministrare, sustrajere o tuviere en su poder bombas, materiales o aparatos capaces de liberar energía nuclear, materiales radiactivos o sustancias nucleares, o sus desechos, isótopos radiactivos, materiales explosivos, inflamables, asfixiantes, tóxicos o biológicamente peligrosos, o sustancias o materiales destinados a su preparación, será reprimido con reclusión o prisión de CINCO (5) a QUINCE (15) años.\n\nLa misma pena se impondrá al que, sabiendo o debiendo saber que contribuye a la comisión de delitos contra la seguridad común o destinados a causar daños en las máquinas o en la elaboración de productos, diere instrucciones para la preparación de sustancias o materiales mencionados en el párrafo anterior.\n\nLa simple tenencia de los materiales a los que se refiere el párrafo que antecede, sin la debida autorización legal, o que no pudiere justificarse por razones de su uso doméstico o industrial, será reprimida con prisión de TRES (3) a SEIS (6) años.\n\n(2) La simple tenencia de armas de fuego de uso civil, sin la debida autorización legal, será reprimida con prisión de 6 (SEIS) meses a 2 (DOS) años y multa de MIL PESOS ($ 1.000.-) a DIEZ MIL PESOS ($ 10.000.-).\n\nSi las armas fueren de guerra, la pena será de DOS (2) a SEIS (6) años de prisión.\n\nLa portación de armas de fuego de uso civil, sin la debida autorización legal, será reprimida con prisión de UN (1) año a CUATRO (4) años.\n\nSi las armas fueren de guerra, la pena será de TRES (3) años y SEIS (6) meses a OCHO (8) años y SEIS (6) meses de reclusión o prisión.\n\nSi el portador de las armas a las cuales se refieren los dos párrafos que anteceden, fuere tenedor autorizado del arma de que se trate, la escala penal correspondiente se reducirá en un tercio del mínimo y del máximo.\n\nLa misma reducción prevista en el párrafo anterior podrá practicarse cuando, por las circunstancias del hecho y las condiciones personales del autor, resultare evidente la falta de intención de utilizar las armas portadas con fines ilícitos.\n\nEn los dos casos precedentes, se impondrá, además, inhabilitación especial por el doble del tiempo de la condena.\n\nEl que registrare antecedentes penales por delito doloso contra las personas o con el uso de armas, o se encontrare gozando de una excarcelación o exención de prisión anterior y portare un arma de fuego de cualquier calibre, será reprimido con prisión de CUATRO (4) a DIEZ (10) años.\n\n(Nota Infoleg: Por art. 4° de la Ley N° 25.886 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=94769] B.O. 5/5/2004, se establece que el primer párrafo del punto 2 del artículo 189 bis entrará en vigencia a partir del término del plazo establecido de SEIS MESES, en el cual el Poder Ejecutivo Nacional dispondrá, las medidas pertinentes para facilitar el registro gratuito y sencillo de las armas de fuego de uso civil o uso civil condicionado. Asimismo, en el mismo término, se arbitrarán en todo el territorio de la Nación, con contralor de la máxima autoridad judicial que en cada jurisdicción se designe, los medios para recepcionar de parte de la población, la entrega voluntaria de toda arma de fuego que su propietario o tenedor decida realizar.)\n\n(3) El acopio de armas de fuego, piezas o municiones de éstas, o la tenencia de instrumental para producirlas, sin la debida autorización, será reprimido con reclusión o prisión de CUATRO (4) a DIEZ (10) años.\n\nEl que hiciere de la fabricación ilegal de armas de fuego una actividad habitual será reprimido con reclusión o prisión de CINCO (5) a DIEZ (10) años.\n\n(4) Será reprimido con prisión de UN (1) año a SEIS (6) años el que entregare un arma de fuego, por cualquier título, a quien no acreditare su condición de legítimo usuario.\n\nLa pena será de TRES (3) años y SEIS (6) meses a DIEZ (10) años de prisión si el arma fuera entregada a un menor de DIECIOCHO (18) años.\n\nSi el autor hiciere de la provisión ilegal de armas de fuego una actividad habitual, la pena será de CUATRO (4) a QUINCE (15) años de reclusión o prisión.\n\nSi el culpable de cualquiera de las conductas contempladas en los tres párrafos anteriores contare con autorización para la venta de armas de fuego, se le impondrá, además, inhabilitación especial absoluta y perpetua, y multa de DIEZ MIL PESOS ($ 10.000.-).\n\n(5) Será reprimido con prisión de TRES (3) a OCHO (8) años e inhabilitación especial por el doble del tiempo de la condena el que, contando con la debida autorización legal para fabricar armas, omitiere su número o grabado conforme a la normativa vigente, o asignare a DOS (2) o más armas idénticos números o grabados.\n\nEn la misma pena incurrirá el que adulterare o suprimiere el número o el grabado de un arma de fuego.\n\n(Artículo sustituido por art. 1° de la Ley N° 25.886 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=94769] B.O. 5/5/2004.)\n",
+        "fullTranslationRu": "СТАТЬЯ 189 bis. (1) Тот, кто с целью способствовать преступлениям против общей безопасности или причинить вред машинам либо производству продукции приобретает, изготавливает, поставляет, похищает или хранит бомбы, материалы или аппараты, способные высвобождать ядерную энергию, радиоактивные материалы или ядерные вещества либо их отходы, радиоактивные изотопы, взрывчатые, воспламеняющиеся, удушающие, токсичные или биологически опасные материалы, либо вещества или материалы для их приготовления, наказывается каторжным заключением или лишением свободы от ПЯТИ (5) до ПЯТНАДЦАТИ (15) лет.\n\nТакое же наказание назначается тому, кто, зная или будучи обязанным знать, что способствует преступлениям против общей безопасности или причинению вреда машинам либо производству продукции, дает инструкции по приготовлению веществ или материалов, указанных в предыдущем абзаце.\n\nПростое хранение указанных материалов без должного законного разрешения либо без оправдания бытовым или промышленным использованием наказывается лишением свободы от ТРЕХ (3) до ШЕСТИ (6) лет.\n\n(2) Простое хранение огнестрельного оружия гражданского использования без должного законного разрешения наказывается лишением свободы от 6 (ШЕСТИ) месяцев до 2 (ДВУХ) лет и штрафом от ТЫСЯЧИ ПЕСО ($ 1.000) до ДЕСЯТИ ТЫСЯЧ ПЕСО ($ 10.000).\n\nЕсли оружие является военным, наказание составляет от ДВУХ (2) до ШЕСТИ (6) лет лишения свободы.\n\nНошение огнестрельного оружия гражданского использования без должного законного разрешения наказывается лишением свободы от ОДНОГО (1) года до ЧЕТЫРЕХ (4) лет.\n\nЕсли оружие является военным, наказание составляет от ТРЕХ (3) лет и ШЕСТИ (6) месяцев до ВОСЬМИ (8) лет и ШЕСТИ (6) месяцев каторжного заключения или лишения свободы.\n\nЕсли носитель указанного оружия был уполномоченным владельцем соответствующего оружия, применимая шкала наказания уменьшается на одну треть минимума и максимума.\n\nТакое же уменьшение может применяться, когда по обстоятельствам факта и личным условиям автора очевидно отсутствие намерения использовать носимое оружие в незаконных целях.\n\nВ двух предыдущих случаях дополнительно назначается специальное лишение права на двойной срок наказания.\n\nТот, кто имеет судимость за умышленное преступление против людей или с использованием оружия, либо пользуется прежним освобождением из-под стражи или освобождением от заключения и носит огнестрельное оружие любого калибра, наказывается лишением свободы от ЧЕТЫРЕХ (4) до ДЕСЯТИ (10) лет.\n\nПримечание Infoleg: статьей 4 Закона N 25.886, B.O. 5/5/2004, установлено, что первый абзац пункта 2 статьи 189 bis вступает в силу после срока ШЕСТЬ МЕСЯЦЕВ, в течение которого Национальная исполнительная власть должна принять меры для бесплатной и простой регистрации огнестрельного оружия гражданского использования или условного гражданского использования. В тот же срок по всей территории Нации, под контролем высшего судебного органа, назначенного в каждой юрисдикции, должны быть организованы средства для приема добровольной сдачи населением любого огнестрельного оружия, которое собственник или держатель решит передать.\n\n(3) Накопление огнестрельного оружия, его частей или боеприпасов либо хранение инструментов для их производства без должного разрешения наказывается каторжным заключением или лишением свободы от ЧЕТЫРЕХ (4) до ДЕСЯТИ (10) лет.\n\nТот, кто превращает незаконное изготовление огнестрельного оружия в обычную деятельность, наказывается каторжным заключением или лишением свободы от ПЯТИ (5) до ДЕСЯТИ (10) лет.\n\n(4) Лишением свободы от ОДНОГО (1) года до ШЕСТИ (6) лет наказывается тот, кто передает огнестрельное оружие по любому основанию лицу, не подтвердившему статус законного пользователя.\n\nЕсли оружие передано несовершеннолетнему младше ВОСЕМНАДЦАТИ (18) лет, наказание составляет от ТРЕХ (3) лет и ШЕСТИ (6) месяцев до ДЕСЯТИ (10) лет лишения свободы.\n\nЕсли автор делает незаконное снабжение огнестрельным оружием обычной деятельностью, наказание составляет от ЧЕТЫРЕХ (4) до ПЯТНАДЦАТИ (15) лет каторжного заключения или лишения свободы.\n\nЕсли виновный в любом из действий трех предыдущих абзацев имеет разрешение на продажу огнестрельного оружия, ему дополнительно назначается абсолютное и пожизненное специальное лишение права и штраф ДЕСЯТЬ ТЫСЯЧ ПЕСО ($ 10.000).\n\n(5) Лишением свободы от ТРЕХ (3) до ВОСЬМИ (8) лет и специальным лишением права на двойной срок наказания наказывается тот, кто, имея должное законное разрешение на производство оружия, не наносит номер или гравировку согласно действующим нормам либо присваивает ДВУМ (2) или более единицам оружия одинаковые номера или гравировки.\n\nТакое же наказание несет тот, кто изменяет или удаляет номер либо гравировку огнестрельного оружия.\n\nСтатья заменена статьей 1 Закона N 25.886, B.O. 5/5/2004.",
+        "simpleRu": "Эта большая статья про опасные материалы и оружие. За бомбы, ядерные, радиоактивные, взрывчатые, токсичные или биологически опасные материалы для преступлений дают 5-15 лет; за их простое незаконное хранение - 3-6 лет. За незаконное хранение или ношение огнестрельного оружия наказание зависит от вида оружия и разрешения. Для оружия войны наказание выше. За передачу оружия человеку без статуса законного пользователя, особенно несовершеннолетнему, наказание тоже тяжелое. За незаконное накопление, изготовление, продажу или изменение номеров оружия предусмотрены тюрьма, запреты и иногда штраф.",
+        "sourceTextSha256": "1102392f62c4b6ddccf9ec64966266888e4ac2a07415f7dad4ed34114dd6440f",
+        "sourceFingerprint": "sha256:1102392f62c4b6ddccf9ec64966266888e4ac2a07415f7dad4ed34114dd6440f",
+        "sourceSpan": {
+          "startLine": 1950,
+          "endLine": 1991
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-189-ter-articulo-derogado-por-art-2o-310",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 310,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo I",
+          "ARTICULO 189 ter .- (Artículo derogado por art. 2° de la Ley N° 25.886 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=94769] ..."
+        ],
+        "officialLabel": "ARTICULO 189 ter .- (Artículo derogado por art. 2° de la Ley N° 25.886 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=94769] ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 189 ter .- (Artículo derogado por art. 2° de la Ley N° 25.886 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=94769] B.O. 5/5/2004.)\n",
+        "fullTranslationRu": "СТАТЬЯ 189 ter. Статья отменена статьей 2 Закона N 25.886, B.O. 5/5/2004.",
+        "simpleRu": "Статья 189 ter отменена и больше не содержит действующего правила.",
+        "sourceTextSha256": "448826d2f40653cd7fc538e68bba7059c1d71f7f595d54be98217c1fc48527fb",
+        "sourceFingerprint": "sha256:448826d2f40653cd7fc538e68bba7059c1d71f7f595d54be98217c1fc48527fb",
+        "sourceSpan": {
+          "startLine": 1992,
+          "endLine": 1993
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-311",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 311,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nDelitos contra la seguridad del tránsito y de los medios de transporte y de comunicación\n\n(Denominación sustituida por art. 1° de la Ley N° 26.362 [/infolegInternet/verNorma.do?id=139586], B.O. 16/4/2008)\n",
+        "fullTranslationRu": "Глава II\n\nПреступления против безопасности движения и средств транспорта и связи\n\nНазвание заменено статьей 1 Закона N 26.362, B.O. 16/4/2008.",
+        "simpleRu": "Эта глава о преступлениях против безопасности транспорта, движения и связи.",
+        "sourceTextSha256": "420d7d4d95895971d7db1f2011c26271822751022b58e6b2b009a405bc5dd6c0",
+        "sourceFingerprint": "sha256:420d7d4d95895971d7db1f2011c26271822751022b58e6b2b009a405bc5dd6c0",
+        "sourceSpan": {
+          "startLine": 1994,
+          "endLine": 1999
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-190-sera-reprimido-con-prision-de-dos-312",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 312,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 190. - Será reprimido con prisión de dos a ocho años, el que a sabiendas ejecutare cualquier acto que ponga en peligro la seguri..."
+        ],
+        "officialLabel": "ARTICULO 190. - Será reprimido con prisión de dos a ocho años, el que a sabiendas ejecutare cualquier acto que ponga en peligro la seguri...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 190. - Será reprimido con prisión de dos a ocho años, el que a sabiendas ejecutare cualquier acto que ponga en peligro la seguridad de una nave, construcción flotante o aeronave.\n\nSi el hecho produjere naufragio, varamiento o desastre aéreo, la pena será de seis a quince años de reclusión o prisión.\n\nSi el hecho causare lesión a alguna persona, la pena será de seis a quince años de reclusión o prisión, y si ocasionare la muerte, de diez a veinticinco años de reclusión o prisión.\n\nLas disposiciones precedentes se aplicarán aunque la acción recaiga sobre una cosa propia, si del hecho deriva peligro para la seguridad común.\n",
+        "fullTranslationRu": "СТАТЬЯ 190. Лишением свободы от двух до восьми лет наказывается тот, кто сознательно совершает любое действие, ставящее под угрозу безопасность судна, плавучей конструкции или воздушного судна.\n\nЕсли деяние вызвало кораблекрушение, посадку на мель или авиационную катастрофу, наказание составляет от шести до пятнадцати лет каторжного заключения или лишения свободы.\n\nЕсли деяние причинило травму какому-либо человеку, наказание составляет от шести до пятнадцати лет каторжного заключения или лишения свободы; если оно вызвало смерть, от десяти до двадцати пяти лет каторжного заключения или лишения свободы.\n\nПредыдущие положения применяются и тогда, когда действие направлено на собственную вещь, если из факта возникает опасность для общей безопасности.",
+        "simpleRu": "Нельзя сознательно создавать опасность для судна, плавучего объекта или самолета. Базовое наказание - от 2 до 8 лет. Если случилась катастрофа, травма или смерть, наказание резко повышается. Правило действует даже для своей вещи, если есть опасность для всех.",
+        "sourceTextSha256": "8b31917bd7e7c818a2f984c0a8aaf04192c09e3047b47da443643d6704f65e05",
+        "sourceFingerprint": "sha256:8b31917bd7e7c818a2f984c0a8aaf04192c09e3047b47da443643d6704f65e05",
+        "sourceSpan": {
+          "startLine": 2000,
+          "endLine": 2007
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-191-el-que-empleare-cualquier-medio-para-313",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 313,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 191. - El que empleare cualquier medio para detener o entorpecer la marcha de un tren o para hacerle descarrilar, será reprimido:"
+        ],
+        "officialLabel": "ARTICULO 191. - El que empleare cualquier medio para detener o entorpecer la marcha de un tren o para hacerle descarrilar, será reprimido:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 191. - El que empleare cualquier medio para detener o entorpecer la marcha de un tren o para hacerle descarrilar, será reprimido:\n\n1º Con prisión de seis meses a tres años, si no se produjere descarrilamiento u otro accidente;\n\n2º Con prisión de dos a seis años, si se produjere descarrilamiento u otro accidente;\n\n3º Con reclusión o prisión de tres a diez años, si a consecuencia del accidente, resultare lesionada alguna persona;\n\n4º Con reclusión o prisión de diez a veinticinco años, si resultare la muerte de alguna persona.\n",
+        "fullTranslationRu": "СТАТЬЯ 191. Тот, кто использует любой способ, чтобы остановить или затруднить движение поезда либо вызвать его сход с рельсов, наказывается:\n\n1. Лишением свободы от шести месяцев до трех лет, если схода с рельсов или другой аварии не произошло.\n\n2. Лишением свободы от двух до шести лет, если произошел сход с рельсов или другая авария.\n\n3. Каторжным заключением или лишением свободы от трех до десяти лет, если вследствие аварии кто-либо получил травму.\n\n4. Каторжным заключением или лишением свободы от десяти до двадцати пяти лет, если наступила смерть какого-либо человека.",
+        "simpleRu": "За действия, которые останавливают поезд, мешают ему или вызывают сход с рельсов, наказание зависит от последствий: от 6 месяцев до 3 лет без аварии, от 2 до 6 лет с аварией, от 3 до 10 лет с травмой и от 10 до 25 лет, если кто-то умер.",
+        "sourceTextSha256": "405e6b044f9b97150caf85ab8cd52d06305d5429fb00b9c3040e67f7f80c7468",
+        "sourceFingerprint": "sha256:405e6b044f9b97150caf85ab8cd52d06305d5429fb00b9c3040e67f7f80c7468",
+        "sourceSpan": {
+          "startLine": 2008,
+          "endLine": 2017
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-192-sera-reprimido-con-las-penas-establecidas-314",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 314,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 192. - Será reprimido con las penas establecidas en el artículo anterior en sus casos respectivos, el que ejecutare cualquier ac..."
+        ],
+        "officialLabel": "ARTICULO 192. - Será reprimido con las penas establecidas en el artículo anterior en sus casos respectivos, el que ejecutare cualquier ac...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 192. - Será reprimido con las penas establecidas en el artículo anterior en sus casos respectivos, el que ejecutare cualquier acto tendiente a interrumpir el funcionamiento de un telégrafo o teléfono destinado al servicio de un ferrocarril.\n",
+        "fullTranslationRu": "СТАТЬЯ 192. Наказания, установленные в предыдущей статье для соответствующих случаев, применяются к тому, кто совершает любое действие, направленное на прерывание работы телеграфа или телефона, предназначенного для железнодорожной службы.",
+        "simpleRu": "Если человек пытается нарушить телеграфную или телефонную связь железной дороги, наказание такое же, как по статье 191, в зависимости от случая.",
+        "sourceTextSha256": "cb3ac42809957d325f422db215f0428617cc51856c7d233ca9111e3d47f49c60",
+        "sourceFingerprint": "sha256:cb3ac42809957d325f422db215f0428617cc51856c7d233ca9111e3d47f49c60",
+        "sourceSpan": {
+          "startLine": 2018,
+          "endLine": 2019
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-193-sera-reprimido-con-prision-de-un-315",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 315,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 193. - Será reprimido con prisión de un mes a un año, si el hecho no importare un delito más severamente penado, el que arrojare..."
+        ],
+        "officialLabel": "ARTICULO 193. - Será reprimido con prisión de un mes a un año, si el hecho no importare un delito más severamente penado, el que arrojare...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 193. - Será reprimido con prisión de un mes a un año, si el hecho no importare un delito más severamente penado, el que arrojare cuerpos contundentes o proyectiles contra un tren o tranvía en marcha.\n",
+        "fullTranslationRu": "СТАТЬЯ 193. Лишением свободы от одного месяца до одного года, если деяние не является преступлением с более строгим наказанием, наказывается тот, кто бросает твердые предметы или снаряды в движущийся поезд или трамвай.",
+        "simpleRu": "Нельзя бросать камни или другие предметы в движущийся поезд или трамвай. Если нет более тяжкого преступления, наказание - от 1 месяца до 1 года.",
+        "sourceTextSha256": "0b3632c4168ded8eb5df3f4c2dbf6d258848ab1ebd74853cfa13407715c4d411",
+        "sourceFingerprint": "sha256:0b3632c4168ded8eb5df3f4c2dbf6d258848ab1ebd74853cfa13407715c4d411",
+        "sourceSpan": {
+          "startLine": 2020,
+          "endLine": 2021
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-193-bis-sera-reprimido-con-prision-de-316",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 316,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 193 bis. - Será reprimido con prisión de seis (6) meses a tres (3) años e inhabilitación especial para conducir por el doble del..."
+        ],
+        "officialLabel": "ARTICULO 193 bis. - Será reprimido con prisión de seis (6) meses a tres (3) años e inhabilitación especial para conducir por el doble del...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 193 bis. - Será reprimido con prisión de seis (6) meses a tres (3) años e inhabilitación especial para conducir por el doble del tiempo de la condena, el conductor que creare una situación de peligro para la vida o la integridad física de las personas, mediante la participación en una prueba de velocidad o de destreza con un vehículo con motor, realizada sin la debida autorización de la autoridad competente.\n\nLa misma pena se aplicará a quien organizare o promocionare la conducta prevista en el presente artículo, y a quien posibilitare su realización por un tercero mediante la entrega de un vehículo con motor de su propiedad o confiado a su custodia, sabiendo que será utilizado para ese fin.\n\n(Artículo sustituido por art. 5° de la Ley N° 27.347 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=270433] B.O. 6/1/2017).\n",
+        "fullTranslationRu": "СТАТЬЯ 193 bis. Лишением свободы от шести (6) месяцев до трех (3) лет и специальным лишением права управлять на двойной срок наказания наказывается водитель, который создает опасность для жизни или физической целостности людей, участвуя в испытании скорости или мастерства на моторном транспортном средстве без должного разрешения компетентного органа.\n\nТо же наказание применяется к тому, кто организует или продвигает поведение, предусмотренное этой статьей, и к тому, кто делает возможным его совершение третьим лицом, передавая моторное транспортное средство, принадлежащее ему или доверенное его хранению, зная, что оно будет использовано для этой цели.\n\nСтатья заменена статьей 5 Закона N 27.347, B.O. 6/1/2017.",
+        "simpleRu": "Незаконные гонки или испытания скорости/мастерства на машине, если они создают опасность для людей, наказываются 6 месяцами - 3 годами и запретом водить на двойной срок. Так же отвечают организаторы, рекламирующие и те, кто дал машину, зная цель.",
+        "sourceTextSha256": "fbff1032522d0eb580d0272f4966bf0ac270ffe3e69d2293bc3fa19e9cc220ec",
+        "sourceFingerprint": "sha256:fbff1032522d0eb580d0272f4966bf0ac270ffe3e69d2293bc3fa19e9cc220ec",
+        "sourceSpan": {
+          "startLine": 2022,
+          "endLine": 2027
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-194-el-que-sin-crear-una-situacion-317",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 317,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 194. - El que, sin crear una situación de peligro común, impidiere, estorbare o entorpeciere el normal funcionamiento de los tra..."
+        ],
+        "officialLabel": "ARTICULO 194. - El que, sin crear una situación de peligro común, impidiere, estorbare o entorpeciere el normal funcionamiento de los tra...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 194. - El que, sin crear una situación de peligro común, impidiere, estorbare o entorpeciere el normal funcionamiento de los transportes por tierra, agua o aire o los servicios públicos de comunicación, de provisión de agua, de electricidad o de sustancias energéticas, será reprimido con prisión de tres meses a dos años.\n",
+        "fullTranslationRu": "СТАТЬЯ 194. Тот, кто, не создавая ситуации общей опасности, препятствует, мешает или затрудняет нормальную работу транспорта по суше, воде или воздуху либо публичных служб связи, водоснабжения, электричества или энергетических веществ, наказывается лишением свободы от трех месяцев до двух лет.",
+        "simpleRu": "Нельзя мешать нормальной работе транспорта, связи, воды, электричества или энергетических служб. Если общей опасности нет, наказание - от 3 месяцев до 2 лет.",
+        "sourceTextSha256": "7b3d1a76f42cb38f74d6fb5ed6f675fcfef08c91747132b818f62d7a76e26a52",
+        "sourceFingerprint": "sha256:7b3d1a76f42cb38f74d6fb5ed6f675fcfef08c91747132b818f62d7a76e26a52",
+        "sourceSpan": {
+          "startLine": 2028,
+          "endLine": 2029
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-195-seran-reprimidos-con-prision-de-un-318",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 318,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 195. - Serán reprimidos con prisión de un mes a un año, si el hecho no importare un delito más severamente penado, los conductor..."
+        ],
+        "officialLabel": "ARTICULO 195. - Serán reprimidos con prisión de un mes a un año, si el hecho no importare un delito más severamente penado, los conductor...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 195. - Serán reprimidos con prisión de un mes a un año, si el hecho no importare un delito más severamente penado, los conductores, capitanes, pilotos, mecánicos y demás empleados de un tren o de un buque, que abandonaren sus puestos durante sus servicios respectivos antes de llegar a puerto o al término del viaje ferroviario.\n",
+        "fullTranslationRu": "СТАТЬЯ 195. Лишением свободы от одного месяца до одного года, если деяние не является более строго наказуемым преступлением, наказываются машинисты, капитаны, пилоты, механики и другие работники поезда или судна, которые оставляют свои посты во время соответствующей службы до прибытия в порт или окончания железнодорожной поездки.",
+        "simpleRu": "Работники поезда или судна не должны бросать пост до конца рейса. Если это не более тяжкое преступление, наказание - от 1 месяца до 1 года.",
+        "sourceTextSha256": "8454c4fb10b9bd3b0fae82a4c03e24929a519a5d41a3b0edf6b7ee5817332294",
+        "sourceFingerprint": "sha256:8454c4fb10b9bd3b0fae82a4c03e24929a519a5d41a3b0edf6b7ee5817332294",
+        "sourceSpan": {
+          "startLine": 2030,
+          "endLine": 2031
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-196-sera-reprimido-con-prision-de-seis-319",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 319,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 196. - Será reprimido con prisión de seis meses a tres años el que por imprudencia o negligencia o por impericia en su arte o pr..."
+        ],
+        "officialLabel": "ARTICULO 196. - Será reprimido con prisión de seis meses a tres años el que por imprudencia o negligencia o por impericia en su arte o pr...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 196. - Será reprimido con prisión de seis meses a tres años el que por imprudencia o negligencia o por impericia en su arte o profesión o por inobservancia de los reglamentos u ordenanzas, causare un descarrilamiento, naufragio u otro accidente previsto en este capítulo.\n\nSi del hecho resultare lesionada o muerta alguna persona, se impondrá prisión de uno a cinco años.\n\n(Artículo sustituido por art. 4° de la Ley N° 25.189 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=60801] 28/10/1999)\n",
+        "fullTranslationRu": "СТАТЬЯ 196. Лишением свободы от шести месяцев до трех лет наказывается тот, кто по неосторожности, небрежности, профессиональной неумелости либо несоблюдению правил или постановлений вызывает сход поезда с рельсов, кораблекрушение или другую аварию, предусмотренную этой главой.\n\nЕсли в результате кто-либо получил травму или умер, назначается лишение свободы от одного до пяти лет.\n\nСтатья заменена статьей 4 Закона N 25.189, 28/10/1999.",
+        "simpleRu": "Если авария транспорта произошла из-за неосторожности, небрежности, непрофессиональности или нарушения правил, наказание - от 6 месяцев до 3 лет. Если есть травма или смерть, наказание - от 1 до 5 лет.",
+        "sourceTextSha256": "d0b5748eac76269b2da21da48069dd6e9d9221b705738849600c82bfa15d28eb",
+        "sourceFingerprint": "sha256:d0b5748eac76269b2da21da48069dd6e9d9221b705738849600c82bfa15d28eb",
+        "sourceSpan": {
+          "startLine": 2032,
+          "endLine": 2037
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-197-sera-reprimido-con-prision-de-seis-320",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 320,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo II",
+          "ARTICULO 197. - Será reprimido con prisión de seis (6) meses a dos (2) años, el que interrumpiere o entorpeciere la comunicación telegráf..."
+        ],
+        "officialLabel": "ARTICULO 197. - Será reprimido con prisión de seis (6) meses a dos (2) años, el que interrumpiere o entorpeciere la comunicación telegráf...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 197. - Será reprimido con prisión de seis (6) meses a dos (2) años, el que interrumpiere o entorpeciere la comunicación telegráfica, telefónica o de otra naturaleza o resistiere violentamente el restablecimiento de la comunicación interrumpida.\n\n(Artículo sustituido por art. 12 de la Ley N° 26.388 [/infolegInternet/verNorma.do?id=141790], B.O. 25/6/2008)\n",
+        "fullTranslationRu": "СТАТЬЯ 197. Лишением свободы от шести (6) месяцев до двух (2) лет наказывается тот, кто прерывает или затрудняет телеграфную, телефонную или иную связь либо насильственно сопротивляется восстановлению прерванной связи.\n\nСтатья заменена статьей 12 Закона N 26.388, B.O. 25/6/2008.",
+        "simpleRu": "Нельзя прерывать или мешать связи, например телефонной или телеграфной, и нельзя силой мешать ее восстановлению. Наказание - от 6 месяцев до 2 лет.",
+        "sourceTextSha256": "d708bb5353c38f6a95d67cd60625339370b8738335de3b14f3f89583c244ae53",
+        "sourceFingerprint": "sha256:d708bb5353c38f6a95d67cd60625339370b8738335de3b14f3f89583c244ae53",
+        "sourceSpan": {
+          "startLine": 2038,
+          "endLine": 2041
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iii-321",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 321,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo III"
+        ],
+        "officialLabel": "Capítulo III",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo III\n\nPiratería\n",
+        "fullTranslationRu": "Глава III\n\nПиратство",
+        "simpleRu": "Эта глава о пиратстве на судах и воздушных судах.",
+        "sourceTextSha256": "9e1c110fdfd2f5daf63f46a881da58475b2f528a63dc42b1d6157fcee29b99a4",
+        "sourceFingerprint": "sha256:9e1c110fdfd2f5daf63f46a881da58475b2f528a63dc42b1d6157fcee29b99a4",
+        "sourceSpan": {
+          "startLine": 2042,
+          "endLine": 2045
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-198-sera-reprimido-con-reclusion-o-prision-322",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 322,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo III",
+          "ARTICULO 198. - Será reprimido con reclusión o prisión de tres a quince años:"
+        ],
+        "officialLabel": "ARTICULO 198. - Será reprimido con reclusión o prisión de tres a quince años:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 198. - Será reprimido con reclusión o prisión de tres a quince años:\n\n1º El que practicare en el mar o en ríos navegables, algún acto de depredación o violencia contra un buque o contra personas o cosas que en él se encuentren, sin estar autorizado por alguna potencia beligerante o excediendo los límites de una autorización legítimamente concedida;\n\n2º El que practicare algún acto de depredación o violencia contra una aeronave en vuelo o mientras realiza las operaciones inmediatamente anteriores al vuelo, o contra personas o cosas que en ellas se encuentren, sin estar autorizado por alguna potencia beligerante o excediendo los límites de una autorización legítimamente concedida;\n\n3º El que mediante violencia, intimidación o engaño, usurpare la autoridad de un buque o aeronave, con el fin de apoderarse de él o de disponer de las cosas o de las personas que lleva;\n\n4º El que, en connivencia con piratas, les entregare un buque o aeronave, su carga o lo que perteneciere a su pasaje o tripulación;\n\n5º El que, con amenazas o violencia, se opusiere a que el comandante o la tripulación defiendan el buque o aeronave atacado por piratas;\n\n6º El que, por cuenta propia o ajena, equipare un buque o aeronave destinados a la piratería;\n\n7º El que, desde el territorio de la República, a sabiendas traficare con piratas o les suministrare auxilio.\n",
+        "fullTranslationRu": "СТАТЬЯ 198. Каторжным заключением или лишением свободы от трех до пятнадцати лет наказывается:\n\n1. Тот, кто в море или судоходных реках совершает акт грабежа, разрушения или насилия против судна либо против людей или вещей на нем, не будучи уполномоченным воюющей державой или превышая пределы законно выданного разрешения.\n\n2. Тот, кто совершает акт грабежа, разрушения или насилия против воздушного судна в полете или во время операций непосредственно перед полетом либо против людей или вещей на нем, не будучи уполномоченным воюющей державой или превышая пределы законно выданного разрешения.\n\n3. Тот, кто насилием, запугиванием или обманом узурпирует власть над судном или воздушным судном с целью завладеть им или распоряжаться вещами либо людьми, которых оно перевозит.\n\n4. Тот, кто в сговоре с пиратами передает им судно или воздушное судно, его груз либо имущество пассажиров или экипажа.\n\n5. Тот, кто угрозами или насилием препятствует командиру или экипажу защищать судно или воздушное судно, атакованное пиратами.\n\n6. Тот, кто за свой или чужой счет снаряжает судно или воздушное судно, предназначенное для пиратства.\n\n7. Тот, кто с территории Республики сознательно торгует с пиратами или оказывает им помощь.",
+        "simpleRu": "Пиратство включает нападения на суда или самолеты, захват управления, передачу судна пиратам, помехи защите, подготовку транспорта для пиратства и помощь пиратам с территории Аргентины. Наказание - от 3 до 15 лет.",
+        "sourceTextSha256": "59562e96a759ecf93233854b3968aff221496c1df79c52399c9a896e6c387528",
+        "sourceFingerprint": "sha256:59562e96a759ecf93233854b3968aff221496c1df79c52399c9a896e6c387528",
+        "sourceSpan": {
+          "startLine": 2046,
+          "endLine": 2061
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-199-si-los-actos-de-violencia-u-323",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 323,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo III",
+          "ARTICULO 199. - Si los actos de violencia u hostilidad mencionados en el artículo anterior, fueren seguidos de la muerte de alguna person..."
+        ],
+        "officialLabel": "ARTICULO 199. - Si los actos de violencia u hostilidad mencionados en el artículo anterior, fueren seguidos de la muerte de alguna person...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 199. - Si los actos de violencia u hostilidad mencionados en el artículo anterior, fueren seguidos de la muerte de alguna persona que se encontrare en el buque o aeronave atacados, la pena será de diez a veinticinco años de reclusión o prisión.\n",
+        "fullTranslationRu": "СТАТЬЯ 199. Если акты насилия или враждебности, указанные в предыдущей статье, повлекли смерть какого-либо человека, находившегося на атакованном судне или воздушном судне, наказание составляет от десяти до двадцати пяти лет каторжного заключения или лишения свободы.",
+        "simpleRu": "Если при пиратском нападении погиб человек на атакованном судне или самолете, наказание - от 10 до 25 лет.",
+        "sourceTextSha256": "5924fcad73361a4079ecdf06ca717beb22494ac7e66284b61544bea07effe3ae",
+        "sourceFingerprint": "sha256:5924fcad73361a4079ecdf06ca717beb22494ac7e66284b61544bea07effe3ae",
+        "sourceSpan": {
+          "startLine": 2062,
+          "endLine": 2063
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-iv-324",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 324,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV"
+        ],
+        "officialLabel": "Capítulo IV",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo IV\n\nDelitos contra la salud pública. Envenenar o adulterar aguas potables o alimentos o medicinas\n",
+        "fullTranslationRu": "Глава IV\n\nПреступления против общественного здоровья. Отравление или фальсификация питьевой воды, продуктов питания или лекарств",
+        "simpleRu": "Эта глава о преступлениях против здоровья людей: опасная порча воды, еды и лекарств.",
+        "sourceTextSha256": "1ec58f470f1203a37e573f7c8e2286e02541b930546ec377ffc9780db7b5eb51",
+        "sourceFingerprint": "sha256:1ec58f470f1203a37e573f7c8e2286e02541b930546ec377ffc9780db7b5eb51",
+        "sourceSpan": {
+          "startLine": 2064,
+          "endLine": 2067
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-200-sera-reprimido-con-reclusion-o-prision-325",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 325,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 200. - Será reprimido con reclusión o prisión de TRES (3) a DIEZ (10) años y multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENT..."
+        ],
+        "officialLabel": "ARTICULO 200. - Será reprimido con reclusión o prisión de TRES (3) a DIEZ (10) años y multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENT...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 200. - Será reprimido con reclusión o prisión de TRES (3) a DIEZ (10) años y multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENTOS MIL ($ 200.000), el que envenenare, adulterare o falsificare de un modo peligroso para la salud, aguas potables o sustancias alimenticias o medicinales destinadas al uso público o al consumo de una colectividad de personas.\n\n(Artículo sustituido por art. 1° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 200. Каторжным заключением или лишением свободы от ТРЕХ (3) до ДЕСЯТИ (10) лет и штрафом от ДЕСЯТИ ТЫСЯЧ ПЕСО ($ 10.000) до ДВУХСОТ ТЫСЯЧ ПЕСО ($ 200.000) наказывается тот, кто опасным для здоровья способом отравляет, изменяет или фальсифицирует питьевую воду, пищевые или лекарственные вещества, предназначенные для общественного использования или потребления коллективом людей.\n\nСтатья заменена статьей 1 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Нельзя опасно отравлять, портить или подделывать питьевую воду, еду или лекарства для людей. Наказание - от 3 до 10 лет и штраф от 10 000 до 200 000 песо.",
+        "sourceTextSha256": "7d193f43e0fecf6b2a44e63e0b7a30cf348fb1b2a986cb8391077112939ad5e8",
+        "sourceFingerprint": "sha256:7d193f43e0fecf6b2a44e63e0b7a30cf348fb1b2a986cb8391077112939ad5e8",
+        "sourceSpan": {
+          "startLine": 2068,
+          "endLine": 2071
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-201-las-penas-del-articulo-precedente-se-326",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 326,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 201. - Las penas del artículo precedente se aplicarán al que vendiere, pusiere en venta, suministrare, distribuyere o almacenare..."
+        ],
+        "officialLabel": "ARTICULO 201. - Las penas del artículo precedente se aplicarán al que vendiere, pusiere en venta, suministrare, distribuyere o almacenare...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 201. - Las penas del artículo precedente se aplicarán al que vendiere, pusiere en venta, suministrare, distribuyere o almacenare con fines de comercialización aguas potables, sustancias alimenticias o medicinales o mercaderías peligrosas para la salud, disimulando su carácter nocivo.\n\n(Artículo sustituido por art. 2° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 201. Наказания предыдущей статьи применяются к тому, кто продает, выставляет на продажу, поставляет, распределяет или хранит для продажи питьевую воду, пищевые или лекарственные вещества либо товары, опасные для здоровья, скрывая их вредный характер.\n\nСтатья заменена статьей 2 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Такое же наказание применяется, если человек продает или хранит для продажи воду, еду, лекарства или товары, опасные для здоровья, скрывая вред.",
+        "sourceTextSha256": "d9a84717839818a08f34944a81725b9ca2d0ccef8fa8edaf4b07fe89b11b61bf",
+        "sourceFingerprint": "sha256:d9a84717839818a08f34944a81725b9ca2d0ccef8fa8edaf4b07fe89b11b61bf",
+        "sourceSpan": {
+          "startLine": 2072,
+          "endLine": 2075
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-201-bis-si-como-consecuencia-del-envenenamiento-327",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 327,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 201 bis. - Si como consecuencia del envenenamiento, adulteración o falsificación de aguas potables o sustancias alimenticias o m..."
+        ],
+        "officialLabel": "ARTICULO 201 bis. - Si como consecuencia del envenenamiento, adulteración o falsificación de aguas potables o sustancias alimenticias o m...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 201 bis. - Si como consecuencia del envenenamiento, adulteración o falsificación de aguas potables o sustancias alimenticias o medicinales, resultare la muerte de alguna persona, la pena será de DIEZ (10) a VEINTICINCO (25) años de reclusión o prisión; si resultaren lesiones gravísimas, la pena será de TRES (3) a QUINCE (15) años de reclusión o prisión; si resultaren lesiones graves, la pena será de TRES (3) a DIEZ (10) años de reclusión o prisión.\n\nEn todos los casos se aplicará además multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENTOS MIL ($ 200.000).\n\n(Artículo incorporado por art. 3° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 201 bis. Если вследствие отравления, изменения или фальсификации питьевой воды, пищевых или лекарственных веществ наступила смерть какого-либо человека, наказание составляет от ДЕСЯТИ (10) до ДВАДЦАТИ ПЯТИ (25) лет каторжного заключения или лишения свободы; если причинены особо тяжкие повреждения, наказание составляет от ТРЕХ (3) до ПЯТНАДЦАТИ (15) лет каторжного заключения или лишения свободы; если причинены тяжкие повреждения, наказание составляет от ТРЕХ (3) до ДЕСЯТИ (10) лет каторжного заключения или лишения свободы.\n\nВо всех случаях дополнительно применяется штраф от ДЕСЯТИ ТЫСЯЧ ПЕСО ($ 10.000) до ДВУХСОТ ТЫСЯЧ ПЕСО ($ 200.000).\n\nСтатья включена статьей 3 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Если из-за опасной порчи воды, еды или лекарств человек умер, наказание - от 10 до 25 лет. За особо тяжкие травмы - 3-15 лет, за тяжкие - 3-10 лет. Всегда добавляется штраф от 10 000 до 200 000 песо.",
+        "sourceTextSha256": "aee66b4a42712f345b42856408913ac3b83bde34a94b3b6aeb36c41865bcc62b",
+        "sourceFingerprint": "sha256:aee66b4a42712f345b42856408913ac3b83bde34a94b3b6aeb36c41865bcc62b",
+        "sourceSpan": {
+          "startLine": 2076,
+          "endLine": 2081
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-202-sera-reprimido-con-reclusion-o-prision-328",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 328,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 202. - Será reprimido con reclusión o prisión de tres a quince años, el que propagare una enfermedad peligrosa y contagiosa para..."
+        ],
+        "officialLabel": "ARTICULO 202. - Será reprimido con reclusión o prisión de tres a quince años, el que propagare una enfermedad peligrosa y contagiosa para...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 202. - Será reprimido con reclusión o prisión de tres a quince años, el que propagare una enfermedad peligrosa y contagiosa para las personas.\n",
+        "fullTranslationRu": "СТАТЬЯ 202. Каторжным заключением или лишением свободы от трех до пятнадцати лет наказывается тот, кто распространяет опасную и заразную для людей болезнь.",
+        "simpleRu": "За распространение опасной заразной болезни для людей наказание - от 3 до 15 лет.",
+        "sourceTextSha256": "4fdb4f331df4791ef61a30bfce4b175841fb07d05dff1670c50214e774c95b26",
+        "sourceFingerprint": "sha256:4fdb4f331df4791ef61a30bfce4b175841fb07d05dff1670c50214e774c95b26",
+        "sourceSpan": {
+          "startLine": 2082,
+          "endLine": 2083
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-203-cuando-alguno-de-los-hechos-previstos-329",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 329,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 203. - Cuando alguno de los hechos previstos en los artículos anteriores fuere cometido por imprudencia, negligencia, impericia ..."
+        ],
+        "officialLabel": "ARTICULO 203. - Cuando alguno de los hechos previstos en los artículos anteriores fuere cometido por imprudencia, negligencia, impericia ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 203. - Cuando alguno de los hechos previstos en los artículos anteriores fuere cometido por imprudencia, negligencia, impericia en su arte o profesión o por inobservancia de los deberes a su cargo, se impondrá multa de PESOS CINCO MIL ($ 5.000) a PESOS CIEN MIL ($ 100.000); si tuviere como resultado enfermedad o muerte se aplicará prisión de SEIS (6) meses a CINCO (5) años.\n\n(Artículo sustituido por art. 4° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 203. Когда какое-либо из деяний, предусмотренных предыдущими статьями, совершено по неосторожности, небрежности, профессиональной неумелости или из-за несоблюдения обязанностей, назначается штраф от ПЯТИ ТЫСЯЧ ПЕСО ($ 5.000) до СТА ТЫСЯЧ ПЕСО ($ 100.000); если результатом стала болезнь или смерть, применяется лишение свободы от ШЕСТИ (6) месяцев до ПЯТИ (5) лет.\n\nСтатья заменена статьей 4 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Если опасность для здоровья возникла из-за неосторожности, небрежности, непрофессиональности или нарушения обязанностей, наказание - штраф от 5 000 до 100 000 песо. Если из-за этого человек заболел или умер, может быть от 6 месяцев до 5 лет тюрьмы.",
+        "sourceTextSha256": "39cb99686d37d6eef0a1cf91ec70f4ca35a72ddac76187e0e0606a79e43ba7aa",
+        "sourceFingerprint": "sha256:39cb99686d37d6eef0a1cf91ec70f4ca35a72ddac76187e0e0606a79e43ba7aa",
+        "sourceSpan": {
+          "startLine": 2084,
+          "endLine": 2087
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-204-sera-reprimido-con-prision-de-seis-330",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 330,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 204.- Será reprimido con prisión de SEIS (6) meses a TRES (3) años el que estando autorizado para la venta de sustancias medicin..."
+        ],
+        "officialLabel": "ARTICULO 204.- Será reprimido con prisión de SEIS (6) meses a TRES (3) años el que estando autorizado para la venta de sustancias medicin...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 204.- Será reprimido con prisión de SEIS (6) meses a TRES (3) años el que estando autorizado para la venta de sustancias medicinales, las suministrare en especie, calidad o cantidad no correspondiente a la receta médica, o diversa de la declarada o convenida, o excediendo las reglamentaciones para el reemplazo de sustancias medicinales, o sin la presentación y archivo de la receta de aquellos productos que, según las reglamentaciones vigentes, no pueden ser comercializados sin ese requisito.\n\n(Artículo sustituido por art. 5° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 204. Лишением свободы от ШЕСТИ (6) месяцев до ТРЕХ (3) лет наказывается тот, кто, имея разрешение продавать лекарственные вещества, поставляет их в виде, качестве или количестве, не соответствующем медицинскому рецепту, либо отличном от заявленного или согласованного, либо превышая правила замены лекарственных веществ, либо без предъявления и хранения рецепта для продуктов, которые по действующим правилам не могут продаваться без этого требования.\n\nСтатья заменена статьей 5 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Аптека или другой разрешенный продавец лекарств не может выдавать лекарство не того вида, качества или количества, менять его сверх правил или продавать рецептурное лекарство без предъявления и хранения рецепта. Наказание - от 6 месяцев до 3 лет.",
+        "sourceTextSha256": "313093a0100bfd97b79f8d4deea5eee8ad00a61a6c3d28c896a6c7d0c211a7e0",
+        "sourceFingerprint": "sha256:313093a0100bfd97b79f8d4deea5eee8ad00a61a6c3d28c896a6c7d0c211a7e0",
+        "sourceSpan": {
+          "startLine": 2088,
+          "endLine": 2091
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-204-bis-cuando-el-delito-previsto-en-331",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 331,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 204 bis.- Cuando el delito previsto en el artículo anterior se cometiere por negligencia, la pena será de multa de PESOS CINCO M..."
+        ],
+        "officialLabel": "ARTICULO 204 bis.- Cuando el delito previsto en el artículo anterior se cometiere por negligencia, la pena será de multa de PESOS CINCO M...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 204 bis.- Cuando el delito previsto en el artículo anterior se cometiere por negligencia, la pena será de multa de PESOS CINCO MIL ($ 5.000) a PESOS CIEN MIL ($ 100.000).\n\n(Artículo sustituido por art. 6° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 204 bis. Когда преступление, предусмотренное предыдущей статьей, совершено по небрежности, наказание составляет штраф от ПЯТИ ТЫСЯЧ ПЕСО ($ 5.000) до СТА ТЫСЯЧ ПЕСО ($ 100.000).\n\nСтатья заменена статьей 6 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Если нарушение правил продажи лекарств из статьи 204 произошло по небрежности, наказание - штраф от 5 000 до 100 000 песо.",
+        "sourceTextSha256": "0e6d8b488be5210ca522138e600d47d145bb8e4a9586569d3faba6f2d725f4a4",
+        "sourceFingerprint": "sha256:0e6d8b488be5210ca522138e600d47d145bb8e4a9586569d3faba6f2d725f4a4",
+        "sourceSpan": {
+          "startLine": 2092,
+          "endLine": 2095
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-204-ter-sera-reprimido-con-prision-de-332",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 332,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 204 ter.- Será reprimido con prisión de UNO (1) a CUATRO (4) años y multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENTOS MIL ($..."
+        ],
+        "officialLabel": "ARTICULO 204 ter.- Será reprimido con prisión de UNO (1) a CUATRO (4) años y multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENTOS MIL ($...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 204 ter.- Será reprimido con prisión de UNO (1) a CUATRO (4) años y multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENTOS MIL ($ 200.000), el que produjere o fabricare sustancias medicinales en establecimientos no autorizados.\n\n(Artículo sustituido por art. 7° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 204 ter. Лишением свободы от ОДНОГО (1) до ЧЕТЫРЕХ (4) лет и штрафом от ДЕСЯТИ ТЫСЯЧ ПЕСО ($ 10.000) до ДВУХСОТ ТЫСЯЧ ПЕСО ($ 200.000) наказывается тот, кто производит или изготавливает лекарственные вещества в неразрешенных учреждениях.\n\nСтатья заменена статьей 7 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Нельзя производить лекарства в неразрешенных местах. Наказание - от 1 до 4 лет и штраф от 10 000 до 200 000 песо.",
+        "sourceTextSha256": "c2fb9818981ec9a3db572bb16a0aa513505387f008850e88be22e38fff6a9da8",
+        "sourceFingerprint": "sha256:c2fb9818981ec9a3db572bb16a0aa513505387f008850e88be22e38fff6a9da8",
+        "sourceSpan": {
+          "startLine": 2096,
+          "endLine": 2099
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-204-quater-sera-reprimido-con-multa-de-333",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 333,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 204 quater.- Será reprimido con multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENTOS MIL ($ 200.000), el que teniendo a su carg..."
+        ],
+        "officialLabel": "ARTICULO 204 quater.- Será reprimido con multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENTOS MIL ($ 200.000), el que teniendo a su carg...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 204 quater.- Será reprimido con multa de PESOS DIEZ MIL ($ 10.000) a PESOS DOSCIENTOS MIL ($ 200.000), el que teniendo a su cargo la dirección, administración, control o vigilancia de un establecimiento destinado al expendio, almacenamiento, distribución, producción o fabricación de sustancias medicinales, a sabiendas, incumpliere con los deberes a su cargo posibilitando la comisión de alguno de los hechos previstos en el artículo 204.\n\n(Artículo sustituido por art. 8° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 204 quater. Штрафом от ДЕСЯТИ ТЫСЯЧ ПЕСО ($ 10.000) до ДВУХСОТ ТЫСЯЧ ПЕСО ($ 200.000) наказывается тот, кто руководит, администрирует, контролирует или наблюдает за учреждением, предназначенным для продажи, хранения, распределения, производства или изготовления лекарственных веществ, и сознательно не выполняет свои обязанности, делая возможным совершение одного из фактов, предусмотренных статьей 204.\n\nСтатья заменена статьей 8 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Руководитель или контролер места, где продают, хранят, распределяют или производят лекарства, отвечает штрафом, если сознательно не выполняет обязанности и из-за этого возможно нарушение из статьи 204.",
+        "sourceTextSha256": "3bd504ac699159a9c39728f0774be363eeb3d699e2ad0b261779f5c9ffb25a8d",
+        "sourceFingerprint": "sha256:3bd504ac699159a9c39728f0774be363eeb3d699e2ad0b261779f5c9ffb25a8d",
+        "sourceSpan": {
+          "startLine": 2100,
+          "endLine": 2103
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-204-quinquies-sera-reprimido-con-prision-de-334",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 334,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 204 quinquies: Será reprimido con prisión de SEIS (6) meses a TRES (3) años el que sin autorización vendiere sustancias medicina..."
+        ],
+        "officialLabel": "ARTICULO 204 quinquies: Será reprimido con prisión de SEIS (6) meses a TRES (3) años el que sin autorización vendiere sustancias medicina...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 204 quinquies: Será reprimido con prisión de SEIS (6) meses a TRES (3) años el que sin autorización vendiere sustancias medicinales que requieran receta médica para su comercialización.\n\n(Artículo incorporado por art. 9° de la Ley N° 26.524 [/infolegInternet/verNorma.do?id=159680] B.O. 5/11/2009)\n",
+        "fullTranslationRu": "СТАТЬЯ 204 quinquies. Лишением свободы от ШЕСТИ (6) месяцев до ТРЕХ (3) лет наказывается тот, кто без разрешения продает лекарственные вещества, требующие медицинского рецепта для продажи.\n\nСтатья включена статьей 9 Закона N 26.524, B.O. 5/11/2009.",
+        "simpleRu": "Нельзя без разрешения продавать лекарства, которые должны продаваться по рецепту. Наказание - от 6 месяцев до 3 лет.",
+        "sourceTextSha256": "7f8092bb9ff1c4660f3b8f72272493ef775ab3b9cfa7d566da56e166c7f25e81",
+        "sourceFingerprint": "sha256:7f8092bb9ff1c4660f3b8f72272493ef775ab3b9cfa7d566da56e166c7f25e81",
+        "sourceSpan": {
+          "startLine": 2104,
+          "endLine": 2107
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-205-sera-reprimido-con-prision-de-seis-335",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 335,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 205. - Será reprimido con prisión de seis meses a dos años, el que violare las medidas adoptadas por las autoridades competentes..."
+        ],
+        "officialLabel": "ARTICULO 205. - Será reprimido con prisión de seis meses a dos años, el que violare las medidas adoptadas por las autoridades competentes...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 205. - Será reprimido con prisión de seis meses a dos años, el que violare las medidas adoptadas por las autoridades competentes, para impedir la introducción o propagación de una epidemia.\n",
+        "fullTranslationRu": "СТАТЬЯ 205. Лишением свободы от шести месяцев до двух лет наказывается тот, кто нарушает меры, принятые компетентными органами для предотвращения ввоза или распространения эпидемии.",
+        "simpleRu": "Если власти приняли меры против ввоза или распространения эпидемии, их нельзя нарушать. Наказание - от 6 месяцев до 2 лет.",
+        "sourceTextSha256": "12f65103ae209639bd7cd08460728504bc9409d9babd08f0feabdfd46f12d5a6",
+        "sourceFingerprint": "sha256:12f65103ae209639bd7cd08460728504bc9409d9babd08f0feabdfd46f12d5a6",
+        "sourceSpan": {
+          "startLine": 2108,
+          "endLine": 2109
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-206-sera-reprimido-con-prision-de-uno-336",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 336,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 206. - Será reprimido con prisión de UNO (1) a SEIS (6) meses el que violare las reglas establecidas por las leyes de policía sa..."
+        ],
+        "officialLabel": "ARTICULO 206. - Será reprimido con prisión de UNO (1) a SEIS (6) meses el que violare las reglas establecidas por las leyes de policía sa...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 206. - Será reprimido con prisión de UNO (1) a SEIS (6) meses el que violare las reglas establecidas por las leyes de policía sanitaria animal.\n\n(Artículo sustituido por art. 4° de la Ley N° 25.890 [//servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=95203] B.O. 21/5/2004)\n",
+        "fullTranslationRu": "СТАТЬЯ 206. Лишением свободы от ОДНОГО (1) до ШЕСТИ (6) месяцев наказывается тот, кто нарушает правила, установленные законами санитарной полиции животных.\n\nСтатья заменена статьей 4 Закона N 25.890, B.O. 21/5/2004.",
+        "simpleRu": "Нельзя нарушать санитарные правила для животных. За это может быть от 1 до 6 месяцев тюрьмы.",
+        "sourceTextSha256": "2941c46763c80200882fd4b883acbb2b7478ed4265a43b4b9ffbdbe578a80455",
+        "sourceFingerprint": "sha256:2941c46763c80200882fd4b883acbb2b7478ed4265a43b4b9ffbdbe578a80455",
+        "sourceSpan": {
+          "startLine": 2110,
+          "endLine": 2113
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-207-en-el-caso-de-condenacion-por-337",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 337,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 207. - En el caso de condenación por un delito previsto en este Capítulo, el culpable, si fuere funcionario público o ejerciere ..."
+        ],
+        "officialLabel": "ARTICULO 207. - En el caso de condenación por un delito previsto en este Capítulo, el culpable, si fuere funcionario público o ejerciere ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 207. - En el caso de condenación por un delito previsto en este Capítulo, el culpable, si fuere funcionario público o ejerciere alguna profesión o arte, sufrirá, además, inhabilitación especial por doble tiempo del de la condena. Si la pena impuesta fuere la de multa, la inhabilitación especial durará de un mes a un año.\n",
+        "fullTranslationRu": "СТАТЬЯ 207. При осуждении за преступление, предусмотренное этой главой, виновный, если он является публичным должностным лицом или занимается какой-либо профессией либо ремеслом, дополнительно получает специальное лишение права на срок, вдвое превышающий срок наказания. Если назначенное наказание является штрафом, специальное лишение права длится от одного месяца до одного года.",
+        "simpleRu": "Если преступление против общественного здоровья совершил чиновник или профессионал, ему дополнительно запрещают соответствующую деятельность на двойной срок. Если основное наказание - штраф, запрет длится от 1 месяца до 1 года.",
+        "sourceTextSha256": "635d0578c30ea9492fa1b541228db0eaaca1bfe9a35fe5d60e91a2e6560709f8",
+        "sourceFingerprint": "sha256:635d0578c30ea9492fa1b541228db0eaaca1bfe9a35fe5d60e91a2e6560709f8",
+        "sourceSpan": {
+          "startLine": 2114,
+          "endLine": 2115
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-208-sera-reprimido-con-prision-de-quince-338",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 338,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VII",
+          "Capítulo IV",
+          "ARTICULO 208. - Será reprimido con prisión de quince días a un año:"
+        ],
+        "officialLabel": "ARTICULO 208. - Será reprimido con prisión de quince días a un año:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 208. - Será reprimido con prisión de quince días a un año:\n\n1º El que, sin título ni autorización para el ejercicio de un arte de curar o excediendo los límites de su autorización, anunciare, prescribiere, administrare o aplicare habitualmente medicamentos, aguas, electricidad, hipnotismo o cualquier medio destinado al tratamiento de las enfermedades de las personas, aun a título gratuito;\n\n2º El que, con título o autorización para el ejercicio de un arte de curar, anunciare o prometiere la curación de enfermedades a término fijo o por medios secretos o infalibles;\n\n3º El que, con título o autorización para el ejercicio de un arte de curar, prestare su nombre a otro que no tuviere título o autorización, para que ejerza los actos a que se refiere el inciso 1º de este artículo.\n",
+        "fullTranslationRu": "СТАТЬЯ 208. Лишением свободы от пятнадцати дней до одного года наказывается:\n\n1. Тот, кто без диплома или разрешения на занятие лечебной деятельностью либо превышая пределы своего разрешения обычно объявляет, назначает, вводит или применяет лекарства, воды, электричество, гипноз или любое средство для лечения болезней людей, даже бесплатно.\n\n2. Тот, кто, имея диплом или разрешение на занятие лечебной деятельностью, объявляет или обещает излечение болезней к фиксированному сроку или секретными либо непогрешимыми средствами.\n\n3. Тот, кто, имея диплом или разрешение на занятие лечебной деятельностью, предоставляет свое имя другому лицу без диплома или разрешения, чтобы оно совершало действия, указанные в пункте 1 этой статьи.",
+        "simpleRu": "Нельзя лечить людей без права на это, выходить за пределы своего разрешения, обещать гарантированное или тайное лечение к точному сроку, а также давать свое имя человеку без права лечить. Наказание - от 15 дней до 1 года.",
+        "sourceTextSha256": "f383d26256555f62ff8bef78899be02fc44e9701707eb0b8e513ccf471afdf31",
+        "sourceFingerprint": "sha256:f383d26256555f62ff8bef78899be02fc44e9701707eb0b8e513ccf471afdf31",
+        "sourceSpan": {
+          "startLine": 2116,
+          "endLine": 2123
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--titulo-viii-339",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 339,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII"
+        ],
+        "officialLabel": "TITULO VIII",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "TITULO VIII\n\nDELITOS CONTRA EL ORDEN PUBLICO\n",
+        "fullTranslationRu": "РАЗДЕЛ VIII\n\nПРЕСТУПЛЕНИЯ ПРОТИВ ОБЩЕСТВЕННОГО ПОРЯДКА",
+        "simpleRu": "Дальше начинается раздел о преступлениях против общественного порядка.",
+        "sourceTextSha256": "5aa01275a9688b6d26741d061ebb39d3a1a0c87fd34dadf06a44c717ea656ffb",
+        "sourceFingerprint": "sha256:5aa01275a9688b6d26741d061ebb39d3a1a0c87fd34dadf06a44c717ea656ffb",
+        "sourceSpan": {
+          "startLine": 2124,
+          "endLine": 2127
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-i-340",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 340,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo I"
+        ],
+        "officialLabel": "Capítulo I",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo I\n\nInstigación a cometer delitos\n",
+        "fullTranslationRu": "Глава I\n\nПодстрекательство к совершению преступлений",
+        "simpleRu": "Эта глава о публичном призыве совершить преступление.",
+        "sourceTextSha256": "8f5e10378b424df4f995e0ca16bcb83d7a5da55d29fa1cbd270cddbda0a0fda8",
+        "sourceFingerprint": "sha256:8f5e10378b424df4f995e0ca16bcb83d7a5da55d29fa1cbd270cddbda0a0fda8",
+        "sourceSpan": {
+          "startLine": 2128,
+          "endLine": 2131
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-209-el-que-publicamente-instigare-a-cometer-341",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 341,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo I",
+          "ARTICULO 209. - El que públicamente instigare a cometer un delito determinado contra una persona o institución, será reprimido, por la so..."
+        ],
+        "officialLabel": "ARTICULO 209. - El que públicamente instigare a cometer un delito determinado contra una persona o institución, será reprimido, por la so...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 209. - El que públicamente instigare a cometer un delito determinado contra una persona o institución, será reprimido, por la sola instigación, con prisión de dos a seis años, según la gravedad del delito y las demás circunstancias establecidas en el artículo 41.\n",
+        "fullTranslationRu": "СТАТЬЯ 209. Тот, кто публично подстрекает к совершению определенного преступления против лица или учреждения, наказывается за одно только подстрекательство лишением свободы от двух до шести лет, в зависимости от тяжести преступления и других обстоятельств, установленных в статье 41.",
+        "simpleRu": "Публично призывать к конкретному преступлению против человека или учреждения нельзя. Даже сам призыв наказывается от 2 до 6 лет, с учетом тяжести преступления и обстоятельств из статьи 41.",
+        "sourceTextSha256": "eb5a7084b6d40c79b85b178e385fec1dcda5a64a27288b691a338c1d38cdcb37",
+        "sourceFingerprint": "sha256:eb5a7084b6d40c79b85b178e385fec1dcda5a64a27288b691a338c1d38cdcb37",
+        "sourceSpan": {
+          "startLine": 2132,
+          "endLine": 2133
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-209-bis-en-igual-pena-incurrira-quien-342",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 342,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo I",
+          "ARTICULO 209 bis - En igual pena incurrirá quien en tiempo de conflicto armado incite públicamente a la sustracción al servicio militar l..."
+        ],
+        "officialLabel": "ARTICULO 209 bis - En igual pena incurrirá quien en tiempo de conflicto armado incite públicamente a la sustracción al servicio militar l...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 209 bis - En igual pena incurrirá quien en tiempo de conflicto armado incite públicamente a la sustracción al servicio militar legalmente impuesto o asumido. Si el autor fuese un militar, el máximo de la pena se elevará a diez (10) años. (Artículo incorporado por art. 4° del Anexo I de la Ley N° 26.394 [/infolegInternet/verNorma.do?id=143873] B.O. 29/8/2008. Vigencia: comenzará a regir a los SEIS (6) meses de su promulgación. Durante dicho período se llevará a cabo en las áreas pertinentes un programa de divulgación y capacitación sobre su contenido y aplicación)\n",
+        "fullTranslationRu": "СТАТЬЯ 209 bis. Такое же наказание несет тот, кто во время вооруженного конфликта публично призывает уклоняться от законно установленной или принятой военной службы. Если автор является военным, максимальный срок наказания повышается до десяти (10) лет. Статья включена статьей 4 Приложения I Закона N 26.394, B.O. 29/8/2008. Вступление в силу: начинает действовать через ШЕСТЬ (6) месяцев после промульгации; в течение этого периода соответствующие области проводят программу распространения информации и обучения по содержанию и применению.",
+        "simpleRu": "Во время вооруженного конфликта нельзя публично призывать уклоняться от законной военной службы. Наказание такое же, как в статье 209, а если призывает военный, максимум повышается до 10 лет.",
+        "sourceTextSha256": "7871b7c43cc4c4a96b6ea2f8ea4442e3d48e9d2ee2ff69d13a098c443312983b",
+        "sourceFingerprint": "sha256:7871b7c43cc4c4a96b6ea2f8ea4442e3d48e9d2ee2ff69d13a098c443312983b",
+        "sourceSpan": {
+          "startLine": 2134,
+          "endLine": 2135
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--capitulo-ii-343",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 343,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo II"
+        ],
+        "officialLabel": "Capítulo II",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Capítulo II\n\nAsociación ilícita\n",
+        "fullTranslationRu": "Глава II\n\nНезаконное объединение",
+        "simpleRu": "Эта глава о преступных объединениях.",
+        "sourceTextSha256": "df754be336356f18e7e4510e9e6374b1681685c0baa2b2cc2195811b22413b7b",
+        "sourceFingerprint": "sha256:df754be336356f18e7e4510e9e6374b1681685c0baa2b2cc2195811b22413b7b",
+        "sourceSpan": {
+          "startLine": 2136,
+          "endLine": 2139
+        }
+      },
+      {
+        "chunkId": "ley-11179-codigo-penal--articulo-210-sera-reprimido-con-prision-o-reclusion-344",
+        "officialDocumentId": "ley-11179-codigo-penal",
+        "order": 344,
+        "headingPath": [
+          "CODIGO PENAL DE LA NACION ARGENTINA",
+          "LIBRO SEGUNDO",
+          "TITULO VIII",
+          "Capítulo II",
+          "ARTICULO 210. - Será reprimido con prisión o reclusión de tres a diez años, el que tomare parte en una asociación o banda de tres o más p..."
+        ],
+        "officialLabel": "ARTICULO 210. - Será reprimido con prisión o reclusión de tres a diez años, el que tomare parte en una asociación o banda de tres o más p...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 210. - Será reprimido con prisión o reclusión de tres a diez años, el que tomare parte en una asociación o banda de tres o más personas destinada a cometer delitos por el solo hecho de ser miembro de la asociación. Para los jefes u organizadores de la asociación el mínimo de la pena será de cinco años de prisión o reclusión.\n",
+        "fullTranslationRu": "СТАТЬЯ 210. Лишением свободы или каторжным заключением от трех до десяти лет наказывается тот, кто участвует в объединении или банде из трех или более лиц, предназначенной для совершения преступлений, уже за сам факт членства в таком объединении. Для руководителей или организаторов объединения минимальное наказание составляет пять лет лишения свободы или каторжного заключения.",
+        "simpleRu": "Если три или больше человека создали группу для совершения преступлений, участник отвечает уже за членство: от 3 до 10 лет. Для руководителей или организаторов минимум - 5 лет.",
+        "sourceTextSha256": "8fbe3ce968380d9f00a92b588a3b01befa4d0198137400cbdbaa9d7a1b09bf06",
+        "sourceFingerprint": "sha256:8fbe3ce968380d9f00a92b588a3b01befa4d0198137400cbdbaa9d7a1b09bf06",
+        "sourceSpan": {
+          "startLine": 2140,
+          "endLine": 2141
+        }
+      }
+    ]
+  }
+}

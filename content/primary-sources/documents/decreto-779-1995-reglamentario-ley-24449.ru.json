@@ -1,0 +1,581 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+  "document": {
+    "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+    "title": "Decreto Reglamentario 779 / 1995",
+    "shortTitleRu": "Декрет 779/1995 к Закону 24.449",
+    "category": "traffic-law",
+    "jurisdiction": "national",
+    "officialSourceType": "national_decree_updated_text",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion",
+    "archiveLocalPath": "content/official-documents/documents/decreto-779-1995-reglamentario-ley-24449.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "current",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--decreto-reglamentario-779-1995-001",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 1,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995"
+        ],
+        "officialLabel": "Decreto Reglamentario 779 / 1995",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "# Decreto Reglamentario 779 / 1995\n\nTRANSITO Y SEGURIDAD VIAL\n\nDecreto 779/95\n\nApruébase la reglamentación de la Ley Nº 24.449.\n\nBs. As., 20/11/95\n\nVISTO la Ley N° 24.449 y el Decreto N° 233 del 16 de Febrero de 1995 y,\n\nCONSIDERANDO:\n\nQue el artículo 92 de la mencionada Ley estableció que el PODER EJECUTIVO NACIONAL deberá reglamentar la misma dentro de los CIENTO OCHENTA (180) días de su publicación, en consulta con las provincias y organismos federales, dando participación a la actividad privada.\n\nQue a los fines de dar cumplimiento a dicho mandato, el PODER EJECUTIVO NACIONAL dictó el Decreto N° 233/95 por el cual fue creada en el ámbito del MINISTERIO DEL INTERIOR una COMISION ESPECIAL con la finalidad de analizar la normativa vigente en materia de Tránsito y Educación Vial, facultando a la misma para proponer un proyecto de reglamentación de la Ley N° 24.449, integrada con autoridades nacionales competentes en la materia e invitando además, a gobernadores y jefes de policía de todas las jurisdicciones, a efectos de que colaboren en la elaboración normativa encomendada.\n\nQue con el apoyo de funcionarios y técnicos se integró el Comité de Trabajo que determina el mencionado Decreto N° 233/95, el cual realizó varias reuniones y mantuvo un intenso intercambio de documentos y propuestas que fueron enriqueciendo el trabajo que se presentó finalmente para la aprobación de la citada COMISION ESPECIAL.\n\nQue la actividad privada relacionada con el sector, tuvo participación directa en su elaboración, a través de la COMISION NACIONAL DE TRANSITO Y LA SEGURIDAD VIAL, organismo de asesoramiento técnico del Estado Nacional.\n\nQue la presente medida se dicta en uso de las facultades conferidas por el artículo 99, inciso 2 de la CONSTITUCION NACIONAL.\n\nPor ello,\n\nEL PRESIDENTE DE LA NACION ARGENTINA\n\nDECRETA:\n",
+        "fullTranslationRu": "# Регламентирующий декрет 779 / 1995\n\nДОРОЖНОЕ ДВИЖЕНИЕ И БЕЗОПАСНОСТЬ ДОРОЖНОГО ДВИЖЕНИЯ\n\nДекрет 779/95\n\nУтверждается регламент Закона N 24.449.\n\nБуэнос-Айрес, 20/11/95\n\nПРИНИМАЯ ВО ВНИМАНИЕ Закон N 24.449 и Декрет N 233 от 16 февраля 1995 года, и\n\nУЧИТЫВАЯ:\n\nЧто статья 92 указанного закона установила: Национальная исполнительная власть должна регламентировать его в течение СТА ВОСЬМИДЕСЯТИ (180) дней со дня его публикации, после консультаций с провинциями и федеральными органами и с участием частного сектора.\n\nЧто для исполнения этого поручения Национальная исполнительная власть издала Декрет N 233/95, которым в сфере Министерства внутренних дел была создана Специальная комиссия для анализа действующих норм о дорожном движении и дорожном образовании. Комиссия была уполномочена предложить проект регламента Закона N 24.449, включала компетентные национальные органы, а также приглашала губернаторов и начальников полиции всех юрисдикций сотрудничать в подготовке порученных норм.\n\nЧто при поддержке должностных лиц и технических специалистов был сформирован Рабочий комитет, предусмотренный указанным Декретом N 233/95; он провел несколько заседаний и вел активный обмен документами и предложениями, которые обогащали работу, в итоге представленную на утверждение указанной Специальной комиссии.\n\nЧто частный сектор, связанный с этой областью, участвовал непосредственно в подготовке через Национальную комиссию по дорожному движению и безопасности дорожного движения, технический консультативный орган Национального государства.\n\nЧто настоящая мера принимается с использованием полномочий, предоставленных статьей 99, пунктом 2 Национальной конституции.\n\nВ связи с этим\n\nПРЕЗИДЕНТ АРГЕНТИНСКОЙ НАЦИИ\n\nПОСТАНОВЛЯЕТ:",
+        "simpleRu": "Это вводная часть Декрета 779/95. В ней объясняется, почему президент Аргентины утверждает правила для применения Закона 24.449 о дорожном движении: закон требовал регламент в течение 180 дней, проект готовили государственные органы, провинции, полиция, специалисты и представители частного сектора.",
+        "sourceTextSha256": "f4d310a59c113125d836fbcf20c9140ae7b9aa84e0a047d4e405a74118c803de",
+        "sourceFingerprint": "sha256:f4d310a59c113125d836fbcf20c9140ae7b9aa84e0a047d4e405a74118c803de",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 30
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-1o-apruebase-la-reglamentacion-de-la-ley-002",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 2,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "ARTICULO 1°.— Apruébase la reglamentación de la ley N° 24.449 de Tránsito y Seguridad Vial, conforme al siguiente detalle:"
+        ],
+        "officialLabel": "ARTICULO 1°.— Apruébase la reglamentación de la ley N° 24.449 de Tránsito y Seguridad Vial, conforme al siguiente detalle:",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 1°.— Apruébase la reglamentación de la ley N° 24.449 de Tránsito y Seguridad Vial, conforme al siguiente detalle:\n",
+        "fullTranslationRu": "Статья 1. Утверждается регламент Закона N 24.449 о дорожном движении и безопасности дорожного движения согласно следующему перечню:",
+        "simpleRu": "Статья 1 говорит: этот декрет утверждает набор приложений, которые объясняют, как применять Закон 24.449.",
+        "sourceTextSha256": "f5b164eaf42ae41d9ec9232237ded26d6a5bd24a604d5848336af9b51fbee0fe",
+        "sourceFingerprint": "sha256:f5b164eaf42ae41d9ec9232237ded26d6a5bd24a604d5848336af9b51fbee0fe",
+        "sourceSpan": {
+          "startLine": 31,
+          "endLine": 32
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-1-reglamentacion-general-de-la-ley-no-003",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 3,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo 1: Reglamentación general de la Ley N° 24.449 (Artículos 1 al 97);"
+        ],
+        "officialLabel": "Anexo 1: Reglamentación general de la Ley N° 24.449 (Artículos 1 al 97);",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo 1: Reglamentación general de la Ley N° 24.449 (Artículos 1 al 97);\n",
+        "fullTranslationRu": "Приложение 1: общий регламент Закона N 24.449 (статьи 1-97);",
+        "simpleRu": "Приложение 1 содержит общие правила применения почти всего Закона 24.449, от статьи 1 до статьи 97.",
+        "sourceTextSha256": "13b677bf91eace525af54273f816d42b5100549102142c4e1081ba53d0caf77c",
+        "sourceFingerprint": "sha256:13b677bf91eace525af54273f816d42b5100549102142c4e1081ba53d0caf77c",
+        "sourceSpan": {
+          "startLine": 33,
+          "endLine": 34
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-a-sobre-definicion-denominacion-clasificacion-y-modelos-004",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 4,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo A: SOBRE DEFINICIÓN, DENOMINACIÓN, CLASIFICACIÓN Y MODELOS; Decreto N° 32/2018"
+        ],
+        "officialLabel": "Anexo A: SOBRE DEFINICIÓN, DENOMINACIÓN, CLASIFICACIÓN Y MODELOS; Decreto N° 32/2018",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo A: SOBRE DEFINICIÓN, DENOMINACIÓN, CLASIFICACIÓN Y MODELOS; Decreto N° 32/2018\n",
+        "fullTranslationRu": "Приложение A: об определении, наименовании, классификации и моделях; Декрет N 32/2018",
+        "simpleRu": "Приложение A связано с тем, как определять, называть и классифицировать транспортные средства и модели. В тексте указана связь с Декретом 32/2018.",
+        "sourceTextSha256": "5bb74b13e98a35ffd28cab9c10b64add723c24a7c3a9c9838d0fd4dfec0fc510",
+        "sourceFingerprint": "sha256:5bb74b13e98a35ffd28cab9c10b64add723c24a7c3a9c9838d0fd4dfec0fc510",
+        "sourceSpan": {
+          "startLine": 35,
+          "endLine": 36
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-b-especificaciones-tecnicas-y-procesos-de-ensayos-005",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 5,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo B: ESPECIFICACIONES TÉCNICAS Y PROCESOS DE ENSAYOS; Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de ..."
+        ],
+        "officialLabel": "Anexo B: ESPECIFICACIONES TÉCNICAS Y PROCESOS DE ENSAYOS; Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo B: ESPECIFICACIONES TÉCNICAS Y PROCESOS DE ENSAYOS; Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL.)\n",
+        "fullTranslationRu": "Приложение B: технические спецификации и процессы испытаний; Декрет N 196/2025, Официальный бюллетень 18/3/2025. Действует со дня, следующего за публикацией в Официальном бюллетене.)",
+        "simpleRu": "Приложение B про технические требования и испытания. В тексте указано: оно связано с Декретом 196/2025, опубликованным в Официальном бюллетене 18/3/2025, и действует со следующего дня после этой публикации.",
+        "sourceTextSha256": "af8f4f8a3cb103c6f9588c9621d268f717fbbf02bc5726881174f718406e89d1",
+        "sourceFingerprint": "sha256:af8f4f8a3cb103c6f9588c9621d268f717fbbf02bc5726881174f718406e89d1",
+        "sourceSpan": {
+          "startLine": 37,
+          "endLine": 38
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-c-autopartes-y-o-elementos-de-seguridad-006",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 6,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo C: AUTOPARTES Y/O ELEMENTOS DE SEGURIDAD; (Anexo sustituido por art. 23 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir ..."
+        ],
+        "officialLabel": "Anexo C: AUTOPARTES Y/O ELEMENTOS DE SEGURIDAD; (Anexo sustituido por art. 23 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo C: AUTOPARTES Y/O ELEMENTOS DE SEGURIDAD; (Anexo sustituido por art. 23 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL.)\n",
+        "fullTranslationRu": "Приложение C: автозапчасти и/или элементы безопасности; (приложение заменено статьей 23 Декрета N 196/2025, Официальный бюллетень 18/3/2025. Действует со дня, следующего за публикацией в Официальном бюллетене.)",
+        "simpleRu": "Приложение C касается автозапчастей и элементов безопасности. В тексте указано: приложение заменено статьей 23 Декрета 196/2025, опубликованного в Официальном бюллетене 18/3/2025, и действует со следующего дня после этой публикации.",
+        "sourceTextSha256": "fd2b2e9c1ca8e80890ffcda11555c40565e279f826c164ae96db9c1f22fd7f96",
+        "sourceFingerprint": "sha256:fd2b2e9c1ca8e80890ffcda11555c40565e279f826c164ae96db9c1f22fd7f96",
+        "sourceSpan": {
+          "startLine": 39,
+          "endLine": 40
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-g-proteccion-contra-encandilamiento-solar-007",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 7,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo G: Protección contra encandilamiento solar;"
+        ],
+        "officialLabel": "Anexo G: Protección contra encandilamiento solar;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo G: Protección contra encandilamiento solar;\n",
+        "fullTranslationRu": "Приложение G: защита от ослепления солнечным светом;",
+        "simpleRu": "Приложение G относится к защите водителя от ослепления солнцем.",
+        "sourceTextSha256": "e753d917ec1567e6fbfc104aec2a6cb0cca5b233c1259862c83f801ae6deef43",
+        "sourceFingerprint": "sha256:e753d917ec1567e6fbfc104aec2a6cb0cca5b233c1259862c83f801ae6deef43",
+        "sourceSpan": {
+          "startLine": 41,
+          "endLine": 42
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-i-sistema-de-iluminacion-y-senalizacion-para-008",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 8,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo I: Sistema de iluminación y señalización para vehículos automotores;"
+        ],
+        "officialLabel": "Anexo I: Sistema de iluminación y señalización para vehículos automotores;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo I: Sistema de iluminación y señalización para vehículos automotores;\n",
+        "fullTranslationRu": "Приложение I: система освещения и сигнализации для моторных транспортных средств;",
+        "simpleRu": "Приложение I про фары, огни и сигнальные устройства транспортных средств.",
+        "sourceTextSha256": "efd5e6262f4ba01f406eff350825eb7be46f532f3783750f6249457563d3f0ba",
+        "sourceFingerprint": "sha256:efd5e6262f4ba01f406eff350825eb7be46f532f3783750f6249457563d3f0ba",
+        "sourceSpan": {
+          "startLine": 43,
+          "endLine": 44
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-j-guias-para-la-revision-tecnica-categorias-009",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 9,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo J: Guías para la revisión técnica; categorías L, M, N y O;"
+        ],
+        "officialLabel": "Anexo J: Guías para la revisión técnica; categorías L, M, N y O;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo J: Guías para la revisión técnica; categorías L, M, N y O;\n",
+        "fullTranslationRu": "Приложение J: руководства для технического осмотра; категории L, M, N и O;",
+        "simpleRu": "Приложение J задает ориентиры для технического осмотра транспортных средств категорий L, M, N и O.",
+        "sourceTextSha256": "d3182c6ee196af06cb384165d4bb1ef73b746169c0337c7036cbe87ac2ffcc21",
+        "sourceFingerprint": "sha256:d3182c6ee196af06cb384165d4bb1ef73b746169c0337c7036cbe87ac2ffcc21",
+        "sourceSpan": {
+          "startLine": 45,
+          "endLine": 46
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-k-clasificacion-de-talleres-y-servicios-010",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 10,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo K: Clasificación de talleres y servicios;"
+        ],
+        "officialLabel": "Anexo K: Clasificación de talleres y servicios;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo K: Clasificación de talleres y servicios;\n",
+        "fullTranslationRu": "Приложение K: классификация мастерских и сервисов;",
+        "simpleRu": "Приложение K говорит о классификации мастерских и сервисных организаций.",
+        "sourceTextSha256": "c981268f1487b727c21f0a8e6a5a6f750b2bc3c90bd10d5b007f61b6da160102",
+        "sourceFingerprint": "sha256:c981268f1487b727c21f0a8e6a5a6f750b2bc3c90bd10d5b007f61b6da160102",
+        "sourceSpan": {
+          "startLine": 47,
+          "endLine": 48
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-l-sistema-de-senalizacion-vial-uniforme-anexo-011",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 11,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo L: Sistema de señalización vial uniforme; (Anexo sustituido por art. 24 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir ..."
+        ],
+        "officialLabel": "Anexo L: Sistema de señalización vial uniforme; (Anexo sustituido por art. 24 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo L: Sistema de señalización vial uniforme; (Anexo sustituido por art. 24 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL.)\n",
+        "fullTranslationRu": "Приложение L: единая система дорожной сигнализации; (приложение заменено статьей 24 Декрета N 196/2025, Официальный бюллетень 18/3/2025. Действует со дня, следующего за публикацией в Официальном бюллетене.)",
+        "simpleRu": "Приложение L про единую систему дорожных знаков, сигналов и разметки. В тексте указано: приложение заменено статьей 24 Декрета 196/2025, опубликованного в Официальном бюллетене 18/3/2025, и действует со следующего дня после этой публикации.",
+        "sourceTextSha256": "acccd19ebc4d783cc12ab7303fb7b6bb392d60150ec6d6f3d2e94262b0353475",
+        "sourceFingerprint": "sha256:acccd19ebc4d783cc12ab7303fb7b6bb392d60150ec6d6f3d2e94262b0353475",
+        "sourceSpan": {
+          "startLine": 49,
+          "endLine": 50
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-ll-normas-para-la-circulacion-de-maquinaria-012",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 12,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo LL: Normas para la circulación de maquinaria agrícola; (Anexo sustituido por art. 34 del Decreto N° 32/2018 B.O. 11/1/2018)"
+        ],
+        "officialLabel": "Anexo LL: Normas para la circulación de maquinaria agrícola; (Anexo sustituido por art. 34 del Decreto N° 32/2018 B.O. 11/1/2018)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo LL: Normas para la circulación de maquinaria agrícola; (Anexo sustituido por art. 34 del Decreto N° 32/2018 B.O. 11/1/2018)\n",
+        "fullTranslationRu": "Приложение LL: нормы движения сельскохозяйственной техники; (приложение заменено статьей 34 Декрета N 32/2018, Официальный бюллетень 11/1/2018)",
+        "simpleRu": "Приложение LL содержит правила для движения сельскохозяйственной техники. В тексте указано: приложение заменено статьей 34 Декрета 32/2018, опубликованного в Официальном бюллетене 11/1/2018.",
+        "sourceTextSha256": "19be4b0ceaffede83345e7dc5d66f8d21d8fef8f3478b3ce01eee7c6ed815a4e",
+        "sourceFingerprint": "sha256:19be4b0ceaffede83345e7dc5d66f8d21d8fef8f3478b3ce01eee7c6ed815a4e",
+        "sourceSpan": {
+          "startLine": 51,
+          "endLine": 52
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-m-definiciones-del-articulo-33-013",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 13,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo M: Definiciones del Artículo 33;"
+        ],
+        "officialLabel": "Anexo M: Definiciones del Artículo 33;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo M: Definiciones del Artículo 33;\n",
+        "fullTranslationRu": "Приложение M: определения статьи 33;",
+        "simpleRu": "Приложение M дает определения, связанные со статьей 33.",
+        "sourceTextSha256": "cdbb944b5599d034368f746a2c96bfc7b90d38166c0158043b4f4a0646035dff",
+        "sourceFingerprint": "sha256:cdbb944b5599d034368f746a2c96bfc7b90d38166c0158043b4f4a0646035dff",
+        "sourceSpan": {
+          "startLine": 53,
+          "endLine": 54
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-n-medicion-de-emisiones-en-vehiculos-livianos-014",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 14,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo N: Medición de emisiones en vehículos livianos equipados con motores ciclo Otto;"
+        ],
+        "officialLabel": "Anexo N: Medición de emisiones en vehículos livianos equipados con motores ciclo Otto;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo N: Medición de emisiones en vehículos livianos equipados con motores ciclo Otto;\n",
+        "fullTranslationRu": "Приложение N: измерение выбросов у легких транспортных средств, оснащенных двигателями цикла Отто;",
+        "simpleRu": "Приложение N про измерение выхлопных выбросов у легких машин с бензиновыми двигателями цикла Отто.",
+        "sourceTextSha256": "e9c24db0223121854e22ddd7a6a418ed38ce7d5c95b9afa0ca690d730418fb9f",
+        "sourceFingerprint": "sha256:e9c24db0223121854e22ddd7a6a418ed38ce7d5c95b9afa0ca690d730418fb9f",
+        "sourceSpan": {
+          "startLine": 55,
+          "endLine": 56
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-n-medicion-de-emisiones-de-particulas-visibles-015",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 15,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo Ñ: Medición de emisiones de partículas visibles (humo) de motores Diesel y de vehículos equipados con ellos;"
+        ],
+        "officialLabel": "Anexo Ñ: Medición de emisiones de partículas visibles (humo) de motores Diesel y de vehículos equipados con ellos;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo Ñ: Medición de emisiones de partículas visibles (humo) de motores Diesel y de vehículos equipados con ellos;\n",
+        "fullTranslationRu": "Приложение Ñ: измерение выбросов видимых частиц (дыма) дизельных двигателей и транспортных средств, оснащенных такими двигателями;",
+        "simpleRu": "Приложение Ñ про проверку видимого дыма у дизельных двигателей и машин с такими двигателями.",
+        "sourceTextSha256": "875edb4a40e16bf5549c8d114eed62929e190cfde2663fa911498d1180c74eb5",
+        "sourceFingerprint": "sha256:875edb4a40e16bf5549c8d114eed62929e190cfde2663fa911498d1180c74eb5",
+        "sourceSpan": {
+          "startLine": 57,
+          "endLine": 58
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-o-protocolo-de-caracteristicas-del-vehiculo-motor-016",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 16,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo O: Protocolo de características del vehículo motor;"
+        ],
+        "officialLabel": "Anexo O: Protocolo de características del vehículo motor;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo O: Protocolo de características del vehículo motor;\n",
+        "fullTranslationRu": "Приложение O: протокол характеристик моторного транспортного средства;",
+        "simpleRu": "Приложение O описывает протокол с характеристиками моторного транспортного средства.",
+        "sourceTextSha256": "3c90dff9a36885c1438f1978b3acad2876a62b4ee2a30c4b729abcfa06da9a3a",
+        "sourceFingerprint": "sha256:3c90dff9a36885c1438f1978b3acad2876a62b4ee2a30c4b729abcfa06da9a3a",
+        "sourceSpan": {
+          "startLine": 59,
+          "endLine": 60
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-p-procedimiento-para-otorgar-la-licencia-de-017",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 17,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo P: PROCEDIMIENTO PARA OTORGAR LA LICENCIA DE CONFIGURACIÓN DE MODELO (LCM) Y LA LICENCA DE CONFIGURACION AMBIENTAL (LCA); (Anexo su..."
+        ],
+        "officialLabel": "Anexo P: PROCEDIMIENTO PARA OTORGAR LA LICENCIA DE CONFIGURACIÓN DE MODELO (LCM) Y LA LICENCA DE CONFIGURACION AMBIENTAL (LCA); (Anexo su...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo P: PROCEDIMIENTO PARA OTORGAR LA LICENCIA DE CONFIGURACIÓN DE MODELO (LCM) Y LA LICENCA DE CONFIGURACION AMBIENTAL (LCA); (Anexo sustituido por art. 25 del Decreto N° 196/2025 B.O. 18/3/2025. Vigencia: a partir del día siguiente al de su publicación en el BOLETÍN OFICIAL.)\n",
+        "fullTranslationRu": "Приложение P: процедура выдачи Лицензии конфигурации модели (LCM) и Лицензии экологической конфигурации (LCA); (приложение заменено статьей 25 Декрета N 196/2025, Официальный бюллетень 18/3/2025. Действует со дня, следующего за публикацией в Официальном бюллетене.)",
+        "simpleRu": "Приложение P объясняет процедуру выдачи LCM и LCA: документов о конфигурации модели и экологической конфигурации. В тексте указано: приложение заменено статьей 25 Декрета 196/2025, опубликованного в Официальном бюллетене 18/3/2025, и действует со следующего дня после этой публикации.",
+        "sourceTextSha256": "d3bb861e2728da69ef09e9409b4989cd3baa006f9cb46e77e3dedcd62ec2ac39",
+        "sourceFingerprint": "sha256:d3bb861e2728da69ef09e9409b4989cd3baa006f9cb46e77e3dedcd62ec2ac39",
+        "sourceSpan": {
+          "startLine": 61,
+          "endLine": 62
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-r-pesos-y-dimensiones-anexo-sustituido-por-018",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 18,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo R: Pesos y dimensiones; (Anexo sustituido por art. 1° del Decreto N° 574/2014 B.O. 24/4/2014)"
+        ],
+        "officialLabel": "Anexo R: Pesos y dimensiones; (Anexo sustituido por art. 1° del Decreto N° 574/2014 B.O. 24/4/2014)",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo R: Pesos y dimensiones; (Anexo sustituido por art. 1° del Decreto N° 574/2014 B.O. 24/4/2014)\n",
+        "fullTranslationRu": "Приложение R: веса и размеры; (приложение заменено статьей 1 Декрета N 574/2014, Официальный бюллетень 24/4/2014)",
+        "simpleRu": "Приложение R касается разрешенных весов и размеров транспортных средств. В тексте указано: приложение заменено статьей 1 Декрета 574/2014, опубликованного в Официальном бюллетене 24/4/2014.",
+        "sourceTextSha256": "e9964e74488ace2a51d7162b30725c45b4ea9ea62fd1fd9020272ac5a63a7fcd",
+        "sourceFingerprint": "sha256:e9964e74488ace2a51d7162b30725c45b4ea9ea62fd1fd9020272ac5a63a7fcd",
+        "sourceSpan": {
+          "startLine": 63,
+          "endLine": 64
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-s-reglamento-general-para-el-transporte-de-019",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 19,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo S: Reglamento general para el transporte de mercancías peligrosas por carretera;"
+        ],
+        "officialLabel": "Anexo S: Reglamento general para el transporte de mercancías peligrosas por carretera;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo S: Reglamento general para el transporte de mercancías peligrosas por carretera;\n",
+        "fullTranslationRu": "Приложение S: общий регламент перевозки опасных грузов автомобильным транспортом;",
+        "simpleRu": "Приложение S содержит правила перевозки опасных грузов по дорогам.",
+        "sourceTextSha256": "8a5aba9c6de0ffd24724929e405107f7a8662d0ddf45965b186c54a75bd15739",
+        "sourceFingerprint": "sha256:8a5aba9c6de0ffd24724929e405107f7a8662d0ddf45965b186c54a75bd15739",
+        "sourceSpan": {
+          "startLine": 65,
+          "endLine": 66
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-t-sistema-nacional-de-seguridad-vial-anexo-020",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 20,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo T: Sistema Nacional de Seguridad Vial; (Anexo sustituido por art. 21 del Decreto Nº 1716/2008 B.O. 23/10/2008. Vigencia: a partir d..."
+        ],
+        "officialLabel": "Anexo T: Sistema Nacional de Seguridad Vial; (Anexo sustituido por art. 21 del Decreto Nº 1716/2008 B.O. 23/10/2008. Vigencia: a partir d...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo T: Sistema Nacional de Seguridad Vial; (Anexo sustituido por art. 21 del Decreto Nº 1716/2008 B.O. 23/10/2008. Vigencia: a partir de su publicación en el Boletín Oficial.)\n",
+        "fullTranslationRu": "Приложение T: Национальная система безопасности дорожного движения; (приложение заменено статьей 21 Декрета N 1716/2008, Официальный бюллетень 23/10/2008. Действует с момента публикации в Официальном бюллетене.)",
+        "simpleRu": "Приложение T описывает Национальную систему безопасности дорожного движения. В тексте указано: приложение заменено статьей 21 Декрета 1716/2008, опубликованного в Официальном бюллетене 23/10/2008, и действует с даты этой публикации.",
+        "sourceTextSha256": "c4786a4ef52018c6f414da66bc1d41b1dd0011fcf119734ef39d66cb02bb9833",
+        "sourceFingerprint": "sha256:c4786a4ef52018c6f414da66bc1d41b1dd0011fcf119734ef39d66cb02bb9833",
+        "sourceSpan": {
+          "startLine": 67,
+          "endLine": 68
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-u-unificacion-acta-de-choque-denuncia-de-021",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 21,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo U: Unificación acta de choque, denuncia de siniestro, ficha accidentológica;"
+        ],
+        "officialLabel": "Anexo U: Unificación acta de choque, denuncia de siniestro, ficha accidentológica;",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo U: Unificación acta de choque, denuncia de siniestro, ficha accidentológica;\n",
+        "fullTranslationRu": "Приложение U: унификация акта о столкновении, заявления о дорожном происшествии и аварийной карточки;",
+        "simpleRu": "Приложение U связано с едиными документами после ДТП: актом о столкновении, заявлением о происшествии и карточкой с данными аварии.",
+        "sourceTextSha256": "8438b80169d3b3b45c39d4b05231c4c26f575cef2b6961697de237a5a0f0d3b8",
+        "sourceFingerprint": "sha256:8438b80169d3b3b45c39d4b05231c4c26f575cef2b6961697de237a5a0f0d3b8",
+        "sourceSpan": {
+          "startLine": 69,
+          "endLine": 70
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--anexo-2-regimen-de-contravenciones-y-sanciones-por-022",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 22,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "Anexo 2: REGIMEN DE CONTRAVENCIONES Y SANCIONES POR FALTAS COMETIDAS A LA LEY DE TRANSITO Nº 24.449. (Anexo sustituido por art. 1º del De..."
+        ],
+        "officialLabel": "Anexo 2: REGIMEN DE CONTRAVENCIONES Y SANCIONES POR FALTAS COMETIDAS A LA LEY DE TRANSITO Nº 24.449. (Anexo sustituido por art. 1º del De...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Anexo 2: REGIMEN DE CONTRAVENCIONES Y SANCIONES POR FALTAS COMETIDAS A LA LEY DE TRANSITO Nº 24.449. (Anexo sustituido por art. 1º del Decreto Nº 242/2022 B.O. 6/5/2022. Vigencia: a partir de los SESENTA (60) días desde su publicación en el BOLETÍN OFICIAL.)\n\nExceptúanse de la aplicación del presente régimen y sus normas complementarias a las pruebas experimentales con el fin de evaluar nuevas tecnologías de vehículos destinados al autotransporte de pasajeros y carga, por un período de implementación de hasta TRES (3) años y de acuerdo a lo previsto en materia de seguridad, medio ambiente y preservación de los caminos y obras de arte, que autorice previamente el MINISTERIO DE TRANSPORTE. (Párrafo incorporado por art. 10 del Decreto N° 26/2019 B.O. 8/1/2019. Vigencia: a partir de los TREINTA (30) días de su publicación en el Boletín Oficial)\n\n(Nota Infoleg: A causa de la extensión de los presentes anexos, los mismos pueden ser consultados en forma separada accediendo al link correspondiente.)\n",
+        "fullTranslationRu": "Приложение 2: режим правонарушений и санкций за нарушения Закона о дорожном движении N 24.449. (Приложение заменено статьей 1 Декрета N 242/2022, Официальный бюллетень 6/5/2022. Действует через ШЕСТЬДЕСЯТ (60) дней после публикации в Официальном бюллетене.)\n\nИз применения настоящего режима и его дополнительных норм исключаются экспериментальные испытания, предназначенные для оценки новых технологий транспортных средств для автомобильной перевозки пассажиров и грузов, на период внедрения до ТРЕХ (3) лет и в соответствии с требованиями безопасности, окружающей среды и сохранности дорог, мостов и дорожных сооружений, если такие испытания предварительно разрешит Министерство транспорта. (Абзац включен статьей 10 Декрета N 26/2019, Официальный бюллетень 8/1/2019. Действует через ТРИДЦАТЬ (30) дней после публикации в Официальном бюллетене.)\n\n(Примечание Infoleg: из-за объема этих приложений их можно просмотреть отдельно, перейдя по соответствующей ссылке.)",
+        "simpleRu": "Приложение 2 устанавливает нарушения и санкции по Закону 24.449. В тексте указано: приложение заменено статьей 1 Декрета 242/2022, опубликованного в Официальном бюллетене 6/5/2022, и действует через 60 дней после этой публикации. Но режим не применяется к заранее разрешенным Министерством транспорта экспериментальным испытаниям новых технологий для пассажирского и грузового автотранспорта: такой тест может длиться до 3 лет и должен учитывать безопасность, экологию и сохранность дорог и сооружений. Этот абзац добавлен статьей 10 Декрета 26/2019, опубликованного в Официальном бюллетене 8/1/2019, и действует через 30 дней после публикации. Infoleg предупреждает, что приложения длинные и открываются отдельно.",
+        "sourceTextSha256": "4be68e44594f021eca2d852614c5c92a75a8b1af582b552f1ab305e0c78b3351",
+        "sourceFingerprint": "sha256:4be68e44594f021eca2d852614c5c92a75a8b1af582b552f1ab305e0c78b3351",
+        "sourceSpan": {
+          "startLine": 71,
+          "endLine": 76
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-2o-conforme-a-las-previsiones-del-articulo-023",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 23,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "ARTICULO 2°.— Conforme a las previsiones del artículo 94 de la Ley N° 24.449, dispónese que la citada Ley junto con la reglamentación que..."
+        ],
+        "officialLabel": "ARTICULO 2°.— Conforme a las previsiones del artículo 94 de la Ley N° 24.449, dispónese que la citada Ley junto con la reglamentación que...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 2°.— Conforme a las previsiones del artículo 94 de la Ley N° 24.449, dispónese que la citada Ley junto con la reglamentación que se aprueba por el artículo 1° del presente, entrarán en vigencia el 1° de Diciembre de 1995.\n",
+        "fullTranslationRu": "Статья 2. В соответствии с положениями статьи 94 Закона N 24.449 устанавливается, что указанный закон вместе с регламентом, утвержденным статьей 1 настоящего декрета, вступают в силу 1 декабря 1995 года.",
+        "simpleRu": "Статья 2 устанавливает дату начала действия: Закон 24.449 и этот регламент начали действовать 1 декабря 1995 года.",
+        "sourceTextSha256": "8503d5ec70665aebbb7b6905d6f59beab095f9a2da6b413777b0cb9701c9338a",
+        "sourceFingerprint": "sha256:8503d5ec70665aebbb7b6905d6f59beab095f9a2da6b413777b0cb9701c9338a",
+        "sourceSpan": {
+          "startLine": 77,
+          "endLine": 78
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-3o-invitase-a-las-provincias-a-adherir-024",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 24,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "ARTICULO 3°.— Invítase a las provincias a adherir en forma integral a la Ley N° 24.449 y a la presente reglamentación."
+        ],
+        "officialLabel": "ARTICULO 3°.— Invítase a las provincias a adherir en forma integral a la Ley N° 24.449 y a la presente reglamentación.",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 3°.— Invítase a las provincias a adherir en forma integral a la Ley N° 24.449 y a la presente reglamentación.\n",
+        "fullTranslationRu": "Статья 3. Провинциям предлагается полностью присоединиться к Закону N 24.449 и к настоящему регламенту.",
+        "simpleRu": "Статья 3 приглашает провинции принять Закон 24.449 и этот регламент целиком.",
+        "sourceTextSha256": "88cf1ab5d3b41c457c594cb819a2b2d5e2b668556e3fa2c02fb5dc99e36851e3",
+        "sourceFingerprint": "sha256:88cf1ab5d3b41c457c594cb819a2b2d5e2b668556e3fa2c02fb5dc99e36851e3",
+        "sourceSpan": {
+          "startLine": 79,
+          "endLine": 80
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-4o-las-funciones-y-facultades-del-consejo-025",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 25,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "ARTICULO 4º.— Las funciones y facultades del CONSEJO FEDERAL DE SEGURIDAD VIAL, de la COMISION NACIONAL DE TRANSITO Y LA SEGURIDAD VIAL y..."
+        ],
+        "officialLabel": "ARTICULO 4º.— Las funciones y facultades del CONSEJO FEDERAL DE SEGURIDAD VIAL, de la COMISION NACIONAL DE TRANSITO Y LA SEGURIDAD VIAL y...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 4º.— Las funciones y facultades del CONSEJO FEDERAL DE SEGURIDAD VIAL, de la COMISION NACIONAL DE TRANSITO Y LA SEGURIDAD VIAL y del REGISTRO NACIONAL DE ANTECEDENTES DEL TRANSITO, en base a la misión y objetivos fijados en la normativa básica, como sus relaciones y coordinación, están enmarcados en el SISTEMA NACIONAL DE SEGURIDAD VIAL, conforme lo establecido en el ANEXO T del presente.\n",
+        "fullTranslationRu": "Статья 4. Функции и полномочия Федерального совета безопасности дорожного движения, Национальной комиссии по дорожному движению и безопасности дорожного движения и Национального реестра сведений о нарушениях дорожного движения, исходя из миссии и целей, установленных базовыми нормами, а также их отношения и координация, включены в Национальную систему безопасности дорожного движения согласно Приложению T настоящего декрета.",
+        "simpleRu": "Статья 4 объясняет, что главные национальные органы по безопасности дорожного движения и реестру нарушений работают внутри Национальной системы безопасности дорожного движения. Подробности указаны в Приложении T.",
+        "sourceTextSha256": "00610b089de60735cc6de40a707d5cac1bd4a85a5762fd84d37f43ce4b5ef762",
+        "sourceFingerprint": "sha256:00610b089de60735cc6de40a707d5cac1bd4a85a5762fd84d37f43ce4b5ef762",
+        "sourceSpan": {
+          "startLine": 81,
+          "endLine": 82
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-5o-establecese-que-los-organismos-integrantes-del-026",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 26,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "ARTICULO 5°.— Establécese que los organismos integrantes del SISTEMA NACIONAL DE SEGURIDAD VIAL, propondrán al PODER EJECUTIVO NACIONAL p..."
+        ],
+        "officialLabel": "ARTICULO 5°.— Establécese que los organismos integrantes del SISTEMA NACIONAL DE SEGURIDAD VIAL, propondrán al PODER EJECUTIVO NACIONAL p...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 5°.— Establécese que los organismos integrantes del SISTEMA NACIONAL DE SEGURIDAD VIAL, propondrán al PODER EJECUTIVO NACIONAL para su aprobación, las futuras adecuaciones de la reglamentación de la Ley N° 24.449.\n",
+        "fullTranslationRu": "Статья 5. Устанавливается, что органы, входящие в Национальную систему безопасности дорожного движения, будут предлагать Национальной исполнительной власти для утверждения будущие изменения регламента Закона N 24.449.",
+        "simpleRu": "Статья 5 говорит: если правила применения Закона 24.449 нужно будет менять, предложения готовят органы Национальной системы безопасности дорожного движения, а утверждает Национальная исполнительная власть.",
+        "sourceTextSha256": "2cbf86fd9fcac395c9c680e52dc9c5f7a9e10db5f710b8be57451015e6f4288b",
+        "sourceFingerprint": "sha256:2cbf86fd9fcac395c9c680e52dc9c5f7a9e10db5f710b8be57451015e6f4288b",
+        "sourceSpan": {
+          "startLine": 83,
+          "endLine": 84
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-6o-invitase-a-las-jurisdicciones-que-adhieren-027",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 27,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "ARTICULO 6°.— Invítase a las jurisdicciones que adhieren a la Ley N° 24.449 a realizar una intensa campaña previa de difusión de las nuev..."
+        ],
+        "officialLabel": "ARTICULO 6°.— Invítase a las jurisdicciones que adhieren a la Ley N° 24.449 a realizar una intensa campaña previa de difusión de las nuev...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 6°.— Invítase a las jurisdicciones que adhieren a la Ley N° 24.449 a realizar una intensa campaña previa de difusión de las nuevas disposiciones y exigencias, dirigida a la opinión pública en general y a los sectores especializados comprendidos en la misma.\n",
+        "fullTranslationRu": "Статья 6. Юрисдикциям, которые присоединяются к Закону N 24.449, предлагается провести заранее интенсивную кампанию по распространению новых положений и требований, направленную на общественность в целом и на специализированные затронутые секторы.",
+        "simpleRu": "Статья 6 просит юрисдикции заранее широко объяснять людям и профессиональным секторам новые правила и требования, если они присоединяются к Закону 24.449.",
+        "sourceTextSha256": "de44864908f02ea8a34980b9fd1d713e179c88e8650235e0109f3817cacfee7a",
+        "sourceFingerprint": "sha256:de44864908f02ea8a34980b9fd1d713e179c88e8650235e0109f3817cacfee7a",
+        "sourceSpan": {
+          "startLine": 85,
+          "endLine": 86
+        }
+      },
+      {
+        "chunkId": "decreto-779-1995-reglamentario-ley-24449--articulo-7o-comuniquese-publiquese-dese-a-la-direccion-028",
+        "officialDocumentId": "decreto-779-1995-reglamentario-ley-24449",
+        "order": 28,
+        "headingPath": [
+          "Decreto Reglamentario 779 / 1995",
+          "ARTICULO 7°.— Comuníquese, publíquese, dése a la DIRECCION NACIONAL del REGISTRO OFICIAL y archívese. — MENEM. — Eduardo Bauzá. — Carlos ..."
+        ],
+        "officialLabel": "ARTICULO 7°.— Comuníquese, publíquese, dése a la DIRECCION NACIONAL del REGISTRO OFICIAL y archívese. — MENEM. — Eduardo Bauzá. — Carlos ...",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "ARTICULO 7°.— Comuníquese, publíquese, dése a la DIRECCION NACIONAL del REGISTRO OFICIAL y archívese. — MENEM. — Eduardo Bauzá. — Carlos Corach.\n",
+        "fullTranslationRu": "Статья 7. Сообщить, опубликовать, передать в Национальную дирекцию Официального реестра и архивировать. — Менем. — Эдуардо Бауса. — Карлос Корач.",
+        "simpleRu": "Статья 7 - служебная заключительная формула: декрет нужно сообщить, опубликовать, передать в официальный реестр и архивировать. В конце стоят подписи должностных лиц.",
+        "sourceTextSha256": "1586dce0e0b357f2b55cf1f2e937aa7d365dd6295b0cbd394d9870866112509c",
+        "sourceFingerprint": "sha256:1586dce0e0b357f2b55cf1f2e937aa7d365dd6295b0cbd394d9870866112509c",
+        "sourceSpan": {
+          "startLine": 87,
+          "endLine": 88
+        }
+      }
+    ]
+  }
+}

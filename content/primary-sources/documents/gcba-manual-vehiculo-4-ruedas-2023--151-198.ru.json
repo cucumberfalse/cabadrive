@@ -1,0 +1,982 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "approved",
+  "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+  "document": {
+    "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+    "title": "Manual de conducción vehicular - Categoría B / Automóviles",
+    "shortTitleRu": "Руководство по вождению категории B",
+    "category": "exam-study-material",
+    "jurisdiction": "caba",
+    "officialSourceType": "gcba_theoretical_exam_manual_pdf",
+    "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+    "archiveLocalPath": "content/official-documents/documents/gcba-manual-vehiculo-4-ruedas-2023.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--150-151",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 151,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 150: El transporte público es de gran"
+        ],
+        "officialLabel": "150",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "150\nEl transporte público es de gran\nimportancia para el funcionamiento,\nmantenimiento y crecimiento de\nuna sociedad.\n",
+        "fullTranslationRu": "150\nОбщественный транспорт имеет большое значение для функционирования, поддержания и развития общества.",
+        "simpleRu": "Общественный транспорт нужен городу: он помогает людям ездить по делам, поддерживает работу города и дает обществу развиваться.",
+        "sourceTextSha256": "69408a50f226be471349beaf759ec4d927446f1f7bd228f3de85dc77480ae931",
+        "sourceFingerprint": "sha256:69408a50f226be471349beaf759ec4d927446f1f7bd228f3de85dc77480ae931",
+        "sourceSpan": {
+          "startLine": 3736,
+          "endLine": 3741
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--151-152",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 152,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 151: TRANSPORTE DE CARGA"
+        ],
+        "officialLabel": "151",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "151\nTRANSPORTE DE CARGA\nY MERCADERÍAS\nAnexo III\n",
+        "fullTranslationRu": "151\nПЕРЕВОЗКА ГРУЗОВ\nИ ТОВАРОВ\nПриложение III",
+        "simpleRu": "Приложение III посвящено перевозке грузов и товаров.",
+        "sourceTextSha256": "b3b20539053514e2a1ee13722654c947e8cffcb7dbb5146c627f6caa4a48c908",
+        "sourceFingerprint": "sha256:b3b20539053514e2a1ee13722654c947e8cffcb7dbb5146c627f6caa4a48c908",
+        "sourceSpan": {
+          "startLine": 3742,
+          "endLine": 3746
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--152-153",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 153,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 152: En este anexo se desarrollarán las particularidades relacionadas con el transporte de cargas y"
+        ],
+        "officialLabel": "152",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "152\nEn este anexo se desarrollarán las particularidades relacionadas con el transporte de cargas y\nmercaderías, como así también aspectos que hacen a la conducción de vehículos de gran porte\nen general. Serán abordadas tanto cuestiones normativas implicadas en la conducción de los diferentes\nvehículos, como otras que tienen impacto en las tareas cotidianas de conductores y conductoras\nprofesionales, jerarquizando el desempeño y la responsabilidad que conlleva su actividad.\nEn el capítulo 3.2 de la ley de tránsito 2148 se encuentra desarrollado todo lo referente a la licencia\nde conducir en cuanto a su propósito, clases de licencias, requisitos, validez, renovación, etc.\nEn dicho capítulo se expresa que aquellas personas con licencias de categorías C, D y E son\nconsideradas  conductoras  profesionales,  siendo  21  años  la  edad  mínima  para  su  obtención\ny acreditar una antigüedad mayor a un 1 año en la clase B. Si superan los 65 años y desean\nobtener la licencia profesional por primera vez, además de realizar el curso de capacitación y\naprobar el examen teórico correspondiente, deberán rendir un examen práctico de idoneidad\nconductiva, independientemente de aquellos casos donde no se presenta como requisito.\nClases de licencias\nClase  C: para  camiones  sin  acoplado  ni  semiacoplado  y  casas  rodantes  motorizadas  de  más\n3.500 kg. de peso (esta clase de licencia también incluye la categoría B1).\nClase E.1: para camiones articulados, con acoplado o semiacoplado (incluye las clases B1, B2 y C).\nClase E.2: para maquinaria especial no agrícola (la licencia contendrá una leyenda aclarando el\ntipo específico de vehículo que habilita a conducir).\nDefiniciones generales\n1\n1/ Definiciones generales conforme al Anexo I de la Ley Nº 2148 del Código de Tránsito y Transporte de la Ciudad Autónoma de Buenos Aires.\nPerfil del transportista de cargas\nCamión: vehículo  automotor  destinado  a  transporte  de  carga  de  más  de  tres  mil  quinientos\n(3.500) kilogramos de peso total.\nCarga  general: es  aquella  carga  que  se  transporta  envasada  en  líos,  fardos  o  a  granel,  cuyas\nunidades son de dimensiones inferiores a las del vehículo que las transporta.\nCarga indivisible: es aquella carga que por sus características forma unidades que rebasan las\ndimensiones del vehículo que la transporta.\nCarga y descarga: operación en la cual un vehículo permanece detenido, con o sin conductor/a, en\nel caso de la operación en vía pública junto a la acera o sobre la acera en los espacios debidamente\nseñalizados,  o  dentro  de  garajes  comerciales  y/o  playas  de  estacionamiento,  realizándose  en\ntodos los casos por el tiempo estrictamente necesario dentro de los límites establecidos para\nrealizar la carga y descarga de mercaderías, equipajes o demás materiales que pudiere trasladar.\nContenedor: recipiente  especialmente  preparado  para  retener  o  transportar  diversos  materiales  a\ngranel, en lotes o piezas, generalmente desde o hacia zonas portuarias.\nPeso bruto: peso del vehículo más su carga y ocupantes.\nPorte: volumen específico de un vehículo o tren de vehículos.\nTara: peso del vehículo descargado.\n",
+        "fullTranslationRu": "152\nВ этом приложении рассматриваются особенности перевозки грузов и товаров, а также вопросы, связанные с управлением крупногабаритными транспортными средствами в целом. Здесь будут разобраны как нормативные вопросы, связанные с управлением разными транспортными средствами, так и другие аспекты, которые влияют на повседневную работу профессиональных водителей и водительниц, подчеркивая значимость их работы и ответственность, которую она несет.\nВ главе 3.2 Закона о дорожном движении 2148 изложено все, что касается водительского удостоверения: его назначение, классы удостоверений, требования, срок действия, продление и т. д.\nВ этой главе сказано, что лица с удостоверениями категорий C, D и E считаются профессиональными водителями. Минимальный возраст для их получения - 21 год, также нужно подтвердить стаж более 1 года по классу B. Если человек старше 65 лет и хочет впервые получить профессиональное удостоверение, то, кроме прохождения учебного курса и сдачи соответствующего теоретического экзамена, он должен сдать практический экзамен на водительскую пригодность, независимо от тех случаев, где такое требование обычно не предъявляется.\nКлассы удостоверений\nКласс C: для грузовиков без прицепа и без полуприцепа, а также моторизованных домов на колесах массой более 3 500 кг. Этот класс удостоверения также включает категорию B1.\nКласс E.1: для сочлененных грузовиков, грузовиков с прицепом или полуприцепом. Включает классы B1, B2 и C.\nКласс E.2: для специальной несельскохозяйственной техники. В удостоверении будет поясняющая отметка с конкретным типом транспортного средства, которым разрешено управлять.\nОбщие определения\n1\n1/ Общие определения приведены согласно Приложению I к Закону N 2148 Кодекса дорожного движения и транспорта Автономного города Буэнос-Айрес.\nПрофиль перевозчика грузов\nГрузовик: механическое транспортное средство, предназначенное для перевозки груза, с полной массой более трех тысяч пятисот (3 500) килограммов.\nОбщий груз: груз, который перевозится упакованным в связках, тюках или навалом; его единицы имеют размеры меньше транспортного средства, которое их перевозит.\nНеделимый груз: груз, который по своим характеристикам образует единицы, превышающие размеры транспортного средства, которое его перевозит.\nПогрузка и разгрузка: операция, при которой транспортное средство остается остановленным, с водителем или без него. Если операция происходит на общественной дороге, это делается у бордюра или на тротуаре в надлежащим образом обозначенных местах, либо внутри коммерческих гаражей и/или парковочных площадок. Во всех случаях операция выполняется только в строго необходимое время и в пределах, установленных для погрузки и разгрузки товаров, багажа или других материалов, которые могут перевозиться.\nКонтейнер: емкость, специально подготовленная для удержания или перевозки разных материалов навалом, партиями или поштучно, обычно из портовых зон или в портовые зоны.\nПолная масса: масса транспортного средства вместе с его грузом и людьми в нем.\nГабарит/размерность: конкретный объем транспортного средства или состава транспортных средств.\nСобственная масса: масса транспортного средства без груза.",
+        "simpleRu": "В приложении объясняется работа грузового транспорта. Профессиональные категории C, D и E обычно требуют 21 год и стаж больше 1 года по категории B. Класс C нужен для грузовиков без прицепа и больших автодомов, E.1 - для грузовиков с прицепом или полуприцепом, E.2 - для специальной несельскохозяйственной техники. Также даются важные слова: грузовик, общий груз, неделимый груз, погрузка и разгрузка, контейнер, полная масса и собственная масса.",
+        "sourceTextSha256": "0ff4ee79d05d709529659d652fddca204351c8753a65e6770bfae5aff8434212",
+        "sourceFingerprint": "sha256:0ff4ee79d05d709529659d652fddca204351c8753a65e6770bfae5aff8434212",
+        "sourceSpan": {
+          "startLine": 3747,
+          "endLine": 3787
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--153-154",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 154,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 153: Definiciones de camión y acoplado"
+        ],
+        "officialLabel": "153",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "153\nDefiniciones de camión y acoplado\n2\nCamión  rígido:  vehículo  automotor  de  la  categoría  N1,  N2  o  N3,  diseñado  y  fabricado  para  el\ntransporte de mercancías.\nCamión tractor: vehículo automotor de la categoría N1, N2 o N3, diseñado y fabricado para arrastrar\nun remolque o semirremolque.\nVehículo acoplado: vehículo no autopropulsado diseñado y fabricado para ser remolcado por un\nvehículo automotor. Al menos uno de los ejes debe ser direccional, cuya construcción es tal que\nninguna parte de su peso se transmite a otro vehículo.\nVehículo  semirremolque: vehículo  remolcado  diseñado  para  engancharse  a  un  camión  tractor  y\nque transmite una carga vertical sustancial sobre el vehículo tractor.\nVehículo Bitrén: vehículo conformado por UNA (1) unidad tractora con DOS (2) semirremolques\nbiarticulados.\nVehículo  Remolque  de  eje  central  (batan):  remolque  de  enganche  rígido  cuyo  eje  o  ejes  están\nubicados cerca del centro de gravedad del vehículo (cuando la carga está repartida uniformemente) de\nmanera que sólo se transmita al vehículo tractor una carga estática vertical pequeña.\nN1: vehículo automotor que tenga, por lo menos, 4 ruedas, y que sea utilizado para transporte de\ncarga con un peso máximo que no exceda los 3.500 kg.\nN2: vehículos utilizados para transporte de carga con un peso máximo superior a los 3.500 kg,\npero inferior o igual a los 12.000 kg.\nN3: vehículo para transporte de carga con un peso máximo superior a los 12.000 kg.\nCategoría de vehículos\n2/ Definiciones conforme al Anexo A incorporado por art. 33 del Decreto N° 32/2018 B.O. 11/1/2018.\nDocumentación requerida para circular con vehículos\nde transporte de carga y mercaderías\n• Licencia de conducir.\n• Cédula de identificación del vehículo.\n• Comprobante que acredite la contratación de seguro obligatorio de responsabilidad civil.\n• Registro único del transporte automotor (RUTA)\n3\n.\n• Certificado de realización de la Verificación Técnica Vehicular (RTO).\n• Licencia Nacional de Transporte Interjurisdiccional (LiNTI), cuando el vehículo realice transporte\nInterjurisdiccional\n4\n.\n• Remito, carta de porte o guía o factura correspondiente a la carga transportada.\n• Documentación específica de acuerdo a la carga transportada y al tipo de vehículo utilizado,\nen función a la normativa que regule la actividad (de contenedores, de sustancias alimenticias,\nde cargas indivisibles, de hacienda, de residuos patológicos, de precursores químicos, etc.).\n3/ Toda empresa o vehículo radicado en el país que efectúe transporte nacional (interjurisdiccional) o internacional de cargas debe estar inscripto\nen el Registro Único de Transporte Automotor (R.U.T.A.). El RUTA rige para los vehículos con una capacidad de carga igual o superior a los\n700 kg y se presenta en forma de CERTIFICADO, siendo obligatoria su validación anual.\n4/ Para más información ingresar a https://www.argentina.gob.ar/seguridadvial/linti\n",
+        "fullTranslationRu": "153\nОпределения грузовика и прицепа\n2\nЖесткий грузовик: механическое транспортное средство категории N1, N2 или N3, спроектированное и изготовленное для перевозки товаров.\nТягач: механическое транспортное средство категории N1, N2 или N3, спроектированное и изготовленное для буксировки прицепа или полуприцепа.\nПрицепное транспортное средство: несамоходное транспортное средство, спроектированное и изготовленное для буксировки механическим транспортным средством. По меньшей мере одна из осей должна быть управляемой, а конструкция такова, что никакая часть его веса не передается другому транспортному средству.\nПолуприцеп: буксируемое транспортное средство, спроектированное для сцепки с тягачом и передающее существенную вертикальную нагрузку на тягач.\nАвтопоезд Bitrén: транспортное средство, состоящее из ОДНОЙ (1) тяговой единицы с ДВУМЯ (2) двухсочлененными полуприцепами.\nПрицеп с центральной осью (batan): прицеп с жесткой сцепкой, ось или оси которого расположены рядом с центром тяжести транспортного средства, когда груз распределен равномерно, так что на тягач передается только небольшая статическая вертикальная нагрузка.\nN1: механическое транспортное средство, имеющее не менее 4 колес и используемое для перевозки груза, с максимальной массой не более 3 500 кг.\nN2: транспортные средства, используемые для перевозки груза, с максимальной массой более 3 500 кг, но не более 12 000 кг.\nN3: транспортное средство для перевозки груза с максимальной массой более 12 000 кг.\nКатегория транспортных средств\n2/ Определения согласно Приложению A, включенному статьей 33 Декрета N 32/2018, Официальный бюллетень 11.01.2018.\nДокументы, необходимые для движения на транспортных средствах, перевозящих грузы и товары\n• Водительское удостоверение.\n• Cédula de identificación del vehículo, то есть регистрационный документ транспортного средства.\n• Подтверждение заключения обязательного страхования гражданской ответственности.\n• Единый реестр автомобильного транспорта (RUTA).\n3\n• Свидетельство о прохождении технической проверки транспортного средства (RTO).\n• Национальная лицензия на межюрисдикционный транспорт (LiNTI), если транспортное средство выполняет межюрисдикционные перевозки.\n4\n• Накладная, транспортная накладная, путевой/сопроводительный документ или счет-фактура, относящиеся к перевозимому грузу.\n• Специальные документы в зависимости от перевозимого груза и типа используемого транспортного средства, согласно нормам, регулирующим деятельность: для контейнеров, пищевых веществ, неделимых грузов, скота, патологических отходов, химических прекурсоров и т. д.\n3/ Любая компания или транспортное средство, зарегистрированные в стране и выполняющие национальные (межюрисдикционные) или международные грузовые перевозки, должны быть зарегистрированы в Едином реестре автомобильного транспорта (R.U.T.A.). RUTA действует для транспортных средств с грузоподъемностью 700 кг или более и предъявляется в форме СЕРТИФИКАТА; его ежегодная проверка обязательна.\n4/ Дополнительная информация: https://www.argentina.gob.ar/seguridadvial/linti",
+        "simpleRu": "Для грузового транспорта важно различать жесткий грузовик, тягач, прицеп, полуприцеп и категории N1, N2, N3 по массе. Водитель должен иметь нужные документы: права, документ на транспортное средство, обязательную страховку, RUTA, техническую проверку RTO, LiNTI для межюрисдикционных перевозок, документы на груз и специальные документы для отдельных видов груза.",
+        "sourceTextSha256": "b0b55a215f318997479a6dadfb8ab49e6a30d721adb529bf91956bb8ed924f25",
+        "sourceFingerprint": "sha256:b0b55a215f318997479a6dadfb8ab49e6a30d721adb529bf91956bb8ed924f25",
+        "sourceSpan": {
+          "startLine": 3788,
+          "endLine": 3833
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--154-155",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 155,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 154: El transporte de cargas y mercaderías es fundamental para el funcionamiento de una sociedad"
+        ],
+        "officialLabel": "154",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "154\nEl transporte de cargas y mercaderías es fundamental para el funcionamiento de una sociedad\nen la medida en que, a través de su gestión, se realiza el traslado y distribución de materias\nprimas  y  mercaderías,  que  serán  finalmente  adquiridas  para  su  consumo:  insumos  para  la\nindustria en general, alimentos, medicamentos y diversos bienes de uso y consumo que son\nrequeridos diariamente por la población. Por eso, quienes se desempeñan en las tareas que\ndemanda esta actividad tienen un rol muy importante que requiere de una gran responsabilidad.\nEn consideración a las prioridades que hacen a una Movilidad Sustentable y Segura, se plantea\nuna nueva configuración de la Ciudad. El rediseño de su infraestructura favorece la circulación\nde modalidades alternativas al automóvil particular, promoviendo el ejercicio del derecho a\nla movilidad. Es en este nuevo escenario que se necesita del compromiso de toda la sociedad\npara lograr una buena convivencia en el tránsito y mejorar la seguridad vial. Las personas\nque conducen vehículos de transporte de cargas y mercaderías construyen, junto con otras,\nel espacio del tránsito.\nEn este marco, es muy importante que quien conduce pueda desempeñarse con profesionalismo,\npotenciando las habilidades y capacidades que posee para la conducción, e instrumentando\nlas medidas que le permiten hacerlo de la forma más óptima, resguardando su integridad\nfísica, la de los demás y la de la carga que traslada.\nLograr una mayor profesionalización del oficio conlleva, entre\notras cosas, un mayor bienestar de toda la población,\ndisminuir los riesgos de incidentes viales y\nmejorar la calidad laboral y del servicio que se brinda.\nUna responsabilidad social\nFactores involucrados en la conducción\nEn aquellas personas que conducen de manera profesional puede desarrollarse la sensación\nde “tener todo bajo control”, por realizar reiteradamente la misma rutina todos los días. Sin\nembargo, las situaciones que se presentan al circular no son siempre las mismas.\nEl exceso de confianza, sumado a las extensas jornadas laborales, exigen tener una conducción\npreventiva que tenga en cuenta los siguientes factores:\n•  Documentación.\n•  Vehículo.\n•  Carga.\n•  Ascenso y descenso de la unidad.\n•  Paradas de descanso.\n•  Postura corporal.\n•  Alimentación.\n",
+        "fullTranslationRu": "154\nПеревозка грузов и товаров является основой работы общества, потому что через нее перевозятся и распределяются сырье и товары, которые затем приобретаются для потребления: материалы для промышленности в целом, продукты питания, лекарства и разные товары повседневного использования, которые ежедневно нужны населению. Поэтому люди, выполняющие задачи этой деятельности, играют очень важную роль и несут большую ответственность.\nС учетом приоритетов устойчивой и безопасной мобильности предлагается новая конфигурация города. Перепроектирование его инфраструктуры благоприятствует движению способов передвижения, альтернативных частному автомобилю, и продвигает осуществление права на мобильность. Именно в этой новой ситуации требуется участие всего общества, чтобы добиться хорошего сосуществования в дорожном движении и повысить безопасность на дорогах. Люди, управляющие транспортными средствами для перевозки грузов и товаров, вместе с другими участниками создают пространство дорожного движения.\nВ этих условиях очень важно, чтобы водитель мог работать профессионально, усиливая свои навыки и способности управления и применяя меры, позволяющие делать это наилучшим образом, защищая свою физическую целостность, безопасность других людей и груз, который он перевозит.\nБолее высокая профессионализация этой работы означает, среди прочего, большее благополучие всего населения, снижение рисков дорожных инцидентов и улучшение качества труда и предоставляемой услуги.\nСоциальная ответственность\nФакторы, участвующие в управлении\nУ людей, которые управляют профессионально, может появиться ощущение, что «все под контролем», потому что они каждый день повторяют один и тот же маршрут или режим. Однако ситуации, возникающие во время движения, не всегда одинаковы.\nИзлишняя уверенность вместе с долгими рабочими днями требует предупредительного управления с учетом следующих факторов:\n• Документы.\n• Транспортное средство.\n• Груз.\n• Посадка в транспортное средство и выход из него.\n• Остановки для отдыха.\n• Положение тела.\n• Питание.",
+        "simpleRu": "Грузовые перевозки нужны всем: они доставляют продукты, лекарства, сырье и другие товары. Поэтому профессиональный водитель отвечает не только за груз, но и за безопасность людей вокруг. Даже если маршрут привычный, нельзя думать, что все всегда под контролем. Перед поездкой и во время работы нужно помнить о документах, состоянии машины, грузе, безопасной посадке и выходе, отдыхе, позе тела и питании.",
+        "sourceTextSha256": "c129093e36721a483e91dd0b943ef45d3d179cc753c0a63f54d4657eac141f4e",
+        "sourceFingerprint": "sha256:c129093e36721a483e91dd0b943ef45d3d179cc753c0a63f54d4657eac141f4e",
+        "sourceSpan": {
+          "startLine": 3834,
+          "endLine": 3870
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--155-156",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 156,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 155: El exceso de confianza expone las habilidades de quien conduce al"
+        ],
+        "officialLabel": "155",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "155\nEl exceso de confianza expone las habilidades de quien conduce al\nlímite y promueve la realización de maniobras temerarias que no son\npercibidas como riesgosas.\nPara realizar las tareas que demanda la conducción es necesario mantener un estado físico y\npsíquico óptimos, que permitan interpretar correctamente los indicios que la vía y el vehículo\ntransmiten, para así lograr la toma de decisiones correctas en cada situación que se presente. Se\ndebe saber que se está circulando dentro de un entorno cambiante, en el que las otras personas\nque forman parte de la vía pública, condicionan las propias decisiones.\nComo conductores/as profesionales es fundamental que se conozca qué factores y enfermedades\npueden modificar las condiciones personales, aumentando el riesgo y las posibilidades de sufrir\nun siniestro o incidente vial.\nDocumentación\nEs recomendable, antes de iniciar el viaje, verificar que se tiene toda la documentación necesaria\n(tanto la personal, la del vehículo como de la carga) y que la misma se encuentre ordenada\ny accesible. Esto brindará la tranquilidad de descartar situaciones conflictivas, derivadas de\nirregularidades, cuando se deba responder a controles requeridos por las diversas autoridades\nde control.\nVehículo\nEs importante que antes de iniciar el viaje se pueda realizar una revisión del estado general del\nvehículo, sus condiciones de seguridad y mantenimiento. De esta manera, se resguardará la\nseguridad propia y de otras personas en la vía pública.\nEs necesario verificar cierres, precintos, presión y aire de cubiertas, herramientas y neumáticos de\nreemplazo, frenos, control de fluidos (niveles de agua, aceites, líquido o presión de aire del sistema\nde  frenos)  funcionamiento  eléctrico,  dirección,  luces,  bocina,  parabrisas,  espejos  retrovisores  y\nvisibilidad en los cristales.\nCarga\nEl control, la correcta manipulación, distribución y sujeción de la carga, reducirán la posibilidad\nde generar sucesos que deriven en situaciones riesgosas o complicaciones indeseadas.\n",
+        "fullTranslationRu": "155\nИзлишняя уверенность выводит навыки водителя на предел и подталкивает к опасным маневрам, которые не воспринимаются как рискованные.\nДля выполнения задач управления необходимо поддерживать оптимальное физическое и психическое состояние, позволяющее правильно понимать сигналы, которые передают дорога и транспортное средство, и принимать правильные решения в каждой возникающей ситуации. Нужно понимать, что движение происходит в изменяющейся среде, где другие люди, находящиеся на общественной дороге, влияют на собственные решения.\nПрофессиональным водителям принципиально важно знать, какие факторы и болезни могут изменять личное состояние, повышая риск и вероятность дорожного происшествия или инцидента.\nДокументы\nПеред началом поездки рекомендуется проверить, что есть все необходимые документы: личные, документы транспортного средства и документы груза. Они должны быть в порядке и легко доступны. Это позволит спокойно исключить конфликтные ситуации из-за нарушений, когда нужно отвечать на проверки разных контрольных органов.\nТранспортное средство\nПеред началом поездки важно провести проверку общего состояния транспортного средства, его условий безопасности и обслуживания. Так защищается собственная безопасность и безопасность других людей на общественной дороге.\nНеобходимо проверять замки, пломбы, давление и воздух в шинах, инструменты и запасные шины, тормоза, контроль жидкостей: уровни воды, масел, тормозной жидкости или давления воздуха в тормозной системе, работу электрики, рулевое управление, фары, звуковой сигнал, лобовое стекло, зеркала заднего вида и видимость через стекла.\nГруз\nКонтроль, правильное обращение, распределение и крепление груза уменьшают вероятность событий, которые могут привести к опасным ситуациям или нежелательным осложнениям.",
+        "simpleRu": "Самоуверенность опасна: водитель может начать делать рискованные маневры и не замечать опасность. Перед поездкой проверь документы, машину и груз. Документы должны быть под рукой. У машины проверь замки, пломбы, шины, инструменты, запаску, тормоза, жидкости, электрику, рулевое, свет, сигнал, стекла и зеркала. Груз должен быть правильно распределен и закреплен.",
+        "sourceTextSha256": "6fdf4ddfe55159ec0b2884224eaf05905f7a9d17d8479f8743d19d676c897a49",
+        "sourceFingerprint": "sha256:6fdf4ddfe55159ec0b2884224eaf05905f7a9d17d8479f8743d19d676c897a49",
+        "sourceSpan": {
+          "startLine": 3871,
+          "endLine": 3900
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--156-157",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 157,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 156: Manipulación de la carga"
+        ],
+        "officialLabel": "156",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "156\nManipulación de la carga\nExisten riesgos, por exigencia biomecánica, que pueden ocurrir durante verificaciones de la\ncarga como por ej.: al acomodar la lona del camión, al apretar las fajas o amarras para sujetar la\ncarga, al sostenerse para subir a la reja de la jaula de animales, etc. que hace que se realice un esfuerzo\nfísico indebido que repercute en articulaciones y en el sistema músculo - esquelético. La postura\ncorrecta para levantar la carga es doblar las rodillas, no la cintura o la espalda y apretar los músculos\ndel estómago a medida que se levanta el objeto o se lo baja. Mantener el objeto lo más cerca que\nse pueda del cuerpo. Levantar los objetos lentamente, usando los músculos de las caderas y las\nrodillas.\nPor ello, es importante, prestar atención a estas circunstancias y adoptar las medidas de seguridad\nnecesarias:\nLa postura\nCorrecta\n",
+        "fullTranslationRu": "156\nОбращение с грузом\nПри проверках груза могут возникать биомеханические риски, например при расправлении тента грузовика, затягивании ремней или креплений груза, удержании при подъеме на решетку клетки для животных и т. п. Это заставляет выполнять чрезмерное физическое усилие, которое отражается на суставах и опорно-двигательной системе. Правильная поза для подъема груза - сгибать колени, а не талию или спину, и напрягать мышцы живота при подъеме или опускании предмета. Нужно держать предмет как можно ближе к телу. Поднимать предметы следует медленно, используя мышцы бедер и коленей.\nПоэтому важно обращать внимание на такие обстоятельства и принимать необходимые меры безопасности:\nПоза\nПравильная",
+        "simpleRu": "При работе с грузом можно повредить спину, суставы и мышцы. Когда поднимаешь предмет, сгибай колени, а не спину, держи груз близко к телу и поднимай медленно. Это важно при тенте, ремнях, креплениях и подъеме на части кузова.",
+        "sourceTextSha256": "7fb089885e74d95bc1ced31db8cab232ae22148c7e28ec9ed0847e80e32090b9",
+        "sourceFingerprint": "sha256:7fb089885e74d95bc1ced31db8cab232ae22148c7e28ec9ed0847e80e32090b9",
+        "sourceSpan": {
+          "startLine": 3901,
+          "endLine": 3915
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--157-158",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 158,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 157: Ubicación y sujeción de la carga"
+        ],
+        "officialLabel": "157",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "157\nUbicación y sujeción de la carga\n• Debe estar distribuida correctamente.\n• Se debe asegurar que esté acomodada y estable, a fin de evitar desplazamientos internos\ndurante el movimiento del camión.\nAscenso y descenso de la unidad\nAdemás del peligro de siniestros por choques o colisiones, existen también riesgos de caídas\no golpes, durante el descenso o ascenso de la unidad, al acomodar la lona del acoplado o al\nsubir a la reja de la jaula del ganado. También, en el caso del transporte de granos y/o frutas,\nse puede sufrir picaduras de insectos u otros vectores transmisores de enfermedades que\nse encuentran entre la carga, pudiendo desencadenar reacciones alérgicas cuya gravedad\ndependerá del agente que intervenga.\n",
+        "fullTranslationRu": "157\nРазмещение и крепление груза\n• Груз должен быть правильно распределен.\n• Нужно убедиться, что он уложен и устойчив, чтобы избежать внутренних смещений во время движения грузовика.\nПосадка в транспортное средство и выход из него\nКроме опасности дорожных происшествий из-за ударов или столкновений, существуют также риски падений или ударов при выходе из транспортного средства или посадке в него, при поправлении тента прицепа или при подъеме на решетку клетки для скота. Также при перевозке зерна и/или фруктов можно получить укусы насекомых или других переносчиков болезней, находящихся среди груза; это может вызвать аллергические реакции, тяжесть которых зависит от конкретного агента.",
+        "simpleRu": "Груз должен лежать ровно, устойчиво и быть закреплен, чтобы не двигаться внутри кузова. При посадке, выходе, работе с тентом или клеткой для скота есть риск упасть или удариться. В зерне и фруктах могут быть насекомые и другие переносчики болезней, поэтому нужна осторожность.",
+        "sourceTextSha256": "591f46b40afeeeab869d611c6fadf0936863f025f51e71f338efceb35e56c0b0",
+        "sourceFingerprint": "sha256:591f46b40afeeeab869d611c6fadf0936863f025f51e71f338efceb35e56c0b0",
+        "sourceSpan": {
+          "startLine": 3916,
+          "endLine": 3928
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--158-159",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 159,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 158: • Hacerlo siempre tomado de los pasamanos de las escaleras."
+        ],
+        "officialLabel": "158",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "158\n• Hacerlo siempre tomado de los pasamanos de las escaleras.\n• Mantener las manos libres.\n• Garantizar los tres puntos de apoyo y de sostén permanente (dos manos y un pie o dos\npies y una mano).\n• Verificar  la  seguridad  y  resistencia  del  medio  de  acceso,  evitando  escaleras  húmedas  o\nescalones inestables.\n• Evitar el uso del celular o manipular elementos en sectores que puedan resultar resbaladizos\no cuando exista la posibilidad de corte, por ejemplo al sostenerse de la jaula, al ajustar las\nfajas o amarras, cadenas. Recordar que está prohibido el uso de celular o el de auriculares\nmientras se está conduciendo.\n• Usar ropa de trabajo que no sea holgada o que quede suelta y pueda quedar enganchada.\n• Evitar el uso de accesorios en cuello y manos como ser: bufandas, tirantes, pulseras, cadenas,\ncollares, anillos y otros.\n• Usar calzado y guantes adecuados que deberán ser provistos por la persona que emplea.\n• Los elementos de protección personal no eliminan los riesgos pero constituyen una barrera\npara disminuir la probabilidad de ocurrencia de incidentes y de enfermedades relacionadas\ncon la actividad.\nRecomendaciones\nSi bien la operación del vehículo se realiza en el asiento de la persona que conduce, el medio\nambiente  de  trabajo  no  se  circunscribe  a  la  cabina,  sino  que  está  compuesto  por  toda  la\nunidad (acoplado, furgón, plato), la carga, el lugar por donde transita y los sitios donde se\ndetiene a descansar o a provisionarse (paradores, estaciones de servicio, entre otros), etc.\nEn este contexto, se debe tomar continuamente miles de decisiones respecto a las maniobras\nque debe realizar. Este estado de constante alerta, representa una fuente muy significativa\nde estrés y fatiga.\nExisten algunas tareas adicionales a la conducción como:\n• Verificar el estado general de la unidad, sus elementos de seguridad y su documentación.\n• Conducir a lo largo de extensos trayectos durante los cuales debe sostener el estado de\nalerta.\n• Manipular fisicamente cargas diversas en las operaciones de carga y descarga.\n• Controlar la carga y su documentación.\nParadas de descanso\nPara disminuir su impacto, es necesario tener programadas paradas de descanso en las cuales\nla actividad mental pueda recuperar su capacidad de atención en el corto plazo y preserve\nal  organismo  en  el  largo  plazo.  Algunas  de  las  paradas  puede  ser  utilizada  a  su  vez,  para\nrealizar otras actividades no implicadas en la operación del vehículo (hablar por teléfono, ir\nal baño, comprar alimentos y/o bebidas, realizar alguna tarea complementaria laboral, etc.).\nDe este modo, al resolver estas tareas en un momento específico, se evita estar pensando\nen  ellas  mientras  se  está  conduciendo,  reduciendo  así  estados  de  ansiedad  que  pudieran\ngenerar distracciones y favoreciendo una conducción más eficaz.\n",
+        "fullTranslationRu": "158\n• Всегда делать это, держась за поручни лестниц.\n• Держать руки свободными.\n• Обеспечивать три постоянные точки опоры и удержания: две руки и одна нога или две ноги и одна рука.\n• Проверять безопасность и прочность средства доступа, избегая мокрых лестниц или неустойчивых ступенек.\n• Избегать использования мобильного телефона или обращения с предметами в местах, которые могут быть скользкими или где есть риск пореза, например при удержании за клетку, при регулировке ремней, креплений или цепей. Нужно помнить, что во время управления запрещено пользоваться мобильным телефоном или наушниками.\n• Использовать рабочую одежду, которая не является слишком широкой и не болтается, чтобы она не могла зацепиться.\n• Избегать аксессуаров на шее и руках: шарфов, подтяжек, браслетов, цепочек, ожерелий, колец и других предметов.\n• Использовать подходящую обувь и перчатки, которые должен предоставить работодатель.\n• Средства индивидуальной защиты не устраняют риски, но служат барьером, уменьшающим вероятность инцидентов и заболеваний, связанных с работой.\nРекомендации\nХотя управление транспортным средством выполняется с места водителя, рабочая среда не ограничивается кабиной. Она включает всю единицу: прицеп, фургон, седельно-сцепное устройство, груз, место движения и места остановки для отдыха или снабжения, например придорожные стоянки и станции обслуживания, и т. д.\nВ этом контексте водитель постоянно должен принимать тысячи решений о маневрах, которые нужно выполнить. Такое постоянное состояние готовности является очень значительным источником стресса и усталости.\nЕсть дополнительные к управлению задачи, такие как:\n• Проверять общее состояние транспортной единицы, ее элементы безопасности и документы.\n• Ехать по длинным маршрутам, в течение которых нужно сохранять внимательность.\n• Физически перемещать разные грузы при операциях погрузки и разгрузки.\n• Контролировать груз и документы на него.\nОстановки для отдыха\nЧтобы уменьшить воздействие этих факторов, необходимо заранее планировать остановки для отдыха, во время которых умственная деятельность может краткосрочно восстановить способность к вниманию и долгосрочно защитить организм. Некоторые остановки можно также использовать для других действий, не связанных с управлением транспортным средством: поговорить по телефону, сходить в туалет, купить еду и/или напитки, выполнить дополнительную рабочую задачу и т. д.\nТак, решая эти задачи в специально отведенный момент, водитель не думает о них во время движения. Это снижает тревожность, которая могла бы вызвать отвлечение, и способствует более эффективному управлению.",
+        "simpleRu": "При подъеме и спуске держись за поручни, оставляй руки свободными и сохраняй три точки опоры. Не пользуйся телефоном на скользких или опасных местах; во время вождения телефон и наушники запрещены. Одежда не должна цепляться, а обувь и перчатки должны подходить для работы. Планируй остановки: на них можно отдохнуть, сходить в туалет, купить еду, позвонить и решить мелкие дела, чтобы не отвлекаться за рулем.",
+        "sourceTextSha256": "8c087c0012a68148734a8def478ceaf8967c85b8241f476e537cc70e8503ad3e",
+        "sourceFingerprint": "sha256:8c087c0012a68148734a8def478ceaf8967c85b8241f476e537cc70e8503ad3e",
+        "sourceSpan": {
+          "startLine": 3929,
+          "endLine": 3970
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--159-160",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 160,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 159: Por otro lado, realizar ejercicios de elongación previene la aparición de dolores musculares y"
+        ],
+        "officialLabel": "159",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "159\nPor otro lado, realizar ejercicios de elongación previene la aparición de dolores musculares y\nmejora la irrigación sanguínea, comprometida sobre todo en los miembros inferiores.\nRecomendaciones\n• Estando de pie, flexionar una pierna llevando el talón hacia el\nglúteo y tomar el pie con una mano para acercarlo más y sostener\ndurante 10 segundos.\n• Levantar una pierna y girar el pie sobre el eje de los tobillos\ncinco veces hacia cada lado. Realizarlo con cada uno de los\npies. Repetir el ejercicio de rotación pero manteniendo la punta\ndel pie apoyada en el suelo.\n• Inclinar la cabeza lentamente en dirección al hombro ayudando\ncon el brazo del mismo lado para estirar el lateral del cuello,\nevitando hacer demasiada fuerza o tensar los hombros. Man-\ntener 10 segundos y repetir del lado contrario.\n• Tomar con ambas manos la cabeza desde atrás, entrelazando\nlos dedos de ambas manos y llevar lentamente la cabeza hacia\nadelante y mantener durante 10 segundos. Luego realizar mo-\nvimientos de rotación de la cabeza hacia un lado y hacia el otro.\n• Girar los brazos simultáneamente cinco veces para adelante y\ncinco veces para atrás.\n• Colocar  una  mano  sobre  el  omóplato  contrario  intentando\nllevar levemente el codo hacia atrás y sostener el estiramiento\ndurante 10 segundos.\n• Apoyar ambas manos sobre una superficie vertical, estirar una\nde las piernas hacia atrás, apoyando la planta del pie y flexionar\nla otra inclinándose hacia adelante durante 10 segundos.\n• Caminar.  Éste  es  un  ejercicio  simple  que  se  puede  realizar\ndurante las paradas de descanso.\n",
+        "fullTranslationRu": "159\nС другой стороны, упражнения на растяжку предупреждают появление мышечных болей и улучшают кровообращение, которое особенно страдает в нижних конечностях.\nРекомендации\n• Стоя, согнуть одну ногу, подвести пятку к ягодице и взять стопу рукой, чтобы приблизить ее сильнее, удерживая 10 секунд.\n• Поднять одну ногу и повернуть стопу вокруг оси голеностопа пять раз в каждую сторону. Выполнить для каждой стопы. Повторить вращение, но удерживая носок стопы на полу.\n• Медленно наклонить голову к плечу, помогая рукой с той же стороны, чтобы растянуть боковую часть шеи, не прикладывая слишком много силы и не напрягая плечи. Удерживать 10 секунд и повторить с другой стороны.\n• Взять голову сзади обеими руками, переплетя пальцы, медленно наклонить голову вперед и удерживать 10 секунд. Затем выполнить вращательные движения головой в одну и другую сторону.\n• Одновременно вращать руками пять раз вперед и пять раз назад.\n• Положить одну руку на противоположную лопатку, слегка отводя локоть назад, и удерживать растяжку 10 секунд.\n• Опереться обеими руками о вертикальную поверхность, вытянуть одну ногу назад, поставить стопу на пол, согнуть другую ногу и наклониться вперед на 10 секунд.\n• Ходить. Это простое упражнение можно выполнять во время остановок для отдыха.",
+        "simpleRu": "На остановках полезно размяться: растяжка уменьшает боль в мышцах и улучшает кровообращение. Можно потянуть бедра, стопы, шею, руки, плечи и икры, удерживая положения примерно по 10 секунд. Самое простое упражнение - пройтись.",
+        "sourceTextSha256": "ccfcf1c679e2f58f6a3e1857e41ef87b6c8d6cb33d1edf4e136c365dafc9fd4f",
+        "sourceFingerprint": "sha256:ccfcf1c679e2f58f6a3e1857e41ef87b6c8d6cb33d1edf4e136c365dafc9fd4f",
+        "sourceSpan": {
+          "startLine": 3971,
+          "endLine": 4000
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--160-161",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 161,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 160: Alimentación"
+        ],
+        "officialLabel": "160",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "160\nAlimentación\nAquellas personas que conducen de manera profesional, se encuentran con la necesidad de\nalimentarse durante su horario laboral, por lo que es conveniente planificar su jornada tomando\nen cuenta esta situación, para que la manipulación e ingesta de los alimentos queden por\nfuera del momento en que se opera el vehículo.\nAdemás, debe considerarse tanto el tipo de alimentos, como la cantidad, ya que la digestión\npuede inducir estados de somnolencia.\nEsta situación puede verse incrementada si la conducción se realiza en horarios nocturnos\no cuando se está en un estado de fatiga por haber operado el vehículo durante varias horas.\nSi bien es recomendable evitar la conducción en determinadas condiciones (fuertes lluvias;\nde noche, etc.) es probable que estos conductores y conductoras profesionales, en el marco\nde sus obligaciones laborales, no estén en situación de poder definirlas. Justamente, uno de\nlos grandes desafíos es tener que realizar la tarea de conducir en circunstancias que tienen\ndificultades adicionales y, por ello, se debe tener un riguroso respeto por las normas y las\nrecomendaciones de seguridad.\nPostura corporal\nRealizar cualquier actividad en una misma posición durante largo tiempo puede traer aparejado\nalgunas  lesiones  musculares  y  articulares.  En  consecuencia,  mantener  una  buena  postura\nreduce la probabilidad de sufrir estas lesiones y, además, incrementa la seguridad de quien\nconduce en el caso de producirse un siniestro.\n",
+        "fullTranslationRu": "160\nПитание\nЛюди, которые управляют профессионально, вынуждены питаться в рабочее время, поэтому удобно планировать рабочий день с учетом этого, чтобы обращение с едой и прием пищи происходили не в момент управления транспортным средством.\nКроме того, нужно учитывать как тип продуктов, так и их количество, потому что пищеварение может вызывать сонливость.\nТакая ситуация может усиливаться, если вождение происходит ночью или когда человек находится в состоянии усталости после нескольких часов управления транспортным средством.\nХотя рекомендуется избегать управления в определенных условиях, например при сильном дожде или ночью, вероятно, что эти профессиональные водители в рамках своих трудовых обязанностей не могут сами определить такие условия. Именно поэтому одна из больших сложностей - необходимость управлять в обстоятельствах с дополнительными трудностями. Поэтому нужно строго соблюдать правила и рекомендации безопасности.\nПоложение тела\nВыполнение любой деятельности в одной и той же позе в течение долгого времени может повлечь некоторые мышечные и суставные травмы. Поэтому хорошая осанка снижает вероятность таких травм и, кроме того, повышает безопасность водителя в случае происшествия.",
+        "simpleRu": "Планируй еду так, чтобы не есть за рулем. Тяжелая или большая порция может вызвать сонливость, особенно ночью или после долгой работы. Если приходится вести в сложных условиях, нужно еще строже соблюдать правила. Долгое сидение в одной позе вредно, поэтому правильная посадка помогает здоровью и безопасности.",
+        "sourceTextSha256": "a4b195a85ec34b3983aca967840358638d8b7e507eb069fef748975c5a50e6b3",
+        "sourceFingerprint": "sha256:a4b195a85ec34b3983aca967840358638d8b7e507eb069fef748975c5a50e6b3",
+        "sourceSpan": {
+          "startLine": 4001,
+          "endLine": 4022
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--161-162",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 162,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 161: La conducción “al límite” siempre tiene"
+        ],
+        "officialLabel": "161",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "161\nLa conducción “al límite” siempre tiene\nconsecuencias negativas.\nPendientes y curvas\nEn las mismas se crean situaciones peligrosas porque:\n    • Bloquean la visión hacia adelante y la posibilidad de ser vistos por conductores/as.\n    • Provocan que los vehículos se muevan más lenta o rápidamente de lo que es seguro.\nLas personas que conducen de manera profesional se ven expuestas a diversas situaciones que\npueden dificultar, en mayor o menor medida, la actividad de conducir y por eso, es fundamental\nque respeten estrictamente las normas de tránsito. Las mismas, proveen un marco para intervenir\ncon efectividad en situaciones imprevistas del tránsito. Su cumplimiento brinda las condiciones\nde posibilidad de una conducción preventiva. Por ejemplo, al conducir a una velocidad excesiva\no procurando continuar una onda verde que está por interrumpirse, resultará muy difícil detener\nel vehículo, lo que provocará el incumplimiento de la obligación de detenerse frente a la luz roja\no la generación de lesiones.\nDel  mismo  modo,  no  existe  posibilidad  de  prevención,  cuando  se  conduce  al  límite  de  las\npropias posibilidades: realizando sobrepasos arriesgados, pasando muy cerca de otros vehículos,\nzigzagueando,  desplazándose  a  velocidades  inadecuadas,  disputándose  agresivamente  el\nespacio con otras personas o cruzando semáforos en amarillo.\nEstas acciones, además, conllevan un aumento en los niveles de estrés que tiene un impacto\nsignificativo en el organismo, deteriorando la salud física y mental e incrementando el riesgo\nde sufrir diversas enfermedades. Por ello, aún cuando no pueda percibirse en lo inmediato y\nen toda su magnitud:\nConducción segura\nEl  reconocimiento  de  los  límites  personales,  del  vehículo  y  el  entorno,  son  fundamentales\npara un manejo seguro. Ante la duda es necesario extremar las precauciones, evitar riesgos,\naun  cuando  en  apariencia  sean  condiciones  inofensivas.  De  esta  manera,  la  anticipación\nconstituye uno de los mejores aliados de quien conduce pero de poco sirve prestar atención\na lo que sucede 10 ó 15 segundos delante, si no se sabe interpretar las señales que el entorno\nproporciona.\n",
+        "fullTranslationRu": "161\nВождение «на пределе» всегда имеет отрицательные последствия.\nСпуски, подъемы и повороты\nВ них возникают опасные ситуации, потому что:\n• Они закрывают обзор вперед и возможность быть замеченными другими водителями.\n• Они заставляют транспортные средства двигаться медленнее или быстрее, чем безопасно.\nПрофессиональные водители сталкиваются с разными ситуациями, которые в большей или меньшей степени могут осложнить управление. Поэтому принципиально важно строго соблюдать правила дорожного движения. Эти правила дают основу для эффективных действий в непредвиденных дорожных ситуациях. Их соблюдение создает условия для предупредительного управления. Например, если ехать с чрезмерной скоростью или пытаться продолжить «зеленую волну», которая вот-вот прервется, будет очень трудно остановить транспортное средство. Это приведет к нарушению обязанности остановиться на красный свет или к травмам.\nТочно так же профилактика невозможна, когда водитель едет на пределе собственных возможностей: выполняет рискованные обгоны, проезжает слишком близко к другим транспортным средствам, петляет, движется с неподходящей скоростью, агрессивно спорит за пространство с другими людьми или проезжает светофоры на желтый свет.\nКроме того, такие действия повышают уровень стресса, который существенно влияет на организм, ухудшая физическое и психическое здоровье и увеличивая риск разных заболеваний. Поэтому, даже если это сразу и полностью не ощущается:\nБезопасное управление\nПризнание личных пределов, пределов транспортного средства и окружающей среды является основой безопасного вождения. При сомнении нужно усиливать меры предосторожности и избегать рисков, даже если условия кажутся безобидными. Поэтому предвидение - один из лучших союзников водителя, но мало пользы смотреть на 10 или 15 секунд вперед, если не уметь понимать сигналы, которые дает окружающая среда.",
+        "simpleRu": "Не веди «на пределе». На подъемах, спусках и резких поворотах хуже обзор и сложнее остановиться. Опасны гонка за зеленым светом, рискованный обгон, езда слишком близко, резкие перестроения и проезд на желтый. Безопасное вождение начинается с понимания своих пределов, возможностей машины и дорожной обстановки.",
+        "sourceTextSha256": "2837be9b1f6b40550115224f489c9a319e0759251ac02cc28b83d13af129691d",
+        "sourceFingerprint": "sha256:2837be9b1f6b40550115224f489c9a319e0759251ac02cc28b83d13af129691d",
+        "sourceSpan": {
+          "startLine": 4023,
+          "endLine": 4053
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--162-163",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 163,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 162: Cuando se conduce en una pendiente o una curva pronunciada, debe hacerse lo suficientemente"
+        ],
+        "officialLabel": "162",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "162\nCuando se conduce en una pendiente o una curva pronunciada, debe hacerse lo suficientemente\nlento para poder detenerse, ya que no se puede prever qué hay del otro lado.\n",
+        "fullTranslationRu": "162\nКогда водитель едет по склону или резкому повороту, нужно двигаться достаточно медленно, чтобы иметь возможность остановиться, потому что невозможно заранее знать, что находится с другой стороны.",
+        "simpleRu": "На крутом повороте или склоне снижай скорость заранее. Ехать нужно так, чтобы успеть остановиться, если за поворотом или подъемом появится опасность.",
+        "sourceTextSha256": "9695d679c792ea4519788ab3285687f9abb8ec2f4498bcc123950d464def9f0b",
+        "sourceFingerprint": "sha256:9695d679c792ea4519788ab3285687f9abb8ec2f4498bcc123950d464def9f0b",
+        "sourceSpan": {
+          "startLine": 4054,
+          "endLine": 4057
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--163-164",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 164,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 163: Usuarios/as vulnerables"
+        ],
+        "officialLabel": "163",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "163\nUsuarios/as vulnerables\nConducir por la Ciudad implica interactuar y convivir con otras figuras del tránsito. Para mejorar\nla convivencia en la vía pública, es importante entender que no todas están protegidas por\nuna carrocería, ni cuentan con cinturones de seguridad o airbags. Quienes están más expuestas,\nlas personas más vulnerables, son peatones, ciclistas y motociclistas.\nQuienes conducen de manera profesional no se encuentran dentro del grupo vulnerable, sin embargo\ntienen una elevada participación en los siniestros con peatones o motociclistas como víctimas fatales.\nEn cuanto a los vehículos de gran porte, éstos son más pesados y requieren de un mayor espacio\npara  circular  y  maniobrar.  Por  sus  dimensiones,  un  “volantazo”  ante  un  imprevisto  generará\nuna  situación  de  mayor  riesgo  ya  que  se  transformará  repentinamente  en  un  obstáculo  de\ngran volumen para otros vehículos que circulen por la misma vía,  que se verán “encerrados”\npor éste. A su vez, revertir el efecto de esta maniobra llevará más tiempo y con ello, mayor\ncantidad de metros recorridos, con un potencial peligro para otras figuras de la vía pública.\nDistancia respecto de ciclistas\nMuchas personas conductoras deciden aventurarse a sobrepasar a un/a ciclista sin tener en\ncuenta que de producirse un mínimo contacto, se expone a la persona a una caída ya que\nal utilizar un vehículo de dos ruedas es propensa a perder el equilibrio con mayor facilidad.\nPor eso, cuando se circula con cualquier vehículo cerca de un/a ciclista es importante mantener\nuna distancia de seguridad de 1,5 metros. Más aún cuando el vehículo que se conduce es de\nmayor porte, como un camión o colectivo, ya que los giros son más riesgosos (off tracking),\npudiendo producirse el contacto con la parte posterior del vehículo y generar, así, la caída en\nlas proximidades de sus ruedas traseras. También, debe tener cuidado al girar en intersecciones\ny mirar previamente hacia ambos lados sobre todo, en aquellas esquinas donde existe cruce\nde ciclovías o bicisendas.\n",
+        "fullTranslationRu": "163\nУязвимые участники движения\nЕзда по городу означает взаимодействие и сосуществование с другими участниками дорожного движения. Для лучшего сосуществования на общественной дороге важно понимать, что не все защищены кузовом, ремнями безопасности или подушками безопасности. Наиболее подвержены риску, то есть наиболее уязвимы, пешеходы, велосипедисты и мотоциклисты.\nПрофессиональные водители не относятся к уязвимой группе, однако они часто участвуют в происшествиях, где погибшими становятся пешеходы или мотоциклисты.\nКрупногабаритные транспортные средства тяжелее и требуют больше места для движения и маневров. Из-за их размеров резкий рывок рулем при неожиданности создаст более опасную ситуацию: транспортное средство внезапно превратится в крупное препятствие для других транспортных средств на той же дороге, которые окажутся «зажаты» им. Кроме того, исправление последствий такого маневра займет больше времени и, значит, больше пройденных метров, с потенциальной опасностью для других участников общественной дороги.\nРасстояние до велосипедистов\nМногие водители решаются обогнать велосипедиста, не учитывая, что даже минимальный контакт подвергает человека падению, потому что на двухколесном транспортном средстве легче потерять равновесие.\nПоэтому при движении на любом транспортном средстве рядом с велосипедистом важно сохранять безопасную дистанцию 1,5 метра. Это особенно важно, когда управляемое транспортное средство крупнее, например грузовик или автобус, потому что повороты более рискованны из-за эффекта off tracking, то есть движения задней части по меньшей дуге. Может произойти контакт задней частью транспортного средства, что вызовет падение рядом с его задними колесами. Также нужно быть осторожным при поворотах на перекрестках и заранее смотреть в обе стороны, особенно на углах, где есть пересечение велодорожек или велосипедных полос.",
+        "simpleRu": "Самые уязвимые на дороге - пешеходы, велосипедисты и мотоциклисты: их не защищает кузов машины. Большому транспортному средству нужно больше места, а резкий маневр может зажать других. При обгоне велосипедиста держи не меньше 1,5 м. На поворотах грузовик или автобус может задней частью задеть велосипедиста, поэтому заранее смотри в обе стороны, особенно там, где есть велодорожка.",
+        "sourceTextSha256": "9f2b18e80502d6aacfcf1fd95862c1b0aedc73c07a647d933b8d2e9921759876",
+        "sourceFingerprint": "sha256:9f2b18e80502d6aacfcf1fd95862c1b0aedc73c07a647d933b8d2e9921759876",
+        "sourceSpan": {
+          "startLine": 4058,
+          "endLine": 4083
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--164-165",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 165,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 164: Esta misma situación de riesgo está presente con motociclistas, por ello es recomendable"
+        ],
+        "officialLabel": "164",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "164\nEsta misma situación de riesgo está presente con motociclistas, por ello es recomendable\ncircular a una distancia prudencial teniendo en cuenta el propio radio de giro, las corrientes de\naire generadas por la propia estructura del vehículo y la mayor superficie involucrada como\npunto ciego.\nEl off tracking y el cruce de peatones\nEl término off-tracking refiere a un fenómeno que involucra a todos los vehículos con dirección\nen el eje delantero solamente, pudiendo ser un problema en aquellos vehículos de gran porte\ncomo colectivos y camiones, debido a su tamaño y peso.\nCuando estos vehículos giran, la trayectoria de sus ruedas traseras tiene un arco de curvatura\nde menor radio que las delanteras, lo que puede resultar peligroso para las personas, bicis\ny motos que se disponen a cruzar y se encuentran sorpresivamente con la embestida de la\npared lateral del vehículo.\n",
+        "fullTranslationRu": "164\nТакая же рискованная ситуация существует с мотоциклистами, поэтому рекомендуется двигаться на разумной дистанции, учитывая собственный радиус поворота, воздушные потоки, создаваемые конструкцией транспортного средства, и большую площадь, которая становится слепой зоной.\nЭффект off tracking и переход пешеходов\nТермин off-tracking означает явление, затрагивающее все транспортные средства, у которых управление находится только на передней оси. Это может быть проблемой у крупногабаритных транспортных средств, например автобусов и грузовиков, из-за их размера и массы.\nКогда такие транспортные средства поворачивают, траектория их задних колес имеет дугу меньшего радиуса, чем передние колеса. Это может быть опасно для людей, велосипедов и мотоциклов, которые собираются переходить или пересекать дорогу и неожиданно сталкиваются с боковой стенкой транспортного средства.",
+        "simpleRu": "С мотоциклистами тоже нужна большая осторожность. Учитывай радиус поворота, воздушный поток от крупной машины и слепые зоны. Off tracking означает, что задние колеса на повороте идут ближе к углу, чем передние. Из-за этого бок грузовика или автобуса может неожиданно «срезать» путь пешеходу, велосипедисту или мотоциклисту.",
+        "sourceTextSha256": "047f749c8ce1cd061b4ee67cfc5e0fb45daaf61feb26ce7a42706fa4f695858c",
+        "sourceFingerprint": "sha256:047f749c8ce1cd061b4ee67cfc5e0fb45daaf61feb26ce7a42706fa4f695858c",
+        "sourceSpan": {
+          "startLine": 4084,
+          "endLine": 4097
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--165-166",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 166,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 165: En este cálculo, debe considerarse la senda peatonal que se encuentra en la siguiente cuadra."
+        ],
+        "officialLabel": "165",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "165\nEn este cálculo, debe considerarse la senda peatonal que se encuentra en la siguiente cuadra.\nRespetar las sendas peatonales es fundamental para que las personas que circulan a pie no\nse encuentren obligadas a tener que hacerlo por zonas que las ponen en riesgo.\nVelocidad\nEl tiempo que se tarda en llegar a destino no es un tema menor cuando quien contrata el\nservicio elige pagar por un determinado traslado de mercadería. Muchas de estas personas\nlo solicitan con el tiempo justo y buscan la opción más rápida.\nEl exceso de velocidad es un tipo de comportamiento de conducción agresivo, que por lo\ngeneral, tiene varios factores que contribuyen a él. Entre ellos se destacan la congestión del\ntránsito, el tiempo, la falta de solidaridad con el entorno y el estrés. El peligro se potencia\ntodavía más en vehículos de gran porte: cuanto más grande su tamaño, mayor es la probabilidad\nde generar una fatalidad.\nEstacionamiento y detenciones\nHacerlo en lugares prohibidos o no habilitados para tal fin (aún cuando se realicen por breves\nlapsos de tiempo) siempre implica un riesgo potencial, viéndose mayormente perjudicados\nlas personas más vulnerables. Por eso, respetar estas zonas es indispensable para la prevención\nde siniestros, aún cuando en determinadas circunstancias no pueda valorizarse la magnitud\nde la efectividad de estas medidas, al desconocer el impacto que provoca en el entorno.\nEsto es extensible también a la carga, que no debe ubicarse en espacios de la vía pública\nque  pudiera  obstaculizar  el  paso  o  la  visibilidad  para  otras  figuras  del  tránsito,  quedando\nprohibido depositar mercancías, muebles o artefactos en la calzada.\nLa detención de vehículos para operar en carga y descarga de mercaderías debe efectuarse\nrespetando estrictamente los lugares y horarios que establecen las normas de estacionamiento,\nexcepto en los sectores donde se especifiquen otras modalidades con señalización\n5\n.\nEn zonas y horarios de mucho tránsito, antes de acceder a la bocacalle, es necesario asegurarse\nque el vehículo cuente con el espacio suficiente para realizar el cruce completo de la vía, ya\nque de no ser así, podría derivar en el bloqueo de la intersección.\n5/ Art. 7.1.17 “Estacionamiento Carga y Descarga en Obras” del Código de Tránsito y Transporte de la ciudad Autónoma de Buenos Aires.\n",
+        "fullTranslationRu": "165\nВ этом расчете нужно учитывать пешеходный переход, который находится на следующем квартале. Уважать пешеходные переходы принципиально важно, чтобы люди, идущие пешком, не были вынуждены двигаться по зонам, где они подвергаются риску.\nСкорость\nВремя прибытия к месту назначения не является незначительным вопросом, когда заказчик услуги выбирает оплату конкретной перевозки товара. Многие заказчики просят перевозку почти без запаса времени и ищут самый быстрый вариант.\nПревышение скорости - это вид агрессивного водительского поведения, которому обычно способствует несколько факторов. Среди них выделяются дорожная загруженность, нехватка времени, недостаток солидарности с окружающими и стресс. Опасность еще больше усиливается у крупногабаритных транспортных средств: чем больше их размер, тем выше вероятность вызвать смертельный исход.\nСтоянка и остановки\nОстановка или стоянка в запрещенных или неразрешенных местах, даже на короткое время, всегда создает потенциальный риск. Больше всего страдают наиболее уязвимые люди. Поэтому соблюдение таких зон необходимо для предупреждения происшествий, даже если в конкретных обстоятельствах невозможно полностью оценить эффективность этих мер, потому что неизвестно, какое влияние нарушение оказывает на окружающую обстановку.\nЭто распространяется и на груз: его нельзя размещать в местах общественной дороги, где он может препятствовать проходу или видимости для других участников движения. Запрещено складывать товары, мебель или предметы на проезжей части.\nОстановка транспортных средств для погрузки и разгрузки товаров должна выполняться со строгим соблюдением мест и часов, установленных правилами стоянки, кроме участков, где дорожными знаками указаны другие режимы.\n5\nВ зонах и в часы интенсивного движения перед въездом в перекресток нужно убедиться, что у транспортного средства достаточно места, чтобы полностью пересечь дорогу. Иначе оно может заблокировать перекресток.\n5/ Ст. 7.1.17 «Стоянка для погрузки и разгрузки на строительных работах» Кодекса дорожного движения и транспорта Автономного города Буэнос-Айрес.",
+        "simpleRu": "На повороте думай не только о текущем переходе, но и о следующем квартале. Пешеходные переходы нельзя закрывать. Давление по времени не оправдывает скорость: для большого транспорта превышение особенно опасно. Нельзя останавливаться, парковаться или класть груз там, где это запрещено или мешает проходу и обзору. На перекресток въезжай только если есть место полностью его проехать.",
+        "sourceTextSha256": "bdcd9473f906ef172e734f5a87ea22a7bd57abedeceb219aabfef2f47ab447d4",
+        "sourceFingerprint": "sha256:bdcd9473f906ef172e734f5a87ea22a7bd57abedeceb219aabfef2f47ab447d4",
+        "sourceSpan": {
+          "startLine": 4098,
+          "endLine": 4129
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--166-167",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 167,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 166: Circulación en la vía"
+        ],
+        "officialLabel": "166",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "166\nCirculación en la vía\nEn autopistas y otras vías rápidas, los vehículos de transporte de carga deben circular únicamente\npor el carril de la derecha, excepto cuando deseen realizar un sobrepaso.\nCuando se trate de arterias de más de dos carriles por mano (excepto autopistas y otras vías\nrápidas), los camiones, casas rodantes y vehículos con acoplados o semiacoplados, deben\ncircular por el segundo y tercer carril adyacentes a la acera derecha, pudiendo abandonarlos\ncon suficiente antelación sólo para sobrepasar a otro vehículo o para egresar de la arteria\npor la que transita.\nEn aquellas vías, no contempladas anteriormente, donde no estén presentes señales o líneas\ndemarcatorias  específicas,  todos  los  vehículos  deben  circular  por  la  parte  derecha  de  la\ncalzada, debiendo respetar las vías o carriles exclusivos o preferenciales y los horarios establecidos\npara  transitarlos.  Los  carriles  izquierdos  se  reservan  para  el  sobrepaso  de  vehículos  cuya\nvelocidad  sea  inferior  a  la  del  vehículo  propio,  respetando  la  velocidad  máxima  permitida\npara la arteria.\nSi al tomar una rotonda y/o girar, la persona que conduce un vehículo de gran porte, necesita “abrirse”\nhacia la izquierda y ocupar un segundo carril para que la parte posterior del semirremolque no\nsuba al cordón, deberá respetar la prioridad de los vehículos que circulan por el carril que pretende\nocupar.  Además,  deberá  poner  de  sobreaviso  su  maniobra,  indicándose  con  las  luces  de  giro\ncorrespondientes.\nEn efecto, es importante siempre pensar con calma y recordar que la vida está por encima\nde todo. Asimismo, como fue mencionado, para lograr un tránsito más seguro, es necesario\ntener presente que la velocidad máxima establecida en las distintas vías de circulación no es\ngarantía de seguridad. Siempre se debe circular a una velocidad precautoria, manteniendo\nla distancia mínima de seguridad entre los vehículos.\n",
+        "fullTranslationRu": "166\nДвижение по дороге\nНа автомагистралях и других скоростных дорогах транспортные средства для перевозки грузов должны двигаться только по правой полосе, кроме случаев, когда они хотят выполнить обгон.\nКогда речь идет об улицах с более чем двумя полосами в каждом направлении, кроме автомагистралей и других скоростных дорог, грузовики, дома на колесах и транспортные средства с прицепами или полуприцепами должны двигаться по второй и третьей полосам, прилегающим к правому тротуару. Они могут покинуть эти полосы с достаточным заблаговременным расчетом только для обгона другого транспортного средства или для выезда с улицы, по которой движутся.\nНа дорогах, не указанных выше, где нет специальных знаков или разметки, все транспортные средства должны двигаться по правой части проезжей части. При этом нужно соблюдать исключительные или приоритетные дороги и полосы, а также установленные часы движения по ним. Левые полосы предназначены для обгона транспортных средств, скорость которых ниже скорости собственного транспортного средства, с соблюдением максимальной разрешенной скорости для этой улицы.\nЕсли при въезде на круговое движение и/или при повороте водитель крупногабаритного транспортного средства должен «открыться» влево и занять вторую полосу, чтобы задняя часть полуприцепа не заехала на бордюр, он должен соблюдать преимущество транспортных средств, движущихся по полосе, которую он собирается занять. Кроме того, он должен заранее предупредить о маневре соответствующими указателями поворота.\nПоэтому важно всегда спокойно думать и помнить, что жизнь выше всего. Также, как уже сказано, для более безопасного движения нужно помнить: установленная на разных дорогах максимальная скорость не является гарантией безопасности. Всегда нужно ехать с предосторожной скоростью, сохраняя минимальную безопасную дистанцию между транспортными средствами.",
+        "simpleRu": "На автомагистралях грузовой транспорт едет справа, кроме обгона. На обычных улицах с более чем двумя полосами в одну сторону грузовики, автодома и составы с прицепами используют вторую и третью полосы от правого тротуара, а уходят с них заранее для обгона или выезда. Если большой машине на круге или повороте нужно занять соседнюю полосу, водитель обязан уступить тем, кто уже там едет, и заранее включить поворотник. Максимальная разрешенная скорость не всегда безопасна: держи осторожную скорость и дистанцию.",
+        "sourceTextSha256": "1f4ca3a42802333f1fb30bef49d61864e069285764c45baf030afa5228084f8b",
+        "sourceFingerprint": "sha256:1f4ca3a42802333f1fb30bef49d61864e069285764c45baf030afa5228084f8b",
+        "sourceSpan": {
+          "startLine": 4130,
+          "endLine": 4155
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--167-168",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 168,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 167: Consiste en la red de avenidas y calles por las"
+        ],
+        "officialLabel": "167",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "167\nConsiste en la red de avenidas y calles por las\nque pueden circular vehículos de un peso total\nbruto superior a 12 toneladas, según el Código\nde Tránsito y Transporte de la Ciudad Autónoma\nde Buenos Aires 9.10.1. y 9.10.5, su Anexo I, y sus\nmodificaciones según la Ley 6401 de 2020\n6\n.\nEsta red comprende 205 kilómetros involucrando\na 95 calles y avenidas y a 39 de los 48 barrios\nde la ciudad. La mayor cantidad de kilómetros\npor  comuna  la  contiene  la  Comuna  4  (35,5\nkm),  y  por  barrios  el  de  Barracas  (20,9  km),\nsiendo  la  arteria  más  larga  la  Avenida  Juan  B\nJusto con 12,0 kilómetros.\n6/ Para saber cuáles son las arterias incluidas en la Red de Tránsito Pesado ver art. 9.10.5 Del Código de Tránsito y Transporte de CABA\nhttp://www2.cedom.gob.ar/es/legislacion/normas/leyes/anexos/al2148Ie.html#d1\nPaseo del Bajo\n1. El Paseo del Bajo es el primer corredor vial preferencial para tránsito pesado (es decir, camiones\ny acoplados cuyo peso en forma individual sea igual o mayor a 12 toneladas) y Ómnibus de\nTransporte de Pasajeros de Larga Distancia con capacidad mayor de 19 asientos habilitados\npara operar en turismo (circulen con o sin pasajeros), que une la Autopista Illia con la Autopista\nBuenos Aires La Plata y con la Autopista 25 de mayo, con lo que articula la circulación de estos\nvehículos entre el norte, el sur y el oeste de la ciudad atravesándola sin conflictos con la circulación\nde  peatones,  vehículos  particulares  ni  ómnibus  urbanos,  ya  que  circulan  a  distinto  nivel,  lo\nque permite segregarlos. La velocidad máxima para circular en los distintos niveles es de 60\nKm/h. https://buenosaires.gob.ar/desarrollo-urbano-y-transporte/noticias/como-sera-la-cir-\nculacion-para-el-transito-pesado-y\n2. Se encuentra prohibida la circulación de ciclorodados, motovehículos, automóviles, taxis,\nremises, líneas de colectivos del autotransporte público de pasajeros y de todo tipo de\nvehículo que no estuviere permitido en el punto anterior.\n3. Se prohíbe el estacionamiento y la detención de los vehículos durante las 24 horas, en\nambas calzadas.\n4. Los vehículos que durante el uso del Paseo del Bajo experimentaren situaciones o inconvenientes\nque deriven en la imposibilidad de continuar con su marcha normal, deberán dar aviso a AUSA,\nquien procederá a remolcarlos y retirarlos.\n5. Tanto  los  vehículos  de  emergencia,  en  ocasión  de  cumplir  con  sus  servicios  específicos,\ncomo los vehículos debidamente autorizados para el acompañamiento de Tránsito Pesado,\npodrán circular excepcionalmente, dando previo aviso obligatorio a Autopistas Urbanas S.A.\n6. Toda persona propietaria de un vehículo afectado al transporte de sustancias peligrosas,\nsea particular o empresa, para poder circular deberá dar previo aviso a Autopistas Urbanas\nS.A., a fin de autorizar su circulación y adoptar las previsiones que el caso amerite.\n7.     Toda persona propietaria de un vehículo afectado al transporte de cargas excepcionales e\nindivisibles con dimensiones especiales que superen las establecidas en el artículo 9.1.2\ndel Código de Tránsito y Transporte de CABA, sea particular o comercial, deberán tramitar\nde  modo  previo  el  permiso  correspondiente  para  poder  circular  ante  la  Autoridad  de\nAplicación o ante quien esta designe, quien determinará las condiciones para la circulación\ncorrespondiente.\nRed de tránsito pesado\nConsultá  el  mapa  de  la  Red  de  Tránsito  Pesado:  https://buenosaires.gob.ar/movilidad/geren-\ncia-operativa-de-logistica-urbana/normativa-general/red-de-transito-pesado\n",
+        "fullTranslationRu": "167\nОна состоит из сети проспектов и улиц, по которым могут двигаться транспортные средства с полной массой более 12 тонн, согласно Кодексу дорожного движения и транспорта Автономного города Буэнос-Айрес, пунктам 9.10.1 и 9.10.5, его Приложению I и изменениям по Закону 6401 от 2020 года.\n6\nЭта сеть включает 205 километров, охватывает 95 улиц и проспектов и 39 из 48 районов города. Больше всего километров по коммунам приходится на Коммуну 4: 35,5 км, а по районам - на Barracas: 20,9 км. Самая длинная улица сети - Avenida Juan B. Justo, 12,0 километра.\n6/ Чтобы узнать, какие улицы включены в Сеть движения тяжелого транспорта, см. ст. 9.10.5 Кодекса дорожного движения и транспорта CABA (Автономного города Буэнос-Айрес): http://www2.cedom.gob.ar/es/legislacion/normas/leyes/anexos/al2148Ie.html#d1\nPaseo del Bajo\n1. Paseo del Bajo - первый предпочтительный дорожный коридор для тяжелого транспорта, то есть грузовиков и прицепов, индивидуальная масса которых равна 12 тоннам или больше, а также автобусов дальнего пассажирского транспорта вместимостью более 19 мест, допущенных к туристическим перевозкам, независимо от того, едут они с пассажирами или без. Он соединяет Autopista Illia с Autopista Buenos Aires-La Plata и Autopista 25 de Mayo, организуя движение этих транспортных средств между севером, югом и западом города через город без конфликтов с пешеходами, частными автомобилями и городскими автобусами, потому что движение проходит на другом уровне и позволяет их отделить. Максимальная скорость на разных уровнях - 60 км/ч. https://buenosaires.gob.ar/desarrollo-urbano-y-transporte/noticias/como-sera-la-circulacion-para-el-transito-pesado-y\n2. Запрещено движение велосипедных транспортных средств, мототранспортных средств, автомобилей, такси, ремисов, линий автобусов общественного пассажирского автотранспорта и любого вида транспортного средства, которое не разрешено в предыдущем пункте.\n3. Стоянка и остановка транспортных средств запрещены 24 часа в сутки на обеих проезжих частях.\n4. Если транспортные средства при использовании Paseo del Bajo столкнутся с ситуациями или неисправностями, из-за которых невозможно продолжать нормальное движение, они должны сообщить AUSA, которая выполнит их буксировку и удаление.\n5. Транспортные средства экстренных служб при выполнении своих специальных служб, а также транспортные средства, надлежащим образом уполномоченные сопровождать тяжелый транспорт, могут двигаться в исключительном порядке с обязательным предварительным уведомлением Autopistas Urbanas S.A.\n6. Любой владелец транспортного средства, предназначенного для перевозки опасных веществ, будь то частное лицо или компания, чтобы иметь возможность двигаться, должен предварительно уведомить Autopistas Urbanas S.A., чтобы получить разрешение на движение и чтобы были приняты меры предосторожности, которых требует случай.\n7. Любой владелец транспортного средства, предназначенного для перевозки исключительных и неделимых грузов со специальными размерами, превышающими размеры, установленные в статье 9.1.2 Кодекса дорожного движения и транспорта CABA (Автономного города Буэнос-Айрес), будь то частное или коммерческое лицо, должен заранее оформить соответствующее разрешение на движение у Органа применения или у того, кого он назначит; этот орган определит условия соответствующего движения.\nСеть движения тяжелого транспорта\nСм. карту Сети движения тяжелого транспорта: https://buenosaires.gob.ar/movilidad/gerencia-operativa-de-logistica-urbana/normativa-general/red-de-transito-pesado",
+        "simpleRu": "Сеть движения тяжелого транспорта - это улицы и проспекты, где могут ехать машины тяжелее 12 тонн. Она охватывает 205 км, 95 улиц и 39 районов. Paseo del Bajo - специальный коридор для тяжелых грузовиков, прицепов и дальних автобусов; там максимум 60 км/ч, нельзя ехать обычным автомобилям, такси, мото и городским автобусам, а стоянка и остановка запрещены круглосуточно. Для поломки нужно вызывать AUSA. Для опасных, исключительных или неделимых грузов нужны предварительные уведомления или разрешения.",
+        "sourceTextSha256": "7c8832762ae685d48b5807bbf534236d8fb0e3bda8cc9369e891b0da349b8a1e",
+        "sourceFingerprint": "sha256:7c8832762ae685d48b5807bbf534236d8fb0e3bda8cc9369e891b0da349b8a1e",
+        "sourceSpan": {
+          "startLine": 4156,
+          "endLine": 4208
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--168-169",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 169,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 168: Todos los vehículos tienen una vida útil y después de eso aparece un desgaste natural que"
+        ],
+        "officialLabel": "168",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "168\nTodos los vehículos tienen una vida útil y después de eso aparece un desgaste natural que\npuede poner en riesgo la vida de quienes abordan el vehículo y del resto de las personas\nusuarias de la vía pública, especialmente peatones.\nDe allí, la importancia de la Verificación Técnica Vehicular en la cual se realiza un chequeo\nmecánico a los vehículos, con el propósito de garantizar el cumplimiento de las normas de\nseguridad  vial,  prevenir  y  reducir  siniestros  viales.  En  vehículos  destinados  al  servicio  de\ntransporte de carga y mercadería tienen mayor desgaste ya que al circular permanentemente\nestán expuestos a mayores probabilidades de exponerse a condiciones desfavorables (lluvia,\nviento, etc.) que exigen una mayor respuesta. Esta exigencia es aún mayor cuando se trata\nde vehículos de mayor porte que no transitan zonas urbanas, y utilizan vías donde se desarrollan\nvelocidades más altas, como rutas y autopistas.\nLas características específicas de los vehículos forman parte de los conocimientos que se\ndeben tener para actuar con profesionalismo. En el caso de los vehículos de transporte de\ncargas, además, deben tenerse en cuenta las particularidades del vehículo y de la carga que\nse transporta. Es obligación de quien conduce, supervisar que el vehículo se encuentre en\nadecuadas condiciones de seguridad ante de iniciar su marcha. Lo primero a saber es que\nexisten dos tipos de seguridad en el estado de un vehículo: seguridad activa y pasiva.\nÉsto, junto con el respeto por las normas y la atención focalizada en la conducción, harán que los\nconocimientos otorgados por la experiencia no sean utilizados para compensar incumplimientos\nnormativos o desatenciones, sino para facilitar las respuestas a las demandas que exige una\nconducción profesional.\nElementos de seguridad\n8. Los vehículos de Tránsito Pesado conformado por camiones y acoplados cuyo peso en\nforma individual sea igual o mayor a 12 toneladas que deban llegar a un destino comprendido\ndentro del área delimitada por Av. Paseo Colón, Leandro N. Alem, San Martín, Av. Antártida\nArgentina,  Cecilia  Grierson,  Av.  Int.  Hernán  M.  Giralt,  Av.  Dr.  Tristán  Achával  Rodríguez,\nElvira Rawson de Dellepiane, Av. Alicia Moreau de Justo y Av. San Juan, deberán tramitar\nde  modo  previo  el  permiso  correspondiente  para  poder  circular  ante  la  Autoridad  de\nAplicación o ante quien esta designe, quien determinará las condiciones para la circulación\ncorrespondiente.\n9.   Se autoriza de manera excepcional, sólo en el caso de que se produjere una contingencia vial\nque imposibilite totalmente la circulación a través del Paseo del Bajo, el Tránsito Pesado\nde camiones y acoplados cuyo peso en forma individual sea igual o mayor a 12 toneladas,\ncirculen o no cargados y de los Ómnibus de Transporte de Pasajeros de Larga Distancia,\ncon o sin pasajeros, que circularán por las siguientes arterias:\n• Sentido Sur - Norte: desde su ruta hacia Av. Elvira Rawson de Dellepiane, Calabria,\nAv. de los Italianos, Mariquita Sánchez de Thompson, Av. Int. Hernán M. Giralt,\nCecilia Grierson, Av. Antártida Argentina, Av. Ramón S. Castillo, su ruta.\n• Sentido  Norte  -  Sur:  desde  su  ruta  hacia  Av.  Ramón  S.  Castillo,  Av.  Antártida\nArgentina, San Martín, Av. Eduardo Madero, Av. Ing. Huergo, su ruta.\n",
+        "fullTranslationRu": "168\nУ всех транспортных средств есть срок службы, и после него появляется естественный износ, который может поставить под угрозу жизнь людей в транспортном средстве и остальных пользователей общественной дороги, особенно пешеходов.\nОтсюда важность технической проверки транспортного средства, при которой проводится механическая проверка с целью обеспечить соблюдение норм дорожной безопасности, предупредить и снизить количество дорожных происшествий. У транспортных средств, предназначенных для перевозки грузов и товаров, износ больше, потому что из-за постоянного движения они чаще подвергаются неблагоприятным условиям: дождю, ветру и т. д., требующим более высокой реакции. Это требование еще выше, когда речь идет о более крупных транспортных средствах, которые не ездят по городским зонам и используют дороги с более высокими скоростями, например трассы и автомагистрали.\nЗнание конкретных характеристик транспортных средств входит в знания, необходимые для профессиональных действий. В случае грузовых транспортных средств также нужно учитывать особенности самого транспортного средства и перевозимого груза. Водитель обязан перед началом движения проверить, что транспортное средство находится в надлежащих безопасных условиях. Первое, что нужно знать: в состоянии транспортного средства существуют два вида безопасности - активная и пассивная.\nЭто вместе с соблюдением правил и сосредоточенным вниманием на управлении позволит использовать знания, полученные из опыта, не для компенсации нарушений правил или невнимательности, а для облегчения ответа на требования профессионального управления.\nЭлементы безопасности\n8. Транспортные средства тяжелого движения, состоящие из грузовиков и прицепов, индивидуальная масса которых равна 12 тоннам или больше, если им нужно прибыть к пункту назначения внутри зоны, ограниченной Av. Paseo Colón, Leandro N. Alem, San Martín, Av. Antártida Argentina, Cecilia Grierson, Av. Int. Hernán M. Giralt, Av. Dr. Tristán Achával Rodríguez, Elvira Rawson de Dellepiane, Av. Alicia Moreau de Justo и Av. San Juan, должны заранее оформить соответствующее разрешение на движение у Органа применения или у того, кого он назначит; этот орган определит условия соответствующего движения.\n9. В исключительном порядке разрешается, только если возникнет дорожная непредвиденная ситуация, полностью исключающая движение через Paseo del Bajo, движение тяжелого транспорта - грузовиков и прицепов с индивидуальной массой 12 тонн или больше, с грузом или без него, а также автобусов дальнего пассажирского транспорта, с пассажирами или без, - по следующим улицам:\n• Направление Юг - Север: от своего маршрута к Av. Elvira Rawson de Dellepiane, Calabria, Av. de los Italianos, Mariquita Sánchez de Thompson, Av. Int. Hernán M. Giralt, Cecilia Grierson, Av. Antártida Argentina, Av. Ramón S. Castillo, затем свой маршрут.\n• Направление Север - Юг: от своего маршрута к Av. Ramón S. Castillo, Av. Antártida Argentina, San Martín, Av. Eduardo Madero, Av. Ing. Huergo, затем свой маршрут.",
+        "simpleRu": "Любая машина со временем изнашивается, поэтому VTV/техническая проверка важна для безопасности. Грузовой транспорт изнашивается сильнее, потому что много ездит и часто работает в сложных условиях. Водитель обязан перед поездкой проверить, что машина безопасна. Для тяжелого транспорта внутри указанной зоны города нужно заранее получать разрешение. Если Paseo del Bajo полностью закрыт из-за дорожной непредвиденной ситуации, тяжелые грузовики, прицепы и дальние автобусы могут ехать по указанным запасным маршрутам.",
+        "sourceTextSha256": "7e46853c0009a3e3b89179072dccbf0b426ebddac91319c214b7cf390afca4da",
+        "sourceFingerprint": "sha256:7e46853c0009a3e3b89179072dccbf0b426ebddac91319c214b7cf390afca4da",
+        "sourceSpan": {
+          "startLine": 4209,
+          "endLine": 4250
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--169-170",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 170,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 169: El motor como freno"
+        ],
+        "officialLabel": "169",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "169\nEl motor como freno\nEl frenado también se puede conseguir con el motor y cuanto más baja es su relación de\nmarcha, más retiene el vehículo. El frenado del motor en circulación normal es continuo, ya\nsea levantando el pie del acelerador, o bajando un cambio, que se emplea especialmente en\npendientes descendentes pronunciadas.\nSu uso evita un desgaste prematuro del sistema de frenado.\n• Realizar  la  revisión  de  los  frenos  cada  6  meses  como  mínimo  en  vehículos  con  uso\nfrecuente.\n• Mantener en perfecto estado los amortiguadores, de lo contrario, la distancia de frenado\npodría incrementarse un 10%.\n• Vigilar  el  estado  y  la  presión  de  los  neumáticos  porque  condicionan  la  eficacia  de  la\nfrenada.\n• Tener en cuenta el estado de la carretera: hay asfaltos que agarran mejor que otros, y el\nclima también influyen en la eficacia y la capacidad de la frenada.\n• Mantener el nivel indicado del líquido o presión de aire en el sistema de frenos.\nElementos de seguridad activa\nContribuyen a evitar que ocurra un siniestro, mejorando la eficacia y estabilidad, y garantizando\nel correcto funcionamiento del vehículo en movimiento. La seguridad activa está compuesta\nprincipalmente por:\n• Sistema de frenos.\n• Sistema de dirección.\n• Sistema de suspensión.\n• Neumáticos.\n• Espejos.\n• Otros: ABS, control dinámico de tracción, ajuste electrónico de suspensión, control de estabilidad\ny tracción automática, etc.\n\nSistema de frenos\nEl sistema de seguridad activa más importante del vehículo. Su función es la de detener, o\ndisminuir la velocidad de un vehículo sin perder su trayectoria.\nEn la acción del frenado, también influyen otras causas: la velocidad desarrollada, las condiciones\nde la vía por la que se circula (estado del asfalto, clima, etc.) y la mecánica vehicular (estado\ny presión de los neumáticos, funcionamiento de los amortiguadores, etc.).\nRecomendaciones\n",
+        "fullTranslationRu": "169\nДвигатель как тормоз\nТорможение также можно получить с помощью двигателя, и чем ниже передача, тем сильнее транспортное средство удерживается. Торможение двигателем при обычном движении является постоянным: либо когда водитель отпускает педаль акселератора, либо когда понижает передачу. Это особенно применяется на крутых спусках.\nЕго использование предотвращает преждевременный износ тормозной системы.\n• Проверять тормоза как минимум каждые 6 месяцев у транспортных средств с частым использованием.\n• Поддерживать амортизаторы в идеальном состоянии; иначе тормозной путь может увеличиться на 10%.\n• Следить за состоянием и давлением шин, потому что они влияют на эффективность торможения.\n• Учитывать состояние дороги: одни виды асфальта сцепляются лучше других, а погода также влияет на эффективность и способность торможения.\n• Поддерживать указанный уровень жидкости или давления воздуха в тормозной системе.\nЭлементы активной безопасности\nОни помогают предотвратить происшествие, повышая эффективность и устойчивость и обеспечивая правильную работу транспортного средства в движении. Активная безопасность состоит главным образом из:\n• Тормозной системы.\n• Системы рулевого управления.\n• Подвески.\n• Шин.\n• Зеркал.\n• Другого: ABS, динамического контроля тяги, электронного регулирования подвески, контроля устойчивости и автоматической тяги и т. д.\nТормозная система\nСамая важная система активной безопасности транспортного средства. Ее функция - остановить транспортное средство или снизить его скорость, не потеряв траекторию.\nНа торможение также влияют другие причины: развиваемая скорость, условия дороги, по которой едут, например состояние асфальта и погода, а также механика транспортного средства: состояние и давление шин, работа амортизаторов и т. д.\nРекомендации",
+        "simpleRu": "На спусках помогает торможение двигателем: отпусти газ или понизь передачу, чтобы меньше перегревать и изнашивать тормоза. Тормоза у часто используемой машины нужно проверять минимум раз в 6 месяцев. Амортизаторы, шины, давление, дорожное покрытие, погода и уровень жидкости или воздуха в тормозной системе влияют на тормозной путь. Активная безопасность - это системы, которые помогают избежать аварии: тормоза, рулевое, подвеска, шины, зеркала, ABS и другие электронные системы.",
+        "sourceTextSha256": "ea24c9805fa0260e3ebfc629aa9370dd2abc07a8f561e884d2aa56f982b4e4f8",
+        "sourceFingerprint": "sha256:ea24c9805fa0260e3ebfc629aa9370dd2abc07a8f561e884d2aa56f982b4e4f8",
+        "sourceSpan": {
+          "startLine": 4251,
+          "endLine": 4286
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--170-171",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 171,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 170: Sistema de dirección"
+        ],
+        "officialLabel": "170",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "170\nSistema de dirección\nGarantiza la correcta maniobra del vehículo, orientando sus ruedas según se desee. A altas\nvelocidades  se  endurece  para  evitar  posibles  siniestros,  interviniendo  en  la  estabilidad  del\nvehículo. Por ello, es fundamental un correcto mantenimiento y al observar ciertas irregularidades\n(ejemplo:  que  la  dirección  se  vuelve  dura,  inestable  o  hace  ruidos  extraños)  lo  aconsejable  es\nhacerle una revisión en un taller mecánico.\nEn general, existen cuatro tipos de dirección: mecánica, hidráulica, electrohidráulica y electromecánica\no eléctrica.\nSistema de suspensión\nTiene un papel muy importante en la seguridad activa, ya que es el encargado de mantener\nlos neumáticos en contacto con el piso, absorbiendo las irregularidades del terreno y por\nello participa de la estabilidad y colabora con el confort.\nEste sistema controla de forma independiente la amortiguación en cada una de las ruedas. Las\nbarras estabilizadoras conectan las ruedas de cada eje, y controlan la inclinación del vehículo\nen las curvas, evitando así una salida de la calzada. Por ello, es fundamental que cada una de\nsus partes se encuentre en buen estado, ya que sin un funcionamiento adecuado es posible\nperder la estabilidad y el control del vehículo.\nNeumáticos\nSon  el  punto  de  contacto  que  tiene  un  vehículo  con  la  calzada,  soportando  una  carga  de\nhasta 50 veces su propio peso. De ellos depende la adherencia y la fricción que tendrá con\nel terreno para traccionar y avanzar.\nParticipan en tres aspectos fundamentales: estabilidad, suspensión y frenada.\n\nEstado del neumático y profundidad del dibujo\n• Para garantizar su buen funcionamiento, los neumáticos llevan grabado, en los laterales, una\nserie  de  números  y  letras  mediante  las  cuales  se  puede  identificar  sus  características  más\nrelevantes, como son su fecha de fabricación, índice de carga, velocidad máxima que puede\nsoportar, etc.\n• Si se observa que está en mal estado, con abultamientos, roturas, o el dibujo tiene una profundidad\nmenor  a  1,6mm.,  deben  ser  reemplazados.  En  el  caso  de  vehículos  de  gran  porte  con  una\nprofundidad de 2mm. es recomendable su cambio.\n• Los dibujos son los encargados de evacuar el agua de la zona de contacto cuando el pavimento\nestá mojado, evitando así el hidroplaneo o aquaplaning.\n• No  es  recomendable  utilizar  neumáticos  con  más  de  5  años  desde  la  fecha  de  fabricación,\nindependientemente del desgaste, ya que comienzan a perder flexibilidad y por consiguiente,\nadherencia.\n",
+        "fullTranslationRu": "170\nСистема рулевого управления\nОна обеспечивает правильный маневр транспортного средства, направляя его колеса так, как требуется. На высоких скоростях она становится жестче, чтобы предотвратить возможные происшествия, участвуя в устойчивости транспортного средства. Поэтому правильное обслуживание принципиально важно. Если замечены нарушения, например рулевое управление становится тугим, нестабильным или издает странные звуки, рекомендуется проверить его в механической мастерской.\nВ целом существуют четыре типа рулевого управления: механическое, гидравлическое, электрогидравлическое и электромеханическое или электрическое.\nСистема подвески\nОна играет очень важную роль в активной безопасности, потому что поддерживает контакт шин с дорогой, поглощает неровности поверхности, участвует в устойчивости и помогает комфорту.\nЭта система независимо контролирует амортизацию каждого колеса. Стабилизаторы соединяют колеса каждой оси и контролируют наклон транспортного средства в поворотах, предотвращая выезд с проезжей части. Поэтому принципиально важно, чтобы каждая ее часть была в хорошем состоянии: без правильной работы можно потерять устойчивость и контроль над транспортным средством.\nШины\nЭто точка контакта транспортного средства с проезжей частью; они выдерживают нагрузку до 50 раз больше собственного веса. От них зависит сцепление и трение с покрытием, необходимые для тяги и движения вперед.\nОни участвуют в трех основных аспектах: устойчивости, подвеске и торможении.\nСостояние шины и глубина рисунка протектора\n• Чтобы обеспечить хорошую работу, на боковинах шин выгравированы цифры и буквы, по которым можно определить самые важные характеристики, например дату изготовления, индекс нагрузки, максимальную выдерживаемую скорость и т. д.\n• Если видно, что шина в плохом состоянии, с вздутиями, разрывами или глубиной рисунка меньше 1,6 мм, ее нужно заменить. У крупногабаритных транспортных средств при глубине 2 мм рекомендуется замена.\n• Рисунок отвечает за отвод воды из зоны контакта при мокром покрытии, предотвращая гидропланирование или аквапланирование.\n• Не рекомендуется использовать шины старше 5 лет с даты изготовления независимо от износа, потому что они начинают терять гибкость и, следовательно, сцепление.",
+        "simpleRu": "Рулевое управление, подвеска и шины напрямую влияют на активную безопасность. Если руль стал тугим, нестабильным или шумит, нужна проверка в мастерской. Подвеска держит шины на дороге и помогает не потерять контроль. Шины должны быть без вздутий и разрывов; глубина рисунка минимум 1,6 мм, а для большого транспорта лучше менять уже при 2 мм. Шины старше 5 лет лучше не использовать: они хуже держат дорогу.",
+        "sourceTextSha256": "47165d0da987fb99b34ed81a48e6b4dbeec90577236a5b79771d83fc283d2d13",
+        "sourceFingerprint": "sha256:47165d0da987fb99b34ed81a48e6b4dbeec90577236a5b79771d83fc283d2d13",
+        "sourceSpan": {
+          "startLine": 4287,
+          "endLine": 4324
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--171-172",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 172,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 171: Neumáticos recapados"
+        ],
+        "officialLabel": "171",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "171\nNeumáticos recapados\nEstá prohibida la utilización de neumáticos reconstruidos en los ejes delanteros, de camiones y\nómnibus de media y larga distancia\n7\n.\n7/ Según art. 4.1.2 inc. d.9) del Código de Tránsito y Transporte de la Ciudad Autónoma de Buenos Aires.\nCausas de deterioro de los neumáticos\nMarcas de desgaste en la banda de rodamiento, debidos a:\n• Bloqueos en la frenada de alta velocidad.\n• Fallo en la dirección.\n• Amortiguadores defectuosos.\n• Desgaste en los laterales por presión baja (inferior a la recomendada).\n• Desgaste en la zona central por presión alta (superior a la recomendada).\n• La presión adecuada está indicada en el manual del vehículo.\n• Para  su  medición  es  recomendable  hacerlo  con  los  neumáticos  fríos  y  controlarla\nperiódicamente.\n• Una mayor o menor presión de la correspondiente produce una menor adherencia\na la calzada y un mayor desgaste del neumático, acortando su período de vida útil.\nRecomendaciones\n",
+        "fullTranslationRu": "171\nВосстановленные шины\nИспользование восстановленных шин на передних осях грузовиков и междугородних и дальних автобусов запрещено.\n7\n7/ Согласно ст. 4.1.2, подп. d.9) Кодекса дорожного движения и транспорта Автономного города Буэнос-Айрес.\nПричины ухудшения состояния шин\nСледы износа на протекторе возникают из-за:\n• Блокировки колес при торможении на высокой скорости.\n• Неисправности рулевого управления.\n• Неисправных амортизаторов.\n• Износа боковых частей из-за низкого давления, ниже рекомендованного.\n• Износа центральной зоны из-за высокого давления, выше рекомендованного.\n• Подходящее давление указано в руководстве транспортного средства.\n• Измерять давление рекомендуется на холодных шинах и контролировать его периодически.\n• Давление выше или ниже нужного ухудшает сцепление с проезжей частью и усиливает износ шины, сокращая срок ее полезной службы.\nРекомендации",
+        "simpleRu": "На передней оси грузовиков и средне- и дальнемагистральных автобусов нельзя использовать восстановленные шины. Износ шин может появиться из-за резкого торможения, проблем с рулевым, плохих амортизаторов и неправильного давления. Давление проверяй на холодных шинах и по руководству машины: неправильное давление ухудшает сцепление и быстрее портит шину.",
+        "sourceTextSha256": "4c3964887544a6c5c1b1b915d2ae8a2cb26e52e022ac5698e5d5881df18d3580",
+        "sourceFingerprint": "sha256:4c3964887544a6c5c1b1b915d2ae8a2cb26e52e022ac5698e5d5881df18d3580",
+        "sourceSpan": {
+          "startLine": 4325,
+          "endLine": 4345
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--172-173",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 173,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 172: Espejos retrovisores"
+        ],
+        "officialLabel": "172",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "172\nEspejos retrovisores\nSu uso es fundamental para transitar viendo al resto de los vehículos y peatones.\nSu correcta orientación permite reducir las áreas comprometidas como puntos ciegos, sin\nembargo, éstas nunca logran reducirse a cero.\nEn consecuencia, antes de realizar una maniobra de giro o un cambio de carril, es necesario\ndisminuir la velocidad de circulación, colocar la luz de giro y mirar varias veces por los espejos\nretrovisores, a fin de garantizar que no circulan en las cercanías motociclistas, ciclistas o peatones.\n¿A qué se denomina punto ciego?\nSe denomina así al área de visión del entorno, a la que la persona que conduce no tiene acceso,\nya sea de manera directa ni a través de los espejos retrovisores.\nCuanto más grande es el vehículo, mayor es el punto ciego.\nSi  se  conduce  un  camión,  estas  situaciones  son  mucho  más  peligrosas,  ya  que  no  existe\nespejo  retrovisor  interno,  y  los  externos  no  cubren  ampliamente  los  laterales  del  vehículo,\ndebido a la altura donde se encuentra la cabina. Ésto provoca que se tenga un mayor área\nde punto ciego, donde no existe posibilidad alguna de percibir objetos a sus laterales. Por\nello, es imprescindible conocer cómo se determinan los puntos ciegos de un vehículo, para\npoder reconocerlos y evitar así una situación de riesgo.\n",
+        "fullTranslationRu": "172\nЗеркала заднего вида\nИх использование принципиально важно, чтобы двигаться, видя остальные транспортные средства и пешеходов.\nПравильная настройка зеркал позволяет уменьшить проблемные зоны, называемые слепыми зонами, однако никогда не уменьшает их до нуля.\nПоэтому перед поворотом или сменой полосы необходимо снизить скорость движения, включить указатель поворота и несколько раз посмотреть в зеркала заднего вида, чтобы убедиться, что поблизости не движутся мотоциклисты, велосипедисты или пешеходы.\nЧто называется слепой зоной?\nТак называется зона обзора окружающей обстановки, к которой водитель не имеет доступа ни напрямую, ни через зеркала заднего вида.\nЧем больше транспортное средство, тем больше слепая зона.\nЕсли водитель управляет грузовиком, такие ситуации намного опаснее, потому что внутреннего зеркала заднего вида нет, а внешние зеркала не охватывают широко боковые части транспортного средства из-за высоты кабины. Это создает большую площадь слепой зоны, где нет никакой возможности заметить объекты сбоку. Поэтому необходимо знать, как определяются слепые зоны транспортного средства, чтобы распознавать их и избегать рискованных ситуаций.",
+        "simpleRu": "Зеркала помогают видеть машины, пешеходов, велосипедистов и мотоциклистов, но слепые зоны полностью не исчезают. Перед поворотом или перестроением снизь скорость, включи поворотник и несколько раз проверь зеркала. У грузовиков слепые зоны особенно большие из-за размера и высоты кабины.",
+        "sourceTextSha256": "8b15606d23a8a1e37f14842f534eb6c28002b4d50a999229a45324d6c6e3fa19",
+        "sourceFingerprint": "sha256:8b15606d23a8a1e37f14842f534eb6c28002b4d50a999229a45324d6c6e3fa19",
+        "sourceSpan": {
+          "startLine": 4346,
+          "endLine": 4364
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--173-174",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 174,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 173: Sólo debe reflejarse, como máximo,"
+        ],
+        "officialLabel": "173",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "173\nSólo debe reflejarse, como máximo,\nel 10 % de la parte trasera del vehículo.\n¿Cómo reducir los puntos ciegos en el vehículo?\n1. Acomodar  correctamente  los  espejos  retrovisores  antes  de  iniciar  la  marcha.  Para  ello,\nes necesario sentarse, agarrar el volante, adoptar la posición habitual de conducción y\ncolocar los espejos a partir de esta perspectiva. Al conducir un vehículo de gran porte\nse debe tener en cuenta que cuanto más alto es el vehículo, se tiene una menor visión\ndelantera a corta distancia (la persona que conduce pierde aproximadamente 3 metros\nde visión frente a ella). Además,  el espejo retrovisor interno no refleja la parte trasera del\nvehículo y los externos no cubren ampliamente los laterales del mismo.\n2. Por ello,  antes de realizar una maniobra (giro, cambio de carril, sobrepaso, etc.) se debe\ndisminuir la velocidad de circulación, colocar la luz de giro y mirar por los espejos realizando\nun pequeño movimiento corporal hacia adelante para ampliar el ángulo de visión. Se recomienda\nmirar al menos dos veces  para corroborar el inicio de la maniobra.\n3. Mientras se circula, además de revisar los espejos retrovisores, utilizar la visión periférica\ndando vistazos por encima de los hombros cuando sea necesario\n4. Es  recomendable  usar  espejos  convexos  homologados,  pero  se  debe  tener  en  cuenta\nque las imágenes que se reflejan en ellos no son reales en tamaño ni cercanía; los objetos\nse verán más pequeños y lejanos que los reales.\nCorrecta orientación de los espejos retrovisores\n",
+        "fullTranslationRu": "173\nОтражаться должно только, как максимум, 10% задней части транспортного средства.\nКак уменьшить слепые зоны транспортного средства?\n1. Правильно настроить зеркала заднего вида перед началом движения. Для этого нужно сесть, взяться за руль, принять обычное положение управления и настроить зеркала из этой перспективы. При управлении крупногабаритным транспортным средством нужно учитывать: чем выше транспортное средство, тем меньше передний обзор на коротком расстоянии. Водитель теряет примерно 3 метра обзора перед собой. Кроме того, внутреннее зеркало заднего вида не отражает заднюю часть транспортного средства, а внешние зеркала не охватывают широко его боковые части.\n2. Поэтому перед выполнением маневра - поворота, смены полосы, обгона и т. д. - нужно снизить скорость движения, включить указатель поворота и посмотреть в зеркала, слегка наклонив корпус вперед, чтобы расширить угол обзора. Рекомендуется посмотреть не менее двух раз, чтобы подтвердить начало маневра.\n3. Во время движения, кроме проверки зеркал заднего вида, использовать периферическое зрение, при необходимости бросая взгляды через плечо.\n4. Рекомендуется использовать омологированные выпуклые зеркала, но нужно учитывать, что отраженные в них изображения не являются реальными по размеру и близости: объекты будут выглядеть меньше и дальше, чем на самом деле.\nПравильная настройка зеркал заднего вида",
+        "simpleRu": "Перед поездкой настрой зеркала из своего обычного положения за рулем. В зеркале должно быть видно максимум 10% задней части машины. Перед маневром снизь скорость, включи поворотник, посмотри в зеркала минимум два раза и, если нужно, чуть наклонись вперед или взгляни через плечо. Выпуклые зеркала помогают, но в них предметы кажутся меньше и дальше.",
+        "sourceTextSha256": "68cf4d159a511a93007d1630b9105778b034e4cb91c0aba6f9860c3bb478a511",
+        "sourceFingerprint": "sha256:68cf4d159a511a93007d1630b9105778b034e4cb91c0aba6f9860c3bb478a511",
+        "sourceSpan": {
+          "startLine": 4365,
+          "endLine": 4386
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--174-175",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 175,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 174: Elementos de seguridad pasiva"
+        ],
+        "officialLabel": "174",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "174\nElementos de seguridad pasiva\nMinimizan las consecuencias de un siniestro una vez que este ya ocurrió. Reducen al mínimo\nlos daños que se pueden producir cuando el siniestro es inevitable. La seguridad pasiva está\ncompuesta principalmente por:\n•    Cinturón de seguridad.\n•    Apoyacabeza.\n•    Airbags (bolsa de aire).\n•    Paragolpes.\n•    Interior del habitáculo.\n•    Otros: asientos, columna de dirección y pedalera colapsables, etc.\nCinturón de seguridad\nArnés diseñado para sujetar a las personas que abordan un vehículo.\nLuego de un impacto, el vehículo se desacelera inesperada y violentamente, y las personas se\ndesplazan a la misma velocidad a la que se encontraban viajando. Si ninguna fuerza actúa sobre\nellas para detenerlas, éstas impactarán contra cualquier elemento que encuentren en su trayectoria.\nDado que existen diversos tipos de vehículos involucrados en el transporte de cargas y mercaderías,\ndebe tenerse en cuenta que las características de los cinturones de seguridad y la ubicación\nque deben tener, varía de acuerdo a la cantidad de personas transportadas, al tipo de vehículo\ny actividad realizada\n8\n.\nFrente a estas exigencias, quienes conducen son responsables de su uso, ante la autoridad de\ncontrol.\n8/  Los tipos de cinturón que corresponden a las diversas plazas en los vehículos son los establecidos en el Anexo C del Decreto Nacional N°\n779/95 (B.O. N° 28.281), reglamentario de la Ley Nacional de Tránsito y Seguridad Vial N° 24.449 (B.O. N° 28.080).\n",
+        "fullTranslationRu": "174\nЭлементы пассивной безопасности\nОни уменьшают последствия происшествия после того, как оно уже произошло. Они сводят к минимуму ущерб, который может возникнуть, когда происшествие неизбежно. Пассивная безопасность состоит главным образом из:\n• Ремня безопасности.\n• Подголовника.\n• Подушек безопасности.\n• Бамперов.\n• Внутренней части салона.\n• Другого: складывающихся сидений, рулевой колонки и педального узла и т. д.\nРемень безопасности\nЭто ременная система, предназначенная удерживать людей, находящихся в транспортном средстве.\nПосле удара транспортное средство неожиданно и резко замедляется, а люди продолжают двигаться с той же скоростью, с которой ехали. Если на них не действует никакая сила, чтобы остановить их, они ударятся о любой элемент на своем пути.\nПоскольку в перевозке грузов и товаров участвуют разные типы транспортных средств, нужно учитывать, что характеристики ремней безопасности и место, где они должны находиться, меняются в зависимости от количества перевозимых людей, типа транспортного средства и выполняемой деятельности.\n8\nС учетом этих требований водители несут ответственность перед контрольным органом за их использование.\n8/ Типы ремней, соответствующие разным местам в транспортных средствах, установлены в Приложении C к Национальному декрету N 779/95 (Официальный бюллетень N 28.281), регламентирующему Национальный закон о дорожном движении и безопасности дорожного движения N 24.449 (Официальный бюллетень N 28.080).",
+        "simpleRu": "Пассивная безопасность уменьшает вред, когда авария уже случилась. К ней относятся ремень, подголовник, подушки безопасности, бамперы и салон. Ремень удерживает человека: при ударе машина резко замедляется, а тело продолжает лететь вперед. В грузовом транспорте тип и место ремней зависят от машины, числа людей и вида работы, а водитель отвечает за их использование при проверке.",
+        "sourceTextSha256": "598e060da5a77cae4235384e88f70763aad220e067abd8dd99e86e72576df4c7",
+        "sourceFingerprint": "sha256:598e060da5a77cae4235384e88f70763aad220e067abd8dd99e86e72576df4c7",
+        "sourceSpan": {
+          "startLine": 4387,
+          "endLine": 4413
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--175-176",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 176,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 175: • Modificar los ajustes del volante y del asiento tantas veces como sea necesario durante"
+        ],
+        "officialLabel": "175",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "175\n• Modificar los ajustes del volante y del asiento tantas veces como sea necesario durante\nla gestación, logrando una separación mínima entre el abdomen o el tórax y el volante de\n25 centímetros. Si el volante es ajustable en inclinación, conviene dirigirlo hacia el pecho\ncuando se conduce, nunca hacia la cabeza ni hacia el abdomen.\n• En general, durante el embarazo se pueden desarrollar las actividades habituales, entre\nellas la conducción. Ésto es posible siempre que se encuentre en condiciones físicas para\nhacerlo y no cause una fatiga física o psíquica excesiva.\n• Es recomendable que a partir del octavo mes otra persona conduzca.\nEmbarazadas\nUso\nCorrecto\n• Debe  pasar  por  la  clavícula,  ubicada\nentre  el  hombro  y  el  cuello,  debe\ndescender por el centro del pecho.\n• Debe colocarse sobre los huesos de la\ncadera, siempre por debajo del abdomen.\n• Debe quedar bien ajustado al cuerpo\n(no  utilizar  ropa  gruesa).  Asegurarse\nde que no esté torcido o enredado\ny  que  no  pase  por  sobre  objetos\nduros  ni  frágiles  (como  bolígrafos\no  anteojos)  ya  que,  frente  a  una\ncolisión,  podrían  incrustarse  en  el\ncuerpo.\n• Si  está  colocado  sobre  el  cuello  o\npecho, puede provocar graves lesiones\ndurante el incidente.\n• Si  se  coloca  sobre  el  abdomen,  puede\nprovocar  graves  lesiones  en  los  órganos\ninternos durante el incidente.\n• Si  el  cinturón  queda  flojo  perderá\neficacia ya que en el incidente se reco-\nrrerá más distancia pudiendo impactar\ncontra el volante, parabrisas, asiento\ndelantero, etc.\n",
+        "fullTranslationRu": "175\n• Менять настройки руля и сиденья столько раз, сколько нужно во время беременности, добиваясь минимального расстояния между животом или грудью и рулем 25 сантиметров. Если руль регулируется по наклону, при управлении его лучше направлять к груди, никогда к голове и не к животу.\n• В целом во время беременности можно выполнять обычные действия, включая управление. Это возможно, если женщина находится в физическом состоянии, позволяющем это делать, и это не вызывает чрезмерной физической или психической усталости.\n• Рекомендуется, чтобы начиная с восьмого месяца управлял другой человек.\nБеременные\nПравильное\nиспользование\n• Ремень должен проходить по ключице, расположенной между плечом и шеей, и спускаться по центру груди.\n• Он должен располагаться на костях таза, всегда ниже живота.\n• Он должен плотно прилегать к телу; не следует использовать толстую одежду. Нужно убедиться, что ремень не перекручен и не запутан, а также не проходит поверх твердых или хрупких предметов, таких как ручки или очки, потому что при столкновении они могут вонзиться в тело.\n• Если ремень расположен на шее или груди неправильно, он может вызвать тяжелые травмы во время инцидента.\n• Если ремень расположен на животе, он может вызвать тяжелые травмы внутренних органов во время инцидента.\n• Если ремень ослаблен, он потеряет эффективность, потому что при инциденте тело пройдет большее расстояние и может удариться о руль, лобовое стекло, переднее сиденье и т. д.",
+        "simpleRu": "Во время беременности руль и сиденье нужно настраивать так, чтобы между животом или грудью и рулем было минимум 25 см. Руль направляй к груди, не к голове и не к животу. С восьмого месяца лучше, чтобы вел другой человек. Ремень должен идти через ключицу и центр груди, нижняя часть - по костям таза ниже живота. Он должен плотно прилегать, не быть перекрученным и не проходить поверх ручек, очков или других твердых предметов.",
+        "sourceTextSha256": "79cdff5301a478255b7eb5074bf5dfd7c128c8c1783513d25b49eb1854509c49",
+        "sourceFingerprint": "sha256:79cdff5301a478255b7eb5074bf5dfd7c128c8c1783513d25b49eb1854509c49",
+        "sourceSpan": {
+          "startLine": 4414,
+          "endLine": 4450
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--176-177",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 177,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 176: Apoyacabeza"
+        ],
+        "officialLabel": "176",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "176\nApoyacabeza\nElemento de apoyo para la cabeza que, regulado correctamente, disminuye el “efecto látigo”, es\ndecir, el movimiento entre la cabeza y el torso, evitando la contracción y extensión excesiva\ndel cuello.\nComplementa al cinturón de seguridad.\nPuede ser integrado al respaldo del asiento o de altura regulable.\nPara  que  cumpla  su  función,  debe  estar  correctamente  colocado:  la  parte  más  elevada  a  la\naltura de la parte superior de la cabeza y la parte central a la altura de la línea de los ojos.\nMal colocado no sólo será poco efectivo, sino que también podría aumentar el potencial de\nlas lesiones.\nPosición del\nApoyacabeza\n",
+        "fullTranslationRu": "176\nПодголовник\nОпора для головы, которая при правильной регулировке уменьшает «эффект хлыста», то есть движение между головой и туловищем, предотвращая чрезмерное сокращение и растяжение шеи.\nОн дополняет ремень безопасности.\nМожет быть встроен в спинку сиденья или регулироваться по высоте.\nЧтобы он выполнял свою функцию, он должен быть правильно расположен: самая высокая часть - на уровне верхней части головы, а центральная часть - на уровне линии глаз.\nНеправильно установленный подголовник не только будет малоэффективным, но и может увеличить возможные травмы.\nПоложение\nподголовника",
+        "simpleRu": "Подголовник защищает шею от «хлыстового» движения при ударе и дополняет ремень. Верх подголовника должен быть на уровне верхней части головы, середина - примерно на уровне глаз. Неправильный подголовник почти не помогает и может усилить травму.",
+        "sourceTextSha256": "7cef5ede22b7cfcfc0bde8bc03e6d3a9f00eb382607b2bb3f136b0dcdc82ebcb",
+        "sourceFingerprint": "sha256:7cef5ede22b7cfcfc0bde8bc03e6d3a9f00eb382607b2bb3f136b0dcdc82ebcb",
+        "sourceSpan": {
+          "startLine": 4451,
+          "endLine": 4464
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--177-178",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 178,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 177: Función"
+        ],
+        "officialLabel": "177",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "177\nFunción\n• Absorbe parte de la energía cinética del cuerpo, frenando suavemente el movimiento de\nlas personas.\n• Evita un impacto contra elementos interiores del vehículo (volante, parabrisas, etc.).\n• Reduce el riesgo de heridas producidas por fragmentos de cristal procedentes del parabrisas,\nsobre todo en cara y ojos.\n• Disminuye el movimiento de la cabeza y, con ello, el riesgo de lesiones cervicales.\nParagolpes\nCon el objetivo de amortiguar y proteger en caso de una colisión, esta pieza que se encuentra\nen la parte trasera y delantera del vehículo, absorbe la energía cinética y la empuja en forma\nde rebote hacia el centro del choque, consiguiendo así una reducción de daños, pero no de\nimpacto.\nLa Ley N°2148 establece la obligatoriedad de que los vehículos posean paragolpes delanteros\ny traseros, en la forma y con las dimensiones que establezca la reglamentación y guardabarros\nen correspondencia con sus ruedas.\nCristales\nPermiten la visibilidad, la aerodinámica y protegen a los ocupantes del vehículo de la lluvia, el\nviento, el polvo y los insectos, entre otros.\nDependiendo de su ubicación y finalidad, son templados o laminados. Una de sus ventajas es\nque  en  caso  de  quebrarse,  se  producen  pequeños  pedazos  que  suelen  resultar  inofensivos\npara las personas que se encuentran en el interior del vehículo.\nAirbag\nEs una bolsa de gas que se infla automáticamente frente a quien conduce o sus pasajeros/as\nen caso de colisión. Este dispositivo funciona como complemento del cinturón de seguridad.\nNo lo reemplaza ya que en el caso de no estar utilizando el cinturón de seguridad, el airbag\npuede provocar lesiones graves.\n• Si bien éste es un elemento de seguridad pasiva que no es obligatorio, su uso sirve para\nreducir el daño producido a las personas que viajan al momento de un siniestro.\n• Son seguros, siempre que exista una distancia mínima de 25 cm del cuerpo, por si éste\nllegara a desplegarse.\n",
+        "fullTranslationRu": "177\nФункция\n• Поглощает часть кинетической энергии тела, мягко замедляя движение людей.\n• Предотвращает удар о внутренние элементы транспортного средства, например руль или лобовое стекло.\n• Снижает риск ран от осколков стекла лобового стекла, особенно на лице и глазах.\n• Уменьшает движение головы и вместе с ним риск травм шейного отдела.\nБампер\nЧтобы амортизировать и защищать при столкновении, эта деталь, находящаяся в задней и передней части транспортного средства, поглощает кинетическую энергию и толкает ее в виде отскока к центру столкновения. Так достигается уменьшение повреждений, но не силы удара.\nЗакон N 2148 устанавливает обязательность наличия у транспортных средств переднего и заднего бампера в форме и размерах, установленных регламентом, а также крыльев, соответствующих колесам.\nСтекла\nОни обеспечивают видимость и аэродинамику и защищают людей в транспортном средстве от дождя, ветра, пыли, насекомых и других факторов.\nВ зависимости от места и назначения стекла бывают закаленными или ламинированными. Одно из преимуществ состоит в том, что при разрушении они образуют маленькие кусочки, которые обычно не опасны для людей внутри транспортного средства.\nПодушка безопасности\nЭто газовый мешок, который автоматически надувается перед водителем или пассажирами при столкновении. Устройство работает как дополнение к ремню безопасности. Оно не заменяет ремень: если ремень не используется, подушка безопасности может причинить тяжелые травмы.\n• Хотя это элемент пассивной безопасности и он не является обязательным, его использование помогает уменьшить вред людям, которые едут в момент происшествия.\n• Он безопасен при условии минимального расстояния 25 см от тела на случай раскрытия.",
+        "simpleRu": "Подголовник, ремень, бампер, стекла и подушка безопасности уменьшают вред при аварии. Бампер снижает повреждения, но не отменяет удар. Закон 2148 требует передний и задний бамперы и крылья. Подушка безопасности помогает только вместе с ремнем; без ремня она может тяжело травмировать. До подушки должно быть минимум 25 см.",
+        "sourceTextSha256": "eed08c1cb62b5c370ff0f7248fd44615af350437a6f7b77315dc7a8e81ff9d1e",
+        "sourceFingerprint": "sha256:eed08c1cb62b5c370ff0f7248fd44615af350437a6f7b77315dc7a8e81ff9d1e",
+        "sourceSpan": {
+          "startLine": 4465,
+          "endLine": 4496
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--178-179",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 179,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 178: Seguridad del habitáculo"
+        ],
+        "officialLabel": "178",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "178\nSeguridad del habitáculo\nEs el espacio en el que viaja la persona que conduce y la que acompaña. Mientras que las zonas\ndelanteras y traseras del vehículo se diseñan para que se deformen de forma programada, el\nhabitáculo debe ser lo más indeformable posible, debiendo reunir condiciones de protección\npara todas las personas que viajen, tales como desplazamiento del sistema de control de dirección,\nabsorbedor de energía, anclajes de asientos, etc.\nRodearse de objetos innecesarios puede causar distracciones u obstaculizar la visión y operación\nde algún comando del vehículo. Lo recomendable es tener aquellos elementos personales que\nse puedan llegar a necesitar, a lo largo de la jornada laboral, en lugares seguros y próximos.\nNunca deben llevarse sueltos porque pueden ocasionar una lesión grave ya que la fuerza del\nimpacto se ve incrementada por la energía cinética que poseen. La guantera o algún otro espacio\nde guardado similar, es el lugar indicado para disponer de ellos sin correr riesgos.\nAdemás, mantener el orden en el habitáculo colabora para que la realización de las tareas\ncomplementarias a la conducción, no impliquen una carga adicional de estrés.\nVelocidad de\nImpacto\n50 km/h\n",
+        "fullTranslationRu": "178\nБезопасность салона\nЭто пространство, в котором едут водитель и сопровождающий. Передняя и задняя зоны транспортного средства проектируются так, чтобы деформироваться по заданной схеме, а салон должен быть как можно более недеформируемым и должен иметь условия защиты для всех людей, которые едут, например смещение системы управления рулем, поглотитель энергии, крепления сидений и т. д.\nОкружение себя лишними предметами может отвлекать или мешать обзору и использованию какой-либо команды транспортного средства. Рекомендуется держать личные предметы, которые могут понадобиться в течение рабочего дня, в безопасных и близких местах.\nИх никогда нельзя перевозить незакрепленными, потому что они могут вызвать тяжелую травму: сила удара увеличивается из-за кинетической энергии, которой они обладают. Перчаточный ящик или другое похожее место хранения - подходящее место для них без риска.\nКроме того, порядок в салоне помогает тому, чтобы дополнительные к управлению задачи не становились дополнительной стрессовой нагрузкой.\nСкорость\nудара\n50 км/ч",
+        "simpleRu": "Салон должен защищать людей, а лишние предметы мешают и могут отвлекать. Не вози вещи свободно: при ударе они летят с большой силой и могут тяжело травмировать. Держи нужные мелочи в бардачке или другом закрытом месте. Порядок в салоне снижает стресс во время работы.",
+        "sourceTextSha256": "fa27aeff70722ccb5257b4486fbbba1c05702d4634873d0dbcf46e3e95e368c7",
+        "sourceFingerprint": "sha256:fa27aeff70722ccb5257b4486fbbba1c05702d4634873d0dbcf46e3e95e368c7",
+        "sourceSpan": {
+          "startLine": 4497,
+          "endLine": 4515
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--179-180",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 180,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 179: Al abrir la válvula, su contenido es liberado a presión general-"
+        ],
+        "officialLabel": "179",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "179\nAl  abrir  la  válvula,  su  contenido  es  liberado  a  presión  general-\nmente a través de una manguera, que debe dirigirse a la base\ndel fuego para su extinción.\nEs obligatorio llevar un matafuego y hacerle la carga periódica,\ncuya capacidad y clase dependerá del tipo de vehículo del que\nse trate.\nDeberá ubicarse al alcance de quien conduce, dentro del habitáculo,\nexceptuando de esta obligación a aquellos cuya capacidad sea\nmayor a 1 Kg.\nEn ningún caso podrá estar suelto, sino fijado de manera tal que no\nrepresente  riesgos  para  los  ocupantes  del  vehículo,  no  pudiendo\nfijarse sobre los parantes del techo de la carrocería.\nMatafuegos\nEs obligatorio llevar un chaleco de material reflectivo dentro\ndel habitáculo del vehículo.\nCuando se necesite descender del vehículo a la calzada, se\nrecomienda el uso de un chaleco reflectivo , sin ninguna otra\nprenda superpuesta, de modo que asegure su visibilidad en\nla vía.\nSu uso sólo es obligatorio cuando se descienda, por situaciones\nde fuerza mayor, en autopistas u otras vías rápidas.\nChaleco reflectivo\nOtros elementos de seguridad obligatorios\n9\nDeben ser por lo menos dos y hay que llevarlas en un lugar\naccesible.\n\nSu función es alertar a las demás personas, que hay un vehículo\ndetenido; de modo que puedan tener espacio y tiempo para\npercibir el riesgo y reaccionar.\nBalizas\n9/ De acuerdo a lo establecido en las Leyes 2148 y 24449.\n",
+        "fullTranslationRu": "179\nПри открытии клапана содержимое выпускается под давлением, обычно через шланг, который нужно направлять к основанию огня для тушения.\nОбязательно иметь огнетушитель и периодически перезаряжать его; его вместимость и класс зависят от типа транспортного средства.\nОн должен находиться в пределах досягаемости водителя внутри салона, кроме тех огнетушителей, емкость которых больше 1 кг.\nНи при каких условиях он не может лежать свободно: он должен быть закреплен так, чтобы не создавать рисков для людей в транспортном средстве, и не может крепиться на стойках крыши кузова.\nОгнетушитель\nОбязательно иметь жилет из светоотражающего материала внутри салона транспортного средства.\nКогда нужно выйти из транспортного средства на проезжую часть, рекомендуется использовать светоотражающий жилет без другой одежды поверх него, чтобы обеспечить видимость на дороге.\nЕго использование обязательно только при выходе из-за обстоятельств непреодолимой силы на автомагистралях или других скоростных дорогах.\nСветоотражающий жилет\nДругие обязательные элементы безопасности\n9\nИх должно быть не менее двух, и их нужно перевозить в доступном месте.\nИх функция - предупредить других людей, что стоит остановленное транспортное средство, чтобы у них были место и время заметить риск и отреагировать.\nАварийные знаки\n9/ В соответствии с установленным в Законах 2148 и 24449.",
+        "simpleRu": "Огнетушитель обязателен: он должен быть заряжен, подходить машине по классу и размеру, быть закреплен и доступен водителю. Струю направляют к основанию огня. В салоне должен быть светоотражающий жилет; на автомагистралях и быстрых дорогах при вынужденном выходе на проезжую часть его использование обязательно. Аварийных знаков должно быть минимум два, и они должны лежать доступно.",
+        "sourceTextSha256": "d9989ef7250dcdb1f1fdd20427c75dd7326d6a39d194e52e772ab85b358d4af1",
+        "sourceFingerprint": "sha256:d9989ef7250dcdb1f1fdd20427c75dd7326d6a39d194e52e772ab85b358d4af1",
+        "sourceSpan": {
+          "startLine": 4516,
+          "endLine": 4549
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--180-181",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 181,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 180: Elementos de seguridad recomendables"
+        ],
+        "officialLabel": "180",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "180\nElementos de seguridad recomendables\nMás allá de los casos donde su portación es obligatoria, se\nrecomienda llevar un kit de emergencias para casos de primeros\nauxilios básicos hasta la llegada de la asistencia medicalizada.\nIdentificar  el  botiquín  pintando  una  cruz  roja  sobre  una  caja\nblanca  (o  al  revés)  y  ubicarlo  en  un  lugar  seguro  y  fijado  al\nvehículo,  para  evitar  que  se  desplace  con  el  movimiento  o  en\ncaso de incidente.\nContenido:\n• Gasas hidrófilas estériles.\n• Vendas y apósitos de distintos tamaños.\n• Tela adhesiva hipoalergénica.\n• Agua oxigenada.\n• Solución yodada.\n• Alcohol u otro desinfectante.\n• Guantes de látex o vinilo (varios pares).\n• Crema para quemaduras.\n• Antidiarréico (pastillas de carbón vegetal).\n• Analgésicos.\n• Antiinflamatorio.\n• Crema para picaduras de insectos.\n• Pinzas pequeñas.\n• Tijera.\n• Linterna (pilas o batería de repuesto).\nBotiquín\nDispositivo telescópico homologado, que sustituye cuerdas,\ncables  y  otros  flexibles,  que  se  encuentran  prohibidos  por\nser inseguros y no válidos para remolque de vehículos.\nConecta a los ganchos/anillos u otro punto de remolque original\nde fábrica de los 2 vehículos.\nNo puede ser utilizado dentro de CABA ya que está prohibido\nque un vehículo particular remolque a otro. El servicio de remolque\ndebe ser realizado por un vehículo habilitado a estos efectos.\nCuarta de enganche reglamentaria\n(Barra rígida extensible)\n",
+        "fullTranslationRu": "180\nРекомендуемые элементы безопасности\nПомимо случаев, когда их наличие обязательно, рекомендуется иметь аварийный комплект для базовой первой помощи до прибытия медицинской помощи.\nАптечку следует обозначить красным крестом на белой коробке или наоборот и разместить в безопасном месте, закрепив к транспортному средству, чтобы она не перемещалась при движении или в случае инцидента.\nСодержание:\n• Стерильная гидрофильная марля.\n• Бинты и перевязочные материалы разных размеров.\n• Гипоаллергенный лейкопластырь.\n• Перекись водорода.\n• Йодный раствор.\n• Спирт или другое дезинфицирующее средство.\n• Латексные или виниловые перчатки, несколько пар.\n• Крем от ожогов.\n• Противодиарейное средство: таблетки активированного угля.\n• Анальгетики.\n• Противовоспалительное средство.\n• Крем от укусов насекомых.\n• Небольшие пинцеты.\n• Ножницы.\n• Фонарик с запасными батарейками или аккумулятором.\nАптечка\nОмологированное телескопическое устройство, которое заменяет веревки, тросы и другие гибкие средства. Они запрещены, потому что небезопасны и недействительны для буксировки транспортных средств.\nОно соединяется с крюками, кольцами или другой заводской точкой буксировки двух транспортных средств.\nВ CABA (Автономном городе Буэнос-Айрес) его нельзя использовать, потому что там запрещено, чтобы частное транспортное средство буксировало другое. Услугу буксировки должно выполнять транспортное средство, уполномоченное для этой цели.\nРегламентная сцепная штанга\n(жесткая выдвижная штанга)",
+        "simpleRu": "Кроме обязательных вещей, полезно иметь аптечку для первой помощи до приезда медиков. Она должна быть обозначена, закреплена и не летать по салону. В ней перечислены марля, бинты, пластырь, антисептики, перчатки, кремы, лекарства, пинцет, ножницы и фонарик. Для буксировки нужна омологированная жесткая выдвижная штанга, но в CABA (Автономном городе Буэнос-Айрес) частной машине нельзя буксировать другую: буксировку делает только разрешенное транспортное средство.",
+        "sourceTextSha256": "ec9a0a9c74c586f0754c486bc786a6b84e57dd58e5330d4cecfc2dd3e8c58b77",
+        "sourceFingerprint": "sha256:ec9a0a9c74c586f0754c486bc786a6b84e57dd58e5330d4cecfc2dd3e8c58b77",
+        "sourceSpan": {
+          "startLine": 4550,
+          "endLine": 4586
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--181-182",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 182,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 181: Autopistas"
+        ],
+        "officialLabel": "181",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "181\nAutopistas\n",
+        "fullTranslationRu": "181\nАвтомагистрали",
+        "simpleRu": "Автомагистрали выделены как отдельная тема для правил движения и безопасности.",
+        "sourceTextSha256": "4b1cdb62f5e6b7ce18eb4db66580ece72a614d5ca5d1de4ce629df87424bc3a8",
+        "sourceFingerprint": "sha256:4b1cdb62f5e6b7ce18eb4db66580ece72a614d5ca5d1de4ce629df87424bc3a8",
+        "sourceSpan": {
+          "startLine": 4587,
+          "endLine": 4589
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--182-183",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 183,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 182: La profesionalización del"
+        ],
+        "officialLabel": "182",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "182\nLa profesionalización del\ntransporte de cargas y mercaderías,\nno sólo resguarda la carga trasladada,\nsino también la integridad física\nde quien conduce y la de las\ndemás personas.\n",
+        "fullTranslationRu": "182\nПрофессионализация перевозки грузов и товаров защищает не только перевозимый груз, но и физическую целостность водителя и других людей.",
+        "simpleRu": "Чем профессиональнее грузовые перевозки, тем лучше защищены груз, водитель и все люди вокруг.",
+        "sourceTextSha256": "ed49d1383dda12a4760e6d7dc6b3712a54ed4e50c4456962ed2feb41e927833e",
+        "sourceFingerprint": "sha256:ed49d1383dda12a4760e6d7dc6b3712a54ed4e50c4456962ed2feb41e927833e",
+        "sourceSpan": {
+          "startLine": 4590,
+          "endLine": 4597
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--183-184",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 184,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 183: SEÑALES VIALES"
+        ],
+        "officialLabel": "183",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "183\nSEÑALES VIALES\nAnexo IV\n",
+        "fullTranslationRu": "183\nДОРОЖНЫЕ ЗНАКИ И СИГНАЛЫ\nПриложение IV",
+        "simpleRu": "Приложение IV посвящено дорожным знакам, сигналам и разметке.",
+        "sourceTextSha256": "7feb2c3b2df178ec9bfe5e8b0471c90c45622bd6f2554f994c7edaff48627c8a",
+        "sourceFingerprint": "sha256:7feb2c3b2df178ec9bfe5e8b0471c90c45622bd6f2554f994c7edaff48627c8a",
+        "sourceSpan": {
+          "startLine": 4598,
+          "endLine": 4601
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--184-185",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 185,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 184: De prohibición"
+        ],
+        "officialLabel": "184",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "184\nDe prohibición\nReglamentarias\n",
+        "fullTranslationRu": "184\nЗапрещающие\nРегулирующие",
+        "simpleRu": "Знаки бывают запрещающими и регулирующими: они говорят, что нельзя делать или какое правило нужно соблюдать.",
+        "sourceTextSha256": "6278da29208e8a1d1620036482552de1afb62492811bd75ef63795fa102384b4",
+        "sourceFingerprint": "sha256:6278da29208e8a1d1620036482552de1afb62492811bd75ef63795fa102384b4",
+        "sourceSpan": {
+          "startLine": 4602,
+          "endLine": 4605
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--185-186",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 186,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 185: De restricción"
+        ],
+        "officialLabel": "185",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "185\nDe restricción\nDe prioridad\nDe fin de prescripción\n",
+        "fullTranslationRu": "185\nОграничивающие\nПриоритета\nОкончания предписания",
+        "simpleRu": "Есть знаки ограничений, приоритета и окончания действия предписания. Они показывают пределы, кто имеет преимущество и где правило заканчивается.",
+        "sourceTextSha256": "697e6f7fc6648e99f66614b8ff467feef2a906331f9462b12c009bf891f2c760",
+        "sourceFingerprint": "sha256:697e6f7fc6648e99f66614b8ff467feef2a906331f9462b12c009bf891f2c760",
+        "sourceSpan": {
+          "startLine": 4606,
+          "endLine": 4610
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--186-187",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 187,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 186: Preventivas"
+        ],
+        "officialLabel": "186",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "186\nPreventivas\nAdvertencias sobre características de la vía\n",
+        "fullTranslationRu": "186\nПредупреждающие\nПредупреждения о характеристиках дороги",
+        "simpleRu": "Предупреждающие знаки заранее сообщают о свойствах дороги, чтобы водитель успел подготовиться.",
+        "sourceTextSha256": "c2459c736eb74a9a4d087bf5e70bec07d380825eb1f03cee13ca8714ba7701df",
+        "sourceFingerprint": "sha256:c2459c736eb74a9a4d087bf5e70bec07d380825eb1f03cee13ca8714ba7701df",
+        "sourceSpan": {
+          "startLine": 4611,
+          "endLine": 4614
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--187-188",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 188,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 187: Advertencias de máximo peligro"
+        ],
+        "officialLabel": "187",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "187\nAdvertencias de máximo peligro\nPosibilidad de riesgo eventual\nAnticipo de otros dispositivos de control del tránsito\nFin de prevención\n",
+        "fullTranslationRu": "187\nПредупреждения о максимальной опасности\nВозможность возможного риска\nПредварительное предупреждение о других устройствах управления движением\nОкончание предупреждения",
+        "simpleRu": "Предупреждающие знаки могут сообщать об очень высокой опасности, возможном риске, приближении других устройств управления движением или окончании зоны предупреждения.",
+        "sourceTextSha256": "6e7b40d8a9685372a301dd88e2cf6a0fb9951fedef776700bd15efdeab8fd375",
+        "sourceFingerprint": "sha256:6e7b40d8a9685372a301dd88e2cf6a0fb9951fedef776700bd15efdeab8fd375",
+        "sourceSpan": {
+          "startLine": 4615,
+          "endLine": 4620
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--188-189",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 189,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 188: Informativas"
+        ],
+        "officialLabel": "188",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "188\nInformativas\nCaracterísticas de la vía\n",
+        "fullTranslationRu": "188\nИнформационные\nХарактеристики дороги",
+        "simpleRu": "Информационные знаки помогают понять особенности дороги.",
+        "sourceTextSha256": "907d377e9b60c256de714deb370f0b2ecebad8c3aec06d9f11d6627be7e82c75",
+        "sourceFingerprint": "sha256:907d377e9b60c256de714deb370f0b2ecebad8c3aec06d9f11d6627be7e82c75",
+        "sourceSpan": {
+          "startLine": 4621,
+          "endLine": 4624
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--189-190",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 190,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 189: Nomenclatura vial y urbana"
+        ],
+        "officialLabel": "189",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "189\nNomenclatura vial y urbana\n",
+        "fullTranslationRu": "189\nДорожная и городская номенклатура",
+        "simpleRu": "Такие знаки помогают ориентироваться по названиям улиц, дорог и городских объектов.",
+        "sourceTextSha256": "e570dcecec93d71f27e88c3225193a9ca8d18cf37c7b0780a2f9ce0492e93eeb",
+        "sourceFingerprint": "sha256:e570dcecec93d71f27e88c3225193a9ca8d18cf37c7b0780a2f9ce0492e93eeb",
+        "sourceSpan": {
+          "startLine": 4625,
+          "endLine": 4627
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--190-191",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 191,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 190: Información turística y de servicios"
+        ],
+        "officialLabel": "190",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "190\nInformación turística y de servicios\nEducativas y anuncios especiales\n",
+        "fullTranslationRu": "190\nТуристическая и сервисная информация\nОбразовательные и специальные объявления",
+        "simpleRu": "Информационные знаки могут показывать туристические места, сервисы, учебные сообщения и специальные объявления.",
+        "sourceTextSha256": "e371bbe88c5e0fc7ea33d251eaef42134e84b4f38399ab409061024fd9d73498",
+        "sourceFingerprint": "sha256:e371bbe88c5e0fc7ea33d251eaef42134e84b4f38399ab409061024fd9d73498",
+        "sourceSpan": {
+          "startLine": 4628,
+          "endLine": 4631
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--191-192",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 192,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 191: Una señal de Estrella Amarilla significa que, en el lugar en donde está instalada, hubo una víctima"
+        ],
+        "officialLabel": "191",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "191\nUna señal de Estrella Amarilla significa que, en el lugar en donde está instalada, hubo una víctima\nfatal por un incidente de tránsito y tiene como objetivo recordar a la víctima y ser una señal de\nalarma, un llamado a tomar conciencia de la cantidad de víctimas fatales, que son muertes evitables.\nLas  5  puntas  de  cada  estrella  representan  los  valores:  Memoria,  Prevención,  Ley,  Justicia  y\nEducación. Cada estrella lleva el nombre de pila o apodo y edad de la víctima con la inscripción:\n“En memoria de una víctima de tránsito”.\nAdemás de acompañar la iniciativa de distintas ONG ‘S con la colocación de Estrellas Amarillas\nen la vía pública, existe un Mapa Interactivo que hace referencia al lugar del fallecimiento de\nuna víctima, en el cual hay publicados otros datos: nombre y apellido, edad, fecha de nacimiento\ny fallecimiento.\nSe busca despertar un fuerte valor pedagógico y aportar a la construcción de las memorias\ncolectivas de toda una sociedad que ve y sufre el drama social que representa hoy la siniestralidad vial.\nUna Estrella Amarilla puede ser solicitada de manera gratuita por las personas familiares de\nla víctima de tránsito al correo: estrellasamarillas@buenosaires.gob.ar o a través de una ONG.\nMapa de estrellas amarillas: https://buenosaires.gob.ar/informes-estadisticos-y-mapas/mapa-de-es-\ntrellas-amarillas-en-la-ciudad\n",
+        "fullTranslationRu": "191\nЗнак «Желтая звезда» означает, что в месте, где он установлен, была погибшая жертва дорожного инцидента. Его цель - помнить жертву и служить тревожным сигналом, призывом осознать количество погибших, то есть предотвратимых смертей.\nПять лучей каждой звезды представляют ценности: Память, Предотвращение, Закон, Справедливость и Образование. На каждой звезде указаны имя или прозвище и возраст жертвы с надписью: «В память о жертве дорожного движения».\nКроме поддержки инициатив разных НКО по установке Желтых звезд на общественной дороге, существует интерактивная карта, которая указывает место гибели жертвы. На ней опубликованы и другие данные: имя и фамилия, возраст, дата рождения и смерти.\nЦель - пробудить сильную педагогическую ценность и внести вклад в построение коллективной памяти всего общества, которое видит и переживает социальную драму, которой сегодня является дорожная аварийность.\nЖелтую звезду могут бесплатно запросить родственники жертвы дорожного движения по адресу estrellasamarillas@buenosaires.gob.ar или через НКО.\nКарта желтых звезд: https://buenosaires.gob.ar/informes-estadisticos-y-mapas/mapa-de-es-trellas-amarillas-en-la-ciudad",
+        "simpleRu": "Желтая звезда на дороге означает, что в этом месте человек погиб в дорожном инциденте. Она напоминает о жертве и о том, что такие смерти можно предотвращать. Пять лучей означают память, профилактику, закон, справедливость и образование. Родственники могут бесплатно попросить установить звезду через email estrellasamarillas@buenosaires.gob.ar или через НКО; есть также интерактивная карта.",
+        "sourceTextSha256": "821d47afac7a9fb908524649944727af13d8f85d4655af195b2cbf84b98e8299",
+        "sourceFingerprint": "sha256:821d47afac7a9fb908524649944727af13d8f85d4655af195b2cbf84b98e8299",
+        "sourceSpan": {
+          "startLine": 4632,
+          "endLine": 4649
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--192-193",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 193,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 192: Transitorias"
+        ],
+        "officialLabel": "192",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "192\nTransitorias\nViales\nPeatonales y de ciclovías\n",
+        "fullTranslationRu": "192\nВременные\nДорожные\nПешеходные и для велодорожек",
+        "simpleRu": "Есть временные знаки и сигналы: дорожные, пешеходные и связанные с велодорожками.",
+        "sourceTextSha256": "0cc078cbab580ba779940984c21c76793317d0a5871c033349f4192f9a605038",
+        "sourceFingerprint": "sha256:0cc078cbab580ba779940984c21c76793317d0a5871c033349f4192f9a605038",
+        "sourceSpan": {
+          "startLine": 4650,
+          "endLine": 4654
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--193-194",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 194,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 193: Peatonales"
+        ],
+        "officialLabel": "193",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "193\nPeatonales\nDe ciclovías\nOtros dispositivos\n",
+        "fullTranslationRu": "193\nПешеходные\nДля велодорожек\nДругие устройства",
+        "simpleRu": "Отдельно выделяются пешеходные устройства, устройства для велодорожек и другие средства организации движения.",
+        "sourceTextSha256": "93394f62375d3de0867a2834da134a78b5b9d250e91780da3a44bae8fb77864a",
+        "sourceFingerprint": "sha256:93394f62375d3de0867a2834da134a78b5b9d250e91780da3a44bae8fb77864a",
+        "sourceSpan": {
+          "startLine": 4655,
+          "endLine": 4659
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--194-195",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 195,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 194: Marcas longitudinales"
+        ],
+        "officialLabel": "194",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "194\nMarcas longitudinales\nHorizontales\nMarcas transversales\n",
+        "fullTranslationRu": "194\nПродольная разметка\nГоризонтальная\nПоперечная разметка",
+        "simpleRu": "Горизонтальная разметка бывает продольной и поперечной: линии и отметки на дороге помогают организовать движение.",
+        "sourceTextSha256": "e4fcac827d34b145dd60793ef1baf36e0575137f67964d9821d58497518465cc",
+        "sourceFingerprint": "sha256:e4fcac827d34b145dd60793ef1baf36e0575137f67964d9821d58497518465cc",
+        "sourceSpan": {
+          "startLine": 4660,
+          "endLine": 4664
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--195-196",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 196,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 195: Marcas especiales"
+        ],
+        "officialLabel": "195",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "195\nMarcas especiales\n",
+        "fullTranslationRu": "195\nСпециальная разметка",
+        "simpleRu": "Существуют специальные виды дорожной разметки для отдельных ситуаций.",
+        "sourceTextSha256": "c22e290c0f80bbed47f0dee9830725ecf0dc9712781e1c25abb5aa1fb1a9246f",
+        "sourceFingerprint": "sha256:c22e290c0f80bbed47f0dee9830725ecf0dc9712781e1c25abb5aa1fb1a9246f",
+        "sourceSpan": {
+          "startLine": 4665,
+          "endLine": 4667
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--196-197",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 197,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 196: Significado de las luces"
+        ],
+        "officialLabel": "196",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "196\nSignificado de las luces\nSeñalamiento luminoso\nDisposición de unidades ópticas\nSemáforos especiales\n",
+        "fullTranslationRu": "196\nЗначение огней\nСветовая сигнализация\nРасположение оптических блоков\nСпециальные светофоры",
+        "simpleRu": "Световые сигналы включают значение огней, расположение световых блоков и специальные светофоры.",
+        "sourceTextSha256": "c14180b8578f80cb4db65af08e4e2eb1af2b9f65f4e16ee646cec9f9a8d3a72e",
+        "sourceFingerprint": "sha256:c14180b8578f80cb4db65af08e4e2eb1af2b9f65f4e16ee646cec9f9a8d3a72e",
+        "sourceSpan": {
+          "startLine": 4668,
+          "endLine": 4673
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--197-198",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 198,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 197: Las señales de tránsito, a través"
+        ],
+        "officialLabel": "197",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "197\nLas señales de tránsito, a través\nde su color, tamaño y posición,\nhacen más ágil, segura y eficiente\nla movilidad.\n\n198\n\n199\n",
+        "fullTranslationRu": "197\nДорожные знаки и сигналы через свой цвет, размер и положение делают мобильность более быстрой, безопасной и эффективной.\n198\n199",
+        "simpleRu": "Цвет, размер и место дорожных знаков помогают людям быстрее понимать правила, двигаться безопаснее и эффективнее.",
+        "sourceTextSha256": "cef5898df55c72414aee47c84bf64e0e0393450e3c515b5610e97e9376e6af98",
+        "sourceFingerprint": "sha256:cef5898df55c72414aee47c84bf64e0e0393450e3c515b5610e97e9376e6af98",
+        "sourceSpan": {
+          "startLine": 4674,
+          "endLine": 4683
+        }
+      }
+    ]
+  }
+}

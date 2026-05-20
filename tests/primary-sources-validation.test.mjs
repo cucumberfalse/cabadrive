@@ -1,17 +1,24 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { validatePrimarySources } from "../scripts/primary-sources-validation.mjs";
+import {
+  combinePrimarySourceShards,
+  validatePrimarySources,
+  validatePrimarySourcesFromFiles
+} from "../scripts/primary-sources-validation.mjs";
 
 const doc1Text = "# Doc One\nArticulo 1\nTexto oficial uno.";
 const doc2Text = "# Doc Two\nArticulo 1\nTexto oficial dos.";
-const doc1SpanText = doc1Text;
+const doc1SpanText = "# Doc One\nArticulo 1";
 const doc2SpanText = "# Doc Two\nArticulo 1";
+const doc1TailText = "Texto oficial uno.";
+const doc2TailText = "Texto oficial dos.";
 const doc1Hash = sha256(doc1Text);
 const doc2Hash = sha256(doc2Text);
 const doc1SpanHash = sha256(doc1SpanText);
 const doc2SpanHash = sha256(doc2SpanText);
+const doc1TailHash = sha256(doc1TailText);
+const doc2TailHash = sha256(doc2TailText);
 
 function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
@@ -81,6 +88,16 @@ function corpus() {
             fullTranslationRu: "Полный русский перевод официального фрагмента.",
             simpleRu: "Простое русское объяснение этого фрагмента.",
             sourceFingerprint: `sha256:${doc1SpanHash}`
+          },
+          {
+            chunkId: "doc-1--002",
+            officialDocumentId: "doc-1",
+            order: 2,
+            headingPath: ["Doc One"],
+            originalSpanish: doc1TailText,
+            fullTranslationRu: "Полный русский перевод заключительной строки.",
+            simpleRu: "Простое русское объяснение заключительной строки.",
+            sourceFingerprint: `sha256:${doc1TailHash}`
           }
         ]
       }
@@ -98,16 +115,25 @@ function coverage() {
         officialDocumentId: "doc-1",
         archiveLocalPath: "content/official-documents/documents/doc-1.md",
         archiveSha256: doc1Hash,
-        expectedChunkIds: ["doc-1--001"],
+        expectedChunkIds: ["doc-1--001", "doc-1--002"],
         chunks: [
           {
             chunkId: "doc-1--001",
             officialDocumentId: "doc-1",
             order: 1,
             headingPath: ["Doc One"],
-            sourceSpan: { startLine: 1, endLine: 3 },
+            sourceSpan: { startLine: 1, endLine: 2 },
             sourceTextSha256: doc1SpanHash,
             sourceFingerprint: `sha256:${doc1SpanHash}`
+          },
+          {
+            chunkId: "doc-1--002",
+            officialDocumentId: "doc-1",
+            order: 2,
+            headingPath: ["Doc One"],
+            sourceSpan: { startLine: 3, endLine: 3 },
+            sourceTextSha256: doc1TailHash,
+            sourceFingerprint: `sha256:${doc1TailHash}`
           }
         ]
       }
@@ -136,6 +162,19 @@ function qa({ status = "approved" } = {}) {
               checkedAt: "2026-05-10",
               methodNotes: "Reviewed for faithful simple wording."
             }
+          },
+          {
+            chunkId: "doc-1--002",
+            translationQa: {
+              status,
+              checkedAt: "2026-05-10",
+              methodNotes: "Reviewed against the official Spanish source."
+            },
+            simplificationQa: {
+              status,
+              checkedAt: "2026-05-10",
+              methodNotes: "Reviewed for faithful simple wording."
+            }
           }
         ]
       }
@@ -153,6 +192,12 @@ function searchIndex() {
         entryId: "doc-1--001",
         officialDocumentId: "doc-1",
         chunkId: "doc-1--001",
+        textFields: ["title", "fullTranslationRu", "simpleRu", "originalSpanish"]
+      },
+      {
+        entryId: "doc-1--002",
+        officialDocumentId: "doc-1",
+        chunkId: "doc-1--002",
         textFields: ["title", "fullTranslationRu", "simpleRu", "originalSpanish"]
       }
     ]
@@ -177,17 +222,498 @@ function validate(overrides = {}) {
 }
 
 test("current repository draft primary-source corpus passes draft validation", () => {
+  assert.deepEqual(validatePrimarySourcesFromFiles({ mode: "draft" }), []);
+});
+
+test("primary-source shard directory loading combines document, QA, and search shards", () => {
+  const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
+  const qaRoot = { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] };
+  const searchRoot = { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] };
+  const combined = combinePrimarySourceShards({
+    corpus: corpusRoot,
+    qa: qaRoot,
+    searchIndex: searchRoot,
+    shardFiles: {
+      "content/primary-sources/documents/doc-1.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: corpus().documents[0]
+      },
+      "content/primary-sources/qa/doc-1.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: qa().documents[0]
+      },
+      "content/primary-sources/search/doc-1.search.json": {
+        version: 1,
+        schema: "primary-sources-search-shard.v1",
+        entries: searchIndex().entries
+      },
+      "content/primary-sources/search/doc-1.ignored.json": {
+        version: 1,
+        schema: "ignored"
+      }
+    }
+  });
+
+  assert.deepEqual(combined.errors, []);
+  assert.equal(combined.corpus.documents.length, 1);
+  assert.equal(combined.qa.documents.length, 1);
+  assert.equal(combined.searchIndex.entries.length, 2);
   assert.deepEqual(
-    validatePrimarySources({
-      manifest: JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8")),
-      corpus: JSON.parse(readFileSync("content/primary-sources/primary-sources.ru.json", "utf8")),
-      coverage: JSON.parse(readFileSync("content/primary-sources/primary-sources.coverage.json", "utf8")),
-      qa: JSON.parse(readFileSync("content/primary-sources/primary-sources.qa.json", "utf8")),
-      searchIndex: JSON.parse(readFileSync("content/primary-sources/primary-sources.search.json", "utf8")),
-      mode: "draft"
+    validate({
+      corpus: combined.corpus,
+      qa: combined.qa,
+      searchIndex: combined.searchIndex,
+      learnerContentPaths: combined.learnerContentPaths
     }),
     []
   );
+});
+
+test("document range shards with the same officialDocumentId recombine and pass", () => {
+  const [firstChunk, secondChunk] = corpus().documents[0].chunks;
+  const baseDocument = { ...corpus().documents[0], chunks: [] };
+  const combined = combinePrimarySourceShards({
+    corpus: { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] },
+    qa: qa(),
+    searchIndex: searchIndex(),
+    shardFiles: {
+      "content/primary-sources/documents/doc-1--001-001.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: { ...baseDocument, chunks: [firstChunk] }
+      },
+      "content/primary-sources/documents/doc-1--002-002.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: { ...baseDocument, chunks: [secondChunk] }
+      }
+    }
+  });
+
+  assert.deepEqual(combined.errors, []);
+  assert.equal(combined.corpus.documents.length, 1);
+  assert.deepEqual(
+    combined.corpus.documents[0].chunks.map((chunk) => chunk.chunkId),
+    ["doc-1--001", "doc-1--002"]
+  );
+  assert.deepEqual(validate({ corpus: combined.corpus, learnerContentPaths: combined.learnerContentPaths }), []);
+});
+
+test("rejects duplicate root corpus documents before range-shard recomposition", () => {
+  const [firstChunk, secondChunk] = corpus().documents[0].chunks;
+  const baseDocument = { ...corpus().documents[0], chunks: [] };
+  const errors = validate({
+    corpus: {
+      ...corpus(),
+      documents: [
+        { ...baseDocument, chunks: [firstChunk] },
+        { ...baseDocument, chunks: [secondChunk] }
+      ]
+    }
+  });
+
+  assert(errors.includes("doc-1: duplicate primary sources corpus document."));
+});
+
+test("shard combining reports duplicate root corpus documents before range-shard recomposition", () => {
+  const [firstChunk, secondChunk] = corpus().documents[0].chunks;
+  const baseDocument = { ...corpus().documents[0], chunks: [] };
+  const combined = combinePrimarySourceShards({
+    corpus: {
+      ...corpus(),
+      documents: [
+        { ...baseDocument, chunks: [firstChunk] },
+        { ...baseDocument, chunks: [secondChunk] }
+      ]
+    },
+    qa: qa(),
+    searchIndex: searchIndex()
+  });
+
+  assert(combined.errors.includes("doc-1: duplicate primary sources corpus document."));
+});
+
+test("document range shards with mismatched metadata fail recomposition", () => {
+  const [firstChunk, secondChunk] = corpus().documents[0].chunks;
+  const baseDocument = { ...corpus().documents[0], chunks: [] };
+  const combined = combinePrimarySourceShards({
+    corpus: { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] },
+    qa: qa(),
+    searchIndex: searchIndex(),
+    shardFiles: {
+      "content/primary-sources/documents/doc-1--001-001.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: { ...baseDocument, chunks: [firstChunk] }
+      },
+      "content/primary-sources/documents/doc-1--002-002.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: { ...baseDocument, shortTitleRu: "Другой заголовок", chunks: [secondChunk] }
+      }
+    }
+  });
+
+  assert(
+    combined.errors.includes(
+      "doc-1: primary sources corpus document metadata field shortTitleRu must match across range shards."
+    )
+  );
+});
+
+test("document range shards with duplicate chunks fail recomposition", () => {
+  const [firstChunk] = corpus().documents[0].chunks;
+  const baseDocument = { ...corpus().documents[0], chunks: [] };
+  const combined = combinePrimarySourceShards({
+    corpus: { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] },
+    qa: qa(),
+    searchIndex: searchIndex(),
+    shardFiles: {
+      "content/primary-sources/documents/doc-1--001-a.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: { ...baseDocument, chunks: [firstChunk] }
+      },
+      "content/primary-sources/documents/doc-1--001-b.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: { ...baseDocument, chunks: [firstChunk] }
+      }
+    }
+  });
+
+  assert(
+    combined.errors.includes("doc-1--001: duplicate primary sources corpus chunk across range shards for doc-1.")
+  );
+});
+
+test("QA range shards with the same officialDocumentId recombine and pass", () => {
+  const [firstQaChunk, secondQaChunk] = qa().documents[0].chunks;
+  const combined = combinePrimarySourceShards({
+    corpus: corpus(),
+    qa: { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] },
+    searchIndex: searchIndex(),
+    shardFiles: {
+      "content/primary-sources/qa/doc-1--001-001.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: { officialDocumentId: "doc-1", chunks: [firstQaChunk] }
+      },
+      "content/primary-sources/qa/doc-1--002-002.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: { officialDocumentId: "doc-1", chunks: [secondQaChunk] }
+      }
+    }
+  });
+
+  assert.deepEqual(combined.errors, []);
+  assert.equal(combined.qa.documents.length, 1);
+  assert.deepEqual(
+    combined.qa.documents[0].chunks.map((chunk) => chunk.chunkId),
+    ["doc-1--001", "doc-1--002"]
+  );
+  assert.deepEqual(validate({ qa: combined.qa, learnerContentPaths: combined.learnerContentPaths }), []);
+});
+
+test("rejects duplicate root QA documents before range-shard recomposition", () => {
+  const [firstQaChunk, secondQaChunk] = qa().documents[0].chunks;
+  const errors = validate({
+    qa: {
+      ...qa(),
+      documents: [
+        { officialDocumentId: "doc-1", chunks: [firstQaChunk] },
+        { officialDocumentId: "doc-1", chunks: [secondQaChunk] }
+      ]
+    }
+  });
+
+  assert(errors.includes("doc-1: duplicate primary sources QA document."));
+});
+
+test("shard combining reports duplicate root QA documents before range-shard recomposition", () => {
+  const [firstQaChunk, secondQaChunk] = qa().documents[0].chunks;
+  const combined = combinePrimarySourceShards({
+    corpus: corpus(),
+    qa: {
+      ...qa(),
+      documents: [
+        { officialDocumentId: "doc-1", chunks: [firstQaChunk] },
+        { officialDocumentId: "doc-1", chunks: [secondQaChunk] }
+      ]
+    },
+    searchIndex: searchIndex()
+  });
+
+  assert(combined.errors.includes("doc-1: duplicate primary sources QA document."));
+});
+
+test("range-shard recomposition does not mutate reusable in-memory shard objects", () => {
+  const [firstChunk, secondChunk] = corpus().documents[0].chunks;
+  const [firstQaChunk, secondQaChunk] = qa().documents[0].chunks;
+  const baseCorpusDocument = { ...corpus().documents[0], chunks: [] };
+  const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
+  const qaRoot = { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] };
+  const searchRoot = { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] };
+  const firstCorpusShardDocument = { ...baseCorpusDocument, chunks: [firstChunk] };
+  const secondCorpusShardDocument = { ...baseCorpusDocument, chunks: [secondChunk] };
+  const firstQaShardDocument = { officialDocumentId: "doc-1", chunks: [firstQaChunk] };
+  const secondQaShardDocument = { officialDocumentId: "doc-1", chunks: [secondQaChunk] };
+  const shardFiles = {
+    "content/primary-sources/documents/doc-1--001-001.ru.json": {
+      version: 1,
+      schema: "primary-sources-document-shard.v1",
+      document: firstCorpusShardDocument
+    },
+    "content/primary-sources/documents/doc-1--002-002.ru.json": {
+      version: 1,
+      schema: "primary-sources-document-shard.v1",
+      document: secondCorpusShardDocument
+    },
+    "content/primary-sources/qa/doc-1--001-001.qa.json": {
+      version: 1,
+      schema: "primary-sources-qa-shard.v1",
+      document: firstQaShardDocument
+    },
+    "content/primary-sources/qa/doc-1--002-002.qa.json": {
+      version: 1,
+      schema: "primary-sources-qa-shard.v1",
+      document: secondQaShardDocument
+    },
+    "content/primary-sources/search/doc-1.search.json": {
+      version: 1,
+      schema: "primary-sources-search-shard.v1",
+      entries: searchIndex().entries
+    }
+  };
+
+  const firstCombined = combinePrimarySourceShards({ corpus: corpusRoot, qa: qaRoot, searchIndex: searchRoot, shardFiles });
+  const secondCombined = combinePrimarySourceShards({ corpus: corpusRoot, qa: qaRoot, searchIndex: searchRoot, shardFiles });
+
+  assert.deepEqual(firstCombined.errors, []);
+  assert.deepEqual(secondCombined.errors, []);
+  assert.deepEqual(
+    firstCombined.corpus.documents[0].chunks.map((chunk) => chunk.chunkId),
+    ["doc-1--001", "doc-1--002"]
+  );
+  assert.deepEqual(
+    secondCombined.corpus.documents[0].chunks.map((chunk) => chunk.chunkId),
+    ["doc-1--001", "doc-1--002"]
+  );
+  assert.deepEqual(
+    firstCombined.qa.documents[0].chunks.map((chunk) => chunk.chunkId),
+    ["doc-1--001", "doc-1--002"]
+  );
+  assert.deepEqual(
+    secondCombined.qa.documents[0].chunks.map((chunk) => chunk.chunkId),
+    ["doc-1--001", "doc-1--002"]
+  );
+  assert.equal(firstCorpusShardDocument.chunks.length, 1);
+  assert.equal(secondCorpusShardDocument.chunks.length, 1);
+  assert.equal(firstQaShardDocument.chunks.length, 1);
+  assert.equal(secondQaShardDocument.chunks.length, 1);
+  assert.notEqual(firstCombined.corpus.documents[0], firstCorpusShardDocument);
+  assert.notEqual(firstCombined.qa.documents[0], firstQaShardDocument);
+  assert.notEqual(firstCombined.corpus.documents[0].chunks, firstCorpusShardDocument.chunks);
+  assert.notEqual(firstCombined.qa.documents[0].chunks, firstQaShardDocument.chunks);
+});
+
+test("future document shards are discovered without root file list edits", () => {
+  const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
+  const qaRoot = { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] };
+  const searchRoot = { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] };
+  const doc2 = {
+    ...corpus().documents[0],
+    officialDocumentId: "doc-2",
+    title: "Doc Two",
+    archiveLocalPath: "content/official-documents/documents/doc-2.md",
+    chunks: [
+      {
+        ...corpus().documents[0].chunks[0],
+        chunkId: "doc-2--001",
+        officialDocumentId: "doc-2",
+        originalSpanish: doc2Text,
+        sourceSpan: { startLine: 1, endLine: 3 },
+        sourceFingerprint: `sha256:${doc2Hash}`
+      }
+    ]
+  };
+  const doc2Qa = {
+    officialDocumentId: "doc-2",
+    chunks: [
+      {
+        chunkId: "doc-2--001",
+        translationQa: { status: "approved", checkedAt: "2026-05-09" },
+        simplificationQa: { status: "approved", checkedAt: "2026-05-09" }
+      }
+    ]
+  };
+  const doc2Search = {
+    entryId: "doc-2--001",
+    officialDocumentId: "doc-2",
+    chunkId: "doc-2--001",
+    textFields: ["title", "fullTranslationRu", "simpleRu", "originalSpanish"]
+  };
+
+  const combined = combinePrimarySourceShards({
+    corpus: corpusRoot,
+    qa: qaRoot,
+    searchIndex: searchRoot,
+    shardFiles: {
+      "content/primary-sources/documents/doc-1.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: corpus().documents[0]
+      },
+      "content/primary-sources/documents/doc-2.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: doc2
+      },
+      "content/primary-sources/qa/doc-1.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: qa().documents[0]
+      },
+      "content/primary-sources/qa/doc-2.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: doc2Qa
+      },
+      "content/primary-sources/search/doc-1.search.json": {
+        version: 1,
+        schema: "primary-sources-search-shard.v1",
+        entries: searchIndex().entries
+      },
+      "content/primary-sources/search/doc-2.search.json": {
+        version: 1,
+        schema: "primary-sources-search-shard.v1",
+        entries: [doc2Search]
+      }
+    }
+  });
+
+  assert.deepEqual(combined.errors, []);
+  assert.deepEqual(
+    combined.corpus.documents.map((document) => document.officialDocumentId).sort(),
+    ["doc-1", "doc-2"]
+  );
+  assert.deepEqual(
+    combined.learnerContentPaths.filter((path) => path.includes("doc-2")),
+    [
+      "content/primary-sources/documents/doc-2.ru.json",
+      "content/primary-sources/qa/doc-2.qa.json",
+      "content/primary-sources/search/doc-2.search.json"
+    ]
+  );
+});
+
+test("primary-source shard loading reports missing referenced shards", () => {
+  const combined = combinePrimarySourceShards({
+    corpus: { ...corpus(), documents: [], documentShards: ["content/primary-sources/documents/missing.ru.json"] },
+    qa: qa(),
+    searchIndex: searchIndex(),
+    shardFiles: {}
+  });
+
+  assert(combined.errors.includes("content/primary-sources/documents/missing.ru.json: shard file is missing."));
+});
+
+test("primary-source shard loading rejects non-array root shard fields", () => {
+  const combined = combinePrimarySourceShards({
+    corpus: {
+      ...corpus(),
+      documents: [],
+      documentShards: "content/primary-sources/documents/doc-1.ru.json",
+      documentShardDirectories: { path: "content/primary-sources/documents" }
+    },
+    qa: {
+      ...qa(),
+      documents: [],
+      qaShards: { path: "content/primary-sources/qa/doc-1.qa.json" },
+      qaShardDirectories: "content/primary-sources/qa"
+    },
+    searchIndex: {
+      ...searchIndex(),
+      entries: [],
+      searchShards: "content/primary-sources/search/doc-1.search.json",
+      searchShardDirectories: { path: "content/primary-sources/search" }
+    },
+    shardFiles: {}
+  });
+
+  assert(combined.errors.includes("primary sources corpus.documentShards must be an array."));
+  assert(combined.errors.includes("primary sources corpus.documentShardDirectories must be an array."));
+  assert(combined.errors.includes("primary sources QA.qaShards must be an array."));
+  assert(combined.errors.includes("primary sources QA.qaShardDirectories must be an array."));
+  assert(combined.errors.includes("primary sources search index.searchShards must be an array."));
+  assert(combined.errors.includes("primary sources search index.searchShardDirectories must be an array."));
+});
+
+test("strict mode catches missing QA and search projections after shard combining", () => {
+  const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
+  const combined = combinePrimarySourceShards({
+    corpus: corpusRoot,
+    qa: { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] },
+    searchIndex: { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] },
+    shardFiles: {
+      "content/primary-sources/documents/doc-1.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: corpus().documents[0]
+      }
+    }
+  });
+
+  const errors = validate({
+    corpus: combined.corpus,
+    qa: combined.qa,
+    searchIndex: combined.searchIndex,
+    learnerContentPaths: combined.learnerContentPaths
+  });
+
+  assert(errors.includes("doc-1--001: learner chunk is missing QA metadata."));
+  assert(errors.includes("doc-1--001: learner chunk is missing search projection entry in strict mode."));
+});
+
+test("strict mode catches missing translations after shard combining", () => {
+  const shardDocument = corpus().documents[0];
+  delete shardDocument.chunks[0].fullTranslationRu;
+  delete shardDocument.chunks[0].simpleRu;
+  const combined = combinePrimarySourceShards({
+    corpus: { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] },
+    qa: { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] },
+    searchIndex: { ...searchIndex(), entries: [], searchShardDirectories: ["content/primary-sources/search"] },
+    shardFiles: {
+      "content/primary-sources/documents/doc-1.ru.json": {
+        version: 1,
+        schema: "primary-sources-document-shard.v1",
+        document: shardDocument
+      },
+      "content/primary-sources/qa/doc-1.qa.json": {
+        version: 1,
+        schema: "primary-sources-qa-shard.v1",
+        document: qa().documents[0]
+      },
+      "content/primary-sources/search/doc-1.search.json": {
+        version: 1,
+        schema: "primary-sources-search-shard.v1",
+        entries: searchIndex().entries
+      }
+    }
+  });
+
+  const errors = validate({
+    corpus: combined.corpus,
+    qa: combined.qa,
+    searchIndex: combined.searchIndex,
+    learnerContentPaths: combined.learnerContentPaths
+  });
+
+  assert(errors.includes("doc-1--001.fullTranslationRu must be a non-empty string in strict mode."));
+  assert(errors.includes("doc-1--001.simpleRu must be a non-empty string in strict mode."));
 });
 
 test("valid strict primary-source fixture passes", () => {
@@ -240,6 +766,18 @@ test("strict mode rejects learner chunks missing search projection entries", () 
   assert(errors.includes("doc-1--001: learner chunk is missing search projection entry in strict mode."));
 });
 
+test("rejects duplicate search entries and duplicate search chunk references", () => {
+  const badSearchIndex = searchIndex();
+  badSearchIndex.entries.push({ ...badSearchIndex.entries[0] });
+
+  const errors = validate({ searchIndex: badSearchIndex, mode: "draft" });
+
+  assert(errors.includes("doc-1--001: duplicate primary sources search entry."));
+  assert(
+    errors.includes("doc-1--001: duplicate primary sources search chunk reference doc-1/doc-1--001.")
+  );
+});
+
 test("strict mode rejects missing manifest document coverage", () => {
   const errors = validate({ manifest: manifest({ includeDoc2: true }) });
 
@@ -271,14 +809,91 @@ test("strict mode rejects coverage documents without generated chunks or expecte
 test("rejects generated coverage chunks missing from expectedChunkIds", () => {
   const badCoverage = coverage();
   badCoverage.documents[0].chunks.push({
-    ...badCoverage.documents[0].chunks[0],
-    chunkId: "doc-1--002",
-    order: 2
+    chunkId: "doc-1--extra",
+    officialDocumentId: "doc-1",
+    order: 3,
+    headingPath: ["Doc One"],
+    sourceSpan: { startLine: 3, endLine: 3 },
+    sourceTextSha256: doc1TailHash,
+    sourceFingerprint: `sha256:${doc1TailHash}`
   });
 
   const errors = validate({ coverage: badCoverage, mode: "draft" });
 
-  assert(errors.includes("doc-1: generated coverage chunk doc-1--002 is missing from expectedChunkIds."));
+  assert(errors.includes("doc-1: generated coverage chunk doc-1--extra is missing from expectedChunkIds."));
+});
+
+test("coverage mode validates complete chunk inventory without full learner coverage", () => {
+  const coverageOnly = coverage();
+  coverageOnly.documents.push({
+    officialDocumentId: "doc-2",
+    archiveLocalPath: "content/official-documents/documents/doc-2.md",
+    archiveSha256: doc2Hash,
+    expectedChunkIds: ["doc-2--001", "doc-2--002"],
+    chunks: [
+      {
+        chunkId: "doc-2--001",
+        officialDocumentId: "doc-2",
+        order: 1,
+        headingPath: ["Doc Two"],
+        sourceSpan: { startLine: 1, endLine: 2 },
+        sourceTextSha256: doc2SpanHash,
+        sourceFingerprint: `sha256:${doc2SpanHash}`
+      },
+      {
+        chunkId: "doc-2--002",
+        officialDocumentId: "doc-2",
+        order: 2,
+        headingPath: ["Doc Two"],
+        sourceSpan: { startLine: 3, endLine: 3 },
+        sourceTextSha256: doc2TailHash,
+        sourceFingerprint: `sha256:${doc2TailHash}`
+      }
+    ]
+  });
+
+  assert.deepEqual(
+    validate({
+      manifest: manifest({ includeDoc2: true }),
+      coverage: coverageOnly,
+      mode: "coverage"
+    }),
+    []
+  );
+});
+
+test("coverage mode rejects missing manifest chunk inventory", () => {
+  const errors = validate({
+    manifest: manifest({ includeDoc2: true }),
+    mode: "coverage"
+  });
+
+  assert(errors.includes("doc-2: missing generated chunk coverage in coverage mode."));
+});
+
+test("coverage mode rejects source spans that miss archive tail lines", () => {
+  const badCoverage = coverage();
+  badCoverage.documents[0].expectedChunkIds = ["doc-1--001"];
+  badCoverage.documents[0].chunks = [badCoverage.documents[0].chunks[0]];
+
+  const errors = validate({ coverage: badCoverage, mode: "coverage" });
+
+  assert(errors.includes("doc-1: sourceSpan coverage must include all archive lines; covered through line 2 of 3."));
+});
+
+test("coverage mode rejects source span gaps", () => {
+  const badCoverage = coverage();
+  badCoverage.documents[0].chunks[0].sourceSpan = { startLine: 1, endLine: 1 };
+  badCoverage.documents[0].chunks[0].sourceTextSha256 = sha256("# Doc One");
+  badCoverage.documents[0].chunks[0].sourceFingerprint = `sha256:${sha256("# Doc One")}`;
+
+  const errors = validate({ coverage: badCoverage, mode: "coverage" });
+
+  assert(
+    errors.includes(
+      "doc-1: sourceSpan coverage must be contiguous; expected line 2 but doc-1--002 starts at line 3."
+    )
+  );
 });
 
 test("strict mode rejects learner corpus documents without learner chunks", () => {
@@ -294,9 +909,12 @@ test("strict mode rejects sourceSpans that do not cover the full archive", () =>
   const partialSpanText = "# Doc One\nArticulo 1";
   const partialSpanHash = sha256(partialSpanText);
   const badCorpus = corpus();
+  badCorpus.documents[0].chunks = [badCorpus.documents[0].chunks[0]];
   badCorpus.documents[0].chunks[0].originalSpanish = partialSpanText;
   badCorpus.documents[0].chunks[0].sourceFingerprint = `sha256:${partialSpanHash}`;
   const badCoverage = coverage();
+  badCoverage.documents[0].expectedChunkIds = ["doc-1--001"];
+  badCoverage.documents[0].chunks = [badCoverage.documents[0].chunks[0]];
   badCoverage.documents[0].chunks[0].sourceSpan = { startLine: 1, endLine: 2 };
   badCoverage.documents[0].chunks[0].sourceTextSha256 = partialSpanHash;
   badCoverage.documents[0].chunks[0].sourceFingerprint = `sha256:${partialSpanHash}`;

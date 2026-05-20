@@ -13,7 +13,7 @@ import { assertGeneratedContentIndexesFresh, combinedContentFromShards } from ".
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
 import { validateOfficialDocumentsManifest } from "./official-documents-validation.mjs";
-import { validatePrimarySources } from "./primary-sources-validation.mjs";
+import { combinePrimarySourceShards, validatePrimarySources } from "./primary-sources-validation.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
@@ -80,6 +80,13 @@ const primarySourcesCorpus = readJson("content/primary-sources/primary-sources.r
 const primarySourcesCoverage = readJson("content/primary-sources/primary-sources.coverage.json");
 const primarySourcesQa = readJson("content/primary-sources/primary-sources.qa.json");
 const primarySourcesSearch = readJson("content/primary-sources/primary-sources.search.json");
+const primarySources = combinePrimarySourceShards({
+  root,
+  corpus: primarySourcesCorpus,
+  qa: primarySourcesQa,
+  searchIndex: primarySourcesSearch
+});
+errors.push(...primarySources.errors);
 const primarySourcesValidationMode = qualityGate ? "strict" : process.env.PRIMARY_SOURCES_VALIDATION_MODE || "draft";
 const exam = readJson("content/config/caba-exam-format.json");
 const approvals = readJson("content/validation/validator-approvals.json") || [];
@@ -266,16 +273,13 @@ errors.push(
 errors.push(
   ...validatePrimarySources({
     manifest: officialDocumentsManifest,
-    corpus: primarySourcesCorpus,
+    corpus: primarySources.corpus,
     coverage: primarySourcesCoverage,
-    qa: primarySourcesQa,
-    searchIndex: primarySourcesSearch,
+    qa: primarySources.qa,
+    searchIndex: primarySources.searchIndex,
     mode: primarySourcesValidationMode,
     root,
-    learnerContentPaths: [
-      "content/primary-sources/primary-sources.ru.json",
-      "content/primary-sources/primary-sources.qa.json"
-    ]
+    learnerContentPaths: primarySources.learnerContentPaths
   })
 );
 const difficultyValidation = validateDifficultyContent({ questions, topicGuide });

@@ -1,0 +1,400 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+  "document": {
+    "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+    "title": "LEY 6631 2023",
+    "shortTitleRu": "Закон 6631 о VTV",
+    "category": "vehicle-documents",
+    "jurisdiction": "caba",
+    "officialSourceType": "caba_law_original_text",
+    "sourceUrl": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/657298",
+    "archiveLocalPath": "content/official-documents/documents/ley-6631-caba-vtv-modificatoria-ley-2265.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "in_force",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--ley-6631-2023-001",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 1,
+        "headingPath": [
+          "LEY 6631 2023"
+        ],
+        "officialLabel": "LEY 6631 2023",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "# LEY 6631 2023\n\nBoletín Oficial del Gobierno de la Ciudad de Buenos Aires\n",
+        "fullTranslationRu": "# Закон 6631 2023\n\nОфициальный бюллетень Правительства Автономного города Буэнос-Айрес",
+        "simpleRu": "Это начало официальной публикации Закона 6631/2023 в бюллетене города Буэнос-Айрес. Закон касается системы обязательного технического осмотра транспортных средств.",
+        "sourceTextSha256": "073470e6b7ae6a06ffded885a80b6bcff0102957cb16a15bac642f18b7c7b6b7",
+        "sourceFingerprint": "sha256:073470e6b7ae6a06ffded885a80b6bcff0102957cb16a15bac642f18b7c7b6b7",
+        "sourceSpan": {
+          "startLine": 1,
+          "endLine": 4
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--ley-6631-2023-002",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 2,
+        "headingPath": [
+          "LEY 6631 2023"
+        ],
+        "officialLabel": "LEY 6631 2023",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "## LEY 6631 2023\n\nSíntesis:\n\nMODIFICA - LEY N° 2265 - SISTEMA DE REVISIONES TÉCNICAS VEHICULARES - VTO - PERIODICIDAD DE LAS VERIFICACIONES - TIPOS DE PERMISO - CASOS ESPECIALES - VEHÍCULOS CLÁSICOS O DE COLECCIÓN - REVISIONES TÉCNICAS RÁPIDAS Y ALEATORIAS - RTRA - BONIFICACIONES TARIFARIAS - ESTACIONES VERIFICADORAS\n\nPublicación:\n\n21/04/2023\n\nSanción:\n\n30/03/2023\n\nOrganismo:\n\nLEGISLATURA DE LA CIUDAD AUTÓNOMA DE BUENOS AIRES\n\nPromulgación:\n\n19/04/2023\n\n####\nPublicación Boletín Oficial\n\n####\nTexto original\n\nLa Legislatura de la Ciudad Autónoma de Buenos Aires\n\nsanciona con fuerza de Ley\n",
+        "fullTranslationRu": "## Закон 6631 2023\n\nКраткое содержание:\n\nИЗМЕНЯЕТ Закон N 2265: система технических осмотров транспортных средств, VTO, периодичность проверок, виды разрешений, особые случаи, классические или коллекционные транспортные средства, быстрые и случайные технические проверки RTRA, тарифные льготы, станции проверки.\n\nПубликация:\n\n21/04/2023\n\nПринятие:\n\n30/03/2023\n\nОрган:\n\nЗаконодательное собрание Автономного города Буэнос-Айрес\n\nПромульгация:\n\n19/04/2023\n\n####\nПубликация в Официальном бюллетене\n\n####\nОригинальный текст\n\nЗаконодательное собрание Автономного города Буэнос-Айреса\n\nпринимает с силой закона",
+        "simpleRu": "Закон 6631 был принят 30 марта 2023 года, промульгирован 19 апреля и опубликован 21 апреля 2023 года. Он меняет правила VTV: когда проходить осмотр, какие бывают разрешения, как проверяют классические машины, какие есть льготы и как работают станции проверки.",
+        "sourceTextSha256": "eb93a10e5a9e9d80555054014ae8d52ed0ef0ae49441022e8da51fe44893eac6",
+        "sourceFingerprint": "sha256:eb93a10e5a9e9d80555054014ae8d52ed0ef0ae49441022e8da51fe44893eac6",
+        "sourceSpan": {
+          "startLine": 5,
+          "endLine": 36
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--articulo-1o-sustituyese-el-texto-del-articulo-7-003",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 3,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Artículo 1°.- Sustitúyese el texto del artículo 7 de la Ley 2265 (texto consolidado por"
+        ],
+        "officialLabel": "Artículo 1°.- Sustitúyese el texto del artículo 7 de la Ley 2265 (texto consolidado por",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Artículo 1°.- Sustitúyese el texto del artículo 7 de la Ley 2265 (texto consolidado por\n\nLey 6588) por el siguiente:\n\n\"Artículo 7° - Modalidades- El sistema de Revisiones Técnicas vehiculares observará\n\ndos modalidades diferentes:\n\na. Una Verificación Técnica Obligatoria (VTO) realizada periódicamente en Estaciones\n\nde Verificación fijas habilitadas a ese fin.\n\nb. Revisiones Técnicas Rápidas y Aleatorias (RTRA) realizadas a la vera de las vías\n\nde circulación por la Autoridad de Aplicación en los términos del artículo 26 de esta\n\nLey.\"\n",
+        "fullTranslationRu": "Статья 1. Заменяется текст статьи 7 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 7. Формы проведения. Система технических осмотров транспортных средств предусматривает две разные формы:\n\na. Обязательная техническая проверка (VTO), которая периодически проводится на стационарных станциях проверки, специально для этого уполномоченных.\n\nb. Быстрые и случайные технические проверки (RTRA), которые компетентный орган проводит у края дорог движения в соответствии со статьей 26 настоящего закона.\"",
+        "simpleRu": "Есть два вида проверки. Первый - обычная обязательная VTV на уполномоченной станции. Второй - быстрая случайная проверка на дороге, которую может провести компетентный орган по правилам статьи 26.",
+        "sourceTextSha256": "893cb3883713528e1847eca9a53be66bbdd3f685ff1c3a7799f773780eb033bf",
+        "sourceFingerprint": "sha256:893cb3883713528e1847eca9a53be66bbdd3f685ff1c3a7799f773780eb033bf",
+        "sourceSpan": {
+          "startLine": 37,
+          "endLine": 54
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-2o-sustituyese-el-texto-del-articulo-15-004",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 4,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 2°.-Sustitúyese el texto del artículo 15 de la Ley 2265 (texto consolidado por Ley"
+        ],
+        "officialLabel": "Art. 2°.-Sustitúyese el texto del artículo 15 de la Ley 2265 (texto consolidado por Ley",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 2°.-Sustitúyese el texto del artículo 15 de la Ley 2265 (texto consolidado por Ley\n\n6588) por el siguiente:\n\n\"Artículo 15.- Primera verificación. Los vehículos automotores de uso particular y\n\nmotovehículos que se radiquen en la Ciudad de Buenos Aires deben realizar su\n\nprimera VTO a partir del cuarto año de antigüedad cumplido, en el mes que le\n\ncorresponda en función de lo establecido en el artículo 20 de la presente Ley, tomando\n\ncomo referencia el mes y año de patentamiento para los vehículos de fabricación\n\nnacional o provenientes de países del MERCOSUR y el año de fabricación para los\n\nvehículos de otro origen.\n\nEl plazo establecido en el párrafo precedente no se aplicará a cualquier otro vehículo\n\nque antes de dicho plazo haya superado los sesenta mil kilómetros (60.000 km)\n\nrecorridos, con una tolerancia de hasta cuatro mil kilómetros (4.000 km).\"\n",
+        "fullTranslationRu": "Статья 2. Заменяется текст статьи 15 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 15. Первая проверка. Частные автомобили и мототранспортные средства, зарегистрированные в городе Буэнос-Айрес, должны проходить первую VTO начиная с полного четвертого года возраста, в месяц, который им соответствует по статье 20 настоящего закона. Для транспортных средств национального производства или из стран MERCOSUR ориентиром являются месяц и год выдачи номерного знака, а для транспортных средств иного происхождения - год производства.\n\nСрок, установленный в предыдущем абзаце, не применяется к любому другому транспортному средству, которое до этого срока превысило шестьдесят тысяч километров (60.000 km) пробега, с допуском до четырех тысяч километров (4.000 km).\"",
+        "simpleRu": "Частные машины и мототранспорт в CABA впервые проходят VTV после того, как им исполнилось 4 года. Месяц зависит от номера. Если транспорт раньше этого срока проехал больше 60 000 км, с допуском 4 000 км, правило о четырех годах уже не действует.",
+        "sourceTextSha256": "715387929ded934d2c9b0a0ae221c7f6dcf86328d804a074d16f1a69248b317b",
+        "sourceFingerprint": "sha256:715387929ded934d2c9b0a0ae221c7f6dcf86328d804a074d16f1a69248b317b",
+        "sourceSpan": {
+          "startLine": 55,
+          "endLine": 78
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-3o-sustituyese-el-texto-del-articulo-16-005",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 5,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 3°.- Sustitúyese el texto del artículo 16 de la Ley 2265 (texto consolidado por Ley"
+        ],
+        "officialLabel": "Art. 3°.- Sustitúyese el texto del artículo 16 de la Ley 2265 (texto consolidado por Ley",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 3°.- Sustitúyese el texto del artículo 16 de la Ley 2265 (texto consolidado por Ley\n\n6588) por el siguiente:\n\n\"Artículo 16 - Casos especiales de Vehículos clásicos o de colección- Los vehículos\n\nclásicos, aquellos que por sus características y/o antecedentes históricos constituyan\n\nuna reserva para la defensa y el mantenimiento del patrimonio cultural de la Nación y\n\ntengan como mínimo treinta (30) años de antigüedad, deberán verificar en la planta\n\nverificadora que determine la Autoridad de Aplicación.\"\n",
+        "fullTranslationRu": "Статья 3. Заменяется текст статьи 16 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 16. Особые случаи классических или коллекционных транспортных средств. Классические транспортные средства, то есть те, которые по своим характеристикам и/или исторической ценности являются резервом для защиты и сохранения культурного наследия Нации и имеют возраст не менее тридцати (30) лет, должны проходить проверку на станции проверки, которую определит компетентный орган.\"",
+        "simpleRu": "Классическая или коллекционная машина должна быть не младше 30 лет и иметь культурную или историческую ценность. Такие транспортные средства проходят проверку там, где укажет компетентный орган.",
+        "sourceTextSha256": "35c2a933a071765718eb4a2810867d82d6b458b330bbc3fd82dd66f2694f9aa9",
+        "sourceFingerprint": "sha256:35c2a933a071765718eb4a2810867d82d6b458b330bbc3fd82dd66f2694f9aa9",
+        "sourceSpan": {
+          "startLine": 79,
+          "endLine": 92
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-4o-sustituyese-el-texto-del-articulo-17-006",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 6,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 4°.- Sustitúyese el texto del artículo 17 de la Ley 2265 (texto consolidado por Ley"
+        ],
+        "officialLabel": "Art. 4°.- Sustitúyese el texto del artículo 17 de la Ley 2265 (texto consolidado por Ley",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 4°.- Sustitúyese el texto del artículo 17 de la Ley 2265 (texto consolidado por Ley\n\n6588) por el siguiente:\n\n\"Artículo 17.- Periodicidad de las Verificaciones y tipos de permiso para Casos\n\nespeciales de Vehículos clásicos o de colección. La Autoridad de Aplicación\n\ndeterminará la periodicidad de las verificaciones de acuerdo al tipo de permiso que se\n\nsolicite. Los tipos de permiso serán otorgados según los criterios que disponga la\n\nAutoridad de Aplicación.\n\nLos permisos podrán ser solicitados por cualquier vehículo clásico que esté en el\n\nRegistro de Automotores Clásicos o que por las características la Autoridad de\n\nAplicación autorice a realizar la verificación. A los efectos de acreditar la categoría de\n\nvehículo clásico, también se podrán presentar notas o credenciales vigentes de\n\nasociaciones de vehículos clásicos autorizadas por la Autoridad de Aplicación.\n\nLos permisos a solicitar son los siguientes y serán autorizados siempre que los\n\nvehículos cumplan con las características de seguridad para la circulación.\n\nPermiso 1: habilitación anual para circular por la vía pública.\n\nPermiso 2: habilitación anual para circular por la vía pública a una velocidad de hasta\n\n50 km/h, tanto de noche o de día.\n\nPermiso 3: habilitación con vigencia de dos años para circular con carácter\n\nexcepcional, previa solicitud de autorización a la Autoridad de Aplicación y al sólo\n\nefecto de concurrir a eventos, actos, exposiciones o competencias de vehículos\n\nclásicos.\n\nLos vehículos clásicos deberán llevar la oblea identificatoria correspondiente para\n\npoder constatar el tipo de permiso que será detallado en el Certificado de Verificación\n\nTécnica en formato papel o digital.\"\n",
+        "fullTranslationRu": "Статья 4. Заменяется текст статьи 17 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 17. Периодичность проверок и виды разрешений для особых случаев классических или коллекционных транспортных средств. Компетентный орган определяет периодичность проверок в зависимости от вида разрешения, которое запрашивается. Виды разрешений выдаются по критериям, которые установит компетентный орган.\n\nРазрешения могут запрашиваться для любого классического транспортного средства, которое внесено в Реестр классических автомобилей, либо для транспортного средства, которому компетентный орган по его характеристикам разрешит пройти проверку. Для подтверждения категории классического транспортного средства также можно представить действующие письма или удостоверения ассоциаций классических транспортных средств, уполномоченных компетентным органом.\n\nЗапрашиваемые разрешения следующие, и они выдаются при условии, что транспортные средства соответствуют характеристикам безопасности для движения.\n\nРазрешение 1: годовое разрешение на движение по общественной дороге.\n\nРазрешение 2: годовое разрешение на движение по общественной дороге со скоростью до 50 km/h как ночью, так и днем.\n\nРазрешение 3: разрешение сроком на два года для исключительного движения после предварительного запроса разрешения у компетентного органа и только для участия в мероприятиях, актах, выставках или соревнованиях классических транспортных средств.\n\nКлассические транспортные средства должны иметь соответствующую идентификационную наклейку, чтобы можно было проверить вид разрешения, который будет указан в Сертификате технической проверки в бумажном или цифровом формате.\"",
+        "simpleRu": "Для классических машин компетентный орган решает, как часто нужна проверка и какое разрешение дать. Есть 3 варианта: обычное годовое движение, годовое движение до 50 km/h днем и ночью, или двухлетнее исключительное разрешение только для поездок на события и выставки. Машина должна быть безопасной и иметь наклейку, а вид разрешения указывается в сертификате VTV.",
+        "sourceTextSha256": "4735e42e7d769923c7591e4a26ffd2c973b3d478ce1c33e1cdc4bdfb3fa142df",
+        "sourceFingerprint": "sha256:4735e42e7d769923c7591e4a26ffd2c973b3d478ce1c33e1cdc4bdfb3fa142df",
+        "sourceSpan": {
+          "startLine": 93,
+          "endLine": 140
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-5o-sustituyese-el-texto-del-articulo-20-007",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 7,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 5°.- Sustitúyese el texto del artículo 20 de la Ley 2265 (texto consolidado por Ley"
+        ],
+        "officialLabel": "Art. 5°.- Sustitúyese el texto del artículo 20 de la Ley 2265 (texto consolidado por Ley",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 5°.- Sustitúyese el texto del artículo 20 de la Ley 2265 (texto consolidado por Ley\n\n6588) por el siguiente:\n\n\"Artículo 20.- Plazos y vigencia de los certificados. La vigencia efectiva de los\n\ncertificados de la Verificación Técnica Obligatoria (VTO) para vehículos y\n\nmotovehículos será de veinticuatro (24) meses hasta el octavo año de antigüedad o\n\nhasta el momento en que se superen los ochenta mil kilómetros (80.000 km)\n\nrecorridos, con una tolerancia de hasta cuatro mil kilómetros (4.000 km).\n\nUna vez cumplido el octavo año de antigüedad o una vez superados los ochenta mil\n\nkilómetros (80.000 km) recorridos, con una tolerancia de hasta cuatro mil kilómetros\n\n(4.000 km), lo que ocurra primero, los certificados de la Verificación Técnica\n\nObligatoria (VTO) para vehículos y motovehículos tendrán una vigencia de doce (12)\n\nmeses. Asimismo, en caso de que un vehículo o motovehículo se presente a realizar la\n\nVerificación Técnica Obligatoria (VTO) una vez cumplido el séptimo año de\n\nantigüedad, dicha verificación tendrá una vigencia de doce (12) meses.\n\nLos usuarios cuyos vehículos y motovehículos se encuentren radicados en la Ciudad\n\nde Buenos Aires deberán efectuar la Verificación Técnica Obligatoria (VTO) de los\n\nmismos a partir de la habilitación del sistema de verificación que establece esta Ley\n\natendiendo al último número del dominio del vehículo o motovehículo según la\n\nsiguiente tabla:\n\nCuando un usuario concurra con su vehículo o motovehículo a realizar la verificación\n\ncon hasta treinta (30) días de anterioridad al vencimiento y/o con posterioridad al mes\n\nestablecido, la vigencia del certificado será hasta el mes de verificación que le\n\ncorresponda según último dígito de patente, conforme los plazos establecidos en el\n\npresente.\"\n",
+        "fullTranslationRu": "Статья 5. Заменяется текст статьи 20 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 20. Сроки и действительность сертификатов. Фактический срок действия сертификатов Обязательной технической проверки (VTO) для транспортных средств и мототранспортных средств составляет двадцать четыре (24) месяца до восьмого года возраста либо до момента превышения восьмидесяти тысяч километров (80.000 km) пробега, с допуском до четырех тысяч километров (4.000 km).\n\nПосле наступления восьмого года возраста либо после превышения восьмидесяти тысяч километров (80.000 km) пробега, с допуском до четырех тысяч километров (4.000 km), в зависимости от того, что произойдет раньше, сертификаты VTO для транспортных средств и мототранспортных средств действуют двенадцать (12) месяцев. Кроме того, если транспортное средство или мототранспортное средство проходит VTO после наступления седьмого года возраста, такая проверка действует двенадцать (12) месяцев.\n\nПользователи, чьи транспортные средства и мототранспортные средства зарегистрированы в городе Буэнос-Айрес, должны проходить VTO с момента запуска системы проверки, установленной настоящим законом, с учетом последней цифры государственного номера транспортного средства или мототранспортного средства по следующей таблице:\n\nКогда пользователь приезжает на проверку на транспортном средстве или мототранспортном средстве за срок до тридцати (30) дней до окончания действия и/или после установленного месяца, срок действия сертификата будет до месяца проверки, который соответствует последней цифре номера, согласно срокам, установленным настоящим законом.\"",
+        "simpleRu": "До 8 лет возраста или до 80 000 км пробега VTO обычно действует 24 месяца, с допуском 4 000 км. После 8 лет или 80 000 км, а также если машина пришла на VTV после 7 лет возраста, сертификат действует 12 месяцев. Месяц прохождения зависит от последней цифры номера. Если приехать раньше до 30 дней или позже своего месяца, срок все равно привяжут к положенному месяцу по номеру.",
+        "sourceTextSha256": "e75d63e7226cdb687c45a0e5556578479ee54d11bb231912b4e486355bc1424a",
+        "sourceFingerprint": "sha256:e75d63e7226cdb687c45a0e5556578479ee54d11bb231912b4e486355bc1424a",
+        "sourceSpan": {
+          "startLine": 141,
+          "endLine": 188
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-6o-sustituyese-el-texto-del-articulo-23-008",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 8,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 6°.- Sustitúyese el texto del artículo 23 de la Ley 2265 (texto consolidado por Ley"
+        ],
+        "officialLabel": "Art. 6°.- Sustitúyese el texto del artículo 23 de la Ley 2265 (texto consolidado por Ley",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 6°.- Sustitúyese el texto del artículo 23 de la Ley 2265 (texto consolidado por Ley\n\n6588) por el siguiente:\n\n\"Artículo 23 - Estaciones de Verificación- La Verificación Técnica Obligatoria (VTO)\n\nserá efectuada en Estaciones de Verificación (EV) habilitadas al efecto, las cuales\n\nfuncionarán bajo la Dirección Técnica de un responsable que deberá ser profesional\n\nuniversitario matriculado con competencia para desempeñarse en la Ciudad de\n\nBuenos Aires y con incumbencias en la materia o que cuente con antecedentes\n\nlaborales en tareas similares por un plazo mayor a diez (10) años.\n\nLas Estaciones de Verificación contarán con un sistema de registro de revisiones en el\n\nque figurarán todas las revisiones técnicas efectuadas, sus resultados y las causales\n\nde rechazo en caso de corresponder.\n",
+        "fullTranslationRu": "Статья 6. Заменяется текст статьи 23 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 23. Станции проверки. Обязательная техническая проверка (VTO) проводится на Станциях проверки (EV), уполномоченных для этой цели. Эти станции работают под техническим руководством ответственного лица, которое должно быть дипломированным университетским специалистом с профессиональной регистрацией, компетентным работать в городе Буэнос-Айрес и имеющим полномочия в соответствующей области, либо иметь трудовой опыт в аналогичных задачах более десяти (10) лет.\n\nСтанции проверки имеют систему учета проверок, где указываются все проведенные технические проверки, их результаты и причины отказа, если они есть.",
+        "simpleRu": "VTO проводят только уполномоченные станции. У станции должен быть технический ответственный специалист: профильный дипломированный профессионал для CABA или человек с опытом похожей работы больше 10 лет. Станция ведет учет всех проверок, результатов и причин отказа.",
+        "sourceTextSha256": "ab65629dccc83214f5e60b981f4cbbe253756067e9bbeb964612cd68f0500d94",
+        "sourceFingerprint": "sha256:ab65629dccc83214f5e60b981f4cbbe253756067e9bbeb964612cd68f0500d94",
+        "sourceSpan": {
+          "startLine": 189,
+          "endLine": 210
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-7o-sustituyese-el-texto-del-articulo-26-009",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 9,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 7°.- Sustitúyese el texto del artículo 26 de la Ley 2265 (texto consolidado por Ley"
+        ],
+        "officialLabel": "Art. 7°.- Sustitúyese el texto del artículo 26 de la Ley 2265 (texto consolidado por Ley",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 7°.- Sustitúyese el texto del artículo 26 de la Ley 2265 (texto consolidado por Ley\n\n6588) por el siguiente:\n\n\"Artículo 26 - Verificación Técnica Rápida Aleatoria- La Autoridad de Aplicación\n\ncumplimentará una Verificación Técnica Rápida y Aleatoria en vía pública sobre\n\nemisión de contaminantes y principales requisitos de seguridad del vehículo o\n\nmotovehículo, para lo cual podrá detenerlo durante el tiempo que dure la misma. El\n\nequipamiento para esta verificación será el que determine la reglamentación.\n\nEn aquellos vehículos o motovehículos que no posean Certificado de Aprobación de\n\nVerificación Técnica (CAVT) vigente la autoridad labrará un acta provisoria.\n\nPresentado el usuario dentro de los treinta (30) días hábiles siguientes ante la\n\nautoridad competente, acreditando haber subsanado la falta, dicha acta quedará\n\nanulada. El incumplimiento del procedimiento precedente convertirá el acta en\n\ndefinitiva, dando lugar a la aplicación de la sanción correspondiente.\n\nLa detención del vehículo o motovehículo podrá extenderse si se detectaran\n\nanomalías de tal envergadura que hagan presuponer a la autoridad que la circulación\n\nde ese vehículo o motovehículo implique un peligro cierto para la seguridad en el\n\ntránsito. En este caso, la detención durará hasta que el vehículo o motovehículo sea\n\nremolcado hacia un taller de reparaciones, operando el vencimiento del CAVT si se\n\nencontrare vigente.\"\n",
+        "fullTranslationRu": "Статья 7. Заменяется текст статьи 26 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 26. Быстрая случайная техническая проверка. Компетентный орган выполняет на общественной дороге быструю и случайную техническую проверку выбросов загрязняющих веществ и основных требований безопасности транспортного средства или мототранспортного средства. Для этого он может остановить его на время проведения проверки. Оборудование для такой проверки определяется регламентом.\n\nЕсли транспортное средство или мототранспортное средство не имеет действующего Сертификата одобрения технической проверки (CAVT), орган составляет предварительный акт.\n\nЕсли пользователь в течение следующих тридцати (30) рабочих дней явится к компетентному органу и подтвердит, что устранил нарушение, такой акт аннулируется. Невыполнение указанной процедуры делает акт окончательным и приводит к применению соответствующей санкции.\n\nОстановка транспортного средства или мототранспортного средства может быть продлена, если обнаружены настолько серьезные неисправности, что орган может предположить: движение этого транспортного средства или мототранспортного средства создает реальную опасность для безопасности дорожного движения. В таком случае остановка длится до буксировки транспортного средства или мототранспортного средства в ремонтную мастерскую, и CAVT прекращает действовать, если он был действующим.\"",
+        "simpleRu": "На дороге могут провести быструю случайную проверку выбросов и главных требований безопасности. Если нет действующего CAVT, составляют предварительный акт. Водитель может в течение 30 рабочих дней доказать, что проблему исправили, тогда акт отменят. Если неисправность опасная, транспорт могут держать остановленным до буксировки в ремонт, а действующий CAVT перестает действовать.",
+        "sourceTextSha256": "8cfadbe2fd00b753982856fc4c0a307debe999197158b50c7e6d7e0ee5af199e",
+        "sourceFingerprint": "sha256:8cfadbe2fd00b753982856fc4c0a307debe999197158b50c7e6d7e0ee5af199e",
+        "sourceSpan": {
+          "startLine": 211,
+          "endLine": 248
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-8o-sustituyese-el-texto-del-articulo-28-010",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 10,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 8°.- Sustitúyese el texto del artículo 28 de la Ley 2265 (texto consolidado por Ley"
+        ],
+        "officialLabel": "Art. 8°.- Sustitúyese el texto del artículo 28 de la Ley 2265 (texto consolidado por Ley",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 8°.- Sustitúyese el texto del artículo 28 de la Ley 2265 (texto consolidado por Ley\n\n6588) por el siguiente:\n\n\"Artículo 28.- Bonificaciones tarifarias. Están exentos del pago de la tarifa los usuarios\n\nque cumplan los siguientes requisitos:\n\na) Sean jubilados o pensionados, o mayores de sesenta y cinco (65) años en todos los\n\ncasos cuyos ingresos regulares no superen dos haberes mínimos jubilatorios.\n\nb) Sean personas con discapacidad, con el vehículo inscripto a su nombre y acrediten\n\nsu situación con certificado extendido por el Gobierno de la Ciudad Autónoma de\n\nBuenos Aires y/o autoridad competente.\n\nc) Padres o tutores, los descendientes, cónyuge y la pareja conviviente de persona\n\ncon discapacidad, esta última con la acreditación de dos (2) años de convivencia con\n\nla persona discapacitada. En todos los casos el vehículo debe estar destinado al uso\n\nde la persona con discapacidad.\n\nEn los casos de los incisos b y c la bonificación alcanzará a un (1) solo vehículo por\n\npersona con discapacidad.\n\nEstas bonificaciones son aplicables siempre que la verificación técnica sea efectuada\n\ndentro del plazo de vigencia del certificado de VTO o dentro del plazo de tolerancia\n\nestablecido en el artículo 15 de la presente Ley.\n\nA fin de dar efectivo cumplimiento a este artículo y permitir a los usuarios la obtención\n\nde este beneficio, la Autoridad de Aplicación deberá dar previamente amplia difusión a\n\nsus alcances.\"\n",
+        "fullTranslationRu": "Статья 8. Заменяется текст статьи 28 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 28. Тарифные льготы. От оплаты тарифа освобождаются пользователи, которые выполняют следующие требования:\n\na) являются пенсионерами по возрасту или пенсии, либо во всех случаях лицами старше шестидесяти пяти (65) лет, чьи регулярные доходы не превышают две минимальные пенсионные выплаты;\n\nb) являются людьми с инвалидностью, имеют транспортное средство, зарегистрированное на свое имя, и подтверждают свое положение сертификатом, выданным Правительством Автономного города Буэнос-Айрес и/или компетентным органом;\n\nc) являются родителями или опекунами, потомками, супругом или совместно проживающим партнером человека с инвалидностью; для последнего требуется подтверждение двух (2) лет совместного проживания с человеком с инвалидностью. Во всех случаях транспортное средство должно быть предназначено для использования человеком с инвалидностью.\n\nВ случаях пунктов b и c льгота распространяется только на одно (1) транспортное средство на одного человека с инвалидностью.\n\nЭти льготы применяются при условии, что техническая проверка проводится в пределах срока действия сертификата VTO или в пределах срока допуска, установленного статьей 15 настоящего закона.\n\nЧтобы обеспечить фактическое выполнение этой статьи и дать пользователям возможность получить льготу, компетентный орган должен заранее широко распространить информацию о ее объеме.\"",
+        "simpleRu": "Некоторые люди могут не платить за VTV: пенсионеры или люди старше 65 лет с доходом до двух минимальных пенсий, люди с инвалидностью, а также некоторые родственники или сожители, если машина нужна человеку с инвалидностью. Для инвалидности льгота дается только на 1 машину на человека. Документы надо подать в правильный срок действия VTO или допуска.",
+        "sourceTextSha256": "daa623e28cc4667e7b7c3056827ec570a783ec876f2650f5e8749e49b5047c08",
+        "sourceFingerprint": "sha256:daa623e28cc4667e7b7c3056827ec570a783ec876f2650f5e8749e49b5047c08",
+        "sourceSpan": {
+          "startLine": 249,
+          "endLine": 290
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-9o-sustituyese-el-titulo-iv-de-la-011",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 11,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 9°.- Sustitúyese el título IV de la Ley 2265 (texto consolidado por Ley 6588) por el"
+        ],
+        "officialLabel": "Art. 9°.- Sustitúyese el título IV de la Ley 2265 (texto consolidado por Ley 6588) por el",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 9°.- Sustitúyese el título IV de la Ley 2265 (texto consolidado por Ley 6588) por el\n\nsiguiente:\n\n\"PRESTACIÓN DEL SERVICIO DE VERIFICACIÓN TÉCNICA\n\nOBLIGATORIA\".\n",
+        "fullTranslationRu": "Статья 9. Заменяется название Раздела IV Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"ОКАЗАНИЕ УСЛУГИ ОБЯЗАТЕЛЬНОЙ ТЕХНИЧЕСКОЙ ПРОВЕРКИ\".",
+        "simpleRu": "Раздел IV закона теперь называется про оказание услуги обязательной технической проверки.",
+        "sourceTextSha256": "bf5bf1136832a102d18a0f44d5c3998c7cf8ac89b7a4c046cf511f93106da678",
+        "sourceFingerprint": "sha256:bf5bf1136832a102d18a0f44d5c3998c7cf8ac89b7a4c046cf511f93106da678",
+        "sourceSpan": {
+          "startLine": 291,
+          "endLine": 298
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-10-sustituyese-el-articulo-29-de-la-012",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 12,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 10.- Sustitúyese el artículo 29 de la Ley 2265 (texto consolidado por Ley 6588) por"
+        ],
+        "officialLabel": "Art. 10.- Sustitúyese el artículo 29 de la Ley 2265 (texto consolidado por Ley 6588) por",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 10.- Sustitúyese el artículo 29 de la Ley 2265 (texto consolidado por Ley 6588) por\n\nel siguiente:\n\n\"\"Artículo 29 - Prestaciones- El Poder Ejecutivo deberá procurar una amplia oferta de\n\nEstaciones Verificadoras en la Ciudad Autónoma de Buenos Aires. A tal efecto podrá\n\ncontratar el Servicio de Verificación Técnica Obligatoria a fin de habilitar Estaciones\n\nVerificadoras que cumplan con los requisitos técnicos y ambientales que la autoridad\n\nde aplicación establezca.\n\nA fin de garantizar un mínimo de prestación del Servicio de Verificación Técnica\n\nObligatoria, el Poder Ejecutivo llamará a licitación pública nacional e internacional para\n\nla prestación de dicho servicio por hasta diez (10) años y deberá contar con un mínimo\n\nde cinco (5) Estaciones Verificadoras.\n",
+        "fullTranslationRu": "Статья 10. Заменяется статья 29 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 29. Услуги. Исполнительная власть должна стремиться обеспечить широкое предложение станций проверки в Автономном городе Буэнос-Айрес. Для этого она может заключать договоры на услугу Обязательной технической проверки, чтобы уполномочивать станции проверки, соответствующие техническим и экологическим требованиям, установленным компетентным органом.\n\nДля обеспечения минимального объема оказания услуги Обязательной технической проверки Исполнительная власть объявляет национальный и международный публичный тендер на оказание этой услуги сроком до десяти (10) лет и должна иметь минимум пять (5) станций проверки.",
+        "simpleRu": "Городская исполнительная власть должна обеспечить достаточно станций VTV. Она может заключать договоры с проверочными станциями, если они отвечают техническим и экологическим требованиям. Для минимального покрытия нужно провести публичный национальный и международный тендер до 10 лет и иметь не меньше 5 станций.",
+        "sourceTextSha256": "c06e05a3047be85f56a1aeda2a7e7e7629d09dba23715dd724179050780b42f4",
+        "sourceFingerprint": "sha256:c06e05a3047be85f56a1aeda2a7e7e7629d09dba23715dd724179050780b42f4",
+        "sourceSpan": {
+          "startLine": 299,
+          "endLine": 320
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-11-sustituyese-el-articulo-31-de-la-013",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 13,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 11.- Sustitúyese el artículo 31 de la Ley 2265 (texto consolidado por Ley 6588) por"
+        ],
+        "officialLabel": "Art. 11.- Sustitúyese el artículo 31 de la Ley 2265 (texto consolidado por Ley 6588) por",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 11.- Sustitúyese el artículo 31 de la Ley 2265 (texto consolidado por Ley 6588) por\n\nel siguiente:\n\n\"Artículo 31 - Auditoría de la Prestación- La Autoridad de Aplicación ejercerá funciones\n\nde Órgano de Control de la prestación, supervisando, inspeccionando y auditando el\n\nservicio en su faz operativa y contable. La auditoría técnica operativa del servicio\n\nestará ejecutada por una institución pública calificada en la materia. Los honorarios\n\nque esta tarea demande correrán por cuenta de los titulares de las Estaciones de\n\nVerificación y serán aprobados y comunicados previamente a los oferentes por el\n\nPoder Ejecutivo.\"\n",
+        "fullTranslationRu": "Статья 11. Заменяется статья 31 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 31. Аудит оказания услуги. Компетентный орган выполняет функции контрольного органа за оказанием услуги, надзирая, инспектируя и проверяя сервис в операционной и бухгалтерской части. Технический операционный аудит услуги выполняет государственное учреждение, квалифицированное в соответствующей области. Гонорары, которые потребует эта работа, оплачиваются владельцами станций проверки и заранее утверждаются и сообщаются участникам торгов Исполнительной властью.\"",
+        "simpleRu": "Компетентный орган контролирует станции VTV: проверяет работу и учет. Технический аудит делает квалифицированное государственное учреждение. Его стоимость оплачивают владельцы станций, а Исполнительная власть заранее утверждает и сообщает эти суммы участникам торгов.",
+        "sourceTextSha256": "334ec61132a2af455d90b3f6a83d5b54428059c8a8a4e5afe40518d649de6338",
+        "sourceFingerprint": "sha256:334ec61132a2af455d90b3f6a83d5b54428059c8a8a4e5afe40518d649de6338",
+        "sourceSpan": {
+          "startLine": 321,
+          "endLine": 338
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-12-sustituyese-el-articulo-35-de-la-014",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 14,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 12.- Sustitúyese el artículo 35 de la Ley 2265 (texto consolidado por Ley 6588) por"
+        ],
+        "officialLabel": "Art. 12.- Sustitúyese el artículo 35 de la Ley 2265 (texto consolidado por Ley 6588) por",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 12.- Sustitúyese el artículo 35 de la Ley 2265 (texto consolidado por Ley 6588) por\n\nel siguiente:\n\n\"Artículo 35 - Los prestadores del servicio deberán responder por sus incumplimientos,\n\ncon las sanciones, de acuerdo a lo establecido en la Ley 2095 (texto consolidado por\n\nLey 6588), con las sanciones que emanen de la documentación contractual, sin\n\nperjuicio de las responsabilidades civiles o penales emanadas de tales\n\nincumplimientos.\"\n",
+        "fullTranslationRu": "Статья 12. Заменяется статья 35 Закона 2265 (текст, консолидированный Законом 6588) следующим:\n\n\"Статья 35. Поставщики услуги отвечают за свои нарушения санкциями в соответствии с Законом 2095 (текст, консолидированный Законом 6588) и санкциями, вытекающими из договорной документации, без ущерба для гражданской или уголовной ответственности, возникшей из таких нарушений.\"",
+        "simpleRu": "Если поставщик услуги VTV нарушает свои обязанности, к нему могут применить санкции по Закону 2095 и по договору. Это не отменяет возможную гражданскую или уголовную ответственность.",
+        "sourceTextSha256": "1abe3d04189a4272f7ae90ab8f2ce16fa65a224f0e34a72fa42779aea7e52e4e",
+        "sourceFingerprint": "sha256:1abe3d04189a4272f7ae90ab8f2ce16fa65a224f0e34a72fa42779aea7e52e4e",
+        "sourceSpan": {
+          "startLine": 339,
+          "endLine": 352
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-13-autorizase-al-poder-ejecutivo-a-traves-015",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 15,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 13.- Autorízase al Poder Ejecutivo, a través de la Secretaría de Transporte y"
+        ],
+        "officialLabel": "Art. 13.- Autorízase al Poder Ejecutivo, a través de la Secretaría de Transporte y",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 13.- Autorízase al Poder Ejecutivo, a través de la Secretaría de Transporte y\n\nObras Públicas o el organismo que en el futuro la reemplace, a instrumentar las\n\nadecuaciones que pudieran resultar necesarias en los contratos vigentes para la\n\nprestación del servicio de Verificación Técnica Obligatoria conforme a los Pliegos de\n\nBases y Condiciones aprobados mediante el artículo 7° de la Ley 4111, en virtud de\n\nlas modificaciones incorporadas por la presente Ley.\n\nEn ningún caso los procedimientos establecidos por el presente autorizan a las\n\nconcesionarias a suspender o alterar el cumplimiento de sus obligaciones.\n\nCláusula Transitoria Primera: Los artículos 1°, 3°, 6°, 7°, 9, 10, 11 y 12 de la presente\n\nLey entrarán en vigor una vez concluidos los contratos vigentes para la prestación del\n\nservicio de Verificación Técnica Obligatoria conforme a los Pliegos de Bases y\n\nCondiciones aprobados mediante el artículo 7° de la Ley 4111.\n\nCláusula Transitoria Segunda: La Autoridad de Aplicación deberá reglamentar la\n\npresente Ley dentro de los ciento ochenta días hábiles desde su promulgación a fin de\n\ndisponibilizar la información y evaluar la factibilidad de habilitar nuevas Estaciones\n\nVerificadoras que inicien su operatoria al vencimiento de las concesiones vigentes.\n",
+        "fullTranslationRu": "Статья 13. Исполнительной власти через Secretaría de Transporte y Obras Públicas либо орган, который заменит ее в будущем, разрешается оформить изменения, которые могут оказаться необходимыми в действующих договорах на оказание услуги Обязательной технической проверки по условиям и требованиям, утвержденным статьей 7 Закона 4111, в силу изменений, внесенных настоящим законом.\n\nНи в одном случае процедуры, установленные настоящим законом, не разрешают концессионерам приостанавливать или изменять выполнение своих обязанностей.\n\nПервая переходная оговорка: статьи 1, 3, 6, 7, 9, 10, 11 и 12 настоящего закона вступят в силу после завершения действующих договоров на оказание услуги Обязательной технической проверки по условиям и требованиям, утвержденным статьей 7 Закона 4111.\n\nВторая переходная оговорка: компетентный орган должен регламентировать настоящий закон в течение ста восьмидесяти рабочих дней с момента его промульгации, чтобы сделать доступной информацию и оценить возможность уполномочить новые станции проверки, которые начнут работу по окончании действующих концессий.",
+        "simpleRu": "Исполнительная власть может адаптировать действующие договоры VTV под новый закон, но концессионеры не могут из-за этого прекращать или менять свои обязанности. Некоторые статьи начнут действовать только после окончания старых договоров. Компетентный орган должен за 180 рабочих дней подготовить регламент и оценить новые станции проверки.",
+        "sourceTextSha256": "6aa7a8f0a4af6cecdcab10b50502a819cb828affee4922e88b538928afe5875d",
+        "sourceFingerprint": "sha256:6aa7a8f0a4af6cecdcab10b50502a819cb828affee4922e88b538928afe5875d",
+        "sourceSpan": {
+          "startLine": 353,
+          "endLine": 384
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--art-14-comuniquese-etc-ferrario-schillagi-016",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 16,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Art. 14.- Comuníquese, etc. Ferrario - Schillagi"
+        ],
+        "officialLabel": "Art. 14.- Comuníquese, etc. Ferrario - Schillagi",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "Art. 14.- Comuníquese, etc. Ferrario - Schillagi\n\nBuenos Aires, 19 de abril de 2023\n\nEn uso de las facultades conferidas por el artículo 102 de la Constitución de la Ciudad\n\nAutónoma de Buenos Aires, promúlgase la Ley N° 6.631 (E.E. N° 2023-13760705-\n\nGCABA-DGALE) sancionada por la Legislatura de la Ciudad Autónoma de Buenos\n\nAires en su sesión del día 30 de marzo de 2023.\n\nEl presente Decreto es refrendado por el señor Jefe de Gabinete de Ministros.\n\nPublíquese en el Boletín Oficial de la Ciudad de Buenos Aires, gírese copia a la\n\nLegislatura de la Ciudad Autónoma de Buenos Aires por intermedio de la Dirección\n\nGeneral de Asuntos Legislativos, comuníquese a la Jefatura de Gabinete de Ministros.\n\nCumplido, archívese. RODRÍGUEZ LARRETA - Miguel\n\n####\nRelaciones\n",
+        "fullTranslationRu": "Статья 14. Сообщить и прочее. Ferrario - Schillagi\n\nБуэнос-Айрес, 19 апреля 2023 года\n\nВ силу полномочий, предоставленных статьей 102 Конституции Автономного города Буэнос-Айрес, промульгируется Закон N 6.631 (E.E. N 2023-13760705-GCABA-DGALE), принятый Законодательным собранием Автономного города Буэнос-Айрес на заседании 30 марта 2023 года.\n\nНастоящий Декрет подписан также господином Руководителем Кабинета министров.\n\nОпубликовать в Официальном бюллетене города Буэнос-Айрес, направить копию в Законодательное собрание Автономного города Буэнос-Айрес через Dirección General de Asuntos Legislativos, сообщить Jefatura de Gabinete de Ministros.\n\nПосле исполнения - архивировать. RODRÍGUEZ LARRETA - Miguel\n\n####\nСвязи",
+        "simpleRu": "Это формальная часть: закон промульгирован 19 апреля 2023 года после принятия 30 марта 2023 года. Его нужно опубликовать, направить копию в законодательный орган, сообщить кабинету министров и затем архивировать документ.",
+        "sourceTextSha256": "8a6d592984366247d77da071c9cc565f13f493d14046e0985f4bd493fac022df",
+        "sourceFingerprint": "sha256:8a6d592984366247d77da071c9cc565f13f493d14046e0985f4bd493fac022df",
+        "sourceSpan": {
+          "startLine": 385,
+          "endLine": 409
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--tipo-de-relacion-017",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 17,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Tipo de relación"
+        ],
+        "officialLabel": "Tipo de relación",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "#### Tipo de relación\n",
+        "fullTranslationRu": "#### Вид связи",
+        "simpleRu": "Здесь начинается служебный раздел, где указано, как этот закон связан с другими нормами.",
+        "sourceTextSha256": "b2a91c63dcb23d4a60bdd09d42651927f04f18cd5ea86fa89819dc0f6e2f96dc",
+        "sourceFingerprint": "sha256:b2a91c63dcb23d4a60bdd09d42651927f04f18cd5ea86fa89819dc0f6e2f96dc",
+        "sourceSpan": {
+          "startLine": 410,
+          "endLine": 411
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--norma-relacionada-018",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 18,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Norma relacionada"
+        ],
+        "officialLabel": "Norma relacionada",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "#### Norma relacionada\n",
+        "fullTranslationRu": "#### Связанная норма",
+        "simpleRu": "Этот заголовок показывает, какая норма связана с Законом 6631.",
+        "sourceTextSha256": "3858c06902c6b64fe698d6428e7b0087c7bc4bb1a7221b0c516d2bf786193637",
+        "sourceFingerprint": "sha256:3858c06902c6b64fe698d6428e7b0087c7bc4bb1a7221b0c516d2bf786193637",
+        "sourceSpan": {
+          "startLine": 412,
+          "endLine": 413
+        }
+      },
+      {
+        "chunkId": "ley-6631-caba-vtv-modificatoria-ley-2265--detalle-019",
+        "officialDocumentId": "ley-6631-caba-vtv-modificatoria-ley-2265",
+        "order": 19,
+        "headingPath": [
+          "LEY 6631 2023",
+          "Detalle"
+        ],
+        "officialLabel": "Detalle",
+        "chunkingStrategy": "legal-articles",
+        "originalSpanish": "#### Detalle\n\nMODIFICA\n\nLEY 2265 2006\n\n<p>Art. 1 de la Ley N° 2265 sustituye al Art. 7 de la Ley N° 2265.</p><p>Art. 2 sustituye al Art. 15.</p><p>Art. 3 sustituye al Art. 16.</p><p>Art. 4 sustituye al Art. 17.</p><p>Art. 5 sustituye al Art. 20.</p><p>Art. 6 sustituye al Art. 23.</p><p>Art. 7 sustituye al Art. 26.</p><p>Art. 8 sustituye al Art. 28.</p><p>Art. 9 sustituye la denominación del Título IV.</p><p>Art. 10 sustituye al Art. 29.</p><p>Art. 11 sustituye al Art. 31.</p><p>Art. 12 sustituye al Art. 35.</p><p>Cláusula Transitoria Primera: Los artículos 1°, 3°, 6°, 7°, 9, 10, 11 y 12 entrarán en vigor una vez concluidos los contratos vigentes para la prestación del servicio de Verificación Técnica Obligatoria conforme a los Pliegos de Bases y Condiciones aprobados mediante el artículo 7° de la Ley N°  4111.</p>\n\nPROMULGADA POR\n\nDECRETO 127 2023\n",
+        "fullTranslationRu": "#### Деталь\n\nИЗМЕНЯЕТ\n\nЗАКОН 2265 2006\n\nСтатья 1 Закона N 2265 заменяет статью 7 Закона N 2265. Статья 2 заменяет статью 15. Статья 3 заменяет статью 16. Статья 4 заменяет статью 17. Статья 5 заменяет статью 20. Статья 6 заменяет статью 23. Статья 7 заменяет статью 26. Статья 8 заменяет статью 28. Статья 9 заменяет название Раздела IV. Статья 10 заменяет статью 29. Статья 11 заменяет статью 31. Статья 12 заменяет статью 35. Первая переходная оговорка: статьи 1, 3, 6, 7, 9, 10, 11 и 12 вступят в силу после завершения действующих договоров на оказание услуги Обязательной технической проверки по условиям и требованиям, утвержденным статьей 7 Закона N 4111.\n\nПРОМУЛЬГИРОВАН\n\nДЕКРЕТОМ 127 2023",
+        "simpleRu": "Этот служебный блок перечисляет, какие статьи Закона 2265 меняет Закон 6631. Он также повторяет, что часть статей начнет действовать после завершения действующих договоров VTV. Закон промульгирован Декретом 127/2023.",
+        "sourceTextSha256": "3bd621309320a60de4861ea72ab08f6fb525e7dcf0be9536a21682dcaa7ff3f6",
+        "sourceFingerprint": "sha256:3bd621309320a60de4861ea72ab08f6fb525e7dcf0be9536a21682dcaa7ff3f6",
+        "sourceSpan": {
+          "startLine": 414,
+          "endLine": 425
+        }
+      }
+    ]
+  }
+}

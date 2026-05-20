@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+  "entries": [
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--guia-practica-de-actuacion-ante-siniestros-viales-001",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--guia-practica-de-actuacion-ante-siniestros-viales-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-37-002",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-37-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-73-003",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-73-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-109-004",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-109-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-155-005",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-155-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-192-006",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-192-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-228-007",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-228-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-270-008",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-270-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-306-009",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-306-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-342-010",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-342-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-378-011",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-378-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-424-012",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-424-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-460-013",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-460-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-496-014",
+      "officialDocumentId": "gcba-guia-practica-siniestros-viales",
+      "chunkId": "gcba-guia-practica-siniestros-viales--grupo-de-parrafos-linea-496-014",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
