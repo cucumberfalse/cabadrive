@@ -1,0 +1,1053 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+  "entries": [
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-5-8-formas-de-pago-de-la-476",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-5-8-formas-de-pago-de-la-476",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-5-9-tarifa-preestablecida-477",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-5-9-tarifa-preestablecida-477",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-6-reloj-taximetro-12-6-1-478",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-6-reloj-taximetro-12-6-1-478",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-6-2-caracteristicas-del-cartel-del-estado-479",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-6-2-caracteristicas-del-cartel-del-estado-479",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-6-3-comprobantes-en-todos-los-casos-480",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-6-3-comprobantes-en-todos-los-casos-480",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-6-4-ubicacion-el-reloj-taximetro-estara-481",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-6-4-ubicacion-el-reloj-taximetro-estara-481",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-6-5-vehiculo-fuera-de-servicio-cuando-482",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-6-5-vehiculo-fuera-de-servicio-cuando-482",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-6-6-importe-el-reloj-taximetro-debera-483",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-6-6-importe-el-reloj-taximetro-debera-483",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-6-7-tarifa-nocturna-el-reloj-taximetro-484",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-6-7-tarifa-nocturna-el-reloj-taximetro-484",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-6-9-certificado-tecnico-el-certificado-tecnico-485",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-6-9-certificado-tecnico-el-certificado-tecnico-485",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-6-11-requisitos-minimos-del-reloj-taximetro-486",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-6-11-requisitos-minimos-del-reloj-taximetro-486",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-7-conductores-profesionales-de-taxi-1-487",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-7-conductores-profesionales-de-taxi-1-487",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-7-2-requisitos-particulares-en-relacion-a-488",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-7-2-requisitos-particulares-en-relacion-a-488",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-7-2-1-otros-contenidos-489",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-7-2-1-otros-contenidos-489",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-7-3-conductores-habilitados-estan-habilitados-para-490",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-7-3-conductores-habilitados-estan-habilitados-para-490",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-7-4-relaciones-laborales-todos-los-conductores-491",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-7-4-relaciones-laborales-todos-los-conductores-491",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-7-5-documentacion-y-requisitos-exigibles-el-492",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-7-5-documentacion-y-requisitos-exigibles-el-492",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-7-6-vestimenta-del-conductor-el-conductor-493",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-7-6-vestimenta-del-conductor-el-conductor-493",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-7-7-de-las-obligaciones-de-los-494",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-7-7-de-las-obligaciones-de-los-494",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-8-prestadores-de-despacho-de-viajes-495",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-8-prestadores-de-despacho-de-viajes-495",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-1-2-de-la-documentacion-a-496",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-1-2-de-la-documentacion-a-496",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-1-3-de-la-documentacion-complementaria-497",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-1-3-de-la-documentacion-complementaria-497",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-1-4-de-la-conclusion-del-498",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-1-4-de-la-conclusion-del-498",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-1-5-de-la-autorizacion-cumplimentados-499",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-1-5-de-la-autorizacion-cumplimentados-499",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-1-6-de-la-validez-del-500",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-1-6-de-la-validez-del-500",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-1-7-de-la-renovacion-anual-501",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-1-7-de-la-renovacion-anual-501",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-2-obligaciones-del-prestador-12-8-502",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-2-obligaciones-del-prestador-12-8-502",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-2-2-de-la-exclusion-de-503",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-2-2-de-la-exclusion-de-503",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-2-3-de-la-responsabilidad-del-504",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-2-3-de-la-responsabilidad-del-504",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-2-4-de-la-nomina-de-505",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-2-4-de-la-nomina-de-505",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-2-5-del-minimo-de-vehiculos-506",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-2-5-del-minimo-de-vehiculos-506",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-2-6-del-personal-y-soporte-507",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-2-6-del-personal-y-soporte-507",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-3-caracteristicas-de-la-prestacion-12-508",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-3-caracteristicas-de-la-prestacion-12-508",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-3-2-del-enlace-con-el-509",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-3-2-del-enlace-con-el-509",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-3-3-de-la-continuidad-del-510",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-3-3-de-la-continuidad-del-510",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-4-de-los-prestadores-de-despacho-511",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-4-de-los-prestadores-de-despacho-511",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-4-2-de-la-documentacion-a-512",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-4-2-de-la-documentacion-a-512",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-4-3-del-limite-de-vehiculos-513",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-4-3-del-limite-de-vehiculos-513",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-4-4-del-limite-de-vehiculos-514",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-4-4-del-limite-de-vehiculos-514",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-5-de-la-unicidad-del-contrato-515",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-5-de-la-unicidad-del-contrato-515",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-5-2-de-la-baja-de-516",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-5-2-de-la-baja-de-516",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-8-6-requisitos-minimos-del-servicio-el-517",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-8-6-requisitos-minimos-del-servicio-el-517",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-9-mandatarias-12-9-1-caracteristicas-518",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-9-mandatarias-12-9-1-caracteristicas-518",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-9-2-mandato-cuando-el-titular-de-519",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-9-2-mandato-cuando-el-titular-de-519",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-9-3-requisitos-de-la-mandataria-12-520",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-9-3-requisitos-de-la-mandataria-12-520",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-9-3-2-no-pueden-ser-socios-521",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-9-3-2-no-pueden-ser-socios-521",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-9-3-3-ninguna-mandataria-podra-administrar-522",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-9-3-3-ninguna-mandataria-podra-administrar-522",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-9-4-identificacion-todo-auto-administrado-por-523",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-9-4-identificacion-todo-auto-administrado-por-523",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-9-5-baja-para-solicitar-la-baja-524",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-9-5-baja-para-solicitar-la-baja-524",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-10-registro-unico-rutax-12-10-525",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-10-registro-unico-rutax-12-10-525",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-1-2-el-registro-es-de-526",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-1-2-el-registro-es-de-526",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-1-3-objetivos-y-funciones-del-527",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-1-3-objetivos-y-funciones-del-527",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-1-4-es-responsabilidad-esencial-del-528",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-1-4-es-responsabilidad-esencial-del-528",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-1-5-la-autoridad-de-aplicacion-529",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-1-5-la-autoridad-de-aplicacion-529",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-2-tarjetas-de-identificacion-el-registro-530",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-2-tarjetas-de-identificacion-el-registro-530",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-2-1-identificacion-de-las-tarjetas-531",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-2-1-identificacion-de-las-tarjetas-531",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-3-licenciatarios-del-servicio-tarjeta-dorada-532",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-3-licenciatarios-del-servicio-tarjeta-dorada-532",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-3-2-todo-titular-debe-mantener-533",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-3-2-todo-titular-debe-mantener-533",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-3-3-a-solicitud-del-titular-534",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-3-3-a-solicitud-del-titular-534",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-3-4-el-titular-cuando-renueva-535",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-3-4-el-titular-cuando-renueva-535",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-3-5-las-tarjetas-doradas-deberan-536",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-3-5-las-tarjetas-doradas-deberan-536",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-4-mandatarias-12-10-4-1-537",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-4-mandatarias-12-10-4-1-537",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-4-2-al-momento-de-cada-538",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-4-2-al-momento-de-cada-538",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-4-3-el-registro-llevara-actualizada-539",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-4-3-el-registro-llevara-actualizada-539",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-4-4-los-certificados-deberan-contener-540",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-4-4-los-certificados-deberan-contener-540",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-5-conductores-profesionales-de-taxi-12-541",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-5-conductores-profesionales-de-taxi-12-541",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-5-2-el-registro-lleva-el-542",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-5-2-el-registro-lleva-el-542",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-5-3-la-condicion-de-conductor-543",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-5-3-la-condicion-de-conductor-543",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-5-4-cumplidos-los-requisitos-del-544",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-5-4-cumplidos-los-requisitos-del-544",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-5-5-las-tarjetas-verdes-deberan-545",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-5-5-las-tarjetas-verdes-deberan-545",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-5-7-las-tarjetas-blancas-deberan-546",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-5-7-las-tarjetas-blancas-deberan-546",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-5-9-cuando-se-opere-el-547",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-5-9-cuando-se-opere-el-547",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-5-10-es-responsabilidad-del-conductor-548",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-5-10-es-responsabilidad-del-conductor-548",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-6-apoderados-tarjeta-celeste-12-10-549",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-6-apoderados-tarjeta-celeste-12-10-549",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-6-2-los-apoderados-son-responsables-550",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-6-2-los-apoderados-son-responsables-550",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-6-3-el-registro-lleva-el-551",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-6-3-el-registro-lleva-el-551",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-6-4-todos-los-poderes-deberan-552",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-6-4-todos-los-poderes-deberan-552",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-6-5-deberan-acreditar-con-una-553",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-6-5-deberan-acreditar-con-una-553",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-6-6-no-pueden-intervenir-en-554",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-6-6-no-pueden-intervenir-en-554",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-6-7-las-tarjetas-celestes-de-555",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-6-7-las-tarjetas-celestes-de-555",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-10-7-2-las-tarjetas-celestes-de-556",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-10-7-2-las-tarjetas-celestes-de-556",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-11-penalidades-12-11-1-juzgamiento-557",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--capitulo-12-11-penalidades-12-11-1-juzgamiento-557",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-1-2-de-acuerdo-a-la-558",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-1-2-de-acuerdo-a-la-558",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-1-3-en-los-casos-en-559",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-1-3-en-los-casos-en-559",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-2-prestacion-del-servicio-con-licencia-560",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-2-prestacion-del-servicio-con-licencia-560",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-2-2-la-prestacion-de-servicio-561",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-2-2-la-prestacion-de-servicio-561",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-3-prestacion-del-servicio-publico-de-562",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-3-prestacion-del-servicio-publico-de-562",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-3-2-para-el-caso-en-563",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-3-2-para-el-caso-en-563",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-4-alteraciones-al-reloj-taximetro-12-564",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-4-alteraciones-al-reloj-taximetro-12-564",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-4-2-cuando-se-constatare-alteraciones-565",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-4-2-cuando-se-constatare-alteraciones-565",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-4-3-aquellos-titulares-y-o-566",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-4-3-aquellos-titulares-y-o-566",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-5-plazos-vencidos-12-11-5-567",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-5-plazos-vencidos-12-11-5-567",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-5-2-en-el-caso-de-568",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-5-2-en-el-caso-de-568",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-6-prestadores-de-despacho-de-viajes-569",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-6-prestadores-de-despacho-de-viajes-569",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "ley-2148-caba-codigo-transito-transporte--12-11-6-1-prestadores-en-transgresion-a-570",
+      "officialDocumentId": "ley-2148-caba-codigo-transito-transporte",
+      "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-6-1-prestadores-en-transgresion-a-570",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
