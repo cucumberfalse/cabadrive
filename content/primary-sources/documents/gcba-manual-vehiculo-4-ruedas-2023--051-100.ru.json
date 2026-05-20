@@ -1,0 +1,1022 @@
+{
+  "version": 1,
+  "schema": "primary-sources-document-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+  "document": {
+    "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+    "title": "Manual de conducción vehicular - Categoría B / Automóviles",
+    "shortTitleRu": "Руководство по вождению категории B",
+    "category": "exam-study-material",
+    "jurisdiction": "caba",
+    "officialSourceType": "gcba_theoretical_exam_manual_pdf",
+    "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+    "archiveLocalPath": "content/official-documents/documents/gcba-manual-vehiculo-4-ruedas-2023.md",
+    "retrievalDate": "2026-05-09",
+    "currentnessStatus": "valid_current_material",
+    "currentnessValidationStatus": "passed",
+    "exactTextValidationStatus": "pending",
+    "chunks": [
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--50-051",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 51,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 50: Obligaciones en caso de incidentes viales"
+        ],
+        "officialLabel": "50",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "50\nObligaciones en caso de incidentes viales\nToda  persona  que  se  encuentre  involucrada  en  un  siniestro  vial,  independientemente  de\nque sea o no quien conduce el vehículo implicado, debe solicitar auxilio para atender a las\nvíctimas si las hubiere, brindar su colaboración para evitar mayores daños o peligro para la\ncirculación y contribuir al esclarecimiento de los hechos.\nQué hacer ante un siniestro vial\n34\nCuando ocurre un incidente vial es natural que haya mucha confusión. Para facilitar la toma de\ndecisiones en una situación de ese tipo, hay ciertas acciones que pueden tomarse para minimizar\nlos riesgos y resguardar la vida de las personas involucradas. Conocé todos los pasos en esta Guía.\nDestacamos brevemente los tres pasos a seguir: Proteger-Alertar-Socorrer.\n34/   Guía práctica ante un siniestro vial\nDetenerse de inmediato en un lugar seguro, encender las balizas vehiculares y señalizar la\nzona para que no se produzcan nuevos incidentes viales. Si el vehículo quedó inmovilizado:\nEn una arteria de sentido único o en el carril derecho de una vía con doble sentido, las\nbalizas portátiles se deberán colocar del lado de donde provienen los vehículos.\nCerca del eje central de una vía de doble sentido, se deberá colocar una baliza para cada\nlado de la circulación.\nEn ciudad, lo recomendable es ubicar las balizas portátiles a una distancia de 30 y 60 metros\nrespecto del vehículo.\nEn ruta, dada la mayor velocidad a la que se circula, es recomendable hacerlo como mínimo a\nuna distancia de 50 y 100 metros.\nEn  un  túnel,  se  deberá  mantener  encendidas  las  luces  de  posición  junto  con  las  balizas,  apagar\nel  motor  y  abandonar  el  vehículo  con  mucha  precaución,  usando  el  chaleco  reflectante.\nLuego se deberán colocar las balizas portátiles y llamar al número de asistencia mecánica.\nEn autopistas, lo ideal es utilizar las dársenas de emergencia, pero si no es posible, la conducta\na  seguir  dependerá  del  carril  donde  quede  inmovilizado  el  vehículo.  En  cualquier  caso,  se\ndeberá llamar al número de emergencia de la empresa de la autopista correspondiente, ya\nque son las únicas autorizadas a removerlo (para AUSA llamar al *287 y para AUSOL al 140).\n1° Proteger\n",
+        "fullTranslationRu": "50\nОбязанности в случае дорожных инцидентов\nЛюбое лицо, оказавшееся вовлеченным в дорожный инцидент, независимо от того, является ли оно водителем участвующего транспортного средства, должно вызвать помощь для пострадавших, если они есть, сотрудничать, чтобы избежать большего ущерба или опасности для движения, и содействовать выяснению обстоятельств.\nЧто делать при дорожном инциденте\n34\nКогда происходит дорожный инцидент, естественно, что возникает сильная растерянность. Чтобы было легче принимать решения в такой ситуации, есть действия, которые помогают уменьшить риски и защитить жизнь вовлеченных людей. Все шаги см. в этом Руководстве.\nКратко выделяются три шага: Защитить - Сообщить - Помочь.\n34/ Практическое руководство при дорожном инциденте\nНужно сразу остановиться в безопасном месте, включить аварийную сигнализацию автомобиля и обозначить зону, чтобы не произошли новые дорожные инциденты. Если транспортное средство осталось неподвижным:\nНа улице с односторонним движением или на правой полосе дороги с двусторонним движением переносные аварийные знаки ставят со стороны, откуда едут транспортные средства.\nРядом с центральной осью дороги с двусторонним движением нужно поставить по одному аварийному знаку для каждого направления движения.\nВ городе рекомендуется ставить переносные аварийные знаки на расстоянии 30 и 60 метров от транспортного средства.\nНа трассе, из-за более высокой скорости движения, рекомендуется ставить их как минимум на расстоянии 50 и 100 метров.\nВ туннеле нужно оставить включенными габаритные огни вместе с аварийной сигнализацией, выключить двигатель и очень осторожно покинуть транспортное средство, используя светоотражающий жилет. Затем нужно установить переносные аварийные знаки и позвонить по номеру механической помощи.\nНа автомагистралях лучше всего использовать аварийные карманы, но если это невозможно, дальнейшие действия зависят от полосы, на которой транспортное средство осталось неподвижным. В любом случае нужно звонить по номеру экстренной службы соответствующей компании автомагистрали, потому что только она уполномочена убрать транспортное средство: для AUSA звонить *287, для AUSOL - 140.\n1-й шаг: Защитить",
+        "simpleRu": "При дорожном инциденте сначала остановись безопасно, включи аварийку и обозначь место. В городе аварийные знаки обычно ставят на 30 и 60 м, на трассе - на 50 и 100 м. В туннеле выключи двигатель, выходи осторожно в светоотражающем жилете и зови помощь. На автомагистрали звони службе дороги: AUSA *287, AUSOL 140.",
+        "sourceTextSha256": "ecc3cb8b338b1d886bd4415cbbebf6ef22619cc3a243ada9b62763fb6499ff36",
+        "sourceFingerprint": "sha256:ecc3cb8b338b1d886bd4415cbbebf6ef22619cc3a243ada9b62763fb6499ff36",
+        "sourceSpan": {
+          "startLine": 1393,
+          "endLine": 1424
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--51-052",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 52,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 51: • Lugar del hecho (calle, avenida, intersecciones o alguna referencia clave)."
+        ],
+        "officialLabel": "51",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "51\n• Lugar del hecho (calle, avenida, intersecciones o alguna referencia clave).\n• Características del incidente (choque frontal, vuelco, incendio, etc.).\n• Cantidad y el estado de las víctimas.\nEs importante no cortar la llamada hasta que se lo indiquen.\nEn el caso de que haya personas heridas, llamar inmediatamente al servicio de Emergencias\nMédicas 107 y luego al 911 (que centraliza las llamadas dirigidas a Policía Federal, Bomberos y\nemergencias médicas y luego son derivadas al SAME). Se debe indicar con claridad:\n2° Alertar\n",
+        "fullTranslationRu": "51\n• Место происшествия: улица, проспект, перекрестки или важный ориентир.\n• Характеристики инцидента: лобовое столкновение, опрокидывание, пожар и т. п.\n• Количество и состояние пострадавших.\nВажно не завершать звонок, пока вам этого не скажут.\nЕсли есть раненые люди, нужно немедленно позвонить в службу скорой медицинской помощи 107, а затем в 911, который централизует звонки в Федеральную полицию, пожарным и медицинским экстренным службам, а затем направляет их в SAME. Нужно ясно сообщить:\n2-й шаг: Сообщить",
+        "simpleRu": "Если есть раненые, сначала звони 107, потом 911. Четко скажи, где случилось происшествие, что произошло и сколько пострадавших. Не клади трубку, пока оператор не разрешит.",
+        "sourceTextSha256": "96335e9d3c383fa0464086a84673fecc058d362f4b191b41fe63998377f53c46",
+        "sourceFingerprint": "sha256:96335e9d3c383fa0464086a84673fecc058d362f4b191b41fe63998377f53c46",
+        "sourceSpan": {
+          "startLine": 1425,
+          "endLine": 1434
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--52-053",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 53,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 52: Mientras se espera al servicio de emergencias, evaluar si se puede brindar ayuda a las personas"
+        ],
+        "officialLabel": "52",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "52\nMientras se espera al servicio de emergencias, evaluar si se puede brindar ayuda a las personas\nque resultaron heridas, considerando:\nDatos a recabar en el lugar del siniestro\nDe los vehículos involucrados: dominio o patente, marca, modelo, color, nombre de la compañía\nde seguros, número de póliza y nombre del titular del vehículo (se obtienen de la cédula de\nidentificación del vehículo).\nDe la persona que conduce: nombre, DNI, domicilio, teléfono y licencia de conducir.\nDe la persona asegurada: (en caso de que no sea quien conducía el auto al momento del\nincidente): nombre, DNI, domicilio y teléfono.\nDe las personas testigos: nombre, DNI, dirección y teléfono. Contar con datos de testigos del\nhecho puede ser importante en caso de un posterior proceso judicial.\nDe las personas lesionadas: nombre, DNI, dirección y teléfono.\nDel siniestro: fecha, hora, lugar del incidente (calle, avenida, autopista, etc. intersección de\ncalles, sentido de circulación, numeración catastral aproximada), estado de la calzada; estado\ndel tiempo; etc.\nFotos: en lo posible, tomar imágenes panorámicas del lugar del siniestro, detalles de los daños\na los vehículos involucrados y marcas de frenado.\n• No movilizar para evitar daños por eventuales lesiones ocultas, salvo que exista posibilidad\nde atropello.\n• Si se observa que tiene un objeto clavado, no retirarlo para que no se produzca una hemorragia.\n• Si tiene casco, no retirarlo, a menos que haya vómito o asfixia.\n• Si se encuentra consciente, tranquilizar y alentar a no realizar ningún movimiento.\n• Interrogar sobre la presencia de dolor, pérdida de sensibilidad o dificultad de movimiento\nde algún miembro.\n• Si está inconsciente y se conocen técnicas de reanimación, y se cuenta con habilitación\npara realizarlas, es momento de hacerlo. De otro modo, esperar el auxilio del servicio de\nemergencias solicitado.\n3° Socorrerr\n",
+        "fullTranslationRu": "52\nПока ожидается экстренная служба, нужно оценить, можно ли помочь раненым людям, учитывая следующее:\nДанные, которые нужно собрать на месте инцидента\nО вовлеченных транспортных средствах: государственный номер, марка, модель, цвет, название страховой компании, номер полиса и имя владельца транспортного средства; эти данные берутся из свидетельства идентификации транспортного средства.\nО водителе: имя, DNI, адрес, телефон и водительское удостоверение.\nО застрахованном лице, если это не тот, кто вел автомобиль в момент инцидента: имя, DNI, адрес и телефон.\nО свидетелях: имя, DNI, адрес и телефон. Данные свидетелей могут быть важны при последующем судебном процессе.\nО пострадавших людях: имя, DNI, адрес и телефон.\nО самом инциденте: дата, время, место инцидента - улица, проспект, автомагистраль и т. п., пересечение улиц, направление движения, примерная кадастровая нумерация, состояние проезжей части, погода и т. д.\nФотографии: по возможности сделать общие снимки места инцидента, деталей повреждений вовлеченных транспортных средств и следов торможения.\n• Не перемещать пострадавшего, чтобы не усилить возможные скрытые травмы, кроме случая, когда есть риск наезда.\n• Если видно, что в тело вонзен предмет, не вынимать его, чтобы не вызвать кровотечение.\n• Если на человеке шлем, не снимать его, кроме случаев рвоты или удушья.\n• Если человек в сознании, успокоить его и просить не двигаться.\n• Спросить о боли, потере чувствительности или трудности движения какой-либо конечности.\n• Если человек без сознания, и известны техники реанимации, а также есть разрешение их выполнять, именно тогда нужно это сделать. В противном случае нужно ждать вызванную экстренную помощь.\n3-й шаг: Помочь",
+        "simpleRu": "Пока едут службы, помогай только безопасно. Не двигай раненого без необходимости, не вытаскивай предмет из раны, не снимай шлем без причины. Собери данные машин, водителей, страховки, свидетелей, пострадавших, места, времени, погоды и сделай фото, если можешь.",
+        "sourceTextSha256": "a96b98fb230af7a34cbf58cd594c60303c202c7ae8aa1fc7f487d866b927be22",
+        "sourceFingerprint": "sha256:a96b98fb230af7a34cbf58cd594c60303c202c7ae8aa1fc7f487d866b927be22",
+        "sourceSpan": {
+          "startLine": 1435,
+          "endLine": 1464
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--53-054",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 54,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 53: • Si no fuera posible recabar información en el momento, la misma puede ser obtenida"
+        ],
+        "officialLabel": "53",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "53\n• Si no fuera posible recabar información en el momento, la misma puede ser obtenida\nen la comisaría, fiscalía y/o el juzgado interviniente.\n• Si  se  colisiona  contra  un  vehículo  estacionado  y  no  se  sabe  a  quién  le  pertenece,  se\ndebe dejar los datos personales, del vehículo, de la licencia de conducir y del seguro\nobligatorio, en un lugar seguro y bien sujeto.\n• Al existir un procedimiento judicial de un siniestro vial, es obligatorio presentarse a\ndeclarar  en  la  fiscalía  o  juzgado  correspondiente  en  caso  de  ser  convocado  como\ntestigo. Es importante declarar todo lo que se sepa y recuerde ante el juez o el fiscal\npara que se esclarezca la causa.\nAsesoramiento jurídico y atención psicológica\nEn caso de sufrir un siniestro vial es recomendable asegurarse de contar con el mejor asesoramiento\nposible acerca de cómo enfocar el reclamo de las indemnizaciones y reparaciones a los que las\nvíctimas tienen derecho. En este sentido, es aconsejable seleccionar con calma el asesoramiento\nlegal y no aceptar ofertas apresuradas o de profesionales de los que no se tienen referencias\nprevias.\nPara recibir asesoramiento jurídico acerca de cómo proceder y/o atención psicológica gratuita\nse puede recurrir a algunos de los siguientes organismos y organizaciones:\nRecomendaciones\nOrganismos  Públicos  Nacionales  y  de  la  Ciudad  Autónoma  de\nBuenos Aires\n• Centro de Atención a la víctima y familiares de víctimas de siniestros viales. Agencia Nacional\nde Seguridad Vial, Ministerio de Transporte de la Nación. Tel: 149, opción 2.\n      www.argentina.gob.ar/seguridadvial/redfederal\n• Unidades de Orientación y Denuncia. Ministerio Público Fiscal de la Ciudad Autónoma\nde Buenos Aires (Brinda acompañamiento en causas penales sucedidas en CABA, con\ncompetencia de Fiscalías y Tribunales Criminales y Correccionales). Tel: 6089-9114/9135 /\nPte. Perón 671 https: https://www.mpf.gob.ar/dovic/\n• Oficina de Asistencia a la Víctima y Testigo (OFAVYT). Ministerio Público Fiscal de la Ciudad\nAutónoma de Buenos Aires (brinda asistencia y asesoramiento a personas que han sido objeto\nde  situaciones  de  violencia  física  o  emocional,  ejercida  por  individuos  o  por  instituciones\na fin de alcanzar su restablecimiento psíquico, físico y social). Tel: 4014-1984 / Beruti Nº\n3345, 3° piso, CABA https://mpfciudad.gob.ar/\n• Centros de Acceso a la Justicia (CAJ). Ministerio de Justicia y DDHH de la Nación. (Brinda\nasesoramiento jurídico y/o asistencia psicológica) Tel: 0800- 222- 3425.  https://www.\nargentina.gob.ar/justicia/afianzar/caj\n• Centro de Formación Profesional. Palacio de Justicia de la Nación. (Brinda asesoramiento\ny patrocinio a las víctimas. No se atienden casos por daños y perjuicios). Tel: 4372861/7679 /\nTalcahuano 550, 8º Piso. www.argentina.gob.ar/justicia\n",
+        "fullTranslationRu": "53\n• Если невозможно собрать информацию сразу, ее можно получить в полицейском участке, прокуратуре и/или в суде, который ведет дело.\n• Если произошло столкновение с припаркованным транспортным средством и неизвестно, кому оно принадлежит, нужно оставить свои личные данные, данные транспортного средства, водительского удостоверения и обязательной страховки в безопасном и хорошо закрепленном месте.\n• Если по дорожному инциденту существует судебная процедура, обязательно явиться для дачи показаний в соответствующую прокуратуру или суд, если вас вызвали как свидетеля. Важно рассказать судье или прокурору все, что вы знаете и помните, чтобы причина была выяснена.\nЮридическая консультация и психологическая помощь\nЕсли человек пострадал в дорожном инциденте, рекомендуется убедиться, что он получает наилучшую возможную консультацию о том, как вести требование компенсаций и возмещения вреда, на которые пострадавшие имеют право. В этом смысле желательно спокойно выбирать юридическую помощь и не принимать поспешные предложения или предложения специалистов, о которых нет предварительных рекомендаций.\nЧтобы получить юридическую консультацию о дальнейших действиях и/или бесплатную психологическую помощь, можно обратиться в некоторые из следующих органов и организаций:\nРекомендации\nНациональные публичные органы и органы Автономного города Буэнос-Айрес\n• Центр помощи пострадавшим и родственникам пострадавших в дорожных инцидентах. Национальное агентство безопасности дорожного движения, Министерство транспорта Нации. Тел.: 149, опция 2. www.argentina.gob.ar/seguridadvial/redfederal\n• Подразделения ориентации и подачи заявлений. Государственная прокуратура Автономного города Буэнос-Айрес. Оказывает сопровождение по уголовным делам, произошедшим в городе Буэнос-Айрес и относящимся к компетенции прокуратур и уголовно-исправительных судов. Тел.: 6089-9114/9135 / Pte. Perón 671 https: https://www.mpf.gob.ar/dovic/\n• Офис помощи потерпевшему и свидетелю (OFAVYT). Государственная прокуратура Автономного города Буэнос-Айрес. Оказывает помощь и консультации людям, пережившим физическое или эмоциональное насилие со стороны отдельных лиц или учреждений, чтобы способствовать их психическому, физическому и социальному восстановлению. Тел.: 4014-1984 / Beruti Nº 3345, 3-й этаж, CABA https://mpfciudad.gob.ar/\n• Центры доступа к правосудию (CAJ). Министерство юстиции и прав человека Нации. Оказывают юридическую консультацию и/или психологическую помощь. Тел.: 0800-222-3425. https://www.argentina.gob.ar/justicia/afianzar/caj\n• Центр профессиональной подготовки. Дворец правосудия Нации. Оказывает консультацию и представительство пострадавшим. Дела о вреде и убытках не принимаются. Тел.: 4372861/7679 / Talcahuano 550, 8-й этаж. www.argentina.gob.ar/justicia",
+        "simpleRu": "Если данные не удалось собрать на месте, их можно искать через полицию, прокуратуру или суд. Если задел припаркованную машину и хозяина нет, оставь свои данные, данные машины, прав и страховки. Если тебя вызвали свидетелем, нужно прийти и честно рассказать, что помнишь. За юридической и психологической помощью можно обращаться в указанные госорганы.",
+        "sourceTextSha256": "d7c475e6fbf05dc0c313db66bbee0468d6ef193adec7c1fc6c333b2c7d295a01",
+        "sourceFingerprint": "sha256:d7c475e6fbf05dc0c313db66bbee0468d6ef193adec7c1fc6c333b2c7d295a01",
+        "sourceSpan": {
+          "startLine": 1465,
+          "endLine": 1504
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--54-055",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 55,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 54: Organismos No Gubernamentales"
+        ],
+        "officialLabel": "54",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "54\nOrganismos No Gubernamentales\n• Asociación Civil Trabajar contra la Inseguridad Vial y la Violencia con Acciones Sustentables\n(A.C.T.I.V.V.A.S.) / Contacto: Ema Cibotti-Lischinsky / Tel: 1558125022 /\n     Correo: emacibotti@activvas.org / Web: https://activvas.org/\n• Asociación Civil Carla Arduini / Contacto: Norma Bonelli / Tel:1160565111 y 3971-5437 /\nCorreo:asociacioncarlaarduini@gmail.com\n• Asociación Civil Madres del Dolor / Contacto: Viviam Perrone / Tel: 39684082, 35357569\ny 08002229832 (AYUDA) / Correo: kevinsedano@yahoo.com.ar /\n      http://www.madresdeldolor.org.ar/\n• Asociación  Civil  Red  Nacional  Familiares  de  Víctimas  de  Tránsito  /  Contactos:  Teresa\nMellano y Patricia Pistarini / Tel: 1540832359 y 43013542 / Correo: transitoporlavida@\nyahoo.com.ar\n• Asociación Civil Familias por la Vida / Contacto: Cinthya Toledo / Tel: 08009992769 y\n1132364063 / Correo: ongfamiliasporlavida@hotmail.com / Web:  https://www.facebook.\ncom/pages/category/Non-Governmental-Organization--NGO-/Familias-Por-La-Vida-\nONG-694811214211865/\nEl Sistema de Evaluación Permanente de Conductores o Scoring consiste en la asignación de un\npuntaje a cada persona con licencia (20 puntos al obtenerla por primera vez), que será la base\nsobre la cual se realice un descuento de puntos de acuerdo al tipo de infracción cometida\n35\n.\nReasignación y recupero de puntos:\n• Si la persona no ha perdido todos sus puntos en el lapso de tres años desde la última infracción,\nlos descuentos quedarán sin efecto.\n• Si ha perdido puntos y desea recuperar voluntariamente 4, podrá hacerlo realizando y aprobando\nun curso especializado de educación vial. Esta opción sólo podrá realizarse una vez por año\ny si no ha alcanzado los 0 puntos\n36\n.\n• Al realizar el pago voluntario de las infracciones, se le podrá reasignar el 50% de los puntos\ndescontados, si la persona realiza y aprueba un curso de educación vial de reasignación de\npuntos\n37\n.\nAl llegar a los 0 puntos:\n• La persona será sancionada con inhabilitaciones para conducir (que se extienden desde 60\ndías hasta 5 años), debiendo cumplir con la asistencia y aprobación de un curso de educación\nvial y prevención de incidentes de tránsito, que le permitirá reasignar 10 puntos y en algunos\ncasos se dispone la caducidad de la licencia debiendo iniciar un nuevo trámite de otorgamiento.\nSí frente a inspecciones realizadas por agentes de tránsito en la vía pública, se llegara a comprobar\nque la persona alcanzó los 0 puntos, se le deberá retener la licencia y se le entregará en su lugar\nuna Boleta de Citación, que la habilitará a conducir sólo por un plazo máximo de 3 días hábiles.\nLuego, la persona deberá presentarse ante el juez o funcionario designado para regularizar su\nsituación.\nScoring\n35/ Para más información sobre las infracciones que tienen descuentos de puntos ingresar en https://www.buenosaires.gob.ar/justiciayseguridad/infraccio-\nnes/sistema-de-evaluacion-permanente-de-conductores\n36/ Para más información sobre cursos y evaluaciones de reeducación vial ingresar en https://www.buenosaires.gob.ar/licenciadeconducir/educa-\ncion-vial-y-prevencion-de-siniestros-de-transito\n37/ Las infracciones contempladas en los incisos d) y e) del art. 11.1.4 del Código de Tránsito y Transporte, no acceden a la la posibilidad de la reasignación\ndel 50% de los puntos descontados.\n",
+        "fullTranslationRu": "54\nНегосударственные организации\n• Гражданская ассоциация Trabajar contra la Inseguridad Vial y la Violencia con Acciones Sustentables (A.C.T.I.V.V.A.S.) / Контакт: Ema Cibotti-Lischinsky / Тел.: 1558125022 / почта: emacibotti@activvas.org / сайт: https://activvas.org/\n• Гражданская ассоциация Carla Arduini / Контакт: Norma Bonelli / Тел.: 1160565111 и 3971-5437 / почта: asociacioncarlaarduini@gmail.com\n• Гражданская ассоциация Madres del Dolor / Контакт: Viviam Perrone / Тел.: 39684082, 35357569 и 08002229832 (помощь) / почта: kevinsedano@yahoo.com.ar / http://www.madresdeldolor.org.ar/\n• Гражданская ассоциация Red Nacional Familiares de Víctimas de Tránsito / Контакты: Teresa Mellano и Patricia Pistarini / Тел.: 1540832359 и 43013542 / почта: transitoporlavida@yahoo.com.ar\n• Гражданская ассоциация Familias por la Vida / Контакт: Cinthya Toledo / Тел.: 08009992769 и 1132364063 / почта: ongfamiliasporlavida@hotmail.com / сайт: https://www.facebook.com/pages/category/Non-Governmental-Organization--NGO-/Familias-Por-La-Vida-ONG-694811214211865/\nСистема постоянной оценки водителей, или Scoring, состоит в присвоении каждому человеку с водительским удостоверением баллов: 20 баллов при первом получении удостоверения. Эти баллы являются базой, из которой вычитаются баллы в зависимости от вида совершенного нарушения35.\nПовторное присвоение и восстановление баллов:\n• Если человек не потерял все свои баллы в течение трех лет с последнего нарушения, списания прекращают действовать.\n• Если человек потерял баллы и хочет добровольно восстановить 4 балла, он может сделать это, пройдя и сдав специализированный курс дорожного образования. Такой вариант возможен только один раз в год и только если человек не дошел до 0 баллов36.\n• При добровольной оплате нарушений человеку могут повторно присвоить 50% списанных баллов, если он проходит и сдает курс дорожного образования для повторного присвоения баллов37.\nКогда достигнуты 0 баллов:\n• Человек получает санкцию в виде запрета управлять транспортом, сроком от 60 дней до 5 лет. Он должен посетить и сдать курс дорожного образования и профилактики дорожных инцидентов, который позволяет повторно присвоить 10 баллов. В некоторых случаях устанавливается прекращение действия удостоверения, и нужно начинать новый процесс получения.\nЕсли при проверках агентами дорожного движения на общественной дороге выяснится, что человек достиг 0 баллов, у него должны удержать водительское удостоверение и вместо него выдать повестку-талон, которая разрешает управлять только максимум 3 рабочих дня. Затем человек должен явиться к судье или назначенному должностному лицу, чтобы урегулировать ситуацию.\nScoring\n35/ Для дополнительной информации о нарушениях, за которые списываются баллы, см. https://www.buenosaires.gob.ar/justiciayseguridad/infracciones/sistema-de-evaluacion-permanente-de-conductores\n36/ Для дополнительной информации о курсах и оценках дорожного переобучения см. https://www.buenosaires.gob.ar/licenciadeconducir/educacion-vial-y-prevencion-de-siniestros-de-transito\n37/ Нарушения, предусмотренные пунктами d) и e) статьи 11.1.4 Кодекса дорожного движения и транспорта, не дают возможности повторного присвоения 50% списанных баллов.",
+        "simpleRu": "Система баллов начинается с 20 баллов. За нарушения баллы списывают. Если за 3 года человек не потерял все баллы, списания прекращают действовать. Можно восстановить 4 балла курсом раз в год, пока не дошел до 0. При 0 баллов могут запретить водить на срок от 60 дней до 5 лет, удержать права и выдать временную повестку только до 3 рабочих дней.",
+        "sourceTextSha256": "a58e2645508189d24daf710dca443ff585e8187820ccf957a31e14a8f1c7a283",
+        "sourceFingerprint": "sha256:a58e2645508189d24daf710dca443ff585e8187820ccf957a31e14a8f1c7a283",
+        "sourceSpan": {
+          "startLine": 1505,
+          "endLine": 1557
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--55-056",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 56,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 55: Respetar las normas de"
+        ],
+        "officialLabel": "55",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "55\nRespetar las normas de\ntránsito implica\nsalvar vidas.\n",
+        "fullTranslationRu": "55\nСоблюдать правила\nдорожного движения означает\nспасать жизни.",
+        "simpleRu": "Соблюдение правил дорожного движения спасает жизни.",
+        "sourceTextSha256": "0ec552e7de0641ae177832c225f026345a9f92c1bfa4c5ef5694a46f9e990c0b",
+        "sourceFingerprint": "sha256:0ec552e7de0641ae177832c225f026345a9f92c1bfa4c5ef5694a46f9e990c0b",
+        "sourceSpan": {
+          "startLine": 1558,
+          "endLine": 1562
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--56-057",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 57,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 56: NORMAS BÁSICAS"
+        ],
+        "officialLabel": "56",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "56\nNORMAS BÁSICAS\nDE CONDUCCIÓN\nCapítulo 3- Manual teórico de conducción de vehículos urbanos de cuatro ruedas\n",
+        "fullTranslationRu": "56\nОСНОВНЫЕ НОРМЫ\nВОЖДЕНИЯ\nГлава 3 - Теоретическое руководство по вождению городских четырехколесных транспортных средств",
+        "simpleRu": "Начинается глава 3: основные правила вождения городских четырехколесных транспортных средств.",
+        "sourceTextSha256": "3502a42c1fe0f9dfb9ac34b0b743d55c64b73d75e7077fc967715fce00b6ce2a",
+        "sourceFingerprint": "sha256:3502a42c1fe0f9dfb9ac34b0b743d55c64b73d75e7077fc967715fce00b6ce2a",
+        "sourceSpan": {
+          "startLine": 1563,
+          "endLine": 1567
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--57-058",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 58,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 57: Prioridad normativa"
+        ],
+        "officialLabel": "57",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "57\nPrioridad normativa\nPara ejercer la conducción, de forma adecuada y segura, se debe respetar y prestar atención\na todas las señales de tránsito\n38\n, indicaciones y marcas en la calzada. A través del color y la\nforma (figura geométrica) de estas señales, es posible entender cómo se debe circular y con\nqué situación es factible encontrarse durante el trayecto por el cual se circula.\nLa Ley 2148 establece un orden de prioridad normativo, esto significa que frente a una circunstancia\nen que exista alguna contradicción entre las normas, se deberá respetar la que tenga prioridad\nde acuerdo con el siguiente orden:\n38/ Las señales se encuentran desarrolladas en el ANEXO V: Señales Viales.\nSeñales u órdenes de la autoridad de control\nAl circular por la vía pública, las personas que conducen deben cumplir con las indicaciones de\nlos y las Agentes de Tránsito y obedecer las órdenes impartidas por la Policía de la Ciudad,\nel personal autorizado de obra en el tramo donde estén trabajando y el personal autorizado\nferroviario en la zona correspondiente.\nSus indicaciones u órdenes se encuentran por encima de cualquier norma o señalización. La\nautoridad de control, en cada caso, deberá realizar señas claras para comunicarse de manera\nefectiva con quienes hacen uso de la vía pública.\nEn CABA existe el Cuerpo de Agentes de Tránsito, que se ocupa del ordenamiento del tránsito\ny del cumplimiento de las normas vigentes, entre otras funciones.\n",
+        "fullTranslationRu": "57\nНормативный приоритет\nЧтобы управлять транспортным средством правильно и безопасно, нужно уважать и учитывать все дорожные знаки38, указания и разметку на проезжей части. По цвету и форме, то есть геометрической фигуре, этих знаков можно понять, как нужно двигаться и с какой ситуацией можно столкнуться на пути.\nЗакон 2148 устанавливает порядок нормативного приоритета. Это означает, что если в какой-то ситуации есть противоречие между правилами, нужно соблюдать то, которое имеет приоритет по следующему порядку:\n38/ Знаки раскрыты в Приложении V: Дорожные знаки.\nСигналы или распоряжения контрольного органа\nПри движении по общественной дороге водители должны выполнять указания агентов дорожного движения и подчиняться распоряжениям Полиции города, уполномоченного персонала дорожных работ на участке, где они работают, и уполномоченного железнодорожного персонала в соответствующей зоне.\nИх указания или распоряжения стоят выше любой нормы или дорожного знака. Контрольный орган в каждом случае должен подавать ясные сигналы, чтобы эффективно общаться с теми, кто пользуется общественной дорогой.\nВ городе Буэнос-Айрес существует Корпус агентов дорожного движения, который среди прочих функций занимается организацией движения и соблюдением действующих норм.",
+        "simpleRu": "Если правила или знаки противоречат друг другу, действует порядок приоритета. Самый высокий приоритет имеют ясные команды агентов дорожного движения, полиции города, уполномоченных работников дорожных работ и железной дороги. Водитель должен выполнять эти команды даже выше обычных знаков.",
+        "sourceTextSha256": "c950216e508edee1653f5f635269b76c8a991fe01e8d68c13a887b7219a23ebe",
+        "sourceFingerprint": "sha256:c950216e508edee1653f5f635269b76c8a991fe01e8d68c13a887b7219a23ebe",
+        "sourceSpan": {
+          "startLine": 1568,
+          "endLine": 1590
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--58-059",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 59,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 58: Señales transitorias:"
+        ],
+        "officialLabel": "58",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "58\nSeñales transitorias:\n• Indican la ejecución de trabajos de construcción y mantenimiento en la vía, o en zonas\npróximas.\n• Están presentes durante un tiempo a causa de una situación determinada y luego son\nremovidas.\n• Tienen prioridad sobre la señalización habitual de la vía.\n• Su color predominante es el naranja.\n• Existen varios tipos: carteles verticales, vallas y conos. Éstos últimos les indican a quienes\nconducen que está prohibido sobrepasar la línea imaginaria que los une.\nSemáforos:\nSeñales  luminosas  que  tienen  por  finalidad  transmitir  órdenes  o  prohibiciones,  advertir\ndeterminadas circunstancias, encauzar y regular la circulación mediante la utilización de colores,\nflechas o figuras específicas con ubicación y formas predeterminadas. Su luz puede ser continua\no intermitente.\n39/ Se encuentran desarrolladas en el ANEXO V: Señales Viales.\nDemarcación horizontal y señalización vertical\n39\n:\nDemarcación horizontal\nSon las señales de tránsito marcadas sobre la calzada con el fin de regular, transmitir órdenes,\nadvertir determinadas circunstancias, encauzar la circulación o indicar zonas prohibidas.\nHay distintos tipos:\nAmbas indicaciones tienen el mismo orden de prioridad y por ello deben respetarse, independientemente\nde si figura sólo una de ellas o ambas.\nMarcas longitudinales: son líneas ubicadas a lo largo de la calzada que indican, a quien\nconduce, su propia ubicación en el camino, delimitando carriles o límites de las áreas de la\ncalzada. En un sentido amplio, indican donde es seguro sobrepasar a otro vehículo y donde\nestá prohibido hacerlo.\n",
+        "fullTranslationRu": "58\nВременные знаки:\n• Указывают на выполнение строительных и ремонтных работ на дороге или рядом с ней.\n• Действуют ограниченное время из-за определенной ситуации, а затем убираются.\n• Имеют приоритет над обычной дорожной сигнализацией.\n• Их основной цвет - оранжевый.\n• Существует несколько видов: вертикальные таблички, ограждения и конусы. Последние показывают водителям, что запрещено пересекать воображаемую линию, которая их соединяет.\nСветофоры:\nСветовые сигналы предназначены для передачи распоряжений или запретов, предупреждения об определенных обстоятельствах, направления и регулирования движения с использованием цветов, стрелок или специальных фигур с заранее установленными местом и формой. Свет может быть постоянным или мигающим.\n39/ Они раскрыты в Приложении V: Дорожные знаки.\nГоризонтальная разметка и вертикальная сигнализация39:\nГоризонтальная разметка\nЭто дорожные сигналы, нанесенные на проезжую часть, чтобы регулировать движение, передавать распоряжения, предупреждать об определенных обстоятельствах, направлять движение или обозначать запрещенные зоны.\nЕсть разные виды:\nОба вида указаний имеют одинаковый порядок приоритета, поэтому их нужно соблюдать независимо от того, присутствует только один из них или оба.\nПродольные линии: это линии вдоль проезжей части, которые показывают водителю его положение на дороге, ограничивают полосы или границы участков проезжей части. В широком смысле они показывают, где безопасно обгонять другое транспортное средство, а где это запрещено.",
+        "simpleRu": "Оранжевые временные знаки важнее обычных знаков и показывают работы или временную опасность. Светофоры дают приказы и запреты цветами, стрелками или фигурами. Разметка на дороге тоже регулирует движение: продольные линии показывают полосы и места, где можно или нельзя обгонять.",
+        "sourceTextSha256": "6f1389dd273e0daedef38e9f2a1a0631fb5d18af002ae775bf0a773ceca2f681",
+        "sourceFingerprint": "sha256:6f1389dd273e0daedef38e9f2a1a0631fb5d18af002ae775bf0a773ceca2f681",
+        "sourceSpan": {
+          "startLine": 1591,
+          "endLine": 1620
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--59-060",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 60,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 59: Marcas transversales: son las que se ubican en forma perpendicular al eje de la calzada. Se emplean"
+        ],
+        "officialLabel": "59",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "59\nMarcas transversales: son las que se ubican en forma perpendicular al eje de la calzada. Se emplean\nfundamentalmente para indicar sectores de reducción de velocidad ante un punto de riesgo\n(curva peligrosa, cruce, empalme) y para indicar la existencia de líneas que no pueden ser\nsobrepasadas sin efectuar una acción en relación al derecho de paso. Ejemplos: línea de\ndetención, senda peatonal, senda para ciclistas.\nMarcas  especiales:  símbolos  y  leyendas  que  se  emplean  para  delinear  los  límites  de  las\náreas  de  la  calzada  donde  es  seguro  circular,  y  como  refuerzo  del  señalamiento  vertical\ndestinados a regular la circulación y advertir sobre peligros. Ejemplos: flechas, ceda el paso,\ncruce ferroviario, carril exclusivo y de emergencia, pare.\nExisten otras demarcaciones (marcas canalizadoras, isletas, marcas para niebla, separador de\ntránsito, etc.) que debido a su nivel de especificidad, no es posible presentarlas en las clasificaciones\nanteriores y se las incluyen en estas marcas especiales. Los cordones pintados también forman\nparte de ellas:\n• Color anaranjado: indican los lugares destinados al estacionamiento exclusivo de ciclorodados\ny motovehículos.\n• Color amarillo: indican la prohibición de estacionar durante las 24 horas.\n",
+        "fullTranslationRu": "59\nПоперечная разметка: располагается перпендикулярно оси проезжей части. Ее используют главным образом, чтобы обозначать участки снижения скорости перед опасной точкой, например опасным поворотом, пересечением или соединением дорог, и чтобы обозначать линии, которые нельзя пересекать без действия, связанного с правом проезда. Примеры: стоп-линия, пешеходный переход, велосипедный переход.\nСпециальная разметка: символы и надписи, которые используются для обозначения границ участков проезжей части, где безопасно двигаться, а также как усиление вертикальных знаков, предназначенных для регулирования движения и предупреждения об опасностях. Примеры: стрелки, уступи дорогу, железнодорожный переезд, исключительная и аварийная полоса, стоп.\nЕсть и другая разметка, например направляющая разметка, островки, разметка для тумана, разделитель движения и т. п. Из-за своей специфики она не может быть представлена в предыдущих классификациях и включается в специальные виды разметки. Окрашенные бордюры также входят в эту группу:\n• Оранжевый цвет указывает места, предназначенные для исключительной стоянки велотранспортных средств и мототранспортных средств.\n• Желтый цвет указывает запрет стоянки в течение 24 часов.",
+        "simpleRu": "Поперечная разметка часто предупреждает: снизь скорость, остановись, пропусти или будь готов к пешеходам и велосипедистам. Специальные символы и надписи помогают понять опасности и разрешенные зоны. Оранжевый бордюр - место для велосипедов и мото, желтый бордюр - стоянка запрещена круглые сутки.",
+        "sourceTextSha256": "e6e2b204dea77a96841c98ce469566c986cc3c506fa00fc12dcb32978bfab9af",
+        "sourceFingerprint": "sha256:e6e2b204dea77a96841c98ce469566c986cc3c506fa00fc12dcb32978bfab9af",
+        "sourceSpan": {
+          "startLine": 1621,
+          "endLine": 1638
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--60-061",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 61,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 60: Son las señales de regulación del tránsito colocadas al costado de la vía o elevadas sobre la"
+        ],
+        "officialLabel": "60",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "60\nSon las señales de regulación del tránsito colocadas al costado de la vía o elevadas sobre la\ncalzada (aéreas). Se dividen en 4 categorías:\nSeñalización vertical\n",
+        "fullTranslationRu": "60\nЭто знаки регулирования движения, размещенные сбоку дороги или поднятые над проезжей частью, то есть воздушные. Они делятся на 4 категории:\nВертикальная сигнализация",
+        "simpleRu": "Вертикальные знаки стоят сбоку дороги или над проезжей частью. Они делятся на 4 категории.",
+        "sourceTextSha256": "81a9c2b7ad53ec93844167b2785bbea8f83ccc85553a106721ace3d3c103019f",
+        "sourceFingerprint": "sha256:81a9c2b7ad53ec93844167b2785bbea8f83ccc85553a106721ace3d3c103019f",
+        "sourceSpan": {
+          "startLine": 1639,
+          "endLine": 1643
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--61-062",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 62,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 61: Frente a una situación vial donde no existe ninguna señalización específica, rigen las normas"
+        ],
+        "officialLabel": "61",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "61\nFrente a una situación vial donde no existe ninguna señalización específica, rigen las normas\nlegales de carácter general.\nArgentina tiene una forma de gobierno federal, por lo que cada provincia, en uso de su autonomía,\nregula ciertas materias que le son propias y que no son delegadas al gobierno nacional. Una de\nellas es la que regula el tránsito. Por este motivo, se puede encontrar una normativa nacional y\notras normativas provinciales, algo comprensible al comparar la circulación entre una zona muy\npoblada y otra de pocos habitantes o entre una zona rural y otra urbana. Cada normativa intenta\nabordar las circunstancias particulares de cada territorio. En CABA rige la Ley 2148 y al circular\npor ella se deben adecuar las acciones en relación a esta normativa.\nPrioridades de paso\nA vehículos de emergencia\n• Si se aproxima un vehículo de emergencia (Policía, Bomberos, Defensa Civil o ambulancias)\ncon las señales lumínicas/sonoras (balizas/sirenas) encendidas, esto indica que se encuentra\nen cumplimiento de sus funciones. En este caso, el resto de las personas que conducen deben\nfacilitarle el paso, despejar el carril preferencial de vehículos de emergencias y si fuera necesario\ndeberían detenerse.\n• Si sólo tiene encendidas las balizas, ésto representa que está en servicio pero no en emergencia,\nrazón por la cual no tiene prioridad de paso. Sin embargo existen ciertas condiciones médicas\nen el traslado de pacientes en emergencia que limitan el uso de la sirena de modo continuo. En\nesos casos, el vehículo lleva la señal luminosa encendida y activa una señal sonora en el\nmomento que necesita hacer uso de su prioridad de paso. Por ejemplo, en algunas patologías\ncomo el infarto agudo de miocardio, no se aconseja someter la persona a un traslado con\nmás de 80 dB, apenas 10 dB por debajo del nivel de sonido de la sirena de una ambulancia.\nEn estos casos se les deberá ceder el paso.\n• Estos vehículos, en cumplimiento de sus funciones, están exentos de cumplir otras normas,\nexcepto las indicaciones de la autoridad de control de tránsito. Sin embargo, la conducción\nde estos vehículos debe ser tal que no ponga en riesgo terceras personas ni ocasione un\nmal mayor que aquel que intentan resolver.\n• En caso de extrema necesidad, un vehículo puede realizar un servicio similar al que efectúan\nlos de emergencia y la manera de comunicarlo es encendiendo las balizas, empleando la bocina\nen forma intermitente y agitando un pañuelo. La persona que conduce dicho vehículo deberá\nextremar la precaución en la circulación bajo estas condiciones ya que esta no es su función\nespecífica. Para ellos no hay una suspensión momentánea de las reglas de tránsito, aunque\nsí una prioridad de paso.\nNormas legales de carácter general\n",
+        "fullTranslationRu": "61\nКогда в дорожной ситуации нет специальной сигнализации, действуют общие правовые нормы.\nАргентина имеет федеральную форму правления, поэтому каждая провинция, пользуясь своей автономией, регулирует некоторые собственные вопросы, которые не переданы национальному правительству. Один из таких вопросов - регулирование дорожного движения. Поэтому можно встретить национальные нормы и провинциальные нормы; это понятно, если сравнить движение в очень населенной зоне и зоне с малым числом жителей, сельскую и городскую зону. Каждая норма стремится учитывать особые обстоятельства своей территории. В городе Буэнос-Айрес действует Закон 2148, и при движении по нему нужно соотносить свои действия с этой нормой.\nПриоритеты проезда\nДля экстренных транспортных средств\n• Если приближается экстренное транспортное средство: полиция, пожарные, гражданская оборона или скорая помощь, с включенными световыми/звуковыми сигналами, то есть аварийными огнями/сиренами, это означает, что оно выполняет свои функции. В таком случае остальные водители должны облегчить ему проезд, освободить предпочтительную полосу для экстренных транспортных средств и, если нужно, остановиться.\n• Если включены только аварийные огни, это означает, что транспортное средство находится на службе, но не в экстренной ситуации, поэтому оно не имеет приоритета проезда. Однако при перевозке пациентов в экстренной ситуации бывают медицинские условия, которые ограничивают постоянное использование сирены. В таких случаях транспортное средство едет с включенным световым сигналом и включает звуковой сигнал в момент, когда ему нужно воспользоваться приоритетом. Например, при некоторых патологиях, таких как острый инфаркт миокарда, не рекомендуется подвергать человека перевозке с уровнем шума выше 80 дБ, всего на 10 дБ ниже уровня звука сирены скорой помощи. В этих случаях нужно уступить дорогу.\n• Эти транспортные средства при выполнении своих функций освобождены от соблюдения других норм, кроме указаний органа контроля дорожного движения. Однако управление такими транспортными средствами должно быть таким, чтобы не подвергать риску третьих лиц и не причинять больший вред, чем тот, который они пытаются устранить.\n• В случае крайней необходимости обычное транспортное средство может выполнять услугу, похожую на услуги экстренных транспортных средств, и сообщать об этом включенными аварийными огнями, прерывистым использованием звукового сигнала и размахиванием платком. Водитель такого транспортного средства должен проявлять максимальную осторожность, потому что это не его специальная функция. Для таких транспортных средств нет временного освобождения от правил дорожного движения, хотя есть приоритет проезда.\nОбщие правовые нормы",
+        "simpleRu": "Если специальных знаков нет, действуют общие правила. В городе Буэнос-Айрес важно помнить Закон 2148. Экстренным службам с включенными сигналами нужно освобождать путь. Если у скорой только световой сигнал, это тоже может быть экстренная перевозка без постоянной сирены. Обычная машина в крайней необходимости может просить приоритет аварийкой, сигналом и платком, но правила для нее не отменяются.",
+        "sourceTextSha256": "352212ab1a8d1c0fa90aace44c64bfcb0c9b9e1d2bd63e4261c0ea8c9b432d97",
+        "sourceFingerprint": "sha256:352212ab1a8d1c0fa90aace44c64bfcb0c9b9e1d2bd63e4261c0ea8c9b432d97",
+        "sourceSpan": {
+          "startLine": 1644,
+          "endLine": 1680
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--62-063",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 63,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 62: Cómo darle prioridad de paso a un vehículo en emergencia"
+        ],
+        "officialLabel": "62",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "62\nCómo darle prioridad de paso a un vehículo en emergencia\n",
+        "fullTranslationRu": "62\nКак дать приоритет проезда транспортному средству в экстренной ситуации",
+        "simpleRu": "Раздел объясняет, как уступать дорогу экстренному транспортному средству.",
+        "sourceTextSha256": "7e74eac59e78e4844dc4ef67cfd0c7299fba62ba83863e7d0e6f571a79d665c2",
+        "sourceFingerprint": "sha256:7e74eac59e78e4844dc4ef67cfd0c7299fba62ba83863e7d0e6f571a79d665c2",
+        "sourceSpan": {
+          "startLine": 1681,
+          "endLine": 1683
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--63-064",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 64,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 63: En intersecciones no semaforizadas"
+        ],
+        "officialLabel": "63",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "63\nEn intersecciones no semaforizadas\nEn intersecciones semaforizadas\nLa luz del semáforo ubicado al frente, indicará la conducta a seguir:\nVerde: avanzar.  Sin  embargo,  se  debe  tener  la  precaución  de  no  iniciar  el  cruce  si  no  hay\nespacio suficiente para ubicar el vehículo al otro lado de la bocacalle, sin obstruir la circulación\ntransversal. Antes de avanzar también se debe permitir que termine de cruzar el vehículo o\npeatón/a que haya iniciado el paso antes del cambio de luz.\nAmarillo: detenerse si aún no se ha iniciado el cruce.\nAmarillo intermitente: efectuar el cruce con precaución.\nRojo: detenerse antes de la senda peatonal o de la línea de detención.\nRojo intermitente: detener la marcha antes de la encrucijada; sólo se deberá reiniciarla cuando\nse tenga la certeza de que no existe riesgo de efectuar el cruce.\n• Cuando el cruce es entre arterias de igual jerarquía, los vehículos que tienen prioridad son los\nque cruzan por la derecha, excepto que:\n1. Exista una señalización que indique lo contrario: las señales “Pare” y “Ceda el Paso” indican\nque se pierde la prioridad de paso en una bocacalle sin semáforo. Por eso, al encontrarse\nen esta situación se debe ceder el paso al vehículo que circula por la otra vía. La principal\ndiferencia  entre  ambas  es  que  frente  a  la  señal  de  PARE,  se  está  obligado  a  reducir  la\nvelocidad y frenar a cero el vehículo antes de la senda peatonal. En CEDA EL PASO, en\ncambio, la detención total no es obligatoria sino sólo cuando facilita la circulación de los\nvehículos que tienen preferencia de paso.\n2. Se circule por el costado de vías férreas: cuando se atraviesa un cruce ferroviario en una\nintersección sin semáforos siempre el que tiene prioridad de paso es aquel vehículo que\nsale del paso a nivel.\n3. Haya una rotonda, ya que cuenta con una regla especial: allí, la prioridad de paso la tiene\nel vehículo que está dentro de la calzada circular, es decir, que entre un vehículo que pretende\ningresar  y  uno  que  desea  salir,  la  prioridad  será  del  que  quiera  salir  por  encontrarse  ya\ncirculando en ella.\n4. El que cruza desde la derecha detenga su marcha.\n5. El que viene desde la derecha no desea cruzar, sino girar para ingresar a la arteria.\n• Cuando el cruce es entre arterias de distintas categorías, los vehículos que circulan por la de\nmayor importancia son los que tienen prioridad de acuerdo a la siguiente jerarquía:\nAVENIDA\nCALLE\nPASAJE\nSi se dan juntas varias excepciones, la prioridad estará dada\nde acuerdo al orden en el que fueron enumeradas.\n",
+        "fullTranslationRu": "63\nНа нерегулируемых перекрестках\nНа регулируемых светофором перекрестках\nСвет светофора, расположенного впереди, указывает, как нужно действовать:\nЗеленый: ехать. Однако нужно соблюдать осторожность и не начинать пересечение, если нет достаточного места, чтобы поставить транспортное средство по другую сторону перекресточной зоны, не мешая поперечному движению. Перед началом движения также нужно дать закончить переход или проезд транспортному средству либо пешеходу, которые начали движение до смены сигнала.\nЖелтый: остановиться, если пересечение еще не начато.\nМигающий желтый: пересечь с осторожностью.\nКрасный: остановиться перед пешеходным переходом или стоп-линией.\nМигающий красный: остановить движение перед перекрестком; возобновлять его можно только когда есть уверенность, что пересечение не создает риска.\n• Когда пересекаются дороги одинаковой иерархии, приоритет имеют транспортные средства, которые приближаются справа, кроме случаев, когда:\n1. Есть сигнализация, указывающая другое: знаки PARE и CEDA EL PASO показывают, что приоритет проезда на перекрестке без светофора теряется. Поэтому в такой ситуации нужно уступить транспортному средству, которое движется по другой дороге. Главное отличие между ними в том, что перед знаком PARE обязательно снизить скорость и полностью остановить транспортное средство перед пешеходным переходом. При CEDA EL PASO полная остановка не обязательна, а нужна только тогда, когда это облегчает движение транспортных средств, имеющих преимущество проезда.\n2. Движение идет вдоль железнодорожных путей: когда пересекается железнодорожный переезд на перекрестке без светофоров, приоритет проезда всегда имеет транспортное средство, которое выезжает с переезда.\n3. Есть круговое движение, потому что у него специальное правило: приоритет проезда имеет транспортное средство, уже находящееся на круговой проезжей части. Между транспортным средством, которое хочет въехать, и транспортным средством, которое хочет выехать, приоритет будет у того, кто хочет выехать, потому что оно уже движется по кругу.\n4. Тот, кто подъезжает справа, остановил движение.\n5. Тот, кто подъезжает справа, не хочет пересекать, а хочет повернуть и въехать на дорогу.\n• Когда пересекаются дороги разных категорий, приоритет имеют транспортные средства, движущиеся по дороге большей важности, в следующей иерархии:\nПРОСПЕКТ\nУЛИЦА\nПРОЕЗД\nЕсли одновременно есть несколько исключений, приоритет определяется по порядку, в котором они перечислены.",
+        "simpleRu": "На светофоре зеленый не значит «ехать любой ценой»: нельзя выезжать, если за перекрестком нет места. Желтый - остановиться, если еще не начал. Красный и мигающий красный требуют остановки. Без светофора обычно правый имеет приоритет, но знаки, железная дорога, круг, остановившийся справа и поворот справа меняют правило. По важности дорог: проспект выше улицы, улица выше проезда.",
+        "sourceTextSha256": "6a22e3d871c613e62e37d7e7c44797c1b014d0dc12aad8c6fd173fc52d731aee",
+        "sourceFingerprint": "sha256:6a22e3d871c613e62e37d7e7c44797c1b014d0dc12aad8c6fd173fc52d731aee",
+        "sourceSpan": {
+          "startLine": 1684,
+          "endLine": 1722
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--64-065",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 65,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 64: Cómo circular por una"
+        ],
+        "officialLabel": "64",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "64\nCómo circular por una\nRotonda\n",
+        "fullTranslationRu": "64\nКак двигаться по\nкруговому движению",
+        "simpleRu": "Раздел посвящен движению по кругу.",
+        "sourceTextSha256": "7d8cc28c2f518f3ea99dbfa3adceadef900f496ae9b4d6f5c15d3544572c19e7",
+        "sourceFingerprint": "sha256:7d8cc28c2f518f3ea99dbfa3adceadef900f496ae9b4d6f5c15d3544572c19e7",
+        "sourceSpan": {
+          "startLine": 1723,
+          "endLine": 1726
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--65-066",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 66,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 65: En otras situaciones de prioridad de paso"
+        ],
+        "officialLabel": "65",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "65\nEn otras situaciones de prioridad de paso\nVehículo estacionado o detenido\nEn el caso de que un vehículo estacionado o detenido\ndesee incorporarse a la circulación, tendrá prioridad de\npaso  sólo  si  el  tránsito  se  encuentra  interrumpido  por\nalguna razón.\nEn una pendiente\nEn  una  pendiente,  en  donde  el  ancho  de  la  vía  no  permite\nque  circulen  dos  vehículos  al  mismo  tiempo,  tendrá\nprioridad de paso el vehículo que asciende por sobre el\nque desciende, ya que deberá realizar una mayor tracción\ny tendrá un menor campo visual. La única excepción es\ncuando el vehículo que desciende es articulado (como\nun  camión  con  acoplado  o  un  auto  con  trailer).  Para\ndescender es conveniente hacerlo con un cambio bajo\n(primera o segunda).\nMano obstruida\nCuando un vehículo encuentre su mano obstruida frente\na él, deberá cederle el paso a otro que esté circulando\npor la mano contraria.\nVía de tierra y pavimentada\nEntre una vía de tierra y una pavimentada, tendrá prioridad\nde paso el que circule por la vía pavimentada.\nPrioridad colectivos\nDeberá  facilitarse  el  reingreso  a  la  circulación  de  los\ncolectivos  luego  de  que  hayan  realizado  su  detención\nen  las  paradas  correspondientes.  A  la  hora  de  sobre-\npasar a un colectivo detenido, es importante prever que\nalgunas personas pudieron haber quedado ocultas tras\nél  y  éstas  podrían  intentar  cruzar  por  delante  o  detrás\ndel mismo.\n",
+        "fullTranslationRu": "65\nВ других ситуациях приоритета проезда\nПрипаркованное или остановленное транспортное средство\nЕсли припаркованное или остановленное транспортное средство хочет включиться в движение, оно имеет приоритет проезда только если движение по какой-то причине прервано.\nНа подъеме или спуске\nНа уклоне, где ширина дороги не позволяет двум транспортным средствам двигаться одновременно, приоритет имеет транспортное средство, поднимающееся вверх, перед тем, которое спускается, потому что ему требуется большая тяга и у него меньше поле зрения. Единственное исключение - когда спускающееся транспортное средство является сочлененным, например грузовик с прицепом или автомобиль с трейлером. Спускаться удобно на низкой передаче: первой или второй.\nЗанятая полоса\nКогда транспортное средство видит перед собой препятствие на своей стороне движения, оно должно уступить дорогу тому, кто движется по встречной стороне.\nГрунтовая и асфальтированная дорога\nМежду грунтовой и асфальтированной дорогой приоритет имеет тот, кто движется по асфальтированной дороге.\nПриоритет автобусов\nНужно облегчать возвращение автобусов в движение после остановки на соответствующих остановках. При объезде остановившегося автобуса важно учитывать, что некоторые люди могли оказаться скрытыми за ним и могут попытаться перейти перед ним или позади него.",
+        "simpleRu": "Машина, которая стоит и хочет выехать, обычно не главная, кроме случая, когда движение уже прервано. На узком уклоне обычно пропускают того, кто едет вверх, кроме спускающегося сочлененного транспорта. Если твоя сторона закрыта препятствием, уступи встречному. Асфальт главнее грунта. Автобусу после остановки помогают вернуться в поток и внимательно смотрят на пешеходов вокруг него.",
+        "sourceTextSha256": "039c1d3fb6b09d30566b545f4ba704ecdd1767594402940b1da1861021392319",
+        "sourceFingerprint": "sha256:039c1d3fb6b09d30566b545f4ba704ecdd1767594402940b1da1861021392319",
+        "sourceSpan": {
+          "startLine": 1727,
+          "endLine": 1759
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--66-067",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 67,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 66: Las luces de un vehículo no sólo tienen como finalidad la de iluminar, sino también, la de"
+        ],
+        "officialLabel": "66",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "66\nLas  luces  de  un  vehículo  no  sólo  tienen  como  finalidad  la  de  iluminar,  sino  también,  la  de\nbrindar información que permita una eficiente comunicación entre vehículos y peatones.\nEstá prohibido en todos los vehículos modificar el tipo y la potencia de las luces originales\nde fábrica correspondientes a su modelo como también adicionar faros o luces que no estén\ndescriptos en el Código de Tránsito y Transporte de CABA (solo está contemplado el agregado\nde dos faros rompeniebla y hasta dos faros elevados con luces de freno).\nÉsto se debe a que cualquier modificación puede convertir un elemento de seguridad en un\nfactor de riesgo, por ejemplo, los vehículos que están equipados con luces de xenón alternativo\npueden generar deslumbramiento en otros conductores.\nUso de luces\nLuces delanteras\n40/ Además deberá contar con: “Luces laterales de color amarillo, cuando por el largo del vehículo las exija la reglamentación. Luces indicadoras\ndiferenciales de color blanco, cuando por el ancho del vehículo las exija la reglamentación.” Artículo 4.1.5 del Código de Tránsito y Transporte de la\nCiudad Autónoma de Buenos Aires.\n40\n",
+        "fullTranslationRu": "66\nОгни транспортного средства нужны не только для освещения, но и для передачи информации, которая позволяет эффективно общаться между транспортными средствами и пешеходами.\nВо всех транспортных средствах запрещено изменять тип и мощность заводских оригинальных огней, соответствующих модели, а также добавлять фары или огни, которые не описаны в Кодексе дорожного движения и транспорта города Буэнос-Айрес. Предусмотрено только добавление двух противотуманных фар и до двух высоко расположенных стоп-сигналов.\nЭто связано с тем, что любое изменение может превратить элемент безопасности в фактор риска. Например, транспортные средства, оборудованные альтернативными ксеноновыми огнями, могут ослеплять других водителей.\nИспользование огней\nПередние огни\n40/ Кроме того, транспортное средство должно иметь: «Желтые боковые огни, когда этого требует регламентация из-за длины транспортного средства. Белые дифференциальные указатели, когда этого требует регламентация из-за ширины транспортного средства». Статья 4.1.5 Кодекса дорожного движения и транспорта Автономного города Буэнос-Айрес.\n40",
+        "simpleRu": "Огни не только освещают дорогу, но и показывают другим участникам, что делает водитель. Нельзя менять заводской тип и мощность огней и добавлять неразрешенные фары. Разрешенные исключения: две противотуманные фары и до двух высоких стоп-сигналов. Неправильные огни могут ослеплять.",
+        "sourceTextSha256": "11cd2a808e54d4e0ee49ba60af0a3b91298606bfc7decea2be88fd12d5c8c234",
+        "sourceFingerprint": "sha256:11cd2a808e54d4e0ee49ba60af0a3b91298606bfc7decea2be88fd12d5c8c234",
+        "sourceSpan": {
+          "startLine": 1760,
+          "endLine": 1776
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--67-068",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 68,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 67: Luces traseras"
+        ],
+        "officialLabel": "67",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "67\nLuces traseras\nSi bien estas luces no están presentes en los motovehículos, es importante que sus conduc-\ntores/as conozcan su función.\nEn aquellos vehículos donde estructuralmente se tiene obstaculizada la visión a través del\nespejo retrovisor central, además de éstas luces, debe adicionarse una alarma sonora al circular\nmarcha atrás.\n(  )\n",
+        "fullTranslationRu": "67\nЗадние огни\nХотя этих огней нет на мототранспортных средствах, важно, чтобы их водители знали их функцию.\nВ тех транспортных средствах, где конструктивно затруднен обзор через центральное зеркало заднего вида, кроме этих огней, при движении задним ходом должна добавляться звуковая сигнализация.\n( )",
+        "simpleRu": "Задние огни важны для понимания действий машины. Если у транспортного средства из-за конструкции плохо видно через центральное зеркало, при движении назад нужна еще и звуковая сигнализация.",
+        "sourceTextSha256": "89c7a0e4f8503cac85fcf96a2991c65472cd9e7e4bb67c1eceacaf34c5e1e476",
+        "sourceFingerprint": "sha256:89c7a0e4f8503cac85fcf96a2991c65472cd9e7e4bb67c1eceacaf34c5e1e476",
+        "sourceSpan": {
+          "startLine": 1777,
+          "endLine": 1785
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--68-069",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 69,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 68: Velocidad"
+        ],
+        "officialLabel": "68",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "68\nVelocidad\nEs una relación distancia/tiempo: es el espacio que se recorre en un determinado tiempo y\nsuele expresarse en kilómetros por hora (km/h).\nTener noción de la distancia que se recorre en un determinado tiempo, permite conocer el\nmargen de maniobra con que se cuenta en caso de que surgiese un imprevisto.\nEl exceso de velocidad es un factor esencial en la producción de incidentes de tránsito y uno\nde los que determinan la existencia de víctimas fatales o lesiones graves.\nA mayor velocidad, la probabilidad de muerte o de lesiones graves aumenta exponencialmente\ndado que el cuerpo humano es vulnerable al recibir una fracción de la energía que se libera\nluego de una colisión. Si bien los sistemas de protección de los vehículos son muy eficaces\na velocidades bajas o moderadas, frente a estas fuerzas cinéticas, no pueden proteger\nadecuadamente a las personas.\nA mayor velocidad, menor campo de visión.\nVelocidad y visibilidad\nA medida que aumenta la velocidad, las imágenes se vuelven más confusas y se reduce la visibilidad.\nSi la velocidad es muy alta, la vista de quien conduce sufre el “efecto tunel”: el campo de\nvisión queda tan reducido que da la sensación de estar circulando por un túnel, sin poder\nobservar lo que ocurre alrededor.\n",
+        "fullTranslationRu": "68\nСкорость\nЭто отношение расстояния ко времени: пространство, которое проезжается за определенное время, обычно выражается в километрах в час, км/ч.\nПонимание расстояния, которое проезжается за определенное время, позволяет знать запас для маневра, если возникнет непредвиденная ситуация.\nПревышение скорости является важнейшим фактором возникновения дорожных инцидентов и одним из факторов, которые определяют наличие погибших или тяжело раненых.\nЧем выше скорость, тем экспоненциально выше вероятность смерти или тяжелых травм, потому что человеческое тело уязвимо при получении части энергии, высвобождаемой после столкновения. Хотя системы защиты транспортных средств очень эффективны на низких или умеренных скоростях, перед такими кинетическими силами они не могут должным образом защитить людей.\nЧем выше скорость, тем меньше поле зрения.\nСкорость и видимость\nПо мере увеличения скорости изображения становятся более неясными и видимость уменьшается. Если скорость очень высока, зрение водителя испытывает «эффект туннеля»: поле зрения становится настолько узким, что возникает ощущение движения по туннелю, без возможности наблюдать, что происходит вокруг.",
+        "simpleRu": "Скорость - это расстояние за время, например км/ч. Чем быстрее едешь, тем меньше времени и места на реакцию. Превышение скорости часто приводит к тяжелым и смертельным инцидентам. На большой скорости поле зрения сужается, появляется «эффект туннеля».",
+        "sourceTextSha256": "0b4be32c8a4b55303891164dbe2ff7fc045ba60d4d02d451e14b067dd4d571c1",
+        "sourceFingerprint": "sha256:0b4be32c8a4b55303891164dbe2ff7fc045ba60d4d02d451e14b067dd4d571c1",
+        "sourceSpan": {
+          "startLine": 1786,
+          "endLine": 1805
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--69-070",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 70,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 69: Tiempo de reacción: intervalo de tiempo que transcurre entre que se percibe un estímulo (visual,"
+        ],
+        "officialLabel": "69",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "69\nTiempo de reacción: intervalo de tiempo que transcurre entre que se percibe un estímulo (visual,\ntáctil, auditivo) y se realiza una acción como respuesta. Este tiempo varía en función del estado\npsicofísico de la persona que conduce , siendo el promedio de 1 segundo aproximadamente.\nVelocidad y distancias\nDistancia de\nDetención\n",
+        "fullTranslationRu": "69\nВремя реакции: промежуток времени между тем, как человек воспринимает стимул, зрительный, тактильный или слуховой, и выполняет ответное действие. Это время меняется в зависимости от психофизического состояния водителя; среднее значение - примерно 1 секунда.\nСкорость и расстояния\nРасстояние\nостановки",
+        "simpleRu": "Время реакции - это время от того, как водитель заметил опасность, до действия. В среднем это около 1 секунды, но состояние человека может его увеличить. Поэтому скорость напрямую влияет на расстояние остановки.",
+        "sourceTextSha256": "5442e74153e2922b8b612544c51b29d80943e4e2543f59883304bdf3fe1a84a4",
+        "sourceFingerprint": "sha256:5442e74153e2922b8b612544c51b29d80943e4e2543f59883304bdf3fe1a84a4",
+        "sourceSpan": {
+          "startLine": 1806,
+          "endLine": 1813
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--70-071",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 71,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 70: Distancia de seguridad: distancia prudencial mínima que se debe dejar con el vehículo que"
+        ],
+        "officialLabel": "70",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "70\nDistancia de seguridad: distancia prudencial mínima que se debe dejar con el vehículo que\ncircula  adelante,  lo  que  permite  que  la  persona  que  conduce  el  vehículo  de  atrás,  tenga\nmayor margen de reacción y pueda anticipar una situación de riesgo. Por ejemplo, ante una\nfrenada repentina, esta distancia permite que quien conduce el vehículo de atrás pueda\nreaccionar con tiempo y no colisione.\nLa ley indica que, en términos generales, la distancia mínima de seguridad entre vehículos\ndebe ser de dos segundos. Aunque siempre se debe tener en cuenta las condiciones climáticas,\nel momento del día, la condición de la calzada o del tránsito.\nDistancia de reacción: distancia que recorre un vehículo durante el tiempo de reacción. Por\nlo tanto, esta distancia va a variar de acuerdo al estado psicofísico de quien conduce y a la\nvelocidad a la que circula. A mayor tiempo de reacción y/o mayor velocidad, mayor será la\ndistancia recorrida.\nDistancia de frenado: es la recorrida por el vehículo desde que se acciona el freno hasta que\nqueda detenido. Puede variar por los siguientes factores:\n• Velocidad a la que se circula\n• Estado de los neumáticos, suspensión y frenos del vehículo\n• Carga transportada\n• Estado del pavimento\n• Condiciones meteorológicas\nDistancia de detención: es la suma de la distancia de reacción más la distancia de frenado.\nCalcular distancia\nde Seguridad\n",
+        "fullTranslationRu": "70\nБезопасная дистанция: минимальная разумная дистанция, которую нужно оставлять до транспортного средства впереди. Она дает водителю заднего транспортного средства больший запас реакции и помогает заранее увидеть риск. Например, при резком торможении эта дистанция позволяет водителю сзади вовремя среагировать и не столкнуться.\nЗакон указывает, что в общем случае минимальная безопасная дистанция между транспортными средствами должна составлять две секунды. При этом всегда нужно учитывать погодные условия, время суток, состояние проезжей части и движение.\nДистанция реакции: расстояние, которое транспортное средство проходит за время реакции. Поэтому она меняется в зависимости от психофизического состояния водителя и скорости движения. Чем больше время реакции и/или скорость, тем больше пройденное расстояние.\nТормозной путь: расстояние, которое проходит транспортное средство от нажатия на тормоз до полной остановки. Он может меняться из-за следующих факторов:\n• Скорость движения.\n• Состояние шин, подвески и тормозов транспортного средства.\n• Перевозимый груз.\n• Состояние покрытия.\n• Метеорологические условия.\nОстановочный путь: сумма дистанции реакции и тормозного пути.\nРасчет безопасной дистанции",
+        "simpleRu": "Минимальная безопасная дистанция обычно считается в 2 секунды, но дождь, ночь, плохая дорога и плотный поток требуют больше запаса. Остановочный путь складывается из дистанции реакции и тормозного пути. На него влияют скорость, состояние машины, груз, покрытие и погода.",
+        "sourceTextSha256": "ebf2f63679583d5dc42776863b63e9b6f282e7324cd3cca9cd0694aa5531a56c",
+        "sourceFingerprint": "sha256:ebf2f63679583d5dc42776863b63e9b6f282e7324cd3cca9cd0694aa5531a56c",
+        "sourceSpan": {
+          "startLine": 1814,
+          "endLine": 1837
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--71-072",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 72,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 71: Los excesos de velocidad son responsables de la mayoría de los incidentes fatales, por ello"
+        ],
+        "officialLabel": "71",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "71\nLos excesos de velocidad son responsables de la mayoría de los incidentes fatales, por ello\nes  necesario  respetar  siempre  los  límites  de  velocidad,  independientemente  de  la  vía  por\nla que se circule. Las velocidades son establecidas por normativa, pero por cuestiones de\nseguridad pueden ser modificadas en algunos tramos por la autoridad competente, que lo\ndará a conocer a través de las señales viales.\nVelocidades máximas\n41/ En su calzada central.\nVelocidades máximas en CABA\nVehículos hasta\n3500 kg. de peso\nVelocidades máximas especiales en CABA\npara transporte de pasajeros/as\ny de carga de más de 3500 kg.\n",
+        "fullTranslationRu": "71\nПревышения скорости ответственны за большинство смертельных инцидентов, поэтому всегда нужно соблюдать ограничения скорости независимо от дороги, по которой движешься. Скорости устанавливаются нормативными актами, но по соображениям безопасности компетентный орган может изменить их на отдельных участках и сообщить об этом дорожными знаками.\nМаксимальные скорости\n41/ На ее центральной проезжей части.\nМаксимальные скорости в городе Буэнос-Айрес\nТранспортные средства массой до\n3500 кг\nСпециальные максимальные скорости в городе Буэнос-Айрес\nдля пассажирского транспорта\nи грузового транспорта массой более 3500 кг.",
+        "simpleRu": "Ограничения скорости нужно соблюдать на любой дороге. Власть может изменить скорость на конкретном участке и показать это знаками. В таблицах руководства отдельно указаны максимальные скорости для машин до 3500 кг и для пассажирского или грузового транспорта тяжелее 3500 кг.",
+        "sourceTextSha256": "6aaa04fadfdb585a8f312b21b93510c7af397a5349d0f71b487a77b0d1ee62a3",
+        "sourceFingerprint": "sha256:6aaa04fadfdb585a8f312b21b93510c7af397a5349d0f71b487a77b0d1ee62a3",
+        "sourceSpan": {
+          "startLine": 1838,
+          "endLine": 1852
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--72-073",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 73,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 72: Velocidades máximas fuera de CABA"
+        ],
+        "officialLabel": "72",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "72\nVelocidades máximas fuera de CABA\n42\nde acuerdo al tipo de vía y vehículo\nAdemás de conocer y respetar las velocidades máximas, es necesario saber que existen velocidades\nmínimas de acuerdo al tipo de vía, ya que circular por debajo de ese límite también puede\nprovocar un incidente vial.\nVelocidades mínimas\nLos límites mínimos de velocidad se establecen\na la mitad de los límites máximos fijados\npara cada tipo de arteria.\n42/ Según Ley Nacional de Tránsito N° 24.449.\nLímites mínimos\nespeciales\n",
+        "fullTranslationRu": "72\nМаксимальные скорости вне города Буэнос-Айрес\n42\nв зависимости от вида дороги и транспортного средства\nКроме знания и соблюдения максимальных скоростей, нужно знать, что существуют минимальные скорости в зависимости от вида дороги, потому что движение ниже такого предела тоже может вызвать дорожный инцидент.\nМинимальные скорости\nМинимальные ограничения скорости устанавливаются\nна уровне половины максимальных ограничений,\nзакрепленных для каждого типа дороги.\n42/ Согласно Национальному закону о дорожном движении N 24.449.\nСпециальные минимальные ограничения",
+        "simpleRu": "Вне города Буэнос-Айрес максимальная скорость зависит от дороги и транспорта. Есть и минимальные скорости: обычно это половина максимального лимита для данного типа дороги. Слишком медленная езда тоже может быть опасной.",
+        "sourceTextSha256": "cc3887cc6eb3611ba9a1840b79a2f362da3ec9a06cadf1b54a5434591c2df82f",
+        "sourceFingerprint": "sha256:cc3887cc6eb3611ba9a1840b79a2f362da3ec9a06cadf1b54a5434591c2df82f",
+        "sourceSpan": {
+          "startLine": 1853,
+          "endLine": 1867
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--73-074",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 74,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 73: • Es la velocidad adecuada a las circunstancias, que permite mantener el total dominio del vehículo,"
+        ],
+        "officialLabel": "73",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "73\n• Es la velocidad adecuada a las circunstancias, que permite mantener el total dominio del vehículo,\nsin entorpecer la circulación ni ponerse en peligro a sí mismo ni a otras personas. Es decir se\ndebe circular siempre a una velocidad tal que tenga en cuenta: la salud de quien conduce,\nel estado del vehículo y su carga, la visibilidad, las condiciones de la arteria, el estado de la\ncalzada, el clima y la densidad del tránsito; de modo que pueda detener el vehículo antes de\nuna colisión.\n• Aunque se cree que sólo las altas velocidades producen incidentes, lo que realmente lleva a\nun siniestro es circular a velocidades inadecuadas. Por ejemplo, en circunstancias de niebla o\nnieve, el límite máximo establecido para la arteria puede dejar de ser el adecuado por haberse\nmodificado las condiciones normales del camino. Además, circular a mayor velocidad de la\nprecautoria implica que aumenten las posibilidades de que un eventual siniestro vial sea más\ngrave.\nVelocidad precautoria\n• Al llegar a una curva, desacelerar antes de ingresar en ella para mantener el completo\ndominio del vehículo.\n• Al ver una señal indicativa de cruce ferroviario, disminuir la velocidad y prestar atención\na la posible aproximación de trenes.\n• Disminuir la velocidad frente a una señal que indique calzada resbaladiza aunque el pavimento\nno aparente estarlo, ya que muchas veces esta condición no puede evaluarse a simple\nvista.\n• Si el vehículo sale involuntariamente de la ruta, desacelerar (no frenar) sin tratar de volver a\nla calzada dando volantazos, ya que esta es una de las causas más frecuente de vuelcos.\n• En el caso de que se presenten animales sueltos, tanto en la calzada como en la banquina,\nlo adecuado es disminuir la velocidad, si es necesario detenerse, y dar aviso a las autoridades\nde la zona. La baja velocidad y estar expectante darán mayor posibilidades a maniobrar.\n• Si hay baches sobre la calzada, se deberá actuar como cuando existen malas condiciones\nclimáticas:  disminuir  la  velocidad  y  aumentar  la  distancia  de  seguridad  con  el  vehículo\nque va delante.\nVelocidad en rutas\nLímites máximos especiales\nde velocidad precautoria\n",
+        "fullTranslationRu": "73\n• Это скорость, соответствующая обстоятельствам, которая позволяет полностью контролировать транспортное средство, не мешать движению и не подвергать опасности себя или других людей. То есть всегда нужно двигаться с такой скоростью, которая учитывает здоровье водителя, состояние транспортного средства и его груза, видимость, условия дороги, состояние проезжей части, погоду и плотность движения, чтобы можно было остановить транспортное средство до столкновения.\n• Хотя считается, что инциденты вызывают только высокие скорости, на самом деле к инциденту ведет движение с неподходящей скоростью. Например, при тумане или снеге установленный для дороги максимальный лимит может перестать быть подходящим, потому что нормальные условия пути изменились. Кроме того, движение быстрее осторожной скорости увеличивает вероятность того, что возможный дорожный инцидент будет более тяжелым.\nОсторожная скорость\n• При подъезде к повороту нужно снизить скорость до въезда в него, чтобы сохранять полный контроль над транспортным средством.\n• Увидев знак железнодорожного переезда, нужно снизить скорость и следить за возможным приближением поездов.\n• Нужно снижать скорость перед знаком скользкой проезжей части, даже если покрытие не выглядит скользким, потому что это состояние часто нельзя оценить на глаз.\n• Если транспортное средство непроизвольно выехало с дороги, нужно снижать скорость, но не тормозить, и не пытаться вернуться на проезжую часть резкими поворотами руля, потому что это одна из самых частых причин опрокидывания.\n• Если на проезжей части или обочине есть свободно находящиеся животные, правильно снизить скорость, при необходимости остановиться и сообщить властям этой зоны. Низкая скорость и готовность к ситуации дают больше возможностей для маневра.\n• Если на проезжей части есть ямы, нужно действовать как при плохих погодных условиях: снизить скорость и увеличить безопасную дистанцию до транспортного средства впереди.\nСкорость на трассах\nСпециальные максимальные ограничения\nосторожной скорости",
+        "simpleRu": "Осторожная скорость - это не просто «не выше лимита». Нужно ехать так, чтобы контролировать машину с учетом здоровья водителя, состояния машины, груза, видимости, дороги, погоды и потока. Перед поворотом, железной дорогой, скользкой дорогой, ямами, животными или выездом с дороги скорость снижают заранее и без резких действий.",
+        "sourceTextSha256": "0a27cec8e23ab3cbf8008347fd3ab02c1147744e103a0fe5a979c5e19551c424",
+        "sourceFingerprint": "sha256:0a27cec8e23ab3cbf8008347fd3ab02c1147744e103a0fe5a979c5e19551c424",
+        "sourceSpan": {
+          "startLine": 1868,
+          "endLine": 1900
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--74-075",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 75,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 74: Giros en intersecciones"
+        ],
+        "officialLabel": "74",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "74\nGiros en intersecciones\nEn todos los casos:\n• Anticipar la maniobra 30 mts. antes con la luz de giro correspondiente.\n• Reducir la velocidad paulatinamente, antes de realizar el giro en la bocacalle.\n• Efectuar la maniobra a una marcha moderada.\n",
+        "fullTranslationRu": "74\nПовороты на перекрестках\nВо всех случаях:\n• Предупредить о маневре за 30 метров соответствующим указателем поворота.\n• Постепенно снизить скорость перед выполнением поворота в перекресточной зоне.\n• Выполнить маневр на умеренной скорости.",
+        "simpleRu": "Перед поворотом включи поворотник за 30 м, заранее плавно снизь скорость и поворачивай умеренно, без резкого маневра.",
+        "sourceTextSha256": "0bfb69aacaa5dce8d35c1f237467246bf2b4ef26c5d11f370324b586c11c5d4a",
+        "sourceFingerprint": "sha256:0bfb69aacaa5dce8d35c1f237467246bf2b4ef26c5d11f370324b586c11c5d4a",
+        "sourceSpan": {
+          "startLine": 1901,
+          "endLine": 1907
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--75-076",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 76,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 75: Adelantamiento y sobrepaso"
+        ],
+        "officialLabel": "75",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "75\nAdelantamiento y sobrepaso\nSobrepaso seguro:\n",
+        "fullTranslationRu": "75\nОбгон и опережение\nБезопасное опережение:",
+        "simpleRu": "Раздел начинается с темы обгона, опережения и безопасного выполнения такого маневра.",
+        "sourceTextSha256": "b2b5d5252eb13be1142e18b21c5e629601a0f780c02e887baeb427e301c6d46e",
+        "sourceFingerprint": "sha256:b2b5d5252eb13be1142e18b21c5e629601a0f780c02e887baeb427e301c6d46e",
+        "sourceSpan": {
+          "startLine": 1908,
+          "endLine": 1911
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--76-077",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 77,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 76: Más allá de la señalización realizada por el vehículo que precede,"
+        ],
+        "officialLabel": "76",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "76\nMás allá de la señalización realizada por el vehículo que precede,\nsiempre se deben tomar precauciones\nal efectuar un sobrepaso y tener completa seguridad\nde que hay suficiente espacio y tiempo para hacerlo.\nLa ley 2449, en su articulo 42, agrega:\n",
+        "fullTranslationRu": "76\nНезависимо от сигнала транспортного средства, которое едет впереди, при выполнении опережения всегда нужно принимать меры предосторожности и иметь полную уверенность, что есть достаточно места и времени для маневра.\nЗакон 24449 в статье 42 добавляет:",
+        "simpleRu": "Даже если машина впереди подает сигнал, обгонять или опережать можно только когда ты полностью уверен, что хватает места и времени. Закон 24.449, статья 42, добавляет правила к этому маневру.",
+        "sourceTextSha256": "1e33e7319be637974f8fccd22ed563e41965dd13c85ea719ddde65cd241898a2",
+        "sourceFingerprint": "sha256:1e33e7319be637974f8fccd22ed563e41965dd13c85ea719ddde65cd241898a2",
+        "sourceSpan": {
+          "startLine": 1912,
+          "endLine": 1918
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--77-078",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 78,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 77: Conducción en autopistas y otras vías"
+        ],
+        "officialLabel": "77",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "77\nConducción en autopistas y otras vías\nrápidas\n",
+        "fullTranslationRu": "77\nДвижение по автомагистралям и другим\nскоростным дорогам",
+        "simpleRu": "Дальше идет раздел о движении по автомагистралям и другим скоростным дорогам.",
+        "sourceTextSha256": "d73610f0be24b2c772f6d1a1e54ad450e7cb39e80951e036fc7b9465d18f3e29",
+        "sourceFingerprint": "sha256:d73610f0be24b2c772f6d1a1e54ad450e7cb39e80951e036fc7b9465d18f3e29",
+        "sourceSpan": {
+          "startLine": 1919,
+          "endLine": 1922
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--78-079",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 79,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 78: Las condiciones climáticas varían y por ello se debe tener la preparación suficiente para enfrentar"
+        ],
+        "officialLabel": "78",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "78\nLas condiciones climáticas varían y por ello se debe tener la preparación suficiente para enfrentar\ncualquier adversidad meteorológica que afecte la conducción de un vehículo.\nConducción en situaciones adversas\nNiebla\n",
+        "fullTranslationRu": "78\nПогодные условия меняются, поэтому нужно иметь достаточную подготовку, чтобы справиться с любой метеорологической неблагоприятной ситуацией, которая влияет на управление транспортным средством.\nВождение в неблагоприятных ситуациях\nТуман",
+        "simpleRu": "Погода может резко осложнить вождение. Водитель должен быть готов к неблагоприятным условиям, например к туману.",
+        "sourceTextSha256": "f2a0b0535810207d9ac59ce4fefdccf0fef6ddaea685d913e2bd68df6e0d7b70",
+        "sourceFingerprint": "sha256:f2a0b0535810207d9ac59ce4fefdccf0fef6ddaea685d913e2bd68df6e0d7b70",
+        "sourceSpan": {
+          "startLine": 1923,
+          "endLine": 1928
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--79-080",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 80,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 79: Lluvia"
+        ],
+        "officialLabel": "79",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "79\nLluvia\n",
+        "fullTranslationRu": "79\nДождь",
+        "simpleRu": "Отдельная тема раздела - движение во время дождя.",
+        "sourceTextSha256": "687d1094ecbf82b16766714a3b013c6d39626c9c4e34c981af987ccf735b1901",
+        "sourceFingerprint": "sha256:687d1094ecbf82b16766714a3b013c6d39626c9c4e34c981af987ccf735b1901",
+        "sourceSpan": {
+          "startLine": 1929,
+          "endLine": 1931
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--80-081",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 81,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 80: Viento"
+        ],
+        "officialLabel": "80",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "80\nViento\n",
+        "fullTranslationRu": "80\nВетер",
+        "simpleRu": "Отдельная тема раздела - движение при ветре.",
+        "sourceTextSha256": "c8743dc3c7eda14a2e1b2feeb0e0f52182335ade991a5dd14c3d981b08499ee2",
+        "sourceFingerprint": "sha256:c8743dc3c7eda14a2e1b2feeb0e0f52182335ade991a5dd14c3d981b08499ee2",
+        "sourceSpan": {
+          "startLine": 1932,
+          "endLine": 1934
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--81-082",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 82,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 81: Si bien no es una condición climatológica que se presente en CABA, es importante conocer"
+        ],
+        "officialLabel": "81",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "81\nSi bien no es una condición climatológica que se presente en CABA, es importante conocer\nalgunas pautas para conducir en esta situación porque al obtener una licencia nacional, se está\nhabilitado a conducir en otras zonas del territorio argentino donde sí es frecuente.\nCuando hay altas temperaturas, dentro de un vehículo cerrado se produce un efecto invernadero.\nPor ejemplo, si la temperatura externa es de 24 grados, el interior del vehículo puede llegar a\n50 grados en apenas 10 minutos.\nNieve\nCalor\n",
+        "fullTranslationRu": "81\nХотя это не климатическое условие, характерное для города Буэнос-Айрес, важно знать некоторые правила вождения в такой ситуации, потому что при получении национального водительского удостоверения человек получает право управлять в других зонах территории Аргентины, где это часто встречается.\nПри высоких температурах внутри закрытого транспортного средства возникает парниковый эффект. Например, если наружная температура 24 градуса, салон транспортного средства может достичь 50 градусов всего за 10 минут.\nСнег\nЖара",
+        "simpleRu": "Снег не типичен для города Буэнос-Айрес, но национальные права позволяют ездить по другим регионам Аргентины, где снег бывает. Жара тоже опасна: при 24 градусах снаружи закрытая машина может нагреться до 50 градусов за 10 минут.",
+        "sourceTextSha256": "04e4eb98105b93cfa386d4ee7aece580c35bc179e0858a9f0e2c2c4e9730c15f",
+        "sourceFingerprint": "sha256:04e4eb98105b93cfa386d4ee7aece580c35bc179e0858a9f0e2c2c4e9730c15f",
+        "sourceSpan": {
+          "startLine": 1935,
+          "endLine": 1944
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--82-083",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 83,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 82: Permanencia sin movimiento de un vehículo junto a la acera, por un tiempo estrictamente"
+        ],
+        "officialLabel": "82",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "82\nPermanencia sin movimiento de un vehículo junto a la acera, por un tiempo estrictamente\nnecesario para casos de control de tránsito realizado por autoridad competente, ascenso o\ndescenso de pasajeros/as, o para carga y descarga. Si fuese otro el motivo, se considerará\ndetención, si su permanencia no excede los 2 minutos, y la persona que conduce no abandona\nel vehículo.\nSe realiza siempre con balizas intermitentes encendidas, situando el vehículo lo más cerca\nposible de la acera, adoptando las medidas necesarias para evitar el entorpecimiento de la\ncirculación.\nNo se considera detención a la permanencia sin movimiento en un sector de la vía pública de\nun vehículo por circunstancias de la circulación o por causas de fuerza mayor.\nEstá prohibido detenerse en: (también aplica a los vehículos con emblema internacional de\ndiscapacidad):\n• Sectores de parada de colectivos y taxis.\n• Frente a comisarías, cuerpos de bomberos y bancos (donde sólo se admite la detención de\nvehículos que presten servicios en esas instituciones).\n• Ciclovías.\n• Vías rápidas (Av. Cantilo, Av. Lugones, calzadas centrales de la Gral. Paz y autopistas).\n• Doble fila, excepto como detención previa a la maniobra de estacionamiento.\n• Esquinas.\n• Sobre sendas peatonales o líneas de Pare.\n• Ingreso, interior y egreso de: túneles, pasos bajo nivel y puentes.\n• Sobre los rieles de vías férreas. En caso de que haya vías férreas sin barreras, la detención de\nun vehículo debe guardar una distancia mínima de 5 metros de los rieles\n44\n.\nDetención y estacionamiento\n43\nDetención\n43/ Según capítulo 7 del Código de Tránsito y Transporte de CABA.\n44/ Según inciso k del artículo 48 de la Ley Nacional de Tránsito N° 24.449.\n",
+        "fullTranslationRu": "82\nНеподвижное нахождение транспортного средства у тротуара в течение строго необходимого времени для дорожного контроля компетентным органом, посадки или высадки пассажиров либо погрузки и разгрузки. Если причина другая, это считается остановкой, если пребывание длится не более 2 минут и водитель не покидает транспортное средство.\nОстановка всегда выполняется с включенной аварийной сигнализацией, транспортное средство ставится как можно ближе к тротуару, и принимаются необходимые меры, чтобы не мешать движению.\nНе считается остановкой неподвижное нахождение транспортного средства на участке общественной дороги из-за обстоятельств движения или форс-мажора.\nЗапрещено останавливаться в следующих местах; это также применяется к транспортным средствам с международным символом инвалидности:\n• В зонах остановки автобусов и такси.\n• Перед полицейскими участками, пожарными частями и банками, где допускается только остановка транспортных средств, обслуживающих эти учреждения.\n• На велодорожках.\n• На скоростных дорогах: проспект Cantilo, проспект Lugones, центральные проезжие части Gral. Paz и автомагистрали.\n• Во втором ряду, кроме остановки перед маневром парковки.\n• На углах.\n• На пешеходных переходах или линиях Pare.\n• На въезде, внутри и выезде из туннелей, подземных проездов и мостов.\n• На рельсах железнодорожных путей. Если железнодорожные пути без шлагбаумов, остановка транспортного средства должна сохранять минимальное расстояние 5 метров от рельсов44.\nОстановка и стоянка43\nОстановка\n43/ Согласно главе 7 Кодекса дорожного движения и транспорта города Буэнос-Айрес.\n44/ Согласно пункту k статьи 48 Национального закона о дорожном движении N 24.449.",
+        "simpleRu": "Остановка - это короткое стояние у тротуара для контроля, посадки, высадки, погрузки или разгрузки. Обычно она не дольше 2 минут, водитель не уходит, аварийка включена, машина стоит близко к тротуару. Нельзя останавливаться у остановок автобусов и такси, на велодорожках, скоростных дорогах, углах, переходах, в туннелях, на мостах и на рельсах; у рельсов без шлагбаума нужно держать минимум 5 м.",
+        "sourceTextSha256": "eae4f0c9cb8154e7e3c78a67a1802bd35782c3f8808870608041a759f8523f30",
+        "sourceFingerprint": "sha256:eae4f0c9cb8154e7e3c78a67a1802bd35782c3f8808870608041a759f8523f30",
+        "sourceSpan": {
+          "startLine": 1945,
+          "endLine": 1976
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--83-084",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 84,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 83: Estacionamiento"
+        ],
+        "officialLabel": "83",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "83\nEstacionamiento\nPermanencia sin movimiento de un vehículo en la vía pública con o sin la persona que conduce\npor más tiempo del necesario para ser considerada como detención (2 minutos), sin importar\nsi está en marcha o no, si tiene balizas encendidas o si hay personas dentro del mismo.\nNo se considera detención ni estacionamiento si el vehículo permanece sin movimiento por\ncircunstancias de la circulación (ante un semáforo en rojo, embotellamiento, etc.) o por causas\nde fuerza mayor (situación de emergencia).\nEs importante conocer dónde estacionar y cuáles son las restricciones generales de estacionamiento\nen la Ciudad.\nNormas generales\nEn la Ciudad de Buenos Aires rigen las siguientes normas generales de estacionamiento, a\nmenos que haya una señal que indique lo contrario:\nPROHIBIDO\n• En avenidas, junto a ambas aceras los días hábiles* entre las 7 y las 21 horas.\n• En Metrobús, junto a ambas aceras, todos los días durante las 24 horas.\n• En ciclovías, junto al carril afectado a ésta, todos los días durante las 24 horas.\n• En los pasajes cuyo ancho de calzada no supere los cuatro metros y medio (4,5m).\n• En calles de convivencia, en toda su extensión, junto a ambas aceras.\n* Se consideran hábiles los días de lunes a viernes que no sean feriados.\nExcepciones a estas normas generales:\n• Avenidas de doble sentido, donde la prohibición rige durante las 24 horas: Av. 9 de Julio, la Av.\nPerito Moreno y las calzadas centrales de las Avenidas Leandro N. Alem, Paseo Colón y Sáenz.\n• Dentro del área del Macrocentro, la prohibición de estacionar junto a ambas aceras, rige para\ncualquier arteria, los días hábiles de 7 a 21 h.\nPERMITIDO\n• En calles, junto a ambas aceras todos los días durante las 24 horas.\n• En avenidas se puede estacionar de 21 a 7 horas, de ambos lados, los días\nhábiles. Y los fines de semana y feriados las 24 horas.\n",
+        "fullTranslationRu": "83\nСтоянка\nНеподвижное нахождение транспортного средства на общественной дороге с водителем или без него дольше времени, необходимого для того, чтобы считаться остановкой, то есть дольше 2 минут, независимо от того, работает ли двигатель, включена ли аварийная сигнализация и есть ли люди внутри.\nНе считается ни остановкой, ни стоянкой, если транспортное средство стоит неподвижно из-за обстоятельств движения, например перед красным светофором или в пробке, либо из-за форс-мажора, например экстренной ситуации.\nВажно знать, где можно парковаться и какие общие ограничения стоянки действуют в городе.\nОбщие нормы\nВ городе Буэнос-Айрес действуют следующие общие нормы стоянки, если знак не указывает иное:\nЗАПРЕЩЕНО\n• На проспектах, у обоих тротуаров, в рабочие дни* с 7 до 21 часа.\n• На коридорах Metrobús, у обоих тротуаров, каждый день 24 часа.\n• На велодорожках, у полосы, относящейся к ним, каждый день 24 часа.\n• В проездах, ширина проезжей части которых не превышает четыре с половиной метра (4,5 м).\n• На улицах совместного пользования по всей их длине, у обоих тротуаров.\n* Рабочими считаются дни с понедельника по пятницу, которые не являются праздничными.\nИсключения из этих общих норм:\n• Проспекты с двусторонним движением, где запрет действует 24 часа: Av. 9 de Julio, Av. Perito Moreno и центральные проезжие части проспектов Leandro N. Alem, Paseo Colón и Sáenz.\n• В зоне Macrocentro запрет стоянки у обоих тротуаров действует для любой дороги в рабочие дни с 7 до 21 часа.\nРАЗРЕШЕНО\n• На улицах, у обоих тротуаров, каждый день 24 часа.\n• На проспектах можно парковаться с 21 до 7 часов с обеих сторон в рабочие дни. В выходные и праздничные дни - 24 часа.",
+        "simpleRu": "Стоянка - это когда машина стоит дольше 2 минут, даже если водитель внутри или включена аварийка. В городе Буэнос-Айрес обычно нельзя парковаться на проспектах в рабочие дни с 7 до 21, на Metrobús и велодорожках круглосуточно, в узких проездах до 4,5 м и на улицах совместного пользования. На обычных улицах обычно можно парковаться у обеих сторон круглосуточно, если знак не запрещает.",
+        "sourceTextSha256": "a7ff7e028c53f15b0c3f2e18085f33e830246babb1b84196a28a7fdf14bf7fe4",
+        "sourceFingerprint": "sha256:a7ff7e028c53f15b0c3f2e18085f33e830246babb1b84196a28a7fdf14bf7fe4",
+        "sourceSpan": {
+          "startLine": 1977,
+          "endLine": 2006
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--84-085",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 85,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 84: Formas correctas de estacionar"
+        ],
+        "officialLabel": "84",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "84\nFormas correctas de estacionar\nAutomóviles:\n• En  paralelo  al  cordón,  aproximadamente  a  20\ncentímetros del mismo y a una distancia adecuada\nde los otros vehículos estacionados delante y detrás.\n• A  45°  respecto  del  cordón,  dentro  de  los  sectores\ndemarcados.\n• A  90°  respecto  del  cordón,  dentro  de  los  sectores\ndemarcados.\nMotovehículos:\n• Sobre  vereda  y  calzada,  dentro  de  los  sectores\ndemarcados.\n• De   no   existir   demarcación   específica,   deberán\nestacionarse de culata entre 45° y 90°, en relación al\ncordón, cumpliendo las mismas normas que el resto\nde los vehículos.\n• En aquellos lugares, desarrollados anteriormente, donde se encuentra prohibida la detención.\n• En pasajes cuyo ancho no supere los 4,5m y en calles de convivencia, junto a ambas aceras.\n• A menos de 50 metros a cada lado de los pasos ferroviarios a nivel.\n• En los sectores de ingreso y egreso de vehículos a la vía pública (garajes).\n• Frente a rampas para personas con discapacidad.\n• Frente a las bocas de entrada de los subterráneos.\n• Frente a las entradas de locales de espectáculos públicos, en los horarios en que se realicen\nfunciones en ellos.\n• Frente a la entrada de las salas velatorias, entre las 8 y las 22 h.\n• Donde haya carriles exclusivos para algún tipo de vehículo, en su horario de funcionamiento.\n• A menos de 10 metros a cada lado de la entrada de:\n• Hospitales, sanatorios, clínicas y centros que presten servicios de salud.\n• Escuelas, colegios y facultades en horas de clase.\n• Templos en horas en que se celebren oficios o ceremonias.\n• Instituciones bancarias durante el horario de atención al público.\n• Empresas de correo, durante su horario de funcionamiento.\n• Instituciones de personas con discapacidad.\n• En todos aquellos sectores oficialmente señalizados (operación de carga y descarga de\nmercadería, hoteles, funcionamiento de ferias barriales, reserva de espacios para estacionamiento,\nprohibición de estacionar, etc.).\nProhibiciones especiales\nEstas prohibiciones de estacionamiento rigen por normativa y, por lo tanto, deben respetarse\nhaya o no una señal en el lugar que las refuerce\n45\n.\nLos ómnibus, micros, camiones, casas rodantes, semiacoplados\ny maquinaria especial tienen prohibido estacionar\nen la vía pública durante las 24 h.\n45/ Existe una chat de la Ciudad, al que se puede consultar, a través de Whatsapp, si se tiene dudas sobre la posibilidad de estacionar o no en cualquier di-\nrección de la Ciudad. Para más información ingresar en https://www.buenosaires.gob.ar/laciudad/noticias/boti-el-chat-de-la-ciudad-ya-te-indica-en-que-calles-\nesta-permitido-estacionar\n",
+        "fullTranslationRu": "84\nПравильные способы парковки\nАвтомобили:\n• Параллельно бордюру, примерно в 20 сантиметрах от него и на подходящем расстоянии от других припаркованных транспортных средств впереди и сзади.\n• Под углом 45° к бордюру, внутри размеченных участков.\n• Под углом 90° к бордюру, внутри размеченных участков.\nМототранспортные средства:\n• На тротуаре и проезжей части, внутри размеченных участков.\n• Если специальной разметки нет, они должны парковаться задней частью под углом от 45° до 90° по отношению к бордюру, соблюдая те же нормы, что и остальные транспортные средства.\n• В тех местах, ранее описанных, где запрещена остановка.\n• В проездах шириной не более 4,5 м и на улицах совместного пользования, у обоих тротуаров.\n• Ближе 50 метров с каждой стороны от железнодорожных переездов в одном уровне.\n• В секторах въезда и выезда транспортных средств на общественную дорогу, то есть у гаражей.\n• Перед пандусами для людей с инвалидностью.\n• Перед входами в метро.\n• Перед входами в помещения публичных зрелищ в часы проведения мероприятий.\n• Перед входами в траурные залы с 8 до 22 часов.\n• Там, где есть исключительные полосы для какого-либо вида транспортных средств, в часы их работы.\n• Ближе 10 метров с каждой стороны от входа в:\n• больницы, санатории, клиники и центры, оказывающие медицинские услуги;\n• школы, колледжи и факультеты в часы занятий;\n• храмы в часы богослужений или церемоний;\n• банковские учреждения в часы обслуживания публики;\n• почтовые компании в часы их работы;\n• учреждения для людей с инвалидностью.\n• Во всех официально обозначенных секторах: погрузка и разгрузка товаров, гостиницы, работа районных ярмарок, резервирование мест для стоянки, запрет стоянки и т. п.\nСпециальные запреты\nЭти запреты стоянки действуют по нормативным правилам, поэтому их нужно соблюдать независимо от того, есть ли на месте знак, который их усиливает45.\nАвтобусам, микроавтобусам, грузовикам, автодомам, полуприцепам и специальной технике запрещено парковаться на общественной дороге 24 часа.\n45/ Есть чат города, через который можно по WhatsApp уточнить, можно ли парковаться по любому адресу города. Дополнительная информация: https://www.buenosaires.gob.ar/laciudad/noticias/boti-el-chat-de-la-ciudad-ya-te-indica-en-que-calles-esta-permitido-estacionar",
+        "simpleRu": "Автомобиль ставят параллельно бордюру примерно в 20 см от него или под 45°/90° только в размеченных местах. Нельзя парковаться там, где запрещена остановка, у гаражей, пандусов, входов в метро, рядом с переездами, у больниц, школ, храмов, банков и других перечисленных входов. Автобусам, грузовикам, автодомам, полуприцепам и спецтехнике нельзя стоять на общественной дороге круглосуточно.",
+        "sourceTextSha256": "4a1ee58f7d94efa00b5f6de675429d8eda6d587cf9f93653959725457d304874",
+        "sourceFingerprint": "sha256:4a1ee58f7d94efa00b5f6de675429d8eda6d587cf9f93653959725457d304874",
+        "sourceSpan": {
+          "startLine": 2007,
+          "endLine": 2055
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--85-086",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 86,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 85: Formas incorrectas de estacionar"
+        ],
+        "officialLabel": "85",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "85\nFormas incorrectas de estacionar\n• Nunca puede estacionarse un vehículo sobre la vereda, independientemente de que sea o no\nel domicilio de la persona que conduce o que es titular del vehículo.\n• Esta indicación aplica también a los motovehículos, más allá del ancho de la vereda o de que\ntenga un desperfecto mecánico.\n• Se  puede  acompañar  y  reforzar  la  maniobra  a  través  de  una  seña  manual,  alzando  la\nmano por fuera de la ventanilla.\n• Al estacionar en paralelo al cordón, es muy posible que se deba detener el vehículo en\ndoble fila por unos instantes antes de iniciar la marcha de retroceso. La marcha atrás no\nestá permitida en la Ciudad salvo que se realice para estacionar, entrar y salir de un garaje,\no salvar algún obstáculo. Esto quiere decir que la distancia que se puede retroceder es la\nmínima e indispensable para completar la maniobra, considerando que la detención debe\nrealizarse inmediatamente antes del espacio que pretende ocuparse.\n• Al engranar la marcha atrás se accionan las luces de retroceso indicando el sentido de circulación\ndel vehículo. Además, en aquellos vehículos en los que estructuralmente se tiene obstaculizada\nsu visión a través del espejo retrovisor central, se accionará una alarma sonora.\nManiobra de estacionamiento\nIndicar al resto de las personas que se procederá a detener, estacionar o ingresar a un garaje\naccionando  las  balizas.  Esta  señalización  debe  realizarse  con  tiempo  suficiente,  de  modo\nque se pueda anticipar la maniobra y no se genere riesgos en la vía. Es necesario maniobrar\nsin  empujar  a  los  demás  vehículos  y  sin  acceder  a  la  acera,  y  observando  la  situación  del\ntránsito a través de los espejos retrovisores.\nEstacionamiento en vías con pendiente\n• Detener  el  motor  y  colocar  el  freno  de\nestacionamiento.\n• En  pendientes  ascendentes,  orientar  las\nruedas  hacia  el  centro  de  la  calzada  y  dejar\nla  marcha  en  primera  o  en  posición  de\nestacionamiento  en  caso  de  tener  caja\nautomática.\n• En  pendientes  descendentes,  orientar  las\nruedas  hacia  el  cordón  de  la  vereda  y  dejar\nla  marcha  hacia  atrás  o  en  posición  de\nestacionamiento  en  caso  de  tener  caja\nautomática.\n• Los vehículos de carga deben colocar además\ncuñas o calzas, que luego de su uso deben\nser retiradas de la vía pública.\n",
+        "fullTranslationRu": "85\nНеправильные способы парковки\n• Нельзя парковать транспортное средство на тротуаре, независимо от того, является ли это адресом водителя или владельца транспортного средства.\n• Это указание применяется и к мототранспортным средствам, независимо от ширины тротуара или наличия механической неисправности.\n• Маневр можно сопровождать и усиливать ручным сигналом, подняв руку за окно.\n• При параллельной парковке у бордюра очень вероятно, что нужно будет на несколько мгновений остановить транспортное средство во втором ряду перед началом движения задним ходом. Движение задним ходом в городе не разрешено, кроме случаев парковки, въезда и выезда из гаража или объезда препятствия. Это означает, что расстояние, на которое можно сдавать назад, должно быть минимальным и необходимым для завершения маневра, а остановка должна выполняться непосредственно перед местом, которое предполагается занять.\n• При включении задней передачи загораются фонари заднего хода, показывая направление движения транспортного средства. Кроме того, в тех транспортных средствах, где конструктивно затруднен обзор через центральное зеркало заднего вида, включается звуковая сигнализация.\nМаневр парковки\nНужно сообщить остальным людям, что водитель собирается остановиться, припарковаться или въехать в гараж, включив аварийную сигнализацию. Такой сигнал нужно подавать достаточно заранее, чтобы маневр можно было предвидеть и чтобы не создавать рисков на дороге. Маневрировать нужно, не подталкивая другие транспортные средства, не заезжая на тротуар и наблюдая за движением через зеркала заднего вида.\nСтоянка на дорогах с уклоном\n• Выключить двигатель и включить стояночный тормоз.\n• На подъеме повернуть колеса к центру проезжей части и оставить первую передачу или положение парковки при автоматической коробке.\n• На спуске повернуть колеса к бордюру тротуара и оставить заднюю передачу или положение парковки при автоматической коробке.\n• Грузовые транспортные средства должны дополнительно поставить клинья или башмаки, которые после использования нужно убрать с общественной дороги.",
+        "simpleRu": "Нельзя парковаться на тротуаре, даже у своего дома и даже мотоциклу. Задним ходом в городе можно ехать только для парковки, въезда/выезда из гаража или объезда препятствия, и только на минимально нужное расстояние. При парковке заранее включай аварийку, смотри в зеркала и не толкай другие машины. На уклоне ставь стояночный тормоз и правильно поворачивай колеса; грузовики используют и убирают клинья.",
+        "sourceTextSha256": "274327cf6e0732b97e87fc12d8c5625e8563c6ffb7efbe05e5109e734bca1b74",
+        "sourceFingerprint": "sha256:274327cf6e0732b97e87fc12d8c5625e8563c6ffb7efbe05e5109e734bca1b74",
+        "sourceSpan": {
+          "startLine": 2056,
+          "endLine": 2095
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--86-087",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 87,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 86: Franquicia para personas con discapacidad"
+        ],
+        "officialLabel": "86",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "86\nFranquicia para personas con discapacidad\nLa detención de vehículos para operar en carga y descarga de mercaderías se debe realizar\ncon  balizas  encendidas,  respetando  estrictamente  los  lugares  y  horarios  que  establecen  las\nnormas de estacionamiento, excepto en los sectores donde se especifiquen otras modalidades.\nCajones azules: sectores demarcados con línea azul o azul y blanca sobre la calzada que\nindican espacios exclusivos para carga y descarga. Se concentran mayoritariamente en ejes\ncomerciales, entornos de Metrobus, y zonas de Micro y Macrocentro. El objetivo de estas zonas\nes evitar que la carga y descarga se realice en doble fila o en lugares donde el estacionamiento\nse encuentra prohibido por razones de seguridad vial y circulación.\nLos vehículos destinados a carga y descarga de mercaderías pueden realizar allí las operaciones de\nabastecimiento, respetando los días y horarios indicados en la cartelería, durante un tiempo máximo\nde 30 minutos, salvo otra indicación. Los particulares no pueden estacionar en los cajones azules.\nCarga y descarga\nA traves del Símbolo Internacional de Acceso se identifica a cualquier vehículo en el que se tras-\nlade a una persona con discapacidad, sin limitar su uso a un vehículo específico.\n• El uso de la franquicia de libre estacionamiento, que se\nencuentra regulado por la normativa de tránsito de cada\nmunicipio. En la Ciudad se deberán respetar las normas\nestablecidas en el Código de Tránsito y Transporte (Ley 2148).\n• Habilita a quien la posea a estacionar junto a ambas aceras de\ncalles y avenidas en general. Sin embargo, debe respetar las\ndemás prohibiciones.\n• No habilita a violar las prohibiciones especiales mencionadas,\nni a entorpecer el tránsito y la seguridad vial. En estos casos,\nun vehículo con emblema internacional para personas con\ndiscapacidad puede ser remitido\n46\n.\n46/ Para mas información sobre donde estacionar utilizando el Simbolo Internacional de Acceso ingresar en https://buenosaires.gob.ar/copidis/\ncio/simbolo-internacional-de-acceso\n",
+        "fullTranslationRu": "86\nЛьгота для людей с инвалидностью\nОстановка транспортных средств для выполнения погрузки и разгрузки товаров должна выполняться с включенной аварийной сигнализацией, со строгим соблюдением мест и часов, установленных нормами стоянки, кроме секторов, где указаны другие способы.\nСиние боксы: участки, размеченные синей или сине-белой линией на проезжей части, которые обозначают исключительные места для погрузки и разгрузки. Они сосредоточены в основном на торговых осях, в зонах Metrobus и в районах Microcentro и Macrocentro. Цель этих зон - не допустить погрузку и разгрузку во втором ряду или в местах, где стоянка запрещена по причинам дорожной безопасности и движения.\nТранспортные средства, предназначенные для погрузки и разгрузки товаров, могут выполнять там операции снабжения, соблюдая дни и часы, указанные на табличках, в течение максимум 30 минут, если нет другого указания. Частные лица не могут парковаться в синих боксах.\nПогрузка и разгрузка\nС помощью Международного символа доступа обозначается любое транспортное средство, в котором перевозится человек с инвалидностью, без ограничения его использования конкретным транспортным средством.\n• Использование льготы свободной стоянки регулируется дорожными нормами каждого муниципалитета. В городе нужно соблюдать нормы, установленные Кодексом дорожного движения и транспорта, Закон 2148.\n• Она дает владельцу право парковаться у обоих тротуаров улиц и проспектов в общем случае. Однако нужно соблюдать остальные запреты.\n• Она не дает права нарушать указанные специальные запреты, мешать движению и дорожной безопасности. В этих случаях транспортное средство с международным знаком для людей с инвалидностью может быть эвакуировано46.\n46/ Дополнительная информация о том, где парковаться с Международным символом доступа: https://buenosaires.gob.ar/copidis/cio/simbolo-internacional-de-acceso",
+        "simpleRu": "Погрузка и разгрузка выполняются с аварийкой и только в разрешенных местах и часах. Синие боксы нужны для погрузки и разгрузки, обычно до 30 минут, а частным машинам там парковаться нельзя. Знак инвалидности дает льготу для парковки у улиц и проспектов, но не разрешает нарушать специальные запреты, мешать движению или создавать опасность.",
+        "sourceTextSha256": "6fd9561c6da354efc578d807aeff2668dd7e8bb4f45bbe8302b5e0d7474c5b4c",
+        "sourceFingerprint": "sha256:6fd9561c6da354efc578d807aeff2668dd7e8bb4f45bbe8302b5e0d7474c5b4c",
+        "sourceSpan": {
+          "startLine": 2096,
+          "endLine": 2127
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--87-088",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 88,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 87: Mejorar la formación teórica y"
+        ],
+        "officialLabel": "87",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "87\nMejorar la formación teórica y\npráctica de quienes conducen\nayuda a construir hábitos seguros.\n",
+        "fullTranslationRu": "87\nУлучшение теоретической и\nпрактической подготовки водителей\nпомогает формировать безопасные привычки.",
+        "simpleRu": "Хорошая теория и практика у водителей помогают создавать безопасные привычки.",
+        "sourceTextSha256": "e19b5df98b6492e3f77cbdad86904de94d7efada9fd246dad24ca73c8120f7a4",
+        "sourceFingerprint": "sha256:e19b5df98b6492e3f77cbdad86904de94d7efada9fd246dad24ca73c8120f7a4",
+        "sourceSpan": {
+          "startLine": 2128,
+          "endLine": 2132
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--88-089",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 89,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 88: CAPACIDAD NATURAL"
+        ],
+        "officialLabel": "88",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "88\nCAPACIDAD NATURAL\nCapítulo 4 - Manual teórico de conducción de vehículos urbanos de cuatro ruedas\n",
+        "fullTranslationRu": "88\nЕСТЕСТВЕННАЯ СПОСОБНОСТЬ\nГлава 4 - Теоретическое руководство по вождению городских четырехколесных транспортных средств",
+        "simpleRu": "Начинается глава 4 о естественной способности человека безопасно управлять транспортным средством.",
+        "sourceTextSha256": "5b746779b173aaa9cdad11a86f4f2b6391a9e32ddd0bc8666397aa04b5fb93f7",
+        "sourceFingerprint": "sha256:5b746779b173aaa9cdad11a86f4f2b6391a9e32ddd0bc8666397aa04b5fb93f7",
+        "sourceSpan": {
+          "startLine": 2133,
+          "endLine": 2136
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--89-090",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 90,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 89: Según su definición clásica, droga es toda sustancia que, introducida en el organismo por"
+        ],
+        "officialLabel": "89",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "89\nSegún su definición clásica, droga es toda sustancia que, introducida en el organismo por\ncualquier vía de administración, produce una alteración del natural funcionamiento del sistema\nnervioso central y es, además, susceptible de crear dependencia, ya sea psicológica, física o ambas.\nNo sólo se trata del consumo de drogas ilegales sino también de las legales, como el alcohol y\nalgunos medicamentos. Por eso, las personas que conducen bajo estos efectos tienen alterada\nsu capacidad y se ponen en riesgo, no sólo a sí mismas sino también a las personas que las rodean.\nLa salud influye en la conducción. Ciertas enfermedades, crónicas o de corta duración, y algunos estados\nanímicos pueden dejar a la persona en una situación desfavorable para conducir de forma segura.\nLa aptitud (capacidad de una persona para realizar adecuadamente cierta actividad) para conducir\nse considera disminuida cuando existe una alteración de la coordinación motora, la atención, la\npercepción sensorial o el juicio crítico, modificando el comportamiento habitual.\nPor este motivo, antes de entregar una licencia para conducir, el Estado pone a prueba la capacidad\ndel aspirante mediante un examen psicofísico.\nFactores que impiden o disminuyen el buen ejercicio de conducir:\nIngesta de alcohol y drogas\nConsumo de medicamentos\nCierto tipo de medicamentos pueden afectar negativamente la capacidad de conducir. Ejemplos\nde ello son los fármacos de prescripción con efectos sedantes, como los que se utilizan para inducir\nel sueño. Este tipo de medicación puede tener efectos residuales incluso en las primeras horas de\nla mañana, aunque se haya ingerido la noche anterior.\nSiempre se debe consultar el prospecto explicativo, donde figura la advertencia en caso de que afecte\nla capacidad de conducir un vehículo, e informarse con un/a médico/a ante cualquier inquietud.\nInstrumento para la medición o detección\nde estupefacientes\nSe retira la tapa y se inserta el dispositivo en la\nboca,  manteniendo  el  contacto  con  la  saliva.\nSerá  resultado  positivo  si  detecta  presencia\nde estupefacientes.\n• Ingesta de alcohol y drogas.\n• Sueño y fatiga.\n• Estrés.\n• Distracciones.\n",
+        "fullTranslationRu": "89\nПо классическому определению, наркотик или психоактивное вещество - это любое вещество, которое, попадая в организм любым способом введения, изменяет естественную работу центральной нервной системы и, кроме того, способно создавать зависимость: психологическую, физическую или обе.\nРечь идет не только о незаконных веществах, но и о законных, таких как алкоголь и некоторые лекарства. Поэтому люди, управляющие под таким воздействием, имеют измененную способность и подвергают риску не только себя, но и окружающих.\nЗдоровье влияет на вождение. Некоторые хронические или кратковременные болезни и некоторые эмоциональные состояния могут поставить человека в неблагоприятное положение для безопасного управления.\nПригодность к управлению, то есть способность человека правильно выполнять определенную деятельность, считается сниженной, когда есть нарушение моторной координации, внимания, сенсорного восприятия или критического суждения, меняющее обычное поведение.\nПоэтому перед выдачей водительского удостоверения государство проверяет способность заявителя психофизическим экзаменом.\nФакторы, которые мешают хорошему вождению или уменьшают его качество:\nУпотребление алкоголя и наркотиков\nУпотребление лекарств\nНекоторые лекарства могут отрицательно влиять на способность управлять. Примеры - рецептурные препараты с седативным эффектом, например те, которые используются для вызова сна. Такие лекарства могут иметь остаточный эффект даже в первые утренние часы, хотя были приняты накануне ночью.\nВсегда нужно читать листок-вкладыш, где указано предупреждение, если лекарство влияет на способность управлять транспортным средством, и обращаться к врачу при любых сомнениях.\nИнструмент для измерения или выявления\nнаркотических веществ\nСнимается крышка, и устройство помещается в рот с сохранением контакта со слюной. Результат будет положительным, если выявлено присутствие наркотических веществ.\n• Употребление алкоголя и наркотиков.\n• Сон и усталость.\n• Стресс.\n• Отвлечения.",
+        "simpleRu": "Алкоголь, наркотики, некоторые лекарства, болезни и сильные эмоции могут ухудшить координацию, внимание, восприятие и оценку ситуации. Перед выдачей прав государство проверяет психофизическое состояние. Если лекарство может влиять на вождение, это нужно читать в инструкции и уточнять у врача.",
+        "sourceTextSha256": "b0146be9c6a3cc5b470dc7ca22ff75e6f194cf156501c530141a8f953ff5447a",
+        "sourceFingerprint": "sha256:b0146be9c6a3cc5b470dc7ca22ff75e6f194cf156501c530141a8f953ff5447a",
+        "sourceSpan": {
+          "startLine": 2137,
+          "endLine": 2170
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--90-091",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 91,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 90: • Reducción de la capacidad de reacción y aumento del tiempo necesario para responder ante"
+        ],
+        "officialLabel": "90",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "90\n• Reducción de la capacidad de reacción y aumento del  tiempo necesario para responder ante\nun estímulo.\n• Disminución de la visión periférica.\n• Deterioro de la resistencia al deslumbramiento.\n• Descoordinación viso-motora.\n• Alteración de la coordinación motriz.\n• Perturbación de la atención y asociación de ideas.\n• Exceso de confianza en uno mismo.\n• Disminución de las inhibiciones.\n• Somnolencia.\nConsumo de alcohol\nEl alcohol es una droga depresora del sistema nervioso central cuyo consumo produce:\nEstos efectos están presentes en mayor o menor medida según su concentración (gramos de\nalcohol por litro de sangre). Dadas estas alteraciones, la Ley 2148 determina los valores límite de\nla concentración de alcohol en sangre al momento de conducir en la Ciudad de Buenos Aires:\nEstá prohibido conducir cualquier tipo de vehículo\ncon más de 0,5 gramos de alcohol\npor litro de sangre.\nA esta regla general se le aplican otras restricciones, según el caso:\nAl circular por el resto del territorio nacional se debe conocer el\nlímite de alcoholemia determinado para la zona, ya que cada\nprovincia y municipio tiene autonomía normativa.\nLímites de alcohol en sangre\npara conducir\n",
+        "fullTranslationRu": "90\n• Снижение способности реагировать и увеличение времени, необходимого для ответа на стимул.\n• Уменьшение периферического зрения.\n• Ухудшение устойчивости к ослеплению.\n• Нарушение зрительно-моторной координации.\n• Нарушение моторной координации.\n• Нарушение внимания и связи идей.\n• Чрезмерная уверенность в себе.\n• Снижение сдерживающих механизмов.\n• Сонливость.\nУпотребление алкоголя\nАлкоголь - это вещество, угнетающее центральную нервную систему. Его употребление вызывает:\nЭти эффекты присутствуют в большей или меньшей степени в зависимости от концентрации, то есть граммов алкоголя на литр крови. Учитывая эти нарушения, Закон 2148 устанавливает предельные значения концентрации алкоголя в крови в момент управления в городе Буэнос-Айрес:\nЗапрещено управлять любым видом транспортного средства\nс более чем 0,5 грамма алкоголя\nна литр крови.\nК этому общему правилу применяются другие ограничения в зависимости от случая:\nПри движении по остальной территории страны нужно знать\nпредел алкоголя в крови, установленный для данной зоны, потому что каждая\nпровинция и муниципалитет имеют нормативную автономию.\nПределы алкоголя в крови\nдля управления",
+        "simpleRu": "Алкоголь замедляет реакцию, сужает зрение, ухудшает координацию, внимание и самоконтроль, вызывает сонливость и лишнюю уверенность. В городе Буэнос-Айрес запрещено водить любое транспортное средство при более чем 0,5 г алкоголя на литр крови. В других провинциях и муниципалитетах пределы могут отличаться.",
+        "sourceTextSha256": "1f1292fbc7d7a93dbb0dc85297f7faa02bff80121d4fafef0095d5596b5eaff2",
+        "sourceFingerprint": "sha256:1f1292fbc7d7a93dbb0dc85297f7faa02bff80121d4fafef0095d5596b5eaff2",
+        "sourceSpan": {
+          "startLine": 2171,
+          "endLine": 2196
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--91-092",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 92,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 91: El grado de alcoholización depende de diversos factores que afectan la absorción del alcohol"
+        ],
+        "officialLabel": "91",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "91\nEl grado de alcoholización depende de diversos factores que afectan la absorción del alcohol\ningerido:\nMetabolismo\n• Tipo de bebida.\n• Cantidad de alcohol ingerido.\n• Presencia de alimentos en el estómago.\n• Peso corporal.\n• Cantidad de sangre.\n• Grasa corporal.\n• Funcionamiento hepático.\nEntonces, no es posible saber qué cantidad de alcohol puede ingerirse para tener una determinada\nconcentración en sangre. En cada organismo y cada circunstancia particular se obtendrá una\nconcentración diferente.\nSi tomaste alcohol, no manejes.\n• Se realiza fundamentalmente por vía hepática, renal y a través de los pulmones.\n• El proceso conlleva un tiempo en cada organismo, de modo que la concentración no disminuye\ninmediatamente a cero de un momento a otro.\nEn  promedio,  una  vez  que  se  dejó  de  ingerir  alcohol,  la  concentración  continúa  subiendo\ndurante la primera hora y luego comienza a descender paulatinamente. Por eso, conducir al\ndía siguiente de una noche de consumo excesivo de alcohol también es riesgoso, porque sus\nefectos no terminan con la ingesta, sino que se extienden hasta haber eliminado todo rastro\ndel organismo.\nEliminación del alcohol del organismo\nProcedimiento en caso de\nAlcoholemia positiva\n•  Sancionar  la  falta  administrativa  y  contraven-\ncional si la hubiese.\n• Retener la licencia de conducir.\n•  Remitir  el  vehículo,  impidiendo  así  que  se\ncontinúe conduciendo.\nNegativa a realizar una prueba de alcoholemia\nLa autoridad de control deberá prohibirle continuar conduciendo y ordenará la remoción del\nvehículo, ya que se presume el estado de alcoholemia positiva.\n",
+        "fullTranslationRu": "91\nСтепень алкогольного опьянения зависит от разных факторов, влияющих на усвоение выпитого алкоголя:\nМетаболизм\n• Вид напитка.\n• Количество выпитого алкоголя.\n• Наличие еды в желудке.\n• Масса тела.\n• Количество крови.\n• Количество жира в организме.\n• Работа печени.\nПоэтому невозможно знать, сколько алкоголя можно выпить, чтобы получить определенную концентрацию в крови. В каждом организме и в каждой конкретной ситуации концентрация будет разной.\nЕсли ты пил алкоголь, не управляй.\n• Выведение происходит главным образом через печень, почки и легкие.\n• Процесс занимает время в каждом организме, поэтому концентрация не падает сразу до нуля в один момент.\nВ среднем после прекращения употребления алкоголя концентрация продолжает расти в течение первого часа, а затем начинает постепенно снижаться. Поэтому управление на следующий день после ночи чрезмерного употребления алкоголя тоже рискованно: его эффекты не заканчиваются с приемом, а продолжаются, пока весь след не будет выведен из организма.\nВыведение алкоголя из организма\nПроцедура при\nположительном результате проверки алкоголя\n• Санкционировать административное нарушение и контравенционное нарушение, если оно есть.\n• Удержать водительское удостоверение.\n• Направить транспортное средство на эвакуацию, тем самым не позволяя продолжать управление.\nОтказ пройти проверку на алкоголь\nКонтрольный орган должен запретить человеку продолжать управление и распорядиться об удалении транспортного средства, потому что предполагается состояние положительного результата по алкоголю.",
+        "simpleRu": "Нельзя заранее точно посчитать «безопасное» количество алкоголя: влияет напиток, еда, вес, кровь, жир и работа печени. После последнего бокала концентрация может еще час расти, а потом снижаться медленно. На следующий день после сильного употребления водить тоже опасно. При положительной проверке удерживают права и убирают машину; отказ от теста считают как предполагаемый положительный результат.",
+        "sourceTextSha256": "deeeab98bd853764ef079c9533768e438c51fee16f3a12859eb29abb90c88d6f",
+        "sourceFingerprint": "sha256:deeeab98bd853764ef079c9533768e438c51fee16f3a12859eb29abb90c88d6f",
+        "sourceSpan": {
+          "startLine": 2197,
+          "endLine": 2231
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--92-093",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 93,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 92: Sueño y fatiga"
+        ],
+        "officialLabel": "92",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "92\nSueño y fatiga\nDesignar a una persona que se responsabilice\npara  conducir,  entre  un  grupo  de  gente  que\nnecesita  trasladarse,  la  cual  debe  comprome-\nterse a no ingerir alcohol  y llevar a cada una a\nsu destino al finalizar el encuentro. De esta forma,\nno sólo se cuida a si misma, sino también a las\notras personas.\nEl sueño es una parte integral de la vida cotidiana, una necesidad biológica que permite restablecer\nlas funciones físicas, psicológicas y sociales esenciales en las personas.\nEl cuerpo humano guarda un equilibrio para tratar de recuperar todo aquello de lo que se lo ha\nprivado. Cuando una persona no duerme lo suficiente, su organismo produce, como respuesta, un\naumento de la necesidad de sueño en los días posteriores y una disminución del rendimiento. Cabe\naclarar que el cansancio puede verse inducido por ingerir bebidas alcohólicas y comidas abundantes.\nEl control de alcoholemia o toxicológico se realiza utilizando instrumentos que garanticen la calidad\nde  la  medición  o  detección,  ya  que  se  encuentran  debidamente  certificados  y  calibrados.  Cabe\naclarar que, frente a un resultado positivo o la negativa a someterse al examen, el procedimiento\nque se realiza en un control de alcoholemia o de estupefacientes, es el mismo.\nEsto lleva a la resaca o según el término médico, la veisalgia. Conducir en este estado es peligroso\nporque  también  tiene  efectos  en  el  organismo,  entre  ellos,  alteraciones  en  la  coordinación,  la\natención y en el tiempo de reacción. Por eso, conducir con resaca es equiparable a conducir en\nestado de alcoholización.\nDormir pocas horas\n• Reduce la capacidad de reacción y aumenta el tiempo necesario para responder ante un estímulo.\n• Reduce el estado de alerta, ya que se produce una disminución del rendimiento intelectual\ncon dificultades de concentración y utilización de la memoria.\n• Predispone a tomar malas decisiones a causa de las alteraciones en el estado de ánimo y\nel aumento en los niveles de ansiedad e irritabilidad.\nLa  fatiga  es  la  sensación  de  falta  de  energía,  agotamiento  o  cansancio,  que  se  encuentra\nacompañada por una ausencia de motivación. Puede aparecer por dormir de forma insuficiente,\npor realizar un sobreesfuerzo, o a partir de una tensión mantenida en el tiempo, pudiendo ser\ntransitoria o crónica.\nConductor/a\nResponsable\n",
+        "fullTranslationRu": "92\nСон и усталость\nНазначить ответственным за управление человека из группы людей, которым нужно перемещаться. Этот человек должен обязаться не употреблять алкоголь и доставить каждого к месту назначения после встречи. Так он заботится не только о себе, но и о других людях.\nСон является неотъемлемой частью повседневной жизни, биологической потребностью, которая позволяет восстанавливать физические, психологические и социальные функции, необходимые людям.\nЧеловеческий организм поддерживает равновесие, пытаясь восстановить все, чего он был лишен. Когда человек спит недостаточно, организм в ответ увеличивает потребность во сне в следующие дни и снижает работоспособность. Нужно уточнить, что усталость может усиливаться употреблением алкогольных напитков и обильной еды.\nПроверка на алкоголь или токсикологическая проверка проводится с использованием приборов, которые гарантируют качество измерения или выявления, поскольку они должным образом сертифицированы и откалиброваны. Нужно уточнить, что при положительном результате или отказе пройти проверку процедура контроля алкоголя или наркотических веществ одна и та же.\nЭто приводит к похмелью, или, медицинским термином, веисалгии. Управлять в таком состоянии опасно, потому что оно тоже влияет на организм, в том числе нарушает координацию, внимание и время реакции. Поэтому управление с похмельем приравнивается к управлению в состоянии алкоголизации.\nМало часов сна\n• Снижает способность реакции и увеличивает время, необходимое для ответа на стимул.\n• Снижает состояние готовности, потому что происходит уменьшение умственной работоспособности с трудностями концентрации и использования памяти.\n• Предрасполагает к плохим решениям из-за изменений настроения и повышения тревожности и раздражительности.\nУсталость - это ощущение нехватки энергии, истощения или утомления, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, перенапряжения или длительного напряжения и может быть временной или хронической.\nОтветственный водитель",
+        "simpleRu": "В группе лучше заранее выбрать трезвого ответственного водителя. Недосып снижает реакцию, внимание, память и качество решений. Похмелье тоже опасно и похоже на управление после алкоголя: страдают координация, внимание и реакция. Усталость может быть от недосыпа, перегрузки или долгого напряжения.",
+        "sourceTextSha256": "a9a9bb0c563725dbb5f089eb5248961838ea8d3e5d4fceb4bf2bdadc90e91b12",
+        "sourceFingerprint": "sha256:a9a9bb0c563725dbb5f089eb5248961838ea8d3e5d4fceb4bf2bdadc90e91b12",
+        "sourceSpan": {
+          "startLine": 2232,
+          "endLine": 2267
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--93-094",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 94,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 93: 47/ Fuente: Dres. Daniel Vigo; Santiago Plano y Lic. Giannina Bellone pertenecientes a Laboratorio de Cronofisiología, BIOMED-CONICET,"
+        ],
+        "officialLabel": "93",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "93\n47/ Fuente: Dres. Daniel Vigo; Santiago Plano y Lic. Giannina Bellone pertenecientes a Laboratorio de Cronofisiología, BIOMED-CONICET,\nUniversidad Católica Argentina.\nSíntomas físicos de la fatiga:\n• Bostezos.\n• Visión borrosa.\n• Sensación de ojos pesados (aumento del número y la duración de los parpadeos).\n• Lagrimeo y/o picor en los ojos.\n• Cabeceos.\n• Dormitar de forma no intencional o quedarse dormido/a unos segundos (microsueños).\n• Al emprender un viaje largo dormir aproximadamente 8 horas la noche anterior.\n• Interrumpir el viaje cada 200 kilometros o cada dos horas (en el caso de quienes conduzcan\nmotovehículos, es conveniente cada 100 kilómetros o cada hora).\n• Tener buena ventilación en el interior del vehículo.\n• Beber agua de manera frecuente y consumir comidas ligeras.\n• Evitar  conducir  al  anochecer  y  al  amanecer,  ya  que  son  momentos  de  dificultad  para\nmanejar a causa de la escasa visibilidad.\n• Las personas que tienen más predisposición a sufrir fatiga son las profesionales (dado\nel prolongado tiempo de conducción) y las principiantes (por la exigencia que demanda\nesta tarea, a causa de su falta de experiencia).\n• Estar 17 horas despierto/a provoca tener el mismo nivel de reacción que una persona\ncon un nivel de alcohol en sangre mayor al permitido por ley\n47\n.\n• Los  efectos  de  conducir  con  fatiga  o  cansancio  son  similares  a  los  de  haber  dormido\npocas horas, ya que en ambas situaciones se reduce la capacidad de reacción y aumenta el\ntiempo necesario para responder ante un estímulo. Sin embargo, las maneras de combatirlos\nson diferentes:\n• Para combatir el sueño se necesita dormir.\n• Para tratar la fatiga es necesario interrumpir el viaje y hacer una parada de descanso.\nEstrés\nLa OMS lo define como el conjunto de reacciones fisiológicas que preparan al organismo para\nentrar en acción. Ésta es una respuesta necesaria para la supervivencia, pero cuando se produce\nen exceso, deja de ser una respuesta adecuada y produce una sobrecarga de tensión que repercute\nen el organismo.\nEn las sociedades actuales, son cada vez mayores las exigencias a las que las personas se ven\nsometidas y quienes conducen no son ajenos a estas circunstancias.\nEn  la  conducción,  existe  una  doble  relación  con  el  estrés:  esta  actividad  genera  estrés  por\nsí misma y, a su vez, ésto provocará que se haga de manera más temeraria y menos segura,\nincrementando los niveles de estrés en el entorno vial.\nRecomendaciones\n",
+        "fullTranslationRu": "93\n47/ Источник: доктора Daniel Vigo, Santiago Plano и лиценциат Giannina Bellone из Лаборатории хронофизиологии, BIOMED-CONICET, Католический университет Аргентины.\nФизические симптомы усталости:\n• Зевота.\n• Размытое зрение.\n• Ощущение тяжелых глаз: увеличение числа и длительности морганий.\n• Слезотечение и/или зуд в глазах.\n• Кивание головой.\n• Непреднамеренное дремание или засыпание на несколько секунд, микросны.\n• Перед началом долгой поездки спать примерно 8 часов предыдущей ночью.\n• Прерывать поездку каждые 200 километров или каждые два часа; для водителей мототранспортных средств удобно делать это каждые 100 километров или каждый час.\n• Обеспечить хорошую вентиляцию внутри транспортного средства.\n• Часто пить воду и употреблять легкую пищу.\n• Избегать управления в сумерках и на рассвете, потому что это моменты сложности для управления из-за слабой видимости.\n• Больше всего склонны страдать от усталости профессиональные водители, из-за длительного времени за рулем, и начинающие водители, из-за требований этой задачи при нехватке опыта.\n• 17 часов бодрствования дают такой же уровень реакции, как у человека с уровнем алкоголя в крови выше разрешенного законом47.\n• Эффекты управления с усталостью или утомлением похожи на эффекты недосыпа, потому что в обеих ситуациях снижается способность реагировать и увеличивается время, необходимое для ответа на стимул. Однако способы борьбы разные:\n• Чтобы бороться со сном, нужно спать.\n• Чтобы справиться с усталостью, нужно прервать поездку и сделать остановку для отдыха.\nСтресс\nВОЗ определяет его как совокупность физиологических реакций, которые подготавливают организм к действию. Это необходимая для выживания реакция, но когда она возникает чрезмерно, она перестает быть подходящей реакцией и создает перегрузку напряжением, влияющую на организм.\nВ современных обществах требования к людям становятся все выше, и водители не являются исключением.\nВ управлении есть двойная связь со стрессом: эта деятельность сама по себе создает стресс, а стресс, в свою очередь, делает управление более рискованным и менее безопасным, повышая уровень напряжения в дорожной среде.\nРекомендации",
+        "simpleRu": "Признаки усталости: зевота, мутное зрение, тяжелые глаза, слезы или зуд, кивки головой, микросон. Перед длинной поездкой нужно поспать около 8 часов, останавливаться каждые 200 км или 2 часа, пить воду, есть легко и проветривать. 17 часов без сна дают реакцию как при уровне алкоголя выше закона. Для сонливости нужно спать, для усталости - остановиться и отдохнуть.",
+        "sourceTextSha256": "087d22699b9ed7be2d83a9bfec3e670cf94ce6e5969d115157211c41acbb77aa",
+        "sourceFingerprint": "sha256:087d22699b9ed7be2d83a9bfec3e670cf94ce6e5969d115157211c41acbb77aa",
+        "sourceSpan": {
+          "startLine": 2268,
+          "endLine": 2309
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--94-095",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 95,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 94: Distracciones"
+        ],
+        "officialLabel": "94",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "94\nDistracciones\nComer, beber, tomar mate y/o fumar:\nSon tareas que demandan un cierto nivel de atención, al que se le suma el cuidado para evitar\nderrames o que caiga una ceniza encendida.\nEstas actividades, además del problema de las distracciones, conllevan un riesgo adicional, ya\nque exigen manipulación, por lo que las manos no pueden estar firmes en el volante.\n• Prestar atención al contexto y dejar de lado las preocupaciones y discusiones al momento\nde conducir ya que provocan mayor tensión y generan un alto riesgo en la seguridad vial.\n• Planificar el viaje y evaluar caminos alternativos al que se elige habitualmente.\n• Salir con tiempo suficiente para llegar a destino.\n• Regular la temperatura del vehículo ya que el calor y el frío en exceso son estímulos\nestresantes.\n• Adoptar una actitud tolerante y paciente frente a los embotellamientos.\nSe entiende por distracción a la desviación de la atención por parte de una persona cuando\nésta deba atender a algo específico.\nAplicado a la conducción, esto implica hacerlo de forma insegura e imprudente, ya que conducir\nes  una  actividad  compleja  que  requiere  de  la  organización  y  coordinación  de  los  estímulos\npercibidos, exigiendo mantener un nivel adecuado de atención.\nSi se reparte la atención entre la tarea principal (conducir) y otras secundarias, se estaría siendo\nmenos eficiente en la tarea principal, ya que no se tiene a disposición toda la capacidad de\nrespuesta frente a imprevistos que pueden llegar a surgir.\nRecomendaciones\n",
+        "fullTranslationRu": "94\nОтвлечения\nЕсть, пить, пить мате и/или курить:\nЭто действия, которые требуют определенного уровня внимания, к которому добавляется осторожность, чтобы избежать пролива или падения горящего пепла.\nЭти действия, кроме проблемы отвлечения, несут дополнительный риск, потому что требуют манипуляций руками, поэтому руки не могут уверенно находиться на руле.\n• Обращать внимание на обстановку и оставлять заботы и споры в стороне во время управления, потому что они вызывают большее напряжение и создают высокий риск для дорожной безопасности.\n• Планировать поездку и оценивать альтернативные пути вместо привычного.\n• Выезжать с достаточным запасом времени, чтобы прибыть к месту назначения.\n• Регулировать температуру в транспортном средстве, потому что чрезмерная жара и холод являются стрессовыми раздражителями.\n• Проявлять терпимое и терпеливое отношение в пробках.\nПод отвлечением понимается отклонение внимания человека, когда он должен следить за чем-то конкретным.\nПрименительно к вождению это означает небезопасное и неосторожное управление, потому что вождение - сложная деятельность, требующая организации и координации воспринимаемых стимулов и поддержания надлежащего уровня внимания.\nЕсли внимание делится между главной задачей, то есть вождением, и второстепенными задачами, главная задача выполняется менее эффективно, потому что нет всей способности реагировать на непредвиденные ситуации, которые могут возникнуть.\nРекомендации",
+        "simpleRu": "Еда, питье, мате и курение отвлекают и занимают руки. Заботы, споры, жара, холод, спешка и пробки тоже повышают риск. Вождение требует полного внимания: если внимание делится между дорогой и вторым делом, водитель хуже реагирует на неожиданности.",
+        "sourceTextSha256": "bd53c8c9816a6ca022af4c1430fdfcf388985f7b042eba9899d9c6f40bc21572",
+        "sourceFingerprint": "sha256:bd53c8c9816a6ca022af4c1430fdfcf388985f7b042eba9899d9c6f40bc21572",
+        "sourceSpan": {
+          "startLine": 2310,
+          "endLine": 2333
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--95-096",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 96,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 95: Usar telefonía celular"
+        ],
+        "officialLabel": "95",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "95\nUsar telefonía celular\nEstá prohibido ya que disminuye la capacidad de atención y reacción, aumentando el tiempo\nde respuesta ante un estímulo y limitando el sentido de audición y/o vista. Además, se debe\nconducir con ambas manos en el volante.\nEl uso de altavoz o auriculares también es considerado riesgoso, ya que, aunque no se usen las\nmanos, hablar por teléfono implica un ejercicio de representación mental de la persona con la\nque se está dialogando.\nUsar el GPS\nEl GPS es una herramienta útil pero puede ser de riesgo si se lo utiliza incorrectamente. No debe ser\nmanipulado durante la conducción, por eso, hay que programar la ruta con anterioridad al inicio del\nviaje y utilizarlo sólo para escuchar y no mirar.\n• Apagar el teléfono antes de comenzar a conducir.\n• Ponerlo en modo avión.\n• Guardarlo en la guantera o el baúl.\n• Dejar que la persona que acompaña atienda el llamado y avise que se comunicará al\nfinalizar de conducir.\n• Si se espera una llamada importante y no se puede hacer nada de lo mencionado,\nse deberá colocar las balizas y detenerse en un lugar permitido para no generar\nriesgos.\n• Descargar una aplicación que avisa a quien llama que la persona no puede atender porque\nestá conduciendo (incluso puede comunicar el tiempo de conducción que resta).\n• Además, es importante no realizar otras acciones mientras se conduce, tales como:\n• Cambiar de radio o CD.\n• Mirar un DVD portátil.\n• Maquillarse.\n• Mirar a los demás ocupantes.\n• Intentar quitarse el abrigo.\n• Intentar abrocharse el cinturón de seguridad o ajustar el espejo retrovisor. Estas\nacciones deben hacerse antes de emprender la marcha.\n• Estirarse para cerrar una puerta o buscar algo en la guantera.\n• Buscar dinero antes de llegar al peaje.\nRecomendaciones\n",
+        "fullTranslationRu": "95\nИспользование мобильного телефона\nЭто запрещено, потому что уменьшает способность внимания и реакции, увеличивает время ответа на стимул и ограничивает слух и/или зрение. Кроме того, управлять нужно двумя руками на руле.\nИспользование громкой связи или наушников тоже считается рискованным, потому что, даже если руки не используются, разговор по телефону требует мысленного представления человека, с которым ведется диалог.\nИспользование GPS\nGPS - полезный инструмент, но он может быть опасным, если пользоваться им неправильно. Им нельзя управлять во время вождения, поэтому маршрут нужно программировать до начала поездки и использовать его только для прослушивания, а не для смотрения.\n• Выключить телефон перед началом управления.\n• Перевести его в режим полета.\n• Убрать его в бардачок или багажник.\n• Дать пассажиру ответить на звонок и сообщить, что водитель свяжется после завершения управления.\n• Если ожидается важный звонок и ничего из указанного сделать нельзя, нужно включить аварийную сигнализацию и остановиться в разрешенном месте, чтобы не создавать рисков.\n• Скачать приложение, которое сообщает звонящему, что человек не может ответить, потому что управляет; оно даже может сообщать оставшееся время движения.\n• Кроме того, важно не выполнять другие действия во время управления, такие как:\n• Переключать радио или CD.\n• Смотреть портативный DVD.\n• Краситься.\n• Смотреть на других пассажиров.\n• Пытаться снять верхнюю одежду.\n• Пытаться пристегнуть ремень безопасности или настроить зеркало заднего вида. Эти действия нужно делать до начала движения.\n• Тянуться, чтобы закрыть дверь или искать что-то в бардачке.\n• Искать деньги перед подъездом к пункту оплаты.\nРекомендации",
+        "simpleRu": "Телефоном за рулем пользоваться нельзя: он снижает внимание, реакцию, слух или зрение, а руки должны быть на руле. Громкая связь и наушники тоже рискованны, потому что разговор отвлекает мозг. GPS настраивают до поездки и слушают, а не смотрят. Все действия вроде ремня, зеркал, одежды, радио и денег для оплаты делают до движения или после безопасной остановки.",
+        "sourceTextSha256": "a4f2cb60175fa83c0634099deb9db5ada8c7801b73728dfbc29c1329612dbb45",
+        "sourceFingerprint": "sha256:a4f2cb60175fa83c0634099deb9db5ada8c7801b73728dfbc29c1329612dbb45",
+        "sourceSpan": {
+          "startLine": 2334,
+          "endLine": 2367
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--96-097",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 97,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 96: Conducir, requiere del 100%"
+        ],
+        "officialLabel": "96",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "96\nConducir, requiere del 100%\nde atención y coordinación.\n",
+        "fullTranslationRu": "96\nУправление требует 100%\nвнимания и координации.",
+        "simpleRu": "За рулем нужны все внимание и координация, без отвлечений.",
+        "sourceTextSha256": "4c69005992012b138c031aa913fb167aab896ad9175032242d345afd4a28f875",
+        "sourceFingerprint": "sha256:4c69005992012b138c031aa913fb167aab896ad9175032242d345afd4a28f875",
+        "sourceSpan": {
+          "startLine": 2368,
+          "endLine": 2371
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--97-098",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 98,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 97: Capítulo 5 - Manual teórico de conducción de vehículos urbanos de cuatro ruedas"
+        ],
+        "officialLabel": "97",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "97\nCapítulo 5 - Manual teórico de conducción de vehículos urbanos de cuatro ruedas\nACTITUD AL CONDUCIR\n",
+        "fullTranslationRu": "97\nГлава 5 - Теоретическое руководство по вождению городских четырехколесных транспортных средств\nПОВЕДЕНИЕ ПРИ УПРАВЛЕНИИ",
+        "simpleRu": "Начинается глава 5 о поведении и отношении водителя за рулем.",
+        "sourceTextSha256": "4e7723b174bb09a7bdd470e02d6f784d6fc44eace062eb90610f74c30a3eea14",
+        "sourceFingerprint": "sha256:4e7723b174bb09a7bdd470e02d6f784d6fc44eace062eb90610f74c30a3eea14",
+        "sourceSpan": {
+          "startLine": 2372,
+          "endLine": 2375
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--98-099",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 99,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 98: Una buena conducción no sólo depende de la aptitud de la persona. Es decir, no alcanza con poseer"
+        ],
+        "officialLabel": "98",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "98\nUna buena conducción no sólo depende de la aptitud de la persona. Es decir, no alcanza con poseer\nlos conocimientos y las habilidades, y encontrarse en condiciones psicofísicas para hacerlo. Existe\nun tercer aspecto que interviene: la actitud, que se define como la manera de sentir y de pensar, que\npredispone a realizar determinadas conductas, ya sea de manera positiva o negativa.\nPositivas:\nTolerante: acepta la diversidad de las demás personas que transitan y también sus equivocaciones.\nSolidaria: facilita las maniobras ajenas a través de sus maniobras.\nComprensiva: se pone en el lugar de la otra persona y actúa en consecuencia.\nPrudente: evita riesgos innecesarios.\nPrepotente: intenta hacer “justicia” al observar que las otras personas en la vía pública no se movilizan\nsegún su propio juicio.\nDesconsiderada: entorpece la movilidad de las demás personas, priorizándose por sobre el resto.\nExhibicionista: pretende llamar la atención asumiendo conductas peligrosas.\nTransgresora: comete infracciones por tener prisa.\nNegativas:\nHacia una sociedad igualitaria\nLas ciudades fueron tradicionalmente pensadas, construidas y habitadas en función de las\nnecesidades  y  roles  sociales  asignados  a  los  varones.  Mujeres,  niños,  personas  mayores  y\ncon movilidad reducida no fueron agentes a tener en cuenta a la hora de la planificación de\npolíticas relacionadas al espacio público y el transporte.\nSin embargo, en los últimos años se generaron debates, a nivel mundial, sobre la manera en la\nque se debían construir los espacios urbanos, teniendo en cuenta género, edad, salud y condición\nsocioeconómica de ciudadanos y ciudadanas.\nEl compromiso por la igualdad de género es un hecho histórico que atraviesa a la Argentina y\nal mundo, a través de transformaciones culturales y sociales en todos los ámbitos de la vida,\ntanto pública como privada: en los vínculos familiares y afectivos, en las relaciones laborales,\nen la política, y también en el espacio público.\nTipos de actitudes\n",
+        "fullTranslationRu": "98\nХорошее вождение зависит не только от пригодности человека. То есть недостаточно иметь знания и навыки и находиться в психофизическом состоянии, позволяющем управлять. Есть третий аспект: отношение. Оно определяется как способ чувствовать и думать, который предрасполагает к определенному поведению, положительному или отрицательному.\nПоложительные:\nТерпимое: принимает разнообразие других людей, которые передвигаются, а также их ошибки.\nСолидарное: облегчает чужие маневры своими маневрами.\nПонимающее: ставит себя на место другого человека и действует соответственно.\nОсторожное: избегает ненужных рисков.\nВластное: пытается вершить «справедливость», когда замечает, что другие люди на общественной дороге передвигаются не так, как он считает правильным.\nНевнимательное к другим: мешает мобильности других людей, ставя себя выше остальных.\nДемонстративное: стремится привлечь внимание, принимая опасное поведение.\nНарушающее: совершает нарушения из-за спешки.\nОтрицательные:\nК равноправному обществу\nГорода традиционно мыслились, строились и заселялись исходя из потребностей и социальных ролей, приписанных мужчинам. Женщины, дети, пожилые люди и люди с ограниченной мобильностью не учитывались как действующие лица при планировании политик, связанных с общественным пространством и транспортом.\nОднако в последние годы во всем мире возникли дискуссии о том, как нужно строить городские пространства с учетом пола, возраста, здоровья и социально-экономического положения граждан.\nОбязательство по гендерному равенству является историческим фактом, который проходит через Аргентину и мир через культурные и социальные изменения во всех сферах жизни, как публичной, так и частной: в семейных и эмоциональных связях, трудовых отношениях, политике, а также в общественном пространстве.\nТипы отношений",
+        "simpleRu": "Хороший водитель - это не только знания, навыки и здоровье. Важно отношение. Полезные качества: терпимость, солидарность, понимание и осторожность. Опасные качества: желание «наказать» других, неуважение, показное рискованное поведение и нарушения из-за спешки. Город должен учитывать разных людей: женщин, детей, пожилых людей и людей с ограниченной мобильностью.",
+        "sourceTextSha256": "63d3025246f83c8fbe8e37455636b46de28fc03e4b336001a34e227f354b2e3b",
+        "sourceFingerprint": "sha256:63d3025246f83c8fbe8e37455636b46de28fc03e4b336001a34e227f354b2e3b",
+        "sourceSpan": {
+          "startLine": 2376,
+          "endLine": 2405
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--99-100",
+        "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+        "order": 100,
+        "headingPath": [
+          "Manual de conducción vehicular - Categoría B / Automóviles",
+          "Página 99: Esto implica una mayor cantidad de viajes, aunque más cortos, que combinan distintos modos de"
+        ],
+        "officialLabel": "99",
+        "chunkingStrategy": "pdf-page-groups",
+        "originalSpanish": "99\nEsto implica una mayor cantidad de viajes, aunque más cortos, que combinan distintos modos de\ntransporte, en general en horarios no pico, y que resultan en patrones de movilidad dispersos\ny no lineales (como lo es el trayecto hogar-trabajo-hogar). Como contracara, las tareas de cuidado\nsólo representan el 13% de los viajes que realizan los varones.\nEl derecho de las mujeres a la Ciudad implica el derecho a vivir libremente, a disfrutar, ocupar y\ntransformar sus espacios; el derecho de crear la Ciudad, de decidirla. En ese sentido, la incorporación\nde  una  perspectiva  de  género  en  el  diseño  y  planificación  de  las  ciudades  implica  visibilizar  las\ndesigualdades que experimentan las mujeres a la hora de hacer uso del transporte y los espacios\npúblicos.\nEs necesaria la construcción de una Ciudad equitativa y accesible para las mujeres, desde\nniñas a adultas mayores.\nSi se es víctima o testigo de una situación de acoso en el espacio público, en primer lugar\ncontactar al 911, priorizando la seguridad física de las personas involucradas.\nAsimismo,  tener  en  cuenta  que  se  encuentra  disponible  la  línea  de  reporte  y  contención\n22676 ACOSO, las 24 hs, los 365 días del año.\nContexto de\nCiudad de Buenos Aires\nPrevención y asistencia en situaciones\nde violencia de género\n",
+        "fullTranslationRu": "99\nЭто означает большее количество поездок, хотя более коротких, которые сочетают разные виды транспорта, обычно не в часы пик, и приводят к рассеянным и нелинейным моделям мобильности, не похожим на путь дом-работа-дом. С другой стороны, задачи ухода составляют только 13% поездок, которые совершают мужчины.\nПраво женщин на город означает право жить свободно, пользоваться его пространствами, занимать их и преобразовывать; право создавать город и решать его. В этом смысле включение гендерной перспективы в проектирование и планирование городов означает сделать видимыми неравенства, которые испытывают женщины при использовании транспорта и общественных пространств.\nНеобходимо строить город, равноправный и доступный для женщин, от девочек до пожилых женщин.\nЕсли человек является жертвой или свидетелем ситуации домогательства в общественном пространстве, прежде всего нужно связаться с 911, ставя физическую безопасность вовлеченных людей на первое место.\nТакже нужно учитывать, что доступна линия сообщения и поддержки 22676 ACOSO, 24 часа в сутки, 365 дней в году.\nКонтекст\nгорода Буэнос-Айрес\nПрофилактика и помощь в ситуациях\nгендерного насилия",
+        "simpleRu": "Поездки, связанные с уходом за другими людьми, часто короче, идут разными маршрутами и совмещают разные виды транспорта. Женщины сталкиваются с неравенством в транспорте и общественных местах, поэтому город нужно планировать доступным и безопасным. При домогательстве в общественном месте сначала звони 911; также есть линия поддержки 22676 ACOSO круглосуточно.",
+        "sourceTextSha256": "a749eefb20b9210533a5169a1366ebdbd7b06dc94c9fe0e641798c55d7888ff5",
+        "sourceFingerprint": "sha256:a749eefb20b9210533a5169a1366ebdbd7b06dc94c9fe0e641798c55d7888ff5",
+        "sourceSpan": {
+          "startLine": 2406,
+          "endLine": 2426
+        }
+      }
+    ]
+  }
+}
