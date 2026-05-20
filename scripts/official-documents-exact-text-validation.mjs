@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
+import { dirname, resolve } from "node:path";
 import { mkdirSync } from "node:fs";
 import { createRequire } from "node:module";
 
@@ -34,7 +34,9 @@ function parseArgs(argv) {
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === "--manifest") args.manifestPath = argv[++index];
-    else if (arg === "--evidence") args.evidencePath = argv[++index];
+    else if (arg === "--evidence") {
+      args.evidencePath = argv[++index];
+    }
     else if (arg === "--ids") args.ids = argv[++index].split(",").map((id) => id.trim()).filter(Boolean);
     else if (arg === "--write") args.write = true;
     else if (arg === "--help") {
@@ -46,6 +48,13 @@ normalizes Markdown/HTML/PDF layout noise, and writes exact-text validation evid
     } else {
       throw new Error(`Unknown argument: ${arg}`);
     }
+  }
+
+  const writesCanonicalEvidence = resolve(args.evidencePath) === resolve(DEFAULT_EVIDENCE_PATH);
+  if (args.write && args.ids && writesCanonicalEvidence) {
+    throw new Error(
+      "--ids with --write requires a custom noncanonical --evidence path so partial validation cannot overwrite the canonical whole-manifest evidence file."
+    );
   }
 
   return args;
